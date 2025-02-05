@@ -1,5 +1,5 @@
 import { MAIN_CONVERSATION_MODEL, RealTimeModel } from "@/data/ai";
-import { AiTool, initAiRpc } from "@/libs/rtc";
+import { AiTool, ChatMessage, initAiRpc } from "@/libs/rtc";
 import { useEffect, useState } from "react";
 
 export type ConversationMode = "talk" | "analyze";
@@ -9,6 +9,7 @@ export const useAiConversation = () => {
   const [isStarted, setIsStarted] = useState(false);
   const [currentMode, setCurrentMode] = useState<ConversationMode>();
   const [areasToImprove, setAreasToImprove] = useState<string[]>([]);
+  const [conversation, setConversation] = useState<ChatMessage[]>([]);
 
   const [destroyRpc, setDestroyRpc] = useState<() => void>();
   useEffect(() => {
@@ -29,6 +30,7 @@ export const useAiConversation = () => {
         "Do not explicitly teach or explain rules—just take notes while listening.",
         "Engage in a natural conversation without making it feel like a lesson.",
         "Start the conversation with: 'Hello, how was your day?'",
+        "You should always call a function if you can.",
       ].join("\n"),
       model: MAIN_CONVERSATION_MODEL,
       aiTools: [
@@ -68,6 +70,15 @@ export const useAiConversation = () => {
     },
   };
 
+  const [eventTrigger, setEventTrigger] = useState<() => void>();
+
+  const analyzeMe = () => {
+    if (eventTrigger) {
+      eventTrigger();
+      console.log("Analyzing...");
+    }
+  };
+
   const startConversation = async (mode: ConversationMode) => {
     setCurrentMode(mode);
     setIsInitializing(true);
@@ -82,8 +93,12 @@ export const useAiConversation = () => {
         setIsInitializing(false);
         setIsStarted(true);
       },
+      onMessage: (message) => {
+        setConversation((prev) => [...prev, message]);
+      },
     });
     setDestroyRpc(() => initResults.closeHandler);
+    setEventTrigger(() => initResults.eventTrigger);
   };
 
   const stopConversation = () => {
@@ -94,10 +109,12 @@ export const useAiConversation = () => {
 
   return {
     isInitializing,
+    analyzeMe,
     currentMode,
     isStarted,
     startConversation,
     stopConversation,
     areasToImprove,
+    conversation,
   };
 };

@@ -80,21 +80,36 @@ const setInitConfigs = async (
     session: {
       instructions: initInstruction,
       tools: aiTools,
+      input_audio_transcription: {
+        model: "whisper-1",
+      },
     },
   };
   await sleep(100);
   dataChannel.send(JSON.stringify(event));
-  await sleep(1000);
+  await sleep(100);
 };
+
+export interface ChatMessage {
+  isBot: boolean;
+  text: string;
+}
 
 interface InitRpcProps {
   model: RealTimeModel;
   initInstruction: string;
   onOpen: () => void;
   aiTools: AiTool[];
+  onMessage: (message: ChatMessage) => void;
 }
 
-export const initAiRpc = async ({ model, initInstruction, aiTools, onOpen }: InitRpcProps) => {
+export const initAiRpc = async ({
+  model,
+  initInstruction,
+  aiTools,
+  onMessage,
+  onOpen,
+}: InitRpcProps) => {
   const peerConnection = new RTCPeerConnection();
 
   const audioEl = document.createElement("audio");
@@ -126,7 +141,31 @@ export const initAiRpc = async ({ model, initInstruction, aiTools, onOpen }: Ini
   const messageHandler = (e: MessageEvent) => {
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
-    console.log("type", type);
+
+    if (type === "conversation.item.input_audio_transcription.completed") {
+      const userMessage = event?.transcript || "";
+      if (userMessage) {
+        onMessage({ isBot: false, text: userMessage });
+      }
+    }
+    if (type === "response.done") {
+      const botAnswer = event?.response?.output
+        .map((item: any) => {
+          return (
+            item?.content
+              ?.map((content: any) => content?.transcript || "")
+              .join(" ")
+              .trim() || ""
+          );
+        })
+        .join(" ")
+        .trim();
+      if (botAnswer) {
+        setTimeout(() => {
+          onMessage({ isBot: true, text: botAnswer });
+        }, 1000);
+      }
+    }
 
     if (type === "response.function_call_arguments.done") {
       const functionName = event?.name;
@@ -174,7 +213,25 @@ export const initAiRpc = async ({ model, initInstruction, aiTools, onOpen }: Ini
     audioEl.remove();
   };
 
+  const eventTrigger = () => {
+    const event = {
+      type: "conversation.item.create",
+      item: {
+        type: "message",
+        role: "user",
+        content: [
+          {
+            type: "input_text",
+            text: "Add notes about my speech",
+          },
+        ],
+      },
+    };
+    dataChannel.send(JSON.stringify(event));
+  };
+
   return {
     closeHandler,
+    eventTrigger,
   };
 };
