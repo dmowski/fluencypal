@@ -52,7 +52,26 @@ const sendSdpOffer = async (
   }
 };
 
-const setInitConfigs = async (dataChannel: RTCDataChannel, initInstruction: string) => {
+export interface AiToolForLlm {
+  type: "function";
+  name: string;
+  description: string;
+  parameters: {
+    type: "object";
+    properties: Record<string, { type: "string"; description: string }>;
+    required: string[];
+  };
+}
+
+export interface AiTool extends AiToolForLlm {
+  handler: (args: Record<string, string>) => void;
+}
+
+const setInitConfigs = async (
+  dataChannel: RTCDataChannel,
+  initInstruction: string,
+  aiTools: AiToolForLlm[]
+) => {
   console.log("setInitConfigs");
   if (!dataChannel) throw Error("Error on setInitConfigs. dataChannel is not available");
 
@@ -60,6 +79,7 @@ const setInitConfigs = async (dataChannel: RTCDataChannel, initInstruction: stri
     type: "session.update",
     session: {
       instructions: initInstruction,
+      tools: aiTools,
     },
   };
   await sleep(100);
@@ -71,10 +91,10 @@ interface InitRpcProps {
   model: RealTimeModel;
   initInstruction: string;
   onOpen: () => void;
-  onMessage: (e: MessageEvent) => void;
+  aiTools: AiTool[];
 }
 
-export const initAiRpc = async ({ model, initInstruction, onMessage, onOpen }: InitRpcProps) => {
+export const initAiRpc = async ({ model, initInstruction, aiTools, onOpen }: InitRpcProps) => {
   const peerConnection = new RTCPeerConnection();
 
   const audioEl = document.createElement("audio");
@@ -96,13 +116,52 @@ export const initAiRpc = async ({ model, initInstruction, onMessage, onOpen }: I
     sdp: await sendSdpOffer(offer, model),
   };
   await peerConnection.setRemoteDescription(answer);
+
+  const aiToolsForLlm: AiToolForLlm[] = aiTools.map((tool) => {
+    const copyTool = { ...tool, handler: undefined };
+    delete copyTool.handler;
+    return copyTool;
+  });
+
   const messageHandler = (e: MessageEvent) => {
-    onMessage(e);
+    const event = JSON.parse(e.data);
+    const type = (event?.type || "") as string;
+    console.log("type", type);
+
+    if (type === "response.function_call_arguments.done") {
+      const functionName = event?.name;
+      const handler = aiTools.find((tool) => tool.name === functionName)?.handler;
+      if (!handler) {
+        console.log("❌ Handler not found for:", functionName);
+        return;
+      }
+
+      const args = event?.arguments;
+      console.log(functionName, args);
+      if (!args) {
+        console.log("❌ Arguments not found for:", functionName);
+        return;
+      }
+
+      let parsedArgs: Record<string, string> = {};
+      try {
+        parsedArgs = JSON.parse(args);
+      } catch (error) {
+        console.error("Error parsing args for function: " + functionName, error);
+
+        return;
+      }
+
+      try {
+        handler(parsedArgs);
+      } catch (error) {
+        console.error("Error calling handler for function: " + functionName, error);
+      }
+    }
   };
 
   const openHandler = async () => {
-    console.log("Data Channel opened");
-    await setInitConfigs(dataChannel, initInstruction);
+    await setInitConfigs(dataChannel, initInstruction, aiToolsForLlm);
     onOpen();
   };
   dataChannel.addEventListener("message", messageHandler);

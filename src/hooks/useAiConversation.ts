@@ -1,30 +1,14 @@
 import { MAIN_CONVERSATION_MODEL, RealTimeModel } from "@/data/ai";
-import { initAiRpc } from "@/libs/rtc";
+import { AiTool, initAiRpc } from "@/libs/rtc";
 import { useEffect, useState } from "react";
 
 export type ConversationMode = "talk" | "analyze";
-
-const modes: Record<ConversationMode, { instruction: string; model: RealTimeModel }> = {
-  talk: {
-    instruction: [
-      `Your are English teacher.`,
-      `Say hello to your student, ask them how they doing and start a lesson based on anser`,
-    ].join("\n"),
-    model: MAIN_CONVERSATION_MODEL,
-  },
-  analyze: {
-    instruction: [
-      `Your are English teacher.`,
-      `Ask your student to describe their day and analyze their response from grammar and vocabulary perspective`,
-    ].join("\n"),
-    model: MAIN_CONVERSATION_MODEL,
-  },
-};
 
 export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [currentMode, setCurrentMode] = useState<ConversationMode>();
+  const [areasToImprove, setAreasToImprove] = useState<string[]>([]);
 
   const [destroyRpc, setDestroyRpc] = useState<() => void>();
   useEffect(() => {
@@ -33,19 +17,66 @@ export const useAiConversation = () => {
     };
   }, []);
 
+  const modes: Record<
+    ConversationMode,
+    { instruction: string; model: RealTimeModel; aiTools: AiTool[] }
+  > = {
+    analyze: {
+      instruction: [
+        "You are an English teacher.",
+        "Ask the student to describe their day and take notes on areas that need improvement in grammar and vocabulary.",
+        "Focus on identifying mistakes, but do not correct them directly.",
+        "Do not explicitly teach or explain rules—just take notes while listening.",
+        "Engage in a natural conversation without making it feel like a lesson.",
+        "Start the conversation with: 'Hello, how was your day?'",
+      ].join("\n"),
+      model: MAIN_CONVERSATION_MODEL,
+      aiTools: [
+        {
+          type: "function",
+          name: "noteAreasToImprove",
+          description:
+            "Identify and note areas where the student needs improvement in grammar and vocabulary.",
+          parameters: {
+            type: "object",
+            properties: {
+              note: {
+                type: "string",
+                description:
+                  "Specific grammar or vocabulary issue observed during the conversation.",
+              },
+            },
+            required: ["note"],
+          },
+          handler: (args) => {
+            const note = args.note;
+            if (note) {
+              setAreasToImprove((prev) => [...prev, note]);
+            }
+          },
+        },
+      ],
+    },
+
+    talk: {
+      instruction: [
+        `Your are English teacher.`,
+        `Say hello to your student, ask them how they doing and start a lesson based on anser`,
+      ].join("\n"),
+      model: MAIN_CONVERSATION_MODEL,
+      aiTools: [],
+    },
+  };
+
   const startConversation = async (mode: ConversationMode) => {
     setCurrentMode(mode);
-    const modeConfig = modes[mode];
-    const model = modeConfig.model;
-    const instruction = modeConfig.instruction;
-
     setIsInitializing(true);
+    const modeConfig = modes[mode];
+
     const initResults = await initAiRpc({
-      model: model,
-      initInstruction: instruction,
-      onMessage: (e) => {
-        console.log("Data Channel message:", e);
-      },
+      model: modeConfig.model,
+      initInstruction: modeConfig.instruction,
+      aiTools: modeConfig.aiTools,
       onOpen: () => {
         console.log("Data Channel opened");
         setIsInitializing(false);
@@ -67,5 +98,6 @@ export const useAiConversation = () => {
     isStarted,
     startConversation,
     stopConversation,
+    areasToImprove,
   };
 };
