@@ -4,6 +4,7 @@ import { useAiConversation } from "@/hooks/useAiConversation";
 
 export default function Home() {
   const aiConversation = useAiConversation();
+  const bg = "https://cdn.midjourney.com/ffabd88c-c5ac-43bc-ab09-e966eb1402d2/0_2.png";
 
   return (
     <main className="flex flex-col items-center pt-[200px] gap-10 min-h-screen">
@@ -16,10 +17,9 @@ export default function Home() {
           height: "120vh",
           zIndex: -1,
           pointerEvents: "none",
-          backgroundImage:
-            "url('https://cdn.midjourney.com/ffabd88c-c5ac-43bc-ab09-e966eb1402d2/0_3.png')",
+          backgroundImage: `url('${bg}')`,
           backgroundSize: "cover",
-          opacity: 1,
+          opacity: 0.4,
         }}
       ></div>
       <div className="flex flex-col items-center justify-center w-full gap-2">
@@ -29,7 +29,7 @@ export default function Home() {
 
             <button
               onClick={() => aiConversation.stopConversation()}
-              className="py-2 px-8 rounded-xl  border border-neutral-700"
+              className="py-2 px-8 rounded-xl  border-neutral-700 border-2"
             >
               Stop
             </button>
@@ -42,7 +42,7 @@ export default function Home() {
               <div className="flex flex-col items-center justify-center gap-2">
                 <button
                   onClick={() => aiConversation.startConversation("analyze")}
-                  className="py-4 px-12 rounded-xl  border border-neutral-700 text-2xl"
+                  className="py-4 px-12 rounded-xl border bg-blue-50 border-blue-700 text-2xl text-blue-900"
                 >
                   Start
                 </button>
@@ -66,7 +66,7 @@ export default function Home() {
         )}
       </div>
       <div className="flex flex-col items-center justify-center w-full gap-10">
-        <div className="w-full max-w-[600px] bg-white border rounded-xl px-8 py-6">
+        <div className="w-full max-w-[600px] bg-white border border-neutral-300 rounded-xl px-8 py-6">
           <h2 className="text-2xl font-semibold">Areas to improve:</h2>
           <div className="flex flex-col justify-center gap-2">
             {!aiConversation.areasToImprove ? (
@@ -76,7 +76,7 @@ export default function Home() {
             )}
           </div>
         </div>
-        <div className="w-full max-w-[600px] bg-white border rounded-xl px-8 py-6">
+        <div className="w-full max-w-[600px] bg-white border border-neutral-300 rounded-xl px-8 py-6">
           <h2 className="text-2xl font-semibold">Conversation:</h2>
           <div className="">
             {aiConversation.conversation.length === 0 && (
