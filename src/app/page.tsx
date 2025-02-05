@@ -6,10 +6,12 @@ export default function Home() {
   const aiConversation = useAiConversation();
 
   return (
-    <main className="flex flex-row items-center justify-center h-screen gap-10">
+    <main className="flex flex-col items-center pt-[200px] gap-10 min-h-screen">
       <div
         style={{
           position: "fixed",
+          top: 0,
+          left: 0,
           width: "130vw",
           height: "120vh",
           zIndex: -1,
@@ -17,10 +19,10 @@ export default function Home() {
           backgroundImage:
             "url('https://cdn.midjourney.com/ffabd88c-c5ac-43bc-ab09-e966eb1402d2/0_3.png')",
           backgroundSize: "cover",
-          opacity: 0.2,
+          opacity: 1,
         }}
       ></div>
-      <div className="flex flex-col items-center justify-center h-screen w-[400px] gap-2">
+      <div className="flex flex-col items-center justify-center w-full gap-2">
         {aiConversation.isStarted ? (
           <div className="flex flex-col items-center justify-center  gap-2">
             <p>Ready to talk..</p>
@@ -40,12 +42,14 @@ export default function Home() {
               <div className="flex flex-col items-center justify-center gap-2">
                 <button
                   onClick={() => aiConversation.startConversation("analyze")}
-                  className="py-2 px-8 rounded-xl  border border-neutral-700"
+                  className="py-4 px-12 rounded-xl  border border-neutral-700 text-2xl"
                 >
                   Start
                 </button>
                 {!!aiConversation.errorInitiating && (
-                  <p className="text-sm text-red-500">{aiConversation.errorInitiating}</p>
+                  <p className="text-sm text-red-500 text-center">
+                    {aiConversation.errorInitiating}
+                  </p>
                 )}
               </div>
             )}
@@ -61,8 +65,8 @@ export default function Home() {
           </button>
         )}
       </div>
-      <div className="flex flex-col items-center justify-center h-screen w-full gap-10">
-        <div className="w-full max-h-[500px] overflow-y-scroll">
+      <div className="flex flex-col items-center justify-center w-full gap-10">
+        <div className="w-full max-w-[600px] bg-white border rounded-xl px-8 py-6">
           <h2 className="text-2xl font-semibold">Areas to improve:</h2>
           <div className="flex flex-col justify-center gap-2">
             {!aiConversation.areasToImprove ? (
@@ -72,9 +76,9 @@ export default function Home() {
             )}
           </div>
         </div>
-        <div className="flex flex-col  justify-center w-full">
+        <div className="w-full max-w-[600px] bg-white border rounded-xl px-8 py-6">
           <h2 className="text-2xl font-semibold">Conversation:</h2>
-          <div className="max-h-[500px] overflow-y-scroll">
+          <div className="">
             {aiConversation.conversation.length === 0 && (
               <p className="text-neutral-600 text-sm">No conversation yet</p>
             )}

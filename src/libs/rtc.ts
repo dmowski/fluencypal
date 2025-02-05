@@ -1,3 +1,4 @@
+"use client";
 import { RealTimeModel } from "@/data/ai";
 import { getEphemeralKey } from "./getEphemeralKey";
 import { sleep } from "./sleep";
@@ -27,15 +28,11 @@ import { ChatMessage } from "@/common/types";
  */
 const sendSdpOffer = async (
   offer: RTCSessionDescriptionInit,
-  model: RealTimeModel,
-  ephemeralKey: string
+  model: RealTimeModel
 ): Promise<string> => {
   try {
+    const ephemeralKey = await getEphemeralKey();
     const baseUrl = "https://api.openai.com/v1/realtime";
-    console.log("EPHEMERAL_KEY", ephemeralKey);
-    console.log("offer.sdp", offer.sdp);
-    console.log("model", model);
-
     const sdpResponse = await fetch(`${baseUrl}?model=${model}`, {
       method: "POST",
       body: offer.sdp,
@@ -109,7 +106,6 @@ export const initAiRpc = async ({
   onMessage,
   onOpen,
 }: InitRpcProps) => {
-  const ephemeralKey = await getEphemeralKey();
   const peerConnection = new RTCPeerConnection();
 
   const audioId = "audio_for_llm";
@@ -134,7 +130,7 @@ export const initAiRpc = async ({
   await peerConnection.setLocalDescription(offer);
   const answer: RTCSessionDescriptionInit = {
     type: "answer",
-    sdp: await sendSdpOffer(offer, model, ephemeralKey),
+    sdp: await sendSdpOffer(offer, model),
   };
   await peerConnection.setRemoteDescription(answer);
 

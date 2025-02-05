@@ -1,3 +1,4 @@
+"use client";
 import { ChatMessage } from "@/common/types";
 import { MODELS, RealTimeModel } from "@/data/ai";
 import { reviewConversation } from "@/libs/reviewConversation";
