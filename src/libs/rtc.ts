@@ -27,17 +27,20 @@ import { ChatMessage } from "@/common/types";
  */
 const sendSdpOffer = async (
   offer: RTCSessionDescriptionInit,
-  model: RealTimeModel
+  model: RealTimeModel,
+  ephemeralKey: string
 ): Promise<string> => {
   try {
-    const EPHEMERAL_KEY = await getEphemeralKey();
     const baseUrl = "https://api.openai.com/v1/realtime";
+    console.log("EPHEMERAL_KEY", ephemeralKey);
+    console.log("offer.sdp", offer.sdp);
+    console.log("model", model);
 
     const sdpResponse = await fetch(`${baseUrl}?model=${model}`, {
       method: "POST",
       body: offer.sdp,
       headers: {
-        Authorization: `Bearer ${EPHEMERAL_KEY}`,
+        Authorization: `Bearer ${ephemeralKey}`,
         "Content-Type": "application/sdp",
       },
     });
@@ -106,29 +109,32 @@ export const initAiRpc = async ({
   onMessage,
   onOpen,
 }: InitRpcProps) => {
+  const ephemeralKey = await getEphemeralKey();
   const peerConnection = new RTCPeerConnection();
 
-  const audioEl = document.createElement("audio");
-  audioEl.autoplay = true;
+  const audioId = "audio_for_llm";
+  const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
+
+  let audioEl = existingAudio;
+  if (!audioEl) {
+    audioEl = document.createElement("audio");
+
+    audioEl.autoplay = true;
+    audioEl.id = audioId;
+    document.body.appendChild(audioEl);
+  }
   peerConnection.ontrack = (e) => (audioEl.srcObject = e.streams[0]);
 
   const ms = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
-
-  console.log("ms", ms, ms.getTracks()[0]);
   peerConnection.addTrack(ms.getTracks()[0]);
-
   const dataChannel = peerConnection.createDataChannel("oai-events");
-
   const offer = await peerConnection.createOffer();
   await peerConnection.setLocalDescription(offer);
-  await sleep(300);
-  console.log("audioEl", audioEl);
-
   const answer: RTCSessionDescriptionInit = {
     type: "answer",
-    sdp: await sendSdpOffer(offer, model),
+    sdp: await sendSdpOffer(offer, model, ephemeralKey),
   };
   await peerConnection.setRemoteDescription(answer);
 
@@ -213,7 +219,6 @@ export const initAiRpc = async ({
     dataChannel.removeEventListener("message", messageHandler);
     dataChannel.removeEventListener("open", openHandler);
     peerConnection.close();
-    audioEl.remove();
   };
 
   const eventTrigger = () => {

@@ -20,16 +20,10 @@ export default function Home() {
           opacity: 0.2,
         }}
       ></div>
-      <div className="flex flex-col items-center justify-center h-screen w-[400px]">
+      <div className="flex flex-col items-center justify-center h-screen w-[400px] gap-2">
         {aiConversation.isStarted ? (
-          <div className="flex flex-col items-center justify-center h-screen gap-2">
+          <div className="flex flex-col items-center justify-center  gap-2">
             <p>Ready to talk..</p>
-            <button
-              onClick={() => aiConversation.analyzeMe()}
-              className="py-2 px-8 rounded-xl  border border-neutral-700"
-            >
-              Review my speech
-            </button>
 
             <button
               onClick={() => aiConversation.stopConversation()}
@@ -39,7 +33,7 @@ export default function Home() {
             </button>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-screen">
+          <div className="flex flex-col items-center justify-center ">
             {aiConversation.isInitializing ? (
               <p>Loading...</p>
             ) : (
@@ -56,6 +50,15 @@ export default function Home() {
               </div>
             )}
           </div>
+        )}
+
+        {aiConversation.conversation.length > 2 && (
+          <button
+            onClick={() => aiConversation.analyzeMe()}
+            className="py-2 px-8 rounded-xl  border border-neutral-700"
+          >
+            Review my speech
+          </button>
         )}
       </div>
       <div className="flex flex-col items-center justify-center h-screen w-full gap-10">
