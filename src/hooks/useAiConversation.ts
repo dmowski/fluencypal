@@ -1,4 +1,4 @@
-import { INIT_CONVERSATION_INSTRUCTIONS, MAIN_CONVERSATION_MODEL } from "@/data/ai";
+import { MAIN_CONVERSATION_MODEL } from "@/data/ai";
 import { initAiRpc } from "@/libs/rtc";
 import { useEffect, useState } from "react";
 
@@ -17,7 +17,10 @@ export const useAiConversation = () => {
     setIsInitializing(true);
     const initResults = await initAiRpc({
       model: MAIN_CONVERSATION_MODEL,
-      initInstruction: INIT_CONVERSATION_INSTRUCTIONS,
+      initInstruction: [
+        `Your are English teacher.`,
+        `Say hello to your student, ask them how they doing and start a lesson based on anser`,
+      ].join("\n"),
       onMessage: (e) => {
         console.log("Data Channel message:", e);
       },
