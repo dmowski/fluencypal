@@ -212,9 +212,21 @@ export const initAiRpc = async ({
 
   const closeHandler = () => {
     console.log("closeHandler");
-    dataChannel.removeEventListener("message", messageHandler);
-    dataChannel.removeEventListener("open", openHandler);
-    peerConnection.close();
+
+    if (dataChannel) {
+      dataChannel.removeEventListener("message", messageHandler);
+      dataChannel.removeEventListener("open", openHandler);
+
+      if (dataChannel.readyState !== "closed") {
+        dataChannel.close();
+        console.log("Data channel closed");
+      }
+    }
+
+    if (peerConnection && peerConnection.signalingState !== "closed") {
+      peerConnection.close();
+      console.log("Peer connection closed");
+    }
   };
 
   const eventTrigger = () => {
