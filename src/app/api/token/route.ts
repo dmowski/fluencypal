@@ -1,4 +1,4 @@
-import { MAIN_CONVERSATION_MODEL } from "@/data/ai";
+import { MODELS } from "@/data/ai";
 
 export async function GET() {
   const openAIKey = process.env.OPENAI_API_KEY;
@@ -15,7 +15,7 @@ export async function GET() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: MAIN_CONVERSATION_MODEL,
+      model: MODELS.REALTIME_CONVERSATION,
       voice: "verse",
     }),
   });

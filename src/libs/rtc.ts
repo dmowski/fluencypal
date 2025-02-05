@@ -1,6 +1,7 @@
 import { RealTimeModel } from "@/data/ai";
 import { getEphemeralKey } from "./getEphemeralKey";
 import { sleep } from "./sleep";
+import { ChatMessage } from "@/common/types";
 
 /**
  * Sends an SDP (Session Description Protocol) offer to an API for processing.
@@ -90,11 +91,6 @@ const setInitConfigs = async (
   await sleep(100);
 };
 
-export interface ChatMessage {
-  isBot: boolean;
-  text: string;
-}
-
 interface InitRpcProps {
   model: RealTimeModel;
   initInstruction: string;
@@ -119,12 +115,16 @@ export const initAiRpc = async ({
   const ms = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
+
+  console.log("ms", ms, ms.getTracks()[0]);
   peerConnection.addTrack(ms.getTracks()[0]);
 
   const dataChannel = peerConnection.createDataChannel("oai-events");
 
   const offer = await peerConnection.createOffer();
   await peerConnection.setLocalDescription(offer);
+  await sleep(300);
+  console.log("audioEl", audioEl);
 
   const answer: RTCSessionDescriptionInit = {
     type: "answer",
@@ -141,6 +141,7 @@ export const initAiRpc = async ({
   const messageHandler = (e: MessageEvent) => {
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
+    console.log("messageHandler", type);
 
     if (type === "conversation.item.input_audio_transcription.completed") {
       const userMessage = event?.transcript || "";
@@ -200,6 +201,7 @@ export const initAiRpc = async ({
   };
 
   const openHandler = async () => {
+    console.log("openHandler");
     await setInitConfigs(dataChannel, initInstruction, aiToolsForLlm);
     onOpen();
   };
@@ -207,6 +209,7 @@ export const initAiRpc = async ({
   dataChannel.addEventListener("open", openHandler);
 
   const closeHandler = () => {
+    console.log("closeHandler");
     dataChannel.removeEventListener("message", messageHandler);
     dataChannel.removeEventListener("open", openHandler);
     peerConnection.close();
