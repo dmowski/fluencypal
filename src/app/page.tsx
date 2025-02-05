@@ -10,6 +10,12 @@ export default function Home() {
       {aiConversation.isStarted ? (
         <div className="flex flex-col items-center justify-center h-screen">
           <p>Ready.. Talk...</p>
+          <button
+            onClick={() => aiConversation.stopConversation()}
+            className="px-10 rounded py-4 border"
+          >
+            Stop
+          </button>
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center h-screen">
@@ -18,10 +24,10 @@ export default function Home() {
           ) : (
             <>
               <button
-                onClick={aiConversation.startConversation}
+                onClick={() => aiConversation.startConversation("analyze")}
                 className="px-10 rounded py-4 border"
               >
-                Start
+                Analyze me
               </button>
             </>
           )}
