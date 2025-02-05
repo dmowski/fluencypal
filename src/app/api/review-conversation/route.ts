@@ -32,10 +32,9 @@ export async function POST(request: Request) {
   });
 
   const output = chatCompletion.choices[0].message.content;
-  const result = {
+
+  return Response.json({
     output: output,
     conversationData,
-  };
-
-  return Response.json(result);
+  });
 }

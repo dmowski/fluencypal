@@ -29,7 +29,7 @@ export default function Home() {
 
             <button
               onClick={() => aiConversation.stopConversation()}
-              className="py-2 px-8 rounded-xl  border-neutral-700 border-2"
+              className="py-2 px-8 rounded-xl border-neutral-700 border"
             >
               Stop
             </button>
