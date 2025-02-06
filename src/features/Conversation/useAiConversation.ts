@@ -40,7 +40,7 @@ Engage in a natural conversation without making it feel like a lesson.
 Start the conversation with: 'Hello, how was your day?`,
         aiTools: [
           {
-            name: "Finish the lesson",
+            name: "finish_the_lesson",
             handler: (args) => {
               // todo: update prompt to focus on review conversation
               // Generate homework

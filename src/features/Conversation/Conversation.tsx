@@ -74,7 +74,6 @@ export function Conversation() {
                 return index >= aiConversation.conversation.length - 4;
               })
               .map((message, index) => {
-                console.log("message", message);
                 return (
                   <div
                     key={message.text + index}
