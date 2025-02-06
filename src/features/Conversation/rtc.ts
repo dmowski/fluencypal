@@ -97,7 +97,7 @@ const updateSession = async (
   await sleep(100);
 };
 
-interface InitRpcProps {
+export interface AiRtcConfig {
   model: RealTimeModel;
   initInstruction: string;
   onOpen: () => void;
@@ -105,13 +105,15 @@ interface InitRpcProps {
   onMessage: (message: ChatMessage) => void;
 }
 
-export const initAiRpc = async ({
+export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
+
+export const initAiRtc = async ({
   model,
   initInstruction,
   aiTools,
   onMessage,
   onOpen,
-}: InitRpcProps) => {
+}: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 
   const audioId = "audio_for_llm";
