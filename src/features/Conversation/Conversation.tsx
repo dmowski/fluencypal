@@ -33,11 +33,22 @@ export function Conversation() {
               )}
             </div>
 
-            {aiConversation.conversation.length > 4 && (
-              <h2 className="text-2xl">
-                When you get tired, just say <b>"Let's finish the Lesson"</b>
-              </h2>
+            {aiConversation.conversation.length > 4 &&
+              !aiConversation.isClosed &&
+              !aiConversation.isClosing && (
+                <h2 className="text-2xl">
+                  When you get tired, just say <b>"Let's finish the Lesson"</b>
+                </h2>
+              )}
+
+            {aiConversation.isClosing && !aiConversation.isClosed && (
+              <>
+                <h2>
+                  <b>Finishing the Lesson...</b>
+                </h2>
+              </>
             )}
+
             <button
               onClick={() => aiConversation.stopConversation()}
               className="py-2 px-8 rounded-xl border-neutral-700 border"

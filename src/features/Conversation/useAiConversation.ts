@@ -1,9 +1,10 @@
 "use client";
 import { ChatMessage } from "@/features/Conversation/types";
 import { MODELS, RealTimeModel } from "@/common/ai";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AiTool, initAiRpc } from "./rtc";
 import { reviewConversation } from "./reviewConversation";
+import { sleep } from "openai/core.mjs";
 
 export type ConversationMode = "talk";
 
@@ -17,8 +18,13 @@ export const useAiConversation = () => {
   const [areasToImprove, setAreasToImprove] = useState<string>("");
   const [conversation, setConversation] = useState<ChatMessage[]>([]);
   const [errorInitiating, setErrorInitiating] = useState<string>();
+  const [isClosing, setIsClosing] = useState(false);
+  const [isClosed, setIsClosed] = useState(false);
 
   const [communicator, setCommunicator] = useState<InitRtcResponse>();
+  const communicatorRef = useRef(communicator);
+  communicatorRef.current = communicator;
+
   useEffect(() => {
     return () => {
       communicator?.closeHandler();
@@ -41,10 +47,22 @@ Start the conversation with: 'Hello, how was your day?`,
         aiTools: [
           {
             name: "finish_the_lesson",
-            handler: (args) => {
-              // todo: update prompt to focus on review conversation
-              // Generate homework
-              console.log("🔥 Finish the lesson", args);
+            handler: async (args) => {
+              setIsClosing(true);
+              communicatorRef.current?.toggleMute(true);
+              const newInstruction = `Generate summary of the lesson and give feedback.
+Create a text user have to repeat on the next lesson.
+It will be homework
+`;
+              await communicatorRef.current?.updateSessionTrigger(newInstruction);
+              await sleep(1000);
+              communicatorRef.current?.addUserChatMessage(
+                "I am done for today. Generate me summary and give me homework."
+              );
+              await sleep(1000);
+              await communicatorRef.current?.triggerAiResponse();
+              await sleep(1000);
+              setIsClosed(true);
             },
             type: "function",
             description: "When the user wants to finish the lesson, call this function.",
@@ -83,6 +101,8 @@ Start the conversation with: 'Hello, how was your day?`,
 
   const startConversation = async () => {
     try {
+      setIsClosing(false);
+      setIsClosed(false);
       setErrorInitiating("");
       const mode = "talk";
       setCurrentMode(mode);
@@ -112,5 +132,7 @@ Start the conversation with: 'Hello, how was your day?`,
     areasToImprove,
     conversation,
     errorInitiating,
+    isClosing,
+    isClosed,
   };
 };

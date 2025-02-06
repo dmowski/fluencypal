@@ -127,10 +127,10 @@ export const initAiRpc = async ({
   }
   peerConnection.ontrack = (e) => (audioEl.srcObject = e.streams[0]);
 
-  const ms = await navigator.mediaDevices.getUserMedia({
+  const userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
-  peerConnection.addTrack(ms.getTracks()[0]);
+  peerConnection.addTrack(userMedia.getTracks()[0]);
   const dataChannel = peerConnection.createDataChannel("oai-events");
   const offer = await peerConnection.createOffer();
   await peerConnection.setLocalDescription(offer);
@@ -149,7 +149,8 @@ export const initAiRpc = async ({
   const messageHandler = (e: MessageEvent) => {
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
-    console.log("messageHandler", type);
+    console.log("Event:", type, event);
+
     if (type === "error") {
       console.error("Error in messageHandler", event);
     }
@@ -258,9 +259,24 @@ export const initAiRpc = async ({
     await updateSession(dataChannel, instruction, aiToolsForLlm);
   };
 
+  const triggerAiResponse = async () => {
+    const event = {
+      type: "response.create",
+    };
+    dataChannel.send(JSON.stringify(event));
+  };
+
+  const toggleMute = (mute: boolean) => {
+    userMedia.getTracks().forEach((track) => {
+      track.enabled = !mute;
+    });
+  };
+
   return {
     closeHandler,
     addUserChatMessage,
     updateSessionTrigger,
+    triggerAiResponse,
+    toggleMute,
   };
 };
