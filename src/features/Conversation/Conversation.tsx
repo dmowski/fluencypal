@@ -24,8 +24,13 @@ export function Conversation() {
       ></div>
       <div className="flex flex-col items-center justify-center w-full gap-2">
         {aiConversation.isStarted ? (
-          <div className="flex flex-col items-center justify-center  gap-2">
-            <p>Ready to talk..</p>
+          <div className="flex flex-col items-center justify-center gap-2">
+            <div className="flex flex-col items-center justify-center gap-1">
+              <p>Ready to talk..</p>
+              {aiConversation.conversation.length === 0 && (
+                <h2 className="text-3xl">To begin the conversation, say "Hello"</h2>
+              )}
+            </div>
 
             <button
               onClick={() => aiConversation.stopConversation()}
