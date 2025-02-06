@@ -7,6 +7,8 @@ import { reviewConversation } from "./reviewConversation";
 
 export type ConversationMode = "talk" | "analyze";
 
+type InitRtcResponse = Awaited<ReturnType<typeof initAiRpc>>;
+
 export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
@@ -15,10 +17,10 @@ export const useAiConversation = () => {
   const [conversation, setConversation] = useState<ChatMessage[]>([]);
   const [errorInitiating, setErrorInitiating] = useState<string>();
 
-  const [destroyRpc, setDestroyRpc] = useState<() => void>();
+  const [communicator, setCommunicator] = useState<InitRtcResponse>();
   useEffect(() => {
     return () => {
-      destroyRpc?.();
+      communicator?.closeHandler();
     };
   }, []);
 
@@ -51,12 +53,17 @@ export const useAiConversation = () => {
     },
   };
 
-  const [eventTrigger, setEventTrigger] = useState<() => void>();
-
-  const analyzeMe = async () => {
+  const reviewChat = async () => {
     setAreasToImprove("Loading");
     const result = await reviewConversation(conversation);
     setAreasToImprove(result);
+  };
+
+  const analyzeMe = async () => {
+    const instruction =
+      "Switch to Teacher mode, ask user to rephrase his statement correctly. Give examples and explain the rules.";
+    setAreasToImprove("Updated instruction: " + instruction);
+    await communicator?.updateSessionTrigger(instruction);
   };
 
   const startConversation = async (mode: ConversationMode) => {
@@ -67,7 +74,7 @@ export const useAiConversation = () => {
     const modeConfig = modes[mode];
 
     try {
-      const initResults = await initAiRpc({
+      const conversation = await initAiRpc({
         model: modeConfig.model,
         initInstruction: modeConfig.instruction,
         aiTools: modeConfig.aiTools,
@@ -80,8 +87,7 @@ export const useAiConversation = () => {
           setConversation((prev) => [...prev, message]);
         },
       });
-      setDestroyRpc(() => initResults.closeHandler);
-      setEventTrigger(() => initResults.eventTrigger);
+      setCommunicator(conversation);
     } catch (e) {
       console.log(e);
       setErrorInitiating("Something went wrong. Try again later");
@@ -90,7 +96,7 @@ export const useAiConversation = () => {
   };
 
   const stopConversation = () => {
-    destroyRpc?.();
+    communicator?.closeHandler();
     setIsStarted(false);
     setIsInitializing(false);
   };

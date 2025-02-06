@@ -68,13 +68,12 @@ export interface AiTool extends AiToolForLlm {
   handler: (args: Record<string, string>) => void;
 }
 
-const setInitConfigs = async (
+const updateSession = async (
   dataChannel: RTCDataChannel,
   initInstruction: string,
   aiTools: AiToolForLlm[]
 ) => {
-  console.log("setInitConfigs");
-  if (!dataChannel) throw Error("Error on setInitConfigs. dataChannel is not available");
+  if (!dataChannel) throw Error("Error on updateSession. dataChannel is not available");
 
   const event = {
     type: "session.update",
@@ -203,8 +202,7 @@ export const initAiRpc = async ({
   };
 
   const openHandler = async () => {
-    console.log("openHandler");
-    await setInitConfigs(dataChannel, initInstruction, aiToolsForLlm);
+    await updateSession(dataChannel, initInstruction, aiToolsForLlm);
     onOpen();
   };
   dataChannel.addEventListener("message", messageHandler);
@@ -229,7 +227,7 @@ export const initAiRpc = async ({
     }
   };
 
-  const eventTrigger = () => {
+  const addUserChatMessage = (message: string) => {
     const event = {
       type: "conversation.item.create",
       item: {
@@ -238,7 +236,7 @@ export const initAiRpc = async ({
         content: [
           {
             type: "input_text",
-            text: "Add notes about my speech",
+            text: message,
           },
         ],
       },
@@ -246,8 +244,13 @@ export const initAiRpc = async ({
     dataChannel.send(JSON.stringify(event));
   };
 
+  const updateSessionTrigger = async (instruction: string) => {
+    await updateSession(dataChannel, instruction, aiToolsForLlm);
+  };
+
   return {
     closeHandler,
-    eventTrigger,
+    addUserChatMessage,
+    updateSessionTrigger,
   };
 };
