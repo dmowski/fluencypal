@@ -83,6 +83,13 @@ const updateSession = async (
       input_audio_transcription: {
         model: "whisper-1",
       },
+      turn_detection: {
+        type: "server_vad",
+        threshold: 0.5,
+        prefix_padding_ms: 500,
+        silence_duration_ms: 1500,
+        create_response: true,
+      },
     },
   };
   await sleep(100);
@@ -143,6 +150,9 @@ export const initAiRpc = async ({
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
     console.log("messageHandler", type);
+    if (type === "error") {
+      console.error("Error in messageHandler", event);
+    }
 
     if (type === "conversation.item.input_audio_transcription.completed") {
       const userMessage = event?.transcript || "";
