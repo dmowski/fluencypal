@@ -1,13 +1,14 @@
 "use client";
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
+import { Markdown } from "../Markdown/Markdown";
 
 export function Conversation() {
   const aiConversation = useAiConversation();
   const bg = "https://cdn.midjourney.com/ffabd88c-c5ac-43bc-ab09-e966eb1402d2/0_2.png";
 
   return (
-    <div className="flex flex-col items-center pt-[200px] gap-10 min-h-screen">
+    <div className="flex flex-col items-center py-[200px] gap-10 min-h-screen">
       <div
         style={{
           position: "fixed",
@@ -72,18 +73,8 @@ export function Conversation() {
       </div>
       <div className="flex flex-col items-center justify-center w-full gap-10">
         <div className="w-full max-w-[600px] bg-white border border-neutral-300 rounded-xl px-8 py-6">
-          <h2 className="text-2xl font-semibold">Areas to improve:</h2>
-          <div className="flex flex-col justify-center gap-2">
-            {!aiConversation.areasToImprove ? (
-              <p className="text-neutral-600 text-sm">No notes yet</p>
-            ) : (
-              <p>{aiConversation.areasToImprove}</p>
-            )}
-          </div>
-        </div>
-        <div className="w-full max-w-[600px] bg-white border border-neutral-300 rounded-xl px-8 py-6">
           <h2 className="text-2xl font-semibold">Conversation:</h2>
-          <div className="">
+          <div className="flex flex-col gap-2 py-4">
             {aiConversation.conversation.length === 0 && (
               <p className="text-neutral-600 text-sm">No conversation yet</p>
             )}
@@ -92,12 +83,42 @@ export function Conversation() {
                 return index >= aiConversation.conversation.length - 4;
               })
               .map((message, index) => {
+                console.log("message", message);
                 return (
-                  <p key={message.text + index} className="text-neutral-600">
-                    {message.isBot ? "🤖" : "🤷🏼‍♂️"}: {message.text}
-                  </p>
+                  <div
+                    key={message.text + index}
+                    className={`flex items-center gap-4 ${message.isBot ? "" : "pt-4"}`}
+                  >
+                    <div
+                      className={` rounded-lg px-2 py-1 ${
+                        message.isBot
+                          ? "bg-blue-50 text-neutral-600"
+                          : "bg-transparent text-neutral-600"
+                      }`}
+                    >
+                      {message.isBot ? (
+                        <Markdown>{message.text || ""}</Markdown>
+                      ) : (
+                        <p className="text-md">{message.text}</p>
+                      )}
+                    </div>
+                    <div>
+                      <p className="text-xl">{message.isBot ? "🤖" : "🤷🏼‍♂️"}</p>
+                    </div>
+                  </div>
                 );
               })}
+          </div>
+        </div>
+
+        <div className="w-full max-w-[600px] bg-white border border-neutral-300 rounded-xl px-8 py-6">
+          <h2 className="text-2xl font-semibold">Areas to improve:</h2>
+          <div className="flex flex-col justify-center gap-2">
+            {!aiConversation.areasToImprove ? (
+              <p className="text-neutral-600 text-sm">No notes yet</p>
+            ) : (
+              <p>{aiConversation.areasToImprove}</p>
+            )}
           </div>
         </div>
       </div>
