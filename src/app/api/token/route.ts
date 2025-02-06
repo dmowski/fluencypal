@@ -1,4 +1,4 @@
-import { MODELS } from "@/data/ai";
+import { MODELS } from "@/common/ai";
 
 export async function GET() {
   const openAIKey = process.env.OPENAI_API_KEY;

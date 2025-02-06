@@ -1,5 +1,5 @@
-import { ChatMessage } from "@/common/types";
-import { MODELS } from "@/data/ai";
+import { ChatMessage } from "@/features/Conversation/types";
+import { MODELS } from "@/common/ai";
 import OpenAI from "openai";
 
 export async function POST(request: Request) {

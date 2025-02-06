@@ -1,8 +1,8 @@
 "use client";
-import { RealTimeModel } from "@/data/ai";
+import { RealTimeModel } from "@/common/ai";
 import { getEphemeralKey } from "./getEphemeralKey";
-import { sleep } from "./sleep";
-import { ChatMessage } from "@/common/types";
+import { ChatMessage } from "@/features/Conversation/types";
+import { sleep } from "@/libs/sleep";
 
 /**
  * Sends an SDP (Session Description Protocol) offer to an API for processing.

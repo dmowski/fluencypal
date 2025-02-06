@@ -1,9 +1,9 @@
 "use client";
-import { ChatMessage } from "@/common/types";
-import { MODELS, RealTimeModel } from "@/data/ai";
-import { reviewConversation } from "@/libs/reviewConversation";
-import { AiTool, initAiRpc } from "@/libs/rtc";
+import { ChatMessage } from "@/features/Conversation/types";
+import { MODELS, RealTimeModel } from "@/common/ai";
 import { useEffect, useState } from "react";
+import { AiTool, initAiRpc } from "./rtc";
+import { reviewConversation } from "./reviewConversation";
 
 export type ConversationMode = "talk" | "analyze";
 
