@@ -8,7 +8,7 @@ export function Conversation() {
   const bg = "https://cdn.midjourney.com/ffabd88c-c5ac-43bc-ab09-e966eb1402d2/0_2.png";
 
   return (
-    <div className="flex flex-col items-center py-[200px] gap-10 min-h-screen">
+    <div className="flex flex-col items-center py-5 gap-10 min-h-screen">
       <div
         style={{
           position: "fixed",
