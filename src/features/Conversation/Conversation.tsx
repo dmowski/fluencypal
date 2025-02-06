@@ -8,7 +8,7 @@ export function Conversation() {
   const bg = "https://cdn.midjourney.com/ffabd88c-c5ac-43bc-ab09-e966eb1402d2/0_2.png";
 
   return (
-    <div className="flex flex-col items-center py-5 gap-10 min-h-screen">
+    <div className="flex flex-col items-center py-10 gap-10 min-h-screen">
       <div
         style={{
           position: "fixed",
@@ -47,7 +47,7 @@ export function Conversation() {
             ) : (
               <div className="flex flex-col items-center justify-center gap-2">
                 <button
-                  onClick={() => aiConversation.startConversation("analyze")}
+                  onClick={() => aiConversation.startConversation()}
                   className="py-4 px-12 rounded-xl border bg-blue-50 border-blue-700 text-2xl text-blue-900"
                 >
                   Start
@@ -60,15 +60,6 @@ export function Conversation() {
               </div>
             )}
           </div>
-        )}
-
-        {aiConversation.conversation.length > 2 && (
-          <button
-            onClick={() => aiConversation.analyzeMe()}
-            className="py-2 px-8 rounded-xl  border border-neutral-700"
-          >
-            Review my speech
-          </button>
         )}
       </div>
       <div className="flex flex-col items-center justify-center w-full gap-10">
@@ -108,17 +99,6 @@ export function Conversation() {
                   </div>
                 );
               })}
-          </div>
-        </div>
-
-        <div className="w-full max-w-[600px] bg-white border border-neutral-300 rounded-xl px-8 py-6">
-          <h2 className="text-2xl font-semibold">Areas to improve:</h2>
-          <div className="flex flex-col justify-center gap-2">
-            {!aiConversation.areasToImprove ? (
-              <p className="text-neutral-600 text-sm">No notes yet</p>
-            ) : (
-              <p>{aiConversation.areasToImprove}</p>
-            )}
           </div>
         </div>
       </div>
