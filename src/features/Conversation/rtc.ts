@@ -65,7 +65,7 @@ export interface AiToolForLlm {
 }
 
 export interface AiTool extends AiToolForLlm {
-  handler: (args: Record<string, string>) => void;
+  handler: (args: Record<string, string>) => Promise<void>;
 }
 
 const updateSession = async (

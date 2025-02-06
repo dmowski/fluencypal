@@ -31,28 +31,29 @@ export const useAiConversation = () => {
     () => ({
       model: MODELS.REALTIME_CONVERSATION,
 
-      initInstruction: `You are an English teacher. Your role is to make user talks.
+      initInstruction: `You are an English teacher. Your name is "Bruno". Your role is to make user talks.
 Ask the student to describe their day.
 Do not teach or explain rules—just talk.
 You should be friendly and engaging.
 Don't make user feel like they are being tested and feel stupid.
 If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
-Start the conversation with: 'Hello, how was your day?`,
+Start the conversation with: 'Hello, I am here.'.
+After the first user response, introduce yourself, your role of english teacher and ask user to describe their day.
+Speak slowly and clearly.
+`,
       aiTools: [
         {
           name: "finish_the_lesson",
           handler: async (args) => {
             setIsClosing(true);
             communicatorRef.current?.toggleMute(true);
-            const newInstruction = `Generate summary of the lesson and give feedback.
-Create a text user have to repeat on the next lesson.
-It will be homework
-`;
+            const newInstruction = `Generate summary of the lesson. Show user's mistakes.
+Create a text user have to repeat on the next lesson. It will be a homework.`;
             await communicatorRef.current?.updateSessionTrigger(newInstruction);
-            await sleep(1000);
+            await sleep(2000);
             communicatorRef.current?.addUserChatMessage(
-              "I am done for today. Generate me summary and give me homework."
+              "I am done for today. Create a text I have to repeat on the next lesson."
             );
             await sleep(1000);
             await communicatorRef.current?.triggerAiResponse();
@@ -64,14 +65,17 @@ It will be homework
           parameters: {
             type: "object",
             properties: {},
-            required: [],
+            required: [] as string[],
           },
         },
       ],
       onOpen: () => {
         console.log("Data Channel opened");
-        setIsInitializing(false);
-        setIsStarted(true);
+        setTimeout(() => {
+          communicatorRef.current?.triggerAiResponse();
+          setIsInitializing(false);
+          setIsStarted(true);
+        }, 1000);
       },
       onMessage: (message) => {
         setConversation((prev) => [...prev, message]);
