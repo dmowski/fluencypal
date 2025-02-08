@@ -251,7 +251,6 @@ export function Conversation() {
                       `shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-[0_0_0_3px_rgba(255,255,255,1)]`,
                       `font-[250] text-[24px]`,
                       `opacity-90 hover:opacity-100`,
-                      `animate-fade-in duration-[5s] delay-[10s]`,
                     ].join(" ")}
                     style={{
                       padding: "20px 80px",
@@ -261,8 +260,6 @@ export function Conversation() {
                       borderRadius: "4px",
                       width: "300px",
                       maxWidth: "90%",
-                      opacity: "0",
-                      //animationDelay: "1.5s",
                     }}
                   >
                     START
