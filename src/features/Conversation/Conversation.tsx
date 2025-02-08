@@ -50,7 +50,7 @@ export function Conversation() {
                 left: "0",
                 width: "100%",
                 height: "100%",
-                backgroundImage: `url("./star.png")`,
+                backgroundImage: `url("./star.webp")`,
                 backgroundSize: "contain",
                 zIndex: -1,
               }}
