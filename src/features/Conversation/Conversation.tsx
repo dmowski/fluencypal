@@ -81,10 +81,10 @@ export function Conversation() {
             )}
 
             {aiConversation.conversation
-              .filter((message, index) => {
-                return index >= aiConversation.conversation.length - 2;
-              })
               .filter((message, index) => message.isBot)
+              .filter((message, index, arr) => {
+                return index >= arr.length - 1;
+              })
               .map((message, index) => {
                 return (
                   <div
@@ -106,7 +106,7 @@ export function Conversation() {
               <div
                 style={{
                   position: "fixed",
-                  bottom: "40px",
+                  bottom: "60px",
                   left: "0",
                   right: "0",
                   width: "100%",
@@ -156,7 +156,7 @@ export function Conversation() {
               </div>
             )}
 
-            {aiConversation.conversation.length > 3 &&
+            {aiConversation.conversation.length > 1 &&
               !aiConversation.isClosed &&
               !aiConversation.isClosing && (
                 <h2
