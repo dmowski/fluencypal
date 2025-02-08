@@ -17,6 +17,7 @@ export const useAiConversation = () => {
   const [isClosing, setIsClosing] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
+  const [isUserSpeaking, setIsUserSpeaking] = useState(false);
 
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
   const communicatorRef = useRef(communicator);
@@ -82,6 +83,7 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
         setConversation((prev) => [...prev, message]);
       },
       setIsAiSpeaking,
+      setIsUserSpeaking,
     };
     return config;
   }, []);
@@ -116,6 +118,12 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
     }
   };
 
+  const [isMuted, setIsMuted] = useState(false);
+  const toggleMute = (isMute: boolean) => {
+    communicator?.toggleMute(isMute);
+    setIsMuted(isMute);
+  };
+
   const stopConversation = () => {
     communicator?.closeHandler();
     setIsStarted(false);
@@ -134,5 +142,8 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
     isClosing,
     isAiSpeaking,
     isClosed,
+    isUserSpeaking,
+    toggleMute,
+    isMuted,
   };
 };

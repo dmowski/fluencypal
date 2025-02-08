@@ -3,9 +3,12 @@
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../Markdown/Markdown";
 import talkingAnimationVerticalLines from "./animations/verticalLines.json";
+import microAnimation from "./animations/micro.json";
 import dynamic from "next/dynamic";
 
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+const Lottie = dynamic(() => import("react-lottie"), {
+  ssr: false,
+});
 
 export function Conversation() {
   const aiConversation = useAiConversation();
@@ -15,9 +18,8 @@ export function Conversation() {
       <div className="flex flex-col items-center justify-center w-full gap-2">
         <div
           className={[
-            `animate-fade-in duration-[5s] delay-[10s]`,
+            `animate-fade-in`,
             `pointer-events-none h-[110vh] fixed w-[500px] left-0 -bottom-[50px]`,
-            `transition-all duration-100`,
           ].join(" ")}
           style={{
             animationDelay: "0.9s",
@@ -30,16 +32,18 @@ export function Conversation() {
               transition: "opacity 0.3s ease",
             }}
           >
-            <Lottie animationData={talkingAnimationVerticalLines} />
+            <Lottie
+              key={"lottie-left-waves"}
+              options={{ animationData: talkingAnimationVerticalLines }}
+            />
           </div>
         </div>
 
         <div
           className={[
-            `animate-fade-in duration-[5s] delay-[10s]`,
+            `animate-fade-in`,
             `pointer-events-none h-[110vh] fixed w-[500px] right-[0px] -bottom-[0px]`,
             "opacity-[0.1]",
-            `transition-all duration-100`,
           ].join(" ")}
           style={{
             transform: "scaleX(-1)",
@@ -53,7 +57,10 @@ export function Conversation() {
               transition: "opacity 0.3s ease",
             }}
           >
-            <Lottie animationData={talkingAnimationVerticalLines} />
+            <Lottie
+              key={"lottie-right-waves"}
+              options={{ animationData: talkingAnimationVerticalLines }}
+            />
           </div>
         </div>
 
@@ -95,7 +102,61 @@ export function Conversation() {
                 );
               })}
 
-            {aiConversation.conversation.length > 4 &&
+            {aiConversation.conversation.length > 0 && (
+              <div
+                style={{
+                  position: "fixed",
+                  bottom: "40px",
+                  left: "0",
+                  right: "0",
+                  width: "100%",
+                  height: "auto",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  animationDelay: "0.5s",
+                  opacity: 0,
+                  zIndex: 100,
+                }}
+                className="animate-fade-in"
+              >
+                <button
+                  className="animate-fade-in"
+                  style={{
+                    width: "80px",
+                    height: "80px",
+                    margin: "auto",
+                    filter: aiConversation.isMuted ? "grayscale(100%)" : "none",
+                    cursor: "pointer",
+                    position: "relative",
+                  }}
+                  onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
+                >
+                  {aiConversation.isMuted && (
+                    <div
+                      style={{
+                        width: "40px",
+                        borderRadius: "2px",
+                        height: "2px",
+                        backgroundColor: "#fff",
+                        transform: "rotate(45deg)",
+                        position: "absolute",
+                        top: "calc(50% - 2px)",
+                        left: "calc(50% - 20px)",
+                        zIndex: 1,
+                      }}
+                    />
+                  )}
+                  <Lottie
+                    key={"lottie-micro"}
+                    options={{ animationData: microAnimation, autoplay: false }}
+                    isPaused={!aiConversation.isUserSpeaking || aiConversation.isMuted}
+                  />
+                </button>
+              </div>
+            )}
+
+            {aiConversation.conversation.length > 3 &&
               !aiConversation.isClosed &&
               !aiConversation.isClosing && (
                 <h2
@@ -105,8 +166,8 @@ export function Conversation() {
                     fontWeight: 200,
                     fontSize: "13px",
                     paddingTop: "0px",
-                    position: "absolute",
-                    bottom: "0",
+                    position: "fixed",
+                    bottom: "25px",
                     left: "0",
                     right: "0",
                     textAlign: "center",

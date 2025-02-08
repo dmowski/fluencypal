@@ -115,7 +115,6 @@ const monitorWebRtcAudio = (stream: MediaStream, setIsAiSpeaking: (speaking: boo
     const volume = dataArray.reduce((sum, val) => sum + val, 0) / bufferLength;
 
     const isSpeaking = volume > 10; // Adjust this threshold as needed
-    console.log(isSpeaking);
 
     if (isSpeaking !== lastSpeakingState) {
       setIsAiSpeaking(isSpeaking);
@@ -135,6 +134,7 @@ export interface AiRtcConfig {
   aiTools: AiTool[];
   onMessage: (message: ChatMessage) => void;
   setIsAiSpeaking: (speaking: boolean) => void;
+  setIsUserSpeaking: (speaking: boolean) => void;
 }
 
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
@@ -146,6 +146,7 @@ export const initAiRtc = async ({
   onMessage,
   onOpen,
   setIsAiSpeaking,
+  setIsUserSpeaking,
 }: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 
@@ -189,7 +190,15 @@ export const initAiRtc = async ({
   const messageHandler = (e: MessageEvent) => {
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
-    //console.log("Event:", type, event);
+    //console.log("Event:", type);
+
+    if (type === "input_audio_buffer.speech_started") {
+      setIsUserSpeaking(true);
+    }
+
+    if (type === "input_audio_buffer.speech_stopped") {
+      setIsUserSpeaking(false);
+    }
 
     if (type === "error") {
       console.error("Error in messageHandler", event);
