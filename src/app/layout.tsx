@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dark Eng - Learn english in the dark",
+  title: "Dark Lang - AI teacher",
   description: "Learn english in the dark",
 };
 
