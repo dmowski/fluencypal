@@ -97,12 +97,44 @@ const updateSession = async (
   await sleep(100);
 };
 
+const monitorWebRtcAudio = (stream: MediaStream, setIsAiSpeaking: (speaking: boolean) => void) => {
+  const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+  const analyser = audioContext.createAnalyser();
+  analyser.fftSize = 512;
+
+  const source = audioContext.createMediaStreamSource(stream);
+  source.connect(analyser);
+
+  const bufferLength = analyser.frequencyBinCount;
+  const dataArray = new Uint8Array(bufferLength);
+
+  let lastSpeakingState = false; // Store the previous state
+
+  const checkSpeaking = () => {
+    analyser.getByteFrequencyData(dataArray);
+    const volume = dataArray.reduce((sum, val) => sum + val, 0) / bufferLength;
+
+    const isSpeaking = volume > 10; // Adjust this threshold as needed
+    console.log(isSpeaking);
+
+    if (isSpeaking !== lastSpeakingState) {
+      setIsAiSpeaking(isSpeaking);
+      lastSpeakingState = isSpeaking;
+    }
+
+    setTimeout(checkSpeaking, 100);
+  };
+
+  checkSpeaking();
+};
+
 export interface AiRtcConfig {
   model: RealTimeModel;
   initInstruction: string;
   onOpen: () => void;
   aiTools: AiTool[];
   onMessage: (message: ChatMessage) => void;
+  setIsAiSpeaking: (speaking: boolean) => void;
 }
 
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
@@ -113,6 +145,7 @@ export const initAiRtc = async ({
   aiTools,
   onMessage,
   onOpen,
+  setIsAiSpeaking,
 }: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 
@@ -127,7 +160,12 @@ export const initAiRtc = async ({
     audioEl.id = audioId;
     document.body.appendChild(audioEl);
   }
-  peerConnection.ontrack = (e) => (audioEl.srcObject = e.streams[0]);
+
+  peerConnection.ontrack = (e) => {
+    const stream = e.streams[0];
+    audioEl.srcObject = stream;
+    monitorWebRtcAudio(stream, setIsAiSpeaking);
+  };
 
   const userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
@@ -151,7 +189,7 @@ export const initAiRtc = async ({
   const messageHandler = (e: MessageEvent) => {
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
-    console.log("Event:", type, event);
+    //console.log("Event:", type, event);
 
     if (type === "error") {
       console.error("Error in messageHandler", event);

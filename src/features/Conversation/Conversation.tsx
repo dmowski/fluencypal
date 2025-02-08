@@ -2,6 +2,8 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../Markdown/Markdown";
+import talkingAnimationVerticalLines from "./animations/verticalLines.json";
+import Lottie from "lottie-react";
 
 export function Conversation() {
   const aiConversation = useAiConversation();
@@ -9,22 +11,58 @@ export function Conversation() {
   return (
     <div className="flex flex-col items-center justify-center gap-10 min-h-screen">
       <div className="flex flex-col items-center justify-center w-full gap-2">
+        <div
+          className={[
+            `animate-fade-in duration-[5s] delay-[10s]`,
+            `pointer-events-none h-[110vh] fixed w-[500px] left-0 -bottom-[50px]`,
+            `transition-all duration-100`,
+          ].join(" ")}
+          style={{
+            animationDelay: "0.9s",
+            opacity: "0",
+          }}
+        >
+          <div
+            style={{
+              opacity: aiConversation.isAiSpeaking ? 0.6 : 0.1,
+              transition: "opacity 0.3s ease",
+            }}
+          >
+            <Lottie animationData={talkingAnimationVerticalLines} />
+          </div>
+        </div>
+
+        <div
+          className={[
+            `animate-fade-in duration-[5s] delay-[10s]`,
+            `pointer-events-none h-[110vh] fixed w-[500px] right-[0px] -bottom-[0px]`,
+            "opacity-[0.1]",
+            `transition-all duration-100`,
+          ].join(" ")}
+          style={{
+            transform: "scaleX(-1)",
+            animationDelay: "0.8s",
+            opacity: "0",
+          }}
+        >
+          <div
+            style={{
+              opacity: aiConversation.isAiSpeaking ? 0.6 : 0.1,
+              transition: "opacity 0.3s ease",
+            }}
+          >
+            <Lottie animationData={talkingAnimationVerticalLines} />
+          </div>
+        </div>
+
         {aiConversation.isStarted ? (
           <div
-            className="flex flex-col items-center justify-center relative "
+            className="flex flex-col items-center justify-center relative gap-[40px] "
             style={{
-              width: "min(88vh, 90vw)",
+              width: "100vw",
               height: "min(88vh, 90vw)",
             }}
           >
-            {aiConversation.conversation.length > 4 &&
-              !aiConversation.isClosed &&
-              !aiConversation.isClosing && (
-                <h2 className="text-2xl">
-                  When you get tired, just say <b>"Let's finish the Lesson"</b>
-                </h2>
-              )}
-
             {aiConversation.isClosing && !aiConversation.isClosed && (
               <>
                 <h2>
@@ -33,12 +71,48 @@ export function Conversation() {
               </>
             )}
 
-            <button
-              onClick={() => aiConversation.stopConversation()}
-              className="py-2 px-8 rounded-xl border-neutral-700 border"
-            >
-              Stop
-            </button>
+            {aiConversation.conversation
+              .filter((message, index) => {
+                return index >= aiConversation.conversation.length - 2;
+              })
+              .filter((message, index) => message.isBot)
+              .map((message, index) => {
+                return (
+                  <div
+                    key={message.text + index}
+                    className="flex flex-col items-center gap-4 text-white"
+                    style={{
+                      maxWidth: "400px",
+                      textAlign: "center",
+                      color: "#c8e2f2",
+                      transform: "scale(1.1)",
+                    }}
+                  >
+                    <Markdown>{message.text || ""}</Markdown>
+                  </div>
+                );
+              })}
+
+            {aiConversation.conversation.length > 4 &&
+              !aiConversation.isClosed &&
+              !aiConversation.isClosing && (
+                <h2
+                  className={`animate-fade-in duration-[5s] delay-[10s]`}
+                  style={{
+                    color: "#c8e2f2",
+                    fontWeight: 200,
+                    fontSize: "13px",
+                    paddingTop: "0px",
+                    position: "absolute",
+                    bottom: "0",
+                    left: "0",
+                    right: "0",
+                    textAlign: "center",
+                  }}
+                >
+                  When you get tired, just say <b>"Let's finish the Lesson"</b>
+                </h2>
+              )}
           </div>
         ) : (
           <div
@@ -49,7 +123,14 @@ export function Conversation() {
             }}
           >
             {aiConversation.isInitializing ? (
-              <p className="font-[300] text-xl pt-[100px]">Loading...</p>
+              <p
+                className="font-[300] text-xl pt-[100px] "
+                style={{
+                  color: "#c8e2f2",
+                }}
+              >
+                Loading...
+              </p>
             ) : (
               <>
                 <div
@@ -118,7 +199,7 @@ export function Conversation() {
                       width: "300px",
                       maxWidth: "90%",
                       opacity: "0",
-                      animationDelay: "1.5s",
+                      //animationDelay: "1.5s",
                     }}
                   >
                     START
@@ -135,50 +216,49 @@ export function Conversation() {
         )}
       </div>
 
-      {aiConversation.isClosing ||
-        (aiConversation.isClosed && (
-          <>
-            <div className="flex flex-col items-center justify-center w-full gap-10">
-              <div className="w-full max-w-[600px] bg-white border border-neutral-300 rounded-xl px-8 py-6">
-                <h2 className="text-2xl font-semibold">Conversation:</h2>
-                <div className="flex flex-col gap-2 py-4">
-                  {aiConversation.conversation.length === 0 && (
-                    <p className="text-neutral-600 text-sm">No conversation yet</p>
-                  )}
-                  {aiConversation.conversation
-                    .filter((message, index) => {
-                      return index >= aiConversation.conversation.length - 4;
-                    })
-                    .map((message, index) => {
-                      return (
+      {(aiConversation.isClosing || aiConversation.isClosed) && (
+        <>
+          <div className="flex flex-col items-center justify-center w-full gap-10">
+            <div className="w-full max-w-[600px] bg-white border border-neutral-300 rounded-xl px-8 py-6">
+              <h2 className="text-2xl font-semibold">Conversation:</h2>
+              <div className="flex flex-col gap-2 py-4">
+                {aiConversation.conversation.length === 0 && (
+                  <p className="text-neutral-600 text-sm">No conversation yet</p>
+                )}
+                {aiConversation.conversation
+                  .filter((message, index) => {
+                    return index >= aiConversation.conversation.length - 4;
+                  })
+                  .map((message, index) => {
+                    return (
+                      <div
+                        key={message.text + index}
+                        className={`flex items-center gap-4 ${message.isBot ? "" : "pt-4"}`}
+                      >
                         <div
-                          key={message.text + index}
-                          className={`flex items-center gap-4 ${message.isBot ? "" : "pt-4"}`}
+                          className={` rounded-lg px-2 py-1 ${
+                            message.isBot
+                              ? "bg-blue-50 text-neutral-600"
+                              : "bg-transparent text-neutral-600"
+                          }`}
                         >
-                          <div
-                            className={` rounded-lg px-2 py-1 ${
-                              message.isBot
-                                ? "bg-blue-50 text-neutral-600"
-                                : "bg-transparent text-neutral-600"
-                            }`}
-                          >
-                            {message.isBot ? (
-                              <Markdown>{message.text || ""}</Markdown>
-                            ) : (
-                              <p className="text-md">{message.text}</p>
-                            )}
-                          </div>
-                          <div>
-                            <p className="text-xl">{message.isBot ? "🤖" : "🤷🏼‍♂️"}</p>
-                          </div>
+                          {message.isBot ? (
+                            <Markdown>{message.text || ""}</Markdown>
+                          ) : (
+                            <p className="text-md">{message.text}</p>
+                          )}
                         </div>
-                      );
-                    })}
-                </div>
+                        <div>
+                          <p className="text-xl">{message.isBot ? "🤖" : "🤷🏼‍♂️"}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
-          </>
-        ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -16,6 +16,7 @@ export const useAiConversation = () => {
   const [errorInitiating, setErrorInitiating] = useState<string>();
   const [isClosing, setIsClosing] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
+  const [isAiSpeaking, setIsAiSpeaking] = useState(false);
 
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
   const communicatorRef = useRef(communicator);
@@ -27,8 +28,8 @@ export const useAiConversation = () => {
     };
   }, []);
 
-  const aiRtcConfig: AiRtcConfig = useMemo(
-    () => ({
+  const aiRtcConfig: AiRtcConfig = useMemo(() => {
+    const config: AiRtcConfig = {
       model: MODELS.REALTIME_CONVERSATION,
 
       initInstruction: `You are an English teacher. Your name is "Bruno". Your role is to make user talks.
@@ -38,7 +39,7 @@ You should be friendly and engaging.
 Don't make user feel like they are being tested and feel stupid.
 If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
-Start the conversation with: 'Hello, I am here.'.
+Start the conversation with: "Hello... I am here!". Say it in a friendly and calm way, no other words needed for the first hi.
 After the first user response, introduce yourself, your role of english teacher and ask user to describe their day.
 Speak slowly and clearly.
 `,
@@ -80,9 +81,10 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
       onMessage: (message) => {
         setConversation((prev) => [...prev, message]);
       },
-    }),
-    []
-  );
+      setIsAiSpeaking,
+    };
+    return config;
+  }, []);
 
   const analyzeMe = async () => {
     const instruction =
@@ -92,12 +94,12 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
   };
 
   const startConversation = async () => {
-    if (2 > 0) {
+    if (2 > 10) {
       setIsInitializing(true);
       setTimeout(() => {
         setIsInitializing(false);
         setIsStarted(true);
-      }, 3000);
+      }, 1000);
       return;
     }
     try {
@@ -130,6 +132,7 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
     conversation,
     errorInitiating,
     isClosing,
+    isAiSpeaking,
     isClosed,
   };
 };
