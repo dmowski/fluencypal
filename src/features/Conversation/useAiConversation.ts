@@ -92,6 +92,14 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
   };
 
   const startConversation = async () => {
+    if (2 > 0) {
+      setIsInitializing(true);
+      setTimeout(() => {
+        setIsInitializing(false);
+        setIsStarted(true);
+      }, 3000);
+      return;
+    }
     try {
       setIsClosing(false);
       setIsClosed(false);
