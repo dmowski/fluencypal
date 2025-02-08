@@ -3,7 +3,9 @@
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../Markdown/Markdown";
 import talkingAnimationVerticalLines from "./animations/verticalLines.json";
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 export function Conversation() {
   const aiConversation = useAiConversation();
