@@ -1,14 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #f9f9f9;
-  --foreground: #171717;
+  --background: #0a121e;
+  --foreground: #eaf3f7;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("/bg.png");
+  background-size: cover;
+  font-family: Inter, Arial, Helvetica, sans-serif;
 }
