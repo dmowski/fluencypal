@@ -339,50 +339,6 @@ export function Conversation() {
           </div>
         )}
       </div>
-
-      {(aiConversation.isClosing || aiConversation.isClosed) && (
-        <>
-          <div className="flex flex-col items-center justify-center w-full gap-10">
-            <div className="w-full max-w-[600px] bg-white border border-neutral-300 rounded-xl px-8 py-6">
-              <h2 className="text-2xl font-semibold">Conversation:</h2>
-              <div className="flex flex-col gap-2 py-4">
-                {aiConversation.conversation.length === 0 && (
-                  <p className="text-neutral-600 text-sm">No conversation yet</p>
-                )}
-                {aiConversation.conversation
-                  .filter((message, index) => {
-                    return index >= aiConversation.conversation.length - 4;
-                  })
-                  .map((message, index) => {
-                    return (
-                      <div
-                        key={message.text + index}
-                        className={`flex items-center gap-4 ${message.isBot ? "" : "pt-4"}`}
-                      >
-                        <div
-                          className={` rounded-lg px-2 py-1 ${
-                            message.isBot
-                              ? "bg-blue-50 text-neutral-600"
-                              : "bg-transparent text-neutral-600"
-                          }`}
-                        >
-                          {message.isBot ? (
-                            <Markdown>{message.text || ""}</Markdown>
-                          ) : (
-                            <p className="text-md">{message.text}</p>
-                          )}
-                        </div>
-                        <div>
-                          <p className="text-xl">{message.isBot ? "🤖" : "🤷🏼‍♂️"}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
-          </div>
-        </>
-      )}
     </div>
   );
 }
