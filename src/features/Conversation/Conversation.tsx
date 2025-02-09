@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { SendHorizontal } from "lucide-react";
 
-const Lottie = dynamic(() => import("react-lottie"), {
+const Lottie = dynamic(() => import("react-lottie-player"), {
   ssr: false,
 });
 
@@ -40,10 +40,7 @@ export function Conversation() {
               transition: "opacity 0.3s ease",
             }}
           >
-            <Lottie
-              key={"lottie-left-waves"}
-              options={{ animationData: talkingAnimationVerticalLines }}
-            />
+            <Lottie animationData={talkingAnimationVerticalLines} play />
           </div>
         </div>
 
@@ -65,10 +62,7 @@ export function Conversation() {
               transition: "opacity 0.3s ease",
             }}
           >
-            <Lottie
-              key={"lottie-right-waves"}
-              options={{ animationData: talkingAnimationVerticalLines }}
-            />
+            <Lottie animationData={talkingAnimationVerticalLines} play />
           </div>
         </div>
 
@@ -216,9 +210,8 @@ export function Conversation() {
                     />
                   )}
                   <Lottie
-                    key={"lottie-micro"}
-                    options={{ animationData: microAnimation, autoplay: false }}
-                    isPaused={!aiConversation.isUserSpeaking || aiConversation.isMuted}
+                    animationData={microAnimation}
+                    play={aiConversation.isUserSpeaking && !aiConversation.isMuted}
                   />
                 </button>
               </div>
