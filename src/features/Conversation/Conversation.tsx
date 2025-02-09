@@ -5,6 +5,8 @@ import { Markdown } from "../Markdown/Markdown";
 import talkingAnimationVerticalLines from "./animations/verticalLines.json";
 import microAnimation from "./animations/micro.json";
 import dynamic from "next/dynamic";
+import { useState } from "react";
+import { SendHorizontal } from "lucide-react";
 
 const Lottie = dynamic(() => import("react-lottie"), {
   ssr: false,
@@ -12,6 +14,12 @@ const Lottie = dynamic(() => import("react-lottie"), {
 
 export function Conversation() {
   const aiConversation = useAiConversation();
+  const [userMessage, setUserMessage] = useState("");
+  const submitMessage = () => {
+    if (!userMessage) return;
+    aiConversation.addUserMessage(userMessage);
+    setUserMessage("");
+  };
 
   return (
     <div className="flex flex-col items-center justify-center gap-10 min-h-screen">
@@ -101,6 +109,66 @@ export function Conversation() {
                   </div>
                 );
               })}
+
+            {aiConversation.conversation.length > 0 && (
+              <div
+                style={{
+                  position: "fixed",
+                  bottom: "190px",
+                  left: "0",
+                  right: "0",
+                  width: "100%",
+                  height: "auto",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  animationDelay: "0.5s",
+                  opacity: 0,
+                  zIndex: 100,
+                }}
+                className="animate-fade-in"
+              >
+                <div className="flex flex-row items-start gap-4 ml-[20px]">
+                  <textarea
+                    className={[
+                      `rounded`,
+                      `border`,
+                      `px-3 py-3`,
+                      `border outline-none`,
+                      `text-black`,
+                      `min-w-[600px] min-h-[60px]`,
+                    ].join(" ")}
+                    value={userMessage}
+                    // @ts-expect-error - New prop fieldSizing
+                    style={{ fieldSizing: "content" }}
+                    placeholder="Type your message here..."
+                    onChange={(e) => setUserMessage(e.target.value)}
+                    onKeyDown={(e) => {
+                      const isEnter = e.key === "Enter";
+                      const isCtrl = e.ctrlKey;
+                      const isCommand = e.metaKey;
+                      if (isEnter && (isCtrl || isCommand)) {
+                        e.preventDefault();
+                        submitMessage();
+                      }
+                    }}
+                  />
+                  <button
+                    className={[
+                      `animate-fade-in rounded-[40px]`,
+                      !userMessage
+                        ? `bg-[#aab3b7] cursor-not-allowed`
+                        : `bg-[#8bc2d9] hover:bg-[#77a3b5]`,
+                      `p-3 mt-1`,
+                    ].join(" ")}
+                    disabled={!userMessage}
+                    onClick={submitMessage}
+                  >
+                    <SendHorizontal color="#0f4564" size={"20px"} />
+                  </button>
+                </div>
+              </div>
+            )}
 
             {aiConversation.conversation.length > 0 && (
               <div

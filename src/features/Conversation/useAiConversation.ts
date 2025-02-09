@@ -12,7 +12,12 @@ export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [areasToImprove, setAreasToImprove] = useState<string>("");
-  const [conversation, setConversation] = useState<ChatMessage[]>([]);
+  const [conversation, setConversation] = useState<ChatMessage[]>([
+    {
+      isBot: true,
+      text: "Hello... I am here!",
+    },
+  ]);
   const [errorInitiating, setErrorInitiating] = useState<string>();
   const [isClosing, setIsClosing] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
@@ -96,12 +101,20 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
   };
 
   const startConversation = async () => {
-    if (2 > 10) {
+    if (2 > 20) {
       setIsInitializing(true);
       setTimeout(() => {
         setIsInitializing(false);
         setIsStarted(true);
-      }, 1000);
+        setTimeout(() => {
+          setConversation([
+            {
+              isBot: true,
+              text: "Hello... I am here!",
+            },
+          ]);
+        }, 500);
+      }, 500);
       return;
     }
     try {
@@ -130,6 +143,17 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
     setIsInitializing(false);
   };
 
+  const addUserMessage = async (message: string) => {
+    communicator?.addUserChatMessage(message);
+    await sleep(100);
+    await communicatorRef.current?.triggerAiResponse();
+    setConversation((prev) => [
+      ...prev,
+      { isBot: false, text: message },
+      { isBot: true, text: "..." },
+    ]);
+  };
+
   return {
     isInitializing,
     analyzeMe,
@@ -145,5 +169,6 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
     isUserSpeaking,
     toggleMute,
     isMuted,
+    addUserMessage,
   };
 };
