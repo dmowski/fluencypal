@@ -135,6 +135,7 @@ export interface AiRtcConfig {
   onMessage: (message: ChatMessage) => void;
   setIsAiSpeaking: (speaking: boolean) => void;
   setIsUserSpeaking: (speaking: boolean) => void;
+  isMuted: boolean;
 }
 
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
@@ -147,6 +148,7 @@ export const initAiRtc = async ({
   onOpen,
   setIsAiSpeaking,
   setIsUserSpeaking,
+  isMuted,
 }: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 
@@ -320,6 +322,10 @@ export const initAiRtc = async ({
       track.enabled = !mute;
     });
   };
+
+  if (isMuted) {
+    toggleMute(true);
+  }
 
   return {
     closeHandler,

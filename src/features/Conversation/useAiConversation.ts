@@ -1,10 +1,11 @@
 "use client";
+
 import { ChatMessage } from "@/features/Conversation/types";
 import { MODELS } from "@/common/ai";
 import { useEffect, useMemo, useRef, useState } from "react";
-
 import { sleep } from "openai/core.mjs";
 import { AiRtcConfig, AiRtcInstance, initAiRtc } from "./rtc";
+import { useLocalStorage } from "react-use";
 
 export type ConversationMode = "talk";
 
@@ -27,6 +28,13 @@ export const useAiConversation = () => {
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
   const communicatorRef = useRef(communicator);
   communicatorRef.current = communicator;
+
+  const [isMuted, setIsMuted] = useLocalStorage<boolean>("isMuted", false);
+
+  const toggleMute = (isMute: boolean) => {
+    communicator?.toggleMute(isMute);
+    setIsMuted(isMute);
+  };
 
   useEffect(() => {
     return () => {
@@ -89,6 +97,7 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
       },
       setIsAiSpeaking,
       setIsUserSpeaking,
+      isMuted: isMuted || false,
     };
     return config;
   }, []);
@@ -129,12 +138,6 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
       setErrorInitiating("Something went wrong. Try again later");
       setIsInitializing(false);
     }
-  };
-
-  const [isMuted, setIsMuted] = useState(false);
-  const toggleMute = (isMute: boolean) => {
-    communicator?.toggleMute(isMute);
-    setIsMuted(isMute);
   };
 
   const stopConversation = () => {
