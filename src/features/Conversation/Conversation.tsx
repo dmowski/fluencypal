@@ -6,7 +6,7 @@ import talkingAnimationVerticalLines from "./animations/verticalLines.json";
 import microAnimation from "./animations/micro.json";
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import { SendHorizontal } from "lucide-react";
+import { Keyboard, SendHorizontal } from "lucide-react";
 
 const Lottie = dynamic(() => import("react-lottie-player"), {
   ssr: false,
@@ -104,7 +104,7 @@ export function Conversation() {
                 );
               })}
 
-            {aiConversation.conversation.length > 0 && (
+            {aiConversation.conversation.length > 0 && aiConversation.isShowUserInput && (
               <div
                 style={{
                   position: "fixed",
@@ -116,7 +116,8 @@ export function Conversation() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  animationDelay: "0.5s",
+                  animationDelay: "0s",
+                  animationDuration: "0.1s",
                   opacity: 0,
                   zIndex: 100,
                 }}
@@ -155,6 +156,10 @@ export function Conversation() {
                         : `bg-[#8bc2d9] hover:bg-[#77a3b5]`,
                       `p-3 mt-1`,
                     ].join(" ")}
+                    style={{
+                      animationDelay: "0s",
+                      animationDuration: "0.1s",
+                    }}
                     disabled={!userMessage}
                     onClick={submitMessage}
                   >
@@ -173,12 +178,16 @@ export function Conversation() {
                   right: "0",
                   width: "100%",
                   height: "auto",
+
                   display: "flex",
+                  flexDirection: "row",
                   justifyContent: "center",
                   alignItems: "center",
+
                   animationDelay: "0.5s",
                   opacity: 0,
                   zIndex: 100,
+                  gap: "10px",
                 }}
                 className="animate-fade-in"
               >
@@ -187,7 +196,6 @@ export function Conversation() {
                   style={{
                     width: "80px",
                     height: "80px",
-                    margin: "auto",
                     filter: aiConversation.isMuted ? "grayscale(100%)" : "none",
                     cursor: "pointer",
                     position: "relative",
@@ -213,6 +221,24 @@ export function Conversation() {
                     animationData={microAnimation}
                     play={aiConversation.isUserSpeaking && !aiConversation.isMuted}
                   />
+                </button>
+
+                <button
+                  className="animate-fade-in"
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    cursor: "pointer",
+                    position: "relative",
+                    borderRadius: "100px",
+                    backgroundColor: aiConversation.isShowUserInput ? "#0f4564" : "transparent",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
+                >
+                  <Keyboard />
                 </button>
               </div>
             )}

@@ -13,6 +13,7 @@ export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [areasToImprove, setAreasToImprove] = useState<string>("");
+
   const [conversation, setConversation] = useState<ChatMessage[]>([
     {
       isBot: true,
@@ -30,6 +31,7 @@ export const useAiConversation = () => {
   communicatorRef.current = communicator;
 
   const [isMuted, setIsMuted] = useLocalStorage<boolean>("isMuted", false);
+  const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);
 
   const toggleMute = (isMute: boolean) => {
     communicator?.toggleMute(isMute);
@@ -173,5 +175,7 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
     toggleMute,
     isMuted,
     addUserMessage,
+    isShowUserInput,
+    setIsShowUserInput,
   };
 };
