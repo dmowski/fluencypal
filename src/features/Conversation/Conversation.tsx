@@ -134,11 +134,11 @@ export function Conversation() {
                       `px-3 py-3`,
                       `border outline-none`,
                       `text-black`,
-                      `min-w-[600px] min-h-[60px]`,
+                      `w-[600px] min-h-[60px]`,
                     ].join(" ")}
                     value={userMessage}
                     // @ts-expect-error - New prop fieldSizing
-                    style={{ fieldSizing: "content" }}
+                    style={{ fieldSizing: "content", maxHeight: "200px" }}
                     placeholder="Type your message here..."
                     onChange={(e) => setUserMessage(e.target.value)}
                     onKeyDown={(e) => {
