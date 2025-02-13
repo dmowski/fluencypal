@@ -14,12 +14,7 @@ export const useAiConversation = () => {
   const [isStarted, setIsStarted] = useState(false);
   const [areasToImprove, setAreasToImprove] = useState<string>("");
 
-  const [conversation, setConversation] = useState<ChatMessage[]>([
-    {
-      isBot: true,
-      text: "Hello... I am here!",
-    },
-  ]);
+  const [conversation, setConversation] = useState<ChatMessage[]>([]);
   const [errorInitiating, setErrorInitiating] = useState<string>();
   const [isClosing, setIsClosing] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
@@ -32,6 +27,27 @@ export const useAiConversation = () => {
 
   const [isMuted, setIsMuted] = useLocalStorage<boolean>("isMuted", false);
   const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);
+
+  const onAddDelta = (id: string, delta: string, isBot: boolean) => {
+    setConversation((prev) => {
+      let isNew = true;
+
+      const newMessage = prev.map((message) => {
+        if (message.id === id) {
+          const oldText = message.text;
+          isNew = false;
+          return { ...message, text: oldText + delta };
+        }
+        return message;
+      });
+
+      if (isNew) {
+        newMessage.push({ id, text: delta, isBot });
+      }
+
+      return newMessage;
+    });
+  };
 
   const toggleMute = (isMute: boolean) => {
     communicator?.toggleMute(isMute);
@@ -97,6 +113,7 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
       onMessage: (message) => {
         setConversation((prev) => [...prev, message]);
       },
+      onAddDelta,
       setIsAiSpeaking,
       setIsUserSpeaking,
       isMuted: isMuted || false,
@@ -120,14 +137,16 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
         setTimeout(() => {
           setConversation([
             {
+              id: "1",
               isBot: true,
-              text: "Hello... I am here!",
+              text: "",
             },
           ]);
         }, 500);
       }, 500);
       return;
     }
+
     try {
       setIsClosing(false);
       setIsClosed(false);
@@ -154,8 +173,8 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
     await communicatorRef.current?.triggerAiResponse();
     setConversation((prev) => [
       ...prev,
-      { isBot: false, text: message },
-      { isBot: true, text: "..." },
+      { isBot: false, text: message, id: `${Date.now()}` },
+      { isBot: true, text: "...", id: `${Date.now() + 1}` },
     ]);
   };
 

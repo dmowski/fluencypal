@@ -133,6 +133,7 @@ export interface AiRtcConfig {
   onOpen: () => void;
   aiTools: AiTool[];
   onMessage: (message: ChatMessage) => void;
+  onAddDelta: (id: string, delta: string, isBot: boolean) => void;
   setIsAiSpeaking: (speaking: boolean) => void;
   setIsUserSpeaking: (speaking: boolean) => void;
   isMuted: boolean;
@@ -149,6 +150,7 @@ export const initAiRtc = async ({
   setIsAiSpeaking,
   setIsUserSpeaking,
   isMuted,
+  onAddDelta,
 }: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 
@@ -192,7 +194,16 @@ export const initAiRtc = async ({
   const messageHandler = (e: MessageEvent) => {
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
-    //console.log("Event:", type);
+    //console.log("Event type:", type);
+
+    if (type === "response.audio_transcript.delta") {
+      const id = event?.response_id as string;
+      const deltaMessage = event?.delta as string;
+      if (id && deltaMessage) {
+        const isBot = true;
+        onAddDelta(id, deltaMessage, isBot);
+      }
+    }
 
     if (type === "input_audio_buffer.speech_started") {
       setIsUserSpeaking(true);
@@ -209,7 +220,8 @@ export const initAiRtc = async ({
     if (type === "conversation.item.input_audio_transcription.completed") {
       const userMessage = event?.transcript || "";
       if (userMessage) {
-        onMessage({ isBot: false, text: userMessage });
+        const id = event?.item_id as string;
+        onMessage({ isBot: false, text: userMessage, id });
       }
     }
     if (type === "response.done") {
@@ -225,9 +237,8 @@ export const initAiRtc = async ({
         .join(" ")
         .trim();
       if (botAnswer) {
-        setTimeout(() => {
-          onMessage({ isBot: true, text: botAnswer });
-        }, 1000);
+        const id = event?.response?.id || (`${Date.now()}` as string);
+        onMessage({ isBot: true, text: botAnswer, id });
       }
     }
 
