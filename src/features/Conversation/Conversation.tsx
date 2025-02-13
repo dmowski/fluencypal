@@ -366,7 +366,8 @@ export function Conversation() {
                       width: "340px",
                       maxWidth: "90%",
                       opacity: "0",
-                      animationDelay: "0.1s",
+                      animationDelay: "0.2s",
+                      visibility: auth.loading ? "hidden" : "visible",
                     }}
                   >
                     {auth.isAuthorized ? (
