@@ -1,11 +1,14 @@
 "use client";
 
+import { AuthProvider } from "@/features/Auth/useAuth";
 import { Conversation } from "@/features/Conversation/Conversation";
 
 export default function Home() {
   return (
-    <main>
-      <Conversation />
-    </main>
+    <AuthProvider>
+      <main>
+        <Conversation />
+      </main>
+    </AuthProvider>
   );
 }

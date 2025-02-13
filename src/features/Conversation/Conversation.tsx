@@ -7,12 +7,15 @@ import microAnimation from "./animations/micro.json";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { Keyboard, SendHorizontal } from "lucide-react";
+import { useAuth } from "../Auth/useAuth";
 
 const Lottie = dynamic(() => import("react-lottie-player"), {
   ssr: false,
 });
 
 export function Conversation() {
+  const auth = useAuth();
+
   const aiConversation = useAiConversation();
   const [userMessage, setUserMessage] = useState("");
   const submitMessage = () => {
@@ -354,6 +357,58 @@ export function Conversation() {
                   >
                     START
                   </button>
+
+                  {auth.isAuthorized ? (
+                    <button
+                      onClick={() => auth.logout()}
+                      className={[
+                        `transition-all duration-100`,
+                        `text-[#eef6f9] hover:text-white`,
+                        `shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]`,
+                        `font-[350] text-[16px]`,
+                        `opacity-90 hover:opacity-100`,
+                        `animate-fade-in`,
+                      ].join(" ")}
+                      style={{
+                        padding: "15px 80px",
+                        backgroundColor: "rgba(0, 0, 0, 0.5)",
+                        backgroundSize: "cover",
+                        boxSizing: "border-box",
+                        borderRadius: "4px",
+                        width: "300px",
+                        maxWidth: "90%",
+                        opacity: "0",
+                        animationDelay: "1.5s",
+                      }}
+                    >
+                      Logout ({auth.userInfo?.displayName})
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => auth.signInWithGoogle()}
+                      className={[
+                        `transition-all duration-100`,
+                        `text-[#eef6f9] hover:text-white`,
+                        `shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]`,
+                        `font-[350] text-[16px]`,
+                        `opacity-90 hover:opacity-100`,
+                        `animate-fade-in`,
+                      ].join(" ")}
+                      style={{
+                        padding: "15px 80px",
+                        backgroundColor: "rgba(0,0,0,0.5)",
+                        backgroundSize: "cover",
+                        boxSizing: "border-box",
+                        borderRadius: "4px",
+                        width: "300px",
+                        maxWidth: "90%",
+                        opacity: "0",
+                        animationDelay: "1.5s",
+                      }}
+                    >
+                      Login Google
+                    </button>
+                  )}
                   {!!aiConversation.errorInitiating && (
                     <p className="text-sm text-red-500 text-center">
                       {aiConversation.errorInitiating}
