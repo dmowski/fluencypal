@@ -6,13 +6,16 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { sleep } from "openai/core.mjs";
 import { AiRtcConfig, AiRtcInstance, initAiRtc } from "./rtc";
 import { useLocalStorage } from "react-use";
+import { useChatHistory } from "./useChatHistory";
 
 export type ConversationMode = "talk";
 
 export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);
+  const history = useChatHistory();
   const [isStarted, setIsStarted] = useState(false);
   const [areasToImprove, setAreasToImprove] = useState<string>("");
+  const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
 
   const [conversation, setConversation] = useState<ChatMessage[]>([]);
   const [errorInitiating, setErrorInitiating] = useState<string>();
@@ -27,6 +30,11 @@ export const useAiConversation = () => {
 
   const [isMuted, setIsMuted] = useLocalStorage<boolean>("isMuted", false);
   const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);
+
+  useEffect(() => {
+    if (!conversationId || conversation.length === 0) return;
+    history.setMessages(conversationId, conversation);
+  }, [conversation.length]);
 
   const onAddDelta = (id: string, delta: string, isBot: boolean) => {
     setConversation((prev) => {
@@ -63,7 +71,6 @@ export const useAiConversation = () => {
   const aiRtcConfig: AiRtcConfig = useMemo(() => {
     const config: AiRtcConfig = {
       model: MODELS.REALTIME_CONVERSATION,
-
       initInstruction: `You are an English teacher. Your name is "Bruno". Your role is to make user talks.
 Ask the student to describe their day.
 Do not teach or explain rules—just talk.
@@ -110,9 +117,14 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
           setIsStarted(true);
         }, 1000);
       },
-      onMessage: (message) => {
-        setConversation((prev) => [...prev, message]);
-      },
+      onMessage: (message) =>
+        setConversation((prev) => {
+          const isExisting = prev.find((m) => m.id === message.id);
+          if (isExisting) {
+            return prev.map((m) => (m.id === message.id ? message : m));
+          }
+          return [...prev, message];
+        }),
       onAddDelta,
       setIsAiSpeaking,
       setIsUserSpeaking,
@@ -153,6 +165,7 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
       setErrorInitiating("");
       setIsInitializing(true);
       const conversation = await initAiRtc(aiRtcConfig);
+      history.createConversation(conversationId);
       setCommunicator(conversation);
     } catch (e) {
       console.log(e);
@@ -165,17 +178,16 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
     communicator?.closeHandler();
     setIsStarted(false);
     setIsInitializing(false);
+    setConversationId(`${Date.now()}`);
   };
 
   const addUserMessage = async (message: string) => {
     communicator?.addUserChatMessage(message);
     await sleep(100);
     await communicatorRef.current?.triggerAiResponse();
-    setConversation((prev) => [
-      ...prev,
-      { isBot: false, text: message, id: `${Date.now()}` },
-      { isBot: true, text: "...", id: `${Date.now() + 1}` },
-    ]);
+    const userMessage: ChatMessage = { isBot: false, text: message, id: `${Date.now()}` };
+
+    setConversation((prev) => [...prev, userMessage]);
   };
 
   return {
