@@ -2,12 +2,13 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../Markdown/Markdown";
-import talkingAnimationVerticalLines from "./animations/verticalLines.json";
-import microAnimation from "./animations/micro.json";
+import talkingAnimationVerticalLines from "../Animations/verticalLines.json";
+import microAnimation from "../Animations//micro.json";
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import { Keyboard, SendHorizontal } from "lucide-react";
+import { Keyboard, LogOut, SendHorizontal } from "lucide-react";
 import { useAuth } from "../Auth/useAuth";
+import { Google, Logout } from "iconsax-react";
 
 const Lottie = dynamic(() => import("react-lottie-player"), {
   ssr: false,
@@ -26,6 +27,47 @@ export function Conversation() {
 
   return (
     <div className="flex flex-col items-center justify-center gap-10 min-h-screen">
+      <img
+        src="./logo.png"
+        alt="logo"
+        className=""
+        style={{
+          width: "100px",
+          height: "auto",
+          position: "fixed",
+          left: "10px",
+          top: "20px",
+          zIndex: 100,
+        }}
+      />
+
+      {auth.isAuthorized && (
+        <button
+          onClick={() => auth.logout()}
+          className={[
+            `text-[#eef6f9] hover:text-white`,
+            `hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]`,
+            `font-[350] text-[16px]`,
+            `opacity-90 hover:opacity-100`,
+            "flex items-center justify-center gap-2",
+          ].join(" ")}
+          style={{
+            padding: "15px 20px",
+            backgroundSize: "cover",
+            boxSizing: "border-box",
+            borderRadius: "4px",
+            width: "auto",
+            maxWidth: "90%",
+            position: "fixed",
+            top: "10px",
+            right: "10px",
+          }}
+        >
+          <LogOut size="20" color="#fff" />
+          Logout
+        </button>
+      )}
+
       <div className="flex flex-col items-center justify-center w-full gap-2">
         <div
           className={[
@@ -300,115 +342,43 @@ export function Conversation() {
                   }}
                 />
                 <div className="flex flex-col items-center justify-center gap-[20px] pt-[20px]">
-                  <img
-                    src="./logo.png"
-                    alt="logo"
-                    className="h-auto pt-[0px] animate-fade-in duration-[5s] delay-[10s]"
-                    style={{
-                      opacity: "0",
-                      animationDelay: "0.5s",
-                      width: "100%",
-                      maxWidth: "500px",
-                    }}
-                  />
-                  <div
-                    style={{
-                      width: "20px",
-                      height: "23px",
-                      position: "absolute",
-                      top: "30px",
-                      left: "0",
-                      right: "0",
-                      margin: "auto",
-                      opacity: "0",
-                      animationDelay: "0.5s",
-                    }}
-                    className="animate-fade-in duration-[5s] delay-[10s]"
-                  >
-                    <img src="/cross.png" alt="" className="opacity-50" />
-                  </div>
-                  <p
-                    className="font-light pb-[40px] animate-fade-in duration-[5s] delay-[10s] "
-                    style={{ opacity: "0", animationDelay: "1s" }}
-                  >
-                    AI TEACHER TO LEARN ENGLISH
-                  </p>
                   <button
-                    onClick={() => aiConversation.startConversation()}
+                    onClick={() =>
+                      auth.isAuthorized
+                        ? aiConversation.startConversation()
+                        : auth.signInWithGoogle()
+                    }
                     className={[
                       `transition-all duration-100`,
                       `text-[#eef6f9] hover:text-white`,
                       `shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]`,
-                      `font-[250] text-[24px]`,
+                      `font-[250] text-[18px]`,
                       `opacity-90 hover:opacity-100`,
                       `animate-fade-in`,
+                      "flex items-center justify-center gap-5",
                     ].join(" ")}
                     style={{
-                      padding: "20px 80px",
+                      padding: "20px 40px",
                       backgroundImage: `url("./button_bg.png")`,
                       backgroundSize: "cover",
                       boxSizing: "border-box",
                       borderRadius: "4px",
-                      width: "300px",
+                      width: "340px",
                       maxWidth: "90%",
                       opacity: "0",
-                      animationDelay: "1.5s",
+                      animationDelay: "0.1s",
                     }}
                   >
-                    START
+                    {auth.isAuthorized ? (
+                      "Start Conversation"
+                    ) : (
+                      <>
+                        <Google size="22" color="#fff" variant="Bold" />
+                        <p className="pt-[1px]">Continue with google</p>
+                      </>
+                    )}
                   </button>
 
-                  {auth.isAuthorized ? (
-                    <button
-                      onClick={() => auth.logout()}
-                      className={[
-                        `transition-all duration-100`,
-                        `text-[#eef6f9] hover:text-white`,
-                        `shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]`,
-                        `font-[350] text-[16px]`,
-                        `opacity-90 hover:opacity-100`,
-                        `animate-fade-in`,
-                      ].join(" ")}
-                      style={{
-                        padding: "15px 80px",
-                        backgroundColor: "rgba(0, 0, 0, 0.5)",
-                        backgroundSize: "cover",
-                        boxSizing: "border-box",
-                        borderRadius: "4px",
-                        width: "300px",
-                        maxWidth: "90%",
-                        opacity: "0",
-                        animationDelay: "1.5s",
-                      }}
-                    >
-                      Logout ({auth.userInfo?.displayName})
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => auth.signInWithGoogle()}
-                      className={[
-                        `transition-all duration-100`,
-                        `text-[#eef6f9] hover:text-white`,
-                        `shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]`,
-                        `font-[350] text-[16px]`,
-                        `opacity-90 hover:opacity-100`,
-                        `animate-fade-in`,
-                      ].join(" ")}
-                      style={{
-                        padding: "15px 80px",
-                        backgroundColor: "rgba(0,0,0,0.5)",
-                        backgroundSize: "cover",
-                        boxSizing: "border-box",
-                        borderRadius: "4px",
-                        width: "300px",
-                        maxWidth: "90%",
-                        opacity: "0",
-                        animationDelay: "1.5s",
-                      }}
-                    >
-                      Login Google
-                    </button>
-                  )}
                   {!!aiConversation.errorInitiating && (
                     <p className="text-sm text-red-500 text-center">
                       {aiConversation.errorInitiating}
