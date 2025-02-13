@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { Keyboard, LogOut, SendHorizontal } from "lucide-react";
 import { useAuth } from "../Auth/useAuth";
-import { Google, Logout } from "iconsax-react";
+import { Google } from "iconsax-react";
 
 const Lottie = dynamic(() => import("react-lottie-player"), {
   ssr: false,
