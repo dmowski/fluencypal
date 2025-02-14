@@ -2,17 +2,13 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../Markdown/Markdown";
-import talkingAnimationVerticalLines from "../Animations/verticalLines.json";
-import microAnimation from "../Animations//micro.json";
-import dynamic from "next/dynamic";
 import { useState } from "react";
 import { Keyboard, LogOut, SendHorizontal } from "lucide-react";
 import { useAuth } from "../Auth/useAuth";
 import { Google } from "iconsax-react";
-
-const Lottie = dynamic(() => import("react-lottie-player"), {
-  ssr: false,
-});
+import { TalkingWaves } from "../Animations/TalkingWaves";
+import { MicroAnimation } from "../Animations/MicroAnimation";
+import { MicroButton } from "../Button/MicroButton";
 
 export function Conversation() {
   const auth = useAuth();
@@ -50,18 +46,9 @@ export function Conversation() {
             `font-[350] text-[16px]`,
             `opacity-90 hover:opacity-100`,
             "flex items-center justify-center gap-2",
+            "fixed",
+            `t-[10px] r-[10px] w-auto max-w-[90%] p-2`,
           ].join(" ")}
-          style={{
-            padding: "15px 20px",
-            backgroundSize: "cover",
-            boxSizing: "border-box",
-            borderRadius: "4px",
-            width: "auto",
-            maxWidth: "90%",
-            position: "fixed",
-            top: "10px",
-            right: "10px",
-          }}
         >
           <LogOut size="20" color="#fff" />
           Logout
@@ -85,7 +72,7 @@ export function Conversation() {
               transition: "opacity 0.3s ease",
             }}
           >
-            <Lottie animationData={talkingAnimationVerticalLines} play />
+            <TalkingWaves />
           </div>
         </div>
 
@@ -107,7 +94,7 @@ export function Conversation() {
               transition: "opacity 0.3s ease",
             }}
           >
-            <Lottie animationData={talkingAnimationVerticalLines} play />
+            <TalkingWaves />
           </div>
         </div>
 
@@ -236,37 +223,11 @@ export function Conversation() {
                 }}
                 className="animate-fade-in"
               >
-                <button
-                  className="animate-fade-in"
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    filter: aiConversation.isMuted ? "grayscale(100%)" : "none",
-                    cursor: "pointer",
-                    position: "relative",
-                  }}
+                <MicroButton
+                  isMuted={!!aiConversation.isMuted}
+                  isPlaying={aiConversation.isUserSpeaking}
                   onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
-                >
-                  {aiConversation.isMuted && (
-                    <div
-                      style={{
-                        width: "40px",
-                        borderRadius: "2px",
-                        height: "2px",
-                        backgroundColor: "#fff",
-                        transform: "rotate(45deg)",
-                        position: "absolute",
-                        top: "calc(50% - 2px)",
-                        left: "calc(50% - 20px)",
-                        zIndex: 1,
-                      }}
-                    />
-                  )}
-                  <Lottie
-                    animationData={microAnimation}
-                    play={aiConversation.isUserSpeaking && !aiConversation.isMuted}
-                  />
-                </button>
+                />
 
                 <button
                   className="animate-fade-in"

@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import talkingAnimationVerticalLines from "../Animations/verticalLines.json";
+import talkingAnimationVerticalLines from "./verticalLines.json";
 
 const Lottie = dynamic(() => import("react-lottie-player"), {
   ssr: false,
