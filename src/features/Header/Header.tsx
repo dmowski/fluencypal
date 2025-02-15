@@ -10,7 +10,13 @@ export function Header() {
     <div
       className={["w-full flex items-center justify-center py-4", "fixed top-0 left-0"].join(" ")}
     >
-      <div className="flex flex-row items-center justify-between gap-10 w-full max-w-[1400px]">
+      <div
+        className={[
+          "flex flex-row items-center justify-between",
+          "gap-10 w-full max-w-[1400px]",
+          "px-4",
+        ].join(" ")}
+      >
         <img src="./logo.png" alt="logo" className="w-[100px] h-auto" />
 
         {auth.isAuthorized && (
