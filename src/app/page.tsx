@@ -19,7 +19,7 @@ export default function Home() {
                 "opacity-0 animate-fade-in duration-[5s] delay-[10s]",
                 "absolute top-[50px] left-0 right-0 bottom-0",
                 "h-full w-full",
-                "bg-cover bg-center",
+                "bg-contain",
                 "-z-[1]",
               ].join(" ")}
               style={{
@@ -47,7 +47,7 @@ export default function Home() {
                   "absolute top-[30px] left-0 right-0 bottom-0",
                   "opacity-0",
                   `w-[20px] h-[23px]`,
-                  "m-auto",
+                  "mx-auto",
                   "animate-fade-in duration-[5s] delay-[10s]",
                 ].join(" ")}
               >

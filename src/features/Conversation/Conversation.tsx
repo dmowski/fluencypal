@@ -26,35 +26,24 @@ export function Conversation() {
         <TalkingWaves inActive={aiConversation.isAiSpeaking} />
 
         {aiConversation.isStarted ? (
-          <div
-            className="flex flex-col items-center justify-center relative gap-[40px] "
-            style={{
-              width: "100vw",
-              height: "min(88vh, 90vw)",
-            }}
-          >
+          <div className="flex flex-col items-center justify-center relative gap-[40px] w-full">
             {aiConversation.isClosing && !aiConversation.isClosed && (
-              <h2>
-                <b>Finishing the Lesson...</b>
-              </h2>
+              <h2>Finishing the Lesson...</h2>
             )}
 
             {aiConversation.conversation
-              .filter((message, index) => message.isBot)
-              .filter((message, index, arr) => {
-                return index >= arr.length - 1;
-              })
+              .filter((message) => message.isBot)
+              .filter((_, index, arr) => index >= arr.length - 1)
               .map((message, index) => {
                 return (
                   <div
                     key={message.text + index}
-                    className="flex flex-col items-center gap-4 text-white"
-                    style={{
-                      maxWidth: "400px",
-                      textAlign: "center",
-                      color: "#c8e2f2",
-                      transform: "scale(1.1)",
-                    }}
+                    className={[
+                      "flex flex-col items-center gap-4 text-white",
+                      "max-w-[400px]",
+                      "text-center text-[#c8e2f2]",
+                      "transform scale-110",
+                    ].join(" ")}
                   >
                     <Markdown>{message.text || ""}</Markdown>
                   </div>
@@ -64,21 +53,15 @@ export function Conversation() {
             {aiConversation.conversation.length > 0 && aiConversation.isShowUserInput && (
               <div
                 style={{
-                  position: "fixed",
-                  bottom: "190px",
-                  left: "0",
-                  right: "0",
-                  width: "100%",
-                  height: "auto",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
                   animationDelay: "0s",
                   animationDuration: "0.1s",
                   opacity: 0,
-                  zIndex: 100,
                 }}
-                className="animate-fade-in"
+                className={[
+                  "fixed bottom-[190px] left-0 right-0 w-full h-auto",
+                  "flex justify-center items-center",
+                  "z-[100] animate-fade-in",
+                ].join(" ")}
               >
                 <div className="flex flex-row items-start gap-4 ml-[20px]">
                   <textarea
@@ -129,24 +112,14 @@ export function Conversation() {
             {aiConversation.conversation.length > 0 && (
               <div
                 style={{
-                  position: "fixed",
-                  bottom: "60px",
-                  left: "0",
-                  right: "0",
-                  width: "100%",
-                  height: "auto",
-
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-
                   animationDelay: "0.5s",
-                  opacity: 0,
-                  zIndex: 100,
-                  gap: "10px",
                 }}
-                className="animate-fade-in"
+                className={[
+                  "fixed bottom-[60px] left-0 right-0 w-full h-auto",
+                  "flex flex-row justify-center items-center",
+                  "z-[100] gap-[10px] animate-fade-in",
+                  "opacity-0",
+                ].join(" ")}
               >
                 <MicroButton
                   isMuted={!!aiConversation.isMuted}
@@ -155,18 +128,14 @@ export function Conversation() {
                 />
 
                 <button
-                  className="animate-fade-in"
                   style={{
-                    width: "60px",
-                    height: "60px",
-                    cursor: "pointer",
-                    position: "relative",
-                    borderRadius: "100px",
                     backgroundColor: aiConversation.isShowUserInput ? "#0f4564" : "transparent",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
                   }}
+                  className={[
+                    "w-[60px] h-[60px] relative cursor-pointer",
+                    "rounded-full flex justify-center items-center",
+                    "animate-fade-in",
+                  ].join(" ")}
                   onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
                 >
                   <Keyboard />
@@ -178,18 +147,12 @@ export function Conversation() {
               !aiConversation.isClosed &&
               !aiConversation.isClosing && (
                 <h2
-                  className={`animate-fade-in duration-[5s] delay-[10s]`}
-                  style={{
-                    color: "#c8e2f2",
-                    fontWeight: 200,
-                    fontSize: "13px",
-                    paddingTop: "0px",
-                    position: "fixed",
-                    bottom: "25px",
-                    left: "0",
-                    right: "0",
-                    textAlign: "center",
-                  }}
+                  className={[
+                    "animate-fade-in duration-[5s] delay-[10s]",
+                    "fixed bottom-[25px] left-0 right-0 text-center",
+                    "text-[13px] font-extralight pt-0",
+                    "text-[#c8e2f2]",
+                  ].join(" ")}
                 >
                   When you get tired, just say <b>"Let's finish the Lesson"</b>
                 </h2>
@@ -215,17 +178,14 @@ export function Conversation() {
             ) : (
               <>
                 <div
-                  className="opacity-0 animate-fade-in duration-[5s] delay-[10s]"
                   style={{
-                    position: "absolute",
-                    top: "50px",
-                    left: "0",
-                    width: "100%",
-                    height: "100%",
                     backgroundImage: `url("./star.webp")`,
-                    backgroundSize: "contain",
-                    zIndex: -1,
                   }}
+                  className={[
+                    "absolute top-[50px] left-0 w-full h-full",
+                    "bg-contain z-[-1]",
+                    "opacity-0 animate-fade-in duration-[5s] delay-[10s]",
+                  ].join(" ")}
                 />
                 <div className="flex flex-col items-center justify-center gap-[20px] pt-[20px]">
                   <button
@@ -234,27 +194,23 @@ export function Conversation() {
                         ? aiConversation.startConversation()
                         : auth.signInWithGoogle()
                     }
-                    className={[
-                      `transition-all duration-100`,
-                      `text-[#eef6f9] hover:text-white`,
-                      `shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]`,
-                      `font-[250] text-[18px]`,
-                      `opacity-90 hover:opacity-100`,
-                      `animate-fade-in`,
-                      "flex items-center justify-center gap-5",
-                    ].join(" ")}
                     style={{
-                      padding: "20px 40px",
                       backgroundImage: `url("./button_bg.png")`,
-                      backgroundSize: "cover",
-                      boxSizing: "border-box",
-                      borderRadius: "4px",
-                      width: "340px",
-                      maxWidth: "90%",
                       opacity: "0",
                       animationDelay: "0.2s",
                       visibility: auth.loading ? "hidden" : "visible",
                     }}
+                    className={[
+                      "transition-all duration-100",
+                      "text-[#eef6f9] hover:text-white",
+                      "shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]",
+                      "font-extralight text-[18px]",
+                      "opacity-90 hover:opacity-100",
+                      "animate-fade-in",
+                      "flex items-center justify-center gap-5",
+                      "p-[20px_40px] bg-cover box-border rounded-[4px]",
+                      "w-[340px] max-w-[90%]",
+                    ].join(" ")}
                   >
                     {auth.isAuthorized ? (
                       "Start Conversation"
