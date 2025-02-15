@@ -212,22 +212,6 @@ export function Conversation() {
               }}
             >
               <Typography variant="h3">
-                ${new Intl.NumberFormat().format(usage.tokenUsedPrice * 1.3)}
-              </Typography>
-              <Typography variant="caption">Price for user (30%)</Typography>
-            </Card>
-
-            <Card
-              sx={{
-                width: "100%",
-                padding: "20px",
-                gap: "10px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-              }}
-            >
-              <Typography variant="h3">
                 ${new Intl.NumberFormat().format(usage.tokenUsedPrice * 2)}
               </Typography>
               <Typography variant="caption">Price for user (+100%)</Typography>
