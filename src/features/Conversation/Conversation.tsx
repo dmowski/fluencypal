@@ -11,6 +11,7 @@ import { MicroButton } from "../Button/MicroButton";
 import { GlassButton } from "../Button/GlassButton";
 import { Textarea } from "../Input/Textarea";
 import { SendMessageButton } from "../Button/SendMessageButton";
+import { KeyboardButton } from "../Button/KeyboardButton";
 
 export function Conversation() {
   const auth = useAuth();
@@ -72,7 +73,6 @@ export function Conversation() {
                     onChange={setUserMessage}
                     onSubmit={submitMessage}
                   />
-
                   <SendMessageButton disabled={!userMessage} onClick={submitMessage} />
                 </div>
               </div>
@@ -96,19 +96,10 @@ export function Conversation() {
                   onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
                 />
 
-                <button
-                  style={{
-                    backgroundColor: aiConversation.isShowUserInput ? "#0f4564" : "transparent",
-                  }}
-                  className={[
-                    "w-[60px] h-[60px] relative cursor-pointer",
-                    "rounded-full flex justify-center items-center",
-                    "animate-fade-in",
-                  ].join(" ")}
+                <KeyboardButton
+                  isEnabled={!!aiConversation.isShowUserInput}
                   onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
-                >
-                  <Keyboard />
-                </button>
+                />
               </div>
             )}
 
