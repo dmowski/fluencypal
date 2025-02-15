@@ -8,6 +8,7 @@ import { useAuth } from "../Auth/useAuth";
 import { Google } from "iconsax-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
+import { GlassButton } from "../Button/GlassButton";
 
 export function Conversation() {
   const auth = useAuth();
@@ -188,39 +189,19 @@ export function Conversation() {
                   ].join(" ")}
                 />
                 <div className="flex flex-col items-center justify-center gap-[20px] pt-[20px]">
-                  <button
-                    onClick={() =>
-                      auth.isAuthorized
-                        ? aiConversation.startConversation()
-                        : auth.signInWithGoogle()
-                    }
-                    style={{
-                      backgroundImage: `url("./button_bg.png")`,
-                      opacity: "0",
-                      animationDelay: "0.2s",
-                      visibility: auth.loading ? "hidden" : "visible",
-                    }}
-                    className={[
-                      "transition-all duration-100",
-                      "text-[#eef6f9] hover:text-white",
-                      "shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]",
-                      "font-extralight text-[18px]",
-                      "opacity-90 hover:opacity-100",
-                      "animate-fade-in",
-                      "flex items-center justify-center gap-5",
-                      "p-[20px_40px] bg-cover box-border rounded-[4px]",
-                      "w-[340px] max-w-[90%]",
-                    ].join(" ")}
-                  >
-                    {auth.isAuthorized ? (
-                      "Start Conversation"
-                    ) : (
-                      <>
-                        <Google size="22" color="#fff" variant="Bold" />
-                        <p className="pt-[1px]">Continue with google</p>
-                      </>
-                    )}
-                  </button>
+                  {auth.isAuthorized ? (
+                    <GlassButton
+                      onClick={() => aiConversation.startConversation()}
+                      animationDelay="0.2s"
+                    >
+                      Start Conversation
+                    </GlassButton>
+                  ) : (
+                    <GlassButton onClick={() => auth.signInWithGoogle()} animationDelay="0.2s">
+                      <Google size="22" color="#fff" variant="Bold" />
+                      <p className="pt-[1px]">Continue with google</p>
+                    </GlassButton>
+                  )}
 
                   {!!aiConversation.errorInitiating && (
                     <p className="text-sm text-red-500 text-center">
