@@ -3,7 +3,6 @@
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../Markdown/Markdown";
 import { useState } from "react";
-import { Keyboard } from "lucide-react";
 import { useAuth } from "../Auth/useAuth";
 import { Google } from "iconsax-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
