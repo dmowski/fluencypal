@@ -58,22 +58,16 @@ export function Conversation() {
                 style={{
                   animationDelay: "0s",
                   animationDuration: "0.1s",
-                  opacity: 0,
                 }}
                 className={[
                   "fixed bottom-[190px] left-0 right-0 w-full h-auto",
-                  "flex justify-center items-center",
+                  "flex flex-row justify-center items-start gap-4",
                   "z-[100] animate-fade-in",
+                  "opacity-0",
                 ].join(" ")}
               >
-                <div className="flex flex-row items-start gap-4 ml-[20px]">
-                  <Textarea
-                    value={userMessage}
-                    onChange={setUserMessage}
-                    onSubmit={submitMessage}
-                  />
-                  <SendMessageButton disabled={!userMessage} onClick={submitMessage} />
-                </div>
+                <Textarea value={userMessage} onChange={setUserMessage} onSubmit={submitMessage} />
+                <SendMessageButton disabled={!userMessage} onClick={submitMessage} />
               </div>
             )}
 
@@ -94,7 +88,6 @@ export function Conversation() {
                   isPlaying={aiConversation.isUserSpeaking}
                   onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
                 />
-
                 <KeyboardButton
                   isEnabled={!!aiConversation.isShowUserInput}
                   onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
