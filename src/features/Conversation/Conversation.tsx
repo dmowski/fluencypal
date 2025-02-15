@@ -8,7 +8,6 @@ import { useAuth } from "../Auth/useAuth";
 import { Google } from "iconsax-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
-import { Header } from "../Header/Header";
 
 export function Conversation() {
   const auth = useAuth();
@@ -23,8 +22,6 @@ export function Conversation() {
 
   return (
     <div className="flex flex-col items-center justify-center gap-10 min-h-screen">
-      <Header />
-
       <div className="flex flex-col items-center justify-center w-full gap-2">
         <div
           className={[

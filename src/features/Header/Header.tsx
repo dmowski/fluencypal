@@ -7,7 +7,7 @@ export function Header() {
   const auth = useAuth();
 
   return (
-    <div className="w-full flex items-center justify-center ">
+    <div className="w-full flex items-center justify-center py-4">
       <div className="flex flex-row items-center justify-between gap-10 w-full max-w-[1400px]">
         <img src="./logo.png" alt="logo" className="w-[100px] h-auto" />
 
