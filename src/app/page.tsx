@@ -1,4 +1,5 @@
 import { TalkingWaves } from "@/features/Animations/TalkingWaves";
+import { GlassButton } from "@/features/Button/GlassButton";
 
 export default function Home() {
   return (
@@ -59,28 +60,9 @@ export default function Home() {
               >
                 AI TEACHER TO LEARN ENGLISH
               </p>
-              <a
-                href="/practice"
-                className={[
-                  `transition-all duration-100`,
-                  `text-[#eef6f9] hover:text-white`,
-                  `shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]`,
-                  `font-[250] text-[18px]`,
-                  `opacity-0 hover:opacity-100`,
-                  `animate-fade-in`,
-                  "flex items-center justify-center gap-5",
-                  `w-[340px] max-w-[90%] px-10 py-5`,
-                  `rounded-md`,
-                  `box-border`,
-                  `bg-cover bg-center`,
-                ].join(" ")}
-                style={{
-                  backgroundImage: `url("./button_bg.png")`,
-                  animationDelay: "1.5s",
-                }}
-              >
-                <p className="pt-[1px]">START</p>
-              </a>
+              <GlassButton href="/practice" animationDelay="1.5s">
+                START
+              </GlassButton>
             </div>
           </div>
         </div>
