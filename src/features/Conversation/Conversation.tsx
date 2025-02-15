@@ -27,6 +27,10 @@ export function Conversation() {
     setUserMessage("");
   };
 
+  if (auth.loading) {
+    return <></>;
+  }
+
   if (!auth.isAuthorized) {
     return <SignInForm />;
   }
@@ -43,10 +47,6 @@ export function Conversation() {
             width: "100%",
           }}
         >
-          {aiConversation.isClosing && !aiConversation.isClosed && (
-            <Typography variant="h4">Finishing the Lesson...</Typography>
-          )}
-
           <Stack
             sx={{
               height: "calc(100vh - 500px)",
@@ -56,6 +56,9 @@ export function Conversation() {
               padding: "10px",
             }}
           >
+            {aiConversation.isClosing && !aiConversation.isClosed && (
+              <Typography variant="h4">Finishing the Lesson...</Typography>
+            )}
             {aiConversation.conversation
               .filter((message) => message.isBot)
               .filter((_, index, arr) => index >= arr.length - 1)
@@ -73,21 +76,24 @@ export function Conversation() {
               })}
           </Stack>
 
-          {aiConversation.conversation.length > 0 && aiConversation.isShowUserInput && (
-            <Stack
-              sx={{
-                alignItems: "flex-start",
-                justifyContent: "center",
-                gap: "10px",
-                flexDirection: "row",
-              }}
-            >
-              <Textarea value={userMessage} onChange={setUserMessage} onSubmit={submitMessage} />
-              <IconButton disabled={!userMessage} onClick={submitMessage}>
-                <SendHorizontal />
-              </IconButton>
-            </Stack>
-          )}
+          <Stack
+            sx={{
+              alignItems: "flex-start",
+              justifyContent: "center",
+              gap: "10px",
+              flexDirection: "row",
+              minHeight: "100px",
+            }}
+          >
+            {aiConversation.conversation.length > 0 && aiConversation.isShowUserInput && (
+              <>
+                <Textarea value={userMessage} onChange={setUserMessage} onSubmit={submitMessage} />
+                <IconButton disabled={!userMessage} onClick={submitMessage}>
+                  <SendHorizontal />
+                </IconButton>
+              </>
+            )}
+          </Stack>
 
           {aiConversation.conversation.length > 0 && (
             <Stack
@@ -129,7 +135,18 @@ export function Conversation() {
               variant="contained"
               size="large"
               onClick={() => aiConversation.startConversation()}
-              startIcon={<MicIcon />}
+              startIcon={
+                <MicIcon
+                  sx={{
+                    fontSize: "30px",
+                    width: "30px",
+                    height: "30px",
+                  }}
+                />
+              }
+              sx={{
+                padding: "20px 50px",
+              }}
             >
               Start Practice
             </Button>
@@ -163,9 +180,57 @@ export function Conversation() {
               }}
             >
               <Typography variant="h3">
-                {new Intl.NumberFormat().format(usage.totalUsage?.totalUsageTokensUsed || 0)}
+                {new Intl.NumberFormat().format(usage.tokenUsed)}
               </Typography>
               <Typography variant="caption">Tokens used</Typography>
+            </Card>
+
+            <Card
+              sx={{
+                width: "100%",
+                padding: "20px",
+                gap: "10px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+              }}
+            >
+              <Typography variant="h3">
+                ${new Intl.NumberFormat().format(usage.tokenUsedPrice)}
+              </Typography>
+              <Typography variant="caption">AI price</Typography>
+            </Card>
+
+            <Card
+              sx={{
+                width: "100%",
+                padding: "20px",
+                gap: "10px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+              }}
+            >
+              <Typography variant="h3">
+                ${new Intl.NumberFormat().format(usage.tokenUsedPrice * 1.3)}
+              </Typography>
+              <Typography variant="caption">Price for user (30%)</Typography>
+            </Card>
+
+            <Card
+              sx={{
+                width: "100%",
+                padding: "20px",
+                gap: "10px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+              }}
+            >
+              <Typography variant="h3">
+                ${new Intl.NumberFormat().format(usage.tokenUsedPrice * 2)}
+              </Typography>
+              <Typography variant="caption">Price for user (+100%)</Typography>
             </Card>
           </Stack>
         </Stack>

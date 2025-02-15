@@ -33,14 +33,16 @@ export function Header() {
           justifyContent: "space-between",
         }}
       >
-        <img
-          src="./logo.png"
-          alt="logo"
-          style={{
-            maxWidth: "100px",
-            height: "auto",
-          }}
-        />
+        <a href="/">
+          <img
+            src="./logo.png"
+            alt="logo"
+            style={{
+              maxWidth: "100px",
+              height: "auto",
+            }}
+          />
+        </a>
 
         {auth.isAuthorized && (
           <Button onClick={() => auth.logout()} startIcon={<LogOut size="20" />}>

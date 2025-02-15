@@ -3,6 +3,7 @@ import { useAuth } from "../Auth/useAuth";
 import { doc, DocumentReference, setDoc } from "firebase/firestore";
 import { firestore } from "../Firebase/init";
 import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
+import { pricePerMillionOutputAudioTokens } from "@/common/ai";
 
 export interface UsageLog {
   id: string;
@@ -63,5 +64,8 @@ export const useUsage = () => {
     }
   }, [totalUsage, usageLogs, userId]);
 
-  return { totalUsage, usageLogs, setUsageLogs };
+  const tokenUsed = totalUsage?.totalUsageTokensUsed || 0;
+  const tokenUsedPrice = (tokenUsed / 1_000_000) * pricePerMillionOutputAudioTokens;
+
+  return { tokenUsed, tokenUsedPrice, usageLogs, setUsageLogs };
 };

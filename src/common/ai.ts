@@ -7,3 +7,7 @@ export const MODELS = {
   gpt_4o_mini: "gpt-4o-mini",
   gpt_4o: "gpt-4o",
 };
+
+// https://openai.com/api/pricing/
+// Realtime API
+export const pricePerMillionOutputAudioTokens = 80;
