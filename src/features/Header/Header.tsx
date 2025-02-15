@@ -4,8 +4,6 @@ import { useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import {
   Avatar,
-  Box,
-  Button,
   Divider,
   IconButton,
   Link,
@@ -26,10 +24,6 @@ export function Header() {
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [isShowHelpModal, setIsShowHelpModal] = useState(false);
 
-  if (!auth.isAuthorized) {
-    return <></>;
-  }
-
   const userPhoto = auth.userInfo?.photoURL || "";
   const userName = auth.userInfo?.displayName || "";
 
@@ -43,6 +37,7 @@ export function Header() {
         position: "fixed",
         top: 0,
         left: 0,
+        zIndex: 1000,
       }}
     >
       <Stack
