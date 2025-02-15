@@ -14,9 +14,12 @@ import { StarContainer } from "../Layout/StarContainer";
 import { SendHorizontal } from "lucide-react";
 import MicIcon from "@mui/icons-material/Mic";
 import { useUsage } from "../Usage/useUsage";
+import { useSettings } from "../Settings/useSettings";
+import { LangSelector } from "../Lang/LangSelector";
 
 export function Conversation() {
   const auth = useAuth();
+  const settings = useSettings();
 
   const aiConversation = useAiConversation();
   const [userMessage, setUserMessage] = useState("");
@@ -27,14 +30,12 @@ export function Conversation() {
     setUserMessage("");
   };
 
-  if (auth.loading) {
+  if (auth.loading || settings.loading) {
     return <></>;
   }
-
   if (!auth.isAuthorized) {
     return <SignInForm />;
   }
-
   return (
     <Stack sx={{ gap: "40px" }}>
       <TalkingWaves inActive={aiConversation.isAiSpeaking} />
@@ -133,25 +134,46 @@ export function Conversation() {
           {aiConversation.isInitializing ? (
             <Typography>Loading...</Typography>
           ) : (
-            <Button
-              variant="contained"
-              size="large"
-              onClick={() => aiConversation.startConversation()}
-              startIcon={
-                <MicIcon
+            <>
+              {!settings.language ? (
+                <Stack
                   sx={{
-                    fontSize: "30px",
-                    width: "30px",
-                    height: "30px",
+                    maxWidth: "400px",
+                    gap: "20px",
                   }}
-                />
-              }
-              sx={{
-                padding: "20px 50px",
-              }}
-            >
-              Start Practice
-            </Button>
+                >
+                  <Typography variant="h5">Select language to learn</Typography>
+                  <LangSelector
+                    value={settings.language}
+                    onDone={(lang) => settings.setLanguage(lang)}
+                    confirmButtonLabel="Continue"
+                  />
+                  <Typography variant="caption">
+                    You can change the language later in the settings
+                  </Typography>
+                </Stack>
+              ) : (
+                <Button
+                  variant="contained"
+                  size="large"
+                  onClick={() => aiConversation.startConversation()}
+                  startIcon={
+                    <MicIcon
+                      sx={{
+                        fontSize: "30px",
+                        width: "30px",
+                        height: "30px",
+                      }}
+                    />
+                  }
+                  sx={{
+                    padding: "20px 50px",
+                  }}
+                >
+                  Start Practice
+                </Button>
+              )}
+            </>
           )}
 
           {!!aiConversation.errorInitiating && (
@@ -159,68 +181,71 @@ export function Conversation() {
           )}
         </StarContainer>
       )}
-      <Stack
-        sx={{
-          alignItems: "center",
-        }}
-      >
-        <Stack sx={{ padding: "20px", width: "100%", maxWidth: "1200px", marginTop: "00px" }}>
-          <Stack
-            sx={{
-              flexDirection: "row",
-              gap: "20px",
-            }}
-          >
-            <Card
-              sx={{
-                width: "100%",
-                padding: "20px",
-                gap: "10px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-              }}
-            >
-              <Typography variant="h3">
-                {new Intl.NumberFormat().format(usage.tokenUsed)}
-              </Typography>
-              <Typography variant="caption">Tokens used</Typography>
-            </Card>
 
-            <Card
+      {settings.language && (
+        <Stack
+          sx={{
+            alignItems: "center",
+          }}
+        >
+          <Stack sx={{ padding: "20px", width: "100%", maxWidth: "1200px", marginTop: "00px" }}>
+            <Stack
               sx={{
-                width: "100%",
-                padding: "20px",
-                gap: "10px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
+                flexDirection: "row",
+                gap: "20px",
               }}
             >
-              <Typography variant="h3">
-                ${new Intl.NumberFormat().format(usage.tokenUsedPrice)}
-              </Typography>
-              <Typography variant="caption">AI price</Typography>
-            </Card>
+              <Card
+                sx={{
+                  width: "100%",
+                  padding: "20px",
+                  gap: "10px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                }}
+              >
+                <Typography variant="h3">
+                  {new Intl.NumberFormat().format(usage.tokenUsed)}
+                </Typography>
+                <Typography variant="caption">Tokens used</Typography>
+              </Card>
 
-            <Card
-              sx={{
-                width: "100%",
-                padding: "20px",
-                gap: "10px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-              }}
-            >
-              <Typography variant="h3">
-                ${new Intl.NumberFormat().format(usage.tokenUsedPrice * 2)}
-              </Typography>
-              <Typography variant="caption">Price for user (+100%)</Typography>
-            </Card>
+              <Card
+                sx={{
+                  width: "100%",
+                  padding: "20px",
+                  gap: "10px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                }}
+              >
+                <Typography variant="h3">
+                  ${new Intl.NumberFormat().format(usage.tokenUsedPrice)}
+                </Typography>
+                <Typography variant="caption">AI price</Typography>
+              </Card>
+
+              <Card
+                sx={{
+                  width: "100%",
+                  padding: "20px",
+                  gap: "10px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                }}
+              >
+                <Typography variant="h3">
+                  ${new Intl.NumberFormat().format(usage.tokenUsedPrice * 2)}
+                </Typography>
+                <Typography variant="caption">Price for user (+100%)</Typography>
+              </Card>
+            </Stack>
           </Stack>
         </Stack>
-      </Stack>
+      )}
     </Stack>
   );
 }

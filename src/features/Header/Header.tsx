@@ -12,18 +12,23 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-  Modal,
   Stack,
   Typography,
 } from "@mui/material";
-import { Cookie, LogOutIcon, MessageCircleQuestion, ReceiptText, X } from "lucide-react";
+import { Cookie, Languages, LogOutIcon, MessageCircleQuestion, ReceiptText, X } from "lucide-react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import MailIcon from "@mui/icons-material/Mail";
+import { useSettings } from "../Settings/useSettings";
+import { fullEnglishLanguageName } from "@/common/lang";
+import { CustomModal } from "../Modal/CustomModal";
+import { LangSelector } from "../Lang/LangSelector";
 
 export function Header() {
   const auth = useAuth();
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
+  const [isShowLangSelector, setIsShowLangSelector] = useState(false);
   const [isShowHelpModal, setIsShowHelpModal] = useState(false);
+  const settings = useSettings();
 
   const userPhoto = auth.userInfo?.photoURL || "";
   const userName = auth.userInfo?.displayName || "";
@@ -96,6 +101,22 @@ export function Header() {
         >
           <MenuItem
             onClick={() => {
+              setIsShowLangSelector(true);
+              setMenuAnchor(null);
+            }}
+          >
+            <ListItemIcon>
+              <Languages size="20px" />
+            </ListItemIcon>
+            <ListItemText>
+              {settings.language
+                ? `${fullEnglishLanguageName[settings.language]} | Change language`
+                : "Set language to learn"}
+            </ListItemText>
+          </MenuItem>
+
+          <MenuItem
+            onClick={() => {
               setIsShowHelpModal(true);
               setMenuAnchor(null);
             }}
@@ -122,136 +143,133 @@ export function Header() {
         </Menu>
       </Stack>
 
-      <Modal
-        open={isShowHelpModal}
-        onClose={() => {
-          setIsShowHelpModal(false);
-        }}
+      <CustomModal
+        isOpen={isShowLangSelector}
+        onClose={() => setIsShowLangSelector(false)}
+        width="400px"
       >
+        <Typography id="modal-modal-title" variant="h4" component="h2">
+          Language to learn
+        </Typography>
         <Stack
           sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "600px",
-            bgcolor: "background.paper",
-            borderRadius: "16px",
-            padding: "30px 40px 60px 40px",
-            alignItems: "flex-start",
-            gap: "30px",
+            width: "100%",
           }}
         >
-          <IconButton
-            sx={{ position: "absolute", top: "10px", right: "10px" }}
-            onClick={() => setIsShowHelpModal(false)}
-          >
-            <X />
-          </IconButton>
+          <LangSelector
+            value={settings.language}
+            onDone={(lang) => {
+              settings.setLanguage(lang);
+              setIsShowLangSelector(false);
+            }}
+            confirmButtonLabel="Save"
+          />
+        </Stack>
+      </CustomModal>
 
-          <Typography id="modal-modal-title" variant="h4" component="h2">
-            Need help?
-          </Typography>
+      <CustomModal isOpen={isShowHelpModal} onClose={() => setIsShowHelpModal(false)}>
+        <Typography id="modal-modal-title" variant="h4" component="h2">
+          Need help?
+        </Typography>
 
+        <Stack
+          sx={{
+            flexDirection: "row",
+            gap: "50px",
+            width: "100%",
+          }}
+        >
           <Stack
+            gap={"10px"}
             sx={{
-              flexDirection: "row",
-              gap: "50px",
               width: "100%",
             }}
           >
-            <Stack
-              gap={"10px"}
-              sx={{
-                width: "100%",
-              }}
-            >
-              <Typography>Contacts:</Typography>
+            <Typography>Contacts:</Typography>
 
-              <Stack gap={"10px"}>
-                <Stack
-                  sx={{
-                    alignItems: "center",
-                    flexDirection: "row",
-                    gap: "10px",
-                  }}
-                >
-                  <MailIcon
-                    sx={{
-                      width: "25px",
-                      height: "25px",
-                    }}
-                  />
-                  <Typography>
-                    <Link href="mailto:dmowski.alex@gmail.com">dmowski.alex@gmail.com</Link>
-                  </Typography>
-                </Stack>
-
-                <Stack
-                  sx={{
-                    alignItems: "center",
-                    flexDirection: "row",
-                    gap: "10px",
-                  }}
-                >
-                  <InstagramIcon
-                    sx={{
-                      width: "25px",
-                      height: "25px",
-                    }}
-                  />
-                  <Typography>
-                    <Link href="https://www.instagram.com/dmowskii/">dmowskii</Link>
-                  </Typography>
-                </Stack>
-              </Stack>
-            </Stack>
-
-            <Stack
-              gap={"10px"}
-              sx={{
-                width: "100%",
-              }}
-            >
-              <Typography
+            <Stack gap={"10px"}>
+              <Stack
                 sx={{
-                  opacity: 1,
+                  alignItems: "center",
+                  flexDirection: "row",
+                  gap: "10px",
                 }}
               >
-                Legal:
-              </Typography>
-
-              <Stack gap={"10px"}>
-                <Stack
+                <MailIcon
                   sx={{
-                    alignItems: "center",
-                    flexDirection: "row",
-                    gap: "10px",
+                    width: "25px",
+                    height: "25px",
                   }}
-                >
-                  <ReceiptText />
-                  <Typography>
-                    <Link href="mailto:dmowski.alex@gmail.com">Terms of Use</Link>
-                  </Typography>
-                </Stack>
+                />
+                <Typography>
+                  <Link href="mailto:dmowski.alex@gmail.com">dmowski.alex@gmail.com</Link>
+                </Typography>
+              </Stack>
 
-                <Stack
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  flexDirection: "row",
+                  gap: "10px",
+                }}
+              >
+                <InstagramIcon
                   sx={{
-                    alignItems: "center",
-                    flexDirection: "row",
-                    gap: "10px",
+                    width: "25px",
+                    height: "25px",
                   }}
-                >
-                  <Cookie />
-                  <Typography>
-                    <Link href="https://www.instagram.com/dmowskii/">Privacy Policy</Link>
-                  </Typography>
-                </Stack>
+                />
+                <Typography>
+                  <Link href="https://www.instagram.com/dmowskii/">dmowskii</Link>
+                </Typography>
+              </Stack>
+            </Stack>
+          </Stack>
+
+          <Stack
+            gap={"10px"}
+            sx={{
+              width: "100%",
+            }}
+          >
+            <Typography
+              sx={{
+                opacity: 1,
+              }}
+            >
+              Legal:
+            </Typography>
+
+            <Stack gap={"10px"}>
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  flexDirection: "row",
+                  gap: "10px",
+                }}
+              >
+                <ReceiptText />
+                <Typography>
+                  <Link href="mailto:dmowski.alex@gmail.com">Terms of Use</Link>
+                </Typography>
+              </Stack>
+
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  flexDirection: "row",
+                  gap: "10px",
+                }}
+              >
+                <Cookie />
+                <Typography>
+                  <Link href="https://www.instagram.com/dmowskii/">Privacy Policy</Link>
+                </Typography>
               </Stack>
             </Stack>
           </Stack>
         </Stack>
-      </Modal>
+      </CustomModal>
     </Stack>
   );
 }
