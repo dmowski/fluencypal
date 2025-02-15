@@ -1,3 +1,5 @@
+import { TextField } from "@mui/material";
+
 interface TextareaProps {
   value: string;
   onChange: (value: string) => void;
@@ -6,18 +8,13 @@ interface TextareaProps {
 
 export const Textarea: React.FC<TextareaProps> = ({ value, onChange, onSubmit }) => {
   return (
-    <textarea
-      className={[
-        `rounded`,
-        `border`,
-        `px-3 py-3`,
-        `border outline-none`,
-        `text-black`,
-        `w-[600px] min-h-[60px] max-h-[200px]`,
-      ].join(" ")}
+    <TextField
+      sx={{
+        width: "600px",
+        maxWidth: "90vw",
+      }}
       value={value}
-      // @ts-expect-error - New prop fieldSizing
-      style={{ fieldSizing: "content" }}
+      multiline
       placeholder="Type your message here..."
       onChange={(e) => onChange(e.target.value)}
       onKeyDown={(e) => {

@@ -9,15 +9,16 @@ interface MicroButton {
 export const MicroButton = ({ isPlaying, isMuted, onClick }: MicroButton) => {
   return (
     <button
-      className="animate-fade-in"
       style={{
         width: "80px",
         height: "80px",
         filter: isMuted ? "grayscale(100%)" : "none",
         cursor: "pointer",
         position: "relative",
+        backgroundColor: "transparent",
+        border: "none",
       }}
-      onClick={() => onClick}
+      onClick={() => onClick()}
     >
       {isMuted && (
         <div

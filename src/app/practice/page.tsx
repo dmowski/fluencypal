@@ -7,8 +7,8 @@ import { Header } from "@/features/Header/Header";
 export default function Home() {
   return (
     <AuthProvider>
+      <Header />
       <main>
-        <Header />
         <Conversation />
       </main>
     </AuthProvider>

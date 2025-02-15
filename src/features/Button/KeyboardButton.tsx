@@ -10,15 +10,21 @@ export const KeyboardButton: React.FC<KeyboardButtonProps> = ({ isEnabled, onCli
     <button
       style={{
         backgroundColor: isEnabled ? "#0f4564" : "transparent",
+        width: "50px",
+        height: "50px",
+        position: "relative",
+        cursor: "pointer",
+        border: "none",
+        outline: "none",
+        borderRadius: "50%",
+        padding: "0",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
-      className={[
-        "w-[60px] h-[60px] relative cursor-pointer",
-        "rounded-full flex justify-center items-center",
-        "animate-fade-in",
-      ].join(" ")}
       onClick={() => onClick()}
     >
-      <Keyboard />
+      <Keyboard color="#fff" />
     </button>
   );
 };

@@ -4,13 +4,16 @@ import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../Markdown/Markdown";
 import { useState } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { Google } from "iconsax-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
-import { GlassButton } from "../Button/GlassButton";
 import { Textarea } from "../Input/Textarea";
-import { SendMessageButton } from "../Button/SendMessageButton";
 import { KeyboardButton } from "../Button/KeyboardButton";
+import { Button, Card, IconButton, Paper, Stack, Typography } from "@mui/material";
+import { SignInForm } from "../Auth/SignInForm";
+import { StarContainer } from "../Layout/StarContainer";
+import { SendHorizontal } from "lucide-react";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import MicIcon from "@mui/icons-material/Mic";
 
 export function Conversation() {
   const auth = useAuth();
@@ -23,148 +26,148 @@ export function Conversation() {
     setUserMessage("");
   };
 
+  if (!auth.isAuthorized) {
+    return <SignInForm />;
+  }
+
   return (
-    <div className="flex flex-col items-center justify-center gap-10 min-h-screen">
-      <div className="flex flex-col items-center justify-center w-full gap-2">
-        <TalkingWaves inActive={aiConversation.isAiSpeaking} />
+    <Stack>
+      <TalkingWaves inActive={aiConversation.isAiSpeaking} />
+      {aiConversation.isStarted ? (
+        <Stack
+          sx={{
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "40px",
+            width: "100%",
+          }}
+        >
+          {aiConversation.isClosing && !aiConversation.isClosed && (
+            <Typography variant="h4">Finishing the Lesson...</Typography>
+          )}
 
-        {aiConversation.isStarted ? (
-          <div className="flex flex-col items-center justify-center relative gap-[40px] w-full">
-            {aiConversation.isClosing && !aiConversation.isClosed && (
-              <h2>Finishing the Lesson...</h2>
-            )}
-
+          <Stack
+            sx={{
+              height: "calc(100vh - 300px)",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             {aiConversation.conversation
               .filter((message) => message.isBot)
               .filter((_, index, arr) => index >= arr.length - 1)
               .map((message, index) => {
                 return (
-                  <div
+                  <Stack
                     key={message.text + index}
-                    className={[
-                      "flex flex-col items-center gap-4 text-white",
-                      "max-w-[400px]",
-                      "text-center text-[#c8e2f2]",
-                      "transform scale-110",
-                    ].join(" ")}
+                    sx={{
+                      transform: "scale(1.1)",
+                    }}
                   >
                     <Markdown>{message.text || ""}</Markdown>
-                  </div>
+                  </Stack>
                 );
               })}
+          </Stack>
 
-            {aiConversation.conversation.length > 0 && aiConversation.isShowUserInput && (
-              <div
-                style={{
-                  animationDelay: "0s",
-                  animationDuration: "0.1s",
+          {aiConversation.conversation.length > 0 && aiConversation.isShowUserInput && (
+            <Stack
+              sx={{
+                alignItems: "flex-start",
+                justifyContent: "center",
+                gap: "10px",
+                flexDirection: "row",
+              }}
+            >
+              <Textarea value={userMessage} onChange={setUserMessage} onSubmit={submitMessage} />
+              <IconButton disabled={!userMessage} onClick={submitMessage}>
+                <SendHorizontal />
+              </IconButton>
+            </Stack>
+          )}
+
+          {aiConversation.conversation.length > 0 && (
+            <Stack
+              style={{
+                animationDelay: "0.5s",
+              }}
+              sx={{
+                alignItems: "center",
+                flexDirection: "row",
+                gap: "10px",
+              }}
+            >
+              <MicroButton
+                isMuted={!!aiConversation.isMuted}
+                isPlaying={aiConversation.isUserSpeaking}
+                onClick={() => {
+                  console.log("toggleMute", aiConversation.isMuted);
+                  aiConversation.toggleMute(!aiConversation.isMuted);
                 }}
-                className={[
-                  "fixed bottom-[190px] left-0 right-0 w-full h-auto",
-                  "flex flex-row justify-center items-start gap-4",
-                  "z-[100] animate-fade-in",
-                  "opacity-0",
-                ].join(" ")}
-              >
-                <Textarea value={userMessage} onChange={setUserMessage} onSubmit={submitMessage} />
-                <SendMessageButton disabled={!userMessage} onClick={submitMessage} />
-              </div>
-            )}
+              />
+              <KeyboardButton
+                isEnabled={!!aiConversation.isShowUserInput}
+                onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
+              />
+            </Stack>
+          )}
 
-            {aiConversation.conversation.length > 0 && (
-              <div
-                style={{
-                  animationDelay: "0.5s",
-                }}
-                className={[
-                  "fixed bottom-[60px] left-0 right-0 w-full h-auto",
-                  "flex flex-row justify-center items-center",
-                  "z-[100] gap-[10px] animate-fade-in",
-                  "opacity-0",
-                ].join(" ")}
-              >
-                <MicroButton
-                  isMuted={!!aiConversation.isMuted}
-                  isPlaying={aiConversation.isUserSpeaking}
-                  onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
-                />
-                <KeyboardButton
-                  isEnabled={!!aiConversation.isShowUserInput}
-                  onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
-                />
-              </div>
+          {aiConversation.conversation.length > 0 &&
+            !aiConversation.isClosed &&
+            !aiConversation.isClosing && (
+              <Typography variant="caption">
+                When you get tired, just say <b>"Let's finish the Lesson"</b>
+              </Typography>
             )}
+        </Stack>
+      ) : (
+        <StarContainer>
+          {aiConversation.isInitializing ? (
+            <Typography>Loading...</Typography>
+          ) : (
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => aiConversation.startConversation()}
+              startIcon={<MicIcon />}
+            >
+              Start Practice
+            </Button>
+          )}
 
-            {aiConversation.conversation.length > 3 &&
-              !aiConversation.isClosed &&
-              !aiConversation.isClosing && (
-                <h2
-                  className={[
-                    "animate-fade-in duration-[5s] delay-[10s]",
-                    "fixed bottom-[25px] left-0 right-0 text-center",
-                    "text-[13px] font-extralight pt-0",
-                    "text-[#c8e2f2]",
-                  ].join(" ")}
-                >
-                  When you get tired, just say <b>"Let's finish the Lesson"</b>
-                </h2>
-              )}
-          </div>
-        ) : (
-          <div
-            className="flex flex-col items-center justify-center relative "
-            style={{
-              width: "min(88vh, 90vw)",
-              height: "min(88vh, 90vw)",
+          {!!aiConversation.errorInitiating && (
+            <Typography color="error">{aiConversation.errorInitiating}</Typography>
+          )}
+        </StarContainer>
+      )}
+      <Stack
+        sx={{
+          alignItems: "center",
+        }}
+      >
+        <Stack sx={{ padding: "20px", width: "100%", maxWidth: "1200px", marginTop: "00px" }}>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              gap: "20px",
             }}
           >
-            {aiConversation.isInitializing ? (
-              <p
-                className="font-[300] text-xl pt-[100px] "
-                style={{
-                  color: "#c8e2f2",
-                }}
-              >
-                Loading...
-              </p>
-            ) : (
-              <>
-                <div
-                  style={{
-                    backgroundImage: `url("./star.webp")`,
-                  }}
-                  className={[
-                    "absolute top-[50px] left-0 w-full h-full",
-                    "bg-contain z-[-1]",
-                    "opacity-0 animate-fade-in duration-[5s] delay-[10s]",
-                  ].join(" ")}
-                />
-                <div className="flex flex-col items-center justify-center gap-[20px] pt-[20px]">
-                  {auth.isAuthorized ? (
-                    <GlassButton
-                      onClick={() => aiConversation.startConversation()}
-                      animationDelay="0.2s"
-                    >
-                      Start Conversation
-                    </GlassButton>
-                  ) : (
-                    <GlassButton onClick={() => auth.signInWithGoogle()} animationDelay="0.2s">
-                      <Google size="22" color="#fff" variant="Bold" />
-                      <p className="pt-[1px]">Continue with google</p>
-                    </GlassButton>
-                  )}
-
-                  {!!aiConversation.errorInitiating && (
-                    <p className="text-sm text-red-500 text-center">
-                      {aiConversation.errorInitiating}
-                    </p>
-                  )}
-                </div>
-              </>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
+            <Card
+              sx={{
+                width: "100%",
+                padding: "20px",
+                gap: "10px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+              }}
+            >
+              <Typography variant="h3">0</Typography>
+              <Typography variant="caption">Tokens used</Typography>
+            </Card>
+          </Stack>
+        </Stack>
+      </Stack>
+    </Stack>
   );
 }
