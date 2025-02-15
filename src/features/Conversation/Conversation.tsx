@@ -3,11 +3,12 @@
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../Markdown/Markdown";
 import { useState } from "react";
-import { Keyboard, LogOut, SendHorizontal } from "lucide-react";
+import { Keyboard, SendHorizontal } from "lucide-react";
 import { useAuth } from "../Auth/useAuth";
 import { Google } from "iconsax-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
+import { Header } from "../Header/Header";
 
 export function Conversation() {
   const auth = useAuth();
@@ -22,29 +23,7 @@ export function Conversation() {
 
   return (
     <div className="flex flex-col items-center justify-center gap-10 min-h-screen">
-      <img
-        src="./logo.png"
-        alt="logo"
-        className="fixed w-[100px] h-auto left-[10px] top-[20px] z-[100]"
-      />
-
-      {auth.isAuthorized && (
-        <button
-          onClick={() => auth.logout()}
-          className={[
-            `text-[#eef6f9] hover:text-white`,
-            `hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]`,
-            `font-[350] text-[16px]`,
-            `opacity-90 hover:opacity-100`,
-            "flex items-center justify-center gap-2",
-            "fixed",
-            `t-[10px] r-[10px] w-auto max-w-[90%] p-2`,
-          ].join(" ")}
-        >
-          <LogOut size="20" color="#fff" />
-          Logout
-        </button>
-      )}
+      <Header />
 
       <div className="flex flex-col items-center justify-center w-full gap-2">
         <div
