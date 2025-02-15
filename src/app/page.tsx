@@ -68,19 +68,16 @@ export default function Home() {
                   `text-[#eef6f9] hover:text-white`,
                   `shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-[0_0_0_2px_rgba(255,255,255,1)]`,
                   `font-[250] text-[18px]`,
-                  `opacity-90 hover:opacity-100`,
+                  `opacity-0 hover:opacity-100`,
                   `animate-fade-in`,
                   "flex items-center justify-center gap-5",
+                  `w-[340px] max-w-[90%] px-10 py-5`,
+                  `rounded-md`,
+                  `box-border`,
+                  `bg-cover bg-center`,
                 ].join(" ")}
                 style={{
-                  padding: "20px 40px",
                   backgroundImage: `url("./button_bg.png")`,
-                  backgroundSize: "cover",
-                  boxSizing: "border-box",
-                  borderRadius: "4px",
-                  width: "340px",
-                  maxWidth: "90%",
-                  opacity: "0",
                   animationDelay: "1.5s",
                 }}
               >
