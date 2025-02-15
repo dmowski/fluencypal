@@ -25,16 +25,22 @@ const markdownComponents: MarkdownToJSX.Overrides = {
 
   p: ({ children }) => (
     <Typography
-      variant="body2"
       sx={{
         padding: "3px 0 5px 0",
+        fontSize: "20px",
       }}
     >
       {children}
     </Typography>
   ),
   span: ({ children }) => (
-    <Typography variant="body2" component={"span"}>
+    <Typography
+      sx={{
+        padding: "3px 0 5px 0",
+        fontSize: "20px",
+      }}
+      component={"span"}
+    >
       {children}
     </Typography>
   ),

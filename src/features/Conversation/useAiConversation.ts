@@ -7,12 +7,14 @@ import { sleep } from "openai/core.mjs";
 import { AiRtcConfig, AiRtcInstance, initAiRtc } from "./rtc";
 import { useLocalStorage } from "react-use";
 import { useChatHistory } from "./useChatHistory";
+import { useUsage } from "../Usage/useUsage";
 
 export type ConversationMode = "talk";
 
 export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);
   const history = useChatHistory();
+  const usage = useUsage();
   const [isStarted, setIsStarted] = useState(false);
   const [areasToImprove, setAreasToImprove] = useState<string>("");
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
@@ -129,6 +131,11 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
       setIsAiSpeaking,
       setIsUserSpeaking,
       isMuted: isMuted || false,
+      onAddUsage: ({ totalUsedTokens, usageId }) =>
+        usage.setUsageLogs((prev) => [
+          ...prev,
+          { id: usageId, tokens: totalUsedTokens, createdAt: Date.now() },
+        ]),
     };
     return config;
   }, []);

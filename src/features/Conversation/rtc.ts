@@ -137,6 +137,7 @@ export interface AiRtcConfig {
   setIsAiSpeaking: (speaking: boolean) => void;
   setIsUserSpeaking: (speaking: boolean) => void;
   isMuted: boolean;
+  onAddUsage: ({}: { usageId: string; totalUsedTokens: number }) => void;
 }
 
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
@@ -151,6 +152,7 @@ export const initAiRtc = async ({
   setIsUserSpeaking,
   isMuted,
   onAddDelta,
+  onAddUsage,
 }: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 
@@ -195,6 +197,15 @@ export const initAiRtc = async ({
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
     //console.log("Event type:", type);
+    //console.log(JSON.stringify(event, null, 2));
+
+    if (type === "response.done") {
+      const usageId = event?.event_id || "";
+      const totalUsedTokens = event?.response?.usage?.total_tokens || 0;
+      if (usageId && totalUsedTokens) {
+        onAddUsage({ usageId, totalUsedTokens });
+      }
+    }
 
     if (type === "response.audio_transcript.delta") {
       const id = event?.response_id as string;
@@ -282,8 +293,6 @@ export const initAiRtc = async ({
   dataChannel.addEventListener("open", openHandler);
 
   const closeHandler = () => {
-    console.log("closeHandler");
-
     if (dataChannel) {
       dataChannel.removeEventListener("message", messageHandler);
       dataChannel.removeEventListener("open", openHandler);

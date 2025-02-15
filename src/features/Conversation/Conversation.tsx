@@ -12,14 +12,15 @@ import { Button, Card, IconButton, Paper, Stack, Typography } from "@mui/materia
 import { SignInForm } from "../Auth/SignInForm";
 import { StarContainer } from "../Layout/StarContainer";
 import { SendHorizontal } from "lucide-react";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MicIcon from "@mui/icons-material/Mic";
+import { useUsage } from "../Usage/useUsage";
 
 export function Conversation() {
   const auth = useAuth();
 
   const aiConversation = useAiConversation();
   const [userMessage, setUserMessage] = useState("");
+  const usage = useUsage();
   const submitMessage = () => {
     if (!userMessage) return;
     aiConversation.addUserMessage(userMessage);
@@ -48,9 +49,11 @@ export function Conversation() {
 
           <Stack
             sx={{
-              height: "calc(100vh - 300px)",
+              height: "calc(100vh - 500px)",
               alignItems: "center",
               justifyContent: "center",
+              maxWidth: "1200px",
+              padding: "10px",
             }}
           >
             {aiConversation.conversation
@@ -61,7 +64,7 @@ export function Conversation() {
                   <Stack
                     key={message.text + index}
                     sx={{
-                      transform: "scale(1.1)",
+                      maxWidth: "650px",
                     }}
                   >
                     <Markdown>{message.text || ""}</Markdown>
@@ -100,10 +103,7 @@ export function Conversation() {
               <MicroButton
                 isMuted={!!aiConversation.isMuted}
                 isPlaying={aiConversation.isUserSpeaking}
-                onClick={() => {
-                  console.log("toggleMute", aiConversation.isMuted);
-                  aiConversation.toggleMute(!aiConversation.isMuted);
-                }}
+                onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
               />
               <KeyboardButton
                 isEnabled={!!aiConversation.isShowUserInput}
@@ -162,7 +162,9 @@ export function Conversation() {
                 alignItems: "flex-start",
               }}
             >
-              <Typography variant="h3">0</Typography>
+              <Typography variant="h3">
+                {new Intl.NumberFormat().format(usage.totalUsage?.totalUsageTokensUsed || 0)}
+              </Typography>
               <Typography variant="caption">Tokens used</Typography>
             </Card>
           </Stack>
