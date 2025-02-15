@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import {
   Avatar,
+  Button,
   Divider,
   IconButton,
   Link,
@@ -66,7 +67,7 @@ export function Header() {
           />
         </a>
 
-        {auth.isAuthorized && (
+        {auth.isAuthorized ? (
           <IconButton
             onClick={(e) => {
               setMenuAnchor(e.currentTarget);
@@ -74,6 +75,10 @@ export function Header() {
           >
             <Avatar alt={userName} src={userPhoto} />
           </IconButton>
+        ) : (
+          <Button href="/practice" variant="outlined">
+            Sign in
+          </Button>
         )}
 
         <Menu

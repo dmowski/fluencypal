@@ -1,3 +1,4 @@
+"use client";
 import { FirebaseError } from "@firebase/util";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Context, JSX, ReactNode, createContext, useContext, useMemo } from "react";
