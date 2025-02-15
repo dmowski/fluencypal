@@ -10,6 +10,7 @@ import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
 import { GlassButton } from "../Button/GlassButton";
 import { Textarea } from "../Input/Textarea";
+import { SendMessageButton } from "../Button/SendMessageButton";
 
 export function Conversation() {
   const auth = useAuth();
@@ -72,23 +73,7 @@ export function Conversation() {
                     onSubmit={submitMessage}
                   />
 
-                  <button
-                    className={[
-                      `animate-fade-in rounded-[40px]`,
-                      !userMessage
-                        ? `bg-[#aab3b7] cursor-not-allowed`
-                        : `bg-[#8bc2d9] hover:bg-[#77a3b5]`,
-                      `p-3 mt-1`,
-                    ].join(" ")}
-                    style={{
-                      animationDelay: "0s",
-                      animationDuration: "0.1s",
-                    }}
-                    disabled={!userMessage}
-                    onClick={submitMessage}
-                  >
-                    <SendHorizontal color="#0f4564" size={"20px"} />
-                  </button>
+                  <SendMessageButton disabled={!userMessage} onClick={submitMessage} />
                 </div>
               </div>
             )}
