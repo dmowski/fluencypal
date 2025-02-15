@@ -9,6 +9,7 @@ import { Google } from "iconsax-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
 import { GlassButton } from "../Button/GlassButton";
+import { Textarea } from "../Input/Textarea";
 
 export function Conversation() {
   const auth = useAuth();
@@ -65,30 +66,12 @@ export function Conversation() {
                 ].join(" ")}
               >
                 <div className="flex flex-row items-start gap-4 ml-[20px]">
-                  <textarea
-                    className={[
-                      `rounded`,
-                      `border`,
-                      `px-3 py-3`,
-                      `border outline-none`,
-                      `text-black`,
-                      `w-[600px] min-h-[60px] max-h-[200px]`,
-                    ].join(" ")}
+                  <Textarea
                     value={userMessage}
-                    // @ts-expect-error - New prop fieldSizing
-                    style={{ fieldSizing: "content" }}
-                    placeholder="Type your message here..."
-                    onChange={(e) => setUserMessage(e.target.value)}
-                    onKeyDown={(e) => {
-                      const isEnter = e.key === "Enter";
-                      const isCtrl = e.ctrlKey;
-                      const isCommand = e.metaKey;
-                      if (isEnter && (isCtrl || isCommand)) {
-                        e.preventDefault();
-                        submitMessage();
-                      }
-                    }}
+                    onChange={setUserMessage}
+                    onSubmit={submitMessage}
                   />
+
                   <button
                     className={[
                       `animate-fade-in rounded-[40px]`,
