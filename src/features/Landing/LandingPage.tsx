@@ -65,7 +65,7 @@ export default function LandingPage() {
                   maxWidth: "90vw",
                 }}
               />
-              <Typography>AI TEACHER TO LEARN ENGLISH</Typography>
+              <Typography>AI TEACHER TO LEARN LANGUAGES</Typography>
             </Stack>
             <Button
               sx={{
