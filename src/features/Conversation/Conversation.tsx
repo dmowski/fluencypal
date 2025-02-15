@@ -36,23 +36,25 @@ export function Conversation() {
   }
 
   return (
-    <Stack>
+    <Stack sx={{ gap: "40px" }}>
       <TalkingWaves inActive={aiConversation.isAiSpeaking} />
       {aiConversation.isStarted ? (
         <Stack
           sx={{
             alignItems: "center",
             justifyContent: "center",
-            gap: "40px",
+            gap: "10px",
             width: "100%",
           }}
         >
           <Stack
             sx={{
-              height: "calc(100vh - 500px)",
+              height: "calc(100vh - 600px)",
+              minHeight: "300px",
               alignItems: "center",
               justifyContent: "center",
               maxWidth: "1200px",
+              width: "100%",
               padding: "10px",
             }}
           >
@@ -78,7 +80,7 @@ export function Conversation() {
 
           <Stack
             sx={{
-              alignItems: "flex-start",
+              alignItems: "flex-end",
               justifyContent: "center",
               gap: "10px",
               flexDirection: "row",
