@@ -67,18 +67,22 @@ export function Header() {
           />
         </a>
 
-        {auth.isAuthorized ? (
-          <IconButton
-            onClick={(e) => {
-              setMenuAnchor(e.currentTarget);
-            }}
-          >
-            <Avatar alt={userName} src={userPhoto} />
-          </IconButton>
-        ) : (
-          <Button href="/practice" variant="outlined">
-            Sign in
-          </Button>
+        {!auth.loading && (
+          <>
+            {auth.isAuthorized ? (
+              <IconButton
+                onClick={(e) => {
+                  setMenuAnchor(e.currentTarget);
+                }}
+              >
+                <Avatar alt={userName} src={userPhoto} />
+              </IconButton>
+            ) : (
+              <Button href="/practice" variant="outlined">
+                Sign in
+              </Button>
+            )}
+          </>
         )}
 
         <Menu
