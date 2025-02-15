@@ -5,47 +5,7 @@ export default function Home() {
     <main>
       <div className="flex flex-col items-center justify-center gap-10 min-h-screen">
         <div className="flex flex-col items-center justify-center w-full gap-2">
-          <div
-            className={[
-              `animate-fade-in`,
-              `pointer-events-none h-[110vh] fixed w-[500px] left-0 -bottom-[50px]`,
-            ].join(" ")}
-            style={{
-              animationDelay: "0.9s",
-              opacity: "0",
-            }}
-          >
-            <div
-              style={{
-                opacity: 0.1,
-                transition: "opacity 0.3s ease",
-              }}
-            >
-              <TalkingWaves />
-            </div>
-          </div>
-
-          <div
-            className={[
-              `animate-fade-in`,
-              `pointer-events-none h-[110vh] fixed w-[500px] right-[0px] -bottom-[0px]`,
-              "opacity-[0.1]",
-            ].join(" ")}
-            style={{
-              transform: "scaleX(-1)",
-              animationDelay: "0.8s",
-              opacity: "0",
-            }}
-          >
-            <div
-              style={{
-                opacity: 0.1,
-                transition: "opacity 0.3s ease",
-              }}
-            >
-              <TalkingWaves />
-            </div>
-          </div>
+          <TalkingWaves />
 
           <div
             className="flex flex-col items-center justify-center relative "
