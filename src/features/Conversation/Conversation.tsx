@@ -7,7 +7,6 @@ import { Keyboard, LogOut, SendHorizontal } from "lucide-react";
 import { useAuth } from "../Auth/useAuth";
 import { Google } from "iconsax-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
-import { MicroAnimation } from "../Animations/MicroAnimation";
 import { MicroButton } from "../Button/MicroButton";
 
 export function Conversation() {
@@ -26,15 +25,7 @@ export function Conversation() {
       <img
         src="./logo.png"
         alt="logo"
-        className=""
-        style={{
-          width: "100px",
-          height: "auto",
-          position: "fixed",
-          left: "10px",
-          top: "20px",
-          zIndex: 100,
-        }}
+        className="fixed w-[100px] h-auto left-[10px] top-[20px] z-[100]"
       />
 
       {auth.isAuthorized && (
@@ -107,11 +98,9 @@ export function Conversation() {
             }}
           >
             {aiConversation.isClosing && !aiConversation.isClosed && (
-              <>
-                <h2>
-                  <b>Finishing the Lesson...</b>
-                </h2>
-              </>
+              <h2>
+                <b>Finishing the Lesson...</b>
+              </h2>
             )}
 
             {aiConversation.conversation
