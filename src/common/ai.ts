@@ -10,4 +10,4 @@ export const MODELS = {
 
 // https://openai.com/api/pricing/
 // Realtime API
-export const pricePerMillionOutputAudioTokens = 80;
+export const pricePerMillionOutputAudioTokens = 80 / 2;
