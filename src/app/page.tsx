@@ -15,43 +15,41 @@ export default function Home() {
             }}
           >
             <div
-              className="opacity-0 animate-fade-in duration-[5s] delay-[10s]"
+              className={[
+                "opacity-0 animate-fade-in duration-[5s] delay-[10s]",
+                "absolute top-[50px] left-0 right-0 bottom-0",
+                "h-full w-full",
+                "bg-cover bg-center",
+                "-z-[1]",
+              ].join(" ")}
               style={{
-                position: "absolute",
-                top: "50px",
-                left: "0",
-                width: "100%",
-                height: "100%",
                 backgroundImage: `url("./star.webp")`,
-                backgroundSize: "contain",
-                zIndex: -1,
               }}
             />
             <div className="flex flex-col items-center justify-center gap-[20px] pt-[20px]">
               <img
                 src="./logo.png"
                 alt="logo"
-                className="h-auto pt-[0px] animate-fade-in duration-[5s] delay-[10s]"
+                className={[
+                  "h-auto pt-[0px] animate-fade-in duration-[5s] delay-[10s]",
+                  "opacity-0",
+                  `w-full max-w-[500px]`,
+                ].join(" ")}
                 style={{
-                  opacity: "0",
                   animationDelay: "0.5s",
-                  width: "100%",
-                  maxWidth: "500px",
                 }}
               />
               <div
                 style={{
-                  width: "20px",
-                  height: "23px",
-                  position: "absolute",
-                  top: "30px",
-                  left: "0",
-                  right: "0",
-                  margin: "auto",
-                  opacity: "0",
                   animationDelay: "0.5s",
                 }}
-                className="animate-fade-in duration-[5s] delay-[10s]"
+                className={[
+                  "absolute top-[30px] left-0 right-0 bottom-0",
+                  "opacity-0",
+                  `w-[20px] h-[23px]`,
+                  "m-auto",
+                  "animate-fade-in duration-[5s] delay-[10s]",
+                ].join(" ")}
               >
                 <img src="/cross.png" alt="" className="opacity-50" />
               </div>
