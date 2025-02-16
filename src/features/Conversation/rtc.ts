@@ -203,6 +203,7 @@ export const initAiRtc = async ({
       const usageId = event?.event_id || "";
       const totalUsedTokens = event?.response?.usage?.total_tokens || 0;
       if (usageId && totalUsedTokens) {
+        console.log(JSON.stringify(event?.response?.usage));
         onAddUsage({ usageId, totalUsedTokens });
       }
     }
