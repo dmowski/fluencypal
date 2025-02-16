@@ -2,7 +2,7 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../Markdown/Markdown";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
@@ -11,20 +11,23 @@ import { KeyboardButton } from "../Button/KeyboardButton";
 import { Button, Card, IconButton, Stack, Typography } from "@mui/material";
 import { SignInForm } from "../Auth/SignInForm";
 import { StarContainer } from "../Layout/StarContainer";
-import { SendHorizontal } from "lucide-react";
+import { SendHorizontal, Sparkles } from "lucide-react";
 import MicIcon from "@mui/icons-material/Mic";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { LangSelector } from "../Lang/LangSelector";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import { useNotifications, NotificationsProvider } from "@toolpad/core/useNotifications";
+import { correctUserAnswer } from "./correctAnswer";
 
 export function Conversation() {
   const auth = useAuth();
   const settings = useSettings();
   const notifications = useNotifications();
   const aiConversation = useAiConversation();
-  const [userMessage, setUserMessage] = useState("");
+  const [userMessage, setUserMessage] = useState(
+    "Hello. How are you? Я хорошо. Today i med my friens."
+  );
   const usage = useUsage();
   const submitMessage = () => {
     if (!userMessage) return;
@@ -32,12 +35,65 @@ export function Conversation() {
     setUserMessage("");
   };
 
-  if (auth.loading || settings.loading) {
-    return <></>;
-  }
-  if (!auth.isAuthorized) {
-    return <SignInForm />;
-  }
+  // userMessageId, analyzeResults
+  const inProgressMark = "Analyzing...";
+  const [analyzeResults, setAnalyzeResults] = useState<Record<string, string | undefined>>({});
+
+  const lastBotMessage = aiConversation.conversation
+    .filter((message) => message.isBot)
+    .find((_, index, arr) => index >= arr.length - 1);
+
+  const lastUserMessage = aiConversation.conversation
+    .filter((message) => !message.isBot)
+    .find((_, index, arr) => index >= arr.length - 1);
+
+  const getMessageBeforeId = (id: string) => {
+    const messageIndex = aiConversation.conversation.findIndex((message) => message.id === id);
+    if (messageIndex === -1 || messageIndex === 0) return;
+
+    return aiConversation.conversation[messageIndex - 1];
+  };
+
+  const analyzeMessages = async (messageId: string) => {
+    if (!settings.language) throw new Error("Language is not set");
+    const isAlreadyAnalyzed = analyzeResults[messageId];
+    if (isAlreadyAnalyzed) return;
+
+    setAnalyzeResults((prev) => ({
+      ...prev,
+      [messageId]: inProgressMark,
+    }));
+
+    const messageBefore = getMessageBeforeId(messageId);
+    const message = aiConversation.conversation.find((message) => message.id === messageId);
+    if (!messageBefore || !message) return;
+
+    const correctedMessageResult = await correctUserAnswer({
+      botMessages: messageBefore,
+      userMessages: message,
+      language: settings.language,
+    });
+
+    if (correctedMessageResult.correctAnswer) {
+      setAnalyzeResults((prev) => ({
+        ...prev,
+        [messageId]: correctedMessageResult.correctAnswer,
+      }));
+    } else {
+      setAnalyzeResults((prev) => ({
+        ...prev,
+        [messageId]: "No corrections found",
+      }));
+    }
+  };
+
+  useEffect(() => {
+    if (!lastUserMessage?.id) return;
+    analyzeMessages(lastUserMessage.id);
+  }, [lastUserMessage?.id]);
+
+  if (auth.loading || settings.loading) return <></>;
+  if (!auth.isAuthorized) return <SignInForm />;
   return (
     <Stack sx={{ gap: "40px" }}>
       <TalkingWaves inActive={aiConversation.isAiSpeaking} />
@@ -55,7 +111,8 @@ export function Conversation() {
               height: "calc(100vh - 450px)",
               minHeight: "300px",
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent: "flex-end",
+
               maxWidth: "1200px",
               width: "100%",
               padding: "10px",
@@ -64,21 +121,56 @@ export function Conversation() {
             {aiConversation.isClosing && !aiConversation.isClosed && (
               <Typography variant="h4">Finishing the Lesson...</Typography>
             )}
-            {aiConversation.conversation
-              .filter((message) => message.isBot)
-              .filter((_, index, arr) => index >= arr.length - 1)
-              .map((message, index) => {
-                return (
+
+            <Stack
+              sx={{
+                width: "650px",
+                gap: "20px",
+              }}
+            >
+              {lastUserMessage &&
+                !aiConversation.isAiSpeaking &&
+                analyzeResults[lastUserMessage.id] &&
+                analyzeResults[lastUserMessage.id] !== inProgressMark && (
                   <Stack
-                    key={message.text + index}
                     sx={{
-                      width: "650px",
+                      gap: "10px",
                     }}
                   >
-                    <Markdown>{message.text || ""}</Markdown>
+                    <Stack>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          opacity: 0.5,
+                        }}
+                      >
+                        Corrected Version of: {lastUserMessage.text}
+                      </Typography>
+                      <Stack
+                        sx={{
+                          opacity: 0.9,
+                        }}
+                      >
+                        <Markdown>{`${analyzeResults[lastUserMessage.id]}\n`}</Markdown>
+                      </Stack>
+                    </Stack>
                   </Stack>
-                );
-              })}
+                )}
+
+              {lastBotMessage && (
+                <Stack>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      opacity: 0.5,
+                    }}
+                  >
+                    Teacher:
+                  </Typography>
+                  <Markdown>{lastBotMessage.text || ""}</Markdown>
+                </Stack>
+              )}
+            </Stack>
           </Stack>
 
           <Stack

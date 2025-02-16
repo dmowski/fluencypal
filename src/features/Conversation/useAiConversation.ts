@@ -20,7 +20,6 @@ export const useAiConversation = () => {
   const language = settings.language ? fullEnglishLanguageName[settings.language] : "English";
   const usage = useUsage();
   const [isStarted, setIsStarted] = useState(false);
-  const [areasToImprove, setAreasToImprove] = useState<string>("");
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
 
   const [conversation, setConversation] = useState<ChatMessage[]>([]);
@@ -140,13 +139,6 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
     return config;
   }, [language]);
 
-  const analyzeMe = async () => {
-    const instruction =
-      "Switch to Teacher mode, ask user to rephrase his statement correctly. Give examples and explain the rules.";
-    setAreasToImprove("Updated instruction: " + instruction);
-    await communicator?.updateSessionTrigger(instruction);
-  };
-
   const startConversation = async () => {
     try {
       setIsClosing(false);
@@ -181,11 +173,9 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
 
   return {
     isInitializing,
-    analyzeMe,
     isStarted,
     startConversation,
     stopConversation,
-    areasToImprove,
     conversation,
     errorInitiating,
     isClosing,

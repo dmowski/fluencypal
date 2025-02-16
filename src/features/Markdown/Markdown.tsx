@@ -39,7 +39,6 @@ const markdownComponents: MarkdownToJSX.Overrides = {
         padding: "3px 0 5px 0",
         fontSize: "20px",
       }}
-      component={"span"}
     >
       {children}
     </Typography>
@@ -83,6 +82,7 @@ const markdownComponents: MarkdownToJSX.Overrides = {
       }}
     />
   ),
+  small: ({ children }) => <Typography>{children}</Typography>,
   em: ({ children }) => <em>{children}</em>,
   strong: ({ children }) => <strong>{children}</strong>,
   blockquote: ({ children }) => <blockquote>{children}</blockquote>,
