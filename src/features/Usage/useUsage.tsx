@@ -14,11 +14,12 @@ import { useAuth } from "../Auth/useAuth";
 import { doc, DocumentReference, setDoc } from "firebase/firestore";
 import { firestore } from "../Firebase/init";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { UsageEvent } from "@/common/ai";
+import { RealTimeModel, UsageEvent } from "@/common/ai";
 
 export interface UsageLog {
   usageId: string;
   usageEvent: UsageEvent;
+  model: RealTimeModel;
   price: number;
   createdAt: number;
 }

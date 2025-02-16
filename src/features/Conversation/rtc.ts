@@ -142,6 +142,7 @@ export interface AiRtcConfig {
     usageEvent: UsageEvent;
     price: number;
     createdAt: number;
+    model: RealTimeModel;
   }) => void;
 }
 
@@ -209,7 +210,7 @@ export const initAiRtc = async ({
       const usageEvent: UsageEvent | null = event?.response?.usage;
       if (usageEvent) {
         const price = calculateUsagePrice(usageEvent, model);
-        onAddUsage({ usageId, usageEvent, price, createdAt: Date.now() });
+        onAddUsage({ usageId, usageEvent, price, createdAt: Date.now(), model });
       }
     }
 
