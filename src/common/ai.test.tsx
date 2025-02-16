@@ -26,12 +26,10 @@ describe("calculateUsagePrice", () => {
   it("should correctly calculate the usage price", () => {
     const price = calculateUsagePrice(mockUsageEvent, model);
 
-    // Ensure price is a finite number
     expect(price).toBeDefined();
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
 
-    // Uncomment when you have the expected value
-    // expect(price).toBeCloseTo(0.00064, 5);
+    expect(price).toBe(0.007585);
   });
 });
