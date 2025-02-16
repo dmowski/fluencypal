@@ -138,7 +138,7 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
     const config: Record<ConversationMode, AiRtcConfig> = {
       talk: {
         ...baseConfig,
-        model: MODELS.SMALL_CONVERSATION,
+        model: MODELS.REALTIME_CONVERSATION,
         initInstruction: `You are an ${language} teacher. Your name is "Bruno". Your role is to make user talks.
 Ask the student to describe their day.
 Do not teach or explain rules—just talk.
@@ -169,7 +169,7 @@ For every user message, you must reply with three parts **in one response**:
 
 Speak in a clear, friendly tone. Use only ${language}. Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
 
-Start the conversation with: "Hello... I am here!" (in a friendly and calm way, no other words needed for the initial greeting).
+Start the conversation with: "Hello... I am here!" (in ${language} lang) in a friendly and calm way, no other words needed for the initial greeting).
 `,
         aiTools: baseAiTools,
         onOpen,
@@ -181,7 +181,7 @@ Start the conversation with: "Hello... I am here!" (in a friendly and calm way, 
         onAddUsage: (usageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
       },
       beginner: {
-        model: MODELS.SMALL_CONVERSATION,
+        model: MODELS.REALTIME_CONVERSATION,
         initInstruction: `You are an ${language} teacher. Your name is "Bruno". The user is a beginner who needs simple, clear communication.
 
 For every user message, reply with **three parts** in a single response:
@@ -206,7 +206,7 @@ Remember:
 - Do not overwhelm the user.
 - Keep the conversation upbeat and encouraging.
 
-Start the conversation with: "Hello... I am here!" (in a friendly and calm way, no other words needed for the initial greeting).
+Start the conversation with: "Hello... I am here!" (in ${language} lang) (in a friendly and calm way, no other words needed for the initial greeting).
 `,
         aiTools: baseAiTools,
         onOpen,
