@@ -8,12 +8,16 @@ import { AiRtcConfig, AiRtcInstance, initAiRtc } from "./rtc";
 import { useLocalStorage } from "react-use";
 import { useChatHistory } from "./useChatHistory";
 import { useUsage } from "../Usage/useUsage";
+import { useSettings } from "../Settings/useSettings";
+import { fullEnglishLanguageName } from "@/common/lang";
 
 export type ConversationMode = "talk";
 
 export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);
   const history = useChatHistory();
+  const settings = useSettings();
+  const language = settings.language ? fullEnglishLanguageName[settings.language] : "English";
   const usage = useUsage();
   const [isStarted, setIsStarted] = useState(false);
   const [areasToImprove, setAreasToImprove] = useState<string>("");
@@ -73,7 +77,7 @@ export const useAiConversation = () => {
   const aiRtcConfig: AiRtcConfig = useMemo(() => {
     const config: AiRtcConfig = {
       model: MODELS.REALTIME_CONVERSATION,
-      initInstruction: `You are an English teacher. Your name is "Bruno". Your role is to make user talks.
+      initInstruction: `You are an ${language} teacher. Your name is "Bruno". Your role is to make user talks.
 Ask the student to describe their day.
 Do not teach or explain rules—just talk.
 You should be friendly and engaging.
@@ -82,7 +86,7 @@ If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
 Start the conversation with: "Hello... I am here!". Say it in a friendly and calm way, no other words needed for the first hi.
 After the first user response, introduce yourself, your role of english teacher and ask user to describe their day.
-Speak slowly and clearly.
+Speak slowly and clearly. Use ${language} language. Try to speed on user's level.
 `,
       aiTools: [
         {
@@ -138,7 +142,7 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
         ]),
     };
     return config;
-  }, []);
+  }, [language]);
 
   const analyzeMe = async () => {
     const instruction =

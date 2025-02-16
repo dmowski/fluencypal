@@ -70,7 +70,7 @@ export function Conversation() {
                   <Stack
                     key={message.text + index}
                     sx={{
-                      maxWidth: "650px",
+                      width: "650px",
                     }}
                   >
                     <Markdown>{message.text || ""}</Markdown>
