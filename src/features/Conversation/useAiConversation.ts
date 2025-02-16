@@ -152,31 +152,13 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
   };
 
   const startConversation = async () => {
-    if (2 > 20) {
-      setIsInitializing(true);
-      setTimeout(() => {
-        setIsInitializing(false);
-        setIsStarted(true);
-        setTimeout(() => {
-          setConversation([
-            {
-              id: "1",
-              isBot: true,
-              text: "",
-            },
-          ]);
-        }, 500);
-      }, 500);
-      return;
-    }
-
     try {
       setIsClosing(false);
       setIsClosed(false);
       setErrorInitiating("");
       setIsInitializing(true);
       const conversation = await initAiRtc(aiRtcConfig);
-      history.createConversation(conversationId);
+      history.createConversation(conversationId, settings.language || "en");
       setCommunicator(conversation);
     } catch (e) {
       console.log(e);
