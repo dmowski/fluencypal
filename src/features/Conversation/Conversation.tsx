@@ -50,7 +50,7 @@ export function Conversation() {
         >
           <Stack
             sx={{
-              height: "calc(100vh - 600px)",
+              height: "calc(100vh - 450px)",
               minHeight: "300px",
               alignItems: "center",
               justifyContent: "center",
