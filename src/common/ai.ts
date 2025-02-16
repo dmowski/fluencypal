@@ -1,6 +1,6 @@
 export type RealTimeModel = "gpt-4o-realtime-preview" | "gpt-4o-mini-realtime-preview";
 
-const MAIN_CONVERSATION_MODEL: RealTimeModel = "gpt-4o-realtime-preview";
+const MAIN_CONVERSATION_MODEL: RealTimeModel = "gpt-4o-mini-realtime-preview";
 
 export const MODELS = {
   REALTIME_CONVERSATION: MAIN_CONVERSATION_MODEL,

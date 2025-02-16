@@ -33,6 +33,7 @@ export interface TotalUsageInfo {
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
   setUsageLogs: Dispatch<SetStateAction<UsageLog[]>>;
+  addBalance: (amount: number) => void;
 }
 
 const UsageContext = createContext<UsageContextType | null>(null);
@@ -97,7 +98,19 @@ function useProvideUsage(): UsageContextType {
     balance: totalUsage?.balance || 0,
   };
 
-  return { ...totalUsageClean, usageLogs, setUsageLogs };
+  const addBalance = (amount: number) => {
+    if (!userId || !totalUsageDoc) return;
+
+    const newTotalUsage: TotalUsageInfo = {
+      balance: (totalUsage?.balance || 0) + amount,
+      usedBalance: totalUsage?.usedBalance || 0,
+      lastUpdatedAt: Date.now(),
+    };
+
+    setDoc(totalUsageDoc, newTotalUsage);
+  };
+
+  return { ...totalUsageClean, usageLogs, setUsageLogs, addBalance };
 }
 
 export function UsageProvider({ children }: { children: ReactNode }): JSX.Element {

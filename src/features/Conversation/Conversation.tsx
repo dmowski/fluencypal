@@ -8,7 +8,7 @@ import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
 import { Textarea } from "../Input/Textarea";
 import { KeyboardButton } from "../Button/KeyboardButton";
-import { Button, Card, IconButton, Paper, Stack, Typography } from "@mui/material";
+import { Button, Card, IconButton, Stack, Typography } from "@mui/material";
 import { SignInForm } from "../Auth/SignInForm";
 import { StarContainer } from "../Layout/StarContainer";
 import { SendHorizontal } from "lucide-react";
@@ -16,11 +16,13 @@ import MicIcon from "@mui/icons-material/Mic";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { LangSelector } from "../Lang/LangSelector";
+import AddCardIcon from "@mui/icons-material/AddCard";
+import { useNotifications, NotificationsProvider } from "@toolpad/core/useNotifications";
 
 export function Conversation() {
   const auth = useAuth();
   const settings = useSettings();
-
+  const notifications = useNotifications();
   const aiConversation = useAiConversation();
   const [userMessage, setUserMessage] = useState("");
   const usage = useUsage();
@@ -208,7 +210,7 @@ export function Conversation() {
                 <Typography variant="h3">
                   ${new Intl.NumberFormat().format(usage.usedBalance)}
                 </Typography>
-                <Typography variant="caption">AI price</Typography>
+                <Typography variant="caption">Total used</Typography>
               </Card>
 
               <Card
@@ -222,9 +224,26 @@ export function Conversation() {
                 }}
               >
                 <Typography variant="h3">
-                  ${new Intl.NumberFormat().format(usage.usedBalance * 2)}
+                  ${new Intl.NumberFormat().format(usage.balance)}
                 </Typography>
-                <Typography variant="caption">Price for user (+100%)</Typography>
+                <Typography variant="caption">My Balance</Typography>
+                <Button
+                  onClick={() => {
+                    const amount =
+                      usage.balance >= 0
+                        ? parseFloat(prompt("Enter amount to update", `${usage.balance}`) || "0")
+                        : Math.abs(usage.balance);
+                    usage.addBalance(amount);
+                    notifications.show(`Added $${amount} to your balance`, {
+                      severity: "success",
+                      autoHideDuration: 7000,
+                    });
+                  }}
+                  startIcon={<AddCardIcon />}
+                  variant="contained"
+                >
+                  Buy More
+                </Button>
               </Card>
             </Stack>
           </Stack>
