@@ -135,11 +135,7 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
       setIsAiSpeaking,
       setIsUserSpeaking,
       isMuted: isMuted || false,
-      onAddUsage: ({ totalUsedTokens, usageId }) =>
-        usage.setUsageLogs((prev) => [
-          ...prev,
-          { id: usageId, tokens: totalUsedTokens, createdAt: Date.now() },
-        ]),
+      onAddUsage: (usageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
     };
     return config;
   }, [language]);

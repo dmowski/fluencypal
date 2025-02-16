@@ -8,10 +8,6 @@ export const MODELS = {
   gpt_4o: "gpt-4o",
 };
 
-// https://openai.com/api/pricing/
-// Realtime API
-export const pricePerMillionOutputAudioTokens = 80 / 2;
-
 export interface UsageLog {
   id: string;
   tokens: number;
@@ -40,6 +36,8 @@ interface UsagePrice {
   audio_output: number;
 }
 
+// https://openai.com/api/pricing/
+// Realtime API
 export const modalPricePerMillionTokens: Record<RealTimeModel, UsagePrice> = {
   "gpt-4o-realtime-preview": {
     text_input: 5,

@@ -14,23 +14,22 @@ import { useAuth } from "../Auth/useAuth";
 import { doc, DocumentReference, setDoc } from "firebase/firestore";
 import { firestore } from "../Firebase/init";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { pricePerMillionOutputAudioTokens } from "@/common/ai";
+import { UsageEvent } from "@/common/ai";
 
 export interface UsageLog {
-  id: string;
-  tokens: number;
+  usageId: string;
+  usageEvent: UsageEvent;
+  price: number;
   createdAt: number;
 }
 
 export interface TotalUsageInfo {
   lastUpdatedAt: number;
-  totalUsageTokensUsed: number;
-  totalUsageTokensAvailable: number;
+  usedBalance: number; // $
+  balance: number; // $
 }
 
-interface UsageContextType {
-  tokenUsed: number;
-  tokenUsedPrice: number;
+interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
   setUsageLogs: Dispatch<SetStateAction<UsageLog[]>>;
 }
@@ -44,42 +43,60 @@ function useProvideUsage(): UsageContextType {
 
   const totalUsageDoc = useMemo(() => {
     return userId
-      ? (doc(firestore, `users/${userId}/usage/total`) as DocumentReference<TotalUsageInfo>)
+      ? (doc(firestore, `users/${userId}/stats/usage`) as DocumentReference<TotalUsageInfo>)
       : null;
   }, [userId]);
 
   const [totalUsage] = useDocumentData<TotalUsageInfo>(totalUsageDoc);
 
+  const saveLogs = async (logs: UsageLog[]) => {
+    if (!userId) return;
+
+    await Promise.all(
+      logs.map(async (log) => {
+        const docRef = doc(
+          firestore,
+          `users/${userId}/usageLogs/${log.usageId}`
+        ) as DocumentReference<UsageLog>;
+        setDoc(docRef, log, { merge: true });
+      })
+    );
+  };
+
   useEffect(() => {
-    if (!userId || !totalUsage) {
+    if (!userId) {
       return;
     }
 
-    const lastUpdated = totalUsage.lastUpdatedAt || 0;
+    const lastUpdated = totalUsage?.lastUpdatedAt || 0;
     const now = Date.now();
     const newUsageLogs = usageLogs.filter((log) => log.createdAt > lastUpdated);
     if (newUsageLogs.length === 0) {
       return;
     }
 
-    const totalTokensFromNewLogs = newUsageLogs.reduce((acc, log) => acc + log.tokens, 0);
+    saveLogs(newUsageLogs);
+
+    const newUsed = newUsageLogs.reduce((acc, log) => acc + log.price, 0);
+
     const newTotalUsage: TotalUsageInfo = {
-      ...totalUsage,
-      totalUsageTokensUsed: (totalUsage.totalUsageTokensUsed || 0) + totalTokensFromNewLogs,
-      totalUsageTokensAvailable: totalUsage.totalUsageTokensAvailable || 0,
+      balance: (totalUsage?.balance || 0) - newUsed,
+      usedBalance: (totalUsage?.usedBalance || 0) + newUsed,
       lastUpdatedAt: now,
     };
 
     if (totalUsageDoc) {
-      console.log("Update total usage", newTotalUsage);
       setDoc(totalUsageDoc, newTotalUsage);
     }
   }, [totalUsage, usageLogs, userId, totalUsageDoc]);
 
-  const tokenUsed = totalUsage?.totalUsageTokensUsed || 0;
-  const tokenUsedPrice = (tokenUsed / 1_000_000) * pricePerMillionOutputAudioTokens;
+  const totalUsageClean: TotalUsageInfo = {
+    lastUpdatedAt: totalUsage?.lastUpdatedAt || 0,
+    usedBalance: totalUsage?.usedBalance || 0,
+    balance: totalUsage?.balance || 0,
+  };
 
-  return { tokenUsed, tokenUsedPrice, usageLogs, setUsageLogs };
+  return { ...totalUsageClean, usageLogs, setUsageLogs };
 }
 
 export function UsageProvider({ children }: { children: ReactNode }): JSX.Element {

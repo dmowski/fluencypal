@@ -206,23 +206,7 @@ export function Conversation() {
                 }}
               >
                 <Typography variant="h3">
-                  {new Intl.NumberFormat().format(usage.tokenUsed)}
-                </Typography>
-                <Typography variant="caption">Tokens used</Typography>
-              </Card>
-
-              <Card
-                sx={{
-                  width: "100%",
-                  padding: "20px",
-                  gap: "10px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                }}
-              >
-                <Typography variant="h3">
-                  ${new Intl.NumberFormat().format(usage.tokenUsedPrice)}
+                  ${new Intl.NumberFormat().format(usage.usedBalance)}
                 </Typography>
                 <Typography variant="caption">AI price</Typography>
               </Card>
@@ -238,7 +222,7 @@ export function Conversation() {
                 }}
               >
                 <Typography variant="h3">
-                  ${new Intl.NumberFormat().format(usage.tokenUsedPrice * 2)}
+                  ${new Intl.NumberFormat().format(usage.usedBalance * 2)}
                 </Typography>
                 <Typography variant="caption">Price for user (+100%)</Typography>
               </Card>

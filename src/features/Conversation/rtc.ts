@@ -1,5 +1,5 @@
 "use client";
-import { RealTimeModel } from "@/common/ai";
+import { calculateUsagePrice, RealTimeModel, UsageEvent } from "@/common/ai";
 import { getEphemeralKey } from "./getEphemeralKey";
 import { ChatMessage } from "@/features/Conversation/types";
 import { sleep } from "@/libs/sleep";
@@ -137,7 +137,12 @@ export interface AiRtcConfig {
   setIsAiSpeaking: (speaking: boolean) => void;
   setIsUserSpeaking: (speaking: boolean) => void;
   isMuted: boolean;
-  onAddUsage: ({}: { usageId: string; totalUsedTokens: number }) => void;
+  onAddUsage: ({}: {
+    usageId: string;
+    usageEvent: UsageEvent;
+    price: number;
+    createdAt: number;
+  }) => void;
 }
 
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
@@ -201,10 +206,10 @@ export const initAiRtc = async ({
 
     if (type === "response.done") {
       const usageId = event?.event_id || "";
-      const totalUsedTokens = event?.response?.usage?.total_tokens || 0;
-      if (usageId && totalUsedTokens) {
-        console.log(JSON.stringify(event?.response?.usage));
-        onAddUsage({ usageId, totalUsedTokens });
+      const usageEvent: UsageEvent | null = event?.response?.usage;
+      if (usageEvent) {
+        const price = calculateUsagePrice(usageEvent, model);
+        onAddUsage({ usageId, usageEvent, price, createdAt: Date.now() });
       }
     }
 
