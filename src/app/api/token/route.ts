@@ -1,10 +1,15 @@
-import { MODELS } from "@/common/ai";
-
-export async function GET() {
+export async function GET(request: Request) {
   const openAIKey = process.env.OPENAI_API_KEY;
   if (!openAIKey) {
     return Response.json({
       error: "Unable to create ephemeral token. Open AI env key is missing",
+    });
+  }
+
+  const model = new URL(request.url).searchParams.get("model");
+  if (!model) {
+    return Response.json({
+      error: "Model is required",
     });
   }
 
@@ -15,7 +20,7 @@ export async function GET() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: MODELS.REALTIME_CONVERSATION,
+      model: model,
       voice: "verse",
     }),
   });

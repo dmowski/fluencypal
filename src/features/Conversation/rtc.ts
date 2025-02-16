@@ -31,7 +31,7 @@ const sendSdpOffer = async (
   model: RealTimeModel
 ): Promise<string> => {
   try {
-    const ephemeralKey = await getEphemeralKey();
+    const ephemeralKey = await getEphemeralKey(model);
     const baseUrl = "https://api.openai.com/v1/realtime";
     const sdpResponse = await fetch(`${baseUrl}?model=${model}`, {
       method: "POST",
