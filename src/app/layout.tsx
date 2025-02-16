@@ -5,6 +5,7 @@ import { AuthProvider } from "@/features/Auth/useAuth";
 import { Roboto } from "next/font/google";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
+import { SettingsProvider } from "@/features/Settings/useSettings";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -30,9 +31,11 @@ export default function RootLayout({
       </head>
       <body className={roboto.variable}>
         <AuthProvider>
-          <AppRouterCacheProvider options={{ key: "css" }}>
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
-          </AppRouterCacheProvider>
+          <SettingsProvider>
+            <AppRouterCacheProvider options={{ key: "css" }}>
+              <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            </AppRouterCacheProvider>
+          </SettingsProvider>
         </AuthProvider>
       </body>
     </html>

@@ -72,7 +72,7 @@ const SuggestInput: React.FC<SuggestInputProps> = ({
       }
       renderGroup={(params) => {
         return (
-          <Stack>
+          <Stack key={params.key}>
             <Typography
               sx={{
                 padding: "8px 10px",

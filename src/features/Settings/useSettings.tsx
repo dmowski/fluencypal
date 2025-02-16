@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+"use client";
+import { createContext, useContext, useMemo, ReactNode, JSX } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { doc, DocumentReference, setDoc } from "firebase/firestore";
 import { firestore } from "../Firebase/init";
@@ -6,7 +7,19 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 import { UserSettings } from "@/common/user";
 import { SupportedLanguage } from "@/common/lang";
 
-export const useSettings = () => {
+interface SettingsContextType {
+  language: SupportedLanguage | null;
+  loading: boolean;
+  setLanguage: (language: SupportedLanguage) => void;
+}
+
+export const settingsContext = createContext<SettingsContextType>({
+  language: null,
+  loading: true,
+  setLanguage: async () => void 0,
+});
+
+function useProvideSettings(): SettingsContextType {
   const auth = useAuth();
   const userId = auth.uid;
 
@@ -14,15 +27,30 @@ export const useSettings = () => {
     return userId ? (doc(firestore, `users/${userId}`) as DocumentReference<UserSettings>) : null;
   }, [userId]);
 
-  const [userSettings, loading] = useDocumentData(userSettingsDoc);
+  const [userSettings, loading] = useDocumentData<UserSettings>(userSettingsDoc);
 
-  const setLanguage = (language: SupportedLanguage) => {
+  const setLanguage = async (language: SupportedLanguage) => {
     if (!userSettingsDoc) return;
-
-    setDoc(userSettingsDoc, { language }, { merge: true });
+    await setDoc(userSettingsDoc, { language }, { merge: true });
   };
 
-  const language = userSettings?.language || null;
+  return {
+    language: userSettings?.language || null,
+    loading,
+    setLanguage,
+  };
+}
 
-  return { language, loading, setLanguage };
+export function SettingsProvider({ children }: { children: ReactNode }): JSX.Element {
+  const settings = useProvideSettings();
+
+  return <settingsContext.Provider value={settings}>{children}</settingsContext.Provider>;
+}
+
+export const useSettings = (): SettingsContextType => {
+  const context = useContext(settingsContext);
+  if (!context) {
+    throw new Error("useSettings must be used within a SettingsProvider");
+  }
+  return context;
 };
