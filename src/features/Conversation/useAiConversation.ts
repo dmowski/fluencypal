@@ -4,14 +4,14 @@ import { ChatMessage } from "@/features/Conversation/types";
 import { MODELS } from "@/common/ai";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { sleep } from "openai/core.mjs";
-import { AiRtcConfig, AiRtcInstance, initAiRtc } from "./rtc";
+import { AiRtcConfig, AiRtcInstance, AiTool, initAiRtc } from "./rtc";
 import { useLocalStorage } from "react-use";
 import { useChatHistory } from "./useChatHistory";
-import { useUsage } from "../Usage/useUsage";
+import { UsageLog, useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { fullEnglishLanguageName } from "@/common/lang";
 
-export type ConversationMode = "talk";
+export type ConversationMode = "talk" | "talk-and-correct" | "beginner";
 
 export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);
@@ -73,10 +73,73 @@ export const useAiConversation = () => {
     };
   }, []);
 
-  const aiRtcConfig: AiRtcConfig = useMemo(() => {
-    const config: AiRtcConfig = {
+  const baseAiTools: AiTool[] = useMemo(() => {
+    return [
+      {
+        name: "finish_the_lesson",
+        handler: async (args) => {
+          setIsClosing(true);
+          communicatorRef.current?.toggleMute(true);
+          const newInstruction = `Generate summary of the lesson. Show user's mistakes.
+Create a text user have to repeat on the next lesson. It will be a homework.`;
+          await communicatorRef.current?.updateSessionTrigger(newInstruction);
+          await sleep(2000);
+          communicatorRef.current?.addUserChatMessage(
+            "I am done for today. Create a text I have to repeat on the next lesson."
+          );
+          await sleep(1000);
+          await communicatorRef.current?.triggerAiResponse();
+          await sleep(1000);
+          setIsClosed(true);
+        },
+        type: "function",
+        description: "When the user wants to finish the lesson, call this function.",
+        parameters: {
+          type: "object",
+          properties: {},
+          required: [] as string[],
+        },
+      },
+    ];
+  }, [language]);
+
+  const onOpen = () => {
+    setTimeout(() => {
+      communicatorRef.current?.triggerAiResponse();
+      setIsInitializing(false);
+      setIsStarted(true);
+    }, 1000);
+  };
+
+  const onMessage = (message: ChatMessage) => {
+    setConversation((prev) => {
+      const isExisting = prev.find((m) => m.id === message.id);
+      if (isExisting) {
+        return prev.map((m) => (m.id === message.id ? message : m));
+      }
+      return [...prev, message];
+    });
+  };
+
+  const aiRtcConfigs: Record<ConversationMode, AiRtcConfig> = useMemo(() => {
+    const baseConfig = {
       model: MODELS.REALTIME_CONVERSATION,
-      initInstruction: `You are an ${language} teacher. Your name is "Bruno". Your role is to make user talks.
+      initInstruction: "",
+      aiTools: baseAiTools,
+      onOpen,
+      onMessage,
+      onAddDelta,
+      setIsAiSpeaking,
+      setIsUserSpeaking,
+      isMuted: isMuted || false,
+      onAddUsage: (usageLog: UsageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
+    };
+
+    const config: Record<ConversationMode, AiRtcConfig> = {
+      talk: {
+        ...baseConfig,
+        model: MODELS.SMALL_CONVERSATION,
+        initInstruction: `You are an ${language} teacher. Your name is "Bruno". Your role is to make user talks.
 Ask the student to describe their day.
 Do not teach or explain rules—just talk.
 You should be friendly and engaging.
@@ -87,64 +150,84 @@ Start the conversation with: "Hello... I am here!". Say it in a friendly and cal
 After the first user response, introduce yourself, your role of english teacher and ask user to describe their day.
 Speak slowly and clearly. Use ${language} language. Try to speed on user's level.
 `,
-      aiTools: [
-        {
-          name: "finish_the_lesson",
-          handler: async (args) => {
-            setIsClosing(true);
-            communicatorRef.current?.toggleMute(true);
-            const newInstruction = `Generate summary of the lesson. Show user's mistakes.
-Create a text user have to repeat on the next lesson. It will be a homework.`;
-            await communicatorRef.current?.updateSessionTrigger(newInstruction);
-            await sleep(2000);
-            communicatorRef.current?.addUserChatMessage(
-              "I am done for today. Create a text I have to repeat on the next lesson."
-            );
-            await sleep(1000);
-            await communicatorRef.current?.triggerAiResponse();
-            await sleep(1000);
-            setIsClosed(true);
-          },
-          type: "function",
-          description: "When the user wants to finish the lesson, call this function.",
-          parameters: {
-            type: "object",
-            properties: {},
-            required: [] as string[],
-          },
-        },
-      ],
-      onOpen: () => {
-        console.log("Data Channel opened");
-        setTimeout(() => {
-          communicatorRef.current?.triggerAiResponse();
-          setIsInitializing(false);
-          setIsStarted(true);
-        }, 1000);
       },
-      onMessage: (message) =>
-        setConversation((prev) => {
-          const isExisting = prev.find((m) => m.id === message.id);
-          if (isExisting) {
-            return prev.map((m) => (m.id === message.id ? message : m));
-          }
-          return [...prev, message];
-        }),
-      onAddDelta,
-      setIsAiSpeaking,
-      setIsUserSpeaking,
-      isMuted: isMuted || false,
-      onAddUsage: (usageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
+      "talk-and-correct": {
+        model: MODELS.REALTIME_CONVERSATION,
+        initInstruction: `You are an ${language} teacher. Your name is "Bruno". The user wants both a conversation *and* corrections.
+For every user message, you must reply with three parts **in one response**:
+
+1) **Response**: React naturally to the user's message. You can comment, show interest, or share a short thought. Keep it friendly and supportive.
+
+2) **Your corrected version**: 
+   - Start with the phrase "Your corrected version:"
+   - If the user made mistakes, show them using double underscores around the corrected parts (e.g., "I __am a__ doctor.").
+   - If the user's message was perfect, write a short phrase like "(No mistakes!)."
+
+3) **Question**:
+   - Ask a follow-up question that moves the conversation forward.
+   - Relate it to what the user said or the context, prompting them to elaborate or talk more.
+
+Speak in a clear, friendly tone. Use only ${language}. Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
+
+Start the conversation with: "Hello... I am here!" (in a friendly and calm way, no other words needed for the initial greeting).
+`,
+        aiTools: baseAiTools,
+        onOpen,
+        onMessage,
+        onAddDelta,
+        setIsAiSpeaking,
+        setIsUserSpeaking,
+        isMuted: isMuted || false,
+        onAddUsage: (usageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
+      },
+      beginner: {
+        model: MODELS.SMALL_CONVERSATION,
+        initInstruction: `You are an ${language} teacher. Your name is "Bruno". The user is a beginner who needs simple, clear communication.
+
+For every user message, reply with **three parts** in a single response:
+
+1) **Response**: 
+   - Greet or acknowledge the user's statement in a friendly, supportive way. 
+   - Use short, simple sentences and basic vocabulary.
+
+2) **Question**: 
+   - Ask a gentle, open-ended question related to the user's statement. 
+   - Keep it simple and avoid complex grammar or advanced vocabulary.
+
+3) **Example of Answer**: 
+   - Provide a short, sample answer that the user might give. 
+   - This helps them see how they could respond in ${language}. 
+   - Keep it very simple. For instance, "I went to the store."
+
+Remember:
+- Speak slowly and clearly, using only ${language}.
+- Use short sentences and simple words.
+- Avoid detailed grammar explanations. 
+- Do not overwhelm the user.
+- Keep the conversation upbeat and encouraging.
+
+Start the conversation with: "Hello... I am here!" (in a friendly and calm way, no other words needed for the initial greeting).
+`,
+        aiTools: baseAiTools,
+        onOpen,
+        onMessage,
+        onAddDelta,
+        setIsAiSpeaking,
+        setIsUserSpeaking,
+        isMuted: isMuted || false,
+        onAddUsage: (usageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
+      },
     };
     return config;
   }, [language]);
 
-  const startConversation = async () => {
+  const startConversation = async (mode: ConversationMode) => {
     try {
       setIsClosing(false);
       setIsClosed(false);
       setErrorInitiating("");
       setIsInitializing(true);
+      const aiRtcConfig = aiRtcConfigs[mode];
       const conversation = await initAiRtc(aiRtcConfig);
       history.createConversation(conversationId, settings.language || "en");
       setCommunicator(conversation);

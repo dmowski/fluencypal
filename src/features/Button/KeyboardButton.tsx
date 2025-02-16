@@ -9,9 +9,9 @@ export const KeyboardButton: React.FC<KeyboardButtonProps> = ({ isEnabled, onCli
   return (
     <button
       style={{
-        backgroundColor: isEnabled ? "#0f4564" : "transparent",
-        width: "50px",
-        height: "50px",
+        backgroundColor: isEnabled ? "#0f4564" : "rgba(255, 255, 255, 0.3)",
+        width: "47px",
+        height: "47px",
         position: "relative",
         cursor: "pointer",
         border: "none",
@@ -21,6 +21,9 @@ export const KeyboardButton: React.FC<KeyboardButtonProps> = ({ isEnabled, onCli
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        boxShadow: isEnabled
+          ? "0 0 0 4px rgba(18, 112, 166, 0.1)"
+          : "0 0 0 4px rgba(255, 255, 255, 0.2)",
       }}
       onClick={() => onClick()}
     >

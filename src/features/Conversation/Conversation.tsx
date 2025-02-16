@@ -17,17 +17,17 @@ import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { LangSelector } from "../Lang/LangSelector";
 import AddCardIcon from "@mui/icons-material/AddCard";
-import { useNotifications, NotificationsProvider } from "@toolpad/core/useNotifications";
+import { useNotifications } from "@toolpad/core/useNotifications";
 import { correctUserAnswer } from "./correctAnswer";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import ChildCareIcon from "@mui/icons-material/ChildCare";
 
 export function Conversation() {
   const auth = useAuth();
   const settings = useSettings();
   const notifications = useNotifications();
   const aiConversation = useAiConversation();
-  const [userMessage, setUserMessage] = useState(
-    "Hello. How are you? Я хорошо. Today i med my friens."
-  );
+  const [userMessage, setUserMessage] = useState("");
   const usage = useUsage();
   const submitMessage = () => {
     if (!userMessage) return;
@@ -35,7 +35,6 @@ export function Conversation() {
     setUserMessage("");
   };
 
-  // userMessageId, analyzeResults
   const inProgressMark = "Analyzing...";
   const [analyzeResults, setAnalyzeResults] = useState<Record<string, string | undefined>>({});
 
@@ -89,7 +88,7 @@ export function Conversation() {
 
   useEffect(() => {
     if (!lastUserMessage?.id) return;
-    analyzeMessages(lastUserMessage.id);
+    //analyzeMessages(lastUserMessage.id);
   }, [lastUserMessage?.id]);
 
   if (auth.loading || settings.loading) return <></>;
@@ -104,11 +103,11 @@ export function Conversation() {
             justifyContent: "center",
             gap: "10px",
             width: "100%",
+            height: "calc(100vh - 0px)",
           }}
         >
           <Stack
             sx={{
-              height: "calc(100vh - 450px)",
               minHeight: "300px",
               alignItems: "center",
               justifyContent: "flex-end",
@@ -175,7 +174,7 @@ export function Conversation() {
 
           <Stack
             sx={{
-              alignItems: "flex-end",
+              alignItems: "center",
               justifyContent: "center",
               gap: "10px",
               flexDirection: "row",
@@ -194,86 +193,142 @@ export function Conversation() {
 
           {aiConversation.conversation.length > 0 && (
             <Stack
-              style={{
-                animationDelay: "0.5s",
-              }}
               sx={{
-                alignItems: "center",
-                flexDirection: "row",
-                gap: "10px",
+                width: "100%",
+                maxWidth: "680px",
               }}
             >
-              <MicroButton
-                isMuted={!!aiConversation.isMuted}
-                isPlaying={aiConversation.isUserSpeaking}
-                onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
-              />
-              <KeyboardButton
-                isEnabled={!!aiConversation.isShowUserInput}
-                onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
-              />
+              <Stack
+                style={{
+                  animationDelay: "0.5s",
+                }}
+                sx={{
+                  alignItems: "center",
+                  flexDirection: "row",
+                  gap: "10px",
+                }}
+              >
+                <MicroButton
+                  isMuted={!!aiConversation.isMuted}
+                  isPlaying={aiConversation.isUserSpeaking}
+                  onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
+                />
+                <KeyboardButton
+                  isEnabled={!!aiConversation.isShowUserInput}
+                  onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
+                />
+
+                {aiConversation.conversation.length > 0 &&
+                  !aiConversation.isClosed &&
+                  !aiConversation.isClosing && (
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        padding: "0 15px",
+                        opacity: 0.7,
+                      }}
+                    >
+                      When you get tired, just say <b>"Let's finish the Lesson"</b>
+                    </Typography>
+                  )}
+              </Stack>
             </Stack>
           )}
-
-          {aiConversation.conversation.length > 0 &&
-            !aiConversation.isClosed &&
-            !aiConversation.isClosing && (
-              <Typography variant="caption">
-                When you get tired, just say <b>"Let's finish the Lesson"</b>
-              </Typography>
-            )}
         </Stack>
       ) : (
-        <StarContainer>
-          {aiConversation.isInitializing ? (
-            <Typography>Loading...</Typography>
-          ) : (
-            <>
-              {!settings.language ? (
-                <Stack
-                  sx={{
-                    maxWidth: "400px",
-                    gap: "20px",
-                  }}
-                >
-                  <Typography variant="h5">Select language to learn</Typography>
-                  <LangSelector
-                    value={settings.language}
-                    onDone={(lang) => settings.setLanguage(lang)}
-                    confirmButtonLabel="Continue"
-                  />
-                  <Typography variant="caption">
-                    You can change the language later in the settings
-                  </Typography>
-                </Stack>
-              ) : (
-                <Button
-                  variant="contained"
-                  size="large"
-                  onClick={() => aiConversation.startConversation()}
-                  startIcon={
-                    <MicIcon
-                      sx={{
-                        fontSize: "30px",
-                        width: "30px",
-                        height: "30px",
-                      }}
+        <Stack
+          sx={{
+            height: "calc(100vh - 0px)",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <StarContainer>
+            {aiConversation.isInitializing ? (
+              <Typography>Loading...</Typography>
+            ) : (
+              <>
+                {!settings.language ? (
+                  <Stack
+                    sx={{
+                      maxWidth: "400px",
+                      gap: "20px",
+                    }}
+                  >
+                    <Typography variant="h5">Select language to learn</Typography>
+                    <LangSelector
+                      value={settings.language}
+                      onDone={(lang) => settings.setLanguage(lang)}
+                      confirmButtonLabel="Continue"
                     />
-                  }
-                  sx={{
-                    padding: "20px 50px",
-                  }}
-                >
-                  Start Practice
-                </Button>
-              )}
-            </>
-          )}
+                    <Typography variant="caption">
+                      You can change the language later in the settings
+                    </Typography>
+                  </Stack>
+                ) : (
+                  <Stack
+                    gap={"10px"}
+                    sx={{
+                      width: "300px",
+                    }}
+                  >
+                    <Button
+                      variant="contained"
+                      onClick={() => aiConversation.startConversation("talk")}
+                      startIcon={
+                        <MicIcon
+                          sx={{
+                            fontSize: "30px",
+                            width: "30px",
+                            height: "30px",
+                          }}
+                        />
+                      }
+                    >
+                      Just talk
+                    </Button>
 
-          {!!aiConversation.errorInitiating && (
-            <Typography color="error">{aiConversation.errorInitiating}</Typography>
-          )}
-        </StarContainer>
+                    <Button
+                      variant="outlined"
+                      onClick={() => aiConversation.startConversation("talk-and-correct")}
+                      startIcon={
+                        <TrendingUpIcon
+                          sx={{
+                            fontSize: "30px",
+                            width: "30px",
+                            height: "30px",
+                          }}
+                        />
+                      }
+                    >
+                      Talk & Correct
+                    </Button>
+
+                    <Button
+                      variant="outlined"
+                      onClick={() => aiConversation.startConversation("beginner")}
+                      startIcon={
+                        <ChildCareIcon
+                          sx={{
+                            fontSize: "30px",
+                            width: "30px",
+                            height: "30px",
+                          }}
+                        />
+                      }
+                    >
+                      Beginner
+                    </Button>
+                  </Stack>
+                )}
+              </>
+            )}
+
+            {!!aiConversation.errorInitiating && (
+              <Typography color="error">{aiConversation.errorInitiating}</Typography>
+            )}
+          </StarContainer>
+        </Stack>
       )}
 
       {settings.language && (
