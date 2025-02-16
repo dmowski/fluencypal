@@ -1,5 +1,15 @@
 "use client";
-import { createContext, useContext, useEffect, useMemo, useState, ReactNode, JSX } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  ReactNode,
+  JSX,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { useAuth } from "../Auth/useAuth";
 import { doc, DocumentReference, setDoc } from "firebase/firestore";
 import { firestore } from "../Firebase/init";
@@ -22,7 +32,7 @@ interface UsageContextType {
   tokenUsed: number;
   tokenUsedPrice: number;
   usageLogs: UsageLog[];
-  setUsageLogs: (logs: UsageLog[]) => void;
+  setUsageLogs: Dispatch<SetStateAction<UsageLog[]>>;
 }
 
 const UsageContext = createContext<UsageContextType | null>(null);
