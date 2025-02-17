@@ -84,8 +84,12 @@ const calculateInputPrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   return fullTextPrice + cachedTextPrice + fullAudioPrice + cachedAudioPrice;
 };
 
+export const PROJECT_PROFIT_MARGIN = 500; // 500%
+
 export const calculateUsagePrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   const inputPrice = calculateInputPrice(usageEvent, model);
   const outputPrice = calculateOutputPrice(usageEvent, model);
-  return inputPrice + outputPrice;
+  const usagePrice = inputPrice + outputPrice;
+  const priceWithMargin = usagePrice * (PROJECT_PROFIT_MARGIN / 100);
+  return priceWithMargin;
 };

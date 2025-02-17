@@ -31,7 +31,7 @@ describe("calculateUsagePrice", () => {
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
 
-    expect(price).toBe(0.007585);
+    expect(price).toBe(0.037925);
   });
 
   it("should correctly calculate the usage price (Output text)", () => {
@@ -61,7 +61,7 @@ describe("calculateUsagePrice", () => {
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
 
-    expect(price).toBe(20);
+    expect(price).toBe(100);
   });
 
   it("should correctly calculate the usage price (Audio. no Cache)", () => {
@@ -91,7 +91,7 @@ describe("calculateUsagePrice", () => {
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
 
-    expect(price).toBe(40);
+    expect(price).toBe(200);
   });
 
   it("should correctly calculate the usage price (Audio: full cached)", () => {
@@ -121,6 +121,6 @@ describe("calculateUsagePrice", () => {
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
 
-    expect(price).toBe(2.5);
+    expect(price).toBe(12.5);
   });
 });
