@@ -21,6 +21,7 @@ import { useNotifications } from "@toolpad/core/useNotifications";
 import { correctUserAnswer } from "./correctAnswer";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
+import DoneIcon from "@mui/icons-material/Done";
 
 export function Conversation() {
   const auth = useAuth();
@@ -117,10 +118,6 @@ export function Conversation() {
               padding: "10px",
             }}
           >
-            {aiConversation.isClosing && !aiConversation.isClosed && (
-              <Typography variant="h4">Finishing the Lesson...</Typography>
-            )}
-
             <Stack
               sx={{
                 width: "650px",
@@ -196,6 +193,9 @@ export function Conversation() {
               sx={{
                 width: "100%",
                 maxWidth: "680px",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexDirection: "row",
               }}
             >
               <Stack
@@ -217,21 +217,33 @@ export function Conversation() {
                   isEnabled={!!aiConversation.isShowUserInput}
                   onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
                 />
-
-                {aiConversation.conversation.length > 0 &&
-                  !aiConversation.isClosed &&
-                  !aiConversation.isClosing && (
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        padding: "0 15px",
-                        opacity: 0.7,
-                      }}
-                    >
-                      When you get tired, just say <b>"Let's finish the Lesson"</b>
-                    </Typography>
-                  )}
               </Stack>
+
+              {aiConversation.isClosing ? (
+                <Button variant="outlined" disabled onClick={() => aiConversation.finishLesson()}>
+                  Finishing...
+                </Button>
+              ) : (
+                <>
+                  {aiConversation.isClosed ? (
+                    <Button
+                      variant="contained"
+                      onClick={() => aiConversation.stopConversation()}
+                      startIcon={<DoneIcon />}
+                    >
+                      Done
+                    </Button>
+                  ) : (
+                    <>
+                      {aiConversation.conversation.length > 0 && (
+                        <Button variant="outlined" onClick={() => aiConversation.finishLesson()}>
+                          Finish the Lesson
+                        </Button>
+                      )}
+                    </>
+                  )}
+                </>
+              )}
             </Stack>
           )}
         </Stack>

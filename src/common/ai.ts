@@ -15,6 +15,7 @@ export interface UsageLog {
   tokens: number;
   createdAt: number;
 }
+export type ConversationMode = "talk" | "talk-and-correct" | "beginner";
 
 export interface UsageEvent {
   total_tokens: number;

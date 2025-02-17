@@ -1,7 +1,7 @@
 "use client";
 
 import { ChatMessage } from "@/features/Conversation/types";
-import { MODELS } from "@/common/ai";
+import { ConversationMode, MODELS } from "@/common/ai";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { sleep } from "openai/core.mjs";
 import { AiRtcConfig, AiRtcInstance, AiTool, initAiRtc } from "./rtc";
@@ -10,8 +10,6 @@ import { useChatHistory } from "./useChatHistory";
 import { UsageLog, useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { fullEnglishLanguageName } from "@/common/lang";
-
-export type ConversationMode = "talk" | "talk-and-correct" | "beginner";
 
 export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);
@@ -73,34 +71,24 @@ export const useAiConversation = () => {
     };
   }, []);
 
-  const baseAiTools: AiTool[] = useMemo(() => {
-    return [
-      {
-        name: "finish_the_lesson",
-        handler: async (args) => {
-          setIsClosing(true);
-          communicatorRef.current?.toggleMute(true);
-          const newInstruction = `Generate summary of the lesson. Show user's mistakes.
+  const finishLesson = async () => {
+    setIsClosing(true);
+    communicatorRef.current?.toggleMute(true);
+    const newInstruction = `Generate summary of the lesson. Show user's mistakes.
 Create a text user have to repeat on the next lesson. It will be a homework.`;
-          await communicatorRef.current?.updateSessionTrigger(newInstruction);
-          await sleep(2000);
-          communicatorRef.current?.addUserChatMessage(
-            "I am done for today. Create a text I have to repeat on the next lesson."
-          );
-          await sleep(1000);
-          await communicatorRef.current?.triggerAiResponse();
-          await sleep(1000);
-          setIsClosed(true);
-        },
-        type: "function",
-        description: "When the user wants to finish the lesson, call this function.",
-        parameters: {
-          type: "object",
-          properties: {},
-          required: [] as string[],
-        },
-      },
-    ];
+    await communicatorRef.current?.updateSessionTrigger(newInstruction);
+    await sleep(700);
+    communicatorRef.current?.addUserChatMessage(
+      "I am done for today. Create a text I have to repeat on the next lesson."
+    );
+    await sleep(500);
+    await communicatorRef.current?.triggerAiResponse();
+    setIsClosing(false);
+    setIsClosed(true);
+  };
+
+  const baseAiTools: AiTool[] = useMemo(() => {
+    return [];
   }, [language]);
 
   const onOpen = () => {
@@ -138,7 +126,7 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
     const config: Record<ConversationMode, AiRtcConfig> = {
       talk: {
         ...baseConfig,
-        model: MODELS.REALTIME_CONVERSATION,
+        model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${language} teacher. Your name is "Bruno". Your role is to make user talks.
 Ask the student to describe their day.
 Do not teach or explain rules—just talk.
@@ -152,7 +140,7 @@ Speak slowly and clearly. Use ${language} language. Try to speed on user's level
 `,
       },
       "talk-and-correct": {
-        model: MODELS.REALTIME_CONVERSATION,
+        model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${language} teacher. Your name is "Bruno". The user wants both a conversation *and* corrections.
 For every user message, you must reply with three parts **in one response**:
 
@@ -181,7 +169,7 @@ Start the conversation with: "Hello... I am here!" (in ${language} lang) in a fr
         onAddUsage: (usageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
       },
       beginner: {
-        model: MODELS.REALTIME_CONVERSATION,
+        model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${language} teacher. Your name is "Bruno". The user is a beginner who needs simple, clear communication.
 
 For every user message, reply with **three parts** in a single response:
@@ -229,7 +217,7 @@ Start the conversation with: "Hello... I am here!" (in ${language} lang) (in a f
       setIsInitializing(true);
       const aiRtcConfig = aiRtcConfigs[mode];
       const conversation = await initAiRtc(aiRtcConfig);
-      history.createConversation(conversationId, settings.language || "en");
+      history.createConversation({ conversationId, language: settings.language || "en", mode });
       setCommunicator(conversation);
     } catch (e) {
       console.log(e);
@@ -259,6 +247,7 @@ Start the conversation with: "Hello... I am here!" (in ${language} lang) (in a f
     isStarted,
     startConversation,
     stopConversation,
+    finishLesson,
     conversation,
     errorInitiating,
     isClosing,

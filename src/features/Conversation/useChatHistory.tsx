@@ -3,6 +3,7 @@ import { useAuth } from "../Auth/useAuth";
 import { firestore } from "../Firebase/init";
 import { ChatMessage } from "./types";
 import { SupportedLanguage } from "@/common/lang";
+import { ConversationMode } from "@/common/ai";
 
 interface Conversation {
   id: string;
@@ -11,6 +12,7 @@ interface Conversation {
   createdAt: number;
   updatedAt: number;
   language: SupportedLanguage;
+  mode: ConversationMode;
 }
 
 export const useChatHistory = () => {
@@ -47,7 +49,15 @@ export const useChatHistory = () => {
     );
   };
 
-  const createConversation = async (conversationId: string, language: SupportedLanguage) => {
+  const createConversation = async ({
+    conversationId,
+    language,
+    mode,
+  }: {
+    conversationId: string;
+    language: SupportedLanguage;
+    mode: ConversationMode;
+  }) => {
     const conversationDoc = getConversationDoc(conversationId);
     const conversationInfo: Conversation = {
       id: conversationId,
@@ -56,6 +66,7 @@ export const useChatHistory = () => {
       updatedAt: Date.now(),
       messages: [],
       language,
+      mode,
     };
 
     await setDoc(conversationDoc, conversationInfo);
