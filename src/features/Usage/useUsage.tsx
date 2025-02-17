@@ -52,7 +52,7 @@ function useProvideUsage(): UsageContextType {
       : null;
   }, [userId]);
 
-  const [totalUsage] = useDocumentData<TotalUsageInfo>(totalUsageDoc);
+  const [totalUsage, loadingTotalUsage] = useDocumentData<TotalUsageInfo>(totalUsageDoc);
 
   const saveLogs = async (logs: UsageLog[]) => {
     if (!userId) return;
@@ -112,6 +112,12 @@ function useProvideUsage(): UsageContextType {
 
     setDoc(totalUsageDoc, newTotalUsage);
   };
+
+  const START_BALANCE = 5;
+  useEffect(() => {
+    if (!userId || loadingTotalUsage || totalUsage) return;
+    addBalance(START_BALANCE);
+  }, [userId, loadingTotalUsage, totalUsage]);
 
   return {
     ...totalUsageClean,

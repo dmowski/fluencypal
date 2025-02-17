@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useMemo, ReactNode, JSX } from "react";
+import { createContext, useContext, useMemo, ReactNode, JSX, useEffect } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { doc, DocumentReference, setDoc } from "firebase/firestore";
 import { firestore } from "../Firebase/init";
@@ -33,6 +33,24 @@ function useProvideSettings(): SettingsContextType {
     if (!userSettingsDoc) return;
     await setDoc(userSettingsDoc, { language }, { merge: true });
   };
+
+  const initUserSettings = async () => {
+    if (!userId || loading || !userSettings || !userSettingsDoc || userSettings.createdAt) return;
+    await setDoc(userSettingsDoc, { createdAt: Date.now() }, { merge: true });
+  };
+
+  useEffect(() => {
+    initUserSettings();
+  }, [userSettings, loading, userId, userSettingsDoc]);
+
+  const saveLoginTime = async () => {
+    if (!userId || !userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { lastLoginAt: Date.now() }, { merge: true });
+  };
+
+  useEffect(() => {
+    saveLoginTime();
+  }, [userId, userSettingsDoc]);
 
   return {
     language: userSettings?.language || null,

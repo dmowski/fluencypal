@@ -43,7 +43,8 @@ function useProvideAuth(): AuthContext {
     const provider = new GoogleAuthProvider();
     try {
       const credentials = await signInWithPopup(auth, provider);
-      console.log("credentials", credentials);
+
+      return { isDone: true, error: "" };
     } catch (error) {
       if (error instanceof FirebaseError && error.code === "auth/popup-closed-by-user") {
         return { isDone: false, error: "" };
