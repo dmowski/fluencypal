@@ -159,7 +159,7 @@ export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
             >
               <ReceiptText />
               <Typography>
-                <Link href="mailto:dmowski.alex@gmail.com">Terms of Use</Link>
+                <Link href="/terms">Terms of Use</Link>
               </Typography>
             </Stack>
 
@@ -172,7 +172,7 @@ export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
             >
               <Cookie />
               <Typography>
-                <Link href="https://www.instagram.com/dmowskii/">Privacy Policy</Link>
+                <Link href="/privacy">Privacy Policy</Link>
               </Typography>
             </Stack>
           </Stack>

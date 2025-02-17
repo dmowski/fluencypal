@@ -1,7 +1,11 @@
-export default function Home() {
+import { Header } from "@/features/Header/Header";
+import { PrivacyPolicy } from "@/features/Legal/PrivacyPolicy";
+
+export default function PrivacyPolicyPage() {
   return (
-    <main>
-      <h2>Privacy Policy</h2>
-    </main>
+    <>
+      <Header />
+      <PrivacyPolicy />
+    </>
   );
 }

@@ -1,7 +1,11 @@
-export default function Home() {
+import { Header } from "@/features/Header/Header";
+import { TermsOfUse } from "@/features/Legal/TermsOfUse";
+
+export default function TermsOfUsePage() {
   return (
-    <main>
-      <h2>Terms of Use</h2>
-    </main>
+    <>
+      <Header />
+      <TermsOfUse />
+    </>
   );
 }
