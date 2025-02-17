@@ -34,12 +34,15 @@ interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
   setUsageLogs: Dispatch<SetStateAction<UsageLog[]>>;
   addBalance: (amount: number) => void;
+  isShowPaymentModal: boolean;
+  setIsShowPaymentModal: Dispatch<SetStateAction<boolean>>;
 }
 
 const UsageContext = createContext<UsageContextType | null>(null);
 
 function useProvideUsage(): UsageContextType {
   const [usageLogs, setUsageLogs] = useState<UsageLog[]>([]);
+  const [isShowPaymentModal, setIsShowPaymentModal] = useState(false);
   const auth = useAuth();
   const userId = auth.uid;
 
@@ -110,7 +113,14 @@ function useProvideUsage(): UsageContextType {
     setDoc(totalUsageDoc, newTotalUsage);
   };
 
-  return { ...totalUsageClean, usageLogs, setUsageLogs, addBalance };
+  return {
+    ...totalUsageClean,
+    usageLogs,
+    setUsageLogs,
+    addBalance,
+    isShowPaymentModal,
+    setIsShowPaymentModal,
+  };
 }
 
 export function UsageProvider({ children }: { children: ReactNode }): JSX.Element {

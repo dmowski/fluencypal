@@ -2,31 +2,28 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../Markdown/Markdown";
-import { use, useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
 import { Textarea } from "../Input/Textarea";
 import { KeyboardButton } from "../Button/KeyboardButton";
-import { Button, Card, IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { SignInForm } from "../Auth/SignInForm";
 import { StarContainer } from "../Layout/StarContainer";
-import { SendHorizontal, Sparkles } from "lucide-react";
+import { SendHorizontal } from "lucide-react";
 import MicIcon from "@mui/icons-material/Mic";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { LangSelector } from "../Lang/LangSelector";
-import AddCardIcon from "@mui/icons-material/AddCard";
-import { useNotifications } from "@toolpad/core/useNotifications";
-import { correctUserAnswer } from "./correctAnswer";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
 import DoneIcon from "@mui/icons-material/Done";
+import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
 
 export function Conversation() {
   const auth = useAuth();
   const settings = useSettings();
-  const notifications = useNotifications();
   const aiConversation = useAiConversation();
   const [userMessage, setUserMessage] = useState("");
   const usage = useUsage();
@@ -36,64 +33,13 @@ export function Conversation() {
     setUserMessage("");
   };
 
-  const inProgressMark = "Analyzing...";
-  const [analyzeResults, setAnalyzeResults] = useState<Record<string, string | undefined>>({});
-
   const lastBotMessage = aiConversation.conversation
     .filter((message) => message.isBot)
     .find((_, index, arr) => index >= arr.length - 1);
 
-  const lastUserMessage = aiConversation.conversation
-    .filter((message) => !message.isBot)
-    .find((_, index, arr) => index >= arr.length - 1);
-
-  const getMessageBeforeId = (id: string) => {
-    const messageIndex = aiConversation.conversation.findIndex((message) => message.id === id);
-    if (messageIndex === -1 || messageIndex === 0) return;
-
-    return aiConversation.conversation[messageIndex - 1];
-  };
-
-  const analyzeMessages = async (messageId: string) => {
-    if (!settings.language) throw new Error("Language is not set");
-    const isAlreadyAnalyzed = analyzeResults[messageId];
-    if (isAlreadyAnalyzed) return;
-
-    setAnalyzeResults((prev) => ({
-      ...prev,
-      [messageId]: inProgressMark,
-    }));
-
-    const messageBefore = getMessageBeforeId(messageId);
-    const message = aiConversation.conversation.find((message) => message.id === messageId);
-    if (!messageBefore || !message) return;
-
-    const correctedMessageResult = await correctUserAnswer({
-      botMessages: messageBefore,
-      userMessages: message,
-      language: settings.language,
-    });
-
-    if (correctedMessageResult.correctAnswer) {
-      setAnalyzeResults((prev) => ({
-        ...prev,
-        [messageId]: correctedMessageResult.correctAnswer,
-      }));
-    } else {
-      setAnalyzeResults((prev) => ({
-        ...prev,
-        [messageId]: "No corrections found",
-      }));
-    }
-  };
-
-  useEffect(() => {
-    if (!lastUserMessage?.id) return;
-    //analyzeMessages(lastUserMessage.id);
-  }, [lastUserMessage?.id]);
-
   if (auth.loading || settings.loading) return <></>;
   if (!auth.isAuthorized) return <SignInForm />;
+  if (usage.balance <= 0) return <NoBalanceBlock />;
   return (
     <Stack sx={{ gap: "40px" }}>
       <TalkingWaves inActive={aiConversation.isAiSpeaking} />
@@ -124,35 +70,6 @@ export function Conversation() {
                 gap: "20px",
               }}
             >
-              {lastUserMessage &&
-                !aiConversation.isAiSpeaking &&
-                analyzeResults[lastUserMessage.id] &&
-                analyzeResults[lastUserMessage.id] !== inProgressMark && (
-                  <Stack
-                    sx={{
-                      gap: "10px",
-                    }}
-                  >
-                    <Stack>
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          opacity: 0.5,
-                        }}
-                      >
-                        Corrected Version of: {lastUserMessage.text}
-                      </Typography>
-                      <Stack
-                        sx={{
-                          opacity: 0.9,
-                        }}
-                      >
-                        <Markdown>{`${analyzeResults[lastUserMessage.id]}\n`}</Markdown>
-                      </Stack>
-                    </Stack>
-                  </Stack>
-                )}
-
               {lastBotMessage && (
                 <Stack>
                   <Typography
@@ -340,72 +257,6 @@ export function Conversation() {
               <Typography color="error">{aiConversation.errorInitiating}</Typography>
             )}
           </StarContainer>
-        </Stack>
-      )}
-
-      {settings.language && (
-        <Stack
-          sx={{
-            alignItems: "center",
-          }}
-        >
-          <Stack sx={{ padding: "20px", width: "100%", maxWidth: "1200px", marginTop: "00px" }}>
-            <Stack
-              sx={{
-                flexDirection: "row",
-                gap: "20px",
-              }}
-            >
-              <Card
-                sx={{
-                  width: "100%",
-                  padding: "20px",
-                  gap: "10px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                }}
-              >
-                <Typography variant="h3">
-                  ${new Intl.NumberFormat().format(usage.usedBalance)}
-                </Typography>
-                <Typography variant="caption">Total used</Typography>
-              </Card>
-
-              <Card
-                sx={{
-                  width: "100%",
-                  padding: "20px",
-                  gap: "10px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                }}
-              >
-                <Typography variant="h3">
-                  ${new Intl.NumberFormat().format(usage.balance)}
-                </Typography>
-                <Typography variant="caption">My Balance</Typography>
-                <Button
-                  onClick={() => {
-                    const amount =
-                      usage.balance >= 0
-                        ? parseFloat(prompt("Enter amount to update", `${usage.balance}`) || "0")
-                        : Math.abs(usage.balance);
-                    usage.addBalance(amount);
-                    notifications.show(`Added $${amount} to your balance`, {
-                      severity: "success",
-                      autoHideDuration: 7000,
-                    });
-                  }}
-                  startIcon={<AddCardIcon />}
-                  variant="contained"
-                >
-                  Buy More
-                </Button>
-              </Card>
-            </Stack>
-          </Stack>
         </Stack>
       )}
     </Stack>
