@@ -4,6 +4,7 @@ import React from "react";
 
 export interface MarkdownProps {
   children: string;
+  size?: "small" | "normal";
 }
 
 const markdownComponents: MarkdownToJSX.Overrides = {
@@ -97,6 +98,20 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   img: (props) => <img {...props} style={{ maxWidth: "90%" }} />,
 };
 
-export const Markdown: React.FC<MarkdownProps> = ({ children }) => {
-  return <MarkdownTool options={{ overrides: markdownComponents }}>{children}</MarkdownTool>;
+const markdownComponentsSmall: MarkdownToJSX.Overrides = {
+  ...markdownComponents,
+  p: ({ children }) => (
+    <Typography
+      sx={{
+        padding: "2px 0 2px 0",
+      }}
+    >
+      {children}
+    </Typography>
+  ),
+};
+
+export const Markdown: React.FC<MarkdownProps> = ({ children, size }) => {
+  const styleComponents = size === "small" ? markdownComponentsSmall : markdownComponents;
+  return <MarkdownTool options={{ overrides: styleComponents }}>{children}</MarkdownTool>;
 };

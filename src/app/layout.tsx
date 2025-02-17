@@ -8,6 +8,7 @@ import theme from "../theme";
 import { SettingsProvider } from "@/features/Settings/useSettings";
 import { UsageProvider } from "@/features/Usage/useUsage";
 import { NotificationsProviderWrapper } from "./clientProviders";
+import { HomeworkProvider } from "@/features/Conversation/useHomework";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -32,17 +33,19 @@ export default function RootLayout({
         <link rel="icon" href="./favicon.png" type="image/png" />
       </head>
       <body className={roboto.variable}>
-        <NotificationsProviderWrapper>
-          <AuthProvider>
-            <SettingsProvider>
-              <UsageProvider>
-                <AppRouterCacheProvider options={{ key: "css" }}>
-                  <ThemeProvider theme={theme}>{children}</ThemeProvider>
-                </AppRouterCacheProvider>
-              </UsageProvider>
-            </SettingsProvider>
-          </AuthProvider>
-        </NotificationsProviderWrapper>
+        <ThemeProvider theme={theme}>
+          <AppRouterCacheProvider options={{ key: "css" }}>
+            <NotificationsProviderWrapper>
+              <AuthProvider>
+                <SettingsProvider>
+                  <UsageProvider>
+                    <HomeworkProvider>{children}</HomeworkProvider>
+                  </UsageProvider>
+                </SettingsProvider>
+              </AuthProvider>
+            </NotificationsProviderWrapper>
+          </AppRouterCacheProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

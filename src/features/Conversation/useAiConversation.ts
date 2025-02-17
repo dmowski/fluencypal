@@ -10,6 +10,8 @@ import { useChatHistory } from "./useChatHistory";
 import { UsageLog, useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { fullEnglishLanguageName } from "@/common/lang";
+import { useHomework } from "./useHomework";
+import { Homework } from "@/common/homework";
 
 export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);
@@ -18,6 +20,7 @@ export const useAiConversation = () => {
   const language = settings.language ? fullEnglishLanguageName[settings.language] : "English";
   const usage = useUsage();
   const [isStarted, setIsStarted] = useState(false);
+  const homeworkService = useHomework();
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
 
   const [conversation, setConversation] = useState<ChatMessage[]>([]);
@@ -75,11 +78,15 @@ export const useAiConversation = () => {
     setIsClosing(true);
     communicatorRef.current?.toggleMute(true);
     const newInstruction = `Generate summary of the lesson. Show user's mistakes.
-Create a text user have to repeat on the next lesson. It will be a homework.`;
+Create a text user have to repeat on the next lesson. It will be a homework.
+Format homework following this structure:
+Your homework is to repeat the following text:
+"[Text to repeat]"
+`;
     await communicatorRef.current?.updateSessionTrigger(newInstruction);
     await sleep(700);
     communicatorRef.current?.addUserChatMessage(
-      "I am done for today. Create a text I have to repeat on the next lesson."
+      "I am done for today. Create a text I have to repeat on the next lesson. Don't add anything else. Just give me homework"
     );
     await sleep(500);
     await communicatorRef.current?.triggerAiResponse();
@@ -209,14 +216,32 @@ Start the conversation with: "Hello... I am here!" (in ${language} lang) (in a f
     return config;
   }, [language]);
 
-  const startConversation = async (mode: ConversationMode) => {
+  const [currentMode, setCurrentMode] = useState<ConversationMode>("talk");
+  interface StartConversationProps {
+    mode: ConversationMode;
+    homework?: Homework;
+  }
+  const startConversation = async ({ mode, homework }: StartConversationProps) => {
     try {
       setIsClosing(false);
       setIsClosed(false);
       setErrorInitiating("");
       setIsInitializing(true);
+      setCurrentMode(mode);
       const aiRtcConfig = aiRtcConfigs[mode];
-      const conversation = await initAiRtc(aiRtcConfig);
+      let instruction = aiRtcConfig.initInstruction;
+      if (homework) {
+        await homeworkService.doneHomework(homework.id);
+        instruction += `------
+This is previous homework:
+${homework.homework}
+
+Start your speech with saying hello and remind user about his homework. Repeat homework text to refresh user's memory.
+Do not needed to introduce yourself again. Just start with hello and homework reminder. Ask user to repeat homework text.
+`;
+      }
+
+      const conversation = await initAiRtc({ ...aiRtcConfig, initInstruction: instruction });
       history.createConversation({ conversationId, language: settings.language || "en", mode });
       setCommunicator(conversation);
     } catch (e) {
@@ -226,11 +251,32 @@ Start the conversation with: "Hello... I am here!" (in ${language} lang) (in a f
     }
   };
 
-  const stopConversation = () => {
+  const [isSavingHomework, setIsSavingHomework] = useState(false);
+
+  const saveHomework = async () => {
+    const lastMessage = conversation[conversation.length - 1];
+    if (!lastMessage?.isBot) {
+      return;
+    }
+    const homeworkText = lastMessage.text;
+    await homeworkService.saveHomework({
+      id: `${Date.now()}`,
+      mode: currentMode,
+      conversationId: conversationId,
+      createdAt: Date.now(),
+      homework: homeworkText,
+      isDone: false,
+    });
+  };
+
+  const stopConversation = async () => {
+    setIsSavingHomework(true);
+    await saveHomework();
     communicator?.closeHandler();
     setIsStarted(false);
     setIsInitializing(false);
     setConversationId(`${Date.now()}`);
+    setIsSavingHomework(false);
   };
 
   const addUserMessage = async (message: string) => {
@@ -243,6 +289,7 @@ Start the conversation with: "Hello... I am here!" (in ${language} lang) (in a f
   };
 
   return {
+    isSavingHomework,
     isInitializing,
     isStarted,
     startConversation,

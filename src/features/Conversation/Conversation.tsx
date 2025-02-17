@@ -8,7 +8,7 @@ import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
 import { Textarea } from "../Input/Textarea";
 import { KeyboardButton } from "../Button/KeyboardButton";
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import { Button, Card, IconButton, Stack, Typography } from "@mui/material";
 import { SignInForm } from "../Auth/SignInForm";
 import { StarContainer } from "../Layout/StarContainer";
 import { SendHorizontal } from "lucide-react";
@@ -20,10 +20,19 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
 import DoneIcon from "@mui/icons-material/Done";
 import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
+import { useHomework } from "./useHomework";
+import { ConversationMode } from "@/common/ai";
+
+const conversationModeLabel: Record<ConversationMode, string> = {
+  beginner: "Beginner",
+  talk: "Just talk",
+  "talk-and-correct": "Talk & Correct",
+};
 
 export function Conversation() {
   const auth = useAuth();
   const settings = useSettings();
+  const homework = useHomework();
   const aiConversation = useAiConversation();
   const [userMessage, setUserMessage] = useState("");
   const usage = useUsage();
@@ -136,9 +145,9 @@ export function Conversation() {
                 />
               </Stack>
 
-              {aiConversation.isClosing ? (
+              {aiConversation.isClosing || aiConversation.isSavingHomework ? (
                 <Button variant="outlined" disabled onClick={() => aiConversation.finishLesson()}>
-                  Finishing...
+                  {aiConversation.isSavingHomework ? "Saving homework..." : "Finishing..."}
                 </Button>
               ) : (
                 <>
@@ -167,7 +176,7 @@ export function Conversation() {
       ) : (
         <Stack
           sx={{
-            height: "calc(100vh - 0px)",
+            minHeight: "calc(100vh - 0px)",
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -203,7 +212,7 @@ export function Conversation() {
                   >
                     <Button
                       variant="contained"
-                      onClick={() => aiConversation.startConversation("talk")}
+                      onClick={() => aiConversation.startConversation({ mode: "talk" })}
                       startIcon={
                         <MicIcon
                           sx={{
@@ -219,7 +228,7 @@ export function Conversation() {
 
                     <Button
                       variant="outlined"
-                      onClick={() => aiConversation.startConversation("talk-and-correct")}
+                      onClick={() => aiConversation.startConversation({ mode: "talk-and-correct" })}
                       startIcon={
                         <TrendingUpIcon
                           sx={{
@@ -235,7 +244,7 @@ export function Conversation() {
 
                     <Button
                       variant="outlined"
-                      onClick={() => aiConversation.startConversation("beginner")}
+                      onClick={() => aiConversation.startConversation({ mode: "beginner" })}
                       startIcon={
                         <ChildCareIcon
                           sx={{
@@ -257,6 +266,71 @@ export function Conversation() {
               <Typography color="error">{aiConversation.errorInitiating}</Typography>
             )}
           </StarContainer>
+          {homework.incompleteHomeworks.length > 0 && (
+            <Stack
+              sx={{
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "20px",
+                padding: "0 0 90px 0",
+              }}
+            >
+              <Card
+                sx={{
+                  width: "100%",
+                  maxWidth: "550px",
+                  padding: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "30px",
+                }}
+              >
+                <Typography variant="h4">Homework</Typography>
+                <Stack sx={{ gap: "30px" }}>
+                  {homework.incompleteHomeworks.map((homework) => {
+                    return (
+                      <Stack
+                        key={homework.conversationId}
+                        sx={{
+                          alignItems: "flex-start",
+                        }}
+                      >
+                        <Typography>{conversationModeLabel[homework.mode]}</Typography>
+
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            opacity: 0.5,
+                          }}
+                        >
+                          {new Date(homework.createdAt).toLocaleDateString()}
+                        </Typography>
+                        <Stack sx={{ opacity: 0.9 }}>
+                          <Markdown size="small">{homework.homework}</Markdown>
+                        </Stack>
+
+                        <Button
+                          sx={{
+                            marginTop: "5px",
+                          }}
+                          variant="outlined"
+                          onClick={() => {
+                            aiConversation.startConversation({
+                              mode: homework.mode,
+                              homework,
+                            });
+                          }}
+                        >
+                          Continue
+                        </Button>
+                      </Stack>
+                    );
+                  })}
+                </Stack>
+              </Card>
+            </Stack>
+          )}
         </Stack>
       )}
     </Stack>

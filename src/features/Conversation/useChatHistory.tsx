@@ -72,5 +72,8 @@ export const useChatHistory = () => {
     await setDoc(conversationDoc, conversationInfo);
   };
 
-  return { createConversation, setMessages };
+  return {
+    createConversation,
+    setMessages,
+  };
 };

@@ -67,7 +67,7 @@ export function Header() {
         }}
       >
         <a
-          href="/"
+          href={auth.isAuthorized ? "/practice" : "/"}
           style={{
             padding: "20px 20px 20px 0",
           }}
