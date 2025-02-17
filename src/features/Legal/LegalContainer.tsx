@@ -14,7 +14,7 @@ export const LegalContainer = ({ children, page }: LegalContainerProps) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        paddingTop: "80px",
+        padding: "80px 0 60px 0",
         gap: "30px",
       }}
     >
@@ -30,21 +30,13 @@ export const LegalContainer = ({ children, page }: LegalContainerProps) => {
         sx={{
           gap: "10px",
           maxWidth: "900px",
-          backgroundColor: "rgba(0, 0, 0, 0.1)",
-          padding: "20px",
+          backgroundColor: "rgba(22, 22, 23, 0.8)",
+          padding: "20px 20px 40px 20px",
           border: "1px solid #000",
           borderRadius: "5px",
           width: "100%",
         }}
       >
-        <Stack
-          sx={{
-            flexDirection: "row",
-            justifyContent: "center",
-            width: "100%",
-            gap: "20px",
-          }}
-        ></Stack>
         {children}
       </Stack>
     </Stack>
