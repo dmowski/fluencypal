@@ -21,6 +21,7 @@ import {
   LogOutIcon,
   MessageCircleQuestion,
   ReceiptText,
+  Trash,
   Wallet,
 } from "lucide-react";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -31,6 +32,7 @@ import { CustomModal } from "../Modal/CustomModal";
 import { LangSelector } from "../Lang/LangSelector";
 import { useUsage } from "../Usage/useUsage";
 import { PaymentModal } from "../Usage/PaymentModal";
+import { NeedHelpModal } from "./NeedHelpButton";
 
 export function Header() {
   const auth = useAuth();
@@ -210,109 +212,7 @@ export function Header() {
         </Stack>
       </CustomModal>
 
-      <CustomModal isOpen={isShowHelpModal} onClose={() => setIsShowHelpModal(false)}>
-        <Typography id="modal-modal-title" variant="h4" component="h2">
-          Need help?
-        </Typography>
-
-        <Stack
-          sx={{
-            flexDirection: "row",
-            gap: "50px",
-            width: "100%",
-          }}
-        >
-          <Stack
-            gap={"10px"}
-            sx={{
-              width: "100%",
-            }}
-          >
-            <Typography>Contacts:</Typography>
-
-            <Stack gap={"10px"}>
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  flexDirection: "row",
-                  gap: "10px",
-                }}
-              >
-                <MailIcon
-                  sx={{
-                    width: "25px",
-                    height: "25px",
-                  }}
-                />
-                <Typography>
-                  <Link href="mailto:dmowski.alex@gmail.com">dmowski.alex@gmail.com</Link>
-                </Typography>
-              </Stack>
-
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  flexDirection: "row",
-                  gap: "10px",
-                }}
-              >
-                <InstagramIcon
-                  sx={{
-                    width: "25px",
-                    height: "25px",
-                  }}
-                />
-                <Typography>
-                  <Link href="https://www.instagram.com/dmowskii/">dmowskii</Link>
-                </Typography>
-              </Stack>
-            </Stack>
-          </Stack>
-
-          <Stack
-            gap={"10px"}
-            sx={{
-              width: "100%",
-            }}
-          >
-            <Typography
-              sx={{
-                opacity: 1,
-              }}
-            >
-              Legal:
-            </Typography>
-
-            <Stack gap={"10px"}>
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  flexDirection: "row",
-                  gap: "10px",
-                }}
-              >
-                <ReceiptText />
-                <Typography>
-                  <Link href="mailto:dmowski.alex@gmail.com">Terms of Use</Link>
-                </Typography>
-              </Stack>
-
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  flexDirection: "row",
-                  gap: "10px",
-                }}
-              >
-                <Cookie />
-                <Typography>
-                  <Link href="https://www.instagram.com/dmowskii/">Privacy Policy</Link>
-                </Typography>
-              </Stack>
-            </Stack>
-          </Stack>
-        </Stack>
-      </CustomModal>
+      {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} />}
     </Stack>
   );
 }

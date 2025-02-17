@@ -28,7 +28,7 @@ export const CustomModal = ({
           width: width || "600px",
           bgcolor: "background.paper",
           borderRadius: "16px",
-          padding: "30px 40px 60px 40px",
+          padding: "30px 40px 40px 40px",
           alignItems: "flex-start",
           gap: "30px",
         }}
