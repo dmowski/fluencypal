@@ -1,5 +1,5 @@
 import { TalkingWaves } from "@/features/Animations/TalkingWaves";
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Link, Stack, Typography } from "@mui/material";
 import { Header } from "../Header/Header";
 
 export default function LandingPage() {
@@ -67,16 +67,38 @@ export default function LandingPage() {
               />
               <Typography>AI TEACHER TO LEARN LANGUAGES</Typography>
             </Stack>
-            <Button
+
+            <Stack
               sx={{
-                padding: "15px 30px",
+                alignItems: "center",
+                gap: "10px",
               }}
-              variant="contained"
-              size="large"
-              href={"/practice"}
             >
-              START
-            </Button>
+              <Button
+                sx={{
+                  padding: "15px 80px",
+                }}
+                variant="contained"
+                size="large"
+                href={"/practice"}
+              >
+                START
+              </Button>
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  gap: "10px",
+                  alignItems: "center",
+                }}
+              >
+                <Link href="/privacy">
+                  <Typography variant="caption">Privacy Policy</Typography>
+                </Link>
+                <Link href="/terms">
+                  <Typography variant="caption">Terms of Use</Typography>
+                </Link>
+              </Stack>
+            </Stack>
           </Stack>
         </Stack>
       </main>
