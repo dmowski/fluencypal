@@ -111,7 +111,7 @@ Create a text user have to repeat on the next lesson. It will be a homework.`;
 
   const aiRtcConfigs: Record<ConversationMode, AiRtcConfig> = useMemo(() => {
     const baseConfig = {
-      model: MODELS.REALTIME_CONVERSATION,
+      model: MODELS.SMALL_CONVERSATION,
       initInstruction: "",
       aiTools: baseAiTools,
       onOpen,
