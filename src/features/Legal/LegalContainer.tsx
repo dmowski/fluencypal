@@ -6,6 +6,21 @@ interface LegalContainerProps {
 }
 
 export const LegalContainer = ({ children, page }: LegalContainerProps) => {
+  const switcher = (
+    <ButtonGroup
+      sx={{
+        position: "relative",
+        zIndex: 9999999,
+      }}
+    >
+      <Button variant={page === "terms" ? "contained" : "outlined"} href="/terms">
+        Terms of Use
+      </Button>
+      <Button variant={page === "privacy" ? "contained" : "outlined"} href="/privacy">
+        Privacy Policy
+      </Button>
+    </ButtonGroup>
+  );
   return (
     <Stack
       component={"main"}
@@ -18,14 +33,7 @@ export const LegalContainer = ({ children, page }: LegalContainerProps) => {
         gap: "30px",
       }}
     >
-      <ButtonGroup>
-        <Button variant={page === "terms" ? "contained" : "outlined"} href="/terms">
-          Terms of Use
-        </Button>
-        <Button variant={page === "privacy" ? "contained" : "outlined"} href="/privacy">
-          Privacy Policy
-        </Button>
-      </ButtonGroup>
+      {switcher}
       <Stack
         sx={{
           gap: "10px",
@@ -35,10 +43,13 @@ export const LegalContainer = ({ children, page }: LegalContainerProps) => {
           border: "1px solid #000",
           borderRadius: "5px",
           width: "100%",
+          position: "relative",
+          zIndex: 9999999,
         }}
       >
         {children}
       </Stack>
+      {switcher}
     </Stack>
   );
 };
