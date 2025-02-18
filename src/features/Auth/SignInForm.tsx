@@ -10,47 +10,64 @@ export const SignInForm = () => {
       <Stack
         sx={{
           alignItems: "center",
+          gap: "40px",
         }}
       >
-        <Typography variant="h2">Sign In</Typography>
-      </Stack>
-      <Stack
-        sx={{
-          alignItems: "center",
-          gap: "10px",
-        }}
-      >
-        <Button
-          variant="contained"
-          size="large"
-          onClick={() => auth.signInWithGoogle()}
-          startIcon={<GoogleIcon />}
-        >
-          Continue with google
-        </Button>
         <Stack
           sx={{
-            flexDirection: "row",
-            gap: "10px",
             alignItems: "center",
           }}
         >
-          <Link href="/privacy">
-            <Typography variant="caption">Privacy Policy</Typography>
-          </Link>
-          <Link href="/terms">
-            <Typography variant="caption">Terms of Use</Typography>
-          </Link>
+          <Typography variant="h2">Start the Lesson</Typography>
+          <Stack
+            sx={{
+              alignItems: "center",
+              opacity: 0.9,
+            }}
+          >
+            <Typography variant="body1">
+              Create an account, select a language and start practicing
+            </Typography>
+          </Stack>
         </Stack>
 
         <Stack
           sx={{
             alignItems: "center",
-            marginTop: "20px",
+            gap: "10px",
           }}
         >
-          <Typography variant="body2">1 hour of communication with AI teacher is free</Typography>
-          <Typography variant="body2">Then pay for hours as you needed</Typography>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => auth.signInWithGoogle()}
+            startIcon={<GoogleIcon />}
+          >
+            Continue with google
+          </Button>
+          <Stack
+            sx={{
+              alignItems: "center",
+              gap: "0px",
+              opacity: 0.9,
+            }}
+          >
+            <Typography variant="caption">By creating an account, you agree to:</Typography>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                gap: "5px",
+                alignItems: "center",
+              }}
+            >
+              <Link href="/privacy" target="_blank">
+                <Typography variant="caption">Privacy Policy</Typography>
+              </Link>
+              <Link href="/terms" target="_blank">
+                <Typography variant="caption">Terms of Use</Typography>
+              </Link>
+            </Stack>
+          </Stack>
         </Stack>
       </Stack>
     </StarContainer>
