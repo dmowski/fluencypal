@@ -30,7 +30,7 @@ export default function LandingPage() {
             sx={{
               alignItems: "center",
               justifyContent: "center",
-              paddingBottom: "100px",
+              paddingBottom: "120px",
               gap: "30px",
               top: "90px",
               boxSizing: "border-box",
@@ -57,7 +57,7 @@ export default function LandingPage() {
             <Stack
               sx={{
                 position: "absolute",
-                top: "40px",
+                top: "70px",
                 width: "100%",
                 height: "100%",
                 zIndex: -2,
@@ -82,24 +82,29 @@ export default function LandingPage() {
 
             <Stack
               alignItems={"center"}
-              gap={"10px"}
               sx={{
                 position: "relative",
                 zIndex: 9999,
+                gap: "20px",
               }}
             >
               <img
                 src="./logo.svg"
                 alt="logo"
                 style={{
-                  animationDelay: "0.5s",
                   height: "auto",
-                  width: "400px",
+                  width: "500px",
                   maxWidth: "90vw",
-                  opacity: 0.8,
+                  opacity: 0.92,
                 }}
               />
-              <Typography>AI TEACHER TO LEARN LANGUAGES</Typography>
+              <Typography
+                sx={{
+                  fontWeight: "100",
+                }}
+              >
+                AI TEACHER TO LEARN LANGUAGES
+              </Typography>
             </Stack>
 
             <Stack
