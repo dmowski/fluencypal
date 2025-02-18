@@ -18,7 +18,7 @@ export default function LandingPage() {
         <Stack
           sx={{
             position: "relative",
-            zIndex: 9999,
+            zIndex: 1,
             alignItems: "center",
             justifyContent: "center",
           }}
