@@ -123,7 +123,7 @@ export default function LandingPage() {
                 size="large"
                 href={"/practice"}
               >
-                START
+                Get free lesson
               </Button>
               <Stack
                 sx={{
@@ -132,12 +132,7 @@ export default function LandingPage() {
                   alignItems: "center",
                 }}
               >
-                <Link href="/privacy">
-                  <Typography variant="caption">Privacy Policy</Typography>
-                </Link>
-                <Link href="/terms">
-                  <Typography variant="caption">Terms of Use</Typography>
-                </Link>
+                <Typography variant="caption">No credit card needed</Typography>
               </Stack>
             </Stack>
           </Stack>
