@@ -174,7 +174,6 @@ const Galaxy: React.FC = () => {
 
     const animate = () => {
       const elapsedTime = clock.getElapsedTime() / 10 + 20;
-      console.log("elapsedTime", elapsedTime);
 
       if (material) {
         material.uniforms.uTime.value = elapsedTime;
