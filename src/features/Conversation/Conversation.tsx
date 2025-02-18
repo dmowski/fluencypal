@@ -59,7 +59,7 @@ export function Conversation() {
             justifyContent: "center",
             gap: "10px",
             width: "100%",
-            height: "calc(100vh - 0px)",
+            height: "calc(100vh - 20px)",
           }}
         >
           <Stack
@@ -76,6 +76,7 @@ export function Conversation() {
             <Stack
               sx={{
                 width: "650px",
+                maxWidth: "calc(100vw - 33px)",
                 gap: "20px",
               }}
             >
@@ -102,6 +103,8 @@ export function Conversation() {
               gap: "10px",
               flexDirection: "row",
               minHeight: "100px",
+              boxSizing: "border-box",
+              padding: "0 10px",
             }}
           >
             {aiConversation.conversation.length > 0 && aiConversation.isShowUserInput && (
@@ -122,16 +125,16 @@ export function Conversation() {
                 justifyContent: "space-between",
                 alignItems: "center",
                 flexDirection: "row",
+                boxSizing: "border-box",
+                padding: "0 20px 0 0px",
               }}
             >
               <Stack
-                style={{
-                  animationDelay: "0.5s",
-                }}
                 sx={{
                   alignItems: "center",
                   flexDirection: "row",
                   gap: "10px",
+                  animationDelay: "0.5s",
                 }}
               >
                 <MicroButton
@@ -271,7 +274,8 @@ export function Conversation() {
               alignItems: "center",
               justifyContent: "center",
               marginTop: "20px",
-              padding: "0 0 90px 0",
+              padding: "0 30px 90px 30px",
+              boxSizing: "border-box",
             }}
           >
             <Card

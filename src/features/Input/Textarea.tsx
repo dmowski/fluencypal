@@ -11,7 +11,7 @@ export const Textarea: React.FC<TextareaProps> = ({ value, onChange, onSubmit })
     <TextField
       sx={{
         width: "600px",
-        maxWidth: "90vw",
+        maxWidth: "calc(100vw - 80px)",
       }}
       value={value}
       multiline
