@@ -151,7 +151,7 @@ export default function LandingPage() {
             animation: "fadeInGalaxy 2s ease-in-out 2s forwards",
             "@keyframes fadeInGalaxy": {
               "0%": { opacity: 0 },
-              "100%": { opacity: 0.7 },
+              "100%": { opacity: 0.4 },
             },
           }}
         >

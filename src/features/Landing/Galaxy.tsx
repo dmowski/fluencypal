@@ -10,7 +10,6 @@ import galaxyFragmentShader from "./fragment.glsl";
 
 interface GalaxyParameters {
   count: number;
-  size: number;
   radius: number;
   branches: number;
   spin: number;
@@ -25,7 +24,6 @@ const Galaxy: React.FC = () => {
   const mountRef = useRef<HTMLDivElement>(null);
   const [parameters] = useState<GalaxyParameters>({
     count: 50000,
-    size: 0.005,
     radius: 5,
     branches: 4,
     spin: 1,
