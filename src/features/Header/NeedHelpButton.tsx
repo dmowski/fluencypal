@@ -30,6 +30,8 @@ async function deleteCollectionDocs(firestore: Firestore, collectionPath: string
 
 export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
   const auth = useAuth();
+  const [isShowDeleteAccountModal, setIsShowDeleteAccountModal] = useState(false);
+
   const userId = auth.uid;
   const notifications = useNotifications();
   const userSettingsDoc = useMemo(() => {
@@ -178,25 +180,83 @@ export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
           </Stack>
         </Stack>
       </Stack>
-      <Stack
-        sx={{
-          flexDirection: "row",
-          width: "100%",
-          justifyContent: "space-between",
-        }}
-      >
-        <Button onClick={onClose} variant="outlined" color="primary">
-          Close
-        </Button>
-        <Button
-          disabled={isDeletingAccount}
-          onClick={onDeleteAccount}
-          color="error"
-          startIcon={<Trash size={"18px"} />}
-        >
-          {isDeletingAccount ? "Deleting..." : "Delete account"}
-        </Button>
-      </Stack>
+      {isShowDeleteAccountModal ? (
+        <>
+          <Stack
+            sx={{
+              width: "100%",
+              alignItems: "flex-start",
+              gap: "20px",
+              marginTop: "20px",
+            }}
+          >
+            <Stack>
+              <Typography variant="h5">Are you sure you want to delete your account?</Typography>
+              <Typography variant="caption">This action is irreversible.</Typography>
+              <Typography variant="caption">
+                We will delete your data, but information about your balance will be stored for one
+                year.
+              </Typography>
+              <Typography variant="caption">
+                If you want to remove all information, including your balance, please contact us.
+              </Typography>
+            </Stack>
+
+            <Stack
+              sx={{
+                flexDirection: "row",
+                gap: "10px",
+              }}
+            >
+              <Button
+                disabled={isDeletingAccount}
+                onClick={() => {
+                  onDeleteAccount();
+                }}
+                color="error"
+                variant="contained"
+                startIcon={<Trash size={"18px"} />}
+              >
+                {isDeletingAccount ? "Deleting..." : `Yes, Delete account`}
+              </Button>
+
+              <Button
+                disabled={isDeletingAccount}
+                onClick={() => {
+                  setIsShowDeleteAccountModal(false);
+                }}
+                startIcon={<Trash size={"18px"} />}
+              >
+                Cancel
+              </Button>
+            </Stack>
+          </Stack>
+        </>
+      ) : (
+        <>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "space-between",
+            }}
+          >
+            <Button onClick={onClose} variant="outlined" color="primary">
+              Close
+            </Button>
+            <Button
+              disabled={isDeletingAccount}
+              onClick={() => {
+                setIsShowDeleteAccountModal(true);
+              }}
+              color="error"
+              startIcon={<Trash size={"18px"} />}
+            >
+              {isDeletingAccount ? "Deleting..." : "Delete account"}
+            </Button>
+          </Stack>
+        </>
+      )}
     </CustomModal>
   );
 };
