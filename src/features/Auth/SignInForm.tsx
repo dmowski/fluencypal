@@ -18,14 +18,16 @@ export const SignInForm = () => {
             alignItems: "center",
           }}
         >
-          <Typography variant="h2">Start the Lesson</Typography>
+          <Typography variant="h2" align="center">
+            Start the Lesson
+          </Typography>
           <Stack
             sx={{
               alignItems: "center",
               opacity: 0.9,
             }}
           >
-            <Typography variant="body1">
+            <Typography variant="body1" align="center">
               Create an account, select a language and start practicing
             </Typography>
           </Stack>
