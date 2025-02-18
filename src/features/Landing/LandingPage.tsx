@@ -57,7 +57,7 @@ export default function LandingPage() {
             <Stack
               sx={{
                 position: "absolute",
-                top: "20px",
+                top: "40px",
                 width: "100%",
                 height: "100%",
                 zIndex: -2,
@@ -65,7 +65,7 @@ export default function LandingPage() {
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
-                opacity: 0.88,
+                opacity: 1,
               }}
             >
               <img src="./star.webp" alt="" style={{ width: "100%", minWidth: "700px" }} />
