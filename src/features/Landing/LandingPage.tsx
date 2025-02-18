@@ -148,7 +148,7 @@ export default function LandingPage() {
             zIndex: -2,
             opacity: 0,
 
-            animation: "fadeInGalaxy 2s ease-in-out 2s forwards",
+            animation: "fadeInGalaxy 2s ease-in-out 0.4s forwards",
             "@keyframes fadeInGalaxy": {
               "0%": { opacity: 0 },
               "100%": { opacity: 0.4 },
