@@ -89,7 +89,7 @@ export default function LandingPage() {
               }}
             >
               <img
-                src="./logo.png"
+                src="./logo.svg"
                 alt="logo"
                 style={{
                   animationDelay: "0.5s",

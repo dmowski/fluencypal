@@ -77,7 +77,7 @@ export function Header() {
           }}
         >
           <img
-            src="./logo.png"
+            src="./logo.svg"
             alt="logo"
             style={{
               maxWidth: "100px",
