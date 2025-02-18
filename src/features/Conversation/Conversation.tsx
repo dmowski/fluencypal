@@ -181,7 +181,7 @@ export function Conversation() {
           }}
         >
           <StarContainer minHeight="90vh" paddingBottom="0px">
-            {aiConversation.isInitializing ? (
+            {aiConversation.isInitializing || settings.loading ? (
               <Typography>Loading...</Typography>
             ) : (
               <>
