@@ -2,35 +2,43 @@ import { Stack } from "@mui/material";
 
 interface StarContainerProps {
   children: React.ReactNode;
+  minHeight?: string;
+  paddingBottom?: string;
 }
 
-export const StarContainer = ({ children }: StarContainerProps) => {
+export const StarContainer = ({ children, paddingBottom, minHeight }: StarContainerProps) => {
   return (
     <Stack
       sx={{
-        width: "100%",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        gap: "10",
+        paddingTop: "0px",
+        minHeight: minHeight || "80vh",
+        position: "relative",
+        zIndex: 222,
       }}
     >
       <Stack
         sx={{
           alignItems: "center",
           justifyContent: "center",
-          paddingBottom: "0px",
+          paddingBottom: paddingBottom || "120px",
           gap: "30px",
-          top: "90px",
+          top: "0px",
           boxSizing: "border-box",
           left: 0,
           right: 0,
           bottom: 0,
           height: "700px",
+
           width: "700px",
-          backgroundImage: "url('./star.webp')",
+          maxWidth: "100vw",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "contain",
-          zIndex: 1,
+          position: "relative",
           opacity: 0,
 
           animation: "fadeIn 2s ease-in-out 0s forwards",
@@ -40,6 +48,22 @@ export const StarContainer = ({ children }: StarContainerProps) => {
           },
         }}
       >
+        <Stack
+          sx={{
+            position: "absolute",
+            top: "0px",
+            width: "100%",
+            height: "100%",
+            zIndex: -2,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden",
+            opacity: 1,
+          }}
+        >
+          <img src="./star.webp" alt="" style={{ width: "100%", minWidth: "700px" }} />
+        </Stack>
         {children}
       </Stack>
     </Stack>

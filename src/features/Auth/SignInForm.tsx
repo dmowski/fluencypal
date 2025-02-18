@@ -6,8 +6,22 @@ import { StarContainer } from "../Layout/StarContainer";
 export const SignInForm = () => {
   const auth = useAuth();
   return (
-    <StarContainer>
-      <Typography variant="h5">Sign In</Typography>
+    <StarContainer minHeight="100vh" paddingBottom="0px">
+      <Stack
+        sx={{
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h3">Sign In</Typography>
+        <Typography
+          variant="caption"
+          sx={{
+            opacity: 0.7,
+          }}
+        >
+          Get free lesson
+        </Typography>
+      </Stack>
       <Stack
         sx={{
           alignItems: "center",

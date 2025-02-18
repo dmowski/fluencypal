@@ -2,6 +2,7 @@ import { TalkingWaves } from "@/features/Animations/TalkingWaves";
 import { Button, Link, Stack, Typography } from "@mui/material";
 import { Header } from "../Header/Header";
 import Galaxy from "./Galaxy";
+import { StarContainer } from "../Layout/StarContainer";
 
 export default function LandingPage() {
   return (
@@ -16,66 +17,19 @@ export default function LandingPage() {
         <TalkingWaves />
         <Stack
           sx={{
-            flexDirection: "column",
+            position: "relative",
+            zIndex: 9999,
             alignItems: "center",
             justifyContent: "center",
-            gap: "10",
-            paddingTop: "0px",
-            minHeight: "80vh",
-            position: "relative",
-            zIndex: 222,
           }}
         >
-          <Stack
-            sx={{
-              alignItems: "center",
-              justifyContent: "center",
-              paddingBottom: "120px",
-              gap: "30px",
-              top: "90px",
-              boxSizing: "border-box",
-              left: 0,
-              right: 0,
-              bottom: 0,
-              height: "700px",
-
-              width: "700px",
-              maxWidth: "100vw",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
-              position: "relative",
-              opacity: 0,
-
-              animation: "fadeIn 2s ease-in-out 0s forwards",
-              "@keyframes fadeIn": {
-                "0%": { opacity: 0 },
-                "100%": { opacity: 1 },
-              },
-            }}
-          >
-            <Stack
-              sx={{
-                position: "absolute",
-                top: "70px",
-                width: "100%",
-                height: "100%",
-                zIndex: -2,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                overflow: "hidden",
-                opacity: 1,
-              }}
-            >
-              <img src="./star.webp" alt="" style={{ width: "100%", minWidth: "700px" }} />
-            </Stack>
-
+          <StarContainer minHeight="100vh" paddingBottom="230px">
             <img
               src="/cross.png"
               alt=""
               style={{
                 width: "18px",
+                height: "81px",
                 opacity: "0.5",
               }}
             />
@@ -123,7 +77,7 @@ export default function LandingPage() {
                 size="large"
                 href={"/practice"}
               >
-                Get free lesson
+                Get a free lesson
               </Button>
               <Stack
                 sx={{
@@ -135,28 +89,28 @@ export default function LandingPage() {
                 <Typography variant="caption">No credit card needed</Typography>
               </Stack>
             </Stack>
+          </StarContainer>
+
+          <Stack
+            sx={{
+              width: "100%",
+              height: "100vh",
+              pointerEvents: "none",
+              position: "fixed",
+              top: 0,
+              left: 0,
+              zIndex: -2,
+              opacity: 0,
+
+              animation: "fadeInGalaxy 1s ease-in-out 0.6s forwards",
+              "@keyframes fadeInGalaxy": {
+                "0%": { opacity: 0 },
+                "100%": { opacity: 0.4 },
+              },
+            }}
+          >
+            <Galaxy />
           </Stack>
-        </Stack>
-
-        <Stack
-          sx={{
-            width: "100%",
-            height: "100vh",
-            pointerEvents: "none",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            zIndex: -2,
-            opacity: 0,
-
-            animation: "fadeInGalaxy 2s ease-in-out 0.4s forwards",
-            "@keyframes fadeInGalaxy": {
-              "0%": { opacity: 0 },
-              "100%": { opacity: 0.4 },
-            },
-          }}
-        >
-          <Galaxy />
         </Stack>
       </main>
     </>

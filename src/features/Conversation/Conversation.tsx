@@ -179,9 +179,10 @@ export function Conversation() {
             minHeight: "calc(100vh - 0px)",
             alignItems: "center",
             justifyContent: "center",
+            border: "1px solid red",
           }}
         >
-          <StarContainer>
+          <StarContainer minHeight="100vh" paddingBottom="0px">
             {aiConversation.isInitializing ? (
               <Typography>Loading...</Typography>
             ) : (
