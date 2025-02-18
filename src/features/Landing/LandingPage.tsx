@@ -96,6 +96,7 @@ export default function LandingPage() {
                   height: "auto",
                   width: "400px",
                   maxWidth: "90vw",
+                  opacity: 0.8,
                 }}
               />
               <Typography>AI TEACHER TO LEARN LANGUAGES</Typography>
