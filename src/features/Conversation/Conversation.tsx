@@ -176,13 +176,11 @@ export function Conversation() {
       ) : (
         <Stack
           sx={{
-            minHeight: "calc(100vh - 0px)",
             alignItems: "center",
             justifyContent: "center",
-            border: "1px solid red",
           }}
         >
-          <StarContainer minHeight="100vh" paddingBottom="0px">
+          <StarContainer minHeight="90vh" paddingBottom="0px">
             {aiConversation.isInitializing ? (
               <Typography>Loading...</Typography>
             ) : (
@@ -267,71 +265,72 @@ export function Conversation() {
               <Typography color="error">{aiConversation.errorInitiating}</Typography>
             )}
           </StarContainer>
-          {homework.incompleteHomeworks.length > 0 && (
-            <Stack
+          <Stack
+            sx={{
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "20px",
+              padding: "0 0 90px 0",
+            }}
+          >
+            <Card
               sx={{
                 width: "100%",
-                alignItems: "center",
-                justifyContent: "center",
-                marginTop: "20px",
-                padding: "0 0 90px 0",
+                maxWidth: "550px",
+                padding: "20px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "30px",
               }}
             >
-              <Card
-                sx={{
-                  width: "100%",
-                  maxWidth: "550px",
-                  padding: "20px",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "30px",
-                }}
-              >
-                <Typography variant="h4">Homework</Typography>
-                <Stack sx={{ gap: "30px" }}>
-                  {homework.incompleteHomeworks.map((homework) => {
-                    return (
-                      <Stack
-                        key={homework.conversationId}
+              <Typography variant="h4">Homework</Typography>
+              <Stack sx={{ gap: "30px" }}>
+                {homework.incompleteHomeworks.length === 0 && (
+                  <Typography variant="caption">No homework yet</Typography>
+                )}
+                {homework.incompleteHomeworks.map((homework) => {
+                  return (
+                    <Stack
+                      key={homework.conversationId}
+                      sx={{
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <Typography>{conversationModeLabel[homework.mode]}</Typography>
+
+                      <Typography
+                        variant="caption"
                         sx={{
-                          alignItems: "flex-start",
+                          opacity: 0.5,
                         }}
                       >
-                        <Typography>{conversationModeLabel[homework.mode]}</Typography>
-
-                        <Typography
-                          variant="caption"
-                          sx={{
-                            opacity: 0.5,
-                          }}
-                        >
-                          {new Date(homework.createdAt).toLocaleDateString()}
-                        </Typography>
-                        <Stack sx={{ opacity: 0.9 }}>
-                          <Markdown size="small">{homework.homework}</Markdown>
-                        </Stack>
-
-                        <Button
-                          sx={{
-                            marginTop: "5px",
-                          }}
-                          variant="outlined"
-                          onClick={() => {
-                            aiConversation.startConversation({
-                              mode: homework.mode,
-                              homework,
-                            });
-                          }}
-                        >
-                          Continue
-                        </Button>
+                        {new Date(homework.createdAt).toLocaleDateString()}
+                      </Typography>
+                      <Stack sx={{ opacity: 0.9 }}>
+                        <Markdown size="small">{homework.homework}</Markdown>
                       </Stack>
-                    );
-                  })}
-                </Stack>
-              </Card>
-            </Stack>
-          )}
+
+                      <Button
+                        sx={{
+                          marginTop: "5px",
+                        }}
+                        variant="outlined"
+                        onClick={() => {
+                          aiConversation.startConversation({
+                            mode: homework.mode,
+                            homework,
+                          });
+                        }}
+                      >
+                        Continue
+                      </Button>
+                    </Stack>
+                  );
+                })}
+              </Stack>
+            </Card>
+          </Stack>
         </Stack>
       )}
     </Stack>
