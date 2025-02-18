@@ -20,15 +20,17 @@ export default function LandingPage() {
             alignItems: "center",
             justifyContent: "center",
             gap: "10",
-            paddingTop: "20px",
-            minHeight: "90vh",
+            paddingTop: "0px",
+            minHeight: "80vh",
+            position: "relative",
+            zIndex: 222,
           }}
         >
           <Stack
             sx={{
               alignItems: "center",
               justifyContent: "center",
-              paddingBottom: "220px",
+              paddingBottom: "100px",
               gap: "30px",
               top: "90px",
               boxSizing: "border-box",
@@ -36,21 +38,39 @@ export default function LandingPage() {
               right: 0,
               bottom: 0,
               height: "700px",
+
               width: "700px",
-              backgroundImage: "url('./star.webp')",
+              maxWidth: "100vw",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
               backgroundSize: "contain",
-              zIndex: 1,
+              position: "relative",
               opacity: 0,
 
               animation: "fadeIn 2s ease-in-out 0s forwards",
               "@keyframes fadeIn": {
                 "0%": { opacity: 0 },
-                "100%": { opacity: 0.96 },
+                "100%": { opacity: 1 },
               },
             }}
           >
+            <Stack
+              sx={{
+                position: "absolute",
+                top: "20px",
+                width: "100%",
+                height: "100%",
+                zIndex: -2,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+                opacity: 0.88,
+              }}
+            >
+              <img src="./star.webp" alt="" style={{ width: "100%", minWidth: "700px" }} />
+            </Stack>
+
             <img
               src="/cross.png"
               alt=""
@@ -60,7 +80,14 @@ export default function LandingPage() {
               }}
             />
 
-            <Stack alignItems={"center"} gap={"10px"}>
+            <Stack
+              alignItems={"center"}
+              gap={"10px"}
+              sx={{
+                position: "relative",
+                zIndex: 9999,
+              }}
+            >
               <img
                 src="./logo.png"
                 alt="logo"
@@ -78,6 +105,8 @@ export default function LandingPage() {
               sx={{
                 alignItems: "center",
                 gap: "10px",
+                position: "relative",
+                zIndex: 9999,
               }}
             >
               <Button
@@ -116,8 +145,14 @@ export default function LandingPage() {
             position: "fixed",
             top: 0,
             left: 0,
-            zIndex: -1,
-            opacity: 0.5,
+            zIndex: -2,
+            opacity: 0,
+
+            animation: "fadeInGalaxy 2s ease-in-out 2s forwards",
+            "@keyframes fadeInGalaxy": {
+              "0%": { opacity: 0 },
+              "100%": { opacity: 0.7 },
+            },
           }}
         >
           <Galaxy />

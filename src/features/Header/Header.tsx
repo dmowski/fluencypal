@@ -66,6 +66,8 @@ export function Header() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
+          padding: "0 10px",
+          boxSizing: "border-box",
         }}
       >
         <a
