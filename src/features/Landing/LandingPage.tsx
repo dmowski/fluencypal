@@ -1,12 +1,18 @@
 import { TalkingWaves } from "@/features/Animations/TalkingWaves";
 import { Button, Link, Stack, Typography } from "@mui/material";
 import { Header } from "../Header/Header";
+import Galaxy from "./Galaxy";
 
 export default function LandingPage() {
   return (
     <>
       <Header />
-      <main>
+      <main
+        style={{
+          width: "100%",
+          margin: 0,
+        }}
+      >
         <TalkingWaves />
         <Stack
           sx={{
@@ -41,7 +47,7 @@ export default function LandingPage() {
               animation: "fadeIn 2s ease-in-out 0s forwards",
               "@keyframes fadeIn": {
                 "0%": { opacity: 0 },
-                "100%": { opacity: 1 },
+                "100%": { opacity: 0.96 },
               },
             }}
           >
@@ -100,6 +106,21 @@ export default function LandingPage() {
               </Stack>
             </Stack>
           </Stack>
+        </Stack>
+
+        <Stack
+          sx={{
+            width: "100%",
+            height: "100vh",
+            pointerEvents: "none",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            zIndex: -1,
+            opacity: 0.5,
+          }}
+        >
+          <Galaxy />
         </Stack>
       </main>
     </>
