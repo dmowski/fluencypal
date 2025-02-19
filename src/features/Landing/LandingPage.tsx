@@ -44,7 +44,7 @@ export default function LandingPage() {
             >
               <img
                 src="./logo.svg"
-                alt="logo"
+                alt="Online English Learning"
                 style={{
                   height: "auto",
                   width: "500px",
@@ -55,9 +55,10 @@ export default function LandingPage() {
               <Typography
                 sx={{
                   fontWeight: "100",
+                  textTransform: "uppercase",
                 }}
               >
-                AI TEACHER TO LEARN LANGUAGES
+                AI Teacher for Learning English
               </Typography>
             </Stack>
 
