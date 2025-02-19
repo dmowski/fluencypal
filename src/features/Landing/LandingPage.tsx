@@ -198,9 +198,11 @@ const Price = () => {
         alignItems: "center",
         justifyContent: "center",
 
-        marginTop: "50px",
+        marginTop: "30px",
         position: "relative",
         zIndex: 1,
+        padding: "30px",
+        boxSizing: "border-box",
       }}
     >
       <Stack
