@@ -86,7 +86,7 @@ const FirsCards = () => {
           justifyContent: "space-between",
           maxWidth: "1400px",
           position: "relative",
-          zIndex: 9999,
+          zIndex: 1,
           "@media (max-width: 800px)": {
             gridTemplateColumns: "1fr",
           },

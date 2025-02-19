@@ -80,7 +80,7 @@ export function Header() {
             src="./logo.svg"
             alt="logo"
             style={{
-              maxWidth: "100px",
+              maxWidth: "80px",
               height: "auto",
             }}
           />
