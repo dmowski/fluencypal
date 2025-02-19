@@ -3,7 +3,6 @@ import {
   createContext,
   useContext,
   useEffect,
-  useMemo,
   useState,
   ReactNode,
   JSX,
@@ -11,24 +10,10 @@ import {
   SetStateAction,
 } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { doc, DocumentReference, setDoc } from "firebase/firestore";
-import { firestore } from "../Firebase/init";
+import { setDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { RealTimeModel, UsageEvent } from "@/common/ai";
-
-export interface UsageLog {
-  usageId: string;
-  usageEvent: UsageEvent;
-  model: RealTimeModel;
-  price: number;
-  createdAt: number;
-}
-
-export interface TotalUsageInfo {
-  lastUpdatedAt: number;
-  usedBalance: number; // $
-  balance: number; // $
-}
+import { TotalUsageInfo, UsageLog } from "@/common/usage";
+import { db } from "../Firebase/db";
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
@@ -46,30 +31,24 @@ function useProvideUsage(): UsageContextType {
   const auth = useAuth();
   const userId = auth.uid;
 
-  const totalUsageDoc = useMemo(() => {
-    return userId
-      ? (doc(firestore, `users/${userId}/stats/usage`) as DocumentReference<TotalUsageInfo>)
-      : null;
-  }, [userId]);
+  const totalUsageDoc = db.documents.totalUsage(userId);
 
   const [totalUsage, loadingTotalUsage] = useDocumentData<TotalUsageInfo>(totalUsageDoc);
-
   const saveLogs = async (logs: UsageLog[]) => {
     if (!userId) return;
 
     await Promise.all(
       logs.map(async (log) => {
-        const docRef = doc(
-          firestore,
-          `users/${userId}/usageLogs/${log.usageId}`
-        ) as DocumentReference<UsageLog>;
-        setDoc(docRef, log, { merge: true });
+        const docRef = db.documents.usageLog(userId, log.usageId);
+        if (!docRef) return;
+
+        await setDoc(docRef, log, { merge: true });
       })
     );
   };
 
   useEffect(() => {
-    if (!userId) {
+    if (!userId || !totalUsageDoc) {
       return;
     }
 
@@ -90,9 +69,7 @@ function useProvideUsage(): UsageContextType {
       lastUpdatedAt: now,
     };
 
-    if (totalUsageDoc) {
-      setDoc(totalUsageDoc, newTotalUsage);
-    }
+    setDoc(totalUsageDoc, newTotalUsage);
   }, [totalUsage, usageLogs, userId, totalUsageDoc]);
 
   const totalUsageClean: TotalUsageInfo = {

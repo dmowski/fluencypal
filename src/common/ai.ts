@@ -10,11 +10,6 @@ export const MODELS = {
   gpt_4o: "gpt-4o",
 };
 
-export interface UsageLog {
-  id: string;
-  tokens: number;
-  createdAt: number;
-}
 export type ConversationMode = "talk" | "talk-and-correct" | "beginner";
 
 export interface UsageEvent {
