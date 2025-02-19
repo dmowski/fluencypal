@@ -1,7 +1,6 @@
 "use client";
 
-import { ChatMessage } from "@/features/Conversation/types";
-import { ConversationMode, MODELS } from "@/common/ai";
+import { MODELS } from "@/common/ai";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { sleep } from "openai/core.mjs";
 import { AiRtcConfig, AiRtcInstance, AiTool, initAiRtc } from "./rtc";
@@ -13,6 +12,7 @@ import { fullEnglishLanguageName } from "@/common/lang";
 import { useHomework } from "./useHomework";
 import { Homework } from "@/common/homework";
 import { UsageLog } from "@/common/usage";
+import { ChatMessage, ConversationMode } from "@/common/conversation";
 
 export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);

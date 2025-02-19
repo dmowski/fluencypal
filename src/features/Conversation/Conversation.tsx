@@ -21,7 +21,7 @@ import ChildCareIcon from "@mui/icons-material/ChildCare";
 import DoneIcon from "@mui/icons-material/Done";
 import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
 import { useHomework } from "./useHomework";
-import { ConversationMode } from "@/common/ai";
+import { ConversationMode } from "@/common/conversation";
 
 const conversationModeLabel: Record<ConversationMode, string> = {
   beginner: "Beginner",

@@ -1,4 +1,4 @@
-import { ConversationMode } from "./ai";
+import { ConversationMode } from "./conversation";
 
 export interface Homework {
   id: string;
