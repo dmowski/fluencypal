@@ -182,7 +182,7 @@ const Footer = () => {
             },
           }}
         >
-          <Typography variant="caption">Dark lang</Typography>
+          <Typography variant="caption">Dark Lang</Typography>
           <Typography variant="caption">© 2025</Typography>
         </Stack>
       </Stack>
