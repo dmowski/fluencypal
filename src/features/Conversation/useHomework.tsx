@@ -8,7 +8,6 @@ import {
   setDoc,
   query,
   where,
-  Query,
   CollectionReference,
 } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";

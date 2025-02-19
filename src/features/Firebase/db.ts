@@ -3,6 +3,7 @@ import { collection, doc, DocumentReference, SnapshotOptions } from "firebase/fi
 import { firestore } from "./init";
 import { TotalUsageInfo, UsageLog } from "@/common/usage";
 import { UserSettings } from "@/common/user";
+import { Conversation } from "@/common/conversation";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -40,5 +41,10 @@ export const db = {
 
     userSettings: (userId?: string) =>
       userId ? dataPointDoc<UserSettings>(`users/${userId}`) : null,
+
+    conversation: (userId?: string, conversationId?: string) =>
+      userId && conversationId
+        ? dataPointDoc<Conversation>(`users/${userId}/conversations/${conversationId}`)
+        : null,
   },
 };

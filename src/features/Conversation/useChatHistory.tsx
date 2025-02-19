@@ -1,37 +1,19 @@
-import { doc, DocumentReference, setDoc } from "firebase/firestore";
+import { setDoc } from "firebase/firestore";
 import { useAuth } from "../Auth/useAuth";
-import { firestore } from "../Firebase/init";
-import { ChatMessage } from "./types";
 import { SupportedLanguage } from "@/common/lang";
-import { ConversationMode } from "@/common/ai";
-
-interface Conversation {
-  id: string;
-  messagesCount: number;
-  messages: ChatMessage[];
-  createdAt: number;
-  updatedAt: number;
-  language: SupportedLanguage;
-  mode: ConversationMode;
-}
+import { db } from "../Firebase/db";
+import { ChatMessage, Conversation, ConversationMode } from "@/common/conversation";
 
 export const useChatHistory = () => {
   const auth = useAuth();
   const userId = auth.uid;
 
   const getConversationDoc = (conversationId: string) => {
-    if (!userId) {
-      throw new Error("❌ User ID is required");
-    }
+    const docRef = db.documents.conversation(userId, conversationId);
 
-    if (!conversationId) {
-      throw new Error("❌ Conversation ID is required");
+    if (!docRef) {
+      throw new Error("❌ Conversation ID and userId is required");
     }
-
-    const docRef = doc(
-      firestore,
-      `users/${userId}/conversations/${conversationId}`
-    ) as DocumentReference<Conversation>;
 
     return docRef;
   };

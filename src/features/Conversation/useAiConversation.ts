@@ -7,11 +7,12 @@ import { sleep } from "openai/core.mjs";
 import { AiRtcConfig, AiRtcInstance, AiTool, initAiRtc } from "./rtc";
 import { useLocalStorage } from "react-use";
 import { useChatHistory } from "./useChatHistory";
-import { UsageLog, useUsage } from "../Usage/useUsage";
+import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { fullEnglishLanguageName } from "@/common/lang";
 import { useHomework } from "./useHomework";
 import { Homework } from "@/common/homework";
+import { UsageLog } from "@/common/usage";
 
 export const useAiConversation = () => {
   const [isInitializing, setIsInitializing] = useState(false);
