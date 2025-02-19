@@ -58,7 +58,7 @@ export const getUserLangCode = () => {
 };
 
 export const emojiLanguageName: Record<SupportedLanguage, string> = {
-  en: "🇬🇧",
+  en: "🇺🇸",
   ru: "🇷🇺",
   de: "🇩🇪",
   pl: "🇵🇱",
