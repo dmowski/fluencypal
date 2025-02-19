@@ -338,7 +338,7 @@ const Price = () => {
         </Stack>
 
         <Stack>
-          <Button variant="contained" size="large">
+          <Button variant="contained" size="large" href="/practice">
             Start for free
           </Button>
           <Typography
