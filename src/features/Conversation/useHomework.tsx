@@ -1,18 +1,10 @@
 "use client";
 import { createContext, useContext, ReactNode, useMemo, JSX } from "react";
 import { useAuth } from "../Auth/useAuth";
-import {
-  collection,
-  doc,
-  DocumentReference,
-  setDoc,
-  query,
-  where,
-  CollectionReference,
-} from "firebase/firestore";
+import { setDoc, query, where } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { firestore } from "../Firebase/init";
 import { Homework } from "@/common/homework";
+import { db } from "../Firebase/db";
 
 interface HomeworkContextType {
   incompleteHomeworks: Homework[];
@@ -29,41 +21,29 @@ function useProvideHomework(): HomeworkContextType {
   const userId = auth.uid;
 
   const incompleteQuery = useMemo(() => {
-    if (!userId) return null;
-
-    const homeworkCollection = collection(
-      firestore,
-      `users/${userId}/homeworks`
-    ) as CollectionReference<Homework>;
-
-    return query(homeworkCollection, where("isDone", "==", false));
+    const homeworkCollection = db.collections.homework(userId);
+    return homeworkCollection ? query(homeworkCollection, where("isDone", "==", false)) : null;
   }, [userId]);
 
   const [incompleteHomeworks = [], loadingHomeworks, errorHomeworks] =
     useCollectionData(incompleteQuery);
 
   const saveHomework = async (homework: Homework): Promise<string> => {
-    if (!userId) throw new Error("User not logged in.");
+    const docRef = db.documents.homework(userId, homework.id);
+    if (!docRef) {
+      throw new Error("Invalid Homework document reference");
+    }
 
-    const docRef = doc(
-      firestore,
-      `users/${userId}/homeworks/${homework.id}`
-    ) as DocumentReference<Homework>;
-
-    // Save the homework data to Firestore
     await setDoc(docRef, homework);
     return docRef.id;
   };
 
   const doneHomework = async (homeworkId: string) => {
-    if (!userId) throw new Error("User not logged in.");
-
-    const homeworkDoc = doc(
-      firestore,
-      `users/${userId}/homeworks/${homeworkId}`
-    ) as DocumentReference<Homework>;
-
-    await setDoc(homeworkDoc, { isDone: true }, { merge: true });
+    const docRef = db.documents.homework(userId, homeworkId);
+    if (!docRef) {
+      throw new Error("Invalid Homework document reference");
+    }
+    await setDoc(docRef, { isDone: true }, { merge: true });
   };
 
   return {

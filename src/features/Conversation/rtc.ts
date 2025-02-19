@@ -1,8 +1,8 @@
 "use client";
 import { calculateUsagePrice, RealTimeModel, UsageEvent } from "@/common/ai";
 import { getEphemeralKey } from "./getEphemeralKey";
-import { ChatMessage } from "@/features/Conversation/types";
 import { sleep } from "@/libs/sleep";
+import { ChatMessage } from "@/common/conversation";
 
 /**
  * Sends an SDP (Session Description Protocol) offer to an API for processing.

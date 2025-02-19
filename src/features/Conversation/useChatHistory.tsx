@@ -10,11 +10,9 @@ export const useChatHistory = () => {
 
   const getConversationDoc = (conversationId: string) => {
     const docRef = db.documents.conversation(userId, conversationId);
-
     if (!docRef) {
       throw new Error("❌ Conversation ID and userId is required");
     }
-
     return docRef;
   };
 

@@ -1,4 +1,4 @@
-import { ChatMessage } from "@/features/Conversation/types";
+import { ChatMessage } from "./conversation";
 import { SupportedLanguage } from "./lang";
 
 export interface CorrectAnswerRequest {

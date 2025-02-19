@@ -1,9 +1,16 @@
 import FirebaseFirestore from "@google-cloud/firestore";
-import { collection, doc, DocumentReference, SnapshotOptions } from "firebase/firestore";
+import {
+  collection,
+  CollectionReference,
+  doc,
+  DocumentReference,
+  SnapshotOptions,
+} from "firebase/firestore";
 import { firestore } from "./init";
 import { TotalUsageInfo, UsageLog } from "@/common/usage";
 import { UserSettings } from "@/common/user";
 import { Conversation } from "@/common/conversation";
+import { Homework } from "@/common/homework";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -15,8 +22,19 @@ const converter = <T>() => ({
   fromFirestore: (snap: FirebaseFirestore.QueryDocumentSnapshot) => snap.data() as T,
 });
 
-export const dataPointCollection = <T>(collectionPath: string) =>
-  collection(firestore, collectionPath).withConverter(converter<T>() as FirestoreDataConverter<T>);
+const dataPointCollectionCache: Record<string, unknown> = {};
+
+export const dataPointCollection = <T>(collectionPath: string) => {
+  const cache = dataPointCollectionCache[collectionPath];
+  if (cache) {
+    return cache as CollectionReference<T>;
+  }
+  const colRef = collection(firestore, collectionPath).withConverter(
+    converter<T>() as FirestoreDataConverter<T>
+  );
+  dataPointCollectionCache[collectionPath] = colRef;
+  return colRef;
+};
 
 const dataPointDocCache: Record<string, unknown> = {};
 
@@ -33,7 +51,15 @@ export const dataPointDoc = <T>(documentPath: string) => {
 };
 
 export const db = {
+  collections: {
+    homework: (userId?: string) =>
+      userId ? dataPointCollection<Homework>(`users/${userId}/homeworks`) : null,
+  },
   documents: {
+    homework: (userId?: string, homeworkId?: string) =>
+      userId && homeworkId
+        ? dataPointDoc<Homework>(`users/${userId}/homeworks/${homeworkId}`)
+        : null,
     totalUsage: (userId?: string) =>
       userId ? dataPointDoc<TotalUsageInfo>(`users/${userId}/stats/usage`) : null,
     usageLog: (userId?: string, usageId?: string) =>
