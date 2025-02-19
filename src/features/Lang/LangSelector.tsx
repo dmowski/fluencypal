@@ -1,6 +1,7 @@
 import {
   fullEnglishLanguageName,
   fullLanguageName,
+  getLabelFromCode,
   getUserLangCode,
   SupportedLanguage,
   supportedLanguages,
@@ -24,12 +25,6 @@ export const LangSelector = ({
   useEffect(() => {
     value && setSelectedLanguage(value);
   }, [value]);
-
-  const getLabelFromCode = (lang: SupportedLanguage) => {
-    const englishName = fullEnglishLanguageName[lang];
-    const name = fullLanguageName[lang];
-    return `${englishName} (${name})`;
-  };
 
   const currentLangCode = selectedLanguage;
   const currentLang = getLabelFromCode(currentLangCode);

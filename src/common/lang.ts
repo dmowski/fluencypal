@@ -21,6 +21,12 @@ export type SupportedLanguage =
   | "nb" // Norwegian
   | "sv"; // Swedish
 
+export const getLabelFromCode = (lang: SupportedLanguage) => {
+  const englishName = fullEnglishLanguageName[lang];
+  const name = fullLanguageName[lang];
+  return `${englishName} (${name})`;
+};
+
 export const supportedLanguages: SupportedLanguage[] = [
   "en",
   "fr",
@@ -49,6 +55,30 @@ export const getUserLangCode = () => {
   const userLang = navigator.languages;
   const langCodes = supportedLanguages.filter((lang) => userLang.includes(lang));
   return langCodes;
+};
+
+export const emojiLanguageName: Record<SupportedLanguage, string> = {
+  en: "🇬🇧",
+  ru: "🇷🇺",
+  de: "🇩🇪",
+  pl: "🇵🇱",
+  uk: "🇺🇦",
+  fr: "🇫🇷",
+  es: "🇪🇸",
+  ar: "🇸🇦",
+  id: "🇮🇩",
+  it: "🇮🇹",
+  ja: "🇯🇵",
+  ko: "🇰🇷",
+  ms: "🇲🇾",
+  pt: "🇵🇹",
+  th: "🇹🇭",
+  tr: "🇹🇷",
+  vi: "🇻🇳",
+  zh: "🇨🇳",
+  da: "🇩🇰", // Danish
+  nb: "🇳🇴", // Norwegian
+  sv: "🇸🇪", // Swedish
 };
 
 export const fullLanguageName: Record<SupportedLanguage, string> = {
