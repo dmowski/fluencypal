@@ -1,7 +1,7 @@
 import { TalkingWaves } from "@/features/Animations/TalkingWaves";
-import { Button, Card, Link, Stack, Typography } from "@mui/material";
+import { Button, Link, Stack, Typography } from "@mui/material";
 import { Header } from "../Header/Header";
-import Galaxy from "./Galaxy";
+import Galaxy from "../Animations/Galaxy";
 import { StarContainer } from "../Layout/StarContainer";
 import { emojiLanguageName, fullEnglishLanguageName, supportedLanguages } from "@/common/lang";
 
