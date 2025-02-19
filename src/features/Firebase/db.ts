@@ -2,6 +2,7 @@ import FirebaseFirestore from "@google-cloud/firestore";
 import { collection, doc, DocumentReference, SnapshotOptions } from "firebase/firestore";
 import { firestore } from "./init";
 import { TotalUsageInfo, UsageLog } from "@/common/usage";
+import { UserSettings } from "@/common/user";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -36,5 +37,8 @@ export const db = {
       userId ? dataPointDoc<TotalUsageInfo>(`users/${userId}/stats/usage`) : null,
     usageLog: (userId?: string, usageId?: string) =>
       userId && usageId ? dataPointDoc<UsageLog>(`users/${userId}/usageLogs/${usageId}`) : null,
+
+    userSettings: (userId?: string) =>
+      userId ? dataPointDoc<UserSettings>(`users/${userId}`) : null,
   },
 };

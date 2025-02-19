@@ -1,11 +1,10 @@
 "use client";
-import { createContext, useContext, useMemo, ReactNode, JSX, useEffect } from "react";
+import { createContext, useContext, ReactNode, JSX, useEffect } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { doc, DocumentReference, setDoc } from "firebase/firestore";
-import { firestore } from "../Firebase/init";
+import { setDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { UserSettings } from "@/common/user";
 import { SupportedLanguage } from "@/common/lang";
+import { db } from "../Firebase/db";
 
 interface SettingsContextType {
   language: SupportedLanguage | null;
@@ -23,11 +22,9 @@ function useProvideSettings(): SettingsContextType {
   const auth = useAuth();
   const userId = auth.uid;
 
-  const userSettingsDoc = useMemo(() => {
-    return userId ? (doc(firestore, `users/${userId}`) as DocumentReference<UserSettings>) : null;
-  }, [userId]);
+  const userSettingsDoc = db.documents.userSettings(userId);
 
-  const [userSettings, loading] = useDocumentData<UserSettings>(userSettingsDoc);
+  const [userSettings, loading] = useDocumentData(userSettingsDoc);
 
   const setLanguage = async (language: SupportedLanguage) => {
     if (!userSettingsDoc) return;
