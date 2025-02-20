@@ -1,6 +1,6 @@
 "use client";
 
-import { Conversation } from "@/features/Conversation/Conversation";
+import { ConversationPage } from "@/features/Conversation/ConversationPage";
 import { Header } from "@/features/Header/Header";
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <Conversation />
+        <ConversationPage />
       </main>
     </>
   );
