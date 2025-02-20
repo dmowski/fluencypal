@@ -9,6 +9,7 @@ import { SettingsProvider } from "@/features/Settings/useSettings";
 import { UsageProvider } from "@/features/Usage/useUsage";
 import { NotificationsProviderWrapper } from "./clientProviders";
 import { HomeworkProvider } from "@/features/Conversation/useHomework";
+import { ChatHistoryProvider } from "@/features/Conversation/useChatHistory";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -37,11 +38,13 @@ export default function RootLayout({
           <AppRouterCacheProvider options={{ key: "css" }}>
             <NotificationsProviderWrapper>
               <AuthProvider>
-                <SettingsProvider>
-                  <UsageProvider>
-                    <HomeworkProvider>{children}</HomeworkProvider>
-                  </UsageProvider>
-                </SettingsProvider>
+                <ChatHistoryProvider>
+                  <SettingsProvider>
+                    <UsageProvider>
+                      <HomeworkProvider>{children}</HomeworkProvider>
+                    </UsageProvider>
+                  </SettingsProvider>
+                </ChatHistoryProvider>
               </AuthProvider>
             </NotificationsProviderWrapper>
           </AppRouterCacheProvider>
