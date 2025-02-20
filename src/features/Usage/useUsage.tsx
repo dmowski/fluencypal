@@ -10,7 +10,7 @@ import {
   SetStateAction,
 } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { setDoc } from "firebase/firestore";
+import { getDoc, setDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { TotalUsageInfo, UsageLog } from "@/common/usage";
 import { db } from "../Firebase/db";
@@ -90,11 +90,23 @@ function useProvideUsage(): UsageContextType {
     setDoc(totalUsageDoc, newTotalUsage);
   };
 
-  const START_BALANCE = 5;
+  const initWelcomeBalance = async () => {
+    if (!totalUsageDoc || !userId) {
+      return;
+    }
+    const START_BALANCE = 5;
+    const docData = await getDoc(totalUsageDoc);
+    const totalData = docData.data();
+    if (!totalData) {
+      console.log("ADD START BALANCE");
+      addBalance(START_BALANCE);
+    }
+  };
+
   useEffect(() => {
-    if (!userId || loadingTotalUsage || totalUsage) return;
-    addBalance(START_BALANCE);
-  }, [userId, loadingTotalUsage, totalUsage]);
+    if (!userId) return;
+    initWelcomeBalance();
+  }, [userId, totalUsageDoc]);
 
   return {
     ...totalUsageClean,
