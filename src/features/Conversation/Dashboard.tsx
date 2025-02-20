@@ -1,40 +1,19 @@
 "use client";
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
-import { useAuth } from "../Auth/useAuth";
 
 import { Button, Stack, Typography } from "@mui/material";
-import { SignInForm } from "../Auth/SignInForm";
 import { StarContainer } from "../Layout/StarContainer";
 import MicIcon from "@mui/icons-material/Mic";
-import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { LangSelector } from "../Lang/LangSelector";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
-import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
 import { Homework } from "./Homework";
 
 export function Dashboard() {
-  const auth = useAuth();
   const settings = useSettings();
   const aiConversation = useAiConversation();
-  const usage = useUsage();
-
-  if (settings.loading || auth.loading)
-    return (
-      <Typography
-        sx={{
-          padding: "20px",
-          opacity: 0.5,
-        }}
-        align="center"
-      >
-        {auth.loading ? "auth loading" : "Settings loading"}
-      </Typography>
-    );
-  if (!auth.isAuthorized) return <SignInForm />;
-  if (usage.balance <= 0) return <NoBalanceBlock />;
 
   return (
     <Stack

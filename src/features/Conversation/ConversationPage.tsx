@@ -18,15 +18,23 @@ export function ConversationPage() {
 
   if (settings.loading || auth.loading)
     return (
-      <Typography
+      <Stack
         sx={{
-          padding: "20px",
-          opacity: 0.5,
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
         }}
-        align="center"
       >
-        {auth.loading ? "auth loading" : "Settings loading"}
-      </Typography>
+        <Typography
+          sx={{
+            padding: "20px",
+            opacity: 0.3,
+          }}
+          align="center"
+        >
+          {auth.loading ? "Loading..." : "Loading."}
+        </Typography>
+      </Stack>
     );
   if (!auth.isAuthorized) return <SignInForm />;
   if (usage.balance <= 0) return <NoBalanceBlock />;
