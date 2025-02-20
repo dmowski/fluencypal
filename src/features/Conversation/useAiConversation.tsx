@@ -1,7 +1,16 @@
 "use client";
 
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  JSX,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { MODELS } from "@/common/ai";
-import { useEffect, useMemo, useRef, useState } from "react";
 import { sleep } from "openai/core.mjs";
 import { AiRtcConfig, AiRtcInstance, AiTool, initAiRtc } from "./rtc";
 import { useLocalStorage } from "react-use";
@@ -14,7 +23,29 @@ import { Homework } from "@/common/homework";
 import { UsageLog } from "@/common/usage";
 import { ChatMessage, ConversationMode } from "@/common/conversation";
 
-export const useAiConversation = () => {
+interface AiConversationContextType {
+  isSavingHomework: boolean;
+  isInitializing: boolean;
+  isStarted: boolean;
+  startConversation: (params: { mode: ConversationMode; homework?: Homework }) => Promise<void>;
+  stopConversation: () => Promise<void>;
+  finishLesson: () => Promise<void>;
+  conversation: ChatMessage[];
+  errorInitiating?: string;
+  isClosing: boolean;
+  isAiSpeaking: boolean;
+  isClosed: boolean;
+  isUserSpeaking: boolean;
+  toggleMute: (isMute: boolean) => void;
+  isMuted: boolean;
+  addUserMessage: (message: string) => Promise<void>;
+  isShowUserInput: boolean;
+  setIsShowUserInput: (value: boolean) => void;
+}
+
+const AiConversationContext = createContext<AiConversationContextType | null>(null);
+
+function useProvideAiConversation(): AiConversationContextType {
   const [isInitializing, setIsInitializing] = useState(false);
   const history = useChatHistory();
   const settings = useSettings();
@@ -303,9 +334,26 @@ Do not needed to introduce yourself again. Just start with hello and homework re
     isClosed,
     isUserSpeaking,
     toggleMute,
-    isMuted,
+    isMuted: isMuted || false,
     addUserMessage,
-    isShowUserInput,
+    isShowUserInput: isShowUserInput || false,
     setIsShowUserInput,
   };
-};
+}
+
+export function AiConversationProvider({ children }: { children: ReactNode }): JSX.Element {
+  const aiConversationData = useProvideAiConversation();
+  return (
+    <AiConversationContext.Provider value={aiConversationData}>
+      {children}
+    </AiConversationContext.Provider>
+  );
+}
+
+export function useAiConversation(): AiConversationContextType {
+  const context = useContext(AiConversationContext);
+  if (!context) {
+    throw new Error("useAiConversation must be used within an AiConversationProvider");
+  }
+  return context;
+}

@@ -10,6 +10,7 @@ import { UsageProvider } from "@/features/Usage/useUsage";
 import { NotificationsProviderWrapper } from "./clientProviders";
 import { HomeworkProvider } from "@/features/Conversation/useHomework";
 import { ChatHistoryProvider } from "@/features/Conversation/useChatHistory";
+import { AiConversationProvider } from "@/features/Conversation/useAiConversation";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -41,7 +42,9 @@ export default function RootLayout({
                 <ChatHistoryProvider>
                   <SettingsProvider>
                     <UsageProvider>
-                      <HomeworkProvider>{children}</HomeworkProvider>
+                      <HomeworkProvider>
+                        <AiConversationProvider>{children}</AiConversationProvider>
+                      </HomeworkProvider>
                     </UsageProvider>
                   </SettingsProvider>
                 </ChatHistoryProvider>
