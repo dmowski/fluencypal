@@ -185,19 +185,6 @@ export const initAiRtc = async ({
   });
   peerConnection.addTrack(userMedia.getTracks()[0]);
   const dataChannel = peerConnection.createDataChannel("oai-events");
-  const offer = await peerConnection.createOffer();
-  await peerConnection.setLocalDescription(offer);
-  const answer: RTCSessionDescriptionInit = {
-    type: "answer",
-    sdp: await sendSdpOffer(offer, model),
-  };
-  await peerConnection.setRemoteDescription(answer);
-
-  const aiToolsForLlm: AiToolForLlm[] = aiTools.map((tool) => {
-    const copyTool = { ...tool, handler: undefined };
-    delete copyTool.handler;
-    return copyTool;
-  });
 
   const messageHandler = (e: MessageEvent) => {
     const event = JSON.parse(e.data);
@@ -291,13 +278,27 @@ export const initAiRtc = async ({
       }
     }
   };
+  const aiToolsForLlm: AiToolForLlm[] = aiTools.map((tool) => {
+    const copyTool = { ...tool, handler: undefined };
+    delete copyTool.handler;
+    return copyTool;
+  });
 
   const openHandler = async () => {
     await updateSession(dataChannel, initInstruction, aiToolsForLlm);
     onOpen();
   };
+
   dataChannel.addEventListener("message", messageHandler);
   dataChannel.addEventListener("open", openHandler);
+
+  const offer = await peerConnection.createOffer();
+  await peerConnection.setLocalDescription(offer);
+  const answer: RTCSessionDescriptionInit = {
+    type: "answer",
+    sdp: await sendSdpOffer(offer, model),
+  };
+  await peerConnection.setRemoteDescription(answer);
 
   const closeHandler = () => {
     if (dataChannel) {
