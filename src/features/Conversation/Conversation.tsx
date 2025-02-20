@@ -8,7 +8,7 @@ import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
 import { Textarea } from "../Input/Textarea";
 import { KeyboardButton } from "../Button/KeyboardButton";
-import { Button, Card, IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { SignInForm } from "../Auth/SignInForm";
 import { StarContainer } from "../Layout/StarContainer";
 import { SendHorizontal } from "lucide-react";
@@ -21,18 +21,11 @@ import ChildCareIcon from "@mui/icons-material/ChildCare";
 import DoneIcon from "@mui/icons-material/Done";
 import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
 import { useHomework } from "./useHomework";
-import { ConversationMode } from "@/common/conversation";
-
-const conversationModeLabel: Record<ConversationMode, string> = {
-  beginner: "Beginner",
-  talk: "Just talk",
-  "talk-and-correct": "Talk & Correct",
-};
+import { Homework } from "./Homework";
 
 export function Conversation() {
   const auth = useAuth();
   const settings = useSettings();
-  const homework = useHomework();
   const aiConversation = useAiConversation();
   const [userMessage, setUserMessage] = useState("");
   const usage = useUsage();
@@ -278,62 +271,7 @@ export function Conversation() {
               boxSizing: "border-box",
             }}
           >
-            <Card
-              sx={{
-                width: "100%",
-                maxWidth: "550px",
-                padding: "20px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "30px",
-              }}
-            >
-              <Typography variant="h4">Homework</Typography>
-              <Stack sx={{ gap: "30px" }}>
-                {homework.incompleteHomeworks.length === 0 && (
-                  <Typography variant="caption">No homework yet</Typography>
-                )}
-                {homework.incompleteHomeworks.map((homework) => {
-                  return (
-                    <Stack
-                      key={homework.conversationId}
-                      sx={{
-                        alignItems: "flex-start",
-                      }}
-                    >
-                      <Typography>{conversationModeLabel[homework.mode]}</Typography>
-
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          opacity: 0.5,
-                        }}
-                      >
-                        {new Date(homework.createdAt).toLocaleDateString()}
-                      </Typography>
-                      <Stack sx={{ opacity: 0.9 }}>
-                        <Markdown size="small">{homework.homework}</Markdown>
-                      </Stack>
-
-                      <Button
-                        sx={{
-                          marginTop: "5px",
-                        }}
-                        variant="outlined"
-                        onClick={() => {
-                          aiConversation.startConversation({
-                            mode: homework.mode,
-                            homework,
-                          });
-                        }}
-                      >
-                        Continue
-                      </Button>
-                    </Stack>
-                  );
-                })}
-              </Stack>
-            </Card>
+            <Homework />
           </Stack>
         </Stack>
       )}
