@@ -7,7 +7,14 @@ interface DashboardCardProps {
 
 export const DashboardCard: React.FC<DashboardCardProps> = ({ children }) => {
   return (
-    <Card sx={{ position: "relative", borderRadius: "16px" }}>
+    <Card
+      sx={{
+        position: "relative",
+        borderRadius: "16px",
+        backgroundColor: "rgba(12, 12, 14, 0.9)",
+        backdropFilter: "blur(10px)",
+      }}
+    >
       <Stack
         sx={{
           position: "absolute",
