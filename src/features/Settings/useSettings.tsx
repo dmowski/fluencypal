@@ -7,6 +7,7 @@ import { SupportedLanguage } from "@/common/lang";
 import { db } from "../Firebase/db";
 
 interface SettingsContextType {
+  userCreatedAt: number | null;
   language: SupportedLanguage | null;
   loading: boolean;
   setLanguage: (language: SupportedLanguage) => void;
@@ -15,6 +16,7 @@ interface SettingsContextType {
 export const settingsContext = createContext<SettingsContextType>({
   language: null,
   loading: true,
+  userCreatedAt: null,
   setLanguage: async () => void 0,
 });
 
@@ -49,7 +51,10 @@ function useProvideSettings(): SettingsContextType {
     saveLoginTime();
   }, [userId, userSettingsDoc]);
 
+  const userCreatedAt = userSettings?.createdAt || null;
+
   return {
+    userCreatedAt,
     language: userSettings?.language || null,
     loading,
     setLanguage,
