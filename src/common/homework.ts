@@ -7,6 +7,6 @@ export interface Homework {
   createdAt: number;
   homework: string;
   isDone: boolean;
-  isSkip: boolean;
-  isSkipAt: number;
+  isSkip?: boolean;
+  isSkipAt?: number;
 }

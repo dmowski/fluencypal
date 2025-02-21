@@ -10,19 +10,20 @@ import { LangSelector } from "../Lang/LangSelector";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
 import { Homework } from "../Conversation/Homework";
-import { GradientCard } from "../Card/GradientCard";
-import { Badge, BadgeCheck, BookOpenText, GraduationCap, Mic } from "lucide-react";
+import { BookOpenText, GraduationCap, Mic } from "lucide-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { ProgressGrid } from "./ProgressGrid";
 import { InfoBlockedSection } from "./InfoBlockedSection";
 import { DashboardCard } from "../Card/DashboardCard";
 import { useTasks } from "../Tasks/useTasks";
 import { TaskCard } from "./TaskCard";
+import { useWords } from "../Words/useWords";
 
 export function Dashboard() {
   const settings = useSettings();
   const aiConversation = useAiConversation();
   const tasks = useTasks();
+  const words = useWords();
 
   if (aiConversation.isInitializing) {
     return <InfoBlockedSection title="Loading..." />;
@@ -356,6 +357,23 @@ export function Dashboard() {
                 return dayStat.length;
               }}
             />
+
+            <Stack
+              sx={{
+                flexDirection: "row",
+              }}
+            >
+              <Stack
+                sx={{
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="h1" className="decor-title">
+                  {words.totalWordsCount}
+                </Typography>
+                <Typography variant="caption">Words used during conversations</Typography>
+              </Stack>
+            </Stack>
           </DashboardCard>
         </Stack>
       </Stack>

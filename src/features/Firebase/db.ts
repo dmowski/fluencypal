@@ -12,6 +12,7 @@ import { UserSettings } from "@/common/user";
 import { Conversation } from "@/common/conversation";
 import { Homework } from "@/common/homework";
 import { UserTaskStats } from "@/common/userTask";
+import { WordsStats } from "@/common/words";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -63,6 +64,7 @@ export const db = {
         : null,
     totalUsage: (userId?: string) =>
       userId ? dataPointDoc<TotalUsageInfo>(`users/${userId}/stats/usage`) : null,
+
     usageLog: (userId?: string, usageId?: string) =>
       userId && usageId ? dataPointDoc<UsageLog>(`users/${userId}/usageLogs/${usageId}`) : null,
 
@@ -76,5 +78,8 @@ export const db = {
       userId && conversationId
         ? dataPointDoc<Conversation>(`users/${userId}/conversations/${conversationId}`)
         : null,
+
+    userWordsStats: (userId?: string) =>
+      userId ? dataPointDoc<WordsStats>(`users/${userId}/stats/words`) : null,
   },
 };

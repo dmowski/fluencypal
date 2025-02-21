@@ -12,6 +12,7 @@ import { HomeworkProvider } from "@/features/Conversation/useHomework";
 import { ChatHistoryProvider } from "@/features/Conversation/useChatHistory";
 import { AiConversationProvider } from "@/features/Conversation/useAiConversation";
 import { TasksProvider } from "@/features/Tasks/useTasks";
+import { WordsProvider } from "@/features/Words/useWords";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -40,17 +41,19 @@ export default function RootLayout({
           <AppRouterCacheProvider options={{ key: "css" }}>
             <NotificationsProviderWrapper>
               <AuthProvider>
-                <ChatHistoryProvider>
-                  <SettingsProvider>
-                    <TasksProvider>
-                      <UsageProvider>
-                        <HomeworkProvider>
-                          <AiConversationProvider>{children}</AiConversationProvider>
-                        </HomeworkProvider>
-                      </UsageProvider>
-                    </TasksProvider>
-                  </SettingsProvider>
-                </ChatHistoryProvider>
+                <WordsProvider>
+                  <ChatHistoryProvider>
+                    <SettingsProvider>
+                      <TasksProvider>
+                        <UsageProvider>
+                          <HomeworkProvider>
+                            <AiConversationProvider>{children}</AiConversationProvider>
+                          </HomeworkProvider>
+                        </UsageProvider>
+                      </TasksProvider>
+                    </SettingsProvider>
+                  </ChatHistoryProvider>
+                </WordsProvider>
               </AuthProvider>
             </NotificationsProviderWrapper>
           </AppRouterCacheProvider>

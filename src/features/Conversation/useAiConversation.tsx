@@ -23,6 +23,7 @@ import { Homework } from "@/common/homework";
 import { UsageLog } from "@/common/usage";
 import { ChatMessage, ConversationMode } from "@/common/conversation";
 import { useTasks } from "../Tasks/useTasks";
+import { useWords } from "../Words/useWords";
 
 interface AiConversationContextType {
   isSavingHomework: boolean;
@@ -62,6 +63,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isClosed, setIsClosed] = useState(false);
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
   const [isUserSpeaking, setIsUserSpeaking] = useState(false);
+  const words = useWords();
   const tasks = useTasks();
 
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
@@ -112,6 +114,12 @@ function useProvideAiConversation(): AiConversationContextType {
     };
   }, []);
 
+  const calculateWordsUsageFromConversation = async () => {
+    const userMessages = conversation.filter((m) => !m.isBot);
+    const userText = userMessages.map((m) => m.text).join(" ");
+    await words.addWordsStatFromText(userText);
+  };
+
   const finishLesson = async () => {
     setIsClosing(true);
     communicatorRef.current?.toggleMute(true);
@@ -121,6 +129,7 @@ Format homework following this structure:
 Your homework is to repeat the following text:
 "[Text to repeat]"
 `;
+    await calculateWordsUsageFromConversation();
     await communicatorRef.current?.updateSessionTrigger(newInstruction);
     await sleep(700);
     communicatorRef.current?.addUserChatMessage(
@@ -304,6 +313,7 @@ Do not needed to introduce yourself again. Just start with hello and homework re
       createdAt: Date.now(),
       homework: homeworkText,
       isDone: false,
+      isSkip: false,
     });
   };
 
