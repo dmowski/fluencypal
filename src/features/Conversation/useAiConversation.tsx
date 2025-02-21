@@ -22,6 +22,7 @@ import { useHomework } from "./useHomework";
 import { Homework } from "@/common/homework";
 import { UsageLog } from "@/common/usage";
 import { ChatMessage, ConversationMode } from "@/common/conversation";
+import { useTasks } from "../Tasks/useTasks";
 
 interface AiConversationContextType {
   isSavingHomework: boolean;
@@ -61,6 +62,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isClosed, setIsClosed] = useState(false);
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
   const [isUserSpeaking, setIsUserSpeaking] = useState(false);
+  const tasks = useTasks();
 
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
   const communicatorRef = useRef(communicator);
@@ -72,6 +74,10 @@ function useProvideAiConversation(): AiConversationContextType {
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
     history.setMessages(conversationId, conversation);
+
+    if (conversation.length === 5) {
+      tasks.completeTask("lesson");
+    }
   }, [conversation.length]);
 
   const onAddDelta = (id: string, delta: string, isBot: boolean) => {
