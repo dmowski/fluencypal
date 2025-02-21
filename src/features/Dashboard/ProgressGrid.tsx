@@ -5,8 +5,7 @@ import dayjs from "dayjs";
 const colorMap = [
   "rgba(5, 172, 255, 0.03)",
   "rgba(5, 172, 255, 0.3)",
-  "rgba(5, 172, 255, 0.4)",
-  "rgba(5, 172, 255, 0.5)",
+  "rgba(5, 172, 255, 0.8)",
   "rgba(5, 172, 255, 1)",
 ];
 
@@ -60,16 +59,26 @@ export const ProgressGrid: React.FC<ProgressGridProps> = ({
       >
         {days.map((date, index) => {
           const dateString = date.format("DD.MM.YYYY");
-          const maxCount = 4;
-          const level = Math.min(getDateStat(dateString), maxCount);
+          const level = Math.min(getDateStat(dateString), colorMap.length - 1);
 
           const dateTooltipLabel = date.format("DD MMM");
 
           const isToday = dateString === currentDayString;
           const isFuture = date.isAfter(dayjs(currentDateTimeStamp));
-          const tooltipLabel = `${dateTooltipLabel}: ${getDateStat(dateString)} activities | level ${level}`;
+          const tooltipLabel = `${dateTooltipLabel}: ${getDateStat(dateString)} activities`;
           return (
-            <Tooltip key={index} title={tooltipLabel} arrow>
+            <Tooltip
+              key={index}
+              title={tooltipLabel}
+              arrow
+              slotProps={{
+                popper: {
+                  sx: {
+                    pointerEvents: "none",
+                  },
+                },
+              }}
+            >
               <Box
                 sx={{
                   width: 12,
