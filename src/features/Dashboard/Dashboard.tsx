@@ -9,7 +9,7 @@ import { useSettings } from "../Settings/useSettings";
 import { LangSelector } from "../Lang/LangSelector";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
-import { Homework } from "./Homework";
+import { Homework } from "../Conversation/Homework";
 
 export function Dashboard() {
   const settings = useSettings();

@@ -8,7 +8,7 @@ import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
 import { ConversationBoard } from "./ConversationBoard";
-import { Dashboard } from "./Dashboard";
+import { Dashboard } from "../Dashboard/Dashboard";
 
 export function ConversationPage() {
   const auth = useAuth();
