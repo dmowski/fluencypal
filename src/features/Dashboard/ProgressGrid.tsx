@@ -16,7 +16,7 @@ interface ProgressGridProps {
   getDateStat: (data: string) => number;
 }
 
-const ProgressGrid: React.FC<ProgressGridProps> = ({
+export const ProgressGrid: React.FC<ProgressGridProps> = ({
   startDateTimeStamp,
   currentDateTimeStamp,
   getDateStat,
@@ -115,5 +115,3 @@ const ProgressGrid: React.FC<ProgressGridProps> = ({
     </Stack>
   );
 };
-
-export default ContributionGrid;

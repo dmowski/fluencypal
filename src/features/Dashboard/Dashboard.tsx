@@ -14,7 +14,7 @@ import { JSX } from "react";
 import { GradientCard } from "../Card/GradientCard";
 import { Badge, BadgeCheck } from "lucide-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
-import ProgressGrid from "./ProgressGrid";
+import { ProgressGrid } from "./ProgressGrid";
 
 const InfoBlockedSection = ({
   title,
