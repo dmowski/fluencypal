@@ -14,6 +14,7 @@ import { JSX } from "react";
 import { GradientCard } from "../Card/GradientCard";
 import { Badge, BadgeCheck } from "lucide-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
+import ProgressGrid from "./ProgressGrid";
 
 const InfoBlockedSection = ({
   title,
@@ -98,6 +99,7 @@ export function Dashboard() {
       sx={{
         alignItems: "center",
         justifyContent: "center",
+        paddingBottom: "70px",
       }}
     >
       <Stack
@@ -454,16 +456,24 @@ export function Dashboard() {
             }}
           >
             <Stack>
-              <Typography variant="h4">Achievements</Typography>
+              <Typography variant="h4">Progress</Typography>
               <Typography
                 variant="caption"
                 sx={{
                   opacity: 0.7,
                 }}
               >
-                Your Achievements
+                Your Daily Progress
               </Typography>
             </Stack>
+
+            <ProgressGrid
+              startDateTimeStamp={settings.userCreatedAt || Date.now()}
+              currentDateTimeStamp={Date.now()}
+              getDateStat={(date) => {
+                return 0;
+              }}
+            />
           </Card>
         </Stack>
       </Stack>
