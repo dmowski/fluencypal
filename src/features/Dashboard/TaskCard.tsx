@@ -29,7 +29,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ isDone, children }) => {
             right: "16px",
           }}
         >
-          {isDone ? <BadgeCheck color="#fa8500" /> : <Badge color="rgba(255, 255, 255, 0.1)" />}
+          {isDone ? <BadgeCheck color="#fa8500" size={"20px"} /> : null}
         </Stack>
         {children}
       </Stack>

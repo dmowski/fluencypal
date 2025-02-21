@@ -1,71 +1,126 @@
-import { Button, Card, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { useHomework } from "./useHomework";
 import { conversationModeLabel } from "./data";
 import { Markdown } from "../Markdown/Markdown";
 import { useAiConversation } from "./useAiConversation";
+import { useState } from "react";
 
 export const Homework = () => {
   const aiConversation = useAiConversation();
-  const homework = useHomework();
+  const homeworkService = useHomework();
+  const [limit, setLimit] = useState(1);
+
   return (
     <>
       <Stack>
         <Typography variant="h2" className="decor-title">
           Homework
         </Typography>
-        {homework.incompleteHomeworks.length === 0 && (
-          <Typography
-            sx={{
-              opacity: 0.7,
-            }}
-            variant="caption"
-          >
-            No homework yet
-          </Typography>
+        {homeworkService.incompleteHomeworks.length === 0 && (
+          <>
+            <Stack
+              sx={{
+                alignItems: "flex-start",
+                width: "100%",
+                gap: "10px",
+              }}
+            >
+              <Typography
+                sx={{
+                  opacity: 0.7,
+                }}
+                variant="caption"
+              >
+                No homework yet. Start any conversation to get homework.
+              </Typography>
+              <Button
+                variant="outlined"
+                onClick={() =>
+                  aiConversation.startConversation({
+                    mode: "talk",
+                  })
+                }
+              >
+                Start a conversation
+              </Button>
+            </Stack>
+          </>
         )}
       </Stack>
 
       <Stack sx={{ gap: "30px" }}>
-        {homework.incompleteHomeworks.map((homework) => {
-          return (
-            <Stack
-              key={homework.conversationId}
-              sx={{
-                alignItems: "flex-start",
-              }}
-            >
-              <Typography>{conversationModeLabel[homework.mode]}</Typography>
-
-              <Typography
-                variant="caption"
+        {homeworkService.incompleteHomeworks
+          .filter((_, index) => index < limit)
+          .map((homework) => {
+            return (
+              <Stack
+                key={homework.conversationId}
                 sx={{
-                  opacity: 0.5,
+                  alignItems: "flex-start",
                 }}
               >
-                {new Date(homework.createdAt).toLocaleDateString()}
-              </Typography>
-              <Stack sx={{ opacity: 0.9 }}>
-                <Markdown size="small">{homework.homework}</Markdown>
+                <Typography>{conversationModeLabel[homework.mode]}</Typography>
+
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.5,
+                  }}
+                >
+                  {new Date(homework.createdAt).toLocaleDateString()}
+                </Typography>
+                <Stack sx={{ opacity: 0.9 }}>
+                  <Markdown size="small">{homework.homework}</Markdown>
+                </Stack>
+
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    gap: "10px",
+                    marginTop: "5px",
+                    width: "100%",
+                  }}
+                >
+                  <Button
+                    variant="outlined"
+                    onClick={() => {
+                      aiConversation.startConversation({
+                        mode: homework.mode,
+                        homework,
+                      });
+                    }}
+                  >
+                    Continue
+                  </Button>
+                  <Button
+                    variant="text"
+                    onClick={() => {
+                      const confirm = window.confirm(
+                        "Are you sure you want to skip this homework?"
+                      );
+                      if (!confirm) return;
+
+                      homeworkService.shipHomework(homework.id);
+                    }}
+                  >
+                    Skip
+                  </Button>
+                </Stack>
               </Stack>
-
-              <Button
-                sx={{
-                  marginTop: "5px",
-                }}
-                variant="outlined"
-                onClick={() => {
-                  aiConversation.startConversation({
-                    mode: homework.mode,
-                    homework,
-                  });
-                }}
-              >
-                Continue
-              </Button>
-            </Stack>
-          );
-        })}
+            );
+          })}
       </Stack>
+
+      {homeworkService.incompleteHomeworks.length > limit && (
+        <Button
+          sx={{
+            marginTop: "20px",
+          }}
+          onClick={() => setLimit(homeworkService.incompleteHomeworks.length)}
+        >
+          Show all
+        </Button>
+      )}
     </>
   );
 };

@@ -12,6 +12,7 @@ interface HomeworkContextType {
   errorHomeworks: Error | undefined;
   saveHomework: (homework: Homework) => Promise<string>;
   doneHomework: (homeworkId: string) => Promise<void>;
+  shipHomework: (homeworkId: string) => Promise<void>;
 }
 
 const HomeworkContext = createContext<HomeworkContextType | null>(null);
@@ -46,12 +47,21 @@ function useProvideHomework(): HomeworkContextType {
     await setDoc(docRef, { isDone: true }, { merge: true });
   };
 
+  const shipHomework = async (homeworkId: string) => {
+    const docRef = db.documents.homework(userId, homeworkId);
+    if (!docRef) {
+      throw new Error("Invalid Homework document reference");
+    }
+    await setDoc(docRef, { isDone: true, isSkip: true, isSkipAt: Date.now() }, { merge: true });
+  };
+
   return {
     incompleteHomeworks,
     loadingHomeworks,
     errorHomeworks,
     saveHomework,
     doneHomework,
+    shipHomework,
   };
 }
 

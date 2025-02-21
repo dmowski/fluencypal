@@ -11,7 +11,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
 import { Homework } from "../Conversation/Homework";
 import { GradientCard } from "../Card/GradientCard";
-import { Badge, BadgeCheck } from "lucide-react";
+import { Badge, BadgeCheck, BookOpenText, GraduationCap, Mic } from "lucide-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { ProgressGrid } from "./ProgressGrid";
 import { InfoBlockedSection } from "./InfoBlockedSection";
@@ -268,6 +268,7 @@ export function Dashboard() {
                   }}
                 >
                   <Button
+                    startIcon={<Mic size={"20px"} />}
                     onClick={() => aiConversation.startConversation({ mode: "talk" })}
                     variant="outlined"
                   >
@@ -285,11 +286,15 @@ export function Dashboard() {
                       opacity: 0.7,
                     }}
                   >
-                    Learn a new rule
+                    Get a personal rule to learn
                   </Typography>
                 </Stack>
-                <Button variant="outlined" onClick={() => tasks.completeTask("ruleOfDay")}>
-                  Read a rule
+                <Button
+                  startIcon={<BookOpenText size={"20px"} />}
+                  variant="outlined"
+                  onClick={() => tasks.completeTask("ruleOfDay")}
+                >
+                  Get a rule
                 </Button>
               </TaskCard>
 
@@ -302,10 +307,14 @@ export function Dashboard() {
                       opacity: 0.7,
                     }}
                   >
-                    Get new words to learn
+                    Practice new words with the AI
                   </Typography>
                 </Stack>
-                <Button variant="outlined" onClick={() => tasks.completeTask("workOfDay")}>
+                <Button
+                  variant="outlined"
+                  startIcon={<GraduationCap size={"20px"} />}
+                  onClick={() => tasks.completeTask("workOfDay")}
+                >
                   Get new words
                 </Button>
               </TaskCard>
