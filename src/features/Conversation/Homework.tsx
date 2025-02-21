@@ -8,19 +8,11 @@ export const Homework = () => {
   const aiConversation = useAiConversation();
   const homework = useHomework();
   return (
-    <Card
-      sx={{
-        width: "100%",
-        padding: "40px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "30px",
-        boxSizing: "border-box",
-        borderRadius: "16px",
-      }}
-    >
+    <>
       <Stack>
-        <Typography variant="h4">Homework</Typography>
+        <Typography variant="h2" className="decor-title">
+          Homework
+        </Typography>
         {homework.incompleteHomeworks.length === 0 && (
           <Typography
             sx={{
@@ -74,6 +66,6 @@ export const Homework = () => {
           );
         })}
       </Stack>
-    </Card>
+    </>
   );
 };

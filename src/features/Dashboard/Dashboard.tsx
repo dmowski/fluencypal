@@ -15,35 +15,8 @@ import { GradientCard } from "../Card/GradientCard";
 import { Badge, BadgeCheck } from "lucide-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { ProgressGrid } from "./ProgressGrid";
-
-const InfoBlockedSection = ({
-  title,
-  children,
-}: {
-  title: string;
-  children?: JSX.Element | JSX.Element[];
-}) => {
-  return (
-    <Stack
-      sx={{
-        height: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Typography
-        sx={{
-          padding: "20px",
-          opacity: 0.3,
-        }}
-        align="center"
-      >
-        {title}
-      </Typography>
-      {children}
-    </Stack>
-  );
-};
+import { InfoBlockedSection } from "./InfoBlockedSection";
+import { DashboardCard } from "../Card/DashboardCard";
 
 export function Dashboard() {
   const settings = useSettings();
@@ -112,17 +85,11 @@ export function Dashboard() {
           gap: "40px",
         }}
       >
-        <Card
-          sx={{
-            padding: "40px 40px 55px 40px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "40px",
-            borderRadius: "16px",
-          }}
-        >
+        <DashboardCard>
           <Stack>
-            <Typography variant="h4">Conversation</Typography>
+            <Typography variant="h2" className="decor-title">
+              Conversation
+            </Typography>
             <Typography
               variant="caption"
               sx={{
@@ -151,7 +118,7 @@ export function Dashboard() {
               }}
             >
               <Stack>
-                <Typography variant="h5">Just talk mode</Typography>
+                <Typography>Just talk mode</Typography>
                 <Typography
                   variant="caption"
                   sx={{
@@ -185,7 +152,7 @@ export function Dashboard() {
               }}
             >
               <Stack>
-                <Typography variant="h5">Talk & Correct mode</Typography>
+                <Typography>Talk & Correct mode</Typography>
                 <Typography
                   variant="caption"
                   sx={{
@@ -219,7 +186,7 @@ export function Dashboard() {
               }}
             >
               <Stack>
-                <Typography variant="h5">Beginner mode</Typography>
+                <Typography>Beginner mode</Typography>
                 <Typography
                   variant="caption"
                   sx={{
@@ -246,7 +213,7 @@ export function Dashboard() {
               </Button>
             </Stack>
           </Stack>
-        </Card>
+        </DashboardCard>
 
         <Stack
           sx={{
@@ -259,18 +226,11 @@ export function Dashboard() {
             },
           }}
         >
-          <Card
-            sx={{
-              padding: "40px 40px 55px 40px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "40px",
-              boxSizing: "border-box",
-              borderRadius: "16px",
-            }}
-          >
+          <DashboardCard>
             <Stack>
-              <Typography variant="h4">Daily Tasks</Typography>
+              <Typography variant="h2" className="decor-title">
+                Daily Tasks
+              </Typography>
               <Typography
                 variant="caption"
                 sx={{
@@ -303,17 +263,9 @@ export function Dashboard() {
                     <BadgeCheck color="rgba(5, 172, 255, 0.8)" />
                   )}
                 </Stack>
+                <Typography>A lesson</Typography>
                 <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: "400",
-                    width: "100%",
-                  }}
-                >
-                  A lesson
-                </Typography>
-                <Typography
-                  variant="body2"
+                  variant="caption"
                   sx={{
                     opacity: 0.7,
                   }}
@@ -366,15 +318,7 @@ export function Dashboard() {
                     <BadgeCheck color="rgba(5, 172, 255, 0.8)" />
                   )}
                 </Stack>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: "400",
-                    width: "100%",
-                  }}
-                >
-                  Rule of the day
-                </Typography>
+                <Typography>Rule of the day</Typography>
                 <Typography
                   variant="body2"
                   sx={{
@@ -408,15 +352,7 @@ export function Dashboard() {
                     <BadgeCheck color="rgba(5, 172, 255, 0.8)" />
                   )}
                 </Stack>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: "400",
-                    width: "100%",
-                  }}
-                >
-                  New words
-                </Typography>
+                <Typography>New words</Typography>
                 <Typography
                   variant="body2"
                   sx={{
@@ -433,8 +369,10 @@ export function Dashboard() {
                 </Button>
               </GradientCard>
             </Stack>
-          </Card>
-          <Homework />
+          </DashboardCard>
+          <DashboardCard>
+            <Homework />
+          </DashboardCard>
         </Stack>
 
         <Stack
@@ -445,18 +383,11 @@ export function Dashboard() {
             boxSizing: "border-box",
           }}
         >
-          <Card
-            sx={{
-              padding: "40px 40px 55px 40px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "40px",
-              boxSizing: "border-box",
-              borderRadius: "16px",
-            }}
-          >
+          <DashboardCard>
             <Stack>
-              <Typography variant="h4">Progress</Typography>
+              <Typography variant="h2" className="decor-title">
+                Progress
+              </Typography>
               <Typography
                 variant="caption"
                 sx={{
@@ -474,7 +405,7 @@ export function Dashboard() {
                 return 0;
               }}
             />
-          </Card>
+          </DashboardCard>
         </Stack>
       </Stack>
 
