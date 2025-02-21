@@ -11,11 +11,11 @@ export const Homework = () => {
     <Card
       sx={{
         width: "100%",
-        maxWidth: "550px",
-        padding: "20px",
+        padding: "40px",
         display: "flex",
         flexDirection: "column",
         gap: "30px",
+        boxSizing: "border-box",
       }}
     >
       <Typography variant="h4">Homework</Typography>
