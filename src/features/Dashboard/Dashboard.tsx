@@ -371,7 +371,7 @@ export function Dashboard() {
                 <Typography variant="h1" className="decor-title">
                   {words.totalWordsCount}
                 </Typography>
-                <Typography variant="caption">Words used during conversations</Typography>
+                <Typography variant="caption">Words used during all conversations</Typography>
               </Stack>
             </Stack>
           </DashboardCard>
