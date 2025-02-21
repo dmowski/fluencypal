@@ -16,13 +16,24 @@ export const Homework = () => {
         flexDirection: "column",
         gap: "30px",
         boxSizing: "border-box",
+        borderRadius: "16px",
       }}
     >
-      <Typography variant="h4">Homework</Typography>
-      <Stack sx={{ gap: "30px" }}>
+      <Stack>
+        <Typography variant="h4">Homework</Typography>
         {homework.incompleteHomeworks.length === 0 && (
-          <Typography variant="caption">No homework yet</Typography>
+          <Typography
+            sx={{
+              opacity: 0.7,
+            }}
+            variant="caption"
+          >
+            No homework yet
+          </Typography>
         )}
+      </Stack>
+
+      <Stack sx={{ gap: "30px" }}>
         {homework.incompleteHomeworks.map((homework) => {
           return (
             <Stack

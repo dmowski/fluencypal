@@ -11,6 +11,9 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
 import { Homework } from "../Conversation/Homework";
 import { JSX } from "react";
+import { GradientCard } from "../Card/GradientCard";
+import { Badge, BadgeCheck } from "lucide-react";
+import { TalkingWaves } from "../Animations/TalkingWaves";
 
 const InfoBlockedSection = ({
   title,
@@ -104,7 +107,7 @@ export function Dashboard() {
           padding: "10px",
           paddingTop: "100px",
           boxSizing: "border-box",
-          gap: "20px",
+          gap: "40px",
         }}
       >
         <Card
@@ -113,9 +116,20 @@ export function Dashboard() {
             display: "flex",
             flexDirection: "column",
             gap: "40px",
+            borderRadius: "16px",
           }}
         >
-          <Typography variant="h4">Conversation</Typography>
+          <Stack>
+            <Typography variant="h4">Conversation</Typography>
+            <Typography
+              variant="caption"
+              sx={{
+                opacity: 0.7,
+              }}
+            >
+              Start a conversation with the AI
+            </Typography>
+          </Stack>
           <Stack
             sx={{
               gap: "20px",
@@ -234,7 +248,7 @@ export function Dashboard() {
 
         <Stack
           sx={{
-            gap: "20px",
+            gap: "40px",
             display: "grid",
             gridTemplateColumns: "2fr 1fr",
             boxSizing: "border-box",
@@ -250,12 +264,221 @@ export function Dashboard() {
               flexDirection: "column",
               gap: "40px",
               boxSizing: "border-box",
+              borderRadius: "16px",
             }}
           >
-            <Typography variant="h4">Daily Tasks</Typography>
+            <Stack>
+              <Typography variant="h4">Daily Tasks</Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                Complete daily tasks to improve your English
+              </Typography>
+            </Stack>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                gap: "20px",
+              }}
+            >
+              <GradientCard
+                startColor={"rgba(5, 172, 255, 0.2)"}
+                endColor={"rgba(5, 172, 255, 0.3)"}
+              >
+                <Stack
+                  sx={{
+                    position: "absolute",
+                    top: "16px",
+                    right: "16px",
+                  }}
+                >
+                  {true ? (
+                    <Badge color="rgba(5, 172, 255, 0.8)" />
+                  ) : (
+                    <BadgeCheck color="rgba(5, 172, 255, 0.8)" />
+                  )}
+                </Stack>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: "400",
+                    width: "100%",
+                  }}
+                >
+                  A lesson
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
+                  Start a lesson to learn something new
+                </Typography>
+                <Stack
+                  gap={"10px"}
+                  sx={{
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Button
+                    onClick={() => aiConversation.startConversation({ mode: "talk" })}
+                    variant="outlined"
+                  >
+                    Just a Talk
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    onClick={() => aiConversation.startConversation({ mode: "beginner" })}
+                  >
+                    Correction
+                  </Button>
+
+                  <Button
+                    variant="outlined"
+                    onClick={() => aiConversation.startConversation({ mode: "beginner" })}
+                  >
+                    Beginner
+                  </Button>
+                </Stack>
+              </GradientCard>
+
+              <GradientCard
+                startColor={"rgba(5, 172, 255, 0.2)"}
+                endColor={"rgba(5, 172, 255, 0.3)"}
+              >
+                <Stack
+                  sx={{
+                    position: "absolute",
+                    top: "16px",
+                    right: "16px",
+                  }}
+                >
+                  {true ? (
+                    <Badge color="rgba(5, 172, 255, 0.8)" />
+                  ) : (
+                    <BadgeCheck color="rgba(5, 172, 255, 0.8)" />
+                  )}
+                </Stack>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: "400",
+                    width: "100%",
+                  }}
+                >
+                  Rule of the day
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
+                  Start a lesson to learn something new
+                </Typography>
+                <Button
+                  variant="outlined"
+                  onClick={() => aiConversation.startConversation({ mode: "beginner" })}
+                >
+                  Read a rule
+                </Button>
+              </GradientCard>
+
+              <GradientCard
+                startColor={"rgba(5, 172, 255, 0.2)"}
+                endColor={"rgba(5, 172, 255, 0.3)"}
+              >
+                <Stack
+                  sx={{
+                    position: "absolute",
+                    top: "16px",
+                    right: "16px",
+                  }}
+                >
+                  {true ? (
+                    <Badge color="rgba(5, 172, 255, 0.8)" />
+                  ) : (
+                    <BadgeCheck color="rgba(5, 172, 255, 0.8)" />
+                  )}
+                </Stack>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: "400",
+                    width: "100%",
+                  }}
+                >
+                  New words
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
+                  Get new words to learn
+                </Typography>
+                <Button
+                  variant="outlined"
+                  onClick={() => aiConversation.startConversation({ mode: "beginner" })}
+                >
+                  Get new words
+                </Button>
+              </GradientCard>
+            </Stack>
           </Card>
           <Homework />
         </Stack>
+
+        <Stack
+          sx={{
+            gap: "20px",
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            boxSizing: "border-box",
+          }}
+        >
+          <Card
+            sx={{
+              padding: "40px 40px 55px 40px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "40px",
+              boxSizing: "border-box",
+              borderRadius: "16px",
+            }}
+          >
+            <Stack>
+              <Typography variant="h4">Achievements</Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                Your Achievements
+              </Typography>
+            </Stack>
+          </Card>
+        </Stack>
+      </Stack>
+
+      <Stack
+        sx={{
+          position: "absolute",
+          bottom: "0",
+          right: "0",
+          padding: "20px",
+          zIndex: -9999,
+          opacity: 0.3,
+        }}
+      >
+        <TalkingWaves />
       </Stack>
     </Stack>
   );

@@ -1,4 +1,5 @@
 import { Stack, Typography } from "@mui/material";
+import { GradientCard } from "../Card/GradientCard";
 
 interface ShortCard {
   title: string;
@@ -9,36 +10,7 @@ const ShortCard: React.FC<ShortCard> = ({ title, description }) => {
   const startColor = "rgba(5, 172, 255, 0.2)";
   const endColor = "rgba(5, 172, 255, 0.3)";
   return (
-    <Stack
-      sx={{
-        position: "relative",
-        width: "100%",
-        borderRadius: "18px",
-        padding: "22px 35px 24px 25px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        gap: "15px",
-        backgroundColor: "#070f1a",
-        overflow: "hidden",
-        zIndex: 0,
-        boxSizing: "border-box",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          borderRadius: "18px",
-          padding: "2px",
-          background: `linear-gradient(135deg, ${startColor}, ${endColor})`,
-          mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-          maskComposite: "exclude",
-          zIndex: -1,
-        },
-      }}
-    >
+    <GradientCard startColor={startColor} endColor={endColor}>
       <Typography
         variant="h5"
         component={"h2"}
@@ -57,7 +29,7 @@ const ShortCard: React.FC<ShortCard> = ({ title, description }) => {
       >
         {description}
       </Typography>
-    </Stack>
+    </GradientCard>
   );
 };
 

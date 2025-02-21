@@ -103,7 +103,7 @@ export default function LandingPage() {
               width: "100%",
               height: "100vh",
               pointerEvents: "none",
-              position: "fixed",
+              position: "absolute",
               top: 0,
               left: 0,
               zIndex: -2,
