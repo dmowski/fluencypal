@@ -41,9 +41,9 @@ export default function RootLayout({
           <AppRouterCacheProvider options={{ key: "css" }}>
             <NotificationsProviderWrapper>
               <AuthProvider>
-                <WordsProvider>
-                  <ChatHistoryProvider>
-                    <SettingsProvider>
+                <SettingsProvider>
+                  <WordsProvider>
+                    <ChatHistoryProvider>
                       <TasksProvider>
                         <UsageProvider>
                           <HomeworkProvider>
@@ -51,9 +51,9 @@ export default function RootLayout({
                           </HomeworkProvider>
                         </UsageProvider>
                       </TasksProvider>
-                    </SettingsProvider>
-                  </ChatHistoryProvider>
-                </WordsProvider>
+                    </ChatHistoryProvider>
+                  </WordsProvider>
+                </SettingsProvider>
               </AuthProvider>
             </NotificationsProviderWrapper>
           </AppRouterCacheProvider>

@@ -2,7 +2,7 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Tooltip, Typography } from "@mui/material";
 import { StarContainer } from "../Layout/StarContainer";
 import MicIcon from "@mui/icons-material/Mic";
 import { useSettings } from "../Settings/useSettings";
@@ -10,7 +10,7 @@ import { LangSelector } from "../Lang/LangSelector";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
 import { Homework } from "../Conversation/Homework";
-import { BookOpenText, GraduationCap, Mic } from "lucide-react";
+import { BookOpenText, ChevronLeft, GraduationCap, Mic, RefreshCcw } from "lucide-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { ProgressGrid } from "./ProgressGrid";
 import { InfoBlockedSection } from "./InfoBlockedSection";
@@ -27,6 +27,88 @@ export function Dashboard() {
 
   if (aiConversation.isInitializing) {
     return <InfoBlockedSection title="Loading..." />;
+  }
+
+  if (words.isGeneratingWords) {
+    return <InfoBlockedSection title="Crafting new words..." />;
+  }
+
+  if (words.wordsToLearn.length > 0) {
+    return (
+      <Stack
+        sx={{
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography
+          sx={{
+            opacity: 0.7,
+          }}
+          variant="caption"
+        >
+          New words to practice.
+        </Typography>
+        <Stack
+          sx={{
+            gap: "40px",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Stack
+            sx={{
+              maxWidth: "700px",
+              width: "100%",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "0px 10px",
+              flexWrap: "wrap",
+              boxSizing: "border-box",
+              padding: "10px",
+            }}
+          >
+            <Typography className="decor-text" variant="h4" align="center">
+              {words.wordsToLearn.join(", ")}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              gap: "40px",
+              width: "100%",
+              maxWidth: "400px",
+            }}
+          >
+            <Button size="large" variant="contained" startIcon={<GraduationCap size={"34px"} />}>
+              Start practice
+            </Button>
+            <Stack
+              sx={{
+                gap: "10px",
+                flexDirection: "row",
+                width: "100%",
+                justifyContent: "space-between",
+              }}
+            >
+              <Button
+                onClick={() => words.removeWordsToLearn()}
+                startIcon={<ChevronLeft size={"18px"} />}
+                variant="text"
+              >
+                Back
+              </Button>
+              <Tooltip title="Generate new words">
+                <Button variant="text" onClick={() => words.getNewWordsToLearn()}>
+                  I know all of them
+                </Button>
+              </Tooltip>
+            </Stack>
+          </Stack>
+        </Stack>
+      </Stack>
+    );
   }
 
   if (aiConversation.errorInitiating) {
@@ -314,7 +396,9 @@ export function Dashboard() {
                 <Button
                   variant="outlined"
                   startIcon={<GraduationCap size={"20px"} />}
-                  onClick={() => tasks.completeTask("workOfDay")}
+                  onClick={() => {
+                    words.getNewWordsToLearn();
+                  }}
                 >
                   Get new words
                 </Button>
