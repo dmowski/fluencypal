@@ -4,10 +4,16 @@ import { JSX } from "react";
 interface GradientCardProps {
   startColor: string;
   endColor: string;
+  backgroundColor?: string;
   children?: JSX.Element | JSX.Element[];
 }
 
-export const GradientCard: React.FC<GradientCardProps> = ({ startColor, endColor, children }) => {
+export const GradientCard: React.FC<GradientCardProps> = ({
+  startColor,
+  backgroundColor,
+  endColor,
+  children,
+}) => {
   return (
     <Stack
       sx={{
@@ -19,7 +25,7 @@ export const GradientCard: React.FC<GradientCardProps> = ({ startColor, endColor
         flexDirection: "column",
         alignItems: "flex-start",
         gap: "15px",
-        backgroundColor: "#070f1a",
+        backgroundColor: backgroundColor || "rgba(10, 18, 30, 1)",
         overflow: "hidden",
         zIndex: 0,
         boxSizing: "border-box",

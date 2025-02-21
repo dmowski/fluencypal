@@ -32,7 +32,7 @@ import { CustomModal } from "../Modal/CustomModal";
 import { LangSelector } from "../Lang/LangSelector";
 import { useUsage } from "../Usage/useUsage";
 import { PaymentModal } from "../Usage/PaymentModal";
-import { NeedHelpModal } from "./NeedHelpButton";
+import { NeedHelpModal } from "./NeedHelpModal";
 
 export function Header() {
   const auth = useAuth();

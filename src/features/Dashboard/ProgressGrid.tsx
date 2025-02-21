@@ -4,8 +4,8 @@ import dayjs from "dayjs";
 
 const colorMap = [
   "rgba(5, 172, 255, 0.03)",
-  "rgba(5, 172, 255, 0.1)",
   "rgba(5, 172, 255, 0.3)",
+  "rgba(5, 172, 255, 0.4)",
   "rgba(5, 172, 255, 0.5)",
   "rgba(5, 172, 255, 1)",
 ];
@@ -43,8 +43,6 @@ export const ProgressGrid: React.FC<ProgressGridProps> = ({
         position: "relative",
         width: "100%",
         height: "170px",
-        overflow: "hidden",
-        borderRadius: "6px",
       }}
     >
       <Stack
@@ -80,7 +78,7 @@ export const ProgressGrid: React.FC<ProgressGridProps> = ({
                   borderRadius: "2px",
                   boxSizing: "border-box",
                   boxShadow: isToday
-                    ? "0 0 0 2px #fff"
+                    ? "0 0 0 1px #fff"
                     : isFuture
                       ? "0 0 0 1px rgba(255, 255, 255, 0.1)"
                       : "0 0 0 1px rgba(255, 255, 255, 0.1)",

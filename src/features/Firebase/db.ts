@@ -11,6 +11,7 @@ import { TotalUsageInfo, UsageLog } from "@/common/usage";
 import { UserSettings } from "@/common/user";
 import { Conversation } from "@/common/conversation";
 import { Homework } from "@/common/homework";
+import { UserTaskStats } from "@/common/userTask";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -67,6 +68,9 @@ export const db = {
 
     userSettings: (userId?: string) =>
       userId ? dataPointDoc<UserSettings>(`users/${userId}`) : null,
+
+    userTasksStats: (userId?: string) =>
+      userId ? dataPointDoc<UserTaskStats>(`users/${userId}/stats/tasks`) : null,
 
     conversation: (userId?: string, conversationId?: string) =>
       userId && conversationId

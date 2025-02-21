@@ -51,6 +51,7 @@ export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
       await deleteCollectionDocs(firestore, `users/${userId}/conversations`);
       await deleteCollectionDocs(firestore, `users/${userId}/homeworks`);
       await deleteCollectionDocs(firestore, `users/${userId}/usageLogs`);
+      await deleteDoc(doc(firestore, `users/${userId}/stats/tasks`));
 
       await setDoc(userSettingsDoc, { language: null }, { merge: true });
       notifications.show(

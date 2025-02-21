@@ -2,7 +2,7 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 
-import { Button, Card, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { StarContainer } from "../Layout/StarContainer";
 import MicIcon from "@mui/icons-material/Mic";
 import { useSettings } from "../Settings/useSettings";
@@ -10,17 +10,19 @@ import { LangSelector } from "../Lang/LangSelector";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
 import { Homework } from "../Conversation/Homework";
-import { JSX } from "react";
 import { GradientCard } from "../Card/GradientCard";
 import { Badge, BadgeCheck } from "lucide-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { ProgressGrid } from "./ProgressGrid";
 import { InfoBlockedSection } from "./InfoBlockedSection";
 import { DashboardCard } from "../Card/DashboardCard";
+import { useTasks } from "../Tasks/useTasks";
+import { TaskCard } from "./TaskCard";
 
 export function Dashboard() {
   const settings = useSettings();
   const aiConversation = useAiConversation();
+  const tasks = useTasks();
 
   if (aiConversation.isInitializing) {
     return <InfoBlockedSection title="Loading..." />;
@@ -246,32 +248,18 @@ export function Dashboard() {
                 gap: "20px",
               }}
             >
-              <GradientCard
-                startColor={"rgba(5, 172, 255, 0.2)"}
-                endColor={"rgba(5, 172, 255, 0.3)"}
-              >
-                <Stack
-                  sx={{
-                    position: "absolute",
-                    top: "16px",
-                    right: "16px",
-                  }}
-                >
-                  {true ? (
-                    <Badge color="rgba(5, 172, 255, 0.8)" />
-                  ) : (
-                    <BadgeCheck color="rgba(5, 172, 255, 0.8)" />
-                  )}
+              <TaskCard isDone={tasks.todayStats.lesson}>
+                <Stack>
+                  <Typography>A lesson</Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      opacity: 0.7,
+                    }}
+                  >
+                    Start a lesson to learn something new
+                  </Typography>
                 </Stack>
-                <Typography>A lesson</Typography>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  Start a lesson to learn something new
-                </Typography>
                 <Stack
                   gap={"10px"}
                   sx={{
@@ -299,75 +287,41 @@ export function Dashboard() {
                     Beginner
                   </Button>
                 </Stack>
-              </GradientCard>
+              </TaskCard>
 
-              <GradientCard
-                startColor={"rgba(5, 172, 255, 0.2)"}
-                endColor={"rgba(5, 172, 255, 0.3)"}
-              >
-                <Stack
-                  sx={{
-                    position: "absolute",
-                    top: "16px",
-                    right: "16px",
-                  }}
-                >
-                  {true ? (
-                    <Badge color="rgba(5, 172, 255, 0.8)" />
-                  ) : (
-                    <BadgeCheck color="rgba(5, 172, 255, 0.8)" />
-                  )}
+              <TaskCard isDone={tasks.todayStats.ruleOfDay}>
+                <Stack>
+                  <Typography>Rule of the day</Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      opacity: 0.7,
+                    }}
+                  >
+                    Start a lesson to learn something new
+                  </Typography>
                 </Stack>
-                <Typography>Rule of the day</Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  Start a lesson to learn something new
-                </Typography>
-                <Button
-                  variant="outlined"
-                  onClick={() => aiConversation.startConversation({ mode: "beginner" })}
-                >
+                <Button variant="outlined" onClick={() => tasks.completeTask("ruleOfDay")}>
                   Read a rule
                 </Button>
-              </GradientCard>
+              </TaskCard>
 
-              <GradientCard
-                startColor={"rgba(5, 172, 255, 0.2)"}
-                endColor={"rgba(5, 172, 255, 0.3)"}
-              >
-                <Stack
-                  sx={{
-                    position: "absolute",
-                    top: "16px",
-                    right: "16px",
-                  }}
-                >
-                  {true ? (
-                    <Badge color="rgba(5, 172, 255, 0.8)" />
-                  ) : (
-                    <BadgeCheck color="rgba(5, 172, 255, 0.8)" />
-                  )}
+              <TaskCard isDone={tasks.todayStats["workOfDay"]}>
+                <Stack>
+                  <Typography>New words</Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      opacity: 0.7,
+                    }}
+                  >
+                    Get new words to learn
+                  </Typography>
                 </Stack>
-                <Typography>New words</Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  Get new words to learn
-                </Typography>
-                <Button
-                  variant="outlined"
-                  onClick={() => aiConversation.startConversation({ mode: "beginner" })}
-                >
+                <Button variant="outlined" onClick={() => tasks.completeTask("workOfDay")}>
                   Get new words
                 </Button>
-              </GradientCard>
+              </TaskCard>
             </Stack>
           </DashboardCard>
           <DashboardCard>
@@ -402,7 +356,8 @@ export function Dashboard() {
               startDateTimeStamp={settings.userCreatedAt || Date.now()}
               currentDateTimeStamp={Date.now()}
               getDateStat={(date) => {
-                return 0;
+                const dayStat = tasks.daysTasks?.[date] || [];
+                return dayStat.length;
               }}
             />
           </DashboardCard>
