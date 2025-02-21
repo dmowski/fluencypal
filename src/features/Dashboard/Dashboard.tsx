@@ -125,18 +125,18 @@ export function Dashboard() {
                     opacity: 0.7,
                   }}
                 >
-                  Just talk to the AI and it will respond to you
+                  Talk to the AI and it will respond to you
                 </Typography>
               </Stack>
               <Button
                 variant="contained"
                 onClick={() => aiConversation.startConversation({ mode: "talk" })}
+                size="large"
                 startIcon={
                   <MicIcon
                     sx={{
-                      fontSize: "30px",
-                      width: "30px",
-                      height: "30px",
+                      width: "20px",
+                      height: "20px",
                     }}
                   />
                 }
@@ -159,18 +159,18 @@ export function Dashboard() {
                     opacity: 0.7,
                   }}
                 >
-                  Talk to the AI and correct it if it makes a mistake
+                  Talk to the AI and it will correct you if you make a mistake
                 </Typography>
               </Stack>
               <Button
                 variant="outlined"
+                size="large"
                 onClick={() => aiConversation.startConversation({ mode: "talk-and-correct" })}
                 startIcon={
                   <TrendingUpIcon
                     sx={{
-                      fontSize: "30px",
-                      width: "30px",
-                      height: "30px",
+                      width: "20px",
+                      height: "20px",
                     }}
                   />
                 }
@@ -198,13 +198,13 @@ export function Dashboard() {
               </Stack>
               <Button
                 variant="outlined"
+                size="large"
                 onClick={() => aiConversation.startConversation({ mode: "beginner" })}
                 startIcon={
                   <ChildCareIcon
                     sx={{
-                      fontSize: "30px",
-                      width: "30px",
-                      height: "30px",
+                      width: "20px",
+                      height: "20px",
                     }}
                   />
                 }
