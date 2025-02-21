@@ -40,6 +40,8 @@ export function Dashboard() {
           height: "100vh",
           justifyContent: "center",
           alignItems: "center",
+          padding: "10px",
+          boxSizing: "border-box",
         }}
       >
         <Typography
@@ -67,7 +69,6 @@ export function Dashboard() {
               gap: "0px 10px",
               flexWrap: "wrap",
               boxSizing: "border-box",
-              padding: "10px",
             }}
           >
             <Typography className="decor-text" variant="h4" align="center">
