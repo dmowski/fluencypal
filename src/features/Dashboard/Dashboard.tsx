@@ -250,14 +250,14 @@ export function Dashboard() {
             >
               <TaskCard isDone={tasks.todayStats.lesson}>
                 <Stack>
-                  <Typography>A lesson</Typography>
+                  <Typography>Small conversation</Typography>
                   <Typography
                     variant="caption"
                     sx={{
                       opacity: 0.7,
                     }}
                   >
-                    Start a lesson to learn something new
+                    Start talk to learn something new
                   </Typography>
                 </Stack>
                 <Stack
@@ -273,19 +273,6 @@ export function Dashboard() {
                   >
                     Just a Talk
                   </Button>
-                  <Button
-                    variant="outlined"
-                    onClick={() => aiConversation.startConversation({ mode: "beginner" })}
-                  >
-                    Correction
-                  </Button>
-
-                  <Button
-                    variant="outlined"
-                    onClick={() => aiConversation.startConversation({ mode: "beginner" })}
-                  >
-                    Beginner
-                  </Button>
                 </Stack>
               </TaskCard>
 
@@ -298,7 +285,7 @@ export function Dashboard() {
                       opacity: 0.7,
                     }}
                   >
-                    Start a lesson to learn something new
+                    Learn a new rule
                   </Typography>
                 </Stack>
                 <Button variant="outlined" onClick={() => tasks.completeTask("ruleOfDay")}>
