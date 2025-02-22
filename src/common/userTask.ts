@@ -1,13 +1,9 @@
-export type UserTaskType = "lesson" | "workOfDay" | "ruleOfDay" | "feedback";
+export type UserTaskType = "lesson" | "words" | "ruleOfDay" | "feedback";
 
-export interface UserTask {
-  createdAt: number;
-  type: UserTaskType;
-}
-
-export type DaysTasks = Record<string, UserTask[]>;
+export type DayTasks = Record<UserTaskType, number | undefined>;
+export type DaysTasks = Record<string, DayTasks>;
 
 export interface UserTaskStats {
-  // key: 12.23.2021, value: tasks done on that day
+  // key: 12.23.2021, value: tasks done on that day (value is a timestamp)
   daysTasks?: DaysTasks;
 }

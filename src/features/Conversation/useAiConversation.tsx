@@ -25,11 +25,17 @@ import { useTasks } from "../Tasks/useTasks";
 import { useWords } from "../Words/useWords";
 import { sleep } from "@/libs/sleep";
 
+interface StartConversationProps {
+  mode: ConversationMode;
+  homework?: Homework;
+  wordsToLearn?: string[];
+}
+
 interface AiConversationContextType {
   isSavingHomework: boolean;
   isInitializing: boolean;
   isStarted: boolean;
-  startConversation: (params: { mode: ConversationMode; homework?: Homework }) => Promise<void>;
+  startConversation: (params: StartConversationProps) => Promise<void>;
   stopConversation: () => Promise<void>;
   finishLesson: () => Promise<void>;
   conversation: ChatMessage[];
@@ -77,8 +83,12 @@ function useProvideAiConversation(): AiConversationContextType {
     if (!conversationId || conversation.length === 0) return;
     history.setMessages(conversationId, conversation);
 
-    if (conversation.length === 5) {
-      tasks.completeTask("lesson");
+    if (conversation.length === 2) {
+      if (currentMode === "words") {
+        tasks.completeTask("words");
+      } else {
+        tasks.completeTask("lesson");
+      }
     }
   }, [conversation.length]);
 
@@ -123,18 +133,27 @@ function useProvideAiConversation(): AiConversationContextType {
   const finishLesson = async () => {
     setIsClosing(true);
     communicatorRef.current?.toggleMute(true);
-    const newInstruction = `Generate summary of the lesson. Show user's mistakes.
+    const newInstructionForHomework = `Generate summary of the lesson. Show user's mistakes.
 Create a text user have to repeat on the next lesson. It will be a homework.
 Format homework following this structure:
 Your homework is to repeat the following text:
 "[Text to repeat]"
 `;
+    const instructionForWords = `Generate summary of the lesson. Show user's mistakes and make general comments.`;
+
+    const newInstruction =
+      currentMode === "words" ? instructionForWords : newInstructionForHomework;
+
     await calculateWordsUsageFromConversation();
     await communicatorRef.current?.updateSessionTrigger(newInstruction);
     await sleep(700);
-    communicatorRef.current?.addUserChatMessage(
-      "I am done for today. Create a text I have to repeat on the next lesson. Don't add anything else. Just give me homework"
-    );
+
+    const talkEndUserMessage =
+      "I am done for today. Create a text I have to repeat on the next lesson. Don't add anything else. Just give me homework";
+    const wordsEndUserMessage =
+      "I am done for today. Show me my mistakes and make general comments. Don't add anything else. Just give me feedback";
+    const endUserMessage = currentMode === "words" ? wordsEndUserMessage : talkEndUserMessage;
+    communicatorRef.current?.addUserChatMessage(endUserMessage);
     await sleep(500);
     await communicatorRef.current?.triggerAiResponse();
     setIsClosing(false);
@@ -193,6 +212,7 @@ Speak slowly and clearly. Use ${language} language. Try to speed on user's level
 `,
       },
       "talk-and-correct": {
+        ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${language} teacher. Your name is "Bruno". The user wants both a conversation *and* corrections.
 For every user message, you must reply with three parts **in one response**:
@@ -212,16 +232,9 @@ Speak in a clear, friendly tone. Use only ${language}. Avoid over-explaining gra
 
 Start the conversation with: "Hello... I am here!" (in ${language} lang) in a friendly and calm way, no other words needed for the initial greeting).
 `,
-        aiTools: baseAiTools,
-        onOpen,
-        onMessage,
-        onAddDelta,
-        setIsAiSpeaking,
-        setIsUserSpeaking,
-        isMuted: isMuted || false,
-        onAddUsage: (usageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
       },
       beginner: {
+        ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${language} teacher. Your name is "Bruno". The user is a beginner who needs simple, clear communication.
 
@@ -249,25 +262,25 @@ Remember:
 
 Start the conversation with: "Hello... I am here!" (in ${language} lang) (in a friendly and calm way, no other words needed for the initial greeting).
 `,
-        aiTools: baseAiTools,
-        onOpen,
-        onMessage,
-        onAddDelta,
-        setIsAiSpeaking,
-        setIsUserSpeaking,
-        isMuted: isMuted || false,
-        onAddUsage: (usageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
+      },
+      words: {
+        ...baseConfig,
+        model: MODELS.SMALL_CONVERSATION,
+        initInstruction: `You are an ${language} teacher.
+Your name is "Bruno".
+The user wants to learn new words.
+Start your lesson be introducing new words with short explanation.
+Then, ask user to use these words in sentences.
+Go step by step, word by word.
+`,
       },
     };
     return config;
   }, [language]);
 
   const [currentMode, setCurrentMode] = useState<ConversationMode>("talk");
-  interface StartConversationProps {
-    mode: ConversationMode;
-    homework?: Homework;
-  }
-  const startConversation = async ({ mode, homework }: StartConversationProps) => {
+
+  const startConversation = async ({ mode, homework, wordsToLearn }: StartConversationProps) => {
     try {
       setIsClosing(false);
       setIsClosed(false);
@@ -284,6 +297,14 @@ ${homework.homework}
 
 Start your speech with saying hello and remind user about his homework. Repeat homework text to refresh user's memory.
 Do not needed to introduce yourself again. Just start with hello and homework reminder. Ask user to repeat homework text.
+`;
+      }
+
+      if (wordsToLearn) {
+        const wordsToLearnText = wordsToLearn.join(" ");
+        instruction += `------
+Words to learn:
+${wordsToLearnText}
 `;
       }
 
@@ -318,7 +339,10 @@ Do not needed to introduce yourself again. Just start with hello and homework re
 
   const stopConversation = async () => {
     setIsSavingHomework(true);
-    await saveHomework();
+    const isNeedToSaveHomework = currentMode !== "words";
+    if (isNeedToSaveHomework) {
+      await saveHomework();
+    }
     communicator?.closeHandler();
     setIsStarted(false);
     setIsInitializing(false);

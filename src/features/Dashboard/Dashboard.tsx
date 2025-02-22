@@ -82,7 +82,18 @@ export function Dashboard() {
               maxWidth: "400px",
             }}
           >
-            <Button size="large" variant="contained" startIcon={<GraduationCap size={"34px"} />}>
+            <Button
+              onClick={async () => {
+                await aiConversation.startConversation({
+                  mode: "words",
+                  wordsToLearn: words.wordsToLearn,
+                });
+                words.removeWordsToLearn();
+              }}
+              size="large"
+              variant="contained"
+              startIcon={<GraduationCap size={"34px"} />}
+            >
               Start practice
             </Button>
             <Stack
@@ -332,7 +343,7 @@ export function Dashboard() {
                 gap: "20px",
               }}
             >
-              <TaskCard isDone={tasks.todayStats.lesson}>
+              <TaskCard isDone={!!tasks.todayStats?.lesson}>
                 <Stack>
                   <Typography>Small conversation</Typography>
                   <Typography
@@ -361,7 +372,7 @@ export function Dashboard() {
                 </Stack>
               </TaskCard>
 
-              <TaskCard isDone={tasks.todayStats.ruleOfDay}>
+              <TaskCard isDone={!!tasks.todayStats?.ruleOfDay}>
                 <Stack>
                   <Typography>Rule of the day</Typography>
                   <Typography
@@ -382,7 +393,7 @@ export function Dashboard() {
                 </Button>
               </TaskCard>
 
-              <TaskCard isDone={tasks.todayStats["workOfDay"]}>
+              <TaskCard isDone={!!tasks.todayStats?.words}>
                 <Stack>
                   <Typography>New words</Typography>
                   <Typography
@@ -438,8 +449,8 @@ export function Dashboard() {
               startDateTimeStamp={settings.userCreatedAt || Date.now()}
               currentDateTimeStamp={Date.now()}
               getDateStat={(date) => {
-                const dayStat = tasks.daysTasks?.[date] || [];
-                return dayStat.length;
+                const dayStat = tasks.daysTasks?.[date];
+                return Object.keys(dayStat || {}).length;
               }}
             />
 

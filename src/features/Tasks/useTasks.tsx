@@ -1,9 +1,9 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useMemo } from "react";
+import { createContext, useContext, ReactNode, JSX } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "../Firebase/db";
-import { DaysTasks, UserTask, UserTaskType } from "@/common/userTask";
+import { DaysTasks, DayTasks, UserTaskType } from "@/common/userTask";
 import dayjs from "dayjs";
 import { setDoc } from "firebase/firestore";
 
@@ -11,14 +11,13 @@ interface TasksContextType {
   loading: boolean;
   daysTasks: DaysTasks | null;
   completeTask: (taskId: UserTaskType) => Promise<void>;
-  todayStats: Record<UserTaskType, boolean>;
+  todayStats?: DayTasks;
 }
 
 export const tasksContext = createContext<TasksContextType>({
   loading: true,
   daysTasks: null,
   completeTask: async () => void 0,
-  todayStats: {} as Record<UserTaskType, boolean>,
 });
 
 function useProvideTasks(): TasksContextType {
@@ -31,33 +30,27 @@ function useProvideTasks(): TasksContextType {
   const dayFormat = "DD.MM.YYYY";
   const todayDate = dayjs().format(dayFormat);
 
-  const todayStats = useMemo(() => {
-    const todayTasks = userTasksStats?.daysTasks?.[todayDate] || [];
-    const todayStats: Record<UserTaskType, boolean> = {
-      lesson: todayTasks.some((task) => task.type === "lesson"),
-      workOfDay: todayTasks.some((task) => task.type === "workOfDay"),
-      ruleOfDay: todayTasks.some((task) => task.type === "ruleOfDay"),
-      feedback: todayTasks.some((task) => task.type === "feedback"),
-    };
-    return todayStats;
-  }, [userTasksStats, todayDate]);
+  const todayStats = userTasksStats?.daysTasks?.[todayDate];
 
   const completeTask = async (taskType: UserTaskType) => {
     if (!userId || !userTasksStatsDocRef) {
       throw new Error("User not found. completeTask failed.");
     }
-    const todayTasks = userTasksStats?.daysTasks?.[todayDate] || [];
 
-    const isAlreadyCompleted = todayTasks.some((task) => task.type === taskType);
+    const isAlreadyCompleted = todayStats?.[taskType];
     if (isAlreadyCompleted) return;
 
-    const newTask: UserTask = {
-      createdAt: Date.now(),
-      type: taskType,
-    };
-    const newTasks = [...todayTasks, newTask];
-    const newDaysTasks: Partial<DaysTasks> = { [todayDate]: newTasks };
-    await setDoc(userTasksStatsDocRef, { daysTasks: newDaysTasks }, { merge: true });
+    await setDoc(
+      userTasksStatsDocRef,
+      {
+        daysTasks: {
+          [todayDate]: {
+            [taskType]: Date.now(),
+          },
+        },
+      },
+      { merge: true }
+    );
   };
 
   return {
