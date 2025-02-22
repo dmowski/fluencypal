@@ -7,10 +7,10 @@ interface ShortCard {
 }
 
 const ShortCard: React.FC<ShortCard> = ({ title, description }) => {
-  const startColor = "rgba(5, 172, 255, 0.2)";
-  const endColor = "rgba(5, 172, 255, 0.3)";
+  const startColor = "rgba(5, 172, 255, 1)";
+  const endColor = "rgba(5, 172, 255, 0.9)";
   return (
-    <GradientCard startColor={startColor} endColor={endColor}>
+    <GradientCard startColor={startColor} endColor={endColor} strokeWidth="1px">
       <Typography
         variant="h5"
         component={"h2"}

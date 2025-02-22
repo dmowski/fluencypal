@@ -6,13 +6,18 @@ interface GradientCardProps {
   endColor: string;
   backgroundColor?: string;
   children?: JSX.Element | JSX.Element[];
+  strokeWidth?: string;
+  padding?: string;
 }
 
 export const GradientCard: React.FC<GradientCardProps> = ({
   startColor,
-  backgroundColor,
   endColor,
+
+  backgroundColor,
+  strokeWidth,
   children,
+  padding,
 }) => {
   return (
     <Stack
@@ -20,7 +25,7 @@ export const GradientCard: React.FC<GradientCardProps> = ({
         position: "relative",
         width: "100%",
         borderRadius: "18px",
-        padding: "22px 35px 24px 25px",
+        padding: padding || "22px 35px 24px 25px",
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
@@ -37,8 +42,10 @@ export const GradientCard: React.FC<GradientCardProps> = ({
           right: 0,
           bottom: 0,
           borderRadius: "18px",
-          padding: "2px",
-          background: `linear-gradient(135deg, ${startColor}, ${endColor})`,
+          padding: strokeWidth || "1px",
+          "--hdr-gradient": `linear-gradient(135deg in lch decreasing hue, ${startColor} 0%, ${endColor} 100% 0%)`,
+          background: "var(--hdr-gradient)",
+
           mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           maskComposite: "exclude",
           zIndex: -1,
