@@ -13,11 +13,11 @@ import {
 import { MODELS } from "@/common/ai";
 import { AiRtcConfig, AiRtcInstance, AiTool, initAiRtc } from "./rtc";
 import { useLocalStorage } from "react-use";
-import { useChatHistory } from "./useChatHistory";
+import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { fullEnglishLanguageName } from "@/common/lang";
-import { useHomework } from "./useHomework";
+import { useHomework } from "../Homework/useHomework";
 import { Homework } from "@/common/homework";
 import { UsageLog } from "@/common/usage";
 import { ChatMessage, ConversationMode } from "@/common/conversation";
@@ -29,6 +29,7 @@ interface StartConversationProps {
   mode: ConversationMode;
   homework?: Homework;
   wordsToLearn?: string[];
+  ruleToLearn?: string;
 }
 
 interface AiConversationContextType {
@@ -86,6 +87,8 @@ function useProvideAiConversation(): AiConversationContextType {
     if (conversation.length === 2) {
       if (currentMode === "words") {
         tasks.completeTask("words");
+      } else if (currentMode === "rule") {
+        tasks.completeTask("rule");
       } else {
         tasks.completeTask("lesson");
       }
@@ -275,13 +278,30 @@ Then, ask user to use these words in sentences.
 Go step by step, word by word.
 `,
       },
+
+      rule: {
+        ...baseConfig,
+        model: MODELS.SMALL_CONVERSATION,
+        initInstruction: `You are an ${language} teacher.
+Your name is "Bruno".
+The user wants to learn a new rule.
+Start your lesson be introducing the rule with short explanation.
+Then, ask user to use these rules in sentences.
+Craft a lesson that will help user to understand the rule.
+`,
+      },
     };
     return config;
   }, [language]);
 
   const [currentMode, setCurrentMode] = useState<ConversationMode>("talk");
 
-  const startConversation = async ({ mode, homework, wordsToLearn }: StartConversationProps) => {
+  const startConversation = async ({
+    mode,
+    homework,
+    wordsToLearn,
+    ruleToLearn,
+  }: StartConversationProps) => {
     try {
       setIsClosing(false);
       setIsClosed(false);
@@ -302,10 +322,16 @@ Do not needed to introduce yourself again. Just start with hello and homework re
       }
 
       if (wordsToLearn) {
-        const wordsToLearnText = wordsToLearn.join(" ");
         instruction += `------
 Words to learn:
-${wordsToLearnText}
+${wordsToLearn.join(" ")}
+`;
+      }
+
+      if (ruleToLearn) {
+        instruction += `------
+Rule to learn:
+${ruleToLearn}
 `;
       }
 

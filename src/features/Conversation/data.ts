@@ -5,4 +5,5 @@ export const conversationModeLabel: Record<ConversationMode, string> = {
   talk: "Just talk",
   "talk-and-correct": "Talk & Correct",
   words: "Words",
+  rule: "Rule",
 };

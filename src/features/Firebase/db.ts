@@ -56,6 +56,8 @@ export const db = {
   collections: {
     homework: (userId?: string) =>
       userId ? dataPointCollection<Homework>(`users/${userId}/homeworks`) : null,
+    conversation: (userId?: string) =>
+      userId ? dataPointCollection<Conversation>(`users/${userId}/conversations`) : null,
   },
   documents: {
     homework: (userId?: string, homeworkId?: string) =>

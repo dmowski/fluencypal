@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { useHomework } from "./useHomework";
+import { useHomework } from "../Homework/useHomework";
 import { conversationModeLabel } from "./data";
 import { Markdown } from "../Markdown/Markdown";
 import { useAiConversation } from "./useAiConversation";

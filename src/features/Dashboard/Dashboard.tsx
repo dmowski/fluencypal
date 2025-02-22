@@ -18,12 +18,15 @@ import { TaskCard } from "./TaskCard";
 import { useWords } from "../Words/useWords";
 import { WordsToLearn } from "./WordsToLearn";
 import { SelectLanguage } from "./SelectLanguage";
+import { useRules } from "../Rules/useRules";
+import { RulesToLearn } from "./RulesToLearn";
 
 export function Dashboard() {
   const settings = useSettings();
   const aiConversation = useAiConversation();
   const tasks = useTasks();
   const words = useWords();
+  const rules = useRules();
 
   if (aiConversation.isInitializing) {
     return <InfoBlockedSection title="Loading..." />;
@@ -33,8 +36,16 @@ export function Dashboard() {
     return <InfoBlockedSection title="Crafting new words..." />;
   }
 
+  if (rules.isGeneratingRule) {
+    return <InfoBlockedSection title="Crafting new rule..." />;
+  }
+
   if (words.wordsToLearn.length > 0) {
     return <WordsToLearn />;
+  }
+
+  if (rules.rule) {
+    return <RulesToLearn />;
   }
 
   if (aiConversation.errorInitiating) {
@@ -264,7 +275,7 @@ export function Dashboard() {
                 </Stack>
               </TaskCard>
 
-              <TaskCard isDone={!!tasks.todayStats?.ruleOfDay}>
+              <TaskCard isDone={!!tasks.todayStats?.rule}>
                 <Stack>
                   <Typography>Rule of the day</Typography>
                   <Typography
@@ -279,7 +290,7 @@ export function Dashboard() {
                 <Button
                   startIcon={<BookOpenText size={"20px"} />}
                   variant="outlined"
-                  onClick={() => tasks.completeTask("ruleOfDay")}
+                  onClick={() => rules.getRules()}
                 >
                   Get a rule
                 </Button>

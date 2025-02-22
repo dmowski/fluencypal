@@ -8,11 +8,12 @@ import theme from "../theme";
 import { SettingsProvider } from "@/features/Settings/useSettings";
 import { UsageProvider } from "@/features/Usage/useUsage";
 import { NotificationsProviderWrapper } from "./clientProviders";
-import { HomeworkProvider } from "@/features/Conversation/useHomework";
-import { ChatHistoryProvider } from "@/features/Conversation/useChatHistory";
+import { HomeworkProvider } from "@/features/Homework/useHomework";
+import { ChatHistoryProvider } from "@/features/ConversationHistory/useChatHistory";
 import { AiConversationProvider } from "@/features/Conversation/useAiConversation";
 import { TasksProvider } from "@/features/Tasks/useTasks";
 import { WordsProvider } from "@/features/Words/useWords";
+import { RulesProvider } from "@/features/Rules/useRules";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -44,13 +45,15 @@ export default function RootLayout({
                 <SettingsProvider>
                   <WordsProvider>
                     <ChatHistoryProvider>
-                      <TasksProvider>
-                        <UsageProvider>
-                          <HomeworkProvider>
-                            <AiConversationProvider>{children}</AiConversationProvider>
-                          </HomeworkProvider>
-                        </UsageProvider>
-                      </TasksProvider>
+                      <RulesProvider>
+                        <TasksProvider>
+                          <UsageProvider>
+                            <HomeworkProvider>
+                              <AiConversationProvider>{children}</AiConversationProvider>
+                            </HomeworkProvider>
+                          </UsageProvider>
+                        </TasksProvider>
+                      </RulesProvider>
                     </ChatHistoryProvider>
                   </WordsProvider>
                 </SettingsProvider>
