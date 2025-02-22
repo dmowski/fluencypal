@@ -341,6 +341,10 @@ export function Dashboard() {
               sx={{
                 flexDirection: "row",
                 gap: "20px",
+                "@media (max-width: 800px)": {
+                  flexDirection: "column",
+                  gap: "10px",
+                },
               }}
             >
               <TaskCard isDone={!!tasks.todayStats?.lesson}>

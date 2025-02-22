@@ -38,6 +38,10 @@ export const DashboardCard: React.FC<DashboardCardProps> = ({ children }) => {
           gap: "40px",
           position: "relative",
           zIndex: 1,
+          "@media (max-width: 600px)": {
+            padding: "30px 20px",
+            gap: "20px",
+          },
         }}
       >
         {children}
