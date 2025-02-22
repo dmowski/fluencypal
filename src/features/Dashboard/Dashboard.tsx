@@ -2,15 +2,13 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 
-import { Button, Stack, Tooltip, Typography } from "@mui/material";
-import { StarContainer } from "../Layout/StarContainer";
+import { Button, Stack, Typography } from "@mui/material";
 import MicIcon from "@mui/icons-material/Mic";
 import { useSettings } from "../Settings/useSettings";
-import { LangSelector } from "../Lang/LangSelector";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ChildCareIcon from "@mui/icons-material/ChildCare";
 import { Homework } from "../Conversation/Homework";
-import { BookOpenText, ChevronLeft, GraduationCap, Mic, RefreshCcw } from "lucide-react";
+import { BookOpenText, GraduationCap, Mic } from "lucide-react";
 import { TalkingWaves } from "../Animations/TalkingWaves";
 import { ProgressGrid } from "./ProgressGrid";
 import { InfoBlockedSection } from "./InfoBlockedSection";
@@ -18,6 +16,8 @@ import { DashboardCard } from "../Card/DashboardCard";
 import { useTasks } from "../Tasks/useTasks";
 import { TaskCard } from "./TaskCard";
 import { useWords } from "../Words/useWords";
+import { WordsToLearn } from "./WordsToLearn";
+import { SelectLanguage } from "./SelectLanguage";
 
 export function Dashboard() {
   const settings = useSettings();
@@ -34,93 +34,7 @@ export function Dashboard() {
   }
 
   if (words.wordsToLearn.length > 0) {
-    return (
-      <Stack
-        sx={{
-          height: "100vh",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "10px",
-          boxSizing: "border-box",
-        }}
-      >
-        <Typography
-          sx={{
-            opacity: 0.7,
-          }}
-          variant="caption"
-        >
-          New words to practice.
-        </Typography>
-        <Stack
-          sx={{
-            gap: "40px",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Stack
-            sx={{
-              maxWidth: "700px",
-              width: "100%",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0px 10px",
-              flexWrap: "wrap",
-              boxSizing: "border-box",
-            }}
-          >
-            <Typography className="decor-text" variant="h4" align="center">
-              {words.wordsToLearn.join(", ")}
-            </Typography>
-          </Stack>
-          <Stack
-            sx={{
-              gap: "40px",
-              width: "100%",
-              maxWidth: "400px",
-            }}
-          >
-            <Button
-              onClick={async () => {
-                await aiConversation.startConversation({
-                  mode: "words",
-                  wordsToLearn: words.wordsToLearn,
-                });
-                words.removeWordsToLearn();
-              }}
-              size="large"
-              variant="contained"
-              startIcon={<GraduationCap size={"34px"} />}
-            >
-              Start practice
-            </Button>
-            <Stack
-              sx={{
-                gap: "10px",
-                flexDirection: "row",
-                width: "100%",
-                justifyContent: "space-between",
-              }}
-            >
-              <Button
-                onClick={() => words.removeWordsToLearn()}
-                startIcon={<ChevronLeft size={"18px"} />}
-                variant="text"
-              >
-                Back
-              </Button>
-              <Tooltip title="Generate new words">
-                <Button variant="text" onClick={() => words.getNewWordsToLearn()}>
-                  I know all of them
-                </Button>
-              </Tooltip>
-            </Stack>
-          </Stack>
-        </Stack>
-      </Stack>
-    );
+    return <WordsToLearn />;
   }
 
   if (aiConversation.errorInitiating) {
@@ -135,33 +49,7 @@ export function Dashboard() {
   }
 
   if (!settings.language) {
-    return (
-      <Stack
-        sx={{
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <StarContainer minHeight="90vh" paddingBottom="0px">
-          <Stack
-            sx={{
-              maxWidth: "400px",
-              gap: "20px",
-            }}
-          >
-            <Typography variant="h5">Select language to learn</Typography>
-            <LangSelector
-              value={settings.language}
-              onDone={(lang) => settings.setLanguage(lang)}
-              confirmButtonLabel="Continue"
-            />
-            <Typography variant="caption">
-              You can change the language later in the settings
-            </Typography>
-          </Stack>
-        </StarContainer>
-      </Stack>
-    );
+    return <SelectLanguage />;
   }
 
   return (
