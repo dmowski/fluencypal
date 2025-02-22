@@ -1,17 +1,18 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useHomework } from "../Homework/useHomework";
-import { conversationModeLabel } from "./data";
+import { conversationModeLabel } from "../Conversation/data";
 import { Markdown } from "../Markdown/Markdown";
-import { useAiConversation } from "./useAiConversation";
+import { useAiConversation } from "../Conversation/useAiConversation";
 import { useState } from "react";
+import { DashboardCard } from "../Card/DashboardCard";
 
-export const Homework = () => {
+export const HomeworkCard = () => {
   const aiConversation = useAiConversation();
   const homeworkService = useHomework();
   const [limit, setLimit] = useState(1);
 
   return (
-    <>
+    <DashboardCard>
       <Stack>
         <Typography variant="h2" className="decor-title">
           Homework
@@ -110,7 +111,6 @@ export const Homework = () => {
             );
           })}
       </Stack>
-
       {homeworkService.incompleteHomeworks.length > limit && (
         <Button
           sx={{
@@ -121,6 +121,6 @@ export const Homework = () => {
           Show all
         </Button>
       )}
-    </>
+    </DashboardCard>
   );
 };

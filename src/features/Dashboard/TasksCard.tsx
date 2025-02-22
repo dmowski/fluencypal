@@ -5,14 +5,15 @@ import { BookOpenText, GraduationCap, Mic } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
+import { DashboardCard } from "../Card/DashboardCard";
 
-export const Tasks = () => {
+export const TasksCard = () => {
   const words = useWords();
   const rules = useRules();
   const tasks = useTasks();
   const aiConversation = useAiConversation();
   return (
-    <>
+    <DashboardCard>
       <Stack>
         <Typography variant="h2" className="decor-title">
           Daily Tasks
@@ -109,6 +110,6 @@ export const Tasks = () => {
           </Button>
         </TaskCard>
       </Stack>
-    </>
+    </DashboardCard>
   );
 };

@@ -1,8 +1,8 @@
 import { Card, Stack } from "@mui/material";
-import { JSX } from "react";
+import { JSX, ReactElement } from "react";
 
 interface DashboardCardProps {
-  children?: JSX.Element | JSX.Element[];
+  children?: JSX.Element | JSX.Element[] | React.JSX.Element | any;
 }
 
 export const DashboardCard: React.FC<DashboardCardProps> = ({ children }) => {

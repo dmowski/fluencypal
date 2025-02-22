@@ -3,27 +3,23 @@
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 
 import { Button, Stack, Typography } from "@mui/material";
-import MicIcon from "@mui/icons-material/Mic";
 import { useSettings } from "../Settings/useSettings";
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import ChildCareIcon from "@mui/icons-material/ChildCare";
-import { Homework } from "../Conversation/Homework";
+
 import { TalkingWaves } from "../Animations/TalkingWaves";
-import { ProgressGrid } from "./ProgressGrid";
 import { InfoBlockedSection } from "./InfoBlockedSection";
-import { DashboardCard } from "../Card/DashboardCard";
-import { useTasks } from "../Tasks/useTasks";
 import { useWords } from "../Words/useWords";
 import { WordsToLearn } from "./WordsToLearn";
 import { SelectLanguage } from "./SelectLanguage";
 import { useRules } from "../Rules/useRules";
 import { RulesToLearn } from "./RulesToLearn";
-import { Tasks } from "./Tasks";
+import { TasksCard } from "./TasksCard";
+import { ConversationSelectCard } from "./ConversationSelectCard";
+import { ProgressCard } from "./ProgressCard";
+import { HomeworkCard } from "./HomeworkCard";
 
 export function Dashboard() {
   const settings = useSettings();
   const aiConversation = useAiConversation();
-  const tasks = useTasks();
   const words = useWords();
   const rules = useRules();
 
@@ -80,135 +76,7 @@ export function Dashboard() {
           gap: "40px",
         }}
       >
-        <DashboardCard>
-          <Stack>
-            <Typography variant="h2" className="decor-title">
-              Conversation
-            </Typography>
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              Start a conversation with the AI
-            </Typography>
-          </Stack>
-          <Stack
-            sx={{
-              gap: "20px",
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              "@media (max-width: 900px)": {
-                gridTemplateColumns: "1fr",
-                gap: "40px",
-              },
-            }}
-          >
-            <Stack
-              gap={"20px"}
-              sx={{
-                alignItems: "flex-start",
-                width: "100%",
-              }}
-            >
-              <Stack>
-                <Typography>Just talk mode</Typography>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  Talk to the AI and it will respond to you
-                </Typography>
-              </Stack>
-              <Button
-                variant="contained"
-                onClick={() => aiConversation.startConversation({ mode: "talk" })}
-                size="large"
-                startIcon={
-                  <MicIcon
-                    sx={{
-                      width: "20px",
-                      height: "20px",
-                    }}
-                  />
-                }
-              >
-                Start Just talk
-              </Button>
-            </Stack>
-
-            <Stack
-              gap={"20px"}
-              sx={{
-                alignItems: "flex-start",
-              }}
-            >
-              <Stack>
-                <Typography>Talk & Correct mode</Typography>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  Talk to the AI and it will correct you if you make a mistake
-                </Typography>
-              </Stack>
-              <Button
-                variant="outlined"
-                size="large"
-                onClick={() => aiConversation.startConversation({ mode: "talk-and-correct" })}
-                startIcon={
-                  <TrendingUpIcon
-                    sx={{
-                      width: "20px",
-                      height: "20px",
-                    }}
-                  />
-                }
-              >
-                Start Talk & Correct
-              </Button>
-            </Stack>
-
-            <Stack
-              gap={"20px"}
-              sx={{
-                alignItems: "flex-start",
-              }}
-            >
-              <Stack>
-                <Typography>Beginner mode</Typography>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  Easy mode for beginners
-                </Typography>
-              </Stack>
-              <Button
-                variant="outlined"
-                size="large"
-                onClick={() => aiConversation.startConversation({ mode: "beginner" })}
-                startIcon={
-                  <ChildCareIcon
-                    sx={{
-                      width: "20px",
-                      height: "20px",
-                    }}
-                  />
-                }
-              >
-                Start the Beginner mode
-              </Button>
-            </Stack>
-          </Stack>
-        </DashboardCard>
+        <ConversationSelectCard />
 
         <Stack
           sx={{
@@ -221,12 +89,8 @@ export function Dashboard() {
             },
           }}
         >
-          <DashboardCard>
-            <Tasks />
-          </DashboardCard>
-          <DashboardCard>
-            <Homework />
-          </DashboardCard>
+          <TasksCard />
+          <HomeworkCard />
         </Stack>
 
         <Stack
@@ -237,47 +101,7 @@ export function Dashboard() {
             boxSizing: "border-box",
           }}
         >
-          <DashboardCard>
-            <Stack>
-              <Typography variant="h2" className="decor-title">
-                Progress
-              </Typography>
-              <Typography
-                variant="caption"
-                sx={{
-                  opacity: 0.7,
-                }}
-              >
-                Your Daily Progress
-              </Typography>
-            </Stack>
-
-            <ProgressGrid
-              startDateTimeStamp={settings.userCreatedAt || Date.now()}
-              currentDateTimeStamp={Date.now()}
-              getDateStat={(date) => {
-                const dayStat = tasks.daysTasks?.[date];
-                return Object.keys(dayStat || {}).length;
-              }}
-            />
-
-            <Stack
-              sx={{
-                flexDirection: "row",
-              }}
-            >
-              <Stack
-                sx={{
-                  alignItems: "center",
-                }}
-              >
-                <Typography variant="h1" className="decor-title">
-                  {words.totalWordsCount}
-                </Typography>
-                <Typography variant="caption">Words used during all conversations</Typography>
-              </Stack>
-            </Stack>
-          </DashboardCard>
+          <ProgressCard />
         </Stack>
       </Stack>
 
