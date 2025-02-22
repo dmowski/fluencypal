@@ -11,18 +11,22 @@ export const RulesToLearn: React.FC = () => {
   return (
     <Stack
       sx={{
-        height: "100vh",
+        minHeight: "100vh",
         justifyContent: "center",
         alignItems: "center",
-        padding: "10px",
+        padding: "120px 10px 10px 10px",
         boxSizing: "border-box",
       }}
     >
       <Typography
         sx={{
-          opacity: 0.7,
+          maxWidth: "700px",
+          width: "100%",
+          paddingBottom: "20px",
+          marginLeft: "-6px",
         }}
-        variant="caption"
+        variant="h2"
+        className="decor-text"
       >
         New rule to practice.
       </Typography>

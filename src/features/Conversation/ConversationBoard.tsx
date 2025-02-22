@@ -33,7 +33,8 @@ export function ConversationBoard() {
           justifyContent: "center",
           gap: "10px",
           width: "100%",
-          height: "calc(100vh - 20px)",
+          minHeight: "calc(100vh - 20px)",
+          paddingTop: "90px",
         }}
       >
         <Stack

@@ -1,13 +1,8 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useMemo, useState } from "react";
+import { createContext, useContext, ReactNode, JSX, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { setDoc } from "firebase/firestore";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { db } from "../Firebase/db";
-import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useSettings } from "../Settings/useSettings";
 import { sendAiRequest } from "../Ai/sendAiRequest";
-import { sleep } from "openai/core.mjs";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 
 interface RulesContextType {
@@ -32,14 +27,36 @@ function useProvideRules(): RulesContextType {
       .map((conversation) => conversation.messages.filter((m) => !m.isBot).map((m) => m.text))
       .flat()
       .join("\n");
+    if (userMessages.length > 1000) {
+      return userMessages.slice(0, 1000);
+    }
     return userMessages;
   };
 
   const getRules = async () => {
+    const language = settings?.language;
+    if (!language) {
+      throw new Error("❌ language is not defined | getRules");
+    }
+
     setIsGeneratingRule(true);
     try {
       const userMessage = await getUserMessages();
-      setRule(userMessage);
+
+      const systemInstruction = [
+        `User provides list of his messages that he used during voice conversation.`,
+        `System should generate a most important grammar rule user must to learn.`,
+        `Rules should be useful and not too difficult.`,
+        `Return grammar rule in Markdown format. Starting from similar to: Based on recent conversation`,
+      ].join(" ");
+      const response = await sendAiRequest({
+        language,
+        systemMessage: systemInstruction,
+        userMessage: `userMessage: ${userMessage}`,
+        model: "gpt-4o",
+      });
+      const newRuleToLearn = response.aiResponse;
+      setRule(newRuleToLearn);
     } catch (error) {
       setIsGeneratingRule(false);
       throw error;

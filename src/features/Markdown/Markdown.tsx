@@ -19,8 +19,28 @@ const markdownComponents: MarkdownToJSX.Overrides = {
       {children}
     </Typography>
   ),
-  h3: ({ children }) => <Typography variant="h3">{children}</Typography>,
-  h4: ({ children }) => <Typography variant="h4">{children}</Typography>,
+  h3: ({ children }) => (
+    <Typography
+      variant="h4"
+      component={"h3"}
+      sx={{
+        paddingTop: "20px",
+      }}
+    >
+      {children}
+    </Typography>
+  ),
+  h4: ({ children }) => (
+    <Typography
+      variant="h5"
+      component={"h4"}
+      sx={{
+        paddingTop: "20px",
+      }}
+    >
+      {children}
+    </Typography>
+  ),
   h5: ({ children }) => <Typography variant="h5">{children}</Typography>,
   h6: ({ children }) => <Typography variant="h6">{children}</Typography>,
 
@@ -28,7 +48,7 @@ const markdownComponents: MarkdownToJSX.Overrides = {
     <Typography
       sx={{
         padding: "3px 0 5px 0",
-        fontSize: "20px",
+        fontSize: "18px",
       }}
     >
       {children}
@@ -38,7 +58,7 @@ const markdownComponents: MarkdownToJSX.Overrides = {
     <Typography
       sx={{
         padding: "3px 0 5px 0",
-        fontSize: "20px",
+        fontSize: "18px",
       }}
     >
       {children}
@@ -69,11 +89,7 @@ const markdownComponents: MarkdownToJSX.Overrides = {
       {children}
     </ol>
   ),
-  li: ({ children }) => (
-    <Typography variant="body2" component={"li"}>
-      {children}
-    </Typography>
-  ),
+  li: ({ children }) => <Typography component={"li"}>{children}</Typography>,
   input: ({ checked }) => (
     <Checkbox
       checked={checked}

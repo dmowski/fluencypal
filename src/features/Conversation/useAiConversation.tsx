@@ -79,7 +79,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const [isMuted, setIsMuted] = useLocalStorage<boolean>("isMuted", false);
   const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);
-
+  const modesWithoutHomework: ConversationMode[] = ["words", "rule"];
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
     history.setMessages(conversationId, conversation);
@@ -142,10 +142,9 @@ Format homework following this structure:
 Your homework is to repeat the following text:
 "[Text to repeat]"
 `;
-    const instructionForWords = `Generate summary of the lesson. Show user's mistakes and make general comments.`;
-
-    const newInstruction =
-      currentMode === "words" ? instructionForWords : newInstructionForHomework;
+    const generalSummary = `Generate summary of the lesson. Show user's mistakes and make general comments.`;
+    const isSkipHomework = modesWithoutHomework.includes(currentMode);
+    const newInstruction = isSkipHomework ? generalSummary : newInstructionForHomework;
 
     await calculateWordsUsageFromConversation();
     await communicatorRef.current?.updateSessionTrigger(newInstruction);
@@ -153,9 +152,9 @@ Your homework is to repeat the following text:
 
     const talkEndUserMessage =
       "I am done for today. Create a text I have to repeat on the next lesson. Don't add anything else. Just give me homework";
-    const wordsEndUserMessage =
+    const withoutHomeworkUserMessage =
       "I am done for today. Show me my mistakes and make general comments. Don't add anything else. Just give me feedback";
-    const endUserMessage = currentMode === "words" ? wordsEndUserMessage : talkEndUserMessage;
+    const endUserMessage = modesWithoutHomework ? withoutHomeworkUserMessage : talkEndUserMessage;
     communicatorRef.current?.addUserChatMessage(endUserMessage);
     await sleep(500);
     await communicatorRef.current?.triggerAiResponse();
