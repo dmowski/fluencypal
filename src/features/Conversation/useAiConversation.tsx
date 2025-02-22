@@ -193,6 +193,7 @@ Your homework is to repeat the following text:
       setIsUserSpeaking,
       isMuted: isMuted || false,
       onAddUsage: (usageLog: UsageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
+      language,
     };
 
     const config: Record<ConversationMode, AiRtcConfig> = {

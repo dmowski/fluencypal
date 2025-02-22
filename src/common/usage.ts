@@ -12,4 +12,5 @@ export interface UsageLog {
   model: RealTimeModel;
   price: number;
   createdAt: number;
+  language: string;
 }
