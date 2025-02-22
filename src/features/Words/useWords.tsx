@@ -24,9 +24,9 @@ const WordsContext = createContext<WordsContextType | null>(null);
 
 function useProvideWords(): WordsContextType {
   const auth = useAuth();
-  const wordsStatsDocRef = db.documents.userWordsStats(auth.uid);
-  const [wordsStats, loading] = useDocumentData(wordsStatsDocRef);
   const settings = useSettings();
+  const wordsStatsDocRef = db.documents.userWordsStats(auth.uid, settings.language);
+  const [wordsStats, loading] = useDocumentData(wordsStatsDocRef);
 
   const totalWordsCount = useMemo(() => {
     if (!wordsStats) return 0;

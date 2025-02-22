@@ -6,6 +6,7 @@ import { db } from "../Firebase/db";
 import { DaysTasks, DayTasks, UserTaskType } from "@/common/userTask";
 import dayjs from "dayjs";
 import { setDoc } from "firebase/firestore";
+import { useSettings } from "../Settings/useSettings";
 
 interface TasksContextType {
   loading: boolean;
@@ -22,9 +23,10 @@ export const tasksContext = createContext<TasksContextType>({
 
 function useProvideTasks(): TasksContextType {
   const auth = useAuth();
+  const settings = useSettings();
   const userId = auth.uid;
 
-  const userTasksStatsDocRef = db.documents.userTasksStats(userId);
+  const userTasksStatsDocRef = db.documents.userTasksStats(userId, settings.language);
 
   const [userTasksStats, loading] = useDocumentData(userTasksStatsDocRef);
   const dayFormat = "DD.MM.YYYY";

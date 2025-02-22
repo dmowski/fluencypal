@@ -71,15 +71,19 @@ export const db = {
     userSettings: (userId?: string) =>
       userId ? dataPointDoc<UserSettings>(`users/${userId}`) : null,
 
-    userTasksStats: (userId?: string) =>
-      userId ? dataPointDoc<UserTaskStats>(`users/${userId}/stats/tasks`) : null,
+    userTasksStats: (userId: string | null, language: string | null) =>
+      userId && language
+        ? dataPointDoc<UserTaskStats>(`users/${userId}/stats/tasks_${language}`)
+        : null,
 
     conversation: (userId?: string, conversationId?: string) =>
       userId && conversationId
         ? dataPointDoc<Conversation>(`users/${userId}/conversations/${conversationId}`)
         : null,
 
-    userWordsStats: (userId?: string) =>
-      userId ? dataPointDoc<WordsStats>(`users/${userId}/stats/words`) : null,
+    userWordsStats: (userId: string | null, language: string | null) =>
+      userId && language
+        ? dataPointDoc<WordsStats>(`users/${userId}/stats/words_${language}`)
+        : null,
   },
 };
