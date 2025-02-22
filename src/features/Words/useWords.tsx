@@ -58,20 +58,7 @@ function useProvideWords(): WordsContextType {
   };
 
   const [isGeneratingWords, setIsGeneratingWords] = useState(false);
-  const [wordsToLearn, setWordsToLearn] = useState<string[]>([
-    "Hello",
-    "World",
-    "Example",
-    "Words",
-    "With",
-    "Comma",
-    "Separated",
-    "List",
-    "Default",
-    "Values",
-    "Are",
-    "Here",
-  ]);
+  const [wordsToLearn, setWordsToLearn] = useState<string[]>([]);
   const getNewWordsToLearn = async () => {
     const language = settings?.language;
     if (!language) return [];
