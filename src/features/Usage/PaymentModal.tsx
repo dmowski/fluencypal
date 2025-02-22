@@ -43,11 +43,12 @@ export const PaymentModal = () => {
 
         <Button
           onClick={() => {
-            const amount =
-              usage.balance >= 0
-                ? parseFloat(prompt("Enter amount to update", `${usage.balance}`) || "0")
-                : Math.abs(usage.balance);
-            usage.addBalance(amount);
+            const amount = prompt("Enter amount to update", "10");
+            if (!amount) {
+              return;
+            }
+
+            usage.addBalance(parseFloat(amount));
             notifications.show(`Added $${amount} to your balance`, {
               severity: "success",
               autoHideDuration: 7000,
