@@ -11,7 +11,6 @@ import {
   useState,
 } from "react";
 import { MODELS } from "@/common/ai";
-import { sleep } from "openai/core.mjs";
 import { AiRtcConfig, AiRtcInstance, AiTool, initAiRtc } from "./rtc";
 import { useLocalStorage } from "react-use";
 import { useChatHistory } from "./useChatHistory";
@@ -24,6 +23,7 @@ import { UsageLog } from "@/common/usage";
 import { ChatMessage, ConversationMode } from "@/common/conversation";
 import { useTasks } from "../Tasks/useTasks";
 import { useWords } from "../Words/useWords";
+import { sleep } from "@/libs/sleep";
 
 interface AiConversationContextType {
   isSavingHomework: boolean;
@@ -145,12 +145,11 @@ Your homework is to repeat the following text:
     return [];
   }, [language]);
 
-  const onOpen = () => {
-    setTimeout(() => {
-      communicatorRef.current?.triggerAiResponse();
-      setIsInitializing(false);
-      setIsStarted(true);
-    }, 1000);
+  const onOpen = async () => {
+    await sleep(1000);
+    communicatorRef.current?.triggerAiResponse();
+    setIsInitializing(false);
+    setIsStarted(true);
   };
 
   const onMessage = (message: ChatMessage) => {
