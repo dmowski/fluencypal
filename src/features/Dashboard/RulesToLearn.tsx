@@ -64,6 +64,7 @@ export const RulesToLearn: React.FC = () => {
                 mode: "rule",
                 ruleToLearn: rules.rule,
               });
+              rules.removeRule();
             }}
             size="large"
             variant="contained"

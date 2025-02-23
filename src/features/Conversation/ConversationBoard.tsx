@@ -7,7 +7,7 @@ import { TalkingWaves } from "../Animations/TalkingWaves";
 import { MicroButton } from "../Button/MicroButton";
 import { Textarea } from "../Input/Textarea";
 import { KeyboardButton } from "../Button/KeyboardButton";
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
 import { SendHorizontal } from "lucide-react";
 import DoneIcon from "@mui/icons-material/Done";
 
@@ -140,9 +140,20 @@ export function ConversationBoard() {
                 ) : (
                   <>
                     {aiConversation.conversation.length > 0 && (
-                      <Button variant="outlined" onClick={() => aiConversation.finishLesson()}>
-                        Finish the Lesson
-                      </Button>
+                      <Tooltip
+                        title={
+                          aiConversation.isAiSpeaking ? "Wait for the AI to finish speaking" : ""
+                        }
+                      >
+                        <Button
+                          variant="outlined"
+                          onClick={() =>
+                            !aiConversation.isAiSpeaking && aiConversation.finishLesson()
+                          }
+                        >
+                          Finish the Lesson
+                        </Button>
+                      </Tooltip>
                     )}
                   </>
                 )}
