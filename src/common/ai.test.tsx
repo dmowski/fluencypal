@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
-import { calculateUsagePrice } from "./ai";
+import { calculateTextUsagePrice, calculateUsagePrice, TextAiModel } from "./ai";
 
-describe("calculateUsagePrice", () => {
+describe("Calculate real time price", () => {
   const modelGpt4o = "gpt-4o-realtime-preview";
 
   it("should correctly calculate the usage price (Random)", () => {
@@ -122,5 +122,77 @@ describe("calculateUsagePrice", () => {
     expect(isFinite(price)).toBe(true);
 
     expect(price).toBe(12.5);
+  });
+});
+
+describe("Calculate text price", () => {
+  const modelGpt4o: TextAiModel = "gpt-4o";
+
+  it("should correctly calculate the usage price for 1M input", () => {
+    const price = calculateTextUsagePrice(
+      {
+        text_cached_input: 0,
+        text_input: 1_000_000,
+        text_output: 0,
+      },
+      modelGpt4o
+    );
+
+    expect(price).toBeDefined();
+    expect(typeof price).toBe("number");
+    expect(isFinite(price)).toBe(true);
+
+    expect(price).toBe(12.5);
+  });
+
+  it("should correctly calculate the usage price for 1M input and 1M output", () => {
+    const price = calculateTextUsagePrice(
+      {
+        text_cached_input: 0,
+        text_input: 1_000_000,
+        text_output: 1_000_000,
+      },
+      modelGpt4o
+    );
+
+    expect(price).toBeDefined();
+    expect(typeof price).toBe("number");
+    expect(isFinite(price)).toBe(true);
+
+    expect(price).toBe(62.5);
+  });
+
+  it("should correctly calculate the usage price for 1M input and 1M output and 1M cache ", () => {
+    const price = calculateTextUsagePrice(
+      {
+        text_cached_input: 1_000_000,
+        text_input: 1_000_000,
+        text_output: 1_000_000,
+      },
+      modelGpt4o
+    );
+
+    expect(price).toBeDefined();
+    expect(typeof price).toBe("number");
+    expect(isFinite(price)).toBe(true);
+
+    expect(price).toBe(56.25);
+  });
+
+  it("should correctly calculate the usage price for 1M input  and 1M cache ", () => {
+    const price = calculateTextUsagePrice(
+      {
+        text_cached_input: 1_000_000,
+        text_input: 1_000_000,
+        text_output: 0,
+      },
+      modelGpt4o
+    );
+
+    expect(price).toBeDefined();
+    expect(typeof price).toBe("number");
+    expect(isFinite(price)).toBe(true);
+
+    expect(price).toBe(6.25);
   });
 });

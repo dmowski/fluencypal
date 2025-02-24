@@ -24,6 +24,7 @@ export async function POST(request: Request) {
   });
 
   const output = chatCompletion.choices[0].message.content || "";
+  const promptToken = chatCompletion.usage?.completion_tokens || 0;
   const answer: AiResponse = {
     aiResponse: output,
   };

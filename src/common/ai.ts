@@ -11,6 +11,7 @@ export const MODELS = {
   gpt_4o_mini: "gpt-4o-mini",
   gpt_4o: "gpt-4o",
 };
+export const PROJECT_PROFIT_MARGIN = 400; //%
 
 export interface UsageEvent {
   total_tokens: number;
@@ -25,7 +26,49 @@ export interface UsageEvent {
   output_token_details: { text_tokens: number; audio_tokens: number };
 }
 
-interface UsagePrice {
+interface TextUsagePrice {
+  text_input: number;
+  text_cached_input: number;
+  text_output: number;
+}
+
+const MILLION = 1_000_000;
+
+export const textModalPricePerMillionTokens: Record<TextAiModel, TextUsagePrice> = {
+  "gpt-4o": {
+    text_input: 2.5,
+    text_cached_input: 1.25,
+    text_output: 10,
+  },
+  "gpt-4o-mini": {
+    text_input: 0.15,
+    text_cached_input: 0.075,
+    text_output: 0.6,
+  },
+};
+
+export interface TextUsageEvent {
+  text_input: number;
+  text_cached_input: number;
+  text_output: number;
+}
+
+export const calculateTextUsagePrice = (usageEvent: TextUsageEvent, model: TextAiModel) => {
+  const cachedTextInput = usageEvent.text_cached_input;
+  const textInput = usageEvent.text_input - cachedTextInput;
+
+  const textOutput = usageEvent.text_output;
+  const price = textModalPricePerMillionTokens[model];
+  const fullTextPrice = (textInput / MILLION) * price.text_input;
+  const cachedTextPrice = (cachedTextInput / MILLION) * price.text_cached_input;
+  const textOutputPrice = (textOutput / MILLION) * price.text_output;
+  const usagePrice = fullTextPrice + cachedTextPrice + textOutputPrice;
+  const profit = usagePrice * (PROJECT_PROFIT_MARGIN / 100);
+  const priceWithMargin = usagePrice + profit;
+  return priceWithMargin;
+};
+
+interface RealtimeUsagePrice {
   text_input: number;
   text_cached_input: number;
   text_output: number;
@@ -36,7 +79,7 @@ interface UsagePrice {
 
 // https://openai.com/api/pricing/
 // Realtime API
-export const modalPricePerMillionTokens: Record<RealTimeModel, UsagePrice> = {
+export const modalPricePerMillionTokens: Record<RealTimeModel, RealtimeUsagePrice> = {
   "gpt-4o-realtime-preview": {
     text_input: 5,
     text_cached_input: 2.5,
@@ -59,8 +102,8 @@ const calculateOutputPrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   const textOutput = usageEvent.output_token_details.text_tokens;
   const audioOutput = usageEvent.output_token_details.audio_tokens;
   const price = modalPricePerMillionTokens[model];
-  const textPrice = (textOutput / 1_000_000) * price.text_output;
-  const audioPrice = (audioOutput / 1_000_000) * price.audio_output;
+  const textPrice = (textOutput / MILLION) * price.text_output;
+  const audioPrice = (audioOutput / MILLION) * price.audio_output;
   return textPrice + audioPrice;
 };
 
@@ -68,23 +111,22 @@ const calculateInputPrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   const price = modalPricePerMillionTokens[model];
   const cachedTextInput = usageEvent.input_token_details.cached_tokens_details.text_tokens;
   const fullTextInput = usageEvent.input_token_details.text_tokens - cachedTextInput;
-  const fullTextPrice = (fullTextInput / 1_000_000) * price.text_input;
-  const cachedTextPrice = (cachedTextInput / 1_000_000) * price.text_cached_input;
+  const fullTextPrice = (fullTextInput / MILLION) * price.text_input;
+  const cachedTextPrice = (cachedTextInput / MILLION) * price.text_cached_input;
 
   const cachedAudioInput = usageEvent.input_token_details.cached_tokens_details.audio_tokens;
   const audioInput = usageEvent.input_token_details.audio_tokens - cachedAudioInput;
-  const fullAudioPrice = (audioInput / 1_000_000) * price.audio_input;
-  const cachedAudioPrice = (cachedAudioInput / 1_000_000) * price.audio_cached_input;
+  const fullAudioPrice = (audioInput / MILLION) * price.audio_input;
+  const cachedAudioPrice = (cachedAudioInput / MILLION) * price.audio_cached_input;
 
   return fullTextPrice + cachedTextPrice + fullAudioPrice + cachedAudioPrice;
 };
-
-export const PROJECT_PROFIT_MARGIN = 500; // 500%
 
 export const calculateUsagePrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   const inputPrice = calculateInputPrice(usageEvent, model);
   const outputPrice = calculateOutputPrice(usageEvent, model);
   const usagePrice = inputPrice + outputPrice;
-  const priceWithMargin = usagePrice * (PROJECT_PROFIT_MARGIN / 100);
-  return priceWithMargin;
+  const profit = usagePrice * (PROJECT_PROFIT_MARGIN / 100);
+  const price = usagePrice + profit;
+  return price;
 };
