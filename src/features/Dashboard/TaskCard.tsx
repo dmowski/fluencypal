@@ -25,6 +25,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
 }) => {
   return (
     <GradientCard
+      padding="22px"
       strokeWidth="2px"
       startColor={isDone ? "#fa8500" : "rgba(255, 255, 255, 0.09)"}
       endColor={isDone ? "#05acff" : "rgba(255, 255, 255, 0.09)"}

@@ -39,14 +39,14 @@ export const ConversationSelectCard = () => {
           }}
         >
           <Stack>
-            <Typography>Just talk mode</Typography>
+            <Typography>Just Talk Mode</Typography>
             <Typography
               variant="caption"
               sx={{
                 opacity: 0.7,
               }}
             >
-              Talk to the AI and it will respond to you
+              Talk to the AI and it will respond to you.
             </Typography>
           </Stack>
           <Button
@@ -62,7 +62,7 @@ export const ConversationSelectCard = () => {
               />
             }
           >
-            Start Just talk
+            Start a talk
           </Button>
         </Stack>
 
@@ -73,14 +73,14 @@ export const ConversationSelectCard = () => {
           }}
         >
           <Stack>
-            <Typography>Talk & Correct mode</Typography>
+            <Typography>Talk & Correct Mode</Typography>
             <Typography
               variant="caption"
               sx={{
                 opacity: 0.7,
               }}
             >
-              Talk to the AI and it will correct you if you make a mistake
+              Talk to the AI, and it will correct you if you make a mistake.
             </Typography>
           </Stack>
           <Button
@@ -114,7 +114,7 @@ export const ConversationSelectCard = () => {
                 opacity: 0.7,
               }}
             >
-              Easy mode for beginners
+              An easy mode for beginners.
             </Typography>
           </Stack>
           <Button
