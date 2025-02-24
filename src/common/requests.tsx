@@ -1,4 +1,4 @@
-import { TextAiModel } from "./ai";
+import { TextAiModel, TextUsageEvent } from "./ai";
 import { ChatMessage } from "./conversation";
 import { SupportedLanguage } from "./lang";
 
@@ -21,4 +21,5 @@ export interface AiRequest {
 
 export interface AiResponse {
   aiResponse: string;
+  usageEvent: TextUsageEvent;
 }

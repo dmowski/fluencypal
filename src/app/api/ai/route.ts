@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import { AiRequest, AiResponse } from "@/common/requests";
+import { TextUsageEvent } from "@/common/ai";
 
 export async function POST(request: Request) {
   const openAIKey = process.env.OPENAI_API_KEY;
@@ -24,9 +25,16 @@ export async function POST(request: Request) {
   });
 
   const output = chatCompletion.choices[0].message.content || "";
-  const promptToken = chatCompletion.usage?.completion_tokens || 0;
+  const usage = chatCompletion.usage;
+
+  const usageEvent: TextUsageEvent = {
+    text_input: usage?.prompt_tokens || 0,
+    text_cached_input: usage?.prompt_tokens_details?.cached_tokens || 0,
+    text_output: usage?.completion_tokens || 0,
+  };
   const answer: AiResponse = {
     aiResponse: output,
+    usageEvent,
   };
 
   return Response.json(answer);
