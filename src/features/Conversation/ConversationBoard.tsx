@@ -46,6 +46,7 @@ export function ConversationBoard() {
             maxWidth: "1200px",
             width: "100%",
             padding: "10px",
+            boxSizing: "border-box",
           }}
         >
           <Stack
@@ -82,7 +83,7 @@ export function ConversationBoard() {
             padding: "0 10px",
           }}
         >
-          {aiConversation.conversation.length > 0 && aiConversation.isShowUserInput && (
+          {aiConversation.isShowUserInput && (
             <>
               <Textarea value={userMessage} onChange={setUserMessage} onSubmit={submitMessage} />
               <IconButton disabled={!userMessage} onClick={submitMessage}>
@@ -92,75 +93,73 @@ export function ConversationBoard() {
           )}
         </Stack>
 
-        {aiConversation.conversation.length > 0 && (
+        <Stack
+          sx={{
+            width: "100%",
+            maxWidth: "680px",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+            boxSizing: "border-box",
+            padding: "0 20px 0 0px",
+          }}
+        >
           <Stack
             sx={{
-              width: "100%",
-              maxWidth: "680px",
-              justifyContent: "space-between",
               alignItems: "center",
               flexDirection: "row",
-              boxSizing: "border-box",
-              padding: "0 20px 0 0px",
+              gap: "10px",
+              animationDelay: "0.5s",
             }}
           >
-            <Stack
-              sx={{
-                alignItems: "center",
-                flexDirection: "row",
-                gap: "10px",
-                animationDelay: "0.5s",
-              }}
-            >
-              <MicroButton
-                isMuted={!!aiConversation.isMuted}
-                isPlaying={aiConversation.isUserSpeaking}
-                onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
-              />
-              <KeyboardButton
-                isEnabled={!!aiConversation.isShowUserInput}
-                onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
-              />
-            </Stack>
+            <MicroButton
+              isMuted={!!aiConversation.isMuted}
+              isPlaying={aiConversation.isUserSpeaking}
+              onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
+            />
+            <KeyboardButton
+              isEnabled={!!aiConversation.isShowUserInput}
+              onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
+            />
+          </Stack>
 
-            {aiConversation.isClosing || aiConversation.isSavingHomework ? (
-              <Button variant="outlined" disabled onClick={() => aiConversation.finishLesson()}>
-                {aiConversation.isSavingHomework ? "Saving homework..." : "Finishing..."}
-              </Button>
-            ) : (
-              <>
-                {aiConversation.isClosed ? (
-                  <Button
-                    variant="contained"
-                    onClick={() => aiConversation.doneConversation()}
-                    startIcon={<DoneIcon />}
-                  >
-                    Done
-                  </Button>
-                ) : (
-                  <>
-                    {aiConversation.conversation.length > 0 && (
-                      <Tooltip
-                        title={
-                          aiConversation.isAiSpeaking ? "Wait for the AI to finish speaking" : ""
+          {aiConversation.isClosing || aiConversation.isSavingHomework ? (
+            <Button variant="outlined" disabled onClick={() => aiConversation.finishLesson()}>
+              {aiConversation.isSavingHomework ? "Saving homework..." : "Finishing..."}
+            </Button>
+          ) : (
+            <>
+              {aiConversation.isClosed ? (
+                <Button
+                  variant="contained"
+                  onClick={() => aiConversation.doneConversation()}
+                  startIcon={<DoneIcon />}
+                >
+                  Done
+                </Button>
+              ) : (
+                <>
+                  {aiConversation.conversation.length > 0 && (
+                    <Tooltip
+                      title={
+                        aiConversation.isAiSpeaking ? "Wait for the AI to finish speaking" : ""
+                      }
+                    >
+                      <Button
+                        variant="outlined"
+                        onClick={() =>
+                          !aiConversation.isAiSpeaking && aiConversation.finishLesson()
                         }
                       >
-                        <Button
-                          variant="outlined"
-                          onClick={() =>
-                            !aiConversation.isAiSpeaking && aiConversation.finishLesson()
-                          }
-                        >
-                          Finish the Lesson
-                        </Button>
-                      </Tooltip>
-                    )}
-                  </>
-                )}
-              </>
-            )}
-          </Stack>
-        )}
+                        Finish the Lesson
+                      </Button>
+                    </Tooltip>
+                  )}
+                </>
+              )}
+            </>
+          )}
+        </Stack>
       </Stack>
     </Stack>
   );
