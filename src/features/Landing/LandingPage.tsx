@@ -7,6 +7,7 @@ import { FirsCards } from "./FirsCards";
 import { Footer } from "./Footer";
 import { Price } from "./Price";
 import { SupportedLanguages } from "./SupportedLanguages";
+import { FirstEnterButton } from "./FirstEnterButton";
 
 export default function LandingPage() {
   return (
@@ -68,34 +69,7 @@ export default function LandingPage() {
               </Typography>
             </Stack>
 
-            <Stack
-              sx={{
-                alignItems: "center",
-                gap: "10px",
-                position: "relative",
-                zIndex: 9999,
-              }}
-            >
-              <Button
-                sx={{
-                  padding: "15px 80px",
-                }}
-                variant="contained"
-                size="large"
-                href={"/practice"}
-              >
-                Get a free lesson
-              </Button>
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  gap: "10px",
-                  alignItems: "center",
-                }}
-              >
-                <Typography variant="caption">No credit card needed</Typography>
-              </Stack>
-            </Stack>
+            <FirstEnterButton />
           </StarContainer>
 
           <Stack
