@@ -37,7 +37,7 @@ interface AiConversationContextType {
   isInitializing: boolean;
   isStarted: boolean;
   startConversation: (params: StartConversationProps) => Promise<void>;
-  stopConversation: () => Promise<void>;
+  doneConversation: () => Promise<void>;
   finishLesson: () => Promise<void>;
   conversation: ChatMessage[];
   errorInitiating?: string;
@@ -364,7 +364,7 @@ ${ruleToLearn}
     });
   };
 
-  const stopConversation = async () => {
+  const doneConversation = async () => {
     setIsSavingHomework(true);
     const isNeedToSaveHomework = currentMode !== "words";
     if (isNeedToSaveHomework) {
@@ -392,7 +392,7 @@ ${ruleToLearn}
     isInitializing,
     isStarted,
     startConversation,
-    stopConversation,
+    doneConversation,
     finishLesson,
     conversation,
     errorInitiating,

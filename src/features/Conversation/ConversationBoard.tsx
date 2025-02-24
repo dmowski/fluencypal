@@ -132,7 +132,7 @@ export function ConversationBoard() {
                 {aiConversation.isClosed ? (
                   <Button
                     variant="contained"
-                    onClick={() => aiConversation.stopConversation()}
+                    onClick={() => aiConversation.doneConversation()}
                     startIcon={<DoneIcon />}
                   >
                     Done
