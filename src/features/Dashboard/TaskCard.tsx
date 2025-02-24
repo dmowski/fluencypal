@@ -1,15 +1,28 @@
-import { UserTaskType } from "@/common/userTask";
 import { GradientCard } from "../uiKit/Card/GradientCard";
-import { Stack } from "@mui/material";
-import { Badge, BadgeCheck } from "lucide-react";
+import { Button, Stack, Tooltip, Typography } from "@mui/material";
+import { Lock, BadgeCheck } from "lucide-react";
+import LockIcon from "@mui/icons-material/Lock";
 import { JSX } from "react";
 
 interface TaskCardProps {
   isDone: boolean;
-  children: JSX.Element | JSX.Element[];
+  lockedText?: string;
+  title: string;
+  subTitle: string;
+  buttonIcon: JSX.Element;
+  buttonText: string;
+  onStart: () => void;
 }
 
-export const TaskCard: React.FC<TaskCardProps> = ({ isDone, children }) => {
+export const TaskCard: React.FC<TaskCardProps> = ({
+  isDone,
+  lockedText,
+  title,
+  subTitle,
+  buttonIcon,
+  buttonText,
+  onStart,
+}) => {
   return (
     <GradientCard
       startColor={isDone ? "#fa8500" : "rgba(255, 255, 255, 0.09)"}
@@ -31,7 +44,44 @@ export const TaskCard: React.FC<TaskCardProps> = ({ isDone, children }) => {
         >
           {isDone ? <BadgeCheck color="#fa8500" size={"20px"} /> : null}
         </Stack>
-        {children}
+        <Stack>
+          <Typography
+            sx={{
+              opacity: lockedText ? 0.6 : 1,
+            }}
+          >
+            {title}
+          </Typography>
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: lockedText ? 0.3 : 0.7,
+            }}
+          >
+            {subTitle}
+          </Typography>
+        </Stack>
+        <Stack>
+          <Button
+            disabled={!!lockedText}
+            startIcon={lockedText ? <LockIcon /> : buttonIcon}
+            variant="outlined"
+            onClick={() => onStart()}
+          >
+            {buttonText}
+          </Button>
+          {lockedText ? (
+            <Typography
+              variant="caption"
+              sx={{
+                padding: "1px",
+                opacity: 0.3,
+              }}
+            >
+              {lockedText}
+            </Typography>
+          ) : null}
+        </Stack>
       </Stack>
     </GradientCard>
   );

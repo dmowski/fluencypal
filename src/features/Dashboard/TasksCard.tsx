@@ -37,78 +37,34 @@ export const TasksCard = () => {
           },
         }}
       >
-        <TaskCard isDone={!!tasks.todayStats?.lesson}>
-          <Stack>
-            <Typography>Small conversation</Typography>
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              Start talk to learn something new
-            </Typography>
-          </Stack>
-          <Stack
-            gap={"10px"}
-            sx={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-            }}
-          >
-            <Button
-              startIcon={<Mic size={"20px"} />}
-              onClick={() => aiConversation.startConversation({ mode: "talk" })}
-              variant="outlined"
-            >
-              Just a Talk
-            </Button>
-          </Stack>
-        </TaskCard>
+        <TaskCard
+          isDone={!!tasks.todayStats?.lesson}
+          title="Small conversation"
+          subTitle="Start talk to learn something new"
+          buttonIcon={<Mic size={"20px"} />}
+          buttonText="Just a Talk"
+          onStart={() => aiConversation.startConversation({ mode: "talk" })}
+        />
 
-        <TaskCard isDone={!!tasks.todayStats?.rule}>
-          <Stack>
-            <Typography>Rule of the day</Typography>
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              Get a personal rule to learn
-            </Typography>
-          </Stack>
-          <Button
-            startIcon={<BookOpenText size={"20px"} />}
-            variant="outlined"
-            onClick={() => rules.getRules()}
-          >
-            Get a rule
-          </Button>
-        </TaskCard>
+        <TaskCard
+          title="Rule of the day"
+          subTitle="Get a personal rule to learn"
+          buttonIcon={<BookOpenText size={"20px"} />}
+          buttonText="Get a rule"
+          onStart={() => rules.getRules()}
+          isDone={!!tasks.todayStats?.rule}
+          lockedText={!words.totalWordsCount ? "Complete previous tasks first" : ""}
+        />
 
-        <TaskCard isDone={!!tasks.todayStats?.words}>
-          <Stack>
-            <Typography>New words</Typography>
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              Practice new words with the AI
-            </Typography>
-          </Stack>
-          <Button
-            variant="outlined"
-            startIcon={<GraduationCap size={"20px"} />}
-            onClick={() => {
-              words.getNewWordsToLearn();
-            }}
-          >
-            Get new words
-          </Button>
-        </TaskCard>
+        <TaskCard
+          isDone={!!tasks.todayStats?.words}
+          title="New words"
+          subTitle="Practice new words with the AI"
+          buttonIcon={<GraduationCap size={"20px"} />}
+          buttonText="Get new words"
+          lockedText={!words.totalWordsCount ? "Complete previous tasks first" : ""}
+          onStart={() => words.getNewWordsToLearn()}
+        />
       </Stack>
     </DashboardCard>
   );
