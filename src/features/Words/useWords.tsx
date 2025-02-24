@@ -34,7 +34,10 @@ function useProvideWords(): WordsContextType {
   }, [wordsStats]);
 
   const addWords = async (newWords: Record<string, number>) => {
-    if (!wordsStatsDocRef) return;
+    if (!wordsStatsDocRef) {
+      throw new Error("Words stats doc ref is not defined");
+    }
+
     const partToUpdate = Object.keys(newWords).reduce(
       (acc, word) => {
         acc[word] = (wordsStats?.dictionary?.[word] || 0) + newWords[word];
