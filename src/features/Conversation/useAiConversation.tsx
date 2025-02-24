@@ -302,6 +302,7 @@ Craft a lesson that will help user to understand the rule.
     ruleToLearn,
   }: StartConversationProps) => {
     try {
+      setConversation([]);
       setIsClosing(false);
       setIsClosed(false);
       setErrorInitiating("");
@@ -374,6 +375,7 @@ ${ruleToLearn}
     setIsInitializing(false);
     setConversationId(`${Date.now()}`);
     setIsSavingHomework(false);
+    setConversation([]);
   };
 
   const addUserMessage = async (message: string) => {
