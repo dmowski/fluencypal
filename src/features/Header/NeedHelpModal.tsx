@@ -1,6 +1,6 @@
 import { Button, Link, Stack, Typography } from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
-import { CustomModal } from "../Modal/CustomModal";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import MailIcon from "@mui/icons-material/Mail";
 import { Cookie, ReceiptText, Trash } from "lucide-react";

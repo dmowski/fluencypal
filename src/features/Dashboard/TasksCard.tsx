@@ -5,7 +5,7 @@ import { BookOpenText, GraduationCap, Mic } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
-import { DashboardCard } from "../Card/DashboardCard";
+import { DashboardCard } from "../uiKit/Card/DashboardCard";
 
 export const TasksCard = () => {
   const words = useWords();

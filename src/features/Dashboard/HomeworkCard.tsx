@@ -1,10 +1,10 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useHomework } from "../Homework/useHomework";
 import { conversationModeLabel } from "../Conversation/data";
-import { Markdown } from "../Markdown/Markdown";
+import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useState } from "react";
-import { DashboardCard } from "../Card/DashboardCard";
+import { DashboardCard } from "../uiKit/Card/DashboardCard";
 
 export const HomeworkCard = () => {
   const aiConversation = useAiConversation();

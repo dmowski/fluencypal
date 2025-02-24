@@ -1,15 +1,15 @@
 "use client";
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
-import { Markdown } from "../Markdown/Markdown";
+import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useState } from "react";
-import { TalkingWaves } from "../Animations/TalkingWaves";
-import { MicroButton } from "../Button/MicroButton";
-import { Textarea } from "../Input/Textarea";
-import { KeyboardButton } from "../Button/KeyboardButton";
+import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
+import { Textarea } from "../uiKit/Input/Textarea";
 import { Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
 import { SendHorizontal } from "lucide-react";
 import DoneIcon from "@mui/icons-material/Done";
+import { MicroButton } from "../uiKit/Button/MicroButton";
+import { KeyboardButton } from "../uiKit/Button/KeyboardButton";
 
 export function ConversationBoard() {
   const aiConversation = useAiConversation();

@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { DashboardCard } from "../Card/DashboardCard";
+import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { Baby, Mic, TrendingUp } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 

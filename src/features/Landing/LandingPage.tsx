@@ -1,7 +1,7 @@
-import { TalkingWaves } from "@/features/Animations/TalkingWaves";
-import { Button, Stack, Typography } from "@mui/material";
+import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
+import { Stack, Typography } from "@mui/material";
 import { Header } from "../Header/Header";
-import Galaxy from "../Animations/Galaxy";
+import Galaxy from "../uiKit/Animations/Galaxy";
 import { StarContainer } from "../Layout/StarContainer";
 import { FirsCards } from "./FirsCards";
 import { Footer } from "./Footer";

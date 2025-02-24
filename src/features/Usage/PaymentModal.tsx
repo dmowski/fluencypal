@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { CustomModal } from "../Modal/CustomModal";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useUsage } from "./useUsage";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import AddCardIcon from "@mui/icons-material/AddCard";

@@ -1,13 +1,11 @@
 import {
-  fullEnglishLanguageName,
-  fullLanguageName,
   getLabelFromCode,
   getUserLangCode,
   SupportedLanguage,
   supportedLanguages,
 } from "@/common/lang";
 import { JSX, useEffect, useState } from "react";
-import SuggestInput, { SelectGroupItem } from "../SuggestInput/SuggestInput";
+import SuggestInput, { SelectGroupItem } from "../uiKit/SuggestInput/SuggestInput";
 import { Button, Stack } from "@mui/material";
 
 interface LangSelectorProps {

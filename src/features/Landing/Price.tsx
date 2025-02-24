@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { GradientCard } from "../Card/GradientCard";
+import { GradientCard } from "../uiKit/Card/GradientCard";
 
 export const Price = () => {
   const startColor = "#fa8500";

@@ -2,7 +2,7 @@ import { Button, Stack, Typography } from "@mui/material";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { BookOpenText, ChevronLeft } from "lucide-react";
 import { useRules } from "../Rules/useRules";
-import { Markdown } from "../Markdown/Markdown";
+import { Markdown } from "../uiKit/Markdown/Markdown";
 
 export const RulesToLearn: React.FC = () => {
   const aiConversation = useAiConversation();

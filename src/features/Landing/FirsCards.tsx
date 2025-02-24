@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import { GradientCard } from "../Card/GradientCard";
+import { GradientCard } from "../uiKit/Card/GradientCard";
 
 interface ShortCard {
   title: string;

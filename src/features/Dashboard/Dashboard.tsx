@@ -5,7 +5,7 @@ import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Button, Stack, Typography } from "@mui/material";
 import { useSettings } from "../Settings/useSettings";
 
-import { TalkingWaves } from "../Animations/TalkingWaves";
+import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { InfoBlockedSection } from "./InfoBlockedSection";
 import { useWords } from "../Words/useWords";
 import { WordsToLearn } from "./WordsToLearn";

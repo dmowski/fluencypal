@@ -3,7 +3,7 @@ import { ProgressGrid } from "./ProgressGrid";
 import { useSettings } from "../Settings/useSettings";
 import { useTasks } from "../Tasks/useTasks";
 import { useWords } from "../Words/useWords";
-import { DashboardCard } from "../Card/DashboardCard";
+import { DashboardCard } from "../uiKit/Card/DashboardCard";
 
 export const ProgressCard = () => {
   const settings = useSettings();

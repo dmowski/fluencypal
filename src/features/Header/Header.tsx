@@ -28,7 +28,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import MailIcon from "@mui/icons-material/Mail";
 import { useSettings } from "../Settings/useSettings";
 import { fullEnglishLanguageName } from "@/common/lang";
-import { CustomModal } from "../Modal/CustomModal";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { LangSelector } from "../Lang/LangSelector";
 import { useUsage } from "../Usage/useUsage";
 import { PaymentModal } from "../Usage/PaymentModal";

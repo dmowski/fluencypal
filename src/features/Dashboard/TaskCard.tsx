@@ -1,5 +1,5 @@
 import { UserTaskType } from "@/common/userTask";
-import { GradientCard } from "../Card/GradientCard";
+import { GradientCard } from "../uiKit/Card/GradientCard";
 import { Stack } from "@mui/material";
 import { Badge, BadgeCheck } from "lucide-react";
 import { JSX } from "react";
