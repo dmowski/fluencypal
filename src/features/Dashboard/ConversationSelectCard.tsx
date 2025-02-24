@@ -46,7 +46,7 @@ export const ConversationSelectCard = () => {
                 opacity: 0.7,
               }}
             >
-              Talk to the AI and it will respond to you.
+              Talk to the AI and it will respond to you
             </Typography>
           </Stack>
           <Button
@@ -80,7 +80,7 @@ export const ConversationSelectCard = () => {
                 opacity: 0.7,
               }}
             >
-              Talk to the AI, and it will correct you if you make a mistake.
+              Talk to the AI, and it will correct you if you make a mistake
             </Typography>
           </Stack>
           <Button
@@ -114,7 +114,7 @@ export const ConversationSelectCard = () => {
                 opacity: 0.7,
               }}
             >
-              An easy mode for beginners.
+              An easy mode for beginners
             </Typography>
           </Stack>
           <Button

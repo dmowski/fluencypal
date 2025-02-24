@@ -21,7 +21,7 @@ export const ProgressCard = () => {
             opacity: 0.7,
           }}
         >
-          Your Daily Progress
+          Your daily progress
         </Typography>
       </Stack>
 

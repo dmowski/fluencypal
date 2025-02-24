@@ -24,7 +24,7 @@ export const TasksCard = () => {
             opacity: 0.7,
           }}
         >
-          Complete daily tasks to improve your language skills.
+          Complete daily tasks to improve your language skills
         </Typography>
       </Stack>
       <Stack
@@ -40,7 +40,7 @@ export const TasksCard = () => {
         <TaskCard
           isDone={!!tasks.todayStats?.lesson}
           title="Small conversation"
-          subTitle="Start talking to learn something new."
+          subTitle="Start talking to learn something new"
           buttonIcon={<Mic size={"20px"} />}
           buttonText="Just a Talk"
           onStart={() => aiConversation.startConversation({ mode: "talk" })}
@@ -48,7 +48,7 @@ export const TasksCard = () => {
 
         <TaskCard
           title="Rule of the day"
-          subTitle="Get a personal grammar rule to learn."
+          subTitle="Get a personal grammar rule to learn"
           buttonIcon={<BookOpenText size={"20px"} />}
           buttonText="Get a rule"
           onStart={() => rules.getRules()}
@@ -59,7 +59,7 @@ export const TasksCard = () => {
         <TaskCard
           isDone={!!tasks.todayStats?.words}
           title="New words"
-          subTitle="Practice new vocabulary with the AI."
+          subTitle="Practice new vocabulary with the AI"
           buttonIcon={<GraduationCap size={"20px"} />}
           buttonText="Get new words"
           lockedText={!words.totalWordsCount ? "Complete previous tasks first" : ""}

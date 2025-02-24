@@ -32,7 +32,7 @@ export const HomeworkCard = () => {
                 }}
                 variant="caption"
               >
-                No homework yet. Start a conversation to receive homework.
+                No homework assigned yet. Start a conversation to get one.
               </Typography>
               <Button
                 variant="outlined"
@@ -42,7 +42,7 @@ export const HomeworkCard = () => {
                   })
                 }
               >
-                Start a conversation
+                Start & Get Homework
               </Button>
             </Stack>
           </>
