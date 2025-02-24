@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX, useState } from "react";
 import { useSettings } from "../Settings/useSettings";
-import { sendAiRequest } from "../Ai/sendAiRequest";
+import { sendTextAiRequest } from "./sendTextAiRequest";
 import { calculateTextUsagePrice, TextAiModel } from "@/common/ai";
 import { useUsage } from "../Usage/useUsage";
 import { TextUsageLog } from "@/common/usage";
@@ -28,7 +28,7 @@ function useProvideTextAi(): TextAiContextType {
       throw new Error("Language is not set | useProvideTextAi.generate");
     }
 
-    const response = await sendAiRequest({ ...conversationDate, language });
+    const response = await sendTextAiRequest({ ...conversationDate, language });
 
     const textUsageLog: TextUsageLog = {
       usageId: `${Date.now()}`,

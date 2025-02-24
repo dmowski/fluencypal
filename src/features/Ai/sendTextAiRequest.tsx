@@ -1,6 +1,6 @@
 import { AiResponse, AiRequest } from "@/common/requests";
 
-export const sendAiRequest = async (conversationDate: AiRequest) => {
+export const sendTextAiRequest = async (conversationDate: AiRequest) => {
   const response = await fetch("/api/ai", {
     method: "POST",
     body: JSON.stringify(conversationDate),

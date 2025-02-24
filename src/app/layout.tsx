@@ -14,6 +14,7 @@ import { AiConversationProvider } from "@/features/Conversation/useAiConversatio
 import { TasksProvider } from "@/features/Tasks/useTasks";
 import { WordsProvider } from "@/features/Words/useWords";
 import { RulesProvider } from "@/features/Rules/useRules";
+import { TextAiProvider } from "@/features/Ai/useTextAi";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -43,19 +44,21 @@ export default function RootLayout({
             <NotificationsProviderWrapper>
               <AuthProvider>
                 <SettingsProvider>
-                  <WordsProvider>
-                    <ChatHistoryProvider>
-                      <RulesProvider>
-                        <TasksProvider>
-                          <UsageProvider>
-                            <HomeworkProvider>
-                              <AiConversationProvider>{children}</AiConversationProvider>
-                            </HomeworkProvider>
-                          </UsageProvider>
-                        </TasksProvider>
-                      </RulesProvider>
-                    </ChatHistoryProvider>
-                  </WordsProvider>
+                  <UsageProvider>
+                    <TextAiProvider>
+                      <WordsProvider>
+                        <ChatHistoryProvider>
+                          <RulesProvider>
+                            <TasksProvider>
+                              <HomeworkProvider>
+                                <AiConversationProvider>{children}</AiConversationProvider>
+                              </HomeworkProvider>
+                            </TasksProvider>
+                          </RulesProvider>
+                        </ChatHistoryProvider>
+                      </WordsProvider>
+                    </TextAiProvider>
+                  </UsageProvider>
                 </SettingsProvider>
               </AuthProvider>
             </NotificationsProviderWrapper>

@@ -1,8 +1,8 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX, useState } from "react";
 import { useSettings } from "../Settings/useSettings";
-import { sendAiRequest } from "../Ai/sendAiRequest";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
+import { useTextAi } from "../Ai/useTextAi";
 
 interface RulesContextType {
   getRules: () => Promise<void>;
@@ -18,6 +18,7 @@ function useProvideRules(): RulesContextType {
   const [isGeneratingRule, setIsGeneratingRule] = useState(false);
   const [rule, setRule] = useState("");
   const chatHistory = useChatHistory();
+  const textAi = useTextAi();
 
   const getUserMessages = async () => {
     const data = await chatHistory.getLastConversations(2);
@@ -47,13 +48,11 @@ function useProvideRules(): RulesContextType {
         `Rules should be useful and not too difficult.`,
         `Return grammar rule in Markdown format. Starting from similar to: Based on recent conversation`,
       ].join(" ");
-      const response = await sendAiRequest({
-        language,
+      const newRuleToLearn = await textAi.generate({
         systemMessage: systemInstruction,
         userMessage: `userMessage: ${userMessage}`,
         model: "gpt-4o",
       });
-      const newRuleToLearn = response.aiResponse;
       setRule(newRuleToLearn);
     } catch (error) {
       setIsGeneratingRule(false);

@@ -7,7 +7,7 @@ import { db } from "../Firebase/db";
 import { WordsStats } from "@/common/words";
 import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useSettings } from "../Settings/useSettings";
-import { sendAiRequest } from "../Ai/sendAiRequest";
+import { useTextAi } from "../Ai/useTextAi";
 
 interface WordsContextType {
   wordsStats: WordsStats | null;
@@ -27,6 +27,7 @@ function useProvideWords(): WordsContextType {
   const settings = useSettings();
   const wordsStatsDocRef = db.documents.userWordsStats(auth.uid, settings.language);
   const [wordsStats, loading] = useDocumentData(wordsStatsDocRef);
+  const textAi = useTextAi();
 
   const totalWordsCount = useMemo(() => {
     if (!wordsStats) return 0;
@@ -77,13 +78,12 @@ function useProvideWords(): WordsContextType {
         `Words should be useful and not too difficult.`,
         `Split words by comma.`,
       ].join(" ");
-      const response = await sendAiRequest({
-        language,
+      const response = await textAi.generate({
         systemMessage: systemInstruction,
         userMessage: knownWords.join(" "),
         model: "gpt-4o",
       });
-      const newWordsToLearn = response.aiResponse.split(",").map((word) => word.trim());
+      const newWordsToLearn = response.split(",").map((word) => word.trim());
       setIsGeneratingWords(false);
       setWordsToLearn(newWordsToLearn);
 
