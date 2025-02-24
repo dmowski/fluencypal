@@ -25,6 +25,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
 }) => {
   return (
     <GradientCard
+      strokeWidth="2px"
       startColor={isDone ? "#fa8500" : "rgba(255, 255, 255, 0.09)"}
       endColor={isDone ? "#05acff" : "rgba(255, 255, 255, 0.09)"}
       backgroundColor={isDone ? "rgba(10, 18, 30, 1)" : "rgba(10, 18, 30, 0.2)"}
@@ -42,7 +43,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
             right: "16px",
           }}
         >
-          {isDone ? <BadgeCheck color="#fa8500" size={"20px"} /> : null}
+          {isDone ? <BadgeCheck strokeWidth={"2px"} color="#558fdb" size={"24px"} /> : null}
         </Stack>
         <Stack>
           <Typography

@@ -37,6 +37,7 @@ export const ProgressCard = () => {
       <Stack
         sx={{
           flexDirection: "row",
+          display: "none",
         }}
       >
         <Stack
