@@ -1,6 +1,5 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX, useState } from "react";
-import { useAuth } from "../Auth/useAuth";
 import { useSettings } from "../Settings/useSettings";
 import { sendAiRequest } from "../Ai/sendAiRequest";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
@@ -15,7 +14,6 @@ interface RulesContextType {
 const RulesContext = createContext<RulesContextType | null>(null);
 
 function useProvideRules(): RulesContextType {
-  const auth = useAuth();
   const settings = useSettings();
   const [isGeneratingRule, setIsGeneratingRule] = useState(false);
   const [rule, setRule] = useState("");
