@@ -78,7 +78,7 @@ export function RulesProvider({ children }: { children: ReactNode }): JSX.Elemen
 export const useRules = (): RulesContextType => {
   const context = useContext(RulesContext);
   if (!context) {
-    throw new Error("useWords must be used within a UsageProvider");
+    throw new Error("useRules must be used within a RulesProvider");
   }
   return context;
 };

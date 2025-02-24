@@ -1,4 +1,4 @@
-import { RealTimeModel, UsageEvent } from "./ai";
+import { RealTimeModel, TextAiModel, TextUsageEvent, UsageEvent } from "./ai";
 
 export interface TotalUsageInfo {
   lastUpdatedAt: number;
@@ -6,11 +6,22 @@ export interface TotalUsageInfo {
   balance: number; // $
 }
 
-export interface UsageLog {
+interface BaseUsageLog {
   usageId: string;
-  usageEvent: UsageEvent;
-  model: RealTimeModel;
   price: number;
   createdAt: number;
   language: string;
 }
+export interface RealtimeUsageLog extends BaseUsageLog {
+  type: "realtime";
+  usageEvent: UsageEvent;
+  model: RealTimeModel;
+}
+
+export interface TextUsageLog extends BaseUsageLog {
+  type: "text";
+  usageEvent: TextUsageEvent;
+  model: TextAiModel;
+}
+
+export type UsageLog = RealtimeUsageLog | TextUsageLog;

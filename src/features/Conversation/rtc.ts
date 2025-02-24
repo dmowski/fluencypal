@@ -201,6 +201,7 @@ export const initAiRtc = async ({
           createdAt: Date.now(),
           model,
           language: language,
+          type: "realtime",
         });
       }
     }
