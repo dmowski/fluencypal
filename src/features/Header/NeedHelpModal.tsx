@@ -51,9 +51,9 @@ export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
       await deleteCollectionDocs(firestore, `users/${userId}/conversations`);
       await deleteCollectionDocs(firestore, `users/${userId}/homeworks`);
       await deleteCollectionDocs(firestore, `users/${userId}/usageLogs`);
-      await deleteDoc(doc(firestore, `users/${userId}/stats/tasks`));
+      await deleteCollectionDocs(firestore, `users/${userId}/stats`);
 
-      await setDoc(userSettingsDoc, { language: null }, { merge: true });
+      await setDoc(userSettingsDoc, { languageCode: null }, { merge: true });
       notifications.show(
         "Your account has been successfully deleted. We are sorry to see you go!",
         {
@@ -65,6 +65,7 @@ export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
       auth.logout();
       onClose();
     } catch (error) {
+      setIsDeletingAccount(false);
       notifications.show(
         "Failed to delete your account. Please try again later, or contact the developers.",
         {

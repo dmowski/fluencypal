@@ -33,9 +33,9 @@ function useProvideSettings(): SettingsContextType {
 
   const [userSettings, loading] = useDocumentData(userSettingsDoc);
 
-  const setLanguage = async (language: SupportedLanguage) => {
+  const setLanguage = async (languageCode: SupportedLanguage) => {
     if (!userSettingsDoc) return;
-    await setDoc(userSettingsDoc, { language }, { merge: true });
+    await setDoc(userSettingsDoc, { languageCode }, { merge: true });
   };
 
   const initUserSettings = async () => {
@@ -60,9 +60,9 @@ function useProvideSettings(): SettingsContextType {
 
   return {
     userCreatedAt,
-    languageCode: userSettings?.language || null,
-    fullLanguageName: userSettings?.language
-      ? fullEnglishLanguageName[userSettings?.language]
+    languageCode: userSettings?.languageCode || null,
+    fullLanguageName: userSettings?.languageCode
+      ? fullEnglishLanguageName[userSettings.languageCode]
       : null,
     loading,
     setLanguage,
