@@ -11,6 +11,7 @@ interface MonthProgressBlockProps {
   getDateStat: (data: string) => number;
   daySize: number;
   gap: string;
+  isFirst?: boolean;
 }
 
 export const MonthProgressBlock: React.FC<MonthProgressBlockProps> = ({
@@ -19,6 +20,7 @@ export const MonthProgressBlock: React.FC<MonthProgressBlockProps> = ({
   currentDateTimeStamp,
   getDateStat,
   daySize,
+  isFirst,
   gap,
 }) => {
   const daysInMonth = dayjs().month(month).year(year).daysInMonth();
@@ -48,7 +50,7 @@ export const MonthProgressBlock: React.FC<MonthProgressBlockProps> = ({
     <Stack
       sx={{
         width: "max-content",
-        gap: "15px",
+        gap: "12px",
         padding: "2px 0",
       }}
     >
@@ -109,8 +111,10 @@ export const MonthProgressBlock: React.FC<MonthProgressBlockProps> = ({
       <Typography
         variant="caption"
         sx={{
-          opacity: 0.5,
+          opacity: 0.4,
+          alignItems: "center",
         }}
+        align="center"
       >
         {monthTitle}
       </Typography>
