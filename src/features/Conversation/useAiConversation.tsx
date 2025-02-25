@@ -24,6 +24,7 @@ import { ChatMessage, ConversationMode } from "@/common/conversation";
 import { useTasks } from "../Tasks/useTasks";
 import { useWords } from "../Words/useWords";
 import { sleep } from "@/libs/sleep";
+import { useAiUserInfo } from "../Ai/useAiUserInfo";
 
 interface StartConversationProps {
   mode: ConversationMode;
@@ -58,6 +59,8 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isInitializing, setIsInitializing] = useState(false);
   const history = useChatHistory();
   const settings = useSettings();
+  const aiUserInfo = useAiUserInfo();
+  const userInfo = aiUserInfo.userInfo?.records.join(". ") || "";
   const language = settings.language ? fullEnglishLanguageName[settings.language] : "English";
   const usage = useUsage();
   const [isStarted, setIsStarted] = useState(false);
@@ -147,6 +150,7 @@ Your homework is to repeat the following text:
     const newInstruction = isSkipHomework ? generalSummary : newInstructionForHomework;
 
     await calculateWordsUsageFromConversation();
+    await aiUserInfo.updateUserInfo(conversation);
     await communicatorRef.current?.updateSessionTrigger(newInstruction);
     await sleep(700);
 
@@ -198,19 +202,27 @@ Your homework is to repeat the following text:
       language,
     };
 
+    const openerInfoPrompt = userInfo
+      ? `Student info: ${userInfo}. Ask the student something related to them.`
+      : "Ask the student to describe their day.";
+
+    const firstMessage = userInfo
+      ? `"Hello... I am here!". You can mention student name if applicable. No need to introduce yourself, user already knows you.`
+      : `"Hello... I am here!"`;
+
     const config: Record<ConversationMode, AiRtcConfig> = {
       talk: {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${language} teacher. Your name is "Bruno". Your role is to make user talks.
-Ask the student to describe their day.
+${openerInfoPrompt}
 Do not teach or explain rules—just talk.
 You should be friendly and engaging.
 Don't make user feel like they are being tested and feel stupid.
 If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
-Start the conversation with: "Hello... I am here!". Say it in a friendly and calm way, no other words needed for the first hi.
-After the first user response, introduce yourself, your role of english teacher and ask user to describe their day.
+Start the conversation with: ${firstMessage}. Say it in a friendly and calm way, no other words needed for the first hi.
+${userInfo ? "" : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."}
 Speak slowly and clearly. Use ${language} language. Try to speed on user's level.
 `,
       },
@@ -233,7 +245,8 @@ For every user message, you must reply with three parts **in one response**:
 
 Speak in a clear, friendly tone. Use only ${language}. Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
 
-Start the conversation with: "Hello... I am here!" (in ${language} lang) in a friendly and calm way, no other words needed for the initial greeting).
+Start the conversation with: ${firstMessage} (in ${language} lang) in a friendly and calm way, no other words needed for the initial greeting).
+${userInfo ? `Student info: ${userInfo}` : ""}
 `,
       },
       beginner: {
@@ -263,7 +276,11 @@ Remember:
 - Do not overwhelm the user.
 - Keep the conversation upbeat and encouraging.
 
+${userInfo ? `Student info: ${userInfo}` : ""}
+
 Start the conversation with: "Hello... I am here!" (in ${language} lang) (in a friendly and calm way, no other words needed for the initial greeting).
+
+
 `,
       },
       words: {
@@ -275,6 +292,8 @@ The user wants to learn new words.
 Start your lesson be introducing new words with short explanation.
 Then, ask user to use these words in sentences.
 Go step by step, word by word.
+
+${userInfo ? `Student info: ${userInfo}` : ""}
 `,
       },
 
@@ -287,11 +306,13 @@ The user wants to learn a new rule.
 Start your lesson be introducing the rule with short explanation.
 Then, ask user to use these rules in sentences.
 Craft a lesson that will help user to understand the rule.
+
+${userInfo ? `Student info: ${userInfo}` : ""}
 `,
       },
     };
     return config;
-  }, [language]);
+  }, [language, userInfo]);
 
   const [currentMode, setCurrentMode] = useState<ConversationMode>("talk");
 
