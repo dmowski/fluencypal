@@ -1,3 +1,3 @@
-interface UserInfo {
+export interface AiUserInfo {
   records: string[];
 }

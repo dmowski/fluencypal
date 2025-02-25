@@ -13,6 +13,7 @@ import { Conversation } from "@/common/conversation";
 import { Homework } from "@/common/homework";
 import { UserTaskStats } from "@/common/userTask";
 import { WordsStats } from "@/common/words";
+import { AiUserInfo } from "@/common/userInfo";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -77,6 +78,9 @@ export const db = {
       userId && language
         ? dataPointDoc<UserTaskStats>(`users/${userId}/stats/tasks_${language}`)
         : null,
+
+    aiUserInfo: (userId: string | null) =>
+      userId ? dataPointDoc<AiUserInfo>(`users/${userId}/stats/aiUserInfo`) : null,
 
     conversation: (userId?: string, conversationId?: string) =>
       userId && conversationId
