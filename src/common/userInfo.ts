@@ -1,3 +1,10 @@
+export interface AiUserInfoRecord {
+  content: string;
+  createdAt: number;
+}
+
 export interface AiUserInfo {
-  records: string[];
+  records: AiUserInfoRecord[];
+  createdAt: number;
+  updatedAt: number;
 }
