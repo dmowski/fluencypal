@@ -217,6 +217,10 @@ Ask the student one question relevant about themselves, then naturally transitio
       ? `"${firstAiMessage[languageCode]}". You can mention student name if applicable. No need to introduce yourself, user already knows you.`
       : `"${firstAiMessage[languageCode]}"`;
 
+    const firstCorrectionMessage = userInfo
+      ? `"${firstAiMessage[languageCode]}". You can mention student name if applicable. No need to introduce yourself, user already knows you. Not needed provide correction for the first message`
+      : `"${firstAiMessage[languageCode]}"`;
+
     const config: Record<ConversationMode, AiRtcConfig> = {
       talk: {
         ...baseConfig,
@@ -238,24 +242,23 @@ Use ${fullLanguageName} language during conversation.
       "talk-and-correct": {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
-        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". The user wants both a conversation *and* corrections.
-For every user message, you must reply with three parts **in one response**:
+        initInstruction: `You are an ${fullLanguageName} teacher.
+Your name is "Bruno". The user wants both a conversation and corrections.
+For every user message, you must reply with three parts in one response:
+1) Response: React naturally to the user's message. You can comment, show interest, or share a short thought. Keep it friendly and supportive.
 
-1) **Response**: React naturally to the user's message. You can comment, show interest, or share a short thought. Keep it friendly and supportive.
+2) Your corrected version: Start with the phrase "Your corrected version:"
+ - If the user made mistakes, tell them where a mistake was made and provide the corrected version.
+ - If the user's message was perfect, do not correct anything. Instead, write "Your message is perfect."
 
-2) **Your corrected version**: 
-   - Start with the phrase "Your corrected version:"
-   - If the user made mistakes, show them using double underscores around the corrected parts (e.g., "I __am a__ doctor.").
-   - If the user's message was perfect, write a short phrase like "(No mistakes!)."
+3) Question: Ask a follow-up question that moves the conversation forward.
 
-3) **Question**:
-   - Ask a follow-up question that moves the conversation forward.
-   - Relate it to what the user said or the context, prompting them to elaborate or talk more.
+Speak in a clear, friendly tone. 
+Use only ${fullLanguageName} language.
+Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
 
-Speak in a clear, friendly tone. Use only ${fullLanguageName}. Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
-
-Start the conversation with: ${firstMessage} (in ${fullLanguageName} lang) in a friendly and calm way, no other words needed for the initial greeting).
-${userInfo ? `Student info: ${userInfo}` : ""}
+Start the conversation with simple phrase: ${firstCorrectionMessage}.
+${userInfo ? `Info about student: ${userInfo}` : ""}
 `,
       },
       beginner: {
