@@ -1,7 +1,4 @@
-export interface AiUserInfoRecord {
-  content: string;
-  createdAt: number;
-}
+export type AiUserInfoRecord = string;
 
 export interface AiUserInfo {
   records: AiUserInfoRecord[];

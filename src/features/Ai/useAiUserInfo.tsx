@@ -11,6 +11,7 @@ import { setDoc } from "firebase/firestore";
 interface AiUserInfoContextType {
   updateUserInfo: (conversation: ChatMessage[]) => Promise<void>;
   userInfo: AiUserInfo | null;
+  generateConversationOpener: () => Promise<string>;
 }
 
 const AiUserInfoContext = createContext<AiUserInfoContextType | null>(null);
@@ -21,33 +22,50 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
   const dbDocRef = db.documents.aiUserInfo(auth.uid);
   const [userInfo] = useDocumentData<AiUserInfo>(dbDocRef);
 
+  const cleanUpSummary = async (summary: string[]) => {
+    const systemMessage = `Given information about users from conversation with AI language teacher.
+Your goal is to clean up repeated information and return only unique information.
+Return info in JSON format.
+Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
+Example of return value: ["User's name is Alex", "Learning English", "Interested in programming", "From USA", "25 years old", "A student"]
+If not relevant information found, return empty array.
+`;
+    const aiUserMessage = JSON.stringify(summary);
+    const summaryFromConversation = await textAi.generate({
+      userMessage: aiUserMessage,
+      systemMessage,
+      model: "gpt-4o",
+    });
+    return JSON.parse(summaryFromConversation) as string[];
+  };
+
   const updateUserInfo = async (conversation: ChatMessage[]) => {
     if (!dbDocRef) {
       throw new Error("dbDocRef is not defined | useAiUserInfo.updateUserInfo");
     }
     const systemMessage = `Given conversation with user and AI language teacher.
 Your goal is to extract information about user from this conversation.
-Return info in JSON format.
+Return info in JSON format. Important information like name or location should be first.
 Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
 Example of return value: ["User's name is Alex", "Learning English", "Interested in programming", "From USA", "25 years old", "A student"]
 If not relevant information found, return empty array.
+
 `;
-    const userMessage = JSON.stringify(conversation);
+    const aiUserMessage = JSON.stringify(conversation);
 
     const summaryFromConversation = await textAi.generate({
-      userMessage,
+      userMessage: aiUserMessage,
       systemMessage,
       model: "gpt-4o",
     });
     const parsedSummary = JSON.parse(summaryFromConversation) as string[];
-    console.log("parsedSummary updateUserInfo", parsedSummary);
-    const oldRecords = userInfo?.records || [];
-    const newRecords: AiUserInfoRecord[] = parsedSummary.map((content) => ({
-      content,
-      createdAt: Date.now(),
-    }));
 
-    const updatedRecords = [...newRecords, ...oldRecords];
+    const oldRecords = userInfo?.records;
+    const newRecords: AiUserInfoRecord[] = parsedSummary;
+
+    const updatedRecords = oldRecords
+      ? await cleanUpSummary([...newRecords, ...oldRecords])
+      : newRecords;
 
     setDoc(
       dbDocRef,
@@ -60,9 +78,21 @@ If not relevant information found, return empty array.
     );
   };
 
+  const generateConversationOpener = async () => {
+    if (!dbDocRef) {
+      return "";
+    }
+    const recordsSorted = userInfo?.records || [];
+    const maxCount = 40;
+    const recordsToAnalyze = recordsSorted.slice(0, maxCount);
+
+    return recordsToAnalyze.join(". ");
+  };
+
   return {
     userInfo: userInfo || null,
     updateUserInfo,
+    generateConversationOpener,
   };
 }
 
