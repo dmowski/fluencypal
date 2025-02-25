@@ -143,7 +143,7 @@ export const ProgressGrid: React.FC<ProgressGridProps> = ({
       <Stack
         sx={{
           flexDirection: "row",
-          width: "max-content",
+          width: "1290px",
           gap: "10px",
           padding: "0px 0 20px 30px",
         }}
