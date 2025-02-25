@@ -10,6 +10,7 @@ interface MonthProgressBlockProps {
   year: number;
   getDateStat: (data: string) => number;
   daySize: number;
+  gap: string;
 }
 
 export const MonthProgressBlock: React.FC<MonthProgressBlockProps> = ({
@@ -18,19 +19,26 @@ export const MonthProgressBlock: React.FC<MonthProgressBlockProps> = ({
   currentDateTimeStamp,
   getDateStat,
   daySize,
+  gap,
 }) => {
   const daysInMonth = dayjs().month(month).year(year).daysInMonth();
 
   const startDate = dayjs().year(year).month(month).date(1);
+  const endDate = dayjs().year(year).month(month).date(daysInMonth);
 
   const thisMonthDays = Array.from({ length: daysInMonth }, (_, i) => startDate.add(i, "day"));
   const weekDayFirstDay = startDate.day() === 0 ? 6 : startDate.day() - 1;
+  const weekDayLastDay = endDate.day() === 0 ? 6 : endDate.day() - 1;
+  const isNeedToRemoveLastWeek = weekDayLastDay !== 6;
+
   const needGhostDays = weekDayFirstDay;
   const ghostBeforeDays = Array.from({ length: needGhostDays }, (_, i) =>
     startDate.subtract(i + 1, "day")
   );
 
   const days = [...ghostBeforeDays.reverse(), ...thisMonthDays];
+  const numberOfColumns = Math.ceil(days.length / 7) - (isNeedToRemoveLastWeek ? 1 : 0);
+  const daysToShow = isNeedToRemoveLastWeek ? days.length - weekDayLastDay - 1 : days.length;
 
   const currentDayString = dayjs(currentDateTimeStamp).format("DD.MM.YYYY");
 
@@ -39,61 +47,64 @@ export const MonthProgressBlock: React.FC<MonthProgressBlockProps> = ({
   return (
     <Stack
       sx={{
-        alignItems: "center",
-        justifyContent: "center",
-        marginLeft: needGhostDays > 0 ? `-${daySize + 9}px` : "-7px",
         width: "max-content",
-        gap: "6px",
+        gap: "15px",
+        padding: "2px 0",
       }}
     >
       <Stack
         sx={{
-          height: `${(daySize + 4) * 7}px`,
           width: "max-content",
-          padding: "2px",
-          flexWrap: "wrap",
-          gap: "10px 7px",
+          display: "grid",
+          gridTemplateColumns: `repeat(${numberOfColumns}, 1fr)`,
+          gridTemplateRows: `repeat(7, 1fr)`,
+          gap: gap,
+          gridAutoFlow: "column",
         }}
       >
-        {days.map((date, index) => {
-          const dateString = date.format("DD.MM.YYYY");
-          const level = Math.min(getDateStat(dateString), colorMap.length - 1);
+        {days
+          .filter((_, index) => index < daysToShow)
+          .map((date, index) => {
+            const dateString = date.format("DD.MM.YYYY");
+            const level = Math.min(getDateStat(dateString), colorMap.length - 1);
 
-          const dateTooltipLabel = date.format("DD MMM");
+            const dateTooltipLabel = date.format("DD MMM");
 
-          const isToday = dateString === currentDayString;
-          const isFuture = date.isAfter(dayjs(currentDateTimeStamp));
-          const tooltipLabel = `${dateTooltipLabel}: ${getDateStat(dateString)} activities`;
-          return (
-            <Tooltip
-              key={index}
-              title={tooltipLabel}
-              arrow
-              slotProps={{
-                popper: {
-                  sx: {
-                    pointerEvents: "none",
+            const isToday = dateString === currentDayString;
+            const isFuture = date.isAfter(dayjs(currentDateTimeStamp));
+            const tooltipLabel = `${dateTooltipLabel}: ${getDateStat(dateString)} activities`;
+            return (
+              <Tooltip
+                key={index + dateString}
+                title={tooltipLabel}
+                arrow
+                slotProps={{
+                  popper: {
+                    sx: {
+                      pointerEvents: "none",
+                    },
                   },
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  width: 17,
-                  height: 17,
-                  bgcolor: colorMap[level],
-                  borderRadius: "2px",
-                  boxSizing: "border-box",
-                  boxShadow: isToday
-                    ? "0 0 0 1px #c2c2c2"
-                    : isFuture
-                      ? "0 0 0 1px rgba(55, 55, 55, 1)"
-                      : "0 0 0 1px rgba(55, 55, 55, 1)",
                 }}
-              />
-            </Tooltip>
-          );
-        })}
+              >
+                <Box
+                  sx={{
+                    width: daySize,
+                    height: daySize,
+                    margin: "0",
+                    padding: "0",
+                    bgcolor: colorMap[level],
+                    borderRadius: "2px",
+                    boxSizing: "border-box",
+                    boxShadow: isToday
+                      ? "0 0 0 1px #c2c2c2"
+                      : isFuture
+                        ? "0 0 0 1px rgba(55, 55, 55, 1)"
+                        : "0 0 0 1px rgba(55, 55, 55, 1)",
+                  }}
+                />
+              </Tooltip>
+            );
+          })}
       </Stack>
       <Typography
         variant="caption"
@@ -136,20 +147,21 @@ export const ProgressGrid: React.FC<ProgressGridProps> = ({
       sx={{
         position: "relative",
         width: "100%",
-        maxWidth: "1294px",
+        maxWidth: "1277px",
         overflowX: "hidden",
       }}
     >
       <Stack
         sx={{
           flexDirection: "row",
-          width: "1290px",
-          gap: "10px",
-          padding: "0px 0 20px 30px",
+          width: "max-content",
+          gap: "7px",
+          padding: "0px 0 20px 2px",
         }}
       >
         {monthsAndYears.map((date, index) => (
           <MonthProgressBlock
+            gap="7px"
             daySize={22}
             key={index}
             month={date.month}
