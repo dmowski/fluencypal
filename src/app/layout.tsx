@@ -4,7 +4,7 @@ import "./globals.css";
 import { AuthProvider } from "@/features/Auth/useAuth";
 import { Roboto } from "next/font/google";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "../theme";
+import theme from "../features/uiKit/theme";
 import { SettingsProvider } from "@/features/Settings/useSettings";
 import { UsageProvider } from "@/features/Usage/useUsage";
 import { NotificationsProviderWrapper } from "./clientProviders";
