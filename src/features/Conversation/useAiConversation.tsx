@@ -61,7 +61,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const history = useChatHistory();
   const settings = useSettings();
   const aiUserInfo = useAiUserInfo();
-  const userInfo = aiUserInfo.userInfo?.records.join(". ") || "";
+  const userInfo = aiUserInfo.userInfo?.records?.join(". ") || "";
   const fullLanguageName = settings.fullLanguageName || "English";
   const languageCode = settings.languageCode || "en";
 
@@ -175,9 +175,9 @@ Your homework is to repeat the following text:
   }, [fullLanguageName]);
 
   const onOpen = async () => {
-    await sleep(1000);
+    await sleep(300);
     communicatorRef.current?.triggerAiResponse();
-    await sleep(1200);
+    await sleep(1800);
     setIsInitializing(false);
     setIsStarted(true);
   };
@@ -210,7 +210,9 @@ Your homework is to repeat the following text:
     const openerInfoPrompt = userInfo
       ? `Student info: ${userInfo}. 
 
-Ask the student one question relevant about themselves, then naturally transition to another topic.`
+Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
+Don't focus solely on one topic. Try to cover a variety of topics.
+`
       : "Ask the student to describe their day.";
 
     const firstMessage = userInfo

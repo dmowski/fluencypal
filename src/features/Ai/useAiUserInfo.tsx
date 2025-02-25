@@ -43,15 +43,21 @@ If not relevant information found, return empty array.
     if (!dbDocRef) {
       throw new Error("dbDocRef is not defined | useAiUserInfo.updateUserInfo");
     }
-    const systemMessage = `Given conversation with user and AI language teacher.
+    const systemMessage = `Given conversation with user and language teacher.
 Your goal is to extract information about user from this conversation.
-Return info in JSON format. Important information like name or location should be first.
+Return info in JSON format. Important information like name or location should be first less important like interests, plans or preferences should be last.
 Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
 Example of return value: ["User's name is Alex", "Learning English", "Interested in programming", "From USA", "25 years old", "A student"]
-If not relevant information found, return empty array.
+If not relevant information found, return empty array.`;
 
-`;
-    const aiUserMessage = JSON.stringify(conversation);
+    const aiUserMessage = JSON.stringify(
+      conversation.map((message) => {
+        return {
+          author: message.isBot ? "Teacher" : "User",
+          text: message.text,
+        };
+      })
+    );
 
     const summaryFromConversation = await textAi.generate({
       userMessage: aiUserMessage,
@@ -59,6 +65,7 @@ If not relevant information found, return empty array.
       model: "gpt-4o",
     });
     const parsedSummary = JSON.parse(summaryFromConversation) as string[];
+    console.log("parsedSummary", { aiUserMessage, parsedSummary });
 
     const oldRecords = userInfo?.records;
     const newRecords: AiUserInfoRecord[] = parsedSummary;
@@ -66,6 +73,8 @@ If not relevant information found, return empty array.
     const updatedRecords = oldRecords
       ? await cleanUpSummary([...newRecords, ...oldRecords])
       : newRecords;
+
+    console.log("updatedRecords", updatedRecords);
 
     setDoc(
       dbDocRef,
