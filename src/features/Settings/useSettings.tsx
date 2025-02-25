@@ -3,19 +3,24 @@ import { createContext, useContext, ReactNode, JSX, useEffect } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { setDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { SupportedLanguage } from "@/common/lang";
+import { fullEnglishLanguageName, SupportedLanguage } from "@/common/lang";
 import { db } from "../Firebase/db";
 
 interface SettingsContextType {
   userCreatedAt: number | null;
-  language: SupportedLanguage | null;
+
+  languageCode: SupportedLanguage | null;
+  fullLanguageName: string | null;
+
   loading: boolean;
   setLanguage: (language: SupportedLanguage) => void;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
-  language: null,
+  languageCode: null,
+  fullLanguageName: null,
   loading: true,
+
   userCreatedAt: null,
   setLanguage: async () => void 0,
 });
@@ -55,7 +60,10 @@ function useProvideSettings(): SettingsContextType {
 
   return {
     userCreatedAt,
-    language: userSettings?.language || null,
+    languageCode: userSettings?.language || null,
+    fullLanguageName: userSettings?.language
+      ? fullEnglishLanguageName[userSettings?.language]
+      : null,
     loading,
     setLanguage,
   };

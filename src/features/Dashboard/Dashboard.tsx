@@ -54,7 +54,7 @@ export function Dashboard() {
     );
   }
 
-  if (!settings.language) {
+  if (!settings.languageCode) {
     return <SelectLanguage />;
   }
 

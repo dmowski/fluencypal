@@ -155,8 +155,8 @@ export function Header() {
               <Languages size="20px" />
             </ListItemIcon>
             <ListItemText>
-              {settings.language
-                ? `${fullEnglishLanguageName[settings.language]} | Change language`
+              {settings.fullLanguageName
+                ? `${settings.fullLanguageName} | Change language`
                 : "Set language to learn"}
             </ListItemText>
           </MenuItem>
@@ -205,7 +205,7 @@ export function Header() {
           }}
         >
           <LangSelector
-            value={settings.language}
+            value={settings.languageCode}
             onDone={(lang) => {
               settings.setLanguage(lang);
               setIsShowLangSelector(false);

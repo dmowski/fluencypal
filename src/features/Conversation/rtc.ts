@@ -4,6 +4,7 @@ import { getEphemeralKey } from "./getEphemeralKey";
 import { sleep } from "@/libs/sleep";
 import { ChatMessage } from "@/common/conversation";
 import { UsageLog } from "@/common/usage";
+import { SupportedLanguage } from "@/common/lang";
 
 /**
  * Sends an SDP (Session Description Protocol) offer to an API for processing.
@@ -139,7 +140,7 @@ export interface AiRtcConfig {
   setIsUserSpeaking: (speaking: boolean) => void;
   isMuted: boolean;
   onAddUsage: ({}: UsageLog) => void;
-  language: string;
+  languageCode: SupportedLanguage;
 }
 
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
@@ -155,7 +156,7 @@ export const initAiRtc = async ({
   isMuted,
   onAddDelta,
   onAddUsage,
-  language,
+  languageCode,
 }: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 
@@ -200,7 +201,7 @@ export const initAiRtc = async ({
           price,
           createdAt: Date.now(),
           model,
-          language: language,
+          languageCode,
           type: "realtime",
         });
       }

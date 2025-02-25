@@ -1,4 +1,5 @@
 import { RealTimeModel, TextAiModel, TextUsageEvent, UsageEvent } from "./ai";
+import { SupportedLanguage } from "./lang";
 
 export interface TotalUsageInfo {
   lastUpdatedAt: number;
@@ -10,7 +11,7 @@ interface BaseUsageLog {
   usageId: string;
   price: number;
   createdAt: number;
-  language: string;
+  languageCode: SupportedLanguage;
 }
 export interface RealtimeUsageLog extends BaseUsageLog {
   type: "realtime";

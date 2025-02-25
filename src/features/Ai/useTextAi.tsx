@@ -23,16 +23,16 @@ function useProvideTextAi(): TextAiContextType {
   const usage = useUsage();
 
   const generate = async (conversationDate: TextAiRequest) => {
-    const language = settings.language;
-    if (!language) {
+    const languageCode = settings.languageCode;
+    if (!languageCode) {
       throw new Error("Language is not set | useProvideTextAi.generate");
     }
 
-    const response = await sendTextAiRequest({ ...conversationDate, language });
+    const response = await sendTextAiRequest({ ...conversationDate, languageCode });
 
     const textUsageLog: TextUsageLog = {
       usageId: `${Date.now()}`,
-      language,
+      languageCode,
       createdAt: Date.now(),
       price: calculateTextUsagePrice(response.usageEvent, conversationDate.model),
       type: "text",

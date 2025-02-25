@@ -61,7 +61,8 @@ function useProvideAiConversation(): AiConversationContextType {
   const settings = useSettings();
   const aiUserInfo = useAiUserInfo();
   const userInfo = aiUserInfo.userInfo?.records.join(". ") || "";
-  const language = settings.language ? fullEnglishLanguageName[settings.language] : "English";
+  const fullLanguageName = settings.fullLanguageName || "English";
+
   const usage = useUsage();
   const [isStarted, setIsStarted] = useState(false);
   const homeworkService = useHomework();
@@ -168,7 +169,7 @@ Your homework is to repeat the following text:
 
   const baseAiTools: AiTool[] = useMemo(() => {
     return [];
-  }, [language]);
+  }, [fullLanguageName]);
 
   const onOpen = async () => {
     await sleep(1000);
@@ -199,7 +200,7 @@ Your homework is to repeat the following text:
       setIsUserSpeaking,
       isMuted: isMuted || false,
       onAddUsage: (usageLog: UsageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
-      language,
+      languageCode: settings.languageCode || "en",
     };
 
     const openerInfoPrompt = userInfo
@@ -214,7 +215,7 @@ Your homework is to repeat the following text:
       talk: {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
-        initInstruction: `You are an ${language} teacher. Your name is "Bruno". Your role is to make user talks.
+        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". Your role is to make user talks.
 ${openerInfoPrompt}
 Do not teach or explain rules—just talk.
 You should be friendly and engaging.
@@ -223,13 +224,13 @@ If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
 Start the conversation with: ${firstMessage}. Say it in a friendly and calm way, no other words needed for the first hi.
 ${userInfo ? "" : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."}
-Speak slowly and clearly. Use ${language} language. Try to speed on user's level.
+Speak slowly and clearly. Use ${fullLanguageName} language. Try to speed on user's level.
 `,
       },
       "talk-and-correct": {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
-        initInstruction: `You are an ${language} teacher. Your name is "Bruno". The user wants both a conversation *and* corrections.
+        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". The user wants both a conversation *and* corrections.
 For every user message, you must reply with three parts **in one response**:
 
 1) **Response**: React naturally to the user's message. You can comment, show interest, or share a short thought. Keep it friendly and supportive.
@@ -243,16 +244,16 @@ For every user message, you must reply with three parts **in one response**:
    - Ask a follow-up question that moves the conversation forward.
    - Relate it to what the user said or the context, prompting them to elaborate or talk more.
 
-Speak in a clear, friendly tone. Use only ${language}. Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
+Speak in a clear, friendly tone. Use only ${fullLanguageName}. Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
 
-Start the conversation with: ${firstMessage} (in ${language} lang) in a friendly and calm way, no other words needed for the initial greeting).
+Start the conversation with: ${firstMessage} (in ${fullLanguageName} lang) in a friendly and calm way, no other words needed for the initial greeting).
 ${userInfo ? `Student info: ${userInfo}` : ""}
 `,
       },
       beginner: {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
-        initInstruction: `You are an ${language} teacher. Your name is "Bruno". The user is a beginner who needs simple, clear communication.
+        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". The user is a beginner who needs simple, clear communication.
 
 For every user message, reply with **three parts** in a single response:
 
@@ -266,11 +267,11 @@ For every user message, reply with **three parts** in a single response:
 
 3) **Example of Answer**: 
    - Provide a short, sample answer that the user might give. 
-   - This helps them see how they could respond in ${language}. 
+   - This helps them see how they could respond in ${fullLanguageName}. 
    - Keep it very simple. For instance, "I went to the store."
 
 Remember:
-- Speak slowly and clearly, using only ${language}.
+- Speak slowly and clearly, using only ${fullLanguageName}.
 - Use short sentences and simple words.
 - Avoid detailed grammar explanations. 
 - Do not overwhelm the user.
@@ -278,7 +279,7 @@ Remember:
 
 ${userInfo ? `Student info: ${userInfo}` : ""}
 
-Start the conversation with: "Hello... I am here!" (in ${language} lang) (in a friendly and calm way, no other words needed for the initial greeting).
+Start the conversation with: "Hello... I am here!" (in ${fullLanguageName} lang) (in a friendly and calm way, no other words needed for the initial greeting).
 
 
 `,
@@ -286,7 +287,7 @@ Start the conversation with: "Hello... I am here!" (in ${language} lang) (in a f
       words: {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
-        initInstruction: `You are an ${language} teacher.
+        initInstruction: `You are an ${fullLanguageName} teacher.
 Your name is "Bruno".
 The user wants to learn new words.
 Start your lesson be introducing new words with short explanation.
@@ -300,7 +301,7 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
       rule: {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
-        initInstruction: `You are an ${language} teacher.
+        initInstruction: `You are an ${fullLanguageName} teacher.
 Your name is "Bruno".
 The user wants to learn a new rule.
 Start your lesson be introducing the rule with short explanation.
@@ -312,7 +313,7 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
       },
     };
     return config;
-  }, [language, userInfo]);
+  }, [fullLanguageName, userInfo]);
 
   const [currentMode, setCurrentMode] = useState<ConversationMode>("talk");
 
@@ -322,6 +323,9 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
     wordsToLearn,
     ruleToLearn,
   }: StartConversationProps) => {
+    if (!settings.languageCode) {
+      throw new Error("Language is not set | startConversation");
+    }
     try {
       setConversation([]);
       setIsClosing(false);
@@ -357,7 +361,7 @@ ${ruleToLearn}
       }
 
       const conversation = await initAiRtc({ ...aiRtcConfig, initInstruction: instruction });
-      history.createConversation({ conversationId, language: settings.language || "en", mode });
+      history.createConversation({ conversationId, languageCode: settings.languageCode, mode });
       setCommunicator(conversation);
     } catch (e) {
       console.log(e);

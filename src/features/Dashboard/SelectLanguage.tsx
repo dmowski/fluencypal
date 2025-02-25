@@ -21,7 +21,7 @@ export const SelectLanguage: React.FC = () => {
         >
           <Typography variant="h5">Select language to learn</Typography>
           <LangSelector
-            value={settings.language}
+            value={settings.languageCode}
             onDone={(lang) => settings.setLanguage(lang)}
             confirmButtonLabel="Continue"
           />

@@ -13,6 +13,6 @@ export interface Conversation {
   messages: ChatMessage[];
   createdAt: number;
   updatedAt: number;
-  language: SupportedLanguage;
+  languageCode: SupportedLanguage;
   mode: ConversationMode;
 }

@@ -25,9 +25,11 @@ const WordsContext = createContext<WordsContextType | null>(null);
 function useProvideWords(): WordsContextType {
   const auth = useAuth();
   const settings = useSettings();
-  const wordsStatsDocRef = db.documents.userWordsStats(auth.uid, settings.language);
+  const wordsStatsDocRef = db.documents.userWordsStats(auth.uid, settings.languageCode);
   const [wordsStats, loading] = useDocumentData(wordsStatsDocRef);
   const textAi = useTextAi();
+  const [isGeneratingWords, setIsGeneratingWords] = useState(false);
+  const [wordsToLearn, setWordsToLearn] = useState<string[]>([]);
 
   const totalWordsCount = useMemo(() => {
     if (!wordsStats) return 0;
@@ -61,12 +63,7 @@ function useProvideWords(): WordsContextType {
     await addWords(stat);
   };
 
-  const [isGeneratingWords, setIsGeneratingWords] = useState(false);
-  const [wordsToLearn, setWordsToLearn] = useState<string[]>([]);
   const getNewWordsToLearn = async () => {
-    const language = settings?.language;
-    if (!language) return [];
-
     const dictionary = wordsStats?.dictionary || {};
     const knownWords = Object.keys(dictionary).filter((word) => dictionary[word] > 0);
     setWordsToLearn([]);

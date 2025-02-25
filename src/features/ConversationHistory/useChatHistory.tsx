@@ -10,7 +10,7 @@ import { useSettings } from "../Settings/useSettings";
 interface ChatHistoryContextType {
   createConversation: (params: {
     conversationId: string;
-    language: SupportedLanguage;
+    languageCode: SupportedLanguage;
     mode: ConversationMode;
   }) => Promise<void>;
   setMessages: (conversationId: string, messages: ChatMessage[]) => Promise<void>;
@@ -33,9 +33,9 @@ function useProvideChatHistory(): ChatHistoryContextType {
   };
 
   const getLastConversations = async (count: number) => {
-    const language = settings.language;
-    if (!language) {
-      throw new Error("❌ language is not defined | getLastConversations");
+    const languageCode = settings.languageCode;
+    if (!languageCode) {
+      throw new Error("❌ languageCode is not defined | getLastConversations");
     }
     const collectionRef = db.collections.conversation(userId);
     if (!collectionRef) {
@@ -43,7 +43,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
     }
     const queryRef = query(
       collectionRef,
-      where("language", "==", language),
+      where("languageCode", "==", languageCode),
       orderBy("updatedAt", "desc"),
       limit(count)
     );
@@ -67,11 +67,11 @@ function useProvideChatHistory(): ChatHistoryContextType {
 
   const createConversation = async ({
     conversationId,
-    language,
+    languageCode,
     mode,
   }: {
     conversationId: string;
-    language: SupportedLanguage;
+    languageCode: SupportedLanguage;
     mode: ConversationMode;
   }) => {
     const conversationDoc = getConversationDoc(conversationId);
@@ -81,7 +81,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
       createdAt: Date.now(),
       updatedAt: Date.now(),
       messages: [],
-      language,
+      languageCode,
       mode,
     };
 

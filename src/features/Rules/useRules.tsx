@@ -1,6 +1,5 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX, useState } from "react";
-import { useSettings } from "../Settings/useSettings";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useTextAi } from "../Ai/useTextAi";
 
@@ -14,7 +13,6 @@ interface RulesContextType {
 const RulesContext = createContext<RulesContextType | null>(null);
 
 function useProvideRules(): RulesContextType {
-  const settings = useSettings();
   const [isGeneratingRule, setIsGeneratingRule] = useState(false);
   const [rule, setRule] = useState("");
   const chatHistory = useChatHistory();
@@ -33,11 +31,6 @@ function useProvideRules(): RulesContextType {
   };
 
   const getRules = async () => {
-    const language = settings?.language;
-    if (!language) {
-      throw new Error("❌ language is not defined | getRules");
-    }
-
     setIsGeneratingRule(true);
     try {
       const userMessage = await getUserMessages();

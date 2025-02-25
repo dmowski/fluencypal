@@ -26,7 +26,7 @@ function useProvideTasks(): TasksContextType {
   const settings = useSettings();
   const userId = auth.uid;
 
-  const userTasksStatsDocRef = db.documents.userTasksStats(userId, settings.language);
+  const userTasksStatsDocRef = db.documents.userTasksStats(userId, settings.languageCode);
 
   const [userTasksStats, loading] = useDocumentData(userTasksStatsDocRef);
   const dayFormat = "DD.MM.YYYY";
