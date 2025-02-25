@@ -16,7 +16,6 @@ import { useLocalStorage } from "react-use";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
-import { fullEnglishLanguageName } from "@/common/lang";
 import { useHomework } from "../Homework/useHomework";
 import { Homework } from "@/common/homework";
 import { UsageLog } from "@/common/usage";
@@ -25,6 +24,7 @@ import { useTasks } from "../Tasks/useTasks";
 import { useWords } from "../Words/useWords";
 import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
+import { firstAiMessage } from "./data";
 
 interface StartConversationProps {
   mode: ConversationMode;
@@ -51,6 +51,7 @@ interface AiConversationContextType {
   addUserMessage: (message: string) => Promise<void>;
   isShowUserInput: boolean;
   setIsShowUserInput: (value: boolean) => void;
+  currentMode: ConversationMode;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -62,6 +63,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const aiUserInfo = useAiUserInfo();
   const userInfo = aiUserInfo.userInfo?.records.join(". ") || "";
   const fullLanguageName = settings.fullLanguageName || "English";
+  const languageCode = settings.languageCode || "en";
 
   const usage = useUsage();
   const [isStarted, setIsStarted] = useState(false);
@@ -141,6 +143,7 @@ function useProvideAiConversation(): AiConversationContextType {
     setIsClosing(true);
     communicatorRef.current?.toggleMute(true);
     const newInstructionForHomework = `Generate summary of the lesson. Show user's mistakes.
+Use ${fullLanguageName} language during providing feedback.
 Create a text user have to repeat on the next lesson. It will be a homework.
 Format homework following this structure:
 Your homework is to repeat the following text:
@@ -174,6 +177,7 @@ Your homework is to repeat the following text:
   const onOpen = async () => {
     await sleep(1000);
     communicatorRef.current?.triggerAiResponse();
+    await sleep(1200);
     setIsInitializing(false);
     setIsStarted(true);
   };
@@ -204,12 +208,14 @@ Your homework is to repeat the following text:
     };
 
     const openerInfoPrompt = userInfo
-      ? `Student info: ${userInfo}. Ask the student something related to them.`
+      ? `Student info: ${userInfo}. 
+
+Ask the student one question relevant about themselves, then naturally transition to another topic.`
       : "Ask the student to describe their day.";
 
     const firstMessage = userInfo
-      ? `"Hello... I am here!". You can mention student name if applicable. No need to introduce yourself, user already knows you.`
-      : `"Hello... I am here!"`;
+      ? `"${firstAiMessage[languageCode]}". You can mention student name if applicable. No need to introduce yourself, user already knows you.`
+      : `"${firstAiMessage[languageCode]}"`;
 
     const config: Record<ConversationMode, AiRtcConfig> = {
       talk: {
@@ -224,7 +230,9 @@ If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
 Start the conversation with: ${firstMessage}. Say it in a friendly and calm way, no other words needed for the first hi.
 ${userInfo ? "" : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."}
-Speak slowly and clearly. Use ${fullLanguageName} language. Try to speed on user's level.
+Speak slowly and clearly. Use ${fullLanguageName} language. Try to speak on user's level.
+
+Use ${fullLanguageName} language during conversation.
 `,
       },
       "talk-and-correct": {
@@ -279,7 +287,7 @@ Remember:
 
 ${userInfo ? `Student info: ${userInfo}` : ""}
 
-Start the conversation with: "Hello... I am here!" (in ${fullLanguageName} lang) (in a friendly and calm way, no other words needed for the initial greeting).
+Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly and calm way, no other words needed for the initial greeting).
 
 
 `,
@@ -360,6 +368,7 @@ ${ruleToLearn}
 `;
       }
 
+      console.log("instruction", instruction);
       const conversation = await initAiRtc({ ...aiRtcConfig, initInstruction: instruction });
       history.createConversation({ conversationId, languageCode: settings.languageCode, mode });
       setCommunicator(conversation);
@@ -413,6 +422,7 @@ ${ruleToLearn}
   };
 
   return {
+    currentMode,
     isSavingHomework,
     isInitializing,
     isStarted,

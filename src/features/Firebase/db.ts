@@ -67,7 +67,7 @@ export const db = {
         ? dataPointDoc<Homework>(`users/${userId}/homeworks/${homeworkId}`)
         : null,
     totalUsage: (userId?: string) =>
-      userId ? dataPointDoc<TotalUsageInfo>(`users/${userId}/stats/usage`) : null,
+      userId ? dataPointDoc<TotalUsageInfo>(`users/${userId}/usage/totalUsage`) : null,
 
     usageLog: (userId?: string, usageId?: string) =>
       userId && usageId ? dataPointDoc<UsageLog>(`users/${userId}/usageLogs/${usageId}`) : null,
