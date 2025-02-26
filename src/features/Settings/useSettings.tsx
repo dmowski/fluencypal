@@ -44,8 +44,7 @@ function useProvideSettings(): SettingsContextType {
       loading ||
       !userSettings ||
       !userSettingsDoc ||
-      userSettings.createdAt ||
-      userSettings.email
+      (userSettings.createdAt && userSettings.email)
     ) {
       return;
     }
