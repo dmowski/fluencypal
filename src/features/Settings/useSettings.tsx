@@ -39,8 +39,25 @@ function useProvideSettings(): SettingsContextType {
   };
 
   const initUserSettings = async () => {
-    if (!userId || loading || !userSettings || !userSettingsDoc || userSettings.createdAt) return;
-    await setDoc(userSettingsDoc, { createdAt: Date.now() }, { merge: true });
+    if (
+      !userId ||
+      loading ||
+      !userSettings ||
+      !userSettingsDoc ||
+      userSettings.createdAt ||
+      userSettings.email
+    ) {
+      return;
+    }
+
+    await setDoc(
+      userSettingsDoc,
+      {
+        createdAt: userSettings.createdAt || Date.now(),
+        email: userSettings.email || auth.userInfo?.email || "",
+      },
+      { merge: true }
+    );
   };
 
   useEffect(() => {
