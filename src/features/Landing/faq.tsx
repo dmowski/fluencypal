@@ -31,7 +31,7 @@ export const Faq = () => {
         alignItems: "center",
         justifyContent: "center",
         gap: "100px",
-        backgroundColor: `rgb(0, 0, 0, 0.2)`,
+        backgroundColor: `rgb(0, 0, 0, 0)`,
         position: "relative",
         zIndex: 1,
         overflow: "hidden",
