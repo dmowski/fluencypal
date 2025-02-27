@@ -1,7 +1,6 @@
 "use client";
 
 import { firebaseConfig } from "@/common/firebaseConfig";
-import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 import {
   browserLocalPersistence,
@@ -18,7 +17,6 @@ import {
   persistentMultipleTabManager,
 } from "firebase/firestore";
 import { connectFunctionsEmulator, getFunctions } from "firebase/functions";
-import { getPerformance } from "firebase/performance";
 import { connectStorageEmulator, getStorage } from "firebase/storage";
 
 const isNodeEnv = typeof window === "undefined";
@@ -57,8 +55,8 @@ if (isEmulator) {
   connectStorageEmulator(storage, "localhost", 9199);
   connectFunctionsEmulator(functions, "localhost", 5001);
 } else if (!isUnitTestsEnv && !isLocalhost) {
-  getAnalytics(app);
-  getPerformance(app);
+  //getAnalytics(app);
+  //getPerformance(app);
 }
 
 export { auth, firestore, storage, functions };
