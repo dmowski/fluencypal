@@ -1,14 +1,4 @@
-//ctaBlock
-
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Button,
-  Stack,
-  Typography,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Button, Stack, Typography } from "@mui/material";
 import Galaxy from "../uiKit/Animations/Galaxy";
 
 export const CtaBlock = () => {
@@ -65,7 +55,7 @@ export const CtaBlock = () => {
       <Stack
         sx={{
           width: "100%",
-          height: "100vh",
+          height: "1300px",
           pointerEvents: "none",
           position: "absolute",
           top: 0,
