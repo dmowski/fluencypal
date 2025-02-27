@@ -1,0 +1,84 @@
+import { Button, Stack, Typography } from "@mui/material";
+import Galaxy from "../uiKit/Animations/Galaxy";
+
+export const IntroVideoDemo = () => {
+  return (
+    <Stack
+      sx={{
+        width: "100%",
+        padding: "100px 0",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "100px",
+        backgroundColor: `rgb(43 35 88)`,
+        position: "relative",
+        zIndex: 1,
+        overflow: "hidden",
+      }}
+    >
+      <Stack
+        sx={{
+          alignItems: "center",
+          gap: "50px",
+        }}
+      >
+        <Stack
+          sx={{
+            maxWidth: "890px",
+            gap: "20px",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            align="center"
+            variant="h3"
+            component={"h2"}
+            sx={{
+              fontWeight: 700,
+            }}
+          >
+            Speak, Learn, and Grow with Ease
+          </Typography>
+          <Typography
+            align="center"
+            variant="body1"
+            sx={{
+              maxWidth: "810px",
+            }}
+          >
+            Dark Lang provides an AI-powered language tutor that helps you practice realistic
+            conversations in English, Spanish, French, and more. Enjoy casual chats, get instant
+            corrections, and track your progress—all with a friendly teacher who never tires.
+          </Typography>
+        </Stack>
+
+        <Stack
+          sx={{
+            maxWidth: "890px",
+          }}
+        >
+          <video src="/intro.mp4" autoPlay muted playsInline width="100%" height="auto" />
+        </Stack>
+        <Stack
+          sx={{
+            flexDirection: "row",
+            gap: "10px",
+            alignItems: "center",
+          }}
+        >
+          <Button
+            sx={{
+              padding: "15px 80px",
+            }}
+            variant="outlined"
+            size="large"
+            color="inherit"
+            href={"/practice"}
+          >
+            {"Get started free"}
+          </Button>
+        </Stack>
+      </Stack>
+    </Stack>
+  );
+};

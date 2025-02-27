@@ -10,7 +10,7 @@ export const Footer = () => {
         padding: "50px 0 50px 0",
         backgroundColor: "#070f1a",
         borderTop: "4px solid rgba(14, 14, 15, 1)",
-        marginTop: "50px",
+        marginTop: "0px",
         position: "relative",
         zIndex: 9999,
       }}

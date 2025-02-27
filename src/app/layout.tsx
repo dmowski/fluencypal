@@ -25,8 +25,9 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Dark Lang - AI teacher",
-  description: "Learn english in the dark",
+  title: "Online English with AI Teacher",
+  description:
+    "Experience next-level language practice with Bruno, your friendly AI tutor who’s ready to chat 24/7. Whether you’re a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.",
 };
 
 export default function RootLayout({
