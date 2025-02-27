@@ -12,6 +12,7 @@ import { WelcomeScreen } from "./WelcomeScreen";
 import { IntroVideoDemo } from "./IntroVideoDemo";
 import { Faq } from "./faq";
 import { CtaBlock } from "./ctaBlock";
+import { ProposalCards } from "./ProposalCards";
 
 export default function LandingPage() {
   return (
@@ -31,6 +32,7 @@ export default function LandingPage() {
         >
           <WelcomeScreen />
           <IntroVideoDemo />
+          <ProposalCards />
           <Faq />
           <CtaBlock />
         </Stack>

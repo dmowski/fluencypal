@@ -1,5 +1,4 @@
 import { Button, Stack, Typography } from "@mui/material";
-import Galaxy from "../uiKit/Animations/Galaxy";
 
 export const IntroVideoDemo = () => {
   return (
