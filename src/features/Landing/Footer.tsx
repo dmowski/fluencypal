@@ -46,7 +46,6 @@ export const Footer = () => {
               opacity: 0.92,
             }}
           />
-          <Typography variant="caption"></Typography>
         </Stack>
         <Stack
           sx={{
@@ -57,10 +56,10 @@ export const Footer = () => {
             },
           }}
         >
-          <Link href="/privacy" variant="caption">
+          <Link href="/privacy" variant="body1">
             Privacy Policy
           </Link>
-          <Link href="/terms" variant="caption">
+          <Link href="/terms" variant="body1">
             Terms of Service
           </Link>
         </Stack>
@@ -73,8 +72,8 @@ export const Footer = () => {
             },
           }}
         >
-          <Typography variant="caption">Dark Lang</Typography>
-          <Typography variant="caption">© 2025</Typography>
+          <Typography variant="body1">Dark Lang</Typography>
+          <Typography variant="body1">© 2025</Typography>
         </Stack>
       </Stack>
     </Stack>
