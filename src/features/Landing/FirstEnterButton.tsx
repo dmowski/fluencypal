@@ -17,7 +17,7 @@ export const FirstEnterButton = () => {
     <Stack
       sx={{
         alignItems: "center",
-        gap: "10px",
+        gap: "5px",
         position: "relative",
         zIndex: 9999,
         opacity: isVisible ? 1 : 0,
@@ -32,7 +32,7 @@ export const FirstEnterButton = () => {
         size="large"
         href={"/practice"}
       >
-        {auth.isAuthorized ? "Open Dashboard" : "Get a free lesson"}
+        {auth.isAuthorized ? "Open Dashboard" : "Get started free"}
       </Button>
 
       <Stack
