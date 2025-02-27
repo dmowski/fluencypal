@@ -56,7 +56,7 @@ export const IntroVideoDemo = () => {
             maxWidth: "890px",
           }}
         >
-          <video src="/intro.mp4" autoPlay muted playsInline width="100%" height="auto" />
+          <video src="/intro.mp4" loop autoPlay muted playsInline width="100%" height="auto" />
         </Stack>
         <Stack
           sx={{
