@@ -32,8 +32,9 @@ export default function LandingPage() {
           }}
         >
           <WelcomeScreen />
-          <ProductDemo />
           <IntroVideoDemo />
+          <ProductDemo />
+
           <ProposalCards />
           <Faq />
           <CtaBlock />

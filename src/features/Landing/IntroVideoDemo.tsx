@@ -9,7 +9,8 @@ export const IntroVideoDemo = () => {
         alignItems: "center",
         justifyContent: "center",
         gap: "100px",
-        backgroundColor: `rgb(43 35 88)`,
+        color: "#000",
+        backgroundColor: `rgb(255, 253, 249, 1)`,
         position: "relative",
         zIndex: 1,
         overflow: "hidden",
@@ -57,18 +58,31 @@ export const IntroVideoDemo = () => {
             maxWidth: "890px",
           }}
         >
-          <video src="/intro.mp4" loop autoPlay muted playsInline width="100%" height="auto" />
+          <video
+            style={{
+              borderRadius: "12px",
+            }}
+            src="/intro.mp4"
+            loop
+            autoPlay
+            muted
+            playsInline
+            width="100%"
+            height="auto"
+          />
         </Stack>
         <Stack
           sx={{
             flexDirection: "row",
             gap: "10px",
             alignItems: "center",
+            color: "rgb(43 35 88)",
           }}
         >
           <Button
             sx={{
               padding: "15px 80px",
+              borderWidth: "2px",
             }}
             variant="outlined"
             size="large"

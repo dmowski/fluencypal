@@ -10,11 +10,10 @@ export const ProductDemo = () => {
         alignItems: "center",
         justifyContent: "center",
         gap: "100px",
-        backgroundColor: `rgb(255, 253, 249, 1)`,
+        backgroundColor: `rgb(43 35 88)`,
         position: "relative",
         zIndex: 1,
         overflow: "hidden",
-        color: "#000",
       }}
     >
       <Stack
