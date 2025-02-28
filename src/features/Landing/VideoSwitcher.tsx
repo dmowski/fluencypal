@@ -100,6 +100,9 @@ export const VideoSwitcher = () => {
           flexDirection: "row",
           gap: "10px",
           alignItems: "center",
+          "@media (max-width: 600px)": {
+            flexDirection: "column",
+          },
         }}
       >
         {blocks.map((block, index) => {
