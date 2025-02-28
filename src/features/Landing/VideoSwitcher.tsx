@@ -60,7 +60,7 @@ export const VideoSwitcher = () => {
     <Stack
       sx={{
         maxWidth: "1000px",
-        width: "100%",
+        width: "100vw",
         flexDirection: "column",
         gap: "20px",
         alignItems: "center",
@@ -73,8 +73,9 @@ export const VideoSwitcher = () => {
     >
       <Stack
         sx={{
-          width: "1000px",
-          height: "790px",
+          width: "100%",
+          height: "auto",
+          aspectRatio: "4 / 3",
           overflow: "hidden",
 
           backgroundColor: "rgba(10, 18, 30, 1)",
@@ -89,7 +90,8 @@ export const VideoSwitcher = () => {
           playsInline
           width="100%"
           style={{
-            width: "1000px",
+            width: "100%",
+            backgroundColor: "rgba(10, 18, 30, 1)",
           }}
         />
       </Stack>
