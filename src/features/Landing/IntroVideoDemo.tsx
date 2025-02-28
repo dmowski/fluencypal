@@ -1,4 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
+import { subTitleFontSize } from "./landingSettings";
 
 export const IntroVideoDemo = () => {
   return (
@@ -45,6 +46,7 @@ export const IntroVideoDemo = () => {
             variant="body1"
             sx={{
               maxWidth: "810px",
+              fontSize: subTitleFontSize,
             }}
           >
             Dark Lang provides an AI-powered language tutor that helps you practice realistic
@@ -55,7 +57,7 @@ export const IntroVideoDemo = () => {
 
         <Stack
           sx={{
-            maxWidth: "890px",
+            maxWidth: "1000px",
           }}
         >
           <video

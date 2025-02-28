@@ -1,18 +1,22 @@
 import { Stack, Typography } from "@mui/material";
 import { FirstEnterButton } from "./FirstEnterButton";
 import { GradientCard } from "../uiKit/Card/GradientCard";
+import { maxLandingWidth, subTitleFontSize } from "./landingSettings";
 
 export const WelcomeScreen = () => {
   return (
     <Stack
       sx={{
-        maxWidth: "1200px",
+        maxWidth: maxLandingWidth,
         padding: "150px 10px 80px 10px",
         minHeight: "calc(100vh - 20px)",
         boxSizing: "border-box",
         alignItems: "center",
         justifyContent: "center",
         gap: "100px",
+        "@media (max-width: 600px)": {
+          gap: "20px",
+        },
       }}
     >
       <Stack
@@ -23,7 +27,6 @@ export const WelcomeScreen = () => {
       >
         <Stack
           sx={{
-            maxWidth: "890px",
             gap: "20px",
             alignItems: "center",
           }}
@@ -45,10 +48,19 @@ export const WelcomeScreen = () => {
           </a>
           <Typography
             align="center"
-            variant="h2"
+            variant="h1"
             component={"h1"}
             sx={{
               fontWeight: 700,
+              "@media (max-width: 1300px)": {
+                fontSize: "4rem",
+              },
+              "@media (max-width: 900px)": {
+                fontSize: "3rem",
+              },
+              "@media (max-width: 700px)": {
+                fontSize: "2rem",
+              },
             }}
           >
             Online English with AI Teacher
@@ -57,7 +69,8 @@ export const WelcomeScreen = () => {
             align="center"
             variant="body1"
             sx={{
-              maxWidth: "810px",
+              maxWidth: "920px",
+              fontSize: subTitleFontSize,
             }}
           >
             Experience next-level language practice with Bruno, your friendly AI tutor who’s ready
@@ -78,8 +91,8 @@ export const WelcomeScreen = () => {
       </Stack>
 
       <GradientCard
-        padding="42px"
-        strokeWidth="12px"
+        padding="3vw"
+        strokeWidth="1vw"
         startColor={"#fa8500"}
         endColor={"#05acff"}
         backgroundColor={"rgba(10, 18, 30, 1)"}

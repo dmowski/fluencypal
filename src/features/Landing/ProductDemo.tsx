@@ -1,5 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { ProductVideo } from "./ProductVideo";
+import { maxLandingWidth } from "./landingSettings";
 
 export const ProductDemo = () => {
   return (
@@ -21,7 +22,7 @@ export const ProductDemo = () => {
           width: "100%",
           alignItems: "center",
           gap: "50px",
-          maxWidth: "1200px",
+          maxWidth: maxLandingWidth,
           boxSizing: "border-box",
           padding: "0 10px",
         }}

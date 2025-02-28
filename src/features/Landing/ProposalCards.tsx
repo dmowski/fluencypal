@@ -1,5 +1,6 @@
 import { Card, CardContent, Stack, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { maxLandingWidth, subTitleFontSize } from "./landingSettings";
 
 const InfoCard: React.FC<{
   category: string;
@@ -22,6 +23,9 @@ const InfoCard: React.FC<{
         "@media (max-width: 900px)": {
           padding: "30px 20px 20px 20px",
         },
+        "@media (max-width: 500px)": {
+          padding: "20px 15px 15px 15px",
+        },
         ":hover, :focus": {
           ".link-icon": {
             left: "5px",
@@ -34,10 +38,15 @@ const InfoCard: React.FC<{
       component={"a"}
       href={href}
     >
-      <CardContent sx={{}}>
+      <CardContent
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+        }}
+      >
         <Stack
           sx={{
-            minHeight: "280px",
             gap: "8px",
           }}
         >
@@ -142,7 +151,7 @@ export const ProposalCards = () => {
         <Stack
           sx={{
             gap: "20px",
-            maxWidth: "1300px",
+            maxWidth: maxLandingWidth,
             boxSizing: "border-box",
             alignItems: "center",
             padding: "0 10px",
@@ -165,6 +174,7 @@ export const ProposalCards = () => {
             sx={{
               maxWidth: "810px",
               color: "#000",
+              fontSize: subTitleFontSize,
             }}
           >
             Target the specific skills you need—speaking, grammar, vocabulary, and progress
@@ -175,7 +185,7 @@ export const ProposalCards = () => {
         <Stack
           sx={{
             display: "grid",
-            maxWidth: "1200px",
+            maxWidth: maxLandingWidth,
             padding: "0 10px",
             boxSizing: "border-box",
             gridTemplateColumns: "1fr 1fr",
@@ -198,7 +208,7 @@ export const ProposalCards = () => {
           />
           <InfoCard
             category={"Grammar"}
-            title={"Master the Rules With Helpful Corrections"}
+            title={"Master the Rules"}
             description={
               "Bruno provides real-time feedback and explains grammar points on the spot. Get daily tasks to learn new rules and apply them immediately."
             }
@@ -218,9 +228,9 @@ export const ProposalCards = () => {
           />
           <InfoCard
             category={"Progress Tracking"}
-            title={"Stay Motivated and See Your Growth"}
+            title={"See Your Growth"}
             description={
-              "Monitor your usage, track conversation logs, and watch your confidence soar. Check your colorful calendar to see how often you’ve completed daily tasks."
+              "Watch your confidence grow. The colorful calendar shows your daily progress at a glance."
             }
             img={"/progress.png"}
             href="/practice"
