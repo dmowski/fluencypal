@@ -64,6 +64,15 @@ export const ProductVideo = () => {
           },
         }}
       >
+        <p
+          style={{
+            position: "absolute",
+            color: "transparent",
+            fontSize: "0",
+          }}
+        >
+          Play product demo
+        </p>
         <Stack
           className="playButton"
           sx={{
