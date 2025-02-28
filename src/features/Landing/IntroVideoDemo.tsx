@@ -1,5 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { subTitleFontSize } from "./landingSettings";
+import { VideoSwitcher } from "./VideoSwitcher";
 
 export const IntroVideoDemo = () => {
   return (
@@ -45,34 +46,18 @@ export const IntroVideoDemo = () => {
             align="center"
             variant="body1"
             sx={{
-              maxWidth: "810px",
+              maxWidth: "900px",
               fontSize: subTitleFontSize,
             }}
           >
-            Dark Lang provides an AI-powered language tutor that helps you practice realistic
-            conversations in English, Spanish, French, and more. Enjoy casual chats, get instant
-            corrections, and track your progress—all with a friendly teacher who never tires.
+            Dark Lang’s AI tutor offers realistic conversation practice in English, Spanish, French,
+            and more. Enjoy casual chats, instant corrections, and track your progress with a
+            teacher who never tires.
           </Typography>
         </Stack>
 
-        <Stack
-          sx={{
-            maxWidth: "1000px",
-          }}
-        >
-          <video
-            style={{
-              borderRadius: "12px",
-            }}
-            src="/intro.mp4"
-            loop
-            autoPlay
-            muted
-            playsInline
-            width="100%"
-            height="auto"
-          />
-        </Stack>
+        <VideoSwitcher />
+
         <Stack
           sx={{
             flexDirection: "row",
