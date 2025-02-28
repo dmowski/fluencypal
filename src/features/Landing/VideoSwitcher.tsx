@@ -15,18 +15,19 @@ const blocks: VideoBlock[] = [
     src: "/begin.mp4",
     buttonTitle: "Beginner",
     description:
-      "Enjoy casual chats, instant corrections, and track your progress with a teacher who never tires.",
+      "Practice slow, guided conversations with simpler vocabulary. Perfect for building a solid foundation in any language.",
   },
   {
     src: "/correct.mp4",
-    buttonTitle: "Instant corrections",
+    buttonTitle: "Instant Corrections",
     description:
-      "Chats, instant corrections, and track your progress with a teacher who never tires. chats, instant corrections",
+      "Speak freely while the AI teacher highlights mistakes in real time—ideal for fast improvement and building confidence.",
   },
   {
     src: "/advance.mp4",
     buttonTitle: "Advanced",
-    description: "Track your progress with a teacher who never tires",
+    description:
+      "Enjoy fast-paced, natural conversations to refine fluency and sound like a native speaker. Perfect for challenging your skills.",
   },
 ];
 
