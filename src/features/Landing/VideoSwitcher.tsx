@@ -68,7 +68,10 @@ export const VideoSwitcher = () => {
         border: "1px solid rgb(43 35 88)",
         borderRadius: "12px",
         overflow: "hidden",
-        backgroundColor: "rgb(0, 0, 0, 0.01)",
+        backgroundColor: "rgba(43, 35, 88, 0.01)",
+        "@media (max-width: 600px)": {
+          borderRadius: "0",
+        },
       }}
     >
       <Stack
