@@ -7,6 +7,7 @@ interface CustomModalProps {
   onClose: () => void;
   children: React.ReactNode;
   width?: string;
+  padding?: string;
 }
 
 export const CustomModal = ({
@@ -14,6 +15,7 @@ export const CustomModal = ({
   onClose,
   width,
   children,
+  padding,
 }: CustomModalProps): JSX.Element => {
   if (!isOpen) return <></>;
 
@@ -39,7 +41,7 @@ export const CustomModal = ({
           width: width || "600px",
           bgcolor: "#222224",
           borderRadius: "16px",
-          padding: "40px 40px 40px 40px",
+          padding: padding || "40px 40px 40px 40px",
           alignItems: "flex-start",
           gap: "30px",
           boxSizing: "border-box",

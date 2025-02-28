@@ -1,5 +1,6 @@
 import { Stack, Typography } from "@mui/material";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import { ProductVideo } from "./ProductVideo";
+
 export const ProductDemo = () => {
   return (
     <Stack
@@ -61,48 +62,7 @@ export const ProductDemo = () => {
               Watch Dark Lang in Action
             </Typography>
           </Stack>
-          <Stack
-            component={"button"}
-            sx={{
-              width: "100%",
-              aspectRatio: "16/9",
-              backgroundColor: "transparent",
-              background: `url("/previewProductDemo.png")`,
-              backgroundSize: "cover",
-              border: "none",
-              backgroundPosition: "center",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              ":hover, :focus": {
-                ".playButton": {
-                  transform: "scale(0.94)",
-                  opacity: 1,
-                },
-              },
-            }}
-          >
-            <Stack
-              className="playButton"
-              sx={{
-                borderRadius: "200px",
-                backgroundColor: `rgba(5, 172, 255, 1)`,
-                opacity: 0.9,
-                width: "130px",
-                aspectRatio: "1/1",
-                alignItems: "center",
-                justifyContent: "center",
-                transition: "all 0.2s",
-              }}
-            >
-              <PlayArrowIcon
-                sx={{
-                  color: "#fff",
-                  fontSize: "90px",
-                }}
-              />
-            </Stack>
-          </Stack>
+          <ProductVideo />
         </Stack>
       </Stack>
     </Stack>
