@@ -37,6 +37,10 @@ export const ProductDemo = () => {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
+            "@media (max-width: 600px)": {
+              flexDirection: "column",
+              gap: "20px",
+            },
           }}
         >
           <Stack

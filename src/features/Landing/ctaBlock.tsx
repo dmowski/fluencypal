@@ -14,6 +14,7 @@ export const CtaBlock = () => {
         zIndex: 1,
         overflow: "hidden",
         backgroundColor: "#0a121e",
+        boxSizing: "border-box",
       }}
     >
       <Stack
@@ -27,6 +28,7 @@ export const CtaBlock = () => {
             maxWidth: "890px",
             gap: "20px",
             alignItems: "center",
+            padding: "0 10px",
           }}
         >
           <Typography

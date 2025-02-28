@@ -26,6 +26,7 @@ export const IntroVideoDemo = () => {
             maxWidth: "890px",
             gap: "20px",
             alignItems: "center",
+            padding: "0 10px",
           }}
         >
           <Typography

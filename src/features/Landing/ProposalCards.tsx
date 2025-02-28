@@ -19,6 +19,9 @@ const InfoCard: React.FC<{
         textDecoration: "none !important",
         color: "#000",
         padding: "50px 40px 40px 40px",
+        "@media (max-width: 900px)": {
+          padding: "30px 20px 20px 20px",
+        },
         ":hover, :focus": {
           ".link-icon": {
             left: "5px",
