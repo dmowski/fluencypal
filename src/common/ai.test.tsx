@@ -1,5 +1,10 @@
 import "@testing-library/jest-dom";
-import { calculateTextUsagePrice, calculateUsagePrice, TextAiModel } from "./ai";
+import {
+  calculateTextUsagePrice,
+  calculateUsagePrice,
+  PROJECT_PROFIT_MARGIN,
+  TextAiModel,
+} from "./ai";
 
 describe("Calculate real time price", () => {
   const modelGpt4o = "gpt-4o-realtime-preview";
@@ -31,7 +36,10 @@ describe("Calculate real time price", () => {
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
 
-    expect(price).toBe(0.037925);
+    const aiPrice = 0.007585;
+    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+
+    expect(price).toBe(priceWithProfit);
   });
 
   it("should correctly calculate the usage price (Output text)", () => {
@@ -56,12 +64,14 @@ describe("Calculate real time price", () => {
       },
       modelGpt4o
     );
+    const aiPrice = 20;
+    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
 
     expect(price).toBeDefined();
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
 
-    expect(price).toBe(100);
+    expect(price).toBe(priceWithProfit);
   });
 
   it("should correctly calculate the usage price (Audio. no Cache)", () => {
@@ -86,12 +96,13 @@ describe("Calculate real time price", () => {
       },
       modelGpt4o
     );
-
+    const aiPrice = 40;
+    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
     expect(price).toBeDefined();
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
 
-    expect(price).toBe(200);
+    expect(price).toBe(priceWithProfit);
   });
 
   it("should correctly calculate the usage price (Audio: full cached)", () => {
@@ -116,12 +127,13 @@ describe("Calculate real time price", () => {
       },
       modelGpt4o
     );
-
+    const aiPrice = 2.5;
+    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
     expect(price).toBeDefined();
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
 
-    expect(price).toBe(12.5);
+    expect(price).toBe(priceWithProfit);
   });
 });
 
@@ -142,7 +154,9 @@ describe("Calculate text price", () => {
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
 
-    expect(price).toBe(12.5);
+    const aiPrice = 2.5;
+    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    expect(price).toBe(priceWithProfit);
   });
 
   it("should correctly calculate the usage price for 1M input and 1M output", () => {
@@ -158,8 +172,9 @@ describe("Calculate text price", () => {
     expect(price).toBeDefined();
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
-
-    expect(price).toBe(62.5);
+    const aiPrice = 12.5;
+    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    expect(price).toBe(priceWithProfit);
   });
 
   it("should correctly calculate the usage price for 1M input and 1M output and 1M cache ", () => {
@@ -176,7 +191,9 @@ describe("Calculate text price", () => {
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
 
-    expect(price).toBe(56.25);
+    const aiPrice = 11.25;
+    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    expect(price).toBe(priceWithProfit);
   });
 
   it("should correctly calculate the usage price for 1M input  and 1M cache ", () => {
@@ -192,7 +209,8 @@ describe("Calculate text price", () => {
     expect(price).toBeDefined();
     expect(typeof price).toBe("number");
     expect(isFinite(price)).toBe(true);
-
-    expect(price).toBe(6.25);
+    const aiPrice = 1.25;
+    const priceWithProfit = aiPrice + aiPrice * PROJECT_PROFIT_MARGIN;
+    expect(price).toBe(priceWithProfit);
   });
 });

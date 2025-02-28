@@ -11,7 +11,7 @@ export const MODELS = {
   gpt_4o_mini: "gpt-4o-mini",
   gpt_4o: "gpt-4o",
 };
-export const PROJECT_PROFIT_MARGIN = 400; //%
+export const PROJECT_PROFIT_MARGIN = 0; //X
 
 export interface UsageEvent {
   total_tokens: number;
@@ -63,7 +63,7 @@ export const calculateTextUsagePrice = (usageEvent: TextUsageEvent, model: TextA
   const cachedTextPrice = (cachedTextInput / MILLION) * price.text_cached_input;
   const textOutputPrice = (textOutput / MILLION) * price.text_output;
   const usagePrice = fullTextPrice + cachedTextPrice + textOutputPrice;
-  const profit = usagePrice * (PROJECT_PROFIT_MARGIN / 100);
+  const profit = usagePrice * PROJECT_PROFIT_MARGIN;
   const priceWithMargin = usagePrice + profit;
   return priceWithMargin;
 };
@@ -126,7 +126,7 @@ export const calculateUsagePrice = (usageEvent: UsageEvent, model: RealTimeModel
   const inputPrice = calculateInputPrice(usageEvent, model);
   const outputPrice = calculateOutputPrice(usageEvent, model);
   const usagePrice = inputPrice + outputPrice;
-  const profit = usagePrice * (PROJECT_PROFIT_MARGIN / 100);
+  const profit = usagePrice * PROJECT_PROFIT_MARGIN;
   const price = usagePrice + profit;
   return price;
 };
