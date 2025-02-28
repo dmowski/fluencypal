@@ -79,7 +79,7 @@ export const WelcomeScreen = () => {
 
       <GradientCard
         padding="42px"
-        strokeWidth="6px"
+        strokeWidth="12px"
         startColor={"#fa8500"}
         endColor={"#05acff"}
         backgroundColor={"rgba(10, 18, 30, 1)"}
