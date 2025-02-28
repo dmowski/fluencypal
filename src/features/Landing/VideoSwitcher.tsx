@@ -74,7 +74,8 @@ export const VideoSwitcher = () => {
       <Stack
         sx={{
           width: "1000px",
-          height: "750px",
+          height: "790px",
+          overflow: "hidden",
 
           backgroundColor: "rgba(10, 18, 30, 1)",
         }}
@@ -89,7 +90,6 @@ export const VideoSwitcher = () => {
           width="100%"
           style={{
             width: "1000px",
-            height: "750px",
           }}
         />
       </Stack>
