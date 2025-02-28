@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Stack, Tooltip, Typography } from "@mui/material";
 import dayjs from "dayjs";
 
-const colorMap = ["#0a131c", "#0c3156", "#104982", "#1f8abd"];
+export const colorMap = ["#0a131c", "#0c3156", "#104982", "#1f8abd"];
 
 interface MonthProgressBlockProps {
   month: number;
@@ -149,7 +149,7 @@ export const ProgressGrid: React.FC<ProgressGridProps> = ({
       sx={{
         position: "relative",
         width: "100%",
-        maxWidth: "1277px",
+        maxWidth: "1300px",
         overflowX: "hidden",
       }}
     >
