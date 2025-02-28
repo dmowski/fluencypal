@@ -94,7 +94,6 @@ export const VideoSwitcher = () => {
             left: "0",
             width: "100%",
             height: "100%",
-            backgroundColor: isMuted ? "rgba(10, 18, 30, 0.2)" : "transparent",
             zIndex: 1,
             display: "flex",
             justifyContent: "center",
@@ -106,6 +105,7 @@ export const VideoSwitcher = () => {
             sx={{
               padding: "90px",
               opacity: isMuted ? 1 : 0,
+              backgroundColor: isMuted ? "rgba(0, 0, 0, 0.2)" : "transparent",
               ":hover": {
                 opacity: 1,
               },
