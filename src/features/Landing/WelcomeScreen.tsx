@@ -7,9 +7,9 @@ export const WelcomeScreen = () => {
     <Stack
       sx={{
         maxWidth: "1200px",
-        paddingTop: "150px",
-        paddingBottom: "80px",
+        padding: "150px 10px 80px 10px",
         minHeight: "calc(100vh - 20px)",
+        boxSizing: "border-box",
         alignItems: "center",
         justifyContent: "center",
         gap: "100px",
