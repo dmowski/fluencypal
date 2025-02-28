@@ -200,7 +200,7 @@ export const ProposalCards = () => {
             description={
               "Get daily new words based on your current level. Practice using them in sentences so they truly stick."
             }
-            img={""}
+            img={"/words.png"}
             href="/practice"
             actionButtonTitle="Learn New Words"
           />
@@ -210,7 +210,7 @@ export const ProposalCards = () => {
             description={
               "Monitor your usage, track conversation logs, and watch your confidence soar. Check your colorful calendar to see how often you’ve completed daily tasks."
             }
-            img={""}
+            img={"/progress.png"}
             href="/practice"
             actionButtonTitle="View Your Dashboard"
           />
