@@ -128,6 +128,7 @@ export const ProposalCards = () => {
           sx={{
             gap: "20px",
             maxWidth: "1300px",
+            boxSizing: "border-box",
             alignItems: "center",
             padding: "0 10px",
           }}
@@ -160,7 +161,8 @@ export const ProposalCards = () => {
           sx={{
             display: "grid",
             maxWidth: "1200px",
-            padding: "0 20px",
+            padding: "0 10px",
+            boxSizing: "border-box",
             gridTemplateColumns: "1fr 1fr",
             gap: "40px",
             "@media (max-width: 900px)": {
