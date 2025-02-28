@@ -35,32 +35,43 @@ const InfoCard: React.FC<{
       href={href}
     >
       <CardContent sx={{}}>
-        <Typography
+        <Stack
           sx={{
-            textTransform: "uppercase",
-            paddingBottom: "10px",
+            minHeight: "280px",
+            gap: "8px",
           }}
         >
-          {category}
-        </Typography>
+          <Typography
+            sx={{
+              textTransform: "uppercase",
+              paddingBottom: "10px",
+              fontSize: "18px",
+              opacity: 0.7,
+            }}
+          >
+            {category}
+          </Typography>
 
-        <Typography
-          variant="h4"
-          component="h3"
-          sx={{
-            color: "#000",
-            fontWeight: 700,
-          }}
-        >
-          {title}
-        </Typography>
-        <Typography
-          sx={{
-            color: "#000",
-          }}
-        >
-          {description}
-        </Typography>
+          <Typography
+            variant="h4"
+            component="h3"
+            sx={{
+              color: "#000",
+              fontWeight: 700,
+            }}
+          >
+            {title}
+          </Typography>
+          <Typography
+            sx={{
+              color: "#000",
+              fontSize: "1.3rem",
+            }}
+          >
+            {description}
+          </Typography>
+        </Stack>
+
         {img && (
           <img
             src={img}
@@ -69,6 +80,7 @@ const InfoCard: React.FC<{
               width: "100%",
               height: "auto",
               marginTop: "20px",
+              borderRadius: "10px",
             }}
           />
         )}
@@ -180,7 +192,7 @@ export const ProposalCards = () => {
             description={
               "Practice live conversations with Bruno. Whether you speak or type, the AI responds naturally, highlights mistakes, and helps you progress quickly."
             }
-            img={""}
+            img={"/talk.png"}
             href="/practice"
             actionButtonTitle="Try Speaking Mode"
           />
@@ -190,7 +202,7 @@ export const ProposalCards = () => {
             description={
               "Bruno provides real-time feedback and explains grammar points on the spot. Get daily tasks to learn new rules and apply them immediately."
             }
-            img={""}
+            img={"/rules.png"}
             href="/practice"
             actionButtonTitle="Improve Your Grammar"
           />

@@ -1,5 +1,5 @@
 import { Card, Stack } from "@mui/material";
-import { JSX, ReactElement } from "react";
+import { JSX } from "react";
 
 interface DashboardCardProps {
   children?: JSX.Element | JSX.Element[] | React.JSX.Element | any;
