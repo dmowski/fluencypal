@@ -6,14 +6,14 @@ export const CtaBlock = () => {
     <Stack
       sx={{
         width: "100%",
-        padding: "160px 0 140px 0",
+        padding: "110px 0 140px 0",
         alignItems: "center",
         justifyContent: "center",
         gap: "100px",
         position: "relative",
         zIndex: 1,
         overflow: "hidden",
-        backgroundColor: "#000",
+        backgroundColor: "#0a121e",
       }}
     >
       <Stack

@@ -27,11 +27,11 @@ export const Faq = () => {
     <Stack
       sx={{
         width: "100%",
-        padding: "120px 0 140px 0",
+        padding: "120px 0 100px 0",
         alignItems: "center",
         justifyContent: "center",
         gap: "100px",
-        backgroundColor: `rgb(0, 0, 0, 0)`,
+        backgroundColor: `#0a121e`,
         position: "relative",
         zIndex: 1,
         overflow: "hidden",
