@@ -94,7 +94,7 @@ export const VideoSwitcher = () => {
             left: "0",
             width: "100%",
             height: "100%",
-            backgroundColor: isMuted ? "rgba(10, 18, 30, 0.5)" : "transparent",
+            backgroundColor: isMuted ? "rgba(10, 18, 30, 0.2)" : "transparent",
             zIndex: 1,
             display: "flex",
             justifyContent: "center",
@@ -104,7 +104,7 @@ export const VideoSwitcher = () => {
           <IconButton
             onClick={() => setIsMuted((prev) => !prev)}
             sx={{
-              padding: "60px",
+              padding: "90px",
               opacity: isMuted ? 1 : 0,
               ":hover": {
                 opacity: 1,
@@ -112,9 +112,9 @@ export const VideoSwitcher = () => {
             }}
           >
             {isMuted ? (
-              <Volume2 size={"100px"} color="#fff" />
+              <Volume2 size={"80px"} color="#fff" />
             ) : (
-              <VolumeOff size={"100px"} color="#fff" />
+              <VolumeOff size={"80px"} color="#fff" />
             )}
             <p
               style={{
