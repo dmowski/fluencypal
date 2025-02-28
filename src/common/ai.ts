@@ -11,7 +11,7 @@ export const MODELS = {
   gpt_4o_mini: "gpt-4o-mini",
   gpt_4o: "gpt-4o",
 };
-export const PROJECT_PROFIT_MARGIN = 0; //X
+export const PROJECT_PROFIT_MARGIN = 4; //X
 
 export interface UsageEvent {
   total_tokens: number;
