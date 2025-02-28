@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import { ProgressGrid } from "./ProgressGrid";
+import { colorMap, ProgressGrid } from "./ProgressGrid";
 import { useSettings } from "../Settings/useSettings";
 import { useTasks } from "../Tasks/useTasks";
 import { useWords } from "../Words/useWords";
@@ -11,18 +11,61 @@ export const ProgressCard = () => {
   const words = useWords();
   return (
     <DashboardCard>
-      <Stack>
-        <Typography variant="h2" className="decor-title">
-          Progress
-        </Typography>
-        <Typography
-          variant="caption"
+      <Stack
+        sx={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Stack>
+          <Typography variant="h2" className="decor-title">
+            Progress
+          </Typography>
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: 0.7,
+            }}
+          >
+            Your daily progress
+          </Typography>
+        </Stack>
+        <Stack
           sx={{
-            opacity: 0.7,
+            flexDirection: "row",
+            gap: "10px",
           }}
         >
-          Your daily progress
-        </Typography>
+          <Typography
+            sx={{
+              opacity: 0.7,
+            }}
+          >
+            Less
+          </Typography>
+          {colorMap.map((color) => {
+            return (
+              <Stack
+                key={color}
+                sx={{
+                  backgroundColor: color,
+                  width: "20px",
+                  height: "20px",
+                  border: "1px solid rgba(255, 255, 255, 0.3)",
+                  borderRadius: "2px",
+                }}
+              />
+            );
+          })}
+          <Typography
+            sx={{
+              opacity: 0.7,
+            }}
+          >
+            More
+          </Typography>
+        </Stack>
       </Stack>
 
       <ProgressGrid
