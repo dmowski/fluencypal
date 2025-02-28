@@ -1,8 +1,9 @@
 "use client";
 
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { subTitleFontSize } from "./landingSettings";
+import { Volume2, VolumeOff } from "lucide-react";
 
 interface VideoBlock {
   src: string;
@@ -33,6 +34,7 @@ const blocks: VideoBlock[] = [
 
 export const VideoSwitcher = () => {
   const [activePlayingBlock, setActivePlayingBlock] = useState<number>(0);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
 
   const onPlayNext = () => {
     setActivePlayingBlock((prev) => (prev + 1) % blocks.length);
@@ -82,14 +84,55 @@ export const VideoSwitcher = () => {
           overflow: "hidden",
 
           backgroundColor: "rgba(10, 18, 30, 1)",
+          position: "relative",
         }}
       >
+        <Stack
+          sx={{
+            position: "absolute",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            backgroundColor: isMuted ? "rgba(10, 18, 30, 0.5)" : "transparent",
+            zIndex: 1,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <IconButton
+            onClick={() => setIsMuted((prev) => !prev)}
+            sx={{
+              padding: "60px",
+              opacity: isMuted ? 1 : 0,
+              ":hover": {
+                opacity: 1,
+              },
+            }}
+          >
+            {isMuted ? (
+              <Volume2 size={"100px"} color="#fff" />
+            ) : (
+              <VolumeOff size={"100px"} color="#fff" />
+            )}
+            <p
+              style={{
+                position: "absolute",
+                color: "transparent",
+                fontSize: "0",
+              }}
+            >
+              {isMuted ? "Unmute" : "Mute"}
+            </p>
+          </IconButton>
+        </Stack>
         <video
           src={blocks[activePlayingBlock].src}
           ref={videoRef}
           loop
           autoPlay
-          muted
+          muted={isMuted}
           playsInline
           width="100%"
           style={{
