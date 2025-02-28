@@ -64,7 +64,7 @@ export function ConversationBoard() {
                     opacity: 0.5,
                   }}
                 >
-                  Teacher ({aiConversation.currentMode}):
+                  Teacher:
                 </Typography>
                 <Markdown>{lastBotMessage.text || ""}</Markdown>
               </Stack>
