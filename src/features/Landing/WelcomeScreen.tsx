@@ -98,7 +98,7 @@ export const WelcomeScreen = () => {
         backgroundColor={"rgba(10, 18, 30, 1)"}
       >
         <img
-          src="/dashboard.png"
+          src="/dashboard.jpg"
           alt="dashboard"
           style={{ width: "100%", height: "auto", aspectRatio: "568 / 350" }}
         />

@@ -204,7 +204,7 @@ export const ProposalCards = () => {
             description={
               "Practice live conversations with Bruno. Whether you speak or type, the AI responds naturally, highlights mistakes, and helps you progress quickly."
             }
-            img={"/talk.png"}
+            img={"/talk.jpeg"}
             href="/practice"
             actionButtonTitle="Try Speaking Mode"
           />
@@ -214,7 +214,7 @@ export const ProposalCards = () => {
             description={
               "Bruno provides real-time feedback and explains grammar points on the spot. Get daily tasks to learn new rules and apply them immediately."
             }
-            img={"/rules.png"}
+            img={"/rules.jpeg"}
             href="/practice"
             actionButtonTitle="Improve Your Grammar"
           />
@@ -224,7 +224,7 @@ export const ProposalCards = () => {
             description={
               "Get daily new words based on your current level. Practice using them in sentences so they truly stick."
             }
-            img={"/words.png"}
+            img={"/words.jpeg"}
             href="/practice"
             actionButtonTitle="Learn New Words"
           />
