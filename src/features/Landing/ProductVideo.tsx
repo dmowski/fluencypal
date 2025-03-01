@@ -49,7 +49,7 @@ export const ProductVideo = () => {
           width: "100%",
           aspectRatio: "16/9",
           backgroundColor: "rgba(0, 0, 0, 0.3)",
-          backgroundImage: `url("/previewProductDemo.png")`,
+          backgroundImage: `url("/previewProductDemo.jpeg")`,
           backgroundSize: "cover",
           border: "none",
           backgroundPosition: "center",

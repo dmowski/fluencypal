@@ -29,7 +29,7 @@ export const ProductDemo = () => {
       >
         <Stack
           sx={{
-            gap: "50px",
+            gap: "100px",
             width: "100%",
 
             padding: "0 10px",
@@ -37,7 +37,7 @@ export const ProductDemo = () => {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
-            "@media (max-width: 600px)": {
+            "@media (max-width: 700px)": {
               flexDirection: "column",
               gap: "20px",
             },
