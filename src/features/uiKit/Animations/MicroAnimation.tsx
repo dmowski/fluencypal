@@ -10,6 +10,7 @@ interface MicroProps {
   isPlaying: boolean;
 }
 
+//https://lottiefiles.com/free-animation/animation-1707645432158-vKN9GJoGxE
 export const MicroAnimation = ({ isPlaying }: MicroProps) => {
   return <Lottie animationData={microAnimation} play={isPlaying} />;
 };

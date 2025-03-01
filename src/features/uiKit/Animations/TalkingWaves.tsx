@@ -14,6 +14,7 @@ export const TalkingWavesAnimation = () => {
 interface TalkingWavesProps {
   inActive?: boolean;
 }
+//https://lottiefiles.com/free-animation/sasayaki-line-1-SnkiNa6DTJ
 export const TalkingWaves = ({ inActive }: TalkingWavesProps) => {
   return (
     <>
