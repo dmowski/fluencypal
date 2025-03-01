@@ -194,7 +194,7 @@ Your homework is to repeat the following text:
 
   const aiRtcConfigs: Record<ConversationMode, AiRtcConfig> = useMemo(() => {
     const baseConfig = {
-      model: MODELS.REALTIME_CONVERSATION,
+      model: MODELS.SMALL_CONVERSATION,
       initInstruction: "",
       aiTools: baseAiTools,
       onOpen,
@@ -226,7 +226,7 @@ Don't focus solely on one topic. Try to cover a variety of topics.
     const config: Record<ConversationMode, AiRtcConfig> = {
       talk: {
         ...baseConfig,
-        model: MODELS.REALTIME_CONVERSATION,
+        model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". Your role is to make user talks.
 ${openerInfoPrompt}
 Do not teach or explain rules—just talk.
@@ -243,7 +243,7 @@ Use ${fullLanguageName} language during conversation.
       },
       "talk-and-correct": {
         ...baseConfig,
-        model: MODELS.REALTIME_CONVERSATION,
+        model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${fullLanguageName} teacher.
 Your name is "Bruno". The user wants both a conversation and corrections.
 For every user message, you must reply with three parts in one response:
@@ -265,7 +265,7 @@ ${userInfo ? `Info about student: ${userInfo}` : ""}
       },
       beginner: {
         ...baseConfig,
-        model: MODELS.REALTIME_CONVERSATION,
+        model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". The user is a beginner who needs simple, clear communication.
 
 For every user message, reply with **three parts** in a single response:
@@ -299,7 +299,7 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
       },
       words: {
         ...baseConfig,
-        model: MODELS.REALTIME_CONVERSATION,
+        model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${fullLanguageName} teacher.
 Your name is "Bruno".
 The user wants to learn new words.
@@ -313,7 +313,7 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
 
       rule: {
         ...baseConfig,
-        model: MODELS.REALTIME_CONVERSATION,
+        model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${fullLanguageName} teacher.
 Your name is "Bruno".
 The user wants to learn a new rule.
