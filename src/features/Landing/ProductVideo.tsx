@@ -27,14 +27,14 @@ export const ProductVideo = () => {
           }}
         >
           <iframe
-            src="https://www.youtube.com/embed/37x7oLjYPgM?si=VDfZbM2SMaSkYiJA&autoplay=1"
+            src="https://www.youtube.com/embed/htg2R0jGZWk?si=l5DVwn2a3H-Y50br&autoplay=1"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
             style={{
               border: "none",
-              width: "100%",
+              width: "90%",
               height: "calc(100% - 100px)",
             }}
           ></iframe>
