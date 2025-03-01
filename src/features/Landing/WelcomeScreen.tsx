@@ -37,14 +37,7 @@ export const WelcomeScreen = () => {
               padding: "20px 20px 20px 0",
             }}
           >
-            <img
-              src="./logo.svg"
-              alt="Dark lang logo"
-              style={{
-                maxWidth: "90px",
-                height: "auto",
-              }}
-            />
+            <img src="./logo.svg" alt="Dark lang logo" width="90px" height="42px" />
           </a>
           <Typography
             align="center"

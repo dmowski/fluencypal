@@ -7,7 +7,6 @@ import {
   Button,
   Divider,
   IconButton,
-  Link,
   ListItemIcon,
   ListItemText,
   Menu,
@@ -15,21 +14,9 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import {
-  Cookie,
-  Languages,
-  LogOutIcon,
-  MessageCircleQuestion,
-  ReceiptText,
-  Trash,
-  Wallet,
-} from "lucide-react";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import MailIcon from "@mui/icons-material/Mail";
+import { Languages, LogOutIcon, MessageCircleQuestion, Wallet } from "lucide-react";
 import { useSettings } from "../Settings/useSettings";
-import { fullEnglishLanguageName } from "@/common/lang";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { LangSelector } from "../Lang/LangSelector";
+
 import { useUsage } from "../Usage/useUsage";
 import { PaymentModal } from "../Usage/PaymentModal";
 import { NeedHelpModal } from "./NeedHelpModal";
@@ -78,14 +65,7 @@ export function Header() {
             padding: "20px 20px 20px 0",
           }}
         >
-          <img
-            src="./logo.svg"
-            alt="logo"
-            style={{
-              maxWidth: "80px",
-              height: "auto",
-            }}
-          />
+          <img src="./logo.svg" alt="logo" width="80px" height="37px" />
         </a>
 
         {!auth.loading && (

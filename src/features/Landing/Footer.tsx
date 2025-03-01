@@ -42,9 +42,9 @@ export const Footer = () => {
           <img
             src="./logo.svg"
             alt="Online English Learning"
+            width="80px"
+            height="37px"
             style={{
-              height: "auto",
-              width: "80px",
               opacity: 0.92,
             }}
           />
