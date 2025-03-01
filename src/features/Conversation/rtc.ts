@@ -5,6 +5,7 @@ import { sleep } from "@/libs/sleep";
 import { ChatMessage } from "@/common/conversation";
 import { UsageLog } from "@/common/usage";
 import { SupportedLanguage } from "@/common/lang";
+import { SendSdpOfferRequest, SendSdpOfferResponse } from "@/common/requests";
 
 /**
  * Sends an SDP (Session Description Protocol) offer to an API for processing.
@@ -33,14 +34,20 @@ const sendSdpOffer = async (
   model: RealTimeModel
 ): Promise<string> => {
   try {
-    const ephemeralKey = await getEphemeralKey(model);
-    const baseUrl = "https://api.openai.com/v1/realtime";
-    const sdpResponse = await fetch(`${baseUrl}?model=${model}`, {
+    if (!offer.sdp) {
+      throw new Error("SDP Offer is missing");
+    }
+
+    const request: SendSdpOfferRequest = {
+      model,
+      sdp: offer.sdp,
+    };
+
+    const sdpResponse = await fetch(`/api/sendSdpOffer`, {
       method: "POST",
-      body: offer.sdp,
+      body: JSON.stringify(request),
       headers: {
-        Authorization: `Bearer ${ephemeralKey}`,
-        "Content-Type": "application/sdp",
+        "Content-Type": "application/json",
       },
     });
 
@@ -48,7 +55,8 @@ const sendSdpOffer = async (
       throw new Error(`Failed to send SDP Offer: ${sdpResponse.status} ${sdpResponse.statusText}`);
     }
 
-    return await sdpResponse.text();
+    const response: SendSdpOfferResponse = await sdpResponse.json();
+    return response.sdpResponse;
   } catch (error) {
     console.error("Error in sendSdpOffer:", error);
     throw error;
