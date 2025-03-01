@@ -41,11 +41,8 @@ export const CustomModal = ({
           width: width || "600px",
           bgcolor: "#222224",
           borderRadius: "16px",
-          padding: padding || "40px 40px 40px 40px",
-          alignItems: "flex-start",
-          gap: "30px",
-          boxSizing: "border-box",
           maxWidth: "100vw",
+          maxHeight: "100vh",
         }}
       >
         <IconButton
@@ -54,7 +51,19 @@ export const CustomModal = ({
         >
           <X />
         </IconButton>
-        {children}
+        <Stack
+          sx={{
+            alignItems: "flex-start",
+            gap: "30px",
+            width: "100%",
+            maxHeight: "100vh",
+            overflowY: "auto",
+            padding: padding || "40px 40px 40px 40px",
+            boxSizing: "border-box",
+          }}
+        >
+          {children}
+        </Stack>
       </Stack>
     </Modal>
   );

@@ -137,7 +137,9 @@ export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
                 }}
               />
               <Typography>
-                <Link href="https://www.instagram.com/dmowskii/">dmowskii</Link>
+                <Link href="https://www.instagram.com/dmowskii/" target="_blank">
+                  dmowskii
+                </Link>
               </Typography>
             </Stack>
           </Stack>
