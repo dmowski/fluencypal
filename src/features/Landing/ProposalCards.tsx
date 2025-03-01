@@ -88,6 +88,8 @@ const InfoCard: React.FC<{
             style={{
               width: "100%",
               height: "auto",
+              aspectRatio: "421/269",
+              backgroundColor: "rgba(10, 18, 30, 1)",
               marginTop: "20px",
               borderRadius: "10px",
             }}

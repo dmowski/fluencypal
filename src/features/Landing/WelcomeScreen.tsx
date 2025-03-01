@@ -97,7 +97,11 @@ export const WelcomeScreen = () => {
         endColor={"#05acff"}
         backgroundColor={"rgba(10, 18, 30, 1)"}
       >
-        <img src="/dashboard.png" alt="dashboard" style={{ width: "100%" }} />
+        <img
+          src="/dashboard.png"
+          alt="dashboard"
+          style={{ width: "100%", height: "auto", aspectRatio: "568 / 350" }}
+        />
       </GradientCard>
     </Stack>
   );

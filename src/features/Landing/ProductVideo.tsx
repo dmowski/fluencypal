@@ -48,8 +48,8 @@ export const ProductVideo = () => {
         sx={{
           width: "100%",
           aspectRatio: "16/9",
-          backgroundColor: "transparent",
-          background: `url("/previewProductDemo.png")`,
+          backgroundColor: "rgba(0, 0, 0, 0.3)",
+          backgroundImage: `url("/previewProductDemo.png")`,
           backgroundSize: "cover",
           border: "none",
           backgroundPosition: "center",
