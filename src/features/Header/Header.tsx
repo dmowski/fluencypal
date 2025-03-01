@@ -33,6 +33,7 @@ import { LangSelector } from "../Lang/LangSelector";
 import { useUsage } from "../Usage/useUsage";
 import { PaymentModal } from "../Usage/PaymentModal";
 import { NeedHelpModal } from "./NeedHelpModal";
+import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
 
 export function Header() {
   const auth = useAuth();
@@ -191,29 +192,7 @@ export function Header() {
 
       {usage.isShowPaymentModal && <PaymentModal />}
 
-      <CustomModal
-        isOpen={isShowLangSelector}
-        onClose={() => setIsShowLangSelector(false)}
-        width="400px"
-      >
-        <Typography id="modal-modal-title" variant="h4" component="h2">
-          Language to learn
-        </Typography>
-        <Stack
-          sx={{
-            width: "100%",
-          }}
-        >
-          <LangSelector
-            value={settings.languageCode}
-            onDone={(lang) => {
-              settings.setLanguage(lang);
-              setIsShowLangSelector(false);
-            }}
-            confirmButtonLabel="Save"
-          />
-        </Stack>
-      </CustomModal>
+      {isShowLangSelector && <LanguageSelectorModal onClose={() => setIsShowLangSelector(false)} />}
 
       {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} />}
     </Stack>
