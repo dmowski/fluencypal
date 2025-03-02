@@ -39,10 +39,6 @@ export function ConversationCanvas() {
           gap: "10px",
           width: "100%",
           minHeight: "calc(100vh - 20px)",
-          paddingTop: "90px",
-          "@media (max-width: 900px)": {
-            paddingTop: "60px",
-          },
         }}
       >
         <Stack
