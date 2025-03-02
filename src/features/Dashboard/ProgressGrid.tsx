@@ -149,7 +149,7 @@ export const ProgressGrid: React.FC<ProgressGridProps> = ({
       sx={{
         position: "relative",
         width: "100%",
-        maxWidth: "1300px",
+        maxWidth: "1302px",
         overflowX: "hidden",
       }}
     >
@@ -158,7 +158,7 @@ export const ProgressGrid: React.FC<ProgressGridProps> = ({
           flexDirection: "row",
           width: "max-content",
           gap: "7px",
-          padding: "0px 0 20px 2px",
+          padding: "0px 0 20px 1px",
         }}
       >
         {monthsAndYears.map((date, index) => (
