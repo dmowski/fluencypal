@@ -22,7 +22,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     illustrationDescription:
       "A cozy restaurant setting with a waiter holding a notepad, attentively taking an order from a customer seated at a table with a menu in hand.",
     imageSrc: "https://cdn.midjourney.com/f0707de6-a685-47e5-b293-9df6258ad827/0_2.png",
-    voice: "coral",
+    voice: "ash",
   },
   {
     title: "Buying a Train Ticket",
@@ -98,8 +98,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     exampleOfFirstMessageFromAi: "Hello! What item would you like to return today?",
     illustrationDescription:
       "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
-    imageSrc: "https://cdn.midjourney.com/076dd9c1-9375-4094-ba3e-1a1035db5c54/0_3.png",
-    voice: "shimmer",
+    imageSrc: "https://cdn.midjourney.com/efaaa8c9-b296-437b-991a-ea21baeb6e31/0_2.png",
+    voice: "sage",
   },
   {
     title: "Calling Technical Support",
@@ -109,8 +109,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     exampleOfFirstMessageFromAi: "Hello! What technical issue are you experiencing today?",
     illustrationDescription:
       "A person sitting at a desk, looking frustrated at a laptop or phone, while a headset-wearing customer support agent appears on a screen, offering assistance.",
-    imageSrc: "https://cdn.midjourney.com/58a7180c-a278-4f53-ab7a-bfffa7d0636b/0_0.png",
-    voice: "sage",
+    imageSrc: "https://cdn.midjourney.com/659ac576-86dc-40f7-ab53-f72120bb0924/0_1.png",
+    voice: "shimmer",
   },
 ];
 

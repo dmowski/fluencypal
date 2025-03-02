@@ -103,7 +103,7 @@ export const RolePlayCardsBlock = () => {
                           textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
                         }}
                       >
-                        {scenario.title}
+                        {scenario.title} | {scenario.voice}
                       </Typography>
                       <Typography
                         variant="body2"
