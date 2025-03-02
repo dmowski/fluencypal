@@ -42,46 +42,92 @@ export const RolePlayCardsBlock = () => {
             .filter((_, index) => !isLimited || index < 4)
             .map((scenario, index) => {
               return (
-                <GradientCard
+                <Stack
                   key={index}
-                  padding="22px"
-                  strokeWidth="2px"
-                  startColor={"rgba(255, 255, 255, 0.09)"}
-                  endColor={"rgba(255, 255, 255, 0.09)"}
-                  backgroundColor={"rgba(10, 18, 30, 0.2)"}
+                  sx={{
+                    position: "relative",
+                    backgroundColor: "#222",
+                    border: "none",
+                    alignItems: "flex-start",
+                    minHeight: "240px",
+
+                    cursor: "pointer",
+                    borderRadius: "10px",
+                    overflow: "hidden",
+                    textAlign: "left",
+                    padding: "0px",
+                    boxSizing: "border-box",
+                    ":hover": {
+                      boxShadow:
+                        "0px 0px 20px 0px rgba(0,0,0,0.5), 0px 0px 0 1px rgba(255,255,255,0.2)",
+                    },
+                  }}
+                  component={"button"}
+                  onClick={() => {
+                    aiConversation.startConversation({
+                      mode: "rolePlay",
+                      rolePlayScenario: scenario,
+                    });
+                  }}
                 >
                   <Stack
                     sx={{
                       gap: "16px",
+                      height: "100%",
                       alignItems: "flex-start",
+                      justifyContent: "flex-end",
+                      width: "100%",
+                      position: "relative",
+                      zIndex: 1,
+                      boxSizing: "border-box",
                     }}
                   >
-                    <Stack>
-                      <Typography>{scenario.title}</Typography>
+                    <Stack
+                      sx={{
+                        padding: "20px",
+                        boxSizing: "border-box",
+                        width: "100%",
+                        paddingTop: "30px",
+                        background:
+                          "linear-gradient(180deg, rgba(12, 12, 14, 0) 0%,  rgba(12, 12, 14, 1) 100%)",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          fontWeight: "500",
+                        }}
+                      >
+                        {scenario.title}
+                      </Typography>
                       <Typography
                         variant="caption"
                         sx={{
-                          opacity: 0.7,
+                          opacity: 0.9,
                         }}
                       >
                         {scenario.subTitle}
                       </Typography>
                     </Stack>
-                    <Stack>
-                      <Button
-                        variant="outlined"
-                        onClick={() => {
-                          aiConversation.startConversation({
-                            mode: "rolePlay",
-                            rolePlayScenario: scenario,
-                          });
-                        }}
-                      >
-                        Start
-                      </Button>
-                    </Stack>
                   </Stack>
-                </GradientCard>
+                  {scenario.imageSrc && (
+                    <Stack
+                      sx={{
+                        backgroundImage: `url(${scenario.imageSrc})`,
+                        width: "100%",
+                        height: "100%",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        //borderRadius: "10px",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        zIndex: 0,
+                      }}
+                    ></Stack>
+                  )}
+                </Stack>
               );
             })}
         </Stack>

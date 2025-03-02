@@ -3,4 +3,6 @@ export interface RolePlayInstruction {
   subTitle: string;
   instructionToAi: string;
   exampleOfFirstMessageFromAi: string;
+  illustrationDescription: string;
+  imageSrc?: string;
 }
