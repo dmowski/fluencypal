@@ -407,7 +407,7 @@ ${ruleToLearn}
 
   const doneConversation = async () => {
     setIsSavingHomework(true);
-    const isNeedToSaveHomework = currentMode !== "words";
+    const isNeedToSaveHomework = !modesWithoutHomework.includes(currentMode);
     if (isNeedToSaveHomework && !activeHomework) {
       await saveHomework();
     }
