@@ -2,6 +2,25 @@ import { RolePlayInstruction } from "@/common/rolePlay";
 
 const rolePlayScenarios: Array<RolePlayInstruction> = [
   {
+    id: "job-interview",
+    input: [
+      {
+        id: "job-title",
+        label: "Job Title",
+        placeholder: "Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc.",
+        type: "text-input",
+        defaultValue: "",
+        required: true,
+      },
+      {
+        id: "cv",
+        label: "CV text",
+        placeholder: "Paste your CV text here.",
+        type: "textarea",
+        defaultValue: "",
+        required: false,
+      },
+    ],
     title: "Job Interview",
     subTitle: "Practice answering common job interview questions.",
     instructionToAi:
@@ -14,6 +33,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     voice: "alloy",
   },
   {
+    id: "in-the-restaurant",
+    input: [],
     title: "In the Restaurant",
     subTitle: "Order food and interact with a waiter in a restaurant.",
     instructionToAi:
@@ -26,6 +47,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     voice: "ash",
   },
   {
+    id: "buying-a-train-ticket",
+    input: [],
     title: "Buying a Train Ticket",
     subTitle: "Practice buying a train ticket at the station.",
     instructionToAi:
@@ -38,6 +61,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     voice: "echo",
   },
   {
+    id: "talking-to-a-doctor",
+    input: [],
     title: "Talking to a Doctor",
     subTitle: "Describe symptoms and ask for medical advice.",
     instructionToAi:
@@ -50,6 +75,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     voice: "ash",
   },
   {
+    id: "hotel-check-in",
+    input: [],
     title: "Hotel Check-in",
     subTitle: "Practice checking into a hotel and asking for services.",
     instructionToAi:
@@ -62,6 +89,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     voice: "onyx",
   },
   {
+    id: "small-talk-with-a-stranger",
+    input: [],
     title: "Small Talk with a Stranger",
     subTitle: "Practice starting a conversation with a stranger.",
     instructionToAi:
@@ -74,6 +103,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     voice: "fable",
   },
   {
+    id: "at-the-grocery-store",
+    input: [],
     title: "At the Grocery Store",
     subTitle: "Practice asking for help and making a purchase at a grocery store.",
     instructionToAi:
@@ -86,6 +117,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     voice: "nova",
   },
   {
+    id: "making-a-doctors-appointment",
+    input: [],
     title: "Making a Doctor's Appointment",
     subTitle: "Practice scheduling an appointment over the phone.",
     instructionToAi:
@@ -98,6 +131,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     voice: "ash",
   },
   {
+    id: "returning-an-item-in-a-store",
+    input: [],
     title: "Returning an Item in a Store",
     subTitle: "Practice returning an item and explaining the reason.",
     instructionToAi:
@@ -110,6 +145,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     voice: "sage",
   },
   {
+    id: "calling-technical-support",
+    input: [],
     title: "Calling Technical Support",
     subTitle: "Practice troubleshooting a technical issue over the phone.",
     instructionToAi:
