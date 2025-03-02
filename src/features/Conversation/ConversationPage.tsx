@@ -7,7 +7,7 @@ import { SignInForm } from "../Auth/SignInForm";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
-import { ConversationBoard } from "./ConversationBoard";
+import { ConversationCanvas } from "./ConversationCanvas";
 import { Dashboard } from "../Dashboard/Dashboard";
 
 export function ConversationPage() {
@@ -39,5 +39,5 @@ export function ConversationPage() {
   if (!auth.isAuthorized) return <SignInForm />;
   if (usage.balance <= 0) return <NoBalanceBlock />;
 
-  return <Stack>{aiConversation.isStarted ? <ConversationBoard /> : <Dashboard />}</Stack>;
+  return <Stack>{aiConversation.isStarted ? <ConversationCanvas /> : <Dashboard />}</Stack>;
 }

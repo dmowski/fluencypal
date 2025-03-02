@@ -11,7 +11,7 @@ import DoneIcon from "@mui/icons-material/Done";
 import { MicroButton } from "../uiKit/Button/MicroButton";
 import { KeyboardButton } from "../uiKit/Button/KeyboardButton";
 
-export function ConversationBoard() {
+export function ConversationCanvas() {
   const aiConversation = useAiConversation();
   const [userMessage, setUserMessage] = useState("");
   const submitMessage = () => {
