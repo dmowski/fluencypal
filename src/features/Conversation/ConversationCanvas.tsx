@@ -38,7 +38,9 @@ export function ConversationCanvas() {
           justifyContent: "center",
           gap: "10px",
           width: "100%",
-          minHeight: "calc(100vh - 20px)",
+          minHeight: "calc(100vh - 90px)",
+          paddingTop: "90px",
+          boxSizing: "border-box",
         }}
       >
         <Stack
@@ -46,7 +48,6 @@ export function ConversationCanvas() {
             minHeight: "300px",
             alignItems: "center",
             justifyContent: "flex-end",
-
             maxWidth: "1200px",
             width: "100%",
             padding: "10px",
