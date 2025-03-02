@@ -1,7 +1,7 @@
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { useAiConversation } from "../Conversation/useAiConversation";
-import rolePlayScenarios from "../Conversation/rolePlay";
+import rolePlayScenarios from "../Conversation/rolePlayData";
 import { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
