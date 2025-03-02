@@ -1,9 +1,10 @@
 "use client";
 import { FirebaseError } from "@firebase/util";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { Context, JSX, ReactNode, createContext, useContext, useMemo } from "react";
+import { Context, JSX, ReactNode, createContext, useContext, useEffect, useMemo } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/init";
+import * as Sentry from "@sentry/react";
 
 interface SignInResult {
   isDone: boolean;
@@ -70,6 +71,17 @@ function useProvideAuth(): AuthContext {
     }),
     [user]
   );
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    Sentry.setUser({
+      id: user.uid,
+      email: user?.email || "",
+    });
+  }, [user]);
 
   const logout = async (): Promise<void> => {
     await auth.signOut();
