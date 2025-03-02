@@ -7,7 +7,6 @@ export interface InputStructureForUser {
   placeholder: string;
   type: "text-input" | "textarea";
   defaultValue: string;
-  value: string;
   required: boolean;
 }
 
@@ -23,7 +22,7 @@ export interface RolePlayInstruction {
   instructionToAi: string;
   exampleOfFirstMessageFromAi: string;
   illustrationDescription: string;
-  imageSrc?: string;
+  imageSrc: string;
   voice: AiVoice;
   input: InputStructureForUser[];
 }

@@ -46,6 +46,7 @@ export const RolePlayCardsBlock = () => {
       {selectedRolePlayScenario && (
         <>
           <CustomModal
+            padding="0"
             isOpen={true}
             onClose={() => setSelectedRolePlayScenario(null)}
             width="min(90vw, 800px)"
@@ -53,19 +54,48 @@ export const RolePlayCardsBlock = () => {
             <Stack
               sx={{
                 position: "relative",
+                alignItems: "flex-start",
+                gap: "20px",
               }}
             >
-              <Stack>
-                <Typography variant="h4" component="h2">
-                  {selectedRolePlayScenario.title}
-                </Typography>
-                {selectedRolePlayScenario.input.length ? (
-                  <Typography variant="caption">
-                    Before you start, please fill some information to make it more realistic.
+              <Stack
+                className="role-play-image"
+                sx={{
+                  backgroundImage: `url(${selectedRolePlayScenario.imageSrc})`,
+                  width: "100%",
+                  height: "100%",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  //borderRadius: "10px",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  zIndex: 0,
+                }}
+              ></Stack>
+              <Stack
+                sx={{
+                  paddingTop: "200px",
+                  width: "100%",
+                }}
+              >
+                <Stack>
+                  <Typography variant="h4" component="h2">
+                    {selectedRolePlayScenario.title}
                   </Typography>
-                ) : (
-                  <></>
-                )}
+                  {selectedRolePlayScenario.input.length ? (
+                    <Typography variant="caption">
+                      Before you start, please fill some information to make it more realistic.
+                    </Typography>
+                  ) : (
+                    <></>
+                  )}
+                </Stack>
+                <Button size="large" variant="contained">
+                  Start
+                </Button>
               </Stack>
             </Stack>
           </CustomModal>
@@ -156,25 +186,23 @@ export const RolePlayCardsBlock = () => {
                       </Typography>
                     </Stack>
                   </Stack>
-                  {scenario.imageSrc && (
-                    <Stack
-                      className="role-play-image"
-                      sx={{
-                        backgroundImage: `url(${scenario.imageSrc})`,
-                        width: "100%",
-                        height: "100%",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        //borderRadius: "10px",
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        zIndex: 0,
-                      }}
-                    ></Stack>
-                  )}
+                  <Stack
+                    className="role-play-image"
+                    sx={{
+                      backgroundImage: `url(${scenario.imageSrc})`,
+                      width: "100%",
+                      height: "100%",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      //borderRadius: "10px",
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      zIndex: 0,
+                    }}
+                  ></Stack>
                 </Stack>
               );
             })}
