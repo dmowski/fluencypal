@@ -400,6 +400,7 @@ ${ruleToLearn}
       if (rolePlayScenario) {
         const additionalInfo = rolePlayInputs
           ? rolePlayInputs
+              .filter((userInput) => userInput.userValue)
               .map((userInput) => `${userInput.labelForAi}: ${userInput.userValue}`)
               .join("\n")
           : "";
@@ -415,7 +416,7 @@ You can start with message like:
 
 ${
   additionalInfo
-    ? `Additional info:
+    ? `Additional info (Use this info on your start message):
 ${additionalInfo}`
     : ""
 }

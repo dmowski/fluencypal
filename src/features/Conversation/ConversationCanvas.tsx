@@ -5,7 +5,7 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { Textarea } from "../uiKit/Input/Textarea";
-import { Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { SendHorizontal } from "lucide-react";
 import DoneIcon from "@mui/icons-material/Done";
 import { MicroButton } from "../uiKit/Button/MicroButton";

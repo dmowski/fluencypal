@@ -1,14 +1,13 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { Baby, Mic, TrendingUp } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import rolePlayScenarios from "../Conversation/rolePlay";
-import { GradientCard } from "../uiKit/Card/GradientCard";
 import { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { RolePlayInputResult, RolePlayInstruction } from "@/common/rolePlay";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { useLocalStorage } from "react-use";
 
 export const RolePlayCardsBlock = () => {
   const aiConversation = useAiConversation();
@@ -16,16 +15,41 @@ export const RolePlayCardsBlock = () => {
   const [selectedRolePlayScenario, setSelectedRolePlayScenario] =
     useState<RolePlayInstruction | null>(null);
 
+  const selectScenario = (scenario: RolePlayInstruction) => {
+    setSelectedRolePlayScenario(scenario);
+  };
+
+  const [userInputs, setUserInputs] = useLocalStorage<Record<string, string>>(
+    "rolePlayUserInputs",
+    {}
+  );
+
   const onStartRolePlay = (
     scenario: RolePlayInstruction,
     rolePlayInputs: RolePlayInputResult[]
   ) => {
+    console.log("rolePlayInputs", rolePlayInputs);
     aiConversation.startConversation({
       mode: "rolePlay",
       rolePlayScenario: scenario,
       rolePlayInputs,
       voice: scenario.voice,
     });
+  };
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!selectedRolePlayScenario) return;
+
+    const rolePlayInputs = selectedRolePlayScenario.input.map((input) => {
+      const inputId = selectedRolePlayScenario.id + "-" + input.id;
+      const inputRecord: RolePlayInputResult = {
+        labelForAi: input.labelForAi,
+        userValue: userInputs?.[inputId] || "",
+      };
+      return inputRecord;
+    });
+    onStartRolePlay(selectedRolePlayScenario, rolePlayInputs);
   };
 
   return (
@@ -49,51 +73,144 @@ export const RolePlayCardsBlock = () => {
             padding="0"
             isOpen={true}
             onClose={() => setSelectedRolePlayScenario(null)}
-            width="min(90vw, 800px)"
+            width="min(90vw, 600px)"
           >
             <Stack
               sx={{
-                position: "relative",
-                alignItems: "flex-start",
-                gap: "20px",
+                width: "100%",
               }}
             >
               <Stack
-                className="role-play-image"
                 sx={{
-                  backgroundImage: `url(${selectedRolePlayScenario.imageSrc})`,
                   width: "100%",
-                  height: "100%",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  //borderRadius: "10px",
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  zIndex: 0,
-                }}
-              ></Stack>
-              <Stack
-                sx={{
-                  paddingTop: "200px",
-                  width: "100%",
+                  padding: "20px",
+                  height: "min(300px, 30vh)",
+                  boxSizing: "border-box",
+                  overflow: "hidden",
+                  justifyContent: "flex-end",
+                  position: "relative",
+                  borderRadius: "16px 16px 0 0",
+                  background:
+                    "linear-gradient(180deg, rgba(12, 12, 14, 0) 0%,  rgba(12, 12, 14, 0.3) 100%)",
                 }}
               >
-                <Stack>
-                  <Typography variant="h4" component="h2">
-                    {selectedRolePlayScenario.title}
-                  </Typography>
-                  {selectedRolePlayScenario.input.length ? (
-                    <Typography variant="caption">
+                <Typography
+                  variant="h4"
+                  component="h2"
+                  sx={{
+                    color: "#fff",
+                    textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
+                  }}
+                >
+                  {selectedRolePlayScenario.title}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#fff",
+                    textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
+                  }}
+                >
+                  {selectedRolePlayScenario.subTitle}
+                </Typography>
+
+                <Stack
+                  sx={{
+                    backgroundImage: `url(${selectedRolePlayScenario.imageSrc})`,
+                    width: "100%",
+                    height: "100%",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    zIndex: -1,
+                  }}
+                ></Stack>
+              </Stack>
+
+              <Stack
+                component={"form"}
+                sx={{
+                  padding: "25px 20px 20px 20px",
+                  gap: "20px",
+                  alignItems: "flex-start",
+                }}
+                onSubmit={onSubmit}
+              >
+                {selectedRolePlayScenario.input.length > 0 && (
+                  <Stack
+                    sx={{
+                      gap: "30px",
+                      width: "100%",
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "#fff",
+                        textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
+                      }}
+                    >
                       Before you start, please fill some information to make it more realistic.
                     </Typography>
-                  ) : (
-                    <></>
-                  )}
-                </Stack>
-                <Button size="large" variant="contained">
+
+                    <Stack
+                      sx={{
+                        gap: "10px",
+                        width: "100%",
+                        maxWidth: "600px",
+                      }}
+                    >
+                      {selectedRolePlayScenario.input.map((input, index) => {
+                        const type = input.type;
+                        const inputId = selectedRolePlayScenario.id + "-" + input.id;
+                        const value = userInputs?.[inputId] || input.defaultValue || "";
+
+                        if (type == "text-input") {
+                          return (
+                            <TextField
+                              key={index}
+                              value={value}
+                              onChange={(e) => {
+                                setUserInputs({
+                                  ...userInputs,
+                                  [inputId]: e.target.value,
+                                });
+                              }}
+                              required={input.required}
+                              label={input.labelForUser}
+                              placeholder={input.placeholder}
+                              variant="outlined"
+                            />
+                          );
+                        } else {
+                          return (
+                            <TextField
+                              key={index}
+                              multiline
+                              required={input.required}
+                              value={value}
+                              onChange={(e) => {
+                                setUserInputs({
+                                  ...userInputs,
+                                  [inputId]: e.target.value,
+                                });
+                              }}
+                              rows={4}
+                              label={input.labelForUser}
+                              placeholder={input.placeholder}
+                              variant="outlined"
+                            />
+                          );
+                        }
+                      })}
+                    </Stack>
+                  </Stack>
+                )}
+
+                <Button size="large" variant="contained" type="submit">
                   Start
                 </Button>
               </Stack>
