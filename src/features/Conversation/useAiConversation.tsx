@@ -176,6 +176,7 @@ Your homework is to repeat the following text:
     communicatorRef.current?.addUserChatMessage(endUserMessage);
     await sleep(500);
     await communicatorRef.current?.triggerAiResponse();
+    await sleep(1000);
     setIsClosing(false);
     setIsClosed(true);
   };

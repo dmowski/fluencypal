@@ -146,20 +146,9 @@ export function ConversationCanvas() {
               ) : (
                 <>
                   {aiConversation.conversation.length > 0 && (
-                    <Tooltip
-                      title={
-                        aiConversation.isAiSpeaking ? "Wait for the AI to finish speaking" : ""
-                      }
-                    >
-                      <Button
-                        variant="outlined"
-                        onClick={() =>
-                          !aiConversation.isAiSpeaking && aiConversation.finishLesson()
-                        }
-                      >
-                        Finish the Lesson
-                      </Button>
-                    </Tooltip>
+                    <Button variant="outlined" onClick={() => aiConversation.finishLesson()}>
+                      Finish the Lesson
+                    </Button>
                   )}
                 </>
               )}
