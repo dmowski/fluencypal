@@ -21,6 +21,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
           "Paste your CV text here. You can also write a brief summary of your experience.",
         type: "textarea",
         defaultValue: "",
+        aiSummarizingInstruction:
+          "Summarize the user's experience and skills. Return text no longer than 10 sentences.",
         required: false,
       },
     ],

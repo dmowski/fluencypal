@@ -8,10 +8,14 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { RolePlayInputResult, RolePlayInstruction } from "@/common/rolePlay";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLocalStorage } from "react-use";
+import { useTextAi } from "../Ai/useTextAi";
+import { MODELS } from "@/common/ai";
 
 export const RolePlayCardsBlock = () => {
   const aiConversation = useAiConversation();
+  const textAi = useTextAi();
   const [isLimited, setIsLimited] = useState(true);
+  const [isStarting, setIsStarting] = useState(false);
   const [selectedRolePlayScenario, setSelectedRolePlayScenario] =
     useState<RolePlayInstruction | null>(null);
 
@@ -28,7 +32,6 @@ export const RolePlayCardsBlock = () => {
     scenario: RolePlayInstruction,
     rolePlayInputs: RolePlayInputResult[]
   ) => {
-    console.log("rolePlayInputs", rolePlayInputs);
     aiConversation.startConversation({
       mode: "rolePlay",
       rolePlayScenario: scenario,
@@ -37,18 +40,45 @@ export const RolePlayCardsBlock = () => {
     });
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const prepareUserInputs = async (scenario: RolePlayInstruction) => {
+    if (!selectedRolePlayScenario) return [];
+
+    const rolePlayInputs = await Promise.all(
+      selectedRolePlayScenario.input.map(async (input) => {
+        const inputId = selectedRolePlayScenario.id + "-" + input.id;
+        const userValue = userInputs?.[inputId] || "";
+        let processedUserValue = userValue;
+
+        if (input.aiSummarizingInstruction && userValue.length > 1000) {
+          const aiResult = await textAi.generate({
+            systemMessage: input.aiSummarizingInstruction,
+            userMessage: userValue,
+            model: MODELS.gpt_4o,
+          });
+          if (aiResult) {
+            console.log("aiResult after summarizing", aiResult);
+            processedUserValue = aiResult;
+          }
+        }
+
+        const inputRecord: RolePlayInputResult = {
+          labelForAi: input.labelForAi,
+          userValue: processedUserValue,
+        };
+        return inputRecord;
+      })
+    );
+
+    return rolePlayInputs;
+  };
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!selectedRolePlayScenario) return;
+    setIsStarting(true);
+    const rolePlayInputs = await prepareUserInputs(selectedRolePlayScenario);
+    setIsStarting(false);
 
-    const rolePlayInputs = selectedRolePlayScenario.input.map((input) => {
-      const inputId = selectedRolePlayScenario.id + "-" + input.id;
-      const inputRecord: RolePlayInputResult = {
-        labelForAi: input.labelForAi,
-        userValue: userInputs?.[inputId] || "",
-      };
-      return inputRecord;
-    });
     onStartRolePlay(selectedRolePlayScenario, rolePlayInputs);
   };
 
@@ -180,6 +210,7 @@ export const RolePlayCardsBlock = () => {
                                 });
                               }}
                               required={input.required}
+                              disabled={isStarting}
                               label={input.labelForUser}
                               placeholder={input.placeholder}
                               variant="outlined"
@@ -189,6 +220,7 @@ export const RolePlayCardsBlock = () => {
                           return (
                             <TextField
                               key={index}
+                              disabled={isStarting}
                               multiline
                               required={input.required}
                               value={value}
@@ -210,8 +242,8 @@ export const RolePlayCardsBlock = () => {
                   </Stack>
                 )}
 
-                <Button size="large" variant="contained" type="submit">
-                  Start
+                <Button size="large" variant="contained" type="submit" disabled={isStarting}>
+                  {isStarting ? "Loading..." : "Start"}
                 </Button>
               </Stack>
             </Stack>

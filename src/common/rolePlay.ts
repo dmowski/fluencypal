@@ -8,6 +8,7 @@ export interface InputStructureForUser {
   type: "text-input" | "textarea";
   defaultValue: string;
   required: boolean;
+  aiSummarizingInstruction?: string;
 }
 
 export interface RolePlayInputResult {
