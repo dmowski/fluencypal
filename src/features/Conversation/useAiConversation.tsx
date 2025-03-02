@@ -61,6 +61,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const history = useChatHistory();
   const settings = useSettings();
   const aiUserInfo = useAiUserInfo();
+  const [activeHomework, setActiveHomework] = useState<Homework | null>(null);
   const userInfo = aiUserInfo.userInfo?.records?.join(". ") || "";
   const fullLanguageName = settings.fullLanguageName || "English";
   const languageCode = settings.languageCode || "en";
@@ -348,6 +349,7 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
       setCurrentMode(mode);
       const aiRtcConfig = aiRtcConfigs[mode];
       let instruction = aiRtcConfig.initInstruction;
+      setActiveHomework(homework || null);
       if (homework) {
         await homeworkService.doneHomework(homework.id);
         instruction += `------
@@ -406,7 +408,7 @@ ${ruleToLearn}
   const doneConversation = async () => {
     setIsSavingHomework(true);
     const isNeedToSaveHomework = currentMode !== "words";
-    if (isNeedToSaveHomework) {
+    if (isNeedToSaveHomework && !activeHomework) {
       await saveHomework();
     }
     communicator?.closeHandler();
