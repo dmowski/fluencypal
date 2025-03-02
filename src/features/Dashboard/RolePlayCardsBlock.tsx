@@ -11,9 +11,13 @@ import { useLocalStorage } from "react-use";
 import { useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
 
+const firstLimit = 6;
+const hardHeight = "300px";
+
 export const RolePlayCardsBlock = () => {
   const aiConversation = useAiConversation();
   const textAi = useTextAi();
+
   const [isLimited, setIsLimited] = useState(true);
   const [isStarting, setIsStarting] = useState(false);
   const [selectedRolePlayScenario, setSelectedRolePlayScenario] =
@@ -269,7 +273,7 @@ export const RolePlayCardsBlock = () => {
           }}
         >
           {rolePlayScenarios
-            .filter((_, index) => !isLimited || index < 6)
+            .filter((_, index) => !isLimited || index < firstLimit)
             .map((scenario, index) => {
               return (
                 <Stack
@@ -279,7 +283,7 @@ export const RolePlayCardsBlock = () => {
                     backgroundColor: "#222",
                     border: "none",
                     alignItems: "flex-start",
-                    minHeight: "300px",
+                    minHeight: hardHeight,
 
                     cursor: "pointer",
                     borderRadius: "5px",

@@ -93,7 +93,7 @@ export const WelcomeScreen = () => {
         <img
           src="/dashboard.jpg"
           alt="dashboard"
-          style={{ width: "100%", height: "auto", aspectRatio: "568 / 350" }}
+          style={{ width: "100%", height: "auto", aspectRatio: "1862 / 1706" }}
         />
       </GradientCard>
     </Stack>
