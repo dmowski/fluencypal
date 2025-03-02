@@ -34,7 +34,7 @@ export const RolePlayCardsBlock = () => {
             gridTemplateColumns: "1fr 1fr ",
             "@media (max-width: 900px)": {
               gridTemplateColumns: "1fr",
-              gap: "40px",
+              gap: "15px",
             },
           }}
         >
