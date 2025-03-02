@@ -142,7 +142,7 @@ export const RolePlayCardsBlock = () => {
                     },
                   }}
                   component={"button"}
-                  onClick={() => setSelectedRolePlayScenario(scenario)}
+                  onClick={() => selectScenario(scenario)}
                 >
                   <Stack
                     sx={{

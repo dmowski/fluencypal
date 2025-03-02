@@ -6,7 +6,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     input: [
       {
         id: "job-title",
-        labelForUser: "Job Title",
+        labelForUser: "Desired Job",
         labelForAi: "User's desired Job Title",
         placeholder: "Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc.",
         type: "text-input",
@@ -15,9 +15,10 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       },
       {
         id: "cv",
-        labelForUser: "CV text",
+        labelForUser: "Your experience",
         labelForAi: "User's CV text",
-        placeholder: "Paste your CV text here.",
+        placeholder:
+          "Paste your CV text here. You can also write a brief summary of your experience.",
         type: "textarea",
         defaultValue: "",
         required: false,
