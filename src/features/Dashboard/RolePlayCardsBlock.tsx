@@ -7,10 +7,27 @@ import { GradientCard } from "../uiKit/Card/GradientCard";
 import { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { RolePlayInputResult, RolePlayInstruction } from "@/common/rolePlay";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
 
 export const RolePlayCardsBlock = () => {
   const aiConversation = useAiConversation();
   const [isLimited, setIsLimited] = useState(true);
+  const [selectedRolePlayScenario, setSelectedRolePlayScenario] =
+    useState<RolePlayInstruction | null>(null);
+
+  const onStartRolePlay = (
+    scenario: RolePlayInstruction,
+    rolePlayInputs: RolePlayInputResult[]
+  ) => {
+    aiConversation.startConversation({
+      mode: "rolePlay",
+      rolePlayScenario: scenario,
+      rolePlayInputs,
+      voice: scenario.voice,
+    });
+  };
+
   return (
     <DashboardCard>
       <Stack>
@@ -26,6 +43,35 @@ export const RolePlayCardsBlock = () => {
           Play a role and talk to the AI
         </Typography>
       </Stack>
+      {selectedRolePlayScenario && (
+        <>
+          <CustomModal
+            isOpen={true}
+            onClose={() => setSelectedRolePlayScenario(null)}
+            width="min(90vw, 800px)"
+          >
+            <Stack
+              sx={{
+                position: "relative",
+              }}
+            >
+              <Stack>
+                <Typography variant="h4" component="h2">
+                  {selectedRolePlayScenario.title}
+                </Typography>
+                {selectedRolePlayScenario.input.length ? (
+                  <Typography variant="caption">
+                    Before you start, please fill some information to make it more realistic.
+                  </Typography>
+                ) : (
+                  <></>
+                )}
+              </Stack>
+            </Stack>
+          </CustomModal>
+        </>
+      )}
+
       <Stack gap={"10px"}>
         <Stack
           sx={{
@@ -66,13 +112,7 @@ export const RolePlayCardsBlock = () => {
                     },
                   }}
                   component={"button"}
-                  onClick={() => {
-                    aiConversation.startConversation({
-                      mode: "rolePlay",
-                      rolePlayScenario: scenario,
-                      voice: scenario.voice,
-                    });
-                  }}
+                  onClick={() => setSelectedRolePlayScenario(scenario)}
                 >
                   <Stack
                     sx={{

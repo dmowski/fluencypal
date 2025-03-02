@@ -25,7 +25,7 @@ import { useWords } from "../Words/useWords";
 import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { firstAiMessage } from "./data";
-import { RolePlayInstruction } from "@/common/rolePlay";
+import { RolePlayInputResult, RolePlayInstruction } from "@/common/rolePlay";
 
 interface StartConversationProps {
   mode: ConversationMode;
@@ -34,6 +34,7 @@ interface StartConversationProps {
   ruleToLearn?: string;
   rolePlayScenario?: RolePlayInstruction;
   voice?: AiVoice;
+  rolePlayInputs?: RolePlayInputResult[];
 }
 
 interface AiConversationContextType {
@@ -355,6 +356,7 @@ Use only ${fullLanguageName} language during conversation.
     wordsToLearn,
     ruleToLearn,
     rolePlayScenario,
+    rolePlayInputs,
     voice,
   }: StartConversationProps) => {
     if (!settings.languageCode) {
@@ -396,14 +398,27 @@ ${ruleToLearn}
       }
 
       if (rolePlayScenario) {
+        const additionalInfo = rolePlayInputs
+          ? rolePlayInputs
+              .map((userInput) => `${userInput.labelForAi}: ${userInput.userValue}`)
+              .join("\n")
+          : "";
         instruction += `------
 Role-play: ${rolePlayScenario.title}
 
 Your role:
 ${rolePlayScenario.instructionToAi}
 
+
 You can start with message like:
 "${rolePlayScenario.exampleOfFirstMessageFromAi}"
+
+${
+  additionalInfo
+    ? `Additional info:
+${additionalInfo}`
+    : ""
+}
 `;
       }
 
