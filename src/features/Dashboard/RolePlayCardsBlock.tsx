@@ -40,7 +40,7 @@ export const RolePlayCardsBlock = () => {
     });
   };
 
-  const prepareUserInputs = async (scenario: RolePlayInstruction) => {
+  const prepareUserInputs = async () => {
     if (!selectedRolePlayScenario) return [];
 
     const rolePlayInputs = await Promise.all(
@@ -76,7 +76,7 @@ export const RolePlayCardsBlock = () => {
     e.preventDefault();
     if (!selectedRolePlayScenario) return;
     setIsStarting(true);
-    const rolePlayInputs = await prepareUserInputs(selectedRolePlayScenario);
+    const rolePlayInputs = await prepareUserInputs();
     setIsStarting(false);
 
     onStartRolePlay(selectedRolePlayScenario, rolePlayInputs);
@@ -103,7 +103,7 @@ export const RolePlayCardsBlock = () => {
             padding="0"
             isOpen={true}
             onClose={() => setSelectedRolePlayScenario(null)}
-            width="min(90vw, 600px)"
+            width="min(90vw, 650px)"
           >
             <Stack
               sx={{
@@ -129,7 +129,9 @@ export const RolePlayCardsBlock = () => {
                   component="h2"
                   sx={{
                     color: "#fff",
-                    textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
+                    textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
+                    textTransform: "uppercase",
+                    fontWeight: "900",
                   }}
                 >
                   {selectedRolePlayScenario.title}
@@ -172,7 +174,7 @@ export const RolePlayCardsBlock = () => {
                 {selectedRolePlayScenario.input.length > 0 && (
                   <Stack
                     sx={{
-                      gap: "30px",
+                      gap: "15px",
                       width: "100%",
                     }}
                   >
@@ -188,7 +190,7 @@ export const RolePlayCardsBlock = () => {
 
                     <Stack
                       sx={{
-                        gap: "10px",
+                        gap: "20px",
                         width: "100%",
                         maxWidth: "600px",
                       }}
@@ -254,17 +256,20 @@ export const RolePlayCardsBlock = () => {
       <Stack gap={"10px"}>
         <Stack
           sx={{
-            gap: "3px",
+            gap: "10px",
             display: "grid",
-            gridTemplateColumns: "1fr 1fr ",
-            "@media (max-width: 900px)": {
+            gridTemplateColumns: "1fr 1fr 1fr",
+            "@media (max-width: 1100px)": {
+              gridTemplateColumns: "1fr 1fr",
+            },
+            "@media (max-width: 850px)": {
               gridTemplateColumns: "1fr",
               gap: "15px",
             },
           }}
         >
           {rolePlayScenarios
-            .filter((_, index) => !isLimited || index < 4)
+            .filter((_, index) => !isLimited || index < 6)
             .map((scenario, index) => {
               return (
                 <Stack
@@ -274,16 +279,15 @@ export const RolePlayCardsBlock = () => {
                     backgroundColor: "#222",
                     border: "none",
                     alignItems: "flex-start",
-                    minHeight: "360px",
+                    minHeight: "300px",
 
                     cursor: "pointer",
-                    borderRadius: "0px",
+                    borderRadius: "5px",
                     overflow: "hidden",
                     textAlign: "left",
                     padding: "0px",
                     boxSizing: "border-box",
                     color: "#fff",
-                    boxShadow: "0px 0px 0 1px rgba(0, 0, 0, 1)",
                     ":hover": {
                       ".role-play-image": {
                         opacity: 0.8,
@@ -316,16 +320,17 @@ export const RolePlayCardsBlock = () => {
                       }}
                     >
                       <Typography
-                        variant="h6"
+                        variant="h5"
                         sx={{
-                          fontWeight: "500",
-                          textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
+                          fontWeight: "990",
+                          textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
+                          textTransform: "uppercase",
                         }}
                       >
-                        {scenario.title} | {scenario.voice}
+                        {scenario.title}
                       </Typography>
                       <Typography
-                        variant="body2"
+                        variant="body1"
                         sx={{
                           opacity: 0.9,
                           textShadow: "1px 1px 4px rgba(0, 0, 0, 0.6)",

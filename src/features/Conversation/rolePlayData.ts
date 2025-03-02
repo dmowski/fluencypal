@@ -2,6 +2,20 @@ import { RolePlayInstruction } from "@/common/rolePlay";
 
 const rolePlayScenarios: Array<RolePlayInstruction> = [
   {
+    id: "in-the-restaurant",
+    input: [],
+    title: "In the Restaurant",
+    subTitle: "Order food and interact with a waiter in a restaurant.",
+    instructionToAi:
+      "You are a polite restaurant waiter. Ask the user for their order, offer recommendations, and respond to any requests.",
+    exampleOfFirstMessageFromAi:
+      "Hello, I’m Ash, your server for today. Welcome to our restaurant! Is there anything in particular you’re craving, or would you like me to suggest some popular dishes?",
+    illustrationDescription:
+      "A cozy restaurant setting with a waiter holding a notepad, attentively taking an order from a customer seated at a table with a menu in hand.",
+    imageSrc: "https://cdn.midjourney.com/acde68cd-1db6-4b69-be42-d2071b9ee1e8/0_0.png",
+    voice: "ash",
+  },
+  {
     id: "job-interview",
     input: [
       {
@@ -34,22 +48,30 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "Hi, my name is Alloy. I'm a recruiter at XYZ. Thank you for coming in today. I’d love to learn more about your professional background and experiences. Could you start by telling me a bit about yourself?",
     illustrationDescription:
       "A professional recruiter sitting at a desk, reviewing a candidate's resume, while the candidate sits across, looking slightly nervous but engaged in conversation.",
-    imageSrc: "https://cdn.midjourney.com/d35bf476-a903-486b-a456-490908ebe7ae/0_2.png",
+    imageSrc: "https://cdn.midjourney.com/07d20442-758f-42a9-81b2-3dc7bf4fe248/0_3.png",
     voice: "alloy",
   },
   {
-    id: "in-the-restaurant",
-    input: [],
-    title: "In the Restaurant",
-    subTitle: "Order food and interact with a waiter in a restaurant.",
-    instructionToAi:
-      "You are a polite restaurant waiter. Ask the user for their order, offer recommendations, and respond to any requests.",
-    exampleOfFirstMessageFromAi:
-      "Hello, I’m Ash, your server for today. Welcome to our restaurant! Is there anything in particular you’re craving, or would you like me to suggest some popular dishes?",
+    input: [
+      {
+        id: "scenario",
+        labelForUser: "Scenario Description",
+        labelForAi: "",
+        placeholder: "Describe your custom scenario here...",
+        type: "textarea",
+        defaultValue: "",
+        required: true,
+      },
+    ],
+    id: "custom",
+    title: "Your Custom Scenario",
+    subTitle: "Create your own role-play scenario with custom instructions.",
+    instructionToAi: "",
+    exampleOfFirstMessageFromAi: "",
     illustrationDescription:
-      "A cozy restaurant setting with a waiter holding a notepad, attentively taking an order from a customer seated at a table with a menu in hand.",
-    imageSrc: "https://cdn.midjourney.com/f0707de6-a685-47e5-b293-9df6258ad827/0_2.png",
-    voice: "ash",
+      "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
+    imageSrc: "https://cdn.midjourney.com/1ca9343e-839f-4b49-ac1f-9c7bfdea272e/0_0.png",
+    voice: "sage",
   },
   {
     id: "buying-a-train-ticket",
@@ -62,7 +84,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "Hi there, I’m Echo at Central Station. How can I help you with your travel plans today? Are you headed somewhere local or out of town?",
     illustrationDescription:
       "A busy train station with a ticket booth. A traveler with a backpack is talking to a ticket agent behind the counter, while a departure board shows various destinations.",
-    imageSrc: "https://cdn.midjourney.com/7dbb19b7-48e0-43e0-ab64-0627f99b92ab/0_1.png",
+    imageSrc: "https://cdn.midjourney.com/36b7ea13-f429-46ae-a6c7-19d3206ab6b0/0_3.png",
     voice: "echo",
   },
   {
@@ -76,7 +98,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "Good day, I’m Dr. Ash. Please make yourself comfortable. I understand you’ve come in with some concerns—could you describe your symptoms for me?",
     illustrationDescription:
       "A doctor in a white coat sitting at a desk, attentively listening to a patient who is describing their symptoms. A stethoscope and medical charts are visible in the background.",
-    imageSrc: "https://cdn.midjourney.com/b5fb4786-c14b-45ea-8d4d-d0da3b25b09d/0_0.png",
+    imageSrc: "https://cdn.midjourney.com/d853fe08-c7bc-431c-9eed-68c168a96ca0/0_3.png",
     voice: "ash",
   },
   {
@@ -90,8 +112,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "Hello, I’m Onyx at the Grand Skyline Hotel. We’re delighted to have you here. May I have your name so I can check your reservation? Also, let me know if you have any special requests.",
     illustrationDescription:
       "A modern hotel lobby with a friendly receptionist behind the counter, smiling at a traveler who is checking in with a suitcase in hand.",
-    imageSrc: "https://cdn.midjourney.com/bad65461-f447-4a0b-9e34-6dcae989579f/0_0.png",
-    voice: "onyx",
+    imageSrc: "https://cdn.midjourney.com/4db47c61-ff6c-448b-8528-65f4d4fa5992/0_0.png",
+    voice: "verse",
   },
   {
     id: "small-talk-with-a-stranger",
@@ -104,8 +126,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "Hey there, I'm Fable. This is my first time at an event like this. How about you? Enjoying yourself so far?",
     illustrationDescription:
       "Two people casually chatting at a coffee shop or park, both smiling and engaged in friendly conversation, while others are in the background enjoying the atmosphere.",
-    imageSrc: "https://cdn.midjourney.com/b31bc668-f850-4e0c-8eef-b83474105032/0_3.png",
-    voice: "fable",
+    imageSrc: "https://cdn.midjourney.com/c916a0f2-59d4-4d45-99c3-dda8a714cd6c/0_0.png",
+    voice: "sage",
   },
   {
     id: "at-the-grocery-store",
@@ -118,9 +140,25 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "Hi, I’m Nova here at FreshMart. Is there anything specific you’re looking for today, or would you like some help finding the best deals?",
     illustrationDescription:
       "A bright grocery store aisle with a friendly employee pointing towards shelves while a customer looks at a shopping list, searching for items.",
-    imageSrc: "https://cdn.midjourney.com/ade4332a-77e8-461a-b12f-38051ac1722a/0_3.png",
-    voice: "nova",
+    imageSrc: "https://cdn.midjourney.com/a7e56489-d409-4b73-ad87-1473565975dc/0_1.png",
+    voice: "verse",
   },
+
+  {
+    id: "calling-technical-support",
+    input: [],
+    title: "Calling Technical Support",
+    subTitle: "Practice troubleshooting a technical issue over the phone.",
+    instructionToAi:
+      "You are a technical support agent. Ask the user about their issue, guide them through troubleshooting steps, and provide solutions.",
+    exampleOfFirstMessageFromAi:
+      "Hello, you’ve reached TechEase Support. I’m Shimmer, and I’m here to help. Could you describe the issue you’re experiencing so I can guide you through some possible solutions?",
+    illustrationDescription:
+      "A person sitting at a desk, looking frustrated at a laptop or phone, while a headset-wearing customer support agent appears on a screen, offering assistance.",
+    imageSrc: "https://cdn.midjourney.com/1c00497c-3d10-4dc8-bdaf-f83c888ce371/0_1.png",
+    voice: "shimmer",
+  },
+
   {
     id: "making-a-doctors-appointment",
     input: [],
@@ -132,7 +170,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "Hello, you’ve reached Dr. Avery’s office. This is Ash speaking. May I have your name, and what’s the reason for your appointment? Also, let me know if you have any date preferences.",
     illustrationDescription:
       "A person sitting at a desk, talking on the phone while checking a calendar on their laptop, looking focused as they schedule a doctor's appointment.",
-    imageSrc: "https://cdn.midjourney.com/2244f60e-fadf-4b2a-ac8b-943c1c503159/0_0.png",
+    imageSrc: "https://cdn.midjourney.com/8226d079-3d2c-4122-81bc-dd1f9850603b/0_1.png",
     voice: "ash",
   },
   {
@@ -146,22 +184,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "Hi, I’m Sage at the Customer Service desk. I’m sorry to hear you need to return something. Could you tell me what went wrong with the item?",
     illustrationDescription:
       "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
-    imageSrc: "https://cdn.midjourney.com/efaaa8c9-b296-437b-991a-ea21baeb6e31/0_2.png",
+    imageSrc: "https://cdn.midjourney.com/2ac841c8-3569-45e0-a8aa-fe98e15ea5e2/0_1.png",
     voice: "sage",
-  },
-  {
-    id: "calling-technical-support",
-    input: [],
-    title: "Calling Technical Support",
-    subTitle: "Practice troubleshooting a technical issue over the phone.",
-    instructionToAi:
-      "You are a technical support agent. Ask the user about their issue, guide them through troubleshooting steps, and provide solutions.",
-    exampleOfFirstMessageFromAi:
-      "Hello, you’ve reached TechEase Support. I’m Shimmer, and I’m here to help. Could you describe the issue you’re experiencing so I can guide you through some possible solutions?",
-    illustrationDescription:
-      "A person sitting at a desk, looking frustrated at a laptop or phone, while a headset-wearing customer support agent appears on a screen, offering assistance.",
-    imageSrc: "https://cdn.midjourney.com/659ac576-86dc-40f7-ab53-f72120bb0924/0_1.png",
-    voice: "shimmer",
   },
 ];
 

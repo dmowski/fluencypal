@@ -5,16 +5,7 @@ const SMALL_CONVERSATION_MODEL: RealTimeModel = "gpt-4o-mini-realtime-preview";
 
 export type TextAiModel = "gpt-4o" | "gpt-4o-mini";
 
-export type AiVoice =
-  | "alloy"
-  | "ash"
-  | "coral"
-  | "echo"
-  | "fable"
-  | "onyx"
-  | "nova"
-  | "sage"
-  | "shimmer";
+export type AiVoice = "alloy" | "ash" | "ballad" | "coral" | "echo" | "sage" | "shimmer" | "verse";
 
 export const MODELS = {
   REALTIME_CONVERSATION: MAIN_CONVERSATION_MODEL,
