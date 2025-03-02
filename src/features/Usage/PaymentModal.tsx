@@ -35,7 +35,7 @@ export const PaymentModal = () => {
   const clickOnByMore = async () => {
     setIsShowPayments(true);
     sendTelegramRequest({
-      message: "User clicked on Buy More",
+      message: "Event: User clicked on Buy More",
       userEmail: auth?.userInfo?.email || "",
       languageCode: settings.languageCode || "en",
     });
