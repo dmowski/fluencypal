@@ -1,6 +1,13 @@
 import { SupportedLanguage } from "./lang";
 
-export type ConversationMode = "talk" | "talk-and-correct" | "beginner" | "words" | "rule";
+export type ConversationMode =
+  | "talk"
+  | "talkAndCorrect"
+  | "beginner"
+  | "words"
+  | "rule"
+  | "rolePlay";
+
 export interface ChatMessage {
   id: string;
   isBot: boolean;

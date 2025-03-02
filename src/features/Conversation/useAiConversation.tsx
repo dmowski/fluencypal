@@ -25,12 +25,14 @@ import { useWords } from "../Words/useWords";
 import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { firstAiMessage } from "./data";
+import { RolePlayInstruction } from "@/common/rolePlay";
 
 interface StartConversationProps {
   mode: ConversationMode;
   homework?: Homework;
   wordsToLearn?: string[];
   ruleToLearn?: string;
+  rolePlayScenario?: RolePlayInstruction;
 }
 
 interface AiConversationContextType {
@@ -86,7 +88,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const [isMuted, setIsMuted] = useLocalStorage<boolean>("isMuted", false);
   const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);
-  const modesWithoutHomework: ConversationMode[] = ["words", "rule"];
+  const modesWithoutHomework: ConversationMode[] = ["words", "rule", "rolePlay"];
   useEffect(() => {
     if (!conversationId || conversation.length === 0) return;
     history.setMessages(conversationId, conversation);
@@ -242,7 +244,7 @@ Speak slowly and clearly. Use ${fullLanguageName} language. Try to speak on user
 Use ${fullLanguageName} language during conversation.
 `,
       },
-      "talk-and-correct": {
+      talkAndCorrect: {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${fullLanguageName} teacher.
@@ -325,6 +327,13 @@ Craft a lesson that will help user to understand the rule.
 ${userInfo ? `Student info: ${userInfo}` : ""}
 `,
       },
+      rolePlay: {
+        ...baseConfig,
+        model: MODELS.SMALL_CONVERSATION,
+        initInstruction: `You are playing role-play conversation with user.
+Use only ${fullLanguageName} language during conversation.
+`,
+      },
     };
     return config;
   }, [fullLanguageName, userInfo]);
@@ -336,6 +345,7 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
     homework,
     wordsToLearn,
     ruleToLearn,
+    rolePlayScenario,
   }: StartConversationProps) => {
     if (!settings.languageCode) {
       throw new Error("Language is not set | startConversation");
@@ -372,6 +382,18 @@ ${wordsToLearn.join(" ")}
         instruction += `------
 Rule to learn:
 ${ruleToLearn}
+`;
+      }
+
+      if (rolePlayScenario) {
+        instruction += `------
+Role-play: ${rolePlayScenario.title}
+
+Your role:
+${rolePlayScenario.instructionToAi}
+
+You can start with message like:
+"${rolePlayScenario.exampleOfFirstMessageFromAi}"
 `;
       }
 

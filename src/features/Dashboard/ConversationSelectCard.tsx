@@ -86,7 +86,7 @@ export const ConversationSelectCard = () => {
           <Button
             variant="outlined"
             size="large"
-            onClick={() => aiConversation.startConversation({ mode: "talk-and-correct" })}
+            onClick={() => aiConversation.startConversation({ mode: "talkAndCorrect" })}
             startIcon={
               <TrendingUp
                 style={{

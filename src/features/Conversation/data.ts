@@ -4,9 +4,10 @@ import { SupportedLanguage } from "@/common/lang";
 export const conversationModeLabel: Record<ConversationMode, string> = {
   beginner: "Beginner",
   talk: "Just talk",
-  "talk-and-correct": "Talk & Correct",
+  talkAndCorrect: "Talk & Correct",
   words: "Words",
   rule: "Rule",
+  rolePlay: "Role Play",
 };
 
 export const firstAiMessage: Record<SupportedLanguage, string> = {
