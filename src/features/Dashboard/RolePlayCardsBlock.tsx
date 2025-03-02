@@ -29,7 +29,7 @@ export const RolePlayCardsBlock = () => {
       <Stack gap={"10px"}>
         <Stack
           sx={{
-            gap: "20px",
+            gap: "3px",
             display: "grid",
             gridTemplateColumns: "1fr 1fr ",
             "@media (max-width: 900px)": {
@@ -52,15 +52,17 @@ export const RolePlayCardsBlock = () => {
                     minHeight: "360px",
 
                     cursor: "pointer",
-                    borderRadius: "10px",
+                    borderRadius: "0px",
                     overflow: "hidden",
                     textAlign: "left",
                     padding: "0px",
                     boxSizing: "border-box",
                     color: "#fff",
+                    boxShadow: "0px 0px 0 1px rgba(0, 0, 0, 1)",
                     ":hover": {
-                      boxShadow:
-                        "0px 0px 20px 0px rgba(0,0,0,0.5), 0px 0px 0 1px rgba(255,255,255,0.2)",
+                      ".role-play-image": {
+                        opacity: 0.8,
+                      },
                     },
                   }}
                   component={"button"}
@@ -90,20 +92,23 @@ export const RolePlayCardsBlock = () => {
                         width: "100%",
                         paddingTop: "30px",
                         background:
-                          "linear-gradient(180deg, rgba(12, 12, 14, 0) 0%,  rgba(12, 12, 14, 1) 100%)",
+                          "linear-gradient(180deg, rgba(12, 12, 14, 0) 0%,  rgba(12, 12, 14, 0.3) 100%)",
                       }}
                     >
                       <Typography
+                        variant="h6"
                         sx={{
                           fontWeight: "500",
+                          textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
                         }}
                       >
                         {scenario.title}
                       </Typography>
                       <Typography
-                        variant="caption"
+                        variant="body2"
                         sx={{
                           opacity: 0.9,
+                          textShadow: "1px 1px 4px rgba(0, 0, 0, 0.6)",
                         }}
                       >
                         {scenario.subTitle}
@@ -112,6 +117,7 @@ export const RolePlayCardsBlock = () => {
                   </Stack>
                   {scenario.imageSrc && (
                     <Stack
+                      className="role-play-image"
                       sx={{
                         backgroundImage: `url(${scenario.imageSrc})`,
                         width: "100%",
