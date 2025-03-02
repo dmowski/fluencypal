@@ -31,7 +31,7 @@ export const RolePlayCardsBlock = () => {
           sx={{
             gap: "20px",
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr 1fr",
+            gridTemplateColumns: "1fr 1fr ",
             "@media (max-width: 900px)": {
               gridTemplateColumns: "1fr",
               gap: "40px",
@@ -49,7 +49,7 @@ export const RolePlayCardsBlock = () => {
                     backgroundColor: "#222",
                     border: "none",
                     alignItems: "flex-start",
-                    minHeight: "240px",
+                    minHeight: "360px",
 
                     cursor: "pointer",
                     borderRadius: "10px",
