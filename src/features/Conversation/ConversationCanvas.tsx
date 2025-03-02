@@ -10,6 +10,7 @@ import { SendHorizontal } from "lucide-react";
 import DoneIcon from "@mui/icons-material/Done";
 import { MicroButton } from "../uiKit/Button/MicroButton";
 import { KeyboardButton } from "../uiKit/Button/KeyboardButton";
+import { UserMessage } from "./UserMessage";
 
 export function ConversationCanvas() {
   const aiConversation = useAiConversation();
@@ -63,25 +64,7 @@ export function ConversationCanvas() {
               gap: "20px",
             }}
           >
-            {lastUserMessage && (
-              <Stack
-                sx={{
-                  borderBottom: `1px solid rgba(255, 255, 255, 0.1)`,
-                  paddingBottom: "5px",
-                  opacity: 0.9,
-                }}
-              >
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.5,
-                  }}
-                >
-                  You:
-                </Typography>
-                <Markdown>{lastUserMessage.text || ""}</Markdown>
-              </Stack>
-            )}
+            {lastUserMessage && <UserMessage message={lastUserMessage?.text} />}
 
             {lastBotMessage && (
               <Stack>

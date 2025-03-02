@@ -10,7 +10,8 @@ export const MODELS = {
   SMALL_CONVERSATION: SMALL_CONVERSATION_MODEL,
   gpt_4o_mini: "gpt-4o-mini",
   gpt_4o: "gpt-4o",
-};
+} as const;
+
 export const PROJECT_PROFIT_MARGIN = 4; //X
 
 export interface UsageEvent {
