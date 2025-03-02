@@ -7,10 +7,13 @@ import { useState } from "react";
 import MailIcon from "@mui/icons-material/Mail";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { useAuth } from "../Auth/useAuth";
+import { sendTelegramRequest } from "../Telegram/sendTextAiRequest";
+import { useSettings } from "../Settings/useSettings";
 
 export const PaymentModal = () => {
   const usage = useUsage();
   const auth = useAuth();
+  const settings = useSettings();
   const devEmails = ["dmowski.alex@gmail.com"];
   const isDev = auth.userInfo?.email && devEmails.includes(auth.userInfo.email);
   const notifications = useNotifications();
@@ -26,6 +29,15 @@ export const PaymentModal = () => {
     notifications.show(`Added $${amount} to your balance`, {
       severity: "success",
       autoHideDuration: 7000,
+    });
+  };
+
+  const clickOnByMore = async () => {
+    setIsShowPayments(true);
+    sendTelegramRequest({
+      message: "User clicked on Buy More",
+      userEmail: auth?.userInfo?.email || "",
+      languageCode: settings.languageCode || "en",
     });
   };
 
@@ -211,9 +223,7 @@ export const PaymentModal = () => {
                 </Stack>
               </Stack>
               <Button
-                onClick={() => {
-                  setIsShowPayments(true);
-                }}
+                onClick={clickOnByMore}
                 startIcon={<AddCardIcon />}
                 size="large"
                 variant="contained"
