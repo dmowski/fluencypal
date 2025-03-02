@@ -20,6 +20,10 @@ export function ConversationCanvas() {
     setUserMessage("");
   };
 
+  const lastUserMessage = aiConversation.conversation
+    .filter((message) => !message.isBot)
+    .find((_, index, arr) => index >= arr.length - 1);
+
   const lastBotMessage = aiConversation.conversation
     .filter((message) => message.isBot)
     .find((_, index, arr) => index >= arr.length - 1);
@@ -56,6 +60,26 @@ export function ConversationCanvas() {
               gap: "20px",
             }}
           >
+            {lastUserMessage && (
+              <Stack
+                sx={{
+                  borderBottom: `1px solid rgba(255, 255, 255, 0.1)`,
+                  paddingBottom: "5px",
+                  opacity: 0.9,
+                }}
+              >
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.5,
+                  }}
+                >
+                  You:
+                </Typography>
+                <Markdown>{lastUserMessage.text || ""}</Markdown>
+              </Stack>
+            )}
+
             {lastBotMessage && (
               <Stack>
                 <Typography
