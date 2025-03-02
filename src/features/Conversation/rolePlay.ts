@@ -11,6 +11,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     illustrationDescription:
       "A professional recruiter sitting at a desk, reviewing a candidate's resume, while the candidate sits across, looking slightly nervous but engaged in conversation.",
     imageSrc: "https://cdn.midjourney.com/d35bf476-a903-486b-a456-490908ebe7ae/0_2.png",
+    voice: "alloy",
   },
   {
     title: "In the Restaurant",
@@ -21,6 +22,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     illustrationDescription:
       "A cozy restaurant setting with a waiter holding a notepad, attentively taking an order from a customer seated at a table with a menu in hand.",
     imageSrc: "https://cdn.midjourney.com/f0707de6-a685-47e5-b293-9df6258ad827/0_2.png",
+    voice: "coral",
   },
   {
     title: "Buying a Train Ticket",
@@ -31,6 +33,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     illustrationDescription:
       "A busy train station with a ticket booth. A traveler with a backpack is talking to a ticket agent behind the counter, while a departure board shows various destinations.",
     imageSrc: "https://cdn.midjourney.com/7dbb19b7-48e0-43e0-ab64-0627f99b92ab/0_1.png",
+    voice: "echo",
   },
   {
     title: "Talking to a Doctor",
@@ -41,6 +44,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     illustrationDescription:
       "A doctor in a white coat sitting at a desk, attentively listening to a patient who is describing their symptoms. A stethoscope and medical charts are visible in the background.",
     imageSrc: "https://cdn.midjourney.com/b5fb4786-c14b-45ea-8d4d-d0da3b25b09d/0_0.png",
+    voice: "ash",
   },
   {
     title: "Hotel Check-in",
@@ -51,6 +55,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     illustrationDescription:
       "A modern hotel lobby with a friendly receptionist behind the counter, smiling at a traveler who is checking in with a suitcase in hand.",
     imageSrc: "https://cdn.midjourney.com/bad65461-f447-4a0b-9e34-6dcae989579f/0_0.png",
+    voice: "onyx",
   },
   {
     title: "Small Talk with a Stranger",
@@ -61,6 +66,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     illustrationDescription:
       "Two people casually chatting at a coffee shop or park, both smiling and engaged in friendly conversation, while others are in the background enjoying the atmosphere.",
     imageSrc: "https://cdn.midjourney.com/b31bc668-f850-4e0c-8eef-b83474105032/0_3.png",
+    voice: "fable",
   },
   {
     title: "At the Grocery Store",
@@ -71,6 +77,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     illustrationDescription:
       "A bright grocery store aisle with a friendly employee pointing towards shelves while a customer looks at a shopping list, searching for items.",
     imageSrc: "https://cdn.midjourney.com/ade4332a-77e8-461a-b12f-38051ac1722a/0_3.png",
+    voice: "nova",
   },
   {
     title: "Making a Doctor's Appointment",
@@ -81,6 +88,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     illustrationDescription:
       "A person sitting at a desk, talking on the phone while checking a calendar on their laptop, looking focused as they schedule a doctor's appointment.",
     imageSrc: "https://cdn.midjourney.com/2244f60e-fadf-4b2a-ac8b-943c1c503159/0_0.png",
+    voice: "ash",
   },
   {
     title: "Returning an Item in a Store",
@@ -91,6 +99,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     illustrationDescription:
       "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
     imageSrc: "https://cdn.midjourney.com/076dd9c1-9375-4094-ba3e-1a1035db5c54/0_3.png",
+    voice: "shimmer",
   },
   {
     title: "Calling Technical Support",
@@ -101,6 +110,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     illustrationDescription:
       "A person sitting at a desk, looking frustrated at a laptop or phone, while a headset-wearing customer support agent appears on a screen, offering assistance.",
     imageSrc: "https://cdn.midjourney.com/58a7180c-a278-4f53-ab7a-bfffa7d0636b/0_0.png",
+    voice: "sage",
   },
 ];
 

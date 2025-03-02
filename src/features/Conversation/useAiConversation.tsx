@@ -10,7 +10,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { MODELS } from "@/common/ai";
+import { AiVoice, MODELS } from "@/common/ai";
 import { AiRtcConfig, AiRtcInstance, AiTool, initAiRtc } from "./rtc";
 import { useLocalStorage } from "react-use";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
@@ -33,6 +33,7 @@ interface StartConversationProps {
   wordsToLearn?: string[];
   ruleToLearn?: string;
   rolePlayScenario?: RolePlayInstruction;
+  voice?: AiVoice;
 }
 
 interface AiConversationContextType {
@@ -354,6 +355,7 @@ Use only ${fullLanguageName} language during conversation.
     wordsToLearn,
     ruleToLearn,
     rolePlayScenario,
+    voice,
   }: StartConversationProps) => {
     if (!settings.languageCode) {
       throw new Error("Language is not set | startConversation");
@@ -406,7 +408,7 @@ You can start with message like:
       }
 
       console.log("instruction", instruction);
-      const conversation = await initAiRtc({ ...aiRtcConfig, initInstruction: instruction });
+      const conversation = await initAiRtc({ ...aiRtcConfig, initInstruction: instruction, voice });
       history.createConversation({ conversationId, languageCode: settings.languageCode, mode });
       setCommunicator(conversation);
     } catch (e) {

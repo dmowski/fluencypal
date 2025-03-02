@@ -70,6 +70,7 @@ export const RolePlayCardsBlock = () => {
                     aiConversation.startConversation({
                       mode: "rolePlay",
                       rolePlayScenario: scenario,
+                      voice: scenario.voice,
                     });
                   }}
                 >

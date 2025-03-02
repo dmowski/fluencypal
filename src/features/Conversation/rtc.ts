@@ -1,6 +1,5 @@
 "use client";
-import { calculateUsagePrice, RealTimeModel, UsageEvent } from "@/common/ai";
-import { getEphemeralKey } from "./getEphemeralKey";
+import { AiVoice, calculateUsagePrice, RealTimeModel, UsageEvent } from "@/common/ai";
 import { sleep } from "@/libs/sleep";
 import { ChatMessage } from "@/common/conversation";
 import { UsageLog } from "@/common/usage";
@@ -78,11 +77,19 @@ export interface AiTool extends AiToolForLlm {
   handler: (args: Record<string, string>) => Promise<void>;
 }
 
-const updateSession = async (
-  dataChannel: RTCDataChannel,
-  initInstruction: string,
-  aiTools: AiToolForLlm[]
-) => {
+interface UpdateSessionProps {
+  dataChannel: RTCDataChannel;
+  initInstruction: string;
+  aiTools: AiToolForLlm[];
+  voice?: AiVoice;
+}
+
+const updateSession = async ({
+  dataChannel,
+  initInstruction,
+  aiTools,
+  voice,
+}: UpdateSessionProps) => {
   if (!dataChannel) throw Error("Error on updateSession. dataChannel is not available");
 
   const event = {
@@ -93,6 +100,7 @@ const updateSession = async (
       input_audio_transcription: {
         model: "whisper-1",
       },
+      voice,
       turn_detection: {
         type: "server_vad",
         threshold: 0.5,
@@ -149,6 +157,7 @@ export interface AiRtcConfig {
   isMuted: boolean;
   onAddUsage: ({}: UsageLog) => void;
   languageCode: SupportedLanguage;
+  voice?: AiVoice;
 }
 
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
@@ -165,6 +174,7 @@ export const initAiRtc = async ({
   onAddDelta,
   onAddUsage,
   languageCode,
+  voice,
 }: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 
@@ -299,7 +309,7 @@ export const initAiRtc = async ({
   });
 
   const openHandler = async () => {
-    await updateSession(dataChannel, initInstruction, aiToolsForLlm);
+    await updateSession({ dataChannel, initInstruction, aiTools: aiToolsForLlm, voice });
     onOpen();
   };
 
@@ -349,7 +359,12 @@ export const initAiRtc = async ({
   };
 
   const updateSessionTrigger = async (instruction: string) => {
-    await updateSession(dataChannel, instruction, aiToolsForLlm);
+    await updateSession({
+      dataChannel,
+      initInstruction: instruction,
+      aiTools: aiToolsForLlm,
+      voice,
+    });
   };
 
   const triggerAiResponse = async () => {
