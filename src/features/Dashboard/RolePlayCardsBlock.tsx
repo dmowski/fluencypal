@@ -57,6 +57,7 @@ export const RolePlayCardsBlock = () => {
                     textAlign: "left",
                     padding: "0px",
                     boxSizing: "border-box",
+                    color: "#fff",
                     ":hover": {
                       boxShadow:
                         "0px 0px 20px 0px rgba(0,0,0,0.5), 0px 0px 0 1px rgba(255,255,255,0.2)",
