@@ -42,8 +42,8 @@ const auth =
 
 const storage = getStorage(app);
 const functions = getFunctions(app);
-
-const analytics = !isNodeEnv ? getAnalytics(app) : null;
+const isLocalhost = !isNodeEnv && window.location.hostname === "localhost";
+const analytics = !isNodeEnv && !isLocalhost ? getAnalytics(app) : null;
 
 const setCookiesGDPR = (enabled: boolean) => {
   if (!analytics) return;
