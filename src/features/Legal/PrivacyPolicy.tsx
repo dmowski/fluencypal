@@ -47,6 +47,7 @@ We may collect and process the following categories of personal data:
 1. **Email Address**: Used for account creation, login, and communication.  
 2. **Conversation Transcripts**: AI-generated dialogue, including messages you type or speak, which may be processed by OpenAI.  
 3. **Usage / Balance Information**: Includes your account balance, records of the free balance you receive, and usage history.  
+4. **Role-play Data**: Information about your role-play interactions, including messages, forms data and AI responses.
 
 **No Additional User Content**: We do not collect or store any uploaded files or images.
 

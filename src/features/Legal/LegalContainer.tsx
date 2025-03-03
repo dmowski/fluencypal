@@ -44,7 +44,7 @@ export const LegalContainer = ({ children, page }: LegalContainerProps) => {
           borderRadius: "5px",
           width: "100%",
           position: "relative",
-          zIndex: 9999999,
+          //zIndex: 9999999,
         }}
       >
         {children}

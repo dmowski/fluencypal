@@ -2,20 +2,28 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { setCookiesGDPR } from "../Firebase/init";
 import { useLocalStorage } from "react-use";
+import { useEffect, useState } from "react";
 
 export const CookiesPopup = () => {
-  const [isClosed, setClosed] = useLocalStorage("cookiesPopup", false);
+  const [isClosedStore, setClosedStore] = useLocalStorage("cookiesPopup", false);
+  const [isClosed, setClosed] = useState(true);
 
-  if (isClosed) return null;
+  useEffect(() => {
+    setClosed(isClosedStore || false);
+  }, [isClosedStore]);
+
+  if (isClosed) return <></>;
 
   const onReject = () => {
+    console.log("onReject CookiesPopup");
     setCookiesGDPR(false);
-    setClosed(true);
+    setClosedStore(true);
   };
 
   const onAccept = () => {
+    console.log("onAccept CookiesPopup");
     setCookiesGDPR(true);
-    setClosed(true);
+    setClosedStore(true);
   };
 
   return (
@@ -57,6 +65,8 @@ export const CookiesPopup = () => {
             flexDirection: "row",
             gap: "10px",
             alignItems: "center",
+            position: "relative",
+            zIndex: 9999999,
           }}
         >
           <Button
