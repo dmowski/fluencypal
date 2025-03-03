@@ -5,4 +5,5 @@ export interface UserSettings {
   createdAt: number | null;
   email: string;
   lastLoginAt: number | null;
+  lastLoginAtDateTime: string | null;
 }

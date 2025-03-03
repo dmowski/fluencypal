@@ -5,6 +5,7 @@ import { setDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/common/lang";
 import { db } from "../Firebase/db";
+import dayjs from "dayjs";
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -65,7 +66,14 @@ function useProvideSettings(): SettingsContextType {
 
   const saveLoginTime = async () => {
     if (!userId || !userSettingsDoc) return;
-    await setDoc(userSettingsDoc, { lastLoginAt: Date.now() }, { merge: true });
+    const lastLoginTimestamp = Date.now();
+    const formattedLastLogin = dayjs(lastLoginTimestamp).format("YYYY-MM-DD HH:mm:ss");
+
+    await setDoc(
+      userSettingsDoc,
+      { lastLoginAt: Date.now(), lastLoginAtDateTime: formattedLastLogin },
+      { merge: true }
+    );
   };
 
   useEffect(() => {
