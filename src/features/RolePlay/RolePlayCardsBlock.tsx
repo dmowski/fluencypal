@@ -1,15 +1,15 @@
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { useAiConversation } from "../Conversation/useAiConversation";
-import rolePlayScenarios from "../Conversation/rolePlayData";
+import rolePlayScenarios from "./rolePlayData";
 import { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { RolePlayInputResult, RolePlayInstruction } from "@/common/rolePlay";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLocalStorage } from "react-use";
 import { useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
+import { RolePlayInputResult, RolePlayInstruction } from "./types";
 
 const firstLimit = 6;
 const hardHeight = "300px";
@@ -102,159 +102,157 @@ export const RolePlayCardsBlock = () => {
         </Typography>
       </Stack>
       {selectedRolePlayScenario && (
-        <>
-          <CustomModal
-            padding="0"
-            isOpen={true}
-            onClose={() => setSelectedRolePlayScenario(null)}
-            width="min(90vw, 650px)"
+        <CustomModal
+          padding="0"
+          isOpen={true}
+          onClose={() => setSelectedRolePlayScenario(null)}
+          width="min(90vw, 650px)"
+        >
+          <Stack
+            sx={{
+              width: "100%",
+            }}
           >
             <Stack
               sx={{
                 width: "100%",
+                padding: "20px",
+                height: "min(320px, 40vh)",
+                boxSizing: "border-box",
+                overflow: "hidden",
+                justifyContent: "flex-end",
+                position: "relative",
+                borderRadius: "16px 16px 0 0",
+                background:
+                  "linear-gradient(180deg, rgba(12, 12, 14, 0) 0%,  rgba(12, 12, 14, 0.3) 100%)",
               }}
             >
-              <Stack
+              <Typography
+                variant="h4"
+                component="h2"
                 sx={{
-                  width: "100%",
-                  padding: "20px",
-                  height: "min(320px, 40vh)",
-                  boxSizing: "border-box",
-                  overflow: "hidden",
-                  justifyContent: "flex-end",
-                  position: "relative",
-                  borderRadius: "16px 16px 0 0",
-                  background:
-                    "linear-gradient(180deg, rgba(12, 12, 14, 0) 0%,  rgba(12, 12, 14, 0.3) 100%)",
+                  color: "#fff",
+                  textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
+                  textTransform: "uppercase",
+                  fontWeight: "900",
                 }}
               >
-                <Typography
-                  variant="h4"
-                  component="h2"
-                  sx={{
-                    color: "#fff",
-                    textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
-                    textTransform: "uppercase",
-                    fontWeight: "900",
-                  }}
-                >
-                  {selectedRolePlayScenario.title}
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "#fff",
-                    textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
-                  }}
-                >
-                  {selectedRolePlayScenario.subTitle}
-                </Typography>
+                {selectedRolePlayScenario.title}
+              </Typography>
+              <Typography
+                sx={{
+                  color: "#fff",
+                  textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
+                }}
+              >
+                {selectedRolePlayScenario.subTitle}
+              </Typography>
 
+              <Stack
+                sx={{
+                  backgroundImage: `url(${selectedRolePlayScenario.imageSrc})`,
+                  width: "100%",
+                  height: "100%",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  zIndex: -1,
+                }}
+              ></Stack>
+            </Stack>
+
+            <Stack
+              component={"form"}
+              sx={{
+                padding: "25px 20px 20px 20px",
+                gap: "20px",
+                alignItems: "flex-start",
+              }}
+              onSubmit={onSubmit}
+            >
+              {selectedRolePlayScenario.input.length > 0 && (
                 <Stack
                   sx={{
-                    backgroundImage: `url(${selectedRolePlayScenario.imageSrc})`,
+                    gap: "15px",
                     width: "100%",
-                    height: "100%",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    zIndex: -1,
                   }}
-                ></Stack>
-              </Stack>
-
-              <Stack
-                component={"form"}
-                sx={{
-                  padding: "25px 20px 20px 20px",
-                  gap: "20px",
-                  alignItems: "flex-start",
-                }}
-                onSubmit={onSubmit}
-              >
-                {selectedRolePlayScenario.input.length > 0 && (
-                  <Stack
+                >
+                  <Typography
+                    variant="body2"
                     sx={{
-                      gap: "15px",
-                      width: "100%",
+                      color: "#fff",
+                      textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
                     }}
                   >
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "#fff",
-                        textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
-                      }}
-                    >
-                      Before you start, please fill some information to make it more realistic.
-                    </Typography>
+                    Before you start, please fill some information to make it more realistic.
+                  </Typography>
 
-                    <Stack
-                      sx={{
-                        gap: "20px",
-                        width: "100%",
-                        maxWidth: "600px",
-                      }}
-                    >
-                      {selectedRolePlayScenario.input.map((input, index) => {
-                        const type = input.type;
-                        const inputId = selectedRolePlayScenario.id + "-" + input.id;
-                        const value = userInputs?.[inputId] || input.defaultValue || "";
+                  <Stack
+                    sx={{
+                      gap: "20px",
+                      width: "100%",
+                      maxWidth: "600px",
+                    }}
+                  >
+                    {selectedRolePlayScenario.input.map((input, index) => {
+                      const type = input.type;
+                      const inputId = selectedRolePlayScenario.id + "-" + input.id;
+                      const value = userInputs?.[inputId] || input.defaultValue || "";
 
-                        if (type == "text-input") {
-                          return (
-                            <TextField
-                              key={index}
-                              value={value}
-                              onChange={(e) => {
-                                setUserInputs({
-                                  ...userInputs,
-                                  [inputId]: e.target.value,
-                                });
-                              }}
-                              required={input.required}
-                              disabled={isStarting}
-                              label={input.labelForUser}
-                              placeholder={input.placeholder}
-                              variant="outlined"
-                            />
-                          );
-                        } else {
-                          return (
-                            <TextField
-                              key={index}
-                              disabled={isStarting}
-                              multiline
-                              required={input.required}
-                              value={value}
-                              onChange={(e) => {
-                                setUserInputs({
-                                  ...userInputs,
-                                  [inputId]: e.target.value,
-                                });
-                              }}
-                              rows={4}
-                              label={input.labelForUser}
-                              placeholder={input.placeholder}
-                              variant="outlined"
-                            />
-                          );
-                        }
-                      })}
-                    </Stack>
+                      if (type == "text-input") {
+                        return (
+                          <TextField
+                            key={index}
+                            value={value}
+                            onChange={(e) => {
+                              setUserInputs({
+                                ...userInputs,
+                                [inputId]: e.target.value,
+                              });
+                            }}
+                            required={input.required}
+                            disabled={isStarting}
+                            label={input.labelForUser}
+                            placeholder={input.placeholder}
+                            variant="outlined"
+                          />
+                        );
+                      } else {
+                        return (
+                          <TextField
+                            key={index}
+                            disabled={isStarting}
+                            multiline
+                            required={input.required}
+                            value={value}
+                            onChange={(e) => {
+                              setUserInputs({
+                                ...userInputs,
+                                [inputId]: e.target.value,
+                              });
+                            }}
+                            rows={4}
+                            label={input.labelForUser}
+                            placeholder={input.placeholder}
+                            variant="outlined"
+                          />
+                        );
+                      }
+                    })}
                   </Stack>
-                )}
+                </Stack>
+              )}
 
-                <Button size="large" variant="contained" type="submit" disabled={isStarting}>
-                  {isStarting ? "Loading..." : "Start"}
-                </Button>
-              </Stack>
+              <Button size="large" variant="contained" type="submit" disabled={isStarting}>
+                {isStarting ? "Loading..." : "Start"}
+              </Button>
             </Stack>
-          </CustomModal>
-        </>
+          </Stack>
+        </CustomModal>
       )}
 
       <Stack gap={"10px"}>

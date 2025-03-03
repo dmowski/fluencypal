@@ -1,6 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { maxLandingWidth, subTitleFontSize } from "./landingSettings";
-import rolePlayScenarios from "../Conversation/rolePlayData";
+import rolePlayScenarios from "../RolePlay/rolePlayData";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export const RolePlayDemo = () => {

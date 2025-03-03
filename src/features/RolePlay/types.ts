@@ -1,4 +1,4 @@
-import { AiVoice } from "./ai";
+import { AiVoice } from "@/common/ai";
 
 export interface InputStructureForUser {
   id: string;

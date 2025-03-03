@@ -1,4 +1,4 @@
-import { RolePlayInstruction } from "@/common/rolePlay";
+import { RolePlayInstruction } from "./types";
 
 const rolePlayScenarios: Array<RolePlayInstruction> = [
   {

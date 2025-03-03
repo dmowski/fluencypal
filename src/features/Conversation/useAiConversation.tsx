@@ -25,7 +25,7 @@ import { useWords } from "../Words/useWords";
 import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { firstAiMessage } from "./data";
-import { RolePlayInputResult, RolePlayInstruction } from "@/common/rolePlay";
+import { RolePlayInputResult, RolePlayInstruction } from "../RolePlay/types";
 
 interface StartConversationProps {
   mode: ConversationMode;

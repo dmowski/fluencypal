@@ -16,7 +16,7 @@ import { TasksCard } from "./TasksCard";
 import { ConversationSelectCard } from "./ConversationSelectCard";
 import { ProgressCard } from "./ProgressCard";
 import { HomeworkCard } from "./HomeworkCard";
-import { RolePlayCardsBlock } from "./RolePlayCardsBlock";
+import { RolePlayCardsBlock } from "../RolePlay/RolePlayCardsBlock";
 
 export function Dashboard() {
   const settings = useSettings();
