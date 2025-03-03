@@ -43,9 +43,10 @@ const auth =
 const storage = getStorage(app);
 const functions = getFunctions(app);
 
-const analytics = getAnalytics(app);
+const analytics = !isNodeEnv ? getAnalytics(app) : null;
 
 const setCookiesGDPR = (enabled: boolean) => {
+  if (!analytics) return;
   setAnalyticsCollectionEnabled(analytics, enabled);
 };
 
