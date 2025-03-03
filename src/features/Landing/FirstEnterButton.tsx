@@ -19,7 +19,7 @@ export const FirstEnterButton = () => {
         alignItems: "center",
         gap: "5px",
         position: "relative",
-        zIndex: 9999,
+        zIndex: 1,
         opacity: isVisible ? 1 : 0,
         transition: "opacity 1s",
       }}
