@@ -16,6 +16,7 @@ import { WordsProvider } from "@/features/Words/useWords";
 import { RulesProvider } from "@/features/Rules/useRules";
 import { TextAiProvider } from "@/features/Ai/useTextAi";
 import { AiUserInfoProvider } from "@/features/Ai/useAiUserInfo";
+import { CookiesPopup } from "@/features/Legal/CookiesPopup";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -108,6 +109,7 @@ export default function RootLayout({
               </AuthProvider>
             </NotificationsProviderWrapper>
           </AppRouterCacheProvider>
+          <CookiesPopup />
         </ThemeProvider>
       </body>
     </html>
