@@ -118,7 +118,7 @@ export const RolePlayCardsBlock = () => {
                 sx={{
                   width: "100%",
                   padding: "20px",
-                  height: "min(300px, 30vh)",
+                  height: "min(320px, 40vh)",
                   boxSizing: "border-box",
                   overflow: "hidden",
                   justifyContent: "flex-end",
