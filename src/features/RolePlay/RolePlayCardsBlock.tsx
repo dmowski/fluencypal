@@ -1,4 +1,4 @@
-import { Button, Stack, TextField, Typography } from "@mui/material";
+import { Button, ButtonGroup, FormLabel, Stack, TextField, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import rolePlayScenarios from "./rolePlayData";
@@ -9,7 +9,13 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLocalStorage } from "react-use";
 import { useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
-import { RolePlayInputResult, RolePlayInstruction } from "./types";
+import {
+  InputStructureForUser,
+  RolePlayInputResult,
+  RolePlayInputType,
+  RolePlayInstruction,
+} from "./types";
+import { useSettings } from "../Settings/useSettings";
 
 const firstLimit = 6;
 const hardHeight = "300px";
@@ -17,6 +23,7 @@ const hardHeight = "300px";
 export const RolePlayCardsBlock = () => {
   const aiConversation = useAiConversation();
   const textAi = useTextAi();
+  const settings = useSettings();
 
   const [isLimited, setIsLimited] = useState(true);
   const [isStarting, setIsStarting] = useState(false);
@@ -36,12 +43,40 @@ export const RolePlayCardsBlock = () => {
     scenario: RolePlayInstruction,
     rolePlayInputs: RolePlayInputResult[]
   ) => {
+    const instruction = scenario.instructionCreator(
+      scenario,
+      settings.fullLanguageName || "English",
+      rolePlayInputs
+    );
     aiConversation.startConversation({
-      mode: "rolePlay",
-      rolePlayScenario: scenario,
-      rolePlayInputs,
+      mode: "custom",
+      customInstruction: instruction,
       voice: scenario.voice,
     });
+  };
+
+  const modeProcessors: Record<
+    RolePlayInputType,
+    (input: InputStructureForUser, userValue: string) => Promise<string>
+  > = {
+    textarea: async (input, userValue) => {
+      if (!input.aiSummarizingInstruction || userValue.length < 1000) {
+        return userValue;
+      }
+      const aiResult = await textAi.generate({
+        systemMessage: input.aiSummarizingInstruction,
+        userMessage: userValue,
+        model: MODELS.gpt_4o,
+      });
+      return aiResult || userValue;
+    },
+    "text-input": async (input, userValue) => {
+      return userValue;
+    },
+    options: async (input, userValue) => {
+      const aiOptions = input.optionsAiDescriptions || {};
+      return aiOptions[userValue] || userValue;
+    },
   };
 
   const prepareUserInputs = async () => {
@@ -51,19 +86,7 @@ export const RolePlayCardsBlock = () => {
       selectedRolePlayScenario.input.map(async (input) => {
         const inputId = selectedRolePlayScenario.id + "-" + input.id;
         const userValue = userInputs?.[inputId] || "";
-        let processedUserValue = userValue;
-
-        if (input.aiSummarizingInstruction && userValue.length > 1000) {
-          const aiResult = await textAi.generate({
-            systemMessage: input.aiSummarizingInstruction,
-            userMessage: userValue,
-            model: MODELS.gpt_4o,
-          });
-          if (aiResult) {
-            console.log("aiResult after summarizing", aiResult);
-            processedUserValue = aiResult;
-          }
-        }
+        let processedUserValue = await modeProcessors[input.type](input, userValue);
 
         const inputRecord: RolePlayInputResult = {
           labelForAi: input.labelForAi,
@@ -202,9 +225,8 @@ export const RolePlayCardsBlock = () => {
                       const type = input.type;
                       const inputId = selectedRolePlayScenario.id + "-" + input.id;
                       const value = userInputs?.[inputId] || input.defaultValue || "";
-
-                      if (type == "text-input") {
-                        return (
+                      const inputRenderMap: Record<RolePlayInputType, React.ReactElement> = {
+                        "text-input": (
                           <TextField
                             key={index}
                             value={value}
@@ -220,9 +242,8 @@ export const RolePlayCardsBlock = () => {
                             placeholder={input.placeholder}
                             variant="outlined"
                           />
-                        );
-                      } else {
-                        return (
+                        ),
+                        textarea: (
                           <TextField
                             key={index}
                             disabled={isStarting}
@@ -240,14 +261,58 @@ export const RolePlayCardsBlock = () => {
                             placeholder={input.placeholder}
                             variant="outlined"
                           />
-                        );
-                      }
+                        ),
+                        options: (
+                          <Stack
+                            key={index}
+                            sx={{
+                              gap: "3px",
+                              paddingBottom: "5px",
+                            }}
+                          >
+                            <Typography
+                              variant="caption"
+                              sx={{
+                                opacity: 0.7,
+                              }}
+                            >
+                              {input.labelForUser}
+                            </Typography>
+                            <ButtonGroup>
+                              {input.options?.map((option, optionIndex) => (
+                                <Button
+                                  key={optionIndex}
+                                  onClick={() => {
+                                    setUserInputs({
+                                      ...userInputs,
+                                      [inputId]: option,
+                                    });
+                                  }}
+                                  variant={value === option ? "contained" : "outlined"}
+                                >
+                                  {option}
+                                </Button>
+                              ))}
+                            </ButtonGroup>
+                          </Stack>
+                        ),
+                      };
+
+                      return inputRenderMap[type];
                     })}
                   </Stack>
                 </Stack>
               )}
 
-              <Button size="large" variant="contained" type="submit" disabled={isStarting}>
+              <Button
+                sx={{
+                  padding: "10px 30px",
+                }}
+                size="large"
+                variant="contained"
+                type="submit"
+                disabled={isStarting}
+              >
                 {isStarting ? "Loading..." : "Start"}
               </Button>
             </Stack>

@@ -32,9 +32,8 @@ interface StartConversationProps {
   homework?: Homework;
   wordsToLearn?: string[];
   ruleToLearn?: string;
-  rolePlayScenario?: RolePlayInstruction;
   voice?: AiVoice;
-  rolePlayInputs?: RolePlayInputResult[];
+  customInstruction?: string;
 }
 
 interface AiConversationContextType {
@@ -337,12 +336,10 @@ Craft a lesson that will help user to understand the rule.
 ${userInfo ? `Student info: ${userInfo}` : ""}
 `,
       },
-      rolePlay: {
+      custom: {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
-        initInstruction: `You are playing role-play conversation with user.
-Use only ${fullLanguageName} language during conversation.
-`,
+        initInstruction: ``,
       },
     };
     return config;
@@ -355,8 +352,7 @@ Use only ${fullLanguageName} language during conversation.
     homework,
     wordsToLearn,
     ruleToLearn,
-    rolePlayScenario,
-    rolePlayInputs,
+    customInstruction,
     voice,
   }: StartConversationProps) => {
     if (!settings.languageCode) {
@@ -397,33 +393,11 @@ ${ruleToLearn}
 `;
       }
 
-      if (rolePlayScenario) {
-        const additionalInfo = rolePlayInputs
-          ? rolePlayInputs
-              .filter((userInput) => userInput.userValue)
-              .map((userInput) => `${userInput.labelForAi}: ${userInput.userValue}`)
-              .join("\n")
-          : "";
-        instruction += `------
-Role-play: ${rolePlayScenario.title}
-
-Your role:
-${rolePlayScenario.instructionToAi}
-
-
-You can start with message like:
-"${rolePlayScenario.exampleOfFirstMessageFromAi}"
-
-${
-  additionalInfo
-    ? `Additional info (Use this info on your start message):
-${additionalInfo}`
-    : ""
-}
-`;
+      if (customInstruction) {
+        instruction = customInstruction;
       }
-
-      console.log("instruction", instruction);
+      console.log("instruction:");
+      console.log(instruction);
       const conversation = await initAiRtc({ ...aiRtcConfig, initInstruction: instruction, voice });
       history.createConversation({ conversationId, languageCode: settings.languageCode, mode });
       setCommunicator(conversation);

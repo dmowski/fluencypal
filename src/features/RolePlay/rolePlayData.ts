@@ -1,6 +1,88 @@
-import { RolePlayInstruction } from "./types";
+import { AiRolePlayInstructionCreator, RolePlayInputResult, RolePlayInstruction } from "./types";
+
+const getStartDefaultInstruction = (fullLanguageName: string) => {
+  return `You are playing role-play conversation with user.
+Use only ${fullLanguageName} language during conversation.`;
+};
+
+const createAdditionalInstructionFormUserInput = (
+  scenario: RolePlayInstruction,
+  rolePlayInputs: RolePlayInputResult[]
+) => {
+  const additionalInfo = rolePlayInputs
+    ? rolePlayInputs
+        .filter((userInput) => userInput.userValue)
+        .map((userInput) => `${userInput.labelForAi}: ${userInput.userValue}`)
+        .join("\n")
+    : "";
+  const additionalInstruction = `------
+Role-play: ${scenario.title}
+
+Your role:
+${scenario.instructionToAi}
+
+You can start with message like:
+"${scenario.exampleOfFirstMessageFromAi}"
+
+${
+  additionalInfo
+    ? `Additional info:
+${additionalInfo}`
+    : ""
+}
+`;
+  return additionalInstruction;
+};
+
+const getDefaultInstruction: AiRolePlayInstructionCreator = (
+  scenario,
+  fullLanguageName,
+  userInput
+) => {
+  const instruction = getStartDefaultInstruction(fullLanguageName);
+  const additionalInfo = createAdditionalInstructionFormUserInput(scenario, userInput);
+  return `${instruction}
+${additionalInfo}`;
+};
 
 const rolePlayScenarios: Array<RolePlayInstruction> = [
+  {
+    id: "meeting-dog-owners-in-the-park",
+    input: [
+      {
+        type: "options",
+        id: "languageLevel",
+
+        labelForAi: "Language level of user",
+        placeholder: "",
+        defaultValue: "Intermediate",
+        options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
+
+        labelForUser: "Your Language Level",
+        optionsAiDescriptions: {
+          Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.`,
+          Intermediate:
+            "Can hold conversations on familiar topics. Use idiomatic expressions and ask follow-up questions.",
+          Advanced:
+            "Comfortable with complex discussions. Use idiomatic expressions and ask open-ended questions.",
+          Fluent:
+            "Native or near-native proficiency. Use advanced vocabulary and ask for detailed opinions.",
+        },
+        required: false,
+      },
+    ],
+    title: "Chat with a Fellow Dog Owner",
+    subTitle: "Make friendly small talk with another dog owner in a local park.",
+    instructionToAi:
+      "You are a friendly dog owner who meets the user at a park. Greet them warmly, ask about their dog, share experiences, and discuss tips or fun stories about caring for dogs.",
+    exampleOfFirstMessageFromAi:
+      "Hi there! I’m Jade, and this little guy is Milo. He’s always excited to meet new friends at the park. Your pup looks so energetic—do you two come here often?",
+    illustrationDescription:
+      "Two dog owners in a green park setting, each with a leashed dog, smiling and engaged in casual conversation while their dogs sniff around.",
+    imageSrc: "/role/20897efe-6b4d-4f97-b8e9-164e35381d37.jpeg",
+    voice: "sage",
+    instructionCreator: getDefaultInstruction,
+  },
   {
     id: "in-the-restaurant",
     input: [],
@@ -14,6 +96,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "A cozy restaurant setting with a waiter holding a notepad, attentively taking an order from a customer seated at a table with a menu in hand.",
     imageSrc: "/role/acde68cd-1db6-4b69-be42-d2071b9ee1e8.jpeg",
     voice: "ash",
+    instructionCreator: getDefaultInstruction,
   },
   {
     id: "job-interview",
@@ -50,6 +133,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "A professional recruiter sitting at a desk, reviewing a candidate's resume, while the candidate sits across, looking slightly nervous but engaged in conversation.",
     imageSrc: "/role/07d20442-758f-42a9-81b2-3dc7bf4fe248.jpeg",
     voice: "alloy",
+    instructionCreator: getDefaultInstruction,
   },
   {
     input: [
@@ -72,6 +156,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
     imageSrc: "/role/1ca9343e-839f-4b49-ac1f-9c7bfdea272e.jpeg",
     voice: "sage",
+    instructionCreator: getDefaultInstruction,
   },
   {
     id: "buying-a-train-ticket",
@@ -86,6 +171,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "A busy train station with a ticket booth. A traveler with a backpack is talking to a ticket agent behind the counter, while a departure board shows various destinations.",
     imageSrc: "/role/36b7ea13-f429-46ae-a6c7-19d3206ab6b0.jpeg",
     voice: "echo",
+    instructionCreator: getDefaultInstruction,
   },
   {
     id: "talking-to-a-doctor",
@@ -100,6 +186,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "A doctor in a white coat sitting at a desk, attentively listening to a patient who is describing their symptoms. A stethoscope and medical charts are visible in the background.",
     imageSrc: "/role/d853fe08-c7bc-431c-9eed-68c168a96ca0.jpeg",
     voice: "ash",
+    instructionCreator: getDefaultInstruction,
   },
   {
     id: "hotel-check-in",
@@ -114,6 +201,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "A modern hotel lobby with a friendly receptionist behind the counter, smiling at a traveler who is checking in with a suitcase in hand.",
     imageSrc: "/role/4db47c61-ff6c-448b-8528-65f4d4fa5992.jpeg",
     voice: "verse",
+    instructionCreator: getDefaultInstruction,
   },
   {
     id: "small-talk-with-a-stranger",
@@ -128,6 +216,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "Two people casually chatting at a coffee shop or park, both smiling and engaged in friendly conversation, while others are in the background enjoying the atmosphere.",
     imageSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c.jpeg",
     voice: "sage",
+    instructionCreator: getDefaultInstruction,
   },
   {
     id: "at-the-grocery-store",
@@ -142,6 +231,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "A bright grocery store aisle with a friendly employee pointing towards shelves while a customer looks at a shopping list, searching for items.",
     imageSrc: "/role/a7e56489-d409-4b73-ad87-1473565975dc.jpeg",
     voice: "verse",
+    instructionCreator: getDefaultInstruction,
   },
 
   {
@@ -157,6 +247,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "A person sitting at a desk, looking frustrated at a laptop or phone, while a headset-wearing customer support agent appears on a screen, offering assistance.",
     imageSrc: "/role/1c00497c-3d10-4dc8-bdaf-f83c888ce371.jpeg",
     voice: "shimmer",
+    instructionCreator: getDefaultInstruction,
   },
 
   {
@@ -172,6 +263,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "A person sitting at a desk, talking on the phone while checking a calendar on their laptop, looking focused as they schedule a doctor's appointment.",
     imageSrc: "/role/8226d079-3d2c-4122-81bc-dd1f9850603b.jpeg",
     voice: "ash",
+    instructionCreator: getDefaultInstruction,
   },
   {
     id: "returning-an-item-in-a-store",
@@ -186,20 +278,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
     imageSrc: "/role/2ac841c8-3569-45e0-a8aa-fe98e15ea5e2.jpeg",
     voice: "sage",
-  },
-  {
-    id: "meeting-dog-owners-in-the-park",
-    input: [],
-    title: "Chat with a Fellow Dog Owner",
-    subTitle: "Make friendly small talk with another dog owner in a local park.",
-    instructionToAi:
-      "You are a friendly dog owner who meets the user at a park. Greet them warmly, ask about their dog, share experiences, and discuss tips or fun stories about caring for dogs.",
-    exampleOfFirstMessageFromAi:
-      "Hi there! I’m Jade, and this little guy is Milo. He’s always excited to meet new friends at the park. Your pup looks so energetic—do you two come here often?",
-    illustrationDescription:
-      "Two dog owners in a green park setting, each with a leashed dog, smiling and engaged in casual conversation while their dogs sniff around.",
-    imageSrc: "/role/20897efe-6b4d-4f97-b8e9-164e35381d37.jpeg",
-    voice: "sage",
+    instructionCreator: getDefaultInstruction,
   },
 ];
 

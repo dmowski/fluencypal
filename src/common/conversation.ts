@@ -1,12 +1,6 @@
 import { SupportedLanguage } from "./lang";
 
-export type ConversationMode =
-  | "talk"
-  | "talkAndCorrect"
-  | "beginner"
-  | "words"
-  | "rule"
-  | "rolePlay";
+export type ConversationMode = "talk" | "talkAndCorrect" | "beginner" | "words" | "rule" | "custom";
 
 export interface ChatMessage {
   id: string;
