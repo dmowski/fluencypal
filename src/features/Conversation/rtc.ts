@@ -82,6 +82,7 @@ interface UpdateSessionProps {
   initInstruction: string;
   aiTools: AiToolForLlm[];
   voice?: AiVoice;
+  languageCode: SupportedLanguage;
 }
 
 const updateSession = async ({
@@ -89,6 +90,7 @@ const updateSession = async ({
   initInstruction,
   aiTools,
   voice,
+  languageCode,
 }: UpdateSessionProps) => {
   if (!dataChannel) throw Error("Error on updateSession. dataChannel is not available");
 
@@ -99,6 +101,7 @@ const updateSession = async ({
       tools: aiTools,
       input_audio_transcription: {
         model: "whisper-1",
+        language: languageCode,
       },
       voice,
       turn_detection: {
@@ -309,7 +312,13 @@ export const initAiRtc = async ({
   });
 
   const openHandler = async () => {
-    await updateSession({ dataChannel, initInstruction, aiTools: aiToolsForLlm, voice });
+    await updateSession({
+      dataChannel,
+      initInstruction,
+      aiTools: aiToolsForLlm,
+      voice,
+      languageCode,
+    });
     onOpen();
   };
 
@@ -363,6 +372,7 @@ export const initAiRtc = async ({
       dataChannel,
       initInstruction: instruction,
       aiTools: aiToolsForLlm,
+      languageCode,
       voice,
     });
   };
