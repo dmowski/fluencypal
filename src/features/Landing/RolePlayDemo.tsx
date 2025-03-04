@@ -2,6 +2,7 @@ import { Button, Link, Stack, Typography } from "@mui/material";
 import { buttonStyle, maxLandingWidth, subTitleFontStyle, titleFontStyle } from "./landingSettings";
 import rolePlayScenarios from "../RolePlay/rolePlayData";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { RolePlayScroller } from "./RolePlayScroller";
 
 export const RolePlayDemo = () => {
   return (
@@ -82,10 +83,11 @@ export const RolePlayDemo = () => {
                 paddingTop: "10px",
                 scrollbarWidth: "none",
               }}
+              id="role-play-scenarios-scroller"
             >
               <Stack
                 sx={{
-                  gap: "20px",
+                  gap: "30px",
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "center",
@@ -106,10 +108,10 @@ export const RolePlayDemo = () => {
                         backgroundColor: "rgba(0, 0, 10, 0.01)",
                         color: "#111",
                         border: "1px solid rgba(0, 0, 0, 0.1)",
-                        width: "400px",
+                        width: "380px",
                         maxWidth: "calc(100vw - 30px)",
                         alignItems: "flex-start",
-                        height: "350px",
+                        height: "370px",
                         cursor: "pointer",
                         borderRadius: "15px",
                         overflow: "hidden",
@@ -129,7 +131,7 @@ export const RolePlayDemo = () => {
                         sx={{
                           backgroundImage: `url(${scenario.imageSrc})`,
                           width: "100%",
-                          height: "200px",
+                          height: "230px",
                           backgroundSize: "cover",
                           backgroundPosition: "center",
                           top: 0,
@@ -170,6 +172,7 @@ export const RolePlayDemo = () => {
               </Stack>
             </Stack>
           </Stack>
+          <RolePlayScroller />
           <Stack
             sx={{
               alignItems: "center",
