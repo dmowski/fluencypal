@@ -25,4 +25,11 @@ export interface TextUsageLog extends BaseUsageLog {
   model: TextAiModel;
 }
 
-export type UsageLog = RealtimeUsageLog | TextUsageLog;
+export interface AudioUsageLog extends BaseUsageLog {
+  type: "audio";
+  price: number;
+  size: number;
+  duration: number;
+}
+
+export type UsageLog = RealtimeUsageLog | TextUsageLog | AudioUsageLog;

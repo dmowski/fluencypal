@@ -36,3 +36,14 @@ export interface SendSdpOfferRequest {
 export interface SendSdpOfferResponse {
   sdpResponse: string;
 }
+
+export interface GetAudioUrlRequest {
+  text: string;
+}
+
+export interface GetAudioUrlResponse {
+  text: string;
+  url: string;
+  price: number;
+  duration: number;
+}

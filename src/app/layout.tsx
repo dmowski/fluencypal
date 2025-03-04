@@ -17,6 +17,7 @@ import { RulesProvider } from "@/features/Rules/useRules";
 import { TextAiProvider } from "@/features/Ai/useTextAi";
 import { AiUserInfoProvider } from "@/features/Ai/useAiUserInfo";
 import { CookiesPopup } from "@/features/Legal/CookiesPopup";
+import { AudioProvider } from "@/features/Audio/useAudio";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -90,19 +91,21 @@ export default function RootLayout({
                 <SettingsProvider>
                   <UsageProvider>
                     <TextAiProvider>
-                      <AiUserInfoProvider>
-                        <WordsProvider>
-                          <ChatHistoryProvider>
-                            <RulesProvider>
-                              <TasksProvider>
-                                <HomeworkProvider>
-                                  <AiConversationProvider>{children}</AiConversationProvider>
-                                </HomeworkProvider>
-                              </TasksProvider>
-                            </RulesProvider>
-                          </ChatHistoryProvider>
-                        </WordsProvider>
-                      </AiUserInfoProvider>
+                      <AudioProvider>
+                        <AiUserInfoProvider>
+                          <WordsProvider>
+                            <ChatHistoryProvider>
+                              <RulesProvider>
+                                <TasksProvider>
+                                  <HomeworkProvider>
+                                    <AiConversationProvider>{children}</AiConversationProvider>
+                                  </HomeworkProvider>
+                                </TasksProvider>
+                              </RulesProvider>
+                            </ChatHistoryProvider>
+                          </WordsProvider>
+                        </AiUserInfoProvider>
+                      </AudioProvider>
                     </TextAiProvider>
                   </UsageProvider>
                 </SettingsProvider>
