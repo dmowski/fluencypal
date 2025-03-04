@@ -2,7 +2,7 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../uiKit/Markdown/Markdown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { Textarea } from "../uiKit/Input/Textarea";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
@@ -14,10 +14,12 @@ import { UserMessage } from "./UserMessage";
 import { HelpButton } from "../uiKit/Button/HelpButton";
 import { useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
+import { useSettings } from "../Settings/useSettings";
 
 const loadingHelpMessage = `Generating help message...`;
 export function ConversationCanvas() {
   const aiConversation = useAiConversation();
+  const settings = useSettings();
   const textAi = useTextAi();
   const [userMessage, setUserMessage] = useState("");
   const [helpMessage, setHelpMessage] = useState("");
@@ -36,6 +38,12 @@ export function ConversationCanvas() {
     .filter((message) => message.isBot)
     .find((_, index, arr) => index >= arr.length - 1);
 
+  useEffect(() => {
+    if (helpMessage && helpMessage !== loadingHelpMessage) {
+      setHelpMessage("");
+    }
+  }, [lastUserMessage?.text]);
+
   const generateHelpMessage = async () => {
     setHelpMessage(loadingHelpMessage);
     const last4Messages = aiConversation.conversation.slice(-4);
@@ -43,9 +51,9 @@ export function ConversationCanvas() {
     const systemInstructions = `You are grammar, language learning helper system.
 User wants to create his message.
 Last part of conversations: ${JSON.stringify(last4Messages)}.
-Generate simple sentences. 10 words maximum.
+Generate one simple short sentences. 5-10 words maximum.
+Use ${settings.fullLanguageName || "English"} language.
 `;
-    console.log("systemInstructions", systemInstructions);
     const aiResult = await textAi.generate({
       systemMessage: systemInstructions,
       userMessage: lastBotMessage?.text || "",
