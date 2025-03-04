@@ -2,7 +2,6 @@
 
 import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-import { subTitleFontSize } from "./landingSettings";
 import { Volume2, VolumeOff } from "lucide-react";
 
 interface VideoBlock {
