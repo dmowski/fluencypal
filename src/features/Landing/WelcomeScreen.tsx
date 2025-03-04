@@ -62,7 +62,7 @@ export const WelcomeScreen = () => {
             align="center"
             variant="body1"
             sx={{
-              maxWidth: "920px",
+              maxWidth: "940px",
               ...subTitleFontStyle,
             }}
           >

@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { subTitleFontSize, subTitleFontStyle, titleFontStyle } from "./landingSettings";
+import { subTitleFontStyle, titleFontStyle } from "./landingSettings";
 import { VideoSwitcher } from "./VideoSwitcher";
 
 export const IntroVideoDemo = () => {

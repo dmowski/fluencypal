@@ -1,11 +1,5 @@
 import { Button, Link, Stack, Typography } from "@mui/material";
-import {
-  buttonStyle,
-  maxLandingWidth,
-  subTitleFontSize,
-  subTitleFontStyle,
-  titleFontStyle,
-} from "./landingSettings";
+import { buttonStyle, maxLandingWidth, subTitleFontStyle, titleFontStyle } from "./landingSettings";
 import rolePlayScenarios from "../RolePlay/rolePlayData";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
@@ -95,7 +89,7 @@ export const RolePlayDemo = () => {
                     key={index}
                     sx={{
                       position: "relative",
-                      backgroundColor: "rgba(0, 0, 10, 0.03)",
+                      backgroundColor: "rgba(0, 0, 10, 0.01)",
                       color: "#111",
                       border: "1px solid rgba(0, 0, 0, 0.1)",
                       width: "100%",
@@ -109,7 +103,8 @@ export const RolePlayDemo = () => {
                       boxSizing: "border-box",
                       textDecoration: "none",
                       ":hover": {
-                        opacity: 0.8,
+                        //opacity: 0.8,
+                        border: "1px solid rgba(0, 0, 0, 0.3)",
                       },
                     }}
                   >

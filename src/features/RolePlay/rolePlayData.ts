@@ -47,43 +47,6 @@ ${additionalInfo}`;
 
 const rolePlayScenarios: Array<RolePlayInstruction> = [
   {
-    id: "meeting-dog-owners-in-the-park",
-    input: [
-      {
-        type: "options",
-        id: "languageLevel",
-
-        labelForAi: "Language level of user",
-        placeholder: "",
-        defaultValue: "Intermediate",
-        options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
-
-        labelForUser: "Your Language Level",
-        optionsAiDescriptions: {
-          Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.`,
-          Intermediate:
-            "Can hold conversations on familiar topics. Use idiomatic expressions and ask follow-up questions.",
-          Advanced:
-            "Comfortable with complex discussions. Use idiomatic expressions and ask open-ended questions.",
-          Fluent:
-            "Native or near-native proficiency. Use advanced vocabulary and ask for detailed opinions.",
-        },
-        required: false,
-      },
-    ],
-    title: "Talk to the dog owner",
-    subTitle: "Make friendly small talk with another dog owner",
-    instructionToAi:
-      "You are a friendly dog owner who meets the user at a park. Greet them warmly, ask about their dog, share experiences, and discuss tips or fun stories about caring for dogs.",
-    exampleOfFirstMessageFromAi:
-      "Hi there! I’m Jade, and this little guy is Milo. He’s always excited to meet new friends at the park. Your pup looks so energetic—do you two come here often?",
-    illustrationDescription:
-      "Two dog owners in a green park setting, each with a leashed dog, smiling and engaged in casual conversation while their dogs sniff around.",
-    imageSrc: "/role/20897efe-6b4d-4f97-b8e9-164e35381d37.jpeg",
-    voice: "sage",
-    instructionCreator: getDefaultInstruction,
-  },
-  {
     id: "in-the-restaurant",
     input: [],
     title: "In the Restaurant",
@@ -136,6 +99,21 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     instructionCreator: getDefaultInstruction,
   },
   {
+    id: "small-talk-with-a-stranger",
+    input: [],
+    title: "Small Talk with a Stranger",
+    subTitle: "Practice starting a conversation with a stranger",
+    instructionToAi:
+      "You are a friendly stranger meeting the user at a social event. Engage in small talk about the weather, hobbies, or recent events.",
+    exampleOfFirstMessageFromAi:
+      "Hey there, I'm Fable. This is my first time at an event like this. How about you? Enjoying yourself so far?",
+    illustrationDescription:
+      "Two people casually chatting at a coffee shop or park, both smiling and engaged in friendly conversation, while others are in the background enjoying the atmosphere.",
+    imageSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c.jpeg",
+    voice: "sage",
+    instructionCreator: getDefaultInstruction,
+  },
+  {
     input: [
       {
         id: "scenario",
@@ -174,6 +152,43 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     instructionCreator: getDefaultInstruction,
   },
   {
+    id: "meeting-dog-owners-in-the-park",
+    input: [
+      {
+        type: "options",
+        id: "languageLevel",
+
+        labelForAi: "Language level of user",
+        placeholder: "",
+        defaultValue: "Intermediate",
+        options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
+
+        labelForUser: "Your Language Level",
+        optionsAiDescriptions: {
+          Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.`,
+          Intermediate:
+            "Can hold conversations on familiar topics. Use idiomatic expressions and ask follow-up questions.",
+          Advanced:
+            "Comfortable with complex discussions. Use idiomatic expressions and ask open-ended questions.",
+          Fluent:
+            "Native or near-native proficiency. Use advanced vocabulary and ask for detailed opinions.",
+        },
+        required: false,
+      },
+    ],
+    title: "Talk to the dog owner",
+    subTitle: "Make friendly small talk with another dog owner",
+    instructionToAi:
+      "You are a friendly dog owner who meets the user at a park. Greet them warmly, ask about their dog, share experiences, and discuss tips or fun stories about caring for dogs.",
+    exampleOfFirstMessageFromAi:
+      "Hi there! I’m Jade, and this little guy is Milo. He’s always excited to meet new friends at the park. Your pup looks so energetic—do you two come here often?",
+    illustrationDescription:
+      "Two dog owners in a green park setting, each with a leashed dog, smiling and engaged in casual conversation while their dogs sniff around.",
+    imageSrc: "/role/20897efe-6b4d-4f97-b8e9-164e35381d37.jpeg",
+    voice: "sage",
+    instructionCreator: getDefaultInstruction,
+  },
+  {
     id: "talking-to-a-doctor",
     input: [],
     title: "Talking to a Doctor",
@@ -203,21 +218,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     voice: "verse",
     instructionCreator: getDefaultInstruction,
   },
-  {
-    id: "small-talk-with-a-stranger",
-    input: [],
-    title: "Small Talk with a Stranger",
-    subTitle: "Practice starting a conversation with a stranger",
-    instructionToAi:
-      "You are a friendly stranger meeting the user at a social event. Engage in small talk about the weather, hobbies, or recent events.",
-    exampleOfFirstMessageFromAi:
-      "Hey there, I'm Fable. This is my first time at an event like this. How about you? Enjoying yourself so far?",
-    illustrationDescription:
-      "Two people casually chatting at a coffee shop or park, both smiling and engaged in friendly conversation, while others are in the background enjoying the atmosphere.",
-    imageSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c.jpeg",
-    voice: "sage",
-    instructionCreator: getDefaultInstruction,
-  },
+
   {
     id: "at-the-grocery-store",
     input: [],
