@@ -79,99 +79,97 @@ export const RolePlayDemo = () => {
               },
             }}
           >
-            {rolePlayScenarios
-              //.filter((scenario) => scenario.id !== "custom" && scenario.id !== "at-the-grocery-store")
-              .map((scenario, index) => {
-                return (
-                  <Stack
-                    component={"a"}
-                    href={`/practice?role-play=${scenario.id}`}
-                    key={index}
-                    sx={{
-                      position: "relative",
-                      backgroundColor: "#222",
-                      border: "none",
-                      alignItems: "flex-start",
-                      minHeight: "300px",
-                      cursor: "pointer",
-                      borderRadius: "5px",
-                      overflow: "hidden",
-                      textAlign: "left",
-                      padding: "0px",
-                      boxSizing: "border-box",
-                      color: "#fff",
-                      textDecoration: "none",
-                      ":hover": {
-                        ".role-play-image": {
-                          opacity: 0.8,
-                        },
+            {rolePlayScenarios.map((scenario, index) => {
+              return (
+                <Stack
+                  component={"a"}
+                  href={`/practice?role-play=${scenario.id}`}
+                  key={index}
+                  sx={{
+                    position: "relative",
+                    backgroundColor: "#222",
+                    border: "none",
+                    alignItems: "flex-start",
+                    minHeight: "300px",
+                    cursor: "pointer",
+                    borderRadius: "5px",
+                    overflow: "hidden",
+                    textAlign: "left",
+                    padding: "0px",
+                    boxSizing: "border-box",
+                    color: "#fff",
+                    textDecoration: "none",
+                    ":hover": {
+                      ".role-play-image": {
+                        opacity: 0.8,
                       },
+                    },
+                  }}
+                >
+                  <Stack
+                    sx={{
+                      gap: "16px",
+                      height: "100%",
+                      alignItems: "flex-start",
+                      justifyContent: "flex-end",
+                      width: "100%",
+                      position: "relative",
+                      zIndex: 1,
+                      boxSizing: "border-box",
                     }}
                   >
                     <Stack
                       sx={{
-                        gap: "16px",
-                        height: "100%",
-                        alignItems: "flex-start",
-                        justifyContent: "flex-end",
-                        width: "100%",
-                        position: "relative",
-                        zIndex: 1,
+                        padding: "20px",
                         boxSizing: "border-box",
+                        width: "100%",
+                        paddingTop: "30px",
+                        background:
+                          "linear-gradient(180deg, rgba(12, 12, 14, 0) 0%,  rgba(12, 12, 14, 0.3) 100%)",
                       }}
                     >
-                      <Stack
+                      <Typography
+                        variant="h5"
+                        component={"h3"}
                         sx={{
-                          padding: "20px",
-                          boxSizing: "border-box",
-                          width: "100%",
-                          paddingTop: "30px",
-                          background:
-                            "linear-gradient(180deg, rgba(12, 12, 14, 0) 0%,  rgba(12, 12, 14, 0.3) 100%)",
+                          fontWeight: "990",
+                          textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
+                          textTransform: "uppercase",
                         }}
                       >
-                        <Typography
-                          variant="h5"
-                          component={"h3"}
-                          sx={{
-                            fontWeight: "990",
-                            textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
-                            textTransform: "uppercase",
-                          }}
-                        >
-                          {scenario.title}
-                        </Typography>
-                        <Typography
-                          variant="body1"
-                          sx={{
-                            opacity: 0.9,
-                            textShadow: "1px 1px 4px rgba(0, 0, 0, 0.6)",
-                          }}
-                        >
-                          {scenario.subTitle}
-                        </Typography>
-                      </Stack>
+                        {scenario.title}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          opacity: 0.9,
+                          textShadow: "1px 1px 4px rgba(0, 0, 0, 0.6)",
+                        }}
+                      >
+                        {scenario.subTitle}
+                      </Typography>
                     </Stack>
-                    <Stack
-                      className="role-play-image"
-                      sx={{
-                        backgroundImage: `url(${scenario.imageSrc})`,
-                        width: "100%",
-                        height: "100%",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        //borderRadius: "10px",
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        zIndex: 0,
-                      }}
-                    ></Stack>
                   </Stack>
-                );
-              })}
+                  <Stack
+                    className="role-play-image"
+                    sx={{
+                      backgroundImage: `url(${scenario.imageSrc})`,
+                      width: "100%",
+                      height: "100%",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      //borderRadius: "10px",
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      zIndex: 0,
+                    }}
+                  ></Stack>
+                </Stack>
+              );
+            })}
           </Stack>
           <Stack
             sx={{
