@@ -1,10 +1,10 @@
 import { PROJECT_PROFIT_MARGIN } from "@/common/ai";
 import { GetAudioUrlRequest, GetAudioUrlResponse } from "@/common/requests";
-export interface AudioGenerationInfo {
+interface AudioGenerationInfo {
   audioUrl: string;
   duration: number;
 }
-export type SupportedVoices = "f" | "scald" | "odin" | "v" | "dragon" | "loki" | "fenrir";
+
 const REMOTE_URL = "https://astra-deploy-2-507232057233.europe-central2.run.app/";
 const BASE_URL = REMOTE_URL;
 
@@ -19,7 +19,8 @@ const voiceMap = {
   freyr: "FvNyzynnZk9gkWCSiR79", // fertility god
   tyr: "qNkzaJoHLLdpvgh5tISm", // KillOdinQuestion | Carter the Mountain King
 } as const;
-export const getPublicTextToAudioByVoiceIdUrl = async (
+
+const getPublicTextToAudioByVoiceIdUrl = async (
   text: string,
   voiceId: string,
   stability: number = 0.5,
