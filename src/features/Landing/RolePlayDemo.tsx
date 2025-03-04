@@ -67,90 +67,108 @@ export const RolePlayDemo = () => {
         >
           <Stack
             sx={{
-              gap: "20px",
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              "@media (max-width: 1100px)": {
-                gridTemplateColumns: "1fr 1fr",
-              },
-              "@media (max-width: 850px)": {
-                gridTemplateColumns: "1fr",
-                gap: "15px",
-              },
+              width: "100vw",
+              height: "380px",
+              overflow: "hidden",
             }}
           >
-            {rolePlayScenarios
-              .filter((scenario, index) => index < 3)
-              .map((scenario, index) => {
-                return (
-                  <Stack
-                    component={"a"}
-                    href={`/practice?role-play=${scenario.id}`}
-                    key={index}
-                    sx={{
-                      position: "relative",
-                      backgroundColor: "rgba(0, 0, 10, 0.01)",
-                      color: "#111",
-                      border: "1px solid rgba(0, 0, 0, 0.1)",
-                      width: "100%",
-                      alignItems: "flex-start",
-                      minHeight: "300px",
-                      cursor: "pointer",
-                      borderRadius: "15px",
-                      overflow: "hidden",
-                      textAlign: "left",
-                      padding: "0px",
-                      boxSizing: "border-box",
-                      textDecoration: "none",
-                      ":hover": {
-                        //opacity: 0.8,
-                        border: "1px solid rgba(0, 0, 0, 0.3)",
-                      },
-                    }}
-                  >
+            <Stack
+              sx={{
+                maxWidth: "100vw",
+                height: "430px",
+                overflowY: "hidden",
+                overflowX: "auto",
+                paddingBottom: "40px",
+                paddingTop: "10px",
+                scrollbarWidth: "none",
+              }}
+            >
+              <Stack
+                sx={{
+                  gap: "20px",
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  width: "max-content",
+                  "@media (max-width: 400px)": {
+                    gap: "10px",
+                  },
+                }}
+              >
+                {rolePlayScenarios.map((scenario, index) => {
+                  return (
                     <Stack
-                      className="role-play-image"
+                      component={"a"}
+                      href={`/practice?role-play=${scenario.id}`}
+                      key={index}
                       sx={{
-                        backgroundImage: `url(${scenario.imageSrc})`,
-                        width: "100%",
-                        height: "200px",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        zIndex: 0,
-                      }}
-                    ></Stack>
-                    <Stack
-                      sx={{
-                        padding: "20px 20px 30px 20px",
+                        position: "relative",
+                        backgroundColor: "rgba(0, 0, 10, 0.01)",
+                        color: "#111",
+                        border: "1px solid rgba(0, 0, 0, 0.1)",
+                        width: "400px",
+                        maxWidth: "calc(100vw - 30px)",
+                        alignItems: "flex-start",
+                        height: "350px",
+                        cursor: "pointer",
+                        borderRadius: "15px",
+                        overflow: "hidden",
+                        textAlign: "left",
+                        padding: "0px",
                         boxSizing: "border-box",
-                        width: "100%",
+                        textDecoration: "none",
+
+                        ":hover": {
+                          //opacity: 0.8,
+                          border: "1px solid rgba(0, 0, 0, 0.3)",
+                        },
                       }}
                     >
-                      <Typography
-                        variant="h6"
-                        component={"h3"}
+                      <Stack
+                        className="role-play-image"
                         sx={{
-                          color: "#121214",
+                          backgroundImage: `url(${scenario.imageSrc})`,
+                          width: "100%",
+                          height: "200px",
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          zIndex: 0,
+                        }}
+                      ></Stack>
+                      <Stack
+                        sx={{
+                          padding: "20px 20px 30px 20px",
+                          boxSizing: "border-box",
+                          width: "100%",
                         }}
                       >
-                        {scenario.title}
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#666",
-                        }}
-                      >
-                        {scenario.subTitle}
-                      </Typography>
+                        <Typography
+                          variant="h6"
+                          component={"h3"}
+                          sx={{
+                            color: "#121214",
+                          }}
+                        >
+                          {scenario.title}
+                        </Typography>
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            color: "#666",
+                          }}
+                        >
+                          {scenario.subTitle}
+                        </Typography>
+                      </Stack>
                     </Stack>
-                  </Stack>
-                );
-              })}
+                  );
+                })}
+              </Stack>
+            </Stack>
           </Stack>
           <Stack
             sx={{
