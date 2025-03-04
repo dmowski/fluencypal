@@ -17,6 +17,7 @@ export const MicroButton = ({ isPlaying, isMuted, onClick }: MicroButton) => {
         position: "relative",
         backgroundColor: "transparent",
         border: "none",
+        marginLeft: "-10px",
       }}
       onClick={() => onClick()}
     >
