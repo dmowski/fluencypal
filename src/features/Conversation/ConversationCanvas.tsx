@@ -6,15 +6,22 @@ import { useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { Textarea } from "../uiKit/Input/Textarea";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { SendHorizontal } from "lucide-react";
+import { SendHorizontal, Wand, X } from "lucide-react";
 import DoneIcon from "@mui/icons-material/Done";
 import { MicroButton } from "../uiKit/Button/MicroButton";
 import { KeyboardButton } from "../uiKit/Button/KeyboardButton";
 import { UserMessage } from "./UserMessage";
+import { HelpButton } from "../uiKit/Button/HelpButton";
+import { useTextAi } from "../Ai/useTextAi";
+import { MODELS } from "@/common/ai";
 
+const loadingHelpMessage = `Generating help message...`;
 export function ConversationCanvas() {
   const aiConversation = useAiConversation();
+  const textAi = useTextAi();
   const [userMessage, setUserMessage] = useState("");
+  const [helpMessage, setHelpMessage] = useState("");
+
   const submitMessage = () => {
     if (!userMessage) return;
     aiConversation.addUserMessage(userMessage);
@@ -28,6 +35,26 @@ export function ConversationCanvas() {
   const lastBotMessage = aiConversation.conversation
     .filter((message) => message.isBot)
     .find((_, index, arr) => index >= arr.length - 1);
+
+  const generateHelpMessage = async () => {
+    setHelpMessage(loadingHelpMessage);
+    const last4Messages = aiConversation.conversation.slice(-4);
+
+    const systemInstructions = `You are grammar, language learning helper system.
+User wants to create his message.
+Last part of conversations: ${JSON.stringify(last4Messages)}.
+Generate simple sentences. 10 words maximum.
+`;
+    console.log("systemInstructions", systemInstructions);
+    const aiResult = await textAi.generate({
+      systemMessage: systemInstructions,
+      userMessage: lastBotMessage?.text || "",
+      model: MODELS.gpt_4o,
+    });
+
+    console.log("Help message result", aiResult);
+    setHelpMessage(aiResult || "Error");
+  };
 
   return (
     <Stack sx={{ gap: "40px" }}>
@@ -100,15 +127,59 @@ export function ConversationCanvas() {
           )}
         </Stack>
 
+        {helpMessage && (
+          <Stack
+            sx={{
+              gap: "10px",
+              flexDirection: "row",
+              alignItems: "center",
+              width: "650px",
+              minHeight: "20px",
+              maxWidth: "calc(100vw - 33px)",
+              boxSizing: "border-box",
+              padding: "10px 10px 10px 14px",
+              border: `1px solid rgba(255, 255, 255, 0.1)`,
+              backgroundColor: `rgba(255, 255, 255, 0.04)`,
+              borderRadius: "4px",
+            }}
+          >
+            <Wand
+              color={helpMessage === loadingHelpMessage ? "#fa8500" : "#558fdb"}
+              size={"16px"}
+              style={{
+                paddingBottom: "2px",
+              }}
+            />
+            <Typography
+              sx={{
+                maxWidth: "600px",
+                paddingLeft: "3px",
+                width: "100%",
+                opacity: helpMessage === loadingHelpMessage ? 0.7 : 1,
+              }}
+            >
+              {helpMessage}
+            </Typography>
+
+            <IconButton onClick={() => setHelpMessage("")}>
+              <X
+                size={"16px"}
+                style={{
+                  opacity: 0.7,
+                }}
+              />
+            </IconButton>
+          </Stack>
+        )}
+
         <Stack
           sx={{
-            width: "100%",
-            maxWidth: "680px",
+            width: "650px",
+            maxWidth: "calc(100vw - 33px)",
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
             boxSizing: "border-box",
-            padding: "0 20px 0 0px",
           }}
         >
           <Stack
@@ -124,10 +195,22 @@ export function ConversationCanvas() {
               isPlaying={aiConversation.isUserSpeaking}
               onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
             />
-            <KeyboardButton
-              isEnabled={!!aiConversation.isShowUserInput}
-              onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
-            />
+            <Stack
+              sx={{
+                gap: "27px",
+                flexDirection: "row",
+              }}
+            >
+              <KeyboardButton
+                isEnabled={!!aiConversation.isShowUserInput}
+                onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
+              />
+              <HelpButton
+                isLoading={false}
+                isEnabled={helpMessage !== loadingHelpMessage}
+                onClick={generateHelpMessage}
+              />
+            </Stack>
           </Stack>
 
           {aiConversation.isClosing || aiConversation.isSavingHomework ? (
@@ -148,7 +231,7 @@ export function ConversationCanvas() {
                 <>
                   {aiConversation.conversation.length > 0 && (
                     <Button variant="outlined" onClick={() => aiConversation.finishLesson()}>
-                      Finish the Lesson
+                      Finish
                     </Button>
                   )}
                 </>
