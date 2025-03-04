@@ -13,6 +13,7 @@ export const AudioPlayIcon = ({ text }: AudioPlayIconProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const audio = useMemo(() => new Audio(), []);
+  const [countOfAttempts, setCountOfAttempts] = useState(0);
 
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const { getAudioUrl } = useAudio();
@@ -26,9 +27,17 @@ export const AudioPlayIcon = ({ text }: AudioPlayIconProps) => {
       return;
     }
 
+    setCountOfAttempts(countOfAttempts + 1);
+    let speed = 1;
+    if (countOfAttempts > 1 && countOfAttempts % 2 === 0) {
+      speed = 0.8;
+    }
+
     if (audioUrl) {
       audio.src = audioUrl;
+      audio.playbackRate = speed;
       audio.play();
+
       setIsPlaying(true);
       return;
     } else {
@@ -37,6 +46,7 @@ export const AudioPlayIcon = ({ text }: AudioPlayIconProps) => {
         const url = await getAudioUrl(text);
         setAudioUrl(url);
         audio.src = url;
+        audio.playbackRate = speed;
         audio.play();
         setIsPlaying(true);
       } catch (error) {
@@ -53,6 +63,7 @@ export const AudioPlayIcon = ({ text }: AudioPlayIconProps) => {
     audio.src = "";
     setIsPlaying(false);
     setAudioUrl(null);
+    setCountOfAttempts(0);
     audio.onended = () => {
       console.log("audio ended");
       setIsPlaying(false);
