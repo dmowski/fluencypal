@@ -71,11 +71,11 @@ Use ${settings.fullLanguageName || "English"} language.
       <Stack
         sx={{
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "flex-end",
           gap: "10px",
           width: "100%",
-          minHeight: "calc(100vh - 90px)",
-          paddingTop: "90px",
+          minHeight: "calc(100vh - 0px)",
+          padding: "90px 0 40px 0",
           boxSizing: "border-box",
         }}
       >
