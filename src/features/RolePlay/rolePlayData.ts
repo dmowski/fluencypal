@@ -71,8 +71,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
         required: false,
       },
     ],
-    title: "Chat with a Fellow Dog Owner",
-    subTitle: "Make friendly small talk with another dog owner in a local park.",
+    title: "Talk to the dog owner",
+    subTitle: "Make friendly small talk with another dog owner",
     instructionToAi:
       "You are a friendly dog owner who meets the user at a park. Greet them warmly, ask about their dog, share experiences, and discuss tips or fun stories about caring for dogs.",
     exampleOfFirstMessageFromAi:
@@ -87,7 +87,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     id: "in-the-restaurant",
     input: [],
     title: "In the Restaurant",
-    subTitle: "Order food and interact with a waiter in a restaurant.",
+    subTitle: "Order food and interact with a waiter in a restaurant",
     instructionToAi:
       "You are a polite restaurant waiter. Ask the user for their order, offer recommendations, and respond to any requests.",
     exampleOfFirstMessageFromAi:
@@ -124,7 +124,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       },
     ],
     title: "Job Interview",
-    subTitle: "Practice answering common job interview questions.",
+    subTitle: "Practice answering common job interview questions",
     instructionToAi:
       "You are a professional recruiter conducting a job interview. Ask the user about their experience, skills, and why they want the job. Adjust difficulty based on responses and provide feedback.",
     exampleOfFirstMessageFromAi:
@@ -149,7 +149,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     ],
     id: "custom",
     title: "Your Custom Scenario",
-    subTitle: "Create your own role-play scenario with custom instructions.",
+    subTitle: "Create your own role-play scenario",
     instructionToAi: "",
     exampleOfFirstMessageFromAi: "",
     illustrationDescription:
@@ -162,7 +162,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     id: "buying-a-train-ticket",
     input: [],
     title: "Buying a Train Ticket",
-    subTitle: "Practice buying a train ticket at the station.",
+    subTitle: "Practice buying a train ticket at the station",
     instructionToAi:
       "You are a train station ticket agent. Ask the user where they want to go, the departure time, and the type of ticket they need.",
     exampleOfFirstMessageFromAi:
@@ -177,7 +177,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     id: "talking-to-a-doctor",
     input: [],
     title: "Talking to a Doctor",
-    subTitle: "Describe symptoms and ask for medical advice.",
+    subTitle: "Describe symptoms and ask for medical advice",
     instructionToAi:
       "You are a doctor. Ask the user about their symptoms, provide advice, and suggest treatment options.",
     exampleOfFirstMessageFromAi:
@@ -192,7 +192,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     id: "hotel-check-in",
     input: [],
     title: "Hotel Check-in",
-    subTitle: "Practice checking into a hotel and asking for services.",
+    subTitle: "Practice checking into a hotel and asking for services",
     instructionToAi:
       "You are a hotel receptionist. Ask for the user's reservation details, offer room options, and answer their questions.",
     exampleOfFirstMessageFromAi:
@@ -207,7 +207,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     id: "small-talk-with-a-stranger",
     input: [],
     title: "Small Talk with a Stranger",
-    subTitle: "Practice starting a conversation with a stranger.",
+    subTitle: "Practice starting a conversation with a stranger",
     instructionToAi:
       "You are a friendly stranger meeting the user at a social event. Engage in small talk about the weather, hobbies, or recent events.",
     exampleOfFirstMessageFromAi:
@@ -222,7 +222,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     id: "at-the-grocery-store",
     input: [],
     title: "At the Grocery Store",
-    subTitle: "Practice asking for help and making a purchase at a grocery store.",
+    subTitle: "Practice asking for help and making a purchase",
     instructionToAi:
       "You are a grocery store employee. Help the user find products, explain prices, and answer questions about promotions.",
     exampleOfFirstMessageFromAi:
@@ -238,7 +238,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     id: "calling-technical-support",
     input: [],
     title: "Calling Technical Support",
-    subTitle: "Practice troubleshooting a technical issue over the phone.",
+    subTitle: "Practice troubleshooting a technical issue",
     instructionToAi:
       "You are a technical support agent. Ask the user about their issue, guide them through troubleshooting steps, and provide solutions.",
     exampleOfFirstMessageFromAi:
@@ -253,8 +253,8 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   {
     id: "making-a-doctors-appointment",
     input: [],
-    title: "Making a Doctor's Appointment",
-    subTitle: "Practice scheduling an appointment over the phone.",
+    title: "Doctor's Appointment",
+    subTitle: "Practice scheduling an appointment over the phone",
     instructionToAi:
       "You are a receptionist at a doctor's office. Ask the user for their name, preferred date, and reason for the appointment.",
     exampleOfFirstMessageFromAi:
@@ -269,7 +269,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     id: "returning-an-item-in-a-store",
     input: [],
     title: "Returning an Item in a Store",
-    subTitle: "Practice returning an item and explaining the reason.",
+    subTitle: "Practice returning an item and explaining the reason",
     instructionToAi:
       "You are a store employee handling returns. Ask the user why they are returning the item and offer solutions like exchange or refund.",
     exampleOfFirstMessageFromAi:
