@@ -80,9 +80,7 @@ export const RolePlayDemo = () => {
             }}
           >
             {rolePlayScenarios
-              .filter(
-                (scenario) => scenario.id !== "custom" && scenario.id !== "at-the-grocery-store"
-              )
+              //.filter((scenario) => scenario.id !== "custom" && scenario.id !== "at-the-grocery-store")
               .map((scenario, index) => {
                 return (
                   <Stack

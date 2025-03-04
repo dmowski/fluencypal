@@ -187,6 +187,20 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     imageSrc: "/role/2ac841c8-3569-45e0-a8aa-fe98e15ea5e2.jpeg",
     voice: "sage",
   },
+  {
+    id: "meeting-dog-owners-in-the-park",
+    input: [],
+    title: "Chat with a Fellow Dog Owner",
+    subTitle: "Make friendly small talk with another dog owner in a local park.",
+    instructionToAi:
+      "You are a friendly dog owner who meets the user at a park. Greet them warmly, ask about their dog, share experiences, and discuss tips or fun stories about caring for dogs.",
+    exampleOfFirstMessageFromAi:
+      "Hi there! I’m Jade, and this little guy is Milo. He’s always excited to meet new friends at the park. Your pup looks so energetic—do you two come here often?",
+    illustrationDescription:
+      "Two dog owners in a green park setting, each with a leashed dog, smiling and engaged in casual conversation while their dogs sniff around.",
+    imageSrc: "/role/20897efe-6b4d-4f97-b8e9-164e35381d37.jpeg",
+    voice: "sage",
+  },
 ];
 
 export default rolePlayScenarios;
