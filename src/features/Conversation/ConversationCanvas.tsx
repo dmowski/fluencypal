@@ -15,6 +15,7 @@ import { HelpButton } from "../uiKit/Button/HelpButton";
 import { useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
 import { useSettings } from "../Settings/useSettings";
+import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 
 const loadingHelpMessage = `Generating help message...`;
 export function ConversationCanvas() {
@@ -169,7 +170,8 @@ Use ${settings.fullLanguageName || "English"} language.
               {helpMessage}
             </Typography>
 
-            <IconButton onClick={() => setHelpMessage("")}>
+            {helpMessage !== loadingHelpMessage && <AudioPlayIcon text={helpMessage} />}
+            <IconButton onClick={() => setHelpMessage("")} size="small">
               <X
                 size={"16px"}
                 style={{
