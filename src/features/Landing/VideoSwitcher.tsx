@@ -163,6 +163,7 @@ export const VideoSwitcher = () => {
               sx={{
                 padding: "10px 30px",
                 borderRadius: "50px",
+                boxShadow: "none",
 
                 backgroundColor: isPlaying ? "rgb(43 35 88)" : "transparent",
                 color: isPlaying ? "#fff" : "rgb(43 35 88)",
@@ -186,7 +187,7 @@ export const VideoSwitcher = () => {
           sx={{
             padding: "0 10px",
             maxWidth: "700px",
-            fontSize: subTitleFontSize,
+            fontSize: "1.1rem",
           }}
         >
           {blocks[activePlayingBlock].description}

@@ -1,5 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 import Galaxy from "../uiKit/Animations/Galaxy";
+import { buttonStyle, titleFontStyle } from "./landingSettings";
 
 export const CtaBlock = () => {
   return (
@@ -36,7 +37,7 @@ export const CtaBlock = () => {
             variant="h3"
             component={"h2"}
             sx={{
-              fontWeight: 700,
+              ...titleFontStyle,
             }}
           >
             Start Your Journey to Fluent Conversations Now
@@ -47,7 +48,10 @@ export const CtaBlock = () => {
           variant="contained"
           size="large"
           sx={{
-            padding: "15px 40px",
+            ...buttonStyle,
+            padding: "15px 80px",
+            color: "#000",
+            backgroundColor: "#05acff",
           }}
         >
           Get Started Free

@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { subTitleFontSize } from "./landingSettings";
+import { subTitleFontSize, subTitleFontStyle, titleFontStyle } from "./landingSettings";
 import { VideoSwitcher } from "./VideoSwitcher";
 
 export const IntroVideoDemo = () => {
@@ -37,7 +37,7 @@ export const IntroVideoDemo = () => {
             variant="h3"
             component={"h2"}
             sx={{
-              fontWeight: 700,
+              ...titleFontStyle,
             }}
           >
             Speak, Learn, and Grow with Ease
@@ -47,7 +47,7 @@ export const IntroVideoDemo = () => {
             variant="body1"
             sx={{
               maxWidth: "900px",
-              fontSize: subTitleFontSize,
+              ...subTitleFontStyle,
             }}
           >
             Dark Lang’s AI tutor offers realistic conversation practice in English, Spanish, French,
@@ -70,6 +70,8 @@ export const IntroVideoDemo = () => {
             sx={{
               padding: "15px 80px",
               borderWidth: "2px",
+              boxShadow: "none",
+              borderRadius: "50px",
             }}
             variant="outlined"
             size="large"

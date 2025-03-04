@@ -1,6 +1,6 @@
 import { Card, CardContent, Stack, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { maxLandingWidth, subTitleFontSize } from "./landingSettings";
+import { maxLandingWidth, subTitleFontStyle, titleFontStyle } from "./landingSettings";
 
 const InfoCard: React.FC<{
   category: string;
@@ -62,11 +62,12 @@ const InfoCard: React.FC<{
           </Typography>
 
           <Typography
-            variant="h4"
+            variant="h5"
             component="h3"
             sx={{
               color: "#000",
-              fontWeight: 700,
+              fontWeight: 650,
+              fontSize: "1.75rem",
             }}
           >
             {title}
@@ -74,7 +75,7 @@ const InfoCard: React.FC<{
           <Typography
             sx={{
               color: "#000",
-              fontSize: "1.3rem",
+              fontSize: "1.2rem",
             }}
           >
             {description}
@@ -107,8 +108,8 @@ const InfoCard: React.FC<{
           <Typography
             sx={{
               textDecoration: "underline",
-              textUnderlineOffset: "5px",
-              fontWeight: 600,
+              textUnderlineOffset: "8px",
+              fontWeight: 550,
             }}
             className="link-text"
           >
@@ -164,7 +165,7 @@ export const ProposalCards = () => {
             variant="h3"
             component={"h2"}
             sx={{
-              fontWeight: 700,
+              ...titleFontStyle,
               color: "#000",
             }}
           >
@@ -176,7 +177,7 @@ export const ProposalCards = () => {
             sx={{
               maxWidth: "810px",
               color: "#000",
-              fontSize: subTitleFontSize,
+              ...subTitleFontStyle,
             }}
           >
             Target the specific skills you need—speaking, grammar, vocabulary, and progress

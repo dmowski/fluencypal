@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { ProductVideo } from "./ProductVideo";
-import { maxLandingWidth } from "./landingSettings";
+import { maxLandingWidth, titleFontStyle } from "./landingSettings";
 
 export const ProductDemo = () => {
   return (
@@ -60,7 +60,7 @@ export const ProductDemo = () => {
               variant="h3"
               component={"h2"}
               sx={{
-                fontWeight: 700,
+                ...titleFontStyle,
               }}
             >
               Watch Dark Lang in Action

@@ -3,6 +3,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
 import { useEffect, useState } from "react";
+import { buttonStyle } from "./landingSettings";
 
 export const FirstEnterButton = () => {
   const auth = useAuth();
@@ -26,7 +27,10 @@ export const FirstEnterButton = () => {
     >
       <Button
         sx={{
+          ...buttonStyle,
           padding: "15px 80px",
+          color: "#000",
+          backgroundColor: "#05acff",
         }}
         variant="contained"
         size="large"

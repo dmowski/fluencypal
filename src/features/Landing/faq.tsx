@@ -11,13 +11,20 @@ const FaqItem = ({ question, answer }: { question: string; answer: React.ReactNo
           variant="h5"
           sx={{
             padding: "10px",
-            fontWeight: 450,
+            fontWeight: 600,
+            fontSize: "1.4rem",
           }}
         >
           {question}
         </Typography>
       </AccordionSummary>
-      <AccordionDetails>{answer}</AccordionDetails>
+      <AccordionDetails
+        sx={{
+          padding: "10px 30px 30px 30px",
+        }}
+      >
+        {answer}
+      </AccordionDetails>
     </Accordion>
   );
 };

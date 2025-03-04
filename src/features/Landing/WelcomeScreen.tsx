@@ -1,7 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import { FirstEnterButton } from "./FirstEnterButton";
 import { GradientCard } from "../uiKit/Card/GradientCard";
-import { maxLandingWidth, subTitleFontSize } from "./landingSettings";
+import { maxLandingWidth, subTitleFontStyle } from "./landingSettings";
 
 export const WelcomeScreen = () => {
   return (
@@ -63,7 +63,7 @@ export const WelcomeScreen = () => {
             variant="body1"
             sx={{
               maxWidth: "920px",
-              fontSize: subTitleFontSize,
+              ...subTitleFontStyle,
             }}
           >
             Experience next-level language practice with Bruno, your friendly AI tutor who’s ready
