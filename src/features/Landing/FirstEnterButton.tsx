@@ -24,6 +24,8 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({ showPricingB
         gap: "10px",
         alignItems: "flex-start",
         justifyContent: "center",
+        opacity: isVisible ? 1 : 0,
+        transition: "opacity 1s",
       }}
     >
       <Stack
@@ -32,8 +34,6 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({ showPricingB
           gap: "5px",
           position: "relative",
           zIndex: 1,
-          opacity: isVisible ? 1 : 0,
-          transition: "opacity 1s",
         }}
       >
         <Button
