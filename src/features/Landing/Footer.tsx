@@ -1,4 +1,5 @@
 import { Link, Stack, Typography } from "@mui/material";
+import { maxLandingWidth } from "./landingSettings";
 
 export const Footer = () => {
   return (
@@ -11,7 +12,7 @@ export const Footer = () => {
         //backgroundColor: "#070f1a",
         backgroundColor: `#0a121e`,
         //backgroundColor: `rgba(10, 18, 30, 1)`,
-        borderTop: "1px solid rgba(255, 255, 255, 0.6)",
+        borderTop: "1px solid rgba(255, 255, 255, 0.2)",
         marginTop: "0px",
         position: "relative",
         zIndex: 9999,
@@ -21,22 +22,54 @@ export const Footer = () => {
         sx={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr 1fr",
-          padding: "0 30px",
+          alignItems: "center",
+          padding: "0 10px",
+
           boxSizing: "border-box",
           gap: "25px",
           width: "100%",
           justifyContent: "space-between",
-          maxWidth: "1100px",
+          maxWidth: maxLandingWidth,
           position: "relative",
           zIndex: 9999,
           "@media (max-width: 900px)": {
             gridTemplateColumns: "1fr",
+            gap: "70px",
           },
         }}
       >
         <Stack
           sx={{
+            alignItems: "flex-start",
+            justifyContent: "flex-start",
             gap: "10px",
+            a: {
+              fontWeight: 500,
+              color: "#fff",
+              textUnderlineOffset: "3px",
+              textDecorationColor: "#fff",
+            },
+          }}
+        >
+          <Link href="/pricing" variant="body1">
+            Pricing
+          </Link>
+
+          <Link href="/scenarios" variant="body1">
+            Role plays
+          </Link>
+          <Link href="/contacts" variant="body1">
+            Contacts
+          </Link>
+        </Stack>
+
+        <Stack
+          sx={{
+            gap: "10px",
+            alignItems: "center",
+            "@media (max-width: 900px)": {
+              alignItems: "flex-start",
+            },
           }}
         >
           <img
@@ -51,22 +84,6 @@ export const Footer = () => {
         </Stack>
         <Stack
           sx={{
-            alignItems: "center",
-            justifyContent: "center",
-            "@media (max-width: 900px)": {
-              alignItems: "flex-start",
-            },
-          }}
-        >
-          <Link href="/privacy" variant="body1">
-            Privacy Policy
-          </Link>
-          <Link href="/terms" variant="body1">
-            Terms of Service
-          </Link>
-        </Stack>
-        <Stack
-          sx={{
             alignItems: "flex-end",
             justifyContent: "center",
             "@media (max-width: 900px)": {
@@ -76,6 +93,32 @@ export const Footer = () => {
         >
           <Typography variant="body1">Dark Lang</Typography>
           <Typography variant="body1">© 2025</Typography>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <Link
+              href="/terms"
+              variant="body1"
+              sx={{
+                color: "#fff",
+              }}
+            >
+              Terms of Use
+            </Link>
+            <Link
+              href="/privacy"
+              variant="body1"
+              sx={{
+                color: "#fff",
+              }}
+            >
+              Privacy Policy
+            </Link>
+          </Stack>
         </Stack>
       </Stack>
     </Stack>
