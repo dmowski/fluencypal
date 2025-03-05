@@ -34,7 +34,7 @@ export const WelcomeScreen = () => {
           <a
             href={"/"}
             style={{
-              padding: "20px 20px 20px 0",
+              padding: "20px",
             }}
           >
             <img src="./logo.svg" alt="Dark lang logo" width="90px" height="42px" />

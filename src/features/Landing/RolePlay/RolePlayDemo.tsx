@@ -75,14 +75,14 @@ export const RolePlayDemo = () => {
           <Stack
             sx={{
               width: "100vw",
-              height: "380px",
+              height: "390px",
               overflow: "hidden",
             }}
           >
             <Stack
               sx={{
                 maxWidth: "100vw",
-                height: "430px",
+                height: "500px",
                 overflowY: "hidden",
                 overflowX: "auto",
                 paddingBottom: "40px",
