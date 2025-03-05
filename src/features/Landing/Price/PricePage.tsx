@@ -1,4 +1,4 @@
-import { Button, Link, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 
 import {
   buttonStyle,
@@ -15,6 +15,7 @@ import { PriceCard } from "./PriceCard";
 import { ContactList } from "../Contact/ContactList";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import CancelIcon from "@mui/icons-material/Cancel";
+import { Gift, HandCoins, Mic } from "lucide-react";
 
 export const PricePage = () => {
   return (
@@ -249,9 +250,13 @@ export const PricePage = () => {
               sx={{
                 width: "100%",
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr",
+                gridTemplateColumns: "1fr 100px 1fr 100px  1fr",
                 gap: "30px",
                 boxSizing: "border-box",
+
+                "@media (max-width: 900px)": {
+                  gridTemplateColumns: "1fr 1fr 1fr",
+                },
 
                 "@media (max-width: 700px)": {
                   display: "flex",
@@ -262,59 +267,114 @@ export const PricePage = () => {
             >
               <Stack
                 sx={{
-                  border: `1px solid rgba(0, 0, 0, 0.1)`,
                   padding: "15px",
                   borderRadius: "3px",
+                  alignItems: "center",
+                  gap: "30px",
                 }}
               >
-                <Typography
-                  sx={{
-                    fontWeight: 600,
-                    fontSize: "1.2rem",
-                  }}
-                >
-                  Start Free
-                </Typography>
-                <Typography variant="body2">
-                  Start Free – Get $5 in credits when you sign up.
-                </Typography>
+                <Gift size={"3rem"} strokeWidth={"1px"} />
+                <Stack>
+                  <Typography
+                    align="center"
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    Start Free
+                  </Typography>
+                  <Typography variant="body2" align="center">
+                    Start Free – Get $5 in credits when you sign up.
+                  </Typography>
+                </Stack>
               </Stack>
 
               <Stack
                 sx={{
-                  border: `1px solid rgba(0, 0, 0, 0.1)`,
-                  padding: "15px",
-                  borderRadius: "3px",
+                  paddingTop: "30px",
+                  width: "100%",
+                  "@media (max-width: 900px)": {
+                    display: "none",
+                  },
                 }}
               >
-                <Typography
-                  sx={{
-                    fontWeight: 600,
-                    fontSize: "1.2rem",
+                <img
+                  src="/arrow.jpg"
+                  alt=""
+                  style={{
+                    width: "100%",
                   }}
-                >
-                  Use as You Go
-                </Typography>
-                <Typography variant="body2">
-                  Each AI conversation session consumes credits based on duration and complexity.
-                </Typography>
+                />
               </Stack>
+
               <Stack
                 sx={{
-                  border: `1px solid rgba(0, 0, 0, 0.1)`,
                   padding: "15px",
                   borderRadius: "3px",
+                  alignItems: "center",
+                  gap: "30px",
                 }}
               >
-                <Typography
-                  sx={{
-                    fontWeight: 600,
-                    fontSize: "1.2rem",
+                <Mic size={"3rem"} strokeWidth={"1px"} />
+                <Stack>
+                  <Typography
+                    align="center"
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    Use as You Go
+                  </Typography>
+                  <Typography variant="body2" align="center">
+                    Each AI conversation session consumes credits based on duration and complexity.
+                  </Typography>
+                </Stack>
+              </Stack>
+
+              <Stack
+                sx={{
+                  paddingTop: "30px",
+                  width: "100%",
+                  "@media (max-width: 900px)": {
+                    display: "none",
+                  },
+                }}
+              >
+                <img
+                  src="/arrow.jpg"
+                  alt=""
+                  style={{
+                    width: "100%",
+                    transform: "scaleY(-1)",
                   }}
-                >
-                  Refill Anytime
-                </Typography>
-                <Typography variant="body2">Add more credits whenever you need them.</Typography>
+                />
+              </Stack>
+
+              <Stack
+                sx={{
+                  padding: "15px",
+                  borderRadius: "3px",
+                  alignItems: "center",
+                  gap: "30px",
+                }}
+              >
+                <HandCoins size={"3rem"} strokeWidth={"1px"} />
+                <Stack>
+                  <Typography
+                    align="center"
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    Refill Anytime
+                  </Typography>
+                  <Typography variant="body2" align="center">
+                    Add more credits whenever you need them.
+                  </Typography>
+                </Stack>
               </Stack>
             </Stack>
           </Stack>
