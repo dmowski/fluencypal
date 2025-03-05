@@ -1,10 +1,5 @@
 import { Link, Stack, Typography } from "@mui/material";
-import {
-  maxContentWidth,
-  maxLandingWidth,
-  subTitleFontStyle,
-  titleFontStyle,
-} from "../landingSettings";
+import { maxContentWidth } from "../landingSettings";
 import rolePlayScenarios from "@/features/RolePlay/rolePlayData";
 import { RolePlayCard } from "./RolePlayCard";
 
