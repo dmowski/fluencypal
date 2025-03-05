@@ -1,5 +1,3 @@
-"use client";
-
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 import { ConversationPage } from "@/features/Conversation/ConversationPage";
 import { Header } from "@/features/Header/Header";
