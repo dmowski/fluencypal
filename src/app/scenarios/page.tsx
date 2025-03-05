@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { ScenariosPage } from "@/features/Landing/RolePlay/ScenariosPage";
-
-const siteUrl = "https://dark-lang.net/";
+import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 
 export const metadata: Metadata = {
   title: "Role-Play Scenarios for Real-Life Conversations | Dark Lang",
@@ -18,11 +17,11 @@ export const metadata: Metadata = {
     "Advanced",
   ],
   openGraph: {
+    ...openGraph,
     title: "Role-Play Scenarios for Real-Life Conversations | Dark Lang",
     description:
       "Practice ordering food, scheduling appointments, job interviews, and more with our AI-powered role-play scenarios. Improve your language skills in English, French, or any language we support.",
     url: `${siteUrl}scenarios`,
-    siteName: "Dark Lang",
     images: [
       {
         url: `${siteUrl}/openGraph.png`,
@@ -31,21 +30,14 @@ export const metadata: Metadata = {
         alt: "Dark Lang – Role-Play Scenarios for Real-Life Conversations",
       },
     ],
-    locale: "en_US",
-    type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    ...twitter,
     title: "Role-Play Scenarios for Real-Life Conversations | Dark Lang",
     description:
       "Enhance your speaking skills with AI-powered role-play scenarios for everyday situations—restaurants, doctor visits, job interviews, and more.",
-    images: [`${siteUrl}/openGraph.png`],
-    creator: "@dmowskii",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: robots,
 };
 interface ScenariosPageProps {
   searchParams: Promise<{

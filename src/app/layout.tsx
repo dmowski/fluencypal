@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import "./globals.css";
 import { AuthProvider } from "@/features/Auth/useAuth";
-import { Roboto } from "next/font/google";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../features/uiKit/theme";
 import { SettingsProvider } from "@/features/Settings/useSettings";
@@ -18,15 +17,7 @@ import { TextAiProvider } from "@/features/Ai/useTextAi";
 import { AiUserInfoProvider } from "@/features/Ai/useAiUserInfo";
 import { CookiesPopup } from "@/features/Legal/CookiesPopup";
 import { AudioProvider } from "@/features/Audio/useAudio";
-
-const roboto = Roboto({
-  weight: ["300", "400", "500", "700"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-roboto",
-});
-
-const siteUrl = "https://dark-lang.net/";
+import { openGraph, robots, twitter } from "@/common/metadata";
 
 export const metadata: Metadata = {
   title: "Online English with AI Teacher",
@@ -41,35 +32,9 @@ export const metadata: Metadata = {
     "Dark Lang",
     "Language Learning",
   ],
-  openGraph: {
-    title: "Online English with AI Teacher | Dark Lang",
-    description:
-      "Learn English (or other languages) with Bruno, your friendly AI tutor. Beginner, instant corrections, and advanced modes help you improve fast—no scheduling required.",
-    url: siteUrl,
-    siteName: "Dark Lang",
-    images: [
-      {
-        url: `${siteUrl}/openGraph.png`,
-        width: 1200,
-        height: 630,
-        alt: "Dark Lang - Online English with AI Teacher",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Online English with AI Teacher | Dark Lang",
-    description:
-      "Practice speaking English, French, or another language with a personalized AI tutor named Bruno.",
-    images: [`${siteUrl}/openGraph.png`],
-    creator: "@dmowskii",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  openGraph: openGraph,
+  twitter: twitter,
+  robots: robots,
 };
 
 export default function RootLayout({
@@ -83,7 +48,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/logo192.png" />
       </head>
-      <body className={roboto.variable}>
+      <body>
         <ThemeProvider theme={theme}>
           <AppRouterCacheProvider options={{ key: "css" }}>
             <NotificationsProviderWrapper>

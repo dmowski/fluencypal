@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import LandingPage from "@/features/Landing/LandingPage";
 import rolePlayScenarios from "@/features/RolePlay/rolePlayData";
 import { ScenarioOnePage } from "@/features/Landing/RolePlay/ScenarioOnePage";
-
-const siteUrl = "https://dark-lang.net/";
+import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -17,9 +15,12 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     return {};
   }
 
+  const title = scenario.title + " | Dark Lang";
+  const subTitle = scenario.subTitle;
+
   const metadata: Metadata = {
-    title: scenario.title + " | Dark Lang",
-    description: scenario.subTitle,
+    title: title,
+    description: subTitle,
 
     keywords: [
       "Online English",
@@ -30,34 +31,18 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       "Language Learning",
     ],
     openGraph: {
-      title: "Online English with AI Teacher | Dark Lang",
-      description:
-        "Learn English (or other languages) with Bruno, your friendly AI tutor. Beginner, instant corrections, and advanced modes help you improve fast—no scheduling required.",
-      url: siteUrl,
+      ...openGraph,
+      title: title,
+      description: subTitle,
+      url: siteUrl + `scenarios/${id}`,
       siteName: "Dark Lang",
-      images: [
-        {
-          url: `${siteUrl}/openGraph.png`,
-          width: 1200,
-          height: 630,
-          alt: "Dark Lang - Online English with AI Teacher",
-        },
-      ],
-      locale: "en_US",
-      type: "website",
     },
     twitter: {
-      card: "summary_large_image",
-      title: "Online English with AI Teacher | Dark Lang",
-      description:
-        "Practice speaking English, French, or another language with a personalized AI tutor named Bruno.",
-      images: [`${siteUrl}/openGraph.png`],
-      creator: "@dmowskii",
+      ...twitter,
+      title: `${scenario.title} | Dark Lang`,
+      description: scenario.subTitle,
     },
-    robots: {
-      index: true,
-      follow: true,
-    },
+    robots: robots,
   };
   return metadata;
 }
