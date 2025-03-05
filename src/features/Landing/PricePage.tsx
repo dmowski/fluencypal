@@ -478,7 +478,7 @@ export const PricePage = () => {
 
           <Stack
             sx={{
-              gap: "60px",
+              gap: "40px",
               maxWidth: maxContentWidth,
               width: "100%",
               boxSizing: "border-box",
