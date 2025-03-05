@@ -69,6 +69,7 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
                   flexDirection: "row",
                   gap: "60px",
                   position: "sticky",
+                  zIndex: 1,
                   top: "0px",
                   backgroundColor: "#fff",
                 }}
@@ -148,6 +149,7 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
                   maxWidth: maxContentWidth,
                   overflow: "hidden",
                   maxHeight: "300px",
+                  position: "relative",
                 }}
               >
                 <img
@@ -158,8 +160,26 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
                     height: "450px",
                     borderRadius: "20px 20px 0 0",
                     boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.3)",
+                    position: "relative",
+                    //zIndex: 0,
                   }}
                 />
+                <Stack
+                  sx={{
+                    backgroundImage: `url(${item.imageSrc})`,
+                    filter: "blur(50px)",
+                    backgroundSize: "cover",
+                    opacity: 0.5,
+                    position: "absolute",
+                    bottom: 0,
+                    left: "-50%",
+                    top: "-50%",
+
+                    width: "200%",
+                    height: "200%",
+                    zIndex: -1,
+                  }}
+                ></Stack>
               </Stack>
             </Stack>
 
