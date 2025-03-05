@@ -37,6 +37,9 @@ export const ListRolePlay = ({ selectedCategory }: ListRolePlayProps) => {
         backgroundColor: `rgb(255, 253, 249, 1)`,
         position: "relative",
         zIndex: 1,
+        "@media (max-width: 924px)": {
+          paddingTop: "40px",
+        },
       }}
     >
       <Stack
@@ -48,6 +51,10 @@ export const ListRolePlay = ({ selectedCategory }: ListRolePlayProps) => {
           display: "flex",
           flexDirection: "row",
           gap: "80px",
+          "@media (max-width: 924px)": {
+            flexDirection: "column",
+            gap: "30px",
+          },
         }}
       >
         <Stack
@@ -120,6 +127,10 @@ export const ListRolePlay = ({ selectedCategory }: ListRolePlayProps) => {
               justifyContent: "space-between",
               "@media (max-width: 1224px)": {
                 gridTemplateColumns: "1fr 1fr",
+              },
+
+              "@media (max-width: 724px)": {
+                gridTemplateColumns: "1fr",
               },
             }}
           >

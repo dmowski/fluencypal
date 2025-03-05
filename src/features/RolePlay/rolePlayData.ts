@@ -61,9 +61,21 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     imageSrc: "/role/acde68cd-1db6-4b69-be42-d2071b9ee1e8.jpeg",
     voice: "ash",
     instructionCreator: getDefaultInstruction,
+    contentPage: `In this role-play, you’ll interact with a polite waiter, order food, and handle special requests—just like in a real restaurant. Perfect for practicing how to start conversations, ask about menu items, and address any dining-related concerns.  
+
+## Why You Should Play *In the Restaurant*  
+1. Hone your ordering skills and gain confidence speaking in a real-life dining situation.  
+2. Practice conversational etiquette, from small talk with the server to politely handling mistakes or special requests.  
+3. Learn key phrases and vocabulary related to dining, including menu items, dietary preferences, and payment options.  
+4. Enhance your listening abilities by responding to recommendations and clarifying any questions about your meal.  
+5. Build comfort in realistic interactions, making your next visit to a restaurant smoother and more enjoyable in any language.
+
+## How the Scenario Works  
+In this scenario, you’ll take on the role of a diner while the AI acts as your friendly waiter. You’ll be prompted to place an order, ask for recommendations, and respond to follow-up questions. As you converse, the AI adapts to your responses, creating an immersive experience that helps you practice practical dining interactions.`,
   },
   {
     id: "job-interview",
+    contentPage: "restaurant",
     category: "Professional",
     input: [
       {
@@ -102,6 +114,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "small-talk-with-a-stranger",
+    contentPage: "restaurant",
     category: "Social",
     input: [],
     title: "Small Talk with a Stranger",
@@ -129,6 +142,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
       },
     ],
     id: "custom",
+    contentPage: "restaurant",
     title: "Your Custom Scenario",
     category: "Custom",
     subTitle: "Create your own role-play scenario",
@@ -142,6 +156,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "buying-a-train-ticket",
+    contentPage: "restaurant",
     input: [],
     title: "Buying a Train Ticket",
     category: "Travel",
@@ -158,6 +173,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "meeting-dog-owners-in-the-park",
+    contentPage: "restaurant",
     category: "Social",
     input: [
       {
@@ -196,6 +212,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "talking-to-a-doctor",
+    contentPage: "restaurant",
     category: "Professional",
     input: [],
     title: "Talking to a Doctor",
@@ -212,6 +229,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "hotel-check-in",
+    contentPage: "restaurant",
     category: "Travel",
     input: [],
     title: "Hotel Check-in",
@@ -229,6 +247,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
 
   {
     id: "at-the-grocery-store",
+    contentPage: "restaurant",
     category: "Shopping",
     input: [],
     title: "At the Grocery Store",
@@ -246,6 +265,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
 
   {
     id: "calling-technical-support",
+    contentPage: "restaurant",
     category: "Professional",
     input: [],
     title: "Calling Technical Support",
@@ -263,6 +283,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
 
   {
     id: "making-a-doctors-appointment",
+    contentPage: "restaurant",
     category: "Professional",
     input: [],
     title: "Doctor's Appointment",
@@ -279,6 +300,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "returning-an-item-in-a-store",
+    contentPage: "restaurant",
     category: "Shopping",
     input: [],
     title: "Returning an Item in a Store",

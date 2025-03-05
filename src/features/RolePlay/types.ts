@@ -37,4 +37,5 @@ export interface RolePlayInstruction {
   voice: AiVoice;
   input: InputStructureForUser[];
   instructionCreator: AiRolePlayInstructionCreator;
+  contentPage: string;
 }
