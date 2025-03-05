@@ -625,6 +625,14 @@ export const PricePage = () => {
                 </tbody>
               </table>
             </Stack>
+            <Button
+              sx={{
+                ...buttonStyle,
+              }}
+              href="/practice"
+            >
+              Try Dark Lang for Free
+            </Button>
           </Stack>
 
           <Stack
