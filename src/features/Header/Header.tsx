@@ -7,6 +7,7 @@ import {
   Button,
   Divider,
   IconButton,
+  Link,
   ListItemIcon,
   ListItemText,
   Menu,
@@ -22,7 +23,10 @@ import { PaymentModal } from "../Usage/PaymentModal";
 import { NeedHelpModal } from "./NeedHelpModal";
 import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
 
-export function Header() {
+interface HeaderProps {
+  hideLandingMenu?: boolean;
+}
+export function Header({ hideLandingMenu }: HeaderProps) {
   const auth = useAuth();
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [isShowLangSelector, setIsShowLangSelector] = useState(false);
@@ -56,18 +60,49 @@ export function Header() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "0 10px",
+          padding: "5px 10px",
           boxSizing: "border-box",
         }}
       >
-        <a
-          href={auth.isAuthorized ? "/practice" : "/"}
-          style={{
-            padding: "20px 20px 20px 0",
+        <Stack
+          sx={{
+            flexDirection: "row",
+            gap: "0px",
+            height: "100%",
+            a: {
+              fontWeight: 360,
+              color: "#eee",
+              display: "flex",
+              alignItems: "center",
+              minHeight: "100%",
+              textDecoration: "none",
+              padding: "0 20px",
+              borderRadius: "5px",
+              ":hover": {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            },
           }}
         >
-          <img src="/logo.svg" alt="logo" width="80px" height="37px" />
-        </a>
+          <a
+            href={auth.isAuthorized ? "/practice" : "/"}
+            style={{
+              padding: "15px 10px",
+              minHeight: "100%",
+              marginRight: "40px",
+            }}
+          >
+            <img src="/logo.svg" alt="logo" width="80px" height="37px" />
+          </a>
+
+          {!hideLandingMenu && (
+            <>
+              <Link href={"/scenarios"}>Role-Play</Link>
+              <Link href={"/contacts"}>Contacts</Link>
+              <Link href={"/pricing"}>Price</Link>
+            </>
+          )}
+        </Stack>
 
         {!auth.loading && (
           <>

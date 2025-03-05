@@ -51,15 +51,14 @@ export const Footer = () => {
             },
           }}
         >
-          <Link href="/pricing" variant="body1">
-            Pricing
-          </Link>
-
           <Link href="/scenarios" variant="body1">
-            Role plays
+            Role-Play
           </Link>
           <Link href="/contacts" variant="body1">
             Contacts
+          </Link>
+          <Link href="/pricing" variant="body1">
+            Pricing
           </Link>
         </Stack>
 
