@@ -79,7 +79,7 @@ export const WelcomeScreen = () => {
             alignItems: "center",
           }}
         >
-          <FirstEnterButton />
+          <FirstEnterButton showPricingButton />
         </Stack>
       </Stack>
 
