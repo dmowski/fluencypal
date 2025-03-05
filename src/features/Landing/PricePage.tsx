@@ -1,4 +1,3 @@
-import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import {
   Accordion,
   AccordionDetails,
@@ -217,8 +216,6 @@ export const PricePage = () => {
           margin: 0,
         }}
       >
-        <TalkingWaves />
-
         <Stack
           component={"main"}
           sx={{
