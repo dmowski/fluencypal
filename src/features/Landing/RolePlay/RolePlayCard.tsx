@@ -15,7 +15,7 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario }) => {
         backgroundColor: "rgba(0, 0, 10, 0.01)",
         color: "#111",
         border: "1px solid rgba(0, 0, 0, 0.1)",
-        width: "380px",
+        width: "100%",
         maxWidth: "calc(100vw - 30px)",
         alignItems: "flex-start",
         height: "370px",

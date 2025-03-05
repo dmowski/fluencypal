@@ -46,6 +46,7 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
           sx={{
             alignItems: "center",
             width: "100%",
+            backgroundColor: `#fff`,
           }}
         >
           <Stack
@@ -113,6 +114,10 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
                   justifyContent: "flex-end",
                   alignItems: "center",
                   gap: "10px",
+                  flexWrap: "wrap",
+                  "@media (max-width: 900px)": {
+                    justifyContent: "flex-start",
+                  },
                 }}
               >
                 <Button

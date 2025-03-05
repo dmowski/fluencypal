@@ -48,12 +48,12 @@ export const ListRolePlay = ({ selectedCategory }: ListRolePlayProps) => {
           width: "100%",
           boxSizing: "border-box",
           padding: "0 10px",
-          display: "flex",
-          flexDirection: "row",
+          display: "grid",
+          gridTemplateColumns: "220px 1fr",
           gap: "80px",
-          "@media (max-width: 924px)": {
-            flexDirection: "column",
-            gap: "30px",
+          "@media (max-width: 1100px)": {
+            gridTemplateColumns: "1fr",
+            gap: "20px",
           },
         }}
       >
@@ -106,6 +106,8 @@ export const ListRolePlay = ({ selectedCategory }: ListRolePlayProps) => {
           component={"main"}
           sx={{
             gap: "20px",
+            width: "100%",
+            boxSizing: "border-box",
           }}
         >
           <Typography
@@ -121,7 +123,7 @@ export const ListRolePlay = ({ selectedCategory }: ListRolePlayProps) => {
           <Stack
             sx={{
               display: "grid",
-              width: "max-content",
+              width: "100%",
               gap: "20px",
               gridTemplateColumns: "1fr 1fr",
               justifyContent: "space-between",
@@ -135,7 +137,16 @@ export const ListRolePlay = ({ selectedCategory }: ListRolePlayProps) => {
             }}
           >
             {listToDisplay.map((scenario, index) => {
-              return <RolePlayCard key={index} scenario={scenario} />;
+              return (
+                <Stack
+                  key={index}
+                  sx={{
+                    width: "100%",
+                  }}
+                >
+                  <RolePlayCard scenario={scenario} />
+                </Stack>
+              );
             })}
           </Stack>
         </Stack>

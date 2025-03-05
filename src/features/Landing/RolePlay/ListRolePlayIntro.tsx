@@ -30,12 +30,18 @@ export const ListRolePlayIntro = () => {
             display: "grid",
             gridTemplateColumns: "3fr 1fr",
             gap: "60px",
+            "@media (max-width: 800px)": {
+              gridTemplateColumns: "1fr",
+              gap: "0px",
+            },
           }}
         >
           <Stack
             gap={"10px"}
             sx={{
               paddingBottom: "50px",
+              position: "relative",
+              zIndex: 1,
             }}
           >
             <Typography
@@ -45,6 +51,9 @@ export const ListRolePlayIntro = () => {
                 ...titleFontStyle,
                 fontSize: "2.8rem",
                 color: "#000",
+                "@media (max-width: 800px)": {
+                  fontSize: "2.2rem",
+                },
               }}
             >
               Practice Real-Life Conversations With Role-Play Scenarios
@@ -67,6 +76,12 @@ export const ListRolePlayIntro = () => {
               display: "flex",
               justifyContent: "flex-end",
               alignItems: "flex-end",
+              "@media (max-width: 1100px)": {
+                zIndex: 0,
+                maxHeight: "230px",
+                alignItems: "center",
+                justifyContent: "flex-start",
+              },
             }}
           >
             <img
@@ -74,6 +89,7 @@ export const ListRolePlayIntro = () => {
               alt="Role Play Scenarios"
               style={{
                 width: "max-content",
+                maxWidth: "90vw",
                 height: "370px",
               }}
             />
