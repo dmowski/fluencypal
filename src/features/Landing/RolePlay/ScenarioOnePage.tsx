@@ -42,6 +42,7 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
         <TalkingWaves />
 
         <Stack
+          component={"main"}
           sx={{
             alignItems: "center",
             width: "100%",
@@ -336,6 +337,7 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
               >
                 <Typography
                   variant="h6"
+                  component={"h2"}
                   sx={{
                     fontWeight: 600,
                   }}
@@ -366,9 +368,9 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
               </Stack>
             )}
           </Stack>
-
-          <CtaBlock />
         </Stack>
+
+        <CtaBlock />
       </div>
       <Footer />
     </>

@@ -23,16 +23,18 @@ export const ScenariosPage = ({ selectedCategory }: ScenariosPageProps) => {
         }}
       >
         <TalkingWaves />
+
         <Stack
           sx={{
             alignItems: "center",
+            width: "100%",
           }}
+          component={"main"}
         >
           <ListRolePlayIntro />
           <ListRolePlay selectedCategory={selectedCategory} />
-
-          <CtaBlock />
         </Stack>
+        <CtaBlock />
       </div>
       <Footer />
     </>
