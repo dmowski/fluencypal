@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import { Volume2, VolumeOff } from "lucide-react";
 
 interface VideoBlock {
@@ -31,9 +31,30 @@ const blocks: VideoBlock[] = [
   },
 ];
 
+export function useIsVisible(ref?: RefObject<HTMLDivElement | null> | null) {
+  const [isIntersecting, setIntersecting] = useState(false);
+
+  useEffect(() => {
+    if (!ref || !ref.current) {
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
+
+    observer.observe(ref.current);
+    return () => {
+      observer.disconnect();
+    };
+  }, [ref]);
+
+  return isIntersecting;
+}
+
 export const VideoSwitcher = () => {
   const [activePlayingBlock, setActivePlayingBlock] = useState<number>(0);
   const [isMuted, setIsMuted] = useState<boolean>(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const isVisible = useIsVisible(containerRef);
 
   const onPlayNext = () => {
     setActivePlayingBlock((prev) => (prev + 1) % blocks.length);
@@ -59,6 +80,7 @@ export const VideoSwitcher = () => {
 
   return (
     <Stack
+      ref={containerRef}
       sx={{
         maxWidth: "900px",
         width: "100vw",
@@ -131,7 +153,7 @@ export const VideoSwitcher = () => {
           ref={videoRef}
           loop
           autoPlay
-          muted={isMuted}
+          muted={isMuted || !isVisible}
           playsInline
           width="100%"
           style={{
