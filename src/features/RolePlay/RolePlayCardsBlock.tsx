@@ -157,7 +157,7 @@ export const RolePlayCardsBlock = () => {
                   color: "#fff",
                   textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
                   textTransform: "uppercase",
-                  fontWeight: "900",
+                  fontWeight: "800",
                 }}
               >
                 {selectedRolePlayScenario.title}
@@ -389,7 +389,7 @@ export const RolePlayCardsBlock = () => {
                       <Typography
                         variant="h5"
                         sx={{
-                          fontWeight: "990",
+                          fontWeight: "800",
                           textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
                           textTransform: "uppercase",
                         }}
