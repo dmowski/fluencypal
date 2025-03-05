@@ -1,5 +1,14 @@
 import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
-import { Button, Link, Stack, Tooltip, Typography } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Button,
+  Link,
+  Stack,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 
 import rolePlayScenarios from "@/features/RolePlay/rolePlayData";
 import { buttonStyle, maxContentWidth, subTitleFontStyle, titleFontStyle } from "./landingSettings";
@@ -9,7 +18,35 @@ import { Header } from "../Header/Header";
 import { CtaBlock } from "./ctaBlock";
 import { Footer } from "./Footer";
 import { FirstEnterButton } from "./FirstEnterButton";
-import { Check, Info } from "lucide-react";
+import { Check, Info, InstagramIcon, MailIcon } from "lucide-react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+const FaqItem = ({ question, answer }: { question: string; answer: React.ReactNode }) => {
+  return (
+    <Accordion>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Typography
+          component="span"
+          variant="h5"
+          sx={{
+            padding: "10px",
+            fontWeight: 600,
+            fontSize: "1.4rem",
+          }}
+        >
+          {question}
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails
+        sx={{
+          padding: "10px 30px 30px 30px",
+        }}
+      >
+        {answer}
+      </AccordionDetails>
+    </Accordion>
+  );
+};
 
 interface PriceCardProps {
   title: string;
@@ -587,6 +624,138 @@ export const PricePage = () => {
                   </tr>
                 </tbody>
               </table>
+            </Stack>
+          </Stack>
+
+          <Stack
+            sx={{
+              width: "100%",
+              alignItems: "center",
+              backgroundColor: `#0a121e`,
+            }}
+          >
+            <Stack
+              sx={{
+                gap: "40px",
+                maxWidth: maxContentWidth,
+                width: "100%",
+                boxSizing: "border-box",
+                alignItems: "center",
+                padding: "80px 20px 100px 20px",
+              }}
+            >
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  boxSizing: "border-box",
+                  gap: "20px",
+                }}
+              >
+                <Typography
+                  align="center"
+                  variant="h3"
+                  component={"h2"}
+                  sx={{
+                    ...titleFontStyle,
+                    color: "#fff",
+                  }}
+                >
+                  Pricing FAQs
+                </Typography>
+              </Stack>
+
+              <Stack
+                sx={{
+                  width: "100%",
+                  gap: "0px",
+                  border: "1px solid rgba(0, 0, 0, 0.1)",
+                  padding: "15px",
+                  borderRadius: "4px",
+                  boxSizing: "border-box",
+                  flexDirection: "column",
+                  maxWidth: "800px",
+                }}
+              >
+                <FaqItem
+                  question="Can I try Dark Lang for free?"
+                  answer={
+                    <Typography>
+                      Yes! You start with $5 in free credits to explore all features.
+                    </Typography>
+                  }
+                />
+
+                <FaqItem
+                  question="How much do AI conversations cost?"
+                  answer={
+                    <Typography>
+                      The cost is calculated based on duration and AI usage. On average, a full hour
+                      costs $5.
+                    </Typography>
+                  }
+                />
+
+                <FaqItem
+                  question="Can I buy credits in bulk?"
+                  answer={
+                    <Stack gap={"20px"}>
+                      <Typography>
+                        Yes! We offer discounts when purchasing larger credit packages. Just contact
+                        me before you buy and I'll give you a discount.
+                      </Typography>
+                      <Stack
+                        gap={"10px"}
+                        sx={{
+                          width: "100%",
+                        }}
+                      >
+                        <Typography>Contacts:</Typography>
+
+                        <Stack gap={"10px"}>
+                          <Stack
+                            sx={{
+                              alignItems: "center",
+                              flexDirection: "row",
+                              gap: "10px",
+                            }}
+                          >
+                            <MailIcon />
+                            <Typography>
+                              <Link href="mailto:dmowski.alex@gmail.com">
+                                dmowski.alex@gmail.com
+                              </Link>
+                            </Typography>
+                          </Stack>
+
+                          <Stack
+                            sx={{
+                              alignItems: "center",
+                              flexDirection: "row",
+                              gap: "10px",
+                            }}
+                          >
+                            <InstagramIcon />
+                            <Typography>
+                              <Link href="https://www.instagram.com/dmowskii/" target="_blank">
+                                dmowskii
+                              </Link>
+                            </Typography>
+                          </Stack>
+                        </Stack>
+                      </Stack>
+                    </Stack>
+                  }
+                />
+
+                <FaqItem
+                  question="Will my credits expire?"
+                  answer={
+                    <Typography>
+                      No, your credits stay active as long as your account is in good standing.
+                    </Typography>
+                  }
+                />
+              </Stack>
             </Stack>
           </Stack>
         </Stack>
