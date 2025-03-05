@@ -17,6 +17,7 @@ import {
 } from "firebase/firestore";
 import { UserSettings } from "@/common/user";
 import { useNotifications } from "@toolpad/core/useNotifications";
+import { ContactList } from "../Landing/Contact/ContactList";
 
 interface NeedHelpModalProps {
   onClose: () => void;
@@ -105,45 +106,7 @@ export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
         >
           <Typography>Contacts:</Typography>
 
-          <Stack gap={"10px"}>
-            <Stack
-              sx={{
-                alignItems: "center",
-                flexDirection: "row",
-                gap: "10px",
-              }}
-            >
-              <MailIcon
-                sx={{
-                  width: "25px",
-                  height: "25px",
-                }}
-              />
-              <Typography>
-                <Link href="mailto:dmowski.alex@gmail.com">dmowski.alex@gmail.com</Link>
-              </Typography>
-            </Stack>
-
-            <Stack
-              sx={{
-                alignItems: "center",
-                flexDirection: "row",
-                gap: "10px",
-              }}
-            >
-              <InstagramIcon
-                sx={{
-                  width: "25px",
-                  height: "25px",
-                }}
-              />
-              <Typography>
-                <Link href="https://www.instagram.com/dmowskii/" target="_blank">
-                  dmowskii
-                </Link>
-              </Typography>
-            </Stack>
-          </Stack>
+          <ContactList />
         </Stack>
 
         <Stack

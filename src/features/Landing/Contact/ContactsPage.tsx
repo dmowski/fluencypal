@@ -1,10 +1,10 @@
 import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
-import { Link, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 
-import { maxContentWidth, subTitleFontStyle } from "./landingSettings";
-import { Header } from "../Header/Header";
-import { Footer } from "./Footer";
-import { InstagramIcon, MailIcon } from "lucide-react";
+import { maxContentWidth, subTitleFontStyle } from "../landingSettings";
+import { Header } from "../../Header/Header";
+import { Footer } from "../Footer";
+import { ContactList } from "./ContactList";
 
 export const ContactsPage = () => {
   return (
@@ -93,50 +93,12 @@ export const ContactsPage = () => {
               sx={{
                 width: "100%",
                 color: "#1f74be",
+                a: {
+                  color: "#1f74be",
+                },
               }}
             >
-              <Stack gap={"10px"}>
-                <Stack
-                  sx={{
-                    alignItems: "center",
-                    flexDirection: "row",
-                    gap: "10px",
-                  }}
-                >
-                  <MailIcon />
-                  <Typography>
-                    <Link
-                      href="mailto:dmowski.alex@gmail.com"
-                      sx={{
-                        color: "#1f74be",
-                      }}
-                    >
-                      dmowski.alex@gmail.com
-                    </Link>
-                  </Typography>
-                </Stack>
-
-                <Stack
-                  sx={{
-                    alignItems: "center",
-                    flexDirection: "row",
-                    gap: "10px",
-                  }}
-                >
-                  <InstagramIcon />
-                  <Typography>
-                    <Link
-                      sx={{
-                        color: "#1f74be",
-                      }}
-                      href="https://www.instagram.com/dmowskii/"
-                      target="_blank"
-                    >
-                      dmowskii
-                    </Link>
-                  </Typography>
-                </Stack>
-              </Stack>
+              <ContactList />
             </Stack>
           </Stack>
         </Stack>

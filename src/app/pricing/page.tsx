@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PricePage } from "@/features/Landing/PricePage";
+import { PricePage } from "@/features/Landing/Price/PricePage";
 const siteUrl = "https://dark-lang.net/";
 
 export const metadata: Metadata = {
