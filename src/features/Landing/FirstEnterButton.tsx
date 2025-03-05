@@ -14,7 +14,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({ showPricingB
 
   useEffect(() => {
     if (auth.loading) return;
-    setTimeout(() => setIsVisible(true), 0);
+    setTimeout(() => setIsVisible(true), 20);
   }, [auth.loading]);
 
   return (
