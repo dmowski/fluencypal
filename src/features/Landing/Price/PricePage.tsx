@@ -13,6 +13,8 @@ import { FirstEnterButton } from "../FirstEnterButton";
 import { FaqItem } from "../FAQ/FaqItem";
 import { PriceCard } from "./PriceCard";
 import { ContactList } from "../Contact/ContactList";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 export const PricePage = () => {
   return (
@@ -43,11 +45,10 @@ export const PricePage = () => {
           >
             <Stack
               sx={{
-                filter: "invert(1)",
                 transform: "scale(1.4)",
               }}
             >
-              <img src="./logo.svg" alt="Dark lang logo" width="90px" height="42px" />
+              <img src="./logo_dark.svg" alt="Dark lang logo" width="90px" height="42px" />
             </Stack>
             <Stack
               sx={{
@@ -207,6 +208,9 @@ export const PricePage = () => {
               boxSizing: "border-box",
               alignItems: "center",
               padding: "80px 20px 100px 20px",
+              "@media (max-width: 700px)": {
+                paddingTop: "0px",
+              },
             }}
           >
             <Stack
@@ -323,6 +327,9 @@ export const PricePage = () => {
               boxSizing: "border-box",
               alignItems: "center",
               padding: "80px 20px 100px 20px",
+              "@media (max-width: 700px)": {
+                display: "none",
+              },
             }}
           >
             <Stack
@@ -349,80 +356,256 @@ export const PricePage = () => {
               sx={{
                 width: "100%",
                 gap: "30px",
-                border: "1px solid rgba(0, 0, 0, 0.1)",
-                padding: "15px",
                 borderRadius: "4px",
                 boxSizing: "border-box",
 
-                overflow: "auto",
+                overflowX: "auto",
+                paddingTop: "100px",
                 table: {
                   borderCollapse: "collapse",
                   width: "100%",
-                  cellpadding: "10",
                   textAlign: "left",
                   minWidth: "420px",
                   cellspacing: "0",
 
-                  th: {
-                    padding: "20px 15px 30px 15px",
-                    fontWeight: 500,
-                  },
-                  "tbody td": {
-                    padding: "20px 15px",
-                  },
-                  "thead tr th:first-child": {
+                  ".other-cell-head": {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxSizing: "border-box",
                     fontWeight: 400,
-                    opacity: 0.7,
+                    height: "80px",
+                    ".other-cell-head-text": {
+                      width: "100px",
+                      height: "80px",
+                      color: "#fff",
+                      textAlign: "center",
+                      backgroundColor: "rgba(10, 30, 18, 0.9)",
+                      border: "1px solid rgba(0, 0, 0, 2)",
+                      borderRadius: "24px",
+                      padding: "10px 20px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      position: "relative",
+                      top: "-50px",
+                    },
+                  },
+
+                  ".lang-cell, .lang-cell-head": {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minWidth: "300px",
+                    boxSizing: "border-box",
+                    "@media (max-width: 700px)": {
+                      minWidth: "300px",
+                    },
+                  },
+
+                  ".lang-cell": {
+                    height: "10px",
+                    padding: "45px 10px",
+                    border: "1px solid rgba(10, 18, 30, 0.4)",
+                    borderBottom: "none",
+                    borderTop: "none",
+                  },
+                  ".lang-cell--last": {
+                    borderBottom: "1px solid rgba(10, 18, 30, 0.4)",
+                    borderRadius: " 0 0 24px 24px",
+                  },
+                  ".lang-cell-head": {
+                    height: "80px",
+                    padding: "20px 10px",
+                    border: "1px solid rgba(10, 18, 30, 0.4)",
+                    borderBottom: "none",
+                    borderRadius: "24px 24px 0 0",
+                  },
+                  ".title": {
+                    paddingLeft: "20px",
+                    "@media (max-width: 900px)": {
+                      maxWidth: "120px",
+                    },
+                  },
+
+                  ".logo": {
+                    width: "100px",
+                    height: "80px",
+                    backgroundColor: "rgba(10, 18, 30, 1)",
+                    border: "1px solid rgba(0, 0, 0, 2)",
+                    borderRadius: "24px",
+                    padding: "10px 20px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    position: "relative",
+                    top: "-50px",
+                    img: {
+                      width: "100%",
+                      height: "auto",
+                    },
+                  },
+
+                  "td:first-child,td:last-child": {
+                    fontWeight: 200,
+                    minWidth: "280px",
+                    "@media (max-width: 1000px)": {
+                      minWidth: "250px",
+                    },
+                    "@media (max-width: 900px)": {
+                      minWidth: "140px",
+                    },
                   },
                   "tbody tr:nth-child(odd) td": {
                     backgroundColor: "#f8f8f8",
                   },
-
-                  "tbody tr td:nth-child(even)": {
-                    //backgroundColor: "rgba(31, 116, 190, 0.07)",
-                  },
-                  "tr th:nth-child(even)": {
-                    //backgroundColor: "rgba(31, 116, 190, 0.07)",
-                  },
                 },
               }}
             >
-              <table>
+              <table cellSpacing="0" cellPadding="0">
                 <thead>
                   <tr>
-                    <th>Feature</th>
-                    <th>Dark Lang (Pay-as-You-Go)</th>
-                    <th>Traditional Subscription</th>
+                    <th></th>
+                    <th>
+                      <div className="lang-cell-head">
+                        <div className="logo">
+                          <img src="/logo.svg" alt="Dark lang" />
+                        </div>
+                      </div>
+                    </th>
+                    <th>
+                      <div className="other-cell-head">
+                        <span className="other-cell-head-text">Traditional Subscription</span>
+                      </div>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
-                      <strong>Pay Only for What You Use</strong>
+                      <Typography className="title">Pay Only for What You Use</Typography>
                     </td>
-                    <td>✅ Yes</td>
-                    <td>❌ No, fixed cost</td>
+                    <td>
+                      <span className="lang-cell">
+                        <VerifiedIcon
+                          sx={{
+                            color: "#05acff",
+                            fontSize: "2rem",
+                          }}
+                        />
+                      </span>
+                    </td>
+                    <td>
+                      <Stack
+                        sx={{
+                          alignItems: "center",
+                          gap: "5px",
+                          padding: "15px 0",
+                        }}
+                      >
+                        <CancelIcon
+                          sx={{
+                            fontSize: "2rem",
+                            color: "#777",
+                          }}
+                        />
+                        <Typography align="center">No, fixed cost</Typography>
+                      </Stack>
+                    </td>
                   </tr>
                   <tr>
                     <td>
-                      <strong>Full Access Anytime</strong>
+                      <Typography className="title">Full Access Anytime</Typography>
                     </td>
-                    <td>✅ Yes</td>
-                    <td>✅ Yes</td>
+                    <td>
+                      <span className="lang-cell">
+                        <VerifiedIcon
+                          sx={{
+                            color: "#05acff",
+                            fontSize: "2rem",
+                          }}
+                        />
+                      </span>
+                    </td>
+                    <td>
+                      <Stack
+                        sx={{
+                          alignItems: "center",
+                          gap: "5px",
+                          padding: "15px 0",
+                        }}
+                      >
+                        <VerifiedIcon
+                          sx={{
+                            color: "#05acff",
+                            fontSize: "2rem",
+                          }}
+                        />
+                      </Stack>
+                    </td>
                   </tr>
                   <tr>
                     <td>
-                      <strong>No Monthly Fees</strong>
+                      <Typography className="title">No Monthly Fees</Typography>
                     </td>
-                    <td>✅ Yes</td>
-                    <td>❌ No, recurring charge</td>
+                    <td>
+                      <span className="lang-cell">
+                        <VerifiedIcon
+                          sx={{
+                            color: "#05acff",
+                            fontSize: "2rem",
+                          }}
+                        />
+                      </span>
+                    </td>
+                    <td>
+                      <Stack
+                        sx={{
+                          alignItems: "center",
+                          gap: "5px",
+                          padding: "15px 0",
+                        }}
+                      >
+                        <CancelIcon
+                          sx={{
+                            fontSize: "2rem",
+                            color: "#777",
+                          }}
+                        />
+                        <Typography align="center">No, recurring charge</Typography>
+                      </Stack>
+                    </td>
                   </tr>
                   <tr>
                     <td>
-                      <strong>Pause Anytime</strong>
+                      <Typography className="title">Pause Anytime</Typography>
                     </td>
-                    <td>✅ Yes</td>
-                    <td>❌ No</td>
+                    <td>
+                      <span className="lang-cell lang-cell--last">
+                        <VerifiedIcon
+                          sx={{
+                            color: "#05acff",
+                            fontSize: "2rem",
+                          }}
+                        />
+                      </span>
+                    </td>
+                    <td>
+                      <Stack
+                        sx={{
+                          alignItems: "center",
+                          gap: "5px",
+                          padding: "15px 0",
+                        }}
+                      >
+                        <CancelIcon
+                          sx={{
+                            fontSize: "2rem",
+                            color: "#777",
+                          }}
+                        />
+                      </Stack>
+                    </td>
                   </tr>
                 </tbody>
               </table>
