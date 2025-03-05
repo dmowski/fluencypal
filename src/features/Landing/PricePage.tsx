@@ -10,10 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import rolePlayScenarios from "@/features/RolePlay/rolePlayData";
 import { buttonStyle, maxContentWidth, subTitleFontStyle, titleFontStyle } from "./landingSettings";
-import { Markdown } from "@/features/uiKit/Markdown/Markdown";
-import { fullEnglishLanguageName, supportedLanguages } from "@/common/lang";
 import { Header } from "../Header/Header";
 import { CtaBlock } from "./ctaBlock";
 import { Footer } from "./Footer";
@@ -212,7 +209,7 @@ const PriceCard: React.FC<PriceCardProps> = ({
 
 export const PricePage = () => {
   return (
-    <>
+    <Stack sx={{}}>
       <Header />
       <div
         style={{
@@ -771,6 +768,6 @@ export const PricePage = () => {
         <CtaBlock />
       </div>
       <Footer />
-    </>
+    </Stack>
   );
 };
