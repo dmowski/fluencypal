@@ -123,9 +123,9 @@ const PriceCard: React.FC<PriceCardProps> = ({
           href={buttonLink}
           sx={{
             ...buttonStyle,
-            backgroundColor: isLightButton ? "transparent" : "#4da9f8",
+            backgroundColor: isLightButton ? "transparent" : "#1f74be",
             color: isLightButton ? "#444" : "#fff",
-            borderColor: isLightButton ? "#666" : "#4da9f8",
+            borderColor: isLightButton ? "#666" : "#1f74be",
             borderWidth: "1px",
             //borderRadius: "4px",
           }}
@@ -155,7 +155,7 @@ const PriceCard: React.FC<PriceCardProps> = ({
                   alignItems: "center",
                 }}
               >
-                <Check color={"#4da9f8"} size={"1.2rem"} strokeWidth={"3px"} />
+                <Check color={"#1f74be"} size={"1.2rem"} strokeWidth={"3px"} />
                 <Typography>{item.title}</Typography>
                 {item.tooltip && (
                   <>
@@ -374,6 +374,7 @@ export const PricePage = () => {
               sx={{
                 alignItems: "center",
                 gap: "20px",
+                width: "100%",
               }}
             >
               <Typography
@@ -404,10 +405,11 @@ export const PricePage = () => {
             <Stack
               sx={{
                 width: "100%",
-                flexDirection: "row",
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr 1fr",
                 gap: "30px",
+                boxSizing: "border-box",
+
                 "@media (max-width: 700px)": {
                   display: "flex",
                   flexDirection: "column",
@@ -471,6 +473,120 @@ export const PricePage = () => {
                 </Typography>
                 <Typography variant="body2">Add more credits whenever you need them.</Typography>
               </Stack>
+            </Stack>
+          </Stack>
+
+          <Stack
+            sx={{
+              gap: "60px",
+              maxWidth: maxContentWidth,
+              width: "100%",
+              boxSizing: "border-box",
+              alignItems: "center",
+              padding: "80px 20px 100px 20px",
+            }}
+          >
+            <Stack
+              sx={{
+                alignItems: "center",
+                boxSizing: "border-box",
+                gap: "20px",
+              }}
+            >
+              <Typography
+                align="center"
+                variant="h3"
+                component={"h2"}
+                sx={{
+                  ...titleFontStyle,
+                  color: "#000",
+                }}
+              >
+                Why Pay-as-You-Go is Better Than Subscriptions
+              </Typography>
+            </Stack>
+
+            <Stack
+              sx={{
+                width: "100%",
+                gap: "30px",
+                border: "1px solid rgba(0, 0, 0, 0.1)",
+                padding: "15px",
+                borderRadius: "4px",
+                boxSizing: "border-box",
+
+                overflow: "auto",
+                table: {
+                  borderCollapse: "collapse",
+                  width: "100%",
+                  cellpadding: "10",
+                  textAlign: "left",
+                  minWidth: "420px",
+                  cellspacing: "0",
+
+                  th: {
+                    padding: "20px 15px 30px 15px",
+                    fontWeight: 500,
+                  },
+                  "tbody td": {
+                    padding: "20px 15px",
+                  },
+                  "thead tr th:first-child": {
+                    fontWeight: 400,
+                    opacity: 0.7,
+                  },
+                  "tbody tr:nth-child(odd) td": {
+                    backgroundColor: "#f8f8f8",
+                  },
+
+                  "tbody tr td:nth-child(even)": {
+                    //backgroundColor: "rgba(31, 116, 190, 0.07)",
+                  },
+                  "tr th:nth-child(even)": {
+                    //backgroundColor: "rgba(31, 116, 190, 0.07)",
+                  },
+                },
+              }}
+            >
+              <table>
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Dark Lang (Pay-as-You-Go)</th>
+                    <th>Traditional Subscription</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong>Pay Only for What You Use</strong>
+                    </td>
+                    <td>✅ Yes</td>
+                    <td>❌ No, fixed cost</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Full Access Anytime</strong>
+                    </td>
+                    <td>✅ Yes</td>
+                    <td>✅ Yes</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>No Monthly Fees</strong>
+                    </td>
+                    <td>✅ Yes</td>
+                    <td>❌ No, recurring charge</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Pause Anytime</strong>
+                    </td>
+                    <td>✅ Yes</td>
+                    <td>❌ No</td>
+                  </tr>
+                </tbody>
+              </table>
             </Stack>
           </Stack>
         </Stack>
