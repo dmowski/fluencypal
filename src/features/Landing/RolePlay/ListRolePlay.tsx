@@ -115,7 +115,7 @@ export const ListRolePlay = ({ selectedCategory }: ListRolePlayProps) => {
             sx={{
               display: "grid",
               width: "max-content",
-              gap: "50px",
+              gap: "20px",
               gridTemplateColumns: "1fr 1fr",
               justifyContent: "space-between",
               "@media (max-width: 1224px)": {
