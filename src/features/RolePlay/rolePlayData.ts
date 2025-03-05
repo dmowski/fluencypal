@@ -75,7 +75,17 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
   },
   {
     id: "job-interview",
-    contentPage: "restaurant",
+    contentPage: `Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.
+
+## Why You Should Play *Job Interview*  
+1. Master the art of professional communication, from introducing yourself to highlighting key skills.  
+2. Gain confidence navigating tricky interview questions and providing thoughtful, structured answers.  
+3. Learn how to present your achievements clearly, whether you have extensive experience or are just starting out.  
+4. Receive real-time feedback on tone, clarity, and overall presentation to refine your interview style.  
+5. Develop the poise and readiness you need for any real-life interview scenario.
+
+## How the Scenario Works  
+In this scenario, you’ll take on the role of a job candidate while our AI acts as a professional recruiter. You’ll be asked about your experience, skills, and motivations for the role, with the AI adjusting difficulty based on your responses. Use the prompts to practice delivering concise, persuasive answers that help you stand out in any job interview.`,
     category: "Professional",
     input: [
       {
@@ -114,7 +124,17 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
   },
   {
     id: "small-talk-with-a-stranger",
-    contentPage: "restaurant",
+    contentPage: `Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.
+
+## Why You Should Play *Small Talk with a Stranger*
+1. Develop the confidence to start conversations in unfamiliar social settings.  
+2. Learn casual conversation starters about the weather, hobbies, or recent events.  
+3. Practice being an active listener and responding with genuine interest.  
+4. Overcome nervousness or hesitation by interacting with a supportive AI partner.  
+5. Build comfortable, everyday communication skills you can apply anywhere.
+
+## How the Scenario Works
+In this scenario, you’ll step into the role of someone meeting a new acquaintance at a social event. The AI acts as a friendly stranger, prompting you to talk about casual topics like weather or shared interests. As you exchange pleasantries, the AI will adapt to your responses, helping you refine your small-talk abilities.`,
     category: "Social",
     input: [],
     title: "Small Talk with a Stranger",
@@ -142,7 +162,7 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
       },
     ],
     id: "custom",
-    contentPage: "restaurant",
+    contentPage: ``,
     title: "Your Custom Scenario",
     category: "Custom",
     subTitle: "Create your own role-play scenario",
@@ -156,7 +176,17 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
   },
   {
     id: "buying-a-train-ticket",
-    contentPage: "restaurant",
+    contentPage: `Get comfortable purchasing travel tickets in a bustling train station scenario. Perfect for practicing how to ask about routes, departure times, and ticket types.
+
+## Why You Should Play *Buying a Train Ticket*
+1. Gain confidence asking about schedules, prices, and possible discounts.  
+2. Learn essential travel vocabulary, including ticket options and train routes.  
+3. Practice navigating public transportation systems in a realistic setting.  
+4. Become better at clarifying details and handling unexpected changes.  
+5. Build the practical language skills you need for smooth, stress-free travel.
+
+## How the Scenario Works
+In this scenario, you’ll step into the role of a traveler looking to buy a ticket. The AI takes on the role of a train station ticket agent, asking you where you’re headed, when you’re departing, and what type of ticket you need. By interacting with the AI, you’ll master the art of asking the right questions and understanding key information about your journey.`,
     input: [],
     title: "Buying a Train Ticket",
     category: "Travel",
@@ -173,7 +203,17 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
   },
   {
     id: "meeting-dog-owners-in-the-park",
-    contentPage: "restaurant",
+    contentPage: `Strike up a conversation with a fellow dog owner in a friendly park setting. Compare tips, stories, and general dog-care experiences while bonding over your shared love of canine companions.
+
+## Why You Should Play *Talk to the Dog Owner*
+1. Practice engaging in lighthearted, social dialogue with someone who shares a common interest.  
+2. Learn how to ask and answer questions about pets, routines, or dog-care tips.  
+3. Build confidence initiating chat with strangers in casual environments.  
+4. Explore using varying levels of complexity in speech, depending on your language proficiency.  
+5. Experience a realistic scenario where you can refine conversational flow and friendly rapport.
+
+## How the Scenario Works
+In this scenario, you’ll portray a fellow dog owner meeting an AI-driven character at the park. The AI will greet you warmly, ask about your dog, and share pet stories or advice. Your goal is to respond naturally, keep the conversation flowing, and enjoy a fun exchange about your four-legged friends.`,
     category: "Social",
     input: [
       {
@@ -212,7 +252,17 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
   },
   {
     id: "talking-to-a-doctor",
-    contentPage: "restaurant",
+    contentPage: `Discuss your health concerns in a realistic doctor’s office setting and practice explaining symptoms clearly. Perfect for gaining confidence in describing medical issues and understanding potential treatment options.
+
+## Why You Should Play *Talking to a Doctor*
+1. Learn to describe aches, pains, or concerns in a way that a healthcare professional can understand.  
+2. Build confidence asking follow-up questions about tests, prescriptions, or alternative treatments.  
+3. Gain exposure to medical vocabulary and common phrases used during consultations.  
+4. Develop an awareness of how to communicate effectively about personal well-being.  
+5. Strengthen your ability to clarify symptoms, ensuring you can advocate for your health in real-life situations.
+
+## How the Scenario Works
+You’ll take on the role of a patient visiting a doctor, played by the AI. The doctor will ask about your symptoms, provide advice, and suggest possible treatments. By conversing naturally, you’ll hone your communication skills in a professional healthcare context.`,
     category: "Professional",
     input: [],
     title: "Talking to a Doctor",
@@ -229,7 +279,17 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
   },
   {
     id: "hotel-check-in",
-    contentPage: "restaurant",
+    contentPage: `Check into a hotel and handle room arrangements in a realistic front-desk setting. Perfect for practicing how to provide reservation details, inquire about amenities, and address special requests.
+
+## Why You Should Play *Hotel Check-in*
+1. Gain confidence requesting the services you need while checking into a hotel.  
+2. Learn to provide personal details and confirm reservations with clarity.  
+3. Practice asking about amenities like breakfast, Wi-Fi, or late check-out.  
+4. Discover how to handle unexpected issues, such as room availability or last-minute changes.  
+5. Sharpen your ability to navigate professional, service-oriented conversations.
+
+## How the Scenario Works
+You’ll act as the guest arriving at the hotel, while our AI plays the role of a receptionist. The receptionist will ask for your name, reservation details, and any special requests you might have. By responding naturally, you’ll build the conversational skills necessary for a smooth hotel check-in experience.`,
     category: "Travel",
     input: [],
     title: "Hotel Check-in",
@@ -247,7 +307,17 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
 
   {
     id: "at-the-grocery-store",
-    contentPage: "restaurant",
+    contentPage: `Get comfortable shopping in a real store setting by asking questions about product locations, prices, and deals. Perfect for building confidence in navigating aisles, comparing items, and checking out.
+
+#### Why You Should Play *At the Grocery Store*
+1. Practice finding specific items on your shopping list.  
+2. Learn to ask questions about prices, promotions, and product details.  
+3. Explore how to handle polite small talk with store employees.  
+4. Improve your communication when making quick decisions or comparing options.  
+5. Gain valuable experience in a common, everyday scenario.
+
+#### How the Scenario Works
+You’ll take the role of a customer shopping for groceries. The AI, as a store employee, will ask what you’re looking for, suggest deals, and guide you to the right products. This interactive role-play simulates a realistic shopping experience, helping you build essential communication skills.`,
     category: "Shopping",
     input: [],
     title: "At the Grocery Store",
@@ -265,7 +335,17 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
 
   {
     id: "calling-technical-support",
-    contentPage: "restaurant",
+    contentPage: `Work through a technical issue while speaking with a helpful support agent. Perfect for practicing how to explain a problem clearly and follow troubleshooting steps.
+
+#### Why You Should Play *Calling Technical Support*
+1. Learn to describe device or software issues in a concise way.  
+2. Build confidence when interacting with customer support agents.  
+3. Master troubleshooting terminology and instructions.  
+4. Understand how to ask relevant questions and confirm details.  
+5. Develop problem-solving skills in a technical context.
+
+#### How the Scenario Works
+You’ll act as a caller seeking help with a technical issue, while the AI plays the support agent. The agent will ask for details, guide you through possible solutions, and offer next steps. This scenario helps you get comfortable navigating tech problems and communicating solutions.`,
     category: "Professional",
     input: [],
     title: "Calling Technical Support",
@@ -283,7 +363,17 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
 
   {
     id: "making-a-doctors-appointment",
-    contentPage: "restaurant",
+    contentPage: `Practice scheduling a doctor’s appointment over the phone by clearly stating your availability and reason for the visit. Perfect for improving clarity and confidence in professional medical settings.
+
+#### Why You Should Play *Doctor's Appointment*
+1. Learn to request appointments on specific dates and times.  
+2. Develop clarity in explaining the purpose of your visit.  
+3. Practice common phrases for medical scheduling.  
+4. Build confidence in managing personal healthcare logistics.  
+5. Prepare for real-world situations where time and details are crucial.
+
+#### How the Scenario Works
+You’ll take the role of a patient calling a doctor’s office to schedule an appointment. The AI, as a receptionist, will ask for your name, preferred date, and reason for the visit. By responding naturally, you’ll build essential communication skills for any medical context.`,
     category: "Professional",
     input: [],
     title: "Doctor's Appointment",
@@ -300,7 +390,17 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
   },
   {
     id: "returning-an-item-in-a-store",
-    contentPage: "restaurant",
+    contentPage: `Handle a return at a customer service desk by describing what went wrong and exploring options for a refund or exchange. Perfect for practicing calm, clear communication in a shopping context.
+
+#### Why You Should Play *Returning an Item in a Store*
+1. Understand how to explain an issue or defect politely.  
+2. Learn to provide necessary details for a smooth return process.  
+3. Practice receiving instructions about refunds or exchanges.  
+4. Explore different scenarios, such as missing receipts or store policies.  
+5. Build confidence handling a common retail interaction.
+
+#### How the Scenario Works
+You’ll step into the role of a customer returning a product, while the AI acts as the store employee. The AI will ask why you’re returning the item and discuss available options. This practical scenario helps you master polite, efficient communication in retail situations.`,
     category: "Shopping",
     input: [],
     title: "Returning an Item in a Store",
