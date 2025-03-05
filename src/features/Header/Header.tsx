@@ -45,6 +45,7 @@ export function Header() {
         left: 0,
         zIndex: 1000,
         backgroundColor: "rgba(10, 18, 30, 0.9)",
+        backdropFilter: "blur(10px)",
       }}
     >
       <Stack
