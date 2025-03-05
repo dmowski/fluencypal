@@ -26,7 +26,9 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
     return null;
   }
 
-  const relatedCards = rolePlayScenarios.filter((scenario) => scenario.category === item.category);
+  const relatedCards = rolePlayScenarios.filter(
+    (scenario) => scenario.category === item.category && item.id !== scenario.id
+  );
 
   return (
     <>
@@ -248,34 +250,36 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
                   <Markdown size="small">{item.contentPage}</Markdown>
                 </Stack>
 
-                <Stack
-                  sx={{
-                    maxWidth: "800px",
-                    boxSizing: "border-box",
-                    width: "100%",
-                    backgroundColor: `rgba(10, 18, 30, 1)`,
-                    color: `#fff`,
-                    padding: "30px 30px",
-                    borderRadius: "20px",
-                    gap: "20px",
-                    alignItems: "flex-start",
-                    marginBottom: "20px",
-                  }}
-                >
-                  <Typography
-                    align="left"
-                    className="decor-text"
+                {item.exampleOfFirstMessageFromAi && (
+                  <Stack
                     sx={{
-                      fontSize: "1.5rem",
-                      color: "#fff",
+                      maxWidth: "800px",
+                      boxSizing: "border-box",
+                      width: "100%",
+                      backgroundColor: `rgba(10, 18, 30, 1)`,
+                      color: `#fff`,
+                      padding: "30px 30px",
+                      borderRadius: "20px",
+                      gap: "20px",
+                      alignItems: "flex-start",
+                      marginBottom: "20px",
                     }}
                   >
-                    {item.exampleOfFirstMessageFromAi}
-                  </Typography>
-                  <Button variant="outlined" href="/practice">
-                    Play The Role
-                  </Button>
-                </Stack>
+                    <Typography
+                      align="left"
+                      className="decor-text"
+                      sx={{
+                        fontSize: "1.5rem",
+                        color: "#fff",
+                      }}
+                    >
+                      {item.exampleOfFirstMessageFromAi}
+                    </Typography>
+                    <Button variant="outlined" href="/practice">
+                      Play The Role
+                    </Button>
+                  </Stack>
+                )}
               </Stack>
               <Stack
                 sx={{
@@ -319,46 +323,48 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
               </Stack>
             </Stack>
 
-            <Stack
-              sx={{
-                color: "#222",
-                maxWidth: maxContentWidth,
-                width: "100%",
-                padding: "10px",
-                gap: "20px",
-                boxSizing: "border-box",
-              }}
-            >
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: 600,
-                }}
-              >
-                Related Scenarios
-              </Typography>
-
+            {relatedCards.length > 0 && (
               <Stack
                 sx={{
-                  display: "grid",
-                  width: "max-content",
+                  color: "#222",
+                  maxWidth: maxContentWidth,
+                  width: "100%",
+                  padding: "10px",
                   gap: "20px",
-                  gridTemplateColumns: "1fr 1fr 1fr",
-                  justifyContent: "space-between",
-                  "@media (max-width: 1224px)": {
-                    gridTemplateColumns: "1fr 1fr",
-                  },
-
-                  "@media (max-width: 724px)": {
-                    gridTemplateColumns: "1fr",
-                  },
+                  boxSizing: "border-box",
                 }}
               >
-                {relatedCards.map((scenario, index) => {
-                  return <RolePlayCard key={index} scenario={scenario} />;
-                })}
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: 600,
+                  }}
+                >
+                  Related Scenarios
+                </Typography>
+
+                <Stack
+                  sx={{
+                    display: "grid",
+                    width: "max-content",
+                    gap: "20px",
+                    gridTemplateColumns: "1fr 1fr 1fr",
+                    justifyContent: "space-between",
+                    "@media (max-width: 1224px)": {
+                      gridTemplateColumns: "1fr 1fr",
+                    },
+
+                    "@media (max-width: 724px)": {
+                      gridTemplateColumns: "1fr",
+                    },
+                  }}
+                >
+                  {relatedCards.map((scenario, index) => {
+                    return <RolePlayCard key={index} scenario={scenario} />;
+                  })}
+                </Stack>
               </Stack>
-            </Stack>
+            )}
           </Stack>
 
           <CtaBlock />

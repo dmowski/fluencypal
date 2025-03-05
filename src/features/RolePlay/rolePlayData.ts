@@ -162,7 +162,17 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
       },
     ],
     id: "custom",
-    contentPage: ``,
+    contentPage: `Create a unique, personalized setting that fits your specific interests or challenges. This scenario lets you decide the context, characters, and conversation flow you want to practice.
+
+## Why You Should Play *Your Custom Scenario*
+1. Tailor the experience to your personal goals, from work situations to everyday social interactions.  
+2. Experiment with different conversation styles, topics, or tones in a setting of your choice.  
+3. Focus on the skills or vocabulary you need most, whether it’s technical terminology or casual chit-chat.  
+4. Enjoy full creative freedom to build a scenario that’s both realistic and engaging for you.  
+5. Gain valuable practice in scenarios that might not be covered by standard role-plays.
+
+## How the Scenario Works
+You’ll outline your own role-play by providing a brief description of the setting, characters, and main objectives. The AI will adapt to your custom instructions and engage in dialogue aligned with your scenario’s theme. This flexible format helps you master the exact communication skills you need.`,
     title: "Your Custom Scenario",
     category: "Custom",
     subTitle: "Create your own role-play scenario",
