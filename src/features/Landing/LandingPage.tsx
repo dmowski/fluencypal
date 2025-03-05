@@ -14,7 +14,7 @@ import { Faq } from "./faq";
 import { CtaBlock } from "./ctaBlock";
 import { ProposalCards } from "./ProposalCards";
 import { ProductDemo } from "./ProductDemo";
-import { RolePlayDemo } from "./RolePlayDemo";
+import { RolePlayDemo } from "./RolePlay/RolePlayDemo";
 
 export default function LandingPage() {
   return (
