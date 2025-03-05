@@ -14,7 +14,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({ showPricingB
 
   useEffect(() => {
     if (auth.loading) return;
-    setTimeout(() => setIsVisible(true), 140);
+    setTimeout(() => setIsVisible(true), 0);
   }, [auth.loading]);
 
   return (
@@ -25,7 +25,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({ showPricingB
         alignItems: "flex-start",
         justifyContent: "center",
         opacity: isVisible ? 1 : 0,
-        transition: "opacity 1s",
+        transition: "opacity 0.3s",
       }}
     >
       <Stack
