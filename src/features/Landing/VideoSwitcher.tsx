@@ -60,7 +60,7 @@ export const VideoSwitcher = () => {
   return (
     <Stack
       sx={{
-        maxWidth: "1000px",
+        maxWidth: "900px",
         width: "100vw",
         flexDirection: "column",
         gap: "20px",
