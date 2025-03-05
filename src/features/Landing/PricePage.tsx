@@ -16,33 +16,7 @@ import { Footer } from "./Footer";
 import { FirstEnterButton } from "./FirstEnterButton";
 import { Check, Info, InstagramIcon, MailIcon } from "lucide-react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
-const FaqItem = ({ question, answer }: { question: string; answer: React.ReactNode }) => {
-  return (
-    <Accordion>
-      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography
-          component="span"
-          variant="h5"
-          sx={{
-            padding: "10px",
-            fontWeight: 600,
-            fontSize: "1.4rem",
-          }}
-        >
-          {question}
-        </Typography>
-      </AccordionSummary>
-      <AccordionDetails
-        sx={{
-          padding: "10px 30px 30px 30px",
-        }}
-      >
-        {answer}
-      </AccordionDetails>
-    </Accordion>
-  );
-};
+import { FaqItem } from "./FAQ/FaqItem";
 
 interface PriceCardProps {
   title: string;
