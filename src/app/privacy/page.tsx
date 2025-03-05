@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Dark Lang",
     "Language Learning",
   ],
-  openGraph: { ...openGraph, url: siteUrl + "privacy" },
+  openGraph: { ...openGraph, url: `${siteUrl}privacy` },
   twitter: twitter,
   robots: robots,
 };

@@ -34,7 +34,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       ...openGraph,
       title: title,
       description: subTitle,
-      url: siteUrl + `scenarios/${id}`,
+      url: `${siteUrl}scenarios/${id}`,
       siteName: "Dark Lang",
     },
     twitter: {

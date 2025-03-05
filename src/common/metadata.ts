@@ -12,7 +12,7 @@ export const openGraph: OpenGraph = {
   siteName: "Dark Lang",
   images: [
     {
-      url: `${siteUrl}/openGraph.png`,
+      url: `${siteUrl}openGraph.png`,
       width: 1200,
       height: 630,
       alt: "Dark Lang - Online English with AI Teacher",
@@ -27,7 +27,7 @@ export const twitter: Twitter = {
   title: "Online English with AI Teacher | Dark Lang",
   description:
     "Practice speaking English, French, or another language with a personalized AI tutor named Bruno.",
-  images: [`${siteUrl}/openGraph.png`],
+  images: [`${siteUrl}openGraph.png`],
   creator: "@dmowskii",
 };
 

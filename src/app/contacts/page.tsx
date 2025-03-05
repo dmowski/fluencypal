@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Contacts | Dark Lang",
   description: "Get in touch with the Dark Lang for any inquiries, support, or feedback.",
   keywords: [],
-  openGraph: { ...openGraph, url: siteUrl + "contacts" },
+  openGraph: { ...openGraph, url: `${siteUrl}contacts` },
   twitter: twitter,
   robots: robots,
 };

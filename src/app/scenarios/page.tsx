@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}scenarios`,
     images: [
       {
-        url: `${siteUrl}/openGraph.png`,
+        url: `${siteUrl}openGraph.png`,
         width: 1200,
         height: 630,
         alt: "Dark Lang – Role-Play Scenarios for Real-Life Conversations",

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "online English pricing",
     "AI tutor cost",
   ],
-  openGraph: { ...openGraph, url: siteUrl + "pricing" },
+  openGraph: { ...openGraph, url: `${siteUrl}pricing` },
   twitter: twitter,
   robots: robots,
 };
