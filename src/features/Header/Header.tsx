@@ -65,7 +65,7 @@ export function Header() {
             padding: "20px 20px 20px 0",
           }}
         >
-          <img src="./logo.svg" alt="logo" width="80px" height="37px" />
+          <img src="/logo.svg" alt="logo" width="80px" height="37px" />
         </a>
 
         {!auth.loading && (

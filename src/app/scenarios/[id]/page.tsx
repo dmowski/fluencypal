@@ -1,21 +1,25 @@
 import type { Metadata } from "next";
 import LandingPage from "@/features/Landing/LandingPage";
+import rolePlayScenarios from "@/features/RolePlay/rolePlayData";
+import { ScenarioOnePage } from "@/features/Landing/RolePlay/ScenarioOnePage";
 
 const siteUrl = "https://dark-lang.net/";
 
 interface PageProps {
-  params: Promise<{ alias: string }>;
+  params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const alias = (await props.params).alias;
+  const id = (await props.params).id;
 
-  console.log("alias", alias);
+  const scenario = rolePlayScenarios.find((s) => s.id === id);
+  if (!scenario) {
+    return {};
+  }
 
   const metadata: Metadata = {
-    title: "Online English with AI Teacher",
-    description:
-      "Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.",
+    title: scenario.title + " | Dark Lang",
+    description: scenario.subTitle,
 
     keywords: [
       "Online English",
@@ -58,6 +62,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   return metadata;
 }
 
-export default function Home() {
-  return <LandingPage />;
+export default async function ScenarioOneFullPage(props: PageProps) {
+  const params = await props.params;
+  const id = params.id;
+  return <ScenarioOnePage id={id} />;
 }

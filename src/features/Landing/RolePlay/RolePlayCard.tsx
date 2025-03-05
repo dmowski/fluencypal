@@ -9,7 +9,7 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario }) => {
   return (
     <Stack
       component={"a"}
-      href={`/practice?role-play=${scenario.id}`}
+      href={`/scenarios/${scenario.id}`}
       sx={{
         position: "relative",
         backgroundColor: "rgba(0, 0, 10, 0.01)",
