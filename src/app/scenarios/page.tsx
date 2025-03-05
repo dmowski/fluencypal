@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ScenariosPage from "@/features/Landing/RolePlay/ScenariosPage";
+import { ScenariosPage } from "@/features/Landing/RolePlay/ScenariosPage";
 
 const siteUrl = "https://dark-lang.net/";
 
@@ -47,7 +47,13 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
-
-export default function Home() {
-  return <ScenariosPage />;
+interface ScenariosPageProps {
+  searchParams: Promise<{
+    category?: string;
+  }>;
+}
+export default async function ScenariosFullPage(props: ScenariosPageProps) {
+  const params = await props.searchParams;
+  const category = params.category;
+  return <ScenariosPage selectedCategory={category} />;
 }

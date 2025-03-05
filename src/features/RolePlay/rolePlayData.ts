@@ -48,6 +48,7 @@ ${additionalInfo}`;
 const rolePlayScenarios: Array<RolePlayInstruction> = [
   {
     id: "in-the-restaurant",
+    category: "Social",
     input: [],
     title: "In the Restaurant",
     subTitle: "Order food and interact with a waiter in a restaurant",
@@ -63,6 +64,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "job-interview",
+    category: "Professional",
     input: [
       {
         id: "job-title",
@@ -100,6 +102,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "small-talk-with-a-stranger",
+    category: "Social",
     input: [],
     title: "Small Talk with a Stranger",
     subTitle: "Practice starting a conversation with a stranger",
@@ -127,6 +130,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     ],
     id: "custom",
     title: "Your Custom Scenario",
+    category: "Custom",
     subTitle: "Create your own role-play scenario",
     instructionToAi: "",
     exampleOfFirstMessageFromAi: "",
@@ -140,6 +144,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     id: "buying-a-train-ticket",
     input: [],
     title: "Buying a Train Ticket",
+    category: "Travel",
     subTitle: "Practice buying a train ticket at the station",
     instructionToAi:
       "You are a train station ticket agent. Ask the user where they want to go, the departure time, and the type of ticket they need.",
@@ -153,6 +158,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "meeting-dog-owners-in-the-park",
+    category: "Social",
     input: [
       {
         type: "options",
@@ -190,6 +196,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "talking-to-a-doctor",
+    category: "Professional",
     input: [],
     title: "Talking to a Doctor",
     subTitle: "Describe symptoms and ask for medical advice",
@@ -205,6 +212,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "hotel-check-in",
+    category: "Travel",
     input: [],
     title: "Hotel Check-in",
     subTitle: "Practice checking into a hotel and asking for services",
@@ -221,6 +229,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
 
   {
     id: "at-the-grocery-store",
+    category: "Shopping",
     input: [],
     title: "At the Grocery Store",
     subTitle: "Practice asking for help and making a purchase",
@@ -237,6 +246,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
 
   {
     id: "calling-technical-support",
+    category: "Professional",
     input: [],
     title: "Calling Technical Support",
     subTitle: "Practice troubleshooting a technical issue",
@@ -253,6 +263,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
 
   {
     id: "making-a-doctors-appointment",
+    category: "Professional",
     input: [],
     title: "Doctor's Appointment",
     subTitle: "Practice scheduling an appointment over the phone",
@@ -268,6 +279,7 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
   },
   {
     id: "returning-an-item-in-a-store",
+    category: "Shopping",
     input: [],
     title: "Returning an Item in a Store",
     subTitle: "Practice returning an item and explaining the reason",

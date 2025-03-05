@@ -5,13 +5,18 @@ import { Header } from "../../Header/Header";
 import { Footer } from "../Footer";
 
 import { CtaBlock } from "../ctaBlock";
-import { RolePlayDemo } from "./RolePlayDemo";
+import { ListRolePlayIntro } from "./ListRolePlayIntro";
+import { ListRolePlay } from "./ListRolePlay";
 
-export default function ScenariosPage() {
+interface ScenariosPageProps {
+  selectedCategory?: string;
+}
+
+export const ScenariosPage = ({ selectedCategory }: ScenariosPageProps) => {
   return (
     <>
       <Header />
-      <main
+      <div
         style={{
           width: "100%",
           margin: 0,
@@ -23,17 +28,13 @@ export default function ScenariosPage() {
             alignItems: "center",
           }}
         >
-          <Stack
-            sx={{
-              paddingTop: "150px",
-            }}
-          />
-          <RolePlayDemo />
+          <ListRolePlayIntro />
+          <ListRolePlay selectedCategory={selectedCategory} />
 
           <CtaBlock />
         </Stack>
-      </main>
+      </div>
       <Footer />
     </>
   );
-}
+};

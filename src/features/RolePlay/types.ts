@@ -27,6 +27,7 @@ export type AiRolePlayInstructionCreator = (
 
 export interface RolePlayInstruction {
   id: string;
+  category: string;
   title: string;
   subTitle: string;
   instructionToAi: string;

@@ -1,4 +1,5 @@
 export const maxLandingWidth = "1380px";
+export const maxContentWidth = "1200px";
 const subTitleFontSize = "1.3rem";
 
 export const titleFontStyle = { fontWeight: 650 };
