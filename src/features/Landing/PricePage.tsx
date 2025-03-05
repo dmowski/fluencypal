@@ -360,6 +360,119 @@ export const PricePage = () => {
               />
             </Stack>
           </Stack>
+
+          <Stack
+            sx={{
+              gap: "60px",
+              maxWidth: maxContentWidth,
+              boxSizing: "border-box",
+              alignItems: "center",
+              padding: "80px 20px 100px 20px",
+            }}
+          >
+            <Stack
+              sx={{
+                alignItems: "center",
+                gap: "20px",
+              }}
+            >
+              <Typography
+                align="center"
+                variant="h3"
+                component={"h2"}
+                sx={{
+                  ...titleFontStyle,
+                  color: "#000",
+                }}
+              >
+                How Dark Lang Pricing Works
+              </Typography>
+              <Typography
+                align="center"
+                variant="body1"
+                sx={{
+                  maxWidth: "810px",
+                  color: "#000",
+                  ...subTitleFontStyle,
+                }}
+              >
+                Our AI tutor runs on a simple credit system—you only pay for the time and resources
+                you actually use.
+              </Typography>
+            </Stack>
+
+            <Stack
+              sx={{
+                width: "100%",
+                flexDirection: "row",
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr 1fr",
+                gap: "30px",
+                "@media (max-width: 700px)": {
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                },
+              }}
+            >
+              <Stack
+                sx={{
+                  border: `1px solid rgba(0, 0, 0, 0.1)`,
+                  padding: "15px",
+                  borderRadius: "3px",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontWeight: 600,
+                    fontSize: "1.2rem",
+                  }}
+                >
+                  Start Free
+                </Typography>
+                <Typography variant="body2">
+                  Start Free – Get $5 in credits when you sign up.
+                </Typography>
+              </Stack>
+
+              <Stack
+                sx={{
+                  border: `1px solid rgba(0, 0, 0, 0.1)`,
+                  padding: "15px",
+                  borderRadius: "3px",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontWeight: 600,
+                    fontSize: "1.2rem",
+                  }}
+                >
+                  Use as You Go
+                </Typography>
+                <Typography variant="body2">
+                  Each AI conversation session consumes credits based on duration and complexity.
+                </Typography>
+              </Stack>
+              <Stack
+                sx={{
+                  border: `1px solid rgba(0, 0, 0, 0.1)`,
+                  padding: "15px",
+                  borderRadius: "3px",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontWeight: 600,
+                    fontSize: "1.2rem",
+                  }}
+                >
+                  Refill Anytime
+                </Typography>
+                <Typography variant="body2">Add more credits whenever you need them.</Typography>
+              </Stack>
+            </Stack>
+          </Stack>
         </Stack>
 
         <CtaBlock />
