@@ -390,7 +390,7 @@ export const PricePage = () => {
                 ]}
                 buttonTitle={"Contact me"}
                 isLightButton
-                buttonLink={"/practice"}
+                buttonLink={"/contacts"}
               />
             </Stack>
           </Stack>
