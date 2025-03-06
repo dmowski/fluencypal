@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import React from "react";
 import { FaqItem } from "./FaqItem";
+import { fullEnglishLanguageName, supportedLanguages } from "@/common/lang";
 
 export const GeneralFaqBlock = () => {
   return (
@@ -86,9 +87,33 @@ export const GeneralFaqBlock = () => {
           <FaqItem
             question="Can I practice languages other than English?"
             answer={
-              <Typography>
-                Absolutely. Bruno supports multiple languages, adapting to your choice and level.
-              </Typography>
+              <Stack
+                sx={{
+                  gap: "20px",
+                }}
+              >
+                <Typography>
+                  Absolutely. Bruno supports multiple languages, adapting to your choice and level.
+                </Typography>
+                <Stack
+                  sx={{
+                    gap: "0px",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: "1rem",
+                      fontWeight: 600,
+                      paddingBottom: "5px",
+                    }}
+                  >
+                    Available languages:
+                  </Typography>
+                  <Typography variant="body2" component={"p"}>
+                    {supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}
+                  </Typography>
+                </Stack>
+              </Stack>
             }
           />
 

@@ -308,23 +308,9 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
                   >
                     Available languages:
                   </Typography>
-                  <Stack
-                    gap={"5px"}
-                    sx={{
-                      flexDirection: "row",
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    {supportedLanguages.map((code, index) => {
-                      const isLast = index === supportedLanguages.length - 1;
-                      return (
-                        <Typography key={code} variant="body2" component={"p"}>
-                          {fullEnglishLanguageName[code]}
-                          {isLast ? "" : ","}
-                        </Typography>
-                      );
-                    })}
-                  </Stack>
+                  <Typography variant="body2" component={"p"}>
+                    {supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}
+                  </Typography>
                 </Stack>
               </Stack>
             </Stack>
