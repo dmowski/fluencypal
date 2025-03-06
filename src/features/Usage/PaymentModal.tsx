@@ -9,6 +9,14 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import { useAuth } from "../Auth/useAuth";
 import { sendTelegramRequest } from "../Telegram/sendTextAiRequest";
 import { useSettings } from "../Settings/useSettings";
+import dayjs from "dayjs";
+import { PaymentLogType } from "@/common/usage";
+
+const paymentTypeLabelMap: Record<PaymentLogType, string> = {
+  welcome: "Trial balance",
+  user: "Payment",
+  gift: "Gift",
+};
 
 export const PaymentModal = () => {
   const usage = useUsage();
@@ -18,6 +26,7 @@ export const PaymentModal = () => {
   const isDev = auth.userInfo?.email && devEmails.includes(auth.userInfo.email);
   const notifications = useNotifications();
   const [isShowPayments, setIsShowPayments] = useState(false);
+  const [isShowPaymentDetails, setIsShowPaymentDetails] = useState(false);
 
   const devModePayments = () => {
     const amount = prompt("Enter amount to update", "10");
@@ -25,7 +34,7 @@ export const PaymentModal = () => {
       return;
     }
 
-    usage.addBalance(parseFloat(amount));
+    usage.addBalance(parseFloat(amount), "user");
     notifications.show(`Added $${amount} to your balance`, {
       severity: "success",
       autoHideDuration: 7000,
@@ -232,14 +241,122 @@ export const PaymentModal = () => {
               </Button>
             </Stack>
 
-            <Typography
-              variant="body2"
+            <Stack
+              gap={"20px"}
               sx={{
-                opacity: 0.7,
+                width: "100%",
               }}
             >
-              Total used: <b>${new Intl.NumberFormat().format(usage.usedBalance)}</b>
-            </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "#c2c2c2",
+                }}
+              >
+                Total used: <b>${new Intl.NumberFormat().format(usage.usedBalance)}</b>{" "}
+                <Link
+                  href="#details"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsShowPaymentDetails(!isShowPaymentDetails);
+                  }}
+                >
+                  {isShowPaymentDetails ? "Hide details" : "Show details"}
+                </Link>
+              </Typography>
+
+              {isShowPaymentDetails && (
+                <Stack
+                  sx={{
+                    gap: "10px",
+                    width: "100%",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontWeight: 500,
+                    }}
+                  >
+                    Payment history:
+                  </Typography>
+
+                  {!usage.paymentLogs && (
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        color: "#999",
+                      }}
+                    >
+                      Loading...
+                    </Typography>
+                  )}
+
+                  {usage.paymentLogs && usage.paymentLogs.length === 0 && (
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        color: "#999",
+                      }}
+                    >
+                      No payments...
+                    </Typography>
+                  )}
+
+                  {usage.paymentLogs && (
+                    <Stack
+                      sx={{
+                        width: "100%",
+                      }}
+                    >
+                      {usage.paymentLogs.map((log) => {
+                        const humanDate = dayjs(log.createdAt).format("DD MMM YYYY");
+                        const humanTime = dayjs(log.createdAt).format("HH:mm");
+                        return (
+                          <Stack
+                            key={log.id}
+                            sx={{
+                              padding: "10px 15px",
+                              boxSizing: "border-box",
+                              display: "flex",
+                              flexDirection: "row",
+                              width: "400px",
+                              maxWidth: "100%",
+                              justifyContent: "space-between",
+                              alignItems: "center",
+                              borderRadius: "10px",
+                              border: `1px solid rgba(255, 255, 255, 0.3)`,
+                              "@media (max-width: 320px)": {
+                                flexDirection: "column",
+                                alignItems: "flex-start",
+                                gap: "20px",
+                              },
+                            }}
+                          >
+                            <Stack>
+                              <Typography variant="h6">${log.amountAdded}</Typography>
+                              <Typography variant="body2">
+                                {paymentTypeLabelMap[log.type]}
+                              </Typography>
+                            </Stack>
+                            <Stack
+                              sx={{
+                                alignItems: "flex-end",
+                                "@media (max-width: 320px)": {
+                                  alignItems: "flex-start",
+                                },
+                              }}
+                            >
+                              <Typography variant="caption">{humanTime}</Typography>
+                              <Typography variant="body2">{humanDate}</Typography>
+                            </Stack>
+                          </Stack>
+                        );
+                      })}
+                    </Stack>
+                  )}
+                </Stack>
+              )}
+            </Stack>
           </Stack>
         )}
       </Stack>

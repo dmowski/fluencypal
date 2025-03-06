@@ -33,3 +33,11 @@ export interface AudioUsageLog extends BaseUsageLog {
 }
 
 export type UsageLog = RealtimeUsageLog | TextUsageLog | AudioUsageLog;
+
+export type PaymentLogType = "welcome" | "user" | "gift";
+export interface PaymentLog {
+  id: string;
+  amountAdded: number;
+  createdAt: number;
+  type: PaymentLogType;
+}

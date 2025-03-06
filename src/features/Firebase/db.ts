@@ -7,7 +7,7 @@ import {
   SnapshotOptions,
 } from "firebase/firestore";
 import { firestore } from "./init";
-import { TotalUsageInfo, UsageLog } from "@/common/usage";
+import { PaymentLog, TotalUsageInfo, UsageLog } from "@/common/usage";
 import { UserSettings } from "@/common/user";
 import { Conversation } from "@/common/conversation";
 import { Homework } from "@/common/homework";
@@ -60,6 +60,9 @@ export const db = {
       userId ? dataPointCollection<Homework>(`users/${userId}/homeworks`) : null,
     conversation: (userId?: string) =>
       userId ? dataPointCollection<Conversation>(`users/${userId}/conversations`) : null,
+
+    paymentLog: (userId?: string) =>
+      userId ? dataPointCollection<PaymentLog>(`users/${userId}/payments`) : null,
   },
   documents: {
     homework: (userId?: string, homeworkId?: string) =>

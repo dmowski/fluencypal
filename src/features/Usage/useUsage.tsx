@@ -10,15 +10,16 @@ import {
   SetStateAction,
 } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { getDoc, setDoc } from "firebase/firestore";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { TotalUsageInfo, UsageLog } from "@/common/usage";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
+import { PaymentLog, PaymentLogType, TotalUsageInfo, UsageLog } from "@/common/usage";
 import { db } from "../Firebase/db";
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
+  paymentLogs?: PaymentLog[];
   setUsageLogs: Dispatch<SetStateAction<UsageLog[]>>;
-  addBalance: (amount: number) => void;
+  addBalance: (amount: number, type: PaymentLogType) => void;
   isShowPaymentModal: boolean;
   setIsShowPaymentModal: Dispatch<SetStateAction<boolean>>;
 }
@@ -32,6 +33,8 @@ function useProvideUsage(): UsageContextType {
   const userId = auth.uid;
 
   const totalUsageDoc = db.documents.totalUsage(userId);
+  const paymentLogCollection = db.collections.paymentLog(userId);
+  const [paymentLogs] = useCollectionData(paymentLogCollection ? paymentLogCollection : null);
 
   const [totalUsage, loadingTotalUsage] = useDocumentData<TotalUsageInfo>(totalUsageDoc);
   const saveLogs = async (logs: UsageLog[]) => {
@@ -78,7 +81,21 @@ function useProvideUsage(): UsageContextType {
     balance: totalUsage?.balance || 0,
   };
 
-  const addBalance = (amount: number) => {
+  const addPaymentLog = async (amountAdded: number, type: PaymentLogType) => {
+    if (!userId || !paymentLogCollection) return;
+    const docRef = doc(paymentLogCollection);
+
+    const paymentLog: PaymentLog = {
+      id: docRef.id,
+      amountAdded,
+      createdAt: Date.now(),
+      type,
+    };
+
+    await setDoc(docRef, paymentLog);
+  };
+
+  const addBalance = (amount: number, type: PaymentLogType) => {
     if (!userId || !totalUsageDoc) return;
 
     const newTotalUsage: TotalUsageInfo = {
@@ -86,6 +103,8 @@ function useProvideUsage(): UsageContextType {
       usedBalance: totalUsage?.usedBalance || 0,
       lastUpdatedAt: Date.now(),
     };
+
+    addPaymentLog(amount, type);
 
     setDoc(totalUsageDoc, newTotalUsage);
   };
@@ -99,7 +118,7 @@ function useProvideUsage(): UsageContextType {
     const totalData = docData.data();
     if (!totalData) {
       console.log("ADD START BALANCE");
-      addBalance(START_BALANCE);
+      addBalance(START_BALANCE, "welcome");
     }
   };
 
@@ -110,6 +129,7 @@ function useProvideUsage(): UsageContextType {
 
   return {
     ...totalUsageClean,
+    paymentLogs: paymentLogs,
     usageLogs,
     setUsageLogs,
     addBalance,
