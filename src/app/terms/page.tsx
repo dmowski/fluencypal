@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 export default function TermsOfUsePage() {
   return (
     <>
-      <Header />
+      <Header mode="landing" />
       <TermsOfUse />
     </>
   );

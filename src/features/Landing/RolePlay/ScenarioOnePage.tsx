@@ -32,7 +32,7 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
 
   return (
     <>
-      <Header />
+      <Header mode="landing" />
       <div
         style={{
           width: "100%",

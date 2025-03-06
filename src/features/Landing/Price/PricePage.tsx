@@ -20,7 +20,7 @@ import { Gift, HandCoins, Mic } from "lucide-react";
 export const PricePage = () => {
   return (
     <Stack sx={{}}>
-      <Header />
+      <Header mode="landing" />
       <div
         style={{
           width: "100%",

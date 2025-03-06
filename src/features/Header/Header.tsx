@@ -24,9 +24,9 @@ import { NeedHelpModal } from "./NeedHelpModal";
 import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
 
 interface HeaderProps {
-  hideLandingMenu?: boolean;
+  mode: "landing" | "practice";
 }
-export function Header({ hideLandingMenu }: HeaderProps) {
+export function Header({ mode }: HeaderProps) {
   const auth = useAuth();
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [isShowLangSelector, setIsShowLangSelector] = useState(false);
@@ -100,7 +100,7 @@ export function Header({ hideLandingMenu }: HeaderProps) {
             <img src="/logo.svg" alt="logo" width="80px" height="37px" />
           </a>
 
-          {!hideLandingMenu && (
+          {mode === "landing" && (
             <>
               <Link href={"/scenarios"} className="hideOnMobile">
                 Role-Play

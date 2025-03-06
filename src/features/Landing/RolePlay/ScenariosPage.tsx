@@ -15,7 +15,7 @@ interface ScenariosPageProps {
 export const ScenariosPage = ({ selectedCategory }: ScenariosPageProps) => {
   return (
     <>
-      <Header />
+      <Header mode="landing" />
       <div
         style={{
           width: "100%",

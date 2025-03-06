@@ -9,7 +9,7 @@ import { ContactList } from "./ContactList";
 export const ContactsPage = () => {
   return (
     <Stack sx={{}}>
-      <Header />
+      <Header mode="landing" />
       <div
         style={{
           width: "100%",

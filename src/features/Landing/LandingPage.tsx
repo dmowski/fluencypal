@@ -13,7 +13,7 @@ import { RolePlayDemo } from "./RolePlay/RolePlayDemo";
 export default function LandingPage() {
   return (
     <>
-      <Header />
+      <Header mode="landing" />
       <main
         style={{
           width: "100%",

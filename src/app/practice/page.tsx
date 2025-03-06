@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <Header hideLandingMenu />
+      <Header mode="practice" />
       <main>
         <ConversationPage />
       </main>
