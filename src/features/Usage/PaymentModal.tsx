@@ -110,7 +110,11 @@ export const PaymentModal = () => {
                 <Typography variant="h3" component={"span"}>
                   👷
                 </Typography>
-                <Typography>Hi, my name is Alex. Thank you for using my app!</Typography>
+                <Typography>
+                  Hi, my name is Alex, the creator of this app.
+                  <br />
+                  Thank you for using it!
+                </Typography>
                 <Typography>Currently, I haven’t integrated payment services yet. 💔</Typography>
                 <Typography>
                   If you’d like to add more money to your balance, please contact me via{" "}
