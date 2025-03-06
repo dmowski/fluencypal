@@ -50,6 +50,26 @@ export function Header({ mode }: HeaderProps) {
         zIndex: 1000,
         backgroundColor: "rgba(10, 18, 30, 0.9)",
         backdropFilter: "blur(10px)",
+
+        ".menu-link": {
+          height: "60px",
+          fontWeight: 360,
+          color: "#eee",
+          display: "flex",
+          alignItems: "center",
+          minHeight: "100%",
+          textDecoration: "none",
+          padding: "0 20px",
+          borderRadius: "5px",
+          ":hover": {
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
+          },
+        },
+        "@media (max-width: 600px)": {
+          ".hideOnMobile": {
+            display: "none !important",
+          },
+        },
       }}
     >
       <Stack
@@ -69,31 +89,12 @@ export function Header({ mode }: HeaderProps) {
             flexDirection: "row",
             gap: "0px",
             height: "100%",
-            a: {
-              fontWeight: 360,
-              color: "#eee",
-              display: "flex",
-              alignItems: "center",
-              minHeight: "100%",
-              textDecoration: "none",
-              padding: "0 20px",
-              borderRadius: "5px",
-              ":hover": {
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
-              },
-            },
-            "@media (max-width: 600px)": {
-              ".hideOnMobile": {
-                display: "none !important",
-              },
-            },
           }}
         >
           <a
             href={auth.isAuthorized ? "/practice" : "/"}
+            className="menu-link"
             style={{
-              padding: "15px 10px",
-              minHeight: "100%",
               marginRight: "40px",
             }}
           >
@@ -102,13 +103,18 @@ export function Header({ mode }: HeaderProps) {
 
           {mode === "landing" && (
             <>
-              <Link href={"/scenarios"} className="hideOnMobile">
+              {auth.isAuthorized && (
+                <Link href={"/practice"} className="menu-link hideOnMobile">
+                  Practice
+                </Link>
+              )}
+              <Link href={"/scenarios"} className="menu-link hideOnMobile">
                 Role-Play
               </Link>
-              <Link href={"/contacts"} className="hideOnMobile">
+              <Link href={"/contacts"} className="menu-link hideOnMobile">
                 Contacts
               </Link>
-              <Link href={"/pricing"} className="hideOnMobile">
+              <Link href={"/pricing"} className="menu-link hideOnMobile">
                 Price
               </Link>
             </>
@@ -123,7 +129,7 @@ export function Header({ mode }: HeaderProps) {
                   flexDirection: "row",
                   gap: "10px",
                   alignItems: "center",
-                  justifyContent: "flex-end",
+                  height: "100%",
                 }}
               >
                 {mode !== "landing" && (
@@ -139,6 +145,12 @@ export function Header({ mode }: HeaderProps) {
                       ? `${settings.fullLanguageName}`
                       : "Set language to learn"}
                   </Button>
+                )}
+
+                {mode === "landing" && (
+                  <Link href={"/practice"} className="menu-link">
+                    Practice
+                  </Link>
                 )}
 
                 <IconButton
