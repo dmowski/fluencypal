@@ -26,6 +26,10 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({ showPricingB
         justifyContent: "center",
         opacity: isVisible ? 1 : 0,
         transition: "opacity 0.3s",
+        "@media (max-width: 600px)": {
+          flexDirection: "column",
+          alignItems: "center",
+        },
       }}
     >
       <Stack
