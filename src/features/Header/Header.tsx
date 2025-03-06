@@ -82,6 +82,11 @@ export function Header({ hideLandingMenu }: HeaderProps) {
                 backgroundColor: "rgba(255, 255, 255, 0.1)",
               },
             },
+            "@media (max-width: 600px)": {
+              ".hideOnMobile": {
+                display: "none !important",
+              },
+            },
           }}
         >
           <a
@@ -97,9 +102,15 @@ export function Header({ hideLandingMenu }: HeaderProps) {
 
           {!hideLandingMenu && (
             <>
-              <Link href={"/scenarios"}>Role-Play</Link>
-              <Link href={"/contacts"}>Contacts</Link>
-              <Link href={"/pricing"}>Price</Link>
+              <Link href={"/scenarios"} className="hideOnMobile">
+                Role-Play
+              </Link>
+              <Link href={"/contacts"} className="hideOnMobile">
+                Contacts
+              </Link>
+              <Link href={"/pricing"} className="hideOnMobile">
+                Price
+              </Link>
             </>
           )}
         </Stack>
