@@ -126,18 +126,21 @@ export function Header({ mode }: HeaderProps) {
                   justifyContent: "flex-end",
                 }}
               >
-                <Button
-                  variant="text"
-                  startIcon={<Languages size="20px" />}
-                  onClick={() => {
-                    setIsShowLangSelector(true);
-                    setMenuAnchor(null);
-                  }}
-                >
-                  {settings.fullLanguageName
-                    ? `${settings.fullLanguageName}`
-                    : "Set language to learn"}
-                </Button>
+                {mode !== "landing" && (
+                  <Button
+                    variant="text"
+                    startIcon={<Languages size="20px" />}
+                    onClick={() => {
+                      setIsShowLangSelector(true);
+                      setMenuAnchor(null);
+                    }}
+                  >
+                    {settings.fullLanguageName
+                      ? `${settings.fullLanguageName}`
+                      : "Set language to learn"}
+                  </Button>
+                )}
+
                 <IconButton
                   onClick={(e) => {
                     setMenuAnchor(e.currentTarget);
