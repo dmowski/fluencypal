@@ -1,9 +1,10 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack, Tooltip, Typography } from "@mui/material";
 import { colorMap, ProgressGrid } from "./ProgressGrid";
 import { useSettings } from "../Settings/useSettings";
 import { useTasks } from "../Tasks/useTasks";
 import { useWords } from "../Words/useWords";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
+import { Info } from "lucide-react";
 
 export const ProgressCard = () => {
   const settings = useSettings();
@@ -80,18 +81,42 @@ export const ProgressCard = () => {
       <Stack
         sx={{
           flexDirection: "row",
-          display: "none",
+          display: "flex",
         }}
       >
         <Stack
           sx={{
             alignItems: "center",
+            width: "200px",
+            border: "1px solid rgba(255, 255, 255, 0.3)",
+            borderRadius: "10px",
+            padding: "15px 10px",
+            position: "relative",
+            ":hover": {
+              ".info-icon": {
+                opacity: 0.9,
+              },
+            },
           }}
         >
+          <Tooltip title="Words used during all conversations. Your total word count.">
+            <Stack
+              className="info-icon"
+              sx={{
+                position: "absolute",
+                top: "0px",
+                right: "0px",
+                padding: "10px 10px 2px 10px",
+                opacity: 0.4,
+              }}
+            >
+              <Info style={{ opacity: 0.9 }} size={"18px"} />
+            </Stack>
+          </Tooltip>
           <Typography variant="h1" className="decor-title">
-            {words.totalWordsCount}
+            {words.totalWordsCount || 0}
           </Typography>
-          <Typography variant="caption">Words used during all conversations</Typography>
+          <Typography variant="caption">Your Vocabulary</Typography>
         </Stack>
       </Stack>
     </DashboardCard>
