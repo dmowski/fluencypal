@@ -132,7 +132,7 @@ export function Header({ mode }: HeaderProps) {
                   height: "100%",
                 }}
               >
-                {mode !== "landing" && (
+                {mode !== "landing" && settings.fullLanguageName && (
                   <Button
                     variant="text"
                     startIcon={<Languages size="20px" />}
@@ -141,9 +141,7 @@ export function Header({ mode }: HeaderProps) {
                       setMenuAnchor(null);
                     }}
                   >
-                    {settings.fullLanguageName
-                      ? `${settings.fullLanguageName}`
-                      : "Set language to learn"}
+                    {settings.fullLanguageName}
                   </Button>
                 )}
 
