@@ -118,13 +118,34 @@ export function Header({ mode }: HeaderProps) {
         {!auth.loading && (
           <>
             {auth.isAuthorized ? (
-              <IconButton
-                onClick={(e) => {
-                  setMenuAnchor(e.currentTarget);
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  gap: "10px",
+                  alignItems: "center",
+                  justifyContent: "flex-end",
                 }}
               >
-                <Avatar alt={userName} src={userPhoto} />
-              </IconButton>
+                <Button
+                  variant="text"
+                  startIcon={<Languages size="20px" />}
+                  onClick={() => {
+                    setIsShowLangSelector(true);
+                    setMenuAnchor(null);
+                  }}
+                >
+                  {settings.fullLanguageName
+                    ? `${settings.fullLanguageName}`
+                    : "Set language to learn"}
+                </Button>
+                <IconButton
+                  onClick={(e) => {
+                    setMenuAnchor(e.currentTarget);
+                  }}
+                >
+                  <Avatar alt={userName} src={userPhoto} />
+                </IconButton>
+              </Stack>
             ) : (
               <Button href="/practice" variant="outlined">
                 Sign in
@@ -170,22 +191,6 @@ export function Header({ mode }: HeaderProps) {
                 {usage.balance > 0 ? "+ " : usage.balance == 0 ? "" : "- "}$
                 {new Intl.NumberFormat().format(Math.abs(usage.balance))}
               </Typography>
-            </ListItemText>
-          </MenuItem>
-
-          <MenuItem
-            onClick={() => {
-              setIsShowLangSelector(true);
-              setMenuAnchor(null);
-            }}
-          >
-            <ListItemIcon>
-              <Languages size="20px" />
-            </ListItemIcon>
-            <ListItemText>
-              {settings.fullLanguageName
-                ? `${settings.fullLanguageName} | Change language`
-                : "Set language to learn"}
             </ListItemText>
           </MenuItem>
 
