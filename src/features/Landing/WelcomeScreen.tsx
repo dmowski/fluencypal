@@ -29,16 +29,18 @@ export const WelcomeScreen = () => {
           sx={{
             gap: "20px",
             alignItems: "center",
+            ".logoContainer": {
+              padding: "20px",
+              "@media (max-width: 600px)": {
+                display: "none",
+              },
+            },
           }}
         >
-          <a
-            href={"/"}
-            style={{
-              padding: "20px",
-            }}
-          >
+          <a href={"/"} className="logoContainer">
             <img src="./logo.svg" alt="Dark lang logo" width="90px" height="42px" />
           </a>
+
           <Typography
             align="center"
             variant="h1"
