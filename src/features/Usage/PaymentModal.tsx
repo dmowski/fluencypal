@@ -42,9 +42,17 @@ export const PaymentModal = () => {
 
   const clickOnByMore = async () => {
     setIsShowPayments(true);
+    const email = auth?.userInfo?.email || "";
+
+    const devEmails = ["dmowski.alex@gmail.com"];
+    const isDevEmail = devEmails.includes(email);
+    if (isDevEmail) {
+      return;
+    }
+
     sendTelegramRequest({
       message: "Event: User clicked on Buy More",
-      userEmail: auth?.userInfo?.email || "",
+      userEmail: email,
       languageCode: settings.languageCode || "en",
     });
   };
