@@ -26,7 +26,6 @@ export const PaymentModal = () => {
   const isDev = auth.userInfo?.email && devEmails.includes(auth.userInfo.email);
   const notifications = useNotifications();
   const [isShowPayments, setIsShowPayments] = useState(false);
-  const [isShowPaymentDetails, setIsShowPaymentDetails] = useState(false);
 
   const devModePayments = () => {
     const amount = prompt("Enter amount to update", "10");
@@ -242,7 +241,7 @@ export const PaymentModal = () => {
             </Stack>
 
             <Stack
-              gap={"20px"}
+              gap={"10px"}
               sx={{
                 width: "100%",
               }}
@@ -254,61 +253,54 @@ export const PaymentModal = () => {
                 }}
               >
                 Total used: <b>${new Intl.NumberFormat().format(usage.usedBalance)}</b>{" "}
-                <Link
-                  href="#details"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsShowPaymentDetails(!isShowPaymentDetails);
-                  }}
-                >
-                  {isShowPaymentDetails ? "Hide details" : "Show details"}
-                </Link>
               </Typography>
 
-              {isShowPaymentDetails && (
-                <Stack
+              <Stack
+                sx={{
+                  gap: "10px",
+                  width: "100%",
+                }}
+              >
+                <Typography
                   sx={{
-                    gap: "10px",
-                    width: "100%",
+                    fontWeight: 500,
                   }}
                 >
+                  Payment history:
+                </Typography>
+
+                {!usage.paymentLogs && (
                   <Typography
+                    variant="caption"
                     sx={{
-                      fontWeight: 500,
+                      color: "#999",
                     }}
                   >
-                    Payment history:
+                    Loading...
                   </Typography>
+                )}
 
-                  {!usage.paymentLogs && (
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        color: "#999",
-                      }}
-                    >
-                      Loading...
-                    </Typography>
-                  )}
+                {usage.paymentLogs && usage.paymentLogs.length === 0 && (
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      color: "#999",
+                    }}
+                  >
+                    No payments...
+                  </Typography>
+                )}
 
-                  {usage.paymentLogs && usage.paymentLogs.length === 0 && (
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        color: "#999",
-                      }}
-                    >
-                      No payments...
-                    </Typography>
-                  )}
-
-                  {usage.paymentLogs && (
-                    <Stack
-                      sx={{
-                        width: "100%",
-                      }}
-                    >
-                      {usage.paymentLogs.map((log) => {
+                {usage.paymentLogs && (
+                  <Stack
+                    sx={{
+                      width: "100%",
+                      gap: "10px",
+                    }}
+                  >
+                    {usage.paymentLogs
+                      .sort((a, b) => b.createdAt - a.createdAt)
+                      .map((log) => {
                         const humanDate = dayjs(log.createdAt).format("DD MMM YYYY");
                         const humanTime = dayjs(log.createdAt).format("HH:mm");
                         return (
@@ -352,10 +344,9 @@ export const PaymentModal = () => {
                           </Stack>
                         );
                       })}
-                    </Stack>
-                  )}
-                </Stack>
-              )}
+                  </Stack>
+                )}
+              </Stack>
             </Stack>
           </Stack>
         )}
