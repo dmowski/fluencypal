@@ -64,6 +64,7 @@ export default function RootLayout({
                                 <TasksProvider>
                                   <HomeworkProvider>
                                     <AiConversationProvider>{children}</AiConversationProvider>
+                                    <CookiesPopup />
                                   </HomeworkProvider>
                                 </TasksProvider>
                               </RulesProvider>
@@ -77,7 +78,6 @@ export default function RootLayout({
               </AuthProvider>
             </NotificationsProviderWrapper>
           </AppRouterCacheProvider>
-          <CookiesPopup />
         </ThemeProvider>
       </body>
     </html>

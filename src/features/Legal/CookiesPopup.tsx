@@ -3,16 +3,18 @@ import { Button, Stack, Typography } from "@mui/material";
 import { setCookiesGDPR } from "../Firebase/init";
 import { useLocalStorage } from "react-use";
 import { useEffect, useState } from "react";
+import { useAuth } from "../Auth/useAuth";
 
 export const CookiesPopup = () => {
   const [isClosedStore, setClosedStore] = useLocalStorage("cookiesPopup", false);
   const [isClosed, setClosed] = useState(true);
+  const auth = useAuth();
 
   useEffect(() => {
     setClosed(isClosedStore || false);
   }, [isClosedStore]);
 
-  if (isClosed) return <></>;
+  if (isClosed || auth.isAuthorized || auth.loading) return <></>;
 
   const onReject = () => {
     console.log("onReject CookiesPopup");
