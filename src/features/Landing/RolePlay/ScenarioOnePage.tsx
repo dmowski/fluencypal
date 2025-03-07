@@ -138,7 +138,7 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
                   View all scenarios
                 </Button>
                 <Button
-                  href="/practice"
+                  href={`/practice?rolePlayId=${item.id}`}
                   sx={{
                     ...buttonStyle,
                     height: "3rem",

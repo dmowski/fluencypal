@@ -1,8 +1,8 @@
-import { Button, ButtonGroup, FormLabel, Stack, TextField, Typography } from "@mui/material";
+import { Button, ButtonGroup, Stack, TextField, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import rolePlayScenarios from "./rolePlayData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
@@ -16,11 +16,27 @@ import {
   RolePlayInstruction,
 } from "./types";
 import { useSettings } from "../Settings/useSettings";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const firstLimit = 6;
 const hardHeight = "300px";
 
 export const RolePlayCardsBlock = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const rolePlayId = searchParams.get("rolePlayId");
+
+  const setRolePlayId = (id?: string) => {
+    router.push(id ? `/practice?rolePlayId=${id}` : `/practice`, { scroll: false });
+  };
+
+  const closeRolePlay = () => {
+    setRolePlayId();
+    setSelectedRolePlayScenario(null);
+  };
+
   const aiConversation = useAiConversation();
   const textAi = useTextAi();
   const settings = useSettings();
@@ -30,7 +46,17 @@ export const RolePlayCardsBlock = () => {
   const [selectedRolePlayScenario, setSelectedRolePlayScenario] =
     useState<RolePlayInstruction | null>(null);
 
+  useEffect(() => {
+    if (!rolePlayId || rolePlayId == selectedRolePlayScenario?.id) return;
+
+    const scenario = rolePlayScenarios.find((scenario) => scenario.id === rolePlayId);
+    if (scenario) {
+      setSelectedRolePlayScenario(scenario);
+    }
+  }, [rolePlayId]);
+
   const selectScenario = (scenario: RolePlayInstruction) => {
+    setRolePlayId(scenario.id);
     setSelectedRolePlayScenario(scenario);
   };
 
@@ -128,7 +154,7 @@ export const RolePlayCardsBlock = () => {
         <CustomModal
           padding="0"
           isOpen={true}
-          onClose={() => setSelectedRolePlayScenario(null)}
+          onClose={() => closeRolePlay()}
           width="min(90vw, 650px)"
         >
           <Stack
