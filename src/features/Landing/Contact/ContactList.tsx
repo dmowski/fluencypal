@@ -1,6 +1,7 @@
 import { Link, Stack, Typography } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import MailIcon from "@mui/icons-material/Mail";
+import TelegramIcon from "@mui/icons-material/Telegram";
 
 export const ContactList = () => {
   return (
@@ -39,6 +40,26 @@ export const ContactList = () => {
         <Typography>
           <Link href="https://www.instagram.com/dmowskii/" target="_blank">
             dmowskii
+          </Link>
+        </Typography>
+      </Stack>
+
+      <Stack
+        sx={{
+          alignItems: "center",
+          flexDirection: "row",
+          gap: "10px",
+        }}
+      >
+        <TelegramIcon
+          sx={{
+            width: "25px",
+            height: "25px",
+          }}
+        />
+        <Typography>
+          <Link href="https://t.me/dmowski" target="_blank">
+            dmowski
           </Link>
         </Typography>
       </Stack>

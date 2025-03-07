@@ -15,7 +15,7 @@ export const Footer = () => {
         borderTop: "1px solid rgba(255, 255, 255, 0.2)",
         marginTop: "0px",
         position: "relative",
-        zIndex: 9999,
+        zIndex: 1,
       }}
     >
       <Stack

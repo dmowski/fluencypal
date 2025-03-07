@@ -12,6 +12,7 @@ import { useSettings } from "../Settings/useSettings";
 import dayjs from "dayjs";
 import { PaymentLogType } from "@/common/usage";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
+import { ContactList } from "../Landing/Contact/ContactList";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
@@ -237,43 +238,7 @@ export const PaymentModal = () => {
                     <Typography>
                       If you'd like to contact me directly, here are my details:
                     </Typography>
-                    <Stack
-                      sx={{
-                        alignItems: "center",
-                        flexDirection: "row",
-                        gap: "10px",
-                      }}
-                    >
-                      <MailIcon
-                        sx={{
-                          width: "25px",
-                          height: "25px",
-                        }}
-                      />
-                      <Typography>
-                        <Link href="mailto:dmowski.alex@gmail.com">dmowski.alex@gmail.com</Link>
-                      </Typography>
-                    </Stack>
-
-                    <Stack
-                      sx={{
-                        alignItems: "center",
-                        flexDirection: "row",
-                        gap: "10px",
-                      }}
-                    >
-                      <InstagramIcon
-                        sx={{
-                          width: "25px",
-                          height: "25px",
-                        }}
-                      />
-                      <Typography>
-                        <Link href="https://www.instagram.com/dmowskii/" target="_blank">
-                          @dmowskii
-                        </Link>
-                      </Typography>
-                    </Stack>
+                    <ContactList />
                   </Stack>
                   {isDev && (
                     <Button variant="contained" onClick={devModePayments}>

@@ -26,6 +26,7 @@ export const ContactsPage = () => {
             backgroundColor: `#fff`,
             paddingTop: "100px",
             color: "#000",
+            minHeight: "calc(100vh - 300px)",
           }}
         >
           <Stack
