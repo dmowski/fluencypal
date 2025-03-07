@@ -14,7 +14,7 @@ import { useRules } from "../Rules/useRules";
 import { RulesToLearn } from "./RulesToLearn";
 import { TasksCard } from "./TasksCard";
 import { ConversationSelectCard } from "./ConversationSelectCard";
-import { ProgressCard } from "./ProgressCard";
+import { ProgressBoard } from "./Progress/ProgressBoard";
 import { HomeworkCard } from "./HomeworkCard";
 import { RolePlayCardsBlock } from "../RolePlay/RolePlayCardsBlock";
 
@@ -103,7 +103,7 @@ export function Dashboard() {
             boxSizing: "border-box",
           }}
         >
-          <ProgressCard />
+          <ProgressBoard />
         </Stack>
       </Stack>
 
