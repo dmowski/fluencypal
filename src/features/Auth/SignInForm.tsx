@@ -1,10 +1,20 @@
-import { Button, Divider, Link, Stack, Typography } from "@mui/material";
+"use client";
+import { Button, Link, Stack, Typography } from "@mui/material";
 import { useAuth } from "./useAuth";
 import GoogleIcon from "@mui/icons-material/Google";
 import { StarContainer } from "../Layout/StarContainer";
+import { useSearchParams } from "next/navigation";
+import rolePlayScenarios from "../RolePlay/rolePlayData";
 
 export const SignInForm = () => {
   const auth = useAuth();
+  const searchParams = useSearchParams();
+  const rolePlayId = searchParams.get("rolePlayId");
+  const scenario = rolePlayId
+    ? rolePlayScenarios.find((scenario) => scenario.id === rolePlayId)
+    : null;
+
+  const pageTitle = scenario ? `Start Role Play: ${scenario.title}` : "Start the Lesson";
   return (
     <StarContainer minHeight="100vh" paddingBottom="160px">
       <Stack
@@ -18,8 +28,20 @@ export const SignInForm = () => {
             alignItems: "center",
           }}
         >
-          <Typography variant="h2" align="center">
-            Start the Lesson
+          <Typography
+            variant="h2"
+            component={"h1"}
+            align="center"
+            sx={{
+              fontWeight: 900,
+              fontSize: "4rem",
+              padding: "0 10px",
+              "@media (max-width: 600px)": {
+                fontSize: "3rem",
+              },
+            }}
+          >
+            {pageTitle}
           </Typography>
           <Stack
             sx={{
