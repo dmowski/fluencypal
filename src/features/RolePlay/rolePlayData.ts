@@ -89,15 +89,6 @@ In this scenario, you’ll take on the role of a job candidate while our AI acts
     category: "Professional",
     input: [
       {
-        id: "job-title",
-        labelForUser: "Desired Job",
-        labelForAi: "User's desired Job Title",
-        placeholder: "Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc.",
-        type: "text-input",
-        defaultValue: "",
-        required: true,
-      },
-      {
         id: "cv",
         labelForUser: "Your experience",
         labelForAi: "User's CV text",
@@ -107,6 +98,27 @@ In this scenario, you’ll take on the role of a job candidate while our AI acts
         defaultValue: "",
         aiSummarizingInstruction:
           "Summarize the user's experience and skills. Return text no longer than 10 sentences.",
+        required: false,
+      },
+      {
+        id: "job-title",
+        labelForUser: "Desired Job",
+        labelForAi: "User's desired Job Title",
+        placeholder: "Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc.",
+        type: "text-input",
+        defaultValue: "",
+        required: true,
+      },
+      {
+        id: "vacancy",
+        labelForUser: "Vacancy description",
+        labelForAi: "Desired Job Vacancy Description",
+        placeholder:
+          "Paste vacancy description if you have it. You can also write a brief summary of the job requirements.",
+        type: "textarea",
+        defaultValue: "",
+        aiSummarizingInstruction:
+          "Summarize the vacancy description. Return text no longer than 10 sentences.",
         required: false,
       },
     ],
