@@ -15,7 +15,6 @@ export function ConversationPage() {
   const settings = useSettings();
   const aiConversation = useAiConversation();
   const usage = useUsage();
-
   if (settings.loading || auth.loading)
     return (
       <Stack

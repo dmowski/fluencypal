@@ -4,16 +4,9 @@ import { useSettings } from "../Settings/useSettings";
 import { generateAudioUrl } from "./generateAudioUrl";
 import { useUsage } from "../Usage/useUsage";
 import { AudioUsageLog } from "@/common/usage";
+import { getDataFromCache, setDataToCache } from "@/libs/localStorageCache";
 
-const fnv1aHash = (input: string) => {
-  let hash = 0x811c9dc5;
-  for (let i = 0; i < input.length; i++) {
-    hash ^= input.charCodeAt(i);
-    hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
-  }
-  return (hash >>> 0).toString(16);
-};
-const cacheKey = `DL_audio-cache`;
+const audioCacheKey = `DL_audio-cache`;
 interface AudioContextType {
   getAudioUrl: (text: string) => Promise<string>;
 }
@@ -24,33 +17,13 @@ function useProvideAudio(): AudioContextType {
   const settings = useSettings();
   const usage = useUsage();
 
-  const getUrlFromCache = async (text: string) => {
-    const audioKey = fnv1aHash(text);
-
-    const cachedStore = (localStorage.getItem(cacheKey) || "{}") as string;
-    const cachedData = JSON.parse(cachedStore) as Record<string, string>;
-
-    if (cachedData[audioKey]) {
-      return cachedData[audioKey];
-    }
-    return null;
-  };
-
-  const setUrlToCache = async (text: string, url: string) => {
-    const audioKey = fnv1aHash(text);
-    const cachedStore = (localStorage.getItem(cacheKey) || "{}") as string;
-    const cachedData = JSON.parse(cachedStore) as Record<string, string>;
-    cachedData[audioKey] = url;
-    localStorage.setItem(cacheKey, JSON.stringify(cachedData));
-  };
-
   const getAudioUrl = async (text: string) => {
     const languageCode = settings.languageCode;
     if (!languageCode) {
-      throw new Error("Language is not set | useProvideAudio.generate");
+      throw new Error("Language is not set | useProvideAudio.getAudioUrl");
     }
 
-    const urlFromCache = await getUrlFromCache(text);
+    const urlFromCache = await getDataFromCache({ inputValue: text, storageSpace: audioCacheKey });
     if (urlFromCache) {
       return urlFromCache;
     }
@@ -72,7 +45,7 @@ function useProvideAudio(): AudioContextType {
     if (!audioUrl) {
       throw new Error("Failed to generate audio");
     }
-    await setUrlToCache(text, audioUrl);
+    await setDataToCache({ inputValue: text, outputValue: audioUrl, storageSpace: audioCacheKey });
     return audioUrl;
   };
 

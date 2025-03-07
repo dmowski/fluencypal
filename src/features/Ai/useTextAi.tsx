@@ -1,15 +1,19 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useState } from "react";
+import { createContext, useContext, ReactNode, JSX } from "react";
 import { useSettings } from "../Settings/useSettings";
 import { sendTextAiRequest } from "./sendTextAiRequest";
 import { calculateTextUsagePrice, TextAiModel } from "@/common/ai";
 import { useUsage } from "../Usage/useUsage";
 import { TextUsageLog } from "@/common/usage";
+import { getDataFromCache, setDataToCache } from "@/libs/localStorageCache";
+
+const cacheKey = `DL_text-ai-cache`;
 
 export interface TextAiRequest {
   userMessage: string;
   systemMessage: string;
   model: TextAiModel;
+  cache?: boolean;
 }
 
 interface TextAiContextType {
@@ -23,6 +27,18 @@ function useProvideTextAi(): TextAiContextType {
   const usage = useUsage();
 
   const generate = async (conversationDate: TextAiRequest) => {
+    const valueForCache = conversationDate.userMessage + conversationDate.systemMessage;
+
+    if (conversationDate.cache) {
+      const responseFromCache = await getDataFromCache({
+        inputValue: valueForCache,
+        storageSpace: cacheKey,
+      });
+      if (responseFromCache) {
+        return responseFromCache;
+      }
+    }
+
     const languageCode = settings.languageCode;
     if (!languageCode) {
       throw new Error("Language is not set | useProvideTextAi.generate");
@@ -41,7 +57,17 @@ function useProvideTextAi(): TextAiContextType {
     };
 
     usage.setUsageLogs((logs) => [...logs, textUsageLog]);
-    return response.aiResponse;
+    const responseString = response.aiResponse || "";
+
+    if (conversationDate.cache && responseString) {
+      await setDataToCache({
+        inputValue: valueForCache,
+        outputValue: responseString,
+        storageSpace: cacheKey,
+      });
+    }
+
+    return responseString;
   };
 
   return {

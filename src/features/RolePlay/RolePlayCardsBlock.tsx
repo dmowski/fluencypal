@@ -93,6 +93,7 @@ export const RolePlayCardsBlock = () => {
         systemMessage: input.aiSummarizingInstruction,
         userMessage: userValue,
         model: MODELS.gpt_4o,
+        cache: true,
       });
       return aiResult || userValue;
     },
