@@ -9,6 +9,7 @@ import { useSettings } from "../Settings/useSettings";
 
 interface HomeworkContextType {
   incompleteHomeworks: Homework[];
+  completeHomeworks: Homework[];
   loadingHomeworks: boolean;
   errorHomeworks: Error | undefined;
   saveHomework: (homework: Homework) => Promise<string>;
@@ -23,20 +24,20 @@ function useProvideHomework(): HomeworkContextType {
   const settings = useSettings();
   const userId = auth.uid;
 
-  const incompleteQuery = useMemo(() => {
+  const allHomeworkQuery = useMemo(() => {
     const lang = settings.languageCode;
     if (!lang) {
       return null;
     }
 
     const homeworkCollection = db.collections.homework(userId);
-    return homeworkCollection
-      ? query(homeworkCollection, where("isDone", "==", false), where("languageCode", "==", lang))
-      : null;
+    return homeworkCollection ? query(homeworkCollection, where("languageCode", "==", lang)) : null;
   }, [userId, settings.languageCode]);
 
-  const [incompleteHomeworks = [], loadingHomeworks, errorHomeworks] =
-    useCollectionData(incompleteQuery);
+  const [allHomeworks = [], loadingHomeworks, errorHomeworks] = useCollectionData(allHomeworkQuery);
+
+  const incompleteHomeworks = allHomeworks.filter((h) => !h.isDone && !h.isSkip);
+  const completeHomeworks = allHomeworks.filter((h) => h.isDone && !h.isSkip);
 
   const saveHomework = async (homework: Homework): Promise<string> => {
     const docRef = db.documents.homework(userId, homework.id);
@@ -66,6 +67,7 @@ function useProvideHomework(): HomeworkContextType {
 
   return {
     incompleteHomeworks,
+    completeHomeworks,
     loadingHomeworks,
     errorHomeworks,
     saveHomework,

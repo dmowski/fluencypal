@@ -75,7 +75,7 @@ export const RolePlayCardsBlock = () => {
       rolePlayInputs
     );
     aiConversation.startConversation({
-      mode: "custom",
+      mode: "role-play",
       customInstruction: instruction,
       voice: scenario.voice,
     });

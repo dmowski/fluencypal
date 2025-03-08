@@ -336,7 +336,7 @@ Craft a lesson that will help user to understand the rule.
 ${userInfo ? `Student info: ${userInfo}` : ""}
 `,
       },
-      custom: {
+      "role-play": {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
         initInstruction: ``,

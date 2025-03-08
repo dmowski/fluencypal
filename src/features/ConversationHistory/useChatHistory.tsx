@@ -6,6 +6,7 @@ import { SupportedLanguage } from "@/common/lang";
 import { db } from "../Firebase/db";
 import { ChatMessage, Conversation, ConversationMode } from "@/common/conversation";
 import { useSettings } from "../Settings/useSettings";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 interface ChatHistoryContextType {
   createConversation: (params: {
@@ -15,6 +16,8 @@ interface ChatHistoryContextType {
   }) => Promise<void>;
   setMessages: (conversationId: string, messages: ChatMessage[]) => Promise<void>;
   getLastConversations: (count: number) => Promise<Conversation[]>;
+  conversations: Conversation[];
+  loading: boolean;
 }
 
 const ChatHistoryContext = createContext<ChatHistoryContextType | null>(null);
@@ -23,6 +26,8 @@ function useProvideChatHistory(): ChatHistoryContextType {
   const auth = useAuth();
   const settings = useSettings();
   const userId = auth.uid;
+  const collectionRef = db.collections.conversation(userId);
+  const [conversations, loading] = useCollectionData(collectionRef);
 
   const getConversationDoc = (conversationId: string) => {
     const docRef = db.documents.conversation(userId, conversationId);
@@ -37,7 +42,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
     if (!languageCode) {
       throw new Error("❌ languageCode is not defined | getLastConversations");
     }
-    const collectionRef = db.collections.conversation(userId);
+
     if (!collectionRef) {
       throw new Error("❌ collectionRef is not defined | getLastConversations");
     }
@@ -89,6 +94,8 @@ function useProvideChatHistory(): ChatHistoryContextType {
   };
 
   return {
+    conversations: conversations || [],
+    loading,
     createConversation,
     getLastConversations,
     setMessages,

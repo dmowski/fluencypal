@@ -7,7 +7,7 @@ export const conversationModeLabel: Record<ConversationMode, string> = {
   talkAndCorrect: "Talk & Correct",
   words: "Words",
   rule: "Rule",
-  custom: "Custom",
+  "role-play": "Role Play",
 };
 
 export const firstAiMessage: Record<SupportedLanguage, string> = {

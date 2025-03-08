@@ -5,11 +5,18 @@ import { useTasks } from "../../Tasks/useTasks";
 import { useWords } from "../../Words/useWords";
 import { DashboardCard } from "../../uiKit/Card/DashboardCard";
 import { StatCard } from "./StatCard";
+import { useHomework } from "@/features/Homework/useHomework";
+import { useChatHistory } from "@/features/ConversationHistory/useChatHistory";
 
 export const ProgressBoard = () => {
   const settings = useSettings();
   const tasks = useTasks();
   const words = useWords();
+  const homeworks = useHomework();
+  const history = useChatHistory();
+  const countOfRolePlay = history.conversations.filter((c) => c.mode === "role-play").length;
+  const countOfRules = history.conversations.filter((c) => c.mode === "rule").length;
+
   return (
     <DashboardCard>
       <Stack
@@ -101,19 +108,19 @@ export const ProgressBoard = () => {
         <StatCard
           description="Count of role-play conversations you have participated in."
           title="Roles played"
-          value={`${words.totalWordsCount || 0}`}
+          value={`${countOfRolePlay}`}
         />
 
         <StatCard
           description="Count of homeworks you have completed."
           title="Homeworks done"
-          value={`${words.totalWordsCount || 3}`}
+          value={`${homeworks.completeHomeworks.length || 0}`}
         />
 
         <StatCard
           description="Count of rules you have learned."
           title="Rules learned"
-          value={`${words.totalWordsCount || 1}`}
+          value={`${countOfRules}`}
         />
       </Stack>
     </DashboardCard>
