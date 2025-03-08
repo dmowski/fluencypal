@@ -6,9 +6,11 @@ import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useTextAi } from "../Ai/useTextAi";
+import { useSettings } from "../Settings/useSettings";
 
 export const GamesBoard = () => {
   const textAi = useTextAi();
+  const settings = useSettings();
   const aiConversation = useAiConversation();
 
   const [isShowCrocodileInstructions, setIsShowCrocodileInstructions] = useState(false);
@@ -21,7 +23,7 @@ export const GamesBoard = () => {
     const systemMessage = `You need to generate words to play the game Crocodile. Be creative. Some of them should be simple and some of them should be hard. Return your words with comma separated. For example: "apple, banana, orange"`;
     const response = await textAi.generate({
       systemMessage,
-      userMessage: `Generate me 12 words`,
+      userMessage: `Generate me 20 words. Be creative and create smart words or phrases. Use ${settings.fullLanguageName} language.`,
       model: "gpt-4o",
     });
     const words = response.split(",");
