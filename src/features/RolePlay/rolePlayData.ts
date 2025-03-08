@@ -126,6 +126,7 @@ In Alias, you and your AI partner take turns describing and guessing words witho
 ## How the Scenario Works  
 In this scenario, you’ll take on the role of a job candidate while our AI acts as a professional recruiter. You’ll be asked about your experience, skills, and motivations for the role, with the AI adjusting difficulty based on your responses. Use the prompts to practice delivering concise, persuasive answers that help you stand out in any job interview.`,
     category: "Professional",
+    analyzeResultAiInstruction: `Analyze the user's responses and provide constructive feedback on their interview performance. Highlight areas of strength and suggest improvements for future interviews.`,
     input: [
       {
         id: "cv",

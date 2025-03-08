@@ -39,4 +39,5 @@ export interface RolePlayInstruction {
   instructionCreator: AiRolePlayInstructionCreator;
   contentPage: string;
   gameMode?: "alias";
+  analyzeResultAiInstruction?: string;
 }

@@ -114,6 +114,7 @@ export const RolePlayBoard = () => {
       customInstruction: instruction,
       voice: scenario.voice,
       gameWords: gameStat,
+      analyzeResultAiInstruction: scenario.analyzeResultAiInstruction,
     });
   };
 

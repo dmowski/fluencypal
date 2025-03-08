@@ -35,6 +35,7 @@ interface StartConversationProps {
   voice?: AiVoice;
   customInstruction?: string;
   gameWords?: GuessGameStat;
+  analyzeResultAiInstruction?: string;
 }
 
 interface AiConversationContextType {
@@ -73,6 +74,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const userInfo = aiUserInfo.userInfo?.records?.join(". ") || "";
   const fullLanguageName = settings.fullLanguageName || "English";
   const languageCode = settings.languageCode || "en";
+  const [analyzeResultInstruction, setAnalyzeResultInstruction] = useState<string>("");
 
   const usage = useUsage();
   const [gameStat, setGameStat] = useState<GuessGameStat | null>(null);
@@ -161,7 +163,11 @@ Your homework is to repeat the following text:
 `;
     const generalSummary = `Generate summary of the lesson. Show user's mistakes and make general comments.`;
     const isNeedHomework = modesWithHomework.includes(currentMode);
-    const newInstruction = isNeedHomework ? newInstructionForHomework : generalSummary;
+    const newInstruction = analyzeResultInstruction
+      ? analyzeResultInstruction
+      : isNeedHomework
+        ? newInstructionForHomework
+        : generalSummary;
 
     await calculateWordsUsageFromConversation();
 
@@ -169,6 +175,8 @@ Your homework is to repeat the following text:
     if (isNeedToSaveUserInfo) {
       await aiUserInfo.updateUserInfo(conversation);
     }
+
+    console.log("FINISHING THE LESSON. AI new Instruction to update session", newInstruction);
     await communicatorRef.current?.updateSessionTrigger(newInstruction);
     await sleep(700);
 
@@ -176,7 +184,13 @@ Your homework is to repeat the following text:
       "I am done for today. Create a text I have to repeat on the next lesson. Don't add anything else. Just give me homework";
     const endUserMessageJustAnalyze =
       "I am done for today. Show me my mistakes and make general comments. Don't add anything else. Just give me feedback";
-    const endUserMessage = isNeedHomework ? endUserMessageHomework : endUserMessageJustAnalyze;
+    const endUserMessage = analyzeResultInstruction
+      ? `Let's finish conversation. Analyze our conversations. Use ${fullLanguageName} language during providing feedback. Give me feedback and show places to improve.`
+      : isNeedHomework
+        ? endUserMessageHomework
+        : endUserMessageJustAnalyze;
+
+    console.log("endUserMessage", endUserMessage);
     communicatorRef.current?.addUserChatMessage(endUserMessage);
     await sleep(500);
     await communicatorRef.current?.triggerAiResponse();
@@ -359,7 +373,14 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
     customInstruction,
     voice,
     gameWords,
+    analyzeResultAiInstruction,
   }: StartConversationProps) => {
+    setAnalyzeResultInstruction(analyzeResultAiInstruction || "");
+
+    if (analyzeResultAiInstruction) {
+      console.log("analyzeResultAiInstruction", analyzeResultAiInstruction);
+    }
+
     if (!settings.languageCode) {
       throw new Error("Language is not set | startConversation");
     }
