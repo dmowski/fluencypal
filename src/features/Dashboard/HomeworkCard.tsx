@@ -24,7 +24,7 @@ export const HomeworkCard = () => {
               sx={{
                 alignItems: "center",
                 width: "100%",
-                gap: "10px",
+                gap: "25px",
                 paddingTop: "15px",
                 marginBottom: "-50px",
               }}
@@ -38,7 +38,7 @@ export const HomeworkCard = () => {
                   justifyContent: "center",
                 }}
               >
-                <PackageOpen size={"70px"} strokeWidth={"0.7px"} color="rgba(140, 140, 140, 1)" />
+                <PackageOpen size={"55px"} strokeWidth={"0.7px"} color="rgba(140, 140, 140, 1)" />
               </Stack>
               <Stack>
                 <Typography
@@ -61,17 +61,6 @@ export const HomeworkCard = () => {
                   Start a conversation to get one.
                 </Typography>
               </Stack>
-
-              <Button
-                variant="outlined"
-                onClick={() =>
-                  aiConversation.startConversation({
-                    mode: "talk",
-                  })
-                }
-              >
-                Start & Get Homework
-              </Button>
             </Stack>
           </>
         )}

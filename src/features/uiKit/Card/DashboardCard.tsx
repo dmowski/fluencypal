@@ -11,8 +11,7 @@ export const DashboardCard: React.FC<DashboardCardProps> = ({ children }) => {
       sx={{
         position: "relative",
         borderRadius: "16px",
-        backgroundColor: "rgba(12, 12, 14, 0.9)",
-        backdropFilter: "blur(10px)",
+        backgroundColor: "rgba(12, 12, 15, 1)",
       }}
     >
       <Stack

@@ -1,7 +1,8 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { Baby, Mic, TrendingUp } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
+import { ClickCard } from "./ClickCard";
 
 export const ConversationSelectCard = () => {
   const aiConversation = useAiConversation();
@@ -31,108 +32,29 @@ export const ConversationSelectCard = () => {
           },
         }}
       >
-        <Stack
-          gap={"20px"}
-          sx={{
-            alignItems: "flex-start",
-            width: "100%",
-          }}
-        >
-          <Stack>
-            <Typography>Just Talk Mode</Typography>
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              Talk to the AI and it will respond to you
-            </Typography>
-          </Stack>
-          <Button
-            variant="contained"
-            onClick={() => aiConversation.startConversation({ mode: "talk" })}
-            size="large"
-            startIcon={
-              <Mic
-                style={{
-                  width: "20px",
-                  height: "20px",
-                }}
-              />
-            }
-          >
-            Start a talk
-          </Button>
-        </Stack>
+        <ClickCard
+          isDone={false}
+          title="Just Talk Mode"
+          subTitle="Talk to the AI and it will respond to you"
+          buttonIcon={<Mic size={"30px"} />}
+          onStart={() => aiConversation.startConversation({ mode: "talk" })}
+        />
 
-        <Stack
-          gap={"20px"}
-          sx={{
-            alignItems: "flex-start",
-          }}
-        >
-          <Stack>
-            <Typography>Talk & Correct Mode</Typography>
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              Talk to the AI, and it will correct you if you make a mistake
-            </Typography>
-          </Stack>
-          <Button
-            variant="outlined"
-            size="large"
-            onClick={() => aiConversation.startConversation({ mode: "talkAndCorrect" })}
-            startIcon={
-              <TrendingUp
-                style={{
-                  width: "20px",
-                  height: "20px",
-                }}
-              />
-            }
-          >
-            Start Talk & Correct
-          </Button>
-        </Stack>
+        <ClickCard
+          isDone={false}
+          title="Talk & Correct Mode"
+          subTitle="Talk to the AI, and it will correct you if you make a mistake"
+          buttonIcon={<TrendingUp size={"30px"} />}
+          onStart={() => aiConversation.startConversation({ mode: "talkAndCorrect" })}
+        />
 
-        <Stack
-          gap={"20px"}
-          sx={{
-            alignItems: "flex-start",
-          }}
-        >
-          <Stack>
-            <Typography>Beginner mode</Typography>
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              An easy mode for beginners
-            </Typography>
-          </Stack>
-          <Button
-            variant="outlined"
-            size="large"
-            onClick={() => aiConversation.startConversation({ mode: "beginner" })}
-            startIcon={
-              <Baby
-                style={{
-                  width: "20px",
-                  height: "20px",
-                }}
-              />
-            }
-          >
-            Start the Beginner mode
-          </Button>
-        </Stack>
+        <ClickCard
+          isDone={false}
+          title="Beginner mode"
+          subTitle="An easy mode for beginners"
+          buttonIcon={<Baby size={"30px"} />}
+          onStart={() => aiConversation.startConversation({ mode: "beginner" })}
+        />
       </Stack>
     </DashboardCard>
   );

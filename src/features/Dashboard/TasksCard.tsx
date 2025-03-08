@@ -1,5 +1,5 @@
-import { Button, Stack, Typography } from "@mui/material";
-import { TaskCard } from "./TaskCard";
+import { Stack, Typography } from "@mui/material";
+import { ClickCard } from "./ClickCard";
 import { useTasks } from "../Tasks/useTasks";
 import { BookOpenText, GraduationCap, Mic } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
@@ -30,38 +30,36 @@ export const TasksCard = () => {
       <Stack
         sx={{
           flexDirection: "row",
-          gap: "20px",
+          gap: "15px",
+          width: "100%",
           "@media (max-width: 800px)": {
             flexDirection: "column",
             gap: "10px",
           },
         }}
       >
-        <TaskCard
+        <ClickCard
           isDone={!!tasks.todayStats?.lesson}
           title="Small conversation"
           subTitle="Start talking to learn something new"
-          buttonIcon={<Mic size={"20px"} />}
-          buttonText="Just a Talk"
+          buttonIcon={<Mic size={"30px"} />}
           onStart={() => aiConversation.startConversation({ mode: "talk" })}
         />
 
-        <TaskCard
+        <ClickCard
           title="Rule of the day"
           subTitle="Get a personal grammar rule to learn"
-          buttonIcon={<BookOpenText size={"20px"} />}
-          buttonText="Get a rule"
+          buttonIcon={<BookOpenText size={"30px"} />}
           onStart={() => rules.getRules()}
           isDone={!!tasks.todayStats?.rule}
           lockedText={!words.totalWordsCount ? "Complete previous tasks first" : ""}
         />
 
-        <TaskCard
+        <ClickCard
           isDone={!!tasks.todayStats?.words}
           title="New words"
           subTitle="Practice new vocabulary with the AI"
-          buttonIcon={<GraduationCap size={"20px"} />}
-          buttonText="Get new words"
+          buttonIcon={<GraduationCap size={"30px"} />}
           lockedText={!words.totalWordsCount ? "Complete previous tasks first" : ""}
           onStart={() => words.getNewWordsToLearn()}
         />
