@@ -25,7 +25,12 @@ import { useWords } from "../Words/useWords";
 import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { firstAiMessage } from "./data";
-import { RolePlayInputResult, RolePlayInstruction } from "../RolePlay/types";
+
+interface GuessGameStat {
+  wordsUserToDescribe: string[];
+
+  wordsAiToDescribe: string[];
+}
 
 interface StartConversationProps {
   mode: ConversationMode;
@@ -34,6 +39,7 @@ interface StartConversationProps {
   ruleToLearn?: string;
   voice?: AiVoice;
   customInstruction?: string;
+  gameWords?: GuessGameStat;
 }
 
 interface AiConversationContextType {
@@ -55,6 +61,7 @@ interface AiConversationContextType {
   isShowUserInput: boolean;
   setIsShowUserInput: (value: boolean) => void;
   currentMode: ConversationMode;
+  gameWords: GuessGameStat | null;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -73,6 +80,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const languageCode = settings.languageCode || "en";
 
   const usage = useUsage();
+  const [gameStat, setGameStat] = useState<GuessGameStat | null>(null);
   const [isStarted, setIsStarted] = useState(false);
   const homeworkService = useHomework();
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
@@ -336,6 +344,18 @@ Craft a lesson that will help user to understand the rule.
 ${userInfo ? `Student info: ${userInfo}` : ""}
 `,
       },
+
+      "game-guess": {
+        ...baseConfig,
+        model: MODELS.SMALL_CONVERSATION,
+        initInstruction: `You are an ${fullLanguageName} player on crocodile game.
+You play game where user knows some words and you need to guess them.
+You can ask user to describe the word or phrase without saying it.
+But you'll given with certain words that you need to describe and user need to guess.
+You can ask user to repeat the word or phrase if you didn't get it.
+Play in the following patter: firstly try to guess the word form user and then ask user to guess the word from you.
+`,
+      },
       "role-play": {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,
@@ -354,10 +374,15 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
     ruleToLearn,
     customInstruction,
     voice,
+    gameWords,
   }: StartConversationProps) => {
     if (!settings.languageCode) {
       throw new Error("Language is not set | startConversation");
     }
+    if (gameWords) {
+      setGameStat(gameWords);
+    }
+
     try {
       setConversation([]);
       setIsClosing(false);
@@ -396,6 +421,13 @@ ${ruleToLearn}
       if (customInstruction) {
         instruction = customInstruction;
       }
+
+      if (gameWords) {
+        instruction += `
+Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
+`;
+      }
+
       console.log("instruction:");
       console.log(instruction);
       const conversation = await initAiRtc({ ...aiRtcConfig, initInstruction: instruction, voice });
@@ -470,6 +502,7 @@ ${ruleToLearn}
     addUserMessage,
     isShowUserInput: isShowUserInput || false,
     setIsShowUserInput,
+    gameWords: gameStat,
   };
 }
 

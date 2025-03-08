@@ -75,6 +75,19 @@ Use ${settings.fullLanguageName || "English"} language.
     setHelpMessage(aiResult || "Error");
   };
 
+  const isWordIsInChatHistory = (word: string) => {
+    const lowerCaseWord = word.toLowerCase();
+    const conversation = aiConversation.conversation;
+    const wordFoundResult = conversation.find((message) => {
+      const chatMessage = message.text || "";
+      const lowerCaseMessage = chatMessage.toLowerCase();
+      const isFound = lowerCaseMessage.indexOf(lowerCaseWord) > -1;
+      return isFound;
+    });
+
+    return !!wordFoundResult;
+  };
+
   return (
     <Stack sx={{ gap: "40px" }}>
       <TalkingWaves inActive={aiConversation.isAiSpeaking} />
@@ -107,6 +120,102 @@ Use ${settings.fullLanguageName || "English"} language.
               gap: "20px",
             }}
           >
+            {aiConversation.gameWords?.wordsUserToDescribe && (
+              <Stack
+                sx={{
+                  gap: "20px",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  borderRadius: "4px",
+                  padding: "10px",
+                }}
+              >
+                {aiConversation.gameWords?.wordsUserToDescribe && (
+                  <Stack
+                    sx={{
+                      flexDirection: "column",
+                      gap: "10px",
+                    }}
+                  >
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        opacity: 0.9,
+                      }}
+                    >
+                      Words to describe:
+                    </Typography>
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        gap: "5px",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      {aiConversation.gameWords?.wordsUserToDescribe.map((word, index, list) => {
+                        const isDescribed = isWordIsInChatHistory(word);
+                        const isLast = index === list.length - 1;
+                        return (
+                          <Typography
+                            variant="h4"
+                            className="decor-text"
+                            key={index}
+                            sx={{
+                              textDecoration: isDescribed ? "line-through" : "none",
+                              opacity: isDescribed ? 0.6 : 1,
+                            }}
+                          >
+                            {word}
+                            {isLast ? "" : ","}
+                          </Typography>
+                        );
+                      })}
+                    </Stack>
+                  </Stack>
+                )}
+
+                {aiConversation.gameWords?.wordsAiToDescribe && (
+                  <Stack
+                    sx={{
+                      flexDirection: "column",
+                      gap: "10px",
+                    }}
+                  >
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        opacity: 0.9,
+                      }}
+                    >
+                      Words to guess:
+                    </Typography>
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        gap: "5px",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      {aiConversation.gameWords?.wordsAiToDescribe.map((word, index) => {
+                        const isGuessed = isWordIsInChatHistory(word);
+                        return (
+                          <Typography
+                            variant="h4"
+                            className="decor-text"
+                            key={index}
+                            sx={{
+                              opacity: isGuessed ? 1 : 0.7,
+                            }}
+                          >
+                            {isGuessed ? word : Array(word.length).fill("*").join("")}
+                          </Typography>
+                        );
+                      })}
+                    </Stack>
+                  </Stack>
+                )}
+              </Stack>
+            )}
+
             {lastUserMessage && <UserMessage message={lastUserMessage?.text} />}
 
             {lastBotMessage && (
