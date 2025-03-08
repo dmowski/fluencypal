@@ -16,7 +16,7 @@ import { TasksCard } from "./TasksCard";
 import { ConversationSelectCard } from "./ConversationSelectCard";
 import { ProgressBoard } from "./Progress/ProgressBoard";
 import { HomeworkCard } from "./HomeworkCard";
-import { RolePlayCardsBlock } from "../RolePlay/RolePlayCardsBlock";
+import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
 
 export function Dashboard() {
   const settings = useSettings();
@@ -78,7 +78,7 @@ export function Dashboard() {
         }}
       >
         <ConversationSelectCard />
-        <RolePlayCardsBlock />
+        <RolePlayBoard />
 
         <Stack
           sx={{
