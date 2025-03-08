@@ -6,8 +6,7 @@ export type ConversationMode =
   | "beginner"
   | "words"
   | "rule"
-  | "role-play"
-  | "game-guess";
+  | "role-play";
 
 export interface ChatMessage {
   id: string;

@@ -47,32 +47,61 @@ ${additionalInfo}`;
 
 const rolePlayScenarios: Array<RolePlayInstruction> = [
   {
-    id: "in-the-restaurant",
-    category: "Social",
-    input: [],
-    title: "In the Restaurant",
-    subTitle: "Order food and interact with a waiter in a restaurant",
-    instructionToAi:
-      "You are a polite restaurant waiter. Ask the user for their order, offer recommendations, and respond to any requests.",
-    exampleOfFirstMessageFromAi:
-      "Hello, I’m Ash, your server for today. Welcome to our restaurant! Is there anything in particular you’re craving, or would you like me to suggest some popular dishes?",
-    illustrationDescription:
-      "A cozy restaurant setting with a waiter holding a notepad, attentively taking an order from a customer seated at a table with a menu in hand.",
-    imageSrc: "/role/acde68cd-1db6-4b69-be42-d2071b9ee1e8.jpeg",
+    id: "alias-game",
+    category: "Game",
+    input: [
+      {
+        type: "options",
+        id: "languageLevel",
+
+        labelForAi: "Language level of user",
+        placeholder: "",
+        defaultValue: "Intermediate",
+        options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
+
+        labelForUser: "Your Language Level",
+        optionsAiDescriptions: {
+          Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.`,
+          Intermediate:
+            "Can hold conversations on familiar topics. Use idiomatic expressions and ask follow-up questions.",
+          Advanced:
+            "Comfortable with complex discussions. Use idiomatic expressions and ask open-ended questions.",
+          Fluent:
+            "Native or near-native proficiency. Use advanced vocabulary and ask for detailed opinions.",
+        },
+        required: false,
+      },
+    ],
+    title: "Alias Game",
+    gameMode: "alias",
+    subTitle: "Guess words and explain them creatively",
+    instructionToAi: `You are playing the Alias game.
+
+The game involves two parts:
+
+Guessing User's Word:
+- The user will describe a word or phrase without directly saying it.
+- Your task is to carefully listen to the user's description and guess the correct word or phrase.
+- If the description is unclear, politely ask the user to repeat or clarify.
+
+User Guessing Your Word:
+- You will be provided with a specific word or phrase.
+- Clearly and creatively describe this word or phrase to the user without explicitly saying it or using any variations of it.
+- The user will attempt to guess the correct word or phrase based on your description.
+
+Gameplay Pattern:
+- Start each round by first guessing the word described by the user.
+- After successfully guessing, proceed by describing your given word for the user to guess.
+- If the user fails to guess your word correctly, end the game politely without continuing further.
+`,
+    exampleOfFirstMessageFromAi: `Hello, I'm your AI partner for the Alias game. I'm ready to guess your word. Please describe it to me.",`,
+    illustrationDescription: "",
+    imageSrc: "/role/f0de782c-6f1a-4005-924d-02459308a4fa.jpeg",
     voice: "ash",
     instructionCreator: getDefaultInstruction,
-    contentPage: `In this role-play, you’ll interact with a polite waiter, order food, and handle special requests—just like in a real restaurant. Perfect for practicing how to start conversations, ask about menu items, and address any dining-related concerns.  
-
-## Why You Should Play *In the Restaurant*  
-1. Hone your ordering skills and gain confidence speaking in a real-life dining situation.  
-2. Practice conversational etiquette, from small talk with the server to politely handling mistakes or special requests.  
-3. Learn key phrases and vocabulary related to dining, including menu items, dietary preferences, and payment options.  
-4. Enhance your listening abilities by responding to recommendations and clarifying any questions about your meal.  
-5. Build comfort in realistic interactions, making your next visit to a restaurant smoother and more enjoyable in any language.
-
-## How the Scenario Works  
-In this scenario, you’ll take on the role of a diner while the AI acts as your friendly waiter. You’ll be prompted to place an order, ask for recommendations, and respond to follow-up questions. As you converse, the AI adapts to your responses, creating an immersive experience that helps you practice practical dining interactions.`,
+    contentPage: ``,
   },
+
   {
     id: "job-interview",
     contentPage: `Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.
@@ -123,7 +152,7 @@ In this scenario, you’ll take on the role of a job candidate while our AI acts
       },
     ],
     title: "Job Interview",
-    subTitle: "Practice answering common job interview questions",
+    subTitle: "Practice answering common interview questions",
     instructionToAi:
       "You are a professional recruiter conducting a job interview. Ask the user about their experience, skills, and why they want the job. Adjust difficulty based on responses and provide feedback.",
     exampleOfFirstMessageFromAi:
@@ -149,7 +178,7 @@ In this scenario, you’ll take on the role of a job candidate while our AI acts
 In this scenario, you’ll step into the role of someone meeting a new acquaintance at a social event. The AI acts as a friendly stranger, prompting you to talk about casual topics like weather or shared interests. As you exchange pleasantries, the AI will adapt to your responses, helping you refine your small-talk abilities.`,
     category: "Social",
     input: [],
-    title: "Small Talk with a Stranger",
+    title: "Small Talk",
     subTitle: "Practice starting a conversation with a stranger",
     instructionToAi:
       "You are a friendly stranger meeting the user at a social event. Engage in small talk about the weather, hobbies, or recent events.",
@@ -160,6 +189,33 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
     imageSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c.jpeg",
     voice: "sage",
     instructionCreator: getDefaultInstruction,
+  },
+  {
+    id: "in-the-restaurant",
+    category: "Social",
+    input: [],
+    title: "In the Restaurant",
+    subTitle: "Order food and interact with a waiter in a restaurant",
+    instructionToAi:
+      "You are a polite restaurant waiter. Ask the user for their order, offer recommendations, and respond to any requests.",
+    exampleOfFirstMessageFromAi:
+      "Hello, I’m Ash, your server for today. Welcome to our restaurant! Is there anything in particular you’re craving, or would you like me to suggest some popular dishes?",
+    illustrationDescription:
+      "A cozy restaurant setting with a waiter holding a notepad, attentively taking an order from a customer seated at a table with a menu in hand.",
+    imageSrc: "/role/acde68cd-1db6-4b69-be42-d2071b9ee1e8.jpeg",
+    voice: "ash",
+    instructionCreator: getDefaultInstruction,
+    contentPage: `In this role-play, you’ll interact with a polite waiter, order food, and handle special requests—just like in a real restaurant. Perfect for practicing how to start conversations, ask about menu items, and address any dining-related concerns.  
+
+## Why You Should Play *In the Restaurant*  
+1. Hone your ordering skills and gain confidence speaking in a real-life dining situation.  
+2. Practice conversational etiquette, from small talk with the server to politely handling mistakes or special requests.  
+3. Learn key phrases and vocabulary related to dining, including menu items, dietary preferences, and payment options.  
+4. Enhance your listening abilities by responding to recommendations and clarifying any questions about your meal.  
+5. Build comfort in realistic interactions, making your next visit to a restaurant smoother and more enjoyable in any language.
+
+## How the Scenario Works  
+In this scenario, you’ll take on the role of a diner while the AI acts as your friendly waiter. You’ll be prompted to place an order, ask for recommendations, and respond to follow-up questions. As you converse, the AI adapts to your responses, creating an immersive experience that helps you practice practical dining interactions.`,
   },
   {
     input: [

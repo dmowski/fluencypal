@@ -38,4 +38,5 @@ export interface RolePlayInstruction {
   input: InputStructureForUser[];
   instructionCreator: AiRolePlayInstructionCreator;
   contentPage: string;
+  gameMode?: "alias";
 }

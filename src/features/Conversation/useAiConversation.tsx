@@ -25,12 +25,7 @@ import { useWords } from "../Words/useWords";
 import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { firstAiMessage } from "./data";
-
-interface GuessGameStat {
-  wordsUserToDescribe: string[];
-
-  wordsAiToDescribe: string[];
-}
+import { GuessGameStat } from "./types";
 
 interface StartConversationProps {
   mode: ConversationMode;
@@ -345,37 +340,6 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
 `,
       },
 
-      "game-guess": {
-        ...baseConfig,
-        model: MODELS.SMALL_CONVERSATION,
-        initInstruction: `You are playing the Alias game.
-
-Strictly use only the ${fullLanguageName} language during the game.
-
-The game involves two parts:
-
-1. **Guessing User's Word:**
-   - The user will describe a word or phrase without directly saying it.
-   - Your task is to carefully listen to the user's description and guess the correct word or phrase.
-   - If the description is unclear, politely ask the user to repeat or clarify.
-
-2. **User Guessing Your Word:**
-   - You will be provided with a specific word or phrase.
-   - Clearly and creatively describe this word or phrase to the user without explicitly saying it or using any variations of it.
-   - The user will attempt to guess the correct word or phrase based on your description.
-
-Gameplay Pattern:
-- Start each round by first guessing the word described by the user.
-- After successfully guessing, proceed by describing your given word for the user to guess.
-- If the user fails to guess your word correctly, end the game politely without continuing further.
-
-Remember:
-- The user’s proficiency level is advanced. Adjust your vocabulary and descriptions accordingly.
-- Maintain a clear, engaging, and interactive style.
-
-Start your conversation with asking user to describe the word
-`,
-      },
       "role-play": {
         ...baseConfig,
         model: MODELS.SMALL_CONVERSATION,

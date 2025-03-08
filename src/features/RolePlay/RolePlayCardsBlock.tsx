@@ -19,6 +19,7 @@ import { useSettings } from "../Settings/useSettings";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { RolePlayCard } from "./RolePlayCard";
+import { GuessGameStat } from "../Conversation/types";
 
 const firstLimit = 6;
 const hardHeight = "300px";
@@ -68,7 +69,8 @@ export const RolePlayCardsBlock = () => {
 
   const onStartRolePlay = (
     scenario: RolePlayInstruction,
-    rolePlayInputs: RolePlayInputResult[]
+    rolePlayInputs: RolePlayInputResult[],
+    gameStat?: GuessGameStat
   ) => {
     const instruction = scenario.instructionCreator(
       scenario,
@@ -79,6 +81,7 @@ export const RolePlayCardsBlock = () => {
       mode: "role-play",
       customInstruction: instruction,
       voice: scenario.voice,
+      gameWords: gameStat,
     });
   };
 
@@ -127,14 +130,57 @@ export const RolePlayCardsBlock = () => {
     return rolePlayInputs;
   };
 
+  const generateRandomWord = async (userLevelInfo: string) => {
+    console.log("userLevelInfo", userLevelInfo);
+    const systemMessage = [
+      `You need to generate words to play the game Alias. Be creative.`,
+      `Some of them should be simple and some of them should be hard. Depends on user level`,
+      `Return your words with comma separated.`,
+      `For example: "apple, banana, orange"`,
+    ].join(" ");
+
+    const response = await textAi.generate({
+      systemMessage,
+      userMessage: `Generate me 20 words.
+Be creative and create smart words or phrases.
+Use ${settings.fullLanguageName} language.
+My user level: ${userLevelInfo}
+`,
+      model: "gpt-4o",
+    });
+    const words = response.split(",");
+    const shuffledWords = words.sort(() => Math.random() - 0.5);
+    const wordsAiToDescribe: string[] = [];
+    const wordsUserToDescribe: string[] = [];
+    for (let i = 0; i < words.length; i++) {
+      const isWordToGuess = i % 2 === 0;
+      if (isWordToGuess) {
+        wordsAiToDescribe.push(shuffledWords[i]);
+      } else {
+        wordsUserToDescribe.push(shuffledWords[i]);
+      }
+    }
+
+    return { wordsUserToDescribe, wordsAiToDescribe };
+  };
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!selectedRolePlayScenario) return;
     setIsStarting(true);
     const rolePlayInputs = await prepareUserInputs();
-    setIsStarting(false);
 
-    onStartRolePlay(selectedRolePlayScenario, rolePlayInputs);
+    const isNeedToGenerateWords = selectedRolePlayScenario.gameMode === "alias";
+    if (isNeedToGenerateWords) {
+      const wordsInfo = await generateRandomWord(
+        rolePlayInputs.map((input) => input.labelForAi + ":" + input.userValue).join(", ")
+      );
+
+      onStartRolePlay(selectedRolePlayScenario, rolePlayInputs, wordsInfo);
+    } else {
+      onStartRolePlay(selectedRolePlayScenario, rolePlayInputs);
+    }
+    setIsStarting(false);
   };
 
   return (
