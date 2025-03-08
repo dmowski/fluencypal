@@ -94,12 +94,22 @@ Gameplay Pattern:
 - After successfully guessing, proceed by describing your given word for the user to guess.
 - If the user fails to guess your word correctly, end the game politely without continuing further.
 `,
-    exampleOfFirstMessageFromAi: `Hello, I'm your AI partner for the Alias game. I'm ready to guess your word. Please describe it to me.",`,
+    exampleOfFirstMessageFromAi: `Hello, I'm your AI partner for the Alias game. I'm ready to guess your word. Please describe it to me.`,
     illustrationDescription: "",
     imageSrc: "/role/f0de782c-6f1a-4005-924d-02459308a4fa.jpeg",
     voice: "ash",
     instructionCreator: getDefaultInstruction,
-    contentPage: ``,
+    contentPage: `Improve your vocabulary and speaking skills while having fun! Alias is a dynamic word-guessing game where you'll practice explaining and guessing words creatively, expanding your linguistic confidence.
+
+## Why You Should Play *Alias Game*
+1. Boost your vocabulary by describing words in creative and engaging ways.
+2. Sharpen your listening and comprehension skills as you interpret clues and descriptions.
+3. Improve your fluency and quick-thinking abilities under playful pressure.
+4. Receive immediate interaction and adaptive challenge from your AI partner, tailored to your language proficiency.
+5. Enhance your speaking confidence through interactive and entertaining gameplay.
+
+## How the Game Works
+In Alias, you and your AI partner take turns describing and guessing words without directly naming them. You’ll start by describing a word or phrase, and your AI partner will try to guess it. Afterward, roles switch, and you'll guess the word from your partner’s clues. Adjust the difficulty based on your skill level to maximize learning and enjoyment. Let's get creative with words!`,
   },
 
   {
