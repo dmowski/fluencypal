@@ -5,6 +5,7 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useState } from "react";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
+import { PackageOpen } from "lucide-react";
 
 export const HomeworkCard = () => {
   const aiConversation = useAiConversation();
@@ -14,26 +15,53 @@ export const HomeworkCard = () => {
   return (
     <DashboardCard>
       <Stack>
-        <Typography variant="h2" className="decor-title">
+        <Typography variant="h2" align="left" className="decor-title">
           Homework
         </Typography>
         {homeworkService.incompleteHomeworks.length === 0 && (
           <>
             <Stack
               sx={{
-                alignItems: "flex-start",
+                alignItems: "center",
                 width: "100%",
                 gap: "10px",
+                paddingTop: "15px",
+                marginBottom: "-50px",
               }}
             >
-              <Typography
+              <Stack
                 sx={{
-                  opacity: 0.7,
+                  borderRadius: "50%",
+                  padding: "20px",
+                  backgroundColor: "rgba(240, 240, 240, 0.04)",
+
+                  justifyContent: "center",
                 }}
-                variant="caption"
               >
-                No homework assigned yet. Start a conversation to get one.
-              </Typography>
+                <PackageOpen size={"70px"} strokeWidth={"0.7px"} color="rgba(140, 140, 140, 1)" />
+              </Stack>
+              <Stack>
+                <Typography
+                  align="center"
+                  sx={{
+                    opacity: 0.9,
+                    fontWeight: 700,
+                  }}
+                  variant="body1"
+                >
+                  No homework assigned yet.
+                </Typography>
+                <Typography
+                  align="center"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                  variant="caption"
+                >
+                  Start a conversation to get one.
+                </Typography>
+              </Stack>
+
               <Button
                 variant="outlined"
                 onClick={() =>
