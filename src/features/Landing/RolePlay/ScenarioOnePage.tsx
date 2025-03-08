@@ -190,7 +190,7 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
                   style={{
                     width: "max-content",
                     maxWidth: "100%",
-                    height: "450px",
+                    height: "400px",
                     borderRadius: "20px 20px 0 0",
                     boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.3)",
                     position: "relative",
