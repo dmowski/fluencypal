@@ -5,6 +5,7 @@ import { setDoc, query, where } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Homework } from "@/common/homework";
 import { db } from "../Firebase/db";
+import { useSettings } from "../Settings/useSettings";
 
 interface HomeworkContextType {
   incompleteHomeworks: Homework[];
@@ -19,12 +20,20 @@ const HomeworkContext = createContext<HomeworkContextType | null>(null);
 
 function useProvideHomework(): HomeworkContextType {
   const auth = useAuth();
+  const settings = useSettings();
   const userId = auth.uid;
 
   const incompleteQuery = useMemo(() => {
+    const lang = settings.languageCode;
+    if (!lang) {
+      return null;
+    }
+
     const homeworkCollection = db.collections.homework(userId);
-    return homeworkCollection ? query(homeworkCollection, where("isDone", "==", false)) : null;
-  }, [userId]);
+    return homeworkCollection
+      ? query(homeworkCollection, where("isDone", "==", false), where("languageCode", "==", lang))
+      : null;
+  }, [userId, settings.languageCode]);
 
   const [incompleteHomeworks = [], loadingHomeworks, errorHomeworks] =
     useCollectionData(incompleteQuery);

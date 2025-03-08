@@ -1,4 +1,5 @@
 import { ConversationMode } from "./conversation";
+import { SupportedLanguage } from "./lang";
 
 export interface Homework {
   id: string;
@@ -6,6 +7,7 @@ export interface Homework {
   conversationId: string;
   createdAt: number;
   homework: string;
+  languageCode: SupportedLanguage;
   isDone: boolean;
   isSkip?: boolean;
   isSkipAt?: number;

@@ -424,6 +424,7 @@ ${ruleToLearn}
       homework: homeworkText,
       isDone: false,
       isSkip: false,
+      languageCode: settings.languageCode || "en",
     });
   };
 
