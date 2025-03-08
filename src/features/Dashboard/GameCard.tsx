@@ -85,8 +85,8 @@ export const GamesBoard = () => {
       >
         <TaskCard
           isDone={false}
-          title="Crocodile"
-          subTitle="Describe the word... if you can"
+          title="Guess the word"
+          subTitle="Describe the word/guess the word"
           buttonIcon={<Origami size={"20px"} />}
           buttonText="Play"
           onStart={() => setIsShowCrocodileInstructions(true)}
