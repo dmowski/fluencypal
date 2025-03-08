@@ -99,13 +99,23 @@ export const GamesBoard = () => {
         <CustomModal isOpen={true} onClose={() => onCancel()}>
           {wordsToDescribe.length > 0 ? (
             <Stack sx={{ gap: "40px" }}>
-              <Typography variant="h4" component="h2">
-                Your words:
-              </Typography>
-              <Stack sx={{}}>
-                <Typography variant="h4" className="decor-text">
-                  {wordsToDescribe.join(", ")}
-                </Typography>
+              <Stack gap={"20px"}>
+                <Stack>
+                  <Typography variant="h4">Your words:</Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      opacity: 0.7,
+                    }}
+                  >
+                    You'll be able to view these words anytime during the game.
+                  </Typography>
+                </Stack>
+                <Stack sx={{}}>
+                  <Typography variant="h4" className="decor-text">
+                    {wordsToDescribe.join(", ")}
+                  </Typography>
+                </Stack>
               </Stack>
 
               <Button variant="contained" onClick={() => onStartGame()}>
@@ -115,22 +125,22 @@ export const GamesBoard = () => {
           ) : (
             <Stack sx={{ gap: "20px" }}>
               <Stack>
-                <Typography variant="h4" component="h2">
-                  Describe the words... if you can
-                </Typography>
+                <Typography variant="h4">Describe the words… if you can</Typography>
                 <Typography
                   variant="caption"
                   sx={{
                     opacity: 0.7,
                   }}
                 >
-                  Rules
+                  Rules:
                 </Typography>
               </Stack>
               <Stack>
-                <Typography>1. You will see words or phrase</Typography>
-                <Typography>2. You need to describe the words without saying it</Typography>
-                <Typography>3. AI should said it exactly like it written</Typography>
+                <Typography>1. You will see words or phrases.</Typography>
+                <Typography>
+                  2. Describe each word or phrase without explicitly mentioning it.
+                </Typography>
+                <Typography>3. The AI should say it exactly as it is written.</Typography>
               </Stack>
               <Stack
                 sx={{

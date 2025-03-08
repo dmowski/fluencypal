@@ -281,7 +281,7 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
                     >
                       {item.exampleOfFirstMessageFromAi}
                     </Typography>
-                    <Button variant="outlined" href="/practice">
+                    <Button variant="outlined" href={`/practice?rolePlayId=${item.id}`}>
                       Play The Role
                     </Button>
                   </Stack>
