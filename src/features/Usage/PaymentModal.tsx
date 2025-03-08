@@ -4,8 +4,6 @@ import { useUsage } from "./useUsage";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import { useState } from "react";
-import MailIcon from "@mui/icons-material/Mail";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import { useAuth } from "../Auth/useAuth";
 import { sendTelegramRequest } from "../Telegram/sendTextAiRequest";
 import { useSettings } from "../Settings/useSettings";

@@ -11,19 +11,29 @@ import DoneIcon from "@mui/icons-material/Done";
 import { MicroButton } from "../uiKit/Button/MicroButton";
 import { KeyboardButton } from "../uiKit/Button/KeyboardButton";
 import { UserMessage } from "./UserMessage";
+import AddCardIcon from "@mui/icons-material/AddCard";
 import { HelpButton } from "../uiKit/Button/HelpButton";
 import { useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
 import { useSettings } from "../Settings/useSettings";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
+import { useUsage } from "../Usage/useUsage";
 
 const loadingHelpMessage = `Generating help message...`;
 export function ConversationCanvas() {
   const aiConversation = useAiConversation();
   const settings = useSettings();
   const textAi = useTextAi();
+  const usage = useUsage();
   const [userMessage, setUserMessage] = useState("");
   const [helpMessage, setHelpMessage] = useState("");
+  const balance = `$${new Intl.NumberFormat().format(usage.balance)}`;
+
+  const isSmallBalance = usage.balance < 0.9;
+  const isExtremelySmallBalance = usage.balance < 0.2;
+
+  const isNeedToShowBalanceWarning =
+    (isSmallBalance && aiConversation.conversation.length > 1) || isExtremelySmallBalance;
 
   const submitMessage = () => {
     if (!userMessage) return;
@@ -182,6 +192,34 @@ Use ${settings.fullLanguageName || "English"} language.
           </Stack>
         )}
 
+        {isNeedToShowBalanceWarning && (
+          <Stack
+            sx={{
+              alignItems: "flex-end",
+              width: "650px",
+              maxWidth: "calc(100vw - 33px)",
+              boxSizing: "border-box",
+              gap: "5px",
+            }}
+          >
+            <Typography
+              variant="caption"
+              color={isExtremelySmallBalance ? "error" : isSmallBalance ? "warning" : "primary"}
+              align="right"
+            >
+              You have a low balance | {balance} <br />
+              It makes sense to top up your balance.
+            </Typography>
+            <Button
+              startIcon={<AddCardIcon />}
+              onClick={() => usage.setIsShowPaymentModal(true)}
+              variant="contained"
+            >
+              Top up
+            </Button>
+          </Stack>
+        )}
+
         <Stack
           sx={{
             width: "650px",
@@ -240,9 +278,23 @@ Use ${settings.fullLanguageName || "English"} language.
               ) : (
                 <>
                   {aiConversation.conversation.length > 0 && (
-                    <Button variant="outlined" onClick={() => aiConversation.finishLesson()}>
-                      Finish
-                    </Button>
+                    <Stack>
+                      <Button
+                        color={
+                          isNeedToShowBalanceWarning
+                            ? isExtremelySmallBalance
+                              ? "error"
+                              : isSmallBalance
+                                ? "warning"
+                                : "primary"
+                            : "primary"
+                        }
+                        variant="outlined"
+                        onClick={() => aiConversation.finishLesson()}
+                      >
+                        Finish
+                      </Button>
+                    </Stack>
                   )}
                 </>
               )}
