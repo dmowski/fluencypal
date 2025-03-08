@@ -157,8 +157,12 @@ In this scenario, you’ll take on the role of a job candidate while our AI acts
           "Paste vacancy description if you have it. You can also write a brief summary of the job requirements.",
         type: "textarea",
         defaultValue: "",
-        aiSummarizingInstruction:
-          "Summarize the vacancy description. Return text no longer than 10 sentences.",
+        aiSummarizingInstruction: `Summarize the vacancy description. Return vacancy description within 5 sentences.
+And create list of 10 questions to candidate based on this description.
+
+Response structure:
+Job Description: [Vacancy description]
+Questions to Candidate: [List of 10 questions]`,
         required: false,
       },
     ],

@@ -123,7 +123,7 @@ export const RolePlayBoard = () => {
     (input: InputStructureForUser, userValue: string) => Promise<string>
   > = {
     textarea: async (input, userValue) => {
-      if (!input.aiSummarizingInstruction || userValue.length < 1000) {
+      if (!input.aiSummarizingInstruction || userValue.length < 400) {
         return userValue;
       }
       const aiResult = await textAi.generate({
