@@ -30,7 +30,7 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, height, va
         boxSizing: "border-box",
         textDecoration: "none",
         ".role-play-image video": {
-          opacity: 0,
+          opacity: 1,
         },
 
         ":hover": {
