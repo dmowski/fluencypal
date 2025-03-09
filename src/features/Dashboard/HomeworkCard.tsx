@@ -27,6 +27,9 @@ export const HomeworkCard = () => {
                 gap: "25px",
                 paddingTop: "15px",
                 marginBottom: "-50px",
+                "@media (max-width: 600px)": {
+                  marginBottom: "0px",
+                },
               }}
             >
               <Stack
