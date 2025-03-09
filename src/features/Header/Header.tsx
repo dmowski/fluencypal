@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
 import { useAuth } from "../Auth/useAuth";
 import {
   Avatar,
@@ -22,12 +22,19 @@ import { useUsage } from "../Usage/useUsage";
 import { PaymentModal } from "../Usage/PaymentModal";
 import { NeedHelpModal } from "./NeedHelpModal";
 import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
+import { usePathname, useRouter } from "next/navigation";
 
 interface HeaderProps {
   mode: "landing" | "practice";
 }
 export function Header({ mode }: HeaderProps) {
   const auth = useAuth();
+  const pathname = usePathname();
+  console.log("pathname", pathname);
+
+  const isLanding = !pathname.startsWith("/practice");
+  const homeUrl = isLanding ? "/" : auth.isAuthorized ? "/practice" : "/";
+
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [isShowLangSelector, setIsShowLangSelector] = useState(false);
   const [isShowHelpModal, setIsShowHelpModal] = useState(false);
@@ -36,6 +43,17 @@ export function Header({ mode }: HeaderProps) {
 
   const userPhoto = auth.userInfo?.photoURL || "";
   const userName = auth.userInfo?.displayName || "";
+  const router = useRouter();
+
+  const navigateTo = (url: string, e: MouseEvent<unknown, unknown>) => {
+    const isNewTab = e.ctrlKey || e.metaKey;
+    if (isNewTab) {
+      return;
+    } else {
+      e.preventDefault();
+      router.push(url);
+    }
+  };
 
   return (
     <Stack
@@ -92,7 +110,8 @@ export function Header({ mode }: HeaderProps) {
           }}
         >
           <a
-            href={auth.isAuthorized ? "/practice" : "/"}
+            href={homeUrl}
+            onClick={(e) => navigateTo(homeUrl, e)}
             className="menu-link"
             style={{
               marginRight: "40px",
@@ -104,17 +123,33 @@ export function Header({ mode }: HeaderProps) {
           {mode === "landing" && (
             <>
               {auth.isAuthorized && (
-                <Link href={"/practice"} className="menu-link hideOnMobile">
+                <Link
+                  href={"/practice"}
+                  onClick={(e) => navigateTo("/practice", e)}
+                  className="menu-link hideOnMobile"
+                >
                   Practice
                 </Link>
               )}
-              <Link href={"/scenarios"} className="menu-link hideOnMobile">
+              <Link
+                href={"/scenarios"}
+                onClick={(e) => navigateTo("/scenarios", e)}
+                className="menu-link hideOnMobile"
+              >
                 Role-Play
               </Link>
-              <Link href={"/contacts"} className="menu-link hideOnMobile">
+              <Link
+                href={"/contacts"}
+                onClick={(e) => navigateTo("/contacts", e)}
+                className="menu-link hideOnMobile"
+              >
                 Contacts
               </Link>
-              <Link href={"/pricing"} className="menu-link hideOnMobile">
+              <Link
+                href={"/pricing"}
+                onClick={(e) => navigateTo("/pricing", e)}
+                className="menu-link hideOnMobile"
+              >
                 Price
               </Link>
             </>
@@ -146,7 +181,11 @@ export function Header({ mode }: HeaderProps) {
                 )}
 
                 {mode === "landing" && (
-                  <Link href={"/practice"} className="menu-link">
+                  <Link
+                    href={"/practice"}
+                    onClick={(e) => navigateTo("/practice", e)}
+                    className="menu-link"
+                  >
                     Practice
                   </Link>
                 )}
@@ -160,7 +199,11 @@ export function Header({ mode }: HeaderProps) {
                 </IconButton>
               </Stack>
             ) : (
-              <Button href="/practice" variant="outlined">
+              <Button
+                href="/practice"
+                onClick={(e) => navigateTo("/practice", e)}
+                variant="outlined"
+              >
                 Sign in
               </Button>
             )}
