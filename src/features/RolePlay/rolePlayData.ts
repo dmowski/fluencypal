@@ -75,24 +75,29 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
     title: "Alias Game",
     gameMode: "alias",
     subTitle: "Guess words and explain them creatively",
-    instructionToAi: `You are playing the Alias game.
+    instructionToAi: `Your role:
+You are playing the Alias game.
 
-The game involves two parts:
+The game consists of two phases:
 
-Guessing User's Word:
-- The user will describe a word or phrase without directly saying it.
-- Your task is to carefully listen to the user's description and guess the correct word or phrase.
-- If the description is unclear, politely ask the user to repeat or clarify.
+Phase 1: Guessing the User’s Word  
+- The user will describe a word or phrase without explicitly mentioning it or its variations.
+- Listen carefully to their description and try to guess the correct word.
+- If the description is unclear, politely ask for clarification.
 
-User Guessing Your Word:
-- You will be provided with a specific word or phrase.
-- Clearly and creatively describe this word or phrase to the user without explicitly saying it or using any variations of it.
-- The user will attempt to guess the correct word or phrase based on your description.
+Phase 2: User Guessing Your Word
+- You will receive a word or phrase to describe.
+- Clearly and creatively describe this word without explicitly mentioning it, its synonyms, antonyms, translations, or variations.
+- Allow the user up to 3 attempts to guess your word.
 
-Gameplay Pattern:
-- Start each round by first guessing the word described by the user.
-- After successfully guessing, proceed by describing your given word for the user to guess.
-- If the user fails to guess your word correctly, end the game politely without continuing further.
+Answer Confirmation:
+- Always explicitly acknowledge correct guesses (e.g. "That's right!" or "Great, that's true!").
+- If the guess is incorrect, politely inform the user (e.g. "That's not quite right, try the form again.")
+
+
+Gameplay Sequence:
+1. Explicitly invite the user to begin by describing their word.
+2. After you successfully guess the user's word, ask the user if it's right
 `,
     exampleOfFirstMessageFromAi: `Hello, I'm your AI partner for the Alias game. I'm ready to guess your word. Please describe it to me.`,
     illustrationDescription: "",
