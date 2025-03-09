@@ -29,23 +29,25 @@ export const getLabelFromCode = (lang: SupportedLanguage) => {
 
 export const supportedLanguages: SupportedLanguage[] = [
   "en",
-  "fr",
-  "pl",
-  "uk",
-  "ru",
   "es",
-  "ar",
+  "zh",
+  "fr",
   "de",
-  "id",
-  "it",
   "ja",
   "ko",
-  "ms",
+  "ar",
   "pt",
+
+  "it",
+  "pl",
+  "ru",
+
+  "uk",
+  "id",
+  "ms",
   "th",
   "tr",
   "vi",
-  "zh",
   "da", // Danish
   "nb", // Norwegian
   "sv", // Swedish
