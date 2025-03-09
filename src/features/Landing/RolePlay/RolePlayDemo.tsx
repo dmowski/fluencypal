@@ -11,6 +11,8 @@ import { RolePlayScroller } from "./RolePlayScroller";
 import { RolePlayCard } from "./RolePlayCard";
 
 export const RolePlayDemo = () => {
+  const importantRoles = rolePlayScenarios.filter((scenario) => scenario.landingHighlight);
+
   return (
     <Stack
       sx={{
@@ -103,9 +105,11 @@ export const RolePlayDemo = () => {
                   },
                 }}
               >
-                {rolePlayScenarios.map((scenario, index) => {
-                  return <RolePlayCard key={index} scenario={scenario} />;
-                })}
+                {rolePlayScenarios
+                  .filter((scenario) => !scenario.landingHighlight)
+                  .map((scenario, index) => {
+                    return <RolePlayCard key={index} scenario={scenario} />;
+                  })}
               </Stack>
             </Stack>
           </Stack>
@@ -185,6 +189,56 @@ export const RolePlayDemo = () => {
                 </Stack>
               </Link>
             </Stack>
+          </Stack>
+        </Stack>
+
+        <Stack
+          sx={{
+            gap: "20px",
+            maxWidth: maxLandingWidth,
+            boxSizing: "border-box",
+            alignItems: "center",
+            padding: "80px 10px 0 10px",
+          }}
+        >
+          <Typography
+            align="center"
+            variant="h3"
+            component={"h2"}
+            sx={{
+              ...titleFontStyle,
+              color: "#000",
+            }}
+          >
+            Become a Fluent Speaker
+          </Typography>
+          <Typography
+            align="center"
+            variant="body1"
+            sx={{
+              maxWidth: "810px",
+              color: "#000",
+              ...subTitleFontStyle,
+            }}
+          ></Typography>
+
+          <Stack
+            sx={{
+              display: "grid",
+              gap: "20px",
+              padding: "0 10px",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              "@media (max-width: 900px)": {
+                gridTemplateColumns: "1fr",
+                gap: "50px",
+              },
+            }}
+          >
+            {importantRoles.map((scenario, index) => {
+              return (
+                <RolePlayCard key={index} scenario={scenario} variant="highlight" height={"100%"} />
+              );
+            })}
           </Stack>
         </Stack>
       </Stack>

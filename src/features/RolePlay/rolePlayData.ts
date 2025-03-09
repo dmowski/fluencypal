@@ -99,6 +99,7 @@ Gameplay Pattern:
     imageSrc: "/role/f0de782c-6f1a-4005-924d-02459308a4fa.jpeg",
     voice: "ash",
     instructionCreator: getDefaultInstruction,
+    landingHighlight: `Improve your vocabulary and speaking skills while having fun! Alias is a dynamic word-guessing game where you'll practice explaining and guessing words creatively, expanding your linguistic confidence.`,
     contentPage: `Improve your vocabulary and speaking skills while having fun! Alias is a dynamic word-guessing game where you'll practice explaining and guessing words creatively, expanding your linguistic confidence.
 
 ## Why You Should Play *Alias Game*
@@ -114,6 +115,7 @@ In Alias, you and your AI partner take turns describing and guessing words witho
 
   {
     id: "job-interview",
+    landingHighlight: `Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.`,
     contentPage: `Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.
 
 ## Why You Should Play *Job Interview*  
@@ -180,6 +182,7 @@ Questions to Candidate: [List of 10 questions]`,
   },
   {
     id: "small-talk-with-a-stranger",
+    landingHighlight: `Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.`,
     contentPage: `Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.
 
 ## Why You Should Play *Small Talk with a Stranger*

@@ -1,11 +1,14 @@
 import { Stack, Typography } from "@mui/material";
 import { RolePlayInstruction } from "../../RolePlay/types";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 interface RolePlayCardProps {
   scenario: RolePlayInstruction;
+  variant?: "default" | "highlight";
+  height?: string;
 }
 
-export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario }) => {
+export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, height, variant }) => {
   return (
     <Stack
       component={"a"}
@@ -18,7 +21,7 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario }) => {
         width: "100%",
         maxWidth: "calc(100vw - 30px)",
         alignItems: "flex-start",
-        height: "370px",
+        height: height || "370px",
         cursor: "pointer",
         borderRadius: "15px",
         overflow: "hidden",
@@ -39,6 +42,7 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario }) => {
           backgroundImage: `url(${scenario.imageSrc})`,
           width: "100%",
           height: "230px",
+          minHeight: "230px",
           backgroundSize: "cover",
           backgroundPosition: "center",
           top: 0,
@@ -53,25 +57,77 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario }) => {
           padding: "20px 20px 30px 20px",
           boxSizing: "border-box",
           width: "100%",
+          justifyContent: "space-between",
+          height: "100%",
         }}
       >
-        <Typography
-          variant="h6"
-          component={"h3"}
-          sx={{
-            color: "#121214",
-          }}
-        >
-          {scenario.title}
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            color: "#666",
-          }}
-        >
-          {scenario.subTitle}
-        </Typography>
+        <Stack>
+          {variant === "highlight" && (
+            <Typography
+              variant="body2"
+              sx={{
+                color: "#777",
+                textTransform: "uppercase",
+                paddingBottom: "10px",
+              }}
+            >
+              {scenario.category}
+            </Typography>
+          )}
+          <Typography
+            variant={variant === "highlight" ? "h5" : "h6"}
+            component={"h3"}
+            sx={{
+              fontWeight: 600,
+              color: "#121214",
+            }}
+          >
+            {scenario.title}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#666",
+              paddingTop: variant === "highlight" ? "10px" : "0px",
+              fontSize: variant === "highlight" ? "1.1rem" : "1rem",
+            }}
+          >
+            {variant === "highlight" ? scenario.landingHighlight : scenario.subTitle}
+          </Typography>
+        </Stack>
+        {variant === "highlight" && (
+          <>
+            <Stack
+              sx={{
+                alignItems: "center",
+                justifyContent: "flex-start",
+                flexDirection: "row",
+                gap: "10px",
+                padding: "40px 0 10px 0",
+              }}
+            >
+              <Typography
+                sx={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "8px",
+                  fontWeight: 550,
+                }}
+                className="link-text"
+              >
+                Try {scenario.title}
+              </Typography>
+              <ArrowForwardIcon
+                className="link-icon"
+                sx={{
+                  position: "relative",
+                  left: "0px",
+                  fontSize: "20px",
+                  transition: "left 0.3s",
+                }}
+              />
+            </Stack>
+          </>
+        )}
       </Stack>
     </Stack>
   );
