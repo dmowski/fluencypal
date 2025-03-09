@@ -191,7 +191,7 @@ export const RolePlayBoard = () => {
 
     const response = await textAi.generate({
       systemMessage,
-      userMessage: `Generate me 20 words.
+      userMessage: `Generate me 14 words.
 Be creative and create smart words or phrases.
 Use ${settings.fullLanguageName} language.
 My user level: ${userLevelInfo}
@@ -219,10 +219,6 @@ My user level: ${userLevelInfo}
     if (!selectedRolePlayScenario) return;
     setIsStarting(true);
     const rolePlayInputs = await prepareUserInputs();
-    if (rolePlayInputs.length) {
-      setIsStarting(false);
-      return;
-    }
 
     const isNeedToGenerateWords = selectedRolePlayScenario.gameMode === "alias";
     if (isNeedToGenerateWords) {
