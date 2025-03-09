@@ -30,7 +30,6 @@ interface HeaderProps {
 export function Header({ mode }: HeaderProps) {
   const auth = useAuth();
   const pathname = usePathname();
-  console.log("pathname", pathname);
 
   const isLanding = !pathname.startsWith("/practice");
   const homeUrl = isLanding ? "/" : auth.isAuthorized ? "/practice" : "/";
