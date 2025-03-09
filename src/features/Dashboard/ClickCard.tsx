@@ -36,6 +36,10 @@ export const ClickCard: React.FC<ClickCardProps> = ({
           textAlign: "left",
           cursor: lockedText ? "not-allowed" : "pointer",
           width: "100%",
+          ":hover,:focus": {
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
+            borderRadius: "16px",
+          },
         }}
       >
         <GradientCard
