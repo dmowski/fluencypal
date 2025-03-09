@@ -118,19 +118,25 @@ export const RolePlayBoard = () => {
     (
       input: InputStructureForUser,
       userValue: string,
-      lengthToTriggerSummary: number
+      lengthToTriggerSummary: number,
+      requiredFields: string[]
     ) => Promise<string>
   > = {
-    textarea: async (input, userValue, lengthToTriggerSummary) => {
+    textarea: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
       if (!input.aiSummarizingInstruction || userValue.length < lengthToTriggerSummary) {
         return userValue;
       }
+
+      const systemMessage = input.aiSummarizingInstruction + requiredFields.join(", ");
+      console.log("systemMessage", systemMessage);
+      console.log("userValue", userValue);
       const aiResult = await textAi.generate({
-        systemMessage: input.aiSummarizingInstruction,
+        systemMessage: systemMessage,
         userMessage: userValue,
         model: MODELS.gpt_4o,
         cache: true,
       });
+      console.log("aiResult", aiResult);
       return aiResult || userValue;
     },
     "text-input": async (input, userValue) => {
@@ -149,10 +155,18 @@ export const RolePlayBoard = () => {
       selectedRolePlayScenario.input.map(async (input) => {
         const inputId = selectedRolePlayScenario.id + "-" + input.id;
         const userValue = userInputs?.[inputId] || "";
+
+        const requiredFieldsIdsToSummary = input.requiredFieldsToSummary || [];
+        const requiredFields = requiredFieldsIdsToSummary.map((fieldId) => {
+          const field = selectedRolePlayScenario.input.find((input) => input.id === fieldId);
+          return `${field?.labelForAi || ""}: ${userInputs?.[selectedRolePlayScenario.id + "-" + fieldId]}`;
+        });
+
         let processedUserValue = await modeProcessors[input.type](
           input,
           userValue,
-          input.lengthToTriggerSummary || 400
+          input.lengthToTriggerSummary || 400,
+          requiredFields
         );
 
         const inputRecord: RolePlayInputResult = {
@@ -205,6 +219,10 @@ My user level: ${userLevelInfo}
     if (!selectedRolePlayScenario) return;
     setIsStarting(true);
     const rolePlayInputs = await prepareUserInputs();
+    if (rolePlayInputs.length) {
+      setIsStarting(false);
+      return;
+    }
 
     const isNeedToGenerateWords = selectedRolePlayScenario.gameMode === "alias";
     if (isNeedToGenerateWords) {

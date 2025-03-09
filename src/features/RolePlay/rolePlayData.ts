@@ -162,17 +162,24 @@ In this scenario, you’ll take on the role of a job candidate while our AI acts
         id: "vacancy",
         labelForUser: "Vacancy description",
         labelForAi: "Desired Job Vacancy Description",
-        lengthToTriggerSummary: 10,
         placeholder:
           "Paste vacancy description if you have it. You can also write a brief summary of the job requirements.",
         type: "textarea",
         defaultValue: "",
+
+        lengthToTriggerSummary: 10,
+        requiredFieldsToSummary: ["cv"],
         aiSummarizingInstruction: `Summarize the vacancy description. Return vacancy description within 5 sentences.
-And create list of 10 questions to candidate based on this description.
+And create list of 10 questions to candidate based on vacancy and use candidate's CV to make questions more candidate oriented (mention info from CV if applicable).
 
 Response structure:
 Job Description: [Vacancy description]
-Questions to Candidate: [List of 10 questions]`,
+Questions to Candidate: [List of 10 questions]
+
+------
+
+Candidate's info below, don't include questions that are already answered by candidate in their CV.
+`,
         required: false,
       },
     ],
