@@ -35,6 +35,7 @@ export interface RolePlayInstruction {
   exampleOfFirstMessageFromAi: string;
   illustrationDescription: string;
   imageSrc: string;
+  videoSrc?: string;
   voice: AiVoice;
   input: InputStructureForUser[];
   instructionCreator: AiRolePlayInstructionCreator;

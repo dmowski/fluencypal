@@ -29,10 +29,21 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, height, va
         padding: "0px",
         boxSizing: "border-box",
         textDecoration: "none",
+        ".role-play-image video": {
+          opacity: 0,
+        },
 
         ":hover": {
           //opacity: 0.8,
           border: "1px solid rgba(0, 0, 0, 0.3)",
+          ".role-play-image": {
+            backgroundImage:
+              variant === "highlight" && scenario.videoSrc ? "" : `url(${scenario.imageSrc})`,
+
+            video: {
+              opacity: 1,
+            },
+          },
         },
       }}
     >
@@ -51,7 +62,24 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, height, va
           bottom: 0,
           zIndex: 0,
         }}
-      ></Stack>
+      >
+        {variant === "highlight" && scenario.videoSrc && (
+          <video
+            src={scenario.videoSrc}
+            loop
+            autoPlay
+            muted={true}
+            playsInline
+            style={{
+              width: "100%",
+              backgroundColor: "rgba(10, 18, 30, 1)",
+              height: "230px",
+              objectFit: "cover",
+            }}
+          />
+        )}
+      </Stack>
+
       <Stack
         sx={{
           padding: "20px 20px 30px 20px",
