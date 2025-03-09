@@ -72,7 +72,7 @@ export const Footer = () => {
           }}
         >
           <img
-            src="./logo.svg"
+            src="/logo.svg"
             alt="Online English Learning"
             width="80px"
             height="37px"
