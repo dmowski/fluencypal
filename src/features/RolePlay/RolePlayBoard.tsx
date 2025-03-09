@@ -115,10 +115,14 @@ export const RolePlayBoard = () => {
 
   const modeProcessors: Record<
     RolePlayInputType,
-    (input: InputStructureForUser, userValue: string) => Promise<string>
+    (
+      input: InputStructureForUser,
+      userValue: string,
+      lengthToTriggerSummary: number
+    ) => Promise<string>
   > = {
-    textarea: async (input, userValue) => {
-      if (!input.aiSummarizingInstruction || userValue.length < 400) {
+    textarea: async (input, userValue, lengthToTriggerSummary) => {
+      if (!input.aiSummarizingInstruction || userValue.length < lengthToTriggerSummary) {
         return userValue;
       }
       const aiResult = await textAi.generate({
@@ -145,7 +149,11 @@ export const RolePlayBoard = () => {
       selectedRolePlayScenario.input.map(async (input) => {
         const inputId = selectedRolePlayScenario.id + "-" + input.id;
         const userValue = userInputs?.[inputId] || "";
-        let processedUserValue = await modeProcessors[input.type](input, userValue);
+        let processedUserValue = await modeProcessors[input.type](
+          input,
+          userValue,
+          input.lengthToTriggerSummary || 400
+        );
 
         const inputRecord: RolePlayInputResult = {
           labelForAi: input.labelForAi,

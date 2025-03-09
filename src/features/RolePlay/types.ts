@@ -11,6 +11,7 @@ export interface InputStructureForUser {
   optionsAiDescriptions?: Record<string, string>;
   defaultValue: string;
   required: boolean;
+  lengthToTriggerSummary?: number;
   aiSummarizingInstruction?: string;
 }
 

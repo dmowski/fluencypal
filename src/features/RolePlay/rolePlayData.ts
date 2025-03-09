@@ -144,6 +144,7 @@ In this scenario, you’ll take on the role of a job candidate while our AI acts
           "Paste your CV text here. You can also write a brief summary of your experience.",
         type: "textarea",
         defaultValue: "",
+        lengthToTriggerSummary: 300,
         aiSummarizingInstruction:
           "Summarize the user's experience and skills. Return text no longer than 10 sentences.",
         required: false,
@@ -161,6 +162,7 @@ In this scenario, you’ll take on the role of a job candidate while our AI acts
         id: "vacancy",
         labelForUser: "Vacancy description",
         labelForAi: "Desired Job Vacancy Description",
+        lengthToTriggerSummary: 10,
         placeholder:
           "Paste vacancy description if you have it. You can also write a brief summary of the job requirements.",
         type: "textarea",
