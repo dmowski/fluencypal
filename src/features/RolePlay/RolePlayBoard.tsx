@@ -65,11 +65,6 @@ export const RolePlayBoard = () => {
   const [selectedRolePlayScenario, setSelectedRolePlayScenario] =
     useState<RolePlayInstruction | null>(null);
 
-  const categoryAllScenarios =
-    selectedTab === allCategoriesLabel
-      ? rolePlayScenarios
-      : rolePlayScenarios.filter((scenario) => scenario.category === selectedTab);
-
   const visibleScenarios =
     selectedTab === allCategoriesLabel
       ? rolePlayScenarios.filter((_, index) => !isLimited || index < firstLimit)
