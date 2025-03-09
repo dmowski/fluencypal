@@ -16,6 +16,7 @@ import { ContactList } from "../Contact/ContactList";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Gift, HandCoins, Mic } from "lucide-react";
+import { WELCOME_BONUS } from "@/common/usage";
 
 export const PricePage = () => {
   return (
@@ -136,7 +137,7 @@ export const PricePage = () => {
                 title={"Free Trial"}
                 subTitle={"Trying Dark Lang risk-free"}
                 price={"Free"}
-                priceDescription={"$5 free credit"}
+                priceDescription={`$${WELCOME_BONUS} free credit`}
                 listTitle={"Features"}
                 listItems={[
                   {
@@ -159,7 +160,7 @@ export const PricePage = () => {
               <PriceCard
                 title={"Pay-as-You-Go"}
                 subTitle={"Regular learners who want full control"}
-                price={"$5"}
+                price={`$${WELCOME_BONUS}`}
                 priceDescription={"Per AI Hour"}
                 listTitle={"Everything in Free Trial, plus:"}
                 listItems={[
@@ -285,7 +286,7 @@ export const PricePage = () => {
                     Start Free
                   </Typography>
                   <Typography variant="body2" align="center">
-                    Start Free – Get $5 in credits when you sign up.
+                    Start Free – Get ${WELCOME_BONUS} in credits when you sign up.
                   </Typography>
                 </Stack>
               </Stack>
@@ -733,7 +734,7 @@ export const PricePage = () => {
                   question="Can I try Dark Lang for free?"
                   answer={
                     <Typography>
-                      Yes! You start with $5 in free credits to explore all features.
+                      Yes! You start with ${WELCOME_BONUS} in free credits to explore all features.
                     </Typography>
                   }
                 />
@@ -743,7 +744,7 @@ export const PricePage = () => {
                   answer={
                     <Typography>
                       The cost is calculated based on duration and AI usage. On average, a full hour
-                      costs $5.
+                      costs ${WELCOME_BONUS}.
                     </Typography>
                   }
                 />

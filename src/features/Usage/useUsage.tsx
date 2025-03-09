@@ -12,7 +12,13 @@ import {
 import { useAuth } from "../Auth/useAuth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
-import { PaymentLog, PaymentLogType, TotalUsageInfo, UsageLog } from "@/common/usage";
+import {
+  PaymentLog,
+  PaymentLogType,
+  TotalUsageInfo,
+  UsageLog,
+  WELCOME_BONUS,
+} from "@/common/usage";
 import { db } from "../Firebase/db";
 
 interface UsageContextType extends TotalUsageInfo {
@@ -113,12 +119,11 @@ function useProvideUsage(): UsageContextType {
     if (!totalUsageDoc || !userId) {
       return;
     }
-    const START_BALANCE = 5;
     const docData = await getDoc(totalUsageDoc);
     const totalData = docData.data();
     if (!totalData) {
       console.log("ADD START BALANCE");
-      addBalance(START_BALANCE, "welcome");
+      addBalance(WELCOME_BONUS, "welcome");
     }
   };
 
