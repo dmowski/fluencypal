@@ -362,7 +362,7 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
 
 ## How the Scenario Works
 You’ll take on the role of a patient visiting a doctor, played by the AI. The doctor will ask about your symptoms, provide advice, and suggest possible treatments. By conversing naturally, you’ll hone your communication skills in a professional healthcare context.`,
-    category: "Professional",
+    category: "Health",
     input: [],
     title: "Talking to a Doctor",
     subTitle: "Describe symptoms and ask for medical advice",
@@ -392,7 +392,7 @@ You’ll act as the guest arriving at the hotel, while our AI plays the role of 
     category: "Travel",
     input: [],
     title: "Hotel Check-in",
-    subTitle: "Practice checking into a hotel and asking for services",
+    subTitle: "Practice checking into a hotel",
     instructionToAi:
       "You are a hotel receptionist. Ask for the user's reservation details, offer room options, and answer their questions.",
     exampleOfFirstMessageFromAi:
@@ -473,7 +473,7 @@ You’ll act as a caller seeking help with a technical issue, while the AI plays
 
 #### How the Scenario Works
 You’ll take the role of a patient calling a doctor’s office to schedule an appointment. The AI, as a receptionist, will ask for your name, preferred date, and reason for the visit. By responding naturally, you’ll build essential communication skills for any medical context.`,
-    category: "Professional",
+    category: "Health",
     input: [],
     title: "Doctor's Appointment",
     subTitle: "Practice scheduling an appointment over the phone",
@@ -503,7 +503,7 @@ You’ll step into the role of a customer returning a product, while the AI acts
     category: "Shopping",
     input: [],
     title: "Returning an Item in a Store",
-    subTitle: "Practice returning an item and explaining the reason",
+    subTitle: "Practice returning an item",
     instructionToAi:
       "You are a store employee handling returns. Ask the user why they are returning the item and offer solutions like exchange or refund.",
     exampleOfFirstMessageFromAi:
@@ -513,6 +513,58 @@ You’ll step into the role of a customer returning a product, while the AI acts
     imageSrc: "/role/2ac841c8-3569-45e0-a8aa-fe98e15ea5e2.jpeg",
     voice: "sage",
     instructionCreator: getDefaultInstruction,
+  },
+  {
+    id: "meeting-with-psychologist",
+    category: "Health",
+    input: [
+      {
+        type: "options",
+        id: "languageLevel",
+        labelForAi: "Language level of user",
+        placeholder: "",
+        defaultValue: "Intermediate",
+        options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
+        labelForUser: "Your Language Level",
+        optionsAiDescriptions: {
+          Beginner: `Use simple, reassuring language. Ask short, direct questions.`,
+          Intermediate: `Use clear language with supportive and open-ended questions.`,
+          Advanced: `Use nuanced language, and engage in deeper discussions with insightful reflections.`,
+          Fluent: `Use sophisticated language and detailed psychological concepts.`,
+        },
+        required: false,
+      },
+    ],
+    title: "Meeting with Psychologist",
+    subTitle: "Discuss mental health topics",
+    instructionToAi: `You are a psychologist meeting a client for a casual consultation.
+
+- Engage in supportive dialogue
+- Ask open-ended questions to encourage the client to express their feelings and thoughts.
+- Offer reflective, empathetic responses, validating their experiences.
+- Suggest general coping strategies or thought-provoking perspectives.
+  
+Note: This is a role-play scenario intended to practice speaking on mental health topics, not a medical consultation or treatment.`,
+    exampleOfFirstMessageFromAi: `Hello, I'm Sage, your psychologist today. I'm here to listen and support you. Could you tell me what's on your mind?`,
+    illustrationDescription:
+      "A comfortable, welcoming office with a psychologist listening attentively to a client seated across from them, expressing themselves in a supportive atmosphere.",
+    imageSrc: "/role/ceb0e1b7-9c34-47c0-ae09-4086fb734da4.jpeg",
+    voice: "sage",
+    instructionCreator: getDefaultInstruction,
+    contentPage: `Discuss mental health topics in a comfortable, supportive setting. This role-play scenario provides a safe space to express yourself clearly, explore sensitive issues, and practice discussing mental health openly.
+
+**Note:** This scenario is not a medical treatment and is intended purely for language practice and conversational comfort about mental health.
+  
+## Why You Should Play *Meeting with Psychologist*
+1. Practice articulating complex emotions and sensitive topics confidently.
+2. Learn vocabulary related to mental health and emotional well-being.
+3. Improve your communication skills through supportive, reflective conversations.
+4. Explore various coping strategies and discuss perspectives on common mental health challenges.
+5. Gain comfort in expressing emotions and thoughts openly and clearly.
+
+## How the Scenario Works
+
+You'll act as a client meeting a psychologist for an informal discussion about mental health topics you choose, such as stress management, anxiety, relationships, or self-esteem. The AI acts as your psychologist, providing supportive dialogue, asking reflective questions, and validating your experiences to help you practice meaningful, thoughtful conversation.`,
   },
 ];
 
