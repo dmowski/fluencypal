@@ -138,7 +138,7 @@ export const PricePage = () => {
                 subTitle={"Trying Dark Lang risk-free"}
                 price={"Free"}
                 priceDescription={`$${WELCOME_BONUS} free credit`}
-                listTitle={"Features"}
+                listTitle={"Features:"}
                 listItems={[
                   {
                     title: "Full AI tutor access",
@@ -181,7 +181,7 @@ export const PricePage = () => {
                 subTitle={"Frequent users who need more value"}
                 price={"Contact for pricing"}
                 priceDescription={""}
-                listTitle={"What I can do for you"}
+                listTitle={"What I can do for you:"}
                 listItems={[
                   {
                     title: "Create custom features",
