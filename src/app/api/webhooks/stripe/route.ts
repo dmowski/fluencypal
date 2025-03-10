@@ -6,7 +6,7 @@ const siteUrl = "http://localhost:3000";
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
-export async function GET(request: Request) {
+export async function POST(request: Request) {
   if (!endpointSecret) {
     throw new Error("Stripe webhook secret is not set");
   }
@@ -29,9 +29,13 @@ export async function GET(request: Request) {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
+    //console.log("session", session);
     const userId = session.metadata?.userId;
     const amountPaid = (session.amount_total ?? 0) / 100;
     console.log(`User ${userId} paid $${amountPaid}`);
+  } else {
+    console.log(`Unhandled event type: ${event.type}`);
+    //console.log("event", event);
   }
 
   return Response.json({ received: true });
