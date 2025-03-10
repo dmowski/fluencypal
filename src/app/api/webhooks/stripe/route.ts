@@ -1,8 +1,5 @@
-import { PaymentLog } from "@/common/usage";
 import Stripe from "stripe";
-
-//const siteUrl = "https://dark-lang.net";
-const siteUrl = "http://localhost:3000";
+import { confirmPayment } from "../../payment/confirmPayment";
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
@@ -29,6 +26,7 @@ export async function POST(request: Request) {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
+    const paymentId = session.id;
     //console.log("session", session);
     const userId = session.metadata?.userId;
     if (!userId) {
@@ -36,9 +34,8 @@ export async function POST(request: Request) {
       throw new Error("No userId in metadata");
     }
     const amountPaid = (session.amount_total ?? 0) / 100;
-    // TODO: Update balance
     console.log(`User ${userId} paid $${amountPaid}`);
-    await addPaymentLog(amountPaid, userId);
+    await confirmPayment(amountPaid, userId, paymentId);
   } else {
     console.log(`Unhandled event type: ${event.type}`);
     //console.log("event", event);
@@ -46,14 +43,3 @@ export async function POST(request: Request) {
 
   return Response.json({ received: true });
 }
-
-const addPaymentLog = async (amount: number, userId: string) => {
-  const paymentLog: PaymentLog = {
-    id: `${Date.now()}`,
-    amountAdded: amount,
-    createdAt: Date.now(),
-    type: "user",
-  };
-
-  console.log("paymentLog", paymentLog);
-};
