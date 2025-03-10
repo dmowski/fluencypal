@@ -42,9 +42,11 @@ function HeaderComponent({ mode }: HeaderProps) {
 
   const searchParams = useSearchParams();
   const isPaymentModalInUrl = searchParams.get("paymentModal") === "true";
+  const isSuccessPayment = searchParams.get("paymentSuccess") === "true";
+
   useEffect(() => {
     if (isPaymentModalInUrl && isPaymentModalInUrl !== usage.isShowPaymentModal) {
-      usage.togglePaymentModal(true);
+      usage.togglePaymentModal(true, isSuccessPayment);
     }
   }, [isPaymentModalInUrl]);
 

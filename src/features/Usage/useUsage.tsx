@@ -28,7 +28,8 @@ interface UsageContextType extends TotalUsageInfo {
   setUsageLogs: Dispatch<SetStateAction<UsageLog[]>>;
   addBalance: (amount: number, type: PaymentLogType) => void;
   isShowPaymentModal: boolean;
-  togglePaymentModal: (isOpen: boolean) => void;
+  togglePaymentModal: (isOpen: boolean, isSuccessPayment?: boolean) => void;
+  isSuccessPayment: boolean;
 }
 
 const UsageContext = createContext<UsageContextType | null>(null);
@@ -36,15 +37,32 @@ const UsageContext = createContext<UsageContextType | null>(null);
 function useProvideUsage(): UsageContextType {
   const [usageLogs, setUsageLogs] = useState<UsageLog[]>([]);
   const [isShowPaymentModal, setIsShowPaymentModal] = useState(false);
+  const [isSuccessPayment, setIsSuccessPayment] = useState(false);
 
   const router = useRouter();
 
-  const togglePaymentModal = (isOpen: boolean) => {
+  const togglePaymentModal = (isOpen: boolean, isSuccessPayment?: boolean) => {
     setIsShowPaymentModal(isOpen);
+
+    if (isSuccessPayment !== undefined) {
+      setIsSuccessPayment(isSuccessPayment);
+    }
+
+    const searchParams = new URLSearchParams(window.location.search);
+
     if (isOpen) {
-      router.push(`${window.location.pathname}?paymentModal=true`, { scroll: false });
+      searchParams.set("paymentModal", "true");
+      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+
+      router.push(`${newUrl}`, { scroll: false });
     } else {
-      router.push(window.location.pathname, { scroll: false });
+      searchParams.delete("paymentModal");
+      searchParams.delete("paymentSuccess");
+      searchParams.delete("session_id");
+
+      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+      router.push(newUrl, { scroll: false });
+      setIsSuccessPayment(false);
     }
   };
 
@@ -153,6 +171,7 @@ function useProvideUsage(): UsageContextType {
     addBalance,
     isShowPaymentModal,
     togglePaymentModal,
+    isSuccessPayment,
   };
 }
 

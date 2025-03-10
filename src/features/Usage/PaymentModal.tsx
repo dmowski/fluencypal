@@ -13,6 +13,7 @@ import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { ContactList } from "../Landing/Contact/ContactList";
 import { loadStripe } from "@stripe/stripe-js";
 import { createStripeCheckout } from "./createStripeCheckout";
+import { CircleCheck } from "lucide-react";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
@@ -58,7 +59,6 @@ export const PaymentModal = () => {
       });
     }
 
-    const devEmails = ["dmowski.alex@gmail.com"];
     const isDevEmail = devEmails.includes(email);
     if (isDevEmail) {
       return;
@@ -317,17 +317,45 @@ export const PaymentModal = () => {
                 }}
               >
                 <Stack>
-                  <Typography variant="h4" component="h2">
-                    Balance
-                  </Typography>
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      opacity: 0.7,
-                    }}
-                  >
-                    {isShowConfirmPayments ? "" : "Manage your payments and balance"}
-                  </Typography>
+                  {usage.isSuccessPayment ? (
+                    <>
+                      <Stack
+                        sx={{
+                          flexDirection: "row",
+                          gap: "10px",
+                          color: "#2ecc71",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Typography variant="h4" component="h2">
+                          Success!
+                        </Typography>
+                        <CircleCheck size={"1.6rem"} />
+                      </Stack>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          opacity: 0.7,
+                        }}
+                      >
+                        Your payment was successful
+                      </Typography>
+                    </>
+                  ) : (
+                    <>
+                      <Typography variant="h4" component="h2">
+                        Balance
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          opacity: 0.7,
+                        }}
+                      >
+                        {isShowConfirmPayments ? "" : "Manage your payments and balance"}
+                      </Typography>
+                    </>
+                  )}
                 </Stack>
 
                 <Stack
