@@ -1,11 +1,13 @@
 import { StripeCreateCheckoutRequest, StripeCreateCheckoutResponse } from "@/common/requests";
 import Stripe from "stripe";
 
-//const siteUrl = "https://dark-lang.net";
-const siteUrl = "http://localhost:3000";
-
 export async function POST(request: Request) {
   const stripeKey = process.env.STRIPE_SECRET_KEY as string;
+  const siteUrl = request.headers.get("origin");
+
+  if (!siteUrl) {
+    throw new Error("Origin header is not set");
+  }
   if (!stripeKey) {
     throw new Error("Stripe API key is not set");
   }
@@ -30,8 +32,8 @@ export async function POST(request: Request) {
         },
       ],
       mode: "payment",
-      success_url: `${siteUrl}/topup-success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteUrl}/topup-cancelled`,
+      success_url: `${siteUrl}/practice?paymentModal=true&paymentSuccess=true&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteUrl}/practice?paymentModal=true&paymentCanceled=true`,
       metadata: { userId },
     });
 
