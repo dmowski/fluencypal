@@ -21,6 +21,7 @@ import { useRouter } from "next/navigation";
 import { RolePlayCard } from "./RolePlayCard";
 import { GuessGameStat } from "../Conversation/types";
 import { uniq } from "@/libs/uniq";
+import { useAiUserInfo } from "../Ai/useAiUserInfo";
 
 const firstLimit = 6;
 const hardHeight = "300px";
@@ -30,6 +31,7 @@ const allCategoriesLabel = "All";
 export const RolePlayBoard = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const userInfo = useAiUserInfo();
 
   const rolePlayId = searchParams.get("rolePlayId");
   const selectedTabUrl = searchParams.get("rolePlayTab") || allCategoriesLabel;
@@ -117,13 +119,20 @@ export const RolePlayBoard = () => {
     aiSummarizingInstruction: string,
     value: string,
     lengthToTriggerSummary: number,
-    requiredFields: string[]
+    requiredFields: string[],
+    isNeedUserInfo: boolean
   ) => {
     if (!aiSummarizingInstruction || value.length < lengthToTriggerSummary) {
       return value;
     }
 
-    const systemMessage = aiSummarizingInstruction + requiredFields.join(", ");
+    const userInfoString =
+      isNeedUserInfo && userInfo.userInfo?.records.length
+        ? "\n\nUser Info:" + userInfo.userInfo?.records.join(", ")
+        : "";
+    const systemMessage = aiSummarizingInstruction + requiredFields.join(", ") + userInfoString;
+
+    console.log("systemMessage", systemMessage);
     const aiResult = await textAi.generate({
       systemMessage: systemMessage,
       userMessage: value,
@@ -147,7 +156,8 @@ export const RolePlayBoard = () => {
         input.aiSummarizingInstruction || "",
         userValue,
         lengthToTriggerSummary,
-        requiredFields
+        requiredFields,
+        input.injectUserInfoToSummary || false
       );
     },
     "text-input": async (input, userValue, lengthToTriggerSummary, requiredFields) => {
@@ -155,7 +165,8 @@ export const RolePlayBoard = () => {
         input.aiSummarizingInstruction || "",
         userValue,
         lengthToTriggerSummary,
-        requiredFields
+        requiredFields,
+        input.injectUserInfoToSummary || false
       );
     },
     options: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
@@ -166,7 +177,8 @@ export const RolePlayBoard = () => {
         input.aiSummarizingInstruction || "",
         value,
         lengthToTriggerSummary,
-        requiredFields
+        requiredFields,
+        input.injectUserInfoToSummary || false
       );
     },
   };

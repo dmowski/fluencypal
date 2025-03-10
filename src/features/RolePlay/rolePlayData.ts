@@ -256,7 +256,10 @@ Continue this process, moving smoothly from one topic to the next.`,
         defaultValue: "Intermediate",
         options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
         lengthToTriggerSummary: 1,
-        aiSummarizingInstruction: `Generate 10 topics to discuss based on user's language level. Return response in the following format:
+        injectUserInfoToSummary: true,
+        aiSummarizingInstruction: `Generate 10 topics to discuss based on user's language level and info about user.
+
+Return response in the following format:
 User Level: [User's language level]
 Topics to discuss: [List of topics to discuss]
 `,
