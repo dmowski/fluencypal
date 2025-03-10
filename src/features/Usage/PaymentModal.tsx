@@ -20,7 +20,7 @@ const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   gift: "Gift",
 };
 
-const isUseStripe = true;
+const isUseStripe = false;
 
 export const PaymentModal = () => {
   const usage = useUsage();
