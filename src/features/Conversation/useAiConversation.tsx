@@ -78,7 +78,8 @@ function useProvideAiConversation(): AiConversationContextType {
   const fullLanguageName = settings.fullLanguageName || "English";
   const languageCode = settings.languageCode || "en";
   const [analyzeResultInstruction, setAnalyzeResultInstruction] = useState<string>("");
-  const [isVolumeOn, setIsVolumeOn] = useState(true);
+  const [isVolumeOnStorage, setIsVolumeOn] = useLocalStorage<boolean>("isVolumeOn", true);
+  const isVolumeOn = isVolumeOnStorage === undefined ? true : isVolumeOnStorage;
 
   const toggleVolume = (isOn: boolean) => {
     setIsVolumeOn(isOn);

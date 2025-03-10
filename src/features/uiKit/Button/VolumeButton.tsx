@@ -1,6 +1,5 @@
 import { Stack, Tooltip } from "@mui/material";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import VolumeMuteIcon from "@mui/icons-material/VolumeMute";
+import { Volume2, VolumeOff } from "lucide-react";
 
 interface ButtonProps {
   isEnabled: boolean;
@@ -33,7 +32,7 @@ export const VolumeButton: React.FC<ButtonProps> = ({ isEnabled, onClick }) => {
           }}
           onClick={() => onClick()}
         >
-          {isEnabled ? <VolumeUpIcon /> : <VolumeMuteIcon />}
+          {isEnabled ? <Volume2 /> : <VolumeOff />}
         </button>
       </Stack>
     </Tooltip>
