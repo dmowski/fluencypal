@@ -186,7 +186,7 @@ Your homework is to repeat the following text:
     }
 
     console.log("FINISHING THE LESSON. AI new Instruction to update session", newInstruction);
-    await communicatorRef.current?.updateSessionTrigger(newInstruction);
+    await communicatorRef.current?.updateSessionTrigger(newInstruction, isVolumeOn);
     await sleep(700);
 
     const endUserMessageHomework =
@@ -241,6 +241,7 @@ Your homework is to repeat the following text:
       setIsAiSpeaking,
       setIsUserSpeaking,
       isMuted: isMuted || false,
+      isVolumeOn,
       onAddUsage: (usageLog: UsageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
       languageCode: settings.languageCode || "en",
     };

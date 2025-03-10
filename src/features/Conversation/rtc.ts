@@ -166,6 +166,7 @@ export interface AiRtcConfig {
   onAddUsage: ({}: UsageLog) => void;
   languageCode: SupportedLanguage;
   voice?: AiVoice;
+  isVolumeOn: boolean;
 }
 
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
@@ -183,6 +184,7 @@ export const initAiRtc = async ({
   onAddUsage,
   languageCode,
   voice,
+  isVolumeOn,
 }: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 
@@ -325,7 +327,7 @@ export const initAiRtc = async ({
       aiTools: aiToolsForLlm,
       voice,
       languageCode,
-      modalities: ["audio", "text"],
+      modalities: isVolumeOn ? ["audio", "text"] : ["text"],
     });
     onOpen();
   };
@@ -375,14 +377,14 @@ export const initAiRtc = async ({
     dataChannel.send(JSON.stringify(event));
   };
 
-  const updateSessionTrigger = async (instruction: string) => {
+  const updateSessionTrigger = async (instruction: string, isVolumeOn: boolean) => {
     await updateSession({
       dataChannel,
       initInstruction: instruction,
       aiTools: aiToolsForLlm,
       languageCode,
       voice,
-      modalities: ["audio", "text"],
+      modalities: isVolumeOn ? ["audio", "text"] : ["text"],
     });
   };
 
