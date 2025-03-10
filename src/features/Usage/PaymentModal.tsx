@@ -175,28 +175,35 @@ export const PaymentModal = () => {
                 ))}
               </Stack>
             </Stack>
-            <Stack
-              sx={{
-                flexDirection: "row",
-                gap: "10px",
-              }}
-            >
-              <Button
-                onClick={clickOnConfirmRequest}
-                startIcon={<AssuredWorkloadIcon />}
-                size="large"
-                disabled={amountToAdd <= 0}
-                variant="contained"
-              >
-                {`Pay $${amountToAdd}`}
-              </Button>
-              <Button
-                onClick={() => {
-                  setIsShowAmountInput(false);
+            <Stack gap={"5px"}>
+              {amountToAdd > 400 && (
+                <Typography variant="caption" color="error">
+                  Amount is too large. I appreciate your support, but let's keep it under $400
+                </Typography>
+              )}
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  gap: "10px",
                 }}
               >
-                Cancel
-              </Button>
+                <Button
+                  onClick={clickOnConfirmRequest}
+                  startIcon={<AssuredWorkloadIcon />}
+                  size="large"
+                  disabled={amountToAdd <= 0 || amountToAdd > 400}
+                  variant="contained"
+                >
+                  {`Pay $${amountToAdd}`}
+                </Button>
+                <Button
+                  onClick={() => {
+                    setIsShowAmountInput(false);
+                  }}
+                >
+                  Cancel
+                </Button>
+              </Stack>
             </Stack>
           </Stack>
         </>

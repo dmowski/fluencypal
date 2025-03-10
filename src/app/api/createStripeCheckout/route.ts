@@ -14,6 +14,13 @@ export async function POST(request: Request) {
   const stripe = new Stripe(stripeKey);
   const requestData = (await request.json()) as StripeCreateCheckoutRequest;
   const { amount, userId } = requestData;
+  if (amount > 400) {
+    const response: StripeCreateCheckoutResponse = {
+      sessionUrl: null,
+      error: "Amount is too large",
+    };
+    return Response.json(response);
+  }
 
   try {
     const session = await stripe.checkout.sessions.create({
