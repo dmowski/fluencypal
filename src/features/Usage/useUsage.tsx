@@ -59,6 +59,7 @@ function useProvideUsage(): UsageContextType {
       searchParams.delete("paymentModal");
       searchParams.delete("paymentSuccess");
       searchParams.delete("session_id");
+      searchParams.delete("paymentCanceled");
 
       const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
       router.push(newUrl, { scroll: false });
