@@ -47,3 +47,13 @@ export interface GetAudioUrlResponse {
   price: number;
   duration: number;
 }
+
+export interface StripeCreateCheckoutRequest {
+  userId: string;
+  amount: number;
+}
+
+export interface StripeCreateCheckoutResponse {
+  sessionUrl: string | null;
+  error: string | null;
+}
