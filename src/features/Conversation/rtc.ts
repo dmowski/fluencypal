@@ -77,12 +77,15 @@ export interface AiTool extends AiToolForLlm {
   handler: (args: Record<string, string>) => Promise<void>;
 }
 
+type Modalities = "audio" | "text";
+
 interface UpdateSessionProps {
   dataChannel: RTCDataChannel;
   initInstruction: string;
   aiTools: AiToolForLlm[];
   voice?: AiVoice;
   languageCode: SupportedLanguage;
+  modalities: Modalities[];
 }
 
 const updateSession = async ({
@@ -91,6 +94,7 @@ const updateSession = async ({
   aiTools,
   voice,
   languageCode,
+  modalities,
 }: UpdateSessionProps) => {
   if (!dataChannel) throw Error("Error on updateSession. dataChannel is not available");
 
@@ -104,6 +108,7 @@ const updateSession = async ({
         language: languageCode,
       },
       voice,
+      modalities,
       turn_detection: {
         type: "server_vad",
         threshold: 0.5,
@@ -256,12 +261,13 @@ export const initAiRtc = async ({
         onMessage({ isBot: false, text: userMessage, id });
       }
     }
+
     if (type === "response.done") {
       const botAnswer = event?.response?.output
         .map((item: any) => {
           return (
             item?.content
-              ?.map((content: any) => content?.transcript || "")
+              ?.map((content: any) => content?.transcript || content?.text || "")
               .join(" ")
               .trim() || ""
           );
@@ -318,6 +324,7 @@ export const initAiRtc = async ({
       aiTools: aiToolsForLlm,
       voice,
       languageCode,
+      modalities: ["audio", "text"],
     });
     onOpen();
   };
@@ -374,6 +381,7 @@ export const initAiRtc = async ({
       aiTools: aiToolsForLlm,
       languageCode,
       voice,
+      modalities: ["audio", "text"],
     });
   };
 
