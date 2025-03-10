@@ -59,8 +59,8 @@ interface AiConversationContextType {
   currentMode: ConversationMode;
   gameWords: GuessGameStat | null;
 
-  isVolumeOn?: boolean;
-  setIsVolumeOn: (value: boolean) => void;
+  isVolumeOn: boolean;
+  toggleVolume: (value: boolean) => void;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -518,7 +518,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     setIsShowUserInput,
     gameWords: gameStat,
     isVolumeOn,
-    setIsVolumeOn: toggleVolume,
+    toggleVolume,
   };
 }
 

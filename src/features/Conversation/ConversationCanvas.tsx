@@ -21,6 +21,7 @@ import { useUsage } from "../Usage/useUsage";
 import { AliasGamePanel } from "./AliasGamePanel";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeMuteIcon from "@mui/icons-material/VolumeMute";
+import { VolumeButton } from "../uiKit/Button/VolumeButton";
 
 const loadingHelpMessage = `Generating help message...`;
 export function ConversationCanvas() {
@@ -116,43 +117,14 @@ Use ${settings.fullLanguageName || "English"} language.
 
             {lastBotMessage && (
               <Stack>
-                <Stack
+                <Typography
+                  variant="caption"
                   sx={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: "2px",
+                    opacity: 0.5,
                   }}
                 >
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      opacity: 0.5,
-                    }}
-                  >
-                    Teacher:
-                  </Typography>
-                  <IconButton
-                    size="small"
-                    sx={{
-                      opacity: 0.6,
-                    }}
-                    onClick={() => aiConversation.setIsVolumeOn(!aiConversation.isVolumeOn)}
-                  >
-                    {aiConversation.isVolumeOn ? (
-                      <VolumeUpIcon
-                        sx={{
-                          fontSize: "14px",
-                        }}
-                      />
-                    ) : (
-                      <VolumeMuteIcon
-                        sx={{
-                          fontSize: "14px",
-                        }}
-                      />
-                    )}
-                  </IconButton>
-                </Stack>
+                  Teacher:
+                </Typography>
                 <Markdown>{lastBotMessage.text || ""}</Markdown>
               </Stack>
             )}
@@ -270,6 +242,9 @@ Use ${settings.fullLanguageName || "English"} language.
               flexDirection: "row",
               gap: "10px",
               animationDelay: "0.5s",
+              "@media (max-width: 600px)": {
+                gap: "0px",
+              },
             }}
           >
             <MicroButton
@@ -281,6 +256,9 @@ Use ${settings.fullLanguageName || "English"} language.
               sx={{
                 gap: "27px",
                 flexDirection: "row",
+                "@media (max-width: 600px)": {
+                  gap: "10px",
+                },
               }}
             >
               <KeyboardButton
@@ -291,6 +269,10 @@ Use ${settings.fullLanguageName || "English"} language.
                 isLoading={false}
                 isEnabled={helpMessage !== loadingHelpMessage}
                 onClick={generateHelpMessage}
+              />
+              <VolumeButton
+                isEnabled={aiConversation.isVolumeOn}
+                onClick={() => aiConversation.toggleVolume(!aiConversation.isVolumeOn)}
               />
             </Stack>
           </Stack>
