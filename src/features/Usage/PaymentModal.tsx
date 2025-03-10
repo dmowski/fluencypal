@@ -29,7 +29,7 @@ export const PaymentModal = () => {
   const usage = useUsage();
   const auth = useAuth();
   const settings = useSettings();
-  const devEmails = ["dmowski.alex@gmail.co2m"];
+  const devEmails = ["dmowski.alex@gmail.com"];
   const isDev = auth.userInfo?.email && devEmails.includes(auth.userInfo.email);
   const notifications = useNotifications();
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
