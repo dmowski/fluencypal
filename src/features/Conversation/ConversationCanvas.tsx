@@ -218,7 +218,7 @@ Use ${settings.fullLanguageName || "English"} language.
             </Typography>
             <Button
               startIcon={<AddCardIcon />}
-              onClick={() => usage.setIsShowPaymentModal(true)}
+              onClick={() => usage.togglePaymentModal(true)}
               variant="contained"
             >
               Top up

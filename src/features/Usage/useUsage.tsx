@@ -20,6 +20,7 @@ import {
   WELCOME_BONUS,
 } from "@/common/usage";
 import { db } from "../Firebase/db";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
@@ -27,7 +28,7 @@ interface UsageContextType extends TotalUsageInfo {
   setUsageLogs: Dispatch<SetStateAction<UsageLog[]>>;
   addBalance: (amount: number, type: PaymentLogType) => void;
   isShowPaymentModal: boolean;
-  setIsShowPaymentModal: Dispatch<SetStateAction<boolean>>;
+  togglePaymentModal: (isOpen: boolean) => void;
 }
 
 const UsageContext = createContext<UsageContextType | null>(null);
@@ -35,6 +36,25 @@ const UsageContext = createContext<UsageContextType | null>(null);
 function useProvideUsage(): UsageContextType {
   const [usageLogs, setUsageLogs] = useState<UsageLog[]>([]);
   const [isShowPaymentModal, setIsShowPaymentModal] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const isPaymentModalInUrl = searchParams.get("paymentModal") === "true";
+  useEffect(() => {
+    if (isPaymentModalInUrl && isPaymentModalInUrl !== isShowPaymentModal) {
+      setIsShowPaymentModal(isPaymentModalInUrl);
+    }
+  }, [isPaymentModalInUrl]);
+
+  const togglePaymentModal = (isOpen: boolean) => {
+    setIsShowPaymentModal(isOpen);
+
+    if (isOpen) {
+      router.push(`${window.location.pathname}?paymentModal=true`, { scroll: false });
+    } else {
+      router.push(window.location.pathname, { scroll: false });
+    }
+  };
+
   const auth = useAuth();
   const userId = auth.uid;
 
@@ -139,7 +159,7 @@ function useProvideUsage(): UsageContextType {
     setUsageLogs,
     addBalance,
     isShowPaymentModal,
-    setIsShowPaymentModal,
+    togglePaymentModal,
   };
 }
 

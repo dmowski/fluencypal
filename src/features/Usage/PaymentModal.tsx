@@ -81,7 +81,7 @@ export const PaymentModal = () => {
   return (
     <CustomModal
       isOpen={true}
-      onClose={() => usage.setIsShowPaymentModal(false)}
+      onClose={() => usage.togglePaymentModal(false)}
       width="min(900px, 97vw)"
     >
       {isShowAmountInput ? (

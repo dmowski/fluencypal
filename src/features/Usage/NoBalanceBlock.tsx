@@ -50,7 +50,7 @@ export const NoBalanceBlock = () => {
         <Button
           variant="contained"
           size="large"
-          onClick={() => usage.setIsShowPaymentModal(true)}
+          onClick={() => usage.togglePaymentModal(true)}
           startIcon={<Wallet />}
         >
           Buy more

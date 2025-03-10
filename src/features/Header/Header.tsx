@@ -220,7 +220,7 @@ export function Header({ mode }: HeaderProps) {
         >
           <MenuItem
             onClick={() => {
-              usage.setIsShowPaymentModal(true);
+              usage.togglePaymentModal(true);
               setMenuAnchor(null);
             }}
           >
