@@ -245,7 +245,18 @@ Continue this process, moving smoothly from one topic to the next.`,
     imageSrc: "/role/692781e2-a658-4a21-9dcb-5f10c7c35fe1.jpeg",
     voice: "ash",
     instructionCreator: getDefaultInstruction,
-    contentPage: ``,
+    contentPage: `Improve your speaking skills with immediate, personalized feedback. Instant Speech Correction helps you express yourself clearly and confidently by correcting grammar, vocabulary, and pronunciation errors as you speak.
+
+## Why You Should Try *Instant Speech Correction*
+1. Receive real-time, friendly corrections that immediately improve your speech.
+2. Boost your confidence by practicing correct sentence structure and pronunciation.
+3. Quickly identify and correct common mistakes in grammar and vocabulary.
+4. Develop smoother and more fluent speaking abilities.
+5. Learn to speak naturally through repeated, corrected practice.
+
+## How the Scenario Works
+You'll be prompted to express your thoughts or opinions on various engaging topics. After your initial response, you'll get clear, polite feedback highlighting corrections in your grammar and pronunciation. You'll then practice by repeating the corrected response. Each topic moves quickly, keeping the experience dynamic and effective for rapid language improvement.
+`,
     input: [
       {
         type: "options",
