@@ -1,7 +1,8 @@
 import { StripeCreateCheckoutRequest, StripeCreateCheckoutResponse } from "@/common/requests";
 import Stripe from "stripe";
 
-const siteUrl = "https://dark-lang.net";
+//const siteUrl = "https://dark-lang.net";
+const siteUrl = "http://localhost:3000";
 
 export async function POST(request: Request) {
   const stripeKey = process.env.STRIPE_SECRET_KEY as string;
