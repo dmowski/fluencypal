@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, MouseEvent } from "react";
+import { useState, MouseEvent, useEffect, Suspense } from "react";
 import { useAuth } from "../Auth/useAuth";
 import {
   Avatar,
@@ -22,12 +22,12 @@ import { useUsage } from "../Usage/useUsage";
 import { PaymentModal } from "../Usage/PaymentModal";
 import { NeedHelpModal } from "./NeedHelpModal";
 import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface HeaderProps {
   mode: "landing" | "practice";
 }
-export function Header({ mode }: HeaderProps) {
+function HeaderComponent({ mode }: HeaderProps) {
   const auth = useAuth();
   const pathname = usePathname();
 
@@ -39,6 +39,14 @@ export function Header({ mode }: HeaderProps) {
   const [isShowHelpModal, setIsShowHelpModal] = useState(false);
   const settings = useSettings();
   const usage = useUsage();
+
+  const searchParams = useSearchParams();
+  const isPaymentModalInUrl = searchParams.get("paymentModal") === "true";
+  useEffect(() => {
+    if (isPaymentModalInUrl && isPaymentModalInUrl !== usage.isShowPaymentModal) {
+      usage.togglePaymentModal(true);
+    }
+  }, [isPaymentModalInUrl]);
 
   const userPhoto = auth.userInfo?.photoURL || "";
   const userName = auth.userInfo?.displayName || "";
@@ -283,5 +291,13 @@ export function Header({ mode }: HeaderProps) {
 
       {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} />}
     </Stack>
+  );
+}
+
+export function Header({ mode }: HeaderProps) {
+  return (
+    <Suspense>
+      <HeaderComponent mode={mode} />
+    </Suspense>
   );
 }

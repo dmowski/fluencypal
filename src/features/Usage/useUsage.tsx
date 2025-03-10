@@ -36,18 +36,11 @@ const UsageContext = createContext<UsageContextType | null>(null);
 function useProvideUsage(): UsageContextType {
   const [usageLogs, setUsageLogs] = useState<UsageLog[]>([]);
   const [isShowPaymentModal, setIsShowPaymentModal] = useState(false);
-  const searchParams = useSearchParams();
+
   const router = useRouter();
-  const isPaymentModalInUrl = searchParams.get("paymentModal") === "true";
-  useEffect(() => {
-    if (isPaymentModalInUrl && isPaymentModalInUrl !== isShowPaymentModal) {
-      setIsShowPaymentModal(isPaymentModalInUrl);
-    }
-  }, [isPaymentModalInUrl]);
 
   const togglePaymentModal = (isOpen: boolean) => {
     setIsShowPaymentModal(isOpen);
-
     if (isOpen) {
       router.push(`${window.location.pathname}?paymentModal=true`, { scroll: false });
     } else {

@@ -10,6 +10,7 @@ export const ContactsPage = () => {
   return (
     <Stack sx={{}}>
       <Header mode="landing" />
+
       <div
         style={{
           width: "100%",
