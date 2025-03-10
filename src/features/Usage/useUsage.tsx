@@ -20,7 +20,7 @@ import {
   WELCOME_BONUS,
 } from "@/common/usage";
 import { db } from "../Firebase/db";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];

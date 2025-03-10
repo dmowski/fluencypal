@@ -11,7 +11,6 @@ import dayjs from "dayjs";
 import { PaymentLogType } from "@/common/usage";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { ContactList } from "../Landing/Contact/ContactList";
-import { loadStripe } from "@stripe/stripe-js";
 import { createStripeCheckout } from "./createStripeCheckout";
 import { CircleCheck } from "lucide-react";
 
@@ -20,10 +19,8 @@ const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   user: "Payment",
   gift: "Gift",
 };
-const NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY =
-  "pk_test_51PZnYNB2n0dZhsW05q6aRcPve6gKpJ2vAB72pjJjL7m7w0CbmV2Kp2zXkJNPFH9eczsgPq7Pm0cpo0IaIG6Fm2bE00eyshvI2h";
 
-const stripePromise = loadStripe(NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+const isUseStripe = true;
 
 export const PaymentModal = () => {
   const usage = useUsage();
@@ -71,7 +68,6 @@ export const PaymentModal = () => {
     });
   };
 
-  const isUseStripe = true;
   const clickOnConfirmRequest = async () => {
     if (isUseStripe) {
       const checkoutInfo = await createStripeCheckout({
