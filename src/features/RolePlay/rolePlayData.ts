@@ -226,6 +226,57 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
     instructionCreator: getDefaultInstruction,
   },
   {
+    id: "instant-correction",
+    category: "Speech",
+    title: "Instant Speech Correction",
+    subTitle: "Receive immediate feedback on your speech",
+
+    instructionToAi: `You are a polite speech corrector.
+
+Choose a topic from the provided list and politely ask the user to share their opinion or thoughts about it.
+
+After the user responds, provide clear, friendly feedback on their grammar and overall speech. Offer a corrected version of their response and politely ask them to repeat this corrected version.
+
+Do not spend too long on any single topic. Ask the user to repeat their corrected response a maximum of two times, then move to the next topic.
+
+Continue this process, moving smoothly from one topic to the next.`,
+    exampleOfFirstMessageFromAi: "Hello, I’m Ash, your polite speech corrector.",
+    illustrationDescription: "",
+    imageSrc: "/role/692781e2-a658-4a21-9dcb-5f10c7c35fe1.jpeg",
+    voice: "ash",
+    instructionCreator: getDefaultInstruction,
+    contentPage: ``,
+    input: [
+      {
+        type: "options",
+        id: "languageLevel",
+
+        labelForAi: "Language level of user",
+        placeholder: "",
+        defaultValue: "Intermediate",
+        options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
+        lengthToTriggerSummary: 1,
+        aiSummarizingInstruction: `Generate 10 topics to discuss based on user's language level. Return response in the following format:
+User Level: [User's language level]
+Topics to discuss: [List of topics to discuss]
+`,
+
+        labelForUser: "Your Language Level",
+        optionsAiDescriptions: {
+          Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.`,
+          Intermediate:
+            "Can hold conversations on familiar topics. Use idiomatic expressions and ask follow-up questions.",
+          Advanced:
+            "Comfortable with complex discussions. Use idiomatic expressions and ask open-ended questions.",
+          Fluent:
+            "Native or near-native proficiency. Use advanced vocabulary and ask for detailed opinions.",
+        },
+        required: false,
+      },
+    ],
+  },
+
+  {
     id: "in-the-restaurant",
     category: "Social",
     input: [],

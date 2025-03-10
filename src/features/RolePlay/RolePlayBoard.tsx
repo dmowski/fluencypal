@@ -113,6 +113,26 @@ export const RolePlayBoard = () => {
     });
   };
 
+  const processInputWithAi = async (
+    aiSummarizingInstruction: string,
+    value: string,
+    lengthToTriggerSummary: number,
+    requiredFields: string[]
+  ) => {
+    if (!aiSummarizingInstruction || value.length < lengthToTriggerSummary) {
+      return value;
+    }
+
+    const systemMessage = aiSummarizingInstruction + requiredFields.join(", ");
+    const aiResult = await textAi.generate({
+      systemMessage: systemMessage,
+      userMessage: value,
+      model: MODELS.gpt_4o,
+      cache: true,
+    });
+    return aiResult || value;
+  };
+
   const modeProcessors: Record<
     RolePlayInputType,
     (
@@ -123,28 +143,31 @@ export const RolePlayBoard = () => {
     ) => Promise<string>
   > = {
     textarea: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
-      if (!input.aiSummarizingInstruction || userValue.length < lengthToTriggerSummary) {
-        return userValue;
-      }
-
-      const systemMessage = input.aiSummarizingInstruction + requiredFields.join(", ");
-      console.log("systemMessage", systemMessage);
-      console.log("userValue", userValue);
-      const aiResult = await textAi.generate({
-        systemMessage: systemMessage,
-        userMessage: userValue,
-        model: MODELS.gpt_4o,
-        cache: true,
-      });
-      console.log("aiResult", aiResult);
-      return aiResult || userValue;
+      return processInputWithAi(
+        input.aiSummarizingInstruction || "",
+        userValue,
+        lengthToTriggerSummary,
+        requiredFields
+      );
     },
-    "text-input": async (input, userValue) => {
-      return userValue;
+    "text-input": async (input, userValue, lengthToTriggerSummary, requiredFields) => {
+      return processInputWithAi(
+        input.aiSummarizingInstruction || "",
+        userValue,
+        lengthToTriggerSummary,
+        requiredFields
+      );
     },
-    options: async (input, userValue) => {
+    options: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
       const aiOptions = input.optionsAiDescriptions || {};
-      return aiOptions[userValue] || userValue;
+      const value = aiOptions[userValue] || userValue;
+
+      return processInputWithAi(
+        input.aiSummarizingInstruction || "",
+        value,
+        lengthToTriggerSummary,
+        requiredFields
+      );
     },
   };
 
@@ -154,7 +177,7 @@ export const RolePlayBoard = () => {
     const rolePlayInputs = await Promise.all(
       selectedRolePlayScenario.input.map(async (input) => {
         const inputId = selectedRolePlayScenario.id + "-" + input.id;
-        const userValue = userInputs?.[inputId] || "";
+        const userValue = userInputs?.[inputId] || input.defaultValue || "";
 
         const requiredFieldsIdsToSummary = input.requiredFieldsToSummary || [];
         const requiredFields = requiredFieldsIdsToSummary.map((fieldId) => {
@@ -181,7 +204,6 @@ export const RolePlayBoard = () => {
   };
 
   const generateRandomWord = async (userLevelInfo: string) => {
-    console.log("userLevelInfo", userLevelInfo);
     const systemMessage = [
       `You need to generate words to play the game Alias. Be creative.`,
       `Some of them should be simple and some of them should be hard. Depends on user level`,
