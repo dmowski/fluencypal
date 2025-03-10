@@ -81,7 +81,7 @@ type Modalities = "audio" | "text";
 
 interface UpdateSessionProps {
   dataChannel: RTCDataChannel;
-  initInstruction: string;
+  initInstruction?: string;
   aiTools: AiToolForLlm[];
   voice?: AiVoice;
   languageCode: SupportedLanguage;
@@ -263,6 +263,7 @@ export const initAiRtc = async ({
     }
 
     if (type === "response.done") {
+      console.log("event?.response?.output", event?.response?.output);
       const botAnswer = event?.response?.output
         .map((item: any) => {
           return (
@@ -402,11 +403,22 @@ export const initAiRtc = async ({
     toggleMute(true);
   }
 
+  const toggleVolume = async (isVolumeOn: boolean) => {
+    await updateSession({
+      dataChannel,
+      aiTools: aiToolsForLlm,
+      languageCode,
+      voice,
+      modalities: isVolumeOn ? ["audio", "text"] : ["text"],
+    });
+  };
+
   return {
     closeHandler,
     addUserChatMessage,
     updateSessionTrigger,
     triggerAiResponse,
     toggleMute,
+    toggleVolume,
   };
 };

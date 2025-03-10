@@ -58,6 +58,9 @@ interface AiConversationContextType {
   setIsShowUserInput: (value: boolean) => void;
   currentMode: ConversationMode;
   gameWords: GuessGameStat | null;
+
+  isVolumeOn?: boolean;
+  setIsVolumeOn: (value: boolean) => void;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -75,6 +78,12 @@ function useProvideAiConversation(): AiConversationContextType {
   const fullLanguageName = settings.fullLanguageName || "English";
   const languageCode = settings.languageCode || "en";
   const [analyzeResultInstruction, setAnalyzeResultInstruction] = useState<string>("");
+  const [isVolumeOn, setIsVolumeOn] = useState(true);
+
+  const toggleVolume = (isOn: boolean) => {
+    setIsVolumeOn(isOn);
+    communicatorRef.current?.toggleVolume(isOn);
+  };
 
   const usage = useUsage();
   const [gameStat, setGameStat] = useState<GuessGameStat | null>(null);
@@ -508,6 +517,8 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     isShowUserInput: isShowUserInput || false,
     setIsShowUserInput,
     gameWords: gameStat,
+    isVolumeOn,
+    setIsVolumeOn: toggleVolume,
   };
 }
 

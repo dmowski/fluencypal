@@ -19,6 +19,8 @@ import { useSettings } from "../Settings/useSettings";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useUsage } from "../Usage/useUsage";
 import { AliasGamePanel } from "./AliasGamePanel";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import VolumeMuteIcon from "@mui/icons-material/VolumeMute";
 
 const loadingHelpMessage = `Generating help message...`;
 export function ConversationCanvas() {
@@ -114,14 +116,43 @@ Use ${settings.fullLanguageName || "English"} language.
 
             {lastBotMessage && (
               <Stack>
-                <Typography
-                  variant="caption"
+                <Stack
                   sx={{
-                    opacity: 0.5,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: "2px",
                   }}
                 >
-                  Teacher:
-                </Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      opacity: 0.5,
+                    }}
+                  >
+                    Teacher:
+                  </Typography>
+                  <IconButton
+                    size="small"
+                    sx={{
+                      opacity: 0.6,
+                    }}
+                    onClick={() => aiConversation.setIsVolumeOn(!aiConversation.isVolumeOn)}
+                  >
+                    {aiConversation.isVolumeOn ? (
+                      <VolumeUpIcon
+                        sx={{
+                          fontSize: "14px",
+                        }}
+                      />
+                    ) : (
+                      <VolumeMuteIcon
+                        sx={{
+                          fontSize: "14px",
+                        }}
+                      />
+                    )}
+                  </IconButton>
+                </Stack>
                 <Markdown>{lastBotMessage.text || ""}</Markdown>
               </Stack>
             )}
