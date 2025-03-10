@@ -1,4 +1,4 @@
-import { Button, Link, Stack, TextField, Typography } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useUsage } from "./useUsage";
 import { useNotifications } from "@toolpad/core/useNotifications";
@@ -11,12 +11,18 @@ import dayjs from "dayjs";
 import { PaymentLogType } from "@/common/usage";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { ContactList } from "../Landing/Contact/ContactList";
+import { loadStripe } from "@stripe/stripe-js";
+import { createStripeCheckout } from "./createStripeCheckout";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
   user: "Payment",
   gift: "Gift",
 };
+const NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY =
+  "pk_test_51PZnYNB2n0dZhsW05q6aRcPve6gKpJ2vAB72pjJjL7m7w0CbmV2Kp2zXkJNPFH9eczsgPq7Pm0cpo0IaIG6Fm2bE00eyshvI2h";
+
+const stripePromise = loadStripe(NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 export const PaymentModal = () => {
   const usage = useUsage();
@@ -65,10 +71,27 @@ export const PaymentModal = () => {
     });
   };
 
+  const isUseStripe = true;
   const clickOnConfirmRequest = async () => {
-    setIsShowConfirmPayments(true);
-    sentTgMessage(`Event: User confirmed payment: $${amountToAdd}`);
-    setIsShowAmountInput(false);
+    if (isUseStripe) {
+      const checkoutInfo = await createStripeCheckout({
+        userId: auth.uid,
+        amount: amountToAdd,
+      });
+      if (!checkoutInfo.sessionUrl) {
+        console.log("checkoutInfo", checkoutInfo);
+        notifications.show("Error creating payment session", {
+          severity: "error",
+        });
+        return;
+      } else {
+        window.location.href = checkoutInfo.sessionUrl;
+      }
+    } else {
+      setIsShowConfirmPayments(true);
+      sentTgMessage(`Event: User confirmed payment: $${amountToAdd}`);
+      setIsShowAmountInput(false);
+    }
   };
 
   const onShowAmountInput = () => {
