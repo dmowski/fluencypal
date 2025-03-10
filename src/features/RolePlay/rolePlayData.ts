@@ -233,7 +233,7 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
 
     instructionToAi: `You are a polite speech corrector.
 
-Choose a topic from the provided list and politely ask the user to share their opinion or thoughts about it.
+Choose a random topic from the provided list and politely ask the user to share their opinion or thoughts about it.
 
 After the user responds, provide clear, friendly feedback on their grammar and overall speech. Offer a corrected version of their response and politely ask them to repeat this corrected version.
 
@@ -257,7 +257,8 @@ Continue this process, moving smoothly from one topic to the next.`,
         options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
         lengthToTriggerSummary: 1,
         injectUserInfoToSummary: true,
-        aiSummarizingInstruction: `Generate 10 topics to discuss based on user's language level and info about user.
+        cacheAiSummary: false,
+        aiSummarizingInstruction: `Generate 20 topics to discuss based on user's language level and info about user.
 
 Return response in the following format:
 User Level: [User's language level]
@@ -266,13 +267,20 @@ Topics to discuss: [List of topics to discuss]
 
         labelForUser: "Your Language Level",
         optionsAiDescriptions: {
-          Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.`,
-          Intermediate:
-            "Can hold conversations on familiar topics. Use idiomatic expressions and ask follow-up questions.",
-          Advanced:
-            "Comfortable with complex discussions. Use idiomatic expressions and ask open-ended questions.",
-          Fluent:
-            "Native or near-native proficiency. Use advanced vocabulary and ask for detailed opinions.",
+          Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.
+
+Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.
+`,
+          Intermediate: `Can hold conversations on familiar topics. Use idiomatic expressions and ask follow-up questions.
+
+Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.`,
+          Advanced: `Comfortable with complex discussions. Use idiomatic expressions and ask open-ended questions.
+
+Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.
+`,
+          Fluent: `Native or near-native proficiency. Use advanced vocabulary and ask for detailed opinions.
+
+Example of topics: weather, hobbies, family, work, travel, food, music, movies, sports, books, technology, fashion, health, education, environment, culture, politics, history, art, science, relationships, social media, current events, personal experiences, future plans, daily routines, childhood memories, favorite things, etc.`,
         },
         required: false,
       },

@@ -15,6 +15,7 @@ export interface InputStructureForUser {
   lengthToTriggerSummary?: number;
   aiSummarizingInstruction?: string;
   injectUserInfoToSummary?: boolean;
+  cacheAiSummary?: boolean;
 }
 
 export interface RolePlayInputResult {

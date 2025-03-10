@@ -120,7 +120,8 @@ export const RolePlayBoard = () => {
     value: string,
     lengthToTriggerSummary: number,
     requiredFields: string[],
-    isNeedUserInfo: boolean
+    isNeedUserInfo: boolean,
+    cacheAiSummary: boolean
   ) => {
     if (!aiSummarizingInstruction || value.length < lengthToTriggerSummary) {
       return value;
@@ -137,7 +138,7 @@ export const RolePlayBoard = () => {
       systemMessage: systemMessage,
       userMessage: value,
       model: MODELS.gpt_4o,
-      cache: true,
+      cache: cacheAiSummary,
     });
     return aiResult || value;
   };
@@ -157,7 +158,8 @@ export const RolePlayBoard = () => {
         userValue,
         lengthToTriggerSummary,
         requiredFields,
-        input.injectUserInfoToSummary || false
+        input.injectUserInfoToSummary || false,
+        input.cacheAiSummary !== undefined ? input.cacheAiSummary : true
       );
     },
     "text-input": async (input, userValue, lengthToTriggerSummary, requiredFields) => {
@@ -166,7 +168,8 @@ export const RolePlayBoard = () => {
         userValue,
         lengthToTriggerSummary,
         requiredFields,
-        input.injectUserInfoToSummary || false
+        input.injectUserInfoToSummary || false,
+        input.cacheAiSummary !== undefined ? input.cacheAiSummary : true
       );
     },
     options: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
@@ -178,7 +181,8 @@ export const RolePlayBoard = () => {
         value,
         lengthToTriggerSummary,
         requiredFields,
-        input.injectUserInfoToSummary || false
+        input.injectUserInfoToSummary || false,
+        input.cacheAiSummary !== undefined ? input.cacheAiSummary : true
       );
     },
   };
