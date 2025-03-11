@@ -6,9 +6,26 @@ import { supportedLanguages } from "@/common/lang";
 import { initLingui } from "@/initLingui";
 import { allMessages, getI18nInstance } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
+import linguiConfig from "../../../../../lingui.config";
+
+interface ScenarioProps {
+  id: string;
+  lang: string;
+}
+
+export async function generateStaticParams() {
+  const rolePlayScenarios = getRolePlayScenarios("en");
+  return linguiConfig.locales
+    .map((lang: string) => {
+      return rolePlayScenarios.map((scenario) => {
+        return { id: scenario.id, lang };
+      });
+    })
+    .flat();
+}
 
 interface PageProps {
-  params: Promise<{ id: string; lang: string }>;
+  params: Promise<ScenarioProps>;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {

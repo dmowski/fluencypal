@@ -8,6 +8,11 @@ import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
+import linguiConfig from "../../../../lingui.config";
+
+export async function generateStaticParams() {
+  return linguiConfig.locales.map((lang: string) => ({ lang }));
+}
 
 interface PageProps {
   params: Promise<{ lang: string }>;

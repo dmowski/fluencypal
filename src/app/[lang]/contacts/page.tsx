@@ -6,6 +6,11 @@ import { supportedLanguages } from "@/common/lang";
 import { initLingui } from "@/initLingui";
 import { allMessages, getI18nInstance } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
+import linguiConfig from "../../../../lingui.config";
+
+export async function generateStaticParams() {
+  return linguiConfig.locales.map((lang: string) => ({ lang }));
+}
 
 interface PageProps {
   params: Promise<{ id: string; lang: string }>;
