@@ -82,7 +82,6 @@ export default async function RootLayout({
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
 
   initLingui(supportedLang);
-  const i18n = getI18nInstance(supportedLang);
 
   return (
     <html lang={lang}>
@@ -106,15 +105,6 @@ export default async function RootLayout({
                                 <TasksProvider>
                                   <HomeworkProvider>
                                     <AiConversationProvider>{children}</AiConversationProvider>
-                                    <CookiesPopup
-                                      message={i18n._(
-                                        `We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will assume that you are happy with it`
-                                      )}
-                                      ok={i18n._("Ok")}
-                                      no={i18n._("No")}
-                                      privacy={i18n._("Privacy Policy")}
-                                      lang={supportedLang}
-                                    />
                                   </HomeworkProvider>
                                 </TasksProvider>
                               </RulesProvider>

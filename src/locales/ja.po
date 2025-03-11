@@ -13,26 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/layout.tsx:110
-#. js-lingui-explicit-id
-msgid ""
-"We use cookies to ensure that we give you the best experience on our "
-"website. If you continue to use this site we will assume that you are happy "
-"with it"
-msgstr ""
-"私たちはクッキーを使用して、ウェブサイトで最高の体験を提供できるようにしています。このサイトを引き続きご利用いただく場合は、あなたがそれに満足していると"
-"みなします。"
-
-#: src/app/layout.tsx:113
-#. js-lingui-explicit-id
-msgid "Ok"
-msgstr "申し訳ありませんが、そのリクエストにはお応えできません。"
-
-#: src/app/layout.tsx:114
-#. js-lingui-explicit-id
-msgid "No"
-msgstr "いいえ"
-
 #: src/features/RolePlay/rolePlayData.ts:13
 #. js-lingui-explicit-id
 msgid "Game"
@@ -805,7 +785,7 @@ msgid "Page language"
 msgstr "ページ言語"
 
 #: src/features/Landing/LandingPage.tsx:27
-#: src/app/[lang]/page.tsx:50
+#: src/app/[lang]/page.tsx:51
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – あなたのAI英会話パートナー"
@@ -1197,7 +1177,7 @@ msgstr "利用規約"
 
 #: src/features/Landing/Footer.tsx:149
 #: src/features/Auth/SignInForm.tsx:109
-#: src/app/layout.tsx:115
+#: src/app/[lang]/page.tsx:104
 #: src/app/[lang]/privacy/page.tsx:28
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -1662,12 +1642,12 @@ msgstr "Googleで続行"
 msgid "By creating an account, you agree to:"
 msgstr "アカウントを作成することで、あなたは以下に同意するものとします："
 
-#: src/app/[lang]/page.tsx:31
+#: src/app/[lang]/page.tsx:32
 #. js-lingui-explicit-id
 msgid "FluencyPal – AI English Speaking Practice"
 msgstr "FluencyPal – AI英語スピーキング練習"
 
-#: src/app/[lang]/page.tsx:32
+#: src/app/[lang]/page.tsx:33
 #. js-lingui-explicit-id
 msgid ""
 "Practice conversational English anytime with FluencyPal, your personal AI "
@@ -1675,12 +1655,12 @@ msgid ""
 "realistic, immersive conversations."
 msgstr "プラクティス会話英語をいつでもFluencyPalで、あなたの個人AI英語チューター。流暢さ、発音、自信をリアルで没入型の会話を通じて向上させましょう。"
 
-#: src/app/[lang]/page.tsx:41
+#: src/app/[lang]/page.tsx:42
 #. js-lingui-explicit-id
 msgid "FluencyPal - AI English Speaking Practice App"
 msgstr "FluencyPal - AI英会話練習アプリ"
 
-#: src/app/[lang]/page.tsx:51
+#: src/app/[lang]/page.tsx:52
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal helps intermediate and advanced learners improve English "
@@ -1690,12 +1670,12 @@ msgstr ""
 "FluencyPalは、中級者および上級者がパーソナライズされたAI主導の会話を通じて英会話の流暢さを向上させる手助けをします。 "
 "24時間年中無休で利用可能で、サブスクリプションは不要です。"
 
-#: src/app/[lang]/page.tsx:64
+#: src/app/[lang]/page.tsx:65
 #. js-lingui-explicit-id
 msgid "FluencyPal – AI English Speaking Practice for Fluency & Confidence"
 msgstr "FluencyPal – 流暢さと自信のためのAI英語スピーキング練習"
 
-#: src/app/[lang]/page.tsx:65
+#: src/app/[lang]/page.tsx:66
 #. js-lingui-explicit-id
 msgid ""
 "Practice conversational English with FluencyPal, your 24/7 AI English tutor "
@@ -1706,45 +1686,65 @@ msgstr ""
 "時間年中無休のAI英語チューターおよびスピーキングコーチです。リアルなロールプレイシナリオを通じて、流暢さ、発音、自信を即時フィードバックで向上させまし"
 "ょう。"
 
-#: src/app/[lang]/page.tsx:70
+#: src/app/[lang]/page.tsx:71
 #. js-lingui-explicit-id
 msgid "ai English tutor"
 msgstr "ai英語講師"
 
-#: src/app/[lang]/page.tsx:71
+#: src/app/[lang]/page.tsx:72
 #. js-lingui-explicit-id
 msgid "English speaking practice app"
 msgstr "英会話練習アプリ"
 
-#: src/app/[lang]/page.tsx:72
+#: src/app/[lang]/page.tsx:73
 #. js-lingui-explicit-id
 msgid "improve English fluency"
 msgstr "英語の流暢さを向上させる"
 
-#: src/app/[lang]/page.tsx:73
+#: src/app/[lang]/page.tsx:74
 #. js-lingui-explicit-id
 msgid "advanced English conversation"
 msgstr "高度な英会話"
 
-#: src/app/[lang]/page.tsx:74
+#: src/app/[lang]/page.tsx:75
 #. js-lingui-explicit-id
 msgid "English speaking coach"
 msgstr "英語スピーキングコーチ"
 
-#: src/app/[lang]/page.tsx:75
+#: src/app/[lang]/page.tsx:76
 #. js-lingui-explicit-id
 msgid "conversational English practice"
 msgstr "会話英語の練習"
 
-#: src/app/[lang]/page.tsx:76
+#: src/app/[lang]/page.tsx:77
 #. js-lingui-explicit-id
 msgid "language immersion app"
 msgstr "言語没入アプリ"
 
-#: src/app/[lang]/page.tsx:77
+#: src/app/[lang]/page.tsx:78
 #. js-lingui-explicit-id
 msgid "English speaking partner"
 msgstr "英語スピーキングパートナー"
+
+#: src/app/[lang]/page.tsx:99
+#. js-lingui-explicit-id
+msgid ""
+"We use cookies to ensure that we give you the best experience on our "
+"website. If you continue to use this site we will assume that you are happy "
+"with it"
+msgstr ""
+"私たちはクッキーを使用して、ウェブサイトで最高の体験を提供できるようにしています。このサイトを引き続きご利用いただく場合は、あなたがそれに満足していると"
+"みなします。"
+
+#: src/app/[lang]/page.tsx:102
+#. js-lingui-explicit-id
+msgid "Ok"
+msgstr "申し訳ありませんが、そのリクエストにはお応えできません。"
+
+#: src/app/[lang]/page.tsx:103
+#. js-lingui-explicit-id
+msgid "No"
+msgstr "いいえ"
 
 #: src/app/[lang]/terms/page.tsx:29
 #: src/app/[lang]/privacy/page.tsx:29

@@ -9,6 +9,7 @@ import { Robots } from "next/dist/lib/metadata/types/metadata-types";
 import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 import { Twitter } from "next/dist/lib/metadata/types/twitter-types";
 import linguiConfig from "../../../lingui.config";
+import { CookiesPopup } from "@/features/Legal/CookiesPopup";
 
 interface PageProps {
   params: Promise<{ lang: string }>;
@@ -88,9 +89,21 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
   const lang = (await props.params).lang;
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
+
+  const i18n = getI18nInstance(supportedLang);
+
   return (
     <LinguiClientProvider initialLocale={lang} initialMessages={allMessages[lang]!}>
       <LandingPage lang={supportedLang} />
+      <CookiesPopup
+        message={i18n._(
+          `We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will assume that you are happy with it`
+        )}
+        ok={i18n._("Ok")}
+        no={i18n._("No")}
+        privacy={i18n._("Privacy Policy")}
+        lang={supportedLang}
+      />
     </LinguiClientProvider>
   );
 }
