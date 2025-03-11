@@ -2,7 +2,7 @@ import { Robots } from "next/dist/lib/metadata/types/metadata-types";
 import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 import { Twitter } from "next/dist/lib/metadata/types/twitter-types";
 
-export const siteUrl = "https://dark-lang.net/";
+export const siteUrl = "https://fluencypal.com/";
 
 export const openGraph: OpenGraph = {
   title: "FluencyPal – AI English Speaking Practice",
