@@ -1,6 +1,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 
 import {
+  APP_NAME,
   buttonStyle,
   maxContentWidth,
   subTitleFontStyle,
@@ -50,7 +51,7 @@ export const PricePage = () => {
                 transform: "scale(1.4)",
               }}
             >
-              <img src="./logo_dark.svg" alt="Dark lang logo" width="90px" height="42px" />
+              <img src="./logo_dark.svg" alt="logo" width="200px" height="42px" />
             </Stack>
             <Stack
               sx={{
@@ -135,7 +136,7 @@ export const PricePage = () => {
             >
               <PriceCard
                 title={"Free Trial"}
-                subTitle={"Trying Dark Lang risk-free"}
+                subTitle={`Trying ${APP_NAME} risk-free`}
                 price={"Free"}
                 priceDescription={`$${WELCOME_BONUS} free credit`}
                 listTitle={"Features:"}
@@ -231,7 +232,7 @@ export const PricePage = () => {
                   color: "#000",
                 }}
               >
-                How Dark Lang Pricing Works
+                How {APP_NAME} Pricing Works
               </Typography>
               <Typography
                 align="center"
@@ -530,7 +531,7 @@ export const PricePage = () => {
                     <th>
                       <div className="lang-cell-head">
                         <div className="logo">
-                          <img src="/logo.svg" alt="Dark lang" />
+                          <img src="/logo.svg" alt="Logo" />
                         </div>
                       </div>
                     </th>
@@ -677,7 +678,7 @@ export const PricePage = () => {
               }}
               href="/practice"
             >
-              Try Dark Lang for Free
+              Try {APP_NAME} for Free
             </Button>
           </Stack>
 
@@ -732,7 +733,7 @@ export const PricePage = () => {
               >
                 <FaqItem
                   info={{
-                    question: "Can I try Dark Lang for free?",
+                    question: `Can I try ${APP_NAME} for free?`,
                     answer: (
                       <Typography>
                         Yes! You start with ${WELCOME_BONUS} in free credits to explore all

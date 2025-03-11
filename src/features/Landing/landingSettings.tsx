@@ -17,3 +17,5 @@ export const buttonStyle = {
   fontSize: "1.1rem",
   boxShadow: "none",
 };
+
+export const APP_NAME = "FluencyPal";

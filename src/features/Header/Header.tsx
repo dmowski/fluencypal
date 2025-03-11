@@ -126,7 +126,7 @@ function HeaderComponent({ mode }: HeaderProps) {
               marginRight: "40px",
             }}
           >
-            <img src="/logo.svg" alt="logo" width="80px" height="37px" />
+            <img src="/logo.svg" alt="logo" width="160px" height="67px" />
           </a>
 
           {mode === "landing" && (
