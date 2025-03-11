@@ -1,7 +1,14 @@
 import { Link, Stack, Typography } from "@mui/material";
 import { maxLandingWidth } from "./landingSettings";
+import { SupportedLanguage } from "@/common/lang";
+import { getI18nInstance } from "@/appRouterI18n";
 
-export const Footer = () => {
+interface FooterProps {
+  lang: SupportedLanguage;
+}
+export const Footer: React.FC<FooterProps> = ({ lang }) => {
+  const i18n = getI18nInstance(lang);
+
   return (
     <Stack
       sx={{
@@ -51,14 +58,14 @@ export const Footer = () => {
             },
           }}
         >
-          <Link href="/scenarios" variant="body1">
-            Role-Play
+          <Link href={`/${lang}/scenarios`} variant="body1">
+            {i18n._(`Role-Play`)}
           </Link>
-          <Link href="/contacts" variant="body1">
-            Contacts
+          <Link href={`/${lang}/contacts`} variant="body1">
+            {i18n._(`Contacts`)}
           </Link>
-          <Link href="/pricing" variant="body1">
-            Pricing
+          <Link href={`/${lang}/pricing`} variant="body1">
+            {i18n._(`Pricing`)}
           </Link>
         </Stack>
 
@@ -100,22 +107,22 @@ export const Footer = () => {
             }}
           >
             <Link
-              href="/terms"
+              href={`/${lang}/terms`}
               variant="body1"
               sx={{
                 color: "#fff",
               }}
             >
-              Terms of Use
+              {i18n._(`Terms of Use`)}
             </Link>
             <Link
-              href="/privacy"
+              href={`/${lang}/privacy`}
               variant="body1"
               sx={{
                 color: "#fff",
               }}
             >
-              Privacy Policy
+              {i18n._(`Privacy Policy`)}
             </Link>
           </Stack>
         </Stack>

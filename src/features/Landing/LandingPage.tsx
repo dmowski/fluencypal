@@ -217,7 +217,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
           />
         </Stack>
       </main>
-      <Footer />
+      <Footer lang={lang} />
     </>
   );
 }
