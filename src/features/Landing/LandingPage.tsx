@@ -19,7 +19,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
   const i18n = getI18nInstance(lang);
   return (
     <>
-      <Header mode="landing" />
+      <Header mode="landing" lang={lang} />
       <main style={{ width: "100%", margin: 0 }}>
         <TalkingWaves />
         <Stack sx={{ alignItems: "center" }}>

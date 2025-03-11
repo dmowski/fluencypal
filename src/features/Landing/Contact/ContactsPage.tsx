@@ -15,7 +15,7 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
   const i18n = getI18nInstance(lang);
   return (
     <Stack sx={{}}>
-      <Header mode="landing" />
+      <Header mode="landing" lang={lang} />
 
       <div
         style={{

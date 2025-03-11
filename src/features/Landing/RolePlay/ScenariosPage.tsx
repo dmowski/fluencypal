@@ -17,7 +17,7 @@ interface ScenariosPageProps {
 export const ScenariosPage = ({ selectedCategory, lang }: ScenariosPageProps) => {
   return (
     <>
-      <Header mode="landing" />
+      <Header mode="landing" lang={lang} />
       <div
         style={{
           width: "100%",

@@ -5,7 +5,7 @@ import { Link, Stack, Typography } from "@mui/material";
 export default function NotFound() {
   return (
     <div>
-      <Header mode="landing" />
+      <Header mode="landing" lang="en" />
       <Stack
         sx={{
           alignItems: "center",

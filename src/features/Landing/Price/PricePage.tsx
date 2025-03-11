@@ -26,7 +26,7 @@ interface PricePageProps {
 export const PricePage = ({ lang }: PricePageProps) => {
   return (
     <Stack sx={{}}>
-      <Header mode="landing" />
+      <Header mode="landing" lang={lang} />
       <div
         style={{
           width: "100%",
@@ -55,7 +55,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 transform: "scale(1.4)",
               }}
             >
-              <img src="./logo_dark.svg" alt="logo" width="200px" height="42px" />
+              <img src="/logo_dark.svg" alt="logo" width="200px" height="42px" />
             </Stack>
             <Stack
               sx={{

@@ -31,7 +31,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
 
   return (
     <>
-      <Header mode="practice" />
+      <Header mode="practice" lang={supportedLang} />
       <main>
         <ConversationPage />
       </main>
