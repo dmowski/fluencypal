@@ -34,7 +34,10 @@ export const ScenariosPage = ({ selectedCategory }: ScenariosPageProps) => {
           <ListRolePlayIntro />
           <ListRolePlay selectedCategory={selectedCategory} />
         </Stack>
-        <CtaBlock />
+        <CtaBlock
+          title="Start Your Journey to Fluent Conversations Now"
+          actionButtonTitle="Get Started Free"
+        />
       </div>
       <Footer />
     </>

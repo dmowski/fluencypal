@@ -2,7 +2,11 @@ import { Button, Stack, Typography } from "@mui/material";
 import Galaxy from "../uiKit/Animations/Galaxy";
 import { buttonStyle, titleFontStyle } from "./landingSettings";
 
-export const CtaBlock = () => {
+interface CtaBlockProps {
+  title: string;
+  actionButtonTitle: string;
+}
+export const CtaBlock: React.FC<CtaBlockProps> = ({ title, actionButtonTitle }) => {
   return (
     <Stack
       sx={{
@@ -40,7 +44,7 @@ export const CtaBlock = () => {
               ...titleFontStyle,
             }}
           >
-            Start Your Journey to Fluent Conversations Now
+            {title}
           </Typography>
         </Stack>
         <Button
@@ -54,7 +58,7 @@ export const CtaBlock = () => {
             backgroundColor: "#05acff",
           }}
         >
-          Get Started Free
+          {actionButtonTitle}
         </Button>
       </Stack>
 

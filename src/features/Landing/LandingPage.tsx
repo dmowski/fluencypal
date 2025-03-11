@@ -186,7 +186,10 @@ export default function LandingPage() {
               },
             ]}
           />
-          <CtaBlock />
+          <CtaBlock
+            title="Start Your Journey to Fluent Conversations Now"
+            actionButtonTitle="Get Started Free"
+          />
         </Stack>
       </main>
       <Footer />

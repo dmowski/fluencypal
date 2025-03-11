@@ -361,7 +361,10 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
           </Stack>
         </Stack>
 
-        <CtaBlock />
+        <CtaBlock
+          title="Start Your Journey to Fluent Conversations Now"
+          actionButtonTitle="Get Started Free"
+        />
       </div>
       <Footer />
     </>
