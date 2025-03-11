@@ -18,6 +18,9 @@ import { AiUserInfoProvider } from "@/features/Ai/useAiUserInfo";
 import { CookiesPopup } from "@/features/Legal/CookiesPopup";
 import { AudioProvider } from "@/features/Audio/useAudio";
 import { openGraph, robots, twitter } from "@/common/metadata";
+import { initLingui } from "@/initLingui";
+import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
+import { allMessages } from "@/appRouterI18n";
 
 export const metadata: Metadata = {
   title: "FluencyPal – AI English Speaking Practice for Fluency & Confidence",
@@ -39,11 +42,18 @@ export const metadata: Metadata = {
   robots: robots,
 };
 
-export default function RootLayout({
+const defaultLang = "en";
+
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }>) {
+  const lang: string = (await params)?.lang || defaultLang;
+  initLingui(lang);
+
   return (
     <html lang="en">
       <head>
@@ -51,36 +61,38 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/logo192.png" />
       </head>
       <body>
-        <ThemeProvider theme={theme}>
-          <AppRouterCacheProvider options={{ key: "css" }}>
-            <NotificationsProviderWrapper>
-              <AuthProvider>
-                <SettingsProvider>
-                  <UsageProvider>
-                    <TextAiProvider>
-                      <AudioProvider>
-                        <AiUserInfoProvider>
-                          <WordsProvider>
-                            <ChatHistoryProvider>
-                              <RulesProvider>
-                                <TasksProvider>
-                                  <HomeworkProvider>
-                                    <AiConversationProvider>{children}</AiConversationProvider>
-                                    <CookiesPopup />
-                                  </HomeworkProvider>
-                                </TasksProvider>
-                              </RulesProvider>
-                            </ChatHistoryProvider>
-                          </WordsProvider>
-                        </AiUserInfoProvider>
-                      </AudioProvider>
-                    </TextAiProvider>
-                  </UsageProvider>
-                </SettingsProvider>
-              </AuthProvider>
-            </NotificationsProviderWrapper>
-          </AppRouterCacheProvider>
-        </ThemeProvider>
+        <LinguiClientProvider initialLocale={lang} initialMessages={allMessages[lang]!}>
+          <ThemeProvider theme={theme}>
+            <AppRouterCacheProvider options={{ key: "css" }}>
+              <NotificationsProviderWrapper>
+                <AuthProvider>
+                  <SettingsProvider>
+                    <UsageProvider>
+                      <TextAiProvider>
+                        <AudioProvider>
+                          <AiUserInfoProvider>
+                            <WordsProvider>
+                              <ChatHistoryProvider>
+                                <RulesProvider>
+                                  <TasksProvider>
+                                    <HomeworkProvider>
+                                      <AiConversationProvider>{children}</AiConversationProvider>
+                                      <CookiesPopup />
+                                    </HomeworkProvider>
+                                  </TasksProvider>
+                                </RulesProvider>
+                              </ChatHistoryProvider>
+                            </WordsProvider>
+                          </AiUserInfoProvider>
+                        </AudioProvider>
+                      </TextAiProvider>
+                    </UsageProvider>
+                  </SettingsProvider>
+                </AuthProvider>
+              </NotificationsProviderWrapper>
+            </AppRouterCacheProvider>
+          </ThemeProvider>
+        </LinguiClientProvider>
       </body>
     </html>
   );
