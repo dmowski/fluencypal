@@ -82,7 +82,9 @@ export const getRolePlayScenarios: (lang: SupportedLanguage) => Array<RolePlayIn
       title: i18n._("Alias Word Guessing Game"),
       gameMode: "alias",
       subTitle: i18n._("Practice English vocabulary by creatively describing and guessing words"),
-      contentPage: `Boost your English vocabulary and fluency by creatively describing and guessing words in this interactive AI-powered Alias game.\n\n## Benefits of Playing *Alias Game*\n- Enhance your vocabulary by describing words in unique ways.\n- Improve listening skills as you interpret descriptions.\n- Practice rapid thinking and fluent speaking under playful pressure.\n- Receive instant, tailored feedback from your AI partner.\n\n## How to Play\nYou and your AI partner alternate turns describing and guessing words without directly naming them. This encourages creative thinking and fluent expression, adapting to your language proficiency.`,
+      contentPage: i18n._(
+        `Boost your English vocabulary and fluency by creatively describing and guessing words in this interactive AI-powered Alias game.\n\n## Benefits of Playing *Alias Game*\n- Enhance your vocabulary by describing words in unique ways.\n- Improve listening skills as you interpret descriptions.\n- Practice rapid thinking and fluent speaking under playful pressure.\n- Receive instant, tailored feedback from your AI partner.\n\n## How to Play\nYou and your AI partner alternate turns describing and guessing words without directly naming them. This encourages creative thinking and fluent expression, adapting to your language proficiency.`
+      ),
 
       instructionToAi: `Your role:
 You are playing the Alias game.
@@ -121,7 +123,8 @@ Gameplay Sequence:
       id: "job-interview",
       landingHighlight: `Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.`,
 
-      contentPage: `Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.
+      contentPage:
+        i18n._(`Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.
 
 ## Why You Should Play *Job Interview*  
 1. Master the art of professional communication, from introducing yourself to highlighting key skills.  
@@ -131,7 +134,7 @@ Gameplay Sequence:
 5. Develop the poise and readiness you need for any real-life interview scenario.
 
 ## How the Scenario Works  
-In this scenario, you’ll take on the role of a job candidate while our AI acts as a professional recruiter. You’ll be asked about your experience, skills, and motivations for the role, with the AI adjusting difficulty based on your responses. Use the prompts to practice delivering concise, persuasive answers that help you stand out in any job interview.`,
+In this scenario, you’ll take on the role of a job candidate while our AI acts as a professional recruiter. You’ll be asked about your experience, skills, and motivations for the role, with the AI adjusting difficulty based on your responses. Use the prompts to practice delivering concise, persuasive answers that help you stand out in any job interview.`),
       category: i18n._("Professional"),
       analyzeResultAiInstruction: `Analyze the user's responses and provide constructive feedback on their interview performance. Highlight areas of strength and suggest improvements for future interviews.`,
       input: [
@@ -199,7 +202,8 @@ Candidate's info below, don't include questions that are already answered by can
     {
       id: "small-talk-with-a-stranger",
       landingHighlight: `Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.`,
-      contentPage: `Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.
+      contentPage:
+        i18n._(`Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.
 
 ## Why You Should Play *Small Talk with a Stranger*
 1. Develop the confidence to start conversations in unfamiliar social settings.  
@@ -209,7 +213,7 @@ Candidate's info below, don't include questions that are already answered by can
 5. Build comfortable, everyday communication skills you can apply anywhere.
 
 ## How the Scenario Works
-In this scenario, you’ll step into the role of someone meeting a new acquaintance at a social event. The AI acts as a friendly stranger, prompting you to talk about casual topics like weather or shared interests. As you exchange pleasantries, the AI will adapt to your responses, helping you refine your small-talk abilities.`,
+In this scenario, you’ll step into the role of someone meeting a new acquaintance at a social event. The AI acts as a friendly stranger, prompting you to talk about casual topics like weather or shared interests. As you exchange pleasantries, the AI will adapt to your responses, helping you refine your small-talk abilities.`),
       category: i18n._("Social"),
       input: [],
       title: i18n._("Small Talk Practice"),
@@ -245,7 +249,8 @@ Continue this process, moving smoothly from one topic to the next.`,
       imageSrc: "/role/692781e2-a658-4a21-9dcb-5f10c7c35fe1.jpeg",
       voice: "ash",
       instructionCreator: getDefaultInstruction,
-      contentPage: `Improve your speaking skills with immediate, personalized feedback. Instant Speech Correction helps you express yourself clearly and confidently by correcting grammar, vocabulary, and pronunciation errors as you speak.
+      contentPage:
+        i18n._(`Improve your speaking skills with immediate, personalized feedback. Instant Speech Correction helps you express yourself clearly and confidently by correcting grammar, vocabulary, and pronunciation errors as you speak.
 
 ## Why You Should Try *Instant Speech Correction*
 1. Receive real-time, friendly corrections that immediately improve your speech.
@@ -256,7 +261,7 @@ Continue this process, moving smoothly from one topic to the next.`,
 
 ## How the Scenario Works
 You'll be prompted to express your thoughts or opinions on various engaging topics. After your initial response, you'll get clear, polite feedback highlighting corrections in your grammar and pronunciation. You'll then practice by repeating the corrected response. Each topic moves quickly, keeping the experience dynamic and effective for rapid language improvement.
-`,
+`),
       input: [
         {
           type: "options",
@@ -313,7 +318,8 @@ Example of topics: weather, hobbies, family, work, travel, food, music, movies, 
       imageSrc: "/role/acde68cd-1db6-4b69-be42-d2071b9ee1e8.jpeg",
       voice: "ash",
       instructionCreator: getDefaultInstruction,
-      contentPage: `In this role-play, you’ll interact with a polite waiter, order food, and handle special requests—just like in a real restaurant. Perfect for practicing how to start conversations, ask about menu items, and address any dining-related concerns.  
+      contentPage:
+        i18n._(`In this role-play, you’ll interact with a polite waiter, order food, and handle special requests—just like in a real restaurant. Perfect for practicing how to start conversations, ask about menu items, and address any dining-related concerns.  
 
 ## Why You Should Play *In the Restaurant*  
 1. Hone your ordering skills and gain confidence speaking in a real-life dining situation.  
@@ -323,7 +329,8 @@ Example of topics: weather, hobbies, family, work, travel, food, music, movies, 
 5. Build comfort in realistic interactions, making your next visit to a restaurant smoother and more enjoyable in any language.
 
 ## How the Scenario Works  
-In this scenario, you’ll take on the role of a diner while the AI acts as your friendly waiter. You’ll be prompted to place an order, ask for recommendations, and respond to follow-up questions. As you converse, the AI adapts to your responses, creating an immersive experience that helps you practice practical dining interactions.`,
+In this scenario, you’ll take on the role of a diner while the AI acts as your friendly waiter. You’ll be prompted to place an order, ask for recommendations, and respond to follow-up questions. As you converse, the AI adapts to your responses, creating an immersive experience that helps you practice practical dining interactions.
+`),
     },
     {
       input: [
@@ -338,7 +345,8 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
         },
       ],
       id: "custom",
-      contentPage: `Create a unique, personalized setting that fits your specific interests or challenges. This scenario lets you decide the context, characters, and conversation flow you want to practice.
+      contentPage:
+        i18n._(`Create a unique, personalized setting that fits your specific interests or challenges. This scenario lets you decide the context, characters, and conversation flow you want to practice.
 
 ## Why You Should Play *Your Custom Scenario*
 1. Tailor the experience to your personal goals, from work situations to everyday social interactions.  
@@ -348,7 +356,8 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
 5. Gain valuable practice in scenarios that might not be covered by standard role-plays.
 
 ## How the Scenario Works
-You’ll outline your own role-play by providing a brief description of the setting, characters, and main objectives. The AI will adapt to your custom instructions and engage in dialogue aligned with your scenario’s theme. This flexible format helps you master the exact communication skills you need.`,
+You’ll outline your own role-play by providing a brief description of the setting, characters, and main objectives. The AI will adapt to your custom instructions and engage in dialogue aligned with your scenario’s theme. This flexible format helps you master the exact communication skills you need.
+`),
       title: i18n._("Create Your Own Role-Play Scenario"),
       subTitle: i18n._("Customize a conversation to fit your unique learning needs"),
       category: i18n._("Custom"),
@@ -363,7 +372,8 @@ You’ll outline your own role-play by providing a brief description of the sett
     },
     {
       id: "buying-a-train-ticket",
-      contentPage: `Get comfortable purchasing travel tickets in a bustling train station scenario. Perfect for practicing how to ask about routes, departure times, and ticket types.
+      contentPage:
+        i18n._(`Get comfortable purchasing travel tickets in a bustling train station scenario. Perfect for practicing how to ask about routes, departure times, and ticket types.
 
 ## Why You Should Play *Buying a Train Ticket*
 1. Gain confidence asking about schedules, prices, and possible discounts.  
@@ -373,7 +383,8 @@ You’ll outline your own role-play by providing a brief description of the sett
 5. Build the practical language skills you need for smooth, stress-free travel.
 
 ## How the Scenario Works
-In this scenario, you’ll step into the role of a traveler looking to buy a ticket. The AI takes on the role of a train station ticket agent, asking you where you’re headed, when you’re departing, and what type of ticket you need. By interacting with the AI, you’ll master the art of asking the right questions and understanding key information about your journey.`,
+In this scenario, you’ll step into the role of a traveler looking to buy a ticket. The AI takes on the role of a train station ticket agent, asking you where you’re headed, when you’re departing, and what type of ticket you need. By interacting with the AI, you’ll master the art of asking the right questions and understanding key information about your journey.
+`),
       input: [],
       category: i18n._("Travel"),
 
@@ -391,7 +402,8 @@ In this scenario, you’ll step into the role of a traveler looking to buy a tic
     },
     {
       id: "meeting-dog-owners-in-the-park",
-      contentPage: `Strike up a conversation with a fellow dog owner in a friendly park setting. Compare tips, stories, and general dog-care experiences while bonding over your shared love of canine companions.
+      contentPage:
+        i18n._(`Strike up a conversation with a fellow dog owner in a friendly park setting. Compare tips, stories, and general dog-care experiences while bonding over your shared love of canine companions.
 
 ## Why You Should Play *Talk to the Dog Owner*
 1. Practice engaging in lighthearted, social dialogue with someone who shares a common interest.  
@@ -401,7 +413,8 @@ In this scenario, you’ll step into the role of a traveler looking to buy a tic
 5. Experience a realistic scenario where you can refine conversational flow and friendly rapport.
 
 ## How the Scenario Works
-In this scenario, you’ll portray a fellow dog owner meeting an AI-driven character at the park. The AI will greet you warmly, ask about your dog, and share pet stories or advice. Your goal is to respond naturally, keep the conversation flowing, and enjoy a fun exchange about your four-legged friends.`,
+In this scenario, you’ll portray a fellow dog owner meeting an AI-driven character at the park. The AI will greet you warmly, ask about your dog, and share pet stories or advice. Your goal is to respond naturally, keep the conversation flowing, and enjoy a fun exchange about your four-legged friends.
+`),
       category: i18n._("Social"),
       input: [
         {
@@ -440,7 +453,8 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
     },
     {
       id: "talking-to-a-doctor",
-      contentPage: `Discuss your health concerns in a realistic doctor’s office setting and practice explaining symptoms clearly. Perfect for gaining confidence in describing medical issues and understanding potential treatment options.
+      contentPage:
+        i18n._(`Discuss your health concerns in a realistic doctor’s office setting and practice explaining symptoms clearly. Perfect for gaining confidence in describing medical issues and understanding potential treatment options.
 
 ## Why You Should Play *Talking to a Doctor*
 1. Learn to describe aches, pains, or concerns in a way that a healthcare professional can understand.  
@@ -450,7 +464,8 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
 5. Strengthen your ability to clarify symptoms, ensuring you can advocate for your health in real-life situations.
 
 ## How the Scenario Works
-You’ll take on the role of a patient visiting a doctor, played by the AI. The doctor will ask about your symptoms, provide advice, and suggest possible treatments. By conversing naturally, you’ll hone your communication skills in a professional healthcare context.`,
+You’ll take on the role of a patient visiting a doctor, played by the AI. The doctor will ask about your symptoms, provide advice, and suggest possible treatments. By conversing naturally, you’ll hone your communication skills in a professional healthcare context.
+`),
       category: i18n._("Health"),
       input: [],
       title: i18n._("Talking to a Doctor"),
@@ -467,7 +482,8 @@ You’ll take on the role of a patient visiting a doctor, played by the AI. The 
     },
     {
       id: "hotel-check-in",
-      contentPage: `Check into a hotel and handle room arrangements in a realistic front-desk setting. Perfect for practicing how to provide reservation details, inquire about amenities, and address special requests.
+      contentPage:
+        i18n._(`Check into a hotel and handle room arrangements in a realistic front-desk setting. Perfect for practicing how to provide reservation details, inquire about amenities, and address special requests.
 
 ## Why You Should Play *Hotel Check-in*
 1. Gain confidence requesting the services you need while checking into a hotel.  
@@ -477,7 +493,8 @@ You’ll take on the role of a patient visiting a doctor, played by the AI. The 
 5. Sharpen your ability to navigate professional, service-oriented conversations.
 
 ## How the Scenario Works
-You’ll act as the guest arriving at the hotel, while our AI plays the role of a receptionist. The receptionist will ask for your name, reservation details, and any special requests you might have. By responding naturally, you’ll build the conversational skills necessary for a smooth hotel check-in experience.`,
+You’ll act as the guest arriving at the hotel, while our AI plays the role of a receptionist. The receptionist will ask for your name, reservation details, and any special requests you might have. By responding naturally, you’ll build the conversational skills necessary for a smooth hotel check-in experience.
+`),
       category: i18n._("Travel"),
       input: [],
       title: i18n._("Hotel Check-In Conversation"),
@@ -495,7 +512,8 @@ You’ll act as the guest arriving at the hotel, while our AI plays the role of 
 
     {
       id: "at-the-grocery-store",
-      contentPage: `Get comfortable shopping in a real store setting by asking questions about product locations, prices, and deals. Perfect for building confidence in navigating aisles, comparing items, and checking out.
+      contentPage:
+        i18n._(`Get comfortable shopping in a real store setting by asking questions about product locations, prices, and deals. Perfect for building confidence in navigating aisles, comparing items, and checking out.
 
 #### Why You Should Play *At the Grocery Store*
 1. Practice finding specific items on your shopping list.  
@@ -505,7 +523,8 @@ You’ll act as the guest arriving at the hotel, while our AI plays the role of 
 5. Gain valuable experience in a common, everyday scenario.
 
 #### How the Scenario Works
-You’ll take the role of a customer shopping for groceries. The AI, as a store employee, will ask what you’re looking for, suggest deals, and guide you to the right products. This interactive role-play simulates a realistic shopping experience, helping you build essential communication skills.`,
+You’ll take the role of a customer shopping for groceries. The AI, as a store employee, will ask what you’re looking for, suggest deals, and guide you to the right products. This interactive role-play simulates a realistic shopping experience, helping you build essential communication skills.
+`),
       category: i18n._("Shopping"),
       input: [],
       title: i18n._("Shopping at the Grocery Store"),
@@ -523,7 +542,8 @@ You’ll take the role of a customer shopping for groceries. The AI, as a store 
 
     {
       id: "calling-technical-support",
-      contentPage: `Work through a technical issue while speaking with a helpful support agent. Perfect for practicing how to explain a problem clearly and follow troubleshooting steps.
+      contentPage:
+        i18n._(`Work through a technical issue while speaking with a helpful support agent. Perfect for practicing how to explain a problem clearly and follow troubleshooting steps.
 
 #### Why You Should Play *Calling Technical Support*
 1. Learn to describe device or software issues in a concise way.  
@@ -533,7 +553,8 @@ You’ll take the role of a customer shopping for groceries. The AI, as a store 
 5. Develop problem-solving skills in a technical context.
 
 #### How the Scenario Works
-You’ll act as a caller seeking help with a technical issue, while the AI plays the support agent. The agent will ask for details, guide you through possible solutions, and offer next steps. This scenario helps you get comfortable navigating tech problems and communicating solutions.`,
+You’ll act as a caller seeking help with a technical issue, while the AI plays the support agent. The agent will ask for details, guide you through possible solutions, and offer next steps. This scenario helps you get comfortable navigating tech problems and communicating solutions.
+`),
       category: i18n._("Professional"),
       input: [],
       title: i18n._("Calling Customer Support"),
@@ -551,7 +572,8 @@ You’ll act as a caller seeking help with a technical issue, while the AI plays
 
     {
       id: "making-a-doctors-appointment",
-      contentPage: `Practice scheduling a doctor’s appointment over the phone by clearly stating your availability and reason for the visit. Perfect for improving clarity and confidence in professional medical settings.
+      contentPage:
+        i18n._(`Practice scheduling a doctor’s appointment over the phone by clearly stating your availability and reason for the visit. Perfect for improving clarity and confidence in professional medical settings.
 
 #### Why You Should Play *Doctor's Appointment*
 1. Learn to request appointments on specific dates and times.  
@@ -561,7 +583,8 @@ You’ll act as a caller seeking help with a technical issue, while the AI plays
 5. Prepare for real-world situations where time and details are crucial.
 
 #### How the Scenario Works
-You’ll take the role of a patient calling a doctor’s office to schedule an appointment. The AI, as a receptionist, will ask for your name, preferred date, and reason for the visit. By responding naturally, you’ll build essential communication skills for any medical context.`,
+You’ll take the role of a patient calling a doctor’s office to schedule an appointment. The AI, as a receptionist, will ask for your name, preferred date, and reason for the visit. By responding naturally, you’ll build essential communication skills for any medical context.
+`),
       category: i18n._("Health"),
       input: [],
       title: i18n._("Booking a Doctor's Appointment"),
@@ -578,7 +601,8 @@ You’ll take the role of a patient calling a doctor’s office to schedule an a
     },
     {
       id: "returning-an-item-in-a-store",
-      contentPage: `Handle a return at a customer service desk by describing what went wrong and exploring options for a refund or exchange. Perfect for practicing calm, clear communication in a shopping context.
+      contentPage:
+        i18n._(`Handle a return at a customer service desk by describing what went wrong and exploring options for a refund or exchange. Perfect for practicing calm, clear communication in a shopping context.
 
 #### Why You Should Play *Returning an Item in a Store*
 1. Understand how to explain an issue or defect politely.  
@@ -588,7 +612,8 @@ You’ll take the role of a patient calling a doctor’s office to schedule an a
 5. Build confidence handling a common retail interaction.
 
 #### How the Scenario Works
-You’ll step into the role of a customer returning a product, while the AI acts as the store employee. The AI will ask why you’re returning the item and discuss available options. This practical scenario helps you master polite, efficient communication in retail situations.`,
+You’ll step into the role of a customer returning a product, while the AI acts as the store employee. The AI will ask why you’re returning the item and discuss available options. This practical scenario helps you master polite, efficient communication in retail situations.
+`),
       category: i18n._("Shopping"),
       input: [],
       title: i18n._("Returning an Item to a Store"),
@@ -640,7 +665,8 @@ Note: This is a role-play scenario intended to practice speaking on mental healt
       imageSrc: "/role/ceb0e1b7-9c34-47c0-ae09-4086fb734da4.jpeg",
       voice: "sage",
       instructionCreator: getDefaultInstruction,
-      contentPage: `Discuss mental health topics in a comfortable, supportive setting. This role-play scenario provides a safe space to express yourself clearly, explore sensitive issues, and practice discussing mental health openly.
+      contentPage:
+        i18n._(`Discuss mental health topics in a comfortable, supportive setting. This role-play scenario provides a safe space to express yourself clearly, explore sensitive issues, and practice discussing mental health openly.
 
 **Note:** This scenario is not a medical treatment and is intended purely for language practice and conversational comfort about mental health.
   
@@ -653,7 +679,8 @@ Note: This is a role-play scenario intended to practice speaking on mental healt
 
 ## How the Scenario Works
 
-You'll act as a client meeting a psychologist for an informal discussion about mental health topics you choose, such as stress management, anxiety, relationships, or self-esteem. The AI acts as your psychologist, providing supportive dialogue, asking reflective questions, and validating your experiences to help you practice meaningful, thoughtful conversation.`,
+You'll act as a client meeting a psychologist for an informal discussion about mental health topics you choose, such as stress management, anxiety, relationships, or self-esteem. The AI acts as your psychologist, providing supportive dialogue, asking reflective questions, and validating your experiences to help you practice meaningful, thoughtful conversation.
+`),
     },
   ];
 };
