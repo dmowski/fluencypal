@@ -10,6 +10,8 @@ interface WelcomeScreenProps {
   getStartedTitle: string;
   viewPricingTitle: string;
   noCreditCardNeededTitle: string;
+  pricingLink: string;
+  practiceLink: string;
 }
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   title,
@@ -18,6 +20,8 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   getStartedTitle,
   viewPricingTitle,
   noCreditCardNeededTitle,
+  pricingLink,
+  practiceLink,
 }) => {
   return (
     <Stack
@@ -96,6 +100,8 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             getStartedTitle={getStartedTitle}
             viewPricingTitle={viewPricingTitle}
             noCreditCardNeededTitle={noCreditCardNeededTitle}
+            practiceLink={practiceLink}
+            pricingLink={pricingLink}
           />
         </Stack>
       </Stack>

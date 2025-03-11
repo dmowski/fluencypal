@@ -7,12 +7,14 @@ interface IntroVideoDemoProps {
   subTitle: string;
   actionButtonTitle: string;
   blocks: VideoBlock[];
+  actionButtonLink: string;
 }
 export const IntroVideoDemo = ({
   title,
   blocks,
   subTitle,
   actionButtonTitle,
+  actionButtonLink,
 }: IntroVideoDemoProps) => {
   return (
     <Stack
@@ -85,7 +87,7 @@ export const IntroVideoDemo = ({
             variant="outlined"
             size="large"
             color="inherit"
-            href={"/practice"}
+            href={actionButtonLink}
           >
             {actionButtonTitle}
           </Button>

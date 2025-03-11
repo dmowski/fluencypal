@@ -11,6 +11,8 @@ interface FirstEnterButtonProps {
   getStartedTitle: string;
   viewPricingTitle: string;
   noCreditCardNeededTitle: string;
+  pricingLink: string;
+  practiceLink: string;
 }
 export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   showPricingButton,
@@ -18,6 +20,8 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   getStartedTitle,
   viewPricingTitle,
   noCreditCardNeededTitle,
+  pricingLink,
+  practiceLink,
 }) => {
   const auth = useAuth();
   const [isVisible, setIsVisible] = useState(false);
@@ -59,7 +63,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
           }}
           variant="contained"
           size="large"
-          href={"/practice"}
+          href={practiceLink}
         >
           {auth.isAuthorized ? openDashboardTitle : getStartedTitle}
         </Button>
@@ -90,7 +94,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
             }}
             variant="outlined"
             size="large"
-            href={"/pricing"}
+            href={pricingLink}
           >
             {viewPricingTitle}
           </Button>
