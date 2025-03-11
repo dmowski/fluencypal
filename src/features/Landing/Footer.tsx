@@ -103,12 +103,15 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
             sx={{
               flexDirection: "row",
               alignItems: "center",
-              gap: "10px",
+              justifyContent: "flex-end",
+              gap: "2px 10px",
+              flexWrap: "wrap",
             }}
           >
             <Link
               href={`/${lang}/terms`}
               variant="body1"
+              align="right"
               sx={{
                 color: "#fff",
               }}
@@ -118,6 +121,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
             <Link
               href={`/${lang}/privacy`}
               variant="body1"
+              align="right"
               sx={{
                 color: "#fff",
               }}
