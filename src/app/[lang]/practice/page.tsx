@@ -1,8 +1,10 @@
+import { allMessages } from "@/appRouterI18n";
 import { supportedLanguages } from "@/common/lang";
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 import { ConversationPage } from "@/features/Conversation/ConversationPage";
 import { Header } from "@/features/Header/Header";
 import { APP_NAME } from "@/features/Landing/landingSettings";
+import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
@@ -33,11 +35,11 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
   const rolePlayScenarios = getRolePlayScenarios(supportedLang);
 
   return (
-    <>
+    <LinguiClientProvider initialLocale={lang} initialMessages={allMessages[lang]!}>
       <Header mode="practice" lang={supportedLang} />
       <main>
         <ConversationPage rolePlayScenarios={rolePlayScenarios} />
       </main>
-    </>
+    </LinguiClientProvider>
   );
 }
