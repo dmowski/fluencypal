@@ -212,7 +212,9 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     tooltip: i18n._("Get cheaper AI hours for bulk use"),
                   },
                 ]}
-                buttonTitle={i18n._("Contact me")}
+                buttonTitle={i18n._("Contact me", undefined, {
+                  comment: "Button title for contact me for advance pricing",
+                })}
                 isLightButton
                 buttonLink={"/contacts"}
               />
