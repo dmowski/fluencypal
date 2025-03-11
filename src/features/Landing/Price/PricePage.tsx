@@ -91,7 +91,12 @@ export const PricePage = () => {
               </Typography>
             </Stack>
 
-            <FirstEnterButton />
+            <FirstEnterButton
+              openDashboardTitle={`Open Dashboard`}
+              getStartedTitle={`Get Started Free`}
+              viewPricingTitle={`View Pricing`}
+              noCreditCardNeededTitle={`No Credit Card Needed`}
+            />
           </Stack>
 
           <Stack
