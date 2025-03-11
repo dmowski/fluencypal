@@ -55,7 +55,7 @@ export default async function RootLayout({
   initLingui(lang);
 
   return (
-    <html lang="en">
+    <html lang={lang}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/logo192.png" />
