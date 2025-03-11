@@ -8,6 +8,7 @@ import { CtaBlock } from "../ctaBlock";
 import { ListRolePlayIntro } from "./ListRolePlayIntro";
 import { ListRolePlay } from "./ListRolePlay";
 import { SupportedLanguage } from "@/common/lang";
+import { getI18nInstance } from "@/appRouterI18n";
 
 interface ScenariosPageProps {
   selectedCategory?: string;
@@ -15,6 +16,7 @@ interface ScenariosPageProps {
 }
 
 export const ScenariosPage = ({ selectedCategory, lang }: ScenariosPageProps) => {
+  const i18n = getI18nInstance(lang);
   return (
     <>
       <Header mode="landing" lang={lang} />
@@ -33,12 +35,12 @@ export const ScenariosPage = ({ selectedCategory, lang }: ScenariosPageProps) =>
           }}
           component={"main"}
         >
-          <ListRolePlayIntro />
-          <ListRolePlay selectedCategory={selectedCategory} />
+          <ListRolePlayIntro lang={lang} />
+          <ListRolePlay selectedCategory={selectedCategory} lang={lang} />
         </Stack>
         <CtaBlock
-          title="Start Your Journey to Fluent Conversations Now"
-          actionButtonTitle="Get Started Free"
+          title={i18n._(`Start Your Journey to Fluent Conversations Now`)}
+          actionButtonTitle={i18n._(`Get Started Free`)}
           actionButtonLink={`/${lang}/practice`}
         />
       </div>

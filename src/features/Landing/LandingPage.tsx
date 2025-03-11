@@ -125,6 +125,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             footerLabel={i18n._(`Looking for something specific?`)}
             footerLinkTitle={i18n._(`Create Your Own Scenario`)}
             importantRolesTitleAfterFooter={i18n._(`Master English Fluency`)}
+            lang={lang}
           />
           <GeneralFaqBlock
             items={[

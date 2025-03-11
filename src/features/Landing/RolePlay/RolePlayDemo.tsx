@@ -9,6 +9,7 @@ import rolePlayScenarios from "../../RolePlay/rolePlayData";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { RolePlayScroller } from "./RolePlayScroller";
 import { RolePlayCard } from "./RolePlayCard";
+import { SupportedLanguage } from "@/common/lang";
 
 interface RolePlayDemoProps {
   title: string;
@@ -17,6 +18,7 @@ interface RolePlayDemoProps {
   footerLabel: string;
   footerLinkTitle: string;
   importantRolesTitleAfterFooter: string;
+  lang: SupportedLanguage;
 }
 
 export const RolePlayDemo = ({
@@ -26,6 +28,7 @@ export const RolePlayDemo = ({
   footerLabel,
   footerLinkTitle,
   importantRolesTitleAfterFooter,
+  lang,
 }: RolePlayDemoProps) => {
   const importantRoles = rolePlayScenarios.filter((scenario) => scenario.landingHighlight);
 
@@ -124,7 +127,7 @@ export const RolePlayDemo = ({
                 {rolePlayScenarios
                   .filter((scenario) => !scenario.landingHighlight)
                   .map((scenario, index) => {
-                    return <RolePlayCard key={index} scenario={scenario} />;
+                    return <RolePlayCard key={index} scenario={scenario} lang={lang} />;
                   })}
               </Stack>
             </Stack>
@@ -252,7 +255,13 @@ export const RolePlayDemo = ({
           >
             {importantRoles.map((scenario, index) => {
               return (
-                <RolePlayCard key={index} scenario={scenario} variant="highlight" height={"100%"} />
+                <RolePlayCard
+                  key={index}
+                  scenario={scenario}
+                  variant="highlight"
+                  lang={lang}
+                  height={"100%"}
+                />
               );
             })}
           </Stack>

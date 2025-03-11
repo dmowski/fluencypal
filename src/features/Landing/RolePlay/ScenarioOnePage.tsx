@@ -15,6 +15,7 @@ import {
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { RolePlayCard } from "./RolePlayCard";
 import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
+import { getI18nInstance } from "@/appRouterI18n";
 
 interface ScenarioOnePageProps {
   id?: string;
@@ -22,6 +23,7 @@ interface ScenarioOnePageProps {
 }
 
 export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
+  const i18n = getI18nInstance(lang);
   const item = rolePlayScenarios.find((scenario) => scenario.id === id);
   if (!item) {
     return null;
@@ -123,7 +125,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
               >
                 <Button
                   variant="outlined"
-                  href="/scenarios"
+                  href={`/${lang}/scenarios`}
                   sx={{
                     ...buttonStyle,
                     borderRadius: "4px",
@@ -136,10 +138,10 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     backgroundColor: "#fff",
                   }}
                 >
-                  View all scenarios
+                  {i18n._(`View all scenarios`)}
                 </Button>
                 <Button
-                  href={`/practice?rolePlayId=${item.id}`}
+                  href={`/${lang}/practice?rolePlayId=${item.id}`}
                   sx={{
                     ...buttonStyle,
                     height: "3rem",
@@ -147,7 +149,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   }}
                   variant="contained"
                 >
-                  Use Scenario
+                  {i18n._(`Use Scenario`)}
                 </Button>
               </Stack>
             </Stack>
@@ -282,8 +284,8 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     >
                       {item.exampleOfFirstMessageFromAi}
                     </Typography>
-                    <Button variant="outlined" href={`/practice?rolePlayId=${item.id}`}>
-                      Play The Role
+                    <Button variant="outlined" href={`/${lang}/practice?rolePlayId=${item.id}`}>
+                      {i18n._(`Play The Role`)}
                     </Button>
                   </Stack>
                 )}
@@ -307,7 +309,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                       paddingBottom: "5px",
                     }}
                   >
-                    Available languages:
+                    {i18n._(`Available languages:`)}
                   </Typography>
                   <Typography variant="body2" component={"p"}>
                     {supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}
@@ -334,7 +336,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     fontWeight: 600,
                   }}
                 >
-                  Related Scenarios
+                  {i18n._(`Related Scenarios`)}
                 </Typography>
 
                 <Stack
@@ -354,7 +356,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   }}
                 >
                   {relatedCards.map((scenario, index) => {
-                    return <RolePlayCard key={index} scenario={scenario} />;
+                    return <RolePlayCard key={index} scenario={scenario} lang={lang} />;
                   })}
                 </Stack>
               </Stack>
@@ -363,8 +365,8 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
         </Stack>
 
         <CtaBlock
-          title="Start Your Journey to Fluent Conversations Now"
-          actionButtonTitle="Get Started Free"
+          title={i18n._(`Ready to Become Fluent in English?`)}
+          actionButtonTitle={i18n._(`Start Your Free Trial`)}
           actionButtonLink={`/${lang}/practice`}
         />
       </div>

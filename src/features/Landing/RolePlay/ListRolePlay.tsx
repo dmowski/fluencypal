@@ -2,20 +2,26 @@ import { Link, Stack, Typography } from "@mui/material";
 import { maxContentWidth } from "../landingSettings";
 import rolePlayScenarios from "@/features/RolePlay/rolePlayData";
 import { RolePlayCard } from "./RolePlayCard";
+import { SupportedLanguage } from "@/common/lang";
+import { getI18nInstance } from "@/appRouterI18n";
 
 interface ListRolePlayProps {
   selectedCategory?: string;
+  lang: SupportedLanguage;
 }
-export const ListRolePlay = ({ selectedCategory }: ListRolePlayProps) => {
+export const ListRolePlay = ({ lang, selectedCategory }: ListRolePlayProps) => {
+  const i18n = getI18nInstance(lang);
+  const allScenarios = i18n._(`All scenarios`);
+
   const categoryList = rolePlayScenarios.reduce((acc, scenario) => {
     if (!acc.includes(scenario.category)) {
       acc.push(scenario.category);
     }
     return acc;
   }, [] as string[]);
-  categoryList.unshift("All scenarios");
+  categoryList.unshift(allScenarios);
 
-  const title = selectedCategory || "All scenarios";
+  const title = selectedCategory || allScenarios;
 
   const listToDisplay = selectedCategory
     ? rolePlayScenarios.filter((scenario) => scenario.category === selectedCategory)
@@ -66,19 +72,22 @@ export const ListRolePlay = ({ selectedCategory }: ListRolePlayProps) => {
               paddingLeft: "15px",
             }}
           >
-            Discover
+            {i18n._(`Discover`)}
           </Typography>
           <Stack component={"nav"} gap={"0px"}>
             {categoryList.map((category, index) => {
               const isSelected =
-                selectedCategory === category ||
-                (!selectedCategory && category === "All scenarios");
-              const isAllScenarios = category === "All scenarios";
+                selectedCategory === category || (!selectedCategory && category === allScenarios);
+              const isAllScenarios = category === allScenarios;
               return (
                 <Link
                   key={index}
                   variant="body2"
-                  href={isAllScenarios ? `/scenarios` : `/scenarios?category=${category}`}
+                  href={
+                    isAllScenarios
+                      ? `/${lang}/scenarios`
+                      : `/${lang}/scenarios?category=${category}`
+                  }
                   sx={{
                     color: "#000",
                     padding: "10px 15px",
@@ -139,7 +148,7 @@ export const ListRolePlay = ({ selectedCategory }: ListRolePlayProps) => {
                     width: "100%",
                   }}
                 >
-                  <RolePlayCard scenario={scenario} />
+                  <RolePlayCard scenario={scenario} lang={lang} />
                 </Stack>
               );
             })}

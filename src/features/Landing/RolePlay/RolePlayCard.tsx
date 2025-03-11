@@ -1,18 +1,21 @@
 import { Stack, Typography } from "@mui/material";
 import { RolePlayInstruction } from "../../RolePlay/types";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { getI18nInstance } from "@/appRouterI18n";
 
 interface RolePlayCardProps {
   scenario: RolePlayInstruction;
   variant?: "default" | "highlight";
   height?: string;
+  lang: string;
 }
 
-export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, height, variant }) => {
+export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, height, variant }) => {
+  const i18n = getI18nInstance(lang);
   return (
     <Stack
       component={"a"}
-      href={`/scenarios/${scenario.id}`}
+      href={`/${lang}/scenarios/${scenario.id}`}
       sx={{
         position: "relative",
         backgroundColor: "rgba(0, 0, 10, 0.01)",
@@ -142,7 +145,7 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, height, va
                 }}
                 className="link-text"
               >
-                Try {scenario.title}
+                {i18n._(`Try`)} {scenario.title}
               </Typography>
               <ArrowForwardIcon
                 className="link-icon"
