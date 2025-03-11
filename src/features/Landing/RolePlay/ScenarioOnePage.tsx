@@ -139,7 +139,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     backgroundColor: "#fff",
                   }}
                 >
-                  {i18n._(`View all scenarios`)}
+                  {i18n._(`View all`)}
                 </Button>
                 <Button
                   href={`/${lang}/practice?rolePlayId=${item.id}`}
@@ -150,7 +150,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   }}
                   variant="contained"
                 >
-                  {i18n._(`Use Scenario`)}
+                  {i18n._(`Play the role`)}
                 </Button>
               </Stack>
             </Stack>
