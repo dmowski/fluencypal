@@ -15,32 +15,44 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     return {};
   }
 
-  const title = scenario.title + " | Dark Lang";
-  const subTitle = scenario.subTitle;
+  const title = `${scenario.title} - Practice English Conversation with AI | FluencyPal`;
+  const description = scenario.subTitle;
 
   const metadata: Metadata = {
-    title: title,
-    description: subTitle,
+    title,
+    description,
 
     keywords: [
-      "Online English",
-      "Learn English",
-      "AI Language Tutor",
-      "English Practice",
-      "Dark Lang",
-      "Language Learning",
+      "AI English Tutor",
+      "English Role-Play",
+      "Conversational English Practice",
+      "English Fluency",
+      "Advanced English Conversation",
+      "Online Language Practice",
+      "Language Immersion",
+      "Real-Life English Scenarios",
+      "English Speaking Exercises",
     ],
     openGraph: {
       ...openGraph,
-      title: title,
-      description: subTitle,
+      title,
+      description,
       url: `${siteUrl}scenarios/${id}`,
-      siteName: "Dark Lang",
+      siteName: "FluencyPal",
+      images: [
+        {
+          url: `${siteUrl}${scenario.imageSrc}`,
+          width: 1200,
+          height: 630,
+          alt: `FluencyPal - ${scenario.title}`,
+        },
+      ],
     },
     twitter: {
       ...twitter,
-      title: `${scenario.title} | Dark Lang`,
+      title: `Practice ${scenario.title} | FluencyPal`,
       description: scenario.subTitle,
+      images: [`${siteUrl}${scenario.imageSrc}`],
     },
     robots: robots,
   };

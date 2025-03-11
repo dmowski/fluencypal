@@ -1,10 +1,11 @@
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 import { ConversationPage } from "@/features/Conversation/ConversationPage";
 import { Header } from "@/features/Header/Header";
+import { APP_NAME } from "@/features/Landing/landingSettings";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Practice | Dark Lang",
+  title: `Practice | ${APP_NAME}`,
   description:
     "Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.",
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     "Learn English",
     "AI Language Tutor",
     "English Practice",
-    "Dark Lang",
+    APP_NAME,
     "Language Learning",
   ],
   openGraph: { ...openGraph, url: `${siteUrl}practice` },
