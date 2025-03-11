@@ -19,11 +19,13 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { Gift, HandCoins, Mic } from "lucide-react";
 import { WELCOME_BONUS } from "@/common/usage";
 import { SupportedLanguage } from "@/common/lang";
+import { getI18nInstance } from "@/appRouterI18n";
 
 interface PricePageProps {
   lang: SupportedLanguage;
 }
 export const PricePage = ({ lang }: PricePageProps) => {
+  const i18n = getI18nInstance(lang);
   return (
     <Stack sx={{}}>
       <Header mode="landing" lang={lang} />
@@ -80,7 +82,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 }}
               >
-                Flexible Pricing for Every Learner
+                {i18n._("Flexible Pricing for Every Learner")}
               </Typography>
               <Typography
                 align="center"
@@ -90,16 +92,17 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   ...subTitleFontStyle,
                 }}
               >
-                Pay only for what you use—no subscriptions, no hidden fees. Start free and upgrade
-                as needed.
+                {i18n._(
+                  `Pay only for what you use—no subscriptions, no hidden fees. Start free and upgrade as needed.`
+                )}
               </Typography>
             </Stack>
 
             <FirstEnterButton
-              openDashboardTitle={`Open Dashboard`}
-              getStartedTitle={`Get Started Free`}
-              viewPricingTitle={`View Pricing`}
-              noCreditCardNeededTitle={`No Credit Card Needed`}
+              openDashboardTitle={i18n._(`Open Dashboard`)}
+              getStartedTitle={i18n._(`Get Started Free`)}
+              viewPricingTitle={i18n._(`View Pricing`)}
+              noCreditCardNeededTitle={i18n._(`No Credit Card Needed`)}
               pricingLink={`/${lang}/pricing`}
               practiceLink={`/${lang}/practice`}
             />
@@ -123,7 +126,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 ...titleFontStyle,
               }}
             >
-              Choose a Plan That Works for You
+              {i18n._("Choose a Plan That Works for You")}
             </Typography>
 
             <Stack
@@ -146,69 +149,70 @@ export const PricePage = ({ lang }: PricePageProps) => {
               }}
             >
               <PriceCard
-                title={"Free Trial"}
-                subTitle={`Trying ${APP_NAME} risk-free`}
-                price={"Free"}
-                priceDescription={`$${WELCOME_BONUS} free credit`}
-                listTitle={"Features:"}
+                title={i18n._("Free Trial")}
+                subTitle={i18n.t(`Trying FluencyPal risk-free`)}
+                price={i18n._("Free")}
+                priceDescription={i18n._(`$5 free credit`)}
+                listTitle={i18n._("Features:")}
                 listItems={[
                   {
-                    title: "Full AI tutor access",
-                    tooltip: "Get unlimited access to AI-powered language practice",
+                    title: i18n._("Full AI tutor access"),
+                    tooltip: i18n._("Get unlimited access to AI-powered language practice"),
                   },
                   {
-                    title: "Role-play scenarios",
-                    tooltip:
-                      "Engage in real-life conversations like job interviews or ordering food",
+                    title: i18n._("Role-play scenarios"),
+                    tooltip: i18n._(
+                      "Engage in real-life conversations like job interviews or ordering food"
+                    ),
                   },
                   {
-                    title: "Conversation practice",
-                    tooltip: "Improve fluency with interactive chat sessions",
+                    title: i18n._("Conversation practice"),
+                    tooltip: i18n._("Improve fluency with interactive chat sessions"),
                   },
                 ]}
-                buttonTitle={"Get started"}
+                buttonTitle={i18n._("Get started")}
                 buttonLink={"/practice"}
               />
               <PriceCard
-                title={"Pay-as-You-Go"}
-                subTitle={"Regular learners who want full control"}
-                price={`$${WELCOME_BONUS}`}
-                priceDescription={"Per AI Hour"}
-                listTitle={"Everything in Free Trial, plus:"}
+                title={i18n._("Pay-as-You-Go")}
+                subTitle={i18n._("Regular learners who want full control")}
+                price={i18n._(`$5`)}
+                priceDescription={i18n._("Per AI Hour")}
+                listTitle={i18n._("Everything in Free Trial, plus:")}
                 listItems={[
                   {
-                    title: "Pay per session",
-                    tooltip: "Only pay for the time you use, no subscriptions required",
+                    title: i18n._("Pay per session"),
+                    tooltip: i18n._("Only pay for the time you use, no subscriptions required"),
                   },
                   {
-                    title: "Track usage & progress",
-                    tooltip: "Monitor your AI conversation history and improvements",
+                    title: i18n._("Track usage & progress"),
+                    tooltip: i18n._("Monitor your AI conversation history and improvements"),
                   },
                 ]}
-                buttonTitle={"Start with Free Credit"}
+                buttonTitle={i18n._("Start with Free Credit")}
                 buttonLink={"/practice"}
               />
               <PriceCard
-                title={"Advanced"}
-                subTitle={"Frequent users who need more value"}
-                price={"Contact for pricing"}
+                title={i18n._("Advanced")}
+                subTitle={i18n._("Frequent users who need more value")}
+                price={i18n._("Contact for pricing")}
                 priceDescription={""}
-                listTitle={"What I can do for you:"}
+                listTitle={i18n._("What I can do for you:")}
                 listItems={[
                   {
-                    title: "Create custom features",
-                    tooltip: "Tailor AI interactions to fit your needs",
+                    title: i18n._("Create custom features"),
+                    tooltip: i18n._("Tailor AI interactions to fit your needs"),
                   },
                   {
-                    title: "Platform Integration",
-                    tooltip: "API access for schools and businesses",
+                    title: i18n._("Platform Integration"),
+                    tooltip: i18n._("API access for schools and businesses"),
                   },
                   {
-                    title: "Discounted AI Usage",
-                    tooltip: "Get cheaper AI hours for bulk use",
+                    title: i18n._("Discounted AI Usage"),
+                    tooltip: i18n._("Get cheaper AI hours for bulk use"),
                   },
                 ]}
-                buttonTitle={"Contact me"}
+                buttonTitle={i18n._("Contact me")}
                 isLightButton
                 buttonLink={"/contacts"}
               />
@@ -243,7 +247,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   color: "#000",
                 }}
               >
-                How {APP_NAME} Pricing Works
+                {i18n.t(`How FluencyPal Pricing Works`)}
               </Typography>
               <Typography
                 align="center"
@@ -254,8 +258,8 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   ...subTitleFontStyle,
                 }}
               >
-                Our AI tutor runs on a simple credit system—you only pay for the time and resources
-                you actually use.
+                {i18n._(`Our AI tutor runs on a simple credit system—you only pay for the time and resources
+                you actually use.`)}
               </Typography>
             </Stack>
 
@@ -295,10 +299,10 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       fontSize: "1.2rem",
                     }}
                   >
-                    Start Free
+                    {i18n._(`Start Free`)}
                   </Typography>
                   <Typography variant="body2" align="center">
-                    Start Free – Get ${WELCOME_BONUS} in credits when you sign up.
+                    {i18n._(`Start Free – Get 5 in credits when you sign up.`)}
                   </Typography>
                 </Stack>
               </Stack>
@@ -338,10 +342,12 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       fontSize: "1.2rem",
                     }}
                   >
-                    Use as You Go
+                    {i18n._("Use as You Go")}
                   </Typography>
                   <Typography variant="body2" align="center">
-                    Each AI conversation session consumes credits based on duration and complexity.
+                    {i18n._(
+                      "Each AI conversation session consumes credits based on duration and complexity."
+                    )}
                   </Typography>
                 </Stack>
               </Stack>
@@ -382,10 +388,10 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       fontSize: "1.2rem",
                     }}
                   >
-                    Refill Anytime
+                    {i18n._("Refill Anytime")}
                   </Typography>
                   <Typography variant="body2" align="center">
-                    Add more credits whenever you need them.
+                    {i18n._("Add more credits whenever you need them.")}
                   </Typography>
                 </Stack>
               </Stack>
@@ -421,7 +427,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   color: "#000",
                 }}
               >
-                Why Pay-as-You-Go is Better Than Subscriptions
+                {i18n._("Why Pay-as-You-Go is Better Than Subscriptions")}
               </Typography>
             </Stack>
 
@@ -548,7 +554,9 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     </th>
                     <th>
                       <div className="other-cell-head">
-                        <span className="other-cell-head-text">Traditional Subscription</span>
+                        <span className="other-cell-head-text">
+                          {i18n._("Traditional Subscription")}
+                        </span>
                       </div>
                     </th>
                   </tr>
@@ -556,7 +564,9 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 <tbody>
                   <tr>
                     <td>
-                      <Typography className="title">Pay Only for What You Use</Typography>
+                      <Typography className="title">
+                        {i18n._("Pay Only for What You Use")}
+                      </Typography>
                     </td>
                     <td>
                       <span className="lang-cell">
@@ -582,13 +592,13 @@ export const PricePage = ({ lang }: PricePageProps) => {
                             color: "#777",
                           }}
                         />
-                        <Typography align="center">No, fixed cost</Typography>
+                        <Typography align="center">{i18n._("No, fixed cost")}</Typography>
                       </Stack>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <Typography className="title">Full Access Anytime</Typography>
+                      <Typography className="title">{i18n._("Full Access Anytime")}</Typography>
                     </td>
                     <td>
                       <span className="lang-cell">
@@ -619,7 +629,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   </tr>
                   <tr>
                     <td>
-                      <Typography className="title">No Monthly Fees</Typography>
+                      <Typography className="title">{i18n._("No Monthly Fees")}</Typography>
                     </td>
                     <td>
                       <span className="lang-cell">
@@ -645,13 +655,13 @@ export const PricePage = ({ lang }: PricePageProps) => {
                             color: "#777",
                           }}
                         />
-                        <Typography align="center">No, recurring charge</Typography>
+                        <Typography align="center">{i18n._("No, recurring charge")}</Typography>
                       </Stack>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <Typography className="title">Pause Anytime</Typography>
+                      <Typography className="title">{i18n._("Pause Anytime")}</Typography>
                     </td>
                     <td>
                       <span className="lang-cell lang-cell--last">
@@ -689,7 +699,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               }}
               href="/practice"
             >
-              Try {APP_NAME} for Free
+              {i18n.t(`Try FluencyPal for Free`)}
             </Button>
           </Stack>
 
@@ -726,7 +736,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     color: "#fff",
                   }}
                 >
-                  Pricing FAQs
+                  {i18n._("FAQ")}
                 </Typography>
               </Stack>
 
@@ -744,11 +754,10 @@ export const PricePage = ({ lang }: PricePageProps) => {
               >
                 <FaqItem
                   info={{
-                    question: `Can I try ${APP_NAME} for free?`,
+                    question: i18n.t(`Can I try FluencyPal for free?`),
                     answer: (
                       <Typography>
-                        Yes! You start with ${WELCOME_BONUS} in free credits to explore all
-                        features.
+                        {i18n.t(`Yes! You start with 5 in free credits to explore all features.`)}
                       </Typography>
                     ),
                   }}
@@ -756,11 +765,12 @@ export const PricePage = ({ lang }: PricePageProps) => {
 
                 <FaqItem
                   info={{
-                    question: "How much do AI conversations cost?",
+                    question: i18n._("How much do AI conversations cost?"),
                     answer: (
                       <Typography>
-                        The cost is calculated based on duration and AI usage. On average, a full
-                        hour costs ${WELCOME_BONUS}.
+                        {i18n._(
+                          `The cost is calculated based on duration and AI usage. On average, a full hour costs $5.`
+                        )}
                       </Typography>
                     ),
                   }}
@@ -768,12 +778,13 @@ export const PricePage = ({ lang }: PricePageProps) => {
 
                 <FaqItem
                   info={{
-                    question: "Can I buy credits in bulk?",
+                    question: i18n._("Can I buy credits in bulk?"),
                     answer: (
                       <Stack gap={"20px"}>
                         <Typography>
-                          Yes! We offer discounts when purchasing larger credit packages. Just
-                          contact me before you buy and I'll give you a discount.
+                          {i18n._(
+                            "Yes! We offer discounts when purchasing larger credit packages. Just contact me before you buy and I'll give you a discount."
+                          )}
                         </Typography>
                         <Stack
                           gap={"10px"}
@@ -781,7 +792,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                             width: "100%",
                           }}
                         >
-                          <Typography>Contacts:</Typography>
+                          <Typography>{i18n._("Contacts:")}</Typography>
                           <ContactList />
                         </Stack>
                       </Stack>
@@ -791,10 +802,12 @@ export const PricePage = ({ lang }: PricePageProps) => {
 
                 <FaqItem
                   info={{
-                    question: "Will my credits expire?",
+                    question: i18n._("Will my credits expire?"),
                     answer: (
                       <Typography>
-                        No, your credits stay active as long as your account is in good standing.
+                        {i18n._(
+                          "No, your credits stay active as long as your account is in good standing."
+                        )}
                       </Typography>
                     ),
                   }}
@@ -805,8 +818,8 @@ export const PricePage = ({ lang }: PricePageProps) => {
         </Stack>
 
         <CtaBlock
-          title="Start Your Journey to Fluent Conversations Now"
-          actionButtonTitle="Get Started Free"
+          title={i18n._(`Start Your Journey to Fluent Conversations Now`)}
+          actionButtonTitle={i18n._(`Get Started Free`)}
           actionButtonLink={`/${lang}/practice`}
         />
       </div>

@@ -12,7 +12,7 @@ export function Header({ mode, lang }: { mode: HeaderMode; lang: SupportedLangua
         mode={mode}
         lang={lang}
         practiceTitle={i18n._(`Practice`)}
-        rolePlayTitle={i18n._(`Role Play`)}
+        rolePlayTitle={i18n._(`Role-Plays`)}
         contactsTitle={i18n._(`Contacts`)}
         priceTitle={i18n._(`Price`)}
         signInTitle={i18n._(`Sign In`)}
