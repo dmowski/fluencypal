@@ -9,8 +9,13 @@ import { useSettings } from "../Settings/useSettings";
 import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
 import { ConversationCanvas } from "./ConversationCanvas";
 import { Dashboard } from "../Dashboard/Dashboard";
+import { RolePlayInstruction } from "../RolePlay/types";
 
-export function ConversationPage() {
+interface ConversationPageProps {
+  rolePlayScenarios: RolePlayInstruction[];
+}
+
+export function ConversationPage({ rolePlayScenarios }: ConversationPageProps) {
   const auth = useAuth();
   const settings = useSettings();
   const aiConversation = useAiConversation();
@@ -35,8 +40,16 @@ export function ConversationPage() {
         </Typography>
       </Stack>
     );
-  if (!auth.isAuthorized) return <SignInForm />;
+  if (!auth.isAuthorized) return <SignInForm rolePlayScenarios={rolePlayScenarios} />;
   if (usage.balance <= 0) return <NoBalanceBlock />;
 
-  return <Stack>{aiConversation.isStarted ? <ConversationCanvas /> : <Dashboard />}</Stack>;
+  return (
+    <Stack>
+      {aiConversation.isStarted ? (
+        <ConversationCanvas />
+      ) : (
+        <Dashboard rolePlayScenarios={rolePlayScenarios} />
+      )}
+    </Stack>
+  );
 }

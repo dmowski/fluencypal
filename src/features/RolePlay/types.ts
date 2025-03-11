@@ -1,4 +1,5 @@
 import { AiVoice } from "@/common/ai";
+import { MessageDescriptor } from "@lingui/core";
 
 export type RolePlayInputType = "text-input" | "textarea" | "options";
 export interface InputStructureForUser {

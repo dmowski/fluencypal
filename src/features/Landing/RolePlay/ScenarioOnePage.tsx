@@ -5,7 +5,7 @@ import { Header } from "../../Header/Header";
 import { Footer } from "../Footer";
 
 import { CtaBlock } from "../ctaBlock";
-import rolePlayScenarios from "@/features/RolePlay/rolePlayData";
+import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import {
   buttonStyle,
   maxContentWidth,
@@ -24,6 +24,7 @@ interface ScenarioOnePageProps {
 
 export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
   const i18n = getI18nInstance(lang);
+  const rolePlayScenarios = getRolePlayScenarios(lang);
   const item = rolePlayScenarios.find((scenario) => scenario.id === id);
   if (!item) {
     return null;

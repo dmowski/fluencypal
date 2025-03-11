@@ -3,6 +3,7 @@ import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 import { ConversationPage } from "@/features/Conversation/ConversationPage";
 import { Header } from "@/features/Header/Header";
 import { APP_NAME } from "@/features/Landing/landingSettings";
+import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
 
@@ -29,11 +30,13 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
 
+  const rolePlayScenarios = getRolePlayScenarios(supportedLang);
+
   return (
     <>
       <Header mode="practice" lang={supportedLang} />
       <main>
-        <ConversationPage />
+        <ConversationPage rolePlayScenarios={rolePlayScenarios} />
       </main>
     </>
   );

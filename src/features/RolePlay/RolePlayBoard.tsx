@@ -1,7 +1,7 @@
+"use client";
 import { Button, ButtonGroup, Stack, Tab, Tabs, TextField, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { useAiConversation } from "../Conversation/useAiConversation";
-import rolePlayScenarios from "./rolePlayData";
 import { useEffect, useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -28,7 +28,10 @@ const hardHeight = "300px";
 
 const allCategoriesLabel = "All";
 
-export const RolePlayBoard = () => {
+interface RolePlayBoardProps {
+  rolePlayScenarios: RolePlayInstruction[];
+}
+export const RolePlayBoard = ({ rolePlayScenarios }: RolePlayBoardProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const userInfo = useAiUserInfo();

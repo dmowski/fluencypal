@@ -1,6 +1,6 @@
 import { Link, Stack, Typography } from "@mui/material";
 import { maxContentWidth } from "../landingSettings";
-import rolePlayScenarios from "@/features/RolePlay/rolePlayData";
+import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { RolePlayCard } from "./RolePlayCard";
 import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
@@ -10,6 +10,7 @@ interface ListRolePlayProps {
   lang: SupportedLanguage;
 }
 export const ListRolePlay = ({ lang, selectedCategory }: ListRolePlayProps) => {
+  const rolePlayScenarios = getRolePlayScenarios(lang);
   const i18n = getI18nInstance(lang);
   const allScenarios = i18n._(`All scenarios`);
 

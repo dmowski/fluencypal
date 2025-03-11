@@ -5,7 +5,7 @@ import {
   subTitleFontStyle,
   titleFontStyle,
 } from "../landingSettings";
-import rolePlayScenarios from "../../RolePlay/rolePlayData";
+import { getRolePlayScenarios } from "../../RolePlay/rolePlayData";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { RolePlayScroller } from "./RolePlayScroller";
 import { RolePlayCard } from "./RolePlayCard";
@@ -30,6 +30,7 @@ export const RolePlayDemo = ({
   importantRolesTitleAfterFooter,
   lang,
 }: RolePlayDemoProps) => {
+  const rolePlayScenarios = getRolePlayScenarios(lang);
   const importantRoles = rolePlayScenarios.filter((scenario) => scenario.landingHighlight);
 
   return (

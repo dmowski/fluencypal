@@ -4,9 +4,12 @@ import { useAuth } from "./useAuth";
 import GoogleIcon from "@mui/icons-material/Google";
 import { StarContainer } from "../Layout/StarContainer";
 import { useSearchParams } from "next/navigation";
-import rolePlayScenarios from "../RolePlay/rolePlayData";
+import { RolePlayInstruction } from "../RolePlay/types";
 
-export const SignInForm = () => {
+interface SignInFormProps {
+  rolePlayScenarios: RolePlayInstruction[];
+}
+export const SignInForm = ({ rolePlayScenarios }: SignInFormProps) => {
   const auth = useAuth();
   const searchParams = useSearchParams();
   const rolePlayId = searchParams.get("rolePlayId");

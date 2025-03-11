@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import rolePlayScenarios from "@/features/RolePlay/rolePlayData";
+import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { ScenarioOnePage } from "@/features/Landing/RolePlay/ScenarioOnePage";
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 import { supportedLanguages } from "@/common/lang";
@@ -11,6 +11,11 @@ interface PageProps {
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const id = (await props.params).id;
+
+  const lang = (await props.params).lang;
+  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  initLingui(supportedLang);
+  const rolePlayScenarios = getRolePlayScenarios(supportedLang);
 
   const scenario = rolePlayScenarios.find((s) => s.id === id);
   if (!scenario) {
