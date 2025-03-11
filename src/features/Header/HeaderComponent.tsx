@@ -24,6 +24,7 @@ import { NeedHelpModal } from "./NeedHelpModal";
 import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SupportedLanguage } from "@/common/lang";
+import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 
 export type HeaderMode = "landing" | "practice";
 
@@ -190,16 +191,17 @@ export function HeaderComponent({
         </Stack>
 
         {!auth.loading && (
-          <>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              gap: "10px",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
+            <LanguageSwitcher />
             {auth.isAuthorized ? (
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  gap: "10px",
-                  alignItems: "center",
-                  height: "100%",
-                }}
-              >
+              <>
                 {mode !== "landing" && settings.fullLanguageName && (
                   <Button
                     variant="text"
@@ -230,7 +232,7 @@ export function HeaderComponent({
                 >
                   <Avatar alt={userName} src={userPhoto} />
                 </IconButton>
-              </Stack>
+              </>
             ) : (
               <Button
                 href={`/${lang}/practice`}
@@ -240,7 +242,7 @@ export function HeaderComponent({
                 {signInTitle}
               </Button>
             )}
-          </>
+          </Stack>
         )}
 
         <Menu
