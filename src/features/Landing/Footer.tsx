@@ -1,6 +1,6 @@
 import { Link, Stack, Typography } from "@mui/material";
 import { maxLandingWidth } from "./landingSettings";
-import { SupportedLanguage } from "@/common/lang";
+import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 interface FooterProps {
@@ -87,6 +87,26 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
               opacity: 0.92,
             }}
           />
+          <details>
+            <summary>
+              <Typography component="span">Supported languages</Typography>
+            </summary>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                gap: "0 5px",
+                flexWrap: "wrap",
+              }}
+            >
+              {supportedLanguages.map((lang) => {
+                return (
+                  <Link key={lang} href={`/${lang}`} variant="body1">
+                    {fullEnglishLanguageName[lang]},
+                  </Link>
+                );
+              })}
+            </Stack>
+          </details>
         </Stack>
         <Stack
           sx={{
