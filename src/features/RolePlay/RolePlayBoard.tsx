@@ -17,12 +17,13 @@ import {
   RolePlayInstruction,
 } from "./types";
 import { useSettings } from "../Settings/useSettings";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { RolePlayCard } from "./RolePlayCard";
 import { GuessGameStat } from "../Conversation/types";
 import { uniq } from "@/libs/uniq";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
+import { supportedLanguages } from "@/common/lang";
 
 const firstLimit = 6;
 const hardHeight = "300px";
@@ -81,6 +82,9 @@ export const RolePlayBoard = ({ rolePlayScenarios }: RolePlayBoardProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const userInfo = useAiUserInfo();
+  const pathname = usePathname();
+  const locale = pathname?.split("/")[1] as string;
+  const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
 
   const rolePlayId = searchParams.get("rolePlayId");
   const selectedTabUrl = searchParams.get("rolePlayTab") || allCategoriesLabel;
@@ -95,11 +99,13 @@ export const RolePlayBoard = ({ rolePlayScenarios }: RolePlayBoardProps) => {
 
   const onSetTab = (tab: string) => {
     setSelectedTab(tab);
-    router.push(`/practice?rolePlayTab=${tab}`, { scroll: false });
+    router.push(`/${supportedLang}/practice?rolePlayTab=${tab}`, { scroll: false });
   };
 
   const setRolePlayId = (id?: string) => {
-    router.push(id ? `/practice?rolePlayId=${id}` : `/practice`, { scroll: false });
+    router.push(id ? `/${supportedLang}/practice?rolePlayId=${id}` : `/${supportedLang}/practice`, {
+      scroll: false,
+    });
   };
 
   const closeRolePlay = () => {

@@ -171,7 +171,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._("Get started")}
-                buttonLink={"/practice"}
+                buttonLink={`/${lang}/practice`}
               />
               <PriceCard
                 title={i18n._("Pay-as-You-Go")}
@@ -190,7 +190,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._("Start with Free Credit")}
-                buttonLink={"/practice"}
+                buttonLink={`/${lang}/practice`}
               />
               <PriceCard
                 title={i18n._("Advanced")}
@@ -699,7 +699,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               sx={{
                 ...buttonStyle,
               }}
-              href="/practice"
+              href={`/${lang}/practice`}
             >
               {i18n.t(`Try FluencyPal for Free`)}
             </Button>
