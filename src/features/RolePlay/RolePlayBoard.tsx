@@ -10,6 +10,7 @@ import { useLocalStorage } from "react-use";
 import { useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
 import {
+  AiRolePlayInstructionCreator,
   InputStructureForUser,
   RolePlayInputResult,
   RolePlayInputType,
@@ -27,6 +28,51 @@ const firstLimit = 6;
 const hardHeight = "300px";
 
 const allCategoriesLabel = "All";
+
+const getStartDefaultInstruction = (fullLanguageName: string) => {
+  return `You are playing role-play conversation with user.
+Use only ${fullLanguageName} language during conversation.`;
+};
+
+const createAdditionalInstructionFormUserInput = (
+  scenario: RolePlayInstruction,
+  rolePlayInputs: RolePlayInputResult[]
+) => {
+  const additionalInfo = rolePlayInputs
+    ? rolePlayInputs
+        .filter((userInput) => userInput.userValue)
+        .map((userInput) => `${userInput.labelForAi}: ${userInput.userValue}`)
+        .join("\n")
+    : "";
+  const additionalInstruction = `------
+Role-play: ${scenario.title}
+
+Your role:
+${scenario.instructionToAi}
+
+You can start with message like:
+"${scenario.exampleOfFirstMessageFromAi}"
+
+${
+  additionalInfo
+    ? `Additional info:
+${additionalInfo}`
+    : ""
+}
+`;
+  return additionalInstruction;
+};
+
+const getDefaultInstruction: AiRolePlayInstructionCreator = (
+  scenario,
+  fullLanguageName,
+  userInput
+) => {
+  const instruction = getStartDefaultInstruction(fullLanguageName);
+  const additionalInfo = createAdditionalInstructionFormUserInput(scenario, userInput);
+  return `${instruction}
+${additionalInfo}`;
+};
 
 interface RolePlayBoardProps {
   rolePlayScenarios: RolePlayInstruction[];
@@ -104,7 +150,7 @@ export const RolePlayBoard = ({ rolePlayScenarios }: RolePlayBoardProps) => {
     rolePlayInputs: RolePlayInputResult[],
     gameStat?: GuessGameStat
   ) => {
-    const instruction = scenario.instructionCreator(
+    const instruction = getDefaultInstruction(
       scenario,
       settings.fullLanguageName || "English",
       rolePlayInputs

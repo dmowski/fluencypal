@@ -2,51 +2,6 @@ import { SupportedLanguage } from "@/common/lang";
 import { AiRolePlayInstructionCreator, RolePlayInputResult, RolePlayInstruction } from "./types";
 import { getI18nInstance } from "@/appRouterI18n";
 
-const getStartDefaultInstruction = (fullLanguageName: string) => {
-  return `You are playing role-play conversation with user.
-Use only ${fullLanguageName} language during conversation.`;
-};
-
-const createAdditionalInstructionFormUserInput = (
-  scenario: RolePlayInstruction,
-  rolePlayInputs: RolePlayInputResult[]
-) => {
-  const additionalInfo = rolePlayInputs
-    ? rolePlayInputs
-        .filter((userInput) => userInput.userValue)
-        .map((userInput) => `${userInput.labelForAi}: ${userInput.userValue}`)
-        .join("\n")
-    : "";
-  const additionalInstruction = `------
-Role-play: ${scenario.title}
-
-Your role:
-${scenario.instructionToAi}
-
-You can start with message like:
-"${scenario.exampleOfFirstMessageFromAi}"
-
-${
-  additionalInfo
-    ? `Additional info:
-${additionalInfo}`
-    : ""
-}
-`;
-  return additionalInstruction;
-};
-
-const getDefaultInstruction: AiRolePlayInstructionCreator = (
-  scenario,
-  fullLanguageName,
-  userInput
-) => {
-  const instruction = getStartDefaultInstruction(fullLanguageName);
-  const additionalInfo = createAdditionalInstructionFormUserInput(scenario, userInput);
-  return `${instruction}
-${additionalInfo}`;
-};
-
 export const getRolePlayScenarios: (lang: SupportedLanguage) => Array<RolePlayInstruction> = (
   lang
 ) => {
@@ -115,7 +70,7 @@ Gameplay Sequence:
       imageSrc: "/role/f0de782c-6f1a-4005-924d-02459308a4fa.jpeg",
       videoSrc: "/role/69e7165b-a597-4731-8def-3e0f2b09ec1d_1.mp4",
       voice: "ash",
-      instructionCreator: getDefaultInstruction,
+
       landingHighlight: `Improve your vocabulary and speaking skills while having fun! Alias is a dynamic word-guessing game where you'll practice explaining and guessing words creatively, expanding your linguistic confidence.`,
     },
 
@@ -197,7 +152,6 @@ Candidate's info below, don't include questions that are already answered by can
       imageSrc: "/role/07d20442-758f-42a9-81b2-3dc7bf4fe248.jpeg",
       videoSrc: "/role/090f7de1-91bd-4210-a99c-4eb077c9efd7_1.mp4",
       voice: "alloy",
-      instructionCreator: getDefaultInstruction,
     },
     {
       id: "small-talk-with-a-stranger",
@@ -227,7 +181,6 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
       imageSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c.jpeg",
       videoSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c_1.mp4",
       voice: "sage",
-      instructionCreator: getDefaultInstruction,
     },
     {
       id: "instant-correction",
@@ -248,7 +201,7 @@ Continue this process, moving smoothly from one topic to the next.`,
       illustrationDescription: "",
       imageSrc: "/role/692781e2-a658-4a21-9dcb-5f10c7c35fe1.jpeg",
       voice: "ash",
-      instructionCreator: getDefaultInstruction,
+
       contentPage:
         i18n._(`Improve your speaking skills with immediate, personalized feedback. Instant Speech Correction helps you express yourself clearly and confidently by correcting grammar, vocabulary, and pronunciation errors as you speak.
 
@@ -317,7 +270,7 @@ Example of topics: weather, hobbies, family, work, travel, food, music, movies, 
         "A cozy restaurant setting with a waiter holding a notepad, attentively taking an order from a customer seated at a table with a menu in hand.",
       imageSrc: "/role/acde68cd-1db6-4b69-be42-d2071b9ee1e8.jpeg",
       voice: "ash",
-      instructionCreator: getDefaultInstruction,
+
       contentPage:
         i18n._(`In this role-play, you’ll interact with a polite waiter, order food, and handle special requests—just like in a real restaurant. Perfect for practicing how to start conversations, ask about menu items, and address any dining-related concerns.  
 
@@ -368,7 +321,6 @@ You’ll outline your own role-play by providing a brief description of the sett
         "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
       imageSrc: "/role/1ca9343e-839f-4b49-ac1f-9c7bfdea272e.jpeg",
       voice: "sage",
-      instructionCreator: getDefaultInstruction,
     },
     {
       id: "buying-a-train-ticket",
@@ -398,7 +350,6 @@ In this scenario, you’ll step into the role of a traveler looking to buy a tic
         "A busy train station with a ticket booth. A traveler with a backpack is talking to a ticket agent behind the counter, while a departure board shows various destinations.",
       imageSrc: "/role/36b7ea13-f429-46ae-a6c7-19d3206ab6b0.jpeg",
       voice: "echo",
-      instructionCreator: getDefaultInstruction,
     },
     {
       id: "meeting-dog-owners-in-the-park",
@@ -449,7 +400,6 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
         "Two dog owners in a green park setting, each with a leashed dog, smiling and engaged in casual conversation while their dogs sniff around.",
       imageSrc: "/role/20897efe-6b4d-4f97-b8e9-164e35381d37.jpeg",
       voice: "sage",
-      instructionCreator: getDefaultInstruction,
     },
     {
       id: "talking-to-a-doctor",
@@ -478,7 +428,6 @@ You’ll take on the role of a patient visiting a doctor, played by the AI. The 
         "A doctor in a white coat sitting at a desk, attentively listening to a patient who is describing their symptoms. A stethoscope and medical charts are visible in the background.",
       imageSrc: "/role/d853fe08-c7bc-431c-9eed-68c168a96ca0.jpeg",
       voice: "ash",
-      instructionCreator: getDefaultInstruction,
     },
     {
       id: "hotel-check-in",
@@ -507,7 +456,6 @@ You’ll act as the guest arriving at the hotel, while our AI plays the role of 
         "A modern hotel lobby with a friendly receptionist behind the counter, smiling at a traveler who is checking in with a suitcase in hand.",
       imageSrc: "/role/4db47c61-ff6c-448b-8528-65f4d4fa5992.jpeg",
       voice: "verse",
-      instructionCreator: getDefaultInstruction,
     },
 
     {
@@ -537,7 +485,6 @@ You’ll take the role of a customer shopping for groceries. The AI, as a store 
         "A bright grocery store aisle with a friendly employee pointing towards shelves while a customer looks at a shopping list, searching for items.",
       imageSrc: "/role/a7e56489-d409-4b73-ad87-1473565975dc.jpeg",
       voice: "verse",
-      instructionCreator: getDefaultInstruction,
     },
 
     {
@@ -567,7 +514,6 @@ You’ll act as a caller seeking help with a technical issue, while the AI plays
         "A person sitting at a desk, looking frustrated at a laptop or phone, while a headset-wearing customer support agent appears on a screen, offering assistance.",
       imageSrc: "/role/1c00497c-3d10-4dc8-bdaf-f83c888ce371.jpeg",
       voice: "shimmer",
-      instructionCreator: getDefaultInstruction,
     },
 
     {
@@ -597,7 +543,6 @@ You’ll take the role of a patient calling a doctor’s office to schedule an a
         "A person sitting at a desk, talking on the phone while checking a calendar on their laptop, looking focused as they schedule a doctor's appointment.",
       imageSrc: "/role/8226d079-3d2c-4122-81bc-dd1f9850603b.jpeg",
       voice: "ash",
-      instructionCreator: getDefaultInstruction,
     },
     {
       id: "returning-an-item-in-a-store",
@@ -626,7 +571,6 @@ You’ll step into the role of a customer returning a product, while the AI acts
         "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
       imageSrc: "/role/2ac841c8-3569-45e0-a8aa-fe98e15ea5e2.jpeg",
       voice: "sage",
-      instructionCreator: getDefaultInstruction,
     },
     {
       id: "meeting-with-psychologist",
@@ -664,7 +608,7 @@ Note: This is a role-play scenario intended to practice speaking on mental healt
         "A comfortable, welcoming office with a psychologist listening attentively to a client seated across from them, expressing themselves in a supportive atmosphere.",
       imageSrc: "/role/ceb0e1b7-9c34-47c0-ae09-4086fb734da4.jpeg",
       voice: "sage",
-      instructionCreator: getDefaultInstruction,
+
       contentPage:
         i18n._(`Discuss mental health topics in a comfortable, supportive setting. This role-play scenario provides a safe space to express yourself clearly, explore sensitive issues, and practice discussing mental health openly.
 

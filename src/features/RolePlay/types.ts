@@ -43,7 +43,6 @@ export interface RolePlayInstruction {
   videoSrc?: string;
   voice: AiVoice;
   input: InputStructureForUser[];
-  instructionCreator: AiRolePlayInstructionCreator;
   contentPage: string;
   gameMode?: "alias";
   analyzeResultAiInstruction?: string;
