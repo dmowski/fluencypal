@@ -4,11 +4,7 @@ import { useState } from "react";
 import { useLingui } from "@lingui/react";
 import { usePathname, useRouter } from "next/navigation";
 import { FormControl, InputLabel, MenuItem, Select, Stack } from "@mui/material";
-import {
-  fullEnglishLanguageName,
-  SupportedLanguage,
-  supportedLanguages,
-} from "@/features/Lang/lang";
+import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 
 export function LanguageSwitcher() {
   const router = useRouter();

@@ -2,7 +2,7 @@
 import { createContext, useContext, ReactNode, JSX } from "react";
 import { getDocs, limit, orderBy, query, setDoc, where } from "firebase/firestore";
 import { useAuth } from "../Auth/useAuth";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from "@/common/lang";
 import { db } from "../Firebase/db";
 import { ChatMessage, Conversation, ConversationMode } from "@/common/conversation";
 import { useSettings } from "../Settings/useSettings";

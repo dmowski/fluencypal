@@ -5,7 +5,7 @@ import { maxContentWidth, subTitleFontStyle } from "../landingSettings";
 import { Header } from "../../Header/Header";
 import { Footer } from "../Footer";
 import { ContactList } from "./ContactList";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 interface ContactsPageProps {

@@ -9,7 +9,7 @@ import { getRolePlayScenarios } from "../../RolePlay/rolePlayData";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { RolePlayScroller } from "./RolePlayScroller";
 import { RolePlayCard } from "./RolePlayCard";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from "@/common/lang";
 
 interface RolePlayDemoProps {
   title: string;

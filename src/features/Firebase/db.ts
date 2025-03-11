@@ -14,7 +14,7 @@ import { Homework } from "@/common/homework";
 import { UserTaskStats } from "@/common/userTask";
 import { WordsStats } from "@/common/words";
 import { AiUserInfo } from "@/common/userInfo";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from "@/common/lang";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;

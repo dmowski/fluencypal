@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { maxContentWidth, subTitleFontStyle, titleFontStyle } from "../landingSettings";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 interface ListRolePlayIntroProps {

@@ -1,5 +1,5 @@
 import { allMessages, getI18nInstance } from "@/appRouterI18n";
-import { supportedLanguages } from "@/features/Lang/lang";
+import { supportedLanguages } from "@/common/lang";
 import { siteUrl } from "@/common/metadata";
 import LandingPage from "@/features/Landing/LandingPage";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";

@@ -1,5 +1,5 @@
 import { RealTimeModel, TextAiModel, TextUsageEvent, UsageEvent } from "./ai";
-import { SupportedLanguage } from "../features/Lang/lang";
+import { SupportedLanguage } from "./lang";
 
 export interface TotalUsageInfo {
   lastUpdatedAt: number;

@@ -18,7 +18,7 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Gift, HandCoins, Mic } from "lucide-react";
 import { WELCOME_BONUS } from "@/common/usage";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 interface PricePageProps {

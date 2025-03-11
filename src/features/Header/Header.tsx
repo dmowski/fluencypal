@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
 import { HeaderComponent, HeaderMode } from "./HeaderComponent";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 export function Header({ mode, lang }: { mode: HeaderMode; lang: SupportedLanguage }) {

@@ -1,5 +1,5 @@
 import { allMessages } from "@/appRouterI18n";
-import { supportedLanguages } from "@/features/Lang/lang";
+import { supportedLanguages } from "@/common/lang";
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 import { Header } from "@/features/Header/Header";
 import { APP_NAME } from "@/features/Landing/landingSettings";

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ContactsPage } from "@/features/Landing/Contact/ContactsPage";
 import { robots, siteUrl } from "@/common/metadata";
 import { APP_NAME } from "@/features/Landing/landingSettings";
-import { supportedLanguages } from "@/features/Lang/lang";
+import { supportedLanguages } from "@/common/lang";
 import { initLingui } from "@/initLingui";
 import { allMessages, getI18nInstance } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";

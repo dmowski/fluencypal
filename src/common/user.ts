@@ -1,4 +1,4 @@
-import { SupportedLanguage } from "../features/Lang/lang";
+import { SupportedLanguage } from "./lang";
 
 export interface UserSettings {
   languageCode: SupportedLanguage | null;

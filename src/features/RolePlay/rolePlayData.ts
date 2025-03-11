@@ -1,4 +1,4 @@
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from "@/common/lang";
 import { AiRolePlayInstructionCreator, RolePlayInputResult, RolePlayInstruction } from "./types";
 import { getI18nInstance } from "@/appRouterI18n";
 
