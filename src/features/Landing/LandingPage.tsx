@@ -29,6 +29,9 @@ export default function LandingPage() {
           <ProductDemo label="Product Demo" title="See FluencyPal in Action" />
 
           <ProposalCards
+            title="Four Ways FluencyPal Boosts Your Speaking Skills"
+            subTitle="Target the specific skills you need—speaking, grammar, vocabulary, and progress
+            tracking—to achieve online English fluency faster."
             infoCards={[
               {
                 category: "Speaking",

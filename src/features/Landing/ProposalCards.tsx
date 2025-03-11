@@ -137,8 +137,10 @@ const InfoProposalCard: React.FC<{
 
 interface ProposalCardsProps {
   infoCards: ProposalInfo[];
+  title: string;
+  subTitle: string;
 }
-export const ProposalCards: React.FC<ProposalCardsProps> = ({ infoCards }) => {
+export const ProposalCards: React.FC<ProposalCardsProps> = ({ title, subTitle, infoCards }) => {
   return (
     <Stack
       sx={{
@@ -177,7 +179,7 @@ export const ProposalCards: React.FC<ProposalCardsProps> = ({ infoCards }) => {
               color: "#000",
             }}
           >
-            Four Ways Dark Lang Accelerates Your Learning
+            {title}
           </Typography>
           <Typography
             align="center"
@@ -188,8 +190,7 @@ export const ProposalCards: React.FC<ProposalCardsProps> = ({ infoCards }) => {
               ...subTitleFontStyle,
             }}
           >
-            Target the specific skills you need—speaking, grammar, vocabulary, and progress
-            tracking—to achieve online English fluency faster.
+            {subTitle}
           </Typography>
         </Stack>
 

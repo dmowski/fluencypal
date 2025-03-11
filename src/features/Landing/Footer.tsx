@@ -90,7 +90,7 @@ export const Footer = () => {
             },
           }}
         >
-          <Typography variant="body1">Dark Lang</Typography>
+          <Typography variant="body1">FluencyPal</Typography>
           <Typography variant="body1">© 2025</Typography>
           <Stack
             sx={{
