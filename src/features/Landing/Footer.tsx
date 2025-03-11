@@ -89,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
           />
           <details>
             <summary>
-              <Typography component="span">Supported languages</Typography>
+              <Typography component="span">{i18n._(`Supported languages`)}</Typography>
             </summary>
             <Stack
               sx={{
@@ -98,10 +98,17 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
                 flexWrap: "wrap",
               }}
             >
-              {supportedLanguages.map((lang) => {
+              {supportedLanguages.map((lang, index) => {
                 return (
-                  <Link key={lang} href={`/${lang}`} variant="body1">
-                    {fullEnglishLanguageName[lang]},
+                  <Link
+                    key={lang}
+                    href={`/${lang}`}
+                    variant="body1"
+                    lang={lang}
+                    aria-label={`Switch to ${fullEnglishLanguageName[lang]}`}
+                  >
+                    {fullEnglishLanguageName[lang]}
+                    {index !== supportedLanguages.length - 1 && ","}
                   </Link>
                 );
               })}
