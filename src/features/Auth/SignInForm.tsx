@@ -19,7 +19,7 @@ export const SignInForm = ({ rolePlayScenarios }: SignInFormProps) => {
     ? rolePlayScenarios.find((scenario) => scenario.id === rolePlayId)
     : null;
 
-  const pageTitle = scenario ? `Start Role Play: ${scenario.title}` : "Start the Lesson";
+  const pageTitle = scenario ? scenario.title : i18n._(`Start the Lesson`);
   return (
     <StarContainer minHeight="100vh" paddingBottom="160px">
       <Stack
@@ -33,6 +33,20 @@ export const SignInForm = ({ rolePlayScenarios }: SignInFormProps) => {
             alignItems: "center",
           }}
         >
+          {scenario ? (
+            <Typography
+              variant="body2"
+              align="center"
+              sx={{
+                opacity: 0.8,
+                textTransform: "uppercase",
+              }}
+            >
+              {i18n._(`Start Role Play:`)}
+            </Typography>
+          ) : (
+            <></>
+          )}
           <Typography
             variant="h2"
             component={"h1"}
@@ -72,7 +86,7 @@ export const SignInForm = ({ rolePlayScenarios }: SignInFormProps) => {
             onClick={() => auth.signInWithGoogle()}
             startIcon={<GoogleIcon />}
           >
-            Continue with google
+            {i18n._(`Continue with google`)}
           </Button>
           <Stack
             sx={{
@@ -81,7 +95,9 @@ export const SignInForm = ({ rolePlayScenarios }: SignInFormProps) => {
               opacity: 0.9,
             }}
           >
-            <Typography variant="caption">By creating an account, you agree to:</Typography>
+            <Typography variant="caption">
+              {i18n._(`By creating an account, you agree to:`)}
+            </Typography>
             <Stack
               sx={{
                 flexDirection: "row",
@@ -90,10 +106,10 @@ export const SignInForm = ({ rolePlayScenarios }: SignInFormProps) => {
               }}
             >
               <Link href="/privacy" target="_blank">
-                <Typography variant="caption">Privacy Policy</Typography>
+                <Typography variant="caption">{i18n._(`Privacy Policy`)}</Typography>
               </Link>
               <Link href="/terms" target="_blank">
-                <Typography variant="caption">Terms of Use</Typography>
+                <Typography variant="caption">{i18n._(`Terms of Use`)}</Typography>
               </Link>
             </Stack>
           </Stack>

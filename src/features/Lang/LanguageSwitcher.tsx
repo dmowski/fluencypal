@@ -9,6 +9,7 @@ import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "
 export function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
+  const { i18n } = useLingui();
 
   const [locale, setLocale] = useState<SupportedLanguage>(
     pathname?.split("/")[1] as SupportedLanguage
@@ -31,7 +32,7 @@ export function LanguageSwitcher() {
       }}
     >
       <FormControl sx={{ minWidth: 120 }} size="small">
-        <InputLabel id="page-lang-label-selector">Page language</InputLabel>
+        <InputLabel id="page-lang-label-selector">{i18n._(`Page language`)}</InputLabel>
         <Select
           value={supportedLang}
           labelId="page-lang-label-selector"

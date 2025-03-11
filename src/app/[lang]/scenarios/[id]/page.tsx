@@ -4,7 +4,8 @@ import { ScenarioOnePage } from "@/features/Landing/RolePlay/ScenarioOnePage";
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 import { supportedLanguages } from "@/common/lang";
 import { initLingui } from "@/initLingui";
-import { getI18nInstance } from "@/appRouterI18n";
+import { allMessages, getI18nInstance } from "@/appRouterI18n";
+import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 
 interface PageProps {
   params: Promise<{ id: string; lang: string }>;
@@ -77,5 +78,9 @@ export default async function ScenarioOneFullPage(props: PageProps) {
   const lang = (await props.params).lang;
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
-  return <ScenarioOnePage id={id} lang={supportedLang} />;
+  return (
+    <LinguiClientProvider initialLocale={lang} initialMessages={allMessages[lang]!}>
+      <ScenarioOnePage id={id} lang={supportedLang} />
+    </LinguiClientProvider>
+  );
 }

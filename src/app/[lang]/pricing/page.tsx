@@ -4,7 +4,8 @@ import { robots, siteUrl } from "@/common/metadata";
 import { APP_NAME } from "@/features/Landing/landingSettings";
 import { supportedLanguages } from "@/common/lang";
 import { initLingui } from "@/initLingui";
-import { getI18nInstance } from "@/appRouterI18n";
+import { allMessages, getI18nInstance } from "@/appRouterI18n";
+import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 
 interface PageProps {
   params: Promise<{ id: string; lang: string }>;
@@ -65,5 +66,9 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
 
-  return <PricePage lang={supportedLang} />;
+  return (
+    <LinguiClientProvider initialLocale={lang} initialMessages={allMessages[lang]!}>
+      <PricePage lang={supportedLang} />
+    </LinguiClientProvider>
+  );
 }

@@ -1,7 +1,9 @@
+import { allMessages } from "@/appRouterI18n";
 import { supportedLanguages } from "@/common/lang";
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 import { Header } from "@/features/Header/Header";
 import { APP_NAME } from "@/features/Landing/landingSettings";
+import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { PrivacyPolicy } from "@/features/Legal/PrivacyPolicy";
 import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
@@ -27,9 +29,9 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
   return (
-    <>
+    <LinguiClientProvider initialLocale={lang} initialMessages={allMessages[lang]!}>
       <Header mode="landing" lang={supportedLang} />
       <PrivacyPolicy />
-    </>
+    </LinguiClientProvider>
   );
 }
