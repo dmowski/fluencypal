@@ -28,6 +28,10 @@ export default function LandingPage({ lang }: LandingPageProps) {
             subTitle={i18n._(
               `Boost your fluency with FluencyPal, the friendly AI English tutor that's ready to chat 24/7. Designed for intermediate and advanced learners, FluencyPal adapts to your speaking level, provides instant corrections, and helps you speak confidently.`
             )}
+            openDashboardTitle={i18n._(`Open Dashboard`)}
+            getStartedTitle={i18n._(`Get Started Free`)}
+            viewPricingTitle={i18n._(`View Pricing`)}
+            noCreditCardNeededTitle={i18n._(`No Credit Card Needed`)}
           />
           <IntroVideoDemo
             title={i18n._(`Speak Fluent English with Confidence`)}

@@ -6,8 +6,19 @@ import { maxLandingWidth, subTitleFontStyle } from "./landingSettings";
 interface WelcomeScreenProps {
   title: string;
   subTitle: string;
+  openDashboardTitle: string;
+  getStartedTitle: string;
+  viewPricingTitle: string;
+  noCreditCardNeededTitle: string;
 }
-export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ title, subTitle }) => {
+export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
+  title,
+  subTitle,
+  openDashboardTitle,
+  getStartedTitle,
+  viewPricingTitle,
+  noCreditCardNeededTitle,
+}) => {
   return (
     <Stack
       sx={{
@@ -79,7 +90,13 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ title, subTitle })
             alignItems: "center",
           }}
         >
-          <FirstEnterButton showPricingButton />
+          <FirstEnterButton
+            showPricingButton
+            openDashboardTitle={openDashboardTitle}
+            getStartedTitle={getStartedTitle}
+            viewPricingTitle={viewPricingTitle}
+            noCreditCardNeededTitle={noCreditCardNeededTitle}
+          />
         </Stack>
       </Stack>
 

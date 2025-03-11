@@ -7,8 +7,18 @@ import { buttonStyle } from "./landingSettings";
 
 interface FirstEnterButtonProps {
   showPricingButton?: boolean;
+  openDashboardTitle: string;
+  getStartedTitle: string;
+  viewPricingTitle: string;
+  noCreditCardNeededTitle: string;
 }
-export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({ showPricingButton }) => {
+export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
+  showPricingButton,
+  openDashboardTitle,
+  getStartedTitle,
+  viewPricingTitle,
+  noCreditCardNeededTitle,
+}) => {
   const auth = useAuth();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -51,7 +61,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({ showPricingB
           size="large"
           href={"/practice"}
         >
-          {auth.isAuthorized ? "Open Dashboard" : "Get started free"}
+          {auth.isAuthorized ? openDashboardTitle : getStartedTitle}
         </Button>
 
         {!showPricingButton && (
@@ -63,7 +73,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({ showPricingB
               visibility: auth.isAuthorized ? "hidden" : "visible",
             }}
           >
-            <Typography variant="caption">No credit card needed</Typography>
+            <Typography variant="caption">{noCreditCardNeededTitle}</Typography>
           </Stack>
         )}
       </Stack>
@@ -82,7 +92,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({ showPricingB
             size="large"
             href={"/pricing"}
           >
-            View pricing
+            {viewPricingTitle}
           </Button>
         </>
       )}
