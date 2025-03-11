@@ -15,15 +15,27 @@ const openAi = new OpenAI({ apiKey: OPENAI_KEY });
 
 const localesFolder = "./src/locales";
 const languages = [
-  {
-    path: `${localesFolder}/ru.po`,
-    language: "Russian",
-  },
-
-  {
-    path: `${localesFolder}/es.po`,
-    language: "Spanish",
-  },
+  { path: `${localesFolder}/ru.po`, language: "Russian" },
+  { path: `${localesFolder}/es.po`, language: "Spanish" },
+  { path: `${localesFolder}/en.po`, language: "English" },
+  { path: `${localesFolder}/de.po`, language: "German" },
+  { path: `${localesFolder}/pl.po`, language: "Polish" },
+  { path: `${localesFolder}/uk.po`, language: "Ukrainian" },
+  { path: `${localesFolder}/fr.po`, language: "French" },
+  { path: `${localesFolder}/ar.po`, language: "Arabic" },
+  { path: `${localesFolder}/id.po`, language: "Indonesian" },
+  { path: `${localesFolder}/it.po`, language: "Italian" },
+  { path: `${localesFolder}/ja.po`, language: "Japanese" },
+  { path: `${localesFolder}/ko.po`, language: "Korean" },
+  { path: `${localesFolder}/ms.po`, language: "Malay" },
+  { path: `${localesFolder}/pt.po`, language: "Portuguese" },
+  { path: `${localesFolder}/th.po`, language: "Thai" },
+  { path: `${localesFolder}/tr.po`, language: "Turkish" },
+  { path: `${localesFolder}/vi.po`, language: "Vietnamese" },
+  { path: `${localesFolder}/zh.po`, language: "Chinese" },
+  { path: `${localesFolder}/da.po`, language: "Danish" },
+  { path: `${localesFolder}/nb.po`, language: "Norwegian" },
+  { path: `${localesFolder}/sv.po`, language: "Swedish" },
 ];
 
 const translateBlock = async (blockText, lang) => {
