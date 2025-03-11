@@ -6,11 +6,13 @@ import { Header } from "../../Header/Header";
 import { Footer } from "../Footer";
 import { ContactList } from "./ContactList";
 import { SupportedLanguage } from "@/common/lang";
+import { getI18nInstance } from "@/appRouterI18n";
 
 interface ContactsPageProps {
   lang: SupportedLanguage;
 }
 export const ContactsPage = ({ lang }: ContactsPageProps) => {
+  const i18n = getI18nInstance(lang);
   return (
     <Stack sx={{}}>
       <Header mode="landing" />
@@ -68,7 +70,7 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                   },
                 }}
               >
-                Contacts
+                {i18n._(`Contacts`)}
               </Typography>
               <Typography
                 align="left"
@@ -78,8 +80,9 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                   ...subTitleFontStyle,
                 }}
               >
-                Feel free to reach out to me with any questions or feedback. I'm always happy to
-                help!
+                {i18n._(
+                  `Feel free to reach out to me with any questions or feedback. I'm always happy to help!`
+                )}
               </Typography>
             </Stack>
           </Stack>
