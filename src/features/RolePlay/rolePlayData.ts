@@ -72,9 +72,11 @@ const rolePlayScenarios: Array<RolePlayInstruction> = [
         required: false,
       },
     ],
-    title: "Alias Game",
+    title: "Alias Word Guessing Game",
     gameMode: "alias",
-    subTitle: "Guess words and explain them creatively",
+    subTitle: "Practice English vocabulary by creatively describing and guessing words",
+    contentPage: `Boost your English vocabulary and fluency by creatively describing and guessing words in this interactive AI-powered Alias game.\n\n## Benefits of Playing *Alias Game*\n- Enhance your vocabulary by describing words in unique ways.\n- Improve listening skills as you interpret descriptions.\n- Practice rapid thinking and fluent speaking under playful pressure.\n- Receive instant, tailored feedback from your AI partner.\n\n## How to Play\nYou and your AI partner alternate turns describing and guessing words without directly naming them. This encourages creative thinking and fluent expression, adapting to your language proficiency.`,
+
     instructionToAi: `Your role:
 You are playing the Alias game.
 
@@ -106,22 +108,12 @@ Gameplay Sequence:
     voice: "ash",
     instructionCreator: getDefaultInstruction,
     landingHighlight: `Improve your vocabulary and speaking skills while having fun! Alias is a dynamic word-guessing game where you'll practice explaining and guessing words creatively, expanding your linguistic confidence.`,
-    contentPage: `Improve your vocabulary and speaking skills while having fun! Alias is a dynamic word-guessing game where you'll practice explaining and guessing words creatively, expanding your linguistic confidence.
-
-## Why You Should Play *Alias Game*
-1. Boost your vocabulary by describing words in creative and engaging ways.
-2. Sharpen your listening and comprehension skills as you interpret clues and descriptions.
-3. Improve your fluency and quick-thinking abilities under playful pressure.
-4. Receive immediate interaction and adaptive challenge from your AI partner, tailored to your language proficiency.
-5. Enhance your speaking confidence through interactive and entertaining gameplay.
-
-## How the Game Works
-In Alias, you and your AI partner take turns describing and guessing words without directly naming them. You’ll start by describing a word or phrase, and your AI partner will try to guess it. Afterward, roles switch, and you'll guess the word from your partner’s clues. Adjust the difficulty based on your skill level to maximize learning and enjoyment. Let's get creative with words!`,
   },
 
   {
     id: "job-interview",
     landingHighlight: `Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.`,
+
     contentPage: `Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.
 
 ## Why You Should Play *Job Interview*  
@@ -183,8 +175,8 @@ Candidate's info below, don't include questions that are already answered by can
         required: false,
       },
     ],
-    title: "Job Interview",
-    subTitle: "Practice answering common interview questions",
+    title: "Practice Job Interview",
+    subTitle: "Master answering common interview questions with AI",
     instructionToAi:
       "You are a professional recruiter conducting a job interview. Ask the user about their experience, skills, and why they want the job. Adjust difficulty based on responses and provide feedback.",
     exampleOfFirstMessageFromAi:
@@ -212,8 +204,8 @@ Candidate's info below, don't include questions that are already answered by can
 In this scenario, you’ll step into the role of someone meeting a new acquaintance at a social event. The AI acts as a friendly stranger, prompting you to talk about casual topics like weather or shared interests. As you exchange pleasantries, the AI will adapt to your responses, helping you refine your small-talk abilities.`,
     category: "Social",
     input: [],
-    title: "Small Talk",
-    subTitle: "Practice starting a conversation with a stranger",
+    title: "Small Talk Practice",
+    subTitle: "Develop your conversational skills with casual small talk",
     instructionToAi:
       "You are a friendly stranger meeting the user at a social event. Engage in small talk about the weather, hobbies, or recent events.",
     exampleOfFirstMessageFromAi:
@@ -229,7 +221,7 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
     id: "instant-correction",
     category: "Speech",
     title: "Instant Speech Correction",
-    subTitle: "Receive immediate feedback on your speech",
+    subTitle: "Real-time feedback to improve your spoken English",
 
     instructionToAi: `You are a polite speech corrector.
 
@@ -303,7 +295,7 @@ Example of topics: weather, hobbies, family, work, travel, food, music, movies, 
     category: "Social",
     input: [],
     title: "In the Restaurant",
-    subTitle: "Order food and interact with a waiter in a restaurant",
+    subTitle: "Practice ordering food and interacting with a waiter in a restaurant",
     instructionToAi:
       "You are a polite restaurant waiter. Ask the user for their order, offer recommendations, and respond to any requests.",
     exampleOfFirstMessageFromAi:
@@ -349,9 +341,10 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
 
 ## How the Scenario Works
 You’ll outline your own role-play by providing a brief description of the setting, characters, and main objectives. The AI will adapt to your custom instructions and engage in dialogue aligned with your scenario’s theme. This flexible format helps you master the exact communication skills you need.`,
-    title: "Your Custom Scenario",
+    title: "Create Your Own Role-Play Scenario",
+    subTitle: "Customize a conversation to fit your unique learning needs",
     category: "Custom",
-    subTitle: "Create your own role-play scenario",
+
     instructionToAi: "",
     exampleOfFirstMessageFromAi: "",
     illustrationDescription:
@@ -374,9 +367,10 @@ You’ll outline your own role-play by providing a brief description of the sett
 ## How the Scenario Works
 In this scenario, you’ll step into the role of a traveler looking to buy a ticket. The AI takes on the role of a train station ticket agent, asking you where you’re headed, when you’re departing, and what type of ticket you need. By interacting with the AI, you’ll master the art of asking the right questions and understanding key information about your journey.`,
     input: [],
-    title: "Buying a Train Ticket",
     category: "Travel",
-    subTitle: "Practice buying a train ticket at the station",
+
+    title: "Buying a Train Ticket",
+    subTitle: "Practice asking about schedules, fares, and ticket options",
     instructionToAi:
       "You are a train station ticket agent. Ask the user where they want to go, the departure time, and the type of ticket they need.",
     exampleOfFirstMessageFromAi:
@@ -424,8 +418,8 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
         required: false,
       },
     ],
-    title: "Talk to the dog owner",
-    subTitle: "Make friendly small talk with another dog owner",
+    title: "Chat with a Fellow Dog Owner",
+    subTitle: "Engage in friendly small talk about pets and daily routines",
     instructionToAi:
       "You are a friendly dog owner who meets the user at a park. Greet them warmly, ask about their dog, share experiences, and discuss tips or fun stories about caring for dogs.",
     exampleOfFirstMessageFromAi:
@@ -452,7 +446,7 @@ You’ll take on the role of a patient visiting a doctor, played by the AI. The 
     category: "Health",
     input: [],
     title: "Talking to a Doctor",
-    subTitle: "Describe symptoms and ask for medical advice",
+    subTitle: "Learn to describe symptoms and ask for medical advice effectively",
     instructionToAi:
       "You are a doctor. Ask the user about their symptoms, provide advice, and suggest treatment options.",
     exampleOfFirstMessageFromAi:
@@ -478,8 +472,8 @@ You’ll take on the role of a patient visiting a doctor, played by the AI. The 
 You’ll act as the guest arriving at the hotel, while our AI plays the role of a receptionist. The receptionist will ask for your name, reservation details, and any special requests you might have. By responding naturally, you’ll build the conversational skills necessary for a smooth hotel check-in experience.`,
     category: "Travel",
     input: [],
-    title: "Hotel Check-in",
-    subTitle: "Practice checking into a hotel",
+    title: "Hotel Check-In Conversation",
+    subTitle: "Practice booking a room, requesting amenities, and checking in",
     instructionToAi:
       "You are a hotel receptionist. Ask for the user's reservation details, offer room options, and answer their questions.",
     exampleOfFirstMessageFromAi:
@@ -506,8 +500,8 @@ You’ll act as the guest arriving at the hotel, while our AI plays the role of 
 You’ll take the role of a customer shopping for groceries. The AI, as a store employee, will ask what you’re looking for, suggest deals, and guide you to the right products. This interactive role-play simulates a realistic shopping experience, helping you build essential communication skills.`,
     category: "Shopping",
     input: [],
-    title: "At the Grocery Store",
-    subTitle: "Practice asking for help and making a purchase",
+    title: "Shopping at the Grocery Store",
+    subTitle: "Practice asking for product recommendations and making purchases",
     instructionToAi:
       "You are a grocery store employee. Help the user find products, explain prices, and answer questions about promotions.",
     exampleOfFirstMessageFromAi:
@@ -534,8 +528,8 @@ You’ll take the role of a customer shopping for groceries. The AI, as a store 
 You’ll act as a caller seeking help with a technical issue, while the AI plays the support agent. The agent will ask for details, guide you through possible solutions, and offer next steps. This scenario helps you get comfortable navigating tech problems and communicating solutions.`,
     category: "Professional",
     input: [],
-    title: "Calling Technical Support",
-    subTitle: "Practice troubleshooting a technical issue",
+    title: "Calling Customer Support",
+    subTitle: "Practice troubleshooting a technical issue over the phone",
     instructionToAi:
       "You are a technical support agent. Ask the user about their issue, guide them through troubleshooting steps, and provide solutions.",
     exampleOfFirstMessageFromAi:
@@ -562,8 +556,8 @@ You’ll act as a caller seeking help with a technical issue, while the AI plays
 You’ll take the role of a patient calling a doctor’s office to schedule an appointment. The AI, as a receptionist, will ask for your name, preferred date, and reason for the visit. By responding naturally, you’ll build essential communication skills for any medical context.`,
     category: "Health",
     input: [],
-    title: "Doctor's Appointment",
-    subTitle: "Practice scheduling an appointment over the phone",
+    title: "Booking a Doctor's Appointment",
+    subTitle: "Learn how to schedule a medical visit over the phone",
     instructionToAi:
       "You are a receptionist at a doctor's office. Ask the user for their name, preferred date, and reason for the appointment.",
     exampleOfFirstMessageFromAi:
@@ -589,8 +583,8 @@ You’ll take the role of a patient calling a doctor’s office to schedule an a
 You’ll step into the role of a customer returning a product, while the AI acts as the store employee. The AI will ask why you’re returning the item and discuss available options. This practical scenario helps you master polite, efficient communication in retail situations.`,
     category: "Shopping",
     input: [],
-    title: "Returning an Item in a Store",
-    subTitle: "Practice returning an item",
+    title: "Returning an Item to a Store",
+    subTitle: "Practice explaining product issues and requesting refunds or exchanges",
     instructionToAi:
       "You are a store employee handling returns. Ask the user why they are returning the item and offer solutions like exchange or refund.",
     exampleOfFirstMessageFromAi:
@@ -622,8 +616,8 @@ You’ll step into the role of a customer returning a product, while the AI acts
         required: false,
       },
     ],
-    title: "Meeting with Psychologist",
-    subTitle: "Discuss mental health topics",
+    title: "Speaking with a Psychologist",
+    subTitle: "Discuss mental health topics and express your thoughts effectively",
     instructionToAi: `You are a psychologist meeting a client for a casual consultation.
 
 - Engage in supportive dialogue
