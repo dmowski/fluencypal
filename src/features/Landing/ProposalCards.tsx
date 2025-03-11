@@ -2,14 +2,19 @@ import { Card, CardContent, Stack, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { maxLandingWidth, subTitleFontStyle, titleFontStyle } from "./landingSettings";
 
-const InfoCard: React.FC<{
+interface ProposalInfo {
   category: string;
   title: string;
   description: string;
   img: string;
   actionButtonTitle: string;
   href: string;
-}> = ({ title, category, description, img, actionButtonTitle, href }) => {
+}
+const InfoProposalCard: React.FC<{
+  info: ProposalInfo;
+}> = ({ info }) => {
+  const { category, title, description, img, actionButtonTitle, href } = info;
+
   return (
     <Card
       sx={{
@@ -130,7 +135,10 @@ const InfoCard: React.FC<{
   );
 };
 
-export const ProposalCards = () => {
+interface ProposalCardsProps {
+  infoCards: ProposalInfo[];
+}
+export const ProposalCards: React.FC<ProposalCardsProps> = ({ infoCards }) => {
   return (
     <Stack
       sx={{
@@ -199,46 +207,9 @@ export const ProposalCards = () => {
             },
           }}
         >
-          <InfoCard
-            category={"Speaking"}
-            title={"Boost Your Fluency in Record Time"}
-            description={
-              "Practice live conversations with Bruno. Whether you speak or type, the AI responds naturally, highlights mistakes, and helps you progress quickly."
-            }
-            img={"/talk.jpeg"}
-            href="/practice"
-            actionButtonTitle="Try Speaking Mode"
-          />
-          <InfoCard
-            category={"Grammar"}
-            title={"Master the Rules"}
-            description={
-              "Bruno provides real-time feedback and explains grammar points on the spot. Get daily tasks to learn new rules and apply them immediately."
-            }
-            img={"/rules.jpeg"}
-            href="/practice"
-            actionButtonTitle="Improve Your Grammar"
-          />
-          <InfoCard
-            category={"Vocabulary"}
-            title={"Expand Your Word Bank Every Day"}
-            description={
-              "Get daily new words based on your current level. Practice using them in sentences so they truly stick."
-            }
-            img={"/words.jpeg"}
-            href="/practice"
-            actionButtonTitle="Learn New Words"
-          />
-          <InfoCard
-            category={"Progress Tracking"}
-            title={"See Your Growth"}
-            description={
-              "Watch your confidence grow. The colorful calendar shows your daily progress at a glance."
-            }
-            img={"/progress.png"}
-            href="/practice"
-            actionButtonTitle="View Your Dashboard"
-          />
+          {infoCards.map((info, index) => (
+            <InfoProposalCard key={index} info={info} />
+          ))}
         </Stack>
       </Stack>
     </Stack>

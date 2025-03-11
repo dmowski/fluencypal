@@ -3,7 +3,11 @@ import { FirstEnterButton } from "./FirstEnterButton";
 import { GradientCard } from "../uiKit/Card/GradientCard";
 import { maxLandingWidth, subTitleFontStyle } from "./landingSettings";
 
-export const WelcomeScreen = () => {
+interface WelcomeScreenProps {
+  title: string;
+  subTitle: string;
+}
+export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ title, subTitle }) => {
   return (
     <Stack
       sx={{
@@ -58,7 +62,7 @@ export const WelcomeScreen = () => {
               },
             }}
           >
-            Online English with AI Teacher
+            {title}
           </Typography>
           <Typography
             align="center"
@@ -68,9 +72,7 @@ export const WelcomeScreen = () => {
               ...subTitleFontStyle,
             }}
           >
-            Experience next-level language practice with Bruno, your friendly AI tutor who’s ready
-            to chat 24/7. Whether you’re a beginner or advanced learner, Bruno adapts to your pace,
-            corrects mistakes, and keeps you motivated.
+            {subTitle}
           </Typography>
         </Stack>
 

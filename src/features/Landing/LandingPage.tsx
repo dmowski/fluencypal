@@ -26,11 +26,60 @@ export default function LandingPage() {
             alignItems: "center",
           }}
         >
-          <WelcomeScreen />
-          <IntroVideoDemo />
-          <ProductDemo />
+          <WelcomeScreen
+            title="Online English with AI Teacher"
+            subTitle="Experience next-level language practice with Bruno, your friendly AI tutor who’s ready
+            to chat 24/7. Whether you’re a beginner or advanced learner, Bruno adapts to your pace,
+            corrects mistakes, and keeps you motivated."
+          />
+          <IntroVideoDemo
+            title="Speak, Learn, and Grow with Ease"
+            subTitle="Dark Lang’s AI tutor offers realistic conversation practice in English, Spanish, French,
+            and more. Enjoy casual chats, instant corrections, and track your progress with a
+            teacher who never tires."
+          />
+          <ProductDemo label="Product Demo" title="Watch Dark Lang in Action" />
 
-          <ProposalCards />
+          <ProposalCards
+            infoCards={[
+              {
+                category: "Speaking",
+                title: "Boost Your Fluency in Record Time",
+                description:
+                  "Practice live conversations with Bruno. Whether you speak or type, the AI responds naturally, highlights mistakes, and helps you progress quickly.",
+                img: "/talk.jpeg",
+                href: "/practice",
+                actionButtonTitle: "Try Speaking Mode",
+              },
+              {
+                category: "Grammar",
+                title: "Master the Rules",
+                description:
+                  "Bruno provides real-time feedback and explains grammar points on the spot. Get daily tasks to learn new rules and apply them immediately.",
+                img: "/rules.jpeg",
+                href: "/practice",
+                actionButtonTitle: "Improve Your Grammar",
+              },
+              {
+                category: "Vocabulary",
+                title: "Expand Your Word Bank Every Day",
+                description:
+                  "Get daily new words based on your current level. Practice using them in sentences so they truly stick.",
+                img: "/words.jpeg",
+                href: "/practice",
+                actionButtonTitle: "Learn New Words",
+              },
+              {
+                category: "Progress Tracking",
+                title: "See Your Growth",
+                description:
+                  "Watch your confidence grow. The colorful calendar shows your daily progress at a glance.",
+                img: "/progress.jpeg",
+                href: "/practice",
+                actionButtonTitle: "View Your Dashboard",
+              },
+            ]}
+          />
           <RolePlayDemo />
           <GeneralFaqBlock />
           <CtaBlock />

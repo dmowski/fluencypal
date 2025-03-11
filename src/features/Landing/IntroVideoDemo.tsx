@@ -2,7 +2,11 @@ import { Button, Stack, Typography } from "@mui/material";
 import { subTitleFontStyle, titleFontStyle } from "./landingSettings";
 import { VideoSwitcher } from "./VideoSwitcher";
 
-export const IntroVideoDemo = () => {
+interface IntroVideoDemoProps {
+  title: string;
+  subTitle: string;
+}
+export const IntroVideoDemo = ({ title, subTitle }: IntroVideoDemoProps) => {
   return (
     <Stack
       sx={{
@@ -40,7 +44,7 @@ export const IntroVideoDemo = () => {
               ...titleFontStyle,
             }}
           >
-            Speak, Learn, and Grow with Ease
+            {title}
           </Typography>
           <Typography
             align="center"
@@ -50,9 +54,7 @@ export const IntroVideoDemo = () => {
               ...subTitleFontStyle,
             }}
           >
-            Dark Lang’s AI tutor offers realistic conversation practice in English, Spanish, French,
-            and more. Enjoy casual chats, instant corrections, and track your progress with a
-            teacher who never tires.
+            {subTitle}
           </Typography>
         </Stack>
 

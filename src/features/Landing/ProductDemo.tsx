@@ -2,7 +2,11 @@ import { Stack, Typography } from "@mui/material";
 import { ProductVideo } from "./ProductVideo";
 import { maxLandingWidth, titleFontStyle } from "./landingSettings";
 
-export const ProductDemo = () => {
+interface ProductDemoProps {
+  title: string;
+  label: string;
+}
+export const ProductDemo = ({ title, label }: ProductDemoProps) => {
   return (
     <Stack
       sx={{
@@ -54,7 +58,7 @@ export const ProductDemo = () => {
                 textTransform: "uppercase",
               }}
             >
-              Product Demo
+              {label}
             </Typography>
             <Typography
               variant="h3"
@@ -63,7 +67,7 @@ export const ProductDemo = () => {
                 ...titleFontStyle,
               }}
             >
-              Watch Dark Lang in Action
+              {title}
             </Typography>
           </Stack>
           <ProductVideo />
