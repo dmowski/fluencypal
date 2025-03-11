@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useLingui } from "@lingui/react";
 import { usePathname, useRouter } from "next/navigation";
-import { FormControl, MenuItem, Select } from "@mui/material";
+import { FormControl, MenuItem, Select, Stack } from "@mui/material";
 import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 
 export function LanguageSwitcher() {
@@ -23,24 +23,32 @@ export function LanguageSwitcher() {
   }
 
   return (
-    <FormControl sx={{ minWidth: 120 }} size="small">
-      <Select
-        value={supportedLang}
-        label=""
-        onChange={(newLangEvent) => {
-          const newLang = newLangEvent.target.value;
-          const newSupportedLang = supportedLanguages.find((l: string) => l === newLang) || "en";
-          handleChange(newSupportedLang);
-        }}
-      >
-        {supportedLanguages.map((lang) => {
-          return (
-            <MenuItem key={lang} value={lang}>
-              {fullEnglishLanguageName[lang]}
-            </MenuItem>
-          );
-        })}
-      </Select>
-    </FormControl>
+    <Stack
+      sx={{
+        "@media (max-width: 600px)": {
+          display: "none",
+        },
+      }}
+    >
+      <FormControl sx={{ minWidth: 40 }} size="small">
+        <Select
+          value={supportedLang}
+          label=""
+          onChange={(newLangEvent) => {
+            const newLang = newLangEvent.target.value;
+            const newSupportedLang = supportedLanguages.find((l: string) => l === newLang) || "en";
+            handleChange(newSupportedLang);
+          }}
+        >
+          {supportedLanguages.map((lang) => {
+            return (
+              <MenuItem key={lang} value={lang}>
+                {fullEnglishLanguageName[lang]}
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
+    </Stack>
   );
 }
