@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useLingui } from "@lingui/react";
 import { usePathname, useRouter } from "next/navigation";
-import { FormControl, MenuItem, Select, Stack } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, Stack } from "@mui/material";
 import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 
 export function LanguageSwitcher() {
@@ -30,10 +30,14 @@ export function LanguageSwitcher() {
         },
       }}
     >
-      <FormControl sx={{ minWidth: 40 }} size="small">
+      <FormControl sx={{ minWidth: 120 }} size="small">
+        <InputLabel id="page-lang-label-selector">Page language</InputLabel>
         <Select
           value={supportedLang}
-          label=""
+          labelId="page-lang-label-selector"
+          id="page-lang-label"
+          label="UI Language"
+          sx={{ color: "white" }}
           onChange={(newLangEvent) => {
             const newLang = newLangEvent.target.value;
             const newSupportedLang = supportedLanguages.find((l: string) => l === newLang) || "en";

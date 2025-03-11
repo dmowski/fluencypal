@@ -97,7 +97,7 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
             <Typography
               variant="body2"
               sx={{
-                color: "#777",
+                color: "#555",
                 textTransform: "uppercase",
                 paddingBottom: "10px",
               }}
