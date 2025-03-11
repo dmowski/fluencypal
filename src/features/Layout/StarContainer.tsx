@@ -62,7 +62,7 @@ export const StarContainer = ({ children, paddingBottom, minHeight }: StarContai
             opacity: 1,
           }}
         >
-          <img src="./star.webp" alt="" style={{ width: "100%", minWidth: "700px" }} />
+          <img src="/star.webp" alt="" style={{ width: "100%", minWidth: "700px" }} />
         </Stack>
         {children}
       </Stack>

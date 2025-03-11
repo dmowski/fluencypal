@@ -5,6 +5,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { StarContainer } from "../Layout/StarContainer";
 import { useSearchParams } from "next/navigation";
 import { RolePlayInstruction } from "../RolePlay/types";
+import { useLingui } from "@lingui/react";
 
 interface SignInFormProps {
   rolePlayScenarios: RolePlayInstruction[];
@@ -12,6 +13,7 @@ interface SignInFormProps {
 export const SignInForm = ({ rolePlayScenarios }: SignInFormProps) => {
   const auth = useAuth();
   const searchParams = useSearchParams();
+  const { i18n } = useLingui();
   const rolePlayId = searchParams.get("rolePlayId");
   const scenario = rolePlayId
     ? rolePlayScenarios.find((scenario) => scenario.id === rolePlayId)
@@ -53,7 +55,7 @@ export const SignInForm = ({ rolePlayScenarios }: SignInFormProps) => {
             }}
           >
             <Typography variant="body1" align="center">
-              Create an account, select a language and start practicing
+              {i18n._("Create an account, select a language and start practicing")}
             </Typography>
           </Stack>
         </Stack>
