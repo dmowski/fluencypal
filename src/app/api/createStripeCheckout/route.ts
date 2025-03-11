@@ -1,3 +1,4 @@
+import { supportedLanguages } from "@/common/lang";
 import { StripeCreateCheckoutRequest, StripeCreateCheckoutResponse } from "@/common/requests";
 import Stripe from "stripe";
 
@@ -22,6 +23,8 @@ export async function POST(request: Request) {
     return Response.json(response);
   }
 
+  const supportedLang = supportedLanguages.find((l) => l === requestData.languageCode) || "en";
+
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -39,8 +42,8 @@ export async function POST(request: Request) {
         },
       ],
       mode: "payment",
-      success_url: `${siteUrl}/practice?paymentModal=true&paymentSuccess=true&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteUrl}/practice?paymentModal=true&paymentCanceled=true`,
+      success_url: `${siteUrl}/${supportedLang}/practice?paymentModal=true&paymentSuccess=true&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteUrl}/${supportedLang}/practice?paymentModal=true&paymentCanceled=true`,
       metadata: { userId },
     });
 
