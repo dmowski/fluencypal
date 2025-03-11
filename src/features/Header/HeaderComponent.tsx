@@ -56,7 +56,6 @@ export function HeaderComponent({
   const pathname = usePathname();
 
   const isLanding = !(pathname.startsWith("/practice") || pathname.startsWith(`/${lang}/practice`));
-
   const homeUrl = isLanding ? `/${lang}` : auth.isAuthorized ? `/${lang}/practice` : `/${lang}`;
 
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
@@ -156,15 +155,6 @@ export function HeaderComponent({
 
           {mode === "landing" && (
             <>
-              {auth.isAuthorized && (
-                <Link
-                  href={`/${lang}/practice`}
-                  onClick={(e) => navigateTo(`/${lang}/practice`, e)}
-                  className="menu-link hideOnMobile"
-                >
-                  {practiceTitle}
-                </Link>
-              )}
               <Link
                 href={`/${lang}/scenarios`}
                 onClick={(e) => navigateTo(`/${lang}/scenarios`, e)}
