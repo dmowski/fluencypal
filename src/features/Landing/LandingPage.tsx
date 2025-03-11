@@ -9,11 +9,11 @@ import { CtaBlock } from "./ctaBlock";
 import { ProposalCards } from "./ProposalCards";
 import { ProductDemo } from "./ProductDemo";
 import { RolePlayDemo } from "./RolePlay/RolePlayDemo";
-import { fullEnglishLanguageName, supportedLanguages } from "@/common/lang";
+import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 interface LandingPageProps {
-  lang: string;
+  lang: SupportedLanguage;
 }
 export default function LandingPage({ lang }: LandingPageProps) {
   const i18n = getI18nInstance(lang);
@@ -213,6 +213,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
           <CtaBlock
             title={i18n._(`Ready to Become Fluent in English?`)}
             actionButtonTitle={i18n._(`Start Your Free Trial`)}
+            actionButtonLink={`/${lang}/practice`}
           />
         </Stack>
       </main>

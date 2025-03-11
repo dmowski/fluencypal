@@ -5,8 +5,13 @@ import { buttonStyle, titleFontStyle } from "./landingSettings";
 interface CtaBlockProps {
   title: string;
   actionButtonTitle: string;
+  actionButtonLink: string;
 }
-export const CtaBlock: React.FC<CtaBlockProps> = ({ title, actionButtonTitle }) => {
+export const CtaBlock: React.FC<CtaBlockProps> = ({
+  title,
+  actionButtonLink,
+  actionButtonTitle,
+}) => {
   return (
     <Stack
       sx={{
@@ -48,7 +53,7 @@ export const CtaBlock: React.FC<CtaBlockProps> = ({ title, actionButtonTitle }) 
           </Typography>
         </Stack>
         <Button
-          href="/practice"
+          href={actionButtonLink}
           variant="contained"
           size="large"
           sx={{
