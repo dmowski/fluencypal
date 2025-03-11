@@ -13,6 +13,8 @@ import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { ContactList } from "../Landing/Contact/ContactList";
 import { createStripeCheckout } from "./createStripeCheckout";
 import { CircleCheck } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { supportedLanguages } from "@/common/lang";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
@@ -32,6 +34,10 @@ export const PaymentModal = () => {
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
   const [amountToAdd, setAmountToAdd] = useState(5);
   const [isShowAmountInput, setIsShowAmountInput] = useState(false);
+
+  const pathname = usePathname();
+  const locale = pathname?.split("/")[1] as string;
+  const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
 
   const devModePayments = () => {
     const amount = prompt("Enter amount to update", "10");
@@ -73,6 +79,7 @@ export const PaymentModal = () => {
       const checkoutInfo = await createStripeCheckout({
         userId: auth.uid,
         amount: amountToAdd,
+        languageCode: supportedLang,
       });
       if (!checkoutInfo.sessionUrl) {
         console.log("checkoutInfo", checkoutInfo);
