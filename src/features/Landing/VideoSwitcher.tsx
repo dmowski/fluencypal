@@ -4,32 +4,11 @@ import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { Volume2, VolumeOff } from "lucide-react";
 
-interface VideoBlock {
+export interface VideoBlock {
   src: string;
   description: string;
   buttonTitle: string;
 }
-
-const blocks: VideoBlock[] = [
-  {
-    src: "/begin.mp4",
-    buttonTitle: "Beginner",
-    description:
-      "Practice slow, guided conversations with simpler vocabulary. Perfect for building a solid foundation in any language.",
-  },
-  {
-    src: "/correct.mp4",
-    buttonTitle: "Instant Corrections",
-    description:
-      "Speak freely while the AI teacher highlights mistakes in real time—ideal for fast improvement and building confidence.",
-  },
-  {
-    src: "/advance.mp4",
-    buttonTitle: "Advanced",
-    description:
-      "Enjoy fast-paced, natural conversations to refine fluency and sound like a native speaker. Perfect for challenging your skills.",
-  },
-];
 
 export function useIsVisible(ref?: RefObject<HTMLDivElement | null> | null) {
   const [isIntersecting, setIntersecting] = useState(false);
@@ -49,7 +28,10 @@ export function useIsVisible(ref?: RefObject<HTMLDivElement | null> | null) {
   return isIntersecting;
 }
 
-export const VideoSwitcher = () => {
+interface VideoSwitcherProps {
+  blocks: VideoBlock[];
+}
+export const VideoSwitcher: React.FC<VideoSwitcherProps> = ({ blocks }) => {
   const [activePlayingBlock, setActivePlayingBlock] = useState<number>(0);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const containerRef = useRef<HTMLDivElement>(null);

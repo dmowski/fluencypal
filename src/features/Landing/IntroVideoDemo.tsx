@@ -1,12 +1,19 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { subTitleFontStyle, titleFontStyle } from "./landingSettings";
-import { VideoSwitcher } from "./VideoSwitcher";
+import { VideoBlock, VideoSwitcher } from "./VideoSwitcher";
 
 interface IntroVideoDemoProps {
   title: string;
   subTitle: string;
+  actionButtonTitle: string;
+  blocks: VideoBlock[];
 }
-export const IntroVideoDemo = ({ title, subTitle }: IntroVideoDemoProps) => {
+export const IntroVideoDemo = ({
+  title,
+  blocks,
+  subTitle,
+  actionButtonTitle,
+}: IntroVideoDemoProps) => {
   return (
     <Stack
       sx={{
@@ -58,7 +65,7 @@ export const IntroVideoDemo = ({ title, subTitle }: IntroVideoDemoProps) => {
           </Typography>
         </Stack>
 
-        <VideoSwitcher />
+        <VideoSwitcher blocks={blocks} />
 
         <Stack
           sx={{
@@ -80,7 +87,7 @@ export const IntroVideoDemo = ({ title, subTitle }: IntroVideoDemoProps) => {
             color="inherit"
             href={"/practice"}
           >
-            {"Get started free"}
+            {actionButtonTitle}
           </Button>
         </Stack>
       </Stack>

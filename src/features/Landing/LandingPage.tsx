@@ -38,6 +38,30 @@ export default function LandingPage({ lang }: LandingPageProps) {
             subTitle={i18n._(
               `FluencyPal offers realistic conversational practice in English, Spanish, French, and more. Engage in immersive role-play scenarios, get instant feedback, and improve your speaking skills anytime, anywhere.`
             )}
+            actionButtonTitle={i18n._(`Get started free`)}
+            blocks={[
+              {
+                src: "/begin.mp4",
+                buttonTitle: i18n._(`Beginner`),
+                description: i18n._(
+                  `Practice slow, guided conversations with simpler vocabulary. Perfect for building a solid foundation in any language.`
+                ),
+              },
+              {
+                src: "/correct.mp4",
+                buttonTitle: i18n._(`Instant Corrections`),
+                description: i18n._(
+                  `Speak freely while the AI teacher highlights mistakes in real time—ideal for fast improvement and building confidence.`
+                ),
+              },
+              {
+                src: "/advance.mp4",
+                buttonTitle: i18n._(`Advanced`),
+                description: i18n._(
+                  `Enjoy fast-paced, natural conversations to refine fluency and sound like a native speaker. Perfect for challenging your skills.`
+                ),
+              },
+            ]}
           />
           <ProductDemo label={i18n._(`Product Demo`)} title={i18n._(`See FluencyPal in Action`)} />
 
