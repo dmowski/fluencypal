@@ -145,17 +145,18 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
                 }}
                 className="link-text"
               >
-                {i18n._(`Try`)} {scenario.title}
+                {i18n._(`Try`)} "{scenario.title}"
+                <ArrowForwardIcon
+                  className="link-icon"
+                  sx={{
+                    position: "relative",
+                    top: "6px",
+                    left: "4px",
+                    fontSize: "1rem",
+                    transition: "left 0.3s",
+                  }}
+                />
               </Typography>
-              <ArrowForwardIcon
-                className="link-icon"
-                sx={{
-                  position: "relative",
-                  left: "0px",
-                  fontSize: "20px",
-                  transition: "left 0.3s",
-                }}
-              />
             </Stack>
           </>
         )}

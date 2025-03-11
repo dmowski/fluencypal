@@ -97,7 +97,7 @@ export const RolePlayDemo = ({
           <Stack
             sx={{
               width: "100vw",
-              height: "390px",
+              height: "410px",
               overflow: "hidden",
             }}
           >
@@ -128,7 +128,16 @@ export const RolePlayDemo = ({
                 {rolePlayScenarios
                   .filter((scenario) => !scenario.landingHighlight)
                   .map((scenario, index) => {
-                    return <RolePlayCard key={index} scenario={scenario} lang={lang} />;
+                    return (
+                      <Stack
+                        key={index}
+                        sx={{
+                          maxWidth: "400px",
+                        }}
+                      >
+                        <RolePlayCard key={index} scenario={scenario} lang={lang} height="400px" />
+                      </Stack>
+                    );
                   })}
               </Stack>
             </Stack>

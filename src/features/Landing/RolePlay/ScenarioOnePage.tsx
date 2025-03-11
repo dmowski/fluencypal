@@ -343,7 +343,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                 <Stack
                   sx={{
                     display: "grid",
-                    width: "max-content",
+                    width: "100%",
                     gap: "20px",
                     gridTemplateColumns: "1fr 1fr 1fr",
                     justifyContent: "space-between",
@@ -357,7 +357,9 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   }}
                 >
                   {relatedCards.map((scenario, index) => {
-                    return <RolePlayCard key={index} scenario={scenario} lang={lang} />;
+                    return (
+                      <RolePlayCard key={index} scenario={scenario} lang={lang} height="400px" />
+                    );
                   })}
                 </Stack>
               </Stack>

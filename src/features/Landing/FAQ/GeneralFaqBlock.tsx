@@ -4,8 +4,9 @@ import { FaqItem, FaqItemInfo } from "./FaqItem";
 
 interface GeneralFaqBlockProps {
   items: FaqItemInfo[];
+  title: string;
 }
-export const GeneralFaqBlock = ({ items }: GeneralFaqBlockProps) => {
+export const GeneralFaqBlock = ({ items, title }: GeneralFaqBlockProps) => {
   return (
     <Stack
       sx={{
@@ -41,7 +42,7 @@ export const GeneralFaqBlock = ({ items }: GeneralFaqBlockProps) => {
               fontWeight: 700,
             }}
           >
-            FAQ
+            {title}
           </Typography>
         </Stack>
 

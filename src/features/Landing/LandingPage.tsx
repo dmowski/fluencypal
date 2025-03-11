@@ -128,6 +128,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             lang={lang}
           />
           <GeneralFaqBlock
+            title={i18n._(`FAQ`)}
             items={[
               {
                 question: i18n._(`What is FluencyPal?`),
