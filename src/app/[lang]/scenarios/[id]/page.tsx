@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { ScenarioOnePage } from "@/features/Landing/RolePlay/ScenarioOnePage";
-import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
+import { robots, siteUrl } from "@/common/metadata";
 import { supportedLanguages } from "@/common/lang";
 import { initLingui } from "@/initLingui";
 import { allMessages, getI18nInstance } from "@/appRouterI18n";
@@ -46,10 +46,9 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       i18n._(`English Speaking Exercises`),
     ],
     openGraph: {
-      ...openGraph,
       title,
       description,
-      url: `${siteUrl}scenarios/${id}`,
+      url: `${siteUrl}${lang}/scenarios/${id}`,
       siteName: "FluencyPal",
       images: [
         {
@@ -59,12 +58,15 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
           alt: `FluencyPal - ${scenario.title}`,
         },
       ],
+      locale: "en_US",
+      type: "website",
     },
     twitter: {
-      ...twitter,
+      card: "summary_large_image",
       title: `Practice ${scenario.title} | FluencyPal`,
       description: scenario.subTitle,
       images: [`${siteUrl}${scenario.imageSrc}`],
+      creator: "@dmowskii",
     },
     robots: robots,
   };

@@ -1,6 +1,6 @@
 import { allMessages, getI18nInstance } from "@/appRouterI18n";
 import { supportedLanguages } from "@/common/lang";
-import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
+import { robots, siteUrl } from "@/common/metadata";
 import { ConversationPage } from "@/features/Conversation/ConversationPage";
 import { Header } from "@/features/Header/Header";
 import { APP_NAME } from "@/features/Landing/landingSettings";
@@ -42,7 +42,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     openGraph: {
       title: title,
       description: description,
-      url: `${siteUrl}practice`,
+      url: `${siteUrl}${lang}/practice`,
       images: [
         {
           url: `${siteUrl}openGraph.png`,

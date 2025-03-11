@@ -32,7 +32,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     description: i18n._(
       `Practice conversational English anytime with FluencyPal, your personal AI English tutor. Improve fluency, pronunciation, and confidence through realistic, immersive conversations.`
     ),
-    url: siteUrl,
+    url: siteUrl + lang + "/",
     images: [
       {
         url: `${siteUrl}openGraph.png`,

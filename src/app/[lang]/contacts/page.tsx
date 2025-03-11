@@ -32,7 +32,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     openGraph: {
       title: title,
       description: description,
-      url: `${siteUrl}contacts`,
+      url: `${siteUrl}${lang}/contacts`,
       images: [
         {
           url: `${siteUrl}openGraph.png`,

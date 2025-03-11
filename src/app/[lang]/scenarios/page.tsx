@@ -43,7 +43,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       description: i18n._(
         `Boost your English fluency with interactive AI-powered role-play scenarios. Practice job interviews, daily conversations, travel dialogues, and more. Perfect for intermediate and advanced learners.`
       ),
-      url: `${siteUrl}scenarios`,
+      url: `${siteUrl}${lang}/scenarios`,
       images: [
         {
           url: `${siteUrl}openGraph.png`,
