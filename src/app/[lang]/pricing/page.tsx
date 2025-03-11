@@ -3,6 +3,8 @@ import { PricePage } from "@/features/Landing/Price/PricePage";
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 import { WELCOME_BONUS } from "@/common/usage";
 import { APP_NAME } from "@/features/Landing/landingSettings";
+import { supportedLanguages } from "@/common/lang";
+import { initLingui } from "@/initLingui";
 
 export const metadata: Metadata = {
   title: `Affordable AI Language Learning | ${APP_NAME}`,
@@ -18,6 +20,10 @@ export const metadata: Metadata = {
   robots: robots,
 };
 
-export default async function ScenariosFullPage() {
-  return <PricePage />;
+export default async function Page(props: { params: Promise<{ lang: string }> }) {
+  const lang = (await props.params).lang;
+  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  initLingui(supportedLang);
+
+  return <PricePage lang={supportedLang} />;
 }

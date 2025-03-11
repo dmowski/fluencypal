@@ -1,34 +1,35 @@
+import { supportedLanguages } from "@/common/lang";
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
-import { ConversationPage } from "@/features/Conversation/ConversationPage";
 import { Header } from "@/features/Header/Header";
 import { APP_NAME } from "@/features/Landing/landingSettings";
+import { PrivacyPolicy } from "@/features/Legal/PrivacyPolicy";
+import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `Practice | ${APP_NAME}`,
+  title: `Privacy Policy | ${APP_NAME}`,
   description:
     "Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.",
-
   keywords: [
     "Online English",
     "Learn English",
     "AI Language Tutor",
     "English Practice",
-    APP_NAME,
     "Language Learning",
   ],
-  openGraph: { ...openGraph, url: `${siteUrl}practice` },
+  openGraph: { ...openGraph, url: `${siteUrl}privacy` },
   twitter: twitter,
   robots: robots,
 };
 
-export default function Home() {
+export default async function Page(props: { params: Promise<{ lang: string }> }) {
+  const lang = (await props.params).lang;
+  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  initLingui(supportedLang);
   return (
     <>
-      <Header mode="practice" />
-      <main>
-        <ConversationPage />
-      </main>
+      <Header mode="landing" />
+      <PrivacyPolicy />
     </>
   );
 }

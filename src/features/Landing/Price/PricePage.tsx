@@ -18,8 +18,12 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Gift, HandCoins, Mic } from "lucide-react";
 import { WELCOME_BONUS } from "@/common/usage";
+import { SupportedLanguage } from "@/common/lang";
 
-export const PricePage = () => {
+interface PricePageProps {
+  lang: SupportedLanguage;
+}
+export const PricePage = ({ lang }: PricePageProps) => {
   return (
     <Stack sx={{}}>
       <Header mode="landing" />
@@ -96,6 +100,8 @@ export const PricePage = () => {
               getStartedTitle={`Get Started Free`}
               viewPricingTitle={`View Pricing`}
               noCreditCardNeededTitle={`No Credit Card Needed`}
+              pricingLink={`/${lang}/pricing`}
+              practiceLink={`/${lang}/practice`}
             />
           </Stack>
 
@@ -801,9 +807,10 @@ export const PricePage = () => {
         <CtaBlock
           title="Start Your Journey to Fluent Conversations Now"
           actionButtonTitle="Get Started Free"
+          actionButtonLink={`/${lang}/practice`}
         />
       </div>
-      <Footer />
+      <Footer lang={lang} />
     </Stack>
   );
 };

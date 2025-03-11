@@ -1,11 +1,13 @@
+import { supportedLanguages } from "@/common/lang";
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 import { Header } from "@/features/Header/Header";
 import { APP_NAME } from "@/features/Landing/landingSettings";
-import { PrivacyPolicy } from "@/features/Legal/PrivacyPolicy";
+import { TermsOfUse } from "@/features/Legal/TermsOfUse";
+import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `Privacy Policy | ${APP_NAME}`,
+  title: `Terms of Use | ${APP_NAME}`,
   description:
     "Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.",
   keywords: [
@@ -15,16 +17,19 @@ export const metadata: Metadata = {
     "English Practice",
     "Language Learning",
   ],
-  openGraph: { ...openGraph, url: `${siteUrl}privacy` },
+  openGraph: { ...openGraph, url: `${siteUrl}terms` },
   twitter: twitter,
   robots: robots,
 };
 
-export default function PrivacyPolicyPage() {
+export default async function Page(props: { params: Promise<{ lang: string }> }) {
+  const lang = (await props.params).lang;
+  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  initLingui(supportedLang);
   return (
     <>
       <Header mode="landing" />
-      <PrivacyPolicy />
+      <TermsOfUse />
     </>
   );
 }

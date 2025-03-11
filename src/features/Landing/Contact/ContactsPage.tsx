@@ -5,8 +5,12 @@ import { maxContentWidth, subTitleFontStyle } from "../landingSettings";
 import { Header } from "../../Header/Header";
 import { Footer } from "../Footer";
 import { ContactList } from "./ContactList";
+import { SupportedLanguage } from "@/common/lang";
 
-export const ContactsPage = () => {
+interface ContactsPageProps {
+  lang: SupportedLanguage;
+}
+export const ContactsPage = ({ lang }: ContactsPageProps) => {
   return (
     <Stack sx={{}}>
       <Header mode="landing" />
@@ -105,7 +109,7 @@ export const ContactsPage = () => {
           </Stack>
         </Stack>
       </div>
-      <Footer />
+      <Footer lang={lang} />
     </Stack>
   );
 };

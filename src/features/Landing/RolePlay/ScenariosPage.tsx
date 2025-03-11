@@ -7,12 +7,14 @@ import { Footer } from "../Footer";
 import { CtaBlock } from "../ctaBlock";
 import { ListRolePlayIntro } from "./ListRolePlayIntro";
 import { ListRolePlay } from "./ListRolePlay";
+import { SupportedLanguage } from "@/common/lang";
 
 interface ScenariosPageProps {
   selectedCategory?: string;
+  lang: SupportedLanguage;
 }
 
-export const ScenariosPage = ({ selectedCategory }: ScenariosPageProps) => {
+export const ScenariosPage = ({ selectedCategory, lang }: ScenariosPageProps) => {
   return (
     <>
       <Header mode="landing" />
@@ -37,9 +39,10 @@ export const ScenariosPage = ({ selectedCategory }: ScenariosPageProps) => {
         <CtaBlock
           title="Start Your Journey to Fluent Conversations Now"
           actionButtonTitle="Get Started Free"
+          actionButtonLink={`/${lang}/practice`}
         />
       </div>
-      <Footer />
+      <Footer lang={lang} />
     </>
   );
 };

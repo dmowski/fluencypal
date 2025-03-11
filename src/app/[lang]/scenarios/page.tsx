@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { ScenariosPage } from "@/features/Landing/RolePlay/ScenariosPage";
 import { robots, siteUrl } from "@/common/metadata";
 import { APP_NAME } from "@/features/Landing/landingSettings";
+import { supportedLanguages } from "@/common/lang";
+import { initLingui } from "@/initLingui";
 
 export const metadata: Metadata = {
   title: `Real-Life English Role-Play Scenarios | ${APP_NAME}`,
@@ -46,9 +48,15 @@ interface ScenariosPageProps {
   searchParams: Promise<{
     category?: string;
   }>;
+  params: Promise<{ lang: string }>;
 }
 export default async function ScenariosFullPage(props: ScenariosPageProps) {
   const params = await props.searchParams;
   const category = params.category;
-  return <ScenariosPage selectedCategory={category} />;
+
+  const lang = (await props.params).lang;
+  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  initLingui(supportedLang);
+
+  return <ScenariosPage selectedCategory={category} lang={supportedLang} />;
 }

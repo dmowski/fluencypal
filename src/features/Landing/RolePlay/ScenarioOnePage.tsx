@@ -14,13 +14,14 @@ import {
 } from "../landingSettings";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { RolePlayCard } from "./RolePlayCard";
-import { fullEnglishLanguageName, supportedLanguages } from "@/common/lang";
+import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 
 interface ScenarioOnePageProps {
   id?: string;
+  lang: SupportedLanguage;
 }
 
-export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
+export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
   const item = rolePlayScenarios.find((scenario) => scenario.id === id);
   if (!item) {
     return null;
@@ -364,9 +365,10 @@ export const ScenarioOnePage = ({ id }: ScenarioOnePageProps) => {
         <CtaBlock
           title="Start Your Journey to Fluent Conversations Now"
           actionButtonTitle="Get Started Free"
+          actionButtonLink={`/${lang}/practice`}
         />
       </div>
-      <Footer />
+      <Footer lang={lang} />
     </>
   );
 };

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { ContactsPage } from "@/features/Landing/Contact/ContactsPage";
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
 import { APP_NAME } from "@/features/Landing/landingSettings";
+import { supportedLanguages } from "@/common/lang";
+import { initLingui } from "@/initLingui";
 
 export const metadata: Metadata = {
   title: `Contacts | ${APP_NAME}`,
@@ -12,6 +14,10 @@ export const metadata: Metadata = {
   robots: robots,
 };
 
-export default async function ContactsFullPage() {
-  return <ContactsPage />;
+export default async function Page(props: { params: Promise<{ lang: string }> }) {
+  const lang = (await props.params).lang;
+  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  initLingui(supportedLang);
+
+  return <ContactsPage lang={supportedLang} />;
 }
