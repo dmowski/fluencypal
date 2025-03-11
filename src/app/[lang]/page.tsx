@@ -8,9 +8,14 @@ import { Metadata } from "next";
 import { Robots } from "next/dist/lib/metadata/types/metadata-types";
 import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 import { Twitter } from "next/dist/lib/metadata/types/twitter-types";
+import linguiConfig from "../../../lingui.config";
 
 interface PageProps {
-  params: Promise<{ id: string; lang: string }>;
+  params: Promise<{ lang: string }>;
+}
+
+export async function generateStaticParams() {
+  return linguiConfig.locales.map((lang: string) => ({ lang }));
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {

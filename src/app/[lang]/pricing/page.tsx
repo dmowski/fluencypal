@@ -8,7 +8,7 @@ import { allMessages, getI18nInstance } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 
 interface PageProps {
-  params: Promise<{ id: string; lang: string }>;
+  params: Promise<{ lang: string }>;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
