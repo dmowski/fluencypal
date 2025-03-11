@@ -23,7 +23,7 @@ import { PaymentModal } from "../Usage/PaymentModal";
 import { NeedHelpModal } from "./NeedHelpModal";
 import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 
 export type HeaderMode = "landing" | "practice";

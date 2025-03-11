@@ -1,6 +1,10 @@
 import { Link, Stack, Typography } from "@mui/material";
 import { maxLandingWidth } from "./landingSettings";
-import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
+import {
+  fullEnglishLanguageName,
+  SupportedLanguage,
+  supportedLanguages,
+} from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 interface FooterProps {

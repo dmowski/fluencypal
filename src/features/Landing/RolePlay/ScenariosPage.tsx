@@ -7,7 +7,7 @@ import { Footer } from "../Footer";
 import { CtaBlock } from "../ctaBlock";
 import { ListRolePlayIntro } from "./ListRolePlayIntro";
 import { ListRolePlay } from "./ListRolePlay";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 interface ScenariosPageProps {

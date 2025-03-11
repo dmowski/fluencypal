@@ -1,5 +1,9 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { emojiLanguageName, fullEnglishLanguageName, supportedLanguages } from "@/common/lang";
+import {
+  emojiLanguageName,
+  fullEnglishLanguageName,
+  supportedLanguages,
+} from "@/features/Lang/lang";
 
 export const SupportedLanguages = () => {
   return (

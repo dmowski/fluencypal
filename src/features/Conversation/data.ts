@@ -1,5 +1,5 @@
 import { ConversationMode } from "@/common/conversation";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 
 export const conversationModeLabel: Record<ConversationMode, string> = {
   beginner: "Beginner",

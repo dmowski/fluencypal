@@ -3,7 +3,7 @@ import {
   getUserLangCode,
   SupportedLanguage,
   supportedLanguages,
-} from "@/common/lang";
+} from "@/features/Lang/lang";
 import { JSX, useEffect, useState } from "react";
 import SuggestInput, { SelectGroupItem } from "../uiKit/SuggestInput/SuggestInput";
 import { Button, Stack } from "@mui/material";

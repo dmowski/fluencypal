@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { ScenarioOnePage } from "@/features/Landing/RolePlay/ScenarioOnePage";
 import { openGraph, robots, siteUrl, twitter } from "@/common/metadata";
-import { supportedLanguages } from "@/common/lang";
+import { supportedLanguages } from "@/features/Lang/lang";
 import { initLingui } from "@/initLingui";
 import { allMessages, getI18nInstance } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";

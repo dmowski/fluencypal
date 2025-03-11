@@ -1,5 +1,5 @@
 import { ConversationMode } from "./conversation";
-import { SupportedLanguage } from "./lang";
+import { SupportedLanguage } from "../features/Lang/lang";
 
 export interface Homework {
   id: string;

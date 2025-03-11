@@ -14,7 +14,11 @@ import {
 } from "../landingSettings";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { RolePlayCard } from "./RolePlayCard";
-import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
+import {
+  fullEnglishLanguageName,
+  SupportedLanguage,
+  supportedLanguages,
+} from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 interface ScenarioOnePageProps {

@@ -1,6 +1,6 @@
 import { TextAiModel, TextUsageEvent } from "./ai";
 import { ChatMessage } from "./conversation";
-import { SupportedLanguage } from "./lang";
+import { SupportedLanguage } from "../features/Lang/lang";
 
 export interface AiRequest {
   userMessage: string;
