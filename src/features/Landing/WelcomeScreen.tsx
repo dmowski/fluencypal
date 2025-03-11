@@ -41,10 +41,6 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ title, subTitle })
             },
           }}
         >
-          <a href={"/"} className="logoContainer">
-            <img src="./logo.svg" alt="Dark lang logo" width="90px" height="42px" />
-          </a>
-
           <Typography
             align="center"
             variant="h1"
