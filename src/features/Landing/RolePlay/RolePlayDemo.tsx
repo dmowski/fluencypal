@@ -10,7 +10,23 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { RolePlayScroller } from "./RolePlayScroller";
 import { RolePlayCard } from "./RolePlayCard";
 
-export const RolePlayDemo = () => {
+interface RolePlayDemoProps {
+  title: string;
+  subTitle: string;
+  actionButtonTitle: string;
+  footerLabel: string;
+  footerLinkTitle: string;
+  importantRolesTitleAfterFooter: string;
+}
+
+export const RolePlayDemo = ({
+  title,
+  subTitle,
+  actionButtonTitle,
+  footerLabel,
+  footerLinkTitle,
+  importantRolesTitleAfterFooter,
+}: RolePlayDemoProps) => {
   const importantRoles = rolePlayScenarios.filter((scenario) => scenario.landingHighlight);
 
   return (
@@ -51,7 +67,7 @@ export const RolePlayDemo = () => {
               color: "#000",
             }}
           >
-            Role-Play Scenarios: Real-Life Conversation Practice
+            {title}
           </Typography>
           <Typography
             align="center"
@@ -62,7 +78,7 @@ export const RolePlayDemo = () => {
               ...subTitleFontStyle,
             }}
           >
-            Enhance your speaking skills with immersive, hands-on scenarios for everyday situations.
+            {subTitle}
           </Typography>
         </Stack>
         <Stack
@@ -131,7 +147,7 @@ export const RolePlayDemo = () => {
               color="info"
               variant="contained"
             >
-              Explore all scenarios
+              {actionButtonTitle}
             </Button>
             <Stack
               sx={{
@@ -146,7 +162,7 @@ export const RolePlayDemo = () => {
                   fontWeight: 320,
                 }}
               >
-                Don’t see what you’re looking for?
+                {footerLabel}
               </Typography>
 
               <Link
@@ -175,7 +191,7 @@ export const RolePlayDemo = () => {
                     component={"span"}
                     className="link-text"
                   >
-                    Build your own scenario
+                    {footerLinkTitle}
                   </Typography>
                   <ArrowForwardIcon
                     className="link-icon"
@@ -210,7 +226,7 @@ export const RolePlayDemo = () => {
               color: "#000",
             }}
           >
-            Become a Fluent Speaker
+            {importantRolesTitleAfterFooter}
           </Typography>
           <Typography
             align="center"

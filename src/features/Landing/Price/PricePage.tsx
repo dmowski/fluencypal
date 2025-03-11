@@ -731,52 +731,61 @@ export const PricePage = () => {
                 }}
               >
                 <FaqItem
-                  question="Can I try Dark Lang for free?"
-                  answer={
-                    <Typography>
-                      Yes! You start with ${WELCOME_BONUS} in free credits to explore all features.
-                    </Typography>
-                  }
-                />
-
-                <FaqItem
-                  question="How much do AI conversations cost?"
-                  answer={
-                    <Typography>
-                      The cost is calculated based on duration and AI usage. On average, a full hour
-                      costs ${WELCOME_BONUS}.
-                    </Typography>
-                  }
-                />
-
-                <FaqItem
-                  question="Can I buy credits in bulk?"
-                  answer={
-                    <Stack gap={"20px"}>
+                  info={{
+                    question: "Can I try Dark Lang for free?",
+                    answer: (
                       <Typography>
-                        Yes! We offer discounts when purchasing larger credit packages. Just contact
-                        me before you buy and I'll give you a discount.
+                        Yes! You start with ${WELCOME_BONUS} in free credits to explore all
+                        features.
                       </Typography>
-                      <Stack
-                        gap={"10px"}
-                        sx={{
-                          width: "100%",
-                        }}
-                      >
-                        <Typography>Contacts:</Typography>
-                        <ContactList />
-                      </Stack>
-                    </Stack>
-                  }
+                    ),
+                  }}
                 />
 
                 <FaqItem
-                  question="Will my credits expire?"
-                  answer={
-                    <Typography>
-                      No, your credits stay active as long as your account is in good standing.
-                    </Typography>
-                  }
+                  info={{
+                    question: "How much do AI conversations cost?",
+                    answer: (
+                      <Typography>
+                        The cost is calculated based on duration and AI usage. On average, a full
+                        hour costs ${WELCOME_BONUS}.
+                      </Typography>
+                    ),
+                  }}
+                />
+
+                <FaqItem
+                  info={{
+                    question: "Can I buy credits in bulk?",
+                    answer: (
+                      <Stack gap={"20px"}>
+                        <Typography>
+                          Yes! We offer discounts when purchasing larger credit packages. Just
+                          contact me before you buy and I'll give you a discount.
+                        </Typography>
+                        <Stack
+                          gap={"10px"}
+                          sx={{
+                            width: "100%",
+                          }}
+                        >
+                          <Typography>Contacts:</Typography>
+                          <ContactList />
+                        </Stack>
+                      </Stack>
+                    ),
+                  }}
+                />
+
+                <FaqItem
+                  info={{
+                    question: "Will my credits expire?",
+                    answer: (
+                      <Typography>
+                        No, your credits stay active as long as your account is in good standing.
+                      </Typography>
+                    ),
+                  }}
                 />
               </Stack>
             </Stack>

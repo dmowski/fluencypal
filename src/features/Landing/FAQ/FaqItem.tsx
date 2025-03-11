@@ -2,7 +2,12 @@ import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
 
-export const FaqItem = ({ question, answer }: { question: string; answer: React.ReactNode }) => {
+export interface FaqItemInfo {
+  question: string;
+  answer: React.ReactNode;
+}
+export const FaqItem = (info: { info: FaqItemInfo }) => {
+  const { question, answer } = info.info;
   return (
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
