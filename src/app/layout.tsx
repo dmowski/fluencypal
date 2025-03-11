@@ -20,17 +20,19 @@ import { AudioProvider } from "@/features/Audio/useAudio";
 import { openGraph, robots, twitter } from "@/common/metadata";
 
 export const metadata: Metadata = {
-  title: "Online English with AI Teacher",
+  title: "FluencyPal – AI English Speaking Practice for Fluency & Confidence",
   description:
-    "Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.",
+    "Practice conversational English with FluencyPal, your 24/7 AI English tutor and speaking coach. Improve fluency, pronunciation, and confidence through real-life role-play scenarios with instant feedback.",
 
   keywords: [
-    "Online English",
-    "Learn English",
-    "AI Language Tutor",
-    "English Practice",
-    "Dark Lang",
-    "Language Learning",
+    "ai English tutor",
+    "English speaking practice app",
+    "improve English fluency",
+    "advanced English conversation",
+    "English speaking coach",
+    "conversational English practice",
+    "language immersion app",
+    "English speaking partner",
   ],
   openGraph: openGraph,
   twitter: twitter,

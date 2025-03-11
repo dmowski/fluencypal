@@ -29,8 +29,8 @@ export default function LandingPage() {
         >
           <WelcomeScreen
             title="Online English with AI Teacher"
-            subTitle="Experience next-level language practice with Bruno, your friendly AI tutor who’s ready
-            to chat 24/7. Whether you’re a beginner or advanced learner, Bruno adapts to your pace,
+            subTitle="Experience next-level language practice with your friendly AI tutor who’s ready
+            to chat 24/7. Whether you’re a beginner or advanced learner, Our platform adapts to your pace,
             corrects mistakes, and keeps you motivated."
           />
           <IntroVideoDemo
@@ -47,7 +47,7 @@ export default function LandingPage() {
                 category: "Speaking",
                 title: "Boost Your Fluency in Record Time",
                 description:
-                  "Practice live conversations with Bruno. Whether you speak or type, the AI responds naturally, highlights mistakes, and helps you progress quickly.",
+                  "Practice live conversations. Whether you speak or type, the AI responds naturally, highlights mistakes, and helps you progress quickly.",
                 img: "/talk.jpeg",
                 href: "/practice",
                 actionButtonTitle: "Try Speaking Mode",
@@ -56,7 +56,7 @@ export default function LandingPage() {
                 category: "Grammar",
                 title: "Master the Rules",
                 description:
-                  "Bruno provides real-time feedback and explains grammar points on the spot. Get daily tasks to learn new rules and apply them immediately.",
+                  "We provide real-time feedback and explains grammar points on the spot. Get daily tasks to learn new rules and apply them immediately.",
                 img: "/rules.jpeg",
                 href: "/practice",
                 actionButtonTitle: "Improve Your Grammar",
@@ -97,7 +97,7 @@ export default function LandingPage() {
                   <Typography>
                     Dark Lang is an AI-powered platform where you can practice natural conversations
                     in multiple languages—like English, Spanish, or French—with a patient and
-                    knowledgeable virtual tutor named Bruno.
+                    knowledgeable virtual tutor.
                   </Typography>
                 ),
               },
@@ -129,8 +129,8 @@ export default function LandingPage() {
                     }}
                   >
                     <Typography>
-                      Absolutely. Bruno supports multiple languages, adapting to your choice and
-                      level.
+                      Absolutely. Our system supports multiple languages, adapting to your choice
+                      and level.
                     </Typography>
                     <Stack
                       sx={{

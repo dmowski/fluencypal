@@ -5,17 +5,16 @@ import { Twitter } from "next/dist/lib/metadata/types/twitter-types";
 export const siteUrl = "https://dark-lang.net/";
 
 export const openGraph: OpenGraph = {
-  title: "Online English with AI Teacher | Dark Lang",
+  title: "FluencyPal – AI English Speaking Practice",
   description:
-    "Learn English (or other languages) with Bruno, your friendly AI tutor. Beginner, instant corrections, and advanced modes help you improve fast—no scheduling required.",
+    "Practice conversational English anytime with FluencyPal, your personal AI English tutor. Improve fluency, pronunciation, and confidence through realistic, immersive conversations.",
   url: siteUrl,
-  siteName: "Dark Lang",
   images: [
     {
       url: `${siteUrl}openGraph.png`,
       width: 1200,
       height: 630,
-      alt: "Dark Lang - Online English with AI Teacher",
+      alt: "FluencyPal - AI English Speaking Practice App",
     },
   ],
   locale: "en_US",
@@ -24,9 +23,9 @@ export const openGraph: OpenGraph = {
 
 export const twitter: Twitter = {
   card: "summary_large_image",
-  title: "Online English with AI Teacher | Dark Lang",
+  title: "FluencyPal – Your AI English Speaking Partner",
   description:
-    "Practice speaking English, French, or another language with a personalized AI tutor named Bruno.",
+    "FluencyPal helps intermediate and advanced learners improve English speaking fluency through personalized AI-driven conversations. Available 24/7, no subscriptions required.",
   images: [`${siteUrl}openGraph.png`],
   creator: "@dmowskii",
 };
