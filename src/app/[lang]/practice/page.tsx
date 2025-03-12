@@ -44,9 +44,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       APP_NAME,
       i18n._(`Language Learning`),
     ],
-    alternates: {
-      canonical: `https://www.fluencypal.com/${supportedLang}/practice`,
-    },
+
     openGraph: {
       title: title,
       description: description,
