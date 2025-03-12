@@ -2,7 +2,7 @@ import "server-only";
 
 import { getI18nInstance } from "@/appRouterI18n";
 import { supportedLanguages } from "@/common/lang";
-import { robots, siteUrl, siteUrlWithoutSlash } from "@/common/metadata";
+import { robots, siteUrl } from "@/common/metadata";
 import { APP_NAME } from "@/features/Landing/landingSettings";
 import { initLingui } from "@/initLingui";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
@@ -147,7 +147,7 @@ export const generateMetadataInfo = ({
       url: `${siteUrl}${langForUrl}/${currentPath}`,
       images: [
         {
-          url: `${siteUrl}openGraph.png`,
+          url: openGraphImageUrl,
           width: 1200,
           height: 630,
           alt: `${APP_NAME} – ` + i18n._(`AI English Speaking Practice`),
@@ -159,7 +159,7 @@ export const generateMetadataInfo = ({
       card: "summary_large_image",
       title: title,
       description: description,
-      images: [`${siteUrl}openGraph.png`],
+      images: [openGraphImageUrl],
       creator: "@dmowskii",
     },
 
