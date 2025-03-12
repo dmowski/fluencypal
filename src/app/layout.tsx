@@ -83,7 +83,7 @@ export default async function RootLayout({
 }>) {
   const lang: string = (await params)?.lang || defaultLang;
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
-
+  console.log("RootLayout supportedLang", supportedLang);
   initLingui(supportedLang);
 
   return (

@@ -3,6 +3,7 @@
 import { I18nProvider } from "@lingui/react";
 import { type Messages, setupI18n } from "@lingui/core";
 import { useState } from "react";
+import { supportedLanguages } from "@/common/lang";
 
 type Props = {
   children: React.ReactNode;
@@ -11,10 +12,11 @@ type Props = {
 };
 
 export function LinguiClientProvider({ children, initialLocale, initialMessages }: Props) {
+  const supportedLang = supportedLanguages.find((l) => l === initialLocale) || "en";
   const [i18n] = useState(() => {
     return setupI18n({
-      locale: initialLocale,
-      messages: { [initialLocale]: initialMessages },
+      locale: supportedLang,
+      messages: { [supportedLang]: initialMessages },
     });
   });
   return <I18nProvider i18n={i18n}>{children}</I18nProvider>;
