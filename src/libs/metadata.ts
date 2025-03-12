@@ -140,7 +140,7 @@ export const generateMetadataInfo = ({
     keywords,
     title,
     description,
-    alternates: generateAlternatesTags(currentPath),
+    alternates: generateAlternatesTags(currentPath + scenarioId ? "/" + scenarioId : ""),
     openGraph: {
       title: title,
       description: description,
