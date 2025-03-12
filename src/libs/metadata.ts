@@ -73,6 +73,14 @@ export const generateMetadataInfo = ({ lang, currentPath }: generateMetadataInfo
     ];
   }
 
+  if (currentPath === "privacy") {
+    title = i18n._(`Privacy Policy`) + " | " + APP_NAME;
+    description = i18n._(
+      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`
+    );
+    keywords = [];
+  }
+
   return {
     keywords,
     title,
