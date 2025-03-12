@@ -29,6 +29,9 @@ export async function generateStaticParams() {
 
 export const metadata: Metadata = {
   title: "FluencyPal – AI English Speaking Practice for Fluency & Confidence",
+  alternates: {
+    canonical: `https://www.fluencypal.com/`,
+  },
   description:
     "Practice conversational English with FluencyPal, your 24/7 AI English tutor and speaking coach. Improve fluency, pronunciation, and confidence through real-life role-play scenarios with instant feedback.",
 

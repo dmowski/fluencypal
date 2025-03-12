@@ -67,6 +67,10 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       `Practice conversational English with FluencyPal, your 24/7 AI English tutor and speaking coach. Improve fluency, pronunciation, and confidence through real-life role-play scenarios with instant feedback.`
     ),
 
+    alternates: {
+      canonical: `https://www.fluencypal.com/${lang ? supportedLang : ""}`,
+    },
+
     keywords: [
       i18n._(`ai English tutor`),
       i18n._(`English speaking practice app`),

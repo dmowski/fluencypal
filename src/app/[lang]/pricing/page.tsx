@@ -31,6 +31,9 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const metadata: Metadata = {
     title,
     description,
+    alternates: {
+      canonical: `https://www.fluencypal.com/${supportedLang}/pricing`,
+    },
 
     keywords: [
       i18n._(`AI language tutor pricing`),

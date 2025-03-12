@@ -33,6 +33,10 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     title,
     description,
 
+    alternates: {
+      canonical: `https://www.fluencypal.com/${supportedLang}/scenarios`,
+    },
+
     keywords: [
       i18n._(`English Role-Play`),
       i18n._(`English Speaking Practice`),
