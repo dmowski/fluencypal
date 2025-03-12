@@ -25,6 +25,7 @@ import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SupportedLanguage } from "@/common/lang";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 export type HeaderMode = "landing" | "practice";
 
@@ -55,8 +56,14 @@ export function HeaderComponent({
   const auth = useAuth();
   const pathname = usePathname();
 
-  const isLanding = !(pathname.startsWith("/practice") || pathname.startsWith(`/${lang}/practice`));
-  const homeUrl = isLanding ? `/${lang}` : auth.isAuthorized ? `/${lang}/practice` : `/${lang}`;
+  const isLanding = !(
+    pathname.startsWith("/practice") || pathname.startsWith(`${getUrlStart(lang)}practice`)
+  );
+  const homeUrl = isLanding
+    ? `${getUrlStart(lang)}`
+    : auth.isAuthorized
+      ? `${getUrlStart(lang)}practice`
+      : getUrlStart(lang);
 
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [isShowLangSelector, setIsShowLangSelector] = useState(false);
@@ -156,22 +163,22 @@ export function HeaderComponent({
           {mode === "landing" && (
             <>
               <Link
-                href={`/${lang}/scenarios`}
-                onClick={(e) => navigateTo(`/${lang}/scenarios`, e)}
+                href={`${getUrlStart(lang)}scenarios`}
+                onClick={(e) => navigateTo(`${getUrlStart(lang)}scenarios`, e)}
                 className="menu-link hideOnMobile"
               >
                 {rolePlayTitle}
               </Link>
               <Link
-                href={`/${lang}/contacts`}
-                onClick={(e) => navigateTo(`/${lang}/contacts`, e)}
+                href={`${getUrlStart(lang)}contacts`}
+                onClick={(e) => navigateTo(`${getUrlStart(lang)}contacts`, e)}
                 className="menu-link hideOnMobile"
               >
                 {contactsTitle}
               </Link>
               <Link
-                href={`/${lang}/pricing`}
-                onClick={(e) => navigateTo(`/${lang}/pricing`, e)}
+                href={`${getUrlStart(lang)}pricing`}
+                onClick={(e) => navigateTo(`${getUrlStart(lang)}pricing`, e)}
                 className="menu-link hideOnMobile"
               >
                 {priceTitle}
@@ -207,8 +214,8 @@ export function HeaderComponent({
 
                 {mode === "landing" && (
                   <Link
-                    href={`/${lang}/practice`}
-                    onClick={(e) => navigateTo(`/${lang}/practice`, e)}
+                    href={`${getUrlStart(lang)}practice`}
+                    onClick={(e) => navigateTo(`${getUrlStart(lang)}practice`, e)}
                     className="menu-link"
                   >
                     {practiceTitle}
@@ -225,8 +232,8 @@ export function HeaderComponent({
               </>
             ) : (
               <Button
-                href={`/${lang}/practice`}
-                onClick={(e) => navigateTo(`/${lang}/practice`, e)}
+                href={`${getUrlStart(lang)}practice`}
+                onClick={(e) => navigateTo(`${getUrlStart(lang)}practice`, e)}
                 variant="outlined"
               >
                 {signInTitle}
