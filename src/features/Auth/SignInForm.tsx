@@ -6,11 +6,13 @@ import { StarContainer } from "../Layout/StarContainer";
 import { useSearchParams } from "next/navigation";
 import { RolePlayInstruction } from "../RolePlay/types";
 import { useLingui } from "@lingui/react";
+import { SupportedLanguage } from "@/common/lang";
 
 interface SignInFormProps {
   rolePlayScenarios: RolePlayInstruction[];
+  lang: SupportedLanguage;
 }
-export const SignInForm = ({ rolePlayScenarios }: SignInFormProps) => {
+export const SignInForm = ({ rolePlayScenarios, lang }: SignInFormProps) => {
   const auth = useAuth();
   const searchParams = useSearchParams();
   const { i18n } = useLingui();
@@ -105,10 +107,10 @@ export const SignInForm = ({ rolePlayScenarios }: SignInFormProps) => {
                 alignItems: "center",
               }}
             >
-              <Link href="/privacy" target="_blank">
+              <Link href={`/${lang}/privacy`} target="_blank">
                 <Typography variant="caption">{i18n._(`Privacy Policy`)}</Typography>
               </Link>
-              <Link href="/terms" target="_blank">
+              <Link href={`/${lang}/terms`} target="_blank">
                 <Typography variant="caption">{i18n._(`Terms of Use`)}</Typography>
               </Link>
             </Stack>

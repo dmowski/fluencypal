@@ -17,7 +17,6 @@ import { ContactList } from "../Contact/ContactList";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Gift, HandCoins, Mic } from "lucide-react";
-import { WELCOME_BONUS } from "@/common/usage";
 import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
@@ -216,7 +215,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   comment: "Button title for contact me for advance pricing",
                 })}
                 isLightButton
-                buttonLink={"/contacts"}
+                buttonLink={`/${lang}/contacts`}
               />
             </Stack>
           </Stack>

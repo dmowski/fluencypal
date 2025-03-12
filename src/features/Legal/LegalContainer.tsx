@@ -1,11 +1,13 @@
+import { SupportedLanguage } from "@/common/lang";
 import { Button, ButtonGroup, Link, Stack, Typography } from "@mui/material";
 
 interface LegalContainerProps {
   children: React.ReactNode;
   page: "privacy" | "terms";
+  lang: SupportedLanguage;
 }
 
-export const LegalContainer = ({ children, page }: LegalContainerProps) => {
+export const LegalContainer = ({ children, page, lang }: LegalContainerProps) => {
   const switcher = (
     <ButtonGroup
       sx={{
@@ -13,10 +15,10 @@ export const LegalContainer = ({ children, page }: LegalContainerProps) => {
         zIndex: 9999999,
       }}
     >
-      <Button variant={page === "terms" ? "contained" : "outlined"} href="/terms">
+      <Button variant={page === "terms" ? "contained" : "outlined"} href={`/${lang}/terms`}>
         Terms of Use
       </Button>
-      <Button variant={page === "privacy" ? "contained" : "outlined"} href="/privacy">
+      <Button variant={page === "privacy" ? "contained" : "outlined"} href={`/${lang}/privacy`}>
         Privacy Policy
       </Button>
     </ButtonGroup>

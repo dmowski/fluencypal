@@ -18,9 +18,11 @@ import {
 import { UserSettings } from "@/common/user";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import { ContactList } from "../Landing/Contact/ContactList";
+import { SupportedLanguage } from "@/common/lang";
 
 interface NeedHelpModalProps {
   onClose: () => void;
+  lang: SupportedLanguage;
 }
 
 async function deleteCollectionDocs(firestore: Firestore, collectionPath: string): Promise<void> {
@@ -29,7 +31,7 @@ async function deleteCollectionDocs(firestore: Firestore, collectionPath: string
   await Promise.all(deletions);
 }
 
-export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
+export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
   const auth = useAuth();
   const [isShowDeleteAccountModal, setIsShowDeleteAccountModal] = useState(false);
 
@@ -133,7 +135,7 @@ export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
             >
               <ReceiptText />
               <Typography>
-                <Link href="/terms">Terms of Use</Link>
+                <Link href={`/${lang}/terms`}>Terms of Use</Link>
               </Typography>
             </Stack>
 
@@ -146,7 +148,7 @@ export const NeedHelpModal = ({ onClose }: NeedHelpModalProps) => {
             >
               <Cookie />
               <Typography>
-                <Link href="/privacy">Privacy Policy</Link>
+                <Link href={`/${lang}/privacy`}>Privacy Policy</Link>
               </Typography>
             </Stack>
           </Stack>

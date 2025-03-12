@@ -34,6 +34,10 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     title,
     description,
 
+    alternates: {
+      canonical: `https://www.fluencypal.com/${supportedLang}/terms`,
+    },
+
     keywords: [
       i18n._(`Online English`),
       i18n._(`Learn English`),
@@ -44,7 +48,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     openGraph: {
       title: title,
       description: description,
-      url: `${siteUrl}${lang}/terms`,
+      url: `${siteUrl}${supportedLang}/terms`,
       images: [
         {
           url: `${siteUrl}openGraph.png`,
