@@ -28,7 +28,10 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
   initLingui(supportedLang);
 
   return (
-    <LinguiClientProvider initialLocale={supportedLang} initialMessages={allMessages[lang]!}>
+    <LinguiClientProvider
+      initialLocale={supportedLang}
+      initialMessages={allMessages[supportedLang]!}
+    >
       <ContactsPage lang={supportedLang} />
     </LinguiClientProvider>
   );
