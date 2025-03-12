@@ -9,8 +9,9 @@ import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import linguiConfig from "../../../../lingui.config";
 
 export async function generateStaticParams() {
-  return linguiConfig.locales.map((lang: string) => ({ lang }));
+  return supportedLanguages.map((lang: string) => ({ lang }));
 }
+
 interface PageProps {
   params: Promise<{ lang: string }>;
 }

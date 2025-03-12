@@ -4,11 +4,10 @@ import { supportedLanguages } from "@/common/lang";
 import { initLingui } from "@/initLingui";
 import { allMessages } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
-import linguiConfig from "../../../../lingui.config";
 import { generateMetadataInfo } from "@/libs/metadata";
 
 export async function generateStaticParams() {
-  return linguiConfig.locales.map((lang: string) => ({ lang }));
+  return supportedLanguages.map((lang: string) => ({ lang }));
 }
 
 interface PageProps {

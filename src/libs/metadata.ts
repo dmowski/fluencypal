@@ -34,8 +34,8 @@ export const generateMetadataInfo = ({ lang, currentPath }: generateMetadataInfo
   const i18n = getI18nInstance(supportedLang);
   const langForUrl = supportedLang === "en" ? "" : supportedLang + "/";
 
-  let title = "t";
-  let description = "t";
+  let title = "";
+  let description = "";
   if (currentPath === "contacts") {
     title = i18n._(`Contacts`) + " | " + APP_NAME;
     description = i18n._(
@@ -44,7 +44,21 @@ export const generateMetadataInfo = ({ lang, currentPath }: generateMetadataInfo
     keywords = [];
   }
 
-  console.log("title", title);
+  if (currentPath === "practice") {
+    title = i18n._(`Practice`) + " | " + APP_NAME;
+    description = i18n._(
+      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`
+    );
+    keywords = [
+      i18n._(`AI language tutor pricing`),
+      i18n._(`Online English`),
+      i18n._(`Learn English`),
+      i18n._(`AI Language Tutor`),
+      i18n._(`English Practice`),
+      APP_NAME,
+      i18n._(`Language Learning`),
+    ];
+  }
 
   return {
     keywords,
