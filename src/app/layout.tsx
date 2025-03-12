@@ -21,7 +21,7 @@ import { robots, siteUrl } from "@/common/metadata";
 import { initLingui } from "@/initLingui";
 import linguiConfig from "../../lingui.config";
 import { supportedLanguages } from "@/common/lang";
-import { getI18nInstance } from "@/appRouterI18n";
+import { generateAlternatesTags } from "@/libs/metadata";
 
 export async function generateStaticParams() {
   return linguiConfig.locales.map((lang: string) => ({ lang }));
@@ -29,9 +29,7 @@ export async function generateStaticParams() {
 
 export const metadata: Metadata = {
   title: "FluencyPal – AI English Speaking Practice for Fluency & Confidence",
-  alternates: {
-    canonical: `https://www.fluencypal.com/`,
-  },
+  alternates: generateAlternatesTags(""),
   description:
     "Practice conversational English with FluencyPal, your 24/7 AI English tutor and speaking coach. Improve fluency, pronunciation, and confidence through real-life role-play scenarios with instant feedback.",
 
