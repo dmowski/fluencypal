@@ -10,7 +10,8 @@ import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 export const generateAlternatesTags = (currentPath: string) => {
   let hreflangLinks: Record<string, string> = {};
   supportedLanguages.forEach((lang) => {
-    hreflangLinks[lang] = `${siteUrl}${lang === "en" ? "" : lang + "/"}${currentPath}`;
+    hreflangLinks[lang] =
+      `${siteUrl}${lang === "en" ? "" : lang + (currentPath ? "/" : "")}${currentPath}`;
   });
 
   return {
