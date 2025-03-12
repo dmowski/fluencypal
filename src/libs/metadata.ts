@@ -89,6 +89,23 @@ export const generateMetadataInfo = ({ lang, currentPath }: generateMetadataInfo
     keywords = [];
   }
 
+  if (currentPath === "scenarios") {
+    title = i18n._(`Real-Life English Role-Play Scenarios`) + " | " + APP_NAME;
+    description = i18n._(
+      `Practice realistic English conversations with FluencyPal’s AI tutor. From job interviews to casual chats, build fluency and confidence through immersive role-play scenarios designed for intermediate and advanced learners.`
+    );
+    keywords = [
+      i18n._(`English Role-Play`),
+      i18n._(`English Speaking Practice`),
+      i18n._(`AI English Tutor`),
+      i18n._(`Advanced English Conversation`),
+      i18n._(`Practice English Online`),
+      i18n._(`Real-Life English Scenarios`),
+      i18n._(`Language Immersion`),
+      i18n._(`Fluency Improvement`),
+    ];
+  }
+
   return {
     keywords,
     title,
