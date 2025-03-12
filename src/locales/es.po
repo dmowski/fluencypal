@@ -13,10 +13,30 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Landing/Footer.tsx:92
+#: src/libs/metadata.ts:40
+#: src/features/Landing/Footer.tsx:65
+#: src/features/Landing/Contact/ContactsPage.tsx:73
+#: src/features/Header/Header.tsx:16
 #. js-lingui-explicit-id
-msgid "Supported languages"
-msgstr "Idiomas soportados"
+msgid "Contacts"
+msgstr "Contacts"
+
+#: src/libs/metadata.ts:41
+#. js-lingui-explicit-id
+msgid "Get in touch with the FluencyPal for any inquiries, support, or feedback."
+msgstr ""
+"Póngase en contacto con FluencyPal para cualquier consulta, soporte o "
+"comentario."
+
+#: src/libs/metadata.ts:63
+#: src/app/[lang]/terms/page.tsx:57
+#: src/app/[lang]/scenarios/page.tsx:61
+#: src/app/[lang]/privacy/page.tsx:56
+#: src/app/[lang]/pricing/page.tsx:53
+#: src/app/[lang]/practice/page.tsx:57
+#. js-lingui-explicit-id
+msgid "AI English Speaking Practice"
+msgstr "Práctica de Conversación en Inglés con IA"
 
 #: src/features/RolePlay/rolePlayData.ts:13
 #. js-lingui-explicit-id
@@ -935,27 +955,27 @@ msgstr ""
 "confianza."
 
 #: src/features/Landing/LandingPage.tsx:31
-#: src/features/Landing/Price/PricePage.tsx:102
+#: src/features/Landing/Price/PricePage.tsx:101
 #. js-lingui-explicit-id
 msgid "Open Dashboard"
 msgstr "Abrir Tablero"
 
 #: src/features/Landing/LandingPage.tsx:32
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:43
-#: src/features/Landing/Price/PricePage.tsx:103
-#: src/features/Landing/Price/PricePage.tsx:824
+#: src/features/Landing/Price/PricePage.tsx:102
+#: src/features/Landing/Price/PricePage.tsx:823
 #. js-lingui-explicit-id
 msgid "Get Started Free"
 msgstr "Comienza Gratis"
 
 #: src/features/Landing/LandingPage.tsx:33
-#: src/features/Landing/Price/PricePage.tsx:104
+#: src/features/Landing/Price/PricePage.tsx:103
 #. js-lingui-explicit-id
 msgid "View Pricing"
 msgstr "Ver precios"
 
 #: src/features/Landing/LandingPage.tsx:34
-#: src/features/Landing/Price/PricePage.tsx:105
+#: src/features/Landing/Price/PricePage.tsx:104
 #. js-lingui-explicit-id
 msgid "No Credit Card Needed"
 msgstr "No se necesita tarjeta de crédito"
@@ -1011,7 +1031,7 @@ msgstr ""
 "real—ideal para una mejora rápida y para construir confianza."
 
 #: src/features/Landing/LandingPage.tsx:62
-#: src/features/Landing/Price/PricePage.tsx:196
+#: src/features/Landing/Price/PricePage.tsx:195
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "Avanzado"
@@ -1185,7 +1205,7 @@ msgid "Master English Fluency"
 msgstr "Domina la fluidez en inglés"
 
 #: src/features/Landing/LandingPage.tsx:131
-#: src/features/Landing/Price/PricePage.tsx:741
+#: src/features/Landing/Price/PricePage.tsx:740
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "FAQ"
@@ -1326,36 +1346,33 @@ msgstr "Comienza Tu Prueba Gratuita"
 msgid "Role-Play"
 msgstr "Juego de Roles"
 
-#: src/features/Landing/Footer.tsx:65
-#: src/features/Landing/Contact/ContactsPage.tsx:73
-#: src/features/Header/Header.tsx:16
-#: src/app/[lang]/contacts/page.tsx:27
-#. js-lingui-explicit-id
-msgid "Contacts"
-msgstr "Contacts"
-
 #: src/features/Landing/Footer.tsx:68
 #. js-lingui-explicit-id
 msgid "Pricing"
 msgstr "Precio"
 
+#: src/features/Landing/Footer.tsx:92
+#. js-lingui-explicit-id
+msgid "Supported languages"
+msgstr "Idiomas soportados"
+
 #: src/features/Landing/Footer.tsx:146
-#: src/features/Auth/SignInForm.tsx:112
+#: src/features/Auth/SignInForm.tsx:114
 #: src/app/[lang]/terms/page.tsx:28
 #. js-lingui-explicit-id
 msgid "Terms of Use"
 msgstr "Términos de Uso"
 
 #: src/features/Landing/Footer.tsx:156
-#: src/features/Auth/SignInForm.tsx:109
-#: src/app/[lang]/page.tsx:104
+#: src/features/Auth/SignInForm.tsx:111
+#: src/app/[lang]/page.tsx:108
 #: src/app/[lang]/privacy/page.tsx:28
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
 msgstr "Política de Privacidad"
 
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:42
-#: src/features/Landing/Price/PricePage.tsx:823
+#: src/features/Landing/Price/PricePage.tsx:822
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Comienza Tu Viaje hacia Conversaciones Fluidas Ahora"
@@ -1409,12 +1426,12 @@ msgstr "Todos los escenarios"
 msgid "Discover"
 msgstr "Descubrir"
 
-#: src/features/Landing/Price/PricePage.tsx:85
+#: src/features/Landing/Price/PricePage.tsx:84
 #. js-lingui-explicit-id
 msgid "Flexible Pricing for Every Learner"
 msgstr "Precios Flexibles para Cada Aprendiz"
 
-#: src/features/Landing/Price/PricePage.tsx:95
+#: src/features/Landing/Price/PricePage.tsx:94
 #. js-lingui-explicit-id
 msgid ""
 "Pay only for what you use—no subscriptions, no hidden fees. Start free and "
@@ -1423,180 +1440,180 @@ msgstr ""
 "Paga solo por lo que usas—sin suscripciones, sin tarifas ocultas. Comienza "
 "gratis y mejora según sea necesario."
 
-#: src/features/Landing/Price/PricePage.tsx:129
+#: src/features/Landing/Price/PricePage.tsx:128
 #. js-lingui-explicit-id
 msgid "Choose a Plan That Works for You"
 msgstr "Elige un Plan Que Funcione para Ti"
 
-#: src/features/Landing/Price/PricePage.tsx:152
+#: src/features/Landing/Price/PricePage.tsx:151
 #. js-lingui-explicit-id
 msgid "Free Trial"
 msgstr "Prueba gratuita"
 
-#: src/features/Landing/Price/PricePage.tsx:153
+#: src/features/Landing/Price/PricePage.tsx:152
 #. js-lingui-explicit-id
 msgid "Trying FluencyPal risk-free"
 msgstr "Probando FluencyPal sin riesgo"
 
-#: src/features/Landing/Price/PricePage.tsx:154
+#: src/features/Landing/Price/PricePage.tsx:153
 #. js-lingui-explicit-id
 msgid "Free"
 msgstr "Gratis"
 
-#: src/features/Landing/Price/PricePage.tsx:155
+#: src/features/Landing/Price/PricePage.tsx:154
 #. js-lingui-explicit-id
 msgid "$5 free credit"
 msgstr "$5 de crédito gratis"
 
-#: src/features/Landing/Price/PricePage.tsx:156
+#: src/features/Landing/Price/PricePage.tsx:155
 #. js-lingui-explicit-id
 msgid "Features:"
 msgstr "Características:"
 
-#: src/features/Landing/Price/PricePage.tsx:159
+#: src/features/Landing/Price/PricePage.tsx:158
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Acceso completo al tutor de IA"
 
-#: src/features/Landing/Price/PricePage.tsx:160
+#: src/features/Landing/Price/PricePage.tsx:159
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Obtén acceso ilimitado a la práctica de idiomas impulsada por IA"
 
-#: src/features/Landing/Price/PricePage.tsx:163
+#: src/features/Landing/Price/PricePage.tsx:162
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "Escenarios de juego de roles"
 
-#: src/features/Landing/Price/PricePage.tsx:164
+#: src/features/Landing/Price/PricePage.tsx:163
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr ""
 "Involúcrate en conversaciones de la vida real como entrevistas de trabajo o "
 "pedir comida"
 
-#: src/features/Landing/Price/PricePage.tsx:169
+#: src/features/Landing/Price/PricePage.tsx:168
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Práctica de conversación"
 
-#: src/features/Landing/Price/PricePage.tsx:170
+#: src/features/Landing/Price/PricePage.tsx:169
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "Mejora la fluidez con sesiones de chat interactivas"
 
-#: src/features/Landing/Price/PricePage.tsx:173
+#: src/features/Landing/Price/PricePage.tsx:172
 #. js-lingui-explicit-id
 msgid "Get started"
 msgstr "Comenzar"
 
-#: src/features/Landing/Price/PricePage.tsx:177
+#: src/features/Landing/Price/PricePage.tsx:176
 #. js-lingui-explicit-id
 msgid "Pay-as-You-Go"
 msgstr "Pago por Uso"
 
-#: src/features/Landing/Price/PricePage.tsx:178
+#: src/features/Landing/Price/PricePage.tsx:177
 #. js-lingui-explicit-id
 msgid "Regular learners who want full control"
 msgstr "Aprendices regulares que quieren tener el control total"
 
-#: src/features/Landing/Price/PricePage.tsx:179
+#: src/features/Landing/Price/PricePage.tsx:178
 #. js-lingui-explicit-id
 msgid "$5"
 msgstr "$5"
 
-#: src/features/Landing/Price/PricePage.tsx:180
+#: src/features/Landing/Price/PricePage.tsx:179
 #. js-lingui-explicit-id
 msgid "Per AI Hour"
 msgstr "Por hora de IA"
 
-#: src/features/Landing/Price/PricePage.tsx:181
+#: src/features/Landing/Price/PricePage.tsx:180
 #. js-lingui-explicit-id
 msgid "Everything in Free Trial, plus:"
 msgstr "Todo en la Prueba Gratuita, además de:"
 
-#: src/features/Landing/Price/PricePage.tsx:184
+#: src/features/Landing/Price/PricePage.tsx:183
 #. js-lingui-explicit-id
 msgid "Pay per session"
 msgstr "Pagar por sesión"
 
-#: src/features/Landing/Price/PricePage.tsx:185
+#: src/features/Landing/Price/PricePage.tsx:184
 #. js-lingui-explicit-id
 msgid "Only pay for the time you use, no subscriptions required"
 msgstr "Solo paga por el tiempo que uses, no se requieren suscripciones"
 
-#: src/features/Landing/Price/PricePage.tsx:188
+#: src/features/Landing/Price/PricePage.tsx:187
 #. js-lingui-explicit-id
 msgid "Track usage & progress"
 msgstr "Rastrear el uso y el progreso"
 
-#: src/features/Landing/Price/PricePage.tsx:189
+#: src/features/Landing/Price/PricePage.tsx:188
 #. js-lingui-explicit-id
 msgid "Monitor your AI conversation history and improvements"
 msgstr "Monitorea tu historial de conversaciones con la IA y mejoras"
 
-#: src/features/Landing/Price/PricePage.tsx:192
+#: src/features/Landing/Price/PricePage.tsx:191
 #. js-lingui-explicit-id
 msgid "Start with Free Credit"
 msgstr "Comienza con crédito gratis"
 
-#: src/features/Landing/Price/PricePage.tsx:197
+#: src/features/Landing/Price/PricePage.tsx:196
 #. js-lingui-explicit-id
 msgid "Frequent users who need more value"
 msgstr "Usuarios frecuentes que necesitan más valor"
 
-#: src/features/Landing/Price/PricePage.tsx:198
+#: src/features/Landing/Price/PricePage.tsx:197
 #. js-lingui-explicit-id
 msgid "Contact for pricing"
 msgstr "Contacto para precios"
 
-#: src/features/Landing/Price/PricePage.tsx:200
+#: src/features/Landing/Price/PricePage.tsx:199
 #. js-lingui-explicit-id
 msgid "What I can do for you:"
 msgstr "Lo que puedo hacer por ti:"
 
-#: src/features/Landing/Price/PricePage.tsx:203
+#: src/features/Landing/Price/PricePage.tsx:202
 #. js-lingui-explicit-id
 msgid "Create custom features"
 msgstr "Crea características personalizadas"
 
-#: src/features/Landing/Price/PricePage.tsx:204
+#: src/features/Landing/Price/PricePage.tsx:203
 #. js-lingui-explicit-id
 msgid "Tailor AI interactions to fit your needs"
 msgstr "Adapta las interacciones de IA a tus necesidades"
 
-#: src/features/Landing/Price/PricePage.tsx:207
+#: src/features/Landing/Price/PricePage.tsx:206
 #. js-lingui-explicit-id
 msgid "Platform Integration"
 msgstr "Integración de Plataforma"
 
-#: src/features/Landing/Price/PricePage.tsx:208
+#: src/features/Landing/Price/PricePage.tsx:207
 #. js-lingui-explicit-id
 msgid "API access for schools and businesses"
 msgstr "Acceso a la API para escuelas y empresas"
 
-#: src/features/Landing/Price/PricePage.tsx:211
+#: src/features/Landing/Price/PricePage.tsx:210
 #. js-lingui-explicit-id
 msgid "Discounted AI Usage"
 msgstr "Descuento en el uso de IA"
 
-#: src/features/Landing/Price/PricePage.tsx:212
+#: src/features/Landing/Price/PricePage.tsx:211
 #. js-lingui-explicit-id
 msgid "Get cheaper AI hours for bulk use"
 msgstr "Consigue horas de IA más baratas para uso en masa"
 
-#: src/features/Landing/Price/PricePage.tsx:215
+#: src/features/Landing/Price/PricePage.tsx:214
 #. Button title for contact me for advance pricing
 #. js-lingui-explicit-id
 msgid "Contact me"
 msgstr "Contáctame"
 
-#: src/features/Landing/Price/PricePage.tsx:252
+#: src/features/Landing/Price/PricePage.tsx:251
 #. js-lingui-explicit-id
 msgid "How FluencyPal Pricing Works"
 msgstr "Cómo Funciona el Precio de FluencyPal"
 
-#: src/features/Landing/Price/PricePage.tsx:263
+#: src/features/Landing/Price/PricePage.tsx:262
 #. js-lingui-explicit-id
 msgid ""
 "Our AI tutor runs on a simple credit system—you only pay for the time and "
@@ -1607,22 +1624,22 @@ msgstr ""
 "pagas por el tiempo y los recursos\n"
 "                que realmente utilizas."
 
-#: src/features/Landing/Price/PricePage.tsx:304
+#: src/features/Landing/Price/PricePage.tsx:303
 #. js-lingui-explicit-id
 msgid "Start Free"
 msgstr "Comenzar gratis"
 
-#: src/features/Landing/Price/PricePage.tsx:307
+#: src/features/Landing/Price/PricePage.tsx:306
 #. js-lingui-explicit-id
 msgid "Start Free – Get 5 in credits when you sign up."
 msgstr "Comienza gratis - Obtén 5 en créditos al registrarte."
 
-#: src/features/Landing/Price/PricePage.tsx:347
+#: src/features/Landing/Price/PricePage.tsx:346
 #. js-lingui-explicit-id
 msgid "Use as You Go"
 msgstr "Utiliza a medida que avanzas"
 
-#: src/features/Landing/Price/PricePage.tsx:350
+#: src/features/Landing/Price/PricePage.tsx:349
 #. js-lingui-explicit-id
 msgid ""
 "Each AI conversation session consumes credits based on duration and "
@@ -1631,77 +1648,77 @@ msgstr ""
 "Cada sesión de conversación con IA consume créditos según la duración y "
 "complejidad."
 
-#: src/features/Landing/Price/PricePage.tsx:393
+#: src/features/Landing/Price/PricePage.tsx:392
 #. js-lingui-explicit-id
 msgid "Refill Anytime"
 msgstr "Rellenar en Cualquier Momento"
 
-#: src/features/Landing/Price/PricePage.tsx:396
+#: src/features/Landing/Price/PricePage.tsx:395
 #. js-lingui-explicit-id
 msgid "Add more credits whenever you need them."
 msgstr "Agrega más créditos siempre que los necesites."
 
-#: src/features/Landing/Price/PricePage.tsx:432
+#: src/features/Landing/Price/PricePage.tsx:431
 #. js-lingui-explicit-id
 msgid "Why Pay-as-You-Go is Better Than Subscriptions"
 msgstr "Por qué Paga a Medida que Usas es Mejor que Suscripciones"
 
-#: src/features/Landing/Price/PricePage.tsx:560
+#: src/features/Landing/Price/PricePage.tsx:559
 #. js-lingui-explicit-id
 msgid "Traditional Subscription"
 msgstr "Suscripción Tradicional"
 
-#: src/features/Landing/Price/PricePage.tsx:570
+#: src/features/Landing/Price/PricePage.tsx:569
 #. js-lingui-explicit-id
 msgid "Pay Only for What You Use"
 msgstr "Paga Solo por lo que Usas"
 
-#: src/features/Landing/Price/PricePage.tsx:597
+#: src/features/Landing/Price/PricePage.tsx:596
 #. js-lingui-explicit-id
 msgid "No, fixed cost"
 msgstr "No, costo fijo"
 
-#: src/features/Landing/Price/PricePage.tsx:603
+#: src/features/Landing/Price/PricePage.tsx:602
 #. js-lingui-explicit-id
 msgid "Full Access Anytime"
 msgstr "Acceso Completo en Cualquier Momento"
 
-#: src/features/Landing/Price/PricePage.tsx:634
+#: src/features/Landing/Price/PricePage.tsx:633
 #. js-lingui-explicit-id
 msgid "No Monthly Fees"
 msgstr "No hay tarifas mensuales"
 
-#: src/features/Landing/Price/PricePage.tsx:660
+#: src/features/Landing/Price/PricePage.tsx:659
 #. js-lingui-explicit-id
 msgid "No, recurring charge"
 msgstr "No, cargo recurrente"
 
-#: src/features/Landing/Price/PricePage.tsx:666
+#: src/features/Landing/Price/PricePage.tsx:665
 #. js-lingui-explicit-id
 msgid "Pause Anytime"
 msgstr "Pausa en Cualquier Momento"
 
-#: src/features/Landing/Price/PricePage.tsx:704
+#: src/features/Landing/Price/PricePage.tsx:703
 #. js-lingui-explicit-id
 msgid "Try FluencyPal for Free"
 msgstr "Prueba FluencyPal Gratis"
 
-#: src/features/Landing/Price/PricePage.tsx:759
+#: src/features/Landing/Price/PricePage.tsx:758
 #. js-lingui-explicit-id
 msgid "Can I try FluencyPal for free?"
 msgstr "¿Puedo probar FluencyPal gratis?"
 
-#: src/features/Landing/Price/PricePage.tsx:762
+#: src/features/Landing/Price/PricePage.tsx:761
 #. js-lingui-explicit-id
 msgid "Yes! You start with 5 in free credits to explore all features."
 msgstr "¡Sí! Comienzas con 5 créditos gratis para explorar todas las funciones."
 
-#: src/features/Landing/Price/PricePage.tsx:770
+#: src/features/Landing/Price/PricePage.tsx:769
 #. js-lingui-explicit-id
 msgid "How much do AI conversations cost?"
 msgstr "¿Cuánto cuestan las conversaciones de IA?"
 
-#: src/features/Landing/Price/PricePage.tsx:773
+#: src/features/Landing/Price/PricePage.tsx:772
 #. js-lingui-explicit-id
 msgid ""
 "The cost is calculated based on duration and AI usage. On average, a full "
@@ -1710,12 +1727,12 @@ msgstr ""
 "El costo se calcula en función de la duración y el uso de la IA. En "
 "promedio, una hora completa cuesta $5."
 
-#: src/features/Landing/Price/PricePage.tsx:783
+#: src/features/Landing/Price/PricePage.tsx:782
 #. js-lingui-explicit-id
 msgid "Can I buy credits in bulk?"
 msgstr "¿Puedo comprar créditos al por mayor?"
 
-#: src/features/Landing/Price/PricePage.tsx:787
+#: src/features/Landing/Price/PricePage.tsx:786
 #. js-lingui-explicit-id
 msgid ""
 "Yes! We offer discounts when purchasing larger credit packages. Just "
@@ -1724,17 +1741,17 @@ msgstr ""
 "¡Sí! Ofrecemos descuentos al comprar paquetes de crédito más grandes. Solo "
 "contáctame antes de que compres y te daré un descuento."
 
-#: src/features/Landing/Price/PricePage.tsx:797
+#: src/features/Landing/Price/PricePage.tsx:796
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "Contactos:"
 
-#: src/features/Landing/Price/PricePage.tsx:807
+#: src/features/Landing/Price/PricePage.tsx:806
 #. js-lingui-explicit-id
 msgid "Will my credits expire?"
 msgstr "¿Mis créditos expirarán?"
 
-#: src/features/Landing/Price/PricePage.tsx:810
+#: src/features/Landing/Price/PricePage.tsx:809
 #. js-lingui-explicit-id
 msgid "No, your credits stay active as long as your account is in good standing."
 msgstr "No, tus créditos permanecen activos mientras tu cuenta esté en buen estado."
@@ -1784,27 +1801,27 @@ msgstr "¿Necesitas ayuda?"
 msgid "Log Out"
 msgstr "Cerrar sesión"
 
-#: src/features/Auth/SignInForm.tsx:22
+#: src/features/Auth/SignInForm.tsx:24
 #. js-lingui-explicit-id
 msgid "Start the Lesson"
 msgstr "Iniciar la Lección"
 
-#: src/features/Auth/SignInForm.tsx:45
+#: src/features/Auth/SignInForm.tsx:47
 #. js-lingui-explicit-id
 msgid "Start Role Play:"
 msgstr "Inicio de Juego de Roles:"
 
-#: src/features/Auth/SignInForm.tsx:72
+#: src/features/Auth/SignInForm.tsx:74
 #. js-lingui-explicit-id
 msgid "Create an account, select a language and start practicing"
 msgstr "Crea una cuenta, selecciona un idioma y comienza a practicar"
 
-#: src/features/Auth/SignInForm.tsx:89
+#: src/features/Auth/SignInForm.tsx:91
 #. js-lingui-explicit-id
 msgid "Continue with google"
 msgstr "Continuar con Google"
 
-#: src/features/Auth/SignInForm.tsx:99
+#: src/features/Auth/SignInForm.tsx:101
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Al crear una cuenta, aceptas:"
@@ -1860,47 +1877,47 @@ msgstr ""
 "y la confianza a través de escenarios de juego de roles de la vida real con "
 "retroalimentación instantánea."
 
-#: src/app/[lang]/page.tsx:71
+#: src/app/[lang]/page.tsx:75
 #. js-lingui-explicit-id
 msgid "ai English tutor"
 msgstr "tutor de inglés AI"
 
-#: src/app/[lang]/page.tsx:72
+#: src/app/[lang]/page.tsx:76
 #. js-lingui-explicit-id
 msgid "English speaking practice app"
 msgstr "Aplicación de práctica de conversación en inglés"
 
-#: src/app/[lang]/page.tsx:73
+#: src/app/[lang]/page.tsx:77
 #. js-lingui-explicit-id
 msgid "improve English fluency"
 msgstr "mejorar la fluidez en inglés"
 
-#: src/app/[lang]/page.tsx:74
+#: src/app/[lang]/page.tsx:78
 #. js-lingui-explicit-id
 msgid "advanced English conversation"
 msgstr "conversación avanzada en inglés"
 
-#: src/app/[lang]/page.tsx:75
+#: src/app/[lang]/page.tsx:79
 #. js-lingui-explicit-id
 msgid "English speaking coach"
 msgstr "Entrenador de habla inglesa"
 
-#: src/app/[lang]/page.tsx:76
+#: src/app/[lang]/page.tsx:80
 #. js-lingui-explicit-id
 msgid "conversational English practice"
 msgstr "práctica de inglés conversacional"
 
-#: src/app/[lang]/page.tsx:77
+#: src/app/[lang]/page.tsx:81
 #. js-lingui-explicit-id
 msgid "language immersion app"
 msgstr "aplicación de inmersión lingüística"
 
-#: src/app/[lang]/page.tsx:78
+#: src/app/[lang]/page.tsx:82
 #. js-lingui-explicit-id
 msgid "English speaking partner"
 msgstr "Socio de conversación en inglés"
 
-#: src/app/[lang]/page.tsx:99
+#: src/app/[lang]/page.tsx:103
 #. js-lingui-explicit-id
 msgid ""
 "We use cookies to ensure that we give you the best experience on our "
@@ -1911,12 +1928,12 @@ msgstr ""
 "experiencia en nuestro sitio web. Si continúa utilizando este sitio, "
 "asumiremos que está satisfecho con él."
 
-#: src/app/[lang]/page.tsx:102
+#: src/app/[lang]/page.tsx:106
 #. js-lingui-explicit-id
 msgid "Ok"
 msgstr "Ok"
 
-#: src/app/[lang]/page.tsx:103
+#: src/app/[lang]/page.tsx:107
 #. js-lingui-explicit-id
 msgid "No"
 msgstr "No"
@@ -1934,50 +1951,40 @@ msgstr ""
 "amigable tutor de IA. Ya seas un principiante o un aprendiz avanzado, Bruno "
 "se adapta a tu ritmo, corrige errores y te mantiene motivado."
 
-#: src/app/[lang]/terms/page.tsx:38
-#: src/app/[lang]/privacy/page.tsx:38
+#: src/app/[lang]/terms/page.tsx:42
+#: src/app/[lang]/privacy/page.tsx:41
 #: src/app/[lang]/practice/page.tsx:40
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "Online Inglés"
 
-#: src/app/[lang]/terms/page.tsx:39
-#: src/app/[lang]/privacy/page.tsx:39
+#: src/app/[lang]/terms/page.tsx:43
+#: src/app/[lang]/privacy/page.tsx:42
 #: src/app/[lang]/practice/page.tsx:41
 #. js-lingui-explicit-id
 msgid "Learn English"
 msgstr "Aprender inglés"
 
-#: src/app/[lang]/terms/page.tsx:40
-#: src/app/[lang]/privacy/page.tsx:40
+#: src/app/[lang]/terms/page.tsx:44
+#: src/app/[lang]/privacy/page.tsx:43
 #: src/app/[lang]/practice/page.tsx:42
 #. js-lingui-explicit-id
 msgid "AI Language Tutor"
 msgstr "AI Tutor de Idiomas"
 
-#: src/app/[lang]/terms/page.tsx:41
-#: src/app/[lang]/privacy/page.tsx:41
+#: src/app/[lang]/terms/page.tsx:45
+#: src/app/[lang]/privacy/page.tsx:44
 #: src/app/[lang]/practice/page.tsx:43
 #. js-lingui-explicit-id
 msgid "English Practice"
 msgstr "Práctica de Inglés"
 
-#: src/app/[lang]/terms/page.tsx:42
-#: src/app/[lang]/privacy/page.tsx:42
+#: src/app/[lang]/terms/page.tsx:46
+#: src/app/[lang]/privacy/page.tsx:45
 #: src/app/[lang]/practice/page.tsx:45
 #. js-lingui-explicit-id
 msgid "Language Learning"
 msgstr "Aprendizaje de Idiomas"
-
-#: src/app/[lang]/terms/page.tsx:53
-#: src/app/[lang]/scenarios/page.tsx:57
-#: src/app/[lang]/privacy/page.tsx:53
-#: src/app/[lang]/pricing/page.tsx:50
-#: src/app/[lang]/practice/page.tsx:56
-#: src/app/[lang]/contacts/page.tsx:46
-#. js-lingui-explicit-id
-msgid "AI English Speaking Practice"
-msgstr "Práctica de Conversación en Inglés con IA"
 
 #: src/app/[lang]/scenarios/page.tsx:27
 #. js-lingui-explicit-id
@@ -1997,57 +2004,57 @@ msgstr ""
 "desarrolla fluidez y confianza a través de escenarios de juego de roles "
 "inmersivos diseñados para estudiantes intermedios y avanzados."
 
-#: src/app/[lang]/scenarios/page.tsx:37
-#: src/app/[lang]/scenarios/[id]/page.tsx:56
+#: src/app/[lang]/scenarios/page.tsx:41
+#: src/app/[lang]/scenarios/[id]/page.tsx:60
 #. js-lingui-explicit-id
 msgid "English Role-Play"
 msgstr "Rol de Juego en Inglés"
 
-#: src/app/[lang]/scenarios/page.tsx:38
+#: src/app/[lang]/scenarios/page.tsx:42
 #. js-lingui-explicit-id
 msgid "English Speaking Practice"
 msgstr "Práctica de Habla en Inglés"
 
-#: src/app/[lang]/scenarios/page.tsx:39
-#: src/app/[lang]/scenarios/[id]/page.tsx:55
+#: src/app/[lang]/scenarios/page.tsx:43
+#: src/app/[lang]/scenarios/[id]/page.tsx:59
 #. js-lingui-explicit-id
 msgid "AI English Tutor"
 msgstr "AI Tutor de Inglés"
 
-#: src/app/[lang]/scenarios/page.tsx:40
-#: src/app/[lang]/scenarios/[id]/page.tsx:59
+#: src/app/[lang]/scenarios/page.tsx:44
+#: src/app/[lang]/scenarios/[id]/page.tsx:63
 #. js-lingui-explicit-id
 msgid "Advanced English Conversation"
 msgstr "Conversación Avanzada en Inglés"
 
-#: src/app/[lang]/scenarios/page.tsx:41
+#: src/app/[lang]/scenarios/page.tsx:45
 #. js-lingui-explicit-id
 msgid "Practice English Online"
 msgstr "Practicar inglés en línea"
 
-#: src/app/[lang]/scenarios/page.tsx:42
-#: src/app/[lang]/scenarios/[id]/page.tsx:62
+#: src/app/[lang]/scenarios/page.tsx:46
+#: src/app/[lang]/scenarios/[id]/page.tsx:66
 #. js-lingui-explicit-id
 msgid "Real-Life English Scenarios"
 msgstr "Escenarios de Inglés en la Vida Real"
 
-#: src/app/[lang]/scenarios/page.tsx:43
-#: src/app/[lang]/scenarios/[id]/page.tsx:61
+#: src/app/[lang]/scenarios/page.tsx:47
+#: src/app/[lang]/scenarios/[id]/page.tsx:65
 #. js-lingui-explicit-id
 msgid "Language Immersion"
 msgstr "Inmersión Lingüística"
 
-#: src/app/[lang]/scenarios/page.tsx:44
+#: src/app/[lang]/scenarios/page.tsx:48
 #. js-lingui-explicit-id
 msgid "Fluency Improvement"
 msgstr "Mejora de la fluidez"
 
-#: src/app/[lang]/scenarios/page.tsx:47
+#: src/app/[lang]/scenarios/page.tsx:51
 #. js-lingui-explicit-id
 msgid "Practice Real-Life English Scenarios with AI"
 msgstr "Practica Escenarios de Inglés en la Vida Real con IA"
 
-#: src/app/[lang]/scenarios/page.tsx:48
+#: src/app/[lang]/scenarios/page.tsx:52
 #. js-lingui-explicit-id
 msgid ""
 "Boost your English fluency with interactive AI-powered role-play scenarios. "
@@ -2058,12 +2065,12 @@ msgstr ""
 "impulsados por IA. Practica entrevistas de trabajo, conversaciones diarias, "
 "diálogos de viaje y más. Perfecto para estudiantes intermedios y avanzados."
 
-#: src/app/[lang]/scenarios/page.tsx:65
+#: src/app/[lang]/scenarios/page.tsx:69
 #. js-lingui-explicit-id
 msgid "Real-Life English Role-Play | FluencyPal"
 msgstr "Role-Play de Inglés en la Vida Real | FluencyPal"
 
-#: src/app/[lang]/scenarios/page.tsx:66
+#: src/app/[lang]/scenarios/page.tsx:70
 #. js-lingui-explicit-id
 msgid ""
 "Practice real-life English scenarios—job interviews, daily conversations, "
@@ -2079,22 +2086,22 @@ msgstr ""
 msgid "Practice English Conversation with AI | FluencyPal"
 msgstr "Practica Conversación en Inglés con IA | FluencyPal"
 
-#: src/app/[lang]/scenarios/[id]/page.tsx:57
+#: src/app/[lang]/scenarios/[id]/page.tsx:61
 #. js-lingui-explicit-id
 msgid "Conversational English Practice"
 msgstr "Práctica de Inglés Conversacional"
 
-#: src/app/[lang]/scenarios/[id]/page.tsx:58
+#: src/app/[lang]/scenarios/[id]/page.tsx:62
 #. js-lingui-explicit-id
 msgid "English Fluency"
 msgstr "Fluidez en Inglés"
 
-#: src/app/[lang]/scenarios/[id]/page.tsx:60
+#: src/app/[lang]/scenarios/[id]/page.tsx:64
 #. js-lingui-explicit-id
 msgid "Online Language Practice"
 msgstr "Práctica de Idiomas en Línea"
 
-#: src/app/[lang]/scenarios/[id]/page.tsx:63
+#: src/app/[lang]/scenarios/[id]/page.tsx:67
 #. js-lingui-explicit-id
 msgid "English Speaking Exercises"
 msgstr "Ejercicios de habla en inglés"
@@ -2115,33 +2122,26 @@ msgstr ""
 "gratis, paga según uses y disfruta de la práctica de idiomas impulsada por "
 "IA sin suscripciones ni tarifas ocultas."
 
-#: src/app/[lang]/pricing/page.tsx:36
+#: src/app/[lang]/pricing/page.tsx:39
 #: src/app/[lang]/practice/page.tsx:39
 #. js-lingui-explicit-id
 msgid "AI language tutor pricing"
 msgstr "Precios del tutor de idiomas de IA"
 
-#: src/app/[lang]/pricing/page.tsx:37
+#: src/app/[lang]/pricing/page.tsx:40
 #. js-lingui-explicit-id
 msgid "pay-as-you-go language learning"
 msgstr "pago por uso en el aprendizaje de idiomas"
 
-#: src/app/[lang]/pricing/page.tsx:38
+#: src/app/[lang]/pricing/page.tsx:41
 #. js-lingui-explicit-id
 msgid "online English pricing"
 msgstr "precio del inglés en línea"
 
-#: src/app/[lang]/pricing/page.tsx:39
+#: src/app/[lang]/pricing/page.tsx:42
 #. js-lingui-explicit-id
 msgid "AI tutor cost"
 msgstr "Costo del tutor de IA"
-
-#: src/app/[lang]/contacts/page.tsx:28
-#. js-lingui-explicit-id
-msgid "Get in touch with the FluencyPal for any inquiries, support, or feedback."
-msgstr ""
-"Póngase en contacto con FluencyPal para cualquier consulta, soporte o "
-"comentario."
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:142
 #. js-lingui-explicit-id
