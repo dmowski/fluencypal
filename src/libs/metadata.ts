@@ -17,7 +17,7 @@ export const generateAlternatesTags = (currentPath: string) => {
     canonical: hreflangLinks["en"],
     languages: {
       ...hreflangLinks,
-      "x-default": siteUrlWithoutSlash, // Use the English version of the current page
+      "x-default": hreflangLinks["en"], // Use the English version of the current page
     },
   };
 };
