@@ -1,5 +1,6 @@
 import { SupportedLanguage } from "@/common/lang";
 import { Button, ButtonGroup, Link, Stack, Typography } from "@mui/material";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 interface LegalContainerProps {
   children: React.ReactNode;
@@ -15,10 +16,16 @@ export const LegalContainer = ({ children, page, lang }: LegalContainerProps) =>
         zIndex: 2,
       }}
     >
-      <Button variant={page === "terms" ? "contained" : "outlined"} href={`/${lang}/terms`}>
+      <Button
+        variant={page === "terms" ? "contained" : "outlined"}
+        href={`${getUrlStart(lang)}terms`}
+      >
         Terms of Use
       </Button>
-      <Button variant={page === "privacy" ? "contained" : "outlined"} href={`/${lang}/privacy`}>
+      <Button
+        variant={page === "privacy" ? "contained" : "outlined"}
+        href={`${getUrlStart(lang)}privacy`}
+      >
         Privacy Policy
       </Button>
     </ButtonGroup>

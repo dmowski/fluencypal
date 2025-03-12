@@ -24,6 +24,7 @@ import { GuessGameStat } from "../Conversation/types";
 import { uniq } from "@/libs/uniq";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { supportedLanguages } from "@/common/lang";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 const firstLimit = 6;
 const hardHeight = "300px";
@@ -99,13 +100,18 @@ export const RolePlayBoard = ({ rolePlayScenarios }: RolePlayBoardProps) => {
 
   const onSetTab = (tab: string) => {
     setSelectedTab(tab);
-    router.push(`/${supportedLang}/practice?rolePlayTab=${tab}`, { scroll: false });
+    router.push(`${getUrlStart(supportedLang)}practice?rolePlayTab=${tab}`, { scroll: false });
   };
 
   const setRolePlayId = (id?: string) => {
-    router.push(id ? `/${supportedLang}/practice?rolePlayId=${id}` : `/${supportedLang}/practice`, {
-      scroll: false,
-    });
+    router.push(
+      id
+        ? `${getUrlStart(supportedLang)}practice?rolePlayId=${id}`
+        : `${getUrlStart(supportedLang)}practice`,
+      {
+        scroll: false,
+      }
+    );
   };
 
   const closeRolePlay = () => {

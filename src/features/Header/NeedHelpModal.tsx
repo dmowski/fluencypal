@@ -19,6 +19,7 @@ import { UserSettings } from "@/common/user";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import { ContactList } from "../Landing/Contact/ContactList";
 import { SupportedLanguage } from "@/common/lang";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 interface NeedHelpModalProps {
   onClose: () => void;
@@ -135,7 +136,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
             >
               <ReceiptText />
               <Typography>
-                <Link href={`/${lang}/terms`}>Terms of Use</Link>
+                <Link href={`${getUrlStart(lang)}terms`}>Terms of Use</Link>
               </Typography>
             </Stack>
 
@@ -148,7 +149,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
             >
               <Cookie />
               <Typography>
-                <Link href={`/${lang}/privacy`}>Privacy Policy</Link>
+                <Link href={`${getUrlStart(lang)}privacy`}>Privacy Policy</Link>
               </Typography>
             </Stack>
           </Stack>

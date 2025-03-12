@@ -2,6 +2,7 @@ import { Link, Stack, Typography } from "@mui/material";
 import { maxLandingWidth } from "./landingSettings";
 import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 interface FooterProps {
   lang: SupportedLanguage;
@@ -58,13 +59,13 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
             },
           }}
         >
-          <Link href={`/${lang}/scenarios`} variant="body1">
+          <Link href={`${getUrlStart(lang)}scenarios`} variant="body1">
             {i18n._(`Role-Play`)}
           </Link>
-          <Link href={`/${lang}/contacts`} variant="body1">
+          <Link href={`${getUrlStart(lang)}contacts`} variant="body1">
             {i18n._(`Contacts`)}
           </Link>
-          <Link href={`/${lang}/pricing`} variant="body1">
+          <Link href={`${getUrlStart(lang)}pricing`} variant="body1">
             {i18n._(`Pricing`)}
           </Link>
         </Stack>
@@ -136,7 +137,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
             }}
           >
             <Link
-              href={`/${lang}/terms`}
+              href={`${getUrlStart(lang)}terms`}
               variant="body1"
               align="right"
               sx={{
@@ -146,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
               {i18n._(`Terms of Use`)}
             </Link>
             <Link
-              href={`/${lang}/privacy`}
+              href={`${getUrlStart(lang)}privacy`}
               variant="body1"
               align="right"
               sx={{

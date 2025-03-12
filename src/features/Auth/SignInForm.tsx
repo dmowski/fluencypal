@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { RolePlayInstruction } from "../RolePlay/types";
 import { useLingui } from "@lingui/react";
 import { SupportedLanguage } from "@/common/lang";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 interface SignInFormProps {
   rolePlayScenarios: RolePlayInstruction[];
@@ -107,10 +108,10 @@ export const SignInForm = ({ rolePlayScenarios, lang }: SignInFormProps) => {
                 alignItems: "center",
               }}
             >
-              <Link href={`/${lang}/privacy`} target="_blank">
+              <Link href={`${getUrlStart(lang)}privacy`} target="_blank">
                 <Typography variant="caption">{i18n._(`Privacy Policy`)}</Typography>
               </Link>
-              <Link href={`/${lang}/terms`} target="_blank">
+              <Link href={`${getUrlStart(lang)}terms`} target="_blank">
                 <Typography variant="caption">{i18n._(`Terms of Use`)}</Typography>
               </Link>
             </Stack>

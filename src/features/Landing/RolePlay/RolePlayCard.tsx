@@ -2,6 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import { RolePlayInstruction } from "../../RolePlay/types";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { getI18nInstance } from "@/appRouterI18n";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
 
 interface RolePlayCardProps {
   scenario: RolePlayInstruction;
@@ -15,7 +16,7 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
   return (
     <Stack
       component={"a"}
-      href={`/${lang}/scenarios/${scenario.id}`}
+      href={`${getUrlStart(lang)}scenarios/${scenario.id}`}
       sx={{
         position: "relative",
         backgroundColor: "rgba(0, 0, 10, 0.01)",

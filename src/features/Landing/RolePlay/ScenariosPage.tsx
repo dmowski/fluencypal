@@ -9,6 +9,7 @@ import { ListRolePlayIntro } from "./ListRolePlayIntro";
 import { ListRolePlay } from "./ListRolePlay";
 import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
 
 interface ScenariosPageProps {
   selectedCategory?: string;
@@ -41,7 +42,7 @@ export const ScenariosPage = ({ selectedCategory, lang }: ScenariosPageProps) =>
         <CtaBlock
           title={i18n._(`Start Your Journey to Fluent Conversations Now`)}
           actionButtonTitle={i18n._(`Get Started Free`)}
-          actionButtonLink={`/${lang}/practice`}
+          actionButtonLink={`${getUrlStart(lang)}practice`}
         />
       </div>
       <Footer lang={lang} />

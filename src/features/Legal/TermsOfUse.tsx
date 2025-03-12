@@ -77,13 +77,13 @@ Welcome to **${LEGAL_DATA.appName}**, operated by **${LEGAL_DATA.companyName}** 
 
 1. **Conversations**: Transcripts and other content you share during AI conversations (“User Content”) remain yours. By using the Service, you grant us a non-exclusive, worldwide, royalty-free license to process and store your User Content solely for the purpose of providing the Service.  
 2. **Removal of Content**: We reserve the right to remove or suspend access to any User Content that violates these Terms or applicable laws.  
-3. **Data Retention**: We store conversation transcripts for a limited time (generally up to one year after your last platform visit), unless you request deletion or delete your account, subject to exceptions in our [Privacy Policy](/en/privacy).
+3. **Data Retention**: We store conversation transcripts for a limited time (generally up to one year after your last platform visit), unless you request deletion or delete your account, subject to exceptions in our [Privacy Policy](/privacy).
 
 ---
 
 ### 8. Privacy Policy
 
-Our [Privacy Policy](/en/privacy) describes how we collect, use, and protect your personal data, including your AI conversation transcripts and other information. By using our Service, you also agree to the terms outlined in our Privacy Policy.
+Our [Privacy Policy](/privacy) describes how we collect, use, and protect your personal data, including your AI conversation transcripts and other information. By using our Service, you also agree to the terms outlined in our Privacy Policy.
 
 ---
 

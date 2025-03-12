@@ -19,6 +19,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { Gift, HandCoins, Mic } from "lucide-react";
 import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
 
 interface PricePageProps {
   lang: SupportedLanguage;
@@ -102,8 +103,8 @@ export const PricePage = ({ lang }: PricePageProps) => {
               getStartedTitle={i18n._(`Get Started Free`)}
               viewPricingTitle={i18n._(`View Pricing`)}
               noCreditCardNeededTitle={i18n._(`No Credit Card Needed`)}
-              pricingLink={`/${lang}/pricing`}
-              practiceLink={`/${lang}/practice`}
+              pricingLink={`${getUrlStart(lang)}pricing`}
+              practiceLink={`${getUrlStart(lang)}practice`}
             />
           </Stack>
 
@@ -170,7 +171,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._("Get started")}
-                buttonLink={`/${lang}/practice`}
+                buttonLink={`${getUrlStart(lang)}practice`}
               />
               <PriceCard
                 title={i18n._("Pay-as-You-Go")}
@@ -189,7 +190,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._("Start with Free Credit")}
-                buttonLink={`/${lang}/practice`}
+                buttonLink={`${getUrlStart(lang)}practice`}
               />
               <PriceCard
                 title={i18n._("Advanced")}
@@ -215,7 +216,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   comment: "Button title for contact me for advance pricing",
                 })}
                 isLightButton
-                buttonLink={`/${lang}/contacts`}
+                buttonLink={`${getUrlStart(lang)}contacts`}
               />
             </Stack>
           </Stack>
@@ -698,7 +699,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               sx={{
                 ...buttonStyle,
               }}
-              href={`/${lang}/practice`}
+              href={`${getUrlStart(lang)}practice`}
             >
               {i18n.t(`Try FluencyPal for Free`)}
             </Button>
@@ -821,7 +822,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
         <CtaBlock
           title={i18n._(`Start Your Journey to Fluent Conversations Now`)}
           actionButtonTitle={i18n._(`Get Started Free`)}
-          actionButtonLink={`/${lang}/practice`}
+          actionButtonLink={`${getUrlStart(lang)}practice`}
         />
       </div>
       <Footer lang={lang} />

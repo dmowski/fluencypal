@@ -1,5 +1,5 @@
 import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
-import { Button, Link, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { Header } from "../../Header/Header";
 
 import { Footer } from "../Footer";
@@ -16,6 +16,7 @@ import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { RolePlayCard } from "./RolePlayCard";
 import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
 
 interface ScenarioOnePageProps {
   id?: string;
@@ -126,7 +127,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
               >
                 <Button
                   variant="outlined"
-                  href={`/${lang}/scenarios`}
+                  href={`${getUrlStart(lang)}scenarios`}
                   sx={{
                     ...buttonStyle,
                     borderRadius: "4px",
@@ -142,7 +143,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   {i18n._(`View all`)}
                 </Button>
                 <Button
-                  href={`/${lang}/practice?rolePlayId=${item.id}`}
+                  href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
                   sx={{
                     ...buttonStyle,
                     height: "3rem",
@@ -285,7 +286,10 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     >
                       {item.exampleOfFirstMessageFromAi}
                     </Typography>
-                    <Button variant="outlined" href={`/${lang}/practice?rolePlayId=${item.id}`}>
+                    <Button
+                      variant="outlined"
+                      href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
+                    >
                       {i18n._(`Play The Role`)}
                     </Button>
                   </Stack>
@@ -370,7 +374,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
         <CtaBlock
           title={i18n._(`Ready to Become Fluent in English?`)}
           actionButtonTitle={i18n._(`Start Your Free Trial`)}
-          actionButtonLink={`/${lang}/practice`}
+          actionButtonLink={`${getUrlStart(lang)}practice`}
         />
       </div>
       <Footer lang={lang} />

@@ -11,6 +11,7 @@ import { ProductDemo } from "./ProductDemo";
 import { RolePlayDemo } from "./RolePlay/RolePlayDemo";
 import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 interface LandingPageProps {
   lang: SupportedLanguage;
@@ -32,8 +33,8 @@ export default function LandingPage({ lang }: LandingPageProps) {
             getStartedTitle={i18n._(`Get Started Free`)}
             viewPricingTitle={i18n._(`View Pricing`)}
             noCreditCardNeededTitle={i18n._(`No Credit Card Needed`)}
-            pricingLink={`/${lang}/pricing`}
-            practiceLink={`/${lang}/practice`}
+            pricingLink={`${getUrlStart(lang)}pricing`}
+            practiceLink={`${getUrlStart(lang)}practice`}
           />
           <IntroVideoDemo
             title={i18n._(`Speak Fluent English with Confidence`)}
@@ -41,7 +42,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
               `FluencyPal offers realistic conversational practice in English, Spanish, French, and more. Engage in immersive role-play scenarios, get instant feedback, and improve your speaking skills anytime, anywhere.`
             )}
             actionButtonTitle={i18n._(`Get started free`)}
-            actionButtonLink={`/${lang}/practice`}
+            actionButtonLink={`${getUrlStart(lang)}practice`}
             blocks={[
               {
                 src: "/begin.mp4",
@@ -81,7 +82,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   `Practice realistic conversations tailored to your skill level. FluencyPal responds naturally, highlights areas for improvement, and builds your confidence.`
                 ),
                 img: "/talk.jpeg",
-                href: `/${lang}/practice`,
+                href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Start Speaking Practice`),
               },
               {
@@ -91,7 +92,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   `Get immediate feedback and explanations on your grammar mistakes as you practice. Enhance your speaking accuracy naturally.`
                 ),
                 img: "/rules.jpeg",
-                href: `/${lang}/practice`,
+                href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Enhance Your Grammar`),
               },
               {
@@ -101,7 +102,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   `Receive personalized vocabulary tailored to your conversational needs. Use new words immediately to reinforce learning.`
                 ),
                 img: "/words.jpeg",
-                href: `/${lang}/practice`,
+                href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Expand Your Vocabulary`),
               },
               {
@@ -111,7 +112,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   `Visualize your daily progress with intuitive tracking. Stay motivated by clearly seeing your improvements.`
                 ),
                 img: "/progress.png",
-                href: `/${lang}/practice`,
+                href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Check Your Progress`),
               },
             ]}
@@ -218,7 +219,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
           <CtaBlock
             title={i18n._(`Ready to Become Fluent in English?`)}
             actionButtonTitle={i18n._(`Start Your Free Trial`)}
-            actionButtonLink={`/${lang}/practice`}
+            actionButtonLink={`${getUrlStart(lang)}practice`}
           />
         </Stack>
       </main>

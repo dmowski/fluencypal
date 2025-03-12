@@ -4,6 +4,7 @@ import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { RolePlayCard } from "./RolePlayCard";
 import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
 
 interface ListRolePlayProps {
   selectedCategory?: string;
@@ -86,8 +87,8 @@ export const ListRolePlay = ({ lang, selectedCategory }: ListRolePlayProps) => {
                   variant="body2"
                   href={
                     isAllScenarios
-                      ? `/${lang}/scenarios`
-                      : `/${lang}/scenarios?category=${category}`
+                      ? `${getUrlStart(lang)}scenarios`
+                      : `${getUrlStart(lang)}scenarios?category=${category}`
                   }
                   sx={{
                     color: "#000",

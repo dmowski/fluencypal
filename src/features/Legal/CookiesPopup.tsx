@@ -5,6 +5,7 @@ import { useLocalStorage } from "react-use";
 import { useEffect, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { SupportedLanguage } from "@/common/lang";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 interface CookiesPopupProps {
   message: string;
@@ -90,7 +91,7 @@ export const CookiesPopup = ({ message, ok, no, privacy, lang }: CookiesPopupPro
           <Button size="small" onClick={onReject}>
             {no}
           </Button>
-          <Button href={`/${lang}/privacy`} size="small">
+          <Button href={`${getUrlStart(lang)}privacy`} size="small">
             {privacy}
           </Button>
         </Stack>

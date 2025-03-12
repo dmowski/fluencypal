@@ -10,6 +10,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { RolePlayScroller } from "./RolePlayScroller";
 import { RolePlayCard } from "./RolePlayCard";
 import { SupportedLanguage } from "@/common/lang";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
 
 interface RolePlayDemoProps {
   title: string;
@@ -156,7 +157,7 @@ export const RolePlayDemo = ({
               sx={{
                 ...buttonStyle,
               }}
-              href="/scenarios"
+              href={`${getUrlStart(lang)}scenarios`}
               color="info"
               variant="contained"
             >
@@ -184,7 +185,7 @@ export const RolePlayDemo = ({
                   textDecoration: "none",
                   padding: "10px 20px",
                 }}
-                href={`/${lang}/practice`}
+                href={`${getUrlStart(lang)}practice`}
               >
                 <Stack
                   sx={{
