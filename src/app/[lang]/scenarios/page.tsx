@@ -10,6 +10,10 @@ interface PageProps {
   params: Promise<{ lang: string }>;
 }
 
+export async function generateStaticParams() {
+  return supportedLanguages.map((lang: string) => ({ lang }));
+}
+
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   return generateMetadataInfo({
     lang: (await props.params).lang,
