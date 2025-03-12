@@ -12,7 +12,7 @@ export const LegalContainer = ({ children, page, lang }: LegalContainerProps) =>
     <ButtonGroup
       sx={{
         position: "relative",
-        zIndex: 9999999,
+        zIndex: 2,
       }}
     >
       <Button variant={page === "terms" ? "contained" : "outlined"} href={`/${lang}/terms`}>
