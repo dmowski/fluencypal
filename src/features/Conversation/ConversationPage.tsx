@@ -10,12 +10,14 @@ import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
 import { ConversationCanvas } from "./ConversationCanvas";
 import { Dashboard } from "../Dashboard/Dashboard";
 import { RolePlayInstruction } from "../RolePlay/types";
+import { SupportedLanguage } from "@/common/lang";
 
 interface ConversationPageProps {
   rolePlayScenarios: RolePlayInstruction[];
+  lang: SupportedLanguage;
 }
 
-export function ConversationPage({ rolePlayScenarios }: ConversationPageProps) {
+export function ConversationPage({ rolePlayScenarios, lang }: ConversationPageProps) {
   const auth = useAuth();
   const settings = useSettings();
   const aiConversation = useAiConversation();
@@ -40,7 +42,7 @@ export function ConversationPage({ rolePlayScenarios }: ConversationPageProps) {
         </Typography>
       </Stack>
     );
-  if (!auth.isAuthorized) return <SignInForm rolePlayScenarios={rolePlayScenarios} />;
+  if (!auth.isAuthorized) return <SignInForm rolePlayScenarios={rolePlayScenarios} lang={lang} />;
   if (usage.balance <= 0) return <NoBalanceBlock />;
 
   return (

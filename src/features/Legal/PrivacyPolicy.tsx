@@ -2,10 +2,15 @@ import { Stack, Typography } from "@mui/material";
 import { LegalContainer } from "./LegalContainer";
 import Markdown from "markdown-to-jsx";
 import { LEGAL_DATA } from "./data";
+import { SupportedLanguage } from "@/common/lang";
 
-export const PrivacyPolicy = () => {
+interface PageProps {
+  lang: SupportedLanguage;
+}
+
+export const PrivacyPolicy = ({ lang }: PageProps) => {
   return (
-    <LegalContainer page="privacy">
+    <LegalContainer page="privacy" lang={lang}>
       <Typography variant="h1">Privacy Policy</Typography>
       <Typography>Effective Date: Feb 17, 2025</Typography>
       <Stack

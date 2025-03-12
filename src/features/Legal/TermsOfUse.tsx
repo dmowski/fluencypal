@@ -2,10 +2,13 @@ import { Stack, Typography } from "@mui/material";
 import { LegalContainer } from "./LegalContainer";
 import { LEGAL_DATA } from "./data";
 import Markdown from "markdown-to-jsx";
-
-export const TermsOfUse = () => {
+import { SupportedLanguage } from "@/common/lang";
+interface PageProps {
+  lang: SupportedLanguage;
+}
+export const TermsOfUse = ({ lang }: PageProps) => {
   return (
-    <LegalContainer page="terms">
+    <LegalContainer page="terms" lang={lang}>
       <Typography variant="h1">Terms of Use</Typography>
       <Typography>Effective Date: Feb 17, 2025</Typography>
       <Stack

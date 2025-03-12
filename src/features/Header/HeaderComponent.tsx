@@ -307,7 +307,7 @@ export function HeaderComponent({
 
       {isShowLangSelector && <LanguageSelectorModal onClose={() => setIsShowLangSelector(false)} />}
 
-      {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} />}
+      {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />}
     </Stack>
   );
 }

@@ -79,7 +79,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
   return (
     <LinguiClientProvider initialLocale={lang} initialMessages={allMessages[lang]!}>
       <Header mode="landing" lang={supportedLang} />
-      <TermsOfUse />
+      <TermsOfUse lang={supportedLang} />
     </LinguiClientProvider>
   );
 }
