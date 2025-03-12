@@ -103,7 +103,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
                 return (
                   <Link
                     key={lang}
-                    href={`/${lang}`}
+                    href={`${getUrlStart(lang)}`}
                     variant="body1"
                     lang={lang}
                     aria-label={`Switch to ${fullEnglishLanguageName[lang]}`}
