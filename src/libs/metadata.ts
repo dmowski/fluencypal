@@ -5,6 +5,7 @@ import { supportedLanguages } from "@/common/lang";
 import { robots, siteUrl, siteUrlWithoutSlash } from "@/common/metadata";
 import { APP_NAME } from "@/features/Landing/landingSettings";
 import { initLingui } from "@/initLingui";
+import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 
 export const generateAlternatesTags = (currentPath: string) => {
   let hreflangLinks: Record<string, string> = {};
@@ -24,9 +25,14 @@ export const generateAlternatesTags = (currentPath: string) => {
 interface generateMetadataInfoProps {
   lang: string;
   currentPath: string;
+  scenarioId?: string;
 }
 
-export const generateMetadataInfo = ({ lang, currentPath }: generateMetadataInfoProps) => {
+export const generateMetadataInfo = ({
+  lang,
+  currentPath,
+  scenarioId,
+}: generateMetadataInfoProps) => {
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
   let keywords: string[] = [];
@@ -34,6 +40,7 @@ export const generateMetadataInfo = ({ lang, currentPath }: generateMetadataInfo
   const i18n = getI18nInstance(supportedLang);
   const langForUrl = supportedLang === "en" ? "" : supportedLang + "/";
 
+  let openGraphImageUrl = `${siteUrl}openGraph.png`;
   let title = "";
   let description = "";
   if (currentPath === "contacts") {
@@ -89,7 +96,7 @@ export const generateMetadataInfo = ({ lang, currentPath }: generateMetadataInfo
     keywords = [];
   }
 
-  if (currentPath === "scenarios") {
+  if (currentPath === "scenarios" && !scenarioId) {
     title = i18n._(`Real-Life English Role-Play Scenarios`) + " | " + APP_NAME;
     description = i18n._(
       `Practice realistic English conversations with FluencyPal’s AI tutor. From job interviews to casual chats, build fluency and confidence through immersive role-play scenarios designed for intermediate and advanced learners.`
@@ -104,6 +111,29 @@ export const generateMetadataInfo = ({ lang, currentPath }: generateMetadataInfo
       i18n._(`Language Immersion`),
       i18n._(`Fluency Improvement`),
     ];
+  }
+
+  if (currentPath === "scenarios" && scenarioId) {
+    const rolePlayScenarios = getRolePlayScenarios("en");
+    const scenario = rolePlayScenarios.find((s) => s.id === scenarioId);
+
+    title =
+      `${scenario?.title || "Scenario"} - ` +
+      i18n._(`Practice English Conversation with AI | FluencyPal`);
+    description = scenario?.subTitle || "";
+    keywords = [
+      i18n._(`AI English Tutor`),
+      i18n._(`English Role-Play`),
+      i18n._(`Conversational English Practice`),
+      i18n._(`English Fluency`),
+      i18n._(`Advanced English Conversation`),
+      i18n._(`Online Language Practice`),
+      i18n._(`Language Immersion`),
+      i18n._(`Real-Life English Scenarios`),
+      i18n._(`English Speaking Exercises`),
+    ];
+
+    openGraphImageUrl = scenario?.imageSrc ? `${siteUrl}${scenario.imageSrc}` : openGraphImageUrl;
   }
 
   return {
