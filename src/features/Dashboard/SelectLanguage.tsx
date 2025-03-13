@@ -2,9 +2,12 @@ import { Stack, Typography } from "@mui/material";
 import { StarContainer } from "../Layout/StarContainer";
 import { LangSelector } from "../Lang/LangSelector";
 import { useSettings } from "../Settings/useSettings";
+import { useLingui } from "@lingui/react";
 
 export const SelectLanguage: React.FC = () => {
   const settings = useSettings();
+  const { i18n } = useLingui();
+
   return (
     <Stack
       sx={{
@@ -19,14 +22,14 @@ export const SelectLanguage: React.FC = () => {
             gap: "20px",
           }}
         >
-          <Typography variant="h5">Select language to learn</Typography>
+          <Typography variant="h5">{i18n._(`Select language to learn`)}</Typography>
           <LangSelector
             value={settings.languageCode}
             onDone={(lang) => settings.setLanguage(lang)}
             confirmButtonLabel="Continue"
           />
           <Typography variant="caption">
-            You can change the language later in the settings
+            {i18n._(`You can change the language later in the settings`)}
           </Typography>
         </Stack>
       </StarContainer>

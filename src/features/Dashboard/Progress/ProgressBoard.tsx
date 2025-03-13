@@ -1,4 +1,4 @@
-import { Stack, Tooltip, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { colorMap, ProgressGrid } from "./ProgressGrid";
 import { useSettings } from "../../Settings/useSettings";
 import { useTasks } from "../../Tasks/useTasks";
@@ -7,6 +7,7 @@ import { DashboardCard } from "../../uiKit/Card/DashboardCard";
 import { StatCard } from "./StatCard";
 import { useHomework } from "@/features/Homework/useHomework";
 import { useChatHistory } from "@/features/ConversationHistory/useChatHistory";
+import { useLingui } from "@lingui/react";
 
 export const ProgressBoard = () => {
   const settings = useSettings();
@@ -16,7 +17,7 @@ export const ProgressBoard = () => {
   const history = useChatHistory();
   const countOfRolePlay = history.conversations.filter((c) => c.mode === "role-play").length;
   const countOfRules = history.conversations.filter((c) => c.mode === "rule").length;
-
+  const { i18n } = useLingui();
   return (
     <DashboardCard>
       <Stack
@@ -30,7 +31,7 @@ export const ProgressBoard = () => {
       >
         <Stack>
           <Typography variant="h2" className="decor-title">
-            Progress
+            {i18n._(`Progress`)}
           </Typography>
           <Typography
             variant="caption"
@@ -38,7 +39,7 @@ export const ProgressBoard = () => {
               opacity: 0.7,
             }}
           >
-            Your daily progress
+            {i18n._(`Your daily progress`)}
           </Typography>
         </Stack>
         <Stack
@@ -52,7 +53,7 @@ export const ProgressBoard = () => {
               opacity: 0.7,
             }}
           >
-            Less
+            {i18n._(`Less`)}
           </Typography>
           {colorMap.map((color) => {
             return (
@@ -73,7 +74,7 @@ export const ProgressBoard = () => {
               opacity: 0.7,
             }}
           >
-            More
+            {i18n._(`More`)}
           </Typography>
         </Stack>
       </Stack>
@@ -100,26 +101,26 @@ export const ProgressBoard = () => {
         }}
       >
         <StatCard
-          description="Words used during all conversations. Your total word count."
-          title="Your Vocabulary"
+          description={i18n._(`Words used during all conversations. Your total word count.`)}
+          title={i18n._(`Your Vocabulary`)}
           value={`${words.totalWordsCount || 0}`}
         />
 
         <StatCard
-          description="Count of role-play conversations you have participated in."
-          title="Roles played"
+          description={i18n._(`Count of role-play conversations you have participated in.`)}
+          title={i18n._(`Roles played`)}
           value={`${countOfRolePlay}`}
         />
 
         <StatCard
-          description="Count of homeworks you have completed."
-          title="Homeworks done"
+          description={i18n._(`Count of homeworks you have completed.`)}
+          title={i18n._(`Homeworks done`)}
           value={`${homeworks.completeHomeworks.length || 0}`}
         />
 
         <StatCard
-          description="Count of rules you have learned."
-          title="Rules learned"
+          description={i18n._(`Count of rules you have learned.`)}
+          title={i18n._(`Rules learned`)}
           value={`${countOfRules}`}
         />
       </Stack>

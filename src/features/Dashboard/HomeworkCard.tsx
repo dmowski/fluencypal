@@ -6,17 +6,19 @@ import { useAiConversation } from "../Conversation/useAiConversation";
 import { useState } from "react";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { PackageOpen } from "lucide-react";
+import { useLingui } from "@lingui/react";
 
 export const HomeworkCard = () => {
   const aiConversation = useAiConversation();
   const homeworkService = useHomework();
   const [limit, setLimit] = useState(1);
+  const { i18n } = useLingui();
 
   return (
     <DashboardCard>
       <Stack>
         <Typography variant="h2" align="left" className="decor-title">
-          Homework
+          {i18n._(`Homework`)}
         </Typography>
         {homeworkService.incompleteHomeworks.length === 0 && (
           <>
@@ -52,7 +54,7 @@ export const HomeworkCard = () => {
                   }}
                   variant="body1"
                 >
-                  No homework assigned yet.
+                  {i18n._(`No homework assigned yet.`)}
                 </Typography>
                 <Typography
                   align="center"
@@ -61,7 +63,7 @@ export const HomeworkCard = () => {
                   }}
                   variant="caption"
                 >
-                  Start a conversation to get one.
+                  {i18n._(`Start a conversation to get one.`)}
                 </Typography>
               </Stack>
             </Stack>
@@ -111,7 +113,7 @@ export const HomeworkCard = () => {
                       });
                     }}
                   >
-                    Continue
+                    {i18n._(`Continue`)}
                   </Button>
                   <Button
                     variant="text"
@@ -124,7 +126,7 @@ export const HomeworkCard = () => {
                       homeworkService.shipHomework(homework.id);
                     }}
                   >
-                    Skip
+                    {i18n._(`Skip`)}
                   </Button>
                 </Stack>
               </Stack>
@@ -138,7 +140,7 @@ export const HomeworkCard = () => {
           }}
           onClick={() => setLimit(homeworkService.incompleteHomeworks.length)}
         >
-          Show all
+          {i18n._(`Show all`)}
         </Button>
       )}
     </DashboardCard>

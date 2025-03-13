@@ -25,6 +25,7 @@ import { uniq } from "@/libs/uniq";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { supportedLanguages } from "@/common/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { useLingui } from "@lingui/react";
 
 const firstLimit = 6;
 const hardHeight = "300px";
@@ -82,6 +83,7 @@ interface RolePlayBoardProps {
 export const RolePlayBoard = ({ rolePlayScenarios }: RolePlayBoardProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { i18n } = useLingui();
   const userInfo = useAiUserInfo();
   const pathname = usePathname();
   const locale = pathname?.split("/")[1] as string;
@@ -337,7 +339,7 @@ My user level: ${userLevelInfo}
       <Stack gap={"10px"}>
         <Stack>
           <Typography variant="h2" className="decor-title">
-            Role Play
+            {i18n._(`Role Play`)}
           </Typography>
           <Typography
             variant="caption"
@@ -345,7 +347,7 @@ My user level: ${userLevelInfo}
               opacity: 0.7,
             }}
           >
-            Play a role and talk to the AI
+            {i18n._(`Play a role and talk to the AI`)}
           </Typography>
         </Stack>
         {selectedRolePlayScenario && (
@@ -435,7 +437,9 @@ My user level: ${userLevelInfo}
                         textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
                       }}
                     >
-                      Before you start, please fill some information to make it more realistic.
+                      {i18n._(
+                        `Before you start, please fill some information to make it more realistic.`
+                      )}
                     </Typography>
 
                     <Stack
@@ -537,7 +541,7 @@ My user level: ${userLevelInfo}
                   type="submit"
                   disabled={isStarting}
                 >
-                  {isStarting ? "Loading..." : "Start"}
+                  {isStarting ? i18n._(`Loading...`) : i18n._(`Start`)}
                 </Button>
               </Stack>
             </Stack>
@@ -549,9 +553,7 @@ My user level: ${userLevelInfo}
             scrollButtons="auto"
             variant="scrollable"
             value={selectedTab}
-            onChange={(event, newId) => {
-              onSetTab(`${newId || allCategoriesLabel}`);
-            }}
+            onChange={(event, newId) => onSetTab(`${newId || allCategoriesLabel}`)}
             sx={{
               paddingLeft: "10px",
             }}
@@ -591,7 +593,7 @@ My user level: ${userLevelInfo}
                 startIcon={isLimited ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
                 onClick={() => setIsLimited(!isLimited)}
               >
-                {isLimited ? "Show more" : "Show less"}
+                {isLimited ? i18n._(`Show more`) : i18n._(`Show less`)}
               </Button>
             )}
           </Stack>

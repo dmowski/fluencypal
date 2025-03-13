@@ -2,10 +2,12 @@ import { Button, Stack, Tooltip, Typography } from "@mui/material";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useWords } from "../Words/useWords";
 import { ChevronLeft, GraduationCap } from "lucide-react";
+import { useLingui } from "@lingui/react";
 
 export const WordsToLearn: React.FC = () => {
   const aiConversation = useAiConversation();
   const words = useWords();
+  const { i18n } = useLingui();
 
   return (
     <Stack
@@ -23,7 +25,7 @@ export const WordsToLearn: React.FC = () => {
         }}
         variant="caption"
       >
-        New words to practice.
+        {i18n._(`New words to practice.`)}
       </Typography>
       <Stack
         sx={{
@@ -67,7 +69,7 @@ export const WordsToLearn: React.FC = () => {
             variant="contained"
             startIcon={<GraduationCap size={"34px"} />}
           >
-            Start practice
+            {i18n._(`Start practice`)}
           </Button>
           <Stack
             sx={{
@@ -82,11 +84,11 @@ export const WordsToLearn: React.FC = () => {
               startIcon={<ChevronLeft size={"18px"} />}
               variant="text"
             >
-              Back
+              {i18n._(`Back`)}
             </Button>
             <Tooltip title="Generate new words">
               <Button variant="text" onClick={() => words.getNewWordsToLearn()}>
-                I know all of them
+                {i18n._(`I know all of them`)}
               </Button>
             </Tooltip>
           </Stack>

@@ -18,6 +18,7 @@ import { ProgressBoard } from "./Progress/ProgressBoard";
 import { HomeworkCard } from "./HomeworkCard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
 import { RolePlayInstruction } from "../RolePlay/types";
+import { useLingui } from "@lingui/react";
 
 interface DashboardProps {
   rolePlayScenarios: RolePlayInstruction[];
@@ -27,17 +28,18 @@ export function Dashboard({ rolePlayScenarios }: DashboardProps) {
   const aiConversation = useAiConversation();
   const words = useWords();
   const rules = useRules();
+  const { i18n } = useLingui();
 
   if (aiConversation.isInitializing) {
-    return <InfoBlockedSection title="Loading..." />;
+    return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
 
   if (words.isGeneratingWords) {
-    return <InfoBlockedSection title="Crafting new words..." />;
+    return <InfoBlockedSection title={i18n._(`Crafting new words...`)} />;
   }
 
   if (rules.isGeneratingRule) {
-    return <InfoBlockedSection title="Crafting new rule..." />;
+    return <InfoBlockedSection title={i18n._(`Crafting new rule...`)} />;
   }
 
   if (words.wordsToLearn.length > 0) {
@@ -53,7 +55,7 @@ export function Dashboard({ rolePlayScenarios }: DashboardProps) {
       <InfoBlockedSection title="">
         <Typography color="error">{aiConversation.errorInitiating}</Typography>
         <Button variant="contained" onClick={() => window.location.reload()}>
-          Reload
+          {i18n._(`Reload`)}
         </Button>
       </InfoBlockedSection>
     );

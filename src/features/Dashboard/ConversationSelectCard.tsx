@@ -3,14 +3,16 @@ import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { Baby, Mic, TrendingUp } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { ClickCard } from "./ClickCard";
+import { useLingui } from "@lingui/react";
 
 export const ConversationSelectCard = () => {
   const aiConversation = useAiConversation();
+  const { i18n } = useLingui();
   return (
     <DashboardCard>
       <Stack>
         <Typography variant="h2" className="decor-title">
-          Conversation
+          {i18n._(`Conversation`)}
         </Typography>
         <Typography
           variant="caption"
@@ -18,7 +20,7 @@ export const ConversationSelectCard = () => {
             opacity: 0.7,
           }}
         >
-          Start a conversation with the AI
+          {i18n._(`Start a conversation with the AI`)}
         </Typography>
       </Stack>
       <Stack
@@ -34,24 +36,24 @@ export const ConversationSelectCard = () => {
       >
         <ClickCard
           isDone={false}
-          title="Just Talk Mode"
-          subTitle="Talk to the AI and it will respond to you"
+          title={i18n._(`Just Talk Mode`)}
+          subTitle={i18n._(`Talk to the AI and it will respond to you`)}
           buttonIcon={<Mic size={"30px"} />}
           onStart={() => aiConversation.startConversation({ mode: "talk" })}
         />
 
         <ClickCard
           isDone={false}
-          title="Talk & Correct Mode"
-          subTitle="Talk to the AI, and it will correct you if you make a mistake"
+          title={i18n._(`Talk & Correct Mode`)}
+          subTitle={i18n._(`Talk to the AI, and it will correct you if you make a mistake`)}
           buttonIcon={<TrendingUp size={"30px"} />}
           onStart={() => aiConversation.startConversation({ mode: "talkAndCorrect" })}
         />
 
         <ClickCard
           isDone={false}
-          title="Beginner mode"
-          subTitle="An easy mode for beginners"
+          title={i18n._(`Beginner mode`)}
+          subTitle={i18n._(`An easy mode for beginners`)}
           buttonIcon={<Baby size={"30px"} />}
           onStart={() => aiConversation.startConversation({ mode: "beginner" })}
         />

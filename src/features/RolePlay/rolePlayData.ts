@@ -21,7 +21,7 @@ export const getRolePlayScenarios: (lang: SupportedLanguage) => Array<RolePlayIn
           defaultValue: "Intermediate",
           options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
 
-          labelForUser: "Your Language Level",
+          labelForUser: i18n._(`Your Language Level`),
           optionsAiDescriptions: {
             Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.`,
             Intermediate:
@@ -95,10 +95,11 @@ In this scenario, you’ll take on the role of a job candidate while our AI acts
       input: [
         {
           id: "cv",
-          labelForUser: "Your experience",
+          labelForUser: i18n._(`Your experience`),
           labelForAi: "User's CV text",
-          placeholder:
-            "Paste your CV text here. You can also write a brief summary of your experience.",
+          placeholder: i18n._(
+            `Paste your CV text here. You can also write a brief summary of your experience.`
+          ),
           type: "textarea",
           defaultValue: "",
           lengthToTriggerSummary: 300,
@@ -108,20 +109,22 @@ In this scenario, you’ll take on the role of a job candidate while our AI acts
         },
         {
           id: "job-title",
-          labelForUser: "Desired Job",
+          labelForUser: i18n._(`Desired Job Title`),
           labelForAi: "User's desired Job Title",
-          placeholder:
-            "Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc.",
+          placeholder: i18n._(
+            `Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc.`
+          ),
           type: "text-input",
           defaultValue: "",
           required: true,
         },
         {
           id: "vacancy",
-          labelForUser: "Vacancy description",
+          labelForUser: i18n._(`Vacancy description`),
           labelForAi: "Desired Job Vacancy Description",
-          placeholder:
-            "Paste vacancy description if you have it. You can also write a brief summary of the job requirements.",
+          placeholder: i18n._(
+            `Paste vacancy description if you have it. You can also write a brief summary of the job requirements.`
+          ),
           type: "textarea",
           defaultValue: "",
 
@@ -234,7 +237,7 @@ User Level: [User's language level]
 Topics to discuss: [List of topics to discuss]
 `,
 
-          labelForUser: "Your Language Level",
+          labelForUser: i18n._(`Your Language Level`),
           optionsAiDescriptions: {
             Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.
 
@@ -289,9 +292,9 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
       input: [
         {
           id: "scenario",
-          labelForUser: "Scenario Description",
+          labelForUser: i18n._(`Scenario Description`),
           labelForAi: "",
-          placeholder: "Describe your custom scenario here...",
+          placeholder: i18n._(`Describe your custom scenario here...`),
           type: "textarea",
           defaultValue: "",
           required: true,
@@ -377,7 +380,7 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
           defaultValue: "Intermediate",
           options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
 
-          labelForUser: "Your Language Level",
+          labelForUser: i18n._(`Your Language Level`),
           optionsAiDescriptions: {
             Beginner: `Basic vocabulary and simple sentences. Use greetings and common phrases.`,
             Intermediate:
@@ -583,7 +586,7 @@ You’ll step into the role of a customer returning a product, while the AI acts
           placeholder: "",
           defaultValue: "Intermediate",
           options: ["Beginner", "Intermediate", "Advanced", "Fluent"],
-          labelForUser: "Your Language Level",
+          labelForUser: i18n._(`Your Language Level`),
           optionsAiDescriptions: {
             Beginner: `Use simple, reassuring language. Ask short, direct questions.`,
             Intermediate: `Use clear language with supportive and open-ended questions.`,

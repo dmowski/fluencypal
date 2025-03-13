@@ -3,10 +3,12 @@ import { useAiConversation } from "../Conversation/useAiConversation";
 import { BookOpenText, ChevronLeft } from "lucide-react";
 import { useRules } from "../Rules/useRules";
 import { Markdown } from "../uiKit/Markdown/Markdown";
+import { useLingui } from "@lingui/react";
 
 export const RulesToLearn: React.FC = () => {
   const aiConversation = useAiConversation();
   const rules = useRules();
+  const { i18n } = useLingui();
 
   return (
     <Stack
@@ -28,7 +30,7 @@ export const RulesToLearn: React.FC = () => {
         variant="h2"
         className="decor-text"
       >
-        New rule to practice.
+        {i18n._(`New rule to practice.`)}
       </Typography>
       <Stack
         sx={{
@@ -70,7 +72,7 @@ export const RulesToLearn: React.FC = () => {
             variant="contained"
             startIcon={<BookOpenText size={"34px"} />}
           >
-            Start practice
+            {i18n._(`Start practice`)}
           </Button>
           <Stack
             sx={{
@@ -85,7 +87,7 @@ export const RulesToLearn: React.FC = () => {
               startIcon={<ChevronLeft size={"18px"} />}
               variant="text"
             >
-              Back
+              {i18n._(`Back`)}
             </Button>
           </Stack>
         </Stack>
