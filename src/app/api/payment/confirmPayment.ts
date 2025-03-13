@@ -1,6 +1,13 @@
 import { PaymentLog } from "@/common/usage";
 import { getDB } from "../config/firebase";
 
+export const getUserBalance = async (userId: string) => {
+  const db = getDB();
+  const doc = await db.collection("users").doc(userId).collection("usage").doc("totalUsage").get();
+  const balance: number = doc.data()?.balance || 0;
+  return balance;
+};
+
 export const confirmPayment = async (amount: number, userId: string, paymentId: string) => {
   const paymentLog: PaymentLog = {
     id: paymentId,
