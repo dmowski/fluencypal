@@ -1,9 +1,15 @@
 import { SendSdpOfferRequest, SendSdpOfferResponse } from "@/common/requests";
 import { getEphemeralToken } from "../token/getEphemeralToken";
+import { validateAuthToken } from "../config/firebase";
 
 export async function POST(request: Request) {
   const body = (await request.json()) as SendSdpOfferRequest;
   const ephemeralKey = await getEphemeralToken(body.model);
+
+  const userInfo = await validateAuthToken(request);
+  if (!userInfo.uid) {
+    throw new Error("User not authenticated");
+  }
 
   const baseUrl = "https://api.openai.com/v1/realtime";
   const sdpResponse = await fetch(`${baseUrl}?model=${body.model}`, {

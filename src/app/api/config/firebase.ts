@@ -39,4 +39,27 @@ const getDB = () => {
   return app.firestore();
 };
 
-export { getBucket, firebaseConfig, getDB };
+const validateAuthToken = async (req: Request) => {
+  const authHeader = req.headers.get("authorization");
+  if (!authHeader) {
+    throw new Error("Authorization header is required");
+  }
+  const token = authHeader.split("Bearer ")[1];
+  if (!token) {
+    throw new Error("Token is required");
+  }
+
+  try {
+    const app = initApp();
+    const decodedToken = await app.auth().verifyIdToken(token);
+
+    const { uid, email } = decodedToken;
+
+    return { uid, email };
+  } catch (error) {
+    console.error("Error validating token", error);
+    throw new Error("Invalid token");
+  }
+};
+
+export { getBucket, firebaseConfig, getDB, validateAuthToken };
