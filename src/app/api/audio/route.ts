@@ -1,5 +1,7 @@
 import { PROJECT_PROFIT_MARGIN } from "@/common/ai";
 import { GetAudioUrlRequest, GetAudioUrlResponse } from "@/common/requests";
+import { validateAuthToken } from "../config/firebase";
+import { getUserBalance } from "../payment/confirmPayment";
 interface AudioGenerationInfo {
   audioUrl: string;
   duration: number;
@@ -58,6 +60,12 @@ const getPublicTextToAudioByVoiceIdUrl = async (
 
 export async function POST(request: Request) {
   const requestData = (await request.json()) as GetAudioUrlRequest;
+
+  const userInfo = await validateAuthToken(request);
+  const userBalance = await getUserBalance(userInfo.uid || "");
+  if (userBalance < 0.01) {
+    throw new Error("Insufficient balance");
+  }
 
   const audioInfo = await getPublicTextToAudioByVoiceIdUrl(requestData.text, voiceMap.f, 0.5, "en");
   // eleven_turbo_v2_5 Model

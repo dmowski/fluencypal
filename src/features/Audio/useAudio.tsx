@@ -5,6 +5,7 @@ import { generateAudioUrl } from "./generateAudioUrl";
 import { useUsage } from "../Usage/useUsage";
 import { AudioUsageLog } from "@/common/usage";
 import { getDataFromCache, setDataToCache } from "@/libs/localStorageCache";
+import { useAuth } from "../Auth/useAuth";
 
 const audioCacheKey = `DL_audio-cache`;
 interface AudioContextType {
@@ -16,6 +17,7 @@ const AudioContext = createContext<AudioContextType | null>(null);
 function useProvideAudio(): AudioContextType {
   const settings = useSettings();
   const usage = useUsage();
+  const auth = useAuth();
 
   const getAudioUrl = async (text: string) => {
     const languageCode = settings.languageCode;
@@ -28,7 +30,7 @@ function useProvideAudio(): AudioContextType {
       return urlFromCache;
     }
 
-    const response = await generateAudioUrl({ text });
+    const response = await generateAudioUrl({ text }, await auth.getToken());
 
     const textUsageLog: AudioUsageLog = {
       usageId: `${Date.now()}`,
