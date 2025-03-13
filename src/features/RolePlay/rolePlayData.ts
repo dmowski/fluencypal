@@ -1,5 +1,5 @@
 import { SupportedLanguage } from "@/common/lang";
-import { AiRolePlayInstructionCreator, RolePlayInputResult, RolePlayInstruction } from "./types";
+import { RolePlayInstruction } from "./types";
 import { getI18nInstance } from "@/appRouterI18n";
 
 export const getRolePlayScenarios: (lang: SupportedLanguage) => Array<RolePlayInstruction> = (
