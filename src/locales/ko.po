@@ -13,16 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Landing/LandingPage.tsx:80
-#. js-lingui-explicit-id
-msgid ""
-"Absolutely! FluencyPal supports various languages and adjusts conversations "
-"based on your chosen language and proficiency level. Available languages "
-"include: "
-msgstr ""
-"절대적으로! FluencyPal은 다양한 언어를 지원하며 선택한 언어와 숙련도에 따라 대화를 조정합니다. 사용 가능한 언어는 다음과 "
-"같습니다:"
-
 #: src/libs/metadata.ts:48
 #: src/features/Landing/Footer.tsx:66
 #: src/features/Landing/Contact/ContactsPage.tsx:73
@@ -1004,20 +994,40 @@ msgstr ""
 "관계 또는 자아 존중감 등으로 선택할 수 있습니다. AI는 당신의 심리학자 역할을 하여 지지적인 대화를 제공하고, 반영적인 질문을 "
 "던지며, 당신의 경험을 검증하여 의미 있고 심사숙고하는 대화 연습을 도와줍니다."
 
-#: src/features/Lang/LanguageSwitcher.tsx:41
+#: src/features/Lang/LanguageSwitcher.tsx:109
 #. js-lingui-explicit-id
-msgid "Page language"
-msgstr "페이지 언어"
+msgid "Languages"
+msgstr "언어"
+
+#: src/features/Lang/LanguageSwitcher.tsx:166
+#. js-lingui-explicit-id
+msgid "To learn a language, please sign in"
+msgstr "언어를 배우려면 로그인해 주세요"
+
+#: src/features/Lang/LanguageSwitcher.tsx:169
+#. js-lingui-explicit-id
+msgid "Sign in"
+msgstr "로그인"
+
+#: src/features/Lang/LanguageSwitcher.tsx:178
+#. js-lingui-explicit-id
+msgid "System languages:"
+msgstr "시스템 언어:"
+
+#: src/features/Lang/LanguageSwitcher.tsx:201
+#. js-lingui-explicit-id
+msgid "Other languages:"
+msgstr "다른 언어:"
 
 #: src/features/Landing/LandingPage.tsx:26
-#: src/features/Landing/LandingPage.tsx:123
+#: src/features/Landing/LandingPage.tsx:124
 #: src/app/[lang]/page.tsx:51
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – 당신의 AI 영어 말하기 파트너"
 
 #: src/features/Landing/LandingPage.tsx:28
-#: src/features/Landing/LandingPage.tsx:124
+#: src/features/Landing/LandingPage.tsx:125
 #. js-lingui-explicit-id
 msgid ""
 "Boost your fluency with FluencyPal, the friendly AI English tutor that's "
@@ -1035,13 +1045,13 @@ msgstr ""
 "수 있도록 도와줍니다.  "
 
 #: src/features/Landing/LandingPage.tsx:47
-#: src/features/Landing/LandingPage.tsx:230
+#: src/features/Landing/LandingPage.tsx:231
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
 msgstr "FluencyPal이란 무엇인가요?"
 
 #: src/features/Landing/LandingPage.tsx:50
-#: src/features/Landing/LandingPage.tsx:233
+#: src/features/Landing/LandingPage.tsx:234
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal is an AI-powered English conversation practice app designed for "
@@ -1053,13 +1063,13 @@ msgstr ""
 "현실적인 회화 연습을 제공합니다."
 
 #: src/features/Landing/LandingPage.tsx:57
-#: src/features/Landing/LandingPage.tsx:240
+#: src/features/Landing/LandingPage.tsx:241
 #. js-lingui-explicit-id
 msgid "How does usage-based pricing work?"
 msgstr "사용 기반 가격 책정은 어떻게 작동합니까?"
 
 #: src/features/Landing/LandingPage.tsx:60
-#: src/features/Landing/LandingPage.tsx:243
+#: src/features/Landing/LandingPage.tsx:244
 #. js-lingui-explicit-id
 msgid ""
 "You receive a free initial balance to explore FluencyPal. Each conversation "
@@ -1070,13 +1080,13 @@ msgstr ""
 "언제든지 쉽게 크레딧을 추가할 수 있습니다."
 
 #: src/features/Landing/LandingPage.tsx:67
-#: src/features/Landing/LandingPage.tsx:250
+#: src/features/Landing/LandingPage.tsx:251
 #. js-lingui-explicit-id
 msgid "Is there a free trial?"
 msgstr "무료 체험이 있나요?"
 
 #: src/features/Landing/LandingPage.tsx:70
-#: src/features/Landing/LandingPage.tsx:253
+#: src/features/Landing/LandingPage.tsx:254
 #. js-lingui-explicit-id
 msgid ""
 "Yes, FluencyPal offers a complimentary balance to let you try "
@@ -1084,18 +1094,29 @@ msgid ""
 msgstr "네, FluencyPal은 무료 잔액을 제공하여 대화 연습을 시도하고 충전하기 전에 플랫폼이 어떻게 작동하는지 확인할 수 있도록 합니다."
 
 #: src/features/Landing/LandingPage.tsx:77
-#: src/features/Landing/LandingPage.tsx:260
+#: src/features/Landing/LandingPage.tsx:261
 #. js-lingui-explicit-id
 msgid "Can I practice languages other than English?"
 msgstr "다른 언어도 연습할 수 있나요?"
 
-#: src/features/Landing/LandingPage.tsx:89
-#: src/features/Landing/LandingPage.tsx:280
+#: src/features/Landing/LandingPage.tsx:81
+#. js-lingui-explicit-id
+msgid ""
+"Absolutely! FluencyPal supports various languages and adjusts conversations "
+"based on your chosen language and proficiency level. Available languages "
+"include:"
+msgstr ""
+"Absolutely! FluencyPal supports various languages and adjusts conversations "
+"based on your chosen language and proficiency level. Available languages "
+"include:"
+
+#: src/features/Landing/LandingPage.tsx:90
+#: src/features/Landing/LandingPage.tsx:281
 #. js-lingui-explicit-id
 msgid "What learning modes are available?"
 msgstr "어떤 학습 모드가 제공되나요?"
 
-#: src/features/Landing/LandingPage.tsx:92
+#: src/features/Landing/LandingPage.tsx:93
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal provides three modes: Casual Conversation for uninterrupted "
@@ -1105,27 +1126,27 @@ msgstr ""
 "FluencyPal은 세 가지 모드를 제공합니다: 중단 없는 말하기 연습을 위한 캐주얼 대화, 즉각적인 문법 및 발음 피드백을 위한 "
 "토크 & 교정, 그리고 느린 안내 대화를 위한 초보자 모드입니다."
 
-#: src/features/Landing/LandingPage.tsx:99
-#: src/features/Landing/LandingPage.tsx:303
+#: src/features/Landing/LandingPage.tsx:100
+#: src/features/Landing/LandingPage.tsx:304
 #. js-lingui-explicit-id
 msgid "How do daily tasks help me improve?"
 msgstr "일상적인 작업이 어떻게 나를 향상시키는 데 도움이 되나요?"
 
-#: src/features/Landing/LandingPage.tsx:102
-#: src/features/Landing/LandingPage.tsx:306
+#: src/features/Landing/LandingPage.tsx:103
+#: src/features/Landing/LandingPage.tsx:307
 #. js-lingui-explicit-id
 msgid ""
 "Daily conversational tasks introduce new vocabulary and language "
 "structures, reinforcing your skills and accelerating fluency improvements."
 msgstr "일상 대화 과제는 새로운 어휘와 언어 구조를 소개하여 능력을 강화하고 유창성 향상을 가속화합니다."
 
-#: src/features/Landing/LandingPage.tsx:127
+#: src/features/Landing/LandingPage.tsx:128
 #: src/features/Landing/Price/PricePage.tsx:102
 #. js-lingui-explicit-id
 msgid "Open Dashboard"
 msgstr "대시보드 열기"
 
-#: src/features/Landing/LandingPage.tsx:128
+#: src/features/Landing/LandingPage.tsx:129
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:44
 #: src/features/Landing/Price/PricePage.tsx:103
 #: src/features/Landing/Price/PricePage.tsx:824
@@ -1133,24 +1154,24 @@ msgstr "대시보드 열기"
 msgid "Get Started Free"
 msgstr "무료로 시작하기"
 
-#: src/features/Landing/LandingPage.tsx:129
+#: src/features/Landing/LandingPage.tsx:130
 #: src/features/Landing/Price/PricePage.tsx:104
 #. js-lingui-explicit-id
 msgid "View Pricing"
 msgstr "가격 보기"
 
-#: src/features/Landing/LandingPage.tsx:130
+#: src/features/Landing/LandingPage.tsx:131
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
 msgid "No Credit Card Needed"
 msgstr "신용카드 필요 없음"
 
-#: src/features/Landing/LandingPage.tsx:135
+#: src/features/Landing/LandingPage.tsx:136
 #. js-lingui-explicit-id
 msgid "Speak Fluent English with Confidence"
 msgstr "유창한 영어를 자신 있게 말하기"
 
-#: src/features/Landing/LandingPage.tsx:136
+#: src/features/Landing/LandingPage.tsx:137
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal offers realistic conversational practice in English, Spanish, "
@@ -1160,81 +1181,81 @@ msgstr ""
 "FluencyPal은 영어, 스페인어, 프랑스어 등으로 실제적인 대화 연습을 제공합니다. 몰입감 있는 역할극 시나리오에 참여하고, "
 "즉각적인 피드백을 받아 언제 어디서나 말하기 능력을 향상시킬 수 있습니다."
 
-#: src/features/Landing/LandingPage.tsx:139
+#: src/features/Landing/LandingPage.tsx:140
 #. js-lingui-explicit-id
 msgid "Get started free"
 msgstr "무료로 시작하기"
 
-#: src/features/Landing/LandingPage.tsx:144
+#: src/features/Landing/LandingPage.tsx:145
 #. js-lingui-explicit-id
 msgid "Beginner"
 msgstr "초급者"
 
-#: src/features/Landing/LandingPage.tsx:145
+#: src/features/Landing/LandingPage.tsx:146
 #. js-lingui-explicit-id
 msgid ""
 "Practice slow, guided conversations with simpler vocabulary. Perfect for "
 "building a solid foundation in any language."
 msgstr "느린 지도식 대화를 연습하세요, 더 간단한 어휘로. 어떤 언어에서든 탄탄한 기초를 다지는 데 완벽합니다."
 
-#: src/features/Landing/LandingPage.tsx:151
+#: src/features/Landing/LandingPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Instant Corrections"
 msgstr "즉각적인 수정"
 
-#: src/features/Landing/LandingPage.tsx:152
+#: src/features/Landing/LandingPage.tsx:153
 #. js-lingui-explicit-id
 msgid ""
 "Speak freely while the AI teacher highlights mistakes in real time—ideal "
 "for fast improvement and building confidence."
 msgstr "AI 교사가 실시간으로 실수를 강조하는 동안 자유롭게 말하세요. 빠른 향상과 자신감 구축에 이상적입니다."
 
-#: src/features/Landing/LandingPage.tsx:158
+#: src/features/Landing/LandingPage.tsx:159
 #: src/features/Landing/Price/PricePage.tsx:196
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "고급"
 
-#: src/features/Landing/LandingPage.tsx:159
+#: src/features/Landing/LandingPage.tsx:160
 #. js-lingui-explicit-id
 msgid ""
 "Enjoy fast-paced, natural conversations to refine fluency and sound like a "
 "native speaker. Perfect for challenging your skills."
 msgstr "빠르고 자연스러운 대화를 즐기며 유창성을 다듬고 원어민처럼 들리도록 하세요. 자신의 실력을 도전하는 데 완벽합니다."
 
-#: src/features/Landing/LandingPage.tsx:165
+#: src/features/Landing/LandingPage.tsx:166
 #. js-lingui-explicit-id
 msgid "Product Demo"
 msgstr "제품 데모"
 
-#: src/features/Landing/LandingPage.tsx:165
+#: src/features/Landing/LandingPage.tsx:166
 #. js-lingui-explicit-id
 msgid "See FluencyPal in Action"
 msgstr "FluencyPal의 실제 사용 모습 보기"
 
-#: src/features/Landing/LandingPage.tsx:168
+#: src/features/Landing/LandingPage.tsx:169
 #. js-lingui-explicit-id
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "플루언시팔이 당신의 말하기 능력을 향상시키는 네 가지 방법"
 
-#: src/features/Landing/LandingPage.tsx:169
+#: src/features/Landing/LandingPage.tsx:170
 #. js-lingui-explicit-id
 msgid ""
 "Target the specific skills you need—speaking, grammar, vocabulary, and "
 "progress tracking—to achieve online English fluency faster."
 msgstr "특정 기술에 집중하세요—말하기, 문법, 어휘 및 진행 추적—온라인 영어 유창성을 더 빠르게 달성합니다."
 
-#: src/features/Landing/LandingPage.tsx:174
+#: src/features/Landing/LandingPage.tsx:175
 #. js-lingui-explicit-id
 msgid "Speaking"
 msgstr "말하기"
 
-#: src/features/Landing/LandingPage.tsx:175
+#: src/features/Landing/LandingPage.tsx:176
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
 msgstr "빠른 말하기 유창성 달성하기"
 
-#: src/features/Landing/LandingPage.tsx:176
+#: src/features/Landing/LandingPage.tsx:177
 #. js-lingui-explicit-id
 msgid ""
 "Practice realistic conversations tailored to your skill level. FluencyPal "
@@ -1244,165 +1265,165 @@ msgstr ""
 "현실적인 대화를 연습하세요. 당신의 실력에 맞춰져 있습니다. FluencyPal은 자연스럽게 반응하고, 개선할 부분을 강조하며, 당신의 "
 "자신감을 높여줍니다."
 
-#: src/features/Landing/LandingPage.tsx:181
+#: src/features/Landing/LandingPage.tsx:182
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "대화 연습 시작하기"
 
-#: src/features/Landing/LandingPage.tsx:184
+#: src/features/Landing/LandingPage.tsx:185
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "문법"
 
-#: src/features/Landing/LandingPage.tsx:185
+#: src/features/Landing/LandingPage.tsx:186
 #. js-lingui-explicit-id
 msgid "Instant Grammar Corrections"
 msgstr "즉각적인 문법 수정"
 
-#: src/features/Landing/LandingPage.tsx:186
+#: src/features/Landing/LandingPage.tsx:187
 #. js-lingui-explicit-id
 msgid ""
 "Get immediate feedback and explanations on your grammar mistakes as you "
 "practice. Enhance your speaking accuracy naturally."
 msgstr "즉각적인 피드백과 설명을 통해 연습하면서 문법 오류를 수정하세요. 자연스럽게 말하기 정확성을 향상시키세요."
 
-#: src/features/Landing/LandingPage.tsx:191
+#: src/features/Landing/LandingPage.tsx:192
 #. js-lingui-explicit-id
 msgid "Enhance Your Grammar"
 msgstr "당신의 문법을 향상시키세요"
 
-#: src/features/Landing/LandingPage.tsx:194
+#: src/features/Landing/LandingPage.tsx:195
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "어휘"
 
-#: src/features/Landing/LandingPage.tsx:195
+#: src/features/Landing/LandingPage.tsx:196
 #. js-lingui-explicit-id
 msgid "Grow Your Vocabulary Daily"
 msgstr "매일 어휘력을 증가시키세요"
 
-#: src/features/Landing/LandingPage.tsx:196
+#: src/features/Landing/LandingPage.tsx:197
 #. js-lingui-explicit-id
 msgid ""
 "Receive personalized vocabulary tailored to your conversational needs. Use "
 "new words immediately to reinforce learning."
 msgstr "개인화된 어휘를 받아보세요. 여러분의 대화 필요에 맞춰진 어휘입니다. 새로운 단어를 즉시 사용하여 학습을 강화하세요."
 
-#: src/features/Landing/LandingPage.tsx:201
+#: src/features/Landing/LandingPage.tsx:202
 #. js-lingui-explicit-id
 msgid "Expand Your Vocabulary"
 msgstr "어휘력 확장하기"
 
-#: src/features/Landing/LandingPage.tsx:204
+#: src/features/Landing/LandingPage.tsx:205
 #. js-lingui-explicit-id
 msgid "Progress Tracking"
 msgstr "진행 상황 추적"
 
-#: src/features/Landing/LandingPage.tsx:205
+#: src/features/Landing/LandingPage.tsx:206
 #. js-lingui-explicit-id
 msgid "Track Your Fluency Progress"
 msgstr "자신의 유창성 진행 상황 추적하기"
 
-#: src/features/Landing/LandingPage.tsx:206
+#: src/features/Landing/LandingPage.tsx:207
 #. js-lingui-explicit-id
 msgid ""
 "Visualize your daily progress with intuitive tracking. Stay motivated by "
 "clearly seeing your improvements."
 msgstr "자신의 일일 진행 상황을 직관적인 추적으로 시각화하세요. 자신의 향상을 명확히 확인함으로써 동기를 유지하세요."
 
-#: src/features/Landing/LandingPage.tsx:211
+#: src/features/Landing/LandingPage.tsx:212
 #. js-lingui-explicit-id
 msgid "Check Your Progress"
 msgstr "진행 상황 확인하기"
 
-#: src/features/Landing/LandingPage.tsx:216
+#: src/features/Landing/LandingPage.tsx:217
 #. js-lingui-explicit-id
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "실생활 역할극을 통한 고급 영어 연습"
 
-#: src/features/Landing/LandingPage.tsx:217
+#: src/features/Landing/LandingPage.tsx:218
 #. js-lingui-explicit-id
 msgid ""
 "Practice speaking fluently in real-world scenarios like job interviews, "
 "business meetings, and everyday conversations."
 msgstr "실제 시나리오에서 원활하게 말하기 연습하기 - 예를 들어, 면접, 비즈니스 미팅 및 일상 대화와 같은 상황에서."
 
-#: src/features/Landing/LandingPage.tsx:220
+#: src/features/Landing/LandingPage.tsx:221
 #. js-lingui-explicit-id
 msgid "Explore Role-Play Scenarios"
 msgstr "역할 놀이 시나리오 탐색하기"
 
-#: src/features/Landing/LandingPage.tsx:221
+#: src/features/Landing/LandingPage.tsx:222
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "특정한 것을 찾고 계신가요?"
 
-#: src/features/Landing/LandingPage.tsx:222
+#: src/features/Landing/LandingPage.tsx:223
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "자신만의 시나리오 만들기"
 
-#: src/features/Landing/LandingPage.tsx:223
+#: src/features/Landing/LandingPage.tsx:224
 #. js-lingui-explicit-id
 msgid "Master English Fluency"
 msgstr "영어 유창성 마스터하기"
 
-#: src/features/Landing/LandingPage.tsx:227
+#: src/features/Landing/LandingPage.tsx:228
 #: src/features/Landing/Price/PricePage.tsx:741
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "FAQ"
 
-#: src/features/Landing/LandingPage.tsx:264
+#: src/features/Landing/LandingPage.tsx:265
 #. js-lingui-explicit-id
 msgid ""
 "Absolutely! FluencyPal supports various languages and adjusts conversations "
 "based on your chosen language and proficiency level."
 msgstr "Absolutely! FluencyPal은 다양한 언어를 지원하며, 선택한 언어와 숙련도에 따라 대화를 조정합니다."
 
-#: src/features/Landing/LandingPage.tsx:270
+#: src/features/Landing/LandingPage.tsx:271
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:317
 #. js-lingui-explicit-id
 msgid "Available languages:"
 msgstr "사용 가능한 언어:"
 
-#: src/features/Landing/LandingPage.tsx:285
+#: src/features/Landing/LandingPage.tsx:286
 #. js-lingui-explicit-id
 msgid "Casual Conversation:"
 msgstr "캐주얼 대화:"
 
-#: src/features/Landing/LandingPage.tsx:286
+#: src/features/Landing/LandingPage.tsx:287
 #. js-lingui-explicit-id
 msgid "Practice speaking fluently without interruptions."
 msgstr "유창하게 끊김 없이 말하기 연습하세요."
 
-#: src/features/Landing/LandingPage.tsx:289
+#: src/features/Landing/LandingPage.tsx:290
 #. js-lingui-explicit-id
 msgid "Talk & Correct:"
 msgstr "Talk & Correct:"
 
-#: src/features/Landing/LandingPage.tsx:290
+#: src/features/Landing/LandingPage.tsx:291
 #. js-lingui-explicit-id
 msgid "Receive detailed feedback on grammar and pronunciation instantly."
 msgstr "즉시 문법 및 발음에 대한 자세한 피드백을 받으세요."
 
-#: src/features/Landing/LandingPage.tsx:295
+#: src/features/Landing/LandingPage.tsx:296
 #. js-lingui-explicit-id
 msgid "Beginner Mode:"
 msgstr "초급 모드:"
 
-#: src/features/Landing/LandingPage.tsx:296
+#: src/features/Landing/LandingPage.tsx:297
 #. js-lingui-explicit-id
 msgid "Slower conversations with guided support."
 msgstr "느린 대화와 안내 지원."
 
-#: src/features/Landing/LandingPage.tsx:315
+#: src/features/Landing/LandingPage.tsx:316
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:375
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "준비가 되셨나요? 영어를 유창하게 구사할 준비가 되셨습니까?"
 
-#: src/features/Landing/LandingPage.tsx:316
+#: src/features/Landing/LandingPage.tsx:317
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:376
 #. js-lingui-explicit-id
 msgid "Start Your Free Trial"
@@ -1959,6 +1980,21 @@ msgstr "Okay"
 #. js-lingui-explicit-id
 msgid "No"
 msgstr "안돼"
+
+#: src/features/Landing/LandingPage.tsx:80
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Absolutely! FluencyPal supports various languages and adjusts conversations "
+#~ "based on your chosen language and proficiency level. Available languages "
+#~ "include: "
+#~ msgstr ""
+#~ "절대적으로! FluencyPal은 다양한 언어를 지원하며 선택한 언어와 숙련도에 따라 대화를 조정합니다. 사용 가능한 언어는 다음과 "
+#~ "같습니다:"
+
+#: src/features/Lang/LanguageSwitcher.tsx:41
+#. js-lingui-explicit-id
+#~ msgid "Page language"
+#~ msgstr "페이지 언어"
 
 #: src/features/Landing/LandingPage.tsx:80
 #. js-lingui-explicit-id
