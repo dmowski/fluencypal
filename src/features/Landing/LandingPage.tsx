@@ -24,7 +24,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: i18n._(`FluencyPal – Your AI English Speaking Partner`),
-    url: "https://www.fluencypal.com/",
+    url: "https://fluencypal.com/",
     description: i18n._(
       `Boost your fluency with FluencyPal, the friendly AI English tutor that's ready to chat 24/7. Designed for intermediate and advanced learners, FluencyPal adapts to your speaking level, provides instant corrections, and helps you speak confidently.`
     ),
@@ -38,6 +38,75 @@ export default function LandingPage({ lang }: LandingPageProps) {
         url: "https://fluencypal.com/logo.png",
       },
     },
+    mainEntity: [
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: i18n._(`What is FluencyPal?`),
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: i18n._(
+                `FluencyPal is an AI-powered English conversation practice app designed for intermediate and advanced learners. It provides realistic conversational practice in multiple languages, with immediate feedback on speaking and pronunciation.`
+              ),
+            },
+          },
+          {
+            "@type": "Question",
+            name: i18n._(`How does usage-based pricing work?`),
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: i18n._(
+                `You receive a free initial balance to explore FluencyPal. Each conversation consumes tokens from your balance in real-time, and you can easily top-up credits whenever needed.`
+              ),
+            },
+          },
+          {
+            "@type": "Question",
+            name: i18n._(`Is there a free trial?`),
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: i18n._(
+                `Yes, FluencyPal offers a complimentary balance to let you try conversational practice and see how the platform works before topping up.`
+              ),
+            },
+          },
+          {
+            "@type": "Question",
+            name: i18n._(`Can I practice languages other than English?`),
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: i18n._(
+                `Absolutely! FluencyPal supports various languages and adjusts conversations based on your chosen language and proficiency level. Available languages include:` +
+                  " " +
+                  `${supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}.`
+              ),
+            },
+          },
+          {
+            "@type": "Question",
+            name: i18n._(`What learning modes are available?`),
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: i18n._(
+                `FluencyPal provides three modes: Casual Conversation for uninterrupted speaking practice, Talk & Correct for instant grammar and pronunciation feedback, and Beginner Mode for slower, guided conversations.`
+              ),
+            },
+          },
+          {
+            "@type": "Question",
+            name: i18n._(`How do daily tasks help me improve?`),
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: i18n._(
+                `Daily conversational tasks introduce new vocabulary and language structures, reinforcing your skills and accelerating fluency improvements.`
+              ),
+            },
+          },
+        ],
+      },
+    ],
   };
   return (
     <>
