@@ -52,14 +52,17 @@ export const PaymentModal = () => {
     });
   };
 
-  const sentTgMessage = (message: string) => {
+  const sentTgMessage = async (message: string) => {
     const email = auth?.userInfo?.email || "";
     if (!email) {
-      sendTelegramRequest({
-        message: "Event: Payments. Someone trying to do with money, but no email",
-        userEmail: "unknown email",
-        languageCode: settings.languageCode || "en",
-      });
+      sendTelegramRequest(
+        {
+          message: "Event: Payments. Someone trying to do with money, but no email",
+          userEmail: "unknown email",
+          languageCode: settings.languageCode || "en",
+        },
+        await auth.getToken()
+      );
     }
 
     const isDevEmail = devEmails.includes(email);
@@ -67,11 +70,14 @@ export const PaymentModal = () => {
       return;
     }
 
-    sendTelegramRequest({
-      message: message,
-      userEmail: email,
-      languageCode: settings.languageCode || "en",
-    });
+    sendTelegramRequest(
+      {
+        message: message,
+        userEmail: email,
+        languageCode: settings.languageCode || "en",
+      },
+      await auth.getToken()
+    );
   };
 
   const clickOnConfirmRequest = async () => {

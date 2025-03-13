@@ -1,4 +1,5 @@
 import { TelegramRequest, TelegramResponse } from "@/common/requests";
+import { validateAuthToken } from "../config/firebase";
 
 const TELEGRAM_API_KEY = process.env.TELEGRAM_API_KEY;
 const TELEGRAM_SUPPORT_CHAT_ID = process.env.TELEGRAM_SUPPORT_CHAT_ID;
@@ -22,6 +23,11 @@ const sendTelegramMessage = async (message: string, chatId: string): Promise<voi
 };
 
 export async function POST(request: Request) {
+  const userInfo = await validateAuthToken(request);
+  if (!userInfo.uid) {
+    throw new Error("User is not authenticated");
+  }
+
   if (!TELEGRAM_API_KEY || !TELEGRAM_SUPPORT_CHAT_ID) {
     throw new Error("Telegram API key or chat ID is not set");
   }
