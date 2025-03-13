@@ -120,11 +120,11 @@ export function LanguageSwitcher() {
           }}
         >
           <Tabs value={activeTab} onChange={(e, value) => setActiveTab(value)}>
-            <Tab icon={<Globe />} iconPosition="start" label={"Page"} value={"page"} />
+            <Tab icon={<Globe />} iconPosition="start" label={i18n._(`Page`)} value={"page"} />
             <Tab
               icon={<GraduationCap />}
               iconPosition="start"
-              label={"Language To Learn"}
+              label={i18n._(`For Learning`)}
               value={"learn"}
             />
           </Tabs>
@@ -135,7 +135,7 @@ export function LanguageSwitcher() {
                 gap: "26px",
                 alignItems: "center",
                 justifyContent: "center",
-                minHeight: "570px",
+                minHeight: "calc(100vh - 270px)",
               }}
             >
               <Stack
@@ -176,7 +176,12 @@ export function LanguageSwitcher() {
             </Stack>
           ) : (
             <>
-              <Stack gap={"30px"}>
+              <Stack
+                gap={"30px"}
+                sx={{
+                  minHeight: "calc(100vh - 270px)",
+                }}
+              >
                 <Stack gap={"10px"}>
                   <Typography variant="body2" component="h3">
                     {i18n._(`System languages:`)}
@@ -184,8 +189,17 @@ export function LanguageSwitcher() {
                   <Stack
                     sx={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
                       gap: "16px",
+                      gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
+                      "@media (max-width: 800px)": {
+                        gridTemplateColumns: "1fr 1fr 1fr",
+                      },
+                      "@media (max-width: 600px)": {
+                        gridTemplateColumns: "1fr 1fr",
+                      },
+                      "@media (max-width: 500px)": {
+                        gridTemplateColumns: "1fr",
+                      },
                     }}
                   >
                     {systemLangs.map((option, index) => {
@@ -207,8 +221,18 @@ export function LanguageSwitcher() {
                   <Stack
                     sx={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
                       gap: "16px",
+
+                      gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
+                      "@media (max-width: 800px)": {
+                        gridTemplateColumns: "1fr 1fr 1fr",
+                      },
+                      "@media (max-width: 600px)": {
+                        gridTemplateColumns: "1fr 1fr",
+                      },
+                      "@media (max-width: 500px)": {
+                        gridTemplateColumns: "1fr",
+                      },
                     }}
                   >
                     {otherLangs.map((option, index) => {
