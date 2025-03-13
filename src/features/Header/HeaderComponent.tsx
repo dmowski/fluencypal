@@ -15,7 +15,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { Languages, LogOutIcon, MessageCircleQuestion, Wallet } from "lucide-react";
+import { LogOutIcon, MessageCircleQuestion, Wallet } from "lucide-react";
 import { useSettings } from "../Settings/useSettings";
 
 import { useUsage } from "../Usage/useUsage";
@@ -196,22 +196,8 @@ export function HeaderComponent({
               height: "100%",
             }}
           >
-            <LanguageSwitcher />
             {auth.isAuthorized ? (
               <>
-                {mode !== "landing" && settings.fullLanguageName && (
-                  <Button
-                    variant="text"
-                    startIcon={<Languages size="20px" />}
-                    onClick={() => {
-                      setIsShowLangSelector(true);
-                      setMenuAnchor(null);
-                    }}
-                  >
-                    {settings.fullLanguageName}
-                  </Button>
-                )}
-
                 {mode === "landing" && (
                   <Link
                     href={`${getUrlStart(lang)}practice`}
@@ -221,6 +207,7 @@ export function HeaderComponent({
                     {practiceTitle}
                   </Link>
                 )}
+                <LanguageSwitcher />
 
                 <IconButton
                   onClick={(e) => {
@@ -231,13 +218,16 @@ export function HeaderComponent({
                 </IconButton>
               </>
             ) : (
-              <Button
-                href={`${getUrlStart(lang)}practice`}
-                onClick={(e) => navigateTo(`${getUrlStart(lang)}practice`, e)}
-                variant="outlined"
-              >
-                {signInTitle}
-              </Button>
+              <>
+                <LanguageSwitcher />
+                <Button
+                  href={`${getUrlStart(lang)}practice`}
+                  onClick={(e) => navigateTo(`${getUrlStart(lang)}practice`, e)}
+                  variant="outlined"
+                >
+                  {signInTitle}
+                </Button>
+              </>
             )}
           </Stack>
         )}

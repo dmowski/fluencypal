@@ -8,7 +8,7 @@ interface ClickCardProps {
   lockedText?: string;
   title: string;
   subTitle: string;
-  buttonIcon: JSX.Element;
+  buttonIcon?: JSX.Element;
 
   onStart: () => void;
 }
@@ -69,7 +69,7 @@ export const ClickCard: React.FC<ClickCardProps> = ({
                   : "rgba(10, 18, 30, 0.6)"
             }
           >
-            {lockedText ? <Lock size={"30px"} color="#888" /> : buttonIcon}
+            {lockedText ? <Lock size={"30px"} color="#888" /> : buttonIcon || <></>}
             <Stack
               sx={{
                 gap: "16px",

@@ -12,12 +12,14 @@ interface LangSelectorProps {
   value: SupportedLanguage | null;
   onDone: (selectedLang: SupportedLanguage) => void;
   confirmButtonLabel: string;
+  doneOnChange?: boolean;
 }
 
 export const LangSelector = ({
   value,
   onDone,
   confirmButtonLabel,
+  doneOnChange,
 }: LangSelectorProps): JSX.Element => {
   const [selectedLanguage, setSelectedLanguage] = useState<SupportedLanguage>("en");
   useEffect(() => {
@@ -82,14 +84,16 @@ export const LangSelector = ({
         onChange={onChangeLanguage}
         groups={userCodes.length > 0 ? groups : undefined}
       />
-      <Button
-        variant="contained"
-        size="large"
-        disabled={!selectedLanguage}
-        onClick={() => onDone(selectedLanguage)}
-      >
-        {confirmButtonLabel}
-      </Button>
+      {!doneOnChange && (
+        <Button
+          variant="contained"
+          size="large"
+          disabled={!selectedLanguage}
+          onClick={() => onDone(selectedLanguage)}
+        >
+          {confirmButtonLabel}
+        </Button>
+      )}
     </Stack>
   );
 };
