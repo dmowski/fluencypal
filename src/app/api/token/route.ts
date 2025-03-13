@@ -1,8 +1,8 @@
-import { GetOpenAiTokenRequest, GetEphemeralTokenResponse } from "@/common/requests";
+import { GetEphemeralTokenRequest, GetEphemeralTokenResponse } from "@/common/requests";
 import { getEphemeralToken } from "./getEphemeralToken";
 
 export async function POST(request: Request) {
-  const aiRequest = (await request.json()) as GetOpenAiTokenRequest;
+  const aiRequest = (await request.json()) as GetEphemeralTokenRequest;
 
   const model = aiRequest.model;
   if (!model) {
