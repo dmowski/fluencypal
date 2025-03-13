@@ -12,6 +12,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
 
   return (
     <Stack
+      component={"footer"}
       sx={{
         width: "100%",
         alignItems: "center",
