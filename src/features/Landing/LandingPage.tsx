@@ -113,7 +113,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
       <Header mode="landing" lang={lang} />
       <Script
         type="application/ld+json"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <main style={{ width: "100%", margin: 0 }}>
