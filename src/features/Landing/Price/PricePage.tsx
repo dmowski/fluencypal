@@ -152,7 +152,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 title={i18n._("Free Trial")}
                 subTitle={i18n.t(`Trying FluencyPal risk-free`)}
                 price={i18n._("Free")}
-                priceDescription={i18n._(`$5 free credit`)}
+                priceDescription={i18n._(`$1 free credit. ~15 minutes of active AI speaking`)}
                 listTitle={i18n._("Features:")}
                 listItems={[
                   {
@@ -176,7 +176,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               <PriceCard
                 title={i18n._("Pay-as-You-Go")}
                 subTitle={i18n._("Regular learners who want full control")}
-                price={i18n._(`$5`)}
+                price={i18n._(`$4`)}
                 priceDescription={i18n._("Per AI Hour")}
                 listTitle={i18n._("Everything in Free Trial, plus:")}
                 listItems={[
