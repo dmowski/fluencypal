@@ -77,11 +77,12 @@ export default function LandingPage({ lang }: LandingPageProps) {
             name: i18n._(`Can I practice languages other than English?`),
             acceptedAnswer: {
               "@type": "Answer",
-              text: i18n._(
-                `Absolutely! FluencyPal supports various languages and adjusts conversations based on your chosen language and proficiency level. Available languages include:` +
-                  " " +
-                  `${supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}.`
-              ),
+              text:
+                i18n._(
+                  `Absolutely! FluencyPal supports various languages and adjusts conversations based on your chosen language and proficiency level. Available languages include:`
+                ) +
+                " " +
+                `${supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}.`,
             },
           },
           {
