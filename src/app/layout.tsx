@@ -22,6 +22,15 @@ import { initLingui } from "@/initLingui";
 import linguiConfig from "../../lingui.config";
 import { supportedLanguages } from "@/common/lang";
 import { generateAlternatesTags } from "@/libs/metadata";
+import { Inter, Old_Standard_TT } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], display: "swap" });
+const oldStandardTT = Old_Standard_TT({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 export async function generateStaticParams() {
   return linguiConfig.locales.map((lang: string) => ({ lang }));
@@ -84,7 +93,7 @@ export default async function RootLayout({
   initLingui(supportedLang);
 
   return (
-    <html lang={lang}>
+    <html lang={lang} className={`${inter.className} ${oldStandardTT.className}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/logo192.png" />
