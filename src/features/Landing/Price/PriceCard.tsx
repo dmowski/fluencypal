@@ -94,7 +94,7 @@ export const PriceCard: React.FC<PriceCardProps> = ({
         </Typography>
         <Typography
           sx={{
-            fontSize: "1.2rem",
+            fontSize: "1rem",
             fontWeight: 350,
             opacity: 0.8,
           }}
