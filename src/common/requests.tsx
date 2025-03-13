@@ -24,6 +24,10 @@ export interface TelegramResponse {
   error: string;
 }
 
+export interface GetEphemeralTokenRequest {
+  model: string;
+}
+
 export interface GetEphemeralTokenResponse {
   ephemeralKey: string;
 }

@@ -22,6 +22,7 @@ export interface AuthContext {
   isAuthorized: boolean;
   logout: () => Promise<void>;
   signInWithGoogle: () => Promise<SignInResult | void>;
+  getToken: () => Promise<string>;
 }
 
 export const authContext: Context<AuthContext> = createContext<AuthContext>({
@@ -35,6 +36,7 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
   },
   logout: async () => void 0,
   signInWithGoogle: async () => ({ isDone: false, error: "" }),
+  getToken: async () => "",
 });
 
 function useProvideAuth(): AuthContext {
@@ -87,6 +89,11 @@ function useProvideAuth(): AuthContext {
     await auth.signOut();
   };
 
+  const getToken = async () => {
+    const token = await user?.getIdToken();
+    return token || "";
+  };
+
   return {
     signInWithGoogle,
     isAuthorized: isAuthorized,
@@ -94,6 +101,7 @@ function useProvideAuth(): AuthContext {
     uid: user?.uid || "",
     loading: loading,
     logout,
+    getToken,
   };
 }
 
