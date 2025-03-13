@@ -6,6 +6,7 @@ import { calculateTextUsagePrice, TextAiModel } from "@/common/ai";
 import { useUsage } from "../Usage/useUsage";
 import { TextUsageLog } from "@/common/usage";
 import { getDataFromCache, setDataToCache } from "@/libs/localStorageCache";
+import { useAuth } from "../Auth/useAuth";
 
 const cacheKey = `DL_text-ai-cache`;
 
@@ -25,6 +26,7 @@ const TextAiContext = createContext<TextAiContextType | null>(null);
 function useProvideTextAi(): TextAiContextType {
   const settings = useSettings();
   const usage = useUsage();
+  const auth = useAuth();
 
   const generate = async (conversationDate: TextAiRequest) => {
     const valueForCache = conversationDate.userMessage + conversationDate.systemMessage;
@@ -44,7 +46,10 @@ function useProvideTextAi(): TextAiContextType {
       throw new Error("Language is not set | useProvideTextAi.generate");
     }
 
-    const response = await sendTextAiRequest({ ...conversationDate, languageCode });
+    const response = await sendTextAiRequest(
+      { ...conversationDate, languageCode },
+      await auth.getToken()
+    );
 
     const textUsageLog: TextUsageLog = {
       usageId: `${Date.now()}`,

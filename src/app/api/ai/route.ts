@@ -1,11 +1,19 @@
 import OpenAI from "openai";
 import { AiRequest, AiResponse } from "@/common/requests";
 import { TextUsageEvent } from "@/common/ai";
+import { validateAuthToken } from "../config/firebase";
+import { getUserBalance } from "../payment/confirmPayment";
 
 export async function POST(request: Request) {
   const openAIKey = process.env.OPENAI_API_KEY;
   if (!openAIKey) {
     throw new Error("OpenAI API key is not set");
+  }
+
+  const userInfo = await validateAuthToken(request);
+  const userBalance = await getUserBalance(userInfo.uid || "");
+  if (userBalance < 0.01) {
+    throw new Error("Insufficient balance");
   }
 
   const client = new OpenAI({
