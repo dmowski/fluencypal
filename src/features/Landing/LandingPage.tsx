@@ -12,15 +12,41 @@ import { RolePlayDemo } from "./RolePlay/RolePlayDemo";
 import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "../Lang/getUrlStart";
+import Script from "next/script";
 
 interface LandingPageProps {
   lang: SupportedLanguage;
 }
 export default function LandingPage({ lang }: LandingPageProps) {
   const i18n = getI18nInstance(lang);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: i18n._(`FluencyPal – Your AI English Speaking Partner`),
+    url: "https://www.fluencypal.com/",
+    description: i18n._(
+      `Boost your fluency with FluencyPal, the friendly AI English tutor that's ready to chat 24/7. Designed for intermediate and advanced learners, FluencyPal adapts to your speaking level, provides instant corrections, and helps you speak confidently.`
+    ),
+    inLanguage: lang,
+    publisher: {
+      "@type": "Organization",
+      name: "FluencyPal",
+      url: "https://fluencypal.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://fluencypal.com/logo.png",
+      },
+    },
+  };
   return (
     <>
       <Header mode="landing" lang={lang} />
+      <Script
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <main style={{ width: "100%", margin: 0 }}>
         <TalkingWaves />
         <Stack sx={{ alignItems: "center" }}>
