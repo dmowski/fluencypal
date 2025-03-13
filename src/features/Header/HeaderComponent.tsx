@@ -97,6 +97,7 @@ export function HeaderComponent({
 
   return (
     <Stack
+      component={"header"}
       sx={{
         width: "100%",
         alignItems: "center",
