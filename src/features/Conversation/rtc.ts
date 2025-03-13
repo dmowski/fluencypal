@@ -11,6 +11,7 @@ import { SendSdpOfferRequest, SendSdpOfferResponse } from "@/common/requests";
  *
  * @param {RTCSessionDescriptionInit} offer - The WebRTC SDP offer containing session description details.
  * @param {RealTimeModel} model - The AI model to use for processing the SDP offer.
+ * @param {string} authToken - The authorization token to use for the API request.
  * @returns {Promise<string>} The SDP response returned from the API.
  *
  * @throws {Error} If the API request fails or returns an unexpected response.
@@ -30,7 +31,8 @@ import { SendSdpOfferRequest, SendSdpOfferResponse } from "@/common/requests";
  */
 const sendSdpOffer = async (
   offer: RTCSessionDescriptionInit,
-  model: RealTimeModel
+  model: RealTimeModel,
+  authToken: string
 ): Promise<string> => {
   try {
     if (!offer.sdp) {
@@ -47,6 +49,7 @@ const sendSdpOffer = async (
       body: JSON.stringify(request),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
       },
     });
 
@@ -167,6 +170,7 @@ export interface AiRtcConfig {
   languageCode: SupportedLanguage;
   voice?: AiVoice;
   isVolumeOn: boolean;
+  authToken: string;
 }
 
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
@@ -185,6 +189,7 @@ export const initAiRtc = async ({
   languageCode,
   voice,
   isVolumeOn,
+  authToken,
 }: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 
@@ -339,7 +344,7 @@ export const initAiRtc = async ({
   await peerConnection.setLocalDescription(offer);
   const answer: RTCSessionDescriptionInit = {
     type: "answer",
-    sdp: await sendSdpOffer(offer, model),
+    sdp: await sendSdpOffer(offer, model, authToken),
   };
   await peerConnection.setRemoteDescription(answer);
 

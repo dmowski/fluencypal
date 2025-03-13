@@ -26,6 +26,7 @@ import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { firstAiMessage } from "./data";
 import { GuessGameStat } from "./types";
+import { useAuth } from "../Auth/useAuth";
 
 interface StartConversationProps {
   mode: ConversationMode;
@@ -71,6 +72,7 @@ const modesToExtractUserInfo: ConversationMode[] = ["talk", "talkAndCorrect", "b
 function useProvideAiConversation(): AiConversationContextType {
   const [isInitializing, setIsInitializing] = useState(false);
   const history = useChatHistory();
+  const auth = useAuth();
   const settings = useSettings();
   const aiUserInfo = useAiUserInfo();
   const [activeHomework, setActiveHomework] = useState<Homework | null>(null);
@@ -245,6 +247,7 @@ Your homework is to repeat the following text:
       isVolumeOn,
       onAddUsage: (usageLog: UsageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
       languageCode: settings.languageCode || "en",
+      authToken: "",
     };
 
     const openerInfoPrompt = userInfo
@@ -446,7 +449,13 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
 
       console.log("instruction:");
       console.log(instruction);
-      const conversation = await initAiRtc({ ...aiRtcConfig, initInstruction: instruction, voice });
+      const authToken = await auth.getToken();
+      const conversation = await initAiRtc({
+        ...aiRtcConfig,
+        initInstruction: instruction,
+        voice,
+        authToken,
+      });
       history.createConversation({ conversationId, languageCode: settings.languageCode, mode });
       setCommunicator(conversation);
     } catch (e) {
