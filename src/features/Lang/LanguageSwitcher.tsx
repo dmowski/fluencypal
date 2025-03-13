@@ -89,7 +89,11 @@ export function LanguageSwitcher() {
 
   return (
     <Stack sx={{}}>
-      <IconButton onClick={() => setIsShowModal(!isShowModal)}>
+      <IconButton
+        onClick={() => setIsShowModal(!isShowModal)}
+        title="Select language"
+        aria-label="Select language"
+      >
         <Globe
           style={{
             opacity: 0.8,
