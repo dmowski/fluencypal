@@ -2,10 +2,16 @@ import { supportedLanguages } from "@/common/lang";
 import { StripeCreateCheckoutRequest, StripeCreateCheckoutResponse } from "@/common/requests";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import Stripe from "stripe";
+import { validateAuthToken } from "../config/firebase";
 
 export async function POST(request: Request) {
   const stripeKey = process.env.STRIPE_SECRET_KEY as string;
   const siteUrl = request.headers.get("origin");
+
+  const userInfo = await validateAuthToken(request);
+  if (!userInfo.uid) {
+    throw new Error("User is not authenticated");
+  }
 
   if (!siteUrl) {
     throw new Error("Origin header is not set");

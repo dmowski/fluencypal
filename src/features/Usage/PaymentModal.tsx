@@ -76,11 +76,14 @@ export const PaymentModal = () => {
 
   const clickOnConfirmRequest = async () => {
     if (isUseStripe) {
-      const checkoutInfo = await createStripeCheckout({
-        userId: auth.uid,
-        amount: amountToAdd,
-        languageCode: supportedLang,
-      });
+      const checkoutInfo = await createStripeCheckout(
+        {
+          userId: auth.uid,
+          amount: amountToAdd,
+          languageCode: supportedLang,
+        },
+        await auth.getToken()
+      );
       if (!checkoutInfo.sessionUrl) {
         console.log("checkoutInfo", checkoutInfo);
         notifications.show("Error creating payment session", {
