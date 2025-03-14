@@ -16,6 +16,8 @@ import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { getBlogs } from "./blogData";
+import { getRolePlayScenarios } from "../RolePlay/rolePlayData";
+import { RolePlayCard } from "../Landing/RolePlay/RolePlayCard";
 
 interface BlogOnePageProps {
   id?: string;
@@ -29,6 +31,12 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
   if (!item) {
     return null;
   }
+
+  const rolePlayScenarios = getRolePlayScenarios(lang);
+
+  const relatedCards = rolePlayScenarios.filter((scenario) =>
+    item.relatedRolePlays.includes(scenario.id)
+  );
 
   return (
     <>
@@ -239,6 +247,52 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                 </Stack>
               </Stack>
             </Stack>
+
+            {relatedCards.length > 0 && (
+              <Stack
+                sx={{
+                  color: "#222",
+                  maxWidth: maxContentWidth,
+                  width: "100%",
+                  padding: "10px",
+                  gap: "20px",
+                  boxSizing: "border-box",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  component={"h2"}
+                  sx={{
+                    fontWeight: 600,
+                  }}
+                >
+                  {i18n._(`Related Role-Play scenarios`)}
+                </Typography>
+
+                <Stack
+                  sx={{
+                    display: "grid",
+                    width: "100%",
+                    gap: "20px",
+                    gridTemplateColumns: "1fr 1fr 1fr",
+                    justifyContent: "space-between",
+                    "@media (max-width: 1224px)": {
+                      gridTemplateColumns: "1fr 1fr",
+                    },
+
+                    "@media (max-width: 724px)": {
+                      gridTemplateColumns: "1fr",
+                    },
+                  }}
+                >
+                  {relatedCards.map((scenario, index) => {
+                    return (
+                      <RolePlayCard key={index} scenario={scenario} lang={lang} height="400px" />
+                    );
+                  })}
+                </Stack>
+              </Stack>
+            )}
           </Stack>
         </Stack>
 

@@ -10,4 +10,5 @@ export interface BlogPost {
 
   publishedAt: number;
   category: string;
+  relatedRolePlays: string[];
 }

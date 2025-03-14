@@ -62,6 +62,7 @@ The best way to master these phrases is by practicing them in realistic scenario
       imagePreviewUrl: "https://cdn.midjourney.com/a26866e1-112d-45bd-a1b0-d6ae78b53ac6/0_2.png",
       publishedAt: Date.now(),
       category: i18n._("Business English"),
+      relatedRolePlays: ["job-interview"],
     },
   ];
 };
