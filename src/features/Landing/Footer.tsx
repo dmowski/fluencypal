@@ -1,6 +1,11 @@
 import { Link, Stack, Typography } from "@mui/material";
 import { maxLandingWidth } from "./landingSettings";
-import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
+import {
+  emojiLanguageName,
+  fullEnglishLanguageName,
+  SupportedLanguage,
+  supportedLanguages,
+} from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "../Lang/getUrlStart";
 
@@ -30,7 +35,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
       <Stack
         sx={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
+          gridTemplateColumns: "1fr 1.5fr 1fr",
           alignItems: "center",
           padding: "0 10px",
 
@@ -89,33 +94,34 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
               opacity: 0.92,
             }}
           />
-          <details>
-            <summary>
-              <Typography component="span">{i18n._(`Supported languages`)}</Typography>
-            </summary>
-            <Stack
-              sx={{
-                flexDirection: "row",
-                gap: "0 5px",
-                flexWrap: "wrap",
-              }}
-            >
-              {supportedLanguages.map((lang, index) => {
-                return (
-                  <Link
-                    key={lang}
-                    href={`${getUrlStart(lang)}`}
-                    variant="body1"
-                    lang={lang}
-                    aria-label={`Switch to ${fullEnglishLanguageName[lang]}`}
-                  >
-                    {fullEnglishLanguageName[lang]}
-                    {index !== supportedLanguages.length - 1 && ","}
-                  </Link>
-                );
-              })}
-            </Stack>
-          </details>
+
+          <Stack
+            sx={{
+              flexDirection: "row",
+              gap: "0 10px",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "center",
+              "@media (max-width: 900px)": {
+                justifyContent: "flex-start",
+              },
+            }}
+          >
+            {supportedLanguages.map((lang, index) => {
+              return (
+                <Link
+                  key={lang}
+                  href={`${getUrlStart(lang)}`}
+                  variant="body1"
+                  lang={lang}
+                  aria-label={`Switch to ${fullEnglishLanguageName[lang]}`}
+                >
+                  {emojiLanguageName[lang]} {fullEnglishLanguageName[lang]}
+                  {index !== supportedLanguages.length - 1 && ","}
+                </Link>
+              );
+            })}
+          </Stack>
         </Stack>
         <Stack
           sx={{
