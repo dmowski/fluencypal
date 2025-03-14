@@ -6,7 +6,17 @@ const updateTime = "2025-03-14T18:52:01+00:00";
 
 interface UrlDefinition {
   path: string;
-  priority: "1.0000" | "0.8000" | "0.6000" | "0.4000" | "0.2000" | "0.0000";
+  priority:
+    | "1.0000"
+    | "0.9000"
+    | "0.8000"
+    | "0.7000"
+    | "0.6000"
+    | "0.5000"
+    | "0.4000"
+    | "0.3000"
+    | "0.2000"
+    | "0.1000";
 }
 
 const baseUrl = "https://www.fluencypal.com";
@@ -42,19 +52,19 @@ export async function GET(request: Request) {
     .filter((lang) => lang !== "en")
     .map((lang) => ({
       path: lang,
-      priority: "0.8000",
+      priority: "0.7000",
     }));
 
-  const rolePlayData = getRolePlayScenarios("en");
-  const rolePlayUrls: UrlDefinition[] = rolePlayData.map((item) => ({
+  const scenariosData = getRolePlayScenarios("en");
+  const scenariosUrls: UrlDefinition[] = scenariosData.map((item) => ({
     path: `scenarios/${item.id}`,
-    priority: "0.8000",
+    priority: "0.7000",
   }));
 
   const blogs = getBlogs("en");
   const blogsUrls: UrlDefinition[] = blogs.map((item) => ({
     path: `blog/${item.id}`,
-    priority: "0.8000",
+    priority: "0.6000",
   }));
 
   const urls: UrlDefinition[] = [
@@ -63,9 +73,19 @@ export async function GET(request: Request) {
       priority: "1.0000",
     },
     {
+      path: "pricing",
+      priority: "0.9000",
+    },
+    {
       path: "scenarios",
       priority: "0.8000",
     },
+
+    {
+      path: "blog",
+      priority: "0.8000",
+    },
+
     {
       path: "contacts",
       priority: "0.6000",
@@ -78,20 +98,14 @@ export async function GET(request: Request) {
       path: "privacy",
       priority: "0.6000",
     },
-    {
-      path: "blog",
-      priority: "0.8000",
-    },
+
     {
       path: "practice",
       priority: "0.6000",
     },
-    {
-      path: "pricing",
-      priority: "0.8000",
-    },
+
     ...localeLinks,
-    ...rolePlayUrls,
+    ...scenariosUrls,
     ...blogsUrls,
   ];
 
