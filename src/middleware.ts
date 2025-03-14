@@ -13,10 +13,14 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const pathnameHasLocale = locales.some(
-    (locale: string) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+    (locale: string) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (pathnameHasLocale) return;
+  if (pathnameHasLocale) {
+    const response = NextResponse.next();
+    response.headers.set("x-current-path", request.nextUrl.pathname);
+    return response;
+  }
 
   // Detect preferred language
   const locale = getRequestLocale(request.headers);
@@ -24,6 +28,7 @@ export function middleware(request: NextRequest) {
   // Set a custom header with the preferred locale
   const response = NextResponse.next();
   response.headers.set("X-Preferred-Locale", locale);
+  response.headers.set("x-current-path", request.nextUrl.pathname);
 
   return response;
 }

@@ -8,12 +8,26 @@ import {
 } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { headers } from "next/headers";
 
 interface FooterProps {
   lang: SupportedLanguage;
 }
-export const Footer: React.FC<FooterProps> = ({ lang }) => {
+export const Footer: React.FC<FooterProps> = async ({ lang }) => {
   const i18n = getI18nInstance(lang);
+
+  const headerList = await headers();
+  const pathname = headerList.get("x-current-path") || "/";
+  console.log("pathname", pathname);
+
+  const pathnameWithoutLang =
+    lang === "en" && !pathname.startsWith("/en")
+      ? pathname || "/"
+      : pathname.replace(`/${lang}`, "") || "/";
+
+  const pathWithoutFirstSlash = pathnameWithoutLang.startsWith("/")
+    ? pathnameWithoutLang.slice(1)
+    : pathnameWithoutLang;
 
   return (
     <Stack
@@ -111,7 +125,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
               return (
                 <Link
                   key={lang}
-                  href={`${getUrlStart(lang)}`}
+                  href={`${getUrlStart(lang)}${pathWithoutFirstSlash}`}
                   variant="body1"
                   lang={lang}
                   aria-label={`Switch to ${fullEnglishLanguageName[lang]}`}
