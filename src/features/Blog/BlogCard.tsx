@@ -25,7 +25,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blog, lang, height, variant 
         width: "100%",
         maxWidth: "calc(100vw - 30px)",
         alignItems: "flex-start",
-        height: height || "400px",
         cursor: "pointer",
         borderRadius: "15px",
         overflow: "hidden",
@@ -51,36 +50,54 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blog, lang, height, variant 
       }}
     >
       <Stack
-        className="role-play-image"
         sx={{
-          backgroundImage: `url(${blog.imagePreviewUrl})`,
+          alignItems: "center",
+          gap: "20px",
           width: "100%",
-          height: "230px",
-          minHeight: "230px",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: 0,
         }}
       >
-        {variant === "highlight" && blog.videoSrc && (
-          <video
-            src={blog.videoSrc}
-            loop
-            autoPlay
-            muted={true}
-            playsInline
+        <Stack
+          sx={{
+            width: "100%",
+            backgroundColor: "rgba(125, 123, 74, 0.4)",
+            alignItems: "center",
+            borderRadius: "12px 12px 0 0",
+            padding: "40px 15px 0 15px",
+            boxSizing: "border-box",
+            overflow: "hidden",
+            maxHeight: "300px",
+            position: "relative",
+          }}
+        >
+          <img
+            src={blog.imagePreviewUrl}
+            alt={`Illustration for ${blog.title}`}
             style={{
-              width: "100%",
-              backgroundColor: "rgba(10, 18, 30, 1)",
-              height: "230px",
-              objectFit: "cover",
+              width: "max-content",
+              maxWidth: "100%",
+              height: "400px",
+              borderRadius: "20px 20px 0 0",
+              boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.3)",
+              position: "relative",
             }}
           />
-        )}
+          <Stack
+            sx={{
+              backgroundImage: `url(${blog.imagePreviewUrl})`,
+              filter: "blur(50px)",
+              backgroundSize: "cover",
+              opacity: 0.5,
+              position: "absolute",
+              bottom: 0,
+              left: "-50%",
+              top: "-50%",
+
+              width: "200%",
+              height: "200%",
+              zIndex: -1,
+            }}
+          ></Stack>
+        </Stack>
       </Stack>
 
       <Stack
@@ -126,40 +143,37 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blog, lang, height, variant 
             {blog.subTitle}
           </Typography>
         </Stack>
-        {variant === "highlight" && (
-          <>
-            <Stack
+
+        <Stack
+          sx={{
+            alignItems: "center",
+            justifyContent: "flex-start",
+            flexDirection: "row",
+            gap: "10px",
+            padding: "30px 0 10px 0",
+          }}
+        >
+          <Typography
+            sx={{
+              textDecoration: "underline",
+              textUnderlineOffset: "8px",
+              fontWeight: 550,
+            }}
+            className="link-text"
+          >
+            {i18n._(`Read more`)}
+            <ArrowForwardIcon
+              className="link-icon"
               sx={{
-                alignItems: "center",
-                justifyContent: "flex-start",
-                flexDirection: "row",
-                gap: "10px",
-                padding: "40px 0 10px 0",
+                position: "relative",
+                top: "6px",
+                left: "4px",
+                fontSize: "1rem",
+                transition: "left 0.3s",
               }}
-            >
-              <Typography
-                sx={{
-                  textDecoration: "underline",
-                  textUnderlineOffset: "8px",
-                  fontWeight: 550,
-                }}
-                className="link-text"
-              >
-                {i18n._(`Read more`)}
-                <ArrowForwardIcon
-                  className="link-icon"
-                  sx={{
-                    position: "relative",
-                    top: "6px",
-                    left: "4px",
-                    fontSize: "1rem",
-                    transition: "left 0.3s",
-                  }}
-                />
-              </Typography>
-            </Stack>
-          </>
-        )}
+            />
+          </Typography>
+        </Stack>
       </Stack>
     </Stack>
   );

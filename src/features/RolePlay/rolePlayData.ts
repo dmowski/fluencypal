@@ -289,6 +289,7 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
 `),
     },
     {
+      id: "custom",
       input: [
         {
           id: "scenario",
@@ -300,7 +301,6 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
           required: true,
         },
       ],
-      id: "custom",
       contentPage:
         i18n._(`Create a unique, personalized setting that fits your specific interests or challenges. This scenario lets you decide the context, characters, and conversation flow you want to practice.
 

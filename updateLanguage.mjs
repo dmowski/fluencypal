@@ -54,7 +54,7 @@ const translateBlock = async (blockText, lang) => {
       { role: "system", content: prompt },
       { role: "user", content: blockText },
     ],
-    model: "gpt-4o-mini",
+    model: "gpt-4",
   });
 
   let result = chatCompletion.choices[0].message.content;

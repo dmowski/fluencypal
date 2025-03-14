@@ -59,10 +59,206 @@ Leave a lasting positive impression:
 ## Ready to Practice?
 The best way to master these phrases is by practicing them in realistic scenarios. FluencyPal’s AI-powered mock interviews provide real-time feedback, helping you perfect your responses and gain the confidence you need to succeed. Why not start practicing today?`
       ),
-      imagePreviewUrl: "https://cdn.midjourney.com/a26866e1-112d-45bd-a1b0-d6ae78b53ac6/0_2.png",
+      imagePreviewUrl: "https://cdn.midjourney.com/3c18e767-f547-4b15-88fd-9ce1f92fa1c4/0_1.png",
       publishedAt: Date.now(),
       category: i18n._("Business English"),
       relatedRolePlays: ["job-interview"],
+    },
+
+    {
+      id: "immerse-yourself-business-english-daily",
+      title: i18n._("Immerse Yourself in Business English Daily"),
+      subTitle: i18n._(
+        "Discover effective daily habits to improve your business English skills effortlessly and quickly."
+      ),
+      keywords: [
+        i18n._("Business English"),
+        i18n._("Daily Language Practice"),
+        i18n._("Improve English Skills"),
+        i18n._("FluencyPal"),
+        i18n._("English for Professionals"),
+        i18n._("Intermediate English Learners"),
+      ],
+      content: i18n._(
+        `Improving your Business English skills doesn't have to feel overwhelming or time-consuming. In fact, the most effective approach is consistent, daily practice that naturally integrates into your everyday routine. Here’s how you can effortlessly immerse yourself in Business English every day, enhancing your proficiency and confidence.\n\n## Start Your Day with English Content\nBegin each morning by listening to podcasts or watching videos related to your industry. This habit helps you tune your ear to professional vocabulary and common expressions. Sources such as TED Talks, industry-specific YouTube channels, or reputable news outlets like BBC Business or CNBC can be incredibly beneficial.\n\n## Engage with English News and Articles\nRegularly reading business news articles from respected publications like The Wall Street Journal, Financial Times, or Bloomberg will significantly enhance your comprehension and vocabulary. Try summarizing key points of an article in your own words or discuss them with colleagues to reinforce what you’ve learned.\n\n## Participate in English Discussions Online\nJoining forums, LinkedIn groups, or professional communities online provides practical opportunities to practice written and spoken English. Engaging in meaningful discussions helps you apply new vocabulary and expressions contextually, making them easier to remember and use.\n\n## Incorporate English into Your Workday\nUse English whenever possible in your professional environment. Whether it's sending emails, preparing presentations, or participating in meetings, actively choosing English reinforces your skills and boosts your confidence in real-world situations.\n\n## Practice Role-Play Scenarios\nSimulate workplace scenarios by practicing role-play exercises. Role-playing common situations such as negotiations, client meetings, or team discussions sharpens your verbal agility and prepares you for genuine interactions. FluencyPal provides realistic, AI-driven role-play scenarios tailored to your skill level, offering instant feedback to accelerate your learning.\n\n## Set Small, Daily Goals\nRather than focusing on extensive, less frequent study sessions, set achievable daily goals such as learning three new business phrases or practicing ten minutes of conversation each day. These manageable milestones foster motivation and consistent improvement.\n\n## Keep a Vocabulary Journal\nMaintaining a notebook or digital document to record new words and phrases you encounter is a highly effective way to expand your professional vocabulary. Regularly reviewing and practicing this vocabulary ensures these new terms become a natural part of your everyday communication.\n\n## Leverage Technology to Stay Consistent\nUse language apps and platforms like FluencyPal to maintain daily engagement with English. AI-powered apps offer convenient, personalized practice sessions that adapt to your pace, making your daily practice enjoyable and stress-free.\n\n## Take Action Today\nDaily immersion is the key to mastering Business English. With consistent practice and the right tools, you’ll see significant improvement in your language skills, professional confidence, and career opportunities. Start integrating these simple daily habits today and elevate your business communication with FluencyPal.`
+      ),
+      imagePreviewUrl: "https://cdn.midjourney.com/e6b6f478-7092-4d5c-aea9-a9bcf4775733/0_0.png",
+      publishedAt: Date.now(),
+      category: i18n._("Business English"),
+      relatedRolePlays: [
+        "job-interview",
+        "instant-correction",
+        "alias-game",
+        "small-talk-with-a-stranger",
+        "calling-technical-support",
+      ],
+    },
+    {
+      id: "how-to-ace-english-job-interview-guide",
+      title: i18n._(
+        "How to Ace Your English Job Interview: A Step-by-Step Guide for Intermediate Learners (2025)"
+      ),
+      subTitle: i18n._(
+        `Master your next English job interview with this step-by-step guide! Learn key strategies for Business English learners to boost confidence, vocabulary, and performance.`
+      ),
+
+      content: i18n._(
+        `**Introduction**  
+Interviewing in a second language can feel daunting—especially when your dream job is on the line. For intermediate English speakers, the pressure to articulate skills and experiences clearly adds an extra layer of challenge. But here’s the good news: *“With the right preparation, you can turn a challenging interview into an opportunity to shine.”*  
+
+This guide is tailored for **Business English learners** aiming to excel in interviews. Whether you’re applying for roles in tech, marketing, or finance, follow these seven strategic steps to showcase your expertise with confidence. Let’s dive in!  
+
+---
+
+### **Step 1: Research the Company and Role Thoroughly**  
+Start by studying the company’s website, mission statement, and job description—**in English**. This helps you:  
+- Identify industry-specific terms (e.g., *“KPIs,” “ROI,” “agile development”*).  
+- Align your answers with the company’s values.  
+
+**Pro Tip:** Jot down keywords from the job posting (e.g., *“cross-functional collaboration”*) and weave them into your responses. This shows you speak the company’s language—literally!  
+
+---
+
+### **Step 2: Craft a Winning Self-Introduction**  
+The “Tell me about yourself” question is your chance to make a stellar first impression. Keep it concise (1–2 minutes) and structured:  
+> *“I’m [Name], a [Job Title] with X years of experience in [Industry]. Recently, I [Key Achievement]. I’m excited about this role because [Alignment with Company Goals].”*  
+
+Practice until it feels natural—avoid sounding robotic!  
+
+---
+
+### **Step 3: Master Common Interview Questions**  
+Prepare answers for these frequent questions:  
+- *“What are your strengths?”*  
+- *“Why do you want to work here?”*  
+- *“Describe a challenge you overcame.”*  
+
+**Avoid memorizing scripts.** Instead, outline bullet points. For example:  
+> *Strength: Adaptable. Example: “I quickly learned new CRM software during a team transition, improving workflow by 30%.”*  
+
+---
+
+### **Step 4: Boost Your Business English Vocabulary**  
+Fluency in industry jargon is key. Use platforms like **PREPLY.COM** to learn 5–10 role-specific terms. For a marketing role, master phrases like:  
+- *“Conversion funnel optimization”*  
+- *“Customer retention metrics”*  
+
+Sprinkle these into answers to demonstrate professionalism.  
+
+---
+
+### **Step 5: Polish Pronunciation and Clarity**  
+Even perfect grammar won’t help if you’re misunderstood. Focus on:  
+- **Ending consonants** (e.g., pronounce the *“t”* in *“project”*).  
+- **Intonation** (rise for questions, fall for statements).  
+
+**Try This:** Record yourself answering questions and note areas to improve.  
+
+---
+
+### **Step 6: Simulate the Experience with Mock Interviews**  
+Practice builds confidence. Partner with a friend, tutor, or use tools like **FluencyPal** for AI-powered mock interviews. Real-time practice helps:  
+- Reduce anxiety.  
+- Identify tricky questions (e.g., *“Where do you see yourself in 5 years?”*).  
+
+---
+
+### **Step 7: Prepare Questions + Final Touches**  
+End strong with thoughtful questions:  
+- *“What does success look like in this role?”*  
+- *“How does the team collaborate on projects?”*  
+
+**Final Checklist:**  
+- Lay out professional attire.  
+- Plan your route to arrive early.  
+- Practice polite phrases: *“Thank you for your time—it was a pleasure meeting you.”*  
+
+---
+
+**Conclusion**  
+As an intermediate English speaker, your preparation is your superpower. By researching, practicing, and refining your Business English skills, you’ll walk into that interview ready to impress.  
+
+**Ready to Test Your Skills?**  
+Simulate the real experience with a **free mock interview on FluencyPal**—your final step to acing the big day!  
+`
+      ),
+      keywords: [
+        i18n._("English job interview tips"),
+        i18n._("Business English interview preparation"),
+        i18n._("Mock interview practice"),
+        i18n._("Interview vocabulary for intermediate learners"),
+        i18n._("How to prepare for an interview in English"),
+      ],
+      relatedRolePlays: [
+        "job-interview",
+        "instant-correction",
+        "alias-game",
+        "small-talk-with-a-stranger",
+        "calling-technical-support",
+      ],
+      imagePreviewUrl: "https://cdn.midjourney.com/387a5e43-45d9-4d5c-9427-87db51c49b62/0_1.png",
+      publishedAt: Date.now(),
+      category: i18n._("Business English"),
+    },
+    {
+      id: "5-common-english-job-interview-mistakes",
+      title: i18n._("5 Common English Job Interview Mistakes (and How to Fix Them)"),
+      subTitle: i18n._(
+        "Identify and correct these frequent errors to enhance your interview performance."
+      ),
+      keywords: [
+        "English interview mistakes",
+        "job interview tips",
+        "non-native English speakers",
+        "intermediate English learners",
+        "FluencyPal",
+        "interview preparation",
+      ],
+      content: i18n._(
+        `Even the most prepared candidates can inadvertently make mistakes during English job interviews, especially if they're non-native speakers. These common pitfalls can hinder your chances of making a positive impression. However, with awareness and practice, you can overcome them. Avoiding these five mistakes can be the difference between a shaky interview and a stellar one.
+
+## Mistake 1: Insufficient Preparation (or "Winging it" in English)
+
+Not dedicating enough time to prepare is a significant error, particularly for non-native speakers. Without practicing how to express your thoughts in English, you might find yourself stumbling or drawing blanks during the interview.
+
+**Fix:** Allocate ample time to prepare your answers and rehearse them in English. Thoroughly research the company and the role you're applying for to feel confident discussing them. Practice speaking out loud, perhaps using notes or flashcards for challenging vocabulary. Engaging in at least one full mock Q&A session—with a friend or using FluencyPal—can help you anticipate and navigate potential surprises.
+
+## Mistake 2: Memorizing Answers Word-for-Word
+
+While it might seem beneficial, scripting your answers can lead to a robotic delivery. Interviewers can easily detect when responses sound overly rehearsed, and if you're thrown off by an unexpected question, it can be challenging to adapt.
+
+**Fix:** Instead of memorizing scripts, prepare bullet points highlighting key ideas. Practice answering the same question in various ways to build flexibility. This approach ensures you sound natural and can adjust if questions are phrased differently. Remember, it's acceptable to pause and think during the interview—it's preferable to reciting a memorized monologue.
+
+## Mistake 3: Using Overly Formal or Unnatural Language
+
+Some intermediate speakers tend to use excessively formal words or textbook phrases that may seem out of place in conversation. For instance, saying "Allow me to elucidate my competencies" is less natural than "Let me explain my skills."
+
+**Fix:** Aim for a professional yet conversational tone. Utilize common business English phrases rather than archaic or overly academic language. To adjust your register, listen to sample interview dialogues or seek feedback from native speakers on your phrasing. Strive to sound polished and relatable.
+
+## Mistake 4: Not Clarifying When You Don’t Understand
+
+If a question is unclear or you miss a word during the interview, guessing and providing an off-base answer is the worst approach. Many non-native speakers hesitate to ask for clarification, fearing it reflects poorly on their English proficiency.
+
+**Fix:** Prepare polite clarification phrases. It's perfectly acceptable to say, "I'm sorry, could you please rephrase the question?" or "Could you repeat that, please?" This demonstrates your commitment to providing accurate answers. Interviewers prefer this over irrelevant responses and appreciate good communication skills.
+
+## Mistake 5: Letting Nerves Ruin Your Fluency
+
+Nervousness can cause you to speak too quickly, mumble, or panic over words. Some candidates even start their answers with "Sorry for my English," drawing attention to potential mistakes.
+
+**Fix:** Manage your pacing and mindset. Remember to breathe and speak slightly slower than usual, allowing time to choose words and pronounce them clearly. If anxiety arises, it's acceptable to take a brief pause before answering. Focus on conveying your strengths rather than fixating on perfect grammar. Confidence often leaves a more lasting impression than absolute perfection.
+
+## Conclusion
+
+These mistakes are common, but with conscious effort, they can be avoided. Extensive practice is crucial—"practice makes possible," as the saying goes. Engaging in mock interviews can help eliminate the urge to memorize answers and build comfort in speaking spontaneously. Reflect on your own habits and identify which of these mistakes you might be making.
+
+**Ready to Practice?**
+
+To put these fixes into practice, consider using FluencyPal for your next mock interview. Training in a realistic, supportive setting can help you overcome these mistakes and approach your real interview with greater confidence.`
+      ),
+      imagePreviewUrl: "https://cdn.midjourney.com/6683b332-6af9-4697-bd47-7df9fd582c9d/0_1.png",
+      publishedAt: Date.now(),
+      category: i18n._("Interview Tips"),
+      relatedRolePlays: ["job-interview", "instant-correction", "alias-game"],
     },
   ];
 };
