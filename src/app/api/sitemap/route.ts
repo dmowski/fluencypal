@@ -34,15 +34,13 @@ const generateUrl = (url: UrlDefinition) => {
     <lastmod>${updateTime}</lastmod>
     <priority>${url.priority}</priority>
     <xhtml:link rel="alternate" hreflang="en" href="${defaultLangHref}"/>
-
     ${supportedLanguages
       .filter((lang) => lang !== "en")
       .map((lang) => {
         const pathWithLang = isLangLanding ? `${lang}` : `${lang}${url.path === "" ? "" : path}`;
-        return `<xhtml:link rel="alternate" hreflang="${lang}" href="${baseUrl}/${pathWithLang}"/>`;
+        return `        <xhtml:link rel="alternate" hreflang="${lang}" href="${baseUrl}/${pathWithLang}"/>`;
       })
       .join("\n")}
-
     <xhtml:link rel="alternate" hreflang="x-default" href="${defaultLangHref}"/>
 </url>`;
 };
@@ -112,7 +110,7 @@ export async function GET(request: Request) {
   const textResponse = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-    ${urls.map(generateUrl).join("\n")}
+${urls.map(generateUrl).join("\n")}
 </urlset>
   `;
 
