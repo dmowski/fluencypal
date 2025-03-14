@@ -7,7 +7,7 @@ import { Footer } from "../Landing/Footer";
 import { CtaBlock } from "../Landing/ctaBlock";
 import {
   buttonStyle,
-  maxContentWidth,
+  maxLandingWidth,
   subTitleFontStyle,
   titleFontStyle,
 } from "../Landing/landingSettings";
@@ -66,7 +66,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
           >
             <Stack
               sx={{
-                maxWidth: maxContentWidth,
+                maxWidth: maxLandingWidth,
                 width: "100%",
                 boxSizing: "border-box",
                 alignItems: "center",
@@ -82,6 +82,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                 gap={"0px"}
                 sx={{
                   width: "max-content",
+                  maxWidth: "1000px",
                 }}
               >
                 <Typography
@@ -169,7 +170,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                   borderRadius: "20px",
                   padding: "40px 15px 0 15px",
                   boxSizing: "border-box",
-                  maxWidth: maxContentWidth,
+                  maxWidth: maxLandingWidth,
                   overflow: "hidden",
                   maxHeight: "300px",
                   position: "relative",
@@ -209,7 +210,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
             <Stack
               sx={{
                 color: "#222",
-                maxWidth: maxContentWidth,
+                maxWidth: maxLandingWidth,
                 width: "100%",
                 padding: "10px",
                 gap: "60px",
@@ -252,7 +253,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
               <Stack
                 sx={{
                   color: "#222",
-                  maxWidth: maxContentWidth,
+                  maxWidth: maxLandingWidth,
                   width: "100%",
                   padding: "10px",
                   gap: "20px",
@@ -266,7 +267,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                     fontWeight: 600,
                   }}
                 >
-                  {i18n._(`Related Role-Play scenarios`)}
+                  {i18n._(`Role-Play scenarios to practice`)}
                 </Typography>
 
                 <Stack
