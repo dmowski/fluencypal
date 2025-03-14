@@ -131,15 +131,8 @@ export const ListBlog = ({ lang, selectedCategory }: ListBlogProps) => {
               display: "grid",
               width: "100%",
               gap: "20px",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: "1fr",
               justifyContent: "space-between",
-              "@media (max-width: 1224px)": {
-                gridTemplateColumns: "1fr 1fr",
-              },
-
-              "@media (max-width: 724px)": {
-                gridTemplateColumns: "1fr",
-              },
             }}
           >
             {listToDisplay.map((item, index) => {

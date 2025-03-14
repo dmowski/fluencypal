@@ -25,7 +25,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blog, lang, height, variant 
         width: "100%",
         maxWidth: "calc(100vw - 30px)",
         alignItems: "flex-start",
-        height: height || "370px",
+        height: height || "400px",
         cursor: "pointer",
         borderRadius: "15px",
         overflow: "hidden",
