@@ -17,6 +17,7 @@ import {
   Typography,
 } from "@mui/material";
 import {
+  emojiLanguageName,
   fullEnglishLanguageName,
   fullLanguageName,
   getLabelFromCode,
@@ -160,15 +161,28 @@ export function LanguageSwitcher() {
                 }}
               >
                 <Typography
-                  variant="body2"
+                  variant="h6"
                   align="center"
                   component="h3"
                   sx={{
-                    opacity: 0.7,
+                    opacity: 0.8,
                   }}
                 >
                   {i18n._(`To learn a language, please sign in`)}
                 </Typography>
+
+                <Typography
+                  variant="body2"
+                  align="center"
+                  component="p"
+                  sx={{
+                    opacity: 0.8,
+                    maxWidth: "700px",
+                  }}
+                >
+                  {supportedLanguages.map((lang) => `${fullEnglishLanguageName[lang]}`).join(", ")}
+                </Typography>
+
                 <Button variant="contained" href="/practice">
                   {i18n._(`Sign in`)}
                 </Button>
