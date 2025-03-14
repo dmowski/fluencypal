@@ -6,6 +6,7 @@ import { robots, siteUrl } from "@/common/metadata";
 import { APP_NAME } from "@/features/Landing/landingSettings";
 import { initLingui } from "@/initLingui";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
+import { getBlogs } from "@/features/Blog/blogData";
 
 export const generateAlternatesTags = (currentPath: string) => {
   let hreflangLinks: Record<string, string> = {};
@@ -27,12 +28,14 @@ interface generateMetadataInfoProps {
   lang: string;
   currentPath: string;
   scenarioId?: string;
+  blogId?: string;
 }
 
 export const generateMetadataInfo = ({
   lang,
   currentPath,
   scenarioId,
+  blogId,
 }: generateMetadataInfoProps) => {
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
@@ -114,6 +117,33 @@ export const generateMetadataInfo = ({
     ];
   }
 
+  if (currentPath === "blog" && !blogId) {
+    title = i18n._(`Learning Blog`) + " | " + APP_NAME;
+    description = i18n._(
+      `Read the latest articles on language learning, English practice tips, and AI tutor updates. Stay informed, motivated, and inspired to reach your fluency goals with FluencyPal.`
+    );
+    keywords = [
+      i18n._(`Language Learning Blog`),
+      i18n._(`English Practice Tips`),
+      i18n._(`AI Tutor Updates`),
+      i18n._(`Fluency Goals`),
+      i18n._(`Language Learning Resources`),
+      i18n._(`English Learning Articles`),
+      i18n._(`Language Learning Tips`),
+    ];
+  }
+
+  if (currentPath === "blog" && blogId) {
+    const blogs = getBlogs("en");
+    const blog = blogs.find((b) => b.id === blogId);
+
+    title =
+      `${blog?.title || "Blog"} - ` + i18n._(`Practice English Conversation with AI | FluencyPal`);
+    description = blog?.subTitle || "";
+    keywords = blog?.keywords || [];
+    openGraphImageUrl = blog?.imagePreviewUrl || openGraphImageUrl;
+  }
+
   if (currentPath === "scenarios" && scenarioId) {
     const rolePlayScenarios = getRolePlayScenarios("en");
     const scenario = rolePlayScenarios.find((s) => s.id === scenarioId);
@@ -137,15 +167,18 @@ export const generateMetadataInfo = ({
     openGraphImageUrl = scenario?.imageSrc ? `${siteUrl}${scenario.imageSrc}` : openGraphImageUrl;
   }
 
+  const id = scenarioId || blogId;
+  const pathWithId = currentPath + (id ? "/" + id : "");
+
   return {
     keywords,
     title,
     description,
-    alternates: generateAlternatesTags(currentPath + (scenarioId ? "/" + scenarioId : "")),
+    alternates: generateAlternatesTags(pathWithId),
     openGraph: {
       title: title,
       description: description,
-      url: `${siteUrl}${langForUrl}/${currentPath}`,
+      url: `${siteUrl}${langForUrl}/${pathWithId}`,
       images: [
         {
           url: openGraphImageUrl,

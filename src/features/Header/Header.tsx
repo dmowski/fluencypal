@@ -19,6 +19,7 @@ export function Header({ mode, lang }: { mode: HeaderMode; lang: SupportedLangua
         balanceTitle={i18n._(`Balance`)}
         needHelpTitle={i18n._(`Need Help?`)}
         logOutTitle={i18n._(`Log Out`)}
+        blogTitle={i18n._(`Blog`)}
       />
     </Suspense>
   );

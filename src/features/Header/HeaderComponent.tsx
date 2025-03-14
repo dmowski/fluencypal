@@ -40,6 +40,7 @@ export interface HeaderProps {
   balanceTitle: string;
   needHelpTitle: string;
   logOutTitle: string;
+  blogTitle: string;
 }
 export function HeaderComponent({
   mode,
@@ -51,6 +52,7 @@ export function HeaderComponent({
   signInTitle,
   balanceTitle,
   needHelpTitle,
+  blogTitle,
   logOutTitle,
 }: HeaderProps) {
   const auth = useAuth();
@@ -176,6 +178,13 @@ export function HeaderComponent({
                 className="menu-link hideOnMobile"
               >
                 {contactsTitle}
+              </Link>
+              <Link
+                href={`${getUrlStart(lang)}blog`}
+                onClick={(e) => navigateTo(`${getUrlStart(lang)}blog`, e)}
+                className="menu-link hideOnMobile"
+              >
+                {blogTitle}
               </Link>
               <Link
                 href={`${getUrlStart(lang)}pricing`}
