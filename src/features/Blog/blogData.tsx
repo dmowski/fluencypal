@@ -207,12 +207,12 @@ Simulate the real experience with a **free mock interview on FluencyPal**—your
         "Identify and correct these frequent errors to enhance your interview performance."
       ),
       keywords: [
-        "English interview mistakes",
-        "job interview tips",
-        "non-native English speakers",
-        "intermediate English learners",
-        "FluencyPal",
-        "interview preparation",
+        i18n._("English interview mistakes"),
+        i18n._("job interview tips"),
+        i18n._("non-native English speakers"),
+        i18n._("intermediate English learners"),
+        i18n._("FluencyPal"),
+        i18n._("interview preparation"),
       ],
       content: i18n._(
         `Even the most prepared candidates can inadvertently make mistakes during English job interviews, especially if they're non-native speakers. These common pitfalls can hinder your chances of making a positive impression. However, with awareness and practice, you can overcome them. Avoiding these five mistakes can be the difference between a shaky interview and a stellar one.

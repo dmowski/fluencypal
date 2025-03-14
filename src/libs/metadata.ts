@@ -134,7 +134,7 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === "blog" && blogId) {
-    const blogs = getBlogs("en");
+    const blogs = getBlogs(supportedLang);
     const blog = blogs.find((b) => b.id === blogId);
 
     title =
@@ -145,7 +145,7 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === "scenarios" && scenarioId) {
-    const rolePlayScenarios = getRolePlayScenarios("en");
+    const rolePlayScenarios = getRolePlayScenarios(supportedLang);
     const scenario = rolePlayScenarios.find((s) => s.id === scenarioId);
 
     title =
