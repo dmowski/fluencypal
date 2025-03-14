@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/libs/metadata.ts:48
-#: src/features/Landing/Footer.tsx:67
+#: src/features/Landing/Footer.tsx:72
 #: src/features/Landing/Contact/ContactsPage.tsx:73
 #: src/features/Header/Header.tsx:16
 #. js-lingui-explicit-id
@@ -108,7 +108,7 @@ msgid "AI tutor cost"
 msgstr "Coût du tuteur IA"
 
 #: src/libs/metadata.ts:85
-#: src/features/Landing/Footer.tsx:158
+#: src/features/Landing/Footer.tsx:164
 #: src/features/Auth/SignInForm.tsx:112
 #: src/app/[lang]/page.tsx:108
 #. js-lingui-explicit-id
@@ -116,7 +116,7 @@ msgid "Privacy Policy"
 msgstr "Politique de confidentialité"
 
 #: src/libs/metadata.ts:93
-#: src/features/Landing/Footer.tsx:148
+#: src/features/Landing/Footer.tsx:154
 #: src/features/Auth/SignInForm.tsx:115
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -1242,37 +1242,37 @@ msgstr "Montre plus"
 msgid "Show less"
 msgstr "Afficher moins"
 
-#: src/features/Lang/LanguageSwitcher.tsx:113
+#: src/features/Lang/LanguageSwitcher.tsx:98
 #. js-lingui-explicit-id
 msgid "Languages"
 msgstr "Langues"
 
-#: src/features/Lang/LanguageSwitcher.tsx:123
+#: src/features/Lang/LanguageSwitcher.tsx:108
 #. js-lingui-explicit-id
 msgid "Page"
 msgstr "Page"
 
-#: src/features/Lang/LanguageSwitcher.tsx:127
+#: src/features/Lang/LanguageSwitcher.tsx:112
 #. js-lingui-explicit-id
 msgid "For Learning"
 msgstr "Pour l'apprentissage"
 
-#: src/features/Lang/LanguageSwitcher.tsx:170
+#: src/features/Lang/LanguageSwitcher.tsx:155
 #. js-lingui-explicit-id
 msgid "To learn a language, please sign in"
 msgstr "Pour apprendre une langue, veuillez vous connecter"
 
-#: src/features/Lang/LanguageSwitcher.tsx:173
+#: src/features/Lang/LanguageSwitcher.tsx:171
 #. js-lingui-explicit-id
 msgid "Sign in"
 msgstr "Se connecter"
 
-#: src/features/Lang/LanguageSwitcher.tsx:187
+#: src/features/Lang/LanguageSwitcher.tsx:185
 #. js-lingui-explicit-id
 msgid "System languages:"
 msgstr "Langues du système :"
 
-#: src/features/Lang/LanguageSwitcher.tsx:219
+#: src/features/Lang/LanguageSwitcher.tsx:217
 #. js-lingui-explicit-id
 msgid "Other languages:"
 msgstr "Autres langues :"
@@ -1674,7 +1674,7 @@ msgstr ""
 "compétence."
 
 #: src/features/Landing/LandingPage.tsx:271
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:317
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:343
 #. js-lingui-explicit-id
 msgid "Available languages:"
 msgstr "Langues disponibles :"
@@ -1712,31 +1712,26 @@ msgid "Slower conversations with guided support."
 msgstr "Conversations plus lentes avec un soutien guidé."
 
 #: src/features/Landing/LandingPage.tsx:316
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:375
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:401
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "Prêt à devenir fluent en anglais ?"
 
 #: src/features/Landing/LandingPage.tsx:317
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:376
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:402
 #. js-lingui-explicit-id
 msgid "Start Your Free Trial"
 msgstr "Commencez votre essai gratuit"
 
-#: src/features/Landing/Footer.tsx:64
+#: src/features/Landing/Footer.tsx:69
 #. js-lingui-explicit-id
 msgid "Role-Play"
 msgstr "Rôle-Play"
 
-#: src/features/Landing/Footer.tsx:70
+#: src/features/Landing/Footer.tsx:75
 #. js-lingui-explicit-id
 msgid "Pricing"
 msgstr "Tarification"
-
-#: src/features/Landing/Footer.tsx:94
-#. js-lingui-explicit-id
-msgid "Supported languages"
-msgstr "Langues prises en charge"
 
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:43
 #: src/features/Landing/Price/PricePage.tsx:823
@@ -1744,22 +1739,27 @@ msgstr "Langues prises en charge"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Commencez Votre Voyage vers des Conversations Fluides Maintenant"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:143
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:144
 #. js-lingui-explicit-id
 msgid "View all"
 msgstr "Voir tout"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:154
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:155
 #. js-lingui-explicit-id
 msgid "Play the role"
 msgstr "Jouer le rôle"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:293
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:295
 #. js-lingui-explicit-id
-msgid "Play The Role"
-msgstr "Jouer le Rôle"
+msgid "Answer the AI"
+msgstr "Répondez à l'IA"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:344
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:304
+#. js-lingui-explicit-id
+msgid "First 15 mins are free. Then pay what you want."
+msgstr "Les 15 premières minutes sont gratuites. Ensuite, payez ce que vous voulez."
+
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:370
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
 msgstr "Scénarios Connexes"
@@ -2536,6 +2536,16 @@ msgstr "D'accord"
 #. js-lingui-explicit-id
 msgid "No"
 msgstr "Non"
+
+#: src/features/Landing/Footer.tsx:94
+#. js-lingui-explicit-id
+#~ msgid "Supported languages"
+#~ msgstr "Langues prises en charge"
+
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:293
+#. js-lingui-explicit-id
+#~ msgid "Play The Role"
+#~ msgstr "Jouer le Rôle"
 
 #: src/libs/metadata.ts:73
 #. js-lingui-explicit-id

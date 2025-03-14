@@ -1,5 +1,5 @@
 import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Link, Stack, Typography } from "@mui/material";
 import { Header } from "../../Header/Header";
 
 import { Footer } from "../Footer";
@@ -59,7 +59,8 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
               width: "100%",
               alignItems: "center",
               position: "sticky",
-              backgroundColor: "#fff",
+              backgroundColor: "rgba(255, 255, 255, 0.9)",
+              backdropFilter: "blur(10px)",
               zIndex: 2,
               top: "-10px",
               "@media (max-width: 900px)": {
@@ -258,7 +259,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     },
                   }}
                 >
-                  <Markdown size="small">{item.contentPage}</Markdown>
+                  <Markdown size="small">{`${item.contentPage}`}</Markdown>
                 </Stack>
 
                 {item.exampleOfFirstMessageFromAi && (
@@ -267,31 +268,56 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                       maxWidth: "800px",
                       boxSizing: "border-box",
                       width: "100%",
-                      backgroundColor: `rgba(10, 18, 30, 1)`,
-                      color: `#fff`,
-                      padding: "30px 30px",
-                      borderRadius: "20px",
-                      gap: "20px",
                       alignItems: "flex-start",
                       marginBottom: "20px",
+                      gap: "20px",
+                      borderTop: "1px solid #ddd",
+                      borderBottom: "1px solid #ddd",
+                      padding: "30px 0",
                     }}
                   >
-                    <Typography
-                      align="left"
-                      className="decor-text"
+                    <Typography>{item.exampleOfFirstMessageFromAi}</Typography>
+                    <Stack
                       sx={{
-                        fontSize: "1.5rem",
-                        color: "#fff",
+                        flexDirection: "row",
+                        gap: "5px 20px",
+                        flexWrap: "wrap",
+                        alignItems: "center",
                       }}
                     >
-                      {item.exampleOfFirstMessageFromAi}
-                    </Typography>
-                    <Button
-                      variant="outlined"
-                      href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
-                    >
-                      {i18n._(`Play The Role`)}
-                    </Button>
+                      <Button
+                        variant="outlined"
+                        sx={{
+                          ...buttonStyle,
+                        }}
+                        href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
+                      >
+                        {i18n._(`Answer the AI`)}
+                      </Button>
+                      <Stack
+                        sx={{
+                          flexDirection: "row",
+                          gap: "7px",
+                        }}
+                      >
+                        <Typography variant="caption">
+                          {i18n._(`First 15 mins are free. Then pay what you want.`)}
+                        </Typography>
+                        <Link
+                          variant="caption"
+                          color="info"
+                          sx={{
+                            color: "rgb(5, 69, 165)",
+                            textDecoration: "underline",
+                            textDecorationColor: "rgb(5, 69, 165)",
+                            textDecorationThickness: "1px",
+                          }}
+                          href={"/pricing"}
+                        >
+                          Pricing
+                        </Link>
+                      </Stack>
+                    </Stack>
                   </Stack>
                 )}
               </Stack>
