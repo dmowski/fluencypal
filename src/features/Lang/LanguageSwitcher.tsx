@@ -3,35 +3,19 @@
 import { useState } from "react";
 import { useLingui } from "@lingui/react";
 import { usePathname, useRouter } from "next/navigation";
+import { Button, IconButton, Stack, Tab, Tabs, Typography } from "@mui/material";
 import {
-  Alert,
-  Button,
-  FormControl,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-  Tab,
-  Tabs,
-  Typography,
-} from "@mui/material";
-import {
-  emojiLanguageName,
   fullEnglishLanguageName,
   fullLanguageName,
-  getLabelFromCode,
   getUserLangCode,
   SupportedLanguage,
   supportedLanguages,
 } from "@/common/lang";
 import { getUrlStart } from "./getUrlStart";
-import { LangSelector } from "./LangSelector";
 import { Globe, GraduationCap, Rabbit } from "lucide-react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useSettings } from "../Settings/useSettings";
 import { ClickCard } from "../Dashboard/ClickCard";
-import { SelectGroupItem } from "../uiKit/SuggestInput/SuggestInput";
 import { useAuth } from "../Auth/useAuth";
 
 const LanguageCard = ({
