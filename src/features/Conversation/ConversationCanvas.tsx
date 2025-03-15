@@ -19,8 +19,6 @@ import { useSettings } from "../Settings/useSettings";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useUsage } from "../Usage/useUsage";
 import { AliasGamePanel } from "./AliasGamePanel";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import VolumeMuteIcon from "@mui/icons-material/VolumeMute";
 import { VolumeButton } from "../uiKit/Button/VolumeButton";
 
 const loadingHelpMessage = `Generating help message...`;
@@ -33,8 +31,8 @@ export function ConversationCanvas() {
   const [helpMessage, setHelpMessage] = useState("");
   const balance = `$${new Intl.NumberFormat().format(usage.balance)}`;
 
-  const isSmallBalance = usage.balance < 0.9;
-  const isExtremelySmallBalance = usage.balance < 0.2;
+  const isSmallBalance = usage.balance < 0.2;
+  const isExtremelySmallBalance = usage.balance < 0.1;
 
   const isNeedToShowBalanceWarning =
     (isSmallBalance && aiConversation.conversation.length > 1) || isExtremelySmallBalance;
