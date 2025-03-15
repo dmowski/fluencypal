@@ -13,6 +13,14 @@ export interface AiResponse {
   usageEvent: TextUsageEvent;
 }
 
+export interface InitBalanceRequest {
+  languageCode: SupportedLanguage;
+}
+
+export interface InitBalanceResponse {
+  done: boolean;
+}
+
 export interface TelegramRequest {
   userEmail: string;
   message: string;

@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { confirmPayment } from "../../payment/confirmPayment";
+import { addPaymentLog } from "../../payment/addPaymentLog";
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     }
     const amountPaid = (session.amount_total ?? 0) / 100;
     console.log(`User ${userId} paid $${amountPaid}`);
-    await confirmPayment(amountPaid, userId, paymentId);
+    await addPaymentLog(amountPaid, userId, paymentId);
   } else {
     console.log(`Unhandled event type: ${event.type}`);
     //console.log("event", event);

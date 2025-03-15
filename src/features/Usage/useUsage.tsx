@@ -12,15 +12,10 @@ import {
 import { useAuth } from "../Auth/useAuth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
-import {
-  PaymentLog,
-  PaymentLogType,
-  TotalUsageInfo,
-  UsageLog,
-  WELCOME_BONUS,
-} from "@/common/usage";
+import { PaymentLog, PaymentLogType, TotalUsageInfo, UsageLog } from "@/common/usage";
 import { db } from "../Firebase/db";
 import { useRouter } from "next/navigation";
+import { initWelcomeBalanceRequest } from "./initWelcomeBalanceRequest";
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
@@ -132,20 +127,6 @@ function useProvideUsage(): UsageContextType {
     await setDoc(docRef, paymentLog);
   };
 
-  const addBalance = (amount: number, type: PaymentLogType) => {
-    if (!userId || !totalUsageDoc) return;
-
-    const newTotalUsage: TotalUsageInfo = {
-      balance: (totalUsage?.balance || 0) + amount,
-      usedBalance: totalUsage?.usedBalance || 0,
-      lastUpdatedAt: Date.now(),
-    };
-
-    addPaymentLog(amount, type);
-
-    setDoc(totalUsageDoc, newTotalUsage);
-  };
-
   const initWelcomeBalance = async () => {
     if (!totalUsageDoc || !userId) {
       return;
@@ -154,7 +135,12 @@ function useProvideUsage(): UsageContextType {
     const totalData = docData.data();
     if (!totalData) {
       console.log("ADD START BALANCE");
-      addBalance(WELCOME_BONUS, "welcome");
+      await initWelcomeBalanceRequest(
+        {
+          languageCode: "en",
+        },
+        await auth.getToken()
+      );
     }
   };
 

@@ -1,13 +1,18 @@
-import { PaymentLog } from "@/common/usage";
+import { PaymentLog, PaymentLogType } from "@/common/usage";
 import { getDB } from "../config/firebase";
 import { addToTotalBalance } from "./addToTotalBalance";
 
-export const confirmPayment = async (amount: number, userId: string, paymentId: string) => {
+export const addPaymentLog = async (
+  amount: number,
+  userId: string,
+  paymentId: string,
+  type?: PaymentLogType
+) => {
   const paymentLog: PaymentLog = {
     id: paymentId,
     amountAdded: amount,
     createdAt: Date.now(),
-    type: "user",
+    type: type || "user",
   };
 
   const db = getDB();
