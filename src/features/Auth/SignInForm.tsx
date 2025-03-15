@@ -24,7 +24,7 @@ export const SignInForm = ({ rolePlayScenarios, lang }: SignInFormProps) => {
 
   const pageTitle = scenario ? scenario.title : i18n._(`Start the Lesson`);
   return (
-    <StarContainer minHeight="100vh" paddingBottom="160px">
+    <StarContainer minHeight="min(100vh,1600px)" paddingBottom="160px">
       <Stack
         sx={{
           alignItems: "center",

@@ -21,6 +21,7 @@ export const ProductVideo = () => {
         <Stack
           sx={{
             height: "100vh",
+            maxHeight: "2000px",
             width: "100%",
             alignItems: "center",
             justifyContent: "center",

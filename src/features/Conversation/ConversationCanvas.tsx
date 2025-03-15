@@ -89,6 +89,7 @@ Use ${settings.fullLanguageName || "English"} language.
           gap: "10px",
           width: "100%",
           minHeight: "calc(100vh - 0px)",
+          maxHeight: "2000px",
           padding: "90px 0 40px 0",
           boxSizing: "border-box",
         }}

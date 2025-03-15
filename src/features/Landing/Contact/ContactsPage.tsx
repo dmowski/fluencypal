@@ -33,7 +33,9 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
             backgroundColor: `#fff`,
             paddingTop: "100px",
             color: "#000",
-            minHeight: "calc(100vh - 300px)",
+            height: "max-content",
+            minHeight: "600px",
+            maxHeight: "2000px",
           }}
         >
           <Stack
