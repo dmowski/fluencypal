@@ -10,7 +10,9 @@ export const RolePlayScroller = () => {
   const isTouched = useRef(false);
   const isScrollingToRight = useRef(true);
   const isFocus = useRef(false);
-  const isBot = navigator.userAgent.match(/bot|googlebot|crawler|spider|robot|crawling/i);
+  const isBot =
+    navigator.userAgent.match(/bot|googlebot|crawler|spider|robot|crawling/i) ||
+    /Googlebot/i.test(navigator.userAgent);
 
   const scrollTick = () => {
     if (!containerRef.current || isHover.current || isTouched.current || isFocus.current) return;
@@ -38,7 +40,6 @@ export const RolePlayScroller = () => {
 
   const initEventListeners = () => {
     const scroller = document.getElementById(scrollerId) as HTMLDivElement;
-    console.log("scroller", scroller);
     if (!scroller) return () => {};
 
     containerRef.current = scroller;
