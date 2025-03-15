@@ -1,21 +1,25 @@
 import Stripe from "stripe";
 import { addPaymentLog } from "../../payment/addPaymentLog";
+import { sentSupportTelegramMessage } from "../../telegram/sendTelegramMessage";
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
 export async function POST(request: Request) {
   if (!endpointSecret) {
+    sentSupportTelegramMessage("Stripe webhook secret is not set");
     throw new Error("Stripe webhook secret is not set");
   }
 
   const stripeKey = process.env.STRIPE_SECRET_KEY as string;
   if (!stripeKey) {
+    sentSupportTelegramMessage("Stripe API key is not set");
     throw new Error("Stripe API key is not set");
   }
   const stripe = new Stripe(stripeKey);
 
   const sigFromHeader = request.headers.get("stripe-signature");
   if (!sigFromHeader) {
+    sentSupportTelegramMessage("Stripe signature is not set");
     throw new Error("Stripe signature is not set");
   }
   const sig = sigFromHeader;
