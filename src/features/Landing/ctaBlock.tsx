@@ -17,6 +17,9 @@ export const CtaBlock: React.FC<CtaBlockProps> = ({
       sx={{
         width: "100%",
         padding: "110px 0 140px 0",
+        "@media (max-width: 600px)": {
+          paddingBottom: "80px",
+        },
         alignItems: "center",
         justifyContent: "center",
         gap: "100px",
