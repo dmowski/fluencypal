@@ -3,12 +3,15 @@
 import { useEffect, useRef } from "react";
 
 const scrollerId = "role-play-scenarios-scroller";
+
 export const RolePlayScroller = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isHover = useRef(false);
   const isTouched = useRef(false);
   const isScrollingToRight = useRef(true);
   const isFocus = useRef(false);
+  const isBot = navigator.userAgent.match(/bot|googlebot|crawler|spider|robot|crawling/i);
+
   const scrollTick = () => {
     if (!containerRef.current || isHover.current || isTouched.current || isFocus.current) return;
 
@@ -73,6 +76,8 @@ export const RolePlayScroller = () => {
   };
 
   useEffect(() => {
+    if (isBot) return;
+
     const cleanup = initEventListeners();
     const interval = setInterval(scrollTick, 30);
     return () => {
