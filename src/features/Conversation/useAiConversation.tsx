@@ -233,14 +233,22 @@ Your homework is to repeat the following text:
     });
   };
 
-  const isNoBalance = usage.balance < 0.01;
+  const isLowBalance = usage.balance < 0.01;
+  const [isMutedDueToNoBalance, setIsMutedDueToNoBalance] = useState(false);
   useEffect(() => {
-    if (!isNoBalance) {
+    const isRestoredBalance = isMutedDueToNoBalance && !isLowBalance;
+    if (isRestoredBalance) {
+      communicatorRef.current?.toggleMute(isMuted || false);
+      setIsMutedDueToNoBalance(false);
+    }
+
+    if (!isLowBalance) {
       return;
     }
 
     communicatorRef.current?.toggleMute(true);
-  }, [isNoBalance]);
+    setIsMutedDueToNoBalance(true);
+  }, [isLowBalance]);
 
   const aiRtcConfigs: Record<ConversationMode, AiRtcConfig> = useMemo(() => {
     const baseConfig = {
