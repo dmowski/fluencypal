@@ -54,7 +54,6 @@ const Galaxy: React.FC = () => {
 
   useEffect(() => {
     if (!mountRef.current || !isSupported) return;
-    console.log("render galaxy");
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
