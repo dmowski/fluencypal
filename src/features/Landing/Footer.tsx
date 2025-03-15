@@ -131,7 +131,7 @@ export const Footer: React.FC<FooterProps> = async ({ lang }) => {
                   lang={lang}
                   aria-label={`Switch to ${fullEnglishLanguageName[lang]}`}
                 >
-                  {emojiLanguageName[lang]} {fullEnglishLanguageName[lang]}
+                  {fullEnglishLanguageName[lang]}
                   {index !== supportedLanguages.length - 1 && ","}
                 </Link>
               );
