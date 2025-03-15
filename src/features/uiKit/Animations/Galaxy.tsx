@@ -25,6 +25,7 @@ const Galaxy: React.FC = () => {
     navigator.userAgent.match(/bot|googlebot|crawler|spider|robot|crawling/i) ||
     /Googlebot/i.test(navigator.userAgent);
 
+  console.log("navigator.userAgent", navigator.userAgent);
   const mountRef = useRef<HTMLDivElement>(null);
   const [parameters] = useState<GalaxyParameters>({
     count: 50000,
