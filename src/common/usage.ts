@@ -36,7 +36,7 @@ export type UsageLog = RealtimeUsageLog | TextUsageLog | AudioUsageLog;
 
 export type PaymentLogType = "welcome" | "user" | "gift";
 
-export const WELCOME_BONUS = 20;
+export const WELCOME_BONUS = 15;
 export interface PaymentLog {
   id: string;
   amountAdded: number;
