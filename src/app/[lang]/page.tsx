@@ -10,6 +10,7 @@ import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 import { Twitter } from "next/dist/lib/metadata/types/twitter-types";
 import linguiConfig from "../../../lingui.config";
 import { CookiesPopup } from "@/features/Legal/CookiesPopup";
+import { generateAlternatesTags } from "@/libs/metadata";
 
 interface PageProps {
   params: Promise<{ lang: string }>;
@@ -66,9 +67,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       `Practice conversational English with FluencyPal, your 24/7 AI English tutor and speaking coach. Improve fluency, pronunciation, and confidence through real-life role-play scenarios with instant feedback.`
     ),
 
-    alternates: {
-      canonical: `https://www.fluencypal.com/${lang ? supportedLang : ""}`,
-    },
+    alternates: generateAlternatesTags(""),
 
     keywords: [
       i18n._(`ai English tutor`),
