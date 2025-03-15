@@ -21,6 +21,8 @@ interface GalaxyParameters {
   bgColor: string;
 }
 
+const HEIGHT = 1230;
+
 const Galaxy: React.FC = () => {
   const [isSupported, setIsSupported] = useState(false);
 
@@ -57,16 +59,11 @@ const Galaxy: React.FC = () => {
     if (!mountRef.current || !isSupported) return;
     // Scene setup
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      100
-    );
+    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 100);
     camera.position.set(3, 4.75, 3);
 
     const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth, HEIGHT);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(new THREE.Color(parameters.bgColor));
     mountRef.current.appendChild(renderer.domElement);
@@ -177,9 +174,9 @@ const Galaxy: React.FC = () => {
 
     // Resize handler
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.aspect = 1;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(window.innerWidth, HEIGHT);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     };
 
