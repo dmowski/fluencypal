@@ -15,6 +15,7 @@ import { createStripeCheckout } from "./createStripeCheckout";
 import { CircleCheck } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { supportedLanguages } from "@/common/lang";
+import { useLingui } from "@lingui/react";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
@@ -27,6 +28,7 @@ const isUseStripe = false;
 export const PaymentModal = () => {
   const usage = useUsage();
   const auth = useAuth();
+  const { i18n } = useLingui();
   const settings = useSettings();
   const devEmails = ["dmowski.alex@gmail.com"];
   const notifications = useNotifications();
@@ -116,7 +118,7 @@ export const PaymentModal = () => {
           >
             <Stack>
               <Typography variant="h4" component="h2">
-                Process payments
+                {i18n._(`Process payments`)}
               </Typography>
               <Typography
                 variant="caption"
@@ -124,7 +126,7 @@ export const PaymentModal = () => {
                   opacity: 0.7,
                 }}
               >
-                Let's add some money to your balance
+                {i18n._(`Let's add some money to your balance`)}
               </Typography>
             </Stack>
 
@@ -176,7 +178,9 @@ export const PaymentModal = () => {
             <Stack gap={"5px"}>
               {amountToAdd > 400 && (
                 <Typography variant="caption" color="error">
-                  Amount is too large. I appreciate your support, but let's keep it under $400
+                  {i18n._(
+                    `Amount is too large. I appreciate your support, but let's keep it under $400`
+                  )}
                 </Typography>
               )}
               <Stack
@@ -199,7 +203,7 @@ export const PaymentModal = () => {
                     setIsShowAmountInput(false);
                   }}
                 >
-                  Cancel
+                  {i18n._(`Cancel`)}
                 </Button>
               </Stack>
             </Stack>
@@ -241,19 +245,21 @@ export const PaymentModal = () => {
                       👷
                     </Typography>
                     <Typography>
-                      Hi, my name is Alex, and I'm the creator of this app.
+                      {i18n._(`Hi, my name is Alex, and I'm the creator of this app.`)}
                       <br />
-                      Thank you for using it!
+                      {i18n._(`Thank you for using it!`)}
                     </Typography>
                     <Typography>
-                      Currently, I haven't integrated payment services yet. 💔
+                      {i18n._(`Currently, I haven't integrated payment services yet. 💔`)}
                     </Typography>
                     <Typography>
-                      I've received your payment request for <b>${amountToAdd}</b>. <br />
-                      I'll send instructions on how to pay to your email ({auth.userInfo?.email})
+                      {i18n._(`I've received your payment request for`)} <b>${amountToAdd}</b>.{" "}
+                      <br />
+                      {i18n._(`I'll send instructions on how to pay to your email`)} (
+                      {auth.userInfo?.email})
                     </Typography>
 
-                    <Typography>Once again, thank you for using my app! 🙏</Typography>
+                    <Typography>{i18n._(`Once again, thank you for using my app!`)} 🙏</Typography>
                   </Stack>
 
                   <Stack
@@ -262,7 +268,7 @@ export const PaymentModal = () => {
                     }}
                   >
                     <Typography>
-                      If you'd like to contact me directly, here are my details:
+                      {i18n._(`If you'd like to contact me directly, here are my contacts:`)}
                     </Typography>
                     <ContactList />
                   </Stack>
@@ -284,7 +290,7 @@ export const PaymentModal = () => {
                     <Typography variant="h3">
                       ${new Intl.NumberFormat().format(usage.balance)}
                     </Typography>
-                    <Typography variant="caption">Current Balance</Typography>
+                    <Typography variant="caption">{i18n._(`Current Balance`)}</Typography>
                   </Stack>
 
                   <Stack
@@ -304,7 +310,7 @@ export const PaymentModal = () => {
                     >
                       ${new Intl.NumberFormat().format(usage.usedBalance)}
                     </Typography>
-                    <Typography variant="caption">Total used</Typography>
+                    <Typography variant="caption">{i18n._(`Total used`)}</Typography>
                   </Stack>
                 </Stack>
               </Stack>
@@ -328,7 +334,7 @@ export const PaymentModal = () => {
                         }}
                       >
                         <Typography variant="h4" component="h2">
-                          Success!
+                          {i18n._(`Success!`)}
                         </Typography>
                         <CircleCheck size={"1.6rem"} />
                       </Stack>
@@ -338,13 +344,13 @@ export const PaymentModal = () => {
                           opacity: 0.7,
                         }}
                       >
-                        Your payment was successful
+                        {i18n._(`Your payment was successful`)}
                       </Typography>
                     </>
                   ) : (
                     <>
                       <Typography variant="h4" component="h2">
-                        Balance
+                        {i18n._(`Balance`)}
                       </Typography>
                       <Typography
                         variant="caption"
@@ -352,7 +358,7 @@ export const PaymentModal = () => {
                           opacity: 0.7,
                         }}
                       >
-                        {isShowConfirmPayments ? "" : "Manage your payments and balance"}
+                        {isShowConfirmPayments ? "" : i18n._(`Manage your payments and balance`)}
                       </Typography>
                     </>
                   )}
@@ -376,7 +382,7 @@ export const PaymentModal = () => {
                       <Typography variant="h3">
                         ${new Intl.NumberFormat().format(usage.balance)}
                       </Typography>
-                      <Typography variant="caption">Current Balance</Typography>
+                      <Typography variant="caption">{i18n._(`Current Balance`)}</Typography>
                     </Stack>
                   </Stack>
 
@@ -386,7 +392,7 @@ export const PaymentModal = () => {
                     size="large"
                     variant="contained"
                   >
-                    {"Buy More"}
+                    {i18n._(`Buy More`)}
                   </Button>
                 </Stack>
 
@@ -403,7 +409,8 @@ export const PaymentModal = () => {
                         color: "#c2c2c2",
                       }}
                     >
-                      Total used: <b>${new Intl.NumberFormat().format(usage.usedBalance)}</b>{" "}
+                      {i18n._(`Total used:`)}{" "}
+                      <b>${new Intl.NumberFormat().format(usage.usedBalance)}</b>{" "}
                     </Typography>
 
                     <Stack
@@ -417,7 +424,7 @@ export const PaymentModal = () => {
                           fontWeight: 500,
                         }}
                       >
-                        Payment history:
+                        {i18n._(`Payment history:`)}
                       </Typography>
 
                       {!usage.paymentLogs && (
@@ -427,7 +434,7 @@ export const PaymentModal = () => {
                             color: "#999",
                           }}
                         >
-                          Loading...
+                          {i18n._(`Loading...`)}
                         </Typography>
                       )}
 
@@ -438,7 +445,7 @@ export const PaymentModal = () => {
                             color: "#999",
                           }}
                         >
-                          No payments...
+                          {i18n._(`No payments...`)}
                         </Typography>
                       )}
 

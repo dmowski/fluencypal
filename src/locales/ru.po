@@ -13,15 +13,81 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Landing/Price/PricePage.tsx:155
+#: src/features/Header/NeedHelpModal.tsx:48
+#: src/features/Header/NeedHelpModal.tsx:168
 #. js-lingui-explicit-id
-msgid "$1 free credit. ~10 minutes of active AI speaking"
-msgstr "1 доллар бесплатного кредита. ~10 минут активного AI общения"
+msgid "Are you sure you want to delete your account?"
+msgstr "Вы уверены, что хотите удалить свой аккаунт?"
 
-#: src/features/Landing/Price/PricePage.tsx:179
+#: src/features/Header/NeedHelpModal.tsx:62
 #. js-lingui-explicit-id
-msgid "$6"
-msgstr "6$\n"
+msgid "Your account has been successfully deleted. We are sorry to see you go!"
+msgstr "Ваш аккаунт успешно удален. Нам жаль, что вы уходите!"
+
+#: src/features/Header/NeedHelpModal.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"Failed to delete your account. Please try again later, or contact the "
+"developers."
+msgstr ""
+"Не удалось удалить вашу учетную запись. Попробуйте снова позже или "
+"свяжитесь с разработчиками."
+
+#: src/features/Header/NeedHelpModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Need help?"
+msgstr "Нужна помощь?"
+
+#: src/features/Header/NeedHelpModal.tsx:125
+#. js-lingui-explicit-id
+msgid "Legal:"
+msgstr "Юридическая информация:"
+
+#: src/features/Header/NeedHelpModal.tsx:170
+#. js-lingui-explicit-id
+msgid "This action is irreversible."
+msgstr "Это действие необратимо."
+
+#: src/features/Header/NeedHelpModal.tsx:172
+#. js-lingui-explicit-id
+msgid ""
+"We will delete your data, but information about your balance will be stored "
+"for one\n"
+"              year."
+msgstr ""
+"Мы удалим ваши данные, но информация о вашем балансе будет храниться в "
+"течение одного\n"
+"              года."
+
+#: src/features/Header/NeedHelpModal.tsx:176
+#. js-lingui-explicit-id
+msgid ""
+"If you want to remove all information, including your balance, please "
+"contact us."
+msgstr ""
+"Если вы хотите удалить всю информацию, включая ваш баланс, пожалуйста, "
+"свяжитесь с нами."
+
+#: src/features/Header/NeedHelpModal.tsx:197
+#: src/features/Header/NeedHelpModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Deleting..."
+msgstr "Удаление..."
+
+#: src/features/Header/NeedHelpModal.tsx:197
+#. js-lingui-explicit-id
+msgid "Yes, Delete account"
+msgstr "Да, удалить аккаунт"
+
+#: src/features/Header/NeedHelpModal.tsx:221
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "Закрыть"
+
+#: src/features/Header/NeedHelpModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Delete account"
+msgstr "Удалить аккаунт"
 
 #: src/libs/metadata.ts:51
 #: src/features/Landing/Footer.tsx:84
@@ -120,6 +186,7 @@ msgstr "Стоимость AI репетитора"
 
 #: src/libs/metadata.ts:88
 #: src/features/Landing/Footer.tsx:179
+#: src/features/Header/NeedHelpModal.tsx:151
 #: src/features/Auth/SignInForm.tsx:112
 #: src/app/[lang]/page.tsx:106
 #. js-lingui-explicit-id
@@ -128,6 +195,7 @@ msgstr "Политика конфиденциальности"
 
 #: src/libs/metadata.ts:96
 #: src/features/Landing/Footer.tsx:169
+#: src/features/Header/NeedHelpModal.tsx:138
 #: src/features/Auth/SignInForm.tsx:115
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -278,6 +346,121 @@ msgstr "Упражнения для говорения на английском
 #. js-lingui-explicit-id
 msgid "AI English Speaking Practice"
 msgstr "Практика разговорного английского с ИИ"
+
+#: src/features/Usage/PaymentModal.tsx:121
+#. js-lingui-explicit-id
+msgid "Process payments"
+msgstr "Обработка платежей"
+
+#: src/features/Usage/PaymentModal.tsx:129
+#. js-lingui-explicit-id
+msgid "Let's add some money to your balance"
+msgstr "Давайте добавим немного денег на ваш баланс"
+
+#: src/features/Usage/PaymentModal.tsx:181
+#. js-lingui-explicit-id
+msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
+msgstr "Сумма слишком велика. Я ценю вашу поддержку, но давайте ограничимся $400"
+
+#: src/features/Usage/PaymentModal.tsx:206
+#: src/features/Header/NeedHelpModal.tsx:207
+#. js-lingui-explicit-id
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/features/Usage/PaymentModal.tsx:248
+#. js-lingui-explicit-id
+msgid "Hi, my name is Alex, and I'm the creator of this app."
+msgstr "Привет, меня зовут Алекс, и я создатель этого приложения."
+
+#: src/features/Usage/PaymentModal.tsx:250
+#. js-lingui-explicit-id
+msgid "Thank you for using it!"
+msgstr "Спасибо за использование!"
+
+#: src/features/Usage/PaymentModal.tsx:253
+#. js-lingui-explicit-id
+msgid "Currently, I haven't integrated payment services yet. 💔"
+msgstr "В настоящее время я еще не интегрировал платежные сервисы. 💔"
+
+#: src/features/Usage/PaymentModal.tsx:256
+#. js-lingui-explicit-id
+msgid "I've received your payment request for"
+msgstr "Я получил ваш запрос на оплату для"
+
+#: src/features/Usage/PaymentModal.tsx:258
+#. js-lingui-explicit-id
+msgid "I'll send instructions on how to pay to your email"
+msgstr "Я отправлю инструкции по оплате на вашу электронную почту"
+
+#: src/features/Usage/PaymentModal.tsx:262
+#. js-lingui-explicit-id
+msgid "Once again, thank you for using my app!"
+msgstr "Еще раз спасибо за использование моего приложения!"
+
+#: src/features/Usage/PaymentModal.tsx:271
+#. js-lingui-explicit-id
+msgid "If you'd like to contact me directly, here are my contacts:"
+msgstr "Если вы хотите связаться со мной напрямую, вот мои контакты:"
+
+#: src/features/Usage/PaymentModal.tsx:293
+#: src/features/Usage/PaymentModal.tsx:385
+#. js-lingui-explicit-id
+msgid "Current Balance"
+msgstr "Текущий Баланс"
+
+#: src/features/Usage/PaymentModal.tsx:313
+#. js-lingui-explicit-id
+msgid "Total used"
+msgstr "Всего использовано"
+
+#: src/features/Usage/PaymentModal.tsx:337
+#. js-lingui-explicit-id
+msgid "Success!"
+msgstr "Успех!"
+
+#: src/features/Usage/PaymentModal.tsx:347
+#. js-lingui-explicit-id
+msgid "Your payment was successful"
+msgstr "Ваш платеж был успешным"
+
+#: src/features/Usage/PaymentModal.tsx:353
+#: src/features/Header/Header.tsx:19
+#. js-lingui-explicit-id
+msgid "Balance"
+msgstr "Баланс"
+
+#: src/features/Usage/PaymentModal.tsx:361
+#. js-lingui-explicit-id
+msgid "Manage your payments and balance"
+msgstr "Управляйте своими платежами и балансом"
+
+#: src/features/Usage/PaymentModal.tsx:395
+#. js-lingui-explicit-id
+msgid "Buy More"
+msgstr "Купить Больше"
+
+#: src/features/Usage/PaymentModal.tsx:412
+#. js-lingui-explicit-id
+msgid "Total used:"
+msgstr "Всего использовано:"
+
+#: src/features/Usage/PaymentModal.tsx:427
+#. js-lingui-explicit-id
+msgid "Payment history:"
+msgstr "История платежей:"
+
+#: src/features/Usage/PaymentModal.tsx:437
+#: src/features/RolePlay/RolePlayBoard.tsx:544
+#: src/features/Dashboard/Dashboard.tsx:34
+#. js-lingui-explicit-id
+msgid "Loading..."
+msgstr "Загрузка..."
+
+#: src/features/Usage/PaymentModal.tsx:448
+#. js-lingui-explicit-id
+msgid "No payments..."
+msgstr "Нет платежей..."
 
 #: src/features/RolePlay/rolePlayData.ts:13
 #. js-lingui-explicit-id
@@ -1241,12 +1424,6 @@ msgstr ""
 "сделать ее более реалистичной."
 
 #: src/features/RolePlay/RolePlayBoard.tsx:544
-#: src/features/Dashboard/Dashboard.tsx:34
-#. js-lingui-explicit-id
-msgid "Loading..."
-msgstr "Загрузка..."
-
-#: src/features/RolePlay/RolePlayBoard.tsx:544
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Начать"
@@ -1851,6 +2028,11 @@ msgstr "Пробуйте FluencyPal без риска"
 msgid "Free"
 msgstr "Бесплатно"
 
+#: src/features/Landing/Price/PricePage.tsx:155
+#. js-lingui-explicit-id
+msgid "$1 free credit. ~10 minutes of active AI speaking"
+msgstr "1 доллар бесплатного кредита. ~10 минут активного AI общения"
+
 #: src/features/Landing/Price/PricePage.tsx:156
 #. js-lingui-explicit-id
 msgid "Features:"
@@ -1900,6 +2082,11 @@ msgstr "Оплата по мере использования"
 #. js-lingui-explicit-id
 msgid "Regular learners who want full control"
 msgstr "Ученики, которые хотят полного контроля"
+
+#: src/features/Landing/Price/PricePage.tsx:179
+#. js-lingui-explicit-id
+msgid "$6"
+msgstr "6$\n"
 
 #: src/features/Landing/Price/PricePage.tsx:180
 #. js-lingui-explicit-id
@@ -2121,6 +2308,7 @@ msgstr ""
 "свяжитесь со мной перед покупкой, и я дам вам скидку."
 
 #: src/features/Landing/Price/PricePage.tsx:797
+#: src/features/Header/NeedHelpModal.tsx:109
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "Контакты:"
@@ -2155,11 +2343,6 @@ msgstr "Ролевые Игры"
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "Войти"
-
-#: src/features/Header/Header.tsx:19
-#. js-lingui-explicit-id
-msgid "Balance"
-msgstr "Баланс"
 
 #: src/features/Header/Header.tsx:20
 #. js-lingui-explicit-id

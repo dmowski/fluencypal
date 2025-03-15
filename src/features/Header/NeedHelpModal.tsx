@@ -1,8 +1,6 @@
 import { Button, Link, Stack, Typography } from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import MailIcon from "@mui/icons-material/Mail";
 import { Cookie, ReceiptText, Trash } from "lucide-react";
 import { useMemo, useState } from "react";
 import { firestore } from "../Firebase/init";
@@ -20,6 +18,7 @@ import { useNotifications } from "@toolpad/core/useNotifications";
 import { ContactList } from "../Landing/Contact/ContactList";
 import { SupportedLanguage } from "@/common/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { useLingui } from "@lingui/react";
 
 interface NeedHelpModalProps {
   onClose: () => void;
@@ -35,7 +34,7 @@ async function deleteCollectionDocs(firestore: Firestore, collectionPath: string
 export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
   const auth = useAuth();
   const [isShowDeleteAccountModal, setIsShowDeleteAccountModal] = useState(false);
-
+  const { i18n } = useLingui();
   const userId = auth.uid;
   const notifications = useNotifications();
   const userSettingsDoc = useMemo(() => {
@@ -46,7 +45,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
 
   const onDeleteAccount = async () => {
     if (!userId || !userSettingsDoc) return;
-    const confirm = window.confirm("Are you sure you want to delete your account?");
+    const confirm = window.confirm(i18n._(`Are you sure you want to delete your account?`));
     if (!confirm) return;
 
     setIsDeletingAccount(true);
@@ -60,7 +59,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
 
       await setDoc(userSettingsDoc, { languageCode: null }, { merge: true });
       notifications.show(
-        "Your account has been successfully deleted. We are sorry to see you go!",
+        i18n._(`Your account has been successfully deleted. We are sorry to see you go!`),
         {
           severity: "success",
           autoHideDuration: 10_000,
@@ -72,7 +71,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
     } catch (error) {
       setIsDeletingAccount(false);
       notifications.show(
-        "Failed to delete your account. Please try again later, or contact the developers.",
+        i18n._(`Failed to delete your account. Please try again later, or contact the developers.`),
         {
           severity: "error",
           autoHideDuration: 10_000,
@@ -88,7 +87,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
   return (
     <CustomModal isOpen={true} onClose={() => onClose()}>
       <Typography variant="h4" component="h2">
-        Need help?
+        {i18n._(`Need help?`)}
       </Typography>
       <Stack
         sx={{
@@ -107,7 +106,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
             width: "100%",
           }}
         >
-          <Typography>Contacts:</Typography>
+          <Typography>{i18n._(`Contacts:`)}</Typography>
 
           <ContactList />
         </Stack>
@@ -123,7 +122,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               opacity: 1,
             }}
           >
-            Legal:
+            {i18n._(`Legal:`)}
           </Typography>
 
           <Stack gap={"10px"}>
@@ -136,7 +135,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
             >
               <ReceiptText />
               <Typography>
-                <Link href={`${getUrlStart(lang)}terms`}>Terms of Use</Link>
+                <Link href={`${getUrlStart(lang)}terms`}>{i18n._(`Terms of Use`)}</Link>
               </Typography>
             </Stack>
 
@@ -149,7 +148,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
             >
               <Cookie />
               <Typography>
-                <Link href={`${getUrlStart(lang)}privacy`}>Privacy Policy</Link>
+                <Link href={`${getUrlStart(lang)}privacy`}>{i18n._(`Privacy Policy`)}</Link>
               </Typography>
             </Stack>
           </Stack>
@@ -165,14 +164,18 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
           }}
         >
           <Stack>
-            <Typography variant="h5">Are you sure you want to delete your account?</Typography>
-            <Typography variant="caption">This action is irreversible.</Typography>
+            <Typography variant="h5">
+              {i18n._(`Are you sure you want to delete your account?`)}
+            </Typography>
+            <Typography variant="caption">{i18n._(`This action is irreversible.`)}</Typography>
             <Typography variant="caption">
-              We will delete your data, but information about your balance will be stored for one
-              year.
+              {i18n._(`We will delete your data, but information about your balance will be stored for one
+              year.`)}
             </Typography>
             <Typography variant="caption">
-              If you want to remove all information, including your balance, please contact us.
+              {i18n._(
+                `If you want to remove all information, including your balance, please contact us.`
+              )}
             </Typography>
           </Stack>
 
@@ -191,7 +194,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               variant="contained"
               startIcon={<Trash size={"18px"} />}
             >
-              {isDeletingAccount ? "Deleting..." : `Yes, Delete account`}
+              {isDeletingAccount ? i18n._(`Deleting...`) : i18n._(`Yes, Delete account`)}
             </Button>
 
             <Button
@@ -201,7 +204,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               }}
               startIcon={<Trash size={"18px"} />}
             >
-              Cancel
+              {i18n._(`Cancel`)}
             </Button>
           </Stack>
         </Stack>
@@ -215,7 +218,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
           }}
         >
           <Button onClick={onClose} variant="outlined" color="primary">
-            Close
+            {i18n._(`Close`)}
           </Button>
           <Button
             disabled={isDeletingAccount}
@@ -225,7 +228,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
             color="error"
             startIcon={<Trash size={"18px"} />}
           >
-            {isDeletingAccount ? "Deleting..." : "Delete account"}
+            {isDeletingAccount ? i18n._(`Deleting...`) : i18n._(`Delete account`)}
           </Button>
         </Stack>
       )}

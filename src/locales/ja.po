@@ -13,15 +13,76 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Landing/Price/PricePage.tsx:155
+#: src/features/Header/NeedHelpModal.tsx:48
+#: src/features/Header/NeedHelpModal.tsx:168
 #. js-lingui-explicit-id
-msgid "$1 free credit. ~10 minutes of active AI speaking"
-msgstr "1ドルの無料クレジット。AIのアクティブな話す時間は約10分"
+msgid "Are you sure you want to delete your account?"
+msgstr "あなたのアカウントを削除してもよろしいですか？"
 
-#: src/features/Landing/Price/PricePage.tsx:179
+#: src/features/Header/NeedHelpModal.tsx:62
 #. js-lingui-explicit-id
-msgid "$6"
-msgstr "$6"
+msgid "Your account has been successfully deleted. We are sorry to see you go!"
+msgstr "あなたのアカウントは正常に削除されました。お別れするのは残念です！"
+
+#: src/features/Header/NeedHelpModal.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"Failed to delete your account. Please try again later, or contact the "
+"developers."
+msgstr "アカウントの削除に失敗しました。後で再試行するか、開発者に連絡してください。"
+
+#: src/features/Header/NeedHelpModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Need help?"
+msgstr "助けが必要ですか？"
+
+#: src/features/Header/NeedHelpModal.tsx:125
+#. js-lingui-explicit-id
+msgid "Legal:"
+msgstr "法的:"
+
+#: src/features/Header/NeedHelpModal.tsx:170
+#. js-lingui-explicit-id
+msgid "This action is irreversible."
+msgstr "この操作は元に戻せません。"
+
+#: src/features/Header/NeedHelpModal.tsx:172
+#. js-lingui-explicit-id
+msgid ""
+"We will delete your data, but information about your balance will be stored "
+"for one\n"
+"              year."
+msgstr ""
+"あなたのデータは削除されますが、残高に関する情報は一\n"
+"              年間保管されます。"
+
+#: src/features/Header/NeedHelpModal.tsx:176
+#. js-lingui-explicit-id
+msgid ""
+"If you want to remove all information, including your balance, please "
+"contact us."
+msgstr "すべての情報、残高を含む、を削除したい場合は、お問い合わせください。"
+
+#: src/features/Header/NeedHelpModal.tsx:197
+#: src/features/Header/NeedHelpModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Deleting..."
+msgstr "削除中..."
+
+#: src/features/Header/NeedHelpModal.tsx:197
+#. js-lingui-explicit-id
+msgid "Yes, Delete account"
+msgstr "はい、アカウントを削除します"
+
+#: src/features/Header/NeedHelpModal.tsx:221
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "閉じる"
+
+#: src/features/Header/NeedHelpModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Delete account"
+msgstr "アカウントを削除する"
 
 #: src/libs/metadata.ts:51
 #: src/features/Landing/Footer.tsx:84
@@ -119,6 +180,7 @@ msgstr "AI家庭教師の費用"
 
 #: src/libs/metadata.ts:88
 #: src/features/Landing/Footer.tsx:179
+#: src/features/Header/NeedHelpModal.tsx:151
 #: src/features/Auth/SignInForm.tsx:112
 #: src/app/[lang]/page.tsx:106
 #. js-lingui-explicit-id
@@ -127,6 +189,7 @@ msgstr "プライバシーポリシー"
 
 #: src/libs/metadata.ts:96
 #: src/features/Landing/Footer.tsx:169
+#: src/features/Header/NeedHelpModal.tsx:138
 #: src/features/Auth/SignInForm.tsx:115
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -273,6 +336,121 @@ msgstr "英語スピーキング練習"
 #. js-lingui-explicit-id
 msgid "AI English Speaking Practice"
 msgstr "AI英語スピーキング練習"
+
+#: src/features/Usage/PaymentModal.tsx:121
+#. js-lingui-explicit-id
+msgid "Process payments"
+msgstr "支払いを処理する"
+
+#: src/features/Usage/PaymentModal.tsx:129
+#. js-lingui-explicit-id
+msgid "Let's add some money to your balance"
+msgstr "あなたの残高に少しお金を追加しましょう"
+
+#: src/features/Usage/PaymentModal.tsx:181
+#. js-lingui-explicit-id
+msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
+msgstr "金額が大きすぎます。あなたのサポートに感謝しますが、$400以下にしましょう。"
+
+#: src/features/Usage/PaymentModal.tsx:206
+#: src/features/Header/NeedHelpModal.tsx:207
+#. js-lingui-explicit-id
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: src/features/Usage/PaymentModal.tsx:248
+#. js-lingui-explicit-id
+msgid "Hi, my name is Alex, and I'm the creator of this app."
+msgstr "こんにちは、私の名前はアレックスで、このアプリの作成者です。"
+
+#: src/features/Usage/PaymentModal.tsx:250
+#. js-lingui-explicit-id
+msgid "Thank you for using it!"
+msgstr "それをご利用いただきありがとうございます！"
+
+#: src/features/Usage/PaymentModal.tsx:253
+#. js-lingui-explicit-id
+msgid "Currently, I haven't integrated payment services yet. 💔"
+msgstr "現在、まだ決済サービスは統合していません。💔"
+
+#: src/features/Usage/PaymentModal.tsx:256
+#. js-lingui-explicit-id
+msgid "I've received your payment request for"
+msgstr "あなたからの支払いリクエストを受け取りました"
+
+#: src/features/Usage/PaymentModal.tsx:258
+#. js-lingui-explicit-id
+msgid "I'll send instructions on how to pay to your email"
+msgstr "私は支払い方法についての説明をあなたのメールに送ります"
+
+#: src/features/Usage/PaymentModal.tsx:262
+#. js-lingui-explicit-id
+msgid "Once again, thank you for using my app!"
+msgstr "再度、私のアプリをご利用いただきありがとうございます！"
+
+#: src/features/Usage/PaymentModal.tsx:271
+#. js-lingui-explicit-id
+msgid "If you'd like to contact me directly, here are my contacts:"
+msgstr "私に直接連絡を取りたい場合、ここに私の連絡先があります："
+
+#: src/features/Usage/PaymentModal.tsx:293
+#: src/features/Usage/PaymentModal.tsx:385
+#. js-lingui-explicit-id
+msgid "Current Balance"
+msgstr "現在の残高"
+
+#: src/features/Usage/PaymentModal.tsx:313
+#. js-lingui-explicit-id
+msgid "Total used"
+msgstr "合計使用済み"
+
+#: src/features/Usage/PaymentModal.tsx:337
+#. js-lingui-explicit-id
+msgid "Success!"
+msgstr "成功！"
+
+#: src/features/Usage/PaymentModal.tsx:347
+#. js-lingui-explicit-id
+msgid "Your payment was successful"
+msgstr "あなたの支払いは成功しました"
+
+#: src/features/Usage/PaymentModal.tsx:353
+#: src/features/Header/Header.tsx:19
+#. js-lingui-explicit-id
+msgid "Balance"
+msgstr "バランス"
+
+#: src/features/Usage/PaymentModal.tsx:361
+#. js-lingui-explicit-id
+msgid "Manage your payments and balance"
+msgstr "支払いと残高を管理する"
+
+#: src/features/Usage/PaymentModal.tsx:395
+#. js-lingui-explicit-id
+msgid "Buy More"
+msgstr "もっと買う"
+
+#: src/features/Usage/PaymentModal.tsx:412
+#. js-lingui-explicit-id
+msgid "Total used:"
+msgstr "合計使用量:"
+
+#: src/features/Usage/PaymentModal.tsx:427
+#. js-lingui-explicit-id
+msgid "Payment history:"
+msgstr "支払い履歴:"
+
+#: src/features/Usage/PaymentModal.tsx:437
+#: src/features/RolePlay/RolePlayBoard.tsx:544
+#: src/features/Dashboard/Dashboard.tsx:34
+#. js-lingui-explicit-id
+msgid "Loading..."
+msgstr "読み込み中..."
+
+#: src/features/Usage/PaymentModal.tsx:448
+#. js-lingui-explicit-id
+msgid "No payments..."
+msgstr "支払いなし..."
 
 #: src/features/RolePlay/rolePlayData.ts:13
 #. js-lingui-explicit-id
@@ -1108,12 +1286,6 @@ msgid "Before you start, please fill some information to make it more realistic.
 msgstr "開始する前に、もっと現実的にするためにいくつかの情報を入力してください。"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:544
-#: src/features/Dashboard/Dashboard.tsx:34
-#. js-lingui-explicit-id
-msgid "Loading..."
-msgstr "読み込み中..."
-
-#: src/features/RolePlay/RolePlayBoard.tsx:544
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "開始"
@@ -1682,6 +1854,11 @@ msgstr ""
 "\n"
 "無料\n"
 
+#: src/features/Landing/Price/PricePage.tsx:155
+#. js-lingui-explicit-id
+msgid "$1 free credit. ~10 minutes of active AI speaking"
+msgstr "1ドルの無料クレジット。AIのアクティブな話す時間は約10分"
+
 #: src/features/Landing/Price/PricePage.tsx:156
 #. js-lingui-explicit-id
 msgid "Features:"
@@ -1733,6 +1910,11 @@ msgstr "プ pay-as-you-go"
 #. js-lingui-explicit-id
 msgid "Regular learners who want full control"
 msgstr "レギュラー学習者が完全なコントロールを求める"
+
+#: src/features/Landing/Price/PricePage.tsx:179
+#. js-lingui-explicit-id
+msgid "$6"
+msgstr "$6"
 
 #: src/features/Landing/Price/PricePage.tsx:180
 #. js-lingui-explicit-id
@@ -1953,6 +2135,7 @@ msgid ""
 msgstr "はい！大きなクレジットパッケージを購入する際には割引を提供しています。購入する前に私に連絡してください。割引をお渡しします。"
 
 #: src/features/Landing/Price/PricePage.tsx:797
+#: src/features/Header/NeedHelpModal.tsx:109
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "連絡先:"
@@ -1983,11 +2166,6 @@ msgstr "ロールプレイ"
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "サインイン"
-
-#: src/features/Header/Header.tsx:19
-#. js-lingui-explicit-id
-msgid "Balance"
-msgstr "バランス"
 
 #: src/features/Header/Header.tsx:20
 #. js-lingui-explicit-id

@@ -13,15 +13,76 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Landing/Price/PricePage.tsx:155
+#: src/features/Header/NeedHelpModal.tsx:48
+#: src/features/Header/NeedHelpModal.tsx:168
 #. js-lingui-explicit-id
-msgid "$1 free credit. ~10 minutes of active AI speaking"
-msgstr "رصيد مجاني بقيمة $1. ~10 دقائق من الكلام النشط للذكاء الصناعي"
+msgid "Are you sure you want to delete your account?"
+msgstr "هل أنت متأكد أنك تريد حذف حسابك؟"
 
-#: src/features/Landing/Price/PricePage.tsx:179
+#: src/features/Header/NeedHelpModal.tsx:62
 #. js-lingui-explicit-id
-msgid "$6"
-msgstr "$6"
+msgid "Your account has been successfully deleted. We are sorry to see you go!"
+msgstr "تم حذف حسابك بنجاح. يؤسفنا رؤيتك تذهب!"
+
+#: src/features/Header/NeedHelpModal.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"Failed to delete your account. Please try again later, or contact the "
+"developers."
+msgstr "فشل في حذف حسابك. يرجى المحاولة مرة أخرى لاحقًا، أو الاتصال بالمطورين."
+
+#: src/features/Header/NeedHelpModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Need help?"
+msgstr "تحتاج إلى مساعدة؟"
+
+#: src/features/Header/NeedHelpModal.tsx:125
+#. js-lingui-explicit-id
+msgid "Legal:"
+msgstr "القانوني:"
+
+#: src/features/Header/NeedHelpModal.tsx:170
+#. js-lingui-explicit-id
+msgid "This action is irreversible."
+msgstr "هذا الإجراء لا يمكن التراجع عنه."
+
+#: src/features/Header/NeedHelpModal.tsx:172
+#. js-lingui-explicit-id
+msgid ""
+"We will delete your data, but information about your balance will be stored "
+"for one\n"
+"              year."
+msgstr ""
+"سنقوم بحذف بياناتك، ولكن المعلومات حول رصيدك ستُحفظ لمدة\n"
+"              عام واحد."
+
+#: src/features/Header/NeedHelpModal.tsx:176
+#. js-lingui-explicit-id
+msgid ""
+"If you want to remove all information, including your balance, please "
+"contact us."
+msgstr "إذا كنت ترغب في إزالة جميع المعلومات، بما في ذلك رصيدك، الرجاء الاتصال بنا."
+
+#: src/features/Header/NeedHelpModal.tsx:197
+#: src/features/Header/NeedHelpModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Deleting..."
+msgstr "جاري الحذف..."
+
+#: src/features/Header/NeedHelpModal.tsx:197
+#. js-lingui-explicit-id
+msgid "Yes, Delete account"
+msgstr "نعم، احذف الحساب"
+
+#: src/features/Header/NeedHelpModal.tsx:221
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "إغلاق"
+
+#: src/features/Header/NeedHelpModal.tsx:231
+#. js-lingui-explicit-id
+msgid "Delete account"
+msgstr "حذف الحساب"
 
 #: src/libs/metadata.ts:51
 #: src/features/Landing/Footer.tsx:84
@@ -118,6 +179,7 @@ msgstr "تكلفة المعلم الذكي"
 
 #: src/libs/metadata.ts:88
 #: src/features/Landing/Footer.tsx:179
+#: src/features/Header/NeedHelpModal.tsx:151
 #: src/features/Auth/SignInForm.tsx:112
 #: src/app/[lang]/page.tsx:106
 #. js-lingui-explicit-id
@@ -126,6 +188,7 @@ msgstr "سياسة الخصوصية"
 
 #: src/libs/metadata.ts:96
 #: src/features/Landing/Footer.tsx:169
+#: src/features/Header/NeedHelpModal.tsx:138
 #: src/features/Auth/SignInForm.tsx:115
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -274,6 +337,121 @@ msgstr "تمارين التحدث باللغة الإنجليزية"
 #. js-lingui-explicit-id
 msgid "AI English Speaking Practice"
 msgstr "ممارسة التحدث باللغة الإنجليزية باستخدام الذكاء الاصطناعي"
+
+#: src/features/Usage/PaymentModal.tsx:121
+#. js-lingui-explicit-id
+msgid "Process payments"
+msgstr "معالجة الدفعات"
+
+#: src/features/Usage/PaymentModal.tsx:129
+#. js-lingui-explicit-id
+msgid "Let's add some money to your balance"
+msgstr "دعنا نضيف بعض المال إلى رصيدك"
+
+#: src/features/Usage/PaymentModal.tsx:181
+#. js-lingui-explicit-id
+msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
+msgstr "المبلغ كبير جداً. أقدر دعمك، ولكن دعنا نحافظ عليه أقل من 400 دولار"
+
+#: src/features/Usage/PaymentModal.tsx:206
+#: src/features/Header/NeedHelpModal.tsx:207
+#. js-lingui-explicit-id
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: src/features/Usage/PaymentModal.tsx:248
+#. js-lingui-explicit-id
+msgid "Hi, my name is Alex, and I'm the creator of this app."
+msgstr "مرحبا، اسمي أليكس، وأنا مُنشئ هذا التطبيق."
+
+#: src/features/Usage/PaymentModal.tsx:250
+#. js-lingui-explicit-id
+msgid "Thank you for using it!"
+msgstr "شكراً لاستخدامك ذلك!"
+
+#: src/features/Usage/PaymentModal.tsx:253
+#. js-lingui-explicit-id
+msgid "Currently, I haven't integrated payment services yet. 💔"
+msgstr "حاليًا، لم أدمج خدمات الدفع بعد. 💔"
+
+#: src/features/Usage/PaymentModal.tsx:256
+#. js-lingui-explicit-id
+msgid "I've received your payment request for"
+msgstr "لقد تلقيت طلب الدفع الخاص بك"
+
+#: src/features/Usage/PaymentModal.tsx:258
+#. js-lingui-explicit-id
+msgid "I'll send instructions on how to pay to your email"
+msgstr "سأرسل تعليمات حول كيفية الدفع إلى بريدك الإلكتروني"
+
+#: src/features/Usage/PaymentModal.tsx:262
+#. js-lingui-explicit-id
+msgid "Once again, thank you for using my app!"
+msgstr "مرة أخرى، شكراً لاستخدامك تطبيقي!"
+
+#: src/features/Usage/PaymentModal.tsx:271
+#. js-lingui-explicit-id
+msgid "If you'd like to contact me directly, here are my contacts:"
+msgstr "إذا كنت ترغب في الاتصال بي مباشرة، ها هي بيانات الاتصال الخاصة بي:"
+
+#: src/features/Usage/PaymentModal.tsx:293
+#: src/features/Usage/PaymentModal.tsx:385
+#. js-lingui-explicit-id
+msgid "Current Balance"
+msgstr "الرصيد الحالي"
+
+#: src/features/Usage/PaymentModal.tsx:313
+#. js-lingui-explicit-id
+msgid "Total used"
+msgstr "الإجمالي المستخدم"
+
+#: src/features/Usage/PaymentModal.tsx:337
+#. js-lingui-explicit-id
+msgid "Success!"
+msgstr "نجاح!"
+
+#: src/features/Usage/PaymentModal.tsx:347
+#. js-lingui-explicit-id
+msgid "Your payment was successful"
+msgstr "تم الدفع بنجاح"
+
+#: src/features/Usage/PaymentModal.tsx:353
+#: src/features/Header/Header.tsx:19
+#. js-lingui-explicit-id
+msgid "Balance"
+msgstr "توازن"
+
+#: src/features/Usage/PaymentModal.tsx:361
+#. js-lingui-explicit-id
+msgid "Manage your payments and balance"
+msgstr "إدارة مدفوعاتك ورصيدك"
+
+#: src/features/Usage/PaymentModal.tsx:395
+#. js-lingui-explicit-id
+msgid "Buy More"
+msgstr "اشترِ المزيد"
+
+#: src/features/Usage/PaymentModal.tsx:412
+#. js-lingui-explicit-id
+msgid "Total used:"
+msgstr "المجموع المستخدم:"
+
+#: src/features/Usage/PaymentModal.tsx:427
+#. js-lingui-explicit-id
+msgid "Payment history:"
+msgstr "سجل الدفعات:"
+
+#: src/features/Usage/PaymentModal.tsx:437
+#: src/features/RolePlay/RolePlayBoard.tsx:544
+#: src/features/Dashboard/Dashboard.tsx:34
+#. js-lingui-explicit-id
+msgid "Loading..."
+msgstr "جارٍ التحميل..."
+
+#: src/features/Usage/PaymentModal.tsx:448
+#. js-lingui-explicit-id
+msgid "No payments..."
+msgstr "لا يوجد مدفوعات..."
 
 #: src/features/RolePlay/rolePlayData.ts:13
 #. js-lingui-explicit-id
@@ -1172,12 +1350,6 @@ msgid "Before you start, please fill some information to make it more realistic.
 msgstr "قبل أن تبدأ، يرجى ملء بعض المعلومات لجعلها أكثر واقعية."
 
 #: src/features/RolePlay/RolePlayBoard.tsx:544
-#: src/features/Dashboard/Dashboard.tsx:34
-#. js-lingui-explicit-id
-msgid "Loading..."
-msgstr "جارٍ التحميل..."
-
-#: src/features/RolePlay/RolePlayBoard.tsx:544
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "ابدأ"
@@ -1771,6 +1943,11 @@ msgstr "تجربة FluencyPal بدون مخاطر"
 msgid "Free"
 msgstr "مجاني"
 
+#: src/features/Landing/Price/PricePage.tsx:155
+#. js-lingui-explicit-id
+msgid "$1 free credit. ~10 minutes of active AI speaking"
+msgstr "رصيد مجاني بقيمة $1. ~10 دقائق من الكلام النشط للذكاء الصناعي"
+
 #: src/features/Landing/Price/PricePage.tsx:156
 #. js-lingui-explicit-id
 msgid "Features:"
@@ -1820,6 +1997,11 @@ msgstr "دفع حسب الاستخدام"
 #. js-lingui-explicit-id
 msgid "Regular learners who want full control"
 msgstr "متعلمون منتظمون يرغبون في السيطرة الكاملة"
+
+#: src/features/Landing/Price/PricePage.tsx:179
+#. js-lingui-explicit-id
+msgid "$6"
+msgstr "$6"
 
 #: src/features/Landing/Price/PricePage.tsx:180
 #. js-lingui-explicit-id
@@ -2038,6 +2220,7 @@ msgstr ""
 "خصمًا."
 
 #: src/features/Landing/Price/PricePage.tsx:797
+#: src/features/Header/NeedHelpModal.tsx:109
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "جهات الاتصال:"
@@ -2070,11 +2253,6 @@ msgstr "لعب الأدوار"
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "تسجيل الدخول"
-
-#: src/features/Header/Header.tsx:19
-#. js-lingui-explicit-id
-msgid "Balance"
-msgstr "توازن"
 
 #: src/features/Header/Header.tsx:20
 #. js-lingui-explicit-id
