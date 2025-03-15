@@ -42,7 +42,7 @@ export const TasksCard = () => {
       >
         <ClickCard
           isDone={!!tasks.todayStats?.lesson}
-          title={i18n._(`Small conversation`)}
+          title={i18n._(`Short conversation`)}
           subTitle={i18n._(`Start talking to learn something new`)}
           buttonIcon={<Mic size={"30px"} />}
           onStart={() => aiConversation.startConversation({ mode: "talk" })}

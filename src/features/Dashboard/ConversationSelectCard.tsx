@@ -36,7 +36,7 @@ export const ConversationSelectCard = () => {
       >
         <ClickCard
           isDone={false}
-          title={i18n._(`Just Talk Mode`)}
+          title={i18n._(`Talk Mode`)}
           subTitle={i18n._(`Talk to the AI and it will respond to you`)}
           buttonIcon={<Mic size={"30px"} />}
           onStart={() => aiConversation.startConversation({ mode: "talk" })}
