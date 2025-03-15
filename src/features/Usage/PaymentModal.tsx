@@ -39,19 +39,6 @@ export const PaymentModal = () => {
   const locale = pathname?.split("/")[1] as string;
   const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
 
-  const devModePayments = () => {
-    const amount = prompt("Enter amount to update", "10");
-    if (!amount) {
-      return;
-    }
-
-    usage.addBalance(parseFloat(amount), "user");
-    notifications.show(`Added $${amount} to your balance`, {
-      severity: "success",
-      autoHideDuration: 7000,
-    });
-  };
-
   const sentTgMessage = async (message: string) => {
     const email = auth?.userInfo?.email || "";
     if (!email) {

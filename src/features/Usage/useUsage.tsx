@@ -26,7 +26,6 @@ interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
   paymentLogs?: PaymentLog[];
   setUsageLogs: Dispatch<SetStateAction<UsageLog[]>>;
-  addBalance: (amount: number, type: PaymentLogType) => void;
   isShowPaymentModal: boolean;
   togglePaymentModal: (isOpen: boolean, isSuccessPayment?: boolean) => void;
   isSuccessPayment: boolean;
@@ -169,7 +168,6 @@ function useProvideUsage(): UsageContextType {
     paymentLogs: paymentLogs,
     usageLogs,
     setUsageLogs,
-    addBalance,
     isShowPaymentModal,
     togglePaymentModal,
     isSuccessPayment,
