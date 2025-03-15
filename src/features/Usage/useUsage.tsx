@@ -10,9 +10,9 @@ import {
   SetStateAction,
 } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { getDoc, setDoc } from "firebase/firestore";
 import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
-import { PaymentLog, PaymentLogType, TotalUsageInfo, UsageLog } from "@/common/usage";
+import { PaymentLog, TotalUsageInfo, UsageLog } from "@/common/usage";
 import { db } from "../Firebase/db";
 import { useRouter } from "next/navigation";
 import { initWelcomeBalanceRequest } from "./initWelcomeBalanceRequest";
@@ -111,20 +111,6 @@ function useProvideUsage(): UsageContextType {
     lastUpdatedAt: totalUsage?.lastUpdatedAt || 0,
     usedBalance: totalUsage?.usedBalance || 0,
     balance: totalUsage?.balance || 0,
-  };
-
-  const addPaymentLog = async (amountAdded: number, type: PaymentLogType) => {
-    if (!userId || !paymentLogCollection) return;
-    const docRef = doc(paymentLogCollection);
-
-    const paymentLog: PaymentLog = {
-      id: docRef.id,
-      amountAdded,
-      createdAt: Date.now(),
-      type,
-    };
-
-    await setDoc(docRef, paymentLog);
   };
 
   const initWelcomeBalance = async () => {
