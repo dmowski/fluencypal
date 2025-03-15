@@ -27,7 +27,6 @@ export const Footer: React.FC<FooterProps> = async ({ lang }) => {
   const pathWithoutFirstSlash = pathnameWithoutLang.startsWith("/")
     ? pathnameWithoutLang.slice(1)
     : pathnameWithoutLang;
-
   return (
     <Stack
       component={"footer"}
