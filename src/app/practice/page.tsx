@@ -31,7 +31,10 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
   const rolePlayScenarios = getRolePlayScenarios(supportedLang);
 
   return (
-    <LinguiClientProvider initialLocale={lang} initialMessages={allMessages[lang]!}>
+    <LinguiClientProvider
+      initialLocale={supportedLang}
+      initialMessages={allMessages[supportedLang]!}
+    >
       <Header mode="practice" lang={supportedLang} />
       <main>
         <ConversationPage rolePlayScenarios={rolePlayScenarios} lang={supportedLang} />
