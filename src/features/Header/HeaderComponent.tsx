@@ -363,9 +363,9 @@ export function HeaderComponent({
       <Drawer open={isOpenMainMenu} onClose={() => setIsOpenMainMenu(false)}>
         <Stack
           sx={{
-            width: "300px",
+            width: "220px",
             height: "100svh",
-            maxWidth: "65vw",
+            boxSizing: "border-box",
             flexDirection: "column",
             justifyContent: "space-between",
             padding: "20px",
