@@ -7,5 +7,6 @@ export const getUserBalance = async (userId: string) => {
   const db = getDB();
   const doc = await db.collection("users").doc(userId).collection("usage").doc("totalUsage").get();
   const balance: number = doc.data()?.balance || 0;
-  return balance;
+  const usedBalance: number = doc.data()?.usedBalance || 0;
+  return { balance, usedBalance };
 };

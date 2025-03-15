@@ -8,8 +8,8 @@ export async function POST(request: Request) {
   const ephemeralKey = await getEphemeralToken(body.model);
 
   const userInfo = await validateAuthToken(request);
-  const userBalance = await getUserBalance(userInfo.uid || "");
-  if (userBalance < 0.01) {
+  const { balance } = await getUserBalance(userInfo.uid || "");
+  if (balance < 0.01) {
     throw new Error("Insufficient balance");
   }
 
