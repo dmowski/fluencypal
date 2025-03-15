@@ -2,9 +2,8 @@
 import { createContext, useContext, ReactNode, JSX } from "react";
 import { useSettings } from "../Settings/useSettings";
 import { sendTextAiRequest } from "./sendTextAiRequest";
-import { calculateTextUsagePrice, TextAiModel } from "@/common/ai";
+import { TextAiModel } from "@/common/ai";
 import { useUsage } from "../Usage/useUsage";
-import { TextUsageLog } from "@/common/usage";
 import { getDataFromCache, setDataToCache } from "@/libs/localStorageCache";
 import { useAuth } from "../Auth/useAuth";
 
