@@ -22,7 +22,6 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
   const lang = params.lang;
-  console.log("generateMetadata", lang);
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
 
