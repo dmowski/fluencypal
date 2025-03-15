@@ -43,7 +43,7 @@ export function ConversationPage({ rolePlayScenarios, lang }: ConversationPagePr
       </Stack>
     );
   if (!auth.isAuthorized) return <SignInForm rolePlayScenarios={rolePlayScenarios} lang={lang} />;
-  if (usage.balance <= 0) return <NoBalanceBlock />;
+  if (usage.balance <= 0.01) return <NoBalanceBlock />;
 
   return (
     <Stack>

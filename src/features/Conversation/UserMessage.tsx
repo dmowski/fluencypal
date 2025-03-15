@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { BadgeAlert, BadgeCheck, Badge, Loader, CloudAlert, FlaskConical } from "lucide-react";
 import { useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
+import { useUsage } from "../Usage/useUsage";
 
 interface UserMessageProps {
   message: string;
@@ -17,6 +18,7 @@ export const UserMessage = ({ message }: UserMessageProps) => {
   const [isShowDetails, setIsShowDetails] = useState(false);
 
   const textAi = useTextAi();
+  const usage = useUsage();
   const messageAnalyzing = useRef("");
 
   const analyzeMessage = async () => {
@@ -73,11 +75,21 @@ Do not wrap answer with any wrappers like "answer": "...". Your response will be
     }
   };
 
+  const isLowBalance = usage.balance < 0.01;
+
   useEffect(() => {
+    if (isLowBalance) {
+      setLevel("loading");
+      setIsShowDetails(false);
+      setDescription(null);
+      setCorrectedMessage(null);
+      return;
+    }
+
     if (message) {
       analyzeMessage();
     }
-  }, [message]);
+  }, [message, isLowBalance]);
 
   return (
     <Stack
