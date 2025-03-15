@@ -1,11 +1,14 @@
 import { PROJECT_PROFIT_MARGIN } from "@/common/ai";
 import { GetAudioUrlRequest, GetAudioUrlResponse } from "@/common/requests";
 import { validateAuthToken } from "../config/firebase";
-import { getUserBalance } from "../payment/confirmPayment";
 import { getPublicTextToAudioByVoiceIdUrl, voiceMap } from "./getPublicTextToAudioByVoiceIdUrl";
+import { AudioUsageLog } from "@/common/usage";
+import { addUsage } from "../payment/addUsage";
+import { getUserBalance } from "../payment/getUserBalance";
 
 export async function POST(request: Request) {
   const requestData = (await request.json()) as GetAudioUrlRequest;
+  const languageCode = requestData.languageCode;
 
   const userInfo = await validateAuthToken(request);
   const userBalance = await getUserBalance(userInfo.uid || "");
@@ -22,6 +25,18 @@ export async function POST(request: Request) {
   const sourcePrice = sourcePricePerCharacter * requestData.text.length;
 
   const priceWithMargin = sourcePrice + sourcePrice * PROJECT_PROFIT_MARGIN;
+
+  const usageLog: AudioUsageLog = {
+    usageId: `${Date.now()}`,
+    languageCode,
+    createdAt: Date.now(),
+    price: priceWithMargin,
+    type: "audio",
+    size: requestData.text.length,
+    duration: audioInfo.duration,
+  };
+
+  await addUsage(userInfo.uid, usageLog);
 
   const answer: GetAudioUrlResponse = {
     url: audioInfo.audioUrl,

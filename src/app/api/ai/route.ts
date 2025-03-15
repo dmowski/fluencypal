@@ -2,7 +2,7 @@ import OpenAI from "openai";
 import { AiRequest, AiResponse } from "@/common/requests";
 import { TextUsageEvent } from "@/common/ai";
 import { validateAuthToken } from "../config/firebase";
-import { getUserBalance } from "../payment/confirmPayment";
+import { getUserBalance } from "../payment/getUserBalance";
 
 export async function POST(request: Request) {
   const openAIKey = process.env.OPENAI_API_KEY;

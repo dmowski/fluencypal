@@ -2,8 +2,6 @@
 import { createContext, useContext, ReactNode, JSX } from "react";
 import { useSettings } from "../Settings/useSettings";
 import { generateAudioUrl } from "./generateAudioUrl";
-import { useUsage } from "../Usage/useUsage";
-import { AudioUsageLog } from "@/common/usage";
 import { getDataFromCache, setDataToCache } from "@/libs/localStorageCache";
 import { useAuth } from "../Auth/useAuth";
 
@@ -16,7 +14,6 @@ const AudioContext = createContext<AudioContextType | null>(null);
 
 function useProvideAudio(): AudioContextType {
   const settings = useSettings();
-  const usage = useUsage();
   const auth = useAuth();
 
   const getAudioUrl = async (text: string) => {
@@ -30,19 +27,10 @@ function useProvideAudio(): AudioContextType {
       return urlFromCache;
     }
 
-    const response = await generateAudioUrl({ text }, await auth.getToken());
-
-    const textUsageLog: AudioUsageLog = {
-      usageId: `${Date.now()}`,
-      languageCode,
-      createdAt: Date.now(),
-      price: response.price,
-      type: "audio",
-      size: response.text.length,
-      duration: response.duration,
-    };
-
-    usage.setUsageLogs((logs) => [...logs, textUsageLog]);
+    const response = await generateAudioUrl(
+      { text, languageCode: settings.languageCode || "en" },
+      await auth.getToken()
+    );
     const audioUrl = response.url;
     if (!audioUrl) {
       throw new Error("Failed to generate audio");

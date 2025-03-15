@@ -42,6 +42,7 @@ export interface SendSdpOfferResponse {
 
 export interface GetAudioUrlRequest {
   text: string;
+  languageCode: SupportedLanguage;
 }
 
 export interface GetAudioUrlResponse {

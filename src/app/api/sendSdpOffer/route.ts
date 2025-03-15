@@ -1,7 +1,7 @@
 import { SendSdpOfferRequest, SendSdpOfferResponse } from "@/common/requests";
 import { getEphemeralToken } from "../token/getEphemeralToken";
 import { validateAuthToken } from "../config/firebase";
-import { getUserBalance } from "../payment/confirmPayment";
+import { getUserBalance } from "../payment/getUserBalance";
 
 export async function POST(request: Request) {
   const body = (await request.json()) as SendSdpOfferRequest;
