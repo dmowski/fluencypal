@@ -2,6 +2,7 @@
 import dynamic from "next/dynamic";
 import talkingAnimationVerticalLines from "./data/verticalLines.json";
 import { Stack } from "@mui/material";
+import { useEffect, useState } from "react";
 
 const Lottie = dynamic(() => import("react-lottie-player"), {
   ssr: false,
@@ -16,6 +17,28 @@ interface TalkingWavesProps {
 }
 //https://lottiefiles.com/free-animation/sasayaki-line-1-SnkiNa6DTJ
 export const TalkingWaves = ({ inActive }: TalkingWavesProps) => {
+  const [isSupported, setIsSupported] = useState(false);
+
+  const init = async () => {
+    const isServer = typeof window === "undefined";
+    if (isServer) return;
+
+    const isBot = navigator.userAgent.match(/bot|googlebot|crawler|spider|robot|crawling/i);
+    if (!isBot) {
+      setIsSupported(true);
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      init();
+    }, 100);
+  }, []);
+
+  if (!isSupported) {
+    return null;
+  }
+
   return (
     <>
       <Stack
