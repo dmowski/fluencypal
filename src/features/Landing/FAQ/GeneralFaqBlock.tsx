@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import React from "react";
 import { FaqItem, FaqItemInfo } from "./FaqItem";
+import { titleFontStyle } from "../landingSettings";
 
 interface GeneralFaqBlockProps {
   items: FaqItemInfo[];
@@ -39,7 +40,7 @@ export const GeneralFaqBlock = ({ items, title }: GeneralFaqBlockProps) => {
             variant="h3"
             component={"h2"}
             sx={{
-              fontWeight: 700,
+              ...titleFontStyle,
             }}
           >
             {title}
