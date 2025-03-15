@@ -21,6 +21,8 @@ interface GalaxyParameters {
 }
 
 const Galaxy: React.FC = () => {
+  const isBot = navigator.userAgent.match(/bot|googlebot|crawler|spider|robot|crawling/i);
+
   const mountRef = useRef<HTMLDivElement>(null);
   const [parameters] = useState<GalaxyParameters>({
     count: 50000,
@@ -35,7 +37,7 @@ const Galaxy: React.FC = () => {
   });
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    if (!mountRef.current || isBot) return;
 
     // Scene setup
     const scene = new THREE.Scene();
