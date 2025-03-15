@@ -1,8 +1,10 @@
 import OpenAI from "openai";
 import { AiRequest, AiResponse } from "@/common/requests";
-import { TextUsageEvent } from "@/common/ai";
+import { calculateTextUsagePrice, TextUsageEvent } from "@/common/ai";
 import { validateAuthToken } from "../config/firebase";
 import { getUserBalance } from "../payment/getUserBalance";
+import { TextUsageLog } from "@/common/usage";
+import { addUsage } from "../payment/addUsage";
 
 export async function POST(request: Request) {
   const openAIKey = process.env.OPENAI_API_KEY;
@@ -21,6 +23,7 @@ export async function POST(request: Request) {
   });
 
   const aiRequest = (await request.json()) as AiRequest;
+  const languageCode = aiRequest.languageCode || "en";
   const chatCompletion = await client.chat.completions.create({
     messages: [
       {
@@ -44,6 +47,17 @@ export async function POST(request: Request) {
     aiResponse: output,
     usageEvent,
   };
+
+  const usageLog: TextUsageLog = {
+    usageId: `${Date.now()}`,
+    languageCode,
+    createdAt: Date.now(),
+    price: calculateTextUsagePrice(usageEvent, aiRequest.model),
+    type: "text",
+    model: aiRequest.model,
+    usageEvent: usageEvent,
+  };
+  await addUsage(userInfo.uid, usageLog);
 
   return Response.json(answer);
 }

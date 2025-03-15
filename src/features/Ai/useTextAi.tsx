@@ -56,17 +56,6 @@ function useProvideTextAi(): TextAiContextType {
       await auth.getToken()
     );
 
-    const textUsageLog: TextUsageLog = {
-      usageId: `${Date.now()}`,
-      languageCode,
-      createdAt: Date.now(),
-      price: calculateTextUsagePrice(response.usageEvent, conversationDate.model),
-      type: "text",
-      model: conversationDate.model,
-      usageEvent: response.usageEvent,
-    };
-
-    usage.setUsageLogs((logs) => [...logs, textUsageLog]);
     const responseString = response.aiResponse || "";
 
     if (conversationDate.cache && responseString) {
