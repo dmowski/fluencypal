@@ -83,8 +83,11 @@ export const Footer: React.FC<FooterProps> = async ({ lang }) => {
           <Link href={`${getUrlStart(lang)}contacts`} variant="body1">
             {i18n._(`Contacts`)}
           </Link>
+          <Link href={`${getUrlStart(lang)}blog`} variant="body1">
+            {i18n._(`Blog`)}
+          </Link>
           <Link href={`${getUrlStart(lang)}pricing`} variant="body1">
-            {i18n._(`Pricing`)}
+            {i18n._(`Price`)}
           </Link>
         </Stack>
 
