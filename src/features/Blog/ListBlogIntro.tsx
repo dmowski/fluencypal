@@ -93,7 +93,7 @@ export const ListBlogIntro = ({ lang }: ListBlogIntroProps) => {
             }}
           >
             <img
-              src="/blog.png"
+              src="/blog.jpg"
               alt="Illustration of people reading"
               style={{
                 width: "max-content",
