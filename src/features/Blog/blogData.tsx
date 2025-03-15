@@ -59,7 +59,7 @@ Leave a lasting positive impression:
 ## Ready to Practice?
 The best way to master these phrases is by practicing them in realistic scenarios. FluencyPal’s AI-powered mock interviews provide real-time feedback, helping you perfect your responses and gain the confidence you need to succeed. Why not start practicing today?`
       ),
-      imagePreviewUrl: "https://cdn.midjourney.com/3c18e767-f547-4b15-88fd-9ce1f92fa1c4/0_1.png",
+      imagePreviewUrl: "/blog/3c18e767-f547-4b15-88fd-9ce1f92fa1c4.jpeg",
       publishedAt: Date.now(),
       category: i18n._("Business English"),
       relatedRolePlays: ["job-interview"],
@@ -82,7 +82,7 @@ The best way to master these phrases is by practicing them in realistic scenario
       content: i18n._(
         `Improving your Business English skills doesn't have to feel overwhelming or time-consuming. In fact, the most effective approach is consistent, daily practice that naturally integrates into your everyday routine. Here’s how you can effortlessly immerse yourself in Business English every day, enhancing your proficiency and confidence.\n\n## Start Your Day with English Content\nBegin each morning by listening to podcasts or watching videos related to your industry. This habit helps you tune your ear to professional vocabulary and common expressions. Sources such as TED Talks, industry-specific YouTube channels, or reputable news outlets like BBC Business or CNBC can be incredibly beneficial.\n\n## Engage with English News and Articles\nRegularly reading business news articles from respected publications like The Wall Street Journal, Financial Times, or Bloomberg will significantly enhance your comprehension and vocabulary. Try summarizing key points of an article in your own words or discuss them with colleagues to reinforce what you’ve learned.\n\n## Participate in English Discussions Online\nJoining forums, LinkedIn groups, or professional communities online provides practical opportunities to practice written and spoken English. Engaging in meaningful discussions helps you apply new vocabulary and expressions contextually, making them easier to remember and use.\n\n## Incorporate English into Your Workday\nUse English whenever possible in your professional environment. Whether it's sending emails, preparing presentations, or participating in meetings, actively choosing English reinforces your skills and boosts your confidence in real-world situations.\n\n## Practice Role-Play Scenarios\nSimulate workplace scenarios by practicing role-play exercises. Role-playing common situations such as negotiations, client meetings, or team discussions sharpens your verbal agility and prepares you for genuine interactions. FluencyPal provides realistic, AI-driven role-play scenarios tailored to your skill level, offering instant feedback to accelerate your learning.\n\n## Set Small, Daily Goals\nRather than focusing on extensive, less frequent study sessions, set achievable daily goals such as learning three new business phrases or practicing ten minutes of conversation each day. These manageable milestones foster motivation and consistent improvement.\n\n## Keep a Vocabulary Journal\nMaintaining a notebook or digital document to record new words and phrases you encounter is a highly effective way to expand your professional vocabulary. Regularly reviewing and practicing this vocabulary ensures these new terms become a natural part of your everyday communication.\n\n## Leverage Technology to Stay Consistent\nUse language apps and platforms like FluencyPal to maintain daily engagement with English. AI-powered apps offer convenient, personalized practice sessions that adapt to your pace, making your daily practice enjoyable and stress-free.\n\n## Take Action Today\nDaily immersion is the key to mastering Business English. With consistent practice and the right tools, you’ll see significant improvement in your language skills, professional confidence, and career opportunities. Start integrating these simple daily habits today and elevate your business communication with FluencyPal.`
       ),
-      imagePreviewUrl: "https://cdn.midjourney.com/e6b6f478-7092-4d5c-aea9-a9bcf4775733/0_0.png",
+      imagePreviewUrl: "/blog/e6b6f478-7092-4d5c-aea9-a9bcf4775733.jpeg",
       publishedAt: Date.now(),
       category: i18n._("Business English"),
       relatedRolePlays: [
@@ -196,7 +196,7 @@ Simulate the real experience with a **free mock interview on FluencyPal**—your
         "small-talk-with-a-stranger",
         "calling-technical-support",
       ],
-      imagePreviewUrl: "https://cdn.midjourney.com/387a5e43-45d9-4d5c-9427-87db51c49b62/0_1.png",
+      imagePreviewUrl: "/blog/387a5e43-45d9-4d5c-9427-87db51c49b62.jpeg",
       publishedAt: Date.now(),
       category: i18n._("Business English"),
     },
@@ -255,7 +255,7 @@ These mistakes are common, but with conscious effort, they can be avoided. Exten
 
 To put these fixes into practice, consider using FluencyPal for your next mock interview. Training in a realistic, supportive setting can help you overcome these mistakes and approach your real interview with greater confidence.`
       ),
-      imagePreviewUrl: "https://cdn.midjourney.com/6683b332-6af9-4697-bd47-7df9fd582c9d/0_1.png",
+      imagePreviewUrl: "/blog/6683b332-6af9-4697-bd47-7df9fd582c9d.jpeg",
       publishedAt: Date.now(),
       category: i18n._("Interview Tips"),
       relatedRolePlays: ["job-interview", "instant-correction", "alias-game"],
@@ -349,7 +349,7 @@ Enhancing English fluency as a busy professional is achievable through consisten
 
 Begin your journey toward more fluent interviews by trying FluencyPal for free. Engage in interactive practice sessions and receive real-time feedback to refine your skills. Start today, and let your future self—and your career—reap the benefits of your dedication.`
       ),
-      imagePreviewUrl: "https://cdn.midjourney.com/11862161-1c49-4166-8254-5f875ee5d95e/0_2.png",
+      imagePreviewUrl: "/blog/11862161-1c49-4166-8254-5f875ee5d95e.jpeg",
       publishedAt: Date.now(),
       category: i18n._("Professional Development"),
       relatedRolePlays: ["job-interview", "instant-correction", "small-talk-with-a-stranger"],

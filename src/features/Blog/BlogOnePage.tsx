@@ -172,7 +172,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                   boxSizing: "border-box",
                   maxWidth: maxLandingWidth,
                   overflow: "hidden",
-                  maxHeight: "300px",
+                  maxHeight: "340px",
                   position: "relative",
                 }}
               >
@@ -182,7 +182,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                   style={{
                     width: "max-content",
                     maxWidth: "100%",
-                    height: "400px",
+                    height: "500px",
                     borderRadius: "20px 20px 0 0",
                     boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.3)",
                     position: "relative",
