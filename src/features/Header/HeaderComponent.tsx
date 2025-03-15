@@ -364,8 +364,8 @@ export function HeaderComponent({
         <Stack
           sx={{
             width: "300px",
-            height: "100vh",
-            maxWidth: "80vw",
+            height: "100svh",
+            maxWidth: "65vw",
             flexDirection: "column",
             justifyContent: "space-between",
             padding: "20px",
