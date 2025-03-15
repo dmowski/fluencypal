@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import talkingAnimationVerticalLines from "./data/verticalLines.json";
 import { Stack } from "@mui/material";
 import { useEffect, useState } from "react";
+import { isBot } from "@/libs/isBot";
 
 const Lottie = dynamic(() => import("react-lottie-player"), {
   ssr: false,
@@ -23,8 +24,8 @@ export const TalkingWaves = ({ inActive }: TalkingWavesProps) => {
     const isServer = typeof window === "undefined";
     if (isServer) return;
 
-    const isBot = navigator.userAgent.match(/bot|googlebot|crawler|spider|robot|crawling/i);
-    if (!isBot) {
+    const isBotUser = isBot(`${navigator.userAgent}`);
+    if (!isBotUser) {
       setIsSupported(true);
     }
   };

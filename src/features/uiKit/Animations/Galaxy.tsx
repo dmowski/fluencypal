@@ -7,6 +7,7 @@ import GUI from "lil-gui";
 import galaxyVertexShader from "./vertex.glsl";
 // @ts-expect-error - glslify-loader is not supported by TS
 import galaxyFragmentShader from "./fragment.glsl";
+import { isBot } from "@/libs/isBot";
 
 interface GalaxyParameters {
   count: number;
@@ -27,8 +28,8 @@ const Galaxy: React.FC = () => {
     const isServer = typeof window === "undefined";
     if (isServer) return;
 
-    const isBot = navigator.userAgent.match(/bot|googlebot|crawler|spider|robot|crawling/i);
-    if (!isBot) {
+    const isBotUser = isBot(`${navigator.userAgent}`);
+    if (!isBotUser) {
       setIsSupported(true);
     }
   };
