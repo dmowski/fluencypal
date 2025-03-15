@@ -16,6 +16,7 @@ import { PaymentLog, TotalUsageInfo, UsageLog } from "@/common/usage";
 import { db } from "../Firebase/db";
 import { useRouter } from "next/navigation";
 import { initWelcomeBalanceRequest } from "./initWelcomeBalanceRequest";
+import { createUsageLog } from "./createUsageLog";
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
@@ -74,10 +75,7 @@ function useProvideUsage(): UsageContextType {
 
     await Promise.all(
       logs.map(async (log) => {
-        const docRef = db.documents.usageLog(userId, log.usageId);
-        if (!docRef) return;
-
-        await setDoc(docRef, log, { merge: true });
+        await createUsageLog({ usageLog: log }, await auth.getToken());
       })
     );
   };
@@ -88,23 +86,12 @@ function useProvideUsage(): UsageContextType {
     }
 
     const lastUpdated = totalUsage?.lastUpdatedAt || 0;
-    const now = Date.now();
     const newUsageLogs = usageLogs.filter((log) => log.createdAt > lastUpdated);
     if (newUsageLogs.length === 0) {
       return;
     }
 
     saveLogs(newUsageLogs);
-
-    const newUsed = newUsageLogs.reduce((acc, log) => acc + log.price, 0);
-
-    const newTotalUsage: TotalUsageInfo = {
-      balance: (totalUsage?.balance || 0) - newUsed,
-      usedBalance: (totalUsage?.usedBalance || 0) + newUsed,
-      lastUpdatedAt: now,
-    };
-
-    setDoc(totalUsageDoc, newTotalUsage);
   }, [totalUsage, usageLogs, userId, totalUsageDoc]);
 
   const totalUsageClean: TotalUsageInfo = {

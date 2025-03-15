@@ -1,5 +1,15 @@
 import { TextAiModel, TextUsageEvent } from "./ai";
 import { SupportedLanguage } from "./lang";
+import { UsageLog } from "./usage";
+
+export interface AddUsageLogRequest {
+  usageLog: UsageLog;
+}
+
+export interface AddUsageLogResponse {
+  done: boolean;
+  message?: string;
+}
 
 export interface AiRequest {
   userMessage: string;
