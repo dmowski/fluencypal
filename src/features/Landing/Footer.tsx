@@ -18,7 +18,6 @@ export const Footer: React.FC<FooterProps> = async ({ lang }) => {
 
   const headerList = await headers();
   const pathname = headerList.get("x-current-path") || "/";
-  console.log("pathname", pathname);
 
   const pathnameWithoutLang =
     lang === "en" && !pathname.startsWith("/en")
