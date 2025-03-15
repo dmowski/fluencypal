@@ -375,7 +375,7 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
       },
     };
     return config;
-  }, [fullLanguageName, userInfo]);
+  }, [fullLanguageName, userInfo, isVolumeOn, isMuted]);
 
   const [currentMode, setCurrentMode] = useState<ConversationMode>("talk");
 
