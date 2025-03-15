@@ -29,7 +29,6 @@ export const PaymentModal = () => {
   const auth = useAuth();
   const settings = useSettings();
   const devEmails = ["dmowski.alex@gmail.com"];
-  const isDev = auth.userInfo?.email && devEmails.includes(auth.userInfo.email);
   const notifications = useNotifications();
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
   const [amountToAdd, setAmountToAdd] = useState(5);
@@ -267,11 +266,6 @@ export const PaymentModal = () => {
                     </Typography>
                     <ContactList />
                   </Stack>
-                  {isDev && (
-                    <Button variant="contained" onClick={devModePayments}>
-                      pay
-                    </Button>
-                  )}
                 </Stack>
 
                 <Stack
