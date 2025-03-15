@@ -21,6 +21,24 @@ interface GalaxyParameters {
 }
 
 const Galaxy: React.FC = () => {
+  const [isSupported, setIsSupported] = useState(false);
+
+  const init = async () => {
+    const isServer = typeof window === "undefined";
+    if (isServer) return;
+
+    const isBot = navigator.userAgent.match(/bot|googlebot|crawler|spider|robot|crawling/i);
+    if (!isBot) {
+      setIsSupported(true);
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      init();
+    }, 100);
+  }, []);
+
   const mountRef = useRef<HTMLDivElement>(null);
   const [parameters] = useState<GalaxyParameters>({
     count: 50000,
@@ -35,8 +53,8 @@ const Galaxy: React.FC = () => {
   });
 
   useEffect(() => {
-    if (!mountRef.current) return;
-
+    if (!mountRef.current || !isSupported) return;
+    console.log("render galaxy");
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -197,7 +215,7 @@ const Galaxy: React.FC = () => {
       material?.dispose();
       renderer.dispose();
     };
-  }, [parameters]);
+  }, [parameters, isSupported]);
 
   return <div ref={mountRef} />;
 };
