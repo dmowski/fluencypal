@@ -30,6 +30,7 @@ interface generateMetadataInfoProps {
   scenarioId?: string;
   blogId?: string;
   category?: string;
+  rolePlayId?: string;
 }
 
 export const generateMetadataInfo = ({
@@ -38,6 +39,7 @@ export const generateMetadataInfo = ({
   scenarioId,
   blogId,
   category,
+  rolePlayId,
 }: generateMetadataInfoProps) => {
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
@@ -175,18 +177,24 @@ export const generateMetadataInfo = ({
 
   const id = scenarioId || blogId;
   const pathWithId = currentPath + (id ? "/" + id : "");
-  const pathWithCategory =
-    pathWithId + (category ? "?category=" + encodeURIComponent(category) : "");
 
+  const query = [
+    category ? "category=" + encodeURIComponent(category) : "",
+    rolePlayId ? "rolePlayId=" + encodeURIComponent(rolePlayId) : "",
+  ]
+    .filter(Boolean)
+    .join("&");
+
+  const pathWithQueries = pathWithId + (query ? "?" + query : "");
   return {
     keywords,
     title,
     description,
-    alternates: generateAlternatesTags(pathWithCategory),
+    alternates: generateAlternatesTags(pathWithQueries),
     openGraph: {
       title: title,
       description: description,
-      url: `${siteUrl}${langForUrl}/${pathWithCategory}`,
+      url: `${siteUrl}${langForUrl}/${pathWithQueries}`,
       images: [
         {
           url: openGraphImageUrl,
