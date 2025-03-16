@@ -163,7 +163,6 @@ export default function LandingPage({ lang }: LandingPageProps) {
               },
             ]}
           />
-          <ProductDemo label={i18n._(`Product Demo`)} title={i18n._(`See FluencyPal in Action`)} />
 
           <ProposalCards
             title={i18n._(`Four Ways FluencyPal Boosts Your Speaking Skills`)}
