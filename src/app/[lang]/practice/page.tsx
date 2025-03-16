@@ -14,12 +14,17 @@ export async function generateStaticParams() {
 
 interface PageProps {
   params: Promise<{ lang: string }>;
+  searchParams: Promise<{
+    rolePlayId?: string;
+  }>;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const rolePlayId = (await props.searchParams).rolePlayId;
   return generateMetadataInfo({
     lang: (await props.params).lang,
     currentPath: "practice",
+    rolePlayId,
   });
 }
 
