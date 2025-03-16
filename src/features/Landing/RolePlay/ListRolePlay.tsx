@@ -126,6 +126,15 @@ export const ListRolePlay = ({ lang, selectedCategory }: ListRolePlayProps) => {
           >
             {title}
           </Typography>
+          {listToDisplay.length === 0 && (
+            <Typography
+              sx={{
+                color: "#000",
+              }}
+            >
+              {i18n._(`No scenarios found`)}
+            </Typography>
+          )}
           <Stack
             sx={{
               display: "grid",

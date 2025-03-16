@@ -126,6 +126,15 @@ export const ListBlog = ({ lang, selectedCategory }: ListBlogProps) => {
           >
             {title}
           </Typography>
+          {listToDisplay.length === 0 && (
+            <Typography
+              sx={{
+                color: "#000",
+              }}
+            >
+              {i18n._(`No blogs found`)}
+            </Typography>
+          )}
           <Stack
             sx={{
               display: "grid",
