@@ -66,6 +66,9 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
               "@media (max-width: 900px)": {
                 position: "relative",
               },
+              "@media (max-height: 600px)": {
+                position: "relative",
+              },
             }}
           >
             <Stack

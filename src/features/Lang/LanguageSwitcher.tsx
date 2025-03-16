@@ -120,7 +120,7 @@ export function LanguageSwitcher() {
                 gap: "26px",
                 alignItems: "center",
                 justifyContent: "center",
-                minHeight: "calc(100vh - 270px)",
+                height: "calc(100svh - 270px)",
               }}
             >
               <Stack
@@ -177,7 +177,7 @@ export function LanguageSwitcher() {
               <Stack
                 gap={"30px"}
                 sx={{
-                  minHeight: "calc(100vh - 270px)",
+                  height: "calc(100svh - 270px)",
                 }}
               >
                 <Stack gap={"10px"}>
