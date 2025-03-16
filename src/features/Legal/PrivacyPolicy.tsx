@@ -12,7 +12,7 @@ export const PrivacyPolicy = ({ lang }: PageProps) => {
   return (
     <LegalContainer page="privacy" lang={lang}>
       <Typography variant="h1">Privacy Policy</Typography>
-      <Typography>Effective Date: Feb 17, 2025</Typography>
+      <Typography>Effective Date: Mar 17, 2025</Typography>
       <Stack
         sx={{
           fontSize: "20px",

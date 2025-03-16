@@ -10,7 +10,7 @@ export const TermsOfUse = ({ lang }: PageProps) => {
   return (
     <LegalContainer page="terms" lang={lang}>
       <Typography variant="h1">Terms of Use</Typography>
-      <Typography>Effective Date: Feb 17, 2025</Typography>
+      <Typography>Effective Date: Mar 17, 2025</Typography>
       <Stack
         sx={{
           fontSize: "20px",
