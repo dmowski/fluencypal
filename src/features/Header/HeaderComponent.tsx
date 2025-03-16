@@ -137,6 +137,7 @@ export function HeaderComponent({
             },
           },
           "@media (max-width: 650px)": {
+            position: mode === "practice" ? "absolute" : "fixed",
             ".hideOnMobile": {
               display: "none !important",
             },
