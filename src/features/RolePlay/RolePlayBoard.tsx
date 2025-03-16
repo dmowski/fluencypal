@@ -1,5 +1,17 @@
 "use client";
-import { Button, ButtonGroup, Stack, Tab, Tabs, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  ButtonGroup,
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  Stack,
+  Tab,
+  Tabs,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useEffect, useState } from "react";
@@ -506,7 +518,42 @@ My user level: ${userLevelInfo}
                               >
                                 {input.labelForUser}
                               </Typography>
-                              <ButtonGroup>
+
+                              <FormControl
+                                sx={{
+                                  display: "none",
+                                  "@media (max-width: 600px)": {
+                                    display: "flex",
+                                  },
+                                }}
+                              >
+                                <RadioGroup
+                                  value={value}
+                                  onChange={(e) => {
+                                    setUserInputs({
+                                      ...userInputs,
+                                      [inputId]: e.target.value,
+                                    });
+                                  }}
+                                >
+                                  {input.options?.map((option, optionIndex) => (
+                                    <FormControlLabel
+                                      key={optionIndex}
+                                      value={option}
+                                      control={<Radio />}
+                                      label={option}
+                                    />
+                                  ))}
+                                </RadioGroup>
+                              </FormControl>
+
+                              <ButtonGroup
+                                sx={{
+                                  "@media (max-width: 600px)": {
+                                    display: "none",
+                                  },
+                                }}
+                              >
                                 {input.options?.map((option, optionIndex) => (
                                   <Button
                                     key={optionIndex}
