@@ -29,7 +29,7 @@ const InfoProposalCard: React.FC<{
           padding: "30px 20px 20px 20px",
         },
         "@media (max-width: 500px)": {
-          padding: "20px 15px 15px 15px",
+          padding: "20px 5px 15px 6px",
         },
         ":hover, :focus": {
           ".link-icon": {
