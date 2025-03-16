@@ -29,6 +29,7 @@ interface generateMetadataInfoProps {
   currentPath: string;
   scenarioId?: string;
   blogId?: string;
+  category?: string;
 }
 
 export const generateMetadataInfo = ({
@@ -36,6 +37,7 @@ export const generateMetadataInfo = ({
   currentPath,
   scenarioId,
   blogId,
+  category,
 }: generateMetadataInfoProps) => {
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
@@ -101,7 +103,11 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === "scenarios" && !scenarioId) {
-    title = i18n._(`Real-Life English Role-Play Scenarios`) + " | " + APP_NAME;
+    title =
+      i18n._(`Real-Life English Role-Play Scenarios`) +
+      (category ? " - " + category : "") +
+      " | " +
+      APP_NAME;
     description = i18n._(
       `Practice realistic English conversations with FluencyPal’s AI tutor. From job interviews to casual chats, build fluency and confidence through immersive role-play scenarios designed for intermediate and advanced learners.`
     );
@@ -118,7 +124,7 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === "blog" && !blogId) {
-    title = i18n._(`Learning Blog`) + " | " + APP_NAME;
+    title = i18n._(`Learning Blog`) + (category ? " - " + category : "") + " | " + APP_NAME;
     description = i18n._(
       `Read the latest articles on language learning, English practice tips, and AI tutor updates. Stay informed, motivated, and inspired to reach your fluency goals with FluencyPal.`
     );
@@ -169,16 +175,18 @@ export const generateMetadataInfo = ({
 
   const id = scenarioId || blogId;
   const pathWithId = currentPath + (id ? "/" + id : "");
+  const pathWithCategory =
+    pathWithId + (category ? "?category=" + encodeURIComponent(category) : "");
 
   return {
     keywords,
     title,
     description,
-    alternates: generateAlternatesTags(pathWithId),
+    alternates: generateAlternatesTags(pathWithCategory),
     openGraph: {
       title: title,
       description: description,
-      url: `${siteUrl}${langForUrl}/${pathWithId}`,
+      url: `${siteUrl}${langForUrl}/${pathWithCategory}`,
       images: [
         {
           url: openGraphImageUrl,

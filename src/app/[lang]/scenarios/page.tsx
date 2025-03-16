@@ -8,6 +8,9 @@ import { generateMetadataInfo } from "@/libs/metadata";
 
 interface PageProps {
   params: Promise<{ lang: string }>;
+  searchParams: Promise<{
+    category?: string;
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -15,9 +18,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const category = (await props.searchParams).category || "";
   return generateMetadataInfo({
     lang: (await props.params).lang,
     currentPath: "scenarios",
+    category,
   });
 }
 

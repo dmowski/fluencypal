@@ -8,12 +8,19 @@ import { BlogsPage } from "@/features/Blog/BlogsPage";
 
 interface PageProps {
   params: Promise<{ lang: string }>;
+  searchParams: Promise<{
+    category?: string;
+  }>;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const searchParam = await props.searchParams;
+  const category = searchParam.category || "";
+
   return generateMetadataInfo({
     lang: (await props.params).lang,
     currentPath: "blog",
+    category,
   });
 }
 
