@@ -30,6 +30,11 @@ const Galaxy: React.FC = () => {
     const isServer = typeof window === "undefined";
     if (isServer) return;
 
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    if (isAndroid) {
+      return;
+    }
+
     const isBotUser = isBot(`${navigator.userAgent}`);
     if (!isBotUser) {
       setIsSupported(true);
