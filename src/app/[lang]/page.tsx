@@ -95,7 +95,10 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
   const i18n = getI18nInstance(supportedLang);
 
   return (
-    <LinguiClientProvider initialLocale={lang} initialMessages={allMessages[lang]!}>
+    <LinguiClientProvider
+      initialLocale={supportedLang}
+      initialMessages={allMessages[supportedLang]!}
+    >
       <LandingPage lang={supportedLang} />
       <CookiesPopup
         message={i18n._(
