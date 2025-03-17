@@ -151,6 +151,52 @@ export const TermsOfUse = ({ lang }: PageProps) => {
 12. StartUp may post on the Site, with respect to a given Goods, information about the number of working days within which the shipment with the purchased Goods will be sent. The information in question is the time counted from confirmation of the order to shipment of the ordered Goods. The lead time is given taking into account the deadline for completion of all ordered Goods.
 
 
+
+
+## § 4 Liability for non-conformity of the Goods with the Contract
+
+1. The provisions of this paragraph, in accordance with the provisions of Chapter 5a of the Act of May 30, 2014 on Consumer Rights, shall apply to StartUp's liability for non-compliance of the Goods with the Contract concluded with:
+
+  a)  Consumer, or
+  
+  b)  a natural person entering into a contract directly related to his or her business activity, when it is clear from the content of the contract that it is not of a professional nature for that person, arising in particular from the subject of his or her business activity, made available on the basis of the provisions on the Central Register and Information on Business Activity.
+
+2. StartUp undertakes to offer Goods are free from physical and legal defects.
+3. The Customer has the right to file a complaint if the Goods do not comply with the Contract.
+4. The Customer may submit the complaint in writing or document to the StartUp email address .
+5. A complaint about defective Goods may include one of the demands:
+
+  a) repair of Goods;
+  
+  b) replacement of Goods.
+
+6. If the goods are inconsistent with the Contract, the Customer may submit a statement of price reduction or withdrawal from the Contract when:
+
+  a) StartUp refused to bring the goods into conformity with the contract in accordance with Article 43d(b) of the May 30, 2014 Law on Consumer Rights;
+
+  b) StartUp failed to bring the goods into conformity with the contract in accordance with Article 43d Paragraphs 4-6 of the Consumer Rights Act of May 30, 2014;
+  
+  c) the lack of conformity of the goods with the contract continues, even though StartUp tried to bring the goods into conformity with the contract;
+  
+  d) the lack of conformity of the goods with the contract is so significant that it justifies a reduction in price or withdrawal from the contract without first resorting to the means of protection set forth in Article 43d of the Law on Consumer Rights of May 30, 2014;
+  
+  e) it is clear from StartUp's statement or circumstances that it will not bring the goods into conformity with the contract within a reasonable time or without undue inconvenience to the consumer.
+
+7. A complaint regarding defects in the Goods will be processed within 14 (in words: fourteen) days of receipt.
+8. In the event that StartUp does not respond to the complaint within the deadline, it is assumed that the complaint has been accepted.
+9. StartUp shall inform the Customer of the outcome of the complaint on paper or other durable medium.
+10. If a complaint regarding the Goods is accepted, StartUp shall, depending on Customer's request, repair the Goods, replace the Goods, reduce the price or refund the entire amount paid by the Customer following withdrawal from the Contract.
+11. StartUp shall return the amount due to the Customer using the same method of payment used by the Customer, unless the Customer has expressly agreed to a different method of return that does not involve any costs for the Customer. StartUp shall issue to the Customer a corresponding correction to the proof of purchase (corrective VAT invoice or corrective specification).
+12. StartUp's liability is limited to the value of the Goods covered by the Contract. StartUp's liability for damage caused by the non-performance or improper performance of the Digital Service or failure to deliver digital content does not include lost profits.
+13. To the extent not regulated in the Terms and Conditions, the relevant provisions of generally applicable law, in particular the Law on Consumer Rights and the Civil Code, shall apply to determine the rights and obligations of the Customer and StartUp in the event of a defect in the goods / non-performance / improper performance of the Contract by StartUp.
+14. StartUp's liability for defects in Goods, Services and Digital Services, is excluded in the case of contracts concluded for the benefit of a Customer who is not:
+    
+  a) a Consumer;
+  
+  b) a natural person entering into a contract with StartUp directly related to his or her business activity, when it is clear from the content of the contract that it is not of a professional nature for that person, arising in particular from the subject of his or her business activity, made available on the basis of the provisions on the Central Register and Information on Business Activity.
+
+15. Goods offered by StartUp may be covered by a manufacturer's warranty. The warranty is exercised under the terms of the warranty statement. StartUp does not provide its own warranty for the Goods offered.
+
 `}
         </Markdown>
       </Stack>
