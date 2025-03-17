@@ -4,20 +4,23 @@ import { setCookiesGDPR } from "../Firebase/init";
 import { useLocalStorage } from "react-use";
 import { useEffect, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { SupportedLanguage } from "@/common/lang";
+import { supportedLanguages } from "@/common/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { usePathname } from "next/navigation";
 
-interface CookiesPopupProps {
-  message: string;
-  ok: string;
-  no: string;
-  privacy: string;
-  lang: SupportedLanguage;
-}
-export const CookiesPopup = ({ message, ok, no, privacy, lang }: CookiesPopupProps) => {
+export const CookiesPopup = () => {
+  const message = `We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will assume that you are happy with it`;
+  const ok = "Ok";
+  const no = "No";
+  const privacy = "Cookies Policy";
+
   const [isClosedStore, setClosedStore] = useLocalStorage("cookiesPopup", false);
   const [isClosed, setClosed] = useState(true);
   const auth = useAuth();
+  const pathname = usePathname();
+  const pathParts = pathname.split("/");
+  const langPart = pathParts[1];
+  const lang = supportedLanguages.find((l) => l === langPart) || "en";
 
   useEffect(() => {
     setClosed(isClosedStore || false);
@@ -91,7 +94,7 @@ export const CookiesPopup = ({ message, ok, no, privacy, lang }: CookiesPopupPro
           <Button size="small" onClick={onReject}>
             {no}
           </Button>
-          <Button href={`${getUrlStart(lang)}privacy`} size="small">
+          <Button href={`${getUrlStart(lang)}cookies`} size="small">
             {privacy}
           </Button>
         </Stack>
