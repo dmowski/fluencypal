@@ -114,6 +114,7 @@ export default async function RootLayout({
                                 <TasksProvider>
                                   <HomeworkProvider>
                                     <AiConversationProvider>{children}</AiConversationProvider>
+                                    <CookiesPopup />
                                   </HomeworkProvider>
                                 </TasksProvider>
                               </RulesProvider>

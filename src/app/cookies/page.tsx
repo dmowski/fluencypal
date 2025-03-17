@@ -2,10 +2,10 @@ import { allMessages } from "@/appRouterI18n";
 import { supportedLanguages } from "@/common/lang";
 import { Header } from "@/features/Header/Header";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
-import { TermsOfUse } from "@/features/Legal/TermsOfUse";
 import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
 import { generateMetadataInfo } from "@/libs/metadata";
+import { CookiesPolicy } from "@/features/Legal/CookiesPolicy";
 import { Footer } from "@/features/Landing/Footer";
 
 export async function generateStaticParams() {
@@ -19,7 +19,7 @@ interface PageProps {
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   return generateMetadataInfo({
     lang: (await props.params).lang,
-    currentPath: "terms",
+    currentPath: "cookies",
   });
 }
 
@@ -33,7 +33,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
       initialMessages={allMessages[supportedLang]!}
     >
       <Header mode="landing" lang={supportedLang} />
-      <TermsOfUse lang={supportedLang} />
+      <CookiesPolicy lang={supportedLang} />
       <Footer lang={supportedLang} />
     </LinguiClientProvider>
   );

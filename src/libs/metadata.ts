@@ -96,6 +96,14 @@ export const generateMetadataInfo = ({
     keywords = [];
   }
 
+  if (currentPath === "cookies") {
+    title = i18n._(`Cookies Policy`) + " | " + APP_NAME;
+    description = i18n._(
+      `Experience next-level language practice with Bruno, your friendly AI tutor. Whether you're a beginner or advanced learner, Bruno adapts to your pace, corrects mistakes, and keeps you motivated.`
+    );
+    keywords = [];
+  }
+
   if (currentPath === "terms") {
     title = i18n._(`Terms of Use`) + " | " + APP_NAME;
     description = i18n._(

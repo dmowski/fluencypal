@@ -6,6 +6,7 @@ import { PrivacyPolicy } from "@/features/Legal/PrivacyPolicy";
 import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
 import { generateMetadataInfo } from "@/libs/metadata";
+import { Footer } from "@/features/Landing/Footer";
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -33,6 +34,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
     >
       <Header mode="landing" lang={supportedLang} />
       <PrivacyPolicy lang={supportedLang} />
+      <Footer lang={supportedLang} />
     </LinguiClientProvider>
   );
 }

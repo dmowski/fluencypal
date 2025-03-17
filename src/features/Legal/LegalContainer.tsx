@@ -1,14 +1,18 @@
 import { SupportedLanguage } from "@/common/lang";
-import { Button, ButtonGroup, Link, Stack, Typography } from "@mui/material";
+import { Button, ButtonGroup, Stack } from "@mui/material";
 import { getUrlStart } from "../Lang/getUrlStart";
 
 interface LegalContainerProps {
   children: React.ReactNode;
-  page: "privacy" | "terms";
+  page: "privacy" | "terms" | "cookies";
   lang: SupportedLanguage;
 }
 
 export const LegalContainer = ({ children, page, lang }: LegalContainerProps) => {
+  const isCookies = page === "cookies";
+  const isTerms = page === "terms";
+  const isPrivacy = page === "privacy";
+
   const switcher = (
     <ButtonGroup
       sx={{
@@ -16,17 +20,14 @@ export const LegalContainer = ({ children, page, lang }: LegalContainerProps) =>
         zIndex: 2,
       }}
     >
-      <Button
-        variant={page === "terms" ? "contained" : "outlined"}
-        href={`${getUrlStart(lang)}terms`}
-      >
+      <Button variant={isTerms ? "contained" : "outlined"} href={`${getUrlStart(lang)}terms`}>
         Terms of Use
       </Button>
-      <Button
-        variant={page === "privacy" ? "contained" : "outlined"}
-        href={`${getUrlStart(lang)}privacy`}
-      >
+      <Button variant={isPrivacy ? "contained" : "outlined"} href={`${getUrlStart(lang)}privacy`}>
         Privacy Policy
+      </Button>
+      <Button variant={isCookies ? "contained" : "outlined"} href={`${getUrlStart(lang)}cookies`}>
+        Cookies Policy
       </Button>
     </ButtonGroup>
   );
@@ -52,8 +53,9 @@ export const LegalContainer = ({ children, page, lang }: LegalContainerProps) =>
           border: "1px solid #000",
           borderRadius: "5px",
           width: "100%",
-          position: "relative",
-          //zIndex: 9999999,
+          a: {
+            color: "rgba(44, 174, 255, 0.9)",
+          },
         }}
       >
         {children}
