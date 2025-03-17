@@ -23,131 +23,65 @@ export const TermsOfUse = ({ lang }: PageProps) => {
       >
         <Markdown>
           {`
-### 1. Introduction
+**TERMS AND CONDITIONS of FluencyPal**
 
-Welcome to **${LEGAL_DATA.appName}**, operated by **${LEGAL_DATA.companyName}** (“Company,” “we,” “us,” or “our”). These Terms of Use (“Terms”) govern your access to and use of the ${LEGAL_DATA.appName} website, services, and related products (collectively, the “Service”). By creating an account or otherwise using our Service, you agree to be bound by these Terms. If you do not agree, please discontinue use immediately.
+## § 1 General provisions
 
----
+1. The **FluencyPal** Internet site operating at [www.fluencypal.com](http://www.fluencypal.com) (hereinafter: **Service**) is run by: Fundacja Rozwoju Przedsiębiorczości „Twój StartUp” (Fundacja Rozwoju Przedsiębiorczości „Twój StartUp”), based in Warsaw at ul. Żurawia 6/12 lok. 766, 00-503 Warsaw, address for delivery: Atlas Tower, Al. Jerozolimskie 123a, 18th floor, 02-017 Warsaw, entered into the National Court Register kept by the District Court for Capital City of Warsaw in Warsaw, 12th Commercial Division of the National Court Register (KRS) no. 0000442857, Tax Identification Number (NIP): 521-364-12-11 Business Registry No. (REGON).: 146433467, Business Registry (BDO) number 000460502\.  
+2. The provisions of these Terms and Conditions (T\&C) apply to activities performed for the benefit of the Fundacja Rozwoju Przedsiębiorczości „Twój StartUp” by the organized part of the enterprise named **FluencyPal** operating at the Fundacja Rozwoju Przedsiębiorczości „Twój StartUp” Branch, represented by Aliaksandr Dmouski (e-mail address: contact@fluencypal.com, tel.: \+48510260193). The person indicated in this paragraph is designated by the Fundacja Rozwoju Przedsiębiorczości „Twój StartUp”to contact with regards the implementation of the provisions of these T\&C.
 
-### 2. Eligibility
+3. These Terms and Conditions specify in particular:  
+  A) rules for the use of the Site;  
+  B) terms and conditions for placing orders for Products available on the Site;  
+  C) order processing time and rules;  
+  D) terms and forms of payments  
+  E) Customer's right to withdraw from the contract;  
+  F) submission and examination of claims  
+  G) special rights of the Customer who is a consumer.  
+4. StartUp sells and provides Services through the Site using means of remote communication. Contracts concluded by the Customer with StartUp through the Site are distance contracts, as defined in the Act of May 30, 2014 on Consumer Rights.  
+5. The Customer is entitled and obliged to use the Service in accordance with its purpose and the rules of social intercourse and good morals.  
+6. Browsing the Site does not require registration, and Customer's independent ordering of Products does require registration of an account.  
+7. The T\&C are available free of charge on the Site, in a form that allows their acquisition, reproduction and recording.  
+8. The Customer is obliged to read the content of the Terms and Conditions. Use of the Site is possible only after reading and accepting the Terms and Conditions.  
+9. The Customer must be a person with full legal capacity.  
+10. Definitions used in these T\&C shall have the following meaning:
 
-1. **Age Requirement**: You must be at least 16 years old (or the age of majority in your jurisdiction if higher) to use the Service. We do not permit children below this age to register or use the Service.  
-2. **Legal Capacity**: By using the Service, you represent and warrant that you are legally capable of entering into a binding contract.
+    A) Fundacja Rozwoju Przedsiębiorczości „Twój StartUp” (Fundacja Rozwoju Przedsiębiorczości „Twój StartUp”), based in Warsaw at ul. Żurawia 6/12 lok. 766, 00-503 Warsaw, address for delivery: Atlas Tower, Aleje Jerozolimskie 123A, 18th floor, 02-017  Warsaw, entered into the National Court Register (KRS) kept by the District Court for Capital City of Warsaw in Warsaw, 12th Commercial Division of the National Court Register (KRS) no. 0000442857, which has a following Tax Identification Number (NIP) assigned: 521-364-12-11 Business Registry Number (REGON): 146-433-467, Waste Database number (BDO): 000460502;
 
----
+    B) Customer \- a person using the Site, purchasing Goods or Services, provided by StartUp on the Site;
 
-### 3. Account Registration and Security
+    C) Consumer \- a natural person making a legal transaction with an entrepreneur that is not directly linked to its economic or professional activity;
 
-1. **Account Creation**: To access certain features, you must register by providing a valid email address and creating a password or using a supported Single Sign-On (SSO) method.  
-2. **Accuracy of Information**: You must provide accurate and complete information when creating an account and keep such information up to date.  
-3. **Responsibility**: You are responsible for maintaining the confidentiality of your account login credentials and for all activities that occur under your account.  
-4. **Unauthorized Use**: If you suspect unauthorized use of your account, please contact us immediately at [${LEGAL_DATA.email}].
+    D) Services \- services provided by StartUp, offered to Customers through the Site, excluding Digital Services;
 
----
+    E) Digital Service \- a digital service within the meaning of Article 2(5a) of the Law of May 30, 2014 on Consumer Rights, provided by StartUp, offered to Customers through the Site;
 
-### 4. License and Restrictions
+    F) Goods \- movable items sold by StartUp to Customers through the Site;
 
-1. **Limited License**: We grant you a personal, non-exclusive, non-transferable, revocable license to use the Service for your own learning and conversational practice.  
-2. **Prohibited Activities**: You agree not to:
-   - Use the Service for any unlawful, harmful, or fraudulent purposes.  
-   - Interfere with or disrupt the Service or servers/networks used to provide the Service.  
-   - Reverse engineer, decompile, or otherwise access the Service’s source code (where not publicly provided).  
-   - Upload or transmit any viruses or malicious code.  
-   - Attempt to re-claim free balances or credits by creating multiple accounts or otherwise abusing our promotions.
+    G) Products \- Goods, Services or Digital Services;
 
----
+    H) Site \- the website at the following address www.fluencypal.com, by means of which StartUp provides electronic services to the Customer, as well as offers Products to the Customers and enables them to conclude contracts;
 
-### 5. Payments and Refunds
+    I) Contract \- an agreement concluded between StartUp and the Customer through the Site;
 
-1. **Payment Processors**: We use third-party payment processors (e.g., Stripe, PayPal). Your payment details are collected and processed directly by these third parties in accordance with their terms and privacy policies.  
-2. **Balance and Credits**: You may purchase or receive credits (including a possible free welcome balance) to use AI-based features within the Service.  
-3. **Refund Policy**: Except where required by law, all credit purchases are final and non-refundable. If you believe you have been billed in error, please contact us at [${LEGAL_DATA.email}]. We will review refund requests on a case-by-case basis.
+    J) Account \- Customer's individual account on the Website allowing them to use the Services and Digital Services and conclude Contracts after logging in;
 
----
+    K) working days \- all days excluding Saturdays, Sundays and public holidays;
 
-### 6. AI Conversations and Disclaimers
+    L) Terms and Conditions \- these Terms and Conditions (T\&C).
 
-1. **Informational Purposes**: The AI-based content, including language tutoring responses, is for informational and educational purposes only. We do not guarantee the accuracy, completeness, or reliability of the information provided by the AI.  
-2. **No Professional Advice**: The AI does not provide legal, medical, financial, or other professional advice. You should seek professional consultation where necessary.  
-3. **User Responsibility**: You acknowledge that any reliance on the AI’s output is at your own risk and discretion. We are not liable for decisions made based on AI-generated responses.
-
----
-
-### 7. User Content
-
-1. **Conversations**: Transcripts and other content you share during AI conversations (“User Content”) remain yours. By using the Service, you grant us a non-exclusive, worldwide, royalty-free license to process and store your User Content solely for the purpose of providing the Service.  
-2. **Removal of Content**: We reserve the right to remove or suspend access to any User Content that violates these Terms or applicable laws.  
-3. **Data Retention**: We store conversation transcripts for a limited time (generally up to one year after your last platform visit), unless you request deletion or delete your account, subject to exceptions in our [Privacy Policy](/privacy).
-
----
-
-### 8. Privacy Policy
-
-Our [Privacy Policy](/privacy) describes how we collect, use, and protect your personal data, including your AI conversation transcripts and other information. By using our Service, you also agree to the terms outlined in our Privacy Policy.
-
----
-
-### 9. Termination
-
-1. **By You**: You may stop using the Service at any time or request account deletion.  
-2. **By Us**: We may suspend or terminate your account if you violate these Terms, engage in fraud or misuse, or if we discontinue the Service.  
-3. **Data Post-Termination**: After account deletion, we will remove most of your personal data as described in our Privacy Policy. Limited data may be retained to prevent re-claiming free balances.
-
----
-
-### 10. Intellectual Property
-
-1. **Ownership**: All materials, text, graphics, logos, and other content (“Company Content”) are the property of the Company or our licensors. Except as expressly granted, no license or right is granted to you by implication or otherwise.  
-2. **Trademarks**: ${LEGAL_DATA.appName}, the Company’s name, and other related marks are trademarks of the Company. You may not use them without our prior written permission.
-
----
-
-### 11. Disclaimer of Warranties
-
-TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SERVICE IS PROVIDED “AS IS” AND “AS AVAILABLE,” WITHOUT WARRANTY OF ANY KIND. WE AND OUR LICENSORS DISCLAIM ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR THAT THE SERVICE WILL BE UNINTERRUPTED OR ERROR-FREE.
-
----
-
-### 12. Limitation of Liability
-
-1. **Indirect Damages**: TO THE EXTENT PERMITTED BY LAW, WE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF THE SERVICE.  
-2. **Maximum Liability**: OUR TOTAL LIABILITY FOR ALL CLAIMS RELATED TO THE SERVICE SHALL NOT EXCEED THE GREATER OF THE AMOUNT YOU PAID US IN THE LAST 6 MONTHS OR [€100 / $100], WHICHEVER IS HIGHER, TO THE EXTENT PERMITTED BY LAW.
-
----
-
-### 13. Indemnification
-
-You agree to indemnify and hold harmless the Company, its affiliates, officers, directors, employees, and agents from any losses, liabilities, damages, costs, or expenses (including reasonable attorneys’ fees) arising out of or related to (a) your use or misuse of the Service, (b) your User Content, or (c) your violation of these Terms or applicable law.
-
----
-
-### 14. Governing Law and Dispute Resolution
-
-1. **Governing Law**: These Terms are governed by the laws of Poland, without regard to conflict-of-law principles.  
-2. **Jurisdiction**: Any dispute arising from or relating to these Terms or the Service shall be subject to the exclusive jurisdiction of the courts located in Poland, unless otherwise required by mandatory consumer protection laws.
-
----
-
-### 15. Changes to These Terms
-
-We may revise these Terms from time to time to reflect changes in our Service or legal requirements. When we do, we will post the updated Terms on our website and notify you of any significant changes. By continuing to use the Service after the changes become effective, you agree to the revised Terms.
-
----
-
-### 16. Contact Us
-
-If you have any questions, concerns, or feedback regarding these Terms, please contact:
-
-**${LEGAL_DATA.companyName}**  
-Warsaw, Pustelnica 1, Poland  
-**Email**: [${LEGAL_DATA.email}]
-
----
-
-## Acceptance of Terms
-
-By accessing or using the ${LEGAL_DATA.appName}, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use as well as our Privacy Policy.
-
+11. In case of a reasonable suspicion that the Customer has provided false data, StartUp has the right to withdraw from Contract execution, notifying the Customer of this fact.  
+12. If the Customer provides erroneous or inaccurate data, including, in particular, an erroneous or inaccurate address, StartUp shall not be liable for non-delivery or delay in delivery of the Goods or failure to provide the Service or Digital Service, to the fullest extent permitted by law.  
+13. The information contained in the Service, including, in particular, advertisements, announcements and price lists, does not constitute an offer within the meaning of Article 66 of the Act of April 23, 1964, Civil Code. However, the information contained in the Service constitutes an invitation to conclude a Contract, described in Article 71 of the Civil Code.  
+14. StartUp shall provide the Customer who is a Consumer, in a clear and conspicuous manner, immediately before the Customer places the order, with information about, in particular:  
+    A) the main features of the service, taking into account the subject matter of the service and the method of communication with the customer,  
+    B) the total price or remuneration for the performance including taxes, and when the nature of the subject of the performance does not allow, judging reasonably, to calculate their amount in advance \- the manner in which they will be calculated, as well as fees for transportation, delivery, postal services and other costs, and when the amount of these fees cannot be determined \- about the obligation to pay them;  
+    C) the right to withdraw from the contract or the absence of this right,  
+    D) the duration of the contract or about the manner and grounds for termination of the contract \- if the contract is concluded for an indefinite period or if it is to be automatically renewed;  
+    E) the minimum duration of customer's obligations under the contract.  
+15. Where StartUp provides for the possibility of accepting individual (customized) orders from Customers, such orders may be placed by Customers via StartUp's email address indicated on the Site. In such a case, StartUp prepares a quote and sends it to the e-mail address indicated by the Client.  
+16. The lead time for an individual (custom) order is 30 days from the conclusion of the Contract, unless StartUp has informed the Customer, at the latest before placing the order, of a different period.  
+17. The Site supports Customers on the territory of Poland and in the whole world, unless the StartUp offer on the Site contains different provisions.
 
 `}
         </Markdown>
