@@ -197,6 +197,101 @@ export const TermsOfUse = ({ lang }: PageProps) => {
 
 15. Goods offered by StartUp may be covered by a manufacturer's warranty. The warranty is exercised under the terms of the warranty statement. StartUp does not provide its own warranty for the Goods offered.
 
+
+
+## § 5 Provision of Services
+  1. StartUp provides Customers with Services, the type, scope and detailed description of which are indicated in the Site. The activities consist in particular of: providing access to an AI-powered language tutoring platform (“FluencyPal”), where users can purchase a specific number of hours of AI-based language conversation and use those hours to engage in interactive language learning with an AI tutor, track progress, and review past conversations
+
+  2. Services are provided in the manner indicated on the Site, in particular on the page pertaining to the particular Service.
+  
+  3. StartUp posts information on the Website on how the Customer may place an order for Services. In order to place an order, the Customer indicates the Services which he or she is interested in, and then enters the data necessary to conclude the Contract and perform the Service, including the method of performance of the Service (if applicable) and the method of payment.
+  
+  4. If to place an order on the Site, a button or similar function is used, they shall be marked in an easily readable manner with the words "order with obligation to pay" or other equivalent unambiguous wording.
+
+5. Placing and approving an order entails Customer's obligation to pay the price for the Services and any additional costs. Once the order is confirmed by StartUp, the service contract between StartUp and the Customer is also concluded.
+
+6. The Customer shall be informed of the start and end dates of the Services prior to the conclusion of the Contract, in particular through the Site.
+
+7. If, at the express request of the Customer, performance of the Service is to begin before the expiration of the deadline for withdrawal from an off-premises contract, StartUp requires the Customer to make a statement:
+
+    a) containing such an explicit request in a durable medium;
+
+    b) that the Customer took note of the information about the loss of the right to withdraw from the contract upon its full performance by StartUp .
+
+8. If the Customer does not consent to the commencement of the Service before the expiration of the term for withdrawal from the Contract, the Service shall be delivered after the expiration of the term for Custmer’s withdrawal from the Contract, unless StartUp on the Site does not offer Customers the possibility of concluding Contracts without such consent.
+
+9. The Customer may terminate the Contract for the provision of Services, either in writing or document, with 1 (in words: one) month's notice period effective at the end of the calendar month.
+
+10. StartUp may terminate a Contract for the provision of Services, in writing or document, with 1 month's notice effective at the end of the calendar month, for valid reasons. The parties consider valid reasons to be:
+
+    a) discontinuance or StartUp's decision to discontinue the operation of the organized part of StartUp's enterprise , indicated in § 1;
+    
+    b) significant change or StartUp's decision to significantly change the object of activity of the organized part of StartUp's enterprise , indicated in § 1;
+
+    c) significant reorganization at StartUp ;
+
+    d) occurrence of failures or hindrances (especially technical ones), not attributable to StartUp, preventing or significantly impeding the provision of Services to the Customer;
+
+    e) Customer's delay in payment of price to StartUp;
+
+    f) material breach of the Contract or the Terms and Conditions by the Customer.
+
+## § 6 Liability for non-conformity of the Services with the Contract
+
+1. A complaint about Services provided not in accordance with the Contract should include a demand, depending on the nature of the Service.
+
+2. A complaint regarding non-compliace of the Service with a Contract will be processed within 14 (in words: fourteen) days of receipt.
+
+3. In the event that StartUp does not respond to the complaint within the deadline, it is assumed that the complaint has been accepted.
+
+4. StartUp shall inform the Customer of the outcome of the complaint on paper or other durable medium.
+
+5. If a complaint about the Service is accepted, StartUp shall perform the Service correctly, refund all or part of the price received to the Customer, or make other payments to the Customer, depending on the type of Service and the circumstances of the case.
+
+6. StartUp's liability is limited to the value of the unperformed or improperly performed Service. StartUp's liability for damage caused by the non-performance or improper performance of the Service does not include lost profits.
+
+7. StartUp's liability for defects in the Services, as well as for non-performance / improper performance of the contract concluded with the Customer, is excluded in the case of contracts concluded for the benefit of a Customer that is not:
+
+  a) a Consumer;
+    
+  b) a natural person entering into a contract with StartUp directly related to his or her business activity, when it is clear from the content of the contract that it is not of a professional nature for that person, arising in particular from the subject of his or her business activity, made available on the basis of the provisions on the Central Register and Information on Business Activity.
+
+## § 7 Digital Content or Digital Service Provision Contracts
+
+1. The provisions of this paragraph and the following paragraph of the Terms and Conditions, in accordance with the provisions of Chapter 5b of the Consumer Rights Act of 30 May 2014, shall apply to Digital Content or Digital Service Provision Contract concluded with:
+  a). Consumer, or
+  b). a natural person entering into a contract directly related to his or her business activity, when it is clear from the content of the contract that it is not of a professional nature for that person, arising in particular from the subject of his or her business activity, made available on the basis of the provisions on the Central Register and Information on Business Activity.
+
+2. StartUp posts information on the Website on how the Customer may place an order for Digital Services. In order to place an order, the Customer particularly indicates the Digital Services which he or she is interested in, and then enters the data necessary to conclude the Contract and perform the Digital Service, including the method of performance of the Service (if applicable) and the method of payment.
+
+3. If to place an order on the Site, a button or similar function is used, they shall be marked in an easily readable manner with the words "order with obligation to pay" or other equivalent unambiguous wording.
+
+4. Placing and approving an order entails Customer's obligation to pay the price for the Digital Services and any additional costs. Once the order is confirmed by StartUp, the digital service provision contract between StartUp and the Customer is also concluded.
+
+5. StartUp shall deliver the digital content or digital service to the Customer immediately after the conclusion of the Contract, unless otherwise agreed by the parties, in particular, if a different date is indicated on the Site on the page of the respective Digital Service. The provision does not apply if the contract provides for the delivery of digital content via a tangible medium. If the Customer does not agree to the performance before the expiration of the deadline for withdrawal from the Contract, the service provided after the expiration of the deadline.
+
+6. StartUp notifies that giving the consent referred to in the preceding paragraph shall result in the loss of Customer's right to withdraw from the contract.
+
+7. StartUp may, for valid reasons, make a change to the digital content or digital service that is not necessary to comply with the Contract. Valid reasons are considered to be, in particular, important interests of the Customer or StartUp. StartUp shall inform the Customer in a clear and understandable manner about the change made. If the change materially and adversely affects Customer's access to or use of digital content or digital service, StartUp is obliged to inform the Customer in advance on a durable medium of the characteristics and date of the change and the right to terminate the contract without notice. The Customer may terminate the contract without notice within 30 days of the change.
+
+8. The Customer may terminate the Contract for the provision of digital content or Digital Services in writing or in document form, subject to 1 (in words: one) month's notice period effective at the end of the calendar month.
+
+9. StartUp may terminate a Contract for the provision of Digital Services, in writing or document, with 1 month's notice effective at the end of the calendar month, for valid reasons. The parties consider valid reasons to be:
+
+  a) discontinuance or StartUp's decision to discontinue the operation of the organized part of StartUp's enterprise , indicated in § 1;
+
+  b) significant change or StartUp's decision to significantly change the object of activity of the organized part of StartUp's enterprise , indicated in § 1;
+
+  c) significant reorganization at StartUp ;
+
+  d) occurrence of failures or significant hindrances (especially technical) in the functioning of the Site, not attributable to StartUp;
+
+  e) Customer's delay in payment of price to StartUp;
+
+  f) material breach of the Contract or the Terms and Conditions by the Customer.
+
+10. To the extent not regulated in this paragraph, the provisions of Chapter 5b of the Law on Consumer Rights shall apply.
+
 `}
         </Markdown>
       </Stack>
