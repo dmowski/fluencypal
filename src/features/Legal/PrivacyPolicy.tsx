@@ -1,7 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { LegalContainer } from "./LegalContainer";
 import Markdown from "markdown-to-jsx";
-import { LEGAL_DATA } from "./data";
 import { SupportedLanguage } from "@/common/lang";
 
 interface PageProps {
@@ -16,6 +15,7 @@ export const PrivacyPolicy = ({ lang }: PageProps) => {
       <Stack
         sx={{
           fontSize: "20px",
+          boxSizing: "border-box",
           fontFamily: "Intel, Roboto, Arial, sans-serif",
           color: "rgba(222, 222, 222, 0.9)",
           hr: {
@@ -25,161 +25,75 @@ export const PrivacyPolicy = ({ lang }: PageProps) => {
       >
         <Markdown>
           {`
-### 1. Introduction
+**PRIVACY POLICY FluencyPal.** 
 
-Welcome to **${LEGAL_DATA.appName}**, operated by **${LEGAL_DATA.companyName}** (hereinafter, “we,” “us,” or “our”). We respect your privacy and are committed to protecting your personal data in compliance with the General Data Protection Regulation (GDPR) and other applicable laws.
+1. **Who is the controller of your data?**
 
-This Privacy Policy explains what personal data we collect, how we use it, how we protect it, and your rights concerning that data. By using our website or services, you agree to the practices described in this Privacy Policy.
+The Controller of your personal data is Fundacja Rozwoju Przedsiębiorczości "Twój STartup" with its registered office in Warsaw (registered office address: ul. Żurawia 6/12, lok. 766, 00-503 Warsaw).
 
----
+The above privacy policy applies to the Foundation's services provided by the organized part of the enterprise FluencyPal. contact details: telephone number \+48510260193., e-mail address: contact@fluencypal.com. carried out by Aliaksandr Dmouski.
 
-### 2. Who We Are
+2. **Why do we process your data?**
 
-- **Company Name**: ${LEGAL_DATA.companyName}  
-- **Registered Office**: ${LEGAL_DATA.companyAddress}  
-- **KRS No.**: ${LEGAL_DATA.KRS}  
-- **NIP**: ${LEGAL_DATA.NIP}
+  A. In connection with the services provided through  FluencyPal consisting in enabling users to engage in real-time, interactive language learning conversations with an AI tutor, track learning progress, and purchase usage credits, i.e. for the purpose of concluding or performing a contract (Article 6 (1) (b) of the GDPR), your data will be stored until the contract is executed;  
 
-For privacy-related matters, please contact **[${LEGAL_DATA.owner}]** at:  
-**Email**: ${LEGAL_DATA.email}
+  B. For marketing purposes and promotion of products offered by Fundacja Rozwoju Przedsiębiorczości "Twój StartUp" with its registered office in Warsaw, which are our legitimate interest (Article 6 (1) (f) of the Regulation). Your data will be processed until you object (if you do not send commercial information, please delete this point).   
 
----
+  C. Fulfilment of any legal obligations incumbent on us in connection with the cooperation undertaken (Article 6 (1) (c) of the GDPR), this purpose is related to the legal obligations to keep certain documents for the time specified in the law, e.g.:  
+   * the Accounting Act of 29.09.1994 (Journal of Laws of 2017, item 1858\)  
+   * the Tax Ordinance of 29 August 1997, (Journal of Laws of 1997 No. 137, item 926);  
+   * the Counteracting Money Laundering and Terrorist Financing Act of 1 March 2018 (Journal of Laws of 2018 item 723).  
 
-### 3. Personal Data We Collect
+  D. For the possible establishment, exercise or defence of claims, which is our legitimate interest (Article 6 (1) (f) of the GDPR). The data will be processed until the claims are submitted;  
 
-We may collect and process the following categories of personal data:
+  E. In the case of consent, your data will be processed within the limits and for the purpose indicated in the consent (legal basis: Article 6 (1) (a)).  The data will be processed until the consent is withdrawn
 
-1. **Email Address**: Used for account creation, login, and communication.  
-2. **Conversation Transcripts**: AI-generated dialogue, including messages you type or speak, which may be processed by OpenAI.  
-3. **Usage / Balance Information**: Includes your account balance, records of the free balance you receive, and usage history.  
-4. **Role-play Data**: Information about your role-play interactions, including messages, forms data and AI responses.
+3. **What data is being processed?**
 
-**No Additional User Content**: We do not collect or store any uploaded files or images.
+To conclude the contract, we require you to provide data on the contract / order form (if you do not provide them, we will not conclude the contract/complete the order). In addition, we may ask for optional data that does not affect the conclusion of the contract (if we do not receive it, we will not be able to, for example, call the contact number).  
+During the term of the contract, when providing services, we come into possession of your other data. The appearance of your personal data with us is a consequence of the operation of our services that you use. 
 
----
+4. **Who will the data be shared with?**
 
-### 4. Children’s Privacy
+  A. Public authorities, to the extent that they do not receive data as part of a specific proceeding under the law, e.g. in connection with anti-money laundering;    
+  
+  B. Entities that process your personal data on behalf of the Foundation on the basis of a personal data processing agreement with the Foundation (so-called processors). These will include: Beneficiaries of the Foundation, IT specialists, archiving companies, hosting companies;  
+  
+  C. External data controllers (the so-called Parallel Controller to whom the data is made available, e.g. legal advisers and lawyers, entities conducting courier or postal activities, entities purchasing debts \- in the event of your failure to pay our invoices on time).  
+  
+  D. Entities located outside the EEA, but only if it is necessary and with an adequate level of protection, in particular by:  
+   1. cooperation with entities processing personal data in countries for which an appropriate decision of the European Commission has been issued;  
+   2. Application of standard contractual clauses issued by the European Commission.
 
-Our service is not intended for individuals under the age of 16. We do not knowingly collect personal data from children. If you are under 16 (or a different minimum age based on local legislation), please do not use our services.
+   The administrator always informs at the collection stage about the intention to transfer personal data outside the EEA.
 
----
+5. **Are Data Profiled?**
 
-### 5. How We Use Your Personal Data
+   Please be advised that your data will not be subject to profiling, i.e. automated analysis of your data and development of predictions about preferences or future behavior (profiling means, e.g. in the case of marketing profiling, determining which offer you may be most interested in based on your previous choices).
 
-1. **Account Creation & Maintenance**:  
-   - We use your email to create and manage your user account.  
-   - We maintain information on your balance to ensure you have the correct free or paid credits.
+6.  **What are your rights?**
 
-2. **Language Tutoring & AI Conversations**:  
-   - We process your conversation transcripts to provide real-time AI tutoring and to maintain conversation histories.  
-   - These transcripts may be sent temporarily to OpenAI’s servers (located in the US) for language processing.
+  A. Right of access to personal data processed by us (Article of the 15 GDPR);  
 
-3. **Preventing Abuse of Free Balance**:  
-   - We retain minimal information about your account (including balance and your email) for up to one year after last platform visit or account deletion to prevent re-claiming the free welcome balance.
+  B. Right to rectify entrusted personal data, including their correction (Article 16 of the GDPR);  
 
-4. **Analytics & Performance**:  
-   - We use Google Analytics (data stored within the EU) to understand user interactions and improve our platform.  
-   - Where required by law, we will request your consent for analytics cookies via a banner or pop-up.
+  C. Right to delete personal data from our systems, the so-called "right to be forgotten" \- if in your opinion there are no grounds for us to process your data, you can request that we delete it (Article 17 of the GDPR);  
 
-5. **Legal & Compliance**:  
-   - We may process your data to comply with applicable laws, regulations, or court orders.
+  D. Right to restrict the processing of personal data \- you may request that we restrict the processing of personal data only to their storage or to the performance of activities agreed with you, if we have incorrect data about you or process them unjustifiably; or you do not want us to delete them because they are necessary for you to establish, pursue or defend claims; or for the duration of the objection to data processing (Article 18 of the GDPR);  
 
----
+  E. Right to data portability – You have the right to receive from us, in a structured, commonly used and machine-readable format (e.g. “.csv” format), personal data relating to you held by us on the basis of a contract or consent.  This right will be granted when we have data in electronic format – if you have data only in paper form, you will not be able to use this right. You can commission us to transfer this data directly to another entity (Article 20 of the GDPR);  
 
-### 6. Lawful Basis for Processing
+  F. The right to withdraw consent to the processing of personal data \- at any time you have the right to withdraw consent to the processing of personal data that we process on the basis of consent – Article 7 item 3 of the Regulation. The withdrawal of consent shall not affect the lawfulness of any processing performed on the basis of your consent prior to its withdrawal. Withdrawal of consent occurs by sending an e-mail to the following address: contact@fluencypal.com  
 
-Under the GDPR, we rely primarily on the following lawful bases:
+  G. Right to object \- you may object to the processing of your data if the basis for the use of data is our legitimate interest \- article 21 of the Regulation. In such a situation, after examining your request, we will no longer be able to process the personal data subject to the objection on this basis, unless we demonstrate the existence of legitimate grounds for the processing that are considered to override your interests, rights and freedoms;  
+  
+  H. If, in your opinion, the processing of personal data violates the provisions of the Regulation, you have the right to lodge a complaint with the supervisory authority, i.e. President of the Personal Data Protection Office.  
+     
+7. **Contact**
 
-1. **Consent**:  
-   - We obtain your consent for optional cookies, certain analytics activities, and for processing conversation transcripts.  
-2. **Contractual Necessity**:  
-   - We process your email, AI transcripts, and balance information to deliver the service you have signed up for (i.e., language tutoring).
+If you need any additional information related to the personal data protection or would like to exercise your rights, please contact us at the e-mail address: **rodo@twojstartup.pl** 
 
----
 
-### 7. International Data Transfers
-
-- **Location of Servers**: We store user data on servers located in the European Union (EU/EEA).  
-- **OpenAI**: Some conversation data is processed in the United States via OpenAI, which states it is GDPR compliant. According to our current understanding, OpenAI does not store your data beyond the immediate processing required.  
-- **Safeguards**: We use secure connections (HTTPS) for all data transmissions. For any transfers outside the EU, we rely on measures such as Standard Contractual Clauses (where applicable) or similar legal frameworks.
-
----
-
-### 8. Data Retention
-
-1. **Active Users**: We retain your personal data for as long as your account is active.  
-2. **Inactive Accounts**: If you do not use our platform for one (1) year, we delete your personal data, including conversation transcripts.  
-3. **Account Deletion**: If you request to delete your account from the app interface, we will remove your personal data, except for minimal balance-related data necessary to prevent repeated claims of the free balance. This limited data is also deleted one (1) year after your last platform visit or deletion request.  
-4. **Legal Obligations**: We may retain certain data for a longer period if required to do so by law or for legitimate business interests such as fraud prevention.
-
----
-
-### 9. Your Rights Under GDPR
-
-You have the following rights regarding your personal data, subject to certain legal limitations:
-
-1. **Right of Access**: You can request a copy of your personal data we hold.  
-2. **Right to Rectification**: You can ask us to correct inaccuracies in your data.  
-3. **Right to Erasure**: You can request deletion of your data.  
-4. **Right to Restrict Processing**: You can ask to limit how we use your data.  
-5. **Right to Data Portability**: You can request your data in a commonly used, machine-readable format.  
-6. **Right to Object**: You can object to data processing based on legitimate interests or direct marketing.  
-
-To exercise these rights, please email: **[${LEGAL_DATA.email}]**. We will respond within the statutory timeframe (usually one month).
-
----
-
-### 10. Cookies & Tracking
-
-- **Essential Cookies**: Necessary for site functionality (e.g., session management).  
-- **Analytics Cookies**: Used to analyze and improve our platform. We use Google Analytics with data stored in the EU.  
-- **Opt-Out**: You can opt out of non-essential cookies via the banner or pop-up that appears on our site.
-
----
-
-### 11. Payment Processing
-
-We use third-party payment processors such as **Stripe** and **PayPal**. We do not store your credit card or bank details; payment information is transmitted directly to these processors over secure connections and subject to their privacy policies.
-
----
-
-### 12. Security Measures
-
-We implement appropriate technical and organizational measures to safeguard your data:
-
-- **Encryption (HTTPS)**: All data in transit uses secure TLS/SSL encryption.  
-- **Access Controls**: Our data storage is isolated, and access is limited to authorized personnel only.  
-- **Single Database with Logical Separation**: We store user data in a single database. However, each user’s data is kept in distinct records or documents, protected by secure access controls to help prevent unauthorized cross-access
-
----
-
-### 13. Changes to This Privacy Policy
-
-We may update this Privacy Policy from time to time to reflect changes in our services or legal requirements. If we make significant changes, we will notify you via email or a prominent notice on our website. By continuing to use our services after these updates, you acknowledge and agree to the revised Privacy Policy.
-
----
-
-### 14. Contact Us
-
-If you have any questions, concerns, or requests regarding your personal data or this Privacy Policy, please contact us at:
-
-**${LEGAL_DATA.companyName}**  
-${LEGAL_DATA.companyAddress}  
-**Email**: [${LEGAL_DATA.email}]
-
-We are committed to working with you to obtain a fair resolution of any complaint or concern about privacy.
-
----
-
-## Final Notes
-
-- This Privacy Policy covers only our ${LEGAL_DATA.appName} and does not apply to third-party services beyond our control.  
-- We do not offer our services to individuals under 16 years of age.  
-- This document is for informational purposes and may need further legal review to ensure full compliance with GDPR and other applicable laws in your jurisdiction.
-
----
-
-**By using ${LEGAL_DATA.appName}, you confirm that you have read and understood this Privacy Policy.**
 `}
         </Markdown>
       </Stack>
