@@ -3,7 +3,10 @@ import { addToTotalBalance } from "./addToTotalBalance";
 import { getDB } from "../config/firebase";
 
 export const addUsage = async (userId: string, usage: UsageLog) => {
-  await addToTotalBalance(userId, -usage.price);
+  await addToTotalBalance({
+    userId,
+    amountToAddHours: -usage.priceHours,
+  });
 
   const db = getDB();
   const docRef = db.collection(`users/${userId}/usageLogs`).doc(usage.usageId);

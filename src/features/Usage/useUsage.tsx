@@ -10,14 +10,13 @@ import {
   SetStateAction,
 } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { getDoc, setDoc } from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
 import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
 import { PaymentLog, TotalUsageInfo, UsageLog } from "@/common/usage";
 import { db } from "../Firebase/db";
 import { useRouter } from "next/navigation";
 import { initWelcomeBalanceRequest } from "./initWelcomeBalanceRequest";
 import { createUsageLog } from "./createUsageLog";
-import { convertMoneyToHours } from "@/common/ai";
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
@@ -97,12 +96,6 @@ function useProvideUsage(): UsageContextType {
     saveLogs(newUsageLogs);
   }, [totalUsage, usageLogs, userId, totalUsageDoc]);
 
-  const totalUsageClean: TotalUsageInfo = {
-    lastUpdatedAt: totalUsage?.lastUpdatedAt || 0,
-    usedBalance: totalUsage?.usedBalance || 0,
-    balance: totalUsage?.balance || 0,
-  };
-
   const initWelcomeBalance = async () => {
     if (!totalUsageDoc || !userId) {
       return;
@@ -125,10 +118,11 @@ function useProvideUsage(): UsageContextType {
     initWelcomeBalance();
   }, [userId, totalUsageDoc]);
 
-  const balanceHours = convertMoneyToHours(totalUsageClean.balance || 0);
-
   return {
-    ...totalUsageClean,
+    lastUpdatedAt: totalUsage?.lastUpdatedAt || 0,
+    usedHours: totalUsage?.usedHours || 0,
+    balanceHours: totalUsage?.balanceHours || 0,
+
     loading: loadingTotalUsage,
     paymentLogs: paymentLogs,
     usageLogs,
@@ -136,7 +130,6 @@ function useProvideUsage(): UsageContextType {
     isShowPaymentModal,
     togglePaymentModal,
     isSuccessPayment,
-    balanceHours,
   };
 }
 

@@ -1,4 +1,4 @@
-import { PROJECT_PROFIT_MARGIN } from "@/common/ai";
+import { convertUsdToHours, PROJECT_PROFIT_MARGIN } from "@/common/ai";
 import { GetAudioUrlRequest, GetAudioUrlResponse } from "@/common/requests";
 import { validateAuthToken } from "../config/firebase";
 import { getPublicTextToAudioByVoiceIdUrl, voiceMap } from "./getPublicTextToAudioByVoiceIdUrl";
@@ -11,8 +11,8 @@ export async function POST(request: Request) {
   const languageCode = requestData.languageCode;
 
   const userInfo = await validateAuthToken(request);
-  const { balance } = await getUserBalance(userInfo.uid || "");
-  if (balance < 0.01) {
+  const balance = await getUserBalance(userInfo.uid || "");
+  if (balance.balanceHours < 0.01) {
     throw new Error("Insufficient balance");
   }
 
@@ -26,11 +26,15 @@ export async function POST(request: Request) {
 
   const priceWithMargin = sourcePrice + sourcePrice * PROJECT_PROFIT_MARGIN;
 
+  const priceUsd = priceWithMargin;
+  const priceHours = convertUsdToHours(priceUsd);
+
   const usageLog: AudioUsageLog = {
     usageId: `${Date.now()}`,
     languageCode,
     createdAt: Date.now(),
-    price: priceWithMargin,
+    priceUsd,
+    priceHours,
     type: "audio",
     size: requestData.text.length,
     duration: audioInfo.duration,

@@ -25,8 +25,6 @@ import { usePathname } from "next/navigation";
 import { supportedLanguages } from "@/common/lang";
 import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
-import { convertMoneyToHours } from "@/common/ai";
-import { getCurrencySymbol } from "@/libs/currency";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
@@ -391,9 +389,9 @@ export const PaymentModal = () => {
                         opacity: 0.9,
                       }}
                     >
-                      ${new Intl.NumberFormat().format(usage.usedBalance)}
+                      {new Intl.NumberFormat().format(usage.usedHours)}
                     </Typography>
-                    <Typography variant="caption">{i18n._(`Total used`)}</Typography>
+                    <Typography variant="caption">{i18n._(`Total used hourse`)}</Typography>
                   </Stack>
                 </Stack>
               </Stack>
@@ -427,7 +425,9 @@ export const PaymentModal = () => {
                           opacity: 0.7,
                         }}
                       >
-                        {i18n._(`Your payment was successful`)}
+                        {i18n._(
+                          `Your payment was successful, but updates might take a few minutes`
+                        )}
                       </Typography>
                     </>
                   ) : (
@@ -495,9 +495,7 @@ export const PaymentModal = () => {
                       }}
                     >
                       {i18n._(`Total used hours:`)}{" "}
-                      <b>
-                        {new Intl.NumberFormat().format(convertMoneyToHours(usage.usedBalance))}
-                      </b>
+                      <b>{new Intl.NumberFormat().format(usage.usedHours)}</b>
                     </Typography>
 
                     <Stack

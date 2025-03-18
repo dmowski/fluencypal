@@ -233,7 +233,7 @@ Your homework is to repeat the following text:
     });
   };
 
-  const isLowBalance = usage.balance < 0.01;
+  const isLowBalance = usage.balanceHours < 0.01;
   const [isMutedDueToNoBalance, setIsMutedDueToNoBalance] = useState(false);
   useEffect(() => {
     const isRestoredBalance = isMutedDueToNoBalance && !isLowBalance;

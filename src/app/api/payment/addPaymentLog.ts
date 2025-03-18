@@ -36,5 +36,5 @@ export const addPaymentLog = async ({
     .doc(paymentLog.id)
     .set(paymentLog);
 
-  await addToTotalBalance(userId, amount);
+  await addToTotalBalance({ userId, amountToAddHours: paymentLog.amountOfHours });
 };

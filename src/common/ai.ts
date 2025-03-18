@@ -139,6 +139,6 @@ export const calculateUsagePrice = (usageEvent: UsageEvent, model: RealTimeModel
 
 const pricePerHour = 6; // $6 is one hour
 
-export const convertMoneyToHours = (money: number) => {
+export const convertUsdToHours = (money: number) => {
   return money / pricePerHour;
 };

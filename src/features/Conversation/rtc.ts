@@ -1,5 +1,11 @@
 "use client";
-import { AiVoice, calculateUsagePrice, RealTimeModel, UsageEvent } from "@/common/ai";
+import {
+  AiVoice,
+  calculateUsagePrice,
+  convertUsdToHours,
+  RealTimeModel,
+  UsageEvent,
+} from "@/common/ai";
 import { sleep } from "@/libs/sleep";
 import { ChatMessage } from "@/common/conversation";
 import { UsageLog } from "@/common/usage";
@@ -227,11 +233,13 @@ export const initAiRtc = async ({
       const usageId = event?.event_id || "";
       const usageEvent: UsageEvent | null = event?.response?.usage;
       if (usageEvent) {
-        const price = calculateUsagePrice(usageEvent, model);
+        const priceUsd = calculateUsagePrice(usageEvent, model);
+        const priceHours = convertUsdToHours(priceUsd);
         onAddUsage({
           usageId,
           usageEvent,
-          price,
+          priceUsd,
+          priceHours,
           createdAt: Date.now(),
           model,
           languageCode,

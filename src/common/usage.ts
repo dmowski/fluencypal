@@ -3,13 +3,14 @@ import { SupportedLanguage } from "./lang";
 
 export interface TotalUsageInfo {
   lastUpdatedAt: number;
-  usedBalance: number; // $
-  balance: number; // $
+  balanceHours: number; // hours
+  usedHours: number; // hours
 }
 
 interface BaseUsageLog {
   usageId: string;
-  price: number;
+  priceUsd: number;
+  priceHours: number;
   createdAt: number;
   languageCode: SupportedLanguage;
 }
@@ -27,7 +28,6 @@ export interface TextUsageLog extends BaseUsageLog {
 
 export interface AudioUsageLog extends BaseUsageLog {
   type: "audio";
-  price: number;
   size: number;
   duration: number;
 }

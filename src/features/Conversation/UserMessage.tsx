@@ -75,7 +75,7 @@ Do not wrap answer with any wrappers like "answer": "...". Your response will be
     }
   };
 
-  const isLowBalance = usage.balance < 0.01;
+  const isLowBalance = usage.balanceHours < 0.01;
 
   useEffect(() => {
     if (isLowBalance) {

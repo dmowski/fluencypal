@@ -29,10 +29,10 @@ export function ConversationCanvas() {
   const usage = useUsage();
   const [userMessage, setUserMessage] = useState("");
   const [helpMessage, setHelpMessage] = useState("");
-  const balance = `$${new Intl.NumberFormat().format(usage.balance)}`;
+  const balance = `$${new Intl.NumberFormat().format(usage.balanceHours)}`;
 
-  const isSmallBalance = usage.balance < 0.2;
-  const isExtremelySmallBalance = usage.balance < 0.1;
+  const isSmallBalance = usage.balanceHours < 0.2;
+  const isExtremelySmallBalance = usage.balanceHours < 0.1;
 
   const isNeedToShowBalanceWarning =
     (isSmallBalance && aiConversation.conversation.length > 1) || isExtremelySmallBalance;

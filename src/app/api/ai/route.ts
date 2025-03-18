@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import { AiRequest, AiResponse } from "@/common/requests";
-import { calculateTextUsagePrice, TextUsageEvent } from "@/common/ai";
+import { calculateTextUsagePrice, convertUsdToHours, TextUsageEvent } from "@/common/ai";
 import { validateAuthToken } from "../config/firebase";
 import { getUserBalance } from "../payment/getUserBalance";
 import { TextUsageLog } from "@/common/usage";
@@ -13,8 +13,8 @@ export async function POST(request: Request) {
   }
 
   const userInfo = await validateAuthToken(request);
-  const { balance } = await getUserBalance(userInfo.uid || "");
-  if (balance < 0.01) {
+  const balance = await getUserBalance(userInfo.uid || "");
+  if (balance.balanceHours < 0.01) {
     throw new Error("Insufficient balance");
   }
 
@@ -48,11 +48,14 @@ export async function POST(request: Request) {
     usageEvent,
   };
 
+  const priceUsd = calculateTextUsagePrice(usageEvent, aiRequest.model);
+  const priceHours = convertUsdToHours(priceUsd);
   const usageLog: TextUsageLog = {
     usageId: `${Date.now()}`,
     languageCode,
     createdAt: Date.now(),
-    price: calculateTextUsagePrice(usageEvent, aiRequest.model),
+    priceUsd,
+    priceHours,
     type: "text",
     model: aiRequest.model,
     usageEvent: usageEvent,

@@ -12,9 +12,9 @@ export async function POST(request: Request) {
     const logId = logData.usageId;
     const isExists = await isUsageLogExists(userId, logId);
 
-    if (logData.price < 0) {
+    if (logData.priceHours < 0) {
       sentSupportTelegramMessage(
-        `User ${userInfo.email} tried to add usage log with negative price: ${logData.price}`
+        `User ${userInfo.email} tried to add usage log with negative priceHours: ${logData.priceHours}`
       );
       throw new Error("Price can't be negative");
     }

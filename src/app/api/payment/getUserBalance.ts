@@ -1,3 +1,4 @@
+import { TotalUsageInfo } from "@/common/usage";
 import { getDB } from "../config/firebase";
 
 export const getUserBalance = async (userId: string) => {
@@ -6,7 +7,12 @@ export const getUserBalance = async (userId: string) => {
   }
   const db = getDB();
   const doc = await db.collection("users").doc(userId).collection("usage").doc("totalUsage").get();
-  const balance: number = doc.data()?.balance || 0;
-  const usedBalance: number = doc.data()?.usedBalance || 0;
-  return { balance, usedBalance };
+  const totalUsageData = doc.data() as TotalUsageInfo | undefined;
+  const balanceHours: number = totalUsageData?.balanceHours || 0;
+  const usedBalanceHours: number = totalUsageData?.usedHours || 0;
+
+  return {
+    balanceHours,
+    usedBalanceHours,
+  };
 };
