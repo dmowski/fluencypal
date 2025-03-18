@@ -150,7 +150,7 @@ export const PaymentModal = () => {
               }}
             >
               <TextField
-                label="Amount hours to buy"
+                label={i18n._(`Amount hours to buy`)}
                 value={amountToAdd ? amountToAdd : ""}
                 type="text"
                 onChange={(e) => {
@@ -196,9 +196,11 @@ export const PaymentModal = () => {
                   paddingBottom: "10px",
                 }}
               >
-                <b>What one hour means?</b>
+                <b>{i18n._(`What one hour means?`)}</b>
                 <br />
-                You only charged for when AI is actively working: speaking or analyzing your speech.
+                {i18n._(
+                  `You only charged for when AI is actively working: speaking or analyzing your speech.`
+                )}
               </Typography>
 
               <Typography
@@ -207,10 +209,11 @@ export const PaymentModal = () => {
                   paddingBottom: "10px",
                 }}
               >
-                <b>How long will my hours last?</b>
+                <b>{i18n._(`How long will my hours last?`)}</b>
                 <br />
-                Once purchased, your hours remain available until you use them. There is no
-                expiration.
+                {i18n._(
+                  `Once purchased, your hours remain available until you use them. There is no expiration.`
+                )}
               </Typography>
 
               <Typography
@@ -219,10 +222,11 @@ export const PaymentModal = () => {
                   paddingBottom: "10px",
                 }}
               >
-                <b>What's included?</b>
+                <b>{i18n._(`What's included?`)}</b>
                 <br />
-                Access to all functionalities on app where AI is present: speaking, analyzing,
-                role-plays, new words and runles creator.
+                {i18n._(
+                  `Access to all functionalities on app where AI is present: speaking, analyzing, role-plays, new words and runles creator.`
+                )}
               </Typography>
               <Divider />
               <Stack
@@ -235,11 +239,11 @@ export const PaymentModal = () => {
                     opacity: 0.9,
                   }}
                 >
-                  Price per one AI hour: <b>PLN 24</b>
+                  {i18n._(`Price per one AI hour:`)} <b>PLN 24</b>
                 </Typography>
 
                 <Typography variant="h5">
-                  Total: <b>PLN {amountToAdd * 24}</b>
+                  {i18n._(`Total:`)} <b>PLN {amountToAdd * 24}</b>
                 </Typography>
               </Stack>
               <Divider />
@@ -268,9 +272,9 @@ export const PaymentModal = () => {
                     control={<Checkbox />}
                     label={
                       <Typography variant="caption">
-                        I want the service to be provided immediately and I acknowledge that as soon
+                        {i18n._(`I want the service to be provided immediately and I acknowledge that as soon
                         as the Fundacja Rozwoju Przedsiębiorczości "Twój StartUp" provides the
-                        service, I will lose the right to terminate the contract.
+                        service, I will lose the right to terminate the contract.`)}
                       </Typography>
                     }
                   />
@@ -286,12 +290,12 @@ export const PaymentModal = () => {
                     control={<Checkbox />}
                     label={
                       <Typography variant="caption">
-                        I accept the{" "}
+                        {i18n._(`I accept the`)}{" "}
                         <Link target="_blank" href={`${getUrlStart(supportedLang)}terms`}>
-                          Terms and Conditions
+                          {i18n._(`Terms and Conditions`)}
                         </Link>{" "}
-                        of the Website operated by Fundacja Rozwoju Przedsiębiorczości "Twój
-                        StartUp" with its registered office in Warsaw.
+                        {i18n._(`of the Website operated by Fundacja Rozwoju Przedsiębiorczości "Twój
+                        StartUp" with its registered office in Warsaw.`)}
                       </Typography>
                     }
                   />
@@ -316,7 +320,7 @@ export const PaymentModal = () => {
                     }
                     variant="contained"
                   >
-                    {`Continue to payment | PLN ${amountToAdd * 24}`}
+                    {i18n._(`Continue to payment`)} | PLN {amountToAdd * 24}
                   </Button>
                   <Button
                     onClick={() => {
@@ -332,14 +336,14 @@ export const PaymentModal = () => {
                     opacity: 0.7,
                   }}
                 >
-                  The Controller of the data entered into the form is Fundacja Rozwoju
+                  {i18n._(`The Controller of the data entered into the form is Fundacja Rozwoju
                   Przedsiębiorczości "Twój StartUp". The data will be processed in order to provide
                   the service and for marketing purposes – in the case of consent. We would like to
                   inform you about the possibility of withdrawing your consent. For full information
-                  on data processing and your rights, see the{" "}
+                  on data processing and your rights, see the`)}{" "}
                   <Link target="_blank" href={`${getUrlStart(supportedLang)}privacy`}>
-                    privacy policy
-                  </Link>{" "}
+                    {i18n._(`privacy policy`)}
+                  </Link>
                   .
                 </Typography>
               </Stack>

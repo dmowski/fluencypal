@@ -13,20 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Usage/PaymentModal.tsx:394
+#: src/features/Usage/PaymentModal.tsx:153
 #. js-lingui-explicit-id
-msgid "Total used hourse"
-msgstr "Toplam kullanılan saat"
-
-#: src/features/Usage/PaymentModal.tsx:428
-#. js-lingui-explicit-id
-msgid "Your payment was successful, but updates might take a few minutes"
-msgstr "Ödemeniz başarılı oldu, ancak güncellemeler birkaç dakika sürebilir"
-
-#: src/features/Usage/PaymentModal.tsx:469
-#. js-lingui-explicit-id
-msgid "Current Balance of AI usage (hours)"
-msgstr "AI kullanımının mevcut bakiyesi (saat)"
+msgid "Amount hours to buy"
+msgstr "Satın alınacak saat miktarı"
 
 #: src/libs/metadata.ts:55
 #: src/features/Landing/Footer.tsx:84
@@ -291,17 +281,69 @@ msgstr "İngilizce Konuşma Alıştırmaları"
 msgid "AI English Speaking Practice"
 msgstr "AI İngilizce Konuşma Pratiği"
 
-#: src/features/Usage/PaymentModal.tsx:132
+#: src/features/Usage/PaymentModal.tsx:134
 #. js-lingui-explicit-id
-msgid "Process payments"
-msgstr "Ödemeleri işleme"
+msgid "Buy more hours"
+msgstr "Daha fazla saat satın al"
 
-#: src/features/Usage/PaymentModal.tsx:140
+#: src/features/Usage/PaymentModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Let's add some hours to your balance"
 msgstr "Hadi, bakiyenize biraz saat ekleyelim"
 
-#: src/features/Usage/PaymentModal.tsx:202
+#: src/features/Usage/PaymentModal.tsx:199
+#. js-lingui-explicit-id
+msgid "What one hour means?"
+msgstr "Bir saat ne anlama gelir?"
+
+#: src/features/Usage/PaymentModal.tsx:201
+#. js-lingui-explicit-id
+msgid ""
+"You only charged for when AI is actively working: speaking or analyzing "
+"your speech."
+msgstr ""
+"Yalnızca AI aktif olarak çalışırken ücretlendirilirsiniz: konuşurken veya "
+"konuşmanızı analiz ederken."
+
+#: src/features/Usage/PaymentModal.tsx:212
+#. js-lingui-explicit-id
+msgid "How long will my hours last?"
+msgstr "Saatlerim ne kadar sürecek?"
+
+#: src/features/Usage/PaymentModal.tsx:214
+#. js-lingui-explicit-id
+msgid ""
+"Once purchased, your hours remain available until you use them. There is no "
+"expiration."
+msgstr ""
+"Bir kez satın aldığınızda, saatleriniz kullanana kadar kullanılabilir "
+"durumda kalır. Bir son kullanma tarihi yoktur."
+
+#: src/features/Usage/PaymentModal.tsx:225
+#. js-lingui-explicit-id
+msgid "What's included?"
+msgstr "Neler dahil?"
+
+#: src/features/Usage/PaymentModal.tsx:227
+#. js-lingui-explicit-id
+msgid ""
+"Access to all functionalities on app where AI is present: speaking, "
+"analyzing, role-plays, new words and runles creator."
+msgstr ""
+"AI'nın bulunduğu uygulamadaki tüm işlevlere erişim: konuşma, analiz, rol "
+"oyunları, yeni kelimeler ve kurallar oluşturucu."
+
+#: src/features/Usage/PaymentModal.tsx:242
+#. js-lingui-explicit-id
+msgid "Price per one AI hour:"
+msgstr "Bir AI saati başına fiyat:"
+
+#: src/features/Usage/PaymentModal.tsx:246
+#. js-lingui-explicit-id
+msgid "Total:"
+msgstr "Toplam:"
+
+#: src/features/Usage/PaymentModal.tsx:256
 #. js-lingui-explicit-id
 msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
 msgstr ""
@@ -309,90 +351,170 @@ msgstr ""
 "altında tutalım."
 
 #: src/features/Usage/PaymentModal.tsx:275
+#. js-lingui-explicit-id
+msgid ""
+"I want the service to be provided immediately and I acknowledge that as "
+"soon\n"
+"                        as the Fundacja Rozwoju Przedsiębiorczości \"Twój "
+"StartUp\" provides the\n"
+"                        service, I will lose the right to terminate the "
+"contract."
+msgstr ""
+"Hizmetin hemen sağlanmasını istiyorum ve Fundacja Rozwoju "
+"Przedsiębiorczości \"Twój StartUp\" hizmeti\n"
+"                        sağladığı anda, sözleşmeyi feshetme hakkımı "
+"kaybedeceğimi kabul ediyorum."
+
+#: src/features/Usage/PaymentModal.tsx:293
+#. js-lingui-explicit-id
+msgid "I accept the"
+msgstr "Kabul ediyorum"
+
+#: src/features/Usage/PaymentModal.tsx:295
+#. js-lingui-explicit-id
+msgid "Terms and Conditions"
+msgstr "Şartlar ve Koşullar"
+
+#: src/features/Usage/PaymentModal.tsx:297
+#. js-lingui-explicit-id
+msgid ""
+"of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+"                        StartUp\" with its registered office in Warsaw."
+msgstr ""
+"Varşova'da kayıtlı ofisi bulunan Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+"                        StartUp\" tarafından işletilen Web Sitesi."
+
+#: src/features/Usage/PaymentModal.tsx:323
+#. js-lingui-explicit-id
+msgid "Continue to payment"
+msgstr "Ödemeye devam et"
+
+#: src/features/Usage/PaymentModal.tsx:330
 #: src/features/Header/NeedHelpModal.tsx:206
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/features/Usage/PaymentModal.tsx:329
+#: src/features/Usage/PaymentModal.tsx:339
+#. js-lingui-explicit-id
+msgid ""
+"The Controller of the data entered into the form is Fundacja Rozwoju\n"
+"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
+"processed in order to provide\n"
+"                  the service and for marketing purposes – in the case of "
+"consent. We would like to\n"
+"                  inform you about the possibility of withdrawing your "
+"consent. For full information\n"
+"                  on data processing and your rights, see the"
+msgstr ""
+"Forma girilen verilerin İşlemcisi, Fundacja Rozwoju \n"
+"                  Przedsiębiorczości \"Twój StartUp\"tır. Veriler, hizmeti "
+"sağlamak ve \n"
+"                  pazarlama amacıyla işlenecektir - rıza durumunda. "
+"Rızanızı çekme \n"
+"                  olasılığı hakkında sizi bilgilendirmek isteriz. Veri "
+"işleme ve haklarınızla \n"
+"                  ilgili tam bilgi için, lütfen bakınız"
+
+#: src/features/Usage/PaymentModal.tsx:345
+#. js-lingui-explicit-id
+msgid "privacy policy"
+msgstr "gizlilik politikası"
+
+#: src/features/Usage/PaymentModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Hi, my name is Alex, and I'm the creator of this app."
 msgstr "Merhaba, benim adım Alex ve ben bu uygulamanın yaratıcısıyım."
 
-#: src/features/Usage/PaymentModal.tsx:331
+#: src/features/Usage/PaymentModal.tsx:391
 #. js-lingui-explicit-id
 msgid "Thank you for using it!"
 msgstr "Bunu kullandığınız için teşekkür ederiz!"
 
-#: src/features/Usage/PaymentModal.tsx:334
+#: src/features/Usage/PaymentModal.tsx:394
 #. js-lingui-explicit-id
 msgid "Currently, I haven't integrated payment services yet. 💔"
 msgstr "Şu anda, ödeme hizmetlerini henüz entegre etmedim.  💔"
 
-#: src/features/Usage/PaymentModal.tsx:337
+#: src/features/Usage/PaymentModal.tsx:397
 #. js-lingui-explicit-id
 msgid "I've received your payment request for"
 msgstr "Ödeme talebinizi aldım için"
 
-#: src/features/Usage/PaymentModal.tsx:339
+#: src/features/Usage/PaymentModal.tsx:399
 #. js-lingui-explicit-id
 msgid "I'll send instructions on how to pay to your email"
 msgstr "Ödeme yapma yönergelerini e-postanıza göndereceğim"
 
-#: src/features/Usage/PaymentModal.tsx:343
+#: src/features/Usage/PaymentModal.tsx:403
 #. js-lingui-explicit-id
 msgid "Once again, thank you for using my app!"
 msgstr "Bir kez daha, uygulamamı kullandığınız için teşekkür ederim!"
 
-#: src/features/Usage/PaymentModal.tsx:352
+#: src/features/Usage/PaymentModal.tsx:412
 #. js-lingui-explicit-id
 msgid "If you'd like to contact me directly, here are my contacts:"
 msgstr "Eğer benimle doğrudan iletişime geçmek isterseniz, işte iletişim bilgilerim:"
 
-#: src/features/Usage/PaymentModal.tsx:374
+#: src/features/Usage/PaymentModal.tsx:434
 #. js-lingui-explicit-id
 msgid "Current Balance"
 msgstr "Mevcut Bakiye"
 
-#: src/features/Usage/PaymentModal.tsx:418
+#: src/features/Usage/PaymentModal.tsx:454
+#. js-lingui-explicit-id
+msgid "Total used hourse"
+msgstr "Toplam kullanılan saat"
+
+#: src/features/Usage/PaymentModal.tsx:478
 #. js-lingui-explicit-id
 msgid "Success!"
 msgstr "Başarılı!"
 
-#: src/features/Usage/PaymentModal.tsx:436
+#: src/features/Usage/PaymentModal.tsx:488
+#. js-lingui-explicit-id
+msgid "Your payment was successful, but updates might take a few minutes"
+msgstr "Ödemeniz başarılı oldu, ancak güncellemeler birkaç dakika sürebilir"
+
+#: src/features/Usage/PaymentModal.tsx:496
 #: src/features/Header/Header.tsx:19
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "Denge"
 
-#: src/features/Usage/PaymentModal.tsx:444
+#: src/features/Usage/PaymentModal.tsx:504
 #. js-lingui-explicit-id
 msgid "Manage your payments and balance"
 msgstr "Ödemelerinizi ve bakiyenizi yönetin"
 
-#: src/features/Usage/PaymentModal.tsx:480
+#: src/features/Usage/PaymentModal.tsx:529
+#. js-lingui-explicit-id
+msgid "Current Balance of AI usage (hours)"
+msgstr "AI kullanımının mevcut bakiyesi (saat)"
+
+#: src/features/Usage/PaymentModal.tsx:540
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Daha Fazla Satın Al"
 
-#: src/features/Usage/PaymentModal.tsx:497
+#: src/features/Usage/PaymentModal.tsx:557
 #. js-lingui-explicit-id
 msgid "Total used hours:"
 msgstr "Toplam kullanılan saatler:"
 
-#: src/features/Usage/PaymentModal.tsx:512
+#: src/features/Usage/PaymentModal.tsx:572
 #. js-lingui-explicit-id
 msgid "Payment history:"
 msgstr "Ödeme geçmişi:"
 
-#: src/features/Usage/PaymentModal.tsx:522
+#: src/features/Usage/PaymentModal.tsx:582
 #: src/features/RolePlay/RolePlayBoard.tsx:591
 #: src/features/Dashboard/Dashboard.tsx:34
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Yükleniyor..."
 
-#: src/features/Usage/PaymentModal.tsx:533
+#: src/features/Usage/PaymentModal.tsx:593
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "Ödemeler yok..."
@@ -3909,6 +4031,11 @@ msgstr "dil immersion uygulaması"
 #. js-lingui-explicit-id
 msgid "English speaking partner"
 msgstr "İngilizce konuşma partneri"
+
+#: src/features/Usage/PaymentModal.tsx:132
+#. js-lingui-explicit-id
+#~ msgid "Process payments"
+#~ msgstr "Ödemeleri işleme"
 
 #: src/features/Usage/PaymentModal.tsx:394
 #. js-lingui-explicit-id

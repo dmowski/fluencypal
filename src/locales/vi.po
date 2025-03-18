@@ -13,20 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Usage/PaymentModal.tsx:394
+#: src/features/Usage/PaymentModal.tsx:153
 #. js-lingui-explicit-id
-msgid "Total used hourse"
-msgstr "Tổng số giờ đã sử dụng"
-
-#: src/features/Usage/PaymentModal.tsx:428
-#. js-lingui-explicit-id
-msgid "Your payment was successful, but updates might take a few minutes"
-msgstr "Thanh toán của bạn đã thành công, nhưng việc cập nhật có thể mất vài phút"
-
-#: src/features/Usage/PaymentModal.tsx:469
-#. js-lingui-explicit-id
-msgid "Current Balance of AI usage (hours)"
-msgstr "Số dư hiện tại của việc sử dụng AI (giờ)"
+msgid "Amount hours to buy"
+msgstr "Số giờ cần mua"
 
 #: src/libs/metadata.ts:55
 #: src/features/Landing/Footer.tsx:84
@@ -289,17 +279,69 @@ msgstr "Các bài tập nói tiếng Anh"
 msgid "AI English Speaking Practice"
 msgstr "Cách luyện nói tiếng Anh bằng AI"
 
-#: src/features/Usage/PaymentModal.tsx:132
+#: src/features/Usage/PaymentModal.tsx:134
 #. js-lingui-explicit-id
-msgid "Process payments"
-msgstr "Xử lý thanh toán"
+msgid "Buy more hours"
+msgstr "Mua thêm giờ"
 
-#: src/features/Usage/PaymentModal.tsx:140
+#: src/features/Usage/PaymentModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Let's add some hours to your balance"
 msgstr "Hãy thêm một số giờ vào số dư của bạn"
 
-#: src/features/Usage/PaymentModal.tsx:202
+#: src/features/Usage/PaymentModal.tsx:199
+#. js-lingui-explicit-id
+msgid "What one hour means?"
+msgstr "Đồng nghĩa với một giờ là gì?"
+
+#: src/features/Usage/PaymentModal.tsx:201
+#. js-lingui-explicit-id
+msgid ""
+"You only charged for when AI is actively working: speaking or analyzing "
+"your speech."
+msgstr ""
+"Bạn chỉ phải trả phí khi AI đang hoạt động tích cực: nói chuyện hoặc phân "
+"tích lời nói của bạn."
+
+#: src/features/Usage/PaymentModal.tsx:212
+#. js-lingui-explicit-id
+msgid "How long will my hours last?"
+msgstr "Thời gian của tôi kéo dài bao lâu?"
+
+#: src/features/Usage/PaymentModal.tsx:214
+#. js-lingui-explicit-id
+msgid ""
+"Once purchased, your hours remain available until you use them. There is no "
+"expiration."
+msgstr ""
+"Một khi mua, số giờ của bạn sẽ vẫn có sẵn cho đến khi bạn sử dụng hết. "
+"Không có thời hạn sử dụng."
+
+#: src/features/Usage/PaymentModal.tsx:225
+#. js-lingui-explicit-id
+msgid "What's included?"
+msgstr "Điều gì được bao gồm?"
+
+#: src/features/Usage/PaymentModal.tsx:227
+#. js-lingui-explicit-id
+msgid ""
+"Access to all functionalities on app where AI is present: speaking, "
+"analyzing, role-plays, new words and runles creator."
+msgstr ""
+"Truy cập vào tất cả các chức năng trên ứng dụng nơi AI hiện diện: nói "
+"chuyện, phân tích, hóa thân, tạo từ vựng mới và quy tắc."
+
+#: src/features/Usage/PaymentModal.tsx:242
+#. js-lingui-explicit-id
+msgid "Price per one AI hour:"
+msgstr "Giá cho một giờ AI:"
+
+#: src/features/Usage/PaymentModal.tsx:246
+#. js-lingui-explicit-id
+msgid "Total:"
+msgstr "Tổng cộng:"
+
+#: src/features/Usage/PaymentModal.tsx:256
 #. js-lingui-explicit-id
 msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
 msgstr ""
@@ -307,90 +349,170 @@ msgstr ""
 "$400"
 
 #: src/features/Usage/PaymentModal.tsx:275
+#. js-lingui-explicit-id
+msgid ""
+"I want the service to be provided immediately and I acknowledge that as "
+"soon\n"
+"                        as the Fundacja Rozwoju Przedsiębiorczości \"Twój "
+"StartUp\" provides the\n"
+"                        service, I will lose the right to terminate the "
+"contract."
+msgstr ""
+"Tôi muốn dịch vụ được cung cấp ngay lập tức và tôi thừa nhận rằng ngay khi\n"
+"                        Quỹ Phát triển Doanh nghiệp \"Twój StartUp\" cung "
+"cấp\n"
+"                        dịch vụ, tôi sẽ mất quyền hủy hợp đồng."
+
+#: src/features/Usage/PaymentModal.tsx:293
+#. js-lingui-explicit-id
+msgid "I accept the"
+msgstr "Tôi chấp nhận"
+
+#: src/features/Usage/PaymentModal.tsx:295
+#. js-lingui-explicit-id
+msgid "Terms and Conditions"
+msgstr "Điều Khoản và Điều Kiện"
+
+#: src/features/Usage/PaymentModal.tsx:297
+#. js-lingui-explicit-id
+msgid ""
+"of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+"                        StartUp\" with its registered office in Warsaw."
+msgstr ""
+"của trang web được điều hành bởi Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+"                        StartUp\" có trụ sở đăng ký tại Warsaw."
+
+#: src/features/Usage/PaymentModal.tsx:323
+#. js-lingui-explicit-id
+msgid "Continue to payment"
+msgstr "Tiếp tục thanh toán"
+
+#: src/features/Usage/PaymentModal.tsx:330
 #: src/features/Header/NeedHelpModal.tsx:206
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "Hủy bỏ"
 
-#: src/features/Usage/PaymentModal.tsx:329
+#: src/features/Usage/PaymentModal.tsx:339
+#. js-lingui-explicit-id
+msgid ""
+"The Controller of the data entered into the form is Fundacja Rozwoju\n"
+"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
+"processed in order to provide\n"
+"                  the service and for marketing purposes – in the case of "
+"consent. We would like to\n"
+"                  inform you about the possibility of withdrawing your "
+"consent. For full information\n"
+"                  on data processing and your rights, see the"
+msgstr ""
+"Người điều khiển dữ liệu nhập vào biểu mẫu là Fundacja Rozwoju\n"
+"                  Przedsiębiorczości \"Twój StartUp\". Dữ liệu sẽ được xử "
+"lý để cung cấp\n"
+"                  dịch vụ và cho mục đích tiếp thị – trong trường hợp bạn "
+"đồng ý. Chúng tôi muốn\n"
+"                  thông báo cho bạn về khả năng rút lại sự đồng ý của bạn. "
+"Để biết thông tin đầy đủ\n"
+"                  về quá trình xử lý dữ liệu và quyền lợi của bạn, hãy xem"
+
+#: src/features/Usage/PaymentModal.tsx:345
+#. js-lingui-explicit-id
+msgid "privacy policy"
+msgstr "chính sách bảo mật"
+
+#: src/features/Usage/PaymentModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Hi, my name is Alex, and I'm the creator of this app."
 msgstr "Xin chào, tôi tên là Alex, và tôi là người tạo ra ứng dụng này."
 
-#: src/features/Usage/PaymentModal.tsx:331
+#: src/features/Usage/PaymentModal.tsx:391
 #. js-lingui-explicit-id
 msgid "Thank you for using it!"
 msgstr "Cảm ơn bạn đã sử dụng nó!"
 
-#: src/features/Usage/PaymentModal.tsx:334
+#: src/features/Usage/PaymentModal.tsx:394
 #. js-lingui-explicit-id
 msgid "Currently, I haven't integrated payment services yet. 💔"
 msgstr "Hiện tại, tôi chưa tích hợp dịch vụ thanh toán. 💔"
 
-#: src/features/Usage/PaymentModal.tsx:337
+#: src/features/Usage/PaymentModal.tsx:397
 #. js-lingui-explicit-id
 msgid "I've received your payment request for"
 msgstr "Tôi đã nhận được yêu cầu thanh toán của bạn cho"
 
-#: src/features/Usage/PaymentModal.tsx:339
+#: src/features/Usage/PaymentModal.tsx:399
 #. js-lingui-explicit-id
 msgid "I'll send instructions on how to pay to your email"
 msgstr "Tôi sẽ gửi hướng dẫn về cách thanh toán đến email của bạn"
 
-#: src/features/Usage/PaymentModal.tsx:343
+#: src/features/Usage/PaymentModal.tsx:403
 #. js-lingui-explicit-id
 msgid "Once again, thank you for using my app!"
 msgstr "Một lần nữa, cảm ơn bạn đã sử dụng ứng dụng của tôi!"
 
-#: src/features/Usage/PaymentModal.tsx:352
+#: src/features/Usage/PaymentModal.tsx:412
 #. js-lingui-explicit-id
 msgid "If you'd like to contact me directly, here are my contacts:"
 msgstr "Nếu bạn muốn liên hệ trực tiếp với tôi, đây là thông tin liên hệ của tôi:"
 
-#: src/features/Usage/PaymentModal.tsx:374
+#: src/features/Usage/PaymentModal.tsx:434
 #. js-lingui-explicit-id
 msgid "Current Balance"
 msgstr "Số dư hiện tại"
 
-#: src/features/Usage/PaymentModal.tsx:418
+#: src/features/Usage/PaymentModal.tsx:454
+#. js-lingui-explicit-id
+msgid "Total used hourse"
+msgstr "Tổng số giờ đã sử dụng"
+
+#: src/features/Usage/PaymentModal.tsx:478
 #. js-lingui-explicit-id
 msgid "Success!"
 msgstr "Thành công!"
 
-#: src/features/Usage/PaymentModal.tsx:436
+#: src/features/Usage/PaymentModal.tsx:488
+#. js-lingui-explicit-id
+msgid "Your payment was successful, but updates might take a few minutes"
+msgstr "Thanh toán của bạn đã thành công, nhưng việc cập nhật có thể mất vài phút"
+
+#: src/features/Usage/PaymentModal.tsx:496
 #: src/features/Header/Header.tsx:19
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "Cân bằng"
 
-#: src/features/Usage/PaymentModal.tsx:444
+#: src/features/Usage/PaymentModal.tsx:504
 #. js-lingui-explicit-id
 msgid "Manage your payments and balance"
 msgstr "Quản lý các khoản thanh toán và số dư của bạn"
 
-#: src/features/Usage/PaymentModal.tsx:480
+#: src/features/Usage/PaymentModal.tsx:529
+#. js-lingui-explicit-id
+msgid "Current Balance of AI usage (hours)"
+msgstr "Số dư hiện tại của việc sử dụng AI (giờ)"
+
+#: src/features/Usage/PaymentModal.tsx:540
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Mua Thêm"
 
-#: src/features/Usage/PaymentModal.tsx:497
+#: src/features/Usage/PaymentModal.tsx:557
 #. js-lingui-explicit-id
 msgid "Total used hours:"
 msgstr "Tổng số giờ đã sử dụng:"
 
-#: src/features/Usage/PaymentModal.tsx:512
+#: src/features/Usage/PaymentModal.tsx:572
 #. js-lingui-explicit-id
 msgid "Payment history:"
 msgstr "Lịch sử thanh toán:"
 
-#: src/features/Usage/PaymentModal.tsx:522
+#: src/features/Usage/PaymentModal.tsx:582
 #: src/features/RolePlay/RolePlayBoard.tsx:591
 #: src/features/Dashboard/Dashboard.tsx:34
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Đang tải..."
 
-#: src/features/Usage/PaymentModal.tsx:533
+#: src/features/Usage/PaymentModal.tsx:593
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "Không thanh toán..."
@@ -3916,6 +4038,11 @@ msgstr "ứng dụng tiếp cận ngôn ngữ"
 #. js-lingui-explicit-id
 msgid "English speaking partner"
 msgstr "Đối tác nói tiếng Anh"
+
+#: src/features/Usage/PaymentModal.tsx:132
+#. js-lingui-explicit-id
+#~ msgid "Process payments"
+#~ msgstr "Xử lý thanh toán"
 
 #: src/features/Usage/PaymentModal.tsx:394
 #. js-lingui-explicit-id

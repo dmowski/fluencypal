@@ -13,20 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Usage/PaymentModal.tsx:394
+#: src/features/Usage/PaymentModal.tsx:153
 #. js-lingui-explicit-id
-msgid "Total used hourse"
-msgstr "Всього використано годин"
-
-#: src/features/Usage/PaymentModal.tsx:428
-#. js-lingui-explicit-id
-msgid "Your payment was successful, but updates might take a few minutes"
-msgstr "Ваш платіж був успішним, але оновлення можуть зайняти кілька хвилин"
-
-#: src/features/Usage/PaymentModal.tsx:469
-#. js-lingui-explicit-id
-msgid "Current Balance of AI usage (hours)"
-msgstr "Поточний Баланс використання AI (години)"
+msgid "Amount hours to buy"
+msgstr "Кількість годин для покупки"
 
 #: src/libs/metadata.ts:55
 #: src/features/Landing/Footer.tsx:84
@@ -289,17 +279,69 @@ msgstr "Вправи на говоріння англійською"
 msgid "AI English Speaking Practice"
 msgstr "Практика розмовної англійської з ІІ"
 
-#: src/features/Usage/PaymentModal.tsx:132
+#: src/features/Usage/PaymentModal.tsx:134
 #. js-lingui-explicit-id
-msgid "Process payments"
-msgstr "Обробка платежів"
+msgid "Buy more hours"
+msgstr "Купіть більше годин"
 
-#: src/features/Usage/PaymentModal.tsx:140
+#: src/features/Usage/PaymentModal.tsx:142
 #. js-lingui-explicit-id
 msgid "Let's add some hours to your balance"
 msgstr "Додаймо декілька годин до вашого балансу"
 
-#: src/features/Usage/PaymentModal.tsx:202
+#: src/features/Usage/PaymentModal.tsx:199
+#. js-lingui-explicit-id
+msgid "What one hour means?"
+msgstr "Що означає одна година?"
+
+#: src/features/Usage/PaymentModal.tsx:201
+#. js-lingui-explicit-id
+msgid ""
+"You only charged for when AI is actively working: speaking or analyzing "
+"your speech."
+msgstr ""
+"Вам буде нараховано оплату лише за той час, коли AI активно працює: "
+"говорить або аналізує вашу мову."
+
+#: src/features/Usage/PaymentModal.tsx:212
+#. js-lingui-explicit-id
+msgid "How long will my hours last?"
+msgstr "Як довго триватимуть мої години?"
+
+#: src/features/Usage/PaymentModal.tsx:214
+#. js-lingui-explicit-id
+msgid ""
+"Once purchased, your hours remain available until you use them. There is no "
+"expiration."
+msgstr ""
+"Після покупки, ваші години залишаються доступними до тих пір, поки ви їх "
+"використовуєте. Вони не мають терміну дії."
+
+#: src/features/Usage/PaymentModal.tsx:225
+#. js-lingui-explicit-id
+msgid "What's included?"
+msgstr "Що включено?"
+
+#: src/features/Usage/PaymentModal.tsx:227
+#. js-lingui-explicit-id
+msgid ""
+"Access to all functionalities on app where AI is present: speaking, "
+"analyzing, role-plays, new words and runles creator."
+msgstr ""
+"Доступ до всіх функцій в додатку, де присутній AI: говоріння, аналіз, "
+"рольові ігри, створювач нових слів та правил."
+
+#: src/features/Usage/PaymentModal.tsx:242
+#. js-lingui-explicit-id
+msgid "Price per one AI hour:"
+msgstr "Ціна за одну AI годину:"
+
+#: src/features/Usage/PaymentModal.tsx:246
+#. js-lingui-explicit-id
+msgid "Total:"
+msgstr "Всього:"
+
+#: src/features/Usage/PaymentModal.tsx:256
 #. js-lingui-explicit-id
 msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
 msgstr ""
@@ -307,90 +349,170 @@ msgstr ""
 "$400"
 
 #: src/features/Usage/PaymentModal.tsx:275
+#. js-lingui-explicit-id
+msgid ""
+"I want the service to be provided immediately and I acknowledge that as "
+"soon\n"
+"                        as the Fundacja Rozwoju Przedsiębiorczości \"Twój "
+"StartUp\" provides the\n"
+"                        service, I will lose the right to terminate the "
+"contract."
+msgstr ""
+"Я хочу, щоб послугу надано негайно, і я визнаю, що як тільки Фундація \n"
+"                        розвитку підприємництва \"Twój StartUp\" надасть "
+"послугу, я втрачу право \n"
+"                        розірвати контракт."
+
+#: src/features/Usage/PaymentModal.tsx:293
+#. js-lingui-explicit-id
+msgid "I accept the"
+msgstr "Я приймаю"
+
+#: src/features/Usage/PaymentModal.tsx:295
+#. js-lingui-explicit-id
+msgid "Terms and Conditions"
+msgstr "Умови та Положення"
+
+#: src/features/Usage/PaymentModal.tsx:297
+#. js-lingui-explicit-id
+msgid ""
+"of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+"                        StartUp\" with its registered office in Warsaw."
+msgstr ""
+"вебсайту, що керується Фондом розвитку підприємництва \"Twój\n"
+"                        StartUp\" зі своїм зареєстрованим офісом у Варшаві."
+
+#: src/features/Usage/PaymentModal.tsx:323
+#. js-lingui-explicit-id
+msgid "Continue to payment"
+msgstr "Продовжити до оплати"
+
+#: src/features/Usage/PaymentModal.tsx:330
 #: src/features/Header/NeedHelpModal.tsx:206
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/features/Usage/PaymentModal.tsx:329
+#: src/features/Usage/PaymentModal.tsx:339
+#. js-lingui-explicit-id
+msgid ""
+"The Controller of the data entered into the form is Fundacja Rozwoju\n"
+"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
+"processed in order to provide\n"
+"                  the service and for marketing purposes – in the case of "
+"consent. We would like to\n"
+"                  inform you about the possibility of withdrawing your "
+"consent. For full information\n"
+"                  on data processing and your rights, see the"
+msgstr ""
+"Контролером даних, що вводяться у форму, є Фундація розвитку\n"
+"                  підприємництва \"Твій Стартап\". Дані будуть "
+"обробляватися з метою надання\n"
+"                  послуги та для маркетингових цілей - у разі згоди. Ми "
+"хотіли б зазначити про\n"
+"                  можливість відкликати вашу згоду. Для отримання повної "
+"інформації про обробку даних\n"
+"                  та ваших правах, дивіться"
+
+#: src/features/Usage/PaymentModal.tsx:345
+#. js-lingui-explicit-id
+msgid "privacy policy"
+msgstr "політика конфіденційності"
+
+#: src/features/Usage/PaymentModal.tsx:389
 #. js-lingui-explicit-id
 msgid "Hi, my name is Alex, and I'm the creator of this app."
 msgstr "Привіт, мене звати Алекс, і я є творцем цього додатку."
 
-#: src/features/Usage/PaymentModal.tsx:331
+#: src/features/Usage/PaymentModal.tsx:391
 #. js-lingui-explicit-id
 msgid "Thank you for using it!"
 msgstr "Дякуємо, що користуєтеся ним!"
 
-#: src/features/Usage/PaymentModal.tsx:334
+#: src/features/Usage/PaymentModal.tsx:394
 #. js-lingui-explicit-id
 msgid "Currently, I haven't integrated payment services yet. 💔"
 msgstr "Наразі я ще не інтегрував платіжні сервіси. 💔"
 
-#: src/features/Usage/PaymentModal.tsx:337
+#: src/features/Usage/PaymentModal.tsx:397
 #. js-lingui-explicit-id
 msgid "I've received your payment request for"
 msgstr "Я отримав ваш запит на оплату"
 
-#: src/features/Usage/PaymentModal.tsx:339
+#: src/features/Usage/PaymentModal.tsx:399
 #. js-lingui-explicit-id
 msgid "I'll send instructions on how to pay to your email"
 msgstr "Я надішлю інструкції щодо оплати на вашу електронну пошту"
 
-#: src/features/Usage/PaymentModal.tsx:343
+#: src/features/Usage/PaymentModal.tsx:403
 #. js-lingui-explicit-id
 msgid "Once again, thank you for using my app!"
 msgstr "Ще раз, дякую за використання моєї програми!"
 
-#: src/features/Usage/PaymentModal.tsx:352
+#: src/features/Usage/PaymentModal.tsx:412
 #. js-lingui-explicit-id
 msgid "If you'd like to contact me directly, here are my contacts:"
 msgstr "Якщо ви хочете зв'язатися зі мною напряму, ось мої контакти:"
 
-#: src/features/Usage/PaymentModal.tsx:374
+#: src/features/Usage/PaymentModal.tsx:434
 #. js-lingui-explicit-id
 msgid "Current Balance"
 msgstr "Поточний Баланс"
 
-#: src/features/Usage/PaymentModal.tsx:418
+#: src/features/Usage/PaymentModal.tsx:454
+#. js-lingui-explicit-id
+msgid "Total used hourse"
+msgstr "Всього використано годин"
+
+#: src/features/Usage/PaymentModal.tsx:478
 #. js-lingui-explicit-id
 msgid "Success!"
 msgstr "Успіх!"
 
-#: src/features/Usage/PaymentModal.tsx:436
+#: src/features/Usage/PaymentModal.tsx:488
+#. js-lingui-explicit-id
+msgid "Your payment was successful, but updates might take a few minutes"
+msgstr "Ваш платіж був успішним, але оновлення можуть зайняти кілька хвилин"
+
+#: src/features/Usage/PaymentModal.tsx:496
 #: src/features/Header/Header.tsx:19
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "Баланс"
 
-#: src/features/Usage/PaymentModal.tsx:444
+#: src/features/Usage/PaymentModal.tsx:504
 #. js-lingui-explicit-id
 msgid "Manage your payments and balance"
 msgstr "Керуйте своїми платежами та балансом"
 
-#: src/features/Usage/PaymentModal.tsx:480
+#: src/features/Usage/PaymentModal.tsx:529
+#. js-lingui-explicit-id
+msgid "Current Balance of AI usage (hours)"
+msgstr "Поточний Баланс використання AI (години)"
+
+#: src/features/Usage/PaymentModal.tsx:540
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Купити Більше"
 
-#: src/features/Usage/PaymentModal.tsx:497
+#: src/features/Usage/PaymentModal.tsx:557
 #. js-lingui-explicit-id
 msgid "Total used hours:"
 msgstr "Всього використано годин:"
 
-#: src/features/Usage/PaymentModal.tsx:512
+#: src/features/Usage/PaymentModal.tsx:572
 #. js-lingui-explicit-id
 msgid "Payment history:"
 msgstr "Історія платежів:"
 
-#: src/features/Usage/PaymentModal.tsx:522
+#: src/features/Usage/PaymentModal.tsx:582
 #: src/features/RolePlay/RolePlayBoard.tsx:591
 #: src/features/Dashboard/Dashboard.tsx:34
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Завантаження..."
 
-#: src/features/Usage/PaymentModal.tsx:533
+#: src/features/Usage/PaymentModal.tsx:593
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "Без платежів..."
@@ -3903,6 +4025,11 @@ msgstr "додаток для занурення в мову"
 #. js-lingui-explicit-id
 msgid "English speaking partner"
 msgstr "Партнер для розмови англійською"
+
+#: src/features/Usage/PaymentModal.tsx:132
+#. js-lingui-explicit-id
+#~ msgid "Process payments"
+#~ msgstr "Обробка платежів"
 
 #: src/features/Usage/PaymentModal.tsx:394
 #. js-lingui-explicit-id
