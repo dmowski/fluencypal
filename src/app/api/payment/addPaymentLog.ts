@@ -6,6 +6,7 @@ export const addPaymentLog = async (
   amount: number,
   userId: string,
   paymentId: string,
+  currency: string,
   type?: PaymentLogType
 ) => {
   const paymentLog: PaymentLog = {
@@ -13,6 +14,7 @@ export const addPaymentLog = async (
     amountAdded: amount,
     createdAt: Date.now(),
     type: type || "user",
+    currency,
   };
 
   const db = getDB();

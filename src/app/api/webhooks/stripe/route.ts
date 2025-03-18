@@ -39,7 +39,8 @@ export async function POST(request: Request) {
     }
     const amountPaid = (session.amount_total ?? 0) / 100;
     console.log(`User ${userId} paid $${amountPaid}`);
-    await addPaymentLog(amountPaid, userId, paymentId);
+    const currency = session.currency;
+    await addPaymentLog(amountPaid, userId, paymentId, currency || "usd");
   } else {
     console.log(`Unhandled event type: ${event.type}`);
     //console.log("event", event);

@@ -20,7 +20,7 @@ export async function POST(request: Request) {
     throw new Error("Already added welcome bonus");
   }
 
-  await addPaymentLog(WELCOME_BONUS, userInfo.uid, "welcome");
+  await addPaymentLog(WELCOME_BONUS, userInfo.uid, "welcome", "usd");
 
   const response: InitBalanceResponse = {
     done: true,
