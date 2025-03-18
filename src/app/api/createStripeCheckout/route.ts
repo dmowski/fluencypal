@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       mode: "payment",
       success_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentSuccess=true&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentCanceled=true`,
-      metadata: { userId },
+      metadata: { userId, termsAccepted: "true", immediateServiceConsent: "true" },
     });
 
     const response: StripeCreateCheckoutResponse = {
