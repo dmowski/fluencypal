@@ -53,7 +53,6 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
     try {
       await deleteCollectionDocs(firestore, `users/${userId}/conversations`);
       await deleteCollectionDocs(firestore, `users/${userId}/homeworks`);
-      await deleteCollectionDocs(firestore, `users/${userId}/usageLogs`);
       await deleteCollectionDocs(firestore, `users/${userId}/stats`);
       localStorage.clear();
 
