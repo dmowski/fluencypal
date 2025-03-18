@@ -236,6 +236,8 @@ export const TermsOfUse = ({ lang }: PageProps) => {
 
     f) material breach of the Contract or the Terms and Conditions by the Customer.
 
+
+
 ## § 6 Liability for non-conformity of the Services with the Contract
 
 1. A complaint about Services provided not in accordance with the Contract should include a demand, depending on the nature of the Service.
@@ -255,6 +257,7 @@ export const TermsOfUse = ({ lang }: PageProps) => {
   a) a Consumer;
     
   b) a natural person entering into a contract with StartUp directly related to his or her business activity, when it is clear from the content of the contract that it is not of a professional nature for that person, arising in particular from the subject of his or her business activity, made available on the basis of the provisions on the Central Register and Information on Business Activity.
+
 
 ## § 7 Digital Content or Digital Service Provision Contracts
 
@@ -291,6 +294,96 @@ export const TermsOfUse = ({ lang }: PageProps) => {
   f) material breach of the Contract or the Terms and Conditions by the Customer.
 
 10. To the extent not regulated in this paragraph, the provisions of Chapter 5b of the Law on Consumer Rights shall apply.
+
+
+
+
+## § 8 Liability for non-conformity of the digital content or digital service with the Contract
+
+1. If StartUp has not provided digital content or digital service, the Customer shall call on StartUp to provide it. If StartUp fails to deliver the digital content or digital service immediately or within an additional period of time expressly agreed upon by the parties, the Customer may cancel the contract. The provision does not apply if the contract provides for the delivery of digital content via a tangible medium.
+
+2. StartUp shall be liable for non-compliance with the contract of digital content or digital service provided:
+  
+  a) at one time or in parts, which existed at the time of their delivery and came to light within two years of that time;
+  
+  b) on a continuous basis that occurred or came to light at the time they were to be delivered according to the contract.
+
+3. If the digital content or digital service is not in conformity with the contract, the Customer may demand that it be brought into conformity with the contract.
+
+4. StartUp may refuse to bring the digital content or digital service into compliance with the contract if bringing the digital content or digital service into compliance with the contract is impossible or would require excessive costs for StartUp.
+
+5. If the digital content or digital service are inconsistent with the Contract, the Customer may submit a statement of price reduction or withdrawal from the Contract when:
+    
+  a) bringing the digital content or digital service into conformity with the contract is impossible or requires excessive costs pursuant to Article 43m (2) and (3) of the Law on Consumer Rights;
+    
+  b) StartUp failed to bring the digital content or digital service into compliance with the contract in accordance with Article 43m(4) of the Consumer Rights Act;
+    
+  c) the lack of compliance of the digital content or digital service with the contract continues even though StartUp has tried to bring the digital content or digital service into compliance with the contract;
+    
+  d) the lack of conformity of the digital contract or digital service with the contract is so significant that it justifies a reduction in price or withdrawal from the contract without first resorting to the means of protection set forth in Article 43m of the Law on Consumer Rights;
+    
+  e) it is clear from StartUp's statement or circumstances that it will not bring the digital services or digital content into conformity with the contract within a reasonable time or without undue inconvenience to the consumer.
+
+6. The reduced price must remain in such proportion to the contract price as the value of the non-conforming digital content or digital service remains to the value of the conforming digital content or digital service. If the contract stipulates that the digital content or digital service is provided in parts or continuously, the price reduction shall take into account the time during which the digital content or digital service remained inconsistent with the contract.
+
+7. The customer may not withdraw from the contract if the digital content or digital service is provided in exchange for payment of a price, and the lack of conformity of the digital content or digital service with the contract is immaterial.
+
+8. If the Client withdraws from the contract, StartUp may demand the return of the tangible medium which it delivered the digital content on within 14 days from the date of receipt of the Customer's statement of withdrawal from the contract. The Customer shall return the carrier immediately.
+
+9. If the Customer withdraws from the contract, StartUp shall refund the price only for the part corresponding to the digital content or service that does not comply with the contract, as well as the digital content or digital service, the obligation to provide which has fallen off as a result of the withdrawal.
+
+10. StartUp shall return the amount due to the Customer using the same method of payment used by the Customer, unless the Customer has expressly agreed to a different method of return that does not involve any costs for the Customer.
+
+11. StartUp's liability is limited to the value of the digital content or Digital Service that was to be provided. StartUp's liability for damage caused by the non-performance or improper performance of the Digital Service or failure to deliver digital content does not include lost profits.
+
+12. A complaint regarding non-compliace of the digital service with a Contract will be processed within 14 (in words: fourteen) days of receipt.
+
+13. In the event that StartUp does not respond to the complaint within the deadline, it is assumed that the complaint has been accepted.
+
+14. StartUp shall inform the Customer of the outcome of the complaint on paper or other durable medium.
+
+15. StartUp's liability for non-conformity of the digital content or Digital Service, as well as for non-performance / improper performance of the Contract concluded with the Customer, is excluded for Contracts concluded with a Customer that is not:
+    
+  a) a Consumer;
+  
+  b). a natural person entering into a contract with StartUp directly related to his or her business activity, when it is clear from the content of the contract that it is not of a professional nature for that person, arising in particular from the subject of his or her business activity, made available on the basis of the provisions on the Central Register and Information on Business Activity.
+
+
+## § 9 Product prices and delivery cost
+
+1. The prices posted next to the Products offered on the Site are gross prices, that is, they include Value Added Tax (VAT). Prices are quoted in Polish currency (zloty \- PLN).
+
+2. The price listed next to the Product does not include shipping costs.
+
+3. Shipping costs shall be borne by the Customer, unless the content of StartUp's offer on the Service states otherwise.
+
+4. The total amount that the Customer must pay in connection with the purchase of the selected Product consists of the price of the Product and the cost of delivery.
+
+5. Unless StartUp has specified otherwise in the Service on the page of the Product in question or in the course of the Customer's order, the methods of delivery of the Products are as follows:
+ 
+  a) in the case of Goods \- shipment to the address provided by the Customer or by personal collection at StartUp’s premises;
+  
+  b) in the case of digital Services \- to the e-mail address provided by the Customer;
+  
+  c) in the case of other Services \- in the manner specified on the Site on the page of a given Service or in the course of placing an order by the Customer, resulting in particular from the type of Service.
+
+6. On the StartUp Service, StartUp shall clearly indicate, at the latest at the beginning of the Customer's ordering process, clear and legible information about restrictions on the delivery of the Product.
+
+## § 10 Payment methods
+
+1. On the StartUp Website, StartUp shall clearly indicate, at the latest at the beginning of the Customer's order placement, clear and legible information about the accepted payment methods.
+
+2. Unless StartUp has specified otherwise on the page of the Product in question or in the course of the Customer's order, the methods of delivery of the Products are as follows:
+
+  a) by wire transfer using one of the electronic payment systems accepted by StartUp allowing to make quick payments for your order;
+  
+  b) by ordinary bank transfer, to the account indicated by StartUp.
+
+3. In order to use one of the electronic payment systems, the customer must accept the terms and conditions of use of the electronic payment system in question. The list of electronic payment systems available on the Site is available during order finalization.
+
+4. In the event of withdrawal from the contract, the refund shall be made in the same way in which the payment was made by the Customer, unless the Customer has expressly agreed to another way of return, which does not involve any costs for them.
+
+5. StartUp does not allow customers to make payments in cash.
 
 `}
         </Markdown>
