@@ -257,6 +257,9 @@ export const PaymentModal = () => {
                     onClick={clickOnConfirmRequest}
                     startIcon={<AssuredWorkloadIcon />}
                     size="large"
+                    sx={{
+                      padding: "10px 20px",
+                    }}
                     disabled={
                       amountToAdd <= 0 || amountToAdd > 400 || !looseRightChecked || !isTermsChecked
                     }
@@ -272,6 +275,17 @@ export const PaymentModal = () => {
                     {i18n._(`Cancel`)}
                   </Button>
                 </Stack>
+                <Typography variant="caption">
+                  The Controller of the data entered into the form is Fundacja Rozwoju
+                  Przedsiębiorczości "Twój StartUp". The data will be processed in order to provide
+                  the service and for marketing purposes – in the case of consent. We would like to
+                  inform you about the possibility of withdrawing your consent. For full information
+                  on data processing and your rights, see the{" "}
+                  <Link target="_blank" href={`${getUrlStart(supportedLang)}privacy`}>
+                    privacy policy
+                  </Link>{" "}
+                  .
+                </Typography>
               </Stack>
             </Stack>
           </Stack>
