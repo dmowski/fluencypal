@@ -385,6 +385,92 @@ export const TermsOfUse = ({ lang }: PageProps) => {
 
 5. StartUp does not allow customers to make payments in cash.
 
+
+
+
+
+## § 11 Right to withdraw from the contract;
+
+1. The provisions of this paragraph shall apply to the Customer who is a Consumer, or a natural person entering into a contract with StartUp directly related to his or her business activity, when it is clear from the content of the contract that it is not of a professional nature for that person, arising in particular from the subject of his or her business activity, made available on the basis of the provisions on the Central Register and Information on Business Activity.
+
+2. The Customer referred to in paragraph 1 has the right to withdraw from the Contract without giving any reason or incurring any costs, unless the common law or the provisions of these Terms and Conditions provide otherwise. The contract which the customer indicated in paragraph 1 has withdrawn from is considered not concluded.
+
+3. To withdraw from the contract, it is sufficient to submit a statement of withdrawal and send it to StartUp, within 14 (in words: fourteen) days.
+
+4. The period for withdrawal from the contract begins:
+    
+  a) for an Contract in the performance of which StartUp delivers the Goods, being obliged to transfer their ownership \- from taking possession of the Goods by the Customer or a third party other than the carrier indicated by the Customer, and in the case of a Contract which:
+   
+    - includes multiple Goods that are delivered separately, in batches or in parts \- from taking possession of the last Goods, their batches or parts,
+    
+    - consists in the regular delivery of Goods for a fixed period of time \- from taking possession of the first of the Goods;
+  
+  b) for other Contracts \- from the date of conclusion of the Contract.
+
+5. To meet the deadline for withdrawal from the contract it is sufficient to:
+
+  a) send a written statement to StartUp's address indicated in the Terms and Conditions or the Site, or
+
+  b) send the statement in documentary form to the StartUp's e-mail address indicated in the Terms and Conditions or the Site.
+
+6. StartUp shall immediately send to the Customer, on a durable medium, an acknowledgment of receipt of the statement of withdrawal, submitted electronically.
+
+7. If the Customer withdraws from the contract, the Customer shall return the purchased Product immediately, no later than within 14 (in words: fourteen) days of the withdrawal, unless StartUp offers to collect the Goods itself. To keep that date, it is enough to send a response before its expiry. The cost of returning the Goods shall be borne by the Customer.
+
+8. If the Customer withdraws from the contract, StartUp shall reimburse the Customer for the amount paid for the Product and the shipping costs to the Customer, within no more than 14 (in words: fourteen) days from the date of receipt of the declaration of intent to withdraw from the contract. However, if the Customer has chosen a method of delivery of the Product other than the cheapest method offered on the Site for the order, StartUp is not obliged to reimburse the Customer for the additional costs incurred by the Customer.
+
+9. StartUp shall refund the payment using the same method used by the Customer, unless the Customer agrees with StartUp on a different method of refund that does not incur any costs for the Customer.
+
+10. StartUp may withhold reimbursement of payments, received from the Customer, until it receives the Product back or the Customer provides proof of its return, whichever event occurs first.
+
+11. If the Customer has sent a cancellation statement before receiving an order confirmation from StartUp, the order is cancelled.
+
+12. The Customer shall be liable for any diminution in the value of the Goods resulting from the use of the Goods beyond what is necessary to ascertain the nature, characteristics and properties of the Goods.
+
+13. The right of withdrawal does not apply to the Customer in the cases indicated in the Law of May 30, 2014 on consumer rights, in particular with regard to contracts:
+
+  a) for the provision of services which a consumer is obliged to pay the price for, if the trader has performed the service in full with the express and prior consent of the consumer who was informed before the start of the performance that after the performance by the trader he will lose the right to withdraw from the contract, and accepted it;
+
+  b) in which the price or remuneration depends on fluctuations in the financial market which the trader has no control over and which may occur before the expiration of the deadline for withdrawal;
+
+  c) in which the object of performance is a non-refabricated good, produced to the consumer's specifications or serving to meet their individualized needs;
+
+  d) in which the object of performance is goods that are perishable or have a short shelf life;
+
+  e) in which the object of performance is goods delivered in sealed packaging which cannot be returned after opening the packaging for health or hygiene reasons, if the packaging has been opened after delivery;
+
+  f) in which the object of performance is goods which after delivery, due to their nature, become inseparable from other things;
+
+  g) in which the object of performance is alcoholic beverages, the price of which was agreed upon at the conclusion of the contract of sale, the delivery of which can only take place after 30 days and the value of which depends on market fluctuations which the trader has no control over;
+
+  h) in which the consumer expressly requested that the trader come to them for urgent repair or maintenance; if the trader provides additional services other than those requested by the consumer, or supplies goods other than the spare parts necessary for repair or maintenance, the consumer has the right of withdrawal with respect to the additional services or goods;
+
+  i) in which the subject of performance is sound or visual recordings or computer programs delivered in sealed packaging, if the packaging was opened after delivery;
+
+  j) for the supply of daily newspapers, periodicals or magazines, except for a subscription contract;
+
+  k) concluded through a public auction;
+
+  l) for the provision of accommodation services, other than for residential purposes, transportation of goods, car rental, catering, services related to leisure, entertainment, sports or cultural events, if the contract specifies the day or period of service;
+
+  m) for providing digital content not delivered on a tangible medium which the consumer is liable to pay the price for, if the trader has started the performance with express and prior consent of the consumer who was informed before the start of the performance that after trader’s performance, they will lose the right to withdraw from the contract, and accepted it, and the trader has provided the consumer with the confirmation referred to in Article 15 (1) and (2) or Article 21 (1) of the Law on Consumer Rights.
+
+  n) statement of services which the consumer is obliged to pay the price for, where the consumer expressly requested the trader to come to them for repair, and the service has already been fully performed with the express and prior consent of the consumer.
+
+14. StartUp will also correct the proofs of purchase (corrective VAT invoice or corrective specification) previously provided to the Customer.
+
+
+## § 12 Refund of the amount paid by the Customer
+
+StartUp will refund the money, within 14 (in words: fourteen) calendar days, using the same means of payment that were used by the Customer at the time of payment, unless the Customer has expressly agreed to another way of return that does not involve any costs for them, in the case of:
+
+  a) withdrawal from the contract in whole or in part (in which case the corresponding part of the price will be refunded) in the case of an order prepaid before its execution;
+
+  b) acknowledging the complaint and the inability to repair the damaged Goods or replace them with new ones or provide the Service / Digital Service in accordance with the contract;
+
+  c) recognizing the right to request a reduction in the price of the Product.
+
+
 `}
         </Markdown>
       </Stack>
