@@ -213,13 +213,23 @@ export const PaymentModal = () => {
                 role-plays, new words and runles creator.
               </Typography>
               <Divider />
-              <Typography>
-                Price per one AI hour: <b>PLN 24</b>
-              </Typography>
+              <Stack
+                sx={{
+                  padding: "6px 0",
+                }}
+              >
+                <Typography
+                  sx={{
+                    opacity: 0.9,
+                  }}
+                >
+                  Price per one AI hour: <b>PLN 24</b>
+                </Typography>
 
-              <Typography variant="h5">
-                Total: <b>PLN {amountToAdd * 24}</b>
-              </Typography>
+                <Typography variant="h5">
+                  Total: <b>PLN {amountToAdd * 24}</b>
+                </Typography>
+              </Stack>
               <Divider />
             </Stack>
 
