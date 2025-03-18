@@ -73,7 +73,7 @@ export const PaymentModal = () => {
       const checkoutInfo = await createStripeCheckout(
         {
           userId: auth.uid,
-          amount: amountToAdd,
+          amountOfHours: amountToAdd,
           languageCode: supportedLang,
         },
         await auth.getToken()

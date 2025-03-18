@@ -21,8 +21,8 @@ export async function POST(request: Request) {
   }
   const stripe = new Stripe(stripeKey);
   const requestData = (await request.json()) as StripeCreateCheckoutRequest;
-  const { amount, userId } = requestData;
-  if (amount > 400) {
+  const { amountOfHours, userId } = requestData;
+  if (amountOfHours > 400) {
     const response: StripeCreateCheckoutResponse = {
       sessionUrl: null,
       error: "Amount is too large",
@@ -32,18 +32,19 @@ export async function POST(request: Request) {
 
   const supportedLang = supportedLanguages.find((l) => l === requestData.languageCode) || "en";
 
+  const money = amountOfHours * 24 * 100;
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
         {
           price_data: {
-            currency: "usd",
+            currency: "pln",
             product_data: {
               name: "Balance Top-up",
-              description: `Add $${amount} to your account balance`,
+              description: `Add ${amountOfHours} hours to your account balance`,
             },
-            unit_amount: amount * 100,
+            unit_amount: money,
           },
           quantity: 1,
         },
