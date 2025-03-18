@@ -275,7 +275,7 @@ export function HeaderComponent({
                     onClick={() => usage.togglePaymentModal(true)}
                     startIcon={<Wallet size="20px" />}
                   >
-                    Balance: {usage.balance > 0 ? "" : usage.balance == 0 ? "" : "- "}
+                    {balanceTitle}: {usage.balance > 0 ? "" : usage.balance == 0 ? "" : "- "}
                     {new Intl.NumberFormat().format(Math.abs(usage.balance))}
                   </Button>
                   <IconButton
@@ -319,37 +319,6 @@ export function HeaderComponent({
           horizontal: "left",
         }}
       >
-        <MenuItem
-          onClick={() => {
-            usage.togglePaymentModal(true);
-            setMenuAnchor(null);
-          }}
-        >
-          <ListItemIcon>
-            <Wallet size="20px" />
-          </ListItemIcon>
-          <ListItemText>
-            {balanceTitle}:{" "}
-            <Typography
-              component={"span"}
-              sx={{
-                backgroundColor:
-                  usage.balance > 2
-                    ? "rgba(0, 220, 0, 0.4)"
-                    : usage.balance >= 0
-                      ? "rgba(219, 241, 15, 0.2)"
-                      : "rgba(220, 0, 0, 0.7)",
-                padding: "2px 10px",
-                borderRadius: "5px",
-                marginLeft: "5px",
-              }}
-            >
-              {usage.balance > 0 ? "+ " : usage.balance == 0 ? "" : "- "}$
-              {new Intl.NumberFormat().format(Math.abs(usage.balance))}
-            </Typography>
-          </ListItemText>
-        </MenuItem>
-
         <MenuItem
           onClick={() => {
             setIsShowHelpModal(true);
