@@ -30,6 +30,14 @@ export async function POST(request: Request) {
     return Response.json(response);
   }
 
+  if (amountOfHours < 0) {
+    const response: StripeCreateCheckoutResponse = {
+      sessionUrl: null,
+      error: "Amount is too small",
+    };
+    return Response.json(response);
+  }
+
   const supportedLang = supportedLanguages.find((l) => l === requestData.languageCode) || "en";
 
   const money = amountOfHours * 24 * 100;
@@ -52,7 +60,7 @@ export async function POST(request: Request) {
       mode: "payment",
       success_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentSuccess=true&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentCanceled=true`,
-      metadata: { userId, termsAccepted: "true", immediateServiceConsent: "true" },
+      metadata: { userId, termsAccepted: "true", immediateServiceConsent: "true", amountOfHours },
     });
 
     const response: StripeCreateCheckoutResponse = {

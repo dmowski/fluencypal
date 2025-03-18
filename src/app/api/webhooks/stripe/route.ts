@@ -31,8 +31,14 @@ export async function POST(request: Request) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
     const paymentId = session.id;
-    //console.log("session", session);
+
     const userId = session.metadata?.userId;
+    const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? "0");
+    if (amountOfHours <= 0) {
+      console.log("Amount of hours is not set");
+      throw new Error("Amount of hours is not set");
+    }
+
     if (!userId) {
       console.log("No userId in metadata");
       throw new Error("No userId in metadata");
@@ -40,7 +46,14 @@ export async function POST(request: Request) {
     const amountPaid = (session.amount_total ?? 0) / 100;
     console.log(`User ${userId} paid $${amountPaid}`);
     const currency = session.currency;
-    await addPaymentLog(amountPaid, userId, paymentId, currency || "usd");
+    await addPaymentLog({
+      amount: amountPaid,
+      userId: userId,
+      paymentId,
+      currency: currency || "usd",
+      amountOfHours,
+      type: "user",
+    });
   } else {
     console.log(`Unhandled event type: ${event.type}`);
     //console.log("event", event);
