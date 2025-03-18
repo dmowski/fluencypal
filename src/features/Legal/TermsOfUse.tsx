@@ -200,7 +200,7 @@ export const TermsOfUse = ({ lang }: PageProps) => {
 
 
 ## § 5 Provision of Services
-  1. StartUp provides Customers with Services, the type, scope and detailed description of which are indicated in the Site. The activities consist in particular of: providing access to an AI-powered language tutoring platform (“FluencyPal”), where users can purchase a specific number of hours of AI-based language conversation and use those hours to engage in interactive language learning with an AI tutor, track progress, and review past conversations
+  1. StartUp provides Customers with Services, the type, scope and detailed description of which are indicated in the Site. The activities consist in particular of: providing access to an AI-powered language tutoring platform (“FluencyPal”), where users can purchase a specific number of hours of AI-based language conversation and use those hours to engage in interactive language learning with an AI tutor and track progress.
 
   2. Services are provided in the manner indicated on the Site, in particular on the page pertaining to the particular Service.
   

@@ -151,8 +151,10 @@ export const PricePage = ({ lang }: PricePageProps) => {
               <PriceCard
                 title={i18n._("Free Trial")}
                 subTitle={i18n.t(`Trying FluencyPal risk-free`)}
-                price={i18n._("Free")}
-                priceDescription={i18n._(`24zl free credit | One hour of active AI speaking`)}
+                price={i18n._("PLN 0")}
+                priceDescription={i18n._(
+                  `One hour of active AI speaking is free, then Pay as You Go`
+                )}
                 listTitle={i18n._("Features:")}
                 listItems={[
                   {
@@ -169,15 +171,30 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     title: i18n._("Conversation practice"),
                     tooltip: i18n._("Improve fluency with interactive chat sessions"),
                   },
+                  {
+                    title: i18n._("Progress tracking"),
+                    tooltip: i18n._("See your improvements and track your learning journey"),
+                  },
+                  {
+                    title: i18n._("New Words"),
+                    tooltip: i18n._("Get new words and phrases in context"),
+                  },
+                  {
+                    title: i18n._("New Grammar Rules"),
+                    tooltip: i18n._("By practicing, you will get personal grammar rules from AI"),
+                  },
                 ]}
                 buttonTitle={i18n._("Get started")}
                 buttonLink={`${getUrlStart(lang)}practice`}
               />
               <PriceCard
                 title={i18n._("Pay-as-You-Go")}
-                subTitle={i18n._("Regular learners who want full control")}
-                price={i18n._(`24zl`)}
-                priceDescription={i18n._("Per AI Hour")}
+                subTitle={i18n._("For learners who want flexibility")}
+                price={i18n._(`PLN 24`)}
+                priceDescription={i18n._("Per Hour of AI Usage")}
+                priceSubDescription={i18n._(
+                  "You only pay when AI is speaking or analyzing your speech, not when you're thinking or typing."
+                )}
                 listTitle={i18n._("Everything in Free Trial, plus:")}
                 listItems={[
                   {
@@ -188,8 +205,14 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     title: i18n._("Track usage & progress"),
                     tooltip: i18n._("Monitor your AI conversation history and improvements"),
                   },
+                  {
+                    title: i18n._("Advanced Personalization"),
+                    tooltip: i18n._(
+                      "With time, AI will adapt to your learning style and it will be more personalized"
+                    ),
+                  },
                 ]}
-                buttonTitle={i18n._("Start with Free Credit")}
+                buttonTitle={i18n._("Start with Trial")}
                 buttonLink={`${getUrlStart(lang)}practice`}
               />
               <PriceCard
@@ -759,7 +782,9 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     question: i18n.t(`Can I try FluencyPal for free?`),
                     answer: (
                       <Typography>
-                        {i18n.t(`Yes! You start with 5 in free credits to explore all features.`)}
+                        {i18n.t(
+                          `Yes! You start with one free hour of conversation with AI to explore all features.`
+                        )}
                       </Typography>
                     ),
                   }}

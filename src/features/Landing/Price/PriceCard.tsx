@@ -7,6 +7,7 @@ interface PriceCardProps {
   subTitle: string;
   price: string;
   priceDescription: string;
+  priceSubDescription?: string;
 
   listTitle: string;
   listItems: {
@@ -28,6 +29,7 @@ export const PriceCard: React.FC<PriceCardProps> = ({
   buttonTitle,
   buttonLink,
   isLightButton,
+  priceSubDescription,
 }) => {
   return (
     <Stack
@@ -76,7 +78,7 @@ export const PriceCard: React.FC<PriceCardProps> = ({
 
       <Stack
         sx={{
-          height: "100px",
+          height: "160px",
           gap: "5px",
           "@media (max-width: 1000px)": {
             height: "auto",
@@ -100,6 +102,15 @@ export const PriceCard: React.FC<PriceCardProps> = ({
           }}
         >
           {priceDescription}
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: "0.8rem",
+            fontWeight: 350,
+            opacity: 0.8,
+          }}
+        >
+          {priceSubDescription}
         </Typography>
       </Stack>
 
