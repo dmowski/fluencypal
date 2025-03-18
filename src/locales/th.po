@@ -13,6 +13,21 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Usage/PaymentModal.tsx:394
+#. js-lingui-explicit-id
+msgid "Total used hourse"
+msgstr "จำนวนชั่วโมงที่ใช้แล้ว"
+
+#: src/features/Usage/PaymentModal.tsx:428
+#. js-lingui-explicit-id
+msgid "Your payment was successful, but updates might take a few minutes"
+msgstr "การชำระเงินของคุณสำเร็จแล้ว แต่อัปเดตอาจใช้เวลาสักครู่"
+
+#: src/features/Usage/PaymentModal.tsx:469
+#. js-lingui-explicit-id
+msgid "Current Balance of AI usage (hours)"
+msgstr "ยอดคงเหลือของการใช้ AI (ชั่วโมง)"
+
 #: src/libs/metadata.ts:55
 #: src/features/Landing/Footer.tsx:84
 #: src/features/Landing/Contact/ContactsPage.tsx:75
@@ -111,7 +126,7 @@ msgstr "ค่าใช้จ่ายของติวเตอร์ AI"
 
 #: src/libs/metadata.ts:92
 #: src/features/Landing/Footer.tsx:179
-#: src/features/Header/NeedHelpModal.tsx:151
+#: src/features/Header/NeedHelpModal.tsx:150
 #: src/features/Auth/SignInForm.tsx:113
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -124,7 +139,7 @@ msgstr "นโยบายคุกกี้"
 
 #: src/libs/metadata.ts:108
 #: src/features/Landing/Footer.tsx:169
-#: src/features/Header/NeedHelpModal.tsx:138
+#: src/features/Header/NeedHelpModal.tsx:137
 #: src/features/Auth/SignInForm.tsx:117
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -293,7 +308,7 @@ msgstr ""
 "ดอลลาร์"
 
 #: src/features/Usage/PaymentModal.tsx:275
-#: src/features/Header/NeedHelpModal.tsx:207
+#: src/features/Header/NeedHelpModal.tsx:206
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "ยกเลิก"
@@ -338,60 +353,45 @@ msgstr "ถ้าคุณต้องการติดต่อฉันโด
 msgid "Current Balance"
 msgstr "ยอดเงินปัจจุบัน"
 
-#: src/features/Usage/PaymentModal.tsx:394
-#. js-lingui-explicit-id
-msgid "Total used"
-msgstr "ใช้งานทั้งหมด"
-
 #: src/features/Usage/PaymentModal.tsx:418
 #. js-lingui-explicit-id
 msgid "Success!"
 msgstr "สำเร็จ!"
 
-#: src/features/Usage/PaymentModal.tsx:428
-#. js-lingui-explicit-id
-msgid "Your payment was successful"
-msgstr "การชำระเงินของคุณสำเร็จ"
-
-#: src/features/Usage/PaymentModal.tsx:434
+#: src/features/Usage/PaymentModal.tsx:436
 #: src/features/Header/Header.tsx:19
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "การทรงตัว"
 
-#: src/features/Usage/PaymentModal.tsx:442
+#: src/features/Usage/PaymentModal.tsx:444
 #. js-lingui-explicit-id
 msgid "Manage your payments and balance"
 msgstr "จัดการการชำระเงินและยอดคงเหลือของคุณ"
 
-#: src/features/Usage/PaymentModal.tsx:467
-#. js-lingui-explicit-id
-msgid "Current Balance of AI usage"
-msgstr "ยอดคงเหลือที่ใช้ AI ปัจจุบัน"
-
-#: src/features/Usage/PaymentModal.tsx:478
+#: src/features/Usage/PaymentModal.tsx:480
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "ซื้อเพิ่มเติม"
 
-#: src/features/Usage/PaymentModal.tsx:495
+#: src/features/Usage/PaymentModal.tsx:497
 #. js-lingui-explicit-id
 msgid "Total used hours:"
 msgstr "รวมเวลาที่ใช้แล้ว:"
 
-#: src/features/Usage/PaymentModal.tsx:510
+#: src/features/Usage/PaymentModal.tsx:512
 #. js-lingui-explicit-id
 msgid "Payment history:"
 msgstr "ประวัติการชำระเงิน:"
 
-#: src/features/Usage/PaymentModal.tsx:520
+#: src/features/Usage/PaymentModal.tsx:522
 #: src/features/RolePlay/RolePlayBoard.tsx:591
 #: src/features/Dashboard/Dashboard.tsx:34
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "โหลด..."
 
-#: src/features/Usage/PaymentModal.tsx:531
+#: src/features/Usage/PaymentModal.tsx:533
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "ไม่มีการชำระเงิน..."
@@ -2279,7 +2279,7 @@ msgstr ""
 "ติดต่อฉันก่อนที่คุณจะซื้อและฉันจะให้ส่วนลดกับคุณ"
 
 #: src/features/Landing/Price/PricePage.tsx:822
-#: src/features/Header/NeedHelpModal.tsx:109
+#: src/features/Header/NeedHelpModal.tsx:108
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "ติดต่อ:"
@@ -2304,39 +2304,39 @@ msgstr ""
 "ฉันยินดีที่จะช่วยเสมอ!"
 
 #: src/features/Header/NeedHelpModal.tsx:48
-#: src/features/Header/NeedHelpModal.tsx:168
+#: src/features/Header/NeedHelpModal.tsx:167
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
 msgstr "คุณแน่ใจหรือว่าต้องการลบบัญชีของคุณ?"
 
-#: src/features/Header/NeedHelpModal.tsx:62
+#: src/features/Header/NeedHelpModal.tsx:61
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "บัญชีของคุณได้ถูกลบออกเรียบร้อยแล้ว ขออภัยที่ต้องอำลาคุณ!"
 
-#: src/features/Header/NeedHelpModal.tsx:74
+#: src/features/Header/NeedHelpModal.tsx:73
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "ไม่สามารถลบบัญชีของคุณได้ โปรดลองอีกครั้งในภายหลัง หรือติดต่อนักพัฒนา"
 
-#: src/features/Header/NeedHelpModal.tsx:90
+#: src/features/Header/NeedHelpModal.tsx:89
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "ต้องการความช่วยเหลือ?"
 
-#: src/features/Header/NeedHelpModal.tsx:125
+#: src/features/Header/NeedHelpModal.tsx:124
 #. js-lingui-explicit-id
 msgid "Legal:"
 msgstr "กฎหมาย:"
 
-#: src/features/Header/NeedHelpModal.tsx:170
+#: src/features/Header/NeedHelpModal.tsx:169
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "การดำเนินการนี้ไม่สามารถย้อนกลับได้."
 
-#: src/features/Header/NeedHelpModal.tsx:172
+#: src/features/Header/NeedHelpModal.tsx:171
 #. js-lingui-explicit-id
 msgid ""
 "We will delete your data, but information about your balance will be stored "
@@ -2347,30 +2347,30 @@ msgstr ""
 "แต่ข้อมูลเกี่ยวกับยอดคงเหลือของคุณจะถูกเก็บไว้เป็นเวลาหนึ่ง\n"
 "              ปี"
 
-#: src/features/Header/NeedHelpModal.tsx:176
+#: src/features/Header/NeedHelpModal.tsx:175
 #. js-lingui-explicit-id
 msgid ""
 "If you want to remove all information, including your balance, please "
 "contact us."
 msgstr "ถ้าคุณต้องการลบข้อมูลทั้งหมด รวมถึงยอดคงเหลือของคุณ กรุณาติดต่อเรา"
 
-#: src/features/Header/NeedHelpModal.tsx:197
-#: src/features/Header/NeedHelpModal.tsx:231
+#: src/features/Header/NeedHelpModal.tsx:196
+#: src/features/Header/NeedHelpModal.tsx:230
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "กำลังลบ..."
 
-#: src/features/Header/NeedHelpModal.tsx:197
+#: src/features/Header/NeedHelpModal.tsx:196
 #. js-lingui-explicit-id
 msgid "Yes, Delete account"
 msgstr "ใช่, ลบบัญชี"
 
-#: src/features/Header/NeedHelpModal.tsx:221
+#: src/features/Header/NeedHelpModal.tsx:220
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "ปิด"
 
-#: src/features/Header/NeedHelpModal.tsx:231
+#: src/features/Header/NeedHelpModal.tsx:230
 #. js-lingui-explicit-id
 msgid "Delete account"
 msgstr "ลบบัญชี"
@@ -3899,6 +3899,21 @@ msgstr "แอพการดื่มด่ำภาษา"
 #. js-lingui-explicit-id
 msgid "English speaking partner"
 msgstr "คู่สนทนาภาษาอังกฤษ"
+
+#: src/features/Usage/PaymentModal.tsx:394
+#. js-lingui-explicit-id
+#~ msgid "Total used"
+#~ msgstr "ใช้งานทั้งหมด"
+
+#: src/features/Usage/PaymentModal.tsx:428
+#. js-lingui-explicit-id
+#~ msgid "Your payment was successful"
+#~ msgstr "การชำระเงินของคุณสำเร็จ"
+
+#: src/features/Usage/PaymentModal.tsx:467
+#. js-lingui-explicit-id
+#~ msgid "Current Balance of AI usage"
+#~ msgstr "ยอดคงเหลือที่ใช้ AI ปัจจุบัน"
 
 #: src/features/Usage/PaymentModal.tsx:129
 #. js-lingui-explicit-id
