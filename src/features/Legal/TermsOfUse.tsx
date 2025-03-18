@@ -471,6 +471,61 @@ StartUp will refund the money, within 14 (in words: fourteen) calendar days, usi
   c) recognizing the right to request a reduction in the price of the Product.
 
 
+
+## § 13 Newsletter
+
+1. The Customer may agree to receive commercial information, including commercial information by e-mail, by selecting the appropriate option in the registration form or through the Site. If such consent is given, the Customer will receive StartUp's newsletter (Newsletter) at the e-mail address provided by the Customer.
+
+2. The Customer may unsubscribe from the Newsletter at any time by notifying StartUp of the cancellation .
+
+
+## § 14 StartUp contact information
+
+The Customer can contact Startup:
+
+1. by phone at: \+48510260193
+2. via email, to the following email address: contact@fluencypal.com
+
+
+## § 15 Final provisions
+
+1. StartUp provides that the use of services provided electronically involves risks resulting from the public nature of the Internet, including in particular the possibility of obtaining or modifying Customer's transmitted data by unauthorized third parties. In order to minimize the aforementioned risk, the Customer should use appropriate security measures, including, in particular, the use of anti-virus programs, have up-to-date versions of Internet browsers and operating systems, and not use open access points.
+
+2. To the fullest extent permitted by law, StartUp is not responsible for blocking by mail server administrators of of messages to the e-mail address indicated by the Customer, or for the deletion and blocking of e-mail messages by software installed on the computer used by the Customer.
+
+3. StartUp is not responsible for the equipment and infrastructure used by the Customer, including malfunctioning of public data communications networks causing, for example, lack of or interference with access to the Site.
+
+4. StartUp provides that the display of the visualization of the Products in Customer's ICT system, when using the Site, depends on a number of factors, including the type of display matrix, aspect ratio, resolution, method of its backlighting, the technologies used and the efficiency of the control electronics and settings. Discrepancies between the visualization available in the Customer's ICT system and the actual appearance of the Product, cannot be the basis for a complaint.
+
+5. StartUp provides that all trademarks (logos, logotypes, brand names, etc.), graphic materials or photographs posted on the Site are subject to legal protection and are used by StartUp for informational purposes only.
+
+6. StartUp, to the fullest extent permitted by law, shall not be liable for any disruptions, including interruptions, in the operation of the Site caused by force majeure, unauthorized acts of third parties or incompatibility of the Site with Client's technical infrastructure.
+
+7. StartUp reserves the right to temporarily suspend operations of the Site, in particular in order to perform maintenance, development or modernization work.
+
+8. All names of Products offered on the Website are used for identification purposes and may be protected or reserved under the provisions of the Industrial Property Law.
+
+9. StartUp notes that the Site contains content protected by intellectual property laws, in particular copyrighted works (content posted on the Website, layout, graphics, photos, etc.) . Customers and visitors to the Site agree to respect StartUp's and third parties' intellectual property rights (including copyright and industrial property rights such as those arising from trademark registration). The Customer or visitor to the Service shall be solely responsible for failure to comply with the provisions of this section.
+
+10. The Customer shall not post on the Site content that is unlawful, illegal, immoral or violates the welfare of third parties, as well as shall not publish links to pornographic, obscene or offensive to the dignity of others.
+
+11. The Customer shall refrain from any activity that could affect the proper functioning of the Site, including, in particular, any interference with the way the Service operates or its technical elements.
+
+12. StartUp undertakes to inform registered Customers of the Site of any change to the Terms of Service by sending an email to the email address provided during registration, and the Customer, upon receipt of such information, will be able to delete the Account at any time. Amendments to these Terms and Conditions do not affect contracts concluded before the effective date of the amendments.
+
+13. In any matter not covered by these Terms and Conditions, please follow generally applicable rules of Polish law, in particular:
+
+  1) law of April 23, 1964 Civil Code;
+  
+  2) act of May 30, 2014 on consumer rights
+  
+  3) act of July 18, 2002 on the provision of electronic services.
+
+14. Disputes related to Contracts concluded on the basis of these Terms and Conditions will be resolved by a court with jurisdiction over StartUp. This provision does not apply to Contracts concluded with a Consumer.
+
+15. The use of a specific method of out-of-court dispute resolution is possible only with the mutual consent of the Customer and StartUp. Detailed procedures for out-of-court dispute resolution, are available on the website of the Office of Competition and Consumer Protection: www.uokik.gov.pl, on websites of the Provincial Trade Inspection Inspectorates, as well as from district (city) consumer ombudsmen.
+
+16. These Terms and Conditions are effective as of: Mar 17, 2025
 `}
         </Markdown>
       </Stack>
