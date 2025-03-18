@@ -526,6 +526,13 @@ The Customer can contact Startup:
 15. The use of a specific method of out-of-court dispute resolution is possible only with the mutual consent of the Customer and StartUp. Detailed procedures for out-of-court dispute resolution, are available on the website of the Office of Competition and Consumer Protection: www.uokik.gov.pl, on websites of the Provincial Trade Inspection Inspectorates, as well as from district (city) consumer ombudsmen.
 
 16. These Terms and Conditions are effective as of: Mar 17, 2025
+
+
+
+## Communication on out-of-court dispute resolution
+
+Pursuant to Regulation (EU) No. 524/2013 of the European Parliament and of the Council of May 21, 2013 on online dispute resolution for consumer disputes and amending Regulation (EC) No. 2006/2004 and Directive 2009/22/EC (Regulation on ODR in consumer disputes), : Fundacja Rozwoju Przedsiębiorczości „Twój StartUp”, based in Warsaw, hereby provides an electronic link to the online ODR (online dispute resolution) platform: https://webgate.ec.europa.eu/odr. The ODR platform enables out-of-court settlement of disputes between businesses and consumers. Settlement of disputes by this method is voluntary.
+
 `}
         </Markdown>
       </Stack>
