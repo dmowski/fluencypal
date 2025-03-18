@@ -1,6 +1,7 @@
 import {
   Button,
   Checkbox,
+  Divider,
   FormControlLabel,
   Link,
   Stack,
@@ -116,7 +117,8 @@ export const PaymentModal = () => {
     <CustomModal
       isOpen={true}
       onClose={() => usage.togglePaymentModal(false)}
-      width="min(900px, 97vw)"
+      width="min(900px, 100vw)"
+      padding="min(30px, 10vw)"
     >
       {isShowAmountInput ? (
         <>
@@ -129,7 +131,7 @@ export const PaymentModal = () => {
           >
             <Stack>
               <Typography variant="h4" component="h2">
-                {i18n._(`Process payments`)}
+                {i18n._(`Buy more hours`)}
               </Typography>
               <Typography
                 variant="caption"
@@ -141,24 +143,14 @@ export const PaymentModal = () => {
               </Typography>
             </Stack>
 
-            <Typography>
-              Price per one hour: <b>PLN 24</b>
-            </Typography>
-
             <Stack
               sx={{
-                flexDirection: "row",
-                gap: "20px",
-                alignItems: "center",
-                "@media (max-width: 600px)": {
-                  flexDirection: "column",
-                  gap: "10px",
-                  paddingBottom: "10px",
-                },
+                flexDirection: "column",
+                gap: "5px",
               }}
             >
               <TextField
-                label="Amount to add"
+                label="Amount hours to buy"
                 value={amountToAdd ? amountToAdd : ""}
                 type="text"
                 onChange={(e) => {
@@ -179,23 +171,59 @@ export const PaymentModal = () => {
                   gap: "10px",
                 }}
               >
-                {[2, 5, 10, 20].map((amount) => (
+                {[2, 5, 10].map((amount) => (
                   <Button
                     key={amount}
                     onClick={() => setAmountToAdd(amount)}
                     variant={amount == amountToAdd ? "contained" : "outlined"}
                   >
-                    {amount} hours
+                    {amount}
                   </Button>
                 ))}
               </Stack>
             </Stack>
 
-            <Stack>
-              <Typography variant="h6">
-                Total: <b>PLN {amountToAdd * 24}</b>
+            <Stack
+              sx={{
+                width: "100%",
+                paddingTop: "10px",
+                gap: "5px",
+              }}
+            >
+              <Typography
+                variant="caption"
+                sx={{
+                  paddingBottom: "10px",
+                }}
+              >
+                <b>What one hour means?</b>
+                <br />
+                You only charged for when AI is actively working: speaking or analyzing your speech.
               </Typography>
 
+              <Typography
+                variant="caption"
+                sx={{
+                  paddingBottom: "10px",
+                }}
+              >
+                <b>Includes:</b>
+                <br />
+                Access to all functionalities on app where AI is present: speaking, analyzing,
+                role-plays, new words and runles creator.
+              </Typography>
+              <Divider />
+              <Typography>
+                Price per one AI hour: <b>PLN 24</b>
+              </Typography>
+
+              <Typography variant="h5">
+                Total: <b>PLN {amountToAdd * 24}</b>
+              </Typography>
+              <Divider />
+            </Stack>
+
+            <Stack>
               <Stack gap={"10px"}>
                 {amountToAdd > 400 && (
                   <Typography variant="caption" color="error">
@@ -257,8 +285,9 @@ export const PaymentModal = () => {
                     onClick={clickOnConfirmRequest}
                     startIcon={<AssuredWorkloadIcon />}
                     size="large"
+                    color="info"
                     sx={{
-                      padding: "10px 20px",
+                      padding: "10px 25px",
                     }}
                     disabled={
                       amountToAdd <= 0 || amountToAdd > 400 || !looseRightChecked || !isTermsChecked
@@ -275,7 +304,12 @@ export const PaymentModal = () => {
                     {i18n._(`Cancel`)}
                   </Button>
                 </Stack>
-                <Typography variant="caption">
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
                   The Controller of the data entered into the form is Fundacja Rozwoju
                   Przedsiębiorczości "Twój StartUp". The data will be processed in order to provide
                   the service and for marketing purposes – in the case of consent. We would like to
