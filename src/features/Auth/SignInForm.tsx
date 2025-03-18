@@ -108,12 +108,15 @@ export const SignInForm = ({ rolePlayScenarios, lang }: SignInFormProps) => {
                 alignItems: "center",
               }}
             >
-              <Link href={`${getUrlStart(lang)}privacy`} target="_blank">
-                <Typography variant="caption">{i18n._(`Privacy Policy`)}</Typography>
-              </Link>
-              <Link href={`${getUrlStart(lang)}terms`} target="_blank">
-                <Typography variant="caption">{i18n._(`Terms of Use`)}</Typography>
-              </Link>
+              <Typography variant="caption">
+                <Link href={`${getUrlStart(lang)}privacy`} target="_blank">
+                  {i18n._(`Privacy Policy`)}
+                </Link>{" "}
+                and{" "}
+                <Link href={`${getUrlStart(lang)}terms`} target="_blank">
+                  {i18n._(`Terms of Use`)}
+                </Link>
+              </Typography>
             </Stack>
           </Stack>
         </Stack>
