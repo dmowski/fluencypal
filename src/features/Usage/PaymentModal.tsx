@@ -632,6 +632,14 @@ export const PaymentModal = () => {
                                       {log.currency.toUpperCase()} {log.amountAdded}
                                     </Typography>
                                     <Typography variant="body2">
+                                      {i18n._(`Hours:`)} {log.amountOfHours}
+                                    </Typography>
+                                    <Typography
+                                      variant="caption"
+                                      sx={{
+                                        opacity: 0.7,
+                                      }}
+                                    >
                                       {paymentTypeLabelMap[log.type]}
                                     </Typography>
                                   </Stack>
