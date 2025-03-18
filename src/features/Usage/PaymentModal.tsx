@@ -207,7 +207,19 @@ export const PaymentModal = () => {
                   paddingBottom: "10px",
                 }}
               >
-                <b>Includes:</b>
+                <b>How long will my hours last?</b>
+                <br />
+                Once purchased, your hours remain available until you use them. There is no
+                expiration.
+              </Typography>
+
+              <Typography
+                variant="caption"
+                sx={{
+                  paddingBottom: "10px",
+                }}
+              >
+                <b>What's included?</b>
                 <br />
                 Access to all functionalities on app where AI is present: speaking, analyzing,
                 role-plays, new words and runles creator.
