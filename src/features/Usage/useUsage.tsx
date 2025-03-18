@@ -25,6 +25,7 @@ interface UsageContextType extends TotalUsageInfo {
   isShowPaymentModal: boolean;
   togglePaymentModal: (isOpen: boolean, isSuccessPayment?: boolean) => void;
   isSuccessPayment: boolean;
+  loading: boolean;
 }
 
 const UsageContext = createContext<UsageContextType | null>(null);
@@ -124,6 +125,7 @@ function useProvideUsage(): UsageContextType {
 
   return {
     ...totalUsageClean,
+    loading: loadingTotalUsage,
     paymentLogs: paymentLogs,
     usageLogs,
     setUsageLogs,

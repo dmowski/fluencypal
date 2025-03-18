@@ -264,7 +264,13 @@ export function HeaderComponent({
                 <>
                   <Button
                     color={
-                      usage.balance > 0.2 ? "primary" : usage.balance >= 0.1 ? "warning" : "error"
+                      usage.loading
+                        ? "info"
+                        : usage.balance > 0.2
+                          ? "primary"
+                          : usage.balance >= 0.1
+                            ? "warning"
+                            : "error"
                     }
                     onClick={() => usage.togglePaymentModal(true)}
                     startIcon={<Wallet size="20px" />}
