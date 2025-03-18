@@ -1,4 +1,12 @@
-import { Button, Stack, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Link,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useUsage } from "./useUsage";
 import { useNotifications } from "@toolpad/core/useNotifications";
@@ -16,6 +24,7 @@ import { CircleCheck } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { supportedLanguages } from "@/common/lang";
 import { useLingui } from "@lingui/react";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
@@ -32,6 +41,8 @@ export const PaymentModal = () => {
   const settings = useSettings();
   const devEmails = ["dmowski.alex@gmail.com"];
   const notifications = useNotifications();
+  const [looseRightChecked, setLooseRightChecked] = useState(false);
+  const [isTermsChecked, setIsTermsChecked] = useState(false);
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
   const [amountToAdd, setAmountToAdd] = useState(2);
   const [isShowAmountInput, setIsShowAmountInput] = useState(false);
@@ -185,7 +196,7 @@ export const PaymentModal = () => {
                 Total: <b>PLN {amountToAdd * 24}</b>
               </Typography>
 
-              <Stack gap={"5px"}>
+              <Stack gap={"10px"}>
                 {amountToAdd > 400 && (
                   <Typography variant="caption" color="error">
                     {i18n._(
@@ -193,6 +204,49 @@ export const PaymentModal = () => {
                     )}
                   </Typography>
                 )}
+
+                <Stack gap={"10px"}>
+                  <FormControlLabel
+                    required
+                    sx={{
+                      ".MuiFormControlLabel-asterisk": {
+                        color: "#f24",
+                      },
+                    }}
+                    checked={looseRightChecked}
+                    onChange={(e) => setLooseRightChecked(!looseRightChecked)}
+                    control={<Checkbox />}
+                    label={
+                      <Typography variant="caption">
+                        I want the service to be provided immediately and I acknowledge that as soon
+                        as the Fundacja Rozwoju Przedsiębiorczości "Twój StartUp" provides the
+                        service, I will lose the right to terminate the contract.
+                      </Typography>
+                    }
+                  />
+                  <FormControlLabel
+                    required
+                    sx={{
+                      ".MuiFormControlLabel-asterisk": {
+                        color: "#f24",
+                      },
+                    }}
+                    checked={isTermsChecked}
+                    onChange={(e) => setIsTermsChecked(!isTermsChecked)}
+                    control={<Checkbox />}
+                    label={
+                      <Typography variant="caption">
+                        I accept the{" "}
+                        <Link target="_blank" href={`${getUrlStart(supportedLang)}terms`}>
+                          Terms and Conditions
+                        </Link>{" "}
+                        of the Website operated by Fundacja Rozwoju Przedsiębiorczości "Twój
+                        StartUp" with its registered office in Warsaw.
+                      </Typography>
+                    }
+                  />
+                </Stack>
+
                 <Stack
                   sx={{
                     flexDirection: "row",
@@ -203,7 +257,9 @@ export const PaymentModal = () => {
                     onClick={clickOnConfirmRequest}
                     startIcon={<AssuredWorkloadIcon />}
                     size="large"
-                    disabled={amountToAdd <= 0 || amountToAdd > 400}
+                    disabled={
+                      amountToAdd <= 0 || amountToAdd > 400 || !looseRightChecked || !isTermsChecked
+                    }
                     variant="contained"
                   >
                     {`Continue to payment | PLN ${amountToAdd * 24}`}
