@@ -533,6 +533,94 @@ The Customer can contact Startup:
 
 Pursuant to Regulation (EU) No. 524/2013 of the European Parliament and of the Council of May 21, 2013 on online dispute resolution for consumer disputes and amending Regulation (EC) No. 2006/2004 and Directive 2009/22/EC (Regulation on ODR in consumer disputes), : Fundacja Rozwoju Przedsiębiorczości „Twój StartUp”, based in Warsaw, hereby provides an electronic link to the online ODR (online dispute resolution) platform: https://webgate.ec.europa.eu/odr. The ODR platform enables out-of-court settlement of disputes between businesses and consumers. Settlement of disputes by this method is voluntary.
 
+
+------
+
+## MODEL WITHDRAWAL FORM
+
+(this form must be filled out and returned only if you want to withdraw from the Agreement)
+
+………………………………………………  
+(name of the submitter)  
+
+………………………………………………  
+………………………………………………  
+(address of the submitter)
+
+**Fundacja Rozwoju Przedsiębiorczości**
+**“Twój StartUp”**
+
+Atlas Tower, Al. Jerozolimskie 123a, 18 piętro,  
+02-017 Warsaw  
+Address for service  
+[www.fluencypal.com](https://www.fluencypal.com)
+
+**WITHDRAWAL FROM A CONTRACT**
+
+I, the undersigned, hereby waive the following contract:
+
+1. Date of the contract 
+
+2. Number of contract / order …………………………………
+
+3. The subject of the Contract 
+
+
+Client's signature: ………………………….
+
+
+Date: ………………………….
+
+------
+
+
+
+## COMPLAINT TEMPLATE
+
+
+
+*(this form must be filled out and returned only if you want to submit a complaint)*
+
+………………………………………………  
+*(name of the submitter)*  
+………………………………………………  
+………………………………………………  
+*(address of the submitter)*
+
+Fundacja Rozwoju Przedsiębiorczości  
+“Twój StartUp”  
+Atlas Tower, Al. Jerozolimskie 123a, 18 piętro,  
+02-017 Warsaw  
+**Address for service**  
+[www.fluencypal.com](https://www.fluencypal.com)
+
+**COMPLAINT**
+
+I, the undersigned, hereby submit a complaint regarding the contract/order dated  
+**...............................................** no. **..............................................**  
+the subject of which was  
+
+---
+
+**Reason for the complaint:**  
+
+..........................................................................................  
+..........................................................................................  
+..........................................................................................
+
+*(describe the reason for the complaint)*
+
+---
+
+In view of the above, I request **...............................................**
+
+---
+
+……………………………  
+*Customer's signature*
+
+Date: **…………………………….**
+
 `}
         </Markdown>
       </Stack>
