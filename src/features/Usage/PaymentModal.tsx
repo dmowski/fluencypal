@@ -23,7 +23,7 @@ const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   gift: "Gift",
 };
 
-const isUseStripe = false;
+const isUseStripe = true;
 
 export const PaymentModal = () => {
   const usage = useUsage();
@@ -33,7 +33,7 @@ export const PaymentModal = () => {
   const devEmails = ["dmowski.alex@gmail.com"];
   const notifications = useNotifications();
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
-  const [amountToAdd, setAmountToAdd] = useState(5);
+  const [amountToAdd, setAmountToAdd] = useState(2);
   const [isShowAmountInput, setIsShowAmountInput] = useState(false);
 
   const pathname = usePathname();
@@ -126,9 +126,13 @@ export const PaymentModal = () => {
                   opacity: 0.7,
                 }}
               >
-                {i18n._(`Let's add some money to your balance`)}
+                {i18n._(`Let's add some hours to your balance`)}
               </Typography>
             </Stack>
+
+            <Typography>
+              Price per one hour: <b>PLN 24</b>
+            </Typography>
 
             <Stack
               sx={{
@@ -143,7 +147,7 @@ export const PaymentModal = () => {
               }}
             >
               <TextField
-                label="Amount to pay"
+                label="Amount to add"
                 value={amountToAdd ? amountToAdd : ""}
                 type="text"
                 onChange={(e) => {
@@ -164,47 +168,54 @@ export const PaymentModal = () => {
                   gap: "10px",
                 }}
               >
-                {[5, 10, 20].map((amount) => (
+                {[2, 5, 10, 20].map((amount) => (
                   <Button
                     key={amount}
                     onClick={() => setAmountToAdd(amount)}
                     variant={amount == amountToAdd ? "contained" : "outlined"}
                   >
-                    ${amount}
+                    {amount} hours
                   </Button>
                 ))}
               </Stack>
             </Stack>
-            <Stack gap={"5px"}>
-              {amountToAdd > 400 && (
-                <Typography variant="caption" color="error">
-                  {i18n._(
-                    `Amount is too large. I appreciate your support, but let's keep it under $400`
-                  )}
-                </Typography>
-              )}
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  gap: "10px",
-                }}
-              >
-                <Button
-                  onClick={clickOnConfirmRequest}
-                  startIcon={<AssuredWorkloadIcon />}
-                  size="large"
-                  disabled={amountToAdd <= 0 || amountToAdd > 400}
-                  variant="contained"
-                >
-                  {`Pay $${amountToAdd}`}
-                </Button>
-                <Button
-                  onClick={() => {
-                    setIsShowAmountInput(false);
+
+            <Stack>
+              <Typography variant="h6">
+                Total: <b>PLN {amountToAdd * 24}</b>
+              </Typography>
+
+              <Stack gap={"5px"}>
+                {amountToAdd > 400 && (
+                  <Typography variant="caption" color="error">
+                    {i18n._(
+                      `Amount is too large. I appreciate your support, but let's keep it under $400`
+                    )}
+                  </Typography>
+                )}
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    gap: "10px",
                   }}
                 >
-                  {i18n._(`Cancel`)}
-                </Button>
+                  <Button
+                    onClick={clickOnConfirmRequest}
+                    startIcon={<AssuredWorkloadIcon />}
+                    size="large"
+                    disabled={amountToAdd <= 0 || amountToAdd > 400}
+                    variant="contained"
+                  >
+                    {`Continue to payment | PLN ${amountToAdd * 24}`}
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      setIsShowAmountInput(false);
+                    }}
+                  >
+                    {i18n._(`Cancel`)}
+                  </Button>
+                </Stack>
               </Stack>
             </Stack>
           </Stack>
@@ -288,7 +299,7 @@ export const PaymentModal = () => {
                     }}
                   >
                     <Typography variant="h3">
-                      ${new Intl.NumberFormat().format(usage.balance)}
+                      {new Intl.NumberFormat().format(usage.balance)} hours of AI usage
                     </Typography>
                     <Typography variant="caption">{i18n._(`Current Balance`)}</Typography>
                   </Stack>
@@ -380,9 +391,11 @@ export const PaymentModal = () => {
                   >
                     <Stack>
                       <Typography variant="h3">
-                        ${new Intl.NumberFormat().format(usage.balance)}
+                        {new Intl.NumberFormat().format(usage.balance)} Hours
                       </Typography>
-                      <Typography variant="caption">{i18n._(`Current Balance`)}</Typography>
+                      <Typography variant="caption">
+                        {i18n._(`Current Balance of AI usage`)}
+                      </Typography>
                     </Stack>
                   </Stack>
 
@@ -409,8 +422,8 @@ export const PaymentModal = () => {
                         color: "#c2c2c2",
                       }}
                     >
-                      {i18n._(`Total used:`)}{" "}
-                      <b>${new Intl.NumberFormat().format(usage.usedBalance)}</b>{" "}
+                      {i18n._(`Total used hours:`)}{" "}
+                      <b>{new Intl.NumberFormat().format(usage.usedBalance)}</b>
                     </Typography>
 
                     <Stack

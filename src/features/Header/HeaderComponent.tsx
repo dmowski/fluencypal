@@ -262,6 +262,16 @@ export function HeaderComponent({
               <LanguageSwitcher />
               {auth.isAuthorized ? (
                 <>
+                  <Button
+                    color={
+                      usage.balance > 0.2 ? "primary" : usage.balance >= 0.1 ? "warning" : "error"
+                    }
+                    onClick={() => usage.togglePaymentModal(true)}
+                    startIcon={<Wallet size="20px" />}
+                  >
+                    Balance: {usage.balance > 0 ? "" : usage.balance == 0 ? "" : "- "}
+                    {new Intl.NumberFormat().format(Math.abs(usage.balance))}
+                  </Button>
                   <IconButton
                     onClick={(e) => {
                       setMenuAnchor(e.currentTarget);
