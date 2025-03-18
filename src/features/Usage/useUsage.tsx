@@ -17,6 +17,7 @@ import { db } from "../Firebase/db";
 import { useRouter } from "next/navigation";
 import { initWelcomeBalanceRequest } from "./initWelcomeBalanceRequest";
 import { createUsageLog } from "./createUsageLog";
+import { convertMoneyToHours } from "@/common/ai";
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
@@ -26,6 +27,7 @@ interface UsageContextType extends TotalUsageInfo {
   togglePaymentModal: (isOpen: boolean, isSuccessPayment?: boolean) => void;
   isSuccessPayment: boolean;
   loading: boolean;
+  balanceHours: number;
 }
 
 const UsageContext = createContext<UsageContextType | null>(null);
@@ -123,6 +125,8 @@ function useProvideUsage(): UsageContextType {
     initWelcomeBalance();
   }, [userId, totalUsageDoc]);
 
+  const balanceHours = convertMoneyToHours(totalUsageClean.balance || 0);
+
   return {
     ...totalUsageClean,
     loading: loadingTotalUsage,
@@ -132,6 +136,7 @@ function useProvideUsage(): UsageContextType {
     isShowPaymentModal,
     togglePaymentModal,
     isSuccessPayment,
+    balanceHours,
   };
 }
 

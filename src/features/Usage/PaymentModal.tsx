@@ -25,6 +25,8 @@ import { usePathname } from "next/navigation";
 import { supportedLanguages } from "@/common/lang";
 import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { convertMoneyToHours } from "@/common/ai";
+import { getCurrencySymbol } from "@/libs/currency";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
@@ -369,7 +371,7 @@ export const PaymentModal = () => {
                     }}
                   >
                     <Typography variant="h3">
-                      {new Intl.NumberFormat().format(usage.balance)} hours of AI usage
+                      {new Intl.NumberFormat().format(usage.balanceHours)} hours of AI usage
                     </Typography>
                     <Typography variant="caption">{i18n._(`Current Balance`)}</Typography>
                   </Stack>
@@ -461,10 +463,10 @@ export const PaymentModal = () => {
                   >
                     <Stack>
                       <Typography variant="h3">
-                        {new Intl.NumberFormat().format(usage.balance)} Hours
+                        {new Intl.NumberFormat().format(usage.balanceHours)}
                       </Typography>
                       <Typography variant="caption">
-                        {i18n._(`Current Balance of AI usage`)}
+                        {i18n._(`Current Balance of AI usage (hours)`)}
                       </Typography>
                     </Stack>
                   </Stack>
@@ -493,7 +495,9 @@ export const PaymentModal = () => {
                       }}
                     >
                       {i18n._(`Total used hours:`)}{" "}
-                      <b>{new Intl.NumberFormat().format(usage.usedBalance)}</b>
+                      <b>
+                        {new Intl.NumberFormat().format(convertMoneyToHours(usage.usedBalance))}
+                      </b>
                     </Typography>
 
                     <Stack
@@ -566,7 +570,9 @@ export const PaymentModal = () => {
                                   }}
                                 >
                                   <Stack>
-                                    <Typography variant="h6">${log.amountAdded}</Typography>
+                                    <Typography variant="h6">
+                                      {log.currency.toUpperCase()} {log.amountAdded}
+                                    </Typography>
                                     <Typography variant="body2">
                                       {paymentTypeLabelMap[log.type]}
                                     </Typography>

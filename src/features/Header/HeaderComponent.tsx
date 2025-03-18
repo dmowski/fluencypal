@@ -266,17 +266,18 @@ export function HeaderComponent({
                     color={
                       usage.loading
                         ? "info"
-                        : usage.balance > 0.2
+                        : usage.balanceHours > 0.2
                           ? "primary"
-                          : usage.balance >= 0.1
+                          : usage.balanceHours >= 0.1
                             ? "warning"
                             : "error"
                     }
                     onClick={() => usage.togglePaymentModal(true)}
                     startIcon={<Wallet size="20px" />}
                   >
-                    {balanceTitle}: {usage.balance > 0 ? "" : usage.balance == 0 ? "" : "- "}
-                    {new Intl.NumberFormat().format(Math.abs(usage.balance))}
+                    {balanceTitle}:{" "}
+                    {usage.balanceHours > 0 ? "" : usage.balanceHours == 0 ? "" : "- "}
+                    {new Intl.NumberFormat().format(Math.abs(usage.balanceHours))}
                   </Button>
                   <IconButton
                     onClick={(e) => {

@@ -80,6 +80,7 @@ interface RealtimeUsagePrice {
   audio_output: number;
 }
 
+// USD
 // https://openai.com/api/pricing/
 // Realtime API
 export const modalPricePerMillionTokens: Record<RealTimeModel, RealtimeUsagePrice> = {
@@ -100,7 +101,7 @@ export const modalPricePerMillionTokens: Record<RealTimeModel, RealtimeUsagePric
     audio_output: 20,
   },
 };
-
+// USD
 const calculateOutputPrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   const textOutput = usageEvent.output_token_details.text_tokens;
   const audioOutput = usageEvent.output_token_details.audio_tokens;
@@ -110,6 +111,7 @@ const calculateOutputPrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   return textPrice + audioPrice;
 };
 
+// USD
 const calculateInputPrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   const price = modalPricePerMillionTokens[model];
   const cachedTextInput = usageEvent.input_token_details.cached_tokens_details.text_tokens;
@@ -125,6 +127,7 @@ const calculateInputPrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   return fullTextPrice + cachedTextPrice + fullAudioPrice + cachedAudioPrice;
 };
 
+// USD
 export const calculateUsagePrice = (usageEvent: UsageEvent, model: RealTimeModel) => {
   const inputPrice = calculateInputPrice(usageEvent, model);
   const outputPrice = calculateOutputPrice(usageEvent, model);
@@ -132,4 +135,10 @@ export const calculateUsagePrice = (usageEvent: UsageEvent, model: RealTimeModel
   const profit = usagePrice * PROJECT_PROFIT_MARGIN;
   const price = usagePrice + profit;
   return price;
+};
+
+const pricePerHour = 6; // $6 is one hour
+
+export const convertMoneyToHours = (money: number) => {
+  return money / pricePerHour;
 };
