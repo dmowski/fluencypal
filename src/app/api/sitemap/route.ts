@@ -54,9 +54,17 @@ export async function GET(request: Request) {
     }));
 
   const scenariosData = getRolePlayScenarios("en");
-  const scenariosUrls: UrlDefinition[] = scenariosData.map((item) => ({
+  const rolePlayScenarios = scenariosData.rolePlayScenarios;
+  const rolePlayCategories = scenariosData.categoriesList;
+
+  const scenariosUrls: UrlDefinition[] = rolePlayScenarios.map((item) => ({
     path: `scenarios/${item.id}`,
     priority: "0.7000",
+  }));
+
+  const scenariosCategoriesUrls: UrlDefinition[] = rolePlayCategories.map((item) => ({
+    path: `scenarios?category=${item.categoryId}`,
+    priority: "0.6000",
   }));
 
   const blogs = getBlogs("en");
@@ -109,6 +117,7 @@ export async function GET(request: Request) {
 
     ...localeLinks,
     ...scenariosUrls,
+    ...scenariosCategoriesUrls,
     ...blogsUrls,
   ];
 

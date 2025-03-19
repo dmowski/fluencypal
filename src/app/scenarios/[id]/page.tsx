@@ -16,7 +16,7 @@ export async function generateStaticParams() {
   const rolePlayScenarios = getRolePlayScenarios("en");
   return supportedLanguages
     .map((lang: string) => {
-      return rolePlayScenarios.map((scenario) => {
+      return rolePlayScenarios.rolePlayScenarios.map((scenario) => {
         return { id: scenario.id, lang };
       });
     })

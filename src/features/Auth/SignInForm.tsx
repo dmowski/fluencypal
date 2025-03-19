@@ -4,22 +4,22 @@ import { useAuth } from "./useAuth";
 import GoogleIcon from "@mui/icons-material/Google";
 import { StarContainer } from "../Layout/StarContainer";
 import { useSearchParams } from "next/navigation";
-import { RolePlayInstruction } from "../RolePlay/types";
 import { useLingui } from "@lingui/react";
 import { SupportedLanguage } from "@/common/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 
 interface SignInFormProps {
-  rolePlayScenarios: RolePlayInstruction[];
+  rolePlayInfo: RolePlayScenariosInfo;
   lang: SupportedLanguage;
 }
-export const SignInForm = ({ rolePlayScenarios, lang }: SignInFormProps) => {
+export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   const auth = useAuth();
   const searchParams = useSearchParams();
   const { i18n } = useLingui();
   const rolePlayId = searchParams.get("rolePlayId");
   const scenario = rolePlayId
-    ? rolePlayScenarios.find((scenario) => scenario.id === rolePlayId)
+    ? rolePlayInfo.rolePlayScenarios.find((scenario) => scenario.id === rolePlayId)
     : null;
 
   const pageTitle = scenario ? scenario.title : i18n._(`Start the Lesson`);

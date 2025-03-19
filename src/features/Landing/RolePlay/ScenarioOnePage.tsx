@@ -25,7 +25,7 @@ interface ScenarioOnePageProps {
 
 export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
   const i18n = getI18nInstance(lang);
-  const rolePlayScenarios = getRolePlayScenarios(lang);
+  const { rolePlayScenarios } = getRolePlayScenarios(lang);
   const item = rolePlayScenarios.find((scenario) => scenario.id === id);
   if (!item) {
     return null;

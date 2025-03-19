@@ -1,5 +1,5 @@
 import { AiVoice } from "@/common/ai";
-import { MessageDescriptor } from "@lingui/core";
+import { ResourceCategory } from "@/common/category";
 
 export type RolePlayInputType = "text-input" | "textarea" | "options";
 export interface InputStructureForUser {
@@ -32,7 +32,7 @@ export type AiRolePlayInstructionCreator = (
 
 export interface RolePlayInstruction {
   id: string;
-  category: string;
+  category: ResourceCategory;
   landingHighlight?: string;
   title: string;
   subTitle: string;

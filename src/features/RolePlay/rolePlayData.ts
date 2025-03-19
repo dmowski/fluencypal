@@ -1,16 +1,20 @@
 import { SupportedLanguage } from "@/common/lang";
 import { RolePlayInstruction } from "./types";
 import { getI18nInstance } from "@/appRouterI18n";
+import { ResourceCategory } from "@/common/category";
 
-export const getRolePlayScenarios: (lang: SupportedLanguage) => Array<RolePlayInstruction> = (
-  lang
-) => {
+export interface RolePlayScenariosInfo {
+  rolePlayScenarios: RolePlayInstruction[];
+  categoriesList: ResourceCategory[];
+  allCategory: ResourceCategory;
+}
+
+export const getRolePlayScenarios = (lang: SupportedLanguage): RolePlayScenariosInfo => {
   const i18n = getI18nInstance(lang);
-
-  return [
+  const rolePlayScenarios: RolePlayInstruction[] = [
     {
       id: "alias-game",
-      category: i18n._("Game"),
+      category: { categoryTitle: i18n._("Game"), categoryId: "game" },
       input: [
         {
           type: "options",
@@ -90,7 +94,7 @@ Gameplay Sequence:
 
 ## How the Scenario Works  
 In this scenario, you’ll take on the role of a job candidate while our AI acts as a professional recruiter. You’ll be asked about your experience, skills, and motivations for the role, with the AI adjusting difficulty based on your responses. Use the prompts to practice delivering concise, persuasive answers that help you stand out in any job interview.`),
-      category: i18n._("Professional"),
+      category: { categoryTitle: i18n._("Professional"), categoryId: "professional" },
       analyzeResultAiInstruction: `Analyze the user's responses and provide constructive feedback on their interview performance. Highlight areas of strength and suggest improvements for future interviews.`,
       input: [
         {
@@ -171,7 +175,7 @@ Candidate's info below, don't include questions that are already answered by can
 
 ## How the Scenario Works
 In this scenario, you’ll step into the role of someone meeting a new acquaintance at a social event. The AI acts as a friendly stranger, prompting you to talk about casual topics like weather or shared interests. As you exchange pleasantries, the AI will adapt to your responses, helping you refine your small-talk abilities.`),
-      category: i18n._("Social"),
+      category: { categoryTitle: i18n._("Social"), categoryId: "social" },
       input: [],
       title: i18n._("Small Talk Practice"),
       subTitle: i18n._("Develop your conversational skills with casual small talk"),
@@ -187,7 +191,7 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
     },
     {
       id: "instant-correction",
-      category: i18n._("Speech"),
+      category: { categoryTitle: i18n._("Speech"), categoryId: "speech" },
       title: i18n._("Instant Speech Correction"),
       subTitle: i18n._("Real-time feedback to improve your spoken English"),
 
@@ -261,7 +265,7 @@ Example of topics: weather, hobbies, family, work, travel, food, music, movies, 
 
     {
       id: "in-the-restaurant",
-      category: i18n._("Social"),
+      category: { categoryTitle: i18n._("Social"), categoryId: "social" },
       input: [],
       title: i18n._("In the Restaurant"),
       subTitle: i18n._("Practice ordering food and interacting with a waiter in a restaurant"),
@@ -316,7 +320,7 @@ You’ll outline your own role-play by providing a brief description of the sett
 `),
       title: i18n._("Create Your Own Role-Play Scenario"),
       subTitle: i18n._("Customize a conversation to fit your unique learning needs"),
-      category: i18n._("Custom"),
+      category: { categoryTitle: i18n._("Custom"), categoryId: "custom" },
 
       instructionToAi: "",
       exampleOfFirstMessageFromAi: "",
@@ -341,7 +345,7 @@ You’ll outline your own role-play by providing a brief description of the sett
 In this scenario, you’ll step into the role of a traveler looking to buy a ticket. The AI takes on the role of a train station ticket agent, asking you where you’re headed, when you’re departing, and what type of ticket you need. By interacting with the AI, you’ll master the art of asking the right questions and understanding key information about your journey.
 `),
       input: [],
-      category: i18n._("Travel"),
+      category: { categoryTitle: i18n._("Travel"), categoryId: "travel" },
 
       title: i18n._("Buying a Train Ticket"),
       subTitle: i18n._("Practice asking about schedules, fares, and ticket options"),
@@ -369,7 +373,7 @@ In this scenario, you’ll step into the role of a traveler looking to buy a tic
 ## How the Scenario Works
 In this scenario, you’ll portray a fellow dog owner meeting an AI-driven character at the park. The AI will greet you warmly, ask about your dog, and share pet stories or advice. Your goal is to respond naturally, keep the conversation flowing, and enjoy a fun exchange about your four-legged friends.
 `),
-      category: i18n._("Social"),
+      category: { categoryTitle: i18n._("Social"), categoryId: "social" },
       input: [
         {
           type: "options",
@@ -419,7 +423,7 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
 ## How the Scenario Works
 You’ll take on the role of a patient visiting a doctor, played by the AI. The doctor will ask about your symptoms, provide advice, and suggest possible treatments. By conversing naturally, you’ll hone your communication skills in a professional healthcare context.
 `),
-      category: i18n._("Health"),
+      category: { categoryTitle: i18n._("Health"), categoryId: "health" },
       input: [],
       title: i18n._("Talking to a Doctor"),
       subTitle: i18n._("Learn to describe symptoms and ask for medical advice effectively"),
@@ -447,7 +451,7 @@ You’ll take on the role of a patient visiting a doctor, played by the AI. The 
 ## How the Scenario Works
 You’ll act as the guest arriving at the hotel, while our AI plays the role of a receptionist. The receptionist will ask for your name, reservation details, and any special requests you might have. By responding naturally, you’ll build the conversational skills necessary for a smooth hotel check-in experience.
 `),
-      category: i18n._("Travel"),
+      category: { categoryTitle: i18n._("Travel"), categoryId: "travel" },
       input: [],
       title: i18n._("Hotel Check-In Conversation"),
       subTitle: i18n._("Practice booking a room, requesting amenities, and checking in"),
@@ -476,7 +480,7 @@ You’ll act as the guest arriving at the hotel, while our AI plays the role of 
 #### How the Scenario Works
 You’ll take the role of a customer shopping for groceries. The AI, as a store employee, will ask what you’re looking for, suggest deals, and guide you to the right products. This interactive role-play simulates a realistic shopping experience, helping you build essential communication skills.
 `),
-      category: i18n._("Shopping"),
+      category: { categoryTitle: i18n._("Shopping"), categoryId: "shopping" },
       input: [],
       title: i18n._("Shopping at the Grocery Store"),
       subTitle: i18n._("Practice asking for product recommendations and making purchases"),
@@ -505,7 +509,7 @@ You’ll take the role of a customer shopping for groceries. The AI, as a store 
 #### How the Scenario Works
 You’ll act as a caller seeking help with a technical issue, while the AI plays the support agent. The agent will ask for details, guide you through possible solutions, and offer next steps. This scenario helps you get comfortable navigating tech problems and communicating solutions.
 `),
-      category: i18n._("Professional"),
+      category: { categoryTitle: i18n._("Professional"), categoryId: "professional" },
       input: [],
       title: i18n._("Calling Customer Support"),
       subTitle: i18n._("Practice troubleshooting a technical issue over the phone"),
@@ -534,7 +538,7 @@ You’ll act as a caller seeking help with a technical issue, while the AI plays
 #### How the Scenario Works
 You’ll take the role of a patient calling a doctor’s office to schedule an appointment. The AI, as a receptionist, will ask for your name, preferred date, and reason for the visit. By responding naturally, you’ll build essential communication skills for any medical context.
 `),
-      category: i18n._("Health"),
+      category: { categoryTitle: i18n._("Health"), categoryId: "health" },
       input: [],
       title: i18n._("Booking a Doctor's Appointment"),
       subTitle: i18n._("Learn how to schedule a medical visit over the phone"),
@@ -562,7 +566,7 @@ You’ll take the role of a patient calling a doctor’s office to schedule an a
 #### How the Scenario Works
 You’ll step into the role of a customer returning a product, while the AI acts as the store employee. The AI will ask why you’re returning the item and discuss available options. This practical scenario helps you master polite, efficient communication in retail situations.
 `),
-      category: i18n._("Shopping"),
+      category: { categoryTitle: i18n._("Shopping"), categoryId: "shopping" },
       input: [],
       title: i18n._("Returning an Item to a Store"),
       subTitle: i18n._("Practice explaining product issues and requesting refunds or exchanges"),
@@ -577,7 +581,7 @@ You’ll step into the role of a customer returning a product, while the AI acts
     },
     {
       id: "meeting-with-psychologist",
-      category: i18n._("Health"),
+      category: { categoryTitle: i18n._("Health"), categoryId: "health" },
       input: [
         {
           type: "options",
@@ -630,4 +634,22 @@ You'll act as a client meeting a psychologist for an informal discussion about m
 `),
     },
   ];
+
+  const categoriesList: ResourceCategory[] = [];
+
+  rolePlayScenarios.forEach((rolePlay) => {
+    const category = rolePlay.category;
+    if (!categoriesList.find((cat) => cat.categoryId === category.categoryId)) {
+      categoriesList.push(category);
+    }
+  });
+
+  const allCategory = {
+    categoryTitle: i18n._(`All Scenarios`),
+    categoryId: "all",
+    isAllResources: true,
+  };
+
+  categoriesList.unshift(allCategory);
+  return { rolePlayScenarios, categoriesList, allCategory };
 };

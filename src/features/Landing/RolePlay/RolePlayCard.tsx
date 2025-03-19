@@ -103,7 +103,7 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
                 paddingBottom: "10px",
               }}
             >
-              {scenario.category}
+              {scenario.category.categoryTitle}
             </Typography>
           )}
           <Typography

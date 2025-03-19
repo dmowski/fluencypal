@@ -32,7 +32,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
     return null;
   }
 
-  const rolePlayScenarios = getRolePlayScenarios(lang);
+  const { rolePlayScenarios } = getRolePlayScenarios(lang);
 
   const relatedCards = rolePlayScenarios.filter((scenario) =>
     item.relatedRolePlays.includes(scenario.id)

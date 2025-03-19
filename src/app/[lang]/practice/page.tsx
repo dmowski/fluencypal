@@ -33,7 +33,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
 
-  const rolePlayScenarios = getRolePlayScenarios(supportedLang);
+  const rolePlayInfo = getRolePlayScenarios(supportedLang);
 
   return (
     <LinguiClientProvider
@@ -42,7 +42,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
     >
       <Header mode="practice" lang={supportedLang} />
       <main>
-        <ConversationPage rolePlayScenarios={rolePlayScenarios} lang={supportedLang} />
+        <ConversationPage rolePlayInfo={rolePlayInfo} lang={supportedLang} />
       </main>
     </LinguiClientProvider>
   );

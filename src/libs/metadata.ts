@@ -162,7 +162,7 @@ export const generateMetadataInfo = ({
 
   if (currentPath === "scenarios" && scenarioId) {
     const rolePlayScenarios = getRolePlayScenarios(supportedLang);
-    const scenario = rolePlayScenarios.find((s) => s.id === scenarioId);
+    const scenario = rolePlayScenarios.rolePlayScenarios.find((s) => s.id === scenarioId);
 
     title =
       `${scenario?.title || "Scenario"} - ` +

@@ -19,11 +19,12 @@ import { HomeworkCard } from "./HomeworkCard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
 import { RolePlayInstruction } from "../RolePlay/types";
 import { useLingui } from "@lingui/react";
+import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 
 interface DashboardProps {
-  rolePlayScenarios: RolePlayInstruction[];
+  rolePlayInfo: RolePlayScenariosInfo;
 }
-export function Dashboard({ rolePlayScenarios }: DashboardProps) {
+export function Dashboard({ rolePlayInfo }: DashboardProps) {
   const settings = useSettings();
   const aiConversation = useAiConversation();
   const words = useWords();
@@ -84,7 +85,7 @@ export function Dashboard({ rolePlayScenarios }: DashboardProps) {
         }}
       >
         <ConversationSelectCard />
-        <RolePlayBoard rolePlayScenarios={rolePlayScenarios} />
+        <RolePlayBoard rolePlayInfo={rolePlayInfo} />
 
         <Stack
           sx={{

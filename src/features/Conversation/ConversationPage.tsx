@@ -9,15 +9,15 @@ import { useSettings } from "../Settings/useSettings";
 import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
 import { ConversationCanvas } from "./ConversationCanvas";
 import { Dashboard } from "../Dashboard/Dashboard";
-import { RolePlayInstruction } from "../RolePlay/types";
 import { SupportedLanguage } from "@/common/lang";
+import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 
 interface ConversationPageProps {
-  rolePlayScenarios: RolePlayInstruction[];
+  rolePlayInfo: RolePlayScenariosInfo;
   lang: SupportedLanguage;
 }
 
-export function ConversationPage({ rolePlayScenarios, lang }: ConversationPageProps) {
+export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) {
   const auth = useAuth();
   const settings = useSettings();
   const aiConversation = useAiConversation();
@@ -42,7 +42,7 @@ export function ConversationPage({ rolePlayScenarios, lang }: ConversationPagePr
         </Typography>
       </Stack>
     );
-  if (!auth.isAuthorized) return <SignInForm rolePlayScenarios={rolePlayScenarios} lang={lang} />;
+  if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
   if (usage.balanceHours <= 0.01) return <NoBalanceBlock />;
 
   return (
@@ -50,7 +50,7 @@ export function ConversationPage({ rolePlayScenarios, lang }: ConversationPagePr
       {aiConversation.isStarted ? (
         <ConversationCanvas />
       ) : (
-        <Dashboard rolePlayScenarios={rolePlayScenarios} />
+        <Dashboard rolePlayInfo={rolePlayInfo} />
       )}
     </Stack>
   );

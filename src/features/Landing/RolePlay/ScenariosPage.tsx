@@ -37,7 +37,7 @@ export const ScenariosPage = ({ selectedCategory, lang }: ScenariosPageProps) =>
           component={"main"}
         >
           <ListRolePlayIntro lang={lang} />
-          <ListRolePlay selectedCategory={selectedCategory} lang={lang} />
+          <ListRolePlay selectedCategoryId={selectedCategory} lang={lang} />
         </Stack>
         <CtaBlock
           title={i18n._(`Start Your Journey to Fluent Conversations Now`)}

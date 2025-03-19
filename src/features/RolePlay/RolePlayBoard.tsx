@@ -38,6 +38,7 @@ import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { supportedLanguages } from "@/common/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useLingui } from "@lingui/react";
+import { RolePlayScenariosInfo } from "./rolePlayData";
 
 const firstLimit = 6;
 const hardHeight = "300px";
@@ -90,9 +91,9 @@ ${additionalInfo}`;
 };
 
 interface RolePlayBoardProps {
-  rolePlayScenarios: RolePlayInstruction[];
+  rolePlayInfo: RolePlayScenariosInfo;
 }
-export const RolePlayBoard = ({ rolePlayScenarios }: RolePlayBoardProps) => {
+export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { i18n } = useLingui();
@@ -144,18 +145,20 @@ export const RolePlayBoard = ({ rolePlayScenarios }: RolePlayBoardProps) => {
 
   const visibleScenarios =
     selectedTab === allCategoriesLabel
-      ? rolePlayScenarios.filter((_, index) => !isLimited || index < firstLimit)
-      : rolePlayScenarios.filter((scenario) => scenario.category === selectedTab);
+      ? rolePlayInfo.rolePlayScenarios.filter((_, index) => !isLimited || index < firstLimit)
+      : rolePlayInfo.rolePlayScenarios.filter(
+          (scenario) => scenario.category.categoryTitle === selectedTab
+        );
 
   const allTabs = uniq([
     allCategoriesLabel,
-    ...rolePlayScenarios.map((scenario) => scenario.category),
+    ...rolePlayInfo.rolePlayScenarios.map((scenario) => scenario.category.categoryTitle),
   ]);
 
   useEffect(() => {
     if (!rolePlayId || rolePlayId == selectedRolePlayScenario?.id) return;
 
-    const scenario = rolePlayScenarios.find((scenario) => scenario.id === rolePlayId);
+    const scenario = rolePlayInfo.rolePlayScenarios.find((scenario) => scenario.id === rolePlayId);
     if (scenario) {
       setSelectedRolePlayScenario(scenario);
     }

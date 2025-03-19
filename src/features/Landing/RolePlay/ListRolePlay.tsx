@@ -7,26 +7,19 @@ import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 
 interface ListRolePlayProps {
-  selectedCategory?: string;
+  selectedCategoryId?: string;
   lang: SupportedLanguage;
 }
-export const ListRolePlay = ({ lang, selectedCategory }: ListRolePlayProps) => {
-  const rolePlayScenarios = getRolePlayScenarios(lang);
+export const ListRolePlay = ({ lang, selectedCategoryId }: ListRolePlayProps) => {
+  const { rolePlayScenarios, categoriesList, allCategory } = getRolePlayScenarios(lang);
   const i18n = getI18nInstance(lang);
-  const allScenarios = i18n._(`All scenarios`);
 
-  const categoryList = rolePlayScenarios.reduce((acc, scenario) => {
-    if (!acc.includes(scenario.category)) {
-      acc.push(scenario.category);
-    }
-    return acc;
-  }, [] as string[]);
-  categoryList.unshift(allScenarios);
+  const title =
+    categoriesList.find((category) => category.categoryId === selectedCategoryId)?.categoryTitle ||
+    i18n._(`Role Play Scenarios`);
 
-  const title = selectedCategory || allScenarios;
-
-  const listToDisplay = selectedCategory
-    ? rolePlayScenarios.filter((scenario) => scenario.category === selectedCategory)
+  const listToDisplay = selectedCategoryId
+    ? rolePlayScenarios.filter((scenario) => scenario.category.categoryId === selectedCategoryId)
     : rolePlayScenarios;
 
   return (
@@ -77,10 +70,11 @@ export const ListRolePlay = ({ lang, selectedCategory }: ListRolePlayProps) => {
             {i18n._(`Discover`)}
           </Typography>
           <Stack component={"nav"} gap={"0px"}>
-            {categoryList.map((category, index) => {
+            {categoriesList.map((category, index) => {
               const isSelected =
-                selectedCategory === category || (!selectedCategory && category === allScenarios);
-              const isAllScenarios = category === allScenarios;
+                selectedCategoryId === category.categoryId ||
+                (!selectedCategoryId && category.categoryId === allCategory.categoryId);
+              const isAllScenarios = category.categoryId === allCategory.categoryId;
               return (
                 <Link
                   key={index}
@@ -88,7 +82,7 @@ export const ListRolePlay = ({ lang, selectedCategory }: ListRolePlayProps) => {
                   href={
                     isAllScenarios
                       ? `${getUrlStart(lang)}scenarios`
-                      : `${getUrlStart(lang)}scenarios?category=${category}`
+                      : `${getUrlStart(lang)}scenarios?category=${category.categoryId}`
                   }
                   sx={{
                     color: "#000",
@@ -102,7 +96,7 @@ export const ListRolePlay = ({ lang, selectedCategory }: ListRolePlayProps) => {
                     },
                   }}
                 >
-                  {category}
+                  {category.categoryTitle}
                 </Link>
               );
             })}
