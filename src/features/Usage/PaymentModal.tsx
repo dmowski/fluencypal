@@ -44,6 +44,7 @@ export const PaymentModal = () => {
   const notifications = useNotifications();
   const [looseRightChecked, setLooseRightChecked] = useState(false);
   const [isTermsChecked, setIsTermsChecked] = useState(false);
+  const [isMarketingChecked, setIsMarketingChecked] = useState(false);
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
   const [amountToAdd, setAmountToAdd] = useState(2);
   const [isShowAmountInput, setIsShowAmountInput] = useState(false);
@@ -288,7 +289,7 @@ export const PaymentModal = () => {
                   </Typography>
                 )}
 
-                <Stack gap={"10px"}>
+                <Stack gap={"2px"}>
                   <FormControlLabel
                     required
                     sx={{
@@ -325,6 +326,22 @@ export const PaymentModal = () => {
                         </Link>{" "}
                         {i18n._(`of the Website operated by Fundacja Rozwoju Przedsiębiorczości "Twój
                         StartUp" with its registered office in Warsaw.`)}
+                      </Typography>
+                    }
+                  />
+
+                  <FormControlLabel
+                    sx={{
+                      ".MuiFormControlLabel-asterisk": {
+                        color: "#f24",
+                      },
+                    }}
+                    checked={isMarketingChecked}
+                    onChange={(e) => setIsMarketingChecked(!isMarketingChecked)}
+                    control={<Checkbox />}
+                    label={
+                      <Typography variant="caption">
+                        {i18n._(`I want to receive commercial and marketing content`)}
                       </Typography>
                     }
                   />
