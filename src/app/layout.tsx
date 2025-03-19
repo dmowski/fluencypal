@@ -95,7 +95,11 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={`${inter.className} ${oldStandardTT.className}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
         <link rel="apple-touch-icon" href="/logo192.png" />
       </head>
       <body>
