@@ -129,6 +129,13 @@ export const PaymentModal = () => {
               gap: "30px",
               alignItems: "flex-start",
             }}
+            component={"form"}
+            action={"#"}
+            onSubmit={(e) => {
+              console.log("e", e);
+              e.preventDefault();
+              clickOnConfirmRequest();
+            }}
           >
             <Stack>
               <Typography variant="h4" component="h2">
@@ -237,19 +244,6 @@ export const PaymentModal = () => {
                     `Access to all functionalities on app where AI is present: speaking, analyzing, role-plays, new words and runles creator.`
                   )}
                 </Typography>
-
-                <Typography
-                  variant="caption"
-                  sx={{
-                    paddingBottom: "10px",
-                  }}
-                >
-                  <b>{i18n._(`Minimum contract duration:`)}</b>
-                  <br />
-                  {i18n._(
-                    `There’s no contract. Your hours stay with you until you use them — they don’t expire.`
-                  )}
-                </Typography>
               </Stack>
             </Stack>
 
@@ -354,16 +348,14 @@ export const PaymentModal = () => {
                   }}
                 >
                   <Button
-                    onClick={clickOnConfirmRequest}
                     startIcon={<AssuredWorkloadIcon />}
                     size="large"
                     color="info"
+                    type="submit"
                     sx={{
                       padding: "10px 25px",
                     }}
-                    disabled={
-                      amountToAdd <= 0 || amountToAdd > 400 || !looseRightChecked || !isTermsChecked
-                    }
+                    disabled={amountToAdd <= 0 || amountToAdd > 400}
                     variant="contained"
                   >
                     {i18n._(`Continue to payment`)} | PLN {amountToAdd * 24}
