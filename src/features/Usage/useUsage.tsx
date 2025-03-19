@@ -123,7 +123,7 @@ function useProvideUsage(): UsageContextType {
     usedHours: totalUsage?.usedHours || 0,
     balanceHours: totalUsage?.balanceHours || 0,
 
-    loading: loadingTotalUsage,
+    loading: loadingTotalUsage || !totalUsage,
     paymentLogs: paymentLogs,
     usageLogs,
     setUsageLogs,
