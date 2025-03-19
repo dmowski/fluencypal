@@ -26,7 +26,7 @@ interface BlogOnePageProps {
 
 export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
   const i18n = getI18nInstance(lang);
-  const blogs = getBlogs(lang);
+  const { blogs } = getBlogs(lang);
   const item = blogs.find((scenario) => scenario.id === id);
   if (!item) {
     return null;

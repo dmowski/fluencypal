@@ -1,3 +1,5 @@
+import { ResourceCategory } from "@/common/category";
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -9,6 +11,6 @@ export interface BlogPost {
   videoSrc?: string;
 
   publishedAt: number;
-  category: string;
+  category: ResourceCategory;
   relatedRolePlays: string[];
 }

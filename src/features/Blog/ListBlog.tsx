@@ -7,26 +7,19 @@ import { getBlogs } from "./blogData";
 import { BlogCard } from "./BlogCard";
 
 interface ListBlogProps {
-  selectedCategory?: string;
+  selectedCategoryId?: string;
   lang: SupportedLanguage;
 }
-export const ListBlog = ({ lang, selectedCategory }: ListBlogProps) => {
-  const blogs = getBlogs(lang);
+export const ListBlog = ({ lang, selectedCategoryId }: ListBlogProps) => {
+  const { blogs, allCategory, categoriesList } = getBlogs(lang);
   const i18n = getI18nInstance(lang);
-  const allScenarios = i18n._(`All blogs`);
 
-  const categoryList = blogs.reduce((acc, scenario) => {
-    if (!acc.includes(scenario.category)) {
-      acc.push(scenario.category);
-    }
-    return acc;
-  }, [] as string[]);
-  categoryList.unshift(allScenarios);
+  const selectedCategory = categoriesList.find((c) => c.categoryId === selectedCategoryId);
 
-  const title = selectedCategory || allScenarios;
+  const title = selectedCategory?.categoryTitle || allCategory.categoryTitle;
 
   const listToDisplay = selectedCategory
-    ? blogs.filter((item) => item.category === selectedCategory)
+    ? blogs.filter((item) => item.category.categoryId === selectedCategoryId)
     : blogs;
 
   return (
@@ -77,10 +70,11 @@ export const ListBlog = ({ lang, selectedCategory }: ListBlogProps) => {
             {i18n._(`Discover`)}
           </Typography>
           <Stack component={"nav"} gap={"0px"}>
-            {categoryList.map((category, index) => {
+            {categoriesList.map((category, index) => {
               const isSelected =
-                selectedCategory === category || (!selectedCategory && category === allScenarios);
-              const isAllScenarios = category === allScenarios;
+                selectedCategoryId === category.categoryId ||
+                (!selectedCategoryId && category.categoryId === allCategory.categoryId);
+              const isAllScenarios = category.categoryId === allCategory.categoryId;
               return (
                 <Link
                   key={index}
@@ -102,7 +96,7 @@ export const ListBlog = ({ lang, selectedCategory }: ListBlogProps) => {
                     },
                   }}
                 >
-                  {category}
+                  {category.categoryTitle}
                 </Link>
               );
             })}

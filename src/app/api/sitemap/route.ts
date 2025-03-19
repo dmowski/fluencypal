@@ -68,8 +68,14 @@ export async function GET(request: Request) {
   }));
 
   const blogs = getBlogs("en");
-  const blogsUrls: UrlDefinition[] = blogs.map((item) => ({
+  const blogsItems = blogs.blogs;
+  const blogsCategories = blogs.categoriesList;
+  const blogsUrls: UrlDefinition[] = blogsItems.map((item) => ({
     path: `blog/${item.id}`,
+    priority: "0.6000",
+  }));
+  const blogsCategoriesUrls: UrlDefinition[] = blogsCategories.map((item) => ({
+    path: `blog?category=${item.categoryId}`,
     priority: "0.6000",
   }));
 
@@ -119,6 +125,7 @@ export async function GET(request: Request) {
     ...scenariosUrls,
     ...scenariosCategoriesUrls,
     ...blogsUrls,
+    ...blogsCategoriesUrls,
   ];
 
   const textResponse = `<?xml version="1.0" encoding="UTF-8"?>

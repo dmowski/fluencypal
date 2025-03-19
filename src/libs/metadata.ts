@@ -150,7 +150,7 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === "blog" && blogId) {
-    const blogs = getBlogs(supportedLang);
+    const { blogs } = getBlogs(supportedLang);
     const blog = blogs.find((b) => b.id === blogId);
 
     title =

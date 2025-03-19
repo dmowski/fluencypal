@@ -35,7 +35,7 @@ export const BlogsPage = ({ selectedCategory, lang }: BlogsPageProps) => {
           component={"main"}
         >
           <ListBlogIntro lang={lang} />
-          <ListBlog selectedCategory={selectedCategory} lang={lang} />
+          <ListBlog selectedCategoryId={selectedCategory} lang={lang} />
         </Stack>
         <CtaBlock
           title={i18n._(`Start Your Journey to Fluent Conversations Now`)}

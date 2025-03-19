@@ -119,7 +119,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blog, lang, height, variant 
                 paddingBottom: "10px",
               }}
             >
-              {blog.category}
+              {blog.category.categoryTitle}
             </Typography>
           )}
           <Typography

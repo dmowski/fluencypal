@@ -13,11 +13,11 @@ interface BlogProps {
 }
 
 export async function generateStaticParams() {
-  const blogs = getBlogs("en");
+  const { blogs } = getBlogs("en");
   return supportedLanguages
     .map((lang: string) => {
-      return blogs.map((scenario) => {
-        return { id: scenario.id, lang };
+      return blogs.map((item) => {
+        return { id: item.id, lang };
       });
     })
     .flat();

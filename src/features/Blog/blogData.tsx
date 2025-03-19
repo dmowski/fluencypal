@@ -1,10 +1,17 @@
 import { SupportedLanguage } from "@/common/lang";
 import { BlogPost } from "./types";
 import { getI18nInstance } from "@/appRouterI18n";
+import { ResourceCategory } from "@/common/category";
 
-export const getBlogs: (lang: SupportedLanguage) => Array<BlogPost> = (lang) => {
+export interface BlogInfo {
+  blogs: BlogPost[];
+  categoriesList: ResourceCategory[];
+  allCategory: ResourceCategory;
+}
+
+export const getBlogs = (lang: SupportedLanguage): BlogInfo => {
   const i18n = getI18nInstance(lang);
-  return [
+  const blogs: BlogPost[] = [
     {
       id: "15-business-english-phrases-interview",
       title: i18n._("15 Must-Know Business English Phrases to Ace Your Next Job Interview"),
@@ -61,7 +68,10 @@ The best way to master these phrases is by practicing them in realistic scenario
       ),
       imagePreviewUrl: "/blog/3c18e767-f547-4b15-88fd-9ce1f92fa1c4.jpeg",
       publishedAt: Date.now(),
-      category: i18n._("Business English"),
+      category: {
+        categoryTitle: i18n._("Business English"),
+        categoryId: "business_english",
+      },
       relatedRolePlays: ["job-interview"],
     },
 
@@ -84,7 +94,10 @@ The best way to master these phrases is by practicing them in realistic scenario
       ),
       imagePreviewUrl: "/blog/e6b6f478-7092-4d5c-aea9-a9bcf4775733.jpeg",
       publishedAt: Date.now(),
-      category: i18n._("Business English"),
+      category: {
+        categoryTitle: i18n._("Business English"),
+        categoryId: "business_english",
+      },
       relatedRolePlays: [
         "job-interview",
         "instant-correction",
@@ -198,7 +211,10 @@ Simulate the real experience with a **free mock interview on FluencyPal**—your
       ],
       imagePreviewUrl: "/blog/387a5e43-45d9-4d5c-9427-87db51c49b62.jpeg",
       publishedAt: Date.now(),
-      category: i18n._("Business English"),
+      category: {
+        categoryTitle: i18n._("Business English"),
+        categoryId: "business_english",
+      },
     },
     {
       id: "5-common-english-job-interview-mistakes",
@@ -257,7 +273,7 @@ To put these fixes into practice, consider using FluencyPal for your next mock i
       ),
       imagePreviewUrl: "/blog/6683b332-6af9-4697-bd47-7df9fd582c9d.jpeg",
       publishedAt: Date.now(),
-      category: i18n._("Interview Tips"),
+      category: { categoryTitle: i18n._("Interview Tips"), categoryId: "interview_tips" },
       relatedRolePlays: ["job-interview", "instant-correction", "alias-game"],
     },
     {
@@ -351,8 +367,30 @@ Begin your journey toward more fluent interviews by trying FluencyPal for free. 
       ),
       imagePreviewUrl: "/blog/11862161-1c49-4166-8254-5f875ee5d95e.jpeg",
       publishedAt: Date.now(),
-      category: i18n._("Professional Development"),
+      category: {
+        categoryTitle: i18n._("Professional Development"),
+        categoryId: "professional_development",
+      },
       relatedRolePlays: ["job-interview", "instant-correction", "small-talk-with-a-stranger"],
     },
   ];
+
+  const categoriesList: ResourceCategory[] = [];
+
+  blogs.forEach((item) => {
+    const category = item.category;
+    if (!categoriesList.find((cat) => cat.categoryId === category.categoryId)) {
+      categoriesList.push(category);
+    }
+  });
+
+  const allCategory = {
+    categoryTitle: i18n._(`All Blogs`),
+    categoryId: "all",
+    isAllResources: true,
+  };
+
+  categoriesList.unshift(allCategory);
+
+  return { blogs, allCategory, categoriesList };
 };
