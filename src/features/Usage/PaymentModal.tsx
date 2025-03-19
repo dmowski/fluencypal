@@ -3,6 +3,7 @@ import {
   Checkbox,
   Divider,
   FormControlLabel,
+  IconButton,
   Link,
   Stack,
   TextField,
@@ -21,7 +22,7 @@ import { PaymentLogType } from "@/common/usage";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { ContactList } from "../Landing/Contact/ContactList";
 import { createStripeCheckout } from "./createStripeCheckout";
-import { CircleCheck } from "lucide-react";
+import { CircleCheck, ReceiptText } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { supportedLanguages } from "@/common/lang";
 import { useLingui } from "@lingui/react";
@@ -681,6 +682,7 @@ export const PaymentModal = () => {
                                       {paymentTypeLabelMap[log.type]}
                                     </Typography>
                                   </Stack>
+
                                   <Stack
                                     sx={{
                                       alignItems: "flex-end",
@@ -691,6 +693,11 @@ export const PaymentModal = () => {
                                   >
                                     <Typography variant="caption">{humanTime}</Typography>
                                     <Typography variant="body2">{humanDate}</Typography>
+                                    {log.receiptUrl && (
+                                      <Link href={log.receiptUrl} target="_blank">
+                                        <Typography variant="body2">Receipt</Typography>
+                                      </Link>
+                                    )}
                                   </Stack>
                                 </Stack>
                               );

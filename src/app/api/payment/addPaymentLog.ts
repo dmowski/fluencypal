@@ -18,6 +18,7 @@ export const addPaymentLog = async ({
   currency,
   type,
   amountOfHours,
+  receiptUrl,
 }: AddPaymentLogParams) => {
   const paymentLog: PaymentLog = {
     id: paymentId,
@@ -26,7 +27,7 @@ export const addPaymentLog = async ({
     type: type || "user",
     currency,
     amountOfHours,
-    receiptUrl: "",
+    receiptUrl: receiptUrl || "",
   };
 
   const db = getDB();
