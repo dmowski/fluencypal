@@ -34,13 +34,13 @@ const generateUrl = (url: UrlDefinition) => {
     <lastmod>${updateTime}</lastmod>
     <priority>${url.priority}</priority>
     <xhtml:link rel="alternate" hreflang="en" href="${defaultLangHref}"/>
-    ${supportedLanguages
-      .filter((lang) => lang !== "en")
-      .map((lang) => {
-        const pathWithLang = isLangLanding ? `${lang}` : `${lang}${url.path === "" ? "" : path}`;
-        return `        <xhtml:link rel="alternate" hreflang="${lang}" href="${baseUrl}/${pathWithLang}"/>`;
-      })
-      .join("\n")}
+${supportedLanguages
+  .filter((lang) => lang !== "en")
+  .map((lang) => {
+    const pathWithLang = isLangLanding ? `${lang}` : `${lang}${url.path === "" ? "" : path}`;
+    return `        <xhtml:link rel="alternate" hreflang="${lang}" href="${baseUrl}/${pathWithLang}"/>`;
+  })
+  .join("\n")}
     <xhtml:link rel="alternate" hreflang="x-default" href="${defaultLangHref}"/>
 </url>`;
 };
