@@ -145,89 +145,118 @@ export const PaymentModal = () => {
 
             <Stack
               sx={{
-                flexDirection: "column",
-                gap: "5px",
+                width: "100%",
+                gap: "20px",
+                flexDirection: "row",
               }}
             >
-              <TextField
-                label={i18n._(`Amount hours to buy`)}
-                value={amountToAdd ? amountToAdd : ""}
-                type="text"
-                onChange={(e) => {
-                  if (!e.target.value) {
-                    setAmountToAdd(0);
-                    return;
-                  }
-                  const number = parseFloat(e.target.value);
-                  if (isNaN(number)) {
-                    return;
-                  }
-                  setAmountToAdd(Math.abs(number) || 0);
-                }}
-              />
               <Stack
                 sx={{
-                  flexDirection: "row",
-                  gap: "10px",
+                  flexDirection: "column",
+                  gap: "5px",
                 }}
               >
-                {[2, 5, 10].map((amount) => (
-                  <Button
-                    key={amount}
-                    onClick={() => setAmountToAdd(amount)}
-                    variant={amount == amountToAdd ? "contained" : "outlined"}
-                  >
-                    {amount}
-                  </Button>
-                ))}
+                <TextField
+                  label={i18n._(`Amount hours to buy`)}
+                  value={amountToAdd ? amountToAdd : ""}
+                  type="text"
+                  onChange={(e) => {
+                    if (!e.target.value) {
+                      setAmountToAdd(0);
+                      return;
+                    }
+                    const number = parseFloat(e.target.value);
+                    if (isNaN(number)) {
+                      return;
+                    }
+                    setAmountToAdd(Math.abs(number) || 0);
+                  }}
+                />
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    gap: "10px",
+                  }}
+                >
+                  {[2, 5, 10].map((amount) => (
+                    <Button
+                      key={amount}
+                      onClick={() => setAmountToAdd(amount)}
+                      variant={amount == amountToAdd ? "contained" : "outlined"}
+                    >
+                      {amount}
+                    </Button>
+                  ))}
+                </Stack>
+              </Stack>
+
+              <Stack
+                sx={{
+                  width: "100%",
+                  gap: "5px",
+                  padding: "0 20px",
+                  //border: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
+              >
+                <Typography
+                  variant="caption"
+                  sx={{
+                    paddingBottom: "10px",
+                  }}
+                >
+                  <b>{i18n._(`What one hour means?`)}</b>
+                  <br />
+                  {i18n._(
+                    `You only charged for when AI is actively working: speaking or analyzing your speech.`
+                  )}
+                </Typography>
+
+                <Typography
+                  variant="caption"
+                  sx={{
+                    paddingBottom: "10px",
+                  }}
+                >
+                  <b>{i18n._(`How long will my hours last?`)}</b>
+                  <br />
+                  {i18n._(
+                    `Once purchased, your hours remain available until you use them. There is no expiration.`
+                  )}
+                </Typography>
+
+                <Typography
+                  variant="caption"
+                  sx={{
+                    paddingBottom: "10px",
+                  }}
+                >
+                  <b>{i18n._(`What's included?`)}</b>
+                  <br />
+                  {i18n._(
+                    `Access to all functionalities on app where AI is present: speaking, analyzing, role-plays, new words and runles creator.`
+                  )}
+                </Typography>
+
+                <Typography
+                  variant="caption"
+                  sx={{
+                    paddingBottom: "10px",
+                  }}
+                >
+                  <b>{i18n._(`Minimum contract duration:`)}</b>
+                  <br />
+                  {i18n._(
+                    `There’s no contract. Your hours stay with you until you use them — they don’t expire.`
+                  )}
+                </Typography>
               </Stack>
             </Stack>
 
             <Stack
               sx={{
                 width: "100%",
-                paddingTop: "10px",
-                gap: "5px",
               }}
             >
-              <Typography
-                variant="caption"
-                sx={{
-                  paddingBottom: "10px",
-                }}
-              >
-                <b>{i18n._(`What one hour means?`)}</b>
-                <br />
-                {i18n._(
-                  `You only charged for when AI is actively working: speaking or analyzing your speech.`
-                )}
-              </Typography>
-
-              <Typography
-                variant="caption"
-                sx={{
-                  paddingBottom: "10px",
-                }}
-              >
-                <b>{i18n._(`How long will my hours last?`)}</b>
-                <br />
-                {i18n._(
-                  `Once purchased, your hours remain available until you use them. There is no expiration.`
-                )}
-              </Typography>
-
-              <Typography
-                variant="caption"
-                sx={{
-                  paddingBottom: "10px",
-                }}
-              >
-                <b>{i18n._(`What's included?`)}</b>
-                <br />
-                {i18n._(
-                  `Access to all functionalities on app where AI is present: speaking, analyzing, role-plays, new words and runles creator.`
-                )}
-              </Typography>
               <Divider />
               <Stack
                 sx={{
