@@ -98,6 +98,11 @@ export async function GET(request: Request) {
     },
 
     {
+      path: "cookies",
+      priority: "0.6000",
+    },
+
+    {
       path: "practice",
       priority: "0.6000",
     },

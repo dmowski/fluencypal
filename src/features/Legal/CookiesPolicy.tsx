@@ -1,17 +1,18 @@
 import { Stack, Typography } from "@mui/material";
 import { LegalContainer } from "./LegalContainer";
 import Markdown from "markdown-to-jsx";
-import { LEGAL_DATA } from "./data";
 import { SupportedLanguage } from "@/common/lang";
+import { getI18nInstance } from "@/appRouterI18n";
 
 interface PageProps {
   lang: SupportedLanguage;
 }
 
 export const CookiesPolicy = ({ lang }: PageProps) => {
+  const i18n = getI18nInstance(lang);
   return (
     <LegalContainer page="cookies" lang={lang}>
-      <Typography variant="h1">Cookies Policy</Typography>
+      <Typography variant="h1">{i18n._(`Cookies Policy`)}</Typography>
       <Typography>Effective Date: Mar 17, 2025</Typography>
       <Stack
         sx={{

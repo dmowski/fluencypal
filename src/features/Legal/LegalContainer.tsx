@@ -1,6 +1,7 @@
 import { SupportedLanguage } from "@/common/lang";
 import { Button, ButtonGroup, Stack } from "@mui/material";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { getI18nInstance } from "@/appRouterI18n";
 
 interface LegalContainerProps {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ export const LegalContainer = ({ children, page, lang }: LegalContainerProps) =>
   const isCookies = page === "cookies";
   const isTerms = page === "terms";
   const isPrivacy = page === "privacy";
+  const i18n = getI18nInstance(lang);
 
   const switcher = (
     <ButtonGroup
@@ -21,13 +23,13 @@ export const LegalContainer = ({ children, page, lang }: LegalContainerProps) =>
       }}
     >
       <Button variant={isTerms ? "contained" : "outlined"} href={`${getUrlStart(lang)}terms`}>
-        Terms of Use
+        {i18n._(`Terms of Use`)}
       </Button>
       <Button variant={isPrivacy ? "contained" : "outlined"} href={`${getUrlStart(lang)}privacy`}>
-        Privacy Policy
+        {i18n._(`Privacy Policy`)}
       </Button>
       <Button variant={isCookies ? "contained" : "outlined"} href={`${getUrlStart(lang)}cookies`}>
-        Cookies Policy
+        {i18n._(`Cookies Policy`)}
       </Button>
     </ButtonGroup>
   );
