@@ -44,4 +44,5 @@ export interface PaymentLog {
   createdAt: number;
   type: PaymentLogType;
   amountOfHours: number;
+  receiptUrl: string;
 }

@@ -44,8 +44,19 @@ export async function POST(request: Request) {
       throw new Error("No userId in metadata");
     }
     const amountPaid = (session.amount_total ?? 0) / 100;
-    console.log(`User ${userId} paid $${amountPaid}`);
+
     const currency = session.currency;
+
+    const paymentIntentId = session.payment_intent as string;
+    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+    const charges = paymentIntent.latest_charge;
+    if (!charges) {
+      console.log("No charges in payment intent");
+      throw new Error("No charges in payment intent");
+    }
+    const chargeObject = await stripe.charges.retrieve(charges.toString());
+    const receiptUrl = chargeObject.receipt_url || "";
+
     await addPaymentLog({
       amount: amountPaid,
       userId: userId,
@@ -53,6 +64,7 @@ export async function POST(request: Request) {
       currency: currency || "usd",
       amountOfHours,
       type: "user",
+      receiptUrl,
     });
   } else {
     console.log(`Unhandled event type: ${event.type}`);

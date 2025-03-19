@@ -9,6 +9,7 @@ interface AddPaymentLogParams {
   currency: string;
   type: PaymentLogType;
   amountOfHours: number;
+  receiptUrl?: string;
 }
 export const addPaymentLog = async ({
   amount,
@@ -25,6 +26,7 @@ export const addPaymentLog = async ({
     type: type || "user",
     currency,
     amountOfHours,
+    receiptUrl: "",
   };
 
   const db = getDB();
