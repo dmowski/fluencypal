@@ -64,7 +64,7 @@ export async function GET(request: Request) {
 
   const scenariosCategoriesUrls: UrlDefinition[] = rolePlayCategories.map((item) => ({
     path: `scenarios?category=${item.categoryId}`,
-    priority: "0.6000",
+    priority: "0.5000",
   }));
 
   const blogs = getBlogs("en");
@@ -76,7 +76,7 @@ export async function GET(request: Request) {
   }));
   const blogsCategoriesUrls: UrlDefinition[] = blogsCategories.map((item) => ({
     path: `blog?category=${item.categoryId}`,
-    priority: "0.6000",
+    priority: "0.5000",
   }));
 
   const urls: UrlDefinition[] = [
