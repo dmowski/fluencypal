@@ -17,7 +17,6 @@ import { ConversationSelectCard } from "./ConversationSelectCard";
 import { ProgressBoard } from "./Progress/ProgressBoard";
 import { HomeworkCard } from "./HomeworkCard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
-import { RolePlayInstruction } from "../RolePlay/types";
 import { useLingui } from "@lingui/react";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 

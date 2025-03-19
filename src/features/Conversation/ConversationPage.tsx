@@ -43,7 +43,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
       </Stack>
     );
   if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
-  if (usage.balanceHours <= 0.01) return <NoBalanceBlock />;
+  if (!usage.loading && usage.balanceHours <= 0.01) return <NoBalanceBlock />;
 
   return (
     <Stack>
