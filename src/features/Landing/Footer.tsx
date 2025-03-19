@@ -1,11 +1,6 @@
 import { Link, Stack, Typography } from "@mui/material";
 import { maxLandingWidth } from "./landingSettings";
-import {
-  emojiLanguageName,
-  fullEnglishLanguageName,
-  SupportedLanguage,
-  supportedLanguages,
-} from "@/common/lang";
+import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { headers } from "next/headers";
@@ -17,12 +12,14 @@ export const Footer: React.FC<FooterProps> = async ({ lang }) => {
   const i18n = getI18nInstance(lang);
 
   const headerList = await headers();
-  const pathname = headerList.get("x-current-path") || "/";
+  const onlyPathname = headerList.get("x-current-path") || "/";
+  const onlyQuery = headerList.get("x-current-query") || "";
+  const pathNameAndQuery = onlyPathname + (onlyQuery ? `?${onlyQuery}` : "");
 
   const pathnameWithoutLang =
-    lang === "en" && !pathname.startsWith("/en")
-      ? pathname || "/"
-      : pathname.replace(`/${lang}`, "") || "/";
+    lang === "en" && !pathNameAndQuery.startsWith("/en")
+      ? pathNameAndQuery || "/"
+      : pathNameAndQuery.replace(`/${lang}`, "") || "/";
 
   const pathWithoutFirstSlash = pathnameWithoutLang.startsWith("/")
     ? pathnameWithoutLang.slice(1)

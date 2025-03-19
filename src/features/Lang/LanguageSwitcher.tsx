@@ -17,6 +17,7 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useSettings } from "../Settings/useSettings";
 import { ClickCard } from "../Dashboard/ClickCard";
 import { useAuth } from "../Auth/useAuth";
+import { sleep } from "openai/core.mjs";
 
 const LanguageCard = ({
   lang,
@@ -46,22 +47,35 @@ export function LanguageSwitcher() {
   const router = useRouter();
   const auth = useAuth();
   const pathname = usePathname();
+
   const settings = useSettings();
   const { i18n } = useLingui();
   const [activeTab, setActiveTab] = useState<"page" | "learn">("page");
   const [isShowModal, setIsShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [locale, setLocale] = useState<SupportedLanguage>(parseLangFromUrl(pathname));
   const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
 
-  function handleChange(newLang: SupportedLanguage) {
+  async function handleChange(newLang: SupportedLanguage) {
     if (activeTab === "page") {
+      setIsLoading(true);
       const sliceNumber = locale !== "en" ? 2 : pathname.startsWith("/en") ? 2 : 1;
 
       const pathNameWithoutLocale = pathname?.split("/")?.slice(sliceNumber) ?? [];
-      const newPath = `${getUrlStart(newLang)}${pathNameWithoutLocale.join("/")}`;
-      setLocale(locale);
+
+      const query = new URLSearchParams(window.location.search).toString();
+
+      const newPath = `${getUrlStart(newLang)}${pathNameWithoutLocale.join("/")}${
+        query ? `?${query}` : ""
+      }`;
       router.push(newPath);
+
+      setLocale(locale);
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
     } else {
       settings.setLanguage(newLang);
     }
@@ -102,6 +116,7 @@ export function LanguageSwitcher() {
           sx={{
             width: "100%",
             gap: "46px",
+            opacity: isLoading ? 0.2 : 1,
           }}
         >
           <Tabs value={activeTab} onChange={(e, value) => setActiveTab(value)}>

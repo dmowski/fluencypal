@@ -16,9 +16,12 @@ export function middleware(request: NextRequest) {
     (locale: string) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
+  const currentQuery = request.nextUrl.searchParams.toString();
+
   if (pathnameHasLocale) {
     const response = NextResponse.next();
     response.headers.set("x-current-path", request.nextUrl.pathname);
+    response.headers.set("x-current-query", currentQuery);
     return response;
   }
 
@@ -29,6 +32,7 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
   response.headers.set("X-Preferred-Locale", locale);
   response.headers.set("x-current-path", request.nextUrl.pathname);
+  response.headers.set("x-current-query", currentQuery);
 
   return response;
 }
