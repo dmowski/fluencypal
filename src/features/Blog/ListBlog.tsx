@@ -82,7 +82,7 @@ export const ListBlog = ({ lang, selectedCategoryId }: ListBlogProps) => {
                   href={
                     isAllScenarios
                       ? `${getUrlStart(lang)}blog`
-                      : `${getUrlStart(lang)}blog?category=${category}`
+                      : `${getUrlStart(lang)}blog?category=${category.categoryId}`
                   }
                   sx={{
                     color: "#000",
