@@ -202,7 +202,7 @@ export const generateMetadataInfo = ({
     openGraph: {
       title: title,
       description: description,
-      url: `${siteUrl}${langForUrl}/${pathWithQueries}`,
+      url: `${siteUrl}${langForUrl}${pathWithQueries}`,
       images: [
         {
           url: openGraphImageUrl,
