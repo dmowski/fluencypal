@@ -1,8 +1,13 @@
+import { appName } from "@/common/metadata";
 import { getCommonMessageTemplate } from "./templates/commonMessage";
+import { sendEmail } from "./sendEmail";
 
 export async function GET(request: Request) {
+  const query = new URL(request.url).searchParams;
+  const isSendTest = query.get("isSendTest") === "true";
+
   const emailUi = getCommonMessageTemplate({
-    title: "Payment Confirmation",
+    title: "Payment Confirmation" + (isSendTest ? " - Sending" : ""),
     subtitle: "Hello, Thank you for your purchase at <b>FluencyPal</b>.",
     messageContent: `
 <p style="margin: 0; padding-bottom: 12px; color: #222222">
@@ -19,6 +24,17 @@ Due to your request for immediate service from Fundacja Rozwoju Przedsiębiorczo
     callToAction: "Start Learning",
     callbackUrl: "https://www.fluencypal.com/practice",
   });
+
+  const confirmSend = false;
+  if (isSendTest && confirmSend) {
+    const randomId = Math.floor(Math.random() * 10000);
+    await sendEmail({
+      emailTo: "dmowski.alex@gmail.com",
+      messageText: emailUi.text,
+      messageHtml: emailUi.html,
+      title: `Your receipt from ${appName} #${randomId} - test`,
+    });
+  }
 
   return new Response(emailUi.html, {
     headers: {

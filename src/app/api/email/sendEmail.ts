@@ -26,7 +26,7 @@ export const sendEmail = async ({
     const msg = {
       to: emailTo,
       from: {
-        email: "no-reply@fluencypal.com",
+        email: "contact@fluencypal.com",
         name: "FluencyPal - AI English Speaking Partner",
       },
       subject: title,

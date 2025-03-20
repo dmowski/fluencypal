@@ -2,9 +2,8 @@ import { appName, siteUrl } from "@/common/metadata";
 
 export const templateConfig = {
   projectUrl: siteUrl,
-  logoDarkBgImgUrl: "/logo.jpeg",
-  logoWhiteBgImgUrl: "/logo_white.jpg",
-  logoGrayBlueBgImgUrl: "/logo_gray_blue_bg.jpg",
+  logoWhiteBgImgUrl: siteUrl + "logo_white.jpg",
+  logoGrayBlueBgImgUrl: siteUrl + "logo_gray_blue_bg.jpg",
 
   instagramImageUrl: "https://images.prohiring.dev/emailImages/instagram.jpg",
   instagramUrl: "https://www.instagram.com/dmowskii",
@@ -133,7 +132,8 @@ export const getCommonMessageTemplate = ({
                         src="${templateConfig.logoWhiteBgImgUrl}"
                         alt=""
                         border="0"
-                        width="33"
+                        width="200px"
+                        height="33px"
                         style="display: block; width: 200px"
                       />
                     </a>
