@@ -5,9 +5,10 @@ import { sendEmail } from "./sendEmail";
 export async function GET(request: Request) {
   const query = new URL(request.url).searchParams;
   const isSendTest = query.get("isSendTest") === "true";
+  const confirmSend = false;
 
   const emailUi = getCommonMessageTemplate({
-    title: "Payment Confirmation" + (isSendTest ? " - Sending" : ""),
+    title: "Payment Confirmation" + (isSendTest ? ` - S ${confirmSend ? "" : " (i)"}` : ""),
     subtitle: "Hello, Thank you for your purchase at <b>FluencyPal</b>.",
     messageContent: `
 <p style="margin: 0; padding-bottom: 12px; color: #222222">
@@ -25,7 +26,6 @@ Due to your request for immediate service from Fundacja Rozwoju Przedsiębiorczo
     callbackUrl: "https://www.fluencypal.com/practice",
   });
 
-  const confirmSend = false;
   if (isSendTest && confirmSend) {
     const randomId = Math.floor(Math.random() * 10000);
     await sendEmail({
