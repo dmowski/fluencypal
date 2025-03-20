@@ -113,9 +113,17 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === "scenarios" && !scenarioId) {
+    let categoryTitle = "";
+    if (category) {
+      const rolePlayScenarios = getRolePlayScenarios(supportedLang);
+      const categoryInfo = rolePlayScenarios.categoriesList.find((c) => c.categoryId === category);
+      categoryTitle = categoryInfo
+        ? " - " + categoryInfo.categoryTitle
+        : i18n._(`Unknown category`);
+    }
     title =
       i18n._(`Real-Life English Role-Play Scenarios`) +
-      (category ? " - " + category : "") +
+      (categoryTitle ? " - " + categoryTitle : "") +
       " | " +
       APP_NAME;
     description = i18n._(
@@ -134,7 +142,17 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === "blog" && !blogId) {
-    title = i18n._(`Learning Blog`) + (category ? " - " + category : "") + " | " + APP_NAME;
+    let categoryTitle = "";
+    if (category) {
+      const items = getBlogs(supportedLang);
+      const categoryInfo = items.categoriesList.find((c) => c.categoryId === category);
+      categoryTitle = categoryInfo
+        ? " - " + categoryInfo.categoryTitle
+        : i18n._(`Unknown category`);
+    }
+
+    title =
+      i18n._(`Learning Blog`) + (categoryTitle ? " - " + categoryTitle : "") + " | " + APP_NAME;
     description = i18n._(
       `Read the latest articles on language learning, English practice tips, and AI tutor updates. Stay informed, motivated, and inspired to reach your fluency goals with FluencyPal.`
     );
