@@ -14,9 +14,10 @@ export const ListRolePlay = ({ lang, selectedCategoryId }: ListRolePlayProps) =>
   const { rolePlayScenarios, categoriesList, allCategory } = getRolePlayScenarios(lang);
   const i18n = getI18nInstance(lang);
 
-  const title =
-    categoriesList.find((category) => category.categoryId === selectedCategoryId)?.categoryTitle ||
-    i18n._(`Role Play Scenarios`);
+  const title = selectedCategoryId
+    ? categoriesList.find((category) => category.categoryId === selectedCategoryId)
+        ?.categoryTitle || i18n._("Unknown category")
+    : i18n._(`Role Play Scenarios`);
 
   const listToDisplay = selectedCategoryId
     ? rolePlayScenarios.filter((scenario) => scenario.category.categoryId === selectedCategoryId)

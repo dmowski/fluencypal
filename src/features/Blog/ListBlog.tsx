@@ -16,9 +16,11 @@ export const ListBlog = ({ lang, selectedCategoryId }: ListBlogProps) => {
 
   const selectedCategory = categoriesList.find((c) => c.categoryId === selectedCategoryId);
 
-  const title = selectedCategory?.categoryTitle || allCategory.categoryTitle;
+  const title = selectedCategoryId
+    ? selectedCategory?.categoryTitle || i18n._("Unknown category")
+    : allCategory.categoryTitle;
 
-  const listToDisplay = selectedCategory
+  const listToDisplay = selectedCategoryId
     ? blogs.filter((item) => item.category.categoryId === selectedCategoryId)
     : blogs;
 
