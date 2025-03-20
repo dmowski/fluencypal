@@ -2,13 +2,9 @@ import { appName, siteUrl } from "@/common/metadata";
 
 export const templateConfig = {
   projectUrl: siteUrl,
-  logoImgUrl: siteUrl + "logo.jpeg",
-
-  logoGreyUrl: siteUrl + "logo.jpeg",
-
-  logoWhiteImgUrl: siteUrl + "logo.jpeg",
-
-  welcomeImageUrl: "https://images.prohiring.dev/emailImages/welcome.jpg",
+  logoDarkBgImgUrl: "/logo.jpeg",
+  logoWhiteBgImgUrl: "/logo_white.jpg",
+  logoGrayBlueBgImgUrl: "/logo_gray_blue_bg.jpg",
 
   instagramImageUrl: "https://images.prohiring.dev/emailImages/instagram.jpg",
   instagramUrl: "https://www.instagram.com/dmowskii",
@@ -129,37 +125,30 @@ export const getCommonMessageTemplate = ({
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px">
               <tr>
                 <td align="left" bgcolor="#ffffff" valign="top" style="padding: 15px 40px">
-                  <a href="${siteUrl}" target="_blank" style="display: inline-block">
-                    <img
-                      src="${templateConfig.logoImgUrl}"
-                      alt=""
-                      border="0"
-                      width="30"
-                      style="display: block; width: 98px"
-                    />
-                  </a>
-                </td>
-              </tr>
-            </table>
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px">
-              <tr>
-                <td align="center" bgcolor="#ffffff" valign="top" style="padding: 0px">
-                  <img
-                    src="${templateConfig.welcomeImageUrl}"
-                    alt="Welcome image"
-                    border="0"
-                    style="display: block; height: 156px; width: 200px"
-                  />
+                  <div style="
+                    font-family: Roboto, Helvetica, Arial, sans-serif;
+                  ">
+                    <a href="${siteUrl}" target="_blank" style="display: inline-block">
+                      <img
+                        src="${templateConfig.logoWhiteBgImgUrl}"
+                        alt=""
+                        border="0"
+                        width="33"
+                        style="display: block; width: 200px"
+                      />
+                    </a>
+                    <p  style="padding:0; color: #666; font-size: 13px; margin:0">Your AI Speaking Partner</p>
+                  </div>
                 </td>
               </tr>
             </table>
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px">
               <tr>
                 <td
-                  align="center"
+                  align="left"
                   bgcolor="#ffffff"
                   style="
-                    padding: 46px 24px 0;
+                    padding: 60px 0 26px 45px;
                     font-family: Roboto, Helvetica, Arial, sans-serif;
                   "
                 >
@@ -192,26 +181,26 @@ export const getCommonMessageTemplate = ({
             <!--[if (gte mso 9)|(IE)]>
         <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
           <tr>
-            <td align="center" valign="top" width="600">
+            <td align="left" valign="top" width="600">
         <![endif]-->
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px">
               <!-- start copy -->
               <tr>
                 <td
-                  align="center"
+                  align="left"
                   bgcolor="#ffffff"
                   style="
                     margin: 0;
-                    padding: 16px 60px 32px;
+                    padding: 1px 40px 50px 47px;
                     font-family: Roboto, Helvetica, Arial, sans-serif;
                     font-size: 16px;
                     line-height: 24px;
                   "
                 >
-                  <p style="margin: 0; padding-bottom: 12px; color: #222222">
-                  ${subtitle} <br />
-                  ${messageContent}
-                  </p>
+                  <div style="margin: 0; padding-bottom: 0px; color: #222222">
+                    <p style="margin: 0; padding-bottom: 12px; color: #222222">${subtitle}</p>
+                    <div>${messageContent}</div>
+                  </div>
                 </td>
               </tr>
               <!-- end copy -->
@@ -221,7 +210,7 @@ export const getCommonMessageTemplate = ({
                 <td align="left" bgcolor="#ffffff">
                   <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr>
-                      <td align="center" bgcolor="#ffffff" style="padding: 12px">
+                      <td align="left" bgcolor="#ffffff" style="padding: 0px 47px 72px 47px">
                         <table border="0" cellpadding="0" cellspacing="0">
                           <tr>
                             <td align="center" bgcolor="#1a82e2" style="border-radius: 6px">
@@ -268,18 +257,17 @@ export const getCommonMessageTemplate = ({
               <!-- start copy -->
               <tr>
                 <td
-                  align="center"
+                  align="left"
                   bgcolor="#ffffff"
                   style="
                     color: #c4c4c4;
-                    padding: 24px;
+                    padding: 24px 24px 10px 48px;
                     font-family: Roboto, Helvetica, Arial, sans-serif;
                     font-size: 14px;
                     line-height: 20px;
                   "
                 >
-                  <p style="margin: 0">Do not familiar with ${appName}? </p>
-                  <p style="margin: 0">You can ignore this email.</p>
+                  <p style="margin: 0">Do not familiar with ${appName}? You can ignore this email.</p>
                 </td>
               </tr>
               <!-- end copy -->
@@ -306,11 +294,11 @@ export const getCommonMessageTemplate = ({
                 <td align="left" style="padding: 0 40px">
                   <a href="${siteUrl}" target="_blank" style="display: inline-block;">
                     <img
-                      src="${templateConfig.logoImgUrl}"
+                      src="${templateConfig.logoGrayBlueBgImgUrl}"
                       alt=""
                       border="0"
-                      width="78"
-                      style="width: 78px; height: 25px"
+                      width="120"
+                      style="width: 120px; height: 20px"
                     />
                   </a>
                 </td>
