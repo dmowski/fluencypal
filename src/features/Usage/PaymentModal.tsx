@@ -117,7 +117,7 @@ export const PaymentModal = () => {
 
   return (
     <CustomModal
-      isOpen={true}
+      isOpen={true && auth.isAuthorized}
       onClose={() => usage.togglePaymentModal(false)}
       width="min(900px, 100vw)"
       padding="min(30px, 10vw)"
