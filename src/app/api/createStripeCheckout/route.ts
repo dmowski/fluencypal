@@ -3,9 +3,10 @@ import { StripeCreateCheckoutRequest, StripeCreateCheckoutResponse } from "@/com
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import Stripe from "stripe";
 import { validateAuthToken } from "../config/firebase";
+import { stripeConfig } from "../payment/config";
 
 export async function POST(request: Request) {
-  const stripeKey = process.env.STRIPE_SECRET_KEY as string;
+  const stripeKey = stripeConfig.STRIPE_SECRET_KEY;
   const siteUrl = request.headers.get("origin");
 
   const userInfo = await validateAuthToken(request);

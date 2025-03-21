@@ -1,16 +1,15 @@
 import Stripe from "stripe";
 import { addPaymentLog } from "../../payment/addPaymentLog";
 import { sentSupportTelegramMessage } from "../../telegram/sendTelegramMessage";
-
-const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
+import { stripeConfig } from "../../payment/config";
 
 export async function POST(request: Request) {
-  if (!endpointSecret) {
+  if (!stripeConfig.STRIPE_WEBHOOK_SECRET) {
     sentSupportTelegramMessage("Stripe webhook secret is not set");
     throw new Error("Stripe webhook secret is not set");
   }
 
-  const stripeKey = process.env.STRIPE_SECRET_KEY as string;
+  const stripeKey = stripeConfig.STRIPE_SECRET_KEY;
   if (!stripeKey) {
     sentSupportTelegramMessage("Stripe API key is not set");
     throw new Error("Stripe API key is not set");
@@ -26,7 +25,7 @@ export async function POST(request: Request) {
 
   let event;
   const body = await request.text();
-  event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
+  event = stripe.webhooks.constructEvent(body, sig, stripeConfig.STRIPE_WEBHOOK_SECRET);
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
