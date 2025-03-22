@@ -277,7 +277,7 @@ export function HeaderComponent({
                   >
                     {balanceTitle}:{" "}
                     {usage.balanceHours > 0 ? "" : usage.balanceHours == 0 ? "" : "- "}
-                    {new Intl.NumberFormat().format(Math.abs(usage.balanceHours))}
+                    {Math.abs(usage.balanceHours).toFixed(1)}
                   </Button>
                   <IconButton
                     onClick={(e) => {
