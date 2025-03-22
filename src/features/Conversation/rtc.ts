@@ -119,11 +119,8 @@ const updateSession = async ({
       voice,
       modalities,
       turn_detection: {
-        type: "server_vad",
-        threshold: 0.5,
-        prefix_padding_ms: 500,
-        silence_duration_ms: 1500,
-        create_response: true,
+        type: "semantic_vad",
+        eagerness: "auto",
       },
     },
   };
