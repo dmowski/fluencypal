@@ -312,19 +312,19 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
     const systemMessage = [
       `You need to generate words to play the game Alias. Be creative.`,
       `Some of them should be simple and some of them should be hard. Depends on user level`,
+      `First 6 words, should be funny to guess, next 6 words should be relatively easy to guess, last 6 words should be hard to guess.`,
+
       `Return your words with comma separated.`,
-      `For example: "apple, banana, orange"`,
+      `Example of response format (lowercased words comma separated): apple, banana, orange`,
+      `You are part for software. You need to response strictly follow formate of response, because it's part of another software. Don't add any wrapper words or phrases`,
     ].join(" ");
 
     const response = await textAi.generate({
       systemMessage,
-      userMessage: `Generate me 14 words.
-Be creative and create smart words or phrases.
-Use ${settings.fullLanguageName} language.
-My user level: ${userLevelInfo}
-`,
+      userMessage: `Generate 18 words. Use ${settings.fullLanguageName} language. User language level: ${userLevelInfo}`,
       model: "gpt-4o",
     });
+    console.log("generateRandomWord:", response);
     const words = response.split(",");
     const shuffledWords = words.sort(() => Math.random() - 0.5);
     const wordsAiToDescribe: string[] = [];
