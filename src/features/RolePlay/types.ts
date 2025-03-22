@@ -1,7 +1,7 @@
 import { AiVoice } from "@/common/ai";
 import { ResourceCategory } from "@/common/category";
 
-export type RolePlayInputType = "text-input" | "textarea" | "options";
+export type RolePlayInputType = "text-input" | "textarea" | "options" | "checkbox";
 export interface InputStructureForUser {
   id: string;
   labelForUser: string;

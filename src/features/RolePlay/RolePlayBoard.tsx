@@ -2,6 +2,7 @@
 import {
   Button,
   ButtonGroup,
+  Checkbox,
   FormControl,
   FormControlLabel,
   Radio,
@@ -263,6 +264,14 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
         input.cacheAiSummary !== undefined ? input.cacheAiSummary : true
       );
     },
+
+    checkbox: async (input, userValue, lengthToTriggerSummary, requiredFields) => {
+      if (userValue === "true") {
+        return input.labelForAi;
+      } else {
+        return "";
+      }
+    },
   };
 
   const prepareUserInputs = async () => {
@@ -286,15 +295,17 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
           requiredFields
         );
 
-        const inputRecord: RolePlayInputResult = {
-          labelForAi: input.labelForAi,
-          userValue: processedUserValue,
-        };
-        return inputRecord;
+        if (processedUserValue) {
+          const inputRecord: RolePlayInputResult = {
+            labelForAi: input.labelForAi,
+            userValue: processedUserValue,
+          };
+          return inputRecord;
+        }
       })
     );
 
-    return rolePlayInputs;
+    return rolePlayInputs.filter((input) => input) as RolePlayInputResult[];
   };
 
   const generateRandomWord = async (userLevelInfo: string) => {
@@ -484,6 +495,24 @@ My user level: ${userLevelInfo}
                               label={input.labelForUser}
                               placeholder={input.placeholder}
                               variant="outlined"
+                            />
+                          ),
+                          checkbox: (
+                            <FormControlLabel
+                              key={index}
+                              control={
+                                <Checkbox
+                                  checked={value === "true"}
+                                  onChange={(e) => {
+                                    setUserInputs({
+                                      ...userInputs,
+                                      [inputId]: e.target.checked ? "true" : "false",
+                                    });
+                                  }}
+                                  disabled={isStarting}
+                                />
+                              }
+                              label={input.labelForUser}
                             />
                           ),
                           textarea: (
