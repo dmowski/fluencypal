@@ -13,6 +13,23 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Auth/SignInForm.tsx:48
+#. js-lingui-explicit-id
+msgid "Please open this page in your browser to continue with Google sign-in."
+msgstr "กรุณาเปิดหน้านี้ในเบราว์เซอร์ของคุณเพื่อดำเนินการเข้าสู่ระบบด้วย Google ต่อ"
+
+#: src/features/Auth/SignInForm.tsx:127
+#. js-lingui-explicit-id
+msgid "Google sign-in is not supported inside Instagram or Facebook in-app browser."
+msgstr ""
+"Google ไม่สนับสนุนการเข้าสู่ระบบผ่าน Instagram หรือ Facebook "
+"ภายในแอปบราวเซอร์"
+
+#: src/features/Auth/SignInForm.tsx:132
+#. js-lingui-explicit-id
+msgid "Please tap the menu (⋮ or •••) and choose 'Open in Browser' to continue."
+msgstr "กรุณาแตะที่เมนู (⋮ หรือ •••) และเลือก 'เปิดในเบราว์เซอร์' เพื่อดำเนินการต่อ"
+
 #: src/libs/metadata.ts:55
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:75
@@ -114,7 +131,7 @@ msgstr "ค่าใช้จ่ายของติวเตอร์ AI"
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Landing/Footer.tsx:176
 #: src/features/Header/NeedHelpModal.tsx:150
-#: src/features/Auth/SignInForm.tsx:113
+#: src/features/Auth/SignInForm.tsx:156
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
 msgstr "นโยบายความเป็นส่วนตัว"
@@ -131,7 +148,7 @@ msgstr "นโยบายคุกกี้"
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Landing/Footer.tsx:166
 #: src/features/Header/NeedHelpModal.tsx:137
-#: src/features/Auth/SignInForm.tsx:117
+#: src/features/Auth/SignInForm.tsx:160
 #. js-lingui-explicit-id
 msgid "Terms of Use"
 msgstr "ข้อกำหนดการใช้งาน"
@@ -524,7 +541,7 @@ msgid "Payment history:"
 msgstr "ประวัติการชำระเงิน:"
 
 #: src/features/Usage/PaymentModal.tsx:621
-#: src/features/RolePlay/RolePlayBoard.tsx:594
+#: src/features/RolePlay/RolePlayBoard.tsx:623
 #: src/features/Dashboard/Dashboard.tsx:34
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -546,9 +563,9 @@ msgid "Game"
 msgstr "เกม"
 
 #: src/features/RolePlay/rolePlayData.ts:28
-#: src/features/RolePlay/rolePlayData.ts:244
-#: src/features/RolePlay/rolePlayData.ts:387
-#: src/features/RolePlay/rolePlayData.ts:593
+#: src/features/RolePlay/rolePlayData.ts:247
+#: src/features/RolePlay/rolePlayData.ts:390
+#: src/features/RolePlay/rolePlayData.ts:596
 #. js-lingui-explicit-id
 msgid "Your Language Level"
 msgstr "ระดับภาษาของคุณ"
@@ -594,7 +611,7 @@ msgstr ""
 "ซึ่งจะกระตุ้นให้เกิดการคิดอย่างสร้างสรรค์และการแสดงออกอย่างคล่องแคล่ว "
 "ปรับตามทักษะทางภาษาของคุณ"
 
-#: src/features/RolePlay/rolePlayData.ts:86
+#: src/features/RolePlay/rolePlayData.ts:89
 #. js-lingui-explicit-id
 msgid ""
 "Step into a realistic interview environment and practice showcasing your "
@@ -645,18 +662,18 @@ msgstr ""
 "ใช้ข้อความแนะนำเพื่อฝึกฝนการให้คำตอบที่สั้น กระชับ "
 "และน่าดึงดูดซึ่งช่วยให้คุณโดดเด่นในการสัมภาษณ์งานใดๆ"
 
-#: src/features/RolePlay/rolePlayData.ts:97
-#: src/features/RolePlay/rolePlayData.ts:512
+#: src/features/RolePlay/rolePlayData.ts:100
+#: src/features/RolePlay/rolePlayData.ts:515
 #. js-lingui-explicit-id
 msgid "Professional"
 msgstr "มืออาชีพ"
 
-#: src/features/RolePlay/rolePlayData.ts:102
+#: src/features/RolePlay/rolePlayData.ts:105
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "ประสบการณ์ของคุณ"
 
-#: src/features/RolePlay/rolePlayData.ts:104
+#: src/features/RolePlay/rolePlayData.ts:107
 #. js-lingui-explicit-id
 msgid ""
 "Paste your CV text here. You can also write a brief summary of your "
@@ -665,24 +682,24 @@ msgstr ""
 "วางข้อความประวัติย่อของคุณที่นี่ "
 "คุณยังสามารถเขียนสรุปประสบการณ์ของคุณได้สั้น ๆ"
 
-#: src/features/RolePlay/rolePlayData.ts:116
+#: src/features/RolePlay/rolePlayData.ts:119
 #. js-lingui-explicit-id
 msgid "Desired Job Title"
 msgstr "ตำแหน่งงานที่ต้องการ"
 
-#: src/features/RolePlay/rolePlayData.ts:118
+#: src/features/RolePlay/rolePlayData.ts:121
 #. js-lingui-explicit-id
 msgid "Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc."
 msgstr ""
 "ตำแหน่งงานที่คุณต้องการ เช่น นักออกแบบ, ผู้ช่วยในร้าน, เทรนเนอร์ฟิตเนส "
 "เป็นต้น"
 
-#: src/features/RolePlay/rolePlayData.ts:127
+#: src/features/RolePlay/rolePlayData.ts:130
 #. js-lingui-explicit-id
 msgid "Vacancy description"
 msgstr "คำบรรยายตำแหน่งงาน"
 
-#: src/features/RolePlay/rolePlayData.ts:129
+#: src/features/RolePlay/rolePlayData.ts:132
 #. js-lingui-explicit-id
 msgid ""
 "Paste vacancy description if you have it. You can also write a brief "
@@ -691,17 +708,17 @@ msgstr ""
 "วางคำอธิบายตำแหน่งงานหากคุณมีอยู่ "
 "คุณยังสามารถเขียนสรุปย่อเกี่ยวกับความต้องการของงานได้ด้วย"
 
-#: src/features/RolePlay/rolePlayData.ts:151
+#: src/features/RolePlay/rolePlayData.ts:154
 #. js-lingui-explicit-id
 msgid "Practice Job Interview"
 msgstr "ฝึกสัมภาษณ์งาน"
 
-#: src/features/RolePlay/rolePlayData.ts:152
+#: src/features/RolePlay/rolePlayData.ts:155
 #. js-lingui-explicit-id
 msgid "Master answering common interview questions with AI"
 msgstr "เชี่ยวชาญในการตอบคำถามสัมภาษณ์ทั่วไปด้วย AI"
 
-#: src/features/RolePlay/rolePlayData.ts:167
+#: src/features/RolePlay/rolePlayData.ts:170
 #. js-lingui-explicit-id
 msgid ""
 "Engage in a casual conversation with a friendly stranger at a social event. "
@@ -748,39 +765,39 @@ msgstr ""
 "As you exchange pleasantries, the AI will adapt to your responses, helping "
 "you refine your small-talk abilities."
 
-#: src/features/RolePlay/rolePlayData.ts:178
-#: src/features/RolePlay/rolePlayData.ts:268
-#: src/features/RolePlay/rolePlayData.ts:376
+#: src/features/RolePlay/rolePlayData.ts:181
+#: src/features/RolePlay/rolePlayData.ts:271
+#: src/features/RolePlay/rolePlayData.ts:379
 #. js-lingui-explicit-id
 msgid "Social"
 msgstr "สังคม"
 
-#: src/features/RolePlay/rolePlayData.ts:180
+#: src/features/RolePlay/rolePlayData.ts:183
 #. js-lingui-explicit-id
 msgid "Small Talk Practice"
 msgstr "การฝึกพูดคุยทั่วไป"
 
-#: src/features/RolePlay/rolePlayData.ts:181
+#: src/features/RolePlay/rolePlayData.ts:184
 #. js-lingui-explicit-id
 msgid "Develop your conversational skills with casual small talk"
 msgstr "พัฒนาทักษะการสนทนาของคุณด้วยการพูดคุยเล็กน้อยอย่างไม่เป็นทางการ"
 
-#: src/features/RolePlay/rolePlayData.ts:194
+#: src/features/RolePlay/rolePlayData.ts:197
 #. js-lingui-explicit-id
 msgid "Speech"
 msgstr "การพูด"
 
-#: src/features/RolePlay/rolePlayData.ts:195
+#: src/features/RolePlay/rolePlayData.ts:198
 #. js-lingui-explicit-id
 msgid "Instant Speech Correction"
 msgstr "การแก้ไขการพูดทันที"
 
-#: src/features/RolePlay/rolePlayData.ts:196
+#: src/features/RolePlay/rolePlayData.ts:199
 #. js-lingui-explicit-id
 msgid "Real-time feedback to improve your spoken English"
 msgstr "ข้อความตอบกลับแบบเรียลไทม์เพื่อปรับปรุงการพูดภาษาอังกฤษของคุณ"
 
-#: src/features/RolePlay/rolePlayData.ts:213
+#: src/features/RolePlay/rolePlayData.ts:216
 #. js-lingui-explicit-id
 msgid ""
 "Improve your speaking skills with immediate, personalized feedback. Instant "
@@ -826,17 +843,17 @@ msgstr ""
 "นที่อย่างรวดเร็ว "
 "ทำให้ประสบการณ์นั้นมีพลศาสตร์และมีประสิทธิภาพในการปรับปรุงภาษาอย่างรวดเร็ว"
 
-#: src/features/RolePlay/rolePlayData.ts:270
+#: src/features/RolePlay/rolePlayData.ts:273
 #. js-lingui-explicit-id
 msgid "In the Restaurant"
 msgstr "ในร้านอาหาร"
 
-#: src/features/RolePlay/rolePlayData.ts:271
+#: src/features/RolePlay/rolePlayData.ts:274
 #. js-lingui-explicit-id
 msgid "Practice ordering food and interacting with a waiter in a restaurant"
 msgstr "ฝึกการสั่งอาหารและการติดต่อกับพนักงานเสิร์ฟในร้านอาหาร"
 
-#: src/features/RolePlay/rolePlayData.ts:282
+#: src/features/RolePlay/rolePlayData.ts:285
 #. js-lingui-explicit-id
 msgid ""
 "In this role-play, you’ll interact with a polite waiter, order food, and "
@@ -890,17 +907,17 @@ msgstr ""
 "สร้างประสบการณ์ที่ดื่มด่ำที่จะช่วยคุณฝึกการมีปฏิสัมพันธ์ในร้านอาหารอย่างเป็น"
 "ประโยชน์"
 
-#: src/features/RolePlay/rolePlayData.ts:300
+#: src/features/RolePlay/rolePlayData.ts:303
 #. js-lingui-explicit-id
 msgid "Scenario Description"
 msgstr "คำอธิบายสถานการณ์"
 
-#: src/features/RolePlay/rolePlayData.ts:302
+#: src/features/RolePlay/rolePlayData.ts:305
 #. js-lingui-explicit-id
 msgid "Describe your custom scenario here..."
 msgstr "อธิบายสถานการณ์ที่กำหนดเองของคุณที่นี่..."
 
-#: src/features/RolePlay/rolePlayData.ts:309
+#: src/features/RolePlay/rolePlayData.ts:312
 #. js-lingui-explicit-id
 msgid ""
 "Create a unique, personalized setting that fits your specific interests or "
@@ -952,22 +969,22 @@ msgstr ""
 "รูปแบบที่ยืดหยุ่นนี้จะช่วยให้คุณเชี่ยวชาญทักษะการสื่อสารที่คุณต้องการอย่างแท"
 "้จริง"
 
-#: src/features/RolePlay/rolePlayData.ts:321
+#: src/features/RolePlay/rolePlayData.ts:324
 #. js-lingui-explicit-id
 msgid "Create Your Own Role-Play Scenario"
 msgstr "สร้างสถานการณ์การเล่นบทบาทของคุณเอง"
 
-#: src/features/RolePlay/rolePlayData.ts:322
+#: src/features/RolePlay/rolePlayData.ts:325
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
 msgstr "ปรับแต่งการสนทนาให้เหมาะกับความต้องการในการเรียนรู้เฉพาะของคุณ"
 
-#: src/features/RolePlay/rolePlayData.ts:323
+#: src/features/RolePlay/rolePlayData.ts:326
 #. js-lingui-explicit-id
 msgid "Custom"
 msgstr "กำหนดเอง"
 
-#: src/features/RolePlay/rolePlayData.ts:335
+#: src/features/RolePlay/rolePlayData.ts:338
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable purchasing travel tickets in a bustling train station "
@@ -1014,23 +1031,23 @@ msgstr ""
 "need. By interacting with the AI, you’ll master the art of asking the right "
 "questions and understanding key information about your journey."
 
-#: src/features/RolePlay/rolePlayData.ts:348
-#: src/features/RolePlay/rolePlayData.ts:454
+#: src/features/RolePlay/rolePlayData.ts:351
+#: src/features/RolePlay/rolePlayData.ts:457
 #. js-lingui-explicit-id
 msgid "Travel"
 msgstr "การเดินทาง"
 
-#: src/features/RolePlay/rolePlayData.ts:350
+#: src/features/RolePlay/rolePlayData.ts:353
 #. js-lingui-explicit-id
 msgid "Buying a Train Ticket"
 msgstr "การซื้อบัตรรถไฟ"
 
-#: src/features/RolePlay/rolePlayData.ts:351
+#: src/features/RolePlay/rolePlayData.ts:354
 #. js-lingui-explicit-id
 msgid "Practice asking about schedules, fares, and ticket options"
 msgstr "ฝึกถามเกี่ยวกับตารางเวลา, ค่าตั๋ว, และตัวเลือกตั๋ว"
 
-#: src/features/RolePlay/rolePlayData.ts:364
+#: src/features/RolePlay/rolePlayData.ts:367
 #. js-lingui-explicit-id
 msgid ""
 "Strike up a conversation with a fellow dog owner in a friendly park "
@@ -1082,17 +1099,17 @@ msgstr ""
 "เป้าหมายของคุณคือการตอบกลับอย่างเป็นธรรมชาติ รักษาการสนทนาให้ดำเนินต่อไป "
 "และสนุกสนานกับการแลกเปลี่ยนที่เกี่ยวกับเพื่อนสี่ขาของคุณ"
 
-#: src/features/RolePlay/rolePlayData.ts:400
+#: src/features/RolePlay/rolePlayData.ts:403
 #. js-lingui-explicit-id
 msgid "Chat with a Fellow Dog Owner"
 msgstr "แชทกับเจ้าของสุนัขคนอื่น"
 
-#: src/features/RolePlay/rolePlayData.ts:401
+#: src/features/RolePlay/rolePlayData.ts:404
 #. js-lingui-explicit-id
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr "สนทนาสั้น ๆ อย่างเป็นมิตรเกี่ยวกับสัตว์เลี้ยงและกิจวัตรประจำวัน"
 
-#: src/features/RolePlay/rolePlayData.ts:414
+#: src/features/RolePlay/rolePlayData.ts:417
 #. js-lingui-explicit-id
 msgid ""
 "Discuss your health concerns in a realistic doctor’s office setting and "
@@ -1139,24 +1156,24 @@ msgstr ""
 "possible treatments. By conversing naturally, you’ll hone your "
 "communication skills in a professional healthcare context."
 
-#: src/features/RolePlay/rolePlayData.ts:426
-#: src/features/RolePlay/rolePlayData.ts:541
-#: src/features/RolePlay/rolePlayData.ts:584
+#: src/features/RolePlay/rolePlayData.ts:429
+#: src/features/RolePlay/rolePlayData.ts:544
+#: src/features/RolePlay/rolePlayData.ts:587
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "สุขภาพ"
 
-#: src/features/RolePlay/rolePlayData.ts:428
+#: src/features/RolePlay/rolePlayData.ts:431
 #. js-lingui-explicit-id
 msgid "Talking to a Doctor"
 msgstr "พูดคุยกับแพทย์"
 
-#: src/features/RolePlay/rolePlayData.ts:429
+#: src/features/RolePlay/rolePlayData.ts:432
 #. js-lingui-explicit-id
 msgid "Learn to describe symptoms and ask for medical advice effectively"
 msgstr "เรียนรู้ที่จะอธิบายอาการและขอคำแนะนำทางการแพทย์อย่างมีประสิทธิภาพ"
 
-#: src/features/RolePlay/rolePlayData.ts:442
+#: src/features/RolePlay/rolePlayData.ts:445
 #. js-lingui-explicit-id
 msgid ""
 "Check into a hotel and handle room arrangements in a realistic front-desk "
@@ -1202,17 +1219,17 @@ msgstr ""
 "โดยการตอบกลับอย่างเป็นธรรมชาติ "
 "คุณจะสร้างทักษะการสนทนาที่จำเป็นสำหรับประสบการณ์เช็คอินที่โรงแรมอย่างราบรื่น"
 
-#: src/features/RolePlay/rolePlayData.ts:456
+#: src/features/RolePlay/rolePlayData.ts:459
 #. js-lingui-explicit-id
 msgid "Hotel Check-In Conversation"
 msgstr "การสนทนาเช็คอินโรงแรม"
 
-#: src/features/RolePlay/rolePlayData.ts:457
+#: src/features/RolePlay/rolePlayData.ts:460
 #. js-lingui-explicit-id
 msgid "Practice booking a room, requesting amenities, and checking in"
 msgstr "ฝึกการจองห้อง การขอสิ่งอำนวยความสะดวก และการเช็คอิน"
 
-#: src/features/RolePlay/rolePlayData.ts:471
+#: src/features/RolePlay/rolePlayData.ts:474
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable shopping in a real store setting by asking questions about "
@@ -1252,23 +1269,23 @@ msgstr ""
 "การแสดงบทบาทแบบโต้ตอบนี้จำลองประสบการณ์การช็อปปิ้งที่สมจริง "
 "ช่วยให้คุณพัฒนาทักษะการสื่อสารที่จำเป็น"
 
-#: src/features/RolePlay/rolePlayData.ts:483
-#: src/features/RolePlay/rolePlayData.ts:569
+#: src/features/RolePlay/rolePlayData.ts:486
+#: src/features/RolePlay/rolePlayData.ts:572
 #. js-lingui-explicit-id
 msgid "Shopping"
 msgstr "การช็อปปิ้ง"
 
-#: src/features/RolePlay/rolePlayData.ts:485
+#: src/features/RolePlay/rolePlayData.ts:488
 #. js-lingui-explicit-id
 msgid "Shopping at the Grocery Store"
 msgstr "การช็อปปิ้งที่ร้านขายของชำ"
 
-#: src/features/RolePlay/rolePlayData.ts:486
+#: src/features/RolePlay/rolePlayData.ts:489
 #. js-lingui-explicit-id
 msgid "Practice asking for product recommendations and making purchases"
 msgstr "ฝึกขอคำแนะนำเกี่ยวกับผลิตภัณฑ์และการซื้อสินค้า"
 
-#: src/features/RolePlay/rolePlayData.ts:500
+#: src/features/RolePlay/rolePlayData.ts:503
 #. js-lingui-explicit-id
 msgid ""
 "Work through a technical issue while speaking with a helpful support agent. "
@@ -1305,17 +1322,17 @@ msgstr ""
 "สถานการณ์นี้ช่วยให้คุณรู้สึกสบายใจในการจัดการปัญหาทางเทคโนโลยีและการสื่อสารว"
 "ิธีแก้ไข"
 
-#: src/features/RolePlay/rolePlayData.ts:514
+#: src/features/RolePlay/rolePlayData.ts:517
 #. js-lingui-explicit-id
 msgid "Calling Customer Support"
 msgstr "การติดต่อฝ่ายสนับสนุนลูกค้า"
 
-#: src/features/RolePlay/rolePlayData.ts:515
+#: src/features/RolePlay/rolePlayData.ts:518
 #. js-lingui-explicit-id
 msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "ฝึกแก้ไขปัญหาทางเทคนิคทางโทรศัพท์"
 
-#: src/features/RolePlay/rolePlayData.ts:529
+#: src/features/RolePlay/rolePlayData.ts:532
 #. js-lingui-explicit-id
 msgid ""
 "Practice scheduling a doctor’s appointment over the phone by clearly "
@@ -1353,17 +1370,17 @@ msgstr ""
 "และเหตุผลสำหรับการเข้าพบ โดยการตอบกลับอย่างเป็นธรรมชาติ "
 "คุณจะพัฒนาทักษะการสื่อสารที่จำเป็นสำหรับบริบททางการแพทย์ทุกประเภท"
 
-#: src/features/RolePlay/rolePlayData.ts:543
+#: src/features/RolePlay/rolePlayData.ts:546
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "การจองนัดพบแพทย์"
 
-#: src/features/RolePlay/rolePlayData.ts:544
+#: src/features/RolePlay/rolePlayData.ts:547
 #. js-lingui-explicit-id
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "เรียนรู้วิธีการนัดหมายการเข้าพบแพทย์ทางโทรศัพท์"
 
-#: src/features/RolePlay/rolePlayData.ts:557
+#: src/features/RolePlay/rolePlayData.ts:560
 #. js-lingui-explicit-id
 msgid ""
 "Handle a return at a customer service desk by describing what went wrong "
@@ -1402,27 +1419,27 @@ msgstr ""
 "and discuss available options. This practical scenario helps you master "
 "polite, efficient communication in retail situations."
 
-#: src/features/RolePlay/rolePlayData.ts:571
+#: src/features/RolePlay/rolePlayData.ts:574
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "การคืนสินค้ากลับไปยังร้านค้า"
 
-#: src/features/RolePlay/rolePlayData.ts:572
+#: src/features/RolePlay/rolePlayData.ts:575
 #. js-lingui-explicit-id
 msgid "Practice explaining product issues and requesting refunds or exchanges"
 msgstr "ฝึกการอธิบายปัญหาของผลิตภัณฑ์และการขอคืนเงินหรือการเปลี่ยนสินค้า"
 
-#: src/features/RolePlay/rolePlayData.ts:603
+#: src/features/RolePlay/rolePlayData.ts:606
 #. js-lingui-explicit-id
 msgid "Speaking with a Psychologist"
 msgstr "การพูดคุยกับนักจิตวิทยา"
 
-#: src/features/RolePlay/rolePlayData.ts:604
+#: src/features/RolePlay/rolePlayData.ts:607
 #. js-lingui-explicit-id
 msgid "Discuss mental health topics and express your thoughts effectively"
 msgstr "พูดคุยเกี่ยวกับหัวข้อสุขภาพจิตและแสดงความคิดของคุณอย่างมีประสิทธิภาพ"
 
-#: src/features/RolePlay/rolePlayData.ts:620
+#: src/features/RolePlay/rolePlayData.ts:623
 #. js-lingui-explicit-id
 msgid ""
 "Discuss mental health topics in a comfortable, supportive setting. This "
@@ -1475,37 +1492,37 @@ msgstr ""
 "และยืนยันประสบการณ์ของคุณเพื่อช่วยให้คุณฝึกฝนการสนทนาที่มีความหมายและมีความค"
 "ิดเพียงพอ"
 
-#: src/features/RolePlay/rolePlayData.ts:648
+#: src/features/RolePlay/rolePlayData.ts:651
 #. js-lingui-explicit-id
 msgid "All Scenarios"
 msgstr "ทุกสถานการณ์"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:357
+#: src/features/RolePlay/RolePlayBoard.tsx:368
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "บทบาทสมมติ"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:365
+#: src/features/RolePlay/RolePlayBoard.tsx:376
 #. js-lingui-explicit-id
 msgid "Play a role and talk to the AI"
 msgstr "เล่นบทบาทและพูดคุยกับ AI"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:455
+#: src/features/RolePlay/RolePlayBoard.tsx:466
 #. js-lingui-explicit-id
 msgid "Before you start, please fill some information to make it more realistic."
 msgstr "ก่อนที่คุณจะเริ่ม โปรดกรอกข้อมูลบางอย่างเพื่อทำให้มันสมจริงยิ่งขึ้น"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:594
+#: src/features/RolePlay/RolePlayBoard.tsx:623
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "เริ่มต้น"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:646
+#: src/features/RolePlay/RolePlayBoard.tsx:675
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "แสดงเพิ่มเติม"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:646
+#: src/features/RolePlay/RolePlayBoard.tsx:675
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "แสดงน้อยลง"
@@ -1927,7 +1944,7 @@ msgstr ""
 "ุณ"
 
 #: src/features/Landing/LandingPage.tsx:270
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:346
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Available languages:"
 msgstr "มีภาษาให้เลือก:"
@@ -1963,13 +1980,13 @@ msgid "Slower conversations with guided support."
 msgstr "การสนทนาที่ช้าลงพร้อมการสนับสนุนที่มีแนวทาง."
 
 #: src/features/Landing/LandingPage.tsx:315
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:404
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:414
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "พร้อมที่จะพูดภาษาอังกฤษได้อย่างคล่องแคล่วหรือยัง?"
 
 #: src/features/Landing/LandingPage.tsx:316
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:405
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:415
 #. js-lingui-explicit-id
 msgid "Start Your Free Trial"
 msgstr "เริ่มทดลองใช้ฟรี"
@@ -2008,17 +2025,17 @@ msgstr "ดูทั้งหมด"
 msgid "Play the role"
 msgstr "เล่นบทบาท"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:298
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:308
 #. js-lingui-explicit-id
 msgid "Answer the AI"
 msgstr "ตอบ AI"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:307
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:317
 #. js-lingui-explicit-id
 msgid "First 15 mins are free. Then pay what you want."
 msgstr "แรก 15 นาที ฟรี จากนั้นจ่ายตามที่คุณต้องการ"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:373
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:383
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
 msgstr "สถานการณ์ที่เกี่ยวข้อง"
@@ -3935,27 +3952,27 @@ msgstr "ลองใช้ฟรี"
 msgid "Read more"
 msgstr "อ่านเพิ่มเติม"
 
-#: src/features/Auth/SignInForm.tsx:25
+#: src/features/Auth/SignInForm.tsx:36
 #. js-lingui-explicit-id
 msgid "Start the Lesson"
 msgstr "เริ่มบทเรียน"
 
-#: src/features/Auth/SignInForm.tsx:48
+#: src/features/Auth/SignInForm.tsx:78
 #. js-lingui-explicit-id
 msgid "Start Role Play:"
 msgstr "เริ่มการเล่นบทบาท:"
 
-#: src/features/Auth/SignInForm.tsx:75
+#: src/features/Auth/SignInForm.tsx:105
 #. js-lingui-explicit-id
 msgid "Create an account, select a language and start practicing"
 msgstr "สร้างบัญชีผู้ใช้ เลือกภาษาและเริ่มฝึกฝน"
 
-#: src/features/Auth/SignInForm.tsx:92
+#: src/features/Auth/SignInForm.tsx:122
 #. js-lingui-explicit-id
 msgid "Continue with google"
 msgstr "ดำเนินการต่อด้วย Google"
 
-#: src/features/Auth/SignInForm.tsx:102
+#: src/features/Auth/SignInForm.tsx:145
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "โดยการสร้างบัญชี คุณยอมรับว่า:"

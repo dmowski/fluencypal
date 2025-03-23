@@ -13,6 +13,27 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Auth/SignInForm.tsx:48
+#. js-lingui-explicit-id
+msgid "Please open this page in your browser to continue with Google sign-in."
+msgstr ""
+"Lütfen Google oturum açma işlemine devam etmek için bu sayfayı "
+"tarayıcınızda açın."
+
+#: src/features/Auth/SignInForm.tsx:127
+#. js-lingui-explicit-id
+msgid "Google sign-in is not supported inside Instagram or Facebook in-app browser."
+msgstr ""
+"Google oturum açma, Instagram veya Facebook uygulama içi tarayıcısında "
+"desteklenmez."
+
+#: src/features/Auth/SignInForm.tsx:132
+#. js-lingui-explicit-id
+msgid "Please tap the menu (⋮ or •••) and choose 'Open in Browser' to continue."
+msgstr ""
+"Lütfen devam etmek için menüyü (⋮ veya •••) tıklayın ve 'Tarayıcıda Aç' "
+"seçeneğini seçin."
+
 #: src/libs/metadata.ts:55
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:75
@@ -115,7 +136,7 @@ msgstr "AI öğretmen maliyeti"
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Landing/Footer.tsx:176
 #: src/features/Header/NeedHelpModal.tsx:150
-#: src/features/Auth/SignInForm.tsx:113
+#: src/features/Auth/SignInForm.tsx:156
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
 msgstr "Gizlilik Politikası"
@@ -132,7 +153,7 @@ msgstr "Çerezler Politikası"
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Landing/Footer.tsx:166
 #: src/features/Header/NeedHelpModal.tsx:137
-#: src/features/Auth/SignInForm.tsx:117
+#: src/features/Auth/SignInForm.tsx:160
 #. js-lingui-explicit-id
 msgid "Terms of Use"
 msgstr "Kullanım Şartları"
@@ -527,7 +548,7 @@ msgid "Payment history:"
 msgstr "Ödeme geçmişi:"
 
 #: src/features/Usage/PaymentModal.tsx:621
-#: src/features/RolePlay/RolePlayBoard.tsx:594
+#: src/features/RolePlay/RolePlayBoard.tsx:623
 #: src/features/Dashboard/Dashboard.tsx:34
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -549,9 +570,9 @@ msgid "Game"
 msgstr "Oyun"
 
 #: src/features/RolePlay/rolePlayData.ts:28
-#: src/features/RolePlay/rolePlayData.ts:244
-#: src/features/RolePlay/rolePlayData.ts:387
-#: src/features/RolePlay/rolePlayData.ts:593
+#: src/features/RolePlay/rolePlayData.ts:247
+#: src/features/RolePlay/rolePlayData.ts:390
+#: src/features/RolePlay/rolePlayData.ts:596
 #. js-lingui-explicit-id
 msgid "Your Language Level"
 msgstr "Dil Seviyeniz"
@@ -600,7 +621,7 @@ msgstr ""
 "ederken sırayla dönüşümlü olarak görev alırsınız. Bu, yaratıcı düşünmeyi ve "
 "akıcı ifadeyi teşvik eder, dil yeterliliğinize göre uyum sağlar."
 
-#: src/features/RolePlay/rolePlayData.ts:86
+#: src/features/RolePlay/rolePlayData.ts:89
 #. js-lingui-explicit-id
 msgid ""
 "Step into a realistic interview environment and practice showcasing your "
@@ -651,18 +672,18 @@ msgstr ""
 "zorluğu ayarlayacak. Kısa ve ikna edici yanıtlar vermek için ipuçlarını "
 "kullanarak her iş mülakatında öne çıkmanıza yardımcı olun."
 
-#: src/features/RolePlay/rolePlayData.ts:97
-#: src/features/RolePlay/rolePlayData.ts:512
+#: src/features/RolePlay/rolePlayData.ts:100
+#: src/features/RolePlay/rolePlayData.ts:515
 #. js-lingui-explicit-id
 msgid "Professional"
 msgstr "Profesyonel"
 
-#: src/features/RolePlay/rolePlayData.ts:102
+#: src/features/RolePlay/rolePlayData.ts:105
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "Deneyiminiz"
 
-#: src/features/RolePlay/rolePlayData.ts:104
+#: src/features/RolePlay/rolePlayData.ts:107
 #. js-lingui-explicit-id
 msgid ""
 "Paste your CV text here. You can also write a brief summary of your "
@@ -671,24 +692,24 @@ msgstr ""
 "CV metninizi buraya yapıştırın. Ayrıca deneyiminizle ilgili kısa bir özet "
 "yazabilirsiniz."
 
-#: src/features/RolePlay/rolePlayData.ts:116
+#: src/features/RolePlay/rolePlayData.ts:119
 #. js-lingui-explicit-id
 msgid "Desired Job Title"
 msgstr "İstenilen İş Ünvanı"
 
-#: src/features/RolePlay/rolePlayData.ts:118
+#: src/features/RolePlay/rolePlayData.ts:121
 #. js-lingui-explicit-id
 msgid "Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc."
 msgstr ""
 "İstediğiniz iş unvanı. Tasarımcı, Mağaza Asistanı, Fitness Eğitmeni vb. "
 "gibi."
 
-#: src/features/RolePlay/rolePlayData.ts:127
+#: src/features/RolePlay/rolePlayData.ts:130
 #. js-lingui-explicit-id
 msgid "Vacancy description"
 msgstr "İş ilanı açıklaması"
 
-#: src/features/RolePlay/rolePlayData.ts:129
+#: src/features/RolePlay/rolePlayData.ts:132
 #. js-lingui-explicit-id
 msgid ""
 "Paste vacancy description if you have it. You can also write a brief "
@@ -697,17 +718,17 @@ msgstr ""
 "Boş pozisyon açıklamasını varsa yapıştırın. Ayrıca iş gereksinimlerinin "
 "kısa bir özetini de yazabilirsiniz."
 
-#: src/features/RolePlay/rolePlayData.ts:151
+#: src/features/RolePlay/rolePlayData.ts:154
 #. js-lingui-explicit-id
 msgid "Practice Job Interview"
 msgstr "Pratik İş Mülakatı"
 
-#: src/features/RolePlay/rolePlayData.ts:152
+#: src/features/RolePlay/rolePlayData.ts:155
 #. js-lingui-explicit-id
 msgid "Master answering common interview questions with AI"
 msgstr "Yapay Zeka ile yaygın mülakat sorularını yanıtlamada ustalaşın"
 
-#: src/features/RolePlay/rolePlayData.ts:167
+#: src/features/RolePlay/rolePlayData.ts:170
 #. js-lingui-explicit-id
 msgid ""
 "Engage in a casual conversation with a friendly stranger at a social event. "
@@ -754,39 +775,39 @@ msgstr ""
 "As you exchange pleasantries, the AI will adapt to your responses, helping "
 "you refine your small-talk abilities."
 
-#: src/features/RolePlay/rolePlayData.ts:178
-#: src/features/RolePlay/rolePlayData.ts:268
-#: src/features/RolePlay/rolePlayData.ts:376
+#: src/features/RolePlay/rolePlayData.ts:181
+#: src/features/RolePlay/rolePlayData.ts:271
+#: src/features/RolePlay/rolePlayData.ts:379
 #. js-lingui-explicit-id
 msgid "Social"
 msgstr "Sosyal"
 
-#: src/features/RolePlay/rolePlayData.ts:180
+#: src/features/RolePlay/rolePlayData.ts:183
 #. js-lingui-explicit-id
 msgid "Small Talk Practice"
 msgstr "Küçük Sohbet Pratiği"
 
-#: src/features/RolePlay/rolePlayData.ts:181
+#: src/features/RolePlay/rolePlayData.ts:184
 #. js-lingui-explicit-id
 msgid "Develop your conversational skills with casual small talk"
 msgstr "Günlük küçük sohbetlerle konuşma becerilerinizi geliştirin"
 
-#: src/features/RolePlay/rolePlayData.ts:194
+#: src/features/RolePlay/rolePlayData.ts:197
 #. js-lingui-explicit-id
 msgid "Speech"
 msgstr "Konuşma"
 
-#: src/features/RolePlay/rolePlayData.ts:195
+#: src/features/RolePlay/rolePlayData.ts:198
 #. js-lingui-explicit-id
 msgid "Instant Speech Correction"
 msgstr "Anında Konuşma Düzeltme"
 
-#: src/features/RolePlay/rolePlayData.ts:196
+#: src/features/RolePlay/rolePlayData.ts:199
 #. js-lingui-explicit-id
 msgid "Real-time feedback to improve your spoken English"
 msgstr "Gerçek zamanlı geri bildirimle konuşma İngilizcenizi geliştirin"
 
-#: src/features/RolePlay/rolePlayData.ts:213
+#: src/features/RolePlay/rolePlayData.ts:216
 #. js-lingui-explicit-id
 msgid ""
 "Improve your speaking skills with immediate, personalized feedback. Instant "
@@ -830,19 +851,19 @@ msgstr ""
 "Daha sonra düzeltlenmiş yanıtı tekrarlayarak pratik yapacaksınız. Her konu "
 "hızlı geçiyor, deneyimi dinamik ve hızlı dil gelişimi için etkili kılıyor."
 
-#: src/features/RolePlay/rolePlayData.ts:270
+#: src/features/RolePlay/rolePlayData.ts:273
 #. js-lingui-explicit-id
 msgid "In the Restaurant"
 msgstr "Restoranda"
 
-#: src/features/RolePlay/rolePlayData.ts:271
+#: src/features/RolePlay/rolePlayData.ts:274
 #. js-lingui-explicit-id
 msgid "Practice ordering food and interacting with a waiter in a restaurant"
 msgstr ""
 "Yemek siparişi verme ve bir restoranda garsonla etkileşim kurma pratiği "
 "yapın"
 
-#: src/features/RolePlay/rolePlayData.ts:282
+#: src/features/RolePlay/rolePlayData.ts:285
 #. js-lingui-explicit-id
 msgid ""
 "In this role-play, you’ll interact with a polite waiter, order food, and "
@@ -894,17 +915,17 @@ msgstr ""
 "yapay zeka cevaplarınıza göre uyum sağlayarak, pratik yemek etkileşimlerini "
 "geliştirmenize yardımcı olan bir deneyim yaratır."
 
-#: src/features/RolePlay/rolePlayData.ts:300
+#: src/features/RolePlay/rolePlayData.ts:303
 #. js-lingui-explicit-id
 msgid "Scenario Description"
 msgstr "Senaryo Tanımı"
 
-#: src/features/RolePlay/rolePlayData.ts:302
+#: src/features/RolePlay/rolePlayData.ts:305
 #. js-lingui-explicit-id
 msgid "Describe your custom scenario here..."
 msgstr "Kendi senaryonuzu buraya tanımlayın..."
 
-#: src/features/RolePlay/rolePlayData.ts:309
+#: src/features/RolePlay/rolePlayData.ts:312
 #. js-lingui-explicit-id
 msgid ""
 "Create a unique, personalized setting that fits your specific interests or "
@@ -953,22 +974,22 @@ msgstr ""
 "bulunacaktır. Bu esnek format, ihtiyaç duyduğunuz iletişim becerilerini tam "
 "olarak ustalaşmanıza yardımcı olur."
 
-#: src/features/RolePlay/rolePlayData.ts:321
+#: src/features/RolePlay/rolePlayData.ts:324
 #. js-lingui-explicit-id
 msgid "Create Your Own Role-Play Scenario"
 msgstr "Kendi Rol Oynama Senaryonuzu Oluşturun"
 
-#: src/features/RolePlay/rolePlayData.ts:322
+#: src/features/RolePlay/rolePlayData.ts:325
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
 msgstr "Kendi benzersiz öğrenme ihtiyaçlarınıza uygun bir konuşmayı özelleştirin"
 
-#: src/features/RolePlay/rolePlayData.ts:323
+#: src/features/RolePlay/rolePlayData.ts:326
 #. js-lingui-explicit-id
 msgid "Custom"
 msgstr "Özel"
 
-#: src/features/RolePlay/rolePlayData.ts:335
+#: src/features/RolePlay/rolePlayData.ts:338
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable purchasing travel tickets in a bustling train station "
@@ -1016,23 +1037,23 @@ msgstr ""
 "ve yolculuğunuz hakkında temel bilgileri anlama yeteneğini "
 "geliştireceksiniz."
 
-#: src/features/RolePlay/rolePlayData.ts:348
-#: src/features/RolePlay/rolePlayData.ts:454
+#: src/features/RolePlay/rolePlayData.ts:351
+#: src/features/RolePlay/rolePlayData.ts:457
 #. js-lingui-explicit-id
 msgid "Travel"
 msgstr "Seyahat"
 
-#: src/features/RolePlay/rolePlayData.ts:350
+#: src/features/RolePlay/rolePlayData.ts:353
 #. js-lingui-explicit-id
 msgid "Buying a Train Ticket"
 msgstr "Tren Bileti Satın Alma"
 
-#: src/features/RolePlay/rolePlayData.ts:351
+#: src/features/RolePlay/rolePlayData.ts:354
 #. js-lingui-explicit-id
 msgid "Practice asking about schedules, fares, and ticket options"
 msgstr "Programlar, tarifeler ve bilet seçenekleri hakkında soru sorma pratiği yapın"
 
-#: src/features/RolePlay/rolePlayData.ts:364
+#: src/features/RolePlay/rolePlayData.ts:367
 #. js-lingui-explicit-id
 msgid ""
 "Strike up a conversation with a fellow dog owner in a friendly park "
@@ -1081,17 +1102,17 @@ msgstr ""
 "Amacınız doğal bir şekilde yanıt vermek, sohbetin akışını sürdürmek ve dört "
 "ayaklı dostlarınız hakkında eğlenceli bir değişim yaşamak."
 
-#: src/features/RolePlay/rolePlayData.ts:400
+#: src/features/RolePlay/rolePlayData.ts:403
 #. js-lingui-explicit-id
 msgid "Chat with a Fellow Dog Owner"
 msgstr "Diğer Bir Köpek Sahibiyle Sohbet Et"
 
-#: src/features/RolePlay/rolePlayData.ts:401
+#: src/features/RolePlay/rolePlayData.ts:404
 #. js-lingui-explicit-id
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr "Evcil hayvanlar ve günlük rutinler hakkında dostane küçük sohbetlere katılın"
 
-#: src/features/RolePlay/rolePlayData.ts:414
+#: src/features/RolePlay/rolePlayData.ts:417
 #. js-lingui-explicit-id
 msgid ""
 "Discuss your health concerns in a realistic doctor’s office setting and "
@@ -1139,24 +1160,24 @@ msgstr ""
 "Doğal bir şekilde konuşarak, profesyonel bir sağlık hizmeti bağlamında "
 "iletişim becerilerinizi geliştireceksiniz."
 
-#: src/features/RolePlay/rolePlayData.ts:426
-#: src/features/RolePlay/rolePlayData.ts:541
-#: src/features/RolePlay/rolePlayData.ts:584
+#: src/features/RolePlay/rolePlayData.ts:429
+#: src/features/RolePlay/rolePlayData.ts:544
+#: src/features/RolePlay/rolePlayData.ts:587
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "Sağlık"
 
-#: src/features/RolePlay/rolePlayData.ts:428
+#: src/features/RolePlay/rolePlayData.ts:431
 #. js-lingui-explicit-id
 msgid "Talking to a Doctor"
 msgstr "Bir Doktorla Konuşmak"
 
-#: src/features/RolePlay/rolePlayData.ts:429
+#: src/features/RolePlay/rolePlayData.ts:432
 #. js-lingui-explicit-id
 msgid "Learn to describe symptoms and ask for medical advice effectively"
 msgstr "Semptomları tanımlamayı ve tıbbi tavsiye istemeyi etkili bir şekilde öğrenin"
 
-#: src/features/RolePlay/rolePlayData.ts:442
+#: src/features/RolePlay/rolePlayData.ts:445
 #. js-lingui-explicit-id
 msgid ""
 "Check into a hotel and handle room arrangements in a realistic front-desk "
@@ -1205,17 +1226,17 @@ msgstr ""
 "you’ll build the conversational skills necessary for a smooth hotel "
 "check-in experience."
 
-#: src/features/RolePlay/rolePlayData.ts:456
+#: src/features/RolePlay/rolePlayData.ts:459
 #. js-lingui-explicit-id
 msgid "Hotel Check-In Conversation"
 msgstr "Otel Giriş Konuşması"
 
-#: src/features/RolePlay/rolePlayData.ts:457
+#: src/features/RolePlay/rolePlayData.ts:460
 #. js-lingui-explicit-id
 msgid "Practice booking a room, requesting amenities, and checking in"
 msgstr "Oda rezervasyonu yapma, olanak talep etme ve giriş yapma pratiği yapın"
 
-#: src/features/RolePlay/rolePlayData.ts:471
+#: src/features/RolePlay/rolePlayData.ts:474
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable shopping in a real store setting by asking questions about "
@@ -1258,23 +1279,23 @@ msgstr ""
 "yapma, gerçeğe yakın bir alışveriş deneyimini simüle ederek temel iletişim "
 "becerilerinizi geliştirmenize yardımcı olur."
 
-#: src/features/RolePlay/rolePlayData.ts:483
-#: src/features/RolePlay/rolePlayData.ts:569
+#: src/features/RolePlay/rolePlayData.ts:486
+#: src/features/RolePlay/rolePlayData.ts:572
 #. js-lingui-explicit-id
 msgid "Shopping"
 msgstr "Alışveriş"
 
-#: src/features/RolePlay/rolePlayData.ts:485
+#: src/features/RolePlay/rolePlayData.ts:488
 #. js-lingui-explicit-id
 msgid "Shopping at the Grocery Store"
 msgstr "Market Alışverişi"
 
-#: src/features/RolePlay/rolePlayData.ts:486
+#: src/features/RolePlay/rolePlayData.ts:489
 #. js-lingui-explicit-id
 msgid "Practice asking for product recommendations and making purchases"
 msgstr "Ürün önerileri istemek ve satın alma işlemleri yapma pratiği"
 
-#: src/features/RolePlay/rolePlayData.ts:500
+#: src/features/RolePlay/rolePlayData.ts:503
 #. js-lingui-explicit-id
 msgid ""
 "Work through a technical issue while speaking with a helpful support agent. "
@@ -1312,17 +1333,17 @@ msgstr ""
 "sunacak. Bu senaryo, teknoloji problemlerinde gezinmeyi ve çözümleri "
 "iletmeyi rahatça yapmanıza yardımcı olur."
 
-#: src/features/RolePlay/rolePlayData.ts:514
+#: src/features/RolePlay/rolePlayData.ts:517
 #. js-lingui-explicit-id
 msgid "Calling Customer Support"
 msgstr "Müşteri Desteğini Arama"
 
-#: src/features/RolePlay/rolePlayData.ts:515
+#: src/features/RolePlay/rolePlayData.ts:518
 #. js-lingui-explicit-id
 msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "Telefonla teknik bir sorunun çözümünü pratik yapın"
 
-#: src/features/RolePlay/rolePlayData.ts:529
+#: src/features/RolePlay/rolePlayData.ts:532
 #. js-lingui-explicit-id
 msgid ""
 "Practice scheduling a doctor’s appointment over the phone by clearly "
@@ -1360,17 +1381,17 @@ msgstr ""
 "ve ziyaret nedeninizi soracak. Doğal bir şekilde yanıt vererek, herhangi "
 "bir tıbbi bağlamda gerekli iletişim becerilerini geliştireceksiniz."
 
-#: src/features/RolePlay/rolePlayData.ts:543
+#: src/features/RolePlay/rolePlayData.ts:546
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "Doktor Randevusu Alma"
 
-#: src/features/RolePlay/rolePlayData.ts:544
+#: src/features/RolePlay/rolePlayData.ts:547
 #. js-lingui-explicit-id
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "Telefonla tıbbi randevu nasıl alınır öğrenin"
 
-#: src/features/RolePlay/rolePlayData.ts:557
+#: src/features/RolePlay/rolePlayData.ts:560
 #. js-lingui-explicit-id
 msgid ""
 "Handle a return at a customer service desk by describing what went wrong "
@@ -1410,31 +1431,31 @@ msgstr ""
 "seçenekleri tartışacak. Bu pratik senaryo, perakende durumlarında nazik ve "
 "etkili iletişimi ustalaşmanıza yardımcı olur."
 
-#: src/features/RolePlay/rolePlayData.ts:571
+#: src/features/RolePlay/rolePlayData.ts:574
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "Bir Ürünü Mağazaya İade Etmek"
 
-#: src/features/RolePlay/rolePlayData.ts:572
+#: src/features/RolePlay/rolePlayData.ts:575
 #. js-lingui-explicit-id
 msgid "Practice explaining product issues and requesting refunds or exchanges"
 msgstr ""
 "Ürün sorunlarını açıklama ve geri ödeme veya değişim talep etme pratiği "
 "yapın"
 
-#: src/features/RolePlay/rolePlayData.ts:603
+#: src/features/RolePlay/rolePlayData.ts:606
 #. js-lingui-explicit-id
 msgid "Speaking with a Psychologist"
 msgstr "Bir Psikolog ile Konuşma"
 
-#: src/features/RolePlay/rolePlayData.ts:604
+#: src/features/RolePlay/rolePlayData.ts:607
 #. js-lingui-explicit-id
 msgid "Discuss mental health topics and express your thoughts effectively"
 msgstr ""
 "Zihinsel sağlık konularını tartışın ve düşüncelerinizi etkili bir şekilde "
 "ifade edin"
 
-#: src/features/RolePlay/rolePlayData.ts:620
+#: src/features/RolePlay/rolePlayData.ts:623
 #. js-lingui-explicit-id
 msgid ""
 "Discuss mental health topics in a comfortable, supportive setting. This "
@@ -1489,39 +1510,39 @@ msgstr ""
 "kılacak, bu sayede anlamlı ve düşünceli bir konuşma pratiği yapmanıza "
 "yardımcı olacaktır."
 
-#: src/features/RolePlay/rolePlayData.ts:648
+#: src/features/RolePlay/rolePlayData.ts:651
 #. js-lingui-explicit-id
 msgid "All Scenarios"
 msgstr "Tüm Senaryolar"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:357
+#: src/features/RolePlay/RolePlayBoard.tsx:368
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Rol Oynama"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:365
+#: src/features/RolePlay/RolePlayBoard.tsx:376
 #. js-lingui-explicit-id
 msgid "Play a role and talk to the AI"
 msgstr "Bir rol oynayın ve AI ile konuşun"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:455
+#: src/features/RolePlay/RolePlayBoard.tsx:466
 #. js-lingui-explicit-id
 msgid "Before you start, please fill some information to make it more realistic."
 msgstr ""
 "Başlamadan önce, daha gerçekçi hale getirmek için lütfen bazı bilgileri "
 "doldurun."
 
-#: src/features/RolePlay/RolePlayBoard.tsx:594
+#: src/features/RolePlay/RolePlayBoard.tsx:623
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Başla"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:646
+#: src/features/RolePlay/RolePlayBoard.tsx:675
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Daha fazla göster"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:646
+#: src/features/RolePlay/RolePlayBoard.tsx:675
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Daha az göster"
@@ -1944,7 +1965,7 @@ msgstr ""
 "dil ve yeterlilik seviyenize göre ayarlar."
 
 #: src/features/Landing/LandingPage.tsx:270
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:346
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Available languages:"
 msgstr "Mevcut diller:"
@@ -1980,13 +2001,13 @@ msgid "Slower conversations with guided support."
 msgstr "Daha yavaş konuşmalar ve rehberli destek."
 
 #: src/features/Landing/LandingPage.tsx:315
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:404
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:414
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "İngilizcede Akıcı Olmaya Hazır mısınız?"
 
 #: src/features/Landing/LandingPage.tsx:316
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:405
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:415
 #. js-lingui-explicit-id
 msgid "Start Your Free Trial"
 msgstr "Ücretsiz Denemenizi Başlatın"
@@ -2025,17 +2046,17 @@ msgstr "Tümünü Görüntüle"
 msgid "Play the role"
 msgstr "Rol oyna"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:298
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:308
 #. js-lingui-explicit-id
 msgid "Answer the AI"
 msgstr "Cevap ver AI"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:307
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:317
 #. js-lingui-explicit-id
 msgid "First 15 mins are free. Then pay what you want."
 msgstr "İlk 15 dakika ücretsiz. Sonra istediğiniz kadar ödeyin."
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:373
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:383
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
 msgstr "İlgili Senaryolar"
@@ -3947,27 +3968,27 @@ msgstr "Ücretsiz deneyin"
 msgid "Read more"
 msgstr "Daha fazla oku"
 
-#: src/features/Auth/SignInForm.tsx:25
+#: src/features/Auth/SignInForm.tsx:36
 #. js-lingui-explicit-id
 msgid "Start the Lesson"
 msgstr "Başlat Dersi"
 
-#: src/features/Auth/SignInForm.tsx:48
+#: src/features/Auth/SignInForm.tsx:78
 #. js-lingui-explicit-id
 msgid "Start Role Play:"
 msgstr "Rol Oynama Başlat:"
 
-#: src/features/Auth/SignInForm.tsx:75
+#: src/features/Auth/SignInForm.tsx:105
 #. js-lingui-explicit-id
 msgid "Create an account, select a language and start practicing"
 msgstr "Bir hesap oluşturun, bir dil seçin ve pratik yapmaya başlayın"
 
-#: src/features/Auth/SignInForm.tsx:92
+#: src/features/Auth/SignInForm.tsx:122
 #. js-lingui-explicit-id
 msgid "Continue with google"
 msgstr "Google ile devam et"
 
-#: src/features/Auth/SignInForm.tsx:102
+#: src/features/Auth/SignInForm.tsx:145
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Bir hesap oluşturarak, şunları kabul edersiniz:"

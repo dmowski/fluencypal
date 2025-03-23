@@ -13,6 +13,21 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Auth/SignInForm.tsx:48
+#. js-lingui-explicit-id
+msgid "Please open this page in your browser to continue with Google sign-in."
+msgstr "Google サインインを続けるためには、このページをご利用のブラウザで開いてください。"
+
+#: src/features/Auth/SignInForm.tsx:127
+#. js-lingui-explicit-id
+msgid "Google sign-in is not supported inside Instagram or Facebook in-app browser."
+msgstr "GoogleサインインはInstagramまたはFacebookのインアプリブラウザー内ではサポートされていません。"
+
+#: src/features/Auth/SignInForm.tsx:132
+#. js-lingui-explicit-id
+msgid "Please tap the menu (⋮ or •••) and choose 'Open in Browser' to continue."
+msgstr "メニュー（⋮または•••）をタップし、「ブラウザで開く」を選択して続行してください。"
+
 #: src/libs/metadata.ts:55
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:75
@@ -113,7 +128,7 @@ msgstr "AI家庭教師の費用"
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Landing/Footer.tsx:176
 #: src/features/Header/NeedHelpModal.tsx:150
-#: src/features/Auth/SignInForm.tsx:113
+#: src/features/Auth/SignInForm.tsx:156
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
@@ -130,7 +145,7 @@ msgstr "クッキーポリシー"
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Landing/Footer.tsx:166
 #: src/features/Header/NeedHelpModal.tsx:137
-#: src/features/Auth/SignInForm.tsx:117
+#: src/features/Auth/SignInForm.tsx:160
 #. js-lingui-explicit-id
 msgid "Terms of Use"
 msgstr "利用規約"
@@ -510,7 +525,7 @@ msgid "Payment history:"
 msgstr "支払い履歴:"
 
 #: src/features/Usage/PaymentModal.tsx:621
-#: src/features/RolePlay/RolePlayBoard.tsx:594
+#: src/features/RolePlay/RolePlayBoard.tsx:623
 #: src/features/Dashboard/Dashboard.tsx:34
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -532,9 +547,9 @@ msgid "Game"
 msgstr "ゲーム"
 
 #: src/features/RolePlay/rolePlayData.ts:28
-#: src/features/RolePlay/rolePlayData.ts:244
-#: src/features/RolePlay/rolePlayData.ts:387
-#: src/features/RolePlay/rolePlayData.ts:593
+#: src/features/RolePlay/rolePlayData.ts:247
+#: src/features/RolePlay/rolePlayData.ts:390
+#: src/features/RolePlay/rolePlayData.ts:596
 #. js-lingui-explicit-id
 msgid "Your Language Level"
 msgstr "あなたの言語レベル"
@@ -578,7 +593,7 @@ msgstr ""
 "あなたとあなたのAIパートナーは、直接単語を名前で呼ぶことなく、交互にターンを取り、単語を説明して推測します。これにより、創造的な思考と流暢な表現が促さ"
 "れ、あなたの言語能力に応じた適応を実現します。"
 
-#: src/features/RolePlay/rolePlayData.ts:86
+#: src/features/RolePlay/rolePlayData.ts:89
 #. js-lingui-explicit-id
 msgid ""
 "Step into a realistic interview environment and practice showcasing your "
@@ -620,57 +635,57 @@ msgstr ""
 "問され、AIはあなたの回答に基づいて難易度を調整します。プロンプトを使用して、どのような仕事の面接でも目立つのに役立つ簡潔で説得力のある答えを述べる練習"
 "をしましょう。"
 
-#: src/features/RolePlay/rolePlayData.ts:97
-#: src/features/RolePlay/rolePlayData.ts:512
+#: src/features/RolePlay/rolePlayData.ts:100
+#: src/features/RolePlay/rolePlayData.ts:515
 #. js-lingui-explicit-id
 msgid "Professional"
 msgstr "プロフェッショナル"
 
-#: src/features/RolePlay/rolePlayData.ts:102
+#: src/features/RolePlay/rolePlayData.ts:105
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "あなたの体験"
 
-#: src/features/RolePlay/rolePlayData.ts:104
+#: src/features/RolePlay/rolePlayData.ts:107
 #. js-lingui-explicit-id
 msgid ""
 "Paste your CV text here. You can also write a brief summary of your "
 "experience."
 msgstr "ここにあなたの履歴書のテキストを貼り付けてください。あなたの経験の簡単な概要を書くこともできます。"
 
-#: src/features/RolePlay/rolePlayData.ts:116
+#: src/features/RolePlay/rolePlayData.ts:119
 #. js-lingui-explicit-id
 msgid "Desired Job Title"
 msgstr "希望職種"
 
-#: src/features/RolePlay/rolePlayData.ts:118
+#: src/features/RolePlay/rolePlayData.ts:121
 #. js-lingui-explicit-id
 msgid "Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc."
 msgstr "あなたの希望する職種名。デザイナー、ショップアシスタント、フィットネストレーナーなど。"
 
-#: src/features/RolePlay/rolePlayData.ts:127
+#: src/features/RolePlay/rolePlayData.ts:130
 #. js-lingui-explicit-id
 msgid "Vacancy description"
 msgstr " vacancy description"
 
-#: src/features/RolePlay/rolePlayData.ts:129
+#: src/features/RolePlay/rolePlayData.ts:132
 #. js-lingui-explicit-id
 msgid ""
 "Paste vacancy description if you have it. You can also write a brief "
 "summary of the job requirements."
 msgstr " вакансииの説明文を貼り付けてください。職務要件の簡単な概要を記入することもできます。"
 
-#: src/features/RolePlay/rolePlayData.ts:151
+#: src/features/RolePlay/rolePlayData.ts:154
 #. js-lingui-explicit-id
 msgid "Practice Job Interview"
 msgstr "練習の職務面接"
 
-#: src/features/RolePlay/rolePlayData.ts:152
+#: src/features/RolePlay/rolePlayData.ts:155
 #. js-lingui-explicit-id
 msgid "Master answering common interview questions with AI"
 msgstr "AIを使って一般的な面接質問に答えるコツをマスターしよう"
 
-#: src/features/RolePlay/rolePlayData.ts:167
+#: src/features/RolePlay/rolePlayData.ts:170
 #. js-lingui-explicit-id
 msgid ""
 "Engage in a casual conversation with a friendly stranger at a social event. "
@@ -708,39 +723,39 @@ msgstr ""
 "このシナリオでは、社交イベントで新しい知り合いと出会った人の役割になります。AIは友好的な見知らぬ人として、天気や共通の興味などのカジュアルなトピックに"
 "ついて話すよう促します。挨拶を交わす中で、AIはあなたの反応に合わせて適応し、スモールトークの能力を高める手助けをします。"
 
-#: src/features/RolePlay/rolePlayData.ts:178
-#: src/features/RolePlay/rolePlayData.ts:268
-#: src/features/RolePlay/rolePlayData.ts:376
+#: src/features/RolePlay/rolePlayData.ts:181
+#: src/features/RolePlay/rolePlayData.ts:271
+#: src/features/RolePlay/rolePlayData.ts:379
 #. js-lingui-explicit-id
 msgid "Social"
 msgstr "ソーシャル"
 
-#: src/features/RolePlay/rolePlayData.ts:180
+#: src/features/RolePlay/rolePlayData.ts:183
 #. js-lingui-explicit-id
 msgid "Small Talk Practice"
 msgstr "小話の練習"
 
-#: src/features/RolePlay/rolePlayData.ts:181
+#: src/features/RolePlay/rolePlayData.ts:184
 #. js-lingui-explicit-id
 msgid "Develop your conversational skills with casual small talk"
 msgstr "カジュアルな雑談で会話スキルを磨こう"
 
-#: src/features/RolePlay/rolePlayData.ts:194
+#: src/features/RolePlay/rolePlayData.ts:197
 #. js-lingui-explicit-id
 msgid "Speech"
 msgstr "スピーチ"
 
-#: src/features/RolePlay/rolePlayData.ts:195
+#: src/features/RolePlay/rolePlayData.ts:198
 #. js-lingui-explicit-id
 msgid "Instant Speech Correction"
 msgstr "即時スピーチ修正"
 
-#: src/features/RolePlay/rolePlayData.ts:196
+#: src/features/RolePlay/rolePlayData.ts:199
 #. js-lingui-explicit-id
 msgid "Real-time feedback to improve your spoken English"
 msgstr "リアルタイムフィードバックであなたの英語スピーキングを向上させる"
 
-#: src/features/RolePlay/rolePlayData.ts:213
+#: src/features/RolePlay/rolePlayData.ts:216
 #. js-lingui-explicit-id
 msgid ""
 "Improve your speaking skills with immediate, personalized feedback. Instant "
@@ -778,17 +793,17 @@ msgstr ""
 "さまざまな魅力的なトピックについて考えや意見を表現するよう促されます。初回の応答の後、文法と発音の修正を強調した明確で丁寧なフィードバックが提供されます"
 "。その後、修正された応答を繰り返すことで練習します。各トピックは迅速に進行し、体験をダイナミックかつ効果的に維持し、急速な言語改善を促します。"
 
-#: src/features/RolePlay/rolePlayData.ts:270
+#: src/features/RolePlay/rolePlayData.ts:273
 #. js-lingui-explicit-id
 msgid "In the Restaurant"
 msgstr "レストランで"
 
-#: src/features/RolePlay/rolePlayData.ts:271
+#: src/features/RolePlay/rolePlayData.ts:274
 #. js-lingui-explicit-id
 msgid "Practice ordering food and interacting with a waiter in a restaurant"
 msgstr "食べ物を注文し、レストランでウェイターとやり取りする練習"
 
-#: src/features/RolePlay/rolePlayData.ts:282
+#: src/features/RolePlay/rolePlayData.ts:285
 #. js-lingui-explicit-id
 msgid ""
 "In this role-play, you’ll interact with a polite waiter, order food, and "
@@ -830,17 +845,17 @@ msgstr ""
 "質問に答えることになります。会話を進める中で、AIはあなたの反応に適応し、実用的なダイニングインタラクションを練習するのに役立つ没入型の体験を作り出しま"
 "す。"
 
-#: src/features/RolePlay/rolePlayData.ts:300
+#: src/features/RolePlay/rolePlayData.ts:303
 #. js-lingui-explicit-id
 msgid "Scenario Description"
 msgstr "シナリオ説明"
 
-#: src/features/RolePlay/rolePlayData.ts:302
+#: src/features/RolePlay/rolePlayData.ts:305
 #. js-lingui-explicit-id
 msgid "Describe your custom scenario here..."
 msgstr "あなたのカスタムシナリオをここに説明してください..."
 
-#: src/features/RolePlay/rolePlayData.ts:309
+#: src/features/RolePlay/rolePlayData.ts:312
 #. js-lingui-explicit-id
 msgid ""
 "Create a unique, personalized setting that fits your specific interests or "
@@ -880,22 +895,22 @@ msgstr ""
 "設定、キャラクター、主要な目的の簡単な説明を提供して、自分自身のロールプレイを作成します。AIはあなたのカスタム指示に適応し、シナリオのテーマに沿った対"
 "話に従事します。この柔軟なフォーマットは、あなたが必要とする正確なコミュニケーションスキルを習得するのに役立ちます。"
 
-#: src/features/RolePlay/rolePlayData.ts:321
+#: src/features/RolePlay/rolePlayData.ts:324
 #. js-lingui-explicit-id
 msgid "Create Your Own Role-Play Scenario"
 msgstr "あなた自身のロールプレイシナリオを作成する"
 
-#: src/features/RolePlay/rolePlayData.ts:322
+#: src/features/RolePlay/rolePlayData.ts:325
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
 msgstr "あなたのユニークな学習ニーズに合わせて会話をカスタマイズします。"
 
-#: src/features/RolePlay/rolePlayData.ts:323
+#: src/features/RolePlay/rolePlayData.ts:326
 #. js-lingui-explicit-id
 msgid "Custom"
 msgstr "カスタム"
 
-#: src/features/RolePlay/rolePlayData.ts:335
+#: src/features/RolePlay/rolePlayData.ts:338
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable purchasing travel tickets in a bustling train station "
@@ -933,23 +948,23 @@ msgstr ""
 "このシナリオでは、チケットを購入しようとする旅行者の役割を担います。AIは駅のチケット係の役割を果たし、行き先、出発時間、必要なチケットの種類を尋ねてき"
 "ます。AIとの対話を通じて、適切な質問をする技術と、旅に関する重要な情報を理解する力を習得します。"
 
-#: src/features/RolePlay/rolePlayData.ts:348
-#: src/features/RolePlay/rolePlayData.ts:454
+#: src/features/RolePlay/rolePlayData.ts:351
+#: src/features/RolePlay/rolePlayData.ts:457
 #. js-lingui-explicit-id
 msgid "Travel"
 msgstr "旅行"
 
-#: src/features/RolePlay/rolePlayData.ts:350
+#: src/features/RolePlay/rolePlayData.ts:353
 #. js-lingui-explicit-id
 msgid "Buying a Train Ticket"
 msgstr "列車の切符を購入する"
 
-#: src/features/RolePlay/rolePlayData.ts:351
+#: src/features/RolePlay/rolePlayData.ts:354
 #. js-lingui-explicit-id
 msgid "Practice asking about schedules, fares, and ticket options"
 msgstr "スケジュール、運賃、チケットオプションについて尋ねる練習をしましょう"
 
-#: src/features/RolePlay/rolePlayData.ts:364
+#: src/features/RolePlay/rolePlayData.ts:367
 #. js-lingui-explicit-id
 msgid ""
 "Strike up a conversation with a fellow dog owner in a friendly park "
@@ -989,17 +1004,17 @@ msgstr ""
 "このシナリオでは、あなたは公園でAI駆動のキャラクターに出会う犬の飼い主を演じます。AIはあなたを温かく迎え、あなたの犬について尋ね、ペットのストーリー"
 "やアドバイスを共有します。あなたの目標は自然に応答し、会話を流れるように保ち、四つ足の友達について楽しい交流を楽しむことです。"
 
-#: src/features/RolePlay/rolePlayData.ts:400
+#: src/features/RolePlay/rolePlayData.ts:403
 #. js-lingui-explicit-id
 msgid "Chat with a Fellow Dog Owner"
 msgstr "同じ犬を飼っている飼い主とチャットする"
 
-#: src/features/RolePlay/rolePlayData.ts:401
+#: src/features/RolePlay/rolePlayData.ts:404
 #. js-lingui-explicit-id
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr "ペットや日常のルーチンについてのフレンドリーなスモールトークに参加しましょう。"
 
-#: src/features/RolePlay/rolePlayData.ts:414
+#: src/features/RolePlay/rolePlayData.ts:417
 #. js-lingui-explicit-id
 msgid ""
 "Discuss your health concerns in a realistic doctor’s office setting and "
@@ -1038,24 +1053,24 @@ msgstr ""
 "あなたは、AIが演じる医者を訪れる患者の役を担当します。医者はあなたの症状について質問し、アドバイスを提供し、可能な治療法を提案します。自然な会話を通じ"
 "て、専門的な医療環境でのコミュニケーションスキルを磨いていきます。"
 
-#: src/features/RolePlay/rolePlayData.ts:426
-#: src/features/RolePlay/rolePlayData.ts:541
-#: src/features/RolePlay/rolePlayData.ts:584
+#: src/features/RolePlay/rolePlayData.ts:429
+#: src/features/RolePlay/rolePlayData.ts:544
+#: src/features/RolePlay/rolePlayData.ts:587
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "健康"
 
-#: src/features/RolePlay/rolePlayData.ts:428
+#: src/features/RolePlay/rolePlayData.ts:431
 #. js-lingui-explicit-id
 msgid "Talking to a Doctor"
 msgstr "医者との会話"
 
-#: src/features/RolePlay/rolePlayData.ts:429
+#: src/features/RolePlay/rolePlayData.ts:432
 #. js-lingui-explicit-id
 msgid "Learn to describe symptoms and ask for medical advice effectively"
 msgstr "症状を説明し、効果的に医療アドバイスを求める方法を学ぶ"
 
-#: src/features/RolePlay/rolePlayData.ts:442
+#: src/features/RolePlay/rolePlayData.ts:445
 #. js-lingui-explicit-id
 msgid ""
 "Check into a hotel and handle room arrangements in a realistic front-desk "
@@ -1095,17 +1110,17 @@ msgstr ""
 "あなたはホテルに到着したゲストとして行動し、私たちのAIが受付係の役割を果たします。受付係はあなたの名前、予約の詳細、そして特別なリクエストについて尋ね"
 "ます。自然に応答することで、スムーズなホテルチェックイン体験に必要な会話スキルを身に付けることができます。"
 
-#: src/features/RolePlay/rolePlayData.ts:456
+#: src/features/RolePlay/rolePlayData.ts:459
 #. js-lingui-explicit-id
 msgid "Hotel Check-In Conversation"
 msgstr "ホテルチェックインの会話"
 
-#: src/features/RolePlay/rolePlayData.ts:457
+#: src/features/RolePlay/rolePlayData.ts:460
 #. js-lingui-explicit-id
 msgid "Practice booking a room, requesting amenities, and checking in"
 msgstr "部屋の予約、アメニティのリクエスト、そしてチェックインの練習をする"
 
-#: src/features/RolePlay/rolePlayData.ts:471
+#: src/features/RolePlay/rolePlayData.ts:474
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable shopping in a real store setting by asking questions about "
@@ -1140,23 +1155,23 @@ msgstr ""
 "あなたは食料品を買いに行く顧客の役割を担います。AIは店員として、あなたが何を探しているかを尋ね、特売を提案し、正しい商品に案内します。このインタラクテ"
 "ィブなロールプレイは、リアルな買い物体験をシミュレーションし、必要なコミュニケーションスキルを構築するのに役立ちます。"
 
-#: src/features/RolePlay/rolePlayData.ts:483
-#: src/features/RolePlay/rolePlayData.ts:569
+#: src/features/RolePlay/rolePlayData.ts:486
+#: src/features/RolePlay/rolePlayData.ts:572
 #. js-lingui-explicit-id
 msgid "Shopping"
 msgstr "ショッピング"
 
-#: src/features/RolePlay/rolePlayData.ts:485
+#: src/features/RolePlay/rolePlayData.ts:488
 #. js-lingui-explicit-id
 msgid "Shopping at the Grocery Store"
 msgstr "ショッピング：食料品店での買い物"
 
-#: src/features/RolePlay/rolePlayData.ts:486
+#: src/features/RolePlay/rolePlayData.ts:489
 #. js-lingui-explicit-id
 msgid "Practice asking for product recommendations and making purchases"
 msgstr "製品の推奨を尋ねたり、購入を行ったりする練習をしましょう。"
 
-#: src/features/RolePlay/rolePlayData.ts:500
+#: src/features/RolePlay/rolePlayData.ts:503
 #. js-lingui-explicit-id
 msgid ""
 "Work through a technical issue while speaking with a helpful support agent. "
@@ -1190,17 +1205,17 @@ msgstr ""
 "がサポートエージェントを演じます。エージェントは詳細を尋ね、可能な解決策を案内し、次のステップを提案します。このシナリオは、技術的な問題に対処し、解決策"
 "をコミュニケーションするのに慣れる手助けをします。"
 
-#: src/features/RolePlay/rolePlayData.ts:514
+#: src/features/RolePlay/rolePlayData.ts:517
 #. js-lingui-explicit-id
 msgid "Calling Customer Support"
 msgstr "カスタマーサポートへの連絡"
 
-#: src/features/RolePlay/rolePlayData.ts:515
+#: src/features/RolePlay/rolePlayData.ts:518
 #. js-lingui-explicit-id
 msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "電話での技術的問題のトラブルシューティングを練習する"
 
-#: src/features/RolePlay/rolePlayData.ts:529
+#: src/features/RolePlay/rolePlayData.ts:532
 #. js-lingui-explicit-id
 msgid ""
 "Practice scheduling a doctor’s appointment over the phone by clearly "
@@ -1235,17 +1250,17 @@ msgstr ""
 "あなたは医者のオフィスに電話をかけて予約を取る患者の役割を担います。AIは受付係として、あなたの名前、希望の日付、訪問の理由を尋ねます。自然に応答するこ"
 "とで、あらゆる医療の文脈に必要なコミュニケーションスキルを磨くことができます。"
 
-#: src/features/RolePlay/rolePlayData.ts:543
+#: src/features/RolePlay/rolePlayData.ts:546
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "医師の予約をする"
 
-#: src/features/RolePlay/rolePlayData.ts:544
+#: src/features/RolePlay/rolePlayData.ts:547
 #. js-lingui-explicit-id
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "医療訪問を電話でスケジュールする方法を学ぶ"
 
-#: src/features/RolePlay/rolePlayData.ts:557
+#: src/features/RolePlay/rolePlayData.ts:560
 #. js-lingui-explicit-id
 msgid ""
 "Handle a return at a customer service desk by describing what went wrong "
@@ -1280,27 +1295,27 @@ msgstr ""
 "あなたは商品の返品をする顧客の役割を担い、AIは店舗の従業員として行動します。AIはなぜアイテムを返品するのかを尋ね、利用可能なオプションについて話し合"
 "います。この実践的なシナリオは、小売の状況で丁寧で効率的なコミュニケーションを習得するのに役立ちます。"
 
-#: src/features/RolePlay/rolePlayData.ts:571
+#: src/features/RolePlay/rolePlayData.ts:574
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "アイテムを店舗に返品する"
 
-#: src/features/RolePlay/rolePlayData.ts:572
+#: src/features/RolePlay/rolePlayData.ts:575
 #. js-lingui-explicit-id
 msgid "Practice explaining product issues and requesting refunds or exchanges"
 msgstr "製品の問題を説明し、返金または交換をリクエストする練習をする"
 
-#: src/features/RolePlay/rolePlayData.ts:603
+#: src/features/RolePlay/rolePlayData.ts:606
 #. js-lingui-explicit-id
 msgid "Speaking with a Psychologist"
 msgstr "心理学者との対話"
 
-#: src/features/RolePlay/rolePlayData.ts:604
+#: src/features/RolePlay/rolePlayData.ts:607
 #. js-lingui-explicit-id
 msgid "Discuss mental health topics and express your thoughts effectively"
 msgstr "メンタルヘルスに関するトピックを議論し、自分の考えを効果的に表現する"
 
-#: src/features/RolePlay/rolePlayData.ts:620
+#: src/features/RolePlay/rolePlayData.ts:623
 #. js-lingui-explicit-id
 msgid ""
 "Discuss mental health topics in a comfortable, supportive setting. This "
@@ -1344,39 +1359,39 @@ msgstr ""
 "あなたは、ストレス管理、不安、関係、自己評価など、自分が選んだメンタルヘルスのトピックについて非公式に話すために心理学者に会うクライアントとして行動しま"
 "す。AIはあなたの心理学者として機能し、支持的な対話を提供し、反射的な質問をし、あなたの体験を検証して、意味のある思慮深い会話の練習を助けます。"
 
-#: src/features/RolePlay/rolePlayData.ts:648
+#: src/features/RolePlay/rolePlayData.ts:651
 #. js-lingui-explicit-id
 msgid "All Scenarios"
 msgstr "すべてのシナリオ"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:357
+#: src/features/RolePlay/RolePlayBoard.tsx:368
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "役割演技"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:365
+#: src/features/RolePlay/RolePlayBoard.tsx:376
 #. js-lingui-explicit-id
 msgid "Play a role and talk to the AI"
 msgstr "役割を演じてAIと話してください。"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:455
+#: src/features/RolePlay/RolePlayBoard.tsx:466
 #. js-lingui-explicit-id
 msgid "Before you start, please fill some information to make it more realistic."
 msgstr "開始する前に、もっと現実的にするためにいくつかの情報を入力してください。"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:594
+#: src/features/RolePlay/RolePlayBoard.tsx:623
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "開始"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:646
+#: src/features/RolePlay/RolePlayBoard.tsx:675
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr ""
 "\n"
 "もっと表示\n"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:646
+#: src/features/RolePlay/RolePlayBoard.tsx:675
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "表示を減らす"
@@ -1765,7 +1780,7 @@ msgid ""
 msgstr "絶対に！FluencyPalはさまざまな言語をサポートし、選択した言語と習熟度に基づいて会話を調整します。"
 
 #: src/features/Landing/LandingPage.tsx:270
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:346
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Available languages:"
 msgstr "利用可能な言語："
@@ -1801,13 +1816,13 @@ msgid "Slower conversations with guided support."
 msgstr "ゆっくりとした会話とガイド付きのサポート。"
 
 #: src/features/Landing/LandingPage.tsx:315
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:404
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:414
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "英語を流暢に話せる準備はできていますか？"
 
 #: src/features/Landing/LandingPage.tsx:316
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:405
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:415
 #. js-lingui-explicit-id
 msgid "Start Your Free Trial"
 msgstr "無料トライアルを開始する"
@@ -1846,17 +1861,17 @@ msgstr "すべて表示"
 msgid "Play the role"
 msgstr "役割を演じる"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:298
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:308
 #. js-lingui-explicit-id
 msgid "Answer the AI"
 msgstr "AIに答える"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:307
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:317
 #. js-lingui-explicit-id
 msgid "First 15 mins are free. Then pay what you want."
 msgstr "最初の15分は無料です。その後は、自分の好きな金額を支払ってください。"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:373
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:383
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
 msgstr "関連シナリオ"
@@ -3632,29 +3647,29 @@ msgstr "無料で試してみる"
 msgid "Read more"
 msgstr "続きを読む"
 
-#: src/features/Auth/SignInForm.tsx:25
+#: src/features/Auth/SignInForm.tsx:36
 #. js-lingui-explicit-id
 msgid "Start the Lesson"
 msgstr ""
 "\n"
 "レッスンを始める\n"
 
-#: src/features/Auth/SignInForm.tsx:48
+#: src/features/Auth/SignInForm.tsx:78
 #. js-lingui-explicit-id
 msgid "Start Role Play:"
 msgstr "スタートロールプレイ："
 
-#: src/features/Auth/SignInForm.tsx:75
+#: src/features/Auth/SignInForm.tsx:105
 #. js-lingui-explicit-id
 msgid "Create an account, select a language and start practicing"
 msgstr "アカウントを作成し、言語を選択して練習を始めましょう"
 
-#: src/features/Auth/SignInForm.tsx:92
+#: src/features/Auth/SignInForm.tsx:122
 #. js-lingui-explicit-id
 msgid "Continue with google"
 msgstr "Googleで続行"
 
-#: src/features/Auth/SignInForm.tsx:102
+#: src/features/Auth/SignInForm.tsx:145
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "アカウントを作成することで、あなたは以下に同意するものとします："

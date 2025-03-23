@@ -1,5 +1,5 @@
 "use client";
-import { Button, Link, Stack, Typography } from "@mui/material";
+import { Alert, Button, Link, Stack, Typography } from "@mui/material";
 import { useAuth } from "./useAuth";
 import GoogleIcon from "@mui/icons-material/Google";
 import { StarContainer } from "../Layout/StarContainer";
@@ -8,6 +8,16 @@ import { useLingui } from "@lingui/react";
 import { SupportedLanguage } from "@/common/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
+import { useEffect, useState } from "react";
+
+export const isInAppBrowser = (): boolean => {
+  const ua = navigator.userAgent.toLowerCase();
+  return (
+    ua.includes("instagram") ||
+    ua.includes("fbav") || // Facebook app
+    ua.includes("fb_iab") // Facebook in-app browser
+  );
+};
 
 interface SignInFormProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -18,11 +28,31 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   const searchParams = useSearchParams();
   const { i18n } = useLingui();
   const rolePlayId = searchParams.get("rolePlayId");
+  const [inApp, setInApp] = useState(false);
   const scenario = rolePlayId
     ? rolePlayInfo.rolePlayScenarios.find((scenario) => scenario.id === rolePlayId)
     : null;
 
   const pageTitle = scenario ? scenario.title : i18n._(`Start the Lesson`);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setInApp(isInAppBrowser());
+    }
+  }, []);
+
+  const handleSignIn = () => {
+    if (inApp) {
+      // Redirect user to open in browser
+      const currentUrl = window.location.href;
+      alert(i18n._("Please open this page in your browser to continue with Google sign-in."));
+      // Attempt to force open in browser – may not always work
+      window.location.href = currentUrl;
+    } else {
+      auth.signInWithGoogle();
+    }
+  };
+
   return (
     <StarContainer minHeight="min(100vh,1600px)" paddingBottom="160px">
       <Stack
@@ -86,11 +116,24 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
           <Button
             variant="contained"
             size="large"
-            onClick={() => auth.signInWithGoogle()}
+            onClick={handleSignIn}
             startIcon={<GoogleIcon />}
           >
             {i18n._(`Continue with google`)}
           </Button>
+          {inApp && (
+            <Stack sx={{ alignItems: "center", gap: "0px", padding: "30px 10px 20px 10px" }}>
+              <Alert severity="error" variant="filled">
+                {i18n._(
+                  "Google sign-in is not supported inside Instagram or Facebook in-app browser."
+                )}
+              </Alert>
+              <Typography variant="body2">
+                {i18n._("Please tap the menu (⋮ or •••) and choose 'Open in Browser' to continue.")}
+              </Typography>
+            </Stack>
+          )}
+
           <Stack
             sx={{
               alignItems: "center",
