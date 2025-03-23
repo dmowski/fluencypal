@@ -36,9 +36,13 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
 
   const pageTitle = scenario ? scenario.title : i18n._(`Start the Lesson`);
 
+  const [isAndroid, setIsAndroid] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
       setInApp(isInAppBrowser());
+
+      const ua = navigator.userAgent.toLowerCase();
+      setIsAndroid(ua.includes("android"));
     }
   }, []);
 
@@ -77,7 +81,11 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
             )}
           </Typography>
           <img
-            src="/instruction/instagramInstruction.png"
+            src={
+              isAndroid
+                ? "/instruction/instagramInstructionAndroid.png"
+                : "/instruction/instagramInstruction.png"
+            }
             alt="Instagram instruction"
             style={{
               width: "100%",
