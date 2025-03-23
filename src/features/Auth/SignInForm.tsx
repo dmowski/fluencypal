@@ -47,7 +47,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
       const currentUrl = window.location.href;
       alert(i18n._("Please open this page in your browser to continue with Google sign-in."));
       // Attempt to force open in browser – may not always work
-      window.location.href = currentUrl;
+      window.open(currentUrl, "_system");
     } else {
       auth.signInWithGoogle();
     }
