@@ -1,5 +1,5 @@
 import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
-import { Stack, Typography } from "@mui/material";
+import { Link, Stack, Typography } from "@mui/material";
 
 import { maxContentWidth, subTitleFontStyle } from "../landingSettings";
 import { Header } from "../../Header/Header";
@@ -7,6 +7,7 @@ import { Footer } from "../Footer";
 import { ContactList } from "./ContactList";
 import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
 
 interface ContactsPageProps {
   lang: SupportedLanguage;
@@ -32,12 +33,32 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
             width: "100%",
             backgroundColor: `#fff`,
             paddingTop: "100px",
+            paddingBottom: "40px",
             color: "#000",
             height: "max-content",
             minHeight: "600px",
             maxHeight: "2000px",
+            position: "relative",
+            ".contactIll": {
+              width: "300px",
+              height: "auto",
+              position: "absolute",
+              bottom: "-10px",
+              right: "0px",
+              "@media (max-width: 1000px)": {
+                width: "200px",
+              },
+              "@media (max-width: 600px)": {
+                width: "150px",
+              },
+              "@media (max-width: 400px)": {
+                display: "none",
+              },
+            },
           }}
         >
+          <img src="/contactIll.jpg" alt="Contact" className="contactIll" />
+
           <Stack
             sx={{
               width: "100%",
@@ -78,7 +99,20 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
                 align="left"
                 variant="body1"
                 sx={{
-                  maxWidth: "940px",
+                  maxWidth: "700px",
+                  ...subTitleFontStyle,
+                }}
+              >
+                {i18n._(
+                  `My name is Alex, I am the creator of this website. I am a software engineer and I am passionate about learning languages. I created this website to help people learn languages in a fun and interactive way. I hope you enjoy using it!`
+                )}
+              </Typography>
+
+              <Typography
+                align="left"
+                variant="body1"
+                sx={{
+                  maxWidth: "700px",
                   ...subTitleFontStyle,
                 }}
               >
@@ -100,7 +134,7 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
             }}
           >
             <Stack
-              gap={"10px"}
+              gap={"30px"}
               sx={{
                 width: "100%",
                 color: "#1f74be",
@@ -110,6 +144,18 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
               }}
             >
               <ContactList />
+              <Stack
+                sx={{
+                  gap: "7px",
+                }}
+              >
+                <Link href={`${getUrlStart(lang)}terms`} sx={{}}>
+                  {i18n._(`Terms of Use`)}
+                </Link>
+                <Link href={`${getUrlStart(lang)}privacy`} sx={{}}>
+                  {i18n._(`Privacy Policy`)}
+                </Link>
+              </Stack>
             </Stack>
           </Stack>
         </Stack>
