@@ -44,10 +44,10 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   const handleSignIn = () => {
     if (inApp) {
       // Redirect user to open in browser
-      const currentUrl = window.location.href;
+      //const currentUrl = window.location.href;
       alert(i18n._("Please open this page in your browser to continue with Google sign-in."));
       // Attempt to force open in browser – may not always work
-      window.open(currentUrl, "_system");
+      auth.signInWithGoogle();
     } else {
       auth.signInWithGoogle();
     }
