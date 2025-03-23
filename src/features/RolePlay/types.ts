@@ -34,6 +34,7 @@ export interface RolePlayInstruction {
   id: string;
   category: ResourceCategory;
   landingHighlight?: string;
+  youTubeVideoUrl?: string;
   title: string;
   subTitle: string;
   instructionToAi: string;

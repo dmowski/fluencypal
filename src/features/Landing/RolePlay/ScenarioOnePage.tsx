@@ -263,6 +263,16 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   }}
                 >
                   <Markdown size="small">{`${item.contentPage}`}</Markdown>
+
+                  {item.youTubeVideoUrl && (
+                    <iframe
+                      width="100%"
+                      height="600px"
+                      src="https://www.youtube.com/embed/e_1NupxxPcQ"
+                      title={"YouTube video player of the scenario"}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    ></iframe>
+                  )}
                 </Stack>
 
                 {item.exampleOfFirstMessageFromAi && (
