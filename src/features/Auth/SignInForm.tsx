@@ -9,6 +9,7 @@ import { SupportedLanguage } from "@/common/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { useEffect, useState } from "react";
+import { TriangleAlert } from "lucide-react";
 
 export const isInAppBrowser = (): boolean => {
   const ua = navigator.userAgent.toLowerCase();
@@ -37,21 +38,59 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setInApp(isInAppBrowser());
+      setInApp(!isInAppBrowser());
     }
   }, []);
 
   const handleSignIn = () => {
-    if (inApp) {
-      // Redirect user to open in browser
-      //const currentUrl = window.location.href;
-      alert(i18n._("Please open this page in your browser to continue with Google sign-in."));
-      // Attempt to force open in browser – may not always work
-      auth.signInWithGoogle();
-    } else {
-      auth.signInWithGoogle();
-    }
+    auth.signInWithGoogle();
   };
+
+  if (inApp) {
+    return (
+      <StarContainer minHeight="min(100vh,1600px)" paddingBottom="10px">
+        <Stack sx={{ alignItems: "center", gap: "20px", padding: "10px 10px 0px 10px" }}>
+          <TriangleAlert
+            style={{
+              opacity: 0.7,
+            }}
+          />
+          <Typography
+            variant="h2"
+            component={"h1"}
+            align="center"
+            sx={{
+              fontWeight: 900,
+              fontSize: "4rem",
+              padding: "0 10px",
+              "@media (max-width: 600px)": {
+                fontSize: "2.3rem",
+              },
+            }}
+          >
+            {i18n._("Open this page in browser")}
+          </Typography>
+
+          <Typography align="center" sx={{ opacity: 0.8 }}>
+            {i18n._(
+              "Please tap the menu (⋮ or •••) and choose 'Open in external Browser' to continue."
+            )}
+          </Typography>
+          <img
+            src="/instruction/instagramInstruction.png"
+            alt="Instagram instruction"
+            style={{
+              width: "100%",
+              boxShadow: "0px 0px 1px 1px rgba(22,22,22,0.95)",
+              borderRadius: "10px",
+              backgroundColor: "white",
+              maxWidth: "400px",
+            }}
+          />
+        </Stack>
+      </StarContainer>
+    );
+  }
 
   return (
     <StarContainer minHeight="min(100vh,1600px)" paddingBottom="160px">
@@ -89,7 +128,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
               fontSize: "4rem",
               padding: "0 10px",
               "@media (max-width: 600px)": {
-                fontSize: "3rem",
+                fontSize: "2.3rem",
               },
             }}
           >
@@ -121,20 +160,6 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
           >
             {i18n._(`Continue with google`)}
           </Button>
-          {inApp && (
-            <Stack sx={{ alignItems: "center", gap: "0px", padding: "30px 10px 20px 10px" }}>
-              <Alert severity="error" variant="filled">
-                {i18n._(
-                  "Google sign-in is not supported inside Instagram or Facebook in-app browser."
-                )}
-              </Alert>
-              <Typography variant="body2">
-                {i18n._(
-                  "Please tap the menu (⋮ or •••) and choose 'Open in external Browser' to continue."
-                )}
-              </Typography>
-            </Stack>
-          )}
 
           <Stack
             sx={{
