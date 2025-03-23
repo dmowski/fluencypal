@@ -1,6 +1,6 @@
 "use client";
 import { FirebaseError } from "@firebase/util";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { Context, JSX, ReactNode, createContext, useContext, useEffect, useMemo } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/init";
@@ -45,7 +45,7 @@ function useProvideAuth(): AuthContext {
   const signInWithGoogle = async (): Promise<SignInResult | void> => {
     const provider = new GoogleAuthProvider();
     try {
-      const credentials = await signInWithPopup(auth, provider);
+      const credentials = await signInWithRedirect(auth, provider);
 
       return { isDone: true, error: "" };
     } catch (error) {
