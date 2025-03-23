@@ -45,7 +45,7 @@ function useProvideAuth(): AuthContext {
   const signInWithGoogle = async (): Promise<SignInResult | void> => {
     const provider = new GoogleAuthProvider();
     try {
-      const credentials = await signInWithRedirect(auth, provider);
+      const credentials = await signInWithPopup(auth, provider);
 
       return { isDone: true, error: "" };
     } catch (error) {
