@@ -38,7 +38,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setInApp(!isInAppBrowser());
+      setInApp(isInAppBrowser());
     }
   }, []);
 
