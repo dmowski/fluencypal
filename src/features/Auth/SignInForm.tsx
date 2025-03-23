@@ -129,7 +129,9 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
                 )}
               </Alert>
               <Typography variant="body2">
-                {i18n._("Please tap the menu (⋮ or •••) and choose 'Open in Browser' to continue.")}
+                {i18n._(
+                  "Please tap the menu (⋮ or •••) and choose 'Open in external Browser' to continue."
+                )}
               </Typography>
             </Stack>
           )}
