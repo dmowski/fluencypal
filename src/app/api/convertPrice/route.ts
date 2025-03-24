@@ -39,6 +39,8 @@ export async function POST(request: NextRequest) {
       request.headers.get("x-forwarded-for")?.split(",")[0] ||
       (request as unknown as { ip: string }).ip ||
       "";
+
+    console.log("IP:", ip);
     const currency = await getCurrencyByIP(ip);
 
     const rate = await getConversionRate(currency);
