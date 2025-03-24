@@ -2,7 +2,6 @@
 
 import { Button, Stack, Typography } from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
-import { useEffect, useState } from "react";
 import { buttonStyle } from "./landingSettings";
 
 interface FirstEnterButtonProps {
@@ -24,12 +23,6 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   practiceLink,
 }) => {
   const auth = useAuth();
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    if (auth.loading) return;
-    setTimeout(() => setIsVisible(true), 20);
-  }, [auth.loading]);
 
   return (
     <Stack
@@ -38,7 +31,6 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
         gap: "10px",
         alignItems: "flex-start",
         justifyContent: "center",
-        opacity: isVisible ? 1 : 0,
         transition: "opacity 0.3s",
         flexWrap: "wrap",
       }}

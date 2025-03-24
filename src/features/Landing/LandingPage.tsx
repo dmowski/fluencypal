@@ -7,7 +7,6 @@ import { IntroVideoDemo } from "./IntroVideoDemo";
 import { GeneralFaqBlock } from "./FAQ/GeneralFaqBlock";
 import { CtaBlock } from "./ctaBlock";
 import { ProposalCards } from "./ProposalCards";
-import { ProductDemo } from "./ProductDemo";
 import { RolePlayDemo } from "./RolePlay/RolePlayDemo";
 import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
