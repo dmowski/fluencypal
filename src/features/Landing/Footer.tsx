@@ -2,7 +2,7 @@ import { Link, Stack, Typography } from "@mui/material";
 import { maxLandingWidth } from "./landingSettings";
 import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
-import { getUrlStart } from "../Lang/getUrlStart";
+import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
 import { headers } from "next/headers";
 
 interface FooterProps {
@@ -123,7 +123,9 @@ export const Footer: React.FC<FooterProps> = async ({ lang }) => {
               return (
                 <Link
                   key={lang}
-                  href={`${getUrlStart(lang)}${pathWithoutFirstSlash}`}
+                  href={[getUrlStartWithoutLastSlash(lang), pathWithoutFirstSlash]
+                    .filter(Boolean)
+                    .join("/")}
                   variant="body1"
                   lang={lang}
                   aria-label={`Switch to ${fullEnglishLanguageName[lang]}`}
