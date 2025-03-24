@@ -27,7 +27,6 @@ import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { firstAiMessage } from "./data";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
-import { useRouter, useSearchParams } from "next/navigation";
 
 interface StartConversationProps {
   mode: ConversationMode;
@@ -94,6 +93,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const [isStarted, setIsStarted] = useState(false);
 
+  /*
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -108,6 +108,7 @@ function useProvideAiConversation(): AiConversationContextType {
       router.push(`${pathName}`, { scroll: false });
     }
   };
+  */
 
   const homeworkService = useHomework();
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);

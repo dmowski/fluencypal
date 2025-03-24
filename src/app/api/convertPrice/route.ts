@@ -9,22 +9,21 @@ async function getCurrencyByIP(ip: string): Promise<string> {
   return (await res.text()).trim();
 }
 
-const exchangeRateKey = "5ff07e38a18e8300d3117d3d60bbcd9a";
 async function getConversionRate(toCurrency: string): Promise<number> {
-  const res = await fetch(
-    `https://api.exchangerate.host/live?access_key=${exchangeRateKey}&currencies=${toCurrency}&format=1`
-  );
+  const res = await fetch(`https://api.frankfurter.app/latest?from=USD&to=${toCurrency}`);
 
-  if (!res.ok) throw new Error("Failed to fetch conversion rate");
-  const data = await res.json();
-  if (!data.success) {
-    throw new Error("Exchange rate API error");
+  if (!res.ok) {
+    throw new Error("Failed to fetch conversion rate");
   }
-  const rateKey = `USD${toCurrency}`;
-  const rate = data.quotes[rateKey];
+
+  const data = await res.json();
+
+  const rate = data.rates[toCurrency];
+
   if (!rate) {
     throw new Error(`Conversion rate for ${toCurrency} not found`);
   }
+
   return rate as number;
 }
 
