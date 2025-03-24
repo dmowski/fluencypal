@@ -111,7 +111,9 @@ export function LanguageSwitcher() {
 
   const isCurrentPageLangIsSystem = systemLangs.length && systemLangs.includes(supportedLang);
   const supportedLangCodeLabel =
-    systemLangs.length && !isCurrentPageLangIsSystem ? availableOnLabelMap[systemLangs[0]] : "";
+    systemLangs.length && !isCurrentPageLangIsSystem && !auth.isAuthorized
+      ? availableOnLabelMap[systemLangs[0]]
+      : "";
 
   return (
     <Stack sx={{}}>
