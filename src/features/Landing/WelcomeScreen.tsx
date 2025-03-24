@@ -36,7 +36,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         gap: "100px",
         "@media (max-width: 600px)": {
           gap: "20px",
-          paddingTop: "70px",
+          paddingTop: "130px",
         },
       }}
     >
