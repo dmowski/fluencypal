@@ -27,6 +27,8 @@ import { usePathname } from "next/navigation";
 import { supportedLanguages } from "@/common/lang";
 import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
+import PriceDisplay from "../Landing/Price/PriceDisplay";
+import { useCurrency } from "../Landing/Price/useCurrency";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
@@ -34,12 +36,15 @@ const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   gift: "Gift",
 };
 
+const PRICE_PER_HOUR = 6;
+
 const isUseStripe = true;
 
 export const PaymentModal = () => {
   const usage = useUsage();
   const auth = useAuth();
   const { i18n } = useLingui();
+  const currency = useCurrency();
   const settings = useSettings();
   const devEmails = ["dmowski.alex@gmail.com"];
   const notifications = useNotifications();
@@ -264,11 +269,13 @@ export const PaymentModal = () => {
                     opacity: 0.9,
                   }}
                 >
-                  {i18n._(`Price per one AI hour:`)} <b>PLN 24</b>
+                  {i18n._(`Price per one AI hour:`)}{" "}
+                  <b>{currency.convertUsdToCurrency(PRICE_PER_HOUR)}</b>
                 </Typography>
 
                 <Typography variant="h5">
-                  {i18n._(`Total:`)} <b>PLN {amountToAdd * 24}</b>
+                  {i18n._(`Total:`)}{" "}
+                  <b>{currency.convertUsdToCurrency(amountToAdd * PRICE_PER_HOUR)}</b>
                 </Typography>
               </Stack>
               <Divider />
@@ -359,7 +366,8 @@ export const PaymentModal = () => {
                     disabled={amountToAdd <= 0 || amountToAdd > 400}
                     variant="contained"
                   >
-                    {i18n._(`Continue to payment`)} | PLN {amountToAdd * 24}
+                    {i18n._(`Continue to payment`)} |{" "}
+                    {currency.convertUsdToCurrency(amountToAdd * PRICE_PER_HOUR)}
                   </Button>
                   <Button
                     onClick={() => {
