@@ -72,6 +72,7 @@ export interface GetAudioUrlResponse {
 
 export interface StripeCreateCheckoutRequest {
   languageCode: SupportedLanguage;
+  currency: string;
   userId: string;
   amountOfHours: number;
 }

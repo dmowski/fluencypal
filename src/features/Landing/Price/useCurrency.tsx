@@ -9,7 +9,14 @@ async function getCurrencyByIP(): Promise<string> {
 }
 
 async function getConversionRate(toCurrency: string): Promise<number> {
-  const res = await fetch(`https://api.frankfurter.app/latest?from=USD&to=${toCurrency}`);
+  const isToCurrencyIsUsd = toCurrency.toLowerCase() === "usd";
+  if (isToCurrencyIsUsd) {
+    return 1;
+  }
+
+  const res = await fetch(
+    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}`
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch conversion rate");
@@ -17,7 +24,7 @@ async function getConversionRate(toCurrency: string): Promise<number> {
 
   const data = await res.json();
 
-  const rate = data.rates[toCurrency];
+  const rate = data.rates[toCurrency.toUpperCase()];
 
   if (!rate) {
     throw new Error(`Conversion rate for ${toCurrency} not found`);
@@ -54,7 +61,7 @@ export const useCurrency = () => {
     const formattedAmount = new Intl.NumberFormat("en-US", {
       style: "currency",
       currency,
-      maximumFractionDigits: 1,
+      maximumFractionDigits: 2,
     }).format(convertedAmount);
 
     return formattedAmount;

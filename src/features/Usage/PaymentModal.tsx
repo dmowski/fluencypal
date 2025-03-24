@@ -22,12 +22,11 @@ import { PaymentLogType } from "@/common/usage";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { ContactList } from "../Landing/Contact/ContactList";
 import { createStripeCheckout } from "./createStripeCheckout";
-import { CircleCheck, ReceiptText } from "lucide-react";
+import { CircleCheck } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { supportedLanguages } from "@/common/lang";
 import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
-import PriceDisplay from "../Landing/Price/PriceDisplay";
 import { useCurrency } from "../Landing/Price/useCurrency";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
@@ -36,7 +35,7 @@ const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   gift: "Gift",
 };
 
-const PRICE_PER_HOUR = 6;
+const PRICE_PER_HOUR_USD = 6;
 
 const isUseStripe = true;
 
@@ -94,6 +93,7 @@ export const PaymentModal = () => {
           userId: auth.uid,
           amountOfHours: amountToAdd,
           languageCode: supportedLang,
+          currency: currency.currency,
         },
         await auth.getToken()
       );
@@ -270,12 +270,12 @@ export const PaymentModal = () => {
                   }}
                 >
                   {i18n._(`Price per one AI hour:`)}{" "}
-                  <b>{currency.convertUsdToCurrency(PRICE_PER_HOUR)}</b>
+                  <b>{currency.convertUsdToCurrency(PRICE_PER_HOUR_USD)}</b>
                 </Typography>
 
                 <Typography variant="h5">
                   {i18n._(`Total:`)}{" "}
-                  <b>{currency.convertUsdToCurrency(amountToAdd * PRICE_PER_HOUR)}</b>
+                  <b>{currency.convertUsdToCurrency(amountToAdd * PRICE_PER_HOUR_USD)}</b>
                 </Typography>
               </Stack>
               <Divider />
@@ -367,7 +367,7 @@ export const PaymentModal = () => {
                     variant="contained"
                   >
                     {i18n._(`Continue to payment`)} |{" "}
-                    {currency.convertUsdToCurrency(amountToAdd * PRICE_PER_HOUR)}
+                    {currency.convertUsdToCurrency(amountToAdd * PRICE_PER_HOUR_USD)}
                   </Button>
                   <Button
                     onClick={() => {

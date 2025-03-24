@@ -5,6 +5,33 @@ import Stripe from "stripe";
 import { validateAuthToken } from "../config/firebase";
 import { stripeConfig } from "../payment/config";
 
+const PRICE_PER_HOUR_USD = 6;
+
+async function getConversionRate(toCurrency: string): Promise<number> {
+  const isToCurrencyIsUsd = toCurrency.toLowerCase() === "usd";
+  if (isToCurrencyIsUsd) {
+    return 1;
+  }
+
+  const res = await fetch(
+    `https://api.frankfurter.app/latest?from=USD&to=${toCurrency.toUpperCase()}`
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch conversion rate");
+  }
+
+  const data = await res.json();
+
+  const rate = data.rates[toCurrency.toUpperCase()];
+
+  if (!rate) {
+    throw new Error(`Conversion rate for ${toCurrency} not found`);
+  }
+
+  return rate as number;
+}
+
 export async function POST(request: Request) {
   const stripeKey = stripeConfig.STRIPE_SECRET_KEY;
   const siteUrl = request.headers.get("origin");
@@ -22,7 +49,7 @@ export async function POST(request: Request) {
   }
   const stripe = new Stripe(stripeKey);
   const requestData = (await request.json()) as StripeCreateCheckoutRequest;
-  const { amountOfHours, userId } = requestData;
+  const { amountOfHours, userId, currency } = requestData;
   if (amountOfHours > 400) {
     const response: StripeCreateCheckoutResponse = {
       sessionUrl: null,
@@ -41,14 +68,18 @@ export async function POST(request: Request) {
 
   const supportedLang = supportedLanguages.find((l) => l === requestData.languageCode) || "en";
 
-  const money = amountOfHours * 24 * 100;
+  const rate = await getConversionRate(currency.toLowerCase());
+
+  const pricePerHourInCurrency = PRICE_PER_HOUR_USD * rate;
+
+  const money = Math.round(amountOfHours * pricePerHourInCurrency * 100);
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
         {
           price_data: {
-            currency: "pln",
+            currency: currency.toLowerCase() || "pln",
             product_data: {
               name: "Balance Top-up",
               description: `Add ${amountOfHours} hours to your account balance`,
