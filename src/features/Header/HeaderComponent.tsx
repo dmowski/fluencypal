@@ -163,7 +163,6 @@ export function HeaderComponent({
             }}
           >
             <IconButton
-              size="large"
               onClick={() => setIsOpenMainMenu(true)}
               title="Open main menu"
               sx={{
@@ -173,7 +172,7 @@ export function HeaderComponent({
                 },
               }}
             >
-              <MenuIcon />
+              <MenuIcon fontSize="small" />
             </IconButton>
 
             <Stack
@@ -191,12 +190,13 @@ export function HeaderComponent({
                 },
                 ".small_logo": {
                   display: "none",
-                  //border: "1px solid #fff",
                 },
                 "@media (max-width: 1000px)": {
                   marginRight: "0px",
                 },
                 "@media (max-width: 850px)": {
+                  paddingLeft: "0 !important",
+                  paddingRight: "0 !important",
                   ".big_logo": {
                     display: "none",
                   },
