@@ -1,7 +1,7 @@
 import "server-only";
 
 import { getI18nInstance } from "@/appRouterI18n";
-import { supportedLanguages } from "@/common/lang";
+import { SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { siteUrl } from "@/common/metadata";
 import { APP_NAME } from "@/features/Landing/landingSettings";
 import { initLingui } from "@/initLingui";
@@ -9,11 +9,14 @@ import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { getBlogs } from "@/features/Blog/blogData";
 
 export const generateAlternatesTags = (currentPath: string) => {
-  let hreflangLinks: Record<string, string> = {};
-  supportedLanguages.forEach((lang) => {
-    hreflangLinks[lang] =
-      `${siteUrl}${lang === "en" ? "" : lang + (currentPath ? "/" : "")}${currentPath}`;
-  });
+  const hreflangLinks = supportedLanguages.reduce(
+    (acc, lang) => {
+      acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (currentPath ? "/" : "")}${currentPath}`;
+
+      return acc;
+    },
+    {} as Record<SupportedLanguage, string>
+  );
 
   return {
     canonical: hreflangLinks["en"],
@@ -245,15 +248,18 @@ export const generateMetadataInfo = ({
     .join("&");
 
   const pathWithQueries = pathWithId + (query ? "?" + query : "");
+  const alternates = generateAlternatesTags(pathWithQueries);
+  const ogUrl = alternates.languages[supportedLang || "en"];
+
   return {
     keywords,
     title,
     description,
-    alternates: generateAlternatesTags(pathWithQueries),
+    alternates: alternates,
     openGraph: {
       title: title,
       description: description,
-      url: `${siteUrl}${langForUrl}${pathWithQueries}`,
+      url: ogUrl,
       images: [
         {
           url: openGraphImageUrl,
