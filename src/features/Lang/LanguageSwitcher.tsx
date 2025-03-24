@@ -17,6 +17,7 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useSettings } from "../Settings/useSettings";
 import { ClickCard } from "../Dashboard/ClickCard";
 import { useAuth } from "../Auth/useAuth";
+import { useLocalStorage } from "react-use";
 
 const LanguageCard = ({
   lang,
@@ -76,6 +77,10 @@ export function LanguageSwitcher() {
   const [activeTab, setActiveTab] = useState<"page" | "learn">("page");
   const [isShowModal, setIsShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSawLangSelector, setIsSawLangSelector] = useLocalStorage<boolean>(
+    "isUserSawLangSelector",
+    false
+  );
 
   const [locale, setLocale] = useState<SupportedLanguage>(parseLangFromUrl(pathname));
   const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
@@ -111,15 +116,23 @@ export function LanguageSwitcher() {
 
   const isCurrentPageLangIsSystem = systemLangs.length && systemLangs.includes(supportedLang);
   const supportedLangCodeLabel =
-    systemLangs.length && !isCurrentPageLangIsSystem && !auth.isAuthorized
+    systemLangs.length && !isCurrentPageLangIsSystem && !auth.isAuthorized && !isSawLangSelector
       ? availableOnLabelMap[systemLangs[0]]
       : "";
+
+  const onOpenModal = () => {
+    if (!isSawLangSelector) {
+      setIsSawLangSelector(true);
+    }
+
+    setIsShowModal(true);
+  };
 
   return (
     <Stack sx={{}}>
       {supportedLangCodeLabel ? (
         <Button
-          onClick={() => setIsShowModal(!isShowModal)}
+          onClick={onOpenModal}
           sx={{
             fontSize: "0.8rem",
             textAlign: "end",
@@ -140,11 +153,7 @@ export function LanguageSwitcher() {
           {supportedLangCodeLabel}
         </Button>
       ) : (
-        <IconButton
-          onClick={() => setIsShowModal(!isShowModal)}
-          title="Select language"
-          aria-label="Select language"
-        >
+        <IconButton onClick={onOpenModal} title="Select language" aria-label="Select language">
           <Globe
             style={{
               opacity: 0.8,
@@ -153,13 +162,7 @@ export function LanguageSwitcher() {
         </IconButton>
       )}
 
-      <CustomModal
-        isOpen={isShowModal}
-        onClose={() => {
-          setIsShowModal(false);
-        }}
-        width="900px"
-      >
+      <CustomModal isOpen={isShowModal} onClose={() => setIsShowModal(false)} width="900px">
         <Stack>
           <Typography variant="h4" component="h2">
             {i18n._(`Languages`)}
