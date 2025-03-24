@@ -49,16 +49,9 @@ export const PricePage = ({ lang }: PricePageProps) => {
             sx={{
               alignItems: "center",
               gap: "30px",
-              padding: "120px 0 90px 0",
+              padding: "70px 0 90px 0",
             }}
           >
-            <Stack
-              sx={{
-                transform: "scale(1.4)",
-              }}
-            >
-              <img src="/logo_dark.svg" alt="logo" width="200px" height="42px" />
-            </Stack>
             <Stack
               sx={{
                 alignItems: "center",

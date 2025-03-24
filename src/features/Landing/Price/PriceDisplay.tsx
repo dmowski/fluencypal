@@ -38,7 +38,6 @@ const PriceDisplay: React.FC<PriceDisplayProps> = ({ amountInUsd }) => {
     const convertCurrency = async () => {
       try {
         const currency = await getCurrencyByIP();
-        console.log("currency", currency);
 
         const rate = await getConversionRate(currency);
         const convertedAmount = amountInUsd * rate;
