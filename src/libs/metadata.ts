@@ -2,7 +2,7 @@ import "server-only";
 
 import { getI18nInstance } from "@/appRouterI18n";
 import { supportedLanguages } from "@/common/lang";
-import { robots, siteUrl } from "@/common/metadata";
+import { siteUrl } from "@/common/metadata";
 import { APP_NAME } from "@/features/Landing/landingSettings";
 import { initLingui } from "@/initLingui";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
@@ -217,6 +217,23 @@ export const generateMetadataInfo = ({
     openGraphImageUrl = scenario?.imageSrc ? `${siteUrl}${scenario.imageSrc}` : openGraphImageUrl;
   }
 
+  if (currentPath === "") {
+    title = i18n._(`FluencyPal – AI English Speaking Practice for Fluency & Confidence`);
+    description = i18n._(
+      `Practice conversational English with FluencyPal, your 24/7 AI English tutor and speaking coach. Improve fluency, pronunciation, and confidence through real-life role-play scenarios with instant feedback.`
+    );
+    keywords = [
+      i18n._(`ai English tutor`),
+      i18n._(`English speaking practice app`),
+      i18n._(`improve English fluency`),
+      i18n._(`advanced English conversation`),
+      i18n._(`English speaking coach`),
+      i18n._(`conversational English practice`),
+      i18n._(`language immersion app`),
+      i18n._(`English speaking partner`),
+    ];
+  }
+
   const id = scenarioId || blogId;
   const pathWithId = currentPath + (id ? "/" + id : "");
 
@@ -255,11 +272,9 @@ export const generateMetadataInfo = ({
       creator: "@dmowskii",
     },
 
-    robots: needIndex
-      ? robots
-      : {
-          index: false,
-          follow: true,
-        },
+    robots: {
+      index: needIndex,
+      follow: true,
+    },
   };
 };
