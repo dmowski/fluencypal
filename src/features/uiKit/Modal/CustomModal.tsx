@@ -45,6 +45,9 @@ export const CustomModal = ({
           borderRadius: "16px",
           maxWidth: "100vw",
           maxHeight: "100vh",
+          "@media (max-width: 600px)": {
+            borderRadius: 0,
+          },
         }}
       >
         <IconButton

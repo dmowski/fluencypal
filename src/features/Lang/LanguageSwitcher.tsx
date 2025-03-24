@@ -162,7 +162,12 @@ export function LanguageSwitcher() {
         </IconButton>
       )}
 
-      <CustomModal isOpen={isShowModal} onClose={() => setIsShowModal(false)} width="900px">
+      <CustomModal
+        isOpen={isShowModal}
+        onClose={() => setIsShowModal(false)}
+        width="900px"
+        padding="40px min(40px, 5vw) 40px min(35px, 4.5vw)"
+      >
         <Stack>
           <Typography variant="h4" component="h2">
             {i18n._(`Languages`)}
@@ -251,38 +256,40 @@ export function LanguageSwitcher() {
                   height: "calc(100svh - 270px)",
                 }}
               >
-                <Stack gap={"10px"}>
-                  <Typography variant="body2" component="h3">
-                    {i18n._(`Suggested for you:`)}
-                  </Typography>
-                  <Stack
-                    sx={{
-                      display: "grid",
-                      gap: "16px",
-                      gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
-                      "@media (max-width: 800px)": {
-                        gridTemplateColumns: "1fr 1fr 1fr",
-                      },
-                      "@media (max-width: 600px)": {
-                        gridTemplateColumns: "1fr 1fr",
-                      },
-                      "@media (max-width: 500px)": {
-                        gridTemplateColumns: "1fr",
-                      },
-                    }}
-                  >
-                    {systemLangs.map((option, index) => {
-                      return (
-                        <LanguageCard
-                          key={index}
-                          lang={option}
-                          onClick={() => handleChange(option)}
-                          selected={option === selectedLangCode}
-                        />
-                      );
-                    })}
+                {systemLangs.length > 0 && (
+                  <Stack gap={"10px"}>
+                    <Typography variant="body2" component="h3">
+                      {i18n._(`Suggested for you:`)}
+                    </Typography>
+                    <Stack
+                      sx={{
+                        display: "grid",
+                        gap: "16px",
+                        gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
+                        "@media (max-width: 800px)": {
+                          gridTemplateColumns: "1fr 1fr 1fr",
+                        },
+                        "@media (max-width: 600px)": {
+                          gridTemplateColumns: "1fr 1fr",
+                        },
+                        "@media (max-width: 500px)": {
+                          gridTemplateColumns: "1fr",
+                        },
+                      }}
+                    >
+                      {systemLangs.map((option, index) => {
+                        return (
+                          <LanguageCard
+                            key={index}
+                            lang={option}
+                            onClick={() => handleChange(option)}
+                            selected={option === selectedLangCode}
+                          />
+                        );
+                      })}
+                    </Stack>
                   </Stack>
-                </Stack>
+                )}
                 <Stack gap={"10px"}>
                   <Typography variant="body2" component="h3">
                     {i18n._(`Other languages:`)}
