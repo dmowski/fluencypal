@@ -15,7 +15,7 @@ export function Header({ mode, lang }: { mode: HeaderMode; lang: SupportedLangua
         rolePlayTitle={i18n._(`Role-Plays`)}
         contactsTitle={i18n._(`Contacts`)}
         priceTitle={i18n._(`Price`)}
-        signInTitle={i18n._(`Sign In`)}
+        signInTitle={i18n._(`Join`)}
         balanceTitle={i18n._(`Balance`)}
         needHelpTitle={i18n._(`Need Help?`)}
         logOutTitle={i18n._(`Log Out`)}

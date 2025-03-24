@@ -17,7 +17,6 @@ import {
   Menu,
   MenuItem,
   Stack,
-  Typography,
 } from "@mui/material";
 import { BookMarked, Gem, LogOutIcon, MessageCircleQuestion, Rss, Wallet } from "lucide-react";
 
