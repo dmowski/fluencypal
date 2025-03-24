@@ -53,7 +53,7 @@ export const supportedLanguages: SupportedLanguage[] = [
   "sv", // Swedish
 ];
 
-export const getUserLangCode = () => {
+export const getUserLangCode = (): SupportedLanguage[] => {
   const userLang = navigator.languages;
   const langCodes = supportedLanguages.filter((lang) => userLang.includes(lang));
   return langCodes;
