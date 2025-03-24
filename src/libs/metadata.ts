@@ -47,6 +47,7 @@ export const generateMetadataInfo = ({
 
   const i18n = getI18nInstance(supportedLang);
   const langForUrl = supportedLang === "en" ? "" : supportedLang + "/";
+  let needIndex = true;
 
   let openGraphImageUrl = `${siteUrl}openGraph.png`;
   let title = "";
@@ -117,6 +118,10 @@ export const generateMetadataInfo = ({
     if (category) {
       const rolePlayScenarios = getRolePlayScenarios(supportedLang);
       const categoryInfo = rolePlayScenarios.categoriesList.find((c) => c.categoryId === category);
+      if (!categoryInfo) {
+        needIndex = false;
+      }
+
       categoryTitle = categoryInfo
         ? " - " + categoryInfo.categoryTitle
         : i18n._(`Unknown category`);
@@ -143,9 +148,13 @@ export const generateMetadataInfo = ({
 
   if (currentPath === "blog" && !blogId) {
     let categoryTitle = "";
+
     if (category) {
       const items = getBlogs(supportedLang);
       const categoryInfo = items.categoriesList.find((c) => c.categoryId === category);
+      if (!categoryInfo) {
+        needIndex = false;
+      }
       categoryTitle = categoryInfo
         ? " - " + categoryInfo.categoryTitle
         : i18n._(`Unknown category`);
@@ -170,6 +179,9 @@ export const generateMetadataInfo = ({
   if (currentPath === "blog" && blogId) {
     const { blogs } = getBlogs(supportedLang);
     const blog = blogs.find((b) => b.id === blogId);
+    if (!blog) {
+      needIndex = false;
+    }
 
     title =
       `${blog?.title || "Blog"} - ` + i18n._(`Practice English Conversation with AI | FluencyPal`);
@@ -181,6 +193,10 @@ export const generateMetadataInfo = ({
   if (currentPath === "scenarios" && scenarioId) {
     const rolePlayScenarios = getRolePlayScenarios(supportedLang);
     const scenario = rolePlayScenarios.rolePlayScenarios.find((s) => s.id === scenarioId);
+
+    if (!scenario) {
+      needIndex = false;
+    }
 
     title =
       `${scenario?.title || "Scenario"} - ` +
@@ -239,6 +255,11 @@ export const generateMetadataInfo = ({
       creator: "@dmowskii",
     },
 
-    robots: robots,
+    robots: needIndex
+      ? robots
+      : {
+          index: false,
+          follow: true,
+        },
   };
 };
