@@ -3,7 +3,7 @@ import { Header } from "@/features/Header/Header";
 import { maxLandingWidth } from "@/features/Landing/landingSettings";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { initLingui } from "@/initLingui";
-import { Button, Link, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 
 export const metadata = {
   title: "Not Found",
