@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ConvertPriceRequest, ConvertPriceResponse } from "./types";
 
-async function getCurrencyByIP(ip: string): Promise<string> {
-  if (ip == "::1") return "PLN"; // Localhost
-
-  const res = await fetch(`https://ipapi.co/${ip}/currency/`);
+async function getCurrencyByIP(): Promise<string> {
+  const res = await fetch(`https://ipapi.co/currency/`);
   if (!res.ok) throw new Error("Failed to fetch currency from IP");
   return (await res.text()).trim();
 }
@@ -35,13 +33,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Amount can't be negative" }, { status: 400 });
     }
 
-    const ip =
-      request.headers.get("x-forwarded-for")?.split(",")[0] ||
-      (request as unknown as { ip: string }).ip ||
-      "";
-
-    console.log("IP:", ip);
-    const currency = await getCurrencyByIP(ip);
+    const currency = await getCurrencyByIP();
+    console.log("currency", currency);
 
     const rate = await getConversionRate(currency);
     const convertedAmount = amountInUsd * rate;
