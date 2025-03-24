@@ -27,6 +27,7 @@ import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { firstAiMessage } from "./data";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface StartConversationProps {
   mode: ConversationMode;
@@ -90,7 +91,24 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const usage = useUsage();
   const [gameStat, setGameStat] = useState<GuessGameStat | null>(null);
+
   const [isStarted, setIsStarted] = useState(false);
+
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  // todo: sync it with url
+  const isStartedInternal = searchParams.get("started") === "true";
+  const setIsStartedInternal = (isStarted: boolean) => {
+    const pathName = window.location.pathname;
+
+    if (isStarted) {
+      router.push(`${pathName}?started=true`, { scroll: false });
+    } else {
+      router.push(`${pathName}`, { scroll: false });
+    }
+  };
+
   const homeworkService = useHomework();
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
 
