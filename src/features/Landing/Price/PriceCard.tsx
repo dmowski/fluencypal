@@ -1,11 +1,12 @@
 import { Button, Stack, Tooltip, Typography } from "@mui/material";
 import { buttonStyle } from "../landingSettings";
 import { Check, Info } from "lucide-react";
+import { JSX } from "react";
 
 interface PriceCardProps {
   title: string;
   subTitle: string;
-  price: string;
+  price: JSX.Element;
   priceDescription: string;
   priceSubDescription?: string;
 

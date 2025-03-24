@@ -1,7 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 
 import {
-  APP_NAME,
   buttonStyle,
   maxContentWidth,
   subTitleFontStyle,
@@ -20,6 +19,7 @@ import { Gift, HandCoins, Mic } from "lucide-react";
 import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
+import PriceDisplay from "./PriceDisplay";
 
 interface PricePageProps {
   lang: SupportedLanguage;
@@ -151,7 +151,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               <PriceCard
                 title={i18n._("Free Trial")}
                 subTitle={i18n.t(`Trying FluencyPal risk-free`)}
-                price={i18n._("PLN 0")}
+                price={<span>PLN 0</span>}
                 priceDescription={i18n._(
                   `One hour of active AI speaking is free, then Pay as You Go`
                 )}
@@ -190,7 +190,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               <PriceCard
                 title={i18n._("Pay-as-You-Go")}
                 subTitle={i18n._("For learners who want flexibility")}
-                price={i18n._(`PLN 24`)}
+                price={<PriceDisplay amountInUsd={6} />}
                 priceDescription={i18n._("Per Hour of AI Usage")}
                 priceSubDescription={i18n._(
                   "You only pay when AI is speaking or analyzing your speech, not when you're thinking or typing."
@@ -218,7 +218,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               <PriceCard
                 title={i18n._("Advanced")}
                 subTitle={i18n._("Frequent users who need more value")}
-                price={i18n._("Contact for pricing")}
+                price={<span>Contact for pricing</span>}
                 priceDescription={""}
                 listTitle={i18n._("What I can do for you:")}
                 listItems={[
