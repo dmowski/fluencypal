@@ -62,7 +62,7 @@ export const useCurrency = () => {
 
   return {
     rate,
-    currency,
+    currency: `${currency || "USD"}`.toLowerCase(),
     convertUsdToCurrency,
   };
 };
