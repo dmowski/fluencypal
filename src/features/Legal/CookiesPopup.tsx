@@ -70,7 +70,10 @@ export const CookiesPopup = () => {
           flexWrap: "wrap",
         }}
       >
-        <Typography variant="caption" sx={{ color: "#fff", maxWidth: "800px", lineHeight: "1.2" }}>
+        <Typography
+          variant="caption"
+          sx={{ color: "#fff", maxWidth: "800px", lineHeight: "1.2", opacity: 0.7 }}
+        >
           {message}
         </Typography>
         <Stack

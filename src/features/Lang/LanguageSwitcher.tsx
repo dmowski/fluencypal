@@ -197,7 +197,7 @@ export function LanguageSwitcher() {
               >
                 <Stack gap={"10px"}>
                   <Typography variant="body2" component="h3">
-                    {i18n._(`System languages:`)}
+                    {i18n._(`Suggested for you:`)}
                   </Typography>
                   <Stack
                     sx={{
