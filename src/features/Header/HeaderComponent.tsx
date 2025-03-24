@@ -62,10 +62,32 @@ export function HeaderComponent({
   const pathname = usePathname();
 
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
+  const [isHighlightJoin, setIsHighlightJoin] = useState(false);
 
   const isLanding = !(
     pathname.startsWith("/practice") || pathname.startsWith(`${getUrlStart(lang)}practice`)
   );
+
+  useEffect(() => {
+    const isWindow = typeof window !== "undefined";
+    if (!isLanding || auth.isAuthorized || !isWindow) {
+      return;
+    }
+
+    const onScrollHandler = () => {
+      if (window.scrollY > 800) {
+        setIsHighlightJoin(true);
+      } else {
+        setIsHighlightJoin(false);
+      }
+    };
+
+    window.addEventListener("scroll", onScrollHandler);
+    return () => {
+      window.removeEventListener("scroll", onScrollHandler);
+    };
+  }, [auth.isAuthorized, isLanding]);
+
   const homeUrl = isLanding
     ? `${getUrlStartWithoutLastSlash(lang)}`
     : auth.isAuthorized
@@ -292,7 +314,8 @@ export function HeaderComponent({
                   <Button
                     href={`${getUrlStart(lang)}practice`}
                     onClick={(e) => navigateTo(`${getUrlStart(lang)}practice`, e)}
-                    variant="outlined"
+                    variant={isHighlightJoin ? "contained" : "outlined"}
+                    color="info"
                   >
                     {signInTitle}
                   </Button>
