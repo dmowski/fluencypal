@@ -27,7 +27,7 @@ import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SupportedLanguage } from "@/common/lang";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
-import { getUrlStart } from "../Lang/getUrlStart";
+import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
 import MenuIcon from "@mui/icons-material/Menu";
 
 export type HeaderMode = "landing" | "practice";
@@ -67,7 +67,7 @@ export function HeaderComponent({
     pathname.startsWith("/practice") || pathname.startsWith(`${getUrlStart(lang)}practice`)
   );
   const homeUrl = isLanding
-    ? `${getUrlStart(lang)}`
+    ? `${getUrlStartWithoutLastSlash(lang)}`
     : auth.isAuthorized
       ? `${getUrlStart(lang)}practice`
       : getUrlStart(lang);
@@ -191,6 +191,7 @@ export function HeaderComponent({
                 },
                 ".small_logo": {
                   display: "none",
+                  //border: "1px solid #fff",
                 },
                 "@media (max-width: 1000px)": {
                   marginRight: "0px",

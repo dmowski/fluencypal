@@ -36,6 +36,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         gap: "100px",
         "@media (max-width: 600px)": {
           gap: "20px",
+          paddingTop: "70px",
         },
       }}
     >
@@ -43,6 +44,9 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         sx={{
           alignItems: "center",
           gap: "50px",
+          "@media (max-width: 600px)": {
+            gap: "10px",
+          },
         }}
       >
         <Stack
@@ -54,6 +58,9 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               "@media (max-width: 600px)": {
                 display: "none",
               },
+            },
+            "@media (max-width: 600px)": {
+              gap: "5px",
             },
           }}
         >
@@ -82,6 +89,9 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             sx={{
               maxWidth: "940px",
               ...subTitleFontStyle,
+              "@media (max-width: 600px)": {
+                fontSize: "1rem",
+              },
             }}
           >
             {subTitle}
