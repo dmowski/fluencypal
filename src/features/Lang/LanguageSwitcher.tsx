@@ -17,7 +17,6 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useSettings } from "../Settings/useSettings";
 import { ClickCard } from "../Dashboard/ClickCard";
 import { useAuth } from "../Auth/useAuth";
-import { sleep } from "openai/core.mjs";
 
 const LanguageCard = ({
   lang,
@@ -36,6 +35,30 @@ const LanguageCard = ({
       onStart={onClick}
     />
   );
+};
+
+const availableOnLabelMap: Record<SupportedLanguage, string> = {
+  ru: "Доступно на русском",
+  en: "Available in English",
+  es: "Disponible en español",
+  fr: "Disponible en français",
+  de: "Verfügbar auf Deutsch",
+  it: "Disponibile in italiano",
+  pt: "Disponível em português",
+  ja: "日本語で利用可能",
+  ko: "한국어로 이용 가능",
+  zh: "中文可用",
+  ar: "متوفر باللغة العربية",
+  tr: "Türkçe mevcut",
+  pl: "Dostępne w języku polskim",
+  uk: "Доступно на українській",
+  id: "Tersedia dalam bahasa Indonesia",
+  ms: "Tersedia dalam Bahasa Melayu",
+  th: "มีให้บริการในภาษาไทย",
+  vi: "Có sẵn bằng tiếng Việt",
+  da: "Tilgængelig på dansk",
+  nb: "Tilgjengelig på norsk",
+  sv: "Tillgänglig på svenska",
 };
 
 const parseLangFromUrl = (pathname: string) => {
@@ -86,19 +109,47 @@ export function LanguageSwitcher() {
   const systemLangs = getUserLangCode();
   const otherLangs = supportedLanguages.filter((lang) => !systemLangs.includes(lang));
 
+  const isCurrentPageLangIsSystem = systemLangs.length && systemLangs.includes(supportedLang);
+  const supportedLangCodeLabel =
+    systemLangs.length && !isCurrentPageLangIsSystem ? availableOnLabelMap[systemLangs[0]] : "";
+
   return (
     <Stack sx={{}}>
-      <IconButton
-        onClick={() => setIsShowModal(!isShowModal)}
-        title="Select language"
-        aria-label="Select language"
-      >
-        <Globe
-          style={{
-            opacity: 0.8,
+      {supportedLangCodeLabel ? (
+        <Button
+          onClick={() => setIsShowModal(!isShowModal)}
+          sx={{
+            fontSize: "0.8rem",
+            textAlign: "end",
+            lineHeight: "1.2",
+
+            textTransform: "none",
+            color: "#fff",
+            fontWeight: 400,
           }}
-        />
-      </IconButton>
+          endIcon={
+            <Globe
+              style={{
+                opacity: 0.8,
+              }}
+            />
+          }
+        >
+          {supportedLangCodeLabel}
+        </Button>
+      ) : (
+        <IconButton
+          onClick={() => setIsShowModal(!isShowModal)}
+          title="Select language"
+          aria-label="Select language"
+        >
+          <Globe
+            style={{
+              opacity: 0.8,
+            }}
+          />
+        </IconButton>
+      )}
 
       <CustomModal
         isOpen={isShowModal}
