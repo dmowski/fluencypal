@@ -62,10 +62,12 @@ export async function GET(request: Request) {
     priority: "0.7000",
   }));
 
-  const scenariosCategoriesUrls: UrlDefinition[] = rolePlayCategories.map((item) => ({
-    path: `scenarios?category=${item.categoryId}`,
-    priority: "0.5000",
-  }));
+  const scenariosCategoriesUrls: UrlDefinition[] = rolePlayCategories
+    .filter((item) => item.categoryId !== scenariosData.allCategory.categoryId)
+    .map((item) => ({
+      path: `scenarios?category=${item.categoryId}`,
+      priority: "0.5000",
+    }));
 
   const blogs = getBlogs("en");
   const blogsItems = blogs.blogs;
@@ -74,10 +76,12 @@ export async function GET(request: Request) {
     path: `blog/${item.id}`,
     priority: "0.6000",
   }));
-  const blogsCategoriesUrls: UrlDefinition[] = blogsCategories.map((item) => ({
-    path: `blog?category=${item.categoryId}`,
-    priority: "0.5000",
-  }));
+  const blogsCategoriesUrls: UrlDefinition[] = blogsCategories
+    .filter((item) => item.categoryId !== blogs.allCategory.categoryId)
+    .map((item) => ({
+      path: `blog?category=${item.categoryId}`,
+      priority: "0.5000",
+    }));
 
   const urls: UrlDefinition[] = [
     {
