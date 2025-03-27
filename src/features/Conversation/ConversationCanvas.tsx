@@ -29,10 +29,9 @@ export function ConversationCanvas() {
   const usage = useUsage();
   const [userMessage, setUserMessage] = useState("");
   const [helpMessage, setHelpMessage] = useState("");
-  const balance = `$${new Intl.NumberFormat().format(usage.balanceHours)}`;
 
-  const isSmallBalance = usage.balanceHours < 0.2;
-  const isExtremelySmallBalance = usage.balanceHours < 0.1;
+  const isSmallBalance = usage.balanceHours < 0.1;
+  const isExtremelySmallBalance = usage.balanceHours < 0.05;
 
   const isNeedToShowBalanceWarning =
     (isSmallBalance && aiConversation.conversation.length > 1) || isExtremelySmallBalance;
@@ -212,7 +211,7 @@ Use ${settings.fullLanguageName || "English"} language.
               color={isExtremelySmallBalance ? "error" : isSmallBalance ? "warning" : "primary"}
               align="right"
             >
-              You have a low balance | {balance} <br />
+              You have a low balance | {`${usage.balanceHours.toFixed(2)}`}h <br />
               It makes sense to top up your balance.
             </Typography>
             <Button
