@@ -29,6 +29,7 @@ import { SupportedLanguage } from "@/common/lang";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
 import MenuIcon from "@mui/icons-material/Menu";
+import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 
 export type HeaderMode = "landing" | "practice";
 
@@ -299,7 +300,7 @@ export function HeaderComponent({
                   >
                     {balanceTitle}:{" "}
                     {usage.balanceHours > 0 ? "" : usage.balanceHours == 0 ? "" : "- "}
-                    {Math.abs(usage.balanceHours).toFixed(1)}
+                    {convertHoursToHumanFormat(usage.balanceHours)}
                   </Button>
                   <IconButton
                     onClick={(e) => {

@@ -28,6 +28,7 @@ import { supportedLanguages } from "@/common/lang";
 import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useCurrency } from "../Landing/Price/useCurrency";
+import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
@@ -476,7 +477,7 @@ export const PaymentModal = () => {
                     }}
                   >
                     <Typography variant="h3">
-                      {new Intl.NumberFormat().format(usage.balanceHours)} hours of AI usage
+                      {convertHoursToHumanFormat(usage.balanceHours)} of AI usage
                     </Typography>
                     <Typography variant="caption">{i18n._(`Current Balance`)}</Typography>
                   </Stack>
@@ -496,9 +497,9 @@ export const PaymentModal = () => {
                         opacity: 0.9,
                       }}
                     >
-                      {new Intl.NumberFormat().format(usage.usedHours)}
+                      {convertHoursToHumanFormat(usage.usedHours)}
                     </Typography>
-                    <Typography variant="caption">{i18n._(`Total used hourse`)}</Typography>
+                    <Typography variant="caption">{i18n._(`Total used`)}</Typography>
                   </Stack>
                 </Stack>
               </Stack>
@@ -570,10 +571,10 @@ export const PaymentModal = () => {
                   >
                     <Stack>
                       <Typography variant="h3">
-                        {new Intl.NumberFormat().format(usage.balanceHours)}
+                        {convertHoursToHumanFormat(usage.balanceHours)}
                       </Typography>
                       <Typography variant="caption">
-                        {i18n._(`Current Balance of AI usage (hours)`)}
+                        {i18n._(`Current Balance of AI usage`)}
                       </Typography>
                     </Stack>
                   </Stack>
@@ -601,8 +602,7 @@ export const PaymentModal = () => {
                         color: "#c2c2c2",
                       }}
                     >
-                      {i18n._(`Total used hours:`)}{" "}
-                      <b>{new Intl.NumberFormat().format(usage.usedHours)}</b>
+                      {i18n._(`Total used:`)} <b>{convertHoursToHumanFormat(usage.usedHours)}</b>
                     </Typography>
 
                     <Stack
@@ -679,7 +679,7 @@ export const PaymentModal = () => {
                                       {log.currency.toUpperCase()} {log.amountAdded}
                                     </Typography>
                                     <Typography variant="body2">
-                                      {i18n._(`Hours:`)} {log.amountOfHours}
+                                      {convertHoursToHumanFormat(log.amountOfHours)}
                                     </Typography>
                                     <Typography
                                       variant="caption"

@@ -20,6 +20,7 @@ import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useUsage } from "../Usage/useUsage";
 import { AliasGamePanel } from "./AliasGamePanel";
 import { VolumeButton } from "../uiKit/Button/VolumeButton";
+import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 
 const loadingHelpMessage = `Generating help message...`;
 export function ConversationCanvas() {
@@ -211,7 +212,7 @@ Use ${settings.fullLanguageName || "English"} language.
               color={isExtremelySmallBalance ? "error" : isSmallBalance ? "warning" : "primary"}
               align="right"
             >
-              You have a low balance | {`${usage.balanceHours.toFixed(2)}`}h <br />
+              You have a low balance | {`${convertHoursToHumanFormat(usage.balanceHours)}`} <br />
               It makes sense to top up your balance.
             </Typography>
             <Button
