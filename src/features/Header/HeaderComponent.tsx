@@ -17,6 +17,7 @@ import {
   Menu,
   MenuItem,
   Stack,
+  Typography,
 } from "@mui/material";
 import { BookMarked, Gem, LogOutIcon, MessageCircleQuestion, Rss, Wallet } from "lucide-react";
 
@@ -298,9 +299,24 @@ export function HeaderComponent({
                     onClick={() => usage.togglePaymentModal(true)}
                     startIcon={<Wallet size="20px" />}
                   >
-                    {balanceTitle}:{" "}
-                    {usage.balanceHours > 0 ? "" : usage.balanceHours == 0 ? "" : "- "}
-                    {convertHoursToHumanFormat(usage.balanceHours)}
+                    <Typography
+                      sx={{
+                        paddingRight: "5px",
+                        "@media (max-width: 650px)": {
+                          display: "none",
+                        },
+                      }}
+                    >
+                      {balanceTitle}:
+                    </Typography>
+                    <Typography
+                      sx={{
+                        textTransform: "none",
+                      }}
+                    >
+                      {usage.balanceHours > 0 ? "" : usage.balanceHours == 0 ? "" : "- "}
+                      {convertHoursToHumanFormat(usage.balanceHours)}
+                    </Typography>
                   </Button>
                   <IconButton
                     onClick={(e) => {
