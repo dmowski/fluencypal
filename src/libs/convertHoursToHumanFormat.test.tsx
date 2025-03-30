@@ -5,11 +5,11 @@ describe("convertHoursToHumanFormat", () => {
   const testCases = [
     {
       input: 0.1,
-      expected: "6m",
+      expected: "6min",
     },
     {
       input: 1.5,
-      expected: "1h 30m",
+      expected: "1h 30min",
     },
     {
       input: 4,
