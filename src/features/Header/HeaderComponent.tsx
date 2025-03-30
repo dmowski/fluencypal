@@ -31,6 +31,7 @@ import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
 import MenuIcon from "@mui/icons-material/Menu";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
+import { useAiConversation } from "../Conversation/useAiConversation";
 
 export type HeaderMode = "landing" | "practice";
 
@@ -65,6 +66,7 @@ export function HeaderComponent({
 
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
   const [isHighlightJoin, setIsHighlightJoin] = useState(false);
+  const aiConversation = useAiConversation();
 
   const isLanding = !(
     pathname.startsWith("/practice") || pathname.startsWith(`${getUrlStart(lang)}practice`)
@@ -302,6 +304,10 @@ export function HeaderComponent({
                     <Typography
                       sx={{
                         paddingRight: "5px",
+                        display:
+                          aiConversation.isStarted || aiConversation.isInitializing
+                            ? "none"
+                            : "block",
                         "@media (max-width: 650px)": {
                           display: "none",
                         },
