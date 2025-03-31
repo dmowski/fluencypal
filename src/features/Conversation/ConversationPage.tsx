@@ -11,6 +11,7 @@ import { ConversationCanvas } from "./ConversationCanvas";
 import { Dashboard } from "../Dashboard/Dashboard";
 import { SupportedLanguage } from "@/common/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
+import { useTextAi } from "../Ai/useTextAi";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -22,6 +23,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const settings = useSettings();
   const aiConversation = useAiConversation();
   const usage = useUsage();
+  const textAi = useTextAi();
   if (settings.loading || auth.loading)
     return (
       <Stack
@@ -48,7 +50,28 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   return (
     <Stack>
       {aiConversation.isStarted ? (
-        <ConversationCanvas />
+        <ConversationCanvas
+          conversation={aiConversation.conversation}
+          isAiSpeaking={aiConversation.isAiSpeaking}
+          gameWords={aiConversation.gameWords}
+          isShowUserInput={aiConversation.isShowUserInput}
+          setIsShowUserInput={aiConversation.setIsShowUserInput}
+          isMuted={aiConversation.isMuted}
+          isVolumeOn={aiConversation.isVolumeOn}
+          toggleVolume={aiConversation.toggleVolume}
+          isClosed={aiConversation.isClosed}
+          isClosing={aiConversation.isClosing}
+          isSavingHomework={aiConversation.isSavingHomework}
+          isUserSpeaking={aiConversation.isUserSpeaking}
+          toggleMute={aiConversation.toggleMute}
+          finishLesson={aiConversation.finishLesson}
+          doneConversation={aiConversation.doneConversation}
+          addUserMessage={aiConversation.addUserMessage}
+          fullLanguageName={settings.fullLanguageName || "English"}
+          generateText={textAi.generate}
+          balanceHours={usage.balanceHours}
+          togglePaymentModal={usage.togglePaymentModal}
+        />
       ) : (
         <Dashboard rolePlayInfo={rolePlayInfo} />
       )}

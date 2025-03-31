@@ -13,7 +13,7 @@ import { KeyboardButton } from "../uiKit/Button/KeyboardButton";
 import { UserMessage } from "./UserMessage";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import { HelpButton } from "../uiKit/Button/HelpButton";
-import { useTextAi } from "../Ai/useTextAi";
+import { TextAiRequest, useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
 import { useSettings } from "../Settings/useSettings";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
@@ -21,33 +21,75 @@ import { useUsage } from "../Usage/useUsage";
 import { AliasGamePanel } from "./AliasGamePanel";
 import { VolumeButton } from "../uiKit/Button/VolumeButton";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
+import { ChatMessage } from "@/common/conversation";
+import { GuessGameStat } from "./types";
 
 const loadingHelpMessage = `Generating help message...`;
-export function ConversationCanvas() {
-  const aiConversation = useAiConversation();
-  const settings = useSettings();
-  const textAi = useTextAi();
-  const usage = useUsage();
+
+interface ConversationCanvasProps {
+  conversation: ChatMessage[];
+  isAiSpeaking: boolean;
+  gameWords: GuessGameStat | null;
+  isShowUserInput: boolean;
+  setIsShowUserInput: (isShowUserInput: boolean) => void;
+  isMuted: boolean;
+  isVolumeOn: boolean;
+  toggleVolume: (isVolumeOn: boolean) => void;
+  isClosed: boolean;
+  isClosing: boolean;
+  isSavingHomework: boolean;
+  isUserSpeaking: boolean;
+  toggleMute: (isMuted: boolean) => void;
+  finishLesson: () => Promise<void>;
+  doneConversation: () => Promise<void>;
+  addUserMessage: (message: string) => Promise<void>;
+  fullLanguageName: string;
+  generateText: (conversationDate: TextAiRequest) => Promise<string>;
+  balanceHours: number;
+  togglePaymentModal: (isOpen: boolean) => void;
+}
+export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
+  conversation,
+  isAiSpeaking,
+  gameWords,
+  isShowUserInput,
+  setIsShowUserInput,
+  isMuted,
+  isVolumeOn,
+  toggleVolume,
+  isClosed,
+  isClosing,
+  isSavingHomework,
+  isUserSpeaking,
+  toggleMute,
+  finishLesson,
+  doneConversation,
+  addUserMessage,
+  fullLanguageName,
+  generateText,
+  balanceHours,
+  togglePaymentModal,
+}) => {
   const [userMessage, setUserMessage] = useState("");
   const [helpMessage, setHelpMessage] = useState("");
 
-  const isSmallBalance = usage.balanceHours < 0.1;
-  const isExtremelySmallBalance = usage.balanceHours < 0.05;
+  const isSmallBalance = balanceHours < 0.1;
+  const isExtremelySmallBalance = balanceHours < 0.05;
 
   const isNeedToShowBalanceWarning =
-    (isSmallBalance && aiConversation.conversation.length > 1) || isExtremelySmallBalance;
+    (isSmallBalance && conversation.length > 1) || isExtremelySmallBalance;
 
   const submitMessage = () => {
     if (!userMessage) return;
-    aiConversation.addUserMessage(userMessage);
+    addUserMessage(userMessage);
     setUserMessage("");
   };
 
-  const lastUserMessage = aiConversation.conversation
+  const lastUserMessage = conversation
     .filter((message) => !message.isBot)
     .find((_, index, arr) => index >= arr.length - 1);
 
-  const lastBotMessage = aiConversation.conversation
+  const lastBotMessage = conversation
     .filter((message) => message.isBot)
     .find((_, index, arr) => index >= arr.length - 1);
 
@@ -59,15 +101,15 @@ export function ConversationCanvas() {
 
   const generateHelpMessage = async () => {
     setHelpMessage(loadingHelpMessage);
-    const last4Messages = aiConversation.conversation.slice(-4);
+    const last4Messages = conversation.slice(-4);
 
     const systemInstructions = `You are grammar, language learning helper system.
 User wants to create his message.
 Last part of conversations: ${JSON.stringify(last4Messages)}.
 Generate one simple short sentences. 5-10 words maximum.
-Use ${settings.fullLanguageName || "English"} language.
+Use ${fullLanguageName || "English"} language.
 `;
-    const aiResult = await textAi.generate({
+    const aiResult = await generateText({
       systemMessage: systemInstructions,
       userMessage: lastBotMessage?.text || "",
       model: MODELS.gpt_4o,
@@ -79,7 +121,7 @@ Use ${settings.fullLanguageName || "English"} language.
 
   return (
     <Stack sx={{ gap: "40px" }}>
-      <TalkingWaves inActive={aiConversation.isAiSpeaking} />
+      <TalkingWaves inActive={isAiSpeaking} />
       <Stack
         sx={{
           alignItems: "center",
@@ -110,11 +152,8 @@ Use ${settings.fullLanguageName || "English"} language.
               gap: "20px",
             }}
           >
-            {aiConversation.gameWords?.wordsUserToDescribe && (
-              <AliasGamePanel
-                gameWords={aiConversation.gameWords}
-                conversation={aiConversation.conversation}
-              />
+            {gameWords?.wordsUserToDescribe && (
+              <AliasGamePanel gameWords={gameWords} conversation={conversation} />
             )}
 
             {lastUserMessage && <UserMessage message={lastUserMessage?.text} />}
@@ -146,7 +185,7 @@ Use ${settings.fullLanguageName || "English"} language.
             padding: "0 10px",
           }}
         >
-          {aiConversation.isShowUserInput && (
+          {isShowUserInput && (
             <>
               <Textarea value={userMessage} onChange={setUserMessage} onSubmit={submitMessage} />
               <IconButton disabled={!userMessage} onClick={submitMessage}>
@@ -217,12 +256,12 @@ Use ${settings.fullLanguageName || "English"} language.
               color={isExtremelySmallBalance ? "error" : isSmallBalance ? "warning" : "primary"}
               align="right"
             >
-              You have a low balance | {`${convertHoursToHumanFormat(usage.balanceHours)}`} <br />
+              You have a low balance | {`${convertHoursToHumanFormat(balanceHours)}`} <br />
               It makes sense to top up your balance.
             </Typography>
             <Button
               startIcon={<AddCardIcon />}
-              onClick={() => usage.togglePaymentModal(true)}
+              onClick={() => togglePaymentModal(true)}
               variant="contained"
             >
               Top up
@@ -252,9 +291,9 @@ Use ${settings.fullLanguageName || "English"} language.
             }}
           >
             <MicroButton
-              isMuted={!!aiConversation.isMuted}
-              isPlaying={aiConversation.isUserSpeaking}
-              onClick={() => aiConversation.toggleMute(!aiConversation.isMuted)}
+              isMuted={!!isMuted}
+              isPlaying={isUserSpeaking}
+              onClick={() => toggleMute(!isMuted)}
             />
             <Stack
               sx={{
@@ -266,38 +305,35 @@ Use ${settings.fullLanguageName || "English"} language.
               }}
             >
               <KeyboardButton
-                isEnabled={!!aiConversation.isShowUserInput}
-                onClick={() => aiConversation.setIsShowUserInput(!aiConversation.isShowUserInput)}
+                isEnabled={!!isShowUserInput}
+                onClick={() => setIsShowUserInput(!isShowUserInput)}
               />
               <HelpButton
                 isLoading={false}
                 isEnabled={helpMessage !== loadingHelpMessage}
                 onClick={generateHelpMessage}
               />
-              <VolumeButton
-                isEnabled={aiConversation.isVolumeOn}
-                onClick={() => aiConversation.toggleVolume(!aiConversation.isVolumeOn)}
-              />
+              <VolumeButton isEnabled={isVolumeOn} onClick={() => toggleVolume(!isVolumeOn)} />
             </Stack>
           </Stack>
 
-          {aiConversation.isClosing || aiConversation.isSavingHomework ? (
-            <Button variant="outlined" disabled onClick={() => aiConversation.finishLesson()}>
-              {aiConversation.isSavingHomework ? "Saving homework..." : "Finishing..."}
+          {isClosing || isSavingHomework ? (
+            <Button variant="outlined" disabled onClick={() => finishLesson()}>
+              {isSavingHomework ? "Saving homework..." : "Finishing..."}
             </Button>
           ) : (
             <>
-              {aiConversation.isClosed ? (
+              {isClosed ? (
                 <Button
                   variant="contained"
-                  onClick={() => aiConversation.doneConversation()}
+                  onClick={() => doneConversation()}
                   startIcon={<DoneIcon />}
                 >
                   Done
                 </Button>
               ) : (
                 <>
-                  {aiConversation.conversation.length > 0 && (
+                  {conversation.length > 0 && (
                     <Stack>
                       <Button
                         color={
@@ -310,7 +346,7 @@ Use ${settings.fullLanguageName || "English"} language.
                             : "primary"
                         }
                         variant="outlined"
-                        onClick={() => aiConversation.finishLesson()}
+                        onClick={() => finishLesson()}
                       >
                         Finish
                       </Button>
@@ -324,4 +360,4 @@ Use ${settings.fullLanguageName || "English"} language.
       </Stack>
     </Stack>
   );
-}
+};
