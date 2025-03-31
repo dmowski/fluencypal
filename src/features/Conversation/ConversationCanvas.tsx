@@ -110,7 +110,12 @@ Use ${settings.fullLanguageName || "English"} language.
               gap: "20px",
             }}
           >
-            {aiConversation.gameWords?.wordsUserToDescribe && <AliasGamePanel />}
+            {aiConversation.gameWords?.wordsUserToDescribe && (
+              <AliasGamePanel
+                gameWords={aiConversation.gameWords}
+                conversation={aiConversation.conversation}
+              />
+            )}
 
             {lastUserMessage && <UserMessage message={lastUserMessage?.text} />}
 
