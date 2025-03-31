@@ -21,11 +21,17 @@ interface PageProps {
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const rolePlayId = (await props.searchParams).rolePlayId;
-  return generateMetadataInfo({
-    lang: (await props.params).lang,
-    currentPath: "practice",
-    rolePlayId,
-  });
+  return {
+    ...generateMetadataInfo({
+      lang: (await props.params).lang,
+      currentPath: "practice",
+      rolePlayId,
+    }),
+    robots: {
+      index: false,
+      follow: false,
+    },
+  };
 }
 
 export default async function Page(props: { params: Promise<{ lang: string }> }) {
