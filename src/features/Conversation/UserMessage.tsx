@@ -1,24 +1,25 @@
 import { IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useEffect, useRef, useState } from "react";
-import { BadgeAlert, BadgeCheck, Badge, Loader, CloudAlert, FlaskConical } from "lucide-react";
-import { useTextAi } from "../Ai/useTextAi";
-import { MODELS } from "@/common/ai";
-import { useUsage } from "../Usage/useUsage";
+import { BadgeAlert, FlaskConical } from "lucide-react";
+import { StringDiff } from "react-string-diff";
 
 interface UserMessageProps {
   message: string;
+  analyzeUserMessage: (message: string) => Promise<{
+    sourceMessage: string;
+    correctedMessage: string;
+    description: string;
+  }>;
+  balanceHours: number;
 }
 type MessageQuality = "loading" | "great" | "bad" | "error";
 
-export const UserMessage = ({ message }: UserMessageProps) => {
+export const UserMessage = ({ message, analyzeUserMessage, balanceHours }: UserMessageProps) => {
   const [level, setLevel] = useState<MessageQuality>("loading");
   const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
   const [description, setDescription] = useState<string | null>(null);
   const [isShowDetails, setIsShowDetails] = useState(false);
 
-  const textAi = useTextAi();
-  const usage = useUsage();
   const messageAnalyzing = useRef("");
 
   const analyzeMessage = async () => {
@@ -33,49 +34,22 @@ export const UserMessage = ({ message }: UserMessageProps) => {
     setDescription(null);
     setCorrectedMessage(null);
     try {
-      const aiResult = await textAi.generate({
-        systemMessage: `You are grammar checker system.
-Student gives a message, your role is to analyze it from the grammar prospective.
-
-Return your result in JSON format.
-Structure of result: {
-  "quality": "great" | "bad",
-  "correctedMessage": string,
-  "suggestion": string
-}
-
-quality - return "great" if message is correct, "bad" if there are mistakes
-correctedMessage - return corrected message if quality is "bad"
-suggestion: A direct message to the student explaining the corrections.
-
-Return info in JSON format.
-Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
-`,
-        userMessage: message,
-        model: MODELS.gpt_4o,
-      });
-      console.log("Analyze message result", aiResult);
-
-      if (message !== messageAnalyzing.current) {
+      const { sourceMessage, correctedMessage, description } = await analyzeUserMessage(message);
+      if (message !== sourceMessage) {
         return;
       }
 
-      const parsedAiResult = JSON.parse(aiResult);
-      if (parsedAiResult?.quality === "great") {
-        setLevel("great");
-      } else {
-        setLevel("bad");
-      }
+      setLevel(correctedMessage === sourceMessage ? "great" : "bad");
 
-      setCorrectedMessage(parsedAiResult?.correctedMessage || null);
-      setDescription(parsedAiResult?.suggestion || null);
+      setCorrectedMessage(correctedMessage || null);
+      setDescription(description || null);
     } catch (error) {
       setLevel("error");
       throw error;
     }
   };
 
-  const isLowBalance = usage.balanceHours < 0.01;
+  const isLowBalance = balanceHours < 0.01;
 
   useEffect(() => {
     if (isLowBalance) {
@@ -120,7 +94,31 @@ Do not wrap answer with any wrappers like "answer": "...". Your response will be
             gap: "5px",
           }}
         >
-          <Markdown>{message || ""}</Markdown>
+          <Typography
+            variant="body2"
+            component={"div"}
+            sx={{
+              fontWeight: 400,
+              fontSize: "20px",
+            }}
+          >
+            <StringDiff
+              styles={{
+                added: {
+                  color: "#81e381",
+                  fontWeight: 600,
+                },
+                removed: {
+                  textDecoration: "line-through",
+                  opacity: 0.5,
+                  display: "none",
+                },
+                default: {},
+              }}
+              oldValue={message || ""}
+              newValue={correctedMessage || message || ""}
+            />
+          </Typography>
           {isShowDetails && (
             <>
               <Stack
@@ -134,39 +132,13 @@ Do not wrap answer with any wrappers like "answer": "...". Your response will be
                 <Stack
                   sx={{
                     flexDirection: "row",
-                    gap: "5px",
+                    gap: "10px",
                     alignItems: "center",
                   }}
                 >
                   <FlaskConical color="#fa8500" size={"14px"} />
-                  <Typography variant="caption" sx={{ opacity: 0.7 }}>
-                    Analysis:
-                  </Typography>
+                  <Typography>{description || "no info"}</Typography>
                 </Stack>
-
-                <Markdown>{description || "no info"}</Markdown>
-              </Stack>
-              <Stack
-                sx={{
-                  border: "1px solid rgba(255, 255, 255, 0.4)",
-                  padding: "10px",
-                  borderRadius: "5px",
-                  gap: "10px",
-                }}
-              >
-                <Stack
-                  sx={{
-                    flexDirection: "row",
-                    gap: "5px",
-                    alignItems: "center",
-                  }}
-                >
-                  <BadgeCheck color="#558fdb" size={"14px"} />
-                  <Typography variant="caption" sx={{ opacity: 0.7 }}>
-                    Corrected version:
-                  </Typography>
-                </Stack>
-                <Markdown>{correctedMessage || ""}</Markdown>
               </Stack>
             </>
           )}
@@ -180,28 +152,29 @@ Do not wrap answer with any wrappers like "answer": "...". Your response will be
             justifyContent: "center",
           }}
         >
-          {level === "loading" && (
-            <Tooltip title="Checking quality...">
-              <Loader size={"16px"} color="#c2c2c2" />
-            </Tooltip>
-          )}
-          {level === "great" && (
-            <Tooltip title="Great message. Nothing to correct">
-              <BadgeCheck color="#558fdb" size={"22px"} />
-            </Tooltip>
-          )}
           {level === "bad" && (
-            <Tooltip title="There are some mistakes in your message. Press to see them">
-              <IconButton onClick={() => setIsShowDetails(!isShowDetails)}>
+            <Tooltip
+              title={
+                <Typography
+                  sx={{
+                    fontSize: "20px",
+                    lineHeight: "1.5",
+                    padding: "10px",
+                  }}
+                >
+                  {description || "There are some mistakes in your message. Press to see them"}
+                </Typography>
+              }
+              placement="top"
+              arrow
+            >
+              <Stack
+                sx={{
+                  padding: "10px 15px",
+                }}
+              >
                 <BadgeAlert color="#fa8500" size={"22px"} />
-              </IconButton>
-            </Tooltip>
-          )}
-          {level === "error" && (
-            <Tooltip title="Unable to check message">
-              <IconButton>
-                <CloudAlert color="#c2c2c2" size={"22px"} />
-              </IconButton>
+              </Stack>
             </Tooltip>
           )}
         </Stack>

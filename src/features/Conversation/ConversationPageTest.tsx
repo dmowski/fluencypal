@@ -14,7 +14,26 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   return (
     <Stack>
       <ConversationCanvas
-        conversation={[]}
+        conversation={[
+          {
+            isBot: true,
+            text: "Hello, how are you?",
+            id: "1",
+          },
+          {
+            isBot: false,
+            text: "I do well, thank you! Hello",
+            id: "2",
+          },
+        ]}
+        analyzeUserMessage={async (message: string) => {
+          await sleep(300);
+          return {
+            correctedMessage: "I do well, thank you!",
+            description: "Need to pay attention to the verb form.",
+            sourceMessage: "I do well, thank you! Hello",
+          };
+        }}
         isAiSpeaking={false}
         gameWords={null}
         isShowUserInput={true}
@@ -50,7 +69,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
           await sleep(1000);
           return "Text generated";
         }}
-        balanceHours={0.3}
+        balanceHours={0.2}
         togglePaymentModal={() => {
           alert("Payment modal toggled");
         }}

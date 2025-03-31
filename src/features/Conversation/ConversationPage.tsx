@@ -12,6 +12,7 @@ import { Dashboard } from "../Dashboard/Dashboard";
 import { SupportedLanguage } from "@/common/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { useTextAi } from "../Ai/useTextAi";
+import { MODELS } from "@/common/ai";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -24,6 +25,51 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const aiConversation = useAiConversation();
   const usage = useUsage();
   const textAi = useTextAi();
+
+  const analyzeUserMessage = async (message: string) => {
+    try {
+      const aiResult = await textAi.generate({
+        systemMessage: `You are grammar checker system.
+Student gives a message, your role is to analyze it from the grammar prospective.
+
+Return your result in JSON format.
+Structure of result: {
+"quality": "great" | "bad",
+"correctedMessage": string,
+"suggestion": string
+}
+
+quality - return "great" if message is correct, "bad" if there are mistakes
+correctedMessage - return corrected message if quality is "bad"
+suggestion: A direct message to the student explaining the corrections.
+
+Return info in JSON format.
+Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
+`,
+        userMessage: message,
+        model: MODELS.gpt_4o,
+      });
+
+      const parsedResult = JSON.parse(aiResult);
+
+      const correctedMessage = parsedResult ? parsedResult?.correctedMessage || message : message;
+      const quality = parsedResult ? parsedResult?.quality || "great" : "great";
+      const suggestion = parsedResult ? parsedResult?.suggestion || "" : "";
+
+      return {
+        correctedMessage: correctedMessage,
+        description: suggestion,
+        sourceMessage: message,
+      };
+    } catch (error) {
+      console.error("Error analyzing message:", error);
+      return {
+        correctedMessage: message,
+        description: "",
+        sourceMessage: message,
+      };
+    }
+  };
   if (settings.loading || auth.loading)
     return (
       <Stack
@@ -71,6 +117,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           generateText={textAi.generate}
           balanceHours={usage.balanceHours}
           togglePaymentModal={usage.togglePaymentModal}
+          analyzeUserMessage={analyzeUserMessage}
         />
       ) : (
         <Dashboard rolePlayInfo={rolePlayInfo} />

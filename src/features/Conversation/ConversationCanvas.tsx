@@ -47,6 +47,11 @@ interface ConversationCanvasProps {
   generateText: (conversationDate: TextAiRequest) => Promise<string>;
   balanceHours: number;
   togglePaymentModal: (isOpen: boolean) => void;
+  analyzeUserMessage: (message: string) => Promise<{
+    sourceMessage: string;
+    correctedMessage: string;
+    description: string;
+  }>;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   conversation,
@@ -69,6 +74,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   generateText,
   balanceHours,
   togglePaymentModal,
+  analyzeUserMessage,
 }) => {
   const [userMessage, setUserMessage] = useState("");
   const [helpMessage, setHelpMessage] = useState("");
@@ -156,7 +162,13 @@ Use ${fullLanguageName || "English"} language.
               <AliasGamePanel gameWords={gameWords} conversation={conversation} />
             )}
 
-            {lastUserMessage && <UserMessage message={lastUserMessage?.text} />}
+            {lastUserMessage && (
+              <UserMessage
+                message={lastUserMessage?.text}
+                analyzeUserMessage={analyzeUserMessage}
+                balanceHours={balanceHours}
+              />
+            )}
 
             {lastBotMessage && (
               <Stack>
