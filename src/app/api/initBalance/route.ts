@@ -2,6 +2,7 @@ import { InitBalanceResponse } from "@/common/requests";
 import { getDB, validateAuthToken } from "../config/firebase";
 import { WELCOME_BONUS } from "@/common/usage";
 import { addPaymentLog } from "../payment/addPaymentLog";
+import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
@@ -32,6 +33,8 @@ export async function POST(request: Request) {
   const response: InitBalanceResponse = {
     done: true,
   };
+
+  sentSupportTelegramMessage(`New user: ${userInfo.email}`);
 
   return Response.json(response);
 }

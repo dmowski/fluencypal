@@ -28,6 +28,9 @@ import { firstAiMessage } from "./data";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 
+const isDev = true;
+const aiModal = isDev ? MODELS.SMALL_CONVERSATION : MODELS.REALTIME_CONVERSATION;
+
 interface StartConversationProps {
   mode: ConversationMode;
   homework?: Homework;
@@ -271,7 +274,7 @@ Your homework is to repeat the following text:
 
   const aiRtcConfigs: Record<ConversationMode, AiRtcConfig> = useMemo(() => {
     const baseConfig = {
-      model: MODELS.REALTIME_CONVERSATION,
+      model: aiModal,
       initInstruction: "",
       aiTools: baseAiTools,
       onOpen,
@@ -305,7 +308,7 @@ Don't focus solely on one topic. Try to cover a variety of topics.
     const config: Record<ConversationMode, AiRtcConfig> = {
       talk: {
         ...baseConfig,
-        model: MODELS.REALTIME_CONVERSATION,
+        model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". Your role is to make user talks.
 ${openerInfoPrompt}
 Do not teach or explain rules—just talk.
@@ -323,7 +326,7 @@ Use ${fullLanguageName} language during conversation.
       talkAndCorrect: {
         ...baseConfig,
         voice: "shimmer",
-        model: MODELS.REALTIME_CONVERSATION,
+        model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher.
 Your name is "Shimmer". The user wants both a conversation and corrections.
 
@@ -347,7 +350,7 @@ ${userInfo ? `Info about student: ${userInfo}` : ""}
       },
       beginner: {
         ...baseConfig,
-        model: MODELS.REALTIME_CONVERSATION,
+        model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". The user is a beginner who needs simple, clear communication.
 
 For every user message, reply with **three parts** in a single response:
@@ -381,7 +384,7 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
       },
       words: {
         ...baseConfig,
-        model: MODELS.REALTIME_CONVERSATION,
+        model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher.
 Your name is "Bruno".
 The user wants to learn new words.
@@ -395,7 +398,7 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
 
       rule: {
         ...baseConfig,
-        model: MODELS.REALTIME_CONVERSATION,
+        model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher.
 Your name is "Bruno".
 The user wants to learn a new rule.
@@ -409,7 +412,7 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
 
       "role-play": {
         ...baseConfig,
-        model: MODELS.REALTIME_CONVERSATION,
+        model: aiModal,
         initInstruction: ``,
       },
     };
