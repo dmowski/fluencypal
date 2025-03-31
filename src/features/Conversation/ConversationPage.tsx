@@ -53,7 +53,6 @@ Do not wrap answer with any wrappers like "answer": "...". Your response will be
       const parsedResult = JSON.parse(aiResult);
 
       const correctedMessage = parsedResult ? parsedResult?.correctedMessage || message : message;
-      const quality = parsedResult ? parsedResult?.quality || "great" : "great";
       const suggestion = parsedResult ? parsedResult?.suggestion || "" : "";
 
       return {
