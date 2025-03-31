@@ -39,7 +39,12 @@ export const UserMessage = ({ message, analyzeUserMessage, balanceHours }: UserM
         return;
       }
 
-      setLevel(correctedMessage === sourceMessage ? "great" : "bad");
+      setLevel(
+        correctedMessage.toLowerCase().trim() === sourceMessage.toLowerCase().trim() ||
+          !correctedMessage.trim()
+          ? "great"
+          : "bad"
+      );
 
       setCorrectedMessage(correctedMessage || null);
       setDescription(description || null);
@@ -152,7 +157,7 @@ export const UserMessage = ({ message, analyzeUserMessage, balanceHours }: UserM
             justifyContent: "center",
           }}
         >
-          {level === "bad" && (
+          {level === "bad" && description && correctedMessage?.trim() && (
             <Tooltip
               title={
                 <Typography
