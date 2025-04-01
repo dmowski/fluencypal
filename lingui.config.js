@@ -22,6 +22,7 @@ module.exports = {
     "da",
     "nb",
     "sv",
+    "be",
     "pseudo",
   ],
   pseudoLocale: "pseudo",

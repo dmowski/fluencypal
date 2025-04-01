@@ -433,7 +433,7 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
 
       "role-play": {
         ...baseConfig,
-        model: aiModal,
+        model: MODELS.REALTIME_CONVERSATION,
         initInstruction: ``,
       },
     };

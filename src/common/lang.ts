@@ -19,7 +19,8 @@ export type SupportedLanguage =
   | "zh" // Chinese
   | "da" // Danish
   | "nb" // Norwegian
-  | "sv"; // Swedish
+  | "sv"
+  | "be";
 
 export const getLabelFromCode = (lang: SupportedLanguage) => {
   const englishName = fullEnglishLanguageName[lang];
@@ -51,6 +52,7 @@ export const supportedLanguages: SupportedLanguage[] = [
   "da", // Danish
   "nb", // Norwegian
   "sv", // Swedish
+  "be",
 ];
 
 export const getUserLangCode = (): SupportedLanguage[] => {
@@ -81,6 +83,7 @@ export const emojiLanguageName: Record<SupportedLanguage, string> = {
   da: "🇩🇰", // Danish
   nb: "🇳🇴", // Norwegian
   sv: "🇸🇪", // Swedish
+  be: "🇧🇾", // Belarusian
 };
 
 export const fullLanguageName: Record<SupportedLanguage, string> = {
@@ -105,6 +108,7 @@ export const fullLanguageName: Record<SupportedLanguage, string> = {
   da: "Dansk", // Danish
   nb: "Norsk", // Norwegian
   sv: "Svenska", // Swedish
+  be: "Беларуская", // Belarusian
 };
 
 export const fullEnglishLanguageName: Record<SupportedLanguage, string> = {
@@ -129,4 +133,30 @@ export const fullEnglishLanguageName: Record<SupportedLanguage, string> = {
   da: "Danish",
   nb: "Norwegian",
   sv: "Swedish",
+  be: "Belarusian",
+};
+
+export const accentsList: Record<SupportedLanguage, string[]> = {
+  en: ["American", "British", "Australian", "Indian"],
+  fr: ["France", "Canadian (Quebec)", "Belgian"],
+  pl: ["Standard Polish"],
+  uk: ["Kyiv", "Western Ukraine"],
+  ru: ["Moscow", "St. Petersburg"],
+  es: ["Spain", "Mexican", "Argentinian", "Colombian"],
+  ar: ["Modern Standard Arabic", "Egyptian", "Levantine", "Gulf"],
+  de: ["High German", "Austrian", "Swiss German"],
+  id: ["Jakarta (Standard Indonesian)"],
+  it: ["Standard Italian", "Roman", "Neapolitan"],
+  ja: ["Tokyo (Standard Japanese)", "Kansai"],
+  ko: ["Seoul (Standard Korean)"],
+  ms: ["Standard Malay (Malaysia)", "Singaporean"],
+  pt: ["European Portuguese", "Brazilian Portuguese"],
+  th: ["Central Thai (Bangkok)"],
+  tr: ["Istanbul (Standard Turkish)"],
+  vi: ["Northern (Hanoi)", "Southern (Ho Chi Minh City)"],
+  zh: ["Mandarin (Beijing)", "Taiwanese Mandarin", "Cantonese (Hong Kong)"],
+  da: ["Standard Danish"],
+  nb: ["Eastern Norwegian (Oslo)"],
+  sv: ["Standard Swedish (Stockholm)"],
+  be: ["Standard Belarusian (Minsk)"],
 };

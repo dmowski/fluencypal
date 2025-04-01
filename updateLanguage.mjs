@@ -36,6 +36,7 @@ const languages = [
   { path: `${localesFolder}/da.po`, language: "Danish" },
   { path: `${localesFolder}/nb.po`, language: "Norwegian" },
   { path: `${localesFolder}/sv.po`, language: "Swedish" },
+  { path: `${localesFolder}/be.po`, language: "Belarusian" },
 ];
 
 const translateBlock = async (blockText, lang) => {
