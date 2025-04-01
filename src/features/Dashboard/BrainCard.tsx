@@ -254,19 +254,19 @@ Address directly to the user.
                           }}
                         >
                           <Typography
-                            className="decor-text"
                             sx={{
                               width: "calc(100% - 30px)",
                               boxSizing: "border-box",
                               borderRadius: "5px",
-                              fontSize: "2.4rem",
-                              lineHeight: "2rem",
+                              fontSize: "1.7rem",
+                              lineHeight: "1.7rem",
                               zIndex: 1,
+                              fontWeight: 600,
                             }}
                           >
                             {isInstalling
                               ? i18n._(`Installing...`)
-                              : i18n._(`Brain connection successful!`)}
+                              : i18n._(`Connection Established`)}
                           </Typography>
                           <Typography
                             variant="body2"
@@ -304,13 +304,13 @@ Address directly to the user.
                         <Button
                           sx={{
                             width: "max-content",
-                            padding: "0px 40px",
+                            padding: "10px 30px",
                           }}
                           startIcon={
                             <PsychologyIcon
                               sx={{
-                                width: "3rem",
-                                height: "4rem",
+                                width: "2rem",
+                                height: "2rem",
                               }}
                             />
                           }
@@ -318,17 +318,16 @@ Address directly to the user.
                           disabled={isAnalyzing}
                           onClick={async () => startInstall()}
                         >
-                          {i18n._(`Install:`)}{" "}
+                          {i18n._(`Install languages into my brain`)}
+                          {" | "}
                           <b
                             style={{
                               fontWeight: 800,
-                              fontSize: "1.2rem",
                               padding: "0px 5px",
                             }}
                           >
                             {languagesToLearn.join(", ")}
-                          </b>{" "}
-                          {i18n._(`into my brain`)}
+                          </b>
                         </Button>
                       )}
 
