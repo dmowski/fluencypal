@@ -24,9 +24,9 @@ import { useTasks } from "../Tasks/useTasks";
 import { useWords } from "../Words/useWords";
 import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
-import { firstAiMessage } from "./data";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
+import { firstAiMessage } from "@/common/lang";
 
 const aiModal = MODELS.SMALL_CONVERSATION;
 

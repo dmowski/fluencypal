@@ -5,6 +5,7 @@ import { useLingui } from "@lingui/react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button, IconButton, Stack, Tab, Tabs, Typography } from "@mui/material";
 import {
+  availableOnLabelMap,
   fullEnglishLanguageName,
   fullLanguageName,
   getUserLangCode,
@@ -36,30 +37,6 @@ const LanguageCard = ({
       onStart={onClick}
     />
   );
-};
-
-const availableOnLabelMap: Record<SupportedLanguage, string> = {
-  ru: "Доступно на русском",
-  en: "Available in English",
-  es: "Disponible en español",
-  fr: "Disponible en français",
-  de: "Verfügbar auf Deutsch",
-  it: "Disponibile in italiano",
-  pt: "Disponível em português",
-  ja: "日本語で利用可能",
-  ko: "한국어로 이용 가능",
-  zh: "中文可用",
-  ar: "متوفر باللغة العربية",
-  tr: "Türkçe mevcut",
-  pl: "Dostępne w języku polskim",
-  uk: "Доступно на українській",
-  id: "Tersedia dalam bahasa Indonesia",
-  ms: "Tersedia dalam Bahasa Melayu",
-  th: "มีให้บริการในภาษาไทย",
-  vi: "Có sẵn bằng tiếng Việt",
-  da: "Tilgængelig på dansk",
-  nb: "Tilgjengelig på norsk",
-  sv: "Tillgänglig på svenska",
 };
 
 const parseLangFromUrl = (pathname: string) => {
