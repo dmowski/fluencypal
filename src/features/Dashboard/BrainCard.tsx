@@ -219,6 +219,9 @@ Address directly to the user.
                 alignItems: "center",
                 justifyContent: "center",
                 position: "relative",
+                "@media (max-height: 800px)": {
+                  height: "100dvh",
+                },
               }}
             >
               {webCam.isWebCamEnabled && (
@@ -305,6 +308,16 @@ Address directly to the user.
                           sx={{
                             width: "max-content",
                             padding: "10px 30px",
+                            "@media (max-width: 800px)": {
+                              width: "100%",
+                              padding: "10px 20px",
+                              display: "flex",
+                            },
+
+                            "@media (max-width: 500px)": {
+                              justifyContent: "center",
+                              flexDirection: "column",
+                            },
                           }}
                           startIcon={
                             <PsychologyIcon
@@ -492,6 +505,9 @@ Address directly to the user.
                     justifyContent: "center",
                     gap: "50px",
                     zIndex: 1,
+                    "@media (max-width: 800px)": {
+                      padding: "0px 10px",
+                    },
                   }}
                 >
                   <Stack
@@ -528,6 +544,10 @@ Address directly to the user.
                         transition: "transform 0.3s",
                         "&:hover": {
                           transform: "scale(1.02)",
+                        },
+                        "@media (max-width: 800px)": {
+                          width: "100%",
+                          padding: "20px 0px",
                         },
                       }}
                       startIcon={<Camera size={"25px"} />}
@@ -622,38 +642,47 @@ Address directly to the user.
           justifyContent: "flex-start",
           width: "max-content",
           flexDirection: "row",
+          "@media (max-width: 800px)": {
+            flexDirection: "column",
+            width: "100%",
+            alignItems: "flex-start",
+            justifyContent: "flex-start",
+          },
         }}
       >
-        <Stack>
-          <Button
-            variant="contained"
-            onClick={async () => {
-              setIsShowPreparingModal(true);
-              webCam.resetWebCam();
-            }}
-            sx={{
-              padding: "15px 100px",
-              borderRadius: "4px",
-              fontSize: "1.2rem",
-              fontWeight: 990,
-              transition: "transform 0.3s",
-              "&:hover": {
-                transform: "scale(1.02)",
-              },
-            }}
-            startIcon={
-              <PsychologyIcon
-                sx={{
-                  fontSize: "3rem",
-                  width: "3rem",
-                  height: "3rem",
-                }}
-              />
-            }
-          >
-            START BRAIN SYNC
-          </Button>
-        </Stack>
+        <Button
+          variant="contained"
+          onClick={async () => {
+            setIsShowPreparingModal(true);
+            webCam.resetWebCam();
+          }}
+          sx={{
+            padding: "15px 100px",
+            borderRadius: "4px",
+            fontSize: "1.2rem",
+            fontWeight: 990,
+            transition: "transform 0.3s",
+            "&:hover": {
+              transform: "scale(1.02)",
+            },
+            "@media (max-width: 800px)": {
+              width: "100%",
+              padding: "15px 20px",
+              fontSize: "1rem",
+            },
+          }}
+          startIcon={
+            <PsychologyIcon
+              sx={{
+                fontSize: "3rem",
+                width: "3rem",
+                height: "3rem",
+              }}
+            />
+          }
+        >
+          START BRAIN SYNC
+        </Button>
         <Typography sx={{}} variant="caption">
           This feature is part of Fluency Lab's experimental
           <br />
