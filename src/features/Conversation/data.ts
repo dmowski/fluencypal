@@ -33,4 +33,5 @@ export const firstAiMessage: Record<SupportedLanguage, string> = {
   da: "Hej... Jeg er her!",
   nb: "Hei... Jeg er her!",
   sv: "Hej... Jag är här!",
+  be: "Прывітанне... Я тут!",
 };
