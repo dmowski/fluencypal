@@ -39,7 +39,6 @@ interface StartConversationProps {
   customInstruction?: string;
   gameWords?: GuessGameStat;
   analyzeResultAiInstruction?: string;
-  useMagic?: boolean;
 }
 
 interface AiConversationContextType {
@@ -452,7 +451,6 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
     voice,
     gameWords,
     analyzeResultAiInstruction,
-    isUseMagic,
   }: StartConversationProps) => {
     setAnalyzeResultInstruction(analyzeResultAiInstruction || "");
 
@@ -520,7 +518,6 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
         initInstruction: instruction,
         voice: aiRtcConfig.voice || voice,
         authToken,
-        isInitWebCamera: !!isUseMagic,
       });
       history.createConversation({ conversationId, languageCode: settings.languageCode, mode });
       setCommunicator(conversation);
