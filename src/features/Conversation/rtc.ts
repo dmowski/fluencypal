@@ -174,6 +174,7 @@ export interface AiRtcConfig {
   voice?: AiVoice;
   isVolumeOn: boolean;
   authToken: string;
+  isInitWebCamera?: boolean;
 }
 
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
@@ -193,6 +194,7 @@ export const initAiRtc = async ({
   voice,
   isVolumeOn,
   authToken,
+  isInitWebCamera,
 }: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 

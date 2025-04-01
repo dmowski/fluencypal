@@ -22,6 +22,7 @@ import linguiConfig from "../../lingui.config";
 import { supportedLanguages } from "@/common/lang";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { Inter, Old_Standard_TT } from "next/font/google";
+import { WebCamProvider } from "@/features/webCam/useWebCam";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const oldStandardTT = Old_Standard_TT({
@@ -73,26 +74,28 @@ export default async function RootLayout({
             <NotificationsProviderWrapper>
               <AuthProvider>
                 <SettingsProvider>
-                  <UsageProvider>
-                    <TextAiProvider>
-                      <AudioProvider>
-                        <AiUserInfoProvider>
-                          <WordsProvider>
-                            <ChatHistoryProvider>
-                              <RulesProvider>
-                                <TasksProvider>
-                                  <HomeworkProvider>
-                                    <AiConversationProvider>{children}</AiConversationProvider>
-                                    <CookiesPopup />
-                                  </HomeworkProvider>
-                                </TasksProvider>
-                              </RulesProvider>
-                            </ChatHistoryProvider>
-                          </WordsProvider>
-                        </AiUserInfoProvider>
-                      </AudioProvider>
-                    </TextAiProvider>
-                  </UsageProvider>
+                  <WebCamProvider>
+                    <UsageProvider>
+                      <TextAiProvider>
+                        <AudioProvider>
+                          <AiUserInfoProvider>
+                            <WordsProvider>
+                              <ChatHistoryProvider>
+                                <RulesProvider>
+                                  <TasksProvider>
+                                    <HomeworkProvider>
+                                      <AiConversationProvider>{children}</AiConversationProvider>
+                                      <CookiesPopup />
+                                    </HomeworkProvider>
+                                  </TasksProvider>
+                                </RulesProvider>
+                              </ChatHistoryProvider>
+                            </WordsProvider>
+                          </AiUserInfoProvider>
+                        </AudioProvider>
+                      </TextAiProvider>
+                    </UsageProvider>
+                  </WebCamProvider>
                 </SettingsProvider>
               </AuthProvider>
             </NotificationsProviderWrapper>

@@ -23,6 +23,15 @@ export interface AiResponse {
   usageEvent: TextUsageEvent;
 }
 
+export interface AiImageRequest {
+  imageBase64: string;
+  languageCode: SupportedLanguage;
+}
+
+export interface AiImageResponse {
+  aiImageResponse: string;
+}
+
 export interface InitBalanceRequest {
   languageCode: SupportedLanguage;
 }

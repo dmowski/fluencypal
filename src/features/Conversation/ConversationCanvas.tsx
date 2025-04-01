@@ -23,6 +23,7 @@ import { VolumeButton } from "../uiKit/Button/VolumeButton";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
+import { useWebCam } from "../webCam/useWebCam";
 
 const loadingHelpMessage = `Generating help message...`;
 
@@ -78,6 +79,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 }) => {
   const [userMessage, setUserMessage] = useState("");
   const [helpMessage, setHelpMessage] = useState("");
+  const webCam = useWebCam();
 
   const isSmallBalance = balanceHours < 0.1;
   const isExtremelySmallBalance = balanceHours < 0.05;
@@ -369,6 +371,44 @@ Use ${fullLanguageName || "English"} language.
             </>
           )}
         </Stack>
+      </Stack>
+
+      <Stack
+        sx={{
+          position: "fixed",
+          top: 0,
+          zIndex: -1,
+          left: 0,
+          width: "100dvw",
+          height: "100dvh",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          display: webCam.isWebCamEnabled ? "flex" : "none",
+        }}
+      >
+        <Stack
+          sx={{
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            backgroundColor: "rgba(10, 18, 30, 0.7)",
+            //backdropFilter: "blur(1px)",
+            zIndex: 2,
+          }}
+        ></Stack>
+        <video
+          ref={webCam.videoRef}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transform: "scaleX(-1)", // Flip the video horizontally
+          }}
+          autoPlay
+          muted
+          playsInline
+        />
       </Stack>
     </Stack>
   );

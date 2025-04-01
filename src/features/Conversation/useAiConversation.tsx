@@ -28,8 +28,7 @@ import { firstAiMessage } from "./data";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 
-const isDev = true;
-const aiModal = isDev ? MODELS.SMALL_CONVERSATION : MODELS.REALTIME_CONVERSATION;
+const aiModal = MODELS.SMALL_CONVERSATION;
 
 interface StartConversationProps {
   mode: ConversationMode;
@@ -40,6 +39,7 @@ interface StartConversationProps {
   customInstruction?: string;
   gameWords?: GuessGameStat;
   analyzeResultAiInstruction?: string;
+  useMagic?: boolean;
 }
 
 interface AiConversationContextType {
@@ -323,6 +323,28 @@ Speak slowly and clearly. Use ${fullLanguageName} language. Try to speak on user
 Use ${fullLanguageName} language during conversation.
 `,
       },
+
+      magic: {
+        ...baseConfig,
+        model: aiModal,
+        initInstruction: `You are an ${fullLanguageName} teacher.
+Your name is "Bruno". Your role is to make user talks.
+${openerInfoPrompt}
+Do not teach or explain rules—just talk.
+You should be friendly and engaging.
+Don't make user feel like they are being tested and feel stupid.
+If you feel that the user is struggling, you can propose a new topic.
+Engage in a natural conversation without making it feel like a lesson.
+Start the conversation with: ${firstMessage}. Say it in a friendly and calm way, no other words needed for the first hi.
+${userInfo ? "" : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."}
+Speak slowly and clearly. Use ${fullLanguageName} language. Try to speak on user's level.
+
+Use ${fullLanguageName} language during conversation.
+
+Important moment that along with user's messages, you will be receiving information from webcamera.
+Response to it in funny and engaging way.
+`,
+      },
       talkAndCorrect: {
         ...baseConfig,
         voice: "shimmer",
@@ -430,6 +452,7 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
     voice,
     gameWords,
     analyzeResultAiInstruction,
+    isUseMagic,
   }: StartConversationProps) => {
     setAnalyzeResultInstruction(analyzeResultAiInstruction || "");
 
@@ -497,6 +520,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
         initInstruction: instruction,
         voice: aiRtcConfig.voice || voice,
         authToken,
+        isInitWebCamera: !!isUseMagic,
       });
       history.createConversation({ conversationId, languageCode: settings.languageCode, mode });
       setCommunicator(conversation);

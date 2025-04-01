@@ -4,6 +4,7 @@ import { ConversationCanvas } from "./ConversationCanvas";
 import { SupportedLanguage } from "@/common/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { sleep } from "openai/core.mjs";
+import { useWebCam } from "../webCam/useWebCam";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -11,6 +12,17 @@ interface ConversationPageTestProps {
 }
 
 export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTestProps) {
+  const webCam = useWebCam();
+
+  const initWebCam = async () => {
+    webCam.init();
+  };
+
+  const descriptionFromWebCam = async () => {
+    const imageDescription = await webCam.getImageDescription();
+    console.log("imageDescription", imageDescription);
+  };
+
   return (
     <Stack>
       <ConversationCanvas
@@ -50,11 +62,10 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         isSavingHomework={false}
         isUserSpeaking={false}
         toggleMute={() => {
-          alert("Mute toggled");
+          initWebCam();
         }}
         finishLesson={async () => {
-          await sleep(1000);
-          alert("Lesson finished");
+          descriptionFromWebCam();
         }}
         doneConversation={async () => {
           await sleep(1000);
