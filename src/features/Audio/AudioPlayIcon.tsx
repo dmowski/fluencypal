@@ -6,9 +6,10 @@ import StopIcon from "@mui/icons-material/Stop";
 import SyncIcon from "@mui/icons-material/Sync";
 export interface AudioPlayIconProps {
   text: string;
+  autoplay?: boolean;
 }
 
-export const AudioPlayIcon = ({ text }: AudioPlayIconProps) => {
+export const AudioPlayIcon = ({ text, autoplay }: AudioPlayIconProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -68,8 +69,16 @@ export const AudioPlayIcon = ({ text }: AudioPlayIconProps) => {
       console.log("audio ended");
       setIsPlaying(false);
     };
+
+    const timeOut = setTimeout(() => {
+      if (autoplay && text) {
+        togglePlay();
+      }
+    }, 500);
+
     return () => {
       audio.pause();
+      clearTimeout(timeOut);
     };
   }, [text]);
 

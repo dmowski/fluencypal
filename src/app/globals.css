@@ -38,3 +38,15 @@ html {
   background-color: #1f74be;
   color: initial;
 }
+
+.fade-in-delayed {
+  opacity: 0;
+  animation: fadeInOpacity 2s ease forwards;
+  animation-delay: 4s; /* customize this delay as needed */
+}
+
+@keyframes fadeInOpacity {
+  to {
+    opacity: 1;
+  }
+}

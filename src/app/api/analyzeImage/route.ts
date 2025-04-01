@@ -45,7 +45,7 @@ export async function POST(request: Request) {
         content: [
           {
             type: "text",
-            text: "Describe this image. Pay attention to the details. But be short",
+            text: "Describe this image. Pay attention to the details",
           },
           {
             type: "image_url",

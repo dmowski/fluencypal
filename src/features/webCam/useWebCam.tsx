@@ -10,6 +10,7 @@ interface WebCamContextType {
   videoRef: RefObject<HTMLVideoElement | null>;
   isWebCamEnabled: boolean;
   getImageDescription: () => Promise<string | null>;
+  resetWebCam: () => void;
 }
 
 const WebCamContext = createContext<WebCamContextType | null>(null);
@@ -99,12 +100,25 @@ function useProvideWebCam(): WebCamContextType {
     return response.aiImageResponse;
   };
 
+  const resetWebCam = () => {
+    if (stream) {
+      stream.getTracks().forEach((track) => {
+        track.stop();
+      });
+      setStream(null);
+    }
+    if (videoRef.current) {
+      videoRef.current.srcObject = null;
+    }
+  };
+
   return {
     init,
     screenshot,
     videoRef,
     isWebCamEnabled: !!stream,
     getImageDescription,
+    resetWebCam,
   };
 }
 
