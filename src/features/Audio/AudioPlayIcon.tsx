@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useState } from "react";
 import { useAudio } from "./useAudio";
 import { IconButton, Tooltip } from "@mui/material";
@@ -16,7 +17,10 @@ export const AudioPlayIcon = ({ text, autoplay, instructions, voice }: AudioPlay
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const audio = useMemo(() => new Audio(), []);
+  const audio = useMemo(() => {
+    const isWindow = typeof window !== "undefined";
+    return isWindow ? new Audio() : null;
+  }, []);
   const [countOfAttempts, setCountOfAttempts] = useState(0);
 
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
@@ -24,8 +28,10 @@ export const AudioPlayIcon = ({ text, autoplay, instructions, voice }: AudioPlay
 
   const togglePlay = async () => {
     if (isPlaying) {
-      audio.pause();
-      audio.src = "";
+      audio?.pause();
+      if (audio) {
+        audio.src = "";
+      }
 
       setIsPlaying(false);
       return;
@@ -38,9 +44,11 @@ export const AudioPlayIcon = ({ text, autoplay, instructions, voice }: AudioPlay
     }
 
     if (audioUrl) {
-      audio.src = audioUrl;
-      audio.playbackRate = speed;
-      audio.play();
+      if (audio) {
+        audio.src = audioUrl;
+        audio.playbackRate = speed;
+        audio.play();
+      }
 
       setIsPlaying(true);
       return;
@@ -49,9 +57,11 @@ export const AudioPlayIcon = ({ text, autoplay, instructions, voice }: AudioPlay
       try {
         const url = await getAudioUrl(text, instructions, voice);
         setAudioUrl(url);
-        audio.src = url;
-        audio.playbackRate = speed;
-        audio.play();
+        if (audio) {
+          audio.src = url;
+          audio.playbackRate = speed;
+          audio.play();
+        }
         setIsPlaying(true);
       } catch (error) {
         console.error(error);
@@ -64,14 +74,17 @@ export const AudioPlayIcon = ({ text, autoplay, instructions, voice }: AudioPlay
 
   useEffect(() => {
     setError(null);
-    audio.src = "";
+    if (audio) {
+      audio.src = "";
+    }
     setIsPlaying(false);
     setAudioUrl(null);
     setCountOfAttempts(0);
-    audio.onended = () => {
-      console.log("audio ended");
-      setIsPlaying(false);
-    };
+    if (audio)
+      audio.onended = () => {
+        console.log("audio ended");
+        setIsPlaying(false);
+      };
 
     const timeOut = setTimeout(() => {
       if (autoplay && text) {
@@ -80,7 +93,7 @@ export const AudioPlayIcon = ({ text, autoplay, instructions, voice }: AudioPlay
     }, 500);
 
     return () => {
-      audio.pause();
+      if (audio) audio.pause();
       clearTimeout(timeOut);
     };
   }, [text]);
