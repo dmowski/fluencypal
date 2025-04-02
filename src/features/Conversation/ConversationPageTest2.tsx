@@ -9,6 +9,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { sendTranscriptRequest } from "@/app/api/transcript/sendTranscriptRequest";
 import { useAuth } from "../Auth/useAuth";
+import { useSettings } from "../Settings/useSettings";
+import { useRef } from "react";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -18,6 +20,8 @@ interface ConversationPageTestProps {
 export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTestProps) {
   const messages: ChatMessage[] = [];
   const auth = useAuth();
+  const settings = useSettings();
+  const learnLanguageCode = settings.languageCode || "en";
 
   for (let i = 20; i < 40; i++) {
     messages.push({
@@ -31,6 +35,8 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
   const [isRecording, setIsRecording] = useState(false);
   const maxRecordingSeconds = 40;
   const [recordingSeconds, setRecordingSeconds] = useState(0);
+  const audioDurationRef = useRef<number>(0);
+  audioDurationRef.current = recordingSeconds;
 
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
   const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
@@ -61,11 +67,17 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
     }
 
     const token = await auth.getToken();
-    const transcriptResponse = await sendTranscriptRequest(recordedAudioBlog, token);
+    const transcriptResponse = await sendTranscriptRequest({
+      audioBlob: recordedAudioBlog,
+      authKey: token,
+      languageCode: learnLanguageCode,
+      audioDuration: audioDurationRef.current || 5,
+    });
     console.log("transcriptResponse", transcriptResponse);
   };
 
   const startRecording = async () => {
+    setRecordingSeconds(0);
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const recorder = new MediaRecorder(stream);
@@ -99,7 +111,6 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
       mediaRecorder.stop();
     }
     setIsRecording(false);
-    setRecordingSeconds(0);
   };
 
   const cancelRecording = async () => {
@@ -107,7 +118,6 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
       mediaRecorder.stop();
     }
     setIsRecording(false);
-    setRecordingSeconds(0);
     setAudioBlob(null);
   };
 

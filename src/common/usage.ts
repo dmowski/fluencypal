@@ -1,4 +1,4 @@
-import { RealTimeModel, TextAiModel, TextUsageEvent, UsageEvent } from "./ai";
+import { RealTimeModel, TextAiModel, TextUsageEvent, TranscriptAiModel, UsageEvent } from "./ai";
 import { SupportedLanguage } from "./lang";
 
 export interface TotalUsageInfo {
@@ -32,7 +32,14 @@ export interface AudioUsageLog extends BaseUsageLog {
   duration: number;
 }
 
-export type UsageLog = RealtimeUsageLog | TextUsageLog | AudioUsageLog;
+export interface TranscriptUsageLog extends BaseUsageLog {
+  type: "transcript";
+  duration: number;
+  transcriptSize: number;
+  model: TranscriptAiModel;
+}
+
+export type UsageLog = RealtimeUsageLog | TextUsageLog | AudioUsageLog | TranscriptUsageLog;
 
 export type PaymentLogType = "welcome" | "user" | "gift";
 

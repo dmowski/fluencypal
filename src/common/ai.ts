@@ -5,7 +5,7 @@ const SMALL_CONVERSATION_MODEL: RealTimeModel = "gpt-4o-mini-realtime-preview";
 
 export type TextAiModel = "gpt-4o" | "gpt-4o-mini";
 
-export type AudioAiModel = "gpt-4o-transcribe" | "gpt-4o-mini-transcribe";
+export type TranscriptAiModel = "gpt-4o-transcribe" | "gpt-4o-mini-transcribe";
 
 export type AiVoice = "alloy" | "ash" | "ballad" | "coral" | "echo" | "sage" | "shimmer" | "verse";
 
@@ -143,4 +143,23 @@ const pricePerHour = 6; // $6 is one hour
 
 export const convertUsdToHours = (money: number) => {
   return money / pricePerHour;
+};
+
+const audioTranscriptionPricePerMinute: Record<TranscriptAiModel, number> = {
+  "gpt-4o-transcribe": 0.006,
+  "gpt-4o-mini-transcribe": 0.003,
+};
+
+export const calculateAudioTranscriptionPrice = (
+  durationSeconds: number,
+  model: TranscriptAiModel
+) => {
+  const pricePerMinute = audioTranscriptionPricePerMinute[model];
+  const durationInMinutes = durationSeconds / 60;
+  const basePrice = pricePerMinute * durationInMinutes;
+
+  const profit = basePrice * PROJECT_PROFIT_MARGIN;
+  const priceWithMargin = basePrice + profit;
+
+  return priceWithMargin;
 };

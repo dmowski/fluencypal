@@ -1,8 +1,16 @@
 import OpenAI from "openai";
-import { AudioAiModel } from "@/common/ai";
+import {
+  calculateAudioTranscriptionPrice,
+  convertUsdToHours,
+  TranscriptAiModel,
+} from "@/common/ai";
 import { validateAuthToken } from "../config/firebase";
 import { getUserBalance } from "../payment/getUserBalance";
 import { TranscriptResponse } from "./types";
+import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
+import { supportedLanguages } from "@/common/lang";
+import { TranscriptUsageLog } from "@/common/usage";
+import { addUsage } from "../payment/addUsage";
 
 export async function POST(request: Request) {
   const openAIKey = process.env.OPENAI_API_KEY;
@@ -18,6 +26,27 @@ export async function POST(request: Request) {
 
   const data = await request.formData();
   const file = data.get("audio") as File | null;
+
+  const actualFileSize = file?.size || 0;
+  const actualFileSizeMb = actualFileSize / (1024 * 1024);
+  const maxFileSize = 14 * 1024 * 1024; // 14 MB
+
+  const isAudioFileLonger = actualFileSize > maxFileSize;
+  if (isAudioFileLonger) {
+    sentSupportTelegramMessage(
+      `User recorded huge audio file (${actualFileSizeMb}) | ${userInfo.email}`
+    );
+  }
+
+  const urlQueryParams = request.url.split("?")[1];
+  const urlParams = new URLSearchParams(urlQueryParams);
+  const languageCodeString = urlParams.get("lang") || "";
+  const supportedLang =
+    supportedLanguages.find((lang) => lang === languageCodeString.toLowerCase()) || "en";
+
+  const audioDurationString = urlParams.get("audioDuration") || "";
+  const audioDuration = Math.min(Math.max(parseFloat(audioDurationString) || 0, 4), 50);
+
   if (!file) {
     const errorResponse: TranscriptResponse = {
       error: "File not found",
@@ -30,12 +59,31 @@ export async function POST(request: Request) {
     apiKey: openAIKey,
   });
 
-  const model: AudioAiModel = "gpt-4o-transcribe";
+  const model: TranscriptAiModel = "gpt-4o-transcribe";
   const transcriptionResult = await client.audio.transcriptions.create({
     file: file,
     model: model,
+    language: supportedLang,
+    prompt: "Transcribe the audio. Keep grammar mistakes and typos.",
   });
+
   const output = transcriptionResult.text || "";
+
+  const priceUsd = calculateAudioTranscriptionPrice(audioDuration, model);
+
+  const priceHours = convertUsdToHours(priceUsd);
+  const usageLog: TranscriptUsageLog = {
+    usageId: `${Date.now()}`,
+    languageCode: supportedLang,
+    createdAt: Date.now(),
+    priceUsd,
+    priceHours,
+    type: "transcript",
+    model: model,
+    duration: audioDuration,
+    transcriptSize: output.length || 0,
+  };
+  await addUsage(userInfo.uid, usageLog);
 
   const response: TranscriptResponse = {
     transcript: output,
