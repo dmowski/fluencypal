@@ -4,7 +4,7 @@ import React from "react";
 
 export interface MarkdownProps {
   children: string;
-  size?: "small" | "normal";
+  size?: "small" | "normal" | "conversation";
 }
 
 const markdownComponents: MarkdownToJSX.Overrides = {
@@ -127,7 +127,41 @@ const markdownComponentsSmall: MarkdownToJSX.Overrides = {
   ),
 };
 
+const markdownComponentsConversation: MarkdownToJSX.Overrides = {
+  ...markdownComponents,
+  p: ({ children }) => {
+    console.log('"p", children);');
+    return (
+      <Typography
+        sx={{
+          fontSize: "21px",
+        }}
+      >
+        {children}
+      </Typography>
+    );
+  },
+
+  span: ({ children }) => {
+    return (
+      <Typography
+        sx={{
+          fontSize: "21px",
+        }}
+      >
+        {children}
+      </Typography>
+    );
+  },
+};
+
 export const Markdown: React.FC<MarkdownProps> = ({ children, size }) => {
-  const styleComponents = size === "small" ? markdownComponentsSmall : markdownComponents;
+  const styleComponents =
+    size === "small"
+      ? markdownComponentsSmall
+      : size === "conversation"
+        ? markdownComponentsConversation
+        : markdownComponents;
+
   return <MarkdownTool options={{ overrides: styleComponents }}>{children}</MarkdownTool>;
 };
