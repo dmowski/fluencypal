@@ -19,7 +19,15 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { BookMarked, Gem, LogOutIcon, MessageCircleQuestion, Rss, Wallet } from "lucide-react";
+import {
+  BookMarked,
+  ChevronLeft,
+  Gem,
+  LogOutIcon,
+  MessageCircleQuestion,
+  Rss,
+  Wallet,
+} from "lucide-react";
 
 import { useUsage } from "../Usage/useUsage";
 import { PaymentModal } from "../Usage/PaymentModal";
@@ -131,6 +139,9 @@ export function HeaderComponent({
     }
   };
 
+  const activeConversationTitle = "";
+  const isActiveConversation = !!activeConversationTitle;
+
   return (
     <>
       <Stack
@@ -144,8 +155,9 @@ export function HeaderComponent({
           top: 0,
           left: 0,
           zIndex: 1000,
-          backgroundColor: "rgba(10, 18, 30, 0.9)",
+          backgroundColor: isActiveConversation ? "rgba(10, 18, 30, 0.4)" : "rgba(10, 18, 30, 0.9)",
           backdropFilter: "blur(10px)",
+          borderBottom: isActiveConversation ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
 
           ".menu-link": {
             height: "60px",
@@ -201,46 +213,89 @@ export function HeaderComponent({
               <MenuIcon fontSize="small" />
             </IconButton>
 
-            <Stack
-              component={"a"}
-              href={homeUrl}
-              onClick={(e) => navigateTo(homeUrl, e)}
-              className="menu-link"
-              sx={{
-                marginRight: "40px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                ".big_logo": {
-                  display: "block",
-                },
-                ".small_logo": {
-                  display: "none",
-                },
-                "@media (max-width: 1000px)": {
-                  marginRight: "0px",
-                },
-                "@media (max-width: 850px)": {
-                  paddingLeft: "0 !important",
-                  paddingRight: "0 !important",
+            {isActiveConversation && (
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  gap: "10px",
+                  alignItems: "center",
+                }}
+              >
+                <Button startIcon={<ChevronLeft color="white" size={"30px"} />}>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      textTransform: "none",
+                      "@media (max-width: 650px)": {
+                        display: "none",
+                      },
+                    }}
+                  >
+                    {activeConversationTitle}
+                  </Typography>
+
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      textTransform: "none",
+                      display: "none",
+                      "@media (max-width: 650px)": {
+                        display: "block",
+                      },
+                    }}
+                  >
+                    Back
+                  </Typography>
+                </Button>
+              </Stack>
+            )}
+
+            {!isActiveConversation && (
+              <Stack
+                component={"a"}
+                href={homeUrl}
+                onClick={(e) => navigateTo(homeUrl, e)}
+                className="menu-link"
+                sx={{
+                  marginRight: "40px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                   ".big_logo": {
-                    display: "none",
-                  },
-                  ".small_logo": {
                     display: "block",
                   },
-                },
-              }}
-            >
-              <img src="/logo.svg" alt="logo" width="160px" height="67px" className="big_logo" />
-              <img
-                src="/logo_small.svg"
-                alt="logo"
-                width="37px"
-                height="37px"
-                className="small_logo"
-              />
-            </Stack>
+                  ".small_logo": {
+                    display: "none",
+                  },
+                  "@media (max-width: 1000px)": {
+                    marginRight: "0px",
+                  },
+                  "@media (max-width: 850px)": {
+                    paddingLeft: "0 !important",
+                    paddingRight: "0 !important",
+                    ".big_logo": {
+                      display: "none",
+                    },
+                    ".small_logo": {
+                      display: "block",
+                    },
+                  },
+                }}
+              >
+                <img src="/logo.svg" alt="logo" width="160px" height="67px" className="big_logo" />
+                <img
+                  src="/logo_small.svg"
+                  alt="logo"
+                  width="37px"
+                  height="37px"
+                  className="small_logo"
+                />
+              </Stack>
+            )}
 
             {mode === "landing" && (
               <>
@@ -289,32 +344,18 @@ export function HeaderComponent({
               {auth.isAuthorized ? (
                 <>
                   <Button
-                    color={
-                      usage.loading
-                        ? "info"
+                    sx={{
+                      color: usage.loading
+                        ? "#fff"
                         : usage.balanceHours > 0.2
-                          ? "primary"
+                          ? "#fff"
                           : usage.balanceHours >= 0.1
-                            ? "warning"
-                            : "error"
-                    }
+                            ? "#ff9900"
+                            : "#ee2233",
+                    }}
                     onClick={() => usage.togglePaymentModal(true)}
                     startIcon={<Wallet size="20px" />}
                   >
-                    <Typography
-                      sx={{
-                        paddingRight: "5px",
-                        display:
-                          aiConversation.isStarted || aiConversation.isInitializing
-                            ? "none"
-                            : "block",
-                        "@media (max-width: 650px)": {
-                          display: "none",
-                        },
-                      }}
-                    >
-                      {balanceTitle}:
-                    </Typography>
                     <Typography
                       sx={{
                         textTransform: "none",
