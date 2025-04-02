@@ -130,7 +130,6 @@ const markdownComponentsSmall: MarkdownToJSX.Overrides = {
 const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   ...markdownComponents,
   p: ({ children }) => {
-    console.log('"p", children);');
     return (
       <Typography
         sx={{

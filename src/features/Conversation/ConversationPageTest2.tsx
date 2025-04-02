@@ -7,6 +7,8 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { ArrowUp, Mic, Settings, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { sendTranscriptRequest } from "@/app/api/transcript/sendTranscriptRequest";
+import { useAuth } from "../Auth/useAuth";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -15,6 +17,7 @@ interface ConversationPageTestProps {
 
 export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTestProps) {
   const messages: ChatMessage[] = [];
+  const auth = useAuth();
 
   for (let i = 20; i < 40; i++) {
     messages.push({
@@ -52,6 +55,16 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
     };
   }, [isRecording, recordingSeconds]);
 
+  const getRecordTranscript = async (recordedAudioBlog: Blob) => {
+    if (!recordedAudioBlog) {
+      return;
+    }
+
+    const token = await auth.getToken();
+    const transcriptResponse = await sendTranscriptRequest(recordedAudioBlog, token);
+    console.log("transcriptResponse", transcriptResponse);
+  };
+
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -67,6 +80,7 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
       recorder.onstop = () => {
         const blob = new Blob(chunks, { type: "audio/webm" });
         setAudioBlob(blob);
+        getRecordTranscript(blob);
         setAudioChunks([]);
       };
 
