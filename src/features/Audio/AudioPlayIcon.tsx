@@ -4,12 +4,15 @@ import { IconButton, Tooltip } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import StopIcon from "@mui/icons-material/Stop";
 import SyncIcon from "@mui/icons-material/Sync";
+import { TextToAudioVoice } from "@/app/api/textToAudio/types";
 export interface AudioPlayIconProps {
   text: string;
+  voice: TextToAudioVoice;
+  instructions: string;
   autoplay?: boolean;
 }
 
-export const AudioPlayIcon = ({ text, autoplay }: AudioPlayIconProps) => {
+export const AudioPlayIcon = ({ text, autoplay, instructions, voice }: AudioPlayIconProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -44,7 +47,7 @@ export const AudioPlayIcon = ({ text, autoplay }: AudioPlayIconProps) => {
     } else {
       setIsLoading(true);
       try {
-        const url = await getAudioUrl(text);
+        const url = await getAudioUrl(text, instructions, voice);
         setAudioUrl(url);
         audio.src = url;
         audio.playbackRate = speed;

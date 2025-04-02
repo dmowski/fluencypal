@@ -243,7 +243,9 @@ Use ${fullLanguageName || "English"} language.
               {helpMessage}
             </Typography>
 
-            {helpMessage !== loadingHelpMessage && <AudioPlayIcon text={helpMessage} />}
+            {helpMessage !== loadingHelpMessage && (
+              <AudioPlayIcon text={helpMessage} voice="alloy" instructions="" />
+            )}
             <IconButton onClick={() => setHelpMessage("")} size="small">
               <X
                 size={"16px"}

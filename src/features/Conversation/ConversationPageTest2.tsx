@@ -11,6 +11,7 @@ import { sendTranscriptRequest } from "@/app/api/transcript/sendTranscriptReques
 import { useAuth } from "../Auth/useAuth";
 import { useSettings } from "../Settings/useSettings";
 import { useRef } from "react";
+import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -26,7 +27,7 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
   for (let i = 20; i < 40; i++) {
     messages.push({
       isBot: i % 2 === 0,
-      text: `I do well, thank **you**! Hello.I do well, thank **you**! Hello I do well, thank **you**! Hello .I do well, thank **you**! Hello 
+      text: `Hello. I do well, thank **you**! How are you? Nice to meet you!
 `,
       id: `${i}`,
     });
@@ -166,6 +167,11 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
                   {isBot ? "Teacher:" : "You:"}
                 </Typography>
                 <Markdown size="conversation">{message.text || ""}</Markdown>
+                <AudioPlayIcon
+                  text={message.text}
+                  voice="shimmer"
+                  instructions="Say it politely and clearly."
+                />
               </Stack>
             );
           })}

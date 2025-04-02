@@ -1,13 +1,12 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX } from "react";
 import { useSettings } from "../Settings/useSettings";
-import { generateAudioUrl } from "./generateAudioUrl";
-import { getDataFromCache, setDataToCache } from "@/libs/localStorageCache";
 import { useAuth } from "../Auth/useAuth";
+import { sendTextToAudioRequest } from "@/app/api/textToAudio/sendTextToAudioRequest";
+import { TextToAudioVoice } from "@/app/api/textToAudio/types";
 
-const audioCacheKey = `DL_audio-cache`;
 interface AudioContextType {
-  getAudioUrl: (text: string) => Promise<string>;
+  getAudioUrl: (text: string, instructions: string, voice: TextToAudioVoice) => Promise<string>;
 }
 
 const AudioContext = createContext<AudioContextType | null>(null);
@@ -16,26 +15,25 @@ function useProvideAudio(): AudioContextType {
   const settings = useSettings();
   const auth = useAuth();
 
-  const getAudioUrl = async (text: string) => {
+  const getAudioUrl = async (text: string, instructions: string, voice: TextToAudioVoice) => {
     const languageCode = settings.languageCode;
     if (!languageCode) {
       throw new Error("Language is not set | useProvideAudio.getAudioUrl");
     }
 
-    const urlFromCache = await getDataFromCache({ inputValue: text, storageSpace: audioCacheKey });
-    if (urlFromCache) {
-      return urlFromCache;
-    }
-
-    const response = await generateAudioUrl(
-      { text, languageCode: settings.languageCode || "en" },
+    const response = await sendTextToAudioRequest(
+      {
+        languageCode: settings.languageCode || "en",
+        input: text.trim(),
+        instructions,
+        voice,
+      },
       await auth.getToken()
     );
-    const audioUrl = response.url;
+    const audioUrl = response.audioUrl;
     if (!audioUrl) {
       throw new Error("Failed to generate audio");
     }
-    await setDataToCache({ inputValue: text, outputValue: audioUrl, storageSpace: audioCacheKey });
     return audioUrl;
   };
 
