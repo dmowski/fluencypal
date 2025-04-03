@@ -84,7 +84,6 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           gap: "40px",
         }}
       >
-        <BrainCard />
         <ConversationSelectCard />
         <RolePlayBoard rolePlayInfo={rolePlayInfo} />
 
