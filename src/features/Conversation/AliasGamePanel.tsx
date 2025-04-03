@@ -92,7 +92,6 @@ export const AliasGamePanelUI = ({
     <Stack
       sx={{
         gap: "20px",
-        borderRadius: "4px",
         padding: "10px",
       }}
     >

@@ -211,10 +211,14 @@ Use ${fullLanguageName || "English"} language.
         behavior: "smooth",
       });
     };
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       scrollToBottom();
-    }, 500);
-  }, [conversation.length, isAnalyzingResponse]);
+    }, 200);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [conversation, isAnalyzingResponse]);
 
   return (
     <Stack sx={{ gap: "40px" }}>
@@ -225,32 +229,35 @@ Use ${fullLanguageName || "English"} language.
 
           alignItems: "center",
           justifyContent: "center",
+          paddingTop: "95px",
         }}
       >
         <Stack
           sx={{
             maxWidth: "900px",
             padding: "0",
-            paddingTop: "80px",
+            paddingTop: "25px",
+            borderRadius: "10px 10px 0 0",
             paddingBottom: "0px",
             boxSizing: "border-box",
             width: "100%",
-            gap: "20px",
+            gap: "0px",
             alignItems: "center",
             border: "1px solid rgba(255, 255, 255, 0.1)",
+            minHeight: "calc(100dvh - 100px)",
+            justifyContent: "space-between",
 
             "@media (max-width: 600px)": {
               border: "none",
             },
-            backgroundColor: "rgba(37, 54, 66, 0.1)",
-            backdropFilter: "blur(6px)",
+            //backgroundColor: "rgba(37, 54, 66, 0.1)",
+            backgroundColor: "rgba(20, 28, 40, 1)",
           }}
         >
           <Stack
             sx={{
               gap: "40px",
               width: "100%",
-              minHeight: "calc(100vh - 200px)",
             }}
           >
             {conversation.map((message) => {
@@ -283,7 +290,6 @@ Use ${fullLanguageName || "English"} language.
                   width: "100%",
                   alignItems: "center",
                   backgroundColor: "rgba(255, 255, 255, 0.05)",
-                  borderRadius: "10px",
                   padding: "10px",
                   boxSizing: "border-box",
                 }}
@@ -305,9 +311,12 @@ Use ${fullLanguageName || "English"} language.
             sx={{
               flexDirection: "row",
               width: "100%",
-              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+              borderTop: transcriptMessage
+                ? "1px solid rgba(255, 255, 255, 0.4)"
+                : "1px solid rgba(255, 255, 255, 0.1)",
+
               position: "sticky",
-              bottom: 0,
+              bottom: "-2px",
               left: 0,
               backgroundColor: "rgba(20, 28, 40, 1)",
               alignItems: "center",
@@ -637,7 +646,7 @@ Use ${fullLanguageName || "English"} language.
                               height: "120%",
                               top: "-10%",
                               left: 0,
-                              boxShadow: "inset 0 0 10px 10px rgba(10, 18, 30, 1)",
+                              boxShadow: "inset 0 0 10px 10px rgba(20, 28, 40, 1)",
                             }}
                           ></Stack>
                           <Typography variant="caption">
