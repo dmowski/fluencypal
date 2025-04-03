@@ -12,6 +12,7 @@ import { useAuth } from "../Auth/useAuth";
 import { useSettings } from "../Settings/useSettings";
 import { useRef } from "react";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
+import { useAudioRecorder } from "../Audio/useAudioRecorder";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -20,9 +21,7 @@ interface ConversationPageTestProps {
 
 export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTestProps) {
   const messages: ChatMessage[] = [];
-  const auth = useAuth();
-  const settings = useSettings();
-  const learnLanguageCode = settings.languageCode || "en";
+  const recorder = useAudioRecorder();
 
   for (let i = 20; i < 40; i++) {
     messages.push({
@@ -33,93 +32,19 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
     });
   }
 
-  const [isRecording, setIsRecording] = useState(false);
-  const maxRecordingSeconds = 40;
-  const [recordingSeconds, setRecordingSeconds] = useState(0);
-  const audioDurationRef = useRef<number>(0);
-  audioDurationRef.current = recordingSeconds;
-
-  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
-  const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
-  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
-
-  useEffect(() => {
-    if (!isRecording) {
-      return;
-    }
-    const timeout = setTimeout(() => {
-      setRecordingSeconds((prev) => {
-        if (prev >= maxRecordingSeconds) {
-          stopRecording();
-          return prev;
-        }
-        return prev + 1;
-      });
-    }, 1000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [isRecording, recordingSeconds]);
-
-  const getRecordTranscript = async (recordedAudioBlog: Blob) => {
-    if (!recordedAudioBlog) {
-      return;
-    }
-
-    const token = await auth.getToken();
-    const transcriptResponse = await sendTranscriptRequest({
-      audioBlob: recordedAudioBlog,
-      authKey: token,
-      languageCode: learnLanguageCode,
-      audioDuration: audioDurationRef.current || 5,
-    });
-    console.log("transcriptResponse", transcriptResponse);
-  };
+  const [isAnalyzingResponse, setIsAnalyzingResponse] = useState(false);
 
   const startRecording = async () => {
-    setRecordingSeconds(0);
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream);
-
-      const chunks: Blob[] = [];
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) {
-          chunks.push(e.data);
-        }
-      };
-
-      recorder.onstop = () => {
-        const blob = new Blob(chunks, { type: "audio/webm" });
-        setAudioBlob(blob);
-        getRecordTranscript(blob);
-        setAudioChunks([]);
-      };
-
-      recorder.start();
-      setAudioChunks([]);
-      setMediaRecorder(recorder);
-      setRecordingSeconds(0);
-      setIsRecording(true);
-    } catch (err) {
-      console.error("Failed to start recording:", err);
-    }
+    recorder.startRecording();
   };
 
   const stopRecording = async () => {
-    if (mediaRecorder && mediaRecorder.state !== "inactive") {
-      mediaRecorder.stop();
-    }
-    setIsRecording(false);
+    setIsAnalyzingResponse(true);
+    recorder.stopRecording();
   };
 
   const cancelRecording = async () => {
-    if (mediaRecorder && mediaRecorder.state !== "inactive") {
-      mediaRecorder.stop();
-    }
-    setIsRecording(false);
-    setAudioBlob(null);
+    recorder.cancelRecording();
   };
 
   return (
@@ -210,47 +135,92 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
             gap: "10px",
           }}
         >
-          <Stack
-            sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: "15px",
-            }}
-          >
-            <Button
-              color={isRecording ? "error" : "info"}
-              startIcon={isRecording ? <ArrowUp /> : <Mic />}
-              size="large"
-              variant="contained"
-              sx={{
-                minWidth: "200px",
-              }}
-              onClick={async () => {
-                if (isRecording) {
-                  await stopRecording();
-                } else {
-                  await startRecording();
-                }
-              }}
-            >
-              {isRecording ? "Send" : "Record Answer"}
-            </Button>
-            {isRecording && <Typography variant="caption">{recordingSeconds} sec</Typography>}
-          </Stack>
+          {isAnalyzingResponse ? (
+            <>
+              <Stack
+                sx={{
+                  alignItems: "flex-start",
+                  gap: "15px",
+                }}
+              >
+                <Stack>
+                  <Typography variant="caption">Your Message</Typography>
+                  <Typography>
+                    {recorder.isTranscribing ? "Loading..." : recorder.transcription}
+                  </Typography>
+                </Stack>
 
-          <Stack>
-            {isRecording ? (
-              <Tooltip title="Cancel">
-                <IconButton size="large" color="error" onClick={() => cancelRecording()}>
-                  <Trash2 size={"18px"} />
-                </IconButton>
-              </Tooltip>
-            ) : (
-              <IconButton size="large">
-                <Settings size={"18px"} />
-              </IconButton>
-            )}
-          </Stack>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    setIsAnalyzingResponse(false);
+                  }}
+                >
+                  Send
+                </Button>
+              </Stack>
+
+              <Stack>
+                <Tooltip title="Cancel">
+                  <IconButton
+                    size="large"
+                    color="error"
+                    onClick={() => {
+                      setIsAnalyzingResponse(false);
+                    }}
+                  >
+                    <Trash2 size={"18px"} />
+                  </IconButton>
+                </Tooltip>
+              </Stack>
+            </>
+          ) : (
+            <>
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "15px",
+                }}
+              >
+                <Button
+                  color={recorder.isRecording ? "error" : "info"}
+                  startIcon={recorder.isRecording ? <ArrowUp /> : <Mic />}
+                  size="large"
+                  variant="contained"
+                  sx={{
+                    minWidth: "200px",
+                  }}
+                  onClick={async () => {
+                    if (recorder.isRecording) {
+                      await stopRecording();
+                    } else {
+                      await startRecording();
+                    }
+                  }}
+                >
+                  {recorder.isRecording ? "Send" : "Record Answer"}
+                </Button>
+                {recorder.isRecording && (
+                  <Typography variant="caption">{recorder.recordingSeconds} sec</Typography>
+                )}
+              </Stack>
+
+              <Stack>
+                {recorder.isRecording ? (
+                  <Tooltip title="Cancel">
+                    <IconButton size="large" color="error" onClick={() => cancelRecording()}>
+                      <Trash2 size={"18px"} />
+                    </IconButton>
+                  </Tooltip>
+                ) : (
+                  <IconButton size="large">
+                    <Settings size={"18px"} />
+                  </IconButton>
+                )}
+              </Stack>
+            </>
+          )}
         </Stack>
       </Stack>
     </Stack>
