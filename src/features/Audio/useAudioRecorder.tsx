@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { sendTranscriptRequest } from "@/app/api/transcript/sendTranscriptRequest";
 import { useSettings } from "../Settings/useSettings";
+import { useVoiceVisualizer, VoiceVisualizer } from "react-voice-visualizer";
 
 export const useAudioRecorder = () => {
-  const [isRecording, setIsRecording] = useState(false);
   const maxRecordingSeconds = 40;
+  // todo: Limit Recording Time
   const [recordingSeconds, setRecordingSeconds] = useState(0);
   const audioDurationRef = useRef<number>(0);
   audioDurationRef.current = recordingSeconds;
@@ -15,31 +16,23 @@ export const useAudioRecorder = () => {
   const settings = useSettings();
   const learnLanguageCode = settings.languageCode || "en";
 
-  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
-
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcription, setTranscription] = useState<string | null>(null);
 
-  const isCancel = useRef(false);
+  const recorderControls = useVoiceVisualizer();
 
   useEffect(() => {
-    if (!isRecording) {
+    if (!recorderControls.recordedBlob) return;
+
+    if (isCancel.current) {
+      console.log("Cancelled recording");
       return;
     }
-    const timeout = setTimeout(() => {
-      setRecordingSeconds((prev) => {
-        if (prev >= maxRecordingSeconds) {
-          stopRecording();
-          return prev;
-        }
-        return prev + 0.1;
-      });
-    }, 100);
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [isRecording, recordingSeconds]);
+    getRecordTranscript(recorderControls.recordedBlob);
+  }, [recorderControls.recordedBlob]);
+
+  const isCancel = useRef(false);
 
   const getRecordTranscript = async (recordedAudioBlog: Blob) => {
     if (!recordedAudioBlog) {
@@ -59,60 +52,41 @@ export const useAudioRecorder = () => {
   };
 
   const startRecording = async () => {
+    recorderControls.startRecording();
     isCancel.current = false;
     setRecordingSeconds(0);
     setTranscription(null);
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream);
-
-      const chunks: Blob[] = [];
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) {
-          chunks.push(e.data);
-        }
-      };
-
-      recorder.onstop = () => {
-        if (isCancel.current) {
-          return;
-        }
-
-        const blob = new Blob(chunks, { type: "audio/webm" });
-        getRecordTranscript(blob);
-      };
-
-      recorder.start();
-      setMediaRecorder(recorder);
-      setRecordingSeconds(0);
-      setIsRecording(true);
-    } catch (err) {
-      console.error("Failed to start recording:", err);
-    }
   };
 
   const stopRecording = async () => {
-    if (mediaRecorder && mediaRecorder.state !== "inactive") {
-      mediaRecorder.stop();
-    }
-    setIsRecording(false);
+    recorderControls.stopRecording();
   };
 
   const cancelRecording = async () => {
-    if (mediaRecorder && mediaRecorder.state !== "inactive") {
-      isCancel.current = true;
-      mediaRecorder.stop();
-    }
-    setIsRecording(false);
+    isCancel.current = true;
+    recorderControls.stopRecording();
   };
 
   return {
     startRecording,
     stopRecording,
     cancelRecording,
-    isRecording,
+    isRecording: recorderControls.isRecordingInProgress,
     isTranscribing,
     transcription,
-    recordingSeconds: Math.round(recordingSeconds * 10) / 10,
+    error: recorderControls.error,
+    recordingSeconds: Math.round((recorderControls.recordingTime / 1000) * 10) / 10,
+    visualizerComponent: recorderControls.isRecordingInProgress ? (
+      <VoiceVisualizer
+        controls={recorderControls}
+        height={"40px"}
+        isControlPanelShown={false}
+        speed={1}
+        fullscreen={true}
+        barWidth={3}
+        gap={1}
+        width={"290px"}
+      />
+    ) : null,
   };
 };

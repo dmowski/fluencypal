@@ -13,6 +13,7 @@ import { useSettings } from "../Settings/useSettings";
 import { useRef } from "react";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
+import dayjs from "dayjs";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -190,6 +191,8 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
                   variant="contained"
                   sx={{
                     minWidth: "200px",
+                    position: "relative",
+                    zIndex: 1,
                   }}
                   onClick={async () => {
                     if (recorder.isRecording) {
@@ -201,8 +204,42 @@ export function ConversationPageTest2({ rolePlayInfo, lang }: ConversationPageTe
                 >
                   {recorder.isRecording ? "Send" : "Record Answer"}
                 </Button>
+
                 {recorder.isRecording && (
-                  <Typography variant="caption">{recorder.recordingSeconds} sec</Typography>
+                  <>
+                    <Stack
+                      sx={{
+                        width: "max-content",
+                        overflow: "hidden",
+                        height: "40px",
+                        border: "1px solid rgba(255, 255, 255, 0.1)",
+                        borderRadius: "0 10px 10px 0",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        position: "relative",
+                        flexDirection: "row",
+                        gap: "10px",
+                        padding: "0 10px 0 0px",
+                        left: "-20px",
+                        zIndex: 0,
+                      }}
+                    >
+                      {recorder.visualizerComponent}
+                      <Stack
+                        sx={{
+                          position: "absolute",
+                          width: "calc(100% - 45px)",
+                          height: "120%",
+                          top: "-10%",
+                          left: 0,
+                          boxShadow: "inset 0 0 10px 10px rgba(10, 18, 30, 1)",
+                        }}
+                      ></Stack>
+                      <Typography variant="caption">
+                        {dayjs(recorder.recordingSeconds * 1000).format("mm:ss")}
+                      </Typography>
+                    </Stack>
+                  </>
                 )}
               </Stack>
 
