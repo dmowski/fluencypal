@@ -1,31 +1,34 @@
 "use client";
 
-import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../uiKit/Markdown/Markdown";
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
-import { Textarea } from "../uiKit/Input/Textarea";
 import { Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import { ArrowUp, Mic, SendHorizontal, Settings, Trash2, Wand, X } from "lucide-react";
-import DoneIcon from "@mui/icons-material/Done";
-import { MicroButton } from "../uiKit/Button/MicroButton";
-import { KeyboardButton } from "../uiKit/Button/KeyboardButton";
-import { UserMessage } from "./UserMessage";
+import {
+  ArrowUp,
+  BadgeAlert,
+  BadgeCheck,
+  Check,
+  FlaskConical,
+  Loader,
+  Mic,
+  SendHorizontal,
+  Settings,
+  Trash2,
+  Wand,
+  X,
+} from "lucide-react";
+
+import { UserInputMessage } from "./UserInputMessage";
 import AddCardIcon from "@mui/icons-material/AddCard";
-import { HelpButton } from "../uiKit/Button/HelpButton";
 import { TextAiRequest, useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
-import { useSettings } from "../Settings/useSettings";
-import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
-import { useUsage } from "../Usage/useUsage";
 import { AliasGamePanel } from "./AliasGamePanel";
-import { VolumeButton } from "../uiKit/Button/VolumeButton";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
-import { useWebCam } from "../webCam/useWebCam";
-import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import dayjs from "dayjs";
+import { StringDiff } from "react-string-diff";
 
 const loadingHelpMessage = `Generating help message...`;
 
@@ -55,6 +58,14 @@ interface ConversationCanvasProps {
     correctedMessage: string;
     description: string;
   }>;
+  transcriptMessage?: string;
+  startRecording: () => Promise<void>;
+  stopRecording: () => Promise<void>;
+  cancelRecording: () => Promise<void>;
+  isTranscribing: boolean;
+  isRecording: boolean;
+  recordingMilliSeconds: number;
+  recordVisualizerComponent: JSX.Element | null;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   conversation,
@@ -78,6 +89,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   balanceHours,
   togglePaymentModal,
   analyzeUserMessage,
+  transcriptMessage,
+  startRecording,
+  stopRecording,
+  cancelRecording,
+  isTranscribing,
+  isRecording,
+  recordingMilliSeconds,
+  recordVisualizerComponent,
 }) => {
   const [userMessage, setUserMessage] = useState("");
   const [helpMessage, setHelpMessage] = useState("");
@@ -122,6 +141,65 @@ Use ${fullLanguageName || "English"} language.
     setHelpMessage(aiResult || "Error");
   };
 
+  const isFinishingProcess = isClosing || isSavingHomework || isClosed;
+
+  const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
+  const [description, setDescription] = useState<string | null>(null);
+
+  const messageAnalyzing = useRef("");
+  const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] = useState(false);
+
+  const [isNeedToShowCorrection, setIsNeedToShowCorrection] = useState(false);
+  const [isAnalyzingError, setIsAnalyzingError] = useState(false);
+
+  const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
+
+  const analyzeMessage = async () => {
+    if (transcriptMessage === messageAnalyzing.current || !transcriptMessage) {
+      return;
+    }
+
+    messageAnalyzing.current = transcriptMessage;
+
+    setIsAnalyzingMessageWithAi(true);
+    setIsNeedToShowCorrection(false);
+    setDescription(null);
+    setCorrectedMessage(null);
+    try {
+      const { sourceMessage, correctedMessage, description } =
+        await analyzeUserMessage(transcriptMessage);
+      if (transcriptMessage !== sourceMessage) {
+        return;
+      }
+
+      const isBad =
+        !!description &&
+        !!correctedMessage?.trim() &&
+        correctedMessage.toLowerCase().trim() !== sourceMessage.toLowerCase().trim();
+      setIsNeedToShowCorrection(isBad);
+
+      setCorrectedMessage(correctedMessage || null);
+      setDescription(description || null);
+      setIsAnalyzingMessageWithAi(false);
+    } catch (error) {
+      setIsAnalyzingError(true);
+      setIsAnalyzingMessageWithAi(false);
+      throw error;
+    }
+  };
+
+  const isLowBalance = balanceHours < 0.01;
+
+  useEffect(() => {
+    if (isLowBalance) {
+      return;
+    }
+
+    if (transcriptMessage) {
+      analyzeMessage();
+    }
+  }, [transcriptMessage]);
+
   useEffect(() => {
     const isWindow = typeof window !== "undefined";
     if (!isWindow) return;
@@ -129,34 +207,14 @@ Use ${fullLanguageName || "English"} language.
     // scroll window down
     const scrollToBottom = () => {
       window.scrollTo({
-        top: document.body.scrollHeight,
+        top: document.body.scrollHeight + 200,
         behavior: "smooth",
       });
     };
-    scrollToBottom();
-  }, [conversation.length]);
-
-  const recorder = useAudioRecorder();
-
-  const [isAnalyzingResponse, setIsAnalyzingResponse] = useState(false);
-
-  const startRecording = async () => {
-    recorder.startRecording();
-  };
-
-  const stopRecording = async () => {
-    setIsAnalyzingResponse(true);
-    recorder.stopRecording();
-  };
-
-  const cancelRecording = async () => {
-    recorder.cancelRecording();
-  };
-
-  const submitTranscript = async () => {
-    if (!recorder.transcription) return;
-    addUserMessage(recorder.transcription || "");
-  };
+    setTimeout(() => {
+      scrollToBottom();
+    }, 500);
+  }, [conversation.length, isAnalyzingResponse]);
 
   return (
     <Stack sx={{ gap: "40px" }}>
@@ -172,32 +230,40 @@ Use ${fullLanguageName || "English"} language.
         <Stack
           sx={{
             maxWidth: "900px",
-            padding: "0 20px",
+            padding: "0",
             paddingTop: "80px",
-            paddingBottom: "100px",
+            paddingBottom: "0px",
             boxSizing: "border-box",
             width: "100%",
             gap: "20px",
             alignItems: "center",
             border: "1px solid rgba(255, 255, 255, 0.1)",
-            minHeight: "100vh",
+
             "@media (max-width: 600px)": {
               border: "none",
             },
-            backgroundColor: "rgba(10, 18, 30, 0.2)",
+            backgroundColor: "rgba(37, 54, 66, 0.1)",
             backdropFilter: "blur(6px)",
           }}
         >
           <Stack
             sx={{
-              gap: "20px",
+              gap: "40px",
               width: "100%",
+              minHeight: "calc(100vh - 200px)",
             }}
           >
             {conversation.map((message) => {
               const isBot = message.isBot;
               return (
-                <Stack key={message.id}>
+                <Stack
+                  key={message.id}
+                  sx={{
+                    padding: "0 20px",
+                    boxSizing: "border-box",
+                    color: "#e1e1e1",
+                  }}
+                >
                   <Typography
                     variant="caption"
                     sx={{
@@ -234,120 +300,245 @@ Use ${fullLanguageName || "English"} language.
               </Stack>
             )}
           </Stack>
-        </Stack>
 
-        <Stack
-          sx={{
-            flexDirection: "row",
-            width: "100%",
-            borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-            position: "fixed",
-            bottom: 0,
-            left: 0,
-            backgroundColor: "rgba(10, 18, 30, 0.6)",
-            backdropFilter: "blur(8px)",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
           <Stack
             sx={{
-              width: "100%",
-              boxSizing: "border-box",
-              maxWidth: "900px",
-              padding: "20px 20px",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              borderTop: "none",
-              borderBottom: "none",
-              "@media (max-width: 600px)": {
-                border: "none",
-              },
-              alignItems: "flex-end",
               flexDirection: "row",
-              justifyContent: "space-between",
-              gap: "10px",
+              width: "100%",
+              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+              position: "sticky",
+              bottom: 0,
+              left: 0,
+              backgroundColor: "rgba(20, 28, 40, 1)",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            {isSavingHomework || isClosing || isClosed ? (
-              <>
+            <Stack
+              sx={{
+                width: "100%",
+                boxSizing: "border-box",
+                maxWidth: "900px",
+                padding: "20px 20px",
+                borderTop: "none",
+                borderBottom: "none",
+                "@media (max-width: 600px)": {
+                  border: "none",
+                },
+                flexDirection: "column",
+                gap: "10px",
+              }}
+            >
+              {(transcriptMessage || isTranscribing || isAnalyzingResponse) && (
                 <Stack
                   sx={{
-                    alignItems: "flex-start",
-                    gap: "15px",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    width: "100%",
                   }}
                 >
-                  {isClosing && <Typography>Finishing lesson...</Typography>}
-                  {isSavingHomework && <Typography>Saving homework...</Typography>}
-                  {isClosed && (
-                    <Button
-                      onClick={() => {
-                        doneConversation();
-                      }}
-                      variant="contained"
-                    >
-                      Close
-                    </Button>
-                  )}
-                </Stack>
-              </>
-            ) : (
-              <>
-                {isAnalyzingResponse ? (
-                  <>
+                  <Stack
+                    sx={{
+                      alignItems: "flex-start",
+                      gap: "15px",
+                    }}
+                  >
                     <Stack
                       sx={{
-                        alignItems: "flex-start",
-                        gap: "15px",
+                        gap: "10px",
+                        paddingBottom: "10px",
                       }}
                     >
                       <Stack>
-                        <Typography variant="caption">Your Message</Typography>
-                        <Typography>
-                          {recorder.isTranscribing ? "Loading..." : recorder.transcription}
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            opacity: 0.7,
+                          }}
+                        >
+                          Your Message
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
+                          component={"div"}
+                          sx={{
+                            fontWeight: 400,
+                            fontSize: "20px",
+                            paddingBottom: "3px",
+                            opacity: isTranscribing ? 0.7 : 1,
+                          }}
+                        >
+                          <StringDiff
+                            oldValue={isTranscribing ? "Transcribing..." : transcriptMessage || ""}
+                            newValue={isTranscribing ? "Transcribing..." : transcriptMessage || ""}
+                          />
                         </Typography>
                       </Stack>
 
-                      <Button
-                        variant="contained"
-                        disabled={recorder.isTranscribing}
-                        onClick={() => {
-                          submitTranscript();
-                          setIsAnalyzingResponse(false);
-                        }}
-                      >
-                        Send
-                      </Button>
-                    </Stack>
-
-                    <Stack>
-                      <Tooltip title="Cancel">
-                        <IconButton
-                          size="large"
-                          color="error"
-                          onClick={() => {
-                            setIsAnalyzingResponse(false);
+                      <Stack>
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            opacity: 0.7,
                           }}
                         >
-                          <Trash2 size={"18px"} />
-                        </IconButton>
-                      </Tooltip>
-                    </Stack>
-                  </>
-                ) : (
-                  <>
-                    <Stack
-                      sx={{
-                        flexDirection: "row",
-                        alignItems: "flex-end",
-                        justifyContent: "space-between",
-                        width: "100%",
+                          Your Corrected Message:
+                        </Typography>
+                        <Stack
+                          sx={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "flex-end",
+                          }}
+                        >
+                          <Stack
+                            sx={{
+                              width: "100%",
+                              gap: "12px",
+                              flexDirection: "row",
+                              alignItems: "center",
+                            }}
+                          >
+                            <Typography
+                              variant="body2"
+                              component={"div"}
+                              sx={{
+                                fontWeight: 400,
+                                fontSize: "20px",
+                                paddingBottom: "3px",
+                                opacity: isTranscribing || isAnalyzingResponse ? 0.7 : 1,
+                              }}
+                            >
+                              <StringDiff
+                                styles={{
+                                  added: {
+                                    color: "#81e381",
+                                    fontWeight: 600,
+                                  },
+                                  removed: {
+                                    //display: "none",
+                                    textDecoration: "line-through",
+                                    opacity: 0.4,
+                                  },
+                                  default: {},
+                                }}
+                                oldValue={
+                                  isTranscribing
+                                    ? "Transcribing..."
+                                    : isAnalyzingResponse
+                                      ? "Analyzing..."
+                                      : transcriptMessage || ""
+                                }
+                                newValue={
+                                  isTranscribing
+                                    ? "Transcribing..."
+                                    : isAnalyzingResponse
+                                      ? "Analyzing..."
+                                      : correctedMessage || transcriptMessage || ""
+                                }
+                              />
+                            </Typography>
 
-                        gap: "15px",
-                      }}
-                    >
+                            <Stack>
+                              {isTranscribing || isAnalyzingResponse ? (
+                                <Loader color="#c2c2c2" size={"12px"} />
+                              ) : (
+                                <>
+                                  {isNeedToShowCorrection ? (
+                                    <FlaskConical color="#fa8500" size={"18px"} />
+                                  ) : (
+                                    <BadgeCheck color="#2bb6f6" size={"19px"} />
+                                  )}
+                                </>
+                              )}
+                            </Stack>
+                          </Stack>
+                        </Stack>
+                      </Stack>
+
+                      <Stack>
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            opacity: 0.7,
+                          }}
+                        >
+                          Review:
+                        </Typography>
+                        <Stack
+                          sx={{
+                            flexDirection: "row",
+                            gap: "10px",
+                            alignItems: "center",
+                          }}
+                        >
+                          {isTranscribing || isAnalyzingResponse ? (
+                            <Typography
+                              sx={{
+                                opacity: 0.7,
+                              }}
+                            >
+                              {isTranscribing ? "Transcribing..." : "Analyzing..."}
+                            </Typography>
+                          ) : (
+                            <>
+                              <Typography sx={{}}>{description || "Great!"}</Typography>
+                              {isNeedToShowCorrection ? (
+                                <FlaskConical color="transparent" size={"14px"} />
+                              ) : (
+                                <BadgeCheck color="#2bb6f6" size={"19px"} />
+                              )}
+                            </>
+                          )}
+                        </Stack>
+                      </Stack>
+                    </Stack>
+                  </Stack>
+                </Stack>
+              )}
+
+              {isFinishingProcess && (
+                <>
+                  <Stack
+                    sx={{
+                      alignItems: "flex-start",
+                      gap: "15px",
+                      width: "100%",
+                    }}
+                  >
+                    {isClosing && <Typography>Finishing lesson...</Typography>}
+                    {isSavingHomework && <Typography>Saving homework...</Typography>}
+                    {isClosed && (
+                      <Button onClick={() => doneConversation()} variant="contained">
+                        Close
+                      </Button>
+                    )}
+                  </Stack>
+                </>
+              )}
+
+              {!isFinishingProcess && (
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    width: "100%",
+                  }}
+                >
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "flex-start",
+                      width: "100%",
+
+                      gap: "15px",
+                    }}
+                  >
+                    {isAnalyzingResponse && (
                       <Button
-                        color={recorder.isRecording ? "error" : "info"}
-                        startIcon={recorder.isRecording ? <ArrowUp /> : <Mic />}
+                        startIcon={<ArrowUp />}
                         size="large"
                         variant="contained"
                         sx={{
@@ -355,109 +546,161 @@ Use ${fullLanguageName || "English"} language.
                           position: "relative",
                           zIndex: 1,
                         }}
-                        onClick={async () => {
-                          if (recorder.isRecording) {
-                            await stopRecording();
-                          } else {
-                            await startRecording();
-                          }
-                        }}
+                        disabled
                       >
-                        {recorder.isRecording ? "Done" : "Record Message"}
+                        Analyzing
                       </Button>
+                    )}
 
-                      {recorder.isRecording && (
-                        <>
+                    {transcriptMessage && !isRecording && !isAnalyzingResponse && (
+                      <Button
+                        startIcon={<ArrowUp />}
+                        size="large"
+                        variant="contained"
+                        sx={{
+                          minWidth: "200px",
+                          position: "relative",
+                          zIndex: 1,
+                        }}
+                        onClick={async () => addUserMessage(transcriptMessage)}
+                      >
+                        Send
+                      </Button>
+                    )}
+
+                    {isRecording && !isAnalyzingResponse && (
+                      <Button
+                        startIcon={<Check />}
+                        size="large"
+                        variant="contained"
+                        sx={{
+                          minWidth: "200px",
+                          position: "relative",
+                          zIndex: 1,
+                        }}
+                        onClick={async () => stopRecording()}
+                      >
+                        Done
+                      </Button>
+                    )}
+
+                    {!transcriptMessage && !isRecording && !isAnalyzingResponse && (
+                      <Button
+                        startIcon={<Mic />}
+                        size="large"
+                        variant="contained"
+                        sx={{
+                          minWidth: "200px",
+                          position: "relative",
+                          zIndex: 1,
+                        }}
+                        onClick={async () => startRecording()}
+                      >
+                        Record Message
+                      </Button>
+                    )}
+
+                    {transcriptMessage && !isRecording && (
+                      <Button
+                        size="large"
+                        startIcon={<Mic />}
+                        onClick={async () => await startRecording()}
+                      >
+                        Re-record
+                      </Button>
+                    )}
+
+                    {isRecording && (
+                      <>
+                        <Stack
+                          sx={{
+                            width: "max-content",
+                            overflow: "hidden",
+                            height: "40px",
+                            border: "1px solid rgba(255, 255, 255, 0.1)",
+                            borderRadius: "0 10px 10px 0",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            position: "relative",
+                            flexDirection: "row",
+                            gap: "10px",
+                            padding: "0 10px 0 0px",
+                            left: "-20px",
+                            zIndex: 0,
+                          }}
+                        >
+                          {recordVisualizerComponent}
                           <Stack
                             sx={{
-                              width: "max-content",
-                              overflow: "hidden",
-                              height: "40px",
-                              border: "1px solid rgba(255, 255, 255, 0.1)",
-                              borderRadius: "0 10px 10px 0",
-                              alignItems: "center",
-                              justifyContent: "space-between",
-                              position: "relative",
-                              flexDirection: "row",
-                              gap: "10px",
-                              padding: "0 10px 0 0px",
-                              left: "-20px",
-                              zIndex: 0,
+                              position: "absolute",
+                              width: "calc(100% - 45px)",
+                              height: "120%",
+                              top: "-10%",
+                              left: 0,
+                              boxShadow: "inset 0 0 10px 10px rgba(10, 18, 30, 1)",
+                            }}
+                          ></Stack>
+                          <Typography variant="caption">
+                            {dayjs(recordingMilliSeconds).format("mm:ss")}
+                          </Typography>
+                        </Stack>
+                      </>
+                    )}
+                  </Stack>
+
+                  <Stack
+                    sx={{
+                      width: "100%",
+                      alignItems: "flex-end",
+                    }}
+                  >
+                    {isRecording || isAnalyzingResponse ? (
+                      <Tooltip title="Cancel">
+                        <IconButton size="large" color="error" onClick={() => cancelRecording()}>
+                          <Trash2 size={"18px"} />
+                        </IconButton>
+                      </Tooltip>
+                    ) : (
+                      <>
+                        {isNeedToShowBalanceWarning && (
+                          <Stack
+                            sx={{
+                              alignItems: "flex-end",
+                              boxSizing: "border-box",
+                              gap: "5px",
+                              width: "100%",
                             }}
                           >
-                            {recorder.visualizerComponent}
-                            <Stack
-                              sx={{
-                                position: "absolute",
-                                width: "calc(100% - 45px)",
-                                height: "120%",
-                                top: "-10%",
-                                left: 0,
-                                boxShadow: "inset 0 0 10px 10px rgba(10, 18, 30, 1)",
-                              }}
-                            ></Stack>
-                            <Typography variant="caption">
-                              {dayjs(recorder.recordingSeconds * 1000).format("mm:ss")}
-                            </Typography>
-                          </Stack>
-                        </>
-                      )}
-                    </Stack>
-
-                    <Stack
-                      sx={{
-                        width: "100%",
-                        alignItems: "flex-end",
-                      }}
-                    >
-                      {recorder.isRecording ? (
-                        <Tooltip title="Cancel">
-                          <IconButton size="large" color="error" onClick={() => cancelRecording()}>
-                            <Trash2 size={"18px"} />
-                          </IconButton>
-                        </Tooltip>
-                      ) : (
-                        <>
-                          {isNeedToShowBalanceWarning && (
-                            <Stack
-                              sx={{
-                                alignItems: "flex-end",
-                                boxSizing: "border-box",
-                                gap: "5px",
-                                width: "100%",
-                              }}
+                            <Typography
+                              variant="caption"
+                              color={
+                                isExtremelySmallBalance
+                                  ? "error"
+                                  : isSmallBalance
+                                    ? "warning"
+                                    : "primary"
+                              }
+                              align="right"
                             >
-                              <Typography
-                                variant="caption"
-                                color={
-                                  isExtremelySmallBalance
-                                    ? "error"
-                                    : isSmallBalance
-                                      ? "warning"
-                                      : "primary"
-                                }
-                                align="right"
-                              >
-                                You have a low balance |{" "}
-                                {`${convertHoursToHumanFormat(balanceHours)}`} <br />
-                                It makes sense to top up your balance.
-                              </Typography>
-                              <Button
-                                startIcon={<AddCardIcon />}
-                                onClick={() => togglePaymentModal(true)}
-                                variant="contained"
-                              >
-                                Top up
-                              </Button>
-                            </Stack>
-                          )}
-                        </>
-                      )}
-                    </Stack>
-                  </>
-                )}
-              </>
-            )}
+                              You have a low balance |{" "}
+                              {`${convertHoursToHumanFormat(balanceHours)}`} <br />
+                              It makes sense to top up your balance.
+                            </Typography>
+                            <Button
+                              startIcon={<AddCardIcon />}
+                              onClick={() => togglePaymentModal(true)}
+                              variant="contained"
+                            >
+                              Top up
+                            </Button>
+                          </Stack>
+                        )}
+                      </>
+                    )}
+                  </Stack>
+                </Stack>
+              )}
+            </Stack>
           </Stack>
         </Stack>
       </Stack>

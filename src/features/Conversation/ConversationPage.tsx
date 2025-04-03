@@ -14,6 +14,8 @@ import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
 import { ConversationCanvas2 } from "./ConversationCanvas2";
+import { useAudioRecorder } from "../Audio/useAudioRecorder";
+import { useState } from "react";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -26,6 +28,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const aiConversation = useAiConversation();
   const usage = useUsage();
   const textAi = useTextAi();
+  const recorder = useAudioRecorder();
 
   const analyzeUserMessage = async (message: string) => {
     try {
@@ -112,12 +115,29 @@ Do not wrap answer with any wrappers like "answer": "...". Your response will be
           toggleMute={aiConversation.toggleMute}
           finishLesson={aiConversation.finishLesson}
           doneConversation={aiConversation.doneConversation}
-          addUserMessage={aiConversation.addUserMessage}
+          addUserMessage={async (message) => {
+            recorder.removeTranscript();
+            await aiConversation.addUserMessage(message);
+          }}
           fullLanguageName={settings.fullLanguageName || "English"}
           generateText={textAi.generate}
           balanceHours={usage.balanceHours}
           togglePaymentModal={usage.togglePaymentModal}
           analyzeUserMessage={analyzeUserMessage}
+          transcriptMessage={recorder.transcription || ""}
+          startRecording={async () => {
+            await recorder.startRecording();
+          }}
+          stopRecording={async () => {
+            await recorder.stopRecording();
+          }}
+          cancelRecording={async () => {
+            await recorder.cancelRecording();
+          }}
+          isTranscribing={recorder.isTranscribing}
+          isRecording={recorder.isRecording}
+          recordingMilliSeconds={recorder.recordingMilliSeconds}
+          recordVisualizerComponent={recorder.visualizerComponent}
         />
       ) : (
         <Dashboard rolePlayInfo={rolePlayInfo} />

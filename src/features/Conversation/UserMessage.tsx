@@ -73,7 +73,6 @@ export const UserMessage = ({ message, analyzeUserMessage, balanceHours }: UserM
   return (
     <Stack
       sx={{
-        borderBottom: `1px solid rgba(255, 255, 255, 0.1)`,
         paddingBottom: "5px",
         opacity: 0.9,
       }}
@@ -84,7 +83,7 @@ export const UserMessage = ({ message, analyzeUserMessage, balanceHours }: UserM
           opacity: 0.5,
         }}
       >
-        You:
+        Your Message:
       </Typography>
       <Stack
         sx={{

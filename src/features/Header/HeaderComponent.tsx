@@ -225,7 +225,7 @@ export function HeaderComponent({
                   startIcon={<ChevronLeft color="white" size={"30px"} />}
                   disabled={aiConversation.isClosing}
                   onClick={() => {
-                    if (aiConversation.isClosed) {
+                    if (aiConversation.isClosed || aiConversation.conversation.length < 3) {
                       aiConversation.doneConversation();
                     } else {
                       aiConversation.finishLesson();

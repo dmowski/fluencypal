@@ -36,6 +36,7 @@ export const useAudioRecorder = () => {
 
   const getRecordTranscript = async (recordedAudioBlog: Blob) => {
     if (!recordedAudioBlog) {
+      setTranscription(null);
       return;
     }
 
@@ -55,7 +56,6 @@ export const useAudioRecorder = () => {
     recorderControls.startRecording();
     isCancel.current = false;
     setRecordingSeconds(0);
-    setTranscription(null);
   };
 
   const stopRecording = async () => {
@@ -75,7 +75,11 @@ export const useAudioRecorder = () => {
     isTranscribing,
     transcription,
     error: recorderControls.error,
-    recordingSeconds: Math.round((recorderControls.recordingTime / 1000) * 10) / 10,
+    recordingMilliSeconds: recorderControls.recordingTime,
+    removeTranscript: () => {
+      setTranscription(null);
+      setIsTranscribing(false);
+    },
     visualizerComponent: recorderControls.isRecordingInProgress ? (
       <VoiceVisualizer
         controls={recorderControls}
