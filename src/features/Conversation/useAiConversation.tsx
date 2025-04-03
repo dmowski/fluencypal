@@ -517,6 +517,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
         ...aiRtcConfig,
         initInstruction: instruction,
         voice: aiRtcConfig.voice || voice,
+        isMuted: true,
         authToken,
       });
       history.createConversation({ conversationId, languageCode: settings.languageCode, mode });

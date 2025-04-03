@@ -92,7 +92,6 @@ export const AliasGamePanelUI = ({
     <Stack
       sx={{
         gap: "20px",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
         borderRadius: "4px",
         padding: "10px",
       }}
@@ -113,26 +112,28 @@ export const AliasGamePanelUI = ({
 
             return (
               <Typography
-                variant="h4"
-                className="decor-text"
                 key={index}
                 sx={{
                   textDecoration: isDone ? "line-through" : "none",
                   opacity: isDone ? 0.3 : 1,
                   borderRadius: "4px",
-                  padding: "2px 10px 2px 0px",
+                  padding: "2px 10px 2px 2px",
                   textTransform: "capitalize",
+                  cursor: "pointer",
+                  ":hover": {
+                    backgroundColor: isDone
+                      ? "rgba(255, 255, 70, 0.1)"
+                      : "rgba(255, 255, 255, 0.1)",
+                  },
                 }}
+                onClick={() =>
+                  setUsersMarkedWords((prev) => ({
+                    ...prev,
+                    [trimWord]: !prev[trimWord],
+                  }))
+                }
               >
-                <IconButton
-                  size="small"
-                  onClick={() =>
-                    setUsersMarkedWords((prev) => ({
-                      ...prev,
-                      [trimWord]: !prev[trimWord],
-                    }))
-                  }
-                >
+                <IconButton size="small">
                   {isDone ? (
                     <CheckBoxIcon fontSize="small" />
                   ) : (
@@ -140,7 +141,6 @@ export const AliasGamePanelUI = ({
                   )}
                 </IconButton>
                 {trimWord}
-                {isLast ? "" : ","}
               </Typography>
             );
           })}

@@ -139,7 +139,7 @@ export function HeaderComponent({
     }
   };
 
-  const activeConversationTitle = "";
+  const activeConversationTitle = aiConversation.isStarted ? aiConversation.currentMode || "" : "";
   const isActiveConversation = !!activeConversationTitle;
 
   return (
@@ -221,19 +221,33 @@ export function HeaderComponent({
                   alignItems: "center",
                 }}
               >
-                <Button startIcon={<ChevronLeft color="white" size={"30px"} />}>
+                <Button
+                  startIcon={<ChevronLeft color="white" size={"30px"} />}
+                  disabled={aiConversation.isClosing}
+                  onClick={() => {
+                    if (aiConversation.isClosed) {
+                      aiConversation.doneConversation();
+                    } else {
+                      aiConversation.finishLesson();
+                    }
+                  }}
+                >
                   <Typography
                     variant="body1"
                     sx={{
-                      color: "#fff",
+                      color: aiConversation.isClosing ? "#aaa" : "#fff",
                       textDecoration: "none",
-                      textTransform: "none",
+                      textTransform: "Capitalize",
                       "@media (max-width: 650px)": {
                         display: "none",
                       },
                     }}
                   >
-                    {activeConversationTitle}
+                    {aiConversation.isClosed
+                      ? "Back"
+                      : aiConversation.isClosing
+                        ? "Finishing the lesson..."
+                        : `Conversation mode: ${activeConversationTitle}`}
                   </Typography>
 
                   <Typography

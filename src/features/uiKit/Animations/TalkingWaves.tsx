@@ -52,6 +52,7 @@ export const TalkingWaves = ({ inActive }: TalkingWavesProps) => {
           width: "500px",
           left: "0",
           bottom: "-50px",
+          zIndex: -1,
         }}
       >
         <Stack
@@ -78,6 +79,7 @@ export const TalkingWaves = ({ inActive }: TalkingWavesProps) => {
           width: "500px",
           right: "0",
           bottom: "-50px",
+          zIndex: -1,
         }}
       >
         <Stack

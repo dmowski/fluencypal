@@ -13,6 +13,7 @@ import { SupportedLanguage } from "@/common/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
+import { ConversationCanvas2 } from "./ConversationCanvas2";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -95,7 +96,7 @@ Do not wrap answer with any wrappers like "answer": "...". Your response will be
   return (
     <Stack>
       {aiConversation.isStarted ? (
-        <ConversationCanvas
+        <ConversationCanvas2
           conversation={aiConversation.conversation}
           isAiSpeaking={aiConversation.isAiSpeaking}
           gameWords={aiConversation.gameWords}

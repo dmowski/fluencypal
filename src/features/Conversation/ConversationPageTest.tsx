@@ -5,6 +5,7 @@ import { SupportedLanguage } from "@/common/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { sleep } from "openai/core.mjs";
 import { useWebCam } from "../webCam/useWebCam";
+import { ConversationCanvas2 } from "./ConversationCanvas2";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -25,17 +26,52 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
 
   return (
     <Stack>
-      <ConversationCanvas
+      <ConversationCanvas2
         conversation={[
           {
             isBot: true,
-            text: "Hello, how are you?",
+            text: `Hello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\n`,
             id: "1",
           },
           {
             isBot: false,
-            text: "I do well, thank you! Hello",
+            text: `I do well, thank you! Hello\n`,
             id: "2",
+          },
+          {
+            isBot: true,
+            text: `Hello, how are you?\n`,
+            id: "3",
+          },
+          {
+            isBot: false,
+            text: `I do well, thank you! Hello. Let's start with a simple topic. What do you think about sunny days?\n`,
+            id: "4",
+          },
+          {
+            isBot: true,
+            text: `Hello, how are you?\n`,
+            id: "5",
+          },
+          {
+            isBot: false,
+            text: `I do well, thank you! Hello\n`,
+            id: "6",
+          },
+          {
+            isBot: false,
+            text: `I do well, thank you! Let's start with a simple topic. What do you think about sunny days?\n`,
+            id: "7",
+          },
+          {
+            isBot: true,
+            text: `Hello, how are you? Let's start with a simple topic. What do you think about sunny days?\n`,
+            id: "8",
+          },
+          {
+            isBot: false,
+            text: `I do well, thank you! Hello\n`,
+            id: "9",
           },
         ]}
         analyzeUserMessage={async (message: string) => {
@@ -46,8 +82,22 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
             sourceMessage: "I do well, thank you! Hello",
           };
         }}
-        isAiSpeaking={false}
-        gameWords={null}
+        isAiSpeaking={true}
+        gameWords={
+          null /*{
+          wordsUserToDescribe: [
+            "Dog",
+            "Cat",
+            "Elephant",
+            "Metal",
+            "Wood",
+            "Plastic",
+            "Paper",
+            "Rock",
+          ],
+          wordsAiToDescribe: ["Dog"],
+        }*/
+        }
         isShowUserInput={true}
         setIsShowUserInput={() => {
           alert("User input toggled");
