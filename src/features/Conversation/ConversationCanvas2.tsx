@@ -257,6 +257,7 @@ Use ${fullLanguageName || "English"} language.
           <Stack
             sx={{
               gap: "40px",
+              paddingBottom: "40px",
               width: "100%",
             }}
           >

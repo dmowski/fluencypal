@@ -1,5 +1,5 @@
 "use client";
-import { Stack } from "@mui/material";
+import { Divider, Stack } from "@mui/material";
 import { ConversationCanvas } from "./ConversationCanvas";
 import { SupportedLanguage } from "@/common/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
@@ -152,9 +152,16 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
             sx={{
               width: "300px",
               height: "40px",
-              backgroundColor: "#000",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-          ></Stack>
+          >
+            <Divider
+              sx={{
+                width: "100%",
+              }}
+            />
+          </Stack>
         }
       />
     </Stack>
