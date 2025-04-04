@@ -7,7 +7,6 @@ import { SignInForm } from "../Auth/SignInForm";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
-import { ConversationCanvas } from "./ConversationCanvas";
 import { Dashboard } from "../Dashboard/Dashboard";
 import { SupportedLanguage } from "@/common/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
@@ -15,7 +14,7 @@ import { useTextAi } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
 import { ConversationCanvas2 } from "./ConversationCanvas2";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
-import { useState } from "react";
+import { useWords } from "../Words/useWords";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -29,6 +28,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const usage = useUsage();
   const textAi = useTextAi();
   const recorder = useAudioRecorder();
+  const words = useWords();
 
   const analyzeUserMessage = async ({
     previousBotMessage,
@@ -38,6 +38,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     message: string;
   }) => {
     try {
+      const newWordsStatsRequest = words.addWordsStatFromText(message);
       const aiResult = await textAi.generate({
         systemMessage: `You are grammar checker system.
 Student gives a message, your role is to analyze it from the grammar prospective.
@@ -69,6 +70,7 @@ For context, here is the previous bot message: "${previousBotMessage}".
         correctedMessage: correctedMessage,
         description: suggestion,
         sourceMessage: message,
+        newWords: await newWordsStatsRequest,
       };
     } catch (error) {
       console.error("Error analyzing message:", error);
@@ -76,6 +78,7 @@ For context, here is the previous bot message: "${previousBotMessage}".
         correctedMessage: message,
         description: "",
         sourceMessage: message,
+        newWords: [],
       };
     }
   };
@@ -130,15 +133,9 @@ For context, here is the previous bot message: "${previousBotMessage}".
           togglePaymentModal={usage.togglePaymentModal}
           analyzeUserMessage={analyzeUserMessage}
           transcriptMessage={recorder.transcription || ""}
-          startRecording={async () => {
-            await recorder.startRecording();
-          }}
-          stopRecording={async () => {
-            await recorder.stopRecording();
-          }}
-          cancelRecording={async () => {
-            await recorder.cancelRecording();
-          }}
+          startRecording={recorder.startRecording}
+          stopRecording={recorder.stopRecording}
+          cancelRecording={recorder.cancelRecording}
           isTranscribing={recorder.isTranscribing}
           isRecording={recorder.isRecording}
           recordingMilliSeconds={recorder.recordingMilliSeconds}
