@@ -64,6 +64,7 @@ interface ConversationCanvasProps {
     sourceMessage: string;
     correctedMessage: string;
     description: string;
+    newWords: string[];
   }>;
   transcriptMessage?: string;
   startRecording: () => Promise<void>;
@@ -123,6 +124,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const [isNeedToShowCorrection, setIsNeedToShowCorrection] = useState(false);
   const [isAnalyzingError, setIsAnalyzingError] = useState(false);
 
+  const [newWords, setNewWords] = useState<string[]>([]);
+
   const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
 
   const analyzeMessage = async () => {
@@ -136,13 +139,15 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     setIsNeedToShowCorrection(false);
     setDescription(null);
     setCorrectedMessage(null);
+    setNewWords([]);
     try {
       const userMessage = transcriptMessage;
       const previousBotMessage = conversation[conversation.length - 1].text;
-      const { sourceMessage, correctedMessage, description } = await analyzeUserMessage({
+      const { sourceMessage, correctedMessage, description, newWords } = await analyzeUserMessage({
         previousBotMessage,
         message: userMessage,
       });
+      setNewWords(newWords || []);
       if (transcriptMessage !== sourceMessage) {
         return;
       }
@@ -179,7 +184,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     const isWindow = typeof window !== "undefined";
     if (!isWindow) return;
 
-    // scroll window down
     const scrollToBottom = () => {
       window.scrollTo({
         top: document.body.scrollHeight + 200,
@@ -188,12 +192,12 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     };
     const timeout = setTimeout(() => {
       scrollToBottom();
-    }, 200);
+    }, 500);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [conversation, isAnalyzingResponse]);
+  }, [conversation, isAnalyzingResponse, isRecording]);
 
   return (
     <Stack sx={{ gap: "40px" }}>
@@ -226,7 +230,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               border: "none",
             },
             //backgroundColor: "rgba(37, 54, 66, 0.1)",
-            backgroundColor: "rgba(20, 28, 40, 1)",
+            //backgroundColor: "rgba(20, 28, 40, 1)",
+            backgroundColor: "#1c2128",
           }}
         >
           <Stack
@@ -275,6 +280,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     width: "100%",
                     maxWidth: "898px",
                     //borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+                    maxHeight: "40vh",
+                    overflowY: "auto",
                   }}
                 >
                   <AliasGamePanel gameWords={gameWords} conversation={conversation} />
@@ -288,13 +295,15 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               flexDirection: "row",
               width: "100%",
               borderTop: transcriptMessage
-                ? "1px solid rgba(255, 255, 255, 0.4)"
+                ? "1px solid rgba(255, 255, 255, 0.1)"
                 : "1px solid rgba(255, 255, 255, 0.1)",
 
               position: "sticky",
               bottom: "-2px",
               left: 0,
-              backgroundColor: "rgba(20, 28, 40, 1)",
+
+              "--section-bg": "#252b33",
+              backgroundColor: "var(--section-bg)",
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -330,6 +339,58 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   >
                     <Stack
                       sx={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: "15px",
+                      }}
+                    >
+                      <Stack
+                        sx={{
+                          height: "40px",
+                          width: "40px",
+                          borderRadius: "50%",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          background: isAnalyzingResponse
+                            ? "#121214"
+                            : isNeedToShowCorrection
+                              ? "#c4574f"
+                              : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
+                        }}
+                      >
+                        {isNeedToShowCorrection ? (
+                          <X color="#fff" size={"20px"} />
+                        ) : (
+                          <>
+                            {isAnalyzingResponse ? (
+                              <>
+                                <Loader color="#fff" size={"20px"} />
+                              </>
+                            ) : (
+                              <Check color="#fff" size={"20px"} />
+                            )}
+                          </>
+                        )}
+                      </Stack>
+
+                      {isNeedToShowCorrection && !isAnalyzingResponse ? (
+                        <Typography variant="h6">{i18n._("Almost correct")}</Typography>
+                      ) : (
+                        <>
+                          {isAnalyzingResponse ? (
+                            <Typography variant="h6">{i18n._("Analyzing...")}</Typography>
+                          ) : (
+                            <Typography variant="h6">{i18n._("Great!")}</Typography>
+                          )}
+                        </>
+                      )}
+                    </Stack>
+                    {isNeedToShowCorrection && (
+                      <Stack>{description && <Typography>{description}</Typography>}</Stack>
+                    )}
+
+                    <Stack
+                      sx={{
                         gap: "10px",
                         paddingBottom: "10px",
                       }}
@@ -339,48 +400,77 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                           variant="caption"
                           sx={{
                             opacity: 0.7,
+                            fontWeight: 350,
                           }}
                         >
                           {i18n._("Your Message")}
                         </Typography>
-
-                        <Typography
-                          variant="body2"
-                          component={"div"}
-                          sx={{
-                            fontWeight: 400,
-                            fontSize: "20px",
-                            paddingBottom: "3px",
-                            opacity: isTranscribing ? 0.7 : 1,
-                          }}
-                        >
-                          <StringDiff
-                            oldValue={
-                              isTranscribing ? i18n._("Transcribing...") : transcriptMessage || ""
-                            }
-                            newValue={
-                              isTranscribing ? i18n._("Transcribing...") : transcriptMessage || ""
-                            }
-                          />
-                        </Typography>
-                      </Stack>
-
-                      <Stack>
-                        <Typography
-                          variant="caption"
-                          sx={{
-                            opacity: 0.7,
-                          }}
-                        >
-                          {i18n._("Your Corrected Message:")}
-                        </Typography>
                         <Stack
                           sx={{
-                            display: "flex",
+                            width: "100%",
+                            gap: "12px",
                             flexDirection: "row",
-                            alignItems: "flex-end",
+                            alignItems: "center",
                           }}
                         >
+                          <Typography
+                            variant="body2"
+                            component={"div"}
+                            sx={{
+                              fontWeight: 400,
+                              fontSize: "1.1rem",
+                              paddingBottom: "3px",
+                              opacity: isTranscribing ? 0.7 : 1,
+                            }}
+                          >
+                            <StringDiff
+                              oldValue={
+                                isTranscribing ? i18n._("Transcribing...") : transcriptMessage || ""
+                              }
+                              newValue={
+                                isTranscribing ? i18n._("Transcribing...") : transcriptMessage || ""
+                              }
+                            />
+                          </Typography>
+                          <Stack
+                            sx={{
+                              opacity:
+                                isTranscribing || isAnalyzingResponse
+                                  ? 0
+                                  : isNeedToShowCorrection
+                                    ? 0
+                                    : 1,
+                            }}
+                          >
+                            {isTranscribing || isAnalyzingResponse ? (
+                              <Loader color="#c2c2c2" size={"12px"} />
+                            ) : (
+                              <>
+                                {correctedMessage && (
+                                  <AudioPlayIcon
+                                    text={correctedMessage}
+                                    instructions="Calm and clear"
+                                    voice={"coral"}
+                                  />
+                                )}
+                              </>
+                            )}
+                          </Stack>
+                        </Stack>
+                      </Stack>
+
+                      {isNeedToShowCorrection && (
+                        <Stack>
+                          <Typography
+                            variant="caption"
+                            sx={{
+                              opacity: 0.7,
+                              fontWeight: 350,
+                            }}
+                          >
+                            {i18n._("Corrected")}
+                          </Typography>
+
                           <Stack
                             sx={{
                               width: "100%",
@@ -394,7 +484,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                               component={"div"}
                               sx={{
                                 fontWeight: 400,
-                                fontSize: "20px",
+                                fontSize: "1.1rem",
                                 paddingBottom: "3px",
                                 opacity: isTranscribing || isAnalyzingResponse ? 0.7 : 1,
                               }}
@@ -406,7 +496,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                     fontWeight: 600,
                                   },
                                   removed: {
-                                    //display: "none",
+                                    display: "none",
                                     textDecoration: "line-through",
                                     opacity: 0.4,
                                   },
@@ -434,60 +524,38 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                 <Loader color="#c2c2c2" size={"12px"} />
                               ) : (
                                 <>
-                                  {isNeedToShowCorrection && correctedMessage ? (
+                                  {correctedMessage && (
                                     <AudioPlayIcon
                                       text={correctedMessage}
-                                      borderColor="#fa8500"
                                       instructions="Calm and clear"
                                       voice={"coral"}
                                     />
-                                  ) : (
-                                    // xxx
-                                    <BadgeCheck color="#2bb6f6" size={"19px"} />
                                   )}
                                 </>
                               )}
                             </Stack>
                           </Stack>
                         </Stack>
-                      </Stack>
+                      )}
 
-                      <Stack>
-                        <Typography
-                          variant="caption"
-                          sx={{
-                            opacity: 0.7,
-                          }}
-                        >
-                          {i18n._("Review:")}
-                        </Typography>
-                        <Stack
-                          sx={{
-                            flexDirection: "row",
-                            gap: "10px",
-                            alignItems: "center",
-                          }}
-                        >
-                          {isTranscribing || isAnalyzingResponse ? (
+                      {!!newWords.length && (
+                        <Tooltip title={newWords.join(", ")} placement="top" arrow>
+                          <Stack
+                            sx={{
+                              width: "max-content",
+                            }}
+                          >
                             <Typography
+                              variant="caption"
                               sx={{
-                                opacity: 0.7,
+                                color: "#b6d5f3",
                               }}
                             >
-                              {isTranscribing ? i18n._("Transcribing...") : i18n._("Analyzing...")}
+                              {i18n._(`New Words to Vocabulary:`)} {i18n._(`+${newWords.length}`)}
                             </Typography>
-                          ) : (
-                            <>
-                              <Typography sx={{}}>{description || i18n._("Great!")}</Typography>
-                              {isNeedToShowCorrection ? (
-                                <FlaskConical color="transparent" size={"14px"} />
-                              ) : (
-                                <BadgeCheck color="#2bb6f6" size={"19px"} />
-                              )}
-                            </>
-                          )}
-                        </Stack>
-                      </Stack>
+                          </Stack>
+                        </Tooltip>
+                      )}
                     </Stack>
                   </Stack>
                 </Stack>
@@ -499,6 +567,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     flexDirection: "row",
                     justifyContent: "space-between",
                     width: "100%",
+                    "@media (max-width: 600px)": {
+                      alignItems: "flex-end",
+                      gap: "10px",
+                    },
                   }}
                 >
                   <Stack
@@ -507,8 +579,11 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       alignItems: "center",
                       justifyContent: "flex-start",
                       width: "100%",
-
                       gap: "15px",
+                      "@media (max-width: 600px)": {
+                        flexDirection: "column-reverse",
+                        alignItems: "flex-start",
+                      },
                     }}
                   >
                     {isAnalyzingResponse && (
@@ -602,6 +677,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                             padding: "0 10px 0 0px",
                             left: "-20px",
                             zIndex: 0,
+                            "@media (max-width: 600px)": {
+                              left: 0,
+                              borderRadius: "10px",
+                            },
                           }}
                         >
                           {recordVisualizerComponent}
@@ -612,10 +691,16 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                               height: "120%",
                               top: "-10%",
                               left: 0,
-                              boxShadow: "inset 0 0 10px 10px rgba(20, 28, 40, 1)",
+                              boxShadow:
+                                "inset 0 0 10px 10px var(--section-bg, rgba(20, 28, 40, 1))",
                             }}
                           ></Stack>
-                          <Typography variant="caption">
+                          <Typography
+                            variant="caption"
+                            sx={{
+                              width: "30px",
+                            }}
+                          >
                             {dayjs(recordingMilliSeconds).format("mm:ss")}
                           </Typography>
                         </Stack>
@@ -623,56 +708,68 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     )}
                   </Stack>
 
-                  <Stack
-                    sx={{
-                      width: "100%",
-                      alignItems: "flex-end",
-                    }}
-                  >
-                    {isRecording || isAnalyzingResponse ? (
-                      <Tooltip title="Cancel">
-                        <IconButton size="large" color="error" onClick={() => cancelRecording()}>
-                          <Trash2 size={"18px"} />
-                        </IconButton>
-                      </Tooltip>
-                    ) : (
-                      <>
-                        {isNeedToShowBalanceWarning && (
-                          <Stack
-                            sx={{
-                              alignItems: "flex-end",
-                              boxSizing: "border-box",
-                              gap: "5px",
-                              width: "100%",
-                            }}
-                          >
-                            <Typography
-                              variant="caption"
-                              color={
-                                isExtremelySmallBalance
-                                  ? "error"
-                                  : isSmallBalance
-                                    ? "warning"
-                                    : "primary"
-                              }
-                              align="right"
+                  {(isRecording || isAnalyzingResponse || isNeedToShowBalanceWarning) && (
+                    <Stack
+                      sx={{
+                        width: "100%",
+                        alignItems: "flex-end",
+                        "@media (max-width: 600px)": {
+                          alignItems: "flex-start",
+                        },
+                      }}
+                    >
+                      {isRecording || isAnalyzingResponse ? (
+                        <Tooltip title="Cancel">
+                          <Stack>
+                            <IconButton
+                              sx={{}}
+                              size="large"
+                              color="error"
+                              onClick={() => cancelRecording()}
                             >
-                              {i18n._("You have a low balance")} |{" "}
-                              {`${convertHoursToHumanFormat(balanceHours)}`} <br />
-                              {i18n._("It makes sense to top up your balance.")}
-                            </Typography>
-                            <Button
-                              startIcon={<AddCardIcon />}
-                              onClick={() => togglePaymentModal(true)}
-                              variant="contained"
-                            >
-                              {i18n._("Top up")}
-                            </Button>
+                              <Trash2 size={"18px"} />
+                            </IconButton>
                           </Stack>
-                        )}
-                      </>
-                    )}
-                  </Stack>
+                        </Tooltip>
+                      ) : (
+                        <>
+                          {isNeedToShowBalanceWarning && (
+                            <Stack
+                              sx={{
+                                alignItems: "flex-end",
+                                boxSizing: "border-box",
+                                gap: "5px",
+                                width: "100%",
+                              }}
+                            >
+                              <Typography
+                                variant="caption"
+                                color={
+                                  isExtremelySmallBalance
+                                    ? "error"
+                                    : isSmallBalance
+                                      ? "warning"
+                                      : "primary"
+                                }
+                                align="right"
+                              >
+                                {i18n._("You have a low balance")} |{" "}
+                                {`${convertHoursToHumanFormat(balanceHours)}`} <br />
+                                {i18n._("It makes sense to top up your balance.")}
+                              </Typography>
+                              <Button
+                                startIcon={<AddCardIcon />}
+                                onClick={() => togglePaymentModal(true)}
+                                variant="contained"
+                              >
+                                {i18n._("Top up")}
+                              </Button>
+                            </Stack>
+                          )}
+                        </>
+                      )}
+                    </Stack>
+                  )}
                 </Stack>
               )}
             </Stack>
