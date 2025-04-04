@@ -69,6 +69,7 @@ export async function POST(request: Request) {
     language: supportedLang,
     prompt: "Transcribe the audio. Keep grammar mistakes and typos.",
   });
+  console.log("AFTER TRANSCRIPTION", transcriptionResult);
 
   const output = transcriptionResult.text || "";
 

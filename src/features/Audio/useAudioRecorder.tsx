@@ -30,7 +30,7 @@ export const useAudioRecorder = () => {
       return;
     }
 
-    const format = recorderControls.recordedBlob.type.split("/")[1];
+    const format = recorderControls.recordedBlob.type.toLowerCase();
 
     getRecordTranscript(recorderControls.recordedBlob, format);
   }, [recorderControls.recordedBlob]);
