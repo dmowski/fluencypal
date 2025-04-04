@@ -80,19 +80,22 @@ function useProvideWords(): WordsContextType {
     try {
       setIsGeneratingWords(true);
       const systemInstruction = [
-        `User provides list of works that he knows.`,
-        `System should generate list of 10 new words to learn.`,
-        `Words should be useful and not too difficult.`,
-        `Split words by comma.`,
+        `User provides list of works that they knows.
+You should generate list of 10 new words to learn.
+Words should be useful and not too difficult.
+Return info in JSON format. Example: ["word1", "word2", "word3"].
+Do not wrap answer with any wrapper phrases.
+Your response will be sent to JSON.parse() function.
+`,
       ].join(" ");
       const response = await textAi.generate({
         systemMessage: systemInstruction,
         userMessage: knownWords.join(" "),
         model: "gpt-4o",
       });
-      const newWordsToLearn = response.split(",").map((word) => word.trim());
+      const newWordsToLearn = JSON.parse(response) as string[];
       setIsGeneratingWords(false);
-      setWordsToLearn(newWordsToLearn);
+      setWordsToLearn(newWordsToLearn.map((word) => word.toLowerCase()));
 
       return newWordsToLearn;
     } catch (error) {
