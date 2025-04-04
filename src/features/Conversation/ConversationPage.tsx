@@ -30,7 +30,13 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const textAi = useTextAi();
   const recorder = useAudioRecorder();
 
-  const analyzeUserMessage = async (message: string) => {
+  const analyzeUserMessage = async ({
+    previousBotMessage,
+    message,
+  }: {
+    previousBotMessage: string;
+    message: string;
+  }) => {
     try {
       const aiResult = await textAi.generate({
         systemMessage: `You are grammar checker system.
@@ -40,7 +46,7 @@ Return your result in JSON format.
 Structure of result: {
 "quality": "great" | "bad",
 "correctedMessage": string,
-"suggestion": string
+"suggestion": string (use ${lang} language)
 }
 
 quality - return "great" if message is correct, "bad" if there are mistakes
@@ -49,6 +55,8 @@ suggestion: A direct message to the student explaining the corrections.
 
 Return info in JSON format.
 Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
+
+For context, here is the previous bot message: "${previousBotMessage}".
 `,
         userMessage: message,
         model: MODELS.gpt_4o,

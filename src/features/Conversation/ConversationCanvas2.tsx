@@ -54,7 +54,13 @@ interface ConversationCanvasProps {
   generateText: (conversationDate: TextAiRequest) => Promise<string>;
   balanceHours: number;
   togglePaymentModal: (isOpen: boolean) => void;
-  analyzeUserMessage: (message: string) => Promise<{
+  analyzeUserMessage: ({
+    previousBotMessage,
+    message,
+  }: {
+    previousBotMessage: string;
+    message: string;
+  }) => Promise<{
     sourceMessage: string;
     correctedMessage: string;
     description: string;
@@ -131,8 +137,12 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     setDescription(null);
     setCorrectedMessage(null);
     try {
-      const { sourceMessage, correctedMessage, description } =
-        await analyzeUserMessage(transcriptMessage);
+      const userMessage = transcriptMessage;
+      const previousBotMessage = conversation[conversation.length - 1].text;
+      const { sourceMessage, correctedMessage, description } = await analyzeUserMessage({
+        previousBotMessage,
+        message: userMessage,
+      });
       if (transcriptMessage !== sourceMessage) {
         return;
       }
