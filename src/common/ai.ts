@@ -18,7 +18,7 @@ export const MODELS = {
   gpt_4o: "gpt-4o",
 } as const;
 
-export const PROJECT_PROFIT_MARGIN = 2; //X
+export const PROJECT_PROFIT_MARGIN = 5; //X
 
 export interface UsageEvent {
   total_tokens: number;
