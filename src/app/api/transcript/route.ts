@@ -4,7 +4,7 @@ import {
   convertUsdToHours,
   TranscriptAiModel,
 } from "@/common/ai";
-import { validateAuthToken } from "../config/firebase";
+import { getBucket, validateAuthToken } from "../config/firebase";
 import { getUserBalance } from "../payment/getUserBalance";
 import { TranscriptResponse } from "./types";
 import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
@@ -63,36 +63,63 @@ export async function POST(request: Request) {
 
   const model: TranscriptAiModel = "gpt-4o-transcribe";
   console.log("AUDIO format", format, "SIZE", actualFileSizeMb);
-  const transcriptionResult = await client.audio.transcriptions.create({
-    file: file,
-    model: model,
-    language: supportedLang,
-    prompt: "Transcribe the audio. Keep grammar mistakes and typos.",
-  });
-  console.log("AFTER TRANSCRIPTION", transcriptionResult);
+  try {
+    const transcriptionResult = await client.audio.transcriptions.create({
+      file: file,
+      model: model,
+      language: supportedLang,
+      prompt: "Transcribe the audio. Keep grammar mistakes and typos.",
+    });
+    console.log("AFTER TRANSCRIPTION", transcriptionResult);
 
-  const output = transcriptionResult.text || "";
+    const output = transcriptionResult.text || "";
 
-  const priceUsd = calculateAudioTranscriptionPrice(audioDuration, model);
+    const priceUsd = calculateAudioTranscriptionPrice(audioDuration, model);
 
-  const priceHours = convertUsdToHours(priceUsd);
-  const usageLog: TranscriptUsageLog = {
-    usageId: `${Date.now()}`,
-    languageCode: supportedLang,
-    createdAt: Date.now(),
-    priceUsd,
-    priceHours,
-    type: "transcript",
-    model: model,
-    duration: audioDuration,
-    transcriptSize: output.length || 0,
-  };
-  await addUsage(userInfo.uid, usageLog);
+    const priceHours = convertUsdToHours(priceUsd);
+    const usageLog: TranscriptUsageLog = {
+      usageId: `${Date.now()}`,
+      languageCode: supportedLang,
+      createdAt: Date.now(),
+      priceUsd,
+      priceHours,
+      type: "transcript",
+      model: model,
+      duration: audioDuration,
+      transcriptSize: output.length || 0,
+    };
+    await addUsage(userInfo.uid, usageLog);
 
-  const response: TranscriptResponse = {
-    transcript: output,
-    error: null,
-  };
+    const response: TranscriptResponse = {
+      transcript: output,
+      error: null,
+    };
 
-  return Response.json(response);
+    return Response.json(response);
+  } catch (error) {
+    console.error("Error during transcription:", error);
+
+    const randomName = `${Date.now()}-${format}.mp3`;
+
+    const filePath = `failedAudio/${randomName}`;
+    const bucket = getBucket();
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const audioStorageFile = bucket.file(filePath);
+    await audioStorageFile.save(buffer, {
+      contentType: format,
+      resumable: false,
+    });
+    await audioStorageFile.makePublic();
+    const url = audioStorageFile.publicUrl();
+
+    await sentSupportTelegramMessage(
+      `User recorded broken audio file (${actualFileSizeMb}) | ${userInfo.email} | ${url}`
+    );
+
+    const errorResponse: TranscriptResponse = {
+      error: "Error during transcription",
+      transcript: "",
+    };
+    return Response.json(errorResponse);
+  }
 }

@@ -55,6 +55,9 @@ export const useAudioRecorder = () => {
         format,
       });
       setTranscription(transcriptResponse.transcript);
+      if (transcriptResponse.error) {
+        setTranscriptionError(transcriptResponse.error);
+      }
     } catch (error) {
       setTranscriptionError("Error during transcription");
     }
