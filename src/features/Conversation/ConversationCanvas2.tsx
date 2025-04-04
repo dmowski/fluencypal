@@ -232,7 +232,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           <Stack
             sx={{
               gap: "40px",
-              paddingBottom: "40px",
+              paddingBottom: gameWords?.wordsUserToDescribe ? "0" : "40px",
               width: "100%",
             }}
           >
@@ -478,7 +478,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                             </Typography>
                           ) : (
                             <>
-                              <Typography sx={{}}>{description || "Great!"}</Typography>
+                              <Typography sx={{}}>{description || i18n._("Great!")}</Typography>
                               {isNeedToShowCorrection ? (
                                 <FlaskConical color="transparent" size={"14px"} />
                               ) : (

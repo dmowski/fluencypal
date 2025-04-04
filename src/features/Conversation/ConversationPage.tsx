@@ -44,14 +44,12 @@ Student gives a message, your role is to analyze it from the grammar prospective
 
 Return your result in JSON format.
 Structure of result: {
-"quality": "great" | "bad",
 "correctedMessage": string,
 "suggestion": string (use ${lang} language)
 }
 
-quality - return "great" if message is correct, "bad" if there are mistakes
-correctedMessage - return corrected message if quality is "bad"
-suggestion: A direct message to the student explaining the corrections.
+correctedMessage - return corrected message if need to correct, or return empty string if no correction is needed.
+suggestion: A direct message to the student explaining the corrections or empty string if no correction is needed.
 
 Return info in JSON format.
 Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
