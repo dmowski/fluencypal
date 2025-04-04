@@ -81,6 +81,10 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           paddingTop: "100px",
           boxSizing: "border-box",
           gap: "40px",
+          "@media (max-width: 900px)": {
+            paddingLeft: "0",
+            paddingRight: "0",
+          },
         }}
       >
         <ConversationSelectCard />
