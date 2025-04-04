@@ -6,6 +6,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import StopIcon from "@mui/icons-material/Stop";
 import SyncIcon from "@mui/icons-material/Sync";
 import { TextToAudioVoice } from "@/app/api/textToAudio/types";
+import { Loader, Pause, Volume2 } from "lucide-react";
 export interface AudioPlayIconProps {
   text: string;
   voice: TextToAudioVoice;
@@ -118,11 +119,11 @@ export const AudioPlayIcon = ({
         }}
       >
         {isLoading ? (
-          <SyncIcon fontSize="small" />
+          <Loader size={"18px"} />
         ) : isPlaying ? (
-          <StopIcon fontSize="small" />
+          <Pause size={"18px"} />
         ) : (
-          <PlayArrowIcon fontSize="small" />
+          <Volume2 size={"18px"} />
         )}
       </IconButton>
     </Tooltip>
