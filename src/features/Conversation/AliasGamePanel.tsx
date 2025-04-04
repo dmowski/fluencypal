@@ -93,6 +93,8 @@ export const AliasGamePanelUI = ({
       sx={{
         gap: "20px",
         padding: "10px",
+        maxWidth: "100dvw",
+        overflowX: "auto",
       }}
     >
       {/* Words to Describe */}
