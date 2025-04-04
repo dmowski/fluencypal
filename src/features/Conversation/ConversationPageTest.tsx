@@ -115,7 +115,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   }) => {
     await sleep(1000);
     return {
-      correctedMessage: "Nice to be here!",
+      correctedMessage: message, //"Nice to be here!",
       description: "Need to pay attention to the grammar",
       sourceMessage: message,
       newWords: ["Hello", "Amazing"],
@@ -156,11 +156,11 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         startRecording={async () => {}}
         stopRecording={async () => {}}
         cancelRecording={async () => {}}
-        isTranscribing={true}
+        isTranscribing={false}
         transcriptMessage="Nice to see you!"
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
-        recordingError={"Some error occurred"}
+        recordingError={""}
       />
     </Stack>
   );

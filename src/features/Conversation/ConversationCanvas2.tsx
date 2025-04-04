@@ -594,13 +594,11 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   >
                     {isAnalyzingResponse && (
                       <Button
-                        startIcon={<ArrowUp />}
+                        startIcon={<Loader />}
                         size="large"
                         variant="contained"
                         sx={{
                           minWidth: "200px",
-                          position: "relative",
-                          zIndex: 1,
                         }}
                         disabled
                       >
@@ -608,19 +606,34 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       </Button>
                     )}
 
+                    {transcriptMessage &&
+                      !isRecording &&
+                      !isAnalyzingResponse &&
+                      isNeedToShowCorrection && (
+                        <Button
+                          size="large"
+                          variant="contained"
+                          startIcon={<Mic />}
+                          onClick={async () => await startRecording()}
+                          sx={{
+                            minWidth: "200px",
+                          }}
+                        >
+                          {i18n._("Re-record")}
+                        </Button>
+                      )}
+
                     {transcriptMessage && !isRecording && !isAnalyzingResponse && (
                       <Button
                         startIcon={<ArrowUp />}
                         size="large"
-                        variant="contained"
+                        variant={isNeedToShowCorrection ? "text" : "contained"}
                         sx={{
-                          minWidth: "200px",
-                          position: "relative",
-                          zIndex: 1,
+                          minWidth: isNeedToShowCorrection ? "auto" : "200px",
                         }}
                         onClick={async () => addUserMessage(transcriptMessage)}
                       >
-                        {i18n._("Send")}
+                        {isNeedToShowCorrection ? i18n._("Send it as is") : i18n._("Send")}
                       </Button>
                     )}
 
@@ -631,8 +644,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         variant="contained"
                         sx={{
                           minWidth: "200px",
-                          position: "relative",
-                          zIndex: 1,
                         }}
                         onClick={async () => stopRecording()}
                       >
@@ -647,8 +658,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         variant="contained"
                         sx={{
                           minWidth: "200px",
-                          position: "relative",
-                          zIndex: 1,
                         }}
                         onClick={async () => startRecording()}
                       >
@@ -656,15 +665,18 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       </Button>
                     )}
 
-                    {transcriptMessage && !isRecording && (
-                      <Button
-                        size="large"
-                        startIcon={<Mic />}
-                        onClick={async () => await startRecording()}
-                      >
-                        {i18n._("Re-record")}
-                      </Button>
-                    )}
+                    {transcriptMessage &&
+                      !isRecording &&
+                      !isAnalyzingResponse &&
+                      !isNeedToShowCorrection && (
+                        <Button
+                          size="large"
+                          startIcon={<Mic />}
+                          onClick={async () => await startRecording()}
+                        >
+                          {i18n._("Re-record")}
+                        </Button>
+                      )}
 
                     {isRecording && (
                       <>
