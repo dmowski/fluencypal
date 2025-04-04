@@ -111,6 +111,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   const isAnalyzingResponse = isAnalyzingMessageWithAi || isTranscribing;
 
+  useEffect(() => {
+    if (isTranscribing) {
+      setDescription(null);
+      setNewWords([]);
+      setCorrectedMessage(null);
+    }
+  }, [isTranscribing]);
+
   const analyzeMessage = async () => {
     if (transcriptMessage === messageAnalyzing.current || !transcriptMessage) {
       return;
@@ -337,7 +345,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                           alignItems: "center",
                           justifyContent: "center",
                           background: isAnalyzingResponse
-                            ? "#121214"
+                            ? "rgba(255, 255, 255, 0.06)"
                             : isNeedToShowCorrection
                               ? "#c4574f"
                               : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
