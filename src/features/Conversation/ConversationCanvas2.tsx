@@ -191,14 +191,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             maxWidth: "900px",
             padding: "0",
             paddingTop: "25px",
-            borderRadius: "10px 10px 0 0",
+            borderRadius: "10px",
             paddingBottom: "0px",
             boxSizing: "border-box",
             width: "100%",
             gap: "0px",
             alignItems: "center",
             border: "1px solid rgba(255, 255, 255, 0.1)",
-            minHeight: "calc(100dvh - 100px)",
+            minHeight: "calc(100dvh - 80px)",
             justifyContent: "space-between",
 
             "@media (max-width: 600px)": {
@@ -281,6 +281,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               backgroundColor: "var(--section-bg)",
               alignItems: "center",
               justifyContent: "center",
+              borderRadius: "0 0 10px 10px",
             }}
           >
             <Stack
