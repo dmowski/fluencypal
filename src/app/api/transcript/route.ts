@@ -62,7 +62,6 @@ export async function POST(request: Request) {
   });
 
   const model: TranscriptAiModel = "gpt-4o-transcribe";
-  console.log("AUDIO format", format, "SIZE", actualFileSizeMb);
   try {
     const transcriptionResult = await client.audio.transcriptions.create({
       file: file,
@@ -70,7 +69,6 @@ export async function POST(request: Request) {
       language: supportedLang,
       prompt: "Transcribe the audio. Keep grammar mistakes and typos.",
     });
-    console.log("AFTER TRANSCRIPTION", transcriptionResult);
 
     const output = transcriptionResult.text || "";
 
