@@ -11,9 +11,16 @@ export interface AudioPlayIconProps {
   voice: TextToAudioVoice;
   instructions: string;
   autoplay?: boolean;
+  borderColor?: string;
 }
 
-export const AudioPlayIcon = ({ text, autoplay, instructions, voice }: AudioPlayIconProps) => {
+export const AudioPlayIcon = ({
+  text,
+  autoplay,
+  borderColor,
+  instructions,
+  voice,
+}: AudioPlayIconProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -107,6 +114,7 @@ export const AudioPlayIcon = ({ text, autoplay, instructions, voice }: AudioPlay
         size="small"
         sx={{
           opacity: 0.7,
+          border: borderColor ? `1px solid ${borderColor}` : "none",
         }}
       >
         {isLoading ? (

@@ -1,14 +1,13 @@
 "use client";
 import { Divider, Stack } from "@mui/material";
-import { ConversationCanvas } from "./ConversationCanvas";
 import { SupportedLanguage } from "@/common/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { sleep } from "openai/core.mjs";
-import { useWebCam } from "../webCam/useWebCam";
 import { ConversationCanvas2 } from "./ConversationCanvas2";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAiConversation } from "./useAiConversation";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -16,17 +15,6 @@ interface ConversationPageTestProps {
 }
 
 export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTestProps) {
-  const webCam = useWebCam();
-
-  const initWebCam = async () => {
-    webCam.init();
-  };
-
-  const descriptionFromWebCam = async () => {
-    const imageDescription = await webCam.getImageDescription();
-    console.log("imageDescription", imageDescription);
-  };
-
   const testMessage: ChatMessage[] = [
     {
       isBot: true,
@@ -107,20 +95,48 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
       }
     : null;
 
-  const [isAnalyzingResponse, setIsAnalyzingResponse] = useState(false);
+  const aiConversation = useAiConversation();
+  useEffect(() => {
+    const isWindows = typeof window !== "undefined";
+    if (!isWindows) {
+      return;
+    }
+    setTimeout(() => {
+      aiConversation.setIsStarted(true);
+    }, 300);
+  }, []);
+
+  const analyzeMessage = async (message: string) => {
+    await sleep(1000);
+    return {
+      correctedMessage: "Nice to s you!",
+      description: "Fees",
+      sourceMessage: message,
+    };
+  };
+
+  const recordVisualizerComponent = (
+    <Stack
+      sx={{
+        width: "300px",
+        height: "40px",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Divider
+        sx={{
+          width: "100%",
+        }}
+      />
+    </Stack>
+  );
 
   return (
     <Stack>
       <ConversationCanvas2
         conversation={testMessage}
-        analyzeUserMessage={async (message: string) => {
-          await sleep(1000);
-          return {
-            correctedMessage: "Nice to s you!",
-            description: "Fees",
-            sourceMessage: message,
-          };
-        }}
+        analyzeUserMessage={analyzeMessage}
         isAiSpeaking={false}
         gameWords={gameStat}
         isShowUserInput={true}
@@ -132,37 +148,22 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         isClosing={false}
         isSavingHomework={false}
         isUserSpeaking={false}
-        toggleMute={() => initWebCam()}
-        finishLesson={async () => descriptionFromWebCam()}
+        toggleMute={() => {}}
+        finishLesson={async () => {}}
         doneConversation={async () => alert("Conversation done")}
         addUserMessage={async () => alert("Message added")}
         fullLanguageName={"English"}
         generateText={async () => "Text generated"}
         balanceHours={0.2}
         togglePaymentModal={() => alert("Payment modal toggled")}
-        isRecording={true}
+        isRecording={false}
         startRecording={async () => {}}
         stopRecording={async () => {}}
         cancelRecording={async () => {}}
         isTranscribing={false}
         transcriptMessage="Nice to see you!"
         recordingMilliSeconds={0}
-        recordVisualizerComponent={
-          <Stack
-            sx={{
-              width: "300px",
-              height: "40px",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Divider
-              sx={{
-                width: "100%",
-              }}
-            />
-          </Stack>
-        }
+        recordVisualizerComponent={recordVisualizerComponent}
       />
     </Stack>
   );

@@ -19,7 +19,6 @@ import { HomeworkCard } from "./HomeworkCard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
 import { useLingui } from "@lingui/react";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
-import { BrainCard } from "./BrainCard";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;

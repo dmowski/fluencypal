@@ -45,9 +45,9 @@ interface AiConversationContextType {
   isSavingHomework: boolean;
   isInitializing: boolean;
   isStarted: boolean;
+  setIsStarted: (isStarted: boolean) => void;
   startConversation: (params: StartConversationProps) => Promise<void>;
-  doneConversation: () => Promise<void>;
-  finishLesson: () => Promise<void>;
+  closeConversation: () => Promise<void>;
   conversation: ChatMessage[];
   errorInitiating?: string;
   isClosing: boolean;
@@ -549,17 +549,12 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     });
   };
 
-  const doneConversation = async () => {
-    setIsSavingHomework(true);
-    const isNeedToSaveHomework = modesWithHomework.includes(currentMode);
-    if (isNeedToSaveHomework && !activeHomework) {
-      await saveHomework();
-    }
+  const closeConversation = async () => {
+    setIsClosing(true);
     communicator?.closeHandler();
     setIsStarted(false);
     setIsInitializing(false);
     setConversationId(`${Date.now()}`);
-    setIsSavingHomework(false);
     setConversation([]);
   };
 
@@ -578,8 +573,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     isInitializing,
     isStarted,
     startConversation,
-    doneConversation,
-    finishLesson,
+    closeConversation,
     conversation,
     errorInitiating,
     isClosing,
@@ -594,6 +588,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     gameWords: gameStat,
     isVolumeOn,
     toggleVolume,
+    setIsStarted,
   };
 }
 

@@ -29,6 +29,8 @@ import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
 import dayjs from "dayjs";
 import { StringDiff } from "react-string-diff";
+import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
+import { useLingui } from "@lingui/react";
 
 const loadingHelpMessage = `Generating help message...`;
 
@@ -46,8 +48,7 @@ interface ConversationCanvasProps {
   isSavingHomework: boolean;
   isUserSpeaking: boolean;
   toggleMute: (isMuted: boolean) => void;
-  finishLesson: () => Promise<void>;
-  doneConversation: () => Promise<void>;
+  closeConversation: () => Promise<void>;
   addUserMessage: (message: string) => Promise<void>;
   fullLanguageName: string;
   generateText: (conversationDate: TextAiRequest) => Promise<string>;
@@ -81,8 +82,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isSavingHomework,
   isUserSpeaking,
   toggleMute,
-  finishLesson,
-  doneConversation,
+  closeConversation,
   addUserMessage,
   fullLanguageName,
   generateText,
@@ -98,48 +98,13 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   recordingMilliSeconds,
   recordVisualizerComponent,
 }) => {
-  const [userMessage, setUserMessage] = useState("");
-  const [helpMessage, setHelpMessage] = useState("");
+  const { i18n } = useLingui();
 
   const isSmallBalance = balanceHours < 0.1;
   const isExtremelySmallBalance = balanceHours < 0.05;
 
   const isNeedToShowBalanceWarning =
     (isSmallBalance && conversation.length > 1) || isExtremelySmallBalance;
-
-  const lastUserMessage = conversation
-    .filter((message) => !message.isBot)
-    .find((_, index, arr) => index >= arr.length - 1);
-
-  const lastBotMessage = conversation
-    .filter((message) => message.isBot)
-    .find((_, index, arr) => index >= arr.length - 1);
-
-  useEffect(() => {
-    if (helpMessage && helpMessage !== loadingHelpMessage) {
-      setHelpMessage("");
-    }
-  }, [lastUserMessage?.text]);
-
-  const generateHelpMessage = async () => {
-    setHelpMessage(loadingHelpMessage);
-    const last4Messages = conversation.slice(-4);
-
-    const systemInstructions = `You are grammar, language learning helper system.
-User wants to create his message.
-Last part of conversations: ${JSON.stringify(last4Messages)}.
-Generate one simple short sentences. 5-10 words maximum.
-Use ${fullLanguageName || "English"} language.
-`;
-    const aiResult = await generateText({
-      systemMessage: systemInstructions,
-      userMessage: lastBotMessage?.text || "",
-      model: MODELS.gpt_4o,
-    });
-
-    console.log("Help message result", aiResult);
-    setHelpMessage(aiResult || "Error");
-  };
 
   const isFinishingProcess = isClosing || isSavingHomework || isClosed;
 
@@ -278,7 +243,7 @@ Use ${fullLanguageName || "English"} language.
                       opacity: 0.5,
                     }}
                   >
-                    {isBot ? "Teacher:" : "You:"}
+                    {isBot ? i18n._("Teacher:") : i18n._("You:")}
                   </Typography>
                   <Markdown size="conversation">{message.text || ""}</Markdown>
                 </Stack>
@@ -366,7 +331,7 @@ Use ${fullLanguageName || "English"} language.
                             opacity: 0.7,
                           }}
                         >
-                          Your Message
+                          {i18n._("Your Message")}
                         </Typography>
 
                         <Typography
@@ -380,8 +345,12 @@ Use ${fullLanguageName || "English"} language.
                           }}
                         >
                           <StringDiff
-                            oldValue={isTranscribing ? "Transcribing..." : transcriptMessage || ""}
-                            newValue={isTranscribing ? "Transcribing..." : transcriptMessage || ""}
+                            oldValue={
+                              isTranscribing ? i18n._("Transcribing...") : transcriptMessage || ""
+                            }
+                            newValue={
+                              isTranscribing ? i18n._("Transcribing...") : transcriptMessage || ""
+                            }
                           />
                         </Typography>
                       </Stack>
@@ -393,7 +362,7 @@ Use ${fullLanguageName || "English"} language.
                             opacity: 0.7,
                           }}
                         >
-                          Your Corrected Message:
+                          {i18n._("Your Corrected Message:")}
                         </Typography>
                         <Stack
                           sx={{
@@ -435,16 +404,16 @@ Use ${fullLanguageName || "English"} language.
                                 }}
                                 oldValue={
                                   isTranscribing
-                                    ? "Transcribing..."
+                                    ? i18n._("Transcribing...")
                                     : isAnalyzingResponse
-                                      ? "Analyzing..."
+                                      ? i18n._("Analyzing...")
                                       : transcriptMessage || ""
                                 }
                                 newValue={
                                   isTranscribing
-                                    ? "Transcribing..."
+                                    ? i18n._("Transcribing...")
                                     : isAnalyzingResponse
-                                      ? "Analyzing..."
+                                      ? i18n._("Analyzing...")
                                       : correctedMessage || transcriptMessage || ""
                                 }
                               />
@@ -455,9 +424,15 @@ Use ${fullLanguageName || "English"} language.
                                 <Loader color="#c2c2c2" size={"12px"} />
                               ) : (
                                 <>
-                                  {isNeedToShowCorrection ? (
-                                    <FlaskConical color="#fa8500" size={"18px"} />
+                                  {isNeedToShowCorrection && correctedMessage ? (
+                                    <AudioPlayIcon
+                                      text={correctedMessage}
+                                      borderColor="#fa8500"
+                                      instructions="Calm and clear"
+                                      voice={"coral"}
+                                    />
                                   ) : (
+                                    // xxx
                                     <BadgeCheck color="#2bb6f6" size={"19px"} />
                                   )}
                                 </>
@@ -474,7 +449,7 @@ Use ${fullLanguageName || "English"} language.
                             opacity: 0.7,
                           }}
                         >
-                          Review:
+                          {i18n._("Review:")}
                         </Typography>
                         <Stack
                           sx={{
@@ -489,7 +464,7 @@ Use ${fullLanguageName || "English"} language.
                                 opacity: 0.7,
                               }}
                             >
-                              {isTranscribing ? "Transcribing..." : "Analyzing..."}
+                              {isTranscribing ? i18n._("Transcribing...") : i18n._("Analyzing...")}
                             </Typography>
                           ) : (
                             <>
@@ -506,26 +481,6 @@ Use ${fullLanguageName || "English"} language.
                     </Stack>
                   </Stack>
                 </Stack>
-              )}
-
-              {isFinishingProcess && (
-                <>
-                  <Stack
-                    sx={{
-                      alignItems: "flex-start",
-                      gap: "15px",
-                      width: "100%",
-                    }}
-                  >
-                    {isClosing && <Typography>Finishing lesson...</Typography>}
-                    {isSavingHomework && <Typography>Saving homework...</Typography>}
-                    {isClosed && (
-                      <Button onClick={() => doneConversation()} variant="contained">
-                        Close
-                      </Button>
-                    )}
-                  </Stack>
-                </>
               )}
 
               {!isFinishingProcess && (
@@ -558,7 +513,7 @@ Use ${fullLanguageName || "English"} language.
                         }}
                         disabled
                       >
-                        Analyzing
+                        {i18n._("Analyzing")}
                       </Button>
                     )}
 
@@ -574,7 +529,7 @@ Use ${fullLanguageName || "English"} language.
                         }}
                         onClick={async () => addUserMessage(transcriptMessage)}
                       >
-                        Send
+                        {i18n._("Send")}
                       </Button>
                     )}
 
@@ -590,7 +545,7 @@ Use ${fullLanguageName || "English"} language.
                         }}
                         onClick={async () => stopRecording()}
                       >
-                        Done
+                        {i18n._("Done")}
                       </Button>
                     )}
 
@@ -606,7 +561,7 @@ Use ${fullLanguageName || "English"} language.
                         }}
                         onClick={async () => startRecording()}
                       >
-                        Record Message
+                        {i18n._("Record Message")}
                       </Button>
                     )}
 
@@ -616,7 +571,7 @@ Use ${fullLanguageName || "English"} language.
                         startIcon={<Mic />}
                         onClick={async () => await startRecording()}
                       >
-                        Re-record
+                        {i18n._("Re-record")}
                       </Button>
                     )}
 
@@ -692,16 +647,16 @@ Use ${fullLanguageName || "English"} language.
                               }
                               align="right"
                             >
-                              You have a low balance |{" "}
+                              {i18n._("You have a low balance")} |{" "}
                               {`${convertHoursToHumanFormat(balanceHours)}`} <br />
-                              It makes sense to top up your balance.
+                              {i18n._("It makes sense to top up your balance.")}
                             </Typography>
                             <Button
                               startIcon={<AddCardIcon />}
                               onClick={() => togglePaymentModal(true)}
                               variant="contained"
                             >
-                              Top up
+                              {i18n._("Top up")}
                             </Button>
                           </Stack>
                         )}

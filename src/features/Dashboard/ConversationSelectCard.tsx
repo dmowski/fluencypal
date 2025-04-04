@@ -36,18 +36,10 @@ export const ConversationSelectCard = () => {
       >
         <ClickCard
           isDone={false}
-          title={i18n._(`Talk Mode`)}
+          title={i18n._(`Conversation practice`)}
           subTitle={i18n._(`Talk to the AI and it will respond to you`)}
           buttonIcon={<Mic size={"30px"} />}
           onStart={() => aiConversation.startConversation({ mode: "talk" })}
-        />
-
-        <ClickCard
-          isDone={false}
-          title={i18n._(`Talk & Correct Mode`)}
-          subTitle={i18n._(`Talk to the AI, and it will correct you if you make a mistake`)}
-          buttonIcon={<TrendingUp size={"30px"} />}
-          onStart={() => aiConversation.startConversation({ mode: "talkAndCorrect" })}
         />
 
         <ClickCard

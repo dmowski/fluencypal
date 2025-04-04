@@ -80,7 +80,35 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
       landingHighlight: `Improve your vocabulary and speaking skills while having fun! Alias is a dynamic word-guessing game where you'll practice explaining and guessing words creatively, expanding your linguistic confidence.`,
       youTubeVideoUrl: "https://www.youtube.com/embed/e_1NupxxPcQ",
     },
+    {
+      id: "small-talk-with-a-stranger",
+      landingHighlight: `Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.`,
+      contentPage:
+        i18n._(`Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.
 
+## Why You Should Play *Small Talk with a Stranger*
+1. Develop the confidence to start conversations in unfamiliar social settings.  
+2. Learn casual conversation starters about the weather, hobbies, or recent events.  
+3. Practice being an active listener and responding with genuine interest.  
+4. Overcome nervousness or hesitation by interacting with a supportive AI partner.  
+5. Build comfortable, everyday communication skills you can apply anywhere.
+
+## How the Scenario Works
+In this scenario, you’ll step into the role of someone meeting a new acquaintance at a social event. The AI acts as a friendly stranger, prompting you to talk about casual topics like weather or shared interests. As you exchange pleasantries, the AI will adapt to your responses, helping you refine your small-talk abilities.`),
+      category: { categoryTitle: i18n._("Social"), categoryId: "social" },
+      input: [],
+      title: i18n._("Small Talk Practice"),
+      subTitle: i18n._("Develop your conversational skills with casual small talk"),
+      instructionToAi:
+        "You are a friendly stranger meeting the user at a social event. Engage in small talk about the weather, hobbies, or recent events.",
+      exampleOfFirstMessageFromAi:
+        "Hey there, I'm Fable. This is my first time at an event like this. How about you? Enjoying yourself so far?",
+      illustrationDescription:
+        "Two people casually chatting at a coffee shop or park, both smiling and engaged in friendly conversation, while others are in the background enjoying the atmosphere.",
+      imageSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c.jpeg",
+      videoSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c_1.mp4",
+      voice: "sage",
+    },
     {
       id: "job-interview",
       landingHighlight: `Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.`,
@@ -163,36 +191,8 @@ Candidate's info below, don't include questions that are already answered by can
       videoSrc: "/role/090f7de1-91bd-4210-a99c-4eb077c9efd7_1.mp4",
       voice: "alloy",
     },
-    {
-      id: "small-talk-with-a-stranger",
-      landingHighlight: `Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.`,
-      contentPage:
-        i18n._(`Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.
 
-## Why You Should Play *Small Talk with a Stranger*
-1. Develop the confidence to start conversations in unfamiliar social settings.  
-2. Learn casual conversation starters about the weather, hobbies, or recent events.  
-3. Practice being an active listener and responding with genuine interest.  
-4. Overcome nervousness or hesitation by interacting with a supportive AI partner.  
-5. Build comfortable, everyday communication skills you can apply anywhere.
-
-## How the Scenario Works
-In this scenario, you’ll step into the role of someone meeting a new acquaintance at a social event. The AI acts as a friendly stranger, prompting you to talk about casual topics like weather or shared interests. As you exchange pleasantries, the AI will adapt to your responses, helping you refine your small-talk abilities.`),
-      category: { categoryTitle: i18n._("Social"), categoryId: "social" },
-      input: [],
-      title: i18n._("Small Talk Practice"),
-      subTitle: i18n._("Develop your conversational skills with casual small talk"),
-      instructionToAi:
-        "You are a friendly stranger meeting the user at a social event. Engage in small talk about the weather, hobbies, or recent events.",
-      exampleOfFirstMessageFromAi:
-        "Hey there, I'm Fable. This is my first time at an event like this. How about you? Enjoying yourself so far?",
-      illustrationDescription:
-        "Two people casually chatting at a coffee shop or park, both smiling and engaged in friendly conversation, while others are in the background enjoying the atmosphere.",
-      imageSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c.jpeg",
-      videoSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c_1.mp4",
-      voice: "sage",
-    },
-    {
+    /*{
       id: "instant-correction",
       category: { categoryTitle: i18n._("Speech"), categoryId: "speech" },
       title: i18n._("Instant Speech Correction"),
@@ -264,7 +264,7 @@ Example of topics: weather, hobbies, family, work, travel, food, music, movies, 
           required: false,
         },
       ],
-    },
+    },*/
 
     {
       id: "in-the-restaurant",

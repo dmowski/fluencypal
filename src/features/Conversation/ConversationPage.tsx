@@ -113,8 +113,7 @@ Do not wrap answer with any wrappers like "answer": "...". Your response will be
           isSavingHomework={aiConversation.isSavingHomework}
           isUserSpeaking={aiConversation.isUserSpeaking}
           toggleMute={aiConversation.toggleMute}
-          finishLesson={aiConversation.finishLesson}
-          doneConversation={aiConversation.doneConversation}
+          closeConversation={aiConversation.closeConversation}
           addUserMessage={async (message) => {
             recorder.removeTranscript();
             await aiConversation.addUserMessage(message);
