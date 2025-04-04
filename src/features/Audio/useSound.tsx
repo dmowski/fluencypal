@@ -8,6 +8,7 @@ const soundsMap = {
   win2: `${basePath}mixkit-instant-win-2021.wav`,
   win3: `${basePath}mixkit-melodic-bonus-collect-1938.wav`,
   win4: `${basePath}mixkit-winning-notification-2018.wav`,
+  lose1: `${basePath}mixkit-circus-lose-2030.wav`,
 } as const;
 
 type SoundKey = keyof typeof soundsMap;

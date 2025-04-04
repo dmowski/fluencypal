@@ -142,6 +142,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
       if (!isBad) {
         sound.play("win3", 0.2);
+      } else {
+        sound.play("lose1", 0.2);
       }
     } catch (error) {
       setIsAnalyzingError(true);
