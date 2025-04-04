@@ -3,7 +3,7 @@
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
-import { Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import { Alert, Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
 import { ArrowUp, Check, Loader, Mic, Trash2, X } from "lucide-react";
 
 import AddCardIcon from "@mui/icons-material/AddCard";
@@ -21,21 +21,12 @@ interface ConversationCanvasProps {
   conversation: ChatMessage[];
   isAiSpeaking: boolean;
   gameWords: GuessGameStat | null;
-  isShowUserInput: boolean;
-  setIsShowUserInput: (isShowUserInput: boolean) => void;
-  isMuted: boolean;
-  isVolumeOn: boolean;
-  toggleVolume: (isVolumeOn: boolean) => void;
   isClosed: boolean;
   isClosing: boolean;
   isSavingHomework: boolean;
-  isUserSpeaking: boolean;
-  toggleMute: (isMuted: boolean) => void;
-  closeConversation: () => Promise<void>;
   addUserMessage: (message: string) => Promise<void>;
-  fullLanguageName: string;
-  generateText: (conversationDate: TextAiRequest) => Promise<string>;
   balanceHours: number;
+  recordingError?: string;
   togglePaymentModal: (isOpen: boolean) => void;
   analyzeUserMessage: ({
     previousBotMessage,
@@ -62,20 +53,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   conversation,
   isAiSpeaking,
   gameWords,
-  isShowUserInput,
-  setIsShowUserInput,
-  isMuted,
-  isVolumeOn,
-  toggleVolume,
   isClosed,
   isClosing,
   isSavingHomework,
-  isUserSpeaking,
-  toggleMute,
-  closeConversation,
   addUserMessage,
-  fullLanguageName,
-  generateText,
   balanceHours,
   togglePaymentModal,
   analyzeUserMessage,
@@ -87,6 +68,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isRecording,
   recordingMilliSeconds,
   recordVisualizerComponent,
+  recordingError,
 }) => {
   const { i18n } = useLingui();
 
@@ -316,6 +298,24 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 gap: "10px",
               }}
             >
+              {recordingError && (
+                <Stack>
+                  <Alert
+                    severity="error"
+                    variant="filled"
+                    sx={{
+                      width: "100%",
+                      maxWidth: "900px",
+                      backgroundColor: "#c4574f",
+                      color: "#fff",
+                      boxSizing: "border-box",
+                    }}
+                  >
+                    {recordingError}
+                  </Alert>
+                </Stack>
+              )}
+
               {(transcriptMessage || isTranscribing || isAnalyzingResponse) && (
                 <Stack
                   sx={{

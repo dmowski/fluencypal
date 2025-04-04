@@ -112,23 +112,13 @@ For context, here is the previous bot message: "${previousBotMessage}".
           conversation={aiConversation.conversation}
           isAiSpeaking={aiConversation.isAiSpeaking}
           gameWords={aiConversation.gameWords}
-          isShowUserInput={aiConversation.isShowUserInput}
-          setIsShowUserInput={aiConversation.setIsShowUserInput}
-          isMuted={aiConversation.isMuted}
-          isVolumeOn={aiConversation.isVolumeOn}
-          toggleVolume={aiConversation.toggleVolume}
           isClosed={aiConversation.isClosed}
           isClosing={aiConversation.isClosing}
           isSavingHomework={aiConversation.isSavingHomework}
-          isUserSpeaking={aiConversation.isUserSpeaking}
-          toggleMute={aiConversation.toggleMute}
-          closeConversation={aiConversation.closeConversation}
           addUserMessage={async (message) => {
             recorder.removeTranscript();
             await aiConversation.addUserMessage(message);
           }}
-          fullLanguageName={settings.fullLanguageName || "English"}
-          generateText={textAi.generate}
           balanceHours={usage.balanceHours}
           togglePaymentModal={usage.togglePaymentModal}
           analyzeUserMessage={analyzeUserMessage}
@@ -140,6 +130,7 @@ For context, here is the previous bot message: "${previousBotMessage}".
           isRecording={recorder.isRecording}
           recordingMilliSeconds={recorder.recordingMilliSeconds}
           recordVisualizerComponent={recorder.visualizerComponent}
+          recordingError={recorder.error}
         />
       ) : (
         <Dashboard rolePlayInfo={rolePlayInfo} />

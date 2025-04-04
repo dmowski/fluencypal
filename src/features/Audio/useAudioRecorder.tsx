@@ -18,6 +18,7 @@ export const useAudioRecorder = () => {
 
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcription, setTranscription] = useState<string | null>(null);
+  const [transcriptionError, setTranscriptionError] = useState<string | null>(null);
 
   const recorderControls = useVoiceVisualizer();
 
@@ -35,6 +36,7 @@ export const useAudioRecorder = () => {
   const isCancel = useRef(false);
 
   const getRecordTranscript = async (recordedAudioBlog: Blob) => {
+    setTranscriptionError(null);
     if (!recordedAudioBlog) {
       setTranscription(null);
       return;
@@ -42,13 +44,18 @@ export const useAudioRecorder = () => {
 
     setIsTranscribing(true);
     const token = await auth.getToken();
-    const transcriptResponse = await sendTranscriptRequest({
-      audioBlob: recordedAudioBlog,
-      authKey: token,
-      languageCode: learnLanguageCode,
-      audioDuration: audioDurationRef.current || 5,
-    });
-    setTranscription(transcriptResponse.transcript);
+    try {
+      const transcriptResponse = await sendTranscriptRequest({
+        audioBlob: recordedAudioBlog,
+        authKey: token,
+        languageCode: learnLanguageCode,
+        audioDuration: audioDurationRef.current || 5,
+      });
+      setTranscription(transcriptResponse.transcript);
+    } catch (error) {
+      setTranscriptionError("Error during transcription");
+    }
+
     setIsTranscribing(false);
   };
 
@@ -74,7 +81,7 @@ export const useAudioRecorder = () => {
     isRecording: recorderControls.isRecordingInProgress,
     isTranscribing,
     transcription,
-    error: recorderControls.error,
+    error: recorderControls.error?.message || transcriptionError,
     recordingMilliSeconds: recorderControls.recordingTime,
     removeTranscript: () => {
       setTranscription(null);

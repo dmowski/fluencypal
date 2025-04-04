@@ -146,20 +146,10 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         analyzeUserMessage={analyzeMessage}
         isAiSpeaking={false}
         gameWords={gameStat}
-        isShowUserInput={true}
-        setIsShowUserInput={() => alert("User input toggled")}
-        isMuted={false}
-        isVolumeOn={true}
-        toggleVolume={() => alert("Volume toggled")}
         isClosed={false}
         isClosing={false}
         isSavingHomework={false}
-        isUserSpeaking={false}
-        toggleMute={() => {}}
-        closeConversation={async () => {}}
         addUserMessage={async () => alert("Message added")}
-        fullLanguageName={"English"}
-        generateText={async () => "Text generated"}
         balanceHours={0.2}
         togglePaymentModal={() => alert("Payment modal toggled")}
         isRecording={false}
@@ -170,6 +160,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         transcriptMessage="Nice to see you!"
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
+        recordingError={"Some error occurred"}
       />
     </Stack>
   );
