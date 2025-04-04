@@ -90,15 +90,11 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           sx={{
             gap: "40px",
             display: "grid",
-            gridTemplateColumns: "2fr 1fr",
+            gridTemplateColumns: "1fr",
             boxSizing: "border-box",
-            "@media (max-width: 900px)": {
-              gridTemplateColumns: "1fr",
-            },
           }}
         >
           <TasksCard />
-          <HomeworkCard />
         </Stack>
 
         <Stack
