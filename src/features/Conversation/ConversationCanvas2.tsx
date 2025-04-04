@@ -7,7 +7,7 @@ import { Alert, Button, IconButton, Stack, Tooltip, Typography } from "@mui/mate
 import { ArrowUp, Check, Loader, Mic, Trash2, X } from "lucide-react";
 
 import AddCardIcon from "@mui/icons-material/AddCard";
-import { TextAiRequest } from "../Ai/useTextAi";
+
 import { AliasGamePanel } from "./AliasGamePanel";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { ChatMessage } from "@/common/conversation";
@@ -16,6 +16,7 @@ import dayjs from "dayjs";
 import { StringDiff } from "react-string-diff";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useLingui } from "@lingui/react";
+import { useSound } from "../Audio/useSound";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -71,6 +72,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   recordingError,
 }) => {
   const { i18n } = useLingui();
+
+  const sound = useSound();
 
   const isSmallBalance = balanceHours < 0.1;
   const isExtremelySmallBalance = balanceHours < 0.05;
@@ -136,6 +139,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
       setCorrectedMessage(correctedMessage || null);
       setDescription(description || null);
       setIsAnalyzingMessageWithAi(false);
+
+      if (!isBad) {
+        sound.play("win3", 0.2);
+      }
     } catch (error) {
       setIsAnalyzingError(true);
       setIsAnalyzingMessageWithAi(false);
@@ -173,6 +180,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
       clearTimeout(timeout);
     };
   }, [conversation, isAnalyzingResponse, isRecording]);
+
+  const isTranscriptIsGreat =
+    !isNeedToShowCorrection && !isTranscribing && !isAnalyzingResponse && transcriptMessage;
 
   return (
     <Stack sx={{ gap: "40px" }}>

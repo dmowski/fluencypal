@@ -40,6 +40,7 @@ import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
 import MenuIcon from "@mui/icons-material/Menu";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { useAiConversation } from "../Conversation/useAiConversation";
+import { useLingui } from "@lingui/react";
 
 export type HeaderMode = "landing" | "practice";
 
@@ -75,6 +76,7 @@ export function HeaderComponent({
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
   const [isHighlightJoin, setIsHighlightJoin] = useState(false);
   const aiConversation = useAiConversation();
+  const { i18n } = useLingui();
 
   const isLanding = !(
     pathname.startsWith("/practice") || pathname.startsWith(`${getUrlStart(lang)}practice`)
@@ -240,8 +242,8 @@ export function HeaderComponent({
                     {aiConversation.isClosed
                       ? "Back"
                       : aiConversation.isClosing
-                        ? "Finishing the lesson..."
-                        : `Conversation mode: ${activeConversationTitle}`}
+                        ? i18n._("Finishing the lesson...")
+                        : i18n._(`Conversation`)}
                   </Typography>
 
                   <Typography

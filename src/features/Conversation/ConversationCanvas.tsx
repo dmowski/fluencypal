@@ -13,11 +13,9 @@ import { KeyboardButton } from "../uiKit/Button/KeyboardButton";
 import { UserMessage } from "./UserMessage";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import { HelpButton } from "../uiKit/Button/HelpButton";
-import { TextAiRequest, useTextAi } from "../Ai/useTextAi";
+import { TextAiRequest } from "../Ai/useTextAi";
 import { MODELS } from "@/common/ai";
-import { useSettings } from "../Settings/useSettings";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
-import { useUsage } from "../Usage/useUsage";
 import { AliasGamePanel } from "./AliasGamePanel";
 import { VolumeButton } from "../uiKit/Button/VolumeButton";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
@@ -79,6 +77,7 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
 }) => {
   const [userMessage, setUserMessage] = useState("");
   const [helpMessage, setHelpMessage] = useState("");
+
   const webCam = useWebCam();
 
   const isSmallBalance = balanceHours < 0.1;
