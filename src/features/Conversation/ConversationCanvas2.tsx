@@ -557,7 +557,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                 color: "#b6d5f3",
                               }}
                             >
-                              {i18n._(`New Words to Vocabulary:`)} {i18n._(`+${newWords.length}`)}
+                              {i18n._(`New Words to Vocabulary:`)} +{newWords.length}
                             </Typography>
                           </Stack>
                         </Tooltip>
