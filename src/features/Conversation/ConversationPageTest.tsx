@@ -6,7 +6,7 @@ import { sleep } from "openai/core.mjs";
 import { ConversationCanvas2 } from "./ConversationCanvas2";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAiConversation } from "./useAiConversation";
 
 interface ConversationPageTestProps {

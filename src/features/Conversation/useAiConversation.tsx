@@ -460,6 +460,8 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
     }
     if (gameWords) {
       setGameStat(gameWords);
+    } else {
+      setGameStat(null);
     }
 
     try {
