@@ -89,7 +89,7 @@ export const useAudioRecorder = () => {
         fullscreen={true}
         barWidth={3}
         gap={1}
-        width={"290px"}
+        width={"150px"}
       />
     ) : null,
   };
