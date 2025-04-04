@@ -4,25 +4,10 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import {
-  ArrowUp,
-  BadgeAlert,
-  BadgeCheck,
-  Check,
-  FlaskConical,
-  Loader,
-  Mic,
-  SendHorizontal,
-  Settings,
-  Trash2,
-  Wand,
-  X,
-} from "lucide-react";
+import { ArrowUp, Check, Loader, Mic, Trash2, X } from "lucide-react";
 
-import { UserInputMessage } from "./UserInputMessage";
 import AddCardIcon from "@mui/icons-material/AddCard";
-import { TextAiRequest, useTextAi } from "../Ai/useTextAi";
-import { MODELS } from "@/common/ai";
+import { TextAiRequest } from "../Ai/useTextAi";
 import { AliasGamePanel } from "./AliasGamePanel";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { ChatMessage } from "@/common/conversation";
@@ -31,8 +16,6 @@ import dayjs from "dayjs";
 import { StringDiff } from "react-string-diff";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useLingui } from "@lingui/react";
-
-const loadingHelpMessage = `Generating help message...`;
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -142,7 +125,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     setNewWords([]);
     try {
       const userMessage = transcriptMessage;
-      const previousBotMessage = conversation[conversation.length - 1].text;
+      const previousBotMessage = conversation.length
+        ? conversation[conversation.length - 1].text
+        : "";
       const { sourceMessage, correctedMessage, description, newWords } = await analyzeUserMessage({
         previousBotMessage,
         message: userMessage,

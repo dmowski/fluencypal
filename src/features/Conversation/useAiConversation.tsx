@@ -176,11 +176,6 @@ function useProvideAiConversation(): AiConversationContextType {
     };
   }, []);
 
-  const calculateWordsUsageFromConversation = async () => {
-    const userMessages = conversation.filter((m) => !m.isBot);
-    const userText = userMessages.map((m) => m.text).join(" ");
-  };
-
   const finishLesson = async () => {
     setIsClosing(true);
     communicatorRef.current?.toggleMute(true);
@@ -198,8 +193,6 @@ Your homework is to repeat the following text:
       : isNeedHomework
         ? newInstructionForHomework
         : generalSummary;
-
-    await calculateWordsUsageFromConversation();
 
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
     if (isNeedToSaveUserInfo) {
@@ -550,9 +543,16 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
 
   const closeConversation = async () => {
     setIsClosing(true);
+    const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
+    if (isNeedToSaveUserInfo && conversation.length > 4) {
+      console.log("updateUserInfo", conversation);
+      await aiUserInfo.updateUserInfo(conversation);
+    }
+
     communicator?.closeHandler();
     setIsStarted(false);
     setIsInitializing(false);
+
     setConversationId(`${Date.now()}`);
     setConversation([]);
   };
