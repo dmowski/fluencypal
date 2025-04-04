@@ -134,6 +134,7 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
       <Typography
         sx={{
           fontSize: "21px",
+          fontWeight: 350,
         }}
       >
         {children}

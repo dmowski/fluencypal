@@ -21,7 +21,6 @@ import { Homework } from "@/common/homework";
 import { UsageLog } from "@/common/usage";
 import { ChatMessage, ConversationMode } from "@/common/conversation";
 import { useTasks } from "../Tasks/useTasks";
-import { useWords } from "../Words/useWords";
 import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { GuessGameStat } from "./types";
@@ -121,7 +120,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isClosed, setIsClosed] = useState(false);
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
   const [isUserSpeaking, setIsUserSpeaking] = useState(false);
-  const words = useWords();
   const tasks = useTasks();
 
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
@@ -181,7 +179,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const calculateWordsUsageFromConversation = async () => {
     const userMessages = conversation.filter((m) => !m.isBot);
     const userText = userMessages.map((m) => m.text).join(" ");
-    await words.addWordsStatFromText(userText);
   };
 
   const finishLesson = async () => {

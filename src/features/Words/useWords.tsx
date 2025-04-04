@@ -12,7 +12,7 @@ import { useTextAi } from "../Ai/useTextAi";
 interface WordsContextType {
   wordsStats: WordsStats | null;
   loading: boolean;
-  addWordsStatFromText: (text: string) => Promise<void>;
+  addWordsStatFromText: (text: string) => Promise<string[]>;
   totalWordsCount: number;
   getNewWordsToLearn: () => Promise<string[]>;
   removeWordsToLearn: () => void;
@@ -41,6 +41,14 @@ function useProvideWords(): WordsContextType {
       throw new Error("Words stats doc ref is not defined");
     }
 
+    const newWordsList: string[] = [];
+    Object.keys(newWords).forEach((word) => {
+      const isUsedWord = wordsStats?.dictionary?.[word];
+      if (!isUsedWord && !wordsToLearn.includes(word)) {
+        newWordsList.push(word);
+      }
+    });
+
     const partToUpdate = Object.keys(newWords).reduce(
       (acc, word) => {
         acc[word] = (wordsStats?.dictionary?.[word] || 0) + newWords[word];
@@ -56,11 +64,13 @@ function useProvideWords(): WordsContextType {
       },
       { merge: true }
     );
+
+    return newWordsList;
   };
 
   const addWordsStatFromText = async (text: string) => {
     const stat = getWordsFromText(text);
-    await addWords(stat);
+    return await addWords(stat);
   };
 
   const getNewWordsToLearn = async () => {

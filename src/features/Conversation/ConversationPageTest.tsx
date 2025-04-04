@@ -106,19 +106,26 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     }, 300);
   }, []);
 
-  const analyzeMessage = async (message: string) => {
+  const analyzeMessage = async ({
+    previousBotMessage,
+    message,
+  }: {
+    previousBotMessage: string;
+    message: string;
+  }) => {
     await sleep(1000);
     return {
-      correctedMessage: "Nice to s you!",
-      description: "Fees",
+      correctedMessage: "Nice to be here!",
+      description: "Need to pay attention to the grammar",
       sourceMessage: message,
+      newWords: ["Hello", "Amazing"],
     };
   };
 
   const recordVisualizerComponent = (
     <Stack
       sx={{
-        width: "300px",
+        width: "200px",
         height: "40px",
         alignItems: "center",
         justifyContent: "center",
@@ -149,8 +156,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         isSavingHomework={false}
         isUserSpeaking={false}
         toggleMute={() => {}}
-        finishLesson={async () => {}}
-        doneConversation={async () => alert("Conversation done")}
+        closeConversation={async () => {}}
         addUserMessage={async () => alert("Message added")}
         fullLanguageName={"English"}
         generateText={async () => "Text generated"}
@@ -160,7 +166,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         startRecording={async () => {}}
         stopRecording={async () => {}}
         cancelRecording={async () => {}}
-        isTranscribing={false}
+        isTranscribing={true}
         transcriptMessage="Nice to see you!"
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
