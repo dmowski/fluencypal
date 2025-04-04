@@ -41,6 +41,8 @@ export async function POST(request: Request) {
   const urlQueryParams = request.url.split("?")[1];
   const urlParams = new URLSearchParams(urlQueryParams);
   const languageCodeString = urlParams.get("lang") || "";
+  const format = urlParams.get("format") || "webm";
+
   const supportedLang =
     supportedLanguages.find((lang) => lang === languageCodeString.toLowerCase()) || "en";
 
@@ -60,6 +62,7 @@ export async function POST(request: Request) {
   });
 
   const model: TranscriptAiModel = "gpt-4o-transcribe";
+  console.log("AUDIO format", format, "SIZE", actualFileSizeMb);
   const transcriptionResult = await client.audio.transcriptions.create({
     file: file,
     model: model,

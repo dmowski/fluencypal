@@ -6,17 +6,19 @@ interface SendTranscriptRequestProps {
   audioBlob: Blob;
   authKey: string;
   audioDuration: number;
+  format: string;
 }
 export const sendTranscriptRequest = async ({
   languageCode,
   audioBlob,
   authKey,
   audioDuration,
+  format,
 }: SendTranscriptRequestProps) => {
   const formData = new FormData();
   formData.append("audio", audioBlob, "recording.webm");
   const response = await fetch(
-    `/api/transcript?lang=${languageCode}&audioDuration=${audioDuration}`,
+    `/api/transcript?lang=${languageCode}&audioDuration=${audioDuration}&format=${format}`,
     {
       method: "POST",
       body: formData,

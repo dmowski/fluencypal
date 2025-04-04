@@ -30,12 +30,14 @@ export const useAudioRecorder = () => {
       return;
     }
 
-    getRecordTranscript(recorderControls.recordedBlob);
+    const format = recorderControls.recordedBlob.type.split("/")[1];
+
+    getRecordTranscript(recorderControls.recordedBlob, format);
   }, [recorderControls.recordedBlob]);
 
   const isCancel = useRef(false);
 
-  const getRecordTranscript = async (recordedAudioBlog: Blob) => {
+  const getRecordTranscript = async (recordedAudioBlog: Blob, format: string) => {
     setTranscriptionError(null);
     if (!recordedAudioBlog) {
       setTranscription(null);
@@ -50,6 +52,7 @@ export const useAudioRecorder = () => {
         authKey: token,
         languageCode: learnLanguageCode,
         audioDuration: audioDurationRef.current || 5,
+        format,
       });
       setTranscription(transcriptResponse.transcript);
     } catch (error) {
