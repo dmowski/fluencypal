@@ -26,7 +26,7 @@ interface ConversationCanvasProps {
   isSavingHomework: boolean;
   addUserMessage: (message: string) => Promise<void>;
   balanceHours: number;
-  recordingError?: string;
+  recordingError: string;
   togglePaymentModal: (isOpen: boolean) => void;
   analyzeUserMessage: ({
     previousBotMessage,

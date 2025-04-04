@@ -81,7 +81,7 @@ export const useAudioRecorder = () => {
     isRecording: recorderControls.isRecordingInProgress,
     isTranscribing,
     transcription,
-    error: recorderControls.error?.message || transcriptionError,
+    error: recorderControls.error?.message || transcriptionError || "",
     recordingMilliSeconds: recorderControls.recordingTime,
     removeTranscript: () => {
       setTranscription(null);
