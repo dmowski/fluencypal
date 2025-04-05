@@ -29,7 +29,7 @@ export const RolePlayCardApp = ({ scenario, onClick }: RolePlayCardProps) => {
           transform: "scale(1.02)",
           ".role-play-image": {
             transform: "scale(1.02)",
-            height: "calc(100% - 70px)",
+            //height: "calc(100% - 80px)",
           },
           ".role-play-button": {
             backgroundColor: "rgba(255, 255, 255, 0.2)",

@@ -63,7 +63,7 @@ export const ConversationSelectCard = () => {
         }}
       >
         <GradientBgCard
-          title={i18n._(`Introduce`)}
+          title={i18n._(`Goal`)}
           subTitle={i18n._(`Set the goal of your learning`)}
           onClick={() => aiConversation.startConversation({ mode: "beginner" })}
           value={""}

@@ -1,6 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useUsage } from "./useUsage";
-import { ChartNoAxesCombined, VenetianMask, Wallet } from "lucide-react";
+import { ChartNoAxesCombined, GraduationCap, Telescope, VenetianMask, Wallet } from "lucide-react";
 import PsychologyIcon from "@mui/icons-material/Psychology";
 import { JSX } from "react";
 import { ContactList } from "../Landing/Contact/ContactList";
@@ -55,7 +55,7 @@ export const NoBalanceBlock = () => {
       <Stack
         sx={{
           padding: "20px 20px 20px 30px",
-          gap: "60px",
+          gap: "90px",
           maxWidth: "1400px",
           width: "100%",
           boxSizing: "border-box",
@@ -94,7 +94,31 @@ export const NoBalanceBlock = () => {
         <UsageStatsCards />
 
         <Stack sx={{ width: "100%", gap: "15px" }}>
-          <Typography variant="h6">{i18n._("Unlock full access to FluencyPal")}</Typography>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "15px",
+              paddingBottom: "10px",
+            }}
+          >
+            <Stack
+              sx={{
+                borderRadius: "50%",
+                background: "linear-gradient(45deg,rgb(25, 78, 142) 0%,rgb(109, 209, 151) 100%)",
+                height: "50px",
+                width: "50px",
+
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <GraduationCap size={"25px"} />
+            </Stack>
+            <Typography variant="h6">{i18n._(`Unlock full access to FluencyPal`)}</Typography>
+          </Stack>
+
           <Stack
             sx={{
               display: "grid",
@@ -116,19 +140,43 @@ export const NoBalanceBlock = () => {
               title={i18n._("Conversations with AI")}
             />
             <WinCard icon={<VenetianMask size={50} />} title={i18n._("Role-play simulations")} />
-            <WinCard
-              icon={<ChartNoAxesCombined size={50} />}
-              title={i18n._("Daily tasks and progress tracking")}
-            />
+            <WinCard icon={<ChartNoAxesCombined size={50} />} title={i18n._("Progress tracking")} />
           </Stack>
         </Stack>
 
         <Stack sx={{ width: "100%", gap: "15px", alignItems: "flex-start" }}>
-          <Typography variant="h6">{i18n._("Ready to keep going?")}</Typography>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "15px",
+              paddingBottom: "10px",
+            }}
+          >
+            <Stack
+              sx={{
+                borderRadius: "50%",
+                background: "linear-gradient(45deg,rgb(25, 78, 142) 0%,rgb(202, 109, 209) 100%)",
+                height: "50px",
+                width: "50px",
+
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Telescope size={"25px"} />
+            </Stack>
+            <Typography variant="h6">{i18n._(`Ready to keep going?`)}</Typography>
+          </Stack>
+
           <Button
             variant="contained"
             size="large"
             color="info"
+            sx={{
+              padding: "15px 30px",
+            }}
             onClick={() => usage.togglePaymentModal(true)}
             startIcon={<Wallet />}
           >
