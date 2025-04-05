@@ -3,6 +3,7 @@ import { colorMap, ProgressGrid } from "./ProgressGrid";
 import { useSettings } from "../../Settings/useSettings";
 import { useTasks } from "../../Tasks/useTasks";
 import { useLingui } from "@lingui/react";
+import { Calendar } from "lucide-react";
 
 export const ProgressBoard = () => {
   const settings = useSettings();
@@ -29,19 +30,31 @@ export const ProgressBoard = () => {
           maxWidth: "1302px",
         }}
       >
-        <Stack>
-          <Typography variant="h2" className="decor-title">
-            {i18n._(`Progress Calendar`)}
-          </Typography>
-          <Typography
-            variant="caption"
+        <Stack
+          sx={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "15px",
+            paddingBottom: "10px",
+          }}
+        >
+          <Stack
             sx={{
-              opacity: 0.7,
+              borderRadius: "50%",
+              background: "linear-gradient(45deg,rgb(69, 141, 230) 0%,rgb(109, 111, 209) 100%)",
+              height: "50px",
+              width: "50px",
+
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            {i18n._(`Your daily progress`)}
-          </Typography>
+            <Calendar size={"25px"} />
+          </Stack>
+          <Typography variant="h6">{i18n._(`Progress Calendar`)}</Typography>
         </Stack>
+
         <Stack
           sx={{
             flexDirection: "row",

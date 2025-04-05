@@ -13,16 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:60
-#. js-lingui-explicit-id
-msgid "Introduce yourself"
-msgstr "Stellen Sie sich vor"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:61
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Legen Sie das Ziel Ihres Lernens fest"
-
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:96
@@ -40,7 +30,7 @@ msgstr ""
 
 #: src/libs/metadata.ts:67
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:45
+#: src/features/Dashboard/ConversationSelectCard.tsx:51
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Üben"
@@ -377,7 +367,7 @@ msgstr ""
 "verwendet haben."
 
 #: src/features/Usage/UsageStatsCards.tsx:116
-#: src/features/Usage/UsageStatsCards.tsx:473
+#: src/features/Usage/UsageStatsCards.tsx:474
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Bisher wurden keine Wörter verwendet"
@@ -429,37 +419,38 @@ msgstr "Noch keine Korrekturen"
 msgid "Description:"
 msgstr "Beschreibung:"
 
-#: src/features/Usage/UsageStatsCards.tsx:418
+#: src/features/Usage/UsageStatsCards.tsx:419
 #. js-lingui-explicit-id
 msgid "Here’s you will see your progress"
 msgstr "Hier sehen Sie Ihren Fortschritt"
 
-#: src/features/Usage/UsageStatsCards.tsx:419
+#: src/features/Usage/UsageStatsCards.tsx:420
 #. js-lingui-explicit-id
 msgid "Here’s what you’ve achieved so far"
 msgstr "Hier ist, was Sie bisher erreicht haben"
 
-#: src/features/Usage/UsageStatsCards.tsx:439
+#: src/features/Usage/UsageStatsCards.tsx:440
+#: src/features/Dashboard/ConversationSelectCard.tsx:206
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Wörter"
 
-#: src/features/Usage/UsageStatsCards.tsx:520
+#: src/features/Usage/UsageStatsCards.tsx:510
 #. js-lingui-explicit-id
-msgid "Grammar fixes"
-msgstr "Grammatik-Korrekturen"
+msgid "Corrections"
+msgstr "Korrekturen"
 
-#: src/features/Usage/UsageStatsCards.tsx:566
+#: src/features/Usage/UsageStatsCards.tsx:556
 #. js-lingui-explicit-id
-msgid "Minutes spoken"
-msgstr "Gesprochene Minuten"
+msgid "Minutes"
+msgstr "Minuten"
 
-#: src/features/Usage/UsageStatsCards.tsx:567
+#: src/features/Usage/UsageStatsCards.tsx:557
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Gesamt"
 
-#: src/features/Usage/UsageStatsCards.tsx:590
+#: src/features/Usage/UsageStatsCards.tsx:580
 #. js-lingui-explicit-id
 msgid "Open chat history"
 msgstr "Chatverlauf öffnen"
@@ -707,7 +698,7 @@ msgid "Payment history:"
 msgstr "Zahlungshistorie:"
 
 #: src/features/Usage/PaymentModal.tsx:629
-#: src/features/RolePlay/RolePlayBoard.tsx:621
+#: src/features/RolePlay/RolePlayBoard.tsx:635
 #: src/features/Dashboard/Dashboard.tsx:36
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -776,29 +767,34 @@ msgstr ""
 
 #: src/features/RolePlay/rolePlayData.ts:17
 #. js-lingui-explicit-id
+msgid "Alias Word Guessing Game"
+msgstr "Alias Wortschätzspiel"
+
+#: src/features/RolePlay/rolePlayData.ts:18
+#. js-lingui-explicit-id
+msgid "Alias"
+msgstr "Alias"
+
+#: src/features/RolePlay/rolePlayData.ts:19
+#. js-lingui-explicit-id
 msgid "Game"
 msgstr "Spiel"
 
-#: src/features/RolePlay/rolePlayData.ts:28
-#: src/features/RolePlay/rolePlayData.ts:354
-#: src/features/RolePlay/rolePlayData.ts:560
+#: src/features/RolePlay/rolePlayData.ts:30
+#: src/features/RolePlay/rolePlayData.ts:366
+#: src/features/RolePlay/rolePlayData.ts:586
 #. js-lingui-explicit-id
 msgid "Your Language Level"
 msgstr "Ihr Sprachniveau"
 
-#: src/features/RolePlay/rolePlayData.ts:41
-#. js-lingui-explicit-id
-msgid "Alias Word Guessing Game"
-msgstr "Alias Wortschätzspiel"
-
-#: src/features/RolePlay/rolePlayData.ts:43
+#: src/features/RolePlay/rolePlayData.ts:45
 #. js-lingui-explicit-id
 msgid "Practice English vocabulary by creatively describing and guessing words"
 msgstr ""
 "Üben Sie den englischen Wortschatz, indem Sie Wörter kreativ beschreiben "
 "und erraten."
 
-#: src/features/RolePlay/rolePlayData.ts:44
+#: src/features/RolePlay/rolePlayData.ts:46
 #. js-lingui-explicit-id
 msgid ""
 "Boost your English vocabulary and fluency by creatively describing and "
@@ -833,6 +829,16 @@ msgstr ""
 "fließenden Ausdruck, angepasst an deine Sprachfertigkeiten."
 
 #: src/features/RolePlay/rolePlayData.ts:87
+#. js-lingui-explicit-id
+msgid "Small Talk Practice"
+msgstr "Kleine Gesprächsübungen"
+
+#: src/features/RolePlay/rolePlayData.ts:88
+#. js-lingui-explicit-id
+msgid "Small Talk"
+msgstr "Small Talk"
+
+#: src/features/RolePlay/rolePlayData.ts:91
 #. js-lingui-explicit-id
 msgid ""
 "Engage in a casual conversation with a friendly stranger at a social event. "
@@ -881,24 +887,29 @@ msgstr ""
 "austauschen, wird die KI sich an Ihre Antworten anpassen und Ihnen helfen, "
 "Ihre Small-Talk-Fähigkeiten zu verfeinern."
 
-#: src/features/RolePlay/rolePlayData.ts:98
-#: src/features/RolePlay/rolePlayData.ts:271
-#: src/features/RolePlay/rolePlayData.ts:343
+#: src/features/RolePlay/rolePlayData.ts:102
+#: src/features/RolePlay/rolePlayData.ts:280
+#: src/features/RolePlay/rolePlayData.ts:355
 #. js-lingui-explicit-id
 msgid "Social"
 msgstr "Sozial"
 
-#: src/features/RolePlay/rolePlayData.ts:100
-#. js-lingui-explicit-id
-msgid "Small Talk Practice"
-msgstr "Kleine Gesprächsübungen"
-
-#: src/features/RolePlay/rolePlayData.ts:101
+#: src/features/RolePlay/rolePlayData.ts:105
 #. js-lingui-explicit-id
 msgid "Develop your conversational skills with casual small talk"
 msgstr "Entwickeln Sie Ihre Gesprächsfähigkeiten mit legerem Small Talk"
 
-#: src/features/RolePlay/rolePlayData.ts:117
+#: src/features/RolePlay/rolePlayData.ts:118
+#. js-lingui-explicit-id
+msgid "Practice Job Interview"
+msgstr "Üben Sie Vorstellungsgespräche"
+
+#: src/features/RolePlay/rolePlayData.ts:119
+#. js-lingui-explicit-id
+msgid "Job Interview"
+msgstr "Vorstellungsgespräch"
+
+#: src/features/RolePlay/rolePlayData.ts:124
 #. js-lingui-explicit-id
 msgid ""
 "Step into a realistic interview environment and practice showcasing your "
@@ -950,18 +961,18 @@ msgstr ""
 "Eingaben, um prägnante, überzeugende Antworten zu üben, die Ihnen helfen, "
 "in jedem Vorstellungsgespräch herauszustechen."
 
-#: src/features/RolePlay/rolePlayData.ts:128
-#: src/features/RolePlay/rolePlayData.ts:479
+#: src/features/RolePlay/rolePlayData.ts:135
+#: src/features/RolePlay/rolePlayData.ts:499
 #. js-lingui-explicit-id
 msgid "Professional"
 msgstr "Professionell"
 
-#: src/features/RolePlay/rolePlayData.ts:133
+#: src/features/RolePlay/rolePlayData.ts:140
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "Ihre Erfahrung"
 
-#: src/features/RolePlay/rolePlayData.ts:135
+#: src/features/RolePlay/rolePlayData.ts:142
 #. js-lingui-explicit-id
 msgid ""
 "Paste your CV text here. You can also write a brief summary of your "
@@ -970,22 +981,22 @@ msgstr ""
 "Fügen Sie hier Ihren Lebenslauf-Text ein. Sie können auch eine kurze "
 "Zusammenfassung Ihrer Erfahrungen schreiben."
 
-#: src/features/RolePlay/rolePlayData.ts:147
+#: src/features/RolePlay/rolePlayData.ts:154
 #. js-lingui-explicit-id
 msgid "Desired Job Title"
 msgstr "Gewünschter Jobtitel"
 
-#: src/features/RolePlay/rolePlayData.ts:149
+#: src/features/RolePlay/rolePlayData.ts:156
 #. js-lingui-explicit-id
 msgid "Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc."
 msgstr "Ihr gewünschter Jobtitel. Wie Designer, Verkäufer, Fitnesstrainer usw."
 
-#: src/features/RolePlay/rolePlayData.ts:158
+#: src/features/RolePlay/rolePlayData.ts:165
 #. js-lingui-explicit-id
 msgid "Vacancy description"
 msgstr "Stellenbeschreibung"
 
-#: src/features/RolePlay/rolePlayData.ts:160
+#: src/features/RolePlay/rolePlayData.ts:167
 #. js-lingui-explicit-id
 msgid ""
 "Paste vacancy description if you have it. You can also write a brief "
@@ -994,29 +1005,29 @@ msgstr ""
 "Fügen Sie die Stellenbeschreibung ein, wenn Sie sie haben. Sie können auch "
 "eine kurze Zusammenfassung der Stellenanforderungen schreiben."
 
-#: src/features/RolePlay/rolePlayData.ts:182
-#. js-lingui-explicit-id
-msgid "Practice Job Interview"
-msgstr "Üben Sie Vorstellungsgespräche"
-
-#: src/features/RolePlay/rolePlayData.ts:183
+#: src/features/RolePlay/rolePlayData.ts:190
 #. js-lingui-explicit-id
 msgid "Master answering common interview questions with AI"
 msgstr "Meistern Sie die Beantwortung von häufigen Vorstellungsgesprächen mit KI"
 
-#: src/features/RolePlay/rolePlayData.ts:273
+#: src/features/RolePlay/rolePlayData.ts:278
 #. js-lingui-explicit-id
 msgid "In the Restaurant"
 msgstr "Im Restaurant"
 
-#: src/features/RolePlay/rolePlayData.ts:274
+#: src/features/RolePlay/rolePlayData.ts:279
+#. js-lingui-explicit-id
+msgid "Restaurant"
+msgstr "Restaurant"
+
+#: src/features/RolePlay/rolePlayData.ts:283
 #. js-lingui-explicit-id
 msgid "Practice ordering food and interacting with a waiter in a restaurant"
 msgstr ""
 "Üben Sie das Bestellen von Essen und die Interaktion mit einem Kellner in "
 "einem Restaurant"
 
-#: src/features/RolePlay/rolePlayData.ts:285
+#: src/features/RolePlay/rolePlayData.ts:294
 #. js-lingui-explicit-id
 msgid ""
 "In this role-play, you’ll interact with a polite waiter, order food, and "
@@ -1070,7 +1081,17 @@ msgstr ""
 "schafft ein immersives Erlebnis, das dir hilft, praktische gastronomische "
 "Interaktionen zu üben."
 
-#: src/features/RolePlay/rolePlayData.ts:302
+#: src/features/RolePlay/rolePlayData.ts:310
+#. js-lingui-explicit-id
+msgid "Buying a Train Ticket"
+msgstr "Kauf eines Zugtickets"
+
+#: src/features/RolePlay/rolePlayData.ts:311
+#. js-lingui-explicit-id
+msgid "Train"
+msgstr "Zug"
+
+#: src/features/RolePlay/rolePlayData.ts:313
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable purchasing travel tickets in a bustling train station "
@@ -1119,23 +1140,28 @@ msgstr ""
 "die Kunst meistern, die richtigen Fragen zu stellen und wichtige "
 "Informationen über Ihre Reise zu verstehen."
 
-#: src/features/RolePlay/rolePlayData.ts:315
-#: src/features/RolePlay/rolePlayData.ts:421
+#: src/features/RolePlay/rolePlayData.ts:326
+#: src/features/RolePlay/rolePlayData.ts:437
 #. js-lingui-explicit-id
 msgid "Travel"
 msgstr "Reisen"
 
-#: src/features/RolePlay/rolePlayData.ts:317
-#. js-lingui-explicit-id
-msgid "Buying a Train Ticket"
-msgstr "Kauf eines Zugtickets"
-
-#: src/features/RolePlay/rolePlayData.ts:318
+#: src/features/RolePlay/rolePlayData.ts:328
 #. js-lingui-explicit-id
 msgid "Practice asking about schedules, fares, and ticket options"
 msgstr "Üben Sie, Fragen zu Fahrplänen, Preisen und Ticketoptionen zu stellen"
 
-#: src/features/RolePlay/rolePlayData.ts:331
+#: src/features/RolePlay/rolePlayData.ts:340
+#. js-lingui-explicit-id
+msgid "Chat with a Fellow Dog Owner"
+msgstr "Chatte mit einem anderen Hundebesitzer"
+
+#: src/features/RolePlay/rolePlayData.ts:341
+#. js-lingui-explicit-id
+msgid "Dog Owner"
+msgstr "Hundebesitzer"
+
+#: src/features/RolePlay/rolePlayData.ts:343
 #. js-lingui-explicit-id
 msgid ""
 "Strike up a conversation with a fellow dog owner in a friendly park "
@@ -1186,19 +1212,24 @@ msgstr ""
 "Laufen zu halten und einen unterhaltsamen Austausch über Ihre vierbeinigen "
 "Freunde zu genießen."
 
-#: src/features/RolePlay/rolePlayData.ts:367
-#. js-lingui-explicit-id
-msgid "Chat with a Fellow Dog Owner"
-msgstr "Chatte mit einem anderen Hundebesitzer"
-
-#: src/features/RolePlay/rolePlayData.ts:368
+#: src/features/RolePlay/rolePlayData.ts:380
 #. js-lingui-explicit-id
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr ""
 "Führen Sie freundliche Smalltalk-Gespräche über Haustiere und tägliche "
 "Abläufe"
 
-#: src/features/RolePlay/rolePlayData.ts:381
+#: src/features/RolePlay/rolePlayData.ts:392
+#. js-lingui-explicit-id
+msgid "Talking to a Doctor"
+msgstr "Gespräch mit einem Arzt"
+
+#: src/features/RolePlay/rolePlayData.ts:393
+#. js-lingui-explicit-id
+msgid "Doctor"
+msgstr "Doktor"
+
+#: src/features/RolePlay/rolePlayData.ts:395
 #. js-lingui-explicit-id
 msgid ""
 "Discuss your health concerns in a realistic doctor’s office setting and "
@@ -1247,26 +1278,31 @@ msgstr ""
 "Ihre Kommunikationsfähigkeiten in einem professionellen Gesundheitskontext "
 "verfeinern."
 
-#: src/features/RolePlay/rolePlayData.ts:393
-#: src/features/RolePlay/rolePlayData.ts:508
-#: src/features/RolePlay/rolePlayData.ts:551
+#: src/features/RolePlay/rolePlayData.ts:407
+#: src/features/RolePlay/rolePlayData.ts:530
+#: src/features/RolePlay/rolePlayData.ts:577
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "Gesundheit"
 
-#: src/features/RolePlay/rolePlayData.ts:395
-#. js-lingui-explicit-id
-msgid "Talking to a Doctor"
-msgstr "Gespräch mit einem Arzt"
-
-#: src/features/RolePlay/rolePlayData.ts:396
+#: src/features/RolePlay/rolePlayData.ts:410
 #. js-lingui-explicit-id
 msgid "Learn to describe symptoms and ask for medical advice effectively"
 msgstr ""
 "Lernen Sie, Symptome zu beschreiben und effektiv medizinischen Rat "
 "einzuholen"
 
-#: src/features/RolePlay/rolePlayData.ts:409
+#: src/features/RolePlay/rolePlayData.ts:422
+#. js-lingui-explicit-id
+msgid "Hotel Check-In Conversation"
+msgstr "Hotel Check-In Gespräch"
+
+#: src/features/RolePlay/rolePlayData.ts:423
+#. js-lingui-explicit-id
+msgid "Check-In"
+msgstr "Einchecken"
+
+#: src/features/RolePlay/rolePlayData.ts:425
 #. js-lingui-explicit-id
 msgid ""
 "Check into a hotel and handle room arrangements in a realistic front-desk "
@@ -1317,19 +1353,24 @@ msgstr ""
 "entwickeln, die für ein reibungsloses Check-in-Erlebnis im Hotel "
 "erforderlich sind."
 
-#: src/features/RolePlay/rolePlayData.ts:423
-#. js-lingui-explicit-id
-msgid "Hotel Check-In Conversation"
-msgstr "Hotel Check-In Gespräch"
-
-#: src/features/RolePlay/rolePlayData.ts:424
+#: src/features/RolePlay/rolePlayData.ts:440
 #. js-lingui-explicit-id
 msgid "Practice booking a room, requesting amenities, and checking in"
 msgstr ""
 "Üben Sie das Buchen eines Zimmers, das Anfordern von Annehmlichkeiten und "
 "das Einchecken"
 
-#: src/features/RolePlay/rolePlayData.ts:438
+#: src/features/RolePlay/rolePlayData.ts:453
+#. js-lingui-explicit-id
+msgid "Shopping at the Grocery Store"
+msgstr "Einkaufen im Lebensmittelgeschäft"
+
+#: src/features/RolePlay/rolePlayData.ts:454
+#. js-lingui-explicit-id
+msgid "Grocery Store"
+msgstr "Lebensmittelgeschäft"
+
+#: src/features/RolePlay/rolePlayData.ts:456
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable shopping in a real store setting by asking questions about "
@@ -1371,23 +1412,28 @@ msgstr ""
 "Rollenspiel simuliert ein realistisches Einkaufserlebnis und hilft dir, "
 "grundlegende Kommunikationsfähigkeiten aufzubauen."
 
-#: src/features/RolePlay/rolePlayData.ts:450
-#: src/features/RolePlay/rolePlayData.ts:536
+#: src/features/RolePlay/rolePlayData.ts:468
+#: src/features/RolePlay/rolePlayData.ts:560
 #. js-lingui-explicit-id
 msgid "Shopping"
 msgstr "Einkaufen"
 
-#: src/features/RolePlay/rolePlayData.ts:452
-#. js-lingui-explicit-id
-msgid "Shopping at the Grocery Store"
-msgstr "Einkaufen im Lebensmittelgeschäft"
-
-#: src/features/RolePlay/rolePlayData.ts:453
+#: src/features/RolePlay/rolePlayData.ts:471
 #. js-lingui-explicit-id
 msgid "Practice asking for product recommendations and making purchases"
 msgstr "Üben Sie, um Produktempfehlungen zu bitten und Einkäufe zu tätigen"
 
-#: src/features/RolePlay/rolePlayData.ts:467
+#: src/features/RolePlay/rolePlayData.ts:484
+#. js-lingui-explicit-id
+msgid "Calling Customer Support"
+msgstr "Kundensupport anrufen"
+
+#: src/features/RolePlay/rolePlayData.ts:485
+#. js-lingui-explicit-id
+msgid "Technical Support"
+msgstr "Technischer Support"
+
+#: src/features/RolePlay/rolePlayData.ts:487
 #. js-lingui-explicit-id
 msgid ""
 "Work through a technical issue while speaking with a helpful support agent. "
@@ -1426,17 +1472,22 @@ msgstr ""
 "Dieses Szenario hilft dir, dich im Umgang mit technischen Problemen und der "
 "Kommunikation von Lösungen wohler zu fühlen."
 
-#: src/features/RolePlay/rolePlayData.ts:481
-#. js-lingui-explicit-id
-msgid "Calling Customer Support"
-msgstr "Kundensupport anrufen"
-
-#: src/features/RolePlay/rolePlayData.ts:482
+#: src/features/RolePlay/rolePlayData.ts:502
 #. js-lingui-explicit-id
 msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "Üben Sie, ein technisches Problem am Telefon zu beheben"
 
-#: src/features/RolePlay/rolePlayData.ts:496
+#: src/features/RolePlay/rolePlayData.ts:515
+#. js-lingui-explicit-id
+msgid "Booking a Doctor's Appointment"
+msgstr "Buchung eines Arzttermins"
+
+#: src/features/RolePlay/rolePlayData.ts:516
+#. js-lingui-explicit-id
+msgid "Appointment"
+msgstr "Termin"
+
+#: src/features/RolePlay/rolePlayData.ts:518
 #. js-lingui-explicit-id
 msgid ""
 "Practice scheduling a doctor’s appointment over the phone by clearly "
@@ -1477,17 +1528,22 @@ msgstr ""
 "natürlich antworten, entwickeln Sie wichtige Kommunikationsfähigkeiten für "
 "jeden medizinischen Kontext."
 
-#: src/features/RolePlay/rolePlayData.ts:510
-#. js-lingui-explicit-id
-msgid "Booking a Doctor's Appointment"
-msgstr "Buchung eines Arzttermins"
-
-#: src/features/RolePlay/rolePlayData.ts:511
+#: src/features/RolePlay/rolePlayData.ts:533
 #. js-lingui-explicit-id
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "Lernen Sie, wie Sie einen Arzttermin telefonisch vereinbaren."
 
-#: src/features/RolePlay/rolePlayData.ts:524
+#: src/features/RolePlay/rolePlayData.ts:545
+#. js-lingui-explicit-id
+msgid "Returning an Item to a Store"
+msgstr "Rückgabe eines Artikels an ein Geschäft"
+
+#: src/features/RolePlay/rolePlayData.ts:546
+#. js-lingui-explicit-id
+msgid "Return"
+msgstr "Rückkehr"
+
+#: src/features/RolePlay/rolePlayData.ts:548
 #. js-lingui-explicit-id
 msgid ""
 "Handle a return at a customer service desk by describing what went wrong "
@@ -1530,31 +1586,31 @@ msgstr ""
 "Dieses praktische Szenario hilft Ihnen, höfliche, effiziente Kommunikation "
 "in Einzelhandelssituationen zu meistern."
 
-#: src/features/RolePlay/rolePlayData.ts:538
-#. js-lingui-explicit-id
-msgid "Returning an Item to a Store"
-msgstr "Rückgabe eines Artikels an ein Geschäft"
-
-#: src/features/RolePlay/rolePlayData.ts:539
+#: src/features/RolePlay/rolePlayData.ts:563
 #. js-lingui-explicit-id
 msgid "Practice explaining product issues and requesting refunds or exchanges"
 msgstr ""
 "Üben Sie, Produktprobleme zu erklären und Rückerstattungen oder Umtausch zu "
 "beantragen"
 
-#: src/features/RolePlay/rolePlayData.ts:570
+#: src/features/RolePlay/rolePlayData.ts:575
 #. js-lingui-explicit-id
 msgid "Speaking with a Psychologist"
 msgstr "Sprechen mit einem Psychologen"
 
-#: src/features/RolePlay/rolePlayData.ts:571
+#: src/features/RolePlay/rolePlayData.ts:576
+#. js-lingui-explicit-id
+msgid "Psychologist"
+msgstr "Psychologe"
+
+#: src/features/RolePlay/rolePlayData.ts:597
 #. js-lingui-explicit-id
 msgid "Discuss mental health topics and express your thoughts effectively"
 msgstr ""
 "Diskutieren Sie Themen der psychischen Gesundheit und drücken Sie Ihre "
 "Gedanken effektiv aus"
 
-#: src/features/RolePlay/rolePlayData.ts:587
+#: src/features/RolePlay/rolePlayData.ts:613
 #. js-lingui-explicit-id
 msgid ""
 "Discuss mental health topics in a comfortable, supportive setting. This "
@@ -1611,29 +1667,35 @@ msgstr ""
 "Fragen und validiert deine Erfahrungen, um dir zu helfen, bedeutungsvolle, "
 "durchdachte Gespräche zu üben."
 
-#: src/features/RolePlay/rolePlayData.ts:606
+#: src/features/RolePlay/rolePlayData.ts:632
 #. js-lingui-explicit-id
 msgid "Create Your Own Role-Play Scenario"
 msgstr "Erstelle dein eigenes Rollenspiel-Szenario"
 
-#: src/features/RolePlay/rolePlayData.ts:607
+#: src/features/RolePlay/rolePlayData.ts:633
+#: src/features/RolePlay/rolePlayData.ts:660
+#. js-lingui-explicit-id
+msgid "Custom"
+msgstr "Benutzerdefiniert"
+
+#: src/features/RolePlay/rolePlayData.ts:634
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
 msgstr ""
 "Passen Sie ein Gespräch an, um Ihre einzigartigen Lernbedürfnisse zu "
 "erfüllen"
 
-#: src/features/RolePlay/rolePlayData.ts:611
+#: src/features/RolePlay/rolePlayData.ts:638
 #. js-lingui-explicit-id
 msgid "Scenario Description"
 msgstr "Szenariobeschreibung"
 
-#: src/features/RolePlay/rolePlayData.ts:613
+#: src/features/RolePlay/rolePlayData.ts:640
 #. js-lingui-explicit-id
 msgid "Describe your custom scenario here..."
 msgstr "Beschreiben Sie hier Ihr benutzerdefiniertes Szenario..."
 
-#: src/features/RolePlay/rolePlayData.ts:620
+#: src/features/RolePlay/rolePlayData.ts:647
 #. js-lingui-explicit-id
 msgid ""
 "Create a unique, personalized setting that fits your specific interests or "
@@ -1685,45 +1747,36 @@ msgstr ""
 "Format hilft Ihnen, die genauen Kommunikationsfähigkeiten zu meistern, die "
 "Sie benötigen."
 
-#: src/features/RolePlay/rolePlayData.ts:633
-#. js-lingui-explicit-id
-msgid "Custom"
-msgstr "Benutzerdefiniert"
-
-#: src/features/RolePlay/rolePlayData.ts:654
+#: src/features/RolePlay/rolePlayData.ts:681
 #. js-lingui-explicit-id
 msgid "All Scenarios"
 msgstr "Alle Szenarien"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:367
+#: src/features/RolePlay/RolePlayCardApp.tsx:105
+#: src/features/RolePlay/RolePlayBoard.tsx:635
+#: src/features/Dashboard/ConversationSelectCard.tsx:93
+#. js-lingui-explicit-id
+msgid "Start"
+msgstr "Start"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:388
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Rollen spielen"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:374
-#. js-lingui-explicit-id
-msgid "Play a role and talk to the AI"
-msgstr "Spiele eine Rolle und sprich mit der KI"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:464
+#: src/features/RolePlay/RolePlayBoard.tsx:478
 #. js-lingui-explicit-id
 msgid "Before you start, please fill some information to make it more realistic."
 msgstr ""
 "Bevor Sie beginnen, füllen Sie bitte einige Informationen aus, um es "
 "realistischer zu gestalten."
 
-#: src/features/RolePlay/RolePlayBoard.tsx:621
-#: src/features/Dashboard/ConversationSelectCard.tsx:87
-#. js-lingui-explicit-id
-msgid "Start"
-msgstr "Start"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:673
+#: src/features/RolePlay/RolePlayBoard.tsx:687
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Mehr anzeigen"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:673
+#: src/features/RolePlay/RolePlayBoard.tsx:687
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Weniger anzeigen"
@@ -1939,6 +1992,7 @@ msgid "Get started free"
 msgstr "Jetzt kostenlos starten"
 
 #: src/features/Landing/LandingPage.tsx:144
+#: src/features/Dashboard/ConversationSelectCard.tsx:136
 #. js-lingui-explicit-id
 msgid "Beginner"
 msgstr "Anfänger"
@@ -2348,7 +2402,6 @@ msgstr ""
 "beim Bestellen von Essen"
 
 #: src/features/Landing/Price/PricePage.tsx:164
-#: src/features/Dashboard/ConversationSelectCard.tsx:95
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Gesprächsübung"
@@ -2767,6 +2820,7 @@ msgid "Finishing the lesson..."
 msgstr "Beenden der Lektion..."
 
 #: src/features/Header/HeaderComponent.tsx:253
+#: src/features/Dashboard/ConversationSelectCard.tsx:101
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Unterhaltung"
@@ -2813,50 +2867,35 @@ msgstr "Zurück"
 msgid "I know all of them"
 msgstr "Ich kenne sie alle"
 
-#: src/features/Dashboard/TasksCard.tsx:21
+#: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
 msgstr "Tägliche Aufgaben"
 
-#: src/features/Dashboard/TasksCard.tsx:29
-#. js-lingui-explicit-id
-msgid "Complete daily tasks to improve your language skills"
-msgstr ""
-"Vervollständigen Sie tägliche Aufgaben, um Ihre Sprachkenntnisse zu "
-"verbessern"
-
-#: src/features/Dashboard/TasksCard.tsx:45
-#. js-lingui-explicit-id
-msgid "Short conversation"
-msgstr "Kurzes Gespräch"
-
-#: src/features/Dashboard/TasksCard.tsx:46
-#. js-lingui-explicit-id
-msgid "Start talking to learn something new"
-msgstr "Beginne zu sprechen, um etwas Neues zu lernen"
-
-#: src/features/Dashboard/TasksCard.tsx:52
+#: src/features/Dashboard/TasksCard.tsx:51
 #. js-lingui-explicit-id
 msgid "Rule of the day"
 msgstr "Regel des Tages"
 
-#: src/features/Dashboard/TasksCard.tsx:53
+#: src/features/Dashboard/TasksCard.tsx:52
+#: src/features/Dashboard/ConversationSelectCard.tsx:172
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "Erhalte eine persönliche Grammatikregel zum Lernen"
 
-#: src/features/Dashboard/TasksCard.tsx:57
-#: src/features/Dashboard/TasksCard.tsx:65
+#: src/features/Dashboard/TasksCard.tsx:56
+#: src/features/Dashboard/TasksCard.tsx:64
 #. js-lingui-explicit-id
 msgid "Complete previous tasks first"
 msgstr "Vervollständigen Sie zuerst die vorherigen Aufgaben."
 
-#: src/features/Dashboard/TasksCard.tsx:62
+#: src/features/Dashboard/TasksCard.tsx:61
 #. js-lingui-explicit-id
 msgid "New words"
 msgstr "Neue Wörter"
 
-#: src/features/Dashboard/TasksCard.tsx:63
+#: src/features/Dashboard/TasksCard.tsx:62
+#: src/features/Dashboard/ConversationSelectCard.tsx:207
 #. js-lingui-explicit-id
 msgid "Practice new vocabulary with the AI"
 msgstr "Übe neuen Wortschatz mit der KI"
@@ -2921,30 +2960,50 @@ msgstr "Erstellen einer neuen Regel..."
 msgid "Reload"
 msgstr "Neuladen"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:96
+#: src/features/Dashboard/ConversationSelectCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Introduce"
+msgstr "Einführen"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:67
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Legen Sie das Ziel Ihres Lernens fest"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:102
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "Sprich mit der KI und sie wird dir antworten."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:122
+#: src/features/Dashboard/ConversationSelectCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Start Talking"
 msgstr "Anfangen zu sprechen"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:130
-#. js-lingui-explicit-id
-msgid "Beginner mode"
-msgstr "Anfängermodus"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:131
+#: src/features/Dashboard/ConversationSelectCard.tsx:137
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
 msgstr "KI wird Sie durch das Gespräch führen"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:157
+#: src/features/Dashboard/ConversationSelectCard.tsx:163
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Führe mich"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:171
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "Regeln"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:198
+#. js-lingui-explicit-id
+msgid "Get a rule"
+msgstr "Holen Sie sich eine Regel"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:233
+#. js-lingui-explicit-id
+msgid "Expand vocabulary"
+msgstr "Erweitern Sie Ihren Wortschatz"
 
 #: src/features/Dashboard/BrainCard.tsx:128
 #. js-lingui-explicit-id
@@ -3048,22 +3107,17 @@ msgstr "Vorbereitung des Gehirns"
 msgid "Upload language skills directly to your brain"
 msgstr "Laden Sie Sprachkenntnisse direkt in Ihr Gehirn hoch"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:34
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:55
 #. js-lingui-explicit-id
 msgid "Progress Calendar"
 msgstr "Fortschrittskalender"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:42
-#. js-lingui-explicit-id
-msgid "Your daily progress"
-msgstr "Ihr täglicher Fortschritt"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:56
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:69
 #. js-lingui-explicit-id
 msgid "Less"
 msgstr "Weniger"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:77
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:90
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "More"
@@ -4397,6 +4451,53 @@ msgstr "Fortfahren mit Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Durch die Erstellung eines Kontos stimmen Sie zu:"
+
+#: src/features/Usage/UsageStatsCards.tsx:509
+#. js-lingui-explicit-id
+#~ msgid "Grammar fixes"
+#~ msgstr "Grammatik-Korrekturen"
+
+#: src/features/Usage/UsageStatsCards.tsx:555
+#. js-lingui-explicit-id
+#~ msgid "Minutes spoken"
+#~ msgstr "Gesprochene Minuten"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:66
+#. js-lingui-explicit-id
+#~ msgid "Introduce yourself"
+#~ msgstr "Stellen Sie sich vor"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:136
+#. js-lingui-explicit-id
+#~ msgid "Beginner mode"
+#~ msgstr "Anfängermodus"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:374
+#. js-lingui-explicit-id
+#~ msgid "Play a role and talk to the AI"
+#~ msgstr "Spiele eine Rolle und sprich mit der KI"
+
+#: src/features/Dashboard/TasksCard.tsx:29
+#. js-lingui-explicit-id
+#~ msgid "Complete daily tasks to improve your language skills"
+#~ msgstr ""
+#~ "Vervollständigen Sie tägliche Aufgaben, um Ihre Sprachkenntnisse zu "
+#~ "verbessern"
+
+#: src/features/Dashboard/TasksCard.tsx:45
+#. js-lingui-explicit-id
+#~ msgid "Short conversation"
+#~ msgstr "Kurzes Gespräch"
+
+#: src/features/Dashboard/TasksCard.tsx:46
+#. js-lingui-explicit-id
+#~ msgid "Start talking to learn something new"
+#~ msgstr "Beginne zu sprechen, um etwas Neues zu lernen"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Your daily progress"
+#~ msgstr "Ihr täglicher Fortschritt"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:39
 #. js-lingui-explicit-id

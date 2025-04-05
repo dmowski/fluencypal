@@ -13,16 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:60
-#. js-lingui-explicit-id
-msgid "Introduce yourself"
-msgstr "Прадставцеся"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:61
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Выстаўце мэту вашага навучання"
-
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:96
@@ -38,7 +28,7 @@ msgstr "Звяжыцеся з FluencyPal для любых запытаў, па�
 
 #: src/libs/metadata.ts:67
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:45
+#: src/features/Dashboard/ConversationSelectCard.tsx:51
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Практыка"
@@ -369,7 +359,7 @@ msgid "Here are the words you used the most in your conversations."
 msgstr "Вось словы, якія вы найчасцей выкарыстоўвалі ў сваіх размовах."
 
 #: src/features/Usage/UsageStatsCards.tsx:116
-#: src/features/Usage/UsageStatsCards.tsx:473
+#: src/features/Usage/UsageStatsCards.tsx:474
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Ніякіх слоў пакуль не выкарыстана"
@@ -421,37 +411,38 @@ msgstr "Пакуль няма правак"
 msgid "Description:"
 msgstr "Апісанне:"
 
-#: src/features/Usage/UsageStatsCards.tsx:418
+#: src/features/Usage/UsageStatsCards.tsx:419
 #. js-lingui-explicit-id
 msgid "Here’s you will see your progress"
 msgstr "Тут вы ўбачыце свой прагрэс"
 
-#: src/features/Usage/UsageStatsCards.tsx:419
+#: src/features/Usage/UsageStatsCards.tsx:420
 #. js-lingui-explicit-id
 msgid "Here’s what you’ve achieved so far"
 msgstr "Вось што вы дасягнулі на гэты момант"
 
-#: src/features/Usage/UsageStatsCards.tsx:439
+#: src/features/Usage/UsageStatsCards.tsx:440
+#: src/features/Dashboard/ConversationSelectCard.tsx:206
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Словы"
 
-#: src/features/Usage/UsageStatsCards.tsx:520
+#: src/features/Usage/UsageStatsCards.tsx:510
 #. js-lingui-explicit-id
-msgid "Grammar fixes"
-msgstr "Граматычныя папраўкі"
+msgid "Corrections"
+msgstr "Карэкціі"
 
-#: src/features/Usage/UsageStatsCards.tsx:566
+#: src/features/Usage/UsageStatsCards.tsx:556
 #. js-lingui-explicit-id
-msgid "Minutes spoken"
-msgstr "Хвіліны, якія былі прагавораныя"
+msgid "Minutes"
+msgstr "Хвіліны"
 
-#: src/features/Usage/UsageStatsCards.tsx:567
+#: src/features/Usage/UsageStatsCards.tsx:557
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Агулам"
 
-#: src/features/Usage/UsageStatsCards.tsx:590
+#: src/features/Usage/UsageStatsCards.tsx:580
 #. js-lingui-explicit-id
 msgid "Open chat history"
 msgstr "Адкрыць гісторыю чата"
@@ -693,7 +684,7 @@ msgid "Payment history:"
 msgstr "Гісторыя плацяжоў:"
 
 #: src/features/Usage/PaymentModal.tsx:629
-#: src/features/RolePlay/RolePlayBoard.tsx:621
+#: src/features/RolePlay/RolePlayBoard.tsx:635
 #: src/features/Dashboard/Dashboard.tsx:36
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -760,27 +751,32 @@ msgstr ""
 
 #: src/features/RolePlay/rolePlayData.ts:17
 #. js-lingui-explicit-id
+msgid "Alias Word Guessing Game"
+msgstr "Гульня ў адгадванне аліясаў"
+
+#: src/features/RolePlay/rolePlayData.ts:18
+#. js-lingui-explicit-id
+msgid "Alias"
+msgstr "Аліас"
+
+#: src/features/RolePlay/rolePlayData.ts:19
+#. js-lingui-explicit-id
 msgid "Game"
 msgstr "Гульня"
 
-#: src/features/RolePlay/rolePlayData.ts:28
-#: src/features/RolePlay/rolePlayData.ts:354
-#: src/features/RolePlay/rolePlayData.ts:560
+#: src/features/RolePlay/rolePlayData.ts:30
+#: src/features/RolePlay/rolePlayData.ts:366
+#: src/features/RolePlay/rolePlayData.ts:586
 #. js-lingui-explicit-id
 msgid "Your Language Level"
 msgstr "Ваш узровень валоды"
 
-#: src/features/RolePlay/rolePlayData.ts:41
-#. js-lingui-explicit-id
-msgid "Alias Word Guessing Game"
-msgstr "Гульня ў адгадванне аліясаў"
-
-#: src/features/RolePlay/rolePlayData.ts:43
+#: src/features/RolePlay/rolePlayData.ts:45
 #. js-lingui-explicit-id
 msgid "Practice English vocabulary by creatively describing and guessing words"
 msgstr "Практікуйце слоўнік англійскай мовы, крэатыўна апісваючы і ўгадваючы словы"
 
-#: src/features/RolePlay/rolePlayData.ts:44
+#: src/features/RolePlay/rolePlayData.ts:46
 #. js-lingui-explicit-id
 msgid ""
 "Boost your English vocabulary and fluency by creatively describing and "
@@ -813,6 +809,16 @@ msgstr ""
 "змяняюцца ў адпаведнасці з вашым володаннем мовай."
 
 #: src/features/RolePlay/rolePlayData.ts:87
+#. js-lingui-explicit-id
+msgid "Small Talk Practice"
+msgstr "Практыка ў сфере невялікага размовы"
+
+#: src/features/RolePlay/rolePlayData.ts:88
+#. js-lingui-explicit-id
+msgid "Small Talk"
+msgstr "Малая балачка"
+
+#: src/features/RolePlay/rolePlayData.ts:91
 #. js-lingui-explicit-id
 msgid ""
 "Engage in a casual conversation with a friendly stranger at a social event. "
@@ -860,24 +866,29 @@ msgstr ""
 "Падчас абміну віітуваннямі вялікі розум адаптуецца да вашых адказаў, "
 "дапамагаючы вам ўдасканаліць вашыя навыкі ў вядзенні беседы."
 
-#: src/features/RolePlay/rolePlayData.ts:98
-#: src/features/RolePlay/rolePlayData.ts:271
-#: src/features/RolePlay/rolePlayData.ts:343
+#: src/features/RolePlay/rolePlayData.ts:102
+#: src/features/RolePlay/rolePlayData.ts:280
+#: src/features/RolePlay/rolePlayData.ts:355
 #. js-lingui-explicit-id
 msgid "Social"
 msgstr "Сацыяльнае"
 
-#: src/features/RolePlay/rolePlayData.ts:100
-#. js-lingui-explicit-id
-msgid "Small Talk Practice"
-msgstr "Практыка ў сфере невялікага размовы"
-
-#: src/features/RolePlay/rolePlayData.ts:101
+#: src/features/RolePlay/rolePlayData.ts:105
 #. js-lingui-explicit-id
 msgid "Develop your conversational skills with casual small talk"
 msgstr "Развівайце свае навыкі размовы з памаччу нізкамоўнага абмену меркаваннямі"
 
-#: src/features/RolePlay/rolePlayData.ts:117
+#: src/features/RolePlay/rolePlayData.ts:118
+#. js-lingui-explicit-id
+msgid "Practice Job Interview"
+msgstr "Практыка праходжэння працоўнага інтэрв'ю"
+
+#: src/features/RolePlay/rolePlayData.ts:119
+#. js-lingui-explicit-id
+msgid "Job Interview"
+msgstr "Спаборніцтва на работу"
+
+#: src/features/RolePlay/rolePlayData.ts:124
 #. js-lingui-explicit-id
 msgid ""
 "Step into a realistic interview environment and practice showcasing your "
@@ -930,18 +941,18 @@ msgstr ""
 "пераканаўчых адказаў, якія дапамагаюць вам стаць уваёвым на любым працовым "
 "сабеседаванні."
 
-#: src/features/RolePlay/rolePlayData.ts:128
-#: src/features/RolePlay/rolePlayData.ts:479
+#: src/features/RolePlay/rolePlayData.ts:135
+#: src/features/RolePlay/rolePlayData.ts:499
 #. js-lingui-explicit-id
 msgid "Professional"
 msgstr "Професійны"
 
-#: src/features/RolePlay/rolePlayData.ts:133
+#: src/features/RolePlay/rolePlayData.ts:140
 #. js-lingui-explicit-id
 msgid "Your experience"
 msgstr "Ваш досвед"
 
-#: src/features/RolePlay/rolePlayData.ts:135
+#: src/features/RolePlay/rolePlayData.ts:142
 #. js-lingui-explicit-id
 msgid ""
 "Paste your CV text here. You can also write a brief summary of your "
@@ -950,22 +961,22 @@ msgstr ""
 "Устаўце тэкст сваёй працоўнай біяграфіі тут. Вы таксама можаце напісаць "
 "кароткае агляднае апісанне свайго досведу."
 
-#: src/features/RolePlay/rolePlayData.ts:147
+#: src/features/RolePlay/rolePlayData.ts:154
 #. js-lingui-explicit-id
 msgid "Desired Job Title"
 msgstr "Пажаданая Пасада"
 
-#: src/features/RolePlay/rolePlayData.ts:149
+#: src/features/RolePlay/rolePlayData.ts:156
 #. js-lingui-explicit-id
 msgid "Your desired job title. Like Designer, Shop-Assistant, Fitness Trainer, etc."
 msgstr "Ваша бажаная пасада. Напрыклад, Дызайнер, Касір, Трэнер па фітнесу і г.д."
 
-#: src/features/RolePlay/rolePlayData.ts:158
+#: src/features/RolePlay/rolePlayData.ts:165
 #. js-lingui-explicit-id
 msgid "Vacancy description"
 msgstr "Апісанне вакансіі"
 
-#: src/features/RolePlay/rolePlayData.ts:160
+#: src/features/RolePlay/rolePlayData.ts:167
 #. js-lingui-explicit-id
 msgid ""
 "Paste vacancy description if you have it. You can also write a brief "
@@ -974,27 +985,27 @@ msgstr ""
 "Устаўце апісанне вакансіі, калі ёсць у вас. Вы таксама можаце напісаць "
 "кароткую зводку патрабаванняў да работы."
 
-#: src/features/RolePlay/rolePlayData.ts:182
-#. js-lingui-explicit-id
-msgid "Practice Job Interview"
-msgstr "Практыка праходжэння працоўнага інтэрв'ю"
-
-#: src/features/RolePlay/rolePlayData.ts:183
+#: src/features/RolePlay/rolePlayData.ts:190
 #. js-lingui-explicit-id
 msgid "Master answering common interview questions with AI"
 msgstr "Апануй адказы на агульныя пытанні на спатканні з дапамогай AI"
 
-#: src/features/RolePlay/rolePlayData.ts:273
+#: src/features/RolePlay/rolePlayData.ts:278
 #. js-lingui-explicit-id
 msgid "In the Restaurant"
 msgstr "У рэстаране"
 
-#: src/features/RolePlay/rolePlayData.ts:274
+#: src/features/RolePlay/rolePlayData.ts:279
+#. js-lingui-explicit-id
+msgid "Restaurant"
+msgstr "Рэстаран"
+
+#: src/features/RolePlay/rolePlayData.ts:283
 #. js-lingui-explicit-id
 msgid "Practice ordering food and interacting with a waiter in a restaurant"
 msgstr "Практыкуйцеся ў замове ежы і ўзаемадзеянні з афіцыянтам у рэстаране"
 
-#: src/features/RolePlay/rolePlayData.ts:285
+#: src/features/RolePlay/rolePlayData.ts:294
 #. js-lingui-explicit-id
 msgid ""
 "In this role-play, you’ll interact with a polite waiter, order food, and "
@@ -1046,7 +1057,17 @@ msgstr ""
 "адаптуецца да вашых адказаў, ствараваючы праніклівае вопытанне, якое "
 "дапамагае вам практавацца ў практычных абедных узаемадзейнічаннях."
 
-#: src/features/RolePlay/rolePlayData.ts:302
+#: src/features/RolePlay/rolePlayData.ts:310
+#. js-lingui-explicit-id
+msgid "Buying a Train Ticket"
+msgstr "Купля квітка на поезд"
+
+#: src/features/RolePlay/rolePlayData.ts:311
+#. js-lingui-explicit-id
+msgid "Train"
+msgstr "Трэніравацца"
+
+#: src/features/RolePlay/rolePlayData.ts:313
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable purchasing travel tickets in a bustling train station "
@@ -1094,23 +1115,28 @@ msgstr ""
 "стаўлення правільных пытанняў і разумення важнай інфармацыі пра вашу "
 "падарожжу."
 
-#: src/features/RolePlay/rolePlayData.ts:315
-#: src/features/RolePlay/rolePlayData.ts:421
+#: src/features/RolePlay/rolePlayData.ts:326
+#: src/features/RolePlay/rolePlayData.ts:437
 #. js-lingui-explicit-id
 msgid "Travel"
 msgstr "Падарожжа"
 
-#: src/features/RolePlay/rolePlayData.ts:317
-#. js-lingui-explicit-id
-msgid "Buying a Train Ticket"
-msgstr "Купля квітка на поезд"
-
-#: src/features/RolePlay/rolePlayData.ts:318
+#: src/features/RolePlay/rolePlayData.ts:328
 #. js-lingui-explicit-id
 msgid "Practice asking about schedules, fares, and ticket options"
 msgstr "Практыкуйцеся пытацца пра расклады, цэны і варыянты білетаў"
 
-#: src/features/RolePlay/rolePlayData.ts:331
+#: src/features/RolePlay/rolePlayData.ts:340
+#. js-lingui-explicit-id
+msgid "Chat with a Fellow Dog Owner"
+msgstr "Пагутарайце з уладальнікам сабакі"
+
+#: src/features/RolePlay/rolePlayData.ts:341
+#. js-lingui-explicit-id
+msgid "Dog Owner"
+msgstr "Уладальнік сабакі"
+
+#: src/features/RolePlay/rolePlayData.ts:343
 #. js-lingui-explicit-id
 msgid ""
 "Strike up a conversation with a fellow dog owner in a friendly park "
@@ -1159,19 +1185,24 @@ msgstr ""
 "мэта - рэагаваць настуральна, утрымліваць размову і атрымаць задавальненне "
 "ад веселага абмену думкамі пра вашых чацверонагіх сяброў."
 
-#: src/features/RolePlay/rolePlayData.ts:367
-#. js-lingui-explicit-id
-msgid "Chat with a Fellow Dog Owner"
-msgstr "Пагутарайце з уладальнікам сабакі"
-
-#: src/features/RolePlay/rolePlayData.ts:368
+#: src/features/RolePlay/rolePlayData.ts:380
 #. js-lingui-explicit-id
 msgid "Engage in friendly small talk about pets and daily routines"
 msgstr ""
 "Займіцеся прыемнай паўдзённай балачкай пра домашніх пітамцаў і шкодных "
 "рутынах"
 
-#: src/features/RolePlay/rolePlayData.ts:381
+#: src/features/RolePlay/rolePlayData.ts:392
+#. js-lingui-explicit-id
+msgid "Talking to a Doctor"
+msgstr "Гаворка з лекарам"
+
+#: src/features/RolePlay/rolePlayData.ts:393
+#. js-lingui-explicit-id
+msgid "Doctor"
+msgstr "Доктар"
+
+#: src/features/RolePlay/rolePlayData.ts:395
 #. js-lingui-explicit-id
 msgid ""
 "Discuss your health concerns in a realistic doctor’s office setting and "
@@ -1219,24 +1250,29 @@ msgstr ""
 "Спілкуючыся натуральна, вы адшліфоўваеце свае навыкі камунікацыі ў "
 "прафесійным медыцынскім асяроддзі."
 
-#: src/features/RolePlay/rolePlayData.ts:393
-#: src/features/RolePlay/rolePlayData.ts:508
-#: src/features/RolePlay/rolePlayData.ts:551
+#: src/features/RolePlay/rolePlayData.ts:407
+#: src/features/RolePlay/rolePlayData.ts:530
+#: src/features/RolePlay/rolePlayData.ts:577
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "Здароўе"
 
-#: src/features/RolePlay/rolePlayData.ts:395
-#. js-lingui-explicit-id
-msgid "Talking to a Doctor"
-msgstr "Гаворка з лекарам"
-
-#: src/features/RolePlay/rolePlayData.ts:396
+#: src/features/RolePlay/rolePlayData.ts:410
 #. js-lingui-explicit-id
 msgid "Learn to describe symptoms and ask for medical advice effectively"
 msgstr "Вывучайце апісваць сімптомы і эфектыўна запытваць медыцынскую дапамогу"
 
-#: src/features/RolePlay/rolePlayData.ts:409
+#: src/features/RolePlay/rolePlayData.ts:422
+#. js-lingui-explicit-id
+msgid "Hotel Check-In Conversation"
+msgstr "Размова пры рэгістрацыі ў госцініцы"
+
+#: src/features/RolePlay/rolePlayData.ts:423
+#. js-lingui-explicit-id
+msgid "Check-In"
+msgstr "Рэгістрацыя"
+
+#: src/features/RolePlay/rolePlayData.ts:425
 #. js-lingui-explicit-id
 msgid ""
 "Check into a hotel and handle room arrangements in a realistic front-desk "
@@ -1286,17 +1322,22 @@ msgstr ""
 "Рэагуючы природным чынам, вы набываеце навыкі размовы, неабходныя для "
 "гладкага рэгістрацыі ў гатэлі."
 
-#: src/features/RolePlay/rolePlayData.ts:423
-#. js-lingui-explicit-id
-msgid "Hotel Check-In Conversation"
-msgstr "Размова пры рэгістрацыі ў госцініцы"
-
-#: src/features/RolePlay/rolePlayData.ts:424
+#: src/features/RolePlay/rolePlayData.ts:440
 #. js-lingui-explicit-id
 msgid "Practice booking a room, requesting amenities, and checking in"
 msgstr "Практыкуйцеся ў браніраванні пакоя, запыце ў годнасцях, і ў рэгістрацыі"
 
-#: src/features/RolePlay/rolePlayData.ts:438
+#: src/features/RolePlay/rolePlayData.ts:453
+#. js-lingui-explicit-id
+msgid "Shopping at the Grocery Store"
+msgstr "Купля ў краме"
+
+#: src/features/RolePlay/rolePlayData.ts:454
+#. js-lingui-explicit-id
+msgid "Grocery Store"
+msgstr "Гандлявы магазін"
+
+#: src/features/RolePlay/rolePlayData.ts:456
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable shopping in a real store setting by asking questions about "
@@ -1337,23 +1378,28 @@ msgstr ""
 "сімулюе рэалістычны шопінг, дапамагаючы вам развіваць неабходныя навыкі "
 "камунікацыі."
 
-#: src/features/RolePlay/rolePlayData.ts:450
-#: src/features/RolePlay/rolePlayData.ts:536
+#: src/features/RolePlay/rolePlayData.ts:468
+#: src/features/RolePlay/rolePlayData.ts:560
 #. js-lingui-explicit-id
 msgid "Shopping"
 msgstr "Купля"
 
-#: src/features/RolePlay/rolePlayData.ts:452
-#. js-lingui-explicit-id
-msgid "Shopping at the Grocery Store"
-msgstr "Купля ў краме"
-
-#: src/features/RolePlay/rolePlayData.ts:453
+#: src/features/RolePlay/rolePlayData.ts:471
 #. js-lingui-explicit-id
 msgid "Practice asking for product recommendations and making purchases"
 msgstr "Практыкуйцеся у запытах рэкамендацый прадуктаў і рабяце пакупкі"
 
-#: src/features/RolePlay/rolePlayData.ts:467
+#: src/features/RolePlay/rolePlayData.ts:484
+#. js-lingui-explicit-id
+msgid "Calling Customer Support"
+msgstr "Выклік Службы падтрымкі кліентаў"
+
+#: src/features/RolePlay/rolePlayData.ts:485
+#. js-lingui-explicit-id
+msgid "Technical Support"
+msgstr "Тэхнічная падтрымка"
+
+#: src/features/RolePlay/rolePlayData.ts:487
 #. js-lingui-explicit-id
 msgid ""
 "Work through a technical issue while speaking with a helpful support agent. "
@@ -1393,17 +1439,22 @@ msgstr ""
 "рашэнні, і прапануе наступныя крокі. Гэты сцэнар дапамагае вам адчуваць "
 "сябе камфортна, навігуючы па тэхнічных праблемах і камунікацыі рашэнняў."
 
-#: src/features/RolePlay/rolePlayData.ts:481
-#. js-lingui-explicit-id
-msgid "Calling Customer Support"
-msgstr "Выклік Службы падтрымкі кліентаў"
-
-#: src/features/RolePlay/rolePlayData.ts:482
+#: src/features/RolePlay/rolePlayData.ts:502
 #. js-lingui-explicit-id
 msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "Практыкуйцеся ў усуненні тэхнічных праблем па тэлефоне"
 
-#: src/features/RolePlay/rolePlayData.ts:496
+#: src/features/RolePlay/rolePlayData.ts:515
+#. js-lingui-explicit-id
+msgid "Booking a Doctor's Appointment"
+msgstr "Запіс на прыём да лекара"
+
+#: src/features/RolePlay/rolePlayData.ts:516
+#. js-lingui-explicit-id
+msgid "Appointment"
+msgstr "Прызначэнне"
+
+#: src/features/RolePlay/rolePlayData.ts:518
 #. js-lingui-explicit-id
 msgid ""
 "Practice scheduling a doctor’s appointment over the phone by clearly "
@@ -1441,17 +1492,22 @@ msgstr ""
 "натуральнай форме, вы будзеце распрацоўваць незаменныя камунікацыйныя "
 "навыкі для любога медычнага кантэксту."
 
-#: src/features/RolePlay/rolePlayData.ts:510
-#. js-lingui-explicit-id
-msgid "Booking a Doctor's Appointment"
-msgstr "Запіс на прыём да лекара"
-
-#: src/features/RolePlay/rolePlayData.ts:511
+#: src/features/RolePlay/rolePlayData.ts:533
 #. js-lingui-explicit-id
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "Даведайцеся, як запланаваць медыцынскі візіт па тэлефоне"
 
-#: src/features/RolePlay/rolePlayData.ts:524
+#: src/features/RolePlay/rolePlayData.ts:545
+#. js-lingui-explicit-id
+msgid "Returning an Item to a Store"
+msgstr "Вяртанне прадукту ў краму"
+
+#: src/features/RolePlay/rolePlayData.ts:546
+#. js-lingui-explicit-id
+msgid "Return"
+msgstr "Вяртанне"
+
+#: src/features/RolePlay/rolePlayData.ts:548
 #. js-lingui-explicit-id
 msgid ""
 "Handle a return at a customer service desk by describing what went wrong "
@@ -1494,29 +1550,29 @@ msgstr ""
 "дапамагае вам авладзець ввейчлівае, эфектыўнае спілкуванне ў сітуацыях "
 "рознічнай торговлі."
 
-#: src/features/RolePlay/rolePlayData.ts:538
-#. js-lingui-explicit-id
-msgid "Returning an Item to a Store"
-msgstr "Вяртанне прадукту ў краму"
-
-#: src/features/RolePlay/rolePlayData.ts:539
+#: src/features/RolePlay/rolePlayData.ts:563
 #. js-lingui-explicit-id
 msgid "Practice explaining product issues and requesting refunds or exchanges"
 msgstr ""
 "Практыкуйцеся ў тым, каб тлумачыць праблемы з таварам і запытваць аб "
 "вяртанні грошай або абмене"
 
-#: src/features/RolePlay/rolePlayData.ts:570
+#: src/features/RolePlay/rolePlayData.ts:575
 #. js-lingui-explicit-id
 msgid "Speaking with a Psychologist"
 msgstr "Гаворка з псіхалогам"
 
-#: src/features/RolePlay/rolePlayData.ts:571
+#: src/features/RolePlay/rolePlayData.ts:576
+#. js-lingui-explicit-id
+msgid "Psychologist"
+msgstr "Псіхолаг"
+
+#: src/features/RolePlay/rolePlayData.ts:597
 #. js-lingui-explicit-id
 msgid "Discuss mental health topics and express your thoughts effectively"
 msgstr "Абмеркавайце тэмы псіхічнага здароўя і выслоўваць свае думкі эфектыўна"
 
-#: src/features/RolePlay/rolePlayData.ts:587
+#: src/features/RolePlay/rolePlayData.ts:613
 #. js-lingui-explicit-id
 msgid ""
 "Discuss mental health topics in a comfortable, supportive setting. This "
@@ -1571,27 +1627,33 @@ msgstr ""
 "пытанні і пацвярджаючы вашы перажыванні, каб дапамагчы вам практавацца ў "
 "значучых, прасветленых размовах."
 
-#: src/features/RolePlay/rolePlayData.ts:606
+#: src/features/RolePlay/rolePlayData.ts:632
 #. js-lingui-explicit-id
 msgid "Create Your Own Role-Play Scenario"
 msgstr "Стварыце свой уласны варыянт ролевай гульні"
 
-#: src/features/RolePlay/rolePlayData.ts:607
+#: src/features/RolePlay/rolePlayData.ts:633
+#: src/features/RolePlay/rolePlayData.ts:660
+#. js-lingui-explicit-id
+msgid "Custom"
+msgstr "Правіць"
+
+#: src/features/RolePlay/rolePlayData.ts:634
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
 msgstr "Наладзьце размову, каб яна адпавядала вашым унікальным патрэбам у навучанні"
 
-#: src/features/RolePlay/rolePlayData.ts:611
+#: src/features/RolePlay/rolePlayData.ts:638
 #. js-lingui-explicit-id
 msgid "Scenario Description"
 msgstr "Апісанне сцэнарыя"
 
-#: src/features/RolePlay/rolePlayData.ts:613
+#: src/features/RolePlay/rolePlayData.ts:640
 #. js-lingui-explicit-id
 msgid "Describe your custom scenario here..."
 msgstr "Апішыце свой карыстацкі сцэнарый тут..."
 
-#: src/features/RolePlay/rolePlayData.ts:620
+#: src/features/RolePlay/rolePlayData.ts:647
 #. js-lingui-explicit-id
 msgid ""
 "Create a unique, personalized setting that fits your specific interests or "
@@ -1641,45 +1703,36 @@ msgstr ""
 "вашага сцэнара. Гэты гнуткі фармат дапамагае вам апанаваць тыя "
 "камунікатыўныя навыкі, якія вам неабходны."
 
-#: src/features/RolePlay/rolePlayData.ts:633
-#. js-lingui-explicit-id
-msgid "Custom"
-msgstr "Правіць"
-
-#: src/features/RolePlay/rolePlayData.ts:654
+#: src/features/RolePlay/rolePlayData.ts:681
 #. js-lingui-explicit-id
 msgid "All Scenarios"
 msgstr "Усе сцэнары"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:367
+#: src/features/RolePlay/RolePlayCardApp.tsx:105
+#: src/features/RolePlay/RolePlayBoard.tsx:635
+#: src/features/Dashboard/ConversationSelectCard.tsx:93
+#. js-lingui-explicit-id
+msgid "Start"
+msgstr "Пачаць"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:388
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Ролевая гра"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:374
-#. js-lingui-explicit-id
-msgid "Play a role and talk to the AI"
-msgstr "Зграйце ролю і пагаварыце з ШІ"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:464
+#: src/features/RolePlay/RolePlayBoard.tsx:478
 #. js-lingui-explicit-id
 msgid "Before you start, please fill some information to make it more realistic."
 msgstr ""
 "Перад тым, як пачаць, калі ласка, запоўніце некаторую інфармацыю, каб "
 "зрабіць гэта больш рэалістычным."
 
-#: src/features/RolePlay/RolePlayBoard.tsx:621
-#: src/features/Dashboard/ConversationSelectCard.tsx:87
-#. js-lingui-explicit-id
-msgid "Start"
-msgstr "Пачаць"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:673
+#: src/features/RolePlay/RolePlayBoard.tsx:687
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Паказаць больш"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:673
+#: src/features/RolePlay/RolePlayBoard.tsx:687
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Паказаць менш"
@@ -1893,6 +1946,7 @@ msgid "Get started free"
 msgstr "Пачаць бясплатна"
 
 #: src/features/Landing/LandingPage.tsx:144
+#: src/features/Dashboard/ConversationSelectCard.tsx:136
 #. js-lingui-explicit-id
 msgid "Beginner"
 msgstr "Пачаткоўца"
@@ -2300,7 +2354,6 @@ msgstr ""
 "заказ ежы"
 
 #: src/features/Landing/Price/PricePage.tsx:164
-#: src/features/Dashboard/ConversationSelectCard.tsx:95
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Практыка размовы"
@@ -2720,6 +2773,7 @@ msgid "Finishing the lesson..."
 msgstr "Заканчэнне урока..."
 
 #: src/features/Header/HeaderComponent.tsx:253
+#: src/features/Dashboard/ConversationSelectCard.tsx:101
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Размова"
@@ -2766,48 +2820,35 @@ msgstr "Назад"
 msgid "I know all of them"
 msgstr "Я ведаю іх усіх"
 
-#: src/features/Dashboard/TasksCard.tsx:21
+#: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
 msgstr "Штодзённыя заданні"
 
-#: src/features/Dashboard/TasksCard.tsx:29
-#. js-lingui-explicit-id
-msgid "Complete daily tasks to improve your language skills"
-msgstr "Выконвайце штодзённыя заданні, каб палепшыць свае моўныя навыкі"
-
-#: src/features/Dashboard/TasksCard.tsx:45
-#. js-lingui-explicit-id
-msgid "Short conversation"
-msgstr "Кароткая размова"
-
-#: src/features/Dashboard/TasksCard.tsx:46
-#. js-lingui-explicit-id
-msgid "Start talking to learn something new"
-msgstr "Пачніце размаўляць, каб даведацца нешта новае"
-
-#: src/features/Dashboard/TasksCard.tsx:52
+#: src/features/Dashboard/TasksCard.tsx:51
 #. js-lingui-explicit-id
 msgid "Rule of the day"
 msgstr "Правіла дня"
 
-#: src/features/Dashboard/TasksCard.tsx:53
+#: src/features/Dashboard/TasksCard.tsx:52
+#: src/features/Dashboard/ConversationSelectCard.tsx:172
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "Атрымаць асабістае правіла граматыкі для вучэння"
 
-#: src/features/Dashboard/TasksCard.tsx:57
-#: src/features/Dashboard/TasksCard.tsx:65
+#: src/features/Dashboard/TasksCard.tsx:56
+#: src/features/Dashboard/TasksCard.tsx:64
 #. js-lingui-explicit-id
 msgid "Complete previous tasks first"
 msgstr "Спачатку завяршыце папярэднія заданні"
 
-#: src/features/Dashboard/TasksCard.tsx:62
+#: src/features/Dashboard/TasksCard.tsx:61
 #. js-lingui-explicit-id
 msgid "New words"
 msgstr "Новыя словы"
 
-#: src/features/Dashboard/TasksCard.tsx:63
+#: src/features/Dashboard/TasksCard.tsx:62
+#: src/features/Dashboard/ConversationSelectCard.tsx:207
 #. js-lingui-explicit-id
 msgid "Practice new vocabulary with the AI"
 msgstr "Практыкуйце новую лексіку з АІ"
@@ -2872,30 +2913,50 @@ msgstr "Стварэнне новага правіла..."
 msgid "Reload"
 msgstr "Перазагрузіць"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:96
+#: src/features/Dashboard/ConversationSelectCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Introduce"
+msgstr "Запазнаёмца"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:67
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Выстаўце мэту вашага навучання"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:102
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "Пагаварыце з ШІ, і яна адказае вам"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:122
+#: src/features/Dashboard/ConversationSelectCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Start Talking"
 msgstr "Пачніце размаўляць"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:130
-#. js-lingui-explicit-id
-msgid "Beginner mode"
-msgstr "Рэжым для пачаткоўцаў"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:131
+#: src/features/Dashboard/ConversationSelectCard.tsx:137
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
 msgstr "AI правядзе вас праз размову"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:157
+#: src/features/Dashboard/ConversationSelectCard.tsx:163
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Напраўце мяне"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:171
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "Правілы"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:198
+#. js-lingui-explicit-id
+msgid "Get a rule"
+msgstr "Атрымаць правіла"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:233
+#. js-lingui-explicit-id
+msgid "Expand vocabulary"
+msgstr "Расшырыць слоўнік"
 
 #: src/features/Dashboard/BrainCard.tsx:128
 #. js-lingui-explicit-id
@@ -2999,22 +3060,17 @@ msgstr "Падрыхтоўка мозга"
 msgid "Upload language skills directly to your brain"
 msgstr "Загрузіце веданні мовы напрыцямую ў свой мозг"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:34
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:55
 #. js-lingui-explicit-id
 msgid "Progress Calendar"
 msgstr "Каляндар прагрэсу"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:42
-#. js-lingui-explicit-id
-msgid "Your daily progress"
-msgstr "Ваш шкодны прагрэс"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:56
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:69
 #. js-lingui-explicit-id
 msgid "Less"
 msgstr "Менш"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:77
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:90
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Болей"
@@ -4303,6 +4359,51 @@ msgstr "Працягнуць з Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Ствараючы рахунак, вы згаджаецеся з:"
+
+#: src/features/Usage/UsageStatsCards.tsx:509
+#. js-lingui-explicit-id
+#~ msgid "Grammar fixes"
+#~ msgstr "Граматычныя папраўкі"
+
+#: src/features/Usage/UsageStatsCards.tsx:555
+#. js-lingui-explicit-id
+#~ msgid "Minutes spoken"
+#~ msgstr "Хвіліны, якія былі прагавораныя"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:66
+#. js-lingui-explicit-id
+#~ msgid "Introduce yourself"
+#~ msgstr "Прадставцеся"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:136
+#. js-lingui-explicit-id
+#~ msgid "Beginner mode"
+#~ msgstr "Рэжым для пачаткоўцаў"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:374
+#. js-lingui-explicit-id
+#~ msgid "Play a role and talk to the AI"
+#~ msgstr "Зграйце ролю і пагаварыце з ШІ"
+
+#: src/features/Dashboard/TasksCard.tsx:29
+#. js-lingui-explicit-id
+#~ msgid "Complete daily tasks to improve your language skills"
+#~ msgstr "Выконвайце штодзённыя заданні, каб палепшыць свае моўныя навыкі"
+
+#: src/features/Dashboard/TasksCard.tsx:45
+#. js-lingui-explicit-id
+#~ msgid "Short conversation"
+#~ msgstr "Кароткая размова"
+
+#: src/features/Dashboard/TasksCard.tsx:46
+#. js-lingui-explicit-id
+#~ msgid "Start talking to learn something new"
+#~ msgstr "Пачніце размаўляць, каб даведацца нешта новае"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Your daily progress"
+#~ msgstr "Ваш шкодны прагрэс"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:39
 #. js-lingui-explicit-id

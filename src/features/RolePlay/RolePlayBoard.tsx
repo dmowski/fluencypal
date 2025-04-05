@@ -32,7 +32,7 @@ import {
 import { useSettings } from "../Settings/useSettings";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { RolePlayCard } from "./RolePlayCard";
+import { RolePlayCardApp } from "./RolePlayCardApp";
 import { GuessGameStat } from "../Conversation/types";
 import { uniq } from "@/libs/uniq";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
@@ -40,9 +40,9 @@ import { supportedLanguages } from "@/common/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useLingui } from "@lingui/react";
 import { RolePlayScenariosInfo } from "./rolePlayData";
+import { VenetianMask } from "lucide-react";
 
 const firstLimit = 6;
-const hardHeight = "300px";
 
 const allCategoriesLabel = "All";
 
@@ -363,17 +363,31 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
   return (
     <DashboardCard>
       <Stack gap={"10px"}>
-        <Stack>
-          <Typography variant="h6">{i18n._(`Role Play`)}</Typography>
-          <Typography
-            variant="caption"
+        <Stack
+          sx={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "15px",
+            paddingBottom: "10px",
+          }}
+        >
+          <Stack
             sx={{
-              opacity: 0.7,
+              borderRadius: "50%",
+              background: "linear-gradient(45deg,rgb(230, 69, 182) 0%,rgb(109, 111, 209) 100%)",
+              height: "50px",
+              width: "50px",
+
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            {i18n._(`Play a role and talk to the AI`)}
-          </Typography>
+            <VenetianMask size={"25px"} />
+          </Stack>
+          <Typography variant="h6">{i18n._(`Role Play`)}</Typography>
         </Stack>
+
         {selectedRolePlayScenario && (
           <CustomModal
             padding="0"
@@ -625,7 +639,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
           </CustomModal>
         )}
 
-        <Stack gap={"10px"}>
+        <Stack gap={"20px"}>
           <Tabs
             scrollButtons="auto"
             variant="scrollable"
@@ -639,12 +653,13 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
               return <Tab key={index} label={tab} value={tab} />;
             })}
           </Tabs>
+
           <Stack gap="15px">
             <Stack
               sx={{
-                gap: "10px",
+                gap: "20px",
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr",
+                gridTemplateColumns: "1fr 1fr ",
                 "@media (max-width: 1100px)": {
                   gridTemplateColumns: "1fr 1fr",
                 },
@@ -656,11 +671,10 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
             >
               {visibleScenarios.map((scenario, index) => {
                 return (
-                  <RolePlayCard
+                  <RolePlayCardApp
                     key={index}
                     scenario={scenario}
                     onClick={() => selectScenario(scenario)}
-                    hardHeight={hardHeight}
                   />
                 );
               })}

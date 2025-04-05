@@ -1,8 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import { ClickCard } from "./ClickCard";
 import { useTasks } from "../Tasks/useTasks";
-import { BookOpenText, GraduationCap, Mic } from "lucide-react";
-import { useAiConversation } from "../Conversation/useAiConversation";
+import { BookOpenText, CircleCheckBig, GraduationCap, Mic } from "lucide-react";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
@@ -12,42 +11,42 @@ export const TasksCard = () => {
   const words = useWords();
   const rules = useRules();
   const tasks = useTasks();
-  const aiConversation = useAiConversation();
   const { i18n } = useLingui();
   return (
     <DashboardCard>
-      <Stack>
-        <Typography variant="h2" className="decor-title">
-          {i18n._(`Daily Tasks`)}
-        </Typography>
-        <Typography
-          variant="caption"
-          sx={{
-            opacity: 0.7,
-          }}
-        >
-          {i18n._(`Complete daily tasks to improve your language skills`)}
-        </Typography>
-      </Stack>
       <Stack
         sx={{
           flexDirection: "row",
+          alignItems: "center",
           gap: "15px",
-          width: "100%",
-          "@media (max-width: 800px)": {
-            flexDirection: "column",
-            gap: "10px",
-          },
+          paddingBottom: "10px",
         }}
       >
-        <ClickCard
-          isDone={!!tasks.todayStats?.lesson}
-          title={i18n._(`Short conversation`)}
-          subTitle={i18n._(`Start talking to learn something new`)}
-          buttonIcon={<Mic size={"30px"} />}
-          onStart={() => aiConversation.startConversation({ mode: "talk" })}
-        />
+        <Stack
+          sx={{
+            borderRadius: "50%",
+            background: "linear-gradient(45deg,rgb(230, 69, 163) 0%,rgb(209, 109, 109) 100%)",
+            height: "50px",
+            width: "50px",
 
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <CircleCheckBig size={"25px"} />
+        </Stack>
+        <Typography variant="h6">{i18n._(`Daily Tasks`)}</Typography>
+      </Stack>
+
+      <Stack
+        sx={{
+          gap: "20px",
+          width: "100%",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr",
+        }}
+      >
         <ClickCard
           title={i18n._(`Rule of the day`)}
           subTitle={i18n._(`Get a personal grammar rule to learn`)}

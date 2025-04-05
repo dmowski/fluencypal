@@ -83,6 +83,8 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           paddingTop: "100px",
           boxSizing: "border-box",
           gap: "70px",
+          position: "relative",
+          zIndex: 1,
           "@media (max-width: 850px)": {
             paddingLeft: "0",
             paddingRight: "0",
@@ -96,17 +98,6 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
         </DashboardCard>
 
         <RolePlayBoard rolePlayInfo={rolePlayInfo} />
-
-        <Stack
-          sx={{
-            gap: "40px",
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            boxSizing: "border-box",
-          }}
-        >
-          <TasksCard />
-        </Stack>
 
         <Stack
           sx={{
@@ -143,8 +134,14 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           width: "300px",
           borderRadius: "50%",
           filter: "blur(200px)",
-          zIndex: 0,
+          zIndex: -1,
           opacity: 0.9,
+          "@media (max-width: 600px)": {
+            width: "100px",
+            backgroundColor: "red",
+            zIndex: -2,
+            opacity: 0.4,
+          },
         }}
       ></Stack>
 
@@ -160,6 +157,10 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           filter: "blur(200px)",
           zIndex: 0,
           opacity: 0.4,
+          "@media (max-width: 600px)": {
+            width: "50px",
+            opacity: 0.2,
+          },
         }}
       ></Stack>
 
@@ -176,7 +177,10 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           zIndex: 0,
           opacity: 0.61,
           "@media (max-width: 600px)": {
+            right: "0px",
             left: "0px",
+            opacity: 0.6,
+            width: "150px",
           },
         }}
       ></Stack>
@@ -191,7 +195,7 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           width: "300px",
           borderRadius: "50%",
           filter: "blur(300px)",
-          zIndex: 0,
+          zIndex: -1,
           opacity: 0.4,
         }}
       ></Stack>

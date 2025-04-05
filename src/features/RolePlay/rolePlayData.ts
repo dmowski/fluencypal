@@ -14,6 +14,8 @@ export const getRolePlayScenarios = (lang: SupportedLanguage): RolePlayScenarios
   const rolePlayScenarios: RolePlayInstruction[] = [
     {
       id: "alias-game",
+      title: i18n._("Alias Word Guessing Game"),
+      shortTitle: i18n._("Alias"),
       category: { categoryTitle: i18n._("Game"), categoryId: "game" },
       input: [
         {
@@ -38,7 +40,7 @@ export const getRolePlayScenarios = (lang: SupportedLanguage): RolePlayScenarios
           required: false,
         },
       ],
-      title: i18n._("Alias Word Guessing Game"),
+
       gameMode: "alias",
       subTitle: i18n._("Practice English vocabulary by creatively describing and guessing words"),
       contentPage: i18n._(
@@ -82,6 +84,8 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
     },
     {
       id: "small-talk-with-a-stranger",
+      title: i18n._("Small Talk Practice"),
+      shortTitle: i18n._("Small Talk"),
       landingHighlight: `Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.`,
       contentPage:
         i18n._(`Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.
@@ -97,7 +101,7 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
 In this scenario, you’ll step into the role of someone meeting a new acquaintance at a social event. The AI acts as a friendly stranger, prompting you to talk about casual topics like weather or shared interests. As you exchange pleasantries, the AI will adapt to your responses, helping you refine your small-talk abilities.`),
       category: { categoryTitle: i18n._("Social"), categoryId: "social" },
       input: [],
-      title: i18n._("Small Talk Practice"),
+
       subTitle: i18n._("Develop your conversational skills with casual small talk"),
       instructionToAi:
         "You are a friendly stranger meeting the user at a social event. Engage in small talk about the weather, hobbies, or recent events.",
@@ -111,6 +115,9 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
     },
     {
       id: "job-interview",
+      title: i18n._("Practice Job Interview"),
+      shortTitle: i18n._("Job Interview"),
+
       landingHighlight: `Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.`,
 
       contentPage:
@@ -179,7 +186,7 @@ Candidate's info below, don't include questions that are already answered by can
           required: false,
         },
       ],
-      title: i18n._("Practice Job Interview"),
+
       subTitle: i18n._("Master answering common interview questions with AI"),
       instructionToAi:
         "You are a professional recruiter conducting a job interview. Ask the user about their experience, skills, and why they want the job. Adjust difficulty based on responses and provide feedback.",
@@ -268,9 +275,11 @@ Example of topics: weather, hobbies, family, work, travel, food, music, movies, 
 
     {
       id: "in-the-restaurant",
+      title: i18n._("In the Restaurant"),
+      shortTitle: i18n._("Restaurant"),
       category: { categoryTitle: i18n._("Social"), categoryId: "social" },
       input: [],
-      title: i18n._("In the Restaurant"),
+
       subTitle: i18n._("Practice ordering food and interacting with a waiter in a restaurant"),
       instructionToAi:
         "You are a polite restaurant waiter. Ask the user for their order, offer recommendations, and respond to any requests.",
@@ -298,6 +307,8 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
 
     {
       id: "buying-a-train-ticket",
+      title: i18n._("Buying a Train Ticket"),
+      shortTitle: i18n._("Train"),
       contentPage:
         i18n._(`Get comfortable purchasing travel tickets in a bustling train station scenario. Perfect for practicing how to ask about routes, departure times, and ticket types.
 
@@ -314,7 +325,6 @@ In this scenario, you’ll step into the role of a traveler looking to buy a tic
       input: [],
       category: { categoryTitle: i18n._("Travel"), categoryId: "travel" },
 
-      title: i18n._("Buying a Train Ticket"),
       subTitle: i18n._("Practice asking about schedules, fares, and ticket options"),
       instructionToAi:
         "You are a train station ticket agent. Ask the user where they want to go, the departure time, and the type of ticket they need.",
@@ -327,6 +337,8 @@ In this scenario, you’ll step into the role of a traveler looking to buy a tic
     },
     {
       id: "meeting-dog-owners-in-the-park",
+      title: i18n._("Chat with a Fellow Dog Owner"),
+      shortTitle: i18n._("Dog Owner"),
       contentPage:
         i18n._(`Strike up a conversation with a fellow dog owner in a friendly park setting. Compare tips, stories, and general dog-care experiences while bonding over your shared love of canine companions.
 
@@ -364,7 +376,7 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
           required: false,
         },
       ],
-      title: i18n._("Chat with a Fellow Dog Owner"),
+
       subTitle: i18n._("Engage in friendly small talk about pets and daily routines"),
       instructionToAi:
         "You are a friendly dog owner who meets the user at a park. Greet them warmly, ask about their dog, share experiences, and discuss tips or fun stories about caring for dogs.",
@@ -377,6 +389,8 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
     },
     {
       id: "talking-to-a-doctor",
+      title: i18n._("Talking to a Doctor"),
+      shortTitle: i18n._("Doctor"),
       contentPage:
         i18n._(`Discuss your health concerns in a realistic doctor’s office setting and practice explaining symptoms clearly. Perfect for gaining confidence in describing medical issues and understanding potential treatment options.
 
@@ -392,7 +406,7 @@ You’ll take on the role of a patient visiting a doctor, played by the AI. The 
 `),
       category: { categoryTitle: i18n._("Health"), categoryId: "health" },
       input: [],
-      title: i18n._("Talking to a Doctor"),
+
       subTitle: i18n._("Learn to describe symptoms and ask for medical advice effectively"),
       instructionToAi:
         "You are a doctor. Ask the user about their symptoms, provide advice, and suggest treatment options.",
@@ -405,6 +419,8 @@ You’ll take on the role of a patient visiting a doctor, played by the AI. The 
     },
     {
       id: "hotel-check-in",
+      title: i18n._("Hotel Check-In Conversation"),
+      shortTitle: i18n._("Check-In"),
       contentPage:
         i18n._(`Check into a hotel and handle room arrangements in a realistic front-desk setting. Perfect for practicing how to provide reservation details, inquire about amenities, and address special requests.
 
@@ -420,7 +436,7 @@ You’ll act as the guest arriving at the hotel, while our AI plays the role of 
 `),
       category: { categoryTitle: i18n._("Travel"), categoryId: "travel" },
       input: [],
-      title: i18n._("Hotel Check-In Conversation"),
+
       subTitle: i18n._("Practice booking a room, requesting amenities, and checking in"),
       instructionToAi:
         "You are a hotel receptionist. Ask for the user's reservation details, offer room options, and answer their questions.",
@@ -434,6 +450,8 @@ You’ll act as the guest arriving at the hotel, while our AI plays the role of 
 
     {
       id: "at-the-grocery-store",
+      title: i18n._("Shopping at the Grocery Store"),
+      shortTitle: i18n._("Grocery Store"),
       contentPage:
         i18n._(`Get comfortable shopping in a real store setting by asking questions about product locations, prices, and deals. Perfect for building confidence in navigating aisles, comparing items, and checking out.
 
@@ -449,7 +467,7 @@ You’ll take the role of a customer shopping for groceries. The AI, as a store 
 `),
       category: { categoryTitle: i18n._("Shopping"), categoryId: "shopping" },
       input: [],
-      title: i18n._("Shopping at the Grocery Store"),
+
       subTitle: i18n._("Practice asking for product recommendations and making purchases"),
       instructionToAi:
         "You are a grocery store employee. Help the user find products, explain prices, and answer questions about promotions.",
@@ -463,6 +481,8 @@ You’ll take the role of a customer shopping for groceries. The AI, as a store 
 
     {
       id: "calling-technical-support",
+      title: i18n._("Calling Customer Support"),
+      shortTitle: i18n._("Technical Support"),
       contentPage:
         i18n._(`Work through a technical issue while speaking with a helpful support agent. Perfect for practicing how to explain a problem clearly and follow troubleshooting steps.
 
@@ -478,7 +498,7 @@ You’ll act as a caller seeking help with a technical issue, while the AI plays
 `),
       category: { categoryTitle: i18n._("Professional"), categoryId: "professional" },
       input: [],
-      title: i18n._("Calling Customer Support"),
+
       subTitle: i18n._("Practice troubleshooting a technical issue over the phone"),
       instructionToAi:
         "You are a technical support agent. Ask the user about their issue, guide them through troubleshooting steps, and provide solutions.",
@@ -492,6 +512,8 @@ You’ll act as a caller seeking help with a technical issue, while the AI plays
 
     {
       id: "making-a-doctors-appointment",
+      title: i18n._("Booking a Doctor's Appointment"),
+      shortTitle: i18n._("Appointment"),
       contentPage:
         i18n._(`Practice scheduling a doctor’s appointment over the phone by clearly stating your availability and reason for the visit. Perfect for improving clarity and confidence in professional medical settings.
 
@@ -507,7 +529,7 @@ You’ll take the role of a patient calling a doctor’s office to schedule an a
 `),
       category: { categoryTitle: i18n._("Health"), categoryId: "health" },
       input: [],
-      title: i18n._("Booking a Doctor's Appointment"),
+
       subTitle: i18n._("Learn how to schedule a medical visit over the phone"),
       instructionToAi:
         "You are a receptionist at a doctor's office. Ask the user for their name, preferred date, and reason for the appointment.",
@@ -520,6 +542,8 @@ You’ll take the role of a patient calling a doctor’s office to schedule an a
     },
     {
       id: "returning-an-item-in-a-store",
+      title: i18n._("Returning an Item to a Store"),
+      shortTitle: i18n._("Return"),
       contentPage:
         i18n._(`Handle a return at a customer service desk by describing what went wrong and exploring options for a refund or exchange. Perfect for practicing calm, clear communication in a shopping context.
 
@@ -535,7 +559,7 @@ You’ll step into the role of a customer returning a product, while the AI acts
 `),
       category: { categoryTitle: i18n._("Shopping"), categoryId: "shopping" },
       input: [],
-      title: i18n._("Returning an Item to a Store"),
+
       subTitle: i18n._("Practice explaining product issues and requesting refunds or exchanges"),
       instructionToAi:
         "You are a store employee handling returns. Ask the user why they are returning the item and offer solutions like exchange or refund.",
@@ -548,6 +572,8 @@ You’ll step into the role of a customer returning a product, while the AI acts
     },
     {
       id: "meeting-with-psychologist",
+      title: i18n._("Speaking with a Psychologist"),
+      shortTitle: i18n._("Psychologist"),
       category: { categoryTitle: i18n._("Health"), categoryId: "health" },
       input: [
         {
@@ -567,7 +593,7 @@ You’ll step into the role of a customer returning a product, while the AI acts
           required: false,
         },
       ],
-      title: i18n._("Speaking with a Psychologist"),
+
       subTitle: i18n._("Discuss mental health topics and express your thoughts effectively"),
       instructionToAi: `You are a psychologist meeting a client for a casual consultation.
 
@@ -604,6 +630,7 @@ You'll act as a client meeting a psychologist for an informal discussion about m
     {
       id: "custom",
       title: i18n._("Create Your Own Role-Play Scenario"),
+      shortTitle: i18n._("Custom"),
       subTitle: i18n._("Customize a conversation to fit your unique learning needs"),
       input: [
         {

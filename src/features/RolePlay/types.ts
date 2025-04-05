@@ -36,6 +36,7 @@ export interface RolePlayInstruction {
   landingHighlight?: string;
   youTubeVideoUrl?: string;
   title: string;
+  shortTitle: string;
   subTitle: string;
   instructionToAi: string;
   exampleOfFirstMessageFromAi: string;

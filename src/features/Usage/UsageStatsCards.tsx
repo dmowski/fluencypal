@@ -397,12 +397,13 @@ export const UsageStatsCards = () => {
             alignItems: "center",
             gap: "15px",
             paddingBottom: "10px",
+            flexWrap: "wrap",
           }}
         >
           <Stack
             sx={{
               borderRadius: "50%",
-              background: "linear-gradient(45deg,rgb(25, 142, 79) 0%,rgb(109, 209, 151) 100%)",
+              background: "linear-gradient(45deg,rgb(15, 92, 51) 0%,rgb(149, 222, 179) 100%)",
               height: "50px",
               width: "50px",
 
@@ -438,9 +439,9 @@ export const UsageStatsCards = () => {
             value={`${totalWordsCount}`}
             title={i18n._("Words")}
             subTitle={settings.fullLanguageName || "English"}
-            startColor="#FF6B6B"
-            endColor="#FFD93D"
-            bgColor="#5EEAD4"
+            startColor="#4f1616"
+            endColor="#ff9494"
+            bgColor="#FF6B6B"
             miniCard={
               <Stack
                 sx={{
@@ -496,17 +497,6 @@ export const UsageStatsCards = () => {
                         {word}
                       </Typography>
                       <Typography variant="caption">{usageCount}</Typography>
-                      <Stack
-                        sx={{
-                          height: "100%",
-                          width: `${percentage}%`,
-                          position: "absolute",
-                          top: "0px",
-                          left: "0px",
-                          borderRadius: "3px",
-                          backgroundColor: "rgba(255, 255, 255, 0.1)",
-                        }}
-                      />
                     </Stack>
                   );
                 })}
@@ -517,9 +507,9 @@ export const UsageStatsCards = () => {
           <GradientBgCard
             value={`${correctionsCount}`}
             subTitle={settings.fullLanguageName || "English"}
-            title={i18n._("Grammar fixes")}
-            startColor="#4F46E5"
-            endColor="#A78BFA"
+            title={i18n._("Corrections")}
+            startColor="#1a1754"
+            endColor="#4F46E5"
             bgColor="#60A5FA"
             onClick={() => setIsShowCorrectionStats(!isShowCorrectionStats)}
             miniCard={
@@ -563,10 +553,10 @@ export const UsageStatsCards = () => {
           />
           <GradientBgCard
             value={`${Math.round(usage.usedHours * 60)}`}
-            title={i18n._("Minutes spoken")}
+            title={i18n._("Minutes")}
             subTitle={i18n._("Total")}
-            startColor="#34D399"
-            endColor="#3B82F6"
+            startColor="#134a36"
+            endColor="#34D399"
             bgColor="#A3E635"
             miniCard={
               <Stack

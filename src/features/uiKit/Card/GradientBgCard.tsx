@@ -84,11 +84,12 @@ export const GradientBgCard = ({
       </Typography>
 
       <Typography
-        align="center"
+        align="left"
         sx={{
           fontWeight: 800,
           opacity: 0.9,
           textTransform: "uppercase",
+          fontSize: "1.4rem",
         }}
       >
         {title}
