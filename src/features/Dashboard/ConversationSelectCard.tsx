@@ -82,7 +82,7 @@ export const ConversationSelectCard = () => {
           gridTemplateColumns: "1fr 1fr 1fr",
           "@media (max-width: 850px)": {
             gridTemplateColumns: "1fr",
-            gap: "40px",
+            gap: "30px",
           },
         }}
       >

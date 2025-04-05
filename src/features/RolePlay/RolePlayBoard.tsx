@@ -646,11 +646,11 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
               sx={{
                 gap: "20px",
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr ",
+                gridTemplateColumns: "1fr 1fr",
 
                 "@media (max-width: 850px)": {
                   gridTemplateColumns: "1fr",
-                  gap: "15px",
+                  gap: "30px",
                 },
               }}
             >

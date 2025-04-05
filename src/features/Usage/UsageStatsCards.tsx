@@ -434,6 +434,7 @@ export const UsageStatsCards = () => {
 
             "@media (max-width: 800px)": {
               gridTemplateColumns: "1fr",
+              gap: "30px",
             },
           }}
         >
