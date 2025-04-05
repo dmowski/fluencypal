@@ -212,6 +212,8 @@ export const UsageStatsCards = () => {
   });
   const correctionsCount = correctionStats.length || 0;
 
+  const isNoConversations = chatHistory.conversations.length == 0;
+
   return (
     <>
       {isShowWordStat && (
@@ -535,165 +537,187 @@ export const UsageStatsCards = () => {
         </>
       )}
 
-      <StatCard
-        value={`${totalWordsCount}`}
-        title="Words"
-        subTitle={settings.fullLanguageName || "English"}
-        startColor="#FF6B6B"
-        endColor="#FFD93D"
-        bgColor="#5EEAD4"
-        miniCard={
-          <Stack
-            sx={{
-              width: "100%",
-              gap: "5px",
-              height: "100%",
-              boxSizing: "border-box",
-              alignItems: "center",
-              justifyContent: wordsStatSorted.length === 0 ? "center" : "flex-start",
-            }}
-          >
-            {wordsStatSorted.length === 0 && (
+      <Stack sx={{ width: "100%", gap: "15px" }}>
+        <Typography variant="h6">
+          {isNoConversations
+            ? i18n._("Here’s you will see your progress")
+            : i18n._("Here’s what you’ve achieved so far")}
+        </Typography>
+        <Stack
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gap: "20px",
+            "@media (max-width: 1100px)": {
+              gridTemplateColumns: "1fr 1fr",
+            },
+
+            "@media (max-width: 750px)": {
+              gridTemplateColumns: "1fr",
+            },
+          }}
+        >
+          <StatCard
+            value={`${totalWordsCount}`}
+            title="Words"
+            subTitle={settings.fullLanguageName || "English"}
+            startColor="#FF6B6B"
+            endColor="#FFD93D"
+            bgColor="#5EEAD4"
+            miniCard={
+              <Stack
+                sx={{
+                  width: "100%",
+                  gap: "5px",
+                  height: "100%",
+                  boxSizing: "border-box",
+                  alignItems: "center",
+                  justifyContent: wordsStatSorted.length === 0 ? "center" : "flex-start",
+                }}
+              >
+                {wordsStatSorted.length === 0 && (
+                  <Stack
+                    sx={{
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "15px",
+                      opacity: 0.7,
+                      height: "100%",
+                    }}
+                  >
+                    <Fish />
+                    <Typography
+                      variant="caption"
+                      component={"div"}
+                      sx={{
+                        fontWeight: 350,
+                      }}
+                    >
+                      {i18n._("No words used yet")}
+                    </Typography>
+                  </Stack>
+                )}
+                {wordsStatSorted.map(({ word, percentage, usageCount }) => {
+                  return (
+                    <Stack
+                      key={word}
+                      sx={{
+                        flexDirection: "row",
+                        width: "100%",
+                        position: "relative",
+                        padding: "3px 5px",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {word}
+                      </Typography>
+                      <Typography variant="caption">{usageCount}</Typography>
+                      <Stack
+                        sx={{
+                          height: "100%",
+                          width: `${percentage}%`,
+                          position: "absolute",
+                          top: "0px",
+                          left: "0px",
+                          borderRadius: "3px",
+                          backgroundColor: "rgba(255, 255, 255, 0.1)",
+                        }}
+                      />
+                    </Stack>
+                  );
+                })}
+              </Stack>
+            }
+            onClick={() => setIsShowWordStat(!isShowWordStat)}
+          />
+          <StatCard
+            value={`${correctionsCount}`}
+            subTitle={settings.fullLanguageName || "English"}
+            title={i18n._("Grammar fixes")}
+            startColor="#4F46E5"
+            endColor="#A78BFA"
+            bgColor="#60A5FA"
+            onClick={() => setIsShowCorrectionStats(!isShowCorrectionStats)}
+            miniCard={
               <Stack
                 sx={{
                   alignItems: "center",
-                  justifyContent: "center",
-                  gap: "15px",
-                  opacity: 0.7,
                   height: "100%",
+                  gap: "15px",
+                  justifyContent: "center",
                 }}
               >
-                <Fish />
+                <BookType size={"28px"} />
+
                 <Typography
-                  variant="caption"
+                  variant="body2"
                   component={"div"}
                   sx={{
                     fontWeight: 350,
+                    paddingLeft: "10px",
                   }}
                 >
-                  {i18n._("No words used yet")}
+                  <StringDiff
+                    styles={{
+                      added: {
+                        color: "#81e381",
+                        fontWeight: 600,
+                      },
+                      removed: {
+                        display: "none",
+                        textDecoration: "line-through",
+                        opacity: 0.4,
+                      },
+                      default: {},
+                    }}
+                    oldValue={"Open details"}
+                    newValue={"Open the details"}
+                  />
                 </Typography>
               </Stack>
-            )}
-            {wordsStatSorted.map(({ word, percentage, usageCount }) => {
-              return (
-                <Stack
-                  key={word}
+            }
+          />
+          <StatCard
+            value={`${Math.round(usage.usedHours * 60)}`}
+            title={i18n._("Minutes spoken")}
+            subTitle={i18n._("Total")}
+            startColor="#34D399"
+            endColor="#3B82F6"
+            bgColor="#A3E635"
+            miniCard={
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  height: "100%",
+                  gap: "15px",
+                  justifyContent: "center",
+                }}
+              >
+                <MessagesSquare size={"28px"} />
+
+                <Typography
+                  variant="body2"
+                  component={"div"}
                   sx={{
-                    flexDirection: "row",
-                    width: "100%",
-                    position: "relative",
-                    padding: "3px 5px",
-                    justifyContent: "space-between",
-                    alignItems: "center",
+                    fontWeight: 350,
+                    paddingLeft: "10px",
                   }}
                 >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      textTransform: "capitalize",
-                    }}
-                  >
-                    {word}
-                  </Typography>
-                  <Typography variant="caption">{usageCount}</Typography>
-                  <Stack
-                    sx={{
-                      height: "100%",
-                      width: `${percentage}%`,
-                      position: "absolute",
-                      top: "0px",
-                      left: "0px",
-                      borderRadius: "3px",
-                      backgroundColor: "rgba(255, 255, 255, 0.1)",
-                    }}
-                  />
-                </Stack>
-              );
-            })}
-          </Stack>
-        }
-        onClick={() => setIsShowWordStat(!isShowWordStat)}
-      />
-      <StatCard
-        value={`${correctionsCount}`}
-        subTitle={settings.fullLanguageName || "English"}
-        title={i18n._("Grammar fixes")}
-        startColor="#4F46E5"
-        endColor="#A78BFA"
-        bgColor="#60A5FA"
-        onClick={() => setIsShowCorrectionStats(!isShowCorrectionStats)}
-        miniCard={
-          <Stack
-            sx={{
-              alignItems: "center",
-              height: "100%",
-              gap: "15px",
-              justifyContent: "center",
-            }}
-          >
-            <BookType size={"28px"} />
-
-            <Typography
-              variant="body2"
-              component={"div"}
-              sx={{
-                fontWeight: 350,
-                paddingLeft: "10px",
-              }}
-            >
-              <StringDiff
-                styles={{
-                  added: {
-                    color: "#81e381",
-                    fontWeight: 600,
-                  },
-                  removed: {
-                    display: "none",
-                    textDecoration: "line-through",
-                    opacity: 0.4,
-                  },
-                  default: {},
-                }}
-                oldValue={"Open details"}
-                newValue={"Open the details"}
-              />
-            </Typography>
-          </Stack>
-        }
-      />
-      <StatCard
-        value={`${Math.round(usage.usedHours * 60)}`}
-        title={i18n._("Minutes spoken")}
-        subTitle={i18n._("Total")}
-        startColor="#34D399"
-        endColor="#3B82F6"
-        bgColor="#A3E635"
-        miniCard={
-          <Stack
-            sx={{
-              alignItems: "center",
-              height: "100%",
-              gap: "15px",
-              justifyContent: "center",
-            }}
-          >
-            <MessagesSquare size={"28px"} />
-
-            <Typography
-              variant="body2"
-              component={"div"}
-              sx={{
-                fontWeight: 350,
-                paddingLeft: "10px",
-              }}
-            >
-              {i18n._("Open chat history")}
-            </Typography>
-          </Stack>
-        }
-        onClick={() => setIsOpenConversations(!isOpenConversations)}
-      />
+                  {i18n._("Open chat history")}
+                </Typography>
+              </Stack>
+            }
+            onClick={() => setIsOpenConversations(!isOpenConversations)}
+          />
+        </Stack>
+      </Stack>
     </>
   );
 };

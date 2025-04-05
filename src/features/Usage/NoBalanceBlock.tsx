@@ -6,6 +6,7 @@ import { JSX } from "react";
 import { ContactList } from "../Landing/Contact/ContactList";
 
 import { UsageStatsCards } from "./UsageStatsCards";
+import { useLingui } from "@lingui/react";
 
 const WinCard = ({ title, icon }: { title: string; icon: JSX.Element }) => {
   return (
@@ -38,6 +39,7 @@ const WinCard = ({ title, icon }: { title: string; icon: JSX.Element }) => {
 
 export const NoBalanceBlock = () => {
   const usage = useUsage();
+  const { i18n } = useLingui();
   return (
     <Stack
       sx={{
@@ -74,7 +76,7 @@ export const NoBalanceBlock = () => {
               },
             }}
           >
-            Level up your Language!
+            {i18n._("Level up your Language!")}
           </Typography>
           <Typography
             sx={{
@@ -85,31 +87,14 @@ export const NoBalanceBlock = () => {
               },
             }}
           >
-            You've made amazing progress. Let’s keep going.
+            {i18n._("You've made amazing progress. Let’s keep going.")}
           </Typography>
         </Stack>
-        <Stack sx={{ width: "100%", gap: "15px" }}>
-          <Typography variant="h6">Here’s what you’ve achieved so far</Typography>
-          <Stack
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              gap: "20px",
-              "@media (max-width: 1100px)": {
-                gridTemplateColumns: "1fr 1fr",
-              },
 
-              "@media (max-width: 750px)": {
-                gridTemplateColumns: "1fr",
-              },
-            }}
-          >
-            <UsageStatsCards />
-          </Stack>
-        </Stack>
+        <UsageStatsCards />
 
         <Stack sx={{ width: "100%", gap: "15px" }}>
-          <Typography variant="h6">Unlock full access to FluencyPal</Typography>
+          <Typography variant="h6">{i18n._("Unlock full access to FluencyPal")}</Typography>
           <Stack
             sx={{
               display: "grid",
@@ -128,18 +113,18 @@ export const NoBalanceBlock = () => {
                   }}
                 />
               }
-              title="Conversations with AI"
+              title={i18n._("Conversations with AI")}
             />
-            <WinCard icon={<VenetianMask size={50} />} title="Role-play simulations" />
+            <WinCard icon={<VenetianMask size={50} />} title={i18n._("Role-play simulations")} />
             <WinCard
               icon={<ChartNoAxesCombined size={50} />}
-              title="Daily tasks and progress tracking"
+              title={i18n._("Daily tasks and progress tracking")}
             />
           </Stack>
         </Stack>
 
         <Stack sx={{ width: "100%", gap: "15px", alignItems: "flex-start" }}>
-          <Typography variant="h6">Ready to keep going?</Typography>
+          <Typography variant="h6">{i18n._("Ready to keep going?")}</Typography>
           <Button
             variant="contained"
             size="large"
@@ -147,16 +132,19 @@ export const NoBalanceBlock = () => {
             onClick={() => usage.togglePaymentModal(true)}
             startIcon={<Wallet />}
           >
-            Buy More AI Hours
+            {i18n._("Buy More AI Hours")}
           </Button>
         </Stack>
 
         <Stack sx={{ width: "100%", gap: "15px", alignItems: "flex-start" }}>
-          <Typography variant="h6">Get free AI time by helping us improve FluencyPal</Typography>
+          <Typography variant="h6">
+            {i18n._("Get free AI time by helping us improve FluencyPal")}
+          </Typography>
           <Stack gap={"20px"}>
             <Typography variant="body2">
-              Send us your feedback about the app — what you liked, what we can improve — and get up
-              to 2 hours of free AI time.
+              {i18n._(
+                "Send us your feedback about the app — what you liked, what we can improve — and get up to 2 hours of free AI time."
+              )}
             </Typography>
 
             <ContactList />

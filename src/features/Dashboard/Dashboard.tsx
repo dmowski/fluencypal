@@ -19,6 +19,7 @@ import { HomeworkCard } from "./HomeworkCard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
 import { useLingui } from "@lingui/react";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
+import { UsageStatsCards } from "../Usage/UsageStatsCards";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -88,6 +89,14 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
         }}
       >
         <ConversationSelectCard />
+
+        <Stack
+          sx={{
+            padding: "10px 20px 40px 20px",
+          }}
+        >
+          <UsageStatsCards />
+        </Stack>
         <RolePlayBoard rolePlayInfo={rolePlayInfo} />
 
         <Stack

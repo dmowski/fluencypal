@@ -80,21 +80,6 @@ export const ProgressBoard = () => {
         </Stack>
       </Stack>
 
-      <Stack
-        sx={{
-          flexDirection: "row",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
-          gap: "20px",
-          paddingTop: "20px",
-          "@media (max-width: 1000px)": {
-            gridTemplateColumns: "1fr",
-          },
-        }}
-      >
-        <UsageStatsCards />
-      </Stack>
-
       <ProgressGrid
         startDateTimeStamp={settings.userCreatedAt || Date.now()}
         currentDateTimeStamp={Date.now()}
