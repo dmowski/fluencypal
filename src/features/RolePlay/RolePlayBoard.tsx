@@ -393,7 +393,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
             padding="0"
             isOpen={true}
             onClose={() => closeRolePlay()}
-            width="min(90vw, 650px)"
+            width="min(100vw, 650px)"
           >
             <Stack
               sx={{
@@ -404,7 +404,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
                 sx={{
                   width: "100%",
                   padding: "20px",
-                  height: "min(320px, 40vh)",
+                  height: "min(260px, 40vh)",
                   boxSizing: "border-box",
                   overflow: "hidden",
                   justifyContent: "flex-end",
@@ -414,27 +414,6 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
                     "linear-gradient(180deg, rgba(12, 12, 14, 0) 0%,  rgba(12, 12, 14, 0.3) 100%)",
                 }}
               >
-                <Typography
-                  variant="h4"
-                  component="h2"
-                  sx={{
-                    color: "#fff",
-                    textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
-                    textTransform: "uppercase",
-                    fontWeight: "800",
-                  }}
-                >
-                  {selectedRolePlayScenario.title}
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "#fff",
-                    textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
-                  }}
-                >
-                  {selectedRolePlayScenario.subTitle}
-                </Typography>
-
                 <Stack
                   sx={{
                     backgroundImage: `url(${selectedRolePlayScenario.imageSrc})`,
@@ -455,171 +434,179 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
               <Stack
                 component={"form"}
                 sx={{
-                  padding: "25px 20px 20px 20px",
-                  gap: "20px",
+                  padding: "35px",
+                  gap: "30px",
+                  boxSizing: "border-box",
                   alignItems: "flex-start",
+                  "@media (max-width: 600px)": {
+                    padding: "20px 20px",
+                  },
                 }}
                 onSubmit={onSubmit}
               >
+                <Stack>
+                  <Typography
+                    variant="h5"
+                    component="h2"
+                    sx={{
+                      color: "#fff",
+                      textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
+                    }}
+                  >
+                    {selectedRolePlayScenario.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "#fff",
+                      opacity: 0.7,
+                      textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
+                    }}
+                  >
+                    {selectedRolePlayScenario.subTitle}
+                  </Typography>
+                </Stack>
+
                 {selectedRolePlayScenario.input.length > 0 && (
                   <Stack
                     sx={{
                       gap: "15px",
                       width: "100%",
+                      maxWidth: "600px",
                     }}
                   >
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "#fff",
-                        textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
-                      }}
-                    >
-                      {i18n._(
-                        `Before you start, please fill some information to make it more realistic.`
-                      )}
-                    </Typography>
-
-                    <Stack
-                      sx={{
-                        gap: "20px",
-                        width: "100%",
-                        maxWidth: "600px",
-                      }}
-                    >
-                      {selectedRolePlayScenario.input.map((input, index) => {
-                        const type = input.type;
-                        const inputId = selectedRolePlayScenario.id + "-" + input.id;
-                        const value = userInputs?.[inputId] || input.defaultValue || "";
-                        const inputRenderMap: Record<RolePlayInputType, React.ReactElement> = {
-                          "text-input": (
-                            <TextField
-                              key={index}
-                              value={value}
-                              onChange={(e) => {
-                                setUserInputs({
-                                  ...userInputs,
-                                  [inputId]: e.target.value,
-                                });
-                              }}
-                              required={input.required}
-                              disabled={isStarting}
-                              label={input.labelForUser}
-                              placeholder={input.placeholder}
-                              variant="outlined"
-                            />
-                          ),
-                          checkbox: (
-                            <FormControlLabel
-                              key={index}
-                              control={
-                                <Checkbox
-                                  checked={value === "true"}
-                                  onChange={(e) => {
-                                    setUserInputs({
-                                      ...userInputs,
-                                      [inputId]: e.target.checked ? "true" : "false",
-                                    });
-                                  }}
-                                  disabled={isStarting}
-                                />
-                              }
-                              label={input.labelForUser}
-                            />
-                          ),
-                          textarea: (
-                            <TextField
-                              key={index}
-                              disabled={isStarting}
-                              multiline
-                              required={input.required}
-                              value={value}
-                              onChange={(e) => {
-                                setUserInputs({
-                                  ...userInputs,
-                                  [inputId]: e.target.value,
-                                });
-                              }}
-                              rows={4}
-                              label={input.labelForUser}
-                              placeholder={input.placeholder}
-                              variant="outlined"
-                            />
-                          ),
-                          options: (
-                            <Stack
-                              key={index}
+                    {selectedRolePlayScenario.input.map((input, index) => {
+                      const type = input.type;
+                      const inputId = selectedRolePlayScenario.id + "-" + input.id;
+                      const value = userInputs?.[inputId] || input.defaultValue || "";
+                      const inputRenderMap: Record<RolePlayInputType, React.ReactElement> = {
+                        "text-input": (
+                          <TextField
+                            key={index}
+                            value={value}
+                            onChange={(e) => {
+                              setUserInputs({
+                                ...userInputs,
+                                [inputId]: e.target.value,
+                              });
+                            }}
+                            required={input.required}
+                            disabled={isStarting}
+                            label={input.labelForUser}
+                            placeholder={input.placeholder}
+                            variant="outlined"
+                          />
+                        ),
+                        checkbox: (
+                          <FormControlLabel
+                            key={index}
+                            control={
+                              <Checkbox
+                                checked={value === "true"}
+                                onChange={(e) => {
+                                  setUserInputs({
+                                    ...userInputs,
+                                    [inputId]: e.target.checked ? "true" : "false",
+                                  });
+                                }}
+                                disabled={isStarting}
+                              />
+                            }
+                            label={input.labelForUser}
+                          />
+                        ),
+                        textarea: (
+                          <TextField
+                            key={index}
+                            disabled={isStarting}
+                            multiline
+                            required={input.required}
+                            value={value}
+                            onChange={(e) => {
+                              setUserInputs({
+                                ...userInputs,
+                                [inputId]: e.target.value,
+                              });
+                            }}
+                            rows={4}
+                            label={input.labelForUser}
+                            placeholder={input.placeholder}
+                            variant="outlined"
+                          />
+                        ),
+                        options: (
+                          <Stack
+                            key={index}
+                            sx={{
+                              gap: "3px",
+                              paddingBottom: "5px",
+                            }}
+                          >
+                            <Typography
+                              variant="caption"
                               sx={{
-                                gap: "3px",
-                                paddingBottom: "5px",
+                                opacity: 0.7,
                               }}
                             >
-                              <Typography
-                                variant="caption"
-                                sx={{
-                                  opacity: 0.7,
-                                }}
-                              >
-                                {input.labelForUser}
-                              </Typography>
+                              {input.labelForUser}
+                            </Typography>
 
-                              <FormControl
-                                sx={{
-                                  display: "none",
-                                  "@media (max-width: 600px)": {
-                                    display: "flex",
-                                  },
-                                }}
-                              >
-                                <RadioGroup
-                                  value={value}
-                                  onChange={(e) => {
-                                    setUserInputs({
-                                      ...userInputs,
-                                      [inputId]: e.target.value,
-                                    });
-                                  }}
-                                >
-                                  {input.options?.map((option, optionIndex) => (
-                                    <FormControlLabel
-                                      key={optionIndex}
-                                      value={option}
-                                      control={<Radio />}
-                                      label={option}
-                                    />
-                                  ))}
-                                </RadioGroup>
-                              </FormControl>
-
-                              <ButtonGroup
-                                sx={{
-                                  "@media (max-width: 600px)": {
-                                    display: "none",
-                                  },
+                            <FormControl
+                              sx={{
+                                display: "none",
+                                "@media (max-width: 600px)": {
+                                  display: "flex",
+                                },
+                              }}
+                            >
+                              <RadioGroup
+                                value={value}
+                                onChange={(e) => {
+                                  setUserInputs({
+                                    ...userInputs,
+                                    [inputId]: e.target.value,
+                                  });
                                 }}
                               >
                                 {input.options?.map((option, optionIndex) => (
-                                  <Button
+                                  <FormControlLabel
                                     key={optionIndex}
-                                    onClick={() => {
-                                      setUserInputs({
-                                        ...userInputs,
-                                        [inputId]: option,
-                                      });
-                                    }}
-                                    variant={value === option ? "contained" : "outlined"}
-                                  >
-                                    {option}
-                                  </Button>
+                                    value={option}
+                                    control={<Radio />}
+                                    label={option}
+                                  />
                                 ))}
-                              </ButtonGroup>
-                            </Stack>
-                          ),
-                        };
+                              </RadioGroup>
+                            </FormControl>
 
-                        return inputRenderMap[type];
-                      })}
-                    </Stack>
+                            <ButtonGroup
+                              sx={{
+                                "@media (max-width: 600px)": {
+                                  display: "none",
+                                },
+                              }}
+                            >
+                              {input.options?.map((option, optionIndex) => (
+                                <Button
+                                  key={optionIndex}
+                                  onClick={() => {
+                                    setUserInputs({
+                                      ...userInputs,
+                                      [inputId]: option,
+                                    });
+                                  }}
+                                  variant={value === option ? "contained" : "outlined"}
+                                >
+                                  {option}
+                                </Button>
+                              ))}
+                            </ButtonGroup>
+                          </Stack>
+                        ),
+                      };
+
+                      return inputRenderMap[type];
+                    })}
                   </Stack>
                 )}
 
