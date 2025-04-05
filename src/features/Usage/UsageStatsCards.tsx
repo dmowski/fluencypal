@@ -577,7 +577,7 @@ export const UsageStatsCards = () => {
                     paddingLeft: "10px",
                   }}
                 >
-                  {i18n._("Open chat history")}
+                  {i18n._("Open history")}
                 </Typography>
               </Stack>
             }

@@ -48,8 +48,20 @@ export const ClickCard: React.FC<ClickCardProps> = ({
           <GradientCard
             padding="22px"
             strokeWidth="2px"
-            startColor={lockedText ? "rgba(255, 255, 255, 0.09)" : "rgba(255, 255, 255, 0.2)"}
-            endColor={lockedText ? "rgba(255, 255, 255, 0.09)" : "rgba(255, 255, 255, 0.3)"}
+            startColor={
+              isDone
+                ? "#fa8500"
+                : lockedText
+                  ? "rgba(255, 255, 255, 0.09)"
+                  : "rgba(255, 255, 255, 0.2)"
+            }
+            endColor={
+              isDone
+                ? "#05acff"
+                : lockedText
+                  ? "rgba(255, 255, 255, 0.09)"
+                  : "rgba(255, 255, 255, 0.3)"
+            }
             backgroundColor={
               isDone
                 ? "rgba(10, 18, 30, 1)"
