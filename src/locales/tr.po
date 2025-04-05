@@ -13,10 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Usage/UsageStatsCards.tsx:543
+#: src/features/Dashboard/ConversationSelectCard.tsx:56
 #. js-lingui-explicit-id
-msgid "Here’s you will see your progress"
-msgstr "İşte burada ilerlemeni göreceksin"
+msgid "Start Talking"
+msgstr "Konuşmaya Başla"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:64
+#. js-lingui-explicit-id
+msgid "AI will lead you through the conversation"
+msgstr "AI sizinle konuşmayı yönlendirecek"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:89
+#. js-lingui-explicit-id
+msgid "Guide me"
+msgstr "Beni yönlendir"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -35,6 +45,7 @@ msgstr ""
 
 #: src/libs/metadata.ts:67
 #: src/features/Header/Header.tsx:14
+#: src/features/Dashboard/ConversationSelectCard.tsx:15
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Pratik"
@@ -353,90 +364,100 @@ msgstr "İngilizce konuşma partneri"
 msgid "AI English Speaking Practice"
 msgstr "AI İngilizce Konuşma Pratiği"
 
-#: src/features/Usage/UsageStatsCards.tsx:232
+#: src/features/Usage/UsageStatsCards.tsx:85
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Kelime İstatistikleri"
 
-#: src/features/Usage/UsageStatsCards.tsx:234
+#: src/features/Usage/UsageStatsCards.tsx:87
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "İşte konuşmalarınızda en çok kullandığınız kelimeler."
 
-#: src/features/Usage/UsageStatsCards.tsx:263
-#: src/features/Usage/UsageStatsCards.tsx:596
+#: src/features/Usage/UsageStatsCards.tsx:116
+#: src/features/Usage/UsageStatsCards.tsx:449
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Henüz hiç kelime kullanılmadı"
 
-#: src/features/Usage/UsageStatsCards.tsx:326
+#: src/features/Usage/UsageStatsCards.tsx:179
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Sohbet geçmişi"
 
-#: src/features/Usage/UsageStatsCards.tsx:328
+#: src/features/Usage/UsageStatsCards.tsx:181
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "İşte FluencyPal ile yaptığınız konuşmalar."
 
-#: src/features/Usage/UsageStatsCards.tsx:350
+#: src/features/Usage/UsageStatsCards.tsx:203
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Henüz bir konuşma yok"
 
-#: src/features/Usage/UsageStatsCards.tsx:397
+#: src/features/Usage/UsageStatsCards.tsx:250
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Öğretmen:"
 
-#: src/features/Usage/UsageStatsCards.tsx:397
+#: src/features/Usage/UsageStatsCards.tsx:250
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Sen:"
 
-#: src/features/Usage/UsageStatsCards.tsx:427
+#: src/features/Usage/UsageStatsCards.tsx:280
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Dilbilgisi Düzeltmeleri"
 
-#: src/features/Usage/UsageStatsCards.tsx:429
+#: src/features/Usage/UsageStatsCards.tsx:282
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "İşte konuşmalarınızdaki düzeltmeler."
 
-#: src/features/Usage/UsageStatsCards.tsx:451
+#: src/features/Usage/UsageStatsCards.tsx:304
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Henüz bir düzeltme yok"
 
-#: src/features/Usage/UsageStatsCards.tsx:527
+#: src/features/Usage/UsageStatsCards.tsx:380
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Açıklama:"
 
-#: src/features/Usage/UsageStatsCards.tsx:544
+#: src/features/Usage/UsageStatsCards.tsx:396
+#. js-lingui-explicit-id
+msgid "Here’s you will see your progress"
+msgstr "İşte burada ilerlemeni göreceksin"
+
+#: src/features/Usage/UsageStatsCards.tsx:397
 #. js-lingui-explicit-id
 msgid "Here’s what you’ve achieved so far"
 msgstr "İşte şu ana kadar başardıklarınız"
 
-#: src/features/Usage/UsageStatsCards.tsx:643
+#: src/features/Usage/UsageStatsCards.tsx:415
+#. js-lingui-explicit-id
+msgid "Words"
+msgstr "Kelimeler"
+
+#: src/features/Usage/UsageStatsCards.tsx:496
 #. js-lingui-explicit-id
 msgid "Grammar fixes"
 msgstr "Dilbilgisi düzeltmeleri"
 
-#: src/features/Usage/UsageStatsCards.tsx:689
+#: src/features/Usage/UsageStatsCards.tsx:542
 #. js-lingui-explicit-id
 msgid "Minutes spoken"
 msgstr "Konuşulan dakikalar"
 
-#: src/features/Usage/UsageStatsCards.tsx:690
+#: src/features/Usage/UsageStatsCards.tsx:543
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Toplam"
 
-#: src/features/Usage/UsageStatsCards.tsx:713
+#: src/features/Usage/UsageStatsCards.tsx:566
 #. js-lingui-explicit-id
 msgid "Open chat history"
 msgstr "Sohbet geçmişini aç"
@@ -678,8 +699,8 @@ msgid "Payment history:"
 msgstr "Ödeme geçmişi:"
 
 #: src/features/Usage/PaymentModal.tsx:629
-#: src/features/RolePlay/RolePlayBoard.tsx:623
-#: src/features/Dashboard/Dashboard.tsx:35
+#: src/features/RolePlay/RolePlayBoard.tsx:621
+#: src/features/Dashboard/Dashboard.tsx:36
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Yükleniyor..."
@@ -1635,34 +1656,34 @@ msgstr "Özel"
 msgid "All Scenarios"
 msgstr "Tüm Senaryolar"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:368
+#: src/features/RolePlay/RolePlayBoard.tsx:367
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Rol Oynama"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:376
+#: src/features/RolePlay/RolePlayBoard.tsx:374
 #. js-lingui-explicit-id
 msgid "Play a role and talk to the AI"
 msgstr "Bir rol oynayın ve AI ile konuşun"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:466
+#: src/features/RolePlay/RolePlayBoard.tsx:464
 #. js-lingui-explicit-id
 msgid "Before you start, please fill some information to make it more realistic."
 msgstr ""
 "Başlamadan önce, daha gerçekçi hale getirmek için lütfen bazı bilgileri "
 "doldurun."
 
-#: src/features/RolePlay/RolePlayBoard.tsx:623
+#: src/features/RolePlay/RolePlayBoard.tsx:621
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Başla"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:675
+#: src/features/RolePlay/RolePlayBoard.tsx:673
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Daha fazla göster"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:675
+#: src/features/RolePlay/RolePlayBoard.tsx:673
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Daha az göster"
@@ -2281,7 +2302,7 @@ msgstr ""
 "siparişi verme gibi"
 
 #: src/features/Landing/Price/PricePage.tsx:164
-#: src/features/Dashboard/ConversationSelectCard.tsx:39
+#: src/features/Dashboard/ConversationSelectCard.tsx:30
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Konuşma pratikleri"
@@ -2686,13 +2707,12 @@ msgstr "Kapat"
 msgid "Delete account"
 msgstr "Hesabı Sil"
 
-#: src/features/Header/HeaderComponent.tsx:251
+#: src/features/Header/HeaderComponent.tsx:252
 #. js-lingui-explicit-id
 msgid "Finishing the lesson..."
 msgstr "Dersi bitiriyor..."
 
-#: src/features/Header/HeaderComponent.tsx:252
-#: src/features/Dashboard/ConversationSelectCard.tsx:15
+#: src/features/Header/HeaderComponent.tsx:253
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Konuşma"
@@ -2830,40 +2850,30 @@ msgstr "Atla"
 msgid "Show all"
 msgstr "Hepsini göster"
 
-#: src/features/Dashboard/Dashboard.tsx:39
+#: src/features/Dashboard/Dashboard.tsx:40
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Yeni kelimeler oluşturuluyor..."
 
-#: src/features/Dashboard/Dashboard.tsx:43
+#: src/features/Dashboard/Dashboard.tsx:44
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Yeni kural oluşturuluyor..."
 
-#: src/features/Dashboard/Dashboard.tsx:59
+#: src/features/Dashboard/Dashboard.tsx:60
 #. js-lingui-explicit-id
 msgid "Reload"
 msgstr "Yenile"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:23
-#. js-lingui-explicit-id
-msgid "Start a conversation with the AI"
-msgstr "AI ile bir sohbet başlatın"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:40
+#: src/features/Dashboard/ConversationSelectCard.tsx:31
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "AI ile konuşun ve size yanıt verecektir"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:47
+#: src/features/Dashboard/ConversationSelectCard.tsx:63
 #. js-lingui-explicit-id
 msgid "Beginner mode"
 msgstr "Başlangıç modu"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:48
-#. js-lingui-explicit-id
-msgid "An easy mode for beginners"
-msgstr "Başlangıç seviyesindekiler için kolay bir mod"
 
 #: src/features/Dashboard/BrainCard.tsx:128
 #. js-lingui-explicit-id
@@ -2967,22 +2977,22 @@ msgstr "Beyni hazırlama"
 msgid "Upload language skills directly to your brain"
 msgstr "Dil becerilerini doğrudan beynine yükle"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:34
 #. js-lingui-explicit-id
-msgid "Progress"
-msgstr "İlerleme"
+msgid "Progress Calendar"
+msgstr "İlerleme Takvimi"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:43
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:42
 #. js-lingui-explicit-id
 msgid "Your daily progress"
 msgstr "Günlük ilerlemeniz"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:57
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:56
 #. js-lingui-explicit-id
 msgid "Less"
 msgstr "Daha az"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:78
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:77
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Daha Fazla"
@@ -4267,6 +4277,21 @@ msgstr "Google ile devam et"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Bir hesap oluşturarak, şunları kabul edersiniz:"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:39
+#. js-lingui-explicit-id
+#~ msgid "An easy mode for beginners"
+#~ msgstr "Başlangıç seviyesindekiler için kolay bir mod"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:23
+#. js-lingui-explicit-id
+#~ msgid "Start a conversation with the AI"
+#~ msgstr "AI ile bir sohbet başlatın"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
+#. js-lingui-explicit-id
+#~ msgid "Progress"
+#~ msgstr "İlerleme"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:104
 #. js-lingui-explicit-id

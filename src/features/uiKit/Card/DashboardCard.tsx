@@ -7,44 +7,25 @@ interface DashboardCardProps {
 
 export const DashboardCard: React.FC<DashboardCardProps> = ({ children }) => {
   return (
-    <Card
+    <Stack
       sx={{
-        position: "relative",
-        borderRadius: "16px",
-        backgroundColor: "rgba(12, 12, 15, 1)",
+        padding: "30px 20px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+        width: "100%",
+        boxSizing: "border-box",
+        "@media (max-width: 850px)": {
+          padding: "30px 10px",
+        },
+        "@media (max-width: 600px)": {
+          //padding: "30px 10px",
+
+          gap: "20px",
+        },
       }}
     >
-      <Stack
-        sx={{
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          borderRadius: "16px",
-          padding: "2px",
-          zIndex: 0,
-          overflow: "hidden",
-        }}
-      ></Stack>
-      <Stack
-        sx={{
-          padding: "40px 40px 55px 40px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "40px",
-          position: "relative",
-          zIndex: 1,
-          "@media (max-width: 600px)": {
-            padding: "30px 20px",
-            gap: "20px",
-          },
-        }}
-      >
-        {children}
-      </Stack>
-    </Card>
+      {children}
+    </Stack>
   );
 };

@@ -2,25 +2,22 @@ import { Stack, Typography } from "@mui/material";
 import { colorMap, ProgressGrid } from "./ProgressGrid";
 import { useSettings } from "../../Settings/useSettings";
 import { useTasks } from "../../Tasks/useTasks";
-import { useWords } from "../../Words/useWords";
-import { DashboardCard } from "../../uiKit/Card/DashboardCard";
-import { StatCard } from "./StatCard";
-import { useHomework } from "@/features/Homework/useHomework";
-import { useChatHistory } from "@/features/ConversationHistory/useChatHistory";
 import { useLingui } from "@lingui/react";
-import { UsageStatsCards } from "@/features/Usage/UsageStatsCards";
 
 export const ProgressBoard = () => {
   const settings = useSettings();
   const tasks = useTasks();
-  const words = useWords();
-  const homeworks = useHomework();
-  const history = useChatHistory();
-  const countOfRolePlay = history.conversations.filter((c) => c.mode === "role-play").length;
-  const countOfRules = history.conversations.filter((c) => c.mode === "rule").length;
   const { i18n } = useLingui();
   return (
-    <DashboardCard>
+    <Stack
+      sx={{
+        padding: "20px 0px 20px 30px",
+        gap: "20px",
+        width: "100%",
+        boxSizing: "border-box",
+        overflow: "hidden",
+      }}
+    >
       <Stack
         sx={{
           flexDirection: "row",
@@ -28,11 +25,13 @@ export const ProgressBoard = () => {
           justifyContent: "space-between",
           flexWrap: "wrap",
           gap: "20px",
+          paddingRight: "20px",
+          maxWidth: "1302px",
         }}
       >
         <Stack>
           <Typography variant="h2" className="decor-title">
-            {i18n._(`Progress`)}
+            {i18n._(`Progress Calendar`)}
           </Typography>
           <Typography
             variant="caption"
@@ -88,6 +87,6 @@ export const ProgressBoard = () => {
           return Object.keys(dayStat || {}).length;
         }}
       />
-    </DashboardCard>
+    </Stack>
   );
 };

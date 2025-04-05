@@ -364,9 +364,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
     <DashboardCard>
       <Stack gap={"10px"}>
         <Stack>
-          <Typography variant="h2" className="decor-title">
-            {i18n._(`Role Play`)}
-          </Typography>
+          <Typography variant="h6">{i18n._(`Role Play`)}</Typography>
           <Typography
             variant="caption"
             sx={{

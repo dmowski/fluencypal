@@ -13,10 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Usage/UsageStatsCards.tsx:543
+#: src/features/Dashboard/ConversationSelectCard.tsx:56
 #. js-lingui-explicit-id
-msgid "Here’s you will see your progress"
-msgstr "Voici où vous verrez votre progression"
+msgid "Start Talking"
+msgstr "Commencez à parler"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:64
+#. js-lingui-explicit-id
+msgid "AI will lead you through the conversation"
+msgstr "L'IA vous guidera à travers la conversation"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:89
+#. js-lingui-explicit-id
+msgid "Guide me"
+msgstr "Guidez-moi"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -33,6 +43,7 @@ msgstr "Contactez le FluencyPal pour toute demande, support ou retour d'expérie
 
 #: src/libs/metadata.ts:67
 #: src/features/Header/Header.tsx:14
+#: src/features/Dashboard/ConversationSelectCard.tsx:15
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Pratique"
@@ -353,92 +364,102 @@ msgstr "Partenaire de conversation en anglais"
 msgid "AI English Speaking Practice"
 msgstr "Pratique de conversation en anglais avec l'IA"
 
-#: src/features/Usage/UsageStatsCards.tsx:232
+#: src/features/Usage/UsageStatsCards.tsx:85
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Statistiques de Mots"
 
-#: src/features/Usage/UsageStatsCards.tsx:234
+#: src/features/Usage/UsageStatsCards.tsx:87
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr ""
 "Voici les mots que vous avez utilisés le plus souvent dans vos "
 "conversations."
 
-#: src/features/Usage/UsageStatsCards.tsx:263
-#: src/features/Usage/UsageStatsCards.tsx:596
+#: src/features/Usage/UsageStatsCards.tsx:116
+#: src/features/Usage/UsageStatsCards.tsx:449
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Aucun mot utilisé pour l'instant"
 
-#: src/features/Usage/UsageStatsCards.tsx:326
+#: src/features/Usage/UsageStatsCards.tsx:179
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Historique de chat"
 
-#: src/features/Usage/UsageStatsCards.tsx:328
+#: src/features/Usage/UsageStatsCards.tsx:181
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Voici les conversations que vous avez eues avec FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:350
+#: src/features/Usage/UsageStatsCards.tsx:203
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Aucune conversation pour le moment"
 
-#: src/features/Usage/UsageStatsCards.tsx:397
+#: src/features/Usage/UsageStatsCards.tsx:250
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Enseignant:"
 
-#: src/features/Usage/UsageStatsCards.tsx:397
+#: src/features/Usage/UsageStatsCards.tsx:250
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Vous:"
 
-#: src/features/Usage/UsageStatsCards.tsx:427
+#: src/features/Usage/UsageStatsCards.tsx:280
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Corrections de grammaire"
 
-#: src/features/Usage/UsageStatsCards.tsx:429
+#: src/features/Usage/UsageStatsCards.tsx:282
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Voici les corrections que vous aviez dans vos conversations."
 
-#: src/features/Usage/UsageStatsCards.tsx:451
+#: src/features/Usage/UsageStatsCards.tsx:304
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Aucune correction pour le moment"
 
-#: src/features/Usage/UsageStatsCards.tsx:527
+#: src/features/Usage/UsageStatsCards.tsx:380
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Description:"
 
-#: src/features/Usage/UsageStatsCards.tsx:544
+#: src/features/Usage/UsageStatsCards.tsx:396
+#. js-lingui-explicit-id
+msgid "Here’s you will see your progress"
+msgstr "Voici où vous verrez votre progression"
+
+#: src/features/Usage/UsageStatsCards.tsx:397
 #. js-lingui-explicit-id
 msgid "Here’s what you’ve achieved so far"
 msgstr "Voici ce que vous avez accompli jusqu'à présent"
 
-#: src/features/Usage/UsageStatsCards.tsx:643
+#: src/features/Usage/UsageStatsCards.tsx:415
+#. js-lingui-explicit-id
+msgid "Words"
+msgstr "Mots"
+
+#: src/features/Usage/UsageStatsCards.tsx:496
 #. js-lingui-explicit-id
 msgid "Grammar fixes"
 msgstr "Corrections de grammaire"
 
-#: src/features/Usage/UsageStatsCards.tsx:689
+#: src/features/Usage/UsageStatsCards.tsx:542
 #. js-lingui-explicit-id
 msgid "Minutes spoken"
 msgstr "Minutes parlées"
 
-#: src/features/Usage/UsageStatsCards.tsx:690
+#: src/features/Usage/UsageStatsCards.tsx:543
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Total"
 
-#: src/features/Usage/UsageStatsCards.tsx:713
+#: src/features/Usage/UsageStatsCards.tsx:566
 #. js-lingui-explicit-id
 msgid "Open chat history"
 msgstr "Ouvrir l'historique de chat"
@@ -686,8 +707,8 @@ msgid "Payment history:"
 msgstr "Historique des paiements:"
 
 #: src/features/Usage/PaymentModal.tsx:629
-#: src/features/RolePlay/RolePlayBoard.tsx:623
-#: src/features/Dashboard/Dashboard.tsx:35
+#: src/features/RolePlay/RolePlayBoard.tsx:621
+#: src/features/Dashboard/Dashboard.tsx:36
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Chargement..."
@@ -1681,34 +1702,34 @@ msgstr "Personnalisé"
 msgid "All Scenarios"
 msgstr "Tous les scénarios"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:368
+#: src/features/RolePlay/RolePlayBoard.tsx:367
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Jeu de Rôle"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:376
+#: src/features/RolePlay/RolePlayBoard.tsx:374
 #. js-lingui-explicit-id
 msgid "Play a role and talk to the AI"
 msgstr "Jouez un rôle et parlez à l'IA"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:466
+#: src/features/RolePlay/RolePlayBoard.tsx:464
 #. js-lingui-explicit-id
 msgid "Before you start, please fill some information to make it more realistic."
 msgstr ""
 "Avant de commencer, veuillez remplir certaines informations pour le rendre "
 "plus réaliste."
 
-#: src/features/RolePlay/RolePlayBoard.tsx:623
+#: src/features/RolePlay/RolePlayBoard.tsx:621
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Démarrer"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:675
+#: src/features/RolePlay/RolePlayBoard.tsx:673
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Montre plus"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:675
+#: src/features/RolePlay/RolePlayBoard.tsx:673
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Afficher moins"
@@ -2340,7 +2361,7 @@ msgstr ""
 "des commandes de nourriture"
 
 #: src/features/Landing/Price/PricePage.tsx:164
-#: src/features/Dashboard/ConversationSelectCard.tsx:39
+#: src/features/Dashboard/ConversationSelectCard.tsx:30
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Pratique de conversation"
@@ -2753,13 +2774,12 @@ msgstr "Fermer"
 msgid "Delete account"
 msgstr "Supprimer le compte"
 
-#: src/features/Header/HeaderComponent.tsx:251
+#: src/features/Header/HeaderComponent.tsx:252
 #. js-lingui-explicit-id
 msgid "Finishing the lesson..."
 msgstr "Terminer la leçon..."
 
-#: src/features/Header/HeaderComponent.tsx:252
-#: src/features/Dashboard/ConversationSelectCard.tsx:15
+#: src/features/Header/HeaderComponent.tsx:253
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Conversation"
@@ -2899,40 +2919,30 @@ msgstr "Passer"
 msgid "Show all"
 msgstr "Montrez tout"
 
-#: src/features/Dashboard/Dashboard.tsx:39
+#: src/features/Dashboard/Dashboard.tsx:40
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Création de nouveaux mots..."
 
-#: src/features/Dashboard/Dashboard.tsx:43
+#: src/features/Dashboard/Dashboard.tsx:44
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Création d'une nouvelle règle..."
 
-#: src/features/Dashboard/Dashboard.tsx:59
+#: src/features/Dashboard/Dashboard.tsx:60
 #. js-lingui-explicit-id
 msgid "Reload"
 msgstr "Recharger"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:23
-#. js-lingui-explicit-id
-msgid "Start a conversation with the AI"
-msgstr "Démarrez une conversation avec l'IA"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:40
+#: src/features/Dashboard/ConversationSelectCard.tsx:31
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "Parlez à l'IA et elle vous répondra."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:47
+#: src/features/Dashboard/ConversationSelectCard.tsx:63
 #. js-lingui-explicit-id
 msgid "Beginner mode"
 msgstr "Mode débutant"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:48
-#. js-lingui-explicit-id
-msgid "An easy mode for beginners"
-msgstr "Un mode facile pour les débutants"
 
 #: src/features/Dashboard/BrainCard.tsx:128
 #. js-lingui-explicit-id
@@ -3036,22 +3046,22 @@ msgstr "Préparation du cerveau"
 msgid "Upload language skills directly to your brain"
 msgstr "Téléchargez directement les compétences linguistiques dans votre cerveau"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:34
 #. js-lingui-explicit-id
-msgid "Progress"
-msgstr "Progression"
+msgid "Progress Calendar"
+msgstr "Calendrier de Progrès"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:43
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:42
 #. js-lingui-explicit-id
 msgid "Your daily progress"
 msgstr "Votre progression quotidienne"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:57
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:56
 #. js-lingui-explicit-id
 msgid "Less"
 msgstr "Moins"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:78
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:77
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Plus"
@@ -4378,6 +4388,21 @@ msgstr "Continue avec Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "En créant un compte, vous acceptez de :"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:39
+#. js-lingui-explicit-id
+#~ msgid "An easy mode for beginners"
+#~ msgstr "Un mode facile pour les débutants"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:23
+#. js-lingui-explicit-id
+#~ msgid "Start a conversation with the AI"
+#~ msgstr "Démarrez une conversation avec l'IA"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
+#. js-lingui-explicit-id
+#~ msgid "Progress"
+#~ msgstr "Progression"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:104
 #. js-lingui-explicit-id

@@ -13,10 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Usage/UsageStatsCards.tsx:543
+#: src/features/Dashboard/ConversationSelectCard.tsx:56
 #. js-lingui-explicit-id
-msgid "Here’s you will see your progress"
-msgstr "Inilah anda akan melihat kemajuan anda"
+msgid "Start Talking"
+msgstr "Mula Berbicara"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:64
+#. js-lingui-explicit-id
+msgid "AI will lead you through the conversation"
+msgstr "AI akan membimbing anda melalui perbualan"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:89
+#. js-lingui-explicit-id
+msgid "Guide me"
+msgstr "Pandu saya"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -35,6 +45,7 @@ msgstr ""
 
 #: src/libs/metadata.ts:67
 #: src/features/Header/Header.tsx:14
+#: src/features/Dashboard/ConversationSelectCard.tsx:15
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Amalan"
@@ -355,92 +366,102 @@ msgstr "Rakan bercakap bahasa Inggeris"
 msgid "AI English Speaking Practice"
 msgstr "AI Latihan Berbicara Bahasa Inggeris"
 
-#: src/features/Usage/UsageStatsCards.tsx:232
+#: src/features/Usage/UsageStatsCards.tsx:85
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "Statistik Kata"
 
-#: src/features/Usage/UsageStatsCards.tsx:234
+#: src/features/Usage/UsageStatsCards.tsx:87
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr ""
 "Berikut adalah perkataan yang paling kerap anda gunakan dalam perbualan "
 "anda."
 
-#: src/features/Usage/UsageStatsCards.tsx:263
-#: src/features/Usage/UsageStatsCards.tsx:596
+#: src/features/Usage/UsageStatsCards.tsx:116
+#: src/features/Usage/UsageStatsCards.tsx:449
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Belum ada kata yang digunakan lagi"
 
-#: src/features/Usage/UsageStatsCards.tsx:326
+#: src/features/Usage/UsageStatsCards.tsx:179
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "Sejarah sembang"
 
-#: src/features/Usage/UsageStatsCards.tsx:328
+#: src/features/Usage/UsageStatsCards.tsx:181
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Berikut adalah perbualan yang anda telah lakukan bersama FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:350
+#: src/features/Usage/UsageStatsCards.tsx:203
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Tiada perbualan lagi"
 
-#: src/features/Usage/UsageStatsCards.tsx:397
+#: src/features/Usage/UsageStatsCards.tsx:250
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Cikgu:"
 
-#: src/features/Usage/UsageStatsCards.tsx:397
+#: src/features/Usage/UsageStatsCards.tsx:250
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Anda:"
 
-#: src/features/Usage/UsageStatsCards.tsx:427
+#: src/features/Usage/UsageStatsCards.tsx:280
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Betulkanan Tatabahasa"
 
-#: src/features/Usage/UsageStatsCards.tsx:429
+#: src/features/Usage/UsageStatsCards.tsx:282
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Berikut adalah pembetulan yang anda ada dalam perbualan anda."
 
-#: src/features/Usage/UsageStatsCards.tsx:451
+#: src/features/Usage/UsageStatsCards.tsx:304
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Belum ada pembetulan"
 
-#: src/features/Usage/UsageStatsCards.tsx:527
+#: src/features/Usage/UsageStatsCards.tsx:380
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Penerangan:"
 
-#: src/features/Usage/UsageStatsCards.tsx:544
+#: src/features/Usage/UsageStatsCards.tsx:396
+#. js-lingui-explicit-id
+msgid "Here’s you will see your progress"
+msgstr "Inilah anda akan melihat kemajuan anda"
+
+#: src/features/Usage/UsageStatsCards.tsx:397
 #. js-lingui-explicit-id
 msgid "Here’s what you’ve achieved so far"
 msgstr "Inilah apa yang telah anda capai setakat ini"
 
-#: src/features/Usage/UsageStatsCards.tsx:643
+#: src/features/Usage/UsageStatsCards.tsx:415
+#. js-lingui-explicit-id
+msgid "Words"
+msgstr "Kata-kata"
+
+#: src/features/Usage/UsageStatsCards.tsx:496
 #. js-lingui-explicit-id
 msgid "Grammar fixes"
 msgstr "Perbaikan tatabahasa"
 
-#: src/features/Usage/UsageStatsCards.tsx:689
+#: src/features/Usage/UsageStatsCards.tsx:542
 #. js-lingui-explicit-id
 msgid "Minutes spoken"
 msgstr "Minit bercakap"
 
-#: src/features/Usage/UsageStatsCards.tsx:690
+#: src/features/Usage/UsageStatsCards.tsx:543
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Jumlah"
 
-#: src/features/Usage/UsageStatsCards.tsx:713
+#: src/features/Usage/UsageStatsCards.tsx:566
 #. js-lingui-explicit-id
 msgid "Open chat history"
 msgstr "Buka sejarah sembang"
@@ -688,8 +709,8 @@ msgid "Payment history:"
 msgstr "Sejarah pembayaran:"
 
 #: src/features/Usage/PaymentModal.tsx:629
-#: src/features/RolePlay/RolePlayBoard.tsx:623
-#: src/features/Dashboard/Dashboard.tsx:35
+#: src/features/RolePlay/RolePlayBoard.tsx:621
+#: src/features/Dashboard/Dashboard.tsx:36
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Loading..."
@@ -1658,34 +1679,34 @@ msgstr "Custom"
 msgid "All Scenarios"
 msgstr "Semua Senario"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:368
+#: src/features/RolePlay/RolePlayBoard.tsx:367
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Peranan Bermain"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:376
+#: src/features/RolePlay/RolePlayBoard.tsx:374
 #. js-lingui-explicit-id
 msgid "Play a role and talk to the AI"
 msgstr "Bermainlah dalam peranan dan bercakap dengan AI"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:466
+#: src/features/RolePlay/RolePlayBoard.tsx:464
 #. js-lingui-explicit-id
 msgid "Before you start, please fill some information to make it more realistic."
 msgstr ""
 "Sebelum anda mula, sila isi beberapa maklumat untuk menjadikannya lebih "
 "realistik."
 
-#: src/features/RolePlay/RolePlayBoard.tsx:623
+#: src/features/RolePlay/RolePlayBoard.tsx:621
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Mula"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:675
+#: src/features/RolePlay/RolePlayBoard.tsx:673
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Tunjukkan lebih banyak"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:675
+#: src/features/RolePlay/RolePlayBoard.tsx:673
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Tunjukkan kurang"
@@ -2308,7 +2329,7 @@ msgstr ""
 "memesan makanan"
 
 #: src/features/Landing/Price/PricePage.tsx:164
-#: src/features/Dashboard/ConversationSelectCard.tsx:39
+#: src/features/Dashboard/ConversationSelectCard.tsx:30
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Amalan perbualan"
@@ -2720,13 +2741,12 @@ msgstr "Tutup"
 msgid "Delete account"
 msgstr "Padam akaun"
 
-#: src/features/Header/HeaderComponent.tsx:251
+#: src/features/Header/HeaderComponent.tsx:252
 #. js-lingui-explicit-id
 msgid "Finishing the lesson..."
 msgstr "Menyelesaikan pelajaran..."
 
-#: src/features/Header/HeaderComponent.tsx:252
-#: src/features/Dashboard/ConversationSelectCard.tsx:15
+#: src/features/Header/HeaderComponent.tsx:253
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Perbualan"
@@ -2864,40 +2884,30 @@ msgstr "Skip"
 msgid "Show all"
 msgstr "Tunjukkan semua"
 
-#: src/features/Dashboard/Dashboard.tsx:39
+#: src/features/Dashboard/Dashboard.tsx:40
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Mencipta perkataan baru..."
 
-#: src/features/Dashboard/Dashboard.tsx:43
+#: src/features/Dashboard/Dashboard.tsx:44
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Membentuk peraturan baru..."
 
-#: src/features/Dashboard/Dashboard.tsx:59
+#: src/features/Dashboard/Dashboard.tsx:60
 #. js-lingui-explicit-id
 msgid "Reload"
 msgstr "Reload"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:23
-#. js-lingui-explicit-id
-msgid "Start a conversation with the AI"
-msgstr "Mulakan perbualan dengan AI"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:40
+#: src/features/Dashboard/ConversationSelectCard.tsx:31
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "Bercakap dengan AI dan ia akan memberi maklum balas kepada anda"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:47
+#: src/features/Dashboard/ConversationSelectCard.tsx:63
 #. js-lingui-explicit-id
 msgid "Beginner mode"
 msgstr "Mod pemula"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:48
-#. js-lingui-explicit-id
-msgid "An easy mode for beginners"
-msgstr "Mod mudah untuk pemula"
 
 #: src/features/Dashboard/BrainCard.tsx:128
 #. js-lingui-explicit-id
@@ -3001,22 +3011,22 @@ msgstr "Menyediakan otak"
 msgid "Upload language skills directly to your brain"
 msgstr "Muat naik kemahiran bahasa terus ke otak anda"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:34
 #. js-lingui-explicit-id
-msgid "Progress"
-msgstr "Kemajuan"
+msgid "Progress Calendar"
+msgstr "Kalendar Kemajuan"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:43
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:42
 #. js-lingui-explicit-id
 msgid "Your daily progress"
 msgstr "Kemajuan harian anda"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:57
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:56
 #. js-lingui-explicit-id
 msgid "Less"
 msgstr "Kurang"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:78
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:77
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Lebih"
@@ -4334,6 +4344,21 @@ msgstr "Teruskan dengan google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Dengan mencipta akaun, anda bersetuju untuk:"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:39
+#. js-lingui-explicit-id
+#~ msgid "An easy mode for beginners"
+#~ msgstr "Mod mudah untuk pemula"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:23
+#. js-lingui-explicit-id
+#~ msgid "Start a conversation with the AI"
+#~ msgstr "Mulakan perbualan dengan AI"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
+#. js-lingui-explicit-id
+#~ msgid "Progress"
+#~ msgstr "Kemajuan"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:104
 #. js-lingui-explicit-id

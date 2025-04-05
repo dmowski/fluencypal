@@ -13,10 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Usage/UsageStatsCards.tsx:543
+#: src/features/Dashboard/ConversationSelectCard.tsx:56
 #. js-lingui-explicit-id
-msgid "Here’s you will see your progress"
-msgstr "ここではあなたの進行状況が表示されます"
+msgid "Start Talking"
+msgstr "話し始める"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:64
+#. js-lingui-explicit-id
+msgid "AI will lead you through the conversation"
+msgstr "AIが会話をリードします"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:89
+#. js-lingui-explicit-id
+msgid "Guide me"
+msgstr "私に導いてください"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -33,6 +43,7 @@ msgstr "FluencyPalにお問い合わせ、ご支援、またはフィードバ�
 
 #: src/libs/metadata.ts:67
 #: src/features/Header/Header.tsx:14
+#: src/features/Dashboard/ConversationSelectCard.tsx:15
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "練習"
@@ -348,90 +359,100 @@ msgstr "英語スピーキングパートナー"
 msgid "AI English Speaking Practice"
 msgstr "AI英語スピーキング練習"
 
-#: src/features/Usage/UsageStatsCards.tsx:232
+#: src/features/Usage/UsageStatsCards.tsx:85
 #. js-lingui-explicit-id
 msgid "Word Stats"
 msgstr "単語統計"
 
-#: src/features/Usage/UsageStatsCards.tsx:234
+#: src/features/Usage/UsageStatsCards.tsx:87
 #. js-lingui-explicit-id
 msgid "Here are the words you used the most in your conversations."
 msgstr "これらは、あなたの会話で最も使用された単語です。"
 
-#: src/features/Usage/UsageStatsCards.tsx:263
-#: src/features/Usage/UsageStatsCards.tsx:596
+#: src/features/Usage/UsageStatsCards.tsx:116
+#: src/features/Usage/UsageStatsCards.tsx:449
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "まだ使用されている単語はありません"
 
-#: src/features/Usage/UsageStatsCards.tsx:326
+#: src/features/Usage/UsageStatsCards.tsx:179
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "チャット履歴"
 
-#: src/features/Usage/UsageStatsCards.tsx:328
+#: src/features/Usage/UsageStatsCards.tsx:181
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "これはFluencyPalとの会話履歴です。"
 
-#: src/features/Usage/UsageStatsCards.tsx:350
+#: src/features/Usage/UsageStatsCards.tsx:203
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "まだ会話はありません"
 
-#: src/features/Usage/UsageStatsCards.tsx:397
+#: src/features/Usage/UsageStatsCards.tsx:250
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "教師:"
 
-#: src/features/Usage/UsageStatsCards.tsx:397
+#: src/features/Usage/UsageStatsCards.tsx:250
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "あなた:"
 
-#: src/features/Usage/UsageStatsCards.tsx:427
+#: src/features/Usage/UsageStatsCards.tsx:280
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "文法訂正"
 
-#: src/features/Usage/UsageStatsCards.tsx:429
+#: src/features/Usage/UsageStatsCards.tsx:282
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "これはあなたの会話で訂正が必要だった部分です。"
 
-#: src/features/Usage/UsageStatsCards.tsx:451
+#: src/features/Usage/UsageStatsCards.tsx:304
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "まだ訂正はありません"
 
-#: src/features/Usage/UsageStatsCards.tsx:527
+#: src/features/Usage/UsageStatsCards.tsx:380
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "説明:"
 
-#: src/features/Usage/UsageStatsCards.tsx:544
+#: src/features/Usage/UsageStatsCards.tsx:396
+#. js-lingui-explicit-id
+msgid "Here’s you will see your progress"
+msgstr "ここではあなたの進行状況が表示されます"
+
+#: src/features/Usage/UsageStatsCards.tsx:397
 #. js-lingui-explicit-id
 msgid "Here’s what you’ve achieved so far"
 msgstr "これまでに達成したことは以下の通りです"
 
-#: src/features/Usage/UsageStatsCards.tsx:643
+#: src/features/Usage/UsageStatsCards.tsx:415
+#. js-lingui-explicit-id
+msgid "Words"
+msgstr "単語"
+
+#: src/features/Usage/UsageStatsCards.tsx:496
 #. js-lingui-explicit-id
 msgid "Grammar fixes"
 msgstr "文法の修正"
 
-#: src/features/Usage/UsageStatsCards.tsx:689
+#: src/features/Usage/UsageStatsCards.tsx:542
 #. js-lingui-explicit-id
 msgid "Minutes spoken"
 msgstr "話した分数"
 
-#: src/features/Usage/UsageStatsCards.tsx:690
+#: src/features/Usage/UsageStatsCards.tsx:543
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "合計"
 
-#: src/features/Usage/UsageStatsCards.tsx:713
+#: src/features/Usage/UsageStatsCards.tsx:566
 #. js-lingui-explicit-id
 msgid "Open chat history"
 msgstr "チャット履歴を開く"
@@ -661,8 +682,8 @@ msgid "Payment history:"
 msgstr "支払い履歴:"
 
 #: src/features/Usage/PaymentModal.tsx:629
-#: src/features/RolePlay/RolePlayBoard.tsx:623
-#: src/features/Dashboard/Dashboard.tsx:35
+#: src/features/RolePlay/RolePlayBoard.tsx:621
+#: src/features/Dashboard/Dashboard.tsx:36
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "読み込み中..."
@@ -1493,34 +1514,34 @@ msgstr "カスタム"
 msgid "All Scenarios"
 msgstr "すべてのシナリオ"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:368
+#: src/features/RolePlay/RolePlayBoard.tsx:367
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "役割演技"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:376
+#: src/features/RolePlay/RolePlayBoard.tsx:374
 #. js-lingui-explicit-id
 msgid "Play a role and talk to the AI"
 msgstr "役割を演じてAIと話してください。"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:466
+#: src/features/RolePlay/RolePlayBoard.tsx:464
 #. js-lingui-explicit-id
 msgid "Before you start, please fill some information to make it more realistic."
 msgstr "開始する前に、もっと現実的にするためにいくつかの情報を入力してください。"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:623
+#: src/features/RolePlay/RolePlayBoard.tsx:621
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "開始"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:675
+#: src/features/RolePlay/RolePlayBoard.tsx:673
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr ""
 "\n"
 "もっと表示\n"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:675
+#: src/features/RolePlay/RolePlayBoard.tsx:673
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "表示を減らす"
@@ -2099,7 +2120,7 @@ msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr "実際の会話に参加しましょう、例えば仕事の面接や食べ物の注文など。"
 
 #: src/features/Landing/Price/PricePage.tsx:164
-#: src/features/Dashboard/ConversationSelectCard.tsx:39
+#: src/features/Dashboard/ConversationSelectCard.tsx:30
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "会話練習"
@@ -2495,13 +2516,12 @@ msgstr "閉じる"
 msgid "Delete account"
 msgstr "アカウントを削除する"
 
-#: src/features/Header/HeaderComponent.tsx:251
+#: src/features/Header/HeaderComponent.tsx:252
 #. js-lingui-explicit-id
 msgid "Finishing the lesson..."
 msgstr "レッスンを終えています..."
 
-#: src/features/Header/HeaderComponent.tsx:252
-#: src/features/Dashboard/ConversationSelectCard.tsx:15
+#: src/features/Header/HeaderComponent.tsx:253
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "会話"
@@ -2647,40 +2667,30 @@ msgstr "スキップ"
 msgid "Show all"
 msgstr "すべて表示"
 
-#: src/features/Dashboard/Dashboard.tsx:39
+#: src/features/Dashboard/Dashboard.tsx:40
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "新しい言葉を作成中..."
 
-#: src/features/Dashboard/Dashboard.tsx:43
+#: src/features/Dashboard/Dashboard.tsx:44
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "新しいルールの作成..."
 
-#: src/features/Dashboard/Dashboard.tsx:59
+#: src/features/Dashboard/Dashboard.tsx:60
 #. js-lingui-explicit-id
 msgid "Reload"
 msgstr "リロード"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:23
-#. js-lingui-explicit-id
-msgid "Start a conversation with the AI"
-msgstr "AIとの会話を始める"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:40
+#: src/features/Dashboard/ConversationSelectCard.tsx:31
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "AIに話しかけると、AIがあなたに応答します。"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:47
+#: src/features/Dashboard/ConversationSelectCard.tsx:63
 #. js-lingui-explicit-id
 msgid "Beginner mode"
 msgstr "ビギナーモード"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:48
-#. js-lingui-explicit-id
-msgid "An easy mode for beginners"
-msgstr "初心者向けの簡単モード"
 
 #: src/features/Dashboard/BrainCard.tsx:128
 #. js-lingui-explicit-id
@@ -2784,22 +2794,22 @@ msgstr "脳を準備する"
 msgid "Upload language skills directly to your brain"
 msgstr "あなたの脳に直接言語スキルをアップロードします"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:34
 #. js-lingui-explicit-id
-msgid "Progress"
-msgstr "進捗"
+msgid "Progress Calendar"
+msgstr "進行カレンダー"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:43
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:42
 #. js-lingui-explicit-id
 msgid "Your daily progress"
 msgstr "あなたの毎日の進捗"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:57
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:56
 #. js-lingui-explicit-id
 msgid "Less"
 msgstr "少ない"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:78
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:77
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "もっと"
@@ -3951,6 +3961,21 @@ msgstr "Googleで続行"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "アカウントを作成することで、あなたは以下に同意するものとします："
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:39
+#. js-lingui-explicit-id
+#~ msgid "An easy mode for beginners"
+#~ msgstr "初心者向けの簡単モード"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:23
+#. js-lingui-explicit-id
+#~ msgid "Start a conversation with the AI"
+#~ msgstr "AIとの会話を始める"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
+#. js-lingui-explicit-id
+#~ msgid "Progress"
+#~ msgstr "進捗"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:104
 #. js-lingui-explicit-id

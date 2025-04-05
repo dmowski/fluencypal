@@ -1,9 +1,9 @@
 "use client";
 import { Stack, Typography } from "@mui/material";
 import { useUsage } from "./useUsage";
-import { BookType, Fish, MessagesSquare } from "lucide-react";
+import { BicepsFlexed, BookType, Fish, MessagesSquare, Sprout } from "lucide-react";
 import { useWords } from "../Words/useWords";
-import { JSX, useState } from "react";
+import { useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { StringDiff } from "react-string-diff";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
@@ -13,154 +13,7 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import dayjs from "dayjs";
 import { useCorrections } from "../Corrections/useCorrections";
 import { useSettings } from "../Settings/useSettings";
-
-interface StatCardProps {
-  title: string;
-  subTitle: string;
-  value: string;
-  startColor: string;
-  endColor: string;
-  bgColor: string;
-  miniCard: JSX.Element;
-  onClick: () => void;
-}
-const StatCard = ({
-  title,
-  subTitle,
-  value,
-  onClick,
-  startColor,
-  endColor,
-  bgColor,
-  miniCard,
-}: StatCardProps) => {
-  return (
-    <Stack
-      onClick={onClick}
-      component={"button"}
-      sx={{
-        backgroundColor: "transparent",
-        padding: "20px 20px 60px 20px",
-        borderRadius: "16px",
-        gap: "0px",
-        alignItems: "flex-start",
-        justifyContent: "center",
-        border: "1px solid rgba(255, 255, 255, 0.04)",
-        position: "relative",
-        overflow: "hidden",
-        transition: "transform 0.3s ease",
-        cursor: "pointer",
-
-        ".mini-card": {
-          position: "absolute",
-          bottom: "0px",
-          right: "20px",
-          width: "200px",
-          height: "140px",
-          boxSizing: "border-box",
-          transition: "all 0.3s ease",
-          boxShadow: "0px 0px 26px rgba(0, 0, 0, 0.3)",
-          backgroundColor: "#1E1E1E",
-          padding: "20px",
-          borderRadius: "16px 16px 0 0",
-          "@media (max-width: 750px)": {
-            width: "250px",
-          },
-          "@media (max-width: 450px)": {
-            width: "150px",
-          },
-        },
-
-        ":hover": {
-          transform: "scale(1.02)",
-          ".mini-card": {
-            transform: "scale(1.01)",
-            height: "160px",
-          },
-        },
-      }}
-    >
-      <Typography
-        align="center"
-        variant="caption"
-        sx={{
-          fontWeight: 300,
-          opacity: 0.9,
-          textTransform: "uppercase",
-        }}
-      >
-        {subTitle}
-      </Typography>
-
-      <Typography
-        align="center"
-        sx={{
-          fontWeight: 800,
-          opacity: 0.9,
-          textTransform: "uppercase",
-        }}
-      >
-        {title}
-      </Typography>
-      <Typography
-        sx={{
-          fontWeight: 900,
-          fontSize: "4rem",
-        }}
-      >
-        {value}
-      </Typography>
-
-      <Stack className="mini-card">{miniCard}</Stack>
-
-      <Stack
-        sx={{
-          backgroundColor: startColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(50px)",
-
-          position: "absolute",
-          top: "-40px",
-          left: "-20px",
-          zIndex: -1,
-          opacity: 0.9,
-        }}
-      ></Stack>
-
-      <Stack
-        sx={{
-          backgroundColor: endColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(80px)",
-
-          position: "absolute",
-          bottom: "-40px",
-          right: "-20px",
-          zIndex: -1,
-          opacity: 0.9,
-        }}
-      ></Stack>
-
-      <Stack
-        sx={{
-          backgroundColor: bgColor,
-          width: "100%",
-          height: "100%",
-
-          position: "absolute",
-          bottom: "0px",
-          left: "0px",
-          zIndex: -2,
-          opacity: 0.1,
-        }}
-      ></Stack>
-    </Stack>
-  );
-};
+import { GradientBgCard } from "../uiKit/Card/GradientBgCard";
 
 interface WorkStat {
   word: string;
@@ -538,11 +391,35 @@ export const UsageStatsCards = () => {
       )}
 
       <Stack sx={{ width: "100%", gap: "15px" }}>
-        <Typography variant="h6">
-          {isNoConversations
-            ? i18n._("Here’s you will see your progress")
-            : i18n._("Here’s what you’ve achieved so far")}
-        </Typography>
+        <Stack
+          sx={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "15px",
+            paddingBottom: "10px",
+          }}
+        >
+          <Stack
+            sx={{
+              borderRadius: "50%",
+              background: "linear-gradient(45deg,rgb(25, 142, 79) 0%,rgb(109, 209, 151) 100%)",
+              height: "50px",
+              width: "50px",
+
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Sprout size={"25px"} />
+          </Stack>
+          <Typography variant="h6">
+            {isNoConversations
+              ? i18n._("Here’s you will see your progress")
+              : i18n._("Here’s what you’ve achieved so far")}
+          </Typography>
+        </Stack>
+
         <Stack
           sx={{
             display: "grid",
@@ -557,9 +434,9 @@ export const UsageStatsCards = () => {
             },
           }}
         >
-          <StatCard
+          <GradientBgCard
             value={`${totalWordsCount}`}
-            title="Words"
+            title={i18n._("Words")}
             subTitle={settings.fullLanguageName || "English"}
             startColor="#FF6B6B"
             endColor="#FFD93D"
@@ -637,7 +514,7 @@ export const UsageStatsCards = () => {
             }
             onClick={() => setIsShowWordStat(!isShowWordStat)}
           />
-          <StatCard
+          <GradientBgCard
             value={`${correctionsCount}`}
             subTitle={settings.fullLanguageName || "English"}
             title={i18n._("Grammar fixes")}
@@ -684,7 +561,7 @@ export const UsageStatsCards = () => {
               </Stack>
             }
           />
-          <StatCard
+          <GradientBgCard
             value={`${Math.round(usage.usedHours * 60)}`}
             title={i18n._("Minutes spoken")}
             subTitle={i18n._("Total")}

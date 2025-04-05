@@ -159,13 +159,14 @@ export function HeaderComponent({
           top: 0,
           left: 0,
           zIndex: 1000,
-          backgroundColor: isNoBalance
-            ? "transparent"
-            : isActiveConversation
-              ? "rgba(10, 18, 30, 1)"
-              : "rgba(10, 18, 30, 0.9)",
+          backgroundColor:
+            isNoBalance || !isLanding
+              ? "transparent"
+              : isActiveConversation
+                ? "rgba(10, 18, 30, 1)"
+                : "rgba(10, 18, 30, 0.9)",
           backdropFilter: "blur(10px)",
-          borderBottom: isActiveConversation ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
+          //borderBottom: isActiveConversation ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
 
           ".menu-link": {
             height: "60px",

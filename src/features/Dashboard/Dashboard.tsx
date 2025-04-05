@@ -20,6 +20,7 @@ import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
 import { useLingui } from "@lingui/react";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { UsageStatsCards } from "../Usage/UsageStatsCards";
+import { DashboardCard } from "../uiKit/Card/DashboardCard";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -81,8 +82,8 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           padding: "10px",
           paddingTop: "100px",
           boxSizing: "border-box",
-          gap: "40px",
-          "@media (max-width: 900px)": {
+          gap: "70px",
+          "@media (max-width: 850px)": {
             paddingLeft: "0",
             paddingRight: "0",
           },
@@ -90,13 +91,10 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
       >
         <ConversationSelectCard />
 
-        <Stack
-          sx={{
-            padding: "10px 20px 40px 20px",
-          }}
-        >
+        <DashboardCard>
           <UsageStatsCards />
-        </Stack>
+        </DashboardCard>
+
         <RolePlayBoard rolePlayInfo={rolePlayInfo} />
 
         <Stack
@@ -134,6 +132,69 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
       >
         <TalkingWaves />
       </Stack>
+
+      <Stack
+        sx={{
+          position: "absolute",
+          top: "0px",
+          right: "0",
+          backgroundColor: "blue",
+          height: "300px",
+          width: "300px",
+          borderRadius: "50%",
+          filter: "blur(200px)",
+          zIndex: 0,
+          opacity: 0.9,
+        }}
+      ></Stack>
+
+      <Stack
+        sx={{
+          position: "absolute",
+          top: "300px",
+          right: "0",
+          backgroundColor: "red",
+          height: "300px",
+          width: "300px",
+          borderRadius: "50%",
+          filter: "blur(200px)",
+          zIndex: 0,
+          opacity: 0.4,
+        }}
+      ></Stack>
+
+      <Stack
+        sx={{
+          position: "absolute",
+          top: "0px",
+          left: "300px",
+          backgroundColor: "cyan",
+          height: "200px",
+          width: "300px",
+          borderRadius: "50%",
+          filter: "blur(200px)",
+          zIndex: 0,
+          opacity: 0.61,
+          "@media (max-width: 600px)": {
+            left: "0px",
+          },
+        }}
+      ></Stack>
+
+      <Stack
+        sx={{
+          position: "absolute",
+          top: "900px",
+          left: "0",
+          backgroundColor: "#5533ff",
+          height: "300px",
+          width: "300px",
+          borderRadius: "50%",
+          filter: "blur(300px)",
+          zIndex: 0,
+          opacity: 0.4,
+        }}
+      ></Stack>
     </Stack>
   );
 }
