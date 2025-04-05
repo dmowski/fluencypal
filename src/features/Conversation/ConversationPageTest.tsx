@@ -142,6 +142,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   return (
     <Stack>
       <ConversationCanvas2
+        conversationId="1"
         conversation={testMessage}
         analyzeUserMessage={analyzeMessage}
         isAiSpeaking={false}

@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Alert, Button, Stack, Typography } from "@mui/material";
 import { useUsage } from "./useUsage";
 import { StarContainer } from "../Layout/StarContainer";
 import {
@@ -21,6 +21,7 @@ import { conversationModeLabel } from "../Conversation/data";
 import { useLingui } from "@lingui/react";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import dayjs from "dayjs";
+import { useCorrections } from "../Corrections/useCorrections";
 
 interface StatCardProps {
   title: string;
@@ -194,6 +195,7 @@ interface WorkStat {
 export const NoBalanceBlock = () => {
   const usage = useUsage();
   const words = useWords();
+
   const totalWordsCount = words.totalWordsCount;
 
   const [isShowWordStat, setIsShowWordStat] = useState(false);
@@ -270,6 +272,11 @@ export const NoBalanceBlock = () => {
 
   const chatHistory = useChatHistory();
   const { i18n } = useLingui();
+
+  const corrections = useCorrections();
+  const [isShowCorrectionStats, setIsShowCorrectionStats] = useState(false);
+
+  const correctionsCount = corrections.correctionStats.length || 0;
 
   return (
     <Stack
@@ -429,6 +436,111 @@ export const NoBalanceBlock = () => {
           </CustomModal>
         </>
       )}
+
+      {isShowCorrectionStats && (
+        <>
+          <CustomModal
+            width="min(800px, 99vw)"
+            onClose={() => setIsShowCorrectionStats(false)}
+            isOpen={true}
+          >
+            <Stack
+              sx={{
+                maxHeight: "80vh",
+                gap: "40px",
+                width: "100%",
+              }}
+            >
+              <Stack>
+                <Typography variant="h4">Grammar Corrections</Typography>
+                <Typography variant="caption">
+                  Here are the corrections you had in your conversations.
+                </Typography>
+              </Stack>
+
+              <Stack sx={{ width: "100%", gap: "40px" }}>
+                {corrections.correctionStats.map((correctionStat, index) => {
+                  return (
+                    <Stack
+                      key={correctionStat.userMessage + index}
+                      sx={{
+                        borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
+                        paddingBottom: "20px",
+                        width: "100%",
+                        gap: "10px",
+                      }}
+                    >
+                      <Stack
+                        sx={{
+                          width: "100%",
+                        }}
+                      >
+                        <Stack>
+                          <Typography
+                            variant="body2"
+                            component={"div"}
+                            sx={{
+                              fontWeight: 400,
+                              fontSize: "1.1rem",
+                              paddingBottom: "3px",
+                            }}
+                          >
+                            <StringDiff
+                              oldValue={correctionStat.userMessage}
+                              newValue={correctionStat.userMessage}
+                            />
+                          </Typography>
+                        </Stack>
+
+                        <Stack>
+                          <Typography
+                            variant="body2"
+                            component={"div"}
+                            sx={{
+                              fontWeight: 400,
+                              fontSize: "1.1rem",
+                              paddingBottom: "3px",
+                            }}
+                          >
+                            <StringDiff
+                              styles={{
+                                added: {
+                                  color: "#81e381",
+                                  fontWeight: 600,
+                                },
+                                removed: {
+                                  display: "none",
+                                  textDecoration: "line-through",
+                                  opacity: 0.4,
+                                },
+                                default: {},
+                              }}
+                              oldValue={correctionStat.userMessage}
+                              newValue={correctionStat.correctedMessage}
+                            />
+                          </Typography>
+                        </Stack>
+                      </Stack>
+
+                      <Stack>
+                        <Typography
+                          sx={{
+                            opacity: 0.7,
+                          }}
+                          variant="caption"
+                        >
+                          {i18n._("Description:")}
+                        </Typography>
+                        <Typography sx={{}}>{correctionStat.description}</Typography>
+                      </Stack>
+                    </Stack>
+                  );
+                })}
+              </Stack>
+            </Stack>
+          </CustomModal>
+        </>
+      )}
       <Stack
         sx={{
           padding: "20px 20px 20px 30px",
@@ -493,11 +605,12 @@ export const NoBalanceBlock = () => {
               onClick={() => setIsShowWordStat(!isShowWordStat)}
             />
             <StatCard
-              value={"42"}
+              value={`${correctionsCount}`}
               title="Grammar fixes"
               startColor="#4F46E5"
               endColor="#A78BFA"
               bgColor="#60A5FA"
+              onClick={() => setIsShowCorrectionStats(!isShowCorrectionStats)}
               miniCard={
                 <Stack
                   sx={{
@@ -536,7 +649,6 @@ export const NoBalanceBlock = () => {
                   </Typography>
                 </Stack>
               }
-              onClick={() => setIsShowWordStat(!isShowWordStat)}
             />
             <StatCard
               value={`${Math.round(usage.usedHours * 60)}`}

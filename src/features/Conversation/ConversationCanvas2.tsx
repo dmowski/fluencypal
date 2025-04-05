@@ -29,12 +29,15 @@ interface ConversationCanvasProps {
   balanceHours: number;
   recordingError: string;
   togglePaymentModal: (isOpen: boolean) => void;
+  conversationId: string;
   analyzeUserMessage: ({
     previousBotMessage,
     message,
+    conversationId,
   }: {
     previousBotMessage: string;
     message: string;
+    conversationId: string;
   }) => Promise<{
     sourceMessage: string;
     correctedMessage: string;
@@ -70,6 +73,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   recordingMilliSeconds,
   recordVisualizerComponent,
   recordingError,
+  conversationId,
 }) => {
   const { i18n } = useLingui();
 
@@ -124,6 +128,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
       const { sourceMessage, correctedMessage, description, newWords } = await analyzeUserMessage({
         previousBotMessage,
         message: userMessage,
+        conversationId,
       });
       setNewWords(newWords || []);
       if (transcriptMessage !== sourceMessage) {

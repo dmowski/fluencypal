@@ -63,6 +63,8 @@ interface AiConversationContextType {
 
   isVolumeOn: boolean;
   toggleVolume: (value: boolean) => void;
+
+  conversationId: string;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -568,6 +570,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
 
   return {
     currentMode,
+    conversationId,
     isSavingHomework,
     isInitializing,
     isStarted,

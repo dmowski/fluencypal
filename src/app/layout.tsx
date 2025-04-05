@@ -23,6 +23,7 @@ import { supportedLanguages } from "@/common/lang";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { Inter, Old_Standard_TT } from "next/font/google";
 import { WebCamProvider } from "@/features/webCam/useWebCam";
+import { CorrectionsProvider } from "@/features/Corrections/useCorrections";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const oldStandardTT = Old_Standard_TT({
@@ -80,16 +81,18 @@ export default async function RootLayout({
                         <AudioProvider>
                           <AiUserInfoProvider>
                             <WordsProvider>
-                              <ChatHistoryProvider>
-                                <RulesProvider>
-                                  <TasksProvider>
-                                    <HomeworkProvider>
-                                      <AiConversationProvider>{children}</AiConversationProvider>
-                                      <CookiesPopup />
-                                    </HomeworkProvider>
-                                  </TasksProvider>
-                                </RulesProvider>
-                              </ChatHistoryProvider>
+                              <CorrectionsProvider>
+                                <ChatHistoryProvider>
+                                  <RulesProvider>
+                                    <TasksProvider>
+                                      <HomeworkProvider>
+                                        <AiConversationProvider>{children}</AiConversationProvider>
+                                        <CookiesPopup />
+                                      </HomeworkProvider>
+                                    </TasksProvider>
+                                  </RulesProvider>
+                                </ChatHistoryProvider>
+                              </CorrectionsProvider>
                             </WordsProvider>
                           </AiUserInfoProvider>
                         </AudioProvider>
