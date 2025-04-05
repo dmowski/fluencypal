@@ -1,13 +1,21 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useUsage } from "./useUsage";
 import { StarContainer } from "../Layout/StarContainer";
-import { ChartNoAxesCombined, HandCoins, VenetianMask, Wallet } from "lucide-react";
+import {
+  BookType,
+  ChartNoAxesCombined,
+  HandCoins,
+  MessagesSquare,
+  VenetianMask,
+  Wallet,
+} from "lucide-react";
 import { useWords } from "../Words/useWords";
 import PsychologyIcon from "@mui/icons-material/Psychology";
 import { JSX, useState } from "react";
 import { ContactList } from "../Landing/Contact/ContactList";
 import { GradientCard } from "../uiKit/Card/GradientCard";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { StringDiff } from "react-string-diff";
 
 interface StatCardProps {
   title: string;
@@ -30,8 +38,9 @@ const StatCard = ({
   return (
     <Stack
       onClick={onClick}
+      component={"button"}
       sx={{
-        //backgroundColor: "#1E1E1E",
+        backgroundColor: "transparent",
         padding: "20px 20px 60px 20px",
         borderRadius: "16px",
         gap: "0px",
@@ -55,6 +64,12 @@ const StatCard = ({
           backgroundColor: "#1E1E1E",
           padding: "20px",
           borderRadius: "16px 16px 0 0",
+          "@media (max-width: 750px)": {
+            width: "250px",
+          },
+          "@media (max-width: 450px)": {
+            width: "150px",
+          },
         },
 
         ":hover": {
@@ -261,7 +276,7 @@ export const NoBalanceBlock = () => {
     >
       {isShowWordStat && (
         <CustomModal
-          width="min(400px, 99vw)"
+          width="min(450px, 99vw)"
           onClose={() => setIsShowWordStat(false)}
           isOpen={true}
         >
@@ -269,7 +284,6 @@ export const NoBalanceBlock = () => {
             sx={{
               maxHeight: "80vh",
               gap: "20px",
-              maxWidth: "300px",
             }}
           >
             <Stack>
@@ -294,7 +308,7 @@ export const NoBalanceBlock = () => {
                       flexDirection: "row",
                       width: "100%",
                       position: "relative",
-                      padding: "5px 10px",
+                      padding: "7px 15px",
                       justifyContent: "space-between",
                       alignItems: "center",
                       borderRadius: "4px",
@@ -304,6 +318,8 @@ export const NoBalanceBlock = () => {
                     <Typography
                       sx={{
                         textTransform: "capitalize",
+                        fontSize: "1.2rem",
+                        fontWeight: 300,
                       }}
                     >
                       {word}
@@ -372,7 +388,11 @@ export const NoBalanceBlock = () => {
               display: "grid",
               gridTemplateColumns: "1fr 1fr 1fr",
               gap: "20px",
-              "@media (max-width: 600px)": {
+              "@media (max-width: 1100px)": {
+                gridTemplateColumns: "1fr 1fr",
+              },
+
+              "@media (max-width: 750px)": {
                 gridTemplateColumns: "1fr",
               },
             }}
@@ -392,7 +412,44 @@ export const NoBalanceBlock = () => {
               startColor="#4F46E5"
               endColor="#A78BFA"
               bgColor="#60A5FA"
-              miniCard={<></>}
+              miniCard={
+                <Stack
+                  sx={{
+                    alignItems: "center",
+                    height: "100%",
+                    gap: "15px",
+                    justifyContent: "center",
+                  }}
+                >
+                  <BookType size={"28px"} />
+
+                  <Typography
+                    variant="body2"
+                    component={"div"}
+                    sx={{
+                      fontWeight: 350,
+                      paddingLeft: "10px",
+                    }}
+                  >
+                    <StringDiff
+                      styles={{
+                        added: {
+                          color: "#81e381",
+                          fontWeight: 600,
+                        },
+                        removed: {
+                          display: "none",
+                          textDecoration: "line-through",
+                          opacity: 0.4,
+                        },
+                        default: {},
+                      }}
+                      oldValue={"Open details"}
+                      newValue={"Open the details"}
+                    />
+                  </Typography>
+                </Stack>
+              }
               onClick={() => setIsShowWordStat(!isShowWordStat)}
             />
             <StatCard
@@ -401,7 +458,29 @@ export const NoBalanceBlock = () => {
               startColor="#34D399"
               endColor="#3B82F6"
               bgColor="#A3E635"
-              miniCard={<></>}
+              miniCard={
+                <Stack
+                  sx={{
+                    alignItems: "center",
+                    height: "100%",
+                    gap: "15px",
+                    justifyContent: "center",
+                  }}
+                >
+                  <MessagesSquare size={"28px"} />
+
+                  <Typography
+                    variant="body2"
+                    component={"div"}
+                    sx={{
+                      fontWeight: 350,
+                      paddingLeft: "10px",
+                    }}
+                  >
+                    Open transcripts
+                  </Typography>
+                </Stack>
+              }
               onClick={() => setIsShowWordStat(!isShowWordStat)}
             />
           </Stack>

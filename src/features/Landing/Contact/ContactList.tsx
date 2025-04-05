@@ -43,26 +43,6 @@ export const ContactList = () => {
           </Link>
         </Typography>
       </Stack>
-
-      <Stack
-        sx={{
-          alignItems: "center",
-          flexDirection: "row",
-          gap: "10px",
-        }}
-      >
-        <TelegramIcon
-          sx={{
-            width: "25px",
-            height: "25px",
-          }}
-        />
-        <Typography>
-          <Link href="https://t.me/dmowski" target="_blank">
-            dmowski
-          </Link>
-        </Typography>
-      </Stack>
     </Stack>
   );
 };
