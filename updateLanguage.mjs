@@ -34,7 +34,7 @@ const languages = [
   { path: `${localesFolder}/vi.po`, language: "Vietnamese" },
   { path: `${localesFolder}/zh.po`, language: "Chinese" },
   { path: `${localesFolder}/da.po`, language: "Danish" },
-  { path: `${localesFolder}/nb.po`, language: "Norwegian" },
+  { path: `${localesFolder}/no.po`, language: "Norwegian" },
   { path: `${localesFolder}/sv.po`, language: "Swedish" },
   { path: `${localesFolder}/be.po`, language: "Belarusian" },
 ];

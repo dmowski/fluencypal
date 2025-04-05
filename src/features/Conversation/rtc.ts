@@ -194,7 +194,6 @@ export const initAiRtc = async ({
   voice,
   isVolumeOn,
   authToken,
-  isInitWebCamera,
 }: AiRtcConfig) => {
   const peerConnection = new RTCPeerConnection();
 
@@ -289,9 +288,9 @@ export const initAiRtc = async ({
         })
         .join(" ")
         .trim();
-      if (botAnswer) {
+      if (event?.response?.id || botAnswer) {
         const id = event?.response?.id || (`${Date.now()}` as string);
-        onMessage({ isBot: true, text: botAnswer, id });
+        onMessage({ isBot: true, text: botAnswer || "...", id });
       }
     }
 

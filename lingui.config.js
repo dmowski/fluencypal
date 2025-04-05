@@ -20,7 +20,7 @@ module.exports = {
     "vi",
     "zh",
     "da",
-    "nb",
+    "no",
     "sv",
     "be",
     "pseudo",

@@ -18,7 +18,7 @@ export type SupportedLanguage =
   | "vi" // Vietnamese
   | "zh" // Chinese
   | "da" // Danish
-  | "nb" // Norwegian
+  | "no" // Norwegian
   | "sv"
   | "be";
 
@@ -50,7 +50,7 @@ export const supportedLanguages: SupportedLanguage[] = [
   "tr",
   "vi",
   "da", // Danish
-  "nb", // Norwegian
+  "no", // Norwegian
   "sv", // Swedish
   "be",
 ];
@@ -81,7 +81,7 @@ export const emojiLanguageName: Record<SupportedLanguage, string> = {
   vi: "🇻🇳",
   zh: "🇨🇳",
   da: "🇩🇰", // Danish
-  nb: "🇳🇴", // Norwegian
+  no: "🇳🇴", // Norwegian
   sv: "🇸🇪", // Swedish
   be: "🇧🇾", // Belarusian
 };
@@ -106,7 +106,7 @@ export const fullLanguageName: Record<SupportedLanguage, string> = {
   vi: "Tiếng Việt",
   zh: "中文",
   da: "Dansk", // Danish
-  nb: "Norsk", // Norwegian
+  no: "Norsk", // Norwegian
   sv: "Svenska", // Swedish
   be: "Беларуская", // Belarusian
 };
@@ -131,34 +131,9 @@ export const fullEnglishLanguageName: Record<SupportedLanguage, string> = {
   vi: "Vietnamese",
   zh: "Chinese",
   da: "Danish",
-  nb: "Norwegian",
+  no: "Norwegian",
   sv: "Swedish",
   be: "Belarusian",
-};
-
-export const accentsList: Record<SupportedLanguage, string[]> = {
-  en: ["American", "British", "Australian", "Indian"],
-  fr: ["France", "Canadian (Quebec)", "Belgian"],
-  pl: ["Standard Polish"],
-  uk: ["Kyiv", "Western Ukraine"],
-  ru: ["Moscow", "St. Petersburg"],
-  es: ["Spain", "Mexican", "Argentinian", "Colombian"],
-  ar: ["Modern Standard Arabic", "Egyptian", "Levantine", "Gulf"],
-  de: ["High German", "Austrian", "Swiss German"],
-  id: ["Jakarta (Standard Indonesian)"],
-  it: ["Standard Italian", "Roman", "Neapolitan"],
-  ja: ["Tokyo (Standard Japanese)", "Kansai"],
-  ko: ["Seoul (Standard Korean)"],
-  ms: ["Standard Malay (Malaysia)", "Singaporean"],
-  pt: ["European Portuguese", "Brazilian Portuguese"],
-  th: ["Central Thai (Bangkok)"],
-  tr: ["Istanbul (Standard Turkish)"],
-  vi: ["Northern (Hanoi)", "Southern (Ho Chi Minh City)"],
-  zh: ["Mandarin (Beijing)", "Taiwanese Mandarin", "Cantonese (Hong Kong)"],
-  da: ["Standard Danish"],
-  nb: ["Eastern Norwegian (Oslo)"],
-  sv: ["Standard Swedish (Stockholm)"],
-  be: ["Standard Belarusian (Minsk)"],
 };
 
 export const availableOnLabelMap: Record<SupportedLanguage, string> = {
@@ -181,7 +156,7 @@ export const availableOnLabelMap: Record<SupportedLanguage, string> = {
   th: "มีให้บริการในภาษาไทย",
   vi: "Có sẵn bằng tiếng Việt",
   da: "Tilgængelig på dansk",
-  nb: "Tilgjengelig på norsk",
+  no: "Tilgjengelig på norsk",
   sv: "Tillgänglig på svenska",
   be: "Даступна на беларускай",
 };
@@ -206,7 +181,7 @@ export const firstAiMessage: Record<SupportedLanguage, string> = {
   vi: "Xin chào... Tôi ở đây!",
   zh: "你好... 我在这里！",
   da: "Hej... Jeg er her!",
-  nb: "Hei... Jeg er her!",
+  no: "Hei... Jeg er her!",
   sv: "Hej... Jag är här!",
   be: "Прывітанне... Я тут!",
 };
