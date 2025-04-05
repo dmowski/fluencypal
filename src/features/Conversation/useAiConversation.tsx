@@ -235,7 +235,6 @@ Your homework is to repeat the following text:
   };
 
   const onMessage = (message: ChatMessage) => {
-    console.log("onMessage", message);
     setConversation((prev) => {
       const isExisting = prev.find((m) => m.id === message.id);
       if (isExisting) {
