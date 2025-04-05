@@ -308,7 +308,7 @@ In this scenario, you’ll take on the role of a diner while the AI acts as your
     {
       id: "buying-a-train-ticket",
       title: i18n._("Buying a Train Ticket"),
-      shortTitle: i18n._("Train"),
+      shortTitle: i18n._("Ticket"),
       contentPage:
         i18n._(`Get comfortable purchasing travel tickets in a bustling train station scenario. Perfect for practicing how to ask about routes, departure times, and ticket types.
 
@@ -334,6 +334,37 @@ In this scenario, you’ll step into the role of a traveler looking to buy a tic
         "A busy train station with a ticket booth. A traveler with a backpack is talking to a ticket agent behind the counter, while a departure board shows various destinations.",
       imageSrc: "/role/36b7ea13-f429-46ae-a6c7-19d3206ab6b0.jpeg",
       voice: "echo",
+    },
+
+    {
+      id: "talking-to-a-doctor",
+      title: i18n._("Talking to a Doctor"),
+      shortTitle: i18n._("Doctor"),
+      contentPage:
+        i18n._(`Discuss your health concerns in a realistic doctor’s office setting and practice explaining symptoms clearly. Perfect for gaining confidence in describing medical issues and understanding potential treatment options.
+
+## Why You Should Play *Talking to a Doctor*
+1. Learn to describe aches, pains, or concerns in a way that a healthcare professional can understand.  
+2. Build confidence asking follow-up questions about tests, prescriptions, or alternative treatments.  
+3. Gain exposure to medical vocabulary and common phrases used during consultations.  
+4. Develop an awareness of how to communicate effectively about personal well-being.  
+5. Strengthen your ability to clarify symptoms, ensuring you can advocate for your health in real-life situations.
+
+## How the Scenario Works
+You’ll take on the role of a patient visiting a doctor, played by the AI. The doctor will ask about your symptoms, provide advice, and suggest possible treatments. By conversing naturally, you’ll hone your communication skills in a professional healthcare context.
+`),
+      category: { categoryTitle: i18n._("Health"), categoryId: "health" },
+      input: [],
+
+      subTitle: i18n._("Learn to describe symptoms and ask for medical advice effectively"),
+      instructionToAi:
+        "You are a doctor. Ask the user about their symptoms, provide advice, and suggest treatment options.",
+      exampleOfFirstMessageFromAi:
+        "Good day, I’m Dr. Ash. Please make yourself comfortable. I understand you’ve come in with some concerns—could you describe your symptoms for me?",
+      illustrationDescription:
+        "A doctor in a white coat sitting at a desk, attentively listening to a patient who is describing their symptoms. A stethoscope and medical charts are visible in the background.",
+      imageSrc: "/role/d853fe08-c7bc-431c-9eed-68c168a96ca0.jpeg",
+      voice: "ash",
     },
     {
       id: "meeting-dog-owners-in-the-park",
@@ -386,36 +417,6 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
         "Two dog owners in a green park setting, each with a leashed dog, smiling and engaged in casual conversation while their dogs sniff around.",
       imageSrc: "/role/20897efe-6b4d-4f97-b8e9-164e35381d37.jpeg",
       voice: "sage",
-    },
-    {
-      id: "talking-to-a-doctor",
-      title: i18n._("Talking to a Doctor"),
-      shortTitle: i18n._("Doctor"),
-      contentPage:
-        i18n._(`Discuss your health concerns in a realistic doctor’s office setting and practice explaining symptoms clearly. Perfect for gaining confidence in describing medical issues and understanding potential treatment options.
-
-## Why You Should Play *Talking to a Doctor*
-1. Learn to describe aches, pains, or concerns in a way that a healthcare professional can understand.  
-2. Build confidence asking follow-up questions about tests, prescriptions, or alternative treatments.  
-3. Gain exposure to medical vocabulary and common phrases used during consultations.  
-4. Develop an awareness of how to communicate effectively about personal well-being.  
-5. Strengthen your ability to clarify symptoms, ensuring you can advocate for your health in real-life situations.
-
-## How the Scenario Works
-You’ll take on the role of a patient visiting a doctor, played by the AI. The doctor will ask about your symptoms, provide advice, and suggest possible treatments. By conversing naturally, you’ll hone your communication skills in a professional healthcare context.
-`),
-      category: { categoryTitle: i18n._("Health"), categoryId: "health" },
-      input: [],
-
-      subTitle: i18n._("Learn to describe symptoms and ask for medical advice effectively"),
-      instructionToAi:
-        "You are a doctor. Ask the user about their symptoms, provide advice, and suggest treatment options.",
-      exampleOfFirstMessageFromAi:
-        "Good day, I’m Dr. Ash. Please make yourself comfortable. I understand you’ve come in with some concerns—could you describe your symptoms for me?",
-      illustrationDescription:
-        "A doctor in a white coat sitting at a desk, attentively listening to a patient who is describing their symptoms. A stethoscope and medical charts are visible in the background.",
-      imageSrc: "/role/d853fe08-c7bc-431c-9eed-68c168a96ca0.jpeg",
-      voice: "ash",
     },
     {
       id: "hotel-check-in",

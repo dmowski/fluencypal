@@ -647,9 +647,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
                 gap: "20px",
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr ",
-                "@media (max-width: 1100px)": {
-                  gridTemplateColumns: "1fr 1fr",
-                },
+
                 "@media (max-width: 850px)": {
                   gridTemplateColumns: "1fr",
                   gap: "15px",

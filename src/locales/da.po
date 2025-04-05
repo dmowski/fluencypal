@@ -684,7 +684,7 @@ msgid "Payment history:"
 msgstr "Betalingshistorik:"
 
 #: src/features/Usage/PaymentModal.tsx:629
-#: src/features/RolePlay/RolePlayBoard.tsx:635
+#: src/features/RolePlay/RolePlayBoard.tsx:622
 #: src/features/Dashboard/Dashboard.tsx:36
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -766,8 +766,8 @@ msgid "Game"
 msgstr "Spil"
 
 #: src/features/RolePlay/rolePlayData.ts:30
-#: src/features/RolePlay/rolePlayData.ts:366
-#: src/features/RolePlay/rolePlayData.ts:586
+#: src/features/RolePlay/rolePlayData.ts:397
+#: src/features/RolePlay/rolePlayData.ts:587
 #. js-lingui-explicit-id
 msgid "Your Language Level"
 msgstr "Din Sprog Niveau"
@@ -866,7 +866,7 @@ msgstr ""
 
 #: src/features/RolePlay/rolePlayData.ts:102
 #: src/features/RolePlay/rolePlayData.ts:280
-#: src/features/RolePlay/rolePlayData.ts:355
+#: src/features/RolePlay/rolePlayData.ts:386
 #. js-lingui-explicit-id
 msgid "Social"
 msgstr "Social"
@@ -939,7 +939,7 @@ msgstr ""
 "ethvert jobinterview."
 
 #: src/features/RolePlay/rolePlayData.ts:135
-#: src/features/RolePlay/rolePlayData.ts:499
+#: src/features/RolePlay/rolePlayData.ts:500
 #. js-lingui-explicit-id
 msgid "Professional"
 msgstr "Professionel"
@@ -1058,8 +1058,8 @@ msgstr "Køb af en Togbillet"
 
 #: src/features/RolePlay/rolePlayData.ts:311
 #. js-lingui-explicit-id
-msgid "Train"
-msgstr "Tog"
+msgid "Ticket"
+msgstr "Billet"
 
 #: src/features/RolePlay/rolePlayData.ts:313
 #. js-lingui-explicit-id
@@ -1109,7 +1109,7 @@ msgstr ""
 "questions and understanding key information about your journey."
 
 #: src/features/RolePlay/rolePlayData.ts:326
-#: src/features/RolePlay/rolePlayData.ts:437
+#: src/features/RolePlay/rolePlayData.ts:438
 #. js-lingui-explicit-id
 msgid "Travel"
 msgstr "Rejse"
@@ -1119,80 +1119,17 @@ msgstr "Rejse"
 msgid "Practice asking about schedules, fares, and ticket options"
 msgstr "Øv dig i at spørge om tidsplaner, priser og billetmuligheder"
 
-#: src/features/RolePlay/rolePlayData.ts:340
-#. js-lingui-explicit-id
-msgid "Chat with a Fellow Dog Owner"
-msgstr "Chat med en Medhundeejer"
-
 #: src/features/RolePlay/rolePlayData.ts:341
-#. js-lingui-explicit-id
-msgid "Dog Owner"
-msgstr "Hundeejer"
-
-#: src/features/RolePlay/rolePlayData.ts:343
-#. js-lingui-explicit-id
-msgid ""
-"Strike up a conversation with a fellow dog owner in a friendly park "
-"setting. Compare tips, stories, and general dog-care experiences while "
-"bonding over your shared love of canine companions.\n"
-"\n"
-"## Why You Should Play *Talk to the Dog Owner*\n"
-"1. Practice engaging in lighthearted, social dialogue with someone who "
-"shares a common interest.  \n"
-"2. Learn how to ask and answer questions about pets, routines, or dog-care "
-"tips.  \n"
-"3. Build confidence initiating chat with strangers in casual environments.  "
-"\n"
-"4. Explore using varying levels of complexity in speech, depending on your "
-"language proficiency.  \n"
-"5. Experience a realistic scenario where you can refine conversational flow "
-"and friendly rapport.\n"
-"\n"
-"## How the Scenario Works\n"
-"In this scenario, you’ll portray a fellow dog owner meeting an AI-driven "
-"character at the park. The AI will greet you warmly, ask about your dog, "
-"and share pet stories or advice. Your goal is to respond naturally, keep "
-"the conversation flowing, and enjoy a fun exchange about your four-legged "
-"friends.\n"
-msgstr ""
-"Strike up a conversation with a fellow dog owner in a friendly park "
-"setting. Compare tips, stories, and general dog-care experiences while "
-"bonding over your shared love of canine companions.\n"
-"\n"
-"## Hvorfor du bør spille *Tal med hundeejeren*\n"
-"1. Øv dig i at engagere dig i lette, sociale dialoger med nogen, der deler "
-"en fælles interesse.  \n"
-"2. Lær at stille og besvare spørgsmål om kæledyr, rutiner eller "
-"hundeplejetips.  \n"
-"3. Opbyg selvtillid til at indlede samtaler med fremmede i afslappede "
-"miljøer.  \n"
-"4. Udforsk brugen af forskellige niveauer af kompleksitet i tale, afhængigt "
-"af din sprogkundskab.  \n"
-"5. Oplev et realistisk scenarie, hvor du kan forfine samtaleflowet og "
-"venlige relationer.\n"
-"\n"
-"## Sådan fungerer scenariet\n"
-"I dette scenarie vil du portrættere en anden hundeejer, der møder en "
-"AI-drevet karakter i parken. AI'en vil varme hilse på dig, spørge om din "
-"hund og dele kæledyrshistorier eller råd. Dit mål er at svare naturligt, "
-"holde samtalen i gang og nyde en sjov udveksling om dine firbenede venner."
-
-#: src/features/RolePlay/rolePlayData.ts:380
-#. js-lingui-explicit-id
-msgid "Engage in friendly small talk about pets and daily routines"
-msgstr "Engager dig i venlig small talk om kæledyr og daglige rutiner"
-
-#: src/features/RolePlay/rolePlayData.ts:392
 #. js-lingui-explicit-id
 msgid "Talking to a Doctor"
 msgstr "At tale med en læge"
 
-#: src/features/RolePlay/rolePlayData.ts:393
+#: src/features/RolePlay/rolePlayData.ts:342
 #. js-lingui-explicit-id
 msgid "Doctor"
 msgstr "Doktor"
 
-#: src/features/RolePlay/rolePlayData.ts:395
+#: src/features/RolePlay/rolePlayData.ts:344
 #. js-lingui-explicit-id
 msgid ""
 "Discuss your health concerns in a realistic doctor’s office setting and "
@@ -1240,29 +1177,92 @@ msgstr ""
 "behandlinger. Ved at samtale naturligt, vil du forfine dine "
 "kommunikationsevner i en professionel sundhedskontekst."
 
-#: src/features/RolePlay/rolePlayData.ts:407
-#: src/features/RolePlay/rolePlayData.ts:530
-#: src/features/RolePlay/rolePlayData.ts:577
+#: src/features/RolePlay/rolePlayData.ts:356
+#: src/features/RolePlay/rolePlayData.ts:531
+#: src/features/RolePlay/rolePlayData.ts:578
 #. js-lingui-explicit-id
 msgid "Health"
 msgstr "Sundhed"
 
-#: src/features/RolePlay/rolePlayData.ts:410
+#: src/features/RolePlay/rolePlayData.ts:359
 #. js-lingui-explicit-id
 msgid "Learn to describe symptoms and ask for medical advice effectively"
 msgstr "Lær at beskrive symptomer og anmode om medicinsk rådgivning effektivt"
 
-#: src/features/RolePlay/rolePlayData.ts:422
+#: src/features/RolePlay/rolePlayData.ts:371
+#. js-lingui-explicit-id
+msgid "Chat with a Fellow Dog Owner"
+msgstr "Chat med en Medhundeejer"
+
+#: src/features/RolePlay/rolePlayData.ts:372
+#. js-lingui-explicit-id
+msgid "Dog Owner"
+msgstr "Hundeejer"
+
+#: src/features/RolePlay/rolePlayData.ts:374
+#. js-lingui-explicit-id
+msgid ""
+"Strike up a conversation with a fellow dog owner in a friendly park "
+"setting. Compare tips, stories, and general dog-care experiences while "
+"bonding over your shared love of canine companions.\n"
+"\n"
+"## Why You Should Play *Talk to the Dog Owner*\n"
+"1. Practice engaging in lighthearted, social dialogue with someone who "
+"shares a common interest.  \n"
+"2. Learn how to ask and answer questions about pets, routines, or dog-care "
+"tips.  \n"
+"3. Build confidence initiating chat with strangers in casual environments.  "
+"\n"
+"4. Explore using varying levels of complexity in speech, depending on your "
+"language proficiency.  \n"
+"5. Experience a realistic scenario where you can refine conversational flow "
+"and friendly rapport.\n"
+"\n"
+"## How the Scenario Works\n"
+"In this scenario, you’ll portray a fellow dog owner meeting an AI-driven "
+"character at the park. The AI will greet you warmly, ask about your dog, "
+"and share pet stories or advice. Your goal is to respond naturally, keep "
+"the conversation flowing, and enjoy a fun exchange about your four-legged "
+"friends.\n"
+msgstr ""
+"Strike up a conversation with a fellow dog owner in a friendly park "
+"setting. Compare tips, stories, and general dog-care experiences while "
+"bonding over your shared love of canine companions.\n"
+"\n"
+"## Hvorfor du bør spille *Tal med hundeejeren*\n"
+"1. Øv dig i at engagere dig i lette, sociale dialoger med nogen, der deler "
+"en fælles interesse.  \n"
+"2. Lær at stille og besvare spørgsmål om kæledyr, rutiner eller "
+"hundeplejetips.  \n"
+"3. Opbyg selvtillid til at indlede samtaler med fremmede i afslappede "
+"miljøer.  \n"
+"4. Udforsk brugen af forskellige niveauer af kompleksitet i tale, afhængigt "
+"af din sprogkundskab.  \n"
+"5. Oplev et realistisk scenarie, hvor du kan forfine samtaleflowet og "
+"venlige relationer.\n"
+"\n"
+"## Sådan fungerer scenariet\n"
+"I dette scenarie vil du portrættere en anden hundeejer, der møder en "
+"AI-drevet karakter i parken. AI'en vil varme hilse på dig, spørge om din "
+"hund og dele kæledyrshistorier eller råd. Dit mål er at svare naturligt, "
+"holde samtalen i gang og nyde en sjov udveksling om dine firbenede venner."
+
+#: src/features/RolePlay/rolePlayData.ts:411
+#. js-lingui-explicit-id
+msgid "Engage in friendly small talk about pets and daily routines"
+msgstr "Engager dig i venlig small talk om kæledyr og daglige rutiner"
+
+#: src/features/RolePlay/rolePlayData.ts:423
 #. js-lingui-explicit-id
 msgid "Hotel Check-In Conversation"
 msgstr "Hotel Check-In Samtale"
 
-#: src/features/RolePlay/rolePlayData.ts:423
+#: src/features/RolePlay/rolePlayData.ts:424
 #. js-lingui-explicit-id
 msgid "Check-In"
 msgstr "Tjek Ind"
 
-#: src/features/RolePlay/rolePlayData.ts:425
+#: src/features/RolePlay/rolePlayData.ts:426
 #. js-lingui-explicit-id
 msgid ""
 "Check into a hotel and handle room arrangements in a realistic front-desk "
@@ -1311,22 +1311,22 @@ msgstr ""
 "Ved at svare naturligt, vil du opbygge de samtalefærdigheder, der er "
 "nødvendige for en glat hotel check-in oplevelse."
 
-#: src/features/RolePlay/rolePlayData.ts:440
+#: src/features/RolePlay/rolePlayData.ts:441
 #. js-lingui-explicit-id
 msgid "Practice booking a room, requesting amenities, and checking in"
 msgstr "Øv booking af et værelse, anmodning om faciliteter og check-in"
 
-#: src/features/RolePlay/rolePlayData.ts:453
+#: src/features/RolePlay/rolePlayData.ts:454
 #. js-lingui-explicit-id
 msgid "Shopping at the Grocery Store"
 msgstr "Shopping i supermarkedet"
 
-#: src/features/RolePlay/rolePlayData.ts:454
+#: src/features/RolePlay/rolePlayData.ts:455
 #. js-lingui-explicit-id
 msgid "Grocery Store"
 msgstr "Dagligvarebutik"
 
-#: src/features/RolePlay/rolePlayData.ts:456
+#: src/features/RolePlay/rolePlayData.ts:457
 #. js-lingui-explicit-id
 msgid ""
 "Get comfortable shopping in a real store setting by asking questions about "
@@ -1366,28 +1366,28 @@ msgstr ""
 "realistisk shoppingoplevelse, der hjælper dig med at opbygge essentielle "
 "kommunikationsevner."
 
-#: src/features/RolePlay/rolePlayData.ts:468
-#: src/features/RolePlay/rolePlayData.ts:560
+#: src/features/RolePlay/rolePlayData.ts:469
+#: src/features/RolePlay/rolePlayData.ts:561
 #. js-lingui-explicit-id
 msgid "Shopping"
 msgstr "Shopping"
 
-#: src/features/RolePlay/rolePlayData.ts:471
+#: src/features/RolePlay/rolePlayData.ts:472
 #. js-lingui-explicit-id
 msgid "Practice asking for product recommendations and making purchases"
 msgstr "Øv at bede om produktanbefalinger og foretage køb"
 
-#: src/features/RolePlay/rolePlayData.ts:484
+#: src/features/RolePlay/rolePlayData.ts:485
 #. js-lingui-explicit-id
 msgid "Calling Customer Support"
 msgstr "Ringer til kundesupport"
 
-#: src/features/RolePlay/rolePlayData.ts:485
+#: src/features/RolePlay/rolePlayData.ts:486
 #. js-lingui-explicit-id
 msgid "Technical Support"
 msgstr "Teknisk Support"
 
-#: src/features/RolePlay/rolePlayData.ts:487
+#: src/features/RolePlay/rolePlayData.ts:488
 #. js-lingui-explicit-id
 msgid ""
 "Work through a technical issue while speaking with a helpful support agent. "
@@ -1425,22 +1425,22 @@ msgstr ""
 "dig med at blive komfortabel med at navigere i tekniske problemer og "
 "kommunikere løsninger."
 
-#: src/features/RolePlay/rolePlayData.ts:502
+#: src/features/RolePlay/rolePlayData.ts:503
 #. js-lingui-explicit-id
 msgid "Practice troubleshooting a technical issue over the phone"
 msgstr "Øv dig i at fejlsøge et teknisk problem over telefonen"
 
-#: src/features/RolePlay/rolePlayData.ts:515
+#: src/features/RolePlay/rolePlayData.ts:516
 #. js-lingui-explicit-id
 msgid "Booking a Doctor's Appointment"
 msgstr "Booking a Doctor's Appointment"
 
-#: src/features/RolePlay/rolePlayData.ts:516
+#: src/features/RolePlay/rolePlayData.ts:517
 #. js-lingui-explicit-id
 msgid "Appointment"
 msgstr "Aftale"
 
-#: src/features/RolePlay/rolePlayData.ts:518
+#: src/features/RolePlay/rolePlayData.ts:519
 #. js-lingui-explicit-id
 msgid ""
 "Practice scheduling a doctor’s appointment over the phone by clearly "
@@ -1477,22 +1477,22 @@ msgstr ""
 "date, and reason for the visit. By responding naturally, you’ll build "
 "essential communication skills for any medical context."
 
-#: src/features/RolePlay/rolePlayData.ts:533
+#: src/features/RolePlay/rolePlayData.ts:534
 #. js-lingui-explicit-id
 msgid "Learn how to schedule a medical visit over the phone"
 msgstr "Lær hvordan man planlægger en lægeaftale over telefonen"
 
-#: src/features/RolePlay/rolePlayData.ts:545
+#: src/features/RolePlay/rolePlayData.ts:546
 #. js-lingui-explicit-id
 msgid "Returning an Item to a Store"
 msgstr "Returnering af en vare til en butik"
 
-#: src/features/RolePlay/rolePlayData.ts:546
+#: src/features/RolePlay/rolePlayData.ts:547
 #. js-lingui-explicit-id
 msgid "Return"
 msgstr "Retur"
 
-#: src/features/RolePlay/rolePlayData.ts:548
+#: src/features/RolePlay/rolePlayData.ts:549
 #. js-lingui-explicit-id
 msgid ""
 "Handle a return at a customer service desk by describing what went wrong "
@@ -1532,29 +1532,29 @@ msgstr ""
 "hjælper dig med at mestre høflig, effektiv kommunikation i detail "
 "situationer."
 
-#: src/features/RolePlay/rolePlayData.ts:563
+#: src/features/RolePlay/rolePlayData.ts:564
 #. js-lingui-explicit-id
 msgid "Practice explaining product issues and requesting refunds or exchanges"
 msgstr ""
 "Øv dig i at forklare produktproblemer og anmode om refusioner eller "
 "ombytninger"
 
-#: src/features/RolePlay/rolePlayData.ts:575
+#: src/features/RolePlay/rolePlayData.ts:576
 #. js-lingui-explicit-id
 msgid "Speaking with a Psychologist"
 msgstr "At tale med en psykolog"
 
-#: src/features/RolePlay/rolePlayData.ts:576
+#: src/features/RolePlay/rolePlayData.ts:577
 #. js-lingui-explicit-id
 msgid "Psychologist"
 msgstr "Psykolog"
 
-#: src/features/RolePlay/rolePlayData.ts:597
+#: src/features/RolePlay/rolePlayData.ts:598
 #. js-lingui-explicit-id
 msgid "Discuss mental health topics and express your thoughts effectively"
 msgstr "Diskuter emner inden for mental sundhed og udtryk dine tanker effektivt"
 
-#: src/features/RolePlay/rolePlayData.ts:613
+#: src/features/RolePlay/rolePlayData.ts:614
 #. js-lingui-explicit-id
 msgid ""
 "Discuss mental health topics in a comfortable, supportive setting. This "
@@ -1606,33 +1606,33 @@ msgstr ""
 "giver støttende dialog, stiller refleksive spørgsmål og validere dine "
 "oplevelser for at hjælpe dig med at øve meningsfuld, eftertænksom samtale."
 
-#: src/features/RolePlay/rolePlayData.ts:632
+#: src/features/RolePlay/rolePlayData.ts:633
 #. js-lingui-explicit-id
 msgid "Create Your Own Role-Play Scenario"
 msgstr "Opret Dit Eget Rollespilsscenarie"
 
-#: src/features/RolePlay/rolePlayData.ts:633
-#: src/features/RolePlay/rolePlayData.ts:660
+#: src/features/RolePlay/rolePlayData.ts:634
+#: src/features/RolePlay/rolePlayData.ts:661
 #. js-lingui-explicit-id
 msgid "Custom"
 msgstr "Brugerdefineret"
 
-#: src/features/RolePlay/rolePlayData.ts:634
+#: src/features/RolePlay/rolePlayData.ts:635
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
 msgstr "Tilpas en samtale til at passe til dine unikke læringsbehov"
 
-#: src/features/RolePlay/rolePlayData.ts:638
+#: src/features/RolePlay/rolePlayData.ts:639
 #. js-lingui-explicit-id
 msgid "Scenario Description"
 msgstr "Scenariebeskrivelse"
 
-#: src/features/RolePlay/rolePlayData.ts:640
+#: src/features/RolePlay/rolePlayData.ts:641
 #. js-lingui-explicit-id
 msgid "Describe your custom scenario here..."
 msgstr "Beskriv dit tilpassede scenarie her..."
 
-#: src/features/RolePlay/rolePlayData.ts:647
+#: src/features/RolePlay/rolePlayData.ts:648
 #. js-lingui-explicit-id
 msgid ""
 "Create a unique, personalized setting that fits your specific interests or "
@@ -1681,13 +1681,13 @@ msgstr ""
 "dit scenariets tema. Dette fleksible format hjælper dig med at mestre de "
 "præcise kommunikationsfærdigheder, du har brug for."
 
-#: src/features/RolePlay/rolePlayData.ts:681
+#: src/features/RolePlay/rolePlayData.ts:682
 #. js-lingui-explicit-id
 msgid "All Scenarios"
 msgstr "Alle Scenarier"
 
-#: src/features/RolePlay/RolePlayCardApp.tsx:105
-#: src/features/RolePlay/RolePlayBoard.tsx:635
+#: src/features/RolePlay/RolePlayCardApp.tsx:136
+#: src/features/RolePlay/RolePlayBoard.tsx:622
 #: src/features/Dashboard/ConversationSelectCard.tsx:118
 #. js-lingui-explicit-id
 msgid "Start"
@@ -1698,19 +1698,12 @@ msgstr "Start"
 msgid "Role Play"
 msgstr "Roller Spil"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:478
-#. js-lingui-explicit-id
-msgid "Before you start, please fill some information to make it more realistic."
-msgstr ""
-"Før du starter, bedes du udfylde nogle oplysninger for at gøre det mere "
-"realistisk."
-
-#: src/features/RolePlay/RolePlayBoard.tsx:687
+#: src/features/RolePlay/RolePlayBoard.tsx:672
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Vis flere"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:687
+#: src/features/RolePlay/RolePlayBoard.tsx:672
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Vis mindre"
@@ -4299,6 +4292,28 @@ msgstr "Fortsæt med Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Ved at oprette en konto accepterer du:"
+
+#: src/features/RolePlay/rolePlayData.ts:311
+#. js-lingui-explicit-id
+#~ msgid "Station"
+#~ msgstr "Station"
+
+#: src/features/RolePlay/rolePlayData.ts:311
+#. js-lingui-explicit-id
+#~ msgid "Railway station"
+#~ msgstr "Jernbanestation"
+
+#: src/features/RolePlay/rolePlayData.ts:311
+#. js-lingui-explicit-id
+#~ msgid "Train"
+#~ msgstr "Tog"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:478
+#. js-lingui-explicit-id
+#~ msgid "Before you start, please fill some information to make it more realistic."
+#~ msgstr ""
+#~ "Før du starter, bedes du udfylde nogle oplysninger for at gøre det mere "
+#~ "realistisk."
 
 #: src/features/Usage/UsageStatsCards.tsx:580
 #. js-lingui-explicit-id
