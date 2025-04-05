@@ -41,6 +41,7 @@ export const GradientBgCard = ({
         overflow: "hidden",
         transition: "transform 0.3s ease",
         cursor: "pointer",
+        color: "#fff",
 
         ".mini-card": {
           position: "absolute",
