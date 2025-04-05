@@ -129,13 +129,13 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           position: "absolute",
           top: "0px",
           right: "0",
-          backgroundColor: "blue",
+          backgroundColor: "#4F46E5",
           height: "300px",
           width: "300px",
           borderRadius: "50%",
           filter: "blur(200px)",
           zIndex: -1,
-          opacity: 0.9,
+          opacity: 0.2,
           "@media (max-width: 600px)": {
             width: "100px",
             backgroundColor: "red",
@@ -156,31 +156,10 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           borderRadius: "50%",
           filter: "blur(200px)",
           zIndex: 0,
-          opacity: 0.4,
+          opacity: 0.3,
           "@media (max-width: 600px)": {
             width: "50px",
             opacity: 0.2,
-          },
-        }}
-      ></Stack>
-
-      <Stack
-        sx={{
-          position: "absolute",
-          top: "0px",
-          left: "300px",
-          backgroundColor: "cyan",
-          height: "200px",
-          width: "300px",
-          borderRadius: "50%",
-          filter: "blur(200px)",
-          zIndex: 0,
-          opacity: 0.61,
-          "@media (max-width: 600px)": {
-            right: "0px",
-            left: "0px",
-            opacity: 0.6,
-            width: "150px",
           },
         }}
       ></Stack>
