@@ -44,7 +44,7 @@ export const CustomModal = ({
           bgcolor: "#222224",
           borderRadius: "16px",
           maxWidth: "100vw",
-          maxHeight: "100vh",
+          maxHeight: "100dvh",
           "@media (max-width: 600px)": {
             borderRadius: 0,
           },
