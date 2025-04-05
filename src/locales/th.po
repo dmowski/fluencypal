@@ -13,20 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:56
+#: src/features/Dashboard/ConversationSelectCard.tsx:60
 #. js-lingui-explicit-id
-msgid "Start Talking"
-msgstr "เริ่มพูด"
+msgid "Introduce yourself"
+msgstr "แนะนำตัวคุณเอง"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:64
+#: src/features/Dashboard/ConversationSelectCard.tsx:61
 #. js-lingui-explicit-id
-msgid "AI will lead you through the conversation"
-msgstr "AI จะนำคุณในการสนทนา"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:89
-#. js-lingui-explicit-id
-msgid "Guide me"
-msgstr "แนะนำฉัน"
+msgid "Set the goal of your learning"
+msgstr "ตั้งเป้าหมายของการเรียนรู้ของคุณ"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -43,7 +38,7 @@ msgstr "ติดต่อกับ FluencyPal สำหรับคำถาม
 
 #: src/libs/metadata.ts:67
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:15
+#: src/features/Dashboard/ConversationSelectCard.tsx:45
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "ฝึกฝน"
@@ -374,7 +369,7 @@ msgid "Here are the words you used the most in your conversations."
 msgstr "นี่คือคำที่คุณใช้มากที่สุดในการสนทนาของคุณ"
 
 #: src/features/Usage/UsageStatsCards.tsx:116
-#: src/features/Usage/UsageStatsCards.tsx:449
+#: src/features/Usage/UsageStatsCards.tsx:473
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "ยังไม่มีคำใดๆ ถูกใช้งานเลย"
@@ -426,37 +421,37 @@ msgstr "ยังไม่มีการแก้ไข"
 msgid "Description:"
 msgstr "คำอธิบาย:"
 
-#: src/features/Usage/UsageStatsCards.tsx:396
+#: src/features/Usage/UsageStatsCards.tsx:418
 #. js-lingui-explicit-id
 msgid "Here’s you will see your progress"
 msgstr "ที่นี่คุณจะเห็นความคืบหน้าของคุณ"
 
-#: src/features/Usage/UsageStatsCards.tsx:397
+#: src/features/Usage/UsageStatsCards.tsx:419
 #. js-lingui-explicit-id
 msgid "Here’s what you’ve achieved so far"
 msgstr "นี่คือสิ่งที่คุณได้บรรลุมาแล้ว"
 
-#: src/features/Usage/UsageStatsCards.tsx:415
+#: src/features/Usage/UsageStatsCards.tsx:439
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "คำศัพท์"
 
-#: src/features/Usage/UsageStatsCards.tsx:496
+#: src/features/Usage/UsageStatsCards.tsx:520
 #. js-lingui-explicit-id
 msgid "Grammar fixes"
 msgstr "การแก้ไขไวยากรณ์"
 
-#: src/features/Usage/UsageStatsCards.tsx:542
+#: src/features/Usage/UsageStatsCards.tsx:566
 #. js-lingui-explicit-id
 msgid "Minutes spoken"
 msgstr "นาทีที่พูด"
 
-#: src/features/Usage/UsageStatsCards.tsx:543
+#: src/features/Usage/UsageStatsCards.tsx:567
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "ทั้งหมด"
 
-#: src/features/Usage/UsageStatsCards.tsx:566
+#: src/features/Usage/UsageStatsCards.tsx:590
 #. js-lingui-explicit-id
 msgid "Open chat history"
 msgstr "เปิดประวัติการแชท"
@@ -1655,6 +1650,7 @@ msgid "Before you start, please fill some information to make it more realistic.
 msgstr "ก่อนที่คุณจะเริ่ม โปรดกรอกข้อมูลบางอย่างเพื่อทำให้มันสมจริงยิ่งขึ้น"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:621
+#: src/features/Dashboard/ConversationSelectCard.tsx:87
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "เริ่มต้น"
@@ -2280,7 +2276,7 @@ msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr "มีส่วนร่วมในการสนทนาในชีวิตจริง เช่น สัมภาษณ์งานหรือสั่งอาหาร"
 
 #: src/features/Landing/Price/PricePage.tsx:164
-#: src/features/Dashboard/ConversationSelectCard.tsx:30
+#: src/features/Dashboard/ConversationSelectCard.tsx:95
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "การฝึกสนทนา"
@@ -2843,15 +2839,30 @@ msgstr "กำลังสร้างกฎใหม่..."
 msgid "Reload"
 msgstr "โหลดใหม่"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:31
+#: src/features/Dashboard/ConversationSelectCard.tsx:96
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "พูดคุยกับ AI และมันจะตอบคุณ"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:63
+#: src/features/Dashboard/ConversationSelectCard.tsx:122
+#. js-lingui-explicit-id
+msgid "Start Talking"
+msgstr "เริ่มพูด"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:130
 #. js-lingui-explicit-id
 msgid "Beginner mode"
 msgstr "โหมดพื้นฐาน"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:131
+#. js-lingui-explicit-id
+msgid "AI will lead you through the conversation"
+msgstr "AI จะนำคุณในการสนทนา"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:157
+#. js-lingui-explicit-id
+msgid "Guide me"
+msgstr "แนะนำฉัน"
 
 #: src/features/Dashboard/BrainCard.tsx:128
 #. js-lingui-explicit-id
