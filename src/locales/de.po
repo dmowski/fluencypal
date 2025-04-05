@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Usage/UsageStatsCards.tsx:348
+#. js-lingui-explicit-id
+msgid "No conversations yet"
+msgstr "Noch keine Unterhaltungen"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:96
@@ -352,6 +357,86 @@ msgstr "Englisch sprechender Partner"
 #. js-lingui-explicit-id
 msgid "AI English Speaking Practice"
 msgstr "KI Englisch Sprechpraxis"
+
+#: src/features/Usage/UsageStatsCards.tsx:230
+#. js-lingui-explicit-id
+msgid "Word Stats"
+msgstr "Wortstatistiken"
+
+#: src/features/Usage/UsageStatsCards.tsx:232
+#. js-lingui-explicit-id
+msgid "Here are the words you used the most in your conversations."
+msgstr ""
+"Hier sind die Wörter, die Sie am häufigsten in Ihren Unterhaltungen "
+"verwendet haben."
+
+#: src/features/Usage/UsageStatsCards.tsx:261
+#: src/features/Usage/UsageStatsCards.tsx:574
+#. js-lingui-explicit-id
+msgid "No words used yet"
+msgstr "Bisher wurden keine Wörter verwendet"
+
+#: src/features/Usage/UsageStatsCards.tsx:324
+#. js-lingui-explicit-id
+msgid "Chat history"
+msgstr "Chatverlauf"
+
+#: src/features/Usage/UsageStatsCards.tsx:326
+#. js-lingui-explicit-id
+msgid "Here are the conversations you had with FluencyPal."
+msgstr "Hier sind die Gespräche, die Sie mit FluencyPal geführt haben."
+
+#: src/features/Usage/UsageStatsCards.tsx:395
+#: src/features/Conversation/ConversationCanvas2.tsx:253
+#. js-lingui-explicit-id
+msgid "Teacher:"
+msgstr "Lehrer:"
+
+#: src/features/Usage/UsageStatsCards.tsx:395
+#: src/features/Conversation/ConversationCanvas2.tsx:253
+#. js-lingui-explicit-id
+msgid "You:"
+msgstr "Du:"
+
+#: src/features/Usage/UsageStatsCards.tsx:425
+#. js-lingui-explicit-id
+msgid "Grammar Corrections"
+msgstr "Grammatik Korrekturen"
+
+#: src/features/Usage/UsageStatsCards.tsx:427
+#. js-lingui-explicit-id
+msgid "Here are the corrections you had in your conversations."
+msgstr "Hier sind die Korrekturen, die Sie in Ihren Unterhaltungen hatten."
+
+#: src/features/Usage/UsageStatsCards.tsx:449
+#. js-lingui-explicit-id
+msgid "No corrections yet"
+msgstr "Noch keine Korrekturen"
+
+#: src/features/Usage/UsageStatsCards.tsx:525
+#. js-lingui-explicit-id
+msgid "Description:"
+msgstr "Beschreibung:"
+
+#: src/features/Usage/UsageStatsCards.tsx:621
+#. js-lingui-explicit-id
+msgid "Grammar fixes"
+msgstr "Grammatik-Korrekturen"
+
+#: src/features/Usage/UsageStatsCards.tsx:667
+#. js-lingui-explicit-id
+msgid "Minutes spoken"
+msgstr "Gesprochene Minuten"
+
+#: src/features/Usage/UsageStatsCards.tsx:668
+#. js-lingui-explicit-id
+msgid "Total"
+msgstr "Gesamt"
+
+#: src/features/Usage/UsageStatsCards.tsx:691
+#. js-lingui-explicit-id
+msgid "Open chat history"
+msgstr "Chatverlauf öffnen"
 
 #: src/features/Usage/PaymentModal.tsx:149
 #. js-lingui-explicit-id
@@ -2593,12 +2678,12 @@ msgstr "Schließen"
 msgid "Delete account"
 msgstr "Konto löschen"
 
-#: src/features/Header/HeaderComponent.tsx:245
+#: src/features/Header/HeaderComponent.tsx:251
 #. js-lingui-explicit-id
 msgid "Finishing the lesson..."
 msgstr "Beenden der Lektion..."
 
-#: src/features/Header/HeaderComponent.tsx:246
+#: src/features/Header/HeaderComponent.tsx:252
 #: src/features/Dashboard/ConversationSelectCard.tsx:15
 #. js-lingui-explicit-id
 msgid "Conversation"
@@ -2876,158 +2961,108 @@ msgstr "Vorbereitung des Gehirns"
 msgid "Upload language skills directly to your brain"
 msgstr "Laden Sie Sprachkenntnisse direkt in Ihr Gehirn hoch"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:34
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "Fortschritt"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:42
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:43
 #. js-lingui-explicit-id
 msgid "Your daily progress"
 msgstr "Ihr täglicher Fortschritt"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:56
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:57
 #. js-lingui-explicit-id
 msgid "Less"
 msgstr "Weniger"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:77
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:78
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "More"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:104
-#. js-lingui-explicit-id
-msgid "Words used during all conversations. Your total word count."
-msgstr "Wörter, die während aller Gespräche verwendet werden. Ihre gesamte Wortzahl."
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:105
-#. js-lingui-explicit-id
-msgid "Your Vocabulary"
-msgstr "Ihr Wortschatz"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:110
-#. js-lingui-explicit-id
-msgid "Count of role-play conversations you have participated in."
-msgstr "Anzahl der Rollenspielgespräche, an denen Sie teilgenommen haben."
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:111
-#. js-lingui-explicit-id
-msgid "Roles played"
-msgstr "Rollen gespielt"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:116
-#. js-lingui-explicit-id
-msgid "Count of homeworks you have completed."
-msgstr "Anzahl der Hausaufgaben, die Sie abgeschlossen haben."
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:117
-#. js-lingui-explicit-id
-msgid "Homeworks done"
-msgstr "Hausaufgaben erledigt"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:122
-#. js-lingui-explicit-id
-msgid "Count of rules you have learned."
-msgstr "Anzahl der Regeln, die Sie gelernt haben."
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:123
-#. js-lingui-explicit-id
-msgid "Rules learned"
-msgstr "Regeln gelernt"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:248
-#. js-lingui-explicit-id
-msgid "Teacher:"
-msgstr "Lehrer:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:248
-#. js-lingui-explicit-id
-msgid "You:"
-msgstr "Du:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:383
+#: src/features/Conversation/ConversationCanvas2.tsx:388
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Fast richtig"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:387
-#: src/features/Conversation/ConversationCanvas2.tsx:515
-#: src/features/Conversation/ConversationCanvas2.tsx:522
+#: src/features/Conversation/ConversationCanvas2.tsx:392
+#: src/features/Conversation/ConversationCanvas2.tsx:520
+#: src/features/Conversation/ConversationCanvas2.tsx:527
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Analysieren..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:389
+#: src/features/Conversation/ConversationCanvas2.tsx:394
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Großartig!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:412
+#: src/features/Conversation/ConversationCanvas2.tsx:417
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Ihre Nachricht"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:434
-#: src/features/Conversation/ConversationCanvas2.tsx:437
-#: src/features/Conversation/ConversationCanvas2.tsx:513
-#: src/features/Conversation/ConversationCanvas2.tsx:520
+#: src/features/Conversation/ConversationCanvas2.tsx:439
+#: src/features/Conversation/ConversationCanvas2.tsx:442
+#: src/features/Conversation/ConversationCanvas2.tsx:518
+#: src/features/Conversation/ConversationCanvas2.tsx:525
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Transkribieren..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:477
+#: src/features/Conversation/ConversationCanvas2.tsx:482
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Korrigiert"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:560
+#: src/features/Conversation/ConversationCanvas2.tsx:565
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "Neue Wörter zum Wortschatz:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:605
+#: src/features/Conversation/ConversationCanvas2.tsx:610
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analysieren"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:622
-#: src/features/Conversation/ConversationCanvas2.tsx:677
+#: src/features/Conversation/ConversationCanvas2.tsx:627
+#: src/features/Conversation/ConversationCanvas2.tsx:682
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Neu aufnehmen"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:636
+#: src/features/Conversation/ConversationCanvas2.tsx:641
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "Sende es so wie es ist"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:636
+#: src/features/Conversation/ConversationCanvas2.tsx:641
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Senden"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:650
+#: src/features/Conversation/ConversationCanvas2.tsx:655
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Fertig"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:664
+#: src/features/Conversation/ConversationCanvas2.tsx:669
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Nachricht aufzeichnen"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:774
+#: src/features/Conversation/ConversationCanvas2.tsx:779
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "Sie haben ein geringes Guthaben"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:776
+#: src/features/Conversation/ConversationCanvas2.tsx:781
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "Es macht Sinn, Ihr Guthaben aufzuladen."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:783
+#: src/features/Conversation/ConversationCanvas2.tsx:788
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Aufladen"
@@ -4275,6 +4310,46 @@ msgstr "Fortfahren mit Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Durch die Erstellung eines Kontos stimmen Sie zu:"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:104
+#. js-lingui-explicit-id
+#~ msgid "Words used during all conversations. Your total word count."
+#~ msgstr "Wörter, die während aller Gespräche verwendet werden. Ihre gesamte Wortzahl."
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:105
+#. js-lingui-explicit-id
+#~ msgid "Your Vocabulary"
+#~ msgstr "Ihr Wortschatz"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:110
+#. js-lingui-explicit-id
+#~ msgid "Count of role-play conversations you have participated in."
+#~ msgstr "Anzahl der Rollenspielgespräche, an denen Sie teilgenommen haben."
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:111
+#. js-lingui-explicit-id
+#~ msgid "Roles played"
+#~ msgstr "Rollen gespielt"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:116
+#. js-lingui-explicit-id
+#~ msgid "Count of homeworks you have completed."
+#~ msgstr "Anzahl der Hausaufgaben, die Sie abgeschlossen haben."
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:117
+#. js-lingui-explicit-id
+#~ msgid "Homeworks done"
+#~ msgstr "Hausaufgaben erledigt"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:122
+#. js-lingui-explicit-id
+#~ msgid "Count of rules you have learned."
+#~ msgstr "Anzahl der Regeln, die Sie gelernt haben."
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:123
+#. js-lingui-explicit-id
+#~ msgid "Rules learned"
+#~ msgstr "Regeln gelernt"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:375
 #. js-lingui-explicit-id

@@ -8,6 +8,7 @@ import { StatCard } from "./StatCard";
 import { useHomework } from "@/features/Homework/useHomework";
 import { useChatHistory } from "@/features/ConversationHistory/useChatHistory";
 import { useLingui } from "@lingui/react";
+import { UsageStatsCards } from "@/features/Usage/UsageStatsCards";
 
 export const ProgressBoard = () => {
   const settings = useSettings();
@@ -79,6 +80,21 @@ export const ProgressBoard = () => {
         </Stack>
       </Stack>
 
+      <Stack
+        sx={{
+          flexDirection: "row",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr",
+          gap: "20px",
+          paddingTop: "20px",
+          "@media (max-width: 1000px)": {
+            gridTemplateColumns: "1fr",
+          },
+        }}
+      >
+        <UsageStatsCards />
+      </Stack>
+
       <ProgressGrid
         startDateTimeStamp={settings.userCreatedAt || Date.now()}
         currentDateTimeStamp={Date.now()}
@@ -87,43 +103,6 @@ export const ProgressBoard = () => {
           return Object.keys(dayStat || {}).length;
         }}
       />
-
-      <Stack
-        sx={{
-          flexDirection: "row",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr",
-          gap: "20px",
-          paddingTop: "20px",
-          "@media (max-width: 1000px)": {
-            gridTemplateColumns: "1fr 1fr",
-          },
-        }}
-      >
-        <StatCard
-          description={i18n._(`Words used during all conversations. Your total word count.`)}
-          title={i18n._(`Your Vocabulary`)}
-          value={`${words.totalWordsCount || 0}`}
-        />
-
-        <StatCard
-          description={i18n._(`Count of role-play conversations you have participated in.`)}
-          title={i18n._(`Roles played`)}
-          value={`${countOfRolePlay}`}
-        />
-
-        <StatCard
-          description={i18n._(`Count of homeworks you have completed.`)}
-          title={i18n._(`Homeworks done`)}
-          value={`${homeworks.completeHomeworks.length || 0}`}
-        />
-
-        <StatCard
-          description={i18n._(`Count of rules you have learned.`)}
-          title={i18n._(`Rules learned`)}
-          value={`${countOfRules}`}
-        />
-      </Stack>
     </DashboardCard>
   );
 };

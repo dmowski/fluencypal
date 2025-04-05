@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Usage/UsageStatsCards.tsx:348
+#. js-lingui-explicit-id
+msgid "No conversations yet"
+msgstr "Chưa có cuộc trò chuyện nào"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:96
@@ -345,6 +350,84 @@ msgstr "Đối tác nói tiếng Anh"
 #. js-lingui-explicit-id
 msgid "AI English Speaking Practice"
 msgstr "Cách luyện nói tiếng Anh bằng AI"
+
+#: src/features/Usage/UsageStatsCards.tsx:230
+#. js-lingui-explicit-id
+msgid "Word Stats"
+msgstr "Thống kê từ vựng"
+
+#: src/features/Usage/UsageStatsCards.tsx:232
+#. js-lingui-explicit-id
+msgid "Here are the words you used the most in your conversations."
+msgstr "Đây là những từ bạn sử dụng nhiều nhất trong các cuộc trò chuyện của mình."
+
+#: src/features/Usage/UsageStatsCards.tsx:261
+#: src/features/Usage/UsageStatsCards.tsx:574
+#. js-lingui-explicit-id
+msgid "No words used yet"
+msgstr "Chưa có từ nào được sử dụng"
+
+#: src/features/Usage/UsageStatsCards.tsx:324
+#. js-lingui-explicit-id
+msgid "Chat history"
+msgstr "Lịch sử trò chuyện"
+
+#: src/features/Usage/UsageStatsCards.tsx:326
+#. js-lingui-explicit-id
+msgid "Here are the conversations you had with FluencyPal."
+msgstr "Dưới đây là những cuộc trò chuyện bạn đã có với FluencyPal."
+
+#: src/features/Usage/UsageStatsCards.tsx:395
+#: src/features/Conversation/ConversationCanvas2.tsx:253
+#. js-lingui-explicit-id
+msgid "Teacher:"
+msgstr "Giáo viên:"
+
+#: src/features/Usage/UsageStatsCards.tsx:395
+#: src/features/Conversation/ConversationCanvas2.tsx:253
+#. js-lingui-explicit-id
+msgid "You:"
+msgstr "Bạn:"
+
+#: src/features/Usage/UsageStatsCards.tsx:425
+#. js-lingui-explicit-id
+msgid "Grammar Corrections"
+msgstr "Sửa lỗi ngữ pháp"
+
+#: src/features/Usage/UsageStatsCards.tsx:427
+#. js-lingui-explicit-id
+msgid "Here are the corrections you had in your conversations."
+msgstr "Đây là những sửa chữa bạn đã có trong cuộc trò chuyện của mình."
+
+#: src/features/Usage/UsageStatsCards.tsx:449
+#. js-lingui-explicit-id
+msgid "No corrections yet"
+msgstr "Chưa có sửa chữa nào"
+
+#: src/features/Usage/UsageStatsCards.tsx:525
+#. js-lingui-explicit-id
+msgid "Description:"
+msgstr "Mô tả:"
+
+#: src/features/Usage/UsageStatsCards.tsx:621
+#. js-lingui-explicit-id
+msgid "Grammar fixes"
+msgstr "Sửa lỗi ngữ pháp"
+
+#: src/features/Usage/UsageStatsCards.tsx:667
+#. js-lingui-explicit-id
+msgid "Minutes spoken"
+msgstr "Phút đã nói"
+
+#: src/features/Usage/UsageStatsCards.tsx:668
+#. js-lingui-explicit-id
+msgid "Total"
+msgstr "Tổng cộng"
+
+#: src/features/Usage/UsageStatsCards.tsx:691
+#. js-lingui-explicit-id
+msgid "Open chat history"
+msgstr "Mở lịch sử trò chuyện"
 
 #: src/features/Usage/PaymentModal.tsx:149
 #. js-lingui-explicit-id
@@ -2540,12 +2623,12 @@ msgstr "Đóng"
 msgid "Delete account"
 msgstr "Xóa tài khoản"
 
-#: src/features/Header/HeaderComponent.tsx:245
+#: src/features/Header/HeaderComponent.tsx:251
 #. js-lingui-explicit-id
 msgid "Finishing the lesson..."
 msgstr "Đang kết thúc bài học..."
 
-#: src/features/Header/HeaderComponent.tsx:246
+#: src/features/Header/HeaderComponent.tsx:252
 #: src/features/Dashboard/ConversationSelectCard.tsx:15
 #. js-lingui-explicit-id
 msgid "Conversation"
@@ -2821,158 +2904,108 @@ msgstr "Chuẩn bị cho bộ não"
 msgid "Upload language skills directly to your brain"
 msgstr "Tải kỹ năng ngôn ngữ trực tiếp lên não của bạn"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:34
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
 #. js-lingui-explicit-id
 msgid "Progress"
 msgstr "Tiến trình"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:42
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:43
 #. js-lingui-explicit-id
 msgid "Your daily progress"
 msgstr "Tiến bộ hàng ngày của bạn"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:56
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:57
 #. js-lingui-explicit-id
 msgid "Less"
 msgstr "Ít hơn"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:77
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:78
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Thêm nữa"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:104
-#. js-lingui-explicit-id
-msgid "Words used during all conversations. Your total word count."
-msgstr "Từ ngữ được sử dụng trong tất cả các cuộc trò chuyện. Tổng số từ của bạn."
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:105
-#. js-lingui-explicit-id
-msgid "Your Vocabulary"
-msgstr "Từ vựng của bạn"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:110
-#. js-lingui-explicit-id
-msgid "Count of role-play conversations you have participated in."
-msgstr "Số lần bạn đã tham gia vào các cuộc hội thoại vai diễn."
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:111
-#. js-lingui-explicit-id
-msgid "Roles played"
-msgstr "Vai trò được đảm nhận"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:116
-#. js-lingui-explicit-id
-msgid "Count of homeworks you have completed."
-msgstr "Số lượng bài tập bạn đã hoàn thành."
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:117
-#. js-lingui-explicit-id
-msgid "Homeworks done"
-msgstr "Bài tập đã hoàn thành"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:122
-#. js-lingui-explicit-id
-msgid "Count of rules you have learned."
-msgstr "Số lượng quy tắc bạn đã học."
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:123
-#. js-lingui-explicit-id
-msgid "Rules learned"
-msgstr "Quy tắc đã học"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:248
-#. js-lingui-explicit-id
-msgid "Teacher:"
-msgstr "Giáo viên:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:248
-#. js-lingui-explicit-id
-msgid "You:"
-msgstr "Bạn:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:383
+#: src/features/Conversation/ConversationCanvas2.tsx:388
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Gần đúng"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:387
-#: src/features/Conversation/ConversationCanvas2.tsx:515
-#: src/features/Conversation/ConversationCanvas2.tsx:522
+#: src/features/Conversation/ConversationCanvas2.tsx:392
+#: src/features/Conversation/ConversationCanvas2.tsx:520
+#: src/features/Conversation/ConversationCanvas2.tsx:527
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Đang phân tích..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:389
+#: src/features/Conversation/ConversationCanvas2.tsx:394
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Tuyệt vời!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:412
+#: src/features/Conversation/ConversationCanvas2.tsx:417
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Tin nhắn của bạn"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:434
-#: src/features/Conversation/ConversationCanvas2.tsx:437
-#: src/features/Conversation/ConversationCanvas2.tsx:513
-#: src/features/Conversation/ConversationCanvas2.tsx:520
+#: src/features/Conversation/ConversationCanvas2.tsx:439
+#: src/features/Conversation/ConversationCanvas2.tsx:442
+#: src/features/Conversation/ConversationCanvas2.tsx:518
+#: src/features/Conversation/ConversationCanvas2.tsx:525
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Đang phiên âm..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:477
+#: src/features/Conversation/ConversationCanvas2.tsx:482
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Đã sửa"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:560
+#: src/features/Conversation/ConversationCanvas2.tsx:565
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "Từ mới cho từ vựng:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:605
+#: src/features/Conversation/ConversationCanvas2.tsx:610
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Phân tích"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:622
-#: src/features/Conversation/ConversationCanvas2.tsx:677
+#: src/features/Conversation/ConversationCanvas2.tsx:627
+#: src/features/Conversation/ConversationCanvas2.tsx:682
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Ghi lại"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:636
+#: src/features/Conversation/ConversationCanvas2.tsx:641
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "Gửi nó như vậy"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:636
+#: src/features/Conversation/ConversationCanvas2.tsx:641
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Gửi"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:650
+#: src/features/Conversation/ConversationCanvas2.tsx:655
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Đã xong"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:664
+#: src/features/Conversation/ConversationCanvas2.tsx:669
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Ghi Tin Nhắn"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:774
+#: src/features/Conversation/ConversationCanvas2.tsx:779
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "Bạn có số dư thấp"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:776
+#: src/features/Conversation/ConversationCanvas2.tsx:781
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "Nạp thêm tiền vào tài khoản của bạn có ý nghĩa."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:783
+#: src/features/Conversation/ConversationCanvas2.tsx:788
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Nạp tiền"
@@ -4174,6 +4207,46 @@ msgstr "Tiếp tục với Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Bằng cách tạo một tài khoản, bạn đồng ý với:"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:104
+#. js-lingui-explicit-id
+#~ msgid "Words used during all conversations. Your total word count."
+#~ msgstr "Từ ngữ được sử dụng trong tất cả các cuộc trò chuyện. Tổng số từ của bạn."
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:105
+#. js-lingui-explicit-id
+#~ msgid "Your Vocabulary"
+#~ msgstr "Từ vựng của bạn"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:110
+#. js-lingui-explicit-id
+#~ msgid "Count of role-play conversations you have participated in."
+#~ msgstr "Số lần bạn đã tham gia vào các cuộc hội thoại vai diễn."
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:111
+#. js-lingui-explicit-id
+#~ msgid "Roles played"
+#~ msgstr "Vai trò được đảm nhận"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:116
+#. js-lingui-explicit-id
+#~ msgid "Count of homeworks you have completed."
+#~ msgstr "Số lượng bài tập bạn đã hoàn thành."
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:117
+#. js-lingui-explicit-id
+#~ msgid "Homeworks done"
+#~ msgstr "Bài tập đã hoàn thành"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:122
+#. js-lingui-explicit-id
+#~ msgid "Count of rules you have learned."
+#~ msgstr "Số lượng quy tắc bạn đã học."
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:123
+#. js-lingui-explicit-id
+#~ msgid "Rules learned"
+#~ msgstr "Quy tắc đã học"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:375
 #. js-lingui-explicit-id
