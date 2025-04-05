@@ -144,6 +144,8 @@ export function HeaderComponent({
   const activeConversationTitle = aiConversation.isStarted ? aiConversation.currentMode || "" : "";
   const isActiveConversation = !!activeConversationTitle;
 
+  const isNoBalance = usage.balanceHours <= 0.01;
+
   return (
     <>
       <Stack
@@ -157,7 +159,11 @@ export function HeaderComponent({
           top: 0,
           left: 0,
           zIndex: 1000,
-          backgroundColor: isActiveConversation ? "rgba(10, 18, 30, 1)" : "rgba(10, 18, 30, 0.9)",
+          backgroundColor: isNoBalance
+            ? "transparent"
+            : isActiveConversation
+              ? "rgba(10, 18, 30, 1)"
+              : "rgba(10, 18, 30, 0.9)",
           backdropFilter: "blur(10px)",
           borderBottom: isActiveConversation ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
 
