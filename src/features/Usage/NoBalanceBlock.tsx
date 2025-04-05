@@ -16,6 +16,11 @@ import { ContactList } from "../Landing/Contact/ContactList";
 import { GradientCard } from "../uiKit/Card/GradientCard";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { StringDiff } from "react-string-diff";
+import { useChatHistory } from "../ConversationHistory/useChatHistory";
+import { conversationModeLabel } from "../Conversation/data";
+import { useLingui } from "@lingui/react";
+import { Markdown } from "../uiKit/Markdown/Markdown";
+import dayjs from "dayjs";
 
 interface StatCardProps {
   title: string;
@@ -192,6 +197,7 @@ export const NoBalanceBlock = () => {
   const totalWordsCount = words.totalWordsCount;
 
   const [isShowWordStat, setIsShowWordStat] = useState(false);
+  const [isOpenConversations, setIsOpenConversations] = useState(false);
 
   const dictionary = words.wordsStats?.dictionary || {};
 
@@ -261,6 +267,9 @@ export const NoBalanceBlock = () => {
       })}
     </Stack>
   );
+
+  const chatHistory = useChatHistory();
+  const { i18n } = useLingui();
 
   return (
     <Stack
@@ -342,6 +351,83 @@ export const NoBalanceBlock = () => {
             </Stack>
           </Stack>
         </CustomModal>
+      )}
+
+      {isOpenConversations && (
+        <>
+          <CustomModal
+            width="min(800px, 99vw)"
+            onClose={() => setIsOpenConversations(false)}
+            isOpen={true}
+          >
+            <Stack
+              sx={{
+                maxHeight: "80vh",
+                gap: "40px",
+              }}
+            >
+              <Stack>
+                <Typography variant="h4">Chat history</Typography>
+                <Typography variant="caption">
+                  Here are the conversations you had with FluencyPal.
+                </Typography>
+              </Stack>
+
+              <Stack gap="40px">
+                {chatHistory.conversations.map((conversation) => {
+                  return (
+                    <Stack
+                      key={conversation.id}
+                      gap={"20px"}
+                      sx={{
+                        borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
+                        paddingBottom: "20px",
+                      }}
+                    >
+                      <Stack>
+                        <Typography variant="h5">
+                          {conversationModeLabel[conversation.mode]}
+                        </Typography>
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            opacity: 0.7,
+                          }}
+                        >
+                          {dayjs(conversation.createdAt).format("DD/MM/YYYY")}
+                        </Typography>
+                      </Stack>
+
+                      {conversation.messages.map((message) => {
+                        const isBot = message.isBot;
+                        return (
+                          <Stack
+                            key={message.id}
+                            sx={{
+                              padding: "0 0px",
+                              boxSizing: "border-box",
+                              color: "#e1e1e1",
+                            }}
+                          >
+                            <Typography
+                              variant="caption"
+                              sx={{
+                                opacity: 0.5,
+                              }}
+                            >
+                              {isBot ? i18n._("Teacher:") : i18n._("You:")}
+                            </Typography>
+                            <Markdown size="small">{message.text || ""}</Markdown>
+                          </Stack>
+                        );
+                      })}
+                    </Stack>
+                  );
+                })}
+              </Stack>
+            </Stack>
+          </CustomModal>
+        </>
       )}
       <Stack
         sx={{
@@ -477,11 +563,11 @@ export const NoBalanceBlock = () => {
                       paddingLeft: "10px",
                     }}
                   >
-                    Open transcripts
+                    Open chat history
                   </Typography>
                 </Stack>
               }
-              onClick={() => setIsShowWordStat(!isShowWordStat)}
+              onClick={() => setIsOpenConversations(!isOpenConversations)}
             />
           </Stack>
         </Stack>
