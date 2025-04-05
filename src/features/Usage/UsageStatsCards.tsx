@@ -71,7 +71,7 @@ export const UsageStatsCards = () => {
     <>
       {isShowWordStat && (
         <CustomModal
-          width="min(450px, 99vw)"
+          width="min(500px, 99vw)"
           onClose={() => setIsShowWordStat(false)}
           isOpen={true}
         >
@@ -79,6 +79,7 @@ export const UsageStatsCards = () => {
             sx={{
               maxHeight: "80vh",
               gap: "20px",
+              width: "100%",
             }}
           >
             <Stack>
@@ -127,6 +128,7 @@ export const UsageStatsCards = () => {
                       width: "100%",
                       position: "relative",
                       padding: "7px 15px",
+                      boxSizing: "border-box",
                       justifyContent: "space-between",
                       alignItems: "center",
                       borderRadius: "4px",
@@ -426,11 +428,11 @@ export const UsageStatsCards = () => {
             display: "grid",
             gridTemplateColumns: "1fr 1fr 1fr",
             gap: "20px",
-            "@media (max-width: 1100px)": {
+            "@media (max-width: 1150px)": {
               gridTemplateColumns: "1fr 1fr",
             },
 
-            "@media (max-width: 750px)": {
+            "@media (max-width: 800px)": {
               gridTemplateColumns: "1fr",
             },
           }}

@@ -72,7 +72,7 @@ export const GradientBgCard = ({
       }}
     >
       <Typography
-        align="center"
+        align="left"
         variant="caption"
         sx={{
           fontWeight: 300,
