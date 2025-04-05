@@ -44,7 +44,11 @@ const parseLangFromUrl = (pathname: string) => {
   const supportedLang = supportedLanguages.find((l) => l === potentialLang) || "en";
   return supportedLang;
 };
-export function LanguageSwitcher() {
+
+interface LanguageSwitcherProps {
+  size?: "small" | "large";
+}
+export function LanguageSwitcher({ size }: LanguageSwitcherProps) {
   const router = useRouter();
   const auth = useAuth();
   const pathname = usePathname();
@@ -132,6 +136,7 @@ export function LanguageSwitcher() {
       ) : (
         <IconButton onClick={onOpenModal} title="Select language" aria-label="Select language">
           <Globe
+            size={size == "small" ? "18px" : "22px"}
             style={{
               opacity: 0.8,
             }}

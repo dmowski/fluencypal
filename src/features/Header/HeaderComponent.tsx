@@ -357,7 +357,7 @@ export function HeaderComponent({
                 height: "100%",
               }}
             >
-              <LanguageSwitcher />
+              {isLanding && <LanguageSwitcher />}
               {auth.isAuthorized ? (
                 <>
                   <Button

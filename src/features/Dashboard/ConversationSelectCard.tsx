@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { IconButton, Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import {
   Baby,
@@ -10,6 +10,7 @@ import {
   MapPinCheckInside,
   Mic,
   MoveRight,
+  Settings2,
   TrendingUp,
 } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
@@ -18,12 +19,17 @@ import { useLingui } from "@lingui/react";
 import { GradientBgCard } from "../uiKit/Card/GradientBgCard";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
+import { useSettings } from "../Settings/useSettings";
+import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 
 export const ConversationSelectCard = () => {
   const aiConversation = useAiConversation();
   const words = useWords();
   const rules = useRules();
   const { i18n } = useLingui();
+  const settings = useSettings();
+
+  const showGoalCard = false;
   return (
     <DashboardCard>
       <Stack
@@ -48,7 +54,25 @@ export const ConversationSelectCard = () => {
         >
           <GraduationCap size={"25px"} />
         </Stack>
-        <Typography variant="h6">{i18n._(`Practice`)}</Typography>
+        <Stack
+          sx={{
+            flexDirection: "row",
+            gap: "5px",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h6">{i18n._(`Practice`)}</Typography>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              gap: "5px",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h6">| {settings.fullLanguageName}</Typography>
+            <LanguageSwitcher size="small" />
+          </Stack>
+        </Stack>
       </Stack>
       <Stack
         sx={{
@@ -62,40 +86,42 @@ export const ConversationSelectCard = () => {
           },
         }}
       >
-        <GradientBgCard
-          title={i18n._(`Goal`)}
-          subTitle={i18n._(`Set the goal of your learning`)}
-          onClick={() => aiConversation.startConversation({ mode: "beginner" })}
-          value={""}
-          startColor="#4F46E5"
-          endColor="#A78BFA"
-          bgColor="#60A5FA"
-          actionButton={
-            <Stack
-              sx={{
-                paddingTop: "70px",
-                justifyContent: "space-between",
-                width: "100%",
-                alignItems: "flex-end",
-                flexDirection: "row",
-              }}
-            >
-              <Flag size={40} />
+        {showGoalCard && (
+          <GradientBgCard
+            title={i18n._(`Goal`)}
+            subTitle={i18n._(`Set the goal of your learning`)}
+            onClick={() => aiConversation.startConversation({ mode: "beginner" })}
+            value={""}
+            startColor="#4F46E5"
+            endColor="#A78BFA"
+            bgColor="#60A5FA"
+            actionButton={
               <Stack
                 sx={{
+                  paddingTop: "70px",
+                  justifyContent: "space-between",
+                  width: "100%",
+                  alignItems: "flex-end",
                   flexDirection: "row",
-                  gap: "10px",
-                  alignItems: "center",
-                  padding: "10px 14px 0px 10px",
-                  borderRadius: "8px",
                 }}
               >
-                <Typography variant="body2">{i18n._(`Start`)}</Typography>
-                <MoveRight size="10px" />
+                <Flag size={40} />
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    gap: "10px",
+                    alignItems: "center",
+                    padding: "10px 14px 0px 10px",
+                    borderRadius: "8px",
+                  }}
+                >
+                  <Typography variant="body2">{i18n._(`Start`)}</Typography>
+                  <MoveRight size="10px" />
+                </Stack>
               </Stack>
-            </Stack>
-          }
-        />
+            }
+          />
+        )}
 
         <GradientBgCard
           title={i18n._(`Conversation`)}
