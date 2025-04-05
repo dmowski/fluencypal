@@ -96,7 +96,8 @@ export const NoBalanceBlock = () => {
         <Stack sx={{ width: "100%", gap: "15px" }}>
           <Stack
             sx={{
-              flexDirection: "row",
+              display: "grid",
+              gridTemplateColumns: "50px 1fr",
               alignItems: "center",
               gap: "15px",
               paddingBottom: "10px",

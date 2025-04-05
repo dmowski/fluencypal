@@ -395,11 +395,11 @@ export const UsageStatsCards = () => {
       <Stack sx={{ width: "100%", gap: "15px" }}>
         <Stack
           sx={{
-            flexDirection: "row",
+            display: "grid",
+            gridTemplateColumns: "50px 1fr",
             alignItems: "center",
             gap: "15px",
             paddingBottom: "10px",
-            flexWrap: "wrap",
           }}
         >
           <Stack
@@ -416,11 +416,7 @@ export const UsageStatsCards = () => {
           >
             <Sprout size={"25px"} />
           </Stack>
-          <Typography variant="h6">
-            {isNoConversations
-              ? i18n._("Here’s you will see your progress")
-              : i18n._("Here’s what you’ve achieved so far")}
-          </Typography>
+          <Typography variant="h6">{i18n._("Your achievements")}</Typography>
         </Stack>
 
         <Stack
