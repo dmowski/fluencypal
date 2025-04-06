@@ -292,7 +292,11 @@ Your homework is to repeat the following text:
         : `"${firstAiMessage[languageCode]}"`;
 
       const openerInfoPrompt = userInfo
-        ? `Info about Student : ${userInfo}.`
+        ? `Info about Student : ${userInfo}. 
+  
+Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
+Don't focus solely on one topic. Try to cover a variety of topics.
+  `
         : "Ask the student to describe their day.";
       return {
         ...baseConfig,
