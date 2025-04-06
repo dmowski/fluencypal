@@ -50,7 +50,7 @@ const WinCard = ({
             sx={{
               fontWeight: 900,
               fontSize: "3rem",
-              lineHeight: "1",
+              lineHeight: "1.15",
               "@media (max-width: 1100px)": {
                 fontSize: "3rem",
               },
@@ -176,7 +176,7 @@ export const NoBalanceBlock = () => {
           >
             <WinCard
               onClick={() => usage.togglePaymentModal(true)}
-              title={i18n._("TALK")}
+              title={i18n._("Talks")}
               subTitle={i18n._("Conversations with AI")}
               icon={
                 <PsychologyIcon
@@ -193,8 +193,8 @@ export const NoBalanceBlock = () => {
 
             <WinCard
               onClick={() => usage.togglePaymentModal(true)}
-              title={i18n._("PLAY")}
-              subTitle={i18n._("Role-play simulations")}
+              title={i18n._("Practice")}
+              subTitle={i18n._("Role-play games")}
               icon={
                 <VenetianMask
                   style={{
@@ -210,8 +210,8 @@ export const NoBalanceBlock = () => {
 
             <WinCard
               onClick={() => usage.togglePaymentModal(true)}
-              title={i18n._("ITERATE")}
-              subTitle={i18n._("Feedback on your progress")}
+              title={i18n._("Progress")}
+              subTitle={i18n._("Track your progress")}
               icon={
                 <ChartNoAxesCombined
                   style={{

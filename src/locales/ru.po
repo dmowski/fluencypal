@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Usage/NoBalanceBlock.tsx:214
+#. js-lingui-explicit-id
+msgid "Track your progress"
+msgstr "Отслеживайте свой прогресс"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:96
@@ -27,6 +32,7 @@ msgid "Get in touch with the FluencyPal for any inquiries, support, or feedback.
 msgstr "Связаться с FluencyPal по любым вопросам, поддержке или отзывам."
 
 #: src/libs/metadata.ts:67
+#: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
 #: src/features/Dashboard/ConversationSelectCard.tsx:64
 #. js-lingui-explicit-id
@@ -363,85 +369,85 @@ msgid "Here are the words you used the most in your conversations."
 msgstr "Вот слова, которые вы используете чаще всего в своих разговорах."
 
 #: src/features/Usage/UsageStatsCards.tsx:117
-#: src/features/Usage/UsageStatsCards.tsx:473
+#: src/features/Usage/UsageStatsCards.tsx:475
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "Пока не использовано ни одного слова"
 
-#: src/features/Usage/UsageStatsCards.tsx:181
+#: src/features/Usage/UsageStatsCards.tsx:182
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "История чата"
 
-#: src/features/Usage/UsageStatsCards.tsx:183
+#: src/features/Usage/UsageStatsCards.tsx:184
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "Вот беседы, которые вы вели с FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:205
+#: src/features/Usage/UsageStatsCards.tsx:207
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "Пока нет разговоров"
 
-#: src/features/Usage/UsageStatsCards.tsx:252
+#: src/features/Usage/UsageStatsCards.tsx:254
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Учитель:"
 
-#: src/features/Usage/UsageStatsCards.tsx:252
+#: src/features/Usage/UsageStatsCards.tsx:254
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Вы:"
 
-#: src/features/Usage/UsageStatsCards.tsx:282
+#: src/features/Usage/UsageStatsCards.tsx:284
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "Исправления грамматики"
 
-#: src/features/Usage/UsageStatsCards.tsx:284
+#: src/features/Usage/UsageStatsCards.tsx:286
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "Вот исправления, которые были сделаны в ваших разговорах."
 
-#: src/features/Usage/UsageStatsCards.tsx:306
+#: src/features/Usage/UsageStatsCards.tsx:308
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "Пока нет исправлений"
 
-#: src/features/Usage/UsageStatsCards.tsx:382
+#: src/features/Usage/UsageStatsCards.tsx:384
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "Описание:"
 
-#: src/features/Usage/UsageStatsCards.tsx:419
+#: src/features/Usage/UsageStatsCards.tsx:421
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "Ваши достижения"
 
-#: src/features/Usage/UsageStatsCards.tsx:439
+#: src/features/Usage/UsageStatsCards.tsx:441
 #: src/features/Dashboard/ConversationSelectCard.tsx:232
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Слова"
 
-#: src/features/Usage/UsageStatsCards.tsx:509
+#: src/features/Usage/UsageStatsCards.tsx:511
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "Исправления"
 
-#: src/features/Usage/UsageStatsCards.tsx:555
+#: src/features/Usage/UsageStatsCards.tsx:557
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "Минуты"
 
-#: src/features/Usage/UsageStatsCards.tsx:556
+#: src/features/Usage/UsageStatsCards.tsx:558
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "Всего"
 
-#: src/features/Usage/UsageStatsCards.tsx:579
+#: src/features/Usage/UsageStatsCards.tsx:581
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Открыть историю"
@@ -684,6 +690,7 @@ msgstr "История платежей:"
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:622
 #: src/features/Dashboard/Dashboard.tsx:36
+#: src/features/Conversation/ConversationPage.tsx:35
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Загрузка..."
@@ -693,53 +700,57 @@ msgstr "Загрузка..."
 msgid "No payments..."
 msgstr "Нет платежей..."
 
-#: src/features/Usage/NoBalanceBlock.tsx:79
+#: src/features/Usage/NoBalanceBlock.tsx:123
 #. js-lingui-explicit-id
 msgid "Level up your Language!"
 msgstr "Повысьте свой уровень языка!"
 
-#: src/features/Usage/NoBalanceBlock.tsx:90
+#: src/features/Usage/NoBalanceBlock.tsx:134
 #. js-lingui-explicit-id
 msgid "You've made amazing progress. Let’s keep going."
 msgstr "Вы достигли великолепных результатов. Давайте продолжим."
 
-#: src/features/Usage/NoBalanceBlock.tsx:120
+#: src/features/Usage/NoBalanceBlock.tsx:164
 #. js-lingui-explicit-id
 msgid "Unlock full access to FluencyPal"
 msgstr "Откройте полный доступ к FluencyPal"
 
-#: src/features/Usage/NoBalanceBlock.tsx:141
+#: src/features/Usage/NoBalanceBlock.tsx:179
+#. js-lingui-explicit-id
+msgid "Talks"
+msgstr "Разговоры"
+
+#: src/features/Usage/NoBalanceBlock.tsx:180
 #. js-lingui-explicit-id
 msgid "Conversations with AI"
 msgstr "Разговоры с ИИ"
 
-#: src/features/Usage/NoBalanceBlock.tsx:143
+#: src/features/Usage/NoBalanceBlock.tsx:197
 #. js-lingui-explicit-id
-msgid "Role-play simulations"
-msgstr "Ролевые симуляции"
+msgid "Role-play games"
+msgstr "Ролевые игры"
 
-#: src/features/Usage/NoBalanceBlock.tsx:144
-#: src/features/Landing/Price/PricePage.tsx:168
+#: src/features/Usage/NoBalanceBlock.tsx:213
 #. js-lingui-explicit-id
-msgid "Progress tracking"
-msgstr "Отслеживание прогресса"
+msgid "Progress"
+msgstr "Прогресс"
 
-#: src/features/Usage/NoBalanceBlock.tsx:171
+#: src/features/Usage/NoBalanceBlock.tsx:253
 #. js-lingui-explicit-id
 msgid "Ready to keep going?"
 msgstr "Готовы продолжить?"
 
-#: src/features/Usage/NoBalanceBlock.tsx:184
+#: src/features/Usage/NoBalanceBlock.tsx:266
 #. js-lingui-explicit-id
 msgid "Buy More AI Hours"
 msgstr "Купить Больше Часов AI"
 
-#: src/features/Usage/NoBalanceBlock.tsx:190
+#: src/features/Usage/NoBalanceBlock.tsx:272
 #. js-lingui-explicit-id
 msgid "Get free AI time by helping us improve FluencyPal"
 msgstr "Получите бесплатное время с AI, помогая нам совершенствовать FluencyPal"
 
-#: src/features/Usage/NoBalanceBlock.tsx:194
+#: src/features/Usage/NoBalanceBlock.tsx:276
 #. js-lingui-explicit-id
 msgid ""
 "Send us your feedback about the app — what you liked, what we can improve — "
@@ -2346,6 +2357,11 @@ msgstr "Практика разговора"
 msgid "Improve fluency with interactive chat sessions"
 msgstr "Улучшите беглость с помощью интерактивных чат-сессий"
 
+#: src/features/Landing/Price/PricePage.tsx:168
+#. js-lingui-explicit-id
+msgid "Progress tracking"
+msgstr "Отслеживание прогресса"
+
 #: src/features/Landing/Price/PricePage.tsx:169
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
@@ -3051,88 +3067,88 @@ msgstr "Менее"
 msgid "More"
 msgstr "Больше"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:388
+#: src/features/Conversation/ConversationCanvas2.tsx:386
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Почти правильно"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:392
-#: src/features/Conversation/ConversationCanvas2.tsx:520
-#: src/features/Conversation/ConversationCanvas2.tsx:527
+#: src/features/Conversation/ConversationCanvas2.tsx:398
+#: src/features/Conversation/ConversationCanvas2.tsx:525
+#: src/features/Conversation/ConversationCanvas2.tsx:532
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Анализирую..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:394
+#: src/features/Conversation/ConversationCanvas2.tsx:401
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Отлично!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:417
+#: src/features/Conversation/ConversationCanvas2.tsx:424
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Ваше сообщение"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:439
-#: src/features/Conversation/ConversationCanvas2.tsx:442
-#: src/features/Conversation/ConversationCanvas2.tsx:518
-#: src/features/Conversation/ConversationCanvas2.tsx:525
+#: src/features/Conversation/ConversationCanvas2.tsx:447
+#: src/features/Conversation/ConversationCanvas2.tsx:450
+#: src/features/Conversation/ConversationCanvas2.tsx:523
+#: src/features/Conversation/ConversationCanvas2.tsx:530
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Транскрибация..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:482
+#: src/features/Conversation/ConversationCanvas2.tsx:484
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Исправлено"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:565
+#: src/features/Conversation/ConversationCanvas2.tsx:564
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "Новые слова в словарь:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:610
+#: src/features/Conversation/ConversationCanvas2.tsx:609
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Анализируется"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:627
-#: src/features/Conversation/ConversationCanvas2.tsx:682
+#: src/features/Conversation/ConversationCanvas2.tsx:626
+#: src/features/Conversation/ConversationCanvas2.tsx:681
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Перезаписать"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:641
+#: src/features/Conversation/ConversationCanvas2.tsx:640
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "Отправить как есть"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:641
+#: src/features/Conversation/ConversationCanvas2.tsx:640
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Отправить"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:655
+#: src/features/Conversation/ConversationCanvas2.tsx:654
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Выполнено"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:669
+#: src/features/Conversation/ConversationCanvas2.tsx:668
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Записать Сообщение"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:779
+#: src/features/Conversation/ConversationCanvas2.tsx:778
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "У вас низкий баланс"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:781
+#: src/features/Conversation/ConversationCanvas2.tsx:780
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "Имеет смысл пополнить ваш баланс."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:788
+#: src/features/Conversation/ConversationCanvas2.tsx:787
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Пополнить"
@@ -4348,6 +4364,46 @@ msgstr "Продолжить с Google"
 msgid "By creating an account, you agree to:"
 msgstr "Создавая учетную запись, вы соглашаетесь с:"
 
+#: src/features/Usage/NoBalanceBlock.tsx:214
+#. js-lingui-explicit-id
+#~ msgid "Feedback on your progress"
+#~ msgstr "Отзыв о вашем прогрессе"
+
+#: src/features/Usage/NoBalanceBlock.tsx:179
+#. js-lingui-explicit-id
+#~ msgid "TALKS"
+#~ msgstr "БЕСЕДЫ"
+
+#: src/features/Usage/NoBalanceBlock.tsx:213
+#. js-lingui-explicit-id
+#~ msgid "PROGRESS"
+#~ msgstr "ПРОГРЕСС"
+
+#: src/features/Usage/NoBalanceBlock.tsx:196
+#. js-lingui-explicit-id
+#~ msgid "PLAYS"
+#~ msgstr "ПЛЕЙС"
+
+#: src/features/Usage/NoBalanceBlock.tsx:179
+#. js-lingui-explicit-id
+#~ msgid "TALK"
+#~ msgstr "РАЗГОВОР"
+
+#: src/features/Usage/NoBalanceBlock.tsx:213
+#. js-lingui-explicit-id
+#~ msgid "ITERATE"
+#~ msgstr "ИТЕРАЦИЯ"
+
+#: src/features/Usage/NoBalanceBlock.tsx:196
+#. js-lingui-explicit-id
+#~ msgid "PLAY"
+#~ msgstr "ИГРАТЬ"
+
+#: src/features/Usage/NoBalanceBlock.tsx:197
+#. js-lingui-explicit-id
+#~ msgid "Role-play simulations"
+#~ msgstr "Ролевые симуляции"
+
 #: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 #~ msgid "Your achievements so far"
@@ -4459,11 +4515,6 @@ msgstr "Создавая учетную запись, вы соглашаете�
 #. js-lingui-explicit-id
 #~ msgid "Start a conversation with the AI"
 #~ msgstr "Начать разговор с ИИ"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
-#. js-lingui-explicit-id
-#~ msgid "Progress"
-#~ msgstr "Прогресс"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:104
 #. js-lingui-explicit-id

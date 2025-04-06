@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Usage/NoBalanceBlock.tsx:214
+#. js-lingui-explicit-id
+msgid "Track your progress"
+msgstr "あなたの進行状況を追跡します"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:96
@@ -27,6 +32,7 @@ msgid "Get in touch with the FluencyPal for any inquiries, support, or feedback.
 msgstr "FluencyPalにお問い合わせ、ご支援、またはフィードバックがある場合は、お気軽にご連絡ください。"
 
 #: src/libs/metadata.ts:67
+#: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
 #: src/features/Dashboard/ConversationSelectCard.tsx:64
 #. js-lingui-explicit-id
@@ -355,85 +361,85 @@ msgid "Here are the words you used the most in your conversations."
 msgstr "これらは、あなたの会話で最も使用された単語です。"
 
 #: src/features/Usage/UsageStatsCards.tsx:117
-#: src/features/Usage/UsageStatsCards.tsx:473
+#: src/features/Usage/UsageStatsCards.tsx:475
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "まだ使用されている単語はありません"
 
-#: src/features/Usage/UsageStatsCards.tsx:181
+#: src/features/Usage/UsageStatsCards.tsx:182
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "チャット履歴"
 
-#: src/features/Usage/UsageStatsCards.tsx:183
+#: src/features/Usage/UsageStatsCards.tsx:184
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "これはFluencyPalとの会話履歴です。"
 
-#: src/features/Usage/UsageStatsCards.tsx:205
+#: src/features/Usage/UsageStatsCards.tsx:207
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "まだ会話はありません"
 
-#: src/features/Usage/UsageStatsCards.tsx:252
+#: src/features/Usage/UsageStatsCards.tsx:254
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "教師:"
 
-#: src/features/Usage/UsageStatsCards.tsx:252
+#: src/features/Usage/UsageStatsCards.tsx:254
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "あなた:"
 
-#: src/features/Usage/UsageStatsCards.tsx:282
+#: src/features/Usage/UsageStatsCards.tsx:284
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "文法訂正"
 
-#: src/features/Usage/UsageStatsCards.tsx:284
+#: src/features/Usage/UsageStatsCards.tsx:286
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "これはあなたの会話で訂正が必要だった部分です。"
 
-#: src/features/Usage/UsageStatsCards.tsx:306
+#: src/features/Usage/UsageStatsCards.tsx:308
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "まだ訂正はありません"
 
-#: src/features/Usage/UsageStatsCards.tsx:382
+#: src/features/Usage/UsageStatsCards.tsx:384
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "説明:"
 
-#: src/features/Usage/UsageStatsCards.tsx:419
+#: src/features/Usage/UsageStatsCards.tsx:421
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "あなたの成果"
 
-#: src/features/Usage/UsageStatsCards.tsx:439
+#: src/features/Usage/UsageStatsCards.tsx:441
 #: src/features/Dashboard/ConversationSelectCard.tsx:232
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "単語"
 
-#: src/features/Usage/UsageStatsCards.tsx:509
+#: src/features/Usage/UsageStatsCards.tsx:511
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "訂正"
 
-#: src/features/Usage/UsageStatsCards.tsx:555
+#: src/features/Usage/UsageStatsCards.tsx:557
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "分"
 
-#: src/features/Usage/UsageStatsCards.tsx:556
+#: src/features/Usage/UsageStatsCards.tsx:558
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "合計"
 
-#: src/features/Usage/UsageStatsCards.tsx:579
+#: src/features/Usage/UsageStatsCards.tsx:581
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "履歴を開く"
@@ -665,6 +671,7 @@ msgstr "支払い履歴:"
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:622
 #: src/features/Dashboard/Dashboard.tsx:36
+#: src/features/Conversation/ConversationPage.tsx:35
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "読み込み中..."
@@ -674,53 +681,57 @@ msgstr "読み込み中..."
 msgid "No payments..."
 msgstr "支払いなし..."
 
-#: src/features/Usage/NoBalanceBlock.tsx:79
+#: src/features/Usage/NoBalanceBlock.tsx:123
 #. js-lingui-explicit-id
 msgid "Level up your Language!"
 msgstr "あなたの言語をレベルアップしましょう！"
 
-#: src/features/Usage/NoBalanceBlock.tsx:90
+#: src/features/Usage/NoBalanceBlock.tsx:134
 #. js-lingui-explicit-id
 msgid "You've made amazing progress. Let’s keep going."
 msgstr "あなたは素晴らしい進歩を遂げています。続けましょう。"
 
-#: src/features/Usage/NoBalanceBlock.tsx:120
+#: src/features/Usage/NoBalanceBlock.tsx:164
 #. js-lingui-explicit-id
 msgid "Unlock full access to FluencyPal"
 msgstr "FluencyPalの全アクセスを解除する"
 
-#: src/features/Usage/NoBalanceBlock.tsx:141
+#: src/features/Usage/NoBalanceBlock.tsx:179
+#. js-lingui-explicit-id
+msgid "Talks"
+msgstr "トークス"
+
+#: src/features/Usage/NoBalanceBlock.tsx:180
 #. js-lingui-explicit-id
 msgid "Conversations with AI"
 msgstr "AIとの会話"
 
-#: src/features/Usage/NoBalanceBlock.tsx:143
+#: src/features/Usage/NoBalanceBlock.tsx:197
 #. js-lingui-explicit-id
-msgid "Role-play simulations"
-msgstr "ロールプレイシミュレーション"
+msgid "Role-play games"
+msgstr "ロールプレイゲーム"
 
-#: src/features/Usage/NoBalanceBlock.tsx:144
-#: src/features/Landing/Price/PricePage.tsx:168
+#: src/features/Usage/NoBalanceBlock.tsx:213
 #. js-lingui-explicit-id
-msgid "Progress tracking"
-msgstr "進行状況の追跡"
+msgid "Progress"
+msgstr "進捗"
 
-#: src/features/Usage/NoBalanceBlock.tsx:171
+#: src/features/Usage/NoBalanceBlock.tsx:253
 #. js-lingui-explicit-id
 msgid "Ready to keep going?"
 msgstr "続ける準備はできましたか？"
 
-#: src/features/Usage/NoBalanceBlock.tsx:184
+#: src/features/Usage/NoBalanceBlock.tsx:266
 #. js-lingui-explicit-id
 msgid "Buy More AI Hours"
 msgstr "AI時間をもっと購入する"
 
-#: src/features/Usage/NoBalanceBlock.tsx:190
+#: src/features/Usage/NoBalanceBlock.tsx:272
 #. js-lingui-explicit-id
 msgid "Get free AI time by helping us improve FluencyPal"
 msgstr "FluencyPalを改善することで無料のAI時間を手に入れましょう"
 
-#: src/features/Usage/NoBalanceBlock.tsx:194
+#: src/features/Usage/NoBalanceBlock.tsx:276
 #. js-lingui-explicit-id
 msgid ""
 "Send us your feedback about the app — what you liked, what we can improve — "
@@ -2170,6 +2181,11 @@ msgstr "会話練習"
 msgid "Improve fluency with interactive chat sessions"
 msgstr "インタラクティブなチャットセッションで流暢さを向上させる"
 
+#: src/features/Landing/Price/PricePage.tsx:168
+#. js-lingui-explicit-id
+msgid "Progress tracking"
+msgstr "進行状況の追跡"
+
 #: src/features/Landing/Price/PricePage.tsx:169
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
@@ -2867,88 +2883,88 @@ msgstr "少ない"
 msgid "More"
 msgstr "もっと"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:388
+#: src/features/Conversation/ConversationCanvas2.tsx:386
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "ほぼ正確"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:392
-#: src/features/Conversation/ConversationCanvas2.tsx:520
-#: src/features/Conversation/ConversationCanvas2.tsx:527
+#: src/features/Conversation/ConversationCanvas2.tsx:398
+#: src/features/Conversation/ConversationCanvas2.tsx:525
+#: src/features/Conversation/ConversationCanvas2.tsx:532
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "解析中..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:394
+#: src/features/Conversation/ConversationCanvas2.tsx:401
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "素晴らしい！"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:417
+#: src/features/Conversation/ConversationCanvas2.tsx:424
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "あなたのメッセージ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:439
-#: src/features/Conversation/ConversationCanvas2.tsx:442
-#: src/features/Conversation/ConversationCanvas2.tsx:518
-#: src/features/Conversation/ConversationCanvas2.tsx:525
+#: src/features/Conversation/ConversationCanvas2.tsx:447
+#: src/features/Conversation/ConversationCanvas2.tsx:450
+#: src/features/Conversation/ConversationCanvas2.tsx:523
+#: src/features/Conversation/ConversationCanvas2.tsx:530
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "書き起こしています..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:482
+#: src/features/Conversation/ConversationCanvas2.tsx:484
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "訂正済み"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:565
+#: src/features/Conversation/ConversationCanvas2.tsx:564
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "新しい単語を語彙へ:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:610
+#: src/features/Conversation/ConversationCanvas2.tsx:609
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "分析中"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:627
-#: src/features/Conversation/ConversationCanvas2.tsx:682
+#: src/features/Conversation/ConversationCanvas2.tsx:626
+#: src/features/Conversation/ConversationCanvas2.tsx:681
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "再録音"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:641
+#: src/features/Conversation/ConversationCanvas2.tsx:640
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "そのまま送信してください"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:641
+#: src/features/Conversation/ConversationCanvas2.tsx:640
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "送信"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:655
+#: src/features/Conversation/ConversationCanvas2.tsx:654
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "完了"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:669
+#: src/features/Conversation/ConversationCanvas2.tsx:668
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "メッセージを記録"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:779
+#: src/features/Conversation/ConversationCanvas2.tsx:778
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "あなたの残高は少ないです"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:781
+#: src/features/Conversation/ConversationCanvas2.tsx:780
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "あなたの残高をトップアップすることは理にかなっています。"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:788
+#: src/features/Conversation/ConversationCanvas2.tsx:787
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "チャージ"
@@ -4015,6 +4031,46 @@ msgstr "Googleで続行"
 msgid "By creating an account, you agree to:"
 msgstr "アカウントを作成することで、あなたは以下に同意するものとします："
 
+#: src/features/Usage/NoBalanceBlock.tsx:214
+#. js-lingui-explicit-id
+#~ msgid "Feedback on your progress"
+#~ msgstr "あなたの進捗に関するフィードバック"
+
+#: src/features/Usage/NoBalanceBlock.tsx:179
+#. js-lingui-explicit-id
+#~ msgid "TALKS"
+#~ msgstr "トークス"
+
+#: src/features/Usage/NoBalanceBlock.tsx:213
+#. js-lingui-explicit-id
+#~ msgid "PROGRESS"
+#~ msgstr "進行状況"
+
+#: src/features/Usage/NoBalanceBlock.tsx:196
+#. js-lingui-explicit-id
+#~ msgid "PLAYS"
+#~ msgstr "再生"
+
+#: src/features/Usage/NoBalanceBlock.tsx:179
+#. js-lingui-explicit-id
+#~ msgid "TALK"
+#~ msgstr "トーク"
+
+#: src/features/Usage/NoBalanceBlock.tsx:213
+#. js-lingui-explicit-id
+#~ msgid "ITERATE"
+#~ msgstr "反復する"
+
+#: src/features/Usage/NoBalanceBlock.tsx:196
+#. js-lingui-explicit-id
+#~ msgid "PLAY"
+#~ msgstr "再生"
+
+#: src/features/Usage/NoBalanceBlock.tsx:197
+#. js-lingui-explicit-id
+#~ msgid "Role-play simulations"
+#~ msgstr "ロールプレイシミュレーション"
+
 #: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 #~ msgid "Your achievements so far"
@@ -4124,11 +4180,6 @@ msgstr "アカウントを作成することで、あなたは以下に同意す
 #. js-lingui-explicit-id
 #~ msgid "Start a conversation with the AI"
 #~ msgstr "AIとの会話を始める"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
-#. js-lingui-explicit-id
-#~ msgid "Progress"
-#~ msgstr "進捗"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:104
 #. js-lingui-explicit-id

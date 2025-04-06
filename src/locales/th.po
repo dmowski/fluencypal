@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Usage/NoBalanceBlock.tsx:214
+#. js-lingui-explicit-id
+msgid "Track your progress"
+msgstr "ติดตามความคืบหน้าของคุณ"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:96
@@ -27,6 +32,7 @@ msgid "Get in touch with the FluencyPal for any inquiries, support, or feedback.
 msgstr "ติดต่อกับ FluencyPal สำหรับคำถาม, การสนับสนุน, หรือข้อเสนอแนะแต่ละข้อ"
 
 #: src/libs/metadata.ts:67
+#: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
 #: src/features/Dashboard/ConversationSelectCard.tsx:64
 #. js-lingui-explicit-id
@@ -359,85 +365,85 @@ msgid "Here are the words you used the most in your conversations."
 msgstr "นี่คือคำที่คุณใช้มากที่สุดในการสนทนาของคุณ"
 
 #: src/features/Usage/UsageStatsCards.tsx:117
-#: src/features/Usage/UsageStatsCards.tsx:473
+#: src/features/Usage/UsageStatsCards.tsx:475
 #. js-lingui-explicit-id
 msgid "No words used yet"
 msgstr "ยังไม่มีคำใดๆ ถูกใช้งานเลย"
 
-#: src/features/Usage/UsageStatsCards.tsx:181
+#: src/features/Usage/UsageStatsCards.tsx:182
 #. js-lingui-explicit-id
 msgid "Chat history"
 msgstr "ประวัติการแชท"
 
-#: src/features/Usage/UsageStatsCards.tsx:183
+#: src/features/Usage/UsageStatsCards.tsx:184
 #. js-lingui-explicit-id
 msgid "Here are the conversations you had with FluencyPal."
 msgstr "นี่คือการสนทนาที่คุณมีกับ FluencyPal."
 
-#: src/features/Usage/UsageStatsCards.tsx:205
+#: src/features/Usage/UsageStatsCards.tsx:207
 #. js-lingui-explicit-id
 msgid "No conversations yet"
 msgstr "ยังไม่มีการสนทนา"
 
-#: src/features/Usage/UsageStatsCards.tsx:252
+#: src/features/Usage/UsageStatsCards.tsx:254
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "ครู:"
 
-#: src/features/Usage/UsageStatsCards.tsx:252
+#: src/features/Usage/UsageStatsCards.tsx:254
 #: src/features/Conversation/ConversationCanvas2.tsx:253
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "คุณ:"
 
-#: src/features/Usage/UsageStatsCards.tsx:282
+#: src/features/Usage/UsageStatsCards.tsx:284
 #. js-lingui-explicit-id
 msgid "Grammar Corrections"
 msgstr "การแก้ไขไวยากรณ์"
 
-#: src/features/Usage/UsageStatsCards.tsx:284
+#: src/features/Usage/UsageStatsCards.tsx:286
 #. js-lingui-explicit-id
 msgid "Here are the corrections you had in your conversations."
 msgstr "นี่คือการแก้ไขที่คุณมีในการสนทนาของคุณ"
 
-#: src/features/Usage/UsageStatsCards.tsx:306
+#: src/features/Usage/UsageStatsCards.tsx:308
 #. js-lingui-explicit-id
 msgid "No corrections yet"
 msgstr "ยังไม่มีการแก้ไข"
 
-#: src/features/Usage/UsageStatsCards.tsx:382
+#: src/features/Usage/UsageStatsCards.tsx:384
 #. js-lingui-explicit-id
 msgid "Description:"
 msgstr "คำอธิบาย:"
 
-#: src/features/Usage/UsageStatsCards.tsx:419
+#: src/features/Usage/UsageStatsCards.tsx:421
 #. js-lingui-explicit-id
 msgid "Your achievements"
 msgstr "ความสำเร็จของคุณ"
 
-#: src/features/Usage/UsageStatsCards.tsx:439
+#: src/features/Usage/UsageStatsCards.tsx:441
 #: src/features/Dashboard/ConversationSelectCard.tsx:232
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "คำศัพท์"
 
-#: src/features/Usage/UsageStatsCards.tsx:509
+#: src/features/Usage/UsageStatsCards.tsx:511
 #. js-lingui-explicit-id
 msgid "Corrections"
 msgstr "การแก้ไข"
 
-#: src/features/Usage/UsageStatsCards.tsx:555
+#: src/features/Usage/UsageStatsCards.tsx:557
 #. js-lingui-explicit-id
 msgid "Minutes"
 msgstr "นาที"
 
-#: src/features/Usage/UsageStatsCards.tsx:556
+#: src/features/Usage/UsageStatsCards.tsx:558
 #. js-lingui-explicit-id
 msgid "Total"
 msgstr "ทั้งหมด"
 
-#: src/features/Usage/UsageStatsCards.tsx:579
+#: src/features/Usage/UsageStatsCards.tsx:581
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "เปิดประวัติ"
@@ -679,6 +685,7 @@ msgstr "ประวัติการชำระเงิน:"
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:622
 #: src/features/Dashboard/Dashboard.tsx:36
+#: src/features/Conversation/ConversationPage.tsx:35
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "โหลด..."
@@ -688,53 +695,57 @@ msgstr "โหลด..."
 msgid "No payments..."
 msgstr "ไม่มีการชำระเงิน..."
 
-#: src/features/Usage/NoBalanceBlock.tsx:79
+#: src/features/Usage/NoBalanceBlock.tsx:123
 #. js-lingui-explicit-id
 msgid "Level up your Language!"
 msgstr "เพิ่มระดับภาษาของคุณ!"
 
-#: src/features/Usage/NoBalanceBlock.tsx:90
+#: src/features/Usage/NoBalanceBlock.tsx:134
 #. js-lingui-explicit-id
 msgid "You've made amazing progress. Let’s keep going."
 msgstr "คุณพัฒนาความสามารถไปได้ดีมาก โปรดทำต่อไป"
 
-#: src/features/Usage/NoBalanceBlock.tsx:120
+#: src/features/Usage/NoBalanceBlock.tsx:164
 #. js-lingui-explicit-id
 msgid "Unlock full access to FluencyPal"
 msgstr "ปลดล็อคการเข้าถึง FluencyPal ได้เต็มรูปแบบ"
 
-#: src/features/Usage/NoBalanceBlock.tsx:141
+#: src/features/Usage/NoBalanceBlock.tsx:179
+#. js-lingui-explicit-id
+msgid "Talks"
+msgstr "บรรยาย"
+
+#: src/features/Usage/NoBalanceBlock.tsx:180
 #. js-lingui-explicit-id
 msgid "Conversations with AI"
 msgstr "การสนทนากับ AI"
 
-#: src/features/Usage/NoBalanceBlock.tsx:143
+#: src/features/Usage/NoBalanceBlock.tsx:197
 #. js-lingui-explicit-id
-msgid "Role-play simulations"
-msgstr "จำลองบทบาทการเล่น"
+msgid "Role-play games"
+msgstr "เกมส์บทบาทเล่นละคร"
 
-#: src/features/Usage/NoBalanceBlock.tsx:144
-#: src/features/Landing/Price/PricePage.tsx:168
+#: src/features/Usage/NoBalanceBlock.tsx:213
 #. js-lingui-explicit-id
-msgid "Progress tracking"
-msgstr "การติดตามความคืบหน้า"
+msgid "Progress"
+msgstr "ความก้าวหน้า"
 
-#: src/features/Usage/NoBalanceBlock.tsx:171
+#: src/features/Usage/NoBalanceBlock.tsx:253
 #. js-lingui-explicit-id
 msgid "Ready to keep going?"
 msgstr "พร้อมที่จะทำต่อไปหรือยัง?"
 
-#: src/features/Usage/NoBalanceBlock.tsx:184
+#: src/features/Usage/NoBalanceBlock.tsx:266
 #. js-lingui-explicit-id
 msgid "Buy More AI Hours"
 msgstr "ซื้อชั่วโมง AI มากขึ้น"
 
-#: src/features/Usage/NoBalanceBlock.tsx:190
+#: src/features/Usage/NoBalanceBlock.tsx:272
 #. js-lingui-explicit-id
 msgid "Get free AI time by helping us improve FluencyPal"
 msgstr "รับเวลา AI ฟรีโดยช่วยเราปรับปรุง FluencyPal"
 
-#: src/features/Usage/NoBalanceBlock.tsx:194
+#: src/features/Usage/NoBalanceBlock.tsx:276
 #. js-lingui-explicit-id
 msgid ""
 "Send us your feedback about the app — what you liked, what we can improve — "
@@ -2330,6 +2341,11 @@ msgstr "การฝึกสนทนา"
 msgid "Improve fluency with interactive chat sessions"
 msgstr "ปรับปรุงความคล่องแคล่วด้วยการสนทนาผ่านช่องทางสนทนาที่โต้ตอบได้"
 
+#: src/features/Landing/Price/PricePage.tsx:168
+#. js-lingui-explicit-id
+msgid "Progress tracking"
+msgstr "การติดตามความคืบหน้า"
+
 #: src/features/Landing/Price/PricePage.tsx:169
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
@@ -3028,88 +3044,88 @@ msgstr "น้อยลง"
 msgid "More"
 msgstr "เพิ่มเติม"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:388
+#: src/features/Conversation/ConversationCanvas2.tsx:386
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "เกือบถูก"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:392
-#: src/features/Conversation/ConversationCanvas2.tsx:520
-#: src/features/Conversation/ConversationCanvas2.tsx:527
+#: src/features/Conversation/ConversationCanvas2.tsx:398
+#: src/features/Conversation/ConversationCanvas2.tsx:525
+#: src/features/Conversation/ConversationCanvas2.tsx:532
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "กำลังวิเคราะห์..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:394
+#: src/features/Conversation/ConversationCanvas2.tsx:401
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "ที่สุด!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:417
+#: src/features/Conversation/ConversationCanvas2.tsx:424
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "ข้อความของคุณ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:439
-#: src/features/Conversation/ConversationCanvas2.tsx:442
-#: src/features/Conversation/ConversationCanvas2.tsx:518
-#: src/features/Conversation/ConversationCanvas2.tsx:525
+#: src/features/Conversation/ConversationCanvas2.tsx:447
+#: src/features/Conversation/ConversationCanvas2.tsx:450
+#: src/features/Conversation/ConversationCanvas2.tsx:523
+#: src/features/Conversation/ConversationCanvas2.tsx:530
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "กำลังทำเนื้อหาเป็นข้อความ..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:482
+#: src/features/Conversation/ConversationCanvas2.tsx:484
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "แก้ไขแล้ว"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:565
+#: src/features/Conversation/ConversationCanvas2.tsx:564
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "คำศัพท์ใหม่ที่จะเพิ่มเข้าไป:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:610
+#: src/features/Conversation/ConversationCanvas2.tsx:609
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "การวิเคราะห์"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:627
-#: src/features/Conversation/ConversationCanvas2.tsx:682
+#: src/features/Conversation/ConversationCanvas2.tsx:626
+#: src/features/Conversation/ConversationCanvas2.tsx:681
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "บันทึกใหม่"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:641
+#: src/features/Conversation/ConversationCanvas2.tsx:640
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "ส่งมันตามที่มันเป็น"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:641
+#: src/features/Conversation/ConversationCanvas2.tsx:640
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "ส่ง"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:655
+#: src/features/Conversation/ConversationCanvas2.tsx:654
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "เสร็จสิ้น"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:669
+#: src/features/Conversation/ConversationCanvas2.tsx:668
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "บันทึกข้อความ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:779
+#: src/features/Conversation/ConversationCanvas2.tsx:778
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "คุณมียอดเงินคงเหลือต่ำ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:781
+#: src/features/Conversation/ConversationCanvas2.tsx:780
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "มันมีเหตุผลที่ควรเติมยอดเงินในบัญชีของคุณ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:788
+#: src/features/Conversation/ConversationCanvas2.tsx:787
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "เติมเงิน"
@@ -4314,6 +4330,46 @@ msgstr "ดำเนินการต่อด้วย Google"
 msgid "By creating an account, you agree to:"
 msgstr "โดยการสร้างบัญชี คุณยอมรับว่า:"
 
+#: src/features/Usage/NoBalanceBlock.tsx:214
+#. js-lingui-explicit-id
+#~ msgid "Feedback on your progress"
+#~ msgstr "ข้อเสนอแนะเกี่ยวกับความก้าวหน้าของคุณ"
+
+#: src/features/Usage/NoBalanceBlock.tsx:179
+#. js-lingui-explicit-id
+#~ msgid "TALKS"
+#~ msgstr "บทความ"
+
+#: src/features/Usage/NoBalanceBlock.tsx:213
+#. js-lingui-explicit-id
+#~ msgid "PROGRESS"
+#~ msgstr "ความคืบหน้า"
+
+#: src/features/Usage/NoBalanceBlock.tsx:196
+#. js-lingui-explicit-id
+#~ msgid "PLAYS"
+#~ msgstr "เล่น"
+
+#: src/features/Usage/NoBalanceBlock.tsx:179
+#. js-lingui-explicit-id
+#~ msgid "TALK"
+#~ msgstr "พูดคุย"
+
+#: src/features/Usage/NoBalanceBlock.tsx:213
+#. js-lingui-explicit-id
+#~ msgid "ITERATE"
+#~ msgstr "ทบทวน"
+
+#: src/features/Usage/NoBalanceBlock.tsx:196
+#. js-lingui-explicit-id
+#~ msgid "PLAY"
+#~ msgstr "เล่น"
+
+#: src/features/Usage/NoBalanceBlock.tsx:197
+#. js-lingui-explicit-id
+#~ msgid "Role-play simulations"
+#~ msgstr "จำลองบทบาทการเล่น"
+
 #: src/features/Usage/UsageStatsCards.tsx:441
 #. js-lingui-explicit-id
 #~ msgid "Your achievements so far"
@@ -4423,11 +4479,6 @@ msgstr "โดยการสร้างบัญชี คุณยอมร�
 #. js-lingui-explicit-id
 #~ msgid "Start a conversation with the AI"
 #~ msgstr "เริ่มต้นการสนทนากับ AI"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:35
-#. js-lingui-explicit-id
-#~ msgid "Progress"
-#~ msgstr "ความก้าวหน้า"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:104
 #. js-lingui-explicit-id
