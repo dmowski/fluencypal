@@ -92,6 +92,8 @@ export const ConversationCard = ({
           fontWeight: 300,
           opacity: disabled ? 0.7 : 1,
           textTransform: "uppercase",
+          position: "relative",
+          zIndex: 2,
         }}
       >
         {subTitle}
@@ -104,7 +106,7 @@ export const ConversationCard = ({
           textTransform: "uppercase",
           fontSize: "1.8rem",
           position: "relative",
-          zIndex: 1,
+          zIndex: 2,
           opacity: disabled ? 0.5 : 1,
           "@media (max-width: 450px)": {
             fontSize: "1.4rem",
@@ -122,6 +124,8 @@ export const ConversationCard = ({
           padding: "70px 14px 0px 0px",
           borderRadius: "8px",
           opacity: disabled ? 0.7 : 1,
+          position: "relative",
+          zIndex: 2,
         }}
       >
         {disabled ? (
@@ -141,7 +145,7 @@ export const ConversationCard = ({
           position: "absolute",
           bottom: "0px",
           right: "0px",
-          zIndex: 0,
+          zIndex: 2,
 
           ".avatar": {
             transition: "all 0.4s ease",
@@ -167,7 +171,7 @@ export const ConversationCard = ({
           position: "absolute",
           top: "-40px",
           left: "-20px",
-          zIndex: -1,
+          zIndex: 1,
           opacity: disabled ? 0.06 : 0.9,
         }}
       ></Stack>
@@ -183,7 +187,7 @@ export const ConversationCard = ({
           position: "absolute",
           bottom: "-40px",
           right: "-20px",
-          zIndex: -1,
+          zIndex: 1,
           opacity: disabled ? 0.06 : 0.9,
         }}
       ></Stack>
@@ -197,8 +201,22 @@ export const ConversationCard = ({
           position: "absolute",
           bottom: "0px",
           left: "0px",
-          zIndex: -2,
+          zIndex: 0,
           opacity: disabled ? 0.06 : 0.1,
+        }}
+      ></Stack>
+
+      <Stack
+        sx={{
+          backgroundColor: "rgba(10, 18, 30, 1)",
+          width: "100%",
+          height: "100%",
+
+          position: "absolute",
+          bottom: "0px",
+          left: "0px",
+          zIndex: -1,
+          opacity: 1,
         }}
       ></Stack>
     </Stack>
