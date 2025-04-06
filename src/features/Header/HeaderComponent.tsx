@@ -235,7 +235,6 @@ export function HeaderComponent({
                   disabled={aiConversation.isClosing}
                   onClick={() => {
                     aiConversation.closeConversation();
-                    //scrollToTop();
                     window.scrollTo({
                       top: 0,
                       behavior: "smooth",
