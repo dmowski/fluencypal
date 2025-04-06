@@ -12,10 +12,8 @@ import { WordsToLearn } from "./WordsToLearn";
 import { SelectLanguage } from "./SelectLanguage";
 import { useRules } from "../Rules/useRules";
 import { RulesToLearn } from "./RulesToLearn";
-import { TasksCard } from "./TasksCard";
 import { ConversationSelectCard } from "./ConversationSelectCard";
 import { ProgressBoard } from "./Progress/ProgressBoard";
-import { HomeworkCard } from "./HomeworkCard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
 import { useLingui } from "@lingui/react";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
@@ -31,10 +29,6 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
   const words = useWords();
   const rules = useRules();
   const { i18n } = useLingui();
-
-  if (aiConversation.isInitializing) {
-    return <InfoBlockedSection title={i18n._(`Loading...`)} />;
-  }
 
   if (words.isGeneratingWords) {
     return <InfoBlockedSection title={i18n._(`Crafting new words...`)} />;

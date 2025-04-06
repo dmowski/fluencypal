@@ -2,7 +2,7 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { useAuth } from "../Auth/useAuth";
-import { Stack, Typography } from "@mui/material";
+import { Alert, Button, Stack, Typography } from "@mui/material";
 import { SignInForm } from "../Auth/SignInForm";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
@@ -36,6 +36,49 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   }
   if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
   if (!usage.loading && usage.balanceHours <= 0.01) return <NoBalanceBlock />;
+
+  if (aiConversation.errorInitiating) {
+    return (
+      <InfoBlockedSection title="">
+        <Stack
+          sx={{
+            width: "100%",
+            maxWidth: "500px",
+            padding: "20px",
+            boxSizing: "border-box",
+            gap: "20px",
+            alignItems: "flex-start",
+          }}
+        >
+          <Stack
+            sx={{
+              width: "100%",
+            }}
+          >
+            <Typography variant="h4" className="decor-text">
+              {i18n._(`Oops! Something went wrong`)}
+            </Typography>
+            <Typography color="error">
+              {aiConversation.errorInitiating ||
+                i18n._(`Please refresh the page and try one more time`)}
+            </Typography>
+          </Stack>
+          <Button
+            variant="contained"
+            onClick={() => window.location.reload()}
+            sx={{
+              padding: "10px 40px",
+            }}
+          >
+            {i18n._(`Reload page`)}
+          </Button>
+        </Stack>
+      </InfoBlockedSection>
+    );
+  }
+  if (aiConversation.isInitializing) {
+    return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+  }
 
   return (
     <Stack>
