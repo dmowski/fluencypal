@@ -8,6 +8,7 @@ import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
 import { useEffect } from "react";
 import { useAiConversation } from "./useAiConversation";
+import { useAiUserInfo } from "../Ai/useAiUserInfo";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -15,68 +16,20 @@ interface ConversationPageTestProps {
 }
 
 export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTestProps) {
-  const testMessage: ChatMessage[] = [
-    {
+  const aiUserInfo = useAiUserInfo();
+  const testMessage: ChatMessage[] = [];
+  for (let i = 0; i < 15; i += 2) {
+    testMessage.push({
       isBot: true,
       text: `Hello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\n`,
-      id: "1",
-    },
-    {
+      id: `${i}`,
+    });
+    testMessage.push({
       isBot: false,
       text: `I do well, thank you! Hello\n`,
-      id: "2",
-    },
-    {
-      isBot: true,
-      text: `Hello, how are you?\n`,
-      id: "3",
-    },
-    {
-      isBot: false,
-      text: `I do well, thank you! Hello. Let's start with a simple topic. What do you think about sunny days?\n`,
-      id: "4",
-    },
-    {
-      isBot: true,
-      text: `Hello, how are you?\n`,
-      id: "5",
-    },
-    {
-      isBot: false,
-      text: `I do well, thank you! Hello\n`,
-      id: "6",
-    },
-    {
-      isBot: false,
-      text: `I do well, thank you! Let's start with a simple topic. What do you think about sunny days?\n`,
-      id: "7",
-    },
-    {
-      isBot: true,
-      text: `Hello, how are you? Let's start with a simple topic. What do you think about sunny days?\n`,
-      id: "8",
-    },
-    {
-      isBot: false,
-      text: `I do well, thank you! Hello\n`,
-      id: "9",
-    },
-    {
-      isBot: false,
-      text: `I do well, thank you! Let's start with a simple topic. What do you think about sunny days?\n`,
-      id: "10",
-    },
-    {
-      isBot: true,
-      text: `Hello, how are you? Let's start with a simple topic. What do you think about sunny days?\n`,
-      id: "11",
-    },
-    {
-      isBot: false,
-      text: `I do well, thank you! Hello\n`,
-      id: "12",
-    },
-  ].filter((message, index) => index < 20);
+      id: `${i + 1}`,
+    });
+  }
 
   const showGame = false;
   const gameStat: GuessGameStat | null = showGame
@@ -142,6 +95,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   return (
     <Stack>
       <ConversationCanvas2
+        isMuted
         conversationId="1"
         conversation={testMessage}
         analyzeUserMessage={analyzeMessage}

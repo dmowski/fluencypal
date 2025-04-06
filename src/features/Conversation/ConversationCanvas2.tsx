@@ -52,6 +52,7 @@ interface ConversationCanvasProps {
   isRecording: boolean;
   recordingMilliSeconds: number;
   recordVisualizerComponent: JSX.Element | null;
+  isMuted?: boolean;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   conversation,
@@ -74,6 +75,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   recordVisualizerComponent,
   recordingError,
   conversationId,
+  isMuted,
 }) => {
   const { i18n } = useLingui();
 
@@ -145,12 +147,15 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
       setDescription(description || null);
       setIsAnalyzingMessageWithAi(false);
 
-      if (!isBad) {
-        sound.play("win3", 0.2);
-      } else {
-        sound.play("lose1", 0.2);
+      if (!isMuted) {
+        if (!isBad) {
+          sound.play("win3", 0.2);
+        } else {
+          sound.play("lose1", 0.2);
+        }
       }
     } catch (error) {
+      console.error("Error during analyzing message", error);
       setIsAnalyzingError(true);
       setIsAnalyzingMessageWithAi(false);
       throw error;
@@ -316,7 +321,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 gap: "10px",
               }}
             >
-              {recordingError && (
+              {(recordingError || isAnalyzingError) && (
                 <Stack>
                   <Alert
                     severity="error"
@@ -329,7 +334,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       boxSizing: "border-box",
                     }}
                   >
-                    {recordingError}
+                    {recordingError || i18n._("Error during analyzing message")}
                   </Alert>
                 </Stack>
               )}
