@@ -228,12 +228,17 @@ export const ConversationSelectCard = () => {
 
   const [isShowOnboardingConfirmation, setIsShowOnboardingConfirmation] = useState(false);
 
+  const startOnboarding = () => {
+    aiConversation.startConversation({ mode: "goal" });
+    setIsShowOnboardingConfirmation(false);
+  };
+
   const isPassOnboarding = !!userInfo.userInfo?.records?.length;
   const goalCard = (
     <ConversationCard
       title={i18n._(`Goal`)}
       subTitle={i18n._(`Set the goal of your learning`)}
-      onClick={() => aiConversation.startConversation({ mode: "goal" })}
+      onClick={() => startOnboarding()}
       startColor="#4F46E5"
       endColor="#A78BFA"
       bgColor="#60A5FA"
@@ -315,6 +320,7 @@ export const ConversationSelectCard = () => {
                 </Typography>
               </Stack>
               <Button
+                onClick={() => startOnboarding()}
                 startIcon={<MapPinned size={"18px"} />}
                 color="info"
                 size="large"

@@ -158,7 +158,7 @@ function useProvideAiConversation(): AiConversationContextType {
             console.log("Triggering wrap up instruction...");
             const newInstruction = `Let's wrap up our conversation. Tell student that goal is briefly set. And if they want to continue talking, we can do it. But for now, it's time to grow and expand more interesting modes on FluencyPal.
 
-Tell user something like "Okey, I think we have a good understanding of your goals. If you want to continue talking, we can do it. But for now, let's focus on expanding your skills in more interesting modes on FluencyPal. Let's grow together!
+Tell user something like "Hmm, I think we have a good understanding of your goals. If you want to continue talking, we can do it. But for now, let's focus on expanding your skills using more interesting modes on FluencyPal. Let's grow together!
 
 To finish the onboarding, press the back button on the top left corner of the screen.
 ".
@@ -166,7 +166,8 @@ To finish the onboarding, press the back button on the top left corner of the sc
             await communicatorRef.current?.updateSessionTrigger(newInstruction, isVolumeOn);
             await sleep(5000);
             console.log("❌ Triggering User message...");
-            const userMessageFinish = "Can we finish our conversation?";
+            const userMessageFinish = `Tell me last thing about my goal.
+Start your message with, "You know what, I think I briefly got what tou want to achieve. {SUMMARY}. To finish the onboarding, press the back button on the top left corner of the screen."`;
             communicatorRef.current?.addUserChatMessage(userMessageFinish);
             await sleep(1000);
             console.log("❌  Triggering AI response...");
