@@ -688,50 +688,47 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       )}
 
                     {isRecording && (
-                      <>
+                      <Stack
+                        sx={{
+                          width: "max-content",
+                          overflow: "hidden",
+                          height: "40px",
+                          border: "1px solid rgba(255, 255, 255, 0.1)",
+                          borderRadius: "0 10px 10px 0",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          position: "relative",
+                          flexDirection: "row",
+                          gap: "10px",
+                          padding: "0 10px 0 0px",
+                          left: "-16px",
+                          zIndex: 0,
+                          "@media (max-width: 600px)": {
+                            left: 0,
+                            borderRadius: "10px",
+                          },
+                        }}
+                      >
+                        {recordVisualizerComponent}
                         <Stack
                           sx={{
-                            width: "max-content",
-                            overflow: "hidden",
-                            height: "40px",
-                            border: "1px solid rgba(255, 255, 255, 0.1)",
-                            borderRadius: "0 10px 10px 0",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                            position: "relative",
-                            flexDirection: "row",
-                            gap: "10px",
-                            padding: "0 10px 0 0px",
-                            left: "-16px",
-                            zIndex: 0,
-                            "@media (max-width: 600px)": {
-                              left: 0,
-                              borderRadius: "10px",
-                            },
+                            position: "absolute",
+                            width: "calc(100% - 45px)",
+                            height: "120%",
+                            top: "-10%",
+                            left: 0,
+                            boxShadow: "inset 0 0 10px 10px var(--section-bg, rgba(20, 28, 40, 1))",
+                          }}
+                        ></Stack>
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            width: "30px",
                           }}
                         >
-                          {recordVisualizerComponent}
-                          <Stack
-                            sx={{
-                              position: "absolute",
-                              width: "calc(100% - 45px)",
-                              height: "120%",
-                              top: "-10%",
-                              left: 0,
-                              boxShadow:
-                                "inset 0 0 10px 10px var(--section-bg, rgba(20, 28, 40, 1))",
-                            }}
-                          ></Stack>
-                          <Typography
-                            variant="caption"
-                            sx={{
-                              width: "30px",
-                            }}
-                          >
-                            {dayjs(recordingMilliSeconds).format("mm:ss")}
-                          </Typography>
-                        </Stack>
-                      </>
+                          {dayjs(recordingMilliSeconds).format("mm:ss")}
+                        </Typography>
+                      </Stack>
                     )}
                   </Stack>
 
