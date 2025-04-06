@@ -1,26 +1,77 @@
-import { IconButton, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import {
-  Baby,
-  BicepsFlexed,
-  BookOpenText,
-  Flag,
-  GraduationCap,
-  ListCheck,
-  MapPinCheckInside,
-  Mic,
-  MoveRight,
-  Settings2,
-  TrendingUp,
-} from "lucide-react";
+import { BookOpenText, Flag, GraduationCap, ListCheck, MapPinCheckInside, Mic } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
-import { ClickCard } from "./ClickCard";
 import { useLingui } from "@lingui/react";
 import { GradientBgCard } from "../uiKit/Card/GradientBgCard";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
 import { useSettings } from "../Settings/useSettings";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
+import { ReactNode } from "react";
+
+interface ConversationCardProps {
+  title: string;
+  subTitle: string;
+  onClick: () => void;
+  startColor: string;
+  endColor: string;
+  bgColor: string;
+  icon: ReactNode;
+  actionLabel: string;
+}
+
+export const ConversationCard = ({
+  title,
+  subTitle,
+  onClick,
+  startColor,
+  endColor,
+  bgColor,
+  icon,
+  actionLabel,
+}: ConversationCardProps) => {
+  return (
+    <GradientBgCard
+      title={title}
+      subTitle={subTitle}
+      onClick={onClick}
+      value=""
+      startColor={startColor}
+      endColor={endColor}
+      bgColor={bgColor}
+      actionButton={
+        <Stack
+          sx={{
+            paddingTop: "70px",
+            justifyContent: "space-between",
+            width: "100%",
+            alignItems: "flex-end",
+            flexDirection: "row",
+            "--icon-size": "40px",
+            "@media (max-width: 850px)": {
+              paddingTop: "20px",
+              "--icon-size": "20px",
+            },
+          }}
+        >
+          {icon}
+          <Stack
+            sx={{
+              flexDirection: "row",
+              gap: "10px",
+              alignItems: "center",
+              padding: "10px 14px 0px 10px",
+              borderRadius: "8px",
+            }}
+          >
+            <Typography variant="body2">{actionLabel}</Typography>
+          </Stack>
+        </Stack>
+      }
+    />
+  );
+};
 
 export const ConversationSelectCard = () => {
   const aiConversation = useAiConversation();
@@ -29,7 +80,7 @@ export const ConversationSelectCard = () => {
   const { i18n } = useLingui();
   const settings = useSettings();
 
-  const showGoalCard = false;
+  const showGoalCard = true;
   return (
     <DashboardCard>
       <Stack
@@ -81,186 +132,72 @@ export const ConversationSelectCard = () => {
           display: "grid",
           gridTemplateColumns: "1fr 1fr 1fr",
           "@media (max-width: 850px)": {
+            gridTemplateColumns: "1fr 1fr",
+          },
+
+          "@media (max-width: 600px)": {
             gridTemplateColumns: "1fr",
-            gap: "30px",
+            gap: "10px",
           },
         }}
       >
         {showGoalCard && (
-          <GradientBgCard
+          <ConversationCard
             title={i18n._(`Goal`)}
             subTitle={i18n._(`Set the goal of your learning`)}
             onClick={() => aiConversation.startConversation({ mode: "beginner" })}
-            value={""}
             startColor="#4F46E5"
             endColor="#A78BFA"
             bgColor="#60A5FA"
-            actionButton={
-              <Stack
-                sx={{
-                  paddingTop: "70px",
-                  justifyContent: "space-between",
-                  width: "100%",
-                  alignItems: "flex-end",
-                  flexDirection: "row",
-                }}
-              >
-                <Flag size={40} />
-                <Stack
-                  sx={{
-                    flexDirection: "row",
-                    gap: "10px",
-                    alignItems: "center",
-                    padding: "10px 14px 0px 10px",
-                    borderRadius: "8px",
-                  }}
-                >
-                  <Typography variant="body2">{i18n._(`Start`)}</Typography>
-                  <MoveRight size="10px" />
-                </Stack>
-              </Stack>
-            }
+            icon={<Flag style={{ width: "var(--icon-size)", height: "var(--icon-size)" }} />}
+            actionLabel={i18n._(`Start`)}
           />
         )}
 
-        <GradientBgCard
+        <ConversationCard
           title={i18n._(`Conversation`)}
           subTitle={i18n._(`Talk to the AI and it will respond to you`)}
           onClick={() => aiConversation.startConversation({ mode: "talk" })}
-          value={""}
           startColor="#34D399"
           endColor="#3B82F6"
           bgColor="#A3E635"
-          actionButton={
-            <Stack
-              sx={{
-                paddingTop: "70px",
-                justifyContent: "space-between",
-                width: "100%",
-                alignItems: "flex-end",
-                flexDirection: "row",
-              }}
-            >
-              <Mic size={40} />
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  gap: "10px",
-                  alignItems: "center",
-                  padding: "10px 14px 0px 10px",
-                  borderRadius: "8px",
-                }}
-              >
-                <Typography variant="body2">{i18n._(`Start Talking`)}</Typography>
-                <MoveRight size="10px" />
-              </Stack>
-            </Stack>
-          }
+          icon={<Mic style={{ width: "var(--icon-size)", height: "var(--icon-size)" }} />}
+          actionLabel={i18n._(`Start Talking`)}
         />
 
-        <GradientBgCard
+        <ConversationCard
           title={i18n._(`Beginner`)}
           subTitle={i18n._(`AI will lead you through the conversation`)}
           onClick={() => aiConversation.startConversation({ mode: "beginner" })}
-          value={""}
           startColor="#FF6B6B"
           endColor="#FFD93D"
           bgColor="#5EEAD4"
-          actionButton={
-            <Stack
-              sx={{
-                paddingTop: "70px",
-                justifyContent: "space-between",
-                width: "100%",
-                alignItems: "flex-end",
-                flexDirection: "row",
-              }}
-            >
-              <MapPinCheckInside size={40} />
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  gap: "10px",
-                  alignItems: "center",
-                  padding: "10px 14px 0px 10px",
-                  borderRadius: "8px",
-                }}
-              >
-                <Typography variant="body2">{i18n._(`Guide me`)}</Typography>
-                <MoveRight size="10px" />
-              </Stack>
-            </Stack>
+          icon={
+            <MapPinCheckInside style={{ width: "var(--icon-size)", height: "var(--icon-size)" }} />
           }
+          actionLabel={i18n._(`Guide me`)}
         />
 
-        <GradientBgCard
+        <ConversationCard
           title={i18n._(`Rules`)}
           subTitle={i18n._(`Get a personal grammar rule to learn`)}
           onClick={() => rules.getRules()}
-          value={""}
           startColor="#9d43a3"
           endColor="#086787"
           bgColor="#990000"
-          actionButton={
-            <Stack
-              sx={{
-                paddingTop: "70px",
-                justifyContent: "space-between",
-                width: "100%",
-                alignItems: "flex-end",
-                flexDirection: "row",
-              }}
-            >
-              <BookOpenText size={40} />
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  gap: "10px",
-                  alignItems: "center",
-                  padding: "10px 14px 0px 10px",
-                  borderRadius: "8px",
-                }}
-              >
-                <Typography variant="body2">{i18n._(`Get a rule`)}</Typography>
-                <MoveRight size="10px" />
-              </Stack>
-            </Stack>
-          }
+          icon={<BookOpenText style={{ width: "var(--icon-size)", height: "var(--icon-size)" }} />}
+          actionLabel={i18n._(`Get a rule`)}
         />
 
-        <GradientBgCard
+        <ConversationCard
           title={i18n._(`Words`)}
           subTitle={i18n._(`Practice new vocabulary with the AI`)}
           onClick={() => words.getNewWordsToLearn()}
-          value={""}
           startColor="#00BFFF"
           endColor="#086787"
           bgColor="#5EEAD4"
-          actionButton={
-            <Stack
-              sx={{
-                paddingTop: "70px",
-                justifyContent: "space-between",
-                width: "100%",
-                alignItems: "flex-end",
-                flexDirection: "row",
-              }}
-            >
-              <ListCheck size={40} />
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  gap: "10px",
-                  alignItems: "center",
-                  padding: "10px 14px 0px 10px",
-                  borderRadius: "8px",
-                }}
-              >
-                <Typography variant="body2">{i18n._(`Expand vocabulary`)}</Typography>
-                <MoveRight size="10px" />
-              </Stack>
-            </Stack>
-          }
+          icon={<ListCheck style={{ width: "var(--icon-size)", height: "var(--icon-size)" }} />}
+          actionLabel={i18n._(`Expand vocabulary`)}
         />
       </Stack>
     </DashboardCard>
