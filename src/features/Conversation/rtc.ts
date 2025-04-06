@@ -290,7 +290,7 @@ export const initAiRtc = async ({
         .trim();
       if (event?.response?.id || botAnswer) {
         const id = event?.response?.id || (`${Date.now()}` as string);
-        onMessage({ isBot: true, text: botAnswer || "...", id });
+        onMessage({ isBot: true, text: botAnswer || "", id });
       }
     }
 

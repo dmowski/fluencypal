@@ -77,7 +77,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     );
   }
   if (aiConversation.isInitializing) {
-    return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+    return <InfoBlockedSection title={aiConversation.isInitializing || i18n._(`Loading...`)} />;
   }
 
   return (

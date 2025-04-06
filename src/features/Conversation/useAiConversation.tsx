@@ -26,6 +26,7 @@ import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { firstAiMessage } from "@/common/lang";
+import { useLingui } from "@lingui/react";
 
 const aiModal = MODELS.SMALL_CONVERSATION;
 
@@ -42,7 +43,7 @@ interface StartConversationProps {
 
 interface AiConversationContextType {
   isSavingHomework: boolean;
-  isInitializing: boolean;
+  isInitializing: string;
   isStarted: boolean;
   setIsStarted: (isStarted: boolean) => void;
   startConversation: (params: StartConversationProps) => Promise<void>;
@@ -74,12 +75,13 @@ const modesToExtractUserInfo: ConversationMode[] = ["talk", "talkAndCorrect", "b
 const isNeedToGenerateFirstMessage: ConversationMode[] = ["talk", "beginner"];
 
 function useProvideAiConversation(): AiConversationContextType {
-  const [isInitializing, setIsInitializing] = useState(false);
+  const [isInitializing, setIsInitializing] = useState("");
   const history = useChatHistory();
   const auth = useAuth();
   const settings = useSettings();
   const aiUserInfo = useAiUserInfo();
   const [activeHomework, setActiveHomework] = useState<Homework | null>(null);
+  const firstPotentialBotMessage = useRef("");
   const userInfo = aiUserInfo.userInfo?.records?.join(". ") || "";
   const fullLanguageName = settings.fullLanguageName || "English";
   const languageCode = settings.languageCode || "en";
@@ -233,17 +235,31 @@ Your homework is to repeat the following text:
     await sleep(300);
     communicatorRef.current?.triggerAiResponse();
     await sleep(1800);
-    setIsInitializing(false);
+    setIsInitializing("");
     setIsStarted(true);
   };
 
   const onMessage = (message: ChatMessage) => {
     setConversation((prev) => {
       const isExisting = prev.find((m) => m.id === message.id);
+
       if (isExisting) {
         return prev.map((m) => (m.id === message.id ? message : m));
       }
-      return [...prev, message];
+
+      const isEmptyChat = prev.length === 0;
+      const isEmptyNewMessage = message.text.trim() === "";
+
+      return [
+        ...prev,
+        {
+          ...message,
+          text:
+            isEmptyChat && isEmptyNewMessage
+              ? firstPotentialBotMessage.current || "..."
+              : message.text,
+        },
+      ];
     });
   };
 
@@ -292,7 +308,9 @@ Your homework is to repeat the following text:
       let openerInfoPrompt = "Ask the student to describe their day.";
 
       if (userInfo && userInfo.length > 0) {
+        setIsInitializing(`Analyzing info...`);
         const { firstMessage, potentialTopics } = await aiUserInfo.generateFirstMessageText();
+        firstPotentialBotMessage.current = firstMessage;
         startFirstMessage = `"${firstMessage}".`;
 
         openerInfoPrompt = `Info about Student : ${userInfo}. 
@@ -300,6 +318,7 @@ Your homework is to repeat the following text:
 Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
 Don't focus solely on one topic. Try to cover a variety of topics (Example ${potentialTopics}).
   `;
+        setIsInitializing(`Starting conversation...`);
       }
 
       return {
@@ -476,8 +495,9 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
       setIsClosing(false);
       setIsClosed(false);
       setErrorInitiating("");
-      setIsInitializing(true);
+      setIsInitializing(`Loading...`);
       setCurrentMode(mode);
+      firstPotentialBotMessage.current = "";
       const aiRtcConfig = await getAiRtcConfig(mode);
       let instruction = aiRtcConfig.initInstruction;
       setActiveHomework(homework || null);
@@ -529,7 +549,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
       console.error(e);
       alert("Something went wrong. Try again later");
       setErrorInitiating("Something went wrong. Try again later");
-      setIsInitializing(false);
+      setIsInitializing("");
       throw e;
     }
   };
@@ -564,7 +584,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
 
     communicator?.closeHandler();
     setIsStarted(false);
-    setIsInitializing(false);
+    setIsInitializing("");
 
     setConversationId(`${Date.now()}`);
     setConversation([]);
