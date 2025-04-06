@@ -46,17 +46,6 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
     return <RulesToLearn />;
   }
 
-  if (aiConversation.errorInitiating) {
-    return (
-      <InfoBlockedSection title="">
-        <Typography color="error">{aiConversation.errorInitiating}</Typography>
-        <Button variant="contained" onClick={() => window.location.reload()}>
-          {i18n._(`Reload`)}
-        </Button>
-      </InfoBlockedSection>
-    );
-  }
-
   if (!settings.languageCode) {
     return <SelectLanguage />;
   }
