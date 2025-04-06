@@ -233,7 +233,14 @@ export function HeaderComponent({
                 <Button
                   startIcon={<ChevronLeft color="white" size={"30px"} />}
                   disabled={aiConversation.isClosing}
-                  onClick={() => aiConversation.closeConversation()}
+                  onClick={() => {
+                    aiConversation.closeConversation();
+                    //scrollToTop();
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth",
+                    });
+                  }}
                 >
                   <Typography
                     variant="body1"
