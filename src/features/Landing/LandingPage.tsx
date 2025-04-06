@@ -186,7 +186,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Get immediate feedback and explanations on your grammar mistakes as you practice. Enhance your speaking accuracy naturally.`
                 ),
-                img: "/rules.jpeg",
+                img: "/rules.jpg",
                 href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Enhance Your Grammar`),
               },
