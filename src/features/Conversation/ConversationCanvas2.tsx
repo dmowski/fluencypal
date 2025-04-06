@@ -501,6 +501,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                             <Typography
                               variant="body2"
                               component={"div"}
+                              className={
+                                isTranscribing || isAnalyzingResponse ? "loading-shimmer" : ""
+                              }
                               sx={{
                                 fontWeight: 400,
                                 fontSize: "1.1rem",
