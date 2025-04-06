@@ -112,6 +112,11 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
           text: responseString.firstMessage,
           id: `${Date.now()}`,
         },
+        {
+          isBot: true,
+          text: responseString.potentialTopics,
+          id: `${Date.now() + 2}`,
+        },
       ]);
     } else {
       setTestMessage([
