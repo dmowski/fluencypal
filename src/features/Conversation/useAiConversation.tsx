@@ -310,7 +310,7 @@ Your homework is to repeat the following text:
       return {
         ...baseConfig,
         voice: "shimmer",
-        model: MODELS.REALTIME_CONVERSATION,
+        model: MODELS.SMALL_CONVERSATION,
         initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Shimmer". It's first lesson with user.
 Do not teach or explain rules—just talk. You can use user's languages as well (${usersSystemLanguages.join(", ")})
 You should be friendly and engaging.
