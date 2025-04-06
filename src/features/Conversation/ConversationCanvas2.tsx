@@ -374,7 +374,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         ) : (
                           <>
                             {isAnalyzingResponse ? (
-                                <Loader color="#fff" size={"20px"} />
+                              <Loader color="#fff" size={"20px"} />
                             ) : (
                               <Check color="#fff" size={"20px"} />
                             )}
@@ -461,18 +461,12 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                     : 1,
                             }}
                           >
-                            {isTranscribing || isAnalyzingResponse ? (
-                              <Loader color="#c2c2c2" size={"12px"} />
-                            ) : (
-                              <>
-                                {correctedMessage && (
-                                  <AudioPlayIcon
-                                    text={correctedMessage}
-                                    instructions="Calm and clear"
-                                    voice={"coral"}
-                                  />
-                                )}
-                              </>
+                            {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
+                              <AudioPlayIcon
+                                text={correctedMessage}
+                                instructions="Calm and clear"
+                                voice={"coral"}
+                              />
                             )}
                           </Stack>
                         </Stack>
@@ -542,18 +536,12 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                             </Typography>
 
                             <Stack>
-                              {isTranscribing || isAnalyzingResponse ? (
-                                <Loader color="#c2c2c2" size={"12px"} />
-                              ) : (
-                                <>
-                                  {correctedMessage && (
-                                    <AudioPlayIcon
-                                      text={correctedMessage}
-                                      instructions="Calm and clear"
-                                      voice={"coral"}
-                                    />
-                                  )}
-                                </>
+                              {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
+                                <AudioPlayIcon
+                                  text={correctedMessage}
+                                  instructions="Calm and clear"
+                                  voice={"coral"}
+                                />
                               )}
                             </Stack>
                           </Stack>
