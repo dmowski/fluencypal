@@ -381,7 +381,8 @@ ${userInfo}
 ${
   userInfo
     ? `
-Hm... Who is Here again? How are you doing? How's your goals going? Do you want to set new goals?
+Start the conversation with this message:
+Hm... Who is here again? How are you doing? How's your goals going? Do you want to set new goals?
 `
     : `
 Start the conversation with this message:
