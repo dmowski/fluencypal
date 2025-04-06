@@ -259,7 +259,7 @@ export const ConversationSelectCard = () => {
         <ConversationCard
           title={i18n._(`Goal`)}
           subTitle={i18n._(`Set the goal of your learning`)}
-          onClick={() => aiConversation.startConversation({ mode: "beginner" })}
+          onClick={() => aiConversation.startConversation({ mode: "goal" })}
           startColor="#4F46E5"
           endColor="#A78BFA"
           bgColor="#60A5FA"
@@ -269,7 +269,7 @@ export const ConversationSelectCard = () => {
                 style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
                 className="avatar"
               >
-                <img src="/avatar/bot1.png" alt="AI Bot" />
+                <img src="/avatar/map.png" alt="AI Bot" />
               </Stack>
             </Stack>
           }
