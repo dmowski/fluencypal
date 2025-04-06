@@ -220,7 +220,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             gap: "0px",
             alignItems: "center",
             border: "1px solid rgba(255, 255, 255, 0.1)",
-            minHeight: "calc(100dvh - 80px)",
+            minHeight: "calc(100dvh - 110px)",
             justifyContent: "space-between",
 
             "@media (max-width: 600px)": {

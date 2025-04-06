@@ -247,31 +247,13 @@ export function HeaderComponent({
                       color: aiConversation.isClosing ? "#aaa" : "#fff",
                       textDecoration: "none",
                       textTransform: "Capitalize",
-                      "@media (max-width: 650px)": {
-                        display: "none",
-                      },
                     }}
                   >
                     {aiConversation.isClosed
-                      ? "Back"
+                      ? i18n._(`Back`)
                       : aiConversation.isClosing
-                        ? i18n._("Finishing the lesson...")
-                        : i18n._(`Conversation`)}
-                  </Typography>
-
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: "#fff",
-                      textDecoration: "none",
-                      textTransform: "none",
-                      display: "none",
-                      "@media (max-width: 650px)": {
-                        display: "block",
-                      },
-                    }}
-                  >
-                    Back
+                        ? i18n._("Finishing...")
+                        : i18n._(`Back`)}
                   </Typography>
                 </Button>
               </Stack>
