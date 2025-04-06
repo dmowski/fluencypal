@@ -1,8 +1,6 @@
 "use client";
 
-import { useAiConversation } from "@/features/Conversation/useAiConversation";
-
-import { Button, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import { useSettings } from "../Settings/useSettings";
 
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
@@ -25,7 +23,6 @@ interface DashboardProps {
 }
 export function Dashboard({ rolePlayInfo }: DashboardProps) {
   const settings = useSettings();
-  const aiConversation = useAiConversation();
   const words = useWords();
   const rules = useRules();
   const { i18n } = useLingui();
