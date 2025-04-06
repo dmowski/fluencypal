@@ -283,7 +283,6 @@ Your homework is to repeat the following text:
     return baseConfig;
   };
 
-  // todo: Refactor this method to move to getAiRtcConfig
   const getAiRtcConfig = async (mode: ConversationMode): Promise<AiRtcConfig> => {
     const baseConfig = await getBaseRtcConfig();
 
