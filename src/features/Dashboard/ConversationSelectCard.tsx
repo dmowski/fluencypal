@@ -226,7 +226,7 @@ export const ConversationSelectCard = () => {
   const settings = useSettings();
   const userInfo = useAiUserInfo();
 
-  const [isShowOnboardingConfirmation, setIsShowOnboardingConfirmation] = useState(true);
+  const [isShowOnboardingConfirmation, setIsShowOnboardingConfirmation] = useState(false);
 
   const isPassOnboarding = !!userInfo.userInfo?.records?.length;
   const goalCard = (
