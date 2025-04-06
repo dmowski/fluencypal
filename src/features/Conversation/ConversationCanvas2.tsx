@@ -374,9 +374,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         ) : (
                           <>
                             {isAnalyzingResponse ? (
-                              <>
                                 <Loader color="#fff" size={"20px"} />
-                              </>
                             ) : (
                               <Check color="#fff" size={"20px"} />
                             )}
@@ -389,7 +387,16 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       ) : (
                         <>
                           {isAnalyzingResponse ? (
-                            <Typography variant="h6">{i18n._("Analyzing...")}</Typography>
+                            <Typography
+                              className="loading-shimmer"
+                              sx={{
+                                color: "#fff",
+                                display: "inline",
+                              }}
+                              variant="h6"
+                            >
+                              {i18n._("Analyzing...")}
+                            </Typography>
                           ) : (
                             <Typography variant="h6">{i18n._("Great!")}</Typography>
                           )}
@@ -427,6 +434,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                           <Typography
                             variant="body2"
                             component={"div"}
+                            className={isTranscribing ? "loading-shimmer" : ""}
                             sx={{
                               fontWeight: 400,
                               fontSize: "1.1rem",
