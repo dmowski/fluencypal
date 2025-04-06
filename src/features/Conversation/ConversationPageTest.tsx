@@ -103,35 +103,8 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         id: `${Date.now()}`,
       },
     ]);
+    const responseString = await aiUserInfo.generateFirstMessageText();
 
-    const userInfo = aiUserInfo.userInfo;
-    const infoNotes = userInfo?.records || [];
-
-    const firstMessage: string[] = [];
-
-    const systemMessage = `You're Fluency Pal's conversational AI. Create one very short, playful, and open-ended message inspired by just ONE of the user's interests. Keep it simple. No emojis, no symbols, no repetition.
-    `;
-
-    const userMessage = `
-### User Information:
-${infoNotes.map((note) => `- ${note}`).join("\n")}
-
-### Recent Messages (Do NOT repeat):
-${firstMessage.length === 0 ? "None" : firstMessage.map((msg, i) => `${i + 1}. ${msg}`).join("\n")}
-
-### Task:
-Pick ONLY ONE interest and write a short, playful opening message. Use ${settings.fullLanguageName || "English"}.
-
-`;
-
-    const response = await textAi.generate({
-      systemMessage,
-      userMessage,
-      model: "gpt-4o",
-      cache: false,
-    });
-
-    const responseString = response || "";
     if (responseString) {
       setTestMessage([
         {

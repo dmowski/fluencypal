@@ -702,7 +702,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                             flexDirection: "row",
                             gap: "10px",
                             padding: "0 10px 0 0px",
-                            left: "-20px",
+                            left: "-16px",
                             zIndex: 0,
                             "@media (max-width: 600px)": {
                               left: 0,

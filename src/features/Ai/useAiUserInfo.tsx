@@ -1,23 +1,30 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX } from "react";
 import { ChatMessage } from "@/common/conversation";
-import { AiUserInfo, AiUserInfoRecord } from "@/common/userInfo";
+import { AiUserInfo, AiUserInfoRecord, FirstBotConversationMessage } from "@/common/userInfo";
 import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/db";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { useTextAi } from "./useTextAi";
 import { setDoc } from "firebase/firestore";
+import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+import relativeTime from "dayjs/plugin/relativeTime";
+import { useSettings } from "../Settings/useSettings";
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
 
 interface AiUserInfoContextType {
   updateUserInfo: (conversation: ChatMessage[]) => Promise<void>;
   userInfo: AiUserInfo | null;
-  generateConversationOpener: () => Promise<string>;
+  generateFirstMessageText: () => Promise<{ firstMessage: string; potentialTopics: string }>;
 }
 
 const AiUserInfoContext = createContext<AiUserInfoContextType | null>(null);
 
 function useProvideAiUserInfo(): AiUserInfoContextType {
   const auth = useAuth();
+  const settings = useSettings();
   const textAi = useTextAi();
   const dbDocRef = db.documents.aiUserInfo(auth.uid);
   const [userInfo] = useDocumentData<AiUserInfo>(dbDocRef);
@@ -87,21 +94,107 @@ If not relevant information found, return empty array.`;
     );
   };
 
-  const generateConversationOpener = async () => {
+  const addFirstConversationMessage = async (message: string) => {
     if (!dbDocRef) {
-      return "";
+      throw new Error("dbDocRef is not defined | useAiUserInfo.addFirstConversationMessage");
     }
-    const recordsSorted = userInfo?.records || [];
-    const maxCount = 40;
-    const recordsToAnalyze = recordsSorted.slice(0, maxCount);
 
-    return recordsToAnalyze.join(". ");
+    const record: FirstBotConversationMessage = {
+      createdAt: Date.now(),
+      text: message,
+    };
+
+    const oldFirstMessages = userInfo?.firstBotMessages || [];
+    const updatedFirstMessages = [...oldFirstMessages, record];
+    setDoc(
+      dbDocRef,
+      {
+        firstBotMessages: updatedFirstMessages,
+        updatedAt: Date.now(),
+      },
+      { merge: true }
+    );
+  };
+
+  const getLastFirstMessage = async (count: number) => {
+    if (!dbDocRef) {
+      throw new Error("dbDocRef is not defined | useAiUserInfo.getLastFirstMessage");
+    }
+
+    const firstMessages = userInfo?.firstBotMessages || [];
+    const sortedMessage = firstMessages.sort((a, b) => b.createdAt - a.createdAt);
+    const lastMessages = sortedMessage.slice(0, count);
+
+    const lastMessagesText = lastMessages.map((message) => {
+      const timeAgo = dayjs(message.createdAt).fromNow();
+      return message.text + ` (${timeAgo})`;
+    });
+
+    return lastMessagesText;
+  };
+
+  const generateFirstMessageText = async () => {
+    const infoNotes = userInfo?.records || [];
+
+    const firstMessages: string[] = await getLastFirstMessage(4);
+
+    const potentialTopicsToDiscuss = await textAi.generate({
+      systemMessage: `Your are tool to guess the users interests. User will provide list of their interests.
+Your task is to guess the most interesting topic for the user based on their interests.
+Example of input: Football, Learning languages.
+Example of output: Traveling, Events, Concerts
+
+Return list of 6 topics comma separated. Do not add any other wrapper text. 
+Important that your guess should be not straightforward, but interesting and fun.
+`,
+      userMessage: `
+### User Info (Use this to guess the interest):
+${infoNotes.map((note) => `- ${note}`).join("\n")}
+`,
+      model: "gpt-4o",
+      cache: false,
+    });
+
+    const systemMessage = `
+You're Fluency Pal's conversational AI.
+Write ONE playful, extremely short (≤10 words) message starting with a casual greeting like "Hey", "Hi", or a funny greeting phrase.
+Pick only one potential user interest (You need guess it based on user's info).
+Do not reference recent topics at all, because it was already discussed.
+No emojis or symbols. Keep it lightweight, casual, and fresh.
+
+### Potential topics to discuss (Use this to guess the interest):
+${potentialTopicsToDiscuss}
+
+### Task:
+Write ONE extremely short (≤10 words), playful message starting with "Hey", "Hi", or a funny greeting phrase. Use a DIFFERENT, SINGLE interest. Language: ${settings.fullLanguageName || "English"}.
+    `;
+
+    const userMessage = `
+### Recent topics (Already discussed. Strictly avoid them):
+${firstMessages.length === 0 ? "None" : firstMessages.map((msg, i) => `${i + 1}. ${msg}`).join("\n")}
+`;
+
+    const response = await textAi.generate({
+      systemMessage,
+      userMessage,
+      model: "gpt-4o",
+      cache: false,
+    });
+
+    const responseString = response || "";
+
+    await addFirstConversationMessage(responseString);
+
+    return {
+      firstMessage: responseString,
+      potentialTopics: potentialTopicsToDiscuss,
+    };
   };
 
   return {
     userInfo: userInfo || null,
+    generateFirstMessageText,
     updateUserInfo,
-    generateConversationOpener,
   };
 }
 

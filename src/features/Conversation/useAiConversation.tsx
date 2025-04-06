@@ -287,17 +287,21 @@ Your homework is to repeat the following text:
     const baseConfig = await getBaseRtcConfig();
 
     if (mode === "talk") {
-      const firstMessage = userInfo
-        ? `"${firstAiMessage[languageCode]}". You can mention student name if applicable. No need to introduce yourself, user already knows you.`
-        : `"${firstAiMessage[languageCode]}"`;
+      let startFirstMessage = `"${firstAiMessage[languageCode]}"`;
 
-      const openerInfoPrompt = userInfo
-        ? `Info about Student : ${userInfo}. 
+      let openerInfoPrompt = "Ask the student to describe their day.";
+
+      if (userInfo && userInfo.length > 0) {
+        const { firstMessage, potentialTopics } = await aiUserInfo.generateFirstMessageText();
+        startFirstMessage = `"${firstMessage}".`;
+
+        openerInfoPrompt = `Info about Student : ${userInfo}. 
   
 Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
-Don't focus solely on one topic. Try to cover a variety of topics.
-  `
-        : "Ask the student to describe their day.";
+Don't focus solely on one topic. Try to cover a variety of topics (Example ${potentialTopics}).
+  `;
+      }
+
       return {
         ...baseConfig,
         model: aiModal,
@@ -308,9 +312,12 @@ You should be friendly and engaging.
 Don't make user feel like they are being tested and feel stupid.
 If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
-Start the conversation with: ${firstMessage}. Say it in a friendly and calm way, no other words needed for the first hi.
+
 ${userInfo ? "" : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."}
+
 Speak slowly and clearly. Use ${fullLanguageName} language during conversation. Try to speak on user's level.
+
+Start the conversation with exactly this message: ${startFirstMessage} Don't add anything else for the first message.
     `,
       };
     }
@@ -511,7 +518,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
 `;
       }
 
-      console.log("instruction:", { analyzeResultAiInstruction, instruction });
+      console.log("instruction:", instruction);
       const conversation = await initAiRtc({
         ...aiRtcConfig,
         initInstruction: instruction,
