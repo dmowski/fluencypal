@@ -155,3 +155,47 @@ export const GradientBgCard = ({
     </Stack>
   );
 };
+
+interface GradientBgImageCardProps {
+  children?: JSX.Element;
+  onClick: () => void;
+  src: string;
+  backgroundColor: string;
+}
+export const GradientBgImageCard = ({
+  children,
+  onClick,
+  src,
+  backgroundColor,
+}: GradientBgImageCardProps) => {
+  return (
+    <Stack
+      onClick={onClick}
+      component={"button"}
+      sx={{
+        backgroundColor: backgroundColor || "transparent",
+        backgroundImage: `url(${src})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+
+        padding: "0",
+        borderRadius: "16px",
+        gap: "0px",
+        alignItems: "center",
+        justifyContent: "center",
+        border: "1px solid rgba(255, 255, 255, 0.04)",
+        position: "relative",
+        overflow: "hidden",
+        transition: "transform 0.3s ease",
+        cursor: "pointer",
+        color: "#fff",
+        ":hover": {
+          transform: "scale(1.02)",
+        },
+      }}
+    >
+      {children}
+    </Stack>
+  );
+};

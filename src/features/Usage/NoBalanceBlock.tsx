@@ -1,39 +1,83 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useUsage } from "./useUsage";
-import { ChartNoAxesCombined, GraduationCap, Telescope, VenetianMask, Wallet } from "lucide-react";
+import {
+  ChartNoAxesCombined,
+  Flag,
+  GraduationCap,
+  MoveRight,
+  Telescope,
+  VenetianMask,
+  Wallet,
+} from "lucide-react";
 import PsychologyIcon from "@mui/icons-material/Psychology";
 import { JSX } from "react";
 import { ContactList } from "../Landing/Contact/ContactList";
 
 import { UsageStatsCards } from "./UsageStatsCards";
 import { useLingui } from "@lingui/react";
+import { GradientBgCard, GradientBgImageCard } from "../uiKit/Card/GradientBgCard";
 
-const WinCard = ({ title, icon }: { title: string; icon: JSX.Element }) => {
+const WinCard = ({
+  title,
+  icon,
+  subTitle,
+  src,
+  onClick,
+}: {
+  title: string;
+  icon: JSX.Element;
+  subTitle: string;
+  src: string;
+  onClick?: () => void;
+}) => {
   return (
-    <Stack
-      sx={{
-        backgroundColor: "rgba(30, 30, 30, 0.6)",
-        padding: "40px 20px",
-        borderRadius: "10px",
-        gap: "15px",
-        alignItems: "center",
-        justifyContent: "center",
-        border: "1px solid rgba(255, 255, 255, 0.04)",
-        width: "100%",
-        boxSizing: "border-box",
-      }}
-    >
-      <Stack>{icon}</Stack>
-      <Typography
-        align="center"
+    <GradientBgImageCard src={src} onClick={() => onClick?.()} backgroundColor={""}>
+      <Stack
         sx={{
-          fontWeight: 300,
-          opacity: 0.9,
+          alignItems: "center",
+          padding: "40px 0 50px 0",
+          gap: "10px",
         }}
       >
-        {title}
-      </Typography>
-    </Stack>
+        {icon}
+        <Stack
+          sx={{
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            align="center"
+            sx={{
+              fontWeight: 900,
+              fontSize: "3rem",
+              lineHeight: "1",
+              "@media (max-width: 1100px)": {
+                fontSize: "3rem",
+              },
+              "@media (max-width: 900px)": {
+                fontSize: "2.1rem",
+              },
+              "@media (max-width: 650px)": {
+                fontSize: "3rem",
+              },
+            }}
+          >
+            {title}
+          </Typography>
+          <Typography
+            align="center"
+            variant="caption"
+            sx={{
+              fontWeight: 300,
+              opacity: 0.9,
+              textTransform: "uppercase",
+            }}
+          >
+            {subTitle}
+          </Typography>
+        </Stack>
+      </Stack>
+    </GradientBgImageCard>
   );
 };
 
@@ -125,23 +169,61 @@ export const NoBalanceBlock = () => {
               display: "grid",
               gridTemplateColumns: "1fr 1fr 1fr",
               gap: "20px",
-              "@media (max-width: 600px)": {
+              "@media (max-width: 700px)": {
                 gridTemplateColumns: "1fr",
               },
             }}
           >
             <WinCard
+              onClick={() => usage.togglePaymentModal(true)}
+              title={i18n._("TALK")}
+              subTitle={i18n._("Conversations with AI")}
               icon={
                 <PsychologyIcon
-                  sx={{
-                    fontSize: "50px",
+                  style={{
+                    width: "90px",
+                    height: "90px",
+                    fontSize: "90px",
+                    color: "#fff",
                   }}
                 />
               }
-              title={i18n._("Conversations with AI")}
+              src={"/blur/1.jpg"}
             />
-            <WinCard icon={<VenetianMask size={50} />} title={i18n._("Role-play simulations")} />
-            <WinCard icon={<ChartNoAxesCombined size={50} />} title={i18n._("Progress tracking")} />
+
+            <WinCard
+              onClick={() => usage.togglePaymentModal(true)}
+              title={i18n._("PLAY")}
+              subTitle={i18n._("Role-play simulations")}
+              icon={
+                <VenetianMask
+                  style={{
+                    width: "90px",
+                    height: "90px",
+                    fontSize: "90px",
+                    color: "#fff",
+                  }}
+                />
+              }
+              src={"/blur/2.jpg"}
+            />
+
+            <WinCard
+              onClick={() => usage.togglePaymentModal(true)}
+              title={i18n._("ITERATE")}
+              subTitle={i18n._("Feedback on your progress")}
+              icon={
+                <ChartNoAxesCombined
+                  style={{
+                    width: "90px",
+                    height: "90px",
+                    fontSize: "90px",
+                    color: "#fff",
+                  }}
+                />
+              }
+              src={"/blur/3.jpg"}
+            />
           </Stack>
         </Stack>
 
