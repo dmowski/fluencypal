@@ -109,7 +109,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
       setTestMessage([
         {
           isBot: true,
-          text: responseString,
+          text: responseString.firstMessage,
           id: `${Date.now()}`,
         },
       ]);
