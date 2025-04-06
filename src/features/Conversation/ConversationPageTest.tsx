@@ -69,7 +69,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     previousBotMessage: string;
     message: string;
   }) => {
-    await sleep(1000);
+    await sleep(100);
     return {
       correctedMessage: message, //"Nice to be here!",
       description: "Need to pay attention to the grammar",
@@ -109,28 +109,26 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
 
     const firstMessage: string[] = [];
 
-    const systemMessage = `You are Fluency Pal's conversational AI, designed to engage users with concise, playful, and open-ended messages. Subtly reference the user's interests or recent activities to personalize interactions. Ensure each opening message is unique, avoiding repetition of the initial messages from the last four conversations.
-`;
-    const userMessage = `### User Information:
+    const systemMessage = `You're Fluency Pal's conversational AI. Create one very short, playful, and open-ended message inspired by just ONE of the user's interests. Keep it simple. No emojis, no symbols, no repetition.
+    `;
+
+    const userMessage = `
+### User Information:
 ${infoNotes.map((note) => `- ${note}`).join("\n")}
 
-
-### Recent First Messages (DO NOT REPEAT OR CLOSELY COPY THESE):
-${firstMessage.length === 0 ? "No previous messages" : ""}
-${firstMessage.map((message, index) => `${index + 1}. ${message}`).join("\n")}
+### Recent Messages (Do NOT repeat):
+${firstMessage.length === 0 ? "None" : firstMessage.map((msg, i) => `${i + 1}. ${msg}`).join("\n")}
 
 ### Task:
-Generate one concise, playful, and open-ended first message that subtly relates to the user's interests but expands into new topics.
+Pick ONLY ONE interest and write a short, playful opening message. Use ${settings.fullLanguageName || "English"}.
 
-### Language:
-Use ${settings.fullLanguageName || "English"} for the message.
 `;
 
     const response = await textAi.generate({
       systemMessage,
       userMessage,
       model: "gpt-4o",
-      cache: true,
+      cache: false,
     });
 
     const responseString = response || "";
