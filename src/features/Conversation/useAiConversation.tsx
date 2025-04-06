@@ -286,18 +286,14 @@ Your homework is to repeat the following text:
   const getAiRtcConfig = async (mode: ConversationMode): Promise<AiRtcConfig> => {
     const baseConfig = await getBaseRtcConfig();
 
-    const openerInfoPrompt = userInfo
-      ? `Student info: ${userInfo}. 
-  
-  Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
-  Don't focus solely on one topic. Try to cover a variety of topics.
-  `
-      : "Ask the student to describe their day.";
-
     if (mode === "talk") {
       const firstMessage = userInfo
         ? `"${firstAiMessage[languageCode]}". You can mention student name if applicable. No need to introduce yourself, user already knows you.`
         : `"${firstAiMessage[languageCode]}"`;
+
+      const openerInfoPrompt = userInfo
+        ? `Info about Student : ${userInfo}.`
+        : "Ask the student to describe their day.";
       return {
         ...baseConfig,
         model: aiModal,
@@ -360,7 +356,6 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
         model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher.
   Your name is "Bruno". Your role is to make user talks.
-  ${openerInfoPrompt}
   Do not teach or explain rules—just talk.
   You should be friendly and engaging.
   Don't make user feel like they are being tested and feel stupid.
