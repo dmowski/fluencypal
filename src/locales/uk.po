@@ -13,10 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:337
+#: src/features/Conversation/ConversationPage.tsx:59
 #. js-lingui-explicit-id
-msgid "Error during analyzing message"
-msgstr "Помилка під час аналізу повідомлення"
+msgid "Oops! Something went wrong"
+msgstr "Ой! Щось пішло не так"
+
+#: src/features/Conversation/ConversationPage.tsx:63
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "Будь ласка, оновіть сторінку та спробуйте ще раз"
+
+#: src/features/Conversation/ConversationPage.tsx:73
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "Перезавантажте сторінку"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -34,7 +44,7 @@ msgstr "Зв'яжіться з FluencyPal для будь-яких запиті�
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:64
+#: src/features/Dashboard/ConversationSelectCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Практика"
@@ -425,7 +435,7 @@ msgid "Your achievements"
 msgstr "Ваші досягнення"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
-#: src/features/Dashboard/ConversationSelectCard.tsx:232
+#: src/features/Dashboard/ConversationSelectCard.tsx:193
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Слова"
@@ -688,8 +698,8 @@ msgstr "Історія платежів:"
 
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:622
-#: src/features/Dashboard/Dashboard.tsx:36
 #: src/features/Conversation/ConversationPage.tsx:35
+#: src/features/Conversation/ConversationPage.tsx:80
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Завантаження..."
@@ -1707,7 +1717,7 @@ msgstr "Всі сценарії"
 
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayBoard.tsx:622
-#: src/features/Dashboard/ConversationSelectCard.tsx:118
+#: src/features/Dashboard/ConversationSelectCard.tsx:153
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Почати"
@@ -1937,7 +1947,7 @@ msgid "Get started free"
 msgstr "Почати безкоштовно"
 
 #: src/features/Landing/LandingPage.tsx:144
-#: src/features/Dashboard/ConversationSelectCard.tsx:162
+#: src/features/Dashboard/ConversationSelectCard.tsx:169
 #. js-lingui-explicit-id
 msgid "Beginner"
 msgstr "Початківець"
@@ -2761,7 +2771,7 @@ msgid "Finishing the lesson..."
 msgstr "Завершення уроку..."
 
 #: src/features/Header/HeaderComponent.tsx:253
-#: src/features/Dashboard/ConversationSelectCard.tsx:127
+#: src/features/Dashboard/ConversationSelectCard.tsx:158
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Розмова"
@@ -2819,7 +2829,7 @@ msgid "Rule of the day"
 msgstr "Правило дня"
 
 #: src/features/Dashboard/TasksCard.tsx:52
-#: src/features/Dashboard/ConversationSelectCard.tsx:198
+#: src/features/Dashboard/ConversationSelectCard.tsx:183
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "Отримайте особисте правило граматики для вивчення"
@@ -2836,7 +2846,7 @@ msgid "New words"
 msgstr "Нові слова"
 
 #: src/features/Dashboard/TasksCard.tsx:62
-#: src/features/Dashboard/ConversationSelectCard.tsx:233
+#: src/features/Dashboard/ConversationSelectCard.tsx:194
 #. js-lingui-explicit-id
 msgid "Practice new vocabulary with the AI"
 msgstr "Практикуйте нову лексику з ШІ"
@@ -2886,62 +2896,57 @@ msgstr "Пропустити"
 msgid "Show all"
 msgstr "Показати все"
 
-#: src/features/Dashboard/Dashboard.tsx:40
+#: src/features/Dashboard/Dashboard.tsx:31
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Створення нових слів..."
 
-#: src/features/Dashboard/Dashboard.tsx:44
+#: src/features/Dashboard/Dashboard.tsx:35
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Створення нового правила..."
 
-#: src/features/Dashboard/Dashboard.tsx:60
-#. js-lingui-explicit-id
-msgid "Reload"
-msgstr "Перезавантажити"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:91
+#: src/features/Dashboard/ConversationSelectCard.tsx:146
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Мета"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:92
+#: src/features/Dashboard/ConversationSelectCard.tsx:147
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "Встановіть мету вашого навчання"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:128
+#: src/features/Dashboard/ConversationSelectCard.tsx:159
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "Говоріть з ІІ, і вона відповість вам"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:154
+#: src/features/Dashboard/ConversationSelectCard.tsx:165
 #. js-lingui-explicit-id
 msgid "Start Talking"
 msgstr "Почніть Говорити"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:163
+#: src/features/Dashboard/ConversationSelectCard.tsx:170
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
 msgstr "AI проведе вас через розмову"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:189
+#: src/features/Dashboard/ConversationSelectCard.tsx:178
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Керуйте мною"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:197
+#: src/features/Dashboard/ConversationSelectCard.tsx:182
 #. js-lingui-explicit-id
 msgid "Rules"
 msgstr "Правила"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:224
+#: src/features/Dashboard/ConversationSelectCard.tsx:189
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "Отримайте правило"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:259
+#: src/features/Dashboard/ConversationSelectCard.tsx:200
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "Розширте словник"
@@ -3062,6 +3067,11 @@ msgstr "Менше"
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Більше"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:337
+#. js-lingui-explicit-id
+msgid "Error during analyzing message"
+msgstr "Помилка під час аналізу повідомлення"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:391
 #. js-lingui-explicit-id
@@ -4339,6 +4349,11 @@ msgstr "Продовжити з Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Створюючи обліковий запис, ви погоджуєтеся на:"
+
+#: src/features/Dashboard/Dashboard.tsx:60
+#. js-lingui-explicit-id
+#~ msgid "Reload"
+#~ msgstr "Перезавантажити"
 
 #: src/features/Usage/NoBalanceBlock.tsx:214
 #. js-lingui-explicit-id

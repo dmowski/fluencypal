@@ -13,10 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:337
+#: src/features/Conversation/ConversationPage.tsx:59
 #. js-lingui-explicit-id
-msgid "Error during analyzing message"
-msgstr "Erro durante a análise da mensagem"
+msgid "Oops! Something went wrong"
+msgstr "Ops! Algo deu errado"
+
+#: src/features/Conversation/ConversationPage.tsx:63
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "Por favor, atualize a página e tente mais uma vez"
+
+#: src/features/Conversation/ConversationPage.tsx:73
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "Recarregar página"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -36,7 +46,7 @@ msgstr ""
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:64
+#: src/features/Dashboard/ConversationSelectCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Praticar"
@@ -426,7 +436,7 @@ msgid "Your achievements"
 msgstr "As suas conquistas"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
-#: src/features/Dashboard/ConversationSelectCard.tsx:232
+#: src/features/Dashboard/ConversationSelectCard.tsx:193
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Palavras"
@@ -693,8 +703,8 @@ msgstr "Histórico de pagamento:"
 
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:622
-#: src/features/Dashboard/Dashboard.tsx:36
 #: src/features/Conversation/ConversationPage.tsx:35
+#: src/features/Conversation/ConversationPage.tsx:80
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Carregando..."
@@ -1728,7 +1738,7 @@ msgstr "Todos os Cenários"
 
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayBoard.tsx:622
-#: src/features/Dashboard/ConversationSelectCard.tsx:118
+#: src/features/Dashboard/ConversationSelectCard.tsx:153
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Iniciar"
@@ -1959,7 +1969,7 @@ msgid "Get started free"
 msgstr "Comece grátis"
 
 #: src/features/Landing/LandingPage.tsx:144
-#: src/features/Dashboard/ConversationSelectCard.tsx:162
+#: src/features/Dashboard/ConversationSelectCard.tsx:169
 #. js-lingui-explicit-id
 msgid "Beginner"
 msgstr "Iniciante"
@@ -2780,7 +2790,7 @@ msgid "Finishing the lesson..."
 msgstr "Finalizando a aula..."
 
 #: src/features/Header/HeaderComponent.tsx:253
-#: src/features/Dashboard/ConversationSelectCard.tsx:127
+#: src/features/Dashboard/ConversationSelectCard.tsx:158
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Conversa"
@@ -2838,7 +2848,7 @@ msgid "Rule of the day"
 msgstr "Regra do dia"
 
 #: src/features/Dashboard/TasksCard.tsx:52
-#: src/features/Dashboard/ConversationSelectCard.tsx:198
+#: src/features/Dashboard/ConversationSelectCard.tsx:183
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "Obtenha uma regra gramatical pessoal para aprender"
@@ -2855,7 +2865,7 @@ msgid "New words"
 msgstr "Novas palavras"
 
 #: src/features/Dashboard/TasksCard.tsx:62
-#: src/features/Dashboard/ConversationSelectCard.tsx:233
+#: src/features/Dashboard/ConversationSelectCard.tsx:194
 #. js-lingui-explicit-id
 msgid "Practice new vocabulary with the AI"
 msgstr "Pratique novo vocabulário com a IA"
@@ -2905,62 +2915,57 @@ msgstr "Pular"
 msgid "Show all"
 msgstr "Mostrar tudo"
 
-#: src/features/Dashboard/Dashboard.tsx:40
+#: src/features/Dashboard/Dashboard.tsx:31
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Criando novas palavras..."
 
-#: src/features/Dashboard/Dashboard.tsx:44
+#: src/features/Dashboard/Dashboard.tsx:35
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Criando nova regra..."
 
-#: src/features/Dashboard/Dashboard.tsx:60
-#. js-lingui-explicit-id
-msgid "Reload"
-msgstr "Recarregar"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:91
+#: src/features/Dashboard/ConversationSelectCard.tsx:146
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Meta"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:92
+#: src/features/Dashboard/ConversationSelectCard.tsx:147
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "Defina o objetivo do seu aprendizado"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:128
+#: src/features/Dashboard/ConversationSelectCard.tsx:159
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "Fale com a IA e ela responderá a você"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:154
+#: src/features/Dashboard/ConversationSelectCard.tsx:165
 #. js-lingui-explicit-id
 msgid "Start Talking"
 msgstr "Comece a Falar"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:163
+#: src/features/Dashboard/ConversationSelectCard.tsx:170
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
 msgstr "O AI irá conduzi-lo através da conversa"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:189
+#: src/features/Dashboard/ConversationSelectCard.tsx:178
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Guie-me"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:197
+#: src/features/Dashboard/ConversationSelectCard.tsx:182
 #. js-lingui-explicit-id
 msgid "Rules"
 msgstr "Regras"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:224
+#: src/features/Dashboard/ConversationSelectCard.tsx:189
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "Obtenha uma regra"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:259
+#: src/features/Dashboard/ConversationSelectCard.tsx:200
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "Expandir vocabulário"
@@ -3081,6 +3086,11 @@ msgstr "Menos"
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Mais"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:337
+#. js-lingui-explicit-id
+msgid "Error during analyzing message"
+msgstr "Erro durante a análise da mensagem"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:391
 #. js-lingui-explicit-id
@@ -4366,6 +4376,11 @@ msgstr "Continue com o Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Ao criar uma conta, você concorda em:"
+
+#: src/features/Dashboard/Dashboard.tsx:60
+#. js-lingui-explicit-id
+#~ msgid "Reload"
+#~ msgstr "Recarregar"
 
 #: src/features/Usage/NoBalanceBlock.tsx:214
 #. js-lingui-explicit-id

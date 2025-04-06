@@ -13,10 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:337
+#: src/features/Conversation/ConversationPage.tsx:59
 #. js-lingui-explicit-id
-msgid "Error during analyzing message"
-msgstr "Ralat semasa menganalisis mesej"
+msgid "Oops! Something went wrong"
+msgstr "Oops! Ada yang tidak kena"
+
+#: src/features/Conversation/ConversationPage.tsx:63
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "Sila segarkan halaman dan cuba sekali lagi"
+
+#: src/features/Conversation/ConversationPage.tsx:73
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "Muat semula halaman"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -36,7 +46,7 @@ msgstr ""
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:64
+#: src/features/Dashboard/ConversationSelectCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Amalan"
@@ -428,7 +438,7 @@ msgid "Your achievements"
 msgstr "Pencapaian anda"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
-#: src/features/Dashboard/ConversationSelectCard.tsx:232
+#: src/features/Dashboard/ConversationSelectCard.tsx:193
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Kata-kata"
@@ -697,8 +707,8 @@ msgstr "Sejarah pembayaran:"
 
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:622
-#: src/features/Dashboard/Dashboard.tsx:36
 #: src/features/Conversation/ConversationPage.tsx:35
+#: src/features/Conversation/ConversationPage.tsx:80
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Loading..."
@@ -1745,7 +1755,7 @@ msgstr "Semua Senario"
 
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayBoard.tsx:622
-#: src/features/Dashboard/ConversationSelectCard.tsx:118
+#: src/features/Dashboard/ConversationSelectCard.tsx:153
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Mula"
@@ -1975,7 +1985,7 @@ msgid "Get started free"
 msgstr "Dapatkan bermula secara percuma"
 
 #: src/features/Landing/LandingPage.tsx:144
-#: src/features/Dashboard/ConversationSelectCard.tsx:162
+#: src/features/Dashboard/ConversationSelectCard.tsx:169
 #. js-lingui-explicit-id
 msgid "Beginner"
 msgstr "Pemula"
@@ -2801,7 +2811,7 @@ msgid "Finishing the lesson..."
 msgstr "Menyelesaikan pelajaran..."
 
 #: src/features/Header/HeaderComponent.tsx:253
-#: src/features/Dashboard/ConversationSelectCard.tsx:127
+#: src/features/Dashboard/ConversationSelectCard.tsx:158
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Perbualan"
@@ -2859,7 +2869,7 @@ msgid "Rule of the day"
 msgstr "Peraturan hari ini"
 
 #: src/features/Dashboard/TasksCard.tsx:52
-#: src/features/Dashboard/ConversationSelectCard.tsx:198
+#: src/features/Dashboard/ConversationSelectCard.tsx:183
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "Dapatkan peraturan tatabahasa peribadi untuk dipelajari"
@@ -2876,7 +2886,7 @@ msgid "New words"
 msgstr "Perkataan baru"
 
 #: src/features/Dashboard/TasksCard.tsx:62
-#: src/features/Dashboard/ConversationSelectCard.tsx:233
+#: src/features/Dashboard/ConversationSelectCard.tsx:194
 #. js-lingui-explicit-id
 msgid "Practice new vocabulary with the AI"
 msgstr "Amalkan perbendaharaan kata baru dengan AI"
@@ -2926,62 +2936,57 @@ msgstr "Skip"
 msgid "Show all"
 msgstr "Tunjukkan semua"
 
-#: src/features/Dashboard/Dashboard.tsx:40
+#: src/features/Dashboard/Dashboard.tsx:31
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Mencipta perkataan baru..."
 
-#: src/features/Dashboard/Dashboard.tsx:44
+#: src/features/Dashboard/Dashboard.tsx:35
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Membentuk peraturan baru..."
 
-#: src/features/Dashboard/Dashboard.tsx:60
-#. js-lingui-explicit-id
-msgid "Reload"
-msgstr "Reload"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:91
+#: src/features/Dashboard/ConversationSelectCard.tsx:146
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Matlamat"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:92
+#: src/features/Dashboard/ConversationSelectCard.tsx:147
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "Tetapkan matlamat pembelajaran anda"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:128
+#: src/features/Dashboard/ConversationSelectCard.tsx:159
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "Bercakap dengan AI dan ia akan memberi maklum balas kepada anda"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:154
+#: src/features/Dashboard/ConversationSelectCard.tsx:165
 #. js-lingui-explicit-id
 msgid "Start Talking"
 msgstr "Mula Berbicara"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:163
+#: src/features/Dashboard/ConversationSelectCard.tsx:170
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
 msgstr "AI akan membimbing anda melalui perbualan"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:189
+#: src/features/Dashboard/ConversationSelectCard.tsx:178
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Pandu saya"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:197
+#: src/features/Dashboard/ConversationSelectCard.tsx:182
 #. js-lingui-explicit-id
 msgid "Rules"
 msgstr "Peraturan"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:224
+#: src/features/Dashboard/ConversationSelectCard.tsx:189
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "Dapatkan peraturan"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:259
+#: src/features/Dashboard/ConversationSelectCard.tsx:200
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "Kembangkan perbendaharaan kata"
@@ -3102,6 +3107,11 @@ msgstr "Kurang"
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Lebih"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:337
+#. js-lingui-explicit-id
+msgid "Error during analyzing message"
+msgstr "Ralat semasa menganalisis mesej"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:391
 #. js-lingui-explicit-id
@@ -4416,6 +4426,11 @@ msgstr "Teruskan dengan google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Dengan mencipta akaun, anda bersetuju untuk:"
+
+#: src/features/Dashboard/Dashboard.tsx:60
+#. js-lingui-explicit-id
+#~ msgid "Reload"
+#~ msgstr "Reload"
 
 #: src/features/Usage/NoBalanceBlock.tsx:214
 #. js-lingui-explicit-id

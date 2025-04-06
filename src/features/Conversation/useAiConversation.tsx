@@ -302,6 +302,14 @@ Your homework is to repeat the following text:
   const getAiRtcConfig = async (mode: ConversationMode): Promise<AiRtcConfig> => {
     const baseConfig = await getBaseRtcConfig();
 
+    if (mode === "goal") {
+      return {
+        ...baseConfig,
+        model: MODELS.SMALL_CONVERSATION,
+        initInstruction: ``,
+      };
+    }
+
     if (mode === "talk") {
       let startFirstMessage = `"${firstAiMessage[languageCode]}"`;
 
