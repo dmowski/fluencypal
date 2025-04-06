@@ -26,7 +26,6 @@ import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { firstAiMessage } from "@/common/lang";
-import { useLingui } from "@lingui/react";
 
 const aiModal = MODELS.SMALL_CONVERSATION;
 
