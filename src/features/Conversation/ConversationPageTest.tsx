@@ -6,9 +6,11 @@ import { sleep } from "openai/core.mjs";
 import { ConversationCanvas2 } from "./ConversationCanvas2";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAiConversation } from "./useAiConversation";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
+import { useSettings } from "../Settings/useSettings";
+import { useTextAi } from "../Ai/useTextAi";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -17,19 +19,20 @@ interface ConversationPageTestProps {
 
 export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTestProps) {
   const aiUserInfo = useAiUserInfo();
-  const testMessage: ChatMessage[] = [];
-  for (let i = 0; i < 15; i += 2) {
-    testMessage.push({
+  const settings = useSettings();
+  const textAi = useTextAi();
+  const [testMessage, setTestMessage] = useState<ChatMessage[]>([
+    {
       isBot: true,
       text: `Hello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\n`,
-      id: `${i}`,
-    });
-    testMessage.push({
+      id: "1",
+    },
+    {
       isBot: false,
       text: `I do well, thank you! Hello\n`,
-      id: `${i + 1}`,
-    });
-  }
+      id: `2`,
+    },
+  ]);
 
   const showGame = false;
   const gameStat: GuessGameStat | null = showGame
@@ -92,6 +95,64 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     </Stack>
   );
 
+  const generateFirstMessage = async () => {
+    setTestMessage([
+      {
+        isBot: true,
+        text: `Loading...\n`,
+        id: `${Date.now()}`,
+      },
+    ]);
+
+    const userInfo = aiUserInfo.userInfo;
+    const infoNotes = userInfo?.records || [];
+
+    const firstMessage: string[] = [];
+
+    const systemMessage = `You are Fluency Pal's conversational AI, designed to engage users with concise, playful, and open-ended messages. Subtly reference the user's interests or recent activities to personalize interactions. Ensure each opening message is unique, avoiding repetition of the initial messages from the last four conversations.
+`;
+    const userMessage = `### User Information:
+${infoNotes.map((note) => `- ${note}`).join("\n")}
+
+
+### Recent First Messages (DO NOT REPEAT OR CLOSELY COPY THESE):
+${firstMessage.length === 0 ? "No previous messages" : ""}
+${firstMessage.map((message, index) => `${index + 1}. ${message}`).join("\n")}
+
+### Task:
+Generate one concise, playful, and open-ended first message that subtly relates to the user's interests but expands into new topics.
+
+### Language:
+Use ${settings.fullLanguageName || "English"} for the message.
+`;
+
+    const response = await textAi.generate({
+      systemMessage,
+      userMessage,
+      model: "gpt-4o",
+      cache: true,
+    });
+
+    const responseString = response || "";
+    if (responseString) {
+      setTestMessage([
+        {
+          isBot: true,
+          text: responseString,
+          id: `${Date.now()}`,
+        },
+      ]);
+    } else {
+      setTestMessage([
+        {
+          isBot: true,
+          text: `Sorry, I couldn't generate a message. Please try again.`,
+          id: `${Date.now()}`,
+        },
+      ]);
+    }
+  };
+
   return (
     <Stack>
       <ConversationCanvas2
@@ -104,7 +165,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         isClosed={false}
         isClosing={false}
         isSavingHomework={false}
-        addUserMessage={async () => alert("Message added")}
+        addUserMessage={generateFirstMessage}
         balanceHours={0.2}
         togglePaymentModal={() => alert("Payment modal toggled")}
         isRecording={false}
