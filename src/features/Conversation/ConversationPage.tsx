@@ -14,6 +14,8 @@ import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { ConversationCanvas2 } from "./ConversationCanvas2";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { useCorrections } from "../Corrections/useCorrections";
+import { useLingui } from "@lingui/react";
+import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -27,27 +29,11 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const usage = useUsage();
   const recorder = useAudioRecorder();
   const corrections = useCorrections();
+  const { i18n } = useLingui();
 
-  if (settings.loading || auth.loading)
-    return (
-      <Stack
-        sx={{
-          height: "100vh",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Typography
-          sx={{
-            padding: "20px",
-            opacity: 0.3,
-          }}
-          align="center"
-        >
-          {auth.loading ? "Loading..." : "Loading."}
-        </Typography>
-      </Stack>
-    );
+  if (settings.loading || auth.loading) {
+    return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+  }
   if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
   if (!usage.loading && usage.balanceHours <= 0.01) return <NoBalanceBlock />;
 

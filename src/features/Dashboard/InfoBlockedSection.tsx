@@ -22,9 +22,12 @@ export const InfoBlockedSection = ({
       <Typography
         sx={{
           padding: "20px",
-          opacity: 0.3,
+          opacity: 0.4,
+          fontSize: "1.1rem",
+          fontWeight: 350,
         }}
         align="center"
+        className="loading-shimmer"
       >
         {title}
       </Typography>
