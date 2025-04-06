@@ -71,6 +71,7 @@ const AiConversationContext = createContext<AiConversationContextType | null>(nu
 
 const modesWithHomework: ConversationMode[] = ["talk", "talkAndCorrect", "beginner"];
 const modesToExtractUserInfo: ConversationMode[] = ["talk", "talkAndCorrect", "beginner"];
+const isNeedToGenerateFirstMessage: ConversationMode[] = ["talk", "beginner"];
 
 function useProvideAiConversation(): AiConversationContextType {
   const [isInitializing, setIsInitializing] = useState(false);
@@ -263,8 +264,8 @@ Your homework is to repeat the following text:
     setIsMutedDueToNoBalance(true);
   }, [isLowBalance]);
 
-  const aiRtcConfigs: Record<ConversationMode, AiRtcConfig> = useMemo(() => {
-    const baseConfig = {
+  const getBaseRtcConfig = async () => {
+    const baseConfig: AiRtcConfig = {
       model: aiModal,
       initInstruction: "",
       aiTools: baseAiTools,
@@ -277,27 +278,28 @@ Your homework is to repeat the following text:
       isVolumeOn,
       onAddUsage: (usageLog: UsageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
       languageCode: settings.languageCode || "en",
-      authToken: "",
+      authToken: await auth.getToken(),
     };
+    return baseConfig;
+  };
+
+  // todo: Refactor this method to move to getAiRtcConfig
+  const getAiRtcConfig = async (mode: ConversationMode): Promise<AiRtcConfig> => {
+    const baseConfig = await getBaseRtcConfig();
 
     const openerInfoPrompt = userInfo
       ? `Student info: ${userInfo}. 
-
-Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
-Don't focus solely on one topic. Try to cover a variety of topics.
-`
+  
+  Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
+  Don't focus solely on one topic. Try to cover a variety of topics.
+  `
       : "Ask the student to describe their day.";
 
-    const firstMessage = userInfo
-      ? `"${firstAiMessage[languageCode]}". You can mention student name if applicable. No need to introduce yourself, user already knows you.`
-      : `"${firstAiMessage[languageCode]}"`;
-
-    const firstCorrectionMessage = userInfo
-      ? `"${firstAiMessage[languageCode]}". You can mention student name if applicable. No need to introduce yourself, user already knows you. Not needed provide correction for the first message`
-      : `"${firstAiMessage[languageCode]}"`;
-
-    const config: Record<ConversationMode, AiRtcConfig> = {
-      talk: {
+    if (mode === "talk") {
+      const firstMessage = userInfo
+        ? `"${firstAiMessage[languageCode]}". You can mention student name if applicable. No need to introduce yourself, user already knows you.`
+        : `"${firstAiMessage[languageCode]}"`;
+      return {
         ...baseConfig,
         model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". Your role is to make user talks.
@@ -309,93 +311,36 @@ If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
 Start the conversation with: ${firstMessage}. Say it in a friendly and calm way, no other words needed for the first hi.
 ${userInfo ? "" : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."}
-Speak slowly and clearly. Use ${fullLanguageName} language. Try to speak on user's level.
+Speak slowly and clearly. Use ${fullLanguageName} language during conversation. Try to speak on user's level.
+    `,
+      };
+    }
+    if (mode === "role-play") {
+      return {
+        ...baseConfig,
+        model: MODELS.SMALL_CONVERSATION,
+        initInstruction: ``,
+      };
+    }
 
-Use ${fullLanguageName} language during conversation.
-`,
-      },
-
-      magic: {
+    if (mode === "rule") {
+      return {
         ...baseConfig,
         model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher.
-Your name is "Bruno". Your role is to make user talks.
-${openerInfoPrompt}
-Do not teach or explain rules—just talk.
-You should be friendly and engaging.
-Don't make user feel like they are being tested and feel stupid.
-If you feel that the user is struggling, you can propose a new topic.
-Engage in a natural conversation without making it feel like a lesson.
-Start the conversation with: ${firstMessage}. Say it in a friendly and calm way, no other words needed for the first hi.
-${userInfo ? "" : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."}
-Speak slowly and clearly. Use ${fullLanguageName} language. Try to speak on user's level.
+  Your name is "Bruno".
+  The user wants to learn a new rule.
+  Start your lesson be introducing the rule with short explanation.
+  Then, ask user to use these rules in sentences.
+  Craft a lesson that will help user to understand the rule.
+  
+  ${userInfo ? `Student info: ${userInfo}` : ""}
+  `,
+      };
+    }
 
-Use ${fullLanguageName} language during conversation.
-
-Important moment that along with user's messages, you will be receiving information from webcamera.
-Response to it in funny and engaging way.
-`,
-      },
-      talkAndCorrect: {
-        ...baseConfig,
-        voice: "shimmer",
-        model: aiModal,
-        initInstruction: `You are an ${fullLanguageName} teacher.
-Your name is "Shimmer". The user wants both a conversation and corrections.
-
-For every user message, you must reply with following parts in one response:
-
-1. Response: React to the user's message. You can comment, show interest, or share a short thought. Keep it friendly and supportive.
-
-2. Correction: If the user made mistakes, tell them where a mistake was made and provide the corrected version. Ask user to repeat corrected version.
-
-
-Use only ${fullLanguageName} language.
-Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
-
-Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
-Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
-
-Start the conversation with simple phrase: ${firstCorrectionMessage}. You are lead of conversation, because you are teacher.
-
-${userInfo ? `Info about student: ${userInfo}` : ""}
-`,
-      },
-      beginner: {
-        ...baseConfig,
-        model: aiModal,
-        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". The user is a beginner who needs simple, clear communication.
-
-For every user message, reply with **three parts** in a single response:
-
-1) **Response**: 
-   - Greet or acknowledge the user's statement in a friendly, supportive way. 
-   - Use short, simple sentences and basic vocabulary.
-
-2) **Question**: 
-   - Ask a gentle, open-ended question related to the user's statement. 
-   - Keep it simple and avoid complex grammar or advanced vocabulary.
-
-3) **Example of Answer**: 
-   - Provide a short, sample answer that the user might give. 
-   - This helps them see how they could respond in ${fullLanguageName}. 
-   - Keep it very simple. For instance, "I went to the store."
-
-Remember:
-- Speak slowly and clearly, using only ${fullLanguageName}.
-- Use short sentences and simple words.
-- Avoid detailed grammar explanations. 
-- Do not overwhelm the user.
-- Keep the conversation upbeat and encouraging.
-
-${userInfo ? `Student info: ${userInfo}` : ""}
-
-Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly and calm way, no other words needed for the initial greeting).
-
-
-`,
-      },
-      words: {
+    if (mode === "words") {
+      return {
         ...baseConfig,
         model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher.
@@ -407,30 +352,101 @@ Go step by step, word by word.
 
 ${userInfo ? `Student info: ${userInfo}` : ""}
 `,
-      },
+      };
+    }
 
-      rule: {
+    if (mode === "magic") {
+      return {
         ...baseConfig,
         model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher.
-Your name is "Bruno".
-The user wants to learn a new rule.
-Start your lesson be introducing the rule with short explanation.
-Then, ask user to use these rules in sentences.
-Craft a lesson that will help user to understand the rule.
-
-${userInfo ? `Student info: ${userInfo}` : ""}
-`,
-      },
-
-      "role-play": {
+  Your name is "Bruno". Your role is to make user talks.
+  ${openerInfoPrompt}
+  Do not teach or explain rules—just talk.
+  You should be friendly and engaging.
+  Don't make user feel like they are being tested and feel stupid.
+  If you feel that the user is struggling, you can propose a new topic.
+  Engage in a natural conversation without making it feel like a lesson.
+  Start the conversation with: Hello. Say it in a friendly and calm way, no other words needed for the first hi.
+  ${userInfo ? "" : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."}
+  Speak slowly and clearly. Use ${fullLanguageName} language. Try to speak on user's level.
+  
+  Use ${fullLanguageName} language during conversation.
+  
+  Important moment that along with user's messages, you will be receiving information from webcamera.
+  Response to it in funny and engaging way.
+  `,
+      };
+    }
+    if (mode === "talkAndCorrect") {
+      const firstCorrectionMessage = userInfo
+        ? `"${firstAiMessage[languageCode]}". You can mention student name if applicable. No need to introduce yourself, user already knows you. Not needed provide correction for the first message`
+        : `"${firstAiMessage[languageCode]}"`;
+      return {
         ...baseConfig,
-        model: MODELS.SMALL_CONVERSATION,
-        initInstruction: ``,
-      },
-    };
-    return config;
-  }, [fullLanguageName, userInfo, isVolumeOn, isMuted]);
+        voice: "shimmer",
+        model: aiModal,
+        initInstruction: `You are an ${fullLanguageName} teacher.
+  Your name is "Shimmer". The user wants both a conversation and corrections.
+  
+  For every user message, you must reply with following parts in one response:
+  
+  1. Response: React to the user's message. You can comment, show interest, or share a short thought. Keep it friendly and supportive.
+  
+  2. Correction: If the user made mistakes, tell them where a mistake was made and provide the corrected version. Ask user to repeat corrected version.
+  
+  
+  Use only ${fullLanguageName} language.
+  Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
+  
+  Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
+  Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
+  
+  Start the conversation with simple phrase: ${firstCorrectionMessage}. You are lead of conversation, because you are teacher.
+  
+  ${userInfo ? `Info about student: ${userInfo}` : ""}
+  `,
+      };
+    }
+    if (mode === "beginner") {
+      return {
+        ...baseConfig,
+        model: aiModal,
+        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". The user is a beginner who needs simple, clear communication.
+  
+  For every user message, reply with **three parts** in a single response:
+  
+  1) **Response**: 
+     - Greet or acknowledge the user's statement in a friendly, supportive way. 
+     - Use short, simple sentences and basic vocabulary.
+  
+  2) **Question**: 
+     - Ask a gentle, open-ended question related to the user's statement. 
+     - Keep it simple and avoid complex grammar or advanced vocabulary.
+  
+  3) **Example of Answer**: 
+     - Provide a short, sample answer that the user might give. 
+     - This helps them see how they could respond in ${fullLanguageName}. 
+     - Keep it very simple. For instance, "I went to the store."
+  
+  Remember:
+  - Speak slowly and clearly, using only ${fullLanguageName}.
+  - Use short sentences and simple words.
+  - Avoid detailed grammar explanations. 
+  - Do not overwhelm the user.
+  - Keep the conversation upbeat and encouraging.
+  
+  ${userInfo ? `Student info: ${userInfo}` : ""}
+  
+  Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly and calm way, no other words needed for the initial greeting).
+  
+  
+  `,
+      };
+    }
+
+    throw new Error(`Unknown mode: ${mode}`);
+  };
 
   const [currentMode, setCurrentMode] = useState<ConversationMode>("talk");
 
@@ -444,20 +460,13 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
     gameWords,
     analyzeResultAiInstruction,
   }: StartConversationProps) => {
+    if (!settings.languageCode) throw new Error("Language is not set | startConversation");
+
     setAnalyzeResultInstruction(analyzeResultAiInstruction || "");
-
-    if (analyzeResultAiInstruction) {
+    if (analyzeResultAiInstruction)
       console.log("analyzeResultAiInstruction", analyzeResultAiInstruction);
-    }
 
-    if (!settings.languageCode) {
-      throw new Error("Language is not set | startConversation");
-    }
-    if (gameWords) {
-      setGameStat(gameWords);
-    } else {
-      setGameStat(null);
-    }
+    setGameStat(gameWords ? gameWords : null);
 
     try {
       setConversation([]);
@@ -466,7 +475,7 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
       setErrorInitiating("");
       setIsInitializing(true);
       setCurrentMode(mode);
-      const aiRtcConfig = aiRtcConfigs[mode];
+      const aiRtcConfig = await getAiRtcConfig(mode);
       let instruction = aiRtcConfig.initInstruction;
       setActiveHomework(homework || null);
       if (homework) {
@@ -504,22 +513,22 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
 `;
       }
 
-      console.log("instruction:");
-      console.log(instruction);
-      const authToken = await auth.getToken();
+      console.log("instruction:", { analyzeResultAiInstruction, instruction });
       const conversation = await initAiRtc({
         ...aiRtcConfig,
         initInstruction: instruction,
         voice: aiRtcConfig.voice || voice,
         isMuted: true,
-        authToken,
+        authToken: await auth.getToken(),
       });
       history.createConversation({ conversationId, languageCode: settings.languageCode, mode });
       setCommunicator(conversation);
     } catch (e) {
-      console.log(e);
+      console.error(e);
+      alert("Something went wrong. Try again later");
       setErrorInitiating("Something went wrong. Try again later");
       setIsInitializing(false);
+      throw e;
     }
   };
 
