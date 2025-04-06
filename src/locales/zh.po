@@ -13,10 +13,30 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Header/HeaderComponent.tsx:255
+#: src/features/Landing/WelcomeScreen.tsx:197
 #. js-lingui-explicit-id
-msgid "Finishing..."
-msgstr "完成中..."
+msgid "Guide Me"
+msgstr "指导我"
+
+#: src/features/Landing/WelcomeScreen.tsx:217
+#. js-lingui-explicit-id
+msgid "Get a Rule"
+msgstr "获取规则"
+
+#: src/features/Landing/WelcomeScreen.tsx:237
+#. js-lingui-explicit-id
+msgid "Expand Vocabulary"
+msgstr "扩大词汇量"
+
+#: src/features/Landing/WelcomeScreen.tsx:242
+#. js-lingui-explicit-id
+msgid "Real-life situations with the AI"
+msgstr "真实生活情境下的AI"
+
+#: src/features/Landing/WelcomeScreen.tsx:257
+#. js-lingui-explicit-id
+msgid "Play a Role"
+msgstr "扮演一个角色"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -34,7 +54,7 @@ msgstr "与 FluencyPal 联系，获取任何咨询、支持或反馈。"
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:365
+#: src/features/Dashboard/ConversationSelectCard.tsx:159
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "练习"
@@ -408,7 +428,8 @@ msgid "Your achievements"
 msgstr "你的成就"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
-#: src/features/Dashboard/ConversationSelectCard.tsx:473
+#: src/features/Landing/WelcomeScreen.tsx:221
+#: src/features/Dashboard/ConversationSelectCard.tsx:267
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "单词"
@@ -1556,6 +1577,7 @@ msgid "Start"
 msgstr "开始"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:388
+#: src/features/Landing/WelcomeScreen.tsx:241
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "角色扮演"
@@ -1605,6 +1627,75 @@ msgstr "为您推荐："
 msgid "Other languages:"
 msgstr "其他语言："
 
+#: src/features/Landing/WelcomeScreen.tsx:142
+#: src/features/Dashboard/ConversationSelectCard.tsx:33
+#. js-lingui-explicit-id
+msgid "Goal"
+msgstr "目标"
+
+#: src/features/Landing/WelcomeScreen.tsx:143
+#: src/features/Dashboard/ConversationSelectCard.tsx:34
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "设置你的学习目标"
+
+#: src/features/Landing/WelcomeScreen.tsx:158
+#: src/features/Dashboard/ConversationSelectCard.tsx:49
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "开始 | 5 分钟"
+
+#: src/features/Landing/WelcomeScreen.tsx:162
+#: src/features/Dashboard/ConversationSelectCard.tsx:191
+#. js-lingui-explicit-id
+msgid "Conversation"
+msgstr "对话"
+
+#: src/features/Landing/WelcomeScreen.tsx:163
+#: src/features/Dashboard/ConversationSelectCard.tsx:192
+#. js-lingui-explicit-id
+msgid "Talk to the AI and it will respond to you"
+msgstr "与AI交谈，它将会回复您"
+
+#: src/features/Landing/WelcomeScreen.tsx:177
+#: src/features/Dashboard/ConversationSelectCard.tsx:213
+#. js-lingui-explicit-id
+msgid "Start Talking"
+msgstr "开始对话"
+
+#: src/features/Landing/WelcomeScreen.tsx:181
+#: src/features/Landing/LandingPage.tsx:145
+#: src/features/Dashboard/ConversationSelectCard.tsx:217
+#. js-lingui-explicit-id
+msgid "Beginner"
+msgstr "初学者"
+
+#: src/features/Landing/WelcomeScreen.tsx:182
+#: src/features/Dashboard/ConversationSelectCard.tsx:218
+#. js-lingui-explicit-id
+msgid "AI will lead you through the conversation"
+msgstr "AI将引导你进行对话"
+
+#: src/features/Landing/WelcomeScreen.tsx:201
+#: src/features/Dashboard/ConversationSelectCard.tsx:243
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "规则"
+
+#: src/features/Landing/WelcomeScreen.tsx:202
+#: src/features/Dashboard/TasksCard.tsx:52
+#: src/features/Dashboard/ConversationSelectCard.tsx:244
+#. js-lingui-explicit-id
+msgid "Get a personal grammar rule to learn"
+msgstr "获取个人语法规则以学习"
+
+#: src/features/Landing/WelcomeScreen.tsx:222
+#: src/features/Dashboard/TasksCard.tsx:62
+#: src/features/Dashboard/ConversationSelectCard.tsx:268
+#. js-lingui-explicit-id
+msgid "Practice new vocabulary with the AI"
+msgstr "使用AI练习新词汇"
+
 #: src/features/Landing/LandingPage.tsx:25
 #: src/features/Landing/LandingPage.tsx:123
 #. js-lingui-explicit-id
@@ -1624,13 +1715,13 @@ msgstr ""
 "供即时纠正，帮助您自信地说话。"
 
 #: src/features/Landing/LandingPage.tsx:46
-#: src/features/Landing/LandingPage.tsx:229
+#: src/features/Landing/LandingPage.tsx:230
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
 msgstr "FluencyPal是什么？"
 
 #: src/features/Landing/LandingPage.tsx:49
-#: src/features/Landing/LandingPage.tsx:232
+#: src/features/Landing/LandingPage.tsx:233
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal is an AI-powered English conversation practice app designed for "
@@ -1640,13 +1731,13 @@ msgid ""
 msgstr "FluencyPal 是一款由人工智能驱动的英语对话练习应用，专为中级和高级学习者设计。它提供多语言的真实对话练习，并对口语和发音提供即时反馈。"
 
 #: src/features/Landing/LandingPage.tsx:56
-#: src/features/Landing/LandingPage.tsx:239
+#: src/features/Landing/LandingPage.tsx:240
 #. js-lingui-explicit-id
 msgid "How does usage-based pricing work?"
 msgstr "基于使用量的定价是如何运作的？"
 
 #: src/features/Landing/LandingPage.tsx:59
-#: src/features/Landing/LandingPage.tsx:242
+#: src/features/Landing/LandingPage.tsx:243
 #. js-lingui-explicit-id
 msgid ""
 "You receive a free initial balance to explore FluencyPal. Each conversation "
@@ -1655,13 +1746,13 @@ msgid ""
 msgstr "您将获得免费的初始余额，以探索 FluencyPal。每次对话实时消耗您的余额中的代币，您可以随时轻松充值积分。"
 
 #: src/features/Landing/LandingPage.tsx:66
-#: src/features/Landing/LandingPage.tsx:249
+#: src/features/Landing/LandingPage.tsx:250
 #. js-lingui-explicit-id
 msgid "Is there a free trial?"
 msgstr "是否有免费试用？"
 
 #: src/features/Landing/LandingPage.tsx:69
-#: src/features/Landing/LandingPage.tsx:252
+#: src/features/Landing/LandingPage.tsx:253
 #. js-lingui-explicit-id
 msgid ""
 "Yes, FluencyPal offers a complimentary balance to let you try "
@@ -1669,7 +1760,7 @@ msgid ""
 msgstr "是的，FluencyPal 提供免费余额，让您尝试对话练习，并在充值之前了解平台的运作方式。"
 
 #: src/features/Landing/LandingPage.tsx:76
-#: src/features/Landing/LandingPage.tsx:259
+#: src/features/Landing/LandingPage.tsx:260
 #. js-lingui-explicit-id
 msgid "Can I practice languages other than English?"
 msgstr "我可以练习除了英语的其他语言吗？"
@@ -1683,7 +1774,7 @@ msgid ""
 msgstr "当然！ FluencyPal 支持多种语言，并根据您选择的语言和熟练程度调整对话。可用语言包括："
 
 #: src/features/Landing/LandingPage.tsx:89
-#: src/features/Landing/LandingPage.tsx:279
+#: src/features/Landing/LandingPage.tsx:280
 #. js-lingui-explicit-id
 msgid "What learning modes are available?"
 msgstr "有什么学习模式可供选择？"
@@ -1697,13 +1788,13 @@ msgid ""
 msgstr "FluencyPal提供三种模式：休闲对话用于不间断的口语练习，谈话与纠正用于即时的语法和发音反馈，以及初学者模式用于较慢的、有指导的对话。"
 
 #: src/features/Landing/LandingPage.tsx:99
-#: src/features/Landing/LandingPage.tsx:302
+#: src/features/Landing/LandingPage.tsx:303
 #. js-lingui-explicit-id
 msgid "How do daily tasks help me improve?"
 msgstr "日常任务如何帮助我提升？"
 
 #: src/features/Landing/LandingPage.tsx:102
-#: src/features/Landing/LandingPage.tsx:305
+#: src/features/Landing/LandingPage.tsx:306
 #. js-lingui-explicit-id
 msgid ""
 "Daily conversational tasks introduce new vocabulary and language "
@@ -1711,7 +1802,7 @@ msgid ""
 msgstr "每日对话任务引入新词汇和语言结构，加强您的技能，并加速流利度的提高。"
 
 #: src/features/Landing/LandingPage.tsx:127
-#: src/features/Dashboard/ConversationSelectCard.tsx:329
+#: src/features/Dashboard/ConversationSelectCard.tsx:123
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "开始使用"
@@ -1737,12 +1828,12 @@ msgstr "查看定价"
 msgid "No Credit Card Needed"
 msgstr "无需信用卡"
 
-#: src/features/Landing/LandingPage.tsx:135
+#: src/features/Landing/LandingPage.tsx:136
 #. js-lingui-explicit-id
 msgid "Speak Fluent English with Confidence"
 msgstr "用自信流利地说英语"
 
-#: src/features/Landing/LandingPage.tsx:136
+#: src/features/Landing/LandingPage.tsx:137
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal offers realistic conversational practice in English, Spanish, "
@@ -1750,72 +1841,66 @@ msgid ""
 "feedback, and improve your speaking skills anytime, anywhere."
 msgstr "FluencyPal提供真实的英语、 西班牙语、法语等语言的对话练习。参与沉浸式的角色扮演场景，随时随地获取即时反馈，提升你的口语技能。"
 
-#: src/features/Landing/LandingPage.tsx:139
+#: src/features/Landing/LandingPage.tsx:140
 #. js-lingui-explicit-id
 msgid "Get started free"
 msgstr "开始免费体验"
 
-#: src/features/Landing/LandingPage.tsx:144
-#: src/features/Dashboard/ConversationSelectCard.tsx:423
-#. js-lingui-explicit-id
-msgid "Beginner"
-msgstr "初学者"
-
-#: src/features/Landing/LandingPage.tsx:145
+#: src/features/Landing/LandingPage.tsx:146
 #. js-lingui-explicit-id
 msgid ""
 "Practice slow, guided conversations with simpler vocabulary. Perfect for "
 "building a solid foundation in any language."
 msgstr "练习慢速、引导式的对话，使用更简单的词汇。非常适合在任何语言中建立坚实的基础。"
 
-#: src/features/Landing/LandingPage.tsx:151
+#: src/features/Landing/LandingPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Instant Corrections"
 msgstr "即时纠正"
 
-#: src/features/Landing/LandingPage.tsx:152
+#: src/features/Landing/LandingPage.tsx:153
 #. js-lingui-explicit-id
 msgid ""
 "Speak freely while the AI teacher highlights mistakes in real time—ideal "
 "for fast improvement and building confidence."
 msgstr "随意表达，AI教师会实时纠正错误——非常适合快速提高和建立信心。"
 
-#: src/features/Landing/LandingPage.tsx:158
+#: src/features/Landing/LandingPage.tsx:159
 #: src/features/Landing/Price/PricePage.tsx:212
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "高级"
 
-#: src/features/Landing/LandingPage.tsx:159
+#: src/features/Landing/LandingPage.tsx:160
 #. js-lingui-explicit-id
 msgid ""
 "Enjoy fast-paced, natural conversations to refine fluency and sound like a "
 "native speaker. Perfect for challenging your skills."
 msgstr "享受快速自然的对话，以提高流利度并听起来像母语者。这是挑战您技能的完美方式。"
 
-#: src/features/Landing/LandingPage.tsx:167
+#: src/features/Landing/LandingPage.tsx:168
 #. js-lingui-explicit-id
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "四种 FluencyPal 提升您的口语技能的方法"
 
-#: src/features/Landing/LandingPage.tsx:168
+#: src/features/Landing/LandingPage.tsx:169
 #. js-lingui-explicit-id
 msgid ""
 "Target the specific skills you need—speaking, grammar, vocabulary, and "
 "progress tracking—to achieve online English fluency faster."
 msgstr "针对您需要的具体技能——口语、语法、词汇和进度跟踪——以更快地实现在线英语流利。"
 
-#: src/features/Landing/LandingPage.tsx:173
+#: src/features/Landing/LandingPage.tsx:174
 #. js-lingui-explicit-id
 msgid "Speaking"
 msgstr "说话"
 
-#: src/features/Landing/LandingPage.tsx:174
+#: src/features/Landing/LandingPage.tsx:175
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
 msgstr "快速实现口语流利"
 
-#: src/features/Landing/LandingPage.tsx:175
+#: src/features/Landing/LandingPage.tsx:176
 #. js-lingui-explicit-id
 msgid ""
 "Practice realistic conversations tailored to your skill level. FluencyPal "
@@ -1823,165 +1908,165 @@ msgid ""
 "confidence."
 msgstr "练习符合您技能水平的真实对话。FluencyPal 自然回应，强调改进的领域，并增强您的自信心。"
 
-#: src/features/Landing/LandingPage.tsx:180
+#: src/features/Landing/LandingPage.tsx:181
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "开始口语练习"
 
-#: src/features/Landing/LandingPage.tsx:183
+#: src/features/Landing/LandingPage.tsx:184
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "语法"
 
-#: src/features/Landing/LandingPage.tsx:184
+#: src/features/Landing/LandingPage.tsx:185
 #. js-lingui-explicit-id
 msgid "Instant Grammar Corrections"
 msgstr "即时语法纠正"
 
-#: src/features/Landing/LandingPage.tsx:185
+#: src/features/Landing/LandingPage.tsx:186
 #. js-lingui-explicit-id
 msgid ""
 "Get immediate feedback and explanations on your grammar mistakes as you "
 "practice. Enhance your speaking accuracy naturally."
 msgstr "获得即时反馈和解释，帮助您纠正语法错误。自然提高您的口语准确性。"
 
-#: src/features/Landing/LandingPage.tsx:190
+#: src/features/Landing/LandingPage.tsx:191
 #. js-lingui-explicit-id
 msgid "Enhance Your Grammar"
 msgstr "增强您的语法"
 
-#: src/features/Landing/LandingPage.tsx:193
+#: src/features/Landing/LandingPage.tsx:194
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "词汇"
 
-#: src/features/Landing/LandingPage.tsx:194
+#: src/features/Landing/LandingPage.tsx:195
 #. js-lingui-explicit-id
 msgid "Grow Your Vocabulary Daily"
 msgstr "每天扩充你的词汇量"
 
-#: src/features/Landing/LandingPage.tsx:195
+#: src/features/Landing/LandingPage.tsx:196
 #. js-lingui-explicit-id
 msgid ""
 "Receive personalized vocabulary tailored to your conversational needs. Use "
 "new words immediately to reinforce learning."
 msgstr "接收量身定制的个人词汇，以满足您的对话需求。立即使用新单词以加强学习。"
 
-#: src/features/Landing/LandingPage.tsx:200
+#: src/features/Landing/LandingPage.tsx:201
 #. js-lingui-explicit-id
 msgid "Expand Your Vocabulary"
 msgstr "扩大你的词汇量"
 
-#: src/features/Landing/LandingPage.tsx:203
+#: src/features/Landing/LandingPage.tsx:204
 #. js-lingui-explicit-id
 msgid "Progress Tracking"
 msgstr "进度追踪"
 
-#: src/features/Landing/LandingPage.tsx:204
+#: src/features/Landing/LandingPage.tsx:205
 #. js-lingui-explicit-id
 msgid "Track Your Fluency Progress"
 msgstr "跟踪您的流利度进度"
 
-#: src/features/Landing/LandingPage.tsx:205
+#: src/features/Landing/LandingPage.tsx:206
 #. js-lingui-explicit-id
 msgid ""
 "Visualize your daily progress with intuitive tracking. Stay motivated by "
 "clearly seeing your improvements."
 msgstr "可视化您的每日进展，使用直观的跟踪功能。通过清晰地看到您的改善，保持动力。"
 
-#: src/features/Landing/LandingPage.tsx:210
+#: src/features/Landing/LandingPage.tsx:211
 #. js-lingui-explicit-id
 msgid "Check Your Progress"
 msgstr "检查您的进展"
 
-#: src/features/Landing/LandingPage.tsx:215
+#: src/features/Landing/LandingPage.tsx:216
 #. js-lingui-explicit-id
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "真实生活角色扮演以进行高级英语练习"
 
-#: src/features/Landing/LandingPage.tsx:216
+#: src/features/Landing/LandingPage.tsx:217
 #. js-lingui-explicit-id
 msgid ""
 "Practice speaking fluently in real-world scenarios like job interviews, "
 "business meetings, and everyday conversations."
 msgstr "在工作面试、商务会议和日常对话等现实场景中练习流利地说话。"
 
-#: src/features/Landing/LandingPage.tsx:219
+#: src/features/Landing/LandingPage.tsx:220
 #. js-lingui-explicit-id
 msgid "Explore Role-Play Scenarios"
 msgstr "探索角色扮演场景"
 
-#: src/features/Landing/LandingPage.tsx:220
+#: src/features/Landing/LandingPage.tsx:221
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "寻找特定内容吗？"
 
-#: src/features/Landing/LandingPage.tsx:221
+#: src/features/Landing/LandingPage.tsx:222
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "创建您自己的场景"
 
-#: src/features/Landing/LandingPage.tsx:222
+#: src/features/Landing/LandingPage.tsx:223
 #. js-lingui-explicit-id
 msgid "Master English Fluency"
 msgstr "掌握英语流利度"
 
-#: src/features/Landing/LandingPage.tsx:226
+#: src/features/Landing/LandingPage.tsx:227
 #: src/features/Landing/Price/PricePage.tsx:757
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "常见问题解答"
 
-#: src/features/Landing/LandingPage.tsx:263
+#: src/features/Landing/LandingPage.tsx:264
 #. js-lingui-explicit-id
 msgid ""
 "Absolutely! FluencyPal supports various languages and adjusts conversations "
 "based on your chosen language and proficiency level."
 msgstr "当然！FluencyPal 支持多种语言，并根据您选择的语言和熟练程度调整对话。"
 
-#: src/features/Landing/LandingPage.tsx:269
+#: src/features/Landing/LandingPage.tsx:270
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Available languages:"
 msgstr "可用语言："
 
-#: src/features/Landing/LandingPage.tsx:284
+#: src/features/Landing/LandingPage.tsx:285
 #. js-lingui-explicit-id
 msgid "Casual Conversation:"
 msgstr "休闲对话："
 
-#: src/features/Landing/LandingPage.tsx:285
+#: src/features/Landing/LandingPage.tsx:286
 #. js-lingui-explicit-id
 msgid "Practice speaking fluently without interruptions."
 msgstr "练习流利地说话，毫不间断。"
 
-#: src/features/Landing/LandingPage.tsx:288
+#: src/features/Landing/LandingPage.tsx:289
 #. js-lingui-explicit-id
 msgid "Talk & Correct:"
 msgstr "对话与纠正："
 
-#: src/features/Landing/LandingPage.tsx:289
+#: src/features/Landing/LandingPage.tsx:290
 #. js-lingui-explicit-id
 msgid "Receive detailed feedback on grammar and pronunciation instantly."
 msgstr "立即获得有关语法和发音的详细反馈。"
 
-#: src/features/Landing/LandingPage.tsx:294
+#: src/features/Landing/LandingPage.tsx:295
 #. js-lingui-explicit-id
 msgid "Beginner Mode:"
 msgstr "初学者模式："
 
-#: src/features/Landing/LandingPage.tsx:295
+#: src/features/Landing/LandingPage.tsx:296
 #. js-lingui-explicit-id
 msgid "Slower conversations with guided support."
 msgstr "与指导支持的更慢的对话。"
 
-#: src/features/Landing/LandingPage.tsx:314
+#: src/features/Landing/LandingPage.tsx:315
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:414
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "准备好流利地说英语了吗？"
 
-#: src/features/Landing/LandingPage.tsx:315
+#: src/features/Landing/LandingPage.tsx:316
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:415
 #. js-lingui-explicit-id
 msgid "Start Your Free Trial"
@@ -2525,6 +2610,11 @@ msgstr "删除账户"
 msgid "Back"
 msgstr "返回"
 
+#: src/features/Header/HeaderComponent.tsx:255
+#. js-lingui-explicit-id
+msgid "Finishing..."
+msgstr "完成中..."
+
 #: src/features/Header/Header.tsx:15
 #. js-lingui-explicit-id
 msgid "Role-Plays"
@@ -2571,12 +2661,6 @@ msgstr "每日任务"
 msgid "Rule of the day"
 msgstr "今日规则"
 
-#: src/features/Dashboard/TasksCard.tsx:52
-#: src/features/Dashboard/ConversationSelectCard.tsx:450
-#. js-lingui-explicit-id
-msgid "Get a personal grammar rule to learn"
-msgstr "获取个人语法规则以学习"
-
 #: src/features/Dashboard/TasksCard.tsx:56
 #: src/features/Dashboard/TasksCard.tsx:64
 #. js-lingui-explicit-id
@@ -2587,12 +2671,6 @@ msgstr "完成之前的任务。"
 #. js-lingui-explicit-id
 msgid "New words"
 msgstr "新单词"
-
-#: src/features/Dashboard/TasksCard.tsx:62
-#: src/features/Dashboard/ConversationSelectCard.tsx:474
-#. js-lingui-explicit-id
-msgid "Practice new vocabulary with the AI"
-msgstr "使用AI练习新词汇"
 
 #: src/features/Dashboard/SelectLanguage.tsx:25
 #. js-lingui-explicit-id
@@ -2649,89 +2727,49 @@ msgstr "正在创造新词……"
 msgid "Crafting new rule..."
 msgstr "正在制定新规则..."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:239
-#. js-lingui-explicit-id
-msgid "Goal"
-msgstr "目标"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:240
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "设置你的学习目标"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:255
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "开始 | 5 分钟"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:277
+#: src/features/Dashboard/ConversationSelectCard.tsx:71
 #. js-lingui-explicit-id
 msgid "Before we start..."
 msgstr "在我们开始之前..."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:279
+#: src/features/Dashboard/ConversationSelectCard.tsx:73
 #. js-lingui-explicit-id
 msgid "Could you please set your goal?"
 msgstr "您能设定您的目标吗？"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:307
+#: src/features/Dashboard/ConversationSelectCard.tsx:101
 #. js-lingui-explicit-id
 msgid ""
 "We need to know a little bit about you, so that our AI can help you learn "
 "better."
 msgstr "我们需要了解您一些信息，这样我们的AI就可以更好地帮助您学习。"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:317
+#: src/features/Dashboard/ConversationSelectCard.tsx:111
 #. js-lingui-explicit-id
 msgid ""
 "Even during onboarding, you will get practice and our AI will help you "
 "correct grammar."
 msgstr "即使在入职培训期间，你也将得到实践，我们的AI将帮助你纠正语法。"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:397
-#. js-lingui-explicit-id
-msgid "Conversation"
-msgstr "对话"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:398
-#. js-lingui-explicit-id
-msgid "Talk to the AI and it will respond to you"
-msgstr "与AI交谈，它将会回复您"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:408
-#: src/features/Dashboard/ConversationSelectCard.tsx:434
-#: src/features/Dashboard/ConversationSelectCard.tsx:458
-#: src/features/Dashboard/ConversationSelectCard.tsx:482
+#: src/features/Dashboard/ConversationSelectCard.tsx:202
+#: src/features/Dashboard/ConversationSelectCard.tsx:228
+#: src/features/Dashboard/ConversationSelectCard.tsx:252
+#: src/features/Dashboard/ConversationSelectCard.tsx:276
 #. js-lingui-explicit-id
 msgid "Set the goal to start"
 msgstr "设置开始的目标"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:419
-#. js-lingui-explicit-id
-msgid "Start Talking"
-msgstr "开始对话"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:424
-#. js-lingui-explicit-id
-msgid "AI will lead you through the conversation"
-msgstr "AI将引导你进行对话"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:445
+#: src/features/Dashboard/ConversationSelectCard.tsx:239
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "指导我"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:449
-#. js-lingui-explicit-id
-msgid "Rules"
-msgstr "规则"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:469
+#: src/features/Dashboard/ConversationSelectCard.tsx:263
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "获取规则"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:493
+#: src/features/Dashboard/ConversationSelectCard.tsx:287
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "扩展词汇"

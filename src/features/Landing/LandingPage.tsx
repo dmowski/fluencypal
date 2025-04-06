@@ -130,6 +130,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             noCreditCardNeededTitle={i18n._(`No Credit Card Needed`)}
             pricingLink={`${getUrlStart(lang)}pricing`}
             practiceLink={`${getUrlStart(lang)}practice`}
+            lang={lang}
           />
           <IntroVideoDemo
             title={i18n._(`Speak Fluent English with Confidence`)}

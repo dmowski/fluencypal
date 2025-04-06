@@ -13,10 +13,30 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Header/HeaderComponent.tsx:255
+#: src/features/Landing/WelcomeScreen.tsx:197
 #. js-lingui-explicit-id
-msgid "Finishing..."
-msgstr "Fullfører..."
+msgid "Guide Me"
+msgstr "Veilede Meg"
+
+#: src/features/Landing/WelcomeScreen.tsx:217
+#. js-lingui-explicit-id
+msgid "Get a Rule"
+msgstr "Få en Regel"
+
+#: src/features/Landing/WelcomeScreen.tsx:237
+#. js-lingui-explicit-id
+msgid "Expand Vocabulary"
+msgstr "Utvid ordforråd"
+
+#: src/features/Landing/WelcomeScreen.tsx:242
+#. js-lingui-explicit-id
+msgid "Real-life situations with the AI"
+msgstr "Virkelige situasjoner med AI"
+
+#: src/features/Landing/WelcomeScreen.tsx:257
+#. js-lingui-explicit-id
+msgid "Play a Role"
+msgstr "Spill en Rolle"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -36,7 +56,7 @@ msgstr ""
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:365
+#: src/features/Dashboard/ConversationSelectCard.tsx:159
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Øv"
@@ -423,7 +443,8 @@ msgid "Your achievements"
 msgstr "Dine prestasjoner"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
-#: src/features/Dashboard/ConversationSelectCard.tsx:473
+#: src/features/Landing/WelcomeScreen.tsx:221
+#: src/features/Dashboard/ConversationSelectCard.tsx:267
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Ord"
@@ -1706,6 +1727,7 @@ msgid "Start"
 msgstr "Start"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:388
+#: src/features/Landing/WelcomeScreen.tsx:241
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Rolle Spill"
@@ -1755,6 +1777,75 @@ msgstr "Foreslått for deg:"
 msgid "Other languages:"
 msgstr "Andre språk:"
 
+#: src/features/Landing/WelcomeScreen.tsx:142
+#: src/features/Dashboard/ConversationSelectCard.tsx:33
+#. js-lingui-explicit-id
+msgid "Goal"
+msgstr "Mål"
+
+#: src/features/Landing/WelcomeScreen.tsx:143
+#: src/features/Dashboard/ConversationSelectCard.tsx:34
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Sett målet for læringen din"
+
+#: src/features/Landing/WelcomeScreen.tsx:158
+#: src/features/Dashboard/ConversationSelectCard.tsx:49
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "Start | 5 min"
+
+#: src/features/Landing/WelcomeScreen.tsx:162
+#: src/features/Dashboard/ConversationSelectCard.tsx:191
+#. js-lingui-explicit-id
+msgid "Conversation"
+msgstr "Samtale"
+
+#: src/features/Landing/WelcomeScreen.tsx:163
+#: src/features/Dashboard/ConversationSelectCard.tsx:192
+#. js-lingui-explicit-id
+msgid "Talk to the AI and it will respond to you"
+msgstr "Snakk med AI-en, så vil den svare deg."
+
+#: src/features/Landing/WelcomeScreen.tsx:177
+#: src/features/Dashboard/ConversationSelectCard.tsx:213
+#. js-lingui-explicit-id
+msgid "Start Talking"
+msgstr "Start Snakking"
+
+#: src/features/Landing/WelcomeScreen.tsx:181
+#: src/features/Landing/LandingPage.tsx:145
+#: src/features/Dashboard/ConversationSelectCard.tsx:217
+#. js-lingui-explicit-id
+msgid "Beginner"
+msgstr "Beginner"
+
+#: src/features/Landing/WelcomeScreen.tsx:182
+#: src/features/Dashboard/ConversationSelectCard.tsx:218
+#. js-lingui-explicit-id
+msgid "AI will lead you through the conversation"
+msgstr "AI vil lede deg gjennom samtalen"
+
+#: src/features/Landing/WelcomeScreen.tsx:201
+#: src/features/Dashboard/ConversationSelectCard.tsx:243
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "Regler"
+
+#: src/features/Landing/WelcomeScreen.tsx:202
+#: src/features/Dashboard/TasksCard.tsx:52
+#: src/features/Dashboard/ConversationSelectCard.tsx:244
+#. js-lingui-explicit-id
+msgid "Get a personal grammar rule to learn"
+msgstr "Få en personlig grammatikkregel å lære"
+
+#: src/features/Landing/WelcomeScreen.tsx:222
+#: src/features/Dashboard/TasksCard.tsx:62
+#: src/features/Dashboard/ConversationSelectCard.tsx:268
+#. js-lingui-explicit-id
+msgid "Practice new vocabulary with the AI"
+msgstr "Øv på nytt ordforråd med AI-en"
+
 #: src/features/Landing/LandingPage.tsx:25
 #: src/features/Landing/LandingPage.tsx:123
 #. js-lingui-explicit-id
@@ -1776,13 +1867,13 @@ msgstr ""
 "hjelper deg å snakke med selvtillit."
 
 #: src/features/Landing/LandingPage.tsx:46
-#: src/features/Landing/LandingPage.tsx:229
+#: src/features/Landing/LandingPage.tsx:230
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
 msgstr "Hva er FluencyPal?"
 
 #: src/features/Landing/LandingPage.tsx:49
-#: src/features/Landing/LandingPage.tsx:232
+#: src/features/Landing/LandingPage.tsx:233
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal is an AI-powered English conversation practice app designed for "
@@ -1795,13 +1886,13 @@ msgstr ""
 "språk, med umiddelbar tilbakemelding på tale og uttale."
 
 #: src/features/Landing/LandingPage.tsx:56
-#: src/features/Landing/LandingPage.tsx:239
+#: src/features/Landing/LandingPage.tsx:240
 #. js-lingui-explicit-id
 msgid "How does usage-based pricing work?"
 msgstr "Hvordan fungerer bruk-basert prising?"
 
 #: src/features/Landing/LandingPage.tsx:59
-#: src/features/Landing/LandingPage.tsx:242
+#: src/features/Landing/LandingPage.tsx:243
 #. js-lingui-explicit-id
 msgid ""
 "You receive a free initial balance to explore FluencyPal. Each conversation "
@@ -1813,13 +1904,13 @@ msgstr ""
 "kreditter når det er nødvendig."
 
 #: src/features/Landing/LandingPage.tsx:66
-#: src/features/Landing/LandingPage.tsx:249
+#: src/features/Landing/LandingPage.tsx:250
 #. js-lingui-explicit-id
 msgid "Is there a free trial?"
 msgstr "Er det en gratis prøveperiode?"
 
 #: src/features/Landing/LandingPage.tsx:69
-#: src/features/Landing/LandingPage.tsx:252
+#: src/features/Landing/LandingPage.tsx:253
 #. js-lingui-explicit-id
 msgid ""
 "Yes, FluencyPal offers a complimentary balance to let you try "
@@ -1829,7 +1920,7 @@ msgstr ""
 "og se hvordan plattformen fungerer før du fyller på."
 
 #: src/features/Landing/LandingPage.tsx:76
-#: src/features/Landing/LandingPage.tsx:259
+#: src/features/Landing/LandingPage.tsx:260
 #. js-lingui-explicit-id
 msgid "Can I practice languages other than English?"
 msgstr "Kan jeg øve på språk annet enn engelsk?"
@@ -1845,7 +1936,7 @@ msgstr ""
 "valgt språk og ferdighetsnivå. Tilgjengelige språk inkluderer:"
 
 #: src/features/Landing/LandingPage.tsx:89
-#: src/features/Landing/LandingPage.tsx:279
+#: src/features/Landing/LandingPage.tsx:280
 #. js-lingui-explicit-id
 msgid "What learning modes are available?"
 msgstr "Hvilke læringsmoduser er tilgjengelige?"
@@ -1862,13 +1953,13 @@ msgstr ""
 "Nybegynnermodus for tregere, veiledede samtaler."
 
 #: src/features/Landing/LandingPage.tsx:99
-#: src/features/Landing/LandingPage.tsx:302
+#: src/features/Landing/LandingPage.tsx:303
 #. js-lingui-explicit-id
 msgid "How do daily tasks help me improve?"
 msgstr "Hvordan hjelper daglige oppgaver meg med å forbedre?"
 
 #: src/features/Landing/LandingPage.tsx:102
-#: src/features/Landing/LandingPage.tsx:305
+#: src/features/Landing/LandingPage.tsx:306
 #. js-lingui-explicit-id
 msgid ""
 "Daily conversational tasks introduce new vocabulary and language "
@@ -1879,7 +1970,7 @@ msgstr ""
 "språkbruk."
 
 #: src/features/Landing/LandingPage.tsx:127
-#: src/features/Dashboard/ConversationSelectCard.tsx:329
+#: src/features/Dashboard/ConversationSelectCard.tsx:123
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "Kom i gang"
@@ -1905,12 +1996,12 @@ msgstr "Vis prising"
 msgid "No Credit Card Needed"
 msgstr "Ingen kredittkort nødvendig"
 
-#: src/features/Landing/LandingPage.tsx:135
+#: src/features/Landing/LandingPage.tsx:136
 #. js-lingui-explicit-id
 msgid "Speak Fluent English with Confidence"
 msgstr "Snakk flytende engelsk med selvtillit"
 
-#: src/features/Landing/LandingPage.tsx:136
+#: src/features/Landing/LandingPage.tsx:137
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal offers realistic conversational practice in English, Spanish, "
@@ -1921,18 +2012,12 @@ msgstr ""
 "mer. Delta i immersive rollespillscenarier, få umiddelbar tilbakemelding, "
 "og forbedre dine taleferdigheter når som helst, hvor som helst."
 
-#: src/features/Landing/LandingPage.tsx:139
+#: src/features/Landing/LandingPage.tsx:140
 #. js-lingui-explicit-id
 msgid "Get started free"
 msgstr "Kom i gang gratis"
 
-#: src/features/Landing/LandingPage.tsx:144
-#: src/features/Dashboard/ConversationSelectCard.tsx:423
-#. js-lingui-explicit-id
-msgid "Beginner"
-msgstr "Beginner"
-
-#: src/features/Landing/LandingPage.tsx:145
+#: src/features/Landing/LandingPage.tsx:146
 #. js-lingui-explicit-id
 msgid ""
 "Practice slow, guided conversations with simpler vocabulary. Perfect for "
@@ -1941,12 +2026,12 @@ msgstr ""
 "Øv på langsomme, veiledede samtaler med enklere ordforråd. Perfekt for å "
 "bygge et solid grunnlag i ethvert språk."
 
-#: src/features/Landing/LandingPage.tsx:151
+#: src/features/Landing/LandingPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Instant Corrections"
 msgstr "Umiddelbare Korrigeringer"
 
-#: src/features/Landing/LandingPage.tsx:152
+#: src/features/Landing/LandingPage.tsx:153
 #. js-lingui-explicit-id
 msgid ""
 "Speak freely while the AI teacher highlights mistakes in real time—ideal "
@@ -1955,13 +2040,13 @@ msgstr ""
 "Snakk fritt mens AI-læreren fremhever feil i sanntid—ideelt for rask "
 "forbedring og oppbygging av selvtillit."
 
-#: src/features/Landing/LandingPage.tsx:158
+#: src/features/Landing/LandingPage.tsx:159
 #: src/features/Landing/Price/PricePage.tsx:212
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "Avansert"
 
-#: src/features/Landing/LandingPage.tsx:159
+#: src/features/Landing/LandingPage.tsx:160
 #. js-lingui-explicit-id
 msgid ""
 "Enjoy fast-paced, natural conversations to refine fluency and sound like a "
@@ -1970,12 +2055,12 @@ msgstr ""
 "Enjoy fast-paced, natural conversations to refine fluency and sound like a "
 "native speaker. Perfect for challenging your skills."
 
-#: src/features/Landing/LandingPage.tsx:167
+#: src/features/Landing/LandingPage.tsx:168
 #. js-lingui-explicit-id
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "Fire måter FluencyPal forbedrer taleferdighetene dine"
 
-#: src/features/Landing/LandingPage.tsx:168
+#: src/features/Landing/LandingPage.tsx:169
 #. js-lingui-explicit-id
 msgid ""
 "Target the specific skills you need—speaking, grammar, vocabulary, and "
@@ -1985,17 +2070,17 @@ msgstr ""
 "grammatikk, ordforråd og fremdriftssporing—for å oppnå flyt i engelsk på "
 "nettet raskere."
 
-#: src/features/Landing/LandingPage.tsx:173
+#: src/features/Landing/LandingPage.tsx:174
 #. js-lingui-explicit-id
 msgid "Speaking"
 msgstr "Snakke"
 
-#: src/features/Landing/LandingPage.tsx:174
+#: src/features/Landing/LandingPage.tsx:175
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
 msgstr "Oppnå flyt i muntlig språk raskt"
 
-#: src/features/Landing/LandingPage.tsx:175
+#: src/features/Landing/LandingPage.tsx:176
 #. js-lingui-explicit-id
 msgid ""
 "Practice realistic conversations tailored to your skill level. FluencyPal "
@@ -2005,22 +2090,22 @@ msgstr ""
 "Øv på realistiske samtaler tilpasset ditt ferdighetsnivå. FluencyPal svarer "
 "naturlig, fremhever områder for forbedring, og bygger opp selvtilliten din."
 
-#: src/features/Landing/LandingPage.tsx:180
+#: src/features/Landing/LandingPage.tsx:181
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "Start Snakkeforøvelse"
 
-#: src/features/Landing/LandingPage.tsx:183
+#: src/features/Landing/LandingPage.tsx:184
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "Grammatikk"
 
-#: src/features/Landing/LandingPage.tsx:184
+#: src/features/Landing/LandingPage.tsx:185
 #. js-lingui-explicit-id
 msgid "Instant Grammar Corrections"
 msgstr "Umiddelbare grammatikkorreksjoner"
 
-#: src/features/Landing/LandingPage.tsx:185
+#: src/features/Landing/LandingPage.tsx:186
 #. js-lingui-explicit-id
 msgid ""
 "Get immediate feedback and explanations on your grammar mistakes as you "
@@ -2029,22 +2114,22 @@ msgstr ""
 "Få umiddelbar tilbakemelding og forklaringer på grammatikkfeilene dine mens "
 "du øver. Forbedre talepresisjonen din på en naturlig måte."
 
-#: src/features/Landing/LandingPage.tsx:190
+#: src/features/Landing/LandingPage.tsx:191
 #. js-lingui-explicit-id
 msgid "Enhance Your Grammar"
 msgstr "Forbedre grammatikkferdighetene dine"
 
-#: src/features/Landing/LandingPage.tsx:193
+#: src/features/Landing/LandingPage.tsx:194
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "Ordforråd"
 
-#: src/features/Landing/LandingPage.tsx:194
+#: src/features/Landing/LandingPage.tsx:195
 #. js-lingui-explicit-id
 msgid "Grow Your Vocabulary Daily"
 msgstr "Utvid ordforrådet ditt daglig"
 
-#: src/features/Landing/LandingPage.tsx:195
+#: src/features/Landing/LandingPage.tsx:196
 #. js-lingui-explicit-id
 msgid ""
 "Receive personalized vocabulary tailored to your conversational needs. Use "
@@ -2053,22 +2138,22 @@ msgstr ""
 "Motta personlig tilpasset ordforråd som er skreddersydd for dine samtale "
 "behov. Bruk nye ord umiddelbart for å forsterke læringen."
 
-#: src/features/Landing/LandingPage.tsx:200
+#: src/features/Landing/LandingPage.tsx:201
 #. js-lingui-explicit-id
 msgid "Expand Your Vocabulary"
 msgstr "Utvid ordforrådet ditt"
 
-#: src/features/Landing/LandingPage.tsx:203
+#: src/features/Landing/LandingPage.tsx:204
 #. js-lingui-explicit-id
 msgid "Progress Tracking"
 msgstr "Fremsrittsoppfølging"
 
-#: src/features/Landing/LandingPage.tsx:204
+#: src/features/Landing/LandingPage.tsx:205
 #. js-lingui-explicit-id
 msgid "Track Your Fluency Progress"
 msgstr "Spor Fremdriften i Din Flytendehet"
 
-#: src/features/Landing/LandingPage.tsx:205
+#: src/features/Landing/LandingPage.tsx:206
 #. js-lingui-explicit-id
 msgid ""
 "Visualize your daily progress with intuitive tracking. Stay motivated by "
@@ -2077,17 +2162,17 @@ msgstr ""
 "Visualiser din daglige fremgang med intuitiv sporing. Hold deg motivert ved "
 "å tydelig se forbedringene dine."
 
-#: src/features/Landing/LandingPage.tsx:210
+#: src/features/Landing/LandingPage.tsx:211
 #. js-lingui-explicit-id
 msgid "Check Your Progress"
 msgstr "Sjekk Fremdriften Din"
 
-#: src/features/Landing/LandingPage.tsx:215
+#: src/features/Landing/LandingPage.tsx:216
 #. js-lingui-explicit-id
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Virkelighetsnær Rollespill for Avansert Engelskøvelse"
 
-#: src/features/Landing/LandingPage.tsx:216
+#: src/features/Landing/LandingPage.tsx:217
 #. js-lingui-explicit-id
 msgid ""
 "Practice speaking fluently in real-world scenarios like job interviews, "
@@ -2096,33 +2181,33 @@ msgstr ""
 "Praktiser å snakke flytende i virkelige scenarioer som jobbsamtaler, "
 "forretningsmøter og hverdagslige samtaler."
 
-#: src/features/Landing/LandingPage.tsx:219
+#: src/features/Landing/LandingPage.tsx:220
 #. js-lingui-explicit-id
 msgid "Explore Role-Play Scenarios"
 msgstr "Utforsk rollespillscenarioer"
 
-#: src/features/Landing/LandingPage.tsx:220
+#: src/features/Landing/LandingPage.tsx:221
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "Ser du etter noe spesifikt?"
 
-#: src/features/Landing/LandingPage.tsx:221
+#: src/features/Landing/LandingPage.tsx:222
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "Lag ditt eget scenario"
 
-#: src/features/Landing/LandingPage.tsx:222
+#: src/features/Landing/LandingPage.tsx:223
 #. js-lingui-explicit-id
 msgid "Master English Fluency"
 msgstr "Mestrer Engelsk Flyt"
 
-#: src/features/Landing/LandingPage.tsx:226
+#: src/features/Landing/LandingPage.tsx:227
 #: src/features/Landing/Price/PricePage.tsx:757
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "FAQ"
 
-#: src/features/Landing/LandingPage.tsx:263
+#: src/features/Landing/LandingPage.tsx:264
 #. js-lingui-explicit-id
 msgid ""
 "Absolutely! FluencyPal supports various languages and adjusts conversations "
@@ -2131,49 +2216,49 @@ msgstr ""
 "Absolutt! FluencyPal støtter forskjellige språk og justerer samtaler basert "
 "på ditt valgte språk og ferdighetsnivå."
 
-#: src/features/Landing/LandingPage.tsx:269
+#: src/features/Landing/LandingPage.tsx:270
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Available languages:"
 msgstr "Tilgjengelige språk:"
 
-#: src/features/Landing/LandingPage.tsx:284
+#: src/features/Landing/LandingPage.tsx:285
 #. js-lingui-explicit-id
 msgid "Casual Conversation:"
 msgstr "Samtale:"
 
-#: src/features/Landing/LandingPage.tsx:285
+#: src/features/Landing/LandingPage.tsx:286
 #. js-lingui-explicit-id
 msgid "Practice speaking fluently without interruptions."
 msgstr "Øv på å snakke flytende uten avbrudd."
 
-#: src/features/Landing/LandingPage.tsx:288
+#: src/features/Landing/LandingPage.tsx:289
 #. js-lingui-explicit-id
 msgid "Talk & Correct:"
 msgstr "Snakk og Korriger:"
 
-#: src/features/Landing/LandingPage.tsx:289
+#: src/features/Landing/LandingPage.tsx:290
 #. js-lingui-explicit-id
 msgid "Receive detailed feedback on grammar and pronunciation instantly."
 msgstr "Motta detaljerte tilbakemeldinger om grammatikk og uttale umiddelbart."
 
-#: src/features/Landing/LandingPage.tsx:294
+#: src/features/Landing/LandingPage.tsx:295
 #. js-lingui-explicit-id
 msgid "Beginner Mode:"
 msgstr "Beginner-modus:"
 
-#: src/features/Landing/LandingPage.tsx:295
+#: src/features/Landing/LandingPage.tsx:296
 #. js-lingui-explicit-id
 msgid "Slower conversations with guided support."
 msgstr "Saktere samtaler med veiledet støtte."
 
-#: src/features/Landing/LandingPage.tsx:314
+#: src/features/Landing/LandingPage.tsx:315
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:414
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "Klar til å bli flytende i engelsk?"
 
-#: src/features/Landing/LandingPage.tsx:315
+#: src/features/Landing/LandingPage.tsx:316
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:415
 #. js-lingui-explicit-id
 msgid "Start Your Free Trial"
@@ -2745,6 +2830,11 @@ msgstr "Slett konto"
 msgid "Back"
 msgstr "Tilbake"
 
+#: src/features/Header/HeaderComponent.tsx:255
+#. js-lingui-explicit-id
+msgid "Finishing..."
+msgstr "Fullfører..."
+
 #: src/features/Header/Header.tsx:15
 #. js-lingui-explicit-id
 msgid "Role-Plays"
@@ -2791,12 +2881,6 @@ msgstr "Daglige Oppgaver"
 msgid "Rule of the day"
 msgstr "Regel for dagen"
 
-#: src/features/Dashboard/TasksCard.tsx:52
-#: src/features/Dashboard/ConversationSelectCard.tsx:450
-#. js-lingui-explicit-id
-msgid "Get a personal grammar rule to learn"
-msgstr "Få en personlig grammatikkregel å lære"
-
 #: src/features/Dashboard/TasksCard.tsx:56
 #: src/features/Dashboard/TasksCard.tsx:64
 #. js-lingui-explicit-id
@@ -2807,12 +2891,6 @@ msgstr "Fullfør tidligere oppgaver først"
 #. js-lingui-explicit-id
 msgid "New words"
 msgstr "Nye ord"
-
-#: src/features/Dashboard/TasksCard.tsx:62
-#: src/features/Dashboard/ConversationSelectCard.tsx:474
-#. js-lingui-explicit-id
-msgid "Practice new vocabulary with the AI"
-msgstr "Øv på nytt ordforråd med AI-en"
 
 #: src/features/Dashboard/SelectLanguage.tsx:25
 #. js-lingui-explicit-id
@@ -2869,32 +2947,17 @@ msgstr "Lager nye ord..."
 msgid "Crafting new rule..."
 msgstr "Lager ny regel..."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:239
-#. js-lingui-explicit-id
-msgid "Goal"
-msgstr "Mål"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:240
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Sett målet for læringen din"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:255
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "Start | 5 min"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:277
+#: src/features/Dashboard/ConversationSelectCard.tsx:71
 #. js-lingui-explicit-id
 msgid "Before we start..."
 msgstr "Før vi starter..."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:279
+#: src/features/Dashboard/ConversationSelectCard.tsx:73
 #. js-lingui-explicit-id
 msgid "Could you please set your goal?"
 msgstr "Kunne du vennligst sette ditt mål?"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:307
+#: src/features/Dashboard/ConversationSelectCard.tsx:101
 #. js-lingui-explicit-id
 msgid ""
 "We need to know a little bit about you, so that our AI can help you learn "
@@ -2903,7 +2966,7 @@ msgstr ""
 "Vi trenger å vite litt om deg, slik at vår AI kan hjelpe deg med å lære "
 "bedre."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:317
+#: src/features/Dashboard/ConversationSelectCard.tsx:111
 #. js-lingui-explicit-id
 msgid ""
 "Even during onboarding, you will get practice and our AI will help you "
@@ -2912,50 +2975,25 @@ msgstr ""
 "Selv under opplæring, vil du få praksis og vår AI vil hjelpe deg med å "
 "rette grammatikk."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:397
-#. js-lingui-explicit-id
-msgid "Conversation"
-msgstr "Samtale"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:398
-#. js-lingui-explicit-id
-msgid "Talk to the AI and it will respond to you"
-msgstr "Snakk med AI-en, så vil den svare deg."
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:408
-#: src/features/Dashboard/ConversationSelectCard.tsx:434
-#: src/features/Dashboard/ConversationSelectCard.tsx:458
-#: src/features/Dashboard/ConversationSelectCard.tsx:482
+#: src/features/Dashboard/ConversationSelectCard.tsx:202
+#: src/features/Dashboard/ConversationSelectCard.tsx:228
+#: src/features/Dashboard/ConversationSelectCard.tsx:252
+#: src/features/Dashboard/ConversationSelectCard.tsx:276
 #. js-lingui-explicit-id
 msgid "Set the goal to start"
 msgstr "Sett målet for å starte"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:419
-#. js-lingui-explicit-id
-msgid "Start Talking"
-msgstr "Start Snakking"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:424
-#. js-lingui-explicit-id
-msgid "AI will lead you through the conversation"
-msgstr "AI vil lede deg gjennom samtalen"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:445
+#: src/features/Dashboard/ConversationSelectCard.tsx:239
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Veiled meg"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:449
-#. js-lingui-explicit-id
-msgid "Rules"
-msgstr "Regler"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:469
+#: src/features/Dashboard/ConversationSelectCard.tsx:263
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "Få en regel"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:493
+#: src/features/Dashboard/ConversationSelectCard.tsx:287
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "Utvid ordforrådet"

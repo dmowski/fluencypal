@@ -13,10 +13,30 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Header/HeaderComponent.tsx:255
+#: src/features/Landing/WelcomeScreen.tsx:197
 #. js-lingui-explicit-id
-msgid "Finishing..."
-msgstr "Завяршэнне..."
+msgid "Guide Me"
+msgstr "Направляйце Мяне"
+
+#: src/features/Landing/WelcomeScreen.tsx:217
+#. js-lingui-explicit-id
+msgid "Get a Rule"
+msgstr "Атрымаць Правіла"
+
+#: src/features/Landing/WelcomeScreen.tsx:237
+#. js-lingui-explicit-id
+msgid "Expand Vocabulary"
+msgstr "Пашырыць слоўнік"
+
+#: src/features/Landing/WelcomeScreen.tsx:242
+#. js-lingui-explicit-id
+msgid "Real-life situations with the AI"
+msgstr "Рэальныя сітуацыі з ШІ"
+
+#: src/features/Landing/WelcomeScreen.tsx:257
+#. js-lingui-explicit-id
+msgid "Play a Role"
+msgstr "Грайце ролю"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -34,7 +54,7 @@ msgstr "Звяжыцеся з FluencyPal для любых запытаў, па�
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:365
+#: src/features/Dashboard/ConversationSelectCard.tsx:159
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Практыка"
@@ -423,7 +443,8 @@ msgid "Your achievements"
 msgstr "Вашыя дасягненні"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
-#: src/features/Dashboard/ConversationSelectCard.tsx:473
+#: src/features/Landing/WelcomeScreen.tsx:221
+#: src/features/Dashboard/ConversationSelectCard.tsx:267
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Словы"
@@ -1727,6 +1748,7 @@ msgid "Start"
 msgstr "Пачаць"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:388
+#: src/features/Landing/WelcomeScreen.tsx:241
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Ролевая гра"
@@ -1776,6 +1798,75 @@ msgstr "Прапанавана для вас:"
 msgid "Other languages:"
 msgstr "Іншыя мовы:"
 
+#: src/features/Landing/WelcomeScreen.tsx:142
+#: src/features/Dashboard/ConversationSelectCard.tsx:33
+#. js-lingui-explicit-id
+msgid "Goal"
+msgstr "Мэта"
+
+#: src/features/Landing/WelcomeScreen.tsx:143
+#: src/features/Dashboard/ConversationSelectCard.tsx:34
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Выстаўце мэту вашага навучання"
+
+#: src/features/Landing/WelcomeScreen.tsx:158
+#: src/features/Dashboard/ConversationSelectCard.tsx:49
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "Пачаць | 5 хв"
+
+#: src/features/Landing/WelcomeScreen.tsx:162
+#: src/features/Dashboard/ConversationSelectCard.tsx:191
+#. js-lingui-explicit-id
+msgid "Conversation"
+msgstr "Размова"
+
+#: src/features/Landing/WelcomeScreen.tsx:163
+#: src/features/Dashboard/ConversationSelectCard.tsx:192
+#. js-lingui-explicit-id
+msgid "Talk to the AI and it will respond to you"
+msgstr "Пагаварыце з ШІ, і яна адказае вам"
+
+#: src/features/Landing/WelcomeScreen.tsx:177
+#: src/features/Dashboard/ConversationSelectCard.tsx:213
+#. js-lingui-explicit-id
+msgid "Start Talking"
+msgstr "Пачніце размаўляць"
+
+#: src/features/Landing/WelcomeScreen.tsx:181
+#: src/features/Landing/LandingPage.tsx:145
+#: src/features/Dashboard/ConversationSelectCard.tsx:217
+#. js-lingui-explicit-id
+msgid "Beginner"
+msgstr "Пачаткоўца"
+
+#: src/features/Landing/WelcomeScreen.tsx:182
+#: src/features/Dashboard/ConversationSelectCard.tsx:218
+#. js-lingui-explicit-id
+msgid "AI will lead you through the conversation"
+msgstr "AI правядзе вас праз размову"
+
+#: src/features/Landing/WelcomeScreen.tsx:201
+#: src/features/Dashboard/ConversationSelectCard.tsx:243
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "Правілы"
+
+#: src/features/Landing/WelcomeScreen.tsx:202
+#: src/features/Dashboard/TasksCard.tsx:52
+#: src/features/Dashboard/ConversationSelectCard.tsx:244
+#. js-lingui-explicit-id
+msgid "Get a personal grammar rule to learn"
+msgstr "Атрымаць асабістае правіла граматыкі для вучэння"
+
+#: src/features/Landing/WelcomeScreen.tsx:222
+#: src/features/Dashboard/TasksCard.tsx:62
+#: src/features/Dashboard/ConversationSelectCard.tsx:268
+#. js-lingui-explicit-id
+msgid "Practice new vocabulary with the AI"
+msgstr "Практыкуйце новую лексіку з АІ"
+
 #: src/features/Landing/LandingPage.tsx:25
 #: src/features/Landing/LandingPage.tsx:123
 #. js-lingui-explicit-id
@@ -1797,13 +1888,13 @@ msgstr ""
 "размаўлення, дасылае мітныя карэкціі і дапамагае вам моўвацца впэўнена."
 
 #: src/features/Landing/LandingPage.tsx:46
-#: src/features/Landing/LandingPage.tsx:229
+#: src/features/Landing/LandingPage.tsx:230
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
 msgstr "Што такое FluencyPal?"
 
 #: src/features/Landing/LandingPage.tsx:49
-#: src/features/Landing/LandingPage.tsx:232
+#: src/features/Landing/LandingPage.tsx:233
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal is an AI-powered English conversation practice app designed for "
@@ -1817,13 +1908,13 @@ msgstr ""
 "звязкам па пастаноўцы і вымаўленню."
 
 #: src/features/Landing/LandingPage.tsx:56
-#: src/features/Landing/LandingPage.tsx:239
+#: src/features/Landing/LandingPage.tsx:240
 #. js-lingui-explicit-id
 msgid "How does usage-based pricing work?"
 msgstr "Як працуе тарыфікацыя заснаваная на выкарыстанні?"
 
 #: src/features/Landing/LandingPage.tsx:59
-#: src/features/Landing/LandingPage.tsx:242
+#: src/features/Landing/LandingPage.tsx:243
 #. js-lingui-explicit-id
 msgid ""
 "You receive a free initial balance to explore FluencyPal. Each conversation "
@@ -1835,13 +1926,13 @@ msgstr ""
 "можаце лёгка папаўніць крэдыты, калі гэта неабходна."
 
 #: src/features/Landing/LandingPage.tsx:66
-#: src/features/Landing/LandingPage.tsx:249
+#: src/features/Landing/LandingPage.tsx:250
 #. js-lingui-explicit-id
 msgid "Is there a free trial?"
 msgstr "Ці ёсць бясплатная пробная версія?"
 
 #: src/features/Landing/LandingPage.tsx:69
-#: src/features/Landing/LandingPage.tsx:252
+#: src/features/Landing/LandingPage.tsx:253
 #. js-lingui-explicit-id
 msgid ""
 "Yes, FluencyPal offers a complimentary balance to let you try "
@@ -1852,7 +1943,7 @@ msgstr ""
 "папоўніць рахунак."
 
 #: src/features/Landing/LandingPage.tsx:76
-#: src/features/Landing/LandingPage.tsx:259
+#: src/features/Landing/LandingPage.tsx:260
 #. js-lingui-explicit-id
 msgid "Can I practice languages other than English?"
 msgstr "Ці магу я практаваць мовы, адмысловыя ад англійскай?"
@@ -1868,7 +1959,7 @@ msgstr ""
 "аснове выбранай вамі мовы і ўзроўню володання. Даступныя мовы ўключаюць:"
 
 #: src/features/Landing/LandingPage.tsx:89
-#: src/features/Landing/LandingPage.tsx:279
+#: src/features/Landing/LandingPage.tsx:280
 #. js-lingui-explicit-id
 msgid "What learning modes are available?"
 msgstr "Якія рэжымы навучання даступныя?"
@@ -1886,13 +1977,13 @@ msgstr ""
 "кіраваных размоў."
 
 #: src/features/Landing/LandingPage.tsx:99
-#: src/features/Landing/LandingPage.tsx:302
+#: src/features/Landing/LandingPage.tsx:303
 #. js-lingui-explicit-id
 msgid "How do daily tasks help me improve?"
 msgstr "Як штодзённыя заданні дапамагаюць мне паляпшыць?"
 
 #: src/features/Landing/LandingPage.tsx:102
-#: src/features/Landing/LandingPage.tsx:305
+#: src/features/Landing/LandingPage.tsx:306
 #. js-lingui-explicit-id
 msgid ""
 "Daily conversational tasks introduce new vocabulary and language "
@@ -1902,7 +1993,7 @@ msgstr ""
 "змачаляючы вашыя навыкі і паскарэнне паляпшэнняў ва ўсвоенні мовы."
 
 #: src/features/Landing/LandingPage.tsx:127
-#: src/features/Dashboard/ConversationSelectCard.tsx:329
+#: src/features/Dashboard/ConversationSelectCard.tsx:123
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "Пачаць"
@@ -1928,12 +2019,12 @@ msgstr "Праглядзець кошт"
 msgid "No Credit Card Needed"
 msgstr "Не Патрабуецца Крэдытная Карта"
 
-#: src/features/Landing/LandingPage.tsx:135
+#: src/features/Landing/LandingPage.tsx:136
 #. js-lingui-explicit-id
 msgid "Speak Fluent English with Confidence"
 msgstr "Гаварыце плаўна па-англійску з упэўненасцю"
 
-#: src/features/Landing/LandingPage.tsx:136
+#: src/features/Landing/LandingPage.tsx:137
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal offers realistic conversational practice in English, Spanish, "
@@ -1945,18 +2036,12 @@ msgstr ""
 "атрымлівайце мітную водгукі, і паляпшайце свае размоўныя навыкі ў любы час, "
 "у любым месцы."
 
-#: src/features/Landing/LandingPage.tsx:139
+#: src/features/Landing/LandingPage.tsx:140
 #. js-lingui-explicit-id
 msgid "Get started free"
 msgstr "Пачаць бясплатна"
 
-#: src/features/Landing/LandingPage.tsx:144
-#: src/features/Dashboard/ConversationSelectCard.tsx:423
-#. js-lingui-explicit-id
-msgid "Beginner"
-msgstr "Пачаткоўца"
-
-#: src/features/Landing/LandingPage.tsx:145
+#: src/features/Landing/LandingPage.tsx:146
 #. js-lingui-explicit-id
 msgid ""
 "Practice slow, guided conversations with simpler vocabulary. Perfect for "
@@ -1965,12 +2050,12 @@ msgstr ""
 "Практыкуйцеся ў павольных кіраваных размовах з простым слоўнікам. Ідэальна "
 "падыходзіць для стварэння моцнае асновы ў любой мове."
 
-#: src/features/Landing/LandingPage.tsx:151
+#: src/features/Landing/LandingPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Instant Corrections"
 msgstr "Мгновенныя Правкі"
 
-#: src/features/Landing/LandingPage.tsx:152
+#: src/features/Landing/LandingPage.tsx:153
 #. js-lingui-explicit-id
 msgid ""
 "Speak freely while the AI teacher highlights mistakes in real time—ideal "
@@ -1979,13 +2064,13 @@ msgstr ""
 "Гаварыце свабодна, пакуль Штучны інтэлект-вучыцель вылучае памылкі ў "
 "рэальным часе - ідэальна для хуткага ўдасканалення і пабудовы ўпэўненасці."
 
-#: src/features/Landing/LandingPage.tsx:158
+#: src/features/Landing/LandingPage.tsx:159
 #: src/features/Landing/Price/PricePage.tsx:212
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "Пашыраны"
 
-#: src/features/Landing/LandingPage.tsx:159
+#: src/features/Landing/LandingPage.tsx:160
 #. js-lingui-explicit-id
 msgid ""
 "Enjoy fast-paced, natural conversations to refine fluency and sound like a "
@@ -1995,12 +2080,12 @@ msgstr ""
 "забяспечэння звучання, як у роднага моўца. Ідэальна для выкліку вашым "
 "навыкам."
 
-#: src/features/Landing/LandingPage.tsx:167
+#: src/features/Landing/LandingPage.tsx:168
 #. js-lingui-explicit-id
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "Чатыры Спосабы, Як FluencyPal Павялічвае Вашы Навыкі Гаворкі"
 
-#: src/features/Landing/LandingPage.tsx:168
+#: src/features/Landing/LandingPage.tsx:169
 #. js-lingui-explicit-id
 msgid ""
 "Target the specific skills you need—speaking, grammar, vocabulary, and "
@@ -2010,17 +2095,17 @@ msgstr ""
 "слоўнікаў, і сачэння прогрэсу - каб дасягнуць плыннасці англійскай мовы ў "
 "Інтэрнете хутчэй."
 
-#: src/features/Landing/LandingPage.tsx:173
+#: src/features/Landing/LandingPage.tsx:174
 #. js-lingui-explicit-id
 msgid "Speaking"
 msgstr "Гаворка"
 
-#: src/features/Landing/LandingPage.tsx:174
+#: src/features/Landing/LandingPage.tsx:175
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
 msgstr "Дасягніце плавнасці маўлення хутка"
 
-#: src/features/Landing/LandingPage.tsx:175
+#: src/features/Landing/LandingPage.tsx:176
 #. js-lingui-explicit-id
 msgid ""
 "Practice realistic conversations tailored to your skill level. FluencyPal "
@@ -2031,22 +2116,22 @@ msgstr ""
 "майстэрнасці. FluencyPal адказвае ў натуральнай форме, вылучае месцы для "
 "паляпшэння і падвышае вашу ўпевненасць."
 
-#: src/features/Landing/LandingPage.tsx:180
+#: src/features/Landing/LandingPage.tsx:181
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "Пачніце практыку маўлення"
 
-#: src/features/Landing/LandingPage.tsx:183
+#: src/features/Landing/LandingPage.tsx:184
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "Граматыка"
 
-#: src/features/Landing/LandingPage.tsx:184
+#: src/features/Landing/LandingPage.tsx:185
 #. js-lingui-explicit-id
 msgid "Instant Grammar Corrections"
 msgstr "Мгновенныя граматычныя карэкціі"
 
-#: src/features/Landing/LandingPage.tsx:185
+#: src/features/Landing/LandingPage.tsx:186
 #. js-lingui-explicit-id
 msgid ""
 "Get immediate feedback and explanations on your grammar mistakes as you "
@@ -2055,22 +2140,22 @@ msgstr ""
 "Атрымайце негайны водгук і тлумачэнні на вашы памылкі па граматыцы падчас "
 "практыкі. Паляпшыце вашу маўленчы акуратнасць натуральна."
 
-#: src/features/Landing/LandingPage.tsx:190
+#: src/features/Landing/LandingPage.tsx:191
 #. js-lingui-explicit-id
 msgid "Enhance Your Grammar"
 msgstr "Удасканалюйце Вашу Граматыку"
 
-#: src/features/Landing/LandingPage.tsx:193
+#: src/features/Landing/LandingPage.tsx:194
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "Слоўнік"
 
-#: src/features/Landing/LandingPage.tsx:194
+#: src/features/Landing/LandingPage.tsx:195
 #. js-lingui-explicit-id
 msgid "Grow Your Vocabulary Daily"
 msgstr "Развівайце свой слоўнік кожны дзень"
 
-#: src/features/Landing/LandingPage.tsx:195
+#: src/features/Landing/LandingPage.tsx:196
 #. js-lingui-explicit-id
 msgid ""
 "Receive personalized vocabulary tailored to your conversational needs. Use "
@@ -2079,22 +2164,22 @@ msgstr ""
 "Атрымайце персаналізаваную лексіку, прыстасаваную пад вашыя камунікацыйныя "
 "патрэбы. Выкарыстоўвайце новыя словы негайна для пацверджэння навучання."
 
-#: src/features/Landing/LandingPage.tsx:200
+#: src/features/Landing/LandingPage.tsx:201
 #. js-lingui-explicit-id
 msgid "Expand Your Vocabulary"
 msgstr "Расшырце свой слоўнік"
 
-#: src/features/Landing/LandingPage.tsx:203
+#: src/features/Landing/LandingPage.tsx:204
 #. js-lingui-explicit-id
 msgid "Progress Tracking"
 msgstr "Стежка за прагрэсам"
 
-#: src/features/Landing/LandingPage.tsx:204
+#: src/features/Landing/LandingPage.tsx:205
 #. js-lingui-explicit-id
 msgid "Track Your Fluency Progress"
 msgstr "Сачыце за прагрэсам вашай плавучасці"
 
-#: src/features/Landing/LandingPage.tsx:205
+#: src/features/Landing/LandingPage.tsx:206
 #. js-lingui-explicit-id
 msgid ""
 "Visualize your daily progress with intuitive tracking. Stay motivated by "
@@ -2103,17 +2188,17 @@ msgstr ""
 "Візуалізуйце свой шкодны прагрэс з дапамогай інтуітыўнага сачэння. "
 "Заставайцеся маціваваным, ясна бачачы свае паляпшэнні."
 
-#: src/features/Landing/LandingPage.tsx:210
+#: src/features/Landing/LandingPage.tsx:211
 #. js-lingui-explicit-id
 msgid "Check Your Progress"
 msgstr "Праверце Ваш Прагрэс"
 
-#: src/features/Landing/LandingPage.tsx:215
+#: src/features/Landing/LandingPage.tsx:216
 #. js-lingui-explicit-id
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Рэальная рольгульня для практыкі адмыслованага англійскага"
 
-#: src/features/Landing/LandingPage.tsx:216
+#: src/features/Landing/LandingPage.tsx:217
 #. js-lingui-explicit-id
 msgid ""
 "Practice speaking fluently in real-world scenarios like job interviews, "
@@ -2122,33 +2207,33 @@ msgstr ""
 "Практыкуйцеся ў плавучай мове ў рэальных сітуацыях, такіх як сабеседаванні "
 "на працу, делавыя сустрэчы і штодзённыя размовы."
 
-#: src/features/Landing/LandingPage.tsx:219
+#: src/features/Landing/LandingPage.tsx:220
 #. js-lingui-explicit-id
 msgid "Explore Role-Play Scenarios"
 msgstr "Даследуйце сітуацыі для ролавай гульні"
 
-#: src/features/Landing/LandingPage.tsx:220
+#: src/features/Landing/LandingPage.tsx:221
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "Шукаеце нешта канкрэтнае?"
 
-#: src/features/Landing/LandingPage.tsx:221
+#: src/features/Landing/LandingPage.tsx:222
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "Стварыце свой уласны сцэнарый"
 
-#: src/features/Landing/LandingPage.tsx:222
+#: src/features/Landing/LandingPage.tsx:223
 #. js-lingui-explicit-id
 msgid "Master English Fluency"
 msgstr "Овладей англійскай бегласцю"
 
-#: src/features/Landing/LandingPage.tsx:226
+#: src/features/Landing/LandingPage.tsx:227
 #: src/features/Landing/Price/PricePage.tsx:757
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "ЧАП"
 
-#: src/features/Landing/LandingPage.tsx:263
+#: src/features/Landing/LandingPage.tsx:264
 #. js-lingui-explicit-id
 msgid ""
 "Absolutely! FluencyPal supports various languages and adjusts conversations "
@@ -2157,49 +2242,49 @@ msgstr ""
 "Адназначна! FluencyPal падтрымлівае розныя мовы і рэгулюе размовы на аснове "
 "вашай выбранай мовы і ўзроўню володання мовай."
 
-#: src/features/Landing/LandingPage.tsx:269
+#: src/features/Landing/LandingPage.tsx:270
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Available languages:"
 msgstr "Даступныя мовы:"
 
-#: src/features/Landing/LandingPage.tsx:284
+#: src/features/Landing/LandingPage.tsx:285
 #. js-lingui-explicit-id
 msgid "Casual Conversation:"
 msgstr "Нескладовы размова:"
 
-#: src/features/Landing/LandingPage.tsx:285
+#: src/features/Landing/LandingPage.tsx:286
 #. js-lingui-explicit-id
 msgid "Practice speaking fluently without interruptions."
 msgstr "Практікуйцеся гаварыць плынна без перарываў."
 
-#: src/features/Landing/LandingPage.tsx:288
+#: src/features/Landing/LandingPage.tsx:289
 #. js-lingui-explicit-id
 msgid "Talk & Correct:"
 msgstr "Гаворы і Папраўляй:"
 
-#: src/features/Landing/LandingPage.tsx:289
+#: src/features/Landing/LandingPage.tsx:290
 #. js-lingui-explicit-id
 msgid "Receive detailed feedback on grammar and pronunciation instantly."
 msgstr "Атрымлівайце дэталёвыя водгукі пра граматыку і вымаўленне мгновенна."
 
-#: src/features/Landing/LandingPage.tsx:294
+#: src/features/Landing/LandingPage.tsx:295
 #. js-lingui-explicit-id
 msgid "Beginner Mode:"
 msgstr "Рэжым для пачаткоўцаў:"
 
-#: src/features/Landing/LandingPage.tsx:295
+#: src/features/Landing/LandingPage.tsx:296
 #. js-lingui-explicit-id
 msgid "Slower conversations with guided support."
 msgstr "Павольныя размовы з кіраўніцтвам."
 
-#: src/features/Landing/LandingPage.tsx:314
+#: src/features/Landing/LandingPage.tsx:315
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:414
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "Гатовы стаць вольным у англійскай мове?"
 
-#: src/features/Landing/LandingPage.tsx:315
+#: src/features/Landing/LandingPage.tsx:316
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:415
 #. js-lingui-explicit-id
 msgid "Start Your Free Trial"
@@ -2780,6 +2865,11 @@ msgstr "Выдаліць уліковы запіс"
 msgid "Back"
 msgstr "Назад"
 
+#: src/features/Header/HeaderComponent.tsx:255
+#. js-lingui-explicit-id
+msgid "Finishing..."
+msgstr "Завяршэнне..."
+
 #: src/features/Header/Header.tsx:15
 #. js-lingui-explicit-id
 msgid "Role-Plays"
@@ -2826,12 +2916,6 @@ msgstr "Штодзённыя заданні"
 msgid "Rule of the day"
 msgstr "Правіла дня"
 
-#: src/features/Dashboard/TasksCard.tsx:52
-#: src/features/Dashboard/ConversationSelectCard.tsx:450
-#. js-lingui-explicit-id
-msgid "Get a personal grammar rule to learn"
-msgstr "Атрымаць асабістае правіла граматыкі для вучэння"
-
 #: src/features/Dashboard/TasksCard.tsx:56
 #: src/features/Dashboard/TasksCard.tsx:64
 #. js-lingui-explicit-id
@@ -2842,12 +2926,6 @@ msgstr "Спачатку завяршыце папярэднія заданні"
 #. js-lingui-explicit-id
 msgid "New words"
 msgstr "Новыя словы"
-
-#: src/features/Dashboard/TasksCard.tsx:62
-#: src/features/Dashboard/ConversationSelectCard.tsx:474
-#. js-lingui-explicit-id
-msgid "Practice new vocabulary with the AI"
-msgstr "Практыкуйце новую лексіку з АІ"
 
 #: src/features/Dashboard/SelectLanguage.tsx:25
 #. js-lingui-explicit-id
@@ -2904,32 +2982,17 @@ msgstr "Стварэнне новых слоў..."
 msgid "Crafting new rule..."
 msgstr "Стварэнне новага правіла..."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:239
-#. js-lingui-explicit-id
-msgid "Goal"
-msgstr "Мэта"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:240
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Выстаўце мэту вашага навучання"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:255
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "Пачаць | 5 хв"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:277
+#: src/features/Dashboard/ConversationSelectCard.tsx:71
 #. js-lingui-explicit-id
 msgid "Before we start..."
 msgstr "Перад тым, як мы пачнем..."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:279
+#: src/features/Dashboard/ConversationSelectCard.tsx:73
 #. js-lingui-explicit-id
 msgid "Could you please set your goal?"
 msgstr "Ці маглі б вы, калі ласка, выставіць сваю мэту?"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:307
+#: src/features/Dashboard/ConversationSelectCard.tsx:101
 #. js-lingui-explicit-id
 msgid ""
 "We need to know a little bit about you, so that our AI can help you learn "
@@ -2938,7 +3001,7 @@ msgstr ""
 "Нам патрэбна даведацца трохі пра вас, каб наш штучны інтэлект мог дапамагчы "
 "вам лепш вучыцца."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:317
+#: src/features/Dashboard/ConversationSelectCard.tsx:111
 #. js-lingui-explicit-id
 msgid ""
 "Even during onboarding, you will get practice and our AI will help you "
@@ -2947,50 +3010,25 @@ msgstr ""
 "Нават падчас адаптацыі, вы атрымаеце практыку, і наш штучны інтэлект "
 "дапаможа вам выпраўляць граматыку."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:397
-#. js-lingui-explicit-id
-msgid "Conversation"
-msgstr "Размова"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:398
-#. js-lingui-explicit-id
-msgid "Talk to the AI and it will respond to you"
-msgstr "Пагаварыце з ШІ, і яна адказае вам"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:408
-#: src/features/Dashboard/ConversationSelectCard.tsx:434
-#: src/features/Dashboard/ConversationSelectCard.tsx:458
-#: src/features/Dashboard/ConversationSelectCard.tsx:482
+#: src/features/Dashboard/ConversationSelectCard.tsx:202
+#: src/features/Dashboard/ConversationSelectCard.tsx:228
+#: src/features/Dashboard/ConversationSelectCard.tsx:252
+#: src/features/Dashboard/ConversationSelectCard.tsx:276
 #. js-lingui-explicit-id
 msgid "Set the goal to start"
 msgstr "Усталявайце мэту, каб пачаць"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:419
-#. js-lingui-explicit-id
-msgid "Start Talking"
-msgstr "Пачніце размаўляць"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:424
-#. js-lingui-explicit-id
-msgid "AI will lead you through the conversation"
-msgstr "AI правядзе вас праз размову"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:445
+#: src/features/Dashboard/ConversationSelectCard.tsx:239
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Напраўце мяне"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:449
-#. js-lingui-explicit-id
-msgid "Rules"
-msgstr "Правілы"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:469
+#: src/features/Dashboard/ConversationSelectCard.tsx:263
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "Атрымаць правіла"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:493
+#: src/features/Dashboard/ConversationSelectCard.tsx:287
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "Расшырыць слоўнік"

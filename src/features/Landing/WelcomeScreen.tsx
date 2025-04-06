@@ -1,7 +1,9 @@
 import { Stack, Typography } from "@mui/material";
 import { FirstEnterButton } from "./FirstEnterButton";
-import { GradientCard } from "../uiKit/Card/GradientCard";
 import { maxLandingWidth, subTitleFontStyle } from "./landingSettings";
+import { ConversationCard } from "../Dashboard/ConversationCard";
+import { getI18nInstance } from "@/appRouterI18n";
+import { SupportedLanguage } from "@/common/lang";
 
 interface WelcomeScreenProps {
   title: string;
@@ -12,6 +14,7 @@ interface WelcomeScreenProps {
   noCreditCardNeededTitle: string;
   pricingLink: string;
   practiceLink: string;
+  lang: SupportedLanguage;
 }
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   title,
@@ -22,7 +25,9 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   noCreditCardNeededTitle,
   pricingLink,
   practiceLink,
+  lang,
 }) => {
+  const i18n = getI18nInstance(lang);
   return (
     <Stack
       sx={{
@@ -117,19 +122,141 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         </Stack>
       </Stack>
 
-      <GradientCard
-        padding="3vw"
-        strokeWidth="1vw"
-        startColor={"#fa8500"}
-        endColor={"#05acff"}
-        backgroundColor={"rgba(10, 18, 30, 1)"}
+      <Stack
+        sx={{
+          gap: "20px",
+          width: "100%",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr",
+          "@media (max-width: 1100px)": {
+            gridTemplateColumns: "1fr 1fr",
+          },
+
+          "@media (max-width: 750px)": {
+            gridTemplateColumns: "1fr",
+            gap: "10px",
+          },
+        }}
       >
-        <img
-          src="/dashboard.jpg"
-          alt="dashboard"
-          style={{ width: "100%", height: "auto", aspectRatio: "1862 / 1706" }}
+        <ConversationCard
+          title={i18n._(`Goal`)}
+          subTitle={i18n._(`Set the goal of your learning`)}
+          href="/practice"
+          startColor="#4F46E5"
+          endColor="#A78BFA"
+          bgColor="#60A5FA"
+          icon={
+            <Stack>
+              <Stack
+                style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
+                className="avatar"
+              >
+                <img src="/avatar/map.png" alt="AI Bot" />
+              </Stack>
+            </Stack>
+          }
+          actionLabel={i18n._(`Start | 5 min`)}
         />
-      </GradientCard>
+        <ConversationCard
+          href="/practice"
+          title={i18n._(`Conversation`)}
+          subTitle={i18n._(`Talk to the AI and it will respond to you`)}
+          startColor="#34D399"
+          endColor="#3B82F6"
+          bgColor="#A3E635"
+          icon={
+            <Stack>
+              <Stack
+                style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
+                className="avatar"
+              >
+                <img src="/avatar/girl.png" alt="AI Bot" />
+              </Stack>
+            </Stack>
+          }
+          actionLabel={i18n._(`Start Talking`)}
+        />
+
+        <ConversationCard
+          title={i18n._(`Beginner`)}
+          subTitle={i18n._(`AI will lead you through the conversation`)}
+          href="/practice"
+          startColor="#FF6B6B"
+          endColor="#FFD93D"
+          bgColor="#5EEAD4"
+          icon={
+            <Stack>
+              <Stack
+                style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
+                className="avatar"
+              >
+                <img src="/avatar/owl1.png" alt="AI Bot" />
+              </Stack>
+            </Stack>
+          }
+          actionLabel={i18n._(`Guide Me`)}
+        />
+
+        <ConversationCard
+          title={i18n._(`Rules`)}
+          subTitle={i18n._(`Get a personal grammar rule to learn`)}
+          href="/practice"
+          startColor="#9d43a3"
+          endColor="#086787"
+          bgColor="#990000"
+          icon={
+            <Stack>
+              <Stack
+                style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
+                className="avatar"
+              >
+                <img src="/avatar/book.png" alt="AI Bot" />
+              </Stack>
+            </Stack>
+          }
+          actionLabel={i18n._(`Get a Rule`)}
+        />
+
+        <ConversationCard
+          title={i18n._(`Words`)}
+          subTitle={i18n._(`Practice new vocabulary with the AI`)}
+          href="/practice"
+          startColor="#00BFFF"
+          endColor="#086787"
+          bgColor="#5EEAD4"
+          icon={
+            <Stack>
+              <Stack
+                style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
+                className="avatar"
+              >
+                <img src="/avatar/words.png" alt="AI Bot" />
+              </Stack>
+            </Stack>
+          }
+          actionLabel={i18n._(`Expand Vocabulary`)}
+        />
+
+        <ConversationCard
+          title={i18n._(`Role Play`)}
+          subTitle={i18n._(`Real-life situations with the AI`)}
+          href="/practice"
+          startColor="#4F46E5"
+          endColor="#086787"
+          bgColor="#990000"
+          icon={
+            <Stack>
+              <Stack
+                style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
+                className="avatar"
+              >
+                <img src="/avatar/talk3.png" alt="AI Bot" />
+              </Stack>
+            </Stack>
+          }
+          actionLabel={i18n._(`Play a Role`)}
+        />
+      </Stack>
     </Stack>
   );
 };
