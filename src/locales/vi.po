@@ -13,20 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/ConversationPage.tsx:59
+#: src/features/Dashboard/ConversationSelectCard.tsx:250
 #. js-lingui-explicit-id
-msgid "Oops! Something went wrong"
-msgstr "Rất tiếc! Đã xảy ra lỗi"
-
-#: src/features/Conversation/ConversationPage.tsx:63
-#. js-lingui-explicit-id
-msgid "Please refresh the page and try one more time"
-msgstr "Vui lòng làm mới trang và thử một lần nữa"
-
-#: src/features/Conversation/ConversationPage.tsx:73
-#. js-lingui-explicit-id
-msgid "Reload page"
-msgstr "Tải lại trang"
+msgid "Start | 5 min"
+msgstr "Bắt đầu | 5 phút"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -44,7 +34,7 @@ msgstr "Liên hệ với FluencyPal để biết thêm thông tin, hỗ trợ ho
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:115
+#: src/features/Dashboard/ConversationSelectCard.tsx:359
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Thực hành"
@@ -432,7 +422,7 @@ msgid "Your achievements"
 msgstr "Thành tích của bạn"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
-#: src/features/Dashboard/ConversationSelectCard.tsx:193
+#: src/features/Dashboard/ConversationSelectCard.tsx:467
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Từ vựng"
@@ -1728,7 +1718,6 @@ msgstr "Tất cả các kịch bản"
 
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayBoard.tsx:622
-#: src/features/Dashboard/ConversationSelectCard.tsx:153
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Bắt đầu"
@@ -1908,6 +1897,7 @@ msgstr ""
 "mới, củng cố kỹ năng của bạn và tăng tốc độ cải thiện lưu loát."
 
 #: src/features/Landing/LandingPage.tsx:127
+#: src/features/Dashboard/ConversationSelectCard.tsx:323
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "Bắt Đầu"
@@ -1956,7 +1946,7 @@ msgid "Get started free"
 msgstr "Bắt đầu miễn phí"
 
 #: src/features/Landing/LandingPage.tsx:144
-#: src/features/Dashboard/ConversationSelectCard.tsx:169
+#: src/features/Dashboard/ConversationSelectCard.tsx:417
 #. js-lingui-explicit-id
 msgid "Beginner"
 msgstr "Người mới bắt đầu"
@@ -2778,7 +2768,7 @@ msgid "Finishing the lesson..."
 msgstr "Đang kết thúc bài học..."
 
 #: src/features/Header/HeaderComponent.tsx:253
-#: src/features/Dashboard/ConversationSelectCard.tsx:158
+#: src/features/Dashboard/ConversationSelectCard.tsx:391
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Cuộc trò chuyện"
@@ -2836,7 +2826,7 @@ msgid "Rule of the day"
 msgstr "Quy tắc của ngày"
 
 #: src/features/Dashboard/TasksCard.tsx:52
-#: src/features/Dashboard/ConversationSelectCard.tsx:183
+#: src/features/Dashboard/ConversationSelectCard.tsx:444
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "Nhận một quy tắc ngữ pháp cá nhân để học"
@@ -2853,7 +2843,7 @@ msgid "New words"
 msgstr "Từ mới"
 
 #: src/features/Dashboard/TasksCard.tsx:62
-#: src/features/Dashboard/ConversationSelectCard.tsx:194
+#: src/features/Dashboard/ConversationSelectCard.tsx:468
 #. js-lingui-explicit-id
 msgid "Practice new vocabulary with the AI"
 msgstr "Thực hành từ vựng mới với AI"
@@ -2913,47 +2903,83 @@ msgstr "Đang tạo ra những từ mới..."
 msgid "Crafting new rule..."
 msgstr "Đang tạo quy tắc mới..."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:146
+#: src/features/Dashboard/ConversationSelectCard.tsx:234
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Mục tiêu"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:147
+#: src/features/Dashboard/ConversationSelectCard.tsx:235
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "Đặt mục tiêu cho việc học của bạn"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:159
+#: src/features/Dashboard/ConversationSelectCard.tsx:272
+#. js-lingui-explicit-id
+msgid "Before we start..."
+msgstr "Trước khi chúng ta bắt đầu..."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:274
+#. js-lingui-explicit-id
+msgid "Could you please set your goal?"
+msgstr "Bạn có thể vui lòng đặt mục tiêu của bạn?"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:302
+#. js-lingui-explicit-id
+msgid ""
+"We need to know a little bit about you, so that our AI can help you learn "
+"better."
+msgstr ""
+"Chúng tôi cần biết một chút về bạn, để AI của chúng tôi có thể giúp bạn học "
+"tốt hơn."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:312
+#. js-lingui-explicit-id
+msgid ""
+"Even during onboarding, you will get practice and our AI will help you "
+"correct grammar."
+msgstr ""
+"Ngay cả trong quá trình hướng dẫn, bạn sẽ được luyện tập và AI của chúng "
+"tôi sẽ giúp bạn sửa lỗi ngữ pháp."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:392
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "Nói chuyện với AI và nó sẽ trả lời bạn"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:165
+#: src/features/Dashboard/ConversationSelectCard.tsx:402
+#: src/features/Dashboard/ConversationSelectCard.tsx:428
+#: src/features/Dashboard/ConversationSelectCard.tsx:452
+#: src/features/Dashboard/ConversationSelectCard.tsx:476
+#. js-lingui-explicit-id
+msgid "Set the goal to start"
+msgstr "Đặt mục tiêu để bắt đầu"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:413
 #. js-lingui-explicit-id
 msgid "Start Talking"
 msgstr "Bắt đầu nói chuyện"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:170
+#: src/features/Dashboard/ConversationSelectCard.tsx:418
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
 msgstr "AI sẽ dẫn dắt bạn qua cuộc trò chuyện"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:178
+#: src/features/Dashboard/ConversationSelectCard.tsx:439
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Hướng dẫn tôi"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:182
+#: src/features/Dashboard/ConversationSelectCard.tsx:443
 #. js-lingui-explicit-id
 msgid "Rules"
 msgstr "Quy tắc"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:189
+#: src/features/Dashboard/ConversationSelectCard.tsx:463
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "Nhận một quy tắc"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:200
+#: src/features/Dashboard/ConversationSelectCard.tsx:487
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "Mở rộng từ vựng"
@@ -3074,6 +3100,21 @@ msgstr "Ít hơn"
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Thêm nữa"
+
+#: src/features/Conversation/ConversationPage.tsx:59
+#. js-lingui-explicit-id
+msgid "Oops! Something went wrong"
+msgstr "Rất tiếc! Đã xảy ra lỗi"
+
+#: src/features/Conversation/ConversationPage.tsx:63
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "Vui lòng làm mới trang và thử một lần nữa"
+
+#: src/features/Conversation/ConversationPage.tsx:73
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "Tải lại trang"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:337
 #. js-lingui-explicit-id

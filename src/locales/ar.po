@@ -13,20 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/ConversationPage.tsx:59
+#: src/features/Dashboard/ConversationSelectCard.tsx:250
 #. js-lingui-explicit-id
-msgid "Oops! Something went wrong"
-msgstr "عفوًا! حدث خطأ ما"
-
-#: src/features/Conversation/ConversationPage.tsx:63
-#. js-lingui-explicit-id
-msgid "Please refresh the page and try one more time"
-msgstr "يرجى تحديث الصفحة ومحاولة مرة أخرى"
-
-#: src/features/Conversation/ConversationPage.tsx:73
-#. js-lingui-explicit-id
-msgid "Reload page"
-msgstr "إعادة تحميل الصفحة"
+msgid "Start | 5 min"
+msgstr "ابدأ | 5 دقائق"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -44,7 +34,7 @@ msgstr "تواصل مع FluencyPal لأي استفسارات أو دعم أو م
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:115
+#: src/features/Dashboard/ConversationSelectCard.tsx:359
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "ممارسة"
@@ -433,7 +423,7 @@ msgid "Your achievements"
 msgstr "إنجازاتك"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
-#: src/features/Dashboard/ConversationSelectCard.tsx:193
+#: src/features/Dashboard/ConversationSelectCard.tsx:467
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "كلمات"
@@ -1663,7 +1653,6 @@ msgstr "جميع السيناريوهات"
 
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayBoard.tsx:622
-#: src/features/Dashboard/ConversationSelectCard.tsx:153
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "ابدأ"
@@ -1840,6 +1829,7 @@ msgstr ""
 "ويعجل بتحسين الطلاقة."
 
 #: src/features/Landing/LandingPage.tsx:127
+#: src/features/Dashboard/ConversationSelectCard.tsx:323
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "ابدأ"
@@ -1887,7 +1877,7 @@ msgid "Get started free"
 msgstr "ابدأ مجانًا"
 
 #: src/features/Landing/LandingPage.tsx:144
-#: src/features/Dashboard/ConversationSelectCard.tsx:169
+#: src/features/Dashboard/ConversationSelectCard.tsx:417
 #. js-lingui-explicit-id
 msgid "Beginner"
 msgstr "مبتدئ"
@@ -2689,7 +2679,7 @@ msgid "Finishing the lesson..."
 msgstr "إنهاء الدرس..."
 
 #: src/features/Header/HeaderComponent.tsx:253
-#: src/features/Dashboard/ConversationSelectCard.tsx:158
+#: src/features/Dashboard/ConversationSelectCard.tsx:391
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "محادثة"
@@ -2747,7 +2737,7 @@ msgid "Rule of the day"
 msgstr "قاعدة اليوم"
 
 #: src/features/Dashboard/TasksCard.tsx:52
-#: src/features/Dashboard/ConversationSelectCard.tsx:183
+#: src/features/Dashboard/ConversationSelectCard.tsx:444
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "احصل على قاعدة نحوية شخصية لتتعلمها"
@@ -2764,7 +2754,7 @@ msgid "New words"
 msgstr "كلمات جديدة"
 
 #: src/features/Dashboard/TasksCard.tsx:62
-#: src/features/Dashboard/ConversationSelectCard.tsx:194
+#: src/features/Dashboard/ConversationSelectCard.tsx:468
 #. js-lingui-explicit-id
 msgid "Practice new vocabulary with the AI"
 msgstr "ممارسة مفردات جديدة مع الذكاء الاصطناعي"
@@ -2824,47 +2814,83 @@ msgstr "صياغة كلمات جديدة..."
 msgid "Crafting new rule..."
 msgstr "إنشاء قاعدة جديدة..."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:146
+#: src/features/Dashboard/ConversationSelectCard.tsx:234
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "هدف"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:147
+#: src/features/Dashboard/ConversationSelectCard.tsx:235
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "حدد هدف تعلمك"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:159
+#: src/features/Dashboard/ConversationSelectCard.tsx:272
+#. js-lingui-explicit-id
+msgid "Before we start..."
+msgstr "قبل أن نبدأ..."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:274
+#. js-lingui-explicit-id
+msgid "Could you please set your goal?"
+msgstr "هل يمكنك رجاءً تحديد هدفك؟"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:302
+#. js-lingui-explicit-id
+msgid ""
+"We need to know a little bit about you, so that our AI can help you learn "
+"better."
+msgstr ""
+"نحتاج إلى معرفة القليل عنك، حتى يتمكن الذكاء الاصطناعي لدينا من مساعدتك على "
+"التعلم بشكل أفضل."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:312
+#. js-lingui-explicit-id
+msgid ""
+"Even during onboarding, you will get practice and our AI will help you "
+"correct grammar."
+msgstr ""
+"حتى أثناء الانضمام، ستحصل على ممارسة وسيساعدك الذكاء الاصطناعي لدينا في "
+"تصحيح القواعد."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:392
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "تحدث إلى الذكاء الاصطناعي وسيرد عليك"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:165
+#: src/features/Dashboard/ConversationSelectCard.tsx:402
+#: src/features/Dashboard/ConversationSelectCard.tsx:428
+#: src/features/Dashboard/ConversationSelectCard.tsx:452
+#: src/features/Dashboard/ConversationSelectCard.tsx:476
+#. js-lingui-explicit-id
+msgid "Set the goal to start"
+msgstr "حدد الهدف للبدء"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:413
 #. js-lingui-explicit-id
 msgid "Start Talking"
 msgstr "ابدأ الحديث"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:170
+#: src/features/Dashboard/ConversationSelectCard.tsx:418
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
 msgstr "سوف يقودك الذكاء الصناعي خلال المحادثة"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:178
+#: src/features/Dashboard/ConversationSelectCard.tsx:439
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "ارشدني"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:182
+#: src/features/Dashboard/ConversationSelectCard.tsx:443
 #. js-lingui-explicit-id
 msgid "Rules"
 msgstr "قواعد"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:189
+#: src/features/Dashboard/ConversationSelectCard.tsx:463
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "احصل على قاعدة"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:200
+#: src/features/Dashboard/ConversationSelectCard.tsx:487
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "قم بتوسيع مفرداتك"
@@ -2985,6 +3011,21 @@ msgstr "أقل"
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "أكثر"
+
+#: src/features/Conversation/ConversationPage.tsx:59
+#. js-lingui-explicit-id
+msgid "Oops! Something went wrong"
+msgstr "عفوًا! حدث خطأ ما"
+
+#: src/features/Conversation/ConversationPage.tsx:63
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "يرجى تحديث الصفحة ومحاولة مرة أخرى"
+
+#: src/features/Conversation/ConversationPage.tsx:73
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "إعادة تحميل الصفحة"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:337
 #. js-lingui-explicit-id

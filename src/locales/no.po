@@ -13,20 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/ConversationPage.tsx:59
+#: src/features/Dashboard/ConversationSelectCard.tsx:250
 #. js-lingui-explicit-id
-msgid "Oops! Something went wrong"
-msgstr "Oops! Noe gikk galt"
-
-#: src/features/Conversation/ConversationPage.tsx:63
-#. js-lingui-explicit-id
-msgid "Please refresh the page and try one more time"
-msgstr "Vennligst oppdater siden og prøv en gang til"
-
-#: src/features/Conversation/ConversationPage.tsx:73
-#. js-lingui-explicit-id
-msgid "Reload page"
-msgstr "Last inn siden på nytt"
+msgid "Start | 5 min"
+msgstr "Start | 5 min"
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
@@ -46,7 +36,7 @@ msgstr ""
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/Header.tsx:14
-#: src/features/Dashboard/ConversationSelectCard.tsx:115
+#: src/features/Dashboard/ConversationSelectCard.tsx:359
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Øv"
@@ -433,7 +423,7 @@ msgid "Your achievements"
 msgstr "Dine prestasjoner"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
-#: src/features/Dashboard/ConversationSelectCard.tsx:193
+#: src/features/Dashboard/ConversationSelectCard.tsx:467
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Ord"
@@ -1711,7 +1701,6 @@ msgstr "Alle Scenarier"
 
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayBoard.tsx:622
-#: src/features/Dashboard/ConversationSelectCard.tsx:153
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Start"
@@ -1890,6 +1879,7 @@ msgstr ""
 "språkbruk."
 
 #: src/features/Landing/LandingPage.tsx:127
+#: src/features/Dashboard/ConversationSelectCard.tsx:323
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "Kom i gang"
@@ -1937,7 +1927,7 @@ msgid "Get started free"
 msgstr "Kom i gang gratis"
 
 #: src/features/Landing/LandingPage.tsx:144
-#: src/features/Dashboard/ConversationSelectCard.tsx:169
+#: src/features/Dashboard/ConversationSelectCard.tsx:417
 #. js-lingui-explicit-id
 msgid "Beginner"
 msgstr "Beginner"
@@ -2753,7 +2743,7 @@ msgid "Finishing the lesson..."
 msgstr "Avslutter leksjonen..."
 
 #: src/features/Header/HeaderComponent.tsx:253
-#: src/features/Dashboard/ConversationSelectCard.tsx:158
+#: src/features/Dashboard/ConversationSelectCard.tsx:391
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Samtale"
@@ -2811,7 +2801,7 @@ msgid "Rule of the day"
 msgstr "Regel for dagen"
 
 #: src/features/Dashboard/TasksCard.tsx:52
-#: src/features/Dashboard/ConversationSelectCard.tsx:183
+#: src/features/Dashboard/ConversationSelectCard.tsx:444
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "Få en personlig grammatikkregel å lære"
@@ -2828,7 +2818,7 @@ msgid "New words"
 msgstr "Nye ord"
 
 #: src/features/Dashboard/TasksCard.tsx:62
-#: src/features/Dashboard/ConversationSelectCard.tsx:194
+#: src/features/Dashboard/ConversationSelectCard.tsx:468
 #. js-lingui-explicit-id
 msgid "Practice new vocabulary with the AI"
 msgstr "Øv på nytt ordforråd med AI-en"
@@ -2888,47 +2878,83 @@ msgstr "Lager nye ord..."
 msgid "Crafting new rule..."
 msgstr "Lager ny regel..."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:146
+#: src/features/Dashboard/ConversationSelectCard.tsx:234
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Mål"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:147
+#: src/features/Dashboard/ConversationSelectCard.tsx:235
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "Sett målet for læringen din"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:159
+#: src/features/Dashboard/ConversationSelectCard.tsx:272
+#. js-lingui-explicit-id
+msgid "Before we start..."
+msgstr "Før vi starter..."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:274
+#. js-lingui-explicit-id
+msgid "Could you please set your goal?"
+msgstr "Kunne du vennligst sette ditt mål?"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:302
+#. js-lingui-explicit-id
+msgid ""
+"We need to know a little bit about you, so that our AI can help you learn "
+"better."
+msgstr ""
+"Vi trenger å vite litt om deg, slik at vår AI kan hjelpe deg med å lære "
+"bedre."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:312
+#. js-lingui-explicit-id
+msgid ""
+"Even during onboarding, you will get practice and our AI will help you "
+"correct grammar."
+msgstr ""
+"Selv under opplæring, vil du få praksis og vår AI vil hjelpe deg med å "
+"rette grammatikk."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:392
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "Snakk med AI-en, så vil den svare deg."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:165
+#: src/features/Dashboard/ConversationSelectCard.tsx:402
+#: src/features/Dashboard/ConversationSelectCard.tsx:428
+#: src/features/Dashboard/ConversationSelectCard.tsx:452
+#: src/features/Dashboard/ConversationSelectCard.tsx:476
+#. js-lingui-explicit-id
+msgid "Set the goal to start"
+msgstr "Sett målet for å starte"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:413
 #. js-lingui-explicit-id
 msgid "Start Talking"
 msgstr "Start Snakking"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:170
+#: src/features/Dashboard/ConversationSelectCard.tsx:418
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
 msgstr "AI vil lede deg gjennom samtalen"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:178
+#: src/features/Dashboard/ConversationSelectCard.tsx:439
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Veiled meg"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:182
+#: src/features/Dashboard/ConversationSelectCard.tsx:443
 #. js-lingui-explicit-id
 msgid "Rules"
 msgstr "Regler"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:189
+#: src/features/Dashboard/ConversationSelectCard.tsx:463
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "Få en regel"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:200
+#: src/features/Dashboard/ConversationSelectCard.tsx:487
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "Utvid ordforrådet"
@@ -3049,6 +3075,21 @@ msgstr "Mindre"
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Mer"
+
+#: src/features/Conversation/ConversationPage.tsx:59
+#. js-lingui-explicit-id
+msgid "Oops! Something went wrong"
+msgstr "Oops! Noe gikk galt"
+
+#: src/features/Conversation/ConversationPage.tsx:63
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "Vennligst oppdater siden og prøv en gang til"
+
+#: src/features/Conversation/ConversationPage.tsx:73
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "Last inn siden på nytt"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:337
 #. js-lingui-explicit-id
