@@ -82,7 +82,7 @@ function useProvideWords(): WordsContextType {
       const systemInstruction = [
         `User provides list of works that they knows.
 You should generate list of 10 new words to learn.
-Words should be useful and not too difficult.
+Words should be useful for daily basis usage and not too difficult.
 Return info in JSON format. Example: ["word1", "word2", "word3"].
 Do not wrap answer with any wrapper phrases.
 Your response will be sent to JSON.parse() function.
