@@ -50,3 +50,23 @@ html {
     opacity: 1;
   }
 }
+
+.loading-shimmer {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.4) 30%, rgba(255, 255, 255, 1) 50%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: loadingShimmer 2s infinite;
+  display: inline-block;
+}
+
+@keyframes loadingShimmer {
+  0% {
+    background-position: -100% 0px;
+  }
+  100% {
+    background-position: 100% 0px;
+  }
+}
