@@ -65,7 +65,7 @@ export const UsageStatsCards = () => {
   });
   const correctionsCount = correctionStats.length || 0;
 
-  const isNoConversations = chatHistory.conversations.length == 0;
+  const chatMessages = chatHistory.conversations;
 
   return (
     <>
@@ -175,6 +175,7 @@ export const UsageStatsCards = () => {
               sx={{
                 maxHeight: "80vh",
                 gap: "40px",
+                width: "100%",
               }}
             >
               <Stack>
@@ -184,7 +185,7 @@ export const UsageStatsCards = () => {
                 </Typography>
               </Stack>
 
-              {chatHistory.conversations.length === 0 && (
+              {chatMessages.length === 0 && (
                 <Stack
                   sx={{
                     alignItems: "center",
@@ -192,6 +193,7 @@ export const UsageStatsCards = () => {
                     gap: "15px",
                     opacity: 0.7,
                     height: "100%",
+                    width: "100%",
                   }}
                 >
                   <MessagesSquare />
@@ -208,7 +210,7 @@ export const UsageStatsCards = () => {
               )}
 
               <Stack gap="40px">
-                {chatHistory.conversations.map((conversation) => {
+                {chatMessages.map((conversation) => {
                   return (
                     <Stack
                       key={conversation.id}
