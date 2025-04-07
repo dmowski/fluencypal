@@ -101,8 +101,8 @@ function useProvideAiConversation(): AiConversationContextType {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const isStartedInternal = searchParams.get("started") === "true";
-  const setIsStartedInternal = (isStarted: boolean) => {
+  const isStartedUrl = searchParams.get("started") === "true";
+  const setIsStartedUrl = (isStarted: boolean) => {
     const pathName = window.location.pathname;
 
     if (isStarted) {
@@ -114,17 +114,14 @@ function useProvideAiConversation(): AiConversationContextType {
 
   useEffect(() => {
     const isActiveConversationNow = isStarted;
-    console.log("isActiveConversationNow", isActiveConversationNow);
-    console.log("isStartedInternal", isStartedInternal);
     if (!isActiveConversationNow) {
       return;
     }
 
-    if (!isStartedInternal) {
-      console.log("CLOSING....");
+    if (!isStartedUrl) {
       closeConversation();
     }
-  }, [isStartedInternal]);
+  }, [isStartedUrl]);
 
   const homeworkService = useHomework();
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
@@ -600,7 +597,7 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
     setGameStat(gameWords ? gameWords : null);
 
     try {
-      setIsStartedInternal(true);
+      setIsStartedUrl(true);
       setIsInitializing(`Loading...`);
       setCurrentMode(mode);
       setConversation([]);

@@ -16,6 +16,7 @@ import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { useCorrections } from "../Corrections/useCorrections";
 import { useLingui } from "@lingui/react";
 import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
+import { useEffect } from "react";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -30,6 +31,12 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const recorder = useAudioRecorder();
   const corrections = useCorrections();
   const { i18n } = useLingui();
+
+  useEffect(() => {
+    if (!aiConversation.isStarted) {
+      recorder.removeTranscript();
+    }
+  }, [aiConversation.isStarted]);
 
   if (settings.loading || auth.loading) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;

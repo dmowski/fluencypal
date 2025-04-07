@@ -193,9 +193,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     };
   }, [conversation, isAnalyzingResponse, isRecording]);
 
-  const isTranscriptIsGreat =
-    !isNeedToShowCorrection && !isTranscribing && !isAnalyzingResponse && transcriptMessage;
-
   return (
     <Stack sx={{ gap: "40px" }}>
       <Stack

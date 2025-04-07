@@ -171,6 +171,7 @@ export const ConversationSelectCard = () => {
             <LanguageSwitcher
               size="small"
               isAuth={auth.isAuthorized}
+              langToLearn={settings.languageCode || "en"}
               setLanguageToLearn={settings.setLanguage}
             />
           </Stack>

@@ -80,16 +80,22 @@ export const useAudioRecorder = () => {
     recorderControls.stopRecording();
   };
 
+  const isRecording = recorderControls.isRecordingInProgress;
+
   return {
     startRecording,
     stopRecording,
     cancelRecording,
-    isRecording: recorderControls.isRecordingInProgress,
+    isRecording: isRecording,
     isTranscribing,
     transcription,
     error: recorderControls.error?.message || transcriptionError || "",
     recordingMilliSeconds: recorderControls.recordingTime,
     removeTranscript: () => {
+      if (isRecording) {
+        isCancel.current = true;
+        recorderControls.stopRecording();
+      }
       setTranscription(null);
       setIsTranscribing(false);
     },
