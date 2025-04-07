@@ -1,6 +1,5 @@
 import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Stack } from "@mui/material";
-import { Header } from "../Header/Header";
 import { Footer } from "../Landing/Footer";
 import { CtaBlock } from "../Landing/ctaBlock";
 import { ListBlogIntro } from "./ListBlogIntro";
@@ -8,6 +7,7 @@ import { ListBlog } from "./ListBlog";
 import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
+import { HeaderStatic } from "../Header/HeaderStatic";
 
 interface BlogsPageProps {
   selectedCategory?: string;
@@ -18,7 +18,7 @@ export const BlogsPage = ({ selectedCategory, lang }: BlogsPageProps) => {
   const i18n = getI18nInstance(lang);
   return (
     <>
-      <Header mode="landing" lang={lang} />
+      <HeaderStatic lang={lang} />
       <div
         style={{
           width: "100%",

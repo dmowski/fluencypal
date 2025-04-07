@@ -43,6 +43,7 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
     return <RulesToLearn />;
   }
 
+  // remove flashing when loading
   if (!settings.loading && !settings.languageCode) {
     return <SelectLanguage />;
   }

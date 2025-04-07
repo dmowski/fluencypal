@@ -2,12 +2,13 @@ import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Link, Stack, Typography } from "@mui/material";
 
 import { maxContentWidth, subTitleFontStyle } from "../landingSettings";
-import { Header } from "../../Header/Header";
+
 import { Footer } from "../Footer";
 import { ContactList } from "./ContactList";
 import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
+import { HeaderStatic } from "@/features/Header/HeaderStatic";
 
 interface ContactsPageProps {
   lang: SupportedLanguage;
@@ -16,7 +17,7 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
   const i18n = getI18nInstance(lang);
   return (
     <Stack sx={{}}>
-      <Header mode="landing" lang={lang} />
+      <HeaderStatic lang={lang} />
 
       <div
         style={{

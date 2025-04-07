@@ -1,6 +1,5 @@
 import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Button, Link, Stack, Typography } from "@mui/material";
-import { Header } from "../../Header/Header";
 
 import { Footer } from "../Footer";
 
@@ -17,6 +16,7 @@ import { RolePlayCard } from "./RolePlayCard";
 import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
+import { HeaderStatic } from "@/features/Header/HeaderStatic";
 
 interface ScenarioOnePageProps {
   id?: string;
@@ -37,7 +37,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
 
   return (
     <>
-      <Header mode="landing" lang={lang} />
+      <HeaderStatic lang={lang} />
       <div
         style={{
           width: "100%",

@@ -1,5 +1,5 @@
 import { allMessages } from "@/appRouterI18n";
-import { Header } from "@/features/Header/Header";
+import { HeaderStatic } from "@/features/Header/HeaderStatic";
 import { maxLandingWidth } from "@/features/Landing/landingSettings";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { initLingui } from "@/initLingui";
@@ -23,7 +23,7 @@ export default function NotFound() {
       initialMessages={allMessages[supportedLang]!}
     >
       <div>
-        <Header mode="landing" lang="en" />
+        <HeaderStatic lang="en" />
         <Stack
           sx={{
             alignItems: "center",

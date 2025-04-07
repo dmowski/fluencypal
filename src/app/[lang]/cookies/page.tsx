@@ -1,12 +1,12 @@
 import { allMessages } from "@/appRouterI18n";
 import { supportedLanguages } from "@/common/lang";
-import { Header } from "@/features/Header/Header";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { CookiesPolicy } from "@/features/Legal/CookiesPolicy";
 import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { Footer } from "@/features/Landing/Footer";
+import { HeaderStatic } from "@/features/Header/HeaderStatic";
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -32,7 +32,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
       initialLocale={supportedLang}
       initialMessages={allMessages[supportedLang]!}
     >
-      <Header mode="landing" lang={supportedLang} />
+      <HeaderStatic lang={supportedLang} />
       <CookiesPolicy lang={supportedLang} />
       <Footer lang={supportedLang} />
     </LinguiClientProvider>

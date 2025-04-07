@@ -2,11 +2,11 @@ import { HeaderComponent, HeaderMode } from "./HeaderComponent";
 import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
-export function Header({ mode, lang }: { mode: HeaderMode; lang: SupportedLanguage }) {
+export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const i18n = getI18nInstance(lang);
   return (
     <HeaderComponent
-      mode={mode}
+      mode="practice"
       lang={lang}
       practiceTitle={i18n._(`Practice`)}
       rolePlayTitle={i18n._(`Role-Plays`)}

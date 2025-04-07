@@ -6,7 +6,6 @@ import {
   subTitleFontStyle,
   titleFontStyle,
 } from "../landingSettings";
-import { Header } from "../../Header/Header";
 import { CtaBlock } from "../ctaBlock";
 import { Footer } from "../Footer";
 import { FirstEnterButton } from "../FirstEnterButton";
@@ -20,6 +19,7 @@ import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import PriceDisplay from "./PriceDisplay";
+import { HeaderStatic } from "@/features/Header/HeaderStatic";
 
 interface PricePageProps {
   lang: SupportedLanguage;
@@ -28,7 +28,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
   const i18n = getI18nInstance(lang);
   return (
     <Stack sx={{}}>
-      <Header mode="landing" lang={lang} />
+      <HeaderStatic lang={lang} />
       <div
         style={{
           width: "100%",

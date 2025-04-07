@@ -1,6 +1,5 @@
 import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Stack, Typography } from "@mui/material";
-import { Header } from "../Header/Header";
 import { Footer } from "./Footer";
 import { WelcomeScreen } from "./WelcomeScreen";
 import { IntroVideoDemo } from "./IntroVideoDemo";
@@ -12,6 +11,7 @@ import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "../Lang/getUrlStart";
 import Script from "next/script";
+import { HeaderStatic } from "../Header/HeaderStatic";
 
 interface LandingPageProps {
   lang: SupportedLanguage;
@@ -110,7 +110,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
   };
   return (
     <>
-      <Header mode="landing" lang={lang} />
+      <HeaderStatic lang={lang} />
       <Script
         type="application/ld+json"
         strategy="beforeInteractive"

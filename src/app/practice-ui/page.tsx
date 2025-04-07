@@ -1,12 +1,13 @@
 import { allMessages } from "@/appRouterI18n";
 import { supportedLanguages } from "@/common/lang";
-import { Header } from "@/features/Header/Header";
+import { HeaderPractice } from "@/features/Header/HeaderPractice";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { ConversationPageTest } from "@/features/Conversation/ConversationPageTest";
+import { PracticeProvider } from "../practiceProvider";
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -46,10 +47,12 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
       initialLocale={supportedLang}
       initialMessages={allMessages[supportedLang]!}
     >
-      <Header mode="practice" lang={supportedLang} />
-      <main>
-        <ConversationPageTest rolePlayInfo={rolePlayInfo} lang={supportedLang} />
-      </main>
+      <PracticeProvider>
+        <HeaderPractice lang={supportedLang} />
+        <main>
+          <ConversationPageTest rolePlayInfo={rolePlayInfo} lang={supportedLang} />
+        </main>
+      </PracticeProvider>
     </LinguiClientProvider>
   );
 }

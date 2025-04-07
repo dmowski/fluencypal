@@ -1,6 +1,5 @@
 import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Button, Stack, Typography } from "@mui/material";
-import { Header } from "../Header/Header";
 
 import { Footer } from "../Landing/Footer";
 
@@ -18,6 +17,7 @@ import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { getBlogs } from "./blogData";
 import { getRolePlayScenarios } from "../RolePlay/rolePlayData";
 import { RolePlayCard } from "../Landing/RolePlay/RolePlayCard";
+import { HeaderStatic } from "../Header/HeaderStatic";
 
 interface BlogOnePageProps {
   id?: string;
@@ -40,7 +40,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
 
   return (
     <>
-      <Header mode="landing" lang={lang} />
+      <HeaderStatic lang={lang} />
       <div
         style={{
           width: "100%",
