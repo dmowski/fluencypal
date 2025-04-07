@@ -254,6 +254,7 @@ export const generateMetadataInfo = ({
   return {
     keywords,
     title,
+    metadataBase: new URL(siteUrl),
     description,
     alternates: alternates,
     openGraph: {
