@@ -40,13 +40,13 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   const pageTitle = scenario ? scenario.title : i18n._(`Start the Lesson`);
 
   const [isAndroid, setIsAndroid] = useState(false);
-  const [ua, setUa] = useState("");
+  const [agent, setAgent] = useState("");
   useEffect(() => {
     if (typeof window !== "undefined") {
       setInApp(isInAppBrowser());
 
       const ua = navigator.userAgent.toLowerCase();
-      setUa(ua);
+      setAgent("");
       setIsAndroid(ua.includes("android"));
     }
   }, []);
@@ -225,16 +225,18 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
               </Typography>
             </Stack>
 
-            <Typography
-              variant="caption"
-              sx={{
-                maxWidth: "300px",
-                paddingTop: "30px",
-              }}
-              align="center"
-            >
-              <small>{ua}</small>
-            </Typography>
+            {agent && (
+              <Typography
+                variant="caption"
+                sx={{
+                  maxWidth: "300px",
+                  paddingTop: "30px",
+                }}
+                align="center"
+              >
+                <small>{agent}</small>
+              </Typography>
+            )}
           </Stack>
         </Stack>
       </Stack>
