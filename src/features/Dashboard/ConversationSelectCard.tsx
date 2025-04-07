@@ -11,11 +11,14 @@ import { useState } from "react";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { ConversationCard } from "./ConversationCard";
+import { auth } from "firebase-admin";
+import { useAuth } from "../Auth/useAuth";
 
 export const ConversationSelectCard = () => {
   const aiConversation = useAiConversation();
   const words = useWords();
   const rules = useRules();
+  const auth = useAuth();
   const { i18n } = useLingui();
   const settings = useSettings();
   const userInfo = useAiUserInfo();
@@ -165,7 +168,11 @@ export const ConversationSelectCard = () => {
             }}
           >
             <Typography variant="h6">| {settings.fullLanguageName}</Typography>
-            <LanguageSwitcher size="small" />
+            <LanguageSwitcher
+              size="small"
+              isAuth={auth.isAuthorized}
+              setLanguageToLearn={settings.setLanguage}
+            />
           </Stack>
         </Stack>
       </Stack>

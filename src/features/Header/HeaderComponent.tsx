@@ -34,7 +34,6 @@ import { PaymentModal } from "../Usage/PaymentModal";
 import { NeedHelpModal } from "./NeedHelpModal";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SupportedLanguage } from "@/common/lang";
-import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
 import MenuIcon from "@mui/icons-material/Menu";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
@@ -361,7 +360,6 @@ export function HeaderComponent({
                 height: "100%",
               }}
             >
-              {isLanding && <LanguageSwitcher />}
               {auth.isAuthorized ? (
                 <>
                   <Button

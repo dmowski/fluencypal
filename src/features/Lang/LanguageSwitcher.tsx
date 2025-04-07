@@ -15,9 +15,7 @@ import {
 import { getUrlStart } from "./getUrlStart";
 import { Globe, GraduationCap, Rabbit } from "lucide-react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useSettings } from "../Settings/useSettings";
 import { ClickCard } from "../Dashboard/ClickCard";
-import { useAuth } from "../Auth/useAuth";
 import { useLocalStorage } from "react-use";
 
 const LanguageCard = ({
@@ -47,13 +45,19 @@ const parseLangFromUrl = (pathname: string) => {
 
 interface LanguageSwitcherProps {
   size?: "small" | "large";
+  isAuth: boolean;
+  langToLearn?: SupportedLanguage;
+  setLanguageToLearn: (lang: SupportedLanguage) => void;
 }
-export function LanguageSwitcher({ size }: LanguageSwitcherProps) {
+export function LanguageSwitcher({
+  size,
+  isAuth,
+  langToLearn,
+  setLanguageToLearn,
+}: LanguageSwitcherProps) {
   const router = useRouter();
-  const auth = useAuth();
   const pathname = usePathname();
 
-  const settings = useSettings();
   const { i18n } = useLingui();
   const [activeTab, setActiveTab] = useState<"page" | "learn">("page");
   const [isShowModal, setIsShowModal] = useState(false);
@@ -86,18 +90,18 @@ export function LanguageSwitcher({ size }: LanguageSwitcherProps) {
         setIsLoading(false);
       }, 1000);
     } else {
-      settings.setLanguage(newLang);
+      setLanguageToLearn(newLang);
     }
   }
 
-  const selectedLangCode = activeTab === "page" ? supportedLang : settings.languageCode;
+  const selectedLangCode = activeTab === "page" ? supportedLang : langToLearn;
 
   const systemLangs = getUserLangCode();
   const otherLangs = supportedLanguages.filter((lang) => !systemLangs.includes(lang));
 
   const isCurrentPageLangIsSystem = systemLangs.length && systemLangs.includes(supportedLang);
   const supportedLangCodeLabel =
-    systemLangs.length && !isCurrentPageLangIsSystem && !auth.isAuthorized && !isSawLangSelector
+    systemLangs.length && !isCurrentPageLangIsSystem && !isAuth && !isSawLangSelector
       ? availableOnLabelMap[systemLangs[0]]
       : "";
 
@@ -172,7 +176,7 @@ export function LanguageSwitcher({ size }: LanguageSwitcherProps) {
             />
           </Tabs>
 
-          {!auth.isAuthorized && activeTab === "learn" ? (
+          {!isAuth && activeTab === "learn" ? (
             <Stack
               sx={{
                 gap: "26px",
