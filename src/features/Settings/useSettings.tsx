@@ -11,6 +11,7 @@ interface SettingsContextType {
   userCreatedAt: number | null;
 
   languageCode: SupportedLanguage | null;
+
   fullLanguageName: string | null;
 
   loading: boolean;

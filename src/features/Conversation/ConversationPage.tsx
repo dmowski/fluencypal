@@ -16,7 +16,7 @@ import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { useCorrections } from "../Corrections/useCorrections";
 import { useLingui } from "@lingui/react";
 import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { SelectLanguage } from "../Dashboard/SelectLanguage";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
@@ -45,7 +45,16 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     }
   }, [aiConversation.isStarted]);
 
-  if (settings.loading || auth.loading) {
+  const [isDataLoadingState, setIsDataLoadingState] = useState(true);
+  const isLoading = settings.loading || auth.loading;
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsDataLoadingState(isLoading);
+    }, 100);
+  }, [isLoading]);
+
+  if (isDataLoadingState) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
   if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
@@ -94,7 +103,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     return <InfoBlockedSection title={aiConversation.isInitializing || i18n._(`Loading...`)} />;
   }
 
-  if (!settings.loading && !settings.languageCode) {
+  if (!settings.languageCode) {
     return <SelectLanguage />;
   }
 
