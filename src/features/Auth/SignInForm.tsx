@@ -11,8 +11,7 @@ import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 
-export const isInAppBrowser = (): boolean => {
-  const ua = navigator.userAgent.toLowerCase();
+export const isInAppBrowser = (ua: string): boolean => {
   return (
     ua.includes("instagram") ||
     ua.includes("tginternal") || // Telegram Android in-app
@@ -24,11 +23,10 @@ export const isInAppBrowser = (): boolean => {
 };
 
 export const getIsTelegram = () => {
-  return (
-    "TelegramWebview" in window || // Android
-    "TelegramWebviewProxy" in window || // iPhone
-    "TelegramWebviewProxyProto" in window // iPhone
-  );
+  return {
+    isTgAndroid: "TelegramWebview" in window,
+    isTgIos: "TelegramWebviewProxy" in window || "TelegramWebviewProxyProto" in window,
+  };
 };
 
 interface SignInFormProps {
@@ -51,12 +49,10 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   const [agent, setAgent] = useState("");
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setInApp(isInAppBrowser());
-
-      const ua = navigator.userAgent.toLowerCase();
       const isTelegramWebView = getIsTelegram();
-      setAgent(isTelegramWebView ? "tg" : "not tg");
-      setIsAndroid(ua.includes("android"));
+      const ua = navigator.userAgent.toLowerCase();
+      setInApp(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos || isInAppBrowser(ua));
+      setIsAndroid(isTelegramWebView.isTgAndroid || ua.includes("android"));
     }
   }, []);
 
