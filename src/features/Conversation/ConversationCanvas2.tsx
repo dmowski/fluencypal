@@ -186,7 +186,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     };
     const timeout = setTimeout(() => {
       scrollToBottom();
-    }, 500);
+    }, 100);
 
     return () => {
       clearTimeout(timeout);
@@ -474,7 +474,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         </Stack>
                       </Stack>
 
-                      {isNeedToShowCorrection && (
+                      {(isNeedToShowCorrection || isAnalyzingResponse) && (
                         <Stack>
                           <Typography
                             variant="caption"
