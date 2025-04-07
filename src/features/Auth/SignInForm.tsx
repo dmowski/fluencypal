@@ -91,11 +91,19 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
             </Typography>
 
             <Typography align="right" sx={{ opacity: 0.8 }}>
-              {isAndroid
-                ? i18n._("Please tap the menu ⋮ and choose 'Open in Chrome' to continue.")
-                : i18n._(
-                    "Please tap the menu ••• and choose 'Open in external Browser' to continue."
-                  )}
+              {isAndroid ? (
+                <>
+                  {i18n._("Please tap the menu ⋮ and choose")}
+                  <br />
+                  {i18n._("'Open in Chrome' to continue.")}
+                </>
+              ) : (
+                <>
+                  {i18n._("Please tap the menu ••• and choose")}
+                  <br />
+                  {i18n._("'Open in external Browser' to continue.")}
+                </>
+              )}
             </Typography>
           </Stack>
           <img
