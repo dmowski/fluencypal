@@ -244,7 +244,7 @@ export function HeaderComponent({
                 <Button
                   startIcon={<ChevronLeft color="white" size={"30px"} />}
                   disabled={
-                    aiConversation.isClosing || isInternalClosing || aiConversation.isInitializing
+                    aiConversation.isClosing || isInternalClosing || !!aiConversation.isInitializing
                   }
                   href={"#"}
                   sx={{
