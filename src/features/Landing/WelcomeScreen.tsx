@@ -4,6 +4,7 @@ import { maxLandingWidth, subTitleFontStyle } from "./landingSettings";
 import { ConversationCard } from "../Dashboard/ConversationCard";
 import { getI18nInstance } from "@/appRouterI18n";
 import { SupportedLanguage } from "@/common/lang";
+import { ConversationLandingCard } from "./ConversationLandingCard";
 
 interface WelcomeScreenProps {
   title: string;
@@ -138,7 +139,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           },
         }}
       >
-        <ConversationCard
+        <ConversationLandingCard
           title={i18n._(`Goal`)}
           subTitle={i18n._(`Set the goal of your learning`)}
           href="/practice"
@@ -157,11 +158,11 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           }
           actionLabel={i18n._(`Start | 5 min`)}
         />
-        <ConversationCard
+        <ConversationLandingCard
           href="/practice"
           title={i18n._(`Conversation`)}
           subTitle={i18n._(`Talk to the AI and it will respond to you`)}
-          startColor="#34D399"
+          startColor="#03a652"
           endColor="#3B82F6"
           bgColor="#A3E635"
           icon={
@@ -177,7 +178,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           actionLabel={i18n._(`Start Talking`)}
         />
 
-        <ConversationCard
+        <ConversationLandingCard
           title={i18n._(`Beginner`)}
           subTitle={i18n._(`AI will lead you through the conversation`)}
           href="/practice"
@@ -197,7 +198,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           actionLabel={i18n._(`Guide Me`)}
         />
 
-        <ConversationCard
+        <ConversationLandingCard
           title={i18n._(`Rules`)}
           subTitle={i18n._(`Get a personal grammar rule to learn`)}
           href="/practice"
@@ -217,11 +218,11 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           actionLabel={i18n._(`Get a Rule`)}
         />
 
-        <ConversationCard
+        <ConversationLandingCard
           title={i18n._(`Words`)}
           subTitle={i18n._(`Practice new vocabulary with the AI`)}
           href="/practice"
-          startColor="#00BFFF"
+          startColor="#00aae3"
           endColor="#086787"
           bgColor="#5EEAD4"
           icon={
@@ -237,7 +238,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           actionLabel={i18n._(`Expand Vocabulary`)}
         />
 
-        <ConversationCard
+        <ConversationLandingCard
           title={i18n._(`Role Play`)}
           subTitle={i18n._(`Real-life situations with the AI`)}
           href="/practice"
