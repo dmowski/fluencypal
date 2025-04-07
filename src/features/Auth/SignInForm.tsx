@@ -66,7 +66,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
           backgroundColor: "#111214",
         }}
       >
-        <Stack sx={{ alignItems: "flex-end", gap: "10px", padding: "10px 10px 0px 10px" }}>
+        <Stack sx={{ alignItems: "flex-end", gap: "10px", padding: "20px 15px 0px 10px" }}>
           <ArrowUp
             style={{
               opacity: 0.7,
@@ -80,7 +80,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
               sx={{
                 fontWeight: 800,
                 fontSize: "2rem",
-                padding: "0 10px",
+                padding: "0",
                 "@media (max-width: 600px)": {
                   fontSize: "2.3rem",
                 },
@@ -106,7 +106,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
               width: "100%",
               boxShadow: "0px 0px 1px 1px rgba(22,22,22,0.95)",
               borderRadius: "10px",
-              backgroundColor: "#222",
+              backgroundColor: "#111214",
               maxWidth: "400px",
             }}
           />
