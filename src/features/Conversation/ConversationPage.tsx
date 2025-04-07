@@ -2,7 +2,7 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { useAuth } from "../Auth/useAuth";
-import { Alert, Button, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import { SignInForm } from "../Auth/SignInForm";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
@@ -22,6 +22,7 @@ import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
 import { WordsToLearn } from "../Dashboard/WordsToLearn";
 import { RulesToLearn } from "../Dashboard/RulesToLearn";
+import { ConversationError } from "./ConversationError";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -51,7 +52,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   useEffect(() => {
     setTimeout(() => {
       setIsDataLoadingState(isLoading);
-    }, 100);
+    }, 1500);
   }, [isLoading]);
 
   if (isDataLoadingState) {
@@ -62,41 +63,10 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   if (aiConversation.errorInitiating) {
     return (
-      <InfoBlockedSection title="">
-        <Stack
-          sx={{
-            width: "100%",
-            maxWidth: "500px",
-            padding: "20px",
-            boxSizing: "border-box",
-            gap: "20px",
-            alignItems: "flex-start",
-          }}
-        >
-          <Stack
-            sx={{
-              width: "100%",
-            }}
-          >
-            <Typography variant="h4" className="decor-text">
-              {i18n._(`Oops! Something went wrong`)}
-            </Typography>
-            <Typography color="error">
-              {aiConversation.errorInitiating ||
-                i18n._(`Please refresh the page and try one more time`)}
-            </Typography>
-          </Stack>
-          <Button
-            variant="contained"
-            onClick={() => window.location.reload()}
-            sx={{
-              padding: "10px 40px",
-            }}
-          >
-            {i18n._(`Reload page`)}
-          </Button>
-        </Stack>
-      </InfoBlockedSection>
+      <ConversationError
+        errorMessage={aiConversation.errorInitiating || ""}
+        onRetry={() => window.location.reload()}
+      />
     );
   }
   if (aiConversation.isInitializing) {
