@@ -186,7 +186,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Get immediate feedback and explanations on your grammar mistakes as you practice. Enhance your speaking accuracy naturally.`
                 ),
-                img: "/rlanding/ules.webp",
+                img: "/landing/rules.webp",
                 href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Enhance Your Grammar`),
               },
@@ -196,7 +196,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Receive personalized vocabulary tailored to your conversational needs. Use new words immediately to reinforce learning.`
                 ),
-                img: "/wlanding/ords.webp",
+                img: "/landing/words.webp",
                 href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Expand Your Vocabulary`),
               },
@@ -206,7 +206,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Visualize your daily progress with intuitive tracking. Stay motivated by clearly seeing your improvements.`
                 ),
-                img: "/proglanding/ress.webp",
+                img: "/landing/progress.webp",
                 href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Check Your Progress`),
               },
