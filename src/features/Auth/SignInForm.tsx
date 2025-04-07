@@ -115,23 +115,26 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
               )}
             </Typography>
           </Stack>
-          {!isTelegram && (
-            <img
-              src={
-                isAndroid
-                  ? "/instruction/instagramInstructionAndroid.png"
-                  : "/instruction/instagramInstruction.png"
-              }
-              alt="Instagram instruction"
-              style={{
-                width: "90%",
-                boxShadow: "0px 0px 0 3px rgba(200,200,255,0.95)",
-                borderRadius: "10px",
-                backgroundColor: "#111214",
-                maxWidth: "400px",
-              }}
-            />
-          )}
+
+          <img
+            src={
+              isTelegram && isAndroid
+                ? "/instruction/tgAndroid.png"
+                : isTelegram && !isAndroid
+                  ? "/instruction/tgIos.png"
+                  : isAndroid
+                    ? "/instruction/instagramInstructionAndroid.png"
+                    : "/instruction/instagramInstruction.png"
+            }
+            alt="Instagram instruction"
+            style={{
+              width: "90%",
+              boxShadow: "0px 0px 0 3px rgba(200,200,255,0.95)",
+              borderRadius: "10px",
+              backgroundColor: "#111214",
+              maxWidth: "400px",
+            }}
+          />
         </Stack>
       </Stack>
     );
