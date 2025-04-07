@@ -2,7 +2,6 @@
 
 import { firebaseConfig } from "@/common/firebaseConfig";
 import { initializeApp } from "firebase/app";
-import { getAnalytics, setAnalyticsCollectionEnabled } from "firebase/analytics";
 import {
   browserLocalPersistence,
   browserPopupRedirectResolver,
@@ -20,7 +19,7 @@ import { getStorage } from "firebase/storage";
 
 const isNodeEnv = typeof window === "undefined";
 const isSafari = !isNodeEnv && /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
+console.log("FIREBASE!!!");
 const app = initializeApp(firebaseConfig);
 
 const firestore =
@@ -42,12 +41,12 @@ const auth =
 
 const storage = getStorage(app);
 const functions = getFunctions(app);
-const isLocalhost = !isNodeEnv && window.location.hostname === "localhost";
-const analytics = !isNodeEnv && !isLocalhost ? getAnalytics(app) : null;
+//const isLocalhost = !isNodeEnv && window.location.hostname === "localhost";
+//const analytics = !isNodeEnv && !isLocalhost ? getAnalytics(app) : null;
 
 const setCookiesGDPR = (enabled: boolean) => {
-  if (!analytics) return;
-  setAnalyticsCollectionEnabled(analytics, enabled);
+  //if (!analytics) return;
+  //setAnalyticsCollectionEnabled(analytics, enabled);
 };
 
-export { auth, firestore, storage, setCookiesGDPR, functions, analytics };
+export { auth, firestore, storage, setCookiesGDPR, functions };

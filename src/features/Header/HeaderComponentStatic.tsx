@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, MouseEvent, useEffect } from "react";
-import { useAuth } from "../Auth/useAuth";
 import {
   Button,
   Drawer,
@@ -17,7 +16,7 @@ import {
 import { BookMarked, Gem, MessageCircleQuestion, Rss } from "lucide-react";
 
 import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { SupportedLanguage } from "@/common/lang";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
@@ -43,17 +42,12 @@ export function HeaderComponentStatic({
   signInTitle,
   blogTitle,
 }: HeaderStaticProps) {
-  const auth = useAuth();
-  const pathname = usePathname();
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
   const [isHighlightJoin, setIsHighlightJoin] = useState(false);
-  const isLanding = !(
-    pathname.startsWith("/practice") || pathname.startsWith(`${getUrlStart(lang)}practice`)
-  );
 
   useEffect(() => {
     const isWindow = typeof window !== "undefined";
-    if (!isLanding || auth.isAuthorized || !isWindow) {
+    if (!isWindow) {
       return;
     }
 
@@ -69,14 +63,9 @@ export function HeaderComponentStatic({
     return () => {
       window.removeEventListener("scroll", onScrollHandler);
     };
-  }, [auth.isAuthorized, isLanding]);
+  }, []);
 
-  const homeUrl = isLanding
-    ? `${getUrlStartWithoutLastSlash(lang)}`
-    : auth.isAuthorized
-      ? `${getUrlStart(lang)}practice`
-      : getUrlStart(lang);
-
+  const homeUrl = `${getUrlStartWithoutLastSlash(lang)}`;
   const [isShowLangSelector, setIsShowLangSelector] = useState(false);
 
   const router = useRouter();

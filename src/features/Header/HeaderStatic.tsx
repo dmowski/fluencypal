@@ -1,7 +1,6 @@
 import { HeaderComponentStatic } from "./HeaderComponentStatic";
 import { SupportedLanguage } from "@/common/lang";
 import { getI18nInstance } from "@/appRouterI18n";
-import { Suspense } from "react";
 
 export function HeaderStatic({ lang }: { lang: SupportedLanguage }) {
   const i18n = getI18nInstance(lang);

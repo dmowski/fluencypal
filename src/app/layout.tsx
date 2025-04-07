@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../features/uiKit/theme";
 import { NotificationsProviderWrapper } from "./clientProviders";
-import { CookiesPopup } from "@/features/Legal/CookiesPopup";
 import { initLingui } from "@/initLingui";
 import linguiConfig from "../../lingui.config";
 import { supportedLanguages } from "@/common/lang";
