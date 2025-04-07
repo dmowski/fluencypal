@@ -9,10 +9,9 @@ import { SupportedLanguage } from "@/common/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { useEffect, useState } from "react";
-import { ArrowUp, TriangleAlert } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 export const isInAppBrowser = (): boolean => {
-  return true;
   const ua = navigator.userAgent.toLowerCase();
   return (
     ua.includes("instagram") ||
