@@ -78,9 +78,7 @@ function useProvideSettings(): SettingsContextType {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      saveLoginTime();
-    }, 4000);
+    saveLoginTime();
   }, [userId, userSettingsDoc]);
 
   const userCreatedAt = userSettings?.createdAt || null;
