@@ -89,7 +89,7 @@ function useProvideSettings(): SettingsContextType {
     fullLanguageName: userSettings?.languageCode
       ? fullEnglishLanguageName[userSettings.languageCode]
       : null,
-    loading: loading || !userId || !userSettingsDoc,
+    loading: loading || !userId || !userSettingsDoc || !userSettings,
     setLanguage,
   };
 }
