@@ -160,11 +160,11 @@ export function HeaderComponent({
           left: 0,
           zIndex: 1000,
           backgroundColor:
-            isNoBalance || !isLanding
+            isNoBalance && !isLanding
               ? "transparent"
               : isActiveConversation
                 ? "rgba(10, 18, 30, 1)"
-                : "rgba(10, 18, 30, 0.9)",
+                : "rgba(10, 18, 30, 0.7)",
           backdropFilter: "blur(10px)",
           //borderBottom: isActiveConversation ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
 
