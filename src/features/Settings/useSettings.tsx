@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX, useEffect } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { setDoc } from "firebase/firestore";
+import { getDoc, setDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/common/lang";
 import { db } from "../Firebase/db";
@@ -41,21 +41,21 @@ function useProvideSettings(): SettingsContextType {
   };
 
   const initUserSettings = async () => {
-    if (
-      !userId ||
-      loading ||
-      !userSettings ||
-      !userSettingsDoc ||
-      (userSettings.createdAt && userSettings.email)
-    ) {
+    if (!userId || !userSettingsDoc) {
+      return;
+    }
+
+    const data = await getDoc(userSettingsDoc);
+    const isNew = !data.exists();
+    if (!isNew) {
       return;
     }
 
     await setDoc(
       userSettingsDoc,
       {
-        createdAt: userSettings.createdAt || Date.now(),
-        email: userSettings.email || auth.userInfo?.email || "",
+        createdAt: Date.now(),
+        email: auth.userInfo?.email || "",
       },
       { merge: true }
     );
@@ -63,7 +63,7 @@ function useProvideSettings(): SettingsContextType {
 
   useEffect(() => {
     initUserSettings();
-  }, [userSettings, loading, userId, userSettingsDoc]);
+  }, [userId, userSettingsDoc]);
 
   const saveLoginTime = async () => {
     if (!userId || !userSettingsDoc) return;
@@ -78,7 +78,9 @@ function useProvideSettings(): SettingsContextType {
   };
 
   useEffect(() => {
-    saveLoginTime();
+    setTimeout(() => {
+      saveLoginTime();
+    }, 4000);
   }, [userId, userSettingsDoc]);
 
   const userCreatedAt = userSettings?.createdAt || null;
