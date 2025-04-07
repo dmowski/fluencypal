@@ -15,6 +15,7 @@ export const isInAppBrowser = (): boolean => {
   const ua = navigator.userAgent.toLowerCase();
   return (
     ua.includes("instagram") ||
+    true ||
     ua.includes("telegram") ||
     ua.includes("fbav") || // Facebook app
     ua.includes("fb_iab") // Facebook in-app browser
@@ -58,7 +59,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
           position: "fixed",
           top: 0,
           left: 0,
-          zIndex: 9999,
+          zIndex: 999999999,
           width: "100dvw",
           height: "100dvh",
 
