@@ -645,7 +645,6 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
       setCommunicator(conversation);
     } catch (e) {
       console.error(e);
-      alert("Something went wrong. Try again later");
       setErrorInitiating("Something went wrong. Try again later");
       setIsInitializing("");
       throw e;

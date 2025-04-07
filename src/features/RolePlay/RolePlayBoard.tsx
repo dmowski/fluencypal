@@ -157,7 +157,14 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
   ]);
 
   useEffect(() => {
-    if (!rolePlayId || rolePlayId == selectedRolePlayScenario?.id) return;
+    if (!rolePlayId) {
+      setSelectedRolePlayScenario(null);
+      return;
+    }
+
+    if (rolePlayId == selectedRolePlayScenario?.id) {
+      return;
+    }
 
     const scenario = rolePlayInfo.rolePlayScenarios.find((scenario) => scenario.id === rolePlayId);
     if (scenario) {
