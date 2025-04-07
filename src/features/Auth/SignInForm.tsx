@@ -9,9 +9,10 @@ import { SupportedLanguage } from "@/common/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { useEffect, useState } from "react";
-import { TriangleAlert } from "lucide-react";
+import { ArrowUp, TriangleAlert } from "lucide-react";
 
 export const isInAppBrowser = (): boolean => {
+  return true;
   const ua = navigator.userAgent.toLowerCase();
   return (
     ua.includes("instagram") ||
@@ -52,34 +53,47 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
 
   if (inApp) {
     return (
-      <StarContainer minHeight="min(100vh,1600px)" paddingBottom="10px">
-        <Stack sx={{ alignItems: "center", gap: "20px", padding: "10px 10px 0px 10px" }}>
-          <TriangleAlert
+      <Stack
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 9999,
+          width: "100dvw",
+          height: "100dvh",
+
+          backgroundColor: "#111214",
+        }}
+      >
+        <Stack sx={{ alignItems: "flex-end", gap: "10px", padding: "10px 10px 0px 10px" }}>
+          <ArrowUp
             style={{
               opacity: 0.7,
             }}
           />
-          <Typography
-            variant="h2"
-            component={"h1"}
-            align="center"
-            sx={{
-              fontWeight: 900,
-              fontSize: "4rem",
-              padding: "0 10px",
-              "@media (max-width: 600px)": {
-                fontSize: "2.3rem",
-              },
-            }}
-          >
-            {i18n._("Open this page in browser")}
-          </Typography>
+          <Stack>
+            <Typography
+              variant="h3"
+              component={"h1"}
+              align="right"
+              sx={{
+                fontWeight: 800,
+                fontSize: "2rem",
+                padding: "0 10px",
+                "@media (max-width: 600px)": {
+                  fontSize: "2.3rem",
+                },
+              }}
+            >
+              {i18n._("Open this page in browser")}
+            </Typography>
 
-          <Typography align="center" sx={{ opacity: 0.8 }}>
-            {i18n._(
-              "Please tap the menu (⋮ or •••) and choose 'Open in external Browser' to continue."
-            )}
-          </Typography>
+            <Typography align="right" sx={{ opacity: 0.8 }}>
+              {i18n._(
+                "Please tap the menu (⋮ or •••) and choose 'Open in external Browser' to continue."
+              )}
+            </Typography>
+          </Stack>
           <img
             src={
               isAndroid
@@ -96,7 +110,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
             }}
           />
         </Stack>
-      </StarContainer>
+      </Stack>
     );
   }
 
