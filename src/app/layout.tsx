@@ -24,6 +24,7 @@ import { generateMetadataInfo } from "@/libs/metadata";
 import { Inter, Old_Standard_TT } from "next/font/google";
 import { WebCamProvider } from "@/features/webCam/useWebCam";
 import { CorrectionsProvider } from "@/features/Corrections/useCorrections";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const oldStandardTT = Old_Standard_TT({
@@ -86,8 +87,12 @@ export default async function RootLayout({
                                   <RulesProvider>
                                     <TasksProvider>
                                       <HomeworkProvider>
-                                        <AiConversationProvider>{children}</AiConversationProvider>
-                                        <CookiesPopup />
+                                        <Suspense>
+                                          <AiConversationProvider>
+                                            {children}
+                                          </AiConversationProvider>
+                                          <CookiesPopup />
+                                        </Suspense>
                                       </HomeworkProvider>
                                     </TasksProvider>
                                   </RulesProvider>
