@@ -46,7 +46,8 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
       setInApp(isInAppBrowser());
 
       const ua = navigator.userAgent.toLowerCase();
-      setAgent("");
+      const isTelegramWebView = "TelegramWebview" in window && window.TelegramWebview;
+      setAgent(isTelegramWebView ? "tg" : "not tg");
       setIsAndroid(ua.includes("android"));
     }
   }, []);
