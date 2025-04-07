@@ -686,7 +686,6 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     setIsClosing(true);
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
     if (isNeedToSaveUserInfo && conversation.length > 4) {
-      console.log("updateUserInfo", conversation);
       await aiUserInfo.updateUserInfo(conversation);
     }
 
