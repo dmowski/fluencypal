@@ -1,7 +1,6 @@
 "use client";
 
 import { Button, Stack, Typography } from "@mui/material";
-import { useAuth } from "../Auth/useAuth";
 import { buttonStyle } from "./landingSettings";
 
 interface FirstEnterButtonProps {
@@ -22,8 +21,6 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   pricingLink,
   practiceLink,
 }) => {
-  const auth = useAuth();
-
   return (
     <Stack
       sx={{
@@ -54,7 +51,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
           size="large"
           href={practiceLink}
         >
-          {auth.isAuthorized ? openDashboardTitle : getStartedTitle}
+          {getStartedTitle}
         </Button>
 
         {!showPricingButton && (
@@ -63,7 +60,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
               flexDirection: "row",
               gap: "10px",
               alignItems: "center",
-              visibility: auth.isAuthorized ? "hidden" : "visible",
+              visibility: "visible",
             }}
           >
             <Typography variant="caption">{noCreditCardNeededTitle}</Typography>
