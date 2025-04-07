@@ -26,6 +26,7 @@ import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { firstAiMessage, fullEnglishLanguageName, getUserLangCode } from "@/common/lang";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const aiModal = MODELS.SMALL_CONVERSATION;
 
@@ -46,7 +47,6 @@ interface AiConversationContextType {
   isStarted: boolean;
   setIsStarted: (isStarted: boolean) => void;
   startConversation: (params: StartConversationProps) => Promise<void>;
-  closeConversation: () => Promise<void>;
   conversation: ChatMessage[];
   errorInitiating?: string;
   isClosing: boolean;
@@ -98,11 +98,9 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const [isStarted, setIsStarted] = useState(false);
 
-  /*
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // todo: sync it with url
   const isStartedInternal = searchParams.get("started") === "true";
   const setIsStartedInternal = (isStarted: boolean) => {
     const pathName = window.location.pathname;
@@ -113,7 +111,20 @@ function useProvideAiConversation(): AiConversationContextType {
       router.push(`${pathName}`, { scroll: false });
     }
   };
-  */
+
+  useEffect(() => {
+    const isActiveConversationNow = isStarted;
+    console.log("isActiveConversationNow", isActiveConversationNow);
+    console.log("isStartedInternal", isStartedInternal);
+    if (!isActiveConversationNow) {
+      return;
+    }
+
+    if (!isStartedInternal) {
+      console.log("CLOSING....");
+      closeConversation();
+    }
+  }, [isStartedInternal]);
 
   const homeworkService = useHomework();
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
@@ -589,6 +600,7 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
     setGameStat(gameWords ? gameWords : null);
 
     try {
+      setIsStartedInternal(true);
       setConversation([]);
       setIsClosing(false);
       setIsClosed(false);
@@ -703,7 +715,6 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     isInitializing,
     isStarted,
     startConversation,
-    closeConversation,
     conversation,
     errorInitiating,
     isClosing,

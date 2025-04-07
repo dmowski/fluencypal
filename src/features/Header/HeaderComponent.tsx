@@ -141,10 +141,21 @@ export function HeaderComponent({
     }
   };
 
-  const activeConversationTitle = aiConversation.isStarted ? aiConversation.currentMode || "" : "";
+  const activeConversationTitle =
+    aiConversation.isStarted || aiConversation.isInitializing
+      ? aiConversation.currentMode || ""
+      : "";
   const isActiveConversation = !!activeConversationTitle;
 
   const isNoBalance = usage.balanceHours <= 0.01;
+  const [isInternalClosing, setIsInternalClosing] = useState(false);
+  useEffect(() => {
+    if (isInternalClosing) {
+      setTimeout(() => {
+        setIsInternalClosing(false);
+      }, 3000);
+    }
+  }, [isInternalClosing]);
 
   return (
     <>
@@ -232,9 +243,18 @@ export function HeaderComponent({
               >
                 <Button
                   startIcon={<ChevronLeft color="white" size={"30px"} />}
-                  disabled={aiConversation.isClosing}
-                  onClick={() => {
-                    aiConversation.closeConversation();
+                  disabled={
+                    aiConversation.isClosing || isInternalClosing || aiConversation.isInitializing
+                  }
+                  href={"#"}
+                  sx={{
+                    opacity: isInternalClosing || aiConversation.isClosing ? 0.5 : 1,
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsInternalClosing(true);
+                    const url = `${getUrlStart(lang)}practice`;
+                    onlyNavigate(url);
                     window.scrollTo({
                       top: 0,
                       behavior: "smooth",
@@ -249,11 +269,9 @@ export function HeaderComponent({
                       textTransform: "Capitalize",
                     }}
                   >
-                    {aiConversation.isClosed
-                      ? i18n._(`Back`)
-                      : aiConversation.isClosing
-                        ? i18n._("Finishing...")
-                        : i18n._(`Back`)}
+                    {aiConversation.isClosing || isInternalClosing
+                      ? i18n._("Finishing...")
+                      : i18n._(`Back`)}
                   </Typography>
                 </Button>
               </Stack>
