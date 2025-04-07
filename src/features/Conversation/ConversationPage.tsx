@@ -46,14 +46,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     }
   }, [aiConversation.isStarted]);
 
-  const [isDataLoadingState, setIsDataLoadingState] = useState(true);
   const isLoading = settings.loading || auth.loading || !auth.uid;
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsDataLoadingState(isLoading);
-    }, 50);
-  }, [isLoading]);
 
   if (isLoading) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
