@@ -601,12 +601,13 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
 
     try {
       setIsStartedInternal(true);
+      setIsInitializing(`Loading...`);
+      setCurrentMode(mode);
       setConversation([]);
       setIsClosing(false);
       setIsClosed(false);
       setErrorInitiating("");
-      setIsInitializing(`Loading...`);
-      setCurrentMode(mode);
+
       firstPotentialBotMessage.current = "";
       const aiRtcConfig = await getAiRtcConfig(mode);
       let instruction = aiRtcConfig.initInstruction;
@@ -647,6 +648,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
       }
 
       console.log("instruction:", instruction);
+      await sleep(2000);
       const conversation = await initAiRtc({
         ...aiRtcConfig,
         initInstruction: instruction,
