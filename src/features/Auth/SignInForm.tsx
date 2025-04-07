@@ -23,6 +23,14 @@ export const isInAppBrowser = (): boolean => {
   );
 };
 
+export const getIsTelegram = () => {
+  return (
+    "TelegramWebview" in window || // Android
+    "TelegramWebviewProxy" in window || // iPhone
+    "TelegramWebviewProxyProto" in window // iPhone
+  );
+};
+
 interface SignInFormProps {
   rolePlayInfo: RolePlayScenariosInfo;
   lang: SupportedLanguage;
@@ -46,7 +54,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
       setInApp(isInAppBrowser());
 
       const ua = navigator.userAgent.toLowerCase();
-      const isTelegramWebView = "TelegramWebview" in window && window.TelegramWebview;
+      const isTelegramWebView = getIsTelegram();
       setAgent(isTelegramWebView ? "tg" : "not tg");
       setIsAndroid(ua.includes("android"));
     }
