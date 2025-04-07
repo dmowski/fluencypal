@@ -47,11 +47,13 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
 
   const [isAndroid, setIsAndroid] = useState(false);
   const [agent, setAgent] = useState("");
+  const [isTelegram, setIsTelegram] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
       const isTelegramWebView = getIsTelegram();
       const ua = navigator.userAgent.toLowerCase();
       setInApp(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos || isInAppBrowser(ua));
+      setIsTelegram(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos);
       setIsAndroid(isTelegramWebView.isTgAndroid || ua.includes("android"));
     }
   }, []);
@@ -113,21 +115,23 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
               )}
             </Typography>
           </Stack>
-          <img
-            src={
-              isAndroid
-                ? "/instruction/instagramInstructionAndroid.png"
-                : "/instruction/instagramInstruction.png"
-            }
-            alt="Instagram instruction"
-            style={{
-              width: "90%",
-              boxShadow: "0px 0px 0 3px rgba(200,200,255,0.95)",
-              borderRadius: "10px",
-              backgroundColor: "#111214",
-              maxWidth: "400px",
-            }}
-          />
+          {!isTelegram && (
+            <img
+              src={
+                isAndroid
+                  ? "/instruction/instagramInstructionAndroid.png"
+                  : "/instruction/instagramInstruction.png"
+              }
+              alt="Instagram instruction"
+              style={{
+                width: "90%",
+                boxShadow: "0px 0px 0 3px rgba(200,200,255,0.95)",
+                borderRadius: "10px",
+                backgroundColor: "#111214",
+                maxWidth: "400px",
+              }}
+            />
+          )}
         </Stack>
       </Stack>
     );
