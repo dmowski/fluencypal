@@ -15,37 +15,40 @@ import { WebCamProvider } from "@/features/webCam/useWebCam";
 import { CorrectionsProvider } from "@/features/Corrections/useCorrections";
 
 import { JSX, Suspense } from "react";
+import { NotificationsProvider } from "@toolpad/core/useNotifications";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <Suspense>
-      <AuthProvider>
-        <SettingsProvider>
-          <WebCamProvider>
-            <UsageProvider>
-              <TextAiProvider>
-                <AudioProvider>
-                  <AiUserInfoProvider>
-                    <WordsProvider>
-                      <CorrectionsProvider>
-                        <ChatHistoryProvider>
-                          <RulesProvider>
-                            <TasksProvider>
-                              <HomeworkProvider>
-                                <AiConversationProvider>{children}</AiConversationProvider>
-                              </HomeworkProvider>
-                            </TasksProvider>
-                          </RulesProvider>
-                        </ChatHistoryProvider>
-                      </CorrectionsProvider>
-                    </WordsProvider>
-                  </AiUserInfoProvider>
-                </AudioProvider>
-              </TextAiProvider>
-            </UsageProvider>
-          </WebCamProvider>
-        </SettingsProvider>
-      </AuthProvider>
+      <NotificationsProvider>
+        <AuthProvider>
+          <SettingsProvider>
+            <WebCamProvider>
+              <UsageProvider>
+                <TextAiProvider>
+                  <AudioProvider>
+                    <AiUserInfoProvider>
+                      <WordsProvider>
+                        <CorrectionsProvider>
+                          <ChatHistoryProvider>
+                            <RulesProvider>
+                              <TasksProvider>
+                                <HomeworkProvider>
+                                  <AiConversationProvider>{children}</AiConversationProvider>
+                                </HomeworkProvider>
+                              </TasksProvider>
+                            </RulesProvider>
+                          </ChatHistoryProvider>
+                        </CorrectionsProvider>
+                      </WordsProvider>
+                    </AiUserInfoProvider>
+                  </AudioProvider>
+                </TextAiProvider>
+              </UsageProvider>
+            </WebCamProvider>
+          </SettingsProvider>
+        </AuthProvider>
+      </NotificationsProvider>
     </Suspense>
   );
 };

@@ -3,7 +3,6 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import "./globals.css";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../features/uiKit/theme";
-import { NotificationsProviderWrapper } from "./clientProviders";
 import { initLingui } from "@/initLingui";
 import linguiConfig from "../../lingui.config";
 import { supportedLanguages } from "@/common/lang";
@@ -55,9 +54,7 @@ export default async function RootLayout({
       </head>
       <body>
         <ThemeProvider theme={theme}>
-          <AppRouterCacheProvider options={{ key: "css" }}>
-            <NotificationsProviderWrapper>{children}</NotificationsProviderWrapper>
-          </AppRouterCacheProvider>
+          <AppRouterCacheProvider options={{ key: "css" }}>{children}</AppRouterCacheProvider>
         </ThemeProvider>
       </body>
     </html>

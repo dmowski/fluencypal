@@ -19,7 +19,6 @@ import { getStorage } from "firebase/storage";
 
 const isNodeEnv = typeof window === "undefined";
 const isSafari = !isNodeEnv && /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-console.log("FIREBASE!!!");
 const app = initializeApp(firebaseConfig);
 
 const firestore =
