@@ -15,22 +15,62 @@ export const SelectLanguage: React.FC = () => {
         justifyContent: "center",
       }}
     >
-      <StarContainer minHeight="90vh" paddingBottom="0px">
+      <StarContainer minHeight="90vh" paddingBottom="100px">
         <Stack
           sx={{
-            maxWidth: "400px",
-            gap: "20px",
+            maxWidth: "650px",
+            alignItems: "center",
+            gap: "30px",
           }}
         >
-          <Typography variant="h5">{i18n._(`Select language to learn`)}</Typography>
-          <LangSelector
-            value={settings.languageCode}
-            onDone={(lang) => settings.setLanguage(lang)}
-            confirmButtonLabel="Continue"
-          />
-          <Typography variant="caption">
-            {i18n._(`You can change the language later in the settings`)}
-          </Typography>
+          <Stack
+            sx={{
+              alignItems: "center",
+              gap: "5px",
+              width: "100%",
+            }}
+          >
+            <Typography
+              align="center"
+              sx={{
+                textTransform: "uppercase",
+                fontWeight: 350,
+                opacity: 0.9,
+              }}
+            >
+              {i18n._(`Almost there!`)}
+            </Typography>
+            <Typography
+              variant="h3"
+              align="center"
+              sx={{
+                fontWeight: 900,
+                fontSize: "2.6rem",
+                padding: "0 20px",
+                boxSizing: "border-box",
+                lineHeight: "1.1",
+              }}
+            >
+              {i18n._(`Select language to learn`)}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              alignItems: "center",
+              width: "100%",
+              gap: "5px",
+              maxWidth: "350px",
+            }}
+          >
+            <LangSelector
+              value={settings.languageCode}
+              onDone={(lang) => settings.setLanguage(lang)}
+              confirmButtonLabel={i18n._(`Continue`)}
+            />
+            <Typography align="center" sx={{}} variant="caption">
+              {i18n._(`You can switch the language anytime`)}
+            </Typography>
+          </Stack>
         </Stack>
       </StarContainer>
     </Stack>
