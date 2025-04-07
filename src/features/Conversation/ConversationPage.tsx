@@ -46,12 +46,14 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     }
   }, [aiConversation.isStarted]);
 
+  if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
+
   const isLoading = settings.loading || auth.loading || !auth.uid;
 
   if (isLoading) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
-  if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
+
   if (!usage.loading && usage.balanceHours <= 0.01) return <NoBalanceBlock />;
 
   if (aiConversation.errorInitiating) {
