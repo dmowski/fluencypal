@@ -45,7 +45,7 @@ export const ConversationSelectCard = () => {
             style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
             className="avatar"
           >
-            <img src="/avatar/map.png" alt="AI Bot" />
+            <img src="/avatar/map.webp" alt="AI Bot" />
           </Stack>
         </Stack>
       }
@@ -214,7 +214,7 @@ export const ConversationSelectCard = () => {
                 style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
                 className="avatar"
               >
-                <img src="/avatar/girl.png" alt="AI Bot" />
+                <img src="/avatar/girl.webp" alt="AI Bot" />
               </Stack>
             </Stack>
           }
@@ -240,7 +240,7 @@ export const ConversationSelectCard = () => {
                 style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
                 className="avatar"
               >
-                <img src="/avatar/owl1.png" alt="AI Bot" />
+                <img src="/avatar/owl1.webp" alt="AI Bot" />
               </Stack>
             </Stack>
           }
@@ -264,7 +264,7 @@ export const ConversationSelectCard = () => {
                 style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
                 className="avatar"
               >
-                <img src="/avatar/book.png" alt="AI Bot" />
+                <img src="/avatar/book.webp" alt="AI Bot" />
               </Stack>
             </Stack>
           }
@@ -288,7 +288,7 @@ export const ConversationSelectCard = () => {
                 style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
                 className="avatar"
               >
-                <img src="/avatar/words.png" alt="AI Bot" />
+                <img src="/avatar/words.webp" alt="AI Bot" />
               </Stack>
             </Stack>
           }

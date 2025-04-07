@@ -1,19 +1,12 @@
 "use client";
 
 import { Stack } from "@mui/material";
-import { useSettings } from "../Settings/useSettings";
 
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
-import { InfoBlockedSection } from "./InfoBlockedSection";
-import { useWords } from "../Words/useWords";
-import { WordsToLearn } from "./WordsToLearn";
-import { SelectLanguage } from "./SelectLanguage";
-import { useRules } from "../Rules/useRules";
-import { RulesToLearn } from "./RulesToLearn";
+
 import { ConversationSelectCard } from "./ConversationSelectCard";
 import { ProgressBoard } from "./Progress/ProgressBoard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
-import { useLingui } from "@lingui/react";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { UsageStatsCards } from "../Usage/UsageStatsCards";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
@@ -22,32 +15,6 @@ interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
 }
 export function Dashboard({ rolePlayInfo }: DashboardProps) {
-  const settings = useSettings();
-  const words = useWords();
-  const rules = useRules();
-  const { i18n } = useLingui();
-
-  if (words.isGeneratingWords) {
-    return <InfoBlockedSection title={i18n._(`Crafting new words...`)} />;
-  }
-
-  if (rules.isGeneratingRule) {
-    return <InfoBlockedSection title={i18n._(`Crafting new rule...`)} />;
-  }
-
-  if (words.wordsToLearn.length > 0) {
-    return <WordsToLearn />;
-  }
-
-  if (rules.rule) {
-    return <RulesToLearn />;
-  }
-
-  // remove flashing when loading
-  if (!settings.loading && !settings.languageCode) {
-    return <SelectLanguage />;
-  }
-
   return (
     <Stack
       sx={{

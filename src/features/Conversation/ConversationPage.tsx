@@ -17,6 +17,11 @@ import { useCorrections } from "../Corrections/useCorrections";
 import { useLingui } from "@lingui/react";
 import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
 import { useEffect } from "react";
+import { SelectLanguage } from "../Dashboard/SelectLanguage";
+import { useWords } from "../Words/useWords";
+import { useRules } from "../Rules/useRules";
+import { WordsToLearn } from "../Dashboard/WordsToLearn";
+import { RulesToLearn } from "../Dashboard/RulesToLearn";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -31,6 +36,8 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const recorder = useAudioRecorder();
   const corrections = useCorrections();
   const { i18n } = useLingui();
+  const words = useWords();
+  const rules = useRules();
 
   useEffect(() => {
     if (!aiConversation.isStarted) {
@@ -85,6 +92,26 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   }
   if (aiConversation.isInitializing) {
     return <InfoBlockedSection title={aiConversation.isInitializing || i18n._(`Loading...`)} />;
+  }
+
+  if (!settings.loading && !settings.languageCode) {
+    return <SelectLanguage />;
+  }
+
+  if (words.isGeneratingWords) {
+    return <InfoBlockedSection title={i18n._(`Crafting new words...`)} />;
+  }
+
+  if (rules.isGeneratingRule) {
+    return <InfoBlockedSection title={i18n._(`Crafting new rule...`)} />;
+  }
+
+  if (words.wordsToLearn.length > 0) {
+    return <WordsToLearn />;
+  }
+
+  if (rules.rule) {
+    return <RulesToLearn />;
   }
 
   return (
