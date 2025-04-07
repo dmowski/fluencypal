@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import { BookMarked, Gem, MessageCircleQuestion, Rss } from "lucide-react";
 
-import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
 import { useRouter } from "next/navigation";
 import { SupportedLanguage } from "@/common/lang";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
@@ -66,7 +65,6 @@ export function HeaderComponentStatic({
   }, []);
 
   const homeUrl = `${getUrlStartWithoutLastSlash(lang)}`;
-  const [isShowLangSelector, setIsShowLangSelector] = useState(false);
 
   const router = useRouter();
 
@@ -248,10 +246,6 @@ export function HeaderComponentStatic({
             </Button>
           </Stack>
         </Stack>
-
-        {isShowLangSelector && (
-          <LanguageSelectorModal onClose={() => setIsShowLangSelector(false)} />
-        )}
       </Stack>
 
       <Drawer open={isOpenMainMenu} onClose={() => setIsOpenMainMenu(false)}>

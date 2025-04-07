@@ -32,7 +32,6 @@ import {
 import { useUsage } from "../Usage/useUsage";
 import { PaymentModal } from "../Usage/PaymentModal";
 import { NeedHelpModal } from "./NeedHelpModal";
-import { LanguageSelectorModal } from "../Lang/LanguageSelectorModal";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { SupportedLanguage } from "@/common/lang";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
@@ -109,7 +108,6 @@ export function HeaderComponent({
       : getUrlStart(lang);
 
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
-  const [isShowLangSelector, setIsShowLangSelector] = useState(false);
   const [isShowHelpModal, setIsShowHelpModal] = useState(false);
   const usage = useUsage();
 
@@ -416,10 +414,6 @@ export function HeaderComponent({
         </Stack>
 
         {usage.isShowPaymentModal && <PaymentModal />}
-
-        {isShowLangSelector && (
-          <LanguageSelectorModal onClose={() => setIsShowLangSelector(false)} />
-        )}
 
         {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />}
       </Stack>
