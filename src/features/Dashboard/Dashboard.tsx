@@ -43,7 +43,7 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
     return <RulesToLearn />;
   }
 
-  if (!settings.languageCode) {
+  if (!settings.loading && !settings.languageCode) {
     return <SelectLanguage />;
   }
 
