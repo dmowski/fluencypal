@@ -23,4 +23,17 @@ Sentry.init({
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
+
+  sendDefaultPii: false,
+
+  beforeSend(event) {
+    // Remove IP address
+    if (event.user) {
+      delete event.user.ip_address;
+    }
+
+    // Remove other identifying data
+    event.user = undefined;
+    return event;
+  },
 });
