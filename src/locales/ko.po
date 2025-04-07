@@ -15,8 +15,9 @@ msgstr ""
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
-#: src/features/Landing/Contact/ContactsPage.tsx:96
-#: src/features/Header/Header.tsx:13
+#: src/features/Landing/Contact/ContactsPage.tsx:97
+#: src/features/Header/HeaderStatic.tsx:14
+#: src/features/Header/HeaderPractice.tsx:13
 #. js-lingui-explicit-id
 msgid "Contacts"
 msgstr "연락처"
@@ -28,7 +29,8 @@ msgstr "FluencyPal에 문의, 지원 또는 피드백을 원하시면 연락해 
 
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
-#: src/features/Header/Header.tsx:11
+#: src/features/Header/HeaderStatic.tsx:12
+#: src/features/Header/HeaderPractice.tsx:11
 #: src/features/Dashboard/ConversationSelectCard.tsx:159
 #. js-lingui-explicit-id
 msgid "Practice"
@@ -112,7 +114,7 @@ msgstr "AI 튜터 비용"
 #: src/features/Legal/PrivacyPolicy.tsx:15
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Landing/Footer.tsx:178
-#: src/features/Landing/Contact/ContactsPage.tsx:156
+#: src/features/Landing/Contact/ContactsPage.tsx:157
 #: src/features/Header/NeedHelpModal.tsx:150
 #: src/features/Auth/SignInForm.tsx:191
 #. js-lingui-explicit-id
@@ -130,7 +132,7 @@ msgstr "쿠키 정책"
 #: src/features/Legal/TermsOfUse.tsx:14
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Landing/Footer.tsx:168
-#: src/features/Landing/Contact/ContactsPage.tsx:153
+#: src/features/Landing/Contact/ContactsPage.tsx:154
 #: src/features/Header/NeedHelpModal.tsx:137
 #: src/features/Auth/SignInForm.tsx:195
 #. js-lingui-explicit-id
@@ -630,7 +632,8 @@ msgid "Your payment was successful, but updates might take a few minutes"
 msgstr "결제는 성공적으로 이루어졌지만, 업데이트에는 몇 분이 걸릴 수 있습니다"
 
 #: src/features/Usage/PaymentModal.tsx:544
-#: src/features/Header/Header.tsx:16
+#: src/features/Header/HeaderStatic.tsx:17
+#: src/features/Header/HeaderPractice.tsx:16
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "균형"
@@ -2135,13 +2138,15 @@ msgid "Role-Play"
 msgstr "역할 놀이"
 
 #: src/features/Landing/Footer.tsx:84
-#: src/features/Header/Header.tsx:19
+#: src/features/Header/HeaderStatic.tsx:20
+#: src/features/Header/HeaderPractice.tsx:19
 #. js-lingui-explicit-id
 msgid "Blog"
 msgstr "블로그"
 
 #: src/features/Landing/Footer.tsx:87
-#: src/features/Header/Header.tsx:14
+#: src/features/Header/HeaderStatic.tsx:15
+#: src/features/Header/HeaderPractice.tsx:14
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "가격"
@@ -2572,7 +2577,7 @@ msgstr "내 크레딧이 만료되나요?"
 msgid "No, your credits stay active as long as your account is in good standing."
 msgstr "아니요, 귀하의 크레딧은 귀하의 계정이 정상 상태인 한 활성 상태로 유지됩니다."
 
-#: src/features/Landing/Contact/ContactsPage.tsx:106
+#: src/features/Landing/Contact/ContactsPage.tsx:107
 #. js-lingui-explicit-id
 msgid ""
 "My name is Alex, I am the creator of this website. I am a software engineer "
@@ -2584,7 +2589,7 @@ msgstr ""
 "저는 사람들이 재미있고 상호작용적인 방법으로 언어를 배울 수 있도록 이 웹사이트를 만들었습니다. 여러분이 이 사이트를 사용하는 데 "
 "즐거움을 느끼시길 바랍니다!"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:119
+#: src/features/Landing/Contact/ContactsPage.tsx:120
 #. js-lingui-explicit-id
 msgid ""
 "Feel free to reach out to me with any questions or feedback. I'm always "
@@ -2662,6 +2667,30 @@ msgstr "닫기"
 msgid "Delete account"
 msgstr "계정 삭제"
 
+#: src/features/Header/HeaderStatic.tsx:13
+#: src/features/Header/HeaderPractice.tsx:12
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "역할 놀이"
+
+#: src/features/Header/HeaderStatic.tsx:16
+#: src/features/Header/HeaderPractice.tsx:15
+#. js-lingui-explicit-id
+msgid "Join"
+msgstr "가입"
+
+#: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Header/HeaderPractice.tsx:17
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "응급 도움이 필요하신가요?"
+
+#: src/features/Header/HeaderStatic.tsx:19
+#: src/features/Header/HeaderPractice.tsx:18
+#. js-lingui-explicit-id
+msgid "Log Out"
+msgstr "로그아웃"
+
 #: src/features/Header/HeaderComponent.tsx:273
 #. js-lingui-explicit-id
 msgid "Finishing..."
@@ -2675,26 +2704,6 @@ msgid "Back"
 msgstr ""
 "\n"
 "돌아가기\n"
-
-#: src/features/Header/Header.tsx:12
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "역할 놀이"
-
-#: src/features/Header/Header.tsx:15
-#. js-lingui-explicit-id
-msgid "Join"
-msgstr "가입"
-
-#: src/features/Header/Header.tsx:17
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "응급 도움이 필요하신가요?"
-
-#: src/features/Header/Header.tsx:18
-#. js-lingui-explicit-id
-msgid "Log Out"
-msgstr "로그아웃"
 
 #: src/features/Dashboard/WordsToLearn.tsx:28
 #. js-lingui-explicit-id

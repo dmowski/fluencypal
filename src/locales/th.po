@@ -15,8 +15,9 @@ msgstr ""
 
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
-#: src/features/Landing/Contact/ContactsPage.tsx:96
-#: src/features/Header/Header.tsx:13
+#: src/features/Landing/Contact/ContactsPage.tsx:97
+#: src/features/Header/HeaderStatic.tsx:14
+#: src/features/Header/HeaderPractice.tsx:13
 #. js-lingui-explicit-id
 msgid "Contacts"
 msgstr "ติดต่อเรา"
@@ -28,7 +29,8 @@ msgstr "ติดต่อกับ FluencyPal สำหรับคำถาม
 
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
-#: src/features/Header/Header.tsx:11
+#: src/features/Header/HeaderStatic.tsx:12
+#: src/features/Header/HeaderPractice.tsx:11
 #: src/features/Dashboard/ConversationSelectCard.tsx:159
 #. js-lingui-explicit-id
 msgid "Practice"
@@ -115,7 +117,7 @@ msgstr "ค่าใช้จ่ายของติวเตอร์ AI"
 #: src/features/Legal/PrivacyPolicy.tsx:15
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Landing/Footer.tsx:178
-#: src/features/Landing/Contact/ContactsPage.tsx:156
+#: src/features/Landing/Contact/ContactsPage.tsx:157
 #: src/features/Header/NeedHelpModal.tsx:150
 #: src/features/Auth/SignInForm.tsx:191
 #. js-lingui-explicit-id
@@ -133,7 +135,7 @@ msgstr "นโยบายคุกกี้"
 #: src/features/Legal/TermsOfUse.tsx:14
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Landing/Footer.tsx:168
-#: src/features/Landing/Contact/ContactsPage.tsx:153
+#: src/features/Landing/Contact/ContactsPage.tsx:154
 #: src/features/Header/NeedHelpModal.tsx:137
 #: src/features/Auth/SignInForm.tsx:195
 #. js-lingui-explicit-id
@@ -648,7 +650,8 @@ msgid "Your payment was successful, but updates might take a few minutes"
 msgstr "การชำระเงินของคุณสำเร็จแล้ว แต่อัปเดตอาจใช้เวลาสักครู่"
 
 #: src/features/Usage/PaymentModal.tsx:544
-#: src/features/Header/Header.tsx:16
+#: src/features/Header/HeaderStatic.tsx:17
+#: src/features/Header/HeaderPractice.tsx:16
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "การทรงตัว"
@@ -2279,13 +2282,15 @@ msgid "Role-Play"
 msgstr "บทบาทการเล่น"
 
 #: src/features/Landing/Footer.tsx:84
-#: src/features/Header/Header.tsx:19
+#: src/features/Header/HeaderStatic.tsx:20
+#: src/features/Header/HeaderPractice.tsx:19
 #. js-lingui-explicit-id
 msgid "Blog"
 msgstr "บล็อก"
 
 #: src/features/Landing/Footer.tsx:87
-#: src/features/Header/Header.tsx:14
+#: src/features/Header/HeaderStatic.tsx:15
+#: src/features/Header/HeaderPractice.tsx:14
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "ราคา"
@@ -2732,7 +2737,7 @@ msgstr "เครดิตของฉันจะหมดอายุไหม
 msgid "No, your credits stay active as long as your account is in good standing."
 msgstr "ไม่, เครดิตของคุณจะยังคงใช้งานได้ตราบใดที่บัญชีของคุณอยู่ในสถานะดี."
 
-#: src/features/Landing/Contact/ContactsPage.tsx:106
+#: src/features/Landing/Contact/ContactsPage.tsx:107
 #. js-lingui-explicit-id
 msgid ""
 "My name is Alex, I am the creator of this website. I am a software engineer "
@@ -2745,7 +2750,7 @@ msgstr ""
 "ฉันสร้างเว็บไซต์นี้เพื่อช่วยให้ผู้คนสามารถเรียนรู้ภาษาได้อย่างสนุกสนานและสม่"
 "ำเสมอ ฉันหวังว่าคุณจะสนุกกับการใช้งาน!"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:119
+#: src/features/Landing/Contact/ContactsPage.tsx:120
 #. js-lingui-explicit-id
 msgid ""
 "Feel free to reach out to me with any questions or feedback. I'm always "
@@ -2826,6 +2831,30 @@ msgstr "ปิด"
 msgid "Delete account"
 msgstr "ลบบัญชี"
 
+#: src/features/Header/HeaderStatic.tsx:13
+#: src/features/Header/HeaderPractice.tsx:12
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "บทบาทสมมติ"
+
+#: src/features/Header/HeaderStatic.tsx:16
+#: src/features/Header/HeaderPractice.tsx:15
+#. js-lingui-explicit-id
+msgid "Join"
+msgstr "เข้าร่วม"
+
+#: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Header/HeaderPractice.tsx:17
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "ต้องการความช่วยเหลือไหม?"
+
+#: src/features/Header/HeaderStatic.tsx:19
+#: src/features/Header/HeaderPractice.tsx:18
+#. js-lingui-explicit-id
+msgid "Log Out"
+msgstr "ออกจากระบบ"
+
 #: src/features/Header/HeaderComponent.tsx:273
 #. js-lingui-explicit-id
 msgid "Finishing..."
@@ -2837,26 +2866,6 @@ msgstr "กำลังเสร็จสิ้น..."
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "กลับ"
-
-#: src/features/Header/Header.tsx:12
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "บทบาทสมมติ"
-
-#: src/features/Header/Header.tsx:15
-#. js-lingui-explicit-id
-msgid "Join"
-msgstr "เข้าร่วม"
-
-#: src/features/Header/Header.tsx:17
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "ต้องการความช่วยเหลือไหม?"
-
-#: src/features/Header/Header.tsx:18
-#. js-lingui-explicit-id
-msgid "Log Out"
-msgstr "ออกจากระบบ"
 
 #: src/features/Dashboard/WordsToLearn.tsx:28
 #. js-lingui-explicit-id
