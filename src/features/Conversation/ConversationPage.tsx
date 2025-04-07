@@ -47,15 +47,15 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   }, [aiConversation.isStarted]);
 
   const [isDataLoadingState, setIsDataLoadingState] = useState(true);
-  const isLoading = settings.loading || auth.loading;
+  const isLoading = settings.loading || auth.loading || !auth.uid;
 
   useEffect(() => {
     setTimeout(() => {
       setIsDataLoadingState(isLoading);
-    }, 1500);
+    }, 50);
   }, [isLoading]);
 
-  if (isDataLoadingState) {
+  if (isLoading) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
   if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
