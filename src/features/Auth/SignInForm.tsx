@@ -15,6 +15,7 @@ export const isInAppBrowser = (): boolean => {
   const ua = navigator.userAgent.toLowerCase();
   return (
     ua.includes("instagram") ||
+    ua.includes("telegram") ||
     ua.includes("fbav") || // Facebook app
     ua.includes("fb_iab") // Facebook in-app browser
   );
