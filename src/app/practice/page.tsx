@@ -8,6 +8,7 @@ import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { PracticeProvider } from "../practiceProvider";
+import { CookiesPopup } from "@/features/Legal/CookiesPopup";
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -46,6 +47,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
         <main>
           <ConversationPage rolePlayInfo={rolePlayInfo} lang={supportedLang} />
         </main>
+        <CookiesPopup />
       </PracticeProvider>
     </LinguiClientProvider>
   );

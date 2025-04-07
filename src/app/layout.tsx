@@ -58,10 +58,7 @@ export default async function RootLayout({
       <body>
         <ThemeProvider theme={theme}>
           <AppRouterCacheProvider options={{ key: "css" }}>
-            <NotificationsProviderWrapper>
-              {children}
-              <CookiesPopup />
-            </NotificationsProviderWrapper>
+            <NotificationsProviderWrapper>{children}</NotificationsProviderWrapper>
           </AppRouterCacheProvider>
         </ThemeProvider>
       </body>
