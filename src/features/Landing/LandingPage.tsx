@@ -176,7 +176,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Practice realistic conversations tailored to your skill level. FluencyPal responds naturally, highlights areas for improvement, and builds your confidence.`
                 ),
-                img: "/talk.jpeg",
+                img: "/landing/talk.webp",
                 href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Start Speaking Practice`),
               },
@@ -186,7 +186,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Get immediate feedback and explanations on your grammar mistakes as you practice. Enhance your speaking accuracy naturally.`
                 ),
-                img: "/rules.jpg",
+                img: "/rlanding/ules.webp",
                 href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Enhance Your Grammar`),
               },
@@ -196,7 +196,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Receive personalized vocabulary tailored to your conversational needs. Use new words immediately to reinforce learning.`
                 ),
-                img: "/words.jpeg",
+                img: "/wlanding/ords.webp",
                 href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Expand Your Vocabulary`),
               },
@@ -206,7 +206,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 description: i18n._(
                   `Visualize your daily progress with intuitive tracking. Stay motivated by clearly seeing your improvements.`
                 ),
-                img: "/progress.png",
+                img: "/proglanding/ress.webp",
                 href: `${getUrlStart(lang)}practice`,
                 actionButtonTitle: i18n._(`Check Your Progress`),
               },
