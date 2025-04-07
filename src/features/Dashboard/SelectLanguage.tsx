@@ -38,7 +38,7 @@ export const SelectLanguage: React.FC = () => {
                 opacity: 0.9,
               }}
             >
-              {i18n._(`Almost there!`)}
+              {i18n._(`Almost there!`)} | {settings.userCreatedAt} |
             </Typography>
             <Typography
               variant="h3"
