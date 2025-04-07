@@ -104,7 +104,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
               width: "100%",
               boxShadow: "0px 0px 1px 1px rgba(22,22,22,0.95)",
               borderRadius: "10px",
-              backgroundColor: "white",
+              backgroundColor: "#222",
               maxWidth: "400px",
             }}
           />
