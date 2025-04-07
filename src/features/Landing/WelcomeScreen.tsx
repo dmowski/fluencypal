@@ -152,7 +152,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
                 className="avatar"
               >
-                <img src="/avatar/map.png" alt="AI Bot" />
+                <img src="/avatar/map.webp" alt="Target" />
               </Stack>
             </Stack>
           }
@@ -171,7 +171,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
                 className="avatar"
               >
-                <img src="/avatar/girl.png" alt="AI Bot" />
+                <img src="/avatar/girl.webp" alt="Girl" />
               </Stack>
             </Stack>
           }
@@ -191,7 +191,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
                 className="avatar"
               >
-                <img src="/avatar/owl1.png" alt="AI Bot" />
+                <img src="/avatar/owl1.webp" alt="Owl" />
               </Stack>
             </Stack>
           }
@@ -211,7 +211,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
                 className="avatar"
               >
-                <img src="/avatar/book.png" alt="AI Bot" />
+                <img src="/avatar/book.webp" alt="Book" />
               </Stack>
             </Stack>
           }
@@ -231,7 +231,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
                 className="avatar"
               >
-                <img src="/avatar/words.png" alt="AI Bot" />
+                <img src="/avatar/words.webp" alt="Cars with words" />
               </Stack>
             </Stack>
           }
@@ -251,7 +251,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
                 className="avatar"
               >
-                <img src="/avatar/talk3.png" alt="AI Bot" />
+                <img src="/avatar/talk3.webp" alt="People talking" />
               </Stack>
             </Stack>
           }
