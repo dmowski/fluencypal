@@ -75,7 +75,7 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
 `,
       exampleOfFirstMessageFromAi: `Hello, I'm your AI partner for the Alias game. I'm ready to guess your word. Please describe it to me.`,
       illustrationDescription: "",
-      imageSrc: "/role/f0de782c-6f1a-4005-924d-02459308a4fa.jpeg",
+      imageSrc: "/role/f0de782c-6f1a-4005-924d-02459308a4fa.webp",
       videoSrc: "/role/69e7165b-a597-4731-8def-3e0f2b09ec1d_1.mp4",
       voice: "shimmer",
 
@@ -109,7 +109,7 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
         "Hey there, I'm Fable. This is my first time at an event like this. How about you? Enjoying yourself so far?",
       illustrationDescription:
         "Two people casually chatting at a coffee shop or park, both smiling and engaged in friendly conversation, while others are in the background enjoying the atmosphere.",
-      imageSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c.jpeg",
+      imageSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c.webp",
       videoSrc: "/role/c916a0f2-59d4-4d45-99c3-dda8a714cd6c_1.mp4",
       voice: "sage",
     },
@@ -194,7 +194,7 @@ Candidate's info below, don't include questions that are already answered by can
         "Hi, my name is Alloy. I'm a recruiter at XYZ. Thank you for coming in today. I’d love to learn more about your professional background and experiences. Could you start by telling me a bit about yourself?",
       illustrationDescription:
         "A professional recruiter sitting at a desk, reviewing a candidate's resume, while the candidate sits across, looking slightly nervous but engaged in conversation.",
-      imageSrc: "/role/07d20442-758f-42a9-81b2-3dc7bf4fe248.jpeg",
+      imageSrc: "/role/07d20442-758f-42a9-81b2-3dc7bf4fe248.webp",
       videoSrc: "/role/090f7de1-91bd-4210-a99c-4eb077c9efd7_1.mp4",
       voice: "alloy",
     },
@@ -216,7 +216,7 @@ Do not spend too long on any single topic. Ask the user to repeat their correcte
 Continue this process, moving smoothly from one topic to the next.`,
       exampleOfFirstMessageFromAi: "Hello, I’m Ash, your polite speech corrector.",
       illustrationDescription: "",
-      imageSrc: "/role/692781e2-a658-4a21-9dcb-5f10c7c35fe1.jpeg",
+      imageSrc: "/role/692781e2-a658-4a21-9dcb-5f10c7c35fe1.webp",
       voice: "ash",
 
       contentPage:
@@ -287,7 +287,7 @@ Example of topics: weather, hobbies, family, work, travel, food, music, movies, 
         "Hello, I’m Ash, your server for today. Welcome to our restaurant! Is there anything in particular you’re craving, or would you like me to suggest some popular dishes?",
       illustrationDescription:
         "A cozy restaurant setting with a waiter holding a notepad, attentively taking an order from a customer seated at a table with a menu in hand.",
-      imageSrc: "/role/acde68cd-1db6-4b69-be42-d2071b9ee1e8.jpeg",
+      imageSrc: "/role/acde68cd-1db6-4b69-be42-d2071b9ee1e8.webp",
       voice: "ash",
 
       contentPage:
@@ -332,7 +332,7 @@ In this scenario, you’ll step into the role of a traveler looking to buy a tic
         "Hi there, I’m Echo at Central Station. How can I help you with your travel plans today? Are you headed somewhere local or out of town?",
       illustrationDescription:
         "A busy train station with a ticket booth. A traveler with a backpack is talking to a ticket agent behind the counter, while a departure board shows various destinations.",
-      imageSrc: "/role/36b7ea13-f429-46ae-a6c7-19d3206ab6b0.jpeg",
+      imageSrc: "/role/36b7ea13-f429-46ae-a6c7-19d3206ab6b0.webp",
       voice: "echo",
     },
 
@@ -363,7 +363,7 @@ You’ll take on the role of a patient visiting a doctor, played by the AI. The 
         "Good day, I’m Dr. Ash. Please make yourself comfortable. I understand you’ve come in with some concerns—could you describe your symptoms for me?",
       illustrationDescription:
         "A doctor in a white coat sitting at a desk, attentively listening to a patient who is describing their symptoms. A stethoscope and medical charts are visible in the background.",
-      imageSrc: "/role/d853fe08-c7bc-431c-9eed-68c168a96ca0.jpeg",
+      imageSrc: "/role/d853fe08-c7bc-431c-9eed-68c168a96ca0.webp",
       voice: "ash",
     },
     {
@@ -415,7 +415,7 @@ In this scenario, you’ll portray a fellow dog owner meeting an AI-driven chara
         "Hi there! I’m Jade, and this little guy is Milo. He’s always excited to meet new friends at the park. Your pup looks so energetic—do you two come here often?",
       illustrationDescription:
         "Two dog owners in a green park setting, each with a leashed dog, smiling and engaged in casual conversation while their dogs sniff around.",
-      imageSrc: "/role/20897efe-6b4d-4f97-b8e9-164e35381d37.jpeg",
+      imageSrc: "/role/20897efe-6b4d-4f97-b8e9-164e35381d37.webp",
       voice: "sage",
     },
     {
@@ -445,7 +445,7 @@ You’ll act as the guest arriving at the hotel, while our AI plays the role of 
         "Hello, I’m Onyx at the Grand Skyline Hotel. We’re delighted to have you here. May I have your name so I can check your reservation? Also, let me know if you have any special requests.",
       illustrationDescription:
         "A modern hotel lobby with a friendly receptionist behind the counter, smiling at a traveler who is checking in with a suitcase in hand.",
-      imageSrc: "/role/4db47c61-ff6c-448b-8528-65f4d4fa5992.jpeg",
+      imageSrc: "/role/4db47c61-ff6c-448b-8528-65f4d4fa5992.webp",
       voice: "verse",
     },
 
@@ -476,7 +476,7 @@ You’ll take the role of a customer shopping for groceries. The AI, as a store 
         "Hi, I’m Nova here at FreshMart. Is there anything specific you’re looking for today, or would you like some help finding the best deals?",
       illustrationDescription:
         "A bright grocery store aisle with a friendly employee pointing towards shelves while a customer looks at a shopping list, searching for items.",
-      imageSrc: "/role/a7e56489-d409-4b73-ad87-1473565975dc.jpeg",
+      imageSrc: "/role/a7e56489-d409-4b73-ad87-1473565975dc.webp",
       voice: "verse",
     },
 
@@ -507,7 +507,7 @@ You’ll act as a caller seeking help with a technical issue, while the AI plays
         "Hello, you’ve reached TechEase Support. I’m Shimmer, and I’m here to help. Could you describe the issue you’re experiencing so I can guide you through some possible solutions?",
       illustrationDescription:
         "A person sitting at a desk, looking frustrated at a laptop or phone, while a headset-wearing customer support agent appears on a screen, offering assistance.",
-      imageSrc: "/role/1c00497c-3d10-4dc8-bdaf-f83c888ce371.jpeg",
+      imageSrc: "/role/1c00497c-3d10-4dc8-bdaf-f83c888ce371.webp",
       voice: "shimmer",
     },
 
@@ -538,7 +538,7 @@ You’ll take the role of a patient calling a doctor’s office to schedule an a
         "Hello, you’ve reached Dr. Avery’s office. This is Ash speaking. May I have your name, and what’s the reason for your appointment? Also, let me know if you have any date preferences.",
       illustrationDescription:
         "A person sitting at a desk, talking on the phone while checking a calendar on their laptop, looking focused as they schedule a doctor's appointment.",
-      imageSrc: "/role/8226d079-3d2c-4122-81bc-dd1f9850603b.jpeg",
+      imageSrc: "/role/8226d079-3d2c-4122-81bc-dd1f9850603b.webp",
       voice: "ash",
     },
     {
@@ -568,7 +568,7 @@ You’ll step into the role of a customer returning a product, while the AI acts
         "Hi, I’m Sage at the Customer Service desk. I’m sorry to hear you need to return something. Could you tell me what went wrong with the item?",
       illustrationDescription:
         "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
-      imageSrc: "/role/2ac841c8-3569-45e0-a8aa-fe98e15ea5e2.jpeg",
+      imageSrc: "/role/2ac841c8-3569-45e0-a8aa-fe98e15ea5e2.webp",
       voice: "sage",
     },
     {
@@ -607,7 +607,7 @@ Note: This is a role-play scenario intended to practice speaking on mental healt
       exampleOfFirstMessageFromAi: `Hello, I'm Sage, your psychologist today. I'm here to listen and support you. Could you tell me what's on your mind?`,
       illustrationDescription:
         "A comfortable, welcoming office with a psychologist listening attentively to a client seated across from them, expressing themselves in a supportive atmosphere.",
-      imageSrc: "/role/ceb0e1b7-9c34-47c0-ae09-4086fb734da4.jpeg",
+      imageSrc: "/role/ceb0e1b7-9c34-47c0-ae09-4086fb734da4.webp",
       voice: "sage",
 
       contentPage:
@@ -664,7 +664,7 @@ You’ll outline your own role-play by providing a brief description of the sett
       exampleOfFirstMessageFromAi: "",
       illustrationDescription:
         "A customer holding a shopping bag, talking to a cashier at the returns counter, explaining why they need to return an item while the cashier processes the request.",
-      imageSrc: "/role/1ca9343e-839f-4b49-ac1f-9c7bfdea272e.jpeg",
+      imageSrc: "/role/1ca9343e-839f-4b49-ac1f-9c7bfdea272e.webp",
       voice: "sage",
     },
   ];
