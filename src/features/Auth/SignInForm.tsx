@@ -116,8 +116,8 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
             }
             alt="Instagram instruction"
             style={{
-              width: "100%",
-              boxShadow: "0px 0px 1px 1px rgba(22,22,22,0.95)",
+              width: "90%",
+              boxShadow: "0px 0px 0 3px rgba(200,200,255,0.95)",
               borderRadius: "10px",
               backgroundColor: "#111214",
               maxWidth: "400px",
