@@ -1,6 +1,6 @@
-import { IconButton, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { CirclePlus, Flag, GraduationCap, MapPinned, Trash } from "lucide-react";
+import { CirclePlus, Flag, Trash } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
@@ -61,7 +61,7 @@ export const PlanDashboardCards = () => {
 
   const goalCard = (
     <ConversationCard
-      title={i18n._(`Set Goal`)}
+      title={i18n._(`Goal`)}
       subTitle={i18n._(`Set the goal of your learning`)}
       onClick={() => startOnboarding()}
       startColor="#4F46E5"
@@ -110,8 +110,9 @@ export const PlanDashboardCards = () => {
     <DashboardCard>
       <Stack
         sx={{
-          flexDirection: "row",
+          display: "grid",
           alignItems: "center",
+          gridTemplateColumns: "max-content 1fr",
           gap: "15px",
           paddingBottom: "10px",
         }}
@@ -137,21 +138,46 @@ export const PlanDashboardCards = () => {
             flexDirection: "row",
             gap: "5px",
             alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
           }}
         >
-          <Typography variant="h6">
-            {isGoalSet
-              ? i18n._(`Your Goal`) + ": " + plan.latestGoal?.title || "Goal"
-              : i18n._(`Your Goal | Need to set`)}
-          </Typography>
-          <IconButton onClick={createTestPlan} disabled={plan.isCraftingGoal}>
-            <CirclePlus />
-          </IconButton>
-          {isGoalSet && (
-            <IconButton onClick={deletePlans} disabled={plan.isCraftingGoal}>
-              <Trash />
+          <Stack
+            sx={{
+              flexDirection: "row",
+              gap: "10px",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h6">
+              {isGoalSet
+                ? i18n._(`Your Goal`) + ": " + plan.latestGoal?.title || "Goal"
+                : i18n._(`Your Goal | Need to set`)}
+            </Typography>
+            {isGoalSet && (
+              <Typography
+                variant="body2"
+                sx={{
+                  padding: "3px 10px",
+                  borderRadius: "20px",
+                  color: isGoalSet ? "#fff" : "#000",
+                  backgroundColor: isGoalSet ? "#4F46E5" : "#ccc",
+                }}
+              >
+                10%
+              </Typography>
+            )}
+          </Stack>
+          <Box>
+            <IconButton onClick={createTestPlan} disabled={plan.isCraftingGoal}>
+              <CirclePlus />
             </IconButton>
-          )}
+            {isGoalSet && (
+              <IconButton onClick={deletePlans} disabled={plan.isCraftingGoal}>
+                <Trash />
+              </IconButton>
+            )}
+          </Box>
         </Stack>
       </Stack>
       <Stack
@@ -179,16 +205,14 @@ export const PlanDashboardCards = () => {
                   key={planElement.id}
                   title={planElement.title}
                   subTitle={planElement.mode}
+                  description={planElement.description}
                   onClick={() => startGoalElement(planElement)}
                   startColor={cardInfo.startColor}
                   endColor={cardInfo.endColor}
                   bgColor={cardInfo.bgColor}
                   icon={
                     <Stack>
-                      <Stack
-                        style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
-                        className="avatar"
-                      >
+                      <Stack className="avatar">
                         <img src={cardInfo.imgUrl} alt="" />
                       </Stack>
                     </Stack>

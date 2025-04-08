@@ -6,6 +6,7 @@ import { ReactNode } from "react";
 interface PlanCardProps {
   title: string;
   subTitle: string;
+  description: string;
   onClick?: () => void;
   href?: string;
   startColor: string;
@@ -20,6 +21,7 @@ interface PlanCardProps {
 export const PlanCard = ({
   title,
   subTitle,
+  description,
   onClick,
   startColor,
   endColor,
@@ -88,22 +90,9 @@ export const PlanCard = ({
       <Stack
         sx={{
           width: "100%",
+          maxWidth: "90%",
         }}
       >
-        <Typography
-          align="left"
-          variant="caption"
-          sx={{
-            fontWeight: 300,
-            opacity: disabled ? 0.7 : 1,
-            textTransform: "uppercase",
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
-          {subTitle}
-        </Typography>
-
         <Typography
           align="left"
           sx={{
@@ -114,13 +103,24 @@ export const PlanCard = ({
             zIndex: 2,
             opacity: disabled ? 0.5 : 1,
 
-            maxWidth: "80%",
             "@media (max-width: 450px)": {
               fontSize: "1.4rem",
             },
           }}
         >
           {title}
+        </Typography>
+
+        <Typography
+          variant="body2"
+          align="left"
+          sx={{
+            opacity: 0.8,
+            position: "relative",
+            zIndex: 2,
+          }}
+        >
+          {description}
         </Typography>
       </Stack>
 
@@ -130,7 +130,7 @@ export const PlanCard = ({
             flexDirection: "row",
             gap: "8px",
             alignItems: "center",
-            padding: "100px 14px 0px 0px",
+            padding: "70px 14px 0px 0px",
             borderRadius: "8px",
             opacity: disabled ? 0.7 : 1,
             position: "relative",
@@ -161,8 +161,8 @@ export const PlanCard = ({
             transition: "all 0.4s ease",
             opacity: disabled ? 0.9 : 1,
             img: {
-              width: "150px",
-              height: "150px",
+              width: "90px",
+              height: "90px",
             },
           },
         }}

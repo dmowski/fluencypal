@@ -54,6 +54,7 @@ Here is student/teacher conversation. Based on student's lever and their goal, f
 Goal should me simple and clear. Max 3-4 words.
 Example: Pass Job Interview
 Return only goal without any wrapper phrases, because your response will be used as title on UI.
+Use ${settings.fullLanguageName || "English"} language for generating goal.
 If you can't formulate goal, return "General Practice" as goal.
 `;
 
@@ -124,6 +125,7 @@ Example of plan:
 }
 ]
 
+Use ${settings.fullLanguageName || "English"} language for generating plan (title and description).
 Your plan should contain at least 8 elements. Including each type of ability`;
 
     const userMessage = `
