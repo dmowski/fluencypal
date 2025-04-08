@@ -27,6 +27,8 @@ import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { firstAiMessage, fullEnglishLanguageName, getUserLangCode } from "@/common/lang";
 import { useRouter, useSearchParams } from "next/navigation";
+import { GoalElementInfo } from "../Plan/types";
+import { usePlan } from "../Plan/usePlan";
 
 const aiModal = MODELS.SMALL_CONVERSATION;
 
@@ -39,6 +41,7 @@ interface StartConversationProps {
   customInstruction?: string;
   gameWords?: GuessGameStat;
   analyzeResultAiInstruction?: string;
+  goal?: GoalElementInfo | null;
 }
 
 interface AiConversationContextType {
@@ -125,6 +128,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const homeworkService = useHomework();
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
+  const [goalInfo, setGoalInfo] = useState<GoalElementInfo | null>(null);
 
   const [conversation, setConversation] = useState<ChatMessage[]>([]);
   const [errorInitiating, setErrorInitiating] = useState<string>();
@@ -133,6 +137,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
   const [isUserSpeaking, setIsUserSpeaking] = useState(false);
   const tasks = useTasks();
+  const plan = usePlan();
 
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
   const communicatorRef = useRef(communicator);
@@ -155,31 +160,36 @@ function useProvideAiConversation(): AiConversationContextType {
       }
     }
 
+    if (conversation.length === 6 && goalInfo) {
+      plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
+    }
+
     if (conversation.length === 10) {
       if (currentMode === "goal") {
         const isFirstAttempt = !userInfo;
 
         if (isFirstAttempt) {
-          //
+          // todo: block ability to response, show progress bard
+
           console.log("❌ Finishing goal conversation....");
           aiUserInfo.updateUserInfo(conversation).then(async () => {
             console.log("Triggering wrap up instruction...");
             const newInstruction = `Let's wrap up our conversation. Tell student that goal is briefly set. And if they want to continue talking, we can do it. But for now, it's time to grow and expand more interesting modes on FluencyPal.
 
-Tell user something like "Hmm, I think we have a good understanding of your goals. If you want to continue talking, we can do it. But for now, let's focus on expanding your skills using more interesting modes on FluencyPal. Let's grow together!
-
-To finish the onboarding, press the back button on the top left corner of the screen.
-".
+Tell user something like "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}"
 `;
             await communicatorRef.current?.updateSessionTrigger(newInstruction, isVolumeOn);
             await sleep(5000);
             console.log("❌ Triggering User message...");
             const userMessageFinish = `Tell me last thing about my goal.
-Start your message with, "You know what, I think I briefly got what tou want to achieve. {SUMMARY}. To finish the onboarding, press the back button on the top left corner of the screen."`;
+Start your message with, "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}"`;
             communicatorRef.current?.addUserChatMessage(userMessageFinish);
             await sleep(1000);
             console.log("❌  Triggering AI response...");
             await communicatorRef.current?.triggerAiResponse();
+            // Todo: start generating goal and Show Loader
+
+            // ToDo: in 5 second show Goal is successfully set "Open plan" button
           });
         }
       }
@@ -336,8 +346,29 @@ Your homework is to repeat the following text:
     return baseConfig;
   };
 
-  const getAiRtcConfig = async (mode: ConversationMode): Promise<AiRtcConfig> => {
+  const getAiRtcConfig = async (
+    mode: ConversationMode,
+    goal?: GoalElementInfo
+  ): Promise<AiRtcConfig> => {
     const baseConfig = await getBaseRtcConfig();
+
+    if (mode === "goal-role-play") {
+      // todo: implement
+      return {
+        ...baseConfig,
+        model: MODELS.SMALL_CONVERSATION,
+        initInstruction: ``,
+      };
+    }
+
+    if (mode === "goal-talk") {
+      // todo: implement
+      return {
+        ...baseConfig,
+        model: MODELS.SMALL_CONVERSATION,
+        initInstruction: ``,
+      };
+    }
 
     if (mode === "goal") {
       const usersSystemLanguageCodes = getUserLangCode();
@@ -349,6 +380,7 @@ Your homework is to repeat the following text:
         ...baseConfig,
         voice: "shimmer",
         model: MODELS.SMALL_CONVERSATION,
+        // todo: Ensure not to help user, but extract info
         initInstruction: `You are an ${fullLanguageName} teacher.  Your name is "Shimmer". It's first lesson with user.
 Do not teach or explain rules—just talk. You can use user's languages as well (${usersSystemLanguages.join(", ")})
 You should be friendly and engaging.
@@ -583,6 +615,7 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
     voice,
     gameWords,
     analyzeResultAiInstruction,
+    goal,
   }: StartConversationProps) => {
     if (!settings.languageCode) throw new Error("Language is not set | startConversation");
 
@@ -591,6 +624,7 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
       console.log("analyzeResultAiInstruction", analyzeResultAiInstruction);
 
     setGameStat(gameWords ? gameWords : null);
+    setGoalInfo(goal || null);
 
     try {
       setIsStartedUrl(true);
@@ -602,7 +636,7 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
       setErrorInitiating("");
 
       firstPotentialBotMessage.current = "";
-      const aiRtcConfig = await getAiRtcConfig(mode);
+      const aiRtcConfig = await getAiRtcConfig(mode, goal);
       let instruction = aiRtcConfig.initInstruction;
       setActiveHomework(homework || null);
       if (homework) {

@@ -22,6 +22,7 @@ interface PlanContextType {
   latestGoal: GoalPlan | null;
   deleteGoals: () => void;
   generateGoal: (input: GenerateGoalProps) => Promise<GoalPlan>;
+  increaseStartCount: (plan: GoalPlan, goalElement: PlanElement) => void;
   isCraftingGoal: boolean;
   isCraftingError: boolean;
 }
@@ -178,6 +179,7 @@ ${input.conversationMessage.map((message) => {
         description: description,
         preparingInstructionForAi: "",
         instructionForAi: "",
+        startCount: 0,
       };
       return planElement;
     });
@@ -229,9 +231,27 @@ ${input.conversationMessage.map((message) => {
     await deleteCollectionDocs(`users/${auth.uid}/goals`);
   };
 
+  const increaseStartCount = async (plan: GoalPlan, goalElement: PlanElement) => {
+    if (!collectionRef) {
+      return;
+    }
+
+    const planId = plan.id;
+    const elementId = goalElement.id;
+    const planData = goals?.find((goal) => goal.id === planId);
+    if (!planData) return;
+    const element = planData.elements.find((element) => element.id === elementId);
+    if (!element) return;
+    element.startCount = (element.startCount || 0) + 1;
+
+    const docRef = doc(collectionRef, planId);
+    await setDoc(docRef, { elements: planData.elements }, { merge: true });
+  };
+
   return {
     goals: goals || [],
     latestGoal,
+    increaseStartCount,
     loading,
     addGoalPlan,
     deleteGoals,

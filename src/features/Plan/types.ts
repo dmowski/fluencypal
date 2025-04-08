@@ -8,6 +8,7 @@ export interface PlanElement {
   subTitle: string; // 3 words
   mode: PlanElementMode;
   description: string;
+  startCount: number;
 
   preparingInstructionForAi: string;
   instructionForAi: string;
@@ -20,3 +21,8 @@ export interface GoalPlan {
   createdAt: number;
   languageCode: SupportedLanguage;
 }
+
+export type GoalElementInfo = {
+  goalPlan: GoalPlan;
+  goalElement: PlanElement;
+};

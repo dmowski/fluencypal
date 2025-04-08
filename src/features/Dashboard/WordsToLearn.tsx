@@ -62,6 +62,7 @@ export const WordsToLearn: React.FC = () => {
               await aiConversation.startConversation({
                 mode: "words",
                 wordsToLearn: words.wordsToLearn,
+                goal: words.goal,
               });
               words.removeWordsToLearn();
             }}
@@ -87,7 +88,10 @@ export const WordsToLearn: React.FC = () => {
               {i18n._(`Back`)}
             </Button>
             <Tooltip title="Generate new words">
-              <Button variant="text" onClick={() => words.getNewWordsToLearn()}>
+              <Button
+                variant="text"
+                onClick={() => words.getNewWordsToLearn(words.goal || undefined)}
+              >
                 {i18n._(`I know all of them`)}
               </Button>
             </Tooltip>

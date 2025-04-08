@@ -8,7 +8,9 @@ export type ConversationMode =
   | "rule"
   | "role-play"
   | "magic"
-  | "goal";
+  | "goal"
+  | "goal-role-play"
+  | "goal-talk";
 
 export interface ChatMessage {
   id: string;

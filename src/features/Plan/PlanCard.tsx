@@ -14,14 +14,14 @@ interface PlanCardProps {
   bgColor: string;
   icon: ReactNode;
   actionLabel: string;
-  progress: number;
+  progressPercent: number;
 }
 
 export const PlanCard = ({
   title,
   subTitle,
   description,
-  progress,
+  progressPercent,
   onClick,
   startColor,
   endColor,
@@ -142,7 +142,7 @@ export const PlanCard = ({
               width: "60px",
             }}
           >
-            {progress}%
+            {progressPercent}%
           </Typography>
         </Stack>
       </Stack>

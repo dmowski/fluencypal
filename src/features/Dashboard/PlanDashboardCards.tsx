@@ -1,6 +1,6 @@
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { CirclePlus, Flag, Trash } from "lucide-react";
+import { BadgeCheck, CirclePlus, Flag, Loader, Trash } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
@@ -13,6 +13,8 @@ import { usePlan } from "../Plan/usePlan";
 import { PlanElement, PlanElementMode } from "../Plan/types";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { PlanCard } from "../Plan/PlanCard";
+import { useState } from "react";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
 
 const modeCardProps: Record<
   PlanElementMode,
@@ -81,7 +83,31 @@ export const PlanDashboardCards = () => {
     />
   );
 
-  const startGoalElement = async (element: PlanElement) => {};
+  const startGoalElement = async (element: PlanElement) => {
+    if (!plan.latestGoal) {
+      return;
+    }
+
+    const goalInfo = {
+      goalElement: element,
+      goalPlan: plan.latestGoal,
+    };
+
+    if (element.mode === "words") {
+      words.getNewWordsToLearn(goalInfo);
+      return;
+    }
+
+    if (element.mode === "rule") {
+      rules.getRules(goalInfo);
+      return;
+    }
+
+    aiConversation.startConversation({
+      mode: element.mode === "play" ? "goal-role-play" : "goal-talk",
+      goal: goalInfo,
+    });
+  };
 
   const isGoalSet = !!plan.latestGoal?.elements?.length;
 
@@ -105,6 +131,15 @@ export const PlanDashboardCards = () => {
   const deletePlans = async () => {
     plan.deleteGoals();
   };
+
+  const planElementProgresses = plan.latestGoal?.elements.map((element) => {
+    const progressPercent = Math.min((element.startCount || 0) * 10, 100);
+    return progressPercent;
+  });
+
+  const averageProgress =
+    (planElementProgresses?.reduce((acc, progress) => acc + progress, 0) || 0) /
+    (planElementProgresses?.length || 1);
 
   return (
     <DashboardCard>
@@ -164,7 +199,7 @@ export const PlanDashboardCards = () => {
                   backgroundColor: isGoalSet ? "#4F46E5" : "#ccc",
                 }}
               >
-                10%
+                {Math.round(averageProgress)}%
               </Typography>
             )}
           </Stack>
@@ -208,7 +243,7 @@ export const PlanDashboardCards = () => {
                   description={planElement.description}
                   onClick={() => startGoalElement(planElement)}
                   startColor={cardInfo.startColor}
-                  progress={0}
+                  progressPercent={Math.min((planElement.startCount || 0) * 10, 100)}
                   endColor={cardInfo.endColor}
                   bgColor={cardInfo.bgColor}
                   icon={

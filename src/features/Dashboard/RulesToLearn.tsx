@@ -65,6 +65,7 @@ export const RulesToLearn: React.FC = () => {
               await aiConversation.startConversation({
                 mode: "rule",
                 ruleToLearn: rules.rule,
+                goal: rules.goal,
               });
               rules.removeRule();
             }}

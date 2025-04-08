@@ -8,16 +8,18 @@ import { WordsStats } from "@/common/words";
 import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useSettings } from "../Settings/useSettings";
 import { useTextAi } from "../Ai/useTextAi";
+import { GoalElementInfo } from "../Plan/types";
 
 interface WordsContextType {
   wordsStats: WordsStats | null;
   loading: boolean;
   addWordsStatFromText: (text: string) => Promise<string[]>;
   totalWordsCount: number;
-  getNewWordsToLearn: (topic?: string) => Promise<string[]>;
+  getNewWordsToLearn: (goal?: GoalElementInfo) => Promise<string[]>;
   removeWordsToLearn: () => void;
   wordsToLearn: string[];
   isGeneratingWords: boolean;
+  goal: GoalElementInfo | null;
 }
 
 const WordsContext = createContext<WordsContextType | null>(null);
@@ -30,6 +32,7 @@ function useProvideWords(): WordsContextType {
   const textAi = useTextAi();
   const [isGeneratingWords, setIsGeneratingWords] = useState(false);
   const [wordsToLearn, setWordsToLearn] = useState<string[]>([]);
+  const [goal, setGoal] = useState<GoalElementInfo | null>(null);
 
   const totalWordsCount = useMemo(() => {
     if (!wordsStats) return 0;
@@ -73,8 +76,9 @@ function useProvideWords(): WordsContextType {
     return await addWords(stat);
   };
 
-  const getNewWordsToLearn = async (topic?: string) => {
+  const getNewWordsToLearn = async (goal?: GoalElementInfo) => {
     const dictionary = wordsStats?.dictionary || {};
+    setGoal(goal || null);
     const knownWords = Object.keys(dictionary).filter((word) => dictionary[word] > 0);
     setWordsToLearn([]);
     try {
@@ -84,7 +88,7 @@ function useProvideWords(): WordsContextType {
         `User provides list of works that they knows.
 You should generate list of 10 new words to learn.
 Words should be useful for daily basis usage and not too difficult.
-${topic ? `Follow this topic: ${topic}` : ""}
+${goal ? `Follow this topic: ${goal.goalElement.title} - ${goal.goalElement.description}` : ""}
 Return info in JSON format. Example: ["word1", "word2", "word3"].
 Do not wrap answer with any wrapper phrases.
 Your response will be sent to JSON.parse() function.
@@ -111,6 +115,7 @@ Your response will be sent to JSON.parse() function.
     removeWordsToLearn: () => setWordsToLearn([]),
     wordsStats: wordsStats || null,
     getNewWordsToLearn,
+    goal,
     wordsToLearn,
     totalWordsCount,
     loading,

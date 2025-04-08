@@ -2,12 +2,14 @@
 import { createContext, useContext, ReactNode, JSX, useState } from "react";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useTextAi } from "../Ai/useTextAi";
+import { GoalElementInfo } from "../Plan/types";
 
 interface RulesContextType {
-  getRules: (topic?: string) => Promise<void>;
+  getRules: (goal?: GoalElementInfo) => Promise<void>;
   rule: string;
   isGeneratingRule: boolean;
   removeRule: () => void;
+  goal: GoalElementInfo | null;
 }
 
 const RulesContext = createContext<RulesContextType | null>(null);
@@ -15,6 +17,7 @@ const RulesContext = createContext<RulesContextType | null>(null);
 function useProvideRules(): RulesContextType {
   const [isGeneratingRule, setIsGeneratingRule] = useState(false);
   const [rule, setRule] = useState("");
+  const [goal, setGoal] = useState<GoalElementInfo | null>(null);
   const chatHistory = useChatHistory();
   const textAi = useTextAi();
 
@@ -30,15 +33,16 @@ function useProvideRules(): RulesContextType {
     return userMessages;
   };
 
-  const getRules = async (topic?: string) => {
+  const getRules = async (goal?: GoalElementInfo) => {
     setIsGeneratingRule(true);
+    setGoal(goal || null);
     try {
       const userMessage = await getUserMessages();
 
       const systemInstruction = [
         `User provides list of his messages that he used during voice conversation.`,
         `System should generate a most important grammar rule user must to learn.`,
-        `${topic ? `Follow this topic: ${topic}` : ""}`,
+        `${goal ? `Follow this topic: ${goal.goalElement.title} - ${goal.goalElement.description}` : ""}`,
         `Rules should be useful and not too difficult.`,
         `Return grammar rule in Markdown format. Starting from similar to: Based on recent conversation`,
       ].join(" ");
@@ -57,6 +61,7 @@ function useProvideRules(): RulesContextType {
 
   return {
     isGeneratingRule,
+    goal,
     getRules,
     rule,
     removeRule: () => setRule(""),
