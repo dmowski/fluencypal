@@ -1,6 +1,6 @@
 import { SupportedLanguage } from "@/common/lang";
 
-export type PlanElementMode = "conversation" | "words" | "play";
+export type PlanElementMode = "conversation" | "words" | "play" | "rule";
 
 export interface PlanElement {
   id: string;

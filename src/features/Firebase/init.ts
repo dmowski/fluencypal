@@ -9,6 +9,9 @@ import {
   initializeAuth,
 } from "firebase/auth";
 import {
+  collection,
+  deleteDoc,
+  getDocs,
   getFirestore,
   initializeFirestore,
   persistentLocalCache,
@@ -48,4 +51,10 @@ const setCookiesGDPR = (enabled: boolean) => {
   //setAnalyticsCollectionEnabled(analytics, enabled);
 };
 
-export { auth, firestore, storage, setCookiesGDPR, functions };
+async function deleteCollectionDocs(collectionPath: string): Promise<void> {
+  const snap = await getDocs(collection(firestore, collectionPath));
+  const deletions = snap.docs.map((docSnap) => deleteDoc(docSnap.ref));
+  await Promise.all(deletions);
+}
+
+export { auth, firestore, storage, setCookiesGDPR, deleteCollectionDocs, functions };

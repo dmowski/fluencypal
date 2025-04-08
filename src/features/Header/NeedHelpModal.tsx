@@ -3,16 +3,8 @@ import { useAuth } from "../Auth/useAuth";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Cookie, ReceiptText, Trash } from "lucide-react";
 import { useMemo, useState } from "react";
-import { firestore } from "../Firebase/init";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  DocumentReference,
-  Firestore,
-  getDocs,
-  setDoc,
-} from "firebase/firestore";
+import { deleteCollectionDocs, firestore } from "../Firebase/init";
+import { doc, DocumentReference, setDoc } from "firebase/firestore";
 import { UserSettings } from "@/common/user";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import { ContactList } from "../Landing/Contact/ContactList";
@@ -23,12 +15,6 @@ import { useLingui } from "@lingui/react";
 interface NeedHelpModalProps {
   onClose: () => void;
   lang: SupportedLanguage;
-}
-
-async function deleteCollectionDocs(firestore: Firestore, collectionPath: string): Promise<void> {
-  const snap = await getDocs(collection(firestore, collectionPath));
-  const deletions = snap.docs.map((docSnap) => deleteDoc(docSnap.ref));
-  await Promise.all(deletions);
 }
 
 export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
@@ -51,11 +37,11 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
     setIsDeletingAccount(true);
 
     try {
-      await deleteCollectionDocs(firestore, `users/${userId}/conversations`);
-      await deleteCollectionDocs(firestore, `users/${userId}/homeworks`);
-      await deleteCollectionDocs(firestore, `users/${userId}/stats`);
-      await deleteCollectionDocs(firestore, `users/${userId}/phraseCorrections`);
-      await deleteCollectionDocs(firestore, `users/${userId}/goals`);
+      await deleteCollectionDocs(`users/${userId}/conversations`);
+      await deleteCollectionDocs(`users/${userId}/homeworks`);
+      await deleteCollectionDocs(`users/${userId}/stats`);
+      await deleteCollectionDocs(`users/${userId}/phraseCorrections`);
+      await deleteCollectionDocs(`users/${userId}/goals`);
 
       localStorage.clear();
 

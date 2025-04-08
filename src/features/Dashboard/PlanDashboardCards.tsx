@@ -1,19 +1,48 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { IconButton, Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { Flag, GraduationCap, MapPinned } from "lucide-react";
+import { CirclePlus, Flag, GraduationCap, MapPinned, Trash } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
 import { useSettings } from "../Settings/useSettings";
-import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
-import { useState } from "react";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { ConversationCard } from "./ConversationCard";
 import { useAuth } from "../Auth/useAuth";
 import { usePlan } from "../Plan/usePlan";
-import { GoalPlan, PlanElement } from "../Plan/types";
+import { PlanElement, PlanElementMode } from "../Plan/types";
+import { useChatHistory } from "../ConversationHistory/useChatHistory";
+import { PlanCard } from "../Plan/ConversationCard";
+
+const modeCardProps: Record<
+  PlanElementMode,
+  { startColor: string; endColor: string; bgColor: string; imgUrl: string }
+> = {
+  conversation: {
+    startColor: "#03a665",
+    endColor: "#3B82F6",
+    bgColor: "#A3E635",
+    imgUrl: "/avatar/girl.webp",
+  },
+  play: {
+    startColor: "#4F46E5",
+    endColor: "#086787",
+    bgColor: "#990000",
+    imgUrl: "/avatar/talk3.webp",
+  },
+  words: {
+    startColor: "#0276c4",
+    endColor: "#086787",
+    bgColor: "#5EEAD4",
+    imgUrl: "/avatar/words.webp",
+  },
+  rule: {
+    startColor: "#9d43a3",
+    endColor: "#086787",
+    bgColor: "#990000",
+    imgUrl: "/avatar/book.webp",
+  },
+};
 
 export const PlanDashboardCards = () => {
   const aiConversation = useAiConversation();
@@ -24,6 +53,7 @@ export const PlanDashboardCards = () => {
   const settings = useSettings();
   const userInfo = useAiUserInfo();
   const plan = usePlan();
+  const chatHistory = useChatHistory();
 
   const startOnboarding = () => {
     aiConversation.startConversation({ mode: "goal" });
@@ -54,6 +84,27 @@ export const PlanDashboardCards = () => {
   const startGoalElement = async (element: PlanElement) => {};
 
   const isGoalSet = !!plan.latestGoal?.elements?.length;
+
+  const createTestPlan = async () => {
+    const goalConversation = chatHistory.conversations
+      .filter((conversation) => conversation.mode == "goal")
+      .sort((a, b) => b.messages.length - a.messages.length)[0];
+
+    const userInfoRecords = userInfo.userInfo?.records;
+
+    if (!goalConversation || !userInfoRecords) {
+      console.log({ userInfoRecords, goalConversation });
+    } else {
+      const generatedGoal = await plan.generateGoal({
+        userInfo: userInfoRecords,
+        conversationMessage: goalConversation.messages,
+      });
+      plan.addGoalPlan(generatedGoal);
+    }
+  };
+  const deletePlans = async () => {
+    plan.deleteGoals();
+  };
 
   return (
     <DashboardCard>
@@ -89,8 +140,18 @@ export const PlanDashboardCards = () => {
           }}
         >
           <Typography variant="h6">
-            {isGoalSet ? plan.latestGoal?.title || "Goal" : i18n._(`Your Goal | Need to set`)}
+            {isGoalSet
+              ? i18n._(`Your Goal`) + ": " + plan.latestGoal?.title || "Goal"
+              : i18n._(`Your Goal | Need to set`)}
           </Typography>
+          <IconButton onClick={createTestPlan} disabled={plan.isCraftingGoal}>
+            <CirclePlus />
+          </IconButton>
+          {isGoalSet && (
+            <IconButton onClick={deletePlans} disabled={plan.isCraftingGoal}>
+              <Trash />
+            </IconButton>
+          )}
         </Stack>
       </Stack>
       <Stack
@@ -112,26 +173,29 @@ export const PlanDashboardCards = () => {
         {isGoalSet && plan.latestGoal ? (
           <>
             {plan.latestGoal?.elements.map((planElement) => {
-              <ConversationCard
-                key={planElement.id}
-                title={planElement.title}
-                subTitle={planElement.subTitle}
-                onClick={() => startGoalElement(planElement)}
-                startColor="#34D399"
-                endColor="#3B82F6"
-                bgColor="#A3E635"
-                icon={
-                  <Stack>
-                    <Stack
-                      style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
-                      className="avatar"
-                    >
-                      <img src="/avatar/girl.webp" alt="AI Bot" />
+              const cardInfo = modeCardProps[planElement.mode];
+              return (
+                <PlanCard
+                  key={planElement.id}
+                  title={planElement.title}
+                  subTitle={planElement.mode}
+                  onClick={() => startGoalElement(planElement)}
+                  startColor={cardInfo.startColor}
+                  endColor={cardInfo.endColor}
+                  bgColor={cardInfo.bgColor}
+                  icon={
+                    <Stack>
+                      <Stack
+                        style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
+                        className="avatar"
+                      >
+                        <img src={cardInfo.imgUrl} alt="" />
+                      </Stack>
                     </Stack>
-                  </Stack>
-                }
-                actionLabel={i18n._(`Start`)}
-              />;
+                  }
+                  actionLabel={i18n._(`Start`)}
+                />
+              );
             })}
           </>
         ) : (
