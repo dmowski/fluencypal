@@ -14,22 +14,20 @@ interface PlanCardProps {
   bgColor: string;
   icon: ReactNode;
   actionLabel: string;
-  disabled?: boolean;
-  disabledLabel?: string;
+  progress: number;
 }
 
 export const PlanCard = ({
   title,
   subTitle,
   description,
+  progress,
   onClick,
   startColor,
   endColor,
   bgColor,
   icon,
   actionLabel,
-  disabled,
-  disabledLabel,
   href,
 }: PlanCardProps) => {
   return (
@@ -45,9 +43,7 @@ export const PlanCard = ({
         gap: "0px",
         alignItems: "flex-start",
         justifyContent: "space-between",
-        border: disabled
-          ? "1px solid rgba(255, 255, 255, 0.2)"
-          : "1px solid rgba(255, 255, 255, 0.0)",
+        border: "1px solid rgba(255, 255, 255, 0.0)",
         position: "relative",
         overflow: "hidden",
         transition: "transform 0.3s ease",
@@ -57,7 +53,7 @@ export const PlanCard = ({
         userSelect: "text",
 
         color: "#fff",
-        opacity: disabled ? 0.8 : 1,
+        opacity: 1,
 
         ".mini-card": {
           position: "absolute",
@@ -80,9 +76,9 @@ export const PlanCard = ({
         },
 
         ":hover": {
-          transform: !disabled ? "scale(1.02)" : "none",
+          transform: "scale(1.02)",
           ".avatar": {
-            transform: !disabled ? "scale(1.08) rotate(1deg)" : "none",
+            transform: "scale(1.08) rotate(1deg)",
           },
         },
       }}
@@ -97,11 +93,10 @@ export const PlanCard = ({
           align="left"
           sx={{
             fontWeight: 600,
-            //textTransform: "uppercase",
             fontSize: "1.2rem",
             position: "relative",
             zIndex: 2,
-            opacity: disabled ? 0.5 : 1,
+            opacity: 1,
 
             "@media (max-width: 450px)": {
               fontSize: "1.4rem",
@@ -132,19 +127,23 @@ export const PlanCard = ({
             alignItems: "center",
             padding: "70px 14px 0px 0px",
             borderRadius: "8px",
-            opacity: disabled ? 0.7 : 1,
+            opacity: 1,
             position: "relative",
             zIndex: 2,
           }}
         >
-          {disabled ? (
-            <>
-              <Lock size={"18px"} />
-              <Typography variant="body2">{disabledLabel}</Typography>
-            </>
-          ) : (
-            <Typography variant="body2">{actionLabel}</Typography>
-          )}
+          <Typography
+            sx={{
+              fontWeight: 400,
+              fontSize: "1.2rem",
+              borderRadius: "8px",
+              padding: "10px 20px",
+              border: "1px solid rgba(255, 255, 255, 0.5)",
+              width: "60px",
+            }}
+          >
+            {progress}%
+          </Typography>
         </Stack>
       </Stack>
 
@@ -159,7 +158,7 @@ export const PlanCard = ({
 
           ".avatar": {
             transition: "all 0.4s ease",
-            opacity: disabled ? 0.9 : 1,
+            opacity: 1,
             img: {
               width: "90px",
               height: "90px",
@@ -182,7 +181,7 @@ export const PlanCard = ({
           top: "-40px",
           left: "-20px",
           zIndex: 1,
-          opacity: disabled ? 0.06 : 0.9,
+          opacity: 0.9,
         }}
       ></Stack>
 
@@ -198,7 +197,7 @@ export const PlanCard = ({
           bottom: "-40px",
           right: "-20px",
           zIndex: 1,
-          opacity: disabled ? 0.06 : 0.9,
+          opacity: 0.9,
         }}
       ></Stack>
 
@@ -212,7 +211,7 @@ export const PlanCard = ({
           bottom: "0px",
           left: "0px",
           zIndex: 0,
-          opacity: disabled ? 0.06 : 0.1,
+          opacity: 0.1,
         }}
       ></Stack>
 

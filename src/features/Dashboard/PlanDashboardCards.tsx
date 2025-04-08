@@ -198,16 +198,17 @@ export const PlanDashboardCards = () => {
       >
         {isGoalSet && plan.latestGoal ? (
           <>
-            {plan.latestGoal?.elements.map((planElement) => {
+            {plan.latestGoal?.elements.map((planElement, index) => {
               const cardInfo = modeCardProps[planElement.mode];
               return (
                 <PlanCard
                   key={planElement.id}
-                  title={planElement.title}
+                  title={index + 1 + ". " + planElement.title}
                   subTitle={planElement.mode}
                   description={planElement.description}
                   onClick={() => startGoalElement(planElement)}
                   startColor={cardInfo.startColor}
+                  progress={0}
                   endColor={cardInfo.endColor}
                   bgColor={cardInfo.bgColor}
                   icon={
