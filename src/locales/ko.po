@@ -13,6 +13,16 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:34
+#. js-lingui-explicit-id
+msgid "Set Goal"
+msgstr "목표 설정"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:92
+#. js-lingui-explicit-id
+msgid "Your Goal | Need to set"
+msgstr "당신의 목표 | 설정이 필요합니다"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:97
@@ -115,7 +125,7 @@ msgstr "AI 튜터 비용"
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Landing/Footer.tsx:178
 #: src/features/Landing/Contact/ContactsPage.tsx:157
-#: src/features/Header/NeedHelpModal.tsx:151
+#: src/features/Header/NeedHelpModal.tsx:153
 #: src/features/Auth/SignInForm.tsx:231
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -133,7 +143,7 @@ msgstr "쿠키 정책"
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Landing/Footer.tsx:168
 #: src/features/Landing/Contact/ContactsPage.tsx:154
-#: src/features/Header/NeedHelpModal.tsx:138
+#: src/features/Header/NeedHelpModal.tsx:140
 #: src/features/Auth/SignInForm.tsx:235
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -549,7 +559,7 @@ msgid "Continue to payment"
 msgstr "결제 계속하기"
 
 #: src/features/Usage/PaymentModal.tsx:378
-#: src/features/Header/NeedHelpModal.tsx:207
+#: src/features/Header/NeedHelpModal.tsx:209
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "취소"
@@ -1589,6 +1599,7 @@ msgstr "모든 시나리오"
 
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayBoard.tsx:629
+#: src/features/Dashboard/PlanDashboardCards.tsx:133
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "시작"
@@ -1651,12 +1662,14 @@ msgid "Goal"
 msgstr "목표"
 
 #: src/features/Landing/WelcomeScreen.tsx:144
+#: src/features/Dashboard/PlanDashboardCards.tsx:35
 #: src/features/Dashboard/ConversationSelectCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "학습의 목표를 설정하십시오"
 
 #: src/features/Landing/WelcomeScreen.tsx:159
+#: src/features/Dashboard/PlanDashboardCards.tsx:50
 #: src/features/Dashboard/ConversationSelectCard.tsx:52
 #. js-lingui-explicit-id
 msgid "Start | 5 min"
@@ -2563,7 +2576,7 @@ msgid ""
 msgstr "네! 더 큰 크레딧 패키지를 구매하실 때 할인 혜택을 제공합니다. 구매하기 전에 저에게 연락해 주시면 할인을 해드리겠습니다."
 
 #: src/features/Landing/Price/PricePage.tsx:815
-#: src/features/Header/NeedHelpModal.tsx:109
+#: src/features/Header/NeedHelpModal.tsx:111
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "연락처:"
@@ -2598,39 +2611,39 @@ msgid ""
 msgstr "궁금한 점이나 피드백이 있으시면 언제든지 저에게 연락해 주세요. 항상 도움을 드리게 되어 기쁩니다!"
 
 #: src/features/Header/NeedHelpModal.tsx:48
-#: src/features/Header/NeedHelpModal.tsx:168
+#: src/features/Header/NeedHelpModal.tsx:170
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
 msgstr "정말로 계정을 삭제하시겠습니까?"
 
-#: src/features/Header/NeedHelpModal.tsx:62
+#: src/features/Header/NeedHelpModal.tsx:64
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "당신의 계정이 성공적으로 삭제되었습니다. 안녕히 가십시오, 그동안 함께 해주셔서 감사합니다!"
 
-#: src/features/Header/NeedHelpModal.tsx:74
+#: src/features/Header/NeedHelpModal.tsx:76
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "계정을 삭제하지 못했습니다. 나중에 다시 시도하거나 개발자에게 연락해 주세요."
 
-#: src/features/Header/NeedHelpModal.tsx:90
+#: src/features/Header/NeedHelpModal.tsx:92
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "도움이 필요하신가요?"
 
-#: src/features/Header/NeedHelpModal.tsx:125
+#: src/features/Header/NeedHelpModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Legal:"
 msgstr "법적 사항:"
 
-#: src/features/Header/NeedHelpModal.tsx:170
+#: src/features/Header/NeedHelpModal.tsx:172
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "이 작업은 되돌릴 수 없습니다."
 
-#: src/features/Header/NeedHelpModal.tsx:172
+#: src/features/Header/NeedHelpModal.tsx:174
 #. js-lingui-explicit-id
 msgid ""
 "We will delete your data, but information about your balance will be stored "
@@ -2640,30 +2653,30 @@ msgstr ""
 "우리는 당신의 데이터를 삭제할 것입니다, 하지만 잔액에 대한 정보는 한 해 동안 저장됩니다.\n"
 "              년."
 
-#: src/features/Header/NeedHelpModal.tsx:176
+#: src/features/Header/NeedHelpModal.tsx:178
 #. js-lingui-explicit-id
 msgid ""
 "If you want to remove all information, including your balance, please "
 "contact us."
 msgstr "모든 정보, 잔액 포함, 삭제를 원하신다면 문의해 주세요."
 
-#: src/features/Header/NeedHelpModal.tsx:197
-#: src/features/Header/NeedHelpModal.tsx:231
+#: src/features/Header/NeedHelpModal.tsx:199
+#: src/features/Header/NeedHelpModal.tsx:233
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "삭제 중..."
 
-#: src/features/Header/NeedHelpModal.tsx:197
+#: src/features/Header/NeedHelpModal.tsx:199
 #. js-lingui-explicit-id
 msgid "Yes, Delete account"
 msgstr "네, 계정 삭제"
 
-#: src/features/Header/NeedHelpModal.tsx:221
+#: src/features/Header/NeedHelpModal.tsx:223
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "닫기"
 
-#: src/features/Header/NeedHelpModal.tsx:231
+#: src/features/Header/NeedHelpModal.tsx:233
 #. js-lingui-explicit-id
 msgid "Delete account"
 msgstr "계정 삭제"

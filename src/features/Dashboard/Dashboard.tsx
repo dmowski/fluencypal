@@ -10,6 +10,7 @@ import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { UsageStatsCards } from "../Usage/UsageStatsCards";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
+import { PlanDashboardCards } from "./PlanDashboardCards";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -40,6 +41,8 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
         }}
       >
         <ConversationSelectCard />
+
+        <PlanDashboardCards />
 
         <DashboardCard>
           <UsageStatsCards />

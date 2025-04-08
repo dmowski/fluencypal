@@ -16,6 +16,7 @@ import { WordsStats } from "@/common/words";
 import { AiUserInfo } from "@/common/userInfo";
 import { SupportedLanguage } from "@/common/lang";
 import { PhraseCorrection } from "../Corrections/types";
+import { GoalPlan } from "../Plan/types";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -66,6 +67,9 @@ export const db = {
       userId ? dataPointCollection<PaymentLog>(`users/${userId}/payments`) : null,
     phraseCorrections: (userId?: string) =>
       userId ? dataPointCollection<PhraseCorrection>(`users/${userId}/phraseCorrections`) : null,
+
+    goals: (userId?: string) =>
+      userId ? dataPointCollection<GoalPlan>(`users/${userId}/goals`) : null,
   },
   documents: {
     homework: (userId?: string, homeworkId?: string) =>

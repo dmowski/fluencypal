@@ -13,6 +13,16 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:34
+#. js-lingui-explicit-id
+msgid "Set Goal"
+msgstr "设定目标"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:92
+#. js-lingui-explicit-id
+msgid "Your Goal | Need to set"
+msgstr "你的目标 | 需要设置"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:97
@@ -113,7 +123,7 @@ msgstr "AI 辅导员费用"
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Landing/Footer.tsx:178
 #: src/features/Landing/Contact/ContactsPage.tsx:157
-#: src/features/Header/NeedHelpModal.tsx:151
+#: src/features/Header/NeedHelpModal.tsx:153
 #: src/features/Auth/SignInForm.tsx:231
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -131,7 +141,7 @@ msgstr "Cookies政策"
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Landing/Footer.tsx:168
 #: src/features/Landing/Contact/ContactsPage.tsx:154
-#: src/features/Header/NeedHelpModal.tsx:138
+#: src/features/Header/NeedHelpModal.tsx:140
 #: src/features/Auth/SignInForm.tsx:235
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -540,7 +550,7 @@ msgid "Continue to payment"
 msgstr "继续付款"
 
 #: src/features/Usage/PaymentModal.tsx:378
-#: src/features/Header/NeedHelpModal.tsx:207
+#: src/features/Header/NeedHelpModal.tsx:209
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "取消"
@@ -1551,6 +1561,7 @@ msgstr "所有场景"
 
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayBoard.tsx:629
+#: src/features/Dashboard/PlanDashboardCards.tsx:133
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "开始"
@@ -1613,12 +1624,14 @@ msgid "Goal"
 msgstr "目标"
 
 #: src/features/Landing/WelcomeScreen.tsx:144
+#: src/features/Dashboard/PlanDashboardCards.tsx:35
 #: src/features/Dashboard/ConversationSelectCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "设置你的学习目标"
 
 #: src/features/Landing/WelcomeScreen.tsx:159
+#: src/features/Dashboard/PlanDashboardCards.tsx:50
 #: src/features/Dashboard/ConversationSelectCard.tsx:52
 #. js-lingui-explicit-id
 msgid "Start | 5 min"
@@ -2504,7 +2517,7 @@ msgid ""
 msgstr "是的！当购买较大信用套餐时，我们提供折扣。在您购买之前请联系我，我将给您提供折扣。"
 
 #: src/features/Landing/Price/PricePage.tsx:815
-#: src/features/Header/NeedHelpModal.tsx:109
+#: src/features/Header/NeedHelpModal.tsx:111
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "联系人："
@@ -2538,39 +2551,39 @@ msgid ""
 msgstr "请随时与我联系，提出任何问题或反馈。我总是乐于提供帮助！"
 
 #: src/features/Header/NeedHelpModal.tsx:48
-#: src/features/Header/NeedHelpModal.tsx:168
+#: src/features/Header/NeedHelpModal.tsx:170
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
 msgstr "您确定要删除您的账户吗？"
 
-#: src/features/Header/NeedHelpModal.tsx:62
+#: src/features/Header/NeedHelpModal.tsx:64
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "您的账户已成功删除。我们很遗憾您的离开！"
 
-#: src/features/Header/NeedHelpModal.tsx:74
+#: src/features/Header/NeedHelpModal.tsx:76
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "删除您的帐户失败。请稍后再试，或者联系开发者。"
 
-#: src/features/Header/NeedHelpModal.tsx:90
+#: src/features/Header/NeedHelpModal.tsx:92
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "需要帮助吗？"
 
-#: src/features/Header/NeedHelpModal.tsx:125
+#: src/features/Header/NeedHelpModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Legal:"
 msgstr "法律："
 
-#: src/features/Header/NeedHelpModal.tsx:170
+#: src/features/Header/NeedHelpModal.tsx:172
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "此操作不可逆。"
 
-#: src/features/Header/NeedHelpModal.tsx:172
+#: src/features/Header/NeedHelpModal.tsx:174
 #. js-lingui-explicit-id
 msgid ""
 "We will delete your data, but information about your balance will be stored "
@@ -2580,30 +2593,30 @@ msgstr ""
 "我们将删除您的数据，但您的余额信息将存储一\n"
 "              年。"
 
-#: src/features/Header/NeedHelpModal.tsx:176
+#: src/features/Header/NeedHelpModal.tsx:178
 #. js-lingui-explicit-id
 msgid ""
 "If you want to remove all information, including your balance, please "
 "contact us."
 msgstr "如果您想删除所有信息，包括您的余额，请联系我们。"
 
-#: src/features/Header/NeedHelpModal.tsx:197
-#: src/features/Header/NeedHelpModal.tsx:231
+#: src/features/Header/NeedHelpModal.tsx:199
+#: src/features/Header/NeedHelpModal.tsx:233
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "正在删除..."
 
-#: src/features/Header/NeedHelpModal.tsx:197
+#: src/features/Header/NeedHelpModal.tsx:199
 #. js-lingui-explicit-id
 msgid "Yes, Delete account"
 msgstr "是的，删除账户"
 
-#: src/features/Header/NeedHelpModal.tsx:221
+#: src/features/Header/NeedHelpModal.tsx:223
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "关闭"
 
-#: src/features/Header/NeedHelpModal.tsx:231
+#: src/features/Header/NeedHelpModal.tsx:233
 #. js-lingui-explicit-id
 msgid "Delete account"
 msgstr "删除账户"

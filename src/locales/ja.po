@@ -13,6 +13,16 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:34
+#. js-lingui-explicit-id
+msgid "Set Goal"
+msgstr "目標を設定する"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:92
+#. js-lingui-explicit-id
+msgid "Your Goal | Need to set"
+msgstr "あなたの目標 | 設定が必要です"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:97
@@ -117,7 +127,7 @@ msgstr "AI家庭教師の費用"
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Landing/Footer.tsx:178
 #: src/features/Landing/Contact/ContactsPage.tsx:157
-#: src/features/Header/NeedHelpModal.tsx:151
+#: src/features/Header/NeedHelpModal.tsx:153
 #: src/features/Auth/SignInForm.tsx:231
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -135,7 +145,7 @@ msgstr "クッキーポリシー"
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Landing/Footer.tsx:168
 #: src/features/Landing/Contact/ContactsPage.tsx:154
-#: src/features/Header/NeedHelpModal.tsx:138
+#: src/features/Header/NeedHelpModal.tsx:140
 #: src/features/Auth/SignInForm.tsx:235
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -552,7 +562,7 @@ msgid "Continue to payment"
 msgstr "支払いに進む"
 
 #: src/features/Usage/PaymentModal.tsx:378
-#: src/features/Header/NeedHelpModal.tsx:207
+#: src/features/Header/NeedHelpModal.tsx:209
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "キャンセル"
@@ -1580,6 +1590,7 @@ msgstr "すべてのシナリオ"
 
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayBoard.tsx:629
+#: src/features/Dashboard/PlanDashboardCards.tsx:133
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "開始"
@@ -1644,12 +1655,14 @@ msgid "Goal"
 msgstr "目標"
 
 #: src/features/Landing/WelcomeScreen.tsx:144
+#: src/features/Dashboard/PlanDashboardCards.tsx:35
 #: src/features/Dashboard/ConversationSelectCard.tsx:37
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
 msgstr "あなたの学習の目標を設定します"
 
 #: src/features/Landing/WelcomeScreen.tsx:159
+#: src/features/Dashboard/PlanDashboardCards.tsx:50
 #: src/features/Dashboard/ConversationSelectCard.tsx:52
 #. js-lingui-explicit-id
 msgid "Start | 5 min"
@@ -2559,7 +2572,7 @@ msgid ""
 msgstr "はい！大きなクレジットパッケージを購入する際には割引を提供しています。購入する前に私に連絡してください。割引をお渡しします。"
 
 #: src/features/Landing/Price/PricePage.tsx:815
-#: src/features/Header/NeedHelpModal.tsx:109
+#: src/features/Header/NeedHelpModal.tsx:111
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "連絡先:"
@@ -2593,39 +2606,39 @@ msgid ""
 msgstr "お気軽に質問やフィードバックをお寄せください。お手伝いできてうれしいです！"
 
 #: src/features/Header/NeedHelpModal.tsx:48
-#: src/features/Header/NeedHelpModal.tsx:168
+#: src/features/Header/NeedHelpModal.tsx:170
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
 msgstr "あなたのアカウントを削除してもよろしいですか？"
 
-#: src/features/Header/NeedHelpModal.tsx:62
+#: src/features/Header/NeedHelpModal.tsx:64
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "あなたのアカウントは正常に削除されました。お別れするのは残念です！"
 
-#: src/features/Header/NeedHelpModal.tsx:74
+#: src/features/Header/NeedHelpModal.tsx:76
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
 "developers."
 msgstr "アカウントの削除に失敗しました。後で再試行するか、開発者に連絡してください。"
 
-#: src/features/Header/NeedHelpModal.tsx:90
+#: src/features/Header/NeedHelpModal.tsx:92
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "助けが必要ですか？"
 
-#: src/features/Header/NeedHelpModal.tsx:125
+#: src/features/Header/NeedHelpModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Legal:"
 msgstr "法的:"
 
-#: src/features/Header/NeedHelpModal.tsx:170
+#: src/features/Header/NeedHelpModal.tsx:172
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "この操作は元に戻せません。"
 
-#: src/features/Header/NeedHelpModal.tsx:172
+#: src/features/Header/NeedHelpModal.tsx:174
 #. js-lingui-explicit-id
 msgid ""
 "We will delete your data, but information about your balance will be stored "
@@ -2635,30 +2648,30 @@ msgstr ""
 "あなたのデータは削除されますが、残高に関する情報は一\n"
 "              年間保管されます。"
 
-#: src/features/Header/NeedHelpModal.tsx:176
+#: src/features/Header/NeedHelpModal.tsx:178
 #. js-lingui-explicit-id
 msgid ""
 "If you want to remove all information, including your balance, please "
 "contact us."
 msgstr "すべての情報、残高を含む、を削除したい場合は、お問い合わせください。"
 
-#: src/features/Header/NeedHelpModal.tsx:197
-#: src/features/Header/NeedHelpModal.tsx:231
+#: src/features/Header/NeedHelpModal.tsx:199
+#: src/features/Header/NeedHelpModal.tsx:233
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "削除中..."
 
-#: src/features/Header/NeedHelpModal.tsx:197
+#: src/features/Header/NeedHelpModal.tsx:199
 #. js-lingui-explicit-id
 msgid "Yes, Delete account"
 msgstr "はい、アカウントを削除します"
 
-#: src/features/Header/NeedHelpModal.tsx:221
+#: src/features/Header/NeedHelpModal.tsx:223
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "閉じる"
 
-#: src/features/Header/NeedHelpModal.tsx:231
+#: src/features/Header/NeedHelpModal.tsx:233
 #. js-lingui-explicit-id
 msgid "Delete account"
 msgstr "アカウントを削除する"
