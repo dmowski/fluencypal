@@ -373,7 +373,6 @@ During conversation, cover these topics:
 10. User's favorite activities or pastimes related to ${fullLanguageName}.
 11. User's favorite food and cooking experiences.
 
-
 ${
   userInfo
     ? `
@@ -382,9 +381,6 @@ ${userInfo}
 `
     : ""
 }
-
-
-
 
 ${
   userInfo
