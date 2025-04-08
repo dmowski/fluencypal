@@ -12,7 +12,7 @@ import { useAuth } from "../Auth/useAuth";
 import { usePlan } from "../Plan/usePlan";
 import { PlanElement, PlanElementMode } from "../Plan/types";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
-import { PlanCard } from "../Plan/ConversationCard";
+import { PlanCard } from "../Plan/PlanCard";
 
 const modeCardProps: Record<
   PlanElementMode,
