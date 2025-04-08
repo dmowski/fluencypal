@@ -4,7 +4,7 @@ import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useTextAi } from "../Ai/useTextAi";
 
 interface RulesContextType {
-  getRules: () => Promise<void>;
+  getRules: (topic?: string) => Promise<void>;
   rule: string;
   isGeneratingRule: boolean;
   removeRule: () => void;
@@ -30,7 +30,7 @@ function useProvideRules(): RulesContextType {
     return userMessages;
   };
 
-  const getRules = async () => {
+  const getRules = async (topic?: string) => {
     setIsGeneratingRule(true);
     try {
       const userMessage = await getUserMessages();
@@ -38,6 +38,7 @@ function useProvideRules(): RulesContextType {
       const systemInstruction = [
         `User provides list of his messages that he used during voice conversation.`,
         `System should generate a most important grammar rule user must to learn.`,
+        `${topic ? `Follow this topic: ${topic}` : ""}`,
         `Rules should be useful and not too difficult.`,
         `Return grammar rule in Markdown format. Starting from similar to: Based on recent conversation`,
       ].join(" ");
