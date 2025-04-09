@@ -27,7 +27,7 @@ import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { firstAiMessage, fullEnglishLanguageName, getUserLangCode } from "@/common/lang";
 import { useRouter, useSearchParams } from "next/navigation";
-import { GoalElementInfo } from "../Plan/types";
+import { GoalElementInfo, GoalPlan } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";
 
 const aiModal = MODELS.SMALL_CONVERSATION;
@@ -68,6 +68,10 @@ interface AiConversationContextType {
   toggleVolume: (value: boolean) => void;
 
   conversationId: string;
+
+  isProcessingGoal: boolean;
+  confirmGoal: (isConfirm: boolean) => Promise<void>;
+  temporaryGoal: GoalPlan | null;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -90,10 +94,29 @@ function useProvideAiConversation(): AiConversationContextType {
   const [analyzeResultInstruction, setAnalyzeResultInstruction] = useState<string>("");
   const [isVolumeOnStorage, setIsVolumeOn] = useLocalStorage<boolean>("isVolumeOn", true);
   const isVolumeOn = isVolumeOnStorage === undefined ? true : isVolumeOnStorage;
+  const [isProcessingGoal, setIsProcessingGoal] = useState(false);
+  const [temporaryGoal, setTemporaryGoal] = useState<GoalPlan | null>(null);
 
   const toggleVolume = (isOn: boolean) => {
     setIsVolumeOn(isOn);
     communicatorRef.current?.toggleVolume(isOn);
+  };
+
+  const confirmGoal = async (isConfirm: boolean) => {
+    if (!temporaryGoal) {
+      console.log("❌ No goal to confirm");
+      return;
+    }
+
+    if (isConfirm) {
+      await plan.addGoalPlan(temporaryGoal);
+      setTemporaryGoal(null);
+      await closeConversation();
+      setIsProcessingGoal(false);
+    } else {
+      setIsProcessingGoal(false);
+      setTemporaryGoal(null);
+    }
   };
 
   const usage = useUsage();
@@ -164,34 +187,39 @@ function useProvideAiConversation(): AiConversationContextType {
       plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
     }
 
-    if (conversation.length === 10) {
+    if (
+      conversation.length === 10 ||
+      conversation.length === 20 ||
+      conversation.length === 40 ||
+      conversation.length === 50
+    ) {
       if (currentMode === "goal") {
-        const isFirstAttempt = !userInfo;
+        // todo: block ability to response, show progress bard
 
-        if (isFirstAttempt) {
-          // todo: block ability to response, show progress bard
-
-          console.log("❌ Finishing goal conversation....");
-          aiUserInfo.updateUserInfo(conversation).then(async () => {
-            console.log("Triggering wrap up instruction...");
-            const newInstruction = `Let's wrap up our conversation. Tell student that goal is briefly set. And if they want to continue talking, we can do it. But for now, it's time to grow and expand more interesting modes on FluencyPal.
+        console.log("❌ Finishing goal conversation....");
+        setIsProcessingGoal(true);
+        aiUserInfo.updateUserInfo(conversation).then(async (userInfoRecords) => {
+          console.log("Triggering wrap up instruction...");
+          const newInstruction = `Let's wrap up our conversation. Tell student that goal is briefly set. And if they want to continue talking, we can do it. But for now, it's time to grow and expand more interesting modes on FluencyPal.
 
 Tell user something like "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}"
 `;
-            await communicatorRef.current?.updateSessionTrigger(newInstruction, isVolumeOn);
-            await sleep(5000);
-            console.log("❌ Triggering User message...");
-            const userMessageFinish = `Tell me last thing about my goal.
+          await communicatorRef.current?.updateSessionTrigger(newInstruction, isVolumeOn);
+          await sleep(5000);
+          console.log("❌ Triggering User message...");
+          const userMessageFinish = `Tell me last thing about my goal.
 Start your message with, "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}"`;
-            communicatorRef.current?.addUserChatMessage(userMessageFinish);
-            await sleep(1000);
-            console.log("❌  Triggering AI response...");
-            await communicatorRef.current?.triggerAiResponse();
-            // Todo: start generating goal and Show Loader
-
-            // ToDo: in 5 second show Goal is successfully set "Open plan" button
+          communicatorRef.current?.addUserChatMessage(userMessageFinish);
+          await sleep(1000);
+          console.log("❌  Triggering AI response...");
+          await communicatorRef.current?.triggerAiResponse();
+          await sleep(1000);
+          const generatedGoal = await plan.generateGoal({
+            userInfo: userInfoRecords.records,
+            conversationMessage: conversation,
           });
-        }
+          setTemporaryGoal(generatedGoal);
+        });
       }
     }
   }, [conversation.length]);
@@ -619,6 +647,9 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
   }: StartConversationProps) => {
     if (!settings.languageCode) throw new Error("Language is not set | startConversation");
 
+    setTemporaryGoal(null);
+    setIsProcessingGoal(false);
+
     setAnalyzeResultInstruction(analyzeResultAiInstruction || "");
     if (analyzeResultAiInstruction)
       console.log("analyzeResultAiInstruction", analyzeResultAiInstruction);
@@ -758,6 +789,9 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     isVolumeOn,
     toggleVolume,
     setIsStarted,
+    isProcessingGoal,
+    temporaryGoal,
+    confirmGoal,
   };
 }
 

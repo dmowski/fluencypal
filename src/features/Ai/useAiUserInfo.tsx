@@ -15,7 +15,9 @@ dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
 interface AiUserInfoContextType {
-  updateUserInfo: (conversation: ChatMessage[]) => Promise<void>;
+  updateUserInfo: (conversation: ChatMessage[]) => Promise<{
+    records: AiUserInfoRecord[];
+  }>;
   userInfo: AiUserInfo | null;
   generateFirstMessageText: () => Promise<{ firstMessage: string; potentialTopics: string }>;
 }
@@ -92,6 +94,10 @@ If not relevant information found, return empty array.`;
       },
       { merge: true }
     );
+
+    return {
+      records: updatedRecords,
+    };
   };
 
   const addFirstConversationMessage = async (message: string) => {

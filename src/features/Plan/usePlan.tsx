@@ -18,7 +18,7 @@ interface GenerateGoalProps {
 interface PlanContextType {
   goals: GoalPlan[];
   loading: boolean;
-  addGoalPlan: (goalPlan: GoalPlan) => void;
+  addGoalPlan: (goalPlan: GoalPlan) => Promise<void>;
   latestGoal: GoalPlan | null;
   deleteGoals: () => void;
   generateGoal: (input: GenerateGoalProps) => Promise<GoalPlan>;
