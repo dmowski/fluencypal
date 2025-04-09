@@ -194,10 +194,8 @@ function useProvideAiConversation(): AiConversationContextType {
       conversation.length === 50
     ) {
       if (currentMode === "goal") {
-        // todo: block ability to response, show progress bard
-
-        console.log("❌ Finishing goal conversation....");
         setIsProcessingGoal(true);
+        console.log("❌ Finishing goal conversation....");
         aiUserInfo.updateUserInfo(conversation).then(async (userInfoRecords) => {
           console.log("Triggering wrap up instruction...");
           const newInstruction = `Let's wrap up our conversation. Tell student that goal is briefly set. And if they want to continue talking, we can do it. But for now, it's time to grow and expand more interesting modes on FluencyPal.
@@ -408,7 +406,6 @@ Your homework is to repeat the following text:
         ...baseConfig,
         voice: "shimmer",
         model: MODELS.SMALL_CONVERSATION,
-        // todo: Ensure not to help user, but extract info
         initInstruction: `You are an ${fullLanguageName} teacher.  Your name is "Shimmer". It's first lesson with user.
 Do not teach or explain rules—just talk. You can use user's languages as well (${usersSystemLanguages.join(", ")})
 You should be friendly and engaging.
@@ -457,6 +454,7 @@ To answer this question, press on button "Record message", and tell me about you
 }
 
 Try to move one topic per time. Focus only on users' goals from learning ${fullLanguageName}. Use ${fullLanguageName} language during conversation.
+Don't try to explain rules or grammar. Your goal is to extract information about user and his goals.
 `,
       };
     }

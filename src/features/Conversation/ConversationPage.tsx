@@ -119,6 +119,9 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           recordingMilliSeconds={recorder.recordingMilliSeconds}
           recordVisualizerComponent={recorder.visualizerComponent}
           recordingError={recorder.error}
+          isProcessingGoal={aiConversation.isProcessingGoal}
+          temporaryGoal={aiConversation.temporaryGoal}
+          confirmGoal={aiConversation.confirmGoal}
         />
       ) : (
         <Dashboard rolePlayInfo={rolePlayInfo} />

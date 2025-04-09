@@ -11,6 +11,7 @@ import { useAiConversation } from "./useAiConversation";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { useSettings } from "../Settings/useSettings";
 import { useTextAi } from "../Ai/useTextAi";
+import { GoalPlan } from "../Plan/types";
 
 interface ConversationPageTestProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -129,6 +130,14 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     }
   };
 
+  const testGoal: GoalPlan = {
+    id: "",
+    title: "",
+    elements: [],
+    createdAt: 0,
+    languageCode: "en",
+  };
+
   return (
     <Stack>
       <ConversationCanvas2
@@ -149,10 +158,13 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         stopRecording={async () => {}}
         cancelRecording={async () => {}}
         isTranscribing={false}
-        transcriptMessage="Nice to see you!"
+        isProcessingGoal={true}
+        transcriptMessage=""
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
+        temporaryGoal={testGoal}
+        confirmGoal={async () => {}}
       />
     </Stack>
   );

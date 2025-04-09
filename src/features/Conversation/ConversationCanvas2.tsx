@@ -17,6 +17,7 @@ import { StringDiff } from "react-string-diff";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useLingui } from "@lingui/react";
 import { useSound } from "../Audio/useSound";
+import { GoalElementInfo, GoalPlan } from "../Plan/types";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -53,6 +54,9 @@ interface ConversationCanvasProps {
   recordingMilliSeconds: number;
   recordVisualizerComponent: JSX.Element | null;
   isMuted?: boolean;
+  isProcessingGoal: boolean;
+  temporaryGoal: GoalPlan | null;
+  confirmGoal: (isConfirm: boolean) => Promise<void>;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   conversation,
@@ -76,6 +80,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   recordingError,
   conversationId,
   isMuted,
+  isProcessingGoal,
+  temporaryGoal,
+  confirmGoal,
 }) => {
   const { i18n } = useLingui();
 
@@ -612,6 +619,37 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       </Button>
                     )}
 
+                    {isProcessingGoal && !temporaryGoal && (
+                      <Stack>
+                        <Typography className="loading-shimmer">Preparing Goal</Typography>
+                      </Stack>
+                    )}
+
+                    {isProcessingGoal && temporaryGoal && (
+                      <Stack
+                        sx={{
+                          flexDirection: "row",
+                          width: "100%",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          gap: "10px",
+                        }}
+                      >
+                        <Button
+                          onClick={() => confirmGoal(true)}
+                          color="info"
+                          size="large"
+                          variant="contained"
+                          startIcon={<Check />}
+                        >
+                          Done
+                        </Button>
+                        <IconButton onClick={() => confirmGoal(false)}>
+                          <Trash2 size={"14px"} />
+                        </IconButton>
+                      </Stack>
+                    )}
+
                     {transcriptMessage &&
                       !isRecording &&
                       !isAnalyzingResponse &&
@@ -657,19 +695,22 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       </Button>
                     )}
 
-                    {!transcriptMessage && !isRecording && !isAnalyzingResponse && (
-                      <Button
-                        startIcon={<Mic />}
-                        size="large"
-                        variant="contained"
-                        sx={{
-                          minWidth: "200px",
-                        }}
-                        onClick={async () => startRecording()}
-                      >
-                        {i18n._("Record Message")}
-                      </Button>
-                    )}
+                    {!transcriptMessage &&
+                      !isRecording &&
+                      !isAnalyzingResponse &&
+                      !isProcessingGoal && (
+                        <Button
+                          startIcon={<Mic />}
+                          size="large"
+                          variant="contained"
+                          sx={{
+                            minWidth: "200px",
+                          }}
+                          onClick={async () => startRecording()}
+                        >
+                          {i18n._("Record Message")}
+                        </Button>
+                      )}
 
                     {transcriptMessage &&
                       !isRecording &&
