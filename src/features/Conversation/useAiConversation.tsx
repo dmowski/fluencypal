@@ -348,7 +348,7 @@ Your homework is to repeat the following text:
 
   const getAiRtcConfig = async (
     mode: ConversationMode,
-    goal?: GoalElementInfo
+    goal?: GoalElementInfo | null
   ): Promise<AiRtcConfig> => {
     const baseConfig = await getBaseRtcConfig();
 
