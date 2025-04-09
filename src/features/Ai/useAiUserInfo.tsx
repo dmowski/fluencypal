@@ -19,7 +19,9 @@ interface AiUserInfoContextType {
     records: AiUserInfoRecord[];
   }>;
   userInfo: AiUserInfo | null;
-  generateFirstMessageText: () => Promise<{ firstMessage: string; potentialTopics: string }>;
+  generateFirstMessageText: (
+    topic?: string
+  ) => Promise<{ firstMessage: string; potentialTopics: string }>;
 }
 
 const AiUserInfoContext = createContext<AiUserInfoContextType | null>(null);
@@ -139,13 +141,15 @@ If not relevant information found, return empty array.`;
     return lastMessagesText;
   };
 
-  const generateFirstMessageText = async () => {
+  const generateFirstMessageText = async (topic?: string) => {
     const infoNotes = userInfo?.records || [];
 
     const firstMessages: string[] = await getLastFirstMessage(4);
 
-    const potentialTopicsToDiscuss = await textAi.generate({
-      systemMessage: `Your are tool to guess the users interests. User will provide list of their interests.
+    const potentialTopicsToDiscuss =
+      topic ||
+      (await textAi.generate({
+        systemMessage: `Your are tool to guess the users interests. User will provide list of their interests.
 Your task is to guess the most interesting topic for the user based on their interests.
 Example of input: Football, Learning languages.
 Example of output: Traveling, Events, Concerts
@@ -153,13 +157,13 @@ Example of output: Traveling, Events, Concerts
 Return list of 6 topics comma separated. Do not add any other wrapper text. 
 Important that your guess should be not straightforward, but interesting and fun.
 `,
-      userMessage: `
+        userMessage: `
 ### User Info (Use this to guess the interest):
 ${infoNotes.map((note) => `- ${note}`).join("\n")}
 `,
-      model: "gpt-4o",
-      cache: false,
-    });
+        model: "gpt-4o",
+        cache: false,
+      }));
 
     const systemMessage = `
 You're Fluency Pal's conversational AI.

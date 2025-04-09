@@ -391,12 +391,47 @@ Your homework is to repeat the following text:
       };
     }
 
+    if (mode === "goal-talk" && !goal) {
+      throw new Error("Goal is not set for goal-talk mode");
+    }
+
     if (mode === "goal-talk") {
-      // todo: implement
+      let startFirstMessage = `"${firstAiMessage[languageCode]}"`;
+
+      let openerInfoPrompt = "Ask the student to describe their day.";
+
+      setIsInitializing(`Analyzing Goal Lesson...`);
+      const goalTitle = goal?.goalPlan.title || "";
+      const elementTitle = goal?.goalElement.title || "";
+      const elementDescription = goal?.goalElement.description || "";
+      const goalInfo = `${goalTitle} - ${elementTitle} - ${elementDescription}`;
+
+      const { firstMessage } = await aiUserInfo.generateFirstMessageText(goalInfo);
+
+      firstPotentialBotMessage.current = firstMessage;
+      startFirstMessage = `"${firstMessage}".`;
+
+      openerInfoPrompt = userInfo ? `Info about Student : ${userInfo}.` : "";
+
+      setIsInitializing(`Starting conversation...`);
+
       return {
         ...baseConfig,
-        model: MODELS.SMALL_CONVERSATION,
-        initInstruction: ``,
+        model: aiModal,
+        voice: "shimmer",
+        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Shimmer". Your role is to make user talks on a topic: ${elementTitle} - ${elementDescription}.
+${openerInfoPrompt}
+Do not teach or explain rules—just talk.
+You should be friendly and engaging.
+Don't make user feel like they are being tested and feel stupid.
+If you feel that the user is struggling, you can propose a new part of the topic.
+Engage in a natural conversation without making it feel like a lesson.
+
+Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
+Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
+
+Start the conversation with message like this: ${startFirstMessage}
+    `,
       };
     }
 
