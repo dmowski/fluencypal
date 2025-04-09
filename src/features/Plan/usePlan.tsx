@@ -188,6 +188,9 @@ ${input.conversationMessage.map((message) => {
   };
 
   const generateGoal = async (input: GenerateGoalProps): Promise<GoalPlan> => {
+    if (!collectionRef) {
+      throw new Error("collectionRef ref is not defined");
+    }
     setIsCraftingGoal(true);
     setIsCraftingError(false);
 
@@ -195,9 +198,10 @@ ${input.conversationMessage.map((message) => {
       generateElements(input),
       generateGoalTitle(input),
     ]);
-    const randomId = Math.random().toString(36).substring(2, 15);
+    const docRef = doc(collectionRef);
+    const goalPlanId = docRef.id;
     const goalPlan: GoalPlan = {
-      id: randomId,
+      id: goalPlanId,
       title: title,
       elements: elements,
       createdAt: Date.now(),
