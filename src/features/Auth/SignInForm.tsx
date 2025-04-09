@@ -10,6 +10,7 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
+import inAppSpy from "inapp-spy";
 
 export const isInAppBrowser = (ua: string): boolean => {
   return (
@@ -53,7 +54,14 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
       const isTelegramWebView = getIsTelegram();
       const supportsWebRTC = !!window.RTCPeerConnection;
       const ua = navigator.userAgent.toLowerCase();
-      setAgent(ua + " - supportsWebRTC:" + supportsWebRTC ? "TRUE" : "FALSE");
+      const result = inAppSpy();
+      setAgent(
+        ua +
+          " | supportsWebRTC:" +
+          (supportsWebRTC ? "TRUE" : "FALSE") +
+          "| INFO" +
+          JSON.stringify(result)
+      );
       setInApp(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos || isInAppBrowser(ua));
       setIsTelegram(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos);
       setIsAndroid(isTelegramWebView.isTgAndroid || ua.includes("android"));
