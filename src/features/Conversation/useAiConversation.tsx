@@ -113,6 +113,10 @@ function useProvideAiConversation(): AiConversationContextType {
       setTemporaryGoal(null);
       await closeConversation();
       setIsProcessingGoal(false);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     } else {
       setIsProcessingGoal(false);
       setTemporaryGoal(null);

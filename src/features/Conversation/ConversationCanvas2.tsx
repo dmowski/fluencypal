@@ -621,32 +621,63 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
                     {isProcessingGoal && !temporaryGoal && (
                       <Stack>
-                        <Typography className="loading-shimmer">Preparing Goal</Typography>
+                        <Typography className="loading-shimmer">
+                          {i18n._(`Preparing Goal`)}
+                        </Typography>
                       </Stack>
                     )}
 
                     {isProcessingGoal && temporaryGoal && (
                       <Stack
                         sx={{
-                          flexDirection: "row",
+                          flexDirection: "column",
                           width: "100%",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          gap: "10px",
+                          gap: "20px",
                         }}
                       >
-                        <Button
-                          onClick={() => confirmGoal(true)}
-                          color="info"
-                          size="large"
-                          variant="contained"
-                          startIcon={<Check />}
+                        <Stack
+                          sx={{
+                            gap: "10px",
+                            alignItems: "flex-start",
+                          }}
                         >
-                          Done
-                        </Button>
-                        <IconButton onClick={() => confirmGoal(false)}>
-                          <Trash2 size={"14px"} />
-                        </IconButton>
+                          <Stack>
+                            <Typography variant="caption">{i18n._(`Goal is created`)}:</Typography>
+                            <Typography variant="h5" className="decor-text">
+                              {temporaryGoal.title}
+                            </Typography>
+                            <Typography
+                              variant="caption"
+                              sx={{
+                                color: "#b6d5f3",
+                              }}
+                            >
+                              {i18n._(`Lessons added:`)} {temporaryGoal.elements.length}
+                            </Typography>
+                          </Stack>
+                        </Stack>
+
+                        <Stack
+                          sx={{
+                            width: "100%",
+                            gap: "10px",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <Button
+                            onClick={() => confirmGoal(true)}
+                            color="info"
+                            size="large"
+                            variant="contained"
+                          >
+                            {i18n._("Open plan")}
+                          </Button>
+                          <IconButton onClick={() => confirmGoal(false)}>
+                            <Trash2 size={"14px"} />
+                          </IconButton>
+                        </Stack>
                       </Stack>
                     )}
 
