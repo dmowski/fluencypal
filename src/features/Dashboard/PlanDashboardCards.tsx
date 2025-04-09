@@ -1,6 +1,6 @@
 import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { BadgeCheck, CirclePlus, Flag, Loader, Trash } from "lucide-react";
+import { ArrowLeft, BadgeCheck, CirclePlus, Flag, Loader, Trash } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
@@ -15,6 +15,7 @@ import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { PlanCard } from "../Plan/PlanCard";
 import { useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { GoalCard } from "./GoalCard";
 
 const modeCardProps: Record<
   PlanElementMode,
@@ -60,28 +61,6 @@ export const PlanDashboardCards = () => {
   const startOnboarding = () => {
     aiConversation.startConversation({ mode: "goal" });
   };
-
-  const goalCard = (
-    <ConversationCard
-      title={i18n._(`Goal`)}
-      subTitle={i18n._(`Set the goal of your learning`)}
-      onClick={() => startOnboarding()}
-      startColor="#4F46E5"
-      endColor="#A78BFA"
-      bgColor="#60A5FA"
-      icon={
-        <Stack>
-          <Stack
-            style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
-            className="avatar"
-          >
-            <img src="/avatar/map.webp" alt="AI Bot" />
-          </Stack>
-        </Stack>
-      }
-      actionLabel={i18n._(`Start | 5 min`)}
-    />
-  );
 
   const startGoalElement = async (element: PlanElement) => {
     if (!plan.latestGoal) {
@@ -155,9 +134,7 @@ export const PlanDashboardCards = () => {
         <Stack
           sx={{
             borderRadius: "50%",
-            background: isGoalSet
-              ? "linear-gradient(45deg,rgb(120, 13, 220) 0%,rgb(199, 13, 236) 100%)"
-              : "linear-gradient(45deg,rgb(152, 156, 152) 0%,rgb(158, 142, 140) 100%)",
+            background: "linear-gradient(45deg,rgb(120, 13, 220) 0%,rgb(199, 13, 236) 100%)",
             height: "50px",
             width: "50px",
 
@@ -187,7 +164,7 @@ export const PlanDashboardCards = () => {
             <Typography variant="h6">
               {isGoalSet
                 ? i18n._(`Your Goal`) + ": " + plan.latestGoal?.title || "Goal"
-                : i18n._(`Your Goal | Need to set`)}
+                : i18n._(`Start your way to fluency`)}
             </Typography>
             {isGoalSet && (
               <Typography
@@ -204,10 +181,12 @@ export const PlanDashboardCards = () => {
             )}
           </Stack>
           <Box>
-            <IconButton onClick={createTestPlan} disabled={plan.isCraftingGoal}>
-              <CirclePlus />
-            </IconButton>
-            {isGoalSet && (
+            {userInfo.userInfo?.records.length && (
+              <IconButton onClick={createTestPlan} disabled={plan.isCraftingGoal}>
+                <CirclePlus />
+              </IconButton>
+            )}
+            {isGoalSet && userInfo.userInfo?.records.length && (
               <IconButton onClick={deletePlans} disabled={plan.isCraftingGoal}>
                 <Trash />
               </IconButton>
@@ -259,7 +238,34 @@ export const PlanDashboardCards = () => {
             })}
           </>
         ) : (
-          goalCard
+          <>
+            <GoalCard startOnboarding={startOnboarding} />
+            <Stack
+              sx={{
+                alignItems: "center",
+                justifyContent: "flex-start",
+                boxSizing: "border-box",
+                width: "100%",
+                height: "100%",
+                flexDirection: "row",
+                gap: "15px",
+                "@media (max-width: 750px)": {
+                  display: "none",
+                },
+              }}
+            >
+              <ArrowLeft />
+              <Typography
+                className="decor-text"
+                sx={{
+                  fontSize: "22px",
+                  paddingTop: "5px",
+                }}
+              >
+                {i18n._(`Set your goal and start learning!`)}
+              </Typography>
+            </Stack>
+          </>
         )}
       </Stack>
     </DashboardCard>

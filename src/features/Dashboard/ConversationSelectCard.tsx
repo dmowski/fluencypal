@@ -10,9 +10,12 @@ import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { useState } from "react";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { Lock } from "lucide-react";
 import { ConversationCard } from "./ConversationCard";
 import { auth } from "firebase-admin";
 import { useAuth } from "../Auth/useAuth";
+import { usePlan } from "../Plan/usePlan";
+import { GoalCard } from "./GoalCard";
 
 export const ConversationSelectCard = () => {
   const aiConversation = useAiConversation();
@@ -22,6 +25,8 @@ export const ConversationSelectCard = () => {
   const { i18n } = useLingui();
   const settings = useSettings();
   const userInfo = useAiUserInfo();
+  const plan = usePlan();
+  const isGoalSet = !!plan.latestGoal?.elements?.length;
 
   const [isShowOnboardingConfirmation, setIsShowOnboardingConfirmation] = useState(false);
 
@@ -30,28 +35,7 @@ export const ConversationSelectCard = () => {
     setIsShowOnboardingConfirmation(false);
   };
 
-  const isPassOnboarding = !!userInfo.userInfo?.records?.length;
-  const goalCard = (
-    <ConversationCard
-      title={i18n._(`Goal`)}
-      subTitle={i18n._(`Set the goal of your learning`)}
-      onClick={() => startOnboarding()}
-      startColor="#4F46E5"
-      endColor="#A78BFA"
-      bgColor="#60A5FA"
-      icon={
-        <Stack>
-          <Stack
-            style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
-            className="avatar"
-          >
-            <img src="/avatar/map.webp" alt="AI Bot" />
-          </Stack>
-        </Stack>
-      }
-      actionLabel={i18n._(`Start | 5 min`)}
-    />
-  );
+  const isPassOnboarding = isGoalSet;
 
   return (
     <DashboardCard>
@@ -87,7 +71,7 @@ export const ConversationSelectCard = () => {
                   width: "100%",
                 }}
               >
-                {goalCard}
+                <GoalCard startOnboarding={startOnboarding} />
               </Stack>
 
               <Stack
@@ -141,7 +125,9 @@ export const ConversationSelectCard = () => {
         <Stack
           sx={{
             borderRadius: "50%",
-            background: "linear-gradient(45deg,rgb(25, 78, 142) 0%,rgb(109, 209, 151) 100%)",
+            background: isGoalSet
+              ? "linear-gradient(45deg,rgb(25, 78, 142) 0%,rgb(109, 209, 151) 100%)"
+              : "linear-gradient(45deg,rgb(152, 156, 152) 0%,rgb(158, 142, 140) 100%)",
             height: "50px",
             width: "50px",
 
@@ -150,7 +136,7 @@ export const ConversationSelectCard = () => {
             alignItems: "center",
           }}
         >
-          <GraduationCap size={"25px"} />
+          {isGoalSet ? <GraduationCap size={"25px"} /> : <Lock size={"25px"} />}
         </Stack>
         <Stack
           sx={{
@@ -160,21 +146,6 @@ export const ConversationSelectCard = () => {
           }}
         >
           <Typography variant="h6">{i18n._(`Practice`)}</Typography>
-          <Stack
-            sx={{
-              flexDirection: "row",
-              gap: "5px",
-              alignItems: "center",
-            }}
-          >
-            <Typography variant="h6">| {settings.fullLanguageName}</Typography>
-            <LanguageSwitcher
-              size="small"
-              isAuth={auth.isAuthorized}
-              langToLearn={settings.languageCode || "en"}
-              setLanguageToLearn={settings.setLanguage}
-            />
-          </Stack>
         </Stack>
       </Stack>
       <Stack
@@ -193,8 +164,6 @@ export const ConversationSelectCard = () => {
           },
         }}
       >
-        {goalCard}
-
         <ConversationCard
           title={i18n._(`Conversation`)}
           subTitle={i18n._(`Talk to the AI and it will respond to you`)}

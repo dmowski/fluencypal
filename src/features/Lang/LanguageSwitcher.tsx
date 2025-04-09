@@ -44,7 +44,7 @@ const parseLangFromUrl = (pathname: string) => {
 };
 
 interface LanguageSwitcherProps {
-  size?: "small" | "large";
+  size?: "small" | "large" | "button";
   isAuth: boolean;
   langToLearn?: SupportedLanguage;
   setLanguageToLearn: (lang: SupportedLanguage) => void;
@@ -138,14 +138,36 @@ export function LanguageSwitcher({
           {supportedLangCodeLabel}
         </Button>
       ) : (
-        <IconButton onClick={onOpenModal} title="Select language" aria-label="Select language">
-          <Globe
-            size={size == "small" ? "18px" : "22px"}
-            style={{
-              opacity: 0.8,
-            }}
-          />
-        </IconButton>
+        <>
+          {size === "button" ? (
+            <>
+              <Button
+                sx={{
+                  color: "#fff",
+                }}
+                onClick={onOpenModal}
+                startIcon={<Globe size="20px" />}
+              >
+                <Typography
+                  sx={{
+                    textTransform: "none",
+                  }}
+                >
+                  {fullEnglishLanguageName[langToLearn || "en"]}
+                </Typography>
+              </Button>
+            </>
+          ) : (
+            <IconButton onClick={onOpenModal} title="Select language" aria-label="Select language">
+              <Globe
+                size={size == "small" ? "18px" : "22px"}
+                style={{
+                  opacity: 0.8,
+                }}
+              />
+            </IconButton>
+          )}
+        </>
       )}
 
       <CustomModal

@@ -40,9 +40,9 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           },
         }}
       >
-        <ConversationSelectCard />
-
         <PlanDashboardCards />
+
+        <ConversationSelectCard />
 
         <DashboardCard>
           <UsageStatsCards />

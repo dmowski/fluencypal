@@ -39,6 +39,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
+import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
+import { useSettings } from "../Settings/useSettings";
 
 export type HeaderMode = "landing" | "practice";
 
@@ -70,6 +72,7 @@ export function HeaderComponent({
 }: HeaderProps) {
   const auth = useAuth();
   const pathname = usePathname();
+  const settings = useSettings();
 
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
   const [isHighlightJoin, setIsHighlightJoin] = useState(false);
@@ -362,6 +365,22 @@ export function HeaderComponent({
             >
               {auth.isAuthorized ? (
                 <>
+                  {!isActiveConversation && (
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        gap: "5px",
+                        alignItems: "center",
+                      }}
+                    >
+                      <LanguageSwitcher
+                        size="button"
+                        isAuth={auth.isAuthorized}
+                        langToLearn={settings.languageCode || "en"}
+                        setLanguageToLearn={settings.setLanguage}
+                      />
+                    </Stack>
+                  )}
                   <Button
                     sx={{
                       color: usage.loading
