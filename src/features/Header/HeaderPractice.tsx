@@ -28,7 +28,7 @@ import { useLingui } from "@lingui/react";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { useSettings } from "../Settings/useSettings";
 
-export function HeaderComponentPractice({ lang }: { lang: SupportedLanguage }) {
+export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
   const pathname = usePathname();
   const settings = useSettings();
