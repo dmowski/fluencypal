@@ -45,19 +45,20 @@ export const PlanCard = ({
         gap: "0px",
         alignItems: "flex-start",
         justifyContent: "space-between",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
+        border: "1px solid rgba(255, 255, 255, 0.08)",
         position: "relative",
         overflow: "hidden",
-        transition: "transform 0.3s ease",
+
         cursor: "pointer",
         height: "200px",
         opacity: 0,
-        animation: `fadeInScale  1.6s ease ${delayToShow}ms forwards`,
+        transition: "transform 0.3s ease",
+        transform: "scale(1)",
+        animation: `fadeInOpacity  1.6s ease ${delayToShow}ms forwards`,
         "@media (max-width: 750px)": {
           height: "230px",
         },
 
-        // allow text selection
         userSelect: "text",
 
         color: "#fff",
