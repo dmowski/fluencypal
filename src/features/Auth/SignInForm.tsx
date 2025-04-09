@@ -251,10 +251,15 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
               <Typography
                 variant="caption"
                 sx={{
-                  maxWidth: "300px",
+                  width: "100dvw",
                   paddingTop: "30px",
+                  position: "fixed",
+                  bottom: 0,
+                  left: 0,
+                  lineHeight: "1.1",
+                  opacity: 0.4,
                 }}
-                align="center"
+                align="left"
               >
                 <small>{agent}</small>
               </Typography>
