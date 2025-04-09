@@ -132,8 +132,30 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
 
   const testGoal: GoalPlan = {
     id: "",
-    title: "",
-    elements: [],
+    title: "Improve Spontaneous Speaking",
+    elements: [
+      {
+        id: "1",
+        title: "Public speaking",
+        subTitle: "",
+        mode: "conversation",
+        description: "",
+        startCount: 0,
+        preparingInstructionForAi: "",
+        instructionForAi: "",
+      },
+
+      {
+        id: "1",
+        title: "Software Development",
+        subTitle: "",
+        mode: "conversation",
+        description: "",
+        startCount: 0,
+        preparingInstructionForAi: "",
+        instructionForAi: "",
+      },
+    ],
     createdAt: 0,
     languageCode: "en",
   };
