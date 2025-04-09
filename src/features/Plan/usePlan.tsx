@@ -146,7 +146,7 @@ ${input.conversationMessage.map((message) => {
       model: "gpt-4o",
     });
 
-    const parsedElements = JSON.parse(elements);
+    const parsedElements = JSON.parse(elements) as AiGeneratedElement[];
 
     interface AiGeneratedElement {
       type: string;
@@ -154,9 +154,7 @@ ${input.conversationMessage.map((message) => {
       description: string;
     }
 
-    const formattedElements: PlanElement[] = parsedElements.map((element: AiGeneratedElement) => {
-      const randomId = Math.random().toString(36).substring(2, 15);
-
+    const formattedElements: PlanElement[] = parsedElements.map((element, index) => {
       const type = `${element?.type || ""}`.toLowerCase();
       const elementMode: PlanElementMode = type.includes("conversation")
         ? "conversation"
@@ -167,6 +165,8 @@ ${input.conversationMessage.map((message) => {
             : type.includes("rule")
               ? "rule"
               : "conversation";
+
+      const randomId = `${index}_${elementMode}_${Math.random().toString(36).substring(2, 15)}`;
 
       const description = `${element?.description || ""}`;
       const title = `${element?.title || ""}`;
