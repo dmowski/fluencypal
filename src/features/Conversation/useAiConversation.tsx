@@ -187,7 +187,7 @@ function useProvideAiConversation(): AiConversationContextType {
       }
     }
 
-    if (conversation.length === 6 && goalInfo) {
+    if (conversation.length === 4 && goalInfo) {
       plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
     }
 
