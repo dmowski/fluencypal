@@ -286,6 +286,7 @@ export const PlanDashboardCards = () => {
               return (
                 <PlanCard
                   key={planElement.id}
+                  delayToShow={index * 80}
                   title={index + 1 + ". " + planElement.title}
                   subTitle={modeLabels[planElement.mode]}
                   description={planElement.description}

@@ -15,6 +15,7 @@ interface PlanCardProps {
   icon: ReactNode;
   actionLabel: string;
   progressPercent: number;
+  delayToShow: number;
 }
 
 export const PlanCard = ({
@@ -29,6 +30,7 @@ export const PlanCard = ({
   icon,
   actionLabel,
   href,
+  delayToShow,
 }: PlanCardProps) => {
   return (
     <Stack
@@ -49,6 +51,8 @@ export const PlanCard = ({
         transition: "transform 0.3s ease",
         cursor: "pointer",
         height: "200px",
+        opacity: 0,
+        animation: `fadeInScale  1.6s ease ${delayToShow}ms forwards`,
         "@media (max-width: 750px)": {
           height: "230px",
         },
@@ -57,7 +61,6 @@ export const PlanCard = ({
         userSelect: "text",
 
         color: "#fff",
-        opacity: 1,
 
         ".mini-card": {
           position: "absolute",
