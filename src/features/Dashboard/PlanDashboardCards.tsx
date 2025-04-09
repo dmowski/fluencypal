@@ -163,7 +163,7 @@ export const PlanDashboardCards = () => {
           >
             <Typography variant="h6">
               {isGoalSet
-                ? i18n._(`Your Goal`) + ": " + plan.latestGoal?.title || "Goal"
+                ? plan.latestGoal?.title || i18n._(`Goal`)
                 : i18n._(`Start your way to fluency`)}
             </Typography>
             {isGoalSet && (
