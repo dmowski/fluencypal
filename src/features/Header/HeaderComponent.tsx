@@ -412,19 +412,7 @@ export function HeaderComponent({
                   </IconButton>
                 </>
               ) : (
-                <>
-                  <Button
-                    href={`${getUrlStart(lang)}practice`}
-                    onClick={(e) => navigateTo(`${getUrlStart(lang)}practice`, e)}
-                    variant={isHighlightJoin ? "contained" : "outlined"}
-                    color="info"
-                    sx={{
-                      minWidth: "max-content",
-                    }}
-                  >
-                    {signInTitle}
-                  </Button>
-                </>
+                <></>
               )}
             </Stack>
           )}
