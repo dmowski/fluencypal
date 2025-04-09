@@ -180,13 +180,14 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         stopRecording={async () => {}}
         cancelRecording={async () => {}}
         isTranscribing={false}
-        isProcessingGoal={true}
         transcriptMessage=""
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
-        temporaryGoal={testGoal}
+        isProcessingGoal={false}
+        temporaryGoal={null} //testGoal}
         confirmGoal={async () => {}}
+        goalSettingProgress={12}
       />
     </Stack>
   );

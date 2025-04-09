@@ -122,6 +122,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           isProcessingGoal={aiConversation.isProcessingGoal}
           temporaryGoal={aiConversation.temporaryGoal}
           confirmGoal={aiConversation.confirmGoal}
+          goalSettingProgress={aiConversation.goalSettingProgress}
         />
       ) : (
         <Dashboard rolePlayInfo={rolePlayInfo} />

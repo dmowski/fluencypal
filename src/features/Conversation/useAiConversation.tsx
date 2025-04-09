@@ -72,6 +72,7 @@ interface AiConversationContextType {
   isProcessingGoal: boolean;
   confirmGoal: (isConfirm: boolean) => Promise<void>;
   temporaryGoal: GoalPlan | null;
+  goalSettingProgress: number;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -165,6 +166,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isUserSpeaking, setIsUserSpeaking] = useState(false);
   const tasks = useTasks();
   const plan = usePlan();
+  const [goalSettingProgress, setGoalSettingProgress] = useState(0);
 
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
   const communicatorRef = useRef(communicator);
@@ -191,8 +193,15 @@ function useProvideAiConversation(): AiConversationContextType {
       plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
     }
 
+    if (currentMode === "goal") {
+      const messageCount = Math.max(conversation.length - 1, 0);
+      const messagesToProcess = 8 - 1;
+      const progress = messageCount / messagesToProcess;
+      setGoalSettingProgress(Math.max(Math.round(Math.min(progress * 100, 100)), 0));
+    }
+
     if (
-      conversation.length === 10 ||
+      conversation.length === 8 ||
       conversation.length === 20 ||
       conversation.length === 40 ||
       conversation.length === 50
@@ -210,7 +219,7 @@ Tell user something like "Hmm, You know what, I think I briefly got what tou wan
           await sleep(5000);
           console.log("❌ Triggering User message...");
           const userMessageFinish = `Tell me last thing about my goal.
-Start your message with, ${settings.languageCode !== "en" ? `(use ${fullLanguageName} language)` : ""} "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}"`;
+Start your message with (Use the same language as in conversation): "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}" (Use the same language as in conversation)`;
           communicatorRef.current?.addUserChatMessage(userMessageFinish);
           await sleep(1000);
           console.log("❌  Triggering AI response...");
@@ -696,6 +705,7 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
     if (!settings.languageCode) throw new Error("Language is not set | startConversation");
 
     setTemporaryGoal(null);
+    setGoalSettingProgress(0);
     setIsProcessingGoal(false);
 
     setAnalyzeResultInstruction(analyzeResultAiInstruction || "");
@@ -840,6 +850,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     isProcessingGoal,
     temporaryGoal,
     confirmGoal,
+    goalSettingProgress,
   };
 }
 

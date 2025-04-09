@@ -57,6 +57,7 @@ interface ConversationCanvasProps {
   isProcessingGoal: boolean;
   temporaryGoal: GoalPlan | null;
   confirmGoal: (isConfirm: boolean) => Promise<void>;
+  goalSettingProgress: number;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   conversation,
@@ -83,6 +84,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isProcessingGoal,
   temporaryGoal,
   confirmGoal,
+  goalSettingProgress,
 }) => {
   const { i18n } = useLingui();
 
@@ -741,6 +743,16 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         >
                           {i18n._("Record Message")}
                         </Button>
+                      )}
+
+                    {!!goalSettingProgress &&
+                      !transcriptMessage &&
+                      !isRecording &&
+                      !isAnalyzingResponse &&
+                      !isProcessingGoal && (
+                        <Typography variant="caption" sx={{ opacity: 0.8 }}>
+                          {i18n._("Goal")}: {goalSettingProgress}%
+                        </Typography>
                       )}
 
                     {transcriptMessage &&
