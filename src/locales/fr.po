@@ -13,23 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:151
-#. js-lingui-explicit-id
-msgid "Are you sure you want to delete your goal? This action cannot be undone."
-msgstr ""
-"Êtes-vous sûr de vouloir supprimer votre objectif? Cette action ne peut pas "
-"être annulée."
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:173
-#. js-lingui-explicit-id
-msgid "Rule"
-msgstr "Règle"
-
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:97
 #: src/features/Header/HeaderStatic.tsx:12
-#: src/features/Header/HeaderPractice.tsx:13
 #. js-lingui-explicit-id
 msgid "Contacts"
 msgstr "Contacts"
@@ -42,7 +29,6 @@ msgstr "Contactez le FluencyPal pour toute demande, support ou retour d'expérie
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/HeaderStatic.tsx:10
-#: src/features/Header/HeaderPractice.tsx:11
 #: src/features/Dashboard/ConversationSelectCard.tsx:148
 #. js-lingui-explicit-id
 msgid "Practice"
@@ -398,13 +384,13 @@ msgid "No conversations yet"
 msgstr "Aucune conversation pour le moment"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:262
+#: src/features/Conversation/ConversationCanvas2.tsx:264
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Enseignant:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:262
+#: src/features/Conversation/ConversationCanvas2.tsx:264
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Vous:"
@@ -675,7 +661,6 @@ msgstr ""
 
 #: src/features/Usage/PaymentModal.tsx:544
 #: src/features/Header/HeaderStatic.tsx:15
-#: src/features/Header/HeaderPractice.tsx:16
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "Équilibre"
@@ -1841,6 +1826,7 @@ msgstr "Autres langues :"
 #: src/features/Landing/WelcomeScreen.tsx:143
 #: src/features/Dashboard/PlanDashboardCards.tsx:218
 #: src/features/Dashboard/GoalCard.tsx:12
+#: src/features/Conversation/ConversationCanvas2.tsx:754
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Objectif"
@@ -2372,14 +2358,12 @@ msgstr "Rôle-Play"
 
 #: src/features/Landing/Footer.tsx:84
 #: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Header/HeaderPractice.tsx:19
 #. js-lingui-explicit-id
 msgid "Blog"
 msgstr "Blog"
 
 #: src/features/Landing/Footer.tsx:87
 #: src/features/Header/HeaderStatic.tsx:13
-#: src/features/Header/HeaderPractice.tsx:14
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "Prix"
@@ -2937,35 +2921,33 @@ msgid "Delete account"
 msgstr "Supprimer le compte"
 
 #: src/features/Header/HeaderStatic.tsx:11
-#: src/features/Header/HeaderPractice.tsx:12
 #. js-lingui-explicit-id
 msgid "Role-Plays"
 msgstr "Jeux de rôle"
 
 #: src/features/Header/HeaderStatic.tsx:14
-#: src/features/Header/HeaderPractice.tsx:15
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "Rejoignez"
 
 #: src/features/Header/HeaderStatic.tsx:16
-#: src/features/Header/HeaderPractice.tsx:17
+#: src/features/Header/HeaderPractice.tsx:331
 #. js-lingui-explicit-id
 msgid "Need Help?"
 msgstr "Besoin d'aide ?"
 
 #: src/features/Header/HeaderStatic.tsx:17
-#: src/features/Header/HeaderPractice.tsx:18
+#: src/features/Header/HeaderPractice.tsx:345
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "Se déconnecter"
 
-#: src/features/Header/HeaderComponent.tsx:273
+#: src/features/Header/HeaderPractice.tsx:193
 #. js-lingui-explicit-id
 msgid "Finishing..."
 msgstr "En train de terminer..."
 
-#: src/features/Header/HeaderComponent.tsx:274
+#: src/features/Header/HeaderPractice.tsx:194
 #: src/features/Dashboard/WordsToLearn.tsx:88
 #: src/features/Dashboard/RulesToLearn.tsx:91
 #. js-lingui-explicit-id
@@ -3034,6 +3016,18 @@ msgstr "Vous pouvez changer la langue à tout moment"
 #. js-lingui-explicit-id
 msgid "New rule to practice."
 msgstr "Nouvelle règle à pratiquer."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:151
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete your goal? This action cannot be undone."
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer votre objectif? Cette action ne peut pas "
+"être annulée."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:173
+#. js-lingui-explicit-id
+msgid "Rule"
+msgstr "Règle"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:219
 #. js-lingui-explicit-id
@@ -3263,113 +3257,113 @@ msgstr "Veuillez rafraîchir la page et essayer une fois de plus"
 msgid "Reload page"
 msgstr "Recharger la page"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:341
+#: src/features/Conversation/ConversationCanvas2.tsx:343
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Erreur lors de l'analyse du message"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:395
+#: src/features/Conversation/ConversationCanvas2.tsx:397
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Presque correct"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:407
-#: src/features/Conversation/ConversationCanvas2.tsx:534
-#: src/features/Conversation/ConversationCanvas2.tsx:541
+#: src/features/Conversation/ConversationCanvas2.tsx:409
+#: src/features/Conversation/ConversationCanvas2.tsx:536
+#: src/features/Conversation/ConversationCanvas2.tsx:543
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Analyse en cours..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:410
+#: src/features/Conversation/ConversationCanvas2.tsx:412
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Génial !"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:433
+#: src/features/Conversation/ConversationCanvas2.tsx:435
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Votre Message"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:456
-#: src/features/Conversation/ConversationCanvas2.tsx:459
-#: src/features/Conversation/ConversationCanvas2.tsx:532
-#: src/features/Conversation/ConversationCanvas2.tsx:539
+#: src/features/Conversation/ConversationCanvas2.tsx:458
+#: src/features/Conversation/ConversationCanvas2.tsx:461
+#: src/features/Conversation/ConversationCanvas2.tsx:534
+#: src/features/Conversation/ConversationCanvas2.tsx:541
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Transcription en cours..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:493
+#: src/features/Conversation/ConversationCanvas2.tsx:495
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Corrigé"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:573
+#: src/features/Conversation/ConversationCanvas2.tsx:575
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "Nouveaux Mots à Vocabulaire:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:618
+#: src/features/Conversation/ConversationCanvas2.tsx:620
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analyser"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:625
+#: src/features/Conversation/ConversationCanvas2.tsx:627
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "Préparation de l'objectif"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:645
+#: src/features/Conversation/ConversationCanvas2.tsx:647
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "L'objectif est créé"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:655
+#: src/features/Conversation/ConversationCanvas2.tsx:657
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "Leçons ajoutées :"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:675
+#: src/features/Conversation/ConversationCanvas2.tsx:677
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "Plan ouvert"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:697
-#: src/features/Conversation/ConversationCanvas2.tsx:755
+#: src/features/Conversation/ConversationCanvas2.tsx:699
+#: src/features/Conversation/ConversationCanvas2.tsx:767
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Ré-enregistrer"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:711
+#: src/features/Conversation/ConversationCanvas2.tsx:713
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "Envoyez-le tel quel"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:711
+#: src/features/Conversation/ConversationCanvas2.tsx:713
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Envoyer"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:725
+#: src/features/Conversation/ConversationCanvas2.tsx:727
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Fait"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:742
+#: src/features/Conversation/ConversationCanvas2.tsx:744
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Enregistrez le Message"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:849
+#: src/features/Conversation/ConversationCanvas2.tsx:861
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "Vous avez un solde faible"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:851
+#: src/features/Conversation/ConversationCanvas2.tsx:863
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "Il est judicieux de recharger votre solde."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:858
+#: src/features/Conversation/ConversationCanvas2.tsx:870
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Recharge"

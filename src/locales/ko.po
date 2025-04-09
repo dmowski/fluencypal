@@ -13,21 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:151
-#. js-lingui-explicit-id
-msgid "Are you sure you want to delete your goal? This action cannot be undone."
-msgstr "정말로 목표를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:173
-#. js-lingui-explicit-id
-msgid "Rule"
-msgstr "룰"
-
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:97
 #: src/features/Header/HeaderStatic.tsx:12
-#: src/features/Header/HeaderPractice.tsx:13
 #. js-lingui-explicit-id
 msgid "Contacts"
 msgstr "연락처"
@@ -40,7 +29,6 @@ msgstr "FluencyPal에 문의, 지원 또는 피드백을 원하시면 연락해 
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
 #: src/features/Header/HeaderStatic.tsx:10
-#: src/features/Header/HeaderPractice.tsx:11
 #: src/features/Dashboard/ConversationSelectCard.tsx:148
 #. js-lingui-explicit-id
 msgid "Practice"
@@ -386,13 +374,13 @@ msgid "No conversations yet"
 msgstr "아직 대화 없음"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:262
+#: src/features/Conversation/ConversationCanvas2.tsx:264
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "교사:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:262
+#: src/features/Conversation/ConversationCanvas2.tsx:264
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "You:"
@@ -644,7 +632,6 @@ msgstr "결제는 성공적으로 이루어졌지만, 업데이트에는 몇 분
 
 #: src/features/Usage/PaymentModal.tsx:544
 #: src/features/Header/HeaderStatic.tsx:15
-#: src/features/Header/HeaderPractice.tsx:16
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "균형"
@@ -1660,6 +1647,7 @@ msgstr "다른 언어:"
 #: src/features/Landing/WelcomeScreen.tsx:143
 #: src/features/Dashboard/PlanDashboardCards.tsx:218
 #: src/features/Dashboard/GoalCard.tsx:12
+#: src/features/Conversation/ConversationCanvas2.tsx:754
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "목표"
@@ -2155,14 +2143,12 @@ msgstr "역할 놀이"
 
 #: src/features/Landing/Footer.tsx:84
 #: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Header/HeaderPractice.tsx:19
 #. js-lingui-explicit-id
 msgid "Blog"
 msgstr "블로그"
 
 #: src/features/Landing/Footer.tsx:87
 #: src/features/Header/HeaderStatic.tsx:13
-#: src/features/Header/HeaderPractice.tsx:14
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "가격"
@@ -2684,35 +2670,33 @@ msgid "Delete account"
 msgstr "계정 삭제"
 
 #: src/features/Header/HeaderStatic.tsx:11
-#: src/features/Header/HeaderPractice.tsx:12
 #. js-lingui-explicit-id
 msgid "Role-Plays"
 msgstr "역할 놀이"
 
 #: src/features/Header/HeaderStatic.tsx:14
-#: src/features/Header/HeaderPractice.tsx:15
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "가입"
 
 #: src/features/Header/HeaderStatic.tsx:16
-#: src/features/Header/HeaderPractice.tsx:17
+#: src/features/Header/HeaderPractice.tsx:331
 #. js-lingui-explicit-id
 msgid "Need Help?"
 msgstr "응급 도움이 필요하신가요?"
 
 #: src/features/Header/HeaderStatic.tsx:17
-#: src/features/Header/HeaderPractice.tsx:18
+#: src/features/Header/HeaderPractice.tsx:345
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "로그아웃"
 
-#: src/features/Header/HeaderComponent.tsx:273
+#: src/features/Header/HeaderPractice.tsx:193
 #. js-lingui-explicit-id
 msgid "Finishing..."
 msgstr "완료 중..."
 
-#: src/features/Header/HeaderComponent.tsx:274
+#: src/features/Header/HeaderPractice.tsx:194
 #: src/features/Dashboard/WordsToLearn.tsx:88
 #: src/features/Dashboard/RulesToLearn.tsx:91
 #. js-lingui-explicit-id
@@ -2783,6 +2767,16 @@ msgstr "언제든지 언어를 변경할 수 있습니다"
 #. js-lingui-explicit-id
 msgid "New rule to practice."
 msgstr "새로운 연습 규칙."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:151
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete your goal? This action cannot be undone."
+msgstr "정말로 목표를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:173
+#. js-lingui-explicit-id
+msgid "Rule"
+msgstr "룰"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:219
 #. js-lingui-explicit-id
@@ -3008,113 +3002,113 @@ msgstr "페이지를 새로고침하고 한 번 더 시도해주세요"
 msgid "Reload page"
 msgstr "페이지 새로고침"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:341
+#: src/features/Conversation/ConversationCanvas2.tsx:343
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "메시지 분석 중 오류"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:395
+#: src/features/Conversation/ConversationCanvas2.tsx:397
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "거의 맞습니다"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:407
-#: src/features/Conversation/ConversationCanvas2.tsx:534
-#: src/features/Conversation/ConversationCanvas2.tsx:541
+#: src/features/Conversation/ConversationCanvas2.tsx:409
+#: src/features/Conversation/ConversationCanvas2.tsx:536
+#: src/features/Conversation/ConversationCanvas2.tsx:543
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "분석 중..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:410
+#: src/features/Conversation/ConversationCanvas2.tsx:412
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "대박!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:433
+#: src/features/Conversation/ConversationCanvas2.tsx:435
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "당신의 메시지"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:456
-#: src/features/Conversation/ConversationCanvas2.tsx:459
-#: src/features/Conversation/ConversationCanvas2.tsx:532
-#: src/features/Conversation/ConversationCanvas2.tsx:539
+#: src/features/Conversation/ConversationCanvas2.tsx:458
+#: src/features/Conversation/ConversationCanvas2.tsx:461
+#: src/features/Conversation/ConversationCanvas2.tsx:534
+#: src/features/Conversation/ConversationCanvas2.tsx:541
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "전사 중..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:493
+#: src/features/Conversation/ConversationCanvas2.tsx:495
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "수정됨"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:573
+#: src/features/Conversation/ConversationCanvas2.tsx:575
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "새로운 단어를 어휘에 추가:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:618
+#: src/features/Conversation/ConversationCanvas2.tsx:620
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "분석 중"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:625
+#: src/features/Conversation/ConversationCanvas2.tsx:627
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "목표 설정중"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:645
+#: src/features/Conversation/ConversationCanvas2.tsx:647
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "목표가 생성되었습니다"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:655
+#: src/features/Conversation/ConversationCanvas2.tsx:657
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "추가된 수업:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:675
+#: src/features/Conversation/ConversationCanvas2.tsx:677
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "오픈 플랜"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:697
-#: src/features/Conversation/ConversationCanvas2.tsx:755
+#: src/features/Conversation/ConversationCanvas2.tsx:699
+#: src/features/Conversation/ConversationCanvas2.tsx:767
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "다시 녹음"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:711
+#: src/features/Conversation/ConversationCanvas2.tsx:713
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "그대로 보내세요"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:711
+#: src/features/Conversation/ConversationCanvas2.tsx:713
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "보내기"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:725
+#: src/features/Conversation/ConversationCanvas2.tsx:727
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "완료"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:742
+#: src/features/Conversation/ConversationCanvas2.tsx:744
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "메시지 기록"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:849
+#: src/features/Conversation/ConversationCanvas2.tsx:861
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "잔액이 부족합니다"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:851
+#: src/features/Conversation/ConversationCanvas2.tsx:863
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "당신의 잔액을 충전하는 것이 합리적입니다."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:858
+#: src/features/Conversation/ConversationCanvas2.tsx:870
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "충전"
