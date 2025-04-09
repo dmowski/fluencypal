@@ -1,49 +1,47 @@
-import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { ArrowLeft, BadgeCheck, CirclePlus, Flag, Loader, Trash } from "lucide-react";
+import { ArrowLeft, Flag, Trash } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
 import { useSettings } from "../Settings/useSettings";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
-import { ConversationCard } from "./ConversationCard";
 import { useAuth } from "../Auth/useAuth";
 import { usePlan } from "../Plan/usePlan";
 import { PlanElement, PlanElementMode } from "../Plan/types";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { PlanCard } from "../Plan/PlanCard";
-import { useState } from "react";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
+
 import { GoalCard } from "./GoalCard";
 
 const modeCardProps: Record<
   PlanElementMode,
-  { startColor: string; endColor: string; bgColor: string; imgUrl: string }
+  { startColor: string; endColor: string; bgColor: string; imgUrl: string[] }
 > = {
   conversation: {
     startColor: "#03a665",
     endColor: "#3B82F6",
     bgColor: "#A3E635",
-    imgUrl: "/avatar/girl.webp",
+    imgUrl: ["/avatar/girl.webp"],
   },
   play: {
     startColor: "#4F46E5",
     endColor: "#086787",
     bgColor: "#990000",
-    imgUrl: "/avatar/talk3.webp",
+    imgUrl: ["/avatar/talk3.webp", "/avatar/talk2.webp"],
   },
   words: {
     startColor: "#0276c4",
     endColor: "#086787",
     bgColor: "#5EEAD4",
-    imgUrl: "/avatar/words.webp",
+    imgUrl: ["/avatar/words.webp", "/avatar/words2.webp"],
   },
   rule: {
     startColor: "#9d43a3",
     endColor: "#086787",
     bgColor: "#990000",
-    imgUrl: "/avatar/book.webp",
+    imgUrl: ["/avatar/book.webp"],
   },
 };
 
@@ -283,6 +281,17 @@ export const PlanDashboardCards = () => {
               const cardInfo = modeCardProps[planElement.mode];
               const colorIndex = index % cardColors.length;
               const cardColor = cardColors[colorIndex];
+              const elementsWithSameMode =
+                plan.latestGoal?.elements.filter((element) => element.mode === planElement.mode) ||
+                [];
+              const currentElementIndex = elementsWithSameMode.findIndex(
+                (element) => element.id === planElement.id
+              );
+
+              const imageVariants = cardInfo.imgUrl;
+              const imageIndex = currentElementIndex % imageVariants.length;
+              const imageUrl = imageVariants[imageIndex];
+
               return (
                 <PlanCard
                   key={planElement.id}
@@ -298,7 +307,7 @@ export const PlanDashboardCards = () => {
                   icon={
                     <Stack>
                       <Stack className="avatar">
-                        <img src={cardInfo.imgUrl} alt="" />
+                        <img src={imageUrl} alt="" />
                       </Stack>
                     </Stack>
                   }
