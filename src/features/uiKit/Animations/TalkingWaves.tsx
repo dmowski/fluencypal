@@ -57,7 +57,7 @@ export const TalkingWaves = ({ inActive }: TalkingWavesProps) => {
       >
         <Stack
           sx={{
-            opacity: inActive ? 0.6 : 0.1,
+            opacity: inActive ? 0.5 : 0.1,
             transition: "opacity 0.3s ease",
             "@media (max-width: 900px)": {
               opacity: inActive ? 0.2 : 0.1,
@@ -84,7 +84,7 @@ export const TalkingWaves = ({ inActive }: TalkingWavesProps) => {
       >
         <Stack
           sx={{
-            opacity: inActive ? 0.6 : 0.1,
+            opacity: inActive ? 0.5 : 0.1,
             transition: "opacity 0.3s ease",
             "@media (max-width: 900px)": {
               opacity: inActive ? 0.2 : 0.1,
