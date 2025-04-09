@@ -210,7 +210,7 @@ Tell user something like "Hmm, You know what, I think I briefly got what tou wan
           await sleep(5000);
           console.log("❌ Triggering User message...");
           const userMessageFinish = `Tell me last thing about my goal.
-Start your message with, "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}"`;
+Start your message with, ${settings.languageCode !== "en" ? `(use ${fullLanguageName} language)` : ""} "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}"`;
           communicatorRef.current?.addUserChatMessage(userMessageFinish);
           await sleep(1000);
           console.log("❌  Triggering AI response...");
