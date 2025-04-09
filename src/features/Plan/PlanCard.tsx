@@ -43,11 +43,15 @@ export const PlanCard = ({
         gap: "0px",
         alignItems: "flex-start",
         justifyContent: "space-between",
-        border: "1px solid rgba(255, 255, 255, 0.0)",
+        border: "1px solid rgba(255, 255, 255, 0.1)",
         position: "relative",
         overflow: "hidden",
         transition: "transform 0.3s ease",
         cursor: "pointer",
+        height: "200px",
+        "@media (max-width: 750px)": {
+          height: "230px",
+        },
 
         // allow text selection
         userSelect: "text",
@@ -125,7 +129,7 @@ export const PlanCard = ({
             flexDirection: "row",
             gap: "8px",
             alignItems: "center",
-            padding: "70px 14px 0px 0px",
+            padding: "0px 14px 0px 0px",
             borderRadius: "8px",
             opacity: 1,
             position: "relative",
@@ -135,12 +139,13 @@ export const PlanCard = ({
           <Typography
             sx={{
               fontWeight: 400,
-              fontSize: "1.2rem",
+              fontSize: "1rem",
               borderRadius: "8px",
-              padding: "10px 20px",
-              border: "1px solid rgba(255, 255, 255, 0.5)",
-              width: "60px",
+              // padding: "10px 20px",
+              // border: "1px solid rgba(255, 255, 255, 0.5)",
+              opacity: 0.8,
             }}
+            align="left"
           >
             {progressPercent}%
           </Typography>

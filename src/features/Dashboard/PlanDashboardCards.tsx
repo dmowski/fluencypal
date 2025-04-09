@@ -47,6 +47,65 @@ const modeCardProps: Record<
   },
 };
 
+interface CardColor {
+  startColor: string;
+  endColor: string;
+  bgColor: string;
+}
+
+const cardColors: CardColor[] = [
+  {
+    startColor: "#3CA6A6",
+    endColor: "#4D9DE0",
+    bgColor: "#419BBF",
+  },
+  {
+    startColor: "#1e3c72",
+    endColor: "#2a5298",
+    bgColor: "#234b85",
+  },
+  {
+    startColor: "#42275a",
+    endColor: "#734b6d",
+    bgColor: "#5e3f61",
+  },
+  {
+    startColor: "#FF9A8B",
+    endColor: "#203a43",
+    bgColor: "#1a2f37",
+  },
+  {
+    startColor: "#134e5e",
+    endColor: "#71b280",
+    bgColor: "#3d7868",
+  },
+  {
+    startColor: "#485563",
+    endColor: "#29323c",
+    bgColor: "#3a434c",
+  },
+  {
+    startColor: "#360033",
+    endColor: "#0b8793",
+    bgColor: "#276175",
+  },
+  {
+    startColor: "#23074d",
+    endColor: "#cc5333",
+    bgColor: "#752f3e",
+  },
+  {
+    startColor: "#232526",
+    endColor: "#414345",
+    bgColor: "#343637",
+  },
+  {
+    startColor: "#283c86",
+    endColor: "#45a247",
+    bgColor: "#3a7b5e",
+  },
+];
+
 export const PlanDashboardCards = () => {
   const aiConversation = useAiConversation();
   const words = useWords();
@@ -108,6 +167,13 @@ export const PlanDashboardCards = () => {
     }
   };
   const deletePlans = async () => {
+    const confirmResult = confirm(
+      i18n._(`Are you sure you want to delete your goal? This action cannot be undone.`)
+    );
+    if (!confirmResult) {
+      return;
+    }
+
     plan.deleteGoals();
   };
 
@@ -120,6 +186,12 @@ export const PlanDashboardCards = () => {
     (planElementProgresses?.reduce((acc, progress) => acc + progress, 0) || 0) /
     (planElementProgresses?.length || 1);
 
+  const modeLabels: Record<PlanElementMode, string> = {
+    conversation: i18n._(`Conversation`),
+    play: i18n._(`Role Play`),
+    words: i18n._(`Words`),
+    rule: i18n._(`Rule`),
+  };
   return (
     <DashboardCard>
       <Stack
@@ -181,14 +253,9 @@ export const PlanDashboardCards = () => {
             )}
           </Stack>
           <Box>
-            {userInfo.userInfo?.records.length && (
-              <IconButton onClick={createTestPlan} disabled={plan.isCraftingGoal}>
-                <CirclePlus />
-              </IconButton>
-            )}
             {isGoalSet && userInfo.userInfo?.records.length && (
               <IconButton onClick={deletePlans} disabled={plan.isCraftingGoal}>
-                <Trash />
+                <Trash size={"18px"} />
               </IconButton>
             )}
           </Box>
@@ -206,7 +273,7 @@ export const PlanDashboardCards = () => {
 
           "@media (max-width: 750px)": {
             gridTemplateColumns: "1fr",
-            gap: "10px",
+            gap: "20px",
           },
         }}
       >
@@ -214,17 +281,19 @@ export const PlanDashboardCards = () => {
           <>
             {plan.latestGoal?.elements.map((planElement, index) => {
               const cardInfo = modeCardProps[planElement.mode];
+              const colorIndex = index % cardColors.length;
+              const cardColor = cardColors[colorIndex];
               return (
                 <PlanCard
                   key={planElement.id}
                   title={index + 1 + ". " + planElement.title}
-                  subTitle={planElement.mode}
+                  subTitle={modeLabels[planElement.mode]}
                   description={planElement.description}
                   onClick={() => startGoalElement(planElement)}
-                  startColor={cardInfo.startColor}
+                  startColor={cardColor.startColor}
                   progressPercent={Math.min((planElement.startCount || 0) * 10, 100)}
-                  endColor={cardInfo.endColor}
-                  bgColor={cardInfo.bgColor}
+                  endColor={cardColor.endColor}
+                  bgColor={cardColor.bgColor}
                   icon={
                     <Stack>
                       <Stack className="avatar">
