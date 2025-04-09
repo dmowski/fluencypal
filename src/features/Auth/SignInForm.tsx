@@ -51,8 +51,9 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const isTelegramWebView = getIsTelegram();
+      const supportsWebRTC = !!window.RTCPeerConnection;
       const ua = navigator.userAgent.toLowerCase();
-      setAgent(ua);
+      setAgent(ua + " - supportsWebRTC:" + supportsWebRTC ? "TRUE" : "FALSE");
       setInApp(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos || isInAppBrowser(ua));
       setIsTelegram(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos);
       setIsAndroid(isTelegramWebView.isTgAndroid || ua.includes("android"));
