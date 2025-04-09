@@ -113,7 +113,6 @@ export const PlanDashboardCards = () => {
   const settings = useSettings();
   const userInfo = useAiUserInfo();
   const plan = usePlan();
-  const chatHistory = useChatHistory();
 
   const startOnboarding = () => {
     aiConversation.startConversation({ mode: "goal" });
@@ -147,23 +146,6 @@ export const PlanDashboardCards = () => {
 
   const isGoalSet = !!plan.latestGoal?.elements?.length;
 
-  const createTestPlan = async () => {
-    const goalConversation = chatHistory.conversations
-      .filter((conversation) => conversation.mode == "goal")
-      .sort((a, b) => b.messages.length - a.messages.length)[0];
-
-    const userInfoRecords = userInfo.userInfo?.records;
-
-    if (!goalConversation || !userInfoRecords) {
-      console.log({ userInfoRecords, goalConversation });
-    } else {
-      const generatedGoal = await plan.generateGoal({
-        userInfo: userInfoRecords,
-        conversationMessage: goalConversation.messages,
-      });
-      plan.addGoalPlan(generatedGoal);
-    }
-  };
   const deletePlans = async () => {
     const confirmResult = confirm(
       i18n._(`Are you sure you want to delete your goal? This action cannot be undone.`)
