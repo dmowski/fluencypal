@@ -383,22 +383,41 @@ Your homework is to repeat the following text:
     const baseConfig = await getBaseRtcConfig();
 
     if (mode === "goal-role-play") {
-      // todo: implement
+      if (!goal) {
+        throw new Error("Goal is not set for goal-talk mode");
+      }
+
+      const goalTitle = goal?.goalPlan.title || "";
+      const elementTitle = goal?.goalElement.title || "";
+      const elementDescription = goal?.goalElement.description || "";
+
+      setIsInitializing(`Starting Role Play...`);
+
       return {
         ...baseConfig,
-        model: MODELS.SMALL_CONVERSATION,
-        initInstruction: ``,
+        model: aiModal,
+        voice: "shimmer",
+        initInstruction: `You are an ${fullLanguageName} teacher.
+Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription}.
+Goal of this game is to help student to achieve this goal in learning ${fullLanguageName} language: ${goalTitle}.
+
+Info about Student: ${userInfo || "No info about student"}.
+
+If you feel that the user is struggling, you can propose a new part of the topic or simplify your messages.
+Engage in a natural conversation without making it feel like a lesson.
+
+You should be friendly and engaging.
+Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
+Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
+
+    `,
       };
     }
 
-    if (mode === "goal-talk" && !goal) {
-      throw new Error("Goal is not set for goal-talk mode");
-    }
-
     if (mode === "goal-talk") {
-      let startFirstMessage = `"${firstAiMessage[languageCode]}"`;
-
-      let openerInfoPrompt = "Ask the student to describe their day.";
+      if (!goal) {
+        throw new Error("Goal is not set for goal-talk mode");
+      }
 
       setIsInitializing(`Analyzing Goal Lesson...`);
       const goalTitle = goal?.goalPlan.title || "";
@@ -409,9 +428,9 @@ Your homework is to repeat the following text:
       const { firstMessage } = await aiUserInfo.generateFirstMessageText(goalInfo);
 
       firstPotentialBotMessage.current = firstMessage;
-      startFirstMessage = `"${firstMessage}".`;
+      let startFirstMessage = `"${firstMessage}".`;
 
-      openerInfoPrompt = userInfo ? `Info about Student : ${userInfo}.` : "";
+      let openerInfoPrompt = userInfo ? `Info about Student : ${userInfo}.` : "";
 
       setIsInitializing(`Starting conversation...`);
 
