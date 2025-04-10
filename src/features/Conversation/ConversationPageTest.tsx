@@ -143,6 +143,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         startCount: 0,
         preparingInstructionForAi: "",
         instructionForAi: "",
+        details: "",
       },
 
       {
@@ -154,6 +155,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         startCount: 0,
         preparingInstructionForAi: "",
         instructionForAi: "",
+        details: "",
       },
     ],
     createdAt: 0,
@@ -183,10 +185,11 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
-        isProcessingGoal={false}
-        temporaryGoal={null} //testGoal}
+        isProcessingGoal={true}
+        temporaryGoal={testGoal}
         confirmGoal={async () => {}}
         goalSettingProgress={12}
+        isSavingGoal={false}
       />
     </Stack>
   );

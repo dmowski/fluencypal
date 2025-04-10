@@ -58,6 +58,7 @@ interface ConversationCanvasProps {
   temporaryGoal: GoalPlan | null;
   confirmGoal: (isConfirm: boolean) => Promise<void>;
   goalSettingProgress: number;
+  isSavingGoal: boolean;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   conversation,
@@ -84,6 +85,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   temporaryGoal,
   confirmGoal,
   goalSettingProgress,
+  isSavingGoal,
 }) => {
   const { i18n } = useLingui();
 
@@ -668,10 +670,11 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                           }}
                         >
                           <Button
-                            onClick={() => confirmGoal(true)}
-                            color="info"
+                            onClick={() => !isSavingGoal && confirmGoal(true)}
+                            color={isSavingGoal ? "primary" : "info"}
                             size="large"
                             variant="contained"
+                            startIcon={isSavingGoal ? <Loader /> : <Check />}
                           >
                             {i18n._("Open plan")}
                           </Button>

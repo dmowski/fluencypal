@@ -69,6 +69,7 @@ interface AiConversationContextType {
   confirmGoal: (isConfirm: boolean) => Promise<void>;
   temporaryGoal: GoalPlan | null;
   goalSettingProgress: number;
+  isSavingGoal: boolean;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -95,6 +96,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const isVolumeOn = isVolumeOnStorage === undefined ? true : isVolumeOnStorage;
   const [isProcessingGoal, setIsProcessingGoal] = useState(false);
   const [temporaryGoal, setTemporaryGoal] = useState<GoalPlan | null>(null);
+  const [isSavingGoal, setIsSavingGoal] = useState(false);
 
   const toggleVolume = (isOn: boolean) => {
     setIsVolumeOn(isOn);
@@ -108,14 +110,17 @@ function useProvideAiConversation(): AiConversationContextType {
     }
 
     if (isConfirm) {
+      setIsSavingGoal(true);
       await plan.addGoalPlan(temporaryGoal);
       setTemporaryGoal(null);
       await closeConversation();
       setIsProcessingGoal(false);
+
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
+      setIsSavingGoal(false);
     } else {
       setIsProcessingGoal(false);
       setTemporaryGoal(null);
@@ -772,6 +777,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     temporaryGoal,
     confirmGoal,
     goalSettingProgress,
+    isSavingGoal,
   };
 }
 
