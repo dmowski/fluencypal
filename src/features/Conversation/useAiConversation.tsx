@@ -355,6 +355,7 @@ Start your message with (Use the same language as in conversation): "Hmm, You kn
       const goalTitle = goal?.goalPlan.title || "";
       const elementTitle = goal?.goalElement.title || "";
       const elementDescription = goal?.goalElement.description || "";
+      const elementDetails = goal?.goalElement.details || "";
 
       setIsInitializing(`Starting Role Play...`);
 
@@ -363,7 +364,7 @@ Start your message with (Use the same language as in conversation): "Hmm, You kn
         model: aiModal,
         voice: "shimmer",
         initInstruction: `You are an ${fullLanguageName} teacher.
-Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription}.
+Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
 Goal of this game is to help student to achieve this goal in learning ${fullLanguageName} language: ${goalTitle}.
 
 Info about Student: ${userInfo || "No info about student"}.
@@ -389,6 +390,7 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
       const elementTitle = goal?.goalElement.title || "";
       const elementDescription = goal?.goalElement.description || "";
       const goalInfo = `${goalTitle} - ${elementTitle} - ${elementDescription}`;
+      const elementDetails = goal?.goalElement.details || "";
 
       const { firstMessage } = await aiUserInfo.generateFirstMessageText(goalInfo);
 
@@ -403,7 +405,7 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
         ...baseConfig,
         model: aiModal,
         voice: "shimmer",
-        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Shimmer". Your role is to make user talks on a topic: ${elementTitle} - ${elementDescription}.
+        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Shimmer". Your role is to make user talks on a topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
 ${openerInfoPrompt}
 Do not teach or explain rules—just talk.
 You should be friendly and engaging.

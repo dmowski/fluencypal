@@ -42,7 +42,7 @@ function useProvideRules(): RulesContextType {
       const systemInstruction = [
         `User provides list of his messages that he used during voice conversation.`,
         `System should generate a most important grammar rule user must to learn.`,
-        `${goal ? `Follow this topic: ${goal.goalElement.title} - ${goal.goalElement.description}` : ""}`,
+        `${goal ? `Follow this topic: ${goal.goalElement.title} - ${goal.goalElement.description} (${goal.goalElement.details})` : ""}`,
         `Rules should be useful and not too difficult.`,
         `Return grammar rule in Markdown format. Starting from similar to: Based on recent conversation`,
       ].join(" ");
