@@ -197,7 +197,6 @@ ${input.conversationMessage.map((message) => {
         details: details,
         mode: elementMode,
         description: description,
-        instructionForAi: "",
         startCount: 0,
       };
       return planElement;
