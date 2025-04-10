@@ -13,6 +13,21 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Dashboard/SelectLanguage.tsx:93
+#. js-lingui-explicit-id
+msgid "Select languages"
+msgstr "选择语言"
+
+#: src/features/Dashboard/SelectLanguage.tsx:137
+#. js-lingui-explicit-id
+msgid "Learn"
+msgstr "学习"
+
+#: src/features/Dashboard/SelectLanguage.tsx:163
+#. js-lingui-explicit-id
+msgid "My"
+msgstr "我的"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:97
@@ -366,13 +381,13 @@ msgid "No conversations yet"
 msgstr "暂无对话"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:264
+#: src/features/Conversation/ConversationCanvas2.tsx:263
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "教师:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:264
+#: src/features/Conversation/ConversationCanvas2.tsx:263
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "您："
@@ -1609,7 +1624,7 @@ msgstr "其他语言："
 #: src/features/Landing/WelcomeScreen.tsx:143
 #: src/features/Dashboard/PlanDashboardCards.tsx:218
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:754
+#: src/features/Conversation/ConversationCanvas2.tsx:753
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "目标"
@@ -2680,26 +2695,10 @@ msgstr "完成之前的任务。"
 msgid "New words"
 msgstr "新单词"
 
-#: src/features/Dashboard/SelectLanguage.tsx:41
+#: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "Almost there!"
 msgstr "快到了！"
-
-#: src/features/Dashboard/SelectLanguage.tsx:54
-#. js-lingui-explicit-id
-msgid "Select language to learn"
-msgstr "选择要学习的语言"
-
-#: src/features/Dashboard/SelectLanguage.tsx:68
-#: src/features/Dashboard/HomeworkCard.tsx:116
-#. js-lingui-explicit-id
-msgid "Continue"
-msgstr "继续"
-
-#: src/features/Dashboard/SelectLanguage.tsx:71
-#. js-lingui-explicit-id
-msgid "You can switch the language anytime"
-msgstr "您可以随时切换语言"
 
 #: src/features/Dashboard/RulesToLearn.tsx:33
 #. js-lingui-explicit-id
@@ -2741,12 +2740,17 @@ msgstr "尚未布置作业。"
 msgid "Start a conversation to get one."
 msgstr "开始对话以获取一个。"
 
-#: src/features/Dashboard/HomeworkCard.tsx:129
+#: src/features/Dashboard/HomeworkCard.tsx:115
+#. js-lingui-explicit-id
+msgid "Continue"
+msgstr "继续"
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
 #. js-lingui-explicit-id
 msgid "Skip"
 msgstr "跳过"
 
-#: src/features/Dashboard/HomeworkCard.tsx:143
+#: src/features/Dashboard/HomeworkCard.tsx:142
 #. js-lingui-explicit-id
 msgid "Show all"
 msgstr "显示全部"
@@ -2940,113 +2944,113 @@ msgstr "请刷新页面并再试一次"
 msgid "Reload page"
 msgstr "重新加载页面"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:343
+#: src/features/Conversation/ConversationCanvas2.tsx:342
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "分析消息时出错"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:397
+#: src/features/Conversation/ConversationCanvas2.tsx:396
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "几乎正确"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:409
-#: src/features/Conversation/ConversationCanvas2.tsx:536
-#: src/features/Conversation/ConversationCanvas2.tsx:543
+#: src/features/Conversation/ConversationCanvas2.tsx:408
+#: src/features/Conversation/ConversationCanvas2.tsx:535
+#: src/features/Conversation/ConversationCanvas2.tsx:542
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "正在分析..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:412
+#: src/features/Conversation/ConversationCanvas2.tsx:411
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "太棒了！"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:435
+#: src/features/Conversation/ConversationCanvas2.tsx:434
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "您的消息"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:458
-#: src/features/Conversation/ConversationCanvas2.tsx:461
-#: src/features/Conversation/ConversationCanvas2.tsx:534
-#: src/features/Conversation/ConversationCanvas2.tsx:541
+#: src/features/Conversation/ConversationCanvas2.tsx:457
+#: src/features/Conversation/ConversationCanvas2.tsx:460
+#: src/features/Conversation/ConversationCanvas2.tsx:533
+#: src/features/Conversation/ConversationCanvas2.tsx:540
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "转录中..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:495
+#: src/features/Conversation/ConversationCanvas2.tsx:494
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "已更正"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:575
+#: src/features/Conversation/ConversationCanvas2.tsx:574
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "将新词添加到词汇表:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:620
+#: src/features/Conversation/ConversationCanvas2.tsx:619
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "分析中"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:627
+#: src/features/Conversation/ConversationCanvas2.tsx:626
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "准备目标"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:647
+#: src/features/Conversation/ConversationCanvas2.tsx:646
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "目标已创建"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:657
+#: src/features/Conversation/ConversationCanvas2.tsx:656
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "已添加的课程："
 
-#: src/features/Conversation/ConversationCanvas2.tsx:677
+#: src/features/Conversation/ConversationCanvas2.tsx:676
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "开放式计划"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:699
-#: src/features/Conversation/ConversationCanvas2.tsx:767
+#: src/features/Conversation/ConversationCanvas2.tsx:698
+#: src/features/Conversation/ConversationCanvas2.tsx:766
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "重新录制"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:713
+#: src/features/Conversation/ConversationCanvas2.tsx:712
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "按原样发送"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:713
+#: src/features/Conversation/ConversationCanvas2.tsx:712
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "发送"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:727
+#: src/features/Conversation/ConversationCanvas2.tsx:726
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "完成"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:744
+#: src/features/Conversation/ConversationCanvas2.tsx:743
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "记录信息"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:861
+#: src/features/Conversation/ConversationCanvas2.tsx:860
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "您的余额较低"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:863
+#: src/features/Conversation/ConversationCanvas2.tsx:862
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "为你的余额充值是明智之举。"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:870
+#: src/features/Conversation/ConversationCanvas2.tsx:869
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "充值"
@@ -4093,6 +4097,16 @@ msgstr "继续使用谷歌"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "通过创建账户，您同意："
+
+#: src/features/Dashboard/SelectLanguage.tsx:54
+#. js-lingui-explicit-id
+#~ msgid "Select language to learn"
+#~ msgstr "选择要学习的语言"
+
+#: src/features/Dashboard/SelectLanguage.tsx:71
+#. js-lingui-explicit-id
+#~ msgid "You can switch the language anytime"
+#~ msgstr "您可以随时切换语言"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:166
 #. js-lingui-explicit-id
