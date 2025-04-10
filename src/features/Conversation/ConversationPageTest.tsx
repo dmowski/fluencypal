@@ -171,7 +171,6 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         gameWords={gameStat}
         isClosed={false}
         isClosing={false}
-        isSavingHomework={false}
         addUserMessage={generateFirstMessage}
         balanceHours={0.2}
         togglePaymentModal={() => alert("Payment modal toggled")}

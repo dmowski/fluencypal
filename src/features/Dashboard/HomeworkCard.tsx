@@ -109,7 +109,6 @@ export const HomeworkCard = () => {
                     onClick={() => {
                       aiConversation.startConversation({
                         mode: homework.mode,
-                        homework,
                       });
                     }}
                   >

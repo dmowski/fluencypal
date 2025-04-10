@@ -25,7 +25,7 @@ interface ConversationCanvasProps {
   gameWords: GuessGameStat | null;
   isClosed: boolean;
   isClosing: boolean;
-  isSavingHomework: boolean;
+
   addUserMessage: (message: string) => Promise<void>;
   balanceHours: number;
   recordingError: string;
@@ -65,7 +65,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   gameWords,
   isClosed,
   isClosing,
-  isSavingHomework,
   addUserMessage,
   balanceHours,
   togglePaymentModal,
@@ -96,7 +95,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const isNeedToShowBalanceWarning =
     (isSmallBalance && conversation.length > 1) || isExtremelySmallBalance;
 
-  const isFinishingProcess = isClosing || isSavingHomework || isClosed;
+  const isFinishingProcess = isClosing || isClosed;
 
   const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
   const [description, setDescription] = useState<string | null>(null);

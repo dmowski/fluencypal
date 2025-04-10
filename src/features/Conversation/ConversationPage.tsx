@@ -101,7 +101,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           gameWords={aiConversation.gameWords}
           isClosed={aiConversation.isClosed}
           isClosing={aiConversation.isClosing}
-          isSavingHomework={aiConversation.isSavingHomework}
           addUserMessage={async (message) => {
             recorder.removeTranscript();
             await aiConversation.addUserMessage(message);

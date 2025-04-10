@@ -16,8 +16,6 @@ import { useLocalStorage } from "react-use";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
-import { useHomework } from "../Homework/useHomework";
-import { Homework } from "@/common/homework";
 import { UsageLog } from "@/common/usage";
 import { ChatMessage, ConversationMode } from "@/common/conversation";
 import { useTasks } from "../Tasks/useTasks";
@@ -34,7 +32,6 @@ const aiModal = MODELS.SMALL_CONVERSATION;
 
 interface StartConversationProps {
   mode: ConversationMode;
-  homework?: Homework;
   wordsToLearn?: string[];
   ruleToLearn?: string;
   voice?: AiVoice;
@@ -45,7 +42,6 @@ interface StartConversationProps {
 }
 
 interface AiConversationContextType {
-  isSavingHomework: boolean;
   isInitializing: string;
   isStarted: boolean;
   setIsStarted: (isStarted: boolean) => void;
@@ -77,9 +73,12 @@ interface AiConversationContextType {
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
 
-const modesWithHomework: ConversationMode[] = ["talk", "talkAndCorrect", "beginner"];
-const modesToExtractUserInfo: ConversationMode[] = ["talk", "talkAndCorrect", "beginner"];
-const isNeedToGenerateFirstMessage: ConversationMode[] = ["talk", "beginner"];
+const modesToExtractUserInfo: ConversationMode[] = [
+  "talk",
+  "talkAndCorrect",
+  "beginner",
+  "goal-talk",
+];
 
 function useProvideAiConversation(): AiConversationContextType {
   const [isInitializing, setIsInitializing] = useState("");
@@ -87,7 +86,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const auth = useAuth();
   const settings = useSettings();
   const aiUserInfo = useAiUserInfo();
-  const [activeHomework, setActiveHomework] = useState<Homework | null>(null);
   const firstPotentialBotMessage = useRef("");
   const userInfo = aiUserInfo.userInfo?.records?.join(". ") || "";
   const fullLanguageName = settings.fullLanguageName || "English";
@@ -154,7 +152,6 @@ function useProvideAiConversation(): AiConversationContextType {
     }
   }, [isStartedUrl]);
 
-  const homeworkService = useHomework();
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
   const [goalInfo, setGoalInfo] = useState<GoalElementInfo | null>(null);
 
@@ -266,52 +263,6 @@ Start your message with (Use the same language as in conversation): "Hmm, You kn
       communicator?.closeHandler();
     };
   }, []);
-
-  const finishLesson = async () => {
-    setIsClosing(true);
-    communicatorRef.current?.toggleMute(true);
-    const newInstructionForHomework = `Generate summary of the lesson. Show user's mistakes.
-Use ${fullLanguageName} language during providing feedback.
-Create a text user have to repeat on the next lesson. It will be a homework.
-Format homework following this structure:
-Your homework is to repeat the following text:
-"[Text to repeat]"
-`;
-    const generalSummary = `Generate summary of the lesson. Show user's mistakes and make general comments.`;
-    const isNeedHomework = modesWithHomework.includes(currentMode);
-    const newInstruction = analyzeResultInstruction
-      ? analyzeResultInstruction
-      : isNeedHomework
-        ? newInstructionForHomework
-        : generalSummary;
-
-    const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
-    if (isNeedToSaveUserInfo) {
-      await aiUserInfo.updateUserInfo(conversation);
-    }
-
-    console.log("FINISHING THE LESSON. AI new Instruction to update session", newInstruction);
-    await communicatorRef.current?.updateSessionTrigger(newInstruction, isVolumeOn);
-    await sleep(700);
-
-    const endUserMessageHomework =
-      "I am done for today. Create a text I have to repeat on the next lesson. Don't add anything else. Just give me homework";
-    const endUserMessageJustAnalyze =
-      "I am done for today. Show me my mistakes and make general comments. Don't add anything else. Just give me feedback";
-    const endUserMessage = analyzeResultInstruction
-      ? `Let's finish conversation. Analyze our conversations. Use ${fullLanguageName} language during providing feedback. Give me feedback and show places to improve.`
-      : isNeedHomework
-        ? endUserMessageHomework
-        : endUserMessageJustAnalyze;
-
-    console.log("endUserMessage", endUserMessage);
-    communicatorRef.current?.addUserChatMessage(endUserMessage);
-    await sleep(500);
-    await communicatorRef.current?.triggerAiResponse();
-    await sleep(1000);
-    setIsClosing(false);
-    setIsClosed(true);
-  };
 
   const baseAiTools: AiTool[] = useMemo(() => {
     return [];
@@ -693,7 +644,7 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
 
   const startConversation = async ({
     mode,
-    homework,
+
     wordsToLearn,
     ruleToLearn,
     customInstruction,
@@ -727,17 +678,6 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
       firstPotentialBotMessage.current = "";
       const aiRtcConfig = await getAiRtcConfig(mode, goal);
       let instruction = aiRtcConfig.initInstruction;
-      setActiveHomework(homework || null);
-      if (homework) {
-        await homeworkService.doneHomework(homework.id);
-        instruction += `------
-This is previous homework:
-${homework.homework}
-
-Start your speech with saying hello and remind user about his homework. Repeat homework text to refresh user's memory.
-Do not needed to introduce yourself again. Just start with hello and homework reminder. Ask user to repeat homework text.
-`;
-      }
 
       if (wordsToLearn) {
         instruction += `------
@@ -781,26 +721,6 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     }
   };
 
-  const [isSavingHomework, setIsSavingHomework] = useState(false);
-
-  const saveHomework = async () => {
-    const lastMessage = conversation[conversation.length - 1];
-    if (!lastMessage?.isBot) {
-      return;
-    }
-    const homeworkText = lastMessage.text;
-    await homeworkService.saveHomework({
-      id: `${Date.now()}`,
-      mode: currentMode,
-      conversationId: conversationId,
-      createdAt: Date.now(),
-      homework: homeworkText,
-      isDone: false,
-      isSkip: false,
-      languageCode: settings.languageCode || "en",
-    });
-  };
-
   const closeConversation = async () => {
     setIsClosing(true);
     const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
@@ -828,7 +748,6 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
   return {
     currentMode,
     conversationId,
-    isSavingHomework,
     isInitializing,
     isStarted,
     startConversation,
