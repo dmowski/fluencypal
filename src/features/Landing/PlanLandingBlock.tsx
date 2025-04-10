@@ -239,6 +239,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   fontSize: "3.5rem",
                   color: "#fff",
                   fontWeight: 800,
+                  "@media (max-width: 700px)": {
+                    fontSize: "2.5rem",
+                  },
                 }}
               >
                 {i18n._(`Smart Start`)}
@@ -368,6 +371,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   fontWeight: 800,
                   "@media (max-width: 900px)": {
                     textAlign: "left",
+                    fontSize: "2.5rem",
                   },
                 }}
               >
@@ -522,14 +526,20 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 padding: "20px",
                 boxSizing: "border-box",
               },
-              img: {
-                width: "800px",
-                maxWidth: "100%",
-                height: "auto",
-              },
             }}
           >
-            <Stack sx={{}}>
+            <Stack
+              sx={{
+                img: {
+                  width: "800px",
+                  maxWidth: "100%",
+                  height: "auto",
+                },
+                "@media (max-width: 900px)": {
+                  transform: "scale(1.2)",
+                },
+              }}
+            >
               <img src="/landing/uiChat.webp" alt="Plan" />
             </Stack>
           </Stack>
@@ -572,6 +582,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   fontSize: "3.5rem",
                   color: "#fff",
                   fontWeight: 800,
+                  "@media (max-width: 700px)": {
+                    fontSize: "2.5rem",
+                  },
                 }}
               >
                 {i18n._(`Practice`)}
