@@ -8,6 +8,7 @@ export interface PlanElement {
   subTitle: string; // 3 words
   mode: PlanElementMode;
   description: string;
+  details: string;
   startCount: number;
 
   preparingInstructionForAi: string;

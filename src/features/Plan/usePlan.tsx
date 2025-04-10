@@ -82,56 +82,74 @@ ${input.conversationMessage.map((message) => {
   const generateElements = async (input: GenerateGoalProps): Promise<PlanElement[]> => {
     const systemMessage = `
 You are professional ${settings.fullLanguageName || "English"} Teacher. 
-Here is student/teacher conversation. Based on student's lever and their goal, formulate learning plan. 
-The plan should be achieved using AI language learning app.
 
-Abilities of language learning app.
-* words: Practice words related to specific topic
-* play: Role play conversation (Example Job interview)
-* rule: Practice rules related to specific language, language area
-* conversation: conversation with ai related to specific topic
+Below is a conversation between a student and a teacher. Based on the student's level and goals, generate a personalized language learning plan that can be completed using our AI-powered language learning app.
 
-Return plan in json format. Avoid wrapper phrases because your response will be used with JSON.parse function.
+The app supports the following activity types:
+* words: Practice vocabulary related to a specific topic
+* play: Role-play conversations (e.g. job interview)
+* rule: Learn and practice grammar or language rules
+* conversation: General conversation with AI on a specific topic
+
+Your output must be in valid JSON format with no additional text or explanation. It will be parsed using JSON.parse().
+
 Example of plan:
 [
-{
-"type": "conversation",
-"title": "Street",
-"description": "Conversation related to seeking help on the streets"
-},
-{
-"type": "words",
-"title": "Software",
-"description": "Practice software development words"
-},
-{
-"type": "words",
-"title": "Behavior",
-"description": "Practice words related to behavior interview"
-},
-{
-"type": "play",
-"title": "Job interview",
-"description": "Interview role-play conversation; Position Software developer. Technical Interview "
-},
-{
-"type": "play",
-"title": "Daily standup",
-"description": "Daily standup. Developer routine"
-},
-{
-"type": "rule",
-"title": "Past simple",
-"description": "Practice rules related to past simple tense",
-}
+  {
+    "type": "conversation",
+    "title": "On the Street",
+    "description": "Casual conversation about asking for directions",
+    "details": "Student practices real-life interactions like asking for directions, understanding local responses, and reacting naturally. AI should vary levels of politeness, formality, and regional accents to build flexibility."
+  },
+  {
+    "type": "words",
+    "title": "Software Vocabulary",
+    "description": "Vocabulary related to software development",
+    "details": "Practice essential words used in programming, tools (e.g. Git, IDE), and collaboration (e.g. pull request, backlog). Student will match terms, fill gaps, and use new words in context."
+  },
+  {
+    "type": "words",
+    "title": "Behavioral Interview Vocabulary",
+    "description": "Common words and phrases used in behavioral interviews",
+    "details": "Learn expressions and vocabulary related to workplace behavior, leadership, and problem-solving (e.g. deadline, teamwork, responsibility). Practice them in short sentences and mock questions."
+  },
+  {
+    "type": "play",
+    "title": "Job Interview Simulation",
+    "description": "Mock technical interview for a software developer position",
+    "details": "AI acts as an interviewer asking both technical and behavioral questions. Student must respond clearly and confidently. After each response, AI gives specific feedback on grammar, vocabulary, and fluency."
+  },
+  {
+    "type": "play",
+    "title": "Daily Stand-Up Meeting",
+    "description": "Role-play a developer’s daily stand-up",
+    "details": "Student practices summarizing yesterday’s work, today’s plans, and blockers. AI provides realistic follow-up questions. Focus on past and future tense, fluency, and concise speaking."
+  },
+  {
+    "type": "rule",
+    "title": "Past Simple Tense",
+    "description": "Understanding and practicing past simple tense",
+    "details": "Review past simple grammar rules. Student completes gap-fill exercises, rewrites present-tense sentences, and speaks about past events. AI highlights mistakes and corrects them with explanations."
+  },
+  {
+    "type": "rule",
+    "title": "Conditionals",
+    "description": "Practice zero, first, and second conditionals",
+    "details": "Teach the form and function of conditionals using examples. Student practices constructing correct sentences, transforming incorrect ones, and using conditionals in context-based speaking."
+  },
+  {
+    "type": "conversation",
+    "title": "Workplace Culture",
+    "description": "Discussion about working in an international team",
+    "details": "Student practices discussing topics like remote work, teamwork, and workplace etiquette. AI introduces cultural nuances and encourages comparisons with the student's own experience to deepen understanding."
+  }
 ]
 
-Use ${settings.fullLanguageName || "English"} language for generating plan (title and description).
-Your plan should contain at least 8 elements. Including each type of ability`;
+Use ${settings.fullLanguageName || "English"} language for generating plan (title, description, details).
+The plan should include at least 8 elements and must cover each type of activity.
+`;
 
-    const userMessage = `
-===
-Conversation:
+    const userMessage = `Conversation:
 ${input.conversationMessage.map((message) => {
   const isBot = message.isBot;
   const author = isBot ? "Teacher" : "Student";
@@ -152,6 +170,7 @@ ${input.conversationMessage.map((message) => {
       type: string;
       title: string;
       description: string;
+      details: string;
     }
 
     const formattedElements: PlanElement[] = parsedElements.map((element, index) => {
@@ -167,7 +186,7 @@ ${input.conversationMessage.map((message) => {
               : "conversation";
 
       const randomId = `${index}_${elementMode}_${Math.random().toString(36).substring(2, 15)}`;
-
+      const details = `${element?.details || ""}`;
       const description = `${element?.description || ""}`;
       const title = `${element?.title || ""}`;
 
@@ -175,6 +194,7 @@ ${input.conversationMessage.map((message) => {
         id: randomId,
         title: title,
         subTitle: "",
+        details: details,
         mode: elementMode,
         description: description,
         preparingInstructionForAi: "",
