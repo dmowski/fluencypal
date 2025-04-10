@@ -10,9 +10,6 @@ export interface PlanElement {
   description: string;
   details: string;
   startCount: number;
-
-  preparingInstructionForAi: string;
-  instructionForAi: string;
 }
 
 export interface GoalPlan {

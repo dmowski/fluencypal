@@ -5,6 +5,7 @@ import { ConversationCard } from "../Dashboard/ConversationCard";
 import { getI18nInstance } from "@/appRouterI18n";
 import { SupportedLanguage } from "@/common/lang";
 import { ConversationLandingCard } from "./ConversationLandingCard";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 interface WelcomeScreenProps {
   title: string;
@@ -140,9 +141,9 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         }}
       >
         <ConversationLandingCard
-          title={i18n._(`Goal`)}
-          subTitle={i18n._(`Set the goal of your learning`)}
-          href="/practice"
+          title={i18n._(`Plan`)}
+          subTitle={i18n._(`Get your personalized plan`)}
+          href={`${getUrlStart(lang)}practice`}
           startColor="#4F46E5"
           endColor="#A78BFA"
           bgColor="#60A5FA"
@@ -156,11 +157,11 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               </Stack>
             </Stack>
           }
-          actionLabel={i18n._(`Start | 5 min`)}
+          actionLabel={i18n._(`Takes ~5 min`)}
         />
         <ConversationLandingCard
-          href="/practice"
-          title={i18n._(`Conversation`)}
+          href={`${getUrlStart(lang)}practice`}
+          title={i18n._(`Conversations`)}
           subTitle={i18n._(`Talk to the AI and it will respond to you`)}
           startColor="#03a665"
           endColor="#3B82F6"
@@ -179,9 +180,9 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         />
 
         <ConversationLandingCard
-          title={i18n._(`Beginner`)}
+          title={i18n._(`Examples`)}
           subTitle={i18n._(`AI will lead you through the conversation`)}
-          href="/practice"
+          href={`${getUrlStart(lang)}practice`}
           startColor="#d13434"
           endColor="#FFD93D"
           bgColor="#5EEAD4"
@@ -201,7 +202,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         <ConversationLandingCard
           title={i18n._(`Rules`)}
           subTitle={i18n._(`Get a personal grammar rule to learn`)}
-          href="/practice"
+          href={`${getUrlStart(lang)}practice`}
           startColor="#9d43a3"
           endColor="#086787"
           bgColor="#990000"
@@ -221,7 +222,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         <ConversationLandingCard
           title={i18n._(`Words`)}
           subTitle={i18n._(`Practice new vocabulary with the AI`)}
-          href="/practice"
+          href={`${getUrlStart(lang)}practice`}
           startColor="#0276c4"
           endColor="#086787"
           bgColor="#5EEAD4"
@@ -239,9 +240,9 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         />
 
         <ConversationLandingCard
-          title={i18n._(`Role Play`)}
+          title={i18n._(`Role Plays`)}
           subTitle={i18n._(`Real-life situations with the AI`)}
-          href="/practice"
+          href={`${getUrlStart(lang)}practice`}
           startColor="#4F46E5"
           endColor="#086787"
           bgColor="#990000"

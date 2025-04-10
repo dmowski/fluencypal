@@ -145,7 +145,7 @@ export const ProposalCards: React.FC<ProposalCardsProps> = ({ title, subTitle, i
     <Stack
       sx={{
         width: "100%",
-        padding: "50px 0 120px 0",
+        padding: "90px 0 120px 0",
         alignItems: "center",
         justifyContent: "center",
         gap: "100px",

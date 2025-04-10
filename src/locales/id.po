@@ -28,6 +28,7 @@ msgstr "Hubungi FluencyPal untuk pertanyaan, dukungan, atau umpan balik."
 
 #: src/libs/metadata.ts:67
 #: src/features/Usage/NoBalanceBlock.tsx:196
+#: src/features/Landing/PlanLandingBlock.tsx:572
 #: src/features/Header/HeaderStatic.tsx:10
 #: src/features/Dashboard/ConversationSelectCard.tsx:148
 #. js-lingui-explicit-id
@@ -422,8 +423,9 @@ msgid "Your achievements"
 msgstr "Prestasi Anda"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
-#: src/features/Landing/WelcomeScreen.tsx:222
-#: src/features/Dashboard/PlanDashboardCards.tsx:172
+#: src/features/Landing/WelcomeScreen.tsx:223
+#: src/features/Landing/PlanLandingBlock.tsx:104
+#: src/features/Dashboard/PlanDashboardCards.tsx:83
 #: src/features/Dashboard/ConversationSelectCard.tsx:244
 #. js-lingui-explicit-id
 msgid "Words"
@@ -1741,14 +1743,16 @@ msgstr "Semua Skenario"
 
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayBoard.tsx:629
-#: src/features/Dashboard/PlanDashboardCards.tsx:296
+#: src/features/Landing/PlanLandingBlock.tsx:487
+#: src/features/Landing/PlanLandingBlock.tsx:607
+#: src/features/Dashboard/PlanDashboardCards.tsx:207
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Mulai"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:395
-#: src/features/Landing/WelcomeScreen.tsx:242
-#: src/features/Dashboard/PlanDashboardCards.tsx:171
+#: src/features/Landing/PlanLandingBlock.tsx:103
+#: src/features/Dashboard/PlanDashboardCards.tsx:82
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Peran Main"
@@ -1798,111 +1802,355 @@ msgstr "Disarankan untuk Anda:"
 msgid "Other languages:"
 msgstr "Bahasa lain:"
 
-#: src/features/Landing/WelcomeScreen.tsx:143
-#: src/features/Dashboard/PlanDashboardCards.tsx:218
-#: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:756
-#. js-lingui-explicit-id
-msgid "Goal"
-msgstr "Tujuan"
-
 #: src/features/Landing/WelcomeScreen.tsx:144
-#: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Tetapkan tujuan pembelajaran Anda"
+msgid "Plan"
+msgstr "Rencana"
 
-#: src/features/Landing/WelcomeScreen.tsx:159
-#: src/features/Dashboard/GoalCard.tsx:28
+#: src/features/Landing/WelcomeScreen.tsx:145
 #. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "Mulai | 5 menit"
+msgid "Get your personalized plan"
+msgstr "Dapatkan rencana personal Anda"
 
-#: src/features/Landing/WelcomeScreen.tsx:163
-#: src/features/Dashboard/PlanDashboardCards.tsx:170
-#: src/features/Dashboard/ConversationSelectCard.tsx:168
+#: src/features/Landing/WelcomeScreen.tsx:160
 #. js-lingui-explicit-id
-msgid "Conversation"
-msgstr "Percakapan"
+msgid "Takes ~5 min"
+msgstr "Memakan waktu ~5 menit"
 
 #: src/features/Landing/WelcomeScreen.tsx:164
+#. js-lingui-explicit-id
+msgid "Conversations"
+msgstr "Percakapan"
+
+#: src/features/Landing/WelcomeScreen.tsx:165
 #: src/features/Dashboard/ConversationSelectCard.tsx:169
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "Bicaralah dengan AI dan ia akan merespons Anda"
 
-#: src/features/Landing/WelcomeScreen.tsx:178
+#: src/features/Landing/WelcomeScreen.tsx:179
 #: src/features/Dashboard/ConversationSelectCard.tsx:190
 #. js-lingui-explicit-id
 msgid "Start Talking"
 msgstr "Mulai Berbicara"
 
-#: src/features/Landing/WelcomeScreen.tsx:182
-#: src/features/Landing/LandingPage.tsx:145
-#: src/features/Dashboard/ConversationSelectCard.tsx:194
-#. js-lingui-explicit-id
-msgid "Beginner"
-msgstr "Pemula"
-
 #: src/features/Landing/WelcomeScreen.tsx:183
+#. js-lingui-explicit-id
+msgid "Examples"
+msgstr "Contoh"
+
+#: src/features/Landing/WelcomeScreen.tsx:184
 #: src/features/Dashboard/ConversationSelectCard.tsx:195
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
 msgstr "AI akan membimbing Anda melalui percakapan"
 
-#: src/features/Landing/WelcomeScreen.tsx:198
+#: src/features/Landing/WelcomeScreen.tsx:199
 #. js-lingui-explicit-id
 msgid "Guide Me"
 msgstr "Pandu Aku"
 
-#: src/features/Landing/WelcomeScreen.tsx:202
+#: src/features/Landing/WelcomeScreen.tsx:203
 #: src/features/Dashboard/ConversationSelectCard.tsx:220
 #. js-lingui-explicit-id
 msgid "Rules"
 msgstr "Aturan"
 
-#: src/features/Landing/WelcomeScreen.tsx:203
+#: src/features/Landing/WelcomeScreen.tsx:204
 #: src/features/Dashboard/TasksCard.tsx:52
 #: src/features/Dashboard/ConversationSelectCard.tsx:221
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "Dapatkan aturan tata bahasa pribadi untuk dipelajari"
 
-#: src/features/Landing/WelcomeScreen.tsx:218
+#: src/features/Landing/WelcomeScreen.tsx:219
 #. js-lingui-explicit-id
 msgid "Get a Rule"
 msgstr "Dapatkan Aturan"
 
-#: src/features/Landing/WelcomeScreen.tsx:223
+#: src/features/Landing/WelcomeScreen.tsx:224
 #: src/features/Dashboard/TasksCard.tsx:62
 #: src/features/Dashboard/ConversationSelectCard.tsx:245
 #. js-lingui-explicit-id
 msgid "Practice new vocabulary with the AI"
 msgstr "Latih kosakata baru dengan AI"
 
-#: src/features/Landing/WelcomeScreen.tsx:238
+#: src/features/Landing/WelcomeScreen.tsx:239
 #. js-lingui-explicit-id
 msgid "Expand Vocabulary"
 msgstr "Perluas Kosakata"
 
 #: src/features/Landing/WelcomeScreen.tsx:243
 #. js-lingui-explicit-id
+msgid "Role Plays"
+msgstr "Peran Bermain"
+
+#: src/features/Landing/WelcomeScreen.tsx:244
+#. js-lingui-explicit-id
 msgid "Real-life situations with the AI"
 msgstr "Situasi nyata dengan AI"
 
-#: src/features/Landing/WelcomeScreen.tsx:258
+#: src/features/Landing/WelcomeScreen.tsx:259
 #. js-lingui-explicit-id
 msgid "Play a Role"
 msgstr "Memainkan Peran"
 
-#: src/features/Landing/LandingPage.tsx:25
-#: src/features/Landing/LandingPage.tsx:123
+#: src/features/Landing/PlanLandingBlock.tsx:19
+#. js-lingui-explicit-id
+msgid "Psychology"
+msgstr "Psikologi"
+
+#: src/features/Landing/PlanLandingBlock.tsx:20
+#. js-lingui-explicit-id
+msgid "Mental Health Vocabulary"
+msgstr "Kosakata Kesehatan Mental"
+
+#: src/features/Landing/PlanLandingBlock.tsx:22
+#. js-lingui-explicit-id
+msgid "Essential words for discussing mental health and psychology."
+msgstr "Kata-kata esensial untuk mendiskusikan kesehatan mental dan psikologi."
+
+#: src/features/Landing/PlanLandingBlock.tsx:28
+#. js-lingui-explicit-id
+msgid "Diagnosis"
+msgstr "Diagnosis"
+
+#: src/features/Landing/PlanLandingBlock.tsx:29
+#. js-lingui-explicit-id
+msgid "Medical Talk Simulation"
+msgstr "Simulasi Pembicaraan Medis"
+
+#: src/features/Landing/PlanLandingBlock.tsx:31
+#. js-lingui-explicit-id
+msgid "Practice medical conversations through simulated scenarios."
+msgstr "Praktekkan percakapan medis melalui skenario yang disimulasikan."
+
+#: src/features/Landing/PlanLandingBlock.tsx:37
+#. js-lingui-explicit-id
+msgid "Reflex"
+msgstr "Refleks"
+
+#: src/features/Landing/PlanLandingBlock.tsx:38
+#. js-lingui-explicit-id
+msgid "Fast Answer Practice"
+msgstr "Latihan Jawaban Cepat"
+
+#: src/features/Landing/PlanLandingBlock.tsx:40
+#. js-lingui-explicit-id
+msgid "Improve your ability to answer quickly and clearly in conversations."
+msgstr ""
+"Tingkatkan kemampuan Anda untuk menjawab dengan cepat dan jelas dalam "
+"percakapan."
+
+#: src/features/Landing/PlanLandingBlock.tsx:46
+#: src/features/Landing/LandingPage.tsx:145
+#. js-lingui-explicit-id
+msgid "Speaking"
+msgstr "Berbicara"
+
+#: src/features/Landing/PlanLandingBlock.tsx:47
+#. js-lingui-explicit-id
+msgid "Public Talk Skills"
+msgstr "Keterampilan Berbicara di Publik"
+
+#: src/features/Landing/PlanLandingBlock.tsx:49
+#. js-lingui-explicit-id
+msgid "Boost your confidence in public speaking."
+msgstr "Tingkatkan kepercayaan diri Anda dalam berbicara di depan umum."
+
+#: src/features/Landing/PlanLandingBlock.tsx:55
+#. js-lingui-explicit-id
+msgid "TOEFL"
+msgstr "TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:56
+#. js-lingui-explicit-id
+msgid "Academic Word List"
+msgstr "Daftar Kata Akademik"
+
+#: src/features/Landing/PlanLandingBlock.tsx:58
+#. js-lingui-explicit-id
+msgid "Master high-frequency TOEFL vocabulary."
+msgstr "Kuasai kosa kata TOEFL frekuensi tinggi."
+
+#: src/features/Landing/PlanLandingBlock.tsx:64
+#. js-lingui-explicit-id
+msgid "Mock"
+msgstr "Tiruan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:65
+#. js-lingui-explicit-id
+msgid "TOEFL Speaking Tasks"
+msgstr "Tugas Berbicara TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:67
+#. js-lingui-explicit-id
+msgid "Simulate speaking tasks from the TOEFL exam."
+msgstr "Simulasikan tugas berbicara dari ujian TOEFL."
+
+#: src/features/Landing/PlanLandingBlock.tsx:73
+#: src/features/Landing/LandingPage.tsx:155
+#. js-lingui-explicit-id
+msgid "Grammar"
+msgstr "Tata Bahasa"
+
+#: src/features/Landing/PlanLandingBlock.tsx:74
+#. js-lingui-explicit-id
+msgid "Advanced Academic Usage"
+msgstr "Penggunaan Akademik Lanjutan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:76
+#. js-lingui-explicit-id
+msgid "Learn grammar used in academic writing and speaking."
+msgstr "Pelajari tata bahasa yang digunakan dalam penulisan dan berbicara akademik."
+
+#: src/features/Landing/PlanLandingBlock.tsx:83
+#. js-lingui-explicit-id
+msgid "Wellness"
+msgstr "Kesejahteraan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:84
+#. js-lingui-explicit-id
+msgid "Mental Health Talk"
+msgstr "Pembicaraan Kesehatan Mental"
+
+#: src/features/Landing/PlanLandingBlock.tsx:86
+#. js-lingui-explicit-id
+msgid "Explore techniques to talk about wellness and mental well-being."
+msgstr "Jelajahi teknik untuk berbicara tentang kesejahteraan dan kesehatan mental."
+
+#: src/features/Landing/PlanLandingBlock.tsx:92
+#. js-lingui-explicit-id
+msgid "Essays"
+msgstr "Esai"
+
+#: src/features/Landing/PlanLandingBlock.tsx:93
+#. js-lingui-explicit-id
+msgid "Formal Writing Practice"
+msgstr "Praktek Menulis Formal"
+
+#: src/features/Landing/PlanLandingBlock.tsx:95
+#. js-lingui-explicit-id
+msgid "Develop formal writing skills for academic success."
+msgstr "Kembangkan keterampilan menulis formal untuk keberhasilan akademik."
+
+#: src/features/Landing/PlanLandingBlock.tsx:102
+#: src/features/Dashboard/PlanDashboardCards.tsx:81
+#: src/features/Dashboard/ConversationSelectCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Conversation"
+msgstr "Percakapan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:105
+#: src/features/Dashboard/PlanDashboardCards.tsx:84
+#. js-lingui-explicit-id
+msgid "Rule"
+msgstr "Aturan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:146
+#. js-lingui-explicit-id
+msgid "How It Works"
+msgstr "Bagaimana Cara Kerjanya"
+
+#: src/features/Landing/PlanLandingBlock.tsx:157
+#. js-lingui-explicit-id
+msgid "From Onboarding to Your Goal"
+msgstr "Dari Pembukaan hingga Tujuan Anda"
+
+#: src/features/Landing/PlanLandingBlock.tsx:230
+#. js-lingui-explicit-id
+msgid "Step 1"
+msgstr "Langkah 1"
+
+#: src/features/Landing/PlanLandingBlock.tsx:244
+#. js-lingui-explicit-id
+msgid "Smart Start"
+msgstr "Mulai Pintar"
+
+#: src/features/Landing/PlanLandingBlock.tsx:255
+#. js-lingui-explicit-id
+msgid ""
+"Start with a quick, friendly conversation with our AI assistant. In just a "
+"few minutes, the AI will detect your current language level, personal "
+"goals, and preferences."
+msgstr ""
+"Mulailah dengan percakapan yang cepat dan ramah dengan asisten AI kami. "
+"Dalam beberapa menit, AI akan mendeteksi tingkat bahasa Anda saat ini, "
+"tujuan pribadi, dan preferensi."
+
+#: src/features/Landing/PlanLandingBlock.tsx:279
+#. js-lingui-explicit-id
+msgid "Create a goal"
+msgstr "Buat sebuah tujuan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:289
+#. js-lingui-explicit-id
+msgid "20+ languages to learn"
+msgstr "20+ bahasa untuk dipelajari"
+
+#: src/features/Landing/PlanLandingBlock.tsx:352
+#. js-lingui-explicit-id
+msgid "Step 2"
+msgstr "Langkah 2"
+
+#: src/features/Landing/PlanLandingBlock.tsx:369
+#. js-lingui-explicit-id
+msgid "Personal Plan"
+msgstr "Rencana Pribadi"
+
+#: src/features/Landing/PlanLandingBlock.tsx:384
+#. js-lingui-explicit-id
+msgid ""
+"Based on your onboarding, FluencyPal instantly generates a custom learning "
+"plan just for you. Each plan includes 8 lesson types designed to help you "
+"reach your goal."
+msgstr ""
+"Berdasarkan onboarding Anda, FluencyPal secara instan menghasilkan rencana "
+"belajar khusus hanya untuk Anda. Setiap rencana mencakup 8 jenis pelajaran "
+"yang dirancang untuk membantu Anda mencapai tujuan Anda."
+
+#: src/features/Landing/PlanLandingBlock.tsx:400
+#. js-lingui-explicit-id
+msgid "Get a plan"
+msgstr "Dapatkan rencana"
+
+#: src/features/Landing/PlanLandingBlock.tsx:558
+#. js-lingui-explicit-id
+msgid "Step 3"
+msgstr "Langkah 3"
+
+#: src/features/Landing/PlanLandingBlock.tsx:583
+#. js-lingui-explicit-id
+msgid ""
+"Jump into your tailored learning path and build real skills through "
+"engaging practice."
+msgstr ""
+"Loncat ke jalur belajar yang disesuaikan untuk Anda dan bangun keterampilan "
+"nyata melalui latihan yang menarik."
+
+#: src/features/Landing/PlanLandingBlock.tsx:617
+#. js-lingui-explicit-id
+msgid "1 hour free"
+msgstr "1 jam gratis"
+
+#: src/features/Landing/PlanLandingBlock.tsx:643
+#. js-lingui-explicit-id
+msgid "Results are closer than you think"
+msgstr "Hasil lebih dekat daripada yang Anda pikirkan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:656
+#. js-lingui-explicit-id
+msgid "Start Learning"
+msgstr "Mulai Belajar"
+
+#: src/features/Landing/LandingPage.tsx:26
+#: src/features/Landing/LandingPage.tsx:124
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – Mitra Berbicara Bahasa Inggris AI Anda"
 
-#: src/features/Landing/LandingPage.tsx:27
-#: src/features/Landing/LandingPage.tsx:124
+#: src/features/Landing/LandingPage.tsx:28
+#: src/features/Landing/LandingPage.tsx:125
 #. js-lingui-explicit-id
 msgid ""
 "Boost your fluency with FluencyPal, the friendly AI English tutor that's "
@@ -1915,14 +2163,14 @@ msgstr ""
 "lanjutan, FluencyPal menyesuaikan dengan tingkat bicara Anda, memberikan "
 "koreksi instan, dan membantu Anda berbicara dengan percaya diri."
 
-#: src/features/Landing/LandingPage.tsx:46
-#: src/features/Landing/LandingPage.tsx:230
+#: src/features/Landing/LandingPage.tsx:47
+#: src/features/Landing/LandingPage.tsx:201
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
 msgstr "Apa itu FluencyPal?"
 
-#: src/features/Landing/LandingPage.tsx:49
-#: src/features/Landing/LandingPage.tsx:233
+#: src/features/Landing/LandingPage.tsx:50
+#: src/features/Landing/LandingPage.tsx:204
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal is an AI-powered English conversation practice app designed for "
@@ -1935,14 +2183,14 @@ msgstr ""
 "ini menyediakan latihan percakapan yang realistis dalam berbagai bahasa, "
 "dengan umpan balik langsung tentang berbicara dan pengucapan."
 
-#: src/features/Landing/LandingPage.tsx:56
-#: src/features/Landing/LandingPage.tsx:240
+#: src/features/Landing/LandingPage.tsx:57
+#: src/features/Landing/LandingPage.tsx:211
 #. js-lingui-explicit-id
 msgid "How does usage-based pricing work?"
 msgstr "Bagaimana cara kerja penetapan harga berdasarkan penggunaan?"
 
-#: src/features/Landing/LandingPage.tsx:59
-#: src/features/Landing/LandingPage.tsx:243
+#: src/features/Landing/LandingPage.tsx:60
+#: src/features/Landing/LandingPage.tsx:214
 #. js-lingui-explicit-id
 msgid ""
 "You receive a free initial balance to explore FluencyPal. Each conversation "
@@ -1953,14 +2201,14 @@ msgstr ""
 "percakapan menggunakan token dari saldo Anda secara langsung, dan Anda "
 "dapat dengan mudah mengisi ulang kredit kapan saja diperlukan."
 
-#: src/features/Landing/LandingPage.tsx:66
-#: src/features/Landing/LandingPage.tsx:250
+#: src/features/Landing/LandingPage.tsx:67
+#: src/features/Landing/LandingPage.tsx:221
 #. js-lingui-explicit-id
 msgid "Is there a free trial?"
 msgstr "Apakah ada uji coba gratis?"
 
-#: src/features/Landing/LandingPage.tsx:69
-#: src/features/Landing/LandingPage.tsx:253
+#: src/features/Landing/LandingPage.tsx:70
+#: src/features/Landing/LandingPage.tsx:224
 #. js-lingui-explicit-id
 msgid ""
 "Yes, FluencyPal offers a complimentary balance to let you try "
@@ -1970,13 +2218,13 @@ msgstr ""
 "latihan percakapan dan melihat bagaimana platform ini bekerja sebelum "
 "melakukan pengisian."
 
-#: src/features/Landing/LandingPage.tsx:76
-#: src/features/Landing/LandingPage.tsx:260
+#: src/features/Landing/LandingPage.tsx:77
+#: src/features/Landing/LandingPage.tsx:231
 #. js-lingui-explicit-id
 msgid "Can I practice languages other than English?"
 msgstr "Bisakah saya berlatih bahasa selain Inggris?"
 
-#: src/features/Landing/LandingPage.tsx:80
+#: src/features/Landing/LandingPage.tsx:81
 #. js-lingui-explicit-id
 msgid ""
 "Absolutely! FluencyPal supports various languages and adjusts conversations "
@@ -1987,13 +2235,13 @@ msgstr ""
 "percakapan berdasarkan bahasa dan tingkat kemahiran yang Anda pilih. Bahasa "
 "yang tersedia termasuk:"
 
-#: src/features/Landing/LandingPage.tsx:89
-#: src/features/Landing/LandingPage.tsx:280
+#: src/features/Landing/LandingPage.tsx:90
+#: src/features/Landing/LandingPage.tsx:251
 #. js-lingui-explicit-id
 msgid "What learning modes are available?"
 msgstr "Mode pembelajaran apa yang tersedia?"
 
-#: src/features/Landing/LandingPage.tsx:92
+#: src/features/Landing/LandingPage.tsx:93
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal provides three modes: Casual Conversation for uninterrupted "
@@ -2005,14 +2253,14 @@ msgstr ""
 "dan pengucapan, serta Mode Pemula untuk percakapan yang lebih lambat dan "
 "terarah."
 
-#: src/features/Landing/LandingPage.tsx:99
-#: src/features/Landing/LandingPage.tsx:303
+#: src/features/Landing/LandingPage.tsx:100
+#: src/features/Landing/LandingPage.tsx:274
 #. js-lingui-explicit-id
 msgid "How do daily tasks help me improve?"
 msgstr "Bagaimana tugas harian membantu saya meningkatkan?"
 
-#: src/features/Landing/LandingPage.tsx:102
-#: src/features/Landing/LandingPage.tsx:306
+#: src/features/Landing/LandingPage.tsx:103
+#: src/features/Landing/LandingPage.tsx:277
 #. js-lingui-explicit-id
 msgid ""
 "Daily conversational tasks introduce new vocabulary and language "
@@ -2021,13 +2269,13 @@ msgstr ""
 "Tugas percakapan harian memperkenalkan kosakata dan struktur bahasa baru, "
 "memperkuat keterampilan Anda dan mempercepat peningkatan kefasihan."
 
-#: src/features/Landing/LandingPage.tsx:127
+#: src/features/Landing/LandingPage.tsx:128
 #: src/features/Dashboard/ConversationSelectCard.tsx:110
 #. js-lingui-explicit-id
 msgid "Get Started"
 msgstr "Mulai"
 
-#: src/features/Landing/LandingPage.tsx:128
+#: src/features/Landing/LandingPage.tsx:129
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:44
 #: src/features/Landing/Price/PricePage.tsx:96
 #: src/features/Landing/Price/PricePage.tsx:842
@@ -2036,84 +2284,24 @@ msgstr "Mulai"
 msgid "Get Started Free"
 msgstr "Mulai Secara Gratis"
 
-#: src/features/Landing/LandingPage.tsx:129
+#: src/features/Landing/LandingPage.tsx:130
 #: src/features/Landing/Price/PricePage.tsx:97
 #. js-lingui-explicit-id
 msgid "View Pricing"
 msgstr "Lihat Harga"
 
-#: src/features/Landing/LandingPage.tsx:130
+#: src/features/Landing/LandingPage.tsx:131
 #: src/features/Landing/Price/PricePage.tsx:98
 #. js-lingui-explicit-id
 msgid "No Credit Card Needed"
 msgstr "Tidak Perlu Kartu Kredit"
 
-#: src/features/Landing/LandingPage.tsx:136
-#. js-lingui-explicit-id
-msgid "Speak Fluent English with Confidence"
-msgstr "Bicaralah Bahasa Inggris Lancar dengan Percaya Diri"
-
-#: src/features/Landing/LandingPage.tsx:137
-#. js-lingui-explicit-id
-msgid ""
-"FluencyPal offers realistic conversational practice in English, Spanish, "
-"French, and more. Engage in immersive role-play scenarios, get instant "
-"feedback, and improve your speaking skills anytime, anywhere."
-msgstr ""
-"FluencyPal menawarkan praktik percakapan yang realistis dalam bahasa "
-"Inggris, Spanyol, Prancis, dan lainnya. Terlibatlah dalam skenario bermain "
-"peran yang mendalam, dapatkan umpan balik instan, dan tingkatkan "
-"keterampilan berbicara Anda kapan saja, di mana saja."
-
-#: src/features/Landing/LandingPage.tsx:140
-#. js-lingui-explicit-id
-msgid "Get started free"
-msgstr "Mulai gratis"
-
-#: src/features/Landing/LandingPage.tsx:146
-#. js-lingui-explicit-id
-msgid ""
-"Practice slow, guided conversations with simpler vocabulary. Perfect for "
-"building a solid foundation in any language."
-msgstr ""
-"Latih percakapan lambat yang terarah dengan kosakata yang lebih sederhana. "
-"Sempurna untuk membangun dasar yang kokoh dalam bahasa apa pun."
-
-#: src/features/Landing/LandingPage.tsx:152
-#. js-lingui-explicit-id
-msgid "Instant Corrections"
-msgstr "Koreksi Instan"
-
-#: src/features/Landing/LandingPage.tsx:153
-#. js-lingui-explicit-id
-msgid ""
-"Speak freely while the AI teacher highlights mistakes in real time—ideal "
-"for fast improvement and building confidence."
-msgstr ""
-"Berbicaralah dengan bebas sementara guru AI menyoroti kesalahan secara "
-"langsung—ideal untuk perbaikan cepat dan membangun kepercayaan diri."
-
-#: src/features/Landing/LandingPage.tsx:159
-#: src/features/Landing/Price/PricePage.tsx:212
-#. js-lingui-explicit-id
-msgid "Advanced"
-msgstr "Lanjutan"
-
-#: src/features/Landing/LandingPage.tsx:160
-#. js-lingui-explicit-id
-msgid ""
-"Enjoy fast-paced, natural conversations to refine fluency and sound like a "
-"native speaker. Perfect for challenging your skills."
-msgstr ""
-"Nikmati percakapan yang cepat dan alami untuk menyempurnakan kefasihan dan "
-"terdengar seperti penutur asli. Sempurna untuk menantang keterampilan Anda."
-
-#: src/features/Landing/LandingPage.tsx:168
+#: src/features/Landing/LandingPage.tsx:139
 #. js-lingui-explicit-id
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "Empat Cara FluencyPal Meningkatkan Keterampilan Berbicara Anda"
 
-#: src/features/Landing/LandingPage.tsx:169
+#: src/features/Landing/LandingPage.tsx:140
 #. js-lingui-explicit-id
 msgid ""
 "Target the specific skills you need—speaking, grammar, vocabulary, and "
@@ -2123,17 +2311,12 @@ msgstr ""
 "kosakata, dan pelacakan kemajuan—untuk mencapai kefasihan bahasa Inggris "
 "secara online lebih cepat."
 
-#: src/features/Landing/LandingPage.tsx:174
-#. js-lingui-explicit-id
-msgid "Speaking"
-msgstr "Berbicara"
-
-#: src/features/Landing/LandingPage.tsx:175
+#: src/features/Landing/LandingPage.tsx:146
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
 msgstr "Capai Kefasihan Berbicara dengan Cepat"
 
-#: src/features/Landing/LandingPage.tsx:176
+#: src/features/Landing/LandingPage.tsx:147
 #. js-lingui-explicit-id
 msgid ""
 "Practice realistic conversations tailored to your skill level. FluencyPal "
@@ -2144,22 +2327,17 @@ msgstr ""
 "Anda. FluencyPal merespons secara alami, menyoroti area yang memerlukan "
 "perbaikan, dan membangun kepercayaan diri Anda."
 
-#: src/features/Landing/LandingPage.tsx:181
+#: src/features/Landing/LandingPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "Mulai Latihan Berbicara"
 
-#: src/features/Landing/LandingPage.tsx:184
-#. js-lingui-explicit-id
-msgid "Grammar"
-msgstr "Tata Bahasa"
-
-#: src/features/Landing/LandingPage.tsx:185
+#: src/features/Landing/LandingPage.tsx:156
 #. js-lingui-explicit-id
 msgid "Instant Grammar Corrections"
 msgstr "Koreksi Tata Bahasa Instan"
 
-#: src/features/Landing/LandingPage.tsx:186
+#: src/features/Landing/LandingPage.tsx:157
 #. js-lingui-explicit-id
 msgid ""
 "Get immediate feedback and explanations on your grammar mistakes as you "
@@ -2168,22 +2346,22 @@ msgstr ""
 "Dapatkan umpan balik dan penjelasan segera mengenai kesalahan gramatikal "
 "Anda saat Anda berlatih. Tingkatkan akurasi bicara Anda secara alami."
 
-#: src/features/Landing/LandingPage.tsx:191
+#: src/features/Landing/LandingPage.tsx:162
 #. js-lingui-explicit-id
 msgid "Enhance Your Grammar"
 msgstr "Tingkatkan Tata Bahasa Anda"
 
-#: src/features/Landing/LandingPage.tsx:194
+#: src/features/Landing/LandingPage.tsx:165
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "Kosa Kata"
 
-#: src/features/Landing/LandingPage.tsx:195
+#: src/features/Landing/LandingPage.tsx:166
 #. js-lingui-explicit-id
 msgid "Grow Your Vocabulary Daily"
 msgstr "Tumbuhkan Kosakata Anda Setiap Hari"
 
-#: src/features/Landing/LandingPage.tsx:196
+#: src/features/Landing/LandingPage.tsx:167
 #. js-lingui-explicit-id
 msgid ""
 "Receive personalized vocabulary tailored to your conversational needs. Use "
@@ -2192,22 +2370,22 @@ msgstr ""
 "Terima kosakata yang dipersonalisasi sesuai dengan kebutuhan percakapan "
 "Anda. Gunakan kata-kata baru segera untuk memperkuat pembelajaran."
 
-#: src/features/Landing/LandingPage.tsx:201
+#: src/features/Landing/LandingPage.tsx:172
 #. js-lingui-explicit-id
 msgid "Expand Your Vocabulary"
 msgstr "Perluas Kosakata Anda"
 
-#: src/features/Landing/LandingPage.tsx:204
+#: src/features/Landing/LandingPage.tsx:175
 #. js-lingui-explicit-id
 msgid "Progress Tracking"
 msgstr "Pelacakan Kemajuan"
 
-#: src/features/Landing/LandingPage.tsx:205
+#: src/features/Landing/LandingPage.tsx:176
 #. js-lingui-explicit-id
 msgid "Track Your Fluency Progress"
 msgstr "Lacak Kemajuan Kefasihan Anda"
 
-#: src/features/Landing/LandingPage.tsx:206
+#: src/features/Landing/LandingPage.tsx:177
 #. js-lingui-explicit-id
 msgid ""
 "Visualize your daily progress with intuitive tracking. Stay motivated by "
@@ -2216,17 +2394,17 @@ msgstr ""
 "Visualisasikan kemajuan harian Anda dengan pelacakan yang intuitif. Tetap "
 "termotivasi dengan melihat perbaikan Anda secara jelas."
 
-#: src/features/Landing/LandingPage.tsx:211
+#: src/features/Landing/LandingPage.tsx:182
 #. js-lingui-explicit-id
 msgid "Check Your Progress"
 msgstr "Periksa Kemajuan Anda"
 
-#: src/features/Landing/LandingPage.tsx:216
+#: src/features/Landing/LandingPage.tsx:187
 #. js-lingui-explicit-id
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Peran Peran Kehidupan Nyata untuk Latihan Bahasa Inggris Tingkat Lanjut"
 
-#: src/features/Landing/LandingPage.tsx:217
+#: src/features/Landing/LandingPage.tsx:188
 #. js-lingui-explicit-id
 msgid ""
 "Practice speaking fluently in real-world scenarios like job interviews, "
@@ -2235,33 +2413,33 @@ msgstr ""
 "Berlatih berbicara dengan lancar dalam situasi dunia nyata seperti "
 "wawancara kerja, pertemuan bisnis, dan percakapan sehari-hari."
 
-#: src/features/Landing/LandingPage.tsx:220
+#: src/features/Landing/LandingPage.tsx:191
 #. js-lingui-explicit-id
 msgid "Explore Role-Play Scenarios"
 msgstr "Jelajahi Skenario Peran"
 
-#: src/features/Landing/LandingPage.tsx:221
+#: src/features/Landing/LandingPage.tsx:192
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "Mencari sesuatu yang spesifik?"
 
-#: src/features/Landing/LandingPage.tsx:222
+#: src/features/Landing/LandingPage.tsx:193
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "Buat Skenario Anda Sendiri"
 
-#: src/features/Landing/LandingPage.tsx:223
+#: src/features/Landing/LandingPage.tsx:194
 #. js-lingui-explicit-id
 msgid "Master English Fluency"
 msgstr "Kuasai Kefasihan Bahasa Inggris"
 
-#: src/features/Landing/LandingPage.tsx:227
+#: src/features/Landing/LandingPage.tsx:198
 #: src/features/Landing/Price/PricePage.tsx:757
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "FAQ"
 
-#: src/features/Landing/LandingPage.tsx:264
+#: src/features/Landing/LandingPage.tsx:235
 #. js-lingui-explicit-id
 msgid ""
 "Absolutely! FluencyPal supports various languages and adjusts conversations "
@@ -2270,51 +2448,51 @@ msgstr ""
 "Tentu saja! FluencyPal mendukung berbagai bahasa dan menyesuaikan "
 "percakapan berdasarkan bahasa dan tingkat kecakapan yang Anda pilih."
 
-#: src/features/Landing/LandingPage.tsx:270
+#: src/features/Landing/LandingPage.tsx:241
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:356
 #. js-lingui-explicit-id
 msgid "Available languages:"
 msgstr "Bahasa yang tersedia:"
 
-#: src/features/Landing/LandingPage.tsx:285
+#: src/features/Landing/LandingPage.tsx:256
 #. js-lingui-explicit-id
 msgid "Casual Conversation:"
 msgstr "Percakapan Santai:"
 
-#: src/features/Landing/LandingPage.tsx:286
+#: src/features/Landing/LandingPage.tsx:257
 #. js-lingui-explicit-id
 msgid "Practice speaking fluently without interruptions."
 msgstr "Latihan berbicara dengan lancar tanpa jeda."
 
-#: src/features/Landing/LandingPage.tsx:289
+#: src/features/Landing/LandingPage.tsx:260
 #. js-lingui-explicit-id
 msgid "Talk & Correct:"
 msgstr "Talk & Correct:"
 
-#: src/features/Landing/LandingPage.tsx:290
+#: src/features/Landing/LandingPage.tsx:261
 #. js-lingui-explicit-id
 msgid "Receive detailed feedback on grammar and pronunciation instantly."
 msgstr ""
 "Menerima umpan balik terperinci tentang tata bahasa dan pengucapan secara "
 "instan."
 
-#: src/features/Landing/LandingPage.tsx:295
+#: src/features/Landing/LandingPage.tsx:266
 #. js-lingui-explicit-id
 msgid "Beginner Mode:"
 msgstr "Mode Pemula:"
 
-#: src/features/Landing/LandingPage.tsx:296
+#: src/features/Landing/LandingPage.tsx:267
 #. js-lingui-explicit-id
 msgid "Slower conversations with guided support."
 msgstr "Percakapan yang lebih lambat dengan dukungan terarah."
 
-#: src/features/Landing/LandingPage.tsx:315
+#: src/features/Landing/LandingPage.tsx:286
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:414
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "Siap untuk Menjadi Fasih Berbahasa Inggris?"
 
-#: src/features/Landing/LandingPage.tsx:316
+#: src/features/Landing/LandingPage.tsx:287
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:415
 #. js-lingui-explicit-id
 msgid "Start Your Free Trial"
@@ -2584,6 +2762,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Start with Trial"
 msgstr "Mulai dengan Percobaan"
+
+#: src/features/Landing/Price/PricePage.tsx:212
+#. js-lingui-explicit-id
+msgid "Advanced"
+msgstr "Lanjutan"
 
 #: src/features/Landing/Price/PricePage.tsx:213
 #. js-lingui-explicit-id
@@ -2976,24 +3159,26 @@ msgstr "Saya"
 msgid "New rule to practice."
 msgstr "Aturan baru untuk berlatih."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:151
+#: src/features/Dashboard/PlanDashboardCards.tsx:62
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr ""
 "Apakah Anda yakin ingin menghapus tujuan Anda? Tindakan ini tidak dapat "
 "dibatalkan."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:173
+#: src/features/Dashboard/PlanDashboardCards.tsx:129
+#: src/features/Dashboard/GoalCard.tsx:12
+#: src/features/Conversation/ConversationCanvas2.tsx:756
 #. js-lingui-explicit-id
-msgid "Rule"
-msgstr "Aturan"
+msgid "Goal"
+msgstr "Tujuan"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:219
+#: src/features/Dashboard/PlanDashboardCards.tsx:130
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Mulai jalanmu menuju kelancaran"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:326
+#: src/features/Dashboard/PlanDashboardCards.tsx:237
 #. js-lingui-explicit-id
 msgid "Set your goal and start learning!"
 msgstr "Tetapkan tujuan Anda dan mulai belajar!"
@@ -3027,6 +3212,16 @@ msgstr "Skip"
 #. js-lingui-explicit-id
 msgid "Show all"
 msgstr "Tampilkan semua"
+
+#: src/features/Dashboard/GoalCard.tsx:13
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Tetapkan tujuan pembelajaran Anda"
+
+#: src/features/Dashboard/GoalCard.tsx:28
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "Mulai | 5 menit"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:58
 #. js-lingui-explicit-id
@@ -3063,6 +3258,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Set the goal to start"
 msgstr "Tetapkan tujuan untuk memulai"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:194
+#. js-lingui-explicit-id
+msgid "Beginner"
+msgstr "Pemula"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:216
 #. js-lingui-explicit-id
@@ -4561,6 +4761,94 @@ msgstr "Lanjutkan dengan google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Dengan membuat akun, Anda setuju untuk:"
+
+#: src/features/Landing/LandingPage.tsx:138
+#. js-lingui-explicit-id
+#~ msgid "Speak Fluent English with Confidence"
+#~ msgstr "Bicaralah Bahasa Inggris Lancar dengan Percaya Diri"
+
+#: src/features/Landing/LandingPage.tsx:139
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "FluencyPal offers realistic conversational practice in English, Spanish, "
+#~ "French, and more. Engage in immersive role-play scenarios, get instant "
+#~ "feedback, and improve your speaking skills anytime, anywhere."
+#~ msgstr ""
+#~ "FluencyPal menawarkan praktik percakapan yang realistis dalam bahasa "
+#~ "Inggris, Spanyol, Prancis, dan lainnya. Terlibatlah dalam skenario bermain "
+#~ "peran yang mendalam, dapatkan umpan balik instan, dan tingkatkan "
+#~ "keterampilan berbicara Anda kapan saja, di mana saja."
+
+#: src/features/Landing/LandingPage.tsx:142
+#. js-lingui-explicit-id
+#~ msgid "Get started free"
+#~ msgstr "Mulai gratis"
+
+#: src/features/Landing/LandingPage.tsx:148
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Practice slow, guided conversations with simpler vocabulary. Perfect for "
+#~ "building a solid foundation in any language."
+#~ msgstr ""
+#~ "Latih percakapan lambat yang terarah dengan kosakata yang lebih sederhana. "
+#~ "Sempurna untuk membangun dasar yang kokoh dalam bahasa apa pun."
+
+#: src/features/Landing/LandingPage.tsx:154
+#. js-lingui-explicit-id
+#~ msgid "Instant Corrections"
+#~ msgstr "Koreksi Instan"
+
+#: src/features/Landing/LandingPage.tsx:155
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Speak freely while the AI teacher highlights mistakes in real time—ideal "
+#~ "for fast improvement and building confidence."
+#~ msgstr ""
+#~ "Berbicaralah dengan bebas sementara guru AI menyoroti kesalahan secara "
+#~ "langsung—ideal untuk perbaikan cepat dan membangun kepercayaan diri."
+
+#: src/features/Landing/LandingPage.tsx:162
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Enjoy fast-paced, natural conversations to refine fluency and sound like a "
+#~ "native speaker. Perfect for challenging your skills."
+#~ msgstr ""
+#~ "Nikmati percakapan yang cepat dan alami untuk menyempurnakan kefasihan dan "
+#~ "terdengar seperti penutur asli. Sempurna untuk menantang keterampilan Anda."
+
+#: src/features/Landing/PlanLandingBlock.tsx:573
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Jump into your tailored learning path and build real skills through "
+#~ "engaging, hands-on practice."
+#~ msgstr ""
+#~ "Loncatlah ke jalur pembelajaran yang disesuaikan untuk Anda dan kembangkan "
+#~ "keterampilan nyata melalui praktik langsung yang menarik."
+
+#: src/features/Landing/PlanLandingBlock.tsx:635
+#. js-lingui-explicit-id
+#~ msgid "With Desire, with Results"
+#~ msgstr "Dengan Hasrat, dengan Hasil"
+
+#: src/features/Landing/PlanLandingBlock.tsx:635
+#. js-lingui-explicit-id
+#~ msgid "Ready to Start?"
+#~ msgstr "Siap Untuk Memulai?"
+
+#: src/features/Landing/PlanLandingBlock.tsx:244
+#. js-lingui-explicit-id
+#~ msgid "Smart Onboarding"
+#~ msgstr "Pintar Onboarding"
+
+#: src/features/Landing/PlanLandingBlock.tsx:279
+#. js-lingui-explicit-id
+#~ msgid "Start onboarding"
+#~ msgstr "Mulai onboarding"
+
+#: src/features/Landing/PlanLandingBlock.tsx:372
+#. js-lingui-explicit-id
+#~ msgid "Personalized Plan"
+#~ msgstr "Rencana Personalisasi"
 
 #: src/features/Dashboard/SelectLanguage.tsx:54
 #. js-lingui-explicit-id

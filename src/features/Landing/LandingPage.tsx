@@ -12,6 +12,7 @@ import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "../Lang/getUrlStart";
 import Script from "next/script";
 import { HeaderStatic } from "../Header/HeaderStatic";
+import { PlanLandingBlock } from "./PlanLandingBlock";
 
 interface LandingPageProps {
   lang: SupportedLanguage;
@@ -132,37 +133,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             practiceLink={`${getUrlStart(lang)}practice`}
             lang={lang}
           />
-          <IntroVideoDemo
-            title={i18n._(`Speak Fluent English with Confidence`)}
-            subTitle={i18n._(
-              `FluencyPal offers realistic conversational practice in English, Spanish, French, and more. Engage in immersive role-play scenarios, get instant feedback, and improve your speaking skills anytime, anywhere.`
-            )}
-            actionButtonTitle={i18n._(`Get started free`)}
-            actionButtonLink={`${getUrlStart(lang)}practice`}
-            blocks={[
-              {
-                src: "/begin.mp4",
-                buttonTitle: i18n._(`Beginner`),
-                description: i18n._(
-                  `Practice slow, guided conversations with simpler vocabulary. Perfect for building a solid foundation in any language.`
-                ),
-              },
-              {
-                src: "/correct.mp4",
-                buttonTitle: i18n._(`Instant Corrections`),
-                description: i18n._(
-                  `Speak freely while the AI teacher highlights mistakes in real time—ideal for fast improvement and building confidence.`
-                ),
-              },
-              {
-                src: "/advance.mp4",
-                buttonTitle: i18n._(`Advanced`),
-                description: i18n._(
-                  `Enjoy fast-paced, natural conversations to refine fluency and sound like a native speaker. Perfect for challenging your skills.`
-                ),
-              },
-            ]}
-          />
+          <PlanLandingBlock lang={lang} />
 
           <ProposalCards
             title={i18n._(`Four Ways FluencyPal Boosts Your Speaking Skills`)}

@@ -1,7 +1,8 @@
+"use client";
 import { Stack, Typography } from "@mui/material";
-import { Lock } from "lucide-react";
 
 import { ReactNode } from "react";
+import { PlanElementMode } from "./types";
 
 interface PlanCardProps {
   title: string;
@@ -14,7 +15,7 @@ interface PlanCardProps {
   bgColor: string;
   icon: ReactNode;
   actionLabel: string;
-  progressPercent: number;
+  progressPercent?: number;
   delayToShow: number;
 }
 
@@ -35,7 +36,7 @@ export const PlanCard = ({
   return (
     <Stack
       onClick={onClick}
-      component={href ? "a" : "button"}
+      component={href ? "a" : onClick ? "button" : "div"}
       href={href}
       sx={{
         backgroundColor: "transparent",
@@ -49,7 +50,7 @@ export const PlanCard = ({
         position: "relative",
         overflow: "hidden",
 
-        cursor: "pointer",
+        cursor: href && onClick ? "pointer" : "default",
         height: "200px",
         opacity: 0,
         transition: "transform 0.3s ease",
@@ -140,19 +141,21 @@ export const PlanCard = ({
             zIndex: 2,
           }}
         >
-          <Typography
-            sx={{
-              fontWeight: 400,
-              fontSize: "1rem",
-              borderRadius: "8px",
-              // padding: "10px 20px",
-              // border: "1px solid rgba(255, 255, 255, 0.5)",
-              opacity: 0.8,
-            }}
-            align="left"
-          >
-            {progressPercent}%
-          </Typography>
+          {progressPercent !== undefined && (
+            <Typography
+              sx={{
+                fontWeight: 400,
+                fontSize: "1rem",
+                borderRadius: "8px",
+                // padding: "10px 20px",
+                // border: "1px solid rgba(255, 255, 255, 0.5)",
+                opacity: 0.8,
+              }}
+              align="left"
+            >
+              {progressPercent}%
+            </Typography>
+          )}
         </Stack>
       </Stack>
 
