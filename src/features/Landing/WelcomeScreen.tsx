@@ -124,6 +124,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         </Stack>
       </Stack>
 
+      {/** 
       <Stack
         sx={{
           gap: "20px",
@@ -258,7 +259,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           }
           actionLabel={i18n._(`Play a Role`)}
         />
-      </Stack>
+      </Stack>*/}
     </Stack>
   );
 };

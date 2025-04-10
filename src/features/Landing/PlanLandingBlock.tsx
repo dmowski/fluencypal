@@ -263,6 +263,11 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   alignItems: "center",
                   gap: "20px",
                   marginTop: "20px",
+                  "@media (max-width: 700px)": {
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    gap: "6px",
+                  },
                 }}
               >
                 <Button
