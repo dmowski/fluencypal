@@ -141,8 +141,6 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         mode: "conversation",
         description: "",
         startCount: 0,
-        preparingInstructionForAi: "",
-        instructionForAi: "",
         details: "",
       },
 
@@ -153,8 +151,6 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         mode: "conversation",
         description: "",
         startCount: 0,
-        preparingInstructionForAi: "",
-        instructionForAi: "",
         details: "",
       },
     ],
