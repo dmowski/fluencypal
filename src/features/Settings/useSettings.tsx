@@ -15,7 +15,7 @@ interface SettingsContextType {
   fullLanguageName: string | null;
 
   loading: boolean;
-  setLanguage: (language: SupportedLanguage) => void;
+  setLanguage: (language: SupportedLanguage) => Promise<void>;
 }
 
 export const settingsContext = createContext<SettingsContextType>({

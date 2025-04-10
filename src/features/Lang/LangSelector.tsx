@@ -10,17 +10,10 @@ import { Button, Stack } from "@mui/material";
 
 interface LangSelectorProps {
   value: SupportedLanguage | null;
-  onDone: (selectedLang: SupportedLanguage) => void;
-  confirmButtonLabel: string;
-  doneOnChange?: boolean;
+  onChange: (selectedLang: SupportedLanguage) => void;
 }
 
-export const LangSelector = ({
-  value,
-  onDone,
-  confirmButtonLabel,
-  doneOnChange,
-}: LangSelectorProps): JSX.Element => {
+export const LangSelector = ({ value, onChange }: LangSelectorProps): JSX.Element => {
   const [selectedLanguage, setSelectedLanguage] = useState<SupportedLanguage>("en");
   useEffect(() => {
     value && setSelectedLanguage(value);
@@ -66,7 +59,7 @@ export const LangSelector = ({
     if (!code) {
       return;
     }
-    setSelectedLanguage(code);
+    onChange(code);
   };
 
   return (
@@ -84,16 +77,6 @@ export const LangSelector = ({
         onChange={onChangeLanguage}
         groups={userCodes.length > 0 ? groups : undefined}
       />
-      {!doneOnChange && (
-        <Button
-          variant="contained"
-          size="large"
-          disabled={!selectedLanguage}
-          onClick={() => onDone(selectedLanguage)}
-        >
-          {confirmButtonLabel}
-        </Button>
-      )}
     </Stack>
   );
 };

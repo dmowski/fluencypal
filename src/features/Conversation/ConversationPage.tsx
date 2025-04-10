@@ -73,7 +73,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   }
 
   if (!settings.languageCode) {
-    return <SelectLanguage />;
+    return <SelectLanguage pageLang={lang} />;
   }
 
   if (words.isGeneratingWords) {

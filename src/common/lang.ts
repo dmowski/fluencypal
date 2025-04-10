@@ -25,6 +25,9 @@ export type SupportedLanguage =
 export const getLabelFromCode = (lang: SupportedLanguage) => {
   const englishName = fullEnglishLanguageName[lang];
   const name = fullLanguageName[lang];
+  if (name === englishName) {
+    return name;
+  }
   return `${englishName} (${name})`;
 };
 
