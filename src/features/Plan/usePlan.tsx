@@ -93,7 +93,7 @@ The app supports the following activity types:
 * rule: Learn and practice grammar or language rules
 * conversation: General conversation with AI on a specific topic
 
-Your output must be in valid JSON format with no additional text or explanation. It will be parsed using JSON.parse().
+Your output must be in valid JSON format with no additional text or explanation. Your response will be parsed using JSON.parse().
 
 Example of plan:
 [
@@ -110,34 +110,16 @@ Example of plan:
     "details": "Practice essential words used in programming, tools (e.g. Git, IDE), and collaboration (e.g. pull request, backlog). Student will match terms, fill gaps, and use new words in context."
   },
   {
-    "type": "words",
-    "title": "Behavioral Interview Vocabulary",
-    "description": "Common words and phrases used in behavioral interviews",
-    "details": "Learn expressions and vocabulary related to workplace behavior, leadership, and problem-solving (e.g. deadline, teamwork, responsibility). Practice them in short sentences and mock questions."
-  },
-  {
     "type": "play",
     "title": "Job Interview Simulation",
     "description": "Mock technical interview for a software developer position",
     "details": "AI acts as an interviewer asking both technical and behavioral questions. Student must respond clearly and confidently. After each response, AI gives specific feedback on grammar, vocabulary, and fluency."
   },
   {
-    "type": "play",
-    "title": "Daily Stand-Up Meeting",
-    "description": "Role-play a developer’s daily stand-up",
-    "details": "Student practices summarizing yesterday’s work, today’s plans, and blockers. AI provides realistic follow-up questions. Focus on past and future tense, fluency, and concise speaking."
-  },
-  {
     "type": "rule",
     "title": "Past Simple Tense",
     "description": "Understanding and practicing past simple tense",
     "details": "Review past simple grammar rules. Student completes gap-fill exercises, rewrites present-tense sentences, and speaks about past events. AI highlights mistakes and corrects them with explanations."
-  },
-  {
-    "type": "rule",
-    "title": "Conditionals",
-    "description": "Practice zero, first, and second conditionals",
-    "details": "Teach the form and function of conditionals using examples. Student practices constructing correct sentences, transforming incorrect ones, and using conditionals in context-based speaking."
   },
   {
     "type": "conversation",
