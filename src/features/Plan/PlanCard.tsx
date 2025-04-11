@@ -50,7 +50,7 @@ export const PlanCard = ({
         position: "relative",
         overflow: "hidden",
 
-        cursor: href && onClick ? "pointer" : "default",
+        cursor: href || onClick ? "pointer" : "default",
         height: "200px",
         opacity: 0,
         transition: "transform 0.3s ease",
