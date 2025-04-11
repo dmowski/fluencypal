@@ -313,9 +313,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                           gap: "7px",
                         }}
                       >
-                        <Typography variant="caption">
-                          {i18n._(`First 15 mins are free. Then pay what you want.`)}
-                        </Typography>
+                        <Typography variant="caption">{i18n._(`First hour is free.`)}</Typography>
                         <Link
                           variant="caption"
                           color="info"
