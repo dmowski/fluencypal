@@ -66,6 +66,7 @@ Leave a lasting positive impression:
 ## Ready to Practice?
 The best way to master these phrases is by practicing them in realistic scenarios. FluencyPal’s AI-powered mock interviews provide real-time feedback, helping you perfect your responses and gain the confidence you need to succeed. Why not start practicing today?`
       ),
+
       imagePreviewUrl: "/blog/3c18e767-f547-4b15-88fd-9ce1f92fa1c4.webp",
       publishedAt: Date.now(),
       category: {

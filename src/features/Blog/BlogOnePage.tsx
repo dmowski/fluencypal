@@ -245,6 +245,16 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                   }}
                 >
                   <Markdown size="small">{`${item.content}`}</Markdown>
+                  {item.contendElement && (
+                    <Stack
+                      sx={{
+                        width: "100%",
+                        maxWidth: "800px",
+                      }}
+                    >
+                      {item.contendElement}
+                    </Stack>
+                  )}
                 </Stack>
               </Stack>
             </Stack>

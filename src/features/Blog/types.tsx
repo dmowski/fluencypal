@@ -1,4 +1,5 @@
 import { ResourceCategory } from "@/common/category";
+import { JSX } from "react";
 
 export interface BlogPost {
   id: string;
@@ -6,6 +7,7 @@ export interface BlogPost {
   subTitle: string;
   keywords: string[];
   content: string;
+  contendElement?: JSX.Element;
 
   imagePreviewUrl: string;
   videoSrc?: string;
