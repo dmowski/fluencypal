@@ -10,6 +10,7 @@ import { deleteCollectionDocs } from "../Firebase/init";
 import { ChatMessage } from "@/common/conversation";
 import { AiUserInfoRecord } from "@/common/userInfo";
 import { useTextAi } from "../Ai/useTextAi";
+import { useFixJson } from "../Ai/useFixJson";
 
 interface GenerateGoalProps {
   conversationMessage: ChatMessage[];
@@ -33,6 +34,7 @@ function useProvidePlan(): PlanContextType {
   const auth = useAuth();
   const settings = useSettings();
   const textAi = useTextAi();
+  const fixJson = useFixJson();
   const [isCraftingGoal, setIsCraftingGoal] = useState(false);
   const [isCraftingError, setIsCraftingError] = useState(false);
 
@@ -164,7 +166,7 @@ ${input.conversationMessage.map((message) => {
       model: "gpt-4o",
     });
 
-    const parsedElements = JSON.parse(elements) as AiGeneratedElement[];
+    const parsedElements = (await fixJson.parseJson(elements)) as AiGeneratedElement[];
 
     interface AiGeneratedElement {
       type: string;

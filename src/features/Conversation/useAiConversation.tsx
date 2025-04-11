@@ -204,8 +204,9 @@ function useProvideAiConversation(): AiConversationContextType {
 
     if (
       conversation.length === 8 ||
-      conversation.length === 20 ||
-      conversation.length === 40 ||
+      conversation.length === 11 ||
+      conversation.length === 19 ||
+      conversation.length === 41 ||
       conversation.length === 50
     ) {
       if (currentMode === "goal") {
