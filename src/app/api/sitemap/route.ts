@@ -2,7 +2,7 @@ import { SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { getBlogs } from "@/features/Blog/blogData";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 
-const updateTime = "2025-04-11T13:02:02+00:00";
+const updateTime = "2025-04-11T22:02:02+00:00";
 
 interface UrlDefinition {
   path: string;

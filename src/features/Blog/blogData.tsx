@@ -2,6 +2,9 @@ import { SupportedLanguage } from "@/common/lang";
 import { BlogPost } from "./types";
 import { getI18nInstance } from "@/appRouterI18n";
 import { ResourceCategory } from "@/common/category";
+import { Box, Link, List, ListItem, ListItemText, Stack, Typography } from "@mui/material";
+import { Markdown } from "../uiKit/Markdown/Markdown";
+import { PhrasesArticles } from "./Articles/phrases-for-an-interview";
 
 export interface BlogInfo {
   blogs: BlogPost[];
@@ -12,6 +15,25 @@ export interface BlogInfo {
 export const getBlogs = (lang: SupportedLanguage): BlogInfo => {
   const i18n = getI18nInstance(lang);
   const blogs: BlogPost[] = [
+    {
+      id: "phrases-for-an-interview-in-english",
+      title: i18n._(`Phrases for an interview in English`),
+      subTitle: i18n._(
+        "Master essential phrases for interviews in English and boost your confidence with FluencyPal."
+      ),
+      keywords: [
+        i18n._("Interview English"),
+        i18n._("Business English"),
+        i18n._("Job Interview Tips"),
+        i18n._("Phrases for an interview in English"),
+      ],
+      content: "",
+      contendElement: <PhrasesArticles lang={lang} />,
+      imagePreviewUrl: "/blog/ceb0e1b7-9c34-47c0-ae09-4086fb734da4.webp",
+      publishedAt: Date.now(),
+      category: { categoryTitle: i18n._("Interview Tips"), categoryId: "interview_tips" },
+      relatedRolePlays: ["job-interview"],
+    },
     {
       id: "15-business-english-phrases-interview",
       title: i18n._("15 Must-Know Business English Phrases to Ace Your Next Job Interview"),
