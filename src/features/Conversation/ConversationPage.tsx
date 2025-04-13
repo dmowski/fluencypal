@@ -23,6 +23,7 @@ import { useRules } from "../Rules/useRules";
 import { WordsToLearn } from "../Dashboard/WordsToLearn";
 import { RulesToLearn } from "../Dashboard/RulesToLearn";
 import { ConversationError } from "./ConversationError";
+import { useHotjar } from "../Analytics/useHotjar";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -31,6 +32,7 @@ interface ConversationPageProps {
 
 export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) {
   const auth = useAuth();
+  useHotjar();
   const settings = useSettings();
   const aiConversation = useAiConversation();
   const usage = useUsage();
