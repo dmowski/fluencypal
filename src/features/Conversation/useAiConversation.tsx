@@ -29,7 +29,7 @@ import { GoalElementInfo, GoalPlan } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
 
-const aiModal = MODELS.SMALL_CONVERSATION;
+const aiModal = MODELS.REALTIME_CONVERSATION;
 
 interface StartConversationProps {
   mode: ConversationMode;
