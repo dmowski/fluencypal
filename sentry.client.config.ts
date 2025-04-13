@@ -24,6 +24,7 @@ Sentry.init({
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
 
+  /*
   sendDefaultPii: false,
 
   beforeSend(event) {
@@ -35,5 +36,5 @@ Sentry.init({
     // Remove other identifying data
     event.user = undefined;
     return event;
-  },
+  },*/
 });
