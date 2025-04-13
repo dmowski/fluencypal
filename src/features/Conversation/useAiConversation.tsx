@@ -27,6 +27,7 @@ import { firstAiMessage, fullEnglishLanguageName, getUserLangCode } from "@/comm
 import { useRouter, useSearchParams } from "next/navigation";
 import { GoalElementInfo, GoalPlan } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";
+import * as Sentry from "@sentry/nextjs";
 
 const aiModal = MODELS.SMALL_CONVERSATION;
 
@@ -292,6 +293,16 @@ Start your message with (Use the same language as in conversation): "Hmm, You kn
 
       const isEmptyChat = prev.length === 0;
       const isEmptyNewMessage = message.text.trim() === "";
+      const isErrorState = (isEmptyChat && isEmptyNewMessage) || true;
+      if (isErrorState) {
+        console.error("❌ Empty message from AI. Restarting conversation...");
+        Sentry.captureException(new Error("Empty message from AI. Restarting conversation..."), {
+          extra: {
+            conversationId,
+            conversation,
+          },
+        });
+      }
 
       return [
         ...prev,
@@ -753,7 +764,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
 
   const addUserMessage = async (message: string) => {
     communicator?.addUserChatMessage(message);
-    await sleep(100);
+    await sleep(300);
     await communicatorRef.current?.triggerAiResponse();
     const userMessage: ChatMessage = { isBot: false, text: message, id: `${Date.now()}` };
 
