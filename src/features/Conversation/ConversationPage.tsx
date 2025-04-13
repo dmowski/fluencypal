@@ -112,9 +112,19 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           togglePaymentModal={usage.togglePaymentModal}
           analyzeUserMessage={corrections.analyzeUserMessage}
           transcriptMessage={recorder.transcription || ""}
-          startRecording={recorder.startRecording}
-          stopRecording={recorder.stopRecording}
-          cancelRecording={recorder.cancelRecording}
+          toggleVolume={aiConversation.toggleVolume}
+          startRecording={async () => {
+            aiConversation.toggleVolume(false);
+            await recorder.startRecording();
+          }}
+          stopRecording={async () => {
+            aiConversation.toggleVolume(true);
+            await recorder.stopRecording();
+          }}
+          cancelRecording={async () => {
+            aiConversation.toggleVolume(true);
+            recorder.cancelRecording();
+          }}
           isTranscribing={recorder.isTranscribing}
           isRecording={recorder.isRecording}
           recordingMilliSeconds={recorder.recordingMilliSeconds}

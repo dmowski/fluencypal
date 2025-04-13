@@ -422,6 +422,21 @@ export const initAiRtc = async ({
   }
 
   const toggleVolume = async (isVolumeOn: boolean) => {
+    if (!audioEl) {
+      console.error("Audio element is not available");
+      return;
+    }
+
+    if (!isVolumeOn) {
+      audioEl.muted = true;
+      audioEl.volume = 0;
+      return;
+    } else {
+      audioEl.muted = false;
+      audioEl.volume = 1;
+    }
+
+    /*
     await updateSession({
       dataChannel,
       //aiTools: aiToolsForLlm,
@@ -429,6 +444,7 @@ export const initAiRtc = async ({
       voice,
       modalities: isVolumeOn ? ["audio", "text"] : ["text"],
     });
+    */
   };
 
   return {

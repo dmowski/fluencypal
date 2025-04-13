@@ -59,6 +59,7 @@ interface ConversationCanvasProps {
   confirmGoal: (isConfirm: boolean) => Promise<void>;
   goalSettingProgress: number;
   isSavingGoal: boolean;
+  toggleVolume: (isVolumeOn: boolean) => void;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   conversation,
@@ -86,6 +87,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   confirmGoal,
   goalSettingProgress,
   isSavingGoal,
+  toggleVolume,
 }) => {
   const { i18n } = useLingui();
 
