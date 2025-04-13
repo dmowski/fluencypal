@@ -70,9 +70,9 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     previousBotMessage: string;
     message: string;
   }) => {
-    await sleep(10000);
+    await sleep(1000);
     return {
-      correctedMessage: message, //"Nice to be here!",
+      correctedMessage: "message", //"Nice to be here!",
       description: "Need to pay attention to the grammar",
       sourceMessage: message,
       newWords: ["Hello", "Amazing"],
@@ -130,7 +130,8 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     }
   };
 
-  const testGoal: GoalPlan = {
+  const testGoal: GoalPlan | null = null;
+  const a = {
     id: "",
     title: "Improve Spontaneous Speaking",
     elements: [
@@ -177,11 +178,11 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         stopRecording={async () => {}}
         cancelRecording={async () => {}}
         isTranscribing={false}
-        transcriptMessage=""
+        transcriptMessage="Hello"
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
-        isProcessingGoal={true}
+        isProcessingGoal={false}
         temporaryGoal={testGoal}
         confirmGoal={async () => {}}
         goalSettingProgress={12}
