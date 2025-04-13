@@ -714,9 +714,20 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
 
   const closeConversation = async () => {
     setIsClosing(true);
-    const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
-    if (isNeedToSaveUserInfo && conversation.length > 4) {
-      await aiUserInfo.updateUserInfo(conversation);
+    try {
+      const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
+      if (isNeedToSaveUserInfo && conversation.length > 4) {
+        await aiUserInfo.updateUserInfo(conversation);
+      }
+    } catch (e) {
+      console.error("Error saving user info:", e);
+      Sentry.captureException(e, {
+        extra: {
+          conversationId,
+          conversationLength: conversation.length,
+          currentMode,
+        },
+      });
     }
 
     communicator?.closeHandler();
