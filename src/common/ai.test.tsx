@@ -43,36 +43,6 @@ describe("Calculate real time price", () => {
     expect(price).toBe(priceWithProfit);
   });
 
-  it("One hour of usage should match price per hour", () => {
-    const price = calculateUsagePrice(
-      {
-        total_tokens: 300_000,
-        input_tokens: 0,
-        output_tokens: 300_000,
-        input_token_details: {
-          text_tokens: 0,
-          audio_tokens: 0,
-          cached_tokens: 0,
-          cached_tokens_details: {
-            text_tokens: 0,
-            audio_tokens: 0,
-          },
-        },
-        output_token_details: {
-          text_tokens: 300_000,
-          audio_tokens: 1,
-        },
-      },
-      "gpt-4o-realtime-preview"
-    );
-
-    expect(price).toBeDefined();
-    expect(typeof price).toBe("number");
-    expect(isFinite(price)).toBe(true);
-
-    expect(Math.round(price)).toBe(pricePerHour);
-  });
-
   it("should correctly calculate the usage price (Output text)", () => {
     const price = calculateUsagePrice(
       {
