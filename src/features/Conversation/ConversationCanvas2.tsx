@@ -4,7 +4,7 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { Alert, Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import { ArrowUp, Check, Loader, Mic, ShieldAlert, Trash2, X } from "lucide-react";
+import { ArrowUp, Check, Loader, Mic, ShieldAlert, Trash2 } from "lucide-react";
 
 import AddCardIcon from "@mui/icons-material/AddCard";
 
@@ -379,7 +379,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                               : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
                         }}
                       >
-                        {isNeedToShowCorrection ? (
+                        {isNeedToShowCorrection && !isAnalyzingResponse ? (
                           <ShieldAlert color="#fff" size={"20px"} />
                         ) : (
                           <>

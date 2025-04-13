@@ -202,41 +202,6 @@ function useProvideAiConversation(): AiConversationContextType {
       const progress = messageCount / messagesToProcess;
       setGoalSettingProgress(Math.max(Math.round(Math.min(progress * 100, 100)), 0));
     }
-
-    if (
-      conversation.length === 8 ||
-      conversation.length === 11 ||
-      conversation.length === 19 ||
-      conversation.length === 41 ||
-      conversation.length === 50
-    ) {
-      if (currentMode === "goal") {
-        setIsProcessingGoal(true);
-        console.log("❌ Finishing goal conversation....");
-        aiUserInfo.updateUserInfo(conversation).then(async (userInfoRecords) => {
-          console.log("Triggering wrap up instruction...");
-          const newInstruction = `Let's wrap up our conversation. Tell student that goal is briefly set. And if they want to continue talking, we can do it. But for now, it's time to grow and expand more interesting modes on FluencyPal.
-
-Tell user something like "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}"
-`;
-          await communicatorRef.current?.updateSessionTrigger(newInstruction, isVolumeOn);
-          await sleep(5000);
-          console.log("❌ Triggering User message...");
-          const userMessageFinish = `Tell me last thing about my goal.
-Start your message with (Use the same language as in conversation): "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}" (Use the same language as in conversation)`;
-          communicatorRef.current?.addUserChatMessage(userMessageFinish);
-          await sleep(1000);
-          console.log("❌  Triggering AI response...");
-          await communicatorRef.current?.triggerAiResponse();
-          await sleep(1000);
-          const generatedGoal = await plan.generateGoal({
-            userInfo: userInfoRecords.records,
-            conversationMessage: conversation,
-          });
-          setTemporaryGoal(generatedGoal);
-        });
-      }
-    }
   }, [conversation.length]);
 
   const onAddDelta = (id: string, delta: string, isBot: boolean) => {
@@ -763,10 +728,41 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
   };
 
   const addUserMessage = async (message: string) => {
+    const userMessage: ChatMessage = { isBot: false, text: message, id: `${Date.now()}` };
+    if (conversation.length >= 8 && currentMode === "goal") {
+      setIsProcessingGoal(true);
+      setConversation((prev) => [...prev, userMessage]);
+      console.log("❌ Finishing goal conversation....");
+      const userInfoRecords = await aiUserInfo.updateUserInfo([...conversation, userMessage]);
+
+      const newInstruction = `Let's wrap up our conversation. Tell student that goal is briefly set. And if they want to continue talking, we can do it. But for now, it's time to grow and expand more interesting modes on FluencyPal.
+
+Tell user something like "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}"
+`;
+      await communicatorRef.current?.updateSessionTrigger(newInstruction, isVolumeOn);
+      await sleep(2000);
+      console.log("❌ Triggering User message...");
+      const userMessageFinish = `Tell me last thing about my goal.
+Start your message with similar to (Use the same language as in conversation): "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}" (Use the same language as in conversation)
+
+My last message was: "${message}".
+`;
+      communicatorRef.current?.addUserChatMessage(userMessageFinish);
+      await sleep(1000);
+      console.log("❌  Triggering AI response...");
+      await communicatorRef.current?.triggerAiResponse();
+      await sleep(1000);
+      const generatedGoal = await plan.generateGoal({
+        userInfo: userInfoRecords.records,
+        conversationMessage: conversation,
+      });
+      setTemporaryGoal(generatedGoal);
+      return;
+    }
+
     communicator?.addUserChatMessage(message);
     await sleep(300);
     await communicatorRef.current?.triggerAiResponse();
-    const userMessage: ChatMessage = { isBot: false, text: message, id: `${Date.now()}` };
 
     setConversation((prev) => [...prev, userMessage]);
   };
