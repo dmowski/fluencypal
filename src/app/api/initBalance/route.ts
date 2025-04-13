@@ -34,7 +34,11 @@ export async function POST(request: Request) {
     done: true,
   };
 
-  sentSupportTelegramMessage(`New user: ${userInfo.email}`);
+  const devEmails = ["dmowski.alex@gmail.com"];
+  const isDev = devEmails.includes(userInfo?.email || "");
+  if (!isDev) {
+    sentSupportTelegramMessage(`New user: ${userInfo.email}`);
+  }
 
   return Response.json(response);
 }
