@@ -275,9 +275,9 @@ Start your message with (Use the same language as in conversation): "Hmm, You kn
   }, [fullLanguageName]);
 
   const onOpen = async () => {
-    await sleep(300);
+    await sleep(1000);
     communicatorRef.current?.triggerAiResponse();
-    await sleep(1800);
+    await sleep(300);
     setIsInitializing("");
     setIsStarted(true);
   };
@@ -714,7 +714,6 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
       }
 
       console.log("instruction:", instruction);
-      await sleep(1400);
       const conversation = await initAiRtc({
         ...aiRtcConfig,
         initInstruction: instruction,
@@ -725,7 +724,13 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
       setCommunicator(conversation);
     } catch (e) {
       console.error(e);
-      setErrorInitiating("Something went wrong. Try again later");
+      const isNotAllowedError = (e as Error).toString().includes("NotAllowedError");
+      console.log("isNotAllowedError", isNotAllowedError);
+      setErrorInitiating(
+        isNotAllowedError
+          ? "Please enable microphone access to start the conversation."
+          : "Please try to refresh page and try one more time."
+      );
       setIsInitializing("");
       throw e;
     }
