@@ -10,6 +10,7 @@ import { MODELS } from "@/common/ai";
 import { useWords } from "../Words/useWords";
 import { PhraseCorrection } from "./types";
 import { doc, setDoc } from "firebase/firestore";
+import { isGoodUserInput } from "./isGoodUserInput";
 
 interface AnalyzeUserMessageInput {
   previousBotMessage: string;
@@ -71,8 +72,10 @@ function useProvideCorrections(): CorrectionsContextType {
       const correctedMessage = parsedResult ? (parsedResult?.correctedMessage as string) || "" : "";
       const suggestion = parsedResult ? parsedResult?.suggestion || "" : "";
 
-      const isGood =
-        !correctedMessage || correctedMessage.toLowerCase() === input.message.toLowerCase();
+      const isGood = isGoodUserInput({
+        input: input.message,
+        correctedMessage,
+      });
 
       if (correctionStatsDocRef && !isGood) {
         const correctionDoc = doc(correctionStatsDocRef);
@@ -89,8 +92,8 @@ function useProvideCorrections(): CorrectionsContextType {
       }
 
       return {
-        correctedMessage: correctedMessage,
-        description: suggestion,
+        correctedMessage: isGood ? input.message : correctedMessage,
+        description: isGood ? "" : suggestion,
         sourceMessage: input.message,
         newWords: await newWordsStatsRequest,
       };

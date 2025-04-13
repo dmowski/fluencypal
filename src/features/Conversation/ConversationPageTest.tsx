@@ -70,9 +70,9 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     previousBotMessage: string;
     message: string;
   }) => {
-    await sleep(1000);
+    await sleep(100);
     return {
-      correctedMessage: "message", //"Nice to be here!",
+      correctedMessage: message + ",", //"Nice to be here!",
       description: "Need to pay attention to the grammar",
       sourceMessage: message,
       newWords: ["Hello", "Amazing"],
