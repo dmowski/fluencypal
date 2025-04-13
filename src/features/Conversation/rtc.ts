@@ -91,7 +91,7 @@ type Modalities = "audio" | "text";
 interface UpdateSessionProps {
   dataChannel: RTCDataChannel;
   initInstruction?: string;
-  aiTools: AiToolForLlm[];
+  //aiTools: AiToolForLlm[];
   voice?: AiVoice;
   languageCode: SupportedLanguage;
   modalities: Modalities[];
@@ -100,7 +100,7 @@ interface UpdateSessionProps {
 const updateSession = async ({
   dataChannel,
   initInstruction,
-  aiTools,
+  //aiTools,
   voice,
   languageCode,
   modalities,
@@ -111,17 +111,19 @@ const updateSession = async ({
     type: "session.update",
     session: {
       instructions: initInstruction,
+      /*
       tools: aiTools,
       input_audio_transcription: {
-        model: "whisper-1",
+        model: "whisper-1", // TODO: do we need to keep?
         language: languageCode,
-      },
+      },*/
       voice,
       modalities,
+      /*
       turn_detection: {
         type: "semantic_vad",
-        eagerness: "auto",
-      },
+        eagerness: "auto", // TODO: do we need to keep?
+      },*/
     },
   };
   await sleep(100);
@@ -219,12 +221,13 @@ export const initAiRtc = async ({
     audio: true,
   });
   peerConnection.addTrack(userMedia.getTracks()[0]);
+
   const dataChannel = peerConnection.createDataChannel("oai-events");
 
   const messageHandler = (e: MessageEvent) => {
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
-    //console.log("Event type:", type);
+    //console.log("Event type:", type, "|", event);
     //console.log(JSON.stringify(event, null, 2));
 
     if (type === "response.done") {
@@ -332,10 +335,11 @@ export const initAiRtc = async ({
   });
 
   const openHandler = async () => {
+    await sleep(600);
     await updateSession({
       dataChannel,
       initInstruction,
-      aiTools: aiToolsForLlm,
+      //aiTools: aiToolsForLlm,
       voice,
       languageCode,
       modalities: isVolumeOn ? ["audio", "text"] : ["text"],
@@ -347,6 +351,7 @@ export const initAiRtc = async ({
   dataChannel.addEventListener("open", openHandler);
 
   const offer = await peerConnection.createOffer();
+
   await peerConnection.setLocalDescription(offer);
   const answer: RTCSessionDescriptionInit = {
     type: "answer",
@@ -392,7 +397,7 @@ export const initAiRtc = async ({
     await updateSession({
       dataChannel,
       initInstruction: instruction,
-      aiTools: aiToolsForLlm,
+      //aiTools: aiToolsForLlm,
       languageCode,
       voice,
       modalities: isVolumeOn ? ["audio", "text"] : ["text"],
@@ -419,7 +424,7 @@ export const initAiRtc = async ({
   const toggleVolume = async (isVolumeOn: boolean) => {
     await updateSession({
       dataChannel,
-      aiTools: aiToolsForLlm,
+      //aiTools: aiToolsForLlm,
       languageCode,
       voice,
       modalities: isVolumeOn ? ["audio", "text"] : ["text"],
