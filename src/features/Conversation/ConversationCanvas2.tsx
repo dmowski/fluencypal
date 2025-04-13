@@ -4,7 +4,7 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { Alert, Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import { ArrowUp, Check, Loader, Mic, Trash2, X } from "lucide-react";
+import { ArrowUp, Check, Loader, Mic, ShieldAlert, Trash2, X } from "lucide-react";
 
 import AddCardIcon from "@mui/icons-material/AddCard";
 
@@ -17,7 +17,7 @@ import { StringDiff } from "react-string-diff";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useLingui } from "@lingui/react";
 import { useSound } from "../Audio/useSound";
-import { GoalElementInfo, GoalPlan } from "../Plan/types";
+import { GoalPlan } from "../Plan/types";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -160,8 +160,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
       if (!isMuted) {
         if (!isBad) {
           sound.play("win3", 0.2);
-        } else {
-          sound.play("lose1", 0.2);
         }
       }
     } catch (error) {
@@ -377,12 +375,12 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                           background: isAnalyzingResponse
                             ? "rgba(255, 255, 255, 0.06)"
                             : isNeedToShowCorrection
-                              ? "#c4574f"
+                              ? "#c29f2b"
                               : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
                         }}
                       >
                         {isNeedToShowCorrection ? (
-                          <X color="#fff" size={"20px"} />
+                          <ShieldAlert color="#fff" size={"20px"} />
                         ) : (
                           <>
                             {isAnalyzingResponse ? (
