@@ -355,7 +355,19 @@ In this scenario, you’ll step into the role of a traveler looking to buy a tic
 You’ll take on the role of a patient visiting a doctor, played by the AI. The doctor will ask about your symptoms, provide advice, and suggest possible treatments. By conversing naturally, you’ll hone your communication skills in a professional healthcare context.
 `),
       category: { categoryTitle: i18n._("Health"), categoryId: "health" },
-      input: [],
+      input: [
+        {
+          type: "checkbox",
+          labelForAi: "",
+          labelForUser: i18n._(
+            "I aware that this is a simulation and not a real medical consultation."
+          ),
+          id: "aware",
+          placeholder: "",
+          defaultValue: "",
+          required: true,
+        },
+      ],
 
       subTitle: i18n._("Learn to describe symptoms and ask for medical advice effectively"),
       instructionToAi:
@@ -530,7 +542,19 @@ You’ll act as a caller seeking help with a technical issue, while the AI plays
 You’ll take the role of a patient calling a doctor’s office to schedule an appointment. The AI, as a receptionist, will ask for your name, preferred date, and reason for the visit. By responding naturally, you’ll build essential communication skills for any medical context.
 `),
       category: { categoryTitle: i18n._("Health"), categoryId: "health" },
-      input: [],
+      input: [
+        {
+          type: "checkbox",
+          labelForAi: "",
+          labelForUser: i18n._(
+            "I aware that this is a simulation and not a real medical consultation."
+          ),
+          id: "aware",
+          placeholder: "",
+          defaultValue: "",
+          required: true,
+        },
+      ],
 
       subTitle: i18n._("Learn how to schedule a medical visit over the phone"),
       instructionToAi:
@@ -593,6 +617,18 @@ You’ll step into the role of a customer returning a product, while the AI acts
             Fluent: `Use sophisticated language and detailed psychological concepts.`,
           },
           required: false,
+        },
+
+        {
+          type: "checkbox",
+          labelForAi: "",
+          labelForUser: i18n._(
+            "I aware that this is a simulation and not a real medical consultation."
+          ),
+          id: "aware",
+          placeholder: "",
+          defaultValue: "",
+          required: true,
         },
       ],
 

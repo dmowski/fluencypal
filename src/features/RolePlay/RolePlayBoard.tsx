@@ -519,6 +519,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
                                 disabled={isStarting}
                               />
                             }
+                            required={input.required}
                             label={input.labelForUser}
                           />
                         ),
