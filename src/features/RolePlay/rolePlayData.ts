@@ -192,7 +192,9 @@ Candidate's info below, don't include questions that are already answered by can
       instructionToAi: `You are a professional recruiter conducting a job interview.
 Ask the user about their experience, skills, and why they want the job.
 Adjust difficulty based on responses.
-Leave feedback after each user message, as well as examples of best responses, taking into account the user's resume.`,
+Leave feedback after each user message, as well as examples of best responses, taking into account the user's resume.
+Keep asking user different aspects of the job.
+`,
       exampleOfFirstMessageFromAi:
         "Hi, my name is Alloy. I'm a recruiter at XYZ. Thank you for coming in today. I’d love to learn more about your professional background and experiences. Could you start by telling me a bit about yourself?",
       illustrationDescription:
