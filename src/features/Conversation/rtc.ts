@@ -371,6 +371,13 @@ export const initAiRtc = async ({
     }
 
     if (peerConnection && peerConnection.signalingState !== "closed") {
+      peerConnection.getSenders().forEach((sender, index) => {
+        if (sender.track) {
+          sender.track.stop();
+          console.log("Track stopped - #", index);
+        }
+      });
+
       peerConnection.close();
       console.log("Peer connection closed");
     }
