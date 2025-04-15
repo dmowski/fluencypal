@@ -241,7 +241,7 @@ function useProvideAiConversation(): AiConversationContextType {
   }, [fullLanguageName]);
 
   const onOpen = async () => {
-    await sleep(1000);
+    await sleep(3000);
     communicatorRef.current?.triggerAiResponse();
     await sleep(300);
     setIsInitializing("");
