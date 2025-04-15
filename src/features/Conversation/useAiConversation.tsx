@@ -704,7 +704,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
       console.log("isNotAllowedError", isNotAllowedError);
       setErrorInitiating(
         isNotAllowedError
-          ? "Please enable microphone access to start the conversation."
+          ? "Please enable microphone access to start the conversation." + `${e}`
           : "Please try to refresh page and try one more time."
       );
       setIsInitializing("");
