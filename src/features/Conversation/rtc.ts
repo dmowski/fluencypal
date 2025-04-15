@@ -220,6 +220,7 @@ export const initAiRtc = async ({
   const userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
+  await sleep(4_000);
   peerConnection.addTrack(userMedia.getTracks()[0]);
 
   const dataChannel = peerConnection.createDataChannel("oai-events");
