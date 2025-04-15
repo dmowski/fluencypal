@@ -216,7 +216,7 @@ export const initAiRtc = async ({
     audioEl.srcObject = stream;
     monitorWebRtcAudio(stream, setIsAiSpeaking);
   };
-  await sleep(2000);
+  await sleep(1000);
   const userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
