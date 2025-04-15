@@ -241,7 +241,7 @@ function useProvideAiConversation(): AiConversationContextType {
   }, [fullLanguageName]);
 
   const onOpen = async () => {
-    await sleep(3000);
+    await sleep(100);
     communicatorRef.current?.triggerAiResponse();
     await sleep(300);
     setIsInitializing("");
@@ -704,7 +704,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
       console.log("isNotAllowedError", isNotAllowedError);
       setErrorInitiating(
         isNotAllowedError
-          ? "Please enable microphone access to start the conversation." + `${e}`
+          ? "Please enable microphone access to start the conversation. Error code:" + `${e}`
           : "Please try to refresh page and try one more time."
       );
       setIsInitializing("");

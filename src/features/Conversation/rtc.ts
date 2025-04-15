@@ -216,11 +216,11 @@ export const initAiRtc = async ({
     audioEl.srcObject = stream;
     monitorWebRtcAudio(stream, setIsAiSpeaking);
   };
-  await sleep(4_000);
+  await sleep(400);
   const userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
-  await sleep(4_000);
+  await sleep(400);
   peerConnection.addTrack(userMedia.getTracks()[0]);
 
   const dataChannel = peerConnection.createDataChannel("oai-events");
