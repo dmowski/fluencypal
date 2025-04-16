@@ -225,6 +225,7 @@ export const initAiRtc = async ({
   const dataChannel = peerConnection.createDataChannel("oai-events");
 
   const messageHandler = (e: MessageEvent) => {
+    setDebugInfo("green");
     const event = JSON.parse(e.data);
     const type = (event?.type || "") as string;
     //console.log("Event type:", type, "|", event);
@@ -334,6 +335,34 @@ export const initAiRtc = async ({
     return copyTool;
   });
 
+  const setDebugInfo = (color: string) => {
+    let dynamicInfoElement = document.getElementById("debug-info");
+    if (!dynamicInfoElement) {
+      // create small 1px div on top right corner
+      dynamicInfoElement = document.createElement("div");
+      dynamicInfoElement.id = "debug-info";
+      dynamicInfoElement.style.position = "fixed";
+      dynamicInfoElement.style.top = "2px";
+      dynamicInfoElement.style.right = "2px";
+      dynamicInfoElement.style.width = "4px";
+      dynamicInfoElement.style.height = "4px";
+      dynamicInfoElement.style.borderRadius = "5px";
+      //dynamicInfoElement.style.opacity = "0.5";
+      dynamicInfoElement.style.zIndex = "999999999";
+      window.document.body.appendChild(dynamicInfoElement);
+    }
+
+    dynamicInfoElement.style.backgroundColor = color;
+  };
+
+  const closeEvent = () => {
+    setDebugInfo("yellow");
+  };
+  const errorEvent = (e: any) => {
+    setDebugInfo("red");
+    console.error("Data channel error", e);
+  };
+
   const openHandler = async () => {
     await sleep(600);
     await updateSession({
@@ -350,6 +379,9 @@ export const initAiRtc = async ({
   dataChannel.addEventListener("message", messageHandler);
   dataChannel.addEventListener("open", openHandler);
 
+  dataChannel.addEventListener("close", closeEvent);
+  dataChannel.addEventListener("error", errorEvent);
+
   const offer = await peerConnection.createOffer();
 
   await peerConnection.setLocalDescription(offer);
@@ -363,6 +395,8 @@ export const initAiRtc = async ({
     if (dataChannel) {
       dataChannel.removeEventListener("message", messageHandler);
       dataChannel.removeEventListener("open", openHandler);
+      dataChannel.removeEventListener("close", closeEvent);
+      dataChannel.removeEventListener("error", errorEvent);
 
       if (dataChannel.readyState !== "closed") {
         dataChannel.close();
