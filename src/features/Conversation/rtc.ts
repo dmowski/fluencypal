@@ -209,11 +209,11 @@ export const initAiRtc = async ({
     document.body.appendChild(audioEl);
   }
 
-  await sleep(200); // Important for mobile devices
+  await sleep(2000); // Important for mobile devices
   const userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
-  await sleep(200);
+  await sleep(2000);
 
   const peerConnection = new RTCPeerConnection();
   peerConnection.ontrack = (e) => {
