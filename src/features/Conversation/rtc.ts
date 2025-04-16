@@ -197,8 +197,6 @@ export const initAiRtc = async ({
   isVolumeOn,
   authToken,
 }: AiRtcConfig) => {
-  const peerConnection = new RTCPeerConnection();
-
   const audioId = "audio_for_llm";
   const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
 
@@ -211,15 +209,18 @@ export const initAiRtc = async ({
     document.body.appendChild(audioEl);
   }
 
+  await sleep(200); // Important for mobile devices
+  const userMedia = await navigator.mediaDevices.getUserMedia({
+    audio: true,
+  });
+  await sleep(200);
+
+  const peerConnection = new RTCPeerConnection();
   peerConnection.ontrack = (e) => {
     const stream = e.streams[0];
     audioEl.srcObject = stream;
     monitorWebRtcAudio(stream, setIsAiSpeaking);
   };
-  await sleep(1000); // Important for mobile devices
-  const userMedia = await navigator.mediaDevices.getUserMedia({
-    audio: true,
-  });
   peerConnection.addTrack(userMedia.getTracks()[0]);
 
   const dataChannel = peerConnection.createDataChannel("oai-events");
