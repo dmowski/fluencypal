@@ -213,7 +213,7 @@ export const initAiRtc = async ({
   const userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
-  await sleep(2000);
+  await sleep(1000);
 
   const peerConnection = new RTCPeerConnection();
   peerConnection.ontrack = (e) => {
@@ -357,10 +357,10 @@ export const initAiRtc = async ({
   };
 
   const closeEvent = () => {
-    setDebugInfo("yellow");
+    //setDebugInfo("yellow");
   };
   const errorEvent = (e: any) => {
-    setDebugInfo("red");
+    //setDebugInfo("red");
     console.error("Data channel error", e);
   };
 
