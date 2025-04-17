@@ -94,51 +94,51 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     return <RulesToLearn />;
   }
 
+  if (!aiConversation.isStarted) {
+    return <Dashboard rolePlayInfo={rolePlayInfo} />;
+  }
+
   return (
     <Stack>
-      {aiConversation.isStarted ? (
-        <ConversationCanvas2
-          conversation={aiConversation.conversation}
-          isAiSpeaking={aiConversation.isAiSpeaking}
-          gameWords={aiConversation.gameWords}
-          isClosed={aiConversation.isClosed}
-          isClosing={aiConversation.isClosing}
-          addUserMessage={async (message) => {
-            recorder.removeTranscript();
-            await aiConversation.addUserMessage(message);
-          }}
-          balanceHours={usage.balanceHours}
-          conversationId={aiConversation.conversationId}
-          togglePaymentModal={usage.togglePaymentModal}
-          analyzeUserMessage={corrections.analyzeUserMessage}
-          transcriptMessage={recorder.transcription || ""}
-          toggleVolume={aiConversation.toggleVolume}
-          startRecording={async () => {
-            aiConversation.toggleVolume(false);
-            await recorder.startRecording();
-          }}
-          stopRecording={async () => {
-            aiConversation.toggleVolume(true);
-            await recorder.stopRecording();
-          }}
-          cancelRecording={async () => {
-            aiConversation.toggleVolume(true);
-            recorder.cancelRecording();
-          }}
-          isTranscribing={recorder.isTranscribing}
-          isRecording={recorder.isRecording}
-          recordingMilliSeconds={recorder.recordingMilliSeconds}
-          recordVisualizerComponent={recorder.visualizerComponent}
-          recordingError={recorder.error}
-          isProcessingGoal={aiConversation.isProcessingGoal}
-          temporaryGoal={aiConversation.temporaryGoal}
-          confirmGoal={aiConversation.confirmGoal}
-          goalSettingProgress={aiConversation.goalSettingProgress}
-          isSavingGoal={aiConversation.isSavingGoal}
-        />
-      ) : (
-        <Dashboard rolePlayInfo={rolePlayInfo} />
-      )}
+      <ConversationCanvas2
+        conversation={aiConversation.conversation}
+        isAiSpeaking={aiConversation.isAiSpeaking}
+        gameWords={aiConversation.gameWords}
+        isClosed={aiConversation.isClosed}
+        isClosing={aiConversation.isClosing}
+        addUserMessage={async (message) => {
+          recorder.removeTranscript();
+          await aiConversation.addUserMessage(message);
+        }}
+        balanceHours={usage.balanceHours}
+        conversationId={aiConversation.conversationId}
+        togglePaymentModal={usage.togglePaymentModal}
+        analyzeUserMessage={corrections.analyzeUserMessage}
+        transcriptMessage={recorder.transcription || ""}
+        toggleVolume={aiConversation.toggleVolume}
+        startRecording={async () => {
+          aiConversation.toggleVolume(false);
+          await recorder.startRecording();
+        }}
+        stopRecording={async () => {
+          aiConversation.toggleVolume(true);
+          await recorder.stopRecording();
+        }}
+        cancelRecording={async () => {
+          aiConversation.toggleVolume(true);
+          recorder.cancelRecording();
+        }}
+        isTranscribing={recorder.isTranscribing}
+        isRecording={recorder.isRecording}
+        recordingMilliSeconds={recorder.recordingMilliSeconds}
+        recordVisualizerComponent={recorder.visualizerComponent}
+        recordingError={recorder.error}
+        isProcessingGoal={aiConversation.isProcessingGoal}
+        temporaryGoal={aiConversation.temporaryGoal}
+        confirmGoal={aiConversation.confirmGoal}
+        goalSettingProgress={aiConversation.goalSettingProgress}
+        isSavingGoal={aiConversation.isSavingGoal}
+      />
     </Stack>
   );
 }
