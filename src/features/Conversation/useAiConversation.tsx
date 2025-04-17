@@ -299,6 +299,17 @@ function useProvideAiConversation(): AiConversationContextType {
     setIsMutedDueToNoBalance(true);
   }, [isLowBalance]);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (conversation.length === 0) return;
+      history.saveConversation(conversationId, conversation);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [isAiSpeaking]);
+
   const getBaseRtcConfig = async () => {
     const baseConfig: AiRtcConfig = {
       model: aiModal,

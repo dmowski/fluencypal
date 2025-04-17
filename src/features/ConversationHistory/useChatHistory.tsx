@@ -15,6 +15,7 @@ interface ChatHistoryContextType {
     mode: ConversationMode;
   }) => Promise<void>;
   setMessages: (conversationId: string, messages: ChatMessage[]) => Promise<void>;
+  saveConversation: (conversationId: string, messages: ChatMessage[]) => Promise<void>;
   getLastConversations: (count: number) => Promise<Conversation[]>;
   conversations: Conversation[];
   loading: boolean;
@@ -87,10 +88,25 @@ function useProvideChatHistory(): ChatHistoryContextType {
       updatedAt: Date.now(),
       messages: [],
       languageCode,
+      updatedAtHuman: new Date().toLocaleString(),
       mode,
     };
 
     await setDoc(conversationDoc, conversationInfo);
+  };
+
+  const saveConversation = async (conversationId: string, messages: ChatMessage[]) => {
+    const conversationDoc = getConversationDoc(conversationId);
+    await setDoc(
+      conversationDoc,
+      {
+        messages,
+        messagesCount: messages.length,
+        updatedAtHuman: new Date().toLocaleString(),
+        updatedAt: Date.now(),
+      },
+      { merge: true }
+    );
   };
 
   return {
@@ -99,6 +115,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
     createConversation,
     getLastConversations,
     setMessages,
+    saveConversation,
   };
 }
 
