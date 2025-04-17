@@ -8,6 +8,7 @@ import linguiConfig from "../../lingui.config";
 import { supportedLanguages } from "@/common/lang";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { Inter, Old_Standard_TT } from "next/font/google";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const oldStandardTT = Old_Standard_TT({
@@ -51,6 +52,16 @@ export default async function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/logo192.png" />
         <script defer data-domain="fluencypal.com" src="https://plausible.io/js/script.js"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16463260124"></script>
+        <Script>
+          {`
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'AW-16463260124');
+`}
+        </Script>
       </head>
       <body>
         <ThemeProvider theme={theme}>
