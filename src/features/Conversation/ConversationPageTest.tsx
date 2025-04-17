@@ -162,6 +162,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   return (
     <Stack>
       <ConversationCanvas2
+        isOnboarding={true}
         isMuted
         conversationId="1"
         conversation={testMessage}
@@ -179,14 +180,14 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         stopRecording={async () => {}}
         cancelRecording={async () => {}}
         isTranscribing={false}
-        transcriptMessage="Hello"
+        transcriptMessage=""
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
         isProcessingGoal={false}
         temporaryGoal={testGoal}
         confirmGoal={async () => {}}
-        goalSettingProgress={12}
+        goalSettingProgress={34}
         isSavingGoal={false}
       />
     </Stack>

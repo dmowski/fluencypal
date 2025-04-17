@@ -489,7 +489,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         </Stack>
                       </Stack>
 
-                      {(isNeedToShowCorrection || isAnalyzingResponse) && (
+                      {(isNeedToShowCorrection || isAnalyzingResponse) && !isOnboarding && (
                         <Stack>
                           <Typography
                             variant="caption"
@@ -757,9 +757,11 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       !isRecording &&
                       !isAnalyzingResponse &&
                       !isProcessingGoal && (
-                        <Typography variant="caption" sx={{ opacity: 0.8 }}>
-                          {i18n._("Goal")}: {goalSettingProgress}%
-                        </Typography>
+                        <Stack>
+                          <Typography variant="caption" sx={{ opacity: 0.8 }}>
+                            {i18n._("Goal")}: {goalSettingProgress}%
+                          </Typography>
+                        </Stack>
                       )}
 
                     {transcriptMessage &&
