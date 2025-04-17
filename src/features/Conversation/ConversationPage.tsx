@@ -102,6 +102,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     <Stack>
       <ConversationCanvas2
         conversation={aiConversation.conversation}
+        isOnboarding={aiConversation.currentMode === "goal"}
         isAiSpeaking={aiConversation.isAiSpeaking}
         gameWords={aiConversation.gameWords}
         isClosed={aiConversation.isClosed}

@@ -60,8 +60,10 @@ interface ConversationCanvasProps {
   goalSettingProgress: number;
   isSavingGoal: boolean;
   toggleVolume: (isVolumeOn: boolean) => void;
+  isOnboarding?: boolean;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
+  isOnboarding,
   conversation,
   isAiSpeaking,
   gameWords,
@@ -134,11 +136,13 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     setDescription(null);
     setCorrectedMessage(null);
     setNewWords([]);
+
     try {
       const userMessage = transcriptMessage;
       const previousBotMessage = conversation.length
         ? conversation[conversation.length - 1].text
         : "";
+
       const { sourceMessage, correctedMessage, description, newWords } = await analyzeUserMessage({
         previousBotMessage,
         message: userMessage,
@@ -149,14 +153,15 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         return;
       }
 
-      const isBad =
-        !!description &&
-        !!correctedMessage?.trim() &&
-        correctedMessage.toLowerCase().trim() !== sourceMessage.toLowerCase().trim();
+      const isBad = isOnboarding
+        ? false
+        : !!description &&
+          !!correctedMessage?.trim() &&
+          correctedMessage.toLowerCase().trim() !== sourceMessage.toLowerCase().trim();
       setIsNeedToShowCorrection(isBad);
 
-      setCorrectedMessage(correctedMessage || null);
-      setDescription(description || null);
+      setCorrectedMessage(isBad ? correctedMessage || null : null);
+      setDescription(isBad ? description || null : null);
       setIsAnalyzingMessageWithAi(false);
 
       if (!isMuted) {
