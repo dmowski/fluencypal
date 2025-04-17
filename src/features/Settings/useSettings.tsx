@@ -6,6 +6,7 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/common/lang";
 import { db } from "../Firebase/db";
 import dayjs from "dayjs";
+import * as Sentry from "@sentry/nextjs";
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -40,6 +41,26 @@ function useProvideSettings(): SettingsContextType {
     await setDoc(userSettingsDoc, { languageCode }, { merge: true });
   };
 
+  const confirmGtag = async () => {
+    const gtag = (window as any).gtag;
+    if (!gtag) {
+      console.error("gtag is not defined");
+      Sentry.captureMessage("gtag is not defined");
+      return;
+    }
+
+    try {
+      gtag("event", "conversion", {
+        send_to: "AW-16463260124/wRIsCLS2o7kaENzTpao9",
+        value: 1.0,
+        currency: "PLN",
+      });
+    } catch (error) {
+      console.error("Error sending gtag event:", error);
+      Sentry.captureException(error);
+    }
+  };
+
   const initUserSettings = async () => {
     if (!userId || !userSettingsDoc) {
       return;
@@ -59,6 +80,8 @@ function useProvideSettings(): SettingsContextType {
       },
       { merge: true }
     );
+
+    confirmGtag();
   };
 
   useEffect(() => {
