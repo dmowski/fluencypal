@@ -63,6 +63,14 @@ export const generateMetadataInfo = ({
     keywords = [];
   }
 
+  if (currentPath === "quiz") {
+    title = i18n._(`Learning Plan`) + " | " + APP_NAME;
+    description = i18n._(
+      `Create a personalized learning plan with FluencyPal. Set your goals, choose your focus areas, and track your progress.`
+    );
+    keywords = [];
+  }
+
   if (currentPath === "practice") {
     title = i18n._(`Practice`) + " | " + APP_NAME;
     description = i18n._(
