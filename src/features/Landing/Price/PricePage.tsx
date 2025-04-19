@@ -97,7 +97,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               viewPricingTitle={i18n._(`View Pricing`)}
               noCreditCardNeededTitle={i18n._(`No Credit Card Needed`)}
               pricingLink={`${getUrlStart(lang)}pricing`}
-              practiceLink={`${getUrlStart(lang)}practice`}
+              practiceLink={`${getUrlStart(lang)}quiz`}
             />
           </Stack>
 
@@ -178,7 +178,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._("Get started")}
-                buttonLink={`${getUrlStart(lang)}practice`}
+                buttonLink={`${getUrlStart(lang)}quiz`}
               />
               <PriceCard
                 title={i18n._("Pay-as-You-Go")}
@@ -206,7 +206,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 ]}
                 buttonTitle={i18n._("Start with Trial")}
-                buttonLink={`${getUrlStart(lang)}practice`}
+                buttonLink={`${getUrlStart(lang)}quiz`}
               />
               <PriceCard
                 title={i18n._("Advanced")}
@@ -715,7 +715,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               sx={{
                 ...buttonStyle,
               }}
-              href={`${getUrlStart(lang)}practice`}
+              href={`${getUrlStart(lang)}quiz`}
             >
               {i18n.t(`Try FluencyPal for Free`)}
             </Button>
@@ -840,7 +840,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
         <CtaBlock
           title={i18n._(`Start Your Journey to Fluent Conversations Now`)}
           actionButtonTitle={i18n._(`Get Started Free`)}
-          actionButtonLink={`${getUrlStart(lang)}practice`}
+          actionButtonLink={`${getUrlStart(lang)}quiz`}
         />
       </div>
       <Footer lang={lang} />
