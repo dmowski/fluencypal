@@ -24,6 +24,7 @@ import { WordsToLearn } from "../Dashboard/WordsToLearn";
 import { RulesToLearn } from "../Dashboard/RulesToLearn";
 import { ConversationError } from "./ConversationError";
 import { useHotjar } from "../Analytics/useHotjar";
+import { GoalPreparingModal } from "../Goal/GoalPreparingModal";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -41,6 +42,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const { i18n } = useLingui();
   const words = useWords();
   const rules = useRules();
+  const [isShowGoalModal, setIsShowGoalModal] = useState(false);
 
   useEffect(() => {
     if (!aiConversation.isStarted) {
@@ -94,8 +96,26 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     return <RulesToLearn />;
   }
 
+  if (isShowGoalModal) {
+    return (
+      <GoalPreparingModal
+        onClose={() => {
+          setIsShowGoalModal(false);
+        }}
+        onStart={() => {
+          aiConversation.startConversation({ mode: "goal" });
+        }}
+      />
+    );
+  }
+
   if (!aiConversation.isStarted) {
-    return <Dashboard rolePlayInfo={rolePlayInfo} />;
+    return (
+      <Dashboard
+        rolePlayInfo={rolePlayInfo}
+        onStartGoalPreparation={() => aiConversation.startConversation({ mode: "goal" })}
+      />
+    );
   }
 
   return (

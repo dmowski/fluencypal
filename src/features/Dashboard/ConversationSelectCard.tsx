@@ -5,33 +5,29 @@ import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
-import { useSettings } from "../Settings/useSettings";
-import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { useState } from "react";
-import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Lock } from "lucide-react";
 import { ConversationCard } from "./ConversationCard";
-import { auth } from "firebase-admin";
-import { useAuth } from "../Auth/useAuth";
 import { usePlan } from "../Plan/usePlan";
 import { GoalCard } from "./GoalCard";
 
-export const ConversationSelectCard = () => {
+export const ConversationSelectCard = ({
+  onStartGoalPreparation,
+}: {
+  onStartGoalPreparation: () => void;
+}) => {
   const aiConversation = useAiConversation();
   const words = useWords();
   const rules = useRules();
-  const auth = useAuth();
   const { i18n } = useLingui();
-  const settings = useSettings();
-  const userInfo = useAiUserInfo();
   const plan = usePlan();
   const isGoalSet = !!plan.latestGoal?.elements?.length;
 
   const [isShowOnboardingConfirmation, setIsShowOnboardingConfirmation] = useState(false);
 
   const startOnboarding = () => {
-    aiConversation.startConversation({ mode: "goal" });
+    onStartGoalPreparation();
     setIsShowOnboardingConfirmation(false);
   };
 
@@ -101,7 +97,7 @@ export const ConversationSelectCard = () => {
                 </Typography>
               </Stack>
               <Button
-                onClick={() => startOnboarding()}
+                onClick={startOnboarding}
                 startIcon={<MapPinned size={"18px"} />}
                 color="info"
                 size="large"

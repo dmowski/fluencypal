@@ -15,7 +15,11 @@ import { PlanCard } from "../Plan/PlanCard";
 import { GoalCard } from "./GoalCard";
 import { cardColors, modeCardProps } from "../Plan/data";
 
-export const PlanDashboardCards = () => {
+export const PlanDashboardCards = ({
+  onStartGoalPreparation,
+}: {
+  onStartGoalPreparation: () => void;
+}) => {
   const aiConversation = useAiConversation();
   const words = useWords();
   const rules = useRules();
@@ -24,10 +28,6 @@ export const PlanDashboardCards = () => {
   const settings = useSettings();
   const userInfo = useAiUserInfo();
   const plan = usePlan();
-
-  const startOnboarding = () => {
-    aiConversation.startConversation({ mode: "goal" });
-  };
 
   const startGoalElement = async (element: PlanElement) => {
     if (!plan.latestGoal) {
@@ -211,7 +211,7 @@ export const PlanDashboardCards = () => {
           </>
         ) : (
           <>
-            <GoalCard startOnboarding={startOnboarding} />
+            <GoalCard startOnboarding={onStartGoalPreparation} />
             <Stack
               sx={{
                 alignItems: "center",

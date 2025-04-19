@@ -153,11 +153,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         return;
       }
 
-      const isBad = isOnboarding
-        ? false
-        : !!description &&
-          !!correctedMessage?.trim() &&
-          correctedMessage.toLowerCase().trim() !== sourceMessage.toLowerCase().trim();
+      const isBad =
+        !!description &&
+        !!correctedMessage?.trim() &&
+        correctedMessage.toLowerCase().trim() !== sourceMessage.toLowerCase().trim();
       setIsNeedToShowCorrection(isBad);
 
       setCorrectedMessage(isBad ? correctedMessage || null : null);
@@ -489,7 +488,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         </Stack>
                       </Stack>
 
-                      {(isNeedToShowCorrection || isAnalyzingResponse) && !isOnboarding && (
+                      {(isNeedToShowCorrection || isAnalyzingResponse) && (
                         <Stack>
                           <Typography
                             variant="caption"

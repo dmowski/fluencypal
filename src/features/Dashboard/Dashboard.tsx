@@ -14,8 +14,9 @@ import { PlanDashboardCards } from "./PlanDashboardCards";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
+  onStartGoalPreparation: () => void;
 }
-export function Dashboard({ rolePlayInfo }: DashboardProps) {
+export function Dashboard({ rolePlayInfo, onStartGoalPreparation }: DashboardProps) {
   return (
     <Stack
       sx={{
@@ -40,9 +41,9 @@ export function Dashboard({ rolePlayInfo }: DashboardProps) {
           },
         }}
       >
-        <PlanDashboardCards />
+        <PlanDashboardCards onStartGoalPreparation={onStartGoalPreparation} />
 
-        <ConversationSelectCard />
+        <ConversationSelectCard onStartGoalPreparation={onStartGoalPreparation} />
 
         <DashboardCard>
           <UsageStatsCards />
