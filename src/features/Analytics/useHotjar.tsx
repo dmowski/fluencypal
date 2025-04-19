@@ -1,11 +1,9 @@
 import { useEffect } from "react";
+import { isDev } from "./isDev";
 
 export const useHotjar = () => {
   useEffect(() => {
-    const isWindow = typeof window !== "undefined";
-    const isLocalhost = isWindow && window.location.hostname === "localhost";
-
-    if (isLocalhost || !isWindow) {
+    if (isDev()) {
       return;
     }
 
