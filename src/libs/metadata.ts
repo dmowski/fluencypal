@@ -64,9 +64,9 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === "quiz") {
-    title = i18n._(`Learning Plan`) + " | " + APP_NAME;
+    title = i18n._(`Create a Learning Plan`) + " | " + APP_NAME;
     description = i18n._(
-      `Create a personalized learning plan with FluencyPal. Set your goals, choose your focus areas, and track your progress.`
+      `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`
     );
     keywords = [];
   }
