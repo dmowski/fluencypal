@@ -3,7 +3,7 @@ import { createContext, useContext, ReactNode, JSX, useEffect } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { getDoc, setDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { fullEnglishLanguageName, SupportedLanguage } from "@/common/lang";
+import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
 import { db } from "../Firebase/db";
 import dayjs from "dayjs";
 import { useCurrency } from "../Landing/Price/useCurrency";
@@ -40,7 +40,8 @@ function useProvideSettings(): SettingsContextType {
 
   const setLanguage = async (languageCode: SupportedLanguage) => {
     if (!userSettingsDoc) return;
-    await setDoc(userSettingsDoc, { languageCode }, { merge: true });
+    const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || "en";
+    await setDoc(userSettingsDoc, { languageCode: langCodeValidated }, { merge: true });
   };
 
   const initUserSettings = async () => {
