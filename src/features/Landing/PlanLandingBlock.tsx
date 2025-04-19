@@ -669,7 +669,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
           }}
           variant="contained"
           size="large"
-          href={`${getUrlStart(lang)}practice`}
+          href={`${getUrlStart(lang)}quiz`}
         >
           {i18n._(`Start Learning`)}
         </Button>

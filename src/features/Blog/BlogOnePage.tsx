@@ -310,7 +310,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
         <CtaBlock
           title={i18n._(`You can try AI in action now`)}
           actionButtonTitle={i18n._(`Try for free`)}
-          actionButtonLink={`${getUrlStart(lang)}practice`}
+          actionButtonLink={`${getUrlStart(lang)}quiz`}
         />
       </div>
       <Footer lang={lang} />

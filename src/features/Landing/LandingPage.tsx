@@ -130,7 +130,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             viewPricingTitle={i18n._(`View Pricing`)}
             noCreditCardNeededTitle={i18n._(`No Credit Card Needed`)}
             pricingLink={`${getUrlStart(lang)}pricing`}
-            practiceLink={`${getUrlStart(lang)}practice`}
+            practiceLink={`${getUrlStart(lang)}quiz`}
             lang={lang}
           />
           <PlanLandingBlock lang={lang} />
@@ -148,7 +148,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   `Practice realistic conversations tailored to your skill level. FluencyPal responds naturally, highlights areas for improvement, and builds your confidence.`
                 ),
                 img: "/landing/talk.webp",
-                href: `${getUrlStart(lang)}practice`,
+                href: `${getUrlStart(lang)}quiz`,
                 actionButtonTitle: i18n._(`Start Speaking Practice`),
               },
               {
@@ -158,7 +158,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   `Get immediate feedback and explanations on your grammar mistakes as you practice. Enhance your speaking accuracy naturally.`
                 ),
                 img: "/landing/rules.webp",
-                href: `${getUrlStart(lang)}practice`,
+                href: `${getUrlStart(lang)}quiz`,
                 actionButtonTitle: i18n._(`Enhance Your Grammar`),
               },
               {
@@ -168,7 +168,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   `Receive personalized vocabulary tailored to your conversational needs. Use new words immediately to reinforce learning.`
                 ),
                 img: "/landing/words.webp",
-                href: `${getUrlStart(lang)}practice`,
+                href: `${getUrlStart(lang)}quiz`,
                 actionButtonTitle: i18n._(`Expand Your Vocabulary`),
               },
               {
@@ -178,7 +178,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   `Visualize your daily progress with intuitive tracking. Stay motivated by clearly seeing your improvements.`
                 ),
                 img: "/landing/progress.webp",
-                href: `${getUrlStart(lang)}practice`,
+                href: `${getUrlStart(lang)}quiz`,
                 actionButtonTitle: i18n._(`Check Your Progress`),
               },
             ]}
@@ -285,7 +285,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
           <CtaBlock
             title={i18n._(`Ready to Become Fluent in English?`)}
             actionButtonTitle={i18n._(`Start Your Free Trial`)}
-            actionButtonLink={`${getUrlStart(lang)}practice`}
+            actionButtonLink={`${getUrlStart(lang)}quiz`}
           />
         </Stack>
       </main>

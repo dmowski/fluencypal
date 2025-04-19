@@ -40,7 +40,7 @@ export const BlogsPage = ({ selectedCategory, lang }: BlogsPageProps) => {
         <CtaBlock
           title={i18n._(`Start Your Journey to Fluent Conversations Now`)}
           actionButtonTitle={i18n._(`Get Started Free`)}
-          actionButtonLink={`${getUrlStart(lang)}practice`}
+          actionButtonLink={`${getUrlStart(lang)}quiz`}
         />
       </div>
       <Footer lang={lang} />
