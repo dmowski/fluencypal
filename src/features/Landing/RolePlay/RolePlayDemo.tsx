@@ -185,7 +185,7 @@ export const RolePlayDemo = ({
                   textDecoration: "none",
                   padding: "10px 20px",
                 }}
-                href={`${getUrlStart(lang)}practice`}
+                href={`${getUrlStart(lang)}scenarios/custom`}
               >
                 <Stack
                   sx={{
