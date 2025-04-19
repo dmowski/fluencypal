@@ -13,7 +13,7 @@ import { useTextAi } from "../Ai/useTextAi";
 import { useFixJson } from "../Ai/useFixJson";
 
 interface GenerateGoalProps {
-  conversationMessage: ChatMessage[];
+  conversationMessages: ChatMessage[];
   userInfo: AiUserInfoRecord[];
 }
 interface PlanContextType {
@@ -64,7 +64,7 @@ If you can't formulate goal, return "General Practice" as goal.
     const userMessage = `
 ===
 Conversation:
-${input.conversationMessage.map((message) => {
+${input.conversationMessages.map((message) => {
   const isBot = message.isBot;
   const author = isBot ? "Teacher" : "Student";
   const text = message.text;
@@ -134,7 +134,7 @@ The plan should include at least 8 elements and must cover each type of activity
 `;
 
     const userMessage = `Conversation:
-${input.conversationMessage.map((message) => {
+${input.conversationMessages.map((message) => {
   const isBot = message.isBot;
   const author = isBot ? "Teacher" : "Student";
   const text = message.text;

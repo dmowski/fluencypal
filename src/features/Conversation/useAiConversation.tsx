@@ -776,7 +776,7 @@ My last message was: "${message}".
       await sleep(1000);
       const generatedGoal = await plan.generateGoal({
         userInfo: userInfoRecords.records,
-        conversationMessage: conversation,
+        conversationMessages: conversation,
       });
       setTemporaryGoal(generatedGoal);
       return;
