@@ -22,8 +22,9 @@ interface StepInfo {
 
 interface GoalQuestionsComponentProps {
   lang: SupportedLanguage;
+  showTerms: boolean;
 }
-const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang }) => {
+const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, showTerms }) => {
   const { i18n } = useLingui();
   const [languageToLearn, setLanguageToLearn] = useState<SupportedLanguage>("en");
 
@@ -364,36 +365,38 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang })
               Step 2 of 2
             </Typography>
           </Stack>
-          <Stack
-            sx={{
-              padding: "10px 0 0 2px",
-              flexDirection: "row",
-              gap: "10px",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
+          {showTerms && (
             <Stack
               sx={{
-                alignItems: "center",
-                gap: "0px",
-                opacity: 0.9,
+                padding: "10px 0 0 2px",
                 flexDirection: "row",
+                gap: "10px",
+                alignItems: "center",
+                justifyContent: "space-between",
               }}
             >
-              <Typography variant="caption">
-                {i18n._(`By submitting this form, you agree to our:`)}
-                <br />
-                <Link href={`${getUrlStart(lang)}privacy`} target="_blank">
-                  {i18n._(`Privacy Policy`)}
-                </Link>{" "}
-                and{" "}
-                <Link href={`${getUrlStart(lang)}terms`} target="_blank">
-                  {i18n._(`Terms of Use`)}
-                </Link>
-              </Typography>
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  gap: "0px",
+                  opacity: 0.9,
+                  flexDirection: "row",
+                }}
+              >
+                <Typography variant="caption">
+                  {i18n._(`By submitting this form, you agree to our:`)}
+                  <br />
+                  <Link href={`${getUrlStart(lang)}privacy`} target="_blank">
+                    {i18n._(`Privacy Policy`)}
+                  </Link>{" "}
+                  and{" "}
+                  <Link href={`${getUrlStart(lang)}terms`} target="_blank">
+                    {i18n._(`Terms of Use`)}
+                  </Link>
+                </Typography>
+              </Stack>
             </Stack>
-          </Stack>
+          )}
         </Stack>
       ),
     },
@@ -503,10 +506,10 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang })
   );
 };
 
-export const GoalQuestions: FC<GoalQuestionsComponentProps> = ({ lang }) => {
+export const GoalQuestions: FC<GoalQuestionsComponentProps> = ({ lang, showTerms }) => {
   return (
     <ThemeProvider theme={lightTheme}>
-      <GoalQuestionsComponent lang={lang} />
+      <GoalQuestionsComponent lang={lang} showTerms={showTerms} />
     </ThemeProvider>
   );
 };

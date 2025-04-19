@@ -67,7 +67,7 @@ export const QuizPage = ({ lang }: QuizPageProps) => {
                 width: "100%",
               }}
             >
-              <GoalQuestions lang={lang} />
+              <GoalQuestions lang={lang} showTerms={true} />
             </Stack>
           </Stack>
         </Stack>

@@ -219,6 +219,7 @@ About me: ${goalData.description}.`,
     return (
       <Dashboard
         rolePlayInfo={rolePlayInfo}
+        lang={lang}
         onStartGoalPreparation={() => aiConversation.startConversation({ mode: "goal" })}
       />
     );

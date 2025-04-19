@@ -14,11 +14,15 @@ import { PlanCard } from "../Plan/PlanCard";
 
 import { GoalCard } from "./GoalCard";
 import { cardColors, modeCardProps } from "../Plan/data";
+import { GoalQuestions } from "../Goal/GoalQuestions";
+import { SupportedLanguage } from "@/common/lang";
 
 export const PlanDashboardCards = ({
   onStartGoalPreparation,
+  lang,
 }: {
   onStartGoalPreparation: () => void;
+  lang: SupportedLanguage;
 }) => {
   const aiConversation = useAiConversation();
   const words = useWords();
@@ -152,23 +156,23 @@ export const PlanDashboardCards = ({
           </Box>
         </Stack>
       </Stack>
-      <Stack
-        sx={{
-          gap: "20px",
-          width: "100%",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
-          "@media (max-width: 1100px)": {
-            gridTemplateColumns: "1fr 1fr",
-          },
-
-          "@media (max-width: 750px)": {
-            gridTemplateColumns: "1fr",
+      {isGoalSet && plan.latestGoal ? (
+        <Stack
+          sx={{
             gap: "20px",
-          },
-        }}
-      >
-        {isGoalSet && plan.latestGoal ? (
+            width: "100%",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            "@media (max-width: 1100px)": {
+              gridTemplateColumns: "1fr 1fr",
+            },
+
+            "@media (max-width: 750px)": {
+              gridTemplateColumns: "1fr",
+              gap: "20px",
+            },
+          }}
+        >
           <>
             {plan.latestGoal?.elements.map((planElement, index) => {
               const cardInfo = modeCardProps[planElement.mode];
@@ -209,37 +213,19 @@ export const PlanDashboardCards = ({
               );
             })}
           </>
-        ) : (
-          <>
-            <GoalCard startOnboarding={onStartGoalPreparation} />
-            <Stack
-              sx={{
-                alignItems: "center",
-                justifyContent: "flex-start",
-                boxSizing: "border-box",
-                width: "100%",
-                height: "100%",
-                flexDirection: "row",
-                gap: "15px",
-                "@media (max-width: 750px)": {
-                  display: "none",
-                },
-              }}
-            >
-              <ArrowLeft />
-              <Typography
-                className="decor-text"
-                sx={{
-                  fontSize: "22px",
-                  paddingTop: "5px",
-                }}
-              >
-                {i18n._(`Set your goal and start learning!`)}
-              </Typography>
-            </Stack>
-          </>
-        )}
-      </Stack>
+        </Stack>
+      ) : (
+        <Stack
+          sx={{
+            padding: "20px",
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
+            borderRadius: "10px",
+            color: "#000",
+          }}
+        >
+          <GoalQuestions lang={lang} showTerms={false} />
+        </Stack>
+      )}
     </DashboardCard>
   );
 };

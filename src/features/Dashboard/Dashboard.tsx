@@ -11,12 +11,14 @@ import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { UsageStatsCards } from "../Usage/UsageStatsCards";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { PlanDashboardCards } from "./PlanDashboardCards";
+import { SupportedLanguage } from "@/common/lang";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
   onStartGoalPreparation: () => void;
+  lang: SupportedLanguage;
 }
-export function Dashboard({ rolePlayInfo, onStartGoalPreparation }: DashboardProps) {
+export function Dashboard({ rolePlayInfo, lang, onStartGoalPreparation }: DashboardProps) {
   return (
     <Stack
       sx={{
@@ -41,9 +43,9 @@ export function Dashboard({ rolePlayInfo, onStartGoalPreparation }: DashboardPro
           },
         }}
       >
-        <PlanDashboardCards onStartGoalPreparation={onStartGoalPreparation} />
+        <PlanDashboardCards onStartGoalPreparation={onStartGoalPreparation} lang={lang} />
 
-        <ConversationSelectCard onStartGoalPreparation={onStartGoalPreparation} />
+        <ConversationSelectCard onStartGoalPreparation={onStartGoalPreparation} lang={lang} />
 
         <DashboardCard>
           <UsageStatsCards />

@@ -1,6 +1,6 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { GraduationCap, MapPinned } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
@@ -10,12 +10,15 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Lock } from "lucide-react";
 import { ConversationCard } from "./ConversationCard";
 import { usePlan } from "../Plan/usePlan";
-import { GoalCard } from "./GoalCard";
+import { GoalQuestions } from "../Goal/GoalQuestions";
+import { SupportedLanguage } from "@/common/lang";
 
 export const ConversationSelectCard = ({
   onStartGoalPreparation,
+  lang,
 }: {
   onStartGoalPreparation: () => void;
+  lang: SupportedLanguage;
 }) => {
   const aiConversation = useAiConversation();
   const words = useWords();
@@ -38,6 +41,7 @@ export const ConversationSelectCard = ({
       {isShowOnboardingConfirmation && (
         <CustomModal
           width="min(600px, 100dvw)"
+          padding="0"
           onClose={() => {
             setIsShowOnboardingConfirmation(false);
           }}
@@ -45,67 +49,15 @@ export const ConversationSelectCard = ({
         >
           <Stack
             sx={{
-              width: "100%",
-              gap: "40px",
+              padding: "20px",
+              backgroundColor: "rgba(255, 255, 255, 0.9)",
+              borderRadius: "10px",
+              color: "#000",
+              boxSizing: "border-box",
+              maxWidth: "100dvw",
             }}
           >
-            <Stack>
-              <Typography variant="h4" className="decor-text">
-                {i18n._("Before we start...")}
-              </Typography>
-              <Typography variant="caption">{i18n._("Could you please set your goal?")}</Typography>
-            </Stack>
-
-            <Stack
-              gap={"40px"}
-              sx={{
-                alignItems: "flex-start",
-              }}
-            >
-              <Stack
-                sx={{
-                  width: "100%",
-                }}
-              >
-                <GoalCard startOnboarding={startOnboarding} />
-              </Stack>
-
-              <Stack
-                gap={"10px"}
-                sx={{
-                  alignItems: "flex-start",
-                }}
-              >
-                <Typography
-                  sx={{
-                    padding: "0 2px",
-                  }}
-                >
-                  {i18n._(
-                    "We need to know a little bit about you, so that our AI can help you learn better."
-                  )}
-                </Typography>
-
-                <Typography
-                  sx={{
-                    padding: "0 2px",
-                  }}
-                >
-                  {i18n._(
-                    "Even during onboarding, you will get practice and our AI will help you correct grammar."
-                  )}
-                </Typography>
-              </Stack>
-              <Button
-                onClick={startOnboarding}
-                startIcon={<MapPinned size={"18px"} />}
-                color="info"
-                size="large"
-                variant="contained"
-              >
-                {i18n._("Get Started")}
-              </Button>
-            </Stack>
+            <GoalQuestions lang={lang} showTerms={false} />
           </Stack>
         </CustomModal>
       )}
