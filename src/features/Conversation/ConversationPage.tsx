@@ -16,7 +16,7 @@ import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { useCorrections } from "../Corrections/useCorrections";
 import { useLingui } from "@lingui/react";
 import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SelectLanguage } from "../Dashboard/SelectLanguage";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
@@ -25,6 +25,13 @@ import { RulesToLearn } from "../Dashboard/RulesToLearn";
 import { ConversationError } from "./ConversationError";
 import { useHotjar } from "../Analytics/useHotjar";
 import { GoalPreparingModal } from "../Goal/GoalPreparingModal";
+import { useSearchParams } from "next/navigation";
+import { deleteGoalQuiz, getGoalQuiz } from "@/app/api/goal/goalRequests";
+import { usePlan } from "../Plan/usePlan";
+import { useAiUserInfo } from "../Ai/useAiUserInfo";
+import { ChatMessage } from "@/common/conversation";
+import * as Sentry from "@sentry/nextjs";
+import { useNotifications } from "@toolpad/core/useNotifications";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -42,7 +49,102 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const { i18n } = useLingui();
   const words = useWords();
   const rules = useRules();
+  const plan = usePlan();
+  const searchParams = useSearchParams();
+  const goalId = searchParams.get("goalId");
+  const userInfo = useAiUserInfo();
+  const notifications = useNotifications();
+
   const [isShowGoalModal, setIsShowGoalModal] = useState(false);
+  const [isProcessingGoal, setIsProcessingGoal] = useState(false);
+
+  const removeGoalIdFromUrl = () => {
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.delete("goalId");
+    window.history.replaceState({}, "", `${window.location.pathname}?${searchParams}`);
+  };
+
+  const isProcessingGoalRef = useRef(false);
+
+  const processNewGoalFromUrl = async (goalId: string) => {
+    if (isProcessingGoalRef.current) {
+      return;
+    }
+
+    setIsProcessingGoal(true);
+    isProcessingGoalRef.current = true;
+
+    const goalData = await getGoalQuiz(goalId);
+
+    if (!goalData || goalData.isCreated) {
+      setIsProcessingGoal(false);
+      isProcessingGoalRef.current = false;
+
+      if (!goalData) {
+        Sentry.captureException(new Error("Goal already created or not found"), {
+          extra: {
+            goalId,
+            userId: auth.uid,
+            userInfo: userInfo.userInfo,
+            goalData,
+          },
+        });
+        console.error("Goal already created or not found", goalId);
+      }
+      return;
+    }
+
+    try {
+      settings.setLanguage(goalData.languageToLearn);
+
+      const conversation: ChatMessage[] = [
+        {
+          isBot: true,
+          text: `Tell me about your goal to learn ${goalData.languageToLearn}.`,
+          id: "1",
+        },
+        {
+          isBot: false,
+          id: "2",
+          text: `I want to learn ${goalData.languageToLearn}. 
+My language level is ${goalData.level}.
+About me: ${goalData.description}.`,
+        },
+      ];
+
+      const updatedInfoRecords = await userInfo.updateUserInfo(conversation);
+
+      const planData = await plan.generateGoal({
+        conversationMessages: conversation,
+        userInfo: updatedInfoRecords.records,
+      });
+
+      await plan.addGoalPlan(planData);
+
+      removeGoalIdFromUrl();
+      await deleteGoalQuiz(goalId);
+    } catch (error) {
+      Sentry.captureException(error, {
+        extra: {
+          goalId,
+          userId: auth.uid,
+          userInfo: userInfo.userInfo,
+        },
+      });
+
+      notifications.show(i18n._(`Error processing goal`), {
+        severity: "error",
+      });
+    }
+
+    setIsProcessingGoal(false);
+    isProcessingGoalRef.current = false;
+  };
+
+  useEffect(() => {
+    if (!auth.isAuthorized || !goalId || settings.loading || !auth.uid) return;
+    processNewGoalFromUrl(goalId);
+  }, [goalId, auth.isAuthorized, settings.loading, auth.uid]);
 
   useEffect(() => {
     if (!aiConversation.isStarted) {
@@ -60,6 +162,10 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   if (isLoading) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+  }
+
+  if (isProcessingGoal) {
+    return <InfoBlockedSection title={i18n._(`Loading Goal...`)} />;
   }
 
   if (!usage.loading && usage.balanceHours <= 0.01) return <NoBalanceBlock />;
