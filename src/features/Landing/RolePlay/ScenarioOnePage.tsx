@@ -411,7 +411,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
         <CtaBlock
           title={i18n._(`Ready to Become Fluent in English?`)}
           actionButtonTitle={i18n._(`Start Your Free Trial`)}
-          actionButtonLink={`${getUrlStart(lang)}practice`}
+          actionButtonLink={`${getUrlStart(lang)}quiz`}
         />
       </div>
       <Footer lang={lang} />
