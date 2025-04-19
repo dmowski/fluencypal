@@ -4,7 +4,7 @@ import { GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "firebas
 import { Context, JSX, ReactNode, createContext, useContext, useEffect, useMemo } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/init";
-import * as Sentry from "@sentry/react";
+import * as Sentry from "@sentry/nextjs";
 
 interface SignInResult {
   isDone: boolean;

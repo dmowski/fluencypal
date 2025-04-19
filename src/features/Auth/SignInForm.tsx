@@ -1,5 +1,5 @@
 "use client";
-import { Alert, Button, Link, Stack, Typography } from "@mui/material";
+import { Button, Link, Stack, Typography } from "@mui/material";
 import { useAuth } from "./useAuth";
 import GoogleIcon from "@mui/icons-material/Google";
 import { StarContainer } from "../Layout/StarContainer";
@@ -8,27 +8,8 @@ import { useLingui } from "@lingui/react";
 import { SupportedLanguage } from "@/common/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
-import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
-//import inAppSpy from "inapp-spy";
-
-export const isInAppBrowser = (ua: string): boolean => {
-  return (
-    ua.includes("instagram") ||
-    ua.includes("tginternal") || // Telegram Android in-app
-    ua.includes("tgapp") || // Possible Telegram identifier
-    ua.includes("telegram") ||
-    ua.includes("fbav") || // Facebook app
-    ua.includes("fb_iab") // Facebook in-app browser
-  );
-};
-
-export const getIsTelegram = () => {
-  return {
-    isTgAndroid: "TelegramWebview" in window,
-    isTgIos: "TelegramWebviewProxy" in window || "TelegramWebviewProxyProto" in window,
-  };
-};
+import { useIsWebView } from "./useIsWebView";
 
 interface SignInFormProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -37,44 +18,26 @@ interface SignInFormProps {
 export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   const auth = useAuth();
   const searchParams = useSearchParams();
+  const goalId = searchParams.get("goalId");
   const { i18n } = useLingui();
   const rolePlayId = searchParams.get("rolePlayId");
-  const [inApp, setInApp] = useState(false);
+
   const scenario = rolePlayId
     ? rolePlayInfo.rolePlayScenarios.find((scenario) => scenario.id === rolePlayId)
     : null;
 
-  const pageTitle = scenario ? scenario.title : i18n._(`Start the Lesson`);
-
-  const [isAndroid, setIsAndroid] = useState(false);
-  const [agent, setAgent] = useState("");
-  const [isTelegram, setIsTelegram] = useState(false);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const isTelegramWebView = getIsTelegram();
-      const ua = navigator.userAgent.toLowerCase();
-      const supportsWebRTC = !!window.RTCPeerConnection;
-      console.log("supportsWebRTC", supportsWebRTC);
-      //const result = inAppSpy();
-      /*
-      setAgent(
-        ua +
-          " | supportsWebRTC:" +
-          (supportsWebRTC ? "TRUE" : "FALSE") +
-          "| INFO" +
-          JSON.stringify(result)
-      );*/
-      setInApp(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos || isInAppBrowser(ua));
-      setIsTelegram(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos);
-      setIsAndroid(isTelegramWebView.isTgAndroid || ua.includes("android"));
-    }
-  }, []);
+  const pageTitle = goalId
+    ? i18n._(`Open personal plan`)
+    : scenario
+      ? scenario.title
+      : i18n._(`Start the Lesson`);
+  const { isAndroid, agent, isTelegram, inWebView } = useIsWebView();
 
   const handleSignIn = () => {
     auth.signInWithGoogle();
   };
 
-  if (inApp) {
+  if (inWebView) {
     return (
       <Stack
         sx={{
@@ -201,7 +164,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
             }}
           >
             <Typography variant="body1" align="center">
-              {i18n._("Create an account, select a language and start practicing")}
+              {i18n._("Create an account to continue")}
             </Typography>
           </Stack>
         </Stack>
