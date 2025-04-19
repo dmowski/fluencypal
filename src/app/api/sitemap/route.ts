@@ -93,6 +93,10 @@ export async function GET(request: Request) {
       priority: "0.9000",
     },
     {
+      path: "quiz",
+      priority: "0.9000",
+    },
+    {
       path: "scenarios",
       priority: "0.8000",
     },
