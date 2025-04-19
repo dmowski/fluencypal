@@ -251,7 +251,7 @@ export function LanguageSwitcher({
                   {supportedLanguages.map((lang) => `${fullEnglishLanguageName[lang]}`).join(", ")}
                 </Typography>
 
-                <Button variant="contained" href="/practice">
+                <Button variant="contained" href={`${getUrlStart(supportedLang)}practice`}>
                   {i18n._(`Sign in`)}
                 </Button>
               </Stack>
