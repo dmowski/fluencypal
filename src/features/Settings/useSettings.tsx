@@ -7,6 +7,7 @@ import { fullEnglishLanguageName, SupportedLanguage } from "@/common/lang";
 import { db } from "../Firebase/db";
 import dayjs from "dayjs";
 import * as Sentry from "@sentry/nextjs";
+import { useCurrency } from "../Landing/Price/useCurrency";
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -33,6 +34,7 @@ function useProvideSettings(): SettingsContextType {
   const userId = auth.uid;
 
   const userSettingsDoc = db.documents.userSettings(userId);
+  const currency = useCurrency();
 
   const [userSettings, loading] = useDocumentData(userSettingsDoc);
 
@@ -67,7 +69,7 @@ function useProvideSettings(): SettingsContextType {
     }
 
     const data = await getDoc(userSettingsDoc);
-    const isNew = !data.exists();
+    const isNew = !data.exists() || !data.data().createdAt;
     if (!isNew) {
       return;
     }
@@ -76,6 +78,7 @@ function useProvideSettings(): SettingsContextType {
       userSettingsDoc,
       {
         createdAt: Date.now(),
+        currency: currency.currency || null,
         email: auth.userInfo?.email || "",
       },
       { merge: true }
