@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import "./globals.css";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "../features/uiKit/theme";
+import { darkTheme } from "../features/uiKit/theme";
 import { initLingui } from "@/initLingui";
 import linguiConfig from "../../lingui.config";
 import { supportedLanguages } from "@/common/lang";
@@ -64,7 +64,7 @@ gtag('config', 'AW-16463260124');
         </Script>
       </head>
       <body>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={darkTheme}>
           <AppRouterCacheProvider options={{ key: "css" }}>{children}</AppRouterCacheProvider>
         </ThemeProvider>
       </body>
