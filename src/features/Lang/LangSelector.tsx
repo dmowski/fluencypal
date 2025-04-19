@@ -1,12 +1,13 @@
 import {
+  fullEnglishLanguageName,
+  fullLanguageName,
   getLabelFromCode,
   getUserLangCode,
   SupportedLanguage,
   supportedLanguages,
 } from "@/common/lang";
 import { JSX, useEffect, useState } from "react";
-import SuggestInput, { SelectGroupItem } from "../uiKit/SuggestInput/SuggestInput";
-import { Button, Stack } from "@mui/material";
+import { MenuItem, Select, Stack, Typography } from "@mui/material";
 
 interface LangSelectorProps {
   value: SupportedLanguage | null;
@@ -19,47 +20,31 @@ export const LangSelector = ({ value, onChange }: LangSelectorProps): JSX.Elemen
     value && setSelectedLanguage(value);
   }, [value]);
 
-  const currentLangCode = selectedLanguage;
-  const currentLang = getLabelFromCode(currentLangCode);
+  const userCodes = getUserLangCode();
 
   const optionsFull = supportedLanguages
     .map((lang: SupportedLanguage) => {
-      return { label: getLabelFromCode(lang), value: lang };
+      return {
+        label: getLabelFromCode(lang),
+        langCode: lang,
+        englishFullName: fullEnglishLanguageName[lang] || "",
+        isSystemLang: userCodes.includes(lang),
+        fullName: fullLanguageName[lang] || "",
+      };
     })
     .sort((a, b) => a.label.localeCompare(b.label));
 
-  const userCodes = getUserLangCode();
-  const groups: SelectGroupItem[] = [];
-
-  userCodes.forEach((code) => {
-    const value = optionsFull.find((option) => option.value === code)?.label;
-    if (!value) return;
-    const groupTitle = `System languages`;
-    groups.push({ value, groupTitle });
-  });
-
-  optionsFull.forEach((option) => {
-    const isUserLang = userCodes.includes(option.value);
-    if (isUserLang) return;
-    const groupTitle = `Other languages`;
-    groups.push({ value: option.label, groupTitle });
-  });
-
-  const options = groups.map((group) => group.value);
-
-  const onChangeLanguage = async (newValue: string) => {
-    const isChanging = value !== newValue;
+  const onChangeLanguage = async (code: string) => {
+    const isChanging = value !== code;
     if (!isChanging) {
       return;
     }
-    if (!newValue) {
-      return;
-    }
-    const code = optionsFull.find((option) => option.label === newValue)?.value;
     if (!code) {
       return;
     }
-    onChange(code);
+
+    const langCode = supportedLanguages.find((lang) => lang === code) || "en";
+    onChange(langCode);
   };
 
   return (
@@ -67,16 +52,23 @@ export const LangSelector = ({ value, onChange }: LangSelectorProps): JSX.Elemen
       sx={{
         width: "100%",
         gap: "20px",
+        color: "#323",
       }}
     >
-      <SuggestInput
-        strict
-        options={options}
-        label={``}
-        value={currentLang}
-        onChange={onChangeLanguage}
-        groups={userCodes.length > 0 ? groups : undefined}
-      />
+      <Select
+        value={value}
+        variant="outlined"
+        onChange={(e) => onChangeLanguage(e.target.value || "")}
+      >
+        {optionsFull.map((option) => {
+          const isSameLabels = option.englishFullName === option.fullName;
+          return (
+            <MenuItem key={option.langCode} value={option.langCode}>
+              {isSameLabels ? <>{option.englishFullName}</> : <>{option.englishFullName}</>}
+            </MenuItem>
+          );
+        })}
+      </Select>
     </Stack>
   );
 };

@@ -282,9 +282,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
                     borderColor: "rgba(255, 255, 255, 0.5)",
                   }}
-                  href={`${getUrlStart(lang)}practice`}
+                  href={`${getUrlStart(lang)}quiz`}
                 >
-                  {i18n._(`Create a goal`)}
+                  {i18n._(`Start`)}
                 </Button>
 
                 <Typography
@@ -404,9 +404,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   marginTop: "20px",
                   borderColor: "rgba(255, 255, 255, 0.5)",
                 }}
-                href={`${getUrlStart(lang)}practice`}
+                href={`${getUrlStart(lang)}quiz`}
               >
-                {i18n._(`Get a plan`)}
+                {i18n._(`Create a plan`)}
               </Button>
             </Stack>
           </Stack>
@@ -620,7 +620,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
                     borderColor: "rgba(255, 255, 255, 0.5)",
                   }}
-                  href={`${getUrlStart(lang)}practice`}
+                  href={`${getUrlStart(lang)}quiz`}
                 >
                   {i18n._(`Start`)}
                 </Button>

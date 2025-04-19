@@ -1,4 +1,3 @@
-import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Link, Stack, Typography } from "@mui/material";
 
 import { maxContentWidth, subTitleFontStyle } from "../landingSettings";
@@ -25,8 +24,6 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
           margin: 0,
         }}
       >
-        <TalkingWaves />
-
         <Stack
           component={"main"}
           sx={{
