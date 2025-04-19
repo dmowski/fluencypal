@@ -205,7 +205,7 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
                 <Link href={`${getUrlStart(lang)}privacy`} target="_blank">
                   {i18n._(`Privacy Policy`)}
                 </Link>{" "}
-                and{" "}
+                {i18n._("and")}{" "}
                 <Link href={`${getUrlStart(lang)}terms`} target="_blank">
                   {i18n._(`Terms of Use`)}
                 </Link>

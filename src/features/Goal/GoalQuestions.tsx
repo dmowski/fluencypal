@@ -117,7 +117,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
 
       setIsCopied(true);
     } catch (err) {
-      alert("Failed to copy text. Please try again.");
+      alert(i18n._("Failed to copy text. Please try again."));
       Sentry.captureException(err);
       console.error("Failed to copy text: ", err);
     }
@@ -243,7 +243,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
                 ...buttonStyle,
               }}
             >
-              Next
+              {i18n._("Next")}
             </Button>
             <Typography
               variant="body2"
@@ -251,7 +251,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
                 opacity: 0.5,
               }}
             >
-              Step 1 of 2
+              {i18n._("Step 1 of 2")}
             </Typography>
           </Stack>
         </Stack>
@@ -313,7 +313,9 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
               }}
               multiline
               minRows={4}
-              placeholder="I want to learn English to travel. And I want to understand movies and songs."
+              placeholder={i18n._(
+                "I want to learn English to travel. And I want to understand movies and songs."
+              )}
               variant="outlined"
               error={showDescriptionError}
               value={description}
@@ -332,7 +334,15 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
                 {showDescriptionError ? "‼️" : "💡"}{" "}
                 {i18n._(`Write at least 100 characters for a sharper plan`)}
               </Typography>
-              <Typography variant="caption">{description.length} / 100</Typography>
+              <Typography
+                variant="caption"
+                align="right"
+                sx={{
+                  minWidth: "70px",
+                }}
+              >
+                {description.length} / 100
+              </Typography>
             </Stack>
           </Stack>
 
@@ -354,7 +364,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
                 ...buttonStyle,
               }}
             >
-              Submit
+              {i18n._("Submit")}
             </Button>
             <Typography
               variant="body2"
@@ -362,7 +372,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
                 opacity: 0.5,
               }}
             >
-              Step 2 of 2
+              {i18n._("Step 2 of 2")}
             </Typography>
           </Stack>
           {showTerms && (
@@ -389,7 +399,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
                   <Link href={`${getUrlStart(lang)}privacy`} target="_blank">
                     {i18n._(`Privacy Policy`)}
                   </Link>{" "}
-                  and{" "}
+                  {i18n._("and")}{" "}
                   <Link href={`${getUrlStart(lang)}terms`} target="_blank">
                     {i18n._(`Terms of Use`)}
                   </Link>
@@ -493,7 +503,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
                   }}
                   endIcon={<ExternalLink size={"18px"} />}
                 >
-                  Open a plan
+                  {i18n._("Open a plan")}
                 </Button>
               </>
             )}
