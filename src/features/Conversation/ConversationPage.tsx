@@ -32,6 +32,7 @@ import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { ChatMessage } from "@/common/conversation";
 import * as Sentry from "@sentry/nextjs";
 import { useNotifications } from "@toolpad/core/useNotifications";
+import { ConfirmConversationModal } from "./ConfirmConversationModal";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -242,7 +243,22 @@ About me: ${goalData.description}.`,
   }
 
   if (!aiConversation.isStarted) {
-    return <Dashboard rolePlayInfo={rolePlayInfo} lang={lang} />;
+    return (
+      <>
+        {aiConversation.confirmStartConversationModal && (
+          <ConfirmConversationModal
+            onCancel={() => aiConversation.setIsConfirmed(false)}
+            onConfirm={() => {
+              aiConversation.setIsConfirmed(true);
+              if (aiConversation.confirmStartConversationModal) {
+                aiConversation.startConversation(aiConversation.confirmStartConversationModal);
+              }
+            }}
+          />
+        )}
+        <Dashboard rolePlayInfo={rolePlayInfo} lang={lang} />
+      </>
+    );
   }
 
   return (

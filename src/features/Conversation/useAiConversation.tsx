@@ -47,6 +47,8 @@ interface AiConversationContextType {
   isStarted: boolean;
   setIsStarted: (isStarted: boolean) => void;
   startConversation: (params: StartConversationProps) => Promise<void>;
+  confirmStartConversationModal: StartConversationProps | null;
+  setIsConfirmed: (isConfirmed: boolean) => void;
   conversation: ChatMessage[];
   errorInitiating?: string;
   isClosing: boolean;
@@ -98,6 +100,9 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isProcessingGoal, setIsProcessingGoal] = useState(false);
   const [temporaryGoal, setTemporaryGoal] = useState<GoalPlan | null>(null);
   const [isSavingGoal, setIsSavingGoal] = useState(false);
+
+  const [confirmStartConversationModal, setConfirmStartConversationModal] =
+    useState<StartConversationProps | null>(null);
 
   const toggleVolume = (isOn: boolean) => {
     setIsVolumeOn(isOn);
@@ -642,64 +647,76 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
 
   const [currentMode, setCurrentMode] = useState<ConversationMode>("talk");
 
-  const startConversation = async ({
-    mode,
+  const confirmLocalStorageKey = `confirm-start-conversation_1`;
+  const isNeedToShowConfirmationModal = () => {
+    const isConfirmInLocalStorage = localStorage.getItem(confirmLocalStorageKey);
+    return !isConfirmInLocalStorage;
+  };
 
-    wordsToLearn,
-    ruleToLearn,
-    customInstruction,
-    voice,
-    gameWords,
-    analyzeResultAiInstruction,
-    goal,
-  }: StartConversationProps) => {
+  const setIsConfirmed = (isConfirmed: boolean) => {
+    if (isConfirmed) {
+      localStorage.setItem(confirmLocalStorageKey, "true");
+    } else {
+      localStorage.removeItem(confirmLocalStorageKey);
+      setConfirmStartConversationModal(null);
+    }
+  };
+
+  const startConversation = async (input: StartConversationProps) => {
     if (!settings.languageCode) throw new Error("Language is not set | startConversation");
+
+    if (isNeedToShowConfirmationModal()) {
+      setConfirmStartConversationModal(input);
+      return;
+    } else {
+      setConfirmStartConversationModal(null);
+    }
 
     setTemporaryGoal(null);
     setGoalSettingProgress(0);
     setIsProcessingGoal(false);
 
-    setAnalyzeResultInstruction(analyzeResultAiInstruction || "");
-    if (analyzeResultAiInstruction)
-      console.log("analyzeResultAiInstruction", analyzeResultAiInstruction);
+    setAnalyzeResultInstruction(input.analyzeResultAiInstruction || "");
+    if (input.analyzeResultAiInstruction)
+      console.log("analyzeResultAiInstruction", input.analyzeResultAiInstruction);
 
-    setGameStat(gameWords ? gameWords : null);
-    setGoalInfo(goal || null);
+    setGameStat(input.gameWords ? input.gameWords : null);
+    setGoalInfo(input.goal || null);
 
     try {
       setIsStartedUrl(true);
       setIsInitializing(`Loading...`);
-      setCurrentMode(mode);
+      setCurrentMode(input.mode);
       setConversation([]);
       setIsClosing(false);
       setIsClosed(false);
       setErrorInitiating("");
 
       firstPotentialBotMessage.current = "";
-      const aiRtcConfig = await getAiRtcConfig(mode, goal);
+      const aiRtcConfig = await getAiRtcConfig(input.mode, input.goal);
       let instruction = aiRtcConfig.initInstruction;
 
-      if (wordsToLearn) {
+      if (input.wordsToLearn) {
         instruction += `------
 Words to learn:
-${wordsToLearn.join(" ")}
+${input.wordsToLearn.join(" ")}
 `;
       }
 
-      if (ruleToLearn) {
+      if (input.ruleToLearn) {
         instruction += `------
 Rule to learn:
-${ruleToLearn}
+${input.ruleToLearn}
 `;
       }
 
-      if (customInstruction) {
-        instruction = customInstruction;
+      if (input.customInstruction) {
+        instruction = input.customInstruction;
       }
 
-      if (gameWords) {
+      if (input.gameWords) {
         instruction += `
-Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
+Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 `;
       }
 
@@ -707,10 +724,14 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
       const conversation = await initAiRtc({
         ...aiRtcConfig,
         initInstruction: instruction,
-        voice: aiRtcConfig.voice || voice,
+        voice: aiRtcConfig.voice || input.voice,
         isMuted: true,
       });
-      history.createConversation({ conversationId, languageCode: settings.languageCode, mode });
+      history.createConversation({
+        conversationId,
+        languageCode: settings.languageCode,
+        mode: input.mode,
+      });
       setCommunicator(conversation);
     } catch (e) {
       console.error(e);
@@ -799,6 +820,7 @@ My last message was: "${message}".
   return {
     currentMode,
     conversationId,
+    setIsConfirmed,
     isInitializing,
     isStarted,
     startConversation,
@@ -822,6 +844,7 @@ My last message was: "${message}".
     confirmGoal,
     goalSettingProgress,
     isSavingGoal,
+    confirmStartConversationModal,
   };
 }
 
