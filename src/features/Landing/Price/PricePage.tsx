@@ -15,7 +15,7 @@ import { ContactList } from "../Contact/ContactList";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Gift, HandCoins, Mic } from "lucide-react";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import PriceDisplay from "./PriceDisplay";

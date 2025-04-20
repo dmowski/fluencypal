@@ -11,7 +11,7 @@ import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useSettings } from "../Settings/useSettings";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 

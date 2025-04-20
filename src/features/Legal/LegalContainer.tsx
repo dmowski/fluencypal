@@ -1,4 +1,4 @@
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { Button, ButtonGroup, Stack } from "@mui/material";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { getI18nInstance } from "@/appRouterI18n";

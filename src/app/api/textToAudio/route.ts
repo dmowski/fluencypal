@@ -6,7 +6,7 @@ import { TextToAudioRequest, TextToAudioResponse } from "./types";
 import { createHash } from "crypto";
 import * as mm from "music-metadata";
 import { TextToAudioUsageLog } from "@/common/usage";
-import { fullEnglishLanguageName, supportedLanguages } from "@/common/lang";
+import { fullEnglishLanguageName, supportedLanguages } from "@/features/Lang/lang";
 import { addUsage } from "../payment/addUsage";
 
 const getHash = (text: string) => {

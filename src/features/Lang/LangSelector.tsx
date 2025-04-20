@@ -5,7 +5,7 @@ import {
   getUserLangCode,
   SupportedLanguage,
   supportedLanguages,
-} from "@/common/lang";
+} from "@/features/Lang/lang";
 import { JSX, useEffect, useState } from "react";
 import { MenuItem, Select, Stack, Typography } from "@mui/material";
 

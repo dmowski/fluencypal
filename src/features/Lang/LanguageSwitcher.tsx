@@ -11,7 +11,7 @@ import {
   getUserLangCode,
   SupportedLanguage,
   supportedLanguages,
-} from "@/common/lang";
+} from "@/features/Lang/lang";
 import { getUrlStart } from "./getUrlStart";
 import { Globe, GraduationCap, Rabbit } from "lucide-react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";

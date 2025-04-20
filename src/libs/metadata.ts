@@ -1,7 +1,7 @@
 import "server-only";
 
 import { getI18nInstance } from "@/appRouterI18n";
-import { SupportedLanguage, supportedLanguages } from "@/common/lang";
+import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { siteUrl } from "@/common/metadata";
 import { APP_NAME } from "@/features/Landing/landingSettings";
 import { initLingui } from "@/initLingui";

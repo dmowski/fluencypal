@@ -11,7 +11,7 @@ import {
   titleFontStyle,
 } from "../Landing/landingSettings";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { getBlogs } from "./blogData";

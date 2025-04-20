@@ -16,7 +16,7 @@ import { useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Camera } from "lucide-react";
 import { useTextAi } from "../Ai/useTextAi";
-import { fullEnglishLanguageName, supportedLanguages } from "@/common/lang";
+import { fullEnglishLanguageName, supportedLanguages } from "@/features/Lang/lang";
 import React from "react";
 import { sleep } from "openai/core.mjs";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";

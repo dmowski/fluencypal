@@ -11,7 +11,7 @@ import { Lock } from "lucide-react";
 import { ConversationCard } from "./ConversationCard";
 import { usePlan } from "../Plan/usePlan";
 import { GoalQuestions } from "../Goal/GoalQuestions";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 
 export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();

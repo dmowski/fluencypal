@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ScenariosPage } from "@/features/Landing/RolePlay/ScenariosPage";
-import { supportedLanguages } from "@/common/lang";
+import { supportedLanguages } from "@/features/Lang/lang";
 import { initLingui } from "@/initLingui";
 import { allMessages } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";

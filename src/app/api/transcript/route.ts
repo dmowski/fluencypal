@@ -8,7 +8,7 @@ import { getBucket, validateAuthToken } from "../config/firebase";
 import { getUserBalance } from "../payment/getUserBalance";
 import { TranscriptResponse } from "./types";
 import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
-import { supportedLanguages } from "@/common/lang";
+import { supportedLanguages } from "@/features/Lang/lang";
 import { TranscriptUsageLog } from "@/common/usage";
 import { addUsage } from "../payment/addUsage";
 

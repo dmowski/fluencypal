@@ -8,7 +8,7 @@ import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
 import { Dashboard } from "../Dashboard/Dashboard";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 
 import { ConversationCanvas2 } from "./ConversationCanvas2";

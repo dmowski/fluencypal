@@ -1,6 +1,6 @@
 import { Link, Stack, Typography } from "@mui/material";
 import { maxContentWidth } from "../Landing/landingSettings";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { getBlogs } from "./blogData";

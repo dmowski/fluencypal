@@ -1,5 +1,5 @@
 import { allMessages } from "@/appRouterI18n";
-import { supportedLanguages } from "@/common/lang";
+import { supportedLanguages } from "@/features/Lang/lang";
 import LandingPage from "@/features/Landing/LandingPage";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { initLingui } from "@/initLingui";

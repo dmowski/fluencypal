@@ -4,7 +4,7 @@ import { maxContentWidth, subTitleFontStyle } from "../landingSettings";
 
 import { Footer } from "../Footer";
 import { ContactList } from "./ContactList";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { HeaderStatic } from "@/features/Header/HeaderStatic";

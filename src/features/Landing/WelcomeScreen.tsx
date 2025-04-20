@@ -3,7 +3,7 @@ import { FirstEnterButton } from "./FirstEnterButton";
 import { maxLandingWidth, subTitleFontStyle } from "./landingSettings";
 import { ConversationCard } from "../Dashboard/ConversationCard";
 import { getI18nInstance } from "@/appRouterI18n";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { ConversationLandingCard } from "./ConversationLandingCard";
 import { getUrlStart } from "../Lang/getUrlStart";
 

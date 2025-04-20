@@ -1,6 +1,6 @@
 "use client";
 
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import { Button, Chip, CircularProgress, Link, Stack, TextField, Typography } from "@mui/material";
 import { FC, JSX, useEffect, useState } from "react";

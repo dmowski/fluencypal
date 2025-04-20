@@ -1,6 +1,6 @@
 "use client";
 import { Divider, Stack } from "@mui/material";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { sleep } from "openai/core.mjs";
 import { ConversationCanvas2 } from "./ConversationCanvas2";

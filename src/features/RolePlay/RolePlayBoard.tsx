@@ -36,7 +36,7 @@ import { RolePlayCardApp } from "./RolePlayCardApp";
 import { GuessGameStat } from "../Conversation/types";
 import { uniq } from "@/libs/uniq";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
-import { supportedLanguages } from "@/common/lang";
+import { supportedLanguages } from "@/features/Lang/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useLingui } from "@lingui/react";
 import { RolePlayScenariosInfo } from "./rolePlayData";

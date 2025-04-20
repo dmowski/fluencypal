@@ -5,7 +5,7 @@ import { useSettings } from "../Settings/useSettings";
 import { useLingui } from "@lingui/react";
 import { useEffect, useState } from "react";
 import { ArrowRight, GraduationCap } from "lucide-react";
-import { SupportedLanguage, supportedLanguages } from "@/common/lang";
+import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getUrlStart } from "../Lang/getUrlStart";
 

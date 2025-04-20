@@ -1,4 +1,4 @@
-import { SupportedLanguage, supportedLanguages } from "@/common/lang";
+import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { getBlogs } from "@/features/Blog/blogData";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 

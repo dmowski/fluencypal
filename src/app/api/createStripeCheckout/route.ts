@@ -1,4 +1,4 @@
-import { supportedLanguages } from "@/common/lang";
+import { supportedLanguages } from "@/features/Lang/lang";
 import { StripeCreateCheckoutRequest, StripeCreateCheckoutResponse } from "@/common/requests";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import Stripe from "stripe";

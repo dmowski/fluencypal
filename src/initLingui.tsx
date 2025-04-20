@@ -1,6 +1,6 @@
 import { setI18n } from "@lingui/react/server";
 import { getI18nInstance } from "./appRouterI18n";
-import { supportedLanguages } from "./common/lang";
+import { supportedLanguages } from "./features/Lang/lang";
 
 export type PageLangParam = {
   params: Promise<{ lang: string }>;

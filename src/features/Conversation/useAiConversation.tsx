@@ -23,7 +23,7 @@ import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
-import { firstAiMessage, fullEnglishLanguageName, getUserLangCode } from "@/common/lang";
+import { firstAiMessage, fullEnglishLanguageName, getUserLangCode } from "@/features/Lang/lang";
 import { useRouter, useSearchParams } from "next/navigation";
 import { GoalElementInfo, GoalPlan } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";

@@ -1,6 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { buttonStyle, maxLandingWidth, subTitleFontStyle, titleFontStyle } from "./landingSettings";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { PlanCard } from "../Plan/PlanCard";
 import { cardColors, modeCardProps } from "../Plan/data";

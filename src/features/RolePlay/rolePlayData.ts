@@ -1,4 +1,4 @@
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayInstruction } from "./types";
 import { getI18nInstance } from "@/appRouterI18n";
 import { ResourceCategory } from "@/common/category";

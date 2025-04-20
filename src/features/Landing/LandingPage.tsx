@@ -7,7 +7,11 @@ import { GeneralFaqBlock } from "./FAQ/GeneralFaqBlock";
 import { CtaBlock } from "./ctaBlock";
 import { ProposalCards } from "./ProposalCards";
 import { RolePlayDemo } from "./RolePlay/RolePlayDemo";
-import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
+import {
+  fullEnglishLanguageName,
+  SupportedLanguage,
+  supportedLanguages,
+} from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "../Lang/getUrlStart";
 import Script from "next/script";

@@ -12,7 +12,7 @@ import { PlanCard } from "../Plan/PlanCard";
 
 import { cardColors, modeCardProps } from "../Plan/data";
 import { GoalQuestions } from "../Goal/GoalQuestions";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();

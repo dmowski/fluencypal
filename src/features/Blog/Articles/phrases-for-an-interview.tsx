@@ -1,5 +1,5 @@
 import { getI18nInstance } from "@/appRouterI18n";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { Box, List, ListItem, ListItemText, Stack, Typography } from "@mui/material";
 import { JSX } from "react";
 

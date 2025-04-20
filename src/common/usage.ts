@@ -6,7 +6,7 @@ import {
   TranscriptAiModel,
   UsageEvent,
 } from "./ai";
-import { SupportedLanguage } from "./lang";
+import { SupportedLanguage } from "../features/Lang/lang";
 
 export interface TotalUsageInfo {
   lastUpdatedAt: number;

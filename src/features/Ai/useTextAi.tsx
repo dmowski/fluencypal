@@ -6,7 +6,7 @@ import { TextAiModel } from "@/common/ai";
 import { useUsage } from "../Usage/useUsage";
 import { getDataFromCache, setDataToCache } from "@/libs/localStorageCache";
 import { useAuth } from "../Auth/useAuth";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 
 const cacheKey = `DL_text-ai-cache`;
 

@@ -9,7 +9,7 @@ import {
 import { sleep } from "@/libs/sleep";
 import { ChatMessage } from "@/common/conversation";
 import { UsageLog } from "@/common/usage";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { SendSdpOfferRequest, SendSdpOfferResponse } from "@/common/requests";
 
 /**

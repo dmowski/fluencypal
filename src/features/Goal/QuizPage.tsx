@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
 
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { HeaderStatic } from "@/features/Header/HeaderStatic";
 import { maxContentWidth } from "../Landing/landingSettings";
 import { Footer } from "../Landing/Footer";

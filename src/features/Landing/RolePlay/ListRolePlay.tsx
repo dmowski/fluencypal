@@ -2,7 +2,7 @@ import { Link, Stack, Typography } from "@mui/material";
 import { maxContentWidth } from "../landingSettings";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { RolePlayCard } from "./RolePlayCard";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 

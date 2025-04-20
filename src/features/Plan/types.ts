@@ -1,5 +1,5 @@
 import { GoalQuiz } from "@/app/api/goal/types";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 
 export type PlanElementMode = "conversation" | "words" | "play" | "rule";
 

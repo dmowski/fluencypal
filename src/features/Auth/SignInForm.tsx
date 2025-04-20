@@ -5,7 +5,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { StarContainer } from "../Layout/StarContainer";
 import { useSearchParams } from "next/navigation";
 import { useLingui } from "@lingui/react";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { ArrowUp } from "lucide-react";

@@ -8,7 +8,7 @@ import { doc, DocumentReference, setDoc } from "firebase/firestore";
 import { UserSettings } from "@/common/user";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import { ContactList } from "../Landing/Contact/ContactList";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useLingui } from "@lingui/react";
 

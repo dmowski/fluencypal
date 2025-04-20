@@ -1,4 +1,4 @@
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { TranscriptResponse } from "./types";
 
 interface SendTranscriptRequestProps {

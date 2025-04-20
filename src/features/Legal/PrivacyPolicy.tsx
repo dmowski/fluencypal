@@ -1,7 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import { LegalContainer } from "./LegalContainer";
 import Markdown from "markdown-to-jsx";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 interface PageProps {

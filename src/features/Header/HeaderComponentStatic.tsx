@@ -16,7 +16,7 @@ import {
 import { BookMarked, Gem, MessageCircleQuestion, Rss } from "lucide-react";
 
 import { useRouter } from "next/navigation";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
 import MenuIcon from "@mui/icons-material/Menu";

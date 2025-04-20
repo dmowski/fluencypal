@@ -5,7 +5,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { darkTheme } from "../features/uiKit/theme";
 import { initLingui } from "@/initLingui";
 import linguiConfig from "../../lingui.config";
-import { supportedLanguages } from "@/common/lang";
+import { supportedLanguages } from "@/features/Lang/lang";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { Inter, Old_Standard_TT } from "next/font/google";
 import Script from "next/script";

@@ -20,7 +20,7 @@ import { useUsage } from "../Usage/useUsage";
 import { PaymentModal } from "../Usage/PaymentModal";
 import { NeedHelpModal } from "./NeedHelpModal";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { useAiConversation } from "../Conversation/useAiConversation";

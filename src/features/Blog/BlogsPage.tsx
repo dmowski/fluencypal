@@ -4,7 +4,7 @@ import { Footer } from "../Landing/Footer";
 import { CtaBlock } from "../Landing/ctaBlock";
 import { ListBlogIntro } from "./ListBlogIntro";
 import { ListBlog } from "./ListBlog";
-import { SupportedLanguage } from "@/common/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { HeaderStatic } from "../Header/HeaderStatic";

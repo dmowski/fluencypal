@@ -4,7 +4,7 @@ import { setCookiesGDPR } from "../Firebase/init";
 import { useLocalStorage } from "react-use";
 import { useEffect, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { supportedLanguages } from "@/common/lang";
+import { supportedLanguages } from "@/features/Lang/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { usePathname } from "next/navigation";
 

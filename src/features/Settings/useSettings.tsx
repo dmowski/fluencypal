@@ -3,7 +3,11 @@ import { createContext, useContext, ReactNode, JSX, useEffect } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { getDoc, setDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { fullEnglishLanguageName, SupportedLanguage, supportedLanguages } from "@/common/lang";
+import {
+  fullEnglishLanguageName,
+  SupportedLanguage,
+  supportedLanguages,
+} from "@/features/Lang/lang";
 import { db } from "../Firebase/db";
 import dayjs from "dayjs";
 import { useCurrency } from "../Landing/Price/useCurrency";

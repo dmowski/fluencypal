@@ -11,7 +11,7 @@ import { ChatMessage } from "@/common/conversation";
 import { AiUserInfoRecord } from "@/common/userInfo";
 import { useTextAi } from "../Ai/useTextAi";
 import { useFixJson } from "../Ai/useFixJson";
-import { fullEnglishLanguageName, SupportedLanguage } from "@/common/lang";
+import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
 import { GoalQuiz } from "@/app/api/goal/types";
 
 interface GenerateGoalProps {
