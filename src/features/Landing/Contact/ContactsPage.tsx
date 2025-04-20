@@ -136,24 +136,13 @@ export const ContactsPage = ({ lang }: ContactsPageProps) => {
               sx={{
                 width: "100%",
                 color: "#1f74be",
+                paddingBottom: "140px",
                 a: {
                   color: "#1f74be",
                 },
               }}
             >
               <ContactList />
-              <Stack
-                sx={{
-                  gap: "7px",
-                }}
-              >
-                <Link href={`${getUrlStart(lang)}terms`} sx={{}}>
-                  {i18n._(`Terms of Use`)}
-                </Link>
-                <Link href={`${getUrlStart(lang)}privacy`} sx={{}}>
-                  {i18n._(`Privacy Policy`)}
-                </Link>
-              </Stack>
             </Stack>
           </Stack>
         </Stack>
