@@ -23,10 +23,20 @@ interface StepInfo {
 interface GoalQuestionsComponentProps {
   lang: SupportedLanguage;
   showTerms: boolean;
+  langLearnPlanLabels: Record<SupportedLanguage, string>;
+  titleComponent: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  defaultLang?: SupportedLanguage;
 }
-const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, showTerms }) => {
+const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
+  lang,
+  titleComponent,
+  langLearnPlanLabels,
+  showTerms,
+  defaultLang,
+}) => {
   const { i18n } = useLingui();
-  const [languageToLearn, setLanguageToLearn] = useState<SupportedLanguage>("en");
+  const [languageToLearn, setLanguageToLearn] = useState<SupportedLanguage>(defaultLang || "en");
+  const title = langLearnPlanLabels[languageToLearn];
 
   const { inWebView } = useIsWebView();
 
@@ -124,7 +134,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
 
   const steps: StepInfo[] = [
     {
-      title: i18n._(`Language Learning Plan`),
+      title: title,
       subTitle: i18n._(
         `Create your personalized plan and start your journey towards achieving your goals.`
       ),
@@ -248,7 +258,9 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
               variant="body2"
               sx={{
                 opacity: 0.5,
+                maxWidth: "100px",
               }}
+              align="right"
             >
               {i18n._("Step 1 of 2")}
             </Typography>
@@ -433,7 +445,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
         <Typography
           align="left"
           variant="h2"
-          component={"h1"}
+          component={titleComponent}
           sx={{
             fontWeight: 700,
             color: "#121214",
@@ -515,10 +527,22 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
   );
 };
 
-export const GoalQuestions: FC<GoalQuestionsComponentProps> = ({ lang, showTerms }) => {
+export const GoalQuestions: FC<GoalQuestionsComponentProps> = ({
+  lang,
+  showTerms,
+  langLearnPlanLabels,
+  titleComponent,
+  defaultLang,
+}) => {
   return (
     <ThemeProvider theme={lightTheme}>
-      <GoalQuestionsComponent lang={lang} showTerms={showTerms} />
+      <GoalQuestionsComponent
+        lang={lang}
+        showTerms={showTerms}
+        langLearnPlanLabels={langLearnPlanLabels}
+        titleComponent={titleComponent}
+        defaultLang={defaultLang}
+      />
     </ThemeProvider>
   );
 };

@@ -7,6 +7,7 @@ import { APP_NAME } from "@/features/Landing/landingSettings";
 import { initLingui } from "@/initLingui";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { getBlogs } from "@/features/Blog/blogData";
+import { getLangLearnPlanLabels } from "@/features/Lang/getLabels";
 
 export const generateAlternatesTags = (currentPath: string) => {
   const hreflangLinks = supportedLanguages.reduce(
@@ -34,6 +35,7 @@ interface generateMetadataInfoProps {
   blogId?: string;
   category?: string;
   rolePlayId?: string;
+  languageToLearn?: SupportedLanguage;
 }
 
 export const generateMetadataInfo = ({
@@ -43,6 +45,7 @@ export const generateMetadataInfo = ({
   blogId,
   category,
   rolePlayId,
+  languageToLearn,
 }: generateMetadataInfoProps) => {
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
@@ -64,7 +67,9 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === "quiz") {
-    title = i18n._(`Create a Learning Plan`) + " | " + APP_NAME;
+    const languageLearningMap = getLangLearnPlanLabels(supportedLang);
+    const languageToLearnPlan = languageLearningMap[languageToLearn || "en"];
+    title = languageToLearnPlan + " | " + APP_NAME;
     description = i18n._(
       `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`
     );

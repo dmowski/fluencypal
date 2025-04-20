@@ -5,11 +5,13 @@ import { HeaderStatic } from "@/features/Header/HeaderStatic";
 import { maxContentWidth } from "../Landing/landingSettings";
 import { Footer } from "../Landing/Footer";
 import { GoalQuestions } from "./GoalQuestions";
+import { getLangLearnPlanLabels } from "../Lang/getLabels";
 
 interface QuizPageProps {
   lang: SupportedLanguage;
+  defaultLangToLearn: SupportedLanguage;
 }
-export const QuizPage = ({ lang }: QuizPageProps) => {
+export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
   return (
     <Stack sx={{}}>
       <HeaderStatic lang={lang} />
@@ -67,7 +69,13 @@ export const QuizPage = ({ lang }: QuizPageProps) => {
                 width: "100%",
               }}
             >
-              <GoalQuestions lang={lang} showTerms={true} />
+              <GoalQuestions
+                lang={lang}
+                showTerms={true}
+                langLearnPlanLabels={getLangLearnPlanLabels(lang)}
+                titleComponent="h1"
+                defaultLang={defaultLangToLearn}
+              />
             </Stack>
           </Stack>
         </Stack>

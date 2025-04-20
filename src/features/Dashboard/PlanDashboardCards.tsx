@@ -13,14 +13,18 @@ import { PlanCard } from "../Plan/PlanCard";
 import { cardColors, modeCardProps } from "../Plan/data";
 import { GoalQuestions } from "../Goal/GoalQuestions";
 import { SupportedLanguage } from "@/features/Lang/lang";
+import { useLangClientLabels } from "../Lang/getLabelsClient";
+import { useSettings } from "../Settings/useSettings";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();
   const words = useWords();
   const rules = useRules();
   const { i18n } = useLingui();
+  const settings = useSettings();
   const userInfo = useAiUserInfo();
   const plan = usePlan();
+  const langLabels = useLangClientLabels();
 
   const startGoalElement = async (element: PlanElement) => {
     if (!plan.latestGoal) {
@@ -212,7 +216,13 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             color: "#000",
           }}
         >
-          <GoalQuestions lang={lang} showTerms={false} />
+          <GoalQuestions
+            lang={lang}
+            defaultLang={settings.languageCode || "en"}
+            showTerms={false}
+            titleComponent="h5"
+            langLearnPlanLabels={langLabels.labelLearningPlan}
+          />
         </Stack>
       )}
     </DashboardCard>

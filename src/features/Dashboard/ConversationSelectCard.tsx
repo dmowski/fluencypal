@@ -12,12 +12,16 @@ import { ConversationCard } from "./ConversationCard";
 import { usePlan } from "../Plan/usePlan";
 import { GoalQuestions } from "../Goal/GoalQuestions";
 import { SupportedLanguage } from "@/features/Lang/lang";
+import { useLangClientLabels } from "../Lang/getLabelsClient";
+import { useSettings } from "../Settings/useSettings";
 
 export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();
   const words = useWords();
   const rules = useRules();
+  const langLabels = useLangClientLabels();
   const { i18n } = useLingui();
+  const settings = useSettings();
   const plan = usePlan();
   const isGoalSet = !!plan.latestGoal?.elements?.length;
 
@@ -46,7 +50,13 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
               maxWidth: "100dvw",
             }}
           >
-            <GoalQuestions lang={lang} showTerms={false} />
+            <GoalQuestions
+              lang={lang}
+              showTerms={false}
+              titleComponent="h5"
+              defaultLang={settings.languageCode || "en"}
+              langLearnPlanLabels={langLabels.labelLearningPlan}
+            />
           </Stack>
         </CustomModal>
       )}

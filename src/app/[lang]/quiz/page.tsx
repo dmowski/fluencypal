@@ -12,27 +12,38 @@ export async function generateStaticParams() {
 
 interface PageProps {
   params: Promise<{ lang: string }>;
+  searchParams: Promise<{
+    learn?: string;
+  }>;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const searchParam = await props.searchParams;
+  const toLearn = searchParam.learn || "";
+  const languageToLearn = supportedLanguages.find((l) => l === toLearn) || "en";
   return generateMetadataInfo({
     lang: (await props.params).lang,
     currentPath: "quiz",
+    languageToLearn,
   });
 }
 
-export default async function Page(props: { params: Promise<{ lang: string }> }) {
+export default async function Page(props: PageProps) {
   const lang = (await props.params).lang;
 
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
+
+  const searchParam = await props.searchParams;
+  const toLearn = searchParam.learn || "";
+  const languageToLearn = supportedLanguages.find((l) => l === toLearn) || "en";
 
   return (
     <LinguiClientProvider
       initialLocale={supportedLang}
       initialMessages={allMessages[supportedLang]!}
     >
-      <QuizPage lang={supportedLang} />
+      <QuizPage lang={supportedLang} defaultLangToLearn={languageToLearn} />
     </LinguiClientProvider>
   );
 }
