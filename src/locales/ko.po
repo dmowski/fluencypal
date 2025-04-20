@@ -13,6 +13,28 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Conversation/ConversationError.tsx:41
+#. js-lingui-explicit-id
+msgid ""
+"Notification was sent to the support team. We will ping you when it is "
+"fixed. Sorry for that..."
+msgstr "알림이 지원 팀에게 발송되었습니다. 문제가 해결되면 알려드리겠습니다. 죄송합니다..."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:26
+#. js-lingui-explicit-id
+msgid "Ready?"
+msgstr "준비되셨나요?"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Next, allow microphone access to talk with the AI."
+msgstr "다음으로, AI와 대화하기 위해 마이크 접근을 허용하세요."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:55
+#. js-lingui-explicit-id
+msgid "I am ready"
+msgstr "나는 준비되었습니다"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -130,7 +152,7 @@ msgstr "AI 튜터 비용"
 #: src/features/Landing/Footer.tsx:178
 #: src/features/Landing/Contact/ContactsPage.tsx:154
 #: src/features/Header/NeedHelpModal.tsx:137
-#: src/features/Goal/GoalQuestions.tsx:401
+#: src/features/Goal/GoalQuestions.tsx:399
 #: src/features/Auth/SignInForm.tsx:206
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -149,7 +171,7 @@ msgstr "쿠키 정책"
 #: src/features/Landing/Footer.tsx:168
 #: src/features/Landing/Contact/ContactsPage.tsx:151
 #: src/features/Header/NeedHelpModal.tsx:124
-#: src/features/Goal/GoalQuestions.tsx:405
+#: src/features/Goal/GoalQuestions.tsx:403
 #: src/features/Auth/SignInForm.tsx:210
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -681,9 +703,9 @@ msgstr "결제 내역:"
 
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Conversation/ConversationPage.tsx:162
-#: src/features/Conversation/ConversationPage.tsx:170
-#: src/features/Conversation/ConversationPage.tsx:188
+#: src/features/Conversation/ConversationPage.tsx:183
+#: src/features/Conversation/ConversationPage.tsx:191
+#: src/features/Conversation/ConversationPage.tsx:209
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "로딩 중..."
@@ -2771,6 +2793,7 @@ msgstr "네, 계정 삭제"
 
 #: src/features/Header/NeedHelpModal.tsx:207
 #: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Conversation/ConfirmConversationModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "닫기"
@@ -2816,49 +2839,49 @@ msgstr ""
 "\n"
 "돌아가기\n"
 
-#: src/features/Goal/GoalQuestions.tsx:121
+#: src/features/Goal/GoalQuestions.tsx:119
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please try again."
 msgstr "텍스트 복사에 실패했습니다. 다시 시도해 주세요."
 
-#: src/features/Goal/GoalQuestions.tsx:129
+#: src/features/Goal/GoalQuestions.tsx:127
 #. js-lingui-explicit-id
 msgid "Language Learning Plan"
 msgstr "언어 학습 계획"
 
-#: src/features/Goal/GoalQuestions.tsx:130
+#: src/features/Goal/GoalQuestions.tsx:128
 #. js-lingui-explicit-id
 msgid ""
 "Create your personalized plan and start your journey towards achieving your "
 "goals."
 msgstr "당신의 개인화된 계획을 만들고 목표를 달성하기 위한 여정을 시작하세요."
 
-#: src/features/Goal/GoalQuestions.tsx:166
+#: src/features/Goal/GoalQuestions.tsx:164
 #. js-lingui-explicit-id
 msgid "Language to Learn"
 msgstr "배울 언어"
 
-#: src/features/Goal/GoalQuestions.tsx:199
+#: src/features/Goal/GoalQuestions.tsx:197
 #. js-lingui-explicit-id
 msgid "Your Current Level"
 msgstr "당신의 현재 레벨"
 
-#: src/features/Goal/GoalQuestions.tsx:247
+#: src/features/Goal/GoalQuestions.tsx:245
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "다음"
 
-#: src/features/Goal/GoalQuestions.tsx:255
+#: src/features/Goal/GoalQuestions.tsx:253
 #. js-lingui-explicit-id
 msgid "Step 1 of 2"
 msgstr "2단계 중 1단계"
 
-#: src/features/Goal/GoalQuestions.tsx:263
+#: src/features/Goal/GoalQuestions.tsx:261
 #. js-lingui-explicit-id
 msgid "Details"
 msgstr "세부사항"
 
-#: src/features/Goal/GoalQuestions.tsx:264
+#: src/features/Goal/GoalQuestions.tsx:262
 #. js-lingui-explicit-id
 msgid ""
 "Provide more info about you and what you need to improve in your language "
@@ -2868,65 +2891,65 @@ msgstr ""
 "당신에 대한 자세한 정보와 개선이 필요한 언어 능력에 대해 알려주세요. 그러면 AI가 개인화된 계획을 만들어줍니다. 정보가 더 많으면 "
 "더 좋은 계획을 만들 수 있습니다."
 
-#: src/features/Goal/GoalQuestions.tsx:301
+#: src/features/Goal/GoalQuestions.tsx:299
 #. js-lingui-explicit-id
 msgid "About your goal"
 msgstr "당신의 목표에 대하여"
 
-#: src/features/Goal/GoalQuestions.tsx:317
+#: src/features/Goal/GoalQuestions.tsx:315
 #. js-lingui-explicit-id
 msgid ""
 "I want to learn English to travel. And I want to understand movies and "
 "songs."
 msgstr "나는 여행을 위해 영어를 배우고 싶습니다. 그리고 영화와 노래를 이해하고 싶습니다."
 
-#: src/features/Goal/GoalQuestions.tsx:336
+#: src/features/Goal/GoalQuestions.tsx:334
 #. js-lingui-explicit-id
 msgid "Write at least 100 characters for a sharper plan"
 msgstr "더욱 선명한 계획을 위해 최소한 100자를 작성하세요"
 
-#: src/features/Goal/GoalQuestions.tsx:368
+#: src/features/Goal/GoalQuestions.tsx:366
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "제출"
 
-#: src/features/Goal/GoalQuestions.tsx:376
+#: src/features/Goal/GoalQuestions.tsx:374
 #. js-lingui-explicit-id
 msgid "Step 2 of 2"
 msgstr "2단계 중 2단계"
 
-#: src/features/Goal/GoalQuestions.tsx:398
+#: src/features/Goal/GoalQuestions.tsx:396
 #. js-lingui-explicit-id
 msgid "By submitting this form, you agree to our:"
 msgstr "이 양식을 제출함으로써, 당신은 우리의를 동의합니다:"
 
-#: src/features/Goal/GoalQuestions.tsx:403
+#: src/features/Goal/GoalQuestions.tsx:401
 #: src/features/Auth/SignInForm.tsx:208
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "그리고"
 
-#: src/features/Goal/GoalQuestions.tsx:453
+#: src/features/Goal/GoalQuestions.tsx:451
 #. js-lingui-explicit-id
 msgid "Submitted"
 msgstr "제출됨"
 
-#: src/features/Goal/GoalQuestions.tsx:464
+#: src/features/Goal/GoalQuestions.tsx:462
 #. js-lingui-explicit-id
 msgid "Your plan is being processed with AI"
 msgstr "당신의 계획이 AI로 처리되고 있습니다"
 
-#: src/features/Goal/GoalQuestions.tsx:494
+#: src/features/Goal/GoalQuestions.tsx:492
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "복사됨"
 
-#: src/features/Goal/GoalQuestions.tsx:494
+#: src/features/Goal/GoalQuestions.tsx:492
 #. js-lingui-explicit-id
 msgid "Copy link"
 msgstr "링크 복사"
 
-#: src/features/Goal/GoalQuestions.tsx:507
+#: src/features/Goal/GoalQuestions.tsx:505
 #. js-lingui-explicit-id
 msgid "Open a plan"
 msgstr "계획을 열다"
@@ -3277,22 +3300,22 @@ msgstr "덜"
 msgid "More"
 msgstr "더 보기"
 
-#: src/features/Conversation/ConversationPage.tsx:136
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Error processing goal"
 msgstr "목표 처리 중 오류"
 
-#: src/features/Conversation/ConversationPage.tsx:174
+#: src/features/Conversation/ConversationPage.tsx:195
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "목표 로드 중..."
 
-#: src/features/Conversation/ConversationPage.tsx:196
+#: src/features/Conversation/ConversationPage.tsx:217
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "새로운 단어를 만들고 있습니다..."
 
-#: src/features/Conversation/ConversationPage.tsx:200
+#: src/features/Conversation/ConversationPage.tsx:221
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "룰 생성 중..."
@@ -3307,7 +3330,7 @@ msgstr "이런! 문제가 발생했습니다"
 msgid "Please refresh the page and try one more time"
 msgstr "페이지를 새로고침하고 한 번 더 시도해주세요"
 
-#: src/features/Conversation/ConversationError.tsx:47
+#: src/features/Conversation/ConversationError.tsx:53
 #. js-lingui-explicit-id
 msgid "Reload page"
 msgstr "페이지 새로고침"

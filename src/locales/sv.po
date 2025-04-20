@@ -13,6 +13,30 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Conversation/ConversationError.tsx:41
+#. js-lingui-explicit-id
+msgid ""
+"Notification was sent to the support team. We will ping you when it is "
+"fixed. Sorry for that..."
+msgstr ""
+"En notifikation skickades till supportteamet. Vi kommer att meddela dig när "
+"det är fixat. Ursäkta för det..."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:26
+#. js-lingui-explicit-id
+msgid "Ready?"
+msgstr "Redo?"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Next, allow microphone access to talk with the AI."
+msgstr "Nästa, tillåt mikrofonåtkomst för att prata med AI."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:55
+#. js-lingui-explicit-id
+msgid "I am ready"
+msgstr "Jag är redo"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -133,7 +157,7 @@ msgstr "AI-tutor kostnad"
 #: src/features/Landing/Footer.tsx:178
 #: src/features/Landing/Contact/ContactsPage.tsx:154
 #: src/features/Header/NeedHelpModal.tsx:137
-#: src/features/Goal/GoalQuestions.tsx:401
+#: src/features/Goal/GoalQuestions.tsx:399
 #: src/features/Auth/SignInForm.tsx:206
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -152,7 +176,7 @@ msgstr "Policy för kakor"
 #: src/features/Landing/Footer.tsx:168
 #: src/features/Landing/Contact/ContactsPage.tsx:151
 #: src/features/Header/NeedHelpModal.tsx:124
-#: src/features/Goal/GoalQuestions.tsx:405
+#: src/features/Goal/GoalQuestions.tsx:403
 #: src/features/Auth/SignInForm.tsx:210
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -701,9 +725,9 @@ msgstr "Betalningshistorik:"
 
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Conversation/ConversationPage.tsx:162
-#: src/features/Conversation/ConversationPage.tsx:170
-#: src/features/Conversation/ConversationPage.tsx:188
+#: src/features/Conversation/ConversationPage.tsx:183
+#: src/features/Conversation/ConversationPage.tsx:191
+#: src/features/Conversation/ConversationPage.tsx:209
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Laddar..."
@@ -2942,6 +2966,7 @@ msgstr "Ja, Radera konto"
 
 #: src/features/Header/NeedHelpModal.tsx:207
 #: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Conversation/ConfirmConversationModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "Stäng"
@@ -2985,49 +3010,49 @@ msgstr "Slutför..."
 msgid "Back"
 msgstr "Tillbaka"
 
-#: src/features/Goal/GoalQuestions.tsx:121
+#: src/features/Goal/GoalQuestions.tsx:119
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please try again."
 msgstr "Kopiering av text misslyckades. Var vänlig försök igen."
 
-#: src/features/Goal/GoalQuestions.tsx:129
+#: src/features/Goal/GoalQuestions.tsx:127
 #. js-lingui-explicit-id
 msgid "Language Learning Plan"
 msgstr "Språkinlärningsplan"
 
-#: src/features/Goal/GoalQuestions.tsx:130
+#: src/features/Goal/GoalQuestions.tsx:128
 #. js-lingui-explicit-id
 msgid ""
 "Create your personalized plan and start your journey towards achieving your "
 "goals."
 msgstr "Skapa din personliga plan och börja din resa mot att uppnå dina mål."
 
-#: src/features/Goal/GoalQuestions.tsx:166
+#: src/features/Goal/GoalQuestions.tsx:164
 #. js-lingui-explicit-id
 msgid "Language to Learn"
 msgstr "Språk att Lära"
 
-#: src/features/Goal/GoalQuestions.tsx:199
+#: src/features/Goal/GoalQuestions.tsx:197
 #. js-lingui-explicit-id
 msgid "Your Current Level"
 msgstr "Din nuvarande nivå"
 
-#: src/features/Goal/GoalQuestions.tsx:247
+#: src/features/Goal/GoalQuestions.tsx:245
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "Nästa"
 
-#: src/features/Goal/GoalQuestions.tsx:255
+#: src/features/Goal/GoalQuestions.tsx:253
 #. js-lingui-explicit-id
 msgid "Step 1 of 2"
 msgstr "Steg 1 av 2"
 
-#: src/features/Goal/GoalQuestions.tsx:263
+#: src/features/Goal/GoalQuestions.tsx:261
 #. js-lingui-explicit-id
 msgid "Details"
 msgstr "Detaljer"
 
-#: src/features/Goal/GoalQuestions.tsx:264
+#: src/features/Goal/GoalQuestions.tsx:262
 #. js-lingui-explicit-id
 msgid ""
 "Provide more info about you and what you need to improve in your language "
@@ -3038,12 +3063,12 @@ msgstr ""
 "Och AI kommer att skapa en personaliserad plan för dig. Mer info - bättre "
 "plan."
 
-#: src/features/Goal/GoalQuestions.tsx:301
+#: src/features/Goal/GoalQuestions.tsx:299
 #. js-lingui-explicit-id
 msgid "About your goal"
 msgstr "Om ditt mål"
 
-#: src/features/Goal/GoalQuestions.tsx:317
+#: src/features/Goal/GoalQuestions.tsx:315
 #. js-lingui-explicit-id
 msgid ""
 "I want to learn English to travel. And I want to understand movies and "
@@ -3052,53 +3077,53 @@ msgstr ""
 "Jag vill lära mig engelska för att resa. Och jag vill förstå filmer och "
 "sånger."
 
-#: src/features/Goal/GoalQuestions.tsx:336
+#: src/features/Goal/GoalQuestions.tsx:334
 #. js-lingui-explicit-id
 msgid "Write at least 100 characters for a sharper plan"
 msgstr "Skriv minst 100 tecken för en skarpare plan"
 
-#: src/features/Goal/GoalQuestions.tsx:368
+#: src/features/Goal/GoalQuestions.tsx:366
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Skicka"
 
-#: src/features/Goal/GoalQuestions.tsx:376
+#: src/features/Goal/GoalQuestions.tsx:374
 #. js-lingui-explicit-id
 msgid "Step 2 of 2"
 msgstr "Steg 2 av 2"
 
-#: src/features/Goal/GoalQuestions.tsx:398
+#: src/features/Goal/GoalQuestions.tsx:396
 #. js-lingui-explicit-id
 msgid "By submitting this form, you agree to our:"
 msgstr "Genom att skicka in detta formulär samtycker du till vår:"
 
-#: src/features/Goal/GoalQuestions.tsx:403
+#: src/features/Goal/GoalQuestions.tsx:401
 #: src/features/Auth/SignInForm.tsx:208
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "och"
 
-#: src/features/Goal/GoalQuestions.tsx:453
+#: src/features/Goal/GoalQuestions.tsx:451
 #. js-lingui-explicit-id
 msgid "Submitted"
 msgstr "Inlämnad"
 
-#: src/features/Goal/GoalQuestions.tsx:464
+#: src/features/Goal/GoalQuestions.tsx:462
 #. js-lingui-explicit-id
 msgid "Your plan is being processed with AI"
 msgstr "Din plan bearbetas med AI"
 
-#: src/features/Goal/GoalQuestions.tsx:494
+#: src/features/Goal/GoalQuestions.tsx:492
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "Kopierad"
 
-#: src/features/Goal/GoalQuestions.tsx:494
+#: src/features/Goal/GoalQuestions.tsx:492
 #. js-lingui-explicit-id
 msgid "Copy link"
 msgstr "Kopiera länk"
 
-#: src/features/Goal/GoalQuestions.tsx:507
+#: src/features/Goal/GoalQuestions.tsx:505
 #. js-lingui-explicit-id
 msgid "Open a plan"
 msgstr "Öppna en plan"
@@ -3451,22 +3476,22 @@ msgstr "Mindre"
 msgid "More"
 msgstr "Mer"
 
-#: src/features/Conversation/ConversationPage.tsx:136
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Error processing goal"
 msgstr "Fel vid bearbetning av mål"
 
-#: src/features/Conversation/ConversationPage.tsx:174
+#: src/features/Conversation/ConversationPage.tsx:195
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Laddar Mål..."
 
-#: src/features/Conversation/ConversationPage.tsx:196
+#: src/features/Conversation/ConversationPage.tsx:217
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Skapa nya ord..."
 
-#: src/features/Conversation/ConversationPage.tsx:200
+#: src/features/Conversation/ConversationPage.tsx:221
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Skapa ny regel..."
@@ -3481,7 +3506,7 @@ msgstr "Oj! Något gick fel"
 msgid "Please refresh the page and try one more time"
 msgstr "Vänligen uppdatera sidan och försök en gång till"
 
-#: src/features/Conversation/ConversationError.tsx:47
+#: src/features/Conversation/ConversationError.tsx:53
 #. js-lingui-explicit-id
 msgid "Reload page"
 msgstr "Ladda om sidan"

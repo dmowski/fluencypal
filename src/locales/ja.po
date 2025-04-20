@@ -13,6 +13,28 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Conversation/ConversationError.tsx:41
+#. js-lingui-explicit-id
+msgid ""
+"Notification was sent to the support team. We will ping you when it is "
+"fixed. Sorry for that..."
+msgstr "サポートチームに通知が送信されました。修正され次第、あなたに連絡します。申し訳ありません..."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:26
+#. js-lingui-explicit-id
+msgid "Ready?"
+msgstr "準備はいいですか？"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Next, allow microphone access to talk with the AI."
+msgstr "次に、AIと話すためにマイクへのアクセスを許可してください。"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:55
+#. js-lingui-explicit-id
+msgid "I am ready"
+msgstr "私は準備ができています"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -132,7 +154,7 @@ msgstr "AI家庭教師の費用"
 #: src/features/Landing/Footer.tsx:178
 #: src/features/Landing/Contact/ContactsPage.tsx:154
 #: src/features/Header/NeedHelpModal.tsx:137
-#: src/features/Goal/GoalQuestions.tsx:401
+#: src/features/Goal/GoalQuestions.tsx:399
 #: src/features/Auth/SignInForm.tsx:206
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -151,7 +173,7 @@ msgstr "クッキーポリシー"
 #: src/features/Landing/Footer.tsx:168
 #: src/features/Landing/Contact/ContactsPage.tsx:151
 #: src/features/Header/NeedHelpModal.tsx:124
-#: src/features/Goal/GoalQuestions.tsx:405
+#: src/features/Goal/GoalQuestions.tsx:403
 #: src/features/Auth/SignInForm.tsx:210
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -685,9 +707,9 @@ msgstr "支払い履歴:"
 
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Conversation/ConversationPage.tsx:162
-#: src/features/Conversation/ConversationPage.tsx:170
-#: src/features/Conversation/ConversationPage.tsx:188
+#: src/features/Conversation/ConversationPage.tsx:183
+#: src/features/Conversation/ConversationPage.tsx:191
+#: src/features/Conversation/ConversationPage.tsx:209
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "読み込み中..."
@@ -2764,6 +2786,7 @@ msgstr "はい、アカウントを削除します"
 
 #: src/features/Header/NeedHelpModal.tsx:207
 #: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Conversation/ConfirmConversationModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "閉じる"
@@ -2811,49 +2834,49 @@ msgstr ""
 "\n"
 "戻る\n"
 
-#: src/features/Goal/GoalQuestions.tsx:121
+#: src/features/Goal/GoalQuestions.tsx:119
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please try again."
 msgstr "テキストのコピーに失敗しました。もう一度お試しください。"
 
-#: src/features/Goal/GoalQuestions.tsx:129
+#: src/features/Goal/GoalQuestions.tsx:127
 #. js-lingui-explicit-id
 msgid "Language Learning Plan"
 msgstr "言語学習計画"
 
-#: src/features/Goal/GoalQuestions.tsx:130
+#: src/features/Goal/GoalQuestions.tsx:128
 #. js-lingui-explicit-id
 msgid ""
 "Create your personalized plan and start your journey towards achieving your "
 "goals."
 msgstr "あなたのパーソナライズされたプランを作成し、目標達成に向けた旅を始めましょう。"
 
-#: src/features/Goal/GoalQuestions.tsx:166
+#: src/features/Goal/GoalQuestions.tsx:164
 #. js-lingui-explicit-id
 msgid "Language to Learn"
 msgstr "学びたい言語"
 
-#: src/features/Goal/GoalQuestions.tsx:199
+#: src/features/Goal/GoalQuestions.tsx:197
 #. js-lingui-explicit-id
 msgid "Your Current Level"
 msgstr "あなたの現在のレベル"
 
-#: src/features/Goal/GoalQuestions.tsx:247
+#: src/features/Goal/GoalQuestions.tsx:245
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "次へ"
 
-#: src/features/Goal/GoalQuestions.tsx:255
+#: src/features/Goal/GoalQuestions.tsx:253
 #. js-lingui-explicit-id
 msgid "Step 1 of 2"
 msgstr "ステップ1（全2ステップ）"
 
-#: src/features/Goal/GoalQuestions.tsx:263
+#: src/features/Goal/GoalQuestions.tsx:261
 #. js-lingui-explicit-id
 msgid "Details"
 msgstr "詳細"
 
-#: src/features/Goal/GoalQuestions.tsx:264
+#: src/features/Goal/GoalQuestions.tsx:262
 #. js-lingui-explicit-id
 msgid ""
 "Provide more info about you and what you need to improve in your language "
@@ -2863,65 +2886,65 @@ msgstr ""
 "あなた自身について、そして向上させたい語学スキルについてもっと詳しく教えてください。AIがあなたのためにパーソナライズされたプランを作成します。詳細情報"
 " - より良いプラン。"
 
-#: src/features/Goal/GoalQuestions.tsx:301
+#: src/features/Goal/GoalQuestions.tsx:299
 #. js-lingui-explicit-id
 msgid "About your goal"
 msgstr "あなたの目標について"
 
-#: src/features/Goal/GoalQuestions.tsx:317
+#: src/features/Goal/GoalQuestions.tsx:315
 #. js-lingui-explicit-id
 msgid ""
 "I want to learn English to travel. And I want to understand movies and "
 "songs."
 msgstr "私は旅行のために英語を学びたいです。そして、映画や歌を理解したいと思います。"
 
-#: src/features/Goal/GoalQuestions.tsx:336
+#: src/features/Goal/GoalQuestions.tsx:334
 #. js-lingui-explicit-id
 msgid "Write at least 100 characters for a sharper plan"
 msgstr "より明確な計画のために、少なくとも100文字を書いてください"
 
-#: src/features/Goal/GoalQuestions.tsx:368
+#: src/features/Goal/GoalQuestions.tsx:366
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "提出する"
 
-#: src/features/Goal/GoalQuestions.tsx:376
+#: src/features/Goal/GoalQuestions.tsx:374
 #. js-lingui-explicit-id
 msgid "Step 2 of 2"
 msgstr "ステップ2 / 2"
 
-#: src/features/Goal/GoalQuestions.tsx:398
+#: src/features/Goal/GoalQuestions.tsx:396
 #. js-lingui-explicit-id
 msgid "By submitting this form, you agree to our:"
 msgstr "このフォームを提出することで、あなたは私たちのに同意する:"
 
-#: src/features/Goal/GoalQuestions.tsx:403
+#: src/features/Goal/GoalQuestions.tsx:401
 #: src/features/Auth/SignInForm.tsx:208
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "そして"
 
-#: src/features/Goal/GoalQuestions.tsx:453
+#: src/features/Goal/GoalQuestions.tsx:451
 #. js-lingui-explicit-id
 msgid "Submitted"
 msgstr "提出済み"
 
-#: src/features/Goal/GoalQuestions.tsx:464
+#: src/features/Goal/GoalQuestions.tsx:462
 #. js-lingui-explicit-id
 msgid "Your plan is being processed with AI"
 msgstr "あなたのプランはAIで処理されています"
 
-#: src/features/Goal/GoalQuestions.tsx:494
+#: src/features/Goal/GoalQuestions.tsx:492
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "コピー済み"
 
-#: src/features/Goal/GoalQuestions.tsx:494
+#: src/features/Goal/GoalQuestions.tsx:492
 #. js-lingui-explicit-id
 msgid "Copy link"
 msgstr "リンクをコピー"
 
-#: src/features/Goal/GoalQuestions.tsx:507
+#: src/features/Goal/GoalQuestions.tsx:505
 #. js-lingui-explicit-id
 msgid "Open a plan"
 msgstr "プランを開く"
@@ -3276,22 +3299,22 @@ msgstr "少ない"
 msgid "More"
 msgstr "もっと"
 
-#: src/features/Conversation/ConversationPage.tsx:136
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Error processing goal"
 msgstr "目標の処理エラー"
 
-#: src/features/Conversation/ConversationPage.tsx:174
+#: src/features/Conversation/ConversationPage.tsx:195
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "目標を読み込んでいます..."
 
-#: src/features/Conversation/ConversationPage.tsx:196
+#: src/features/Conversation/ConversationPage.tsx:217
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "新しい言葉を作成中..."
 
-#: src/features/Conversation/ConversationPage.tsx:200
+#: src/features/Conversation/ConversationPage.tsx:221
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "新しいルールの作成..."
@@ -3306,7 +3329,7 @@ msgstr "おっと！何かが間違っています"
 msgid "Please refresh the page and try one more time"
 msgstr "ページを更新して、もう一度試してください"
 
-#: src/features/Conversation/ConversationError.tsx:47
+#: src/features/Conversation/ConversationError.tsx:53
 #. js-lingui-explicit-id
 msgid "Reload page"
 msgstr "ページを再読み込み"

@@ -13,6 +13,30 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Conversation/ConversationError.tsx:41
+#. js-lingui-explicit-id
+msgid ""
+"Notification was sent to the support team. We will ping you when it is "
+"fixed. Sorry for that..."
+msgstr ""
+"Notifikasi telah dikirim ke tim dukungan. Kami akan menghubungi Anda saat "
+"ini sudah diperbaiki. Maaf untuk hal tersebut..."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:26
+#. js-lingui-explicit-id
+msgid "Ready?"
+msgstr "Siap?"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Next, allow microphone access to talk with the AI."
+msgstr "Selanjutnya, izinkan akses mikrofon untuk berbicara dengan AI."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:55
+#. js-lingui-explicit-id
+msgid "I am ready"
+msgstr "Saya siap"
+
 #: src/libs/metadata.ts:59
 #: src/features/Landing/Footer.tsx:81
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -134,7 +158,7 @@ msgstr "Biaya tutor AI"
 #: src/features/Landing/Footer.tsx:178
 #: src/features/Landing/Contact/ContactsPage.tsx:154
 #: src/features/Header/NeedHelpModal.tsx:137
-#: src/features/Goal/GoalQuestions.tsx:401
+#: src/features/Goal/GoalQuestions.tsx:399
 #: src/features/Auth/SignInForm.tsx:206
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -153,7 +177,7 @@ msgstr "Kebijakan Cookies"
 #: src/features/Landing/Footer.tsx:168
 #: src/features/Landing/Contact/ContactsPage.tsx:151
 #: src/features/Header/NeedHelpModal.tsx:124
-#: src/features/Goal/GoalQuestions.tsx:405
+#: src/features/Goal/GoalQuestions.tsx:403
 #: src/features/Auth/SignInForm.tsx:210
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -711,9 +735,9 @@ msgstr "Riwayat pembayaran:"
 
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Conversation/ConversationPage.tsx:162
-#: src/features/Conversation/ConversationPage.tsx:170
-#: src/features/Conversation/ConversationPage.tsx:188
+#: src/features/Conversation/ConversationPage.tsx:183
+#: src/features/Conversation/ConversationPage.tsx:191
+#: src/features/Conversation/ConversationPage.tsx:209
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Loading..."
@@ -2985,6 +3009,7 @@ msgstr "Ya, Hapus akun"
 
 #: src/features/Header/NeedHelpModal.tsx:207
 #: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Conversation/ConfirmConversationModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "Tutup"
@@ -3028,17 +3053,17 @@ msgstr "Menyelesaikan..."
 msgid "Back"
 msgstr "Kembali"
 
-#: src/features/Goal/GoalQuestions.tsx:121
+#: src/features/Goal/GoalQuestions.tsx:119
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please try again."
 msgstr "Gagal menyalin teks. Silakan coba lagi."
 
-#: src/features/Goal/GoalQuestions.tsx:129
+#: src/features/Goal/GoalQuestions.tsx:127
 #. js-lingui-explicit-id
 msgid "Language Learning Plan"
 msgstr "Rencana Belajar Bahasa"
 
-#: src/features/Goal/GoalQuestions.tsx:130
+#: src/features/Goal/GoalQuestions.tsx:128
 #. js-lingui-explicit-id
 msgid ""
 "Create your personalized plan and start your journey towards achieving your "
@@ -3047,32 +3072,32 @@ msgstr ""
 "Buat rencana personal Anda dan mulailah perjalanan Anda menuju pencapaian "
 "tujuan Anda."
 
-#: src/features/Goal/GoalQuestions.tsx:166
+#: src/features/Goal/GoalQuestions.tsx:164
 #. js-lingui-explicit-id
 msgid "Language to Learn"
 msgstr "Bahasa yang Ingin Dipelajari"
 
-#: src/features/Goal/GoalQuestions.tsx:199
+#: src/features/Goal/GoalQuestions.tsx:197
 #. js-lingui-explicit-id
 msgid "Your Current Level"
 msgstr "Tingkat Saat Ini Anda"
 
-#: src/features/Goal/GoalQuestions.tsx:247
+#: src/features/Goal/GoalQuestions.tsx:245
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "Selanjutnya"
 
-#: src/features/Goal/GoalQuestions.tsx:255
+#: src/features/Goal/GoalQuestions.tsx:253
 #. js-lingui-explicit-id
 msgid "Step 1 of 2"
 msgstr "Langkah 1 dari 2"
 
-#: src/features/Goal/GoalQuestions.tsx:263
+#: src/features/Goal/GoalQuestions.tsx:261
 #. js-lingui-explicit-id
 msgid "Details"
 msgstr "Rincian"
 
-#: src/features/Goal/GoalQuestions.tsx:264
+#: src/features/Goal/GoalQuestions.tsx:262
 #. js-lingui-explicit-id
 msgid ""
 "Provide more info about you and what you need to improve in your language "
@@ -3083,12 +3108,12 @@ msgstr ""
 "tingkatkan dalam keterampilan bahasa Anda. Dan AI akan membuat sebuah "
 "rencana personalisasi untuk Anda. Info lebih - rencana lebih baik."
 
-#: src/features/Goal/GoalQuestions.tsx:301
+#: src/features/Goal/GoalQuestions.tsx:299
 #. js-lingui-explicit-id
 msgid "About your goal"
 msgstr "Tentang tujuan Anda"
 
-#: src/features/Goal/GoalQuestions.tsx:317
+#: src/features/Goal/GoalQuestions.tsx:315
 #. js-lingui-explicit-id
 msgid ""
 "I want to learn English to travel. And I want to understand movies and "
@@ -3097,53 +3122,53 @@ msgstr ""
 "Saya ingin belajar Bahasa Inggris untuk bepergian. Dan saya ingin memahami "
 "film dan lagu."
 
-#: src/features/Goal/GoalQuestions.tsx:336
+#: src/features/Goal/GoalQuestions.tsx:334
 #. js-lingui-explicit-id
 msgid "Write at least 100 characters for a sharper plan"
 msgstr "Tulis setidaknya 100 karakter untuk rencana yang lebih tajam"
 
-#: src/features/Goal/GoalQuestions.tsx:368
+#: src/features/Goal/GoalQuestions.tsx:366
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Kirim"
 
-#: src/features/Goal/GoalQuestions.tsx:376
+#: src/features/Goal/GoalQuestions.tsx:374
 #. js-lingui-explicit-id
 msgid "Step 2 of 2"
 msgstr "Langkah 2 dari 2"
 
-#: src/features/Goal/GoalQuestions.tsx:398
+#: src/features/Goal/GoalQuestions.tsx:396
 #. js-lingui-explicit-id
 msgid "By submitting this form, you agree to our:"
 msgstr "Dengan mengirimkan formulir ini, Anda setuju dengan:"
 
-#: src/features/Goal/GoalQuestions.tsx:403
+#: src/features/Goal/GoalQuestions.tsx:401
 #: src/features/Auth/SignInForm.tsx:208
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "dan"
 
-#: src/features/Goal/GoalQuestions.tsx:453
+#: src/features/Goal/GoalQuestions.tsx:451
 #. js-lingui-explicit-id
 msgid "Submitted"
 msgstr "Dikirimkan"
 
-#: src/features/Goal/GoalQuestions.tsx:464
+#: src/features/Goal/GoalQuestions.tsx:462
 #. js-lingui-explicit-id
 msgid "Your plan is being processed with AI"
 msgstr "Rencana Anda sedang diproses dengan AI"
 
-#: src/features/Goal/GoalQuestions.tsx:494
+#: src/features/Goal/GoalQuestions.tsx:492
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "Disalin"
 
-#: src/features/Goal/GoalQuestions.tsx:494
+#: src/features/Goal/GoalQuestions.tsx:492
 #. js-lingui-explicit-id
 msgid "Copy link"
 msgstr "Salin tautan"
 
-#: src/features/Goal/GoalQuestions.tsx:507
+#: src/features/Goal/GoalQuestions.tsx:505
 #. js-lingui-explicit-id
 msgid "Open a plan"
 msgstr "Buka sebuah rencana"
@@ -3496,22 +3521,22 @@ msgstr "Kurang"
 msgid "More"
 msgstr "Lebih"
 
-#: src/features/Conversation/ConversationPage.tsx:136
+#: src/features/Conversation/ConversationPage.tsx:141
 #. js-lingui-explicit-id
 msgid "Error processing goal"
 msgstr "Kesalahan dalam memproses tujuan"
 
-#: src/features/Conversation/ConversationPage.tsx:174
+#: src/features/Conversation/ConversationPage.tsx:195
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Memuat Tujuan..."
 
-#: src/features/Conversation/ConversationPage.tsx:196
+#: src/features/Conversation/ConversationPage.tsx:217
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Menciptakan kata-kata baru..."
 
-#: src/features/Conversation/ConversationPage.tsx:200
+#: src/features/Conversation/ConversationPage.tsx:221
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Menyusun aturan baru..."
@@ -3526,7 +3551,7 @@ msgstr "Ups! Ada yang salah"
 msgid "Please refresh the page and try one more time"
 msgstr "Silakan segarkan halaman dan coba sekali lagi"
 
-#: src/features/Conversation/ConversationError.tsx:47
+#: src/features/Conversation/ConversationError.tsx:53
 #. js-lingui-explicit-id
 msgid "Reload page"
 msgstr "Muat ulang halaman"
