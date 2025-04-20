@@ -52,6 +52,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
     }
 
     setIsLoading(true);
+    scrollTop();
 
     const requestResult = await sendCreateGoalRequest({
       description: description,
@@ -266,7 +267,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
       content: (
         <Stack
           sx={{
-            width: "400px",
+            width: "700px",
             maxWidth: "100%",
             paddingTop: "20px",
           }}
