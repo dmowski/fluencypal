@@ -210,9 +210,11 @@ export const initAiRtc = async ({
   }
 
   await sleep(2000); // Important for mobile devices
+  console.log("Audio element created:", audioEl);
   const userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
+  console.log("User media stream DONE");
   await sleep(1000);
 
   const peerConnection = new RTCPeerConnection();
