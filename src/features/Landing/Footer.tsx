@@ -120,12 +120,14 @@ export const Footer: React.FC<FooterProps> = async ({ lang }) => {
             }}
           >
             {supportedLanguages.map((lang, index) => {
+              const href = [getUrlStartWithoutLastSlash(lang), pathWithoutFirstSlash]
+                .filter((part) => part)
+                .join("/")
+                .replace(/\/+/g, "/");
               return (
                 <Link
                   key={lang}
-                  href={[getUrlStartWithoutLastSlash(lang), pathWithoutFirstSlash]
-                    .filter(Boolean)
-                    .join("/")}
+                  href={href}
                   variant="body1"
                   lang={lang}
                   aria-label={`Switch to ${fullEnglishLanguageName[lang]}`}
