@@ -38,9 +38,7 @@ export const ConversationError = ({
           </Typography>
 
           <Typography variant="caption">
-            {i18n._(
-              `Notification was sent to the support team. We will ping you when it is fixed. Sorry for that...`
-            )}
+            {i18n._(`Notification was sent to the dev team. Sorry for that...`)}
           </Typography>
         </Stack>
         <Button

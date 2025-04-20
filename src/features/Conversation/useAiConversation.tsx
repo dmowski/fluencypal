@@ -740,7 +740,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
       setErrorInitiating(
         isNotAllowedError
           ? "Please enable microphone access to start the conversation. Error code:" + `${e}`
-          : "Please try to refresh page and try one more time."
+          : "Please check you microphone access and try to refresh page. Error code:" + `${e}`
       );
       setIsInitializing("");
       throw e;
