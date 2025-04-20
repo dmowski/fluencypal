@@ -12,11 +12,13 @@ import { AiUserInfoRecord } from "@/common/userInfo";
 import { useTextAi } from "../Ai/useTextAi";
 import { useFixJson } from "../Ai/useFixJson";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/common/lang";
+import { GoalQuiz } from "@/app/api/goal/types";
 
 interface GenerateGoalProps {
   conversationMessages: ChatMessage[];
   userInfo: AiUserInfoRecord[];
   languageCode: SupportedLanguage;
+  goalQuiz?: GoalQuiz;
 }
 interface PlanContextType {
   goals: GoalPlan[];
@@ -214,6 +216,7 @@ ${input.conversationMessages.map((message) => {
       elements: elements,
       createdAt: Date.now(),
       languageCode: input.languageCode,
+      goalQuiz: input.goalQuiz || null,
     };
 
     setIsCraftingGoal(false);

@@ -121,6 +121,7 @@ About me: ${goalData.description}.`,
         conversationMessages: conversation,
         userInfo: updatedInfoRecords.records,
         languageCode: code,
+        goalQuiz: goalData,
       });
 
       console.log("USER PLAN", planData);

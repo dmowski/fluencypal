@@ -1,3 +1,4 @@
+import { GoalQuiz } from "@/app/api/goal/types";
 import { SupportedLanguage } from "@/common/lang";
 
 export type PlanElementMode = "conversation" | "words" | "play" | "rule";
@@ -18,6 +19,7 @@ export interface GoalPlan {
   elements: PlanElement[];
   createdAt: number;
   languageCode: SupportedLanguage;
+  goalQuiz: GoalQuiz | null;
 }
 
 export type GoalElementInfo = {
