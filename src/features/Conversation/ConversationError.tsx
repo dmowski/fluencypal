@@ -36,6 +36,12 @@ export const ConversationError = ({
           <Typography color="error">
             {errorMessage || i18n._(`Please refresh the page and try one more time`)}
           </Typography>
+
+          <Typography variant="caption">
+            {i18n._(
+              `Notification was sent to the support team. We will ping you when it is fixed. Sorry for that...`
+            )}
+          </Typography>
         </Stack>
         <Button
           variant="contained"
