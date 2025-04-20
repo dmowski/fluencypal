@@ -76,8 +76,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
     const goalData = await getGoalQuiz(goalId);
 
-    if (!goalData) {
-      // || goalData.isCreated
+    if (!goalData || goalData.isCreated) {
       setIsProcessingGoal(false);
       isProcessingGoalRef.current = false;
 
