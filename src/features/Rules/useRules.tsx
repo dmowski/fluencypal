@@ -45,12 +45,12 @@ function useProvideRules(): RulesContextType {
         `User provides list of his messages that he used during voice conversation.`,
         `System should generate a most important grammar rule user must to learn.`,
         `${goal ? `Follow this topic: ${goal.goalElement.title} - ${goal.goalElement.description} (${goal.goalElement.details})` : ""}`,
-        `Rules should be useful and not too difficult.`,
-        `Return grammar rule in Markdown format. Starting from similar to: Based on recent conversation`,
+        `Rules should be useful and not too difficult. Use  only ${settings.fullLanguageName} language for your response.`,
+        `Return grammar rule in Markdown format. Starting from something like "Based on recent conversation..." but use `,
       ].join(" ");
       const newRuleToLearn = await textAi.generate({
         systemMessage: systemInstruction,
-        userMessage: `userMessage: ${userMessage}`,
+        userMessage: `User Message: ${userMessage}`,
         model: "gpt-4o",
         languageCode: settings.languageCode || "en",
       });
