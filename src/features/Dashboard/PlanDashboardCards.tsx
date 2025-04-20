@@ -1,35 +1,24 @@
 import { Box, IconButton, Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { ArrowLeft, Flag, Trash } from "lucide-react";
+import { Flag, Trash } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
-import { useSettings } from "../Settings/useSettings";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
-import { useAuth } from "../Auth/useAuth";
 import { usePlan } from "../Plan/usePlan";
 import { PlanElement, PlanElementMode } from "../Plan/types";
 import { PlanCard } from "../Plan/PlanCard";
 
-import { GoalCard } from "./GoalCard";
 import { cardColors, modeCardProps } from "../Plan/data";
 import { GoalQuestions } from "../Goal/GoalQuestions";
 import { SupportedLanguage } from "@/common/lang";
 
-export const PlanDashboardCards = ({
-  onStartGoalPreparation,
-  lang,
-}: {
-  onStartGoalPreparation: () => void;
-  lang: SupportedLanguage;
-}) => {
+export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();
   const words = useWords();
   const rules = useRules();
-  const auth = useAuth();
   const { i18n } = useLingui();
-  const settings = useSettings();
   const userInfo = useAiUserInfo();
   const plan = usePlan();
 

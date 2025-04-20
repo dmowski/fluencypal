@@ -43,8 +43,6 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
       await deleteCollectionDocs(`users/${userId}/phraseCorrections`);
       await deleteCollectionDocs(`users/${userId}/goals`);
 
-      localStorage.clear();
-
       await setDoc(userSettingsDoc, { languageCode: null }, { merge: true });
       notifications.show(
         i18n._(`Your account has been successfully deleted. We are sorry to see you go!`),

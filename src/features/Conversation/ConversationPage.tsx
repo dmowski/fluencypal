@@ -222,13 +222,7 @@ About me: ${goalData.description}.`,
   }
 
   if (!aiConversation.isStarted) {
-    return (
-      <Dashboard
-        rolePlayInfo={rolePlayInfo}
-        lang={lang}
-        onStartGoalPreparation={() => aiConversation.startConversation({ mode: "goal" })}
-      />
-    );
+    return <Dashboard rolePlayInfo={rolePlayInfo} lang={lang} />;
   }
 
   return (

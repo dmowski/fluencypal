@@ -15,10 +15,9 @@ import { SupportedLanguage } from "@/common/lang";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
-  onStartGoalPreparation: () => void;
   lang: SupportedLanguage;
 }
-export function Dashboard({ rolePlayInfo, lang, onStartGoalPreparation }: DashboardProps) {
+export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
   return (
     <Stack
       sx={{
@@ -43,9 +42,9 @@ export function Dashboard({ rolePlayInfo, lang, onStartGoalPreparation }: Dashbo
           },
         }}
       >
-        <PlanDashboardCards onStartGoalPreparation={onStartGoalPreparation} lang={lang} />
+        <PlanDashboardCards lang={lang} />
 
-        <ConversationSelectCard onStartGoalPreparation={onStartGoalPreparation} lang={lang} />
+        <ConversationSelectCard lang={lang} />
 
         <DashboardCard>
           <UsageStatsCards />

@@ -13,13 +13,7 @@ import { usePlan } from "../Plan/usePlan";
 import { GoalQuestions } from "../Goal/GoalQuestions";
 import { SupportedLanguage } from "@/common/lang";
 
-export const ConversationSelectCard = ({
-  onStartGoalPreparation,
-  lang,
-}: {
-  onStartGoalPreparation: () => void;
-  lang: SupportedLanguage;
-}) => {
+export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();
   const words = useWords();
   const rules = useRules();
@@ -28,11 +22,6 @@ export const ConversationSelectCard = ({
   const isGoalSet = !!plan.latestGoal?.elements?.length;
 
   const [isShowOnboardingConfirmation, setIsShowOnboardingConfirmation] = useState(false);
-
-  const startOnboarding = () => {
-    onStartGoalPreparation();
-    setIsShowOnboardingConfirmation(false);
-  };
 
   const isPassOnboarding = isGoalSet;
 

@@ -11,7 +11,7 @@ import { ChatMessage } from "@/common/conversation";
 import { AiUserInfoRecord } from "@/common/userInfo";
 import { useTextAi } from "../Ai/useTextAi";
 import { useFixJson } from "../Ai/useFixJson";
-import { SupportedLanguage } from "@/common/lang";
+import { fullEnglishLanguageName, SupportedLanguage } from "@/common/lang";
 
 interface GenerateGoalProps {
   conversationMessages: ChatMessage[];
@@ -34,11 +34,11 @@ const PlanContext = createContext<PlanContextType | null>(null);
 
 function useProvidePlan(): PlanContextType {
   const auth = useAuth();
-  const settings = useSettings();
   const textAi = useTextAi();
   const fixJson = useFixJson();
   const [isCraftingGoal, setIsCraftingGoal] = useState(false);
   const [isCraftingError, setIsCraftingError] = useState(false);
+  const settings = useSettings();
 
   const collectionRef = db.collections.goals(auth.uid);
   const [goals, loading] = useCollectionData(collectionRef);
@@ -52,14 +52,15 @@ function useProvidePlan(): PlanContextType {
   };
 
   const generateGoalTitle = async (input: GenerateGoalProps): Promise<string> => {
+    const fullLangName = fullEnglishLanguageName[input.languageCode];
     const systemMessage = `
-You are professional ${settings.fullLanguageName || "English"} Teacher. 
+You are professional ${fullLangName || "English"} Teacher. 
 Here is student/teacher conversation. Based on student's lever and their goal, formulate learning goal. 
 
 Goal should me simple and clear. Max 3-4 words.
 Example: Pass Job Interview
 Return only goal without any wrapper phrases, because your response will be used as title on UI.
-Use ${settings.fullLanguageName || "English"} language for generating goal.
+Use ${fullLangName || "English"} language for generating goal.
 If you can't formulate goal, return "General Practice" as goal.
 `;
 
@@ -85,8 +86,9 @@ ${input.conversationMessages.map((message) => {
   };
 
   const generateElements = async (input: GenerateGoalProps): Promise<PlanElement[]> => {
+    const fullLangName = fullEnglishLanguageName[input.languageCode];
     const systemMessage = `
-You are professional ${settings.fullLanguageName || "English"} Teacher. 
+You are professional ${fullLangName} Teacher. 
 
 Below is a conversation between a student and a teacher. Based on the student's level and goals, generate a personalized language learning plan that can be completed using our AI-powered language learning app.
 
@@ -132,7 +134,7 @@ Example of plan:
   }
 ]
 
-Use ${settings.fullLanguageName || "English"} language for generating plan (title, description, details).
+Use ${fullLangName} language for generating plan (title, description, details).
 The plan should include at least 8 elements and must cover each type of activity.
 `;
 
