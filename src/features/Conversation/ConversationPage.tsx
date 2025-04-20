@@ -133,7 +133,7 @@ About me: ${goalData.description}.`,
         },
       });
 
-      notifications.show(i18n._(`Error processing goal`), {
+      notifications.show(i18n._(`Error processing goal`) + "=" + error, {
         severity: "error",
       });
 
