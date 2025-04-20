@@ -37,7 +37,9 @@ export async function POST(request: Request) {
   const devEmails = ["dmowski.alex@gmail.com"];
   const isDev = devEmails.includes(userInfo?.email || "");
   if (!isDev) {
-    sentSupportTelegramMessage(`New user: ${userInfo.email}`);
+    const userId = userInfo.uid;
+    const firebaseUrl = `https://console.firebase.google.com/u/0/project/dark-lang/firestore/databases/-default-/data/~2Fusers~2F${userId}`;
+    sentSupportTelegramMessage(`New user: ${userInfo.email} \n\n${firebaseUrl}`);
   }
 
   return Response.json(response);
