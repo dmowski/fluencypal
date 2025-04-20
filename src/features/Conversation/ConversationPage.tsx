@@ -76,7 +76,8 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
     const goalData = await getGoalQuiz(goalId);
 
-    if (!goalData || goalData.isCreated) {
+    if (!goalData) {
+      // || goalData.isCreated
       setIsProcessingGoal(false);
       isProcessingGoalRef.current = false;
 
@@ -96,6 +97,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
     try {
       const code = await settings.setLanguage(goalData.languageToLearn);
+      console.log("code", code);
 
       const conversation: ChatMessage[] = [
         {
@@ -113,12 +115,15 @@ About me: ${goalData.description}.`,
       ];
 
       const updatedInfoRecords = await userInfo.updateUserInfo(conversation, code);
+      console.log("updatedInfoRecords", updatedInfoRecords);
 
       const planData = await plan.generateGoal({
         conversationMessages: conversation,
         userInfo: updatedInfoRecords.records,
         languageCode: code,
       });
+
+      console.log("USER PLAN", planData);
 
       await plan.addGoalPlan(planData);
 
@@ -145,12 +150,28 @@ About me: ${goalData.description}.`,
   };
 
   useEffect(() => {
-    if (!auth.isAuthorized || !goalId || settings.loading || !settings.userCreatedAt || !auth.uid) {
+    if (
+      !auth.isAuthorized ||
+      !goalId ||
+      settings.loading ||
+      !settings.userCreatedAt ||
+      !auth.uid ||
+      usage.loading
+    ) {
       return;
     }
 
-    processNewGoalFromUrl(goalId);
-  }, [goalId, auth.isAuthorized, settings.loading, auth.uid, settings.userCreatedAt]);
+    setTimeout(() => {
+      processNewGoalFromUrl(goalId);
+    }, 70);
+  }, [
+    goalId,
+    auth.isAuthorized,
+    settings.loading,
+    auth.uid,
+    settings.userCreatedAt,
+    usage.loading,
+  ]);
 
   useEffect(() => {
     if (!aiConversation.isStarted) {
