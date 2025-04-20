@@ -179,6 +179,22 @@ export interface AiRtcConfig {
   isInitWebCamera?: boolean;
 }
 
+async function listMediaDevices() {
+  try {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    devices.forEach((device, index) => {
+      console.log(
+        `#${index + 1}`,
+        `kind: ${device.kind}`,
+        `label: ${device.label || "(label hidden - requires permission)"}`,
+        `deviceId: ${device.deviceId}`
+      );
+    });
+  } catch (err) {
+    console.error("Error listing media devices:", err);
+  }
+}
+
 export type AiRtcInstance = Awaited<ReturnType<typeof initAiRtc>>;
 
 export const initAiRtc = async ({
@@ -214,6 +230,7 @@ export const initAiRtc = async ({
   const userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
+  listMediaDevices();
   console.log("User media stream DONE");
   await sleep(1000);
 
