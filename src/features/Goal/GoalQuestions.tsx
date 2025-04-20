@@ -31,9 +31,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
   const { inWebView } = useIsWebView();
 
   const [level, setLevel] = useState<string>("A2");
-  const [description, setDescription] = useState<string>(
-    "I want to learn to travel. And I want to understand movies and songs. I plan to pass exam and going to live in here."
-  );
+  const [description, setDescription] = useState<string>("");
   const [showDescriptionError, setShowDescriptionError] = useState<boolean>(false);
 
   const [goalId, setGoalId] = useState<string | null>(null);
