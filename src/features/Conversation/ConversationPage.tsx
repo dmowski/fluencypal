@@ -114,22 +114,28 @@ About me: ${goalData.description}.`,
         },
       ];
 
-      const updatedInfoRecords = await userInfo.updateUserInfo(conversation, code);
-      console.log("updatedInfoRecords", updatedInfoRecords);
+      await new Promise((resolve) =>
+        setTimeout(async () => {
+          const updatedInfoRecords = await userInfo.updateUserInfo(conversation, code);
+          console.log("updatedInfoRecords", updatedInfoRecords);
 
-      const planData = await plan.generateGoal({
-        conversationMessages: conversation,
-        userInfo: updatedInfoRecords.records,
-        languageCode: code,
-        goalQuiz: goalData,
-      });
+          const planData = await plan.generateGoal({
+            conversationMessages: conversation,
+            userInfo: updatedInfoRecords.records,
+            languageCode: code,
+            goalQuiz: goalData,
+          });
 
-      console.log("USER PLAN", planData);
+          console.log("USER PLAN", planData);
 
-      await plan.addGoalPlan(planData);
+          await plan.addGoalPlan(planData);
 
-      removeGoalIdFromUrl();
-      await deleteGoalQuiz(goalId);
+          removeGoalIdFromUrl();
+          await deleteGoalQuiz(goalId);
+
+          resolve(true);
+        }, 100)
+      );
     } catch (error) {
       Sentry.captureException(error, {
         extra: {
@@ -162,9 +168,7 @@ About me: ${goalData.description}.`,
       return;
     }
 
-    setTimeout(() => {
-      processNewGoalFromUrl(goalId);
-    }, 70);
+    processNewGoalFromUrl(goalId);
   }, [
     goalId,
     auth.isAuthorized,
