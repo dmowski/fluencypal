@@ -13,4 +13,6 @@ export interface CreateGoalResponse {
 export interface GoalQuiz extends CreateGoalRequest {
   isCreated: boolean;
   id: string;
+  createdAtHuman: string;
+  createdAt: number;
 }

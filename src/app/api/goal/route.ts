@@ -14,6 +14,8 @@ export async function POST(request: Request) {
     description: data.description,
     isCreated: false,
     id: docRef.id,
+    createdAtHuman: new Date().toLocaleString(),
+    createdAt: Date.now(),
   };
 
   await docRef.set(dateToDB);
