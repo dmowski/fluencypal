@@ -120,6 +120,8 @@ Use ${fullLanguageName || "English"} language.
       systemMessage: systemInstructions,
       userMessage: lastBotMessage?.text || "",
       model: MODELS.gpt_4o,
+
+      languageCode: "en", // XXX TODO: add language code
     });
 
     console.log("Help message result", aiResult);

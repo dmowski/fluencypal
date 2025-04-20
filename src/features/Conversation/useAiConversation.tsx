@@ -380,7 +380,7 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
       const goalInfo = `${goalTitle} - ${elementTitle} - ${elementDescription}`;
       const elementDetails = goal?.goalElement.details || "";
 
-      const { firstMessage } = await aiUserInfo.generateFirstMessageText(goalInfo);
+      const { firstMessage } = await aiUserInfo.generateFirstMessageText(goalInfo, languageCode);
 
       firstPotentialBotMessage.current = firstMessage;
       let startFirstMessage = `"${firstMessage}".`;
@@ -473,7 +473,10 @@ Don't try to explain rules or grammar. Your goal is to extract information about
 
       if (userInfo && userInfo.length > 0) {
         setIsInitializing(`Analyzing info...`);
-        const { firstMessage, potentialTopics } = await aiUserInfo.generateFirstMessageText();
+        const { firstMessage, potentialTopics } = await aiUserInfo.generateFirstMessageText(
+          "",
+          languageCode
+        );
         firstPotentialBotMessage.current = firstMessage;
         startFirstMessage = `"${firstMessage}".`;
 
@@ -728,7 +731,7 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
     try {
       const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
       if (isNeedToSaveUserInfo && conversation.length > 4) {
-        await aiUserInfo.updateUserInfo(conversation);
+        await aiUserInfo.updateUserInfo(conversation, languageCode);
       }
     } catch (e) {
       console.error("Error saving user info:", e);
@@ -755,7 +758,10 @@ Words you need to describe: ${gameWords.wordsAiToDescribe.join(", ")}
       setIsProcessingGoal(true);
       setConversation((prev) => [...prev, userMessage]);
       console.log("❌ Finishing goal conversation....");
-      const userInfoRecords = await aiUserInfo.updateUserInfo([...conversation, userMessage]);
+      const userInfoRecords = await aiUserInfo.updateUserInfo(
+        [...conversation, userMessage],
+        languageCode
+      );
 
       const newInstruction = `Let's wrap up our conversation. Tell student that goal is briefly set. And if they want to continue talking, we can do it. But for now, it's time to grow and expand more interesting modes on FluencyPal.
 
@@ -777,6 +783,7 @@ My last message was: "${message}".
       const generatedGoal = await plan.generateGoal({
         userInfo: userInfoRecords.records,
         conversationMessages: conversation,
+        languageCode: settings.languageCode || "en",
       });
       setTemporaryGoal(generatedGoal);
       return;

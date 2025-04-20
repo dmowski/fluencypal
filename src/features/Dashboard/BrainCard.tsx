@@ -156,6 +156,7 @@ Address directly to the user.
 `,
         userMessage: newImageDescription,
         model: "gpt-4o",
+        languageCode: "en",
       });
       clearTimeout(t2);
       if (!languagesToLearnText) {

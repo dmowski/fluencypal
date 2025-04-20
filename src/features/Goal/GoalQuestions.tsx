@@ -32,7 +32,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({ lang, s
 
   const [level, setLevel] = useState<string>("A2");
   const [description, setDescription] = useState<string>(
-    "I want to learn English to travel. And I want to understand movies and songs. I plan to pass TOEFL exam and going to live in Canada."
+    "I want to learn to travel. And I want to understand movies and songs. I plan to pass exam and going to live in here."
   );
   const [showDescriptionError, setShowDescriptionError] = useState<boolean>(false);
 

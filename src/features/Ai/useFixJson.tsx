@@ -1,8 +1,11 @@
 import * as Sentry from "@sentry/nextjs";
 import { useTextAi } from "./useTextAi";
+import { useSettings } from "../Settings/useSettings";
 
 export const useFixJson = () => {
   const textAi = useTextAi();
+  const settings = useSettings();
+  const languageCode = settings.languageCode || "en";
 
   const parseJson = async (json: string) => {
     try {
@@ -39,6 +42,7 @@ export const useFixJson = () => {
       systemMessage,
       userMessage: badJson,
       model: "gpt-4o",
+      languageCode,
     });
     try {
       let trimmedJson = fixJsonRes.trim();

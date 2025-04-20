@@ -35,6 +35,7 @@ const CorrectionContext = createContext<CorrectionsContextType | null>(null);
 function useProvideCorrections(): CorrectionsContextType {
   const auth = useAuth();
   const settings = useSettings();
+  const languageCode = settings.languageCode || "en";
   const correctionStatsDocRef = auth.uid ? db.collections.phraseCorrections(auth.uid) : null;
   const [correctionStats, loading] = useCollectionData(correctionStatsDocRef);
   const textAi = useTextAi();
@@ -65,6 +66,7 @@ function useProvideCorrections(): CorrectionsContextType {
   `,
         userMessage: input.message,
         model: MODELS.gpt_4o,
+        languageCode,
       });
 
       const parsedResult = JSON.parse(aiResult);

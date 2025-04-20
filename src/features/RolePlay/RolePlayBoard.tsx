@@ -225,6 +225,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
       userMessage: value,
       model: MODELS.gpt_4o,
       cache: cacheAiSummary,
+      languageCode: settings.languageCode || "en",
     });
     return aiResult || value;
   };
@@ -330,6 +331,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
       systemMessage,
       userMessage: `Generate 18 words. Use ${settings.fullLanguageName} language. User language level: ${userLevelInfo}`,
       model: "gpt-4o",
+      languageCode: settings.languageCode || "en",
     });
     console.log("generateRandomWord:", response);
     const words = response.split(",");

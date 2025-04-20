@@ -11,10 +11,12 @@ import { ChatMessage } from "@/common/conversation";
 import { AiUserInfoRecord } from "@/common/userInfo";
 import { useTextAi } from "../Ai/useTextAi";
 import { useFixJson } from "../Ai/useFixJson";
+import { SupportedLanguage } from "@/common/lang";
 
 interface GenerateGoalProps {
   conversationMessages: ChatMessage[];
   userInfo: AiUserInfoRecord[];
+  languageCode: SupportedLanguage;
 }
 interface PlanContextType {
   goals: GoalPlan[];
@@ -76,6 +78,7 @@ ${input.conversationMessages.map((message) => {
       systemMessage,
       userMessage,
       model: "gpt-4o",
+      languageCode: input.languageCode,
     });
 
     return goal;
@@ -146,6 +149,7 @@ ${input.conversationMessages.map((message) => {
       systemMessage,
       userMessage,
       model: "gpt-4o",
+      languageCode: input.languageCode,
     });
 
     const parsedElements = (await fixJson.parseJson(elements)) as AiGeneratedElement[];
@@ -207,7 +211,7 @@ ${input.conversationMessages.map((message) => {
       title: title,
       elements: elements,
       createdAt: Date.now(),
-      languageCode: settings.languageCode || "en",
+      languageCode: input.languageCode,
     };
 
     setIsCraftingGoal(false);

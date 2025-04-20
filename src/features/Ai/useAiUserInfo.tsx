@@ -11,16 +11,21 @@ import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useSettings } from "../Settings/useSettings";
+import { SupportedLanguage } from "@/common/lang";
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
 interface AiUserInfoContextType {
-  updateUserInfo: (conversation: ChatMessage[]) => Promise<{
+  updateUserInfo: (
+    conversation: ChatMessage[],
+    languageCode: SupportedLanguage
+  ) => Promise<{
     records: AiUserInfoRecord[];
   }>;
   userInfo: AiUserInfo | null;
   generateFirstMessageText: (
-    topic?: string
+    topic: string,
+    languageCode: SupportedLanguage
   ) => Promise<{ firstMessage: string; potentialTopics: string }>;
 }
 
@@ -33,7 +38,7 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
   const dbDocRef = db.documents.aiUserInfo(auth.uid);
   const [userInfo] = useDocumentData<AiUserInfo>(dbDocRef);
 
-  const cleanUpSummary = async (summary: string[]) => {
+  const cleanUpSummary = async (summary: string[], lang: SupportedLanguage) => {
     const systemMessage = `Given information about users from conversation with AI language teacher.
 Your goal is to clean up repeated information and return only unique information.
 Return info in JSON format.
@@ -46,11 +51,12 @@ If not relevant information found, return empty array.
       userMessage: aiUserMessage,
       systemMessage,
       model: "gpt-4o",
+      languageCode: lang,
     });
     return JSON.parse(summaryFromConversation) as string[];
   };
 
-  const updateUserInfo = async (conversation: ChatMessage[]) => {
+  const updateUserInfo = async (conversation: ChatMessage[], lang: SupportedLanguage) => {
     if (!dbDocRef) {
       throw new Error("dbDocRef is not defined | useAiUserInfo.updateUserInfo");
     }
@@ -74,6 +80,7 @@ If not relevant information found, return empty array.`;
       userMessage: aiUserMessage,
       systemMessage,
       model: "gpt-4o",
+      languageCode: lang,
     });
     const parsedSummary = JSON.parse(summaryFromConversation) as string[];
     console.log("parsedSummary", { aiUserMessage, parsedSummary });
@@ -82,7 +89,7 @@ If not relevant information found, return empty array.`;
     const newRecords: AiUserInfoRecord[] = parsedSummary;
 
     const updatedRecords = oldRecords
-      ? await cleanUpSummary([...newRecords, ...oldRecords])
+      ? await cleanUpSummary([...newRecords, ...oldRecords], lang)
       : newRecords;
 
     console.log("updatedRecords", updatedRecords);
@@ -141,7 +148,7 @@ If not relevant information found, return empty array.`;
     return lastMessagesText;
   };
 
-  const generateFirstMessageText = async (topic?: string) => {
+  const generateFirstMessageText = async (topic: string, languageCode: SupportedLanguage) => {
     const infoNotes = userInfo?.records || [];
 
     const firstMessages: string[] = await getLastFirstMessage(4);
@@ -163,6 +170,7 @@ ${infoNotes.map((note) => `- ${note}`).join("\n")}
 `,
         model: "gpt-4o",
         cache: false,
+        languageCode,
       }));
 
     const systemMessage = `
@@ -189,6 +197,7 @@ ${firstMessages.length === 0 ? "None" : firstMessages.map((msg, i) => `${i + 1}.
       userMessage,
       model: "gpt-4o",
       cache: false,
+      languageCode,
     });
 
     const responseString = response || "";

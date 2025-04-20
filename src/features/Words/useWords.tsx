@@ -98,6 +98,7 @@ Your response will be sent to JSON.parse() function.
         systemMessage: systemInstruction,
         userMessage: knownWords.join(" "),
         model: "gpt-4o",
+        languageCode: settings.languageCode || "en",
       });
       const newWordsToLearn = JSON.parse(response) as string[];
       setIsGeneratingWords(false);

@@ -3,6 +3,7 @@ import { createContext, useContext, ReactNode, JSX, useState } from "react";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useTextAi } from "../Ai/useTextAi";
 import { GoalElementInfo } from "../Plan/types";
+import { useSettings } from "../Settings/useSettings";
 
 interface RulesContextType {
   getRules: (goal?: GoalElementInfo) => Promise<void>;
@@ -20,6 +21,7 @@ function useProvideRules(): RulesContextType {
   const [goal, setGoal] = useState<GoalElementInfo | null>(null);
   const chatHistory = useChatHistory();
   const textAi = useTextAi();
+  const settings = useSettings();
 
   const getUserMessages = async () => {
     const data = await chatHistory.getLastConversations(2);
@@ -50,6 +52,7 @@ function useProvideRules(): RulesContextType {
         systemMessage: systemInstruction,
         userMessage: `userMessage: ${userMessage}`,
         model: "gpt-4o",
+        languageCode: settings.languageCode || "en",
       });
       setRule(newRuleToLearn);
     } catch (error) {

@@ -17,7 +17,7 @@ interface SettingsContextType {
   fullLanguageName: string | null;
 
   loading: boolean;
-  setLanguage: (language: SupportedLanguage) => Promise<void>;
+  setLanguage: (language: SupportedLanguage) => Promise<SupportedLanguage>;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -26,7 +26,7 @@ export const settingsContext = createContext<SettingsContextType>({
   loading: true,
 
   userCreatedAt: null,
-  setLanguage: async () => void 0,
+  setLanguage: async () => "en",
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -39,9 +39,10 @@ function useProvideSettings(): SettingsContextType {
   const [userSettings, loading] = useDocumentData(userSettingsDoc);
 
   const setLanguage = async (languageCode: SupportedLanguage) => {
-    if (!userSettingsDoc) return;
+    if (!userSettingsDoc) return "en";
     const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || "en";
     await setDoc(userSettingsDoc, { languageCode: langCodeValidated }, { merge: true });
+    return langCodeValidated;
   };
 
   const initUserSettings = async () => {

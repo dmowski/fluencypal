@@ -6,6 +6,7 @@ import { TextAiModel } from "@/common/ai";
 import { useUsage } from "../Usage/useUsage";
 import { getDataFromCache, setDataToCache } from "@/libs/localStorageCache";
 import { useAuth } from "../Auth/useAuth";
+import { SupportedLanguage } from "@/common/lang";
 
 const cacheKey = `DL_text-ai-cache`;
 
@@ -14,6 +15,7 @@ export interface TextAiRequest {
   systemMessage: string;
   model: TextAiModel;
   cache?: boolean;
+  languageCode: SupportedLanguage;
 }
 
 interface TextAiContextType {
@@ -23,7 +25,6 @@ interface TextAiContextType {
 const TextAiContext = createContext<TextAiContextType | null>(null);
 
 function useProvideTextAi(): TextAiContextType {
-  const settings = useSettings();
   const usage = useUsage();
   const auth = useAuth();
 
@@ -45,10 +46,7 @@ function useProvideTextAi(): TextAiContextType {
       }
     }
 
-    const languageCode = settings.languageCode;
-    if (!languageCode) {
-      throw new Error("Language is not set | useProvideTextAi.generate");
-    }
+    const languageCode = conversationDate.languageCode;
 
     const response = await sendTextAiRequest(
       { ...conversationDate, languageCode },
