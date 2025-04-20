@@ -75,6 +75,14 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
       <Typography variant="h4" component="h2">
         {i18n._(`Need help?`)}
       </Typography>
+
+      <Stack>
+        <Typography>
+          {i18n._(
+            `My Name is Alex. I am the founder of this project. I am here to help you! If you want more features, or more free AI hours, please let me know!`
+          )}
+        </Typography>
+      </Stack>
       <Stack
         sx={{
           flexDirection: "row",
