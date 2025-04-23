@@ -11,11 +11,16 @@ const sendTelegramMessage = async (message: string, chatId: string): Promise<voi
     `parse_mode=Markdown`,
   ].join("");
 
-  const result = await fetch(urlForSend);
-  const resultJson = await result.json();
-  const isDebug = false;
-  if (isDebug) {
-    console.log("Telegram response: ", resultJson);
+  try {
+    const result = await fetch(urlForSend);
+
+    const resultJson = await result.json();
+    const isDebug = false;
+    if (isDebug) {
+      console.log("Telegram response: ", resultJson);
+    }
+  } catch (error) {
+    console.error("Error sending message to Telegram: ", error);
   }
 };
 
