@@ -62,20 +62,27 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     setIsLoading(true);
     scrollTop();
 
-    const requestResult = await sendCreateGoalRequest({
-      description: description,
-      languageToLearn: languageToLearn,
-      level: level,
-    });
-    setIsLoading(false);
-    setIsSubmitted(true);
-    setGoalId(requestResult.id);
+    try {
+      const requestResult = await sendCreateGoalRequest({
+        description: description,
+        languageToLearn: languageToLearn,
+        level: level,
+      });
+      setIsLoading(false);
+      setIsSubmitted(true);
+      setGoalId(requestResult.id);
 
-    const url = new URL(window.location.href);
-    url.searchParams.set("goalId", requestResult.id);
-    window.history.pushState({}, "", url.toString());
-
-    setStep(0);
+      const url = new URL(window.location.href);
+      url.searchParams.set("goalId", requestResult.id);
+      window.history.pushState({}, "", url.toString());
+      setStep(0);
+    } catch (error) {
+      alert(i18n._(`Something went wrong. Please try again`));
+      setIsLoading(false);
+      setIsSubmitted(false);
+      setGoalId(null);
+      throw error;
+    }
   };
 
   const levels = ["A1", "A2", "B1", "B2", "C1", "C2", "Fluent"];

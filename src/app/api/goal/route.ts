@@ -9,11 +9,11 @@ export async function POST(request: Request) {
   const docRef = db.collection(`goals`).doc();
 
   const dateToDB: GoalQuiz = {
-    languageToLearn: data.languageToLearn,
-    level: data.level,
-    description: data.description,
+    languageToLearn: data.languageToLearn || "en",
+    level: data.level || "A2",
+    description: data.description || "",
     isCreated: false,
-    id: docRef.id,
+    id: docRef.id || Date.now().toString(),
     createdAtHuman: new Date().toLocaleString(),
     createdAt: Date.now(),
   };
