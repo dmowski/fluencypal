@@ -116,7 +116,7 @@ export const PlanCard = ({
                 opacity: 0.7,
               }}
             >
-              {i18n._(`Send 6 messages to complete`)}
+              {i18n._(`Send 10 messages to complete`)}
             </Typography>
           </Stack>
         </CustomModal>
@@ -195,19 +195,28 @@ export const PlanCard = ({
                 left: "0",
                 right: "0",
                 margin: "auto",
-                backgroundColor: "rgb(9, 108, 96)",
+
                 //boxShadow: "0px 0px 0 2px rgba(13, 220, 196, 0.9)",
                 width: "100%",
-                borderRadius: "5px",
+
                 boxSizing: "border-box",
-                padding: "2px 7px",
+                padding: "0",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 zIndex: 20000,
               }}
             >
-              <Typography variant="caption">{i18n._("Continue")}</Typography>
+              <Typography
+                sx={{
+                  backgroundColor: "rgb(9, 108, 96)",
+                  padding: "2px 5px",
+                  borderRadius: "5px",
+                }}
+                variant="caption"
+              >
+                {i18n._("Continue")}
+              </Typography>
               <Stack
                 sx={{
                   position: "absolute",
