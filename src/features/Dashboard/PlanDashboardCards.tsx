@@ -299,7 +299,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               variant="outlined"
               onClick={() => setIsShowMoreModal(true)}
             >
-              More uniq lessons
+              {i18n._(`More uniq lessons`)}
             </Button>
           </Stack>
         </Stack>
