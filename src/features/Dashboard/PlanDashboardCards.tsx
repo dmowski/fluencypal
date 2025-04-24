@@ -1,6 +1,6 @@
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { Flag, Trash } from "lucide-react";
+import { Flag, Sparkle, Trash } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
@@ -15,7 +15,8 @@ import { GoalQuestions } from "../Goal/GoalQuestions";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { useLangClientLabels } from "../Lang/getLabelsClient";
 import { useSettings } from "../Settings/useSettings";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();
@@ -64,6 +65,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     }
 
     plan.deleteGoals();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const planElementProgresses = plan.latestGoal?.elements.map((element) => {
@@ -102,6 +107,28 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       activeIndex = index;
     }
   });
+  const [isShowMoreModal, setIsShowMoreModal] = useState(false);
+
+  const doneLessonsCount = sortedElements.reduce((acc, element) => {
+    if (element.startCount > 0) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
+
+  const generateMoreLessons = async () => {
+    alert(
+      "Hi. This feature is not implemented yet. I plan to add it in the next few days. Stay tuned!"
+    );
+    // get user info
+    // get current plan
+    // get current plan elements
+    // get quiz description
+    // Generate more 3 elements and add them to the plan
+  };
+
+  const minimumLessonsCountToExpand = 3;
+  const isAbleToExpand = doneLessonsCount >= minimumLessonsCountToExpand;
 
   return (
     <DashboardCard>
@@ -171,52 +198,65 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             gridTemplateColumns: "1fr",
           }}
         >
-          <>
-            {sortedElements.map((planElement, index, all) => {
-              const cardInfo = modeCardProps[planElement.mode];
-              const colorIndex = index % cardColors.length;
-              const cardColor = cardColors[colorIndex];
-              const elementsWithSameMode =
-                sortedElements.filter((element) => element.mode === planElement.mode) || [];
-              const currentElementIndex = elementsWithSameMode.findIndex(
-                (element) => element.id === planElement.id
-              );
+          {sortedElements.map((planElement, index, all) => {
+            const cardInfo = modeCardProps[planElement.mode];
+            const colorIndex = index % cardColors.length;
+            const cardColor = cardColors[colorIndex];
+            const elementsWithSameMode =
+              sortedElements.filter((element) => element.mode === planElement.mode) || [];
+            const currentElementIndex = elementsWithSameMode.findIndex(
+              (element) => element.id === planElement.id
+            );
 
-              const imageVariants = cardInfo.imgUrl;
-              const imageIndex = currentElementIndex % imageVariants.length;
-              const imageUrl = imageVariants[imageIndex];
-              const isDone = planElement.startCount > 0;
-              const isActive = index === activeIndex;
+            const imageVariants = cardInfo.imgUrl;
+            const imageIndex = currentElementIndex % imageVariants.length;
+            const imageUrl = imageVariants[imageIndex];
+            const isDone = planElement.startCount > 0;
+            const isActive = index === activeIndex;
 
-              return (
-                <PlanCard
-                  key={planElement.id}
-                  delayToShow={index * 80}
-                  title={planElement.title}
-                  subTitle={modeLabels[planElement.mode]}
-                  description={planElement.description}
-                  details={planElement.details}
-                  isDone={isDone}
-                  isActive={isActive}
-                  isContinueLabel={isActive && index > 0}
-                  onClick={() => startGoalElement(planElement)}
-                  startColor={cardColor.startColor}
-                  progressPercent={Math.min((planElement.startCount || 0) * 10, 100)}
-                  endColor={cardColor.endColor}
-                  bgColor={cardColor.bgColor}
-                  isLast={index === all.length - 1}
-                  icon={
-                    <Stack>
-                      <Stack className="avatar">
-                        <img src={imageUrl} alt="" />
-                      </Stack>
+            return (
+              <PlanCard
+                key={planElement.id}
+                delayToShow={index * 80}
+                title={planElement.title}
+                subTitle={modeLabels[planElement.mode]}
+                description={planElement.description}
+                details={planElement.details}
+                isDone={isDone}
+                isActive={isActive}
+                isContinueLabel={isActive && index > 0}
+                onClick={() => startGoalElement(planElement)}
+                startColor={cardColor.startColor}
+                progressPercent={Math.min((planElement.startCount || 0) * 10, 100)}
+                endColor={cardColor.endColor}
+                bgColor={cardColor.bgColor}
+                isLast={index === all.length - 1}
+                icon={
+                  <Stack>
+                    <Stack className="avatar">
+                      <img src={imageUrl} alt="" />
                     </Stack>
-                  }
-                  actionLabel={i18n._(`Start`)}
-                />
-              );
-            })}
-          </>
+                  </Stack>
+                }
+                actionLabel={i18n._(`Start`)}
+              />
+            );
+          })}
+          <Stack
+            sx={{
+              alignItems: "center",
+              maxWidth: "700px",
+              paddingTop: "10px",
+            }}
+          >
+            <Button
+              startIcon={<Sparkle size={"14px"} />}
+              variant="outlined"
+              onClick={() => setIsShowMoreModal(true)}
+            >
+              More uniq lessons
+            </Button>
+          </Stack>
         </Stack>
       ) : (
         <Stack
@@ -235,6 +275,95 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             langLearnPlanLabels={langLabels.labelLearningPlan}
           />
         </Stack>
+      )}
+
+      {isShowMoreModal && (
+        <CustomModal
+          isOpen={true}
+          onClose={() => setIsShowMoreModal(false)}
+          padding="40px 20px"
+          width="min(500px, 100vw)"
+        >
+          <Stack
+            sx={{
+              gap: "10px",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Stack>
+              <Typography
+                align="center"
+                variant="caption"
+                sx={{
+                  color: `rgba(255, 255, 255, 0.5)`,
+                }}
+              >
+                {i18n._(`More unique lessons`)}
+              </Typography>
+
+              <Typography variant="h4" align="center" component="h2" className="decor-text">
+                {plan.latestGoal?.title || i18n._(`Goal`)}
+              </Typography>
+              <Typography sx={{ paddingTop: "20px" }} align="center" variant="caption">
+                {plan.latestGoal?.goalQuiz?.description ||
+                  i18n._(`We will help you to learn the language you need`)}
+              </Typography>
+            </Stack>
+
+            <Stack
+              sx={{
+                gap: "2px",
+              }}
+            >
+              <Button
+                sx={{
+                  width: "100%",
+                  marginTop: "20px",
+                  padding: "10px 20px",
+                }}
+                onClick={() => {
+                  deletePlans();
+                  setIsShowMoreModal(false);
+                }}
+                disabled={!isAbleToExpand}
+                variant="text"
+                color="error"
+                size="large"
+              >
+                {i18n._(`Delete current goal`)}
+              </Button>
+
+              <Button
+                sx={{
+                  width: "100%",
+                  marginTop: "10px",
+                  padding: "10px 20px",
+                }}
+                onClick={generateMoreLessons}
+                disabled={!isAbleToExpand}
+                variant="contained"
+                color="info"
+                size="large"
+              >
+                {i18n._(`Generate more unique lessons`)}
+              </Button>
+              {!isAbleToExpand && (
+                <Typography
+                  align="center"
+                  variant="caption"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
+                  {i18n._(
+                    `In order to generate more lessons, you need to complete at least 3 lessons`
+                  )}
+                </Typography>
+              )}
+            </Stack>
+          </Stack>
+        </CustomModal>
       )}
     </DashboardCard>
   );
