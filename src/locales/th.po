@@ -13,60 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Plan/PlanCard.tsx:110
-#. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "เริ่มบทเรียน"
-
 #: src/features/Plan/PlanCard.tsx:119
 #. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "ส่ง 6 ข้อความเพื่อเสร็จสิ้น"
-
-#: src/features/Conversation/ConversationPage.tsx:121
-#. js-lingui-explicit-id
-msgid "Error analyzing conversation"
-msgstr "ข้อผิดพลาดในการวิเคราะห์บทสนทนา"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:261
-#. js-lingui-explicit-id
-msgid "Review"
-msgstr "รีวิว"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:277
-#. js-lingui-explicit-id
-msgid "Language level:"
-msgstr "ระดับภาษา:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:282
-#. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "สิ่งที่ดีที่สุด:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:287
-#. js-lingui-explicit-id
-msgid "Areas to improve:"
-msgstr "พื้นที่ที่ควรปรับปรุง:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:306
-#. js-lingui-explicit-id
-msgid "Start new lesson"
-msgstr "เริ่มบทเรียนใหม่"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:316
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "ดำเนินการสนทนาต่อ"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:894
-#. js-lingui-explicit-id
-msgid "Mission complete"
-msgstr "ภารกิจเสร็จสิ้น"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:904
-#. js-lingui-explicit-id
-msgid "Open results"
-msgstr "เปิดผลลัพธ์"
+msgid "Send 10 messages to complete"
+msgstr "ส่งข้อความ 10 ข้อเพื่อเสร็จสิ้น"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:85
@@ -448,13 +398,13 @@ msgid "No conversations yet"
 msgstr "ยังไม่มีการสนทนา"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:401
+#: src/features/Conversation/ConversationCanvas2.tsx:400
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "ครู:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:401
+#: src/features/Conversation/ConversationCanvas2.tsx:400
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "คุณ:"
@@ -1803,7 +1753,12 @@ msgstr "แสดงเพิ่มเติม"
 msgid "Show less"
 msgstr "แสดงน้อยลง"
 
-#: src/features/Plan/PlanCard.tsx:210
+#: src/features/Plan/PlanCard.tsx:110
+#. js-lingui-explicit-id
+msgid "Start lesson"
+msgstr "เริ่มบทเรียน"
+
+#: src/features/Plan/PlanCard.tsx:221
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -3420,7 +3375,7 @@ msgstr "คุณแน่ใจไหมว่าต้องการลบเ
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:148
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:916
+#: src/features/Conversation/ConversationCanvas2.tsx:915
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "เป้าหมาย"
@@ -3630,6 +3585,11 @@ msgstr "น้อยลง"
 msgid "More"
 msgstr "เพิ่มเติม"
 
+#: src/features/Conversation/ConversationPage.tsx:121
+#. js-lingui-explicit-id
+msgid "Error analyzing conversation"
+msgstr "ข้อผิดพลาดในการวิเคราะห์บทสนทนา"
+
 #: src/features/Conversation/ConversationPage.tsx:215
 #. js-lingui-explicit-id
 msgid "Error processing goal"
@@ -3670,116 +3630,156 @@ msgstr "การแจ้งเตือนถูกส่งไปยังท
 msgid "Reload page"
 msgstr "โหลดหน้าเว็บใหม่"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:278
-#: src/features/Conversation/ConversationCanvas2.tsx:283
-#: src/features/Conversation/ConversationCanvas2.tsx:288
-#: src/features/Conversation/ConversationCanvas2.tsx:546
-#: src/features/Conversation/ConversationCanvas2.tsx:673
-#: src/features/Conversation/ConversationCanvas2.tsx:680
+#: src/features/Conversation/ConversationCanvas2.tsx:260
+#. js-lingui-explicit-id
+msgid "Review"
+msgstr "รีวิว"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:276
+#. js-lingui-explicit-id
+msgid "Language level:"
+msgstr "ระดับภาษา:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:277
+#: src/features/Conversation/ConversationCanvas2.tsx:282
+#: src/features/Conversation/ConversationCanvas2.tsx:287
+#: src/features/Conversation/ConversationCanvas2.tsx:545
+#: src/features/Conversation/ConversationCanvas2.tsx:672
+#: src/features/Conversation/ConversationCanvas2.tsx:679
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "กำลังวิเคราะห์..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:480
+#: src/features/Conversation/ConversationCanvas2.tsx:281
+#. js-lingui-explicit-id
+msgid "What was great:"
+msgstr "สิ่งที่ดีที่สุด:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:286
+#. js-lingui-explicit-id
+msgid "Areas to improve:"
+msgstr "พื้นที่ที่ควรปรับปรุง:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:305
+#. js-lingui-explicit-id
+msgid "Start new lesson"
+msgstr "เริ่มบทเรียนใหม่"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:315
+#. js-lingui-explicit-id
+msgid "Continue conversation"
+msgstr "ดำเนินการสนทนาต่อ"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:479
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "ข้อผิดพลาดในระหว่างการวิเคราะห์ข้อความ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:534
+#: src/features/Conversation/ConversationCanvas2.tsx:533
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "เกือบถูก"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:549
+#: src/features/Conversation/ConversationCanvas2.tsx:548
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "ที่สุด!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:572
+#: src/features/Conversation/ConversationCanvas2.tsx:571
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "ข้อความของคุณ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:595
-#: src/features/Conversation/ConversationCanvas2.tsx:598
-#: src/features/Conversation/ConversationCanvas2.tsx:671
-#: src/features/Conversation/ConversationCanvas2.tsx:678
+#: src/features/Conversation/ConversationCanvas2.tsx:594
+#: src/features/Conversation/ConversationCanvas2.tsx:597
+#: src/features/Conversation/ConversationCanvas2.tsx:670
+#: src/features/Conversation/ConversationCanvas2.tsx:677
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "กำลังทำเนื้อหาเป็นข้อความ..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:632
+#: src/features/Conversation/ConversationCanvas2.tsx:631
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "แก้ไขแล้ว"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:712
+#: src/features/Conversation/ConversationCanvas2.tsx:711
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "คำศัพท์ใหม่ที่จะเพิ่มเข้าไป:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:757
+#: src/features/Conversation/ConversationCanvas2.tsx:756
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "การวิเคราะห์"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:764
+#: src/features/Conversation/ConversationCanvas2.tsx:763
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "การเตรียมตั้งเป้าหมาย"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:784
+#: src/features/Conversation/ConversationCanvas2.tsx:783
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "เป้าหมายถูกสร้างขึ้น"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:794
+#: src/features/Conversation/ConversationCanvas2.tsx:793
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "บทเรียนที่เพิ่ม:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:815
+#: src/features/Conversation/ConversationCanvas2.tsx:814
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "เปิดแผน"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:837
-#: src/features/Conversation/ConversationCanvas2.tsx:930
+#: src/features/Conversation/ConversationCanvas2.tsx:836
+#: src/features/Conversation/ConversationCanvas2.tsx:929
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "บันทึกใหม่"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:851
+#: src/features/Conversation/ConversationCanvas2.tsx:850
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "ส่งมันตามที่มันเป็น"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:851
+#: src/features/Conversation/ConversationCanvas2.tsx:850
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "ส่ง"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:865
+#: src/features/Conversation/ConversationCanvas2.tsx:864
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "เสร็จสิ้น"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:883
+#: src/features/Conversation/ConversationCanvas2.tsx:882
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "บันทึกข้อความ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1024
+#: src/features/Conversation/ConversationCanvas2.tsx:893
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "ภารกิจเสร็จสิ้น"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:903
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "เปิดผลลัพธ์"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1023
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "คุณมียอดเงินคงเหลือต่ำ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1026
+#: src/features/Conversation/ConversationCanvas2.tsx:1025
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "มันมีเหตุผลที่ควรเติมยอดเงินในบัญชีของคุณ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1033
+#: src/features/Conversation/ConversationCanvas2.tsx:1032
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "เติมเงิน"
@@ -5463,6 +5463,11 @@ msgstr "ดำเนินการต่อด้วย Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "โดยการสร้างบัญชี คุณยอมรับว่า:"
+
+#: src/features/Plan/PlanCard.tsx:119
+#. js-lingui-explicit-id
+#~ msgid "Send 6 messages to complete"
+#~ msgstr "ส่ง 6 ข้อความเพื่อเสร็จสิ้น"
 
 #: src/libs/metadata.ts:67
 #. js-lingui-explicit-id

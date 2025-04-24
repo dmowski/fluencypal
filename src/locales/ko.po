@@ -13,60 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Plan/PlanCard.tsx:110
-#. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "수업 시작"
-
 #: src/features/Plan/PlanCard.tsx:119
 #. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "6개의 메시지를 완성하세요"
-
-#: src/features/Conversation/ConversationPage.tsx:121
-#. js-lingui-explicit-id
-msgid "Error analyzing conversation"
-msgstr "대화 분석 오류"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:261
-#. js-lingui-explicit-id
-msgid "Review"
-msgstr "리뷰"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:277
-#. js-lingui-explicit-id
-msgid "Language level:"
-msgstr "언어 수준:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:282
-#. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "무엇이 좋았는지:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:287
-#. js-lingui-explicit-id
-msgid "Areas to improve:"
-msgstr "개선해야 할 부분:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:306
-#. js-lingui-explicit-id
-msgid "Start new lesson"
-msgstr "새로운 수업 시작"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:316
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "대화 계속하기"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:894
-#. js-lingui-explicit-id
-msgid "Mission complete"
-msgstr "미션 완료"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:904
-#. js-lingui-explicit-id
-msgid "Open results"
-msgstr "결과 열기"
+msgid "Send 10 messages to complete"
+msgstr "10개의 메시지를 완료하십시오"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:85
@@ -440,13 +390,13 @@ msgid "No conversations yet"
 msgstr "아직 대화 없음"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:401
+#: src/features/Conversation/ConversationCanvas2.tsx:400
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "교사:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:401
+#: src/features/Conversation/ConversationCanvas2.tsx:400
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "You:"
@@ -1685,7 +1635,12 @@ msgstr "더 보여주기"
 msgid "Show less"
 msgstr "덜 보기"
 
-#: src/features/Plan/PlanCard.tsx:210
+#: src/features/Plan/PlanCard.tsx:110
+#. js-lingui-explicit-id
+msgid "Start lesson"
+msgstr "수업 시작"
+
+#: src/features/Plan/PlanCard.tsx:221
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -3258,7 +3213,7 @@ msgstr "정말로 목표를 삭제하시겠습니까? 이 작업은 취소할 �
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:148
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:916
+#: src/features/Conversation/ConversationCanvas2.tsx:915
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "목표"
@@ -3468,6 +3423,11 @@ msgstr "덜"
 msgid "More"
 msgstr "더 보기"
 
+#: src/features/Conversation/ConversationPage.tsx:121
+#. js-lingui-explicit-id
+msgid "Error analyzing conversation"
+msgstr "대화 분석 오류"
+
 #: src/features/Conversation/ConversationPage.tsx:215
 #. js-lingui-explicit-id
 msgid "Error processing goal"
@@ -3508,116 +3468,156 @@ msgstr "개발 팀에 알림이 전송되었습니다. 죄송합니다..."
 msgid "Reload page"
 msgstr "페이지 새로고침"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:278
-#: src/features/Conversation/ConversationCanvas2.tsx:283
-#: src/features/Conversation/ConversationCanvas2.tsx:288
-#: src/features/Conversation/ConversationCanvas2.tsx:546
-#: src/features/Conversation/ConversationCanvas2.tsx:673
-#: src/features/Conversation/ConversationCanvas2.tsx:680
+#: src/features/Conversation/ConversationCanvas2.tsx:260
+#. js-lingui-explicit-id
+msgid "Review"
+msgstr "리뷰"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:276
+#. js-lingui-explicit-id
+msgid "Language level:"
+msgstr "언어 수준:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:277
+#: src/features/Conversation/ConversationCanvas2.tsx:282
+#: src/features/Conversation/ConversationCanvas2.tsx:287
+#: src/features/Conversation/ConversationCanvas2.tsx:545
+#: src/features/Conversation/ConversationCanvas2.tsx:672
+#: src/features/Conversation/ConversationCanvas2.tsx:679
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "분석 중..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:480
+#: src/features/Conversation/ConversationCanvas2.tsx:281
+#. js-lingui-explicit-id
+msgid "What was great:"
+msgstr "무엇이 좋았는지:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:286
+#. js-lingui-explicit-id
+msgid "Areas to improve:"
+msgstr "개선해야 할 부분:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:305
+#. js-lingui-explicit-id
+msgid "Start new lesson"
+msgstr "새로운 수업 시작"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:315
+#. js-lingui-explicit-id
+msgid "Continue conversation"
+msgstr "대화 계속하기"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:479
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "메시지 분석 중 오류"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:534
+#: src/features/Conversation/ConversationCanvas2.tsx:533
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "거의 맞습니다"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:549
+#: src/features/Conversation/ConversationCanvas2.tsx:548
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "대박!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:572
+#: src/features/Conversation/ConversationCanvas2.tsx:571
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "당신의 메시지"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:595
-#: src/features/Conversation/ConversationCanvas2.tsx:598
-#: src/features/Conversation/ConversationCanvas2.tsx:671
-#: src/features/Conversation/ConversationCanvas2.tsx:678
+#: src/features/Conversation/ConversationCanvas2.tsx:594
+#: src/features/Conversation/ConversationCanvas2.tsx:597
+#: src/features/Conversation/ConversationCanvas2.tsx:670
+#: src/features/Conversation/ConversationCanvas2.tsx:677
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "전사 중..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:632
+#: src/features/Conversation/ConversationCanvas2.tsx:631
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "수정됨"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:712
+#: src/features/Conversation/ConversationCanvas2.tsx:711
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "새로운 단어를 어휘에 추가:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:757
+#: src/features/Conversation/ConversationCanvas2.tsx:756
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "분석 중"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:764
+#: src/features/Conversation/ConversationCanvas2.tsx:763
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "목표 설정중"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:784
+#: src/features/Conversation/ConversationCanvas2.tsx:783
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "목표가 생성되었습니다"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:794
+#: src/features/Conversation/ConversationCanvas2.tsx:793
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "추가된 수업:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:815
+#: src/features/Conversation/ConversationCanvas2.tsx:814
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "오픈 플랜"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:837
-#: src/features/Conversation/ConversationCanvas2.tsx:930
+#: src/features/Conversation/ConversationCanvas2.tsx:836
+#: src/features/Conversation/ConversationCanvas2.tsx:929
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "다시 녹음"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:851
+#: src/features/Conversation/ConversationCanvas2.tsx:850
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "그대로 보내세요"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:851
+#: src/features/Conversation/ConversationCanvas2.tsx:850
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "보내기"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:865
+#: src/features/Conversation/ConversationCanvas2.tsx:864
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "완료"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:883
+#: src/features/Conversation/ConversationCanvas2.tsx:882
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "메시지 기록"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1024
+#: src/features/Conversation/ConversationCanvas2.tsx:893
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "미션 완료"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:903
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "결과 열기"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1023
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "잔액이 부족합니다"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1026
+#: src/features/Conversation/ConversationCanvas2.tsx:1025
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "당신의 잔액을 충전하는 것이 합리적입니다."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1033
+#: src/features/Conversation/ConversationCanvas2.tsx:1032
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "충전"
@@ -5121,6 +5121,11 @@ msgstr "구글로 계속하기"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "계정을 생성함으로써 귀하는 다음에 동의하게 됩니다:"
+
+#: src/features/Plan/PlanCard.tsx:119
+#. js-lingui-explicit-id
+#~ msgid "Send 6 messages to complete"
+#~ msgstr "6개의 메시지를 완성하세요"
 
 #: src/libs/metadata.ts:67
 #. js-lingui-explicit-id

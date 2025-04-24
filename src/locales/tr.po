@@ -13,60 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Plan/PlanCard.tsx:110
-#. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "Dersi başlat"
-
 #: src/features/Plan/PlanCard.tsx:119
 #. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "Tamamlamak için 6 mesaj gönderin"
-
-#: src/features/Conversation/ConversationPage.tsx:121
-#. js-lingui-explicit-id
-msgid "Error analyzing conversation"
-msgstr "Konuşma analizinde hata"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:261
-#. js-lingui-explicit-id
-msgid "Review"
-msgstr "İnceleme"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:277
-#. js-lingui-explicit-id
-msgid "Language level:"
-msgstr "Dil seviyesi:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:282
-#. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "Harika olan neydi:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:287
-#. js-lingui-explicit-id
-msgid "Areas to improve:"
-msgstr "İyileştirilecek Alanlar:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:306
-#. js-lingui-explicit-id
-msgid "Start new lesson"
-msgstr "Yeni dersi başlat"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:316
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "Konuşmaya devam et"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:894
-#. js-lingui-explicit-id
-msgid "Mission complete"
-msgstr "Görev tamamlandı"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:904
-#. js-lingui-explicit-id
-msgid "Open results"
-msgstr "Sonuçları aç"
+msgid "Send 10 messages to complete"
+msgstr "Tamamlamak için 10 mesaj gönderin"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:85
@@ -450,13 +400,13 @@ msgid "No conversations yet"
 msgstr "Henüz bir konuşma yok"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:401
+#: src/features/Conversation/ConversationCanvas2.tsx:400
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Öğretmen:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:401
+#: src/features/Conversation/ConversationCanvas2.tsx:400
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Sen:"
@@ -1821,7 +1771,12 @@ msgstr "Daha fazla göster"
 msgid "Show less"
 msgstr "Daha az göster"
 
-#: src/features/Plan/PlanCard.tsx:210
+#: src/features/Plan/PlanCard.tsx:110
+#. js-lingui-explicit-id
+msgid "Start lesson"
+msgstr "Dersi başlat"
+
+#: src/features/Plan/PlanCard.tsx:221
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -3444,7 +3399,7 @@ msgstr "Hedefinizi silmek istediğinizden emin misiniz? Bu işlem geri alınamaz
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:148
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:916
+#: src/features/Conversation/ConversationCanvas2.tsx:915
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Hedef"
@@ -3654,6 +3609,11 @@ msgstr "Daha az"
 msgid "More"
 msgstr "Daha Fazla"
 
+#: src/features/Conversation/ConversationPage.tsx:121
+#. js-lingui-explicit-id
+msgid "Error analyzing conversation"
+msgstr "Konuşma analizinde hata"
+
 #: src/features/Conversation/ConversationPage.tsx:215
 #. js-lingui-explicit-id
 msgid "Error processing goal"
@@ -3694,116 +3654,156 @@ msgstr "Bildirim dev ekibine gönderildi. Bunun için özür dileriz..."
 msgid "Reload page"
 msgstr "Sayfayı yeniden yükle"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:278
-#: src/features/Conversation/ConversationCanvas2.tsx:283
-#: src/features/Conversation/ConversationCanvas2.tsx:288
-#: src/features/Conversation/ConversationCanvas2.tsx:546
-#: src/features/Conversation/ConversationCanvas2.tsx:673
-#: src/features/Conversation/ConversationCanvas2.tsx:680
+#: src/features/Conversation/ConversationCanvas2.tsx:260
+#. js-lingui-explicit-id
+msgid "Review"
+msgstr "İnceleme"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:276
+#. js-lingui-explicit-id
+msgid "Language level:"
+msgstr "Dil seviyesi:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:277
+#: src/features/Conversation/ConversationCanvas2.tsx:282
+#: src/features/Conversation/ConversationCanvas2.tsx:287
+#: src/features/Conversation/ConversationCanvas2.tsx:545
+#: src/features/Conversation/ConversationCanvas2.tsx:672
+#: src/features/Conversation/ConversationCanvas2.tsx:679
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Analiz ediliyor..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:480
+#: src/features/Conversation/ConversationCanvas2.tsx:281
+#. js-lingui-explicit-id
+msgid "What was great:"
+msgstr "Harika olan neydi:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:286
+#. js-lingui-explicit-id
+msgid "Areas to improve:"
+msgstr "İyileştirilecek Alanlar:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:305
+#. js-lingui-explicit-id
+msgid "Start new lesson"
+msgstr "Yeni dersi başlat"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:315
+#. js-lingui-explicit-id
+msgid "Continue conversation"
+msgstr "Konuşmaya devam et"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:479
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Mesaj analizi sırasında hata"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:534
+#: src/features/Conversation/ConversationCanvas2.tsx:533
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Neredeyse doğru"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:549
+#: src/features/Conversation/ConversationCanvas2.tsx:548
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Harika!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:572
+#: src/features/Conversation/ConversationCanvas2.tsx:571
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Mesajınız"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:595
-#: src/features/Conversation/ConversationCanvas2.tsx:598
-#: src/features/Conversation/ConversationCanvas2.tsx:671
-#: src/features/Conversation/ConversationCanvas2.tsx:678
+#: src/features/Conversation/ConversationCanvas2.tsx:594
+#: src/features/Conversation/ConversationCanvas2.tsx:597
+#: src/features/Conversation/ConversationCanvas2.tsx:670
+#: src/features/Conversation/ConversationCanvas2.tsx:677
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Transkribe ediliyor..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:632
+#: src/features/Conversation/ConversationCanvas2.tsx:631
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Düzeltildi"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:712
+#: src/features/Conversation/ConversationCanvas2.tsx:711
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "Kelime Haznesine Yeni Kelimeler:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:757
+#: src/features/Conversation/ConversationCanvas2.tsx:756
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analiz ediliyor"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:764
+#: src/features/Conversation/ConversationCanvas2.tsx:763
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "Hedef Hazırlama"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:784
+#: src/features/Conversation/ConversationCanvas2.tsx:783
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "Hedef oluşturuldu"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:794
+#: src/features/Conversation/ConversationCanvas2.tsx:793
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "Eklenen dersler:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:815
+#: src/features/Conversation/ConversationCanvas2.tsx:814
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "Açık plan"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:837
-#: src/features/Conversation/ConversationCanvas2.tsx:930
+#: src/features/Conversation/ConversationCanvas2.tsx:836
+#: src/features/Conversation/ConversationCanvas2.tsx:929
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Yeniden kaydet"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:851
+#: src/features/Conversation/ConversationCanvas2.tsx:850
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "Olduğu gibi gönder"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:851
+#: src/features/Conversation/ConversationCanvas2.tsx:850
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Gönder"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:865
+#: src/features/Conversation/ConversationCanvas2.tsx:864
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Tamamlandı"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:883
+#: src/features/Conversation/ConversationCanvas2.tsx:882
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Mesaj Kaydet"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1024
+#: src/features/Conversation/ConversationCanvas2.tsx:893
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "Görev tamamlandı"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:903
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "Sonuçları aç"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1023
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "Bakiyeniz düşük"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1026
+#: src/features/Conversation/ConversationCanvas2.tsx:1025
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "Bakiyenizi yükseltmek mantıklıdır."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1033
+#: src/features/Conversation/ConversationCanvas2.tsx:1032
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Bakiye Yükle"
@@ -5488,6 +5488,11 @@ msgstr "Google ile devam et"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Bir hesap oluşturarak, şunları kabul edersiniz:"
+
+#: src/features/Plan/PlanCard.tsx:119
+#. js-lingui-explicit-id
+#~ msgid "Send 6 messages to complete"
+#~ msgstr "Tamamlamak için 6 mesaj gönderin"
 
 #: src/libs/metadata.ts:67
 #. js-lingui-explicit-id
