@@ -31,7 +31,7 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
           width: "100%",
           maxWidth: "1400px",
           padding: "10px",
-          paddingTop: "100px",
+          paddingTop: "80px",
           boxSizing: "border-box",
           gap: "70px",
           position: "relative",
@@ -43,8 +43,6 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
         }}
       >
         <PlanDashboardCards lang={lang} />
-
-        <ConversationSelectCard lang={lang} />
 
         <DashboardCard>
           <UsageStatsCards />
@@ -62,6 +60,8 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
         >
           <ProgressBoard />
         </Stack>
+
+        <ConversationSelectCard lang={lang} />
       </Stack>
 
       <Stack

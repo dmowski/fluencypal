@@ -2,10 +2,10 @@ import { Button, Stack, Typography } from "@mui/material";
 import { buttonStyle, maxLandingWidth, subTitleFontStyle, titleFontStyle } from "./landingSettings";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
-import { PlanCard } from "../Plan/PlanCard";
 import { cardColors, modeCardProps } from "../Plan/data";
 import { PlanElement, PlanElementMode } from "../Plan/types";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { PlanLandingCard } from "../Plan/PlanLandingCard";
 
 interface PlanLandingBlockProps {
   lang: SupportedLanguage;
@@ -477,7 +477,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   const imageUrl = imageVariants[imageIndex];
 
                   return (
-                    <PlanCard
+                    <PlanLandingCard
                       key={planElement.id}
                       delayToShow={index * 80}
                       title={planElement.title}

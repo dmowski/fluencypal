@@ -15,6 +15,7 @@ import { GoalQuestions } from "../Goal/GoalQuestions";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { useLangClientLabels } from "../Lang/getLabelsClient";
 import { useSettings } from "../Settings/useSettings";
+import { useMemo } from "react";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();
@@ -80,13 +81,27 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     words: i18n._(`Words`),
     rule: i18n._(`Rule`),
   };
+
+  const goalDescription = plan.latestGoal?.goalQuiz?.description || "";
+
+  const sortedElements = useMemo(() => {
+    const elements = plan.latestGoal?.elements || [];
+    const conversationElement = elements.find((el) => el.mode === "conversation");
+    if (!conversationElement) {
+      return elements;
+    }
+
+    const otherElements = elements.filter((el) => el !== conversationElement);
+    return [conversationElement, ...otherElements];
+  }, [plan.latestGoal?.elements]);
+
   return (
     <DashboardCard>
       <Stack
         sx={{
           display: "grid",
           alignItems: "center",
-          gridTemplateColumns: "max-content 1fr",
+          gridTemplateColumns: "1fr",
           gap: "15px",
           paddingBottom: "10px",
         }}
@@ -116,9 +131,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         >
           <Stack
             sx={{
-              flexDirection: "row",
-              gap: "10px",
-              alignItems: "center",
+              flexDirection: "column",
+              alignItems: "flex-start",
             }}
           >
             <Typography variant="h6">
@@ -126,27 +140,18 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 ? plan.latestGoal?.title || i18n._(`Goal`)
                 : i18n._(`Start your way to fluency`)}
             </Typography>
-            {isGoalSet && (
+            {goalDescription && (
               <Typography
-                variant="body2"
                 sx={{
-                  padding: "3px 10px",
-                  borderRadius: "20px",
-                  color: isGoalSet ? "#fff" : "#000",
-                  backgroundColor: isGoalSet ? "#4F46E5" : "#ccc",
+                  opacity: 0.8,
+                  maxWidth: "650px",
                 }}
+                variant="caption"
               >
-                {Math.round(averageProgress)}%
+                {goalDescription}
               </Typography>
             )}
           </Stack>
-          <Box>
-            {isGoalSet && userInfo.userInfo?.records.length && (
-              <IconButton onClick={deletePlans} disabled={plan.isCraftingGoal}>
-                <Trash size={"18px"} />
-              </IconButton>
-            )}
-          </Box>
         </Stack>
       </Stack>
       {isGoalSet && plan.latestGoal ? (
@@ -155,25 +160,16 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             gap: "20px",
             width: "100%",
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            "@media (max-width: 1100px)": {
-              gridTemplateColumns: "1fr 1fr",
-            },
-
-            "@media (max-width: 750px)": {
-              gridTemplateColumns: "1fr",
-              gap: "20px",
-            },
+            gridTemplateColumns: "1fr",
           }}
         >
           <>
-            {plan.latestGoal?.elements.map((planElement, index) => {
+            {sortedElements.map((planElement, index, all) => {
               const cardInfo = modeCardProps[planElement.mode];
               const colorIndex = index % cardColors.length;
               const cardColor = cardColors[colorIndex];
               const elementsWithSameMode =
-                plan.latestGoal?.elements.filter((element) => element.mode === planElement.mode) ||
-                [];
+                sortedElements.filter((element) => element.mode === planElement.mode) || [];
               const currentElementIndex = elementsWithSameMode.findIndex(
                 (element) => element.id === planElement.id
               );
@@ -186,14 +182,18 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 <PlanCard
                   key={planElement.id}
                   delayToShow={index * 80}
-                  title={index + 1 + ". " + planElement.title}
+                  title={planElement.title}
                   subTitle={modeLabels[planElement.mode]}
                   description={planElement.description}
+                  details={planElement.details}
+                  isDone={planElement.startCount > 0}
+                  isActive={index == 0}
                   onClick={() => startGoalElement(planElement)}
                   startColor={cardColor.startColor}
                   progressPercent={Math.min((planElement.startCount || 0) * 10, 100)}
                   endColor={cardColor.endColor}
                   bgColor={cardColor.bgColor}
+                  isLast={index === all.length - 1}
                   icon={
                     <Stack>
                       <Stack className="avatar">

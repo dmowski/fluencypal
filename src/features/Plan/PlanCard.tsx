@@ -1,15 +1,15 @@
 "use client";
 import { Stack, Typography } from "@mui/material";
+import { ChevronRight } from "lucide-react";
 
 import { ReactNode } from "react";
-import { PlanElementMode } from "./types";
 
 interface PlanCardProps {
   title: string;
   subTitle: string;
+  details: string;
   description: string;
-  onClick?: () => void;
-  href?: string;
+  onClick: () => void;
   startColor: string;
   endColor: string;
   bgColor: string;
@@ -17,6 +17,9 @@ interface PlanCardProps {
   actionLabel: string;
   progressPercent?: number;
   delayToShow: number;
+  isDone: boolean;
+  isActive?: boolean;
+  isLast?: boolean;
 }
 
 export const PlanCard = ({
@@ -29,69 +32,176 @@ export const PlanCard = ({
   endColor,
   bgColor,
   icon,
-  actionLabel,
-  href,
+  details,
+  isDone,
   delayToShow,
+  isActive,
+  isLast,
 }: PlanCardProps) => {
   return (
     <Stack
       onClick={onClick}
-      component={href ? "a" : onClick ? "button" : "div"}
-      href={href}
+      component={"button"}
       sx={{
-        backgroundColor: "transparent",
+        backgroundColor: isActive ? "rgba(13, 220, 196, 0.1)" : "transparent",
         textDecoration: "none",
-        padding: "20px 20px 20px 20px",
+        padding: "15px",
+        display: "grid",
+        gridTemplateColumns: isActive ? "max-content 1fr max-content" : "max-content 1fr",
+        gap: "20px",
         borderRadius: "16px",
-        gap: "0px",
-        alignItems: "flex-start",
-        justifyContent: "space-between",
-        border: "1px solid rgba(255, 255, 255, 0.08)",
-        position: "relative",
-        overflow: "hidden",
 
-        cursor: href || onClick ? "pointer" : "default",
-        height: "200px",
+        alignItems: "center",
+        justifyContent: "space-between",
+        border: "1px solid rgba(255, 255, 255, 0.0)",
+        maxWidth: "700px",
+        position: "relative",
+
+        cursor: "pointer",
+
         opacity: 0,
         transition: "transform 0.3s ease",
         transform: "scale(1)",
         animation: `fadeInOpacity  1.6s ease ${delayToShow}ms forwards`,
-        "@media (max-width: 750px)": {
-          height: "230px",
-        },
 
         userSelect: "text",
-
         color: "#fff",
-
-        ".mini-card": {
-          position: "absolute",
-          bottom: "0px",
-          right: "20px",
-          width: "200px",
-          height: "140px",
-          boxSizing: "border-box",
-          transition: "all 0.3s ease",
-          boxShadow: "0px 0px 26px rgba(0, 0, 0, 0.3)",
-          backgroundColor: "#1E1E1E",
-          padding: "20px",
-          borderRadius: "16px 16px 0 0",
-          "@media (max-width: 750px)": {
-            width: "250px",
-          },
-          "@media (max-width: 450px)": {
-            width: "150px",
-          },
-        },
-
-        ":hover": {
-          transform: "scale(1.02)",
-          ".avatar": {
-            transform: "scale(1.08) rotate(1deg)",
-          },
-        },
       }}
     >
+      <Stack
+        sx={{
+          padding: "5px",
+          borderRadius: "100px",
+          boxShadow:
+            isDone || isActive
+              ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
+              : "0px 0px 0 2px rgba(13, 220, 196, 0.3)",
+          boxSizing: "border-box",
+          width: "max-content",
+          position: "relative",
+        }}
+      >
+        <Stack
+          sx={{
+            width: "2px",
+            borderRadius: "0px",
+            "--height": `49px`,
+            bottom: "calc(-2px - var(--height))",
+            height: "var(--height)",
+            backgroundColor:
+              isDone || isActive ? "rgba(13, 220, 196, 0.9)" : "rgba(13, 220, 196, 0.3)",
+            position: "absolute",
+            display: isLast ? "none" : "block",
+
+            left: "calc(50% - 1px)",
+            zIndex: 2,
+          }}
+        ></Stack>
+        <Stack
+          sx={{
+            boxSizing: "border-box",
+            padding: "10px 5px 0px 5px",
+            width: "max-content",
+            bottom: "0px",
+            right: "0px",
+            zIndex: 2,
+            position: "relative",
+            overflow: "hidden",
+
+            borderRadius: "100px",
+
+            ".avatar": {
+              transition: "all 0.4s ease",
+              opacity: 1,
+              img: {
+                width: "50px",
+                height: "50px",
+                "@media (max-width: 450px)": {
+                  width: "35px",
+                  height: "35px",
+                },
+              },
+            },
+          }}
+        >
+          <Stack
+            sx={{
+              position: "relative",
+              zIndex: 2,
+              top: "0px",
+              left: "0px",
+              opacity: isActive || isDone ? 1 : 0.3,
+            }}
+          >
+            {icon}
+          </Stack>
+
+          <Stack
+            sx={{
+              backgroundColor: startColor,
+              width: "320px",
+              height: "120px",
+              borderRadius: "40px",
+              filter: "blur(50px)",
+
+              position: "absolute",
+              top: "-40px",
+              left: "-20px",
+              zIndex: 1,
+              opacity: isActive || isDone ? 0.9 : 0.3,
+            }}
+          ></Stack>
+
+          {(isActive || isDone) && (
+            <>
+              <Stack
+                sx={{
+                  backgroundColor: endColor,
+                  width: "320px",
+                  height: "120px",
+                  borderRadius: "40px",
+                  filter: "blur(80px)",
+
+                  position: "absolute",
+                  bottom: "-40px",
+                  right: "-20px",
+                  zIndex: 1,
+                  opacity: 0.9,
+                }}
+              ></Stack>
+
+              <Stack
+                sx={{
+                  backgroundColor: bgColor,
+                  width: "100%",
+                  height: "100%",
+
+                  position: "absolute",
+                  bottom: "0px",
+                  left: "0px",
+                  zIndex: 0,
+                  opacity: 0.1,
+                }}
+              ></Stack>
+
+              <Stack
+                sx={{
+                  backgroundColor: "rgba(10, 18, 30, 1)",
+                  width: "100%",
+                  height: "100%",
+
+                  position: "absolute",
+                  bottom: "0px",
+                  left: "0px",
+                  zIndex: -1,
+                  opacity: 1,
+                }}
+              ></Stack>
+            </>
+          )}
+        </Stack>
+      </Stack>
+
       <Stack
         sx={{
           width: "100%",
@@ -102,144 +212,44 @@ export const PlanCard = ({
           align="left"
           sx={{
             fontWeight: 600,
+            fontSize: "0.8rem",
+            color: isActive || isDone ? `rgba(67, 244, 223, 0.9)` : `rgba(67, 244, 223, 0.3)`,
+          }}
+        >
+          {subTitle}
+        </Typography>
+
+        <Typography
+          align="left"
+          sx={{
+            fontWeight: 500,
             fontSize: "1.2rem",
             position: "relative",
             zIndex: 2,
-            opacity: 1,
+            opacity: isActive || isDone ? 1 : 0.6,
 
             "@media (max-width: 450px)": {
-              fontSize: "1.4rem",
+              fontSize: "0.8rem",
             },
           }}
         >
           {title}
         </Typography>
-
-        <Typography
-          variant="body2"
-          align="left"
-          sx={{
-            opacity: 0.8,
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
-          {description}
-        </Typography>
-      </Stack>
-
-      <Stack>
-        <Stack
-          sx={{
-            flexDirection: "row",
-            gap: "8px",
-            alignItems: "center",
-            padding: "0px 14px 0px 0px",
-            borderRadius: "8px",
-            opacity: 1,
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
-          {progressPercent !== undefined && (
-            <Typography
-              sx={{
-                fontWeight: 400,
-                fontSize: "1rem",
-                borderRadius: "8px",
-                // padding: "10px 20px",
-                // border: "1px solid rgba(255, 255, 255, 0.5)",
-                opacity: 0.8,
-              }}
-              align="left"
-            >
-              {progressPercent}%
-            </Typography>
-          )}
-        </Stack>
       </Stack>
 
       <Stack
         sx={{
-          paddingTop: "0px",
-          width: "max-content",
-          position: "absolute",
-          bottom: "0px",
-          right: "0px",
-          zIndex: 2,
-
-          ".avatar": {
-            transition: "all 0.4s ease",
-            opacity: 1,
-            img: {
-              width: "90px",
-              height: "90px",
-            },
-          },
+          borderRadius: "50%",
+          display: isActive ? "flex" : "none",
+          background: "linear-gradient(45deg,rgb(13, 220, 196) 0%,rgba(13, 180, 236, 0.59) 100%)",
+          height: "45px",
+          width: "45px",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        {icon}
+        <ChevronRight size={"25px"} />
       </Stack>
-
-      <Stack
-        sx={{
-          backgroundColor: startColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(50px)",
-
-          position: "absolute",
-          top: "-40px",
-          left: "-20px",
-          zIndex: 1,
-          opacity: 0.9,
-        }}
-      ></Stack>
-
-      <Stack
-        sx={{
-          backgroundColor: endColor,
-          width: "320px",
-          height: "120px",
-          borderRadius: "40px",
-          filter: "blur(80px)",
-
-          position: "absolute",
-          bottom: "-40px",
-          right: "-20px",
-          zIndex: 1,
-          opacity: 0.9,
-        }}
-      ></Stack>
-
-      <Stack
-        sx={{
-          backgroundColor: bgColor,
-          width: "100%",
-          height: "100%",
-
-          position: "absolute",
-          bottom: "0px",
-          left: "0px",
-          zIndex: 0,
-          opacity: 0.1,
-        }}
-      ></Stack>
-
-      <Stack
-        sx={{
-          backgroundColor: "rgba(10, 18, 30, 1)",
-          width: "100%",
-          height: "100%",
-
-          position: "absolute",
-          bottom: "0px",
-          left: "0px",
-          zIndex: -1,
-          opacity: 1,
-        }}
-      ></Stack>
     </Stack>
   );
 };
