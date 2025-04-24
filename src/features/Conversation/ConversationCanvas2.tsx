@@ -438,7 +438,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 : "1px solid rgba(255, 255, 255, 0.1)",
 
               position: "sticky",
-              bottom: "-2px",
+              bottom: "0px",
               left: 0,
 
               "--section-bg": "#252b33",
