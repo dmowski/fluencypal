@@ -4,7 +4,7 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { Alert, Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import { ArrowUp, Check, Loader, Mic, ShieldAlert, Trash2 } from "lucide-react";
+import { ArrowUp, Check, Loader, Mic, ShieldAlert, Trash2, Trophy } from "lucide-react";
 
 import AddCardIcon from "@mui/icons-material/AddCard";
 
@@ -19,6 +19,7 @@ import { useLingui } from "@lingui/react";
 import { useSound } from "../Audio/useSound";
 import { GoalPlan } from "../Plan/types";
 import { GradingProgressBar } from "../uiKit/Progress/GradingProgressBar";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -32,6 +33,7 @@ interface ConversationCanvasProps {
   recordingError: string;
   togglePaymentModal: (isOpen: boolean) => void;
   conversationId: string;
+  closeConversation: () => void;
   analyzeUserMessage: ({
     previousBotMessage,
     message,
@@ -62,7 +64,9 @@ interface ConversationCanvasProps {
   isSavingGoal: boolean;
   toggleVolume: (isVolumeOn: boolean) => void;
   isOnboarding?: boolean;
-  isShowMessageProgress?: boolean;
+  isShowMessageProgress: boolean;
+  conversationAnalysisResult: string;
+  analyzeConversation: () => Promise<void>;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isOnboarding,
@@ -92,7 +96,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   goalSettingProgress,
   isSavingGoal,
   toggleVolume,
+  closeConversation,
   isShowMessageProgress,
+  conversationAnalysisResult,
+  analyzeConversation,
 }) => {
   const { i18n } = useLingui();
 
@@ -214,12 +221,105 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const actualCountOfUserMessages = conversation.filter((message) => !message.isBot).length;
   const progress = Math.min((actualCountOfUserMessages / countOfUserMessagesToProgress) * 100, 100);
 
+  const [isShowAnalyzeConversationModal, setIsShowAnalyzeConversationModal] = useState(false);
+  const [isConversationContinueAfterAnalyze, setIsConversationContinueAfterAnalyze] =
+    useState(false);
+
   const isCompletedLesson =
-    !!isShowMessageProgress && actualCountOfUserMessages >= countOfUserMessagesToProgress;
-  // TODO: if isCompletedLesson - show title/button "Mission Complete" [Open results]
+    !isConversationContinueAfterAnalyze &&
+    !!isShowMessageProgress &&
+    actualCountOfUserMessages >= countOfUserMessagesToProgress;
+
+  console.log("Progress", isShowMessageProgress, progress);
+  const showAnalyzeConversationModal = () => {
+    // todo: move to useEffect
+    analyzeConversation();
+
+    setIsShowAnalyzeConversationModal(true);
+  };
 
   return (
     <Stack sx={{ gap: "40px" }}>
+      {isShowAnalyzeConversationModal && (
+        <>
+          <CustomModal
+            isOpen={true}
+            onClose={() => setIsShowAnalyzeConversationModal(false)}
+            padding="40px 20px"
+          >
+            <Stack
+              sx={{
+                gap: "30px",
+                width: "100%",
+              }}
+            >
+              <Stack
+                sx={{
+                  gap: "10px",
+                }}
+              >
+                <Typography sx={{}}>{i18n._("Review")}</Typography>
+                {conversationAnalysisResult ? (
+                  <Stack
+                    sx={{
+                      gap: "15px",
+                    }}
+                  >
+                    <Markdown>{conversationAnalysisResult}</Markdown>
+                  </Stack>
+                ) : (
+                  <Stack
+                    sx={{
+                      gap: "15px",
+                    }}
+                  >
+                    <Stack>
+                      <Typography variant="h6">{i18n._(`Language level:`)}</Typography>
+                      <Typography className="loading-shimmer">{i18n._(`Analyzing...`)}</Typography>
+                    </Stack>
+
+                    <Stack>
+                      <Typography variant="h6">{i18n._(`What was great:`)}</Typography>
+                      <Typography className="loading-shimmer">{i18n._(`Analyzing...`)}</Typography>
+                    </Stack>
+
+                    <Stack>
+                      <Typography variant="h6">{i18n._(`Areas to improve:`)}</Typography>
+                      <Typography className="loading-shimmer">{i18n._(`Analyzing...`)}</Typography>
+                    </Stack>
+                  </Stack>
+                )}
+              </Stack>
+
+              <Stack gap="10px">
+                <Button
+                  sx={{}}
+                  onClick={() => {
+                    closeConversation();
+                    setIsShowAnalyzeConversationModal(false);
+                  }}
+                  variant="contained"
+                  color="info"
+                  size="large"
+                  disabled={!conversationAnalysisResult}
+                >
+                  {i18n._(`Start new lesson`)}
+                </Button>
+                <Button
+                  disabled={!conversationAnalysisResult}
+                  onClick={() => {
+                    setIsShowAnalyzeConversationModal(false);
+                    setIsConversationContinueAfterAnalyze(true);
+                  }}
+                  variant="outlined"
+                >
+                  {i18n._(`Continue conversation`)}
+                </Button>
+              </Stack>
+            </Stack>
+          </CustomModal>
+        </>
+      )}
       {isShowMessageProgress && (
         <Stack
           sx={{
@@ -232,7 +332,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             backdropFilter: "blur(10px)",
 
             position: "fixed",
-            top: "50px",
+            top: "60px",
             "@media (max-width: 600px)": {
               top: "0px",
             },
@@ -769,7 +869,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     {!transcriptMessage &&
                       !isRecording &&
                       !isAnalyzingResponse &&
-                      !isProcessingGoal && (
+                      !isProcessingGoal &&
+                      !isCompletedLesson && (
                         <Button
                           startIcon={<Mic />}
                           size="large"
@@ -782,6 +883,28 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                           {i18n._("Record Message")}
                         </Button>
                       )}
+
+                    {isCompletedLesson && (
+                      <Stack
+                        sx={{
+                          alignItems: "flex-start",
+                          gap: "5px",
+                        }}
+                      >
+                        <Typography>{i18n._("Mission complete")}</Typography>
+                        <Button
+                          startIcon={<Trophy />}
+                          size="large"
+                          variant="contained"
+                          sx={{
+                            minWidth: "200px",
+                          }}
+                          onClick={async () => showAnalyzeConversationModal()}
+                        >
+                          {i18n._("Open results")}
+                        </Button>
+                      </Stack>
+                    )}
 
                     {!!goalSettingProgress &&
                       !transcriptMessage &&

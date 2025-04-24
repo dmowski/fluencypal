@@ -95,6 +95,14 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     return [conversationElement, ...otherElements];
   }, [plan.latestGoal?.elements]);
 
+  let activeIndex: null | number = null;
+
+  sortedElements.forEach((element, index) => {
+    if (element.startCount == 0 && activeIndex === null) {
+      activeIndex = index;
+    }
+  });
+
   return (
     <DashboardCard>
       <Stack
@@ -177,6 +185,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               const imageVariants = cardInfo.imgUrl;
               const imageIndex = currentElementIndex % imageVariants.length;
               const imageUrl = imageVariants[imageIndex];
+              const isDone = planElement.startCount > 0;
+              const isActive = index === activeIndex;
 
               return (
                 <PlanCard
@@ -186,8 +196,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   subTitle={modeLabels[planElement.mode]}
                   description={planElement.description}
                   details={planElement.details}
-                  isDone={planElement.startCount > 0}
-                  isActive={index == 0}
+                  isDone={isDone}
+                  isActive={isActive}
                   onClick={() => startGoalElement(planElement)}
                   startColor={cardColor.startColor}
                   progressPercent={Math.min((planElement.startCount || 0) * 10, 100)}

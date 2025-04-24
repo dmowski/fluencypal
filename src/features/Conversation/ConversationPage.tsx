@@ -25,7 +25,7 @@ import { RulesToLearn } from "../Dashboard/RulesToLearn";
 import { ConversationError } from "./ConversationError";
 import { useHotjar } from "../Analytics/useHotjar";
 import { GoalPreparingModal } from "../Goal/GoalPreparingModal";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { deleteGoalQuiz, getGoalQuiz } from "@/app/api/goal/goalRequests";
 import { usePlan } from "../Plan/usePlan";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
@@ -33,6 +33,8 @@ import { ChatMessage } from "@/common/conversation";
 import * as Sentry from "@sentry/nextjs";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import { ConfirmConversationModal } from "./ConfirmConversationModal";
+import { getUrlStart } from "../Lang/getUrlStart";
+import { useTextAi } from "../Ai/useTextAi";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -55,10 +57,75 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const goalId = searchParams.get("goalId");
   const userInfo = useAiUserInfo();
   const notifications = useNotifications();
+  const textAi = useTextAi();
 
   const [isShowGoalModal, setIsShowGoalModal] = useState(false);
   const [isProcessingGoal, setIsProcessingGoal] = useState(false);
+  const [conversationAnalysis, setConversationAnalysis] = useState<string>("");
+  const analyzeConversation = async () => {
+    setConversationAnalysis("");
+    const messages = aiConversation.conversation;
 
+    const messagesString = messages
+      .map((message) => {
+        const author = message.isBot ? "AI" : "User";
+        return `${author}: ${message.text}`;
+      })
+      .join("\n");
+
+    const planDescription = plan.latestGoal?.goalQuiz?.description || "";
+    const goalElement = aiConversation.goalInfo?.goalElement;
+    const goalElementDescription = goalElement
+      ? `Lesson: ${goalElement.title} - ${goalElement.description} - ${goalElement.details}`
+      : "";
+
+    const expectedStructure = `
+#### Language level:
+Example: Intermediate
+
+#### What was great:
+Example: I liked the way you described your situation related to *** 
+
+#### Areas to improve:
+It's better to use *** instead of ***, because ***
+
+`;
+
+    const systemMessage = `You are a language teacher/analyzer.
+You are analyzing the conversation between the user and AI.
+The user is learning ${settings.fullLanguageName}.
+The user has the following goal: ${planDescription}.
+The user is using the following lesson: ${goalElementDescription}.
+
+Answer to the user in the following format:
+${expectedStructure}
+`;
+
+    try {
+      const aiResults = await textAi.generate({
+        systemMessage,
+        userMessage: messagesString,
+        model: "gpt-4o",
+        languageCode: settings.languageCode || "en",
+      });
+      setConversationAnalysis(aiResults);
+    } catch (error) {
+      Sentry.captureException(error, {
+        extra: {
+          userId: auth.uid,
+          userInfo: userInfo.userInfo,
+          conversationMessages: messages,
+        },
+      });
+
+      notifications.show(i18n._(`Error analyzing conversation`) + "=" + error, {
+        severity: "error",
+      });
+      setConversationAnalysis("Error analyzing conversation...");
+      throw error;
+    }
+  };
+  const router = useRouter();
   const removeGoalIdFromUrl = () => {
     const searchParams = new URLSearchParams(window.location.search);
     searchParams.delete("goalId");
@@ -303,6 +370,17 @@ About me: ${goalData.description}.`,
         confirmGoal={aiConversation.confirmGoal}
         goalSettingProgress={aiConversation.goalSettingProgress}
         isSavingGoal={aiConversation.isSavingGoal}
+        analyzeConversation={analyzeConversation}
+        closeConversation={() => {
+          const url = `${getUrlStart(lang)}practice`;
+          router.push(url);
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }}
+        isShowMessageProgress={!!aiConversation.goalInfo?.goalElement}
+        conversationAnalysisResult={conversationAnalysis}
       />
     </Stack>
   );

@@ -18,22 +18,21 @@ interface ConversationPageTestProps {
   lang: SupportedLanguage;
 }
 
+const startTestMessages: ChatMessage[] = [];
+
+for (let i = 0; i < 12; i++) {
+  startTestMessages.push({
+    isBot: i % 2 === 0,
+    text: `Hello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\n`,
+    id: `${i}`,
+  });
+}
+
 export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTestProps) {
   const aiUserInfo = useAiUserInfo();
   const settings = useSettings();
   const textAi = useTextAi();
-  const [testMessage, setTestMessage] = useState<ChatMessage[]>([
-    {
-      isBot: true,
-      text: `Hello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\n`,
-      id: "1",
-    },
-    {
-      isBot: false,
-      text: `I do well, thank you! Hello\n`,
-      id: `2`,
-    },
-  ]);
+  const [testMessage, setTestMessage] = useState<ChatMessage[]>(startTestMessages);
 
   const showGame = false;
   const gameStat: GuessGameStat | null = showGame
@@ -190,6 +189,11 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         goalSettingProgress={0}
         isSavingGoal={false}
         isShowMessageProgress={true}
+        conversationAnalysisResult={``}
+        closeConversation={async () => {
+          alert("Close conversation");
+        }}
+        analyzeConversation={async () => {}}
       />
     </Stack>
   );

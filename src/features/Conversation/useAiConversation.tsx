@@ -73,6 +73,7 @@ interface AiConversationContextType {
   temporaryGoal: GoalPlan | null;
   goalSettingProgress: number;
   isSavingGoal: boolean;
+  goalInfo: GoalElementInfo | null;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -846,6 +847,7 @@ My last message was: "${message}".
     goalSettingProgress,
     isSavingGoal,
     confirmStartConversationModal,
+    goalInfo,
   };
 }
 

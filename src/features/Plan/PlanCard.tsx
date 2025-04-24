@@ -1,6 +1,6 @@
 "use client";
 import { Button, Stack, Typography } from "@mui/material";
-import { ChevronRight } from "lucide-react";
+import { Check, ChevronRight } from "lucide-react";
 
 import { ReactNode, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
@@ -46,7 +46,12 @@ export const PlanCard = ({
   return (
     <>
       {showModal && (
-        <CustomModal isOpen={true} onClose={() => setShowModal(false)} padding="40px 20px">
+        <CustomModal
+          isOpen={true}
+          onClose={() => setShowModal(false)}
+          padding="40px 20px"
+          width="min(400px, 100vw)"
+        >
           <Stack
             sx={{
               alignItems: "center",
@@ -64,6 +69,7 @@ export const PlanCard = ({
           <Stack
             sx={{
               gap: "10px",
+              alignItems: "center",
               width: "100%",
             }}
           >
@@ -88,6 +94,8 @@ export const PlanCard = ({
             <Button
               sx={{
                 margin: "15px 0px",
+                width: "100%",
+                padding: "10px 20px",
               }}
               onClick={() => {
                 setShowModal(false);
@@ -122,7 +130,8 @@ export const PlanCard = ({
           textDecoration: "none",
           padding: "15px",
           display: "grid",
-          gridTemplateColumns: isActive ? "max-content 1fr max-content" : "max-content 1fr",
+          gridTemplateColumns:
+            isActive || isDone ? "max-content 1fr max-content" : "max-content 1fr",
           gap: "20px",
           borderRadius: "16px",
 
@@ -156,6 +165,26 @@ export const PlanCard = ({
             position: "relative",
           }}
         >
+          {isDone && (
+            <Stack
+              sx={{
+                position: "absolute",
+                bottom: "0px",
+                right: "0px",
+                backgroundColor: "rgb(9, 108, 96)",
+                boxShadow: "0px 0px 0 2px rgba(13, 220, 196, 0.9)",
+                width: "20px",
+                height: "20px",
+                borderRadius: "100px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 20000,
+              }}
+            >
+              <Check size={"12px"} strokeWidth={"3px"} />
+            </Stack>
+          )}
           <Stack
             sx={{
               width: "2px",
@@ -316,14 +345,16 @@ export const PlanCard = ({
           sx={{
             borderRadius: "50%",
             display: isActive ? "flex" : "none",
-            background: "linear-gradient(45deg,rgb(13, 220, 196) 0%,rgba(13, 180, 236, 0.59) 100%)",
+            background: isActive
+              ? "linear-gradient(45deg,rgb(13, 220, 196) 0%,rgba(13, 180, 236, 0.59) 100%)"
+              : "",
             height: "45px",
             width: "45px",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <ChevronRight size={"25px"} />
+          {isActive ? <ChevronRight size={"25px"} /> : <Check />}
         </Stack>
       </Stack>
     </>
