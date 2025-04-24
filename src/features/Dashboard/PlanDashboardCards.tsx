@@ -7,7 +7,7 @@ import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { usePlan } from "../Plan/usePlan";
-import { PlanElement, PlanElementMode } from "../Plan/types";
+import { GoalPlan, PlanElement, PlanElementMode } from "../Plan/types";
 import { PlanCard } from "../Plan/PlanCard";
 
 import { cardColors, modeCardProps } from "../Plan/data";
@@ -116,15 +116,60 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     return acc;
   }, 0);
 
+  const [isLearningPlanUpdating, setIsLearningPlanUpdating] = useState(false);
+
   const generateMoreLessons = async () => {
-    alert(
-      "Hi. This feature is not implemented yet. I plan to add it in the next few days. Stay tuned!"
-    );
-    // get user info
-    // get current plan
-    // get current plan elements
-    // get quiz description
-    // Generate more 3 elements and add them to the plan
+    if (!plan.latestGoal) {
+      return;
+    }
+
+    try {
+      setIsLearningPlanUpdating(true);
+
+      const goalPlanElements = plan.latestGoal?.elements || [];
+      const goalPlanElementsString = goalPlanElements
+        .map((element) => {
+          return `${element.mode} - ${element.title}: ${element.description}`;
+        })
+        .join(", ");
+
+      const newGoal = await plan.generateGoal({
+        userInfo: userInfo.userInfo?.records || [],
+        conversationMessages: [
+          {
+            isBot: true,
+            id: "1",
+            text: "What you learned already?",
+          },
+          {
+            isBot: false,
+            id: "2",
+            text:
+              "I learned following lessons and I want something new, but related to my goal. My learned lessons are: " +
+              goalPlanElementsString,
+          },
+        ],
+        languageCode: lang,
+        goalQuiz: plan.latestGoal?.goalQuiz || undefined,
+      });
+
+      // filter new elements to copy only new elements
+      const newElements = newGoal.elements.filter((newElement) => {
+        return !goalPlanElements.some((oldElement) => oldElement.title === newElement.title);
+      });
+
+      const updatedPlan: GoalPlan = { ...plan.latestGoal };
+      updatedPlan.elements = [...goalPlanElements, ...newElements];
+      await plan.addGoalPlan(updatedPlan);
+
+      setIsLearningPlanUpdating(false);
+      setIsShowMoreModal(false);
+    } catch (error) {
+      alert(i18n._(`Something went wrong while generating more lessons. Please try again later.`));
+      setIsLearningPlanUpdating(false);
+
+      throw error;
+    }
   };
 
   const minimumLessonsCountToExpand = 3;
@@ -326,10 +371,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   deletePlans();
                   setIsShowMoreModal(false);
                 }}
-                disabled={!isAbleToExpand}
                 variant="text"
                 color="error"
                 size="large"
+                disabled={isLearningPlanUpdating}
               >
                 {i18n._(`Delete current goal`)}
               </Button>
@@ -341,12 +386,14 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   padding: "10px 20px",
                 }}
                 onClick={generateMoreLessons}
-                disabled={!isAbleToExpand}
+                disabled={!isAbleToExpand || isLearningPlanUpdating}
                 variant="contained"
                 color="info"
                 size="large"
               >
-                {i18n._(`Generate more unique lessons`)}
+                {isLearningPlanUpdating
+                  ? i18n._(`Generating...`)
+                  : i18n._(`Generate more unique lessons`)}
               </Button>
               {!isAbleToExpand && (
                 <Typography
