@@ -22,6 +22,7 @@ interface PlanCardProps {
   isDone: boolean;
   isActive?: boolean;
   isLast?: boolean;
+  isContinueLabel: boolean;
 }
 
 export const PlanCard = ({
@@ -39,6 +40,7 @@ export const PlanCard = ({
   delayToShow,
   isActive,
   isLast,
+  isContinueLabel,
 }: PlanCardProps) => {
   const [showModal, setShowModal] = useState(false);
   const { i18n } = useLingui();
@@ -128,7 +130,7 @@ export const PlanCard = ({
         sx={{
           backgroundColor: isActive ? "rgba(13, 220, 196, 0.1)" : "transparent",
           textDecoration: "none",
-          padding: "15px",
+          padding: "12px 16px",
           display: "grid",
           gridTemplateColumns:
             isActive || isDone ? "max-content 1fr max-content" : "max-content 1fr",
@@ -185,11 +187,49 @@ export const PlanCard = ({
               <Check size={"12px"} strokeWidth={"3px"} />
             </Stack>
           )}
+          {isContinueLabel && (
+            <Stack
+              sx={{
+                position: "absolute",
+                top: "-20px",
+                left: "0",
+                right: "0",
+                margin: "auto",
+                backgroundColor: "rgb(9, 108, 96)",
+                //boxShadow: "0px 0px 0 2px rgba(13, 220, 196, 0.9)",
+                width: "100%",
+                borderRadius: "5px",
+                boxSizing: "border-box",
+                padding: "2px 7px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 20000,
+              }}
+            >
+              <Typography variant="caption">{i18n._("Continue")}</Typography>
+              <Stack
+                sx={{
+                  position: "absolute",
+                  bottom: "-4px",
+                  margin: "auto",
+                  left: "0px",
+                  right: "0px",
+                  width: "10px",
+                  height: "10px",
+                  backgroundColor: "rgb(9, 108, 96)",
+                  borderRadius: "1px",
+                  transform: "rotate(45deg)",
+                  zIndex: -2,
+                }}
+              ></Stack>
+            </Stack>
+          )}
           <Stack
             sx={{
               width: "2px",
               borderRadius: "0px",
-              "--height": `49px`,
+              "--height": `43px`,
               bottom: "calc(-2px - var(--height))",
               height: "var(--height)",
               backgroundColor:

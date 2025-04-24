@@ -198,6 +198,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   details={planElement.details}
                   isDone={isDone}
                   isActive={isActive}
+                  isContinueLabel={isActive && index > 0}
                   onClick={() => startGoalElement(planElement)}
                   startColor={cardColor.startColor}
                   progressPercent={Math.min((planElement.startCount || 0) * 10, 100)}
