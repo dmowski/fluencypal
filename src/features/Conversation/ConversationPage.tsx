@@ -237,12 +237,8 @@ About me: ${goalData.description}.`,
   if (isShowGoalModal) {
     return (
       <GoalPreparingModal
-        onClose={() => {
-          setIsShowGoalModal(false);
-        }}
-        onStart={() => {
-          aiConversation.startConversation({ mode: "goal" });
-        }}
+        onClose={() => setIsShowGoalModal(false)}
+        onStart={() => aiConversation.startConversation({ mode: "goal" })}
       />
     );
   }
