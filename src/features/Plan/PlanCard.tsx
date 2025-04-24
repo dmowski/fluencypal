@@ -128,7 +128,7 @@ export const PlanCard = ({
         }}
         component={"button"}
         sx={{
-          backgroundColor: isActive ? "rgba(13, 220, 196, 0.1)" : "transparent",
+          backgroundColor: isActive ? "rgba(13, 220, 196, 0.1)" : "rgba(13, 220, 196, 0.02)",
           textDecoration: "none",
           padding: "12px 16px",
           display: "grid",
@@ -146,12 +146,15 @@ export const PlanCard = ({
           cursor: "pointer",
 
           opacity: 0,
-          transition: "transform 0.3s ease",
+          transition: "background 0.3s ease",
           transform: "scale(1)",
           animation: `fadeInOpacity  1.6s ease ${delayToShow}ms forwards`,
 
           userSelect: "text",
           color: "#fff",
+          ":hover": {
+            backgroundColor: isActive ? "rgba(13, 220, 196, 0.2)" : "rgba(13, 220, 196, 0.1)",
+          },
         }}
       >
         <Stack

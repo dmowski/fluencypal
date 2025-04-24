@@ -28,6 +28,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { GoalElementInfo, GoalPlan } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
+import { messagesToComplete } from "./data";
 
 const aiModal = MODELS.REALTIME_CONVERSATION;
 
@@ -199,7 +200,7 @@ function useProvideAiConversation(): AiConversationContextType {
     }
 
     const usersMessagesCount = conversation.filter((message) => !message.isBot).length;
-    if (usersMessagesCount === 6 && goalInfo) {
+    if (usersMessagesCount === messagesToComplete && goalInfo) {
       plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
     }
 

@@ -20,6 +20,7 @@ import { useSound } from "../Audio/useSound";
 import { GoalPlan } from "../Plan/types";
 import { GradingProgressBar } from "../uiKit/Progress/GradingProgressBar";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { messagesToComplete } from "./data";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -217,9 +218,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     };
   }, [conversation, isAnalyzingResponse, isRecording]);
 
-  const countOfUserMessagesToProgress = 6;
   const actualCountOfUserMessages = conversation.filter((message) => !message.isBot).length;
-  const progress = Math.min((actualCountOfUserMessages / countOfUserMessagesToProgress) * 100, 100);
+  const progress = Math.min((actualCountOfUserMessages / messagesToComplete) * 100, 100);
 
   const [isShowAnalyzeConversationModal, setIsShowAnalyzeConversationModal] = useState(false);
   const [isConversationContinueAfterAnalyze, setIsConversationContinueAfterAnalyze] =
@@ -228,9 +228,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const isCompletedLesson =
     !isConversationContinueAfterAnalyze &&
     !!isShowMessageProgress &&
-    actualCountOfUserMessages >= countOfUserMessagesToProgress;
+    actualCountOfUserMessages >= messagesToComplete;
 
-  console.log("Progress", isShowMessageProgress, progress);
   const showAnalyzeConversationModal = () => {
     // todo: move to useEffect
     analyzeConversation();
