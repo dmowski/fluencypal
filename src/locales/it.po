@@ -13,10 +13,60 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Goal/GoalQuestions.tsx:80
+#: src/features/Plan/PlanCard.tsx:110
 #. js-lingui-explicit-id
-msgid "Something went wrong. Please try again"
-msgstr "Qualcosa è andato storto. Per favore prova ancora"
+msgid "Start lesson"
+msgstr "Inizia lezione"
+
+#: src/features/Plan/PlanCard.tsx:119
+#. js-lingui-explicit-id
+msgid "Send 6 messages to complete"
+msgstr "Invia 6 messaggi per completare"
+
+#: src/features/Conversation/ConversationPage.tsx:121
+#. js-lingui-explicit-id
+msgid "Error analyzing conversation"
+msgstr "Errore nell'analisi della conversazione"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:261
+#. js-lingui-explicit-id
+msgid "Review"
+msgstr "Recensione"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:277
+#. js-lingui-explicit-id
+msgid "Language level:"
+msgstr "Livello di lingua:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:282
+#. js-lingui-explicit-id
+msgid "What was great:"
+msgstr "Cosa è stato fantastico:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:287
+#. js-lingui-explicit-id
+msgid "Areas to improve:"
+msgstr "Aree da migliorare:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:306
+#. js-lingui-explicit-id
+msgid "Start new lesson"
+msgstr "Inizia nuova lezione"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:316
+#. js-lingui-explicit-id
+msgid "Continue conversation"
+msgstr "Continua la conversazione"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:894
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "Missione completata"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:904
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "Apri i risultati"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:85
@@ -400,13 +450,13 @@ msgid "No conversations yet"
 msgstr "Nessuna conversazione ancora"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:269
+#: src/features/Conversation/ConversationCanvas2.tsx:401
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Insegnante:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:269
+#: src/features/Conversation/ConversationCanvas2.tsx:401
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Tu:"
@@ -438,7 +488,7 @@ msgstr "I tuoi successi"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
 #: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/Dashboard/PlanDashboardCards.tsx:80
+#: src/features/Dashboard/PlanDashboardCards.tsx:81
 #: src/features/Dashboard/ConversationSelectCard.tsx:191
 #. js-lingui-explicit-id
 msgid "Words"
@@ -707,9 +757,9 @@ msgstr "Cronologia dei pagamenti:"
 
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Conversation/ConversationPage.tsx:188
-#: src/features/Conversation/ConversationPage.tsx:196
-#: src/features/Conversation/ConversationPage.tsx:214
+#: src/features/Conversation/ConversationPage.tsx:255
+#: src/features/Conversation/ConversationPage.tsx:263
+#: src/features/Conversation/ConversationPage.tsx:281
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Caricamento..."
@@ -1768,14 +1818,14 @@ msgstr "Tutti gli scenari"
 #: src/features/Landing/PlanLandingBlock.tsx:287
 #: src/features/Landing/PlanLandingBlock.tsx:496
 #: src/features/Landing/PlanLandingBlock.tsx:625
-#: src/features/Dashboard/PlanDashboardCards.tsx:204
+#: src/features/Dashboard/PlanDashboardCards.tsx:215
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Inizio"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:397
 #: src/features/Landing/PlanLandingBlock.tsx:103
-#: src/features/Dashboard/PlanDashboardCards.tsx:79
+#: src/features/Dashboard/PlanDashboardCards.tsx:80
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Ruolo Giocato"
@@ -1789,6 +1839,12 @@ msgstr "Mostra di più"
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Mostra meno"
+
+#: src/features/Plan/PlanCard.tsx:210
+#: src/features/Dashboard/HomeworkCard.tsx:115
+#. js-lingui-explicit-id
+msgid "Continue"
+msgstr "Continua"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -2097,14 +2153,14 @@ msgid "Develop formal writing skills for academic success."
 msgstr "Sviluppa competenze di scrittura formale per il successo accademico."
 
 #: src/features/Landing/PlanLandingBlock.tsx:102
-#: src/features/Dashboard/PlanDashboardCards.tsx:78
+#: src/features/Dashboard/PlanDashboardCards.tsx:79
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Conversazione"
 
 #: src/features/Landing/PlanLandingBlock.tsx:105
-#: src/features/Dashboard/PlanDashboardCards.tsx:81
+#: src/features/Dashboard/PlanDashboardCards.tsx:82
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Regola"
@@ -3168,6 +3224,11 @@ msgstr "Completando..."
 msgid "Back"
 msgstr "Indietro"
 
+#: src/features/Goal/GoalQuestions.tsx:80
+#. js-lingui-explicit-id
+msgid "Something went wrong. Please try again"
+msgstr "Qualcosa è andato storto. Per favore prova ancora"
+
 #: src/features/Goal/GoalQuestions.tsx:136
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please try again."
@@ -3405,21 +3466,21 @@ msgstr "Il mio"
 msgid "New rule to practice."
 msgstr "Nuova regola da praticare."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:59
+#: src/features/Dashboard/PlanDashboardCards.tsx:60
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr ""
 "Sei sicuro di voler cancellare il tuo obiettivo? Questa azione non può "
 "essere annullata."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:126
+#: src/features/Dashboard/PlanDashboardCards.tsx:148
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:761
+#: src/features/Conversation/ConversationCanvas2.tsx:916
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Obiettivo"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:127
+#: src/features/Dashboard/PlanDashboardCards.tsx:149
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Inizia il tuo percorso verso la padronanza"
@@ -3438,11 +3499,6 @@ msgstr "Nessun compito assegnato ancora."
 #. js-lingui-explicit-id
 msgid "Start a conversation to get one."
 msgstr "Inizia una conversazione per ottenerne uno."
-
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#. js-lingui-explicit-id
-msgid "Continue"
-msgstr "Continua"
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
 #. js-lingui-explicit-id
@@ -3512,104 +3568,104 @@ msgstr "Ottieni una regola"
 msgid "Expand vocabulary"
 msgstr "Espandi il vocabolario"
 
-#: src/features/Dashboard/BrainCard.tsx:128
+#: src/features/Dashboard/BrainCard.tsx:130
 #. js-lingui-explicit-id
 msgid "Connecting to the brain..."
 msgstr "Collegamento al cervello..."
 
-#: src/features/Dashboard/BrainCard.tsx:131
+#: src/features/Dashboard/BrainCard.tsx:133
 #. js-lingui-explicit-id
 msgid "Connected..."
 msgstr "Connesso..."
 
-#: src/features/Dashboard/BrainCard.tsx:135
+#: src/features/Dashboard/BrainCard.tsx:137
 #. js-lingui-explicit-id
 msgid "Processing existing knowledge in that brain..."
 msgstr "Elaborando le conoscenze esistenti in quel cervello..."
 
-#: src/features/Dashboard/BrainCard.tsx:139
+#: src/features/Dashboard/BrainCard.tsx:141
 #. js-lingui-explicit-id
 msgid "Thinking about which languages might be good to install..."
 msgstr "Pensando a quali lingue potrebbero essere buone da installare..."
 
-#: src/features/Dashboard/BrainCard.tsx:141
-#: src/features/Dashboard/BrainCard.tsx:163
+#: src/features/Dashboard/BrainCard.tsx:143
+#: src/features/Dashboard/BrainCard.tsx:165
 #. js-lingui-explicit-id
 msgid "Brain connection failed."
 msgstr "Connessione cerebrale fallita."
 
-#: src/features/Dashboard/BrainCard.tsx:148
+#: src/features/Dashboard/BrainCard.tsx:150
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "Finalizzando la decisione ..."
 
-#: src/features/Dashboard/BrainCard.tsx:167
+#: src/features/Dashboard/BrainCard.tsx:169
 #. js-lingui-explicit-id
 msgid "Brain connection successful!"
 msgstr "Connessione cerebrale riuscita!"
 
-#: src/features/Dashboard/BrainCard.tsx:272
+#: src/features/Dashboard/BrainCard.tsx:274
 #. js-lingui-explicit-id
 msgid "Installing..."
 msgstr "In installazione..."
 
-#: src/features/Dashboard/BrainCard.tsx:273
+#: src/features/Dashboard/BrainCard.tsx:275
 #. js-lingui-explicit-id
 msgid "Connection Established"
 msgstr "Connessione Stabilita"
 
-#: src/features/Dashboard/BrainCard.tsx:335
+#: src/features/Dashboard/BrainCard.tsx:337
 #. js-lingui-explicit-id
 msgid "Install languages into my brain"
 msgstr "Installa lingue nel mio cervello"
 
-#: src/features/Dashboard/BrainCard.tsx:395
+#: src/features/Dashboard/BrainCard.tsx:397
 #. js-lingui-explicit-id
 msgid "Install complete"
 msgstr "Installazione completata"
 
-#: src/features/Dashboard/BrainCard.tsx:404
+#: src/features/Dashboard/BrainCard.tsx:406
 #. js-lingui-explicit-id
 msgid "Languages installed in your brain:"
 msgstr "Lingue installate nel tuo cervello:"
 
-#: src/features/Dashboard/BrainCard.tsx:427
+#: src/features/Dashboard/BrainCard.tsx:429
 #. js-lingui-explicit-id
 msgid "One thing left to do"
 msgstr "Una cosa ancora da fare"
 
-#: src/features/Dashboard/BrainCard.tsx:436
+#: src/features/Dashboard/BrainCard.tsx:438
 #. js-lingui-explicit-id
 msgid "PRACTICE AND HARD WORK"
 msgstr "PRATICA E LAVORO DURO"
 
-#: src/features/Dashboard/BrainCard.tsx:446
+#: src/features/Dashboard/BrainCard.tsx:448
 #. js-lingui-explicit-id
 msgid "Happy April 1st!"
 msgstr "Buon 1 Aprile!"
 
-#: src/features/Dashboard/BrainCard.tsx:492
+#: src/features/Dashboard/BrainCard.tsx:494
 #. js-lingui-explicit-id
 msgid "Install:"
 msgstr "Installa:"
 
-#: src/features/Dashboard/BrainCard.tsx:494
+#: src/features/Dashboard/BrainCard.tsx:496
 #. js-lingui-explicit-id
 msgid "Connecting..."
 msgstr "Collegamento in corso..."
 
-#: src/features/Dashboard/BrainCard.tsx:495
+#: src/features/Dashboard/BrainCard.tsx:497
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
 msgstr "Inizia la connessione cerebrale"
 
-#: src/features/Dashboard/BrainCard.tsx:533
+#: src/features/Dashboard/BrainCard.tsx:535
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
 msgstr "Preparando il cervello"
 
-#: src/features/Dashboard/BrainCard.tsx:537
-#: src/features/Dashboard/BrainCard.tsx:618
+#: src/features/Dashboard/BrainCard.tsx:539
+#: src/features/Dashboard/BrainCard.tsx:620
 #. js-lingui-explicit-id
 msgid "Upload language skills directly to your brain"
 msgstr "Carica direttamente nel tuo cervello le competenze linguistiche"
@@ -3629,22 +3685,22 @@ msgstr "Meno"
 msgid "More"
 msgstr "Più"
 
-#: src/features/Conversation/ConversationPage.tsx:148
+#: src/features/Conversation/ConversationPage.tsx:215
 #. js-lingui-explicit-id
 msgid "Error processing goal"
 msgstr "Errore nell'elaborazione dell'obiettivo"
 
-#: src/features/Conversation/ConversationPage.tsx:200
+#: src/features/Conversation/ConversationPage.tsx:267
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Caricamento Obiettivo..."
 
-#: src/features/Conversation/ConversationPage.tsx:222
+#: src/features/Conversation/ConversationPage.tsx:289
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Creazione di nuove parole..."
 
-#: src/features/Conversation/ConversationPage.tsx:226
+#: src/features/Conversation/ConversationPage.tsx:293
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Creazione di una nuova regola..."
@@ -3669,113 +3725,116 @@ msgstr "La notifica è stata inviata al team di sviluppo. Ci dispiace per questo
 msgid "Reload page"
 msgstr "Ricarica pagina"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:348
-#. js-lingui-explicit-id
-msgid "Error during analyzing message"
-msgstr "Errore durante l'analisi del messaggio"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:402
-#. js-lingui-explicit-id
-msgid "Almost correct"
-msgstr "Quasi corretto"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:414
-#: src/features/Conversation/ConversationCanvas2.tsx:541
-#: src/features/Conversation/ConversationCanvas2.tsx:548
+#: src/features/Conversation/ConversationCanvas2.tsx:278
+#: src/features/Conversation/ConversationCanvas2.tsx:283
+#: src/features/Conversation/ConversationCanvas2.tsx:288
+#: src/features/Conversation/ConversationCanvas2.tsx:546
+#: src/features/Conversation/ConversationCanvas2.tsx:673
+#: src/features/Conversation/ConversationCanvas2.tsx:680
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Analizzando..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:417
+#: src/features/Conversation/ConversationCanvas2.tsx:480
+#. js-lingui-explicit-id
+msgid "Error during analyzing message"
+msgstr "Errore durante l'analisi del messaggio"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:534
+#. js-lingui-explicit-id
+msgid "Almost correct"
+msgstr "Quasi corretto"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:549
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Ottimo!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:440
+#: src/features/Conversation/ConversationCanvas2.tsx:572
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Il tuo messaggio"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:463
-#: src/features/Conversation/ConversationCanvas2.tsx:466
-#: src/features/Conversation/ConversationCanvas2.tsx:539
-#: src/features/Conversation/ConversationCanvas2.tsx:546
+#: src/features/Conversation/ConversationCanvas2.tsx:595
+#: src/features/Conversation/ConversationCanvas2.tsx:598
+#: src/features/Conversation/ConversationCanvas2.tsx:671
+#: src/features/Conversation/ConversationCanvas2.tsx:678
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Trascrivendo..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:500
+#: src/features/Conversation/ConversationCanvas2.tsx:632
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Corretto"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:580
+#: src/features/Conversation/ConversationCanvas2.tsx:712
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "Nuove Parole al Vocabolario:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:625
+#: src/features/Conversation/ConversationCanvas2.tsx:757
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analizzando"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:632
+#: src/features/Conversation/ConversationCanvas2.tsx:764
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "Preparazione dell'Obiettivo"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:652
+#: src/features/Conversation/ConversationCanvas2.tsx:784
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "L'obiettivo è creato"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:662
+#: src/features/Conversation/ConversationCanvas2.tsx:794
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "Lezioni aggiunte:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:683
+#: src/features/Conversation/ConversationCanvas2.tsx:815
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "Piano aperto"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:705
-#: src/features/Conversation/ConversationCanvas2.tsx:775
+#: src/features/Conversation/ConversationCanvas2.tsx:837
+#: src/features/Conversation/ConversationCanvas2.tsx:930
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Riregistra"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:719
+#: src/features/Conversation/ConversationCanvas2.tsx:851
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "Invialo così com'è"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:719
+#: src/features/Conversation/ConversationCanvas2.tsx:851
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Invia"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:733
+#: src/features/Conversation/ConversationCanvas2.tsx:865
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Fatto"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:750
+#: src/features/Conversation/ConversationCanvas2.tsx:883
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Registra Messaggio"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:869
+#: src/features/Conversation/ConversationCanvas2.tsx:1024
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "Hai un saldo basso"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:871
+#: src/features/Conversation/ConversationCanvas2.tsx:1026
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "Ha senso ricaricare il tuo saldo."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:878
+#: src/features/Conversation/ConversationCanvas2.tsx:1033
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Ricarica"

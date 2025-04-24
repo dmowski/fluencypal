@@ -13,10 +13,60 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Goal/GoalQuestions.tsx:80
+#: src/features/Plan/PlanCard.tsx:110
 #. js-lingui-explicit-id
-msgid "Something went wrong. Please try again"
-msgstr "发生了一些错误。请再试一次"
+msgid "Start lesson"
+msgstr "开始课程"
+
+#: src/features/Plan/PlanCard.tsx:119
+#. js-lingui-explicit-id
+msgid "Send 6 messages to complete"
+msgstr "发送6条信息以完成"
+
+#: src/features/Conversation/ConversationPage.tsx:121
+#. js-lingui-explicit-id
+msgid "Error analyzing conversation"
+msgstr "分析对话时出现错误"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:261
+#. js-lingui-explicit-id
+msgid "Review"
+msgstr "回顾"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:277
+#. js-lingui-explicit-id
+msgid "Language level:"
+msgstr "语言水平:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:282
+#. js-lingui-explicit-id
+msgid "What was great:"
+msgstr "什么是伟大的:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:287
+#. js-lingui-explicit-id
+msgid "Areas to improve:"
+msgstr "需要改进的地方："
+
+#: src/features/Conversation/ConversationCanvas2.tsx:306
+#. js-lingui-explicit-id
+msgid "Start new lesson"
+msgstr "开始新课程"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:316
+#. js-lingui-explicit-id
+msgid "Continue conversation"
+msgstr "继续对话"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:894
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "任务完成"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:904
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "打开结果"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:85
@@ -380,13 +430,13 @@ msgid "No conversations yet"
 msgstr "暂无对话"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:269
+#: src/features/Conversation/ConversationCanvas2.tsx:401
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "教师:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:269
+#: src/features/Conversation/ConversationCanvas2.tsx:401
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "您："
@@ -418,7 +468,7 @@ msgstr "你的成就"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
 #: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/Dashboard/PlanDashboardCards.tsx:80
+#: src/features/Dashboard/PlanDashboardCards.tsx:81
 #: src/features/Dashboard/ConversationSelectCard.tsx:191
 #. js-lingui-explicit-id
 msgid "Words"
@@ -669,9 +719,9 @@ msgstr "付款历史："
 
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Conversation/ConversationPage.tsx:188
-#: src/features/Conversation/ConversationPage.tsx:196
-#: src/features/Conversation/ConversationPage.tsx:214
+#: src/features/Conversation/ConversationPage.tsx:255
+#: src/features/Conversation/ConversationPage.tsx:263
+#: src/features/Conversation/ConversationPage.tsx:281
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "加载中..."
@@ -1573,14 +1623,14 @@ msgstr "所有场景"
 #: src/features/Landing/PlanLandingBlock.tsx:287
 #: src/features/Landing/PlanLandingBlock.tsx:496
 #: src/features/Landing/PlanLandingBlock.tsx:625
-#: src/features/Dashboard/PlanDashboardCards.tsx:204
+#: src/features/Dashboard/PlanDashboardCards.tsx:215
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "开始"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:397
 #: src/features/Landing/PlanLandingBlock.tsx:103
-#: src/features/Dashboard/PlanDashboardCards.tsx:79
+#: src/features/Dashboard/PlanDashboardCards.tsx:80
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "角色扮演"
@@ -1594,6 +1644,12 @@ msgstr "显示更多"
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "显示更少"
+
+#: src/features/Plan/PlanCard.tsx:210
+#: src/features/Dashboard/HomeworkCard.tsx:115
+#. js-lingui-explicit-id
+msgid "Continue"
+msgstr "继续"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -1900,14 +1956,14 @@ msgid "Develop formal writing skills for academic success."
 msgstr "为学术成功发展正式写作技巧。"
 
 #: src/features/Landing/PlanLandingBlock.tsx:102
-#: src/features/Dashboard/PlanDashboardCards.tsx:78
+#: src/features/Dashboard/PlanDashboardCards.tsx:79
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "对话"
 
 #: src/features/Landing/PlanLandingBlock.tsx:105
-#: src/features/Dashboard/PlanDashboardCards.tsx:81
+#: src/features/Dashboard/PlanDashboardCards.tsx:82
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "规则"
@@ -2888,6 +2944,11 @@ msgstr "完成中..."
 msgid "Back"
 msgstr "返回"
 
+#: src/features/Goal/GoalQuestions.tsx:80
+#. js-lingui-explicit-id
+msgid "Something went wrong. Please try again"
+msgstr "发生了一些错误。请再试一次"
+
 #: src/features/Goal/GoalQuestions.tsx:136
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please try again."
@@ -3120,19 +3181,19 @@ msgstr "我的"
 msgid "New rule to practice."
 msgstr "新规则以供练习。"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:59
+#: src/features/Dashboard/PlanDashboardCards.tsx:60
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "您确定要删除您的目标吗？此操作无法撤销。"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:126
+#: src/features/Dashboard/PlanDashboardCards.tsx:148
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:761
+#: src/features/Conversation/ConversationCanvas2.tsx:916
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "目标"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:127
+#: src/features/Dashboard/PlanDashboardCards.tsx:149
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "开始您的流利之旅"
@@ -3151,11 +3212,6 @@ msgstr "尚未布置作业。"
 #. js-lingui-explicit-id
 msgid "Start a conversation to get one."
 msgstr "开始对话以获取一个。"
-
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#. js-lingui-explicit-id
-msgid "Continue"
-msgstr "继续"
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
 #. js-lingui-explicit-id
@@ -3225,104 +3281,104 @@ msgstr "获取规则"
 msgid "Expand vocabulary"
 msgstr "扩展词汇"
 
-#: src/features/Dashboard/BrainCard.tsx:128
+#: src/features/Dashboard/BrainCard.tsx:130
 #. js-lingui-explicit-id
 msgid "Connecting to the brain..."
 msgstr "正在连接到大脑..."
 
-#: src/features/Dashboard/BrainCard.tsx:131
+#: src/features/Dashboard/BrainCard.tsx:133
 #. js-lingui-explicit-id
 msgid "Connected..."
 msgstr "已连接..."
 
-#: src/features/Dashboard/BrainCard.tsx:135
+#: src/features/Dashboard/BrainCard.tsx:137
 #. js-lingui-explicit-id
 msgid "Processing existing knowledge in that brain..."
 msgstr "正在处理大脑中的现有知识..."
 
-#: src/features/Dashboard/BrainCard.tsx:139
+#: src/features/Dashboard/BrainCard.tsx:141
 #. js-lingui-explicit-id
 msgid "Thinking about which languages might be good to install..."
 msgstr "正在考虑安装哪些语言可能会更好..."
 
-#: src/features/Dashboard/BrainCard.tsx:141
-#: src/features/Dashboard/BrainCard.tsx:163
+#: src/features/Dashboard/BrainCard.tsx:143
+#: src/features/Dashboard/BrainCard.tsx:165
 #. js-lingui-explicit-id
 msgid "Brain connection failed."
 msgstr "脑连接失败。"
 
-#: src/features/Dashboard/BrainCard.tsx:148
+#: src/features/Dashboard/BrainCard.tsx:150
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "正在做出决定..."
 
-#: src/features/Dashboard/BrainCard.tsx:167
+#: src/features/Dashboard/BrainCard.tsx:169
 #. js-lingui-explicit-id
 msgid "Brain connection successful!"
 msgstr "脑波连接成功！"
 
-#: src/features/Dashboard/BrainCard.tsx:272
+#: src/features/Dashboard/BrainCard.tsx:274
 #. js-lingui-explicit-id
 msgid "Installing..."
 msgstr "正在安装..."
 
-#: src/features/Dashboard/BrainCard.tsx:273
+#: src/features/Dashboard/BrainCard.tsx:275
 #. js-lingui-explicit-id
 msgid "Connection Established"
 msgstr "连接已建立"
 
-#: src/features/Dashboard/BrainCard.tsx:335
+#: src/features/Dashboard/BrainCard.tsx:337
 #. js-lingui-explicit-id
 msgid "Install languages into my brain"
 msgstr "将语言安装到我的大脑中"
 
-#: src/features/Dashboard/BrainCard.tsx:395
+#: src/features/Dashboard/BrainCard.tsx:397
 #. js-lingui-explicit-id
 msgid "Install complete"
 msgstr "安装完成"
 
-#: src/features/Dashboard/BrainCard.tsx:404
+#: src/features/Dashboard/BrainCard.tsx:406
 #. js-lingui-explicit-id
 msgid "Languages installed in your brain:"
 msgstr "安装在您大脑中的语言："
 
-#: src/features/Dashboard/BrainCard.tsx:427
+#: src/features/Dashboard/BrainCard.tsx:429
 #. js-lingui-explicit-id
 msgid "One thing left to do"
 msgstr "还剩一件事要做"
 
-#: src/features/Dashboard/BrainCard.tsx:436
+#: src/features/Dashboard/BrainCard.tsx:438
 #. js-lingui-explicit-id
 msgid "PRACTICE AND HARD WORK"
 msgstr "练习和努力工作"
 
-#: src/features/Dashboard/BrainCard.tsx:446
+#: src/features/Dashboard/BrainCard.tsx:448
 #. js-lingui-explicit-id
 msgid "Happy April 1st!"
 msgstr "四月一日快乐！"
 
-#: src/features/Dashboard/BrainCard.tsx:492
+#: src/features/Dashboard/BrainCard.tsx:494
 #. js-lingui-explicit-id
 msgid "Install:"
 msgstr "安装："
 
-#: src/features/Dashboard/BrainCard.tsx:494
+#: src/features/Dashboard/BrainCard.tsx:496
 #. js-lingui-explicit-id
 msgid "Connecting..."
 msgstr "正在连接..."
 
-#: src/features/Dashboard/BrainCard.tsx:495
+#: src/features/Dashboard/BrainCard.tsx:497
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
 msgstr "启动脑连接"
 
-#: src/features/Dashboard/BrainCard.tsx:533
+#: src/features/Dashboard/BrainCard.tsx:535
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
 msgstr "准备大脑"
 
-#: src/features/Dashboard/BrainCard.tsx:537
-#: src/features/Dashboard/BrainCard.tsx:618
+#: src/features/Dashboard/BrainCard.tsx:539
+#: src/features/Dashboard/BrainCard.tsx:620
 #. js-lingui-explicit-id
 msgid "Upload language skills directly to your brain"
 msgstr "将语言技能直接上传到你的大脑"
@@ -3342,22 +3398,22 @@ msgstr "更少"
 msgid "More"
 msgstr "更多"
 
-#: src/features/Conversation/ConversationPage.tsx:148
+#: src/features/Conversation/ConversationPage.tsx:215
 #. js-lingui-explicit-id
 msgid "Error processing goal"
 msgstr "处理目标时出现错误"
 
-#: src/features/Conversation/ConversationPage.tsx:200
+#: src/features/Conversation/ConversationPage.tsx:267
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "正在加载目标..."
 
-#: src/features/Conversation/ConversationPage.tsx:222
+#: src/features/Conversation/ConversationPage.tsx:289
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "正在创造新词……"
 
-#: src/features/Conversation/ConversationPage.tsx:226
+#: src/features/Conversation/ConversationPage.tsx:293
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "正在制定新规则..."
@@ -3382,113 +3438,116 @@ msgstr "通知已发送至开发团队。对此我们深感抱歉..."
 msgid "Reload page"
 msgstr "重新加载页面"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:348
-#. js-lingui-explicit-id
-msgid "Error during analyzing message"
-msgstr "分析消息时出错"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:402
-#. js-lingui-explicit-id
-msgid "Almost correct"
-msgstr "几乎正确"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:414
-#: src/features/Conversation/ConversationCanvas2.tsx:541
-#: src/features/Conversation/ConversationCanvas2.tsx:548
+#: src/features/Conversation/ConversationCanvas2.tsx:278
+#: src/features/Conversation/ConversationCanvas2.tsx:283
+#: src/features/Conversation/ConversationCanvas2.tsx:288
+#: src/features/Conversation/ConversationCanvas2.tsx:546
+#: src/features/Conversation/ConversationCanvas2.tsx:673
+#: src/features/Conversation/ConversationCanvas2.tsx:680
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "正在分析..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:417
+#: src/features/Conversation/ConversationCanvas2.tsx:480
+#. js-lingui-explicit-id
+msgid "Error during analyzing message"
+msgstr "分析消息时出错"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:534
+#. js-lingui-explicit-id
+msgid "Almost correct"
+msgstr "几乎正确"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:549
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "太棒了！"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:440
+#: src/features/Conversation/ConversationCanvas2.tsx:572
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "您的消息"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:463
-#: src/features/Conversation/ConversationCanvas2.tsx:466
-#: src/features/Conversation/ConversationCanvas2.tsx:539
-#: src/features/Conversation/ConversationCanvas2.tsx:546
+#: src/features/Conversation/ConversationCanvas2.tsx:595
+#: src/features/Conversation/ConversationCanvas2.tsx:598
+#: src/features/Conversation/ConversationCanvas2.tsx:671
+#: src/features/Conversation/ConversationCanvas2.tsx:678
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "转录中..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:500
+#: src/features/Conversation/ConversationCanvas2.tsx:632
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "已更正"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:580
+#: src/features/Conversation/ConversationCanvas2.tsx:712
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "将新词添加到词汇表:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:625
+#: src/features/Conversation/ConversationCanvas2.tsx:757
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "分析中"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:632
+#: src/features/Conversation/ConversationCanvas2.tsx:764
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "准备目标"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:652
+#: src/features/Conversation/ConversationCanvas2.tsx:784
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "目标已创建"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:662
+#: src/features/Conversation/ConversationCanvas2.tsx:794
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "已添加的课程："
 
-#: src/features/Conversation/ConversationCanvas2.tsx:683
+#: src/features/Conversation/ConversationCanvas2.tsx:815
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "开放式计划"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:705
-#: src/features/Conversation/ConversationCanvas2.tsx:775
+#: src/features/Conversation/ConversationCanvas2.tsx:837
+#: src/features/Conversation/ConversationCanvas2.tsx:930
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "重新录制"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:719
+#: src/features/Conversation/ConversationCanvas2.tsx:851
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "按原样发送"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:719
+#: src/features/Conversation/ConversationCanvas2.tsx:851
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "发送"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:733
+#: src/features/Conversation/ConversationCanvas2.tsx:865
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "完成"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:750
+#: src/features/Conversation/ConversationCanvas2.tsx:883
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "记录信息"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:869
+#: src/features/Conversation/ConversationCanvas2.tsx:1024
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "您的余额较低"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:871
+#: src/features/Conversation/ConversationCanvas2.tsx:1026
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "为你的余额充值是明智之举。"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:878
+#: src/features/Conversation/ConversationCanvas2.tsx:1033
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "充值"

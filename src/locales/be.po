@@ -13,10 +13,60 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Goal/GoalQuestions.tsx:80
+#: src/features/Plan/PlanCard.tsx:110
 #. js-lingui-explicit-id
-msgid "Something went wrong. Please try again"
-msgstr "Нешта пайшло не так. Паспрабуйце яшчэ раз"
+msgid "Start lesson"
+msgstr "Пачаць урок"
+
+#: src/features/Plan/PlanCard.tsx:119
+#. js-lingui-explicit-id
+msgid "Send 6 messages to complete"
+msgstr "Адправіце 6 паведамленняў для завяршэння"
+
+#: src/features/Conversation/ConversationPage.tsx:121
+#. js-lingui-explicit-id
+msgid "Error analyzing conversation"
+msgstr "Памылка пры аналізе размовы"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:261
+#. js-lingui-explicit-id
+msgid "Review"
+msgstr "Рагляд"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:277
+#. js-lingui-explicit-id
+msgid "Language level:"
+msgstr "Узровень мовы:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:282
+#. js-lingui-explicit-id
+msgid "What was great:"
+msgstr "Што было выдатна:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:287
+#. js-lingui-explicit-id
+msgid "Areas to improve:"
+msgstr "Галіны для паляпшэння:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:306
+#. js-lingui-explicit-id
+msgid "Start new lesson"
+msgstr "Пачаць новы ўрок"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:316
+#. js-lingui-explicit-id
+msgid "Continue conversation"
+msgstr "Працягваць размову"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:894
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "Місія выканана"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:904
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "Адкрыць вынікі"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:85
@@ -399,13 +449,13 @@ msgid "No conversations yet"
 msgstr "Пакуль што размоў няма"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:269
+#: src/features/Conversation/ConversationCanvas2.tsx:401
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Наставнік:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:269
+#: src/features/Conversation/ConversationCanvas2.tsx:401
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Вы:"
@@ -437,7 +487,7 @@ msgstr "Вашыя дасягненні"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
 #: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/Dashboard/PlanDashboardCards.tsx:80
+#: src/features/Dashboard/PlanDashboardCards.tsx:81
 #: src/features/Dashboard/ConversationSelectCard.tsx:191
 #. js-lingui-explicit-id
 msgid "Words"
@@ -701,9 +751,9 @@ msgstr "Гісторыя плацяжоў:"
 
 #: src/features/Usage/PaymentModal.tsx:629
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Conversation/ConversationPage.tsx:188
-#: src/features/Conversation/ConversationPage.tsx:196
-#: src/features/Conversation/ConversationPage.tsx:214
+#: src/features/Conversation/ConversationPage.tsx:255
+#: src/features/Conversation/ConversationPage.tsx:263
+#: src/features/Conversation/ConversationPage.tsx:281
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Загрузка..."
@@ -1747,14 +1797,14 @@ msgstr "Усе сцэнары"
 #: src/features/Landing/PlanLandingBlock.tsx:287
 #: src/features/Landing/PlanLandingBlock.tsx:496
 #: src/features/Landing/PlanLandingBlock.tsx:625
-#: src/features/Dashboard/PlanDashboardCards.tsx:204
+#: src/features/Dashboard/PlanDashboardCards.tsx:215
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Пачаць"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:397
 #: src/features/Landing/PlanLandingBlock.tsx:103
-#: src/features/Dashboard/PlanDashboardCards.tsx:79
+#: src/features/Dashboard/PlanDashboardCards.tsx:80
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Ролевая гра"
@@ -1768,6 +1818,12 @@ msgstr "Паказаць больш"
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Паказаць менш"
+
+#: src/features/Plan/PlanCard.tsx:210
+#: src/features/Dashboard/HomeworkCard.tsx:115
+#. js-lingui-explicit-id
+msgid "Continue"
+msgstr "Працягваць"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -2078,14 +2134,14 @@ msgid "Develop formal writing skills for academic success."
 msgstr "Развіваць навыкі афіцыйнага пісьма для акадэмічнага успеху."
 
 #: src/features/Landing/PlanLandingBlock.tsx:102
-#: src/features/Dashboard/PlanDashboardCards.tsx:78
+#: src/features/Dashboard/PlanDashboardCards.tsx:79
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Размова"
 
 #: src/features/Landing/PlanLandingBlock.tsx:105
-#: src/features/Dashboard/PlanDashboardCards.tsx:81
+#: src/features/Dashboard/PlanDashboardCards.tsx:82
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Правіла"
@@ -3150,6 +3206,11 @@ msgstr "Завяршэнне..."
 msgid "Back"
 msgstr "Назад"
 
+#: src/features/Goal/GoalQuestions.tsx:80
+#. js-lingui-explicit-id
+msgid "Something went wrong. Please try again"
+msgstr "Нешта пайшло не так. Паспрабуйце яшчэ раз"
+
 #: src/features/Goal/GoalQuestions.tsx:136
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please try again."
@@ -3387,19 +3448,19 @@ msgstr "Мая"
 msgid "New rule to practice."
 msgstr "Новае правіла для практыкі."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:59
+#: src/features/Dashboard/PlanDashboardCards.tsx:60
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Вы ўпэўнены, што хочаце выдаліць сваю мэту? Гэта дзеянне нельга адмяніць."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:126
+#: src/features/Dashboard/PlanDashboardCards.tsx:148
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:761
+#: src/features/Conversation/ConversationCanvas2.tsx:916
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Мэта"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:127
+#: src/features/Dashboard/PlanDashboardCards.tsx:149
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Пачніце свой шлях да валодання"
@@ -3418,11 +3479,6 @@ msgstr "Дамашняе заданне яшчэ не назначанае."
 #. js-lingui-explicit-id
 msgid "Start a conversation to get one."
 msgstr "Пачніце размову, каб атрымаць адну."
-
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#. js-lingui-explicit-id
-msgid "Continue"
-msgstr "Працягваць"
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
 #. js-lingui-explicit-id
@@ -3492,104 +3548,104 @@ msgstr "Атрымаць правіла"
 msgid "Expand vocabulary"
 msgstr "Расшырыць слоўнік"
 
-#: src/features/Dashboard/BrainCard.tsx:128
+#: src/features/Dashboard/BrainCard.tsx:130
 #. js-lingui-explicit-id
 msgid "Connecting to the brain..."
 msgstr "Падключэнне да мозгу..."
 
-#: src/features/Dashboard/BrainCard.tsx:131
+#: src/features/Dashboard/BrainCard.tsx:133
 #. js-lingui-explicit-id
 msgid "Connected..."
 msgstr "Падлучана..."
 
-#: src/features/Dashboard/BrainCard.tsx:135
+#: src/features/Dashboard/BrainCard.tsx:137
 #. js-lingui-explicit-id
 msgid "Processing existing knowledge in that brain..."
 msgstr "Апрацоўка існуючых ведаў у гэтым мозгу..."
 
-#: src/features/Dashboard/BrainCard.tsx:139
+#: src/features/Dashboard/BrainCard.tsx:141
 #. js-lingui-explicit-id
 msgid "Thinking about which languages might be good to install..."
 msgstr "Разважаючы, якія мовы маглі б выкарыстоўвацца добра для ўсталявання..."
 
-#: src/features/Dashboard/BrainCard.tsx:141
-#: src/features/Dashboard/BrainCard.tsx:163
+#: src/features/Dashboard/BrainCard.tsx:143
+#: src/features/Dashboard/BrainCard.tsx:165
 #. js-lingui-explicit-id
 msgid "Brain connection failed."
 msgstr "З'яўляецца памылкай злучэння з мозгам."
 
-#: src/features/Dashboard/BrainCard.tsx:148
+#: src/features/Dashboard/BrainCard.tsx:150
 #. js-lingui-explicit-id
 msgid "Finalizing decision ..."
 msgstr "Прыняцце рашэнне ..."
 
-#: src/features/Dashboard/BrainCard.tsx:167
+#: src/features/Dashboard/BrainCard.tsx:169
 #. js-lingui-explicit-id
 msgid "Brain connection successful!"
 msgstr "Паспяховае падлучэнне да мозгу!"
 
-#: src/features/Dashboard/BrainCard.tsx:272
+#: src/features/Dashboard/BrainCard.tsx:274
 #. js-lingui-explicit-id
 msgid "Installing..."
 msgstr "Усталёўка..."
 
-#: src/features/Dashboard/BrainCard.tsx:273
+#: src/features/Dashboard/BrainCard.tsx:275
 #. js-lingui-explicit-id
 msgid "Connection Established"
 msgstr "Створана злучэнне"
 
-#: src/features/Dashboard/BrainCard.tsx:335
+#: src/features/Dashboard/BrainCard.tsx:337
 #. js-lingui-explicit-id
 msgid "Install languages into my brain"
 msgstr "Устанавіць мовы ў мой мозг"
 
-#: src/features/Dashboard/BrainCard.tsx:395
+#: src/features/Dashboard/BrainCard.tsx:397
 #. js-lingui-explicit-id
 msgid "Install complete"
 msgstr "Усталёўка завершана"
 
-#: src/features/Dashboard/BrainCard.tsx:404
+#: src/features/Dashboard/BrainCard.tsx:406
 #. js-lingui-explicit-id
 msgid "Languages installed in your brain:"
 msgstr "Мовы, усталяваныя ў вашым мозгу:"
 
-#: src/features/Dashboard/BrainCard.tsx:427
+#: src/features/Dashboard/BrainCard.tsx:429
 #. js-lingui-explicit-id
 msgid "One thing left to do"
 msgstr "Застаецца адно, што трэба зрабіць"
 
-#: src/features/Dashboard/BrainCard.tsx:436
+#: src/features/Dashboard/BrainCard.tsx:438
 #. js-lingui-explicit-id
 msgid "PRACTICE AND HARD WORK"
 msgstr "ПРАКТЫКА І ЦЯЖКАЯ ПРАЦА"
 
-#: src/features/Dashboard/BrainCard.tsx:446
+#: src/features/Dashboard/BrainCard.tsx:448
 #. js-lingui-explicit-id
 msgid "Happy April 1st!"
 msgstr "З Днём 1 красавіка!"
 
-#: src/features/Dashboard/BrainCard.tsx:492
+#: src/features/Dashboard/BrainCard.tsx:494
 #. js-lingui-explicit-id
 msgid "Install:"
 msgstr "Усталяваць:"
 
-#: src/features/Dashboard/BrainCard.tsx:494
+#: src/features/Dashboard/BrainCard.tsx:496
 #. js-lingui-explicit-id
 msgid "Connecting..."
 msgstr "Падключэнне..."
 
-#: src/features/Dashboard/BrainCard.tsx:495
+#: src/features/Dashboard/BrainCard.tsx:497
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
 msgstr "Ініцыялізаваць злучэнне з мазгом"
 
-#: src/features/Dashboard/BrainCard.tsx:533
+#: src/features/Dashboard/BrainCard.tsx:535
 #. js-lingui-explicit-id
 msgid "Preparing the brain"
 msgstr "Падрыхтоўка мозга"
 
-#: src/features/Dashboard/BrainCard.tsx:537
-#: src/features/Dashboard/BrainCard.tsx:618
+#: src/features/Dashboard/BrainCard.tsx:539
+#: src/features/Dashboard/BrainCard.tsx:620
 #. js-lingui-explicit-id
 msgid "Upload language skills directly to your brain"
 msgstr "Загрузіце веданні мовы напрыцямую ў свой мозг"
@@ -3609,22 +3665,22 @@ msgstr "Менш"
 msgid "More"
 msgstr "Болей"
 
-#: src/features/Conversation/ConversationPage.tsx:148
+#: src/features/Conversation/ConversationPage.tsx:215
 #. js-lingui-explicit-id
 msgid "Error processing goal"
 msgstr "Памылка пры апрацоўцы мэты"
 
-#: src/features/Conversation/ConversationPage.tsx:200
+#: src/features/Conversation/ConversationPage.tsx:267
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Загрузка мэты..."
 
-#: src/features/Conversation/ConversationPage.tsx:222
+#: src/features/Conversation/ConversationPage.tsx:289
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Стварэнне новых слоў..."
 
-#: src/features/Conversation/ConversationPage.tsx:226
+#: src/features/Conversation/ConversationPage.tsx:293
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Стварэнне новага правіла..."
@@ -3649,113 +3705,116 @@ msgstr "Абвешчанне было адпраўлена ​​каманде 
 msgid "Reload page"
 msgstr "Перазагрузіць старонку"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:348
-#. js-lingui-explicit-id
-msgid "Error during analyzing message"
-msgstr "Памылка пры аналізе паведамлення"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:402
-#. js-lingui-explicit-id
-msgid "Almost correct"
-msgstr "Прачы папраўна"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:414
-#: src/features/Conversation/ConversationCanvas2.tsx:541
-#: src/features/Conversation/ConversationCanvas2.tsx:548
+#: src/features/Conversation/ConversationCanvas2.tsx:278
+#: src/features/Conversation/ConversationCanvas2.tsx:283
+#: src/features/Conversation/ConversationCanvas2.tsx:288
+#: src/features/Conversation/ConversationCanvas2.tsx:546
+#: src/features/Conversation/ConversationCanvas2.tsx:673
+#: src/features/Conversation/ConversationCanvas2.tsx:680
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Аналізуецца..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:417
+#: src/features/Conversation/ConversationCanvas2.tsx:480
+#. js-lingui-explicit-id
+msgid "Error during analyzing message"
+msgstr "Памылка пры аналізе паведамлення"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:534
+#. js-lingui-explicit-id
+msgid "Almost correct"
+msgstr "Прачы папраўна"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:549
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Выдатна!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:440
+#: src/features/Conversation/ConversationCanvas2.tsx:572
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Ваша паведамленне"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:463
-#: src/features/Conversation/ConversationCanvas2.tsx:466
-#: src/features/Conversation/ConversationCanvas2.tsx:539
-#: src/features/Conversation/ConversationCanvas2.tsx:546
+#: src/features/Conversation/ConversationCanvas2.tsx:595
+#: src/features/Conversation/ConversationCanvas2.tsx:598
+#: src/features/Conversation/ConversationCanvas2.tsx:671
+#: src/features/Conversation/ConversationCanvas2.tsx:678
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Перакладаецца..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:500
+#: src/features/Conversation/ConversationCanvas2.tsx:632
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Выпраўлена"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:580
+#: src/features/Conversation/ConversationCanvas2.tsx:712
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "Новыя словы ў слоўнік:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:625
+#: src/features/Conversation/ConversationCanvas2.tsx:757
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Аналіз"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:632
+#: src/features/Conversation/ConversationCanvas2.tsx:764
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "Падрыхтоўка Мэты"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:652
+#: src/features/Conversation/ConversationCanvas2.tsx:784
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "Мэта створана"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:662
+#: src/features/Conversation/ConversationCanvas2.tsx:794
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "Дададзеныя урокі:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:683
+#: src/features/Conversation/ConversationCanvas2.tsx:815
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "Адкрыты план"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:705
-#: src/features/Conversation/ConversationCanvas2.tsx:775
+#: src/features/Conversation/ConversationCanvas2.tsx:837
+#: src/features/Conversation/ConversationCanvas2.tsx:930
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Перазапісаць"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:719
+#: src/features/Conversation/ConversationCanvas2.tsx:851
 #. js-lingui-explicit-id
 msgid "Send it as is"
 msgstr "Адправіце яго як ёсць"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:719
+#: src/features/Conversation/ConversationCanvas2.tsx:851
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Адправіць"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:733
+#: src/features/Conversation/ConversationCanvas2.tsx:865
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Выканана"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:750
+#: src/features/Conversation/ConversationCanvas2.tsx:883
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Запісаць паведамленне"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:869
+#: src/features/Conversation/ConversationCanvas2.tsx:1024
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "У вас мало сродкаў"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:871
+#: src/features/Conversation/ConversationCanvas2.tsx:1026
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "Мае сэнс папоўніць свой баланс."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:878
+#: src/features/Conversation/ConversationCanvas2.tsx:1033
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Папаўніць"
