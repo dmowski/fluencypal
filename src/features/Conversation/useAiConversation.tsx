@@ -197,7 +197,8 @@ function useProvideAiConversation(): AiConversationContextType {
       }
     }
 
-    if (conversation.length === 4 && goalInfo) {
+    const usersMessagesCount = conversation.filter((message) => !message.isBot).length;
+    if (usersMessagesCount === 6 && goalInfo) {
       plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
     }
 
