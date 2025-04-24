@@ -18,7 +18,7 @@ import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useLingui } from "@lingui/react";
 import { useSound } from "../Audio/useSound";
 import { GoalPlan } from "../Plan/types";
-import { GradingProgressBar } from "../Dashboard/BrainCard";
+import { GradingProgressBar } from "../uiKit/Progress/GradingProgressBar";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -62,6 +62,7 @@ interface ConversationCanvasProps {
   isSavingGoal: boolean;
   toggleVolume: (isVolumeOn: boolean) => void;
   isOnboarding?: boolean;
+  isShowMessageProgress?: boolean;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isOnboarding,
@@ -91,6 +92,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   goalSettingProgress,
   isSavingGoal,
   toggleVolume,
+  isShowMessageProgress,
 }) => {
   const { i18n } = useLingui();
 
@@ -210,23 +212,27 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   return (
     <Stack sx={{ gap: "40px" }}>
-      <Stack
-        sx={{
-          zIndex: 100,
-          width: "100%",
-          height: "20px",
-          padding: "10px 20px 0 20px",
-          boxSizing: "border-box",
-          backgroundColor: "rgba(20, 28, 40, 1)",
-          position: "fixed",
-          top: "60px",
-          "@media (max-width: 600px)": {
-            top: "0px",
-          },
-        }}
-      >
-        <GradingProgressBar value={Math.min((conversation.length / 16) * 100, 100)} label="" />
-      </Stack>
+      {isShowMessageProgress && (
+        <Stack
+          sx={{
+            zIndex: 100,
+            width: "100%",
+            height: "max-content",
+            padding: "0px 0px",
+            boxSizing: "border-box",
+            backgroundColor: "rgba(20, 28, 40, 0.9)",
+            backdropFilter: "blur(10px)",
+
+            position: "fixed",
+            top: "50px",
+            "@media (max-width: 600px)": {
+              top: "0px",
+            },
+          }}
+        >
+          <GradingProgressBar value={Math.min((conversation.length / 16) * 100, 100)} />
+        </Stack>
+      )}
       <Stack
         sx={{
           width: "100%",

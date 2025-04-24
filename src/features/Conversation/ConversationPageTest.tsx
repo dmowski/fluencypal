@@ -189,6 +189,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         confirmGoal={async () => {}}
         goalSettingProgress={0}
         isSavingGoal={false}
+        isShowMessageProgress={true}
       />
     </Stack>
   );
