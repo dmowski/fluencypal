@@ -25,7 +25,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   const [testMessage, setTestMessage] = useState<ChatMessage[]>([
     {
       isBot: true,
-      text: `Hello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\n`,
+      text: `Hello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\n`,
       id: "1",
     },
     {
@@ -187,7 +187,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         isProcessingGoal={false}
         temporaryGoal={testGoal}
         confirmGoal={async () => {}}
-        goalSettingProgress={34}
+        goalSettingProgress={0}
         isSavingGoal={false}
       />
     </Stack>

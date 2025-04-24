@@ -51,14 +51,16 @@ export const GradingProgressBar: React.FC<GradingProgressBarProps> = ({
         boxSizing: "border-box",
       }}
     >
-      <Stack direction="row" justifyContent="space-between" mb={0.5}>
-        <Typography variant="body2" color="text.secondary">
-          {label}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {Math.round(value)}%
-        </Typography>
-      </Stack>
+      {label && (
+        <Stack direction="row" justifyContent="space-between" mb={0.5}>
+          <Typography variant="body2" color="text.secondary">
+            {label}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {Math.round(value)}%
+          </Typography>
+        </Stack>
+      )}
       <GradientLinearProgress variant="determinate" value={value} />
     </Box>
   );

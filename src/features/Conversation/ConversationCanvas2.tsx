@@ -18,6 +18,7 @@ import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useLingui } from "@lingui/react";
 import { useSound } from "../Audio/useSound";
 import { GoalPlan } from "../Plan/types";
+import { GradingProgressBar } from "../Dashboard/BrainCard";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -209,6 +210,23 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   return (
     <Stack sx={{ gap: "40px" }}>
+      <Stack
+        sx={{
+          zIndex: 100,
+          width: "100%",
+          height: "20px",
+          padding: "10px 20px 0 20px",
+          boxSizing: "border-box",
+          backgroundColor: "rgba(20, 28, 40, 1)",
+          position: "fixed",
+          top: "60px",
+          "@media (max-width: 600px)": {
+            top: "0px",
+          },
+        }}
+      >
+        <GradingProgressBar value={Math.min((conversation.length / 16) * 100, 100)} label="" />
+      </Stack>
       <Stack
         sx={{
           width: "100%",
