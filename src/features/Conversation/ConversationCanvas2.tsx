@@ -210,6 +210,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     };
   }, [conversation, isAnalyzingResponse, isRecording]);
 
+  const countOfUserMessagesToProgress = 6;
+  const actualCountOfUserMessages = conversation.filter((message) => !message.isBot).length;
+  const progress = Math.min((actualCountOfUserMessages / countOfUserMessagesToProgress) * 100, 100);
+
+  const isCompletedLesson =
+    !!isShowMessageProgress && actualCountOfUserMessages >= countOfUserMessagesToProgress;
+  // TODO: if isCompletedLesson - show title/button "Mission Complete" [Open results]
+
   return (
     <Stack sx={{ gap: "40px" }}>
       {isShowMessageProgress && (
@@ -230,7 +238,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             },
           }}
         >
-          <GradingProgressBar value={Math.min((conversation.length / 16) * 100, 100)} />
+          <GradingProgressBar value={progress} />
         </Stack>
       )}
       <Stack
