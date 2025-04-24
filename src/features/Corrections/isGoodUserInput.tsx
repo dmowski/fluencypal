@@ -9,7 +9,7 @@ const sanitizeString = (str: string) => {
 
   sanitizedString = sanitizedString.replace(/[\u2018\u2019]/g, "");
   sanitizedString = sanitizedString.replace(/[\?\!\,\.\-]/g, "");
-  sanitizedString = sanitizedString.replace(/\s+/g, " ");
+  sanitizedString = sanitizedString.replace(/\s+/g, "");
 
   return sanitizedString;
 };

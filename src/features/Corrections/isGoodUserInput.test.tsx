@@ -30,4 +30,13 @@ describe("Check is isGoodUserInput", () => {
       })
     ).toBe(true);
   });
+
+  it("Almost equal with symbols with spaces", () => {
+    expect(
+      isGoodUserInput({
+        input: "Yeah, I feel I can do it,thanks.",
+        correctedMessage: "Yeah, I feel I can do it, thanks.",
+      })
+    ).toBe(true);
+  });
 });
