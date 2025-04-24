@@ -154,6 +154,9 @@ export const PlanCard = ({
           color: "#fff",
           ":hover": {
             backgroundColor: isActive ? "rgba(13, 220, 196, 0.2)" : "rgba(13, 220, 196, 0.1)",
+            "@media (max-width: 450px)": {
+              backgroundColor: isActive ? "rgba(13, 220, 196, 0.1)" : "rgba(13, 220, 196, 0.02)",
+            },
           },
         }}
       >
