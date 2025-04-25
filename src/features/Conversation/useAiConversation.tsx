@@ -432,7 +432,7 @@ Start the conversation with message like this: ${startFirstMessage}
       return {
         ...baseConfig,
         voice: "shimmer",
-        model: model,
+        model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Shimmer". It's first onboarding conversation with student.
 Do not teach or explain rules—just talk. You can use user's languages as well (${usersSystemLanguages.join(", ")})
 You should be friendly and engaging.
