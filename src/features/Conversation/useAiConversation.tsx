@@ -29,8 +29,7 @@ import { GoalElementInfo, GoalPlan } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
 import { messagesToComplete } from "./data";
-
-const aiModal = MODELS.REALTIME_CONVERSATION;
+import { isDev } from "../Analytics/isDev";
 
 interface StartConversationProps {
   mode: ConversationMode;
@@ -102,6 +101,13 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isProcessingGoal, setIsProcessingGoal] = useState(false);
   const [temporaryGoal, setTemporaryGoal] = useState<GoalPlan | null>(null);
   const [isSavingGoal, setIsSavingGoal] = useState(false);
+
+  const aiModal = useMemo(
+    () => (isDev() ? MODELS.SMALL_CONVERSATION : MODELS.REALTIME_CONVERSATION),
+    []
+  );
+
+  console.log("aiModal", aiModal);
 
   const [confirmStartConversationModal, setConfirmStartConversationModal] =
     useState<StartConversationProps | null>(null);
@@ -426,7 +432,7 @@ Start the conversation with message like this: ${startFirstMessage}
       return {
         ...baseConfig,
         voice: "shimmer",
-        model: MODELS.SMALL_CONVERSATION,
+        model: model,
         initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Shimmer". It's first onboarding conversation with student.
 Do not teach or explain rules—just talk. You can use user's languages as well (${usersSystemLanguages.join(", ")})
 You should be friendly and engaging.
@@ -520,7 +526,7 @@ Start the conversation with exactly this message: ${startFirstMessage} Don't add
     if (mode === "role-play") {
       return {
         ...baseConfig,
-        model: MODELS.SMALL_CONVERSATION,
+        model: aiModal,
         initInstruction: ``,
       };
     }
