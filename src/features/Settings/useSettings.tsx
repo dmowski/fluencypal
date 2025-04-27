@@ -50,6 +50,7 @@ function useProvideSettings(): SettingsContextType {
   };
 
   const initUserSettings = async () => {
+    console.log("initUserSettings");
     if (!userId || !userSettingsDoc) {
       return;
     }

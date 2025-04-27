@@ -4,6 +4,7 @@ import { isDev } from "./isDev";
 
 export const confirmGtag = async () => {
   if (isDev()) {
+    console.log("Skipping gtag in dev mode");
     return;
   }
   const gtag = (window as any).gtag;

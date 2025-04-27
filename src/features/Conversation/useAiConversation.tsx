@@ -107,8 +107,6 @@ function useProvideAiConversation(): AiConversationContextType {
     []
   );
 
-  console.log("aiModal", aiModal);
-
   const [confirmStartConversationModal, setConfirmStartConversationModal] =
     useState<StartConversationProps | null>(null);
 
