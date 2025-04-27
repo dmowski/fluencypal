@@ -13,4 +13,4 @@ export const conversationModeLabel: Record<ConversationMode, string> = {
   "goal-talk": "Goal Talk",
 };
 
-export const messagesToComplete = 10;
+export const messagesToComplete = 6;

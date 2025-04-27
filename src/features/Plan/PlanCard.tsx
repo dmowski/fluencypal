@@ -116,7 +116,7 @@ export const PlanCard = ({
                 opacity: 0.7,
               }}
             >
-              {i18n._(`Send 10 messages to complete`)}
+              {i18n._(`Send 6 messages to complete`)}
             </Typography>
           </Stack>
         </CustomModal>

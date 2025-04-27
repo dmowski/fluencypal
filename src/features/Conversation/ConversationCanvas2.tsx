@@ -219,7 +219,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   }, [conversation, isAnalyzingResponse, isRecording]);
 
   const actualCountOfUserMessages = conversation.filter((message) => !message.isBot).length;
-  const progress = Math.min((actualCountOfUserMessages / messagesToComplete) * 100, 100);
+  const progress = Math.max(
+    4,
+    Math.min((actualCountOfUserMessages / messagesToComplete) * 100, 100)
+  );
 
   const [isShowAnalyzeConversationModal, setIsShowAnalyzeConversationModal] = useState(false);
   const [isConversationContinueAfterAnalyze, setIsConversationContinueAfterAnalyze] =
