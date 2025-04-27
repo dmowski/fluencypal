@@ -823,13 +823,27 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       </Stack>
                     )}
 
+                    {transcriptMessage && !isRecording && !isAnalyzingResponse && (
+                      <Button
+                        startIcon={<ArrowUp />}
+                        size="large"
+                        variant={"contained"}
+                        sx={{
+                          minWidth: "200px",
+                        }}
+                        onClick={async () => addUserMessage(transcriptMessage)}
+                      >
+                        {i18n._("Send")}
+                      </Button>
+                    )}
+
                     {transcriptMessage &&
                       !isRecording &&
                       !isAnalyzingResponse &&
                       isNeedToShowCorrection && (
                         <Button
                           size="large"
-                          variant="contained"
+                          variant="outlined"
                           startIcon={<Mic />}
                           onClick={async () => await startRecording()}
                           sx={{
@@ -839,20 +853,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                           {i18n._("Re-record")}
                         </Button>
                       )}
-
-                    {transcriptMessage && !isRecording && !isAnalyzingResponse && (
-                      <Button
-                        startIcon={<ArrowUp />}
-                        size="large"
-                        variant={isNeedToShowCorrection ? "text" : "contained"}
-                        sx={{
-                          minWidth: isNeedToShowCorrection ? "auto" : "200px",
-                        }}
-                        onClick={async () => addUserMessage(transcriptMessage)}
-                      >
-                        {isNeedToShowCorrection ? i18n._("Send it as is") : i18n._("Send")}
-                      </Button>
-                    )}
 
                     {isRecording && !isAnalyzingResponse && (
                       <Button
