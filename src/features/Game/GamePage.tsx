@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { useGame } from "./useGame";
 
 export const GamePage = () => {
@@ -43,6 +43,43 @@ export const GamePage = () => {
                 <Typography variant="caption">
                   {stat.username}: {stat.points} p
                 </Typography>
+              </Stack>
+            );
+          })}
+        </Stack>
+        <Button
+          variant="contained"
+          onClick={game.generateQuestions}
+          disabled={game.loadingQuestions}
+        >
+          {game.loadingQuestions ? `Loading` : `Play`}
+        </Button>
+
+        <Stack
+          sx={{
+            gap: "20px",
+          }}
+        >
+          <Typography variant="caption">Questions:</Typography>
+
+          {game.questions.map((question, index) => {
+            return (
+              <Stack key={index}>
+                <Typography>Question - {question.question}</Typography>
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    gap: "10px",
+                  }}
+                >
+                  {question.options.map((answer, index) => {
+                    return (
+                      <Stack key={index} sx={{}}>
+                        <Button variant="outlined">{answer}</Button>
+                      </Stack>
+                    );
+                  })}
+                </Stack>
               </Stack>
             );
           })}

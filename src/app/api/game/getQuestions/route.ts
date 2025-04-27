@@ -4,14 +4,14 @@ import { GetGameQuestionsRequest } from "../types";
 import { generateRandomQuestions } from "./generateRandomQuestions";
 import { setQuestion } from "./getQuestion";
 
-export async function GET(request: Request) {
+export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
 
   const fullUserInfo = await getUserInfo(userInfo.uid);
   const requestData = (await request.json()) as GetGameQuestionsRequest;
   const aiUserInfo = await getUserAiInfo(userInfo.uid);
 
-  const nativeLanguage = requestData.nativeLanguage || "en";
+  const nativeLanguage = requestData.nativeLanguageCode;
   const learningLanguage = fullUserInfo.languageCode || "en";
   const userInfoRecords = aiUserInfo?.records || [];
 

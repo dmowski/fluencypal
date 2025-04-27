@@ -18,11 +18,12 @@ export const generateRandomQuestions = async ({
   const questions: GameQuestionFull[] = [];
   const shortQuestions: GameQuestion[] = [];
 
-  for (let i = 0; i < 100; i++) {
+  // TODO: Generate questions with AI
+  for (let i = 0; i < 2; i++) {
     const shortQuestion: GameQuestion = {
       id: `${Date.now()}_${i}`,
       type: i % 2 === 0 ? "translate" : "sentence",
-      question: "",
+      question: "What is your name?",
       options: ["Hello", "Hi", "Hey" + i, "Howdy"],
     };
 
@@ -33,6 +34,8 @@ export const generateRandomQuestions = async ({
       isAnsweredCorrectly: false,
       correctAnswer: "Hey" + i,
     };
+    questions.push(question);
+    shortQuestions.push(shortQuestion);
   }
 
   return {
