@@ -16,9 +16,14 @@ export interface GameQuestionFull extends GameQuestion {
 }
 
 export interface GameProfile {
-  userName: string;
+  username: string;
   avatarUrl: string;
 }
 
 // [UserName]: points
 export type GameUsersPoints = Record<string, number>;
+
+export interface UsersStat {
+  username: string;
+  points: number;
+}

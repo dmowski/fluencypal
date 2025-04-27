@@ -1,4 +1,4 @@
-import { GameProfile, GameQuestion, GameUsersPoints } from "@/features/Game/types";
+import { GameProfile, GameQuestion, GameUsersPoints, UsersStat } from "@/features/Game/types";
 import { GetGameQuestionsRequest, SubmitAnswerRequest, SubmitAnswerResponse } from "./types";
 
 export const getMyProfileRequest = async (authKey: string) => {
@@ -17,6 +17,26 @@ export const getUserPointsRequest = async () => {
   const response = await fetch(`/api/game/getStats`);
   const data = (await response.json()) as GameUsersPoints;
   return data;
+};
+
+export const getSortedStats = async () => {
+  const userPoints = await getUserPointsRequest();
+  const userNames = Object.keys(userPoints);
+
+  const userStats = userNames
+    .sort((a, b) => {
+      const pointsA = userPoints[a];
+      const pointsB = userPoints[b];
+      return pointsB - pointsA;
+    })
+    .map((username) => {
+      const stat: UsersStat = {
+        username,
+        points: userPoints[username],
+      };
+      return stat;
+    });
+  return userStats;
 };
 
 export const getGameQuestionsRequest = async (

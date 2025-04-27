@@ -1,6 +1,7 @@
 import { validateAuthToken } from "../../config/firebase";
 import { getQuestionById, setQuestion } from "../getQuestions/getQuestion";
 import { getGameUsersPoints, increaseUserPoints } from "../getStats/resources";
+import { getGameProfile } from "../profile/getGameProfile";
 import { SubmitAnswerRequest, SubmitAnswerResponse } from "../types";
 
 export async function POST(request: Request) {
@@ -25,10 +26,13 @@ export async function POST(request: Request) {
   const isCorrect = question?.correctAnswer === data.answer;
 
   if (isCorrect) {
-    await increaseUserPoints({
-      userId: userInfo.uid,
-      points: 1,
-    });
+    const gameProfile = await getGameProfile(userInfo.uid);
+    if (gameProfile) {
+      await increaseUserPoints({
+        username: gameProfile.username,
+        points: 1,
+      });
+    }
   }
 
   setQuestion({

@@ -1,25 +1,49 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX } from "react";
-import { useSettings } from "../Settings/useSettings";
-import { TextAiModel } from "@/common/ai";
-import { useUsage } from "../Usage/useUsage";
-import { getDataFromCache, setDataToCache } from "@/libs/localStorageCache";
+import { createContext, useContext, ReactNode, JSX, useState, useEffect } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { SupportedLanguage } from "@/features/Lang/lang";
+
+import { GameProfile, UsersStat } from "./types";
+import { getMyProfileRequest, getSortedStats } from "@/app/api/game/gameRequests";
 
 interface GameContextType {
-  isLoading: boolean;
+  loadingProfile: boolean;
+  stats: UsersStat[];
+  myProfile: GameProfile | null;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
 
 function useProvideGame(): GameContextType {
-  const usage = useUsage();
   const auth = useAuth();
-  const settings = useSettings();
+  const [myProfile, setMyProfile] = useState<GameProfile | null>(null);
+  const [stats, setStats] = useState<UsersStat[]>([]);
+  const [loadingProfile, setLoadingProfile] = useState(true);
+
+  const userId = auth.uid;
+
+  const getMyProfile = async () => {
+    const response = await getMyProfileRequest(await auth.getToken());
+    setMyProfile(response);
+  };
+
+  const getStats = async () => {
+    const userStats = await getSortedStats();
+    setStats(userStats);
+  };
+
+  useEffect(() => {
+    if (userId) {
+      getMyProfile().then(async () => {
+        await getStats();
+        setLoadingProfile(false);
+      });
+    }
+  }, [userId]);
 
   return {
-    isLoading: false,
+    loadingProfile,
+    myProfile,
+    stats,
   };
 }
 

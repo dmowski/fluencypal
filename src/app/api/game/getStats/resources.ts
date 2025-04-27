@@ -1,6 +1,5 @@
 import { GameUsersPoints } from "@/features/Game/types";
 import { getDB } from "../../config/firebase";
-import { FieldValue } from "@google-cloud/firestore";
 
 export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
   const db = getDB();
@@ -13,18 +12,18 @@ export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
 };
 
 interface increaseUserPointsProps {
-  userId: string;
+  username: string;
   points: number;
 }
-export const increaseUserPoints = async ({ userId, points }: increaseUserPointsProps) => {
+export const increaseUserPoints = async ({ username, points }: increaseUserPointsProps) => {
   const db = getDB();
-  const userDoc = await db.collection("game").doc("gamePoints").get();
-  if (!userDoc.exists) {
-    return;
-  }
+
+  const stat = await getGameUsersPoints();
+  const oldValue = stat[username] || 0;
+  const newValue = oldValue + points;
 
   await db
     .collection("game")
     .doc("gamePoints")
-    .set({ [userId]: FieldValue.increment(points) }, { merge: true });
+    .set({ [username]: newValue }, { merge: true });
 };
