@@ -14,11 +14,18 @@ export const confirmGtag = async () => {
   }
 
   try {
-    gtag("event", "conversion", {
-      send_to: "AW-16463260124/wRIsCLS2o7kaENzTpao9",
-      value: 1.0,
-      currency: "PLN",
-    });
+    function gtag_report_conversion() {
+      var callback = function () {};
+      gtag("event", "conversion", {
+        send_to: "AW-16463260124/wRIsCLS2o7kaENzTpao9",
+        value: 1.0,
+        currency: "PLN",
+        event_callback: callback,
+      });
+      return false;
+    }
+
+    gtag_report_conversion();
   } catch (error) {
     console.error("Error sending gtag event:", error);
     Sentry.captureException(error);
