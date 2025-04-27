@@ -35,6 +35,8 @@ import { useNotifications } from "@toolpad/core/useNotifications";
 import { ConfirmConversationModal } from "./ConfirmConversationModal";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useTextAi } from "../Ai/useTextAi";
+import { GamePage } from "../Game/GamePage";
+import { GameProvider } from "../Game/useGame";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -55,6 +57,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const plan = usePlan();
   const searchParams = useSearchParams();
   const goalId = searchParams.get("goalId");
+  const gamePage = searchParams.get("gamePage");
   const userInfo = useAiUserInfo();
   const notifications = useNotifications();
   const textAi = useTextAi();
@@ -265,6 +268,14 @@ About me: ${goalData.description}.`,
 
   if (isProcessingGoal) {
     return <InfoBlockedSection title={i18n._(`Loading Goal...`)} />;
+  }
+
+  if (gamePage) {
+    return (
+      <GameProvider>
+        <GamePage />
+      </GameProvider>
+    );
   }
 
   if (!usage.loading && usage.balanceHours <= 0.01) return <NoBalanceBlock />;
