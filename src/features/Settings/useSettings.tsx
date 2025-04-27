@@ -60,6 +60,7 @@ function useProvideSettings(): SettingsContextType {
       return;
     }
 
+    confirmGtag();
     await setDoc(
       userSettingsDoc,
       {
@@ -69,8 +70,6 @@ function useProvideSettings(): SettingsContextType {
       },
       { merge: true }
     );
-
-    confirmGtag();
   };
 
   useEffect(() => {

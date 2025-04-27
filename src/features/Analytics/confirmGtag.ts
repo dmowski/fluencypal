@@ -14,6 +14,7 @@ export const confirmGtag = async () => {
   }
 
   try {
+    console.log("Sending gtag event");
     function gtag_report_conversion() {
       var callback = function () {};
       gtag("event", "conversion", {
