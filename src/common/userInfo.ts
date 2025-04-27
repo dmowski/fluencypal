@@ -1,12 +1,10 @@
-export type AiUserInfoRecord = string;
-
 export interface FirstBotConversationMessage {
   createdAt: number;
   text: string;
 }
 
 export interface AiUserInfo {
-  records: AiUserInfoRecord[];
+  records: string[];
   createdAt: number;
   updatedAt: number;
   firstBotMessages?: FirstBotConversationMessage[];

@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX } from "react";
 import { ChatMessage } from "@/common/conversation";
-import { AiUserInfo, AiUserInfoRecord, FirstBotConversationMessage } from "@/common/userInfo";
+import { AiUserInfo, FirstBotConversationMessage } from "@/common/userInfo";
 import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/db";
 import { useDocumentData } from "react-firebase-hooks/firestore";
@@ -20,7 +20,7 @@ interface AiUserInfoContextType {
     conversation: ChatMessage[],
     languageCode: SupportedLanguage
   ) => Promise<{
-    records: AiUserInfoRecord[];
+    records: string[];
   }>;
   userInfo: AiUserInfo | null;
   generateFirstMessageText: (
@@ -86,7 +86,7 @@ If not relevant information found, return empty array.`;
     console.log("parsedSummary", { aiUserMessage, parsedSummary });
 
     const oldRecords = userInfo?.records;
-    const newRecords: AiUserInfoRecord[] = parsedSummary;
+    const newRecords: string[] = parsedSummary;
 
     const updatedRecords = oldRecords
       ? await cleanUpSummary([...newRecords, ...oldRecords], lang)

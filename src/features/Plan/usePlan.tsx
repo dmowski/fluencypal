@@ -8,7 +8,6 @@ import { GoalPlan, PlanElement, PlanElementMode } from "./types";
 import { useSettings } from "../Settings/useSettings";
 import { deleteCollectionDocs } from "../Firebase/init";
 import { ChatMessage } from "@/common/conversation";
-import { AiUserInfoRecord } from "@/common/userInfo";
 import { useTextAi } from "../Ai/useTextAi";
 import { useFixJson } from "../Ai/useFixJson";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
@@ -16,7 +15,7 @@ import { GoalQuiz } from "@/app/api/goal/types";
 
 interface GenerateGoalProps {
   conversationMessages: ChatMessage[];
-  userInfo: AiUserInfoRecord[];
+  userInfo: string[];
   languageCode: SupportedLanguage;
   goalQuiz?: GoalQuiz;
 }
