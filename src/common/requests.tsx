@@ -41,9 +41,7 @@ export interface InitBalanceResponse {
 }
 
 export interface TelegramRequest {
-  userEmail: string;
   message: string;
-  languageCode: SupportedLanguage;
 }
 
 export interface TelegramResponse {

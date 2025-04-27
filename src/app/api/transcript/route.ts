@@ -110,8 +110,12 @@ export async function POST(request: Request) {
     await audioStorageFile.makePublic();
     const url = audioStorageFile.publicUrl();
 
+    const firebaseUrl = `https://console.firebase.google.com/u/0/project/dark-lang/firestore/databases/-default-/data/~2Fusers~2F${userInfo.uid}`;
+
     await sentSupportTelegramMessage(
-      `User recorded broken audio file (${actualFileSizeMb}) | ${userInfo.email} | ${url}`
+      `User recorded broken audio file (${actualFileSizeMb}) | ${userInfo.email} | ${url}
+
+[🔥 Firebase 🔥](${firebaseUrl})`
     );
 
     const errorResponse: TranscriptResponse = {

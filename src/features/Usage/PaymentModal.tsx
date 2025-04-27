@@ -65,8 +65,6 @@ export const PaymentModal = () => {
       sendTelegramRequest(
         {
           message: "Event: Payments. Someone trying to do with money, but no email",
-          userEmail: "unknown email",
-          languageCode: settings.languageCode || "en",
         },
         await auth.getToken()
       );
@@ -80,8 +78,6 @@ export const PaymentModal = () => {
     sendTelegramRequest(
       {
         message: message,
-        userEmail: email,
-        languageCode: settings.languageCode || "en",
       },
       await auth.getToken()
     );
