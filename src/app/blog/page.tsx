@@ -6,6 +6,10 @@ import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { BlogsPage } from "@/features/Blog/BlogsPage";
 
+export async function generateStaticParams() {
+  return [];
+}
+
 interface PageProps {
   params: Promise<{ lang: string }>;
   searchParams: Promise<{
