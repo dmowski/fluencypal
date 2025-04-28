@@ -1,3 +1,4 @@
+import { GameUsersPoints } from "@/features/Game/types";
 import { validateAuthToken } from "../../config/firebase";
 import { getQuestionById, setQuestion } from "../getQuestions/getQuestion";
 import { getGameUsersPoints, increaseUserPoints } from "../getStats/resources";
@@ -23,28 +24,30 @@ export async function POST(request: Request) {
     return Response.json(response);
   }
 
+  let updatedStats: GameUsersPoints | null = null;
+
   const isCorrect = question?.correctAnswer === data.answer;
 
-  if (isCorrect) {
+  if (isCorrect && question.answeredAt === null) {
     const gameProfile = await getGameProfile(userInfo.uid);
     if (gameProfile) {
-      await increaseUserPoints({
+      updatedStats = await increaseUserPoints({
         username: gameProfile.username,
         points: 1,
       });
     }
+
+    setQuestion({
+      userId: userInfo.uid,
+      question: {
+        ...question,
+        isAnsweredCorrectly: isCorrect,
+        answeredAt: Date.now(),
+      },
+    });
   }
 
-  setQuestion({
-    userId: userInfo.uid,
-    question: {
-      ...question,
-      isAnsweredCorrectly: isCorrect,
-      answeredAt: Date.now(),
-    },
-  });
-
-  const updatedUserPoints = await getGameUsersPoints();
+  const updatedUserPoints = updatedStats || (await getGameUsersPoints());
   const response: SubmitAnswerResponse = {
     isCorrect,
     updatedUserPoints,

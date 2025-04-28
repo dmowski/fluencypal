@@ -48,6 +48,7 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
         <Stack
           sx={{
             flexDirection: "row",
+            flexWrap: "wrap",
             gap: "10px",
             paddingTop: "10px",
           }}

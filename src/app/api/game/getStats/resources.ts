@@ -26,4 +26,7 @@ export const increaseUserPoints = async ({ username, points }: increaseUserPoint
     .collection("game")
     .doc("gamePoints")
     .set({ [username]: newValue }, { merge: true });
+
+  stat[username] = newValue;
+  return stat;
 };
