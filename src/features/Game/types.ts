@@ -1,3 +1,5 @@
+import { SupportedLanguage } from "../Lang/lang";
+
 export type GameQuestionType = "translate" | "sentence";
 
 export interface GameQuestionShort {
@@ -12,6 +14,7 @@ export interface GameQuestionFull extends GameQuestionShort {
   correctAnswer: string;
   createdAt: number;
   answeredAt: number | null;
+  learningLanguage: SupportedLanguage;
   isAnsweredCorrectly: boolean | null;
 }
 

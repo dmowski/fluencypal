@@ -1,5 +1,6 @@
-import { GameQuestionFull } from "@/features/Game/types";
+import { GameQuestionFull, GameQuestionShort } from "@/features/Game/types";
 import { getDB } from "../../config/firebase";
+import { SupportedLanguage } from "@/features/Lang/lang";
 
 interface getQuestionProps {
   userId: string;
@@ -35,4 +36,36 @@ export const setQuestion = async ({ userId, question }: setQuestionProps) => {
     .collection("gameQuestions")
     .doc(questionId)
     .set(question);
+};
+
+export const getUnansweredQuestions = async (
+  userId: string,
+  learningLanguage: SupportedLanguage
+) => {
+  const db = getDB();
+  const questionsSnapshot = await db
+    .collection("users")
+    .doc(userId)
+    .collection("gameQuestions")
+    .where("answeredAt", "==", null)
+    .get();
+
+  const questions: GameQuestionFull[] = [];
+  questionsSnapshot.forEach((doc) => {
+    const data = doc.data() as GameQuestionFull;
+    if (data.learningLanguage === learningLanguage) {
+      questions.push(data);
+    }
+  });
+  return questions;
+};
+
+export const convertFullQuestionToShort = (question: GameQuestionFull): GameQuestionShort => {
+  const shortQuestion: GameQuestionShort = {
+    id: question.id,
+    type: question.type,
+    question: question.question,
+    options: question.options,
+  };
+  return shortQuestion;
 };

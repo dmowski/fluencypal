@@ -86,7 +86,8 @@ Wolf - волк, стакан, лиса, медведь
       ...shortQuestion,
       createdAt: Date.now(),
       answeredAt: null,
-      isAnsweredCorrectly: false,
+      isAnsweredCorrectly: null,
+      learningLanguage: learningLanguage,
       correctAnswer: correctOption,
     };
     return {
@@ -135,7 +136,8 @@ Do not wrap your answer in any intro or outro.
       ...shortQuestion,
       createdAt: Date.now(),
       answeredAt: null,
-      isAnsweredCorrectly: false,
+      learningLanguage: learningLanguage,
+      isAnsweredCorrectly: null,
       correctAnswer: sentence,
     };
     return {

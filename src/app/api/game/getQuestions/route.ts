@@ -2,7 +2,7 @@ import { validateAuthToken } from "../../config/firebase";
 import { getUserAiInfo, getUserInfo } from "../../user/getUserInfo";
 import { GetGameQuestionsRequest } from "../types";
 import { generateRandomQuestions } from "./generateRandomQuestions";
-import { setQuestion } from "./getQuestion";
+import { convertFullQuestionToShort, getUnansweredQuestions, setQuestion } from "./getQuestion";
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
@@ -14,6 +14,14 @@ export async function POST(request: Request) {
   const nativeLanguage = requestData.nativeLanguageCode;
   const learningLanguage = fullUserInfo.languageCode || "en";
   const userInfoRecords = aiUserInfo?.records || [];
+
+  const unansweredQuestions = await getUnansweredQuestions(userInfo.uid, learningLanguage);
+  if (unansweredQuestions.length > 0) {
+    const responseData = unansweredQuestions.map((question) =>
+      convertFullQuestionToShort(question)
+    );
+    return Response.json(responseData);
+  }
 
   const generatedQuestions = await generateRandomQuestions({
     userInfoRecords,
