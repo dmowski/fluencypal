@@ -14,12 +14,13 @@ export const GamePage = () => {
       <Stack
         sx={{
           width: "100%",
-          maxWidth: "1400px",
+          maxWidth: "1000px",
           padding: "10px",
           paddingTop: "80px",
           boxSizing: "border-box",
-          gap: "70px",
+          gap: "20px",
           position: "relative",
+          alignItems: "flex-start",
           zIndex: 1,
           "@media (max-width: 850px)": {
             paddingLeft: "0",
@@ -31,11 +32,13 @@ export const GamePage = () => {
           Game
         </Typography>
         <Stack>
-          <Typography variant="caption">Username: {game.myProfile?.username || "-"}</Typography>
+          <Typography variant="caption">
+            Your Username: {game.myProfile?.username || "-"}
+          </Typography>
         </Stack>
 
         <Stack>
-          <Typography variant="caption">Stats:</Typography>
+          <Typography>Stats:</Typography>
 
           {game.stats.map((stat, index) => {
             return (
@@ -60,29 +63,54 @@ export const GamePage = () => {
             gap: "20px",
           }}
         >
-          <Typography variant="caption">Questions:</Typography>
+          <Typography>Questions:</Typography>
 
-          {game.questions.map((question, index) => {
-            return (
-              <Stack key={index}>
-                <Typography>Question - {question.question}</Typography>
+          <Stack
+            sx={{
+              gap: "60px",
+            }}
+          >
+            {game.questions.map((question, index) => {
+              return (
                 <Stack
+                  key={index}
                   sx={{
-                    flexDirection: "row",
-                    gap: "10px",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    padding: "20px",
+                    borderRadius: "10px",
+                    gap: "5px",
                   }}
                 >
-                  {question.options.map((answer, index) => {
-                    return (
-                      <Stack key={index} sx={{}}>
-                        <Button variant="outlined">{answer}</Button>
-                      </Stack>
-                    );
-                  })}
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {question.type}
+                  </Typography>
+                  <Typography variant="h4" className="decor-text">
+                    {question.question}
+                  </Typography>
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      gap: "10px",
+                      paddingTop: "10px",
+                    }}
+                  >
+                    {question.options.map((answer, index) => {
+                      return (
+                        <Stack key={index} sx={{}}>
+                          <Button variant="outlined">{answer}</Button>
+                        </Stack>
+                      );
+                    })}
+                  </Stack>
                 </Stack>
-              </Stack>
-            );
-          })}
+              );
+            })}
+          </Stack>
         </Stack>
       </Stack>
     </Stack>
