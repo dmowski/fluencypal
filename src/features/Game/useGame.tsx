@@ -2,7 +2,7 @@
 import { createContext, useContext, ReactNode, JSX, useState, useEffect, useMemo } from "react";
 import { useAuth } from "../Auth/useAuth";
 
-import { GameProfile, GameQuestion, UsersStat } from "./types";
+import { GameProfile, GameQuestionShort, UsersStat } from "./types";
 import {
   getGameQuestionsRequest,
   getMyProfileRequest,
@@ -20,7 +20,7 @@ interface GameContextType {
   myProfile: GameProfile | null;
   loadingQuestions: boolean;
   generateQuestions: () => Promise<void>;
-  questions: GameQuestion[];
+  questions: GameQuestionShort[];
   nativeLanguageCode: SupportedLanguage | null;
   setNativeLanguageCode: (lang: SupportedLanguage) => void;
 }
@@ -34,7 +34,7 @@ function useProvideGame(): GameContextType {
   const [stats, setStats] = useState<UsersStat[]>([]);
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
-  const [questions, setQuestions] = useState<GameQuestion[]>([]);
+  const [questions, setQuestions] = useState<GameQuestionShort[]>([]);
   const pathname = usePathname();
 
   const nativeLanguageCodeFromUrl = useMemo(() => parseLangFromUrl(pathname), [pathname]);
@@ -64,12 +64,14 @@ function useProvideGame(): GameContextType {
   };
 
   const generateQuestions = async () => {
+    setLoadingQuestions(true);
     const generatedQuestions = await getGameQuestionsRequest(
       {
         nativeLanguageCode: nativeLanguageCode || nativeLanguageCodeFromUrl,
       },
       await auth.getToken()
     );
+    setLoadingQuestions(false);
 
     setQuestions(generatedQuestions);
   };

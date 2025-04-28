@@ -22,13 +22,14 @@ export async function POST(request: Request) {
   });
 
   await Promise.all([
-    generatedQuestions.fullAnswers.map(async (question) => {
+    generatedQuestions.map(async (question) => {
       setQuestion({
         userId: userInfo.uid,
-        question: question,
+        question: question.fullQuestions,
       });
     }),
   ]);
 
-  return Response.json(generatedQuestions.shortAnswers);
+  const responseData = generatedQuestions.map((question) => question.shortQuestions);
+  return Response.json(responseData);
 }

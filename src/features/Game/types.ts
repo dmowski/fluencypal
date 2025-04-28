@@ -1,6 +1,6 @@
 export type GameQuestionType = "translate" | "sentence";
 
-export interface GameQuestion {
+export interface GameQuestionShort {
   id: string;
   type: GameQuestionType;
   question: string;
@@ -8,7 +8,7 @@ export interface GameQuestion {
 }
 
 // Private
-export interface GameQuestionFull extends GameQuestion {
+export interface GameQuestionFull extends GameQuestionShort {
   correctAnswer: string;
   createdAt: number;
   answeredAt: number | null;
