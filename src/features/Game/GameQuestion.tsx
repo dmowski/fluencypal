@@ -1,6 +1,8 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { GameQuestionShort } from "./types";
+import { GameQuestionShort, GameQuestionType } from "./types";
 import { useEffect, useState } from "react";
+import { Check, ChevronRight } from "lucide-react";
+import { useLingui } from "@lingui/react";
 
 interface GameQuestionProps {
   question: GameQuestionShort;
@@ -24,6 +26,15 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
     setIsCorrect(isCorrect);
   };
 
+  const { i18n } = useLingui();
+
+  const labelMap: Record<GameQuestionType, string> = {
+    translate: i18n._("Translate"),
+    sentence: i18n._("Craft a sentence"),
+  };
+
+  const gameLabel = labelMap[question.type];
+
   return (
     <Stack
       sx={{
@@ -40,7 +51,7 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
             textTransform: "uppercase",
           }}
         >
-          {question.type}
+          {gameLabel}
         </Typography>
         <Typography variant="h4" className="decor-text">
           {question.question}
@@ -54,11 +65,27 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
           }}
         >
           {question.options.map((answer, index) => {
+            const isCorrectOption =
+              question.type === "translate" && isCorrect && selectedAnswer === answer;
+
+            const isInCorrectOption =
+              question.type === "translate" && isCorrect === false && selectedAnswer === answer;
+
             return (
               <Stack key={index} sx={{}}>
                 <Button
                   variant={selectedAnswer === answer ? "contained" : "outlined"}
-                  onClick={() => setSelectedAnswer(answer)}
+                  startIcon={isCorrectOption ? <Check /> : undefined}
+                  color={isCorrectOption ? "success" : isInCorrectOption ? "error" : "primary"}
+                  onClick={() => {
+                    if (isCorrect !== null) {
+                      return;
+                    }
+                    setSelectedAnswer(answer);
+                    if (question.type === "translate") {
+                      handleAnswerSubmit(answer);
+                    }
+                  }}
                 >
                   {answer}
                 </Button>
@@ -70,9 +97,9 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
 
       {isCorrect !== null ? (
         <>
-          <Typography>{isCorrect ? "Correct!" : "Incorrect!"}</Typography>
           <Button
-            variant="outlined"
+            variant="contained"
+            endIcon={<ChevronRight />}
             onClick={() => {
               setIsCorrect(null);
               onNext();
