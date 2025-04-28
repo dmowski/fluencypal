@@ -34,6 +34,70 @@ const splitSentenceIntoWords = (sentence: string): string[] => {
   return words.map((word) => word.trim());
 };
 
+const generateWordsQuestions = async ({
+  userInfoRecords,
+  nativeLanguage,
+  learningLanguage,
+}: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
+  const userInfo = getUserInfoForAi({
+    userInfoRecords,
+    nativeLanguage,
+    learningLanguage,
+  });
+
+  const { output } = await generateTextWithAi({
+    systemMessage: `You are system that should generate Language learning quiz.
+Be creative and use different words from different parts of user's life.
+Use only ${fullEnglishLanguageName[learningLanguage]} language for generate words.
+
+Generate 10 words. Each word should be generated along with 4 translation options. First of them should be correct.
+Do not wrap your answer in any intro or outro.
+
+Example of your response:
+Dog - пес, кошка, кот, зебра
+Wolf - волк, стакан, лиса, медведь
+
+
+`,
+    userMessage: userInfo,
+    model: "gpt-4o",
+  });
+
+  console.log("Words output");
+  console.log(output);
+
+  const lines = output.split("\n").filter((line) => line.trim().length > 0 && line.includes("-"));
+
+  const allQuestions: QuestionOutput[] = lines.map((line, index) => {
+    const wordAndOptions = line.split("-");
+    const word = wordAndOptions[0]?.trim() || "";
+    const options = wordAndOptions[1]?.split(",").map((option) => option.trim()) || [];
+
+    const correctOption = options?.[0] || "";
+
+    const shortQuestion: GameQuestionShort = {
+      id: `${Date.now()}_word_${index}`,
+      type: "translate",
+      question: word,
+      options: shuffleArray(options),
+    };
+
+    const fullQuestion: GameQuestionFull = {
+      ...shortQuestion,
+      createdAt: Date.now(),
+      answeredAt: null,
+      isAnsweredCorrectly: false,
+      correctAnswer: correctOption,
+    };
+    return {
+      fullQuestions: fullQuestion,
+      shortQuestions: shortQuestion,
+    };
+  });
+
+  return allQuestions;
+};
+
 const generateSentenceQuestions = async ({
   userInfoRecords,
   nativeLanguage,
@@ -102,13 +166,20 @@ export const generateRandomQuestions = async ({
   nativeLanguage,
   learningLanguage,
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
-  const sentenceQuestions = await generateSentenceQuestions({
-    userInfoRecords,
-    nativeLanguage,
-    learningLanguage,
-  });
+  const [sentenceQuestions, wordsQuestions] = await Promise.all([
+    generateSentenceQuestions({
+      userInfoRecords,
+      nativeLanguage,
+      learningLanguage,
+    }),
+    generateWordsQuestions({
+      userInfoRecords,
+      nativeLanguage,
+      learningLanguage,
+    }),
+  ]);
 
-  const questionsOutput: QuestionOutput[] = [...sentenceQuestions];
+  const questionsOutput: QuestionOutput[] = [...sentenceQuestions, ...wordsQuestions];
   const shuffledQuestions = shuffleArray(questionsOutput);
   return shuffledQuestions;
 };
