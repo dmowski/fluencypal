@@ -57,7 +57,6 @@ Do not wrap your answer in any intro or outro.
     model: "gpt-4o",
   });
 
-  console.log("output", output);
   const sentences = splitTextIntoSentences(output).filter((sentence) => sentence.trim().length > 3);
 
   const allQuestions: QuestionOutput[] = sentences.map((sentence, index) => {
