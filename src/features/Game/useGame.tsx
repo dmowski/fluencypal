@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useState, useEffect } from "react";
+import { createContext, useContext, ReactNode, JSX, useState, useEffect, useMemo } from "react";
 import { useAuth } from "../Auth/useAuth";
 
 import { GameProfile, GameQuestion, UsersStat } from "./types";
@@ -10,6 +10,9 @@ import {
 } from "@/app/api/game/gameRequests";
 import { usePathname } from "next/navigation";
 import { parseLangFromUrl } from "../Lang/parseLangFromUrl";
+import { useLocalStorage } from "react-use";
+import { SupportedLanguage } from "../Lang/lang";
+import { useSettings } from "../Settings/useSettings";
 
 interface GameContextType {
   loadingProfile: boolean;
@@ -18,18 +21,35 @@ interface GameContextType {
   loadingQuestions: boolean;
   generateQuestions: () => Promise<void>;
   questions: GameQuestion[];
+  nativeLanguageCode: SupportedLanguage | null;
+  setNativeLanguageCode: (lang: SupportedLanguage) => void;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
 
 function useProvideGame(): GameContextType {
   const auth = useAuth();
+  const settings = useSettings();
   const [myProfile, setMyProfile] = useState<GameProfile | null>(null);
   const [stats, setStats] = useState<UsersStat[]>([]);
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [questions, setQuestions] = useState<GameQuestion[]>([]);
   const pathname = usePathname();
+
+  const nativeLanguageCodeFromUrl = useMemo(() => parseLangFromUrl(pathname), [pathname]);
+  const [nativeLanguageCode, setNativeLanguageCode] =
+    useLocalStorage<SupportedLanguage>("gameNativeLanguage_2");
+
+  useEffect(() => {
+    if (
+      settings.languageCode &&
+      settings.languageCode !== nativeLanguageCodeFromUrl &&
+      !nativeLanguageCode
+    ) {
+      setNativeLanguageCode(nativeLanguageCodeFromUrl);
+    }
+  }, [nativeLanguageCodeFromUrl, settings.languageCode]);
 
   const userId = auth.uid;
 
@@ -44,10 +64,9 @@ function useProvideGame(): GameContextType {
   };
 
   const generateQuestions = async () => {
-    const nativeLanguageCode = parseLangFromUrl(pathname);
     const generatedQuestions = await getGameQuestionsRequest(
       {
-        nativeLanguageCode,
+        nativeLanguageCode: nativeLanguageCode || nativeLanguageCodeFromUrl,
       },
       await auth.getToken()
     );
@@ -71,6 +90,9 @@ function useProvideGame(): GameContextType {
     questions,
     loadingQuestions,
     generateQuestions,
+
+    nativeLanguageCode: nativeLanguageCode || null,
+    setNativeLanguageCode,
   };
 }
 

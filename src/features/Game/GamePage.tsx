@@ -1,5 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useGame } from "./useGame";
+import { LangSelector } from "../Lang/LangSelector";
 
 export const GamePage = () => {
   const game = useGame();
@@ -35,6 +36,19 @@ export const GamePage = () => {
           <Typography variant="caption">
             Your Username: {game.myProfile?.username || "-"}
           </Typography>
+        </Stack>
+
+        <Stack
+          sx={{
+            gap: "5px",
+            width: "250px",
+          }}
+        >
+          <Typography variant="body2">Your Native Language:</Typography>
+          <LangSelector
+            value={game.nativeLanguageCode || "en"}
+            onChange={(lang) => game.setNativeLanguageCode(lang)}
+          />
         </Stack>
 
         <Stack>
