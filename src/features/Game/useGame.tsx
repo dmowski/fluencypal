@@ -1,18 +1,20 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX, useState, useEffect, useMemo } from "react";
 import { useAuth } from "../Auth/useAuth";
-
 import { GameProfile, GameQuestionShort, UsersStat } from "./types";
 import {
   getGameQuestionsRequest,
   getMyProfileRequest,
   getSortedStats,
+  getSortedStatsFromData,
+  submitAnswerRequest,
 } from "@/app/api/game/gameRequests";
 import { usePathname } from "next/navigation";
 import { parseLangFromUrl } from "../Lang/parseLangFromUrl";
 import { useLocalStorage } from "react-use";
 import { SupportedLanguage } from "../Lang/lang";
 import { useSettings } from "../Settings/useSettings";
+import { shuffleArray } from "@/libs/array";
 
 interface GameContextType {
   loadingProfile: boolean;
@@ -21,6 +23,10 @@ interface GameContextType {
   loadingQuestions: boolean;
   generateQuestions: () => Promise<void>;
   questions: GameQuestionShort[];
+  activeQuestion: GameQuestionShort | null;
+  submitAnswer: (questionId: string, answer: string) => Promise<boolean>;
+  nextQuestion: () => void;
+
   nativeLanguageCode: SupportedLanguage | null;
   setNativeLanguageCode: (lang: SupportedLanguage) => void;
 }
@@ -35,6 +41,7 @@ function useProvideGame(): GameContextType {
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [questions, setQuestions] = useState<GameQuestionShort[]>([]);
+  const [activeQuestion, setActiveQuestion] = useState<GameQuestionShort | null>(null);
   const pathname = usePathname();
 
   const nativeLanguageCodeFromUrl = useMemo(() => parseLangFromUrl(pathname), [pathname]);
@@ -72,8 +79,8 @@ function useProvideGame(): GameContextType {
       await auth.getToken()
     );
     setLoadingQuestions(false);
-
     setQuestions(generatedQuestions);
+    setActiveQuestion(generatedQuestions[0] || null);
   };
 
   useEffect(() => {
@@ -85,13 +92,42 @@ function useProvideGame(): GameContextType {
     }
   }, [userId]);
 
+  const submitAnswer = async (questionId: string, answer: string) => {
+    const response = await submitAnswerRequest(
+      {
+        questionId,
+        answer,
+      },
+      await auth.getToken()
+    );
+    const isCorrect = response.isCorrect;
+    if (isCorrect) {
+      const newQuestions = questions.filter((question) => question.id !== questionId);
+      setQuestions(newQuestions);
+    }
+    const updatedRate = getSortedStatsFromData(response.updatedUserPoints);
+    setStats(updatedRate);
+    return isCorrect;
+  };
+
+  const nextQuestion = () => {
+    const randomArray = shuffleArray(questions).filter(
+      (question) => question.id !== activeQuestion?.id
+    );
+    const nextQuestion = randomArray[0] || null;
+    setActiveQuestion(nextQuestion);
+  };
+
   return {
     loadingProfile,
+    nextQuestion,
+    submitAnswer,
     myProfile,
     stats,
     questions,
     loadingQuestions,
     generateQuestions,
+    activeQuestion,
 
     nativeLanguageCode: nativeLanguageCode || null,
     setNativeLanguageCode,

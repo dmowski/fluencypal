@@ -1,6 +1,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useGame } from "./useGame";
 import { LangSelector } from "../Lang/LangSelector";
+import { GameQuestion } from "./GameQuestion";
 
 export const GamePage = () => {
   const game = useGame();
@@ -77,54 +78,13 @@ export const GamePage = () => {
             gap: "20px",
           }}
         >
-          <Typography>Questions:</Typography>
-
-          <Stack
-            sx={{
-              gap: "60px",
-            }}
-          >
-            {game.questions.map((question, index) => {
-              return (
-                <Stack
-                  key={index}
-                  sx={{
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                    padding: "20px",
-                    borderRadius: "10px",
-                    gap: "5px",
-                  }}
-                >
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {question.type}
-                  </Typography>
-                  <Typography variant="h4" className="decor-text">
-                    {question.question}
-                  </Typography>
-                  <Stack
-                    sx={{
-                      flexDirection: "row",
-                      gap: "10px",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    {question.options.map((answer, index) => {
-                      return (
-                        <Stack key={index} sx={{}}>
-                          <Button variant="outlined">{answer}</Button>
-                        </Stack>
-                      );
-                    })}
-                  </Stack>
-                </Stack>
-              );
-            })}
-          </Stack>
+          {game.activeQuestion && (
+            <GameQuestion
+              question={game.activeQuestion}
+              onNext={game.nextQuestion}
+              onSubmitAnswer={game.submitAnswer}
+            />
+          )}
         </Stack>
       </Stack>
     </Stack>

@@ -1,6 +1,7 @@
 import { GameQuestionShort, GameQuestionFull } from "@/features/Game/types";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
 import { generateTextWithAi } from "../../ai/generateTextWithAi";
+import { shuffleArray } from "@/libs/array";
 
 interface QuestionOutput {
   fullQuestions: GameQuestionFull;
@@ -129,7 +130,7 @@ Do not wrap your answer in any intro or outro.
       id: `${Date.now()}_sent_${index}`,
       type: "sentence",
       question: sentence,
-      options: splitSentenceIntoWords(sentence),
+      options: shuffleArray(splitSentenceIntoWords(sentence)),
     };
 
     const fullQuestion: GameQuestionFull = {
@@ -154,14 +155,6 @@ interface generateRandomQuestionsProps {
   nativeLanguage: SupportedLanguage;
   learningLanguage: SupportedLanguage;
 }
-
-const shuffleArray = <T>(array: T[]): T[] => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-};
 
 export const generateRandomQuestions = async ({
   userInfoRecords,

@@ -21,6 +21,10 @@ export const getUserPointsRequest = async () => {
 
 export const getSortedStats = async () => {
   const userPoints = await getUserPointsRequest();
+  return getSortedStatsFromData(userPoints);
+};
+
+export const getSortedStatsFromData = (userPoints: GameUsersPoints) => {
   const userNames = Object.keys(userPoints);
 
   const userStats = userNames
