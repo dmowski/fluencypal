@@ -60,6 +60,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 
 gtag('config', 'AW-16463260124');
+gtag('config', 'G-K2X9LZJ50W'); 
 `}
         </Script>
         <Script>
