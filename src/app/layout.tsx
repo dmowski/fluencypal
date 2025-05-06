@@ -51,7 +51,7 @@ export default async function RootLayout({
         <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/logo192.png" />
-        <script defer data-domain="fluencypal.com" src="https://plausible.io/js/script.js"></script>
+
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16463260124"></script>
         <Script>
           {`
