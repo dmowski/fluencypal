@@ -45,7 +45,7 @@ interface ConversationPageProps {
 
 export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) {
   const auth = useAuth();
-  useHotjar();
+  // useHotjar();
   const settings = useSettings();
   const aiConversation = useAiConversation();
   const usage = useUsage();
