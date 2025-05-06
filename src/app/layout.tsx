@@ -52,7 +52,7 @@ export default async function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/logo192.png" />
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16463260124"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-K2X9LZJ50W"></script>
         <Script>
           {`
 window.dataLayer = window.dataLayer || [];
