@@ -1,6 +1,6 @@
 import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { Flag, Sparkle, Trash } from "lucide-react";
+import { Flag, Icon, Sparkle, Trash } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
@@ -228,7 +228,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 }}
                 variant="caption"
               >
-                {goalDescription}
+                {goalDescription}{" "}
+                <IconButton onClick={deletePlans}>
+                  <Trash size={"14px"} />
+                </IconButton>
               </Typography>
             )}
           </Stack>
