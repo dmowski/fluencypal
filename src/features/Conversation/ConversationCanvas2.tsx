@@ -21,6 +21,7 @@ import { GoalPlan } from "../Plan/types";
 import { GradingProgressBar } from "../uiKit/Progress/GradingProgressBar";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { messagesToComplete } from "./data";
+import { useGame } from "../Game/useGame";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -106,8 +107,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   const sound = useSound();
 
-  const isSmallBalance = balanceHours < 0.1;
-  const isExtremelySmallBalance = balanceHours < 0.05;
+  const game = useGame();
+
+  const isSmallBalance = balanceHours < 0.1 && !game.isGameWinner;
+  const isExtremelySmallBalance = balanceHours < 0.05 && !game.isGameWinner;
 
   const isNeedToShowBalanceWarning =
     (isSmallBalance && conversation.length > 1) || isExtremelySmallBalance;
@@ -187,7 +190,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     }
   };
 
-  const isLowBalance = balanceHours < 0.01;
+  const isLowBalance = balanceHours < 0.01 && !game.isGameWinner;
 
   useEffect(() => {
     if (isLowBalance) {

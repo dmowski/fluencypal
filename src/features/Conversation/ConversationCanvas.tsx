@@ -22,6 +22,7 @@ import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
 import { useWebCam } from "../webCam/useWebCam";
+import { useGame } from "../Game/useGame";
 
 const loadingHelpMessage = `Generating help message...`;
 
@@ -79,9 +80,10 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   const [helpMessage, setHelpMessage] = useState("");
 
   const webCam = useWebCam();
+  const game = useGame();
 
-  const isSmallBalance = balanceHours < 0.1;
-  const isExtremelySmallBalance = balanceHours < 0.05;
+  const isSmallBalance = balanceHours < 0.1 && !game.isGameWinner;
+  const isExtremelySmallBalance = balanceHours < 0.05 && !game.isGameWinner;
 
   const isNeedToShowBalanceWarning =
     (isSmallBalance && conversation.length > 1) || isExtremelySmallBalance;

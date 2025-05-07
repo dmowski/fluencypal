@@ -26,31 +26,31 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
         <AuthProvider>
           <SettingsProvider>
             <WebCamProvider>
-              <UsageProvider>
-                <TextAiProvider>
-                  <AudioProvider>
-                    <AiUserInfoProvider>
-                      <WordsProvider>
-                        <CorrectionsProvider>
-                          <ChatHistoryProvider>
-                            <RulesProvider>
-                              <TasksProvider>
-                                <HomeworkProvider>
-                                  <PlanProvider>
-                                    <AiConversationProvider>
-                                      <GameProvider>{children}</GameProvider>
-                                    </AiConversationProvider>
-                                  </PlanProvider>
-                                </HomeworkProvider>
-                              </TasksProvider>
-                            </RulesProvider>
-                          </ChatHistoryProvider>
-                        </CorrectionsProvider>
-                      </WordsProvider>
-                    </AiUserInfoProvider>
-                  </AudioProvider>
-                </TextAiProvider>
-              </UsageProvider>
+              <GameProvider>
+                <UsageProvider>
+                  <TextAiProvider>
+                    <AudioProvider>
+                      <AiUserInfoProvider>
+                        <WordsProvider>
+                          <CorrectionsProvider>
+                            <ChatHistoryProvider>
+                              <RulesProvider>
+                                <TasksProvider>
+                                  <HomeworkProvider>
+                                    <PlanProvider>
+                                      <AiConversationProvider>{children}</AiConversationProvider>
+                                    </PlanProvider>
+                                  </HomeworkProvider>
+                                </TasksProvider>
+                              </RulesProvider>
+                            </ChatHistoryProvider>
+                          </CorrectionsProvider>
+                        </WordsProvider>
+                      </AiUserInfoProvider>
+                    </AudioProvider>
+                  </TextAiProvider>
+                </UsageProvider>
+              </GameProvider>
             </WebCamProvider>
           </SettingsProvider>
         </AuthProvider>

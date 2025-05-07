@@ -29,11 +29,6 @@ function useProvideTextAi(): TextAiContextType {
   const auth = useAuth();
 
   const generate = async (conversationDate: TextAiRequest) => {
-    const balance = usage.balanceHours;
-    if (balance < 0.01) {
-      throw "Insufficient balance. Please top up your account.";
-    }
-
     const valueForCache = conversationDate.userMessage + conversationDate.systemMessage;
 
     if (conversationDate.cache) {

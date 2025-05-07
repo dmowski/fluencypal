@@ -16,6 +16,8 @@ import { ContactList } from "../Landing/Contact/ContactList";
 import { UsageStatsCards } from "./UsageStatsCards";
 import { useLingui } from "@lingui/react";
 import { GradientBgCard, GradientBgImageCard } from "../uiKit/Card/GradientBgCard";
+import { GameBadge } from "../Game/GameBadge";
+import { SupportedLanguage } from "../Lang/lang";
 
 const WinCard = ({
   title,
@@ -81,7 +83,11 @@ const WinCard = ({
   );
 };
 
-export const NoBalanceBlock = () => {
+interface NoBalanceBlockProps {
+  lang: SupportedLanguage;
+}
+
+export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
   const usage = useUsage();
   const { i18n } = useLingui();
   return (
@@ -134,6 +140,8 @@ export const NoBalanceBlock = () => {
             {i18n._("You've made amazing progress. Let’s keep going.")}
           </Typography>
         </Stack>
+
+        <GameBadge lang={lang} />
 
         <UsageStatsCards />
 

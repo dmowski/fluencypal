@@ -36,7 +36,7 @@ import { ConfirmConversationModal } from "./ConfirmConversationModal";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useTextAi } from "../Ai/useTextAi";
 import { GamePage } from "../Game/GamePage";
-import { GameProvider } from "../Game/useGame";
+import { GameProvider, useGame } from "../Game/useGame";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -53,6 +53,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const { i18n } = useLingui();
   const words = useWords();
   const rules = useRules();
+  const game = useGame();
   const plan = usePlan();
   const searchParams = useSearchParams();
   const goalId = searchParams.get("goalId");
@@ -273,7 +274,9 @@ About me: ${goalData.description}.`,
     return <GamePage />;
   }
 
-  if (!usage.loading && usage.balanceHours <= 0.01) return <NoBalanceBlock />;
+  if (!usage.loading && usage.balanceHours <= 0.01 && !game.isGameWinner) {
+    return <NoBalanceBlock lang={lang} />;
+  }
 
   if (aiConversation.errorInitiating) {
     return (

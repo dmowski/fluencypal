@@ -30,6 +30,7 @@ import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
 import { messagesToComplete } from "./data";
 import { isDev } from "../Analytics/isDev";
+import { useGame } from "../Game/useGame";
 
 interface StartConversationProps {
   mode: ConversationMode;
@@ -294,7 +295,9 @@ function useProvideAiConversation(): AiConversationContextType {
     });
   };
 
-  const isLowBalance = usage.balanceHours < 0.01;
+  const game = useGame();
+  const isLowBalance = usage.balanceHours < 0.01 && !game.isGameWinner;
+
   const [isMutedDueToNoBalance, setIsMutedDueToNoBalance] = useState(false);
   useEffect(() => {
     const isRestoredBalance = isMutedDueToNoBalance && !isLowBalance;

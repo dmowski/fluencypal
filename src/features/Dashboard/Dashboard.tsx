@@ -44,7 +44,17 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
           },
         }}
       >
-        <GameBadge lang={lang} />
+        <Stack
+          sx={{
+            padding: "20px 20px",
+            boxSizing: "border-box",
+            "@media (max-width: 850px)": {
+              padding: "0px 10px",
+            },
+          }}
+        >
+          <GameBadge lang={lang} />
+        </Stack>
 
         <PlanDashboardCards lang={lang} />
 
