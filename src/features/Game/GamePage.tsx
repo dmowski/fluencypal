@@ -5,6 +5,7 @@ import { GameQuestion } from "./GameQuestion";
 import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useState } from "react";
+import { Swords } from "lucide-react";
 
 export const GamePage = () => {
   const game = useGame();
@@ -22,7 +23,7 @@ export const GamePage = () => {
       <Stack
         sx={{
           width: "100%",
-          maxWidth: "1000px",
+          maxWidth: "max-content",
           padding: "10px 20px",
           paddingTop: "80px",
           boxSizing: "border-box",
@@ -30,12 +31,9 @@ export const GamePage = () => {
           position: "relative",
           alignItems: "flex-start",
           zIndex: 1,
-          "@media (max-width: 850px)": {
-            //padding: "10px 20px",
-          },
         }}
       >
-        <Typography variant="h4" align="center" className="decor-text">
+        <Typography variant="h3" align="center">
           {i18n._(`Game`)}
         </Typography>
         <Stack>
@@ -65,11 +63,18 @@ export const GamePage = () => {
 
         <Button
           variant="contained"
+          startIcon={<Swords />}
+          color="info"
+          size="large"
           onClick={() => {
             game.generateQuestions();
             setPlayGame(true);
           }}
           disabled={game.loadingQuestions}
+          sx={{
+            width: "100%",
+            padding: "15px 20px",
+          }}
         >
           {game.loadingQuestions ? `Loading` : `Play`}
         </Button>
@@ -78,9 +83,11 @@ export const GamePage = () => {
           sx={{
             paddingTop: "20px",
             gap: "15px",
+            width: "100%",
+            boxSizing: "border-box",
           }}
         >
-          <Typography variant="h5">Stats:</Typography>
+          <Typography variant="h5">Rate:</Typography>
 
           <Stack
             sx={{
@@ -95,6 +102,7 @@ export const GamePage = () => {
                   sx={{
                     flexDirection: "row",
                     width: "100%",
+                    boxSizing: "border-box",
                     justifyContent: "space-between",
                     gap: "10px",
                     padding: "10px 15px",
