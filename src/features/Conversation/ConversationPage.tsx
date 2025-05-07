@@ -45,7 +45,6 @@ interface ConversationPageProps {
 
 export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) {
   const auth = useAuth();
-  // useHotjar();
   const settings = useSettings();
   const aiConversation = useAiConversation();
   const usage = useUsage();
@@ -271,11 +270,7 @@ About me: ${goalData.description}.`,
   }
 
   if (gamePage) {
-    return (
-      <GameProvider>
-        <GamePage />
-      </GameProvider>
-    );
+    return <GamePage />;
   }
 
   if (!usage.loading && usage.balanceHours <= 0.01) return <NoBalanceBlock />;

@@ -8,11 +8,11 @@ export async function GET(request: Request) {
   const userInfo = await validateAuthToken(request);
   let userProfile = await getGameProfile(userInfo.uid);
   if (!userProfile) {
-    const username = generateRandomUsername(),
-      userProfile = {
-        avatarUrl: "",
-        username: username,
-      };
+    const username = generateRandomUsername();
+    userProfile = {
+      avatarUrl: "",
+      username: username,
+    };
 
     await increaseUserPoints({
       username,

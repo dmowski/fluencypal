@@ -17,6 +17,7 @@ import { CorrectionsProvider } from "@/features/Corrections/useCorrections";
 import { JSX, Suspense } from "react";
 import { NotificationsProvider } from "@toolpad/core/useNotifications";
 import { PlanProvider } from "@/features/Plan/usePlan";
+import { GameProvider } from "@/features/Game/useGame";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
@@ -36,7 +37,9 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                               <TasksProvider>
                                 <HomeworkProvider>
                                   <PlanProvider>
-                                    <AiConversationProvider>{children}</AiConversationProvider>
+                                    <AiConversationProvider>
+                                      <GameProvider>{children}</GameProvider>
+                                    </AiConversationProvider>
                                   </PlanProvider>
                                 </HomeworkProvider>
                               </TasksProvider>

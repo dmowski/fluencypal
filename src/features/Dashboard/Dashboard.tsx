@@ -12,6 +12,7 @@ import { UsageStatsCards } from "../Usage/UsageStatsCards";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { PlanDashboardCards } from "./PlanDashboardCards";
 import { SupportedLanguage } from "@/features/Lang/lang";
+import { GameBadge } from "../Game/GameBadge";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -39,9 +40,12 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
           "@media (max-width: 850px)": {
             paddingLeft: "0",
             paddingRight: "0",
+            gap: "30px",
           },
         }}
       >
+        <GameBadge lang={lang} />
+
         <PlanDashboardCards lang={lang} />
 
         <DashboardCard>

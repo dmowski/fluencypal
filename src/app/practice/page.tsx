@@ -9,6 +9,7 @@ import { generateMetadataInfo } from "@/libs/metadata";
 import { PracticeProvider } from "../practiceProvider";
 import { CookiesPopup } from "@/features/Legal/CookiesPopup";
 import { HeaderPractice } from "@/features/Header/HeaderPractice";
+import { GameProvider } from "@/features/Game/useGame";
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
