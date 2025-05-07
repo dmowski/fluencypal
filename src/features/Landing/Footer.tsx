@@ -1,3 +1,4 @@
+"use client";
 import { Link, Stack, Typography } from "@mui/material";
 import { maxLandingWidth } from "./landingSettings";
 import {
@@ -5,19 +6,20 @@ import {
   SupportedLanguage,
   supportedLanguages,
 } from "@/features/Lang/lang";
-import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
-import { headers } from "next/headers";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useLingui } from "@lingui/react";
 
 interface FooterProps {
   lang: SupportedLanguage;
 }
-export const Footer: React.FC<FooterProps> = async ({ lang }) => {
-  const i18n = getI18nInstance(lang);
+export const Footer: React.FC<FooterProps> = ({ lang }) => {
+  const { i18n } = useLingui();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const onlyPathname = pathname || "/";
+  const onlyQuery = searchParams.toString() || "";
 
-  const headerList = await headers();
-  const onlyPathname = headerList.get("x-current-path") || "/";
-  const onlyQuery = headerList.get("x-current-query") || "";
   const pathNameAndQuery = onlyPathname + (onlyQuery ? `?${onlyQuery}` : "");
 
   const pathnameWithoutLang =
