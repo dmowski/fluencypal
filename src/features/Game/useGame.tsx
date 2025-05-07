@@ -29,6 +29,7 @@ interface GameContextType {
 
   nativeLanguageCode: SupportedLanguage | null;
   setNativeLanguageCode: (lang: SupportedLanguage) => void;
+  myPosition: number | null;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -118,8 +119,17 @@ function useProvideGame(): GameContextType {
     setActiveQuestion(nextQuestion);
   };
 
+  const myPosition = useMemo(() => {
+    if (!myProfile) return null;
+    const myStat = stats.find((stat) => stat.username === myProfile.username);
+    if (!myStat) return null;
+    const myIndex = stats.findIndex((stat) => stat.username === myStat.username);
+    return myIndex + 1;
+  }, [myProfile, stats]);
+
   return {
     loadingProfile,
+    myPosition,
     nextQuestion,
     submitAnswer,
     myProfile,

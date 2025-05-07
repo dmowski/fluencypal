@@ -2,9 +2,15 @@ import { Button, Stack, Typography } from "@mui/material";
 import { useGame } from "./useGame";
 import { LangSelector } from "../Lang/LangSelector";
 import { GameQuestion } from "./GameQuestion";
+import { useLingui } from "@lingui/react";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { useState } from "react";
 
 export const GamePage = () => {
   const game = useGame();
+  const { i18n } = useLingui();
+
+  const [playGame, setPlayGame] = useState(false);
   return (
     <Stack
       sx={{
@@ -17,7 +23,7 @@ export const GamePage = () => {
         sx={{
           width: "100%",
           maxWidth: "1000px",
-          padding: "10px",
+          padding: "10px 20px",
           paddingTop: "80px",
           boxSizing: "border-box",
           gap: "20px",
@@ -25,18 +31,23 @@ export const GamePage = () => {
           alignItems: "flex-start",
           zIndex: 1,
           "@media (max-width: 850px)": {
-            paddingLeft: "0",
-            paddingRight: "0",
+            //padding: "10px 20px",
           },
         }}
       >
         <Typography variant="h4" align="center" className="decor-text">
-          Game
+          {i18n._(`Game`)}
         </Typography>
         <Stack>
-          <Typography variant="caption">
-            Your Username: {game.myProfile?.username || "-"}
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: 0.8,
+            }}
+          >
+            {i18n._(`Your Username:`)}
           </Typography>
+          <Typography variant="h6">{game.myProfile?.username || "-"}</Typography>
         </Stack>
 
         <Stack
@@ -52,22 +63,12 @@ export const GamePage = () => {
           />
         </Stack>
 
-        <Stack>
-          <Typography>Stats:</Typography>
-
-          {game.stats.map((stat, index) => {
-            return (
-              <Stack key={index}>
-                <Typography variant="caption">
-                  {stat.username}: {stat.points} p
-                </Typography>
-              </Stack>
-            );
-          })}
-        </Stack>
         <Button
           variant="contained"
-          onClick={game.generateQuestions}
+          onClick={() => {
+            game.generateQuestions();
+            setPlayGame(true);
+          }}
           disabled={game.loadingQuestions}
         >
           {game.loadingQuestions ? `Loading` : `Play`}
@@ -75,17 +76,76 @@ export const GamePage = () => {
 
         <Stack
           sx={{
-            gap: "20px",
+            paddingTop: "20px",
+            gap: "15px",
           }}
         >
-          {game.activeQuestion && (
-            <GameQuestion
-              question={game.activeQuestion}
-              onNext={game.nextQuestion}
-              onSubmitAnswer={game.submitAnswer}
-            />
-          )}
+          <Typography variant="h5">Stats:</Typography>
+
+          <Stack
+            sx={{
+              gap: "10px",
+            }}
+          >
+            {game.stats.map((stat, index) => {
+              const isMe = stat.username === game.myProfile?.username;
+              return (
+                <Stack
+                  key={index}
+                  sx={{
+                    flexDirection: "row",
+                    width: "100%",
+                    justifyContent: "space-between",
+                    gap: "10px",
+                    padding: "10px 15px",
+                    borderRadius: "7px",
+                    backgroundColor: isMe
+                      ? "rgba(41, 179, 229, 0.17)"
+                      : "rgba(255, 255, 255, 0.04)",
+                  }}
+                >
+                  <Typography variant="body2">{stat.username}:</Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontWeight: 600,
+                    }}
+                  >
+                    {stat.points}
+                  </Typography>
+                </Stack>
+              );
+            })}
+          </Stack>
         </Stack>
+
+        {game.activeQuestion && playGame && (
+          <Stack
+            sx={{
+              gap: "20px",
+            }}
+          >
+            <CustomModal
+              isOpen={true}
+              onClose={() => {
+                setPlayGame(false);
+              }}
+              padding="20px"
+            >
+              <Stack
+                sx={{
+                  minHeight: "300px",
+                }}
+              >
+                <GameQuestion
+                  question={game.activeQuestion}
+                  onNext={game.nextQuestion}
+                  onSubmitAnswer={game.submitAnswer}
+                />
+              </Stack>
+            </CustomModal>
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );

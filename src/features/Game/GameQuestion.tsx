@@ -3,6 +3,7 @@ import { GameQuestionShort, GameQuestionType } from "./types";
 import { useEffect, useState } from "react";
 import { Check, ChevronRight, Delete, ShieldAlert } from "lucide-react";
 import { useLingui } from "@lingui/react";
+import { useGame } from "./useGame";
 
 interface GameQuestionProps {
   question: GameQuestionShort;
@@ -15,6 +16,7 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
+  const game = useGame();
 
   useEffect(() => {
     setSelectedAnswer(null);
@@ -41,9 +43,6 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
   return (
     <Stack
       sx={{
-        border: "1px solid rgba(255, 255, 255, 0.1)",
-        padding: "20px",
-        borderRadius: "10px",
         gap: "25px",
       }}
     >
@@ -52,10 +51,12 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
           variant="caption"
           sx={{
             textTransform: "uppercase",
+            paddingBottom: "35px",
           }}
         >
           {gameLabel}
         </Typography>
+
         {question.type === "translate" && (
           <Typography variant="h4" className="decor-text">
             {question.question}
@@ -198,7 +199,12 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
       </Stack>
 
       {isCorrect !== null && (
-        <>
+        <Stack
+          sx={{
+            gap: "10px",
+            alignItems: "flex-start",
+          }}
+        >
           <Button
             variant="contained"
             endIcon={<ChevronRight />}
@@ -206,10 +212,18 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
               setIsCorrect(null);
               onNext();
             }}
+            sx={{
+              width: "100%",
+            }}
           >
             Next
           </Button>
-        </>
+          {game.myPosition && (
+            <Typography variant="body2">
+              {i18n._(`My Position:`)} {game.myPosition}
+            </Typography>
+          )}
+        </Stack>
       )}
 
       {isCorrect === null && question.type === "sentence" && (
