@@ -2,6 +2,7 @@ import { AddUsageLogRequest, AddUsageLogResponse } from "@/common/requests";
 import { validateAuthToken } from "../config/firebase";
 import { addUsage, isUsageLogExists } from "../payment/addUsage";
 import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
+import { getUserBalance } from "../payment/getUserBalance";
 
 export async function POST(request: Request) {
   try {
@@ -26,8 +27,10 @@ export async function POST(request: Request) {
       console.warn("Usage log already exists");
       return Response.json(response);
     }
-
-    await addUsage(userInfo.uid, logData);
+    const balance = await getUserBalance(userInfo.uid || "");
+    if (!balance.isGameWinner) {
+      await addUsage(userInfo.uid, logData);
+    }
 
     const response: AddUsageLogResponse = {
       done: true,

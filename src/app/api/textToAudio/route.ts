@@ -25,7 +25,7 @@ export async function POST(request: Request) {
 
   const userInfo = await validateAuthToken(request);
   const balance = await getUserBalance(userInfo.uid || "");
-  if (balance.balanceHours < 0.01) {
+  if (balance.balanceHours < 0.01 && !balance.isGameWinner) {
     throw new Error("Insufficient balance");
   }
 
@@ -102,7 +102,10 @@ export async function POST(request: Request) {
     duration: durationInSeconds,
     transcriptSize: aiRequest.input.length || 0,
   };
-  await addUsage(userInfo.uid, usageLog);
+
+  if (!balance.isGameWinner) {
+    await addUsage(userInfo.uid, usageLog);
+  }
 
   return Response.json(response);
 }

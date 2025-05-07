@@ -12,9 +12,10 @@ import {
   Menu,
   MenuItem,
   Stack,
+  Tooltip,
   Typography,
 } from "@mui/material";
-import { ChevronLeft, LogOutIcon, MessageCircleQuestion, Wallet } from "lucide-react";
+import { ChevronLeft, Crown, LogOutIcon, MessageCircleQuestion, Wallet } from "lucide-react";
 
 import { useUsage } from "../Usage/useUsage";
 import { PaymentModal } from "../Usage/PaymentModal";
@@ -27,11 +28,14 @@ import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { useSettings } from "../Settings/useSettings";
+import { useGame } from "../Game/useGame";
 
 export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
   const pathname = usePathname();
   const settings = useSettings();
+  const game = useGame();
+  const isGameWinner = game.isGameWinner;
 
   const aiConversation = useAiConversation();
   const { i18n } = useLingui();
@@ -268,6 +272,27 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
                       />
                     </Stack>
                   )}
+
+                  {isGameWinner && (
+                    <Tooltip title={i18n._("You are in the top 5")}>
+                      <Stack
+                        sx={{
+                          background:
+                            "linear-gradient(45deg,rgba(210, 13, 220, 0.8) 0%,rgba(212, 19, 71, 0.4) 100%)",
+                          borderRadius: "35px",
+                          padding: "5px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          width: "30px",
+                          height: "30px",
+                        }}
+                      >
+                        <Crown size={"20px"} />
+                      </Stack>
+                    </Tooltip>
+                  )}
+
                   <Button
                     sx={{
                       color: usage.loading

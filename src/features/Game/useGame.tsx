@@ -30,6 +30,7 @@ interface GameContextType {
   nativeLanguageCode: SupportedLanguage | null;
   setNativeLanguageCode: (lang: SupportedLanguage) => void;
   myPosition: number | null;
+  isGameWinner: boolean;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -127,7 +128,16 @@ function useProvideGame(): GameContextType {
     return myIndex + 1;
   }, [myProfile, stats]);
 
+  const isTop5Position = useMemo(() => {
+    if (!myProfile) return false;
+    const myStat = stats.find((stat) => stat.username === myProfile.username);
+    if (!myStat) return false;
+    const myIndex = stats.findIndex((stat) => stat.username === myStat.username);
+    return myIndex < 5;
+  }, [myProfile, stats]);
+
   return {
+    isGameWinner: isTop5Position,
     loadingProfile,
     myPosition,
     nextQuestion,
