@@ -9,11 +9,12 @@ import {
 import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useLingui } from "@lingui/react";
+import { Suspense } from "react";
 
 interface FooterProps {
   lang: SupportedLanguage;
 }
-export const Footer: React.FC<FooterProps> = ({ lang }) => {
+const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
   const { i18n } = useLingui();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -189,5 +190,13 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
         </Stack>
       </Stack>
     </Stack>
+  );
+};
+
+export const Footer: React.FC<FooterProps> = ({ lang }) => {
+  return (
+    <Suspense>
+      <FooterComponent lang={lang} />
+    </Suspense>
   );
 };
