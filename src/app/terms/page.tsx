@@ -9,7 +9,7 @@ import { Footer } from "@/features/Landing/Footer";
 import { HeaderStatic } from "@/features/Header/HeaderStatic";
 
 export async function generateStaticParams() {
-  return supportedLanguages.map((lang: string) => ({ lang }));
+  return [];
 }
 
 interface PageProps {

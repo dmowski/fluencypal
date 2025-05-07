@@ -1,6 +1,5 @@
 import { Stack, Typography } from "@mui/material";
 import { LegalContainer } from "./LegalContainer";
-import { LEGAL_DATA } from "./data";
 import Markdown from "markdown-to-jsx";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";

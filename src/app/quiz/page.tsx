@@ -12,6 +12,9 @@ interface PageProps {
     learn?: string;
   }>;
 }
+export async function generateStaticParams() {
+  return [];
+}
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const searchParam = await props.searchParams;
