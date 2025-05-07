@@ -23,7 +23,7 @@ export const GamePage = () => {
       <Stack
         sx={{
           width: "100%",
-          maxWidth: "max-content",
+          maxWidth: "500px",
           padding: "10px 20px",
           paddingTop: "80px",
           boxSizing: "border-box",
@@ -54,7 +54,7 @@ export const GamePage = () => {
             width: "250px",
           }}
         >
-          <Typography variant="body2">Your Native Language:</Typography>
+          <Typography variant="body2">{i18n._(`Your Native Language:`)}</Typography>
           <LangSelector
             value={game.nativeLanguageCode || "en"}
             onChange={(lang) => game.setNativeLanguageCode(lang)}
@@ -76,7 +76,7 @@ export const GamePage = () => {
             padding: "15px 20px",
           }}
         >
-          {game.loadingQuestions ? `Loading` : `Play`}
+          {game.loadingQuestions ? i18n._(`Loading`) : i18n._(`Play`)}
         </Button>
 
         <Stack
@@ -87,7 +87,12 @@ export const GamePage = () => {
             boxSizing: "border-box",
           }}
         >
-          <Typography variant="h5">Rate:</Typography>
+          <Stack>
+            <Typography variant="h5">{i18n._(`Rate:`)}</Typography>
+            <Typography variant="caption">
+              {i18n._("Rank in the top 5 to get the app for free")}
+            </Typography>
+          </Stack>
 
           <Stack
             sx={{
@@ -96,6 +101,7 @@ export const GamePage = () => {
           >
             {game.stats.map((stat, index) => {
               const isMe = stat.username === game.myProfile?.username;
+              const top5 = index < 5;
               return (
                 <Stack
                   key={index}
@@ -104,6 +110,7 @@ export const GamePage = () => {
                     width: "100%",
                     boxSizing: "border-box",
                     justifyContent: "space-between",
+                    alignItems: "center",
                     gap: "10px",
                     padding: "10px 15px",
                     borderRadius: "7px",
@@ -117,6 +124,8 @@ export const GamePage = () => {
                     variant="body2"
                     sx={{
                       fontWeight: 600,
+                      color: top5 ? "primary.main" : "text.primary",
+                      fontSize: top5 ? "1.2rem" : "0.8rem",
                     }}
                   >
                     {stat.points}
