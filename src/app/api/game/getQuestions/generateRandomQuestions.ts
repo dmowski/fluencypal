@@ -45,18 +45,19 @@ const generateWordsQuestions = async ({
     nativeLanguage,
     learningLanguage,
   });
-
+  const isSameLanguage = nativeLanguage === learningLanguage;
   const { output } = await generateTextWithAi({
     systemMessage: `You are system that should generate Language learning quiz.
 Be creative and use different words from different parts of user's life.
 Use only ${fullEnglishLanguageName[learningLanguage]} language for generate words.
 
-Generate 10 words. Each word should be generated along with 4 translation options. First of them should be correct.
+Generate 10 words.
+Each word should be generated along with 4 ${isSameLanguage ? "synonyms" : "translation"} options. First of them should be correct.
 Do not wrap your answer in any intro or outro.
 
 Example of your response:
-Dog - пес, кошка, кот, зебра
-Wolf - волк, стакан, лиса, медведь
+Dog - ${isSameLanguage ? "animal, bird, helicopter" : "пес, кошка, кот, зебра"}
+Wolf - ${isSameLanguage ? "animal, bird, helicopter" : "волк, стакан, лиса, медведь"}
 `,
     userMessage: userInfo,
     model: "gpt-4o",
