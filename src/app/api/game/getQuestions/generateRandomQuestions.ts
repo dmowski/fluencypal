@@ -57,8 +57,6 @@ Do not wrap your answer in any intro or outro.
 Example of your response:
 Dog - пес, кошка, кот, зебра
 Wolf - волк, стакан, лиса, медведь
-
-
 `,
     userMessage: userInfo,
     model: "gpt-4o",

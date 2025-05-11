@@ -16,7 +16,7 @@ export async function POST(request: Request) {
   const userInfoRecords = aiUserInfo?.records || [];
 
   const unansweredQuestions = await getUnansweredQuestions(userInfo.uid, learningLanguage);
-  if (unansweredQuestions.length > 0) {
+  if (unansweredQuestions.length > 5) {
     const responseData = unansweredQuestions.map((question) =>
       convertFullQuestionToShort(question)
     );

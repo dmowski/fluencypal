@@ -72,17 +72,31 @@ function useProvideGame(): GameContextType {
     setStats(userStats);
   };
 
-  const generateQuestions = async () => {
-    setLoadingQuestions(true);
+  const loadMoreQuestions = async () => {
     const generatedQuestions = await getGameQuestionsRequest(
       {
         nativeLanguageCode: nativeLanguageCode || nativeLanguageCodeFromUrl,
       },
       await auth.getToken()
     );
+    setQuestions((prev) => {
+      const newQuestions = generatedQuestions.filter(
+        (question) => !prev.some((q) => q.id === question.id)
+      );
+      return [...prev, ...newQuestions];
+    });
+    setActiveQuestion((prev) => {
+      if (prev) return prev;
+      const randomArray = shuffleArray(generatedQuestions);
+      const nextQuestion = randomArray[0] || null;
+      return nextQuestion;
+    });
+  };
+
+  const generateQuestions = async () => {
+    setLoadingQuestions(true);
+    await loadMoreQuestions();
     setLoadingQuestions(false);
-    setQuestions(generatedQuestions);
-    setActiveQuestion(generatedQuestions[0] || null);
   };
 
   useEffect(() => {
@@ -106,6 +120,10 @@ function useProvideGame(): GameContextType {
     if (isCorrect) {
       const newQuestions = questions.filter((question) => question.id !== questionId);
       setQuestions(newQuestions);
+      const isFewQuestions = newQuestions.length < 10;
+      if (isFewQuestions) {
+        loadMoreQuestions();
+      }
     }
     const updatedRate = getSortedStatsFromData(response.updatedUserPoints);
     setStats(updatedRate);
