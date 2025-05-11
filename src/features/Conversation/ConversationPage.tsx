@@ -23,7 +23,6 @@ import { useRules } from "../Rules/useRules";
 import { WordsToLearn } from "../Dashboard/WordsToLearn";
 import { RulesToLearn } from "../Dashboard/RulesToLearn";
 import { ConversationError } from "./ConversationError";
-import { useHotjar } from "../Analytics/useHotjar";
 import { GoalPreparingModal } from "../Goal/GoalPreparingModal";
 import { useRouter, useSearchParams } from "next/navigation";
 import { deleteGoalQuiz, getGoalQuiz } from "@/app/api/goal/goalRequests";
@@ -275,6 +274,9 @@ About me: ${goalData.description}.`,
   }
 
   if (!usage.loading && usage.balanceHours <= 0.01 && !game.isGameWinner) {
+    if (game.loadingProfile) {
+      return <InfoBlockedSection title={i18n._(`Loading...`)} />;
+    }
     return <NoBalanceBlock lang={lang} />;
   }
 
