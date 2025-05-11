@@ -116,7 +116,7 @@ Be creative and use different words and different parts of user's life.
 Use only ${fullEnglishLanguageName[learningLanguage]} language on your response.
 Generate text within 10 sentences. Each sentence should be less than 7 words long.
 Sentences should be grammatically correct and meaningful.
-Do not wrap your answer in any intro or outro.
+Do not wrap your answer in any intro text
 `,
     userMessage: userInfo,
     model: "gpt-4o",
