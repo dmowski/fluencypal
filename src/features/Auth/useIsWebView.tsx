@@ -24,7 +24,12 @@ export const isTikTokWebView = () => {
   const isWindow = typeof window !== "undefined";
   if (!isWindow) return false;
   const ua = navigator.userAgent.toLowerCase();
-  return ua.includes("tiktok") || ua.includes("bytedance") || ua.includes("bytelocale");
+  return (
+    ua.includes("tiktok") ||
+    ua.includes("bytedance") ||
+    ua.includes("bytelocale") ||
+    ua.includes("musical_ly")
+  );
 };
 
 export const useIsWebView = () => {
