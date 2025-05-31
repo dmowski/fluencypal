@@ -20,6 +20,13 @@ export const getIsTelegram = () => {
   };
 };
 
+export const isTikTokWebView = () => {
+  const isWindow = typeof window !== "undefined";
+  if (!isWindow) return false;
+  const ua = navigator.userAgent.toLowerCase();
+  return ua.includes("tiktok") || ua.includes("bytedance") || ua.includes("bytelocale");
+};
+
 export const useIsWebView = () => {
   const [isAndroid, setIsAndroid] = useState(false);
   const [agent, setAgent] = useState("");
@@ -43,7 +50,10 @@ export const useIsWebView = () => {
           JSON.stringify(result)
       );*/
       setIsWebView(
-        isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos || isInAppBrowser(ua)
+        isTelegramWebView.isTgAndroid ||
+          isTelegramWebView.isTgIos ||
+          isInAppBrowser(ua) ||
+          isTikTokWebView()
       );
       setIsTelegram(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos);
       setIsAndroid(isTelegramWebView.isTgAndroid || ua.includes("android"));
