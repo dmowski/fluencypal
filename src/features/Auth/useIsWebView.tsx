@@ -38,6 +38,7 @@ export const useIsWebView = () => {
   const [isTelegram, setIsTelegram] = useState(false);
 
   const [inWebView, setIsWebView] = useState(false);
+  const [isTiktok, setIsTikTok] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -54,14 +55,17 @@ export const useIsWebView = () => {
           "| INFO" +
           JSON.stringify(result)
       );*/
+
+      const isTiktokWebView = isTikTokWebView();
       setIsWebView(
         isTelegramWebView.isTgAndroid ||
           isTelegramWebView.isTgIos ||
           isInAppBrowser(ua) ||
-          isTikTokWebView()
+          isTiktokWebView
       );
       setIsTelegram(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos);
       setIsAndroid(isTelegramWebView.isTgAndroid || ua.includes("android"));
+      setIsTikTok(isTiktokWebView);
     }
   }, []);
 
