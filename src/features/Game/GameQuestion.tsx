@@ -109,8 +109,8 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
               flexDirection: "row",
               flexWrap: "wrap",
               alignItems: "center",
-              gap: "7px",
-              paddingTop: "10px",
+              gap: "0 7px",
+              paddingTop: "12px",
             }}
           >
             {question.options
@@ -122,8 +122,7 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
                   <Stack
                     key={index}
                     sx={{
-                      backgroundColor: "rgba(255, 255, 255, 0.01)",
-                      padding: "5px 0px",
+                      padding: "0px",
                       borderRadius: "3px",
                     }}
                   >

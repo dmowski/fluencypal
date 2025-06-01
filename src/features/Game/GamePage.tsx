@@ -166,6 +166,8 @@ export const GamePage = () => {
                   sx={{
                     minHeight: "min(400px, 80dvh)",
                     maxWidth: "600px",
+                    width: "100%",
+                    boxSizing: "border-box",
                   }}
                 >
                   <GameQuestion
