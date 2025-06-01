@@ -50,7 +50,7 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
         <Typography
           variant="caption"
           sx={{
-            textTransform: "uppercase",
+            //textTransform: "uppercase",
             paddingBottom: "35px",
           }}
         >
