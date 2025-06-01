@@ -17,7 +17,7 @@ export const generateImageBuffer = async (description: string): Promise<Buffer<A
   });
 
   // Save the image to a file
-  const image_base64 = result.data[0].b64_json;
+  const image_base64 = result?.data?.[0].b64_json;
   if (!image_base64) {
     throw new Error("Image generation failed, no base64 data returned");
   }
