@@ -161,42 +161,52 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
         )}
 
         {question.type === "translate" && (
-          <Stack
-            sx={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              gap: "10px",
-              paddingTop: "10px",
-            }}
-          >
-            {question.options.map((answer, index) => {
-              const isCorrectOption =
-                question.type === "translate" && isCorrect && selectedAnswer === answer;
+          <Stack>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                flexWrap: "wrap",
+                gap: "10px",
+                paddingTop: "10px",
+              }}
+            >
+              {question.options.map((answer, index) => {
+                const isCorrectOption =
+                  question.type === "translate" && isCorrect && selectedAnswer === answer;
 
-              const isInCorrectOption =
-                question.type === "translate" && isCorrect === false && selectedAnswer === answer;
+                const isInCorrectOption =
+                  question.type === "translate" && isCorrect === false && selectedAnswer === answer;
 
-              return (
-                <Stack key={index} sx={{}}>
-                  <Button
-                    variant={selectedAnswer === answer ? "contained" : "outlined"}
-                    startIcon={isCorrectOption ? <Check /> : undefined}
-                    color={isCorrectOption ? "success" : isInCorrectOption ? "error" : "primary"}
-                    onClick={() => {
-                      if (isCorrect !== null) {
-                        return;
-                      }
-                      setSelectedAnswer(answer);
-                      if (question.type === "translate") {
+                return (
+                  <Stack key={index} sx={{}}>
+                    <Button
+                      variant={selectedAnswer === answer ? "contained" : "outlined"}
+                      startIcon={isCorrectOption ? <Check /> : undefined}
+                      color={isCorrectOption ? "success" : isInCorrectOption ? "error" : "primary"}
+                      onClick={() => {
+                        if (isCorrect !== null) {
+                          return;
+                        }
+                        setSelectedAnswer(answer);
                         handleAnswerSubmit(answer);
-                      }
-                    }}
-                  >
-                    {answer}
-                  </Button>
-                </Stack>
-              );
-            })}
+                      }}
+                    >
+                      {answer}
+                    </Button>
+                  </Stack>
+                );
+              })}
+            </Stack>
+            {isSubmitting && (
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._(`Loading...`)}
+              </Typography>
+            )}
           </Stack>
         )}
       </Stack>
