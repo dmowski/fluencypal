@@ -2,8 +2,6 @@ import { generateImageBuffer } from "./generateImage";
 import { resizeImage } from "./resizeImage";
 import { uploadImage } from "./uploadImage";
 
-export const maxDuration = 30;
-
 export async function GET(request: Request) {
   const queryParams = new URL(request.url).searchParams;
   const description = queryParams.get("description");
