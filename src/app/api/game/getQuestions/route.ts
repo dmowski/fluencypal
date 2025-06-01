@@ -4,7 +4,7 @@ import { GetGameQuestionsRequest } from "../types";
 import { generateRandomQuestions } from "./generateRandomQuestions";
 import { convertFullQuestionToShort, getUnansweredQuestions, setQuestion } from "./getQuestion";
 
-const alwaysGenerateQuestions = true; // Set to true to always generate questions
+const alwaysGenerateQuestions = false; // Set to true to always generate questions
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
 
