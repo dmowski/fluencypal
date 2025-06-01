@@ -91,6 +91,9 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
                         return [...prev, answer];
                       });
                     }}
+                    sx={{
+                      textTransform: "none",
+                    }}
                   >
                     {answer}
                   </Button>
