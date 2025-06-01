@@ -1,10 +1,10 @@
 "use client";
-import { FirebaseError } from "@firebase/util";
 import { GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { Context, JSX, ReactNode, createContext, useContext, useEffect, useMemo } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/init";
 import * as Sentry from "@sentry/nextjs";
+import { FirebaseError } from "firebase/app";
 
 interface SignInResult {
   isDone: boolean;
