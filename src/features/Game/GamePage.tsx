@@ -1,17 +1,26 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { useGame } from "./useGame";
 import { LangSelector } from "../Lang/LangSelector";
 import { GameQuestion } from "./GameQuestion";
 import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useState } from "react";
-import { Swords } from "lucide-react";
+import { PencilIcon, Swords } from "lucide-react";
+import { useSettings } from "../Settings/useSettings";
+import { fullEnglishLanguageName } from "../Lang/lang";
 
 export const GamePage = () => {
   const game = useGame();
+  const settings = useSettings();
   const { i18n } = useLingui();
-
+  const [isShowLangSelectorState, setIsShowLangSelector] = useState(false);
   const [playGame, setPlayGame] = useState(false);
+
+  const isNativeLanguageIsTheSameAsGameLanguage = game.nativeLanguageCode === settings.languageCode;
+
+  const nativeLanguageFullName = fullEnglishLanguageName[game.nativeLanguageCode || "en"];
+  const isShowLangSelector = isShowLangSelectorState || isNativeLanguageIsTheSameAsGameLanguage;
+
   return (
     <Stack
       sx={{
@@ -54,11 +63,25 @@ export const GamePage = () => {
             width: "250px",
           }}
         >
-          <Typography variant="body2">{i18n._(`Your Native Language:`)}</Typography>
-          <LangSelector
-            value={game.nativeLanguageCode || "en"}
-            onChange={(lang) => game.setNativeLanguageCode(lang)}
-          />
+          <Typography variant="body2">
+            {i18n._(`Your Native Language:`)}
+            {!isShowLangSelector ? " " + nativeLanguageFullName : ""}
+            {!isShowLangSelector && (
+              <IconButton size="small" onClick={() => setIsShowLangSelector(!isShowLangSelector)}>
+                <PencilIcon size={"11px"} />
+              </IconButton>
+            )}
+          </Typography>
+
+          {isShowLangSelector && (
+            <LangSelector
+              value={game.nativeLanguageCode || "en"}
+              onChange={(lang) => {
+                game.setNativeLanguageCode(lang);
+                setIsShowLangSelector(false);
+              }}
+            />
+          )}
         </Stack>
 
         <Button
