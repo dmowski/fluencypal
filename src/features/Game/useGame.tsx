@@ -5,7 +5,6 @@ import { GameProfile, GameQuestionShort, UsersStat } from "./types";
 import {
   getGameQuestionsRequest,
   getMyProfileRequest,
-  getSortedStats,
   getSortedStatsFromData,
   submitAnswerRequest,
   updateUserProfileRequest,
@@ -16,6 +15,8 @@ import { useLocalStorage } from "react-use";
 import { SupportedLanguage } from "../Lang/lang";
 import { useSettings } from "../Settings/useSettings";
 import { shuffleArray } from "@/libs/array";
+import { useDocumentData } from "react-firebase-hooks/firestore";
+import { db } from "../Firebase/db";
 
 interface GameContextType {
   loadingProfile: boolean;
@@ -41,12 +42,17 @@ function useProvideGame(): GameContextType {
   const auth = useAuth();
   const settings = useSettings();
   const [myProfile, setMyProfile] = useState<GameProfile | null>(null);
-  const [stats, setStats] = useState<UsersStat[]>([]);
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [questions, setQuestions] = useState<GameQuestionShort[]>([]);
   const [activeQuestion, setActiveQuestion] = useState<GameQuestionShort | null>(null);
   const pathname = usePathname();
+
+  const [gameRate] = useDocumentData(db.documents.gameRate);
+  const stats = useMemo(() => {
+    if (!gameRate) return [];
+    return getSortedStatsFromData(gameRate);
+  }, [gameRate]);
 
   const nativeLanguageCodeFromUrl = useMemo(() => parseLangFromUrl(pathname), [pathname]);
   const [nativeLanguageCode, setNativeLanguageCode] =
@@ -67,11 +73,6 @@ function useProvideGame(): GameContextType {
   const getMyProfile = async () => {
     const response = await getMyProfileRequest(await auth.getToken());
     setMyProfile(response);
-  };
-
-  const getStats = async () => {
-    const userStats = await getSortedStats();
-    setStats(userStats);
   };
 
   const loadMoreQuestions = async () => {
@@ -104,7 +105,6 @@ function useProvideGame(): GameContextType {
   useEffect(() => {
     if (userId) {
       getMyProfile().then(async () => {
-        await getStats();
         setLoadingProfile(false);
       });
     }
@@ -127,8 +127,6 @@ function useProvideGame(): GameContextType {
         loadMoreQuestions();
       }
     }
-    const updatedRate = getSortedStatsFromData(response.updatedUserPoints);
-    setStats(updatedRate);
     return isCorrect;
   };
 
@@ -171,7 +169,6 @@ function useProvideGame(): GameContextType {
         if (!prev) return null;
         return { ...prev, username };
       });
-      await getStats();
     } else {
       console.log("Failed to update username:", response.error);
       alert(response.error || "Failed to update username");
