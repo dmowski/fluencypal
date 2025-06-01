@@ -1,5 +1,10 @@
 import { validateAuthToken } from "../../config/firebase";
-import { increaseUserPoints } from "../getStats/resources";
+import {
+  getGameUsersPoints,
+  increaseUserPoints,
+  renameUserInRateStat,
+} from "../getStats/resources";
+import { UpdateUserProfileRequest, UpdateUserProfileResponse } from "../types";
 import { generateRandomUsername } from "./generateRandomUserName";
 import { getGameProfile } from "./getGameProfile";
 import { updateGameProfile } from "./updateGameProfile";
@@ -22,4 +27,61 @@ export async function GET(request: Request) {
   }
 
   return Response.json(userProfile);
+}
+
+export async function POST(request: Request) {
+  const userInfo = await validateAuthToken(request);
+  const body = await request.json();
+  const { username } = body as UpdateUserProfileRequest;
+
+  if (!username || username.length < 3) {
+    const response: UpdateUserProfileResponse = {
+      error: "Username must be at least 3 characters long.",
+      isUpdated: false,
+    };
+    return Response.json(response);
+  }
+
+  const userProfile = await getGameProfile(userInfo.uid);
+  if (!userProfile) {
+    const response: UpdateUserProfileResponse = {
+      error: "User profile not found.",
+      isUpdated: false,
+    };
+    return Response.json(response);
+  }
+
+  const oldUsername = userProfile.username;
+  const newUsername = username.trim().replace(/\s+/g, "");
+  if (oldUsername === username) {
+    const response: UpdateUserProfileResponse = {
+      error: "Username is the same as the old one.",
+      isUpdated: false,
+    };
+    return Response.json(response);
+  }
+
+  const gameUserPoints = await getGameUsersPoints();
+  const isAlreadyTaken = Object.keys(gameUserPoints).some(
+    (existingUsername) => existingUsername.toLowerCase().trim() === newUsername.toLowerCase().trim()
+  );
+
+  if (isAlreadyTaken) {
+    const response: UpdateUserProfileResponse = {
+      error: "Username is already taken.",
+      isUpdated: false,
+    };
+    return Response.json(response);
+  }
+
+  await updateGameProfile(userInfo.uid, { ...userProfile, username });
+
+  await renameUserInRateStat(oldUsername, newUsername);
+
+  const response: UpdateUserProfileResponse = {
+    error: null,
+    isUpdated: true,
+  };
+
+  return Response.json(response);
 }

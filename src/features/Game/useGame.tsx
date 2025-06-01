@@ -8,6 +8,7 @@ import {
   getSortedStats,
   getSortedStatsFromData,
   submitAnswerRequest,
+  updateUserProfileRequest,
 } from "@/app/api/game/gameRequests";
 import { usePathname } from "next/navigation";
 import { parseLangFromUrl } from "../Lang/parseLangFromUrl";
@@ -31,6 +32,7 @@ interface GameContextType {
   setNativeLanguageCode: (lang: SupportedLanguage) => void;
   myPosition: number | null;
   isGameWinner: boolean;
+  updateUsername: (username: string) => Promise<void>;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -154,6 +156,28 @@ function useProvideGame(): GameContextType {
     return myIndex < 5;
   }, [myProfile, stats]);
 
+  const updateUsername = async (username: string) => {
+    if (!userId) return;
+
+    const response = await updateUserProfileRequest(
+      {
+        username,
+      },
+      await auth.getToken()
+    );
+
+    if (response.isUpdated) {
+      setMyProfile((prev) => {
+        if (!prev) return null;
+        return { ...prev, username };
+      });
+      await getStats();
+    } else {
+      console.log("Failed to update username:", response.error);
+      alert(response.error || "Failed to update username");
+    }
+  };
+
   return {
     isGameWinner: isTop5Position,
     loadingProfile,
@@ -169,6 +193,7 @@ function useProvideGame(): GameContextType {
 
     nativeLanguageCode: nativeLanguageCode || null,
     setNativeLanguageCode,
+    updateUsername,
   };
 }
 

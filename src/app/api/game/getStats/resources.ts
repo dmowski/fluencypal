@@ -2,6 +2,8 @@ import { GameUsersPoints } from "@/features/Game/types";
 import { getDB } from "../../config/firebase";
 import { getGameProfile } from "../profile/getGameProfile";
 
+import firebaseAdmin from "firebase-admin";
+
 export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
   const db = getDB();
   const userDoc = await db.collection("game").doc("gamePoints").get();
@@ -10,6 +12,31 @@ export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
   }
   const data = userDoc.data() as GameUsersPoints;
   return data;
+};
+
+export const renameUserInRateStat = async (
+  oldUsername: string,
+  newUsername: string
+): Promise<void> => {
+  const db = getDB();
+  const userPoints = await getGameUsersPoints();
+
+  if (!userPoints[oldUsername]) {
+    throw new Error(`User ${oldUsername} does not exist.`);
+  }
+
+  const points = userPoints[oldUsername];
+
+  await db
+    .collection("game")
+    .doc("gamePoints")
+    .set(
+      {
+        [newUsername]: points,
+        [oldUsername]: firebaseAdmin.firestore.FieldValue.delete(),
+      },
+      { merge: true }
+    );
 };
 
 export const isUserIsGameWinner = async (userId: string): Promise<boolean> => {

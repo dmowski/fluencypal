@@ -1,5 +1,11 @@
 import { GameProfile, GameQuestionShort, GameUsersPoints, UsersStat } from "@/features/Game/types";
-import { GetGameQuestionsRequest, SubmitAnswerRequest, SubmitAnswerResponse } from "./types";
+import {
+  GetGameQuestionsRequest,
+  SubmitAnswerRequest,
+  SubmitAnswerResponse,
+  UpdateUserProfileRequest,
+  UpdateUserProfileResponse,
+} from "./types";
 
 export const getMyProfileRequest = async (authKey: string) => {
   const response = await fetch(`/api/game/profile`, {
@@ -69,5 +75,21 @@ export const submitAnswerRequest = async (request: SubmitAnswerRequest, authKey:
     body: JSON.stringify(request),
   });
   const data = (await response.json()) as SubmitAnswerResponse;
+  return data;
+};
+
+export const updateUserProfileRequest = async (
+  request: UpdateUserProfileRequest,
+  authKey: string
+) => {
+  const response = await fetch(`/api/game/profile`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authKey}`,
+    },
+    body: JSON.stringify(request),
+  });
+  const data = (await response.json()) as UpdateUserProfileResponse;
   return data;
 };

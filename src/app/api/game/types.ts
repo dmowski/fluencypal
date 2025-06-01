@@ -14,3 +14,12 @@ export interface SubmitAnswerResponse {
   isCorrect: boolean;
   updatedUserPoints: GameUsersPoints;
 }
+
+export interface UpdateUserProfileRequest {
+  username: string;
+}
+
+export interface UpdateUserProfileResponse {
+  error: string | null;
+  isUpdated: boolean;
+}

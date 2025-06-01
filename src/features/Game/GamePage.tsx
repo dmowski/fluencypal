@@ -1,11 +1,11 @@
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
 import { useGame } from "./useGame";
 import { LangSelector } from "../Lang/LangSelector";
 import { GameQuestion } from "./GameQuestion";
 import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useState } from "react";
-import { PencilIcon, Swords } from "lucide-react";
+import { useEffect, useState } from "react";
+import { CheckIcon, PencilIcon, Swords } from "lucide-react";
 import { useSettings } from "../Settings/useSettings";
 import { fullEnglishLanguageName } from "../Lang/lang";
 
@@ -20,6 +20,24 @@ export const GamePage = () => {
 
   const nativeLanguageFullName = fullEnglishLanguageName[game.nativeLanguageCode || "en"];
   const isShowLangSelector = isShowLangSelectorState || isNativeLanguageIsTheSameAsGameLanguage;
+
+  const [isEditUsername, setIsEditUsername] = useState(false);
+  const [internalUsername, setInternalUsername] = useState(game.myProfile?.username || "");
+  useEffect(() => {
+    if (game.myProfile?.username) {
+      setInternalUsername(game.myProfile.username);
+    }
+  }, [game.myProfile?.username]);
+
+  const saveUsername = async () => {
+    const internalUsernameTrimmed = internalUsername.trim().replaceAll(/\s+/g, " ");
+    if (internalUsernameTrimmed.length < 3) {
+      alert(i18n._(`Username must be at least 3 characters long.`));
+      return;
+    }
+    setIsEditUsername(false);
+    await game.updateUsername(internalUsernameTrimmed);
+  };
 
   return (
     <Stack
@@ -54,7 +72,35 @@ export const GamePage = () => {
           >
             {i18n._(`Your Username:`)}
           </Typography>
-          <Typography variant="h6">{game.myProfile?.username || "-"}</Typography>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            {isEditUsername ? (
+              <>
+                <TextField
+                  variant="outlined"
+                  size="small"
+                  value={internalUsername}
+                  onChange={(e) => setInternalUsername(e.target.value)}
+                  sx={{ width: "220px" }}
+                />
+                <IconButton onClick={() => saveUsername()} disabled={internalUsername.length < 3}>
+                  <CheckIcon size={"18px"} />
+                </IconButton>
+              </>
+            ) : (
+              <>
+                <Typography variant="h6">{game.myProfile?.username || "-"} </Typography>
+                <IconButton size="small" onClick={() => setIsEditUsername(!isEditUsername)}>
+                  <PencilIcon size={"11px"} />
+                </IconButton>
+              </>
+            )}
+          </Stack>
         </Stack>
 
         <Stack
