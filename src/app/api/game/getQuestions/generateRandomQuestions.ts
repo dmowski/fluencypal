@@ -51,7 +51,7 @@ const generateWordsQuestions = async ({
 Be creative and use different words from different parts of user's life.
 Use only ${fullEnglishLanguageName[learningLanguage]} language for generate words.
 
-Generate 10 words.
+Generate 20 words.
 Each word should be generated along with 4 ${isSameLanguage ? "synonyms" : "translation"} options. First of them should be correct.
 Do not wrap your answer in any intro or outro.
 
@@ -111,16 +111,19 @@ const generateSentenceQuestions = async ({
   });
 
   const { output } = await generateTextWithAi({
-    systemMessage: `You are system that should generate text to practice reading.
-Be creative and use different words and different parts of user's life.
+    systemMessage: `You should generate an imaginary story.
+Be creative and use words that will be easy to understand to user.
 Use only ${fullEnglishLanguageName[learningLanguage]} language on your response.
-Generate text within 10 sentences. Each sentence should be less than 7 words long.
+Generate text within 15 sentences. Each sentence should be less than 7 words long.
 Sentences should be grammatically correct and meaningful.
-Do not wrap your answer in any intro text
+Do not wrap your answer in any intro text.
 `,
     userMessage: userInfo,
     model: "gpt-4o",
   });
+  console.log("Sentences output");
+  console.log(output);
+  console.log("-----------------------------------");
 
   const sentences = splitTextIntoSentences(output).filter((sentence) => sentence.trim().length > 3);
 

@@ -4,6 +4,7 @@ import { GetGameQuestionsRequest } from "../types";
 import { generateRandomQuestions } from "./generateRandomQuestions";
 import { convertFullQuestionToShort, getUnansweredQuestions, setQuestion } from "./getQuestion";
 
+const alwaysGenerateQuestions = true; // Set to true to always generate questions
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
 
@@ -16,7 +17,7 @@ export async function POST(request: Request) {
   const userInfoRecords = aiUserInfo?.records || [];
 
   const unansweredQuestions = await getUnansweredQuestions(userInfo.uid, learningLanguage);
-  if (unansweredQuestions.length > 5) {
+  if (unansweredQuestions.length > 5 && !alwaysGenerateQuestions) {
     const responseData = unansweredQuestions.map((question) =>
       convertFullQuestionToShort(question)
     );
