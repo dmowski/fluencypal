@@ -5,6 +5,7 @@ import { uploadImage } from "./uploadImage";
 export async function GET(request: Request) {
   const queryParams = new URL(request.url).searchParams;
   const description = queryParams.get("description");
+  const fileName = queryParams.get("fileName");
   if (!description) {
     return Response.json({ error: "Description parameter is required" }, { status: 400 });
   }
@@ -18,6 +19,7 @@ export async function GET(request: Request) {
   const imageUrl = await uploadImage({
     imageBuffer: resizedImage,
     extension: "webp",
+    name: fileName + ".webp" || `image-${Date.now()}.webp`,
   });
 
   return Response.json({ description, imageUrl });

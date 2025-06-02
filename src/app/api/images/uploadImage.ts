@@ -12,7 +12,7 @@ export const uploadImage = async ({
   const bucket = getBucket();
   const randomName = Date.now().toString(10);
   const finalName = name || `${randomName}.min.${extension}`;
-  const filePath = `images/${finalName}`;
+  const filePath = `publicImages/${finalName}`;
   const file = bucket.file(filePath);
   await file.save(imageBuffer);
   await file.makePublic();
