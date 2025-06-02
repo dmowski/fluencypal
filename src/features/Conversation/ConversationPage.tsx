@@ -36,6 +36,7 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import { useTextAi } from "../Ai/useTextAi";
 import { GamePage } from "../Game/GamePage";
 import { GameProvider, useGame } from "../Game/useGame";
+import { sleep } from "openai/core.mjs";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -62,7 +63,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const textAi = useTextAi();
 
   const [isShowGoalModal, setIsShowGoalModal] = useState(false);
-  const [isProcessingGoal, setIsProcessingGoal] = useState(false);
+  const [isProcessingGoal, setIsProcessingGoal] = useState("");
   const [conversationAnalysis, setConversationAnalysis] = useState<string>("");
   const analyzeConversation = async () => {
     setConversationAnalysis("");
@@ -141,13 +142,13 @@ ${expectedStructure}
       return;
     }
 
-    setIsProcessingGoal(true);
+    setIsProcessingGoal(i18n._(`Processing goal...`) + "10%");
     isProcessingGoalRef.current = true;
 
     const goalData = await getGoalQuiz(goalId);
 
     if (!goalData || goalData.isCreated) {
-      setIsProcessingGoal(false);
+      setIsProcessingGoal("");
       isProcessingGoalRef.current = false;
 
       if (!goalData) {
@@ -166,6 +167,7 @@ ${expectedStructure}
 
     try {
       const code = await settings.setLanguage(goalData.languageToLearn);
+      setIsProcessingGoal(i18n._(`Processing goal...`) + "12%");
       console.log("code", code);
 
       const conversation: ChatMessage[] = [
@@ -187,6 +189,15 @@ About me: ${goalData.description}.`,
         setTimeout(async () => {
           const updatedInfoRecords = await userInfo.updateUserInfo(conversation, code);
           console.log("updatedInfoRecords", updatedInfoRecords);
+          setIsProcessingGoal(i18n._(`Processing goal...`) + "32%");
+
+          sleep(3000).then(() => {
+            setIsProcessingGoal(i18n._(`Processing goal...`) + "50%");
+          });
+
+          sleep(4500).then(() => {
+            setIsProcessingGoal(i18n._(`Processing goal...`) + "60%");
+          });
 
           const planData = await plan.generateGoal({
             conversationMessages: conversation,
@@ -194,13 +205,17 @@ About me: ${goalData.description}.`,
             languageCode: code,
             goalQuiz: goalData,
           });
+          setIsProcessingGoal(i18n._(`Processing goal...`) + "72%");
 
           console.log("USER PLAN", planData);
 
           await plan.addGoalPlan(planData);
 
+          setIsProcessingGoal(i18n._(`Processing goal...`) + "82%");
+
           removeGoalIdFromUrl();
           await deleteGoalQuiz(goalId);
+          setIsProcessingGoal(i18n._(`Processing goal...`) + "99%");
 
           resolve(true);
         }, 100)
@@ -221,7 +236,7 @@ About me: ${goalData.description}.`,
       console.error("Error processing goal", error);
     }
 
-    setIsProcessingGoal(false);
+    setIsProcessingGoal("");
     isProcessingGoalRef.current = false;
   };
 
@@ -266,7 +281,7 @@ About me: ${goalData.description}.`,
   }
 
   if (isProcessingGoal) {
-    return <InfoBlockedSection title={i18n._(`Loading Goal...`)} />;
+    return <InfoBlockedSection title={isProcessingGoal || i18n._(`Loading Goal...`)} />;
   }
 
   if (gamePage) {
