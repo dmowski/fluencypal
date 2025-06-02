@@ -194,7 +194,7 @@ export const generateRandomQuestions = async ({
   nativeLanguage,
   learningLanguage,
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
-  const [sentenceQuestions, wordsQuestions] = await Promise.all([
+  const questions = await Promise.all([
     generateImageQuestions({
       userInfoRecords,
       nativeLanguage,
@@ -212,7 +212,7 @@ export const generateRandomQuestions = async ({
     }),
   ]);
 
-  const questionsOutput: QuestionOutput[] = [...sentenceQuestions, ...wordsQuestions];
+  const questionsOutput: QuestionOutput[] = questions.flat();
   const shuffledQuestions = shuffleArray(questionsOutput);
   return shuffledQuestions;
 };

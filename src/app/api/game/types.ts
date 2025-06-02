@@ -13,6 +13,7 @@ export interface SubmitAnswerRequest {
 export interface SubmitAnswerResponse {
   isCorrect: boolean;
   updatedUserPoints: GameUsersPoints;
+  description: string | null;
 }
 
 export interface UpdateUserProfileRequest {
