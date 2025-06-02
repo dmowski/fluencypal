@@ -82,6 +82,8 @@ If not relevant information found, return empty array.`;
       model: "gpt-4o",
       languageCode: lang,
     });
+    console.log("Summary from conversation:", summaryFromConversation);
+
     const parsedSummary = JSON.parse(summaryFromConversation) as string[];
     console.log("parsedSummary", { aiUserMessage, parsedSummary });
 
