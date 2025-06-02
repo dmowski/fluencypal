@@ -26,7 +26,10 @@ interface GameContextType {
   generateQuestions: () => Promise<void>;
   questions: GameQuestionShort[];
   activeQuestion: GameQuestionShort | null;
-  submitAnswer: (questionId: string, answer: string) => Promise<boolean>;
+  submitAnswer: (
+    questionId: string,
+    answer: string
+  ) => Promise<{ isCorrect: boolean; description: string | null }>;
   nextQuestion: () => void;
 
   nativeLanguageCode: SupportedLanguage | null;
@@ -119,6 +122,7 @@ function useProvideGame(): GameContextType {
       await auth.getToken()
     );
     const isCorrect = response.isCorrect;
+    const description = response.description;
     if (isCorrect) {
       const newQuestions = questions.filter((question) => question.id !== questionId);
       setQuestions(newQuestions);
@@ -127,7 +131,7 @@ function useProvideGame(): GameContextType {
         loadMoreQuestions();
       }
     }
-    return isCorrect;
+    return { isCorrect, description };
   };
 
   const nextQuestion = () => {

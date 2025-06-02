@@ -66,6 +66,7 @@ export const convertFullQuestionToShort = (question: GameQuestionFull): GameQues
     type: question.type,
     question: question.question,
     options: question.options,
+    imageUrl: question.imageUrl,
   };
   return shortQuestion;
 };

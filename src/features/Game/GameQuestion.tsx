@@ -1,13 +1,16 @@
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
 import { GameQuestionShort, GameQuestionType } from "./types";
 import { useEffect, useState } from "react";
-import { Check, ChevronRight, Delete, ShieldAlert } from "lucide-react";
+import { Check, CheckCheck, ChevronRight, Delete, ShieldAlert } from "lucide-react";
 import { useLingui } from "@lingui/react";
 import { useGame } from "./useGame";
 
 interface GameQuestionProps {
   question: GameQuestionShort;
-  onSubmitAnswer: (questionId: string, answer: string) => Promise<boolean>;
+  onSubmitAnswer: (
+    questionId: string,
+    answer: string
+  ) => Promise<{ isCorrect: boolean; description: string | null }>;
   onNext: () => void;
 }
 
@@ -17,17 +20,22 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
   const game = useGame();
+  const [textAnswer, setTextAnswer] = useState<string>("");
+  const [answerDescription, setAnswerDescription] = useState<string | null>(null);
 
   useEffect(() => {
     setSelectedAnswer(null);
     setIsCorrect(null);
     setSelectedWords([]);
+    setTextAnswer("");
+    setAnswerDescription(null);
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
-    const isCorrect = await onSubmitAnswer(question.id, answer);
+    const { isCorrect, description } = await onSubmitAnswer(question.id, answer);
     setIsSubmitting(false);
+    setAnswerDescription(description || null);
     setIsCorrect(isCorrect);
   };
 
@@ -59,11 +67,50 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
 
         {question.type === "describe_image" && (
           <>
-            <img
-              src={question.imageUrl}
-              alt={question.question}
-              style={{ width: "100%", objectFit: "cover" }}
-            />
+            <Stack
+              sx={{
+                gap: "10px",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingBottom: "20px",
+              }}
+            >
+              <img src={question.imageUrl} style={{ width: "100%", objectFit: "cover" }} />
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  width: "100%",
+                  gap: "10px",
+                  boxSizing: "border-box",
+                }}
+              >
+                <TextField
+                  value={textAnswer}
+                  onChange={(e) => setTextAnswer(e.target.value)}
+                  placeholder={i18n._("Describe the image")}
+                  fullWidth
+                  disabled={isSubmitting || isCorrect !== null}
+                />
+                <IconButton
+                  disabled={isSubmitting || textAnswer.length < 3}
+                  onClick={() => handleAnswerSubmit(textAnswer)}
+                >
+                  <Check />
+                </IconButton>
+              </Stack>
+              {isCorrect !== null && (
+                <Stack
+                  sx={{
+                    width: "100%",
+                  }}
+                >
+                  <Typography color={isCorrect ? "success" : "error"}>
+                    {answerDescription}
+                  </Typography>
+                </Stack>
+              )}
+            </Stack>
           </>
         )}
 
