@@ -1,11 +1,12 @@
 import { SupportedLanguage } from "../Lang/lang";
 
-export type GameQuestionType = "translate" | "sentence";
+export type GameQuestionType = "translate" | "sentence" | "describe_image";
 
 export interface GameQuestionShort {
   id: string;
   type: GameQuestionType;
   question: string;
+  imageUrl?: string;
   options: string[];
 }
 

@@ -2,6 +2,7 @@ import { GameQuestionShort, GameQuestionFull } from "@/features/Game/types";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
 import { generateTextWithAi } from "../../ai/generateTextWithAi";
 import { shuffleArray } from "@/libs/array";
+import { imageDescriptions } from "@/features/Game/ImagesServer";
 
 interface QuestionOutput {
   fullQuestions: GameQuestionFull;
@@ -33,6 +34,36 @@ const splitTextIntoSentences = (text: string): string[] => {
 const splitSentenceIntoWords = (sentence: string): string[] => {
   const words = sentence.split(/\s+/);
   return words.map((word) => word.trim());
+};
+
+const generateImageQuestions = async ({
+  userInfoRecords,
+  nativeLanguage,
+  learningLanguage,
+}: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
+  const allQuestions: QuestionOutput[] = imageDescriptions.map((image) => {
+    const shortQuestion: GameQuestionShort = {
+      id: `${Date.now()}_img_${image.id}`,
+      type: "describe_image",
+      question: image.shortDescription,
+      imageUrl: image.url,
+      options: [],
+    };
+
+    const fullQuestion: GameQuestionFull = {
+      ...shortQuestion,
+      createdAt: Date.now(),
+      answeredAt: null,
+      isAnsweredCorrectly: null,
+      learningLanguage: learningLanguage,
+      correctAnswer: image.fullImageDescription,
+    };
+    return {
+      fullQuestions: fullQuestion,
+      shortQuestions: shortQuestion,
+    };
+  });
+  return allQuestions;
 };
 
 const generateWordsQuestions = async ({
@@ -164,6 +195,11 @@ export const generateRandomQuestions = async ({
   learningLanguage,
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
   const [sentenceQuestions, wordsQuestions] = await Promise.all([
+    generateImageQuestions({
+      userInfoRecords,
+      nativeLanguage,
+      learningLanguage,
+    }),
     generateSentenceQuestions({
       userInfoRecords,
       nativeLanguage,

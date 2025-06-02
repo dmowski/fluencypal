@@ -37,16 +37,4 @@ export async function GET(request: Request) {
   );
 
   return Response.json({ description: "hello", generatedImages });
-
-  /*
-  const generateImage = await generateImageBuffer(description);
-  const resizedImage = await resizeImage(generateImage, 1024, "webp");
-  const imageUrl = await uploadImage({
-    imageBuffer: resizedImage,
-    extension: "webp",
-    name: fileName + ".webp" || `image-${Date.now()}.webp`,
-  });
-
-  return Response.json({ description, imageUrl });
-  */
 }

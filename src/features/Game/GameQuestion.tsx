@@ -36,6 +36,7 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
   const labelMap: Record<GameQuestionType, string> = {
     translate: i18n._("Translate"),
     sentence: i18n._("Craft a sentence"),
+    describe_image: i18n._("Describe the image"),
   };
 
   const gameLabel = labelMap[question.type];
@@ -50,117 +51,84 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
         <Typography
           variant="caption"
           sx={{
-            //textTransform: "uppercase",
             paddingBottom: "35px",
           }}
         >
           {gameLabel}
         </Typography>
 
+        {question.type === "describe_image" && (
+          <>
+            <img
+              src={question.imageUrl}
+              alt={question.question}
+              style={{ width: "100%", objectFit: "cover" }}
+            />
+          </>
+        )}
+
         {question.type === "translate" && (
-          <Typography variant="h4" className="decor-text">
-            {question.question}
-          </Typography>
-        )}
+          <>
+            <Typography variant="h4" className="decor-text">
+              {question.question}
+            </Typography>
 
-        {question.type === "sentence" && (
-          <Stack
-            sx={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              gap: "10px",
-              paddingTop: "10px",
-            }}
-          >
-            {question.options.map((answer, index) => {
-              const isSelected = selectedWords.includes(answer);
-
-              return (
-                <Stack key={index} sx={{}}>
-                  <Button
-                    disabled={isSelected}
-                    variant={"outlined"}
-                    onClick={() => {
-                      if (isCorrect !== null) {
-                        return;
-                      }
-                      setSelectedWords((prev) => {
-                        if (prev.includes(answer)) {
-                          return prev.filter((word) => word !== answer);
-                        }
-                        return [...prev, answer];
-                      });
-                    }}
-                    sx={{
-                      textTransform: "none",
-                    }}
-                  >
-                    {answer}
-                  </Button>
-                </Stack>
-              );
-            })}
-          </Stack>
-        )}
-
-        {question.type === "sentence" && (
-          <Stack
-            sx={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              alignItems: "center",
-              gap: "0 7px",
-              paddingTop: "12px",
-            }}
-          >
-            {question.options
-              .filter((answer) => selectedWords.includes(answer))
-              .map((answer, index) => {
-                const word = selectedWords[index] || "";
-
-                return (
-                  <Stack
-                    key={index}
-                    sx={{
-                      padding: "0px",
-                      borderRadius: "3px",
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        color: isCorrect ? "#4ADE80" : isCorrect === false ? "#F87171" : "#fff",
-                      }}
-                    >
-                      {word}
-                    </Typography>
-                  </Stack>
-                );
-              })}
-
-            {isCorrect === true && <Check size={"18px"} color="#4ADE80" />}
-            {isCorrect === false && <ShieldAlert size={"18px"} color="#F87171" />}
-
-            {selectedWords.length > 0 && isCorrect === null && (
-              <IconButton
-                size="small"
-                disabled={selectedWords.length === 0}
-                onClick={() => {
-                  setSelectedWords((prev) => {
-                    const newWords = [...prev];
-                    newWords.pop();
-                    return newWords;
-                  });
+            <Stack>
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                  paddingTop: "10px",
                 }}
               >
-                <Delete size={"15px"} />
-              </IconButton>
-            )}
-          </Stack>
+                {question.options.map((answer, index) => {
+                  const isCorrectOption =
+                    question.type === "translate" && isCorrect && selectedAnswer === answer;
+
+                  const isInCorrectOption =
+                    question.type === "translate" &&
+                    isCorrect === false &&
+                    selectedAnswer === answer;
+
+                  return (
+                    <Stack key={index} sx={{}}>
+                      <Button
+                        variant={selectedAnswer === answer ? "contained" : "outlined"}
+                        startIcon={isCorrectOption ? <Check /> : undefined}
+                        color={
+                          isCorrectOption ? "success" : isInCorrectOption ? "error" : "primary"
+                        }
+                        onClick={() => {
+                          if (isCorrect !== null) {
+                            return;
+                          }
+                          setSelectedAnswer(answer);
+                          handleAnswerSubmit(answer);
+                        }}
+                      >
+                        {answer}
+                      </Button>
+                    </Stack>
+                  );
+                })}
+              </Stack>
+              {isSubmitting && (
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
+                  {i18n._(`Loading...`)}
+                </Typography>
+              )}
+            </Stack>
+          </>
         )}
 
-        {question.type === "translate" && (
-          <Stack>
+        {question.type === "sentence" && (
+          <>
             <Stack
               sx={{
                 flexDirection: "row",
@@ -170,24 +138,26 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
               }}
             >
               {question.options.map((answer, index) => {
-                const isCorrectOption =
-                  question.type === "translate" && isCorrect && selectedAnswer === answer;
-
-                const isInCorrectOption =
-                  question.type === "translate" && isCorrect === false && selectedAnswer === answer;
+                const isSelected = selectedWords.includes(answer);
 
                 return (
                   <Stack key={index} sx={{}}>
                     <Button
-                      variant={selectedAnswer === answer ? "contained" : "outlined"}
-                      startIcon={isCorrectOption ? <Check /> : undefined}
-                      color={isCorrectOption ? "success" : isInCorrectOption ? "error" : "primary"}
+                      disabled={isSelected}
+                      variant={"outlined"}
                       onClick={() => {
                         if (isCorrect !== null) {
                           return;
                         }
-                        setSelectedAnswer(answer);
-                        handleAnswerSubmit(answer);
+                        setSelectedWords((prev) => {
+                          if (prev.includes(answer)) {
+                            return prev.filter((word) => word !== answer);
+                          }
+                          return [...prev, answer];
+                        });
+                      }}
+                      sx={{
+                        textTransform: "none",
                       }}
                     >
                       {answer}
@@ -196,17 +166,61 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
                 );
               })}
             </Stack>
-            {isSubmitting && (
-              <Typography
-                variant="caption"
-                sx={{
-                  opacity: 0.7,
-                }}
-              >
-                {i18n._(`Loading...`)}
-              </Typography>
-            )}
-          </Stack>
+
+            <Stack
+              sx={{
+                flexDirection: "row",
+                flexWrap: "wrap",
+                alignItems: "center",
+                gap: "0 7px",
+                paddingTop: "12px",
+              }}
+            >
+              {question.options
+                .filter((answer) => selectedWords.includes(answer))
+                .map((answer, index) => {
+                  const word = selectedWords[index] || "";
+
+                  return (
+                    <Stack
+                      key={index}
+                      sx={{
+                        padding: "0px",
+                        borderRadius: "3px",
+                      }}
+                    >
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          color: isCorrect ? "#4ADE80" : isCorrect === false ? "#F87171" : "#fff",
+                        }}
+                      >
+                        {word}
+                      </Typography>
+                    </Stack>
+                  );
+                })}
+
+              {isCorrect === true && <Check size={"18px"} color="#4ADE80" />}
+              {isCorrect === false && <ShieldAlert size={"18px"} color="#F87171" />}
+
+              {selectedWords.length > 0 && isCorrect === null && (
+                <IconButton
+                  size="small"
+                  disabled={selectedWords.length === 0}
+                  onClick={() => {
+                    setSelectedWords((prev) => {
+                      const newWords = [...prev];
+                      newWords.pop();
+                      return newWords;
+                    });
+                  }}
+                >
+                  <Delete size={"15px"} />
+                </IconButton>
+              )}
+            </Stack>
+          </>
         )}
       </Stack>
 
