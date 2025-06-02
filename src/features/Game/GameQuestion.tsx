@@ -105,9 +105,15 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
                     width: "100%",
                   }}
                 >
-                  <Typography color={isCorrect ? "success" : "error"}>
-                    {answerDescription}
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      color: isCorrect ? "#4ADE80" : "#F87171",
+                    }}
+                  >
+                    {isCorrect ? i18n._("Correct!") : i18n._("Incorrect!")}
                   </Typography>
+                  <Typography>{answerDescription}</Typography>
                 </Stack>
               )}
             </Stack>
