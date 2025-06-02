@@ -13,11 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/GamePage.tsx:35
-#. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "O nome de usuário deve ter pelo menos 3 caracteres."
-
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -709,10 +704,10 @@ msgstr "Histórico de pagamento:"
 #: src/features/Usage/PaymentModal.tsx:625
 #: src/features/RolePlay/RolePlayBoard.tsx:632
 #: src/features/Game/GameQuestion.tsx:206
-#: src/features/Conversation/ConversationPage.tsx:257
-#: src/features/Conversation/ConversationPage.tsx:265
-#: src/features/Conversation/ConversationPage.tsx:278
-#: src/features/Conversation/ConversationPage.tsx:292
+#: src/features/Conversation/ConversationPage.tsx:272
+#: src/features/Conversation/ConversationPage.tsx:280
+#: src/features/Conversation/ConversationPage.tsx:293
+#: src/features/Conversation/ConversationPage.tsx:307
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Carregando..."
@@ -3358,6 +3353,11 @@ msgstr "Crie uma frase"
 msgid "My Position:"
 msgstr "Minha Posição:"
 
+#: src/features/Game/GamePage.tsx:35
+#. js-lingui-explicit-id
+msgid "Username must be at least 3 characters long."
+msgstr "O nome de usuário deve ter pelo menos 3 caracteres."
+
 #: src/features/Game/GamePage.tsx:73
 #. js-lingui-explicit-id
 msgid "Your Username:"
@@ -3723,27 +3723,39 @@ msgstr "Menos"
 msgid "More"
 msgstr "Mais"
 
-#: src/features/Conversation/ConversationPage.tsx:123
+#: src/features/Conversation/ConversationPage.tsx:124
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "Erro ao analisar conversa"
 
-#: src/features/Conversation/ConversationPage.tsx:217
+#: src/features/Conversation/ConversationPage.tsx:145
+#: src/features/Conversation/ConversationPage.tsx:170
+#: src/features/Conversation/ConversationPage.tsx:192
+#: src/features/Conversation/ConversationPage.tsx:195
+#: src/features/Conversation/ConversationPage.tsx:199
+#: src/features/Conversation/ConversationPage.tsx:208
+#: src/features/Conversation/ConversationPage.tsx:214
+#: src/features/Conversation/ConversationPage.tsx:218
+#. js-lingui-explicit-id
+msgid "Processing goal..."
+msgstr "Processando objetivo..."
+
+#: src/features/Conversation/ConversationPage.tsx:232
 #. js-lingui-explicit-id
 msgid "Error processing goal"
 msgstr "Erro ao processar o objetivo"
 
-#: src/features/Conversation/ConversationPage.tsx:269
+#: src/features/Conversation/ConversationPage.tsx:284
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Carregando Objetivo..."
 
-#: src/features/Conversation/ConversationPage.tsx:300
+#: src/features/Conversation/ConversationPage.tsx:315
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Criando novas palavras..."
 
-#: src/features/Conversation/ConversationPage.tsx:304
+#: src/features/Conversation/ConversationPage.tsx:319
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Criando nova regra..."
