@@ -1,9 +1,8 @@
-import { GameUsersPoints } from "@/features/Game/types";
+import { GameUsersPoints, SubmitAnswerRequest, SubmitAnswerResponse } from "@/features/Game/types";
 import { validateAuthToken } from "../../config/firebase";
 import { getQuestionById, setQuestion } from "../getQuestions/getQuestion";
 import { getGameUsersPoints, increaseUserPoints } from "../getStats/resources";
 import { getGameProfile } from "../profile/getGameProfile";
-import { SubmitAnswerRequest, SubmitAnswerResponse } from "../types";
 import { generateTextWithAi } from "../../ai/generateTextWithAi";
 
 export async function POST(request: Request) {

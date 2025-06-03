@@ -1,6 +1,6 @@
+import { GetGameQuestionsRequest } from "@/features/Game/types";
 import { validateAuthToken } from "../../config/firebase";
 import { getUserAiInfo, getUserInfo } from "../../user/getUserInfo";
-import { GetGameQuestionsRequest } from "../types";
 import { generateRandomQuestions } from "./generateRandomQuestions";
 import { convertFullQuestionToShort, getUnansweredQuestions, setQuestion } from "./getQuestion";
 

@@ -1,10 +1,10 @@
+import { UpdateUserProfileRequest, UpdateUserProfileResponse } from "@/features/Game/types";
 import { validateAuthToken } from "../../config/firebase";
 import {
   getGameUsersPoints,
   increaseUserPoints,
   renameUserInRateStat,
 } from "../getStats/resources";
-import { UpdateUserProfileRequest, UpdateUserProfileResponse } from "../types";
 import { generateRandomUsername } from "./generateRandomUserName";
 import { getGameProfile } from "./getGameProfile";
 import { updateGameProfile } from "./updateGameProfile";

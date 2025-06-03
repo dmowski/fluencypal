@@ -8,7 +8,7 @@ import {
   getSortedStatsFromData,
   submitAnswerRequest,
   updateUserProfileRequest,
-} from "@/app/api/game/gameRequests";
+} from "@/features/Game/gameBackendRequests";
 import { usePathname } from "next/navigation";
 import { parseLangFromUrl } from "../Lang/parseLangFromUrl";
 import { useLocalStorage } from "react-use";
