@@ -3,12 +3,13 @@ import { getQuestionById, setQuestion } from "./getQuestion";
 import { getGameUsersPoints, increaseUserPoints } from "./statsResources";
 import { generateTextWithAi } from "@/app/api/ai/generateTextWithAi";
 import { getGameProfile } from "./getGameProfile";
+import { AuthUserInfo } from "@/app/api/config/type";
 
 export const submitAnswer = async ({
   data,
   userInfo,
 }: {
-  userInfo: { uid: string };
+  userInfo: AuthUserInfo;
   data: SubmitAnswerRequest;
 }): Promise<SubmitAnswerResponse> => {
   const question = await getQuestionById({

@@ -1,5 +1,6 @@
 import { firebaseConfig } from "@/common/firebaseConfig";
 import firebaseAdmin from "firebase-admin";
+import { AuthUserInfo } from "./type";
 
 const serviceAccount = JSON.parse(process.env.FIREBASE_STORAGE_SERVICE_ACCOUNT_CREDS as string);
 
@@ -39,7 +40,7 @@ const getDB = () => {
   return app.firestore();
 };
 
-const validateAuthToken = async (req: Request) => {
+const validateAuthToken = async (req: Request): Promise<AuthUserInfo> => {
   const authHeader = req.headers.get("authorization");
   if (!authHeader) {
     throw new Error("Authorization header is required");
@@ -55,7 +56,7 @@ const validateAuthToken = async (req: Request) => {
 
     const { uid, email } = decodedToken;
 
-    return { uid, email };
+    return { uid, email: email || "" };
   } catch (error) {
     console.error("Error validating token", error);
     throw new Error("Invalid token");
