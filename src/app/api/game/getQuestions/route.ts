@@ -5,7 +5,7 @@ import { generateUsersQuestions } from "@/features/Game/api/generateUsersQuestio
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
   const requestData = (await request.json()) as GetGameQuestionsRequest;
-  const responseData = generateUsersQuestions({
+  const responseData = await generateUsersQuestions({
     userInfo,
     requestData,
   });
