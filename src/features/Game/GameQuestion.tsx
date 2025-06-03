@@ -1,9 +1,10 @@
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
 import { GameQuestionShort, GameQuestionType } from "./types";
 import { useEffect, useState } from "react";
-import { Check, CheckCheck, ChevronRight, Delete, ShieldAlert } from "lucide-react";
+import { Check, CheckCheck, ChevronRight, Delete, Mic, ShieldAlert } from "lucide-react";
 import { useLingui } from "@lingui/react";
 import { useGame } from "./useGame";
+import { useAudioRecorder } from "../Audio/useAudioRecorder";
 
 interface GameQuestionProps {
   question: GameQuestionShort;
@@ -22,13 +23,16 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
   const game = useGame();
   const [textAnswer, setTextAnswer] = useState<string>("");
   const [answerDescription, setAnswerDescription] = useState<string | null>(null);
-
+  const recorder = useAudioRecorder();
+  const [isUseMicrophone, setIsUseMicrophone] = useState<boolean>(false);
   useEffect(() => {
     setSelectedAnswer(null);
     setIsCorrect(null);
     setSelectedWords([]);
     setTextAnswer("");
     setAnswerDescription(null);
+    recorder.removeTranscript();
+    setIsUseMicrophone(Math.random() < 0.5);
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
@@ -85,20 +89,127 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
                   boxSizing: "border-box",
                 }}
               >
-                <TextField
-                  value={textAnswer}
-                  onChange={(e) => setTextAnswer(e.target.value)}
-                  placeholder={i18n._("Describe the image")}
-                  fullWidth
-                  disabled={isSubmitting || isCorrect !== null}
-                />
-                <IconButton
-                  disabled={isSubmitting || textAnswer.length < 3}
-                  onClick={() => handleAnswerSubmit(textAnswer)}
-                >
-                  <Check />
-                </IconButton>
+                {isUseMicrophone ? (
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      width: "100%",
+                    }}
+                  >
+                    {recorder.isRecording ? (
+                      <>
+                        <Button
+                          startIcon={<Check />}
+                          variant="contained"
+                          onClick={() => recorder.stopRecording()}
+                        >
+                          {i18n._(`Stop recording`)}
+                        </Button>
+                      </>
+                    ) : (
+                      <Button
+                        startIcon={<Mic />}
+                        variant="contained"
+                        disabled={isCorrect !== null}
+                        onClick={() => {
+                          recorder.removeTranscript();
+                          recorder.startRecording();
+                        }}
+                      >
+                        {i18n._(`Record an answer`)}
+                      </Button>
+                    )}
+
+                    {recorder.visualizerComponent}
+                  </Stack>
+                ) : (
+                  <>
+                    <TextField
+                      value={textAnswer}
+                      onChange={(e) => setTextAnswer(e.target.value)}
+                      placeholder={i18n._("Describe the image")}
+                      fullWidth
+                      disabled={isSubmitting || isCorrect !== null}
+                    />
+                    <IconButton
+                      disabled={isSubmitting || textAnswer.length < 3}
+                      onClick={() => handleAnswerSubmit(textAnswer)}
+                    >
+                      <Check />
+                    </IconButton>
+                  </>
+                )}
               </Stack>
+
+              {recorder.error && (
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "red",
+                    paddingTop: "10px",
+                  }}
+                >
+                  {i18n._(`Error: `) + recorder.error}
+                </Typography>
+              )}
+
+              {recorder.isTranscribing && (
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
+                  {i18n._(`Transcribing...`)}
+                </Typography>
+              )}
+              {recorder.transcription && (
+                <Stack
+                  sx={{
+                    width: "100%",
+                    paddingTop: "10px",
+                    gap: "10px",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      paddingTop: "10px",
+                      opacity: 0.7,
+                      width: "100%",
+                    }}
+                  >
+                    {i18n._("Transcription:") + " " + recorder.transcription}
+                  </Typography>
+
+                  <Button
+                    variant="contained"
+                    disabled={
+                      isCorrect !== null ||
+                      isSubmitting ||
+                      recorder.isRecording ||
+                      !recorder?.transcription ||
+                      recorder.transcription.length < 3
+                    }
+                    onClick={() => handleAnswerSubmit(recorder?.transcription || "")}
+                  >
+                    {i18n._("Submit answer")}
+                  </Button>
+                </Stack>
+              )}
+
+              {isSubmitting && (
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
+                  {i18n._(`Loading...`)}
+                </Typography>
+              )}
               {isCorrect !== null && (
                 <Stack
                   sx={{

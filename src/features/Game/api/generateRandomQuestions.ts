@@ -87,8 +87,14 @@ Each word should be generated along with 4 ${isSameLanguage ? "synonyms" : "tran
 Do not wrap your answer in any intro or outro.
 
 Example of your response:
-Dog - ${isSameLanguage ? "animal, bird, helicopter" : "пес, кошка, кот, зебра"}
-Wolf - ${isSameLanguage ? "animal, bird, helicopter" : "волк, стакан, лиса, медведь"}
+* Dog - ${isSameLanguage ? "animal, bird, helicopter" : "пес, кошка, кот, зебра"}
+* Wolf - ${isSameLanguage ? "animal, bird, helicopter" : "волк, стакан, лиса, медведь"}
+
+
+Format of your response:
+* Word - option1, option2, option3, option4
+
+Strictly follow the formate, because it will be parsed by the code.
 `,
     userMessage: userInfo,
     model: "gpt-4o",
@@ -101,7 +107,11 @@ Wolf - ${isSameLanguage ? "animal, bird, helicopter" : "волк, стакан, 
 
   const allQuestions: QuestionOutput[] = lines.map((line, index) => {
     const wordAndOptions = line.split("-");
-    const word = wordAndOptions[0]?.trim() || "";
+    let word = wordAndOptions[0]?.trim() || "";
+    word = word.replace(/[*]/g, "").trim(); // Remove any asterisks if present
+    // remove start number if present
+    word = word.replace(/^\d+\.\s*/, "").trim(); // Remove any leading numbers and dots
+
     const options = wordAndOptions[1]?.split(",").map((option) => option.trim()) || [];
 
     const correctOption = options?.[0] || "";
@@ -145,7 +155,7 @@ const generateSentenceQuestions = async ({
     systemMessage: `You should generate an imaginary story.
 Be creative and use words that will be easy to understand to user.
 Use only ${fullEnglishLanguageName[learningLanguage]} language on your response.
-Generate text within 15 sentences. Each sentence should be less than 7 words long.
+Generate text within 5 sentences. Each sentence should be less than 7 words long.
 Sentences should be grammatically correct and meaningful.
 Do not wrap your answer in any intro text.
 `,
