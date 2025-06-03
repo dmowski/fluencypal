@@ -37,6 +37,7 @@ import { useTextAi } from "../Ai/useTextAi";
 import { GamePage } from "../Game/GamePage";
 import { GameProvider, useGame } from "../Game/useGame";
 import { sleep } from "openai/core.mjs";
+import { useGoalCreation } from "../Plan/useGoalCreation";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -56,14 +57,16 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const game = useGame();
   const plan = usePlan();
   const searchParams = useSearchParams();
-  const goalId = searchParams.get("goalId");
+
   const gamePage = searchParams.get("gamePage");
   const userInfo = useAiUserInfo();
   const notifications = useNotifications();
   const textAi = useTextAi();
 
+  const { isProcessingGoal, setIsProcessingGoal } = useGoalCreation();
+
   const [isShowGoalModal, setIsShowGoalModal] = useState(false);
-  const [isProcessingGoal, setIsProcessingGoal] = useState("");
+
   const [conversationAnalysis, setConversationAnalysis] = useState<string>("");
   const analyzeConversation = async () => {
     setConversationAnalysis("");
@@ -129,138 +132,6 @@ ${expectedStructure}
     }
   };
   const router = useRouter();
-  const removeGoalIdFromUrl = () => {
-    const searchParams = new URLSearchParams(window.location.search);
-    searchParams.delete("goalId");
-    window.history.replaceState({}, "", `${window.location.pathname}?${searchParams}`);
-  };
-
-  const isProcessingGoalRef = useRef(false);
-
-  const processNewGoalFromUrl = async (goalId: string) => {
-    if (isProcessingGoalRef.current) {
-      return;
-    }
-
-    setIsProcessingGoal(i18n._(`Processing goal...`) + "10%");
-    isProcessingGoalRef.current = true;
-
-    const goalData = await getGoalQuiz(goalId);
-
-    if (!goalData || goalData.isCreated) {
-      setIsProcessingGoal("");
-      isProcessingGoalRef.current = false;
-
-      if (!goalData) {
-        Sentry.captureException(new Error("Goal already created or not found"), {
-          extra: {
-            goalId,
-            userId: auth.uid,
-            userInfo: userInfo.userInfo,
-            goalData,
-          },
-        });
-        console.error("Goal already created or not found", goalId);
-      }
-      return;
-    }
-
-    try {
-      const code = await settings.setLanguage(goalData.languageToLearn);
-      setIsProcessingGoal(i18n._(`Processing goal...`) + "12%");
-      console.log("code", code);
-
-      const conversation: ChatMessage[] = [
-        {
-          isBot: true,
-          text: `Tell me about your goal to learn ${goalData.languageToLearn}.`,
-          id: "1",
-        },
-        {
-          isBot: false,
-          id: "2",
-          text: `I want to learn ${goalData.languageToLearn}. 
-My language level is ${goalData.level}.
-About me: ${goalData.description}.`,
-        },
-      ];
-
-      await new Promise((resolve) =>
-        setTimeout(async () => {
-          const updatedInfoRecords = await userInfo.updateUserInfo(conversation, code);
-          console.log("updatedInfoRecords", updatedInfoRecords);
-          setIsProcessingGoal(i18n._(`Processing goal...`) + "32%");
-
-          sleep(3000).then(() => {
-            setIsProcessingGoal(i18n._(`Processing goal...`) + "50%");
-          });
-
-          sleep(4500).then(() => {
-            setIsProcessingGoal(i18n._(`Processing goal...`) + "60%");
-          });
-
-          const planData = await plan.generateGoal({
-            conversationMessages: conversation,
-            userInfo: updatedInfoRecords.records,
-            languageCode: code,
-            goalQuiz: goalData,
-          });
-          setIsProcessingGoal(i18n._(`Processing goal...`) + "72%");
-
-          console.log("USER PLAN", planData);
-
-          await plan.addGoalPlan(planData);
-
-          setIsProcessingGoal(i18n._(`Processing goal...`) + "82%");
-
-          removeGoalIdFromUrl();
-          await deleteGoalQuiz(goalId);
-          setIsProcessingGoal(i18n._(`Processing goal...`) + "99%");
-
-          resolve(true);
-        }, 100)
-      );
-    } catch (error) {
-      Sentry.captureException(error, {
-        extra: {
-          goalId,
-          userId: auth.uid,
-          userInfo: userInfo.userInfo,
-        },
-      });
-
-      notifications.show(i18n._(`Error processing goal`) + "=" + error, {
-        severity: "error",
-      });
-
-      console.error("Error processing goal", error);
-    }
-
-    setIsProcessingGoal("");
-    isProcessingGoalRef.current = false;
-  };
-
-  useEffect(() => {
-    if (
-      !auth.isAuthorized ||
-      !goalId ||
-      settings.loading ||
-      !settings.userCreatedAt ||
-      !auth.uid ||
-      usage.loading
-    ) {
-      return;
-    }
-
-    processNewGoalFromUrl(goalId);
-  }, [
-    goalId,
-    auth.isAuthorized,
-    settings.loading,
-    auth.uid,
-    settings.userCreatedAt,
-    usage.loading,
-  ]);
 
   useEffect(() => {
     if (!aiConversation.isStarted) {
