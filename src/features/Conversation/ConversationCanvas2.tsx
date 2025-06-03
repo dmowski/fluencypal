@@ -4,7 +4,7 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { Alert, Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import { ArrowUp, Check, Loader, Mic, ShieldAlert, Trash2, Trophy } from "lucide-react";
+import { ArrowUp, Check, Languages, Loader, Mic, ShieldAlert, Trash2, Trophy } from "lucide-react";
 
 import AddCardIcon from "@mui/icons-material/AddCard";
 
@@ -22,6 +22,7 @@ import { GradingProgressBar } from "../uiKit/Progress/GradingProgressBar";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { messagesToComplete } from "./data";
 import { useGame } from "../Game/useGame";
+import { useTranslate } from "../Translation/useTranslate";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -243,8 +244,80 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     setIsShowAnalyzeConversationModal(true);
   };
 
+  const { translateText, isTranslateAvailable } = useTranslate();
+  const [isTranslating, setIsTranslating] = useState(false);
+  const [translatedText, setTranslatedText] = useState<{
+    source: string;
+    translated: string;
+  } | null>(null);
+  const translate = async (text: string) => {
+    try {
+      setTranslatedText(null);
+      setIsTranslating(true);
+      setTranslatedText({
+        source: text,
+        translated: "",
+      });
+      const translatedText = await translateText({ text });
+      setTranslatedText({
+        source: text,
+        translated: translatedText,
+      });
+    } catch (error) {
+      setIsTranslating(false);
+      throw error;
+    }
+  };
+
+  const onCloseTranslate = () => {
+    setIsTranslating(false);
+    setTranslatedText(null);
+  };
+
   return (
     <Stack sx={{ gap: "40px" }}>
+      {(isTranslating || translatedText) && (
+        <>
+          <CustomModal isOpen={true} onClose={() => onCloseTranslate()} padding="40px 20px">
+            <Typography variant="h5">{i18n._("Translation")}</Typography>
+            <Stack
+              sx={{
+                gap: "0px",
+                width: "100%",
+              }}
+            >
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._("Source text:")}
+              </Typography>
+              <Markdown size="conversation">
+                {translatedText?.source ||
+                  (isTranslating ? i18n._("Loading...") : i18n._("No text to translate"))}
+              </Markdown>
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                  paddingTop: "25px",
+                }}
+              >
+                {i18n._("Translated text:")}
+              </Typography>
+              <Markdown size="conversation">
+                {translatedText?.translated ||
+                  (isTranslating ? i18n._("Translating...") : i18n._("No translation available"))}
+              </Markdown>
+              <Button variant="outlined" onClick={onCloseTranslate} sx={{ marginTop: "20px" }}>
+                {i18n._("Close")}
+              </Button>
+            </Stack>
+          </CustomModal>
+        </>
+      )}
       {isShowAnalyzeConversationModal && (
         <>
           <CustomModal
@@ -405,7 +478,22 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   >
                     {isBot ? i18n._("Teacher:") : i18n._("You:")}
                   </Typography>
-                  <Markdown size="conversation">{message.text || ""}</Markdown>
+                  <Stack
+                    sx={{
+                      display: "inline-block",
+                    }}
+                  >
+                    <Markdown size="conversation">{message.text || ""}</Markdown>
+                    {isBot && isTranslateAvailable && (
+                      <IconButton
+                        onClick={() => {
+                          translate(message.text);
+                        }}
+                      >
+                        <Languages size={"18px"} />
+                      </IconButton>
+                    )}
+                  </Stack>
                 </Stack>
               );
             })}
