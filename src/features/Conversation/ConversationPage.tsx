@@ -16,7 +16,7 @@ import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { useCorrections } from "../Corrections/useCorrections";
 import { useLingui } from "@lingui/react";
 import { InfoBlockedSection } from "../Dashboard/InfoBlockedSection";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectLanguage } from "../Dashboard/SelectLanguage";
 import { useWords } from "../Words/useWords";
 import { useRules } from "../Rules/useRules";
@@ -25,18 +25,15 @@ import { RulesToLearn } from "../Dashboard/RulesToLearn";
 import { ConversationError } from "./ConversationError";
 import { GoalPreparingModal } from "../Goal/GoalPreparingModal";
 import { useRouter, useSearchParams } from "next/navigation";
-import { deleteGoalQuiz, getGoalQuiz } from "@/app/api/goal/goalRequests";
 import { usePlan } from "../Plan/usePlan";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
-import { ChatMessage } from "@/common/conversation";
 import * as Sentry from "@sentry/nextjs";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import { ConfirmConversationModal } from "./ConfirmConversationModal";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useTextAi } from "../Ai/useTextAi";
 import { GamePage } from "../Game/GamePage";
-import { GameProvider, useGame } from "../Game/useGame";
-import { sleep } from "openai/core.mjs";
+import { useGame } from "../Game/useGame";
 import { useGoalCreation } from "../Plan/useGoalCreation";
 
 interface ConversationPageProps {
