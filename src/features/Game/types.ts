@@ -36,6 +36,8 @@ export interface GetGameQuestionsRequest {
   nativeLanguageCode: SupportedLanguage;
 }
 
+export type GetGameQuestionsResponse = GameQuestionShort[];
+
 export interface SubmitAnswerRequest {
   questionId: string;
   answer: string;
