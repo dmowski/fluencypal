@@ -1,14 +1,38 @@
+import { translateText } from "./translateText";
 import { TranslateRequest, TranslateResponse } from "./types";
 
 export async function POST(request: Request) {
   const data = (await request.json()) as TranslateRequest;
 
-  // todo: Integrate with actual translation service
+  if (!data.text || !data.sourceLanguage || !data.targetLanguage) {
+    const response: TranslateResponse = {
+      translatedText: "Invalid request data",
+      sourceLanguage: data.sourceLanguage || "unknown",
+      targetLanguage: data.targetLanguage || "unknown",
+    };
+    return Response.json(response, { status: 400 });
+  }
+
+  const translatedText = await translateText({
+    text: data.text,
+    sourceLanguage: data.sourceLanguage,
+    targetLanguage: data.targetLanguage,
+  });
 
   const response: TranslateResponse = {
-    translatedText: `Translated "${data.text}" from ${data.sourceLanguage} to ${data.targetLanguage}`,
+    translatedText: translatedText,
     sourceLanguage: data.sourceLanguage,
     targetLanguage: data.targetLanguage,
   };
   return Response.json(response);
+}
+
+export async function GET(request: Request) {
+  const translatedText = await translateText({
+    text: "Hello, world!",
+    sourceLanguage: "en",
+    targetLanguage: "ru",
+  });
+
+  return Response.json({ translatedText });
 }
