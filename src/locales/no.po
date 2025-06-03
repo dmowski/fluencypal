@@ -13,21 +13,60 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/GameQuestion.tsx:47
-#: src/features/Game/GameQuestion.tsx:91
+#: src/features/Game/GameQuestion.tsx:107
 #. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "Beskriv bildet"
+msgid "Stop recording"
+msgstr "Stopp opptak"
 
-#: src/features/Game/GameQuestion.tsx:114
+#: src/features/Game/GameQuestion.tsx:120
 #. js-lingui-explicit-id
-msgid "Correct!"
-msgstr "Korrekt!"
+msgid "Record an answer"
+msgstr "Spill inn et svar"
 
-#: src/features/Game/GameQuestion.tsx:114
+#: src/features/Game/GameQuestion.tsx:153
 #. js-lingui-explicit-id
-msgid "Incorrect!"
-msgstr "Feil!"
+msgid "Error: "
+msgstr "Feil:"
+
+#: src/features/Game/GameQuestion.tsx:184
+#. js-lingui-explicit-id
+msgid "Transcription:"
+msgstr "Transkripsjon:"
+
+#: src/features/Game/GameQuestion.tsx:198
+#. js-lingui-explicit-id
+msgid "Submit answer"
+msgstr "Send inn svar"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:282
+#. js-lingui-explicit-id
+msgid "Translation"
+msgstr "Oversettelse"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:295
+#. js-lingui-explicit-id
+msgid "Source text:"
+msgstr "Kildetekst:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:299
+#. js-lingui-explicit-id
+msgid "No text to translate"
+msgstr "Ingen tekst å oversette"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:308
+#. js-lingui-explicit-id
+msgid "Translated text:"
+msgstr "Oversatt tekst:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:312
+#. js-lingui-explicit-id
+msgid "Translating..."
+msgstr "Oversetter..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:312
+#. js-lingui-explicit-id
+msgid "No translation available"
+msgstr "Ingen oversettelse tilgjengelig"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -409,13 +448,13 @@ msgid "No conversations yet"
 msgstr "Ingen samtaler ennå"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:406
+#: src/features/Conversation/ConversationCanvas2.tsx:479
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Lærer:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:406
+#: src/features/Conversation/ConversationCanvas2.tsx:479
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Du:"
@@ -713,11 +752,13 @@ msgstr "Betalingshistorikk:"
 
 #: src/features/Usage/PaymentModal.tsx:625
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Game/GameQuestion.tsx:176
-#: src/features/Conversation/ConversationPage.tsx:272
-#: src/features/Conversation/ConversationPage.tsx:280
-#: src/features/Conversation/ConversationPage.tsx:293
-#: src/features/Conversation/ConversationPage.tsx:307
+#: src/features/Game/GameQuestion.tsx:210
+#: src/features/Game/GameQuestion.tsx:287
+#: src/features/Conversation/ConversationPage.tsx:140
+#: src/features/Conversation/ConversationPage.tsx:148
+#: src/features/Conversation/ConversationPage.tsx:161
+#: src/features/Conversation/ConversationPage.tsx:175
+#: src/features/Conversation/ConversationCanvas2.tsx:299
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Laster..."
@@ -1763,6 +1804,23 @@ msgstr "Vis mer"
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Vis mindre"
+
+#: src/features/Plan/useGoalCreation.ts:40
+#: src/features/Plan/useGoalCreation.ts:65
+#: src/features/Plan/useGoalCreation.ts:87
+#: src/features/Plan/useGoalCreation.ts:90
+#: src/features/Plan/useGoalCreation.ts:94
+#: src/features/Plan/useGoalCreation.ts:103
+#: src/features/Plan/useGoalCreation.ts:109
+#: src/features/Plan/useGoalCreation.ts:113
+#. js-lingui-explicit-id
+msgid "Processing goal..."
+msgstr "Behandler mål..."
+
+#: src/features/Plan/useGoalCreation.ts:127
+#. js-lingui-explicit-id
+msgid "Error processing goal"
+msgstr "Feil ved behandling av mål"
 
 #: src/features/Plan/PlanCard.tsx:110
 #. js-lingui-explicit-id
@@ -3101,6 +3159,7 @@ msgstr "Ja, slett konto"
 
 #: src/features/Header/NeedHelpModal.tsx:215
 #: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Conversation/ConversationCanvas2.tsx:315
 #: src/features/Conversation/ConfirmConversationModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Close"
@@ -3316,17 +3375,42 @@ msgstr "Endelig"
 msgid "Let's rock it!"
 msgstr "La oss rocke det!"
 
-#: src/features/Game/GameQuestion.tsx:45
+#: src/features/Game/GameQuestion.tsx:49
 #. js-lingui-explicit-id
 msgid "Translate"
 msgstr "Oversett"
 
-#: src/features/Game/GameQuestion.tsx:46
+#: src/features/Game/GameQuestion.tsx:50
 #. js-lingui-explicit-id
 msgid "Craft a sentence"
 msgstr "Lag en setning"
 
-#: src/features/Game/GameQuestion.tsx:302
+#: src/features/Game/GameQuestion.tsx:51
+#: src/features/Game/GameQuestion.tsx:131
+#. js-lingui-explicit-id
+msgid "Describe the image"
+msgstr "Beskriv bildet"
+
+#: src/features/Game/GameQuestion.tsx:164
+#: src/features/Conversation/ConversationCanvas2.tsx:688
+#: src/features/Conversation/ConversationCanvas2.tsx:691
+#: src/features/Conversation/ConversationCanvas2.tsx:764
+#: src/features/Conversation/ConversationCanvas2.tsx:771
+#. js-lingui-explicit-id
+msgid "Transcribing..."
+msgstr "Transkriberer..."
+
+#: src/features/Game/GameQuestion.tsx:225
+#. js-lingui-explicit-id
+msgid "Correct!"
+msgstr "Korrekt!"
+
+#: src/features/Game/GameQuestion.tsx:225
+#. js-lingui-explicit-id
+msgid "Incorrect!"
+msgstr "Feil!"
+
+#: src/features/Game/GameQuestion.tsx:413
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "Min posisjon:"
@@ -3456,7 +3540,7 @@ msgstr "Noe gikk galt da flere leksjoner ble generert. Vennligst prøv igjen sen
 #: src/features/Dashboard/PlanDashboardCards.tsx:220
 #: src/features/Dashboard/PlanDashboardCards.tsx:354
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:921
+#: src/features/Conversation/ConversationCanvas2.tsx:1009
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Mål"
@@ -3706,34 +3790,17 @@ msgstr "Mer"
 msgid "Error analyzing conversation"
 msgstr "Feil ved analyse av samtale"
 
-#: src/features/Conversation/ConversationPage.tsx:145
-#: src/features/Conversation/ConversationPage.tsx:170
-#: src/features/Conversation/ConversationPage.tsx:192
-#: src/features/Conversation/ConversationPage.tsx:195
-#: src/features/Conversation/ConversationPage.tsx:199
-#: src/features/Conversation/ConversationPage.tsx:208
-#: src/features/Conversation/ConversationPage.tsx:214
-#: src/features/Conversation/ConversationPage.tsx:218
-#. js-lingui-explicit-id
-msgid "Processing goal..."
-msgstr "Behandler mål..."
-
-#: src/features/Conversation/ConversationPage.tsx:232
-#. js-lingui-explicit-id
-msgid "Error processing goal"
-msgstr "Feil ved behandling av mål"
-
-#: src/features/Conversation/ConversationPage.tsx:284
+#: src/features/Conversation/ConversationPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Laster Mål..."
 
-#: src/features/Conversation/ConversationPage.tsx:315
+#: src/features/Conversation/ConversationPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Lager nye ord..."
 
-#: src/features/Conversation/ConversationPage.tsx:319
+#: src/features/Conversation/ConversationPage.tsx:187
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Lager ny regel..."
@@ -3758,151 +3825,143 @@ msgstr "Varsel ble sendt til utviklingsteamet. Beklager det..."
 msgid "Reload page"
 msgstr "Last inn siden på nytt"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:266
+#: src/features/Conversation/ConversationCanvas2.tsx:339
 #. js-lingui-explicit-id
 msgid "Review"
 msgstr "Anmeldelse"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:282
+#: src/features/Conversation/ConversationCanvas2.tsx:355
 #. js-lingui-explicit-id
 msgid "Language level:"
 msgstr "Språknivå:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:283
-#: src/features/Conversation/ConversationCanvas2.tsx:288
-#: src/features/Conversation/ConversationCanvas2.tsx:293
-#: src/features/Conversation/ConversationCanvas2.tsx:551
-#: src/features/Conversation/ConversationCanvas2.tsx:678
-#: src/features/Conversation/ConversationCanvas2.tsx:685
+#: src/features/Conversation/ConversationCanvas2.tsx:356
+#: src/features/Conversation/ConversationCanvas2.tsx:361
+#: src/features/Conversation/ConversationCanvas2.tsx:366
+#: src/features/Conversation/ConversationCanvas2.tsx:639
+#: src/features/Conversation/ConversationCanvas2.tsx:766
+#: src/features/Conversation/ConversationCanvas2.tsx:773
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Analyserer..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:287
+#: src/features/Conversation/ConversationCanvas2.tsx:360
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "Hva var flott:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:292
+#: src/features/Conversation/ConversationCanvas2.tsx:365
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
 msgstr "Områder for forbedring:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:311
+#: src/features/Conversation/ConversationCanvas2.tsx:384
 #. js-lingui-explicit-id
 msgid "Start new lesson"
 msgstr "Start ny leksjon"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:321
+#: src/features/Conversation/ConversationCanvas2.tsx:394
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "Fortsett samtalen"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:485
+#: src/features/Conversation/ConversationCanvas2.tsx:573
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Feil under analyse av melding"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:539
+#: src/features/Conversation/ConversationCanvas2.tsx:627
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Nesten riktig"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:554
+#: src/features/Conversation/ConversationCanvas2.tsx:642
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Flott!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:577
+#: src/features/Conversation/ConversationCanvas2.tsx:665
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Din Melding"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:600
-#: src/features/Conversation/ConversationCanvas2.tsx:603
-#: src/features/Conversation/ConversationCanvas2.tsx:676
-#: src/features/Conversation/ConversationCanvas2.tsx:683
-#. js-lingui-explicit-id
-msgid "Transcribing..."
-msgstr "Transkriberer..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:637
+#: src/features/Conversation/ConversationCanvas2.tsx:725
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Rettet"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:717
+#: src/features/Conversation/ConversationCanvas2.tsx:805
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "Nye ord til ordforrådet:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:762
+#: src/features/Conversation/ConversationCanvas2.tsx:850
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analyserer"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:769
+#: src/features/Conversation/ConversationCanvas2.tsx:857
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "Forbereder Mål"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:789
+#: src/features/Conversation/ConversationCanvas2.tsx:877
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "Målet er opprettet"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:799
+#: src/features/Conversation/ConversationCanvas2.tsx:887
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "Leksjoner lagt til:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:820
+#: src/features/Conversation/ConversationCanvas2.tsx:908
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "Åpen planløsning"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:839
+#: src/features/Conversation/ConversationCanvas2.tsx:927
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Send"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:856
-#: src/features/Conversation/ConversationCanvas2.tsx:935
+#: src/features/Conversation/ConversationCanvas2.tsx:944
+#: src/features/Conversation/ConversationCanvas2.tsx:1023
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Spill inn på nytt"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:870
+#: src/features/Conversation/ConversationCanvas2.tsx:958
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Ferdig"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:888
+#: src/features/Conversation/ConversationCanvas2.tsx:976
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Ta opp melding"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:899
+#: src/features/Conversation/ConversationCanvas2.tsx:987
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Oppdrag fullført"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:909
+#: src/features/Conversation/ConversationCanvas2.tsx:997
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Åpne resultater"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1029
+#: src/features/Conversation/ConversationCanvas2.tsx:1117
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "Du har lav saldo"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1031
+#: src/features/Conversation/ConversationCanvas2.tsx:1119
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "Det gir mening å fylle opp saldoen din."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1038
+#: src/features/Conversation/ConversationCanvas2.tsx:1126
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Fyll på"

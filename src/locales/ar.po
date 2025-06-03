@@ -13,21 +13,68 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/GameQuestion.tsx:47
-#: src/features/Game/GameQuestion.tsx:91
+#: src/features/Game/GameQuestion.tsx:107
 #. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "صف الصورة"
+msgid "Stop recording"
+msgstr "توقف عن التسجيل"
 
-#: src/features/Game/GameQuestion.tsx:114
+#: src/features/Game/GameQuestion.tsx:120
 #. js-lingui-explicit-id
-msgid "Correct!"
-msgstr "صحيح!"
+msgid "Record an answer"
+msgstr "سجل إجابة"
 
-#: src/features/Game/GameQuestion.tsx:114
+#: src/features/Game/GameQuestion.tsx:153
 #. js-lingui-explicit-id
-msgid "Incorrect!"
-msgstr "غير صحيح!"
+msgid "Error: "
+msgstr "خطأ:"
+
+#: src/features/Game/GameQuestion.tsx:184
+#. js-lingui-explicit-id
+msgid "Transcription:"
+msgstr "التفسير:"
+
+#: src/features/Game/GameQuestion.tsx:198
+#. js-lingui-explicit-id
+msgid "Submit answer"
+msgstr "قدم الإجابة"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:282
+#. js-lingui-explicit-id
+msgid "Translation"
+msgstr "الترجمة"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:295
+#. js-lingui-explicit-id
+msgid "Source text:"
+msgstr ""
+"النص المصدر:\n"
+"نصك_here"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:299
+#. js-lingui-explicit-id
+msgid "No text to translate"
+msgstr "ليس هناك نص للترجمة"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:308
+#. js-lingui-explicit-id
+msgid "Translated text:"
+msgstr ""
+"النص المترجم:\n"
+"هذه صفحة هبوط لمربي الذكاء الاصطناعي للغة الإنجليزية المتعلق بواجهة "
+"المستخدم. يرجى العودة إلى الترجمة بنفس تنسيق الأصل. تأكيد الترجمة عالية "
+"الجودة. لا تضيف أو تعدل أي نص، وتجنب تغليف النص بشكل غير ضروري. قم بالحفاظ "
+"على جميع فواصل الأسطر (\\n"
+" الرموز) بالضبط كما تظهر في الإدخال."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:312
+#. js-lingui-explicit-id
+msgid "Translating..."
+msgstr "جار الترجمة..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:312
+#. js-lingui-explicit-id
+msgid "No translation available"
+msgstr "لا يتوفر ترجمة"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -408,13 +455,13 @@ msgid "No conversations yet"
 msgstr "ليس هناك محادثات حتى الآن"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:406
+#: src/features/Conversation/ConversationCanvas2.tsx:479
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "المعلم:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:406
+#: src/features/Conversation/ConversationCanvas2.tsx:479
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "أنت:"
@@ -705,11 +752,13 @@ msgstr "سجل الدفعات:"
 
 #: src/features/Usage/PaymentModal.tsx:625
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Game/GameQuestion.tsx:176
-#: src/features/Conversation/ConversationPage.tsx:272
-#: src/features/Conversation/ConversationPage.tsx:280
-#: src/features/Conversation/ConversationPage.tsx:293
-#: src/features/Conversation/ConversationPage.tsx:307
+#: src/features/Game/GameQuestion.tsx:210
+#: src/features/Game/GameQuestion.tsx:287
+#: src/features/Conversation/ConversationPage.tsx:140
+#: src/features/Conversation/ConversationPage.tsx:148
+#: src/features/Conversation/ConversationPage.tsx:161
+#: src/features/Conversation/ConversationPage.tsx:175
+#: src/features/Conversation/ConversationCanvas2.tsx:299
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "جارٍ التحميل..."
@@ -1710,6 +1759,23 @@ msgstr "أظهر المزيد"
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "عرض أقل"
+
+#: src/features/Plan/useGoalCreation.ts:40
+#: src/features/Plan/useGoalCreation.ts:65
+#: src/features/Plan/useGoalCreation.ts:87
+#: src/features/Plan/useGoalCreation.ts:90
+#: src/features/Plan/useGoalCreation.ts:94
+#: src/features/Plan/useGoalCreation.ts:103
+#: src/features/Plan/useGoalCreation.ts:109
+#: src/features/Plan/useGoalCreation.ts:113
+#. js-lingui-explicit-id
+msgid "Processing goal..."
+msgstr "هدف المعالجة..."
+
+#: src/features/Plan/useGoalCreation.ts:127
+#. js-lingui-explicit-id
+msgid "Error processing goal"
+msgstr "خطأ في معالجة الهدف"
 
 #: src/features/Plan/PlanCard.tsx:110
 #. js-lingui-explicit-id
@@ -3029,6 +3095,7 @@ msgstr "نعم، احذف الحساب"
 
 #: src/features/Header/NeedHelpModal.tsx:215
 #: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Conversation/ConversationCanvas2.tsx:315
 #: src/features/Conversation/ConfirmConversationModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Close"
@@ -3244,17 +3311,42 @@ msgstr "أخيراً"
 msgid "Let's rock it!"
 msgstr "هيا بنا لنبدأ!"
 
-#: src/features/Game/GameQuestion.tsx:45
+#: src/features/Game/GameQuestion.tsx:49
 #. js-lingui-explicit-id
 msgid "Translate"
 msgstr "ترجم"
 
-#: src/features/Game/GameQuestion.tsx:46
+#: src/features/Game/GameQuestion.tsx:50
 #. js-lingui-explicit-id
 msgid "Craft a sentence"
 msgstr "صياغة جملة"
 
-#: src/features/Game/GameQuestion.tsx:302
+#: src/features/Game/GameQuestion.tsx:51
+#: src/features/Game/GameQuestion.tsx:131
+#. js-lingui-explicit-id
+msgid "Describe the image"
+msgstr "صف الصورة"
+
+#: src/features/Game/GameQuestion.tsx:164
+#: src/features/Conversation/ConversationCanvas2.tsx:688
+#: src/features/Conversation/ConversationCanvas2.tsx:691
+#: src/features/Conversation/ConversationCanvas2.tsx:764
+#: src/features/Conversation/ConversationCanvas2.tsx:771
+#. js-lingui-explicit-id
+msgid "Transcribing..."
+msgstr "جارٍ التفريغ..."
+
+#: src/features/Game/GameQuestion.tsx:225
+#. js-lingui-explicit-id
+msgid "Correct!"
+msgstr "صحيح!"
+
+#: src/features/Game/GameQuestion.tsx:225
+#. js-lingui-explicit-id
+msgid "Incorrect!"
+msgstr "غير صحيح!"
+
+#: src/features/Game/GameQuestion.tsx:413
 #. js-lingui-explicit-id
 msgid "My Position:"
 msgstr "موقعي:"
@@ -3382,7 +3474,7 @@ msgstr "حدث خطأ ما أثناء إنشاء المزيد من الدروس.
 #: src/features/Dashboard/PlanDashboardCards.tsx:220
 #: src/features/Dashboard/PlanDashboardCards.tsx:354
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:921
+#: src/features/Conversation/ConversationCanvas2.tsx:1009
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "هدف"
@@ -3632,34 +3724,17 @@ msgstr "أكثر"
 msgid "Error analyzing conversation"
 msgstr "خطأ في تحليل المحادثة"
 
-#: src/features/Conversation/ConversationPage.tsx:145
-#: src/features/Conversation/ConversationPage.tsx:170
-#: src/features/Conversation/ConversationPage.tsx:192
-#: src/features/Conversation/ConversationPage.tsx:195
-#: src/features/Conversation/ConversationPage.tsx:199
-#: src/features/Conversation/ConversationPage.tsx:208
-#: src/features/Conversation/ConversationPage.tsx:214
-#: src/features/Conversation/ConversationPage.tsx:218
-#. js-lingui-explicit-id
-msgid "Processing goal..."
-msgstr "هدف المعالجة..."
-
-#: src/features/Conversation/ConversationPage.tsx:232
-#. js-lingui-explicit-id
-msgid "Error processing goal"
-msgstr "خطأ في معالجة الهدف"
-
-#: src/features/Conversation/ConversationPage.tsx:284
+#: src/features/Conversation/ConversationPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "جاري تحميل الهدف..."
 
-#: src/features/Conversation/ConversationPage.tsx:315
+#: src/features/Conversation/ConversationPage.tsx:183
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "صياغة كلمات جديدة..."
 
-#: src/features/Conversation/ConversationPage.tsx:319
+#: src/features/Conversation/ConversationPage.tsx:187
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "إنشاء قاعدة جديدة..."
@@ -3684,151 +3759,143 @@ msgstr "تم إرسال الإشعار إلى فريق التطوير. عذرً�
 msgid "Reload page"
 msgstr "إعادة تحميل الصفحة"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:266
+#: src/features/Conversation/ConversationCanvas2.tsx:339
 #. js-lingui-explicit-id
 msgid "Review"
 msgstr "مراجعة"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:282
+#: src/features/Conversation/ConversationCanvas2.tsx:355
 #. js-lingui-explicit-id
 msgid "Language level:"
 msgstr "مستوى اللغة:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:283
-#: src/features/Conversation/ConversationCanvas2.tsx:288
-#: src/features/Conversation/ConversationCanvas2.tsx:293
-#: src/features/Conversation/ConversationCanvas2.tsx:551
-#: src/features/Conversation/ConversationCanvas2.tsx:678
-#: src/features/Conversation/ConversationCanvas2.tsx:685
+#: src/features/Conversation/ConversationCanvas2.tsx:356
+#: src/features/Conversation/ConversationCanvas2.tsx:361
+#: src/features/Conversation/ConversationCanvas2.tsx:366
+#: src/features/Conversation/ConversationCanvas2.tsx:639
+#: src/features/Conversation/ConversationCanvas2.tsx:766
+#: src/features/Conversation/ConversationCanvas2.tsx:773
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "جار التحليل..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:287
+#: src/features/Conversation/ConversationCanvas2.tsx:360
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "ما كان رائعا:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:292
+#: src/features/Conversation/ConversationCanvas2.tsx:365
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
 msgstr "مناطق للتحسين:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:311
+#: src/features/Conversation/ConversationCanvas2.tsx:384
 #. js-lingui-explicit-id
 msgid "Start new lesson"
 msgstr "ابدأ درسًا جديدًا"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:321
+#: src/features/Conversation/ConversationCanvas2.tsx:394
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "متابعة المحادثة"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:485
+#: src/features/Conversation/ConversationCanvas2.tsx:573
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "خطأ أثناء تحليل الرسالة"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:539
+#: src/features/Conversation/ConversationCanvas2.tsx:627
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "تقريبا صحيح"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:554
+#: src/features/Conversation/ConversationCanvas2.tsx:642
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "رائع!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:577
+#: src/features/Conversation/ConversationCanvas2.tsx:665
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "رسالتك"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:600
-#: src/features/Conversation/ConversationCanvas2.tsx:603
-#: src/features/Conversation/ConversationCanvas2.tsx:676
-#: src/features/Conversation/ConversationCanvas2.tsx:683
-#. js-lingui-explicit-id
-msgid "Transcribing..."
-msgstr "جارٍ التفريغ..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:637
+#: src/features/Conversation/ConversationCanvas2.tsx:725
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "تم التصحيح"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:717
+#: src/features/Conversation/ConversationCanvas2.tsx:805
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "كلمات جديدة للمفردات:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:762
+#: src/features/Conversation/ConversationCanvas2.tsx:850
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "تحليل"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:769
+#: src/features/Conversation/ConversationCanvas2.tsx:857
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "تجهيز الهدف"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:789
+#: src/features/Conversation/ConversationCanvas2.tsx:877
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "تم إنشاء الهدف"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:799
+#: src/features/Conversation/ConversationCanvas2.tsx:887
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "تمت إضافة الدروس:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:820
+#: src/features/Conversation/ConversationCanvas2.tsx:908
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "خطة مفتوحة"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:839
+#: src/features/Conversation/ConversationCanvas2.tsx:927
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "أرسل"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:856
-#: src/features/Conversation/ConversationCanvas2.tsx:935
+#: src/features/Conversation/ConversationCanvas2.tsx:944
+#: src/features/Conversation/ConversationCanvas2.tsx:1023
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "أعد التسجيل"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:870
+#: src/features/Conversation/ConversationCanvas2.tsx:958
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "تم"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:888
+#: src/features/Conversation/ConversationCanvas2.tsx:976
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "سجل الرسالة"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:899
+#: src/features/Conversation/ConversationCanvas2.tsx:987
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "تم إكمال المهمة"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:909
+#: src/features/Conversation/ConversationCanvas2.tsx:997
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "افتح النتائج"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1029
+#: src/features/Conversation/ConversationCanvas2.tsx:1117
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "لديك رصيد منخفض"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1031
+#: src/features/Conversation/ConversationCanvas2.tsx:1119
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "من الجيد أن تعيد شحن رصيدك."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1038
+#: src/features/Conversation/ConversationCanvas2.tsx:1126
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "إعادة شحن"
