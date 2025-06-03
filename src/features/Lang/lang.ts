@@ -64,6 +64,20 @@ export const getUserLangCode = (): SupportedLanguage[] => {
   return langCodes;
 };
 
+export const getPageLangCode = (): SupportedLanguage => {
+  const isWindow = typeof window !== "undefined";
+  if (!isWindow) {
+    return "en"; // Default to English if not in a browser environment
+  }
+  const url = new URL(window.location.href);
+  const langParts = url.pathname.split("/");
+  const langCode = langParts[1] || "en"; // Default to English if no language code is found
+  if (supportedLanguages.includes(langCode as SupportedLanguage)) {
+    return langCode as SupportedLanguage;
+  }
+  return "en"; // Default to English if the language code is not supported
+};
+
 export const emojiLanguageName: Record<SupportedLanguage, string> = {
   en: "🇺🇸",
   ru: "🇷🇺",
