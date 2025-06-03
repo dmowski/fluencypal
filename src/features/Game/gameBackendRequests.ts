@@ -1,4 +1,10 @@
-import { GameProfile, GameQuestionShort, GameUsersPoints, UsersStat } from "@/features/Game/types";
+import {
+  GameProfile,
+  GameQuestionShort,
+  GameUsersPoints,
+  GetGameQuestionsResponse,
+  UsersStat,
+} from "@/features/Game/types";
 import {
   GetGameQuestionsRequest,
   SubmitAnswerRequest,
@@ -61,7 +67,7 @@ export const getGameQuestionsRequest = async (
     },
     body: JSON.stringify(requests),
   });
-  const data = (await response.json()) as GameQuestionShort[];
+  const data = (await response.json()) as GetGameQuestionsResponse;
   return data;
 };
 
