@@ -1,8 +1,12 @@
 import { GetGameQuestionsRequest } from "@/features/Game/types";
 import { validateAuthToken } from "../../config/firebase";
 import { getUserAiInfo, getUserInfo } from "../../user/getUserInfo";
-import { generateRandomQuestions } from "./generateRandomQuestions";
-import { convertFullQuestionToShort, getUnansweredQuestions, setQuestion } from "./getQuestion";
+import { generateRandomQuestions } from "../../../../features/Game/api/generateRandomQuestions";
+import {
+  convertFullQuestionToShort,
+  getUnansweredQuestions,
+  setQuestion,
+} from "../../../../features/Game/api/getQuestion";
 
 const alwaysGenerateQuestions = false; // Set to true to always generate questions
 export async function POST(request: Request) {

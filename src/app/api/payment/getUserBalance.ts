@@ -1,6 +1,6 @@
 import { TotalUsageInfo } from "@/common/usage";
 import { getDB } from "../config/firebase";
-import { isUserIsGameWinner } from "../game/getStats/resources";
+import { isUserIsGameWinner } from "../../../features/Game/api/statsResources";
 
 export const getUserBalance = async (userId: string) => {
   if (!userId) {

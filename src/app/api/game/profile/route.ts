@@ -4,10 +4,10 @@ import {
   getGameUsersPoints,
   increaseUserPoints,
   renameUserInRateStat,
-} from "../getStats/resources";
-import { generateRandomUsername } from "./generateRandomUserName";
-import { getGameProfile } from "./getGameProfile";
-import { updateGameProfile } from "./updateGameProfile";
+} from "../../../../features/Game/api/statsResources";
+import { generateRandomUsername } from "../../../../features/Game/api/generateRandomUserName";
+import { getGameProfile } from "../../../../features/Game/api/getGameProfile";
+import { updateGameProfile } from "../../../../features/Game/api/updateGameProfile";
 
 export async function GET(request: Request) {
   const userInfo = await validateAuthToken(request);

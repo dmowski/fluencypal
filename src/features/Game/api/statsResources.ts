@@ -1,6 +1,6 @@
 import { GameUsersPoints } from "@/features/Game/types";
-import { getDB } from "../../config/firebase";
-import { getGameProfile } from "../profile/getGameProfile";
+import { getDB } from "../../../app/api/config/firebase";
+import { getGameProfile } from "./getGameProfile";
 
 import firebaseAdmin from "firebase-admin";
 

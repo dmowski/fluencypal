@@ -1,5 +1,5 @@
 import { GameQuestionFull, GameQuestionShort } from "@/features/Game/types";
-import { getDB } from "../../config/firebase";
+import { getDB } from "../../../app/api/config/firebase";
 import { SupportedLanguage } from "@/features/Lang/lang";
 
 interface getQuestionProps {

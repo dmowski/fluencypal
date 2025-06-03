@@ -1,6 +1,6 @@
 import { GameQuestionShort, GameQuestionFull } from "@/features/Game/types";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
-import { generateTextWithAi } from "../../ai/generateTextWithAi";
+import { generateTextWithAi } from "../../../app/api/ai/generateTextWithAi";
 import { shuffleArray } from "@/libs/array";
 import { imageDescriptions } from "@/features/Game/ImagesServer";
 

@@ -1,5 +1,5 @@
 import { GameProfile } from "@/features/Game/types";
-import { getDB } from "../../config/firebase";
+import { getDB } from "../../../app/api/config/firebase";
 
 export const getGameProfile = async (userId: string): Promise<GameProfile | null> => {
   const db = getDB();

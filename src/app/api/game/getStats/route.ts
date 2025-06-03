@@ -1,4 +1,4 @@
-import { getGameUsersPoints } from "./resources";
+import { getGameUsersPoints } from "../../../../features/Game/api/statsResources";
 
 export async function GET() {
   const gameUserPoints = await getGameUsersPoints();
