@@ -292,7 +292,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   opacity: 0.7,
                 }}
               >
-                {i18n._("Source text:")}
+                {i18n._("Source:")}
               </Typography>
               <Markdown size="conversation">
                 {translatedText?.source ||
@@ -305,7 +305,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   paddingTop: "25px",
                 }}
               >
-                {i18n._("Translated text:")}
+                {i18n._("Translated:")}
               </Typography>
               <Markdown size="conversation">
                 {translatedText?.translated ||
