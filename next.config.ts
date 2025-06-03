@@ -2,18 +2,16 @@ import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    //swcPlugins: [["@lingui/swc-plugin", {}]],
-    turbo: {
-      rules: {
-        "*.{glsl,vs,fs,vert,frag}": {
-          loaders: ["raw-loader", "glslify-loader"],
-          as: "*.js",
-        },
-        "*.po": {
-          loaders: ["@lingui/loader"],
-          as: "*.js",
-        },
+  //swcPlugins: [["@lingui/swc-plugin", {}]],
+  turbopack: {
+    rules: {
+      "*.{glsl,vs,fs,vert,frag}": {
+        loaders: ["raw-loader", "glslify-loader"],
+        as: "*.js",
+      },
+      "*.po": {
+        loaders: ["@lingui/loader"],
+        as: "*.js",
       },
     },
   },

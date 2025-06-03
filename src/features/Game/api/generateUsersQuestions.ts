@@ -4,6 +4,8 @@ import { getUserAiInfo, getUserInfo } from "@/app/api/user/getUserInfo";
 import { convertFullQuestionToShort, getUnansweredQuestions, setQuestion } from "./getQuestion";
 import { generateRandomQuestions } from "./generateRandomQuestions";
 
+const alwaysGenerateQuestions = true; // Set to true to always generate questions
+
 export const generateUsersQuestions = async ({
   userInfo,
   requestData,
@@ -11,8 +13,6 @@ export const generateUsersQuestions = async ({
   userInfo: AuthUserInfo;
   requestData: GetGameQuestionsRequest;
 }): Promise<GetGameQuestionsResponse> => {
-  const alwaysGenerateQuestions = false; // Set to true to always generate questions
-
   const [fullUserInfo, aiUserInfo] = await Promise.all([
     getUserInfo(userInfo.uid),
     getUserAiInfo(userInfo.uid),
