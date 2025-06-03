@@ -128,7 +128,7 @@ export const PlanCard = ({
         }}
         component={"button"}
         sx={{
-          backgroundColor: isActive ? "rgba(13, 220, 196, 0.1)" : "rgba(13, 220, 196, 0.02)",
+          backgroundColor: isActive ? "rgba(13, 220, 196, 0.1)" : "rgba(13, 220, 196, 0.06)",
           textDecoration: "none",
           padding: "12px 16px",
           display: "grid",
@@ -153,7 +153,7 @@ export const PlanCard = ({
           userSelect: "text",
           color: "#fff",
           ":hover": {
-            backgroundColor: isActive ? "rgba(13, 220, 196, 0.2)" : "rgba(13, 220, 196, 0.1)",
+            backgroundColor: isActive ? "rgba(13, 220, 196, 0.2)" : "rgba(13, 220, 196, 0.15)",
             "@media (max-width: 450px)": {
               backgroundColor: isActive ? "rgba(13, 220, 196, 0.1)" : "rgba(13, 220, 196, 0.02)",
             },
@@ -167,7 +167,7 @@ export const PlanCard = ({
             boxShadow:
               isDone || isActive
                 ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
-                : "0px 0px 0 2px rgba(13, 220, 196, 0.3)",
+                : "0px 0px 0 2px rgba(13, 220, 196, 0.7)",
             boxSizing: "border-box",
             width: "max-content",
             position: "relative",
@@ -244,16 +244,19 @@ export const PlanCard = ({
             sx={{
               width: "2px",
               borderRadius: "0px",
-              "--height": `43px`,
+              "--height": `72px`,
               bottom: "calc(-2px - var(--height))",
               height: "var(--height)",
               backgroundColor:
-                isDone || isActive ? "rgba(13, 220, 196, 0.9)" : "rgba(13, 220, 196, 0.3)",
+                isDone || isActive ? "rgba(13, 220, 196, 0.9)" : "rgba(13, 220, 196, 0.6)",
               position: "absolute",
               display: isLast ? "none" : "block",
 
               left: "calc(50% - 1px)",
               zIndex: 2,
+              "@media (max-width: 500px)": {
+                display: "none",
+              },
             }}
           ></Stack>
           <Stack
@@ -289,7 +292,7 @@ export const PlanCard = ({
                 zIndex: 2,
                 top: "0px",
                 left: "0px",
-                opacity: isActive || isDone ? 1 : 0.3,
+                opacity: isActive || isDone ? 1 : 0.95,
               }}
             >
               {icon}
@@ -307,7 +310,7 @@ export const PlanCard = ({
                 top: "-40px",
                 left: "-20px",
                 zIndex: 1,
-                opacity: isActive || isDone ? 0.9 : 0.3,
+                opacity: isActive || isDone ? 0.9 : 0.8,
               }}
             ></Stack>
 
@@ -372,7 +375,7 @@ export const PlanCard = ({
             sx={{
               fontWeight: 600,
               fontSize: "0.8rem",
-              color: isActive || isDone ? `rgba(67, 244, 223, 0.9)` : `rgba(67, 244, 223, 0.3)`,
+              color: isActive || isDone ? `rgba(67, 244, 223, 0.9)` : `rgba(67, 244, 223, 0.5)`,
             }}
           >
             {subTitle}
@@ -385,7 +388,7 @@ export const PlanCard = ({
               fontSize: "1.2rem",
               position: "relative",
               zIndex: 2,
-              opacity: isActive || isDone ? 1 : 0.6,
+              opacity: isActive || isDone ? 1 : 0.9,
 
               "@media (max-width: 450px)": {
                 fontSize: "0.8rem",
@@ -393,6 +396,27 @@ export const PlanCard = ({
             }}
           >
             {title}
+          </Typography>
+
+          <Typography
+            align="left"
+            sx={{
+              fontWeight: 400,
+              fontSize: "0.8rem",
+              zIndex: 2,
+              height: "52px",
+              opacity: isActive || isDone ? 0.9 : 0.7,
+
+              "@media (max-width: 500px)": {
+                fontSize: "0.7rem",
+                overflow: "hidden",
+                height: "auto",
+                paddingTop: "10px",
+                textOverflow: "ellipsis",
+              },
+            }}
+          >
+            {details}
           </Typography>
         </Stack>
 
