@@ -4,7 +4,17 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { Alert, Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import { ArrowUp, Check, Languages, Loader, Mic, ShieldAlert, Trash2, Trophy } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowUp,
+  Check,
+  Languages,
+  Loader,
+  Mic,
+  ShieldAlert,
+  Trash2,
+  Trophy,
+} from "lucide-react";
 
 import AddCardIcon from "@mui/icons-material/AddCard";
 
@@ -282,34 +292,20 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             <Typography variant="h5">{i18n._("Translation")}</Typography>
             <Stack
               sx={{
-                gap: "0px",
+                gap: "10px",
                 width: "100%",
               }}
             >
-              <Typography
-                variant="caption"
-                sx={{
-                  opacity: 0.7,
-                }}
-              >
-                {i18n._("Source:")}
-              </Typography>
               <Markdown size="conversation">
                 {translatedText?.source ||
                   (isTranslating ? i18n._("Loading...") : i18n._("No text to translate"))}
               </Markdown>
-              <Typography
-                variant="caption"
-                sx={{
-                  opacity: 0.7,
-                  paddingTop: "25px",
-                }}
-              >
-                {i18n._("Translated:")}
-              </Typography>
+
+              <ArrowDown size={"18px"} color="rgba(180, 180, 180, 1)" />
+
               <Markdown size="conversation">
                 {translatedText?.translated ||
-                  (isTranslating ? i18n._("Translating...") : i18n._("No translation available"))}
+                  (isTranslating ? "..." : i18n._("No translation available"))}
               </Markdown>
               <Button variant="outlined" onClick={onCloseTranslate} sx={{ marginTop: "20px" }}>
                 {i18n._("Close")}
@@ -483,13 +479,20 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       display: "inline-block",
                     }}
                   >
-                    <Markdown size="conversation">{message.text || ""}</Markdown>
+                    <Markdown
+                      onWordClick={
+                        isBot && isTranslateAvailable
+                          ? (word) => {
+                              translate(word);
+                            }
+                          : undefined
+                      }
+                      size="conversation"
+                    >
+                      {message.text || ""}
+                    </Markdown>
                     {isBot && isTranslateAvailable && (
-                      <IconButton
-                        onClick={() => {
-                          translate(message.text);
-                        }}
-                      >
+                      <IconButton onClick={() => translate(message.text)}>
                         <Languages size={"18px"} />
                       </IconButton>
                     )}

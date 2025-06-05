@@ -13,16 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:353
-#. js-lingui-explicit-id
-msgid "There's something interesting for you..."
-msgstr "Il y a quelque chose d'intéressant pour vous..."
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:376
-#. js-lingui-explicit-id
-msgid "Let's start"
-msgstr "Commençons"
-
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -407,13 +397,13 @@ msgid "No conversations yet"
 msgstr "Aucune conversation pour le moment"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:479
+#: src/features/Conversation/ConversationCanvas2.tsx:475
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "Enseignant:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:479
+#: src/features/Conversation/ConversationCanvas2.tsx:475
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "Vous:"
@@ -722,7 +712,7 @@ msgstr "Historique des paiements:"
 #: src/features/Conversation/ConversationPage.tsx:90
 #: src/features/Conversation/ConversationPage.tsx:103
 #: src/features/Conversation/ConversationPage.tsx:117
-#: src/features/Conversation/ConversationCanvas2.tsx:299
+#: src/features/Conversation/ConversationCanvas2.tsx:301
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Chargement..."
@@ -3211,7 +3201,7 @@ msgstr "Oui, Supprimer le compte"
 
 #: src/features/Header/NeedHelpModal.tsx:215
 #: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Conversation/ConversationCanvas2.tsx:315
+#: src/features/Conversation/ConversationCanvas2.tsx:311
 #: src/features/Conversation/ConfirmConversationModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Close"
@@ -3682,10 +3672,10 @@ msgid "Error: "
 msgstr "Erreur:"
 
 #: src/features/Game/GameQuestion.tsx:164
-#: src/features/Conversation/ConversationCanvas2.tsx:688
 #: src/features/Conversation/ConversationCanvas2.tsx:691
-#: src/features/Conversation/ConversationCanvas2.tsx:764
-#: src/features/Conversation/ConversationCanvas2.tsx:771
+#: src/features/Conversation/ConversationCanvas2.tsx:694
+#: src/features/Conversation/ConversationCanvas2.tsx:767
+#: src/features/Conversation/ConversationCanvas2.tsx:774
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Transcription en cours..."
@@ -3883,10 +3873,20 @@ msgstr "Apprenez les règles de la langue!"
 msgid "Learn new words and expand your vocabulary!"
 msgstr "Apprenez de nouveaux mots et élargissez votre vocabulaire!"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:353
+#. js-lingui-explicit-id
+msgid "There's something interesting for you..."
+msgstr "Il y a quelque chose d'intéressant pour vous..."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:376
+#. js-lingui-explicit-id
+msgid "Let's start"
+msgstr "Commençons"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:427
 #: src/features/Dashboard/PlanDashboardCards.tsx:561
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:1009
+#: src/features/Conversation/ConversationCanvas2.tsx:1012
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Objectif"
@@ -4158,225 +4158,158 @@ msgstr "La notification a été envoyée à l'équipe de dev. Désolé pour cela
 msgid "Reload page"
 msgstr "Recharger la page"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:282
+#: src/features/Conversation/ConversationCanvas2.tsx:292
 #. js-lingui-explicit-id
 msgid "Translation"
 msgstr "Traduction"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:295
-#. js-lingui-explicit-id
-msgid "Source:"
-msgstr "Source :"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:299
+#: src/features/Conversation/ConversationCanvas2.tsx:301
 #. js-lingui-explicit-id
 msgid "No text to translate"
 msgstr "Aucun texte à traduire"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:308
 #. js-lingui-explicit-id
-msgid "Translated:"
-msgstr ""
-"Traduit : \n"
-"\n"
-"\"Start Learning\"\n"
-"\"Commencez à apprendre\"\n"
-"\n"
-"\"Signing in\"\n"
-"\"Connexion\"\n"
-"\n"
-"\"Welcome back!\"\n"
-"\"Re-bienvenue!\"\n"
-"\n"
-"\"Email Address\"\n"
-"\"Adresse e-mail\"\n"
-"\n"
-"\"Password\"\n"
-"\"Mot de passe\"\n"
-"\n"
-"\"Sign In\"\n"
-"\"Se connecter\"\n"
-"\n"
-"\"Forgot your password?\"\n"
-"\"Vous avez oublié votre mot de passe ?\"\n"
-"\n"
-"\"Create a new account\"\n"
-"\"Créer un nouveau compte\"\n"
-"\n"
-"\"Remember me\"\n"
-"\"Se souvenir de moi\"\n"
-"\n"
-"- AI English Tutor\n"
-"- Tuteur d'anglais AI\n"
-"\n"
-"- Congratulations on completing the lesson!\n"
-"- Félicitations pour avoir terminé la leçon!\n"
-"\n"
-"- Continue to next lesson\n"
-"- Continuer vers la prochaine leçon\n"
-"\n"
-"- Lesson Progress\n"
-"- Progression de la leçon\n"
-"\n"
-"- Achievements\n"
-"- Réalisations\n"
-"\n"
-"- Overview\n"
-"- Vue d'ensemble\n"
-"\n"
-"- Messages\n"
-"- Messages\n"
-"\n"
-"- Next Lesson\n"
-"- Prochaine leçon"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:312
-#. js-lingui-explicit-id
-msgid "Translating..."
-msgstr "Traduction..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:312
-#. js-lingui-explicit-id
 msgid "No translation available"
 msgstr "Aucune traduction disponible"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:339
+#: src/features/Conversation/ConversationCanvas2.tsx:335
 #. js-lingui-explicit-id
 msgid "Review"
 msgstr "Révision"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:355
+#: src/features/Conversation/ConversationCanvas2.tsx:351
 #. js-lingui-explicit-id
 msgid "Language level:"
 msgstr "Niveau de langue:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:356
-#: src/features/Conversation/ConversationCanvas2.tsx:361
-#: src/features/Conversation/ConversationCanvas2.tsx:366
-#: src/features/Conversation/ConversationCanvas2.tsx:639
-#: src/features/Conversation/ConversationCanvas2.tsx:766
-#: src/features/Conversation/ConversationCanvas2.tsx:773
+#: src/features/Conversation/ConversationCanvas2.tsx:352
+#: src/features/Conversation/ConversationCanvas2.tsx:357
+#: src/features/Conversation/ConversationCanvas2.tsx:362
+#: src/features/Conversation/ConversationCanvas2.tsx:642
+#: src/features/Conversation/ConversationCanvas2.tsx:769
+#: src/features/Conversation/ConversationCanvas2.tsx:776
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Analyse en cours..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:360
+#: src/features/Conversation/ConversationCanvas2.tsx:356
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "Ce qui était génial :"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:365
+#: src/features/Conversation/ConversationCanvas2.tsx:361
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
 msgstr "Zones à améliorer:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:384
+#: src/features/Conversation/ConversationCanvas2.tsx:380
 #. js-lingui-explicit-id
 msgid "Start new lesson"
 msgstr "Commencer une nouvelle leçon"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:394
+#: src/features/Conversation/ConversationCanvas2.tsx:390
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "Continuer la conversation"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:573
+#: src/features/Conversation/ConversationCanvas2.tsx:576
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Erreur lors de l'analyse du message"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:627
+#: src/features/Conversation/ConversationCanvas2.tsx:630
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Presque correct"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:642
+#: src/features/Conversation/ConversationCanvas2.tsx:645
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Génial !"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:665
+#: src/features/Conversation/ConversationCanvas2.tsx:668
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Votre Message"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:725
+#: src/features/Conversation/ConversationCanvas2.tsx:728
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Corrigé"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:805
+#: src/features/Conversation/ConversationCanvas2.tsx:808
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "Nouveaux Mots à Vocabulaire:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:850
+#: src/features/Conversation/ConversationCanvas2.tsx:853
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Analyser"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:857
+#: src/features/Conversation/ConversationCanvas2.tsx:860
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "Préparation de l'objectif"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:877
+#: src/features/Conversation/ConversationCanvas2.tsx:880
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "L'objectif est créé"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:887
+#: src/features/Conversation/ConversationCanvas2.tsx:890
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "Leçons ajoutées :"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:908
+#: src/features/Conversation/ConversationCanvas2.tsx:911
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "Plan ouvert"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:927
+#: src/features/Conversation/ConversationCanvas2.tsx:930
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Envoyer"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:944
-#: src/features/Conversation/ConversationCanvas2.tsx:1023
+#: src/features/Conversation/ConversationCanvas2.tsx:947
+#: src/features/Conversation/ConversationCanvas2.tsx:1026
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Ré-enregistrer"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:958
+#: src/features/Conversation/ConversationCanvas2.tsx:961
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Fait"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:976
+#: src/features/Conversation/ConversationCanvas2.tsx:979
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Enregistrez le Message"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:987
+#: src/features/Conversation/ConversationCanvas2.tsx:990
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Mission accomplie"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:997
+#: src/features/Conversation/ConversationCanvas2.tsx:1000
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Résultats ouverts"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1117
+#: src/features/Conversation/ConversationCanvas2.tsx:1120
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "Vous avez un solde faible"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1119
+#: src/features/Conversation/ConversationCanvas2.tsx:1122
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "Il est judicieux de recharger votre solde."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1126
+#: src/features/Conversation/ConversationCanvas2.tsx:1129
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Recharge"
@@ -6116,6 +6049,73 @@ msgstr "Continue avec Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "En créant un compte, vous acceptez de :"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:295
+#. js-lingui-explicit-id
+#~ msgid "Source:"
+#~ msgstr "Source :"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:308
+#. js-lingui-explicit-id
+#~ msgid "Translated:"
+#~ msgstr ""
+#~ "Traduit : \n"
+#~ "\n"
+#~ "\"Start Learning\"\n"
+#~ "\"Commencez à apprendre\"\n"
+#~ "\n"
+#~ "\"Signing in\"\n"
+#~ "\"Connexion\"\n"
+#~ "\n"
+#~ "\"Welcome back!\"\n"
+#~ "\"Re-bienvenue!\"\n"
+#~ "\n"
+#~ "\"Email Address\"\n"
+#~ "\"Adresse e-mail\"\n"
+#~ "\n"
+#~ "\"Password\"\n"
+#~ "\"Mot de passe\"\n"
+#~ "\n"
+#~ "\"Sign In\"\n"
+#~ "\"Se connecter\"\n"
+#~ "\n"
+#~ "\"Forgot your password?\"\n"
+#~ "\"Vous avez oublié votre mot de passe ?\"\n"
+#~ "\n"
+#~ "\"Create a new account\"\n"
+#~ "\"Créer un nouveau compte\"\n"
+#~ "\n"
+#~ "\"Remember me\"\n"
+#~ "\"Se souvenir de moi\"\n"
+#~ "\n"
+#~ "- AI English Tutor\n"
+#~ "- Tuteur d'anglais AI\n"
+#~ "\n"
+#~ "- Congratulations on completing the lesson!\n"
+#~ "- Félicitations pour avoir terminé la leçon!\n"
+#~ "\n"
+#~ "- Continue to next lesson\n"
+#~ "- Continuer vers la prochaine leçon\n"
+#~ "\n"
+#~ "- Lesson Progress\n"
+#~ "- Progression de la leçon\n"
+#~ "\n"
+#~ "- Achievements\n"
+#~ "- Réalisations\n"
+#~ "\n"
+#~ "- Overview\n"
+#~ "- Vue d'ensemble\n"
+#~ "\n"
+#~ "- Messages\n"
+#~ "- Messages\n"
+#~ "\n"
+#~ "- Next Lesson\n"
+#~ "- Prochaine leçon"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:312
+#. js-lingui-explicit-id
+#~ msgid "Translating..."
+#~ msgstr "Traduction..."
 
 #: src/features/Goal/GoalQuestions.tsx:266
 #. js-lingui-explicit-id

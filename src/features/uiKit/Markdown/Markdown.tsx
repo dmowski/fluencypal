@@ -1,10 +1,11 @@
-import { Checkbox, Link, Typography } from "@mui/material";
+import { Checkbox, Link, Stack, Typography } from "@mui/material";
 import { MarkdownToJSX, default as MarkdownTool } from "markdown-to-jsx";
 import React from "react";
 
 export interface MarkdownProps {
   children: string;
   size?: "small" | "normal" | "conversation";
+  onWordClick?: (word: string) => void;
 }
 
 const markdownComponents: MarkdownToJSX.Overrides = {
@@ -130,6 +131,17 @@ const markdownComponentsSmall: MarkdownToJSX.Overrides = {
 const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   ...markdownComponents,
   p: ({ children }) => {
+    const isString = typeof children?.[0] === "string";
+    console.log("isString:", isString);
+    let content = children;
+    if (isString) {
+      const words = children[0].split(" ") as string[];
+      content = words.map((word, index) => (
+        <span key={index}>
+          <span className="conversation-word">{word}</span>{" "}
+        </span>
+      ));
+    }
     return (
       <Typography
         sx={{
@@ -137,25 +149,40 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
           fontWeight: 350,
         }}
       >
-        {children}
+        {content}
       </Typography>
     );
   },
 
   span: ({ children }) => {
+    console.log("children", children);
+    const isString = typeof children?.[0] === "string" || typeof children === "string";
+    console.log("isString:", isString);
+    let content = children;
+    if (isString) {
+      const stringContent = typeof children === "string" ? children : children[0];
+      const words = stringContent.split(" ") as string[];
+      console.log("words:", words);
+      content = words.map((word, index) => (
+        <span key={index}>
+          <span className="conversation-word">{word}</span>{" "}
+        </span>
+      ));
+    }
+
     return (
       <Typography
         sx={{
           fontSize: "21px",
         }}
       >
-        {children}
+        {content}
       </Typography>
     );
   },
 };
 
-export const Markdown: React.FC<MarkdownProps> = ({ children, size }) => {
+export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, size }) => {
   const styleComponents =
     size === "small"
       ? markdownComponentsSmall
@@ -163,5 +190,31 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, size }) => {
         ? markdownComponentsConversation
         : markdownComponents;
 
-  return <MarkdownTool options={{ overrides: styleComponents }}>{children}</MarkdownTool>;
+  return (
+    <Stack
+      sx={{
+        ".conversation-word": onWordClick
+          ? {
+              ":hover": {
+                cursor: "pointer",
+                borderBottom: "1px dashed #fff",
+              },
+            }
+          : {},
+      }}
+      onMouseDown={
+        onWordClick
+          ? (e) => {
+              const target = e.target as HTMLElement;
+              console.log("target:", target);
+              if (target.classList.contains("conversation-word")) {
+                onWordClick(target.textContent || "");
+              }
+            }
+          : undefined
+      }
+    >
+      <MarkdownTool options={{ overrides: styleComponents }}>{children}</MarkdownTool>
+    </Stack>
+  );
 };
