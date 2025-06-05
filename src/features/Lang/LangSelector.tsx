@@ -3,6 +3,7 @@ import {
   fullLanguageName,
   getLabelFromCode,
   getUserLangCode,
+  langFlags,
   SupportedLanguage,
   supportedLanguages,
 } from "@/features/Lang/lang";
@@ -63,8 +64,37 @@ export const LangSelector = ({ value, onChange }: LangSelectorProps): JSX.Elemen
         {optionsFull.map((option) => {
           const isSameLabels = option.englishFullName === option.fullName;
           return (
-            <MenuItem key={option.langCode} value={option.langCode}>
-              {isSameLabels ? <>{option.englishFullName}</> : <>{option.englishFullName}</>}
+            <MenuItem
+              key={option.langCode}
+              value={option.langCode}
+              sx={{
+                padding: "20px",
+              }}
+            >
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "100%",
+                  justifyContent: "flex-start",
+                  padding: "0px 5px",
+                  color: option.isSystemLang ? "#000" : "#666",
+                  gap: "15px",
+                  minHeight: "42px",
+                }}
+              >
+                <img
+                  src={langFlags[option.langCode]}
+                  alt={option.label}
+                  style={{
+                    width: "50px",
+                    border: "1px solid rgba(0, 0, 0, 0.15)",
+                    borderRadius: "1px",
+                  }}
+                />
+                <Typography>{option.englishFullName}</Typography>
+              </Stack>
             </MenuItem>
           );
         })}

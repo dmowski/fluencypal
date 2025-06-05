@@ -103,6 +103,31 @@ export const emojiLanguageName: Record<SupportedLanguage, string> = {
   be: "🇧🇾", // Belarusian
 };
 
+export const langFlags: Record<SupportedLanguage, string> = {
+  en: "https://flagcdn.com/w80/us.png",
+  ru: "https://flagcdn.com/w80/ru.png",
+  de: "https://flagcdn.com/w80/de.png",
+  pl: "https://flagcdn.com/w80/pl.png",
+  uk: "https://flagcdn.com/w80/ua.png",
+  fr: "https://flagcdn.com/w80/fr.png",
+  es: "https://flagcdn.com/w80/es.png",
+  ar: "https://flagcdn.com/w80/sa.png",
+  id: "https://flagcdn.com/w80/id.png",
+  it: "https://flagcdn.com/w80/it.png",
+  ja: "https://flagcdn.com/w80/jp.png",
+  ko: "https://flagcdn.com/w80/kr.png",
+  ms: "https://flagcdn.com/w80/my.png",
+  pt: "https://flagcdn.com/w80/pt.png",
+  th: "https://flagcdn.com/w80/th.png",
+  tr: "https://flagcdn.com/w80/tr.png",
+  vi: "https://flagcdn.com/w80/vn.png",
+  zh: "https://flagcdn.com/w80/cn.png",
+  da: "https://flagcdn.com/w80/dk.png", // Danish
+  no: "https://flagcdn.com/w80/no.png", // Norwegian
+  sv: "https://flagcdn.com/w80/se.png", // Swedish
+  be: "https://flagcdn.com/w80/by.png", // Belarusian
+};
+
 export const fullLanguageName: Record<SupportedLanguage, string> = {
   en: "English",
   ru: "Русский",
