@@ -4,6 +4,7 @@ export interface CreateGoalRequest {
   languageToLearn: SupportedLanguage;
   level: string;
   description: string;
+  minPerDaySelected: number;
 }
 
 export interface CreateGoalResponse {

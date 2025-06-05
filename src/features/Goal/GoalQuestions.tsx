@@ -35,6 +35,42 @@ import { useRouter } from "next/navigation";
 import SignalStrengthIcon from "./SignalStrengthIcon";
 import { GradingProgressBar } from "../Dashboard/BrainCard";
 
+const TermsComponent = ({ lang }: { lang: SupportedLanguage }) => {
+  const { i18n } = useLingui();
+  return (
+    <Stack
+      sx={{
+        padding: "10px 0 0 2px",
+        flexDirection: "row",
+        gap: "10px",
+        alignItems: "center",
+        justifyContent: "space-between",
+      }}
+    >
+      <Stack
+        sx={{
+          alignItems: "center",
+          gap: "0px",
+          opacity: 0.9,
+          flexDirection: "row",
+        }}
+      >
+        <Typography variant="caption">
+          {i18n._(`By submitting this form, you agree to our:`)}
+          <br />
+          <Link href={`${getUrlStart(lang)}privacy`} target="_blank">
+            {i18n._(`Privacy Policy`)}
+          </Link>{" "}
+          {i18n._("and")}{" "}
+          <Link href={`${getUrlStart(lang)}terms`} target="_blank">
+            {i18n._(`Terms of Use`)}
+          </Link>
+        </Typography>
+      </Stack>
+    </Stack>
+  );
+};
+
 interface StepInfo {
   title: string;
   content: JSX.Element;
@@ -43,7 +79,6 @@ interface StepInfo {
 
 interface GoalQuestionsComponentProps {
   lang: SupportedLanguage;
-  showTerms: boolean;
   langLearnPlanLabels: Record<SupportedLanguage, string>;
   titleComponent: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   defaultLang?: SupportedLanguage;
@@ -52,7 +87,6 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   lang,
   titleComponent,
   langLearnPlanLabels,
-  showTerms,
   defaultLang,
 }) => {
   const { i18n } = useLingui();
@@ -60,6 +94,13 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     "goalLanguageToLearn2",
     defaultLang || "en"
   );
+
+  const [minPerDaySelectedStore, setMinPerDaySelected] = useLocalStorage<string>(
+    "goalMinPerDay",
+    "10"
+  );
+  const minPerDaySelected = parseInt(minPerDaySelectedStore || "10");
+
   const languageToLearn = languageToLearnStore || "en";
 
   const [myNativeLanguageStore, setMyNativeLanguage] = useLocalStorage<SupportedLanguage | null>(
@@ -111,6 +152,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
         description: description || "",
         languageToLearn: languageToLearn,
         level: level || "A2",
+        minPerDaySelected,
       });
       setIsLoading(false);
       setIsSubmitted(true);
@@ -218,6 +260,13 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     no: i18n.t("Norwegian"),
     sv: i18n.t("Swedish"),
     be: i18n.t("Belarusian"),
+  };
+
+  const minsPerDayOptions: Record<number, [string, string]> = {
+    3: [i18n._("3 minutes per day"), i18n._("Easy")],
+    10: [i18n._("10 minutes per day"), i18n._("Good")],
+    15: [i18n._("15 minutes per day"), i18n._("Serious")],
+    20: [i18n._("20 minutes per day"), i18n._("Intensive")],
   };
 
   const steps: StepInfo[] = [
@@ -504,47 +553,244 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             <Button
               variant="contained"
               size="large"
+              endIcon={<ArrowRight />}
+              disabled={isLoading || !description || description.length < 100}
+              onClick={onNext}
+              sx={{
+                ...buttonStyle,
+              }}
+            >
+              {i18n._("Continue")}
+            </Button>
+          </Stack>
+        </Stack>
+      ),
+    },
+
+    {
+      title: i18n._(`Let's decide at what pace we will study!`),
+      subTitle: "",
+      content: (
+        <Stack
+          sx={{
+            width: "700px",
+            maxWidth: "100%",
+            paddingTop: "20px",
+            alignItems: "flex-start",
+          }}
+        >
+          <Button
+            variant="contained"
+            size="large"
+            endIcon={<ArrowRight />}
+            onClick={onNext}
+            sx={{
+              ...buttonStyle,
+            }}
+          >
+            {i18n._("Continue")}
+          </Button>
+        </Stack>
+      ),
+    },
+
+    {
+      title: i18n._(`What is our daily goal?`),
+      subTitle: "",
+      content: (
+        <Stack
+          sx={{
+            maxWidth: "400px",
+            paddingTop: "20px",
+          }}
+        >
+          <Stack
+            sx={{
+              width: "100%",
+              alignItems: "flex-start",
+              gap: "10px",
+              paddingTop: "20px",
+            }}
+          >
+            <Stack
+              sx={{
+                flexDirection: "column",
+                gap: "10px",
+                alignItems: "flex-start",
+                flexWrap: "wrap",
+              }}
+            >
+              {Object.keys(minsPerDayOptions).map((item, index) => {
+                const optionValue = parseInt(item);
+                const labels = minsPerDayOptions[optionValue];
+                const fullLabel = labels[0];
+                const shortLabel = labels[1];
+                const isSelected = minPerDaySelected === optionValue;
+                return (
+                  <Stack
+                    key={item}
+                    sx={{
+                      borderRadius: "5px",
+                      flexDirection: "row",
+                      border: isSelected ? "1px solid #00AEEF" : "1px solid rgba(0, 0, 0, 0.1)",
+                      backgroundColor: isSelected ? "rgba(0, 174, 239, 0.1)" : "transparent",
+                      alignItems: "center",
+                      gap: "25px",
+                      textAlign: "left",
+                      width: "100%",
+                      padding: "10px 25px 10px 15px",
+                      cursor: "pointer",
+                      justifyContent: "space-between",
+                    }}
+                    component={"button"}
+                    onClick={() => setMinPerDaySelected(optionValue.toString())}
+                    color={isSelected ? "info" : "default"}
+                  >
+                    <Typography
+                      sx={{
+                        fontWeight: 500,
+                      }}
+                    >
+                      {fullLabel}
+                    </Typography>
+                    <Typography variant="caption">{shortLabel}</Typography>
+                  </Stack>
+                );
+              })}
+            </Stack>
+          </Stack>
+
+          <Stack
+            sx={{
+              padding: "50px 0 0 0",
+              flexDirection: "row",
+              gap: "10px",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Button
+              variant="contained"
+              size="large"
+              fullWidth
+              endIcon={<ArrowRight />}
+              onClick={onNext}
+              sx={{
+                ...buttonStyle,
+              }}
+            >
+              {i18n._("Next")}
+            </Button>
+          </Stack>
+        </Stack>
+      ),
+    },
+
+    {
+      title: i18n._(`So, in the first week you will learn:`),
+      subTitle: "",
+      content: (
+        <Stack
+          sx={{
+            maxWidth: "400px",
+            paddingTop: "20px",
+          }}
+        >
+          <Stack
+            sx={{
+              width: "100%",
+              alignItems: "flex-start",
+              gap: "10px",
+              paddingTop: "20px",
+            }}
+          >
+            <Typography variant="h6" align="left">
+              {i18n._(`New words:`)} <b>{1 * minPerDaySelected * 6}</b>
+            </Typography>
+            <Typography variant="h6" align="left">
+              {i18n._(`Rules:`)} <b>{0.5 * 6}</b>
+            </Typography>
+          </Stack>
+
+          <Stack
+            sx={{
+              padding: "50px 0 0 0",
+              flexDirection: "row",
+              gap: "10px",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Button
+              variant="contained"
+              size="large"
+              fullWidth
+              endIcon={<ArrowRight />}
+              onClick={onNext}
+              sx={{
+                ...buttonStyle,
+              }}
+            >
+              {i18n._("Next")}
+            </Button>
+          </Stack>
+        </Stack>
+      ),
+    },
+
+    {
+      title: i18n._(`This is what you can achieve in 3 months!`),
+      subTitle: "",
+      content: (
+        <Stack
+          sx={{
+            maxWidth: "400px",
+            paddingTop: "20px",
+          }}
+        >
+          <Stack
+            sx={{
+              width: "100%",
+              alignItems: "flex-start",
+              gap: "30px",
+              paddingTop: "20px",
+            }}
+          >
+            <Stack>
+              <Typography variant="h6" align="left">
+                {i18n._(`Confident Communication`)}
+              </Typography>
+              <Typography>{i18n._(`Practice speaking and listening without stress`)}</Typography>
+            </Stack>
+
+            <Stack>
+              <Typography variant="h6" align="left">
+                {i18n._(`Expanded Vocabulary`)}
+              </Typography>
+              <Typography>{i18n._(`Frequently used words and useful phrases`)}</Typography>
+            </Stack>
+          </Stack>
+
+          <Stack
+            sx={{
+              padding: "50px 0 0 0",
+              gap: "10px",
+            }}
+          >
+            <Button
+              variant="contained"
+              size="large"
+              fullWidth
               endIcon={<Check />}
               onClick={onSubmit}
               sx={{
                 ...buttonStyle,
               }}
             >
-              {i18n._("Submit")}
+              {i18n._("Crete a plan")}
             </Button>
+            <TermsComponent lang={lang} />
           </Stack>
-          {showTerms && (
-            <Stack
-              sx={{
-                padding: "10px 0 0 2px",
-                flexDirection: "row",
-                gap: "10px",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  gap: "0px",
-                  opacity: 0.9,
-                  flexDirection: "row",
-                }}
-              >
-                <Typography variant="caption">
-                  {i18n._(`By submitting this form, you agree to our:`)}
-                  <br />
-                  <Link href={`${getUrlStart(lang)}privacy`} target="_blank">
-                    {i18n._(`Privacy Policy`)}
-                  </Link>{" "}
-                  {i18n._("and")}{" "}
-                  <Link href={`${getUrlStart(lang)}terms`} target="_blank">
-                    {i18n._(`Terms of Use`)}
-                  </Link>
-                </Typography>
-              </Stack>
-            </Stack>
-          )}
         </Stack>
       ),
     },
@@ -707,7 +953,6 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
 
 export const GoalQuestions: FC<GoalQuestionsComponentProps> = ({
   lang,
-  showTerms,
   langLearnPlanLabels,
   titleComponent,
   defaultLang,
@@ -716,7 +961,6 @@ export const GoalQuestions: FC<GoalQuestionsComponentProps> = ({
     <ThemeProvider theme={lightTheme}>
       <GoalQuestionsComponent
         lang={lang}
-        showTerms={showTerms}
         langLearnPlanLabels={langLearnPlanLabels}
         titleComponent={titleComponent}
         defaultLang={defaultLang}

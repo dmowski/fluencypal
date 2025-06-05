@@ -71,7 +71,6 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
             >
               <GoalQuestions
                 lang={lang}
-                showTerms={true}
                 langLearnPlanLabels={getLangLearnPlanLabels(lang)}
                 titleComponent="h1"
                 defaultLang={defaultLangToLearn}
