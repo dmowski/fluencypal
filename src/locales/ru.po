@@ -129,7 +129,7 @@ msgstr "Стоимость AI репетитора"
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Header/NeedHelpModal.tsx:145
-#: src/features/Goal/GoalQuestions.tsx:418
+#: src/features/Goal/GoalQuestions.tsx:545
 #: src/features/Auth/SignInForm.tsx:206
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -147,7 +147,7 @@ msgstr "Политика использования файлов cookie"
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Header/NeedHelpModal.tsx:132
-#: src/features/Goal/GoalQuestions.tsx:422
+#: src/features/Goal/GoalQuestions.tsx:549
 #: src/features/Auth/SignInForm.tsx:210
 #. js-lingui-explicit-id
 msgid "Terms of Use"
@@ -1775,13 +1775,13 @@ msgstr "Показать меньше"
 #: src/features/Plan/useGoalCreation.ts:109
 #: src/features/Plan/useGoalCreation.ts:113
 #. js-lingui-explicit-id
-msgid "Processing goal..."
-msgstr "Цель обработки..."
+msgid "Processing the goal..."
+msgstr "Обрабатываю цель..."
 
 #: src/features/Plan/useGoalCreation.ts:127
 #. js-lingui-explicit-id
-msgid "Error processing goal"
-msgstr "Ошибка обработки цели"
+msgid "Error Processing the goal"
+msgstr "Ошибка при обработке цели"
 
 #: src/features/Plan/PlanCard.tsx:110
 #. js-lingui-explicit-id
@@ -3180,51 +3180,193 @@ msgstr "Назад"
 msgid "You are in the top 5"
 msgstr "Вы в топ-5"
 
-#: src/features/Goal/GoalQuestions.tsx:80
+#: src/features/Goal/GoalQuestions.tsx:106
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again"
 msgstr "Что-то пошло не так. Пожалуйста, попробуйте еще раз"
 
-#: src/features/Goal/GoalQuestions.tsx:136
+#: src/features/Goal/GoalQuestions.tsx:115
+#. js-lingui-explicit-id
+msgid "I'm a beginner in English"
+msgstr "Я новичок в английском"
+
+#: src/features/Goal/GoalQuestions.tsx:116
+#. js-lingui-explicit-id
+msgid "I know a few simple words"
+msgstr "Я знаю несколько простых слов"
+
+#: src/features/Goal/GoalQuestions.tsx:117
+#. js-lingui-explicit-id
+msgid "I can maintain a simple conversation"
+msgstr "Я могу поддерживать простой разговор"
+
+#: src/features/Goal/GoalQuestions.tsx:118
+#. js-lingui-explicit-id
+msgid "I can discuss various topics"
+msgstr "Я могу обсуждать различные темы"
+
+#: src/features/Goal/GoalQuestions.tsx:119
+#. js-lingui-explicit-id
+msgid "I can discuss most topics in detail"
+msgstr "Я могу обсудить большинство тем подробно"
+
+#: src/features/Goal/GoalQuestions.tsx:172
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please try again."
 msgstr "Не удалось скопировать текст. Пожалуйста, попробуйте снова."
 
-#: src/features/Goal/GoalQuestions.tsx:145
+#: src/features/Goal/GoalQuestions.tsx:179
 #. js-lingui-explicit-id
-msgid ""
-"Create your personalized plan and start your journey towards achieving your "
-"goals."
-msgstr ""
-"Создайте свой персонализированный план и начните свое путешествие к "
-"достижению своих целей."
+msgid "English"
+msgstr "Английский"
+
+#: src/features/Goal/GoalQuestions.tsx:180
+#. js-lingui-explicit-id
+msgid "Spanish"
+msgstr "Испанский"
 
 #: src/features/Goal/GoalQuestions.tsx:181
+#. js-lingui-explicit-id
+msgid "Chinese"
+msgstr "Китайский"
+
+#: src/features/Goal/GoalQuestions.tsx:182
+#. js-lingui-explicit-id
+msgid "French"
+msgstr "Французский"
+
+#: src/features/Goal/GoalQuestions.tsx:183
+#. js-lingui-explicit-id
+msgid "German"
+msgstr "Немецкий"
+
+#: src/features/Goal/GoalQuestions.tsx:184
+#. js-lingui-explicit-id
+msgid "Japanese"
+msgstr "Японский"
+
+#: src/features/Goal/GoalQuestions.tsx:185
+#. js-lingui-explicit-id
+msgid "Korean"
+msgstr "Корейский"
+
+#: src/features/Goal/GoalQuestions.tsx:186
+#. js-lingui-explicit-id
+msgid "Arabic"
+msgstr "Арабский"
+
+#: src/features/Goal/GoalQuestions.tsx:187
+#. js-lingui-explicit-id
+msgid "Portuguese"
+msgstr "Португальский"
+
+#: src/features/Goal/GoalQuestions.tsx:189
+#. js-lingui-explicit-id
+msgid "Italian"
+msgstr "Итальянский"
+
+#: src/features/Goal/GoalQuestions.tsx:190
+#. js-lingui-explicit-id
+msgid "Polish"
+msgstr "Польский"
+
+#: src/features/Goal/GoalQuestions.tsx:191
+#. js-lingui-explicit-id
+msgid "Russian"
+msgstr "Русский"
+
+#: src/features/Goal/GoalQuestions.tsx:193
+#. js-lingui-explicit-id
+msgid "Ukrainian"
+msgstr "Украинский"
+
+#: src/features/Goal/GoalQuestions.tsx:194
+#. js-lingui-explicit-id
+msgid "Indonesian"
+msgstr "Индонезийский"
+
+#: src/features/Goal/GoalQuestions.tsx:195
+#. js-lingui-explicit-id
+msgid "Malay"
+msgstr "Малайский"
+
+#: src/features/Goal/GoalQuestions.tsx:196
+#. js-lingui-explicit-id
+msgid "Thai"
+msgstr "Тайский"
+
+#: src/features/Goal/GoalQuestions.tsx:197
+#. js-lingui-explicit-id
+msgid "Turkish"
+msgstr "Турецкий"
+
+#: src/features/Goal/GoalQuestions.tsx:198
+#. js-lingui-explicit-id
+msgid "Vietnamese"
+msgstr "Вьетнамский"
+
+#: src/features/Goal/GoalQuestions.tsx:199
+#. js-lingui-explicit-id
+msgid "Danish"
+msgstr "Датский"
+
+#: src/features/Goal/GoalQuestions.tsx:200
+#. js-lingui-explicit-id
+msgid "Norwegian"
+msgstr "Норвежский"
+
+#: src/features/Goal/GoalQuestions.tsx:201
+#. js-lingui-explicit-id
+msgid "Swedish"
+msgstr "Шведский"
+
+#: src/features/Goal/GoalQuestions.tsx:202
+#. js-lingui-explicit-id
+msgid "Belarusian"
+msgstr "Белорусский"
+
+#: src/features/Goal/GoalQuestions.tsx:207
+#. js-lingui-explicit-id
+msgid "I want to learn..."
+msgstr "Я хочу изучать..."
+
+#: src/features/Goal/GoalQuestions.tsx:242
 #. js-lingui-explicit-id
 msgid "Language to Learn"
 msgstr "Язык для изучения"
 
-#: src/features/Goal/GoalQuestions.tsx:214
+#: src/features/Goal/GoalQuestions.tsx:275
 #. js-lingui-explicit-id
-msgid "Your Current Level"
-msgstr "Ваш текущий уровень"
+msgid "My native language"
+msgstr "Мой родной язык"
 
-#: src/features/Goal/GoalQuestions.tsx:262
+#: src/features/Goal/GoalQuestions.tsx:299
+#: src/features/Goal/GoalQuestions.tsx:389
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "Далее"
 
-#: src/features/Goal/GoalQuestions.tsx:272
+#: src/features/Goal/GoalQuestions.tsx:309
 #. js-lingui-explicit-id
-msgid "Step 1 of 2"
-msgstr "Шаг 1 из 2"
+msgid "Step 1 of 3"
+msgstr "Шаг 1 из 3"
 
-#: src/features/Goal/GoalQuestions.tsx:280
+#: src/features/Goal/GoalQuestions.tsx:316
+#. js-lingui-explicit-id
+msgid "How well do you know"
+msgstr "Как хорошо вы знаете"
+
+#: src/features/Goal/GoalQuestions.tsx:399
+#. js-lingui-explicit-id
+msgid "Step 2 of 3"
+msgstr "Шаг 2 из 3"
+
+#: src/features/Goal/GoalQuestions.tsx:407
 #. js-lingui-explicit-id
 msgid "Details"
 msgstr "Детали"
 
-#: src/features/Goal/GoalQuestions.tsx:281
+#: src/features/Goal/GoalQuestions.tsx:408
 #. js-lingui-explicit-id
 msgid ""
 "Provide more info about you and what you need to improve in your language "
@@ -3235,65 +3377,65 @@ msgstr ""
 "своих языковых навыках. И AI создаст для вас персонализированный план. Чем "
 "больше информации - тем лучше план."
 
-#: src/features/Goal/GoalQuestions.tsx:318
+#: src/features/Goal/GoalQuestions.tsx:445
 #. js-lingui-explicit-id
 msgid "About your goal"
 msgstr "О вашей цели"
 
-#: src/features/Goal/GoalQuestions.tsx:334
+#: src/features/Goal/GoalQuestions.tsx:461
 #. js-lingui-explicit-id
 msgid ""
 "I want to learn English to travel. And I want to understand movies and "
 "songs."
 msgstr "Я хочу изучать английский для путешествий. И я хочу понимать фильмы и песни."
 
-#: src/features/Goal/GoalQuestions.tsx:353
+#: src/features/Goal/GoalQuestions.tsx:480
 #. js-lingui-explicit-id
 msgid "Write at least 100 characters for a sharper plan"
 msgstr "Напишите как минимум 100 символов для более четкого плана"
 
-#: src/features/Goal/GoalQuestions.tsx:385
+#: src/features/Goal/GoalQuestions.tsx:512
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Отправить"
 
-#: src/features/Goal/GoalQuestions.tsx:393
+#: src/features/Goal/GoalQuestions.tsx:520
 #. js-lingui-explicit-id
-msgid "Step 2 of 2"
-msgstr "Шаг 2 из 2"
+msgid "Step 3 of 3"
+msgstr "Шаг 3 из 3"
 
-#: src/features/Goal/GoalQuestions.tsx:415
+#: src/features/Goal/GoalQuestions.tsx:542
 #. js-lingui-explicit-id
 msgid "By submitting this form, you agree to our:"
 msgstr "Отправляя эту форму, вы соглашаетесь с нашими:"
 
-#: src/features/Goal/GoalQuestions.tsx:420
+#: src/features/Goal/GoalQuestions.tsx:547
 #: src/features/Auth/SignInForm.tsx:208
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "и"
 
-#: src/features/Goal/GoalQuestions.tsx:470
+#: src/features/Goal/GoalQuestions.tsx:597
 #. js-lingui-explicit-id
 msgid "Submitted"
 msgstr "Отправлено"
 
-#: src/features/Goal/GoalQuestions.tsx:481
+#: src/features/Goal/GoalQuestions.tsx:608
 #. js-lingui-explicit-id
 msgid "Your plan is being processed with AI"
 msgstr "Ваш план обрабатывается с помощью AI"
 
-#: src/features/Goal/GoalQuestions.tsx:511
+#: src/features/Goal/GoalQuestions.tsx:638
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "Скопировано"
 
-#: src/features/Goal/GoalQuestions.tsx:511
+#: src/features/Goal/GoalQuestions.tsx:638
 #. js-lingui-explicit-id
 msgid "Copy link"
 msgstr "Скопировать ссылку"
 
-#: src/features/Goal/GoalQuestions.tsx:524
+#: src/features/Goal/GoalQuestions.tsx:651
 #. js-lingui-explicit-id
 msgid "Open a plan"
 msgstr "Открыть план"
@@ -5728,3 +5870,49 @@ msgstr "Продолжить с Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Создавая учетную запись, вы соглашаетесь с:"
+
+#: src/features/Plan/useGoalCreation.ts:40
+#: src/features/Plan/useGoalCreation.ts:65
+#: src/features/Plan/useGoalCreation.ts:87
+#: src/features/Plan/useGoalCreation.ts:90
+#: src/features/Plan/useGoalCreation.ts:94
+#: src/features/Plan/useGoalCreation.ts:103
+#: src/features/Plan/useGoalCreation.ts:109
+#: src/features/Plan/useGoalCreation.ts:113
+#. js-lingui-explicit-id
+#~ msgid "Processing goal..."
+#~ msgstr "Цель обработки..."
+
+#: src/features/Plan/useGoalCreation.ts:127
+#. js-lingui-explicit-id
+#~ msgid "Error processing goal"
+#~ msgstr "Ошибка обработки цели"
+
+#: src/features/Goal/GoalQuestions.tsx:520
+#. js-lingui-explicit-id
+#~ msgid "Step 2 of 2"
+#~ msgstr "Шаг 2 из 2"
+
+#: src/features/Goal/GoalQuestions.tsx:385
+#. js-lingui-explicit-id
+#~ msgid "Step 1 of 2"
+#~ msgstr "Шаг 1 из 2"
+
+#: src/features/Goal/GoalQuestions.tsx:281
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Create your personalized plan and start your journey towards achieving your "
+#~ "goals."
+#~ msgstr ""
+#~ "Создайте свой персонализированный план и начните свое путешествие к "
+#~ "достижению своих целей."
+
+#: src/features/Goal/GoalQuestions.tsx:350
+#. js-lingui-explicit-id
+#~ msgid "Your Current Level"
+#~ msgstr "Ваш текущий уровень"
+
+#: src/features/Goal/GoalQuestions.tsx:171
+#. js-lingui-explicit-id
+#~ msgid "I want to study..."
+#~ msgstr "Я хочу изучать..."

@@ -60,7 +60,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const notifications = useNotifications();
   const textAi = useTextAi();
 
-  const { isProcessingGoal, setIsProcessingGoal } = useGoalCreation();
+  const { isProcessingGoal } = useGoalCreation();
 
   const [isShowGoalModal, setIsShowGoalModal] = useState(false);
 

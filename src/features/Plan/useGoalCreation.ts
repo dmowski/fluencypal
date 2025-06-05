@@ -37,7 +37,7 @@ export const useGoalCreation = () => {
       return;
     }
 
-    setIsProcessingGoal(i18n._(`Processing goal...`) + "10%");
+    setIsProcessingGoal(i18n._(`Processing the goal...`) + "10%");
     isProcessingGoalRef.current = true;
 
     const goalData = await getGoalQuiz(goalId);
@@ -62,7 +62,7 @@ export const useGoalCreation = () => {
 
     try {
       const code = await settings.setLanguage(goalData.languageToLearn);
-      setIsProcessingGoal(i18n._(`Processing goal...`) + "12%");
+      setIsProcessingGoal(i18n._(`Processing the goal...`) + "12%");
       console.log("code", code);
 
       const conversation: ChatMessage[] = [
@@ -84,14 +84,14 @@ export const useGoalCreation = () => {
         setTimeout(async () => {
           const updatedInfoRecords = await userInfo.updateUserInfo(conversation, code);
           console.log("updatedInfoRecords", updatedInfoRecords);
-          setIsProcessingGoal(i18n._(`Processing goal...`) + "32%");
+          setIsProcessingGoal(i18n._(`Processing the goal...`) + "32%");
 
           sleep(3000).then(() => {
-            setIsProcessingGoal(i18n._(`Processing goal...`) + "50%");
+            setIsProcessingGoal(i18n._(`Processing the goal...`) + "50%");
           });
 
           sleep(4500).then(() => {
-            setIsProcessingGoal(i18n._(`Processing goal...`) + "60%");
+            setIsProcessingGoal(i18n._(`Processing the goal...`) + "60%");
           });
 
           const planData = await plan.generateGoal({
@@ -100,17 +100,17 @@ export const useGoalCreation = () => {
             languageCode: code,
             goalQuiz: goalData,
           });
-          setIsProcessingGoal(i18n._(`Processing goal...`) + "72%");
+          setIsProcessingGoal(i18n._(`Processing the goal...`) + "72%");
 
           console.log("USER PLAN", planData);
 
           await plan.addGoalPlan(planData);
 
-          setIsProcessingGoal(i18n._(`Processing goal...`) + "82%");
+          setIsProcessingGoal(i18n._(`Processing the goal...`) + "82%");
 
           removeGoalIdFromUrl();
           await deleteGoalQuiz(goalId);
-          setIsProcessingGoal(i18n._(`Processing goal...`) + "99%");
+          setIsProcessingGoal(i18n._(`Processing the goal...`) + "99%");
 
           resolve(true);
         }, 100)
@@ -124,11 +124,11 @@ export const useGoalCreation = () => {
         },
       });
 
-      notifications.show(i18n._(`Error processing goal`) + "=" + error, {
+      notifications.show(i18n._(`Error Processing the goal`) + "=" + error, {
         severity: "error",
       });
 
-      console.error("Error processing goal", error);
+      console.error("Error Processing the goal", error);
     }
 
     setIsProcessingGoal("");

@@ -1,6 +1,6 @@
 "use client";
 
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import { Button, Chip, CircularProgress, Link, Stack, TextField, Typography } from "@mui/material";
 import { FC, JSX, useEffect, useState } from "react";
@@ -13,6 +13,9 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import { sendCreateGoalRequest } from "@/app/api/goal/goalRequests";
 import { useIsWebView } from "../Auth/useIsWebView";
 import * as Sentry from "@sentry/nextjs";
+import { useLocalStorage } from "react-use";
+import { useRouter } from "next/navigation";
+import SignalStrengthIcon from "./SignalStrengthIcon";
 
 interface StepInfo {
   title: string;
@@ -35,18 +38,41 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   defaultLang,
 }) => {
   const { i18n } = useLingui();
-  const [languageToLearn, setLanguageToLearn] = useState<SupportedLanguage>(defaultLang || "en");
+  const [languageToLearnStore, setLanguageToLearn] = useLocalStorage<SupportedLanguage | null>(
+    "goalLanguageToLearn2",
+    defaultLang || "en"
+  );
+  const languageToLearn = languageToLearnStore || "en";
+
+  const [myNativeLanguageStore, setMyNativeLanguage] = useLocalStorage<SupportedLanguage | null>(
+    "goalLanguageToLearn",
+    lang || "en"
+  );
+  const myNativeLanguage = myNativeLanguageStore || "en";
+  useEffect(() => {
+    setMyNativeLanguage(lang);
+  }, [lang]);
+
   const title = langLearnPlanLabels[languageToLearn];
 
   const { inWebView } = useIsWebView();
 
-  const [level, setLevel] = useState<string>("A2");
-  const [description, setDescription] = useState<string>("");
+  const [level, setLevel] = useLocalStorage<string>("goalLevel", "A2");
+
+  const [description, setDescription] = useLocalStorage<string>("goalDescription", "");
   const [showDescriptionError, setShowDescriptionError] = useState<boolean>(false);
 
   const [goalId, setGoalId] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const updatePageLang = (value: SupportedLanguage) => {
+    setMyNativeLanguage(value);
+    // update page
+
+    const newPath = `${getUrlStart(value)}quiz`;
+    router.push(newPath);
+  };
 
   const updateDescription = (value: string) => {
     setDescription(value);
@@ -54,7 +80,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   };
 
   const onSubmit = async () => {
-    if (description.length < 100) {
+    if (!description || description.length < 100) {
       setShowDescriptionError(true);
       return;
     }
@@ -64,9 +90,9 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
 
     try {
       const requestResult = await sendCreateGoalRequest({
-        description: description,
+        description: description || "",
         languageToLearn: languageToLearn,
-        level: level,
+        level: level || "A2",
       });
       setIsLoading(false);
       setIsSubmitted(true);
@@ -85,7 +111,15 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     }
   };
 
-  const levels = ["A1", "A2", "B1", "B2", "C1", "C2", "Fluent"];
+  const levelsMap: Record<string, string> = {
+    A1: i18n._("I'm a beginner in English"),
+    A2: i18n._("I know a few simple words"),
+    B1: i18n._("I can maintain a simple conversation"),
+    B2: i18n._("I can discuss various topics"),
+    C1: i18n._("I can discuss most topics in detail"),
+  };
+
+  const levels = Object.keys(levelsMap) as string[];
 
   const scrollTop = () => {
     window.scrollTo({
@@ -94,7 +128,9 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     });
   };
 
-  const [step, setStep] = useState(0);
+  const [stepStore, setStep] = useLocalStorage<number>("goalStep", 0);
+  const step = stepStore || 0;
+
   const onNext = () => {
     if (step < maxSteps - 1) {
       setStep(step + 1);
@@ -139,12 +175,37 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     }
   };
 
+  const langTranslations: Record<SupportedLanguage, string> = {
+    en: i18n.t("English"),
+    es: i18n.t("Spanish"),
+    zh: i18n.t("Chinese"),
+    fr: i18n.t("French"),
+    de: i18n.t("German"),
+    ja: i18n.t("Japanese"),
+    ko: i18n.t("Korean"),
+    ar: i18n.t("Arabic"),
+    pt: i18n.t("Portuguese"),
+
+    it: i18n.t("Italian"),
+    pl: i18n.t("Polish"),
+    ru: i18n.t("Russian"),
+
+    uk: i18n.t("Ukrainian"),
+    id: i18n.t("Indonesian"),
+    ms: i18n.t("Malay"),
+    th: i18n.t("Thai"),
+    tr: i18n.t("Turkish"),
+    vi: i18n.t("Vietnamese"),
+    da: i18n.t("Danish"),
+    no: i18n.t("Norwegian"),
+    sv: i18n.t("Swedish"),
+    be: i18n.t("Belarusian"),
+  };
+
   const steps: StepInfo[] = [
     {
-      title: title,
-      subTitle: i18n._(
-        `Create your personalized plan and start your journey towards achieving your goals.`
-      ),
+      title: i18n._(`I want to learn...`),
+      subTitle: i18n._(``),
       content: (
         <Stack
           sx={{
@@ -190,7 +251,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               width: "100%",
               alignItems: "flex-start",
               gap: "10px",
-              paddingTop: "20px",
+              paddingTop: "40px",
             }}
           >
             <Stack
@@ -211,31 +272,97 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                   lineHeight: "1.1",
                 }}
               >
-                {i18n._(`Your Current Level`)}
+                {i18n._(`My native language`)}
               </Typography>
             </Stack>
+            <LangSelector value={myNativeLanguage} onChange={(lang) => updatePageLang(lang)} />
+          </Stack>
+
+          <Stack
+            sx={{
+              padding: "50px 0 0 0",
+              flexDirection: "row",
+              gap: "10px",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Button
+              variant="contained"
+              size="large"
+              endIcon={<ArrowRight />}
+              onClick={onNext}
+              sx={{
+                ...buttonStyle,
+              }}
+            >
+              {i18n._("Next")}
+            </Button>
+            <Typography
+              variant="body2"
+              sx={{
+                opacity: 0.5,
+                maxWidth: "100px",
+              }}
+              align="right"
+            >
+              {i18n._("Step 1 of 3")}
+            </Typography>
+          </Stack>
+        </Stack>
+      ),
+    },
+    {
+      title: i18n._(`How well do you know`) + " " + `${langTranslations[languageToLearn]}?`,
+      subTitle: "",
+      content: (
+        <Stack
+          sx={{
+            maxWidth: "400px",
+            paddingTop: "20px",
+          }}
+        >
+          <Stack
+            sx={{
+              width: "100%",
+              alignItems: "flex-start",
+              gap: "10px",
+              paddingTop: "20px",
+            }}
+          >
             <Stack
               sx={{
-                flexDirection: "row",
+                flexDirection: "column",
                 gap: "10px",
-                alignItems: "center",
+                alignItems: "flex-start",
                 flexWrap: "wrap",
               }}
             >
-              {levels.map((item) => {
+              {levels.map((item, index) => {
                 const isSelected = level === item;
+                const fullLabel = levelsMap[item];
                 return (
-                  <Chip
-                    label={item}
+                  <Stack
                     key={item}
                     sx={{
                       borderRadius: "5px",
-                      padding: "0 5px",
+                      flexDirection: "row",
+                      border: isSelected ? "1px solid #00AEEF" : "1px solid rgba(0, 0, 0, 0.1)",
+                      backgroundColor: isSelected ? "rgba(0, 174, 239, 0.1)" : "transparent",
+                      alignItems: "center",
+                      gap: "15px",
+                      textAlign: "left",
+                      width: "100%",
+                      padding: "10px 25px 10px 15px",
+                      cursor: "pointer",
                     }}
+                    component={"button"}
                     onClick={() => setLevel(item)}
                     color={isSelected ? "info" : "default"}
-                    icon={isSelected ? <Check size={"14px"} /> : undefined}
-                  />
+                  >
+                    <SignalStrengthIcon level={index} />
+                    <Typography>{fullLabel}</Typography>
+                  </Stack>
                 );
               })}
             </Stack>
@@ -269,7 +396,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               }}
               align="right"
             >
-              {i18n._("Step 1 of 2")}
+              {i18n._("Step 2 of 3")}
             </Typography>
           </Stack>
         </Stack>
@@ -359,7 +486,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                   minWidth: "70px",
                 }}
               >
-                {description.length} / 100
+                {description?.length || 0} / 100
               </Typography>
             </Stack>
           </Stack>
@@ -390,7 +517,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 opacity: 0.5,
               }}
             >
-              {i18n._("Step 2 of 2")}
+              {i18n._("Step 3 of 3")}
             </Typography>
           </Stack>
           {showTerms && (
