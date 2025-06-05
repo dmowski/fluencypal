@@ -2,10 +2,27 @@
 
 import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
-import { Button, Chip, CircularProgress, Link, Stack, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Chip,
+  CircularProgress,
+  IconButton,
+  Link,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { FC, JSX, useEffect, useState } from "react";
 import { buttonStyle, subTitleFontStyle } from "../Landing/landingSettings";
-import { ArrowRight, Check, Copy, ExternalLink, GraduationCap } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  Copy,
+  ExternalLink,
+  GraduationCap,
+  Icon,
+} from "lucide-react";
 import { LangSelector } from "../Lang/LangSelector";
 import { lightTheme } from "../uiKit/theme";
 import { ThemeProvider } from "@mui/material/styles";
@@ -16,6 +33,7 @@ import * as Sentry from "@sentry/nextjs";
 import { useLocalStorage } from "react-use";
 import { useRouter } from "next/navigation";
 import SignalStrengthIcon from "./SignalStrengthIcon";
+import { GradingProgressBar } from "../Dashboard/BrainCard";
 
 interface StepInfo {
   title: string;
@@ -290,6 +308,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             <Button
               variant="contained"
               size="large"
+              fullWidth
               endIcon={<ArrowRight />}
               onClick={onNext}
               sx={{
@@ -298,16 +317,6 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             >
               {i18n._("Next")}
             </Button>
-            <Typography
-              variant="body2"
-              sx={{
-                opacity: 0.5,
-                maxWidth: "100px",
-              }}
-              align="right"
-            >
-              {i18n._("Step 1 of 3")}
-            </Typography>
           </Stack>
         </Stack>
       ),
@@ -380,6 +389,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             <Button
               variant="contained"
               size="large"
+              fullWidth
               endIcon={<ArrowRight />}
               onClick={onNext}
               sx={{
@@ -388,16 +398,6 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             >
               {i18n._("Next")}
             </Button>
-            <Typography
-              variant="body2"
-              sx={{
-                opacity: 0.5,
-                maxWidth: "100px",
-              }}
-              align="right"
-            >
-              {i18n._("Step 2 of 3")}
-            </Typography>
           </Stack>
         </Stack>
       ),
@@ -408,6 +408,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
       subTitle: i18n._(
         `Provide more info about you and what you need to improve in your language skills. And AI will create a personalized plan for you. More info - better plan.`
       ),
+
       content: (
         <Stack
           sx={{
@@ -511,14 +512,6 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             >
               {i18n._("Submit")}
             </Button>
-            <Typography
-              variant="body2"
-              sx={{
-                opacity: 0.5,
-              }}
-            >
-              {i18n._("Step 3 of 3")}
-            </Typography>
           </Stack>
           {showTerms && (
             <Stack
@@ -558,6 +551,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   ];
 
   const maxSteps = steps.length;
+  const currentStepIndex = stepStore || 0;
+  const progress = (currentStepIndex + 1) / maxSteps;
   const currentStep = steps[step] || steps[0];
 
   const goalPartUrl = `${getUrlStart(lang)}practice/?goalId=${goalId}`;
@@ -569,6 +564,53 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
         backgroundColor: "transparent",
       }}
     >
+      <Stack
+        sx={{
+          width: "100%",
+          padding: "0 20px 40px 0px",
+          boxSizing: "border-box",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginLeft: stepStore ? "-60px" : "0",
+          gap: "20px",
+
+          "@media (max-width: 900px)": {
+            position: "absolute",
+            marginLeft: "0px",
+            gap: "10px",
+            top: "90px",
+            left: 0,
+            right: 0,
+            padding: "10px 20px 0 10px",
+          },
+        }}
+      >
+        {!!stepStore && stepStore > 0 && (
+          <IconButton
+            onClick={() => {
+              const currentStep = stepStore || 0;
+              if (currentStep > 0) {
+                setStep(currentStep - 1);
+                scrollTop();
+              }
+            }}
+          >
+            <ArrowLeft />
+          </IconButton>
+        )}
+
+        <Stack
+          sx={{
+            width: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.07)",
+            borderRadius: "25px",
+          }}
+        >
+          <GradingProgressBar height={"12px"} value={Math.max(0, progress * 100 - 20)} label="" />
+        </Stack>
+      </Stack>
+
       <Stack
         sx={{
           width: "100%",

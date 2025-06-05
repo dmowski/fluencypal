@@ -26,6 +26,7 @@ import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 interface GradingProgressBarProps {
   value: number; // from 0 to 100
   label?: string; // optional, like "Grading..."
+  height?: number | string; // optional, default is 20px
 }
 
 const GradientLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -43,6 +44,7 @@ const GradientLinearProgress = styled(LinearProgress)(({ theme }) => ({
 export const GradingProgressBar: React.FC<GradingProgressBarProps> = ({
   value,
   label = "Grading in progress...",
+  height = 20,
 }) => {
   return (
     <Box
@@ -61,7 +63,13 @@ export const GradingProgressBar: React.FC<GradingProgressBarProps> = ({
           </Typography>
         </Stack>
       )}
-      <GradientLinearProgress variant="determinate" value={value} />
+      <GradientLinearProgress
+        sx={{
+          height: height || "20px",
+        }}
+        variant="determinate"
+        value={value}
+      />
     </Box>
   );
 };
