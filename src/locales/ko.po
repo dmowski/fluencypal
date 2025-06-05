@@ -13,10 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/ConversationPage.tsx:178
+#: src/features/Dashboard/PlanDashboardCards.tsx:353
 #. js-lingui-explicit-id
-msgid "Now let’s determine your starting point!"
-msgstr "이제 시작점을 결정해 봅시다!"
+msgid "There's something interesting for you..."
+msgstr "당신을 위한 흥미로운 것이 있습니다..."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:376
+#. js-lingui-explicit-id
+msgid "Let's start"
+msgstr "시작해봅시다"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -428,9 +433,9 @@ msgstr "당신의 성과"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
 #: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/Dashboard/PlanDashboardCards.tsx:86
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
+#: src/features/Dashboard/PlanDashboardCards.tsx:309
 #: src/features/Dashboard/ConversationSelectCard.tsx:191
-#: src/features/Conversation/ConversationPage.tsx:257
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "단어들"
@@ -682,10 +687,10 @@ msgstr "결제 내역:"
 #: src/features/RolePlay/RolePlayBoard.tsx:632
 #: src/features/Game/GameQuestion.tsx:210
 #: src/features/Game/GameQuestion.tsx:287
-#: src/features/Conversation/ConversationPage.tsx:80
-#: src/features/Conversation/ConversationPage.tsx:88
-#: src/features/Conversation/ConversationPage.tsx:101
-#: src/features/Conversation/ConversationPage.tsx:115
+#: src/features/Conversation/ConversationPage.tsx:82
+#: src/features/Conversation/ConversationPage.tsx:90
+#: src/features/Conversation/ConversationPage.tsx:103
+#: src/features/Conversation/ConversationPage.tsx:117
 #: src/features/Conversation/ConversationCanvas2.tsx:299
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -1620,14 +1625,14 @@ msgstr "모든 시나리오"
 #: src/features/Landing/PlanLandingBlock.tsx:287
 #: src/features/Landing/PlanLandingBlock.tsx:496
 #: src/features/Landing/PlanLandingBlock.tsx:625
-#: src/features/Dashboard/PlanDashboardCards.tsx:289
+#: src/features/Dashboard/PlanDashboardCards.tsx:496
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "시작"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:397
 #: src/features/Landing/PlanLandingBlock.tsx:103
-#: src/features/Dashboard/PlanDashboardCards.tsx:85
+#: src/features/Dashboard/PlanDashboardCards.tsx:98
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "역할 놀이"
@@ -1982,15 +1987,15 @@ msgid "Develop formal writing skills for academic success."
 msgstr "학문적 성공을 위한 정식적인 글쓰기 기술을 개발하십시오."
 
 #: src/features/Landing/PlanLandingBlock.tsx:102
-#: src/features/Dashboard/PlanDashboardCards.tsx:84
+#: src/features/Dashboard/PlanDashboardCards.tsx:97
+#: src/features/Dashboard/PlanDashboardCards.tsx:249
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
-#: src/features/Conversation/ConversationPage.tsx:197
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "대화"
 
 #: src/features/Landing/PlanLandingBlock.tsx:105
-#: src/features/Dashboard/PlanDashboardCards.tsx:87
+#: src/features/Dashboard/PlanDashboardCards.tsx:100
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "룰"
@@ -3566,60 +3571,104 @@ msgstr "나의"
 msgid "New rule to practice."
 msgstr "새로운 연습 규칙."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:61
+#: src/features/Dashboard/PlanDashboardCards.tsx:74
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "정말로 목표를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:168
+#: src/features/Dashboard/PlanDashboardCards.tsx:182
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "더 많은 수업을 생성하는 동안 문제가 발생했습니다. 나중에 다시 시도해주세요."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:220
-#: src/features/Dashboard/PlanDashboardCards.tsx:354
+#: src/features/Dashboard/PlanDashboardCards.tsx:230
+#. js-lingui-explicit-id
+msgid "Now let’s determine your starting point!"
+msgstr "이제 시작점을 결정해 봅시다!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:250
+#. js-lingui-explicit-id
+msgid "Start your journey with a conversation!"
+msgstr "대화를 통해 여행을 시작하세요!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:255
+#: src/features/Dashboard/PlanDashboardCards.tsx:285
+#: src/features/Dashboard/PlanDashboardCards.tsx:315
+#: src/features/Dashboard/ConversationSelectCard.tsx:126
+#: src/features/Dashboard/ConversationSelectCard.tsx:152
+#: src/features/Dashboard/ConversationSelectCard.tsx:176
+#: src/features/Dashboard/ConversationSelectCard.tsx:200
+#. js-lingui-explicit-id
+msgid "Set the goal to start"
+msgstr "시작할 목표를 설정하십시오"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:273
+#: src/features/Dashboard/PlanDashboardCards.tsx:303
+#: src/features/Dashboard/PlanDashboardCards.tsx:333
+#. js-lingui-explicit-id
+msgid "Recommended"
+msgstr "추천된"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:279
+#: src/features/Dashboard/ConversationSelectCard.tsx:167
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "규칙"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:280
+#. js-lingui-explicit-id
+msgid "Learn the rules of the language!"
+msgstr "언어의 규칙을 배우세요!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:310
+#. js-lingui-explicit-id
+msgid "Learn new words and expand your vocabulary!"
+msgstr "새로운 단어를 배우고 어휘력을 확장하세요!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:427
+#: src/features/Dashboard/PlanDashboardCards.tsx:561
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Conversation/ConversationCanvas2.tsx:1009
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "목표"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:221
+#: src/features/Dashboard/PlanDashboardCards.tsx:428
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "당신의 유창함을 향한 여정을 시작하세요"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:305
+#: src/features/Dashboard/PlanDashboardCards.tsx:512
 #. js-lingui-explicit-id
 msgid "More uniq lessons"
 msgstr "더 많은 유니크한 레슨"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:350
+#: src/features/Dashboard/PlanDashboardCards.tsx:557
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "더욱 독특한 수업들"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:358
+#: src/features/Dashboard/PlanDashboardCards.tsx:565
 #. js-lingui-explicit-id
 msgid "We will help you to learn the language you need"
 msgstr "우리는 당신이 필요로 하는 언어를 배울 수 있도록 도와드릴 것입니다"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:382
+#: src/features/Dashboard/PlanDashboardCards.tsx:589
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "현재 목표 삭제"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:398
+#: src/features/Dashboard/PlanDashboardCards.tsx:605
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "생성 중..."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:399
+#: src/features/Dashboard/PlanDashboardCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "더 많은 독특한 수업을 생성하세요"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:409
+#: src/features/Dashboard/PlanDashboardCards.tsx:616
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "더 많은 수업을 생성하기 위해서는 적어도 3개의 수업을 완료해야 합니다"
@@ -3664,17 +3713,6 @@ msgstr "시작 | 5분"
 msgid "Talk to the AI and it will respond to you"
 msgstr "AI와 대화하면 AI가 당신에게 응답할 것입니다."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:126
-#: src/features/Dashboard/ConversationSelectCard.tsx:152
-#: src/features/Dashboard/ConversationSelectCard.tsx:176
-#: src/features/Dashboard/ConversationSelectCard.tsx:200
-#: src/features/Conversation/ConversationPage.tsx:203
-#: src/features/Conversation/ConversationPage.tsx:233
-#: src/features/Conversation/ConversationPage.tsx:263
-#. js-lingui-explicit-id
-msgid "Set the goal to start"
-msgstr "시작할 목표를 설정하십시오"
-
 #: src/features/Dashboard/ConversationSelectCard.tsx:137
 #. js-lingui-explicit-id
 msgid "Start Talking"
@@ -3694,12 +3732,6 @@ msgstr "AI가 대화를 이끌어갈 것입니다"
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "나를 안내해주세요"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:167
-#: src/features/Conversation/ConversationPage.tsx:227
-#. js-lingui-explicit-id
-msgid "Rules"
-msgstr "규칙"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:187
 #. js-lingui-explicit-id
@@ -3833,42 +3865,20 @@ msgstr "더 보기"
 msgid "Error analyzing conversation"
 msgstr "대화 분석 오류"
 
-#: src/features/Conversation/ConversationPage.tsx:92
+#: src/features/Conversation/ConversationPage.tsx:94
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "목표 로드 중..."
 
-#: src/features/Conversation/ConversationPage.tsx:123
+#: src/features/Conversation/ConversationPage.tsx:125
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "새로운 단어를 만들고 있습니다..."
 
-#: src/features/Conversation/ConversationPage.tsx:127
+#: src/features/Conversation/ConversationPage.tsx:129
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "룰 생성 중..."
-
-#: src/features/Conversation/ConversationPage.tsx:198
-#. js-lingui-explicit-id
-msgid "Start your journey with a conversation!"
-msgstr "대화를 통해 여행을 시작하세요!"
-
-#: src/features/Conversation/ConversationPage.tsx:221
-#: src/features/Conversation/ConversationPage.tsx:251
-#: src/features/Conversation/ConversationPage.tsx:281
-#. js-lingui-explicit-id
-msgid "Recommended"
-msgstr "추천된"
-
-#: src/features/Conversation/ConversationPage.tsx:228
-#. js-lingui-explicit-id
-msgid "Learn the rules of the language!"
-msgstr "언어의 규칙을 배우세요!"
-
-#: src/features/Conversation/ConversationPage.tsx:258
-#. js-lingui-explicit-id
-msgid "Learn new words and expand your vocabulary!"
-msgstr "새로운 단어를 배우고 어휘력을 확장하세요!"
 
 #: src/features/Conversation/ConversationError.tsx:34
 #. js-lingui-explicit-id

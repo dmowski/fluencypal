@@ -13,10 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/ConversationPage.tsx:178
+#: src/features/Dashboard/PlanDashboardCards.tsx:353
 #. js-lingui-explicit-id
-msgid "Now let’s determine your starting point!"
-msgstr "Sekarang mari kita tentukan titik awal Anda!"
+msgid "There's something interesting for you..."
+msgstr "Ada sesuatu yang menarik untuk Anda..."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:376
+#. js-lingui-explicit-id
+msgid "Let's start"
+msgstr "Mari kita mulai"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -441,9 +446,9 @@ msgstr "Prestasi Anda"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
 #: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/Dashboard/PlanDashboardCards.tsx:86
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
+#: src/features/Dashboard/PlanDashboardCards.tsx:309
 #: src/features/Dashboard/ConversationSelectCard.tsx:191
-#: src/features/Conversation/ConversationPage.tsx:257
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Kata-kata"
@@ -712,10 +717,10 @@ msgstr "Riwayat pembayaran:"
 #: src/features/RolePlay/RolePlayBoard.tsx:632
 #: src/features/Game/GameQuestion.tsx:210
 #: src/features/Game/GameQuestion.tsx:287
-#: src/features/Conversation/ConversationPage.tsx:80
-#: src/features/Conversation/ConversationPage.tsx:88
-#: src/features/Conversation/ConversationPage.tsx:101
-#: src/features/Conversation/ConversationPage.tsx:115
+#: src/features/Conversation/ConversationPage.tsx:82
+#: src/features/Conversation/ConversationPage.tsx:90
+#: src/features/Conversation/ConversationPage.tsx:103
+#: src/features/Conversation/ConversationPage.tsx:117
 #: src/features/Conversation/ConversationCanvas2.tsx:299
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -1779,14 +1784,14 @@ msgstr "Semua Skenario"
 #: src/features/Landing/PlanLandingBlock.tsx:287
 #: src/features/Landing/PlanLandingBlock.tsx:496
 #: src/features/Landing/PlanLandingBlock.tsx:625
-#: src/features/Dashboard/PlanDashboardCards.tsx:289
+#: src/features/Dashboard/PlanDashboardCards.tsx:496
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Mulai"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:397
 #: src/features/Landing/PlanLandingBlock.tsx:103
-#: src/features/Dashboard/PlanDashboardCards.tsx:85
+#: src/features/Dashboard/PlanDashboardCards.tsx:98
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Peran Main"
@@ -2143,15 +2148,15 @@ msgid "Develop formal writing skills for academic success."
 msgstr "Kembangkan keterampilan menulis formal untuk keberhasilan akademik."
 
 #: src/features/Landing/PlanLandingBlock.tsx:102
-#: src/features/Dashboard/PlanDashboardCards.tsx:84
+#: src/features/Dashboard/PlanDashboardCards.tsx:97
+#: src/features/Dashboard/PlanDashboardCards.tsx:249
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
-#: src/features/Conversation/ConversationPage.tsx:197
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Percakapan"
 
 #: src/features/Landing/PlanLandingBlock.tsx:105
-#: src/features/Dashboard/PlanDashboardCards.tsx:87
+#: src/features/Dashboard/PlanDashboardCards.tsx:100
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Aturan"
@@ -3782,64 +3787,108 @@ msgstr "Saya"
 msgid "New rule to practice."
 msgstr "Aturan baru untuk berlatih."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:61
+#: src/features/Dashboard/PlanDashboardCards.tsx:74
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr ""
 "Apakah Anda yakin ingin menghapus tujuan Anda? Tindakan ini tidak dapat "
 "dibatalkan."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:168
+#: src/features/Dashboard/PlanDashboardCards.tsx:182
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr ""
 "Terjadi kesalahan saat menghasilkan lebih banyak pelajaran. Silakan coba "
 "lagi nanti."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:220
-#: src/features/Dashboard/PlanDashboardCards.tsx:354
+#: src/features/Dashboard/PlanDashboardCards.tsx:230
+#. js-lingui-explicit-id
+msgid "Now let’s determine your starting point!"
+msgstr "Sekarang mari kita tentukan titik awal Anda!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:250
+#. js-lingui-explicit-id
+msgid "Start your journey with a conversation!"
+msgstr "Mulai perjalananmu dengan percakapan!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:255
+#: src/features/Dashboard/PlanDashboardCards.tsx:285
+#: src/features/Dashboard/PlanDashboardCards.tsx:315
+#: src/features/Dashboard/ConversationSelectCard.tsx:126
+#: src/features/Dashboard/ConversationSelectCard.tsx:152
+#: src/features/Dashboard/ConversationSelectCard.tsx:176
+#: src/features/Dashboard/ConversationSelectCard.tsx:200
+#. js-lingui-explicit-id
+msgid "Set the goal to start"
+msgstr "Tetapkan tujuan untuk memulai"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:273
+#: src/features/Dashboard/PlanDashboardCards.tsx:303
+#: src/features/Dashboard/PlanDashboardCards.tsx:333
+#. js-lingui-explicit-id
+msgid "Recommended"
+msgstr "Direkomendasikan"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:279
+#: src/features/Dashboard/ConversationSelectCard.tsx:167
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "Aturan"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:280
+#. js-lingui-explicit-id
+msgid "Learn the rules of the language!"
+msgstr "Pelajari aturan-aturan dari bahasa tersebut!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:310
+#. js-lingui-explicit-id
+msgid "Learn new words and expand your vocabulary!"
+msgstr "Pelajari kata-kata baru dan perluas kosakata Anda!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:427
+#: src/features/Dashboard/PlanDashboardCards.tsx:561
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Conversation/ConversationCanvas2.tsx:1009
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Tujuan"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:221
+#: src/features/Dashboard/PlanDashboardCards.tsx:428
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Mulai jalanmu menuju kelancaran"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:305
+#: src/features/Dashboard/PlanDashboardCards.tsx:512
 #. js-lingui-explicit-id
 msgid "More uniq lessons"
 msgstr "Pelajaran yang lebih unik"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:350
+#: src/features/Dashboard/PlanDashboardCards.tsx:557
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Pelajaran yang lebih unik"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:358
+#: src/features/Dashboard/PlanDashboardCards.tsx:565
 #. js-lingui-explicit-id
 msgid "We will help you to learn the language you need"
 msgstr "Kami akan membantu Anda untuk belajar bahasa yang Anda perlukan"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:382
+#: src/features/Dashboard/PlanDashboardCards.tsx:589
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Hapus tujuan saat ini"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:398
+#: src/features/Dashboard/PlanDashboardCards.tsx:605
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Membuat..."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:399
+#: src/features/Dashboard/PlanDashboardCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Hasilkan lebih banyak pelajaran unik"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:409
+#: src/features/Dashboard/PlanDashboardCards.tsx:616
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr ""
@@ -3886,17 +3935,6 @@ msgstr "Mulai | 5 menit"
 msgid "Talk to the AI and it will respond to you"
 msgstr "Bicaralah dengan AI dan ia akan merespons Anda"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:126
-#: src/features/Dashboard/ConversationSelectCard.tsx:152
-#: src/features/Dashboard/ConversationSelectCard.tsx:176
-#: src/features/Dashboard/ConversationSelectCard.tsx:200
-#: src/features/Conversation/ConversationPage.tsx:203
-#: src/features/Conversation/ConversationPage.tsx:233
-#: src/features/Conversation/ConversationPage.tsx:263
-#. js-lingui-explicit-id
-msgid "Set the goal to start"
-msgstr "Tetapkan tujuan untuk memulai"
-
 #: src/features/Dashboard/ConversationSelectCard.tsx:137
 #. js-lingui-explicit-id
 msgid "Start Talking"
@@ -3916,12 +3954,6 @@ msgstr "AI akan membimbing Anda melalui percakapan"
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Bimbing saya"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:167
-#: src/features/Conversation/ConversationPage.tsx:227
-#. js-lingui-explicit-id
-msgid "Rules"
-msgstr "Aturan"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:187
 #. js-lingui-explicit-id
@@ -4055,42 +4087,20 @@ msgstr "Lebih"
 msgid "Error analyzing conversation"
 msgstr "Kesalahan dalam menganalisis percakapan"
 
-#: src/features/Conversation/ConversationPage.tsx:92
+#: src/features/Conversation/ConversationPage.tsx:94
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Memuat Tujuan..."
 
-#: src/features/Conversation/ConversationPage.tsx:123
+#: src/features/Conversation/ConversationPage.tsx:125
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Menciptakan kata-kata baru..."
 
-#: src/features/Conversation/ConversationPage.tsx:127
+#: src/features/Conversation/ConversationPage.tsx:129
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Menyusun aturan baru..."
-
-#: src/features/Conversation/ConversationPage.tsx:198
-#. js-lingui-explicit-id
-msgid "Start your journey with a conversation!"
-msgstr "Mulai perjalananmu dengan percakapan!"
-
-#: src/features/Conversation/ConversationPage.tsx:221
-#: src/features/Conversation/ConversationPage.tsx:251
-#: src/features/Conversation/ConversationPage.tsx:281
-#. js-lingui-explicit-id
-msgid "Recommended"
-msgstr "Direkomendasikan"
-
-#: src/features/Conversation/ConversationPage.tsx:228
-#. js-lingui-explicit-id
-msgid "Learn the rules of the language!"
-msgstr "Pelajari aturan-aturan dari bahasa tersebut!"
-
-#: src/features/Conversation/ConversationPage.tsx:258
-#. js-lingui-explicit-id
-msgid "Learn new words and expand your vocabulary!"
-msgstr "Pelajari kata-kata baru dan perluas kosakata Anda!"
 
 #: src/features/Conversation/ConversationError.tsx:34
 #. js-lingui-explicit-id

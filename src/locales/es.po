@@ -13,10 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/ConversationPage.tsx:178
+#: src/features/Dashboard/PlanDashboardCards.tsx:353
 #. js-lingui-explicit-id
-msgid "Now let’s determine your starting point!"
-msgstr "¡Ahora determinemos tu punto de partida!"
+msgid "There's something interesting for you..."
+msgstr "Hay algo interesante para ti..."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:376
+#. js-lingui-explicit-id
+msgid "Let's start"
+msgstr "Empecemos"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -441,9 +446,9 @@ msgstr "Tus logros"
 
 #: src/features/Usage/UsageStatsCards.tsx:441
 #: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/Dashboard/PlanDashboardCards.tsx:86
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
+#: src/features/Dashboard/PlanDashboardCards.tsx:309
 #: src/features/Dashboard/ConversationSelectCard.tsx:191
-#: src/features/Conversation/ConversationPage.tsx:257
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "Palabras"
@@ -709,10 +714,10 @@ msgstr "Historial de pagos:"
 #: src/features/RolePlay/RolePlayBoard.tsx:632
 #: src/features/Game/GameQuestion.tsx:210
 #: src/features/Game/GameQuestion.tsx:287
-#: src/features/Conversation/ConversationPage.tsx:80
-#: src/features/Conversation/ConversationPage.tsx:88
-#: src/features/Conversation/ConversationPage.tsx:101
-#: src/features/Conversation/ConversationPage.tsx:115
+#: src/features/Conversation/ConversationPage.tsx:82
+#: src/features/Conversation/ConversationPage.tsx:90
+#: src/features/Conversation/ConversationPage.tsx:103
+#: src/features/Conversation/ConversationPage.tsx:117
 #: src/features/Conversation/ConversationCanvas2.tsx:299
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -1758,14 +1763,14 @@ msgstr "Todos los escenarios"
 #: src/features/Landing/PlanLandingBlock.tsx:287
 #: src/features/Landing/PlanLandingBlock.tsx:496
 #: src/features/Landing/PlanLandingBlock.tsx:625
-#: src/features/Dashboard/PlanDashboardCards.tsx:289
+#: src/features/Dashboard/PlanDashboardCards.tsx:496
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Inicio"
 
 #: src/features/RolePlay/RolePlayBoard.tsx:397
 #: src/features/Landing/PlanLandingBlock.tsx:103
-#: src/features/Dashboard/PlanDashboardCards.tsx:85
+#: src/features/Dashboard/PlanDashboardCards.tsx:98
 #. js-lingui-explicit-id
 msgid "Role Play"
 msgstr "Role Play"
@@ -2122,15 +2127,15 @@ msgid "Develop formal writing skills for academic success."
 msgstr "Desarrolla habilidades de escritura formal para el éxito académico."
 
 #: src/features/Landing/PlanLandingBlock.tsx:102
-#: src/features/Dashboard/PlanDashboardCards.tsx:84
+#: src/features/Dashboard/PlanDashboardCards.tsx:97
+#: src/features/Dashboard/PlanDashboardCards.tsx:249
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
-#: src/features/Conversation/ConversationPage.tsx:197
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Conversación"
 
 #: src/features/Landing/PlanLandingBlock.tsx:105
-#: src/features/Dashboard/PlanDashboardCards.tsx:87
+#: src/features/Dashboard/PlanDashboardCards.tsx:100
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Regla"
@@ -3761,64 +3766,108 @@ msgstr "Mi"
 msgid "New rule to practice."
 msgstr "Nueva regla para practicar."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:61
+#: src/features/Dashboard/PlanDashboardCards.tsx:74
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr ""
 "¿Estás seguro de que quieres eliminar tu objetivo? Esta acción no puede "
 "deshacerse."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:168
+#: src/features/Dashboard/PlanDashboardCards.tsx:182
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr ""
 "Algo salió mal mientras se generaban más lecciones. Por favor, inténtelo de "
 "nuevo más tarde."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:220
-#: src/features/Dashboard/PlanDashboardCards.tsx:354
+#: src/features/Dashboard/PlanDashboardCards.tsx:230
+#. js-lingui-explicit-id
+msgid "Now let’s determine your starting point!"
+msgstr "¡Ahora determinemos tu punto de partida!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:250
+#. js-lingui-explicit-id
+msgid "Start your journey with a conversation!"
+msgstr "¡Comienza tu viaje con una conversación!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:255
+#: src/features/Dashboard/PlanDashboardCards.tsx:285
+#: src/features/Dashboard/PlanDashboardCards.tsx:315
+#: src/features/Dashboard/ConversationSelectCard.tsx:126
+#: src/features/Dashboard/ConversationSelectCard.tsx:152
+#: src/features/Dashboard/ConversationSelectCard.tsx:176
+#: src/features/Dashboard/ConversationSelectCard.tsx:200
+#. js-lingui-explicit-id
+msgid "Set the goal to start"
+msgstr "Establece el objetivo para comenzar"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:273
+#: src/features/Dashboard/PlanDashboardCards.tsx:303
+#: src/features/Dashboard/PlanDashboardCards.tsx:333
+#. js-lingui-explicit-id
+msgid "Recommended"
+msgstr "Recomendado"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:279
+#: src/features/Dashboard/ConversationSelectCard.tsx:167
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "Reglas"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:280
+#. js-lingui-explicit-id
+msgid "Learn the rules of the language!"
+msgstr "¡Aprende las reglas del idioma!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:310
+#. js-lingui-explicit-id
+msgid "Learn new words and expand your vocabulary!"
+msgstr "¡Aprende palabras nuevas y expande tu vocabulario!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:427
+#: src/features/Dashboard/PlanDashboardCards.tsx:561
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Conversation/ConversationCanvas2.tsx:1009
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Meta"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:221
+#: src/features/Dashboard/PlanDashboardCards.tsx:428
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Comienza tu camino hacia la fluidez"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:305
+#: src/features/Dashboard/PlanDashboardCards.tsx:512
 #. js-lingui-explicit-id
 msgid "More uniq lessons"
 msgstr "Más lecciones únicas"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:350
+#: src/features/Dashboard/PlanDashboardCards.tsx:557
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Más lecciones únicas"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:358
+#: src/features/Dashboard/PlanDashboardCards.tsx:565
 #. js-lingui-explicit-id
 msgid "We will help you to learn the language you need"
 msgstr "Te ayudaremos a aprender el idioma que necesitas"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:382
+#: src/features/Dashboard/PlanDashboardCards.tsx:589
 #. js-lingui-explicit-id
 msgid "Delete current goal"
 msgstr "Eliminar objetivo actual"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:398
+#: src/features/Dashboard/PlanDashboardCards.tsx:605
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Generando..."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:399
+#: src/features/Dashboard/PlanDashboardCards.tsx:606
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Genera más lecciones únicas"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:409
+#: src/features/Dashboard/PlanDashboardCards.tsx:616
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Para generar más lecciones, necesita completar al menos 3 lecciones"
@@ -3863,17 +3912,6 @@ msgstr "Iniciar | 5 min"
 msgid "Talk to the AI and it will respond to you"
 msgstr "Habla con la IA y ella te responderá."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:126
-#: src/features/Dashboard/ConversationSelectCard.tsx:152
-#: src/features/Dashboard/ConversationSelectCard.tsx:176
-#: src/features/Dashboard/ConversationSelectCard.tsx:200
-#: src/features/Conversation/ConversationPage.tsx:203
-#: src/features/Conversation/ConversationPage.tsx:233
-#: src/features/Conversation/ConversationPage.tsx:263
-#. js-lingui-explicit-id
-msgid "Set the goal to start"
-msgstr "Establece el objetivo para comenzar"
-
 #: src/features/Dashboard/ConversationSelectCard.tsx:137
 #. js-lingui-explicit-id
 msgid "Start Talking"
@@ -3893,12 +3931,6 @@ msgstr "La IA te guiará a través de la conversación"
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Guíame"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:167
-#: src/features/Conversation/ConversationPage.tsx:227
-#. js-lingui-explicit-id
-msgid "Rules"
-msgstr "Reglas"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:187
 #. js-lingui-explicit-id
@@ -4032,42 +4064,20 @@ msgstr "Más"
 msgid "Error analyzing conversation"
 msgstr "Error al analizar la conversación"
 
-#: src/features/Conversation/ConversationPage.tsx:92
+#: src/features/Conversation/ConversationPage.tsx:94
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Cargando Objetivo..."
 
-#: src/features/Conversation/ConversationPage.tsx:123
+#: src/features/Conversation/ConversationPage.tsx:125
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Creando nuevas palabras..."
 
-#: src/features/Conversation/ConversationPage.tsx:127
+#: src/features/Conversation/ConversationPage.tsx:129
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Creando nueva regla..."
-
-#: src/features/Conversation/ConversationPage.tsx:198
-#. js-lingui-explicit-id
-msgid "Start your journey with a conversation!"
-msgstr "¡Comienza tu viaje con una conversación!"
-
-#: src/features/Conversation/ConversationPage.tsx:221
-#: src/features/Conversation/ConversationPage.tsx:251
-#: src/features/Conversation/ConversationPage.tsx:281
-#. js-lingui-explicit-id
-msgid "Recommended"
-msgstr "Recomendado"
-
-#: src/features/Conversation/ConversationPage.tsx:228
-#. js-lingui-explicit-id
-msgid "Learn the rules of the language!"
-msgstr "¡Aprende las reglas del idioma!"
-
-#: src/features/Conversation/ConversationPage.tsx:258
-#. js-lingui-explicit-id
-msgid "Learn new words and expand your vocabulary!"
-msgstr "¡Aprende palabras nuevas y expande tu vocabulario!"
 
 #: src/features/Conversation/ConversationError.tsx:34
 #. js-lingui-explicit-id
