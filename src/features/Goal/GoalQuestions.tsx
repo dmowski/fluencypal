@@ -82,12 +82,14 @@ interface GoalQuestionsComponentProps {
   langLearnPlanLabels: Record<SupportedLanguage, string>;
   titleComponent: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   defaultLang?: SupportedLanguage;
+  showTerms: boolean;
 }
 const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   lang,
   titleComponent,
   langLearnPlanLabels,
   defaultLang,
+  showTerms,
 }) => {
   const { i18n } = useLingui();
   const [languageToLearnStore, setLanguageToLearn] = useLocalStorage<SupportedLanguage | null>(
@@ -789,7 +791,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             >
               {i18n._("Crete a plan")}
             </Button>
-            <TermsComponent lang={lang} />
+            {showTerms && <TermsComponent lang={lang} />}
           </Stack>
         </Stack>
       ),
@@ -956,11 +958,13 @@ export const GoalQuestions: FC<GoalQuestionsComponentProps> = ({
   langLearnPlanLabels,
   titleComponent,
   defaultLang,
+  showTerms,
 }) => {
   return (
     <ThemeProvider theme={lightTheme}>
       <GoalQuestionsComponent
         lang={lang}
+        showTerms={showTerms}
         langLearnPlanLabels={langLearnPlanLabels}
         titleComponent={titleComponent}
         defaultLang={defaultLang}

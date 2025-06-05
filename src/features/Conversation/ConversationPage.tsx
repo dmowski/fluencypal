@@ -10,7 +10,6 @@ import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
 import { Dashboard } from "../Dashboard/Dashboard";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
-
 import { ConversationCanvas2 } from "./ConversationCanvas2";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { useCorrections } from "../Corrections/useCorrections";
@@ -26,15 +25,12 @@ import { ConversationError } from "./ConversationError";
 import { GoalPreparingModal } from "../Goal/GoalPreparingModal";
 import { useRouter, useSearchParams } from "next/navigation";
 import { usePlan } from "../Plan/usePlan";
-import { useAiUserInfo } from "../Ai/useAiUserInfo";
-import * as Sentry from "@sentry/nextjs";
-import { useNotifications } from "@toolpad/core/useNotifications";
 import { ConfirmConversationModal } from "./ConfirmConversationModal";
 import { getUrlStart } from "../Lang/getUrlStart";
-import { useTextAi } from "../Ai/useTextAi";
 import { GamePage } from "../Game/GamePage";
 import { useGame } from "../Game/useGame";
 import { useGoalCreation } from "../Plan/useGoalCreation";
+import { useConversationsAnalysis } from "./useConversationsAnalysis";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -56,78 +52,10 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const searchParams = useSearchParams();
 
   const gamePage = searchParams.get("gamePage");
-  const userInfo = useAiUserInfo();
-  const notifications = useNotifications();
-  const textAi = useTextAi();
-
   const { isProcessingGoal } = useGoalCreation();
-
   const [isShowGoalModal, setIsShowGoalModal] = useState(false);
 
-  const [conversationAnalysis, setConversationAnalysis] = useState<string>("");
-  const analyzeConversation = async () => {
-    setConversationAnalysis("");
-    const messages = aiConversation.conversation;
-
-    const messagesString = messages
-      .map((message) => {
-        const author = message.isBot ? "AI" : "User";
-        return `${author}: ${message.text}`;
-      })
-      .join("\n");
-
-    const planDescription = plan.latestGoal?.goalQuiz?.description || "";
-    const goalElement = aiConversation.goalInfo?.goalElement;
-    const goalElementDescription = goalElement
-      ? `Lesson: ${goalElement.title} - ${goalElement.description} - ${goalElement.details}`
-      : "";
-
-    const expectedStructure = `
-#### Language level:
-Example: Intermediate
-
-#### What was great:
-Example: I liked the way you described your situation related to *** 
-
-#### Areas to improve:
-It's better to use *** instead of ***, because ***
-
-`;
-
-    const systemMessage = `You are a language teacher/analyzer.
-You are analyzing the conversation between the user and AI.
-The user is learning ${settings.fullLanguageName}.
-The user has the following goal: ${planDescription}.
-The user is using the following lesson: ${goalElementDescription}.
-
-Answer to the user in the following format:
-${expectedStructure}
-`;
-
-    try {
-      const aiResults = await textAi.generate({
-        systemMessage,
-        userMessage: messagesString,
-        model: "gpt-4o",
-        languageCode: settings.languageCode || "en",
-      });
-      setConversationAnalysis(aiResults);
-    } catch (error) {
-      Sentry.captureException(error, {
-        extra: {
-          userId: auth.uid,
-          userInfo: userInfo.userInfo,
-          conversationMessages: messages,
-        },
-      });
-
-      notifications.show(i18n._(`Error analyzing conversation`) + "=" + error, {
-        severity: "error",
-      });
-      setConversationAnalysis("Error analyzing conversation...");
-      throw error;
-    }
-  };
+  const { analyzeConversation, conversationAnalysis } = useConversationsAnalysis();
   const router = useRouter();
 
   useEffect(() => {
