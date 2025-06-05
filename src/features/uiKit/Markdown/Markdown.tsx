@@ -132,7 +132,6 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   ...markdownComponents,
   p: ({ children }) => {
     const isString = typeof children?.[0] === "string";
-    console.log("isString:", isString);
     let content = children;
     if (isString) {
       const words = children[0].split(" ") as string[];
@@ -155,14 +154,11 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   },
 
   span: ({ children }) => {
-    console.log("children", children);
     const isString = typeof children?.[0] === "string" || typeof children === "string";
-    console.log("isString:", isString);
     let content = children;
     if (isString) {
       const stringContent = typeof children === "string" ? children : children[0];
       const words = stringContent.split(" ") as string[];
-      console.log("words:", words);
       content = words.map((word, index) => (
         <span key={index}>
           <span className="conversation-word">{word}</span>{" "}
@@ -206,7 +202,6 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, size 
         onWordClick
           ? (e) => {
               const target = e.target as HTMLElement;
-              console.log("target:", target);
               if (target.classList.contains("conversation-word")) {
                 onWordClick(target.textContent || "");
               }
