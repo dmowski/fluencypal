@@ -564,52 +564,54 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
         backgroundColor: "transparent",
       }}
     >
-      <Stack
-        sx={{
-          width: "100%",
-          padding: "0 20px 40px 0px",
-          boxSizing: "border-box",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          marginLeft: stepStore ? "-60px" : "0",
-          gap: "20px",
-
-          "@media (max-width: 900px)": {
-            position: "absolute",
-            marginLeft: "0px",
-            gap: "10px",
-            top: "90px",
-            left: 0,
-            right: 0,
-            padding: "10px 20px 0 10px",
-          },
-        }}
-      >
-        {!!stepStore && stepStore > 0 && (
-          <IconButton
-            onClick={() => {
-              const currentStep = stepStore || 0;
-              if (currentStep > 0) {
-                setStep(currentStep - 1);
-                scrollTop();
-              }
-            }}
-          >
-            <ArrowLeft />
-          </IconButton>
-        )}
-
+      {!isLoading && !isSubmitted && (
         <Stack
           sx={{
             width: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.07)",
-            borderRadius: "25px",
+            padding: "0 20px 40px 0px",
+            boxSizing: "border-box",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginLeft: stepStore ? "-60px" : "0",
+            gap: "20px",
+
+            "@media (max-width: 900px)": {
+              position: "absolute",
+              marginLeft: "0px",
+              gap: "10px",
+              top: "90px",
+              left: 0,
+              right: 0,
+              padding: "10px 20px 0 10px",
+            },
           }}
         >
-          <GradingProgressBar height={"12px"} value={Math.max(0, progress * 100 - 20)} label="" />
+          {!!stepStore && stepStore > 0 && (
+            <IconButton
+              onClick={() => {
+                const currentStep = stepStore || 0;
+                if (currentStep > 0) {
+                  setStep(currentStep - 1);
+                  scrollTop();
+                }
+              }}
+            >
+              <ArrowLeft />
+            </IconButton>
+          )}
+
+          <Stack
+            sx={{
+              width: "100%",
+              backgroundColor: "rgba(0, 0, 0, 0.07)",
+              borderRadius: "25px",
+            }}
+          >
+            <GradingProgressBar height={"12px"} value={Math.max(0, progress * 100 - 20)} label="" />
+          </Stack>
         </Stack>
-      </Stack>
+      )}
 
       <Stack
         sx={{
