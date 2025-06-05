@@ -1,3 +1,5 @@
+import { MODELS } from "@/common/ai";
+
 export const getEphemeralToken = async (model: string) => {
   const openAIKey = process.env.OPENAI_API_KEY;
   if (!openAIKey) {
@@ -15,7 +17,7 @@ export const getEphemeralToken = async (model: string) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: model,
+      model: model === MODELS.REALTIME_CONVERSATION ? "gpt-4o-realtime-preview-2025-06-03" : model,
       voice: "verse",
     }),
   });
