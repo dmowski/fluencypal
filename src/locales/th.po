@@ -13,10 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Goal/GoalQuestions.tsx:790
+#: src/features/Conversation/ConversationPage.tsx:178
 #. js-lingui-explicit-id
-msgid "Crete a plan"
-msgstr "สร้างแผน"
+msgid "Now let’s determine your starting point!"
+msgstr "ตอนนี้มากำหนดจุดเริ่มต้นของคุณกัน!"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -438,6 +438,7 @@ msgstr "ความสำเร็จของคุณ"
 #: src/features/Landing/PlanLandingBlock.tsx:104
 #: src/features/Dashboard/PlanDashboardCards.tsx:86
 #: src/features/Dashboard/ConversationSelectCard.tsx:191
+#: src/features/Conversation/ConversationPage.tsx:257
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "คำศัพท์"
@@ -700,10 +701,10 @@ msgstr "ประวัติการชำระเงิน:"
 #: src/features/RolePlay/RolePlayBoard.tsx:632
 #: src/features/Game/GameQuestion.tsx:210
 #: src/features/Game/GameQuestion.tsx:287
-#: src/features/Conversation/ConversationPage.tsx:140
-#: src/features/Conversation/ConversationPage.tsx:148
-#: src/features/Conversation/ConversationPage.tsx:161
-#: src/features/Conversation/ConversationPage.tsx:175
+#: src/features/Conversation/ConversationPage.tsx:80
+#: src/features/Conversation/ConversationPage.tsx:88
+#: src/features/Conversation/ConversationPage.tsx:101
+#: src/features/Conversation/ConversationPage.tsx:115
 #: src/features/Conversation/ConversationCanvas2.tsx:299
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -1787,8 +1788,8 @@ msgid "Send 6 messages to complete"
 msgstr "ส่ง 6 ข้อความเพื่อเสร็จสิ้น"
 
 #: src/features/Plan/PlanCard.tsx:224
-#: src/features/Goal/GoalQuestions.tsx:563
-#: src/features/Goal/GoalQuestions.tsx:591
+#: src/features/Goal/GoalQuestions.tsx:565
+#: src/features/Goal/GoalQuestions.tsx:593
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -2101,6 +2102,7 @@ msgstr "พัฒนาทักษะการเขียนแบบเป็
 #: src/features/Landing/PlanLandingBlock.tsx:102
 #: src/features/Dashboard/PlanDashboardCards.tsx:84
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
+#: src/features/Conversation/ConversationPage.tsx:197
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "การสนทนา"
@@ -3174,225 +3176,225 @@ msgstr "โดยการส่งแบบฟอร์มนี้, คุณ�
 msgid "and"
 msgstr "และ"
 
-#: src/features/Goal/GoalQuestions.tsx:166
+#: src/features/Goal/GoalQuestions.tsx:168
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again"
 msgstr "เกิดข้อผิดพลาดบางอย่าง กรุณาลองอีกครั้ง"
 
-#: src/features/Goal/GoalQuestions.tsx:175
+#: src/features/Goal/GoalQuestions.tsx:177
 #. js-lingui-explicit-id
 msgid "I'm a beginner in English"
 msgstr "ฉันเริ่มต้นเรียนภาษาอังกฤษ"
 
-#: src/features/Goal/GoalQuestions.tsx:176
+#: src/features/Goal/GoalQuestions.tsx:178
 #. js-lingui-explicit-id
 msgid "I know a few simple words"
 msgstr "ฉันรู้คำง่ายๆหลายคำ"
 
-#: src/features/Goal/GoalQuestions.tsx:177
+#: src/features/Goal/GoalQuestions.tsx:179
 #. js-lingui-explicit-id
 msgid "I can maintain a simple conversation"
 msgstr "ฉันสามารถสนทนาง่ายๆได้"
 
-#: src/features/Goal/GoalQuestions.tsx:178
+#: src/features/Goal/GoalQuestions.tsx:180
 #. js-lingui-explicit-id
 msgid "I can discuss various topics"
 msgstr "ฉันสามารถสนทนาเรื่องต่างๆ"
 
-#: src/features/Goal/GoalQuestions.tsx:179
+#: src/features/Goal/GoalQuestions.tsx:181
 #. js-lingui-explicit-id
 msgid "I can discuss most topics in detail"
 msgstr "ฉันสามารถสนทนาเรื่องส่วนใหญ่อย่างละเอียด"
 
-#: src/features/Goal/GoalQuestions.tsx:232
+#: src/features/Goal/GoalQuestions.tsx:234
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please try again."
 msgstr "การคัดลอกข้อความล้มเหลว โปรดลองอีกครั้ง"
 
-#: src/features/Goal/GoalQuestions.tsx:239
+#: src/features/Goal/GoalQuestions.tsx:241
 #. js-lingui-explicit-id
 msgid "English"
 msgstr "อังกฤษ"
 
-#: src/features/Goal/GoalQuestions.tsx:240
+#: src/features/Goal/GoalQuestions.tsx:242
 #. js-lingui-explicit-id
 msgid "Spanish"
 msgstr "สเปน"
 
-#: src/features/Goal/GoalQuestions.tsx:241
+#: src/features/Goal/GoalQuestions.tsx:243
 #. js-lingui-explicit-id
 msgid "Chinese"
 msgstr "จีน"
 
-#: src/features/Goal/GoalQuestions.tsx:242
+#: src/features/Goal/GoalQuestions.tsx:244
 #. js-lingui-explicit-id
 msgid "French"
 msgstr "ภาษาฝรั่งเศส"
 
-#: src/features/Goal/GoalQuestions.tsx:243
+#: src/features/Goal/GoalQuestions.tsx:245
 #. js-lingui-explicit-id
 msgid "German"
 msgstr "เยอรมัน"
 
-#: src/features/Goal/GoalQuestions.tsx:244
+#: src/features/Goal/GoalQuestions.tsx:246
 #. js-lingui-explicit-id
 msgid "Japanese"
 msgstr "ญี่ปุ่น"
 
-#: src/features/Goal/GoalQuestions.tsx:245
+#: src/features/Goal/GoalQuestions.tsx:247
 #. js-lingui-explicit-id
 msgid "Korean"
 msgstr "เกาหลี"
 
-#: src/features/Goal/GoalQuestions.tsx:246
+#: src/features/Goal/GoalQuestions.tsx:248
 #. js-lingui-explicit-id
 msgid "Arabic"
 msgstr "อาหรับ"
 
-#: src/features/Goal/GoalQuestions.tsx:247
+#: src/features/Goal/GoalQuestions.tsx:249
 #. js-lingui-explicit-id
 msgid "Portuguese"
 msgstr "โปรตุเกส"
 
-#: src/features/Goal/GoalQuestions.tsx:249
+#: src/features/Goal/GoalQuestions.tsx:251
 #. js-lingui-explicit-id
 msgid "Italian"
 msgstr "อิตาลี"
 
-#: src/features/Goal/GoalQuestions.tsx:250
+#: src/features/Goal/GoalQuestions.tsx:252
 #. js-lingui-explicit-id
 msgid "Polish"
 msgstr "ภาษาโปแลนด์"
 
-#: src/features/Goal/GoalQuestions.tsx:251
+#: src/features/Goal/GoalQuestions.tsx:253
 #. js-lingui-explicit-id
 msgid "Russian"
 msgstr "รัสเซีย"
 
-#: src/features/Goal/GoalQuestions.tsx:253
+#: src/features/Goal/GoalQuestions.tsx:255
 #. js-lingui-explicit-id
 msgid "Ukrainian"
 msgstr "ยูเครน"
 
-#: src/features/Goal/GoalQuestions.tsx:254
+#: src/features/Goal/GoalQuestions.tsx:256
 #. js-lingui-explicit-id
 msgid "Indonesian"
 msgstr "อินโดนีเซีย"
 
-#: src/features/Goal/GoalQuestions.tsx:255
+#: src/features/Goal/GoalQuestions.tsx:257
 #. js-lingui-explicit-id
 msgid "Malay"
 msgstr "มาเลย์"
 
-#: src/features/Goal/GoalQuestions.tsx:256
+#: src/features/Goal/GoalQuestions.tsx:258
 #. js-lingui-explicit-id
 msgid "Thai"
 msgstr "ไทย"
 
-#: src/features/Goal/GoalQuestions.tsx:257
+#: src/features/Goal/GoalQuestions.tsx:259
 #. js-lingui-explicit-id
 msgid "Turkish"
 msgstr "ตุรกี"
 
-#: src/features/Goal/GoalQuestions.tsx:258
+#: src/features/Goal/GoalQuestions.tsx:260
 #. js-lingui-explicit-id
 msgid "Vietnamese"
 msgstr "เวียดนาม"
 
-#: src/features/Goal/GoalQuestions.tsx:259
+#: src/features/Goal/GoalQuestions.tsx:261
 #. js-lingui-explicit-id
 msgid "Danish"
 msgstr "เดนิช"
 
-#: src/features/Goal/GoalQuestions.tsx:260
+#: src/features/Goal/GoalQuestions.tsx:262
 #. js-lingui-explicit-id
 msgid "Norwegian"
 msgstr "นอร์เวย์"
 
-#: src/features/Goal/GoalQuestions.tsx:261
+#: src/features/Goal/GoalQuestions.tsx:263
 #. js-lingui-explicit-id
 msgid "Swedish"
 msgstr "สวีเดน"
 
-#: src/features/Goal/GoalQuestions.tsx:262
+#: src/features/Goal/GoalQuestions.tsx:264
 #. js-lingui-explicit-id
 msgid "Belarusian"
 msgstr "เบลารุส"
 
-#: src/features/Goal/GoalQuestions.tsx:266
+#: src/features/Goal/GoalQuestions.tsx:268
 #. js-lingui-explicit-id
 msgid "3 minutes per day"
 msgstr "3 นาทีต่อวัน"
 
-#: src/features/Goal/GoalQuestions.tsx:266
+#: src/features/Goal/GoalQuestions.tsx:268
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "ง่าย"
 
-#: src/features/Goal/GoalQuestions.tsx:267
+#: src/features/Goal/GoalQuestions.tsx:269
 #. js-lingui-explicit-id
 msgid "10 minutes per day"
 msgstr "10 นาทีต่อวัน"
 
-#: src/features/Goal/GoalQuestions.tsx:267
+#: src/features/Goal/GoalQuestions.tsx:269
 #. js-lingui-explicit-id
 msgid "Good"
 msgstr "ดี"
 
-#: src/features/Goal/GoalQuestions.tsx:268
+#: src/features/Goal/GoalQuestions.tsx:270
 #. js-lingui-explicit-id
 msgid "15 minutes per day"
 msgstr "15 นาทีต่อวัน"
 
-#: src/features/Goal/GoalQuestions.tsx:268
+#: src/features/Goal/GoalQuestions.tsx:270
 #. js-lingui-explicit-id
 msgid "Serious"
 msgstr "เรื่องจริง"
 
-#: src/features/Goal/GoalQuestions.tsx:269
+#: src/features/Goal/GoalQuestions.tsx:271
 #. js-lingui-explicit-id
 msgid "20 minutes per day"
 msgstr "20 นาทีต่อวัน"
 
-#: src/features/Goal/GoalQuestions.tsx:269
+#: src/features/Goal/GoalQuestions.tsx:271
 #. js-lingui-explicit-id
 msgid "Intensive"
 msgstr "อินเทนซีฟ"
 
-#: src/features/Goal/GoalQuestions.tsx:274
+#: src/features/Goal/GoalQuestions.tsx:276
 #. js-lingui-explicit-id
 msgid "I want to learn..."
 msgstr "ฉันต้องการเรียนรู้..."
 
-#: src/features/Goal/GoalQuestions.tsx:309
+#: src/features/Goal/GoalQuestions.tsx:311
 #. js-lingui-explicit-id
 msgid "Language to Learn"
 msgstr "ภาษาที่จะเรียน"
 
-#: src/features/Goal/GoalQuestions.tsx:342
+#: src/features/Goal/GoalQuestions.tsx:344
 #. js-lingui-explicit-id
 msgid "My native language"
 msgstr "ภาษาแม่ของฉัน"
 
-#: src/features/Goal/GoalQuestions.tsx:367
-#: src/features/Goal/GoalQuestions.tsx:448
-#: src/features/Goal/GoalQuestions.tsx:682
-#: src/features/Goal/GoalQuestions.tsx:734
+#: src/features/Goal/GoalQuestions.tsx:369
+#: src/features/Goal/GoalQuestions.tsx:450
+#: src/features/Goal/GoalQuestions.tsx:684
+#: src/features/Goal/GoalQuestions.tsx:736
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "ถัดไป"
 
-#: src/features/Goal/GoalQuestions.tsx:374
+#: src/features/Goal/GoalQuestions.tsx:376
 #. js-lingui-explicit-id
 msgid "How well do you know"
 msgstr "คุณรู้จักดีแค่ไหน"
 
-#: src/features/Goal/GoalQuestions.tsx:456
+#: src/features/Goal/GoalQuestions.tsx:458
 #. js-lingui-explicit-id
 msgid "Details"
 msgstr "รายละเอียด"
 
-#: src/features/Goal/GoalQuestions.tsx:457
+#: src/features/Goal/GoalQuestions.tsx:459
 #. js-lingui-explicit-id
 msgid ""
 "Provide more info about you and what you need to improve in your language "
@@ -3402,12 +3404,12 @@ msgstr ""
 "ให้ข้อมูลเพิ่มเติมเกี่ยวกับคุณและสิ่งที่คุณต้องการปรับปรุงในทักษะภาษาของคุณ "
 "แล้ว AI จะสร้างแผนที่เป็นกันเองสำหรับคุณ ข้อมูลเพิ่มเติม - แผนที่ดีขึ้น."
 
-#: src/features/Goal/GoalQuestions.tsx:495
+#: src/features/Goal/GoalQuestions.tsx:497
 #. js-lingui-explicit-id
 msgid "About your goal"
 msgstr "เกี่ยวกับเป้าหมายของคุณ"
 
-#: src/features/Goal/GoalQuestions.tsx:511
+#: src/features/Goal/GoalQuestions.tsx:513
 #. js-lingui-explicit-id
 msgid ""
 "I want to learn English to travel. And I want to understand movies and "
@@ -3416,82 +3418,87 @@ msgstr ""
 "ฉันต้องการเรียนภาษาอังกฤษเพื่อการท่องเที่ยว "
 "และฉันต้องการเข้าใจภาษาในหนังและเพลง"
 
-#: src/features/Goal/GoalQuestions.tsx:530
+#: src/features/Goal/GoalQuestions.tsx:532
 #. js-lingui-explicit-id
 msgid "Write at least 100 characters for a sharper plan"
 msgstr "เขียนอย่างน้อย 100 ตัวอักษรเพื่อวางแผนที่ชัดเจนขึ้น"
 
-#: src/features/Goal/GoalQuestions.tsx:571
+#: src/features/Goal/GoalQuestions.tsx:573
 #. js-lingui-explicit-id
 msgid "Let's decide at what pace we will study!"
 msgstr "เรามาตัดสินใจกันว่าเราจะเรียนที่ความเร็วเท่าไหร่!"
 
-#: src/features/Goal/GoalQuestions.tsx:598
+#: src/features/Goal/GoalQuestions.tsx:600
 #. js-lingui-explicit-id
 msgid "What is our daily goal?"
 msgstr "คืออะไรคือเป้าหมายของเราในแต่ละวัน?"
 
-#: src/features/Goal/GoalQuestions.tsx:690
+#: src/features/Goal/GoalQuestions.tsx:692
 #. js-lingui-explicit-id
 msgid "So, in the first week you will learn:"
 msgstr "ดังนั้น, ในสัปดาห์แรกคุณจะได้เรียนรู้:"
 
-#: src/features/Goal/GoalQuestions.tsx:708
+#: src/features/Goal/GoalQuestions.tsx:710
 #. js-lingui-explicit-id
 msgid "New words:"
 msgstr "คำศัพท์ใหม่:"
 
-#: src/features/Goal/GoalQuestions.tsx:711
+#: src/features/Goal/GoalQuestions.tsx:713
 #. js-lingui-explicit-id
 msgid "Rules:"
 msgstr "กฎ:"
 
-#: src/features/Goal/GoalQuestions.tsx:742
+#: src/features/Goal/GoalQuestions.tsx:744
 #. js-lingui-explicit-id
 msgid "This is what you can achieve in 3 months!"
 msgstr "นี่คือสิ่งที่คุณสามารถบรรลุได้ใน 3 เดือน!"
 
-#: src/features/Goal/GoalQuestions.tsx:761
+#: src/features/Goal/GoalQuestions.tsx:763
 #. js-lingui-explicit-id
 msgid "Confident Communication"
 msgstr "การสื่อสารอย่างมั่นใจ"
 
-#: src/features/Goal/GoalQuestions.tsx:763
+#: src/features/Goal/GoalQuestions.tsx:765
 #. js-lingui-explicit-id
 msgid "Practice speaking and listening without stress"
 msgstr "ฝึกการพูดและฟังโดยไม่เครียด"
 
-#: src/features/Goal/GoalQuestions.tsx:768
+#: src/features/Goal/GoalQuestions.tsx:770
 #. js-lingui-explicit-id
 msgid "Expanded Vocabulary"
 msgstr "คำศัพท์ที่ขยายออกไป"
 
-#: src/features/Goal/GoalQuestions.tsx:770
+#: src/features/Goal/GoalQuestions.tsx:772
 #. js-lingui-explicit-id
 msgid "Frequently used words and useful phrases"
 msgstr "คำที่ใช้บ่อย และวลีที่มีประโยชน์"
 
-#: src/features/Goal/GoalQuestions.tsx:887
+#: src/features/Goal/GoalQuestions.tsx:792
+#. js-lingui-explicit-id
+msgid "Crete a plan"
+msgstr "สร้างแผน"
+
+#: src/features/Goal/GoalQuestions.tsx:889
 #. js-lingui-explicit-id
 msgid "Submitted"
 msgstr "ส่งแล้ว"
 
-#: src/features/Goal/GoalQuestions.tsx:898
+#: src/features/Goal/GoalQuestions.tsx:900
 #. js-lingui-explicit-id
 msgid "Your plan is being processed with AI"
 msgstr "แผนของคุณกำลังถูกประมวลผลด้วย AI"
 
-#: src/features/Goal/GoalQuestions.tsx:928
+#: src/features/Goal/GoalQuestions.tsx:930
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "คัดลอก"
 
-#: src/features/Goal/GoalQuestions.tsx:928
+#: src/features/Goal/GoalQuestions.tsx:930
 #. js-lingui-explicit-id
 msgid "Copy link"
 msgstr "คัดลอกลิงก์"
 
-#: src/features/Goal/GoalQuestions.tsx:941
+#: src/features/Goal/GoalQuestions.tsx:943
 #. js-lingui-explicit-id
 msgid "Open a plan"
 msgstr "เปิดแผน"
@@ -3823,6 +3830,9 @@ msgstr "พูดคุยกับ AI และมันจะตอบคุ�
 #: src/features/Dashboard/ConversationSelectCard.tsx:152
 #: src/features/Dashboard/ConversationSelectCard.tsx:176
 #: src/features/Dashboard/ConversationSelectCard.tsx:200
+#: src/features/Conversation/ConversationPage.tsx:203
+#: src/features/Conversation/ConversationPage.tsx:233
+#: src/features/Conversation/ConversationPage.tsx:263
 #. js-lingui-explicit-id
 msgid "Set the goal to start"
 msgstr "ตั้งค่าเป้าหมายเพื่อเริ่มต้น"
@@ -3848,6 +3858,7 @@ msgid "Guide me"
 msgstr "แนะนำฉัน"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:167
+#: src/features/Conversation/ConversationPage.tsx:227
 #. js-lingui-explicit-id
 msgid "Rules"
 msgstr "กฎ"
@@ -3979,25 +3990,47 @@ msgstr "น้อยลง"
 msgid "More"
 msgstr "เพิ่มเติม"
 
-#: src/features/Conversation/ConversationPage.tsx:124
+#: src/features/Conversation/useConversationsAnalysis.ts:79
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "ข้อผิดพลาดในการวิเคราะห์บทสนทนา"
 
-#: src/features/Conversation/ConversationPage.tsx:152
+#: src/features/Conversation/ConversationPage.tsx:92
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "กำลังโหลดวัตถุประสงค์..."
 
-#: src/features/Conversation/ConversationPage.tsx:183
+#: src/features/Conversation/ConversationPage.tsx:123
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "การสร้างคำใหม่..."
 
-#: src/features/Conversation/ConversationPage.tsx:187
+#: src/features/Conversation/ConversationPage.tsx:127
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "กำลังสร้างกฎใหม่..."
+
+#: src/features/Conversation/ConversationPage.tsx:198
+#. js-lingui-explicit-id
+msgid "Start your journey with a conversation!"
+msgstr "เริ่มการเดินทางของคุณด้วยการสนทนา!"
+
+#: src/features/Conversation/ConversationPage.tsx:221
+#: src/features/Conversation/ConversationPage.tsx:251
+#: src/features/Conversation/ConversationPage.tsx:281
+#. js-lingui-explicit-id
+msgid "Recommended"
+msgstr "แนะนำ"
+
+#: src/features/Conversation/ConversationPage.tsx:228
+#. js-lingui-explicit-id
+msgid "Learn the rules of the language!"
+msgstr "เรียนรู้กฎของภาษา!"
+
+#: src/features/Conversation/ConversationPage.tsx:258
+#. js-lingui-explicit-id
+msgid "Learn new words and expand your vocabulary!"
+msgstr "เรียนรู้คำใหม่และขยายคำศัพท์ของคุณ!"
 
 #: src/features/Conversation/ConversationError.tsx:34
 #. js-lingui-explicit-id

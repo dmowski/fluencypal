@@ -2,7 +2,7 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { useAuth } from "../Auth/useAuth";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { SignInForm } from "../Auth/SignInForm";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
@@ -31,6 +31,8 @@ import { GamePage } from "../Game/GamePage";
 import { useGame } from "../Game/useGame";
 import { useGoalCreation } from "../Plan/useGoalCreation";
 import { useConversationsAnalysis } from "./useConversationsAnalysis";
+import { useChatHistory } from "../ConversationHistory/useChatHistory";
+import { ConversationCard } from "../Dashboard/ConversationCard";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -49,6 +51,16 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const rules = useRules();
   const game = useGame();
   const plan = usePlan();
+  const history = useChatHistory();
+  const conversationsCount = history.conversations.length;
+
+  const isReadyToFirstStart =
+    !history.loading &&
+    conversationsCount === 0 &&
+    !aiConversation.isStarted &&
+    !aiConversation.isInitializing &&
+    !!plan.latestGoal;
+
   const searchParams = useSearchParams();
 
   const gamePage = searchParams.get("gamePage");
@@ -129,6 +141,151 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         onClose={() => setIsShowGoalModal(false)}
         onStart={() => aiConversation.startConversation({ mode: "goal" })}
       />
+    );
+  }
+
+  if (isReadyToFirstStart) {
+    type StartModes = "words" | "rules" | "conversation";
+    const modes: StartModes[] = ["words", "rules", "conversation"];
+
+    const level = plan.latestGoal?.goalQuiz?.level || "XXX";
+    const recommendedModesMap: Record<string, StartModes> = {
+      A1: "words",
+      A2: "rules",
+      B1: "rules",
+      B2: "conversation",
+      c1: "conversation",
+    };
+
+    const recommendedMode: StartModes = recommendedModesMap[level] || "conversation";
+    const sortedModes = modes.sort((a, b) => {
+      if (a === recommendedMode) return -1; // Recommended mode first
+      if (b === recommendedMode) return 1; // Recommended mode first
+      return 0; // Keep original order for others
+    });
+
+    return (
+      <Stack
+        sx={{
+          alignItems: "center",
+          justifyContent: "center",
+          paddingTop: "100px",
+          width: "100%",
+          gap: "40px",
+        }}
+      >
+        <Typography align="center" variant="h6">
+          {i18n._(`Now let’s determine your starting point!`)}
+        </Typography>
+
+        <Stack
+          sx={{
+            width: "100%",
+            boxSizing: "border-box",
+            gap: "20px",
+            maxWidth: "500px",
+            padding: "10px",
+            paddingBottom: "40px",
+          }}
+        >
+          {sortedModes.map((mode) => {
+            const isRecommended = mode === recommendedMode;
+            return (
+              <Stack key={mode} sx={{}}>
+                {mode === "conversation" && (
+                  <ConversationCard
+                    title={i18n._(`Conversation`)}
+                    subTitle={i18n._(`Start your journey with a conversation!`)}
+                    onClick={() => {}}
+                    startColor="#34D399"
+                    endColor="#3B82F6"
+                    bgColor="#A3E635"
+                    disabledLabel={i18n._(`Set the goal to start`)}
+                    icon={
+                      <Stack>
+                        <Stack
+                          style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
+                          className="avatar"
+                        >
+                          <img
+                            src="/avatar/girl.webp"
+                            alt="AI Bot"
+                            style={{
+                              height: "110px",
+                              width: "110px",
+                            }}
+                          />
+                        </Stack>
+                      </Stack>
+                    }
+                    actionLabel={isRecommended ? i18n._(`Recommended`) : ""}
+                  />
+                )}
+
+                {mode === "rules" && (
+                  <ConversationCard
+                    title={i18n._(`Rules`)}
+                    subTitle={i18n._(`Learn the rules of the language!`)}
+                    onClick={() => {}}
+                    startColor="#9d43a3"
+                    endColor="#086787"
+                    bgColor="#990000"
+                    disabledLabel={i18n._(`Set the goal to start`)}
+                    icon={
+                      <Stack>
+                        <Stack
+                          style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
+                          className="avatar"
+                        >
+                          <img
+                            src="/avatar/book.webp"
+                            alt="AI Bot"
+                            style={{
+                              height: "110px",
+                              width: "110px",
+                            }}
+                          />
+                        </Stack>
+                      </Stack>
+                    }
+                    actionLabel={isRecommended ? i18n._(`Recommended`) : ""}
+                  />
+                )}
+
+                {mode === "words" && (
+                  <ConversationCard
+                    title={i18n._(`Words`)}
+                    subTitle={i18n._(`Learn new words and expand your vocabulary!`)}
+                    onClick={() => {}}
+                    startColor="#00BFFF"
+                    endColor="#086787"
+                    bgColor="#5EEAD4"
+                    disabledLabel={i18n._(`Set the goal to start`)}
+                    icon={
+                      <Stack>
+                        <Stack
+                          style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
+                          className="avatar"
+                        >
+                          <img
+                            src="/avatar/words.webp"
+                            alt="AI Bot"
+                            style={{
+                              height: "110px",
+                              width: "110px",
+                            }}
+                          />
+                        </Stack>
+                      </Stack>
+                    }
+                    actionLabel={isRecommended ? i18n._(`Recommended`) : ""}
+                  />
+                )}
+              </Stack>
+            );
+          })}
+        </Stack>
+      </Stack>
     );
   }
 
