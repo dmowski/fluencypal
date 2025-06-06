@@ -37,6 +37,7 @@ export const PlanLandingCard = ({
       onClick={onClick}
       component={href ? "a" : onClick ? "button" : "div"}
       href={href}
+      className="plan-landing-card"
       sx={{
         backgroundColor: "transparent",
         textDecoration: "none",

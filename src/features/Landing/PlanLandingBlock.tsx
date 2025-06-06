@@ -450,6 +450,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   padding: "30px",
                   boxSizing: "border-box",
                   maxHeight: "520px",
+                  ".plan-landing-card": {
+                    height: "150px",
+                  },
                   "&:after": {
                     bottom: "-10px",
                     left: "0px",
