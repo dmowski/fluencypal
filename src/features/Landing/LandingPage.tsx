@@ -125,7 +125,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
         <TalkingWaves />
         <Stack sx={{ alignItems: "center" }}>
           <WelcomeScreen
-            title={i18n._(`AI Speaking Partner`)}
+            title={i18n._(`Speaking Partner`)}
             subTitle={i18n._(`Talk, get corrected, improve—repeat.`)}
             openDashboardTitle={i18n._(`Get Started`)}
             getStartedTitle={i18n._(`Get Started Free`)}

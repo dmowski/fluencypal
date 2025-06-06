@@ -599,7 +599,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 }}
               >
                 {i18n._(
-                  `Jump into your tailored learning path and build real skills through engaging practice.`
+                  `Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.`
                 )}
               </Typography>
 
