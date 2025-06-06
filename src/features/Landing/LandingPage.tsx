@@ -125,10 +125,8 @@ export default function LandingPage({ lang }: LandingPageProps) {
         <TalkingWaves />
         <Stack sx={{ alignItems: "center" }}>
           <WelcomeScreen
-            title={i18n._(`FluencyPal – Your AI English Speaking Partner`)}
-            subTitle={i18n._(
-              `Boost your fluency with FluencyPal, the friendly AI English tutor that's ready to chat 24/7. Designed for intermediate and advanced learners, FluencyPal adapts to your speaking level, provides instant corrections, and helps you speak confidently.`
-            )}
+            title={i18n._(`AI Speaking Partner`)}
+            subTitle={i18n._(`Talk, get corrected, improve—repeat.`)}
             openDashboardTitle={i18n._(`Get Started`)}
             getStartedTitle={i18n._(`Get Started Free`)}
             viewPricingTitle={i18n._(`View Pricing`)}
@@ -287,7 +285,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             ]}
           />
           <CtaBlock
-            title={i18n._(`Ready to Become Fluent in English?`)}
+            title={i18n._(`Learn anywhere, anytime`)}
             actionButtonTitle={i18n._(`Start Your Free Trial`)}
             actionButtonLink={`${getUrlStart(lang)}quiz`}
           />

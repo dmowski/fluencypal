@@ -190,7 +190,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               },
 
               "@media (max-width:900px)": {
-                opacity: 0.2,
+                opacity: 0.05,
                 position: "absolute",
                 top: "0px",
                 left: "0px",
@@ -198,7 +198,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               },
             }}
           >
-            <img src="/landing/tree.webp" alt="Plan" />
+            <img src="/landing/survey.webp" alt="Plan" />
           </Stack>
           <Stack
             sx={{
@@ -256,7 +256,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 }}
               >
                 {i18n._(
-                  `Start with a quick, friendly conversation with our AI assistant. In just a few minutes, the AI will detect your current language level, personal goals, and preferences.`
+                  `Fill out a quick onboarding quiz to help FluencyPal understand your goals and preferences.`
                 )}
               </Typography>
 
@@ -294,7 +294,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                     color: "rgb(1, 162, 255)",
                   }}
                 >
-                  {i18n._(`20+ languages to learn`)}
+                  {i18n._(`20+ languages to practice`)}
                 </Typography>
               </Stack>
             </Stack>
@@ -391,7 +391,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 }}
               >
                 {i18n._(
-                  `Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you. Each plan includes 8 lesson types designed to help you reach your goal.`
+                  `Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you.`
                 )}
               </Typography>
 
