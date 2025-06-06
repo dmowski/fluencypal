@@ -460,7 +460,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     {
       title: i18n._(`Details`),
       subTitle: i18n._(
-        `Provide more info about you and what you need to improve in your language skills. And AI will create a personalized plan for you. More info - better plan.`
+        `Describe what you want to achieve, and AI will build a custom plan. More info means better results.`
       ),
 
       content: (
