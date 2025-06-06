@@ -84,7 +84,8 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   if (!auth.isAuthorized) return <SignInForm rolePlayInfo={rolePlayInfo} lang={lang} />;
 
-  const isLoading = settings.loading || auth.loading || !auth.uid;
+  const isLoading =
+    settings.loading || auth.loading || !auth.uid || !usage.isWelcomeBalanceInitialized;
 
   if (isLoading) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
