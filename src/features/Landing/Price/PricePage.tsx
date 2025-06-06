@@ -406,7 +406,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       fontSize: "1.2rem",
                     }}
                   >
-                    {i18n._("Refill Anytime")}
+                    {i18n._("Add More Credits")}
                   </Typography>
                   <Typography variant="body2" align="center">
                     {i18n._("Add more credits whenever you need them.")}
