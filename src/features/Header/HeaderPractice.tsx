@@ -111,9 +111,9 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
             isNoBalance && !isLanding
               ? "transparent"
               : isActiveConversation
-                ? "rgba(10, 18, 30, 1)"
+                ? "rgba(10, 18, 30, 0.1)"
                 : "rgba(10, 18, 30, 0.7)",
-          backdropFilter: "blur(10px)",
+          backdropFilter: isActiveConversation ? "blur(0px)" : "blur(10px)",
           //borderBottom: isActiveConversation ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
 
           ".menu-link": {
@@ -293,35 +293,39 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
                     </Tooltip>
                   )}
 
-                  <Button
-                    sx={{
-                      color: usage.loading
-                        ? "#fff"
-                        : usage.balanceHours > 0.2
-                          ? "#fff"
-                          : usage.balanceHours >= 0.1
-                            ? "#ff9900"
-                            : "#ee2233",
-                    }}
-                    onClick={() => usage.togglePaymentModal(true)}
-                    startIcon={<Wallet size="20px" />}
-                  >
-                    <Typography
+                  {(!isActiveConversation || usage.balanceHours < 0.1) && (
+                    <Button
                       sx={{
-                        textTransform: "none",
+                        color: usage.loading
+                          ? "#fff"
+                          : usage.balanceHours > 0.2
+                            ? "#fff"
+                            : usage.balanceHours >= 0.1
+                              ? "#ff9900"
+                              : "#ee2233",
+                      }}
+                      onClick={() => usage.togglePaymentModal(true)}
+                      startIcon={<Wallet size="20px" />}
+                    >
+                      <Typography
+                        sx={{
+                          textTransform: "none",
+                        }}
+                      >
+                        {usage.balanceHours > 0 ? "" : usage.balanceHours == 0 ? "" : "- "}
+                        {convertHoursToHumanFormat(usage.balanceHours)}
+                      </Typography>
+                    </Button>
+                  )}
+                  {!isActiveConversation && (
+                    <IconButton
+                      onClick={(e) => {
+                        setMenuAnchor(e.currentTarget);
                       }}
                     >
-                      {usage.balanceHours > 0 ? "" : usage.balanceHours == 0 ? "" : "- "}
-                      {convertHoursToHumanFormat(usage.balanceHours)}
-                    </Typography>
-                  </Button>
-                  <IconButton
-                    onClick={(e) => {
-                      setMenuAnchor(e.currentTarget);
-                    }}
-                  >
-                    <Avatar alt={userName} src={userPhoto} />
-                  </IconButton>
+                      <Avatar alt={userName} src={userPhoto} />
+                    </IconButton>
+                  )}
                 </>
               ) : (
                 <></>
