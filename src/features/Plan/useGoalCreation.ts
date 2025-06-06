@@ -142,7 +142,8 @@ export const useGoalCreation = () => {
       settings.loading ||
       !settings.userCreatedAt ||
       !auth.uid ||
-      usage.loading
+      usage.loading ||
+      !usage.isWelcomeBalanceInitialized
     ) {
       return;
     }
@@ -155,6 +156,7 @@ export const useGoalCreation = () => {
     auth.uid,
     settings.userCreatedAt,
     usage.loading,
+    usage.isWelcomeBalanceInitialized,
   ]);
 
   return {

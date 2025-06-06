@@ -27,6 +27,7 @@ interface UsageContextType extends TotalUsageInfo {
   isSuccessPayment: boolean;
   loading: boolean;
   balanceHours: number;
+  isWelcomeBalanceInitialized: boolean;
 }
 
 const UsageContext = createContext<UsageContextType | null>(null);
@@ -35,6 +36,7 @@ function useProvideUsage(): UsageContextType {
   const [usageLogs, setUsageLogs] = useState<UsageLog[]>([]);
   const [isShowPaymentModal, setIsShowPaymentModal] = useState(false);
   const [isSuccessPayment, setIsSuccessPayment] = useState(false);
+  const [isWelcomeBalanceInitialized, setIsWelcomeBalanceInitialized] = useState(false);
 
   const router = useRouter();
 
@@ -111,6 +113,8 @@ function useProvideUsage(): UsageContextType {
         await auth.getToken()
       );
     }
+
+    setIsWelcomeBalanceInitialized(true);
   };
 
   useEffect(() => {
@@ -122,6 +126,7 @@ function useProvideUsage(): UsageContextType {
     lastUpdatedAt: totalUsage?.lastUpdatedAt || 0,
     usedHours: totalUsage?.usedHours || 0,
     balanceHours: totalUsage?.balanceHours || 0,
+    isWelcomeBalanceInitialized,
 
     loading: loadingTotalUsage || !totalUsage,
     paymentLogs: paymentLogs,
