@@ -161,6 +161,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   return (
     <Stack>
       <ConversationCanvas2
+        messagesToComplete={5}
         isOnboarding={true}
         isMuted
         conversationId="1"

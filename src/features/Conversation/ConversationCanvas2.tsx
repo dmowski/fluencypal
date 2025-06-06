@@ -30,7 +30,6 @@ import { useSound } from "../Audio/useSound";
 import { GoalPlan } from "../Plan/types";
 import { GradingProgressBar } from "../uiKit/Progress/GradingProgressBar";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { messagesToComplete } from "./data";
 import { useGame } from "../Game/useGame";
 import { useTranslate } from "../Translation/useTranslate";
 
@@ -80,6 +79,7 @@ interface ConversationCanvasProps {
   isShowMessageProgress: boolean;
   conversationAnalysisResult: string;
   analyzeConversation: () => Promise<void>;
+  messagesToComplete: number;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isOnboarding,
@@ -113,6 +113,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isShowMessageProgress,
   conversationAnalysisResult,
   analyzeConversation,
+  messagesToComplete,
 }) => {
   const { i18n } = useLingui();
 

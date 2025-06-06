@@ -169,9 +169,16 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     return <Dashboard rolePlayInfo={rolePlayInfo} lang={lang} />;
   }
 
+  const defaultMessagesToComplete = 6;
+  const planMessageCount = Math.max(
+    plan.latestGoal?.goalQuiz?.minPerDaySelected || defaultMessagesToComplete,
+    defaultMessagesToComplete
+  );
+
   return (
     <Stack>
       <ConversationCanvas2
+        messagesToComplete={planMessageCount}
         conversation={aiConversation.conversation}
         isOnboarding={aiConversation.currentMode === "goal"}
         isAiSpeaking={aiConversation.isAiSpeaking}

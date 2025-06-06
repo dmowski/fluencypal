@@ -28,7 +28,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { GoalElementInfo, GoalPlan } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
-import { messagesToComplete } from "./data";
 import { isDev } from "../Analytics/isDev";
 import { useGame } from "../Game/useGame";
 
@@ -187,6 +186,12 @@ function useProvideAiConversation(): AiConversationContextType {
   const communicatorRef = useRef(communicator);
   communicatorRef.current = communicator;
 
+  const defaultMessagesToComplete = 6;
+  const planMessageCount = Math.max(
+    plan.latestGoal?.goalQuiz?.minPerDaySelected || defaultMessagesToComplete,
+    defaultMessagesToComplete
+  );
+
   const [isMuted, setIsMuted] = useLocalStorage<boolean>("isMuted", false);
   const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);
 
@@ -205,7 +210,7 @@ function useProvideAiConversation(): AiConversationContextType {
     }
 
     const usersMessagesCount = conversation.filter((message) => !message.isBot).length;
-    if (usersMessagesCount === messagesToComplete && goalInfo) {
+    if (usersMessagesCount === planMessageCount && goalInfo) {
       plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
     }
 
