@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
   const balance = await getUserBalance(userInfo.uid || "");
   if (balance.balanceHours < 0.01 && !balance.isGameWinner) {
-    throw new Error("Insufficient balance");
+    throw new Error("Insufficient balance....");
   }
 
   const baseUrl = "https://api.openai.com/v1/realtime";
