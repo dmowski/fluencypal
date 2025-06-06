@@ -640,10 +640,10 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                       border: isSelected ? "1px solid #00AEEF" : "1px solid rgba(0, 0, 0, 0.1)",
                       backgroundColor: isSelected ? "rgba(0, 174, 239, 0.1)" : "transparent",
                       alignItems: "center",
-                      gap: "25px",
+                      gap: "30px",
                       textAlign: "left",
                       width: "100%",
-                      padding: "10px 25px 10px 15px",
+                      padding: "10px 15px",
                       cursor: "pointer",
                       justifyContent: "space-between",
                     }}
