@@ -34,6 +34,7 @@ import { useLocalStorage } from "react-use";
 import { useRouter } from "next/navigation";
 import SignalStrengthIcon from "./SignalStrengthIcon";
 import { GradingProgressBar } from "../Dashboard/BrainCard";
+import { sleep } from "@/libs/sleep";
 
 const TermsComponent = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -196,7 +197,9 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const onNext = () => {
     if (step < maxSteps - 1) {
       setStep(step + 1);
-      scrollTop();
+      sleep(40).then(() => {
+        scrollTop();
+      });
     }
   };
 
