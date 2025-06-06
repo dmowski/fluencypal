@@ -190,7 +190,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               },
 
               "@media (max-width:900px)": {
-                opacity: 0.05,
+                opacity: 0,
                 position: "absolute",
                 top: "0px",
                 left: "0px",
