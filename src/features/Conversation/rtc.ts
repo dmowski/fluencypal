@@ -356,6 +356,7 @@ export const initAiRtc = async ({
   });
 
   const setDebugInfo = (color: string) => {
+    /*
     let dynamicInfoElement = document.getElementById("debug-info");
     if (!dynamicInfoElement) {
       // create small 1px div on top right corner
@@ -373,6 +374,7 @@ export const initAiRtc = async ({
     }
 
     dynamicInfoElement.style.backgroundColor = color;
+    */
   };
 
   const closeEvent = () => {
