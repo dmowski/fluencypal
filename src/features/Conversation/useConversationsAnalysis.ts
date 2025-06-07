@@ -8,6 +8,7 @@ import { useAuth } from "../Auth/useAuth";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import { useLingui } from "@lingui/react";
+import { getPageLangCode } from "../Lang/lang";
 
 export const useConversationsAnalysis = () => {
   const plan = usePlan();
@@ -18,6 +19,12 @@ export const useConversationsAnalysis = () => {
   const auth = useAuth();
   const notifications = useNotifications();
   const { i18n } = useLingui();
+
+  const learningLanguage = settings.languageCode || "en";
+
+  const pageLangCode = getPageLangCode();
+  const planNativeLanguage = plan.latestGoal?.goalQuiz?.nativeLanguageCode;
+  const nativeLanguage = pageLangCode !== learningLanguage ? pageLangCode : planNativeLanguage;
 
   const [conversationAnalysis, setConversationAnalysis] = useState<string>("");
   const analyzeConversation = async () => {
@@ -38,25 +45,25 @@ export const useConversationsAnalysis = () => {
       : "";
 
     const expectedStructure = `
-    #### Language level:
-    Example: Intermediate
-    
-    #### What was great:
-    Example: I liked the way you described your situation related to *** 
-    
-    #### Areas to improve:
-    It's better to use *** instead of ***, because ***
+#### Language level:
+Example: Intermediate
+
+#### What was great:
+Example: I liked the way you described your situation related to *** 
+
+#### Areas to improve:
+It's better to use *** instead of ***, because ***
     
     `;
 
     const systemMessage = `You are a language teacher/analyzer.
-    You are analyzing the conversation between the user and AI.
-    The user is learning ${settings.fullLanguageName}.
-    The user has the following goal: ${planDescription}.
-    The user is using the following lesson: ${goalElementDescription}.
+You are analyzing the conversation between the user and AI.
+The user is learning ${settings.fullLanguageName}.
+The user has the following goal: ${planDescription}.
+The user is using the following lesson: ${goalElementDescription}.
     
-    Answer to the user in the following format:
-    ${expectedStructure}
+Answer to the user in the following format (Use ${nativeLanguage} language for the answer):
+${expectedStructure}
     `;
 
     try {
