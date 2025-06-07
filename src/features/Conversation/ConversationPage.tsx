@@ -167,8 +167,8 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     return <Dashboard rolePlayInfo={rolePlayInfo} lang={lang} />;
   }
 
-  const defaultMessagesToComplete = 6;
-  const planMessageCount = Math.max(
+  const defaultMessagesToComplete = 5;
+  const planMessageCount = Math.min(
     plan.latestGoal?.goalQuiz?.minPerDaySelected || defaultMessagesToComplete,
     defaultMessagesToComplete
   );
