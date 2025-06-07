@@ -521,7 +521,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   >
                     <Markdown
                       onWordClick={
-                        isBot && isTranslateAvailable
+                        isTranslateAvailable
                           ? (word) => {
                               translate(word);
                             }
@@ -532,7 +532,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       {message.text || ""}
                     </Markdown>
 
-                    {isBot && isTranslateAvailable && (
+                    {isTranslateAvailable && (
                       <IconButton onClick={() => translate(message.text)}>
                         <Languages size={"18px"} />
                       </IconButton>
