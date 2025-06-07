@@ -1,13 +1,15 @@
 import { Button, Stack, Tooltip, Typography } from "@mui/material";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useWords } from "../Words/useWords";
-import { ChevronLeft, GraduationCap } from "lucide-react";
+import { ChevronLeft, GraduationCap, Languages } from "lucide-react";
 import { useLingui } from "@lingui/react";
+import { useTranslate } from "../Translation/useTranslate";
 
 export const WordsToLearn: React.FC = () => {
   const aiConversation = useAiConversation();
   const words = useWords();
   const { i18n } = useLingui();
+  const translator = useTranslate();
 
   return (
     <Stack
@@ -19,6 +21,8 @@ export const WordsToLearn: React.FC = () => {
         boxSizing: "border-box",
       }}
     >
+      {translator.translateModal}
+
       <Typography
         sx={{
           opacity: 0.7,
@@ -41,14 +45,43 @@ export const WordsToLearn: React.FC = () => {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
-            gap: "0px 10px",
+            gap: "0px 12px",
             flexWrap: "wrap",
             boxSizing: "border-box",
           }}
         >
-          <Typography className="decor-text" variant="h4" align="center">
-            {words.wordsToLearn.join(", ")}
-          </Typography>
+          {words.wordsToLearn.map((word, index) => {
+            const isLastWord = index === words.wordsToLearn.length - 1;
+            return (
+              <Typography
+                key={index}
+                className="decor-text"
+                variant="h4"
+                align="center"
+                sx={{
+                  borderBottom: "1px dashed transparent",
+                  ":hover": {
+                    cursor: "pointer",
+                    borderBottom: "1px dashed #fff",
+                  },
+                }}
+                onClick={async () => {
+                  await translator.translateWithModal(word);
+                }}
+              >
+                {word}
+                <Languages
+                  size={"16px"}
+                  style={{
+                    paddingLeft: "8px",
+                    paddingRight: "2px",
+                    opacity: 0.6,
+                  }}
+                />
+                {!isLastWord ? "" : ""}
+              </Typography>
+            );
+          })}
         </Stack>
         <Stack
           sx={{

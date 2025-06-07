@@ -258,35 +258,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     setIsShowAnalyzeConversationModal(true);
   };
 
-  const { translateText, isTranslateAvailable } = useTranslate();
-  const [isTranslating, setIsTranslating] = useState(false);
-  const [translatedText, setTranslatedText] = useState<{
-    source: string;
-    translated: string;
-  } | null>(null);
-  const translate = async (text: string) => {
-    try {
-      setTranslatedText(null);
-      setIsTranslating(true);
-      setTranslatedText({
-        source: text,
-        translated: "",
-      });
-      const translatedText = await translateText({ text });
-      setTranslatedText({
-        source: text,
-        translated: translatedText,
-      });
-    } catch (error) {
-      setIsTranslating(false);
-      throw error;
-    }
-  };
-
-  const onCloseTranslate = () => {
-    setIsTranslating(false);
-    setTranslatedText(null);
-  };
+  const translator = useTranslate();
 
   const [isOpenHelpModel, setIsOpenHelpModel] = useState(false);
   const [helpMessage, setHelpMessage] = useState("");
@@ -299,34 +271,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   return (
     <Stack sx={{ gap: "40px" }}>
-      {(isTranslating || translatedText) && (
-        <>
-          <CustomModal isOpen={true} onClose={() => onCloseTranslate()} padding="40px 20px">
-            <Typography variant="h5">{i18n._("Translation")}</Typography>
-            <Stack
-              sx={{
-                gap: "10px",
-                width: "100%",
-              }}
-            >
-              <Markdown size="conversation">
-                {translatedText?.source ||
-                  (isTranslating ? i18n._("Loading...") : i18n._("No text to translate"))}
-              </Markdown>
-
-              <ArrowDown size={"18px"} color="rgba(180, 180, 180, 1)" />
-
-              <Markdown size="conversation">
-                {translatedText?.translated ||
-                  (isTranslating ? "..." : i18n._("No translation available"))}
-              </Markdown>
-              <Button variant="outlined" onClick={onCloseTranslate} sx={{ marginTop: "20px" }}>
-                {i18n._("Close")}
-              </Button>
-            </Stack>
-          </CustomModal>
-        </>
-      )}
+      {translator.translateModal}
 
       {isOpenHelpModel && (
         <CustomModal isOpen={true} onClose={() => setIsOpenHelpModel(false)} padding="40px 20px">
@@ -340,7 +285,11 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             <Stack className={`decor-text ${!helpMessage ? "loading-shimmer" : ""}`}>
               <Markdown
                 size="conversation"
-                onWordClick={isTranslateAvailable ? (word) => translate(word) : undefined}
+                onWordClick={
+                  translator.isTranslateAvailable
+                    ? (word) => translator.translateWithModal(word)
+                    : undefined
+                }
               >
                 {!helpMessage ? i18n._("Loading...") : helpMessage}
               </Markdown>
@@ -523,9 +472,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   >
                     <Markdown
                       onWordClick={
-                        isTranslateAvailable
+                        translator.isTranslateAvailable
                           ? (word) => {
-                              translate(word);
+                              translator.translateWithModal(word);
                             }
                           : undefined
                       }
@@ -534,8 +483,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       {message.text || ""}
                     </Markdown>
 
-                    {isTranslateAvailable && (
-                      <IconButton onClick={() => translate(message.text)}>
+                    {translator.isTranslateAvailable && (
+                      <IconButton onClick={() => translator.translateWithModal(message.text)}>
                         <Languages size={"18px"} />
                       </IconButton>
                     )}
@@ -758,7 +707,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                   instructions="Calm and clear"
                                   voice={"coral"}
                                 />
-                                <IconButton onClick={() => translate(correctedMessage)}>
+                                <IconButton
+                                  onClick={() => translator.translateWithModal(correctedMessage)}
+                                >
                                   <Languages size={"16px"} style={{ opacity: 0.8 }} />
                                 </IconButton>
                               </>
@@ -844,7 +795,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                     instructions="Calm and clear"
                                     voice={"coral"}
                                   />
-                                  <IconButton onClick={() => translate(correctedMessage)}>
+                                  <IconButton
+                                    onClick={() => translator.translateWithModal(correctedMessage)}
+                                  >
                                     <Languages size={"16px"} style={{ opacity: 0.8 }} />
                                   </IconButton>
                                 </>
