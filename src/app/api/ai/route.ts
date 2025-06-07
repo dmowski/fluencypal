@@ -5,6 +5,7 @@ import { getUserBalance } from "../payment/getUserBalance";
 import { TextUsageLog } from "@/common/usage";
 import { addUsage } from "../payment/addUsage";
 import { generateTextWithAi } from "./generateTextWithAi";
+export const maxDuration = 60;
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
