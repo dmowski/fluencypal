@@ -569,7 +569,7 @@ export const PaymentModal = () => {
                   >
                     <Stack>
                       <Typography variant="h3">
-                        {convertHoursToHumanFormat(usage.balanceHours)}
+                        {convertHoursToHumanFormat(Math.max(0, usage.balanceHours))}
                       </Typography>
                       <Typography variant="caption">
                         {i18n._(`Current Balance of AI usage`)}
