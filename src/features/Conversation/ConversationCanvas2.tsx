@@ -299,33 +299,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   return (
     <Stack sx={{ gap: "40px" }}>
-      {isOpenHelpModel && (
-        <CustomModal isOpen={true} onClose={() => setIsOpenHelpModel(false)} padding="40px 20px">
-          <Typography variant="caption">{i18n._("Idea for your message")}</Typography>
-          <Stack
-            sx={{
-              gap: "10px",
-              width: "100%",
-            }}
-          >
-            <Typography
-              variant="h4"
-              className={`decor-text ${!helpMessage ? "loading-shimmer" : ""}`}
-            >
-              {!helpMessage ? i18n._("Loading...") : helpMessage}
-            </Typography>
-
-            <Button
-              variant="outlined"
-              onClick={() => setIsOpenHelpModel(false)}
-              sx={{ marginTop: "20px" }}
-            >
-              {i18n._("Close")}
-            </Button>
-          </Stack>
-        </CustomModal>
-      )}
-
       {(isTranslating || translatedText) && (
         <>
           <CustomModal isOpen={true} onClose={() => onCloseTranslate()} padding="40px 20px">
@@ -353,6 +326,35 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             </Stack>
           </CustomModal>
         </>
+      )}
+
+      {isOpenHelpModel && (
+        <CustomModal isOpen={true} onClose={() => setIsOpenHelpModel(false)} padding="40px 20px">
+          <Typography variant="caption">{i18n._("Idea for your message")}</Typography>
+          <Stack
+            sx={{
+              gap: "10px",
+              width: "100%",
+            }}
+          >
+            <Stack className={`decor-text ${!helpMessage ? "loading-shimmer" : ""}`}>
+              <Markdown
+                size="conversation"
+                onWordClick={isTranslateAvailable ? (word) => translate(word) : undefined}
+              >
+                {!helpMessage ? i18n._("Loading...") : helpMessage}
+              </Markdown>
+            </Stack>
+
+            <Button
+              variant="outlined"
+              onClick={() => setIsOpenHelpModel(false)}
+              sx={{ marginTop: "20px" }}
+            >
+              {i18n._("Close")}
+            </Button>
+          </Stack>
+        </CustomModal>
       )}
       {isShowAnalyzeConversationModal && (
         <>
