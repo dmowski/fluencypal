@@ -1,6 +1,6 @@
-import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { DashboardCard } from "../uiKit/Card/DashboardCard";
-import { Flag, Icon, Sparkle, Trash } from "lucide-react";
+import { Flag, LandPlot, Sparkle, Trash } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
@@ -11,7 +11,6 @@ import { GoalPlan, PlanElement, PlanElementMode } from "../Plan/types";
 import { PlanCard } from "../Plan/PlanCard";
 
 import { cardColors, modeCardProps } from "../Plan/data";
-import { GoalQuestions } from "../Goal/GoalQuestions";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { useLangClientLabels } from "../Lang/getLabelsClient";
 import { useSettings } from "../Settings/useSettings";
@@ -19,6 +18,7 @@ import { useMemo, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { ConversationCard } from "./ConversationCard";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 type StartModes = "words" | "rules" | "conversation";
 
@@ -514,21 +514,17 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           </Stack>
         </Stack>
       ) : (
-        <Stack
-          sx={{
-            padding: "20px",
-            backgroundColor: "rgba(255, 255, 255, 0.9)",
-            borderRadius: "10px",
-            color: "#000",
-          }}
-        >
-          <GoalQuestions
-            lang={lang}
-            defaultLang={settings.languageCode || "en"}
-            showTerms={false}
-            titleComponent="h5"
-            langLearnPlanLabels={langLabels.labelLearningPlan}
-          />
+        <Stack sx={{}}>
+          <Button
+            startIcon={<LandPlot />}
+            href={`${getUrlStart(lang)}quiz`}
+            sx={{
+              padding: "20px",
+            }}
+            variant="contained"
+          >
+            Create a plan
+          </Button>
         </Stack>
       )}
 
