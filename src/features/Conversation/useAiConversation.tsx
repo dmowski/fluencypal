@@ -193,8 +193,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const userLevel = plan.latestGoal?.goalQuiz?.level || "A2";
   const userLevelDescription = levelDescriptionsForAi[userLevel] || levelDescriptionsForAi["A2"];
 
-  console.log("userLevelDescription", userLevelDescription);
-
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
   const communicatorRef = useRef(communicator);
   communicatorRef.current = communicator;
