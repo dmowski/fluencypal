@@ -32,11 +32,11 @@ import { isDev } from "../Analytics/isDev";
 import { useGame } from "../Game/useGame";
 
 const levelDescriptionsForAi: Record<string, string> = {
-  A1: "Beginner. Use extremely simple words and short sentences. Focus on basics.",
-  A2: "Elementary. Use clear, short sentences and common expressions. Avoid complexity.",
-  B1: "Intermediate. Use straightforward language with some variety. Explain unfamiliar terms.",
-  B2: "Upper intermediate. Can handle more complex structures and wider vocabulary.",
-  C1: "Advanced. Can understand complex topics and use specialized vocabulary.",
+  A1: "User's  language level is Beginner. Use extremely simple words and short sentences. Focus on basics.",
+  A2: "User's  language level is Elementary. Use clear, short sentences and common expressions. Avoid complexity.",
+  B1: "User's  language level is Intermediate. Use straightforward language with some variety. Explain unfamiliar terms.",
+  B2: "User's  language level is Upper intermediate. Can handle more complex structures and wider vocabulary.",
+  C1: "User's  language level is Advanced. Can understand complex topics and use specialized vocabulary.",
 };
 
 interface StartConversationProps {
