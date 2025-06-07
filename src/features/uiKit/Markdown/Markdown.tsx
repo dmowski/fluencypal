@@ -19,7 +19,6 @@ const processStringChild = (child: string, index: number) => {
 
 const wrapChildrenWithTranslateWrapper = (children: React.ReactNode) => {
   const isChildrenIsArray = Array.isArray(children);
-  console.log("isChildrenIsArray", isChildrenIsArray);
   if (!isChildrenIsArray) {
     const isString = typeof children === "string";
     if (isString) {
@@ -256,7 +255,6 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   td: ({ children }) => <td>{children}</td>,
   table: ({ children }) => <table>{children}</table>,
   p: ({ children }) => {
-    console.log("children", children);
     return (
       <Typography
         sx={{
@@ -270,7 +268,6 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   },
 
   span: ({ children }) => {
-    console.log("children SPAN", children);
     return (
       <Typography
         sx={{
