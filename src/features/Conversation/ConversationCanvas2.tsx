@@ -446,7 +446,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             backdropFilter: "blur(10px)",
 
             position: "fixed",
-            top: "60px",
+            top: "-4px",
             "@media (max-width: 600px)": {
               top: "0px",
             },
