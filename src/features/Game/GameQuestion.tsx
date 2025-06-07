@@ -32,7 +32,7 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
     setTextAnswer("");
     setAnswerDescription(null);
     recorder.removeTranscript();
-    setIsUseMicrophone(Math.random() < 0.5);
+    setIsUseMicrophone(Math.random() > 0.3);
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
