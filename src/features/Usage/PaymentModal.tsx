@@ -159,6 +159,10 @@ export const PaymentModal = () => {
                 width: "100%",
                 gap: "20px",
                 flexDirection: "row",
+                "@media (max-width: 600px)": {
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                },
               }}
             >
               <Stack
@@ -205,8 +209,6 @@ export const PaymentModal = () => {
                 sx={{
                   width: "100%",
                   gap: "5px",
-                  padding: "0 20px",
-                  //border: "1px solid rgba(255, 255, 255, 0.1)",
                 }}
               >
                 <Typography
