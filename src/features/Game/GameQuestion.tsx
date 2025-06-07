@@ -114,7 +114,9 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
                         disabled={isCorrect !== null}
                         onClick={() => {
                           recorder.removeTranscript();
-                          recorder.startRecording();
+                          recorder.startRecording({
+                            isGame: true,
+                          });
                         }}
                       >
                         {i18n._(`Record an answer`)}

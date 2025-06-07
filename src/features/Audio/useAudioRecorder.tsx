@@ -21,6 +21,7 @@ export const useAudioRecorder = () => {
   const [transcriptionError, setTranscriptionError] = useState<string | null>(null);
 
   const recorderControls = useVoiceVisualizer();
+  const [isGame, setIsGame] = useState(false);
 
   useEffect(() => {
     if (!recorderControls.recordedBlob) return;
@@ -53,6 +54,7 @@ export const useAudioRecorder = () => {
         languageCode: learnLanguageCode,
         audioDuration: audioDurationRef.current || 5,
         format,
+        isGame,
       });
       setTranscription(transcriptResponse.transcript);
       if (transcriptResponse.error) {
@@ -65,7 +67,8 @@ export const useAudioRecorder = () => {
     setIsTranscribing(false);
   };
 
-  const startRecording = async () => {
+  const startRecording = async ({ isGame }: { isGame: boolean }) => {
+    setIsGame(isGame);
     recorderControls.startRecording();
     isCancel.current = false;
     setRecordingSeconds(0);

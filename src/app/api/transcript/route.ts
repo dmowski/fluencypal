@@ -20,9 +20,6 @@ export async function POST(request: Request) {
 
   const userInfo = await validateAuthToken(request);
   const balance = await getUserBalance(userInfo.uid || "");
-  if (balance.balanceHours < 0.01 && !balance.isGameWinner) {
-    throw new Error("Insufficient balance ..");
-  }
 
   const data = await request.formData();
   const file = data.get("audio") as File | null;
@@ -42,6 +39,11 @@ export async function POST(request: Request) {
   const urlParams = new URLSearchParams(urlQueryParams);
   const languageCodeString = urlParams.get("lang") || "";
   const format = urlParams.get("format") || "webm";
+  const isGame = urlParams.get("isGame") === "true";
+
+  if (!isGame && balance.balanceHours < 0.01 && !balance.isGameWinner) {
+    throw new Error("Insufficient balance ..");
+  }
 
   const supportedLang =
     supportedLanguages.find((lang) => lang === languageCodeString.toLowerCase()) || "en";
@@ -87,7 +89,7 @@ export async function POST(request: Request) {
       transcriptSize: output.length || 0,
     };
 
-    if (!balance.isGameWinner) {
+    if (!balance.isGameWinner && !isGame) {
       await addUsage(userInfo.uid, usageLog);
     }
 

@@ -195,7 +195,9 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         toggleVolume={aiConversation.toggleVolume}
         startRecording={async () => {
           aiConversation.toggleVolume(false);
-          await recorder.startRecording();
+          await recorder.startRecording({
+            isGame: false,
+          });
         }}
         stopRecording={async () => {
           aiConversation.toggleVolume(true);
