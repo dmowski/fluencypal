@@ -8,6 +8,7 @@ import { Button, Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { ArrowDown } from "lucide-react";
+import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 
 const translationCache: Record<string, string> = {};
 export const useTranslate = () => {
@@ -87,10 +88,23 @@ export const useTranslate = () => {
               width: "100%",
             }}
           >
-            <Markdown size="conversation">
-              {translatedText?.source ||
-                (isTranslating ? i18n._("Loading...") : i18n._("No text to translate"))}
-            </Markdown>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Markdown size="conversation">
+                {translatedText?.source ||
+                  (isTranslating ? i18n._("Loading...") : i18n._("No text to translate"))}
+              </Markdown>
+              <AudioPlayIcon
+                text={translatedText?.source || ""}
+                instructions="Calm and clear"
+                voice={"coral"}
+              />
+            </Stack>
 
             <ArrowDown size={"18px"} color="rgba(180, 180, 180, 1)" />
 
