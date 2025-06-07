@@ -197,8 +197,8 @@ function useProvideAiConversation(): AiConversationContextType {
   const communicatorRef = useRef(communicator);
   communicatorRef.current = communicator;
 
-  const defaultMessagesToComplete = 6;
-  const planMessageCount = Math.max(
+  const defaultMessagesToComplete = 5;
+  const planMessageCount = Math.min(
     plan.latestGoal?.goalQuiz?.minPerDaySelected || defaultMessagesToComplete,
     defaultMessagesToComplete
   );
