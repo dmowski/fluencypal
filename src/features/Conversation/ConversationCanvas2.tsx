@@ -9,6 +9,7 @@ import {
   ArrowUp,
   Check,
   Languages,
+  Lightbulb,
   Loader,
   Mic,
   ShieldAlert,
@@ -80,6 +81,7 @@ interface ConversationCanvasProps {
   conversationAnalysisResult: string;
   analyzeConversation: () => Promise<void>;
   messagesToComplete: number;
+  generateHelpMessage: () => Promise<string>;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isOnboarding,
@@ -114,6 +116,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   conversationAnalysisResult,
   analyzeConversation,
   messagesToComplete,
+  generateHelpMessage,
 }) => {
   const { i18n } = useLingui();
 
@@ -285,8 +288,44 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     setTranslatedText(null);
   };
 
+  const [isOpenHelpModel, setIsOpenHelpModel] = useState(false);
+  const [helpMessage, setHelpMessage] = useState("");
+  const openHelpAnswer = async () => {
+    setHelpMessage("");
+    setIsOpenHelpModel(true);
+    const mess = await generateHelpMessage();
+    setHelpMessage(mess);
+  };
+
   return (
     <Stack sx={{ gap: "40px" }}>
+      {isOpenHelpModel && (
+        <CustomModal isOpen={true} onClose={() => setIsOpenHelpModel(false)} padding="40px 20px">
+          <Typography variant="caption">{i18n._("Idea for your message")}</Typography>
+          <Stack
+            sx={{
+              gap: "10px",
+              width: "100%",
+            }}
+          >
+            <Typography
+              variant="h4"
+              className={`decor-text ${!helpMessage ? "loading-shimmer" : ""}`}
+            >
+              {!helpMessage ? i18n._("Loading...") : helpMessage}
+            </Typography>
+
+            <Button
+              variant="outlined"
+              onClick={() => setIsOpenHelpModel(false)}
+              sx={{ marginTop: "20px" }}
+            >
+              {i18n._("Close")}
+            </Button>
+          </Stack>
+        </CustomModal>
+      )}
+
       {(isTranslating || translatedText) && (
         <>
           <CustomModal isOpen={true} onClose={() => onCloseTranslate()} padding="40px 20px">
@@ -1073,6 +1112,26 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     )}
                   </Stack>
 
+                  {!isRecording && !isAnalyzingResponse && !isNeedToShowBalanceWarning && (
+                    <Stack
+                      sx={{
+                        width: "max-content",
+                        alignItems: "flex-end",
+                        "@media (max-width: 600px)": {
+                          alignItems: "flex-start",
+                        },
+                      }}
+                    >
+                      <Tooltip title={i18n._("Help with answer")}>
+                        <Stack>
+                          <IconButton sx={{}} size="large" onClick={() => openHelpAnswer()}>
+                            <Lightbulb size={"20px"} />
+                          </IconButton>
+                        </Stack>
+                      </Tooltip>
+                    </Stack>
+                  )}
+
                   {(isRecording || isAnalyzingResponse || isNeedToShowBalanceWarning) && (
                     <Stack
                       sx={{
@@ -1084,7 +1143,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       }}
                     >
                       {isRecording || isAnalyzingResponse ? (
-                        <Tooltip title="Cancel">
+                        <Tooltip title={i18n._("Cancel recording")}>
                           <Stack>
                             <IconButton
                               sx={{}}

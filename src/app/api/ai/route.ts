@@ -12,10 +12,8 @@ export async function POST(request: Request) {
   if (balance.balanceHours < 0.01 && !balance.isGameWinner) {
     throw new Error("Insufficient balance.");
   }
-
   const aiRequest = (await request.json()) as AiRequest;
   const languageCode = aiRequest.languageCode || "en";
-
   const { output, usage } = await generateTextWithAi({
     systemMessage: aiRequest.systemMessage,
     userMessage: aiRequest.userMessage,

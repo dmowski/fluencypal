@@ -69,7 +69,8 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const { isProcessingGoal } = useGoalCreation();
   const [isShowGoalModal, setIsShowGoalModal] = useState(false);
 
-  const { analyzeConversation, conversationAnalysis } = useConversationsAnalysis();
+  const { analyzeConversation, conversationAnalysis, generateNextUserMessage } =
+    useConversationsAnalysis();
   const router = useRouter();
 
   useEffect(() => {
@@ -228,6 +229,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         }}
         isShowMessageProgress={!!aiConversation.goalInfo?.goalElement}
         conversationAnalysisResult={conversationAnalysis}
+        generateHelpMessage={generateNextUserMessage}
       />
     </Stack>
   );

@@ -84,8 +84,52 @@ export const useConversationsAnalysis = () => {
     }
   };
 
+  const generateNextUserMessage = async () => {
+    const messages = aiConversation.conversation;
+    const messagesString = messages
+      .map((message) => {
+        const author = message.isBot ? "AI" : "User";
+        return `${author}: ${message.text}`;
+      })
+      .join("\n");
+
+    const systemMessage = `You are a language teacher and helper.
+You are analyzing the conversation between the user and AI.
+The user is learning ${settings.fullLanguageName}.
+
+Your goal is to generate potential user's answer to last "AI" message. User is struggling with answering it.
+
+Provide only potential answer, without any kind of wrapper/started/intro words. Just return answer. Generate one not long sentence
+`;
+
+    try {
+      const aiResults = await textAi.generate({
+        systemMessage,
+        userMessage: messagesString,
+        model: "gpt-4o",
+        languageCode: settings.languageCode || "en",
+      });
+      return aiResults;
+    } catch (error) {
+      Sentry.captureException(error, {
+        extra: {
+          userId: auth.uid,
+          userInfo: userInfo.userInfo,
+          conversationMessages: messages,
+        },
+      });
+
+      notifications.show(i18n._(`Error analyzing conversation`) + "=" + error, {
+        severity: "error",
+      });
+
+      return "Error. Try one more time";
+    }
+  };
+
   return {
     conversationAnalysis,
     analyzeConversation,
+    generateNextUserMessage,
   };
 };

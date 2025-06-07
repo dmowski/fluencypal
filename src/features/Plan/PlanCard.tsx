@@ -404,7 +404,8 @@ export const PlanCard = ({
               fontWeight: 400,
               fontSize: "0.8rem",
               zIndex: 2,
-              height: "52px",
+              height: "54px",
+              overflow: "hidden",
               opacity: isActive || isDone ? 0.9 : 0.7,
 
               "@media (max-width: 500px)": {
