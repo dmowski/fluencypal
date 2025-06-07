@@ -50,7 +50,7 @@ function useProvideRules(): RulesContextType {
       ].join(" ");
       const newRuleToLearn = await textAi.generate({
         systemMessage: systemInstruction,
-        userMessage: `User Message: ${userMessage}`,
+        userMessage: `User Messages: ${userMessage}`,
         model: "gpt-4o",
         languageCode: settings.languageCode || "en",
       });

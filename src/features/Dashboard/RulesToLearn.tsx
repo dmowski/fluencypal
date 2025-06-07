@@ -4,10 +4,12 @@ import { BookOpenText, ChevronLeft } from "lucide-react";
 import { useRules } from "../Rules/useRules";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useLingui } from "@lingui/react";
+import { useTranslate } from "../Translation/useTranslate";
 
 export const RulesToLearn: React.FC = () => {
   const aiConversation = useAiConversation();
   const rules = useRules();
+  const translator = useTranslate();
   const { i18n } = useLingui();
 
   return (
@@ -20,6 +22,7 @@ export const RulesToLearn: React.FC = () => {
         boxSizing: "border-box",
       }}
     >
+      {translator.translateModal}
       <Typography
         sx={{
           maxWidth: "700px",
@@ -51,7 +54,14 @@ export const RulesToLearn: React.FC = () => {
             boxSizing: "border-box",
           }}
         >
-          <Markdown>{rules.rule}</Markdown>
+          <Markdown
+            size="conversation"
+            onWordClick={(word) => {
+              translator.translateWithModal(word);
+            }}
+          >
+            {rules.rule}
+          </Markdown>
         </Stack>
         <Stack
           sx={{
