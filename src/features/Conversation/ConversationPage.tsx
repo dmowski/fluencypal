@@ -60,9 +60,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     !aiConversation.isInitializing &&
     !!plan.latestGoal;
 
-  console.log("aiConversation.isStarted", aiConversation.isStarted);
-  console.log("isInitializing", aiConversation.isInitializing);
-
   const searchParams = useSearchParams();
 
   const gamePage = searchParams.get("gamePage");
