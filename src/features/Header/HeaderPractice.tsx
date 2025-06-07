@@ -312,7 +312,6 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
                           textTransform: "none",
                         }}
                       >
-                        {usage.balanceHours > 0 ? "" : usage.balanceHours == 0 ? "" : "- "}
                         {convertHoursToHumanFormat(Math.max(0, usage.balanceHours))}
                       </Typography>
                     </Button>
