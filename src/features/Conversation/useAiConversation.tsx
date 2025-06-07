@@ -31,6 +31,14 @@ import * as Sentry from "@sentry/nextjs";
 import { isDev } from "../Analytics/isDev";
 import { useGame } from "../Game/useGame";
 
+const levelDescriptionsForAi: Record<string, string> = {
+  A1: "Beginner. Use extremely simple words and short sentences. Focus on basics.",
+  A2: "Elementary. Use clear, short sentences and common expressions. Avoid complexity.",
+  B1: "Intermediate. Use straightforward language with some variety. Explain unfamiliar terms.",
+  B2: "Upper intermediate. Can handle more complex structures and wider vocabulary.",
+  C1: "Advanced. Can understand complex topics and use specialized vocabulary.",
+};
+
 interface StartConversationProps {
   mode: ConversationMode;
   wordsToLearn?: string[];
@@ -181,6 +189,11 @@ function useProvideAiConversation(): AiConversationContextType {
   const tasks = useTasks();
   const plan = usePlan();
   const [goalSettingProgress, setGoalSettingProgress] = useState(0);
+
+  const userLevel = plan.latestGoal?.goalQuiz?.level || "A2";
+  const userLevelDescription = levelDescriptionsForAi[userLevel] || levelDescriptionsForAi["A2"];
+
+  console.log("userLevelDescription", userLevelDescription);
 
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
   const communicatorRef = useRef(communicator);
@@ -376,6 +389,7 @@ Your role is to play a Role Play game on this topic: ${elementTitle} - ${element
 Goal of this game is to help student to achieve this goal in learning ${fullLanguageName} language: ${goalTitle}.
 
 Info about Student: ${userInfo || "No info about student"}.
+${userLevelDescription}
 
 If you feel that the user is struggling, you can propose a new part of the topic or simplify your messages.
 Engage in a natural conversation without making it feel like a lesson.
@@ -420,6 +434,7 @@ You should be friendly and engaging.
 Don't make user feel like they are being tested and feel stupid.
 If you feel that the user is struggling, you can propose a new part of the topic.
 Engage in a natural conversation without making it feel like a lesson.
+${userLevelDescription}
 
 Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
 Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
@@ -501,6 +516,8 @@ Don't try to explain rules or grammar. Your goal is to extract information about
         startFirstMessage = `"${firstMessage}".`;
 
         openerInfoPrompt = `Info about Student : ${userInfo}. 
+
+${userLevelDescription}
   
 Ask the student to describe their day and try to cover new topics that used didn't mentioned before.
 Don't focus solely on one topic. Try to cover a variety of topics (Example ${potentialTopics}).
@@ -549,7 +566,8 @@ Then, ask user to use these rules in sentences.
 Craft a lesson that will help user to understand the rule.
 
 ${userInfo ? `Student info: ${userInfo}` : ""}
-  `,
+${userLevelDescription}
+`,
       };
     }
 
@@ -565,6 +583,8 @@ Then, ask user to use these words in sentences.
 Go step by step, word by word.
 
 ${userInfo ? `Student info: ${userInfo}` : ""}
+${userLevelDescription}
+
 `,
       };
     }
@@ -601,25 +621,27 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
         voice: "shimmer",
         model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher.
-  Your name is "Shimmer". The user wants both a conversation and corrections.
-  
-  For every user message, you must reply with following parts in one response:
-  
-  1. Response: React to the user's message. You can comment, show interest, or share a short thought. Keep it friendly and supportive.
-  
-  2. Correction: If the user made mistakes, tell them where a mistake was made and provide the corrected version. Ask user to repeat corrected version.
-  
-  
-  Use only ${fullLanguageName} language.
-  Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
+Your name is "Shimmer". The user wants both a conversation and corrections.
+
+For every user message, you must reply with following parts in one response:
+
+1. Response: React to the user's message. You can comment, show interest, or share a short thought. Keep it friendly and supportive.
+
+2. Correction: If the user made mistakes, tell them where a mistake was made and provide the corrected version. Ask user to repeat corrected version.
+
+
+Use only ${fullLanguageName} language.
+Avoid over-explaining grammar rules. Keep it interactive and supportive—never condescending or patronizing.
   
 Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
 Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
   
 Start the conversation with simple phrase: ${firstCorrectionMessage}. You are lead of conversation, because you are teacher.
   
-  ${userInfo ? `Info about student: ${userInfo}` : ""}
-  `,
+${userInfo ? `Info about student: ${userInfo}` : ""}
+
+${userLevelDescription}
+`,
       };
     }
     if (mode === "beginner") {
@@ -652,8 +674,10 @@ Remember:
 
 ${userInfo ? `Student info: ${userInfo}` : ""}
 
+${userLevelDescription}
+
 Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly and calm way, no other words needed for the initial greeting).
-  `,
+`,
       };
     }
 

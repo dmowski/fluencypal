@@ -1,10 +1,9 @@
 "use client";
 
-import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import {
   Button,
-  Chip,
   CircularProgress,
   IconButton,
   Link,
