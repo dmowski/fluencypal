@@ -175,7 +175,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   };
 
   const levelsMap: Record<string, string> = {
-    A1: i18n._("I'm a beginner in English"),
+    A1: i18n._("I'm a beginner"),
     A2: i18n._("I know a few simple words"),
     B1: i18n._("I can maintain a simple conversation"),
     B2: i18n._("I can discuss various topics"),
