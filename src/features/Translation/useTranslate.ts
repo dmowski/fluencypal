@@ -1,27 +1,35 @@
 import { translateRequest } from "@/app/api/translate/translateRequest";
 import { useSettings } from "../Settings/useSettings";
-import { getPageLangCode } from "../Lang/lang";
+import { getPageLangCode, SupportedLanguage } from "../Lang/lang";
+import { usePlan } from "../Plan/usePlan";
 
 const translationCache: Record<string, string> = {};
 export const useTranslate = () => {
   const settings = useSettings();
+  const plan = usePlan();
 
-  const targetLanguage = getPageLangCode();
+  const pageLangCode = getPageLangCode();
+  const learningLanguage = settings.languageCode || "en";
 
-  const isTranslateAvailable = targetLanguage !== settings.languageCode;
+  const planNativeLanguage = plan.latestGoal?.goalQuiz?.nativeLanguageCode;
 
-  console.log(" targetLanguage", targetLanguage);
+  const targetLanguage = pageLangCode !== learningLanguage ? pageLangCode : planNativeLanguage;
+
+  const isTranslateAvailable = targetLanguage && targetLanguage !== learningLanguage;
+
   const translateText = async ({ text }: { text: string }) => {
+    if (!targetLanguage) {
+      return "";
+    }
+
     if (translationCache[text]) {
       return translationCache[text];
     }
     // todo: add words to the dictionary to learn
 
-    const targetLanguage = getPageLangCode();
-
     const response = await translateRequest({
       text,
-      sourceLanguage: settings.languageCode || "en",
+      sourceLanguage: learningLanguage,
       targetLanguage,
     });
     translationCache[text] = response.translatedText;

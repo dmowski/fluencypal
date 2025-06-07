@@ -17,6 +17,7 @@ export async function POST(request: Request) {
     createdAtHuman: new Date().toLocaleString(),
     createdAt: Date.now(),
     minPerDaySelected: data.minPerDaySelected || 0,
+    nativeLanguageCode: data.nativeLanguageCode || "en",
   };
 
   await docRef.set(dateToDB);

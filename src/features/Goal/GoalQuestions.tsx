@@ -155,6 +155,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
         languageToLearn: languageToLearn,
         level: level || "A2",
         minPerDaySelected,
+        nativeLanguageCode: myNativeLanguage,
       });
       setIsLoading(false);
       setIsSubmitted(true);

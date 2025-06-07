@@ -5,6 +5,7 @@ export interface CreateGoalRequest {
   level: string;
   description: string;
   minPerDaySelected: number;
+  nativeLanguageCode: SupportedLanguage;
 }
 
 export interface CreateGoalResponse {
