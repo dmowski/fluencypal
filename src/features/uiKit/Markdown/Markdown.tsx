@@ -8,6 +8,27 @@ export interface MarkdownProps {
   onWordClick?: (word: string) => void;
 }
 
+const wrapChildrenWithTranslateWrapper = (children: React.ReactNode) => {
+  const isChildrenIsArray = Array.isArray(children);
+  if (!isChildrenIsArray) {
+    return children;
+  }
+
+  const processedChildren = children.map((child, index) => {
+    if (typeof child === "string") {
+      const words = child.split(" ");
+      return words.map((word, wordIndex) => (
+        <span key={`${index}-${wordIndex}`} className="conversation-word">
+          {word}{" "}
+        </span>
+      ));
+    }
+    return child;
+  });
+
+  return processedChildren;
+};
+
 const markdownComponents: MarkdownToJSX.Overrides = {
   h1: ({ children }) => <Typography variant="h1">{children}</Typography>,
   h2: ({ children }) => (
@@ -131,16 +152,6 @@ const markdownComponentsSmall: MarkdownToJSX.Overrides = {
 const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   ...markdownComponents,
   p: ({ children }) => {
-    const isString = typeof children?.[0] === "string";
-    let content = children;
-    if (isString) {
-      const words = children[0].split(" ") as string[];
-      content = words.map((word, index) => (
-        <span key={index}>
-          <span className="conversation-word">{word}</span>{" "}
-        </span>
-      ));
-    }
     return (
       <Typography
         sx={{
@@ -148,31 +159,19 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
           fontWeight: 350,
         }}
       >
-        {content}
+        {wrapChildrenWithTranslateWrapper(children)}
       </Typography>
     );
   },
 
   span: ({ children }) => {
-    const isString = typeof children?.[0] === "string" || typeof children === "string";
-    let content = children;
-    if (isString) {
-      const stringContent = typeof children === "string" ? children : children[0];
-      const words = stringContent.split(" ") as string[];
-      content = words.map((word, index) => (
-        <span key={index}>
-          <span className="conversation-word">{word}</span>{" "}
-        </span>
-      ));
-    }
-
     return (
       <Typography
         sx={{
           fontSize: "21px",
         }}
       >
-        {content}
+        {wrapChildrenWithTranslateWrapper(children)}
       </Typography>
     );
   },
@@ -203,7 +202,8 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, size 
           ? (e) => {
               const target = e.target as HTMLElement;
               if (target.classList.contains("conversation-word")) {
-                onWordClick(target.textContent || "");
+                const word = target.textContent || "";
+                onWordClick(word.trim());
               }
             }
           : undefined
