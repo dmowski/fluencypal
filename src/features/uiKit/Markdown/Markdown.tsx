@@ -8,20 +8,30 @@ export interface MarkdownProps {
   onWordClick?: (word: string) => void;
 }
 
+const processStringChild = (child: string, index: number) => {
+  const words = child.split(" ");
+  return words.map((word, wordIndex) => (
+    <span key={`${index}-${wordIndex}`} className="conversation-word">
+      {word}{" "}
+    </span>
+  ));
+};
+
 const wrapChildrenWithTranslateWrapper = (children: React.ReactNode) => {
   const isChildrenIsArray = Array.isArray(children);
+  console.log("isChildrenIsArray", isChildrenIsArray);
   if (!isChildrenIsArray) {
+    const isString = typeof children === "string";
+    if (isString) {
+      return processStringChild(children, 0);
+    }
+
     return children;
   }
 
   const processedChildren = children.map((child, index) => {
     if (typeof child === "string") {
-      const words = child.split(" ");
-      return words.map((word, wordIndex) => (
-        <span key={`${index}-${wordIndex}`} className="conversation-word">
-          {word}{" "}
-        </span>
-      ));
+      return processStringChild(child, index);
     }
     return child;
   });
@@ -152,6 +162,7 @@ const markdownComponentsSmall: MarkdownToJSX.Overrides = {
 const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   ...markdownComponents,
   p: ({ children }) => {
+    console.log("children", children);
     return (
       <Typography
         sx={{
@@ -165,6 +176,7 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   },
 
   span: ({ children }) => {
+    console.log("children SPAN", children);
     return (
       <Typography
         sx={{
