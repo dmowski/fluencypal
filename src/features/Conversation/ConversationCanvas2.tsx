@@ -5,7 +5,6 @@ import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { Alert, Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
 import {
-  ArrowDown,
   ArrowUp,
   Check,
   Languages,
@@ -485,7 +484,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
                     {translator.isTranslateAvailable && (
                       <IconButton onClick={() => translator.translateWithModal(message.text)}>
-                        <Languages size={"18px"} />
+                        <Languages size={"16px"} color="#eee" />
                       </IconButton>
                     )}
                   </Stack>
