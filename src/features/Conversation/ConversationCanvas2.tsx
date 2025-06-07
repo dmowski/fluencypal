@@ -744,14 +744,22 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                   : isNeedToShowCorrection
                                     ? 0
                                     : 1,
+                              flexDirection: "row",
+                              alignItems: "center",
+                              gap: "2px",
                             }}
                           >
                             {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
-                              <AudioPlayIcon
-                                text={correctedMessage}
-                                instructions="Calm and clear"
-                                voice={"coral"}
-                              />
+                              <>
+                                <AudioPlayIcon
+                                  text={correctedMessage}
+                                  instructions="Calm and clear"
+                                  voice={"coral"}
+                                />
+                                <IconButton onClick={() => translate(correctedMessage)}>
+                                  <Languages size={"16px"} style={{ opacity: 0.8 }} />
+                                </IconButton>
+                              </>
                             )}
                           </Stack>
                         </Stack>
@@ -820,13 +828,24 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                               />
                             </Typography>
 
-                            <Stack>
+                            <Stack
+                              sx={{
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "2px",
+                              }}
+                            >
                               {!isTranscribing && !isAnalyzingResponse && !!correctedMessage && (
-                                <AudioPlayIcon
-                                  text={correctedMessage}
-                                  instructions="Calm and clear"
-                                  voice={"coral"}
-                                />
+                                <>
+                                  <AudioPlayIcon
+                                    text={correctedMessage}
+                                    instructions="Calm and clear"
+                                    voice={"coral"}
+                                  />
+                                  <IconButton onClick={() => translate(correctedMessage)}>
+                                    <Languages size={"16px"} style={{ opacity: 0.8 }} />
+                                  </IconButton>
+                                </>
                               )}
                             </Stack>
                           </Stack>

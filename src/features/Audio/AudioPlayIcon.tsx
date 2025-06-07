@@ -112,7 +112,6 @@ export const AudioPlayIcon = ({
         disabled={isLoading}
         color={error ? "error" : undefined}
         onClick={togglePlay}
-        size="small"
         sx={{
           opacity: 0.7,
           border: borderColor ? `1px solid ${borderColor}` : "none",

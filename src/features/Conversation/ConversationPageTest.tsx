@@ -180,7 +180,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         stopRecording={async () => {}}
         cancelRecording={async () => {}}
         isTranscribing={false}
-        transcriptMessage=""
+        transcriptMessage="Hello"
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
