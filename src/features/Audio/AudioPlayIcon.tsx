@@ -2,9 +2,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useAudio } from "./useAudio";
 import { IconButton, Tooltip } from "@mui/material";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import StopIcon from "@mui/icons-material/Stop";
-import SyncIcon from "@mui/icons-material/Sync";
 import { TextToAudioVoice } from "@/app/api/textToAudio/types";
 import { Loader, Pause, Volume2 } from "lucide-react";
 export interface AudioPlayIconProps {
@@ -54,6 +51,7 @@ export const AudioPlayIcon = ({
     if (audioUrl) {
       if (audio) {
         audio.src = audioUrl;
+        audio.volume = 1;
         audio.playbackRate = speed;
         audio.play();
       }
