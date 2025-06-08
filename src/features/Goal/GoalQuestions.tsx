@@ -265,6 +265,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     try {
       const rec = new SpeechRec();
       setRecognizer(rec);
+      rec.lang = myNativeLanguage || languageToLearn;
       rec.continuous = true;
       rec.onresult = (e: any) => {
         const fullResults: string[] = [];
@@ -639,7 +640,11 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                   startRecording();
                 }}
               >
-                {isRecording ? i18n._(`Stop recording`) : i18n._(`Record`)}
+                {isRecording
+                  ? i18n._(`Stop recording`)
+                  : i18n._(`Record`) +
+                    ` ` +
+                    `(${langTranslations[myNativeLanguage || languageToLearn]})`}
               </Button>
             )}
 
