@@ -14,6 +14,16 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:56
+msgid "Translate the word"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:56
+msgid "Form a sentence"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -625,8 +635,9 @@ msgstr ""
 #: src/features/Usage/PaymentModal.tsx:627
 #: src/features/Translation/useTranslate.tsx:100
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Game/GameQuestion.tsx:210
-#: src/features/Game/GameQuestion.tsx:287
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:106
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:148
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:107
 #: src/features/Conversation/ConversationPage.tsx:80
 #: src/features/Conversation/ConversationPage.tsx:89
 #: src/features/Conversation/ConversationPage.tsx:102
@@ -2530,13 +2541,13 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/features/Header/HeaderStatic.tsx:16
-#: src/features/Header/HeaderPractice.tsx:360
+#: src/features/Header/HeaderPractice.tsx:359
 msgid "Need Help?"
 msgstr ""
 
 #. js-lingui-explicit-id
 #: src/features/Header/HeaderStatic.tsx:17
-#: src/features/Header/HeaderPractice.tsx:374
+#: src/features/Header/HeaderPractice.tsx:373
 msgid "Log Out"
 msgstr ""
 
@@ -2937,71 +2948,6 @@ msgid "Let's rock it!"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:49
-msgid "Translate"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:50
-msgid "Craft a sentence"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:51
-#: src/features/Game/GameQuestion.tsx:131
-msgid "Describe the image"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:107
-msgid "Stop recording"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:120
-msgid "Record an answer"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:153
-msgid "Error: "
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:164
-#: src/features/Conversation/ConversationCanvas2.tsx:682
-#: src/features/Conversation/ConversationCanvas2.tsx:685
-#: src/features/Conversation/ConversationCanvas2.tsx:768
-#: src/features/Conversation/ConversationCanvas2.tsx:775
-msgid "Transcribing..."
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:184
-msgid "Transcription:"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:198
-msgid "Submit answer"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:225
-msgid "Correct!"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:225
-msgid "Incorrect!"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/GameQuestion.tsx:413
-msgid "My Position:"
-msgstr ""
-
-#. js-lingui-explicit-id
 #: src/features/Game/GamePage.tsx:35
 msgid "Username must be at least 3 characters long."
 msgstr ""
@@ -3035,6 +2981,64 @@ msgstr ""
 #: src/features/Game/GamePage.tsx:162
 #: src/features/Game/GameBadge.tsx:50
 msgid "Rank in the top 5 to get the app for free"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:275
+msgid "Correct!"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:275
+msgid "Incorrect!"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:185
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:254
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:294
+msgid "My Position:"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:211
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:155
+msgid "Submit answer"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:65
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:229
+msgid "Describe the image"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:119
+#: src/features/Conversation/ConversationCanvas2.tsx:682
+#: src/features/Conversation/ConversationCanvas2.tsx:685
+#: src/features/Conversation/ConversationCanvas2.tsx:768
+#: src/features/Conversation/ConversationCanvas2.tsx:775
+msgid "Transcribing..."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:184
+#: src/features/Conversation/ConversationCanvas2.tsx:975
+msgid "Done"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:209
+msgid "Record an answer"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:250
+msgid "Error: "
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -3560,11 +3564,6 @@ msgstr ""
 #: src/features/Conversation/ConversationCanvas2.tsx:961
 #: src/features/Conversation/ConversationCanvas2.tsx:1040
 msgid "Re-record"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Conversation/ConversationCanvas2.tsx:975
-msgid "Done"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -4509,6 +4508,26 @@ msgstr ""
 #: src/features/Auth/SignInForm.tsx:195
 msgid "By creating an account, you agree to:"
 msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/GameQuestion.tsx:49
+#~ msgid "Translate"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/GameQuestion.tsx:50
+#~ msgid "Craft a sentence"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/GameQuestion.tsx:107
+#~ msgid "Stop recording"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/features/Game/GameQuestion.tsx:184
+#~ msgid "Transcription:"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/features/Goal/GoalQuestions.tsx:178

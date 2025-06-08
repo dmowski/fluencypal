@@ -13,6 +13,16 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:56
+#. js-lingui-explicit-id
+msgid "Translate the word"
+msgstr "단어를 번역하십시오"
+
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:56
+#. js-lingui-explicit-id
+msgid "Form a sentence"
+msgstr "문장을 만드세요"
+
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -676,8 +686,9 @@ msgstr "결제 내역:"
 #: src/features/Usage/PaymentModal.tsx:627
 #: src/features/Translation/useTranslate.tsx:100
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Game/GameQuestion.tsx:210
-#: src/features/Game/GameQuestion.tsx:287
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:106
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:148
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:107
 #: src/features/Conversation/ConversationPage.tsx:80
 #: src/features/Conversation/ConversationPage.tsx:89
 #: src/features/Conversation/ConversationPage.tsx:102
@@ -2993,13 +3004,13 @@ msgid "Sing In"
 msgstr "로그인"
 
 #: src/features/Header/HeaderStatic.tsx:16
-#: src/features/Header/HeaderPractice.tsx:360
+#: src/features/Header/HeaderPractice.tsx:359
 #. js-lingui-explicit-id
 msgid "Need Help?"
 msgstr "응급 도움이 필요하신가요?"
 
 #: src/features/Header/HeaderStatic.tsx:17
-#: src/features/Header/HeaderPractice.tsx:374
+#: src/features/Header/HeaderPractice.tsx:373
 #. js-lingui-explicit-id
 msgid "Log Out"
 msgstr "로그아웃"
@@ -3406,71 +3417,6 @@ msgstr "마침내"
 msgid "Let's rock it!"
 msgstr "가자, 시작해보자!"
 
-#: src/features/Game/GameQuestion.tsx:49
-#. js-lingui-explicit-id
-msgid "Translate"
-msgstr "번역"
-
-#: src/features/Game/GameQuestion.tsx:50
-#. js-lingui-explicit-id
-msgid "Craft a sentence"
-msgstr "문장을 만드세요"
-
-#: src/features/Game/GameQuestion.tsx:51
-#: src/features/Game/GameQuestion.tsx:131
-#. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "이미지를 설명하십시오"
-
-#: src/features/Game/GameQuestion.tsx:107
-#. js-lingui-explicit-id
-msgid "Stop recording"
-msgstr "녹음 중지"
-
-#: src/features/Game/GameQuestion.tsx:120
-#. js-lingui-explicit-id
-msgid "Record an answer"
-msgstr "답변을 녹음하십시오"
-
-#: src/features/Game/GameQuestion.tsx:153
-#. js-lingui-explicit-id
-msgid "Error: "
-msgstr "오류:"
-
-#: src/features/Game/GameQuestion.tsx:164
-#: src/features/Conversation/ConversationCanvas2.tsx:682
-#: src/features/Conversation/ConversationCanvas2.tsx:685
-#: src/features/Conversation/ConversationCanvas2.tsx:768
-#: src/features/Conversation/ConversationCanvas2.tsx:775
-#. js-lingui-explicit-id
-msgid "Transcribing..."
-msgstr "전사 중..."
-
-#: src/features/Game/GameQuestion.tsx:184
-#. js-lingui-explicit-id
-msgid "Transcription:"
-msgstr "번역:"
-
-#: src/features/Game/GameQuestion.tsx:198
-#. js-lingui-explicit-id
-msgid "Submit answer"
-msgstr "답변 제출"
-
-#: src/features/Game/GameQuestion.tsx:225
-#. js-lingui-explicit-id
-msgid "Correct!"
-msgstr "정확해요!"
-
-#: src/features/Game/GameQuestion.tsx:225
-#. js-lingui-explicit-id
-msgid "Incorrect!"
-msgstr "잘못되었습니다!"
-
-#: src/features/Game/GameQuestion.tsx:413
-#. js-lingui-explicit-id
-msgid "My Position:"
-msgstr "내 위치:"
-
 #: src/features/Game/GamePage.tsx:35
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
@@ -3506,6 +3452,64 @@ msgstr "율:"
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "상위 5위 안에 들면 앱을 무료로 받을 수 있습니다"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:275
+#. js-lingui-explicit-id
+msgid "Correct!"
+msgstr "정확해요!"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:275
+#. js-lingui-explicit-id
+msgid "Incorrect!"
+msgstr "잘못되었습니다!"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:185
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:254
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:294
+#. js-lingui-explicit-id
+msgid "My Position:"
+msgstr "내 위치:"
+
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:211
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:155
+#. js-lingui-explicit-id
+msgid "Submit answer"
+msgstr "답변 제출"
+
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:65
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:229
+#. js-lingui-explicit-id
+msgid "Describe the image"
+msgstr "이미지를 설명하십시오"
+
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:119
+#: src/features/Conversation/ConversationCanvas2.tsx:682
+#: src/features/Conversation/ConversationCanvas2.tsx:685
+#: src/features/Conversation/ConversationCanvas2.tsx:768
+#: src/features/Conversation/ConversationCanvas2.tsx:775
+#. js-lingui-explicit-id
+msgid "Transcribing..."
+msgstr "전사 중..."
+
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:184
+#: src/features/Conversation/ConversationCanvas2.tsx:975
+#. js-lingui-explicit-id
+msgid "Done"
+msgstr "완료"
+
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:209
+#. js-lingui-explicit-id
+msgid "Record an answer"
+msgstr "답변을 녹음하십시오"
+
+#: src/features/Game/gameQuestionScreens/DescribeImageScreen.tsx:250
+#. js-lingui-explicit-id
+msgid "Error: "
+msgstr "오류:"
 
 #: src/features/Dashboard/WordsToLearn.tsx:32
 #. js-lingui-explicit-id
@@ -4031,11 +4035,6 @@ msgstr "보내기"
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "다시 녹음"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:975
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "완료"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:993
 #. js-lingui-explicit-id
@@ -5576,6 +5575,26 @@ msgstr "구글로 계속하기"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "계정을 생성함으로써 귀하는 다음에 동의하게 됩니다:"
+
+#: src/features/Game/GameQuestion.tsx:49
+#. js-lingui-explicit-id
+#~ msgid "Translate"
+#~ msgstr "번역"
+
+#: src/features/Game/GameQuestion.tsx:50
+#. js-lingui-explicit-id
+#~ msgid "Craft a sentence"
+#~ msgstr "문장을 만드세요"
+
+#: src/features/Game/GameQuestion.tsx:107
+#. js-lingui-explicit-id
+#~ msgid "Stop recording"
+#~ msgstr "녹음 중지"
+
+#: src/features/Game/GameQuestion.tsx:184
+#. js-lingui-explicit-id
+#~ msgid "Transcription:"
+#~ msgstr "번역:"
 
 #: src/features/Goal/GoalQuestions.tsx:178
 #. js-lingui-explicit-id
