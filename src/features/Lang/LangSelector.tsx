@@ -7,7 +7,7 @@ import {
   SupportedLanguage,
   supportedLanguages,
 } from "@/features/Lang/lang";
-import { JSX, useEffect, useState } from "react";
+import { JSX } from "react";
 import { MenuItem, Select, Stack, Typography } from "@mui/material";
 
 interface LangSelectorProps {
@@ -16,11 +16,6 @@ interface LangSelectorProps {
 }
 
 export const LangSelector = ({ value, onChange }: LangSelectorProps): JSX.Element => {
-  const [selectedLanguage, setSelectedLanguage] = useState<SupportedLanguage>("en");
-  useEffect(() => {
-    value && setSelectedLanguage(value);
-  }, [value]);
-
   const userCodes = getUserLangCode();
 
   const optionsFull = supportedLanguages
@@ -62,7 +57,6 @@ export const LangSelector = ({ value, onChange }: LangSelectorProps): JSX.Elemen
         onChange={(e) => onChangeLanguage(e.target.value || "")}
       >
         {optionsFull.map((option) => {
-          const isSameLabels = option.englishFullName === option.fullName;
           return (
             <MenuItem
               key={option.langCode}
@@ -79,7 +73,6 @@ export const LangSelector = ({ value, onChange }: LangSelectorProps): JSX.Elemen
                   width: "100%",
                   justifyContent: "flex-start",
                   padding: "0px 5px",
-                  color: option.isSystemLang ? "#000" : "#666",
                   gap: "15px",
                   minHeight: "42px",
                 }}

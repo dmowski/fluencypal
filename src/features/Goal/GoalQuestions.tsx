@@ -94,6 +94,11 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   });
 
   useEffect(() => {
+    const isChanging = data.nativeLanguage !== lang;
+    if (!isChanging) {
+      return;
+    }
+
     updateData({
       nativeLanguage: lang || "en",
     });
@@ -578,7 +583,9 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               variant="outlined"
               error={showDescriptionError}
               value={data.description}
-              onChange={(e) => updateDescription(e.target.value)}
+              onChange={(e) => {
+                updateDescription(e.target.value);
+              }}
             />
 
             {recorder.isAbleToRecord && (

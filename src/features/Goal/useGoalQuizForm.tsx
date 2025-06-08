@@ -19,10 +19,10 @@ export const useGoalQuizForm = (defaultData: GoalQuizData) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   };
   const getDataFromStorage = (): GoalQuizData | null => {
-    const data = localStorage.getItem(STORAGE_KEY);
-    if (data) {
+    const storageData = localStorage.getItem(STORAGE_KEY);
+    if (storageData) {
       try {
-        return JSON.parse(data) as GoalQuizData;
+        return JSON.parse(storageData) as GoalQuizData;
       } catch (error) {
         console.error("Failed to parse goal quiz data from storage:", error);
         return null;
@@ -42,7 +42,7 @@ export const useGoalQuizForm = (defaultData: GoalQuizData) => {
       if (storedData) {
         setData(storedData);
       }
-    }, 3000);
+    }, 100);
   }, []);
 
   const updateData = (newData: Partial<GoalQuizData>) => {
@@ -50,6 +50,7 @@ export const useGoalQuizForm = (defaultData: GoalQuizData) => {
       ...data,
       ...newData,
     };
+
     setData(updatedData);
     saveDataToStorage(updatedData);
   };
