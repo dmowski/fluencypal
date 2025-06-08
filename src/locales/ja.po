@@ -13,20 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Goal/GoalQuestions.tsx:279
+#: src/features/Goal/GoalQuestions.tsx:534
 #. js-lingui-explicit-id
-msgid "Failed to recognize speech. Please try again."
-msgstr "音声認識に失敗しました。もう一度お試しください。"
+msgid "Describe what you want to achieve, and AI will build a custom plan."
+msgstr "あなたが達成したいことを説明し、AIがカスタムプランを作成します。"
 
-#: src/features/Goal/GoalQuestions.tsx:289
+#: src/features/Goal/GoalQuestions.tsx:535
 #. js-lingui-explicit-id
-msgid "Failed to start recording. Please try again."
-msgstr "録音の開始に失敗しました。もう一度お試しください。"
+msgid "More info means better results."
+msgstr "詳細な情報はより良い結果をもたらします。"
 
-#: src/features/Goal/GoalQuestions.tsx:612
+#: src/features/Goal/GoalQuestions.tsx:579
 #. js-lingui-explicit-id
-msgid "Record"
-msgstr "記録"
+msgid "Let's go"
+msgstr "行きましょう"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -1699,8 +1699,8 @@ msgid "Send 6 messages to complete"
 msgstr "完了するために6つのメッセージを送信してください"
 
 #: src/features/Plan/PlanCard.tsx:224
-#: src/features/Goal/GoalQuestions.tsx:673
-#: src/features/Goal/GoalQuestions.tsx:711
+#: src/features/Goal/GoalQuestions.tsx:703
+#: src/features/Goal/GoalQuestions.tsx:741
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -2074,7 +2074,7 @@ msgid ""
 msgstr "あなたのオンボーディングに基づいて、FluencyPalは即座にあなただけのカスタム学習プランを生成します。"
 
 #: src/features/Landing/PlanLandingBlock.tsx:409
-#: src/features/Goal/GoalQuestions.tsx:937
+#: src/features/Goal/GoalQuestions.tsx:967
 #. js-lingui-explicit-id
 msgid "Create a plan"
 msgstr "プランを作成する"
@@ -3083,6 +3083,16 @@ msgstr "私はほとんどのトピックについて詳しく話すことがで
 msgid "Failed to copy text. Please try again."
 msgstr "テキストのコピーに失敗しました。もう一度お試しください。"
 
+#: src/features/Goal/GoalQuestions.tsx:279
+#. js-lingui-explicit-id
+msgid "Failed to recognize speech. Please try again."
+msgstr "音声認識に失敗しました。もう一度お試しください。"
+
+#: src/features/Goal/GoalQuestions.tsx:289
+#. js-lingui-explicit-id
+msgid "Failed to start recording. Please try again."
+msgstr "録音の開始に失敗しました。もう一度お試しください。"
+
 #: src/features/Goal/GoalQuestions.tsx:298
 #. js-lingui-explicit-id
 msgid "English"
@@ -3249,9 +3259,9 @@ msgid "My native language"
 msgstr "私の母国語"
 
 #: src/features/Goal/GoalQuestions.tsx:435
-#: src/features/Goal/GoalQuestions.tsx:525
-#: src/features/Goal/GoalQuestions.tsx:811
-#: src/features/Goal/GoalQuestions.tsx:872
+#: src/features/Goal/GoalQuestions.tsx:526
+#: src/features/Goal/GoalQuestions.tsx:841
+#: src/features/Goal/GoalQuestions.tsx:902
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "次へ"
@@ -3261,111 +3271,105 @@ msgstr "次へ"
 msgid "How well do you know"
 msgstr "あなたはどれくらいよく知っていますか"
 
-#: src/features/Goal/GoalQuestions.tsx:533
+#: src/features/Goal/GoalQuestions.tsx:546
+#: src/features/Goal/GoalQuestions.tsx:588
 #. js-lingui-explicit-id
-msgid "Details"
-msgstr "詳細"
+msgid "Write at least 100 characters for a sharper plan"
+msgstr "より明確な計画のために、少なくとも100文字を書いてください"
 
-#: src/features/Goal/GoalQuestions.tsx:534
-#. js-lingui-explicit-id
-msgid ""
-"Describe what you want to achieve, and AI will build a custom plan. More "
-"info means better results."
-msgstr "あなたが達成したいことを説明し、AIがカスタムプランを作成します。情報が多ければ多いほど、結果はより良くなります。"
-
-#: src/features/Goal/GoalQuestions.tsx:572
+#: src/features/Goal/GoalQuestions.tsx:587
 #. js-lingui-explicit-id
 msgid "About your goal"
 msgstr "あなたの目標について"
 
-#: src/features/Goal/GoalQuestions.tsx:589
+#: src/features/Goal/GoalQuestions.tsx:619
 #. js-lingui-explicit-id
 msgid ""
 "I want to learn English to travel. And I want to understand movies and "
 "songs."
 msgstr "私は旅行のために英語を学びたいです。そして、映画や歌を理解したいと思います。"
 
-#: src/features/Goal/GoalQuestions.tsx:612
+#: src/features/Goal/GoalQuestions.tsx:642
 #. js-lingui-explicit-id
 msgid "Stop recording"
 msgstr "録音を停止する"
 
-#: src/features/Goal/GoalQuestions.tsx:627
+#: src/features/Goal/GoalQuestions.tsx:642
 #. js-lingui-explicit-id
-msgid "Write at least 100 characters for a sharper plan"
-msgstr "より明確な計画のために、少なくとも100文字を書いてください"
+msgid "Record"
+msgstr "記録"
 
-#: src/features/Goal/GoalQuestions.tsx:681
+#: src/features/Goal/GoalQuestions.tsx:711
 #. js-lingui-explicit-id
 msgid "Let's decide at what pace we will study!"
 msgstr "どのペースで勉強するか決めましょう！"
 
-#: src/features/Goal/GoalQuestions.tsx:718
+#: src/features/Goal/GoalQuestions.tsx:748
 #. js-lingui-explicit-id
 msgid "What is our daily goal?"
 msgstr "私たちの日々の目標は何ですか？"
 
-#: src/features/Goal/GoalQuestions.tsx:819
+#: src/features/Goal/GoalQuestions.tsx:849
 #. js-lingui-explicit-id
 msgid "So, in the first week you will learn:"
 msgstr "それでは、最初の週に学ぶことは次のとおりです:"
 
-#: src/features/Goal/GoalQuestions.tsx:837
+#: src/features/Goal/GoalQuestions.tsx:867
 #. js-lingui-explicit-id
 msgid "New words:"
 msgstr "新しい単語:"
 
-#: src/features/Goal/GoalQuestions.tsx:840
+#: src/features/Goal/GoalQuestions.tsx:870
 #. js-lingui-explicit-id
 msgid "Rules:"
 msgstr "ルール:"
 
-#: src/features/Goal/GoalQuestions.tsx:880
+#: src/features/Goal/GoalQuestions.tsx:910
 #. js-lingui-explicit-id
 msgid "This is what you can achieve in 3 months!"
 msgstr "これは3ヶ月で達成できることです！"
 
-#: src/features/Goal/GoalQuestions.tsx:899
+#: src/features/Goal/GoalQuestions.tsx:929
 #. js-lingui-explicit-id
 msgid "Confident Communication"
 msgstr "自信を持ったコミュニケーション"
 
-#: src/features/Goal/GoalQuestions.tsx:901
+#: src/features/Goal/GoalQuestions.tsx:931
 #. js-lingui-explicit-id
 msgid "Practice speaking and listening without stress"
 msgstr "ストレスなく話す練習と聞く練習をしましょう"
 
-#: src/features/Goal/GoalQuestions.tsx:906
+#: src/features/Goal/GoalQuestions.tsx:936
 #. js-lingui-explicit-id
 msgid "Expanded Vocabulary"
 msgstr "語彙の拡大"
 
-#: src/features/Goal/GoalQuestions.tsx:908
+#: src/features/Goal/GoalQuestions.tsx:938
 #. js-lingui-explicit-id
 msgid "Frequently used words and useful phrases"
 msgstr "よく使われる単語と役立つフレーズ"
 
-#: src/features/Goal/GoalQuestions.tsx:1030
+#: src/features/Goal/GoalQuestions.tsx:1055
 #. js-lingui-explicit-id
 msgid "Submitted"
 msgstr "提出済み"
 
-#: src/features/Goal/GoalQuestions.tsx:1041
+#: src/features/Goal/GoalQuestions.tsx:1066
 #. js-lingui-explicit-id
 msgid "Your plan is being processed with AI"
 msgstr "あなたのプランはAIで処理されています"
 
-#: src/features/Goal/GoalQuestions.tsx:1071
+#: src/features/Goal/GoalQuestions.tsx:1096
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "コピー済み"
 
-#: src/features/Goal/GoalQuestions.tsx:1071
+#: src/features/Goal/GoalQuestions.tsx:1096
 #. js-lingui-explicit-id
 msgid "Copy link"
 msgstr "リンクをコピー"
 
-#: src/features/Goal/GoalQuestions.tsx:1084
+#: src/features/Goal/GoalQuestions.tsx:1109
 #. js-lingui-explicit-id
 msgid "Open a plan"
 msgstr "プランを開く"
@@ -5592,6 +5596,18 @@ msgstr "Googleで続行"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "アカウントを作成することで、あなたは以下に同意するものとします："
+
+#: src/features/Goal/GoalQuestions.tsx:533
+#. js-lingui-explicit-id
+#~ msgid "Details"
+#~ msgstr "詳細"
+
+#: src/features/Goal/GoalQuestions.tsx:534
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Describe what you want to achieve, and AI will build a custom plan. More "
+#~ "info means better results."
+#~ msgstr "あなたが達成したいことを説明し、AIがカスタムプランを作成します。情報が多ければ多いほど、結果はより良くなります。"
 
 #: src/features/Goal/GoalQuestions.tsx:795
 #. js-lingui-explicit-id

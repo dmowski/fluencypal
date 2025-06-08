@@ -13,20 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Goal/GoalQuestions.tsx:279
+#: src/features/Goal/GoalQuestions.tsx:534
 #. js-lingui-explicit-id
-msgid "Failed to recognize speech. Please try again."
-msgstr "Impossibile riconoscere il discorso. Per favore, riprova."
+msgid "Describe what you want to achieve, and AI will build a custom plan."
+msgstr "Descrivi ciò che vuoi raggiungere, e l'IA creerà un piano personalizzato."
 
-#: src/features/Goal/GoalQuestions.tsx:289
+#: src/features/Goal/GoalQuestions.tsx:535
 #. js-lingui-explicit-id
-msgid "Failed to start recording. Please try again."
-msgstr "Impossibile avviare la registrazione. Per favore prova di nuovo."
+msgid "More info means better results."
+msgstr "Più informazioni significano risultati migliori."
 
-#: src/features/Goal/GoalQuestions.tsx:612
+#: src/features/Goal/GoalQuestions.tsx:579
 #. js-lingui-explicit-id
-msgid "Record"
-msgstr "Registra"
+msgid "Let's go"
+msgstr "Andiamo"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -1861,8 +1861,8 @@ msgid "Send 6 messages to complete"
 msgstr "Invia 6 messaggi per completare"
 
 #: src/features/Plan/PlanCard.tsx:224
-#: src/features/Goal/GoalQuestions.tsx:673
-#: src/features/Goal/GoalQuestions.tsx:711
+#: src/features/Goal/GoalQuestions.tsx:703
+#: src/features/Goal/GoalQuestions.tsx:741
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -2242,7 +2242,7 @@ msgstr ""
 "apprendimento personalizzato solo per te."
 
 #: src/features/Landing/PlanLandingBlock.tsx:409
-#: src/features/Goal/GoalQuestions.tsx:937
+#: src/features/Goal/GoalQuestions.tsx:967
 #. js-lingui-explicit-id
 msgid "Create a plan"
 msgstr "Crea un piano"
@@ -3300,6 +3300,16 @@ msgstr "Posso discutere la maggior parte degli argomenti in dettaglio"
 msgid "Failed to copy text. Please try again."
 msgstr "Impossibile copiare il testo. Per favore, riprova."
 
+#: src/features/Goal/GoalQuestions.tsx:279
+#. js-lingui-explicit-id
+msgid "Failed to recognize speech. Please try again."
+msgstr "Impossibile riconoscere il discorso. Per favore, riprova."
+
+#: src/features/Goal/GoalQuestions.tsx:289
+#. js-lingui-explicit-id
+msgid "Failed to start recording. Please try again."
+msgstr "Impossibile avviare la registrazione. Per favore prova di nuovo."
+
 #: src/features/Goal/GoalQuestions.tsx:298
 #. js-lingui-explicit-id
 msgid "English"
@@ -3466,9 +3476,9 @@ msgid "My native language"
 msgstr "La mia lingua madre"
 
 #: src/features/Goal/GoalQuestions.tsx:435
-#: src/features/Goal/GoalQuestions.tsx:525
-#: src/features/Goal/GoalQuestions.tsx:811
-#: src/features/Goal/GoalQuestions.tsx:872
+#: src/features/Goal/GoalQuestions.tsx:526
+#: src/features/Goal/GoalQuestions.tsx:841
+#: src/features/Goal/GoalQuestions.tsx:902
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "Prossimo"
@@ -3478,113 +3488,105 @@ msgstr "Prossimo"
 msgid "How well do you know"
 msgstr "Quanto bene conosci"
 
-#: src/features/Goal/GoalQuestions.tsx:533
+#: src/features/Goal/GoalQuestions.tsx:546
+#: src/features/Goal/GoalQuestions.tsx:588
 #. js-lingui-explicit-id
-msgid "Details"
-msgstr "Dettagli"
+msgid "Write at least 100 characters for a sharper plan"
+msgstr "Scrivi almeno 100 caratteri per un piano più preciso"
 
-#: src/features/Goal/GoalQuestions.tsx:534
-#. js-lingui-explicit-id
-msgid ""
-"Describe what you want to achieve, and AI will build a custom plan. More "
-"info means better results."
-msgstr ""
-"Descrivi ciò che desideri raggiungere, e l'IA creerà un piano "
-"personalizzato. Più informazioni si traducono in risultati migliori."
-
-#: src/features/Goal/GoalQuestions.tsx:572
+#: src/features/Goal/GoalQuestions.tsx:587
 #. js-lingui-explicit-id
 msgid "About your goal"
 msgstr "Riguardo il tuo obiettivo"
 
-#: src/features/Goal/GoalQuestions.tsx:589
+#: src/features/Goal/GoalQuestions.tsx:619
 #. js-lingui-explicit-id
 msgid ""
 "I want to learn English to travel. And I want to understand movies and "
 "songs."
 msgstr "Voglio imparare l'inglese per viaggiare. E voglio capire film e canzoni."
 
-#: src/features/Goal/GoalQuestions.tsx:612
+#: src/features/Goal/GoalQuestions.tsx:642
 #. js-lingui-explicit-id
 msgid "Stop recording"
 msgstr "Interrompi la registrazione"
 
-#: src/features/Goal/GoalQuestions.tsx:627
+#: src/features/Goal/GoalQuestions.tsx:642
 #. js-lingui-explicit-id
-msgid "Write at least 100 characters for a sharper plan"
-msgstr "Scrivi almeno 100 caratteri per un piano più preciso"
+msgid "Record"
+msgstr "Registra"
 
-#: src/features/Goal/GoalQuestions.tsx:681
+#: src/features/Goal/GoalQuestions.tsx:711
 #. js-lingui-explicit-id
 msgid "Let's decide at what pace we will study!"
 msgstr "Decidiamo a che ritmo studieremo!"
 
-#: src/features/Goal/GoalQuestions.tsx:718
+#: src/features/Goal/GoalQuestions.tsx:748
 #. js-lingui-explicit-id
 msgid "What is our daily goal?"
 msgstr "Qual è il nostro obiettivo quotidiano?"
 
-#: src/features/Goal/GoalQuestions.tsx:819
+#: src/features/Goal/GoalQuestions.tsx:849
 #. js-lingui-explicit-id
 msgid "So, in the first week you will learn:"
 msgstr "Quindi, nella prima settimana imparerai:"
 
-#: src/features/Goal/GoalQuestions.tsx:837
+#: src/features/Goal/GoalQuestions.tsx:867
 #. js-lingui-explicit-id
 msgid "New words:"
 msgstr "Nuove parole:"
 
-#: src/features/Goal/GoalQuestions.tsx:840
+#: src/features/Goal/GoalQuestions.tsx:870
 #. js-lingui-explicit-id
 msgid "Rules:"
 msgstr "Regole:"
 
-#: src/features/Goal/GoalQuestions.tsx:880
+#: src/features/Goal/GoalQuestions.tsx:910
 #. js-lingui-explicit-id
 msgid "This is what you can achieve in 3 months!"
 msgstr "Questo è ciò che puoi raggiungere in 3 mesi!"
 
-#: src/features/Goal/GoalQuestions.tsx:899
+#: src/features/Goal/GoalQuestions.tsx:929
 #. js-lingui-explicit-id
 msgid "Confident Communication"
 msgstr "Comunicazione Sicura"
 
-#: src/features/Goal/GoalQuestions.tsx:901
+#: src/features/Goal/GoalQuestions.tsx:931
 #. js-lingui-explicit-id
 msgid "Practice speaking and listening without stress"
 msgstr "Esercitati a parlare e ascoltare senza stress"
 
-#: src/features/Goal/GoalQuestions.tsx:906
+#: src/features/Goal/GoalQuestions.tsx:936
 #. js-lingui-explicit-id
 msgid "Expanded Vocabulary"
 msgstr "Vocabolario Ampliato"
 
-#: src/features/Goal/GoalQuestions.tsx:908
+#: src/features/Goal/GoalQuestions.tsx:938
 #. js-lingui-explicit-id
 msgid "Frequently used words and useful phrases"
 msgstr "Parole usate frequentemente e frasi utili"
 
-#: src/features/Goal/GoalQuestions.tsx:1030
+#: src/features/Goal/GoalQuestions.tsx:1055
 #. js-lingui-explicit-id
 msgid "Submitted"
 msgstr "Inviato"
 
-#: src/features/Goal/GoalQuestions.tsx:1041
+#: src/features/Goal/GoalQuestions.tsx:1066
 #. js-lingui-explicit-id
 msgid "Your plan is being processed with AI"
 msgstr "Il tuo piano è in fase di elaborazione con AI"
 
-#: src/features/Goal/GoalQuestions.tsx:1071
+#: src/features/Goal/GoalQuestions.tsx:1096
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "Copiato"
 
-#: src/features/Goal/GoalQuestions.tsx:1071
+#: src/features/Goal/GoalQuestions.tsx:1096
 #. js-lingui-explicit-id
 msgid "Copy link"
 msgstr "Copia il link"
 
-#: src/features/Goal/GoalQuestions.tsx:1084
+#: src/features/Goal/GoalQuestions.tsx:1109
 #. js-lingui-explicit-id
 msgid "Open a plan"
 msgstr "Apri un piano"
@@ -6013,6 +6015,20 @@ msgstr "Continua con Google"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Creando un account, accetti di:"
+
+#: src/features/Goal/GoalQuestions.tsx:533
+#. js-lingui-explicit-id
+#~ msgid "Details"
+#~ msgstr "Dettagli"
+
+#: src/features/Goal/GoalQuestions.tsx:534
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Describe what you want to achieve, and AI will build a custom plan. More "
+#~ "info means better results."
+#~ msgstr ""
+#~ "Descrivi ciò che desideri raggiungere, e l'IA creerà un piano "
+#~ "personalizzato. Più informazioni si traducono in risultati migliori."
 
 #: src/features/Goal/GoalQuestions.tsx:795
 #. js-lingui-explicit-id

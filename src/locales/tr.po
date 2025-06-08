@@ -13,20 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Goal/GoalQuestions.tsx:279
+#: src/features/Goal/GoalQuestions.tsx:534
 #. js-lingui-explicit-id
-msgid "Failed to recognize speech. Please try again."
-msgstr "Konuşma tanınamadı. Lütfen tekrar deneyin."
+msgid "Describe what you want to achieve, and AI will build a custom plan."
+msgstr "Ne başarmak istediğinizi tanımlayın ve AI, özel bir plan oluşturacak."
 
-#: src/features/Goal/GoalQuestions.tsx:289
+#: src/features/Goal/GoalQuestions.tsx:535
 #. js-lingui-explicit-id
-msgid "Failed to start recording. Please try again."
-msgstr "Kaydedilmeye başlanamadı. Lütfen tekrar deneyin."
+msgid "More info means better results."
+msgstr "Daha fazla bilgi daha iyi sonuçlar anlamına gelir."
 
-#: src/features/Goal/GoalQuestions.tsx:612
+#: src/features/Goal/GoalQuestions.tsx:579
 #. js-lingui-explicit-id
-msgid "Record"
-msgstr "Kaydet"
+msgid "Let's go"
+msgstr "Hadi gidelim"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -1842,8 +1842,8 @@ msgid "Send 6 messages to complete"
 msgstr "6 mesaj göndermek için tamamlayın"
 
 #: src/features/Plan/PlanCard.tsx:224
-#: src/features/Goal/GoalQuestions.tsx:673
-#: src/features/Goal/GoalQuestions.tsx:711
+#: src/features/Goal/GoalQuestions.tsx:703
+#: src/features/Goal/GoalQuestions.tsx:741
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -2221,7 +2221,7 @@ msgstr ""
 "öğrenme planı oluşturur."
 
 #: src/features/Landing/PlanLandingBlock.tsx:409
-#: src/features/Goal/GoalQuestions.tsx:937
+#: src/features/Goal/GoalQuestions.tsx:967
 #. js-lingui-explicit-id
 msgid "Create a plan"
 msgstr "Bir plan oluşturun"
@@ -3269,6 +3269,16 @@ msgstr "Çoğu konuyu detaylı olarak tartışabilirim"
 msgid "Failed to copy text. Please try again."
 msgstr "Metin kopyalama başarısız oldu. Lütfen tekrar deneyin."
 
+#: src/features/Goal/GoalQuestions.tsx:279
+#. js-lingui-explicit-id
+msgid "Failed to recognize speech. Please try again."
+msgstr "Konuşma tanınamadı. Lütfen tekrar deneyin."
+
+#: src/features/Goal/GoalQuestions.tsx:289
+#. js-lingui-explicit-id
+msgid "Failed to start recording. Please try again."
+msgstr "Kaydedilmeye başlanamadı. Lütfen tekrar deneyin."
+
 #: src/features/Goal/GoalQuestions.tsx:298
 #. js-lingui-explicit-id
 msgid "English"
@@ -3435,9 +3445,9 @@ msgid "My native language"
 msgstr "Ana dilim"
 
 #: src/features/Goal/GoalQuestions.tsx:435
-#: src/features/Goal/GoalQuestions.tsx:525
-#: src/features/Goal/GoalQuestions.tsx:811
-#: src/features/Goal/GoalQuestions.tsx:872
+#: src/features/Goal/GoalQuestions.tsx:526
+#: src/features/Goal/GoalQuestions.tsx:841
+#: src/features/Goal/GoalQuestions.tsx:902
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "İleri"
@@ -3447,26 +3457,18 @@ msgstr "İleri"
 msgid "How well do you know"
 msgstr "Ne kadar iyi biliyorsunuz"
 
-#: src/features/Goal/GoalQuestions.tsx:533
+#: src/features/Goal/GoalQuestions.tsx:546
+#: src/features/Goal/GoalQuestions.tsx:588
 #. js-lingui-explicit-id
-msgid "Details"
-msgstr "Detaylar"
+msgid "Write at least 100 characters for a sharper plan"
+msgstr "Daha keskin bir plan için en az 100 karakter yazın"
 
-#: src/features/Goal/GoalQuestions.tsx:534
-#. js-lingui-explicit-id
-msgid ""
-"Describe what you want to achieve, and AI will build a custom plan. More "
-"info means better results."
-msgstr ""
-"Ne başarmak istediğinizi tanımlayın ve AI sizin için özel bir plan "
-"oluşturacak. Daha fazla bilgi, daha iyi sonuçlar anlamına gelir."
-
-#: src/features/Goal/GoalQuestions.tsx:572
+#: src/features/Goal/GoalQuestions.tsx:587
 #. js-lingui-explicit-id
 msgid "About your goal"
 msgstr "Hedefiniz hakkında"
 
-#: src/features/Goal/GoalQuestions.tsx:589
+#: src/features/Goal/GoalQuestions.tsx:619
 #. js-lingui-explicit-id
 msgid ""
 "I want to learn English to travel. And I want to understand movies and "
@@ -3475,87 +3477,87 @@ msgstr ""
 "Seyahat etmek için İngilizce öğrenmek istiyorum. Ve filmleri ve şarkıları "
 "anlamak istiyorum."
 
-#: src/features/Goal/GoalQuestions.tsx:612
+#: src/features/Goal/GoalQuestions.tsx:642
 #. js-lingui-explicit-id
 msgid "Stop recording"
 msgstr "Kaydı durdur"
 
-#: src/features/Goal/GoalQuestions.tsx:627
+#: src/features/Goal/GoalQuestions.tsx:642
 #. js-lingui-explicit-id
-msgid "Write at least 100 characters for a sharper plan"
-msgstr "Daha keskin bir plan için en az 100 karakter yazın"
+msgid "Record"
+msgstr "Kaydet"
 
-#: src/features/Goal/GoalQuestions.tsx:681
+#: src/features/Goal/GoalQuestions.tsx:711
 #. js-lingui-explicit-id
 msgid "Let's decide at what pace we will study!"
 msgstr "Hangi hızda çalışacağımıza karar verelim!"
 
-#: src/features/Goal/GoalQuestions.tsx:718
+#: src/features/Goal/GoalQuestions.tsx:748
 #. js-lingui-explicit-id
 msgid "What is our daily goal?"
 msgstr "Günlük hedefimiz nedir?"
 
-#: src/features/Goal/GoalQuestions.tsx:819
+#: src/features/Goal/GoalQuestions.tsx:849
 #. js-lingui-explicit-id
 msgid "So, in the first week you will learn:"
 msgstr "Yani, ilk hafta öğrenecekleriniz:"
 
-#: src/features/Goal/GoalQuestions.tsx:837
+#: src/features/Goal/GoalQuestions.tsx:867
 #. js-lingui-explicit-id
 msgid "New words:"
 msgstr "Yeni kelimeler:"
 
-#: src/features/Goal/GoalQuestions.tsx:840
+#: src/features/Goal/GoalQuestions.tsx:870
 #. js-lingui-explicit-id
 msgid "Rules:"
 msgstr "Kurallar:"
 
-#: src/features/Goal/GoalQuestions.tsx:880
+#: src/features/Goal/GoalQuestions.tsx:910
 #. js-lingui-explicit-id
 msgid "This is what you can achieve in 3 months!"
 msgstr "3 ay içinde bunları başarabilirsiniz!"
 
-#: src/features/Goal/GoalQuestions.tsx:899
+#: src/features/Goal/GoalQuestions.tsx:929
 #. js-lingui-explicit-id
 msgid "Confident Communication"
 msgstr "Özgüvenli İletişim"
 
-#: src/features/Goal/GoalQuestions.tsx:901
+#: src/features/Goal/GoalQuestions.tsx:931
 #. js-lingui-explicit-id
 msgid "Practice speaking and listening without stress"
 msgstr "Stres yapmadan konuşma ve dinleme pratiği yapın"
 
-#: src/features/Goal/GoalQuestions.tsx:906
+#: src/features/Goal/GoalQuestions.tsx:936
 #. js-lingui-explicit-id
 msgid "Expanded Vocabulary"
 msgstr "Genişletilmiş Kelime Dağarcığı"
 
-#: src/features/Goal/GoalQuestions.tsx:908
+#: src/features/Goal/GoalQuestions.tsx:938
 #. js-lingui-explicit-id
 msgid "Frequently used words and useful phrases"
 msgstr "Sık kullanılan kelimeler ve kullanışlı ifadeler"
 
-#: src/features/Goal/GoalQuestions.tsx:1030
+#: src/features/Goal/GoalQuestions.tsx:1055
 #. js-lingui-explicit-id
 msgid "Submitted"
 msgstr "Gönderildi"
 
-#: src/features/Goal/GoalQuestions.tsx:1041
+#: src/features/Goal/GoalQuestions.tsx:1066
 #. js-lingui-explicit-id
 msgid "Your plan is being processed with AI"
 msgstr "Planınız AI ile işleniyor"
 
-#: src/features/Goal/GoalQuestions.tsx:1071
+#: src/features/Goal/GoalQuestions.tsx:1096
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "Kopyalandı"
 
-#: src/features/Goal/GoalQuestions.tsx:1071
+#: src/features/Goal/GoalQuestions.tsx:1096
 #. js-lingui-explicit-id
 msgid "Copy link"
 msgstr "Bağlantıyı kopyala"
 
-#: src/features/Goal/GoalQuestions.tsx:1084
+#: src/features/Goal/GoalQuestions.tsx:1109
 #. js-lingui-explicit-id
 msgid "Open a plan"
 msgstr "Bir plan açın"
@@ -5961,6 +5963,20 @@ msgstr "Google ile devam et"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "Bir hesap oluşturarak, şunları kabul edersiniz:"
+
+#: src/features/Goal/GoalQuestions.tsx:533
+#. js-lingui-explicit-id
+#~ msgid "Details"
+#~ msgstr "Detaylar"
+
+#: src/features/Goal/GoalQuestions.tsx:534
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Describe what you want to achieve, and AI will build a custom plan. More "
+#~ "info means better results."
+#~ msgstr ""
+#~ "Ne başarmak istediğinizi tanımlayın ve AI sizin için özel bir plan "
+#~ "oluşturacak. Daha fazla bilgi, daha iyi sonuçlar anlamına gelir."
 
 #: src/features/Goal/GoalQuestions.tsx:795
 #. js-lingui-explicit-id
