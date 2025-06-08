@@ -36,7 +36,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         maxWidth: maxLandingWidth,
         padding: "150px 10px 80px 10px",
         height: "max-content",
-        minHeight: "80vh",
+        minHeight: "70vh",
 
         boxSizing: "border-box",
         alignItems: "center",
