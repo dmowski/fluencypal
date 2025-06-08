@@ -55,7 +55,7 @@ export const RulesToLearn: React.FC = () => {
           }}
         >
           <Markdown
-            size="conversation"
+            variant="conversation"
             onWordClick={(word) => {
               translator.translateWithModal(word);
             }}

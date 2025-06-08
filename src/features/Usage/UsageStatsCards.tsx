@@ -253,7 +253,7 @@ export const UsageStatsCards = () => {
                             >
                               {isBot ? i18n._("Teacher:") : i18n._("You:")}
                             </Typography>
-                            <Markdown size="small">{message.text || ""}</Markdown>
+                            <Markdown variant="small">{message.text || ""}</Markdown>
                           </Stack>
                         );
                       })}

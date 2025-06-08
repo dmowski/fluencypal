@@ -93,7 +93,7 @@ export const HomeworkCard = () => {
                   {new Date(homework.createdAt).toLocaleDateString()}
                 </Typography>
                 <Stack sx={{ opacity: 0.9 }}>
-                  <Markdown size="small">{homework.homework}</Markdown>
+                  <Markdown variant="small">{homework.homework}</Markdown>
                 </Stack>
 
                 <Stack

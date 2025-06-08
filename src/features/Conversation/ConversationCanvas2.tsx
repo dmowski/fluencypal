@@ -283,7 +283,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           >
             <Stack className={`decor-text ${!helpMessage ? "loading-shimmer" : ""}`}>
               <Markdown
-                size="conversation"
+                variant="conversation"
                 onWordClick={
                   translator.isTranslateAvailable
                     ? (word) => translator.translateWithModal(word)
@@ -477,7 +477,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                             }
                           : undefined
                       }
-                      size="conversation"
+                      variant="conversation"
                     >
                       {message.text || ""}
                     </Markdown>

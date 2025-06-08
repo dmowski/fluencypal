@@ -266,7 +266,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     },
                   }}
                 >
-                  <Markdown size="small">{`${item.contentPage}`}</Markdown>
+                  <Markdown variant="small">{`${item.contentPage}`}</Markdown>
 
                   {item.youTubeVideoUrl && (
                     <iframe

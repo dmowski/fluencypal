@@ -95,7 +95,7 @@ export const useTranslate = () => {
                 alignItems: "center",
               }}
             >
-              <Markdown size="conversation">
+              <Markdown variant="conversation">
                 {translatedText?.source ||
                   (isTranslating ? i18n._("Loading...") : i18n._("No text to translate"))}
               </Markdown>
@@ -108,7 +108,7 @@ export const useTranslate = () => {
 
             <ArrowDown size={"18px"} color="rgba(180, 180, 180, 1)" />
 
-            <Markdown size="conversation">
+            <Markdown variant="conversation">
               {translatedText?.translated ||
                 (isTranslating ? "..." : i18n._("No translation available"))}
             </Markdown>

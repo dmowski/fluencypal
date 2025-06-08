@@ -5,6 +5,8 @@ import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
 import { Check, ChevronRight, Mic, Trash } from "lucide-react";
+import { useTranslate } from "@/features/Translation/useTranslate";
+import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 
 export const DescribeImageScreen = ({
   question,
@@ -18,6 +20,7 @@ export const DescribeImageScreen = ({
   const [answerDescription, setAnswerDescription] = useState<string | null>(null);
   const recorder = useAudioRecorder();
   const [isUseMicrophone, setIsUseMicrophone] = useState<boolean>(false);
+  const translator = useTranslate();
   useEffect(() => {
     setIsCorrect(null);
     setTextAnswer("");
@@ -49,6 +52,7 @@ export const DescribeImageScreen = ({
         height: "100%",
       }}
     >
+      {translator.translateModal}
       <Stack
         className="content"
         sx={{
@@ -121,14 +125,18 @@ export const DescribeImageScreen = ({
           )}
 
           {recorder.transcription && (
-            <Typography
-              variant="body2"
-              sx={{
-                width: "100%",
-              }}
+            <Markdown
+              onWordClick={
+                translator.isTranslateAvailable
+                  ? (word) => {
+                      translator.translateWithModal(word);
+                    }
+                  : undefined
+              }
+              variant="conversation"
             >
               {recorder.transcription}
-            </Typography>
+            </Markdown>
           )}
 
           {recorder.transcription && isCorrect === null && (
@@ -274,7 +282,20 @@ export const DescribeImageScreen = ({
                 >
                   {isCorrect ? i18n._("Correct!") : i18n._("Incorrect!")}
                 </Typography>
-                {answerDescription && <Typography>{answerDescription}</Typography>}
+                {answerDescription && (
+                  <Markdown
+                    onWordClick={
+                      translator.isTranslateAvailable
+                        ? (word) => {
+                            translator.translateWithModal(word);
+                          }
+                        : undefined
+                    }
+                    variant="conversation"
+                  >
+                    {answerDescription}
+                  </Markdown>
+                )}
               </Stack>
               <Button
                 variant="contained"

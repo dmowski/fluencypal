@@ -244,7 +244,7 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                     },
                   }}
                 >
-                  <Markdown size="small">{`${item.content}`}</Markdown>
+                  <Markdown variant="small">{`${item.content}`}</Markdown>
                   {item.contendElement && (
                     <Stack
                       sx={{

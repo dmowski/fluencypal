@@ -1,5 +1,5 @@
 import { GameQuestionScreenProps } from "./gameQuestionScreens/type";
-import { DescribeImageScreen } from "./gameQuestionScreens/DescribeImageScreen";
+import { DescribeImageScreen } from "./gameQuestionScreens/ImageScreen";
 import { WordScreen } from "./gameQuestionScreens/WordScreen";
 import { SentenceScreen } from "./gameQuestionScreens/SentenceScreen";
 

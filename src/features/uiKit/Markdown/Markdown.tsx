@@ -4,7 +4,7 @@ import React from "react";
 
 export interface MarkdownProps {
   children: string;
-  size?: "small" | "normal" | "conversation";
+  variant?: "small" | "normal" | "conversation";
   onWordClick?: (word: string) => void;
 }
 
@@ -280,11 +280,11 @@ const markdownComponentsConversation: MarkdownToJSX.Overrides = {
   },
 };
 
-export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, size }) => {
+export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, variant }) => {
   const styleComponents =
-    size === "small"
+    variant === "small"
       ? markdownComponentsSmall
-      : size === "conversation"
+      : variant === "conversation"
         ? markdownComponentsConversation
         : markdownComponents;
 
