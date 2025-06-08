@@ -21,12 +21,12 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import { sendCreateGoalRequest } from "@/app/api/goal/goalRequests";
 import { useIsWebView } from "../Auth/useIsWebView";
 import * as Sentry from "@sentry/nextjs";
-import { useLocalStorage } from "react-use";
 import { useRouter } from "next/navigation";
 import SignalStrengthIcon from "./SignalStrengthIcon";
 import { GradingProgressBar } from "../Dashboard/BrainCard";
 import { sleep } from "@/libs/sleep";
 import { useNativeRecorder } from "./useNativeRecorder";
+import { useGoalQuizForm } from "./useGoalQuizForm";
 
 const TermsComponent = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -83,33 +83,24 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   showTerms,
 }) => {
   const { i18n } = useLingui();
-  const [languageToLearnStore, setLanguageToLearn] = useLocalStorage<SupportedLanguage | null>(
-    "goalLanguageToLearn2",
-    defaultLang || "en"
-  );
 
-  const [minPerDaySelectedStore, setMinPerDaySelected] = useLocalStorage<string>(
-    "goalMinPerDay",
-    "10"
-  );
-  const minPerDaySelected = parseInt(minPerDaySelectedStore || "10");
+  const { data, updateData } = useGoalQuizForm({
+    step: 0,
+    description: "",
+    minPerDay: 10,
+    languageToLearn: defaultLang || "en",
+    nativeLanguage: lang || "en",
+    level: "A2",
+  });
 
-  const languageToLearn = languageToLearnStore || "en";
-
-  const [myNativeLanguageStore, setMyNativeLanguage] = useLocalStorage<SupportedLanguage | null>(
-    "goalLanguageToLearn",
-    lang || "en"
-  );
-  const myNativeLanguage = myNativeLanguageStore || "en";
   useEffect(() => {
-    setMyNativeLanguage(lang);
+    updateData({
+      nativeLanguage: lang || "en",
+    });
   }, [lang]);
 
   const { inWebView } = useIsWebView();
 
-  const [level, setLevel] = useLocalStorage<string>("goalLevel", "A2");
-
-  const [description, setDescription] = useLocalStorage<string>("goalDescription", "");
   const [showDescriptionError, setShowDescriptionError] = useState<boolean>(false);
 
   const [goalId, setGoalId] = useState<string | null>(null);
@@ -117,7 +108,9 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const updatePageLang = (value: SupportedLanguage) => {
-    setMyNativeLanguage(value);
+    updateData({
+      nativeLanguage: value,
+    });
     // update page
 
     const newPath = `${getUrlStart(value)}quiz`;
@@ -125,12 +118,14 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   };
 
   const updateDescription = (value: string) => {
-    setDescription(value);
+    updateData({
+      description: value,
+    });
     setShowDescriptionError(false);
   };
 
   const onSubmit = async () => {
-    if (!description || description.length < 100) {
+    if (!data.description || data.description.length < 100) {
       setShowDescriptionError(true);
       return;
     }
@@ -140,11 +135,11 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
 
     try {
       const requestResult = await sendCreateGoalRequest({
-        description: description || "",
-        languageToLearn: languageToLearn,
-        level: level || "A2",
-        minPerDaySelected,
-        nativeLanguageCode: myNativeLanguage,
+        description: data.description,
+        languageToLearn: data.languageToLearn,
+        level: data.level || "A2",
+        minPerDaySelected: data.minPerDay,
+        nativeLanguageCode: data.nativeLanguage,
       });
       setIsLoading(false);
       setIsSubmitted(true);
@@ -153,7 +148,9 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
       const url = new URL(window.location.href);
       url.searchParams.set("goalId", requestResult.id);
       window.history.pushState({}, "", url.toString());
-      setStep(0);
+      updateData({
+        step: 0,
+      });
     } catch (error) {
       alert(i18n._(`Something went wrong. Please try again`));
       setIsLoading(false);
@@ -180,12 +177,11 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     });
   };
 
-  const [stepStore, setStep] = useLocalStorage<number>("goalStep", 0);
-  const step = stepStore || 0;
-
   const onNext = () => {
-    if (step < maxSteps - 1) {
-      setStep(step + 1);
+    if (data.step < maxSteps - 1) {
+      updateData({
+        step: data.step + 1,
+      });
       sleep(40).then(() => {
         scrollTop();
       });
@@ -230,7 +226,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   };
 
   const recorder = useNativeRecorder({
-    lang: myNativeLanguage || languageToLearn,
+    lang: data.nativeLanguage || data.languageToLearn,
   });
 
   useEffect(() => {
@@ -238,7 +234,9 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
       return;
     }
 
-    setDescription(recorder.fullTranscript || "");
+    updateData({
+      description: recorder.fullTranscript || "",
+    });
   }, [recorder.fullTranscript, recorder.isRecording]);
 
   const langTranslations: Record<SupportedLanguage, string> = {
@@ -316,7 +314,14 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               </Typography>
               <GraduationCap size={"18px"} />
             </Stack>
-            <LangSelector value={languageToLearn} onChange={(lang) => setLanguageToLearn(lang)} />
+            <LangSelector
+              value={data.languageToLearn}
+              onChange={(lang) => {
+                updateData({
+                  languageToLearn: lang,
+                });
+              }}
+            />
           </Stack>
 
           <Stack
@@ -348,7 +353,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 {i18n._(`My native language`)}
               </Typography>
             </Stack>
-            <LangSelector value={myNativeLanguage} onChange={(lang) => updatePageLang(lang)} />
+            <LangSelector value={data.nativeLanguage} onChange={(lang) => updatePageLang(lang)} />
           </Stack>
 
           <Stack
@@ -386,7 +391,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
       ),
     },
     {
-      title: i18n._(`How well do you know`) + " " + `${langTranslations[languageToLearn]}?`,
+      title: i18n._(`How well do you know`) + " " + `${langTranslations[data.languageToLearn]}?`,
       subTitle: "",
       content: (
         <Stack
@@ -412,7 +417,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               }}
             >
               {levels.map((item, index) => {
-                const isSelected = level === item;
+                const isSelected = data.level === item;
                 const fullLabel = levelsMap[item];
                 return (
                   <Stack
@@ -431,7 +436,11 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                       color: "#111",
                     }}
                     component={"button"}
-                    onClick={() => setLevel(item)}
+                    onClick={() => {
+                      updateData({
+                        level: item,
+                      });
+                    }}
                     color={isSelected ? "info" : "default"}
                   >
                     <SignalStrengthIcon level={index} />
@@ -568,7 +577,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               )}
               variant="outlined"
               error={showDescriptionError}
-              value={description}
+              value={data.description}
               onChange={(e) => updateDescription(e.target.value)}
             />
 
@@ -588,7 +597,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                   ? i18n._(`Stop recording`)
                   : i18n._(`Record`) +
                     ` ` +
-                    `(${langTranslations[myNativeLanguage || languageToLearn]})`}
+                    `(${langTranslations[data.nativeLanguage || data.languageToLearn]})`}
               </Button>
             )}
 
@@ -612,7 +621,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                   minWidth: "70px",
                 }}
               >
-                {description?.length || 0} / 100
+                {data.description.length || 0} / 100
               </Typography>
             </Stack>
           </Stack>
@@ -652,7 +661,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               size="large"
               fullWidth
               endIcon={<ArrowRight />}
-              disabled={isLoading || !description || description.length < 100}
+              disabled={isLoading || !data.description || data.description.length < 100}
               onClick={() => {
                 recorder.stopRecording();
                 onNext();
@@ -736,7 +745,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 const labels = minsPerDayOptions[optionValue];
                 const fullLabel = labels[0];
                 const shortLabel = labels[1];
-                const isSelected = minPerDaySelected === optionValue;
+                const isSelected = data.minPerDay === optionValue;
                 return (
                   <Stack
                     key={item}
@@ -754,7 +763,11 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                       justifyContent: "space-between",
                     }}
                     component={"button"}
-                    onClick={() => setMinPerDaySelected(optionValue.toString())}
+                    onClick={() => {
+                      updateData({
+                        minPerDay: optionValue,
+                      });
+                    }}
                     color={isSelected ? "info" : "default"}
                   >
                     <Typography
@@ -825,7 +838,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             }}
           >
             <Typography variant="h6" align="left">
-              {i18n._(`New words:`)} <b>{1 * minPerDaySelected * 6}</b>
+              {i18n._(`New words:`)} <b>{data.minPerDay * 6}</b>
             </Typography>
             <Typography variant="h6" align="left">
               {i18n._(`Rules:`)} <b>{0.5 * 6}</b>
@@ -935,9 +948,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   ];
 
   const maxSteps = steps.length;
-  const currentStepIndex = stepStore || 0;
-  const progress = (currentStepIndex + 1) / maxSteps;
-  const currentStep = steps[step] || steps[0];
+  const progress = (data.step + 1) / maxSteps;
+  const currentStep = steps[data.step] || steps[0];
 
   const navigateToMainPage = () => {
     const newPath = `${getUrlStart(lang)}`;
@@ -964,9 +976,11 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
         >
           <IconButton
             onClick={() => {
-              const currentStep = stepStore || 0;
+              const currentStep = data.step || 0;
               if (currentStep > 0) {
-                setStep(currentStep - 1);
+                updateData({
+                  step: currentStep - 1,
+                });
                 scrollTop();
               } else {
                 navigateToMainPage();
