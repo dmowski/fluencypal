@@ -87,10 +87,7 @@ if (!isLocalhost && isWindow) {
       </head>
       <body>
         <ThemeProvider theme={darkTheme}>
-          <AppRouterCacheProvider options={{ key: "css" }}>
-            <CookiesPopup />
-            {children}
-          </AppRouterCacheProvider>
+          <AppRouterCacheProvider options={{ key: "css" }}>{children}</AppRouterCacheProvider>
         </ThemeProvider>
       </body>
     </html>
