@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SupportedLanguage } from "../Lang/lang";
+import { speechRecognitionLanguages, SupportedLanguage } from "../Lang/lang";
 
 import * as Sentry from "@sentry/nextjs";
 
@@ -51,7 +51,7 @@ export const useNativeRecorder = ({ lang }: { lang: SupportedLanguage }) => {
     try {
       const rec = new SpeechRec();
       setRecognizer(rec);
-      rec.lang = lang;
+      rec.lang = speechRecognitionLanguages[lang];
       rec.continuous = true;
       rec.onresult = (e: any) => {
         const fullResults: string[] = [];

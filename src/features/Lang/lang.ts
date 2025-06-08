@@ -178,6 +178,31 @@ export const fullEnglishLanguageName: Record<SupportedLanguage, string> = {
   be: "Belarusian",
 };
 
+export const speechRecognitionLanguages: Record<SupportedLanguage, string> = {
+  en: "en-US",
+  ru: "ru-RU",
+  de: "de-DE",
+  pl: "pl-PL",
+  uk: "uk-UA",
+  fr: "fr-FR",
+  es: "es-ES",
+  ar: "ar-SA",
+  id: "id-ID",
+  it: "it-IT",
+  ja: "ja-JP",
+  ko: "ko-KR",
+  ms: "ms-MY",
+  pt: "pt-PT",
+  th: "th-TH",
+  tr: "tr-TR",
+  vi: "vi-VN",
+  zh: "zh-CN",
+  da: "da-DK", // Danish
+  no: "nb-NO", // Norwegian
+  sv: "sv-SE", // Swedish
+  be: "uk-UA", // Belarusian
+};
+
 export const availableOnLabelMap: Record<SupportedLanguage, string> = {
   ru: "Доступно на русском",
   en: "Available in English",
