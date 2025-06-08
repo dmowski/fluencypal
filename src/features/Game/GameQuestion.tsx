@@ -1,7 +1,16 @@
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
 import { GameQuestionShort, GameQuestionType } from "./types";
 import { useEffect, useState } from "react";
-import { Check, CheckCheck, ChevronRight, Delete, Mic, ShieldAlert } from "lucide-react";
+import {
+  Check,
+  CheckCheck,
+  ChevronRight,
+  Delete,
+  Icon,
+  Mic,
+  ShieldAlert,
+  Trash,
+} from "lucide-react";
 import { useLingui } from "@lingui/react";
 import { useGame } from "./useGame";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
@@ -32,7 +41,7 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
     setTextAnswer("");
     setAnswerDescription(null);
     recorder.removeTranscript();
-    setIsUseMicrophone(Math.random() > 0.3);
+    setIsUseMicrophone(Math.random() > 0.1);
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
@@ -82,64 +91,171 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
               <img src={question.imageUrl} style={{ width: "100%", objectFit: "cover" }} />
               <Stack
                 sx={{
-                  flexDirection: "row",
+                  flexDirection: "column",
                   alignItems: "center",
+                  justifyContent: "center",
                   width: "100%",
                   gap: "10px",
                   boxSizing: "border-box",
+                  position: "fixed",
+                  bottom: "0px",
+                  padding: "15px 0px",
+                  display: isCorrect !== null ? "none" : "flex",
                 }}
               >
-                {isUseMicrophone ? (
-                  <Stack
+                {isSubmitting && (
+                  <Typography
+                    variant="caption"
                     sx={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
+                      opacity: 0.7,
                       width: "100%",
+                      maxWidth: "600px",
                     }}
                   >
-                    {recorder.isRecording ? (
-                      <>
-                        <Button
-                          startIcon={<Check />}
-                          variant="contained"
-                          onClick={() => recorder.stopRecording()}
-                        >
-                          {i18n._(`Stop recording`)}
-                        </Button>
-                      </>
-                    ) : (
+                    {i18n._(`Loading...`)}
+                  </Typography>
+                )}
+
+                {recorder.transcription ? (
+                  <Stack
+                    sx={{
+                      width: "100%",
+                      paddingTop: "10px",
+                      gap: "10px",
+                      alignItems: "flex-start",
+                      maxWidth: "600px",
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        paddingTop: "10px",
+                        opacity: 0.7,
+                        width: "100%",
+                      }}
+                    >
+                      {recorder.transcription}
+                    </Typography>
+
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        width: "100%",
+                        gap: "10px",
+                        boxSizing: "border-box",
+                        justifyContent: "space-between",
+                      }}
+                    >
                       <Button
-                        startIcon={<Mic />}
                         variant="contained"
-                        disabled={isCorrect !== null}
+                        disabled={
+                          isCorrect !== null ||
+                          isSubmitting ||
+                          recorder.isRecording ||
+                          !recorder?.transcription ||
+                          recorder.transcription.length < 3
+                        }
+                        onClick={() => handleAnswerSubmit(recorder?.transcription || "")}
+                      >
+                        {i18n._("Submit answer")}
+                      </Button>
+                      <IconButton
                         onClick={() => {
                           recorder.removeTranscript();
-                          recorder.startRecording({
-                            isGame: true,
-                          });
+                          recorder.cancelRecording();
                         }}
                       >
-                        {i18n._(`Record an answer`)}
-                      </Button>
-                    )}
-
-                    {recorder.visualizerComponent}
+                        <Trash size={20} />
+                      </IconButton>
+                    </Stack>
                   </Stack>
                 ) : (
                   <>
-                    <TextField
-                      value={textAnswer}
-                      onChange={(e) => setTextAnswer(e.target.value)}
-                      placeholder={i18n._("Describe the image")}
-                      fullWidth
-                      disabled={isSubmitting || isCorrect !== null}
-                    />
-                    <IconButton
-                      disabled={isSubmitting || textAnswer.length < 3}
-                      onClick={() => handleAnswerSubmit(textAnswer)}
-                    >
-                      <Check />
-                    </IconButton>
+                    {recorder.isTranscribing ? (
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          opacity: 0.7,
+                        }}
+                      >
+                        {i18n._(`Transcribing...`)}
+                      </Typography>
+                    ) : (
+                      <>
+                        <Stack
+                          sx={{
+                            flexDirection: "row",
+                            alignItems: "center",
+                            width: "100%",
+                            maxWidth: "600px",
+                            gap: "10px",
+                            boxSizing: "border-box",
+                          }}
+                        >
+                          {isUseMicrophone ? (
+                            <Stack
+                              sx={{
+                                flexDirection: "row",
+                                justifyContent: "space-between",
+                                width: "100%",
+                              }}
+                            >
+                              {recorder.isRecording ? (
+                                <>
+                                  <Button
+                                    startIcon={<Check />}
+                                    variant="contained"
+                                    onClick={() => recorder.stopRecording()}
+                                  >
+                                    {i18n._(`Done`)}
+                                  </Button>
+                                  {recorder.visualizerComponent}
+                                  <IconButton
+                                    onClick={() => {
+                                      recorder.cancelRecording();
+                                      recorder.removeTranscript();
+                                    }}
+                                  >
+                                    <Trash size={20} />
+                                  </IconButton>
+                                </>
+                              ) : (
+                                <Button
+                                  startIcon={<Mic />}
+                                  variant="contained"
+                                  disabled={isCorrect !== null}
+                                  onClick={() => {
+                                    recorder.removeTranscript();
+                                    recorder.startRecording({
+                                      isGame: true,
+                                    });
+                                  }}
+                                >
+                                  {i18n._(`Record an answer`)}
+                                </Button>
+                              )}
+                            </Stack>
+                          ) : (
+                            <>
+                              <TextField
+                                value={textAnswer}
+                                onChange={(e) => setTextAnswer(e.target.value)}
+                                placeholder={i18n._("Describe the image")}
+                                fullWidth
+                                disabled={isSubmitting || isCorrect !== null}
+                              />
+                              <IconButton
+                                disabled={isSubmitting || textAnswer.length < 3}
+                                onClick={() => handleAnswerSubmit(textAnswer)}
+                              >
+                                <Check />
+                              </IconButton>
+                            </>
+                          )}
+                        </Stack>
+                      </>
+                    )}
                   </>
                 )}
               </Stack>
@@ -154,80 +270,6 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
                 >
                   {i18n._(`Error: `) + recorder.error}
                 </Typography>
-              )}
-
-              {recorder.isTranscribing && (
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  {i18n._(`Transcribing...`)}
-                </Typography>
-              )}
-              {recorder.transcription && (
-                <Stack
-                  sx={{
-                    width: "100%",
-                    paddingTop: "10px",
-                    gap: "10px",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      paddingTop: "10px",
-                      opacity: 0.7,
-                      width: "100%",
-                    }}
-                  >
-                    {i18n._("Transcription:") + " " + recorder.transcription}
-                  </Typography>
-
-                  <Button
-                    variant="contained"
-                    disabled={
-                      isCorrect !== null ||
-                      isSubmitting ||
-                      recorder.isRecording ||
-                      !recorder?.transcription ||
-                      recorder.transcription.length < 3
-                    }
-                    onClick={() => handleAnswerSubmit(recorder?.transcription || "")}
-                  >
-                    {i18n._("Submit answer")}
-                  </Button>
-                </Stack>
-              )}
-
-              {isSubmitting && (
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  {i18n._(`Loading...`)}
-                </Typography>
-              )}
-              {isCorrect !== null && (
-                <Stack
-                  sx={{
-                    width: "100%",
-                  }}
-                >
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: isCorrect ? "#4ADE80" : "#F87171",
-                    }}
-                  >
-                    {isCorrect ? i18n._("Correct!") : i18n._("Incorrect!")}
-                  </Typography>
-                  <Typography>{answerDescription}</Typography>
-                </Stack>
               )}
             </Stack>
           </>
@@ -393,28 +435,63 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionP
       {isCorrect !== null && (
         <Stack
           sx={{
-            gap: "10px",
-            alignItems: "flex-start",
+            position: "fixed",
+            bottom: "0px",
+            left: "0px",
+            right: "0px",
+            display: "flex",
+            padding: "15px 5px 5px 5px",
+            backgroundColor: "rgba(12, 14, 12, .80)",
+            backdropFilter: "blur(9px)",
+            alignItems: "center",
           }}
         >
-          <Button
-            variant="contained"
-            endIcon={<ChevronRight />}
-            onClick={() => {
-              setIsCorrect(null);
-              onNext();
-            }}
+          <Stack
             sx={{
+              gap: "5px",
+              alignItems: "flex-start",
+              maxWidth: "600px",
               width: "100%",
             }}
           >
-            Next
-          </Button>
-          {game.myPosition && (
-            <Typography variant="body2">
-              {i18n._(`My Position:`)} {game.myPosition}
-            </Typography>
-          )}
+            {isCorrect !== null && question.type === "describe_image" && (
+              <Stack
+                sx={{
+                  width: "100%",
+                  paddingBottom: "30px",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: isCorrect ? "#4ADE80" : "#F87171",
+                  }}
+                >
+                  {isCorrect ? i18n._("Correct!") : i18n._("Incorrect!")}
+                </Typography>
+                {answerDescription && <Typography>{answerDescription}</Typography>}
+              </Stack>
+            )}
+            <Button
+              variant="contained"
+              size="large"
+              endIcon={<ChevronRight />}
+              onClick={() => {
+                setIsCorrect(null);
+                onNext();
+              }}
+              sx={{
+                width: "100%",
+              }}
+            >
+              Next
+            </Button>
+            {game.myPosition && (
+              <Typography variant="body2">
+                {i18n._(`My Position:`)} {game.myPosition}
+              </Typography>
+            )}
+          </Stack>
         </Stack>
       )}
 
