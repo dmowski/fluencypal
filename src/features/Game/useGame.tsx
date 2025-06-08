@@ -85,15 +85,15 @@ function useProvideGame(): GameContextType {
       },
       await auth.getToken()
     );
-    setQuestions((prev) => {
-      const newQuestions = generatedQuestions.filter(
-        (question) => !prev.some((q) => q.id === question.id)
-      );
-      return [...prev, ...newQuestions];
-    });
+
+    const uniqQuestions = generatedQuestions.filter(
+      (question) => !questions.some((q) => q.id === question.id) && !question.imageUrl
+    );
+
+    setQuestions(uniqQuestions);
     setActiveQuestion((prev) => {
       if (prev) return prev;
-      const randomArray = shuffleArray(generatedQuestions);
+      const randomArray = shuffleArray(uniqQuestions);
       const nextQuestion = randomArray[0] || null;
       return nextQuestion;
     });

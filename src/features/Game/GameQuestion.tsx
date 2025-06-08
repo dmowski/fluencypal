@@ -1,16 +1,7 @@
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
 import { GameQuestionShort, GameQuestionType } from "./types";
 import { useEffect, useState } from "react";
-import {
-  Check,
-  CheckCheck,
-  ChevronRight,
-  Delete,
-  Icon,
-  Mic,
-  ShieldAlert,
-  Trash,
-} from "lucide-react";
+import { Check, ChevronRight, Delete, Mic, ShieldAlert, Trash } from "lucide-react";
 import { useLingui } from "@lingui/react";
 import { useGame } from "./useGame";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
