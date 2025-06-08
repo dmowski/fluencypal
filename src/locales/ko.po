@@ -40,7 +40,7 @@ msgstr ""
 #: src/features/Usage/NoBalanceBlock.tsx:204
 #: src/features/Landing/PlanLandingBlock.tsx:590
 #: src/features/Header/HeaderStatic.tsx:10
-#: src/features/Dashboard/ConversationSelectCard.tsx:95
+#: src/features/Dashboard/ConversationSelectCard.tsx:94
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "연습"
@@ -425,7 +425,7 @@ msgstr "당신의 성과"
 #: src/features/Landing/PlanLandingBlock.tsx:104
 #: src/features/Dashboard/PlanDashboardCards.tsx:99
 #: src/features/Dashboard/PlanDashboardCards.tsx:309
-#: src/features/Dashboard/ConversationSelectCard.tsx:191
+#: src/features/Dashboard/ConversationSelectCard.tsx:177
 #. js-lingui-explicit-id
 msgid "Words"
 msgstr "단어들"
@@ -1691,8 +1691,8 @@ msgid "Send 6 messages to complete"
 msgstr "6개의 메시지를 완료하십시오"
 
 #: src/features/Plan/PlanCard.tsx:224
-#: src/features/Goal/GoalQuestions.tsx:568
-#: src/features/Goal/GoalQuestions.tsx:596
+#: src/features/Goal/GoalQuestions.tsx:592
+#: src/features/Goal/GoalQuestions.tsx:630
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -2005,7 +2005,7 @@ msgstr "학문적 성공을 위한 정식적인 글쓰기 기술을 개발하십
 #: src/features/Landing/PlanLandingBlock.tsx:102
 #: src/features/Dashboard/PlanDashboardCards.tsx:97
 #: src/features/Dashboard/PlanDashboardCards.tsx:249
-#: src/features/Dashboard/ConversationSelectCard.tsx:115
+#: src/features/Dashboard/ConversationSelectCard.tsx:114
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "대화"
@@ -2066,6 +2066,7 @@ msgid ""
 msgstr "당신의 온보딩에 기반하여, FluencyPal은 바로 당신만을 위한 맞춤형 학습 계획을 즉시 생성합니다."
 
 #: src/features/Landing/PlanLandingBlock.tsx:409
+#: src/features/Goal/GoalQuestions.tsx:856
 #. js-lingui-explicit-id
 msgid "Create a plan"
 msgstr "계획을 만드세요"
@@ -3035,324 +3036,319 @@ msgstr "이 양식을 제출함으로써, 당신은 우리의를 동의합니다
 msgid "and"
 msgstr "그리고"
 
-#: src/features/Goal/GoalQuestions.tsx:169
+#: src/features/Goal/GoalQuestions.tsx:165
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again"
 msgstr "문제가 발생했습니다. 다시 시도해 주세요."
 
-#: src/features/Goal/GoalQuestions.tsx:178
+#: src/features/Goal/GoalQuestions.tsx:174
 #. js-lingui-explicit-id
 msgid "I'm a beginner"
 msgstr "나는 초보자입니다"
 
-#: src/features/Goal/GoalQuestions.tsx:179
+#: src/features/Goal/GoalQuestions.tsx:175
 #. js-lingui-explicit-id
 msgid "I know a few simple words"
 msgstr "나는 몇 가지 간단한 단어를 알고 있습니다"
 
-#: src/features/Goal/GoalQuestions.tsx:180
+#: src/features/Goal/GoalQuestions.tsx:176
 #. js-lingui-explicit-id
 msgid "I can maintain a simple conversation"
 msgstr "나는 간단한 대화를 진행할 수 있습니다"
 
-#: src/features/Goal/GoalQuestions.tsx:181
+#: src/features/Goal/GoalQuestions.tsx:177
 #. js-lingui-explicit-id
 msgid "I can discuss various topics"
 msgstr "다양한 주제에 대해 토론할 수 있습니다"
 
-#: src/features/Goal/GoalQuestions.tsx:182
+#: src/features/Goal/GoalQuestions.tsx:178
 #. js-lingui-explicit-id
 msgid "I can discuss most topics in detail"
 msgstr "나는 대부분의 주제에 대해 자세히 논의할 수 있습니다"
 
-#: src/features/Goal/GoalQuestions.tsx:237
+#: src/features/Goal/GoalQuestions.tsx:233
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please try again."
 msgstr "텍스트 복사에 실패했습니다. 다시 시도해 주세요."
 
-#: src/features/Goal/GoalQuestions.tsx:244
+#: src/features/Goal/GoalQuestions.tsx:240
 #. js-lingui-explicit-id
 msgid "English"
 msgstr "영어"
 
-#: src/features/Goal/GoalQuestions.tsx:245
+#: src/features/Goal/GoalQuestions.tsx:241
 #. js-lingui-explicit-id
 msgid "Spanish"
 msgstr "스페인어"
 
-#: src/features/Goal/GoalQuestions.tsx:246
+#: src/features/Goal/GoalQuestions.tsx:242
 #. js-lingui-explicit-id
 msgid "Chinese"
 msgstr "중국어"
 
-#: src/features/Goal/GoalQuestions.tsx:247
+#: src/features/Goal/GoalQuestions.tsx:243
 #. js-lingui-explicit-id
 msgid "French"
 msgstr "프랑스어"
 
-#: src/features/Goal/GoalQuestions.tsx:248
+#: src/features/Goal/GoalQuestions.tsx:244
 #. js-lingui-explicit-id
 msgid "German"
 msgstr "독일어"
 
-#: src/features/Goal/GoalQuestions.tsx:249
+#: src/features/Goal/GoalQuestions.tsx:245
 #. js-lingui-explicit-id
 msgid "Japanese"
 msgstr "일본어"
 
-#: src/features/Goal/GoalQuestions.tsx:250
+#: src/features/Goal/GoalQuestions.tsx:246
 #. js-lingui-explicit-id
 msgid "Korean"
 msgstr "한국어"
 
-#: src/features/Goal/GoalQuestions.tsx:251
+#: src/features/Goal/GoalQuestions.tsx:247
 #. js-lingui-explicit-id
 msgid "Arabic"
 msgstr "아랍어"
 
-#: src/features/Goal/GoalQuestions.tsx:252
+#: src/features/Goal/GoalQuestions.tsx:248
 #. js-lingui-explicit-id
 msgid "Portuguese"
 msgstr "포르투갈어"
 
-#: src/features/Goal/GoalQuestions.tsx:254
+#: src/features/Goal/GoalQuestions.tsx:250
 #. js-lingui-explicit-id
 msgid "Italian"
 msgstr "이탈리아어"
 
-#: src/features/Goal/GoalQuestions.tsx:255
+#: src/features/Goal/GoalQuestions.tsx:251
 #. js-lingui-explicit-id
 msgid "Polish"
 msgstr "폴란드어"
 
-#: src/features/Goal/GoalQuestions.tsx:256
+#: src/features/Goal/GoalQuestions.tsx:252
 #. js-lingui-explicit-id
 msgid "Russian"
 msgstr "러시아어"
 
-#: src/features/Goal/GoalQuestions.tsx:258
+#: src/features/Goal/GoalQuestions.tsx:254
 #. js-lingui-explicit-id
 msgid "Ukrainian"
 msgstr "우크라이나어"
 
-#: src/features/Goal/GoalQuestions.tsx:259
+#: src/features/Goal/GoalQuestions.tsx:255
 #. js-lingui-explicit-id
 msgid "Indonesian"
 msgstr "인도네시아어"
 
-#: src/features/Goal/GoalQuestions.tsx:260
+#: src/features/Goal/GoalQuestions.tsx:256
 #. js-lingui-explicit-id
 msgid "Malay"
 msgstr "말레이어"
 
-#: src/features/Goal/GoalQuestions.tsx:261
+#: src/features/Goal/GoalQuestions.tsx:257
 #. js-lingui-explicit-id
 msgid "Thai"
 msgstr "타이"
 
-#: src/features/Goal/GoalQuestions.tsx:262
+#: src/features/Goal/GoalQuestions.tsx:258
 #. js-lingui-explicit-id
 msgid "Turkish"
 msgstr "터키어"
 
-#: src/features/Goal/GoalQuestions.tsx:263
+#: src/features/Goal/GoalQuestions.tsx:259
 #. js-lingui-explicit-id
 msgid "Vietnamese"
 msgstr "베트남어"
 
-#: src/features/Goal/GoalQuestions.tsx:264
+#: src/features/Goal/GoalQuestions.tsx:260
 #. js-lingui-explicit-id
 msgid "Danish"
 msgstr "댄마크어"
 
-#: src/features/Goal/GoalQuestions.tsx:265
+#: src/features/Goal/GoalQuestions.tsx:261
 #. js-lingui-explicit-id
 msgid "Norwegian"
 msgstr "노르웨이어"
 
-#: src/features/Goal/GoalQuestions.tsx:266
+#: src/features/Goal/GoalQuestions.tsx:262
 #. js-lingui-explicit-id
 msgid "Swedish"
 msgstr "스웨덴어"
 
-#: src/features/Goal/GoalQuestions.tsx:267
+#: src/features/Goal/GoalQuestions.tsx:263
 #. js-lingui-explicit-id
 msgid "Belarusian"
 msgstr "벨라루스어"
 
-#: src/features/Goal/GoalQuestions.tsx:271
+#: src/features/Goal/GoalQuestions.tsx:267
 #. js-lingui-explicit-id
 msgid "3 minutes per day"
 msgstr "하루에 3분"
 
-#: src/features/Goal/GoalQuestions.tsx:271
+#: src/features/Goal/GoalQuestions.tsx:267
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "쉬운"
 
-#: src/features/Goal/GoalQuestions.tsx:272
+#: src/features/Goal/GoalQuestions.tsx:268
 #. js-lingui-explicit-id
 msgid "10 minutes per day"
 msgstr "하루에 10분"
 
-#: src/features/Goal/GoalQuestions.tsx:272
+#: src/features/Goal/GoalQuestions.tsx:268
 #. js-lingui-explicit-id
 msgid "Good"
 msgstr "좋아요"
 
-#: src/features/Goal/GoalQuestions.tsx:273
+#: src/features/Goal/GoalQuestions.tsx:269
 #. js-lingui-explicit-id
 msgid "15 minutes per day"
 msgstr "하루에 15분"
 
-#: src/features/Goal/GoalQuestions.tsx:273
+#: src/features/Goal/GoalQuestions.tsx:269
 #. js-lingui-explicit-id
 msgid "Serious"
 msgstr "진지한"
 
-#: src/features/Goal/GoalQuestions.tsx:274
+#: src/features/Goal/GoalQuestions.tsx:270
 #. js-lingui-explicit-id
 msgid "20 minutes per day"
 msgstr "하루에 20분"
 
-#: src/features/Goal/GoalQuestions.tsx:274
+#: src/features/Goal/GoalQuestions.tsx:270
 #. js-lingui-explicit-id
 msgid "Intensive"
 msgstr "집중적인"
 
-#: src/features/Goal/GoalQuestions.tsx:279
+#: src/features/Goal/GoalQuestions.tsx:275
 #. js-lingui-explicit-id
 msgid "I want to learn..."
 msgstr "나는 배우고 싶어..."
 
-#: src/features/Goal/GoalQuestions.tsx:314
+#: src/features/Goal/GoalQuestions.tsx:310
 #. js-lingui-explicit-id
 msgid "Language to Learn"
 msgstr "배울 언어"
 
-#: src/features/Goal/GoalQuestions.tsx:347
+#: src/features/Goal/GoalQuestions.tsx:343
 #. js-lingui-explicit-id
 msgid "My native language"
 msgstr "나의 모국어"
 
-#: src/features/Goal/GoalQuestions.tsx:372
-#: src/features/Goal/GoalQuestions.tsx:453
-#: src/features/Goal/GoalQuestions.tsx:687
-#: src/features/Goal/GoalQuestions.tsx:739
+#: src/features/Goal/GoalQuestions.tsx:377
+#: src/features/Goal/GoalQuestions.tsx:467
+#: src/features/Goal/GoalQuestions.tsx:730
+#: src/features/Goal/GoalQuestions.tsx:791
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "다음"
 
-#: src/features/Goal/GoalQuestions.tsx:379
+#: src/features/Goal/GoalQuestions.tsx:384
 #. js-lingui-explicit-id
 msgid "How well do you know"
 msgstr "얼마나 잘 알고 있나요"
 
-#: src/features/Goal/GoalQuestions.tsx:461
+#: src/features/Goal/GoalQuestions.tsx:475
 #. js-lingui-explicit-id
 msgid "Details"
 msgstr "세부사항"
 
-#: src/features/Goal/GoalQuestions.tsx:462
+#: src/features/Goal/GoalQuestions.tsx:476
 #. js-lingui-explicit-id
 msgid ""
 "Describe what you want to achieve, and AI will build a custom plan. More "
 "info means better results."
 msgstr "원하는 목표를 기술하고 AI가 맞춤형 계획을 구축하겠습니다. 더 많은 정보는 더 좋은 결과를 가져옵니다."
 
-#: src/features/Goal/GoalQuestions.tsx:500
+#: src/features/Goal/GoalQuestions.tsx:514
 #. js-lingui-explicit-id
 msgid "About your goal"
 msgstr "당신의 목표에 대하여"
 
-#: src/features/Goal/GoalQuestions.tsx:516
+#: src/features/Goal/GoalQuestions.tsx:530
 #. js-lingui-explicit-id
 msgid ""
 "I want to learn English to travel. And I want to understand movies and "
 "songs."
 msgstr "나는 여행을 위해 영어를 배우고 싶습니다. 그리고 영화와 노래를 이해하고 싶습니다."
 
-#: src/features/Goal/GoalQuestions.tsx:535
+#: src/features/Goal/GoalQuestions.tsx:549
 #. js-lingui-explicit-id
 msgid "Write at least 100 characters for a sharper plan"
 msgstr "더욱 선명한 계획을 위해 최소한 100자를 작성하세요"
 
-#: src/features/Goal/GoalQuestions.tsx:576
+#: src/features/Goal/GoalQuestions.tsx:600
 #. js-lingui-explicit-id
 msgid "Let's decide at what pace we will study!"
 msgstr "우리가 어떤 속도로 공부할지 결정해봅시다!"
 
-#: src/features/Goal/GoalQuestions.tsx:603
+#: src/features/Goal/GoalQuestions.tsx:637
 #. js-lingui-explicit-id
 msgid "What is our daily goal?"
 msgstr "우리의 일일 목표는 무엇인가요?"
 
-#: src/features/Goal/GoalQuestions.tsx:695
+#: src/features/Goal/GoalQuestions.tsx:738
 #. js-lingui-explicit-id
 msgid "So, in the first week you will learn:"
 msgstr "그래서, 첫 번째 주에 배울 것은:"
 
-#: src/features/Goal/GoalQuestions.tsx:713
+#: src/features/Goal/GoalQuestions.tsx:756
 #. js-lingui-explicit-id
 msgid "New words:"
 msgstr "새로운 단어:"
 
-#: src/features/Goal/GoalQuestions.tsx:716
+#: src/features/Goal/GoalQuestions.tsx:759
 #. js-lingui-explicit-id
 msgid "Rules:"
 msgstr "규칙:"
 
-#: src/features/Goal/GoalQuestions.tsx:747
+#: src/features/Goal/GoalQuestions.tsx:799
 #. js-lingui-explicit-id
 msgid "This is what you can achieve in 3 months!"
 msgstr "이것은 3개월 동안 달성할 수 있는 것입니다!"
 
-#: src/features/Goal/GoalQuestions.tsx:766
+#: src/features/Goal/GoalQuestions.tsx:818
 #. js-lingui-explicit-id
 msgid "Confident Communication"
 msgstr "자신감 있는 커뮤니케이션"
 
-#: src/features/Goal/GoalQuestions.tsx:768
+#: src/features/Goal/GoalQuestions.tsx:820
 #. js-lingui-explicit-id
 msgid "Practice speaking and listening without stress"
 msgstr "스트레스 없이 말하기와 듣기를 연습하세요"
 
-#: src/features/Goal/GoalQuestions.tsx:773
+#: src/features/Goal/GoalQuestions.tsx:825
 #. js-lingui-explicit-id
 msgid "Expanded Vocabulary"
 msgstr "확장된 어휘"
 
-#: src/features/Goal/GoalQuestions.tsx:775
+#: src/features/Goal/GoalQuestions.tsx:827
 #. js-lingui-explicit-id
 msgid "Frequently used words and useful phrases"
 msgstr "자주 사용하는 단어와 유용한 구문"
 
-#: src/features/Goal/GoalQuestions.tsx:795
-#. js-lingui-explicit-id
-msgid "Crete a plan"
-msgstr "계획을 만드세요"
-
-#: src/features/Goal/GoalQuestions.tsx:892
+#: src/features/Goal/GoalQuestions.tsx:949
 #. js-lingui-explicit-id
 msgid "Submitted"
 msgstr "제출됨"
 
-#: src/features/Goal/GoalQuestions.tsx:903
+#: src/features/Goal/GoalQuestions.tsx:960
 #. js-lingui-explicit-id
 msgid "Your plan is being processed with AI"
 msgstr "당신의 계획이 AI로 처리되고 있습니다"
 
-#: src/features/Goal/GoalQuestions.tsx:933
+#: src/features/Goal/GoalQuestions.tsx:990
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "복사됨"
 
-#: src/features/Goal/GoalQuestions.tsx:933
+#: src/features/Goal/GoalQuestions.tsx:990
 #. js-lingui-explicit-id
 msgid "Copy link"
 msgstr "링크 복사"
 
-#: src/features/Goal/GoalQuestions.tsx:946
+#: src/features/Goal/GoalQuestions.tsx:1003
 #. js-lingui-explicit-id
 msgid "Open a plan"
 msgstr "계획을 열다"
@@ -3538,7 +3534,7 @@ msgid "Rule of the day"
 msgstr "오늘의 규칙"
 
 #: src/features/Dashboard/TasksCard.tsx:52
-#: src/features/Dashboard/ConversationSelectCard.tsx:168
+#: src/features/Dashboard/ConversationSelectCard.tsx:157
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "개인 맞춤형 문법 규칙 배우기"
@@ -3555,7 +3551,7 @@ msgid "New words"
 msgstr "새로운 단어"
 
 #: src/features/Dashboard/TasksCard.tsx:62
-#: src/features/Dashboard/ConversationSelectCard.tsx:192
+#: src/features/Dashboard/ConversationSelectCard.tsx:178
 #. js-lingui-explicit-id
 msgid "Practice new vocabulary with the AI"
 msgstr "AI와 함께 새로운 어휘 연습하기"
@@ -3608,10 +3604,10 @@ msgstr "대화를 통해 여행을 시작하세요!"
 #: src/features/Dashboard/PlanDashboardCards.tsx:255
 #: src/features/Dashboard/PlanDashboardCards.tsx:285
 #: src/features/Dashboard/PlanDashboardCards.tsx:315
-#: src/features/Dashboard/ConversationSelectCard.tsx:126
-#: src/features/Dashboard/ConversationSelectCard.tsx:152
-#: src/features/Dashboard/ConversationSelectCard.tsx:176
-#: src/features/Dashboard/ConversationSelectCard.tsx:200
+#: src/features/Dashboard/ConversationSelectCard.tsx:120
+#: src/features/Dashboard/ConversationSelectCard.tsx:141
+#: src/features/Dashboard/ConversationSelectCard.tsx:162
+#: src/features/Dashboard/ConversationSelectCard.tsx:183
 #. js-lingui-explicit-id
 msgid "Set the goal to start"
 msgstr "시작할 목표를 설정하십시오"
@@ -3624,7 +3620,7 @@ msgid "Recommended"
 msgstr "추천된"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:279
-#: src/features/Dashboard/ConversationSelectCard.tsx:167
+#: src/features/Dashboard/ConversationSelectCard.tsx:156
 #. js-lingui-explicit-id
 msgid "Rules"
 msgstr "규칙"
@@ -3732,37 +3728,37 @@ msgstr "학습의 목표를 설정하십시오"
 msgid "Start | 5 min"
 msgstr "시작 | 5분"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:116
+#: src/features/Dashboard/ConversationSelectCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
 msgstr "AI와 대화하면 AI가 당신에게 응답할 것입니다."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:137
+#: src/features/Dashboard/ConversationSelectCard.tsx:131
 #. js-lingui-explicit-id
 msgid "Start Talking"
 msgstr "말하기 시작하세요"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:141
+#: src/features/Dashboard/ConversationSelectCard.tsx:135
 #. js-lingui-explicit-id
 msgid "Beginner"
 msgstr "초급者"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:142
+#: src/features/Dashboard/ConversationSelectCard.tsx:136
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
 msgstr "AI가 대화를 이끌어갈 것입니다"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:163
+#: src/features/Dashboard/ConversationSelectCard.tsx:152
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "나를 안내해주세요"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:187
+#: src/features/Dashboard/ConversationSelectCard.tsx:173
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "규칙을 얻으세요"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:211
+#: src/features/Dashboard/ConversationSelectCard.tsx:194
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "어휘 늘리기"
@@ -5575,6 +5571,11 @@ msgstr "구글로 계속하기"
 #. js-lingui-explicit-id
 msgid "By creating an account, you agree to:"
 msgstr "계정을 생성함으로써 귀하는 다음에 동의하게 됩니다:"
+
+#: src/features/Goal/GoalQuestions.tsx:795
+#. js-lingui-explicit-id
+#~ msgid "Crete a plan"
+#~ msgstr "계획을 만드세요"
 
 #: src/features/Game/GameQuestion.tsx:49
 #. js-lingui-explicit-id
