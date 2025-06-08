@@ -531,10 +531,61 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     },
 
     {
-      title: i18n._(`Details`),
-      subTitle: i18n._(
-        `Describe what you want to achieve, and AI will build a custom plan. More info means better results.`
+      title: i18n._(`Describe what you want to achieve, and AI will build a custom plan.`),
+      subTitle: i18n._(`More info means better results.`),
+
+      content: (
+        <Stack
+          sx={{
+            width: "700px",
+            maxWidth: "100%",
+            paddingTop: "0px",
+          }}
+        >
+          <Typography variant="caption">
+            {i18n._(`Write at least 100 characters for a sharper plan`)}
+          </Typography>
+
+          <Stack
+            sx={{
+              padding: "50px 0 0 0",
+              flexDirection: "row",
+              gap: "10px",
+              alignItems: "center",
+              justifyContent: "space-between",
+              "@media (max-width: 900px)": {
+                position: "fixed",
+                width: "calc(100% - 20px)",
+                padding: "15px 10px",
+                bottom: "0px",
+                left: "0px",
+                right: "0px",
+                backgroundColor: "rgba(255, 255, 255, 0.73)",
+              },
+            }}
+          >
+            <Button
+              variant="contained"
+              size="large"
+              fullWidth
+              endIcon={<ArrowRight />}
+              onClick={() => {
+                onNext();
+              }}
+              sx={{
+                ...buttonStyle,
+              }}
+            >
+              {i18n._("Let's go")}
+            </Button>
+          </Stack>
+        </Stack>
       ),
+    },
+
+    {
+      title: i18n._(`About your goal`),
+      subTitle: i18n._(`Write at least 100 characters for a sharper plan`),
 
       content: (
         <Stack
@@ -549,30 +600,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               width: "100%",
               alignItems: "flex-start",
               gap: "10px",
-              paddingTop: "20px",
             }}
           >
-            <Stack
-              sx={{
-                alignItems: "center",
-                flexDirection: "row",
-                gap: "10px",
-                paddingLeft: "3px",
-              }}
-            >
-              <Typography
-                variant="h3"
-                align="left"
-                sx={{
-                  fontWeight: 500,
-                  fontSize: "1rem",
-                  boxSizing: "border-box",
-                  lineHeight: "1.1",
-                }}
-              >
-                {i18n._(`About your goal`)}
-              </Typography>
-            </Stack>
             <TextField
               sx={{
                 width: "100%",
@@ -623,10 +652,10 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 justifyContent: "space-between",
               }}
             >
-              <Typography variant="caption" color={showDescriptionError ? "error" : "text"}>
-                {showDescriptionError ? "‼️" : "💡"}{" "}
-                {i18n._(`Write at least 100 characters for a sharper plan`)}
-              </Typography>
+              <Typography
+                variant="caption"
+                color={showDescriptionError ? "error" : "text"}
+              ></Typography>
               <Typography
                 variant="caption"
                 align="right"
@@ -949,6 +978,11 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const progress = (currentStepIndex + 1) / maxSteps;
   const currentStep = steps[step] || steps[0];
 
+  const navigateToMainPage = () => {
+    const newPath = `${getUrlStart(lang)}`;
+    router.push(newPath);
+  };
+
   const goalPartUrl = `${getUrlStart(lang)}practice/?goalId=${goalId}`;
   const goalUrl = `https://www.fluencypal.com${goalPartUrl}`;
 
@@ -958,38 +992,28 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
         <Stack
           sx={{
             width: "100%",
-            padding: "0 20px 40px 0px",
+            padding: "0 0 5px 0px",
             boxSizing: "border-box",
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
-            marginLeft: stepStore ? "-60px" : "0",
-            gap: "20px",
-
-            "@media (max-width: 900px)": {
-              position: "absolute",
-              marginLeft: "0px",
-              gap: "10px",
-              top: "90px",
-              left: 0,
-              right: 0,
-              padding: "10px 20px 0 10px",
-            },
+            gap: "5px",
+            marginLeft: "-10px",
           }}
         >
-          {!!stepStore && stepStore > 0 && (
-            <IconButton
-              onClick={() => {
-                const currentStep = stepStore || 0;
-                if (currentStep > 0) {
-                  setStep(currentStep - 1);
-                  scrollTop();
-                }
-              }}
-            >
-              <ArrowLeft />
-            </IconButton>
-          )}
+          <IconButton
+            onClick={() => {
+              const currentStep = stepStore || 0;
+              if (currentStep > 0) {
+                setStep(currentStep - 1);
+                scrollTop();
+              } else {
+                navigateToMainPage();
+              }
+            }}
+          >
+            <ArrowLeft />
+          </IconButton>
 
           <Stack
             sx={{
