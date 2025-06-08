@@ -48,7 +48,6 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
         <main>
           <ConversationPage rolePlayInfo={rolePlayInfo} lang={supportedLang} />
         </main>
-        <CookiesPopup />
       </PracticeProvider>
     </LinguiClientProvider>
   );

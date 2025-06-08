@@ -3,7 +3,6 @@ import { Button, Link, Stack, Typography } from "@mui/material";
 import { setCookiesGDPR } from "../Firebase/init";
 import { useLocalStorage } from "react-use";
 import { useEffect, useState } from "react";
-import { useAuth } from "../Auth/useAuth";
 import { supportedLanguages } from "@/features/Lang/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { usePathname } from "next/navigation";
@@ -16,24 +15,22 @@ export const CookiesPopup = () => {
 
   const [isClosedStore, setClosedStore] = useLocalStorage("cookiesPopup_v1", false);
   const [isClosed, setClosed] = useState(true);
-  const auth = useAuth();
   const pathname = usePathname();
   const pathParts = pathname.split("/");
   const langPart = pathParts[1];
   const lang = supportedLanguages.find((l) => l === langPart) || "en";
-
   useEffect(() => {
     setClosed(isClosedStore || false);
   }, [isClosedStore]);
 
-  if (isClosed || auth.isAuthorized || auth.loading) return <></>;
+  if (isClosed) return <></>;
 
   const onReject = () => {
     console.log("onReject CookiesPopup");
     setCookiesGDPR(false);
     setClosedStore(true);
   };
-
+  console.log("CookiesPopup lang", lang);
   const onAccept = () => {
     console.log("onAccept CookiesPopup");
     setCookiesGDPR(true);
@@ -56,6 +53,7 @@ export const CookiesPopup = () => {
         borderTop: "1px solid rgba(0, 0, 0, 0.4)",
         zIndex: 9999999,
         boxSizing: "border-box",
+        maxWidth: "100dvw",
       }}
     >
       <Stack
@@ -66,6 +64,11 @@ export const CookiesPopup = () => {
           columnGap: "20px",
           alignItems: "center",
           padding: "0px 3px",
+          "@media (max-width: 600px)": {
+            flexDirection: "column",
+            rowGap: "10px",
+            padding: "10px 10px",
+          },
         }}
       >
         <Typography
@@ -102,14 +105,20 @@ export const CookiesPopup = () => {
             zIndex: 9999999,
             "@media (max-width: 600px)": {
               flexDirection: "column",
+              width: "100%",
             },
           }}
         >
           <Button
-            size="small"
+            size="large"
             variant="contained"
             onClick={() => {
               onAccept();
+            }}
+            sx={{
+              "@media (max-width: 600px)": {
+                width: "100%",
+              },
             }}
           >
             {ok}
