@@ -21,6 +21,7 @@ import {
   ExternalLink,
   GraduationCap,
   Icon,
+  Mic,
 } from "lucide-react";
 import { LangSelector } from "../Lang/LangSelector";
 import { lightTheme } from "../uiKit/theme";
@@ -233,6 +234,63 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
       alert(i18n._("Failed to copy text. Please try again."));
       Sentry.captureException(err);
       console.error("Failed to copy text: ", err);
+    }
+  };
+
+  const isWindow = typeof window !== "undefined";
+  const [recognizer, setRecognizer] = useState<any | null>(null);
+  const SpeechRec = isWindow ? window.SpeechRecognition || window.webkitSpeechRecognition : null;
+  const isAbleToRecord = !!SpeechRec;
+
+  const [isRecording, setIsRecording] = useState(false);
+
+  const stopRecording = () => {
+    if (recognizer) {
+      recognizer?.stop();
+    }
+    setIsRecording(false);
+  };
+
+  const startRecording = async () => {
+    if (!SpeechRec) {
+      return;
+    }
+
+    if (isRecording) {
+      stopRecording();
+      return;
+    }
+
+    setIsRecording(true);
+    try {
+      const rec = new SpeechRec();
+      setRecognizer(rec);
+      rec.continuous = true;
+      rec.onresult = (e: any) => {
+        const fullResults: string[] = [];
+        for (let i = 0; i < e.results.length; i++) {
+          fullResults.push(e.results?.[i]?.[0]?.transcript.trim() || "");
+        }
+        const resultString = fullResults.filter(Boolean).join(" ").trim();
+        setDescription(resultString);
+      };
+      rec.onerror = (e: any) => {
+        console.error("Speech recognition error: ", e);
+        alert(i18n._("Failed to recognize speech. Please try again."));
+        Sentry.captureException(e);
+        setIsRecording(false);
+      };
+      rec.onend = () => {
+        console.log("Speech recognition ended");
+        setIsRecording(false);
+      };
+      rec.start();
+    } catch (error) {
+      alert(i18n._("Failed to start recording. Please try again."));
+      Sentry.captureException(error);
+      console.error("Failed to start recording: ", error);
+      setIsRecording(false);
+      return;
     }
   };
 
@@ -522,6 +580,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 input: {
                   sx: {
                     padding: "15px 15px",
+                    borderRadius: isAbleToRecord ? "5px 5px 0 0" : "5px",
                   },
                 },
               }}
@@ -535,6 +594,25 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               value={description}
               onChange={(e) => updateDescription(e.target.value)}
             />
+
+            {isAbleToRecord && (
+              <Button
+                variant="outlined"
+                color={isRecording ? "error" : "primary"}
+                startIcon={<Mic />}
+                sx={{
+                  marginTop: "-11px",
+                  width: "100%",
+                  borderRadius: "0 0 5px 5px",
+                }}
+                onClick={() => {
+                  startRecording();
+                }}
+              >
+                {isRecording ? i18n._(`Stop recording`) : i18n._(`Record`)}
+              </Button>
+            )}
+
             <Stack
               sx={{
                 width: "100%",
@@ -584,7 +662,10 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               fullWidth
               endIcon={<ArrowRight />}
               disabled={isLoading || !description || description.length < 100}
-              onClick={onNext}
+              onClick={() => {
+                stopRecording();
+                onNext();
+              }}
               sx={{
                 ...buttonStyle,
               }}
