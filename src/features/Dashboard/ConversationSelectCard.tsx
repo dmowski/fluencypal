@@ -12,14 +12,12 @@ import { ConversationCard } from "./ConversationCard";
 import { usePlan } from "../Plan/usePlan";
 import { GoalQuestions } from "../Goal/GoalQuestions";
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { useLangClientLabels } from "../Lang/getLabelsClient";
 import { useSettings } from "../Settings/useSettings";
 
 export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();
   const words = useWords();
   const rules = useRules();
-  const langLabels = useLangClientLabels();
   const { i18n } = useLingui();
   const settings = useSettings();
   const plan = usePlan();
@@ -27,7 +25,9 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
 
   const [isShowOnboardingConfirmation, setIsShowOnboardingConfirmation] = useState(false);
 
-  const isPassOnboarding = isGoalSet;
+  if (!isGoalSet) {
+    return <></>;
+  }
 
   return (
     <DashboardCard>
@@ -55,7 +55,6 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
               showTerms={false}
               titleComponent="h5"
               defaultLang={settings.languageCode || "en"}
-              langLearnPlanLabels={langLabels.labelLearningPlan}
             />
           </Stack>
         </CustomModal>
@@ -114,15 +113,10 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
         <ConversationCard
           title={i18n._(`Conversation`)}
           subTitle={i18n._(`Talk to the AI and it will respond to you`)}
-          onClick={() =>
-            isPassOnboarding
-              ? aiConversation.startConversation({ mode: "talk" })
-              : setIsShowOnboardingConfirmation(true)
-          }
+          onClick={() => aiConversation.startConversation({ mode: "talk" })}
           startColor="#34D399"
           endColor="#3B82F6"
           bgColor="#A3E635"
-          disabled={!isPassOnboarding}
           disabledLabel={i18n._(`Set the goal to start`)}
           icon={
             <Stack>
@@ -140,15 +134,10 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
         <ConversationCard
           title={i18n._(`Beginner`)}
           subTitle={i18n._(`AI will lead you through the conversation`)}
-          onClick={() =>
-            isPassOnboarding
-              ? aiConversation.startConversation({ mode: "beginner" })
-              : setIsShowOnboardingConfirmation(true)
-          }
+          onClick={() => aiConversation.startConversation({ mode: "beginner" })}
           startColor="#FF6B6B"
           endColor="#FFD93D"
           bgColor="#5EEAD4"
-          disabled={!isPassOnboarding}
           disabledLabel={i18n._(`Set the goal to start`)}
           icon={
             <Stack>
@@ -166,13 +155,10 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
         <ConversationCard
           title={i18n._(`Rules`)}
           subTitle={i18n._(`Get a personal grammar rule to learn`)}
-          onClick={() =>
-            isPassOnboarding ? rules.getRules() : setIsShowOnboardingConfirmation(true)
-          }
+          onClick={() => rules.getRules()}
           startColor="#9d43a3"
           endColor="#086787"
           bgColor="#990000"
-          disabled={!isPassOnboarding}
           disabledLabel={i18n._(`Set the goal to start`)}
           icon={
             <Stack>
@@ -190,13 +176,10 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
         <ConversationCard
           title={i18n._(`Words`)}
           subTitle={i18n._(`Practice new vocabulary with the AI`)}
-          onClick={() =>
-            isPassOnboarding ? words.getNewWordsToLearn() : setIsShowOnboardingConfirmation(true)
-          }
+          onClick={() => words.getNewWordsToLearn()}
           startColor="#00BFFF"
           endColor="#086787"
           bgColor="#5EEAD4"
-          disabled={!isPassOnboarding}
           disabledLabel={i18n._(`Set the goal to start`)}
           icon={
             <Stack>

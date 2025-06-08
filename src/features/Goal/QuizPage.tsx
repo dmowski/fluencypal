@@ -32,7 +32,7 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
             paddingBottom: "40px",
             color: "#000",
             height: "max-content",
-            minHeight: "600px",
+            minHeight: "calc(100dvh - 140px)",
             maxHeight: "2000px",
             position: "relative",
             ".contactIll": {
@@ -57,6 +57,7 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
             sx={{
               width: "100%",
               maxWidth: maxContentWidth,
+
               padding: "60px 20px 250px 20px",
               gap: "40px",
               alignItems: "center",
@@ -72,7 +73,6 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
               <GoalQuestions
                 lang={lang}
                 showTerms
-                langLearnPlanLabels={getLangLearnPlanLabels(lang)}
                 titleComponent="h1"
                 defaultLang={defaultLangToLearn}
               />
@@ -80,7 +80,6 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
           </Stack>
         </Stack>
       </div>
-      <Footer lang={lang} />
     </Stack>
   );
 };

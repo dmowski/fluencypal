@@ -79,7 +79,6 @@ interface StepInfo {
 
 interface GoalQuestionsComponentProps {
   lang: SupportedLanguage;
-  langLearnPlanLabels: Record<SupportedLanguage, string>;
   titleComponent: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   defaultLang?: SupportedLanguage;
   showTerms: boolean;
@@ -87,7 +86,6 @@ interface GoalQuestionsComponentProps {
 const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   lang,
   titleComponent,
-  langLearnPlanLabels,
   defaultLang,
   showTerms,
 }) => {
@@ -113,8 +111,6 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   useEffect(() => {
     setMyNativeLanguage(lang);
   }, [lang]);
-
-  const title = langLearnPlanLabels[languageToLearn];
 
   const { inWebView } = useIsWebView();
 
@@ -357,6 +353,15 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               gap: "10px",
               alignItems: "center",
               justifyContent: "space-between",
+              "@media (max-width: 900px)": {
+                position: "fixed",
+                width: "calc(100% - 20px)",
+                padding: "15px 10px",
+                bottom: "0px",
+                left: "0px",
+                right: "0px",
+                backgroundColor: "rgba(255, 255, 255, 0.73)",
+              },
             }}
           >
             <Button
@@ -438,6 +443,15 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               gap: "10px",
               alignItems: "center",
               justifyContent: "space-between",
+              "@media (max-width: 900px)": {
+                position: "fixed",
+                width: "calc(100% - 20px)",
+                padding: "15px 10px",
+                bottom: "0px",
+                left: "0px",
+                right: "0px",
+                backgroundColor: "rgba(255, 255, 255, 0.73)",
+              },
             }}
           >
             <Button
@@ -553,11 +567,21 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               gap: "10px",
               alignItems: "center",
               justifyContent: "space-between",
+              "@media (max-width: 900px)": {
+                position: "fixed",
+                width: "calc(100% - 20px)",
+                padding: "15px 10px",
+                bottom: "0px",
+                left: "0px",
+                right: "0px",
+                backgroundColor: "rgba(255, 255, 255, 0.73)",
+              },
             }}
           >
             <Button
               variant="contained"
               size="large"
+              fullWidth
               endIcon={<ArrowRight />}
               disabled={isLoading || !description || description.length < 100}
               onClick={onNext}
@@ -582,11 +606,21 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             maxWidth: "100%",
             paddingTop: "20px",
             alignItems: "flex-start",
+            "@media (max-width: 900px)": {
+              position: "fixed",
+              width: "calc(100% - 20px)",
+              padding: "15px 10px",
+              bottom: "0px",
+              left: "0px",
+              right: "0px",
+              backgroundColor: "rgba(255, 255, 255, 0.73)",
+            },
           }}
         >
           <Button
             variant="contained"
             size="large"
+            fullWidth
             endIcon={<ArrowRight />}
             onClick={onNext}
             sx={{
@@ -672,6 +706,15 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               gap: "10px",
               alignItems: "center",
               justifyContent: "space-between",
+              "@media (max-width: 900px)": {
+                position: "fixed",
+                width: "calc(100% - 20px)",
+                padding: "15px 10px",
+                bottom: "0px",
+                left: "0px",
+                right: "0px",
+                backgroundColor: "rgba(255, 255, 255, 0.73)",
+              },
             }}
           >
             <Button
@@ -724,6 +767,15 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               gap: "10px",
               alignItems: "center",
               justifyContent: "space-between",
+              "@media (max-width: 900px)": {
+                position: "fixed",
+                width: "calc(100% - 20px)",
+                padding: "15px 10px",
+                bottom: "0px",
+                left: "0px",
+                right: "0px",
+                backgroundColor: "rgba(255, 255, 255, 0.73)",
+              },
             }}
           >
             <Button
@@ -779,7 +831,16 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
           <Stack
             sx={{
               padding: "50px 0 0 0",
-              gap: "10px",
+              gap: "5px",
+              "@media (max-width: 900px)": {
+                position: "fixed",
+                width: "calc(100% - 20px)",
+                padding: "15px 10px",
+                bottom: "0px",
+                left: "0px",
+                right: "0px",
+                backgroundColor: "rgba(255, 255, 255, 0.73)",
+              },
             }}
           >
             <Button
@@ -792,7 +853,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 ...buttonStyle,
               }}
             >
-              {i18n._("Crete a plan")}
+              {i18n._("Create a plan")}
             </Button>
             {showTerms && <TermsComponent lang={lang} />}
           </Stack>
@@ -810,11 +871,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const goalUrl = `https://www.fluencypal.com${goalPartUrl}`;
 
   return (
-    <Stack
-      sx={{
-        backgroundColor: "transparent",
-      }}
-    >
+    <Stack sx={{}}>
       {!isLoading && !isSubmitted && (
         <Stack
           sx={{
@@ -958,7 +1015,6 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
 
 export const GoalQuestions: FC<GoalQuestionsComponentProps> = ({
   lang,
-  langLearnPlanLabels,
   titleComponent,
   defaultLang,
   showTerms,
@@ -968,7 +1024,6 @@ export const GoalQuestions: FC<GoalQuestionsComponentProps> = ({
       <GoalQuestionsComponent
         lang={lang}
         showTerms={showTerms}
-        langLearnPlanLabels={langLearnPlanLabels}
         titleComponent={titleComponent}
         defaultLang={defaultLang}
       />
