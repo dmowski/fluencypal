@@ -42,6 +42,7 @@ export const useAudioRecorder = () => {
     setTranscriptionError(null);
     if (!recordedAudioBlog) {
       setTranscription(null);
+      setIsTranscribing(false);
       return;
     }
 
@@ -75,6 +76,7 @@ export const useAudioRecorder = () => {
   };
 
   const stopRecording = async () => {
+    setIsTranscribing(true);
     recorderControls.stopRecording();
   };
 
