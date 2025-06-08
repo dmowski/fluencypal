@@ -481,6 +481,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                       width: "100%",
                       padding: "10px 25px 10px 15px",
                       cursor: "pointer",
+                      color: "#111",
                     }}
                     component={"button"}
                     onClick={() => setLevel(item)}
