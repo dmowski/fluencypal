@@ -87,9 +87,10 @@ function useProvideGame(): GameContextType {
     );
 
     const uniqQuestions = generatedQuestions.filter(
-      (question) => !questions.some((q) => q.id === question.id) && question.imageUrl
+      (question) => !questions.some((q) => q.id === question.id)
     );
 
+    console.log("uniqQuestions", uniqQuestions);
     setQuestions(uniqQuestions);
     setActiveQuestion((prev) => {
       if (prev) return prev;

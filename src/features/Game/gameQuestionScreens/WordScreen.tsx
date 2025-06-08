@@ -1,34 +1,24 @@
 import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useGame } from "../useGame";
-import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
-import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
-import { Check, ChevronRight, Mic, Trash } from "lucide-react";
+import { Button, Stack, Typography } from "@mui/material";
+import { Check, ChevronRight } from "lucide-react";
 
 export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const game = useGame();
-  const [textAnswer, setTextAnswer] = useState<string>("");
-  const [answerDescription, setAnswerDescription] = useState<string | null>(null);
-  const recorder = useAudioRecorder();
-  const [isUseMicrophone, setIsUseMicrophone] = useState<boolean>(false);
   useEffect(() => {
     setIsCorrect(null);
     setSelectedAnswer(null);
-    setTextAnswer("");
-    setAnswerDescription(null);
-    recorder.removeTranscript();
-    setIsUseMicrophone(Math.random() > 0.1);
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
-    const { isCorrect, description } = await onSubmitAnswer(question.id, answer);
+    const { isCorrect } = await onSubmitAnswer(question.id, answer);
     setIsSubmitting(false);
-    setAnswerDescription(description || null);
     setIsCorrect(isCorrect);
   };
 
