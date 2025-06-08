@@ -53,6 +53,7 @@ export const DescribeImageScreen = ({
         className="content"
         sx={{
           maxWidth: "600px",
+          width: "100%",
         }}
       >
         <Typography

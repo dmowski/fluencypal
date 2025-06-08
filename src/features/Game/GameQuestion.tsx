@@ -6,16 +6,15 @@ import { useLingui } from "@lingui/react";
 import { useGame } from "./useGame";
 import { GameQuestionScreenProps } from "./gameQuestionScreens/type";
 import { DescribeImageScreen } from "./gameQuestionScreens/DescribeImageScreen";
+import { WordScreen } from "./gameQuestionScreens/WordScreen";
 
 export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
   const game = useGame();
 
   useEffect(() => {
-    setSelectedAnswer(null);
     setIsCorrect(null);
     setSelectedWords([]);
   }, [question]);
@@ -43,6 +42,10 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionS
     );
   }
 
+  if (question.type === "translate") {
+    return <WordScreen question={question} onSubmitAnswer={onSubmitAnswer} onNext={onNext} />;
+  }
+
   return (
     <Stack
       sx={{
@@ -58,66 +61,6 @@ export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionS
         >
           {gameLabel}
         </Typography>
-
-        {question.type === "translate" && (
-          <>
-            <Typography variant="h4" className="decor-text">
-              {question.question}
-            </Typography>
-
-            <Stack>
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                  gap: "10px",
-                  paddingTop: "10px",
-                }}
-              >
-                {question.options.map((answer, index) => {
-                  const isCorrectOption =
-                    question.type === "translate" && isCorrect && selectedAnswer === answer;
-
-                  const isInCorrectOption =
-                    question.type === "translate" &&
-                    isCorrect === false &&
-                    selectedAnswer === answer;
-
-                  return (
-                    <Stack key={index} sx={{}}>
-                      <Button
-                        variant={selectedAnswer === answer ? "contained" : "outlined"}
-                        startIcon={isCorrectOption ? <Check /> : undefined}
-                        color={
-                          isCorrectOption ? "success" : isInCorrectOption ? "error" : "primary"
-                        }
-                        onClick={() => {
-                          if (isCorrect !== null) {
-                            return;
-                          }
-                          setSelectedAnswer(answer);
-                          handleAnswerSubmit(answer);
-                        }}
-                      >
-                        {answer}
-                      </Button>
-                    </Stack>
-                  );
-                })}
-              </Stack>
-              {isSubmitting && (
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.7,
-                  }}
-                >
-                  {i18n._(`Loading...`)}
-                </Typography>
-              )}
-            </Stack>
-          </>
-        )}
 
         {question.type === "sentence" && (
           <>
