@@ -224,27 +224,17 @@ export const GamePage = () => {
               <Stack
                 sx={{
                   minHeight: "100dvh",
-                  padding: "20px 10px",
+                  padding: "0",
                   boxSizing: "border-box",
                   alignItems: "center",
-                  justifyContent: "center",
-                  width: "100%",
+                  width: "100dvw",
                 }}
               >
-                <Stack
-                  sx={{
-                    minHeight: "min(400px, 80dvh)",
-                    maxWidth: "600px",
-                    width: "100%",
-                    boxSizing: "border-box",
-                  }}
-                >
-                  <GameQuestion
-                    question={game.activeQuestion}
-                    onNext={game.nextQuestion}
-                    onSubmitAnswer={game.submitAnswer}
-                  />
-                </Stack>
+                <GameQuestion
+                  question={game.activeQuestion}
+                  onNext={game.nextQuestion}
+                  onSubmitAnswer={game.submitAnswer}
+                />
               </Stack>
             </CustomModal>
           </Stack>
