@@ -526,7 +526,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               width: "100%",
               alignItems: "flex-end",
               "@media (max-width: 900px)": {
-                padding: "20px",
+                padding: "0 20px",
                 boxSizing: "border-box",
               },
             }}
@@ -537,9 +537,6 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   width: "800px",
                   maxWidth: "100%",
                   height: "auto",
-                },
-                "@media (max-width: 900px)": {
-                  transform: "scale(1.2)",
                 },
               }}
             >
