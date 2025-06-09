@@ -80,12 +80,14 @@ export const useAudioRecorder = () => {
     recorderControls.stopRecording();
   };
 
-  const cancelRecording = async () => {
-    isCancel.current = true;
-    recorderControls.stopRecording();
-  };
-
   const isRecording = recorderControls.isRecordingInProgress;
+
+  const cancelRecording = async () => {
+    if (isRecording) {
+      isCancel.current = true;
+      recorderControls.stopRecording();
+    }
+  };
 
   return {
     startRecording,

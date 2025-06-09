@@ -76,6 +76,12 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     }
   }, [aiConversation.isStarted]);
 
+  useEffect(() => {
+    if (aiConversation.isClosing) {
+      recorder.cancelRecording();
+    }
+  }, [aiConversation.isClosing]);
+
   if (auth.loading) {
     return <InfoBlockedSection title={i18n._(`Loading...`)} />;
   }
