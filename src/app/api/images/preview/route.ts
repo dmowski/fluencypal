@@ -22,6 +22,7 @@ export async function GET(request: Request) {
       <body>
         <h1>Image Previews (${imageDescriptions.length})</h1>
         ${imageDescriptions
+          .reverse()
           .map(
             (img) => `
           <div class="image-container">
