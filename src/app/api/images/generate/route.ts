@@ -1,4 +1,4 @@
-import { imageDescriptions } from "@/features/Game/ImagesServer";
+import { imageDescriptions } from "@/features/Game/ImagesDescriptions";
 import { generateImageBuffer } from "../generateImage";
 import { resizeImage } from "../resizeImage";
 import { uploadImage } from "../uploadImage";

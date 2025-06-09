@@ -2,7 +2,7 @@ import { GameQuestionShort, GameQuestionFull } from "@/features/Game/types";
 import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang";
 import { generateTextWithAi } from "../../../app/api/ai/generateTextWithAi";
 import { shuffleArray } from "@/libs/array";
-import { imageDescriptions } from "@/features/Game/ImagesServer";
+import { imageDescriptions } from "@/features/Game/ImagesDescriptions";
 
 interface QuestionOutput {
   fullQuestions: GameQuestionFull;

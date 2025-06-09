@@ -803,3 +803,4 @@ export const imageDescriptions: ImageDescription[] = imageDescriptionsRaw.map((d
   id: convertNameIntoId(desc.shortDescription),
   url: getPublicUrl(desc.shortDescription),
 }));
+// https://chatgpt.com/c/683d9852-9a14-8007-892c-757a7c4ba29c
