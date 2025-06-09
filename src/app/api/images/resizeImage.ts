@@ -1,7 +1,7 @@
 import sharp from "sharp";
 
 export const resizeImage = async (
-  imageBuffer: Buffer<ArrayBuffer>,
+  imageBuffer: Buffer<ArrayBuffer> | Buffer,
   size: number,
   extension: "webp" | "jpeg" | "png"
 ): Promise<Buffer<ArrayBufferLike>> => {

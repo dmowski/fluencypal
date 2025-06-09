@@ -733,7 +733,6 @@ const imageDescriptionsRaw: ImageDescriptionShort[] = [
       "A close-up of a 3D printer nozzle depositing filament as it builds a plastic object layer by layer",
   },
 
-  // Unusual or Abstract
   {
     shortDescription: "A silhouette of a person behind a curtain",
     fullImageDescription:
@@ -786,21 +785,325 @@ const imageDescriptionsRaw: ImageDescriptionShort[] = [
   },
 ];
 
-const convertNameIntoId = (name: string): string => {
+export const paintingVersionDescriptions: ImageDescriptionShort[] = [
+  {
+    shortDescription: "Mona Lisa by Leonardo da Vinci",
+    fullImageDescription:
+      "A portrait of a woman with a mysterious smile, sitting with folded hands against a hazy mountainous background",
+  },
+  {
+    shortDescription: "The Starry Night by Vincent van Gogh",
+    fullImageDescription:
+      "A swirling night sky filled with stars over a small village and tall cypress trees, painted in vibrant blues and yellows",
+  },
+  {
+    shortDescription: "The Persistence of Memory by Salvador Dalí",
+    fullImageDescription:
+      "A surreal landscape with melting clocks draped over branches and objects under a golden sky",
+  },
+  {
+    shortDescription: "Girl with a Pearl Earring by Johannes Vermeer",
+    fullImageDescription:
+      "A young girl turning her head toward the viewer, wearing a blue and gold turban and a large pearl earring",
+  },
+  {
+    shortDescription: "The Birth of Venus by Sandro Botticelli",
+    fullImageDescription:
+      "Venus, the goddess of love, standing on a seashell as she emerges from the ocean, surrounded by mythological figures",
+  },
+  {
+    shortDescription: "The Last Supper by Leonardo da Vinci",
+    fullImageDescription:
+      "Jesus and his twelve apostles gathered at a long table during their final meal, with dramatic expressions and gestures",
+  },
+  {
+    shortDescription: "The Scream by Edvard Munch",
+    fullImageDescription:
+      "A figure on a bridge holding its face and screaming under a swirling red-orange sky with a sense of existential panic",
+  },
+  {
+    shortDescription: "American Gothic by Grant Wood",
+    fullImageDescription:
+      "A stern farmer holding a pitchfork stands next to a woman in front of a farmhouse with a pointed window",
+  },
+  {
+    shortDescription: "The Creation of Adam by Michelangelo",
+    fullImageDescription:
+      "God reaching out to touch Adam’s hand with outstretched fingers, surrounded by angels on the ceiling of the Sistine Chapel",
+  },
+  {
+    shortDescription: "The Night Watch by Rembrandt",
+    fullImageDescription:
+      "A dynamic scene of a militia group in action, with dramatic lighting highlighting key figures in elaborate 17th-century attire",
+  },
+  {
+    shortDescription: "Water Lilies by Claude Monet",
+    fullImageDescription:
+      "A peaceful pond filled with floating water lilies, reflecting trees and sky in soft impressionist brushstrokes",
+  },
+  {
+    shortDescription: "Las Meninas by Diego Velázquez",
+    fullImageDescription:
+      "A complex scene showing the Spanish princess and her entourage, with the artist himself painting in the background",
+  },
+  {
+    shortDescription: "Whistler’s Mother by James McNeill Whistler",
+    fullImageDescription:
+      "An elderly woman in a long black dress sits in profile in a wooden chair beside a gray wall with a framed print",
+  },
+  {
+    shortDescription: "Liberty Leading the People by Eugène Delacroix",
+    fullImageDescription:
+      "A woman holding the French flag leads a group of revolutionaries over fallen bodies, symbolizing freedom and resistance",
+  },
+  {
+    shortDescription: "The Kiss by Gustav Klimt",
+    fullImageDescription:
+      "A couple locked in a passionate embrace, draped in golden, mosaic-like robes, with floral patterns surrounding them",
+  },
+  {
+    shortDescription: "Impression, Sunrise by Claude Monet",
+    fullImageDescription:
+      "A hazy seascape at dawn with a glowing orange sun reflected on the water, boats drifting in the mist",
+  },
+  {
+    shortDescription: "The Garden of Earthly Delights by Hieronymus Bosch",
+    fullImageDescription:
+      "A triptych painting showing a surreal world of paradise, temptation, and hell, filled with fantastical creatures",
+  },
+  {
+    shortDescription: "Bal du moulin de la Galette by Pierre-Auguste Renoir",
+    fullImageDescription:
+      "A lively outdoor dance scene in Paris with elegantly dressed people socializing under dappled sunlight",
+  },
+  {
+    shortDescription: "A Sunday on La Grande Jatte by Georges Seurat",
+    fullImageDescription:
+      "A park scene filled with people in Victorian attire relaxing by the river, painted in pointillist technique",
+  },
+  {
+    shortDescription: "Café Terrace at Night by Vincent van Gogh",
+    fullImageDescription:
+      "A brightly lit outdoor café with yellow lanterns under a deep blue starry night, people seated at tables along a cobblestone street",
+  },
+  {
+    shortDescription: "The Arnolfini Portrait by Jan van Eyck",
+    fullImageDescription:
+      "A man and woman standing in a richly decorated room, holding hands beside a convex mirror and a chandelier",
+  },
+  {
+    shortDescription: "Nighthawks by Edward Hopper",
+    fullImageDescription:
+      "A quiet, late-night diner scene with three customers and a server under glowing fluorescent light, viewed from the street corner",
+  },
+  {
+    shortDescription: "The Hay Wain by John Constable",
+    fullImageDescription:
+      "A horse-drawn cart moving through a shallow river in front of a rustic English cottage, surrounded by lush countryside",
+  },
+  {
+    shortDescription: "Portrait of Adele Bloch-Bauer I by Gustav Klimt",
+    fullImageDescription:
+      "A woman in an elaborate golden robe adorned with geometric patterns, sitting with calm elegance and a distant gaze",
+  },
+  {
+    shortDescription: "Christina’s World by Andrew Wyeth",
+    fullImageDescription:
+      "A woman lying in a vast field, looking toward a distant farmhouse, her body twisted with subtle tension",
+  },
+  {
+    shortDescription: "The Great Wave off Kanagawa by Hokusai",
+    fullImageDescription:
+      "A giant blue wave towering over boats, with Mount Fuji in the background, captured in traditional Japanese woodblock style",
+  },
+  {
+    shortDescription: "Ophelia by John Everett Millais",
+    fullImageDescription:
+      "A young woman floating in a stream surrounded by flowers and greenery, her face serene and lifeless",
+  },
+  {
+    shortDescription: "Libyan Sibyl by Michelangelo",
+    fullImageDescription:
+      "A muscular woman with twisting posture, turning pages of a large book, painted on the Sistine Chapel ceiling",
+  },
+  {
+    shortDescription: "The Sleeping Gypsy by Henri Rousseau",
+    fullImageDescription:
+      "A peaceful desert scene with a sleeping woman and a lion sniffing her, under a star-filled sky and glowing moon",
+  },
+  {
+    shortDescription: "Dance at Le Moulin de la Galette by Renoir",
+    fullImageDescription:
+      "A joyful crowd of Parisians dancing and chatting at a shaded garden party with dappled light filtering through the trees",
+  },
+  {
+    shortDescription: "Composition VIII by Wassily Kandinsky",
+    fullImageDescription:
+      "A colorful geometric abstraction with circles, lines, and angles intersecting on a pale background in rhythmic balance",
+  },
+  {
+    shortDescription: "Portrait of Dora Maar by Pablo Picasso",
+    fullImageDescription:
+      "A cubist depiction of a woman with fragmented facial features, vibrant colors, and distorted perspective",
+  },
+  {
+    shortDescription: "The Fighting Temeraire by J.M.W. Turner",
+    fullImageDescription:
+      "A majestic old warship being towed by a small steam tugboat during sunset, symbolizing the end of an era",
+  },
+  {
+    shortDescription: "Saturn Devouring His Son by Francisco Goya",
+    fullImageDescription:
+      "A terrifying image of a wild-eyed god devouring his child in a dark and chaotic background",
+  },
+  {
+    shortDescription: "Self-Portrait with Thorn Necklace and Hummingbird by Frida Kahlo",
+    fullImageDescription:
+      "A self-portrait of Kahlo with a thorn necklace, black cat and monkey behind her, and vibrant green foliage",
+  },
+
+  {
+    shortDescription: "Woman with a Parasol by Claude Monet",
+    fullImageDescription:
+      "A woman holding a parasol and looking back, standing in a breezy field with soft green grass and blue sky",
+  },
+  {
+    shortDescription: "The Card Players by Paul Cézanne",
+    fullImageDescription:
+      "Two peasant men focused on a game of cards at a wooden table, painted with heavy brushstrokes and earthy tones",
+  },
+  {
+    shortDescription: "Titanic – Jack and Rose on the ship’s bow",
+    fullImageDescription:
+      "A couple standing at the front of a massive ship, arms stretched out in the wind, with the ocean and sunset behind them",
+  },
+  {
+    shortDescription: "The Matrix – Bullet dodge scene",
+    fullImageDescription:
+      "A man in a long black coat leaning backwards in slow motion as bullets fly past him, with a green-tinted background",
+  },
+  {
+    shortDescription: "Pulp Fiction – The dance scene",
+    fullImageDescription:
+      "A man and woman dancing barefoot in a 1950s-style diner, performing quirky moves under stage lights",
+  },
+  {
+    shortDescription: "The Shining – 'Here’s Johnny!' moment",
+    fullImageDescription:
+      "A wild-eyed man peeking through a broken door with a sinister grin, splinters around his face",
+  },
+  {
+    shortDescription: "Forrest Gump – Running across America",
+    fullImageDescription:
+      "A man with a long beard running alone on a highway through the desert, followed by a group of people",
+  },
+  {
+    shortDescription: "Jurassic Park – T-Rex attack on the jeep",
+    fullImageDescription:
+      "A giant dinosaur roaring near a rain-soaked SUV at night, headlights illuminating terrified passengers",
+  },
+  {
+    shortDescription: "Star Wars – Luke gazing at twin suns",
+    fullImageDescription:
+      "A young man in a tunic looking out over a desert with two glowing suns setting in the distance",
+  },
+  {
+    shortDescription: "Rocky – Running up the Philadelphia steps",
+    fullImageDescription:
+      "A boxer jogging up stone steps and raising his arms in triumph, with a city skyline behind him",
+  },
+  {
+    shortDescription: "E.T. – The bicycle flying across the moon",
+    fullImageDescription:
+      "A child on a bicycle flying through the night sky with an alien in the basket, silhouetted against a full moon",
+  },
+  {
+    shortDescription: "Inception – Folding cityscape scene",
+    fullImageDescription:
+      "A surreal city skyline folding upward like a hinge, with characters walking calmly as buildings bend around them",
+  },
+  {
+    shortDescription: "Breakfast at Tiffany’s – Holly with cigarette holder",
+    fullImageDescription:
+      "A woman in a black dress and tiara holding a long cigarette holder, standing in front of a luxury jewelry store",
+  },
+  {
+    shortDescription: "The Lion King – Simba lifted on Pride Rock",
+    fullImageDescription:
+      "A lion cub held high above a cliff by a baboon as animals below cheer in a bright African sunrise",
+  },
+  {
+    shortDescription: "The Godfather – Don Corleone in the dark office",
+    fullImageDescription:
+      "An older man in a tuxedo sitting in a dimly lit room, petting a cat and speaking softly to a nervous visitor",
+  },
+  {
+    shortDescription: "Gladiator – 'Are you not entertained?' scene",
+    fullImageDescription:
+      "A gladiator standing in the center of a colosseum, arms outstretched, shouting toward the roaring crowd",
+  },
+  {
+    shortDescription: "La La Land – Dance on the hill at sunset",
+    fullImageDescription:
+      "A man and woman dancing together in silhouette on a hillside with the Los Angeles skyline at dusk",
+  },
+  {
+    shortDescription: "Avengers: Endgame – 'Avengers Assemble!' moment",
+    fullImageDescription:
+      "A group of superheroes charging into battle across a war-torn landscape, energy and power radiating around them",
+  },
+  {
+    shortDescription: "Harry Potter – Expecto Patronum by the lake",
+    fullImageDescription:
+      "A young wizard casting a glowing white animal-shaped spell to drive away dark ghostly creatures by a lake at night",
+  },
+  {
+    shortDescription: "The Lord of the Rings – Gandalf facing the Balrog",
+    fullImageDescription:
+      "A wizard standing on a stone bridge yelling 'You shall not pass!' at a massive fiery monster in a cave",
+  },
+  {
+    shortDescription: "Spider-Man – Upside-down kiss in the rain",
+    fullImageDescription:
+      "A masked hero hanging upside-down, sharing a kiss in the pouring rain with a woman holding his mask halfway up",
+  },
+  {
+    shortDescription: "Indiana Jones – Boulder chase scene",
+    fullImageDescription:
+      "An adventurer running down a cave tunnel while a giant stone boulder rolls after him, dust and debris flying",
+  },
+];
+
+export const convertNameIntoId = (name: string): string => {
   return name
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 };
 
-const getPublicUrl = (name: string): string => {
+export const getImagePublicUrl = (name: string, index?: string): string => {
   const id = convertNameIntoId(name);
-  return `https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2F${id}.webp?alt=media`;
+  return `https://firebasestorage.googleapis.com/v0/b/dark-lang.firebasestorage.app/o/publicImages%2F${id}${index ? `_` + index : ""}.webp?alt=media`;
 };
 
-export const imageDescriptions: ImageDescription[] = imageDescriptionsRaw.map((desc) => ({
+export const openAiImageDescriptions: ImageDescription[] = imageDescriptionsRaw.map((desc) => ({
   ...desc,
   id: convertNameIntoId(desc.shortDescription),
-  url: getPublicUrl(desc.shortDescription),
+  url: getImagePublicUrl(desc.shortDescription),
 }));
+
+export const paintingImageDescriptions: ImageDescription[] = paintingVersionDescriptions
+  .map((desc) => {
+    return [0, 1, 2, 3].map((index) => ({
+      ...desc,
+      id: convertNameIntoId(desc.shortDescription),
+      url: getImagePublicUrl(desc.shortDescription, `${index}`),
+    }));
+  })
+  .flat();
+
+export const imageDescriptions: ImageDescription[] = [
+  ...openAiImageDescriptions,
+  ...paintingImageDescriptions,
+];
 // https://chatgpt.com/c/683d9852-9a14-8007-892c-757a7c4ba29c
