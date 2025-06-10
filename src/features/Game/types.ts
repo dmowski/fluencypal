@@ -27,6 +27,9 @@ export interface GameProfile {
 // [UserName]: points
 export type GameUsersPoints = Record<string, number>;
 
+// [UserName]: last visit timestamp
+export type GameLastVisit = Record<string, number>;
+
 export interface UsersStat {
   username: string;
   points: number;

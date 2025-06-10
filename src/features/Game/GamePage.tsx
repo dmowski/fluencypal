@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { CheckIcon, PencilIcon, Swords } from "lucide-react";
 import { useSettings } from "../Settings/useSettings";
 import { fullEnglishLanguageName } from "../Lang/lang";
+import dayjs from "dayjs";
 
 export const GamePage = () => {
   const game = useGame();
@@ -171,6 +172,8 @@ export const GamePage = () => {
             {game.stats.map((stat, index) => {
               const isMe = stat.username === game.myProfile?.username;
               const top5 = index < 5;
+              const lastVisit = game.gameLastVisit ? game.gameLastVisit[stat.username] : null;
+              const lastVisitAgo = lastVisit ? dayjs(lastVisit).fromNow() : null;
               return (
                 <Stack
                   key={index}
@@ -195,7 +198,16 @@ export const GamePage = () => {
                     }}
                   >
                     <Typography variant="body2">{stat.username}</Typography>
-                    <Typography variant="caption"></Typography>
+                    {lastVisitAgo && (
+                      <Typography
+                        sx={{
+                          opacity: 0.7,
+                        }}
+                        variant="caption"
+                      >
+                        {lastVisitAgo}
+                      </Typography>
+                    )}
                   </Stack>
                   <Typography
                     variant="body2"

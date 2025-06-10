@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX, useState, useEffect, useMemo } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { GameProfile, GameQuestionShort, UsersStat } from "./types";
+import { GameLastVisit, GameProfile, GameQuestionShort, UsersStat } from "./types";
 import {
   getGameQuestionsRequest,
   getMyProfileRequest,
@@ -17,6 +17,7 @@ import { useSettings } from "../Settings/useSettings";
 import { shuffleArray } from "@/libs/array";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "../Firebase/db";
+import { setDoc } from "firebase/firestore";
 
 interface GameContextType {
   loadingProfile: boolean;
@@ -37,6 +38,7 @@ interface GameContextType {
   myPosition: number | null;
   isGameWinner: boolean;
   updateUsername: (username: string) => Promise<void>;
+  gameLastVisit: GameLastVisit | null;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -52,6 +54,7 @@ function useProvideGame(): GameContextType {
   const pathname = usePathname();
 
   const [gameRate] = useDocumentData(db.documents.gameRate);
+  const [gameLastVisit] = useDocumentData(db.documents.gameLastVisit);
   const stats = useMemo(() => {
     if (!gameRate) return [];
     return getSortedStatsFromData(gameRate);
@@ -60,6 +63,24 @@ function useProvideGame(): GameContextType {
   const nativeLanguageCodeFromUrl = useMemo(() => parseLangFromUrl(pathname), [pathname]);
   const [nativeLanguageCode, setNativeLanguageCode] =
     useLocalStorage<SupportedLanguage>("gameNativeLanguage_2");
+
+  const updateLastVisit = async () => {
+    if (!auth.uid || !myProfile?.username) return;
+    const doc = db.documents.gameLastVisit;
+    setDoc(
+      doc,
+      {
+        [myProfile.username]: Date.now(),
+      },
+      { merge: true }
+    );
+  };
+
+  useEffect(() => {
+    if (!auth.uid || !myProfile?.username) return;
+
+    updateLastVisit();
+  }, [auth.uid, myProfile?.username]);
 
   useEffect(() => {
     if (
@@ -104,6 +125,7 @@ function useProvideGame(): GameContextType {
     setLoadingQuestions(true);
     await loadMoreQuestions();
     setLoadingQuestions(false);
+    updateLastVisit();
   };
 
   useEffect(() => {
@@ -132,6 +154,7 @@ function useProvideGame(): GameContextType {
         loadMoreQuestions();
       }
     }
+    updateLastVisit();
     return { isCorrect, description };
   };
 
@@ -196,6 +219,7 @@ function useProvideGame(): GameContextType {
     nativeLanguageCode: nativeLanguageCode || null,
     setNativeLanguageCode,
     updateUsername,
+    gameLastVisit: gameLastVisit || null,
   };
 }
 
