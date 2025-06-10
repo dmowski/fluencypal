@@ -225,8 +225,10 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
       setIsCopied(true);
     } catch (err) {
       alert(i18n._("Failed to copy text. Please try again."));
-      Sentry.captureException(err);
+      const errString = `Failed to copy text: ${err}`;
+
       console.error("Failed to copy text: ", err);
+      Sentry.captureException(errString);
     }
   };
 
