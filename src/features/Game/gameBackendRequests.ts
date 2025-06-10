@@ -1,6 +1,5 @@
 import {
   GameProfile,
-  GameQuestionShort,
   GameUsersPoints,
   GetGameQuestionsResponse,
   UsersStat,
