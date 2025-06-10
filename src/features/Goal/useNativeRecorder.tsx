@@ -62,9 +62,30 @@ export const useNativeRecorder = ({ lang }: { lang: SupportedLanguage }) => {
         setFullTranscript(resultString);
       };
       rec.onerror = (e: any) => {
-        console.error("Speech recognition error: ", e);
-        setError(`Error during speech recognition. Try again.`);
-        Sentry.captureException(e);
+        try {
+          console.error("Speech recognition error: ", JSON.stringify(e));
+        } catch (error) {
+          console.error("Speech recognition error: ", e.toString?.() || e);
+        }
+
+        if (e instanceof SpeechRecognitionErrorEvent) {
+          if (e.error === "not-allowed") {
+            setError(`Speech recognition is not allowed. Please check your browser settings.`);
+          } else if (e.error === "no-speech") {
+            setError(`No speech detected. Please try speaking again.`);
+          } else if (e.error === "audio-capture") {
+            setError(`Audio capture failed. Please check your microphone.`);
+          } else {
+            setError(`An unknown error occurred: ${e.error}`);
+            console.error(`An unknown error occurred: ${e.error}`);
+            Sentry.captureException(e);
+          }
+        } else {
+          console.error(`An unknown error occurred: ${e.error}`);
+          setError(`An unexpected error occurred: ${e.message}`);
+          Sentry.captureException(e);
+        }
+
         setIsRecording(false);
       };
       rec.onend = () => {
