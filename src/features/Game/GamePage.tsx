@@ -188,13 +188,21 @@ export const GamePage = () => {
                       : "rgba(255, 255, 255, 0.04)",
                   }}
                 >
-                  <Typography variant="body2">
-                    {index + 1}. {stat.username}
-                  </Typography>
+                  <Typography variant="body2">{index + 1}.</Typography>
+                  <Stack
+                    sx={{
+                      width: "100%",
+                    }}
+                  >
+                    <Typography variant="body2">{stat.username}</Typography>
+                    <Typography variant="caption"></Typography>
+                  </Stack>
                   <Typography
                     variant="body2"
+                    align="right"
                     sx={{
                       fontWeight: 600,
+                      width: "100%",
                       color: top5 ? "primary.main" : "text.primary",
                       fontSize: top5 ? "1.2rem" : "0.8rem",
                     }}
