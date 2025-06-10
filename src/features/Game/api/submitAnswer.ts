@@ -45,11 +45,19 @@ Real image description is "${question.correctAnswer}"
 If user's description is somehow correct, start your answer with "true|" (case-insensitive).
 If user's description is completely incorrect, start your answer with "false|" (case-insensitive).
 
-After that, provide a brief explanation (1 short sentence using ${languageToLearn} language) of why the description is correct or incorrect.
+After that, provide a corrected version of user's description in ${languageToLearn} language.
+After corrected description, provide a brief explanation of why the description is correct or incorrect.
+
 Be polite and concise.
 Address the explanation to the user, using "You" or "Your" in ${languageToLearn} language.
 Then, if needed, provide a grammatically corrected version of the description in ${languageToLearn} language.
 User will see your answer.
+
+Structure your response like this:
+[true|false]|Grammatically corrected user's description in ${languageToLearn} language.|Your explanation in ${languageToLearn} language.
+
+Example of your response:
+true|A group of people is seen singing a song.|Your description is correct because it captures the essence of a group of friends singing.  
 
 `;
     console.log("systemMessage", systemMessage);
@@ -61,12 +69,14 @@ User will see your answer.
     console.log("AI Result:", aiResult.output);
 
     isCorrect = aiResult.output.toLowerCase().trim().startsWith("true");
+    console.log("aiResult.output", aiResult.output);
     const trimmedOutput = aiResult.output
       .trim()
       .replace(/^true/i, "")
       .replace(/^false/i, "")
       .trim()
       .replace(/^\|/, "");
+
     description = trimmedOutput || "No description provided by AI.";
   } else {
     isCorrect = question?.correctAnswer === data.answer;

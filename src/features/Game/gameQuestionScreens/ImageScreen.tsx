@@ -4,9 +4,10 @@ import { useGame } from "../useGame";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
-import { Check, ChevronRight, Mic, Trash } from "lucide-react";
+import { Check, ChevronRight, Icon, Mic, Trash } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
+import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 
 export const DescribeImageScreen = ({
   question,
@@ -18,6 +19,7 @@ export const DescribeImageScreen = ({
   const game = useGame();
   const [textAnswer, setTextAnswer] = useState<string>("");
   const [answerDescription, setAnswerDescription] = useState<string | null>(null);
+  const [answerCorrectedMessage, setAnswerCorrectedMessage] = useState<string | null>(null);
   const recorder = useAudioRecorder();
   const [isUseMicrophone, setIsUseMicrophone] = useState<boolean>(false);
   const translator = useTranslate();
@@ -25,6 +27,7 @@ export const DescribeImageScreen = ({
     setIsCorrect(null);
     setTextAnswer("");
     setAnswerDescription(null);
+    setAnswerCorrectedMessage(null);
     recorder.removeTranscript();
     setIsUseMicrophone(Math.random() > 0.1);
   }, [question]);
@@ -32,8 +35,17 @@ export const DescribeImageScreen = ({
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
     const { isCorrect, description } = await onSubmitAnswer(question.id, answer);
+
+    const splitDescription = (description || "").split("|");
+    if (splitDescription.length > 1) {
+      setAnswerCorrectedMessage(splitDescription[0].trim() || null);
+      setAnswerDescription(splitDescription[1].trim() || null);
+    } else {
+      setAnswerCorrectedMessage(null);
+      setAnswerDescription(description || null);
+    }
+
     setIsSubmitting(false);
-    setAnswerDescription(description || null);
     setIsCorrect(isCorrect);
   };
 
@@ -282,6 +294,35 @@ export const DescribeImageScreen = ({
                 >
                   {isCorrect ? i18n._("Correct!") : i18n._("Incorrect!")}
                 </Typography>
+                {answerCorrectedMessage && (
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      paddingBottom: "15px",
+                      gap: "10px",
+                    }}
+                  >
+                    <Markdown
+                      onWordClick={
+                        translator.isTranslateAvailable
+                          ? (word) => {
+                              translator.translateWithModal(word);
+                            }
+                          : undefined
+                      }
+                      variant="conversation"
+                    >
+                      {answerCorrectedMessage}
+                    </Markdown>
+                    <AudioPlayIcon
+                      text={answerCorrectedMessage}
+                      instructions="Calm and clear"
+                      voice={"coral"}
+                    />
+                  </Stack>
+                )}
+
                 {answerDescription && (
                   <Markdown
                     onWordClick={
