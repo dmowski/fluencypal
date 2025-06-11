@@ -42,7 +42,7 @@ export async function POST(request: Request) {
   const isGame = urlParams.get("isGame") === "true";
 
   if (!isGame && balance.balanceHours < 0.01 && !balance.isGameWinner) {
-    throw new Error("Insufficient balance ..");
+    console.error("Insufficient balance.");
   }
 
   const supportedLang =
