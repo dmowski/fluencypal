@@ -625,9 +625,9 @@ msgstr ""
 #: src/features/Usage/PaymentModal.tsx:627
 #: src/features/Translation/useTranslate.tsx:100
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:106
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:148
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:123
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:105
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:147
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:124
 #: src/features/Conversation/ConversationPage.tsx:86
 #: src/features/Conversation/ConversationPage.tsx:95
 #: src/features/Conversation/ConversationPage.tsx:108
@@ -2944,50 +2944,43 @@ msgid "Your position"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:56
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:55
 msgid "Translate the word"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:295
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:235
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:296
 msgid "Correct!"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:295
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:235
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:296
 msgid "Incorrect!"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:185
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:254
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:356
-msgid "My Position:"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:56
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:55
 msgid "Form a sentence"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:211
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:175
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:210
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:176
 msgid "Submit answer"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:81
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:249
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:82
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
 msgid "Describe the image"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:135
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:136
 #: src/features/Conversation/ConversationCanvas2.tsx:682
 #: src/features/Conversation/ConversationCanvas2.tsx:685
 #: src/features/Conversation/ConversationCanvas2.tsx:768
@@ -2996,18 +2989,18 @@ msgid "Transcribing..."
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:204
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:205
 #: src/features/Conversation/ConversationCanvas2.tsx:975
 msgid "Done"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:229
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:230
 msgid "Record an answer"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:270
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:271
 msgid "Error: "
 msgstr ""
 
@@ -4480,6 +4473,13 @@ msgid "By creating an account, you agree to:"
 msgstr ""
 
 #. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:185
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:254
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:356
+#~ msgid "My Position:"
+#~ msgstr ""
+
+#. js-lingui-explicit-id
 #: src/features/Game/GameBadge.tsx:45
 #~ msgid "Play and Learn"
 #~ msgstr ""
@@ -4716,8 +4716,21 @@ msgstr ""
 #~ msgid "I want to study..."
 #~ msgstr ""
 
+#. placeholder {0}: game.myPosition
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:18
+msgid "My Position: <0>{0}</0>"
+msgstr ""
+
 #: src/features/Game/GameBadge.tsx:46
 msgid "Play and Learn"
+msgstr ""
+
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:23
+#~ msgid "Points to reach next position ({nextUserUsername}): <0>{0}</0>"
+#~ msgstr ""
+
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:24
+msgid "Points to reach next position ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgstr ""
 
 #: src/features/Game/GameBadge.tsx:53

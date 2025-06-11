@@ -696,9 +696,9 @@ msgstr "Betalningshistorik:"
 #: src/features/Usage/PaymentModal.tsx:627
 #: src/features/Translation/useTranslate.tsx:100
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:106
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:148
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:123
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:105
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:147
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:124
 #: src/features/Conversation/ConversationPage.tsx:86
 #: src/features/Conversation/ConversationPage.tsx:95
 #: src/features/Conversation/ConversationPage.tsx:108
@@ -3585,50 +3585,43 @@ msgstr "Ranka bland de topp 5 för att få appen gratis"
 msgid "Your position"
 msgstr "Din position"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:56
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:55
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Översätt ordet"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:295
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:235
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:296
 #. js-lingui-explicit-id
 msgid "Correct!"
 msgstr "Korrekt!"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:295
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:235
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:296
 #. js-lingui-explicit-id
 msgid "Incorrect!"
 msgstr "Felaktigt!"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:185
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:254
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:356
-#. js-lingui-explicit-id
-msgid "My Position:"
-msgstr "Min Position:"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:56
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:55
 #. js-lingui-explicit-id
 msgid "Form a sentence"
 msgstr "Formulera en mening"
 
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:211
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:175
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:210
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:176
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Skicka svar"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:81
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:249
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:82
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "Beskriv bilden"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:135
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:136
 #: src/features/Conversation/ConversationCanvas2.tsx:682
 #: src/features/Conversation/ConversationCanvas2.tsx:685
 #: src/features/Conversation/ConversationCanvas2.tsx:768
@@ -3637,18 +3630,18 @@ msgstr "Beskriv bilden"
 msgid "Transcribing..."
 msgstr "Transkriberar..."
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:204
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:205
 #: src/features/Conversation/ConversationCanvas2.tsx:975
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Klar"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:229
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:230
 #. js-lingui-explicit-id
 msgid "Record an answer"
 msgstr "Spela in ett svar"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:270
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "Fel:"
@@ -5889,13 +5882,33 @@ msgstr "Fortsätt med Google"
 msgid "By creating an account, you agree to:"
 msgstr "Genom att skapa ett konto godkänner du:"
 
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:18
+#. placeholder {0}: game.myPosition
+msgid "My Position: <0>{0}</0>"
+msgstr "Min Position: <0>{0}</0>"
+
 #: src/features/Game/GameBadge.tsx:46
 msgid "Play and Learn"
 msgstr "Spela och Lär"
 
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:24
+msgid ""
+"Points to reach next position ({nextUserUsername}): "
+"<0>{pointsToNextPosition}</0>"
+msgstr ""
+"Poäng för att nå nästa position ({nextUserUsername}): "
+"<0>{pointsToNextPosition}</0>"
+
 #: src/features/Game/GameBadge.tsx:53
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "Ranka bland topp 5 för att få appen <0>gratis</0>"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:185
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:254
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:356
+#. js-lingui-explicit-id
+#~ msgid "My Position:"
+#~ msgstr "Min Position:"
 
 #: src/features/Game/GameBadge.tsx:45
 #. js-lingui-explicit-id
@@ -6161,3 +6174,7 @@ msgstr "Ranka bland topp 5 för att få appen <0>gratis</0>"
 #. js-lingui-explicit-id
 #~ msgid "I want to study..."
 #~ msgstr "Jag vill studera..."
+
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:23
+#~ msgid "Points to reach next position ({nextUserUsername}): <0>{0}</0>"
+#~ msgstr "Poäng för att nå nästa position ({nextUserUsername}): <0>{0}</0>"

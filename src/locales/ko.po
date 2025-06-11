@@ -676,9 +676,9 @@ msgstr "결제 내역:"
 #: src/features/Usage/PaymentModal.tsx:627
 #: src/features/Translation/useTranslate.tsx:100
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:106
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:148
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:123
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:105
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:147
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:124
 #: src/features/Conversation/ConversationPage.tsx:86
 #: src/features/Conversation/ConversationPage.tsx:95
 #: src/features/Conversation/ConversationPage.tsx:108
@@ -3411,50 +3411,43 @@ msgstr "상위 5위 안에 들면 앱을 무료로 받을 수 있습니다"
 msgid "Your position"
 msgstr "당신의 위치"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:56
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:55
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "단어를 번역하십시오"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:295
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:235
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:296
 #. js-lingui-explicit-id
 msgid "Correct!"
 msgstr "정확해요!"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:295
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:235
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:296
 #. js-lingui-explicit-id
 msgid "Incorrect!"
 msgstr "잘못되었습니다!"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:185
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:254
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:356
-#. js-lingui-explicit-id
-msgid "My Position:"
-msgstr "내 위치:"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:56
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:55
 #. js-lingui-explicit-id
 msgid "Form a sentence"
 msgstr "문장을 만드세요"
 
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:211
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:175
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:210
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:176
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "답변 제출"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:81
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:249
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:82
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "이미지를 설명하십시오"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:135
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:136
 #: src/features/Conversation/ConversationCanvas2.tsx:682
 #: src/features/Conversation/ConversationCanvas2.tsx:685
 #: src/features/Conversation/ConversationCanvas2.tsx:768
@@ -3463,18 +3456,18 @@ msgstr "이미지를 설명하십시오"
 msgid "Transcribing..."
 msgstr "전사 중..."
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:204
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:205
 #: src/features/Conversation/ConversationCanvas2.tsx:975
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "완료"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:229
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:230
 #. js-lingui-explicit-id
 msgid "Record an answer"
 msgstr "답변을 녹음하십시오"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:270
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "오류:"
@@ -5544,13 +5537,31 @@ msgstr "구글로 계속하기"
 msgid "By creating an account, you agree to:"
 msgstr "계정을 생성함으로써 귀하는 다음에 동의하게 됩니다:"
 
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:18
+#. placeholder {0}: game.myPosition
+msgid "My Position: <0>{0}</0>"
+msgstr "내 위치: <0>{0}</0>"
+
 #: src/features/Game/GameBadge.tsx:46
 msgid "Play and Learn"
 msgstr "플레이하며 배우기"
 
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:24
+msgid ""
+"Points to reach next position ({nextUserUsername}): "
+"<0>{pointsToNextPosition}</0>"
+msgstr "다음 위치에 도달하기 위한 점수 ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
+
 #: src/features/Game/GameBadge.tsx:53
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "상위 5위 이내에 들어 앱을 <0>무료로</0> 받으세요"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:185
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:254
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:356
+#. js-lingui-explicit-id
+#~ msgid "My Position:"
+#~ msgstr "내 위치:"
 
 #: src/features/Game/GameBadge.tsx:45
 #. js-lingui-explicit-id
@@ -5816,3 +5827,7 @@ msgstr "상위 5위 이내에 들어 앱을 <0>무료로</0> 받으세요"
 #. js-lingui-explicit-id
 #~ msgid "I want to study..."
 #~ msgstr "나는 공부하고 싶어..."
+
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:23
+#~ msgid "Points to reach next position ({nextUserUsername}): <0>{0}</0>"
+#~ msgstr "다음 위치에 도달하기 위한 점수 ({nextUserUsername}): <0>{0}</0>"

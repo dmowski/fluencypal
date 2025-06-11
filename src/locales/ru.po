@@ -701,9 +701,9 @@ msgstr "История платежей:"
 #: src/features/Usage/PaymentModal.tsx:627
 #: src/features/Translation/useTranslate.tsx:100
 #: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:106
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:148
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:123
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:105
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:147
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:124
 #: src/features/Conversation/ConversationPage.tsx:86
 #: src/features/Conversation/ConversationPage.tsx:95
 #: src/features/Conversation/ConversationPage.tsx:108
@@ -3595,50 +3595,43 @@ msgstr "Войдите в топ-5, чтобы получить приложен
 msgid "Your position"
 msgstr "Ваша позиция"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:56
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:55
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Переведите слово"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:295
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:235
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:296
 #. js-lingui-explicit-id
 msgid "Correct!"
 msgstr "Верно!"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:167
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:295
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:235
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:296
 #. js-lingui-explicit-id
 msgid "Incorrect!"
 msgstr "Неверно!"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:185
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:254
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:356
-#. js-lingui-explicit-id
-msgid "My Position:"
-msgstr "Моя Позиция:"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:56
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:55
 #. js-lingui-explicit-id
 msgid "Form a sentence"
 msgstr "Сформулируйте предложение"
 
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:211
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:175
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:210
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:176
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Отправить ответ"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:81
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:249
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:82
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "Опишите изображение"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:135
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:136
 #: src/features/Conversation/ConversationCanvas2.tsx:682
 #: src/features/Conversation/ConversationCanvas2.tsx:685
 #: src/features/Conversation/ConversationCanvas2.tsx:768
@@ -3647,18 +3640,18 @@ msgstr "Опишите изображение"
 msgid "Transcribing..."
 msgstr "Транскрибация..."
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:204
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:205
 #: src/features/Conversation/ConversationCanvas2.tsx:975
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Выполнено"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:229
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:230
 #. js-lingui-explicit-id
 msgid "Record an answer"
 msgstr "Записать ответ"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:270
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "Ошибка:"
@@ -5934,13 +5927,33 @@ msgstr "Продолжить с Google"
 msgid "By creating an account, you agree to:"
 msgstr "Создавая учетную запись, вы соглашаетесь с:"
 
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:18
+#. placeholder {0}: game.myPosition
+msgid "My Position: <0>{0}</0>"
+msgstr "Моя позиция: <0>{0}</0>"
+
 #: src/features/Game/GameBadge.tsx:46
 msgid "Play and Learn"
 msgstr "Играй и Учись"
 
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:24
+msgid ""
+"Points to reach next position ({nextUserUsername}): "
+"<0>{pointsToNextPosition}</0>"
+msgstr ""
+"Баллы для достижения следующей позиции ({nextUserUsername}): "
+"<0>{pointsToNextPosition}</0>"
+
 #: src/features/Game/GameBadge.tsx:53
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "Войдите в топ-5, чтобы получить приложение <0>бесплатно</0>"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:185
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:254
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:356
+#. js-lingui-explicit-id
+#~ msgid "My Position:"
+#~ msgstr "Моя Позиция:"
 
 #: src/features/Game/GameBadge.tsx:45
 #. js-lingui-explicit-id
@@ -6218,3 +6231,7 @@ msgstr "Войдите в топ-5, чтобы получить приложен
 #. js-lingui-explicit-id
 #~ msgid "I want to study..."
 #~ msgstr "Я хочу изучать..."
+
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:23
+#~ msgid "Points to reach next position ({nextUserUsername}): <0>{0}</0>"
+#~ msgstr "Баллы для достижения следующей позиции ({nextUserUsername}): <0>{0}</0>"
