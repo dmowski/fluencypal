@@ -113,7 +113,6 @@ function useProvideGame(): GameContextType {
       (question) => !questions.some((q) => q.id === question.id)
     );
 
-    console.log("uniqQuestions", uniqQuestions);
     setQuestions(uniqQuestions);
     setActiveQuestion((prev) => {
       if (prev) return prev;
@@ -181,12 +180,9 @@ function useProvideGame(): GameContextType {
     const myStat = stats.find((stat) => stat.username === myProfile.username);
     if (!myStat) return null;
     const myIndex = stats.findIndex((stat) => stat.username === myStat.username);
-    console.log("myIndex", myIndex);
     if (myIndex - 1 < 0 || myIndex == -1) return null;
     return stats[myIndex - 1];
   }, [myProfile, stats]);
-
-  console.log("nextPositionStat", nextPositionStat);
 
   const pointsToNextPosition = useMemo(() => {
     if (!nextPositionStat || !myProfile) return null;
@@ -194,8 +190,6 @@ function useProvideGame(): GameContextType {
     if (!myStat) return null;
     return nextPositionStat.points - myStat.points;
   }, [myProfile, nextPositionStat, stats]);
-
-  console.log("pointsToNextPosition", pointsToNextPosition);
 
   const isTop5Position = useMemo(() => {
     if (!myProfile) return false;
