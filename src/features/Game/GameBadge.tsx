@@ -39,13 +39,12 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
             color: `rgb(253, 238, 255)`,
           }}
         >
-          {i18n._("Game")}
+          {i18n._("Play and Learn")}
         </Typography>
         <Typography
           sx={{
             opacity: 0.9,
           }}
-          variant="caption"
         >
           {i18n._("Rank in the top 5 to get the app for free")}
         </Typography>
