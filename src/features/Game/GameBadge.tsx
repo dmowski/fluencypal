@@ -3,6 +3,7 @@ import { SupportedLanguage } from "../Lang/lang";
 import { ChevronRight, Swords } from "lucide-react";
 import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { useGame } from "./useGame";
 
 interface GameBadgeProps {
   lang: SupportedLanguage;
@@ -10,6 +11,8 @@ interface GameBadgeProps {
 
 export const GameBadge = ({ lang }: GameBadgeProps) => {
   const { i18n } = useLingui();
+  const game = useGame();
+  const position = game.myPosition;
 
   return (
     <Stack
@@ -48,6 +51,16 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
         >
           {i18n._("Rank in the top 5 to get the app for free")}
         </Typography>
+
+        {position && (
+          <Typography
+            sx={{
+              opacity: 0.9,
+            }}
+          >
+            {i18n._("Your position")}: {position}
+          </Typography>
+        )}
       </Stack>
 
       <Stack
