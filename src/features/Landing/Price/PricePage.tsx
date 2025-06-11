@@ -132,7 +132,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 display: "grid",
                 width: "100%",
                 boxSizing: "border-box",
-                gridTemplateColumns: "1fr 1fr 1fr",
+                gridTemplateColumns: "1fr 1fr",
                 "@media (max-width: 1000px)": {
                   display: "flex",
                   flexDirection: "column",
@@ -142,17 +142,14 @@ export const PricePage = ({ lang }: PricePageProps) => {
               }}
             >
               <PriceCard
-                title={i18n._("Free Trial")}
-                subTitle={i18n.t(`Trying FluencyPal risk-free`)}
-                price={
-                  <span>
-                    <PriceDisplay amountInUsd={0} />
-                  </span>
-                }
-                priceDescription={i18n._(
-                  `One hour of active AI speaking is free, then Pay as You Go`
+                title={i18n._("Pay-as-You-Go")}
+                subTitle={i18n._("For learners who want flexibility")}
+                price={<PriceDisplay amountInUsd={6} />}
+                priceDescription={i18n._("Per Hour of AI Usage")}
+                priceSubDescription={i18n._(
+                  "You only pay when AI is speaking or analyzing your speech, not when you're thinking or typing."
                 )}
-                listTitle={i18n._("Features:")}
+                listTitle={i18n._("Everything in Free Trial, plus:")}
                 listItems={[
                   {
                     title: i18n._("Full AI tutor access"),
@@ -180,24 +177,6 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     title: i18n._("New Grammar Rules"),
                     tooltip: i18n._("By practicing, you will get personal grammar rules from AI"),
                   },
-                ]}
-                buttonTitle={i18n._("Get started")}
-                buttonLink={`${getUrlStart(lang)}quiz`}
-              />
-              <PriceCard
-                title={i18n._("Pay-as-You-Go")}
-                subTitle={i18n._("For learners who want flexibility")}
-                price={<PriceDisplay amountInUsd={6} />}
-                priceDescription={i18n._("Per Hour of AI Usage")}
-                priceSubDescription={i18n._(
-                  "You only pay when AI is speaking or analyzing your speech, not when you're thinking or typing."
-                )}
-                listTitle={i18n._("Everything in Free Trial, plus:")}
-                listItems={[
-                  {
-                    title: i18n._("Pay per session"),
-                    tooltip: i18n._("Only pay for the time you use, no subscriptions required"),
-                  },
                   {
                     title: i18n._("Track usage & progress"),
                     tooltip: i18n._("Monitor your AI conversation history and improvements"),
@@ -222,10 +201,6 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   {
                     title: i18n._("Create custom features"),
                     tooltip: i18n._("Tailor AI interactions to fit your needs"),
-                  },
-                  {
-                    title: i18n._("Platform Integration"),
-                    tooltip: i18n._("API access for schools and businesses"),
                   },
                   {
                     title: i18n._("Discounted AI Usage"),
