@@ -1,9 +1,10 @@
 import { Stack, Typography } from "@mui/material";
 import { SupportedLanguage } from "../Lang/lang";
 import { ChevronRight, Swords } from "lucide-react";
-import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useGame } from "./useGame";
+
+import { Trans, useLingui } from "@lingui/react/macro";
 
 interface GameBadgeProps {
   lang: SupportedLanguage;
@@ -42,7 +43,7 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
             color: `rgb(253, 238, 255)`,
           }}
         >
-          {i18n._("Play and Learn")}
+          <Trans>Play and Learn</Trans>
         </Typography>
         <Typography
           sx={{
@@ -52,15 +53,13 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
           {i18n._("Rank in the top 5 to get the app for free")}
         </Typography>
 
-        {position && (
-          <Typography
-            sx={{
-              opacity: 0.9,
-            }}
-          >
-            {i18n._("Your position")}: {position}
-          </Typography>
-        )}
+        <Typography
+          sx={{
+            opacity: 0.9,
+          }}
+        >
+          {i18n._("Your position")}: {position ? position : "-"}
+        </Typography>
       </Stack>
 
       <Stack

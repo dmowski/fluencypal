@@ -2,7 +2,18 @@ import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  //swcPlugins: [["@lingui/swc-plugin", {}]],
+  experimental: {
+    swcPlugins: [
+      [
+        "@lingui/swc-plugin",
+        {
+          // optional:
+          // runtimeModules: { i18n: ["@lingui/core","i18n"], trans: ["@lingui/react","Trans"] },
+          // stripNonEssentialFields: false
+        },
+      ],
+    ],
+  },
   turbopack: {
     rules: {
       "*.{glsl,vs,fs,vert,frag}": {
