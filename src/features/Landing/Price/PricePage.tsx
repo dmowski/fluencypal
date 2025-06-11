@@ -144,7 +144,11 @@ export const PricePage = ({ lang }: PricePageProps) => {
               <PriceCard
                 title={i18n._("Free Trial")}
                 subTitle={i18n.t(`Trying FluencyPal risk-free`)}
-                price={<span>PLN 0</span>}
+                price={
+                  <span>
+                    <PriceDisplay amountInUsd={0} />
+                  </span>
+                }
                 priceDescription={i18n._(
                   `One hour of active AI speaking is free, then Pay as You Go`
                 )}
