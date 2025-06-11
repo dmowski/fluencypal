@@ -50,7 +50,9 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
             opacity: 0.9,
           }}
         >
-          {i18n._("Rank in the top 5 to get the app for free")}
+          <Trans>
+            Rank in the top 5 to get the app <b>for free</b>
+          </Trans>
         </Typography>
 
         <Typography
