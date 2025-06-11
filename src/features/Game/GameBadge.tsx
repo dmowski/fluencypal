@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { SupportedLanguage } from "../Lang/lang";
-import { ChevronRight, Swords } from "lucide-react";
+import { Swords } from "lucide-react";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useGame } from "./useGame";
 
