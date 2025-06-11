@@ -2,10 +2,35 @@
 
 import { useState, useEffect } from "react";
 
+const localStorageCurrencyKey = "currency_ipapi";
+const getFromLocalStorage = () => {
+  if (typeof window === "undefined") return null;
+  return localStorage.getItem(localStorageCurrencyKey);
+};
+const setToLocalStorage = (currency: string) => {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(localStorageCurrencyKey, currency);
+};
+
 async function getCurrencyByIP(): Promise<string> {
+  const isWindow = typeof window !== "undefined";
+  if (isWindow) {
+    const localCurrency = getFromLocalStorage();
+    if (localCurrency) {
+      return localCurrency;
+    }
+  }
+  console.log("getCurrencyByIP");
   const res = await fetch(`https://ipapi.co/currency/`);
   if (!res.ok) throw new Error("Failed to fetch currency from IP");
-  return (await res.text()).trim();
+  const currency = (await res.text()).trim();
+  console.log("currency", currency);
+
+  if (isWindow && currency) {
+    setToLocalStorage(currency);
+  }
+
+  return currency;
 }
 
 async function getConversionRate(toCurrency: string): Promise<number> {
