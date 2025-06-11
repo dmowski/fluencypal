@@ -39,6 +39,8 @@ interface GameContextType {
   isGameWinner: boolean;
   updateUsername: (username: string) => Promise<void>;
   gameLastVisit: GameLastVisit | null;
+  pointsToNextPosition: number | null;
+  nextPositionStat: UsersStat | null;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -108,7 +110,7 @@ function useProvideGame(): GameContextType {
     );
 
     const uniqQuestions = generatedQuestions.filter(
-      (question) => !questions.some((q) => q.id === question.id) && question.imageUrl
+      (question) => !questions.some((q) => q.id === question.id)
     );
 
     console.log("uniqQuestions", uniqQuestions);
@@ -174,6 +176,27 @@ function useProvideGame(): GameContextType {
     return myIndex + 1;
   }, [myProfile, stats]);
 
+  const nextPositionStat = useMemo(() => {
+    if (!myProfile) return null;
+    const myStat = stats.find((stat) => stat.username === myProfile.username);
+    if (!myStat) return null;
+    const myIndex = stats.findIndex((stat) => stat.username === myStat.username);
+    console.log("myIndex", myIndex);
+    if (myIndex - 1 < 0 || myIndex == -1) return null;
+    return stats[myIndex - 1];
+  }, [myProfile, stats]);
+
+  console.log("nextPositionStat", nextPositionStat);
+
+  const pointsToNextPosition = useMemo(() => {
+    if (!nextPositionStat || !myProfile) return null;
+    const myStat = stats.find((stat) => stat.username === myProfile.username);
+    if (!myStat) return null;
+    return nextPositionStat.points - myStat.points;
+  }, [myProfile, nextPositionStat, stats]);
+
+  console.log("pointsToNextPosition", pointsToNextPosition);
+
   const isTop5Position = useMemo(() => {
     if (!myProfile) return false;
     const myStat = stats.find((stat) => stat.username === myProfile.username);
@@ -220,6 +243,8 @@ function useProvideGame(): GameContextType {
     setNativeLanguageCode,
     updateUsername,
     gameLastVisit: gameLastVisit || null,
+    pointsToNextPosition: pointsToNextPosition || null,
+    nextPositionStat: nextPositionStat || null,
   };
 }
 

@@ -8,6 +8,7 @@ import { Check, ChevronRight, Icon, Mic, Trash } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
+import { SummaryRow } from "./SummaryRow";
 
 export const DescribeImageScreen = ({
   question,
@@ -16,7 +17,7 @@ export const DescribeImageScreen = ({
 }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const game = useGame();
+
   const [textAnswer, setTextAnswer] = useState<string>("");
   const [answerDescription, setAnswerDescription] = useState<string | null>(null);
   const [answerCorrectedMessage, setAnswerCorrectedMessage] = useState<string | null>(null);
@@ -352,9 +353,7 @@ export const DescribeImageScreen = ({
               >
                 Next
               </Button>
-              <Typography variant="body2">
-                {i18n._(`My Position:`)} {game.myPosition}
-              </Typography>
+              <SummaryRow />
             </Stack>
           )}
         </Stack>

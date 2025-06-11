@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
-import { useGame } from "../useGame";
 import { useLingui } from "@lingui/react";
 import { Button, Stack, Typography } from "@mui/material";
 import { Check, ChevronRight } from "lucide-react";
+import { SummaryRow } from "./SummaryRow";
 
 export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const game = useGame();
   useEffect(() => {
     setIsCorrect(null);
     setSelectedAnswer(null);
@@ -181,9 +180,7 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
               >
                 Next
               </Button>
-              <Typography variant="body2">
-                {i18n._(`My Position:`)} {game.myPosition}
-              </Typography>
+              <SummaryRow />
             </Stack>
           )}
         </Stack>
