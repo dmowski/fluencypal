@@ -106,7 +106,7 @@ export const useAudioRecorder = ({
     transcription,
     error: recorderControls.error?.message || transcriptionError || "",
     recordingMilliSeconds: recorderControls.recordingTime,
-    isAbleToRecord: inWebView,
+    isAbleToRecord: !inWebView,
     removeTranscript: () => {
       if (isRecording) {
         isCancel.current = true;
