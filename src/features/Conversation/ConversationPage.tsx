@@ -44,7 +44,12 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const settings = useSettings();
   const aiConversation = useAiConversation();
   const usage = useUsage();
-  const recorder = useAudioRecorder();
+  const recorder = useAudioRecorder({
+    languageCode: settings.languageCode || "en",
+    getAuthToken: auth.getToken,
+    isFree: false,
+    isGame: false,
+  });
   const corrections = useCorrections();
   const { i18n } = useLingui();
   const words = useWords();
@@ -201,9 +206,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         toggleVolume={aiConversation.toggleVolume}
         startRecording={async () => {
           aiConversation.toggleVolume(false);
-          await recorder.startRecording({
-            isGame: false,
-          });
+          await recorder.startRecording();
         }}
         stopRecording={async () => {
           aiConversation.toggleVolume(true);

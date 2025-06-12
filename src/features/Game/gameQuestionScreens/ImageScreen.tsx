@@ -9,6 +9,8 @@ import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { SummaryRow } from "./SummaryRow";
+import { useAuth } from "@/features/Auth/useAuth";
+import { useSettings } from "@/features/Settings/useSettings";
 
 export const DescribeImageScreen = ({
   question,
@@ -21,7 +23,15 @@ export const DescribeImageScreen = ({
   const [textAnswer, setTextAnswer] = useState<string>("");
   const [answerDescription, setAnswerDescription] = useState<string | null>(null);
   const [answerCorrectedMessage, setAnswerCorrectedMessage] = useState<string | null>(null);
-  const recorder = useAudioRecorder();
+
+  const auth = useAuth();
+  const settings = useSettings();
+  const recorder = useAudioRecorder({
+    languageCode: settings.languageCode || "en",
+    getAuthToken: auth.getToken,
+    isFree: true,
+    isGame: true,
+  });
   const [isUseMicrophone, setIsUseMicrophone] = useState<boolean>(false);
   const translator = useTranslate();
   useEffect(() => {
@@ -222,9 +232,7 @@ export const DescribeImageScreen = ({
                   disabled={isCorrect !== null}
                   onClick={() => {
                     recorder.removeTranscript();
-                    recorder.startRecording({
-                      isGame: true,
-                    });
+                    recorder.startRecording();
                   }}
                 >
                   {i18n._(`Record an answer`)}

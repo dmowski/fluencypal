@@ -1,27 +1,45 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useAuth } from "../Auth/useAuth";
 import { sendTranscriptRequest } from "@/app/api/transcript/sendTranscriptRequest";
-import { useSettings } from "../Settings/useSettings";
 import { useVoiceVisualizer, VoiceVisualizer } from "react-voice-visualizer";
+import { SupportedLanguage } from "../Lang/lang";
+import { sleep } from "openai/core.mjs";
+import { useIsWebView } from "../Auth/useIsWebView";
 
-export const useAudioRecorder = () => {
-  const maxRecordingSeconds = 40;
-  // todo: Limit Recording Time
+export const useAudioRecorder = ({
+  languageCode,
+  getAuthToken,
+  isFree,
+  isGame,
+}: {
+  languageCode: SupportedLanguage;
+  getAuthToken: () => Promise<string>;
+  isFree: boolean;
+  isGame: boolean;
+}) => {
   const [recordingSeconds, setRecordingSeconds] = useState(0);
   const audioDurationRef = useRef<number>(0);
   audioDurationRef.current = recordingSeconds;
-  const auth = useAuth();
-  const settings = useSettings();
-  const learnLanguageCode = settings.languageCode || "en";
+  const learnLanguageCode = languageCode || "en";
 
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcription, setTranscription] = useState<string | null>(null);
   const [transcriptionError, setTranscriptionError] = useState<string | null>(null);
 
   const recorderControls = useVoiceVisualizer();
-  const [isGame, setIsGame] = useState(false);
+  const [isAbleToRecord, setIsAbleToRecord] = useState(false);
+
+  const { inWebView } = useIsWebView();
+
+  useEffect(() => {
+    const isWindow = typeof window !== "undefined";
+    if (isWindow) {
+      sleep(1000).then(() => {
+        setIsAbleToRecord(!inWebView);
+      });
+    }
+  }, [recorderControls, inWebView]);
 
   useEffect(() => {
     if (!recorderControls.recordedBlob) return;
@@ -47,7 +65,7 @@ export const useAudioRecorder = () => {
     }
 
     setIsTranscribing(true);
-    const token = await auth.getToken();
+    const token = await getAuthToken();
     try {
       const transcriptResponse = await sendTranscriptRequest({
         audioBlob: recordedAudioBlog,
@@ -56,7 +74,7 @@ export const useAudioRecorder = () => {
         audioDuration: audioDurationRef.current || 5,
         format,
         isGame,
-        isFree: false,
+        isFree,
       });
       setTranscription(transcriptResponse.transcript);
       if (transcriptResponse.error) {
@@ -69,8 +87,7 @@ export const useAudioRecorder = () => {
     setIsTranscribing(false);
   };
 
-  const startRecording = async ({ isGame }: { isGame: boolean }) => {
-    setIsGame(isGame);
+  const startRecording = async () => {
     recorderControls.startRecording();
     isCancel.current = false;
     setRecordingSeconds(0);
@@ -99,6 +116,7 @@ export const useAudioRecorder = () => {
     transcription,
     error: recorderControls.error?.message || transcriptionError || "",
     recordingMilliSeconds: recorderControls.recordingTime,
+    isAbleToRecord,
     removeTranscript: () => {
       if (isRecording) {
         isCancel.current = true;

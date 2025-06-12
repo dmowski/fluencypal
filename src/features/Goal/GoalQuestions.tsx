@@ -25,8 +25,9 @@ import { useRouter } from "next/navigation";
 import SignalStrengthIcon from "./SignalStrengthIcon";
 import { GradingProgressBar } from "../Dashboard/BrainCard";
 import { sleep } from "@/libs/sleep";
-import { useNativeRecorder } from "./useNativeRecorder";
 import { useGoalQuizForm } from "./useGoalQuizForm";
+import { useAudioRecorder } from "../Audio/useAudioRecorder";
+import { uniq } from "@/libs/uniq";
 
 const TermsComponent = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -232,19 +233,22 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     }
   };
 
-  const recorder = useNativeRecorder({
-    lang: data.nativeLanguage || data.languageToLearn,
+  const recorder = useAudioRecorder({
+    languageCode: data.nativeLanguage || data.languageToLearn || "en",
+    getAuthToken: async () => "",
+    isFree: true,
+    isGame: false,
   });
 
   useEffect(() => {
-    if (!recorder.isRecording) {
+    if (recorder.isRecording || !recorder.transcription) {
       return;
     }
 
     updateData({
-      description: recorder.fullTranscript || "",
+      description: data.description + " " + recorder.transcription,
     });
-  }, [recorder.fullTranscript, recorder.isRecording]);
+  }, [recorder.transcription]);
 
   const langTranslations: Record<SupportedLanguage, string> = {
     en: i18n.t("English"),
@@ -279,6 +283,12 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     15: [i18n._("15 minutes per day"), i18n._("Serious")],
     20: [i18n._("20 minutes per day"), i18n._("Intensive")],
   };
+
+  const languagesToRecord = uniq([data.nativeLanguage, data.languageToLearn].filter(Boolean));
+  const languagesTitles = languagesToRecord
+    .map((lang) => langTranslations[lang] || lang)
+    .join(", ")
+    .trim();
 
   const steps: StepInfo[] = [
     {
@@ -593,20 +603,47 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             {recorder.isAbleToRecord && (
               <Button
                 variant="outlined"
-                color={recorder.isRecording ? "error" : "primary"}
-                startIcon={<Mic />}
                 sx={{
                   marginTop: "-11px",
                   width: "100%",
                   borderRadius: "0 0 5px 5px",
+                  textTransform: "none",
+                  backgroundColor: isLoading || recorder.isTranscribing ? "#c2c2c2" : "#222245",
+                  color: "#fff",
+                  fontWeight: 400,
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  minHeight: "52px",
+                  flexWrap: "wrap",
                 }}
-                onClick={() => recorder.startRecording()}
+                disabled={isLoading || recorder.isTranscribing}
+                onClick={() =>
+                  recorder.isRecording ? recorder.stopRecording() : recorder.startRecording()
+                }
               >
-                {recorder.isRecording
-                  ? i18n._(`Stop recording`)
-                  : i18n._(`Record`) +
-                    ` ` +
-                    `(${langTranslations[data.nativeLanguage || data.languageToLearn]})`}
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
+                >
+                  <Mic size={"18px"} />
+                  <Typography
+                    sx={{
+                      fontWeight: 500,
+                    }}
+                    variant="body2"
+                  >
+                    {recorder.isTranscribing
+                      ? i18n._(`Transcribing...`)
+                      : recorder.isRecording
+                        ? i18n._(`Stop recording`)
+                        : i18n._(`Record`) + ` ` + (languagesTitles ? `(${languagesTitles})` : "")}
+                  </Typography>
+                </Stack>
+
+                {recorder.visualizerComponent}
               </Button>
             )}
 
