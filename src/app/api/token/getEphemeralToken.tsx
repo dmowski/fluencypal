@@ -17,7 +17,7 @@ export const getEphemeralToken = async (model: string) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: model === MODELS.REALTIME_CONVERSATION ? "gpt-4o-realtime-preview-2025-06-03" : model,
+      model: model,
       voice: "verse",
     }),
   });
