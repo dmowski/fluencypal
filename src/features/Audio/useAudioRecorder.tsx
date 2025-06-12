@@ -28,18 +28,8 @@ export const useAudioRecorder = ({
   const [transcriptionError, setTranscriptionError] = useState<string | null>(null);
 
   const recorderControls = useVoiceVisualizer();
-  const [isAbleToRecord, setIsAbleToRecord] = useState(false);
 
   const { inWebView } = useIsWebView();
-
-  useEffect(() => {
-    const isWindow = typeof window !== "undefined";
-    if (isWindow) {
-      sleep(1000).then(() => {
-        setIsAbleToRecord(!inWebView);
-      });
-    }
-  }, [recorderControls, inWebView]);
 
   useEffect(() => {
     if (!recorderControls.recordedBlob) return;
@@ -116,7 +106,7 @@ export const useAudioRecorder = ({
     transcription,
     error: recorderControls.error?.message || transcriptionError || "",
     recordingMilliSeconds: recorderControls.recordingTime,
-    isAbleToRecord,
+    isAbleToRecord: inWebView,
     removeTranscript: () => {
       if (isRecording) {
         isCancel.current = true;
