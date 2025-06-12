@@ -80,7 +80,6 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
       voice: "shimmer",
 
       landingHighlight: `Improve your vocabulary and speaking skills while having fun! Alias is a dynamic word-guessing game where you'll practice explaining and guessing words creatively, expanding your linguistic confidence.`,
-      youTubeVideoUrl: "https://www.youtube.com/embed/e_1NupxxPcQ",
     },
     {
       id: "small-talk-with-a-stranger",
