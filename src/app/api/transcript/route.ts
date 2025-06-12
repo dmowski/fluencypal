@@ -1,16 +1,16 @@
-import OpenAI from "openai";
 import {
   calculateAudioTranscriptionPrice,
   convertUsdToHours,
   TranscriptAiModel,
 } from "@/common/ai";
-import { getBucket, validateAuthToken } from "../config/firebase";
+import { validateAuthToken } from "../config/firebase";
 import { getUserBalance } from "../payment/getUserBalance";
 import { TranscriptResponse } from "./types";
 import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 import { supportedLanguages } from "@/features/Lang/lang";
 import { TranscriptUsageLog } from "@/common/usage";
 import { addUsage } from "../payment/addUsage";
+import { transcribeAudioFileWithOpenAI } from "./transcribeAudioFileWithOpenAI";
 
 export async function POST(request: Request) {
   const openAIKey = process.env.OPENAI_API_KEY;
@@ -24,9 +24,17 @@ export async function POST(request: Request) {
   const data = await request.formData();
   const file = data.get("audio") as File | null;
 
+  if (!file) {
+    const errorResponse: TranscriptResponse = {
+      error: "File not found",
+      transcript: "",
+    };
+    return Response.json(errorResponse);
+  }
+
   const actualFileSize = file?.size || 0;
   const actualFileSizeMb = actualFileSize / (1024 * 1024);
-  const maxFileSize = 14 * 1024 * 1024; // 14 MB
+  const maxFileSize = 20 * 1024 * 1024; // 14 MB
 
   const isAudioFileLonger = actualFileSize > maxFileSize;
   if (isAudioFileLonger) {
@@ -51,31 +59,18 @@ export async function POST(request: Request) {
   const audioDurationString = urlParams.get("audioDuration") || "";
   const audioDuration = Math.min(Math.max(parseFloat(audioDurationString) || 0, 4), 50);
 
-  if (!file) {
-    const errorResponse: TranscriptResponse = {
-      error: "File not found",
-      transcript: "",
-    };
-    return Response.json(errorResponse);
-  }
-
-  const client = new OpenAI({
-    apiKey: openAIKey,
+  const model: TranscriptAiModel = "gpt-4o-transcribe";
+  const responseData = await transcribeAudioFileWithOpenAI({
+    file,
+    model,
+    userEmail: userInfo.email || "",
+    format,
+    languageCode: supportedLang,
+    userId: userInfo.uid || "",
   });
 
-  const model: TranscriptAiModel = "gpt-4o-transcribe";
-  try {
-    const transcriptionResult = await client.audio.transcriptions.create({
-      file: file,
-      model: model,
-      language: supportedLang,
-      prompt: "Transcribe the audio. Keep grammar errors and typos as is.",
-    });
-
-    const output = transcriptionResult.text || "";
-
-    const priceUsd = calculateAudioTranscriptionPrice(audioDuration, model);
-
+  if (!responseData.error) {
+    const priceUsd = calculateAudioTranscriptionPrice(audioDuration, "gpt-4o-transcribe");
     const priceHours = convertUsdToHours(priceUsd);
     const usageLog: TranscriptUsageLog = {
       usageId: `${Date.now()}`,
@@ -86,47 +81,13 @@ export async function POST(request: Request) {
       type: "transcript",
       model: model,
       duration: audioDuration,
-      transcriptSize: output.length || 0,
+      transcriptSize: responseData.transcript.length || 0,
     };
 
     if (!balance.isGameWinner && !isGame) {
       await addUsage(userInfo.uid, usageLog);
     }
-
-    const response: TranscriptResponse = {
-      transcript: output,
-      error: null,
-    };
-
-    return Response.json(response);
-  } catch (error) {
-    console.error("Error during transcription:", error);
-
-    const randomName = `${Date.now()}-${format}.mp3`;
-
-    const filePath = `failedAudio/${randomName}`;
-    const bucket = getBucket();
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const audioStorageFile = bucket.file(filePath);
-    await audioStorageFile.save(buffer, {
-      contentType: format,
-      resumable: false,
-    });
-    await audioStorageFile.makePublic();
-    const url = audioStorageFile.publicUrl();
-
-    const firebaseUrl = `https://console.firebase.google.com/u/0/project/dark-lang/firestore/databases/-default-/data/~2Fusers~2F${userInfo.uid}`;
-
-    await sentSupportTelegramMessage(
-      `User recorded broken audio file (${actualFileSizeMb}) | ${userInfo.email} | ${url}
-
-[🔥 Firebase 🔥](${firebaseUrl})`
-    );
-
-    const errorResponse: TranscriptResponse = {
-      error: "Error during transcription",
-      transcript: "",
-    };
-    return Response.json(errorResponse);
   }
+
+  return Response.json(responseData);
 }
