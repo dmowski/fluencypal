@@ -132,7 +132,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 display: "grid",
                 width: "100%",
                 boxSizing: "border-box",
-                gridTemplateColumns: "1fr 1fr",
+                gridTemplateColumns: "1fr 1fr  1fr",
                 "@media (max-width: 1000px)": {
                   display: "flex",
                   flexDirection: "column",
@@ -142,6 +142,26 @@ export const PricePage = ({ lang }: PricePageProps) => {
               }}
             >
               <PriceCard
+                title={i18n._("Free")}
+                subTitle={i18n._("For learners who want to try it out")}
+                price={<PriceDisplay amountInUsd={0} />}
+                priceDescription={i18n._("-")}
+                priceSubDescription={i18n._("Game mode and trial AI tutor access")}
+                listTitle={i18n._("Includes:")}
+                listItems={[
+                  {
+                    title: i18n._("Game Mode"),
+                    tooltip: i18n._("Many language games to practice"),
+                  },
+                  {
+                    title: i18n._("1 hour of AI tutor access"),
+                    tooltip: i18n._("Try AI tutor for one hour to see how it works"),
+                  },
+                ]}
+                buttonTitle={i18n._("Start ")}
+                buttonLink={`${getUrlStart(lang)}quiz`}
+              />
+              <PriceCard
                 title={i18n._("Pay-as-You-Go")}
                 subTitle={i18n._("For learners who want flexibility")}
                 price={<PriceDisplay amountInUsd={6} />}
@@ -149,7 +169,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 priceSubDescription={i18n._(
                   "You only pay when AI is speaking or analyzing your speech, not when you're thinking or typing."
                 )}
-                listTitle={i18n._("Everything in Free Trial, plus:")}
+                listTitle={i18n._("Everything in Free, plus:")}
                 listItems={[
                   {
                     title: i18n._("Full AI tutor access"),
