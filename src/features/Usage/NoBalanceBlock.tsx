@@ -1,23 +1,16 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useUsage } from "./useUsage";
-import {
-  ChartNoAxesCombined,
-  Flag,
-  GraduationCap,
-  MoveRight,
-  Telescope,
-  VenetianMask,
-  Wallet,
-} from "lucide-react";
-import PsychologyIcon from "@mui/icons-material/Psychology";
+import { Swords, Telescope, Wallet } from "lucide-react";
 import { JSX } from "react";
 import { ContactList } from "../Landing/Contact/ContactList";
 
-import { UsageStatsCards } from "./UsageStatsCards";
 import { useLingui } from "@lingui/react";
-import { GradientBgCard, GradientBgImageCard } from "../uiKit/Card/GradientBgCard";
-import { GameBadge } from "../Game/GameBadge";
+import { GradientBgImageCard } from "../uiKit/Card/GradientBgCard";
 import { SupportedLanguage } from "../Lang/lang";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { getUrlStart } from "../Lang/getUrlStart";
+import { useRouter } from "next/navigation";
+import { usePayWall } from "../PayWall/usePayWall";
 
 const WinCard = ({
   title,
@@ -90,269 +83,217 @@ interface NoBalanceBlockProps {
 export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
   const usage = useUsage();
   const { i18n } = useLingui();
+  const route = useRouter();
+  const payWall = usePayWall();
+
+  const urlForGame = `${getUrlStart(lang)}practice?gamePage=true`;
+  const openGamePage = () => {
+    route.push(urlForGame);
+  };
   return (
-    <Stack
-      sx={{
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#121215",
-        gap: "40px",
-        //borderTop: "1px solid rgba(255, 255, 255, 0.11)",
-        padding: "130px 0px",
-        boxSizing: "border-box",
+    <CustomModal
+      isOpen={true}
+      onClose={() => {
+        payWall.temporaryClosePayWall();
       }}
+      padding="0"
+      width="min(650px, 100dvw)"
+      maxHeight={"min(100dvh, 1800px)"}
     >
       <Stack
         sx={{
-          padding: "20px 20px 20px 30px",
-          gap: "90px",
-          maxWidth: "1400px",
+          backgroundColor: "#121215",
+          border: "1px solid rgba(255, 255, 255, 0.4)",
           width: "100%",
+          padding: "30px 0px",
           boxSizing: "border-box",
-          position: "relative",
-          zIndex: 1,
-          "@media (max-width: 600px)": {
-            padding: "20px 15px",
-          },
         }}
       >
-        <Stack sx={{ width: "100%" }}>
-          <Typography
-            variant="h2"
-            className="decor-text"
-            sx={{
-              "@media (max-width: 600px)": {
-                fontSize: "1.9rem",
-              },
-            }}
-          >
-            {i18n._("Level up your Language!")}
-          </Typography>
-          <Typography
-            sx={{
-              opacity: 0.9,
-              "@media (max-width: 600px)": {
-                fontSize: "0.9rem",
-                opacity: 0.8,
-              },
-            }}
-          >
-            {i18n._("You've made amazing progress. Let’s keep going.")}
-          </Typography>
-        </Stack>
-
-        <GameBadge lang={lang} />
-
-        <UsageStatsCards />
-
-        <Stack sx={{ width: "100%", gap: "15px" }}>
-          <Stack
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "50px 1fr",
-              alignItems: "center",
-              gap: "15px",
-              paddingBottom: "10px",
-            }}
-          >
-            <Stack
+        <Stack
+          sx={{
+            padding: "20px 20px 20px 30px",
+            gap: "70px",
+            maxWidth: "1400px",
+            width: "100%",
+            boxSizing: "border-box",
+            position: "relative",
+            zIndex: 1,
+            "@media (max-width: 600px)": {
+              padding: "20px 15px",
+            },
+          }}
+        >
+          <Stack sx={{ width: "100%" }}>
+            <Typography
+              variant="h2"
+              className="decor-text"
               sx={{
-                borderRadius: "50%",
-                background: "linear-gradient(45deg,rgb(25, 78, 142) 0%,rgb(109, 209, 151) 100%)",
-                height: "50px",
-                width: "50px",
-
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                "@media (max-width: 600px)": {
+                  fontSize: "1.9rem",
+                },
               }}
             >
-              <GraduationCap size={"25px"} />
-            </Stack>
-            <Typography variant="h6">{i18n._(`Unlock full access to FluencyPal`)}</Typography>
-          </Stack>
-
-          <Stack
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              gap: "20px",
-              "@media (max-width: 700px)": {
-                gridTemplateColumns: "1fr",
-              },
-            }}
-          >
-            <WinCard
-              onClick={() => usage.togglePaymentModal(true)}
-              title={i18n._("Talks")}
-              subTitle={i18n._("Conversations with AI")}
-              icon={
-                <PsychologyIcon
-                  style={{
-                    width: "90px",
-                    height: "90px",
-                    fontSize: "90px",
-                    color: "#fff",
-                  }}
-                />
-              }
-              src={"/blur/1.jpg"}
-            />
-
-            <WinCard
-              onClick={() => usage.togglePaymentModal(true)}
-              title={i18n._("Practice")}
-              subTitle={i18n._("Role-play games")}
-              icon={
-                <VenetianMask
-                  style={{
-                    width: "90px",
-                    height: "90px",
-                    fontSize: "90px",
-                    color: "#fff",
-                  }}
-                />
-              }
-              src={"/blur/2.jpg"}
-            />
-
-            <WinCard
-              onClick={() => usage.togglePaymentModal(true)}
-              title={i18n._("Progress")}
-              subTitle={i18n._("Track your progress")}
-              icon={
-                <ChartNoAxesCombined
-                  style={{
-                    width: "90px",
-                    height: "90px",
-                    fontSize: "90px",
-                    color: "#fff",
-                  }}
-                />
-              }
-              src={"/blur/3.jpg"}
-            />
-          </Stack>
-        </Stack>
-
-        <Stack sx={{ width: "100%", gap: "15px", alignItems: "flex-start" }}>
-          <Stack
-            sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: "15px",
-              paddingBottom: "10px",
-            }}
-          >
-            <Stack
-              sx={{
-                borderRadius: "50%",
-                background: "linear-gradient(45deg,rgb(25, 78, 142) 0%,rgb(202, 109, 209) 100%)",
-                height: "50px",
-                width: "50px",
-
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Telescope size={"25px"} />
-            </Stack>
-            <Typography variant="h6">{i18n._(`Ready to keep going?`)}</Typography>
-          </Stack>
-
-          <Button
-            variant="contained"
-            size="large"
-            color="info"
-            sx={{
-              padding: "15px 30px",
-            }}
-            onClick={() => usage.togglePaymentModal(true)}
-            startIcon={<Wallet />}
-          >
-            {i18n._("Buy More AI Hours")}
-          </Button>
-        </Stack>
-
-        <Stack sx={{ width: "100%", gap: "15px", alignItems: "flex-start" }}>
-          <Typography variant="h6">
-            {i18n._("Get free AI time by helping us improve FluencyPal")}
-          </Typography>
-          <Stack gap={"20px"}>
-            <Typography variant="body2">
-              {i18n._(
-                "Send us your feedback about the app — what you liked, what we can improve — and get up to 2 hours of free AI time."
-              )}
+              {i18n._("Low balance")}
             </Typography>
+            <Typography
+              sx={{
+                opacity: 0.9,
+                "@media (max-width: 600px)": {
+                  fontSize: "0.9rem",
+                  opacity: 0.8,
+                },
+              }}
+            >
+              {i18n._("You've made amazing progress. Let’s keep going.")}
+            </Typography>
+          </Stack>
 
-            <ContactList />
+          <Stack sx={{ width: "100%", gap: "15px", alignItems: "flex-start" }}>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "15px",
+                paddingBottom: "10px",
+              }}
+            >
+              <Stack
+                sx={{
+                  borderRadius: "50%",
+                  background: "linear-gradient(45deg,rgb(25, 78, 142) 0%,rgb(202, 109, 209) 100%)",
+                  height: "50px",
+                  width: "50px",
+
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Telescope size={"25px"} />
+              </Stack>
+              <Typography variant="h6">{i18n._(`Ready to keep going?`)}</Typography>
+            </Stack>
+
+            <Stack
+              sx={{
+                flexDirection: "row",
+                gap: "20px",
+                alignItems: "center",
+                "@media (max-width: 700px)": {
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                },
+              }}
+            >
+              <Button
+                variant="contained"
+                size="large"
+                color="info"
+                sx={{
+                  padding: "15px 30px",
+                }}
+                onClick={() => usage.togglePaymentModal(true)}
+                startIcon={<Wallet />}
+              >
+                {i18n._("Buy More AI Hours")}
+              </Button>
+              <Typography>or</Typography>
+              <Button
+                variant="outlined"
+                size="large"
+                sx={{
+                  padding: "15px 30px",
+                }}
+                onClick={() => openGamePage()}
+                startIcon={<Swords />}
+              >
+                {i18n._("Play the Game")}
+              </Button>
+            </Stack>
+          </Stack>
+
+          <Stack sx={{ width: "100%", gap: "5px", alignItems: "flex-start" }}>
+            <Typography variant="h5">{i18n._("Continue for free?")}</Typography>
+            <Stack gap={"20px"}>
+              <Typography
+                variant="body2"
+                sx={{
+                  maxWidth: "500px",
+                }}
+              >
+                {i18n._(
+                  "Send me your feedback about the app — what you liked, what I can improve — and get up to 2 hours of free AI time."
+                )}
+              </Typography>
+
+              <ContactList />
+            </Stack>
           </Stack>
         </Stack>
+
+        <Stack
+          sx={{
+            position: "absolute",
+            top: "0px",
+            right: "0",
+            backgroundColor: "blue",
+            height: "300px",
+            width: "300px",
+            borderRadius: "50%",
+            filter: "blur(200px)",
+            zIndex: 0,
+            opacity: 0.9,
+          }}
+        ></Stack>
+
+        <Stack
+          sx={{
+            position: "absolute",
+            top: "300px",
+            right: "0",
+            backgroundColor: "red",
+            height: "300px",
+            width: "300px",
+            borderRadius: "50%",
+            filter: "blur(200px)",
+            zIndex: 0,
+            opacity: 0.4,
+          }}
+        ></Stack>
+
+        <Stack
+          sx={{
+            position: "absolute",
+            top: "0px",
+            left: "300px",
+            backgroundColor: "cyan",
+            height: "200px",
+            width: "300px",
+            borderRadius: "50%",
+            filter: "blur(200px)",
+            zIndex: 0,
+            opacity: 0.61,
+            "@media (max-width: 600px)": {
+              left: "0px",
+            },
+          }}
+        ></Stack>
+
+        <Stack
+          sx={{
+            position: "absolute",
+            top: "900px",
+            left: "0",
+            backgroundColor: "#5533ff",
+            height: "300px",
+            width: "300px",
+            borderRadius: "50%",
+            filter: "blur(300px)",
+            zIndex: 0,
+            opacity: 0.4,
+          }}
+        ></Stack>
       </Stack>
-
-      <Stack
-        sx={{
-          position: "absolute",
-          top: "0px",
-          right: "0",
-          backgroundColor: "blue",
-          height: "300px",
-          width: "300px",
-          borderRadius: "50%",
-          filter: "blur(200px)",
-          zIndex: 0,
-          opacity: 0.9,
-        }}
-      ></Stack>
-
-      <Stack
-        sx={{
-          position: "absolute",
-          top: "300px",
-          right: "0",
-          backgroundColor: "red",
-          height: "300px",
-          width: "300px",
-          borderRadius: "50%",
-          filter: "blur(200px)",
-          zIndex: 0,
-          opacity: 0.4,
-        }}
-      ></Stack>
-
-      <Stack
-        sx={{
-          position: "absolute",
-          top: "0px",
-          left: "300px",
-          backgroundColor: "cyan",
-          height: "200px",
-          width: "300px",
-          borderRadius: "50%",
-          filter: "blur(200px)",
-          zIndex: 0,
-          opacity: 0.61,
-          "@media (max-width: 600px)": {
-            left: "0px",
-          },
-        }}
-      ></Stack>
-
-      <Stack
-        sx={{
-          position: "absolute",
-          top: "900px",
-          left: "0",
-          backgroundColor: "#5533ff",
-          height: "300px",
-          width: "300px",
-          borderRadius: "50%",
-          filter: "blur(300px)",
-          zIndex: 0,
-          opacity: 0.4,
-        }}
-      ></Stack>
-    </Stack>
+    </CustomModal>
   );
 };

@@ -4,8 +4,7 @@ import { getUrlStart } from "@/features/Lang/getUrlStart";
 import Stripe from "stripe";
 import { validateAuthToken } from "../config/firebase";
 import { stripeConfig } from "../payment/config";
-
-const PRICE_PER_HOUR_USD = 6;
+import { pricePerHour } from "@/common/ai";
 
 async function getConversionRate(toCurrency: string): Promise<number> {
   const isToCurrencyIsUsd = toCurrency.toLowerCase() === "usd";
@@ -70,7 +69,7 @@ export async function POST(request: Request) {
 
   const rate = await getConversionRate(currency.toLowerCase());
 
-  const pricePerHourInCurrency = PRICE_PER_HOUR_USD * rate;
+  const pricePerHourInCurrency = pricePerHour * rate;
 
   const money = Math.round(amountOfHours * pricePerHourInCurrency * 100);
   try {

@@ -33,6 +33,7 @@ import { useGoalCreation } from "../Plan/useGoalCreation";
 import { useConversationsAnalysis } from "./useConversationsAnalysis";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { PlanDashboardCards } from "../Dashboard/PlanDashboardCards";
+import { usePayWall } from "../PayWall/usePayWall";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -66,6 +67,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     !!plan.latestGoal;
 
   const searchParams = useSearchParams();
+  const paywall = usePayWall();
 
   const gamePage = searchParams.get("gamePage");
   const { isProcessingGoal } = useGoalCreation();
@@ -106,13 +108,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   if (gamePage) {
     return <GamePage />;
-  }
-
-  if (!usage.loading && usage.balanceHours <= 0.01 && !game.isGameWinner) {
-    if (game.loadingProfile) {
-      return <InfoBlockedSection title={i18n._(`Loading...`)} />;
-    }
-    return <NoBalanceBlock lang={lang} />;
   }
 
   if (aiConversation.errorInitiating) {
@@ -175,7 +170,12 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   }
 
   if (!aiConversation.isStarted) {
-    return <Dashboard rolePlayInfo={rolePlayInfo} lang={lang} />;
+    return (
+      <>
+        {paywall.isShowPayWall && !usage.isShowPaymentModal && <NoBalanceBlock lang={lang} />}
+        <Dashboard rolePlayInfo={rolePlayInfo} lang={lang} />
+      </>
+    );
   }
 
   const defaultMessagesToComplete = 5;
@@ -186,6 +186,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   return (
     <Stack>
+      {paywall.isShowPayWall && !usage.isShowPaymentModal && <NoBalanceBlock lang={lang} />}
       <ConversationCanvas2
         messagesToComplete={planMessageCount}
         conversation={aiConversation.conversation}

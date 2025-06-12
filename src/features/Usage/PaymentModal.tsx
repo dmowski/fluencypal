@@ -29,14 +29,13 @@ import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useCurrency } from "../User/useCurrency";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
+import { pricePerHour } from "@/common/ai";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
   user: "Payment",
   gift: "Gift",
 };
-
-const PRICE_PER_HOUR_USD = 6;
 
 const isUseStripe = true;
 
@@ -52,7 +51,7 @@ export const PaymentModal = () => {
   const [isTermsChecked, setIsTermsChecked] = useState(false);
   const [isMarketingChecked, setIsMarketingChecked] = useState(false);
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
-  const [amountToAdd, setAmountToAdd] = useState(2);
+  const [amountToAdd, setAmountToAdd] = useState(1);
   const [isShowAmountInput, setIsShowAmountInput] = useState(false);
 
   const pathname = usePathname();
@@ -193,7 +192,7 @@ export const PaymentModal = () => {
                     gap: "10px",
                   }}
                 >
-                  {[2, 5, 10].map((amount) => (
+                  {[1, 2, 5].map((amount) => (
                     <Button
                       key={amount}
                       onClick={() => setAmountToAdd(amount)}
@@ -269,12 +268,12 @@ export const PaymentModal = () => {
                   }}
                 >
                   {i18n._(`Price per one AI hour:`)}{" "}
-                  <b>{currency.convertUsdToCurrency(PRICE_PER_HOUR_USD)}</b>
+                  <b>{currency.convertUsdToCurrency(pricePerHour)}</b>
                 </Typography>
 
                 <Typography variant="h5">
                   {i18n._(`Total:`)}{" "}
-                  <b>{currency.convertUsdToCurrency(amountToAdd * PRICE_PER_HOUR_USD)}</b>
+                  <b>{currency.convertUsdToCurrency(amountToAdd * pricePerHour)}</b>
                 </Typography>
               </Stack>
               <Divider />
@@ -366,7 +365,7 @@ export const PaymentModal = () => {
                     variant="contained"
                   >
                     {i18n._(`Continue to payment`)} |{" "}
-                    {currency.convertUsdToCurrency(amountToAdd * PRICE_PER_HOUR_USD)}
+                    {currency.convertUsdToCurrency(amountToAdd * pricePerHour)}
                   </Button>
                   <Button
                     onClick={() => {
