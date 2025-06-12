@@ -10,8 +10,9 @@ import {
 } from "@/features/Lang/lang";
 import { db } from "../Firebase/db";
 import dayjs from "dayjs";
-import { useCurrency } from "../Landing/Price/useCurrency";
+import { useCurrency } from "../User/useCurrency";
 import { confirmGtag } from "../Analytics/confirmGtag";
+import { getCountryByIP } from "../User/getCountry";
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -82,9 +83,11 @@ function useProvideSettings(): SettingsContextType {
     const lastLoginTimestamp = Date.now();
     const formattedLastLogin = dayjs(lastLoginTimestamp).format("YYYY-MM-DD HH:mm:ss");
 
+    const country = await getCountryByIP();
+
     await setDoc(
       userSettingsDoc,
-      { lastLoginAt: Date.now(), lastLoginAtDateTime: formattedLastLogin },
+      { lastLoginAt: Date.now(), lastLoginAtDateTime: formattedLastLogin, country },
       { merge: true }
     );
   };

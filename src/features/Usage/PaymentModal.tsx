@@ -27,7 +27,7 @@ import { usePathname } from "next/navigation";
 import { supportedLanguages } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
-import { useCurrency } from "../Landing/Price/useCurrency";
+import { useCurrency } from "../User/useCurrency";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
