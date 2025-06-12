@@ -56,6 +56,7 @@ export const useAudioRecorder = () => {
         audioDuration: audioDurationRef.current || 5,
         format,
         isGame,
+        isFree: false,
       });
       setTranscription(transcriptResponse.transcript);
       if (transcriptResponse.error) {

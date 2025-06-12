@@ -12,6 +12,7 @@ export const transcribeAudioFileWithOpenAI = async ({
   userId,
   format = "webm",
   languageCode,
+  isKeepGrammarMistakes,
 }: {
   file: File;
   model: TranscriptAiModel;
@@ -19,6 +20,7 @@ export const transcribeAudioFileWithOpenAI = async ({
   userId: string;
   format: string;
   languageCode: SupportedLanguage;
+  isKeepGrammarMistakes: boolean;
 }): Promise<TranscriptResponse> => {
   const openAIKey = process.env.OPENAI_API_KEY;
   if (!openAIKey) {
@@ -56,7 +58,9 @@ export const transcribeAudioFileWithOpenAI = async ({
       file: file,
       model: model,
       language: supportedLang,
-      prompt: "Transcribe the audio. Keep grammar mistakes and typos.",
+      prompt: isKeepGrammarMistakes
+        ? "Transcribe the audio. Keep grammar mistakes and typos."
+        : undefined,
     });
 
     const output = transcriptionResult.text || "";

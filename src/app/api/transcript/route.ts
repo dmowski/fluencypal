@@ -18,9 +18,6 @@ export async function POST(request: Request) {
     throw new Error("OpenAI API key is not set");
   }
 
-  const userInfo = await validateAuthToken(request);
-  const balance = await getUserBalance(userInfo.uid || "");
-
   const data = await request.formData();
   const file = data.get("audio") as File | null;
 
@@ -32,25 +29,20 @@ export async function POST(request: Request) {
     return Response.json(errorResponse);
   }
 
-  const actualFileSize = file?.size || 0;
-  const actualFileSizeMb = actualFileSize / (1024 * 1024);
-  const maxFileSize = 20 * 1024 * 1024; // 14 MB
-
-  const isAudioFileLonger = actualFileSize > maxFileSize;
-  if (isAudioFileLonger) {
-    sentSupportTelegramMessage(
-      `User recorded huge audio file (${actualFileSizeMb}) | ${userInfo.email}`
-    );
-  }
-
   const urlQueryParams = request.url.split("?")[1];
   const urlParams = new URLSearchParams(urlQueryParams);
   const languageCodeString = urlParams.get("lang") || "";
   const format = urlParams.get("format") || "webm";
   const isGame = urlParams.get("isGame") === "true";
+  const isFree = urlParams.get("isFree") === "true";
 
-  if (!isGame && balance.balanceHours < 0.01 && !balance.isGameWinner) {
-    console.error("Insufficient balance.");
+  let userEmail = "";
+  let userId = "";
+
+  if (!isFree) {
+    const userInfo = await validateAuthToken(request);
+    userEmail = userInfo.email || "";
+    userId = userInfo.uid || "";
   }
 
   const supportedLang =
@@ -59,17 +51,21 @@ export async function POST(request: Request) {
   const audioDurationString = urlParams.get("audioDuration") || "";
   const audioDuration = Math.min(Math.max(parseFloat(audioDurationString) || 0, 4), 50);
 
-  const model: TranscriptAiModel = "gpt-4o-transcribe";
+  const model: TranscriptAiModel = isFree ? "gpt-4o-mini-transcribe" : "gpt-4o-transcribe";
+  console.log("model", model);
   const responseData = await transcribeAudioFileWithOpenAI({
     file,
     model,
-    userEmail: userInfo.email || "",
     format,
     languageCode: supportedLang,
-    userId: userInfo.uid || "",
+
+    userEmail,
+    userId,
+    isKeepGrammarMistakes: isFree ? false : true,
   });
 
-  if (!responseData.error) {
+  if (!responseData.error && !isFree && userId) {
+    const balance = await getUserBalance(userId);
     const priceUsd = calculateAudioTranscriptionPrice(audioDuration, "gpt-4o-transcribe");
     const priceHours = convertUsdToHours(priceUsd);
     const usageLog: TranscriptUsageLog = {
@@ -85,7 +81,7 @@ export async function POST(request: Request) {
     };
 
     if (!balance.isGameWinner && !isGame) {
-      await addUsage(userInfo.uid, usageLog);
+      await addUsage(userId, usageLog);
     }
   }
 

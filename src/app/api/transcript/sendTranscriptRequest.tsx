@@ -8,6 +8,7 @@ interface SendTranscriptRequestProps {
   audioDuration: number;
   format: string;
   isGame: boolean;
+  isFree: boolean;
 }
 export const sendTranscriptRequest = async ({
   languageCode,
@@ -16,13 +17,14 @@ export const sendTranscriptRequest = async ({
   audioDuration,
   format,
   isGame,
+  isFree,
 }: SendTranscriptRequestProps) => {
   const formData = new FormData();
   const extension = format.includes("webm") ? "webm" : format.includes("mp4") ? "mp4" : "mp3";
 
   formData.append("audio", audioBlob, `recording.${extension}`);
   const response = await fetch(
-    `/api/transcript?lang=${languageCode}&audioDuration=${audioDuration}&format=${format}&isGame=${isGame ? "true" : "false"}`,
+    `/api/transcript?lang=${languageCode}&audioDuration=${audioDuration}&format=${format}&isGame=${isGame ? "true" : "false"}&isFree=${isFree ? "true" : "false"}`,
     {
       method: "POST",
       body: formData,
