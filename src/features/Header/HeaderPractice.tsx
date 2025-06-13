@@ -265,7 +265,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
                       }}
                     >
                       <LanguageSwitcher
-                        size="button"
+                        size="large"
                         isAuth={auth.isAuthorized}
                         langToLearn={settings.languageCode || "en"}
                         setLanguageToLearn={settings.setLanguage}

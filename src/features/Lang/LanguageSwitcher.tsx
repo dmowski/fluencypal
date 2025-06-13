@@ -18,6 +18,7 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { ClickCard } from "../Dashboard/ClickCard";
 import { useLocalStorage } from "react-use";
 import { parseLangFromUrl } from "./parseLangFromUrl";
+import PersonIcon from "@mui/icons-material/Person";
 
 const LanguageCard = ({
   lang,
