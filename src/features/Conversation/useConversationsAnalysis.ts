@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useAiConversation } from "./useAiConversation";
 import { usePlan } from "../Plan/usePlan";
 import { useSettings } from "../Settings/useSettings";
@@ -22,7 +22,7 @@ export const useConversationsAnalysis = () => {
 
   const learningLanguage = settings.languageCode || "en";
 
-  const pageLangCode = getPageLangCode();
+  const pageLangCode = useMemo(() => getPageLangCode(), []);
   const planNativeLanguage = plan.latestGoal?.goalQuiz?.nativeLanguageCode;
   const nativeLanguage = pageLangCode !== learningLanguage ? pageLangCode : planNativeLanguage;
 

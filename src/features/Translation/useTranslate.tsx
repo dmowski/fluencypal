@@ -2,7 +2,7 @@ import { translateRequest } from "@/app/api/translate/translateRequest";
 import { useSettings } from "../Settings/useSettings";
 import { getPageLangCode } from "../Lang/lang";
 import { usePlan } from "../Plan/usePlan";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Button, Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
@@ -15,12 +15,15 @@ export const useTranslate = () => {
   const settings = useSettings();
   const plan = usePlan();
 
-  const pageLangCode = getPageLangCode();
+  const pageLangCode = useMemo(() => getPageLangCode(), []);
+  const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
   const learningLanguage = settings.languageCode || "en";
 
   const planNativeLanguage = plan.latestGoal?.goalQuiz?.nativeLanguageCode;
 
-  const targetLanguage = pageLangCode !== learningLanguage ? pageLangCode : planNativeLanguage;
+  const targetCandidates = [nativeLanguageCode, planNativeLanguage, pageLangCode];
+
+  const targetLanguage = targetCandidates.find((lang) => lang && lang !== learningLanguage) || null;
 
   const isTranslateAvailable = targetLanguage && targetLanguage !== learningLanguage;
 
