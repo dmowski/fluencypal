@@ -1,8 +1,7 @@
-import { SupportedLanguage } from "@/features/Lang/lang";
 import { TranscriptResponse } from "./types";
 
 interface SendTranscriptRequestProps {
-  languageCode: SupportedLanguage;
+  languageCode: string;
   audioBlob: Blob;
   authKey: string;
   audioDuration: number;

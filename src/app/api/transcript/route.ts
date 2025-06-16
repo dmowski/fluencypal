@@ -6,7 +6,6 @@ import {
 import { validateAuthToken } from "../config/firebase";
 import { getUserBalance } from "../payment/getUserBalance";
 import { TranscriptResponse } from "./types";
-import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 import { supportedLanguages } from "@/features/Lang/lang";
 import { TranscriptUsageLog } from "@/common/usage";
 import { addUsage } from "../payment/addUsage";
@@ -58,7 +57,6 @@ export async function POST(request: Request) {
     model,
     format,
     languageCode: supportedLang,
-
     userEmail,
     userId,
     isKeepGrammarMistakes: isFree ? false : true,
