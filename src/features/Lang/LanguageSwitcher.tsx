@@ -1,13 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useLingui } from "@lingui/react";
 import { usePathname, useRouter } from "next/navigation";
-import { Button, IconButton, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import {
   availableOnLabelMap,
   fullEnglishLanguageName,
-  fullLanguageName,
   getUserLangCode,
   SupportedLanguage,
   supportedLanguages,
@@ -15,36 +14,21 @@ import {
 import { getUrlStart } from "./getUrlStart";
 import { Globe, GraduationCap, Rabbit } from "lucide-react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { ClickCard } from "../Dashboard/ClickCard";
 import { useLocalStorage } from "react-use";
 import { parseLangFromUrl } from "./parseLangFromUrl";
-import PersonIcon from "@mui/icons-material/Person";
-
-const LanguageCard = ({
-  lang,
-  onClick,
-  selected,
-}: {
-  lang: SupportedLanguage;
-  onClick: () => void;
-  selected: boolean;
-}) => {
-  return (
-    <ClickCard
-      isDone={selected}
-      title={fullEnglishLanguageName[lang]}
-      subTitle={fullLanguageName[lang]}
-      onStart={onClick}
-    />
-  );
-};
+import { LangSelector } from "./LangSelector";
 
 interface LanguageSwitcherProps {
   size?: "small" | "large" | "button";
-  isAuth: boolean;
+  isAuth?: boolean;
+
   langToLearn?: SupportedLanguage;
-  setLanguageToLearn: (lang: SupportedLanguage) => void;
-  setPageLanguage: (lang: SupportedLanguage) => void;
+  setLanguageToLearn?: (lang: SupportedLanguage) => void;
+
+  nativeLang?: SupportedLanguage;
+  setNativeLanguage?: (lang: SupportedLanguage) => void;
+
+  setPageLanguage?: (lang: SupportedLanguage) => void;
 }
 export function LanguageSwitcher({
   size,
@@ -52,6 +36,8 @@ export function LanguageSwitcher({
   langToLearn,
   setLanguageToLearn,
   setPageLanguage,
+  setNativeLanguage,
+  nativeLang,
 }: LanguageSwitcherProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -65,38 +51,32 @@ export function LanguageSwitcher({
     false
   );
 
-  const [locale, setLocale] = useState<SupportedLanguage>(parseLangFromUrl(pathname));
+  const pageLang = useMemo(() => parseLangFromUrl(pathname), [pathname]);
+  const [locale, setLocale] = useState<SupportedLanguage>(pageLang);
   const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
 
-  async function handleChange(newLang: SupportedLanguage) {
-    if (activeTab === "page") {
-      setIsLoading(true);
-      const sliceNumber = locale !== "en" ? 2 : pathname.startsWith("/en") ? 2 : 1;
+  const updatePageLanguage = (newLang: SupportedLanguage) => {
+    setIsLoading(true);
+    const sliceNumber = locale !== "en" ? 2 : pathname.startsWith("/en") ? 2 : 1;
 
-      const pathNameWithoutLocale = pathname?.split("/")?.slice(sliceNumber) ?? [];
+    const pathNameWithoutLocale = pathname?.split("/")?.slice(sliceNumber) ?? [];
 
-      const query = new URLSearchParams(window.location.search).toString();
+    const query = new URLSearchParams(window.location.search).toString();
 
-      const newPath = `${getUrlStart(newLang)}${pathNameWithoutLocale.join("/")}${
-        query ? `?${query}` : ""
-      }`;
-      router.push(newPath);
-      setPageLanguage(newLang);
+    const newPath = `${getUrlStart(newLang)}${pathNameWithoutLocale.join("/")}${
+      query ? `?${query}` : ""
+    }`;
+    router.push(newPath);
+    setPageLanguage?.(newLang);
 
-      setLocale(locale);
+    setLocale(locale);
 
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
-    } else {
-      setLanguageToLearn(newLang);
-    }
-  }
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  };
 
-  const selectedLangCode = activeTab === "page" ? supportedLang : langToLearn;
-
-  const systemLangs = getUserLangCode();
-  const otherLangs = supportedLanguages.filter((lang) => !systemLangs.includes(lang));
+  const systemLangs = useMemo(() => getUserLangCode(), []);
 
   const isCurrentPageLangIsSystem = systemLangs.length && systemLangs.includes(supportedLang);
   const supportedLangCodeLabel =
@@ -187,152 +167,123 @@ export function LanguageSwitcher({
             opacity: isLoading ? 0.2 : 1,
           }}
         >
-          <Tabs value={activeTab} onChange={(e, value) => setActiveTab(value)}>
-            <Tab icon={<Globe />} iconPosition="start" label={i18n._(`Page`)} value={"page"} />
-            <Tab
-              icon={<GraduationCap />}
-              iconPosition="start"
-              label={i18n._(`For Learning`)}
-              value={"learn"}
-            />
-          </Tabs>
+          <Stack
+            gap={"30px"}
+            sx={{
+              height: "calc(100svh - 270px)",
+              maxWidth: "400px",
+            }}
+          >
+            {isAuth && setLanguageToLearn && langToLearn && (
+              <Stack
+                sx={{
+                  width: "100%",
+                  alignItems: "flex-start",
+                  gap: "10px",
+                  paddingTop: "20px",
+                }}
+              >
+                <Stack
+                  sx={{
+                    alignItems: "center",
+                    flexDirection: "row",
+                    gap: "10px",
+                    paddingLeft: "3px",
+                  }}
+                >
+                  <Typography
+                    variant="h3"
+                    align="left"
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: "1rem",
+                      boxSizing: "border-box",
+                      lineHeight: "1.1",
+                    }}
+                  >
+                    {i18n._(`Language to Learn`)}
+                  </Typography>
+                  <GraduationCap size={"18px"} />
+                </Stack>
+                <LangSelector
+                  value={langToLearn}
+                  onChange={(newLang) => setLanguageToLearn(newLang)}
+                />
+              </Stack>
+            )}
 
-          {!isAuth && activeTab === "learn" ? (
+            {isAuth && setNativeLanguage && nativeLang && (
+              <Stack
+                sx={{
+                  width: "100%",
+                  alignItems: "flex-start",
+                  gap: "10px",
+                  paddingTop: "20px",
+                }}
+              >
+                <Stack
+                  sx={{
+                    alignItems: "center",
+                    flexDirection: "row",
+                    gap: "10px",
+                    paddingLeft: "3px",
+                  }}
+                >
+                  <Typography
+                    variant="h3"
+                    align="left"
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: "1rem",
+                      boxSizing: "border-box",
+                      lineHeight: "1.1",
+                    }}
+                  >
+                    {i18n._(`Native Language`)}
+                  </Typography>
+                </Stack>
+                <LangSelector
+                  value={nativeLang || "en"}
+                  onChange={(newLang) => setNativeLanguage(newLang)}
+                />
+              </Stack>
+            )}
+
             <Stack
               sx={{
-                gap: "26px",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "calc(100svh - 270px)",
+                width: "100%",
+                alignItems: "flex-start",
+                gap: "10px",
+                paddingTop: "20px",
               }}
             >
               <Stack
                 sx={{
-                  padding: "30px",
-                  borderRadius: "70px",
-                  backgroundColor: "rgba(255, 255, 255, 0.07)",
-                }}
-              >
-                <Rabbit
-                  size={"60px"}
-                  strokeWidth={"1px"}
-                  style={{
-                    opacity: 0.7,
-                  }}
-                />
-              </Stack>
-              <Stack
-                sx={{
                   alignItems: "center",
+                  flexDirection: "row",
                   gap: "10px",
+                  paddingLeft: "3px",
                 }}
               >
                 <Typography
-                  variant="h6"
-                  align="center"
-                  component="h3"
+                  variant="h3"
+                  align="left"
                   sx={{
-                    opacity: 0.8,
+                    fontWeight: 500,
+                    fontSize: "1rem",
+                    boxSizing: "border-box",
+                    lineHeight: "1.1",
                   }}
                 >
-                  {i18n._(`To learn a language, please sign in`)}
+                  {i18n._(`Page Language`)}
                 </Typography>
-
-                <Typography
-                  variant="body2"
-                  align="center"
-                  component="p"
-                  sx={{
-                    opacity: 0.8,
-                    maxWidth: "700px",
-                  }}
-                >
-                  {supportedLanguages.map((lang) => `${fullEnglishLanguageName[lang]}`).join(", ")}
-                </Typography>
-
-                <Button variant="contained" href={`${getUrlStart(supportedLang)}practice`}>
-                  {i18n._(`Sign in`)}
-                </Button>
               </Stack>
+              <LangSelector
+                value={pageLang || "en"}
+                onChange={(newLang) => updatePageLanguage(newLang)}
+              />
             </Stack>
-          ) : (
-            <>
-              <Stack
-                gap={"30px"}
-                sx={{
-                  height: "calc(100svh - 270px)",
-                }}
-              >
-                {systemLangs.length > 0 && (
-                  <Stack gap={"10px"}>
-                    <Typography variant="body2" component="h3">
-                      {i18n._(`Suggested for you:`)}
-                    </Typography>
-                    <Stack
-                      sx={{
-                        display: "grid",
-                        gap: "16px",
-                        gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
-                        "@media (max-width: 800px)": {
-                          gridTemplateColumns: "1fr 1fr 1fr",
-                        },
-                        "@media (max-width: 600px)": {
-                          gridTemplateColumns: "1fr 1fr",
-                        },
-                        "@media (max-width: 500px)": {
-                          gridTemplateColumns: "1fr",
-                        },
-                      }}
-                    >
-                      {systemLangs.map((option, index) => {
-                        return (
-                          <LanguageCard
-                            key={index}
-                            lang={option}
-                            onClick={() => handleChange(option)}
-                            selected={option === selectedLangCode}
-                          />
-                        );
-                      })}
-                    </Stack>
-                  </Stack>
-                )}
-                <Stack gap={"10px"}>
-                  <Typography variant="body2" component="h3">
-                    {systemLangs.length > 0 ? i18n._(`Other languages:`) : ""}
-                  </Typography>
-                  <Stack
-                    sx={{
-                      display: "grid",
-                      gap: "16px",
-
-                      gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
-                      "@media (max-width: 800px)": {
-                        gridTemplateColumns: "1fr 1fr 1fr",
-                      },
-                      "@media (max-width: 600px)": {
-                        gridTemplateColumns: "1fr 1fr",
-                      },
-                      "@media (max-width: 500px)": {
-                        gridTemplateColumns: "1fr",
-                      },
-                    }}
-                  >
-                    {otherLangs.map((option, index) => {
-                      return (
-                        <LanguageCard
-                          key={index}
-                          lang={option}
-                          onClick={() => handleChange(option)}
-                          selected={option === selectedLangCode}
-                        />
-                      );
-                    })}
-                  </Stack>
-                </Stack>
-              </Stack>
-            </>
-          )}
+          </Stack>
         </Stack>
       </CustomModal>
     </Stack>
