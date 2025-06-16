@@ -4,11 +4,13 @@ import { LangSelector } from "../Lang/LangSelector";
 import { GameQuestion } from "./GameQuestion";
 import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CheckIcon, PencilIcon, Swords } from "lucide-react";
 import { useSettings } from "../Settings/useSettings";
 import { fullEnglishLanguageName } from "../Lang/lang";
 import dayjs from "dayjs";
+import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
+import { useLanguageGroup } from "../Goal/useLanguageGroup";
 
 export const GamePage = () => {
   const game = useGame();
@@ -17,9 +19,21 @@ export const GamePage = () => {
   const [isShowLangSelectorState, setIsShowLangSelector] = useState(false);
   const [playGame, setPlayGame] = useState(false);
 
-  const isNativeLanguageIsTheSameAsGameLanguage = game.nativeLanguageCode === settings.languageCode;
+  const nativeLang = settings.userSettings?.nativeLanguageCode;
 
-  const nativeLanguageFullName = fullEnglishLanguageName[game.nativeLanguageCode || "en"];
+  const isNativeLanguageIsTheSameAsGameLanguage = nativeLang === settings.languageCode;
+
+  const { languageGroups } = useLanguageGroup({
+    defaultGroupTitle: i18n._(`Other languages`),
+    systemLanguagesTitle: i18n._(`System languages`),
+  });
+
+  const selectedNativeLanguage = useMemo(
+    () => languageGroups.find((lang) => lang.code === nativeLang),
+    [languageGroups, nativeLang]
+  );
+
+  const nativeLanguageFullName = selectedNativeLanguage?.nativeName;
   const isShowLangSelector = isShowLangSelectorState || isNativeLanguageIsTheSameAsGameLanguage;
 
   const [isEditUsername, setIsEditUsername] = useState(false);
@@ -121,12 +135,10 @@ export const GamePage = () => {
           </Typography>
 
           {isShowLangSelector && (
-            <LangSelector
-              value={game.nativeLanguageCode || "en"}
-              onChange={(lang) => {
-                game.setNativeLanguageCode(lang);
-                setIsShowLangSelector(false);
-              }}
+            <LanguageAutocomplete
+              options={languageGroups}
+              value={selectedNativeLanguage || null}
+              onChange={(langCode) => settings.setNativeLanguage(langCode)}
             />
           )}
         </Stack>

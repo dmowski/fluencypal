@@ -9,10 +9,7 @@ import {
   submitAnswerRequest,
   updateUserProfileRequest,
 } from "@/features/Game/gameBackendRequests";
-import { usePathname } from "next/navigation";
-import { parseLangFromUrl } from "../Lang/parseLangFromUrl";
-import { useLocalStorage } from "react-use";
-import { SupportedLanguage } from "../Lang/lang";
+
 import { useSettings } from "../Settings/useSettings";
 import { shuffleArray } from "@/libs/array";
 import { useDocumentData } from "react-firebase-hooks/firestore";
@@ -32,9 +29,6 @@ interface GameContextType {
     answer: string
   ) => Promise<{ isCorrect: boolean; description: string | null }>;
   nextQuestion: () => void;
-
-  nativeLanguageCode: SupportedLanguage | null;
-  setNativeLanguageCode: (lang: SupportedLanguage) => void;
   myPosition: number | null;
   isGameWinner: boolean;
   updateUsername: (username: string) => Promise<void>;
@@ -53,18 +47,14 @@ function useProvideGame(): GameContextType {
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [questions, setQuestions] = useState<GameQuestionShort[]>([]);
   const [activeQuestion, setActiveQuestion] = useState<GameQuestionShort | null>(null);
-  const pathname = usePathname();
 
+  const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
   const [gameRate] = useDocumentData(db.documents.gameRate);
   const [gameLastVisit] = useDocumentData(db.documents.gameLastVisit);
   const stats = useMemo(() => {
     if (!gameRate) return [];
     return getSortedStatsFromData(gameRate);
   }, [gameRate]);
-
-  const nativeLanguageCodeFromUrl = useMemo(() => parseLangFromUrl(pathname), [pathname]);
-  const [nativeLanguageCode, setNativeLanguageCode] =
-    useLocalStorage<SupportedLanguage>("gameNativeLanguage_2");
 
   const updateLastVisit = async () => {
     if (!auth.uid || !myProfile?.username) return;
@@ -84,16 +74,6 @@ function useProvideGame(): GameContextType {
     updateLastVisit();
   }, [auth.uid, myProfile?.username]);
 
-  useEffect(() => {
-    if (
-      settings.languageCode &&
-      settings.languageCode !== nativeLanguageCodeFromUrl &&
-      !nativeLanguageCode
-    ) {
-      setNativeLanguageCode(nativeLanguageCodeFromUrl);
-    }
-  }, [nativeLanguageCodeFromUrl, settings.languageCode]);
-
   const userId = auth.uid;
 
   const getMyProfile = async () => {
@@ -102,9 +82,13 @@ function useProvideGame(): GameContextType {
   };
 
   const loadMoreQuestions = async () => {
+    if (!nativeLanguageCode) {
+      return;
+    }
+
     const generatedQuestions = await getGameQuestionsRequest(
       {
-        nativeLanguageCode: nativeLanguageCode || nativeLanguageCodeFromUrl,
+        nativeLanguageCode,
       },
       await auth.getToken()
     );
@@ -233,8 +217,6 @@ function useProvideGame(): GameContextType {
     generateQuestions,
     activeQuestion,
 
-    nativeLanguageCode: nativeLanguageCode || null,
-    setNativeLanguageCode,
     updateUsername,
     gameLastVisit: gameLastVisit || null,
     pointsToNextPosition: pointsToNextPosition || null,
