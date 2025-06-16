@@ -26,7 +26,7 @@ interface SettingsContextType {
   loading: boolean;
   setLanguage: (language: SupportedLanguage) => Promise<SupportedLanguage>;
   setPageLanguage: (language: SupportedLanguage) => Promise<void>;
-  setNativeLanguage: (language: SupportedLanguage) => Promise<void>;
+  setNativeLanguage: (language: string) => Promise<void>;
   userSettings: UserSettings | null;
 }
 
@@ -117,10 +117,9 @@ function useProvideSettings(): SettingsContextType {
     await setDoc(userSettingsDoc, { pageLanguageCode: langCodeValidated }, { merge: true });
   };
 
-  const setNativeLanguage = async (languageCode: SupportedLanguage) => {
+  const setNativeLanguage = async (languageCode: string) => {
     if (!userSettingsDoc) return;
-    const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || "en";
-    await setDoc(userSettingsDoc, { nativeLanguageCode: langCodeValidated }, { merge: true });
+    await setDoc(userSettingsDoc, { nativeLanguageCode: languageCode }, { merge: true });
   };
 
   return {
