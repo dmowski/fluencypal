@@ -183,6 +183,7 @@ export function LanguageSwitcher({
               gap={"30px"}
               sx={{
                 maxWidth: "400px",
+                minWidth: "250px",
               }}
             >
               {isAuth && setLanguageToLearn && langToLearn && (
