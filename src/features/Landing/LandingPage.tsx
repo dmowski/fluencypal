@@ -11,6 +11,7 @@ import {
   fullEnglishLanguageName,
   SupportedLanguage,
   supportedLanguages,
+  supportedLanguagesToLearn,
 } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "../Lang/getUrlStart";
@@ -243,7 +244,9 @@ export default function LandingPage({ lang }: LandingPageProps) {
                         {i18n._(`Available languages:`)}
                       </Typography>
                       <Typography variant="body2" component="p">
-                        {supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}
+                        {supportedLanguagesToLearn
+                          .map((code) => fullEnglishLanguageName[code])
+                          .join(", ")}
                       </Typography>
                     </Stack>
                   </Stack>

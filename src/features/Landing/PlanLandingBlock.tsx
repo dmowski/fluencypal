@@ -1,11 +1,12 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { buttonStyle, maxLandingWidth, subTitleFontStyle, titleFontStyle } from "./landingSettings";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage, supportedLanguagesToLearn } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { cardColors, modeCardProps } from "../Plan/data";
 import { PlanElement, PlanElementMode } from "../Plan/types";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { PlanLandingCard } from "../Plan/PlanLandingCard";
+import { Trans } from "@lingui/react/macro";
 
 interface PlanLandingBlockProps {
   lang: SupportedLanguage;
@@ -104,6 +105,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
     words: i18n._(`Words`),
     rule: i18n._(`Rule`),
   };
+
+  const countOfLanguages = supportedLanguagesToLearn.length;
 
   return (
     <Stack
@@ -294,7 +297,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                     color: "rgb(1, 162, 255)",
                   }}
                 >
-                  {i18n._(`20+ languages to practice`)}
+                  <Trans>{countOfLanguages} languages to practice</Trans>
                 </Typography>
               </Stack>
             </Stack>
