@@ -3,6 +3,7 @@ import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang
 import { generateTextWithAi } from "../../../app/api/ai/generateTextWithAi";
 import { shuffleArray } from "@/libs/array";
 import { imageDescriptions } from "@/features/Game/ImagesDescriptions";
+import { fullLanguages } from "@/libs/languages";
 
 interface QuestionOutput {
   fullQuestions: GameQuestionFull;
@@ -17,7 +18,12 @@ const getUserInfoForAi = ({
   const userInfo =
     userInfoRecords.length > 0 ? `Info about the user: ${userInfoRecords.join(", ")}` : "";
 
-  const userNativeLanguage = `User's native language: ${fullEnglishLanguageName[nativeLanguage]}`;
+  const nativeLanguageTitle =
+    fullLanguages.find((lang) => lang.code === nativeLanguage)?.englishName ||
+    fullEnglishLanguageName[nativeLanguage as SupportedLanguage] ||
+    nativeLanguage;
+
+  const userNativeLanguage = `User's native language: ${nativeLanguageTitle}`;
   const userLearningLanguage = `User's learning language: ${fullEnglishLanguageName[learningLanguage]}`;
 
   const userInfoForAi = [userInfo, userNativeLanguage, userLearningLanguage]
@@ -37,8 +43,6 @@ const splitSentenceIntoWords = (sentence: string): string[] => {
 };
 
 const generateImageQuestions = async ({
-  userInfoRecords,
-  nativeLanguage,
   learningLanguage,
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
   const allQuestions: QuestionOutput[] = imageDescriptions.map((image) => {
@@ -195,7 +199,7 @@ Do not wrap your answer in any intro text.
 
 interface generateRandomQuestionsProps {
   userInfoRecords: string[];
-  nativeLanguage: SupportedLanguage;
+  nativeLanguage: string;
   learningLanguage: SupportedLanguage;
 }
 
