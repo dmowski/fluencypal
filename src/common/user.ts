@@ -5,6 +5,7 @@ export interface UserSettings {
   createdAt: number | null;
   currency: string | null;
   country: string | null;
+  countryName: string | null;
   email: string;
   lastLoginAt: number | null;
   lastLoginAtDateTime: string | null;

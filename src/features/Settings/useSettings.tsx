@@ -13,6 +13,7 @@ import dayjs from "dayjs";
 import { useCurrency } from "../User/useCurrency";
 import { confirmGtag } from "../Analytics/confirmGtag";
 import { getCountryByIP } from "../User/getCountry";
+import { countries } from "@/libs/countries";
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -84,10 +85,13 @@ function useProvideSettings(): SettingsContextType {
     const formattedLastLogin = dayjs(lastLoginTimestamp).format("YYYY-MM-DD HH:mm:ss");
 
     const country = await getCountryByIP();
+    const countryName = country
+      ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || "Unknown"
+      : "-";
 
     await setDoc(
       userSettingsDoc,
-      { lastLoginAt: Date.now(), lastLoginAtDateTime: formattedLastLogin, country },
+      { lastLoginAt: Date.now(), lastLoginAtDateTime: formattedLastLogin, country, countryName },
       { merge: true }
     );
   };
