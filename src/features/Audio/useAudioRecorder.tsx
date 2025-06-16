@@ -51,6 +51,7 @@ export const useAudioRecorder = ({
     if (!recordedAudioBlog) {
       setTranscription(null);
       setIsTranscribing(false);
+      recorderControls.clearCanvas();
       return;
     }
 
@@ -73,7 +74,7 @@ export const useAudioRecorder = ({
     } catch (error) {
       setTranscriptionError("Error during transcription");
     }
-
+    recorderControls.clearCanvas();
     setIsTranscribing(false);
   };
 
