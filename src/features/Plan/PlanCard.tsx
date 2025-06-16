@@ -155,8 +155,12 @@ export const PlanCard = ({
           ":hover": {
             backgroundColor: isActive ? "rgba(13, 220, 196, 0.2)" : "rgba(13, 220, 196, 0.15)",
             "@media (max-width: 450px)": {
-              backgroundColor: isActive ? "rgba(13, 220, 196, 0.1)" : "rgba(13, 220, 196, 0.02)",
+              backgroundColor: "rgba(13, 220, 196, 0.1)",
             },
+          },
+
+          "@media (max-width: 500px)": {
+            gridTemplateColumns: "1fr",
           },
         }}
       >
