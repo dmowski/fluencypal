@@ -7,18 +7,23 @@ import {
   SupportedLanguage,
   supportedLanguages,
 } from "@/features/Lang/lang";
-import { JSX } from "react";
+import { JSX, useMemo } from "react";
 import { MenuItem, Select, Stack, Typography } from "@mui/material";
 
 interface LangSelectorProps {
   value: SupportedLanguage | null;
   onChange: (selectedLang: SupportedLanguage) => void;
+  availableList?: SupportedLanguage[];
 }
 
-export const LangSelector = ({ value, onChange }: LangSelectorProps): JSX.Element => {
-  const userCodes = getUserLangCode();
+export const LangSelector = ({
+  value,
+  onChange,
+  availableList,
+}: LangSelectorProps): JSX.Element => {
+  const userCodes = useMemo(() => getUserLangCode(), []);
 
-  const optionsFull = supportedLanguages
+  const optionsFull = (availableList || supportedLanguages)
     .map((lang: SupportedLanguage) => {
       return {
         label: getLabelFromCode(lang),

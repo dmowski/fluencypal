@@ -10,6 +10,7 @@ import {
   getUserLangCode,
   SupportedLanguage,
   supportedLanguages,
+  supportedLanguagesToLearn,
 } from "@/features/Lang/lang";
 import { getUrlStart } from "./getUrlStart";
 import { Globe, GraduationCap, Rabbit } from "lucide-react";
@@ -219,6 +220,7 @@ export function LanguageSwitcher({
                   </Stack>
                   <LangSelector
                     value={langToLearn}
+                    availableList={supportedLanguagesToLearn}
                     onChange={(newLang) => setLanguageToLearn(newLang)}
                   />
                 </Stack>

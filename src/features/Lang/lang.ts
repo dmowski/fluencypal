@@ -58,6 +58,32 @@ export const supportedLanguages: SupportedLanguage[] = [
   "be",
 ];
 
+export const supportedLanguagesToLearn: SupportedLanguage[] = [
+  "en",
+  "es",
+  "zh",
+  "fr",
+  "de",
+  "ja",
+  "ko",
+  "ar",
+  "pt",
+
+  "it",
+  "pl",
+  "ru",
+
+  "uk",
+  "id",
+  "ms",
+  "th",
+  "tr",
+  "vi",
+  "da", // Danish
+  "no", // Norwegian
+  "sv", // Swedish
+];
+
 export const getUserLangCode = (): SupportedLanguage[] => {
   const userLang = navigator.languages;
   const langCodes = supportedLanguages.filter((lang) => userLang.includes(lang));

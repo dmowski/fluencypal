@@ -1,6 +1,6 @@
 "use client";
 
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { SupportedLanguage, supportedLanguagesToLearn } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import {
   Button,
@@ -333,6 +333,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             </Stack>
             <LangSelector
               value={data.languageToLearn}
+              availableList={supportedLanguagesToLearn}
               onChange={(lang) => {
                 updateData({
                   languageToLearn: lang,

@@ -5,7 +5,11 @@ import { useSettings } from "../Settings/useSettings";
 import { useLingui } from "@lingui/react";
 import { useEffect, useState } from "react";
 import { ArrowRight, GraduationCap } from "lucide-react";
-import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
+import {
+  SupportedLanguage,
+  supportedLanguages,
+  supportedLanguagesToLearn,
+} from "@/features/Lang/lang";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getUrlStart } from "../Lang/getUrlStart";
 
@@ -173,6 +177,7 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
                 </Stack>
                 <LangSelector
                   value={langToLearn || "en"}
+                  availableList={supportedLanguagesToLearn}
                   onChange={(lang) => handleChangeLearnLang(lang)}
                 />
               </Stack>
