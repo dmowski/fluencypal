@@ -71,17 +71,17 @@ export const supportedLanguagesToLearn: SupportedLanguage[] = [
 
   "it",
   "pl",
-  "ru",
+  //"ru",
 
-  "uk",
+  //"uk",
   "id",
   "ms",
   "th",
   "tr",
   "vi",
-  "da", // Danish
-  "no", // Norwegian
-  "sv", // Swedish
+  //"da", // Danish
+  //"no", // Norwegian
+  //"sv", // Swedish
 ];
 
 export const getUserLangCode = (): SupportedLanguage[] => {

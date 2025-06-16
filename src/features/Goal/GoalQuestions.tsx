@@ -1,6 +1,10 @@
 "use client";
 
-import { SupportedLanguage, supportedLanguagesToLearn } from "@/features/Lang/lang";
+import {
+  SupportedLanguage,
+  supportedLanguages,
+  supportedLanguagesToLearn,
+} from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import {
   Button,
@@ -11,7 +15,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { FC, JSX, useEffect, useState } from "react";
+import { FC, JSX, useEffect, useMemo, useState } from "react";
 import { buttonStyle, subTitleFontStyle } from "../Landing/landingSettings";
 import { ArrowLeft, ArrowRight, Check, Copy, ExternalLink, GraduationCap, Mic } from "lucide-react";
 import { LangSelector } from "../Lang/LangSelector";
@@ -28,6 +32,9 @@ import { sleep } from "@/libs/sleep";
 import { useGoalQuizForm } from "./useGoalQuizForm";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { uniq } from "@/libs/uniq";
+import { fullLanguages } from "@/libs/languages";
+import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
+import { useLanguageGroup } from "./useLanguageGroup";
 
 const TermsComponent = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -85,25 +92,14 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
 }) => {
   const { i18n } = useLingui();
 
-  const { data, updateData } = useGoalQuizForm({
+  const { data, updateData, isQuizDataLoading } = useGoalQuizForm({
     step: 0,
     description: "",
     minPerDay: 10,
     languageToLearn: defaultLang || "en",
-    nativeLanguage: lang || "en",
+    nativeLanguage: null,
     level: "A2",
   });
-
-  useEffect(() => {
-    const isChanging = data.nativeLanguage !== lang;
-    if (!isChanging) {
-      return;
-    }
-
-    updateData({
-      nativeLanguage: lang || "en",
-    });
-  }, [lang]);
 
   const { inWebView } = useIsWebView();
 
@@ -113,14 +109,20 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const updatePageLang = (value: SupportedLanguage) => {
+  const updateNativeLang = (value: string) => {
     updateData({
       nativeLanguage: value,
     });
-    // update page
 
-    const newPath = `${getUrlStart(value)}quiz`;
-    router.push(newPath);
+    const isSupportedLanguage = supportedLanguagesToLearn.find(
+      (supportedLang) => supportedLang === value
+    );
+
+    if (isSupportedLanguage) {
+      const newPath = `${getUrlStart(value)}quiz`;
+      console.log("updateNativeLang");
+      router.push(newPath);
+    }
   };
 
   const updateDescription = (value: string) => {
@@ -145,7 +147,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
         languageToLearn: data.languageToLearn,
         level: data.level || "A2",
         minPerDaySelected: data.minPerDay,
-        nativeLanguageCode: data.nativeLanguage,
+        nativeLanguageCode: data.nativeLanguage || "en",
       });
       setIsLoading(false);
       setIsSubmitted(true);
@@ -286,9 +288,75 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
 
   const languagesToRecord = uniq([data.nativeLanguage, data.languageToLearn].filter(Boolean));
   const languagesTitles = languagesToRecord
-    .map((lang) => langTranslations[lang] || lang)
+    .map(
+      (lang) =>
+        fullLanguages.find((langDefinition) => langDefinition.code === lang)?.nativeName || lang
+    )
     .join(", ")
     .trim();
+
+  const { languageGroups } = useLanguageGroup({
+    defaultGroupTitle: i18n._(`Other languages`),
+    systemLanguagesTitle: i18n._(`System languages`),
+  });
+
+  useEffect(() => {
+    if (data.nativeLanguage || isQuizDataLoading) {
+      return;
+    }
+    const firstSystemLanguage = languageGroups.find((lang) => lang.isSystemLanguage);
+    if (firstSystemLanguage) {
+      updateNativeLang(firstSystemLanguage.code);
+    }
+  }, [languageGroups, isQuizDataLoading]);
+
+  useEffect(() => {
+    const isWindow = typeof window !== "undefined";
+    if (!isWindow) {
+      return;
+    }
+
+    if (!languageGroups.length) {
+      return;
+    }
+
+    const systemLanguages = languageGroups.filter((lang) => lang.isSystemLanguage);
+    if (!systemLanguages.length) {
+      return;
+    }
+
+    const isPageLanguageIsSystemLanguage = systemLanguages.some(
+      (systemLang) => systemLang.code === lang
+    );
+    if (isPageLanguageIsSystemLanguage) {
+      return;
+    }
+
+    const supportedLanguageFromSystemLanguages = systemLanguages.find((systemLang) =>
+      supportedLanguages.includes(systemLang.code as SupportedLanguage)
+    );
+
+    if (!supportedLanguageFromSystemLanguages) {
+      return;
+    }
+
+    const newPageLang =
+      supportedLanguages.find(
+        (supportedLang) => supportedLang === supportedLanguageFromSystemLanguages.code
+      ) || lang;
+
+    if (newPageLang === lang) {
+      return;
+    }
+
+    const newPath = `${getUrlStart(newPageLang)}quiz`;
+    router.push(newPath);
+  }, [languageGroups]);
+
+  const selectedNativeLanguage = useMemo(
+    () => languageGroups.find((lang) => lang.code === data.nativeLanguage),
+    [data.nativeLanguage, languageGroups]
+  );
 
   const steps: StepInfo[] = [
     {
@@ -371,7 +439,11 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 {i18n._(`My native language`)}
               </Typography>
             </Stack>
-            <LangSelector value={data.nativeLanguage} onChange={(lang) => updatePageLang(lang)} />
+            <LanguageAutocomplete
+              options={languageGroups}
+              value={selectedNativeLanguage || null}
+              onChange={(langCode) => updateNativeLang(langCode)}
+            />
           </Stack>
 
           <Stack
@@ -396,6 +468,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               variant="contained"
               size="large"
               fullWidth
+              disabled={isLoading || isQuizDataLoading || !data.nativeLanguage}
               endIcon={<ArrowRight />}
               onClick={onNext}
               sx={{

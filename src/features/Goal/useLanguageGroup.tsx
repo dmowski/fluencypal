@@ -1,0 +1,56 @@
+import { fullLanguages } from "@/libs/languages";
+import { useEffect, useMemo, useState } from "react";
+
+export const useLanguageGroup = ({
+  defaultGroupTitle,
+  systemLanguagesTitle,
+}: {
+  defaultGroupTitle: string;
+  systemLanguagesTitle: string;
+}) => {
+  const [userLanguages, setUserLanguages] = useState<string[]>([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const isWindow = typeof window !== "undefined";
+      if (!isWindow) {
+        return;
+      }
+
+      const userLang = [...navigator.languages];
+      setUserLanguages(userLang);
+    }, 20);
+  }, []);
+
+  const languageGroups = useMemo(() => {
+    const isWindow = typeof window !== "undefined";
+    if (!isWindow) {
+      return [];
+    }
+
+    const filteredAndSorted = fullLanguages
+      .map((lang) => {
+        const isSystemLanguage = userLanguages.includes(lang.code);
+        return {
+          ...lang,
+          groupTitle: isSystemLanguage ? systemLanguagesTitle : defaultGroupTitle,
+          isSystemLanguage,
+        };
+      })
+      .sort((a, b) => {
+        // system languages first
+        if (a.groupTitle === systemLanguagesTitle && b.groupTitle !== systemLanguagesTitle) {
+          return -1;
+        }
+        if (a.groupTitle !== systemLanguagesTitle && b.groupTitle === systemLanguagesTitle) {
+          return 1;
+        }
+
+        return a.englishName.localeCompare(b.englishName);
+      });
+
+    return filteredAndSorted;
+  }, [userLanguages]);
+
+  return { languageGroups };
+};

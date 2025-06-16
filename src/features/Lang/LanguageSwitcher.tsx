@@ -18,6 +18,8 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLocalStorage } from "react-use";
 import { parseLangFromUrl } from "./parseLangFromUrl";
 import { LangSelector } from "./LangSelector";
+import LanguageAutocomplete from "./LanguageAutocomplete";
+import { useLanguageGroup } from "../Goal/useLanguageGroup";
 
 interface LanguageSwitcherProps {
   size?: "small" | "large" | "button";
@@ -26,8 +28,8 @@ interface LanguageSwitcherProps {
   langToLearn?: SupportedLanguage;
   setLanguageToLearn?: (lang: SupportedLanguage) => void;
 
-  nativeLang?: SupportedLanguage;
-  setNativeLanguage?: (lang: SupportedLanguage) => void;
+  nativeLang?: string;
+  setNativeLanguage?: (lang: string) => void;
 
   setPageLanguage?: (lang: SupportedLanguage) => void;
 }
@@ -91,6 +93,16 @@ export function LanguageSwitcher({
 
     setIsShowModal(true);
   };
+
+  const { languageGroups } = useLanguageGroup({
+    defaultGroupTitle: i18n._(`Other languages`),
+    systemLanguagesTitle: i18n._(`System languages`),
+  });
+
+  const selectedNativeLanguage = useMemo(
+    () => languageGroups.find((lang) => lang.code === nativeLang),
+    [languageGroups, nativeLang]
+  );
 
   return (
     <Stack sx={{}}>
@@ -256,9 +268,15 @@ export function LanguageSwitcher({
                       {i18n._(`Native Language`)}
                     </Typography>
                   </Stack>
-                  <LangSelector
-                    value={nativeLang || "en"}
-                    onChange={(newLang) => setNativeLanguage(newLang)}
+
+                  <LanguageAutocomplete
+                    options={languageGroups}
+                    value={selectedNativeLanguage || null}
+                    onChange={(langCode) => {
+                      if (langCode) {
+                        setNativeLanguage(langCode);
+                      }
+                    }}
                   />
                 </Stack>
               )}
