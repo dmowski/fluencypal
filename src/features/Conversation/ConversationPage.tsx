@@ -8,7 +8,7 @@ import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
 import { Dashboard } from "../Dashboard/Dashboard";
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { getPageLangCode, SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { ConversationCanvas2 } from "./ConversationCanvas2";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
@@ -82,6 +82,26 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
       recorder.removeTranscript();
     }
   }, [aiConversation.isStarted]);
+
+  useEffect(() => {
+    if (!settings.userSettings?.pageLanguageCode) {
+      return;
+    }
+    const settingsPageLang = settings.userSettings.pageLanguageCode;
+    const actualPageLang = getPageLangCode();
+    const isDifferent = actualPageLang !== settingsPageLang;
+    if (!isDifferent) {
+      return;
+    }
+
+    const url = `${getUrlStart(settingsPageLang)}practice`;
+    console.warn(
+      `REDIRECT: Page language (${actualPageLang}) is different from settings (${settingsPageLang}). Redirecting to ${url}`
+    );
+    router.push(url, {
+      scroll: false,
+    });
+  }, [settings.userSettings]);
 
   useEffect(() => {
     if (aiConversation.isClosing) {

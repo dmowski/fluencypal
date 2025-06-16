@@ -14,6 +14,7 @@ import { useCurrency } from "../User/useCurrency";
 import { confirmGtag } from "../Analytics/confirmGtag";
 import { getCountryByIP } from "../User/getCountry";
 import { countries } from "@/libs/countries";
+import { UserSettings } from "@/common/user";
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -26,6 +27,7 @@ interface SettingsContextType {
   setLanguage: (language: SupportedLanguage) => Promise<SupportedLanguage>;
   setPageLanguage: (language: SupportedLanguage) => Promise<void>;
   setNativeLanguage: (language: SupportedLanguage) => Promise<void>;
+  userSettings: UserSettings | null;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -37,6 +39,7 @@ export const settingsContext = createContext<SettingsContextType>({
   setLanguage: async () => "en",
   setPageLanguage: async () => {},
   setNativeLanguage: async () => {},
+  userSettings: null,
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -130,6 +133,7 @@ function useProvideSettings(): SettingsContextType {
     loading: loading || !userId || !userSettingsDoc || !userSettings || !userCreatedAt,
     setLanguage,
     setPageLanguage,
+    userSettings: userSettings || null,
   };
 }
 

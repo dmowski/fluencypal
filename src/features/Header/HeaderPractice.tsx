@@ -269,7 +269,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
                         isAuth={auth.isAuthorized}
                         langToLearn={settings.languageCode || "en"}
                         setLanguageToLearn={settings.setLanguage}
-                        setPageLanguage={settings.updatePageLanguage}
+                        setPageLanguage={settings.setPageLanguage}
                       />
                     </Stack>
                   )}
