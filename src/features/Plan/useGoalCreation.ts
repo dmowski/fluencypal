@@ -11,6 +11,7 @@ import { usePlan } from "./usePlan";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import { useSearchParams } from "next/navigation";
 import { useUsage } from "../Usage/useUsage";
+import { getPageLangCode } from "../Lang/lang";
 
 export const useGoalCreation = () => {
   const [isProcessingGoal, setIsProcessingGoal] = useState("");
@@ -62,6 +63,9 @@ export const useGoalCreation = () => {
 
     try {
       const code = await settings.setLanguage(goalData.languageToLearn);
+      settings.setPageLanguage(getPageLangCode());
+      settings.setNativeLanguage(goalData.nativeLanguageCode);
+
       setIsProcessingGoal(i18n._(`Processing the goal...`) + "12%");
       console.log("code", code);
 

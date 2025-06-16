@@ -24,7 +24,8 @@ interface SettingsContextType {
 
   loading: boolean;
   setLanguage: (language: SupportedLanguage) => Promise<SupportedLanguage>;
-  updatePageLanguage: (language: SupportedLanguage) => Promise<void>;
+  setPageLanguage: (language: SupportedLanguage) => Promise<void>;
+  setNativeLanguage: (language: SupportedLanguage) => Promise<void>;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -34,7 +35,8 @@ export const settingsContext = createContext<SettingsContextType>({
 
   userCreatedAt: null,
   setLanguage: async () => "en",
-  updatePageLanguage: async () => {},
+  setPageLanguage: async () => {},
+  setNativeLanguage: async () => {},
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -106,21 +108,28 @@ function useProvideSettings(): SettingsContextType {
 
   const userCreatedAt = userSettings?.createdAt || null;
 
-  const updatePageLanguage = async (languageCode: SupportedLanguage) => {
+  const setPageLanguage = async (languageCode: SupportedLanguage) => {
     if (!userSettingsDoc) return;
     const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || "en";
     await setDoc(userSettingsDoc, { pageLanguageCode: langCodeValidated }, { merge: true });
   };
 
+  const setNativeLanguage = async (languageCode: SupportedLanguage) => {
+    if (!userSettingsDoc) return;
+    const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || "en";
+    await setDoc(userSettingsDoc, { nativeLanguageCode: langCodeValidated }, { merge: true });
+  };
+
   return {
     userCreatedAt,
+    setNativeLanguage,
     languageCode: userSettings?.languageCode || null,
     fullLanguageName: userSettings?.languageCode
       ? fullEnglishLanguageName[userSettings.languageCode]
       : null,
     loading: loading || !userId || !userSettingsDoc || !userSettings || !userCreatedAt,
     setLanguage,
-    updatePageLanguage,
+    setPageLanguage,
   };
 }
 
