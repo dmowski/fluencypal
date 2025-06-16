@@ -158,8 +158,13 @@ export function LanguageSwitcher({
           sx={{
             gap: "30px",
             padding: "30px",
-            minHeight: "100dvh",
+            height: "100dvh",
+            maxHeight: "600px",
             boxSizing: "border-box",
+            "@media (max-width: 600px)": {
+              maxHeight: "100dvh",
+              height: "100dvh",
+            },
           }}
         >
           <Stack>
@@ -177,7 +182,6 @@ export function LanguageSwitcher({
             <Stack
               gap={"30px"}
               sx={{
-                height: "calc(100svh - 270px)",
                 maxWidth: "400px",
               }}
             >
