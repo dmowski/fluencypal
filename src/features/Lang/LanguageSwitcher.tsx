@@ -43,7 +43,6 @@ export function LanguageSwitcher({
   const pathname = usePathname();
 
   const { i18n } = useLingui();
-  const [activeTab, setActiveTab] = useState<"page" | "learn">("page");
   const [isShowModal, setIsShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSawLangSelector, setIsSawLangSelector] = useLocalStorage<boolean>(
@@ -153,135 +152,144 @@ export function LanguageSwitcher({
         isOpen={isShowModal}
         onClose={() => setIsShowModal(false)}
         width="900px"
-        padding="40px min(40px, 5vw) 40px min(35px, 4.5vw)"
+        padding="0"
       >
-        <Stack>
-          <Typography variant="h4" component="h2">
-            {i18n._(`Languages`)}
-          </Typography>
-        </Stack>
         <Stack
           sx={{
-            width: "100%",
-            gap: "46px",
-            opacity: isLoading ? 0.2 : 1,
+            gap: "30px",
+            padding: "30px",
+            minHeight: "100dvh",
+            boxSizing: "border-box",
           }}
         >
+          <Stack>
+            <Typography variant="h4" component="h2">
+              {i18n._(`Languages`)}
+            </Typography>
+          </Stack>
           <Stack
-            gap={"30px"}
             sx={{
-              height: "calc(100svh - 270px)",
-              maxWidth: "400px",
+              width: "100%",
+              gap: "46px",
+              opacity: isLoading ? 0.2 : 1,
             }}
           >
-            {isAuth && setLanguageToLearn && langToLearn && (
-              <Stack
-                sx={{
-                  width: "100%",
-                  alignItems: "flex-start",
-                  gap: "10px",
-                  paddingTop: "20px",
-                }}
-              >
-                <Stack
-                  sx={{
-                    alignItems: "center",
-                    flexDirection: "row",
-                    gap: "10px",
-                    paddingLeft: "3px",
-                  }}
-                >
-                  <Typography
-                    variant="h3"
-                    align="left"
-                    sx={{
-                      fontWeight: 500,
-                      fontSize: "1rem",
-                      boxSizing: "border-box",
-                      lineHeight: "1.1",
-                    }}
-                  >
-                    {i18n._(`Language to Learn`)}
-                  </Typography>
-                  <GraduationCap size={"18px"} />
-                </Stack>
-                <LangSelector
-                  value={langToLearn}
-                  onChange={(newLang) => setLanguageToLearn(newLang)}
-                />
-              </Stack>
-            )}
-
-            {isAuth && setNativeLanguage && nativeLang && (
-              <Stack
-                sx={{
-                  width: "100%",
-                  alignItems: "flex-start",
-                  gap: "10px",
-                  paddingTop: "20px",
-                }}
-              >
-                <Stack
-                  sx={{
-                    alignItems: "center",
-                    flexDirection: "row",
-                    gap: "10px",
-                    paddingLeft: "3px",
-                  }}
-                >
-                  <Typography
-                    variant="h3"
-                    align="left"
-                    sx={{
-                      fontWeight: 500,
-                      fontSize: "1rem",
-                      boxSizing: "border-box",
-                      lineHeight: "1.1",
-                    }}
-                  >
-                    {i18n._(`Native Language`)}
-                  </Typography>
-                </Stack>
-                <LangSelector
-                  value={nativeLang || "en"}
-                  onChange={(newLang) => setNativeLanguage(newLang)}
-                />
-              </Stack>
-            )}
-
             <Stack
+              gap={"30px"}
               sx={{
-                width: "100%",
-                alignItems: "flex-start",
-                gap: "10px",
-                paddingTop: "20px",
+                height: "calc(100svh - 270px)",
+                maxWidth: "400px",
               }}
             >
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  flexDirection: "row",
-                  gap: "10px",
-                  paddingLeft: "3px",
-                }}
-              >
-                <Typography
-                  variant="h3"
-                  align="left"
+              {isAuth && setLanguageToLearn && langToLearn && (
+                <Stack
                   sx={{
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                    boxSizing: "border-box",
-                    lineHeight: "1.1",
+                    width: "100%",
+                    alignItems: "flex-start",
+                    gap: "10px",
+                    paddingTop: "20px",
                   }}
                 >
-                  {i18n._(`Page Language`)}
-                </Typography>
+                  <Stack
+                    sx={{
+                      alignItems: "center",
+                      flexDirection: "row",
+                      gap: "10px",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    <Typography
+                      variant="h3"
+                      align="left"
+                      sx={{
+                        fontWeight: 500,
+                        fontSize: "1rem",
+                        boxSizing: "border-box",
+                        lineHeight: "1.1",
+                      }}
+                    >
+                      {i18n._(`Language to Learn`)}
+                    </Typography>
+                    <GraduationCap size={"18px"} />
+                  </Stack>
+                  <LangSelector
+                    value={langToLearn}
+                    onChange={(newLang) => setLanguageToLearn(newLang)}
+                  />
+                </Stack>
+              )}
+
+              {isAuth && setNativeLanguage && nativeLang && (
+                <Stack
+                  sx={{
+                    width: "100%",
+                    alignItems: "flex-start",
+                    gap: "10px",
+                    paddingTop: "20px",
+                  }}
+                >
+                  <Stack
+                    sx={{
+                      alignItems: "center",
+                      flexDirection: "row",
+                      gap: "10px",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    <Typography
+                      variant="h3"
+                      align="left"
+                      sx={{
+                        fontWeight: 500,
+                        fontSize: "1rem",
+                        boxSizing: "border-box",
+                        lineHeight: "1.1",
+                      }}
+                    >
+                      {i18n._(`Native Language`)}
+                    </Typography>
+                  </Stack>
+                  <LangSelector
+                    value={nativeLang || "en"}
+                    onChange={(newLang) => setNativeLanguage(newLang)}
+                  />
+                </Stack>
+              )}
+
+              <Stack
+                sx={{
+                  width: "100%",
+                  alignItems: "flex-start",
+                  gap: "10px",
+                  paddingTop: "20px",
+                }}
+              >
+                <Stack
+                  sx={{
+                    alignItems: "center",
+                    flexDirection: "row",
+                    gap: "10px",
+                    paddingLeft: "3px",
+                  }}
+                >
+                  <Typography
+                    variant="h3"
+                    align="left"
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: "1rem",
+                      boxSizing: "border-box",
+                      lineHeight: "1.1",
+                    }}
+                  >
+                    {i18n._(`Page Language`)}
+                  </Typography>
+                </Stack>
+                <LangSelector
+                  value={pageLang || "en"}
+                  onChange={(newLang) => updatePageLanguage(newLang)}
+                />
               </Stack>
-              <LangSelector
-                value={pageLang || "en"}
-                onChange={(newLang) => updatePageLanguage(newLang)}
-              />
             </Stack>
           </Stack>
         </Stack>
