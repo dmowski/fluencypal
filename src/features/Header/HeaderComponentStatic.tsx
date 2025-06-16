@@ -232,7 +232,11 @@ export function HeaderComponentStatic({
               height: "100%",
             }}
           >
-            <LanguageSwitcher isAuth={false} setLanguageToLearn={() => {}} />
+            <LanguageSwitcher
+              isAuth={false}
+              setLanguageToLearn={() => {}}
+              setPageLanguage={() => {}}
+            />
             <Button
               href={`${getUrlStart(lang)}practice`}
               onClick={(e) => navigateTo(`${getUrlStart(lang)}practice`, e)}

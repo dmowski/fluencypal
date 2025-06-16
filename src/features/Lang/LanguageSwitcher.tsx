@@ -44,12 +44,14 @@ interface LanguageSwitcherProps {
   isAuth: boolean;
   langToLearn?: SupportedLanguage;
   setLanguageToLearn: (lang: SupportedLanguage) => void;
+  setPageLanguage: (lang: SupportedLanguage) => void;
 }
 export function LanguageSwitcher({
   size,
   isAuth,
   langToLearn,
   setLanguageToLearn,
+  setPageLanguage,
 }: LanguageSwitcherProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -79,6 +81,7 @@ export function LanguageSwitcher({
         query ? `?${query}` : ""
       }`;
       router.push(newPath);
+      setPageLanguage(newLang);
 
       setLocale(locale);
 
