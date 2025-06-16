@@ -4,7 +4,7 @@ import { SupportedLanguage } from "../Lang/lang";
 interface GoalQuizData {
   description: string;
   languageToLearn: SupportedLanguage;
-  nativeLanguage: SupportedLanguage;
+  nativeLanguage: null | string;
   step: number;
   minPerDay: number;
   level: string;
@@ -14,6 +14,7 @@ const STORAGE_KEY = "goalQuizData";
 
 export const useGoalQuizForm = (defaultData: GoalQuizData) => {
   const [data, setData] = useState<GoalQuizData>(defaultData);
+  const [isQuizDataLoading, setIsQuizDataLoading] = useState<boolean>(true);
 
   const saveDataToStorage = (data: GoalQuizData) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -42,6 +43,7 @@ export const useGoalQuizForm = (defaultData: GoalQuizData) => {
       if (storedData) {
         setData(storedData);
       }
+      setIsQuizDataLoading(false);
     }, 100);
   }, []);
 
@@ -57,6 +59,7 @@ export const useGoalQuizForm = (defaultData: GoalQuizData) => {
 
   return {
     updateData,
+    isQuizDataLoading,
     data,
   };
 };

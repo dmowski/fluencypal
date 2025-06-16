@@ -44,8 +44,7 @@ export const useIsWebView = () => {
     if (typeof window !== "undefined") {
       const isTelegramWebView = getIsTelegram();
       const ua = navigator.userAgent.toLowerCase();
-      const supportsWebRTC = !!window.RTCPeerConnection;
-      console.log("supportsWebRTC", supportsWebRTC);
+      //const supportsWebRTC = !!window.RTCPeerConnection;
       //const result = inAppSpy();
       /*
       setAgent(

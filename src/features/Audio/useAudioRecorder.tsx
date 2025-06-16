@@ -3,8 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { sendTranscriptRequest } from "@/app/api/transcript/sendTranscriptRequest";
 import { useVoiceVisualizer, VoiceVisualizer } from "react-voice-visualizer";
-import { SupportedLanguage } from "../Lang/lang";
-import { sleep } from "openai/core.mjs";
 import { useIsWebView } from "../Auth/useIsWebView";
 
 export const useAudioRecorder = ({
@@ -13,7 +11,7 @@ export const useAudioRecorder = ({
   isFree,
   isGame,
 }: {
-  languageCode: SupportedLanguage;
+  languageCode: string;
   getAuthToken: () => Promise<string>;
   isFree: boolean;
   isGame: boolean;
