@@ -1,17 +1,27 @@
+"use client";
 import { Stack } from "@mui/material";
 
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { HeaderStatic } from "@/features/Header/HeaderStatic";
 import { maxContentWidth } from "../Landing/landingSettings";
-import { Footer } from "../Landing/Footer";
 import { GoalQuestions } from "./GoalQuestions";
-import { getLangLearnPlanLabels } from "../Lang/getLabels";
+import { useAuth } from "../Auth/useAuth";
+import { usePlan } from "../Plan/usePlan";
 
 interface QuizPageProps {
   lang: SupportedLanguage;
   defaultLangToLearn: SupportedLanguage;
 }
 export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
+  const auth = useAuth();
+  const isAuth = !!auth.uid;
+  console.log("isAuth", isAuth);
+  const plan = usePlan();
+  const isPlanLoading = plan.loading;
+  const isAnyPlan = plan.latestGoal;
+
+  // - Redirect to practice page if:
+  //- Auth is true
+  //- No active goal
   return (
     <Stack sx={{}}>
       <div

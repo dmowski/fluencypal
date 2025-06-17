@@ -5,6 +5,7 @@ import { allMessages } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { QuizPage } from "@/features/Goal/QuizPage";
+import { PracticeProvider } from "@/app/practiceProvider";
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -43,7 +44,9 @@ export default async function Page(props: PageProps) {
       initialLocale={supportedLang}
       initialMessages={allMessages[supportedLang]!}
     >
-      <QuizPage lang={supportedLang} defaultLangToLearn={languageToLearn} />
+      <PracticeProvider>
+        <QuizPage lang={supportedLang} defaultLangToLearn={languageToLearn} />
+      </PracticeProvider>
     </LinguiClientProvider>
   );
 }
