@@ -7,6 +7,9 @@ import { GoalQuestions } from "./GoalQuestions";
 import { useAuth } from "../Auth/useAuth";
 import { usePlan } from "../Plan/usePlan";
 import { useEffect } from "react";
+import { getUrlStart } from "../Lang/getUrlStart";
+import { useRouter } from "next/navigation";
+import { useSettings } from "../Settings/useSettings";
 
 interface QuizPageProps {
   lang: SupportedLanguage;
@@ -16,20 +19,22 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
   const auth = useAuth();
   const isAuth = !!auth.uid;
   const plan = usePlan();
+  const settings = useSettings();
   const isPlanLoading = plan.loading;
   const isAnyPlan = plan.latestGoal;
+  const router = useRouter();
 
+  const isNeedToRedirect = !isPlanLoading && isAuth && isAnyPlan && !settings.loading;
   useEffect(() => {
-    if (isPlanLoading || !isAuth || isAnyPlan) {
+    if (!isNeedToRedirect) {
       return;
     }
+    const pageLang = settings.userSettings?.pageLanguageCode || lang;
 
-    console.log("NEED REDIRECT TO PRACTICE PAGE");
-  }, [isAuth, isAnyPlan]);
+    const newPath = `${getUrlStart(pageLang)}practice`;
+    router.push(newPath);
+  }, [isNeedToRedirect]);
 
-  // - Redirect to practice page if:
-  //- Auth is true
-  //- No active goal
   return (
     <Stack sx={{}}>
       <div
