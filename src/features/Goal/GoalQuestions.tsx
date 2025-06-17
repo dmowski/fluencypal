@@ -889,6 +889,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                       padding: "10px 15px",
                       cursor: "pointer",
                       justifyContent: "space-between",
+                      color: "#111",
                     }}
                     component={"button"}
                     onClick={() => {
