@@ -5,7 +5,6 @@ interface GoalQuizData {
   description: string;
   languageToLearn: SupportedLanguage;
   nativeLanguage: null | string;
-  step: number;
   minPerDay: number;
   level: string;
 }
