@@ -25,7 +25,7 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import { sendCreateGoalRequest } from "@/app/api/goal/goalRequests";
 import { useIsWebView } from "../Auth/useIsWebView";
 import * as Sentry from "@sentry/nextjs";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import SignalStrengthIcon from "./SignalStrengthIcon";
 import { GradingProgressBar } from "../Dashboard/BrainCard";
 import { sleep } from "@/libs/sleep";
@@ -93,13 +93,26 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const { i18n } = useLingui();
 
   const { data, updateData, isQuizDataLoading } = useGoalQuizForm({
-    step: 0,
     description: "",
     minPerDay: 10,
     languageToLearn: defaultLang || "en",
     nativeLanguage: null,
     level: "A2",
   });
+
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const stepFromUrl = searchParams.get("step") || "0";
+  const step = parseInt(stepFromUrl, 10) || 0;
+
+  const updateStep = (newStep: number) => {
+    const updatedUrl = new URL(window.location.href);
+    updatedUrl.searchParams.set("step", newStep.toString());
+    const newUrl = updatedUrl.toString();
+
+    router.push(newUrl);
+  };
 
   const { inWebView } = useIsWebView();
 
@@ -108,7 +121,6 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const [goalId, setGoalId] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
   const updateNativeLang = (value: string) => {
     updateData({
       nativeLanguage: value,
@@ -156,9 +168,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
       const url = new URL(window.location.href);
       url.searchParams.set("goalId", requestResult.id);
       window.history.pushState({}, "", url.toString());
-      updateData({
-        step: 0,
-      });
+      updateStep(0);
     } catch (error) {
       alert(i18n._(`Something went wrong. Please try again`));
       setIsLoading(false);
@@ -186,10 +196,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   };
 
   const onNext = () => {
-    if (data.step < maxSteps - 1) {
-      updateData({
-        step: data.step + 1,
-      });
+    if (step < maxSteps - 1) {
+      updateStep(step + 1);
       sleep(40).then(() => {
         scrollTop();
       });
@@ -1068,8 +1076,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   ];
 
   const maxSteps = steps.length;
-  const progress = (data.step + 1) / maxSteps;
-  const currentStep = steps[data.step] || steps[0];
+  const progress = (step + 1) / maxSteps;
+  const currentStep = steps[step] || steps[0];
 
   const navigateToMainPage = () => {
     const newPath = `${getUrlStart(lang)}`;
@@ -1096,11 +1104,9 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
         >
           <IconButton
             onClick={() => {
-              const currentStep = data.step || 0;
+              const currentStep = step || 0;
               if (currentStep > 0) {
-                updateData({
-                  step: currentStep - 1,
-                });
+                updateStep(currentStep - 1);
                 scrollTop();
               } else {
                 navigateToMainPage();
