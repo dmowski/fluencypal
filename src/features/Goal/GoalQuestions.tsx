@@ -104,9 +104,12 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const router = useRouter();
 
   const stepFromUrl = searchParams.get("step") || "0";
-  const step = parseInt(stepFromUrl, 10) || 0;
+  const stepParsedUrl = parseInt(stepFromUrl, 10) || 0;
+
+  const [step, setStep] = useState<number>(stepParsedUrl);
 
   const updateStep = (newStep: number) => {
+    setStep(newStep);
     const updatedUrl = new URL(window.location.href);
     updatedUrl.searchParams.set("step", newStep.toString());
     const newUrl = updatedUrl.toString();
