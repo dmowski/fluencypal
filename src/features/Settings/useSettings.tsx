@@ -59,7 +59,6 @@ function useProvideSettings(): SettingsContextType {
   };
 
   const initUserSettings = async () => {
-    console.log("initUserSettings");
     if (!userId || !userSettingsDoc) {
       return;
     }
@@ -71,12 +70,18 @@ function useProvideSettings(): SettingsContextType {
     }
 
     confirmGtag();
+    const country = await getCountryByIP();
+    const countryName = country
+      ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || "Unknown"
+      : "-";
     await setDoc(
       userSettingsDoc,
       {
         createdAt: Date.now(),
         currency: currency.currency || null,
         email: auth.userInfo?.email || "",
+        country: country || null,
+        countryName: countryName || null,
       },
       { merge: true }
     );

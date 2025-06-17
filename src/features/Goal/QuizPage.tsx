@@ -6,6 +6,7 @@ import { maxContentWidth } from "../Landing/landingSettings";
 import { GoalQuestions } from "./GoalQuestions";
 import { useAuth } from "../Auth/useAuth";
 import { usePlan } from "../Plan/usePlan";
+import { useEffect } from "react";
 
 interface QuizPageProps {
   lang: SupportedLanguage;
@@ -14,10 +15,17 @@ interface QuizPageProps {
 export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
   const auth = useAuth();
   const isAuth = !!auth.uid;
-  console.log("isAuth", isAuth);
   const plan = usePlan();
   const isPlanLoading = plan.loading;
   const isAnyPlan = plan.latestGoal;
+
+  useEffect(() => {
+    if (isPlanLoading || !isAuth || isAnyPlan) {
+      return;
+    }
+
+    console.log("NEED REDIRECT TO PRACTICE PAGE");
+  }, [isAuth, isAnyPlan]);
 
   // - Redirect to practice page if:
   //- Auth is true
