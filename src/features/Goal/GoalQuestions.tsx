@@ -117,11 +117,16 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     router.push(newUrl);
   };
 
+  console.log("stepParsedUrl", stepParsedUrl, "step", step);
+
   useEffect(() => {
+    if (stepParsedUrl === step) {
+      return; // No need to update if the step is already set
+    }
+
     const timeoutId = setTimeout(() => {
-      if (stepParsedUrl !== step) {
-        setStep(stepParsedUrl);
-      }
+      console.log("EFF stepParsedUrl", stepParsedUrl, "step", step);
+      setStep(stepParsedUrl);
     }, 400);
 
     return () => clearTimeout(timeoutId);
