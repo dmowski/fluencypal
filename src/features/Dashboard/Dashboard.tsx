@@ -58,11 +58,11 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
 
         <PlanDashboardCards lang={lang} />
 
+        <RolePlayBoard rolePlayInfo={rolePlayInfo} />
+
         <DashboardCard>
           <UsageStatsCards />
         </DashboardCard>
-
-        <RolePlayBoard rolePlayInfo={rolePlayInfo} />
 
         <Stack
           sx={{
