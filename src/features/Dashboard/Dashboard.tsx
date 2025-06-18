@@ -1,6 +1,6 @@
 "use client";
 
-import { Stack } from "@mui/material";
+import { Stack, TextField, Typography } from "@mui/material";
 
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 
@@ -13,6 +13,8 @@ import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { PlanDashboardCards } from "./PlanDashboardCards";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { GameBadge } from "../Game/GameBadge";
+import { Trans } from "@lingui/react/macro";
+import { FeedbackBlock } from "./FeedbackBlock";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -76,6 +78,8 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
         </Stack>
 
         <ConversationSelectCard lang={lang} />
+
+        <FeedbackBlock />
       </Stack>
 
       <Stack
