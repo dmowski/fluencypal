@@ -3,7 +3,7 @@ import { Button, Stack, Typography } from "@mui/material";
 import { LangSelector } from "../Lang/LangSelector";
 import { useSettings } from "../Settings/useSettings";
 import { useLingui } from "@lingui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, GraduationCap } from "lucide-react";
 import {
   SupportedLanguage,
@@ -12,6 +12,8 @@ import {
 } from "@/features/Lang/lang";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getUrlStart } from "../Lang/getUrlStart";
+import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
+import { useLanguageGroup } from "../Goal/useLanguageGroup";
 
 export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ pageLang }) => {
   const settings = useSettings();
@@ -73,6 +75,18 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
     router.push(newPath);
     setMyLang(newLang);
   }
+
+  const { languageGroups } = useLanguageGroup({
+    defaultGroupTitle: i18n._(`Other languages`),
+    systemLanguagesTitle: i18n._(`System languages`),
+  });
+
+  const nativeLang = settings.userSettings?.nativeLanguageCode || "en";
+
+  const selectedNativeLanguage = useMemo(
+    () => languageGroups.find((lang) => lang.code === nativeLang),
+    [languageGroups, nativeLang]
+  );
 
   return (
     <Stack
@@ -199,13 +213,53 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
                     paddingLeft: "3px",
                   }}
                 >
-                  {i18n._(`My`)}
+                  {i18n._(`Page`)}
                 </Typography>
                 <LangSelector
                   value={myLang || "en"}
                   onChange={(lang) => handleChangeMyLang(lang)}
                 />
               </Stack>
+            </Stack>
+
+            <Stack
+              sx={{
+                width: "100%",
+                alignItems: "flex-start",
+                gap: "10px",
+              }}
+            >
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  flexDirection: "row",
+                  gap: "10px",
+                  paddingLeft: "3px",
+                }}
+              >
+                <Typography
+                  variant="h3"
+                  align="left"
+                  sx={{
+                    fontWeight: 500,
+                    fontSize: "1rem",
+                    boxSizing: "border-box",
+                    lineHeight: "1.1",
+                  }}
+                >
+                  {i18n._(`Native Language`)}
+                </Typography>
+              </Stack>
+
+              <LanguageAutocomplete
+                options={languageGroups}
+                value={selectedNativeLanguage || null}
+                onChange={(langCode) => {
+                  if (langCode) {
+                    settings.setNativeLanguage(langCode);
+                  }
+                }}
+              />
             </Stack>
 
             <Button
