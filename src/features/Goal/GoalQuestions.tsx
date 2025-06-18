@@ -15,7 +15,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { FC, JSX, useEffect, useMemo, useState } from "react";
+import { FC, JSX, useEffect, useMemo, useRef, useState } from "react";
 import { buttonStyle, subTitleFontStyle } from "../Landing/landingSettings";
 import { ArrowLeft, ArrowRight, Check, Copy, ExternalLink, GraduationCap, Mic } from "lucide-react";
 import { LangSelector } from "../Lang/LangSelector";
@@ -107,6 +107,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const stepParsedUrl = parseInt(stepFromUrl, 10) || 0;
 
   const [step, setStep] = useState<number>(stepParsedUrl);
+  const stepRef = useRef<number | null>(null);
+  stepRef.current = step;
 
   const updateStep = (newStep: number) => {
     setStep(newStep);
@@ -117,20 +119,17 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     router.push(newUrl);
   };
 
-  console.log("stepParsedUrl", stepParsedUrl, "step", step);
-
   useEffect(() => {
-    if (stepParsedUrl === step) {
-      return; // No need to update if the step is already set
-    }
-
     const timeoutId = setTimeout(() => {
-      console.log("EFF stepParsedUrl", stepParsedUrl, "step", step);
+      if (stepRef.current === stepParsedUrl) {
+        return;
+      }
+
       setStep(stepParsedUrl);
-    }, 400);
+    }, 300);
 
     return () => clearTimeout(timeoutId);
-  }, [step, stepParsedUrl]);
+  }, [stepParsedUrl]);
 
   const { inWebView } = useIsWebView();
 
