@@ -13,10 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Header/HeaderStatic.tsx:14
+#: src/features/Dashboard/FeedbackBlock.tsx:25
 #. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "Se Connecter"
+msgid "Failed to send feedback. Please try again later."
+msgstr "Échec de l'envoi des commentaires. Veuillez réessayer plus tard."
+
+#: src/features/Dashboard/FeedbackBlock.tsx:30
+#. js-lingui-explicit-id
+msgid "Thank you for your feedback!"
+msgstr "Merci pour vos commentaires !"
+
+#: src/features/Dashboard/FeedbackBlock.tsx:48
+#. js-lingui-explicit-id
+msgid "Leave your feedback"
+msgstr "Laissez vos commentaires"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -1851,8 +1861,8 @@ msgid "Send 6 messages to complete"
 msgstr "Envoyez 6 messages pour terminer"
 
 #: src/features/Plan/PlanCard.tsx:228
-#: src/features/Goal/GoalQuestions.tsx:804
-#: src/features/Goal/GoalQuestions.tsx:842
+#: src/features/Goal/GoalQuestions.tsx:818
+#: src/features/Goal/GoalQuestions.tsx:856
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #. js-lingui-explicit-id
 msgid "Continue"
@@ -1991,15 +2001,17 @@ msgid "Belarusian Learning Plan"
 msgstr "Plan d'apprentissage biélorusse"
 
 #: src/features/Lang/LanguageSwitcher.tsx:98
-#: src/features/Goal/GoalQuestions.tsx:310
+#: src/features/Goal/GoalQuestions.tsx:324
 #: src/features/Game/GamePage.tsx:27
+#: src/features/Dashboard/SelectLanguage.tsx:80
 #. js-lingui-explicit-id
 msgid "Other languages"
 msgstr "Autres langues"
 
 #: src/features/Lang/LanguageSwitcher.tsx:99
-#: src/features/Goal/GoalQuestions.tsx:311
+#: src/features/Goal/GoalQuestions.tsx:325
 #: src/features/Game/GamePage.tsx:28
+#: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "System languages"
 msgstr "Langues du système"
@@ -2010,12 +2022,13 @@ msgid "Languages"
 msgstr "Langues"
 
 #: src/features/Lang/LanguageSwitcher.tsx:229
-#: src/features/Goal/GoalQuestions.tsx:409
+#: src/features/Goal/GoalQuestions.tsx:423
 #. js-lingui-explicit-id
 msgid "Language to Learn"
 msgstr "Langue à apprendre"
 
 #: src/features/Lang/LanguageSwitcher.tsx:268
+#: src/features/Dashboard/SelectLanguage.tsx:250
 #. js-lingui-explicit-id
 msgid "Native Language"
 msgstr "Langue maternelle"
@@ -2227,7 +2240,7 @@ msgstr ""
 "d'apprentissage personnalisé juste pour vous."
 
 #: src/features/Landing/PlanLandingBlock.tsx:412
-#: src/features/Goal/GoalQuestions.tsx:1073
+#: src/features/Goal/GoalQuestions.tsx:1087
 #. js-lingui-explicit-id
 msgid "Create a plan"
 msgstr "Créez un plan"
@@ -3220,6 +3233,11 @@ msgstr "Supprimer le compte"
 msgid "Role-Plays"
 msgstr "Jeux de rôle"
 
+#: src/features/Header/HeaderStatic.tsx:14
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "Se Connecter"
+
 #: src/features/Header/HeaderStatic.tsx:16
 #: src/features/Header/HeaderPractice.tsx:362
 #. js-lingui-explicit-id
@@ -3260,243 +3278,243 @@ msgstr "En soumettant ce formulaire, vous acceptez notre :"
 msgid "and"
 msgstr "et"
 
-#: src/features/Goal/GoalQuestions.tsx:176
+#: src/features/Goal/GoalQuestions.tsx:190
 #. js-lingui-explicit-id
 msgid "Something went wrong. Please try again"
 msgstr "Quelque chose s'est mal passé. Veuillez réessayer"
 
-#: src/features/Goal/GoalQuestions.tsx:185
+#: src/features/Goal/GoalQuestions.tsx:199
 #. js-lingui-explicit-id
 msgid "I'm a beginner"
 msgstr "Je suis un débutant"
 
-#: src/features/Goal/GoalQuestions.tsx:186
+#: src/features/Goal/GoalQuestions.tsx:200
 #. js-lingui-explicit-id
 msgid "I know a few simple words"
 msgstr "Je connais quelques mots simples"
 
-#: src/features/Goal/GoalQuestions.tsx:187
+#: src/features/Goal/GoalQuestions.tsx:201
 #. js-lingui-explicit-id
 msgid "I can maintain a simple conversation"
 msgstr "Je peux maintenir une conversation simple"
 
-#: src/features/Goal/GoalQuestions.tsx:188
+#: src/features/Goal/GoalQuestions.tsx:202
 #. js-lingui-explicit-id
 msgid "I can discuss various topics"
 msgstr "Je peux discuter de divers sujets"
 
-#: src/features/Goal/GoalQuestions.tsx:189
+#: src/features/Goal/GoalQuestions.tsx:203
 #. js-lingui-explicit-id
 msgid "I can discuss most topics in detail"
 msgstr "Je peux discuter de la plupart des sujets en détail"
 
-#: src/features/Goal/GoalQuestions.tsx:241
+#: src/features/Goal/GoalQuestions.tsx:255
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please try again."
 msgstr "Échec de la copie du texte. Veuillez réessayer."
 
-#: src/features/Goal/GoalQuestions.tsx:267
+#: src/features/Goal/GoalQuestions.tsx:281
 #. js-lingui-explicit-id
 msgid "English"
 msgstr "Anglais"
 
-#: src/features/Goal/GoalQuestions.tsx:268
+#: src/features/Goal/GoalQuestions.tsx:282
 #. js-lingui-explicit-id
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: src/features/Goal/GoalQuestions.tsx:269
+#: src/features/Goal/GoalQuestions.tsx:283
 #. js-lingui-explicit-id
 msgid "Chinese"
 msgstr "Chinois"
 
-#: src/features/Goal/GoalQuestions.tsx:270
+#: src/features/Goal/GoalQuestions.tsx:284
 #. js-lingui-explicit-id
 msgid "French"
 msgstr "Français"
 
-#: src/features/Goal/GoalQuestions.tsx:271
+#: src/features/Goal/GoalQuestions.tsx:285
 #. js-lingui-explicit-id
 msgid "German"
 msgstr "Allemand"
 
-#: src/features/Goal/GoalQuestions.tsx:272
+#: src/features/Goal/GoalQuestions.tsx:286
 #. js-lingui-explicit-id
 msgid "Japanese"
 msgstr "Japonais"
 
-#: src/features/Goal/GoalQuestions.tsx:273
+#: src/features/Goal/GoalQuestions.tsx:287
 #. js-lingui-explicit-id
 msgid "Korean"
 msgstr "Coréen"
 
-#: src/features/Goal/GoalQuestions.tsx:274
+#: src/features/Goal/GoalQuestions.tsx:288
 #. js-lingui-explicit-id
 msgid "Arabic"
 msgstr "Arabe"
 
-#: src/features/Goal/GoalQuestions.tsx:275
+#: src/features/Goal/GoalQuestions.tsx:289
 #. js-lingui-explicit-id
 msgid "Portuguese"
 msgstr "Portugais"
 
-#: src/features/Goal/GoalQuestions.tsx:277
+#: src/features/Goal/GoalQuestions.tsx:291
 #. js-lingui-explicit-id
 msgid "Italian"
 msgstr "Italien"
 
-#: src/features/Goal/GoalQuestions.tsx:278
+#: src/features/Goal/GoalQuestions.tsx:292
 #. js-lingui-explicit-id
 msgid "Polish"
 msgstr "Polonais"
 
-#: src/features/Goal/GoalQuestions.tsx:279
+#: src/features/Goal/GoalQuestions.tsx:293
 #. js-lingui-explicit-id
 msgid "Russian"
 msgstr "Russe"
 
-#: src/features/Goal/GoalQuestions.tsx:281
+#: src/features/Goal/GoalQuestions.tsx:295
 #. js-lingui-explicit-id
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
-#: src/features/Goal/GoalQuestions.tsx:282
+#: src/features/Goal/GoalQuestions.tsx:296
 #. js-lingui-explicit-id
 msgid "Indonesian"
 msgstr "Indonésien"
 
-#: src/features/Goal/GoalQuestions.tsx:283
+#: src/features/Goal/GoalQuestions.tsx:297
 #. js-lingui-explicit-id
 msgid "Malay"
 msgstr "Malais"
 
-#: src/features/Goal/GoalQuestions.tsx:284
+#: src/features/Goal/GoalQuestions.tsx:298
 #. js-lingui-explicit-id
 msgid "Thai"
 msgstr "Thaï"
 
-#: src/features/Goal/GoalQuestions.tsx:285
+#: src/features/Goal/GoalQuestions.tsx:299
 #. js-lingui-explicit-id
 msgid "Turkish"
 msgstr "Turc"
 
-#: src/features/Goal/GoalQuestions.tsx:286
+#: src/features/Goal/GoalQuestions.tsx:300
 #. js-lingui-explicit-id
 msgid "Vietnamese"
 msgstr "Vietnamien"
 
-#: src/features/Goal/GoalQuestions.tsx:287
+#: src/features/Goal/GoalQuestions.tsx:301
 #. js-lingui-explicit-id
 msgid "Danish"
 msgstr "Danois"
 
-#: src/features/Goal/GoalQuestions.tsx:288
+#: src/features/Goal/GoalQuestions.tsx:302
 #. js-lingui-explicit-id
 msgid "Norwegian"
 msgstr "Norvégien"
 
-#: src/features/Goal/GoalQuestions.tsx:289
+#: src/features/Goal/GoalQuestions.tsx:303
 #. js-lingui-explicit-id
 msgid "Swedish"
 msgstr "Suédois"
 
-#: src/features/Goal/GoalQuestions.tsx:290
+#: src/features/Goal/GoalQuestions.tsx:304
 #. js-lingui-explicit-id
 msgid "Belarusian"
 msgstr "Bélarusse"
 
-#: src/features/Goal/GoalQuestions.tsx:294
+#: src/features/Goal/GoalQuestions.tsx:308
 #. js-lingui-explicit-id
 msgid "3 minutes per day"
 msgstr "3 minutes par jour"
 
-#: src/features/Goal/GoalQuestions.tsx:294
+#: src/features/Goal/GoalQuestions.tsx:308
 #. js-lingui-explicit-id
 msgid "Easy"
 msgstr "Facile"
 
-#: src/features/Goal/GoalQuestions.tsx:295
+#: src/features/Goal/GoalQuestions.tsx:309
 #. js-lingui-explicit-id
 msgid "10 minutes per day"
 msgstr "10 minutes par jour"
 
-#: src/features/Goal/GoalQuestions.tsx:295
+#: src/features/Goal/GoalQuestions.tsx:309
 #. js-lingui-explicit-id
 msgid "Good"
 msgstr "Bon"
 
-#: src/features/Goal/GoalQuestions.tsx:296
+#: src/features/Goal/GoalQuestions.tsx:310
 #. js-lingui-explicit-id
 msgid "15 minutes per day"
 msgstr "15 minutes par jour"
 
-#: src/features/Goal/GoalQuestions.tsx:296
+#: src/features/Goal/GoalQuestions.tsx:310
 #. js-lingui-explicit-id
 msgid "Serious"
 msgstr "Sérieux"
 
-#: src/features/Goal/GoalQuestions.tsx:297
+#: src/features/Goal/GoalQuestions.tsx:311
 #. js-lingui-explicit-id
 msgid "20 minutes per day"
 msgstr "20 minutes par jour"
 
-#: src/features/Goal/GoalQuestions.tsx:297
+#: src/features/Goal/GoalQuestions.tsx:311
 #. js-lingui-explicit-id
 msgid "Intensive"
 msgstr "Intensif"
 
-#: src/features/Goal/GoalQuestions.tsx:374
+#: src/features/Goal/GoalQuestions.tsx:388
 #. js-lingui-explicit-id
 msgid "I want to learn..."
 msgstr "Je veux apprendre..."
 
-#: src/features/Goal/GoalQuestions.tsx:450
+#: src/features/Goal/GoalQuestions.tsx:464
 #. js-lingui-explicit-id
 msgid "My native language"
 msgstr "Ma langue maternelle"
 
-#: src/features/Goal/GoalQuestions.tsx:489
-#: src/features/Goal/GoalQuestions.tsx:584
-#: src/features/Goal/GoalQuestions.tsx:947
-#: src/features/Goal/GoalQuestions.tsx:1008
+#: src/features/Goal/GoalQuestions.tsx:503
+#: src/features/Goal/GoalQuestions.tsx:598
+#: src/features/Goal/GoalQuestions.tsx:961
+#: src/features/Goal/GoalQuestions.tsx:1022
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "Suivant"
 
-#: src/features/Goal/GoalQuestions.tsx:496
+#: src/features/Goal/GoalQuestions.tsx:510
 #. js-lingui-explicit-id
 msgid "How well do you know"
 msgstr "À quel point connaissez-vous"
 
-#: src/features/Goal/GoalQuestions.tsx:592
+#: src/features/Goal/GoalQuestions.tsx:606
 #. js-lingui-explicit-id
 msgid "Describe what you want to achieve, and AI will build a custom plan."
 msgstr ""
 "Décrivez ce que vous souhaitez réaliser, et l'IA établira un plan sur "
 "mesure."
 
-#: src/features/Goal/GoalQuestions.tsx:593
+#: src/features/Goal/GoalQuestions.tsx:607
 #. js-lingui-explicit-id
 msgid "More info means better results."
 msgstr "Plus d'infos signifient de meilleurs résultats."
 
-#: src/features/Goal/GoalQuestions.tsx:604
-#: src/features/Goal/GoalQuestions.tsx:646
+#: src/features/Goal/GoalQuestions.tsx:618
+#: src/features/Goal/GoalQuestions.tsx:660
 #. js-lingui-explicit-id
 msgid "Write at least 100 characters for a sharper plan"
 msgstr "Écrivez au moins 100 caractères pour un plan plus précis"
 
-#: src/features/Goal/GoalQuestions.tsx:637
+#: src/features/Goal/GoalQuestions.tsx:651
 #. js-lingui-explicit-id
 msgid "Let's go"
 msgstr "Allons-y"
 
-#: src/features/Goal/GoalQuestions.tsx:645
+#: src/features/Goal/GoalQuestions.tsx:659
 #. js-lingui-explicit-id
 msgid "About your goal"
 msgstr "À propos de votre objectif"
 
-#: src/features/Goal/GoalQuestions.tsx:677
+#: src/features/Goal/GoalQuestions.tsx:691
 #. js-lingui-explicit-id
 msgid ""
 "I want to learn English to travel. And I want to understand movies and "
@@ -3505,7 +3523,7 @@ msgstr ""
 "Je veux apprendre l'anglais pour voyager. Et je veux comprendre les films "
 "et les chansons."
 
-#: src/features/Goal/GoalQuestions.tsx:724
+#: src/features/Goal/GoalQuestions.tsx:738
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:146
 #: src/features/Conversation/ConversationCanvas2.tsx:682
 #: src/features/Conversation/ConversationCanvas2.tsx:685
@@ -3515,87 +3533,87 @@ msgstr ""
 msgid "Transcribing..."
 msgstr "Transcription en cours..."
 
-#: src/features/Goal/GoalQuestions.tsx:726
+#: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
 msgid "Stop recording"
 msgstr "Arrêtez l'enregistrement"
 
-#: src/features/Goal/GoalQuestions.tsx:727
+#: src/features/Goal/GoalQuestions.tsx:741
 #. js-lingui-explicit-id
 msgid "Record"
 msgstr "Enregistrer"
 
-#: src/features/Goal/GoalQuestions.tsx:812
+#: src/features/Goal/GoalQuestions.tsx:826
 #. js-lingui-explicit-id
 msgid "Let's decide at what pace we will study!"
 msgstr "Décidons à quel rythme nous allons étudier !"
 
-#: src/features/Goal/GoalQuestions.tsx:849
+#: src/features/Goal/GoalQuestions.tsx:863
 #. js-lingui-explicit-id
 msgid "What is our daily goal?"
 msgstr "Quel est notre objectif quotidien ?"
 
-#: src/features/Goal/GoalQuestions.tsx:955
+#: src/features/Goal/GoalQuestions.tsx:969
 #. js-lingui-explicit-id
 msgid "So, in the first week you will learn:"
 msgstr "Donc, pendant la première semaine, vous apprendrez :"
 
-#: src/features/Goal/GoalQuestions.tsx:973
+#: src/features/Goal/GoalQuestions.tsx:987
 #. js-lingui-explicit-id
 msgid "New words:"
 msgstr "Nouveaux mots:"
 
-#: src/features/Goal/GoalQuestions.tsx:976
+#: src/features/Goal/GoalQuestions.tsx:990
 #. js-lingui-explicit-id
 msgid "Rules:"
 msgstr "Règles:"
 
-#: src/features/Goal/GoalQuestions.tsx:1016
+#: src/features/Goal/GoalQuestions.tsx:1030
 #. js-lingui-explicit-id
 msgid "This is what you can achieve in 3 months!"
 msgstr "Voici ce que vous pouvez réaliser en 3 mois !"
 
-#: src/features/Goal/GoalQuestions.tsx:1035
+#: src/features/Goal/GoalQuestions.tsx:1049
 #. js-lingui-explicit-id
 msgid "Confident Communication"
 msgstr "Communication Confidente"
 
-#: src/features/Goal/GoalQuestions.tsx:1037
+#: src/features/Goal/GoalQuestions.tsx:1051
 #. js-lingui-explicit-id
 msgid "Practice speaking and listening without stress"
 msgstr "Pratiquez la parole et l'écoute sans stress"
 
-#: src/features/Goal/GoalQuestions.tsx:1042
+#: src/features/Goal/GoalQuestions.tsx:1056
 #. js-lingui-explicit-id
 msgid "Expanded Vocabulary"
 msgstr "Vocabulaire étendu"
 
-#: src/features/Goal/GoalQuestions.tsx:1044
+#: src/features/Goal/GoalQuestions.tsx:1058
 #. js-lingui-explicit-id
 msgid "Frequently used words and useful phrases"
 msgstr "Mots fréquemment utilisés et phrases utiles"
 
-#: src/features/Goal/GoalQuestions.tsx:1160
+#: src/features/Goal/GoalQuestions.tsx:1174
 #. js-lingui-explicit-id
 msgid "Submitted"
 msgstr "Soumis"
 
-#: src/features/Goal/GoalQuestions.tsx:1171
+#: src/features/Goal/GoalQuestions.tsx:1185
 #. js-lingui-explicit-id
 msgid "Your plan is being processed with AI"
 msgstr "Votre plan est en cours de traitement avec l'IA"
 
-#: src/features/Goal/GoalQuestions.tsx:1201
+#: src/features/Goal/GoalQuestions.tsx:1215
 #. js-lingui-explicit-id
 msgid "Copied"
 msgstr "Copié"
 
-#: src/features/Goal/GoalQuestions.tsx:1201
+#: src/features/Goal/GoalQuestions.tsx:1215
 #. js-lingui-explicit-id
 msgid "Copy link"
 msgstr "Copier le lien"
 
-#: src/features/Goal/GoalQuestions.tsx:1214
+#: src/features/Goal/GoalQuestions.tsx:1228
 #. js-lingui-explicit-id
 msgid "Open a plan"
 msgstr "Ouvrir un plan"
@@ -3791,25 +3809,25 @@ msgstr "Nouveaux mots"
 msgid "Practice new vocabulary with the AI"
 msgstr "Pratiquez de nouveau vocabulaire avec l'IA"
 
-#: src/features/Dashboard/SelectLanguage.tsx:115
+#: src/features/Dashboard/SelectLanguage.tsx:129
 #. js-lingui-explicit-id
 msgid "Almost there!"
 msgstr "Presque là !"
 
-#: src/features/Dashboard/SelectLanguage.tsx:130
+#: src/features/Dashboard/SelectLanguage.tsx:144
 #. js-lingui-explicit-id
 msgid "Select languages"
 msgstr "Sélectionnez les langues"
 
-#: src/features/Dashboard/SelectLanguage.tsx:175
+#: src/features/Dashboard/SelectLanguage.tsx:189
 #. js-lingui-explicit-id
 msgid "Learn"
 msgstr "Apprendre"
 
-#: src/features/Dashboard/SelectLanguage.tsx:202
+#: src/features/Dashboard/SelectLanguage.tsx:216
 #. js-lingui-explicit-id
-msgid "My"
-msgstr "Mon"
+msgid "Page"
+msgstr "Page"
 
 #: src/features/Dashboard/RulesToLearn.tsx:36
 #. js-lingui-explicit-id
@@ -6072,6 +6090,23 @@ msgstr ""
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "Classez-vous dans le top 5 pour obtenir l'application <0>gratuitement</0>"
 
+#: src/features/Dashboard/FeedbackBlock.tsx:53
+msgid "Send Feedback"
+msgstr "Envoyer des Commentaires"
+
+#: src/features/Dashboard/FeedbackBlock.tsx:53
+msgid "Sending..."
+msgstr "Envoi..."
+
+#: src/features/Dashboard/FeedbackBlock.tsx:43
+msgid "Your feedback is valuable to me"
+msgstr "Vos commentaires sont précieux pour moi"
+
+#: src/features/Dashboard/SelectLanguage.tsx:202
+#. js-lingui-explicit-id
+#~ msgid "My"
+#~ msgstr "Mon"
+
 #: src/features/Header/HeaderStatic.tsx:14
 #. js-lingui-explicit-id
 #~ msgid "Sing In"
@@ -6081,11 +6116,6 @@ msgstr "Classez-vous dans le top 5 pour obtenir l'application <0>gratuitement</0
 #. js-lingui-explicit-id
 #~ msgid "20+ languages to practice"
 #~ msgstr "Plus de 20 langues à pratiquer"
-
-#: src/features/Lang/LanguageSwitcher.tsx:191
-#. js-lingui-explicit-id
-#~ msgid "Page"
-#~ msgstr "Page"
 
 #: src/features/Lang/LanguageSwitcher.tsx:195
 #. js-lingui-explicit-id
