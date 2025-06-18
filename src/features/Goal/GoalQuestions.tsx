@@ -122,7 +122,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
       if (stepParsedUrl !== step) {
         setStep(stepParsedUrl);
       }
-    }, 100);
+    }, 400);
 
     return () => clearTimeout(timeoutId);
   }, [step, stepParsedUrl]);
