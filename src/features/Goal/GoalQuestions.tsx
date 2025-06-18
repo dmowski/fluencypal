@@ -117,6 +117,16 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     router.push(newUrl);
   };
 
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (stepParsedUrl !== step) {
+        setStep(stepParsedUrl);
+      }
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, [step, stepParsedUrl]);
+
   const { inWebView } = useIsWebView();
 
   const [showDescriptionError, setShowDescriptionError] = useState<boolean>(false);
