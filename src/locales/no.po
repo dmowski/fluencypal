@@ -13,20 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Dashboard/FeedbackBlock.tsx:25
+#: src/features/Game/GamePage.tsx:75
 #. js-lingui-explicit-id
-msgid "Failed to send feedback. Please try again later."
-msgstr "Kunne ikke sende tilbakemelding. Vennligst prøv igjen senere."
+msgid "Select your avatar"
+msgstr "Velg din avatar"
 
-#: src/features/Dashboard/FeedbackBlock.tsx:30
+#: src/features/Game/GamePage.tsx:254
 #. js-lingui-explicit-id
-msgid "Thank you for your feedback!"
-msgstr "Takk for tilbakemeldingen din!"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:48
-#. js-lingui-explicit-id
-msgid "Leave your feedback"
-msgstr "Legg igjen tilbakemeldingen din"
+msgid "Rating:"
+msgstr "Vurdering:"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -803,7 +798,7 @@ msgid "Alias"
 msgstr "Alias"
 
 #: src/features/RolePlay/rolePlayData.ts:19
-#: src/features/Game/GamePage.tsx:79
+#: src/features/Game/GamePage.tsx:132
 #. js-lingui-explicit-id
 msgid "Game"
 msgstr "Spill"
@@ -1933,7 +1928,7 @@ msgstr "Læringsplan for Hviterussisk"
 
 #: src/features/Lang/LanguageSwitcher.tsx:98
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Game/GamePage.tsx:27
+#: src/features/Game/GamePage.tsx:30
 #: src/features/Dashboard/SelectLanguage.tsx:80
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -1941,7 +1936,7 @@ msgstr "Andre språk"
 
 #: src/features/Lang/LanguageSwitcher.tsx:99
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Game/GamePage.tsx:28
+#: src/features/Game/GamePage.tsx:31
 #: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -3572,37 +3567,32 @@ msgstr "Endelig"
 msgid "Let's rock it!"
 msgstr "La oss rocke det!"
 
-#: src/features/Game/GamePage.tsx:50
+#: src/features/Game/GamePage.tsx:53
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "Brukernavnet må være minst 3 tegn langt."
 
-#: src/features/Game/GamePage.tsx:88
+#: src/features/Game/GamePage.tsx:168
 #. js-lingui-explicit-id
 msgid "Your Username:"
 msgstr "Ditt brukernavn:"
 
-#: src/features/Game/GamePage.tsx:128
+#: src/features/Game/GamePage.tsx:209
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "Ditt morsmål:"
 
-#: src/features/Game/GamePage.tsx:161
+#: src/features/Game/GamePage.tsx:242
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "Laster"
 
-#: src/features/Game/GamePage.tsx:161
+#: src/features/Game/GamePage.tsx:242
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Spill"
 
-#: src/features/Game/GamePage.tsx:173
-#. js-lingui-explicit-id
-msgid "Rate:"
-msgstr "Rate:"
-
-#: src/features/Game/GamePage.tsx:175
+#: src/features/Game/GamePage.tsx:256
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Rangér blant topp 5 for å få appen gratis"
@@ -3886,6 +3876,21 @@ msgstr "Sett målet for læringen din"
 #. js-lingui-explicit-id
 msgid "Start | 5 min"
 msgstr "Start | 5 min"
+
+#: src/features/Dashboard/FeedbackBlock.tsx:25
+#. js-lingui-explicit-id
+msgid "Failed to send feedback. Please try again later."
+msgstr "Kunne ikke sende tilbakemelding. Vennligst prøv igjen senere."
+
+#: src/features/Dashboard/FeedbackBlock.tsx:30
+#. js-lingui-explicit-id
+msgid "Thank you for your feedback!"
+msgstr "Takk for tilbakemeldingen din!"
+
+#: src/features/Dashboard/FeedbackBlock.tsx:48
+#. js-lingui-explicit-id
+msgid "Leave your feedback"
+msgstr "Legg igjen tilbakemeldingen din"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
 #. js-lingui-explicit-id
@@ -5925,6 +5930,11 @@ msgstr "Sender..."
 #: src/features/Dashboard/FeedbackBlock.tsx:43
 msgid "Your feedback is valuable to me"
 msgstr "Din tilbakemelding er verdifull for meg"
+
+#: src/features/Game/GamePage.tsx:173
+#. js-lingui-explicit-id
+#~ msgid "Rate:"
+#~ msgstr "Rate:"
 
 #: src/features/Dashboard/SelectLanguage.tsx:202
 #. js-lingui-explicit-id
