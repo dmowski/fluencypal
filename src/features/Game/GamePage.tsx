@@ -13,7 +13,7 @@ import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
 import { useLanguageGroup } from "../Goal/useLanguageGroup";
 import { avatars } from "./avatars";
 
-const defaultAvatar = "https://cdn.midjourney.com/8a716e39-18fd-4634-aaa0-e5bdc93442f7/0_0.png";
+const defaultAvatar = "https://cdn.midjourney.com/8a716e39-18fd-4634-aaa0-e5bdc93442f7/0_0.webp";
 
 export const GamePage = () => {
   const game = useGame();
@@ -324,6 +324,7 @@ export const GamePage = () => {
                     sx={{
                       width: "100%",
                       padding: "5px 0",
+                      overflow: "hidden",
                     }}
                   >
                     <Typography variant="body1">{stat.username}</Typography>
@@ -336,12 +337,13 @@ export const GamePage = () => {
                       {lastVisitAgo}
                     </Typography>
                   </Stack>
+
                   <Typography
                     variant="body2"
                     align="right"
                     sx={{
                       fontWeight: 600,
-                      width: "100%",
+                      width: "max-content",
                       color: top5 ? "primary.main" : "text.primary",
                       fontSize: top5 ? "1.5rem" : "0.8rem",
                     }}
