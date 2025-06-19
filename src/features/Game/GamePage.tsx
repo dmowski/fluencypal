@@ -190,7 +190,11 @@ export const GamePage = () => {
               ) : (
                 <>
                   <Typography variant="h6">{game.myProfile?.username || "-"} </Typography>
-                  <IconButton size="small" onClick={() => setIsEditUsername(!isEditUsername)}>
+                  <IconButton
+                    disabled={game.loadingProfile}
+                    size="small"
+                    onClick={() => setIsEditUsername(!isEditUsername)}
+                  >
                     <PencilIcon size={"11px"} />
                   </IconButton>
                 </>
