@@ -287,42 +287,55 @@ export const GamePage = () => {
                       : "rgba(255, 255, 255, 0.04)",
                   }}
                 >
-                  <Tooltip title={lastVisitAgo}>
-                    <Stack
-                      sx={{
-                        img: {
-                          width: "50px",
-                          height: "50px",
-                          borderRadius: "50%",
-                          objectFit: "cover",
-                          boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
-                          position: "relative",
-                          zIndex: 1,
-                        },
+                  <Stack
+                    sx={{
+                      img: {
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
                         position: "relative",
+                        zIndex: 1,
+                      },
+                      position: "relative",
+                    }}
+                  >
+                    <img src={avatar} />
+                    {isOnline && (
+                      <Stack
+                        sx={{
+                          display: "block",
+                          width: "10px",
+                          height: "10px",
+                          borderRadius: "50px",
+                          backgroundColor: "#11ff22",
+                          boxShadow: "0px 0px 0px 2px #111",
+                          position: "absolute",
+                          bottom: "1px",
+                          right: "1px",
+                          zIndex: 1,
+                        }}
+                      />
+                    )}
+                  </Stack>
+
+                  <Stack
+                    sx={{
+                      width: "100%",
+                      padding: "5px 0",
+                    }}
+                  >
+                    <Typography variant="body1">{stat.username}</Typography>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        opacity: 0.7,
                       }}
                     >
-                      <img src={avatar} />
-                      {isOnline && (
-                        <Stack
-                          sx={{
-                            display: "block",
-                            width: "10px",
-                            height: "10px",
-                            borderRadius: "50px",
-                            backgroundColor: "#11ff22",
-                            boxShadow: "0px 0px 0px 2px #111",
-                            position: "absolute",
-                            bottom: "1px",
-                            right: "1px",
-                            zIndex: 1,
-                          }}
-                        />
-                      )}
-                    </Stack>
-                  </Tooltip>
-
-                  <Typography variant="body1">{stat.username}</Typography>
+                      {lastVisitAgo}
+                    </Typography>
+                  </Stack>
                   <Typography
                     variant="body2"
                     align="right"
