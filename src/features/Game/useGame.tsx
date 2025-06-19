@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX, useState, useEffect, useMemo } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { GameLastVisit, GameProfile, GameQuestionShort, UsersStat } from "./types";
+import { GameAvatars, GameLastVisit, GameProfile, GameQuestionShort, UsersStat } from "./types";
 import {
   getGameQuestionsRequest,
   getMyProfileRequest,
@@ -35,6 +35,8 @@ interface GameContextType {
   gameLastVisit: GameLastVisit | null;
   pointsToNextPosition: number | null;
   nextPositionStat: UsersStat | null;
+  gameAvatars: GameAvatars;
+  setAvatar: (avatarUrl: string) => void;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -51,6 +53,9 @@ function useProvideGame(): GameContextType {
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
   const [gameRate] = useDocumentData(db.documents.gameRate);
   const [gameLastVisit] = useDocumentData(db.documents.gameLastVisit);
+
+  const [gameAvatars] = useDocumentData(db.documents.gameAvatars);
+
   const stats = useMemo(() => {
     if (!gameRate) return [];
     return getSortedStatsFromData(gameRate);
@@ -63,6 +68,20 @@ function useProvideGame(): GameContextType {
       doc,
       {
         [myProfile.username]: Date.now(),
+      },
+      { merge: true }
+    );
+  };
+
+  const setAvatar = async (avatarUrl: string) => {
+    if (!auth.uid || !myProfile?.username) return;
+
+    const doc = db.documents.gameAvatars;
+
+    await setDoc(
+      doc,
+      {
+        [myProfile.username]: avatarUrl,
       },
       { merge: true }
     );
@@ -214,6 +233,7 @@ function useProvideGame(): GameContextType {
     stats,
     questions,
     loadingQuestions,
+    setAvatar,
     generateQuestions,
     activeQuestion,
 
@@ -221,6 +241,7 @@ function useProvideGame(): GameContextType {
     gameLastVisit: gameLastVisit || null,
     pointsToNextPosition: pointsToNextPosition || null,
     nextPositionStat: nextPositionStat || null,
+    gameAvatars: gameAvatars || {},
   };
 }
 

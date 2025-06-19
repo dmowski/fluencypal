@@ -17,7 +17,7 @@ import { AiUserInfo } from "@/common/userInfo";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { PhraseCorrection } from "../Corrections/types";
 import { GoalPlan } from "../Plan/types";
-import { GameLastVisit, GameUsersPoints } from "../Game/types";
+import { GameAvatars, GameLastVisit, GameUsersPoints } from "../Game/types";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -82,6 +82,7 @@ export const db = {
 
     gameRate: dataPointDoc<GameUsersPoints>(`game/gamePoints`),
     gameLastVisit: dataPointDoc<GameLastVisit>(`game/gameLastVisit`),
+    gameAvatars: dataPointDoc<GameAvatars>(`game/gameAvatars`),
 
     usageLog: (userId?: string, usageId?: string) =>
       userId && usageId ? dataPointDoc<UsageLog>(`users/${userId}/usageLogs/${usageId}`) : null,

@@ -1,4 +1,4 @@
-import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
+import { Button, IconButton, Stack, TextField, Tooltip, Typography } from "@mui/material";
 import { useGame } from "./useGame";
 import { LangSelector } from "../Lang/LangSelector";
 import { GameQuestion } from "./GameQuestion";
@@ -11,6 +11,9 @@ import { fullEnglishLanguageName } from "../Lang/lang";
 import dayjs from "dayjs";
 import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
 import { useLanguageGroup } from "../Goal/useLanguageGroup";
+import { avatars } from "./avatars";
+
+const defaultAvatar = "https://cdn.midjourney.com/8a716e39-18fd-4634-aaa0-e5bdc93442f7/0_0.png";
 
 export const GamePage = () => {
   const game = useGame();
@@ -54,6 +57,9 @@ export const GamePage = () => {
     await game.updateUsername(internalUsernameTrimmed);
   };
 
+  const myAvatar = game.gameAvatars[game.myProfile?.username || ""] || defaultAvatar;
+  const [isShowAvatarSelector, setIsShowAvatarSelector] = useState(false);
+
   return (
     <Stack
       sx={{
@@ -62,6 +68,53 @@ export const GamePage = () => {
         paddingBottom: "90px",
       }}
     >
+      {isShowAvatarSelector && (
+        <CustomModal onClose={() => setIsShowAvatarSelector(false)} isOpen={isShowAvatarSelector}>
+          <Stack>
+            <Typography variant="h6" align="center" sx={{ marginBottom: "20px" }}>
+              {i18n._(`Select your avatar`)}
+            </Typography>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                flexWrap: "wrap",
+                gap: "20px",
+                justifyContent: "center",
+              }}
+            >
+              {avatars.map((avatar, index) => {
+                const isSelected = avatar === myAvatar;
+                return (
+                  <Stack
+                    key={index}
+                    sx={{
+                      img: {
+                        width: "80px",
+                        height: "80px",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        boxShadow: isSelected
+                          ? "0px 0px 0px 2px rgba(0, 0, 0, 1), 0px 0px 0px 5px rgba(255, 255, 255, 1)"
+                          : "0px 0px 0px 3px rgba(55, 55, 55, 1)",
+                        cursor: "pointer",
+                        ":hover": {
+                          boxShadow: "0px 0px 0px 3px rgba(255, 255, 255, 0.8)",
+                        },
+                      },
+                    }}
+                    onClick={() => {
+                      game.setAvatar(avatar);
+                      setIsShowAvatarSelector(false);
+                    }}
+                  >
+                    <img src={avatar} />
+                  </Stack>
+                );
+              })}
+            </Stack>
+          </Stack>
+        </CustomModal>
+      )}
       <Stack
         sx={{
           width: "100%",
@@ -78,43 +131,71 @@ export const GamePage = () => {
         <Typography variant="h3" align="center">
           {i18n._(`Game`)}
         </Typography>
-        <Stack>
-          <Typography
-            variant="caption"
-            sx={{
-              opacity: 0.8,
-            }}
-          >
-            {i18n._(`Your Username:`)}
-          </Typography>
+        <Stack
+          sx={{
+            flexDirection: "row",
+            gap: "20px",
+          }}
+        >
           <Stack
             sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: "10px",
+              img: {
+                width: "50px",
+                height: "50px",
+                borderRadius: "50%",
+                objectFit: "cover",
+                boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
+                position: "relative",
+                zIndex: 1,
+              },
+              position: "relative",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              setIsShowAvatarSelector(!isShowAvatarSelector);
             }}
           >
-            {isEditUsername ? (
-              <>
-                <TextField
-                  variant="outlined"
-                  size="small"
-                  value={internalUsername}
-                  onChange={(e) => setInternalUsername(e.target.value)}
-                  sx={{ width: "220px" }}
-                />
-                <IconButton onClick={() => saveUsername()} disabled={internalUsername.length < 3}>
-                  <CheckIcon size={"18px"} />
-                </IconButton>
-              </>
-            ) : (
-              <>
-                <Typography variant="h6">{game.myProfile?.username || "-"} </Typography>
-                <IconButton size="small" onClick={() => setIsEditUsername(!isEditUsername)}>
-                  <PencilIcon size={"11px"} />
-                </IconButton>
-              </>
-            )}
+            <img src={myAvatar} />
+          </Stack>
+
+          <Stack>
+            <Typography
+              variant="caption"
+              sx={{
+                opacity: 0.8,
+              }}
+            >
+              {i18n._(`Your Username:`)}
+            </Typography>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
+              {isEditUsername ? (
+                <>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    value={internalUsername}
+                    onChange={(e) => setInternalUsername(e.target.value)}
+                    sx={{ width: "220px" }}
+                  />
+                  <IconButton onClick={() => saveUsername()} disabled={internalUsername.length < 3}>
+                    <CheckIcon size={"18px"} />
+                  </IconButton>
+                </>
+              ) : (
+                <>
+                  <Typography variant="h6">{game.myProfile?.username || "-"} </Typography>
+                  <IconButton size="small" onClick={() => setIsEditUsername(!isEditUsername)}>
+                    <PencilIcon size={"11px"} />
+                  </IconButton>
+                </>
+              )}
+            </Stack>
           </Stack>
         </Stack>
 
@@ -170,7 +251,7 @@ export const GamePage = () => {
           }}
         >
           <Stack>
-            <Typography variant="h5">{i18n._(`Rate:`)}</Typography>
+            <Typography variant="h5">{i18n._(`Rating:`)}</Typography>
             <Typography variant="caption">
               {i18n._("Rank in the top 5 to get the app for free")}
             </Typography>
@@ -178,7 +259,7 @@ export const GamePage = () => {
 
           <Stack
             sx={{
-              gap: "10px",
+              gap: "15px",
             }}
           >
             {game.stats.map((stat, index) => {
@@ -186,6 +267,9 @@ export const GamePage = () => {
               const top5 = index < 5;
               const lastVisit = game.gameLastVisit ? game.gameLastVisit[stat.username] : null;
               const lastVisitAgo = lastVisit ? dayjs(lastVisit).fromNow() : null;
+
+              const avatar = game.gameAvatars[stat.username] || defaultAvatar;
+              const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 5 : false;
               return (
                 <Stack
                   key={index}
@@ -195,32 +279,50 @@ export const GamePage = () => {
                     boxSizing: "border-box",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    gap: "10px",
-                    padding: "10px 15px",
-                    borderRadius: "7px",
+                    gap: "15px",
+                    padding: "0px 20px 0 0",
+                    borderRadius: "57px",
                     backgroundColor: isMe
                       ? "rgba(41, 179, 229, 0.17)"
                       : "rgba(255, 255, 255, 0.04)",
                   }}
                 >
-                  <Typography variant="body2">{index + 1}.</Typography>
-                  <Stack
-                    sx={{
-                      width: "100%",
-                    }}
-                  >
-                    <Typography variant="body2">{stat.username}</Typography>
-                    {lastVisitAgo && (
-                      <Typography
-                        sx={{
-                          opacity: 0.7,
-                        }}
-                        variant="caption"
-                      >
-                        {lastVisitAgo}
-                      </Typography>
-                    )}
-                  </Stack>
+                  <Tooltip title={lastVisitAgo}>
+                    <Stack
+                      sx={{
+                        img: {
+                          width: "50px",
+                          height: "50px",
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                          boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
+                          position: "relative",
+                          zIndex: 1,
+                        },
+                        position: "relative",
+                      }}
+                    >
+                      <img src={avatar} />
+                      {isOnline && (
+                        <Stack
+                          sx={{
+                            display: "block",
+                            width: "10px",
+                            height: "10px",
+                            borderRadius: "50px",
+                            backgroundColor: "#11ff22",
+                            boxShadow: "0px 0px 0px 2px #111",
+                            position: "absolute",
+                            bottom: "1px",
+                            right: "1px",
+                            zIndex: 1,
+                          }}
+                        />
+                      )}
+                    </Stack>
+                  </Tooltip>
+
+                  <Typography variant="body1">{stat.username}</Typography>
                   <Typography
                     variant="body2"
                     align="right"
@@ -228,7 +330,7 @@ export const GamePage = () => {
                       fontWeight: 600,
                       width: "100%",
                       color: top5 ? "primary.main" : "text.primary",
-                      fontSize: top5 ? "1.2rem" : "0.8rem",
+                      fontSize: top5 ? "1.5rem" : "0.8rem",
                     }}
                   >
                     {stat.points}
