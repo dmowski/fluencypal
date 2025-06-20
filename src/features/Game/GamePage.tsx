@@ -12,6 +12,7 @@ import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
 import { useLanguageGroup } from "../Goal/useLanguageGroup";
 import { avatars, defaultAvatar } from "./avatars";
 import { GameStats } from "./GameStats";
+import { PositionChangedModal } from "./PositionChangedModal";
 
 export const GamePage = () => {
   const game = useGame();
@@ -267,6 +268,7 @@ export const GamePage = () => {
               gap: "20px",
             }}
           >
+            <PositionChangedModal />
             <CustomModal
               isOpen={true}
               onClose={() => {
