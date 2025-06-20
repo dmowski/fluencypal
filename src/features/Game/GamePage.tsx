@@ -7,13 +7,11 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useEffect, useMemo, useState } from "react";
 import { CheckIcon, PencilIcon, Swords } from "lucide-react";
 import { useSettings } from "../Settings/useSettings";
-import { fullEnglishLanguageName } from "../Lang/lang";
-import dayjs from "dayjs";
+
 import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
 import { useLanguageGroup } from "../Goal/useLanguageGroup";
-import { avatars } from "./avatars";
-
-const defaultAvatar = "https://cdn.midjourney.com/8a716e39-18fd-4634-aaa0-e5bdc93442f7/0_0.webp";
+import { avatars, defaultAvatar } from "./avatars";
+import { GameStats } from "./GameStats";
 
 export const GamePage = () => {
   const game = useGame();
@@ -260,104 +258,7 @@ export const GamePage = () => {
               {i18n._("Rank in the top 5 to get the app for free")}
             </Typography>
           </Stack>
-
-          <Stack
-            sx={{
-              gap: "15px",
-            }}
-          >
-            {game.stats.map((stat, index) => {
-              const isMe = stat.username === game.myProfile?.username;
-              const top5 = index < 5;
-              const lastVisit = game.gameLastVisit ? game.gameLastVisit[stat.username] : null;
-              const lastVisitAgo = lastVisit ? dayjs(lastVisit).fromNow() : null;
-
-              const avatar = game.gameAvatars[stat.username] || defaultAvatar;
-              const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 5 : false;
-              return (
-                <Stack
-                  key={index}
-                  sx={{
-                    flexDirection: "row",
-                    width: "100%",
-                    boxSizing: "border-box",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    gap: "15px",
-                    padding: "0px 20px 0 0",
-                    borderRadius: "57px",
-                    backgroundColor: isMe
-                      ? "rgba(41, 179, 229, 0.17)"
-                      : "rgba(255, 255, 255, 0.04)",
-                  }}
-                >
-                  <Stack
-                    sx={{
-                      img: {
-                        width: "50px",
-                        height: "50px",
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
-                        position: "relative",
-                        zIndex: 1,
-                      },
-                      position: "relative",
-                    }}
-                  >
-                    <img src={avatar} />
-                    {isOnline && (
-                      <Stack
-                        sx={{
-                          display: "block",
-                          width: "10px",
-                          height: "10px",
-                          borderRadius: "50px",
-                          backgroundColor: "#11ff22",
-                          boxShadow: "0px 0px 0px 2px #111",
-                          position: "absolute",
-                          bottom: "1px",
-                          right: "1px",
-                          zIndex: 1,
-                        }}
-                      />
-                    )}
-                  </Stack>
-
-                  <Stack
-                    sx={{
-                      width: "100%",
-                      padding: "5px 0",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Typography variant="body1">{stat.username}</Typography>
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        opacity: 0.7,
-                      }}
-                    >
-                      {lastVisitAgo}
-                    </Typography>
-                  </Stack>
-
-                  <Typography
-                    variant="body2"
-                    align="right"
-                    sx={{
-                      fontWeight: 600,
-                      width: "max-content",
-                      color: top5 ? "primary.main" : "text.primary",
-                      fontSize: top5 ? "1.5rem" : "0.8rem",
-                    }}
-                  >
-                    {stat.points}
-                  </Typography>
-                </Stack>
-              );
-            })}
-          </Stack>
+          <GameStats />
         </Stack>
 
         {game.activeQuestion && playGame && (

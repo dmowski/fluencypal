@@ -25,3 +25,6 @@ export const avatars = [
   "https://cdn.midjourney.com/1331bdda-ab70-41ec-8fad-d6d588262c6c/0_0.png",
   "https://cdn.midjourney.com/edbfc2be-af22-48e5-a390-281a9b51b775/0_0.png",
 ];
+
+export const defaultAvatar =
+  "https://cdn.midjourney.com/8a716e39-18fd-4634-aaa0-e5bdc93442f7/0_0.webp";
