@@ -39,11 +39,11 @@ export const submitAnswer = async ({
     const languageToLearn = question.learningLanguage;
     const systemMessage = `You are an system - expert in language learning.
 The user has provided a description of an image in the language they are learning (${languageToLearn}).
-Your task is to determine if the description is near the image context.
-Real image description is "${question.correctAnswer}"
+Your task is to determine if the description is at least somehow near the image context.
+Image description is "${question.correctAnswer}"
 
 If user's description is somehow correct, start your answer with "true|" (case-insensitive).
-If user's description is completely incorrect, start your answer with "false|" (case-insensitive).
+If user's description is absolutely incorrect, start your answer with "false|" (case-insensitive).
 
 After that, provide a corrected version of user's description in ${languageToLearn} language.
 After corrected description, provide a brief explanation of why the description is correct or incorrect.
