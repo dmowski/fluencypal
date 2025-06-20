@@ -13,16 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/GamePage.tsx:75
-#. js-lingui-explicit-id
-msgid "Select your avatar"
-msgstr "Выберите ваш аватар"
-
-#: src/features/Game/GamePage.tsx:254
-#. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "Рейтинг:"
-
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -800,7 +790,7 @@ msgid "Alias"
 msgstr "Псевдоним"
 
 #: src/features/RolePlay/rolePlayData.ts:19
-#: src/features/Game/GamePage.tsx:132
+#: src/features/Game/GamePage.tsx:131
 #. js-lingui-explicit-id
 msgid "Game"
 msgstr "Игра"
@@ -1802,11 +1792,7 @@ msgstr "Начать урок"
 msgid "Send 6 messages to complete"
 msgstr "Отправьте 6 сообщений для завершения"
 
-#: src/features/Plan/PlanCard.tsx:228
-#: src/features/Goal/GoalQuestions.tsx:818
-#: src/features/Goal/GoalQuestions.tsx:856
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#. js-lingui-explicit-id
+#: src/features/Game/PositionChangedModal.tsx:127
 msgid "Continue"
 msgstr "Продолжить"
 
@@ -1944,7 +1930,7 @@ msgstr "План изучения белорусского языка"
 
 #: src/features/Lang/LanguageSwitcher.tsx:98
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Game/GamePage.tsx:30
+#: src/features/Game/GamePage.tsx:29
 #: src/features/Dashboard/SelectLanguage.tsx:80
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -1952,7 +1938,7 @@ msgstr "Другие языки"
 
 #: src/features/Lang/LanguageSwitcher.tsx:99
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Game/GamePage.tsx:31
+#: src/features/Game/GamePage.tsx:30
 #: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -3593,32 +3579,42 @@ msgstr "Наконец"
 msgid "Let's rock it!"
 msgstr "Давайте начнем!"
 
-#: src/features/Game/GamePage.tsx:53
+#: src/features/Game/GamePage.tsx:52
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "Имя пользователя должно содержать не менее 3 символов."
 
-#: src/features/Game/GamePage.tsx:168
+#: src/features/Game/GamePage.tsx:74
+#. js-lingui-explicit-id
+msgid "Select your avatar"
+msgstr "Выберите ваш аватар"
+
+#: src/features/Game/GamePage.tsx:167
 #. js-lingui-explicit-id
 msgid "Your Username:"
 msgstr "Ваше имя пользователя:"
 
-#: src/features/Game/GamePage.tsx:209
+#: src/features/Game/GamePage.tsx:212
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "Ваш Родной Язык:"
 
-#: src/features/Game/GamePage.tsx:242
+#: src/features/Game/GamePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "Загрузка"
 
-#: src/features/Game/GamePage.tsx:242
+#: src/features/Game/GamePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Играть"
 
-#: src/features/Game/GamePage.tsx:256
+#: src/features/Game/GamePage.tsx:257
+#. js-lingui-explicit-id
+msgid "Rating:"
+msgstr "Рейтинг:"
+
+#: src/features/Game/GamePage.tsx:259
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Войдите в топ-5, чтобы получить приложение бесплатно"
@@ -5975,6 +5971,10 @@ msgstr "{countOfLanguages} языков для практики"
 msgid "My Position: <0>{0}</0>"
 msgstr "Моя позиция: <0>{0}</0>"
 
+#: src/features/Game/PositionChangedModal.tsx:86
+msgid "Nice!"
+msgstr "Отлично!"
+
 #: src/features/Game/GameBadge.tsx:46
 msgid "Play and Learn"
 msgstr "Играй и Учись"
@@ -6002,6 +6002,10 @@ msgstr "Отправка..."
 #: src/features/Dashboard/FeedbackBlock.tsx:43
 msgid "Your feedback is valuable to me"
 msgstr "Ваш отзыв очень ценен для меня"
+
+#: src/features/Game/PositionChangedModal.tsx:94
+msgid "Your position has changed in the game!"
+msgstr "Ваша позиция в игре изменилась!"
 
 #: src/features/Game/GamePage.tsx:173
 #. js-lingui-explicit-id

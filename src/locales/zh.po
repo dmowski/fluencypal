@@ -13,16 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/GamePage.tsx:75
-#. js-lingui-explicit-id
-msgid "Select your avatar"
-msgstr "选择你的头像"
-
-#: src/features/Game/GamePage.tsx:254
-#. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "评分："
-
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -763,7 +753,7 @@ msgid "Alias"
 msgstr "别名"
 
 #: src/features/RolePlay/rolePlayData.ts:19
-#: src/features/Game/GamePage.tsx:132
+#: src/features/Game/GamePage.tsx:131
 #. js-lingui-explicit-id
 msgid "Game"
 msgstr "游戏"
@@ -1632,11 +1622,7 @@ msgstr "开始课程"
 msgid "Send 6 messages to complete"
 msgstr "发送6条信息以完成"
 
-#: src/features/Plan/PlanCard.tsx:228
-#: src/features/Goal/GoalQuestions.tsx:818
-#: src/features/Goal/GoalQuestions.tsx:856
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#. js-lingui-explicit-id
+#: src/features/Game/PositionChangedModal.tsx:127
 msgid "Continue"
 msgstr "继续"
 
@@ -1774,7 +1760,7 @@ msgstr "白俄罗斯语学习计划"
 
 #: src/features/Lang/LanguageSwitcher.tsx:98
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Game/GamePage.tsx:30
+#: src/features/Game/GamePage.tsx:29
 #: src/features/Dashboard/SelectLanguage.tsx:80
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -1782,7 +1768,7 @@ msgstr "其他语言"
 
 #: src/features/Lang/LanguageSwitcher.tsx:99
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Game/GamePage.tsx:31
+#: src/features/Game/GamePage.tsx:30
 #: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -3343,32 +3329,42 @@ msgstr "最后"
 msgid "Let's rock it!"
 msgstr "让我们来开启吧！"
 
-#: src/features/Game/GamePage.tsx:53
+#: src/features/Game/GamePage.tsx:52
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "用户名必须至少为3个字符长。"
 
-#: src/features/Game/GamePage.tsx:168
+#: src/features/Game/GamePage.tsx:74
+#. js-lingui-explicit-id
+msgid "Select your avatar"
+msgstr "选择你的头像"
+
+#: src/features/Game/GamePage.tsx:167
 #. js-lingui-explicit-id
 msgid "Your Username:"
 msgstr "您的用户名："
 
-#: src/features/Game/GamePage.tsx:209
+#: src/features/Game/GamePage.tsx:212
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "您的母语："
 
-#: src/features/Game/GamePage.tsx:242
+#: src/features/Game/GamePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "加载中"
 
-#: src/features/Game/GamePage.tsx:242
+#: src/features/Game/GamePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "播放"
 
-#: src/features/Game/GamePage.tsx:256
+#: src/features/Game/GamePage.tsx:257
+#. js-lingui-explicit-id
+msgid "Rating:"
+msgstr "评分："
+
+#: src/features/Game/GamePage.tsx:259
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "在前5名中排名以免费获取该应用"
@@ -5474,6 +5470,10 @@ msgstr "{countOfLanguages}种语言进行练习"
 msgid "My Position: <0>{0}</0>"
 msgstr "我的位置：<0>{0}</0>"
 
+#: src/features/Game/PositionChangedModal.tsx:86
+msgid "Nice!"
+msgstr "好极了！"
+
 #: src/features/Game/GameBadge.tsx:46
 msgid "Play and Learn"
 msgstr "玩耍和学习"
@@ -5499,6 +5499,10 @@ msgstr "正在发送..."
 #: src/features/Dashboard/FeedbackBlock.tsx:43
 msgid "Your feedback is valuable to me"
 msgstr "您的反馈对我来说非常宝贵"
+
+#: src/features/Game/PositionChangedModal.tsx:94
+msgid "Your position has changed in the game!"
+msgstr "你在游戏中的位置已经改变！"
 
 #: src/features/Game/GamePage.tsx:173
 #. js-lingui-explicit-id

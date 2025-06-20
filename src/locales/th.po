@@ -13,16 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/GamePage.tsx:75
-#. js-lingui-explicit-id
-msgid "Select your avatar"
-msgstr "เลือกอวตารของคุณ"
-
-#: src/features/Game/GamePage.tsx:254
-#. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "คะแนน:"
-
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -794,7 +784,7 @@ msgid "Alias"
 msgstr "นามแฝง"
 
 #: src/features/RolePlay/rolePlayData.ts:19
-#: src/features/Game/GamePage.tsx:132
+#: src/features/Game/GamePage.tsx:131
 #. js-lingui-explicit-id
 msgid "Game"
 msgstr "เกม"
@@ -1790,13 +1780,9 @@ msgstr "เริ่มบทเรียน"
 msgid "Send 6 messages to complete"
 msgstr "ส่ง 6 ข้อความเพื่อเสร็จสิ้น"
 
-#: src/features/Plan/PlanCard.tsx:228
-#: src/features/Goal/GoalQuestions.tsx:818
-#: src/features/Goal/GoalQuestions.tsx:856
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#. js-lingui-explicit-id
+#: src/features/Game/PositionChangedModal.tsx:127
 msgid "Continue"
-msgstr "ดำเนินการต่อ"
+msgstr "ดำเนินต่อ"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -1932,7 +1918,7 @@ msgstr "แผนการเรียนรู้ภาษาเบลารุ
 
 #: src/features/Lang/LanguageSwitcher.tsx:98
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Game/GamePage.tsx:30
+#: src/features/Game/GamePage.tsx:29
 #: src/features/Dashboard/SelectLanguage.tsx:80
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -1940,7 +1926,7 @@ msgstr "ภาษาอื่นๆ"
 
 #: src/features/Lang/LanguageSwitcher.tsx:99
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Game/GamePage.tsx:31
+#: src/features/Game/GamePage.tsx:30
 #: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -3573,32 +3559,42 @@ msgstr "ในที่สุด"
 msgid "Let's rock it!"
 msgstr "เรามาเต้นร็อคกัน!"
 
-#: src/features/Game/GamePage.tsx:53
+#: src/features/Game/GamePage.tsx:52
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "ชื่อผู้ใช้ต้องมีอักขระอย่างน้อย 3 ตัว"
 
-#: src/features/Game/GamePage.tsx:168
+#: src/features/Game/GamePage.tsx:74
+#. js-lingui-explicit-id
+msgid "Select your avatar"
+msgstr "เลือกอวตารของคุณ"
+
+#: src/features/Game/GamePage.tsx:167
 #. js-lingui-explicit-id
 msgid "Your Username:"
 msgstr "ชื่อผู้ใช้ของคุณ:"
 
-#: src/features/Game/GamePage.tsx:209
+#: src/features/Game/GamePage.tsx:212
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "ภาษาแม่ของคุณ:"
 
-#: src/features/Game/GamePage.tsx:242
+#: src/features/Game/GamePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "กำลังโหลด"
 
-#: src/features/Game/GamePage.tsx:242
+#: src/features/Game/GamePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "เล่น"
 
-#: src/features/Game/GamePage.tsx:256
+#: src/features/Game/GamePage.tsx:257
+#. js-lingui-explicit-id
+msgid "Rating:"
+msgstr "คะแนน:"
+
+#: src/features/Game/GamePage.tsx:259
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "ติดอันดับใน 5 อันดับแรกเพื่อรับแอปฟรี"
@@ -5929,6 +5925,10 @@ msgstr "{countOfLanguages} ภาษาที่สามารถฝึกฝ�
 msgid "My Position: <0>{0}</0>"
 msgstr "ตำแหน่งของฉัน: <0>{0}</0>"
 
+#: src/features/Game/PositionChangedModal.tsx:86
+msgid "Nice!"
+msgstr "ดีมาก!"
+
 #: src/features/Game/GameBadge.tsx:46
 msgid "Play and Learn"
 msgstr "เล่นและเรียนรู้"
@@ -5956,6 +5956,10 @@ msgstr "กำลังส่ง..."
 #: src/features/Dashboard/FeedbackBlock.tsx:43
 msgid "Your feedback is valuable to me"
 msgstr "ความคิดเห็นของคุณมีค่ามากสำหรับฉัน"
+
+#: src/features/Game/PositionChangedModal.tsx:94
+msgid "Your position has changed in the game!"
+msgstr "ตำแหน่งของคุณในเกมได้เปลี่ยนแปลงแล้ว!"
 
 #: src/features/Game/GamePage.tsx:173
 #. js-lingui-explicit-id

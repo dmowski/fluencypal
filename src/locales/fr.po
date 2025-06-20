@@ -13,16 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/GamePage.tsx:75
-#. js-lingui-explicit-id
-msgid "Select your avatar"
-msgstr "Sélectionnez votre avatar"
-
-#: src/features/Game/GamePage.tsx:254
-#. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "Évaluation:"
-
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -806,7 +796,7 @@ msgid "Alias"
 msgstr "Alias"
 
 #: src/features/RolePlay/rolePlayData.ts:19
-#: src/features/Game/GamePage.tsx:132
+#: src/features/Game/GamePage.tsx:131
 #. js-lingui-explicit-id
 msgid "Game"
 msgstr "Jeu"
@@ -1855,13 +1845,9 @@ msgstr "Commencez la leçon"
 msgid "Send 6 messages to complete"
 msgstr "Envoyez 6 messages pour terminer"
 
-#: src/features/Plan/PlanCard.tsx:228
-#: src/features/Goal/GoalQuestions.tsx:818
-#: src/features/Goal/GoalQuestions.tsx:856
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#. js-lingui-explicit-id
+#: src/features/Game/PositionChangedModal.tsx:127
 msgid "Continue"
-msgstr "Continue"
+msgstr "Continuer"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -1997,7 +1983,7 @@ msgstr "Plan d'apprentissage biélorusse"
 
 #: src/features/Lang/LanguageSwitcher.tsx:98
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Game/GamePage.tsx:30
+#: src/features/Game/GamePage.tsx:29
 #: src/features/Dashboard/SelectLanguage.tsx:80
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -2005,7 +1991,7 @@ msgstr "Autres langues"
 
 #: src/features/Lang/LanguageSwitcher.tsx:99
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Game/GamePage.tsx:31
+#: src/features/Game/GamePage.tsx:30
 #: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -3663,32 +3649,42 @@ msgstr "Enfin"
 msgid "Let's rock it!"
 msgstr "C'est parti!"
 
-#: src/features/Game/GamePage.tsx:53
+#: src/features/Game/GamePage.tsx:52
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "Le nom d'utilisateur doit comporter au moins 3 caractères."
 
-#: src/features/Game/GamePage.tsx:168
+#: src/features/Game/GamePage.tsx:74
+#. js-lingui-explicit-id
+msgid "Select your avatar"
+msgstr "Sélectionnez votre avatar"
+
+#: src/features/Game/GamePage.tsx:167
 #. js-lingui-explicit-id
 msgid "Your Username:"
 msgstr "Votre nom d'utilisateur:"
 
-#: src/features/Game/GamePage.tsx:209
+#: src/features/Game/GamePage.tsx:212
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "Votre langue maternelle:"
 
-#: src/features/Game/GamePage.tsx:242
+#: src/features/Game/GamePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "Chargement"
 
-#: src/features/Game/GamePage.tsx:242
+#: src/features/Game/GamePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Jouer"
 
-#: src/features/Game/GamePage.tsx:256
+#: src/features/Game/GamePage.tsx:257
+#. js-lingui-explicit-id
+msgid "Rating:"
+msgstr "Évaluation:"
+
+#: src/features/Game/GamePage.tsx:259
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Classez-vous dans le top 5 pour obtenir l'application gratuitement"
@@ -6079,6 +6075,10 @@ msgstr "{countOfLanguages} langues à pratiquer"
 msgid "My Position: <0>{0}</0>"
 msgstr "Ma Position : <0>{0}</0>"
 
+#: src/features/Game/PositionChangedModal.tsx:86
+msgid "Nice!"
+msgstr "Super !"
+
 #: src/features/Game/GameBadge.tsx:46
 msgid "Play and Learn"
 msgstr "Joue et Apprends"
@@ -6106,6 +6106,10 @@ msgstr "Envoi..."
 #: src/features/Dashboard/FeedbackBlock.tsx:43
 msgid "Your feedback is valuable to me"
 msgstr "Vos commentaires sont précieux pour moi"
+
+#: src/features/Game/PositionChangedModal.tsx:94
+msgid "Your position has changed in the game!"
+msgstr "Votre position a changé dans le jeu!"
 
 #: src/features/Game/GamePage.tsx:173
 #. js-lingui-explicit-id

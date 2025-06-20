@@ -13,16 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/GamePage.tsx:75
-#. js-lingui-explicit-id
-msgid "Select your avatar"
-msgstr "Vælg din avatar"
-
-#: src/features/Game/GamePage.tsx:254
-#. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "Bedømmelse:"
-
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -796,7 +786,7 @@ msgid "Alias"
 msgstr "Alias"
 
 #: src/features/RolePlay/rolePlayData.ts:19
-#: src/features/Game/GamePage.tsx:132
+#: src/features/Game/GamePage.tsx:131
 #. js-lingui-explicit-id
 msgid "Game"
 msgstr "Spil"
@@ -1785,13 +1775,9 @@ msgstr "Start lektion"
 msgid "Send 6 messages to complete"
 msgstr "Send 6 beskeder for at fuldføre"
 
-#: src/features/Plan/PlanCard.tsx:228
-#: src/features/Goal/GoalQuestions.tsx:818
-#: src/features/Goal/GoalQuestions.tsx:856
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#. js-lingui-explicit-id
+#: src/features/Game/PositionChangedModal.tsx:127
 msgid "Continue"
-msgstr "Please provide the text you would like to have translated into Danish."
+msgstr "Fortsæt"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -1927,7 +1913,7 @@ msgstr "Hviderussisk Læringsplan"
 
 #: src/features/Lang/LanguageSwitcher.tsx:98
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Game/GamePage.tsx:30
+#: src/features/Game/GamePage.tsx:29
 #: src/features/Dashboard/SelectLanguage.tsx:80
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -1935,7 +1921,7 @@ msgstr "Andre sprog"
 
 #: src/features/Lang/LanguageSwitcher.tsx:99
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Game/GamePage.tsx:31
+#: src/features/Game/GamePage.tsx:30
 #: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -3575,32 +3561,42 @@ msgstr "Endelig"
 msgid "Let's rock it!"
 msgstr "Lad os rocke det!"
 
-#: src/features/Game/GamePage.tsx:53
+#: src/features/Game/GamePage.tsx:52
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "Brugernavn skal være mindst 3 tegn langt."
 
-#: src/features/Game/GamePage.tsx:168
+#: src/features/Game/GamePage.tsx:74
+#. js-lingui-explicit-id
+msgid "Select your avatar"
+msgstr "Vælg din avatar"
+
+#: src/features/Game/GamePage.tsx:167
 #. js-lingui-explicit-id
 msgid "Your Username:"
 msgstr "Dit brugernavn:"
 
-#: src/features/Game/GamePage.tsx:209
+#: src/features/Game/GamePage.tsx:212
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "Dit modersmål:"
 
-#: src/features/Game/GamePage.tsx:242
+#: src/features/Game/GamePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "Indlæser"
 
-#: src/features/Game/GamePage.tsx:242
+#: src/features/Game/GamePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Spil"
 
-#: src/features/Game/GamePage.tsx:256
+#: src/features/Game/GamePage.tsx:257
+#. js-lingui-explicit-id
+msgid "Rating:"
+msgstr "Bedømmelse:"
+
+#: src/features/Game/GamePage.tsx:259
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Rangér blandt top 5 for at få appen gratis"
@@ -5918,6 +5914,10 @@ msgstr "{countOfLanguages} sprog at øve"
 msgid "My Position: <0>{0}</0>"
 msgstr "Min Position: <0>{0}</0>"
 
+#: src/features/Game/PositionChangedModal.tsx:86
+msgid "Nice!"
+msgstr "Flot!"
+
 #: src/features/Game/GameBadge.tsx:46
 msgid "Play and Learn"
 msgstr "Leg og Lær"
@@ -5945,6 +5945,10 @@ msgstr "Sender..."
 #: src/features/Dashboard/FeedbackBlock.tsx:43
 msgid "Your feedback is valuable to me"
 msgstr "Din feedback er værdifuld for mig"
+
+#: src/features/Game/PositionChangedModal.tsx:94
+msgid "Your position has changed in the game!"
+msgstr "Din position er ændret i spillet!"
 
 #: src/features/Game/GamePage.tsx:173
 #. js-lingui-explicit-id
