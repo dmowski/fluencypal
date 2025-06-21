@@ -206,7 +206,7 @@ export const GamePage = () => {
         <Stack
           sx={{
             gap: "5px",
-            width: "250px",
+            width: "100%",
           }}
         >
           <Typography variant="body2">
