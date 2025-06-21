@@ -2,7 +2,7 @@
 
 import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { useAuth } from "../Auth/useAuth";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import { SignInForm } from "../Auth/SignInForm";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";

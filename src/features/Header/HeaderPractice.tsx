@@ -29,6 +29,7 @@ import { useLingui } from "@lingui/react";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { useSettings } from "../Settings/useSettings";
 import { useGame } from "../Game/useGame";
+import { exitFullScreen } from "@/libs/fullScreen";
 
 export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -183,6 +184,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
                       top: 0,
                       behavior: "smooth",
                     });
+                    exitFullScreen();
                   }}
                 >
                   <Typography

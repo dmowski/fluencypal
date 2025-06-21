@@ -5,6 +5,7 @@ import { Check, ChevronRight } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
+import { goFullScreen } from "@/libs/fullScreen";
 
 interface PlanCardProps {
   title: string;
@@ -102,6 +103,7 @@ export const PlanCard = ({
               onClick={() => {
                 setShowModal(false);
                 onClick();
+                goFullScreen();
               }}
               variant="contained"
               color="info"
