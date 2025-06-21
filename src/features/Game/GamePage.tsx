@@ -13,6 +13,7 @@ import { useLanguageGroup } from "../Goal/useLanguageGroup";
 import { avatars, defaultAvatar } from "./avatars";
 import { GameStats } from "./GameStats";
 import { PositionChangedModal } from "./PositionChangedModal";
+import { exitFullScreen, goFullScreen } from "@/libs/fullScreen";
 
 export const GamePage = () => {
   const game = useGame();
@@ -233,6 +234,7 @@ export const GamePage = () => {
           color="info"
           size="large"
           onClick={() => {
+            goFullScreen();
             game.generateQuestions();
             setPlayGame(true);
           }}
@@ -273,6 +275,7 @@ export const GamePage = () => {
               isOpen={true}
               onClose={() => {
                 setPlayGame(false);
+                exitFullScreen();
               }}
               padding="0px"
               width="100dvw"
