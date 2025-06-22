@@ -46,7 +46,9 @@ const splitSentenceIntoWords = (sentence: string): string[] => {
 const generateImageQuestions = async ({
   learningLanguage,
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
-  const allQuestions: QuestionOutput[] = imageDescriptions.map((image) => {
+  const shuffledImages = shuffleArray(imageDescriptions);
+  const limitedImageDescriptions = shuffledImages.slice(0, 5);
+  const allQuestions: QuestionOutput[] = limitedImageDescriptions.map((image) => {
     const shortQuestion: GameQuestionShort = {
       id: `${Date.now()}_img_${image.id}`,
       type: "describe_image",
