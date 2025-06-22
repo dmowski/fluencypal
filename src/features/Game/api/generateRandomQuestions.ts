@@ -5,6 +5,7 @@ import { shuffleArray } from "@/libs/array";
 import { imageDescriptions } from "@/features/Game/ImagesDescriptions";
 import { fullLanguages } from "@/libs/languages";
 import { topicsToDiscuss } from "./topics";
+import { translateText } from "@/app/api/translate/translateText";
 
 interface QuestionOutput {
   fullQuestions: GameQuestionFull;
@@ -207,27 +208,41 @@ const generateTopicToDiscuss = async ({
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
   const shuffled = shuffleArray(topicsToDiscuss);
   const selectedTopics = shuffled.slice(0, 5);
-  return selectedTopics.map((topic, index) => {
-    const shortQuestion: GameQuestionShort = {
-      id: `${Date.now()}_topic_${index}`,
-      type: "topic_to_discuss",
-      question: topic.task,
-      options: [],
-    };
+  const isNeedToTranslate = learningLanguage !== "en";
 
-    const fullQuestion: GameQuestionFull = {
-      ...shortQuestion,
-      createdAt: Date.now(),
-      answeredAt: null,
-      isAnsweredCorrectly: null,
-      learningLanguage: learningLanguage,
-      correctAnswer: topic.task,
-    };
-    return {
-      fullQuestions: fullQuestion,
-      shortQuestions: shortQuestion,
-    };
-  });
+  return await Promise.all(
+    selectedTopics.map(async (topic, index) => {
+      const task = topic.task;
+
+      const translatedTask = isNeedToTranslate
+        ? await translateText({
+            text: task,
+            sourceLanguage: "en",
+            targetLanguage: "pl",
+          })
+        : task;
+
+      const shortQuestion: GameQuestionShort = {
+        id: `${Date.now()}_topic_${index}`,
+        type: "topic_to_discuss",
+        question: translatedTask,
+        options: [],
+      };
+
+      const fullQuestion: GameQuestionFull = {
+        ...shortQuestion,
+        createdAt: Date.now(),
+        answeredAt: null,
+        isAnsweredCorrectly: null,
+        learningLanguage: learningLanguage,
+        correctAnswer: translatedTask,
+      };
+      return {
+        fullQuestions: fullQuestion,
+        shortQuestions: shortQuestion,
+      };
+    })
+  );
 };
 
 interface generateRandomQuestionsProps {

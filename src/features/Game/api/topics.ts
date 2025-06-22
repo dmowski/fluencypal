@@ -17,10 +17,6 @@ export const topicsToDiscuss: Topic[] = [
     level: "medium",
   },
   {
-    task: "Do you believe animals can understand human emotions?",
-    level: "medium",
-  },
-  {
     task: "Is it better to be book-smart or street-smart?",
     level: "hard",
   },
@@ -55,10 +51,6 @@ export const topicsToDiscuss: Topic[] = [
   {
     task: "Is technology making people less social?",
     level: "hard",
-  },
-  {
-    task: "What is your favorite movie?",
-    level: "easy",
   },
   {
     task: "What is your favorite food and why?",
