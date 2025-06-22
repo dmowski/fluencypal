@@ -80,12 +80,17 @@ export const TopicToDiscussScreen = ({
         sx={{
           maxWidth: "600px",
           width: "100%",
+          minHeight: "90vh",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <Typography
           variant="caption"
           sx={{
             padding: "20px 10px 15px 10px",
+            width: "100%",
+            boxSizing: "border-box",
           }}
         >
           {i18n._("Discuss the topic")}
@@ -97,7 +102,7 @@ export const TopicToDiscussScreen = ({
             justifyContent: "center",
             paddingBottom: "20px",
             width: "100%",
-            padding: "20px 10px 15px 10px",
+            padding: "0px 10px 15px 10px",
             boxSizing: "border-box",
           }}
         >

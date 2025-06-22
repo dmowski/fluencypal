@@ -50,6 +50,8 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
           variant="caption"
           sx={{
             padding: "20px 10px 15px 10px",
+            width: "100%",
+            boxSizing: "border-box",
           }}
         >
           {i18n._("Form a sentence")}
@@ -57,9 +59,11 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
         <Stack
           sx={{
             gap: "10px",
-            alignItems: "center",
-            justifyContent: "center",
+            alignItems: "flex-start",
+            justifyContent: "flex-start",
             height: "100%",
+            width: "100%",
+            boxSizing: "border-box",
           }}
         >
           <Stack
@@ -67,9 +71,10 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
               flexDirection: "row",
               flexWrap: "wrap",
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               gap: "0 7px",
               padding: "10px",
+              width: "100%",
             }}
           >
             {selectedWords.map((word, index) => {

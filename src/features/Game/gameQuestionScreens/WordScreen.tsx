@@ -49,6 +49,8 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
         <Typography
           variant="caption"
           sx={{
+            width: "100%",
+            boxSizing: "border-box",
             padding: "20px 10px 15px 10px",
           }}
         >
@@ -58,14 +60,18 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
           sx={{
             gap: "10px",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             height: "100%",
+            width: "100%",
+            boxSizing: "border-box",
+            padding: "0px 10px 15px 10px",
           }}
         >
           <Typography
             variant="h4"
             sx={{
               fontSize: "2.5rem",
+              width: "100%",
             }}
             className="decor-text"
           >
