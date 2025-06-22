@@ -10,6 +10,7 @@ import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { SummaryRow } from "./SummaryRow";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
+import { StringDiff } from "react-string-diff";
 
 export const TopicToDiscussScreen = ({
   question,
@@ -167,7 +168,7 @@ export const TopicToDiscussScreen = ({
             </Typography>
           )}
 
-          {recorder.transcription && (
+          {recorder.transcription && !answerCorrectedMessage && (
             <Markdown
               onWordClick={
                 translator.isTranslateAvailable
@@ -332,18 +333,30 @@ export const TopicToDiscussScreen = ({
                       gap: "10px",
                     }}
                   >
-                    <Markdown
-                      onWordClick={
-                        translator.isTranslateAvailable
-                          ? (word) => {
-                              translator.translateWithModal(word);
-                            }
-                          : undefined
-                      }
-                      variant="conversation"
+                    <StringDiff
+                      styles={{
+                        added: {
+                          color: "#81e381",
+                          fontWeight: 600,
+                        },
+                        removed: {
+                          display: "none",
+                          textDecoration: "line-through",
+                          opacity: 0.4,
+                        },
+                        default: {},
+                      }}
+                      oldValue={recorder.transcription || ""}
+                      newValue={answerCorrectedMessage}
+                    />
+
+                    <IconButton
+                      onClick={() => {
+                        translator.translateWithModal(answerCorrectedMessage);
+                      }}
                     >
-                      {answerCorrectedMessage}
-                    </Markdown>
+                      <Languages size={"16px"} color="#eee" />
+                    </IconButton>
                     <AudioPlayIcon
                       text={answerCorrectedMessage}
                       instructions="Calm and clear"

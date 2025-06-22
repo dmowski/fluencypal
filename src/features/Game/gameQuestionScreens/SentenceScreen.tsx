@@ -75,6 +75,10 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
               gap: "0 7px",
               padding: "10px",
               width: "100%",
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+              borderRadius: "10px",
+              boxSizing: "border-box",
+              minHeight: "70px",
             }}
           >
             {selectedWords.map((word, index) => {

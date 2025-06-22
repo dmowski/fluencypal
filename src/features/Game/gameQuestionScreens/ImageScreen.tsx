@@ -4,13 +4,14 @@ import { useGame } from "../useGame";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
-import { Check, ChevronRight, Icon, Mic, Trash } from "lucide-react";
+import { Check, ChevronRight, Icon, Languages, Mic, Trash } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { SummaryRow } from "./SummaryRow";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
+import { StringDiff } from "react-string-diff";
 
 export const DescribeImageScreen = ({
   question,
@@ -147,7 +148,7 @@ export const DescribeImageScreen = ({
             </Typography>
           )}
 
-          {recorder.transcription && (
+          {recorder.transcription && !answerCorrectedMessage && (
             <Markdown
               onWordClick={
                 translator.isTranslateAvailable
@@ -312,23 +313,43 @@ export const DescribeImageScreen = ({
                       gap: "10px",
                     }}
                   >
-                    <Markdown
-                      onWordClick={
-                        translator.isTranslateAvailable
-                          ? (word) => {
-                              translator.translateWithModal(word);
-                            }
-                          : undefined
-                      }
-                      variant="conversation"
-                    >
-                      {answerCorrectedMessage}
-                    </Markdown>
-                    <AudioPlayIcon
-                      text={answerCorrectedMessage}
-                      instructions="Calm and clear"
-                      voice={"coral"}
+                    <StringDiff
+                      styles={{
+                        added: {
+                          color: "#81e381",
+                          fontWeight: 600,
+                        },
+                        removed: {
+                          display: "none",
+                          textDecoration: "line-through",
+                          opacity: 0.4,
+                        },
+                        default: {},
+                      }}
+                      oldValue={answerDescription || ""}
+                      newValue={answerCorrectedMessage}
                     />
+
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: "0px",
+                      }}
+                    >
+                      <IconButton
+                        onClick={() => {
+                          translator.translateWithModal(answerCorrectedMessage);
+                        }}
+                      >
+                        <Languages size={"16px"} color="#eee" />
+                      </IconButton>
+                      <AudioPlayIcon
+                        text={answerCorrectedMessage}
+                        instructions="Calm and clear"
+                        voice={"coral"}
+                      />
+                    </Stack>
                   </Stack>
                 )}
 
