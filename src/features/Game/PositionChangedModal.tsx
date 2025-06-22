@@ -46,17 +46,27 @@ export const PositionChangedModal = () => {
       return;
     }
 
-    setStats([whomITookPositionFrom, myStat]);
+    const isFirstPosition = actualMyPosition === 0;
+    const nextState = isFirstPosition ? null : game.stats[actualMyPosition - 1];
+
+    const statsToShow = [whomITookPositionFrom, myStat];
+    if (nextState) {
+      statsToShow.push(nextState);
+    }
+
+    setStats(statsToShow);
 
     setPositions({
-      [whomITookPositionFrom.username]: 0,
-      [myStat.username]: 1,
+      [nextState?.username || ""]: 0,
+      [whomITookPositionFrom.username]: 1,
+      [myStat.username]: 2,
     });
 
     setTimeout(() => {
       setPositions({
-        [myStat.username]: 0,
-        [whomITookPositionFrom.username]: 1,
+        [nextState?.username || ""]: 0,
+        [myStat.username]: 1,
+        [whomITookPositionFrom.username]: 2,
       });
     }, 1000);
     setIsShowModal(true);
@@ -84,14 +94,6 @@ export const PositionChangedModal = () => {
         <Stack>
           <Typography variant="h6">
             <Trans>Nice!</Trans>
-          </Typography>
-          <Typography
-            variant="caption"
-            sx={{
-              opacity: 0.7,
-            }}
-          >
-            <Trans>Your position has changed in the game!</Trans>
           </Typography>
         </Stack>
         <Stack
