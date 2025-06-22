@@ -4,6 +4,7 @@ import { generateTextWithAi } from "../../../app/api/ai/generateTextWithAi";
 import { shuffleArray } from "@/libs/array";
 import { imageDescriptions } from "@/features/Game/ImagesDescriptions";
 import { fullLanguages } from "@/libs/languages";
+import { topicsToDiscuss } from "./topics";
 
 interface QuestionOutput {
   fullQuestions: GameQuestionFull;
@@ -197,6 +198,36 @@ Do not wrap your answer in any intro text.
   return allQuestions;
 };
 
+const generateTopicToDiscuss = async ({
+  userInfoRecords,
+  nativeLanguage,
+  learningLanguage,
+}: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
+  const shuffled = shuffleArray(topicsToDiscuss);
+  const selectedTopics = shuffled.slice(0, 5);
+  return selectedTopics.map((topic, index) => {
+    const shortQuestion: GameQuestionShort = {
+      id: `${Date.now()}_topic_${index}`,
+      type: "topic_to_discuss",
+      question: topic.task,
+      options: [],
+    };
+
+    const fullQuestion: GameQuestionFull = {
+      ...shortQuestion,
+      createdAt: Date.now(),
+      answeredAt: null,
+      isAnsweredCorrectly: null,
+      learningLanguage: learningLanguage,
+      correctAnswer: topic.task,
+    };
+    return {
+      fullQuestions: fullQuestion,
+      shortQuestions: shortQuestion,
+    };
+  });
+};
+
 interface generateRandomQuestionsProps {
   userInfoRecords: string[];
   nativeLanguage: string;
@@ -209,6 +240,11 @@ export const generateRandomQuestions = async ({
   learningLanguage,
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
   const questions = await Promise.all([
+    generateTopicToDiscuss({
+      userInfoRecords,
+      nativeLanguage,
+      learningLanguage,
+    }),
     generateImageQuestions({
       userInfoRecords,
       nativeLanguage,
