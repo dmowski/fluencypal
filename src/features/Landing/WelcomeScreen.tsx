@@ -1,15 +1,11 @@
 import { Stack, Typography } from "@mui/material";
 import { FirstEnterButton } from "./FirstEnterButton";
 import { maxLandingWidth, subTitleFontStyle } from "./landingSettings";
-import { ConversationCard } from "../Dashboard/ConversationCard";
-import { getI18nInstance } from "@/appRouterI18n";
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { ConversationLandingCard } from "./ConversationLandingCard";
-import { getUrlStart } from "../Lang/getUrlStart";
+import { Trans } from "@lingui/react/macro";
 
 interface WelcomeScreenProps {
   title: string;
-  subTitle: string;
   openDashboardTitle: string;
   getStartedTitle: string;
   viewPricingTitle: string;
@@ -20,7 +16,6 @@ interface WelcomeScreenProps {
 }
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   title,
-  subTitle,
   openDashboardTitle,
   getStartedTitle,
   viewPricingTitle,
@@ -29,7 +24,6 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   practiceLink,
   lang,
 }) => {
-  const i18n = getI18nInstance(lang);
   return (
     <Stack
       sx={{
@@ -73,6 +67,24 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           }}
         >
           <Typography
+            sx={{
+              fontSize: "0.8rem",
+              fontWeight: 700,
+              border: "1px solid rgb(5, 172, 255)",
+              backgroundColor: "rgba(5, 172, 255, 0.01)",
+              padding: "3px 8px",
+              borderRadius: "5px",
+              textTransform: "uppercase",
+              letterSpacing: "1px",
+              color: "#05acff",
+              "@media (max-width: 600px)": {
+                marginBottom: "10px",
+              },
+            }}
+          >
+            <Trans>AI</Trans>
+          </Typography>
+          <Typography
             align="center"
             variant="h1"
             component={"h1"}
@@ -91,25 +103,42 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           >
             {title}
           </Typography>
-          <Typography
-            align="center"
-            variant="body1"
+          <Stack
             sx={{
-              maxWidth: "940px",
-              ...subTitleFontStyle,
-              "@media (max-width: 600px)": {
-                fontSize: "1rem",
-              },
+              alignItems: "center",
+              gap: "5px",
             }}
           >
-            {subTitle}
-          </Typography>
+            <Typography
+              align="center"
+              sx={{
+                maxWidth: "940px",
+                ...subTitleFontStyle,
+                "@media (max-width: 600px)": {
+                  fontSize: "1rem",
+                },
+                b: {
+                  fontWeight: 700,
+                  color: "#05acff",
+                },
+              }}
+            >
+              <Trans>Talk, get corrected, improve—repeat.</Trans>
+              <br />
+
+              <Typography align="center" component={"span"} sx={{}}>
+                <Trans>
+                  Win the game and get the app <b>for free</b>
+                </Trans>
+              </Typography>
+            </Typography>
+          </Stack>
         </Stack>
 
         <Stack
           sx={{
-            flexDirection: "row",
-            gap: "10px",
+            flexDirection: "column",
+            gap: "15px",
             alignItems: "center",
           }}
         >

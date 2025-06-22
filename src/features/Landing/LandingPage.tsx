@@ -2,7 +2,6 @@ import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Stack, Typography } from "@mui/material";
 import { Footer } from "./Footer";
 import { WelcomeScreen } from "./WelcomeScreen";
-import { IntroVideoDemo } from "./IntroVideoDemo";
 import { GeneralFaqBlock } from "./FAQ/GeneralFaqBlock";
 import { CtaBlock } from "./ctaBlock";
 import { ProposalCards } from "./ProposalCards";
@@ -127,7 +126,6 @@ export default function LandingPage({ lang }: LandingPageProps) {
         <Stack sx={{ alignItems: "center" }}>
           <WelcomeScreen
             title={i18n._(`Speaking Partner`)}
-            subTitle={i18n._(`Talk, get corrected, improve—repeat.`)}
             openDashboardTitle={i18n._(`Get Started`)}
             getStartedTitle={i18n._(`Get Started Free`)}
             viewPricingTitle={i18n._(`View Pricing`)}
