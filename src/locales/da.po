@@ -133,7 +133,7 @@ msgstr "AI vejleder omkostninger"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Header/NeedHelpModal.tsx:145
 #: src/features/Goal/GoalQuestions.tsx:63
-#: src/features/Auth/SignInForm.tsx:206
+#: src/features/Auth/SignInForm.tsx:207
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
 msgstr "Privatlivspolitik"
@@ -151,7 +151,7 @@ msgstr "Politik for cookies"
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Header/NeedHelpModal.tsx:132
 #: src/features/Goal/GoalQuestions.tsx:67
-#: src/features/Auth/SignInForm.tsx:210
+#: src/features/Auth/SignInForm.tsx:211
 #. js-lingui-explicit-id
 msgid "Terms of Use"
 msgstr "Brugsbetingelser"
@@ -704,9 +704,9 @@ msgstr "Betalingshistorik:"
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:155
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:135
-#: src/features/Conversation/ConversationPage.tsx:113
-#: src/features/Conversation/ConversationPage.tsx:122
-#: src/features/Conversation/ConversationPage.tsx:142
+#: src/features/Conversation/ConversationPage.tsx:111
+#: src/features/Conversation/ConversationPage.tsx:120
+#: src/features/Conversation/ConversationPage.tsx:140
 #: src/features/Conversation/ConversationCanvas2.tsx:293
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -791,7 +791,7 @@ msgid "Alias"
 msgstr "Alias"
 
 #: src/features/RolePlay/rolePlayData.ts:19
-#: src/features/Game/GamePage.tsx:132
+#: src/features/Game/GamePage.tsx:42
 #. js-lingui-explicit-id
 msgid "Game"
 msgstr "Spil"
@@ -1914,7 +1914,7 @@ msgstr "Hviderussisk Læringsplan"
 
 #: src/features/Lang/LanguageSwitcher.tsx:98
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Game/GamePage.tsx:30
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Dashboard/SelectLanguage.tsx:80
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -1922,7 +1922,7 @@ msgstr "Andre sprog"
 
 #: src/features/Lang/LanguageSwitcher.tsx:99
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Game/GamePage.tsx:31
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -3160,7 +3160,7 @@ msgid "By submitting this form, you agree to our:"
 msgstr "Ved at indsende denne formular, accepterer du vores:"
 
 #: src/features/Goal/GoalQuestions.tsx:65
-#: src/features/Auth/SignInForm.tsx:208
+#: src/features/Auth/SignInForm.tsx:209
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "og"
@@ -3366,11 +3366,8 @@ msgstr "Jeg vil lære..."
 msgid "My native language"
 msgstr "Mit modersmål"
 
-#: src/features/Goal/GoalQuestions.tsx:503
-#: src/features/Goal/GoalQuestions.tsx:598
-#: src/features/Goal/GoalQuestions.tsx:961
-#: src/features/Goal/GoalQuestions.tsx:1022
-#. js-lingui-explicit-id
+#: src/features/Game/GameOnboarding.tsx:65
+#: src/features/Game/GameOnboarding.tsx:118
 msgid "Next"
 msgstr "Næste"
 
@@ -3558,45 +3555,29 @@ msgstr "Endelig"
 msgid "Let's rock it!"
 msgstr "Lad os rocke det!"
 
-#: src/features/Game/GamePage.tsx:53
-#. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "Brugernavn skal være mindst 3 tegn langt."
-
-#: src/features/Game/GamePage.tsx:75
-#. js-lingui-explicit-id
-msgid "Select your avatar"
-msgstr "Vælg din avatar"
-
-#: src/features/Game/GamePage.tsx:168
-#. js-lingui-explicit-id
-msgid "Your Username:"
-msgstr "Dit brugernavn:"
-
-#: src/features/Game/GamePage.tsx:213
-#. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Dit modersmål:"
-
-#: src/features/Game/GamePage.tsx:247
+#: src/features/Game/GamePage.tsx:71
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "Indlæser"
 
-#: src/features/Game/GamePage.tsx:247
-#. js-lingui-explicit-id
+#: src/features/Game/GameOnboarding.tsx:170
 msgid "Play"
 msgstr "Spil"
 
-#: src/features/Game/GamePage.tsx:259
+#: src/features/Game/GamePage.tsx:83
 #. js-lingui-explicit-id
 msgid "Rating:"
 msgstr "Bedømmelse:"
 
-#: src/features/Game/GamePage.tsx:261
+#: src/features/Game/GamePage.tsx:85
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Rangér blandt top 5 for at få appen gratis"
+
+#: src/features/Game/GameMyUsername.tsx:27
+#. js-lingui-explicit-id
+msgid "Username must be at least 3 characters long."
+msgstr "Brugernavn skal være mindst 3 tegn langt."
 
 #: src/features/Game/GameBadge.tsx:63
 #. js-lingui-explicit-id
@@ -4069,17 +4050,17 @@ msgstr "Mere"
 msgid "Error analyzing conversation"
 msgstr "Fejl ved analyse af samtale"
 
-#: src/features/Conversation/ConversationPage.tsx:126
+#: src/features/Conversation/ConversationPage.tsx:124
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Indlæser mål..."
 
-#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Conversation/ConversationPage.tsx:148
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Skriver nye ord..."
 
-#: src/features/Conversation/ConversationPage.tsx:154
+#: src/features/Conversation/ConversationPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Oprettelse af ny regel..."
@@ -5926,6 +5907,26 @@ msgstr "{countOfLanguages} sprog at øve"
 msgid "AI"
 msgstr "AI"
 
+#: src/features/Game/GameOnboarding.tsx:55
+msgid "Describe images, craft sentences, and translate words"
+msgstr "Beskriv billeder, udform sætninger og oversæt ord"
+
+#: src/features/Game/GameOnboarding.tsx:105
+msgid ""
+"Each day, we remove 3 points from everyone so that everyone has a fair "
+"chance to win."
+msgstr ""
+"Hver dag fjerner vi 3 point fra alle, så alle har en fair chance for at "
+"vinde."
+
+#: src/features/Game/GameOnboarding.tsx:46
+msgid "Learn and Play"
+msgstr "Lær og Leg"
+
+#: src/features/Game/GameOnboarding.tsx:134
+msgid "Let’s make sure you’re ready"
+msgstr "Lad os sikre os, at du er klar"
+
 #: src/features/Game/gameQuestionScreens/SummaryRow.tsx:18
 #. placeholder {0}: game.myPosition
 msgid "My Position: <0>{0}</0>"
@@ -5951,6 +5952,10 @@ msgstr ""
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "Placer dig i top 5 for at få appen <0>gratis</0>"
 
+#: src/features/Game/GameMyAvatar.tsx:20
+msgid "Select your avatar"
+msgstr "Vælg dit avatar"
+
 #: src/features/Dashboard/FeedbackBlock.tsx:53
 msgid "Send Feedback"
 msgstr "Send Feedback"
@@ -5967,9 +5972,40 @@ msgstr "Tal, få rettelser, forbedre—gentag."
 msgid "Win the game and get the app <0>for free</0>"
 msgstr "Vind spillet og få appen <0>gratis</0>"
 
+#: src/features/Game/GameOnboarding.tsx:94
+msgid "You have a chance"
+msgstr "Du har en chance"
+
+#: src/features/Game/GameOnboarding.tsx:145
+msgid "Your Avatar:"
+msgstr "Din Avatar:"
+
 #: src/features/Dashboard/FeedbackBlock.tsx:43
 msgid "Your feedback is valuable to me"
 msgstr "Din feedback er værdifuld for mig"
+
+#: src/features/Game/GameNativeLanguageSelector.tsx:39
+msgid "Your Native Language:"
+msgstr "Dit modersmål:"
+
+#: src/features/Game/GameMyUsername.tsx:42
+msgid "Your Username:"
+msgstr "Dit Brugernavn:"
+
+#: src/features/Game/GamePage.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "Select your avatar"
+#~ msgstr "Vælg din avatar"
+
+#: src/features/Game/GamePage.tsx:168
+#. js-lingui-explicit-id
+#~ msgid "Your Username:"
+#~ msgstr "Dit brugernavn:"
+
+#: src/features/Game/GamePage.tsx:213
+#. js-lingui-explicit-id
+#~ msgid "Your Native Language:"
+#~ msgstr "Dit modersmål:"
 
 #: src/features/Landing/LandingPage.tsx:130
 #. js-lingui-explicit-id

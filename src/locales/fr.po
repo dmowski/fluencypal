@@ -132,7 +132,7 @@ msgstr "Coût du tuteur IA"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Header/NeedHelpModal.tsx:145
 #: src/features/Goal/GoalQuestions.tsx:63
-#: src/features/Auth/SignInForm.tsx:206
+#: src/features/Auth/SignInForm.tsx:207
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
 msgstr "Politique de confidentialité"
@@ -150,7 +150,7 @@ msgstr "Politique des Cookies"
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Header/NeedHelpModal.tsx:132
 #: src/features/Goal/GoalQuestions.tsx:67
-#: src/features/Auth/SignInForm.tsx:210
+#: src/features/Auth/SignInForm.tsx:211
 #. js-lingui-explicit-id
 msgid "Terms of Use"
 msgstr "Conditions d'utilisation"
@@ -714,9 +714,9 @@ msgstr "Historique des paiements:"
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:155
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:135
-#: src/features/Conversation/ConversationPage.tsx:113
-#: src/features/Conversation/ConversationPage.tsx:122
-#: src/features/Conversation/ConversationPage.tsx:142
+#: src/features/Conversation/ConversationPage.tsx:111
+#: src/features/Conversation/ConversationPage.tsx:120
+#: src/features/Conversation/ConversationPage.tsx:140
 #: src/features/Conversation/ConversationCanvas2.tsx:293
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -801,7 +801,7 @@ msgid "Alias"
 msgstr "Alias"
 
 #: src/features/RolePlay/rolePlayData.ts:19
-#: src/features/Game/GamePage.tsx:132
+#: src/features/Game/GamePage.tsx:42
 #. js-lingui-explicit-id
 msgid "Game"
 msgstr "Jeu"
@@ -1984,7 +1984,7 @@ msgstr "Plan d'apprentissage biélorusse"
 
 #: src/features/Lang/LanguageSwitcher.tsx:98
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Game/GamePage.tsx:30
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Dashboard/SelectLanguage.tsx:80
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -1992,7 +1992,7 @@ msgstr "Autres langues"
 
 #: src/features/Lang/LanguageSwitcher.tsx:99
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Game/GamePage.tsx:31
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -3250,7 +3250,7 @@ msgid "By submitting this form, you agree to our:"
 msgstr "En soumettant ce formulaire, vous acceptez notre :"
 
 #: src/features/Goal/GoalQuestions.tsx:65
-#: src/features/Auth/SignInForm.tsx:208
+#: src/features/Auth/SignInForm.tsx:209
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "et"
@@ -3450,11 +3450,8 @@ msgstr "Je veux apprendre..."
 msgid "My native language"
 msgstr "Ma langue maternelle"
 
-#: src/features/Goal/GoalQuestions.tsx:503
-#: src/features/Goal/GoalQuestions.tsx:598
-#: src/features/Goal/GoalQuestions.tsx:961
-#: src/features/Goal/GoalQuestions.tsx:1022
-#. js-lingui-explicit-id
+#: src/features/Game/GameOnboarding.tsx:65
+#: src/features/Game/GameOnboarding.tsx:118
 msgid "Next"
 msgstr "Suivant"
 
@@ -3646,45 +3643,29 @@ msgstr "Enfin"
 msgid "Let's rock it!"
 msgstr "C'est parti!"
 
-#: src/features/Game/GamePage.tsx:53
-#. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "Le nom d'utilisateur doit comporter au moins 3 caractères."
-
-#: src/features/Game/GamePage.tsx:75
-#. js-lingui-explicit-id
-msgid "Select your avatar"
-msgstr "Sélectionnez votre avatar"
-
-#: src/features/Game/GamePage.tsx:168
-#. js-lingui-explicit-id
-msgid "Your Username:"
-msgstr "Votre nom d'utilisateur:"
-
-#: src/features/Game/GamePage.tsx:213
-#. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Votre langue maternelle:"
-
-#: src/features/Game/GamePage.tsx:247
+#: src/features/Game/GamePage.tsx:71
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "Chargement"
 
-#: src/features/Game/GamePage.tsx:247
-#. js-lingui-explicit-id
+#: src/features/Game/GameOnboarding.tsx:170
 msgid "Play"
 msgstr "Jouer"
 
-#: src/features/Game/GamePage.tsx:259
+#: src/features/Game/GamePage.tsx:83
 #. js-lingui-explicit-id
 msgid "Rating:"
 msgstr "Évaluation:"
 
-#: src/features/Game/GamePage.tsx:261
+#: src/features/Game/GamePage.tsx:85
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Classez-vous dans le top 5 pour obtenir l'application gratuitement"
+
+#: src/features/Game/GameMyUsername.tsx:27
+#. js-lingui-explicit-id
+msgid "Username must be at least 3 characters long."
+msgstr "Le nom d'utilisateur doit comporter au moins 3 caractères."
 
 #: src/features/Game/GameBadge.tsx:63
 #. js-lingui-explicit-id
@@ -4157,17 +4138,17 @@ msgstr "Plus"
 msgid "Error analyzing conversation"
 msgstr "Erreur d'analyse de conversation"
 
-#: src/features/Conversation/ConversationPage.tsx:126
+#: src/features/Conversation/ConversationPage.tsx:124
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Chargement de l'objectif..."
 
-#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Conversation/ConversationPage.tsx:148
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Création de nouveaux mots..."
 
-#: src/features/Conversation/ConversationPage.tsx:154
+#: src/features/Conversation/ConversationPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Création d'une nouvelle règle..."
@@ -6087,6 +6068,26 @@ msgstr "{countOfLanguages} langues à pratiquer"
 msgid "AI"
 msgstr "IA"
 
+#: src/features/Game/GameOnboarding.tsx:55
+msgid "Describe images, craft sentences, and translate words"
+msgstr "Décrivez des images, formulez des phrases et traduisez des mots"
+
+#: src/features/Game/GameOnboarding.tsx:105
+msgid ""
+"Each day, we remove 3 points from everyone so that everyone has a fair "
+"chance to win."
+msgstr ""
+"Chaque jour, nous retirons 3 points à tout le monde afin que chacun ait une "
+"chance équitable de gagner."
+
+#: src/features/Game/GameOnboarding.tsx:46
+msgid "Learn and Play"
+msgstr "Apprendre et Jouer"
+
+#: src/features/Game/GameOnboarding.tsx:134
+msgid "Let’s make sure you’re ready"
+msgstr "Assurons-nous que vous êtes prêt"
+
 #: src/features/Game/gameQuestionScreens/SummaryRow.tsx:18
 #. placeholder {0}: game.myPosition
 msgid "My Position: <0>{0}</0>"
@@ -6112,6 +6113,10 @@ msgstr ""
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "Classez-vous dans le top 5 pour obtenir l'application <0>gratuitement</0>"
 
+#: src/features/Game/GameMyAvatar.tsx:20
+msgid "Select your avatar"
+msgstr "Sélectionnez votre avatar"
+
 #: src/features/Dashboard/FeedbackBlock.tsx:53
 msgid "Send Feedback"
 msgstr "Envoyer des Commentaires"
@@ -6128,9 +6133,40 @@ msgstr "Parlez, faites-vous corriger, améliorez-vous—répétez."
 msgid "Win the game and get the app <0>for free</0>"
 msgstr "Gagnez le jeu et obtenez l'application <0>gratuitement</0>"
 
+#: src/features/Game/GameOnboarding.tsx:94
+msgid "You have a chance"
+msgstr "Vous avez une chance"
+
+#: src/features/Game/GameOnboarding.tsx:145
+msgid "Your Avatar:"
+msgstr "Votre avatar:"
+
 #: src/features/Dashboard/FeedbackBlock.tsx:43
 msgid "Your feedback is valuable to me"
 msgstr "Vos commentaires sont précieux pour moi"
+
+#: src/features/Game/GameNativeLanguageSelector.tsx:39
+msgid "Your Native Language:"
+msgstr "Votre langue maternelle:"
+
+#: src/features/Game/GameMyUsername.tsx:42
+msgid "Your Username:"
+msgstr "Votre Nom d'utilisateur:"
+
+#: src/features/Game/GamePage.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "Select your avatar"
+#~ msgstr "Sélectionnez votre avatar"
+
+#: src/features/Game/GamePage.tsx:168
+#. js-lingui-explicit-id
+#~ msgid "Your Username:"
+#~ msgstr "Votre nom d'utilisateur:"
+
+#: src/features/Game/GamePage.tsx:213
+#. js-lingui-explicit-id
+#~ msgid "Your Native Language:"
+#~ msgstr "Votre langue maternelle:"
 
 #: src/features/Landing/LandingPage.tsx:130
 #. js-lingui-explicit-id

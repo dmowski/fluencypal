@@ -131,7 +131,7 @@ msgstr "Chi phí gia sư AI"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Header/NeedHelpModal.tsx:145
 #: src/features/Goal/GoalQuestions.tsx:63
-#: src/features/Auth/SignInForm.tsx:206
+#: src/features/Auth/SignInForm.tsx:207
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
 msgstr "Chính sách Bảo mật"
@@ -149,7 +149,7 @@ msgstr "Chính Sách Cookie"
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Header/NeedHelpModal.tsx:132
 #: src/features/Goal/GoalQuestions.tsx:67
-#: src/features/Auth/SignInForm.tsx:210
+#: src/features/Auth/SignInForm.tsx:211
 #. js-lingui-explicit-id
 msgid "Terms of Use"
 msgstr "Điều khoản sử dụng"
@@ -703,9 +703,9 @@ msgstr "Lịch sử thanh toán:"
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:155
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:135
-#: src/features/Conversation/ConversationPage.tsx:113
-#: src/features/Conversation/ConversationPage.tsx:122
-#: src/features/Conversation/ConversationPage.tsx:142
+#: src/features/Conversation/ConversationPage.tsx:111
+#: src/features/Conversation/ConversationPage.tsx:120
+#: src/features/Conversation/ConversationPage.tsx:140
 #: src/features/Conversation/ConversationCanvas2.tsx:293
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -790,7 +790,7 @@ msgid "Alias"
 msgstr "Bí danh"
 
 #: src/features/RolePlay/rolePlayData.ts:19
-#: src/features/Game/GamePage.tsx:132
+#: src/features/Game/GamePage.tsx:42
 #. js-lingui-explicit-id
 msgid "Game"
 msgstr "Game"
@@ -1933,7 +1933,7 @@ msgstr "Kế Hoạch Học Tiếng Belarusian"
 
 #: src/features/Lang/LanguageSwitcher.tsx:98
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Game/GamePage.tsx:30
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Dashboard/SelectLanguage.tsx:80
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -1941,7 +1941,7 @@ msgstr "Ngôn ngữ khác"
 
 #: src/features/Lang/LanguageSwitcher.tsx:99
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Game/GamePage.tsx:31
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -3180,7 +3180,7 @@ msgid "By submitting this form, you agree to our:"
 msgstr "Bằng cách gửi biểu mẫu này, bạn đồng ý với:"
 
 #: src/features/Goal/GoalQuestions.tsx:65
-#: src/features/Auth/SignInForm.tsx:208
+#: src/features/Auth/SignInForm.tsx:209
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "và"
@@ -3387,11 +3387,8 @@ msgstr "Tôi muốn học..."
 msgid "My native language"
 msgstr "Ngôn ngữ mẹ đẻ của tôi"
 
-#: src/features/Goal/GoalQuestions.tsx:503
-#: src/features/Goal/GoalQuestions.tsx:598
-#: src/features/Goal/GoalQuestions.tsx:961
-#: src/features/Goal/GoalQuestions.tsx:1022
-#. js-lingui-explicit-id
+#: src/features/Game/GameOnboarding.tsx:65
+#: src/features/Game/GameOnboarding.tsx:118
 msgid "Next"
 msgstr "Tiếp theo"
 
@@ -3579,45 +3576,29 @@ msgstr "Cuối cùng"
 msgid "Let's rock it!"
 msgstr "Hãy cùng làm nó!"
 
-#: src/features/Game/GamePage.tsx:53
-#. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "Tên người dùng phải dài ít nhất 3 ký tự."
-
-#: src/features/Game/GamePage.tsx:75
-#. js-lingui-explicit-id
-msgid "Select your avatar"
-msgstr "Chọn avatar của bạn"
-
-#: src/features/Game/GamePage.tsx:168
-#. js-lingui-explicit-id
-msgid "Your Username:"
-msgstr "Tên người dùng của bạn:"
-
-#: src/features/Game/GamePage.tsx:213
-#. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Ngôn ngữ mẹ đẻ của bạn:"
-
-#: src/features/Game/GamePage.tsx:247
+#: src/features/Game/GamePage.tsx:71
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "Đang tải"
 
-#: src/features/Game/GamePage.tsx:247
-#. js-lingui-explicit-id
+#: src/features/Game/GameOnboarding.tsx:170
 msgid "Play"
 msgstr "Chơi"
 
-#: src/features/Game/GamePage.tsx:259
+#: src/features/Game/GamePage.tsx:83
 #. js-lingui-explicit-id
 msgid "Rating:"
 msgstr "Đánh giá:"
 
-#: src/features/Game/GamePage.tsx:261
+#: src/features/Game/GamePage.tsx:85
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Đứng trong top 5 để nhận ứng dụng miễn phí"
+
+#: src/features/Game/GameMyUsername.tsx:27
+#. js-lingui-explicit-id
+msgid "Username must be at least 3 characters long."
+msgstr "Tên người dùng phải dài ít nhất 3 ký tự."
 
 #: src/features/Game/GameBadge.tsx:63
 #. js-lingui-explicit-id
@@ -4088,17 +4069,17 @@ msgstr "Thêm nữa"
 msgid "Error analyzing conversation"
 msgstr "Lỗi phân tích cuộc trò chuyện"
 
-#: src/features/Conversation/ConversationPage.tsx:126
+#: src/features/Conversation/ConversationPage.tsx:124
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Đang tải Mục tiêu..."
 
-#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Conversation/ConversationPage.tsx:148
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Đang tạo ra những từ mới..."
 
-#: src/features/Conversation/ConversationPage.tsx:154
+#: src/features/Conversation/ConversationPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Đang tạo quy tắc mới..."
@@ -5973,6 +5954,26 @@ msgstr "{countOfLanguages} ngôn ngữ để thực hành"
 msgid "AI"
 msgstr "Trí tuệ nhân tạo"
 
+#: src/features/Game/GameOnboarding.tsx:55
+msgid "Describe images, craft sentences, and translate words"
+msgstr "Mô tả hình ảnh, tạo câu, và dịch từ"
+
+#: src/features/Game/GameOnboarding.tsx:105
+msgid ""
+"Each day, we remove 3 points from everyone so that everyone has a fair "
+"chance to win."
+msgstr ""
+"Mỗi ngày, chúng tôi trừ đi 3 điểm của mọi người để đảm bảo mọi người đều có "
+"cơ hội công bằng để chiến thắng."
+
+#: src/features/Game/GameOnboarding.tsx:46
+msgid "Learn and Play"
+msgstr "Học và Chơi"
+
+#: src/features/Game/GameOnboarding.tsx:134
+msgid "Let’s make sure you’re ready"
+msgstr "Hãy chắc chắn rằng bạn đã sẵn sàng"
+
 #: src/features/Game/gameQuestionScreens/SummaryRow.tsx:18
 #. placeholder {0}: game.myPosition
 msgid "My Position: <0>{0}</0>"
@@ -5998,6 +5999,10 @@ msgstr ""
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "Xếp hạng trong top 5 để nhận ứng dụng <0>miễn phí</0>"
 
+#: src/features/Game/GameMyAvatar.tsx:20
+msgid "Select your avatar"
+msgstr "Chọn avatar của bạn"
+
 #: src/features/Dashboard/FeedbackBlock.tsx:53
 msgid "Send Feedback"
 msgstr "Gửi Phản hồi"
@@ -6014,9 +6019,40 @@ msgstr "Nói, được sửa, cải thiện—lặp lại."
 msgid "Win the game and get the app <0>for free</0>"
 msgstr "Chiến thắng trò chơi và nhận ứng dụng <0>miễn phí</0>"
 
+#: src/features/Game/GameOnboarding.tsx:94
+msgid "You have a chance"
+msgstr "Bạn có một cơ hội"
+
+#: src/features/Game/GameOnboarding.tsx:145
+msgid "Your Avatar:"
+msgstr "Avatar của bạn:"
+
 #: src/features/Dashboard/FeedbackBlock.tsx:43
 msgid "Your feedback is valuable to me"
 msgstr "Phản hồi của bạn rất quý giá đối với tôi"
+
+#: src/features/Game/GameNativeLanguageSelector.tsx:39
+msgid "Your Native Language:"
+msgstr "Ngôn ngữ mẹ đẻ của bạn:"
+
+#: src/features/Game/GameMyUsername.tsx:42
+msgid "Your Username:"
+msgstr "Tên người dùng của bạn:"
+
+#: src/features/Game/GamePage.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "Select your avatar"
+#~ msgstr "Chọn avatar của bạn"
+
+#: src/features/Game/GamePage.tsx:168
+#. js-lingui-explicit-id
+#~ msgid "Your Username:"
+#~ msgstr "Tên người dùng của bạn:"
+
+#: src/features/Game/GamePage.tsx:213
+#. js-lingui-explicit-id
+#~ msgid "Your Native Language:"
+#~ msgstr "Ngôn ngữ mẹ đẻ của bạn:"
 
 #: src/features/Landing/LandingPage.tsx:130
 #. js-lingui-explicit-id

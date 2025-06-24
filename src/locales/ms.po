@@ -135,7 +135,7 @@ msgstr "Kos tutor AI"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Header/NeedHelpModal.tsx:145
 #: src/features/Goal/GoalQuestions.tsx:63
-#: src/features/Auth/SignInForm.tsx:206
+#: src/features/Auth/SignInForm.tsx:207
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
 msgstr "Dasar Privasi"
@@ -153,7 +153,7 @@ msgstr "Dasar Kuki"
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Header/NeedHelpModal.tsx:132
 #: src/features/Goal/GoalQuestions.tsx:67
-#: src/features/Auth/SignInForm.tsx:210
+#: src/features/Auth/SignInForm.tsx:211
 #. js-lingui-explicit-id
 msgid "Terms of Use"
 msgstr "Terma Penggunaan"
@@ -716,9 +716,9 @@ msgstr "Sejarah pembayaran:"
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:155
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:135
-#: src/features/Conversation/ConversationPage.tsx:113
-#: src/features/Conversation/ConversationPage.tsx:122
-#: src/features/Conversation/ConversationPage.tsx:142
+#: src/features/Conversation/ConversationPage.tsx:111
+#: src/features/Conversation/ConversationPage.tsx:120
+#: src/features/Conversation/ConversationPage.tsx:140
 #: src/features/Conversation/ConversationCanvas2.tsx:293
 #. js-lingui-explicit-id
 msgid "Loading..."
@@ -804,7 +804,7 @@ msgid "Alias"
 msgstr "Alias"
 
 #: src/features/RolePlay/rolePlayData.ts:19
-#: src/features/Game/GamePage.tsx:132
+#: src/features/Game/GamePage.tsx:42
 #. js-lingui-explicit-id
 msgid "Game"
 msgstr "Permainan"
@@ -1961,7 +1961,7 @@ msgstr "Pelajaran Belajar Bahasa Belarusia"
 
 #: src/features/Lang/LanguageSwitcher.tsx:98
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Game/GamePage.tsx:30
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Dashboard/SelectLanguage.tsx:80
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -1969,7 +1969,7 @@ msgstr "Bahasa lain"
 
 #: src/features/Lang/LanguageSwitcher.tsx:99
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Game/GamePage.tsx:31
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Dashboard/SelectLanguage.tsx:81
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -3218,7 +3218,7 @@ msgid "By submitting this form, you agree to our:"
 msgstr "Dengan menghantar borang ini, anda bersetuju dengan:"
 
 #: src/features/Goal/GoalQuestions.tsx:65
-#: src/features/Auth/SignInForm.tsx:208
+#: src/features/Auth/SignInForm.tsx:209
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "dan"
@@ -3418,11 +3418,8 @@ msgstr "Saya mahu belajar..."
 msgid "My native language"
 msgstr "Bahasa ibunda saya"
 
-#: src/features/Goal/GoalQuestions.tsx:503
-#: src/features/Goal/GoalQuestions.tsx:598
-#: src/features/Goal/GoalQuestions.tsx:961
-#: src/features/Goal/GoalQuestions.tsx:1022
-#. js-lingui-explicit-id
+#: src/features/Game/GameOnboarding.tsx:65
+#: src/features/Game/GameOnboarding.tsx:118
 msgid "Next"
 msgstr "Seterusnya"
 
@@ -3614,45 +3611,29 @@ msgstr "Akhirnya"
 msgid "Let's rock it!"
 msgstr "Jom rock it!"
 
-#: src/features/Game/GamePage.tsx:53
-#. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "Nama pengguna mesti sekurang-kurangnya 3 aksara."
-
-#: src/features/Game/GamePage.tsx:75
-#. js-lingui-explicit-id
-msgid "Select your avatar"
-msgstr "Pilih avatar anda"
-
-#: src/features/Game/GamePage.tsx:168
-#. js-lingui-explicit-id
-msgid "Your Username:"
-msgstr "Nama Pengguna Anda:"
-
-#: src/features/Game/GamePage.tsx:213
-#. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Bahasa Ibu Anda:"
-
-#: src/features/Game/GamePage.tsx:247
+#: src/features/Game/GamePage.tsx:71
 #. js-lingui-explicit-id
 msgid "Loading"
 msgstr "Memuatkan"
 
-#: src/features/Game/GamePage.tsx:247
-#. js-lingui-explicit-id
+#: src/features/Game/GameOnboarding.tsx:170
 msgid "Play"
 msgstr "Main"
 
-#: src/features/Game/GamePage.tsx:259
+#: src/features/Game/GamePage.tsx:83
 #. js-lingui-explicit-id
 msgid "Rating:"
 msgstr "Penilaian:"
 
-#: src/features/Game/GamePage.tsx:261
+#: src/features/Game/GamePage.tsx:85
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Terdapat dalam 5 teratas untuk mendapatkan aplikasi ini secara percuma"
+
+#: src/features/Game/GameMyUsername.tsx:27
+#. js-lingui-explicit-id
+msgid "Username must be at least 3 characters long."
+msgstr "Nama pengguna mesti sekurang-kurangnya 3 aksara."
 
 #: src/features/Game/GameBadge.tsx:63
 #. js-lingui-explicit-id
@@ -4127,17 +4108,17 @@ msgstr "Lebih"
 msgid "Error analyzing conversation"
 msgstr "Ralat menganalisa perbualan"
 
-#: src/features/Conversation/ConversationPage.tsx:126
+#: src/features/Conversation/ConversationPage.tsx:124
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "Memuatkan Matlamat..."
 
-#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Conversation/ConversationPage.tsx:148
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "Mencipta perkataan baru..."
 
-#: src/features/Conversation/ConversationPage.tsx:154
+#: src/features/Conversation/ConversationPage.tsx:152
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Membentuk peraturan baru..."
@@ -6045,6 +6026,26 @@ msgstr "{countOfLanguages} bahasa untuk diamalkan"
 msgid "AI"
 msgstr "AI"
 
+#: src/features/Game/GameOnboarding.tsx:55
+msgid "Describe images, craft sentences, and translate words"
+msgstr "Huraikan imej, hasilkan ayat, dan terjemahkan perkataan"
+
+#: src/features/Game/GameOnboarding.tsx:105
+msgid ""
+"Each day, we remove 3 points from everyone so that everyone has a fair "
+"chance to win."
+msgstr ""
+"Setiap hari, kami mengurangkan 3 mata dari semua orang supaya semua orang "
+"mempunyai peluang yang adil untuk menang."
+
+#: src/features/Game/GameOnboarding.tsx:46
+msgid "Learn and Play"
+msgstr "Belajar dan Bermain"
+
+#: src/features/Game/GameOnboarding.tsx:134
+msgid "Let’s make sure you’re ready"
+msgstr "Pastikan anda bersedia"
+
 #: src/features/Game/gameQuestionScreens/SummaryRow.tsx:18
 #. placeholder {0}: game.myPosition
 msgid "My Position: <0>{0}</0>"
@@ -6070,6 +6071,10 @@ msgstr ""
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "Menduduki dalam 5 teratas untuk mendapatkan aplikasi <0>secara percuma</0>"
 
+#: src/features/Game/GameMyAvatar.tsx:20
+msgid "Select your avatar"
+msgstr "Pilih avatar anda"
+
 #: src/features/Dashboard/FeedbackBlock.tsx:53
 msgid "Send Feedback"
 msgstr "Hantar Maklum Balas"
@@ -6086,9 +6091,40 @@ msgstr "Bercakap, dapat pembetulan, perbaiki—ulang."
 msgid "Win the game and get the app <0>for free</0>"
 msgstr "Menangi permainan dan dapatkan aplikasi <0>secara percuma</0>"
 
+#: src/features/Game/GameOnboarding.tsx:94
+msgid "You have a chance"
+msgstr "Anda mempunyai peluang"
+
+#: src/features/Game/GameOnboarding.tsx:145
+msgid "Your Avatar:"
+msgstr "Avatar Anda:"
+
 #: src/features/Dashboard/FeedbackBlock.tsx:43
 msgid "Your feedback is valuable to me"
 msgstr "Maklum balas anda sangat berharga bagi saya"
+
+#: src/features/Game/GameNativeLanguageSelector.tsx:39
+msgid "Your Native Language:"
+msgstr "Bahasa Ibu Anda:"
+
+#: src/features/Game/GameMyUsername.tsx:42
+msgid "Your Username:"
+msgstr "Nama Pengguna Anda:"
+
+#: src/features/Game/GamePage.tsx:75
+#. js-lingui-explicit-id
+#~ msgid "Select your avatar"
+#~ msgstr "Pilih avatar anda"
+
+#: src/features/Game/GamePage.tsx:168
+#. js-lingui-explicit-id
+#~ msgid "Your Username:"
+#~ msgstr "Nama Pengguna Anda:"
+
+#: src/features/Game/GamePage.tsx:213
+#. js-lingui-explicit-id
+#~ msgid "Your Native Language:"
+#~ msgstr "Bahasa Ibu Anda:"
 
 #: src/features/Landing/LandingPage.tsx:130
 #. js-lingui-explicit-id
