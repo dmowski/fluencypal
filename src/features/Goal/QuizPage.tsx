@@ -18,6 +18,7 @@ interface QuizPageProps {
 export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
   const auth = useAuth();
   const isAuth = !!auth.uid;
+  const isAuthLoading = auth.loading;
   const plan = usePlan();
   const settings = useSettings();
   const isPlanLoading = plan.loading;
@@ -65,6 +66,8 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
               gap: "40px",
               alignItems: "center",
               boxSizing: "border-box",
+              opacity: isAuthLoading ? 0.2 : 1,
+              pointerEvents: isAuthLoading ? "none" : "auto",
             }}
           >
             <Stack
