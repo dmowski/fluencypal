@@ -15,6 +15,7 @@ import { shuffleArray } from "@/libs/array";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "../Firebase/firebaseDb";
 import { setDoc } from "firebase/firestore";
+import { avatars } from "./avatars";
 
 interface GameContextType {
   loadingProfile: boolean;
@@ -105,7 +106,20 @@ function useProvideGame(): GameContextType {
     if (!auth.uid || !myProfile?.username) return;
 
     updateLastVisit();
+    setDefaultAvatarIfNeeded();
   }, [auth.uid, myProfile?.username]);
+
+  const setDefaultAvatarIfNeeded = async () => {
+    if (!auth.uid || !myProfile?.username || !gameAvatars) return;
+
+    const userAvatar = gameAvatars[myProfile.username];
+    if (userAvatar) return; // Avatar already set
+
+    const randomAvatars = shuffleArray(avatars);
+    const randomAvatar = randomAvatars[0];
+    if (!randomAvatar) return;
+    await setAvatar(randomAvatar);
+  };
 
   const userId = auth.uid;
 
