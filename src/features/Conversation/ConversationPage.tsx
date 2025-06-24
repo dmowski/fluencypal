@@ -28,7 +28,6 @@ import { usePlan } from "../Plan/usePlan";
 import { ConfirmConversationModal } from "./ConfirmConversationModal";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { GamePage } from "../Game/GamePage";
-import { useGame } from "../Game/useGame";
 import { useGoalCreation } from "../Plan/useGoalCreation";
 import { useConversationsAnalysis } from "./useConversationsAnalysis";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
@@ -57,7 +56,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   const rules = useRules();
   const history = useChatHistory();
   const conversationsCount = history.conversations.length;
-  const game = useGame();
   const plan = usePlan();
   const isReadyToFirstStart =
     !history.loading &&
