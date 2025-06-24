@@ -14,6 +14,11 @@ export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
   return data;
 };
 
+export const setGameUsersPoints = async (points: GameUsersPoints): Promise<void> => {
+  const db = getDB();
+  await db.collection("game").doc("gamePoints").set(points, { merge: true });
+};
+
 export const renameUserInRateStat = async (
   oldUsername: string,
   newUsername: string
