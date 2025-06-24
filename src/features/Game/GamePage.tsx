@@ -1,43 +1,20 @@
-import { Button, IconButton, Stack, TextField, Tooltip, Typography } from "@mui/material";
+import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
 import { useGame } from "./useGame";
-import { LangSelector } from "../Lang/LangSelector";
 import { GameQuestion } from "./GameQuestion";
 import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { CheckIcon, PencilIcon, Swords } from "lucide-react";
-import { useSettings } from "../Settings/useSettings";
-
-import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
-import { useLanguageGroup } from "../Goal/useLanguageGroup";
 import { avatars, defaultAvatar } from "./avatars";
 import { GameStats } from "./GameStats";
 import { PositionChangedModal } from "./PositionChangedModal";
 import { exitFullScreen, goFullScreen } from "@/libs/fullScreen";
+import { GameNativeLanguageSelector } from "./GameNativeLanguageSelector";
 
 export const GamePage = () => {
   const game = useGame();
-  const settings = useSettings();
   const { i18n } = useLingui();
-  const [isShowLangSelectorState, setIsShowLangSelector] = useState(false);
   const [playGame, setPlayGame] = useState(false);
-
-  const nativeLang = settings.userSettings?.nativeLanguageCode;
-
-  const isNativeLanguageIsTheSameAsGameLanguage = nativeLang === settings.languageCode;
-
-  const { languageGroups } = useLanguageGroup({
-    defaultGroupTitle: i18n._(`Other languages`),
-    systemLanguagesTitle: i18n._(`System languages`),
-  });
-
-  const selectedNativeLanguage = useMemo(
-    () => languageGroups.find((lang) => lang.code === nativeLang),
-    [languageGroups, nativeLang]
-  );
-
-  const nativeLanguageFullName = selectedNativeLanguage?.nativeName;
-  const isShowLangSelector = isShowLangSelectorState || isNativeLanguageIsTheSameAsGameLanguage;
 
   const [isEditUsername, setIsEditUsername] = useState(false);
   const [internalUsername, setInternalUsername] = useState(game.myProfile?.username || "");
@@ -203,30 +180,7 @@ export const GamePage = () => {
           </Stack>
         </Stack>
 
-        <Stack
-          sx={{
-            gap: "5px",
-            width: "100%",
-          }}
-        >
-          <Typography variant="body2">
-            {i18n._(`Your Native Language:`)}
-            {!isShowLangSelector ? " " + nativeLanguageFullName : ""}
-            {!isShowLangSelector && (
-              <IconButton size="small" onClick={() => setIsShowLangSelector(!isShowLangSelector)}>
-                <PencilIcon size={"11px"} />
-              </IconButton>
-            )}
-          </Typography>
-
-          {isShowLangSelector && (
-            <LanguageAutocomplete
-              options={languageGroups}
-              value={selectedNativeLanguage || null}
-              onChange={(langCode) => settings.setNativeLanguage(langCode)}
-            />
-          )}
-        </Stack>
+        <GameNativeLanguageSelector />
 
         <Button
           variant="contained"

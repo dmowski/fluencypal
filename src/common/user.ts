@@ -11,4 +11,6 @@ export interface UserSettings {
   email: string;
   lastLoginAt: number | null;
   lastLoginAtDateTime: string | null;
+
+  isGameOnboardingCompleted: boolean;
 }
