@@ -2,7 +2,7 @@
 import { createContext, useContext, ReactNode, JSX, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
-import { db } from "../Firebase/db";
+import { db } from "../Firebase/firebaseDb";
 
 import { useSettings } from "../Settings/useSettings";
 import { useTextAi } from "../Ai/useTextAi";

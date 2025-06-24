@@ -13,7 +13,7 @@ import {
 import { useSettings } from "../Settings/useSettings";
 import { shuffleArray } from "@/libs/array";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { db } from "../Firebase/db";
+import { db } from "../Firebase/firebaseDb";
 import { setDoc } from "firebase/firestore";
 
 interface GameContextType {

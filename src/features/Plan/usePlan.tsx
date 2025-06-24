@@ -3,7 +3,7 @@ import { createContext, useContext, ReactNode, JSX, useMemo, useState } from "re
 import { useAuth } from "../Auth/useAuth";
 import { doc, setDoc } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { db } from "../Firebase/db";
+import { db } from "../Firebase/firebaseDb";
 import { GoalPlan, PlanElement, PlanElementMode } from "./types";
 import { useSettings } from "../Settings/useSettings";
 import { deleteCollectionDocs } from "../Firebase/init";

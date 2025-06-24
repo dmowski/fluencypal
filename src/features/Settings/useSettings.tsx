@@ -8,7 +8,7 @@ import {
   SupportedLanguage,
   supportedLanguages,
 } from "@/features/Lang/lang";
-import { db } from "../Firebase/db";
+import { db } from "../Firebase/firebaseDb";
 import dayjs from "dayjs";
 import { useCurrency } from "../User/useCurrency";
 import { confirmGtag } from "../Analytics/confirmGtag";

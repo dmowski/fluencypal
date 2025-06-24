@@ -4,7 +4,7 @@ import { useAuth } from "../Auth/useAuth";
 import { setDoc, query, where } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Homework } from "@/common/homework";
-import { db } from "../Firebase/db";
+import { db } from "../Firebase/firebaseDb";
 import { useSettings } from "../Settings/useSettings";
 
 interface HomeworkContextType {

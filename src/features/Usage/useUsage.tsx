@@ -13,7 +13,7 @@ import { useAuth } from "../Auth/useAuth";
 import { getDoc } from "firebase/firestore";
 import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
 import { PaymentLog, TotalUsageInfo, UsageLog } from "@/common/usage";
-import { db } from "../Firebase/db";
+import { db } from "../Firebase/firebaseDb";
 import { useRouter } from "next/navigation";
 import { initWelcomeBalanceRequest } from "./initWelcomeBalanceRequest";
 import { createUsageLog } from "./createUsageLog";

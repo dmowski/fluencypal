@@ -2,7 +2,7 @@
 import { createContext, useContext, ReactNode, JSX } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { db } from "../Firebase/db";
+import { db } from "../Firebase/firebaseDb";
 import { DaysTasks, DayTasks, UserTaskType } from "@/common/userTask";
 import dayjs from "dayjs";
 import { setDoc } from "firebase/firestore";

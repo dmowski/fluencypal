@@ -3,7 +3,7 @@ import { createContext, useContext, ReactNode, JSX } from "react";
 import { getDocs, limit, orderBy, query, setDoc, where } from "firebase/firestore";
 import { useAuth } from "../Auth/useAuth";
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { db } from "../Firebase/db";
+import { db } from "../Firebase/firebaseDb";
 import { ChatMessage, Conversation, ConversationMode } from "@/common/conversation";
 import { useSettings } from "../Settings/useSettings";
 import { useCollectionData } from "react-firebase-hooks/firestore";
