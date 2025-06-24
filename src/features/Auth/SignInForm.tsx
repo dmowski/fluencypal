@@ -199,9 +199,10 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
                 flexDirection: "row",
                 gap: "5px",
                 alignItems: "center",
+                justifyContent: "center",
               }}
             >
-              <Typography variant="caption">
+              <Typography variant="caption" align="center">
                 <Link href={`${getUrlStart(lang)}privacy`} target="_blank">
                   {i18n._(`Privacy Policy`)}
                 </Link>{" "}

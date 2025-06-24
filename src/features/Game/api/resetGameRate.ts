@@ -5,7 +5,7 @@ export const resetGameRate = async (): Promise<void> => {
 
   Object.keys(points).forEach((username) => {
     const currentPoints = points[username] || 1;
-    points[username] = Math.max(currentPoints - 1, 1);
+    points[username] = Math.max(currentPoints - 3, 1);
   });
 
   await setGameUsersPoints(points);

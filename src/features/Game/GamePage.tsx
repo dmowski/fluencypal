@@ -3,7 +3,6 @@ import { useGame } from "./useGame";
 import { GameQuestion } from "./GameQuestion";
 import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useState } from "react";
 import { Swords } from "lucide-react";
 import { GameStats } from "./GameStats";
 import { PositionChangedModal } from "./PositionChangedModal";
@@ -11,11 +10,11 @@ import { exitFullScreen, goFullScreen } from "@/libs/fullScreen";
 import { GameNativeLanguageSelector } from "./GameNativeLanguageSelector";
 import { GameMyAvatar } from "./GameMyAvatar";
 import { GameMyUsername } from "./GameMyUsername";
+import { GameOnboarding } from "./GameOnboarding";
 
 export const GamePage = () => {
   const game = useGame();
   const { i18n } = useLingui();
-  const [playGame, setPlayGame] = useState(false);
 
   return (
     <Stack
@@ -25,6 +24,7 @@ export const GamePage = () => {
         paddingBottom: "90px",
       }}
     >
+      <GameOnboarding />
       <Stack
         sx={{
           width: "100%",
@@ -60,8 +60,7 @@ export const GamePage = () => {
           size="large"
           onClick={() => {
             goFullScreen();
-            game.generateQuestions();
-            setPlayGame(true);
+            game.playGame();
           }}
           disabled={game.loadingQuestions}
           sx={{
@@ -89,7 +88,7 @@ export const GamePage = () => {
           <GameStats />
         </Stack>
 
-        {game.activeQuestion && playGame && (
+        {game.activeQuestion && game.isGamePlaying && (
           <Stack
             sx={{
               gap: "20px",
@@ -99,7 +98,7 @@ export const GamePage = () => {
             <CustomModal
               isOpen={true}
               onClose={() => {
-                setPlayGame(false);
+                game.stopGame();
                 exitFullScreen();
               }}
               padding="0px"

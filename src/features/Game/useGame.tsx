@@ -37,6 +37,10 @@ interface GameContextType {
   nextPositionStat: UsersStat | null;
   gameAvatars: GameAvatars;
   setAvatar: (avatarUrl: string) => void;
+
+  isGamePlaying: boolean;
+  playGame: () => void;
+  stopGame: () => void;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -55,6 +59,16 @@ function useProvideGame(): GameContextType {
   const [gameLastVisit] = useDocumentData(db.documents.gameLastVisit);
 
   const [gameAvatars] = useDocumentData(db.documents.gameAvatars);
+
+  const [isGamePlaying, setIsGamePlaying] = useState(false);
+
+  const playGame = () => {
+    generateQuestions();
+    setIsGamePlaying(true);
+  };
+  const stopGame = () => {
+    setIsGamePlaying(false);
+  };
 
   const stats = useMemo(() => {
     if (!gameRate) return [];
@@ -242,6 +256,9 @@ function useProvideGame(): GameContextType {
     pointsToNextPosition: pointsToNextPosition || null,
     nextPositionStat: nextPositionStat || null,
     gameAvatars: gameAvatars || {},
+    isGamePlaying,
+    playGame,
+    stopGame,
   };
 }
 

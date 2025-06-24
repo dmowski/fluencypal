@@ -28,6 +28,7 @@ interface SettingsContextType {
   setPageLanguage: (language: SupportedLanguage) => Promise<void>;
   setNativeLanguage: (language: string) => Promise<void>;
   userSettings: UserSettings | null;
+  onDoneGameOnboarding: () => void;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -40,6 +41,9 @@ export const settingsContext = createContext<SettingsContextType>({
   setPageLanguage: async () => {},
   setNativeLanguage: async () => {},
   userSettings: null,
+  onDoneGameOnboarding: () => {
+    throw new Error("onDoneGameOnboarding function is not implemented");
+  },
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -127,6 +131,11 @@ function useProvideSettings(): SettingsContextType {
     await setDoc(userSettingsDoc, { nativeLanguageCode: languageCode }, { merge: true });
   };
 
+  const onDoneGameOnboarding = () => {
+    if (!userSettingsDoc) return;
+    setDoc(userSettingsDoc, { isGameOnboardingCompleted: true }, { merge: true });
+  };
+
   return {
     userCreatedAt,
     setNativeLanguage,
@@ -138,6 +147,7 @@ function useProvideSettings(): SettingsContextType {
     setLanguage,
     setPageLanguage,
     userSettings: userSettings || null,
+    onDoneGameOnboarding,
   };
 }
 

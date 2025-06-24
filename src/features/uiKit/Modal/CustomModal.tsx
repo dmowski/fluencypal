@@ -4,7 +4,7 @@ import { JSX } from "react";
 
 interface CustomModalProps {
   isOpen: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   children: React.ReactNode;
   width?: string;
   padding?: string;
@@ -52,12 +52,14 @@ export const CustomModal = ({
           },
         }}
       >
-        <IconButton
-          sx={{ position: "absolute", top: "10px", right: "10px", zIndex: 1 }}
-          onClick={() => onClose()}
-        >
-          <X />
-        </IconButton>
+        {onClose && (
+          <IconButton
+            sx={{ position: "absolute", top: "10px", right: "10px", zIndex: 1 }}
+            onClick={() => onClose()}
+          >
+            <X />
+          </IconButton>
+        )}
         <Stack
           sx={{
             alignItems: "flex-start",

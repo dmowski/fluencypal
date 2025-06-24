@@ -18,6 +18,10 @@ export const GameMyUsername = () => {
   }, [game.myProfile?.username]);
 
   const saveUsername = async () => {
+    if (internalUsername === game.myProfile?.username) {
+      setIsEditUsername(false);
+      return;
+    }
     const internalUsernameTrimmed = internalUsername.trim().replaceAll(/\s+/g, " ");
     if (internalUsernameTrimmed.length < 3) {
       alert(i18n._(`Username must be at least 3 characters long.`));
