@@ -5,11 +5,11 @@ import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useEffect, useState } from "react";
 import { CheckIcon, PencilIcon, Swords } from "lucide-react";
-import { avatars, defaultAvatar } from "./avatars";
 import { GameStats } from "./GameStats";
 import { PositionChangedModal } from "./PositionChangedModal";
 import { exitFullScreen, goFullScreen } from "@/libs/fullScreen";
 import { GameNativeLanguageSelector } from "./GameNativeLanguageSelector";
+import { GameMyAvatar } from "./GameMyAvatar";
 
 export const GamePage = () => {
   const game = useGame();
@@ -34,9 +34,6 @@ export const GamePage = () => {
     await game.updateUsername(internalUsernameTrimmed);
   };
 
-  const myAvatar = game.gameAvatars[game.myProfile?.username || ""] || defaultAvatar;
-  const [isShowAvatarSelector, setIsShowAvatarSelector] = useState(false);
-
   return (
     <Stack
       sx={{
@@ -45,53 +42,6 @@ export const GamePage = () => {
         paddingBottom: "90px",
       }}
     >
-      {isShowAvatarSelector && (
-        <CustomModal onClose={() => setIsShowAvatarSelector(false)} isOpen={isShowAvatarSelector}>
-          <Stack>
-            <Typography variant="h6" align="center" sx={{ marginBottom: "20px" }}>
-              {i18n._(`Select your avatar`)}
-            </Typography>
-            <Stack
-              sx={{
-                flexDirection: "row",
-                flexWrap: "wrap",
-                gap: "20px",
-                justifyContent: "center",
-              }}
-            >
-              {avatars.map((avatar, index) => {
-                const isSelected = avatar === myAvatar;
-                return (
-                  <Stack
-                    key={index}
-                    sx={{
-                      img: {
-                        width: "80px",
-                        height: "80px",
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        boxShadow: isSelected
-                          ? "0px 0px 0px 2px rgba(0, 0, 0, 1), 0px 0px 0px 5px rgba(255, 255, 255, 1)"
-                          : "0px 0px 0px 3px rgba(55, 55, 55, 1)",
-                        cursor: "pointer",
-                        ":hover": {
-                          boxShadow: "0px 0px 0px 3px rgba(255, 255, 255, 0.8)",
-                        },
-                      },
-                    }}
-                    onClick={() => {
-                      game.setAvatar(avatar);
-                      setIsShowAvatarSelector(false);
-                    }}
-                  >
-                    <img src={avatar} />
-                  </Stack>
-                );
-              })}
-            </Stack>
-          </Stack>
-        </CustomModal>
-      )}
       <Stack
         sx={{
           width: "100%",
@@ -114,26 +64,7 @@ export const GamePage = () => {
             gap: "20px",
           }}
         >
-          <Stack
-            sx={{
-              img: {
-                width: "50px",
-                height: "50px",
-                borderRadius: "50%",
-                objectFit: "cover",
-                boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
-                position: "relative",
-                zIndex: 1,
-              },
-              position: "relative",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              setIsShowAvatarSelector(!isShowAvatarSelector);
-            }}
-          >
-            <img src={myAvatar} />
-          </Stack>
+          <GameMyAvatar />
 
           <Stack>
             <Typography
