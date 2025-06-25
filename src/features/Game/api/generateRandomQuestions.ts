@@ -74,6 +74,36 @@ const generateImageQuestions = async ({
   return allQuestions;
 };
 
+const generateTextToReadQuestions = async ({
+  learningLanguage,
+}: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
+  const shuffledImages = shuffleArray(imageDescriptions);
+  const limitedImageDescriptions = shuffledImages.slice(0, 10);
+  const allQuestions: QuestionOutput[] = limitedImageDescriptions.map((image) => {
+    const shortQuestion: GameQuestionShort = {
+      id: `${Date.now()}_read_${image.id}`,
+      type: "read_text",
+      question: image.fullImageDescription,
+      imageUrl: image.url,
+      options: [],
+    };
+
+    const fullQuestion: GameQuestionFull = {
+      ...shortQuestion,
+      createdAt: Date.now(),
+      answeredAt: null,
+      isAnsweredCorrectly: null,
+      learningLanguage: learningLanguage,
+      correctAnswer: image.fullImageDescription,
+    };
+    return {
+      fullQuestions: fullQuestion,
+      shortQuestions: shortQuestion,
+    };
+  });
+  return allQuestions;
+};
+
 const generateWordsQuestions = async ({
   userInfoRecords,
   nativeLanguage,
@@ -257,6 +287,11 @@ export const generateRandomQuestions = async ({
   learningLanguage,
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
   const questions = await Promise.all([
+    generateTextToReadQuestions({
+      userInfoRecords,
+      nativeLanguage,
+      learningLanguage,
+    }),
     generateTopicToDiscuss({
       userInfoRecords,
       nativeLanguage,

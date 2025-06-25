@@ -63,10 +63,7 @@ export const DescribeImageScreen = ({
 
   const { i18n } = useLingui();
 
-  if (question.type !== "describe_image") {
-    return <></>;
-  }
-
+  if (question.type !== "describe_image") return <></>;
   return (
     <Stack
       sx={{

@@ -101,8 +101,13 @@ export const useNativeRecorder = ({ lang }: { lang: SupportedLanguage }) => {
     }
   };
 
+  const removeTranscript = () => {
+    setFullTranscript("");
+  };
+
   return {
     isAbleToRecord,
+    removeTranscript,
     fullTranscript,
     isRecording,
     error,

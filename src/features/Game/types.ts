@@ -1,6 +1,11 @@
 import { SupportedLanguage } from "../Lang/lang";
 
-export type GameQuestionType = "translate" | "sentence" | "describe_image" | "topic_to_discuss";
+export type GameQuestionType =
+  | "translate"
+  | "sentence"
+  | "describe_image"
+  | "topic_to_discuss"
+  | "read_text";
 
 export interface GameQuestionShort {
   id: string;
