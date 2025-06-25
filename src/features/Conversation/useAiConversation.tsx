@@ -32,11 +32,11 @@ import { isDev } from "../Analytics/isDev";
 import { useGame } from "../Game/useGame";
 
 const levelDescriptionsForAi: Record<string, string> = {
-  A1: "User's  language level is Beginner. Use extremely simple words and short sentences. Focus on basics.",
-  A2: "User's  language level is Elementary. Use clear, short sentences and common expressions. Avoid complexity.",
-  B1: "User's  language level is Intermediate. Use straightforward language with some variety. Explain unfamiliar terms.",
-  B2: "User's  language level is Upper intermediate. Can handle more complex structures and wider vocabulary.",
-  C1: "User's  language level is Advanced. Can understand complex topics and use specialized vocabulary.",
+  A1: "User's language level is Beginner. Use extremely simple words and short sentences. Focus on basics.",
+  A2: "User's language level is Elementary. Use clear, short sentences and common expressions. Avoid complexity.",
+  B1: "User's language level is Intermediate. Use straightforward language with some variety. Explain unfamiliar terms.",
+  B2: "User's language level is Upper intermediate. Can handle more complex structures and wider vocabulary.",
+  C1: "User's language level is Advanced. Can understand complex topics and use specialized vocabulary.",
 };
 
 interface StartConversationProps {
@@ -91,6 +91,7 @@ const modesToExtractUserInfo: ConversationMode[] = [
   "talkAndCorrect",
   "beginner",
   "goal-talk",
+  "goal",
 ];
 
 function useProvideAiConversation(): AiConversationContextType {
@@ -103,7 +104,6 @@ function useProvideAiConversation(): AiConversationContextType {
   const userInfo = aiUserInfo.userInfo?.records?.join(". ") || "";
   const fullLanguageName = settings.fullLanguageName || "English";
   const languageCode = settings.languageCode || "en";
-  const [analyzeResultInstruction, setAnalyzeResultInstruction] = useState<string>("");
   const [isVolumeOnStorage, setIsVolumeOn] = useLocalStorage<boolean>("isVolumeOn", true);
   const isVolumeOn = isVolumeOnStorage === undefined ? true : isVolumeOnStorage;
   const [isProcessingGoal, setIsProcessingGoal] = useState(false);
@@ -218,6 +218,11 @@ function useProvideAiConversation(): AiConversationContextType {
       } else {
         tasks.completeTask("lesson");
       }
+    }
+
+    const isNeedToSaveUserInfo = modesToExtractUserInfo.includes(currentMode);
+    if (isNeedToSaveUserInfo && conversation.length >= 3 && conversation.length % 4 === 0) {
+      aiUserInfo.updateUserInfo(conversation, languageCode);
     }
 
     const usersMessagesCount = conversation.filter((message) => !message.isBot).length;
@@ -713,7 +718,6 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
     setGoalSettingProgress(0);
     setIsProcessingGoal(false);
 
-    setAnalyzeResultInstruction(input.analyzeResultAiInstruction || "");
     if (input.analyzeResultAiInstruction)
       console.log("analyzeResultAiInstruction", input.analyzeResultAiInstruction);
 
