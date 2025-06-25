@@ -92,7 +92,6 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
   };
 
   const cancelRecording = () => {
-    console.log("cancelRecording called");
     if (isUseNativeRecorder) {
       nativeRecorder.stopRecording();
     } else {
