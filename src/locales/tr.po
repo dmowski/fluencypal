@@ -13,6 +13,40 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:252
+msgid "Loading..."
+msgstr "Yükleniyor..."
+
+#: src/features/Game/PositionChangedModal.tsx:129
+msgid "Continue"
+msgstr "Devam et"
+
+#: src/features/Game/GameOnboarding.tsx:65
+#: src/features/Game/GameOnboarding.tsx:118
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:391
+msgid "Next"
+msgstr "İleri"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:264
+msgid "Transcribing..."
+msgstr "Çeviriliyor..."
+
+#: src/features/Game/GameOnboarding.tsx:170
+msgid "Play"
+msgstr "Oynat"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
+msgid "Correct!"
+msgstr "Doğru!"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
+msgid "Incorrect!"
+msgstr "Yanlış!"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:286
+msgid "Done"
+msgstr "Tamamlandı"
+
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -694,10 +728,6 @@ msgstr "Toplam kullanılan:"
 #. js-lingui-explicit-id
 msgid "Payment history:"
 msgstr "Ödeme geçmişi:"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:244
-msgid "Loading..."
-msgstr "Yükleniyor..."
 
 #: src/features/Usage/PaymentModal.tsx:637
 #. js-lingui-explicit-id
@@ -1787,10 +1817,6 @@ msgstr "Dersi başlat"
 #. js-lingui-explicit-id
 msgid "Send 6 messages to complete"
 msgstr "6 mesaj göndermek için tamamlayın"
-
-#: src/features/Game/PositionChangedModal.tsx:129
-msgid "Continue"
-msgstr "Devam et"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -3370,12 +3396,6 @@ msgstr "Öğrenmek istiyorum..."
 msgid "My native language"
 msgstr "Ana dilim"
 
-#: src/features/Game/GameOnboarding.tsx:65
-#: src/features/Game/GameOnboarding.tsx:118
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:360
-msgid "Next"
-msgstr "İleri"
-
 #: src/features/Goal/GoalQuestions.tsx:510
 #. js-lingui-explicit-id
 msgid "How well do you know"
@@ -3415,10 +3435,6 @@ msgid ""
 msgstr ""
 "Seyahat etmek için İngilizce öğrenmek istiyorum. Ve filmleri ve şarkıları "
 "anlamak istiyorum."
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:256
-msgid "Transcribing..."
-msgstr "Çeviriliyor..."
 
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -3560,10 +3576,6 @@ msgstr "Hadi başlayalım!"
 msgid "Loading"
 msgstr "Yükleniyor"
 
-#: src/features/Game/GameOnboarding.tsx:170
-msgid "Play"
-msgstr "Oynat"
-
 #: src/features/Game/GamePage.tsx:83
 #. js-lingui-explicit-id
 msgid "Rating:"
@@ -3589,14 +3601,6 @@ msgstr "Pozisyonunuz"
 msgid "Translate the word"
 msgstr "Kelimeyi çevir"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
-msgid "Correct!"
-msgstr "Doğru!"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
-msgid "Incorrect!"
-msgstr "Yanlış!"
-
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
@@ -3608,10 +3612,6 @@ msgstr "Konuyu tartışın"
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Cevabı gönder"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
-msgid "Done"
-msgstr "Tamamlandı"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:236
@@ -4177,9 +4177,7 @@ msgstr "Açık plan"
 msgid "Send"
 msgstr "Gönder"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:961
-#: src/features/Conversation/ConversationCanvas2.tsx:1040
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:299
 msgid "Re-record"
 msgstr "Yeniden kaydet"
 
@@ -5924,7 +5922,7 @@ msgstr ""
 "Her gün, herkesin kazanma şansının adil olması için herkesten 3 puan "
 "çıkarırız."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:320
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:351
 msgid "Error:"
 msgstr "Hata:"
 
@@ -5961,7 +5959,7 @@ msgstr ""
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "İlk 5'te yer alın ve uygulamayı <0>ücretsiz</0> elde edin"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:124
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:132
 msgid "Read the text"
 msgstr "Metni okuyun"
 
@@ -5977,11 +5975,15 @@ msgstr "Geri Bildirim Gönder"
 msgid "Sending..."
 msgstr "Gönderiliyor..."
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:310
+msgid "Submit"
+msgstr "Gönder"
+
 #: src/features/Landing/WelcomeScreen.tsx:126
 msgid "Talk, get corrected, improve—repeat."
 msgstr "Konuş, düzeltme al, geliştir—tekrarla."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:308
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:339
 msgid "Turn on microphone"
 msgstr "Mikrofonu açın"
 

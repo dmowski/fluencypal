@@ -13,6 +13,40 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:252
+msgid "Loading..."
+msgstr "กำลังโหลด..."
+
+#: src/features/Game/PositionChangedModal.tsx:129
+msgid "Continue"
+msgstr "ดำเนินต่อ"
+
+#: src/features/Game/GameOnboarding.tsx:65
+#: src/features/Game/GameOnboarding.tsx:118
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:391
+msgid "Next"
+msgstr "ถัดไป"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:264
+msgid "Transcribing..."
+msgstr "กำลังคัดลอก..."
+
+#: src/features/Game/GameOnboarding.tsx:170
+msgid "Play"
+msgstr "เล่น"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
+msgid "Correct!"
+msgstr "ถูกต้อง!"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
+msgid "Incorrect!"
+msgstr "ไม่ถูกต้อง!"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:286
+msgid "Done"
+msgstr "เสร็จสิ้น"
+
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -690,10 +724,6 @@ msgstr "ทั้งหมดที่ใช้:"
 #. js-lingui-explicit-id
 msgid "Payment history:"
 msgstr "ประวัติการชำระเงิน:"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:244
-msgid "Loading..."
-msgstr "กำลังโหลด..."
 
 #: src/features/Usage/PaymentModal.tsx:637
 #. js-lingui-explicit-id
@@ -1769,10 +1799,6 @@ msgstr "เริ่มบทเรียน"
 #. js-lingui-explicit-id
 msgid "Send 6 messages to complete"
 msgstr "ส่ง 6 ข้อความเพื่อเสร็จสิ้น"
-
-#: src/features/Game/PositionChangedModal.tsx:129
-msgid "Continue"
-msgstr "ดำเนินต่อ"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -3349,12 +3375,6 @@ msgstr "ฉันต้องการเรียนรู้..."
 msgid "My native language"
 msgstr "ภาษาแม่ของฉัน"
 
-#: src/features/Game/GameOnboarding.tsx:65
-#: src/features/Game/GameOnboarding.tsx:118
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:360
-msgid "Next"
-msgstr "ถัดไป"
-
 #: src/features/Goal/GoalQuestions.tsx:510
 #. js-lingui-explicit-id
 msgid "How well do you know"
@@ -3396,10 +3416,6 @@ msgid ""
 msgstr ""
 "ฉันต้องการเรียนภาษาอังกฤษเพื่อการท่องเที่ยว "
 "และฉันต้องการเข้าใจภาษาในหนังและเพลง"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:256
-msgid "Transcribing..."
-msgstr "กำลังคัดลอก..."
 
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -3541,10 +3557,6 @@ msgstr "เรามาเต้นร็อคกัน!"
 msgid "Loading"
 msgstr "กำลังโหลด"
 
-#: src/features/Game/GameOnboarding.tsx:170
-msgid "Play"
-msgstr "เล่น"
-
 #: src/features/Game/GamePage.tsx:83
 #. js-lingui-explicit-id
 msgid "Rating:"
@@ -3570,14 +3582,6 @@ msgstr "ตำแหน่งของคุณ"
 msgid "Translate the word"
 msgstr "แปลคำว่า"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
-msgid "Correct!"
-msgstr "ถูกต้อง!"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
-msgid "Incorrect!"
-msgstr "ไม่ถูกต้อง!"
-
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
@@ -3589,10 +3593,6 @@ msgstr "สนทนาเรื่อง"
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "ส่งคำตอบ"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
-msgid "Done"
-msgstr "เสร็จสิ้น"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:236
@@ -4156,9 +4156,7 @@ msgstr "เปิดแผน"
 msgid "Send"
 msgstr "ส่ง"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:961
-#: src/features/Conversation/ConversationCanvas2.tsx:1040
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:299
 msgid "Re-record"
 msgstr "บันทึกใหม่"
 
@@ -5900,7 +5898,7 @@ msgid ""
 "chance to win."
 msgstr "ทุกวัน, เราจะลบ 3 คะแนนจากทุกคนเพื่อให้ทุกคนมีโอกาสที่ยุติธรรมในการชนะ"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:320
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:351
 msgid "Error:"
 msgstr "ข้อผิดพลาด:"
 
@@ -5937,7 +5935,7 @@ msgstr ""
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "อยู่ในอันดับ 5 อันดับแรกเพื่อรับแอป <0>ฟรี</0>"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:124
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:132
 msgid "Read the text"
 msgstr "อ่านข้อความ"
 
@@ -5953,11 +5951,15 @@ msgstr "ส่งคำติชม"
 msgid "Sending..."
 msgstr "กำลังส่ง..."
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:310
+msgid "Submit"
+msgstr "ส่ง"
+
 #: src/features/Landing/WelcomeScreen.tsx:126
 msgid "Talk, get corrected, improve—repeat."
 msgstr "พูด, รับการแก้ไข, ปรับปรุง—ทำซ้ำ."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:308
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:339
 msgid "Turn on microphone"
 msgstr "เปิดไมโครโฟน"
 

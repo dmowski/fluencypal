@@ -13,6 +13,40 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:252
+msgid "Loading..."
+msgstr "読み込んでいます..."
+
+#: src/features/Game/PositionChangedModal.tsx:129
+msgid "Continue"
+msgstr "続ける"
+
+#: src/features/Game/GameOnboarding.tsx:65
+#: src/features/Game/GameOnboarding.tsx:118
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:391
+msgid "Next"
+msgstr "次へ"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:264
+msgid "Transcribing..."
+msgstr "書き起こし中..."
+
+#: src/features/Game/GameOnboarding.tsx:170
+msgid "Play"
+msgstr "再生"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
+msgid "Correct!"
+msgstr "正解！"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
+msgid "Incorrect!"
+msgstr "不正解！"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:286
+msgid "Done"
+msgstr "完了"
+
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -675,10 +709,6 @@ msgstr "合計使用量:"
 #. js-lingui-explicit-id
 msgid "Payment history:"
 msgstr "支払い履歴:"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:244
-msgid "Loading..."
-msgstr "読み込んでいます..."
 
 #: src/features/Usage/PaymentModal.tsx:637
 #. js-lingui-explicit-id
@@ -1644,10 +1674,6 @@ msgstr "レッスンを始める"
 #. js-lingui-explicit-id
 msgid "Send 6 messages to complete"
 msgstr "完了するために6つのメッセージを送信してください"
-
-#: src/features/Game/PositionChangedModal.tsx:129
-msgid "Continue"
-msgstr "続ける"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -3182,12 +3208,6 @@ msgstr "私は学びたい..."
 msgid "My native language"
 msgstr "私の母国語"
 
-#: src/features/Game/GameOnboarding.tsx:65
-#: src/features/Game/GameOnboarding.tsx:118
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:360
-msgid "Next"
-msgstr "次へ"
-
 #: src/features/Goal/GoalQuestions.tsx:510
 #. js-lingui-explicit-id
 msgid "How well do you know"
@@ -3225,10 +3245,6 @@ msgid ""
 "I want to learn English to travel. And I want to understand movies and "
 "songs."
 msgstr "私は旅行のために英語を学びたいです。そして、映画や歌を理解したいと思います。"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:256
-msgid "Transcribing..."
-msgstr "書き起こし中..."
 
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -3370,10 +3386,6 @@ msgstr "さあ、始めましょう！"
 msgid "Loading"
 msgstr "読み込み中"
 
-#: src/features/Game/GameOnboarding.tsx:170
-msgid "Play"
-msgstr "再生"
-
 #: src/features/Game/GamePage.tsx:83
 #. js-lingui-explicit-id
 msgid "Rating:"
@@ -3399,14 +3411,6 @@ msgstr "あなたの位置"
 msgid "Translate the word"
 msgstr "単語を翻訳する"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
-msgid "Correct!"
-msgstr "正解！"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
-msgid "Incorrect!"
-msgstr "不正解！"
-
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
@@ -3418,10 +3422,6 @@ msgstr "トピックを議論する"
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "回答を提出する"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
-msgid "Done"
-msgstr "完了"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:236
@@ -3989,9 +3989,7 @@ msgstr "オープンプラン"
 msgid "Send"
 msgstr "送信"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:961
-#: src/features/Conversation/ConversationCanvas2.tsx:1040
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:299
 msgid "Re-record"
 msgstr "再録音"
 
@@ -5553,7 +5551,7 @@ msgid ""
 "chance to win."
 msgstr "毎日、全員が公平に勝つチャンスを得られるよう、全員から3ポイントを差し引きます。"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:320
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:351
 msgid "Error:"
 msgstr "エラー:"
 
@@ -5588,7 +5586,7 @@ msgstr "次の位置に到達するためのポイント ({nextUserUsername}): <
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "上位5位以内にランクインして、アプリを<0>無料で</0>入手します。"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:124
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:132
 msgid "Read the text"
 msgstr "テキストを読む"
 
@@ -5604,11 +5602,15 @@ msgstr "フィードバックを送る"
 msgid "Sending..."
 msgstr "送信中..."
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:310
+msgid "Submit"
+msgstr "提出する"
+
 #: src/features/Landing/WelcomeScreen.tsx:126
 msgid "Talk, get corrected, improve—repeat."
 msgstr "話す、訂正を受ける、改善する—を繰り返す。"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:308
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:339
 msgid "Turn on microphone"
 msgstr "マイクをオンにする"
 

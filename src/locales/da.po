@@ -13,6 +13,40 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:252
+msgid "Loading..."
+msgstr "Indlæser..."
+
+#: src/features/Game/PositionChangedModal.tsx:129
+msgid "Continue"
+msgstr "Fortsæt"
+
+#: src/features/Game/GameOnboarding.tsx:65
+#: src/features/Game/GameOnboarding.tsx:118
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:391
+msgid "Next"
+msgstr "Næste"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:264
+msgid "Transcribing..."
+msgstr "Transkriberer..."
+
+#: src/features/Game/GameOnboarding.tsx:170
+msgid "Play"
+msgstr "Spil"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
+msgid "Correct!"
+msgstr "Korrekt!"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
+msgid "Incorrect!"
+msgstr "Forkert!"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:286
+msgid "Done"
+msgstr "Færdig"
+
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -692,10 +726,6 @@ msgstr "Total brugt:"
 #. js-lingui-explicit-id
 msgid "Payment history:"
 msgstr "Betalingshistorik:"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:244
-msgid "Loading..."
-msgstr "Indlæser..."
 
 #: src/features/Usage/PaymentModal.tsx:637
 #. js-lingui-explicit-id
@@ -1764,10 +1794,6 @@ msgstr "Start lektion"
 #. js-lingui-explicit-id
 msgid "Send 6 messages to complete"
 msgstr "Send 6 beskeder for at fuldføre"
-
-#: src/features/Game/PositionChangedModal.tsx:129
-msgid "Continue"
-msgstr "Fortsæt"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -3355,12 +3381,6 @@ msgstr "Jeg vil lære..."
 msgid "My native language"
 msgstr "Mit modersmål"
 
-#: src/features/Game/GameOnboarding.tsx:65
-#: src/features/Game/GameOnboarding.tsx:118
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:360
-msgid "Next"
-msgstr "Næste"
-
 #: src/features/Goal/GoalQuestions.tsx:510
 #. js-lingui-explicit-id
 msgid "How well do you know"
@@ -3398,10 +3418,6 @@ msgid ""
 "I want to learn English to travel. And I want to understand movies and "
 "songs."
 msgstr "Jeg vil gerne lære engelsk for at rejse. Og jeg vil forstå film og sange."
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:256
-msgid "Transcribing..."
-msgstr "Transkriberer..."
 
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -3543,10 +3559,6 @@ msgstr "Lad os rocke det!"
 msgid "Loading"
 msgstr "Indlæser"
 
-#: src/features/Game/GameOnboarding.tsx:170
-msgid "Play"
-msgstr "Spil"
-
 #: src/features/Game/GamePage.tsx:83
 #. js-lingui-explicit-id
 msgid "Rating:"
@@ -3572,14 +3584,6 @@ msgstr "Din position"
 msgid "Translate the word"
 msgstr "Oversæt ordet"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
-msgid "Correct!"
-msgstr "Korrekt!"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
-msgid "Incorrect!"
-msgstr "Forkert!"
-
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
@@ -3591,10 +3595,6 @@ msgstr "Diskuter emnet"
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Indsend svar"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
-msgid "Done"
-msgstr "Færdig"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:236
@@ -4162,9 +4162,7 @@ msgstr "Åben plan"
 msgid "Send"
 msgstr "Send"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:961
-#: src/features/Conversation/ConversationCanvas2.tsx:1040
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:299
 msgid "Re-record"
 msgstr "Genindspil"
 
@@ -5891,7 +5889,7 @@ msgstr ""
 "Hver dag fjerner vi 3 point fra alle, så alle har en fair chance for at "
 "vinde."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:320
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:351
 msgid "Error:"
 msgstr "Fejl:"
 
@@ -5928,7 +5926,7 @@ msgstr ""
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "Placer dig i top 5 for at få appen <0>gratis</0>"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:124
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:132
 msgid "Read the text"
 msgstr "Læs teksten"
 
@@ -5944,11 +5942,15 @@ msgstr "Send Feedback"
 msgid "Sending..."
 msgstr "Sender..."
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:310
+msgid "Submit"
+msgstr "Indsend"
+
 #: src/features/Landing/WelcomeScreen.tsx:126
 msgid "Talk, get corrected, improve—repeat."
 msgstr "Tal, få rettelser, forbedre—gentag."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:308
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:339
 msgid "Turn on microphone"
 msgstr "Tænd for mikrofonen"
 
