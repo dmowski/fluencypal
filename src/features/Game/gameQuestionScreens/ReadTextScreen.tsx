@@ -28,6 +28,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
   const nativeRecorder = useNativeRecorder({
     lang: settings.languageCode || "en",
   });
+  const [isUseNativeRecorder, setIsUseNativeRecorder] = useState(true);
 
   const usersTranscript = nativeRecorder.fullTranscript || backupRecorder.transcription;
   const isRecording = nativeRecorder.isRecording || backupRecorder.isRecording;
@@ -70,11 +71,18 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
 
   const percentage = calculatePercentage();
 
-  const [isUseNativeRecorder, setIsUseNativeRecorder] = useState(true);
+  const submitBackupRecorder = async () => {
+    backupRecorder.stopRecording();
+  };
 
   const startRecording = () => {
     try {
-      nativeRecorder.startRecording();
+      if (isUseNativeRecorder) {
+        nativeRecorder.startRecording();
+      } else {
+        backupRecorder.removeTranscript();
+        backupRecorder.startRecording();
+      }
     } catch (error) {
       backupRecorder.removeTranscript();
       backupRecorder.startRecording();
@@ -84,6 +92,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
   };
 
   const cancelRecording = () => {
+    console.log("cancelRecording called");
     if (isUseNativeRecorder) {
       nativeRecorder.stopRecording();
     } else {
@@ -257,7 +266,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
             </Typography>
           )}
 
-          {isRecording && (
+          {(isRecording || usersTranscript) && isCorrect === null && (
             <Stack
               sx={{
                 flexDirection: "row",
@@ -273,6 +282,25 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                   gap: "10px",
                 }}
               >
+                {!isUseNativeRecorder && !usersTranscript && (
+                  <Button variant="contained" size="large" onClick={() => submitBackupRecorder()}>
+                    <Trans>Done</Trans>
+                  </Button>
+                )}
+
+                {backupRecorder.visualizerComponent}
+
+                {!isUseNativeRecorder && !isRecording && usersTranscript && percentage < 70 && (
+                  <Button
+                    startIcon={<Mic />}
+                    variant="contained"
+                    size="large"
+                    onClick={() => startRecording()}
+                  >
+                    <Trans>Re-record</Trans>
+                  </Button>
+                )}
+
                 <Button
                   variant="contained"
                   size="large"
@@ -280,7 +308,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                   disabled={percentage < 70}
                   onClick={() => handleAnswerSubmit(question.question)}
                 >
-                  <Trans>Done</Trans>
+                  <Trans>Submit</Trans>
                 </Button>
                 <Typography variant="body2">{percentage}%</Typography>
               </Stack>
@@ -295,19 +323,23 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
             </Stack>
           )}
 
-          {isCorrect == null && !isRecording && (
-            <Button
-              startIcon={<Mic />}
-              size="large"
-              variant="contained"
-              disabled={isCorrect !== null}
-              onClick={() => {
-                startRecording();
-              }}
-            >
-              <Trans>Turn on microphone</Trans>
-            </Button>
-          )}
+          {isCorrect == null &&
+            !isRecording &&
+            !backupRecorder.isTranscribing &&
+            !usersTranscript &&
+            !isSubmitting && (
+              <Button
+                startIcon={<Mic />}
+                size="large"
+                variant="contained"
+                disabled={isCorrect !== null}
+                onClick={() => {
+                  startRecording();
+                }}
+              >
+                <Trans>Turn on microphone</Trans>
+              </Button>
+            )}
 
           {error && (
             <Typography
@@ -333,7 +365,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
               <Stack
                 sx={{
                   width: "100%",
-                  paddingBottom: "30px",
+                  paddingBottom: "10px",
                 }}
               >
                 <Typography

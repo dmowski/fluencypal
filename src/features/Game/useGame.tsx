@@ -141,7 +141,7 @@ function useProvideGame(): GameContextType {
     );
 
     const uniqQuestions = generatedQuestions.filter(
-      (question) => !questions.some((q) => q.id === question.id)
+      (question) => !questions.some((q) => q.id === question.id) && question.type === "read_text"
     );
 
     setQuestions(uniqQuestions);
