@@ -13,18 +13,39 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:244
+msgid "Loading..."
+msgstr "Loading..."
+
 #: src/features/Game/PositionChangedModal.tsx:129
 msgid "Continue"
 msgstr "Continue"
 
 #: src/features/Game/GameOnboarding.tsx:65
 #: src/features/Game/GameOnboarding.tsx:118
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:360
 msgid "Next"
 msgstr "Next"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:256
+msgid "Transcribing..."
+msgstr "Transcribing..."
 
 #: src/features/Game/GameOnboarding.tsx:170
 msgid "Play"
 msgstr "Play"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
+msgid "Correct!"
+msgstr "Correct!"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
+msgid "Incorrect!"
+msgstr "Incorrect!"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
+msgid "Done"
+msgstr "Done"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -704,21 +725,6 @@ msgstr "Total used:"
 #. js-lingui-explicit-id
 msgid "Payment history:"
 msgstr "Payment history:"
-
-#: src/features/Usage/PaymentModal.tsx:626
-#: src/features/Translation/useTranslate.tsx:103
-#: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:111
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:155
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:135
-#: src/features/Conversation/ConversationPage.tsx:111
-#: src/features/Conversation/ConversationPage.tsx:120
-#: src/features/Conversation/ConversationPage.tsx:140
-#: src/features/Conversation/ConversationCanvas2.tsx:293
-#. js-lingui-explicit-id
-msgid "Loading..."
-msgstr "Loading..."
 
 #: src/features/Usage/PaymentModal.tsx:637
 #. js-lingui-explicit-id
@@ -3399,17 +3405,6 @@ msgstr ""
 "I want to learn English to travel. And I want to understand movies and "
 "songs."
 
-#: src/features/Goal/GoalQuestions.tsx:738
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:167
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:147
-#: src/features/Conversation/ConversationCanvas2.tsx:682
-#: src/features/Conversation/ConversationCanvas2.tsx:685
-#: src/features/Conversation/ConversationCanvas2.tsx:768
-#: src/features/Conversation/ConversationCanvas2.tsx:775
-#. js-lingui-explicit-id
-msgid "Transcribing..."
-msgstr "Transcribing..."
-
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
 msgid "Stop recording"
@@ -3575,22 +3570,6 @@ msgstr "Your position"
 msgid "Translate the word"
 msgstr "Translate the word"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:172
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:325
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:244
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:305
-#. js-lingui-explicit-id
-msgid "Correct!"
-msgstr "Correct!"
-
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:172
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:325
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:244
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:305
-#. js-lingui-explicit-id
-msgid "Incorrect!"
-msgstr "Incorrect!"
-
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
@@ -3598,20 +3577,13 @@ msgstr "Discuss the topic"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:207
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:187
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:184
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Submit answer"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:216
-#: src/features/Conversation/ConversationCanvas2.tsx:975
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "Done"
-
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:239
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:236
 #. js-lingui-explicit-id
 msgid "Record an answer"
 msgstr "Record an answer"
@@ -3622,7 +3594,7 @@ msgid "Describe the topic in your own words..."
 msgstr "Describe the topic in your own words..."
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:300
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:280
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:277
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "Error: "
@@ -3632,8 +3604,8 @@ msgstr "Error: "
 msgid "Form a sentence"
 msgstr "Form a sentence"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:93
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:259
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:256
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "Describe the image"
@@ -5891,6 +5863,10 @@ msgstr ""
 "Each day, we remove 3 points from everyone so that everyone has a fair "
 "chance to win."
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:320
+msgid "Error:"
+msgstr "Error:"
+
 #: src/features/Game/GameOnboarding.tsx:46
 msgid "Learn and Play"
 msgstr "Learn and Play"
@@ -5924,6 +5900,10 @@ msgstr ""
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "Rank in the top 5 to get the app <0>for free</0>"
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:124
+msgid "Read the text"
+msgstr "Read the text"
+
 #: src/features/Game/GameMyAvatar.tsx:20
 msgid "Select your avatar"
 msgstr "Select your avatar"
@@ -5939,6 +5919,10 @@ msgstr "Sending..."
 #: src/features/Landing/WelcomeScreen.tsx:126
 msgid "Talk, get corrected, improve—repeat."
 msgstr "Talk, get corrected, improve—repeat."
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:308
+msgid "Turn on microphone"
+msgstr "Turn on microphone"
 
 #: src/features/Landing/WelcomeScreen.tsx:130
 msgid "Win the game and get the app <0>for free</0>"

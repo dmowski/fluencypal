@@ -13,19 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/PositionChangedModal.tsx:129
-msgid "Continue"
-msgstr "Працягваць"
-
-#: src/features/Game/GameOnboarding.tsx:65
-#: src/features/Game/GameOnboarding.tsx:118
-msgid "Next"
-msgstr "Далей"
-
-#: src/features/Game/GameOnboarding.tsx:170
-msgid "Play"
-msgstr "Гуляць"
-
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -707,18 +694,7 @@ msgstr "Агульнае выкарыстанае:"
 msgid "Payment history:"
 msgstr "Гісторыя плацяжоў:"
 
-#: src/features/Usage/PaymentModal.tsx:626
-#: src/features/Translation/useTranslate.tsx:103
-#: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:111
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:155
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:135
-#: src/features/Conversation/ConversationPage.tsx:111
-#: src/features/Conversation/ConversationPage.tsx:120
-#: src/features/Conversation/ConversationPage.tsx:140
-#: src/features/Conversation/ConversationCanvas2.tsx:293
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:244
 msgid "Loading..."
 msgstr "Загрузка..."
 
@@ -1809,6 +1785,10 @@ msgstr "Пачаць урок"
 #. js-lingui-explicit-id
 msgid "Send 6 messages to complete"
 msgstr "Адправце 6 паведамленняў, каб завершыць"
+
+#: src/features/Game/PositionChangedModal.tsx:129
+msgid "Continue"
+msgstr "Працягваць"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -3399,6 +3379,12 @@ msgstr "Я хачу вывучыць..."
 msgid "My native language"
 msgstr "Мая родная мова"
 
+#: src/features/Game/GameOnboarding.tsx:65
+#: src/features/Game/GameOnboarding.tsx:118
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:360
+msgid "Next"
+msgstr "Далей"
+
 #: src/features/Goal/GoalQuestions.tsx:510
 #. js-lingui-explicit-id
 msgid "How well do you know"
@@ -3437,16 +3423,9 @@ msgid ""
 "songs."
 msgstr "Я хачу вывучыць англійскую для падарожжаў. І я хачу разумець фільмы і песні."
 
-#: src/features/Goal/GoalQuestions.tsx:738
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:167
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:147
-#: src/features/Conversation/ConversationCanvas2.tsx:682
-#: src/features/Conversation/ConversationCanvas2.tsx:685
-#: src/features/Conversation/ConversationCanvas2.tsx:768
-#: src/features/Conversation/ConversationCanvas2.tsx:775
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:256
 msgid "Transcribing..."
-msgstr "Перакладаецца..."
+msgstr "Перапісваецца..."
 
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -3588,6 +3567,10 @@ msgstr "Давайце разругнем гэта!"
 msgid "Loading"
 msgstr "Загрузка"
 
+#: src/features/Game/GameOnboarding.tsx:170
+msgid "Play"
+msgstr "Гуляць"
+
 #: src/features/Game/GamePage.tsx:83
 #. js-lingui-explicit-id
 msgid "Rating:"
@@ -3613,19 +3596,11 @@ msgstr "Ваша пазіцыя"
 msgid "Translate the word"
 msgstr "Перакладзіце слова"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:172
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:325
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:244
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:305
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
 msgid "Correct!"
 msgstr "Правільна!"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:172
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:325
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:244
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:305
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
 msgid "Incorrect!"
 msgstr "Няправільна!"
 
@@ -3636,20 +3611,17 @@ msgstr "Абмеркаваць тэму"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:207
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:187
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:184
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Адправіць адказ"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:216
-#: src/features/Conversation/ConversationCanvas2.tsx:975
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
 msgid "Done"
 msgstr "Выканана"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:239
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:236
 #. js-lingui-explicit-id
 msgid "Record an answer"
 msgstr "Запішыце адказ"
@@ -3660,7 +3632,7 @@ msgid "Describe the topic in your own words..."
 msgstr "Апішыце тэму сваімі словамі..."
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:300
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:280
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:277
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "Памылка:"
@@ -3670,8 +3642,8 @@ msgstr "Памылка:"
 msgid "Form a sentence"
 msgstr "Складзіце працэнзію"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:93
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:259
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:256
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "Апішыце малюнак"
@@ -5967,6 +5939,10 @@ msgstr ""
 "Кожны дзень мы аднімаем 3 ачкі у кожнага, каб усе мелі роўныя магчымасці "
 "перамагчы."
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:320
+msgid "Error:"
+msgstr "Памылка:"
+
 #: src/features/Game/GameOnboarding.tsx:46
 msgid "Learn and Play"
 msgstr "Вучыцца і гуляць"
@@ -6000,6 +5976,10 @@ msgstr ""
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "Увайдзіце ў топ 5, каб атрымаць прылажэнне <0>бясплатна</0>"
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:124
+msgid "Read the text"
+msgstr "Чытайце тэкст"
+
 #: src/features/Game/GameMyAvatar.tsx:20
 msgid "Select your avatar"
 msgstr "Выберыце свой аватар"
@@ -6015,6 +5995,10 @@ msgstr "Адпраўка..."
 #: src/features/Landing/WelcomeScreen.tsx:126
 msgid "Talk, get corrected, improve—repeat."
 msgstr "Гаварыце, атрымлівайце карэкціі, удасканалівайцеся—паўтараць."
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:308
+msgid "Turn on microphone"
+msgstr "Уключыце мікрафон"
 
 #: src/features/Landing/WelcomeScreen.tsx:130
 msgid "Win the game and get the app <0>for free</0>"

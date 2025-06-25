@@ -13,19 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/PositionChangedModal.tsx:129
-msgid "Continue"
-msgstr "Devam et"
-
-#: src/features/Game/GameOnboarding.tsx:65
-#: src/features/Game/GameOnboarding.tsx:118
-msgid "Next"
-msgstr "İleri"
-
-#: src/features/Game/GameOnboarding.tsx:170
-msgid "Play"
-msgstr "Oynat"
-
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -708,18 +695,7 @@ msgstr "Toplam kullanılan:"
 msgid "Payment history:"
 msgstr "Ödeme geçmişi:"
 
-#: src/features/Usage/PaymentModal.tsx:626
-#: src/features/Translation/useTranslate.tsx:103
-#: src/features/RolePlay/RolePlayBoard.tsx:632
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:111
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:155
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:135
-#: src/features/Conversation/ConversationPage.tsx:111
-#: src/features/Conversation/ConversationPage.tsx:120
-#: src/features/Conversation/ConversationPage.tsx:140
-#: src/features/Conversation/ConversationCanvas2.tsx:293
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:244
 msgid "Loading..."
 msgstr "Yükleniyor..."
 
@@ -1811,6 +1787,10 @@ msgstr "Dersi başlat"
 #. js-lingui-explicit-id
 msgid "Send 6 messages to complete"
 msgstr "6 mesaj göndermek için tamamlayın"
+
+#: src/features/Game/PositionChangedModal.tsx:129
+msgid "Continue"
+msgstr "Devam et"
 
 #: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
@@ -3390,6 +3370,12 @@ msgstr "Öğrenmek istiyorum..."
 msgid "My native language"
 msgstr "Ana dilim"
 
+#: src/features/Game/GameOnboarding.tsx:65
+#: src/features/Game/GameOnboarding.tsx:118
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:360
+msgid "Next"
+msgstr "İleri"
+
 #: src/features/Goal/GoalQuestions.tsx:510
 #. js-lingui-explicit-id
 msgid "How well do you know"
@@ -3430,16 +3416,9 @@ msgstr ""
 "Seyahat etmek için İngilizce öğrenmek istiyorum. Ve filmleri ve şarkıları "
 "anlamak istiyorum."
 
-#: src/features/Goal/GoalQuestions.tsx:738
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:167
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:147
-#: src/features/Conversation/ConversationCanvas2.tsx:682
-#: src/features/Conversation/ConversationCanvas2.tsx:685
-#: src/features/Conversation/ConversationCanvas2.tsx:768
-#: src/features/Conversation/ConversationCanvas2.tsx:775
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:256
 msgid "Transcribing..."
-msgstr "Transkribe ediliyor..."
+msgstr "Çeviriliyor..."
 
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -3581,6 +3560,10 @@ msgstr "Hadi başlayalım!"
 msgid "Loading"
 msgstr "Yükleniyor"
 
+#: src/features/Game/GameOnboarding.tsx:170
+msgid "Play"
+msgstr "Oynat"
+
 #: src/features/Game/GamePage.tsx:83
 #. js-lingui-explicit-id
 msgid "Rating:"
@@ -3606,19 +3589,11 @@ msgstr "Pozisyonunuz"
 msgid "Translate the word"
 msgstr "Kelimeyi çevir"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:172
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:325
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:244
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:305
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
 msgid "Correct!"
 msgstr "Doğru!"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:172
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:325
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:244
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:305
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:345
 msgid "Incorrect!"
 msgstr "Yanlış!"
 
@@ -3629,20 +3604,17 @@ msgstr "Konuyu tartışın"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:207
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:187
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:184
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Cevabı gönder"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:216
-#: src/features/Conversation/ConversationCanvas2.tsx:975
-#. js-lingui-explicit-id
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
 msgid "Done"
 msgstr "Tamamlandı"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:239
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:236
 #. js-lingui-explicit-id
 msgid "Record an answer"
 msgstr "Bir yanıt kaydet"
@@ -3653,7 +3625,7 @@ msgid "Describe the topic in your own words..."
 msgstr "Konuyu kendi kelimelerinizle anlatın..."
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:300
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:280
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:277
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "Hata:"
@@ -3663,8 +3635,8 @@ msgstr "Hata:"
 msgid "Form a sentence"
 msgstr "Bir cümle oluşturun"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:93
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:259
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:256
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "Görüntüyü açıkla"
@@ -5952,6 +5924,10 @@ msgstr ""
 "Her gün, herkesin kazanma şansının adil olması için herkesten 3 puan "
 "çıkarırız."
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:320
+msgid "Error:"
+msgstr "Hata:"
+
 #: src/features/Game/GameOnboarding.tsx:46
 msgid "Learn and Play"
 msgstr "Öğren ve Oyna"
@@ -5985,6 +5961,10 @@ msgstr ""
 msgid "Rank in the top 5 to get the app <0>for free</0>"
 msgstr "İlk 5'te yer alın ve uygulamayı <0>ücretsiz</0> elde edin"
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:124
+msgid "Read the text"
+msgstr "Metni okuyun"
+
 #: src/features/Game/GameMyAvatar.tsx:20
 msgid "Select your avatar"
 msgstr "Avatarınızı seçin"
@@ -6000,6 +5980,10 @@ msgstr "Gönderiliyor..."
 #: src/features/Landing/WelcomeScreen.tsx:126
 msgid "Talk, get corrected, improve—repeat."
 msgstr "Konuş, düzeltme al, geliştir—tekrarla."
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:308
+msgid "Turn on microphone"
+msgstr "Mikrofonu açın"
 
 #: src/features/Landing/WelcomeScreen.tsx:130
 msgid "Win the game and get the app <0>for free</0>"
