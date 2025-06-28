@@ -66,8 +66,8 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
               gap: "40px",
               alignItems: "center",
               boxSizing: "border-box",
-              opacity: isAuthLoading ? 0.2 : 1,
-              pointerEvents: isAuthLoading ? "none" : "auto",
+              opacity: isAuthLoading || isNeedToRedirect ? 0.2 : 1,
+              pointerEvents: isAuthLoading || isNeedToRedirect ? "none" : "auto",
             }}
           >
             <Stack
