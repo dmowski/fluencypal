@@ -1,4 +1,4 @@
-import { GameUsersPoints } from "@/features/Game/types";
+import { GameAvatars, GameLastVisit, GameUsersPoints } from "@/features/Game/types";
 import { getDB } from "../../../app/api/config/firebase";
 import { getGameProfile } from "./getGameProfile";
 
@@ -11,6 +11,26 @@ export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
     return {};
   }
   const data = userDoc.data() as GameUsersPoints;
+  return data;
+};
+
+export const getGameUsersAvatars = async (): Promise<GameAvatars> => {
+  const db = getDB();
+  const userDoc = await db.collection("game").doc("gameAvatars").get();
+  if (!userDoc.exists) {
+    return {};
+  }
+  const data = userDoc.data() as GameAvatars;
+  return data;
+};
+
+export const getGameUsersLastVisit = async (): Promise<GameLastVisit> => {
+  const db = getDB();
+  const userDoc = await db.collection("game").doc("gameLastVisit").get();
+  if (!userDoc.exists) {
+    return {};
+  }
+  const data = userDoc.data() as GameLastVisit;
   return data;
 };
 
@@ -38,6 +58,48 @@ export const renameUserInRateStat = async (
     .set(
       {
         [newUsername]: points,
+        [oldUsername]: firebaseAdmin.firestore.FieldValue.delete(),
+      },
+      { merge: true }
+    );
+};
+
+export const renameUserAvatarStat = async (
+  oldUsername: string,
+  newUsername: string
+): Promise<void> => {
+  const db = getDB();
+  const userAvatars = await getGameUsersAvatars();
+
+  const oldAvatar = userAvatars[oldUsername] || null;
+
+  await db
+    .collection("game")
+    .doc("gameAvatars")
+    .set(
+      {
+        [newUsername]: oldAvatar,
+        [oldUsername]: firebaseAdmin.firestore.FieldValue.delete(),
+      },
+      { merge: true }
+    );
+};
+
+export const renameUserLastVisitStat = async (
+  oldUsername: string,
+  newUsername: string
+): Promise<void> => {
+  const db = getDB();
+  const userAvatars = await getGameUsersLastVisit();
+
+  const oldData = userAvatars[oldUsername] || Date.now();
+
+  await db
+    .collection("game")
+    .doc("gameLastVisit")
+    .set(
+      {
+        [newUsername]: oldData,
         [oldUsername]: firebaseAdmin.firestore.FieldValue.delete(),
       },
       { merge: true }

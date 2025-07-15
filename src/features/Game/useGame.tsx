@@ -1,5 +1,14 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useState, useEffect, useMemo } from "react";
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  JSX,
+  useState,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { useAuth } from "../Auth/useAuth";
 import { GameAvatars, GameLastVisit, GameProfile, GameQuestionShort, UsersStat } from "./types";
 import {
@@ -54,6 +63,7 @@ function useProvideGame(): GameContextType {
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [questions, setQuestions] = useState<GameQuestionShort[]>([]);
   const [activeQuestion, setActiveQuestion] = useState<GameQuestionShort | null>(null);
+  const isUpdatingUsername = useRef(false);
 
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
   const [gameRate] = useDocumentData(db.documents.gameRate);
@@ -103,16 +113,16 @@ function useProvideGame(): GameContextType {
   };
 
   useEffect(() => {
-    if (!auth.uid || !myProfile?.username) return;
-
+    if (!auth.uid || !myProfile?.username || isUpdatingUsername.current) return;
     updateLastVisit();
     setDefaultAvatarIfNeeded();
   }, [auth.uid, myProfile?.username]);
 
   const setDefaultAvatarIfNeeded = async () => {
-    if (!auth.uid || !myProfile?.username || !gameAvatars) return;
+    if (!auth.uid || !myProfile?.username || !gameAvatars || isUpdatingUsername.current) return;
 
     const userAvatar = gameAvatars[myProfile.username];
+    console.log("setDefaultAvatarIfNeeded userAvatar", userAvatar);
     if (userAvatar) return; // Avatar already set
 
     const randomAvatars = shuffleArray(avatars);
@@ -233,6 +243,8 @@ function useProvideGame(): GameContextType {
   const updateUsername = async (username: string) => {
     if (!userId) return;
 
+    isUpdatingUsername.current = true;
+
     const response = await updateUserProfileRequest(
       {
         username,
@@ -249,6 +261,10 @@ function useProvideGame(): GameContextType {
       console.log("Failed to update username:", response.error);
       alert(response.error || "Failed to update username");
     }
+
+    setTimeout(() => {
+      isUpdatingUsername.current = false;
+    }, 1000);
   };
 
   return {

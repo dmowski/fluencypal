@@ -22,7 +22,7 @@ export const GameMyUsername = () => {
       setIsEditUsername(false);
       return;
     }
-    const internalUsernameTrimmed = internalUsername.trim().replaceAll(/\s+/g, " ");
+    const internalUsernameTrimmed = internalUsername.trim();
     if (internalUsernameTrimmed.length < 3) {
       alert(i18n._(`Username must be at least 3 characters long.`));
       return;

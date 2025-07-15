@@ -42,6 +42,10 @@ export const getSortedStatsFromData = (userPoints: GameUsersPoints) => {
     .sort((a, b) => {
       const pointsA = userPoints[a];
       const pointsB = userPoints[b];
+      const isPointsEqual = pointsA === pointsB;
+      if (isPointsEqual) {
+        return a.localeCompare(b);
+      }
       return pointsB - pointsA;
     })
     .map((username) => {

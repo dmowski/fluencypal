@@ -1,7 +1,12 @@
 import { AuthUserInfo } from "@/app/api/config/type";
 import { UpdateUserProfileRequest, UpdateUserProfileResponse } from "../types";
 import { getGameProfile } from "./getGameProfile";
-import { getGameUsersPoints, renameUserInRateStat } from "./statsResources";
+import {
+  getGameUsersPoints,
+  renameUserAvatarStat,
+  renameUserInRateStat,
+  renameUserLastVisitStat,
+} from "./statsResources";
 import { updateGameProfile } from "./updateGameProfile";
 
 export const renameUsername = async ({
@@ -11,9 +16,9 @@ export const renameUsername = async ({
   data: UpdateUserProfileRequest;
   userInfo: AuthUserInfo;
 }): Promise<UpdateUserProfileResponse> => {
-  const { username } = data;
+  const newUsername = data.username?.trim() || "";
 
-  if (!username || username.length < 3) {
+  if (!newUsername || newUsername.length < 3) {
     const response: UpdateUserProfileResponse = {
       error: "Username must be at least 3 characters long.",
       isUpdated: false,
@@ -31,8 +36,7 @@ export const renameUsername = async ({
   }
 
   const oldUsername = userProfile.username;
-  const newUsername = username.trim().replace(/\s+/g, "");
-  if (oldUsername === username) {
+  if (oldUsername === newUsername) {
     const response: UpdateUserProfileResponse = {
       error: "Username is the same as the old one.",
       isUpdated: false,
@@ -53,9 +57,12 @@ export const renameUsername = async ({
     return response;
   }
 
-  await updateGameProfile(userInfo.uid, { ...userProfile, username });
-
-  await renameUserInRateStat(oldUsername, newUsername);
+  await Promise.all([
+    updateGameProfile(userInfo.uid, { ...userProfile, username: newUsername }),
+    renameUserInRateStat(oldUsername, newUsername),
+    renameUserAvatarStat(oldUsername, newUsername),
+    renameUserLastVisitStat(oldUsername, newUsername),
+  ]);
 
   const response: UpdateUserProfileResponse = {
     error: null,
