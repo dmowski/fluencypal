@@ -3,14 +3,16 @@
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
-import { Alert, Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import { Alert, Button, IconButton, Stack, TextField, Tooltip, Typography } from "@mui/material";
 import {
   ArrowUp,
   Check,
+  Keyboard,
   Languages,
   Lightbulb,
   Loader,
   Mic,
+  Send,
   ShieldAlert,
   Trash2,
   Trophy,
@@ -120,6 +122,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const { i18n } = useLingui();
 
   const sound = useSound();
+  const [isShowKeyboard, setIsShowKeyboard] = useState(false);
 
   const game = useGame();
 
@@ -136,9 +139,13 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   const messageAnalyzing = useRef("");
   const [isAnalyzingMessageWithAi, setIsAnalyzingMessageWithAi] = useState(false);
-
   const [isNeedToShowCorrection, setIsNeedToShowCorrection] = useState(false);
   const [isAnalyzingError, setIsAnalyzingError] = useState(false);
+  const [internalUserInput, setInternalUserInput] = useState<string>("");
+  const [isConfirmedUserKeyboardInput, setIsConfirmedUserKeyboardInput] = useState(false);
+
+  const confirmedUserInput =
+    transcriptMessage || isConfirmedUserKeyboardInput ? internalUserInput : "";
 
   const [newWords, setNewWords] = useState<string[]>([]);
 
@@ -152,12 +159,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     }
   }, [isTranscribing]);
 
-  const analyzeMessage = async () => {
-    if (transcriptMessage === messageAnalyzing.current || !transcriptMessage) {
-      return;
-    }
-
-    messageAnalyzing.current = transcriptMessage;
+  const analyzeUserInput = async (usersNewMessage: string) => {
+    messageAnalyzing.current = usersNewMessage;
 
     setIsAnalyzingMessageWithAi(true);
     setIsNeedToShowCorrection(false);
@@ -166,7 +169,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     setNewWords([]);
 
     try {
-      const userMessage = transcriptMessage;
+      const userMessage = usersNewMessage;
       const previousBotMessage = conversation.length
         ? conversation[conversation.length - 1].text
         : "";
@@ -177,7 +180,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         conversationId,
       });
       setNewWords(newWords || []);
-      if (transcriptMessage !== sourceMessage) {
+      if (usersNewMessage !== sourceMessage) {
         return;
       }
 
@@ -204,6 +207,21 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     }
   };
 
+  const analyzeMessageAudioTranscript = async () => {
+    if (transcriptMessage === messageAnalyzing.current || !transcriptMessage) {
+      return;
+    }
+    await analyzeUserInput(transcriptMessage);
+  };
+
+  const analyzeUserKeyboardInput = async () => {
+    if (internalUserInput === messageAnalyzing.current || !internalUserInput) {
+      return;
+    }
+    setIsConfirmedUserKeyboardInput(true);
+    await analyzeUserInput(internalUserInput);
+  };
+
   const isLowBalance = balanceHours < 0.01 && !game.isGameWinner;
 
   useEffect(() => {
@@ -212,7 +230,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     }
 
     if (transcriptMessage) {
-      analyzeMessage();
+      analyzeMessageAudioTranscript();
     }
   }, [transcriptMessage]);
 
@@ -521,7 +539,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             sx={{
               flexDirection: "row",
               width: "100%",
-              borderTop: transcriptMessage
+              borderTop: confirmedUserInput
                 ? "1px solid rgba(255, 255, 255, 0.1)"
                 : "1px solid rgba(255, 255, 255, 0.1)",
 
@@ -569,7 +587,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 </Stack>
               )}
 
-              {(transcriptMessage || isTranscribing || isAnalyzingResponse) && (
+              {(confirmedUserInput || isTranscribing || isAnalyzingResponse) && (
                 <Stack
                   sx={{
                     flexDirection: "row",
@@ -679,10 +697,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                           >
                             <StringDiff
                               oldValue={
-                                isTranscribing ? i18n._("Transcribing...") : transcriptMessage || ""
+                                isTranscribing
+                                  ? i18n._("Transcribing...")
+                                  : confirmedUserInput || ""
                               }
                               newValue={
-                                isTranscribing ? i18n._("Transcribing...") : transcriptMessage || ""
+                                isTranscribing
+                                  ? i18n._("Transcribing...")
+                                  : confirmedUserInput || ""
                               }
                             />
                           </Typography>
@@ -768,14 +790,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                     ? i18n._("Transcribing...")
                                     : isAnalyzingResponse
                                       ? i18n._("Analyzing...")
-                                      : transcriptMessage || ""
+                                      : confirmedUserInput || ""
                                 }
                                 newValue={
                                   isTranscribing
                                     ? i18n._("Transcribing...")
                                     : isAnalyzingResponse
                                       ? i18n._("Analyzing...")
-                                      : correctedMessage || transcriptMessage || ""
+                                      : correctedMessage || confirmedUserInput || ""
                                 }
                               />
                             </Typography>
@@ -931,7 +953,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       </Stack>
                     )}
 
-                    {transcriptMessage && !isRecording && !isAnalyzingResponse && (
+                    {confirmedUserInput && !isRecording && !isAnalyzingResponse && (
                       <Button
                         startIcon={<ArrowUp />}
                         size="large"
@@ -939,7 +961,11 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         sx={{
                           minWidth: "200px",
                         }}
-                        onClick={async () => addUserMessage(transcriptMessage)}
+                        onClick={async () => {
+                          addUserMessage(confirmedUserInput);
+                          setIsConfirmedUserKeyboardInput(false);
+                          setInternalUserInput("");
+                        }}
                       >
                         {i18n._("Send")}
                       </Button>
@@ -980,18 +1006,95 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       !isRecording &&
                       !isAnalyzingResponse &&
                       !isProcessingGoal &&
-                      !isCompletedLesson && (
-                        <Button
-                          startIcon={<Mic />}
-                          size="large"
-                          variant="contained"
+                      !isCompletedLesson &&
+                      !isShowKeyboard && (
+                        <Stack
                           sx={{
-                            minWidth: "200px",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            width: "100%",
+                            gap: "10px",
                           }}
-                          onClick={async () => startRecording()}
                         >
-                          {i18n._("Record Message")}
-                        </Button>
+                          <Button
+                            startIcon={<Mic />}
+                            size="large"
+                            variant="contained"
+                            sx={{
+                              minWidth: "200px",
+                            }}
+                            onClick={async () => startRecording()}
+                          >
+                            {i18n._("Record Message")}
+                          </Button>
+                          <IconButton onClick={() => setIsShowKeyboard(!isShowKeyboard)}>
+                            <Keyboard size={"20px"} />
+                          </IconButton>
+                        </Stack>
+                      )}
+
+                    {!confirmedUserInput &&
+                      !isRecording &&
+                      !isAnalyzingResponse &&
+                      !isProcessingGoal &&
+                      !isCompletedLesson &&
+                      isShowKeyboard && (
+                        <Stack
+                          sx={{
+                            flexDirection: "row",
+                            alignItems: "center",
+                            width: "100%",
+                            gap: "5px",
+                          }}
+                        >
+                          <TextField
+                            autoFocus
+                            value={internalUserInput}
+                            onChange={(e) => setInternalUserInput(e.target.value)}
+                            placeholder={i18n._("Your message...")}
+                            multiline
+                            minRows={1}
+                            onKeyDown={(e) => {
+                              const isEnter = e.key === "Enter" && !e.shiftKey;
+                              if (isEnter) {
+                                e.preventDefault();
+                                analyzeUserKeyboardInput();
+                              }
+                            }}
+                            sx={{
+                              width: "100%",
+                              minHeight: "40px",
+                              maxWidth: "500px",
+                            }}
+                            slotProps={{
+                              input: {
+                                sx: {
+                                  height: "100%",
+                                  padding: "4px 0 3px 0",
+                                },
+                                inputProps: {
+                                  style: {
+                                    padding: "2px 8px",
+                                  },
+                                },
+                              },
+                            }}
+                          />
+                          <IconButton
+                            onClick={() => analyzeUserKeyboardInput()}
+                            disabled={!internalUserInput}
+                          >
+                            <Send size={"20px"} />
+                          </IconButton>
+
+                          <IconButton
+                            onClick={() => {
+                              setIsShowKeyboard(false);
+                            }}
+                          >
+                            <Mic size={"20px"} />
+                          </IconButton>
+                        </Stack>
                       )}
 
                     {isCompletedLesson && (
@@ -1038,6 +1141,22 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                           onClick={async () => await startRecording()}
                         >
                           {i18n._("Re-record")}
+                        </Button>
+                      )}
+
+                    {confirmedUserInput &&
+                      !isRecording &&
+                      !transcriptMessage &&
+                      isNeedToShowCorrection && (
+                        <Button
+                          size="large"
+                          startIcon={<Keyboard />}
+                          onClick={async () => {
+                            setIsConfirmedUserKeyboardInput(false);
+                            messageAnalyzing.current = "";
+                          }}
+                        >
+                          {i18n._("Re-write")}
                         </Button>
                       )}
 
