@@ -145,7 +145,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const [isConfirmedUserKeyboardInput, setIsConfirmedUserKeyboardInput] = useState(false);
 
   const confirmedUserInput =
-    transcriptMessage || isConfirmedUserKeyboardInput ? internalUserInput : "";
+    transcriptMessage || (isConfirmedUserKeyboardInput ? internalUserInput : "");
 
   const [newWords, setNewWords] = useState<string[]>([]);
 
