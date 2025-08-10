@@ -2,6 +2,7 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayInstruction } from "./types";
 import { getI18nInstance } from "@/appRouterI18n";
 import { ResourceCategory } from "@/common/category";
+import { AliasRolePlay } from "./fullArticles/AliasRolePlay";
 
 export interface RolePlayScenariosInfo {
   rolePlayScenarios: RolePlayInstruction[];
@@ -44,6 +45,7 @@ export const getRolePlayScenarios = (lang: SupportedLanguage): RolePlayScenarios
 
       gameMode: "alias",
       subTitle: i18n._("Practice English vocabulary by creatively describing and guessing words"),
+      contendElement: <AliasRolePlay lang={lang} />,
       contentPage: i18n._(
         `Boost your English vocabulary and fluency by creatively describing and guessing words in this interactive AI-powered Alias game.\n\n## Benefits of Playing *Alias Game*\n- Enhance your vocabulary by describing words in unique ways.\n- Improve listening skills as you interpret descriptions.\n- Practice rapid thinking and fluent speaking under playful pressure.\n- Receive instant, tailored feedback from your AI partner.\n\n## How to Play\nYou and your AI partner alternate turns describing and guessing words without directly naming them. This encourages creative thinking and fluent expression, adapting to your language proficiency.`
       ),

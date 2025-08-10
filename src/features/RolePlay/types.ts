@@ -1,5 +1,6 @@
 import { AiVoice } from "@/common/ai";
 import { ResourceCategory } from "@/common/category";
+import { JSX } from "react";
 
 export type RolePlayInputType = "text-input" | "textarea" | "options" | "checkbox";
 export interface InputStructureForUser {
@@ -45,6 +46,7 @@ export interface RolePlayInstruction {
   videoSrc?: string;
   voice: AiVoice;
   input: InputStructureForUser[];
+  contendElement?: JSX.Element;
   contentPage: string;
   gameMode?: "alias";
   analyzeResultAiInstruction?: string;
