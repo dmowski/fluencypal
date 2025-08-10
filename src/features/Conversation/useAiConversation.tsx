@@ -203,7 +203,8 @@ function useProvideAiConversation(): AiConversationContextType {
     defaultMessagesToComplete
   );
 
-  const [isMuted, setIsMuted] = useLocalStorage<boolean>("isMuted", false);
+  const [isMutedStorage, setIsMuted] = useLocalStorage<boolean>("isMuted", true);
+  const isMuted = isMutedStorage ?? true;
   const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);
 
   useEffect(() => {
@@ -287,14 +288,19 @@ function useProvideAiConversation(): AiConversationContextType {
       const isExisting = prev.find((m) => m.id === message.id);
 
       if (isExisting) {
+        const isBot = message.isBot;
+        if (isBot) {
+          return [...prev.filter((m) => m.id !== message.id), message];
+        }
         return prev.map((m) => (m.id === message.id ? message : m));
       }
 
       const isEmptyChat = prev.length === 0;
       const isEmptyNewMessage = message.text.trim() === "";
-      const isErrorState = (isEmptyChat && isEmptyNewMessage) || true;
+      const isErrorState = isEmptyChat && isEmptyNewMessage;
       if (isErrorState) {
         console.error("❌ Empty message from AI. Restarting conversation...");
+        console.log("message", message);
         Sentry.captureException(new Error("Empty message from AI. Restarting conversation..."), {
           extra: {
             conversationId,
@@ -323,7 +329,7 @@ function useProvideAiConversation(): AiConversationContextType {
   useEffect(() => {
     const isRestoredBalance = isMutedDueToNoBalance && !isLowBalance;
     if (isRestoredBalance) {
-      communicatorRef.current?.toggleMute(isMuted || false);
+      communicatorRef.current?.toggleMute(isMuted);
       setIsMutedDueToNoBalance(false);
     }
 
@@ -356,7 +362,7 @@ function useProvideAiConversation(): AiConversationContextType {
       onAddDelta,
       setIsAiSpeaking,
       setIsUserSpeaking,
-      isMuted: isMuted || false,
+      isMuted,
       isVolumeOn,
       onAddUsage: (usageLog: UsageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
       languageCode: settings.languageCode || "en",
@@ -766,7 +772,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
         ...aiRtcConfig,
         initInstruction: instruction,
         voice: aiRtcConfig.voice || input.voice,
-        isMuted: true,
+        isMuted,
       });
       history.createConversation({
         conversationId,
@@ -872,7 +878,7 @@ My last message was: "${message}".
     isClosed,
     isUserSpeaking,
     toggleMute,
-    isMuted: isMuted || false,
+    isMuted,
     addUserMessage,
     isShowUserInput: isShowUserInput || false,
     setIsShowUserInput,

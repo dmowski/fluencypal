@@ -12,6 +12,7 @@ import {
   Lightbulb,
   Loader,
   Mic,
+  Phone,
   Send,
   ShieldAlert,
   Trash2,
@@ -83,9 +84,13 @@ interface ConversationCanvasProps {
   analyzeConversation: () => Promise<void>;
   messagesToComplete: number;
   generateHelpMessage: () => Promise<string>;
+  isCallMode: boolean;
+  toggleCallMode: (newStateIsCallMode: boolean) => void;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isOnboarding,
+  isCallMode,
+  toggleCallMode,
   conversation,
   isAiSpeaking,
   gameWords,
@@ -125,6 +130,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
 
   const game = useGame();
+
+  const startCallMode = () => {
+    toggleCallMode(true);
+  };
+
+  const stopCallMode = () => {
+    toggleCallMode(false);
+  };
 
   const isSmallBalance = balanceHours < 0.1 && !game.isGameWinner;
   const isExtremelySmallBalance = balanceHours < 0.05 && !game.isGameWinner;
@@ -1002,9 +1015,21 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       </Button>
                     )}
 
+                    {isCallMode && !isCompletedLesson && (
+                      <Button
+                        startIcon={<Phone />}
+                        variant="outlined"
+                        size="large"
+                        onClick={async () => stopCallMode()}
+                      >
+                        {i18n._("Stop")}
+                      </Button>
+                    )}
+
                     {!transcriptMessage &&
                       !isRecording &&
                       !isAnalyzingResponse &&
+                      !isCallMode &&
                       !isProcessingGoal &&
                       !isCompletedLesson &&
                       !isShowKeyboard && (
@@ -1029,6 +1054,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                           </Button>
                           <IconButton onClick={() => setIsShowKeyboard(!isShowKeyboard)}>
                             <Keyboard size={"20px"} />
+                          </IconButton>
+
+                          <IconButton
+                            onClick={() => {
+                              startCallMode();
+                            }}
+                          >
+                            <Phone size={"20px"} />
                           </IconButton>
                         </Stack>
                       )}

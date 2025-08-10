@@ -112,18 +112,19 @@ const updateSession = async ({
     session: {
       instructions: initInstruction,
       /*
-      tools: aiTools,
+        tools: aiTools,
+      */
       input_audio_transcription: {
         model: "whisper-1", // TODO: do we need to keep?
         language: languageCode,
-      },*/
+      },
       voice,
       modalities,
-      /*
+
       turn_detection: {
         type: "semantic_vad",
-        eagerness: "auto", // TODO: do we need to keep?
-      },*/
+        eagerness: "auto",
+      },
     },
   };
   await sleep(100);
@@ -226,12 +227,10 @@ export const initAiRtc = async ({
   }
 
   await sleep(2000); // Important for mobile devices
-  console.log("Audio element created:", audioEl);
   const userMedia = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
-  listMediaDevices();
-  console.log("User media stream DONE");
+  //listMediaDevices();
   await sleep(1000);
 
   const peerConnection = new RTCPeerConnection();

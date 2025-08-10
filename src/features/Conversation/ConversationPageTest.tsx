@@ -180,7 +180,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         stopRecording={async () => {}}
         cancelRecording={async () => {}}
         isTranscribing={false}
-        transcriptMessage="Hello"
+        transcriptMessage=""
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
@@ -199,6 +199,8 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
           await sleep(2000);
           return "Nice to see you here";
         }}
+        isCallMode={false}
+        toggleCallMode={() => {}}
       />
     </Stack>
   );
