@@ -204,7 +204,21 @@ function useProvideAiConversation(): AiConversationContextType {
   );
 
   const [isMutedStorage, setIsMuted] = useLocalStorage<boolean>("isMuted", true);
+  const isMutedFromUrl =
+    searchParams.get("muted") === "false"
+      ? false
+      : searchParams.get("muted") === "true"
+        ? true
+        : undefined;
+
   const isMuted = isMutedStorage ?? true;
+
+  useEffect(() => {
+    if (isMutedFromUrl === undefined) return;
+
+    setIsMuted(isMutedFromUrl);
+  }, [isMutedFromUrl]);
+
   const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);
 
   useEffect(() => {
