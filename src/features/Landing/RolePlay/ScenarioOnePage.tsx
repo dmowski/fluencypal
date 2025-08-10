@@ -151,7 +151,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   {i18n._(`View all`)}
                 </Button>
                 <Button
-                  href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
+                  href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}${item.isCallModeByDefault ? "&isCallMode=true" : ""}`}
                   sx={{
                     ...buttonStyle,
                     height: "3rem",
