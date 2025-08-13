@@ -4,6 +4,7 @@ import { WELCOME_BONUS } from "@/common/usage";
 import { addPaymentLog } from "../payment/addPaymentLog";
 import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 
+const ENABLE_SUBSCRIPTIONS = false;
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
 
@@ -22,13 +23,25 @@ export async function POST(request: Request) {
   }
 
   await addPaymentLog({
+    type: "welcome",
     amount: WELCOME_BONUS,
     userId: userInfo.uid,
-    type: "welcome",
+
     currency: "usd",
     amountOfHours: 1,
     paymentId: "welcome",
   });
+
+  if (ENABLE_SUBSCRIPTIONS) {
+    await addPaymentLog({
+      type: "subscription-full-1m",
+      amount: WELCOME_BONUS,
+      userId: userInfo.uid,
+      currency: "usd",
+      amountOfHours: 0,
+      paymentId: "subscription-full-1m",
+    });
+  }
 
   const response: InitBalanceResponse = {
     done: true,

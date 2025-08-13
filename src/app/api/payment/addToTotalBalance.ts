@@ -1,28 +1,49 @@
 import { TotalUsageInfo } from "@/common/usage";
 import { getDB } from "../config/firebase";
 import { getUserBalance } from "./getUserBalance";
+import dayjs from "dayjs";
 
 interface AddToTotalBalanceProps {
   userId: string;
   amountToAddHours: number;
+  monthsCount?: number;
 }
 
-export const addToTotalBalance = async ({ userId, amountToAddHours }: AddToTotalBalanceProps) => {
-  const balance = await getUserBalance(userId);
-  const newBalance = balance.balanceHours + amountToAddHours;
-
+export const addToTotalBalance = async ({
+  userId,
+  amountToAddHours,
+  monthsCount,
+}: AddToTotalBalanceProps) => {
   const db = getDB();
-
-  const newUsedBalance =
-    amountToAddHours < 0
-      ? balance.usedBalanceHours + Math.abs(amountToAddHours)
-      : balance.usedBalanceHours;
+  const balance = await getUserBalance(userId);
 
   const newTotalUsage: Partial<TotalUsageInfo> = {
-    balanceHours: newBalance,
-    usedHours: newUsedBalance,
     lastUpdatedAt: Date.now(),
   };
+
+  if (monthsCount) {
+    const isActiveSubscriptions =
+      newTotalUsage.activeSubscriptionTill &&
+      dayjs(newTotalUsage.activeSubscriptionTill).isAfter(dayjs());
+
+    const lastDate =
+      isActiveSubscriptions && newTotalUsage.activeSubscriptionTill
+        ? dayjs(newTotalUsage.activeSubscriptionTill)
+        : dayjs();
+    const endDate = lastDate.add(monthsCount, "month");
+    const endDateIso = endDate.format("YYYY-MM-DD");
+    newTotalUsage.activeSubscriptionTill = endDateIso;
+  } else {
+    const newBalance = balance.balanceHours + amountToAddHours;
+
+    const newUsedBalance =
+      amountToAddHours < 0
+        ? balance.usedBalanceHours + Math.abs(amountToAddHours)
+        : balance.usedBalanceHours;
+
+    newTotalUsage.balanceHours = newBalance;
+    newTotalUsage.usedHours = newUsedBalance;
+  }
 
   await db
     .collection("users")
