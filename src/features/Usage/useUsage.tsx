@@ -20,6 +20,7 @@ import { createUsageLog } from "./createUsageLog";
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
+  isLowBalance: boolean;
   paymentLogs?: PaymentLog[];
   setUsageLogs: Dispatch<SetStateAction<UsageLog[]>>;
   isShowPaymentModal: boolean;
@@ -123,6 +124,7 @@ function useProvideUsage(): UsageContextType {
   }, [userId, totalUsageDoc]);
 
   return {
+    isLowBalance: totalUsage?.balanceHours ? totalUsage.balanceHours < 0.01 : false,
     lastUpdatedAt: totalUsage?.lastUpdatedAt || 0,
     usedHours: totalUsage?.usedHours || 0,
     balanceHours: totalUsage?.balanceHours || 0,

@@ -1,9 +1,7 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX } from "react";
-import { useSettings } from "../Settings/useSettings";
 import { sendTextAiRequest } from "./sendTextAiRequest";
 import { TextAiModel } from "@/common/ai";
-import { useUsage } from "../Usage/useUsage";
 import { getDataFromCache, setDataToCache } from "@/libs/localStorageCache";
 import { useAuth } from "../Auth/useAuth";
 import { SupportedLanguage } from "@/features/Lang/lang";
@@ -25,7 +23,6 @@ interface TextAiContextType {
 const TextAiContext = createContext<TextAiContextType | null>(null);
 
 function useProvideTextAi(): TextAiContextType {
-  const usage = useUsage();
   const auth = useAuth();
 
   const generate = async (conversationDate: TextAiRequest) => {

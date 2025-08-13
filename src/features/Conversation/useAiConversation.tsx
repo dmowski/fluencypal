@@ -337,7 +337,7 @@ function useProvideAiConversation(): AiConversationContextType {
   };
 
   const game = useGame();
-  const isLowBalance = usage.balanceHours < 0.01 && !game.isGameWinner;
+  const isLowBalance = usage.isLowBalance && !game.isGameWinner;
 
   const [isMutedDueToNoBalance, setIsMutedDueToNoBalance] = useState(false);
   useEffect(() => {

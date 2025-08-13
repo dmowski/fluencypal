@@ -85,7 +85,6 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
       : "";
   const isActiveConversation = !!activeConversationTitle;
 
-  const isNoBalance = usage.balanceHours <= 0.01;
   const [isInternalClosing, setIsInternalClosing] = useState(false);
   useEffect(() => {
     if (isInternalClosing) {
@@ -109,7 +108,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
           left: 0,
           zIndex: 1000,
           backgroundColor:
-            isNoBalance && !isLanding
+            usage.isLowBalance && !isLanding
               ? "transparent"
               : isActiveConversation
                 ? "rgba(10, 18, 30, 0.1)"
@@ -298,28 +297,15 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
                     </Tooltip>
                   )}
 
-                  {(!isActiveConversation || usage.balanceHours < 0.1) && (
-                    <Button
+                  {(!isActiveConversation || usage.isLowBalance) && (
+                    <IconButton
                       sx={{
-                        color: usage.loading
-                          ? "#fff"
-                          : usage.balanceHours > 0.2
-                            ? "#fff"
-                            : usage.balanceHours >= 0.1
-                              ? "#ff9900"
-                              : "#ee2233",
+                        color: usage.loading || !usage.isLowBalance ? "#fff" : "#ff9900",
                       }}
                       onClick={() => usage.togglePaymentModal(true)}
-                      startIcon={<Wallet size="20px" />}
                     >
-                      <Typography
-                        sx={{
-                          textTransform: "none",
-                        }}
-                      >
-                        {convertHoursToHumanFormat(Math.max(0, usage.balanceHours))}
-                      </Typography>
-                    </Button>
+                      <Wallet size="20px" />
+                    </IconButton>
                   )}
                   {!isActiveConversation && (
                     <IconButton

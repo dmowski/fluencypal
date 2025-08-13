@@ -24,21 +24,20 @@ function useProvidePayWall(): PayWallContextType {
   const usage = useUsage();
 
   const [isShowPayWall, setIsShowPayWall] = useState(false);
-  const isLowBalance = usage.balanceHours <= 0.01;
 
   useEffect(() => {
     if (usage.loading || game.loadingProfile || game.isGameWinner) {
       return;
     }
 
-    if (isShowPayWall === false && isLowBalance) {
+    if (isShowPayWall === false && usage.isLowBalance) {
       setIsShowPayWall(true);
     }
 
-    if (isShowPayWall && !isLowBalance) {
+    if (isShowPayWall && !usage.isLowBalance) {
       setIsShowPayWall(false);
     }
-  }, [usage.loading, isLowBalance, game.isGameWinner, game.loadingProfile]);
+  }, [usage.loading, usage.isLowBalance, game.isGameWinner, game.loadingProfile]);
 
   const togglePayWall = () => {
     setIsShowPayWall((prev) => !prev);
