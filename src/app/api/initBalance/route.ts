@@ -1,6 +1,6 @@
 import { InitBalanceResponse } from "@/common/requests";
 import { getDB, validateAuthToken } from "../config/firebase";
-import { WELCOME_BONUS } from "@/common/usage";
+import { WELCOME_BONUS, WELCOME_BONUS_DAYS } from "@/common/usage";
 import { addPaymentLog } from "../payment/addPaymentLog";
 import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 
@@ -34,12 +34,13 @@ export async function POST(request: Request) {
 
   if (ENABLE_SUBSCRIPTIONS) {
     await addPaymentLog({
-      type: "subscription-full-1m",
+      type: "trial-days",
       amount: WELCOME_BONUS,
       userId: userInfo.uid,
       currency: "usd",
       amountOfHours: 0,
-      paymentId: "subscription-full-1m",
+      paymentId: "trial-days",
+      daysCount: WELCOME_BONUS_DAYS,
     });
   }
 

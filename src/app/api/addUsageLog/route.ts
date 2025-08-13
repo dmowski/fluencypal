@@ -28,7 +28,7 @@ export async function POST(request: Request) {
       return Response.json(response);
     }
     const balance = await getUserBalance(userInfo.uid || "");
-    if (!balance.isGameWinner) {
+    if (!balance.isGameWinner && !balance.isSubscriber) {
       await addUsage(userInfo.uid, logData);
     }
 

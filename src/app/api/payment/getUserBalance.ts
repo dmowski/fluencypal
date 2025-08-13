@@ -15,16 +15,17 @@ export const getUserBalance = async (userId: string) => {
   const usedBalanceHours: number = totalUsageData?.usedHours || 0;
   const isGameWinner = await isGameWinnerRequest;
 
-  const activeSubscriptionTill = totalUsageData?.activeSubscriptionTill
+  const activeSubscription = totalUsageData?.activeSubscriptionTill
     ? dayjs(totalUsageData.activeSubscriptionTill).isAfter(dayjs())
     : false;
 
-  const isFullAccess = activeSubscriptionTill || balanceHours > 0 || isGameWinner;
+  const isFullAccess = activeSubscription || balanceHours > 0 || isGameWinner;
 
   return {
     balanceHours,
     usedBalanceHours,
     isGameWinner,
     isFullAccess,
+    isSubscriber: activeSubscription,
   };
 };

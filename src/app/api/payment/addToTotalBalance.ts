@@ -7,12 +7,14 @@ interface AddToTotalBalanceProps {
   userId: string;
   amountToAddHours: number;
   monthsCount?: number;
+  daysCount?: number;
 }
 
 export const addToTotalBalance = async ({
   userId,
   amountToAddHours,
   monthsCount,
+  daysCount,
 }: AddToTotalBalanceProps) => {
   const db = getDB();
   const balance = await getUserBalance(userId);
@@ -21,7 +23,7 @@ export const addToTotalBalance = async ({
     lastUpdatedAt: Date.now(),
   };
 
-  if (monthsCount) {
+  if (monthsCount || daysCount) {
     const isActiveSubscriptions =
       newTotalUsage.activeSubscriptionTill &&
       dayjs(newTotalUsage.activeSubscriptionTill).isAfter(dayjs());
@@ -30,7 +32,9 @@ export const addToTotalBalance = async ({
       isActiveSubscriptions && newTotalUsage.activeSubscriptionTill
         ? dayjs(newTotalUsage.activeSubscriptionTill)
         : dayjs();
-    const endDate = lastDate.add(monthsCount, "month");
+    const endDate = monthsCount
+      ? lastDate.add(monthsCount, "month")
+      : lastDate.add(daysCount || 1, "day");
     const endDateIso = endDate.format("YYYY-MM-DD");
     newTotalUsage.activeSubscriptionTill = endDateIso;
   } else {

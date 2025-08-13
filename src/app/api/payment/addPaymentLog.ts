@@ -11,6 +11,7 @@ interface AddPaymentLogParams {
   amountOfHours: number;
   receiptUrl?: string;
   monthsCount?: number;
+  daysCount?: number;
 }
 export const addPaymentLog = async ({
   amount,
@@ -21,6 +22,7 @@ export const addPaymentLog = async ({
   amountOfHours,
   receiptUrl,
   monthsCount,
+  daysCount,
 }: AddPaymentLogParams) => {
   const paymentLog: PaymentLog = {
     id: paymentId,
@@ -41,5 +43,10 @@ export const addPaymentLog = async ({
     .doc(paymentLog.id)
     .set(paymentLog);
 
-  await addToTotalBalance({ userId, amountToAddHours: paymentLog.amountOfHours, monthsCount });
+  await addToTotalBalance({
+    userId,
+    amountToAddHours: paymentLog.amountOfHours,
+    monthsCount,
+    daysCount,
+  });
 };
