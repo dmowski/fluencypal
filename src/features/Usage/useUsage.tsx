@@ -17,10 +17,11 @@ import { db } from "../Firebase/firebaseDb";
 import { useRouter } from "next/navigation";
 import { initWelcomeBalanceRequest } from "./initWelcomeBalanceRequest";
 import { createUsageLog } from "./createUsageLog";
+import dayjs from "dayjs";
 
 interface UsageContextType extends TotalUsageInfo {
   usageLogs: UsageLog[];
-  isLowBalance: boolean;
+  isFullAccess: boolean;
   paymentLogs?: PaymentLog[];
   setUsageLogs: Dispatch<SetStateAction<UsageLog[]>>;
   isShowPaymentModal: boolean;
@@ -123,8 +124,15 @@ function useProvideUsage(): UsageContextType {
     initWelcomeBalance();
   }, [userId, totalUsageDoc]);
 
+  const activeSubscriptionTill = totalUsage?.activeSubscriptionTill
+    ? dayjs(totalUsage.activeSubscriptionTill).isAfter(dayjs())
+    : false;
+
+  const isFullAccess =
+    activeSubscriptionTill || (!!totalUsage?.balanceHours && totalUsage.balanceHours > 0);
+
   return {
-    isLowBalance: totalUsage?.balanceHours ? totalUsage.balanceHours < 0.01 : false,
+    isFullAccess,
     lastUpdatedAt: totalUsage?.lastUpdatedAt || 0,
     usedHours: totalUsage?.usedHours || 0,
     balanceHours: totalUsage?.balanceHours || 0,

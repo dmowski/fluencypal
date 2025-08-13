@@ -108,7 +108,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
           left: 0,
           zIndex: 1000,
           backgroundColor:
-            usage.isLowBalance && !isLanding
+            !usage.isFullAccess && !isLanding
               ? "transparent"
               : isActiveConversation
                 ? "rgba(10, 18, 30, 0.1)"
@@ -297,10 +297,10 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
                     </Tooltip>
                   )}
 
-                  {(!isActiveConversation || usage.isLowBalance) && (
+                  {(!isActiveConversation || !usage.isFullAccess) && (
                     <IconButton
                       sx={{
-                        color: usage.loading || !usage.isLowBalance ? "#fff" : "#ff9900",
+                        color: usage.loading || usage.isFullAccess ? "#fff" : "#ff9900",
                       }}
                       onClick={() => usage.togglePaymentModal(true)}
                     >

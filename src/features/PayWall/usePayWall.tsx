@@ -30,14 +30,14 @@ function useProvidePayWall(): PayWallContextType {
       return;
     }
 
-    if (isShowPayWall === false && usage.isLowBalance) {
+    if (isShowPayWall === false && !usage.isFullAccess) {
       setIsShowPayWall(true);
     }
 
-    if (isShowPayWall && !usage.isLowBalance) {
+    if (isShowPayWall && usage.isFullAccess) {
       setIsShowPayWall(false);
     }
-  }, [usage.loading, usage.isLowBalance, game.isGameWinner, game.loadingProfile]);
+  }, [usage.loading, usage.isFullAccess, game.isGameWinner, game.loadingProfile]);
 
   const togglePayWall = () => {
     setIsShowPayWall((prev) => !prev);
