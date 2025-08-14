@@ -78,8 +78,6 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
         </Stack>
 
         <ConversationSelectCard lang={lang} />
-
-        <FeedbackBlock />
       </Stack>
 
       <Stack

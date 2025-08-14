@@ -27,7 +27,7 @@ export function FeedbackBlock() {
       throw error;
     }
 
-    alert(i18n._(`Thank you for your feedback!`));
+    alert(i18n._(`Thank you for your message`));
     setFeedback("");
     setIsSending(false);
   };

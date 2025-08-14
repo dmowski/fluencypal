@@ -26,10 +26,8 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
   };
 
   return (
-    <CustomModal isOpen={true} onClose={() => onClose()}>
-      <Typography variant="h4" component="h2">
-        {i18n._(`Payment History`)}
-      </Typography>
+    <CustomModal isOpen={true} onClose={() => onClose()} padding="max(20px, 2vw)">
+      <Typography variant="h5">{i18n._(`Payment History`)}</Typography>
 
       <Stack
         sx={{

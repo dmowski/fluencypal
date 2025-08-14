@@ -39,6 +39,7 @@ import { useGame } from "../Game/useGame";
 import { exitFullScreen } from "@/libs/fullScreen";
 import { SubscriptionPaymentModal } from "../Usage/SubscriptionPaymentModal";
 import { PaymentHistoryModal } from "./PaymentHistoryModal";
+import { ContactMessageModal } from "./ContactMessageModal";
 
 export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -342,6 +343,24 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
         {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />}
         {isShowPaymentHistoryModal && (
           <PaymentHistoryModal onClose={() => setIsShowPaymentHistoryModal(false)} />
+        )}
+
+        {isShowRefundModal && (
+          <ContactMessageModal
+            title={i18n._(`Refund Request`)}
+            subTitle={i18n._(`Add some info why you want a refund and we will do it.`)}
+            placeholder={i18n._(`Leave your message`)}
+            onClose={() => setIsShowRefundModal(false)}
+          />
+        )}
+
+        {isShowFeedbackModal && (
+          <ContactMessageModal
+            title={i18n._(`Feedback`)}
+            subTitle={i18n._(`We appreciate your feedback!`)}
+            placeholder={i18n._(`Leave your message`)}
+            onClose={() => setIsShowFeedbackModal(false)}
+          />
         )}
       </Stack>
 
