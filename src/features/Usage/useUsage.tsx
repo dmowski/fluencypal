@@ -127,13 +127,15 @@ function useProvideUsage(): UsageContextType {
   const activeSubscriptionTill = totalUsage?.activeSubscriptionTill
     ? dayjs(totalUsage.activeSubscriptionTill).isAfter(dayjs())
     : false;
-
   const isFullAccess =
     activeSubscriptionTill || (!!totalUsage?.balanceHours && totalUsage.balanceHours > 0);
 
   return {
     isFullAccess,
     lastUpdatedAt: totalUsage?.lastUpdatedAt || 0,
+    activeSubscriptionTill: activeSubscriptionTill
+      ? totalUsage?.activeSubscriptionTill || undefined
+      : undefined,
     usedHours: totalUsage?.usedHours || 0,
     balanceHours: totalUsage?.balanceHours || 0,
     isWelcomeBalanceInitialized,

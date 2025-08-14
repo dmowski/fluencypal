@@ -122,7 +122,6 @@ function useProvideGame(): GameContextType {
     if (!auth.uid || !myProfile?.username || !gameAvatars || isUpdatingUsername.current) return;
 
     const userAvatar = gameAvatars[myProfile.username];
-    console.log("setDefaultAvatarIfNeeded userAvatar", userAvatar);
     if (userAvatar) return; // Avatar already set
 
     const randomAvatars = shuffleArray(avatars);

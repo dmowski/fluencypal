@@ -120,7 +120,7 @@ export async function POST(request: Request) {
         return Response.json(response);
       }
       const pricePerMonthInCurrency = PRICE_PER_MONTH_USD * rate;
-      const totalPrice = pricePerMonthInCurrency * months;
+      const totalStripeMoney = Math.round(pricePerMonthInCurrency * months * 100);
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
@@ -132,7 +132,7 @@ export async function POST(request: Request) {
                 name: "Subscription",
                 description: `Add ${months} month(s) to your account balance`,
               },
-              unit_amount: totalPrice,
+              unit_amount: totalStripeMoney,
             },
             quantity: 1,
           },

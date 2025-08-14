@@ -23,6 +23,8 @@ import { useCurrency } from "../User/useCurrency";
 import { buttonStyle } from "../Landing/landingSettings";
 import { PRICE_PER_MONTH_USD } from "@/common/subscription";
 import { sentPaymentTgMessage } from "./sentTgMessage";
+import dayjs from "dayjs";
+import { ContactList } from "../Landing/Contact/ContactList";
 
 interface ListItem {
   title: string;
@@ -55,8 +57,6 @@ export const SubscriptionPaymentModal = () => {
   };
 
   const clickOnConfirmRequest = async () => {
-    alert("ok");
-
     const checkoutInfo = await createStripeCheckout(
       {
         userId: auth.uid,
@@ -127,6 +127,11 @@ export const SubscriptionPaymentModal = () => {
       icon: Lightbulb,
     },
   ];
+  const isActiveSubscription = usage.isFullAccess;
+  const isTrial = !usage.paymentLogs?.find((log) => log.type === "user" || "subscription-full-v1");
+  const activeTill = usage.activeSubscriptionTill
+    ? `${dayjs(usage.activeSubscriptionTill).format("DD MMM")} (in ${dayjs(usage.activeSubscriptionTill).fromNow(true)})`
+    : null;
 
   if (!usage.isShowPaymentModal) return null;
   return (
@@ -342,7 +347,23 @@ export const SubscriptionPaymentModal = () => {
                   }}
                   align="center"
                 >
-                  Your trial ended in <b>5 days</b>
+                  {isActiveSubscription && isTrial && activeTill && (
+                    <>
+                      Your trial ended until <b>{activeTill}</b>
+                    </>
+                  )}
+
+                  {isActiveSubscription && !isTrial && activeTill && (
+                    <>
+                      Your subscription is active until <b>{activeTill || "-"}</b>
+                    </>
+                  )}
+
+                  {isActiveSubscription && !isTrial && !activeTill && (
+                    <>
+                      You have <b>{usage.balanceHours.toFixed(1)}</b> AI hours left in your balance.
+                    </>
+                  )}
                 </Typography>
               </Stack>
 
@@ -361,7 +382,33 @@ export const SubscriptionPaymentModal = () => {
                     gap: "20px",
                   }}
                 >
-                  <Typography variant="h6">Full Access</Typography>
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Typography variant="h6">Full Access</Typography>
+                    {activeTill && (
+                      <Stack
+                        sx={{
+                          padding: "3px 17px",
+                          borderRadius: "18px",
+                          backgroundColor: "rgba(5, 172, 255, 0.4 )",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Typography
+                          variant="body2"
+                          sx={{ padding: 0, margin: 0, color: "#fff", fontWeight: 600 }}
+                        >
+                          Active
+                        </Typography>
+                      </Stack>
+                    )}
+                  </Stack>
 
                   <Stack
                     sx={{
@@ -399,17 +446,18 @@ export const SubscriptionPaymentModal = () => {
 
                   <Typography variant="body1">Learn in full speed with full access</Typography>
                   <Button
+                    disabled={!!activeTill}
                     sx={{
                       ...buttonStyle,
                       padding: "10px 70px",
-                      color: "#000",
-                      backgroundColor: "#05acff",
+                      color: activeTill ? "#c2c2c2" : "#000",
+                      backgroundColor: activeTill ? "rgba(255, 255, 255, 0.1)" : "#05acff",
                     }}
                     variant="contained"
                     size="large"
                     onClick={showConfirmPage}
                   >
-                    Get Full Access
+                    {activeTill ? i18n._(`Active`) : i18n._(`Get Full Access`)}
                   </Button>
 
                   <Stack
@@ -439,6 +487,16 @@ export const SubscriptionPaymentModal = () => {
                     ))}
                   </Stack>
                 </Stack>
+              </Stack>
+              <Stack
+                sx={{
+                  width: "100%",
+                  gap: "10px",
+                  maxWidth: "350px",
+                }}
+              >
+                <Typography variant="body1">{i18n._(`Need help?`)}</Typography>
+                <ContactList />
               </Stack>
             </Stack>
           </>
