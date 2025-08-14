@@ -1,9 +1,6 @@
-import sendGrid from "@sendgrid/mail";
+import { Resend } from "resend";
 
-const sendGridKey = process.env.SENDGRID_API_KEY || "";
-if (sendGridKey) {
-  sendGrid.setApiKey(sendGridKey);
-}
+const resendKey = process.env.RESEND_API || "";
 
 interface SendEmailProps {
   emailTo: string;
@@ -12,29 +9,24 @@ interface SendEmailProps {
   title: string;
 }
 
-// xxx DO NOT USE SENDGRID
 export const sendEmail = async ({
   emailTo,
   messageText,
   messageHtml,
   title,
 }: SendEmailProps): Promise<void> => {
-  if (!sendGridKey) {
-    throw new Error("SendGrid key not found");
+  if (!resendKey) {
+    throw new Error("Resend key not found");
   }
-
+  const resend = new Resend(resendKey);
   try {
-    const msg = {
+    const sendResult = await resend.emails.send({
       to: emailTo,
-      from: {
-        email: "contact@fluencypal.com",
-        name: "FluencyPal - AI English Speaking Partner",
-      },
+      from: "contact@fluencypal.com",
       subject: title,
       text: messageText,
       html: messageHtml,
-    };
-    const sendResult = await sendGrid.send(msg);
+    });
     console.log(`Send email to: ${emailTo}. ${messageText}`);
     console.log("result", JSON.stringify(sendResult));
   } catch (e) {

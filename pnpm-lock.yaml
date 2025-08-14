@@ -62,9 +62,6 @@ importers:
       '@react-three/fiber':
         specifier: ^8.17.14
         version: 8.18.0(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.173.0)
-      '@sendgrid/mail':
-        specifier: ^8.1.4
-        version: 8.1.5
       '@sentry/nextjs':
         specifier: 9.28.1
         version: 9.28.1(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(encoding@0.1.13)(next@15.3.3(@babel/core@7.27.4)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(webpack@5.99.9)
@@ -161,6 +158,9 @@ importers:
       require-in-the-middle:
         specifier: ^7.5.2
         version: 7.5.2
+      resend:
+        specifier: ^6.0.1
+        version: 6.0.1
       sharp:
         specifier: ^0.34.2
         version: 0.34.2
@@ -1912,18 +1912,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@sendgrid/client@8.1.5':
-    resolution: {integrity: sha512-Jqt8aAuGIpWGa15ZorTWI46q9gbaIdQFA21HIPQQl60rCjzAko75l3D1z7EyjFrNr4MfQ0StusivWh8Rjh10Cg==}
-    engines: {node: '>=12.*'}
-
-  '@sendgrid/helpers@8.0.0':
-    resolution: {integrity: sha512-Ze7WuW2Xzy5GT5WRx+yEv89fsg/pgy3T1E3FS0QEx0/VvRmigMZ5qyVGhJz4SxomegDkzXv/i0aFPpHKN8qdAA==}
-    engines: {node: '>= 12.0.0'}
-
-  '@sendgrid/mail@8.1.5':
-    resolution: {integrity: sha512-W+YuMnkVs4+HA/bgfto4VHKcPKLc7NiZ50/NH2pzO6UHCCFuq8/GNB98YJlLEr/ESDyzAaDr7lVE7hoBwFTT3Q==}
-    engines: {node: '>=12.*'}
-
   '@sentry-internal/browser-utils@9.28.1':
     resolution: {integrity: sha512-P/FEZkT7UqTw9P/2n/Y4Aa1OtGP6dnCvyqzPPkjiRdVa7Ep7S5ElBJloGv7077TLLBtAfCsEUVRlM1F6/jQoaA==}
     engines: {node: '>=18'}
@@ -2515,9 +2503,6 @@ packages:
 
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-
-  axios@1.9.0:
-    resolution: {integrity: sha512-re4CqKTJaURpzbLHtIi6XpDv20/CnpXOtjRY5/CU32L8gU8ek9UIivcfvSWvmKEngmVbrUtPpdDwWDWL7DNHvg==}
 
   babel-jest@29.7.0:
     resolution: {integrity: sha512-BrvGY3xZSwEcCzKvKsCi2GgHqDqsYkOP4/by5xCgIwGXQxIEh+8ew3gmrE1y7XRR6LHZIj6yLYnUi/mm2KXKBg==}
@@ -3181,15 +3166,6 @@ packages:
 
   firebase@11.8.1:
     resolution: {integrity: sha512-oetXhPCvJZM4DVL/n/06442emMU+KzM0JLZjszpwlU6mqdFZqBwumBxn6hQkLukJyU5wsjihZHUY8HEAE2micg==}
-
-  follow-redirects@1.15.9:
-    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
 
   foreground-child@3.3.1:
     resolution: {integrity: sha512-gIXjKqtFuWEgzFRJA9WCQeSJLZDjgJUOMCMzxtvFq/37KojM1BFGufqsCy0r4qSQmYLsZYMeyRqzIWOMup03sw==}
@@ -4674,6 +4650,15 @@ packages:
 
   requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
+
+  resend@6.0.1:
+    resolution: {integrity: sha512-xNZ0gKAOqQcH83lXsqNOwBbpKROnsZpQr9mXRdG6hrHTF9G9Il2pkoTRtq7rJzXMvCZX+I79oahsbSeaYOWRFA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@react-email/render': ^1.1.0
+    peerDependenciesMeta:
+      '@react-email/render':
+        optional: true
 
   resize-observer-polyfill@1.5.1:
     resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
@@ -7439,24 +7424,6 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.41.1':
     optional: true
 
-  '@sendgrid/client@8.1.5':
-    dependencies:
-      '@sendgrid/helpers': 8.0.0
-      axios: 1.9.0
-    transitivePeerDependencies:
-      - debug
-
-  '@sendgrid/helpers@8.0.0':
-    dependencies:
-      deepmerge: 4.3.1
-
-  '@sendgrid/mail@8.1.5':
-    dependencies:
-      '@sendgrid/client': 8.1.5
-      '@sendgrid/helpers': 8.0.0
-    transitivePeerDependencies:
-      - debug
-
   '@sentry-internal/browser-utils@9.28.1':
     dependencies:
       '@sentry/core': 9.28.1
@@ -8180,14 +8147,6 @@ snapshots:
   async@3.2.6: {}
 
   asynckit@0.4.0: {}
-
-  axios@1.9.0:
-    dependencies:
-      follow-redirects: 1.15.9
-      form-data: 4.0.2
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
 
   babel-jest@29.7.0(@babel/core@7.27.4):
     dependencies:
@@ -8918,8 +8877,6 @@ snapshots:
       '@firebase/util': 1.12.0
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
-
-  follow-redirects@1.15.9: {}
 
   foreground-child@3.3.1:
     dependencies:
@@ -10702,6 +10659,8 @@ snapshots:
       - supports-color
 
   requires-port@1.0.0: {}
+
+  resend@6.0.1: {}
 
   resize-observer-polyfill@1.5.1: {}
 
