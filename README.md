@@ -34,3 +34,11 @@ Start webhook simulator
 ```
 stripe listen --forward-to localhost:3000/api/webhooks/stripe
 ```
+
+### Stripe: Regenerate local key
+
+stripe login
+
+### Stripe: Update CLI
+
+brew upgrade stripe/stripe-cli/stripe
