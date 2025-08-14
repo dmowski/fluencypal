@@ -64,7 +64,7 @@ export const SubscriptionPaymentModal = () => {
       if (!checkoutInfo.sessionUrl) {
         console.log("checkoutInfo", checkoutInfo);
         setIsRedirecting(false);
-        notifications.show("Error creating payment session", {
+        notifications.show(i18n._("Error creating payment session"), {
           severity: "error",
         });
         return;
@@ -75,7 +75,7 @@ export const SubscriptionPaymentModal = () => {
     } catch (error) {
       console.error("Error during payment process:", error);
       setIsRedirecting(false);
-      notifications.show("Error during payment process", {
+      notifications.show(i18n._("Error during payment process"), {
         severity: "error",
       });
       await sentPaymentTgMessage({
@@ -150,7 +150,7 @@ export const SubscriptionPaymentModal = () => {
                 }}
                 variant="h4"
               >
-                Confirm payment
+                {i18n._(`Confirm payment`)}
               </Typography>
 
               <Typography
@@ -159,7 +159,7 @@ export const SubscriptionPaymentModal = () => {
                   opacity: 0.7,
                 }}
               >
-                Subscription for 1 month | Full access
+                {i18n._(`Subscription for 1 month | Full access`)}
               </Typography>
             </Stack>
 
@@ -259,7 +259,7 @@ export const SubscriptionPaymentModal = () => {
                 size="large"
                 type="submit"
               >
-                Pay and Subscribe
+                {i18n._(`Pay and Subscribe`)}
               </Button>
             </Stack>
             <FeatureList />
@@ -282,7 +282,7 @@ export const SubscriptionPaymentModal = () => {
                 }}
               >
                 <Typography align="center" variant="h4">
-                  Upgrade your plan
+                  {i18n._(`Upgrade your plan`)}
                 </Typography>
                 <Typography
                   variant="caption"
@@ -293,19 +293,20 @@ export const SubscriptionPaymentModal = () => {
                 >
                   {isActiveSubscription && isTrial && activeTill && (
                     <>
-                      Your trial ended until <b>{activeTill}</b>
+                      {i18n._(`Your trial ended until`)} <b>{activeTill}</b>
                     </>
                   )}
 
                   {isActiveSubscription && !isTrial && activeTill && (
                     <>
-                      Your subscription is active until <b>{activeTill || "-"}</b>
+                      {i18n._(`Your subscription is active until`)} <b>{activeTill || "-"}</b>
                     </>
                   )}
 
                   {isActiveSubscription && !isTrial && !activeTill && (
                     <>
-                      You have <b>{usage.balanceHours.toFixed(1)}</b> AI hours left in your balance.
+                      {i18n._(`You have`)} <b>{usage.balanceHours.toFixed(1)}</b>{" "}
+                      {i18n._(`AI hours left in your balance.`)}
                     </>
                   )}
                 </Typography>
@@ -333,7 +334,7 @@ export const SubscriptionPaymentModal = () => {
                       alignItems: "center",
                     }}
                   >
-                    <Typography variant="h6">Full Access</Typography>
+                    <Typography variant="h6">{i18n._(`Full Access`)}</Typography>
                     {activeTill && (
                       <Stack
                         sx={{
@@ -348,7 +349,7 @@ export const SubscriptionPaymentModal = () => {
                           variant="body2"
                           sx={{ padding: 0, margin: 0, color: "#fff", fontWeight: 600 }}
                         >
-                          Active
+                          {i18n._(`Active`)}
                         </Typography>
                       </Stack>
                     )}
@@ -384,7 +385,7 @@ export const SubscriptionPaymentModal = () => {
                       >
                         {currency.currency} /
                       </Typography>
-                      <Typography variant="caption">month</Typography>
+                      <Typography variant="caption">{i18n._("month")}</Typography>
                     </Stack>
                   </Stack>
 
