@@ -56,24 +56,47 @@ export const SubscriptionPaymentModal = () => {
     containerRef.current?.parentElement?.scrollTo(0, 0);
   };
 
+  const [isRedirecting, setIsRedirecting] = useState(false);
   const clickOnConfirmRequest = async () => {
-    const checkoutInfo = await createStripeCheckout(
-      {
-        userId: auth.uid,
-        months: 1,
-        languageCode: supportedLang,
-        currency: currency.currency,
-      },
-      await auth.getToken()
-    );
-    if (!checkoutInfo.sessionUrl) {
-      console.log("checkoutInfo", checkoutInfo);
-      notifications.show("Error creating payment session", {
+    try {
+      const token = await auth.getToken();
+      setIsRedirecting(true);
+      const checkoutInfo = await createStripeCheckout(
+        {
+          userId: auth.uid,
+          months: 1,
+          languageCode: supportedLang,
+          currency: currency.currency,
+        },
+        token
+      );
+      await sentPaymentTgMessage({
+        message: "Event: Redirect to stripe",
+        email: auth?.userInfo?.email || "unknownEmail",
+        token: token,
+      });
+      if (!checkoutInfo.sessionUrl) {
+        console.log("checkoutInfo", checkoutInfo);
+        setIsRedirecting(false);
+        notifications.show("Error creating payment session", {
+          severity: "error",
+        });
+        return;
+      } else {
+        setIsRedirecting(false);
+        window.location.href = checkoutInfo.sessionUrl;
+      }
+    } catch (error) {
+      console.error("Error during payment process:", error);
+      setIsRedirecting(false);
+      notifications.show("Error during payment process", {
         severity: "error",
       });
-      return;
-    } else {
-      window.location.href = checkoutInfo.sessionUrl;
+      await sentPaymentTgMessage({
+        message: "Error during payment process",
+        email: auth?.userInfo?.email || "unknownEmail",
+        token: await auth.getToken(),
+      });
     }
   };
 
@@ -285,9 +308,9 @@ export const SubscriptionPaymentModal = () => {
                   backgroundColor: "#05acff",
                 }}
                 variant="contained"
+                disabled={isRedirecting}
                 size="large"
                 type="submit"
-                onClick={() => {}}
               >
                 Pay and Subscribe
               </Button>

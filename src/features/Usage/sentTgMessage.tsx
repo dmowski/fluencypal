@@ -11,7 +11,7 @@ export const sentPaymentTgMessage = async ({
   token: string;
 }) => {
   if (!email) {
-    sendTelegramRequest(
+    await sendTelegramRequest(
       {
         message: "Event: Payments. Someone trying to do with money, but no email",
       },
@@ -24,7 +24,7 @@ export const sentPaymentTgMessage = async ({
     return;
   }
 
-  sendTelegramRequest(
+  await sendTelegramRequest(
     {
       message: message,
     },
