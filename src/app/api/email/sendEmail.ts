@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 
 const resendKey = process.env.RESEND_API || "";
 
@@ -31,6 +32,7 @@ export const sendEmail = async ({
     console.log("result", JSON.stringify(sendResult));
   } catch (e) {
     console.error(`Error sending email: ${e}`);
-    //throw new Error(`Error sending email: ${e}`);
+    sentSupportTelegramMessage(`Error sending email to ${emailTo}`);
+    sentSupportTelegramMessage(`Email error: ${e}`);
   }
 };
