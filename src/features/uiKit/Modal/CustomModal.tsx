@@ -54,8 +54,14 @@ export const CustomModal = ({
       >
         {onClose && (
           <IconButton
-            sx={{ position: "absolute", top: "10px", right: "10px", zIndex: 1 }}
+            sx={{
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              zIndex: 100,
+            }}
             onClick={() => onClose()}
+            size="large"
           >
             <X />
           </IconButton>

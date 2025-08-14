@@ -93,9 +93,7 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
   return (
     <CustomModal
       isOpen={true}
-      onClose={() => {
-        payWall.temporaryClosePayWall();
-      }}
+      onClose={() => payWall.temporaryClosePayWall()}
       padding="0"
       width="min(650px, 100dvw)"
       maxHeight={"min(100dvh, 1800px)"}
@@ -112,7 +110,7 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
         <Stack
           sx={{
             padding: "20px 20px 20px 30px",
-            gap: "70px",
+            gap: "60px",
             maxWidth: "1400px",
             width: "100%",
             boxSizing: "border-box",
@@ -152,31 +150,6 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
             <Stack
               sx={{
                 flexDirection: "row",
-                alignItems: "center",
-                gap: "15px",
-                paddingBottom: "10px",
-              }}
-            >
-              <Stack
-                sx={{
-                  borderRadius: "50%",
-                  background: "linear-gradient(45deg,rgb(25, 78, 142) 0%,rgb(202, 109, 209) 100%)",
-                  height: "50px",
-                  width: "50px",
-
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Telescope size={"25px"} />
-              </Stack>
-              <Typography variant="h6">{i18n._(`Ready to keep going?`)}</Typography>
-            </Stack>
-
-            <Stack
-              sx={{
-                flexDirection: "row",
                 gap: "20px",
                 alignItems: "center",
                 "@media (max-width: 700px)": {
@@ -195,7 +168,7 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
                 onClick={() => usage.togglePaymentModal(true)}
                 startIcon={<Wallet />}
               >
-                {i18n._("Buy More AI Hours")}
+                {i18n._("Buy a subscription")}
               </Button>
               <Typography>or</Typography>
               <Button
@@ -209,24 +182,6 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
               >
                 {i18n._("Play the Game")}
               </Button>
-            </Stack>
-          </Stack>
-
-          <Stack sx={{ width: "100%", gap: "5px", alignItems: "flex-start" }}>
-            <Typography variant="h5">{i18n._("Continue for free?")}</Typography>
-            <Stack gap={"20px"}>
-              <Typography
-                variant="body2"
-                sx={{
-                  maxWidth: "500px",
-                }}
-              >
-                {i18n._(
-                  "Send me your feedback about the app — what you liked, what I can improve — and get up to 2 hours of free AI time."
-                )}
-              </Typography>
-
-              <ContactList />
             </Stack>
           </Stack>
         </Stack>

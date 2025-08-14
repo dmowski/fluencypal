@@ -282,7 +282,7 @@ export const SubscriptionPaymentModal = () => {
                 }}
               >
                 <Typography align="center" variant="h4">
-                  {i18n._(`Upgrade your plan`)}
+                  {i18n._(`Your plan`)}
                 </Typography>
                 <Typography
                   variant="caption"
