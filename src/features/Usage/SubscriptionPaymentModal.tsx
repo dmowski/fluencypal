@@ -2,19 +2,10 @@ import { Button, Checkbox, FormControlLabel, Link, Stack, Typography } from "@mu
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useUsage } from "./useUsage";
 import { useNotifications } from "@toolpad/core/useNotifications";
-import { ForwardRefExoticComponent, RefAttributes, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { createStripeCheckout } from "./createStripeCheckout";
-import {
-  BookType,
-  ChartNoAxesCombined,
-  GraduationCap,
-  Lightbulb,
-  LucideProps,
-  Sparkles,
-  Speech,
-  UsersRound,
-} from "lucide-react";
+
 import { usePathname } from "next/navigation";
 import { supportedLanguages } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
@@ -25,12 +16,7 @@ import { PRICE_PER_MONTH_USD } from "@/common/subscription";
 import { sentPaymentTgMessage } from "./sentTgMessage";
 import dayjs from "dayjs";
 import { ContactList } from "../Landing/Contact/ContactList";
-
-interface ListItem {
-  title: string;
-  tooltip: string;
-  icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
-}
+import { FeatureList } from "../Landing/Price/FeatureList";
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
@@ -111,45 +97,6 @@ export const SubscriptionPaymentModal = () => {
     });
   };
 
-  const listItems: ListItem[] = [
-    {
-      title: i18n._("Full AI tutor access"),
-      tooltip: i18n._("Get unlimited access to AI-powered language practice"),
-      icon: Sparkles,
-    },
-    {
-      title: i18n._("Role-play scenarios"),
-      tooltip: i18n._("Engage in real-life conversations like job interviews or ordering food"),
-      icon: UsersRound,
-    },
-    {
-      title: i18n._("Conversation practice"),
-      tooltip: i18n._("Improve fluency with interactive chat sessions"),
-      icon: Speech,
-    },
-    {
-      title: i18n._("Progress tracking"),
-      tooltip: i18n._("See your improvements and track your learning journey"),
-      icon: ChartNoAxesCombined,
-    },
-    {
-      title: i18n._("New Words"),
-      tooltip: i18n._("Get new words and phrases in context"),
-      icon: BookType,
-    },
-    {
-      title: i18n._("New Grammar Rules"),
-      tooltip: i18n._("By practicing, you will get personal grammar rules from AI"),
-      icon: GraduationCap,
-    },
-    {
-      title: i18n._("Advanced Personalization"),
-      tooltip: i18n._(
-        "With time, AI will adapt to your learning style and it will be more personalized"
-      ),
-      icon: Lightbulb,
-    },
-  ];
   const isActiveSubscription = usage.isFullAccess;
   const isTrial = !usage.paymentLogs?.find((log) => log.type === "user" || "subscription-full-v1");
   const activeTill = usage.activeSubscriptionTill
@@ -315,33 +262,7 @@ export const SubscriptionPaymentModal = () => {
                 Pay and Subscribe
               </Button>
             </Stack>
-            <Stack
-              sx={{
-                gap: "18px",
-                paddingTop: "10px",
-                paddingBottom: "40px",
-                width: "100%",
-              }}
-            >
-              {listItems.map((item, index) => (
-                <Stack
-                  key={index}
-                  sx={{
-                    flexDirection: "row",
-                    gap: "15px",
-                    alignItems: "center",
-                  }}
-                >
-                  <item.icon
-                    style={{
-                      opacity: 0.7,
-                    }}
-                    size={18}
-                  />
-                  <Typography variant="body2">{item.title}</Typography>
-                </Stack>
-              ))}
-            </Stack>
+            <FeatureList />
           </Stack>
         ) : (
           <>
@@ -483,32 +404,7 @@ export const SubscriptionPaymentModal = () => {
                     {activeTill ? i18n._(`Active`) : i18n._(`Get Full Access`)}
                   </Button>
 
-                  <Stack
-                    sx={{
-                      gap: "18px",
-                      paddingTop: "10px",
-                      paddingBottom: "40px",
-                    }}
-                  >
-                    {listItems.map((item, index) => (
-                      <Stack
-                        key={index}
-                        sx={{
-                          flexDirection: "row",
-                          gap: "15px",
-                          alignItems: "center",
-                        }}
-                      >
-                        <item.icon
-                          style={{
-                            opacity: 0.7,
-                          }}
-                          size={18}
-                        />
-                        <Typography variant="body2">{item.title}</Typography>
-                      </Stack>
-                    ))}
-                  </Stack>
+                  <FeatureList />
                 </Stack>
               </Stack>
               <Stack
