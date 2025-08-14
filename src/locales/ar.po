@@ -21,6 +21,39 @@ msgstr "جار التحميل..."
 msgid "Continue"
 msgstr "استمر"
 
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:302
+#. js-lingui-explicit-id
+msgid "Ready to play?"
+msgstr "هل أنت مستعد للعب؟"
+
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:359
+#. js-lingui-explicit-id
+msgid "Benefits of Role Play"
+msgstr "فوائد التمثيل الدوري"
+
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"Role play allows you to practice real-life scenarios in a safe environment, "
+"helping you build confidence and improve your language skills."
+msgstr ""
+"تسمح لك الأدوار القائمة على اللعب بممارسة سيناريوهات الحياة الحقيقية في "
+"بيئة آمنة، مما يساعدك على بناء الثقة وتحسين مهارات اللغة."
+
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:380
+#. js-lingui-explicit-id
+msgid "Anything else?"
+msgstr "هل من شيء آخر؟"
+
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:388
+#. js-lingui-explicit-id
+msgid ""
+"With FluencyPal, you can improve your learning experience with personalized "
+"feedback, real-time corrections, and a supportive community."
+msgstr ""
+"مع FluencyPal، يمكنك تحسين تجربة التعلم الخاصة بك من خلال الاستفادة من "
+"الردود المخصصة، التصحيحات الفورية، والمجتمع المتعاون."
+
 #: src/features/Dashboard/FeedbackBlock.tsx:53
 msgid "Sending..."
 msgstr "جارٍ الإرسال..."
@@ -54,16 +87,6 @@ msgstr "تم"
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:299
 msgid "Re-record"
 msgstr "أعد التسجيل"
-
-#: src/features/Conversation/AliasGamePanel.tsx:112
-#. js-lingui-explicit-id
-msgid "Your words to describe:"
-msgstr "كلماتك للوصف:"
-
-#: src/features/Conversation/AliasGamePanel.tsx:176
-#. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "كلمات مُقترحة:"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -1780,10 +1803,11 @@ msgid "All Scenarios"
 msgstr "جميع السيناريوهات"
 
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
-#: src/features/RolePlay/RolePlayBoard.tsx:632
+#: src/features/RolePlay/RolePlayBoard.tsx:648
 #: src/features/Landing/PlanLandingBlock.tsx:290
 #: src/features/Landing/PlanLandingBlock.tsx:502
 #: src/features/Landing/PlanLandingBlock.tsx:628
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:327
 #: src/features/Dashboard/PlanDashboardCards.tsx:496
 #. js-lingui-explicit-id
 msgid "Start"
@@ -1796,12 +1820,12 @@ msgstr "ابدأ"
 msgid "Role Play"
 msgstr "دور اللعب"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:682
+#: src/features/RolePlay/RolePlayBoard.tsx:698
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "أظهر المزيد"
 
-#: src/features/RolePlay/RolePlayBoard.tsx:682
+#: src/features/RolePlay/RolePlayBoard.tsx:698
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "عرض أقل"
@@ -2519,7 +2543,7 @@ msgstr ""
 "المختارة ومستوى إتقانك."
 
 #: src/features/Landing/LandingPage.tsx:223
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:347
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:414
 #. js-lingui-explicit-id
 msgid "Available languages:"
 msgstr "اللغات المتاحة:"
@@ -2560,7 +2584,7 @@ msgid "Learn anywhere, anytime"
 msgstr "تعلم في أي مكان، في أي وقت"
 
 #: src/features/Landing/LandingPage.tsx:271
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:406
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:473
 #. js-lingui-explicit-id
 msgid "Start Your Free Trial"
 msgstr "ابدأ تجربتك المجانية"
@@ -2590,33 +2614,34 @@ msgstr "سعر"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "ابدأ رحلتك نحو المحادثات الطليقة الآن"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:152
 #. js-lingui-explicit-id
 msgid "View all"
 msgstr "عرض الكل"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:162
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:163
 #. js-lingui-explicit-id
 msgid "Play the role"
 msgstr "قم بدور"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:312
-#. js-lingui-explicit-id
-msgid "Answer the AI"
-msgstr "الإجابة على الذكاء الاصطناعي"
-
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:321
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:336
 #: src/features/Goal/GoalQuestions.tsx:1250
 #. js-lingui-explicit-id
 msgid "The first 3 days are free"
 msgstr "الأيام الثلاثة الأولى مجانية"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:374
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:339
+#: src/features/Goal/GoalQuestions.tsx:1249
+#. js-lingui-explicit-id
+msgid "No credit card required"
+msgstr "لا يتطلب بطاقة ائتمان"
+
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:441
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
 msgstr "سيناريوهات ذات صلة"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:405
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:472
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "مستعد لتصبح طليقًا في اللغة الإنجليزية؟"
@@ -3573,11 +3598,6 @@ msgstr "نسخ الرابط"
 msgid "Open the plan"
 msgstr "افتح الخطة"
 
-#: src/features/Goal/GoalQuestions.tsx:1249
-#. js-lingui-explicit-id
-msgid "No credit card required"
-msgstr "لا يتطلب بطاقة ائتمان"
-
 #: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
 msgid "You are on the right track!"
@@ -4292,6 +4312,16 @@ msgstr "التالي، اسمح بالوصول إلى الميكروفون لل�
 #. js-lingui-explicit-id
 msgid "I am ready"
 msgstr "أنا جاهز"
+
+#: src/features/Conversation/AliasGamePanel.tsx:112
+#. js-lingui-explicit-id
+msgid "Your words to describe:"
+msgstr "كلماتك للوصف:"
+
+#: src/features/Conversation/AliasGamePanel.tsx:176
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "كلمات مُقترحة:"
 
 #: src/features/Blog/blogData.tsx:20
 #: src/features/Blog/blogData.tsx:28
@@ -5984,6 +6014,11 @@ msgstr "لغتك الأم:"
 #: src/features/Game/GameMyUsername.tsx:42
 msgid "Your Username:"
 msgstr "اسم المستخدم الخاص بك:"
+
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:312
+#. js-lingui-explicit-id
+#~ msgid "Answer the AI"
+#~ msgstr "الإجابة على الذكاء الاصطناعي"
 
 #: src/features/Goal/GoalQuestions.tsx:1228
 #. js-lingui-explicit-id

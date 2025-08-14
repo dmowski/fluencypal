@@ -21,6 +21,7 @@ import {
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { HeaderStatic } from "@/features/Header/HeaderStatic";
+import { FeatureList } from "../Price/FeatureList";
 
 interface ScenarioOnePageProps {
   id?: string;
@@ -246,7 +247,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
             >
               <Stack
                 sx={{
-                  gap: "40px",
+                  gap: "30px",
                 }}
               >
                 <Stack
@@ -261,7 +262,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     h2: {
                       fontSize: "1.2rem",
                       fontWeight: 600,
-                      paddingBottom: "10px",
+                      paddingBottom: "0px",
                       paddingTop: "30px",
                     },
                   }}
@@ -286,14 +287,28 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                       boxSizing: "border-box",
                       width: "100%",
                       alignItems: "flex-start",
-                      marginBottom: "20px",
-                      gap: "20px",
-                      borderTop: "1px solid #ddd",
-                      borderBottom: "1px solid #ddd",
-                      padding: "30px 0",
+                      gap: "15px",
                     }}
                   >
-                    <Typography>{item.exampleOfFirstMessageFromAi}</Typography>
+                    <Stack>
+                      <Typography
+                        variant="h6"
+                        component={"h2"}
+                        sx={{
+                          fontWeight: 600,
+                          fontSize: "1.2rem",
+                        }}
+                      >
+                        {i18n._(`Ready to play?`)}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontSize: "1rem",
+                        }}
+                      >
+                        {item.exampleOfFirstMessageFromAi}
+                      </Typography>
+                    </Stack>
                     <Stack
                       sx={{
                         flexDirection: "row",
@@ -309,7 +324,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                         }}
                         href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
                       >
-                        {i18n._(`Answer the AI`)}
+                        {i18n._(`Start`)}
                       </Button>
                       <Stack
                         sx={{
@@ -320,10 +335,62 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                         <Typography variant="caption">
                           {i18n._(`The first 3 days are free`)}
                         </Typography>
+                        <Typography variant="caption">
+                          {i18n._(`No credit card required`)}
+                        </Typography>
                       </Stack>
                     </Stack>
                   </Stack>
                 )}
+
+                <Stack
+                  sx={{
+                    gap: "5px",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    component={"h2"}
+                    sx={{
+                      fontWeight: 600,
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    {i18n._(`Benefits of Role Play`)}: {item.shortTitle}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "1rem",
+                    }}
+                  >
+                    {i18n._(
+                      `Role play allows you to practice real-life scenarios in a safe environment, helping you build confidence and improve your language skills.`
+                    )}
+                  </Typography>
+                </Stack>
+                <Stack>
+                  <Typography
+                    variant="h6"
+                    component={"h2"}
+                    sx={{
+                      fontWeight: 600,
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    {i18n._(`Anything else?`)}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "1rem",
+                      paddingBottom: "10px",
+                    }}
+                  >
+                    {i18n._(
+                      `With FluencyPal, you can improve your learning experience with personalized feedback, real-time corrections, and a supportive community.`
+                    )}
+                  </Typography>
+                  <FeatureList />
+                </Stack>
               </Stack>
               <Stack
                 sx={{
