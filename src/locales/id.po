@@ -55,6 +55,16 @@ msgstr "Selesai"
 msgid "Re-record"
 msgstr "Rekam ulang"
 
+#: src/features/Conversation/AliasGamePanel.tsx:112
+#. js-lingui-explicit-id
+msgid "Your words to describe:"
+msgstr "Kata-kata Anda untuk mendeskripsikan:"
+
+#: src/features/Conversation/AliasGamePanel.tsx:176
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "Kata yang ditebak:"
+
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -3356,7 +3366,7 @@ msgid "Thank you for your feedback!"
 msgstr "Terima kasih atas masukan Anda!"
 
 #: src/features/Header/ContactMessageModal.tsx:80
-#: src/features/Conversation/ConversationCanvas2.tsx:983
+#: src/features/Conversation/ConversationCanvas2.tsx:982
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Kirim"
@@ -3962,7 +3972,7 @@ msgstr "Mari kita mulai"
 #: src/features/Dashboard/PlanDashboardCards.tsx:427
 #: src/features/Dashboard/PlanDashboardCards.tsx:557
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:1162
+#: src/features/Conversation/ConversationCanvas2.tsx:1161
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Tujuan"
@@ -4202,6 +4212,7 @@ msgid "Less"
 msgstr "Kurang"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:90
+#: src/features/Conversation/AliasGamePanel.tsx:167
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Lebih"
@@ -4265,9 +4276,9 @@ msgstr "Tingkat bahasa:"
 #: src/features/Conversation/ConversationCanvas2.tsx:373
 #: src/features/Conversation/ConversationCanvas2.tsx:378
 #: src/features/Conversation/ConversationCanvas2.tsx:383
-#: src/features/Conversation/ConversationCanvas2.tsx:664
-#: src/features/Conversation/ConversationCanvas2.tsx:805
-#: src/features/Conversation/ConversationCanvas2.tsx:812
+#: src/features/Conversation/ConversationCanvas2.tsx:663
+#: src/features/Conversation/ConversationCanvas2.tsx:804
+#: src/features/Conversation/ConversationCanvas2.tsx:811
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "Menganalisis..."
@@ -4292,112 +4303,112 @@ msgstr "Mulai pelajaran baru"
 msgid "Continue conversation"
 msgstr "Lanjutkan percakapan"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:598
+#: src/features/Conversation/ConversationCanvas2.tsx:597
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "Kesalahan saat menganalisis pesan"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:652
+#: src/features/Conversation/ConversationCanvas2.tsx:651
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "Hampir benar"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:667
+#: src/features/Conversation/ConversationCanvas2.tsx:666
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "Hebat!"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:690
+#: src/features/Conversation/ConversationCanvas2.tsx:689
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Pesan Anda"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:764
+#: src/features/Conversation/ConversationCanvas2.tsx:763
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Diperbaiki"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:857
+#: src/features/Conversation/ConversationCanvas2.tsx:856
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "Kata-kata Baru untuk Kosakata:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:902
+#: src/features/Conversation/ConversationCanvas2.tsx:901
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "Menganalisis"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:909
+#: src/features/Conversation/ConversationCanvas2.tsx:908
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "Mempersiapkan Tujuan"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:929
+#: src/features/Conversation/ConversationCanvas2.tsx:928
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "Tujuan telah dibuat"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:939
+#: src/features/Conversation/ConversationCanvas2.tsx:938
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "Pelajaran ditambahkan:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:960
+#: src/features/Conversation/ConversationCanvas2.tsx:959
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "Rencana terbuka"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1025
+#: src/features/Conversation/ConversationCanvas2.tsx:1024
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Berhenti"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1053
+#: src/features/Conversation/ConversationCanvas2.tsx:1052
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Rekam Pesan"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1087
+#: src/features/Conversation/ConversationCanvas2.tsx:1086
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "Pesan Anda..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1140
+#: src/features/Conversation/ConversationCanvas2.tsx:1139
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "Misi selesai"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1150
+#: src/features/Conversation/ConversationCanvas2.tsx:1149
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Buka hasil"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1192
+#: src/features/Conversation/ConversationCanvas2.tsx:1191
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "Tulis ulang"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1251
+#: src/features/Conversation/ConversationCanvas2.tsx:1250
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "Bantuan dengan jawaban"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1272
+#: src/features/Conversation/ConversationCanvas2.tsx:1271
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Batalkan perekaman"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1306
+#: src/features/Conversation/ConversationCanvas2.tsx:1305
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "Anda memiliki saldo yang rendah"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1308
+#: src/features/Conversation/ConversationCanvas2.tsx:1307
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "Masuk akal untuk menambah saldo Anda."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1315
+#: src/features/Conversation/ConversationCanvas2.tsx:1314
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Isi ulang"

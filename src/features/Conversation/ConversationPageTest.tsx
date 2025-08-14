@@ -34,7 +34,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   const textAi = useTextAi();
   const [testMessage, setTestMessage] = useState<ChatMessage[]>(startTestMessages);
 
-  const showGame = false;
+  const showGame = true;
   const gameStat: GuessGameStat | null = showGame
     ? {
         wordsUserToDescribe: [

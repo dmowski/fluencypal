@@ -1,4 +1,4 @@
-import { IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
@@ -6,6 +6,9 @@ import { useEffect, useMemo, useState } from "react";
 import { uniq } from "@/libs/uniq";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
+import { useTranslate } from "../Translation/useTranslate";
+import { Languages } from "lucide-react";
+import { useLingui } from "@lingui/react";
 
 interface AliasGamePanelProps {
   conversation: ChatMessage[];
@@ -88,6 +91,12 @@ export const AliasGamePanelUI = ({
   usersMarkedWords,
   setUsersMarkedWords,
 }: AliasGamePanelUIProps) => {
+  const translator = useTranslate();
+  const { i18n } = useLingui();
+  const [isShowAll, setIsShowAll] = useState(false);
+  const showAll = () => setIsShowAll(true);
+  const limit = isShowAll ? wordsUserToDescribe.length + 1 : 2;
+
   return (
     <Stack
       sx={{
@@ -97,85 +106,105 @@ export const AliasGamePanelUI = ({
         overflowX: "auto",
       }}
     >
-      {/* Words to Describe */}
+      {translator.translateModal}
       <Stack sx={{ flexDirection: "column", gap: "10px" }}>
-        <Typography variant="caption" sx={{ opacity: 0.9 }}>
-          To describe:
+        <Typography variant="caption" sx={{ opacity: 1, color: "#edefffff" }}>
+          {i18n._(`Your words to describe:`)}
         </Typography>
         <Stack sx={{ flexDirection: "row", gap: "5px", flexWrap: "wrap" }}>
-          {wordsUserToDescribe.map((word, index, list) => {
-            const trimWord = word.trim().toLowerCase();
-            const isDescribed = describedByUserWords.includes(trimWord);
-            const isMarkedByUser = usersMarkedWords[trimWord] === true;
-            const isUnmarkedByUser = usersMarkedWords[trimWord] === false;
-            const isDone = (isDescribed && !isUnmarkedByUser) || isMarkedByUser;
-            const isLast = index === list.length - 1;
+          {wordsUserToDescribe
+            .filter((_, index) => index < limit)
+            .map((word, index, list) => {
+              const trimWord = word.trim().toLowerCase();
+              const isDescribed = describedByUserWords.includes(trimWord);
+              const isMarkedByUser = usersMarkedWords[trimWord] === true;
+              const isUnmarkedByUser = usersMarkedWords[trimWord] === false;
+              const isDone = (isDescribed && !isUnmarkedByUser) || isMarkedByUser;
 
-            return (
-              <Typography
-                key={index}
-                sx={{
-                  textDecoration: isDone ? "line-through" : "none",
-                  opacity: isDone ? 0.3 : 1,
-                  borderRadius: "4px",
-                  padding: "2px 10px 2px 2px",
-                  textTransform: "capitalize",
-                  cursor: "pointer",
-                  ":hover": {
-                    backgroundColor: isDone
-                      ? "rgba(255, 255, 70, 0.1)"
-                      : "rgba(255, 255, 255, 0.1)",
-                  },
-                }}
-                onClick={() =>
-                  setUsersMarkedWords((prev) => ({
-                    ...prev,
-                    [trimWord]: !prev[trimWord],
-                  }))
-                }
-              >
-                <IconButton size="small">
-                  {isDone ? (
-                    <CheckBoxIcon fontSize="small" />
-                  ) : (
-                    <CheckBoxOutlineBlankIcon fontSize="small" />
-                  )}
-                </IconButton>
-                {trimWord}
-              </Typography>
-            );
-          })}
+              return (
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: "0px",
+                    opacity: isDone ? 0.3 : 1,
+                    borderRadius: "4px",
+                    padding: "2px 0px 2px 10px",
+                    ":hover": {
+                      backgroundColor: isDone
+                        ? "rgba(255, 255, 70, 0.1)"
+                        : "rgba(255, 255, 255, 0.1)",
+                    },
+                  }}
+                  key={index}
+                >
+                  <Typography
+                    key={index}
+                    sx={{
+                      textDecoration: isDone ? "line-through" : "none",
+
+                      textTransform: "capitalize",
+                      cursor: "pointer",
+                    }}
+                    onClick={() =>
+                      setUsersMarkedWords((prev) => ({
+                        ...prev,
+                        [trimWord]: !prev[trimWord],
+                      }))
+                    }
+                  >
+                    {trimWord}
+                  </Typography>
+                  <IconButton onClick={() => translator.translateWithModal(trimWord)}>
+                    <Languages size={"16px"} color="#eee" />
+                  </IconButton>
+                </Stack>
+              );
+            })}
+
+          {!isShowAll && (
+            <Button size="small" onClick={showAll} variant="outlined">
+              {i18n._(`More`)}
+            </Button>
+          )}
         </Stack>
       </Stack>
 
-      {/* Words to Guess */}
-      <Stack sx={{ flexDirection: "column", gap: "10px" }}>
-        <Typography variant="caption" sx={{ opacity: 0.9 }}>
-          To guess:
-        </Typography>
-        <Stack sx={{ flexDirection: "row", gap: "5px", flexWrap: "wrap" }}>
-          {wordsAiToDescribe.map((word, index, arr) => {
-            const trimWord = word.trim().toLowerCase();
-            const isGuessed = describedByAiWords.includes(trimWord);
-            const isLast = index === arr.length - 1;
+      {!!describedByAiWords.length && (
+        <Stack sx={{ flexDirection: "column", gap: "10px" }}>
+          <Typography variant="caption" sx={{ opacity: 0.9 }}>
+            {i18n._(`Guessed words:`)} {describedByAiWords.length}/{wordsAiToDescribe.length}
+          </Typography>
+          <Stack sx={{ flexDirection: "row", gap: "5px", flexWrap: "wrap" }}>
+            {wordsAiToDescribe
+              .filter((word) => {
+                const trimWord = word.trim().toLowerCase();
+                const isGuessed = describedByAiWords.includes(trimWord);
+                return isGuessed;
+              })
+              .map((word, index, arr) => {
+                const trimWord = word.trim().toLowerCase();
+                const isGuessed = describedByAiWords.includes(trimWord);
+                const isLast = index === arr.length - 1;
 
-            return (
-              <Typography
-                variant="h4"
-                className="decor-text"
-                key={index}
-                sx={{
-                  opacity: isGuessed ? 1 : 0.3,
-                  textTransform: "capitalize",
-                }}
-              >
-                {isGuessed ? word : "*".repeat(word.length)}
-                {isLast ? "" : ","}
-              </Typography>
-            );
-          })}
+                return (
+                  <Typography
+                    variant="h5"
+                    className="decor-text"
+                    key={index}
+                    sx={{
+                      opacity: isGuessed ? 1 : 0.3,
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    {isGuessed ? word : "*".repeat(word.length)}
+                    {isLast ? "" : ","}
+                  </Typography>
+                );
+              })}
+          </Stack>
         </Stack>
-      </Stack>
+      )}
     </Stack>
   );
 };

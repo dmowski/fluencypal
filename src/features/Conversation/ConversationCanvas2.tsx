@@ -528,7 +528,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 sx={{
                   width: "100%",
                   alignItems: "center",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  backgroundColor: "rgba(240, 245, 240, 0.1)",
                   padding: "10px",
                   boxSizing: "border-box",
                 }}
@@ -537,7 +537,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   sx={{
                     width: "100%",
                     maxWidth: "898px",
-                    //borderTop: "1px solid rgba(255, 255, 255, 0.1)",
                     maxHeight: "40vh",
                     overflowY: "auto",
                   }}
