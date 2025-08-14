@@ -56,16 +56,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
               ),
             },
           },
-          {
-            "@type": "Question",
-            name: i18n._(`How does usage-based pricing work?`),
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: i18n._(
-                `You receive a free initial balance to explore FluencyPal. Each conversation consumes tokens from your balance in real-time, and you can easily top-up credits whenever needed.`
-              ),
-            },
-          },
+
           {
             "@type": "Question",
             name: i18n._(`Is there a free trial?`),
@@ -204,16 +195,6 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   <Typography>
                     {i18n._(
                       `FluencyPal is an AI-powered English conversation practice app designed for intermediate and advanced learners. It provides realistic conversational practice in multiple languages, with immediate feedback on speaking and pronunciation.`
-                    )}
-                  </Typography>
-                ),
-              },
-              {
-                question: i18n._(`How does usage-based pricing work?`),
-                answer: (
-                  <Typography>
-                    {i18n._(
-                      `You receive a free initial balance to explore FluencyPal. Each conversation consumes tokens from your balance in real-time, and you can easily top-up credits whenever needed.`
                     )}
                   </Typography>
                 ),

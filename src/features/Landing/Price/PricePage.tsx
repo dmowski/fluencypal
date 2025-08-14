@@ -20,6 +20,9 @@ import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import PriceDisplay from "./PriceDisplay";
 import { HeaderStatic } from "@/features/Header/HeaderStatic";
+import { PRICE_PER_MONTH_USD } from "@/common/subscription";
+
+const isShowPayAsYouGo = false;
 
 interface PricePageProps {
   lang: SupportedLanguage;
@@ -75,7 +78,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   },
                 }}
               >
-                {i18n._("Flexible Pricing for Every Learner")}
+                {i18n._("Price")}
               </Typography>
               <Typography
                 align="center"
@@ -85,9 +88,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   ...subTitleFontStyle,
                 }}
               >
-                {i18n._(
-                  `Pay only for what you use—no subscriptions, no hidden fees. Start free and upgrade as needed.`
-                )}
+                {i18n._(`Start free and pay later.`)}
               </Typography>
             </Stack>
 
@@ -142,10 +143,10 @@ export const PricePage = ({ lang }: PricePageProps) => {
               }}
             >
               <PriceCard
-                title={i18n._("Free")}
+                title={i18n._("Trial")}
                 subTitle={i18n._("For learners who want to try it out")}
                 price={<PriceDisplay amountInUsd={0} />}
-                priceDescription={i18n._("-")}
+                priceDescription={i18n._("3 days")}
                 priceSubDescription={i18n._("Game mode and trial AI tutor access")}
                 listTitle={i18n._("Includes:")}
                 listItems={[
@@ -154,7 +155,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                     tooltip: i18n._("Many language games to practice"),
                   },
                   {
-                    title: i18n._("1 hour of AI tutor access"),
+                    title: i18n._("3 days of AI tutor access"),
                     tooltip: i18n._("Try AI tutor for one hour to see how it works"),
                   },
                 ]}
@@ -162,13 +163,11 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 buttonLink={`${getUrlStart(lang)}quiz`}
               />
               <PriceCard
-                title={i18n._("Pay-as-You-Go")}
+                title={i18n._("Full Access")}
                 subTitle={i18n._("For learners who want flexibility")}
-                price={<PriceDisplay amountInUsd={6} />}
-                priceDescription={i18n._("Per Hour of AI Usage")}
-                priceSubDescription={i18n._(
-                  "You only pay when AI is speaking or analyzing your speech, not when you're thinking or typing."
-                )}
+                price={<PriceDisplay amountInUsd={PRICE_PER_MONTH_USD} />}
+                priceDescription={"/ " + i18n._("Month")}
+                priceSubDescription={i18n._("Learn at full speed with full access")}
                 listTitle={i18n._("Everything in Free, plus:")}
                 listItems={[
                   {
@@ -236,497 +235,188 @@ export const PricePage = ({ lang }: PricePageProps) => {
             </Stack>
           </Stack>
 
-          <Stack
-            sx={{
-              gap: "60px",
-              maxWidth: maxContentWidth,
-              boxSizing: "border-box",
-              alignItems: "center",
-              padding: "80px 20px 100px 20px",
-              "@media (max-width: 700px)": {
-                paddingTop: "0px",
-              },
-            }}
-          >
+          {isShowPayAsYouGo && (
             <Stack
               sx={{
-                alignItems: "center",
-                gap: "20px",
-                width: "100%",
-              }}
-            >
-              <Typography
-                align="center"
-                variant="h3"
-                component={"h2"}
-                sx={{
-                  ...titleFontStyle,
-                  color: "#000",
-                }}
-              >
-                {i18n.t(`How FluencyPal Pricing Works`)}
-              </Typography>
-              <Typography
-                align="center"
-                variant="body1"
-                sx={{
-                  maxWidth: "810px",
-                  color: "#000",
-                  ...subTitleFontStyle,
-                }}
-              >
-                {i18n._(`Our AI tutor runs on a simple credit system—you only pay for the time and resources
-                you actually use.`)}
-              </Typography>
-            </Stack>
-
-            <Stack
-              sx={{
-                width: "100%",
-                display: "grid",
-                gridTemplateColumns: "1fr 100px 1fr 100px  1fr",
-                gap: "30px",
+                gap: "60px",
+                maxWidth: maxContentWidth,
                 boxSizing: "border-box",
-
-                "@media (max-width: 900px)": {
-                  gridTemplateColumns: "1fr 1fr 1fr",
-                },
-
+                alignItems: "center",
+                padding: "80px 20px 100px 20px",
                 "@media (max-width: 700px)": {
-                  display: "flex",
-                  flexDirection: "column",
+                  paddingTop: "0px",
+                },
+              }}
+            >
+              <Stack
+                sx={{
+                  alignItems: "center",
                   gap: "20px",
-                },
-              }}
-            >
-              <Stack
-                sx={{
-                  padding: "15px",
-                  borderRadius: "3px",
-                  alignItems: "center",
-                  gap: "30px",
-                }}
-              >
-                <Gift size={"3rem"} strokeWidth={"1px"} />
-                <Stack>
-                  <Typography
-                    align="center"
-                    sx={{
-                      fontWeight: 500,
-                      fontSize: "1.2rem",
-                    }}
-                  >
-                    {i18n._(`Start Free`)}
-                  </Typography>
-                  <Typography variant="body2" align="center">
-                    {i18n._(`Start Free – Get 5 in credits when you sign up.`)}
-                  </Typography>
-                </Stack>
-              </Stack>
-
-              <Stack
-                sx={{
-                  paddingTop: "30px",
                   width: "100%",
-                  "@media (max-width: 900px)": {
-                    display: "none",
-                  },
                 }}
               >
-                <img
-                  src="/arrow.jpg"
-                  alt=""
-                  style={{
-                    width: "100%",
+                <Typography
+                  align="center"
+                  variant="h3"
+                  component={"h2"}
+                  sx={{
+                    ...titleFontStyle,
+                    color: "#000",
                   }}
-                />
-              </Stack>
-
-              <Stack
-                sx={{
-                  padding: "15px",
-                  borderRadius: "3px",
-                  alignItems: "center",
-                  gap: "30px",
-                }}
-              >
-                <Mic size={"3rem"} strokeWidth={"1px"} />
-                <Stack>
-                  <Typography
-                    align="center"
-                    sx={{
-                      fontWeight: 500,
-                      fontSize: "1.2rem",
-                    }}
-                  >
-                    {i18n._("Use as You Go")}
-                  </Typography>
-                  <Typography variant="body2" align="center">
-                    {i18n._(
-                      "Each AI conversation session consumes credits based on duration and complexity."
-                    )}
-                  </Typography>
-                </Stack>
-              </Stack>
-
-              <Stack
-                sx={{
-                  paddingTop: "30px",
-                  width: "100%",
-                  "@media (max-width: 900px)": {
-                    display: "none",
-                  },
-                }}
-              >
-                <img
-                  src="/arrow.jpg"
-                  alt=""
-                  style={{
-                    width: "100%",
-                    transform: "scaleY(-1)",
+                >
+                  {i18n.t(`How FluencyPal Pricing Works`)}
+                </Typography>
+                <Typography
+                  align="center"
+                  variant="body1"
+                  sx={{
+                    maxWidth: "810px",
+                    color: "#000",
+                    ...subTitleFontStyle,
                   }}
-                />
+                >
+                  {i18n._(`Our AI tutor runs on a simple credit system—you only pay for the time and resources
+                you actually use.`)}
+                </Typography>
               </Stack>
 
               <Stack
                 sx={{
-                  padding: "15px",
-                  borderRadius: "3px",
-                  alignItems: "center",
-                  gap: "30px",
-                }}
-              >
-                <HandCoins size={"3rem"} strokeWidth={"1px"} />
-                <Stack>
-                  <Typography
-                    align="center"
-                    sx={{
-                      fontWeight: 500,
-                      fontSize: "1.2rem",
-                    }}
-                  >
-                    {i18n._("Add More Credits")}
-                  </Typography>
-                  <Typography variant="body2" align="center">
-                    {i18n._("Add more credits whenever you need them.")}
-                  </Typography>
-                </Stack>
-              </Stack>
-            </Stack>
-          </Stack>
-
-          <Stack
-            sx={{
-              gap: "40px",
-              maxWidth: maxContentWidth,
-              width: "100%",
-              boxSizing: "border-box",
-              alignItems: "center",
-              padding: "80px 20px 100px 20px",
-              "@media (max-width: 700px)": {
-                display: "none",
-              },
-            }}
-          >
-            <Stack
-              sx={{
-                alignItems: "center",
-                boxSizing: "border-box",
-                gap: "20px",
-              }}
-            >
-              <Typography
-                align="center"
-                variant="h3"
-                component={"h2"}
-                sx={{
-                  ...titleFontStyle,
-                  color: "#000",
-                }}
-              >
-                {i18n._("Why Pay-as-You-Go is Better Than Subscriptions")}
-              </Typography>
-            </Stack>
-
-            <Stack
-              sx={{
-                width: "100%",
-                gap: "30px",
-                borderRadius: "4px",
-                boxSizing: "border-box",
-
-                overflowX: "auto",
-                paddingTop: "100px",
-                table: {
-                  borderCollapse: "collapse",
                   width: "100%",
-                  textAlign: "left",
-                  minWidth: "420px",
-                  cellspacing: "0",
+                  display: "grid",
+                  gridTemplateColumns: "1fr 100px 1fr 100px  1fr",
+                  gap: "30px",
+                  boxSizing: "border-box",
 
-                  ".other-cell-head": {
+                  "@media (max-width: 900px)": {
+                    gridTemplateColumns: "1fr 1fr 1fr",
+                  },
+
+                  "@media (max-width: 700px)": {
                     display: "flex",
+                    flexDirection: "column",
+                    gap: "20px",
+                  },
+                }}
+              >
+                <Stack
+                  sx={{
+                    padding: "15px",
+                    borderRadius: "3px",
                     alignItems: "center",
-                    justifyContent: "center",
-                    boxSizing: "border-box",
-                    fontWeight: 400,
-                    height: "80px",
-                    ".other-cell-head-text": {
-                      width: "100px",
-                      height: "80px",
-                      color: "#fff",
-                      textAlign: "center",
-                      backgroundColor: "rgba(10, 30, 18, 0.9)",
-                      border: "1px solid rgba(0, 0, 0, 2)",
-                      borderRadius: "24px",
-                      padding: "10px 20px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      position: "relative",
-                      top: "-50px",
-                    },
-                  },
+                    gap: "30px",
+                  }}
+                >
+                  <Gift size={"3rem"} strokeWidth={"1px"} />
+                  <Stack>
+                    <Typography
+                      align="center"
+                      sx={{
+                        fontWeight: 500,
+                        fontSize: "1.2rem",
+                      }}
+                    >
+                      {i18n._(`Start Free`)}
+                    </Typography>
+                    <Typography variant="body2" align="center">
+                      {i18n._(`Start Free – Get 5 in credits when you sign up.`)}
+                    </Typography>
+                  </Stack>
+                </Stack>
 
-                  ".lang-cell, .lang-cell-head": {
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    minWidth: "300px",
-                    boxSizing: "border-box",
-                    "@media (max-width: 700px)": {
-                      minWidth: "300px",
-                    },
-                  },
-
-                  ".lang-cell": {
-                    height: "10px",
-                    padding: "45px 10px",
-                    border: "1px solid rgba(10, 18, 30, 0.4)",
-                    borderBottom: "none",
-                    borderTop: "none",
-                  },
-                  ".lang-cell--last": {
-                    borderBottom: "1px solid rgba(10, 18, 30, 0.4)",
-                    borderRadius: " 0 0 24px 24px",
-                  },
-                  ".lang-cell-head": {
-                    height: "80px",
-                    padding: "20px 10px",
-                    border: "1px solid rgba(10, 18, 30, 0.4)",
-                    borderBottom: "none",
-                    borderRadius: "24px 24px 0 0",
-                  },
-                  ".title": {
-                    paddingLeft: "20px",
+                <Stack
+                  sx={{
+                    paddingTop: "30px",
+                    width: "100%",
                     "@media (max-width: 900px)": {
-                      maxWidth: "120px",
+                      display: "none",
                     },
-                  },
-
-                  ".logo": {
-                    width: "100px",
-                    height: "80px",
-                    backgroundColor: "rgba(10, 18, 30, 1)",
-                    border: "1px solid rgba(0, 0, 0, 2)",
-                    borderRadius: "24px",
-                    padding: "10px 20px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    position: "relative",
-                    top: "-50px",
-                    img: {
+                  }}
+                >
+                  <img
+                    src="/arrow.jpg"
+                    alt=""
+                    style={{
                       width: "100%",
-                      height: "auto",
-                    },
-                  },
+                    }}
+                  />
+                </Stack>
 
-                  "td:first-child,td:last-child": {
-                    fontWeight: 200,
-                    minWidth: "280px",
-                    "@media (max-width: 1000px)": {
-                      minWidth: "250px",
-                    },
+                <Stack
+                  sx={{
+                    padding: "15px",
+                    borderRadius: "3px",
+                    alignItems: "center",
+                    gap: "30px",
+                  }}
+                >
+                  <Mic size={"3rem"} strokeWidth={"1px"} />
+                  <Stack>
+                    <Typography
+                      align="center"
+                      sx={{
+                        fontWeight: 500,
+                        fontSize: "1.2rem",
+                      }}
+                    >
+                      {i18n._("Use as You Go")}
+                    </Typography>
+                    <Typography variant="body2" align="center">
+                      {i18n._(
+                        "Each AI conversation session consumes credits based on duration and complexity."
+                      )}
+                    </Typography>
+                  </Stack>
+                </Stack>
+
+                <Stack
+                  sx={{
+                    paddingTop: "30px",
+                    width: "100%",
                     "@media (max-width: 900px)": {
-                      minWidth: "140px",
+                      display: "none",
                     },
-                  },
-                  "tbody tr:nth-child(odd) td": {
-                    backgroundColor: "#f8f8f8",
-                  },
-                },
-              }}
-            >
-              <table cellSpacing="0" cellPadding="0">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>
-                      <div className="lang-cell-head">
-                        <div className="logo">
-                          <img src="/logo.svg" alt="Logo" />
-                        </div>
-                      </div>
-                    </th>
-                    <th>
-                      <div className="other-cell-head">
-                        <span className="other-cell-head-text">
-                          {i18n._("Traditional Subscription")}
-                        </span>
-                      </div>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <Typography className="title">
-                        {i18n._("Pay Only for What You Use")}
-                      </Typography>
-                    </td>
-                    <td>
-                      <span className="lang-cell">
-                        <VerifiedIcon
-                          sx={{
-                            color: "#05acff",
-                            fontSize: "2rem",
-                          }}
-                        />
-                      </span>
-                    </td>
-                    <td>
-                      <Stack
-                        sx={{
-                          alignItems: "center",
-                          gap: "5px",
-                          padding: "15px 0",
-                        }}
-                      >
-                        <CancelIcon
-                          sx={{
-                            fontSize: "2rem",
-                            color: "#777",
-                          }}
-                        />
-                        <Typography align="center">{i18n._("No, fixed cost")}</Typography>
-                      </Stack>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <Typography className="title">{i18n._("Full Access Anytime")}</Typography>
-                    </td>
-                    <td>
-                      <span className="lang-cell">
-                        <VerifiedIcon
-                          sx={{
-                            color: "#05acff",
-                            fontSize: "2rem",
-                          }}
-                        />
-                      </span>
-                    </td>
-                    <td>
-                      <Stack
-                        sx={{
-                          alignItems: "center",
-                          gap: "5px",
-                          padding: "15px 0",
-                        }}
-                      >
-                        <VerifiedIcon
-                          sx={{
-                            color: "#05acff",
-                            fontSize: "2rem",
-                          }}
-                        />
-                      </Stack>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <Typography className="title">{i18n._("No Monthly Fees")}</Typography>
-                    </td>
-                    <td>
-                      <span className="lang-cell">
-                        <VerifiedIcon
-                          sx={{
-                            color: "#05acff",
-                            fontSize: "2rem",
-                          }}
-                        />
-                      </span>
-                    </td>
-                    <td>
-                      <Stack
-                        sx={{
-                          alignItems: "center",
-                          gap: "5px",
-                          padding: "15px 0",
-                        }}
-                      >
-                        <CancelIcon
-                          sx={{
-                            fontSize: "2rem",
-                            color: "#777",
-                          }}
-                        />
-                        <Typography align="center">{i18n._("No, recurring charge")}</Typography>
-                      </Stack>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <Typography className="title">{i18n._("Pause Anytime")}</Typography>
-                    </td>
-                    <td>
-                      <span className="lang-cell lang-cell--last">
-                        <VerifiedIcon
-                          sx={{
-                            color: "#05acff",
-                            fontSize: "2rem",
-                          }}
-                        />
-                      </span>
-                    </td>
-                    <td>
-                      <Stack
-                        sx={{
-                          alignItems: "center",
-                          gap: "5px",
-                          padding: "15px 0",
-                        }}
-                      >
-                        <CancelIcon
-                          sx={{
-                            fontSize: "2rem",
-                            color: "#777",
-                          }}
-                        />
-                      </Stack>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </Stack>
-            <Button
-              sx={{
-                ...buttonStyle,
-              }}
-              href={`${getUrlStart(lang)}quiz`}
-            >
-              {i18n.t(`Try FluencyPal for Free`)}
-            </Button>
-          </Stack>
+                  }}
+                >
+                  <img
+                    src="/arrow.jpg"
+                    alt=""
+                    style={{
+                      width: "100%",
+                      transform: "scaleY(-1)",
+                    }}
+                  />
+                </Stack>
 
-          <Stack
-            sx={{
-              width: "100%",
-              alignItems: "center",
-              backgroundColor: `#0a121e`,
-            }}
-          >
+                <Stack
+                  sx={{
+                    padding: "15px",
+                    borderRadius: "3px",
+                    alignItems: "center",
+                    gap: "30px",
+                  }}
+                >
+                  <HandCoins size={"3rem"} strokeWidth={"1px"} />
+                  <Stack>
+                    <Typography
+                      align="center"
+                      sx={{
+                        fontWeight: 500,
+                        fontSize: "1.2rem",
+                      }}
+                    >
+                      {i18n._("Add More Credits")}
+                    </Typography>
+                    <Typography variant="body2" align="center">
+                      {i18n._("Add more credits whenever you need them.")}
+                    </Typography>
+                  </Stack>
+                </Stack>
+              </Stack>
+            </Stack>
+          )}
+
+          {isShowPayAsYouGo && (
             <Stack
               sx={{
                 gap: "40px",
@@ -735,6 +425,9 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 boxSizing: "border-box",
                 alignItems: "center",
                 padding: "80px 20px 100px 20px",
+                "@media (max-width: 700px)": {
+                  display: "none",
+                },
               }}
             >
               <Stack
@@ -750,90 +443,401 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   component={"h2"}
                   sx={{
                     ...titleFontStyle,
-                    color: "#fff",
+                    color: "#000",
                   }}
                 >
-                  {i18n._("FAQ")}
+                  {i18n._("Why Pay-as-You-Go is Better Than Subscriptions")}
                 </Typography>
               </Stack>
 
               <Stack
                 sx={{
                   width: "100%",
-                  gap: "0px",
-                  border: "1px solid rgba(0, 0, 0, 0.1)",
-                  padding: "15px",
+                  gap: "30px",
                   borderRadius: "4px",
                   boxSizing: "border-box",
-                  flexDirection: "column",
-                  maxWidth: "800px",
+
+                  overflowX: "auto",
+                  paddingTop: "100px",
+                  table: {
+                    borderCollapse: "collapse",
+                    width: "100%",
+                    textAlign: "left",
+                    minWidth: "420px",
+                    cellspacing: "0",
+
+                    ".other-cell-head": {
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      boxSizing: "border-box",
+                      fontWeight: 400,
+                      height: "80px",
+                      ".other-cell-head-text": {
+                        width: "100px",
+                        height: "80px",
+                        color: "#fff",
+                        textAlign: "center",
+                        backgroundColor: "rgba(10, 30, 18, 0.9)",
+                        border: "1px solid rgba(0, 0, 0, 2)",
+                        borderRadius: "24px",
+                        padding: "10px 20px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        position: "relative",
+                        top: "-50px",
+                      },
+                    },
+
+                    ".lang-cell, .lang-cell-head": {
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      minWidth: "300px",
+                      boxSizing: "border-box",
+                      "@media (max-width: 700px)": {
+                        minWidth: "300px",
+                      },
+                    },
+
+                    ".lang-cell": {
+                      height: "10px",
+                      padding: "45px 10px",
+                      border: "1px solid rgba(10, 18, 30, 0.4)",
+                      borderBottom: "none",
+                      borderTop: "none",
+                    },
+                    ".lang-cell--last": {
+                      borderBottom: "1px solid rgba(10, 18, 30, 0.4)",
+                      borderRadius: " 0 0 24px 24px",
+                    },
+                    ".lang-cell-head": {
+                      height: "80px",
+                      padding: "20px 10px",
+                      border: "1px solid rgba(10, 18, 30, 0.4)",
+                      borderBottom: "none",
+                      borderRadius: "24px 24px 0 0",
+                    },
+                    ".title": {
+                      paddingLeft: "20px",
+                      "@media (max-width: 900px)": {
+                        maxWidth: "120px",
+                      },
+                    },
+
+                    ".logo": {
+                      width: "100px",
+                      height: "80px",
+                      backgroundColor: "rgba(10, 18, 30, 1)",
+                      border: "1px solid rgba(0, 0, 0, 2)",
+                      borderRadius: "24px",
+                      padding: "10px 20px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      position: "relative",
+                      top: "-50px",
+                      img: {
+                        width: "100%",
+                        height: "auto",
+                      },
+                    },
+
+                    "td:first-child,td:last-child": {
+                      fontWeight: 200,
+                      minWidth: "280px",
+                      "@media (max-width: 1000px)": {
+                        minWidth: "250px",
+                      },
+                      "@media (max-width: 900px)": {
+                        minWidth: "140px",
+                      },
+                    },
+                    "tbody tr:nth-child(odd) td": {
+                      backgroundColor: "#f8f8f8",
+                    },
+                  },
                 }}
               >
-                <FaqItem
-                  info={{
-                    question: i18n.t(`Can I try FluencyPal for free?`),
-                    answer: (
-                      <Typography>
-                        {i18n.t(
-                          `Yes! You start with one free hour of conversation with AI to explore all features.`
-                        )}
-                      </Typography>
-                    ),
-                  }}
-                />
-
-                <FaqItem
-                  info={{
-                    question: i18n._("How much do AI conversations cost?"),
-                    answer: (
-                      <Typography>
-                        {i18n._(
-                          `The cost is calculated based on duration and AI usage. On average, a full hour costs $5.`
-                        )}
-                      </Typography>
-                    ),
-                  }}
-                />
-
-                <FaqItem
-                  info={{
-                    question: i18n._("Can I buy credits in bulk?"),
-                    answer: (
-                      <Stack gap={"20px"}>
-                        <Typography>
-                          {i18n._(
-                            "Yes! We offer discounts when purchasing larger credit packages. Just contact me before you buy and I'll give you a discount."
-                          )}
+                <table cellSpacing="0" cellPadding="0">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>
+                        <div className="lang-cell-head">
+                          <div className="logo">
+                            <img src="/logo.svg" alt="Logo" />
+                          </div>
+                        </div>
+                      </th>
+                      <th>
+                        <div className="other-cell-head">
+                          <span className="other-cell-head-text">
+                            {i18n._("Traditional Subscription")}
+                          </span>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <Typography className="title">
+                          {i18n._("Pay Only for What You Use")}
                         </Typography>
+                      </td>
+                      <td>
+                        <span className="lang-cell">
+                          <VerifiedIcon
+                            sx={{
+                              color: "#05acff",
+                              fontSize: "2rem",
+                            }}
+                          />
+                        </span>
+                      </td>
+                      <td>
                         <Stack
-                          gap={"10px"}
                           sx={{
-                            width: "100%",
+                            alignItems: "center",
+                            gap: "5px",
+                            padding: "15px 0",
                           }}
                         >
-                          <Typography>{i18n._("Contacts:")}</Typography>
-                          <ContactList />
+                          <CancelIcon
+                            sx={{
+                              fontSize: "2rem",
+                              color: "#777",
+                            }}
+                          />
+                          <Typography align="center">{i18n._("No, fixed cost")}</Typography>
                         </Stack>
-                      </Stack>
-                    ),
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <Typography className="title">{i18n._("Full Access Anytime")}</Typography>
+                      </td>
+                      <td>
+                        <span className="lang-cell">
+                          <VerifiedIcon
+                            sx={{
+                              color: "#05acff",
+                              fontSize: "2rem",
+                            }}
+                          />
+                        </span>
+                      </td>
+                      <td>
+                        <Stack
+                          sx={{
+                            alignItems: "center",
+                            gap: "5px",
+                            padding: "15px 0",
+                          }}
+                        >
+                          <VerifiedIcon
+                            sx={{
+                              color: "#05acff",
+                              fontSize: "2rem",
+                            }}
+                          />
+                        </Stack>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <Typography className="title">{i18n._("No Monthly Fees")}</Typography>
+                      </td>
+                      <td>
+                        <span className="lang-cell">
+                          <VerifiedIcon
+                            sx={{
+                              color: "#05acff",
+                              fontSize: "2rem",
+                            }}
+                          />
+                        </span>
+                      </td>
+                      <td>
+                        <Stack
+                          sx={{
+                            alignItems: "center",
+                            gap: "5px",
+                            padding: "15px 0",
+                          }}
+                        >
+                          <CancelIcon
+                            sx={{
+                              fontSize: "2rem",
+                              color: "#777",
+                            }}
+                          />
+                          <Typography align="center">{i18n._("No, recurring charge")}</Typography>
+                        </Stack>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <Typography className="title">{i18n._("Pause Anytime")}</Typography>
+                      </td>
+                      <td>
+                        <span className="lang-cell lang-cell--last">
+                          <VerifiedIcon
+                            sx={{
+                              color: "#05acff",
+                              fontSize: "2rem",
+                            }}
+                          />
+                        </span>
+                      </td>
+                      <td>
+                        <Stack
+                          sx={{
+                            alignItems: "center",
+                            gap: "5px",
+                            padding: "15px 0",
+                          }}
+                        >
+                          <CancelIcon
+                            sx={{
+                              fontSize: "2rem",
+                              color: "#777",
+                            }}
+                          />
+                        </Stack>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </Stack>
+              <Button
+                sx={{
+                  ...buttonStyle,
+                }}
+                href={`${getUrlStart(lang)}quiz`}
+              >
+                {i18n.t(`Try FluencyPal for Free`)}
+              </Button>
+            </Stack>
+          )}
+          {isShowPayAsYouGo && (
+            <Stack
+              sx={{
+                width: "100%",
+                alignItems: "center",
+                backgroundColor: `#0a121e`,
+              }}
+            >
+              <Stack
+                sx={{
+                  gap: "40px",
+                  maxWidth: maxContentWidth,
+                  width: "100%",
+                  boxSizing: "border-box",
+                  alignItems: "center",
+                  padding: "80px 20px 100px 20px",
+                }}
+              >
+                <Stack
+                  sx={{
+                    alignItems: "center",
+                    boxSizing: "border-box",
+                    gap: "20px",
                   }}
-                />
+                >
+                  <Typography
+                    align="center"
+                    variant="h3"
+                    component={"h2"}
+                    sx={{
+                      ...titleFontStyle,
+                      color: "#fff",
+                    }}
+                  >
+                    {i18n._("FAQ")}
+                  </Typography>
+                </Stack>
 
-                <FaqItem
-                  info={{
-                    question: i18n._("Will my credits expire?"),
-                    answer: (
-                      <Typography>
-                        {i18n._(
-                          "No, your credits stay active as long as your account is in good standing."
-                        )}
-                      </Typography>
-                    ),
+                <Stack
+                  sx={{
+                    width: "100%",
+                    gap: "0px",
+                    border: "1px solid rgba(0, 0, 0, 0.1)",
+                    padding: "15px",
+                    borderRadius: "4px",
+                    boxSizing: "border-box",
+                    flexDirection: "column",
+                    maxWidth: "800px",
                   }}
-                />
+                >
+                  <FaqItem
+                    info={{
+                      question: i18n.t(`Can I try FluencyPal for free?`),
+                      answer: (
+                        <Typography>
+                          {i18n.t(
+                            `Yes! You start with one free hour of conversation with AI to explore all features.`
+                          )}
+                        </Typography>
+                      ),
+                    }}
+                  />
+
+                  <FaqItem
+                    info={{
+                      question: i18n._("How much do AI conversations cost?"),
+                      answer: (
+                        <Typography>
+                          {i18n._(
+                            `The cost is calculated based on duration and AI usage. On average, a full hour costs $5.`
+                          )}
+                        </Typography>
+                      ),
+                    }}
+                  />
+
+                  <FaqItem
+                    info={{
+                      question: i18n._("Can I buy credits in bulk?"),
+                      answer: (
+                        <Stack gap={"20px"}>
+                          <Typography>
+                            {i18n._(
+                              "Yes! We offer discounts when purchasing larger credit packages. Just contact me before you buy and I'll give you a discount."
+                            )}
+                          </Typography>
+                          <Stack
+                            gap={"10px"}
+                            sx={{
+                              width: "100%",
+                            }}
+                          >
+                            <Typography>{i18n._("Contacts:")}</Typography>
+                            <ContactList />
+                          </Stack>
+                        </Stack>
+                      ),
+                    }}
+                  />
+
+                  <FaqItem
+                    info={{
+                      question: i18n._("Will my credits expire?"),
+                      answer: (
+                        <Typography>
+                          {i18n._(
+                            "No, your credits stay active as long as your account is in good standing."
+                          )}
+                        </Typography>
+                      ),
+                    }}
+                  />
+                </Stack>
               </Stack>
             </Stack>
-          </Stack>
+          )}
         </Stack>
 
         <CtaBlock

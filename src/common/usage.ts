@@ -64,7 +64,6 @@ export type UsageLog =
 export type PaymentLogType = "welcome" | "user" | "gift" | "subscription-full-v1" | "trial-days";
 
 export const WELCOME_BONUS = 6;
-export const WELCOME_BONUS_DAYS = 5;
 export interface PaymentLog {
   id: string;
   amountAdded: number;

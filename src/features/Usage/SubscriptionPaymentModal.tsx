@@ -388,7 +388,9 @@ export const SubscriptionPaymentModal = () => {
                     </Stack>
                   </Stack>
 
-                  <Typography variant="body1">Learn in full speed with full access</Typography>
+                  <Typography variant="body1">
+                    {i18n._("Learn at full speed with full access")}
+                  </Typography>
                   <Button
                     disabled={!!activeTill}
                     sx={{

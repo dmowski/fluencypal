@@ -313,24 +313,13 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                       </Button>
                       <Stack
                         sx={{
-                          flexDirection: "row",
-                          gap: "7px",
+                          flexDirection: "column",
+                          gap: "1px",
                         }}
                       >
-                        <Typography variant="caption">{i18n._(`First hour is free.`)}</Typography>
-                        <Link
-                          variant="caption"
-                          color="info"
-                          sx={{
-                            color: "rgb(5, 69, 165)",
-                            textDecoration: "underline",
-                            textDecorationColor: "rgb(5, 69, 165)",
-                            textDecorationThickness: "1px",
-                          }}
-                          href={"/pricing"}
-                        >
-                          Pricing
-                        </Link>
+                        <Typography variant="caption">
+                          {i18n._(`The first 3 days are free`)}
+                        </Typography>
                       </Stack>
                     </Stack>
                   </Stack>

@@ -30,13 +30,14 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import { useCurrency } from "../User/useCurrency";
 import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { pricePerHour } from "@/common/ai";
+import { TRIAL_DAYS } from "@/common/subscription";
 
 const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
   user: "Payment",
   gift: "Gift",
   "subscription-full-v1": "Subscription (1 month)",
-  "trial-days": "Trial (5 days)",
+  "trial-days": `Trial (${TRIAL_DAYS} days)`,
 };
 
 const isUseStripe = true;
