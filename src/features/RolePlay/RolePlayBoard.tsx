@@ -437,7 +437,23 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
                     bottom: 0,
                     zIndex: -1,
                   }}
-                ></Stack>
+                >
+                  {selectedRolePlayScenario.videoSrc && (
+                    <video
+                      src={selectedRolePlayScenario.videoSrc}
+                      loop
+                      autoPlay
+                      muted={true}
+                      playsInline
+                      style={{
+                        width: "100%",
+                        backgroundColor: "rgba(10, 18, 30, 1)",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  )}
+                </Stack>
               </Stack>
 
               <Stack
