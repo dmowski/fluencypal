@@ -29,7 +29,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Stripe
 
-Start webhook simulator
+Start webhook simulator (Update STRIPE_WEBHOOK_SECRET_TEST on .env)
 
 ```
 stripe listen --forward-to localhost:3000/api/webhooks/stripe
