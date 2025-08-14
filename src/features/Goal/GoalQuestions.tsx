@@ -1216,18 +1216,40 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 </Button>
               </Stack>
             ) : (
-              <>
+              <Stack
+                sx={{
+                  flexDirection: "column",
+                  alignItems: "center",
+
+                  gap: "5px",
+                  "@media (max-width: 460px)": {
+                    width: "calc(100dvw - 40px)",
+                  },
+                }}
+              >
                 <Button
                   variant="contained"
                   href={goalPartUrl}
                   sx={{
                     ...buttonStyle,
+                    "@media (max-width: 460px)": {
+                      width: "100%",
+                    },
                   }}
                   endIcon={<ExternalLink size={"18px"} />}
                 >
-                  {i18n._("Open a plan")}
+                  {i18n._("Open the plan")}
                 </Button>
-              </>
+                <Stack
+                  sx={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography variant="caption">{i18n._("No credit card required")}</Typography>
+                  <Typography variant="caption">{i18n._("The first 3 days are free")}</Typography>
+                </Stack>
+              </Stack>
             )}
           </Stack>
         )}

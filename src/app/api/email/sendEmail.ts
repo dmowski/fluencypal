@@ -12,6 +12,7 @@ interface SendEmailProps {
   title: string;
 }
 
+// xxx DO NOT USE SENDGRID
 export const sendEmail = async ({
   emailTo,
   messageText,
