@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 import { addPaymentLog } from "../../payment/addPaymentLog";
-import { sentSupportTelegramMessage } from "../../telegram/sendTelegramMessage";
+import { getFirebaseLink, sentSupportTelegramMessage } from "../../telegram/sendTelegramMessage";
 import { stripeConfig } from "../../payment/config";
 import { getCommonMessageTemplate } from "../../email/templates/commonMessage";
 import { sendEmail } from "../../email/sendEmail";
@@ -57,6 +57,10 @@ export async function POST(request: Request) {
         console.log("No userId in metadata");
         throw new Error("No userId in metadata");
       }
+      const userInfo = await getUserInfo(userId);
+      const userEmail = userInfo.email;
+      const firebaseUrl = getFirebaseLink(userId);
+      const userLink = `[🔥 Firebase 🔥](${firebaseUrl})`;
 
       const chargeObject = await stripe.charges.retrieve(charges.toString());
       const receiptUrl = chargeObject.receipt_url || "";
@@ -71,6 +75,8 @@ export async function POST(request: Request) {
           throw new Error("Amount of months is not set");
         }
 
+        const tgMessage = `User ${userEmail} subscribed for ${monthsCount} months. | ${userLink}`;
+        sentSupportTelegramMessage(tgMessage);
         await addPaymentLog({
           amount: amountPaid,
           userId: userId,
@@ -87,6 +93,8 @@ export async function POST(request: Request) {
           console.log("Amount of hours is not set");
           throw new Error("Amount of hours is not set");
         }
+        const tgMessage = `User ${userEmail} purchased ${amountOfHours} hours. | ${userLink}`;
+        sentSupportTelegramMessage(tgMessage);
         await addPaymentLog({
           amount: amountPaid,
           userId: userId,
@@ -99,8 +107,6 @@ export async function POST(request: Request) {
       }
 
       if (stripeConfig.isStripeLive) {
-        const userInfo = await getUserInfo(userId);
-
         const emailToSend = userInfo.email;
         const shortId = receiptId || paymentId.slice(paymentId.length - 8);
 
@@ -132,8 +138,9 @@ Due to your request for immediate service from Fundacja Rozwoju Przedsiębiorczo
       }
     }
   } catch (error) {
-    sentSupportTelegramMessage("Error in Stripe webhook: " + (error as Error).message);
-    return new Response("Webhook signature verification failed", { status: 400 });
+    const message = `Error in Stripe webhook: ${(error as Error).message}`;
+    sentSupportTelegramMessage(message);
+    return new Response(message, { status: 400 });
   }
 
   return Response.json({ received: true });

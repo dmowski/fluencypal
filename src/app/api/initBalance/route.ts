@@ -2,7 +2,7 @@ import { InitBalanceResponse } from "@/common/requests";
 import { getDB, validateAuthToken } from "../config/firebase";
 import { WELCOME_BONUS } from "@/common/usage";
 import { addPaymentLog } from "../payment/addPaymentLog";
-import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
+import { getFirebaseLink, sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 import { TRIAL_DAYS } from "@/common/subscription";
 
 const ENABLE_SUBSCRIPTIONS = true;
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
   const isDev = devEmails.includes(userInfo?.email || "");
   if (!isDev) {
     const userId = userInfo.uid;
-    const firebaseUrl = `https://console.firebase.google.com/u/0/project/dark-lang/firestore/databases/-default-/data/~2Fusers~2F${userId}`;
+    const firebaseUrl = getFirebaseLink(userId);
     sentSupportTelegramMessage(`New user: ${userInfo.email}
 
 [🔥 Firebase 🔥](${firebaseUrl})
