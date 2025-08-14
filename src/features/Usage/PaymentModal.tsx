@@ -35,6 +35,8 @@ const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   welcome: "Trial balance",
   user: "Payment",
   gift: "Gift",
+  "subscription-full-v1": "Subscription (1 month)",
+  "trial-days": "Trial (5 days)",
 };
 
 const isUseStripe = true;

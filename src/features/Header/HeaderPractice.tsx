@@ -30,6 +30,7 @@ import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { useSettings } from "../Settings/useSettings";
 import { useGame } from "../Game/useGame";
 import { exitFullScreen } from "@/libs/fullScreen";
+import { SubscriptionPaymentModal } from "../Usage/SubscriptionPaymentModal";
 
 export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -324,7 +325,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
           )}
         </Stack>
 
-        {usage.isShowPaymentModal && <PaymentModal />}
+        {usage.isShowPaymentModal && <SubscriptionPaymentModal />}
 
         {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />}
       </Stack>

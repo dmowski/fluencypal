@@ -43,7 +43,7 @@ export const CustomModal = ({
           left: "50%",
           transform: "translate(-50%, -50%)",
           width: width || "600px",
-          bgcolor: "#222224",
+          backgroundColor: "#181818",
           borderRadius: "16px",
           maxWidth: "100vw",
           maxHeight: maxHeight || "100dvh",
