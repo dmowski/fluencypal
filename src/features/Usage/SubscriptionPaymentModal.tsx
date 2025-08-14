@@ -1,39 +1,18 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  IconButton,
-  Link,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Checkbox, FormControlLabel, Link, Stack, Typography } from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useUsage } from "./useUsage";
 import { useNotifications } from "@toolpad/core/useNotifications";
-import AddCardIcon from "@mui/icons-material/AddCard";
 import { ForwardRefExoticComponent, RefAttributes, useRef, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { sendTelegramRequest } from "../Telegram/sendTextAiRequest";
-import { useSettings } from "../Settings/useSettings";
-import dayjs from "dayjs";
-import { PaymentLogType } from "@/common/usage";
-import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
-import { ContactList } from "../Landing/Contact/ContactList";
 import { createStripeCheckout } from "./createStripeCheckout";
 import {
   BookType,
   ChartNoAxesCombined,
-  CircleCheck,
   GraduationCap,
   Lightbulb,
   LucideProps,
   Sparkles,
   Speech,
-  Telescope,
   UsersRound,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -41,35 +20,27 @@ import { supportedLanguages } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useCurrency } from "../User/useCurrency";
-import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
-import { pricePerHour } from "@/common/ai";
 import { buttonStyle } from "../Landing/landingSettings";
 import { PRICE_PER_MONTH_USD } from "@/common/subscription";
+import { sentPaymentTgMessage } from "./sentTgMessage";
 
-const paymentTypeLabelMap: Record<PaymentLogType, string> = {
-  welcome: "Trial balance",
-  user: "Payment",
-  gift: "Gift",
-  "subscription-full-v1": "Subscription (1 month)",
-  "trial-days": "Trial (5 days)",
-};
-
-const isUseStripe = true;
+interface ListItem {
+  title: string;
+  tooltip: string;
+  icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+}
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
   const auth = useAuth();
   const { i18n } = useLingui();
   const currency = useCurrency();
-  const settings = useSettings();
-  const devEmails = ["dmowski.alex@gmail.com"];
+
   const notifications = useNotifications();
   const [looseRightChecked, setLooseRightChecked] = useState(false);
   const [isTermsChecked, setIsTermsChecked] = useState(false);
   const [isMarketingChecked, setIsMarketingChecked] = useState(false);
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
-  const [amountToAdd, setAmountToAdd] = useState(1);
-  const [isShowAmountInput, setIsShowAmountInput] = useState(false);
 
   const pathname = usePathname();
   const locale = pathname?.split("/")[1] as string;
@@ -77,69 +48,45 @@ export const SubscriptionPaymentModal = () => {
 
   const pricePerMonthInCurrency = Math.round(currency.rate * PRICE_PER_MONTH_USD * 10) / 10;
 
-  const sentTgMessage = async (message: string) => {
-    const email = auth?.userInfo?.email || "";
-    if (!email) {
-      sendTelegramRequest(
-        {
-          message: "Event: Payments. Someone trying to do with money, but no email",
-        },
-        await auth.getToken()
-      );
-    }
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-    const isDevEmail = devEmails.includes(email);
-    if (isDevEmail) {
-      return;
-    }
-
-    sendTelegramRequest(
-      {
-        message: message,
-      },
-      await auth.getToken()
-    );
+  const scrollTop = () => {
+    containerRef.current?.parentElement?.scrollTo(0, 0);
   };
 
   const clickOnConfirmRequest = async () => {
     alert("ok");
 
-    if (isUseStripe) {
-      const checkoutInfo = await createStripeCheckout(
-        {
-          userId: auth.uid,
-          amountOfHours: amountToAdd,
-          languageCode: supportedLang,
-          currency: currency.currency,
-        },
-        await auth.getToken()
-      );
-      if (!checkoutInfo.sessionUrl) {
-        console.log("checkoutInfo", checkoutInfo);
-        notifications.show("Error creating payment session", {
-          severity: "error",
-        });
-        return;
-      } else {
-        window.location.href = checkoutInfo.sessionUrl;
-      }
+    const checkoutInfo = await createStripeCheckout(
+      {
+        userId: auth.uid,
+        months: 1,
+        languageCode: supportedLang,
+        currency: currency.currency,
+      },
+      await auth.getToken()
+    );
+    if (!checkoutInfo.sessionUrl) {
+      console.log("checkoutInfo", checkoutInfo);
+      notifications.show("Error creating payment session", {
+        severity: "error",
+      });
+      return;
     } else {
-      setIsShowConfirmPayments(true);
-      sentTgMessage(`Event: User confirmed payment: $${amountToAdd}`);
-      setIsShowAmountInput(false);
+      window.location.href = checkoutInfo.sessionUrl;
     }
   };
 
-  const onShowAmountInput = () => {
-    sentTgMessage("Event: Press on Pay Button");
-    setIsShowAmountInput(true);
-  };
+  const showConfirmPage = async () => {
+    scrollTop();
+    setIsShowConfirmPayments(true);
 
-  interface ListItem {
-    title: string;
-    tooltip: string;
-    icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
-  }
+    sentPaymentTgMessage({
+      message: "Event: Press on Pay Button",
+      email: auth?.userInfo?.email || "unknownEmail",
+      token: await auth.getToken(),
+    });
+  };
 
   const listItems: ListItem[] = [
     {
@@ -181,20 +128,13 @@ export const SubscriptionPaymentModal = () => {
     },
   ];
 
-  const [isShowConfirmation, setIsShowConfirmation] = useState(false);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  const scrollTop = () => {
-    containerRef.current?.parentElement?.scrollTo(0, 0);
-  };
-
   if (!usage.isShowPaymentModal) return null;
   return (
     <CustomModal
       isOpen={true && auth.isAuthorized}
       onClose={() => {
-        if (isShowConfirmation) {
-          setIsShowConfirmation(false);
+        if (isShowConfirmPayments) {
+          setIsShowConfirmPayments(false);
           scrollTop();
           return;
         }
@@ -213,7 +153,7 @@ export const SubscriptionPaymentModal = () => {
         }}
         ref={containerRef}
       >
-        {isShowConfirmation ? (
+        {isShowConfirmPayments ? (
           <Stack
             sx={{
               maxWidth: "700px",
@@ -467,10 +407,7 @@ export const SubscriptionPaymentModal = () => {
                     }}
                     variant="contained"
                     size="large"
-                    onClick={() => {
-                      setIsShowConfirmation(true);
-                      scrollTop();
-                    }}
+                    onClick={showConfirmPage}
                   >
                     Get Full Access
                   </Button>

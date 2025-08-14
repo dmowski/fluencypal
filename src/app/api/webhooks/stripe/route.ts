@@ -44,18 +44,6 @@ export async function POST(request: Request) {
       const paymentId = session.id;
 
       const userId = session.metadata?.userId;
-      const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? "0");
-      if (amountOfHours <= 0) {
-        console.log("Amount of hours is not set");
-        throw new Error("Amount of hours is not set");
-      }
-
-      if (!userId) {
-        console.log("No userId in metadata");
-        throw new Error("No userId in metadata");
-      }
-      const amountPaid = (session.amount_total ?? 0) / 100;
-
       const currency = session.currency;
 
       const paymentIntentId = session.payment_intent as string;
@@ -65,19 +53,50 @@ export async function POST(request: Request) {
         console.log("No charges in payment intent");
         throw new Error("No charges in payment intent");
       }
+      if (!userId) {
+        console.log("No userId in metadata");
+        throw new Error("No userId in metadata");
+      }
+
       const chargeObject = await stripe.charges.retrieve(charges.toString());
       const receiptUrl = chargeObject.receipt_url || "";
       const receiptId = chargeObject.receipt_number || "";
+      const amountPaid = (session.amount_total ?? 0) / 100;
 
-      await addPaymentLog({
-        amount: amountPaid,
-        userId: userId,
-        paymentId,
-        currency: currency || "usd",
-        amountOfHours,
-        type: "user",
-        receiptUrl,
-      });
+      const months = session.metadata?.amountOfMonths;
+      if (months) {
+        const monthsCount = parseInt(months, 10);
+        if (monthsCount <= 0) {
+          console.log("Amount of months is not set");
+          throw new Error("Amount of months is not set");
+        }
+
+        await addPaymentLog({
+          amount: amountPaid,
+          userId: userId,
+          paymentId,
+          currency: currency || "pln",
+          amountOfHours: 0,
+          type: "subscription-full-v1",
+          receiptUrl,
+          monthsCount: monthsCount,
+        });
+      } else {
+        const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? "0");
+        if (amountOfHours <= 0) {
+          console.log("Amount of hours is not set");
+          throw new Error("Amount of hours is not set");
+        }
+        await addPaymentLog({
+          amount: amountPaid,
+          userId: userId,
+          paymentId,
+          currency: currency || "usd",
+          amountOfHours,
+          type: "user",
+          receiptUrl,
+        });
+      }
 
       if (stripeConfig.isStripeLive) {
         const userInfo = await getUserInfo(userId);
