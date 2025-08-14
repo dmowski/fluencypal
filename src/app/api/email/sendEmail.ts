@@ -39,6 +39,6 @@ export const sendEmail = async ({
     console.log("result", JSON.stringify(sendResult));
   } catch (e) {
     console.error(`Error sending email: ${e}`);
-    throw new Error(`Error sending email: ${e}`);
+    //throw new Error(`Error sending email: ${e}`);
   }
 };
