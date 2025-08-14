@@ -79,7 +79,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
       <Stack>
         <Typography>
           {i18n._(
-            `My Name is Alex. I am the founder of this project. I am here to help you! If you want more features, or more free AI hours, please let me know!`
+            `My name is Alex. I am the founder of this project. You will find my contacts below.`
           )}
         </Typography>
       </Stack>

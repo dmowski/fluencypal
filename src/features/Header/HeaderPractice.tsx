@@ -15,7 +15,16 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { ChevronLeft, Crown, LogOutIcon, MessageCircleQuestion, Wallet } from "lucide-react";
+import {
+  BanknoteArrowDown,
+  ChevronLeft,
+  Crown,
+  Landmark,
+  LogOutIcon,
+  MessageCircleQuestion,
+  Star,
+  Wallet,
+} from "lucide-react";
 
 import { useUsage } from "../Usage/useUsage";
 import { NeedHelpModal } from "./NeedHelpModal";
@@ -29,6 +38,7 @@ import { useSettings } from "../Settings/useSettings";
 import { useGame } from "../Game/useGame";
 import { exitFullScreen } from "@/libs/fullScreen";
 import { SubscriptionPaymentModal } from "../Usage/SubscriptionPaymentModal";
+import { PaymentHistoryModal } from "./PaymentHistoryModal";
 
 export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -48,6 +58,10 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
 
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [isShowHelpModal, setIsShowHelpModal] = useState(false);
+  const [isShowRefundModal, setIsShowRefundModal] = useState(false);
+  const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] = useState(false);
+  const [isShowFeedbackModal, setIsShowFeedbackModal] = useState(false);
+
   const usage = useUsage();
 
   const searchParams = useSearchParams();
@@ -326,6 +340,9 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
         {usage.isShowPaymentModal && <SubscriptionPaymentModal />}
 
         {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />}
+        {isShowPaymentHistoryModal && (
+          <PaymentHistoryModal onClose={() => setIsShowPaymentHistoryModal(false)} />
+        )}
       </Stack>
 
       <Menu
@@ -339,6 +356,56 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
       >
         <MenuItem
           onClick={() => {
+            usage.togglePaymentModal(true);
+            setMenuAnchor(null);
+          }}
+        >
+          <ListItemIcon>
+            <Wallet size="20px" />
+          </ListItemIcon>
+          <ListItemText>{i18n._(`Subscription`)}</ListItemText>
+        </MenuItem>
+
+        <MenuItem
+          onClick={() => {
+            setIsShowPaymentHistoryModal(true);
+            setMenuAnchor(null);
+          }}
+        >
+          <ListItemIcon>
+            <Landmark size="20px" />
+          </ListItemIcon>
+          <ListItemText>{i18n._(`Payment history`)}</ListItemText>
+        </MenuItem>
+
+        <MenuItem
+          onClick={() => {
+            setIsShowRefundModal(true);
+            setMenuAnchor(null);
+          }}
+        >
+          <ListItemIcon>
+            <BanknoteArrowDown size="20px" />
+          </ListItemIcon>
+          <ListItemText>{i18n._(`Refund`)}</ListItemText>
+        </MenuItem>
+
+        <MenuItem
+          onClick={() => {
+            setIsShowFeedbackModal(true);
+            setMenuAnchor(null);
+          }}
+        >
+          <ListItemIcon>
+            <Star size="20px" />
+          </ListItemIcon>
+          <ListItemText>{i18n._(`Feedback`)}</ListItemText>
+        </MenuItem>
+
+        <Divider />
+
+        <MenuItem
+          onClick={() => {
             setIsShowHelpModal(true);
             setMenuAnchor(null);
           }}
@@ -348,8 +415,6 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
           </ListItemIcon>
           <ListItemText>{i18n._(`Need Help?`)}</ListItemText>
         </MenuItem>
-
-        <Divider />
 
         <MenuItem
           onClick={() => {

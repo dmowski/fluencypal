@@ -71,5 +71,7 @@ export interface PaymentLog {
   createdAt: number;
   type: PaymentLogType;
   amountOfHours: number;
+  amountOfMonth: number;
+  amountOfDays: number;
   receiptUrl: string;
 }

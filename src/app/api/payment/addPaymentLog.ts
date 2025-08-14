@@ -32,6 +32,8 @@ export const addPaymentLog = async ({
     currency,
     amountOfHours,
     receiptUrl: receiptUrl || "",
+    amountOfDays: daysCount || 0,
+    amountOfMonth: monthsCount || 0,
   };
 
   const db = getDB();
