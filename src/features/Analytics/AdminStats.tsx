@@ -4,12 +4,13 @@ import { useAuth } from "../Auth/useAuth";
 import { DEV_EMAILS } from "@/common/dev";
 import { useEffect, useRef, useState } from "react";
 import { loadStatsRequest } from "@/app/api/loadStats/loadStatsRequest";
-import { AdminStatsResponse } from "@/app/api/loadStats/types";
+import { AdminStatsResponse, UserStat } from "@/app/api/loadStats/types";
 import { UserSettingsWithId } from "@/common/user";
 import dayjs from "dayjs";
 import { getFirebaseLink } from "../Firebase/getFirebaseLink";
 
-const UserCard = ({ user }: { user: UserSettingsWithId }) => {
+const UserCard = ({ userStat }: { userStat: UserStat }) => {
+  const user = userStat.userData;
   const lastLoginAgo = user.lastLoginAtDateTime
     ? dayjs(user.lastLoginAtDateTime).fromNow()
     : "Never";
@@ -25,6 +26,12 @@ const UserCard = ({ user }: { user: UserSettingsWithId }) => {
   const countryImage = user.country
     ? `https://flagsapi.com/${user.country.toUpperCase()}/flat/64.png`
     : "";
+
+  const conversationCount = userStat.conversationCount;
+  const lastConversationDateTime = userStat.lastConversationDateTime;
+  const lastConversationAgo = lastConversationDateTime
+    ? dayjs(lastConversationDateTime).fromNow()
+    : "Never";
 
   return (
     <Stack
@@ -49,6 +56,9 @@ const UserCard = ({ user }: { user: UserSettingsWithId }) => {
           {user.email}
         </Link>
         <Typography variant="caption">{lastLoginAgo}</Typography>
+        <Typography variant="caption">
+          Conversations: {lastConversationAgo} ({conversationCount})
+        </Typography>
         <Stack
           sx={{
             flexDirection: "row",
@@ -96,8 +106,8 @@ export function AdminStats() {
 
   const users =
     data?.users.sort((a, b) => {
-      const aLostLogins = a.lastLoginAtDateTime || ""; // iso string
-      const bLostLogins = b.lastLoginAtDateTime || ""; // iso string
+      const aLostLogins = a.userData.lastLoginAtDateTime || ""; // iso string
+      const bLostLogins = b.userData.lastLoginAtDateTime || ""; // iso string
       if (!aLostLogins && !bLostLogins) return 0;
       if (!aLostLogins) return 1;
       if (!bLostLogins) return -1;
@@ -105,7 +115,7 @@ export function AdminStats() {
     }) || [];
 
   const todayUsers = users.filter((user) => {
-    const lastLogin = user.lastLoginAtDateTime;
+    const lastLogin = user.userData.lastLoginAtDateTime;
     return lastLogin && dayjs(lastLogin).isSame(dayjs(), "day");
   });
 
@@ -133,7 +143,7 @@ export function AdminStats() {
             }}
           >
             {users.map((user) => (
-              <UserCard key={user.id} user={user} />
+              <UserCard key={user.userData.id} userStat={user} />
             ))}
           </Stack>
         </>

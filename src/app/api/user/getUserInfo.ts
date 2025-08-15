@@ -37,3 +37,29 @@ export const getAllUsersWithIds = async () => {
   });
   return users;
 };
+
+export const getUserConversationCount = async (userId: string): Promise<number> => {
+  const db = getDB();
+  const conversationsCollection = await db
+    .collection("users")
+    .doc(userId)
+    .collection("conversations")
+    .get();
+  return conversationsCollection.size || 0;
+};
+
+export const getUserLastConversationDate = async (userId: string): Promise<string | null> => {
+  const db = getDB();
+  const conversationsCollection = await db
+    .collection("users")
+    .doc(userId)
+    .collection("conversations")
+    .orderBy("createdAt", "desc")
+    .limit(1)
+    .get();
+  if (conversationsCollection.empty) {
+    return null;
+  }
+  const lastConversation = conversationsCollection.docs[0];
+  return lastConversation.data().updatedAtIso;
+};

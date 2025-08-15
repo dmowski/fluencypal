@@ -1,7 +1,11 @@
 import { validateAuthToken } from "../config/firebase";
 import { DEV_EMAILS } from "@/common/dev";
-import { AdminStatsResponse } from "./types";
-import { getAllUsersWithIds } from "../user/getUserInfo";
+import { AdminStatsResponse, UserStat } from "./types";
+import {
+  getAllUsersWithIds,
+  getUserConversationCount,
+  getUserLastConversationDate,
+} from "../user/getUserInfo";
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
@@ -15,8 +19,22 @@ export async function POST(request: Request) {
 
   const allUsers = await getAllUsersWithIds();
 
+  const userStats = await Promise.all(
+    allUsers.map(async (user) => {
+      const conversationCount = await getUserConversationCount(user.id);
+      const lastConversationDateTime = await getUserLastConversationDate(user.id);
+
+      const userStat: UserStat = {
+        userData: user,
+        conversationCount,
+        lastConversationDateTime,
+      };
+      return userStat;
+    })
+  );
+
   const response: AdminStatsResponse = {
-    users: allUsers,
+    users: userStats,
   };
   return Response.json(response);
 }

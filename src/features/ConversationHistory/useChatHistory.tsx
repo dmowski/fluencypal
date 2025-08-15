@@ -88,7 +88,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
       updatedAt: Date.now(),
       messages: [],
       languageCode,
-      updatedAtHuman: new Date().toLocaleString(),
+      updatedAtIso: new Date().toISOString(),
       mode,
     };
 
@@ -102,7 +102,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
       {
         messages,
         messagesCount: messages.length,
-        updatedAtHuman: new Date().toLocaleString(),
+        updatedAtIso: new Date().toISOString(),
         updatedAt: Date.now(),
       },
       { merge: true }

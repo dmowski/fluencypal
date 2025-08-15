@@ -24,7 +24,7 @@ export interface Conversation {
   messages: ChatMessage[];
   createdAt: number;
   updatedAt: number;
-  updatedAtHuman: string;
+  updatedAtIso: string;
   languageCode: SupportedLanguage;
   mode: ConversationMode;
 }
