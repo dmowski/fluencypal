@@ -125,12 +125,14 @@ export const PlanCard = ({
       )}
 
       <Stack
-        onClick={() => {
-          setShowModal(true);
-        }}
+        onClick={() => setShowModal(true)}
         component={"button"}
         sx={{
-          backgroundColor: isActive ? "rgba(13, 220, 196, 0.1)" : "rgba(13, 220, 196, 0.06)",
+          backgroundColor: isActive
+            ? "rgba(13, 220, 196, 0.1)"
+            : isDone
+              ? "rgba(13, 220, 196, 0.03)"
+              : "transparent",
           textDecoration: "none",
           padding: "12px 16px",
           display: "grid",
@@ -170,8 +172,9 @@ export const PlanCard = ({
           sx={{
             padding: "5px",
             borderRadius: "100px",
-            boxShadow:
-              isDone || isActive
+            boxShadow: isDone
+              ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
+              : isActive
                 ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
                 : "0px 0px 0 2px rgba(13, 220, 196, 0.7)",
             boxSizing: "border-box",
