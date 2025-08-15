@@ -50,7 +50,7 @@ export const addPaymentLog = async ({
   if (isAlreadyPaid) {
     console.log("Payment log already exists");
     await sentSupportTelegramMessage({
-      message: "Payment log already exists",
+      message: "Payment log already exists: " + paymentId,
       userId,
     });
     return;
