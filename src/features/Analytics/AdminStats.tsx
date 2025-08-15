@@ -37,27 +37,34 @@ const UserCard = ({ userStat }: { userStat: UserStat }) => {
     <Stack
       sx={{
         border: isToday ? "1px solid rgba(255, 255, 255, 0.2)" : "1px solid transparent",
-        borderRadius: "4px",
-        padding: "8px 20px",
+        borderRadius: "10px",
+        padding: "14px 25px",
         flexDirection: "row",
         alignItems: "center",
-        gap: "15px",
+        gap: "25px",
       }}
     >
       <Stack>
         <img
           src={photoUrl || "/logo192.png"}
           alt={displayName}
-          style={{ borderRadius: "50%", width: "40px", height: "40px" }}
+          style={{
+            borderRadius: "50%",
+            width: "60px",
+            height: "60px",
+            border: "1px solid  rgba(255, 255, 255, 0.1)",
+          }}
         />
       </Stack>
       <Stack>
         <Link href={firebaseLink} variant="h6" target="_blank" rel="noopener noreferrer">
           {user.email}
         </Link>
-        <Typography variant="caption">{lastLoginAgo}</Typography>
         <Typography variant="caption">
-          Conversations: {lastConversationAgo} ({conversationCount})
+          <b>{lastLoginAgo}</b> - login
+        </Typography>
+        <Typography variant="caption">
+          <b>{lastConversationAgo}</b> - conversations ({conversationCount})
         </Typography>
         <Stack
           sx={{
