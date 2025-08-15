@@ -14,3 +14,7 @@ export interface UserSettings {
 
   isGameOnboardingCompleted: boolean;
 }
+
+export interface UserSettingsWithId extends UserSettings {
+  id: string;
+}
