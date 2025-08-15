@@ -15,15 +15,15 @@ review if email_count_for_card_all_time < 3
 */
 
 export const refundPayment = async (chargeId: string): Promise<boolean> => {
-  sentSupportTelegramMessage("Refund requested for charge: " + chargeId);
+  sentSupportTelegramMessage({ message: "Refund requested for charge: " + chargeId });
   if (!stripeConfig.STRIPE_WEBHOOK_SECRET) {
-    sentSupportTelegramMessage("Stripe webhook secret is not set");
+    sentSupportTelegramMessage({ message: "Stripe webhook secret is not set" });
     throw new Error("Stripe webhook secret is not set");
   }
 
   const stripeKey = stripeConfig.STRIPE_SECRET_KEY;
   if (!stripeKey) {
-    sentSupportTelegramMessage("Stripe API key is not set");
+    sentSupportTelegramMessage({ message: "Stripe API key is not set" });
     throw new Error("Stripe API key is not set");
   }
 
@@ -35,20 +35,21 @@ export const refundPayment = async (chargeId: string): Promise<boolean> => {
     });
 
     const status = refundResult.status || "-";
-    sentSupportTelegramMessage(
-      "Refund successful: " +
+    sentSupportTelegramMessage({
+      message:
+        "Refund successful: " +
         chargeId +
         " | " +
         (refundResult.failure_reason || "") +
         " | Status: " +
-        status
-    );
+        status,
+    });
     return true;
   } catch (error) {
-    sentSupportTelegramMessage("Refund failed: " + chargeId);
-    sentSupportTelegramMessage(
-      "Refund failed error: " + (error as Error).message || "Unknown error"
-    );
+    sentSupportTelegramMessage({ message: "Refund failed: " + chargeId });
+    sentSupportTelegramMessage({
+      message: "Refund failed error: " + (error as Error).message || "Unknown error",
+    });
     console.error(error);
     return false;
   }

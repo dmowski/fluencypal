@@ -1,6 +1,7 @@
 import { PaymentLog, PaymentLogType } from "@/common/usage";
 import { getDB } from "../config/firebase";
 import { addToTotalBalance } from "./addToTotalBalance";
+import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 
 interface AddPaymentLogParams {
   amount: number;
@@ -37,6 +38,23 @@ export const addPaymentLog = async ({
   };
 
   const db = getDB();
+
+  const isAlreadyPaid = await db
+    .collection("users")
+    .doc(userId)
+    .collection("payments")
+    .doc(paymentId)
+    .get()
+    .then((doc) => doc.exists);
+
+  if (isAlreadyPaid) {
+    console.log("Payment log already exists");
+    await sentSupportTelegramMessage({
+      message: "Payment log already exists",
+      userId,
+    });
+    return;
+  }
 
   await db
     .collection("users")

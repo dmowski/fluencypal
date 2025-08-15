@@ -14,9 +14,10 @@ export async function POST(request: Request) {
     const isExists = await isUsageLogExists(userId, logId);
 
     if (logData.priceHours < 0) {
-      sentSupportTelegramMessage(
-        `User ${userInfo.email} tried to add usage log with negative priceHours: ${logData.priceHours}`
-      );
+      sentSupportTelegramMessage({
+        message: `Tried to add usage log with negative priceHours: ${logData.priceHours}`,
+        userId: userInfo.uid,
+      });
       throw new Error("Price can't be negative");
     }
     if (isExists) {
@@ -38,7 +39,9 @@ export async function POST(request: Request) {
 
     return Response.json(response);
   } catch (error) {
-    sentSupportTelegramMessage(`Error in addUsageLog: ${error}`);
+    sentSupportTelegramMessage({
+      message: `Error in addUsageLog: ${error}`,
+    });
     throw error;
   }
 }

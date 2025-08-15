@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 import { addPaymentLog } from "../../payment/addPaymentLog";
-import { getFirebaseLink, sentSupportTelegramMessage } from "../../telegram/sendTelegramMessage";
+import { sentSupportTelegramMessage } from "../../telegram/sendTelegramMessage";
 import { stripeConfig } from "../../payment/config";
 import { getCommonMessageTemplate } from "../../email/templates/commonMessage";
 import { sendEmail } from "../../email/sendEmail";
@@ -10,20 +10,20 @@ import { refundPayment } from "../../payment/refund";
 
 export async function POST(request: Request) {
   if (!stripeConfig.STRIPE_WEBHOOK_SECRET) {
-    sentSupportTelegramMessage("Stripe webhook secret is not set");
+    sentSupportTelegramMessage({ message: "Stripe webhook secret is not set" });
     throw new Error("Stripe webhook secret is not set");
   }
 
   const stripeKey = stripeConfig.STRIPE_SECRET_KEY;
   if (!stripeKey) {
-    sentSupportTelegramMessage("Stripe API key is not set");
+    sentSupportTelegramMessage({ message: "Stripe API key is not set" });
     throw new Error("Stripe API key is not set");
   }
   const stripe = new Stripe(stripeKey);
 
   const sigFromHeader = request.headers.get("stripe-signature");
   if (!sigFromHeader) {
-    sentSupportTelegramMessage("Stripe signature is not set");
+    sentSupportTelegramMessage({ message: "Stripe signature is not set" });
     throw new Error("Stripe signature is not set");
   }
   const sig = sigFromHeader;
@@ -59,8 +59,6 @@ export async function POST(request: Request) {
       }
       const userInfo = await getUserInfo(userId);
       const userEmail = userInfo.email;
-      const firebaseUrl = getFirebaseLink(userId);
-      const userLink = `[🔥 Firebase 🔥](${firebaseUrl})`;
 
       const chargeObject = await stripe.charges.retrieve(charges.toString());
       const receiptUrl = chargeObject.receipt_url || "";
@@ -75,8 +73,8 @@ export async function POST(request: Request) {
           throw new Error("Amount of months is not set");
         }
 
-        const tgMessage = `User ${userEmail} subscribed for ${monthsCount} months. | ${userLink}`;
-        sentSupportTelegramMessage(tgMessage);
+        const tgMessage = `User ${userEmail} subscribed for ${monthsCount} months.`;
+        sentSupportTelegramMessage({ message: tgMessage, userId });
         await addPaymentLog({
           amount: amountPaid,
           userId: userId,
@@ -93,8 +91,8 @@ export async function POST(request: Request) {
           console.log("Amount of hours is not set");
           throw new Error("Amount of hours is not set");
         }
-        const tgMessage = `User ${userEmail} purchased ${amountOfHours} hours. | ${userLink}`;
-        sentSupportTelegramMessage(tgMessage);
+        const tgMessage = `User ${userEmail} purchased ${amountOfHours} hours.`;
+        sentSupportTelegramMessage({ message: tgMessage, userId });
         await addPaymentLog({
           amount: amountPaid,
           userId: userId,
@@ -139,7 +137,7 @@ Due to your request for immediate service from Fundacja Rozwoju Przedsiębiorczo
     }
   } catch (error) {
     const message = `Error in Stripe webhook: ${(error as Error).message}`;
-    sentSupportTelegramMessage(message);
+    sentSupportTelegramMessage({ message });
     return new Response(message, { status: 400 });
   }
 

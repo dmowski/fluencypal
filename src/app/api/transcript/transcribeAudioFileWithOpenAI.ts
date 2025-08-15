@@ -2,7 +2,7 @@ import OpenAI from "openai";
 import { TranscriptAiModel } from "@/common/ai";
 import { getBucket } from "../config/firebase";
 import { TranscriptResponse } from "./types";
-import { getFirebaseLink, sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
+import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 
 export const transcribeAudioFileWithOpenAI = async ({
@@ -33,9 +33,10 @@ export const transcribeAudioFileWithOpenAI = async ({
 
   const isAudioFileLonger = actualFileSize > maxFileSize;
   if (isAudioFileLonger) {
-    sentSupportTelegramMessage(
-      `User recorded huge audio file (${actualFileSizeMb}) | ${userEmail}`
-    );
+    sentSupportTelegramMessage({
+      message: `User recorded huge audio file (${actualFileSizeMb}) | ${userEmail}`,
+      userId,
+    });
   }
 
   const supportedLang =
@@ -86,14 +87,10 @@ export const transcribeAudioFileWithOpenAI = async ({
     });
     await audioStorageFile.makePublic();
     const url = audioStorageFile.publicUrl();
-
-    const firebaseUrl = getFirebaseLink(userId);
-
-    await sentSupportTelegramMessage(
-      `User recorded broken audio file (${actualFileSizeMb}) | ${userEmail || "No user info"} | ${url}
-
-${firebaseUrl ? `[🔥 Firebase 🔥](${firebaseUrl})` : ""}`
-    );
+    await sentSupportTelegramMessage({
+      message: `User recorded broken audio file (${actualFileSizeMb}) ${url}`,
+      userId,
+    });
 
     const errorResponse: TranscriptResponse = {
       error: "Error during transcription",

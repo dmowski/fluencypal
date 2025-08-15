@@ -9,7 +9,7 @@ export const getUserInfo = async (userId: string) => {
     throw new Error("User not found");
   }
   const data = userDoc.data() as UserSettings;
-  return data;
+  return { ...data, id: userDoc.id };
 };
 
 export const getUserAiInfo = async (userId: string) => {

@@ -32,7 +32,11 @@ export const sendEmail = async ({
     console.log("result", JSON.stringify(sendResult));
   } catch (e) {
     console.error(`Error sending email: ${e}`);
-    sentSupportTelegramMessage(`Error sending email to ${emailTo}`);
-    sentSupportTelegramMessage(`Email error: ${e}`);
+    sentSupportTelegramMessage({
+      message: `Error sending email to ${emailTo}`,
+    });
+    sentSupportTelegramMessage({
+      message: `Email error: ${e}`,
+    });
   }
 };

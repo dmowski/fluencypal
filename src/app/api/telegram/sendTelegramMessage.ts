@@ -1,3 +1,5 @@
+import { getUserInfo } from "../user/getUserInfo";
+
 const TELEGRAM_API_KEY = process.env.TELEGRAM_API_KEY || "";
 const TELEGRAM_SUPPORT_CHAT_ID = process.env.TELEGRAM_SUPPORT_CHAT_ID || "";
 
@@ -24,13 +26,30 @@ const sendTelegramMessage = async (message: string, chatId: string): Promise<voi
   }
 };
 
-export const sentSupportTelegramMessage = async (message: string): Promise<void> => {
+export const sentSupportTelegramMessage = async ({
+  message,
+  userId,
+}: {
+  message: string;
+  userId?: string;
+}): Promise<void> => {
   if (!TELEGRAM_API_KEY || !TELEGRAM_SUPPORT_CHAT_ID) {
     throw new Error("Telegram API key or chat ID is not set");
   }
-  await sendTelegramMessage(message, TELEGRAM_SUPPORT_CHAT_ID);
+
+  let postfixMessage = "";
+  if (userId) {
+    const userInfo = await getUserInfo(userId);
+    const userEmail = userInfo?.email || "Unknown email";
+    const firebaseLink = userId ? getFirebaseLink(userId) : "";
+    postfixMessage += `\n\nUser ID: ${userId}\nUser Email: ${userEmail}\nFirebase Link: ${firebaseLink}`;
+  } else {
+    postfixMessage = "\nUnknown user";
+  }
+
+  await sendTelegramMessage(message + postfixMessage, TELEGRAM_SUPPORT_CHAT_ID);
 };
 
-export const getFirebaseLink = (userId: string) => {
+const getFirebaseLink = (userId: string) => {
   return `https://console.firebase.google.com/u/0/project/dark-lang/firestore/databases/-default-/data/~2Fusers~2F${userId}`;
 };
