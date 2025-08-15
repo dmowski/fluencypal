@@ -97,17 +97,19 @@ function useProvideSettings(): SettingsContextType {
 
   const saveLoginTime = async () => {
     if (!userId || !userSettingsDoc) return;
-    const lastLoginTimestamp = Date.now();
-    const formattedLastLogin = dayjs(lastLoginTimestamp).format("YYYY-MM-DD HH:mm:ss");
+    const formattedLastLoginIso = new Date().toISOString();
 
     const country = await getCountryByIP();
     const countryName = country
       ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || "Unknown"
       : "-";
 
+    const photoUrl = auth.userInfo?.photoURL || "";
+    const displayName = auth.userInfo?.displayName || "";
+
     await setDoc(
       userSettingsDoc,
-      { lastLoginAt: Date.now(), lastLoginAtDateTime: formattedLastLogin, country, countryName },
+      { lastLoginAtDateTime: formattedLastLoginIso, country, countryName, photoUrl, displayName },
       { merge: true }
     );
   };

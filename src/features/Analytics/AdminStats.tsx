@@ -1,10 +1,58 @@
 "use client";
-import { Stack, Typography } from "@mui/material";
+import { Link, Stack, Typography } from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
 import { DEV_EMAILS } from "@/common/dev";
 import { useEffect, useRef, useState } from "react";
 import { loadStatsRequest } from "@/app/api/loadStats/loadStatsRequest";
 import { AdminStatsResponse } from "@/app/api/loadStats/types";
+import { UserSettingsWithId } from "@/common/user";
+import dayjs from "dayjs";
+import { getFirebaseLink } from "../Firebase/getFirebaseLink";
+
+const UserCard = ({ user }: { user: UserSettingsWithId }) => {
+  const lastLoginAgo = user.lastLoginAtDateTime
+    ? dayjs(user.lastLoginAtDateTime).fromNow()
+    : "Never";
+
+  const isToday =
+    user.lastLoginAtDateTime && dayjs(user.lastLoginAtDateTime).isSame(dayjs(), "day");
+
+  const firebaseLink = getFirebaseLink(user.id);
+  const countryName = user.countryName || "";
+  const currency = user.currency || "";
+  const photoUrl = user.photoUrl || "";
+  const displayName = user.displayName || "";
+
+  return (
+    <Stack
+      sx={{
+        border: isToday ? "1px solid rgba(255, 255, 255, 0.2)" : "1px solid transparent",
+        borderRadius: "4px",
+        padding: "8px 20px",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: "15px",
+      }}
+    >
+      <Stack>
+        <img
+          src={photoUrl || "/logo192.png"}
+          alt={displayName}
+          style={{ borderRadius: "50%", width: "40px", height: "40px" }}
+        />
+      </Stack>
+      <Stack>
+        <Link href={firebaseLink} variant="h6" target="_blank" rel="noopener noreferrer">
+          {user.email}
+        </Link>
+        <Typography variant="caption">{lastLoginAgo}</Typography>
+        <Typography variant="caption">
+          {[countryName, currency, displayName].filter(Boolean).join(" | ")}
+        </Typography>
+      </Stack>
+    </Stack>
+  );
+};
 
 export function AdminStats() {
   const auth = useAuth();
@@ -28,15 +76,50 @@ export function AdminStats() {
     loadStatsData();
   }, [isLoading, isAdmin]);
 
+  const users =
+    data?.users.sort((a, b) => {
+      const aLostLogins = a.lastLoginAtDateTime || ""; // iso string
+      const bLostLogins = b.lastLoginAtDateTime || ""; // iso string
+      if (!aLostLogins && !bLostLogins) return 0;
+      if (!aLostLogins) return 1;
+      if (!bLostLogins) return -1;
+      return dayjs(bLostLogins).diff(dayjs(aLostLogins));
+    }) || [];
+
+  const todayUsers = users.filter((user) => {
+    const lastLogin = user.lastLoginAtDateTime;
+    return lastLogin && dayjs(lastLogin).isSame(dayjs(), "day");
+  });
+
+  if (!isAdmin) {
+    return <></>;
+  }
+
   return (
     <Stack
       sx={{
         paddingTop: "100px",
       }}
     >
-      <Typography variant="h5">Stats</Typography>
       {isLoading && <Typography>Loading...</Typography>}
-      {data && <Typography>Users: {data.users.length}</Typography>}
+      {data && (
+        <>
+          <Typography variant="h6">Users: {data.users.length}</Typography>
+          <Typography variant="h6">Today users: {todayUsers.length}</Typography>
+          <Stack
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "36px",
+              padding: "20px 10px",
+            }}
+          >
+            {users.map((user) => (
+              <UserCard key={user.id} user={user} />
+            ))}
+          </Stack>
+        </>
+      )}
     </Stack>
   );
 }

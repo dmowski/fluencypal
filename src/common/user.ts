@@ -9,10 +9,12 @@ export interface UserSettings {
   country: string | null;
   countryName: string | null;
   email: string;
-  lastLoginAt: number | null;
   lastLoginAtDateTime: string | null;
 
   isGameOnboardingCompleted: boolean;
+
+  photoUrl: string | null;
+  displayName: string | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {
