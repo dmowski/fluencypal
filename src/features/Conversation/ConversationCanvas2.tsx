@@ -1134,6 +1134,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         sx={{
                           alignItems: "flex-start",
                           gap: "5px",
+                          opacity: isAiSpeaking ? 0 : 1,
                         }}
                       >
                         <Typography>{i18n._("Mission complete")}</Typography>
