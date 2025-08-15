@@ -2,7 +2,7 @@ import OpenAI from "openai";
 import { TranscriptAiModel } from "@/common/ai";
 import { getBucket } from "../config/firebase";
 import { TranscriptResponse } from "./types";
-import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
+import { getFirebaseLink, sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 
 export const transcribeAudioFileWithOpenAI = async ({
@@ -87,12 +87,10 @@ export const transcribeAudioFileWithOpenAI = async ({
     await audioStorageFile.makePublic();
     const url = audioStorageFile.publicUrl();
 
-    const firebaseUrl = userId
-      ? `https://console.firebase.google.com/u/0/project/dark-lang/firestore/databases/-default-/data/~2Fusers~2F${userId}`
-      : "";
+    const firebaseUrl = getFirebaseLink(userId);
 
     await sentSupportTelegramMessage(
-      `User recorded broken audio file (${actualFileSizeMb}) | ${userEmail} | ${url}
+      `User recorded broken audio file (${actualFileSizeMb}) | ${userEmail || "No user info"} | ${url}
 
 ${firebaseUrl ? `[🔥 Firebase 🔥](${firebaseUrl})` : ""}`
     );
