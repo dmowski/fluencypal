@@ -88,7 +88,7 @@ function useProvideCorrections(): CorrectionsContextType {
           description: suggestion || "",
           languageCode: settings.languageCode || "en",
           conversationId: input.conversationId || "",
-          createdAt: Date.now(),
+          createdAtIso: new Date().toISOString(),
         };
         await setDoc(correctionDoc, correctionInfo);
       }

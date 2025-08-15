@@ -12,5 +12,5 @@ export interface PhraseCorrection {
 
   conversationId: string;
 
-  createdAt: number;
+  createdAtIso: string;
 }
