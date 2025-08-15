@@ -42,7 +42,8 @@ export const useIsWebView = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const isTelegramWebView = getIsTelegram();
+      const isTelegramWebView2 = getIsTelegram();
+      isTelegramWebView2;
       const ua = navigator.userAgent.toLowerCase();
       //const supportsWebRTC = !!window.RTCPeerConnection;
       //const result = inAppSpy();
@@ -57,13 +58,12 @@ export const useIsWebView = () => {
 
       const isTiktokWebView = isTikTokWebView();
       setIsWebView(
-        isTelegramWebView.isTgAndroid ||
-          isTelegramWebView.isTgIos ||
-          isInAppBrowser(ua) ||
-          isTiktokWebView
+        //isTelegramWebView.isTgAndroid ||
+        //isTelegramWebView.isTgIos ||
+        isInAppBrowser(ua) || isTiktokWebView
       );
-      setIsTelegram(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos);
-      setIsAndroid(isTelegramWebView.isTgAndroid || ua.includes("android"));
+      //setIsTelegram(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos);
+      //setIsAndroid(isTelegramWebView.isTgAndroid || ua.includes("android"));
       setIsTikTok(isTiktokWebView);
     }
   }, []);
