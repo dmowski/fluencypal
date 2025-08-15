@@ -43,12 +43,19 @@ export function HeaderComponentStatic({
 }: HeaderStaticProps) {
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
   const [isHighlightJoin, setIsHighlightJoin] = useState(false);
+  const [isFixedHeader, setIsFixedHeader] = useState(true);
 
   useEffect(() => {
     const isWindow = typeof window !== "undefined";
     if (!isWindow) {
       return;
     }
+
+    const urlsForNormalHeader = [getUrlStart(lang) + "blog"];
+
+    const urlPath = location.pathname;
+    const isStaticHeader = !urlsForNormalHeader.find((url) => urlPath.startsWith(url));
+    setIsFixedHeader(isStaticHeader);
 
     const onScrollHandler = () => {
       if (window.scrollY > 800) {
@@ -91,7 +98,7 @@ export function HeaderComponentStatic({
           alignItems: "center",
           justifyContent: "center",
 
-          position: "fixed",
+          position: isFixedHeader ? "fixed" : "absolute",
           top: 0,
           left: 0,
           zIndex: 1000,
@@ -114,7 +121,7 @@ export function HeaderComponentStatic({
             },
           },
           "@media (max-width: 650px)": {
-            position: "fixed",
+            position: isFixedHeader ? "fixed" : "absolute",
             ".hideOnMobile": {
               display: "none !important",
             },
