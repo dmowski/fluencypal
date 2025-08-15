@@ -6,6 +6,7 @@ import {
   getUserConversationCount,
   getUserLastConversationDate,
 } from "../user/getUserInfo";
+import { getGameProfile } from "@/features/Game/api/getGameProfile";
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
@@ -18,16 +19,19 @@ export async function POST(request: Request) {
   }
 
   const allUsers = await getAllUsersWithIds();
-
   const userStats = await Promise.all(
     allUsers.map(async (user) => {
-      const conversationCount = await getUserConversationCount(user.id);
-      const lastConversationDateTime = await getUserLastConversationDate(user.id);
+      const [conversationCount, lastConversationDateTime, gameProfile] = await Promise.all([
+        getUserConversationCount(user.id),
+        getUserLastConversationDate(user.id),
+        getGameProfile(user.id),
+      ]);
 
       const userStat: UserStat = {
         userData: user,
         conversationCount,
         lastConversationDateTime,
+        gameProfile,
       };
       return userStat;
     })

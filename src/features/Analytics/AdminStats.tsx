@@ -5,11 +5,12 @@ import { DEV_EMAILS } from "@/common/dev";
 import { useEffect, useRef, useState } from "react";
 import { loadStatsRequest } from "@/app/api/loadStats/loadStatsRequest";
 import { AdminStatsResponse, UserStat } from "@/app/api/loadStats/types";
-import { UserSettingsWithId } from "@/common/user";
 import dayjs from "dayjs";
 import { getFirebaseLink } from "../Firebase/getFirebaseLink";
+import { useGame } from "../Game/useGame";
 
 const UserCard = ({ userStat }: { userStat: UserStat }) => {
+  const game = useGame();
   const user = userStat.userData;
   const lastLoginAgo = user.lastLoginAtDateTime
     ? dayjs(user.lastLoginAtDateTime).fromNow()
@@ -32,6 +33,11 @@ const UserCard = ({ userStat }: { userStat: UserStat }) => {
   const lastConversationAgo = lastConversationDateTime
     ? dayjs(lastConversationDateTime).fromNow()
     : "Never";
+
+  const gameProfile = userStat.gameProfile;
+  const gameUsername = gameProfile?.username || "";
+  const userStats = game.stats.find((s) => s.username === gameProfile?.username);
+  const gameAvatar = game.gameAvatars[userStats?.username || "default"];
 
   return (
     <Stack
@@ -70,7 +76,8 @@ const UserCard = ({ userStat }: { userStat: UserStat }) => {
           sx={{
             flexDirection: "row",
             alignItems: "center",
-            gap: "4px",
+            gap: "8px",
+            padding: "4px 0",
           }}
         >
           {countryImage && (
@@ -82,6 +89,26 @@ const UserCard = ({ userStat }: { userStat: UserStat }) => {
           )}
           <Typography variant="caption">
             {[countryName, currency, displayName].filter(Boolean).join(" | ")}
+          </Typography>
+        </Stack>
+
+        <Stack
+          sx={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "8px",
+            padding: "4px 0",
+          }}
+        >
+          {gameAvatar && (
+            <img
+              src={gameAvatar}
+              alt={countryName}
+              style={{ borderRadius: "34px", width: "24px", height: "24px" }}
+            />
+          )}
+          <Typography variant="caption">
+            {[gameUsername, userStats?.points].filter(Boolean).join(" | ")}
           </Typography>
         </Stack>
       </Stack>
