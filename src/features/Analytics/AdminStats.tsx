@@ -22,6 +22,9 @@ const UserCard = ({ user }: { user: UserSettingsWithId }) => {
   const currency = user.currency || "";
   const photoUrl = user.photoUrl || "";
   const displayName = user.displayName || "";
+  const countryImage = user.country
+    ? `https://flagsapi.com/${user.country.toUpperCase()}/flat/64.png`
+    : "";
 
   return (
     <Stack
@@ -46,9 +49,24 @@ const UserCard = ({ user }: { user: UserSettingsWithId }) => {
           {user.email}
         </Link>
         <Typography variant="caption">{lastLoginAgo}</Typography>
-        <Typography variant="caption">
-          {[countryName, currency, displayName].filter(Boolean).join(" | ")}
-        </Typography>
+        <Stack
+          sx={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "4px",
+          }}
+        >
+          {countryImage && (
+            <img
+              src={countryImage}
+              alt={countryName}
+              style={{ borderRadius: "4px", width: "24px", height: "24px" }}
+            />
+          )}
+          <Typography variant="caption">
+            {[countryName, currency, displayName].filter(Boolean).join(" | ")}
+          </Typography>
+        </Stack>
       </Stack>
     </Stack>
   );
