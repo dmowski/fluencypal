@@ -123,6 +123,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
             noCreditCardNeededTitle={i18n._(`No Credit Card Needed`)}
             pricingLink={`${getUrlStart(lang)}pricing`}
             practiceLink={`${getUrlStart(lang)}quiz`}
+            openMyPracticeLinkTitle={i18n._(`Open`)}
             lang={lang}
           />
           <PlanLandingBlock lang={lang} />

@@ -138,6 +138,15 @@ function useProvideSettings(): SettingsContextType {
     setDoc(userSettingsDoc, { isGameOnboardingCompleted: true }, { merge: true });
   };
 
+  const pageLanguageCode = userSettings?.pageLanguageCode || "";
+
+  useEffect(() => {
+    const isWindow = typeof window !== "undefined";
+    if (!isWindow || !pageLanguageCode) return;
+
+    localStorage.setItem("pageLanguageCode", pageLanguageCode);
+  }, [pageLanguageCode]);
+
   return {
     userCreatedAt,
     setNativeLanguage,

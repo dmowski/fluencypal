@@ -113,6 +113,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               noCreditCardNeededTitle={i18n._(`No Credit Card Needed`)}
               pricingLink={`${getUrlStart(lang)}pricing`}
               practiceLink={`${getUrlStart(lang)}quiz`}
+              openMyPracticeLinkTitle={i18n._(`Open`)}
             />
           </Stack>
 

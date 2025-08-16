@@ -2,6 +2,8 @@
 
 import { Button, Stack, Typography } from "@mui/material";
 import { buttonStyle } from "./landingSettings";
+import { useEffect, useState } from "react";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 interface FirstEnterButtonProps {
   showPricingButton?: boolean;
@@ -11,6 +13,7 @@ interface FirstEnterButtonProps {
   noCreditCardNeededTitle: string;
   pricingLink: string;
   practiceLink: string;
+  openMyPracticeLinkTitle: string;
 }
 export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   showPricingButton,
@@ -20,7 +23,20 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   noCreditCardNeededTitle,
   pricingLink,
   practiceLink,
+  openMyPracticeLinkTitle,
 }) => {
+  const [isSignInToLanguage, setIsSignInToLanguage] = useState("");
+  const openMyPracticeLink = isSignInToLanguage ? getUrlStart(isSignInToLanguage) + "practice" : "";
+
+  useEffect(() => {
+    const isWindow = typeof window !== "undefined";
+    if (!isWindow) return;
+    const storedLanguage = localStorage.getItem("pageLanguageCode");
+    if (storedLanguage) {
+      setIsSignInToLanguage(storedLanguage);
+    }
+  }, []);
+
   return (
     <Stack
       sx={{
@@ -49,12 +65,12 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
           }}
           variant="contained"
           size="large"
-          href={practiceLink}
+          href={openMyPracticeLink || practiceLink}
         >
-          {getStartedTitle}
+          {openMyPracticeLink ? openMyPracticeLinkTitle : getStartedTitle}
         </Button>
 
-        {!showPricingButton && (
+        {!showPricingButton && !openMyPracticeLink && (
           <Stack
             sx={{
               flexDirection: "row",

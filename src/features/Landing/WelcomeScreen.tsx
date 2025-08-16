@@ -13,6 +13,7 @@ interface WelcomeScreenProps {
   pricingLink: string;
   practiceLink: string;
   lang: SupportedLanguage;
+  openMyPracticeLinkTitle: string;
 }
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   title,
@@ -23,6 +24,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   pricingLink,
   practiceLink,
   lang,
+  openMyPracticeLinkTitle,
 }) => {
   return (
     <Stack
@@ -150,6 +152,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             noCreditCardNeededTitle={noCreditCardNeededTitle}
             practiceLink={practiceLink}
             pricingLink={pricingLink}
+            openMyPracticeLinkTitle={openMyPracticeLinkTitle}
           />
         </Stack>
       </Stack>

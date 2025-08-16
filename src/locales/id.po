@@ -17,9 +17,15 @@ msgstr ""
 msgid "Loading..."
 msgstr "Memuat..."
 
-#: src/features/Game/PositionChangedModal.tsx:129
+#: src/features/Game/PositionChangedModal.tsx:138
 msgid "Continue"
 msgstr "Lanjutkan"
+
+#: src/features/Landing/LandingPage.tsx:126
+#: src/features/Landing/Price/PricePage.tsx:116
+#. js-lingui-explicit-id
+msgid "Open"
+msgstr "Buka"
 
 #: src/features/Dashboard/FeedbackBlock.tsx:53
 msgid "Sending..."
@@ -51,29 +57,9 @@ msgstr "Salah!"
 msgid "Done"
 msgstr "Selesai"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:393
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "Tinjauan Pelajaran"
-
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:299
 msgid "Re-record"
 msgstr "Rekam ulang"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1144
-#. js-lingui-explicit-id
-msgid "Use voice message mode"
-msgstr "Gunakan mode pesan suara"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1161
-#. js-lingui-explicit-id
-msgid "Use keyboard mode"
-msgstr "Gunakan mode keyboard"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1178
-#. js-lingui-explicit-id
-msgid "Use phone mode"
-msgstr "Gunakan mode telepon"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -627,7 +613,7 @@ msgid "AI hours left in your balance."
 msgstr "Sisa jam AI di saldo Anda."
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:337
-#: src/features/Landing/Price/PricePage.tsx:202
+#: src/features/Landing/Price/PricePage.tsx:203
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "Akses Penuh"
@@ -639,13 +625,13 @@ msgid "Active"
 msgstr "Aktif"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:388
-#: src/features/Landing/Price/PricePage.tsx:232
+#: src/features/Landing/Price/PricePage.tsx:233
 #. js-lingui-explicit-id
 msgid "month"
 msgstr "bulan"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:393
-#: src/features/Landing/Price/PricePage.tsx:236
+#: src/features/Landing/Price/PricePage.tsx:237
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "Belajar dengan kecepatan penuh dengan akses penuh"
@@ -1894,7 +1880,7 @@ msgstr "Semua Skenario"
 #: src/features/Landing/PlanLandingBlock.tsx:502
 #: src/features/Landing/PlanLandingBlock.tsx:628
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:327
-#: src/features/Landing/Price/PricePage.tsx:279
+#: src/features/Landing/Price/PricePage.tsx:280
 #: src/features/Dashboard/PlanDashboardCards.tsx:496
 #. js-lingui-explicit-id
 msgid "Start"
@@ -2162,7 +2148,7 @@ msgstr ""
 "percakapan."
 
 #: src/features/Landing/PlanLandingBlock.tsx:47
-#: src/features/Landing/LandingPage.tsx:137
+#: src/features/Landing/LandingPage.tsx:138
 #. js-lingui-explicit-id
 msgid "Speaking"
 msgstr "Berbicara"
@@ -2208,7 +2194,7 @@ msgid "Simulate speaking tasks from the TOEFL exam."
 msgstr "Simulasikan tugas berbicara dari ujian TOEFL."
 
 #: src/features/Landing/PlanLandingBlock.tsx:74
-#: src/features/Landing/LandingPage.tsx:147
+#: src/features/Landing/LandingPage.tsx:148
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "Tata Bahasa"
@@ -2369,13 +2355,13 @@ msgstr ""
 "koreksi instan, dan membantu Anda berbicara dengan percaya diri."
 
 #: src/features/Landing/LandingPage.tsx:51
-#: src/features/Landing/LandingPage.tsx:193
+#: src/features/Landing/LandingPage.tsx:194
 #. js-lingui-explicit-id
 msgid "What is FluencyPal?"
 msgstr "Apa itu FluencyPal?"
 
 #: src/features/Landing/LandingPage.tsx:54
-#: src/features/Landing/LandingPage.tsx:196
+#: src/features/Landing/LandingPage.tsx:197
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal is an AI-powered English conversation practice app designed for "
@@ -2389,13 +2375,13 @@ msgstr ""
 "dengan umpan balik langsung tentang berbicara dan pengucapan."
 
 #: src/features/Landing/LandingPage.tsx:62
-#: src/features/Landing/LandingPage.tsx:203
+#: src/features/Landing/LandingPage.tsx:204
 #. js-lingui-explicit-id
 msgid "Is there a free trial?"
 msgstr "Apakah ada uji coba gratis?"
 
 #: src/features/Landing/LandingPage.tsx:65
-#: src/features/Landing/LandingPage.tsx:206
+#: src/features/Landing/LandingPage.tsx:207
 #. js-lingui-explicit-id
 msgid ""
 "Yes, FluencyPal offers a complimentary balance to let you try "
@@ -2406,7 +2392,7 @@ msgstr ""
 "melakukan pengisian."
 
 #: src/features/Landing/LandingPage.tsx:72
-#: src/features/Landing/LandingPage.tsx:213
+#: src/features/Landing/LandingPage.tsx:214
 #. js-lingui-explicit-id
 msgid "Can I practice languages other than English?"
 msgstr "Bisakah saya berlatih bahasa selain Inggris?"
@@ -2423,7 +2409,7 @@ msgstr ""
 "yang tersedia termasuk:"
 
 #: src/features/Landing/LandingPage.tsx:85
-#: src/features/Landing/LandingPage.tsx:235
+#: src/features/Landing/LandingPage.tsx:236
 #. js-lingui-explicit-id
 msgid "What learning modes are available?"
 msgstr "Mode pembelajaran apa yang tersedia?"
@@ -2441,13 +2427,13 @@ msgstr ""
 "terarah."
 
 #: src/features/Landing/LandingPage.tsx:95
-#: src/features/Landing/LandingPage.tsx:258
+#: src/features/Landing/LandingPage.tsx:259
 #. js-lingui-explicit-id
 msgid "How do daily tasks help me improve?"
 msgstr "Bagaimana tugas harian membantu saya meningkatkan?"
 
 #: src/features/Landing/LandingPage.tsx:98
-#: src/features/Landing/LandingPage.tsx:261
+#: src/features/Landing/LandingPage.tsx:262
 #. js-lingui-explicit-id
 msgid ""
 "Daily conversational tasks introduce new vocabulary and language "
@@ -2469,7 +2455,7 @@ msgstr "Mulai"
 #: src/features/Landing/LandingPage.tsx:121
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:44
 #: src/features/Landing/Price/PricePage.tsx:111
-#: src/features/Landing/Price/PricePage.tsx:936
+#: src/features/Landing/Price/PricePage.tsx:937
 #: src/features/Blog/BlogsPage.tsx:42
 #. js-lingui-explicit-id
 msgid "Get Started Free"
@@ -2487,12 +2473,12 @@ msgstr "Lihat Harga"
 msgid "No Credit Card Needed"
 msgstr "Tidak Perlu Kartu Kredit"
 
-#: src/features/Landing/LandingPage.tsx:131
+#: src/features/Landing/LandingPage.tsx:132
 #. js-lingui-explicit-id
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "Empat Cara FluencyPal Meningkatkan Keterampilan Berbicara Anda"
 
-#: src/features/Landing/LandingPage.tsx:132
+#: src/features/Landing/LandingPage.tsx:133
 #. js-lingui-explicit-id
 msgid ""
 "Target the specific skills you need—speaking, grammar, vocabulary, and "
@@ -2502,12 +2488,12 @@ msgstr ""
 "kosakata, dan pelacakan kemajuan—untuk mencapai kefasihan bahasa Inggris "
 "secara online lebih cepat."
 
-#: src/features/Landing/LandingPage.tsx:138
+#: src/features/Landing/LandingPage.tsx:139
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
 msgstr "Capai Kefasihan Berbicara dengan Cepat"
 
-#: src/features/Landing/LandingPage.tsx:139
+#: src/features/Landing/LandingPage.tsx:140
 #. js-lingui-explicit-id
 msgid ""
 "Practice realistic conversations tailored to your skill level. FluencyPal "
@@ -2518,17 +2504,17 @@ msgstr ""
 "Anda. FluencyPal merespons secara alami, menyoroti area yang memerlukan "
 "perbaikan, dan membangun kepercayaan diri Anda."
 
-#: src/features/Landing/LandingPage.tsx:144
+#: src/features/Landing/LandingPage.tsx:145
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "Mulai Latihan Berbicara"
 
-#: src/features/Landing/LandingPage.tsx:148
+#: src/features/Landing/LandingPage.tsx:149
 #. js-lingui-explicit-id
 msgid "Instant Grammar Corrections"
 msgstr "Koreksi Tata Bahasa Instan"
 
-#: src/features/Landing/LandingPage.tsx:149
+#: src/features/Landing/LandingPage.tsx:150
 #. js-lingui-explicit-id
 msgid ""
 "Get immediate feedback and explanations on your grammar mistakes as you "
@@ -2537,22 +2523,22 @@ msgstr ""
 "Dapatkan umpan balik dan penjelasan segera mengenai kesalahan gramatikal "
 "Anda saat Anda berlatih. Tingkatkan akurasi bicara Anda secara alami."
 
-#: src/features/Landing/LandingPage.tsx:154
+#: src/features/Landing/LandingPage.tsx:155
 #. js-lingui-explicit-id
 msgid "Enhance Your Grammar"
 msgstr "Tingkatkan Tata Bahasa Anda"
 
-#: src/features/Landing/LandingPage.tsx:157
+#: src/features/Landing/LandingPage.tsx:158
 #. js-lingui-explicit-id
 msgid "Vocabulary"
 msgstr "Kosa Kata"
 
-#: src/features/Landing/LandingPage.tsx:158
+#: src/features/Landing/LandingPage.tsx:159
 #. js-lingui-explicit-id
 msgid "Grow Your Vocabulary Daily"
 msgstr "Tumbuhkan Kosakata Anda Setiap Hari"
 
-#: src/features/Landing/LandingPage.tsx:159
+#: src/features/Landing/LandingPage.tsx:160
 #. js-lingui-explicit-id
 msgid ""
 "Receive personalized vocabulary tailored to your conversational needs. Use "
@@ -2561,22 +2547,22 @@ msgstr ""
 "Terima kosakata yang dipersonalisasi sesuai dengan kebutuhan percakapan "
 "Anda. Gunakan kata-kata baru segera untuk memperkuat pembelajaran."
 
-#: src/features/Landing/LandingPage.tsx:164
+#: src/features/Landing/LandingPage.tsx:165
 #. js-lingui-explicit-id
 msgid "Expand Your Vocabulary"
 msgstr "Perluas Kosakata Anda"
 
-#: src/features/Landing/LandingPage.tsx:167
+#: src/features/Landing/LandingPage.tsx:168
 #. js-lingui-explicit-id
 msgid "Progress Tracking"
 msgstr "Pelacakan Kemajuan"
 
-#: src/features/Landing/LandingPage.tsx:168
+#: src/features/Landing/LandingPage.tsx:169
 #. js-lingui-explicit-id
 msgid "Track Your Fluency Progress"
 msgstr "Lacak Kemajuan Kefasihan Anda"
 
-#: src/features/Landing/LandingPage.tsx:169
+#: src/features/Landing/LandingPage.tsx:170
 #. js-lingui-explicit-id
 msgid ""
 "Visualize your daily progress with intuitive tracking. Stay motivated by "
@@ -2585,17 +2571,17 @@ msgstr ""
 "Visualisasikan kemajuan harian Anda dengan pelacakan yang intuitif. Tetap "
 "termotivasi dengan melihat perbaikan Anda secara jelas."
 
-#: src/features/Landing/LandingPage.tsx:174
+#: src/features/Landing/LandingPage.tsx:175
 #. js-lingui-explicit-id
 msgid "Check Your Progress"
 msgstr "Periksa Kemajuan Anda"
 
-#: src/features/Landing/LandingPage.tsx:179
+#: src/features/Landing/LandingPage.tsx:180
 #. js-lingui-explicit-id
 msgid "Real-Life Role-Play for Advanced English Practice"
 msgstr "Peran Peran Kehidupan Nyata untuk Latihan Bahasa Inggris Tingkat Lanjut"
 
-#: src/features/Landing/LandingPage.tsx:180
+#: src/features/Landing/LandingPage.tsx:181
 #. js-lingui-explicit-id
 msgid ""
 "Practice speaking fluently in real-world scenarios like job interviews, "
@@ -2604,33 +2590,33 @@ msgstr ""
 "Berlatih berbicara dengan lancar dalam situasi dunia nyata seperti "
 "wawancara kerja, pertemuan bisnis, dan percakapan sehari-hari."
 
-#: src/features/Landing/LandingPage.tsx:183
+#: src/features/Landing/LandingPage.tsx:184
 #. js-lingui-explicit-id
 msgid "Explore Role-Play Scenarios"
 msgstr "Jelajahi Skenario Peran"
 
-#: src/features/Landing/LandingPage.tsx:184
+#: src/features/Landing/LandingPage.tsx:185
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
 msgstr "Mencari sesuatu yang spesifik?"
 
-#: src/features/Landing/LandingPage.tsx:185
+#: src/features/Landing/LandingPage.tsx:186
 #. js-lingui-explicit-id
 msgid "Create Your Own Scenario"
 msgstr "Buat Skenario Anda Sendiri"
 
-#: src/features/Landing/LandingPage.tsx:186
+#: src/features/Landing/LandingPage.tsx:187
 #. js-lingui-explicit-id
 msgid "Master English Fluency"
 msgstr "Kuasai Kefasihan Bahasa Inggris"
 
-#: src/features/Landing/LandingPage.tsx:190
-#: src/features/Landing/Price/PricePage.tsx:850
+#: src/features/Landing/LandingPage.tsx:191
+#: src/features/Landing/Price/PricePage.tsx:851
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "FAQ"
 
-#: src/features/Landing/LandingPage.tsx:217
+#: src/features/Landing/LandingPage.tsx:218
 #. js-lingui-explicit-id
 msgid ""
 "Absolutely! FluencyPal supports various languages and adjusts conversations "
@@ -2639,50 +2625,50 @@ msgstr ""
 "Tentu saja! FluencyPal mendukung berbagai bahasa dan menyesuaikan "
 "percakapan berdasarkan bahasa dan tingkat kecakapan yang Anda pilih."
 
-#: src/features/Landing/LandingPage.tsx:223
+#: src/features/Landing/LandingPage.tsx:224
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:414
 #. js-lingui-explicit-id
 msgid "Available languages:"
 msgstr "Bahasa yang tersedia:"
 
-#: src/features/Landing/LandingPage.tsx:240
+#: src/features/Landing/LandingPage.tsx:241
 #. js-lingui-explicit-id
 msgid "Casual Conversation:"
 msgstr "Percakapan Santai:"
 
-#: src/features/Landing/LandingPage.tsx:241
+#: src/features/Landing/LandingPage.tsx:242
 #. js-lingui-explicit-id
 msgid "Practice speaking fluently without interruptions."
 msgstr "Latihan berbicara dengan lancar tanpa jeda."
 
-#: src/features/Landing/LandingPage.tsx:244
+#: src/features/Landing/LandingPage.tsx:245
 #. js-lingui-explicit-id
 msgid "Talk & Correct:"
 msgstr "Talk & Correct:"
 
-#: src/features/Landing/LandingPage.tsx:245
+#: src/features/Landing/LandingPage.tsx:246
 #. js-lingui-explicit-id
 msgid "Receive detailed feedback on grammar and pronunciation instantly."
 msgstr ""
 "Menerima umpan balik terperinci tentang tata bahasa dan pengucapan secara "
 "instan."
 
-#: src/features/Landing/LandingPage.tsx:250
+#: src/features/Landing/LandingPage.tsx:251
 #. js-lingui-explicit-id
 msgid "Beginner Mode:"
 msgstr "Mode Pemula:"
 
-#: src/features/Landing/LandingPage.tsx:251
+#: src/features/Landing/LandingPage.tsx:252
 #. js-lingui-explicit-id
 msgid "Slower conversations with guided support."
 msgstr "Percakapan yang lebih lambat dengan dukungan terarah."
 
-#: src/features/Landing/LandingPage.tsx:270
+#: src/features/Landing/LandingPage.tsx:271
 #. js-lingui-explicit-id
 msgid "Learn anywhere, anytime"
 msgstr "Belajar di mana saja, kapan saja"
 
-#: src/features/Landing/LandingPage.tsx:271
+#: src/features/Landing/LandingPage.tsx:272
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:473
 #. js-lingui-explicit-id
 msgid "Start Your Free Trial"
@@ -2707,7 +2693,7 @@ msgid "Price"
 msgstr "Harga"
 
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:43
-#: src/features/Landing/Price/PricePage.tsx:935
+#: src/features/Landing/Price/PricePage.tsx:936
 #: src/features/Blog/BlogsPage.tsx:41
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
@@ -2825,85 +2811,85 @@ msgstr "Mulai gratis, berlangganan nanti"
 msgid "Open Dashboard"
 msgstr "Buka Dasbor"
 
-#: src/features/Landing/Price/PricePage.tsx:149
+#: src/features/Landing/Price/PricePage.tsx:150
 #. js-lingui-explicit-id
 msgid "Trial"
 msgstr "Percobaan"
 
-#: src/features/Landing/Price/PricePage.tsx:150
+#: src/features/Landing/Price/PricePage.tsx:151
 #. js-lingui-explicit-id
 msgid "For learners who want to try it out"
 msgstr "Untuk pelajar yang ingin mencobanya"
 
-#: src/features/Landing/Price/PricePage.tsx:179
+#: src/features/Landing/Price/PricePage.tsx:180
 #. js-lingui-explicit-id
 msgid "3 days"
 msgstr "3 hari"
 
-#: src/features/Landing/Price/PricePage.tsx:183
+#: src/features/Landing/Price/PricePage.tsx:184
 #. js-lingui-explicit-id
 msgid "Game mode and trial AI tutor access"
 msgstr "Mode permainan dan akses percobaan tutor AI"
 
-#: src/features/Landing/Price/PricePage.tsx:184
+#: src/features/Landing/Price/PricePage.tsx:185
 #. js-lingui-explicit-id
 msgid "Includes:"
 msgstr "Termasuk:"
 
-#: src/features/Landing/Price/PricePage.tsx:188
+#: src/features/Landing/Price/PricePage.tsx:189
 #. js-lingui-explicit-id
 msgid "Game Mode"
 msgstr "Mode Permainan"
 
-#: src/features/Landing/Price/PricePage.tsx:189
+#: src/features/Landing/Price/PricePage.tsx:190
 #. js-lingui-explicit-id
 msgid "Many language games to practice"
 msgstr "Banyak permainan bahasa untuk berlatih"
 
-#: src/features/Landing/Price/PricePage.tsx:193
+#: src/features/Landing/Price/PricePage.tsx:194
 #. js-lingui-explicit-id
 msgid "3 days of AI tutor access"
 msgstr "3 hari akses tutor AI"
 
-#: src/features/Landing/Price/PricePage.tsx:194
+#: src/features/Landing/Price/PricePage.tsx:195
 #. js-lingui-explicit-id
 msgid "Try AI tutor for one hour to see how it works"
 msgstr "Coba tutor AI selama satu jam untuk melihat bagaimana cara kerjanya"
 
-#: src/features/Landing/Price/PricePage.tsx:198
+#: src/features/Landing/Price/PricePage.tsx:199
 #. js-lingui-explicit-id
 msgid "Start "
 msgstr "Mulai"
 
-#: src/features/Landing/Price/PricePage.tsx:203
+#: src/features/Landing/Price/PricePage.tsx:204
 #. js-lingui-explicit-id
 msgid "For learners who want flexibility"
 msgstr "Untuk pelajar yang menginginkan fleksibilitas"
 
-#: src/features/Landing/Price/PricePage.tsx:237
+#: src/features/Landing/Price/PricePage.tsx:238
 #. js-lingui-explicit-id
 msgid "Everything in Free, plus:"
 msgstr "Semuanya di Gratis, plus:"
 
-#: src/features/Landing/Price/PricePage.tsx:240
+#: src/features/Landing/Price/PricePage.tsx:241
 #: src/features/Landing/Price/FeatureList.tsx:31
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Akses penuh tutor AI"
 
-#: src/features/Landing/Price/PricePage.tsx:241
+#: src/features/Landing/Price/PricePage.tsx:242
 #: src/features/Landing/Price/FeatureList.tsx:32
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Dapatkan akses tak terbatas untuk praktik bahasa yang didukung AI"
 
-#: src/features/Landing/Price/PricePage.tsx:245
+#: src/features/Landing/Price/PricePage.tsx:246
 #: src/features/Landing/Price/FeatureList.tsx:36
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "Skenario permainan peran"
 
-#: src/features/Landing/Price/PricePage.tsx:246
+#: src/features/Landing/Price/PricePage.tsx:247
 #: src/features/Landing/Price/FeatureList.tsx:37
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
@@ -2911,61 +2897,61 @@ msgstr ""
 "Terlibat dalam percakapan kehidupan nyata seperti wawancara kerja atau "
 "memesan makanan"
 
-#: src/features/Landing/Price/PricePage.tsx:252
+#: src/features/Landing/Price/PricePage.tsx:253
 #: src/features/Landing/Price/FeatureList.tsx:41
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Praktik percakapan"
 
-#: src/features/Landing/Price/PricePage.tsx:253
+#: src/features/Landing/Price/PricePage.tsx:254
 #: src/features/Landing/Price/FeatureList.tsx:42
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "Tingkatkan kelancaran dengan sesi obrolan interaktif"
 
-#: src/features/Landing/Price/PricePage.tsx:257
+#: src/features/Landing/Price/PricePage.tsx:258
 #: src/features/Landing/Price/FeatureList.tsx:46
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Pelacakan kemajuan"
 
-#: src/features/Landing/Price/PricePage.tsx:258
+#: src/features/Landing/Price/PricePage.tsx:259
 #: src/features/Landing/Price/FeatureList.tsx:47
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "Lihat peningkatan Anda dan lacak perjalanan belajar Anda"
 
-#: src/features/Landing/Price/PricePage.tsx:262
+#: src/features/Landing/Price/PricePage.tsx:263
 #: src/features/Landing/Price/FeatureList.tsx:51
 #. js-lingui-explicit-id
 msgid "New Words"
 msgstr "Kata Baru"
 
-#: src/features/Landing/Price/PricePage.tsx:263
+#: src/features/Landing/Price/PricePage.tsx:264
 #: src/features/Landing/Price/FeatureList.tsx:52
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "Dapatkan kata-kata dan frasa baru dalam konteks"
 
-#: src/features/Landing/Price/PricePage.tsx:267
+#: src/features/Landing/Price/PricePage.tsx:268
 #: src/features/Landing/Price/FeatureList.tsx:56
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "Aturan Tata Bahasa Baru"
 
-#: src/features/Landing/Price/PricePage.tsx:268
+#: src/features/Landing/Price/PricePage.tsx:269
 #: src/features/Landing/Price/FeatureList.tsx:57
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "Dengan berlatih, Anda akan mendapatkan aturan tata bahasa pribadi dari AI"
 
-#: src/features/Landing/Price/PricePage.tsx:272
+#: src/features/Landing/Price/PricePage.tsx:273
 #: src/features/Landing/Price/FeatureList.tsx:61
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
 msgstr "Personalisasi Lanjutan"
 
-#: src/features/Landing/Price/PricePage.tsx:273
+#: src/features/Landing/Price/PricePage.tsx:274
 #: src/features/Landing/Price/FeatureList.tsx:62
 #. js-lingui-explicit-id
 msgid ""
@@ -2975,59 +2961,59 @@ msgstr ""
 "Dengan waktu, AI akan menyesuaikan diri dengan gaya belajar Anda dan akan "
 "menjadi lebih personalisasi"
 
-#: src/features/Landing/Price/PricePage.tsx:283
+#: src/features/Landing/Price/PricePage.tsx:284
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "Lanjutan"
 
-#: src/features/Landing/Price/PricePage.tsx:284
-#: src/features/Landing/Price/PricePage.tsx:306
+#: src/features/Landing/Price/PricePage.tsx:285
+#: src/features/Landing/Price/PricePage.tsx:307
 #. js-lingui-explicit-id
 msgid "Frequent users who need more value"
 msgstr "Pengguna yang sering membutuhkan lebih banyak nilai"
 
-#: src/features/Landing/Price/PricePage.tsx:302
+#: src/features/Landing/Price/PricePage.tsx:303
 #. js-lingui-explicit-id
 msgid "Contact for pricing"
 msgstr "Hubungi untuk penentuan harga"
 
-#: src/features/Landing/Price/PricePage.tsx:307
+#: src/features/Landing/Price/PricePage.tsx:308
 #. js-lingui-explicit-id
 msgid "What I can do for you:"
 msgstr "Apa yang bisa saya lakukan untuk Anda:"
 
-#: src/features/Landing/Price/PricePage.tsx:310
+#: src/features/Landing/Price/PricePage.tsx:311
 #. js-lingui-explicit-id
 msgid "Custom features"
 msgstr "Fitur khusus"
 
-#: src/features/Landing/Price/PricePage.tsx:311
+#: src/features/Landing/Price/PricePage.tsx:312
 #. js-lingui-explicit-id
 msgid "Tailor AI interactions to fit your needs"
 msgstr "Sesuaikan interaksi AI agar sesuai dengan kebutuhan Anda"
 
-#: src/features/Landing/Price/PricePage.tsx:315
+#: src/features/Landing/Price/PricePage.tsx:316
 #. js-lingui-explicit-id
 msgid "Discounted AI Usage"
 msgstr "Diskon Penggunaan AI"
 
-#: src/features/Landing/Price/PricePage.tsx:316
+#: src/features/Landing/Price/PricePage.tsx:317
 #. js-lingui-explicit-id
 msgid "Get cheaper AI hours for bulk use"
 msgstr "Dapatkan jam AI yang lebih murah untuk penggunaan massal"
 
-#: src/features/Landing/Price/PricePage.tsx:320
+#: src/features/Landing/Price/PricePage.tsx:321
 #. Button title for contact me for advance pricing
 #. js-lingui-explicit-id
 msgid "Contact me"
 msgstr "Hubungi saya"
 
-#: src/features/Landing/Price/PricePage.tsx:358
+#: src/features/Landing/Price/PricePage.tsx:359
 #. js-lingui-explicit-id
 msgid "How FluencyPal Pricing Works"
 msgstr "Bagaimana Cara Kerja Harga FluencyPal"
 
-#: src/features/Landing/Price/PricePage.tsx:369
+#: src/features/Landing/Price/PricePage.tsx:370
 #. js-lingui-explicit-id
 msgid ""
 "Our AI tutor runs on a simple credit system—you only pay for the time and "
@@ -3038,22 +3024,22 @@ msgstr ""
 "membayar untuk waktu dan sumber daya\n"
 "                yang benar-benar Anda gunakan."
 
-#: src/features/Landing/Price/PricePage.tsx:410
+#: src/features/Landing/Price/PricePage.tsx:411
 #. js-lingui-explicit-id
 msgid "Start Free"
 msgstr "Mulai Gratis"
 
-#: src/features/Landing/Price/PricePage.tsx:413
+#: src/features/Landing/Price/PricePage.tsx:414
 #. js-lingui-explicit-id
 msgid "Start Free – Get 5 in credits when you sign up."
 msgstr "Start Gratis – Dapatkan 5 dalam kredit saat Anda mendaftar."
 
-#: src/features/Landing/Price/PricePage.tsx:453
+#: src/features/Landing/Price/PricePage.tsx:454
 #. js-lingui-explicit-id
 msgid "Use as You Go"
 msgstr "Gunakan Sesuai Kebutuhan"
 
-#: src/features/Landing/Price/PricePage.tsx:456
+#: src/features/Landing/Price/PricePage.tsx:457
 #. js-lingui-explicit-id
 msgid ""
 "Each AI conversation session consumes credits based on duration and "
@@ -3062,67 +3048,67 @@ msgstr ""
 "Setiap sesi percakapan AI mengkonsumsi kredit berdasarkan durasi dan "
 "kompleksitas."
 
-#: src/features/Landing/Price/PricePage.tsx:499
+#: src/features/Landing/Price/PricePage.tsx:500
 #. js-lingui-explicit-id
 msgid "Add More Credits"
 msgstr "Tambahkan Lebih Banyak Kredit"
 
-#: src/features/Landing/Price/PricePage.tsx:502
+#: src/features/Landing/Price/PricePage.tsx:503
 #. js-lingui-explicit-id
 msgid "Add more credits whenever you need them."
 msgstr "Tambahkan lebih banyak kredit kapan pun Anda membutuhkannya."
 
-#: src/features/Landing/Price/PricePage.tsx:540
+#: src/features/Landing/Price/PricePage.tsx:541
 #. js-lingui-explicit-id
 msgid "Why Pay-as-You-Go is Better Than Subscriptions"
 msgstr "Mengapa Bayar Sesuai Penggunaan Lebih Baik Daripada Langganan"
 
-#: src/features/Landing/Price/PricePage.tsx:668
+#: src/features/Landing/Price/PricePage.tsx:669
 #. js-lingui-explicit-id
 msgid "Traditional Subscription"
 msgstr "Langganan Tradisional"
 
-#: src/features/Landing/Price/PricePage.tsx:678
+#: src/features/Landing/Price/PricePage.tsx:679
 #. js-lingui-explicit-id
 msgid "Pay Only for What You Use"
 msgstr "Bayar Hanya Untuk Apa yang Anda Gunakan"
 
-#: src/features/Landing/Price/PricePage.tsx:705
+#: src/features/Landing/Price/PricePage.tsx:706
 #. js-lingui-explicit-id
 msgid "No, fixed cost"
 msgstr "Tidak, biaya tetap"
 
-#: src/features/Landing/Price/PricePage.tsx:711
+#: src/features/Landing/Price/PricePage.tsx:712
 #. js-lingui-explicit-id
 msgid "Full Access Anytime"
 msgstr "Akses Penuh Kapan Saja"
 
-#: src/features/Landing/Price/PricePage.tsx:742
+#: src/features/Landing/Price/PricePage.tsx:743
 #. js-lingui-explicit-id
 msgid "No Monthly Fees"
 msgstr "Tidak Ada Biaya Bulanan"
 
-#: src/features/Landing/Price/PricePage.tsx:768
+#: src/features/Landing/Price/PricePage.tsx:769
 #. js-lingui-explicit-id
 msgid "No, recurring charge"
 msgstr "Tidak, biaya berulang"
 
-#: src/features/Landing/Price/PricePage.tsx:774
+#: src/features/Landing/Price/PricePage.tsx:775
 #. js-lingui-explicit-id
 msgid "Pause Anytime"
 msgstr "Pause Kapan Saja"
 
-#: src/features/Landing/Price/PricePage.tsx:812
+#: src/features/Landing/Price/PricePage.tsx:813
 #. js-lingui-explicit-id
 msgid "Try FluencyPal for Free"
 msgstr "Coba FluencyPal secara Gratis"
 
-#: src/features/Landing/Price/PricePage.tsx:868
+#: src/features/Landing/Price/PricePage.tsx:869
 #. js-lingui-explicit-id
 msgid "Can I try FluencyPal for free?"
 msgstr "Bolehkah saya mencoba FluencyPal secara gratis?"
 
-#: src/features/Landing/Price/PricePage.tsx:871
+#: src/features/Landing/Price/PricePage.tsx:872
 #. js-lingui-explicit-id
 msgid ""
 "Yes! You start with one free hour of conversation with AI to explore all "
@@ -3131,12 +3117,12 @@ msgstr ""
 "Ya! Anda mulai dengan satu jam percakapan gratis dengan AI untuk "
 "menjelajahi semua fitur."
 
-#: src/features/Landing/Price/PricePage.tsx:881
+#: src/features/Landing/Price/PricePage.tsx:882
 #. js-lingui-explicit-id
 msgid "How much do AI conversations cost?"
 msgstr "Berapa biaya untuk percakapan AI?"
 
-#: src/features/Landing/Price/PricePage.tsx:884
+#: src/features/Landing/Price/PricePage.tsx:885
 #. js-lingui-explicit-id
 msgid ""
 "The cost is calculated based on duration and AI usage. On average, a full "
@@ -3145,12 +3131,12 @@ msgstr ""
 "Biaya dihitung berdasarkan durasi dan penggunaan AI. Rata-rata, satu jam "
 "penuh biayanya $5."
 
-#: src/features/Landing/Price/PricePage.tsx:894
+#: src/features/Landing/Price/PricePage.tsx:895
 #. js-lingui-explicit-id
 msgid "Can I buy credits in bulk?"
 msgstr "Bisakah saya membeli kredit dalam jumlah besar?"
 
-#: src/features/Landing/Price/PricePage.tsx:898
+#: src/features/Landing/Price/PricePage.tsx:899
 #. js-lingui-explicit-id
 msgid ""
 "Yes! We offer discounts when purchasing larger credit packages. Just "
@@ -3159,18 +3145,18 @@ msgstr ""
 "Ya! Kami menawarkan diskon saat membeli paket kredit yang lebih besar. "
 "Cukup hubungi saya sebelum Anda membeli dan saya akan memberi Anda diskon."
 
-#: src/features/Landing/Price/PricePage.tsx:908
+#: src/features/Landing/Price/PricePage.tsx:909
 #: src/features/Header/NeedHelpModal.tsx:103
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "Kontak:"
 
-#: src/features/Landing/Price/PricePage.tsx:918
+#: src/features/Landing/Price/PricePage.tsx:919
 #. js-lingui-explicit-id
 msgid "Will my credits expire?"
 msgstr "Apakah kredit saya akan kedaluwarsa?"
 
-#: src/features/Landing/Price/PricePage.tsx:921
+#: src/features/Landing/Price/PricePage.tsx:922
 #. js-lingui-explicit-id
 msgid "No, your credits stay active as long as your account is in good standing."
 msgstr "Tidak, kredit Anda tetap aktif selama akun Anda dalam keadaan baik."
@@ -4288,6 +4274,11 @@ msgstr "Muat ulang halaman"
 msgid "Idea for your message"
 msgstr "Ide untuk pesan Anda"
 
+#: src/features/Conversation/ConversationCanvas2.tsx:393
+#. js-lingui-explicit-id
+msgid "Lesson Review"
+msgstr "Tinjauan Pelajaran"
+
 #: src/features/Conversation/ConversationCanvas2.tsx:410
 #. js-lingui-explicit-id
 msgid "Language level:"
@@ -4387,6 +4378,21 @@ msgstr "Berhenti"
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "Rekam Pesan"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1144
+#. js-lingui-explicit-id
+msgid "Use voice message mode"
+msgstr "Gunakan mode pesan suara"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1161
+#. js-lingui-explicit-id
+msgid "Use keyboard mode"
+msgstr "Gunakan mode keyboard"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1178
+#. js-lingui-explicit-id
+msgid "Use phone mode"
+msgstr "Gunakan mode telepon"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1194
 #. js-lingui-explicit-id
@@ -6167,7 +6173,7 @@ msgstr "Dengan membuat akun, Anda setuju untuk:"
 msgid "{countOfLanguages} languages to practice"
 msgstr "{countOfLanguages} bahasa untuk berlatih"
 
-#: src/features/Landing/WelcomeScreen.tsx:85
+#: src/features/Landing/WelcomeScreen.tsx:87
 msgid "AI"
 msgstr "AI"
 
@@ -6200,7 +6206,7 @@ msgstr "Mari pastikan Anda siap"
 msgid "My Position: <0>{0}</0>"
 msgstr "Posisi Saya: <0>{0}</0>"
 
-#: src/features/Game/PositionChangedModal.tsx:96
+#: src/features/Game/PositionChangedModal.tsx:105
 msgid "Nice!"
 msgstr "Bagus!"
 
@@ -6236,7 +6242,7 @@ msgstr "Kirim Masukan"
 msgid "Submit"
 msgstr "Kirim"
 
-#: src/features/Landing/WelcomeScreen.tsx:126
+#: src/features/Landing/WelcomeScreen.tsx:128
 msgid "Talk, get corrected, improve—repeat."
 msgstr "Bicara, dapatkan koreksi, perbaiki—ulangi."
 
@@ -6244,7 +6250,7 @@ msgstr "Bicara, dapatkan koreksi, perbaiki—ulangi."
 msgid "Turn on microphone"
 msgstr "Nyalakan mikrofon"
 
-#: src/features/Landing/WelcomeScreen.tsx:130
+#: src/features/Landing/WelcomeScreen.tsx:132
 msgid "Win the game and get the app <0>for free</0>"
 msgstr "Menangkan permainan dan dapatkan aplikasi <0>secara gratis</0>"
 
