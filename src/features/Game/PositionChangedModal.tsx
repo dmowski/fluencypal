@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useGame } from "./useGame";
 import { Button, Stack, Typography } from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { Trans } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
 import { GameStatRow } from "./GameStatRow";
 import { UsersStat } from "./types";
 
@@ -17,6 +17,8 @@ export const PositionChangedModal = () => {
     const index = game.stats.findIndex((stat) => stat.username === username);
     return index >= 0 ? index : 0;
   };
+
+  const { i18n } = useLingui();
 
   useEffect(() => {
     if (game.stats.length < 1) {
@@ -101,9 +103,7 @@ export const PositionChangedModal = () => {
           }}
         >
           <Stack>
-            <Typography variant="h6">
-              <Trans>Nice!</Trans>
-            </Typography>
+            <Typography variant="h6">{i18n._("Nice!")}</Typography>
           </Stack>
           <Stack
             sx={{
@@ -135,7 +135,7 @@ export const PositionChangedModal = () => {
             })}
           </Stack>
           <Button variant="contained" size="large" onClick={() => setIsShowModal(false)}>
-            <Trans>Continue</Trans>
+            {i18n._("Continue")}
           </Button>
         </Stack>
       </Stack>

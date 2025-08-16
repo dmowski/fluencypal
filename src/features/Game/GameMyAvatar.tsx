@@ -3,21 +3,21 @@ import { useGame } from "./useGame";
 import { useState } from "react";
 import { avatars, defaultAvatar } from "./avatars";
 import { Stack, Typography } from "@mui/material";
-import { Trans } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
 
 export const GameMyAvatar = () => {
   const game = useGame();
 
   const myAvatar = game.gameAvatars[game.myProfile?.username || ""] || defaultAvatar;
   const [isShowAvatarSelector, setIsShowAvatarSelector] = useState(false);
-
+  const { i18n } = useLingui();
   return (
     <>
       {isShowAvatarSelector && (
         <CustomModal onClose={() => setIsShowAvatarSelector(false)} isOpen={isShowAvatarSelector}>
           <Stack>
             <Typography variant="h6" align="center" sx={{ marginBottom: "20px" }}>
-              <Trans>Select your avatar</Trans>
+              {i18n._("Select your avatar")}
             </Typography>
             <Stack
               sx={{

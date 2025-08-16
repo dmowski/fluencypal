@@ -4,7 +4,7 @@ import { Swords } from "lucide-react";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useGame } from "./useGame";
 
-import { Trans, useLingui } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
 
 interface GameBadgeProps {
   lang: SupportedLanguage;
@@ -49,7 +49,7 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
             },
           }}
         >
-          <Trans>Play and Learn</Trans>
+          {i18n._("Play and Learn")}
         </Typography>
         <Typography
           sx={{
@@ -60,9 +60,7 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
             },
           }}
         >
-          <Trans>
-            Rank in the top 5 to get the app <b>for free</b>
-          </Trans>
+          {i18n._("Rank in the top 5 to get the app for free")}
         </Typography>
 
         <Typography

@@ -3,7 +3,6 @@ import { useGame } from "./useGame";
 import { useLingui } from "@lingui/react";
 import { useEffect, useState } from "react";
 import { CheckIcon, PencilIcon } from "lucide-react";
-import { Trans } from "@lingui/react/macro";
 
 export const GameMyUsername = () => {
   const game = useGame();
@@ -39,7 +38,7 @@ export const GameMyUsername = () => {
           opacity: 0.8,
         }}
       >
-        <Trans>Your Username:</Trans>
+        {i18n._("Your Username:")}
       </Typography>
       <Stack
         sx={{

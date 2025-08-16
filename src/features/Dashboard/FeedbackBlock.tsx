@@ -1,6 +1,6 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { useAuth } from "../Auth/useAuth";
@@ -39,18 +39,16 @@ export function FeedbackBlock() {
         gap: "10px",
       }}
     >
-      <Typography>
-        <Trans>Your feedback is valuable to me</Trans>
-      </Typography>
+      <Typography>{i18n._("Your feedback is valuable to me")}</Typography>
       <TextField
         value={feedback}
         onChange={(e) => setFeedback(e.target.value)}
-        placeholder={i18n._(`Leave your feedback`)}
+        placeholder={i18n._("Leave your feedback")}
         multiline
         rows={3}
       />
       <Button variant="outlined" onClick={onSendFeedback} disabled={!feedback || isSending}>
-        {isSending ? <Trans>Sending...</Trans> : <Trans>Send Feedback</Trans>}
+        {isSending ? i18n._("Sending...") : i18n._("Send Feedback")}
       </Button>
     </Stack>
   );

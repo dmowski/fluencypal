@@ -1,4 +1,4 @@
-import { Trans, useLingui } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
 import { IconButton, Stack, Typography } from "@mui/material";
 import { useMemo, useState } from "react";
 import { useSettings } from "../Settings/useSettings";
@@ -36,7 +36,7 @@ export const GameNativeLanguageSelector = () => {
       }}
     >
       <Typography variant="body2">
-        <Trans>Your Native Language:</Trans>
+        {i18n._("Your Native Language:")}
         {!isShowLangSelector ? " " + nativeLanguageFullName : ""}
         {!isShowLangSelector && (
           <IconButton size="small" onClick={() => setIsShowLangSelector(!isShowLangSelector)}>

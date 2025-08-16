@@ -10,11 +10,12 @@ import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useNativeRecorder } from "@/features/Audio/useNativeRecorder";
-import { Trans } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
 
 export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { i18n } = useLingui();
 
   const auth = useAuth();
   const settings = useSettings();
@@ -129,7 +130,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
             boxSizing: "border-box",
           }}
         >
-          <Trans>Read the text</Trans>
+          {i18n._("Read the text")}
         </Typography>
         <Stack
           sx={{
@@ -249,7 +250,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                 width: "100%",
               }}
             >
-              <Trans>Loading...</Trans>
+              {i18n._("Loading...")}
             </Typography>
           )}
 
@@ -261,7 +262,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                 width: "100%",
               }}
             >
-              <Trans>Transcribing...</Trans>
+              {i18n._("Transcribing...")}
             </Typography>
           )}
 
@@ -283,7 +284,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
               >
                 {!isUseNativeRecorder && !usersTranscript && (
                   <Button variant="contained" size="large" onClick={() => submitBackupRecorder()}>
-                    <Trans>Done</Trans>
+                    {i18n._("Done")}
                   </Button>
                 )}
 
@@ -296,7 +297,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                     size="large"
                     onClick={() => startRecording()}
                   >
-                    <Trans>Re-record</Trans>
+                    {i18n._("Re-record")}
                   </Button>
                 )}
 
@@ -307,7 +308,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                   disabled={percentage < 70}
                   onClick={() => handleAnswerSubmit(question.question)}
                 >
-                  <Trans>Submit</Trans>
+                  {i18n._("Submit")}
                 </Button>
                 <Typography variant="body2">{percentage}%</Typography>
               </Stack>
@@ -336,7 +337,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                   startRecording();
                 }}
               >
-                <Trans>Turn on microphone</Trans>
+                {i18n._("Turn on microphone")}
               </Button>
             )}
 
@@ -348,7 +349,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                 paddingTop: "10px",
               }}
             >
-              <Trans>Error:</Trans>: {error}
+              {i18n._("Error:")}: {error}
             </Typography>
           )}
 
@@ -373,7 +374,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                     color: isCorrect ? "#4ADE80" : "#F87171",
                   }}
                 >
-                  {isCorrect ? <Trans>Correct!</Trans> : <Trans>Incorrect!</Trans>}
+                  {isCorrect ? i18n._("Correct!") : i18n._("Incorrect!")}
                 </Typography>
               </Stack>
               <Button
@@ -388,7 +389,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                   width: "100%",
                 }}
               >
-                <Trans>Next</Trans>
+                {i18n._("Next")}
               </Button>
               <SummaryRow />
             </Stack>
