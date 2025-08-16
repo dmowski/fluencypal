@@ -26,6 +26,7 @@ interface LanguageAutocompleteProps {
   options: SelectGroupItem[];
   value: SelectGroupItem | null;
   label?: string;
+  showSubtitle?: boolean;
   onChange: (valueCode: string) => void;
   placeholder?: string;
   required?: boolean;
@@ -40,6 +41,7 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
   label,
   onChange,
   required,
+  showSubtitle,
   id,
   disabled,
 }) => {
@@ -97,12 +99,12 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
                 justifyContent: "flex-start",
                 padding: "0px 5px",
                 gap: "15px",
-                minHeight: "42px",
+                minHeight: showSubtitle ? "42px" : "auto",
               }}
             >
               <Stack>
                 <Typography>{option.englishName}</Typography>
-                <Typography variant="caption">{option.nativeName}</Typography>
+                {showSubtitle && <Typography variant="caption">{option.nativeName}</Typography>}
               </Stack>
             </Stack>
           </Stack>

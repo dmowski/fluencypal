@@ -25,6 +25,13 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
     ) || "en";
 
   const [myLang, setMyLang] = useState<SupportedLanguage | null>(pageLang);
+  const stepsCount = 1;
+  const [step, setStep] = useState(0);
+  const isLastStep = step === stepsCount;
+  const nextStep = () => {
+    setStep((prev) => Math.min(prev + 1, stepsCount));
+  };
+
   useEffect(() => {
     setMyLang(pageLang);
   }, [pageLang]);
@@ -32,9 +39,16 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
   const { i18n } = useLingui();
   const router = useRouter();
 
-  const onConfirm = async () => {
-    await settings.setLanguage(langToLearn || "en");
-    deleteLearnLangParam();
+  const onConfirm = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    if (isLastStep) {
+      deleteLearnLangParam();
+      await settings.setLanguage(langToLearn || "en");
+    } else {
+      nextStep();
+      settings.setNativeLanguage(myLang || pageLang || "en");
+    }
   };
 
   async function deleteLearnLangParam() {
@@ -152,19 +166,84 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
               minWidth: "min(400px, 90dvw)",
             }}
           >
-            <Stack
-              sx={{
-                alignItems: "flex-start",
-                width: "100%",
-                gap: "30px",
-                flexDirection: "column",
-              }}
-            >
+            {step === 0 && (
+              <Stack
+                sx={{
+                  alignItems: "flex-start",
+                  width: "100%",
+                  gap: "30px",
+                  flexDirection: "column",
+                }}
+              >
+                <Stack
+                  sx={{
+                    width: "100%",
+                    alignItems: "flex-start",
+                    gap: "5px",
+                  }}
+                >
+                  <Stack
+                    sx={{
+                      alignItems: "center",
+                      flexDirection: "row",
+                      gap: "10px",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    <GraduationCap size={"18px"} />
+                    <Typography
+                      variant="h3"
+                      align="left"
+                      sx={{
+                        fontWeight: 500,
+                        fontSize: "1rem",
+                        boxSizing: "border-box",
+                        lineHeight: "1.1",
+                      }}
+                    >
+                      {i18n._(`Learn`)}
+                    </Typography>
+                  </Stack>
+                  <LangSelector
+                    value={langToLearn || "en"}
+                    availableList={supportedLanguagesToLearn}
+                    onChange={(lang) => handleChangeLearnLang(lang)}
+                  />
+                </Stack>
+                <Stack
+                  sx={{
+                    width: "100%",
+                    alignItems: "flex-start",
+                    gap: "5px",
+                  }}
+                >
+                  <Typography
+                    variant="h3"
+                    align="center"
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: "1rem",
+                      boxSizing: "border-box",
+                      lineHeight: "1.1",
+                      paddingLeft: "3px",
+                    }}
+                  >
+                    {i18n._(`Page`)}
+                  </Typography>
+                  <LangSelector
+                    value={myLang || "en"}
+                    onChange={(lang) => handleChangeMyLang(lang)}
+                  />
+                </Stack>
+              </Stack>
+            )}
+
+            {step === 1 && (
               <Stack
                 sx={{
                   width: "100%",
                   alignItems: "flex-start",
-                  gap: "5px",
+                  gap: "10px",
                 }}
               >
                 <Stack
@@ -175,7 +254,6 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
                     paddingLeft: "3px",
                   }}
                 >
-                  <GraduationCap size={"18px"} />
                   <Typography
                     variant="h3"
                     align="left"
@@ -186,81 +264,22 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
                       lineHeight: "1.1",
                     }}
                   >
-                    {i18n._(`Learn`)}
+                    {i18n._(`Native Language`)}
                   </Typography>
                 </Stack>
-                <LangSelector
-                  value={langToLearn || "en"}
-                  availableList={supportedLanguagesToLearn}
-                  onChange={(lang) => handleChangeLearnLang(lang)}
+
+                <LanguageAutocomplete
+                  options={languageGroups}
+                  value={selectedNativeLanguage || null}
+                  showSubtitle={false}
+                  onChange={(langCode) => {
+                    if (langCode) {
+                      settings.setNativeLanguage(langCode);
+                    }
+                  }}
                 />
               </Stack>
-              <Stack
-                sx={{
-                  width: "100%",
-                  alignItems: "flex-start",
-                  gap: "5px",
-                }}
-              >
-                <Typography
-                  variant="h3"
-                  align="center"
-                  sx={{
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                    boxSizing: "border-box",
-                    lineHeight: "1.1",
-                    paddingLeft: "3px",
-                  }}
-                >
-                  {i18n._(`Page`)}
-                </Typography>
-                <LangSelector
-                  value={myLang || "en"}
-                  onChange={(lang) => handleChangeMyLang(lang)}
-                />
-              </Stack>
-            </Stack>
-
-            <Stack
-              sx={{
-                width: "100%",
-                alignItems: "flex-start",
-                gap: "10px",
-              }}
-            >
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  flexDirection: "row",
-                  gap: "10px",
-                  paddingLeft: "3px",
-                }}
-              >
-                <Typography
-                  variant="h3"
-                  align="left"
-                  sx={{
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                    boxSizing: "border-box",
-                    lineHeight: "1.1",
-                  }}
-                >
-                  {i18n._(`Native Language`)}
-                </Typography>
-              </Stack>
-
-              <LanguageAutocomplete
-                options={languageGroups}
-                value={selectedNativeLanguage || null}
-                onChange={(langCode) => {
-                  if (langCode) {
-                    settings.setNativeLanguage(langCode);
-                  }
-                }}
-              />
-            </Stack>
+            )}
 
             <Button
               sx={{
@@ -269,12 +288,12 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
                 boxSizing: "border-box",
               }}
               endIcon={<ArrowRight />}
-              onClick={onConfirm}
+              onClick={(e) => onConfirm(e)}
               size="large"
               color="info"
               variant="contained"
             >
-              Continue
+              {i18n._(`Continue`)} {step + 1}/{stepsCount + 1}
             </Button>
           </Stack>
         </Stack>
