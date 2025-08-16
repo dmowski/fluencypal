@@ -51,77 +51,82 @@ export const PlanCard = ({
   return (
     <>
       {showModal && (
-        <CustomModal
-          isOpen={true}
-          onClose={() => setShowModal(false)}
-          padding="40px 20px"
-          width="min(400px, 100vw)"
-        >
+        <CustomModal isOpen={true} onClose={() => setShowModal(false)} padding="0px" width="100vw">
           <Stack
             sx={{
-              alignItems: "center",
-              width: "100%",
+              minHeight: "100dvh",
 
-              img: {
-                borderRadius: "100px",
-                width: "100px",
-                height: "100px",
-              },
-            }}
-          >
-            {icon}
-          </Stack>
-          <Stack
-            sx={{
-              gap: "10px",
-              alignItems: "center",
               width: "100%",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <Stack>
+            <Stack
+              sx={{
+                alignItems: "center",
+                width: "100%",
+
+                img: {
+                  borderRadius: "100px",
+                  width: "100px",
+                  height: "100px",
+                },
+              }}
+            >
+              {icon}
+            </Stack>
+            <Stack
+              sx={{
+                gap: "10px",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
+              <Stack>
+                <Typography
+                  align="center"
+                  variant="caption"
+                  sx={{
+                    color: `rgba(255, 255, 255, 0.5)`,
+                  }}
+                >
+                  {subTitle}
+                </Typography>
+                <Typography variant="h4" align="center" component="h2" className="decor-text">
+                  {title}
+                </Typography>
+                <Typography sx={{ paddingTop: "20px" }} align="center" variant="caption">
+                  {description}
+                </Typography>
+              </Stack>
+
+              <Button
+                sx={{
+                  margin: "15px 0px",
+                  minWidth: "260px",
+                  padding: "10px 20px",
+                }}
+                onClick={() => {
+                  setShowModal(false);
+                  onClick();
+                  goFullScreen();
+                }}
+                variant="contained"
+                color="info"
+                size="large"
+              >
+                {i18n._(`Start lesson`)}
+              </Button>
               <Typography
                 align="center"
                 variant="caption"
                 sx={{
-                  color: `rgba(255, 255, 255, 0.5)`,
+                  opacity: 0.7,
                 }}
               >
-                {subTitle}
-              </Typography>
-              <Typography variant="h4" align="center" component="h2" className="decor-text">
-                {title}
-              </Typography>
-              <Typography sx={{ paddingTop: "20px" }} align="center" variant="caption">
-                {description}
+                {i18n._(`Send 6 messages to complete`)}
               </Typography>
             </Stack>
-
-            <Button
-              sx={{
-                margin: "15px 0px",
-                width: "100%",
-                padding: "10px 20px",
-              }}
-              onClick={() => {
-                setShowModal(false);
-                onClick();
-                goFullScreen();
-              }}
-              variant="contained"
-              color="info"
-              size="large"
-            >
-              {i18n._(`Start lesson`)}
-            </Button>
-            <Typography
-              align="center"
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              {i18n._(`Send 6 messages to complete`)}
-            </Typography>
           </Stack>
         </CustomModal>
       )}
