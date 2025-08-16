@@ -179,7 +179,7 @@ export const PlanCard = ({
           },
 
           "@media (max-width: 500px)": {
-            gap: "5px 20px",
+            gap: "13px 20px",
             padding: "16px 16px 26px 16px",
             gridTemplateAreas: isActive
               ? `
