@@ -22,11 +22,14 @@ export async function POST(request: Request) {
       .get(),
   ]);
 
-  if (!logsHours.empty) {
-    throw new Error("Already added welcome bonus");
+  console.log("logsDays.docs", logsDays.docs);
+
+  if (logsHours.docs.length > 0) {
+    return;
   }
-  if (!logsDays.empty) {
-    throw new Error("Already added trial days");
+
+  if (logsDays.docs.length > 0) {
+    return;
   }
 
   if (ENABLE_SUBSCRIPTIONS) {

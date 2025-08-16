@@ -33,6 +33,7 @@ import { useConversationsAnalysis } from "./useConversationsAnalysis";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { PlanDashboardCards } from "../Dashboard/PlanDashboardCards";
 import { usePayWall } from "../PayWall/usePayWall";
+import { useGame } from "../Game/useGame";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -100,6 +101,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
       scroll: false,
     });
   }, [settings.userSettings]);
+  const game = useGame();
 
   useEffect(() => {
     if (aiConversation.isClosing) {
@@ -202,6 +204,8 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     defaultMessagesToComplete
   );
 
+  const isFullAccess = game.isGameWinner || usage.isFullAccess;
+
   return (
     <Stack>
       {paywall.isShowPayWall && !usage.isShowPaymentModal && <NoBalanceBlock lang={lang} />}
@@ -262,6 +266,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           const isMuted = !isCallMode;
           aiConversation.toggleMute(isMuted);
         }}
+        isNeedToShowBalanceWarning={!isFullAccess}
       />
     </Stack>
   );

@@ -201,6 +201,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         }}
         isCallMode={false}
         toggleCallMode={() => {}}
+        isNeedToShowBalanceWarning={true}
       />
     </Stack>
   );

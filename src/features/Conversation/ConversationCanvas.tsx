@@ -1,6 +1,5 @@
 "use client";
 
-import { useAiConversation } from "@/features/Conversation/useAiConversation";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useEffect, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
@@ -18,7 +17,6 @@ import { MODELS } from "@/common/ai";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { AliasGamePanel } from "./AliasGamePanel";
 import { VolumeButton } from "../uiKit/Button/VolumeButton";
-import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
 import { useWebCam } from "../webCam/useWebCam";
@@ -45,13 +43,13 @@ interface ConversationCanvasProps {
   addUserMessage: (message: string) => Promise<void>;
   fullLanguageName: string;
   generateText: (conversationDate: TextAiRequest) => Promise<string>;
-  balanceHours: number;
   togglePaymentModal: (isOpen: boolean) => void;
   analyzeUserMessage: (message: string) => Promise<{
     sourceMessage: string;
     correctedMessage: string;
     description: string;
   }>;
+  isNeedToShowBalanceWarning: boolean;
 }
 export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   conversation,
@@ -72,21 +70,16 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   addUserMessage,
   fullLanguageName,
   generateText,
-  balanceHours,
+
   togglePaymentModal,
   analyzeUserMessage,
+  isNeedToShowBalanceWarning,
 }) => {
   const [userMessage, setUserMessage] = useState("");
   const [helpMessage, setHelpMessage] = useState("");
 
   const webCam = useWebCam();
   const game = useGame();
-
-  const isSmallBalance = balanceHours < 0.1 && !game.isGameWinner;
-  const isExtremelySmallBalance = balanceHours < 0.05 && !game.isGameWinner;
-
-  const isNeedToShowBalanceWarning =
-    (isSmallBalance && conversation.length > 1) || isExtremelySmallBalance;
 
   const submitMessage = () => {
     if (!userMessage) return;
@@ -171,7 +164,6 @@ Use ${fullLanguageName || "English"} language.
               <UserMessage
                 message={lastUserMessage?.text}
                 analyzeUserMessage={analyzeUserMessage}
-                balanceHours={balanceHours}
               />
             )}
 
@@ -270,13 +262,8 @@ Use ${fullLanguageName || "English"} language.
               gap: "5px",
             }}
           >
-            <Typography
-              variant="caption"
-              color={isExtremelySmallBalance ? "error" : isSmallBalance ? "warning" : "primary"}
-              align="right"
-            >
-              You have a low balance | {`${convertHoursToHumanFormat(balanceHours)}`} <br />
-              It makes sense to top up your balance.
+            <Typography variant="caption" color={"warning"} align="right">
+              You have a low balance. It makes sense to top up your balance.
             </Typography>
             <Button
               startIcon={<AddCardIcon />}
@@ -355,15 +342,7 @@ Use ${fullLanguageName || "English"} language.
                   {conversation.length > 0 && (
                     <Stack>
                       <Button
-                        color={
-                          isNeedToShowBalanceWarning
-                            ? isExtremelySmallBalance
-                              ? "error"
-                              : isSmallBalance
-                                ? "warning"
-                                : "primary"
-                            : "primary"
-                        }
+                        color={isNeedToShowBalanceWarning ? "warning" : "primary"}
                         variant="outlined"
                         onClick={() => finishLesson()}
                       >

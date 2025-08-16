@@ -1,4 +1,4 @@
-import { IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import { Stack, Tooltip, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { BadgeAlert, FlaskConical } from "lucide-react";
 import { StringDiff } from "react-string-diff";
@@ -10,11 +10,10 @@ interface UserMessageProps {
     correctedMessage: string;
     description: string;
   }>;
-  balanceHours: number;
 }
 type MessageQuality = "loading" | "great" | "bad" | "error";
 
-export const UserMessage = ({ message, analyzeUserMessage, balanceHours }: UserMessageProps) => {
+export const UserMessage = ({ message, analyzeUserMessage }: UserMessageProps) => {
   const [level, setLevel] = useState<MessageQuality>("loading");
   const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
   const [description, setDescription] = useState<string | null>(null);
@@ -54,21 +53,11 @@ export const UserMessage = ({ message, analyzeUserMessage, balanceHours }: UserM
     }
   };
 
-  const isLowBalance = balanceHours < 0.01;
-
   useEffect(() => {
-    if (isLowBalance) {
-      setLevel("loading");
-      setIsShowDetails(false);
-      setDescription(null);
-      setCorrectedMessage(null);
-      return;
-    }
-
     if (message) {
       analyzeMessage();
     }
-  }, [message, isLowBalance]);
+  }, [message]);
 
   return (
     <Stack

@@ -100,9 +100,9 @@ interface ConversationCanvasProps {
   generateHelpMessage: () => Promise<string>;
   isCallMode: boolean;
   toggleCallMode: (newStateIsCallMode: boolean) => void;
+  isNeedToShowBalanceWarning: boolean;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
-  isOnboarding,
   isCallMode,
   toggleCallMode,
   conversation,
@@ -111,7 +111,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isClosed,
   isClosing,
   addUserMessage,
-  balanceHours,
   togglePaymentModal,
   analyzeUserMessage,
   transcriptMessage,
@@ -137,6 +136,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   analyzeConversation,
   messagesToComplete,
   generateHelpMessage,
+  isNeedToShowBalanceWarning,
 }) => {
   const { i18n } = useLingui();
 
@@ -156,12 +156,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const stopCallMode = () => {
     toggleCallMode(false);
   };
-
-  const isSmallBalance = balanceHours < 0.1 && !game.isGameWinner;
-  const isExtremelySmallBalance = balanceHours < 0.05 && !game.isGameWinner;
-
-  const isNeedToShowBalanceWarning =
-    (isSmallBalance && conversation.length > 1) || isExtremelySmallBalance;
 
   const isFinishingProcess = isClosing || isClosed;
 
@@ -253,13 +247,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     await analyzeUserInput(internalUserInput);
   };
 
-  const isLowBalance = balanceHours < 0.01 && !game.isGameWinner;
-
   useEffect(() => {
-    if (isLowBalance) {
-      return;
-    }
-
     if (transcriptMessage) {
       analyzeMessageAudioTranscript();
     }
@@ -1404,22 +1392,11 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                               width: "100%",
                             }}
                           >
-                            <Typography
-                              variant="caption"
-                              color={
-                                isExtremelySmallBalance
-                                  ? "error"
-                                  : isSmallBalance
-                                    ? "warning"
-                                    : "primary"
-                              }
-                              align="right"
-                            >
-                              {i18n._("You have a low balance")} |{" "}
-                              {`${convertHoursToHumanFormat(balanceHours)}`} <br />
-                              {i18n._("It makes sense to top up your balance.")}
+                            <Typography variant="caption" color={"warning"} align="right">
+                              {i18n._("Low balance")}
                             </Typography>
                             <Button
+                              color={"warning"}
                               startIcon={<AddCardIcon />}
                               onClick={() => togglePaymentModal(true)}
                               variant="contained"

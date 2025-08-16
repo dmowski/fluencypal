@@ -8,6 +8,7 @@ import {
   JSX,
   Dispatch,
   SetStateAction,
+  useRef,
 } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { getDoc } from "firebase/firestore";
@@ -100,14 +101,16 @@ function useProvideUsage(): UsageContextType {
     saveLogs(newUsageLogs);
   }, [totalUsage, usageLogs, userId, totalUsageDoc]);
 
+  const isBalanceInit = useRef(false);
   const initWelcomeBalance = async () => {
-    if (!totalUsageDoc || !userId) {
+    if (!totalUsageDoc || !userId || isBalanceInit.current) {
       return;
     }
     const docData = await getDoc(totalUsageDoc);
     const totalData = docData.data();
     if (!totalData) {
       console.log("ADD START BALANCE");
+      isBalanceInit.current = true;
       await initWelcomeBalanceRequest(
         {
           languageCode: "en",
