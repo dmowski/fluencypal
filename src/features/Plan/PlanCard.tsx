@@ -181,9 +181,14 @@ export const PlanCard = ({
           "@media (max-width: 500px)": {
             gap: "5px 20px",
             padding: "16px 16px 26px 16px",
-            gridTemplateAreas: `
+            gridTemplateAreas: isActive
+              ? `
             'icon title chevron'
-            'details details chevron'
+            'details details details'
+          `
+              : `
+            'icon title title'
+            'details details details'
           `,
           },
         }}
@@ -459,23 +464,25 @@ export const PlanCard = ({
           {details}
         </Typography>
 
-        <Stack
-          sx={{
-            borderRadius: "50%",
+        {isActive && (
+          <Stack
+            sx={{
+              borderRadius: "50%",
 
-            gridArea: "chevron",
-            display: isActive ? "flex" : "none",
-            background: isActive
-              ? "linear-gradient(45deg,rgb(13, 220, 196) 0%,rgba(13, 180, 236, 0.59) 100%)"
-              : "",
-            height: "45px",
-            width: "45px",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {isActive ? <ChevronRight size={"25px"} /> : <Check />}
-        </Stack>
+              gridArea: "chevron",
+              display: isActive ? "flex" : "none",
+              background: isActive
+                ? "linear-gradient(45deg,rgb(13, 220, 196) 0%,rgba(13, 180, 236, 0.59) 100%)"
+                : "",
+              height: "45px",
+              width: "45px",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {isActive ? <ChevronRight size={"25px"} /> : <Check />}
+          </Stack>
+        )}
       </Stack>
     </>
   );
