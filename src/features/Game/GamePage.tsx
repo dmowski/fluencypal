@@ -1,3 +1,4 @@
+"use client";
 import { Button, Stack, Typography } from "@mui/material";
 import { useGame } from "./useGame";
 import { GameQuestion } from "./GameQuestion";
@@ -15,6 +16,9 @@ import { GameOnboarding } from "./GameOnboarding";
 export const GamePage = () => {
   const game = useGame();
   const { i18n } = useLingui();
+
+  const loadingMessage = i18n._(`Loading...`);
+  const playMessage = i18n._(`Play`);
 
   return (
     <Stack
@@ -68,7 +72,7 @@ export const GamePage = () => {
             padding: "15px 20px",
           }}
         >
-          {game.loadingQuestions ? i18n._(`Loading`) : i18n._(`Play`)}
+          {game.loadingQuestions ? loadingMessage : playMessage}
         </Button>
 
         <Stack
