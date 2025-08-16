@@ -21,10 +21,15 @@ msgstr "読み込んでいます..."
 msgid "Continue"
 msgstr "続ける"
 
-#: src/features/Landing/Price/PricePage.tsx:91
+#: src/features/Landing/Price/PricePage.tsx:321
 #. js-lingui-explicit-id
-msgid "Start free and pay later"
-msgstr "無料で始めて、後で支払う"
+msgid "Contact for pricing"
+msgstr "価格についてのお問い合わせ"
+
+#: src/features/Landing/Price/PricePage.tsx:329
+#. js-lingui-explicit-id
+msgid "Custom features"
+msgstr "カスタム機能"
 
 #: src/features/Dashboard/FeedbackBlock.tsx:53
 msgid "Sending..."
@@ -599,7 +604,7 @@ msgid "AI hours left in your balance."
 msgstr "あなたの残高に残っているAIの時間。"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:337
-#: src/features/Landing/Price/PricePage.tsx:166
+#: src/features/Landing/Price/PricePage.tsx:218
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "フルアクセス"
@@ -611,12 +616,13 @@ msgid "Active"
 msgstr "アクティブ"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:388
+#: src/features/Landing/Price/PricePage.tsx:253
 #. js-lingui-explicit-id
 msgid "month"
 msgstr "月"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:393
-#: src/features/Landing/Price/PricePage.tsx:170
+#: src/features/Landing/Price/PricePage.tsx:257
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "完全なアクセスで全速力で学びましょう"
@@ -1712,6 +1718,7 @@ msgstr "すべてのシナリオ"
 #: src/features/Landing/PlanLandingBlock.tsx:502
 #: src/features/Landing/PlanLandingBlock.tsx:628
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:327
+#: src/features/Landing/Price/PricePage.tsx:300
 #: src/features/Dashboard/PlanDashboardCards.tsx:496
 #. js-lingui-explicit-id
 msgid "Start"
@@ -2269,21 +2276,21 @@ msgstr "開始する"
 
 #: src/features/Landing/LandingPage.tsx:121
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:44
-#: src/features/Landing/Price/PricePage.tsx:97
-#: src/features/Landing/Price/PricePage.tsx:845
+#: src/features/Landing/Price/PricePage.tsx:111
+#: src/features/Landing/Price/PricePage.tsx:955
 #: src/features/Blog/BlogsPage.tsx:42
 #. js-lingui-explicit-id
 msgid "Get Started Free"
 msgstr "無料で始める"
 
 #: src/features/Landing/LandingPage.tsx:122
-#: src/features/Landing/Price/PricePage.tsx:98
+#: src/features/Landing/Price/PricePage.tsx:112
 #. js-lingui-explicit-id
 msgid "View Pricing"
 msgstr "料金を見る"
 
 #: src/features/Landing/LandingPage.tsx:123
-#: src/features/Landing/Price/PricePage.tsx:99
+#: src/features/Landing/Price/PricePage.tsx:113
 #. js-lingui-explicit-id
 msgid "No Credit Card Needed"
 msgstr "クレジットカードは不要です"
@@ -2414,7 +2421,7 @@ msgid "Master English Fluency"
 msgstr "マスター英語流暢さ"
 
 #: src/features/Landing/LandingPage.tsx:190
-#: src/features/Landing/Price/PricePage.tsx:759
+#: src/features/Landing/Price/PricePage.tsx:869
 #. js-lingui-explicit-id
 msgid "FAQ"
 msgstr "FAQ"
@@ -2485,14 +2492,14 @@ msgid "Blog"
 msgstr "ブログ"
 
 #: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:81
+#: src/features/Landing/Price/PricePage.tsx:95
 #: src/features/Header/HeaderStatic.tsx:13
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "価格"
 
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:43
-#: src/features/Landing/Price/PricePage.tsx:844
+#: src/features/Landing/Price/PricePage.tsx:954
 #: src/features/Blog/BlogsPage.tsx:41
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
@@ -2594,170 +2601,160 @@ msgstr "発見する"
 msgid "No scenarios found"
 msgstr "シナリオが見つかりません"
 
-#: src/features/Landing/Price/PricePage.tsx:96
+#: src/features/Landing/Price/PricePage.tsx:105
+#. js-lingui-explicit-id
+msgid "Start free and pay later"
+msgstr "無料で始めて、後で支払う"
+
+#: src/features/Landing/Price/PricePage.tsx:110
 #. js-lingui-explicit-id
 msgid "Open Dashboard"
 msgstr "ダッシュボードを開く"
 
-#: src/features/Landing/Price/PricePage.tsx:123
+#: src/features/Landing/Price/PricePage.tsx:137
 #. js-lingui-explicit-id
 msgid "Choose a Plan That Works for You"
 msgstr "あなたに合ったプランを選んでください"
 
-#: src/features/Landing/Price/PricePage.tsx:146
+#: src/features/Landing/Price/PricePage.tsx:160
 #. js-lingui-explicit-id
 msgid "Trial"
 msgstr "試用"
 
-#: src/features/Landing/Price/PricePage.tsx:147
+#: src/features/Landing/Price/PricePage.tsx:161
 #. js-lingui-explicit-id
 msgid "For learners who want to try it out"
 msgstr "試してみたい学習者のために"
 
-#: src/features/Landing/Price/PricePage.tsx:149
+#: src/features/Landing/Price/PricePage.tsx:195
 #. js-lingui-explicit-id
 msgid "3 days"
 msgstr "3日間"
 
-#: src/features/Landing/Price/PricePage.tsx:150
+#: src/features/Landing/Price/PricePage.tsx:199
 #. js-lingui-explicit-id
 msgid "Game mode and trial AI tutor access"
 msgstr "ゲームモードとAIチューターの体験アクセス"
 
-#: src/features/Landing/Price/PricePage.tsx:151
+#: src/features/Landing/Price/PricePage.tsx:200
 #. js-lingui-explicit-id
 msgid "Includes:"
 msgstr "含まれています："
 
-#: src/features/Landing/Price/PricePage.tsx:154
+#: src/features/Landing/Price/PricePage.tsx:204
 #. js-lingui-explicit-id
 msgid "Game Mode"
 msgstr "ゲームモード"
 
-#: src/features/Landing/Price/PricePage.tsx:155
+#: src/features/Landing/Price/PricePage.tsx:205
 #. js-lingui-explicit-id
 msgid "Many language games to practice"
 msgstr "多くの言語ゲームで練習"
 
-#: src/features/Landing/Price/PricePage.tsx:158
+#: src/features/Landing/Price/PricePage.tsx:209
 #. js-lingui-explicit-id
 msgid "3 days of AI tutor access"
 msgstr "AIチューターアクセス3日間"
 
-#: src/features/Landing/Price/PricePage.tsx:159
+#: src/features/Landing/Price/PricePage.tsx:210
 #. js-lingui-explicit-id
 msgid "Try AI tutor for one hour to see how it works"
 msgstr "AIチューターを1時間試して、その動作を確認してみてください"
 
-#: src/features/Landing/Price/PricePage.tsx:162
+#: src/features/Landing/Price/PricePage.tsx:214
 #. js-lingui-explicit-id
 msgid "Start "
 msgstr "開始"
 
-#: src/features/Landing/Price/PricePage.tsx:167
+#: src/features/Landing/Price/PricePage.tsx:219
 #. js-lingui-explicit-id
 msgid "For learners who want flexibility"
 msgstr "フレキシビリティを求める学習者のために"
 
-#: src/features/Landing/Price/PricePage.tsx:169
-#. js-lingui-explicit-id
-msgid "Month"
-msgstr "月"
-
-#: src/features/Landing/Price/PricePage.tsx:171
+#: src/features/Landing/Price/PricePage.tsx:258
 #. js-lingui-explicit-id
 msgid "Everything in Free, plus:"
 msgstr "フリープランに加えて、以下の特典があります："
 
-#: src/features/Landing/Price/PricePage.tsx:174
+#: src/features/Landing/Price/PricePage.tsx:261
 #: src/features/Landing/Price/FeatureList.tsx:31
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "フルAIチューターアクセス"
 
-#: src/features/Landing/Price/PricePage.tsx:175
+#: src/features/Landing/Price/PricePage.tsx:262
 #: src/features/Landing/Price/FeatureList.tsx:32
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "無制限のAI駆動の言語練習へのアクセスを得る"
 
-#: src/features/Landing/Price/PricePage.tsx:178
+#: src/features/Landing/Price/PricePage.tsx:266
 #: src/features/Landing/Price/FeatureList.tsx:36
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "ロールプレイシナリオ"
 
-#: src/features/Landing/Price/PricePage.tsx:179
+#: src/features/Landing/Price/PricePage.tsx:267
 #: src/features/Landing/Price/FeatureList.tsx:37
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr "実際の会話に参加しましょう、例えば仕事の面接や食べ物の注文など。"
 
-#: src/features/Landing/Price/PricePage.tsx:184
+#: src/features/Landing/Price/PricePage.tsx:273
 #: src/features/Landing/Price/FeatureList.tsx:41
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "会話練習"
 
-#: src/features/Landing/Price/PricePage.tsx:185
+#: src/features/Landing/Price/PricePage.tsx:274
 #: src/features/Landing/Price/FeatureList.tsx:42
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "インタラクティブなチャットセッションで流暢さを向上させる"
 
-#: src/features/Landing/Price/PricePage.tsx:188
+#: src/features/Landing/Price/PricePage.tsx:278
 #: src/features/Landing/Price/FeatureList.tsx:46
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "進行状況の追跡"
 
-#: src/features/Landing/Price/PricePage.tsx:189
+#: src/features/Landing/Price/PricePage.tsx:279
 #: src/features/Landing/Price/FeatureList.tsx:47
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "あなたの進歩を見て、学習の旅を追跡してください"
 
-#: src/features/Landing/Price/PricePage.tsx:192
+#: src/features/Landing/Price/PricePage.tsx:283
 #: src/features/Landing/Price/FeatureList.tsx:51
 #. js-lingui-explicit-id
 msgid "New Words"
 msgstr "新しい単語"
 
-#: src/features/Landing/Price/PricePage.tsx:193
+#: src/features/Landing/Price/PricePage.tsx:284
 #: src/features/Landing/Price/FeatureList.tsx:52
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "コンテキスト内で新しい単語とフレーズを習得する"
 
-#: src/features/Landing/Price/PricePage.tsx:196
+#: src/features/Landing/Price/PricePage.tsx:288
 #: src/features/Landing/Price/FeatureList.tsx:56
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "新しい文法ルール"
 
-#: src/features/Landing/Price/PricePage.tsx:197
+#: src/features/Landing/Price/PricePage.tsx:289
 #: src/features/Landing/Price/FeatureList.tsx:57
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "練習することで、AIから個人的な文法のルールを得ることができます"
 
-#: src/features/Landing/Price/PricePage.tsx:200
-#. js-lingui-explicit-id
-msgid "Track usage & progress"
-msgstr "使用状況と進捗を追跡する"
-
-#: src/features/Landing/Price/PricePage.tsx:201
-#. js-lingui-explicit-id
-msgid "Monitor your AI conversation history and improvements"
-msgstr "AIとの会話履歴と改善を監視する"
-
-#: src/features/Landing/Price/PricePage.tsx:204
+#: src/features/Landing/Price/PricePage.tsx:293
 #: src/features/Landing/Price/FeatureList.tsx:61
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
 msgstr "高度なパーソナライゼーション"
 
-#: src/features/Landing/Price/PricePage.tsx:205
+#: src/features/Landing/Price/PricePage.tsx:294
 #: src/features/Landing/Price/FeatureList.tsx:62
 #. js-lingui-explicit-id
 msgid ""
@@ -2765,47 +2762,38 @@ msgid ""
 "personalized"
 msgstr "時間と共に、AIはあなたの学習スタイルに適応し、よりパーソナライズされます"
 
-#: src/features/Landing/Price/PricePage.tsx:210
-#. js-lingui-explicit-id
-msgid "Start with Trial"
-msgstr "試用を開始する"
-
-#: src/features/Landing/Price/PricePage.tsx:214
+#: src/features/Landing/Price/PricePage.tsx:304
 #. js-lingui-explicit-id
 msgid "Advanced"
 msgstr "高度な"
 
-#: src/features/Landing/Price/PricePage.tsx:215
+#: src/features/Landing/Price/PricePage.tsx:305
+#: src/features/Landing/Price/PricePage.tsx:325
 #. js-lingui-explicit-id
 msgid "Frequent users who need more value"
 msgstr "頻繁に利用するユーザーがより多くの価値を必要とする"
 
-#: src/features/Landing/Price/PricePage.tsx:218
+#: src/features/Landing/Price/PricePage.tsx:326
 #. js-lingui-explicit-id
 msgid "What I can do for you:"
 msgstr "私があなたのためにできること："
 
-#: src/features/Landing/Price/PricePage.tsx:221
-#. js-lingui-explicit-id
-msgid "Create custom features"
-msgstr "カスタム機能を作成する"
-
-#: src/features/Landing/Price/PricePage.tsx:222
+#: src/features/Landing/Price/PricePage.tsx:330
 #. js-lingui-explicit-id
 msgid "Tailor AI interactions to fit your needs"
 msgstr "あなたのニーズに合わせてAIとのインタラクションを調整します"
 
-#: src/features/Landing/Price/PricePage.tsx:225
+#: src/features/Landing/Price/PricePage.tsx:334
 #. js-lingui-explicit-id
 msgid "Discounted AI Usage"
 msgstr "割引されたAI使用"
 
-#: src/features/Landing/Price/PricePage.tsx:226
+#: src/features/Landing/Price/PricePage.tsx:335
 #. js-lingui-explicit-id
 msgid "Get cheaper AI hours for bulk use"
 msgstr "バルク使用のためのより安価なAI時間を取得する"
 
-#: src/features/Landing/Price/PricePage.tsx:229
+#: src/features/Landing/Price/PricePage.tsx:339
 #. Button title for contact me for advance pricing
 #. js-lingui-explicit-id
 msgid "Contact me"
@@ -2813,12 +2801,12 @@ msgstr ""
 "\n"
 "私に連絡してください\n"
 
-#: src/features/Landing/Price/PricePage.tsx:267
+#: src/features/Landing/Price/PricePage.tsx:377
 #. js-lingui-explicit-id
 msgid "How FluencyPal Pricing Works"
 msgstr "フルエンシーパルの価格設定の仕組み"
 
-#: src/features/Landing/Price/PricePage.tsx:278
+#: src/features/Landing/Price/PricePage.tsx:388
 #. js-lingui-explicit-id
 msgid ""
 "Our AI tutor runs on a simple credit system—you only pay for the time and "
@@ -2826,137 +2814,137 @@ msgid ""
 "                you actually use."
 msgstr "私たちのAIチューターは、シンプルなクレジットシステムで運営されています。実際に使用した時間とリソースにのみお支払いいただきます。"
 
-#: src/features/Landing/Price/PricePage.tsx:319
+#: src/features/Landing/Price/PricePage.tsx:429
 #. js-lingui-explicit-id
 msgid "Start Free"
 msgstr ""
 "\n"
 "無料で始める\n"
 
-#: src/features/Landing/Price/PricePage.tsx:322
+#: src/features/Landing/Price/PricePage.tsx:432
 #. js-lingui-explicit-id
 msgid "Start Free – Get 5 in credits when you sign up."
 msgstr "無料で開始 – サインアップすると5クレジットを獲得できます。"
 
-#: src/features/Landing/Price/PricePage.tsx:362
+#: src/features/Landing/Price/PricePage.tsx:472
 #. js-lingui-explicit-id
 msgid "Use as You Go"
 msgstr "使用する際に移動してください"
 
-#: src/features/Landing/Price/PricePage.tsx:365
+#: src/features/Landing/Price/PricePage.tsx:475
 #. js-lingui-explicit-id
 msgid ""
 "Each AI conversation session consumes credits based on duration and "
 "complexity."
 msgstr "各AI会話セッションは、期間と複雑さに基づいてクレジットを消費します。"
 
-#: src/features/Landing/Price/PricePage.tsx:408
+#: src/features/Landing/Price/PricePage.tsx:518
 #. js-lingui-explicit-id
 msgid "Add More Credits"
 msgstr "クレジットを追加する"
 
-#: src/features/Landing/Price/PricePage.tsx:411
+#: src/features/Landing/Price/PricePage.tsx:521
 #. js-lingui-explicit-id
 msgid "Add more credits whenever you need them."
 msgstr "必要に応じて、クレジットを追加してください。"
 
-#: src/features/Landing/Price/PricePage.tsx:449
+#: src/features/Landing/Price/PricePage.tsx:559
 #. js-lingui-explicit-id
 msgid "Why Pay-as-You-Go is Better Than Subscriptions"
 msgstr "なぜ従量課金制がサブスクリプションより優れているのか"
 
-#: src/features/Landing/Price/PricePage.tsx:577
+#: src/features/Landing/Price/PricePage.tsx:687
 #. js-lingui-explicit-id
 msgid "Traditional Subscription"
 msgstr "伝統的なサブスクリプション"
 
-#: src/features/Landing/Price/PricePage.tsx:587
+#: src/features/Landing/Price/PricePage.tsx:697
 #. js-lingui-explicit-id
 msgid "Pay Only for What You Use"
 msgstr "使用した分だけお支払いください"
 
-#: src/features/Landing/Price/PricePage.tsx:614
+#: src/features/Landing/Price/PricePage.tsx:724
 #. js-lingui-explicit-id
 msgid "No, fixed cost"
 msgstr "いいえ、固定費"
 
-#: src/features/Landing/Price/PricePage.tsx:620
+#: src/features/Landing/Price/PricePage.tsx:730
 #. js-lingui-explicit-id
 msgid "Full Access Anytime"
 msgstr "フルアクセスいつでも"
 
-#: src/features/Landing/Price/PricePage.tsx:651
+#: src/features/Landing/Price/PricePage.tsx:761
 #. js-lingui-explicit-id
 msgid "No Monthly Fees"
 msgstr ""
 "\n"
 "月額料金なし\n"
 
-#: src/features/Landing/Price/PricePage.tsx:677
+#: src/features/Landing/Price/PricePage.tsx:787
 #. js-lingui-explicit-id
 msgid "No, recurring charge"
 msgstr "いいえ、定期的な料金"
 
-#: src/features/Landing/Price/PricePage.tsx:683
+#: src/features/Landing/Price/PricePage.tsx:793
 #. js-lingui-explicit-id
 msgid "Pause Anytime"
 msgstr ""
 "\n"
 "いつでも一時停止\n"
 
-#: src/features/Landing/Price/PricePage.tsx:721
+#: src/features/Landing/Price/PricePage.tsx:831
 #. js-lingui-explicit-id
 msgid "Try FluencyPal for Free"
 msgstr "試してみてください、FluencyPalを無料で"
 
-#: src/features/Landing/Price/PricePage.tsx:777
+#: src/features/Landing/Price/PricePage.tsx:887
 #. js-lingui-explicit-id
 msgid "Can I try FluencyPal for free?"
 msgstr "FluencyPalを無料で試すことはできますか？"
 
-#: src/features/Landing/Price/PricePage.tsx:780
+#: src/features/Landing/Price/PricePage.tsx:890
 #. js-lingui-explicit-id
 msgid ""
 "Yes! You start with one free hour of conversation with AI to explore all "
 "features."
 msgstr "はい！AIとの会話で全ての機能を探求するための無料の1時間からスタートします。"
 
-#: src/features/Landing/Price/PricePage.tsx:790
+#: src/features/Landing/Price/PricePage.tsx:900
 #. js-lingui-explicit-id
 msgid "How much do AI conversations cost?"
 msgstr "AIとの会話はどのくらいの費用がかかりますか？"
 
-#: src/features/Landing/Price/PricePage.tsx:793
+#: src/features/Landing/Price/PricePage.tsx:903
 #. js-lingui-explicit-id
 msgid ""
 "The cost is calculated based on duration and AI usage. On average, a full "
 "hour costs $5."
 msgstr "料金は、時間とAIの使用に基づいて計算されます。平均して、1時間のフルコストは5ドルです。"
 
-#: src/features/Landing/Price/PricePage.tsx:803
+#: src/features/Landing/Price/PricePage.tsx:913
 #. js-lingui-explicit-id
 msgid "Can I buy credits in bulk?"
 msgstr "クレジットをまとめて購入できますか？"
 
-#: src/features/Landing/Price/PricePage.tsx:807
+#: src/features/Landing/Price/PricePage.tsx:917
 #. js-lingui-explicit-id
 msgid ""
 "Yes! We offer discounts when purchasing larger credit packages. Just "
 "contact me before you buy and I'll give you a discount."
 msgstr "はい！大きなクレジットパッケージを購入する際には割引を提供しています。購入する前に私に連絡してください。割引をお渡しします。"
 
-#: src/features/Landing/Price/PricePage.tsx:817
+#: src/features/Landing/Price/PricePage.tsx:927
 #: src/features/Header/NeedHelpModal.tsx:103
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "連絡先:"
 
-#: src/features/Landing/Price/PricePage.tsx:827
+#: src/features/Landing/Price/PricePage.tsx:937
 #. js-lingui-explicit-id
 msgid "Will my credits expire?"
 msgstr "クレジットは期限切れになりますか？"
 
-#: src/features/Landing/Price/PricePage.tsx:830
+#: src/features/Landing/Price/PricePage.tsx:940
 #. js-lingui-explicit-id
 msgid "No, your credits stay active as long as your account is in good standing."
 msgstr "いいえ、あなたのクレジットはアカウントが正常な状態である限り、アクティブのままです。"
@@ -3772,7 +3760,7 @@ msgstr "始めましょう"
 #: src/features/Dashboard/PlanDashboardCards.tsx:427
 #: src/features/Dashboard/PlanDashboardCards.tsx:557
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:1161
+#: src/features/Conversation/ConversationCanvas2.tsx:1162
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "目標"
@@ -4173,42 +4161,42 @@ msgstr "メッセージを記録"
 msgid "Your message..."
 msgstr "あなたのメッセージ..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1139
+#: src/features/Conversation/ConversationCanvas2.tsx:1140
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "ミッション完了"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1149
+#: src/features/Conversation/ConversationCanvas2.tsx:1150
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "結果を開く"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1191
+#: src/features/Conversation/ConversationCanvas2.tsx:1192
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "書き直す"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1250
+#: src/features/Conversation/ConversationCanvas2.tsx:1251
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "答えを支援する"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1271
+#: src/features/Conversation/ConversationCanvas2.tsx:1272
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "録音をキャンセル"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1305
+#: src/features/Conversation/ConversationCanvas2.tsx:1306
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "あなたの残高は少ないです"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1307
+#: src/features/Conversation/ConversationCanvas2.tsx:1308
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "あなたの残高をトップアップすることは理にかなっています。"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1314
+#: src/features/Conversation/ConversationCanvas2.tsx:1315
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "チャージ"
@@ -5823,6 +5811,31 @@ msgstr "あなたの母国語:"
 #: src/features/Game/GameMyUsername.tsx:42
 msgid "Your Username:"
 msgstr "あなたのユーザーネーム:"
+
+#: src/features/Landing/Price/PricePage.tsx:169
+#. js-lingui-explicit-id
+#~ msgid "Month"
+#~ msgstr "月"
+
+#: src/features/Landing/Price/PricePage.tsx:200
+#. js-lingui-explicit-id
+#~ msgid "Track usage & progress"
+#~ msgstr "使用状況と進捗を追跡する"
+
+#: src/features/Landing/Price/PricePage.tsx:201
+#. js-lingui-explicit-id
+#~ msgid "Monitor your AI conversation history and improvements"
+#~ msgstr "AIとの会話履歴と改善を監視する"
+
+#: src/features/Landing/Price/PricePage.tsx:210
+#. js-lingui-explicit-id
+#~ msgid "Start with Trial"
+#~ msgstr "試用を開始する"
+
+#: src/features/Landing/Price/PricePage.tsx:221
+#. js-lingui-explicit-id
+#~ msgid "Create custom features"
+#~ msgstr "カスタム機能を作成する"
 
 #: src/features/Landing/Price/PricePage.tsx:91
 #. js-lingui-explicit-id

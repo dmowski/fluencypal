@@ -86,7 +86,7 @@ export const PriceCard: React.FC<PriceCardProps> = ({
           sx={{
             fontSize: "1rem",
             fontWeight: 350,
-            color: "#444",
+            color: "#000",
           }}
         >
           {priceSubDescription}

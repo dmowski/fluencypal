@@ -316,6 +316,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                         fontWeight: 700,
                         opacity: 0.8,
                         fontSize: "1.6rem",
+                        lineHeight: "1.15",
                       }}
                     >
                       {i18n._("Contact for pricing")}
