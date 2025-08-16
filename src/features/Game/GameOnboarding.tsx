@@ -6,13 +6,14 @@ import { useGame } from "./useGame";
 import { GameMyAvatar } from "./GameMyAvatar";
 import { GameMyUsername } from "./GameMyUsername";
 import { GameNativeLanguageSelector } from "./GameNativeLanguageSelector";
-import { Trans } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
 import { LucideSwords, MoveRight } from "lucide-react";
 
 export const GameOnboarding = () => {
   const settings = useSettings();
   const [step, setStep] = useState(0);
   const game = useGame();
+  const { i18n } = useLingui();
   const isOnboardingCompleted = settings.userSettings?.isGameOnboardingCompleted;
 
   const onNext = () => {
@@ -43,7 +44,7 @@ export const GameOnboarding = () => {
           style={{ width: "100%", maxWidth: "150px", borderRadius: "10px" }}
         />
         <Typography align="center" variant="h6">
-          <Trans>Learn and Play</Trans>
+          {i18n._(`Learn and Play`)}
         </Typography>
         <Typography
           variant="body2"
@@ -52,7 +53,7 @@ export const GameOnboarding = () => {
           }}
           align="center"
         >
-          <Trans>Describe images, craft sentences, and translate words</Trans>
+          {i18n._(`Describe images, craft sentences, and translate words`)}
         </Typography>
       </Stack>
       <Button
@@ -62,7 +63,7 @@ export const GameOnboarding = () => {
         size="large"
         endIcon={<MoveRight />}
       >
-        <Trans>Next</Trans>
+        {i18n._(`Next`)}
       </Button>
     </>,
 
@@ -91,9 +92,7 @@ export const GameOnboarding = () => {
           }}
         >
           <Typography align="center" variant="h6">
-            <Trans>
-              <Trans>You have a chance</Trans>
-            </Trans>
+            {i18n._(`You have a chance`)}
           </Typography>
           <Typography
             variant="body2"
@@ -102,9 +101,9 @@ export const GameOnboarding = () => {
             }}
             align="center"
           >
-            <Trans>
-              Each day, we remove 3 points from everyone so that everyone has a fair chance to win.
-            </Trans>
+            {i18n._(
+              `Each day, we remove 3 points from everyone so that everyone has a fair chance to win.`
+            )}
           </Typography>
         </Stack>
       </Stack>
@@ -115,7 +114,7 @@ export const GameOnboarding = () => {
         size="large"
         endIcon={<MoveRight />}
       >
-        <Trans>Next</Trans>
+        {i18n._(`Next`)}
       </Button>
     </>,
 
@@ -131,7 +130,7 @@ export const GameOnboarding = () => {
             setStep(1);
           }}
         >
-          <Trans>Let’s make sure you’re ready</Trans>
+          {i18n._(`Let’s make sure you’re ready`)}
         </Typography>
 
         <Stack
@@ -142,7 +141,7 @@ export const GameOnboarding = () => {
         >
           <Stack gap="10px">
             <Typography variant="caption" sx={{ opacity: 0.9 }}>
-              <Trans>Your Avatar:</Trans>
+              {i18n._(`Your Avatar:`)}
             </Typography>
             <GameMyAvatar />
           </Stack>
@@ -167,7 +166,7 @@ export const GameOnboarding = () => {
         color="info"
         size="large"
       >
-        <Trans>Play</Trans>
+        {i18n._(`Play`)}
       </Button>
     </>,
   ];

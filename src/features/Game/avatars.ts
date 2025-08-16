@@ -1,5 +1,5 @@
 export const avatars = [
-  "https://cdn.midjourney.com/42cda3b0-7a12-47b1-a3a3-a093935f55c2/0_3_384_N.webp",
+  "/gameAvatar/42cda3b0-7a12-47b1-a3a3-a093935f55c2.webp",
   "https://cdn.midjourney.com/edd17e5c-18f3-4e34-95a6-f128c835cbaf/0_3_384_N.webp",
   "https://cdn.midjourney.com/4b055f9b-b508-4d7f-add3-2385db757208/0_0_384_N.webp",
   "https://cdn.midjourney.com/dfcf2087-34fb-43b8-9cdc-aa6abd2e148f/0_0_384_N.webp",
