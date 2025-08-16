@@ -51,9 +51,29 @@ msgstr "不正解！"
 msgid "Done"
 msgstr "完了"
 
+#: src/features/Conversation/ConversationCanvas2.tsx:393
+#. js-lingui-explicit-id
+msgid "Lesson Review"
+msgstr "レッスンレビュー"
+
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:299
 msgid "Re-record"
 msgstr "再録音"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1144
+#. js-lingui-explicit-id
+msgid "Use voice message mode"
+msgstr "音声メッセージモードを使用する"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1161
+#. js-lingui-explicit-id
+msgid "Use keyboard mode"
+msgstr "キーボードモードを使用する"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1178
+#. js-lingui-explicit-id
+msgid "Use phone mode"
+msgstr "電話モードを使用する"
 
 #: src/libs/metadata.ts:62
 #: src/features/Landing/Footer.tsx:88
@@ -429,13 +449,13 @@ msgid "No conversations yet"
 msgstr "まだ会話はありません"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:496
+#: src/features/Conversation/ConversationCanvas2.tsx:544
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "教師:"
 
 #: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:496
+#: src/features/Conversation/ConversationCanvas2.tsx:544
 #. js-lingui-explicit-id
 msgid "You:"
 msgstr "あなた:"
@@ -853,7 +873,7 @@ msgstr "翻訳は利用できません"
 #: src/features/Translation/useTranslate.tsx:119
 #: src/features/Header/NeedHelpModal.tsx:215
 #: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Conversation/ConversationCanvas2.tsx:333
+#: src/features/Conversation/ConversationCanvas2.tsx:351
 #: src/features/Conversation/ConfirmConversationModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Close"
@@ -1750,12 +1770,12 @@ msgstr "目標を処理中..."
 msgid "Error Processing the goal"
 msgstr "目標の処理中にエラーが発生しました"
 
-#: src/features/Plan/PlanCard.tsx:114
+#: src/features/Plan/PlanCard.tsx:118
 #. js-lingui-explicit-id
 msgid "Start lesson"
 msgstr "レッスンを始める"
 
-#: src/features/Plan/PlanCard.tsx:123
+#: src/features/Plan/PlanCard.tsx:127
 #. js-lingui-explicit-id
 msgid "Send 6 messages to complete"
 msgstr "完了するために6つのメッセージを送信してください"
@@ -3158,7 +3178,7 @@ msgid "Thank you for your feedback!"
 msgstr "あなたのフィードバックをありがとうございます！"
 
 #: src/features/Header/ContactMessageModal.tsx:80
-#: src/features/Conversation/ConversationCanvas2.tsx:982
+#: src/features/Conversation/ConversationCanvas2.tsx:1025
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "送信"
@@ -3755,7 +3775,7 @@ msgstr "始めましょう"
 #: src/features/Dashboard/PlanDashboardCards.tsx:427
 #: src/features/Dashboard/PlanDashboardCards.tsx:557
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:1162
+#: src/features/Conversation/ConversationCanvas2.tsx:1292
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "目標"
@@ -4041,157 +4061,152 @@ msgstr "デベロップメントチームに通知が送信されました。申
 msgid "Reload page"
 msgstr "ページを再読み込み"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:308
+#: src/features/Conversation/ConversationCanvas2.tsx:326
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "あなたのメッセージのアイデア"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:356
-#. js-lingui-explicit-id
-msgid "Review"
-msgstr "レビュー"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:372
+#: src/features/Conversation/ConversationCanvas2.tsx:410
 #. js-lingui-explicit-id
 msgid "Language level:"
 msgstr "言語レベル:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:373
-#: src/features/Conversation/ConversationCanvas2.tsx:378
-#: src/features/Conversation/ConversationCanvas2.tsx:383
-#: src/features/Conversation/ConversationCanvas2.tsx:663
-#: src/features/Conversation/ConversationCanvas2.tsx:804
-#: src/features/Conversation/ConversationCanvas2.tsx:811
+#: src/features/Conversation/ConversationCanvas2.tsx:412
+#: src/features/Conversation/ConversationCanvas2.tsx:419
+#: src/features/Conversation/ConversationCanvas2.tsx:426
+#: src/features/Conversation/ConversationCanvas2.tsx:710
+#: src/features/Conversation/ConversationCanvas2.tsx:847
+#: src/features/Conversation/ConversationCanvas2.tsx:854
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "解析中..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:377
+#: src/features/Conversation/ConversationCanvas2.tsx:417
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "何が素晴らしかったか："
 
-#: src/features/Conversation/ConversationCanvas2.tsx:382
+#: src/features/Conversation/ConversationCanvas2.tsx:424
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
 msgstr "改善すべき点："
 
-#: src/features/Conversation/ConversationCanvas2.tsx:401
+#: src/features/Conversation/ConversationCanvas2.tsx:453
 #. js-lingui-explicit-id
 msgid "Start new lesson"
 msgstr "新しいレッスンを開始する"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:411
+#: src/features/Conversation/ConversationCanvas2.tsx:463
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "会話を続ける"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:597
+#: src/features/Conversation/ConversationCanvas2.tsx:644
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "メッセージの分析中にエラーが発生しました"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:651
+#: src/features/Conversation/ConversationCanvas2.tsx:698
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "ほぼ正確"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:666
+#: src/features/Conversation/ConversationCanvas2.tsx:713
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "素晴らしい！"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:689
+#: src/features/Conversation/ConversationCanvas2.tsx:736
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "あなたのメッセージ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:763
+#: src/features/Conversation/ConversationCanvas2.tsx:806
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "訂正済み"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:856
+#: src/features/Conversation/ConversationCanvas2.tsx:899
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "新しい単語を語彙へ:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:901
+#: src/features/Conversation/ConversationCanvas2.tsx:944
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "分析中"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:908
+#: src/features/Conversation/ConversationCanvas2.tsx:951
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "目標の準備"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:928
+#: src/features/Conversation/ConversationCanvas2.tsx:971
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "目標が作成されました"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:938
+#: src/features/Conversation/ConversationCanvas2.tsx:981
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "追加されたレッスン:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:959
+#: src/features/Conversation/ConversationCanvas2.tsx:1002
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "オープンプラン"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1024
+#: src/features/Conversation/ConversationCanvas2.tsx:1075
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "ストップ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1052
+#: src/features/Conversation/ConversationCanvas2.tsx:1107
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "メッセージを記録"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1086
-#. js-lingui-explicit-id
-msgid "Your message..."
-msgstr "あなたのメッセージ..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1140
-#. js-lingui-explicit-id
-msgid "Mission complete"
-msgstr "ミッション完了"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1150
-#. js-lingui-explicit-id
-msgid "Open results"
-msgstr "結果を開く"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1192
-#. js-lingui-explicit-id
-msgid "Re-write"
-msgstr "書き直す"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1251
+#: src/features/Conversation/ConversationCanvas2.tsx:1194
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "答えを支援する"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1272
+#: src/features/Conversation/ConversationCanvas2.tsx:1217
+#. js-lingui-explicit-id
+msgid "Your message..."
+msgstr "あなたのメッセージ..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1268
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "ミッション完了"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1280
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "結果を開く"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1322
+#. js-lingui-explicit-id
+msgid "Re-write"
+msgstr "書き直す"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1382
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "録音をキャンセル"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1306
+#: src/features/Conversation/ConversationCanvas2.tsx:1416
 #. js-lingui-explicit-id
 msgid "You have a low balance"
 msgstr "あなたの残高は少ないです"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1308
+#: src/features/Conversation/ConversationCanvas2.tsx:1418
 #. js-lingui-explicit-id
 msgid "It makes sense to top up your balance."
 msgstr "あなたの残高をトップアップすることは理にかなっています。"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1315
+#: src/features/Conversation/ConversationCanvas2.tsx:1425
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "チャージ"
@@ -5806,6 +5821,11 @@ msgstr "あなたの母国語:"
 #: src/features/Game/GameMyUsername.tsx:42
 msgid "Your Username:"
 msgstr "あなたのユーザーネーム:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:356
+#. js-lingui-explicit-id
+#~ msgid "Review"
+#~ msgstr "レビュー"
 
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
