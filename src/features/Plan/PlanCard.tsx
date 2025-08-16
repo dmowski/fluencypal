@@ -46,6 +46,8 @@ export const PlanCard = ({
   const [showModal, setShowModal] = useState(false);
   const { i18n } = useLingui();
 
+  const isNextInPlan = !isActive && !isDone;
+
   return (
     <>
       {showModal && (
@@ -129,21 +131,29 @@ export const PlanCard = ({
         component={"button"}
         sx={{
           backgroundColor: isActive
-            ? "rgba(13, 220, 196, 0.1)"
+            ? "rgba(13, 220, 196, 0.14)"
             : isDone
-              ? "rgba(13, 220, 196, 0.03)"
+              ? "rgba(13, 220, 196, 0.1)"
               : "transparent",
           textDecoration: "none",
-          padding: "12px 16px",
+          padding: "8px 16px",
           display: "grid",
-          gridTemplateColumns:
-            isActive || isDone ? "max-content 1fr max-content" : "max-content 1fr",
-          gap: "20px",
-          borderRadius: "16px",
+
+          gridTemplateColumns: "max-content 1fr max-content",
+          gridTemplateRows: "auto",
+          gridTemplateAreas: `
+            'icon title chevron'
+            'icon details chevron'
+          `,
+          gap: "5px 20px",
+          borderRadius: "8px",
 
           alignItems: "center",
           justifyContent: "space-between",
-          border: "1px solid rgba(255, 255, 255, 0.0)",
+          border:
+            !isActive && !isDone
+              ? "1px solid rgba(255, 255, 255, 0.1)"
+              : "1px solid rgba(255, 255, 255, 0.0)",
           maxWidth: "700px",
           position: "relative",
 
@@ -164,7 +174,11 @@ export const PlanCard = ({
           },
 
           "@media (max-width: 500px)": {
-            gridTemplateColumns: "1fr",
+            padding: "16px 16px 26px 16px",
+            gridTemplateAreas: `
+            'icon title chevron'
+            'details details chevron'
+          `,
           },
         }}
       >
@@ -172,11 +186,13 @@ export const PlanCard = ({
           sx={{
             padding: "5px",
             borderRadius: "100px",
+            gridArea: "icon",
+
             boxShadow: isDone
               ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
               : isActive
                 ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
-                : "0px 0px 0 2px rgba(13, 220, 196, 0.7)",
+                : "0px 0px 0 1px rgba(255, 255, 255, 0.1)",
             boxSizing: "border-box",
             width: "max-content",
             position: "relative",
@@ -211,7 +227,6 @@ export const PlanCard = ({
                 right: "0",
                 margin: "auto",
 
-                //boxShadow: "0px 0px 0 2px rgba(13, 220, 196, 0.9)",
                 width: "100%",
 
                 boxSizing: "border-box",
@@ -257,7 +272,9 @@ export const PlanCard = ({
               bottom: "calc(-2px - var(--height))",
               height: "var(--height)",
               backgroundColor:
-                isDone || isActive ? "rgba(13, 220, 196, 0.9)" : "rgba(13, 220, 196, 0.6)",
+                isNextInPlan || isContinueLabel
+                  ? "rgba(255, 255, 255, 0)"
+                  : "rgba(13, 220, 196, 0.9)",
               position: "absolute",
               display: isLast ? "none" : "block",
 
@@ -301,6 +318,7 @@ export const PlanCard = ({
                 zIndex: 2,
                 top: "0px",
                 left: "0px",
+
                 opacity: isActive || isDone ? 1 : 0.95,
               }}
             >
@@ -375,6 +393,8 @@ export const PlanCard = ({
 
         <Stack
           sx={{
+            gridArea: "title",
+
             width: "100%",
             maxWidth: "90%",
           }}
@@ -406,33 +426,37 @@ export const PlanCard = ({
           >
             {title}
           </Typography>
-
-          <Typography
-            align="left"
-            sx={{
-              fontWeight: 400,
-              fontSize: "0.8rem",
-              zIndex: 2,
-              height: "54px",
-              overflow: "hidden",
-              opacity: isActive || isDone ? 0.9 : 0.7,
-
-              "@media (max-width: 500px)": {
-                fontSize: "0.7rem",
-                overflow: "hidden",
-                height: "auto",
-                paddingTop: "10px",
-                textOverflow: "ellipsis",
-              },
-            }}
-          >
-            {details}
-          </Typography>
         </Stack>
+
+        <Typography
+          align="left"
+          sx={{
+            gridArea: "details",
+
+            fontWeight: 400,
+            fontSize: "0.8rem",
+            zIndex: 2,
+            height: "54px",
+            overflow: "hidden",
+            opacity: isActive || isDone ? 0.9 : 0.7,
+
+            "@media (max-width: 500px)": {
+              fontSize: "0.7rem",
+              overflow: "hidden",
+              height: "auto",
+              paddingTop: "10px",
+              textOverflow: "ellipsis",
+            },
+          }}
+        >
+          {details}
+        </Typography>
 
         <Stack
           sx={{
             borderRadius: "50%",
+
+            gridArea: "chevron",
             display: isActive ? "flex" : "none",
             background: isActive
               ? "linear-gradient(45deg,rgb(13, 220, 196) 0%,rgba(13, 180, 236, 0.59) 100%)"

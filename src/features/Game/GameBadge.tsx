@@ -24,23 +24,29 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
         color: "#fff",
         textDecoration: "none",
         maxWidth: "700px",
-        borderRadius: "10px",
-        background:
-          "linear-gradient(45deg,rgba(210, 13, 220, 0.2) 0%,rgba(250, 199, 213, 0.2) 100%)",
+        borderRadius: "8px",
+
+        background: "rgba(210, 13, 220, 0.2)",
         flexDirection: "row",
         gap: "20px",
         alignItems: "center",
         boxSizing: "border-box",
         display: "grid",
         gridTemplateColumns: "1fr max-content",
+        "@media (max-width:600px)": {
+          padding: "15px 15px",
+        },
       }}
     >
       <Stack>
         <Typography
           sx={{
             fontWeight: 600,
-            fontSize: "1.6rem",
+            fontSize: "1.2rem",
             color: `rgb(253, 238, 255)`,
+            "@media (max-width:600px)": {
+              fontSize: "1rem",
+            },
           }}
         >
           <Trans>Play and Learn</Trans>
@@ -48,6 +54,10 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
         <Typography
           sx={{
             opacity: 0.9,
+            fontSize: "0.9rem",
+            "@media (max-width:600px)": {
+              fontSize: "0.7rem",
+            },
           }}
         >
           <Trans>
@@ -58,6 +68,10 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
         <Typography
           sx={{
             opacity: 0.9,
+            fontSize: "0.9rem",
+            "@media (max-width:600px)": {
+              fontSize: "0.7rem",
+            },
           }}
         >
           {i18n._("Your position")}: {position ? position : "-"}
@@ -67,14 +81,15 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
       <Stack
         sx={{
           borderRadius: "50%",
-          background: "linear-gradient(45deg,rgba(244, 8, 248, 0.3) 0%, rgb(255, 0, 166) 100%)",
+          background: "none",
+          "--icon-color": "#fff",
           height: "45px",
           width: "45px",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Swords size={"20px"} color="#fff" />
+        <Swords size={"20px"} color="var(--icon-color)" />
       </Stack>
     </Stack>
   );
