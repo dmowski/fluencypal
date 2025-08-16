@@ -14,11 +14,25 @@ import { PriceCard } from "./PriceCard";
 import { ContactList } from "../Contact/ContactList";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { Gift, HandCoins, Mic } from "lucide-react";
+import {
+  Gift,
+  HandCoins,
+  Mic,
+  BookType,
+  ChartNoAxesCombined,
+  GraduationCap,
+  Lightbulb,
+  Sparkles,
+  Speech,
+  UsersRound,
+  Gamepad2,
+  Blocks,
+  Gem,
+} from "lucide-react";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
-import PriceDisplay from "./PriceDisplay";
+import { CurrencyToDisplay, PriceDisplay } from "./PriceDisplay";
 import { HeaderStatic } from "@/features/Header/HeaderStatic";
 import { PRICE_PER_MONTH_USD } from "@/common/subscription";
 
@@ -43,7 +57,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
           sx={{
             alignItems: "center",
             width: "100%",
-            backgroundColor: `#fff`,
+            backgroundColor: `rgba(255, 255, 255, 0.99)`,
             paddingTop: "100px",
             color: "#000",
           }}
@@ -145,18 +159,56 @@ export const PricePage = ({ lang }: PricePageProps) => {
               <PriceCard
                 title={i18n._("Trial")}
                 subTitle={i18n._("For learners who want to try it out")}
-                price={<PriceDisplay amountInUsd={0} />}
-                priceDescription={i18n._("3 days")}
+                price={
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                  >
+                    <Typography
+                      variant="h2"
+                      component={"span"}
+                      sx={{
+                        fontWeight: 600,
+                        fontSize: "3rem",
+                      }}
+                    >
+                      0
+                    </Typography>
+
+                    <Stack
+                      sx={{
+                        paddingTop: "18px",
+                        height: "100%",
+                      }}
+                    >
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        <CurrencyToDisplay />
+                      </Typography>
+                      <Typography variant="caption">/ {i18n._("3 days")}</Typography>
+                    </Stack>
+                  </Stack>
+                }
                 priceSubDescription={i18n._("Game mode and trial AI tutor access")}
                 listTitle={i18n._("Includes:")}
+                isLightButton
                 listItems={[
                   {
                     title: i18n._("Game Mode"),
                     tooltip: i18n._("Many language games to practice"),
+                    icon: Gamepad2,
                   },
                   {
                     title: i18n._("3 days of AI tutor access"),
                     tooltip: i18n._("Try AI tutor for one hour to see how it works"),
+                    icon: Sparkles,
                   },
                 ]}
                 buttonTitle={i18n._("Start ")}
@@ -165,65 +217,123 @@ export const PricePage = ({ lang }: PricePageProps) => {
               <PriceCard
                 title={i18n._("Full Access")}
                 subTitle={i18n._("For learners who want flexibility")}
-                price={<PriceDisplay amountInUsd={PRICE_PER_MONTH_USD} />}
-                priceDescription={"/ " + i18n._("Month")}
+                price={
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                  >
+                    <Typography
+                      variant="h2"
+                      component={"span"}
+                      sx={{
+                        fontWeight: 600,
+                        fontSize: "3rem",
+                      }}
+                    >
+                      <PriceDisplay amountInUsd={PRICE_PER_MONTH_USD} />
+                    </Typography>
+
+                    <Stack
+                      sx={{
+                        paddingTop: "18px",
+                        height: "100%",
+                      }}
+                    >
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        <CurrencyToDisplay />
+                      </Typography>
+                      <Typography variant="caption">/ {i18n._("month")}</Typography>
+                    </Stack>
+                  </Stack>
+                }
                 priceSubDescription={i18n._("Learn at full speed with full access")}
                 listTitle={i18n._("Everything in Free, plus:")}
                 listItems={[
                   {
                     title: i18n._("Full AI tutor access"),
                     tooltip: i18n._("Get unlimited access to AI-powered language practice"),
+                    icon: Sparkles,
                   },
                   {
                     title: i18n._("Role-play scenarios"),
                     tooltip: i18n._(
                       "Engage in real-life conversations like job interviews or ordering food"
                     ),
+                    icon: UsersRound,
                   },
                   {
                     title: i18n._("Conversation practice"),
                     tooltip: i18n._("Improve fluency with interactive chat sessions"),
+                    icon: Speech,
                   },
                   {
                     title: i18n._("Progress tracking"),
                     tooltip: i18n._("See your improvements and track your learning journey"),
+                    icon: ChartNoAxesCombined,
                   },
                   {
                     title: i18n._("New Words"),
                     tooltip: i18n._("Get new words and phrases in context"),
+                    icon: BookType,
                   },
                   {
                     title: i18n._("New Grammar Rules"),
                     tooltip: i18n._("By practicing, you will get personal grammar rules from AI"),
-                  },
-                  {
-                    title: i18n._("Track usage & progress"),
-                    tooltip: i18n._("Monitor your AI conversation history and improvements"),
+                    icon: GraduationCap,
                   },
                   {
                     title: i18n._("Advanced Personalization"),
                     tooltip: i18n._(
                       "With time, AI will adapt to your learning style and it will be more personalized"
                     ),
+                    icon: Lightbulb,
                   },
                 ]}
-                buttonTitle={i18n._("Start with Trial")}
+                buttonTitle={i18n._("Start")}
                 buttonLink={`${getUrlStart(lang)}quiz`}
               />
               <PriceCard
                 title={i18n._("Advanced")}
                 subTitle={i18n._("Frequent users who need more value")}
-                price={<span>Contact for pricing</span>}
-                priceDescription={""}
+                price={
+                  <Stack
+                    sx={{
+                      justifyContent: "flex-end",
+                      height: "57px",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 700,
+                        opacity: 0.8,
+                        fontSize: "1.6rem",
+                      }}
+                    >
+                      {i18n._("Contact for pricing")}
+                    </Typography>
+                  </Stack>
+                }
+                priceSubDescription={i18n._("Frequent users who need more value")}
                 listTitle={i18n._("What I can do for you:")}
                 listItems={[
                   {
-                    title: i18n._("Create custom features"),
+                    title: i18n._("Custom features"),
                     tooltip: i18n._("Tailor AI interactions to fit your needs"),
+                    icon: Blocks,
                   },
                   {
                     title: i18n._("Discounted AI Usage"),
                     tooltip: i18n._("Get cheaper AI hours for bulk use"),
+                    icon: Gem,
                   },
                 ]}
                 buttonTitle={i18n._("Contact me", undefined, {

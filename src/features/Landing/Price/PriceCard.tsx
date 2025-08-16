@@ -1,17 +1,17 @@
 import { Button, Stack, Tooltip, Typography } from "@mui/material";
 import { buttonStyle } from "../landingSettings";
-import { Check, Info } from "lucide-react";
-import { JSX } from "react";
+import { Check, Info, LucideProps } from "lucide-react";
+import { ForwardRefExoticComponent, JSX, RefAttributes } from "react";
 
 interface PriceCardProps {
   title: string;
   subTitle: string;
   price: JSX.Element;
-  priceDescription: string;
   priceSubDescription?: string;
 
   listTitle: string;
   listItems: {
+    icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
     title: string;
     tooltip?: string;
   }[];
@@ -24,7 +24,6 @@ export const PriceCard: React.FC<PriceCardProps> = ({
   title,
   subTitle,
   price,
-  priceDescription,
   listTitle,
   listItems,
   buttonTitle,
@@ -35,24 +34,25 @@ export const PriceCard: React.FC<PriceCardProps> = ({
   return (
     <Stack
       sx={{
-        border: `1px solid rgba(0, 0, 0, 0.2)`,
-        padding: "25px",
+        border: `1px solid rgba(0, 0, 0, 0.15)`,
+        padding: "30px 25px",
+        backgroundColor: "#fff",
         gap: "20px",
         height: "100%",
         boxSizing: "border-box",
-        borderRadius: "3px",
+        borderRadius: "18px",
         width: "100%",
         maxWidth: "90vw",
-        transition: "box-shadow 0.1s",
+        transition: "all 0.3s",
         ":hover": {
-          border: `1px solid rgba(0, 0, 0, 0.4)`,
-          boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
+          borderColor: `rgba(0, 0, 0, 0.2)`,
+          boxShadow: "2px 3px 20px rgba(0, 0, 0, 0.07)",
         },
       }}
     >
       <Stack
         sx={{
-          height: "100px",
+          height: "50px",
           "@media (max-width: 1000px)": {
             height: "auto",
             paddingBottom: "20px",
@@ -61,54 +61,32 @@ export const PriceCard: React.FC<PriceCardProps> = ({
       >
         <Typography
           sx={{
-            fontWeight: 600,
+            fontWeight: 550,
             fontSize: "1.5rem",
           }}
         >
           {title}
         </Typography>
-        <Typography
-          variant="body2"
-          sx={{
-            opacity: 0.7,
-          }}
-        >
-          {subTitle}
-        </Typography>
       </Stack>
 
       <Stack
         sx={{
-          height: "160px",
+          height: "120px",
           gap: "5px",
+
           "@media (max-width: 1000px)": {
             height: "auto",
             paddingBottom: "15px",
           },
         }}
       >
-        <Typography
-          sx={{
-            fontWeight: 800,
-            fontSize: "1.5rem",
-          }}
-        >
-          {price}
-        </Typography>
+        {price}
+
         <Typography
           sx={{
             fontSize: "1rem",
             fontWeight: 350,
-            opacity: 0.8,
-          }}
-        >
-          {priceDescription}
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "0.8rem",
-            fontWeight: 350,
-            opacity: 0.8,
+            color: "#444",
           }}
         >
           {priceSubDescription}
@@ -139,34 +117,26 @@ export const PriceCard: React.FC<PriceCardProps> = ({
       </Stack>
 
       <Stack gap={"12px"}>
-        <Typography
+        <Stack
+          gap="15px"
           sx={{
-            fontWeight: 700,
+            paddingBottom: "40px",
+            paddingTop: "10px",
+            paddingLeft: "3px",
           }}
         >
-          {listTitle}
-        </Typography>
-
-        <Stack gap="10px">
           {listItems.map((item) => {
             return (
               <Stack
                 key={item.title}
                 sx={{
                   flexDirection: "row",
-                  gap: "5px",
+                  gap: "12px",
                   alignItems: "center",
                 }}
               >
-                <Check color={"#1f74be"} size={"1.2rem"} strokeWidth={"3px"} />
+                <item.icon color={"#1f74be"} size={"1rem"} strokeWidth={"1.6px"} />
                 <Typography>{item.title}</Typography>
-                {item.tooltip && (
-                  <>
-                    <Tooltip title={item.tooltip} arrow color="primary">
-                      <Info size={"16px"} color="#111" />
-                    </Tooltip>
-                  </>
-                )}
               </Stack>
             );
           })}

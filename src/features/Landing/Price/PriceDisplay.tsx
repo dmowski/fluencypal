@@ -7,10 +7,15 @@ interface PriceDisplayProps {
   amountInUsd: number;
 }
 
-const PriceDisplay: React.FC<PriceDisplayProps> = ({ amountInUsd }) => {
+export const PriceDisplay: React.FC<PriceDisplayProps> = ({ amountInUsd }) => {
   const currency = useCurrency();
+  const number = (currency.rate * amountInUsd).toFixed(2);
 
-  return <span>{currency.convertUsdToCurrency(amountInUsd)}</span>;
+  return <span>{number}</span>;
 };
 
-export default PriceDisplay;
+export const CurrencyToDisplay: React.FC = () => {
+  const currency = useCurrency();
+
+  return <span>{currency.currency.toUpperCase()}</span>;
+};
