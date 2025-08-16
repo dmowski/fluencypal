@@ -38,7 +38,7 @@ export const GamePage = () => {
           zIndex: 1,
         }}
       >
-        <Typography variant="h3" align="center">
+        <Typography variant="h5" align="center">
           {i18n._(`Game`)}
         </Typography>
         <Stack
@@ -80,7 +80,7 @@ export const GamePage = () => {
           }}
         >
           <Stack>
-            <Typography variant="h5">{i18n._(`Rating:`)}</Typography>
+            <Typography variant="h6">{i18n._(`Rating:`)}</Typography>
             <Typography variant="caption">
               {i18n._("Rank in the top 5 to get the app for free")}
             </Typography>
