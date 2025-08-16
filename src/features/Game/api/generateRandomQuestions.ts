@@ -79,28 +79,40 @@ const generateTextToReadQuestions = async ({
 }: generateRandomQuestionsProps): Promise<QuestionOutput[]> => {
   const shuffledImages = shuffleArray(imageDescriptions);
   const limitedImageDescriptions = shuffledImages.slice(0, 10);
-  const allQuestions: QuestionOutput[] = limitedImageDescriptions.map((image) => {
-    const shortQuestion: GameQuestionShort = {
-      id: `${Date.now()}_read_${image.id}`,
-      type: "read_text",
-      question: image.fullImageDescription,
-      imageUrl: image.url,
-      options: [],
-    };
 
-    const fullQuestion: GameQuestionFull = {
-      ...shortQuestion,
-      createdAt: Date.now(),
-      answeredAt: null,
-      isAnsweredCorrectly: null,
-      learningLanguage: learningLanguage,
-      correctAnswer: image.fullImageDescription,
-    };
-    return {
-      fullQuestions: fullQuestion,
-      shortQuestions: shortQuestion,
-    };
-  });
+  const allQuestions: QuestionOutput[] = await Promise.all(
+    limitedImageDescriptions.map(async (image) => {
+      let textToRead = image.fullImageDescription;
+      const isNeedToTranslate = learningLanguage !== "en";
+      if (isNeedToTranslate) {
+        textToRead = await translateText({
+          text: textToRead,
+          targetLanguage: learningLanguage,
+          sourceLanguage: "en",
+        });
+      }
+      const shortQuestion: GameQuestionShort = {
+        id: `${Date.now()}_read_${image.id}`,
+        type: "read_text",
+        question: textToRead,
+        imageUrl: image.url,
+        options: [],
+      };
+
+      const fullQuestion: GameQuestionFull = {
+        ...shortQuestion,
+        createdAt: Date.now(),
+        answeredAt: null,
+        isAnsweredCorrectly: null,
+        learningLanguage: learningLanguage,
+        correctAnswer: textToRead,
+      };
+      return {
+        fullQuestions: fullQuestion,
+        shortQuestions: shortQuestion,
+      };
+    })
+  );
   return allQuestions;
 };
 

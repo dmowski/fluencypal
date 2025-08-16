@@ -9,8 +9,9 @@ import { SummaryRow } from "./SummaryRow";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { getWordsFromText } from "@/libs/getWordsFromText";
-import { useNativeRecorder } from "@/features/Audio/useNativeRecorder";
 import { useLingui } from "@lingui/react";
+
+const READ_TEXT_ACCEPTED_PERCENTAGE = 60;
 
 export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -26,29 +27,23 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
     isGame: true,
   });
 
-  const nativeRecorder = useNativeRecorder({
-    lang: settings.languageCode || "en",
-  });
-  const [isUseNativeRecorder, setIsUseNativeRecorder] = useState(true);
-
-  const usersTranscript = nativeRecorder.fullTranscript || backupRecorder.transcription;
-  const isRecording = nativeRecorder.isRecording || backupRecorder.isRecording;
+  const userTranscript = backupRecorder.transcription;
+  const isRecording = backupRecorder.isRecording;
 
   const isPhraseRecorded = (phrase: string) => {
-    if (!usersTranscript) return false;
+    if (!userTranscript) return false;
     const phraseWords = getWordsFromText(phrase);
-    const usersTranscriptWords = getWordsFromText(usersTranscript);
+    const userTranscriptWords = getWordsFromText(userTranscript);
     const wordsFromPhrase = Object.keys(phraseWords);
-    const wordsFromTranscript = Object.keys(usersTranscriptWords);
+    const wordsFromTranscript = Object.keys(userTranscriptWords);
     return wordsFromPhrase.every((word) => wordsFromTranscript.includes(word));
   };
 
-  const error = nativeRecorder.error || backupRecorder.error;
+  const error = backupRecorder.error;
   const translator = useTranslate();
   useEffect(() => {
     setIsCorrect(null);
     backupRecorder.removeTranscript();
-    nativeRecorder.removeTranscript();
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
@@ -61,7 +56,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
   };
 
   const calculatePercentage = () => {
-    const transcriptWords = getWordsFromText(usersTranscript || "");
+    const transcriptWords = getWordsFromText(userTranscript || "");
     const questionWords = getWordsFromText(question.question);
     const questWordsCount = Object.keys(questionWords).length;
     const correctlySpokenWords = Object.keys(transcriptWords).filter((word) => {
@@ -77,28 +72,13 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
   };
 
   const startRecording = () => {
-    try {
-      if (isUseNativeRecorder) {
-        nativeRecorder.startRecording();
-      } else {
-        backupRecorder.removeTranscript();
-        backupRecorder.startRecording();
-      }
-    } catch (error) {
-      backupRecorder.removeTranscript();
-      backupRecorder.startRecording();
-      setIsUseNativeRecorder(false);
-      throw error;
-    }
+    backupRecorder.removeTranscript();
+    backupRecorder.startRecording();
   };
 
   const cancelRecording = () => {
-    if (isUseNativeRecorder) {
-      nativeRecorder.stopRecording();
-    } else {
-      backupRecorder.removeTranscript();
-      backupRecorder.cancelRecording();
-    }
+    backupRecorder.removeTranscript();
+    backupRecorder.cancelRecording();
   };
 
   if (question.type !== "read_text") return <></>;
@@ -208,15 +188,31 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
               height: "400px",
             }}
           >
-            <Typography
-              variant="caption"
-              sx={{
-                width: "100%",
-                color: "rgba(255, 255, 255, 1)",
-              }}
-            >
-              {usersTranscript}
-            </Typography>
+            {userTranscript && (
+              <Stack
+                sx={{
+                  position: "absolute",
+                  top: "0px",
+                  left: "0px",
+                  right: "0px",
+                  width: "100%",
+                  boxSizing: "border-box",
+                  background: "linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))",
+                  padding: "10px 10px 120px 10px",
+                  borderRadius: "10px",
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  sx={{
+                    width: "100%",
+                    color: "rgba(255, 255, 255, 1)",
+                  }}
+                >
+                  {userTranscript}
+                </Typography>
+              </Stack>
+            )}
             <img src={question.imageUrl} alt={question.question} />
           </Stack>
         </Stack>
@@ -266,7 +262,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
             </Typography>
           )}
 
-          {(isRecording || usersTranscript) && isCorrect === null && (
+          {(isRecording || userTranscript) && isCorrect === null && (
             <Stack
               sx={{
                 flexDirection: "row",
@@ -282,7 +278,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                   gap: "10px",
                 }}
               >
-                {!isUseNativeRecorder && !usersTranscript && (
+                {!userTranscript && (
                   <Button variant="contained" size="large" onClick={() => submitBackupRecorder()}>
                     {i18n._("Done")}
                   </Button>
@@ -290,7 +286,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
 
                 {backupRecorder.visualizerComponent}
 
-                {!isUseNativeRecorder && !isRecording && usersTranscript && percentage < 70 && (
+                {!isRecording && userTranscript && percentage < READ_TEXT_ACCEPTED_PERCENTAGE && (
                   <Button
                     startIcon={<Mic />}
                     variant="contained"
@@ -301,16 +297,20 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                   </Button>
                 )}
 
-                <Button
-                  variant="contained"
-                  size="large"
-                  startIcon={<Check />}
-                  disabled={percentage < 70}
-                  onClick={() => handleAnswerSubmit(question.question)}
-                >
-                  {i18n._("Submit")}
-                </Button>
-                <Typography variant="body2">{percentage}%</Typography>
+                {!isRecording && (
+                  <>
+                    <Button
+                      variant="contained"
+                      size="large"
+                      startIcon={<Check />}
+                      disabled={percentage < READ_TEXT_ACCEPTED_PERCENTAGE}
+                      onClick={() => handleAnswerSubmit(question.question)}
+                    >
+                      {i18n._("Submit")}
+                    </Button>
+                    <Typography variant="body2">{percentage}%</Typography>
+                  </>
+                )}
               </Stack>
 
               <IconButton
@@ -326,7 +326,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
           {isCorrect == null &&
             !isRecording &&
             !backupRecorder.isTranscribing &&
-            !usersTranscript &&
+            !userTranscript &&
             !isSubmitting && (
               <Button
                 startIcon={<Mic />}
@@ -337,7 +337,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                   startRecording();
                 }}
               >
-                {i18n._("Turn on microphone")}
+                {i18n._("Record")}
               </Button>
             )}
 

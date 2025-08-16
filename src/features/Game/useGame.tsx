@@ -149,10 +149,9 @@ function useProvideGame(): GameContextType {
       await auth.getToken()
     );
 
-    const uniqQuestions = generatedQuestions.filter(
-      (question) => !questions.some((q) => q.id === question.id)
-    );
-
+    const uniqQuestions = generatedQuestions
+      //.filter((t) => t.type == "read_text")
+      .filter((question) => !questions.some((q) => q.id === question.id));
     setQuestions(uniqQuestions);
     setActiveQuestion((prev) => {
       if (prev) return prev;
