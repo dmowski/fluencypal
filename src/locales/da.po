@@ -13,10 +13,46 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/libs/metadata.ts:62
-#: src/features/Landing/Footer.tsx:88
-#: src/features/Landing/Contact/ContactsPage.tsx:94
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:252
+msgid "Loading..."
+msgstr "Indlæser..."
+
+#: src/features/Game/PositionChangedModal.tsx:138
+msgid "Continue"
+msgstr "Fortsæt"
+
+#: src/features/Dashboard/FeedbackBlock.tsx:53
+msgid "Sending..."
+msgstr "Sender..."
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:391
+msgid "Next"
+msgstr "Næste"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:264
+msgid "Transcribing..."
+msgstr "Transkriberer..."
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
+msgid "Correct!"
+msgstr "Korrekt!"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
+msgid "Incorrect!"
+msgstr "Forkert!"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:286
+msgid "Done"
+msgstr "Færdig"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:299
+msgid "Re-record"
+msgstr "Genindspil"
+
 #: src/features/Header/HeaderStatic.tsx:12
+#: src/features/Landing/Contact/ContactsPage.tsx:94
+#: src/features/Landing/Footer.tsx:88
+#: src/libs/metadata.ts:62
 #. js-lingui-explicit-id
 msgid "Contacts"
 msgstr "Kontakter"
@@ -39,10 +75,10 @@ msgstr ""
 "mål, fokuser på specifikke færdigheder som tale eller lytte, og spoor din "
 "fremgang for at mestre engelsk effektivt."
 
-#: src/libs/metadata.ts:80
-#: src/features/Landing/PlanLandingBlock.tsx:593
-#: src/features/Header/HeaderStatic.tsx:10
 #: src/features/Dashboard/ConversationSelectCard.tsx:94
+#: src/features/Header/HeaderStatic.tsx:10
+#: src/features/Landing/PlanLandingBlock.tsx:593
+#: src/libs/metadata.ts:80
 #. js-lingui-explicit-id
 msgid "Practice"
 msgstr "Praxis"
@@ -123,39 +159,39 @@ msgstr "online engelsk prisfastsættelse"
 msgid "AI tutor cost"
 msgstr "AI vejleder omkostninger"
 
-#: src/libs/metadata.ts:109
-#: src/features/Legal/PrivacyPolicy.tsx:15
-#: src/features/Legal/LegalContainer.tsx:29
-#: src/features/Landing/Footer.tsx:187
-#: src/features/Header/NeedHelpModal.tsx:145
-#: src/features/Goal/GoalQuestions.tsx:63
 #: src/features/Auth/SignInForm.tsx:207
+#: src/features/Goal/GoalQuestions.tsx:63
+#: src/features/Header/NeedHelpModal.tsx:145
+#: src/features/Landing/Footer.tsx:187
+#: src/features/Legal/LegalContainer.tsx:29
+#: src/features/Legal/PrivacyPolicy.tsx:15
+#: src/libs/metadata.ts:109
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
 msgstr "Privatlivspolitik"
 
-#: src/libs/metadata.ts:117
-#: src/features/Legal/LegalContainer.tsx:32
 #: src/features/Legal/CookiesPolicy.tsx:15
+#: src/features/Legal/LegalContainer.tsx:32
+#: src/libs/metadata.ts:117
 #. js-lingui-explicit-id
 msgid "Cookies Policy"
 msgstr "Politik for cookies"
 
-#: src/libs/metadata.ts:125
-#: src/features/Legal/TermsOfUse.tsx:13
-#: src/features/Legal/LegalContainer.tsx:26
-#: src/features/Landing/Footer.tsx:177
-#: src/features/Header/NeedHelpModal.tsx:132
-#: src/features/Goal/GoalQuestions.tsx:67
 #: src/features/Auth/SignInForm.tsx:211
+#: src/features/Goal/GoalQuestions.tsx:67
+#: src/features/Header/NeedHelpModal.tsx:132
+#: src/features/Landing/Footer.tsx:177
+#: src/features/Legal/LegalContainer.tsx:26
+#: src/features/Legal/TermsOfUse.tsx:13
+#: src/libs/metadata.ts:125
 #. js-lingui-explicit-id
 msgid "Terms of Use"
 msgstr "Brugsbetingelser"
 
+#: src/features/Blog/ListBlog.tsx:20
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:19
 #: src/libs/metadata.ts:143
 #: src/libs/metadata.ts:176
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:19
-#: src/features/Blog/ListBlog.tsx:20
 #. js-lingui-explicit-id
 msgid "Unknown category"
 msgstr "Ukendt kategori"
@@ -360,240 +396,6 @@ msgstr "Engelsk talende partner"
 msgid "AI English Speaking Practice"
 msgstr "AI Engelsk Talertræning"
 
-#: src/features/Usage/UsageStatsCards.tsx:86
-#. js-lingui-explicit-id
-msgid "Word Stats"
-msgstr "Ord Stats"
-
-#: src/features/Usage/UsageStatsCards.tsx:88
-#. js-lingui-explicit-id
-msgid "Here are the words you used the most in your conversations."
-msgstr "Her er de ord, du brugte mest i dine samtaler."
-
-#: src/features/Usage/UsageStatsCards.tsx:117
-#: src/features/Usage/UsageStatsCards.tsx:475
-#. js-lingui-explicit-id
-msgid "No words used yet"
-msgstr "Ingen ord brugt endnu"
-
-#: src/features/Usage/UsageStatsCards.tsx:182
-#. js-lingui-explicit-id
-msgid "Chat history"
-msgstr "Chat historik"
-
-#: src/features/Usage/UsageStatsCards.tsx:184
-#. js-lingui-explicit-id
-msgid "Here are the conversations you had with FluencyPal."
-msgstr "Her er de samtaler, du havde med FluencyPal."
-
-#: src/features/Usage/UsageStatsCards.tsx:207
-#. js-lingui-explicit-id
-msgid "No conversations yet"
-msgstr "Ingen samtaler endnu"
-
-#: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:546
-#. js-lingui-explicit-id
-msgid "Teacher:"
-msgstr "Lærer:"
-
-#: src/features/Usage/UsageStatsCards.tsx:254
-#: src/features/Conversation/ConversationCanvas2.tsx:546
-#. js-lingui-explicit-id
-msgid "You:"
-msgstr "Du:"
-
-#: src/features/Usage/UsageStatsCards.tsx:284
-#. js-lingui-explicit-id
-msgid "Grammar Corrections"
-msgstr "Grammatik Rettelser"
-
-#: src/features/Usage/UsageStatsCards.tsx:286
-#. js-lingui-explicit-id
-msgid "Here are the corrections you had in your conversations."
-msgstr "Her er de rettelser, du havde i dine samtaler."
-
-#: src/features/Usage/UsageStatsCards.tsx:308
-#. js-lingui-explicit-id
-msgid "No corrections yet"
-msgstr "Ingen rettelser endnu"
-
-#: src/features/Usage/UsageStatsCards.tsx:384
-#. js-lingui-explicit-id
-msgid "Description:"
-msgstr "Beskrivelse:"
-
-#: src/features/Usage/UsageStatsCards.tsx:421
-#. js-lingui-explicit-id
-msgid "Your achievements"
-msgstr "Dine resultater"
-
-#: src/features/Usage/UsageStatsCards.tsx:441
-#: src/features/Landing/PlanLandingBlock.tsx:105
-#: src/features/Dashboard/PlanDashboardCards.tsx:99
-#: src/features/Dashboard/PlanDashboardCards.tsx:309
-#: src/features/Dashboard/ConversationSelectCard.tsx:177
-#. js-lingui-explicit-id
-msgid "Words"
-msgstr "Ord"
-
-#: src/features/Usage/UsageStatsCards.tsx:511
-#. js-lingui-explicit-id
-msgid "Corrections"
-msgstr "Rettelser"
-
-#: src/features/Usage/UsageStatsCards.tsx:557
-#. js-lingui-explicit-id
-msgid "Minutes"
-msgstr "Minutter"
-
-#: src/features/Usage/UsageStatsCards.tsx:558
-#. js-lingui-explicit-id
-msgid "Total"
-msgstr "I alt"
-
-#: src/features/Usage/UsageStatsCards.tsx:581
-#. js-lingui-explicit-id
-msgid "Open history"
-msgstr "Åben historik"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:67
-#. js-lingui-explicit-id
-msgid "Error creating payment session"
-msgstr "Fejl ved oprettelse af betalingssession"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:78
-#. js-lingui-explicit-id
-msgid "Error during payment process"
-msgstr "Fejl under betalingsprocessen"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:153
-#. js-lingui-explicit-id
-msgid "Confirm payment"
-msgstr "Bekræft betaling"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:162
-#. js-lingui-explicit-id
-msgid "Subscription for 1 month | Full access"
-msgstr "Abonnement for 1 måned | Fuld adgang"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:191
-#: src/features/Usage/PaymentModal.tsx:308
-#. js-lingui-explicit-id
-msgid ""
-"I want the service to be provided immediately and I acknowledge that as "
-"soon\n"
-"                        as the Fundacja Rozwoju Przedsiębiorczości \"Twój "
-"StartUp\" provides the\n"
-"                        service, I will lose the right to terminate the "
-"contract."
-msgstr ""
-"Jeg ønsker, at tjenesten leveres med det samme, og jeg anerkender, at så "
-"snart\n"
-"                        Fundacja Rozwoju Przedsiębiorczości \"Twój "
-"StartUp\" leverer \n"
-"                        tjenesten, vil jeg miste retten til at opsige "
-"kontrakten."
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:209
-#: src/features/Usage/PaymentModal.tsx:326
-#. js-lingui-explicit-id
-msgid "I accept the"
-msgstr "Jeg accepterer"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:211
-#: src/features/Usage/PaymentModal.tsx:328
-#. js-lingui-explicit-id
-msgid "Terms and Conditions"
-msgstr "Vilkår og Betingelser"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:213
-#: src/features/Usage/PaymentModal.tsx:330
-#. js-lingui-explicit-id
-msgid ""
-"of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
-"                        StartUp\" with its registered office in Warsaw."
-msgstr ""
-"af websitet drevet af Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
-"                        StartUp\" med sit registrerede kontor i Warszawa."
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:230
-#: src/features/Usage/PaymentModal.tsx:347
-#. js-lingui-explicit-id
-msgid "I want to receive commercial and marketing content"
-msgstr "Jeg ønsker at modtage kommercielt og markedsføringsmæssigt indhold"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:246
-#: src/features/Usage/PaymentModal.tsx:278
-#. js-lingui-explicit-id
-msgid "Total:"
-msgstr "I alt:"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:262
-#. js-lingui-explicit-id
-msgid "Pay and Subscribe"
-msgstr "Betal og Abonner"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:285
-#. js-lingui-explicit-id
-msgid "Your plan"
-msgstr "Din plan"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:296
-#. js-lingui-explicit-id
-msgid "Your trial ended until"
-msgstr "Din prøveperiode er slut indtil"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:302
-#. js-lingui-explicit-id
-msgid "Your subscription is active until"
-msgstr "Dit abonnement er aktivt indtil"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:308
-#. js-lingui-explicit-id
-msgid "You have"
-msgstr "Du har"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:309
-#. js-lingui-explicit-id
-msgid "AI hours left in your balance."
-msgstr "AI timer tilbage i din saldo."
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:337
-#: src/features/Landing/Price/PricePage.tsx:203
-#. js-lingui-explicit-id
-msgid "Full Access"
-msgstr "Fuld Adgang"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:352
-#: src/features/Usage/SubscriptionPaymentModal.tsx:407
-#. js-lingui-explicit-id
-msgid "Active"
-msgstr "Aktiv"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:388
-#: src/features/Landing/Price/PricePage.tsx:233
-#. js-lingui-explicit-id
-msgid "month"
-msgstr "måned"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:393
-#: src/features/Landing/Price/PricePage.tsx:237
-#. js-lingui-explicit-id
-msgid "Learn at full speed with full access"
-msgstr "Lær i fuld fart med fuld adgang"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:407
-#. js-lingui-explicit-id
-msgid "Get Full Access"
-msgstr "Få Fuld Adgang"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:420
-#: src/features/Header/NeedHelpModal.tsx:76
-#. js-lingui-explicit-id
-msgid "Need help?"
-msgstr "Har du brug for hjælp?"
-
 #: src/features/Usage/PaymentModal.tsx:147
 #. js-lingui-explicit-id
 msgid "Buy more hours"
@@ -654,6 +456,12 @@ msgstr ""
 msgid "Price per one AI hour:"
 msgstr "Pris pr. en AI-time:"
 
+#: src/features/Usage/PaymentModal.tsx:278
+#: src/features/Usage/SubscriptionPaymentModal.tsx:246
+#. js-lingui-explicit-id
+msgid "Total:"
+msgstr "I alt:"
+
 #: src/features/Usage/PaymentModal.tsx:289
 #. js-lingui-explicit-id
 msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
@@ -661,13 +469,59 @@ msgstr ""
 "Beløbet er for stort. Jeg værdsætter din støtte, men lad os holde det under "
 "$400"
 
+#: src/features/Usage/PaymentModal.tsx:308
+#: src/features/Usage/SubscriptionPaymentModal.tsx:191
+#. js-lingui-explicit-id
+msgid ""
+"I want the service to be provided immediately and I acknowledge that as "
+"soon\n"
+"                        as the Fundacja Rozwoju Przedsiębiorczości \"Twój "
+"StartUp\" provides the\n"
+"                        service, I will lose the right to terminate the "
+"contract."
+msgstr ""
+"Jeg ønsker, at tjenesten leveres med det samme, og jeg anerkender, at så "
+"snart\n"
+"                        Fundacja Rozwoju Przedsiębiorczości \"Twój "
+"StartUp\" leverer \n"
+"                        tjenesten, vil jeg miste retten til at opsige "
+"kontrakten."
+
+#: src/features/Usage/PaymentModal.tsx:326
+#: src/features/Usage/SubscriptionPaymentModal.tsx:209
+#. js-lingui-explicit-id
+msgid "I accept the"
+msgstr "Jeg accepterer"
+
+#: src/features/Usage/PaymentModal.tsx:328
+#: src/features/Usage/SubscriptionPaymentModal.tsx:211
+#. js-lingui-explicit-id
+msgid "Terms and Conditions"
+msgstr "Vilkår og Betingelser"
+
+#: src/features/Usage/PaymentModal.tsx:330
+#: src/features/Usage/SubscriptionPaymentModal.tsx:213
+#. js-lingui-explicit-id
+msgid ""
+"of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+"                        StartUp\" with its registered office in Warsaw."
+msgstr ""
+"af websitet drevet af Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
+"                        StartUp\" med sit registrerede kontor i Warszawa."
+
+#: src/features/Usage/PaymentModal.tsx:347
+#: src/features/Usage/SubscriptionPaymentModal.tsx:230
+#. js-lingui-explicit-id
+msgid "I want to receive commercial and marketing content"
+msgstr "Jeg ønsker at modtage kommercielt og markedsføringsmæssigt indhold"
+
 #: src/features/Usage/PaymentModal.tsx:370
 #. js-lingui-explicit-id
 msgid "Continue to payment"
 msgstr "Fortsæt til betaling"
 
-#: src/features/Usage/PaymentModal.tsx:378
 #: src/features/Header/NeedHelpModal.tsx:201
+#: src/features/Usage/PaymentModal.tsx:378
 #. js-lingui-explicit-id
 msgid "Cancel"
 msgstr "Annuller"
@@ -753,8 +607,8 @@ msgstr "Succes!"
 msgid "Your payment was successful, but updates might take a few minutes"
 msgstr "Din betaling var vellykket, men opdateringer kan tage et par minutter"
 
-#: src/features/Usage/PaymentModal.tsx:544
 #: src/features/Header/HeaderStatic.tsx:15
+#: src/features/Usage/PaymentModal.tsx:544
 #. js-lingui-explicit-id
 msgid "Balance"
 msgstr "Balance"
@@ -784,15 +638,193 @@ msgstr "Total brugt:"
 msgid "Payment history:"
 msgstr "Betalingshistorik:"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:252
-msgid "Loading..."
-msgstr "Indlæser..."
-
-#: src/features/Usage/PaymentModal.tsx:640
 #: src/features/Header/PaymentHistoryModal.tsx:56
+#: src/features/Usage/PaymentModal.tsx:640
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "Ingen betalinger..."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:67
+#. js-lingui-explicit-id
+msgid "Error creating payment session"
+msgstr "Fejl ved oprettelse af betalingssession"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:78
+#. js-lingui-explicit-id
+msgid "Error during payment process"
+msgstr "Fejl under betalingsprocessen"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:153
+#. js-lingui-explicit-id
+msgid "Confirm payment"
+msgstr "Bekræft betaling"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:162
+#. js-lingui-explicit-id
+msgid "Subscription for 1 month | Full access"
+msgstr "Abonnement for 1 måned | Fuld adgang"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:262
+#. js-lingui-explicit-id
+msgid "Pay and Subscribe"
+msgstr "Betal og Abonner"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:285
+#. js-lingui-explicit-id
+msgid "Your plan"
+msgstr "Din plan"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:296
+#. js-lingui-explicit-id
+msgid "Your trial ended until"
+msgstr "Din prøveperiode er slut indtil"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:302
+#. js-lingui-explicit-id
+msgid "Your subscription is active until"
+msgstr "Dit abonnement er aktivt indtil"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:308
+#. js-lingui-explicit-id
+msgid "You have"
+msgstr "Du har"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:309
+#. js-lingui-explicit-id
+msgid "AI hours left in your balance."
+msgstr "AI timer tilbage i din saldo."
+
+#: src/features/Landing/Price/PricePage.tsx:203
+#: src/features/Usage/SubscriptionPaymentModal.tsx:337
+#. js-lingui-explicit-id
+msgid "Full Access"
+msgstr "Fuld Adgang"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:352
+#: src/features/Usage/SubscriptionPaymentModal.tsx:407
+#. js-lingui-explicit-id
+msgid "Active"
+msgstr "Aktiv"
+
+#: src/features/Landing/Price/PricePage.tsx:233
+#: src/features/Usage/SubscriptionPaymentModal.tsx:388
+#. js-lingui-explicit-id
+msgid "month"
+msgstr "måned"
+
+#: src/features/Landing/Price/PricePage.tsx:237
+#: src/features/Usage/SubscriptionPaymentModal.tsx:393
+#. js-lingui-explicit-id
+msgid "Learn at full speed with full access"
+msgstr "Lær i fuld fart med fuld adgang"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:407
+#. js-lingui-explicit-id
+msgid "Get Full Access"
+msgstr "Få Fuld Adgang"
+
+#: src/features/Header/NeedHelpModal.tsx:76
+#: src/features/Usage/SubscriptionPaymentModal.tsx:420
+#. js-lingui-explicit-id
+msgid "Need help?"
+msgstr "Har du brug for hjælp?"
+
+#: src/features/Usage/UsageStatsCards.tsx:86
+#. js-lingui-explicit-id
+msgid "Word Stats"
+msgstr "Ord Stats"
+
+#: src/features/Usage/UsageStatsCards.tsx:88
+#. js-lingui-explicit-id
+msgid "Here are the words you used the most in your conversations."
+msgstr "Her er de ord, du brugte mest i dine samtaler."
+
+#: src/features/Usage/UsageStatsCards.tsx:117
+#: src/features/Usage/UsageStatsCards.tsx:475
+#. js-lingui-explicit-id
+msgid "No words used yet"
+msgstr "Ingen ord brugt endnu"
+
+#: src/features/Usage/UsageStatsCards.tsx:182
+#. js-lingui-explicit-id
+msgid "Chat history"
+msgstr "Chat historik"
+
+#: src/features/Usage/UsageStatsCards.tsx:184
+#. js-lingui-explicit-id
+msgid "Here are the conversations you had with FluencyPal."
+msgstr "Her er de samtaler, du havde med FluencyPal."
+
+#: src/features/Usage/UsageStatsCards.tsx:207
+#. js-lingui-explicit-id
+msgid "No conversations yet"
+msgstr "Ingen samtaler endnu"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:546
+#: src/features/Usage/UsageStatsCards.tsx:254
+#. js-lingui-explicit-id
+msgid "Teacher:"
+msgstr "Lærer:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:546
+#: src/features/Usage/UsageStatsCards.tsx:254
+#. js-lingui-explicit-id
+msgid "You:"
+msgstr "Du:"
+
+#: src/features/Usage/UsageStatsCards.tsx:284
+#. js-lingui-explicit-id
+msgid "Grammar Corrections"
+msgstr "Grammatik Rettelser"
+
+#: src/features/Usage/UsageStatsCards.tsx:286
+#. js-lingui-explicit-id
+msgid "Here are the corrections you had in your conversations."
+msgstr "Her er de rettelser, du havde i dine samtaler."
+
+#: src/features/Usage/UsageStatsCards.tsx:308
+#. js-lingui-explicit-id
+msgid "No corrections yet"
+msgstr "Ingen rettelser endnu"
+
+#: src/features/Usage/UsageStatsCards.tsx:384
+#. js-lingui-explicit-id
+msgid "Description:"
+msgstr "Beskrivelse:"
+
+#: src/features/Usage/UsageStatsCards.tsx:421
+#. js-lingui-explicit-id
+msgid "Your achievements"
+msgstr "Dine resultater"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:177
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
+#: src/features/Dashboard/PlanDashboardCards.tsx:309
+#: src/features/Landing/PlanLandingBlock.tsx:105
+#: src/features/Usage/UsageStatsCards.tsx:441
+#. js-lingui-explicit-id
+msgid "Words"
+msgstr "Ord"
+
+#: src/features/Usage/UsageStatsCards.tsx:511
+#. js-lingui-explicit-id
+msgid "Corrections"
+msgstr "Rettelser"
+
+#: src/features/Usage/UsageStatsCards.tsx:557
+#. js-lingui-explicit-id
+msgid "Minutes"
+msgstr "Minutter"
+
+#: src/features/Usage/UsageStatsCards.tsx:558
+#. js-lingui-explicit-id
+msgid "Total"
+msgstr "I alt"
+
+#: src/features/Usage/UsageStatsCards.tsx:581
+#. js-lingui-explicit-id
+msgid "Open history"
+msgstr "Åben historik"
 
 #: src/features/Usage/NoBalanceBlock.tsx:134
 #. js-lingui-explicit-id
@@ -829,14 +861,43 @@ msgstr "Ingen tekst til oversættelse"
 msgid "No translation available"
 msgstr "Ingen oversættelse tilgængelig"
 
-#: src/features/Translation/useTranslate.tsx:119
-#: src/features/Header/NeedHelpModal.tsx:215
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Conversation/ConversationCanvas2.tsx:353
 #: src/features/Conversation/ConfirmConversationModal.tsx:58
+#: src/features/Conversation/ConversationCanvas2.tsx:353
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:215
+#: src/features/Translation/useTranslate.tsx:119
 #. js-lingui-explicit-id
 msgid "Close"
 msgstr "Luk"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:496
+#: src/features/Landing/PlanLandingBlock.tsx:290
+#: src/features/Landing/PlanLandingBlock.tsx:502
+#: src/features/Landing/PlanLandingBlock.tsx:628
+#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:327
+#: src/features/RolePlay/RolePlayBoard.tsx:648
+#: src/features/RolePlay/RolePlayCardApp.tsx:136
+#. js-lingui-explicit-id
+msgid "Start"
+msgstr "Start"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:98
+#: src/features/Landing/PlanLandingBlock.tsx:104
+#: src/features/RolePlay/RolePlayBoard.tsx:397
+#. js-lingui-explicit-id
+msgid "Role Play"
+msgstr "Roller Spil"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:698
+#. js-lingui-explicit-id
+msgid "Show more"
+msgstr "Vis flere"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:698
+#. js-lingui-explicit-id
+msgid "Show less"
+msgstr "Vis mindre"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -848,8 +909,8 @@ msgstr "Alias Ordbogs Gætte Spil"
 msgid "Alias"
 msgstr "Alias"
 
-#: src/features/RolePlay/rolePlayData.tsx:20
 #: src/features/Game/GamePage.tsx:46
+#: src/features/RolePlay/rolePlayData.tsx:20
 #. js-lingui-explicit-id
 msgid "Game"
 msgstr "Spil"
@@ -1784,35 +1845,6 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Alle Scenarier"
 
-#: src/features/RolePlay/RolePlayCardApp.tsx:136
-#: src/features/RolePlay/RolePlayBoard.tsx:648
-#: src/features/Landing/PlanLandingBlock.tsx:290
-#: src/features/Landing/PlanLandingBlock.tsx:502
-#: src/features/Landing/PlanLandingBlock.tsx:628
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:327
-#: src/features/Landing/Price/PricePage.tsx:280
-#: src/features/Dashboard/PlanDashboardCards.tsx:496
-#. js-lingui-explicit-id
-msgid "Start"
-msgstr "Start"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:397
-#: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/Dashboard/PlanDashboardCards.tsx:98
-#. js-lingui-explicit-id
-msgid "Role Play"
-msgstr "Roller Spil"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:698
-#. js-lingui-explicit-id
-msgid "Show more"
-msgstr "Vis flere"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:698
-#. js-lingui-explicit-id
-msgid "Show less"
-msgstr "Vis mindre"
-
 #: src/features/Plan/useGoalCreation.ts:41
 #: src/features/Plan/useGoalCreation.ts:69
 #: src/features/Plan/useGoalCreation.ts:91
@@ -1840,154 +1872,150 @@ msgstr "Start lektion"
 msgid "Send 6 messages to complete"
 msgstr "Send 6 beskeder for at fuldføre"
 
-#: src/features/Game/PositionChangedModal.tsx:138
-msgid "Continue"
-msgstr "Fortsæt"
-
-#: src/features/Lang/getLabelsClient.tsx:8
 #: src/features/Lang/getLabels.tsx:9
+#: src/features/Lang/getLabelsClient.tsx:8
 #. js-lingui-explicit-id
 msgid "English Learning Plan"
 msgstr "Engelsk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:9
 #: src/features/Lang/getLabels.tsx:10
+#: src/features/Lang/getLabelsClient.tsx:9
 #. js-lingui-explicit-id
 msgid "Spanish Learning Plan"
 msgstr "Spansk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:10
 #: src/features/Lang/getLabels.tsx:11
+#: src/features/Lang/getLabelsClient.tsx:10
 #. js-lingui-explicit-id
 msgid "Chinese Learning Plan"
 msgstr "Kinesisk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:11
 #: src/features/Lang/getLabels.tsx:12
+#: src/features/Lang/getLabelsClient.tsx:11
 #. js-lingui-explicit-id
 msgid "French Learning Plan"
 msgstr "Fransk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:12
 #: src/features/Lang/getLabels.tsx:13
+#: src/features/Lang/getLabelsClient.tsx:12
 #. js-lingui-explicit-id
 msgid "German Learning Plan"
 msgstr "Tysk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:13
 #: src/features/Lang/getLabels.tsx:14
+#: src/features/Lang/getLabelsClient.tsx:13
 #. js-lingui-explicit-id
 msgid "Japanese Learning Plan"
 msgstr "Japansk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:14
 #: src/features/Lang/getLabels.tsx:15
+#: src/features/Lang/getLabelsClient.tsx:14
 #. js-lingui-explicit-id
 msgid "Korean Learning Plan"
 msgstr "Koreansk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:15
 #: src/features/Lang/getLabels.tsx:16
+#: src/features/Lang/getLabelsClient.tsx:15
 #. js-lingui-explicit-id
 msgid "Arabic Learning Plan"
 msgstr "Arabisk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:16
 #: src/features/Lang/getLabels.tsx:17
+#: src/features/Lang/getLabelsClient.tsx:16
 #. js-lingui-explicit-id
 msgid "Portuguese Learning Plan"
 msgstr "Portugisisk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:18
 #: src/features/Lang/getLabels.tsx:19
+#: src/features/Lang/getLabelsClient.tsx:18
 #. js-lingui-explicit-id
 msgid "Italian Learning Plan"
 msgstr "Italiensk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:19
 #: src/features/Lang/getLabels.tsx:20
+#: src/features/Lang/getLabelsClient.tsx:19
 #. js-lingui-explicit-id
 msgid "Polish Learning Plan"
 msgstr "Polsk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:20
 #: src/features/Lang/getLabels.tsx:21
+#: src/features/Lang/getLabelsClient.tsx:20
 #. js-lingui-explicit-id
 msgid "Russian Learning Plan"
 msgstr "Russisk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:22
 #: src/features/Lang/getLabels.tsx:23
+#: src/features/Lang/getLabelsClient.tsx:22
 #. js-lingui-explicit-id
 msgid "Ukrainian Learning Plan"
 msgstr "Ukrainsk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:23
 #: src/features/Lang/getLabels.tsx:24
+#: src/features/Lang/getLabelsClient.tsx:23
 #. js-lingui-explicit-id
 msgid "Indonesian Learning Plan"
 msgstr "Indonesisk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:24
 #: src/features/Lang/getLabels.tsx:25
+#: src/features/Lang/getLabelsClient.tsx:24
 #. js-lingui-explicit-id
 msgid "Malay Learning Plan"
 msgstr "Malay Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:25
 #: src/features/Lang/getLabels.tsx:26
+#: src/features/Lang/getLabelsClient.tsx:25
 #. js-lingui-explicit-id
 msgid "Thai Learning Plan"
 msgstr "Thai Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:26
 #: src/features/Lang/getLabels.tsx:27
+#: src/features/Lang/getLabelsClient.tsx:26
 #. js-lingui-explicit-id
 msgid "Turkish Learning Plan"
 msgstr "Tyrkisk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:27
 #: src/features/Lang/getLabels.tsx:28
+#: src/features/Lang/getLabelsClient.tsx:27
 #. js-lingui-explicit-id
 msgid "Vietnamese Learning Plan"
 msgstr "Vietnamesisk Læreplan"
 
-#: src/features/Lang/getLabelsClient.tsx:28
 #: src/features/Lang/getLabels.tsx:29
+#: src/features/Lang/getLabelsClient.tsx:28
 #. js-lingui-explicit-id
 msgid "Danish Learning Plan"
 msgstr "Dansk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:29
 #: src/features/Lang/getLabels.tsx:30
+#: src/features/Lang/getLabelsClient.tsx:29
 #. js-lingui-explicit-id
 msgid "Norwegian Learning Plan"
 msgstr "Norsk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:30
 #: src/features/Lang/getLabels.tsx:31
+#: src/features/Lang/getLabelsClient.tsx:30
 #. js-lingui-explicit-id
 msgid "Swedish Learning Plan"
 msgstr "Svensk Læringsplan"
 
-#: src/features/Lang/getLabelsClient.tsx:31
 #: src/features/Lang/getLabels.tsx:32
+#: src/features/Lang/getLabelsClient.tsx:31
 #. js-lingui-explicit-id
 msgid "Belarusian Learning Plan"
 msgstr "Hviderussisk Læringsplan"
 
-#: src/features/Lang/LanguageSwitcher.tsx:98
-#: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Dashboard/SelectLanguage.tsx:80
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
+#: src/features/Goal/GoalQuestions.tsx:324
+#: src/features/Lang/LanguageSwitcher.tsx:98
 #. js-lingui-explicit-id
 msgid "Other languages"
 msgstr "Andre sprog"
 
-#: src/features/Lang/LanguageSwitcher.tsx:99
-#: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Dashboard/SelectLanguage.tsx:81
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
+#: src/features/Goal/GoalQuestions.tsx:325
+#: src/features/Lang/LanguageSwitcher.tsx:99
 #. js-lingui-explicit-id
 msgid "System languages"
 msgstr "System sprog"
@@ -1997,14 +2025,14 @@ msgstr "System sprog"
 msgid "Languages"
 msgstr "Sprog"
 
-#: src/features/Lang/LanguageSwitcher.tsx:229
 #: src/features/Goal/GoalQuestions.tsx:423
+#: src/features/Lang/LanguageSwitcher.tsx:229
 #. js-lingui-explicit-id
 msgid "Language to Learn"
 msgstr "Sprog at lære"
 
-#: src/features/Lang/LanguageSwitcher.tsx:268
 #: src/features/Dashboard/SelectLanguage.tsx:250
+#: src/features/Lang/LanguageSwitcher.tsx:268
 #. js-lingui-explicit-id
 msgid "Native Language"
 msgstr "Modersmål"
@@ -2013,243 +2041,6 @@ msgstr "Modersmål"
 #. js-lingui-explicit-id
 msgid "Page Language"
 msgstr "Sprog på side"
-
-#: src/features/Landing/PlanLandingBlock.tsx:20
-#. js-lingui-explicit-id
-msgid "Psychology"
-msgstr "Psykologi"
-
-#: src/features/Landing/PlanLandingBlock.tsx:21
-#. js-lingui-explicit-id
-msgid "Mental Health Vocabulary"
-msgstr "Mental Sundhed Vokabular"
-
-#: src/features/Landing/PlanLandingBlock.tsx:23
-#. js-lingui-explicit-id
-msgid "Essential words for discussing mental health and psychology."
-msgstr "Vigtige ord for at diskutere mental sundhed og psykologi."
-
-#: src/features/Landing/PlanLandingBlock.tsx:29
-#. js-lingui-explicit-id
-msgid "Diagnosis"
-msgstr "Diagnose"
-
-#: src/features/Landing/PlanLandingBlock.tsx:30
-#. js-lingui-explicit-id
-msgid "Medical Talk Simulation"
-msgstr "Medicinsk Samtale Simulation"
-
-#: src/features/Landing/PlanLandingBlock.tsx:32
-#. js-lingui-explicit-id
-msgid "Practice medical conversations through simulated scenarios."
-msgstr "Øv medicinske samtaler gennem simulerede scenarier."
-
-#: src/features/Landing/PlanLandingBlock.tsx:38
-#. js-lingui-explicit-id
-msgid "Reflex"
-msgstr "Refleks"
-
-#: src/features/Landing/PlanLandingBlock.tsx:39
-#. js-lingui-explicit-id
-msgid "Fast Answer Practice"
-msgstr "Hurtig Svar Praksis"
-
-#: src/features/Landing/PlanLandingBlock.tsx:41
-#. js-lingui-explicit-id
-msgid "Improve your ability to answer quickly and clearly in conversations."
-msgstr "Forbedr din evne til hurtigt og klart at svare i samtaler."
-
-#: src/features/Landing/PlanLandingBlock.tsx:47
-#: src/features/Landing/LandingPage.tsx:138
-#. js-lingui-explicit-id
-msgid "Speaking"
-msgstr "Tale"
-
-#: src/features/Landing/PlanLandingBlock.tsx:48
-#. js-lingui-explicit-id
-msgid "Public Talk Skills"
-msgstr "Offentlige Talefærdigheder"
-
-#: src/features/Landing/PlanLandingBlock.tsx:50
-#. js-lingui-explicit-id
-msgid "Boost your confidence in public speaking."
-msgstr "Boost din tillid til offentlig tale."
-
-#: src/features/Landing/PlanLandingBlock.tsx:56
-#. js-lingui-explicit-id
-msgid "TOEFL"
-msgstr "TOEFL"
-
-#: src/features/Landing/PlanLandingBlock.tsx:57
-#. js-lingui-explicit-id
-msgid "Academic Word List"
-msgstr "Akademisk ordliste"
-
-#: src/features/Landing/PlanLandingBlock.tsx:59
-#. js-lingui-explicit-id
-msgid "Master high-frequency TOEFL vocabulary."
-msgstr "Mestre hyppigt forekommende TOEFL-vokabular."
-
-#: src/features/Landing/PlanLandingBlock.tsx:65
-#. js-lingui-explicit-id
-msgid "Mock"
-msgstr "Mock"
-
-#: src/features/Landing/PlanLandingBlock.tsx:66
-#. js-lingui-explicit-id
-msgid "TOEFL Speaking Tasks"
-msgstr "TOEFL Taleopgaver"
-
-#: src/features/Landing/PlanLandingBlock.tsx:68
-#. js-lingui-explicit-id
-msgid "Simulate speaking tasks from the TOEFL exam."
-msgstr "Simuler taleopgaver fra TOEFL-eksamen."
-
-#: src/features/Landing/PlanLandingBlock.tsx:74
-#: src/features/Landing/LandingPage.tsx:148
-#. js-lingui-explicit-id
-msgid "Grammar"
-msgstr "Grammatik"
-
-#: src/features/Landing/PlanLandingBlock.tsx:75
-#. js-lingui-explicit-id
-msgid "Advanced Academic Usage"
-msgstr "Avanceret Akademisk Brug"
-
-#: src/features/Landing/PlanLandingBlock.tsx:77
-#. js-lingui-explicit-id
-msgid "Learn grammar used in academic writing and speaking."
-msgstr "Lær grammatik anvendt i akademisk skrivning og tale."
-
-#: src/features/Landing/PlanLandingBlock.tsx:84
-#. js-lingui-explicit-id
-msgid "Wellness"
-msgstr "Wellness"
-
-#: src/features/Landing/PlanLandingBlock.tsx:85
-#. js-lingui-explicit-id
-msgid "Mental Health Talk"
-msgstr ""
-"Mental Health Talk\n"
-"\n"
-"Mental Sundhed Snak"
-
-#: src/features/Landing/PlanLandingBlock.tsx:87
-#. js-lingui-explicit-id
-msgid "Explore techniques to talk about wellness and mental well-being."
-msgstr "Udforsk teknikker til at tale om velvære og mental sundhed."
-
-#: src/features/Landing/PlanLandingBlock.tsx:93
-#. js-lingui-explicit-id
-msgid "Essays"
-msgstr "Essays"
-
-#: src/features/Landing/PlanLandingBlock.tsx:94
-#. js-lingui-explicit-id
-msgid "Formal Writing Practice"
-msgstr "Formel Skrivepraksis"
-
-#: src/features/Landing/PlanLandingBlock.tsx:96
-#. js-lingui-explicit-id
-msgid "Develop formal writing skills for academic success."
-msgstr "Udvikl formelle skrivefærdigheder for akademisk succes."
-
-#: src/features/Landing/PlanLandingBlock.tsx:103
-#: src/features/Dashboard/PlanDashboardCards.tsx:97
-#: src/features/Dashboard/PlanDashboardCards.tsx:249
-#: src/features/Dashboard/ConversationSelectCard.tsx:114
-#. js-lingui-explicit-id
-msgid "Conversation"
-msgstr "Samtale"
-
-#: src/features/Landing/PlanLandingBlock.tsx:106
-#: src/features/Dashboard/PlanDashboardCards.tsx:100
-#. js-lingui-explicit-id
-msgid "Rule"
-msgstr "Regel"
-
-#: src/features/Landing/PlanLandingBlock.tsx:149
-#. js-lingui-explicit-id
-msgid "How It Works"
-msgstr "Hvordan Det Virker"
-
-#: src/features/Landing/PlanLandingBlock.tsx:160
-#. js-lingui-explicit-id
-msgid "From Onboarding to Your Goal"
-msgstr "Fra Onboarding til Dit Mål"
-
-#: src/features/Landing/PlanLandingBlock.tsx:233
-#. js-lingui-explicit-id
-msgid "Step 1"
-msgstr "Trin 1"
-
-#: src/features/Landing/PlanLandingBlock.tsx:250
-#. js-lingui-explicit-id
-msgid "Smart Start"
-msgstr "Smart Start"
-
-#: src/features/Landing/PlanLandingBlock.tsx:261
-#. js-lingui-explicit-id
-msgid ""
-"Fill out a quick onboarding quiz to help FluencyPal understand your goals "
-"and preferences."
-msgstr ""
-"Udfyld en hurtig onboardingsquiz for at hjælpe FluencyPal med at forstå "
-"dine mål og præferencer."
-
-#: src/features/Landing/PlanLandingBlock.tsx:363
-#. js-lingui-explicit-id
-msgid "Step 2"
-msgstr "Trin 2"
-
-#: src/features/Landing/PlanLandingBlock.tsx:381
-#. js-lingui-explicit-id
-msgid "Personal Plan"
-msgstr "Personlig Plan"
-
-#: src/features/Landing/PlanLandingBlock.tsx:396
-#. js-lingui-explicit-id
-msgid ""
-"Based on your onboarding, FluencyPal instantly generates a custom learning "
-"plan just for you."
-msgstr ""
-"Baseret på din implementering, genererer FluencyPal øjeblikkeligt en "
-"skræddersyet læringsplan kun for dig."
-
-#: src/features/Landing/PlanLandingBlock.tsx:412
-#: src/features/Goal/GoalQuestions.tsx:1087
-#. js-lingui-explicit-id
-msgid "Create a plan"
-msgstr "Opret en plan"
-
-#: src/features/Landing/PlanLandingBlock.tsx:576
-#. js-lingui-explicit-id
-msgid "Step 3"
-msgstr "Trin 3"
-
-#: src/features/Landing/PlanLandingBlock.tsx:604
-#. js-lingui-explicit-id
-msgid ""
-"Jump into your tailored learning path and build real skills through "
-"engaging practice with AI voice chat."
-msgstr ""
-"Spring ind i din skræddersyede læringsvej og opbyg viden gennem engagerende "
-"øvelser med AI stemmechat."
-
-#: src/features/Landing/PlanLandingBlock.tsx:638
-#. js-lingui-explicit-id
-msgid "1 hour free"
-msgstr "1 time gratis"
-
-#: src/features/Landing/PlanLandingBlock.tsx:664
-#. js-lingui-explicit-id
-msgid "Results are closer than you think"
-msgstr "Resultater er tættere end du tror"
-
-#: src/features/Landing/PlanLandingBlock.tsx:677
-#. js-lingui-explicit-id
-msgid "Start Learning"
-msgstr "Start med at lære"
 
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
@@ -2365,11 +2156,11 @@ msgstr "Talepartner"
 msgid "Get Started"
 msgstr "Kom Igang"
 
+#: src/features/Blog/BlogsPage.tsx:42
 #: src/features/Landing/LandingPage.tsx:121
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:44
 #: src/features/Landing/Price/PricePage.tsx:111
 #: src/features/Landing/Price/PricePage.tsx:937
-#: src/features/Blog/BlogsPage.tsx:42
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:44
 #. js-lingui-explicit-id
 msgid "Get Started Free"
 msgstr "Kom i gang gratis"
@@ -2407,6 +2198,12 @@ msgstr ""
 "ordforråd og fremskridtsopfølgning—for hurtigere at opnå flydende engelsk "
 "online."
 
+#: src/features/Landing/LandingPage.tsx:138
+#: src/features/Landing/PlanLandingBlock.tsx:47
+#. js-lingui-explicit-id
+msgid "Speaking"
+msgstr "Tale"
+
 #: src/features/Landing/LandingPage.tsx:139
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
@@ -2427,6 +2224,12 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "Start Taletræning"
+
+#: src/features/Landing/LandingPage.tsx:148
+#: src/features/Landing/PlanLandingBlock.tsx:74
+#. js-lingui-explicit-id
+msgid "Grammar"
+msgstr "Grammatik"
 
 #: src/features/Landing/LandingPage.tsx:149
 #. js-lingui-explicit-id
@@ -2591,27 +2394,234 @@ msgstr "Lær hvor som helst, når som helst"
 msgid "Start Your Free Trial"
 msgstr "Start din gratis prøveperiode"
 
-#: src/features/Landing/Footer.tsx:85
+#: src/features/Landing/PlanLandingBlock.tsx:20
 #. js-lingui-explicit-id
-msgid "Role-Play"
-msgstr "Rollespil"
+msgid "Psychology"
+msgstr "Psykologi"
 
-#: src/features/Landing/Footer.tsx:91
-#: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Landing/PlanLandingBlock.tsx:21
 #. js-lingui-explicit-id
-msgid "Blog"
-msgstr "Blog"
+msgid "Mental Health Vocabulary"
+msgstr "Mental Sundhed Vokabular"
 
-#: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:95
-#: src/features/Header/HeaderStatic.tsx:13
+#: src/features/Landing/PlanLandingBlock.tsx:23
 #. js-lingui-explicit-id
-msgid "Price"
-msgstr "Pris"
+msgid "Essential words for discussing mental health and psychology."
+msgstr "Vigtige ord for at diskutere mental sundhed og psykologi."
 
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
-#: src/features/Landing/Price/PricePage.tsx:936
+#: src/features/Landing/PlanLandingBlock.tsx:29
+#. js-lingui-explicit-id
+msgid "Diagnosis"
+msgstr "Diagnose"
+
+#: src/features/Landing/PlanLandingBlock.tsx:30
+#. js-lingui-explicit-id
+msgid "Medical Talk Simulation"
+msgstr "Medicinsk Samtale Simulation"
+
+#: src/features/Landing/PlanLandingBlock.tsx:32
+#. js-lingui-explicit-id
+msgid "Practice medical conversations through simulated scenarios."
+msgstr "Øv medicinske samtaler gennem simulerede scenarier."
+
+#: src/features/Landing/PlanLandingBlock.tsx:38
+#. js-lingui-explicit-id
+msgid "Reflex"
+msgstr "Refleks"
+
+#: src/features/Landing/PlanLandingBlock.tsx:39
+#. js-lingui-explicit-id
+msgid "Fast Answer Practice"
+msgstr "Hurtig Svar Praksis"
+
+#: src/features/Landing/PlanLandingBlock.tsx:41
+#. js-lingui-explicit-id
+msgid "Improve your ability to answer quickly and clearly in conversations."
+msgstr "Forbedr din evne til hurtigt og klart at svare i samtaler."
+
+#: src/features/Landing/PlanLandingBlock.tsx:48
+#. js-lingui-explicit-id
+msgid "Public Talk Skills"
+msgstr "Offentlige Talefærdigheder"
+
+#: src/features/Landing/PlanLandingBlock.tsx:50
+#. js-lingui-explicit-id
+msgid "Boost your confidence in public speaking."
+msgstr "Boost din tillid til offentlig tale."
+
+#: src/features/Landing/PlanLandingBlock.tsx:56
+#. js-lingui-explicit-id
+msgid "TOEFL"
+msgstr "TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:57
+#. js-lingui-explicit-id
+msgid "Academic Word List"
+msgstr "Akademisk ordliste"
+
+#: src/features/Landing/PlanLandingBlock.tsx:59
+#. js-lingui-explicit-id
+msgid "Master high-frequency TOEFL vocabulary."
+msgstr "Mestre hyppigt forekommende TOEFL-vokabular."
+
+#: src/features/Landing/PlanLandingBlock.tsx:65
+#. js-lingui-explicit-id
+msgid "Mock"
+msgstr "Mock"
+
+#: src/features/Landing/PlanLandingBlock.tsx:66
+#. js-lingui-explicit-id
+msgid "TOEFL Speaking Tasks"
+msgstr "TOEFL Taleopgaver"
+
+#: src/features/Landing/PlanLandingBlock.tsx:68
+#. js-lingui-explicit-id
+msgid "Simulate speaking tasks from the TOEFL exam."
+msgstr "Simuler taleopgaver fra TOEFL-eksamen."
+
+#: src/features/Landing/PlanLandingBlock.tsx:75
+#. js-lingui-explicit-id
+msgid "Advanced Academic Usage"
+msgstr "Avanceret Akademisk Brug"
+
+#: src/features/Landing/PlanLandingBlock.tsx:77
+#. js-lingui-explicit-id
+msgid "Learn grammar used in academic writing and speaking."
+msgstr "Lær grammatik anvendt i akademisk skrivning og tale."
+
+#: src/features/Landing/PlanLandingBlock.tsx:84
+#. js-lingui-explicit-id
+msgid "Wellness"
+msgstr "Wellness"
+
+#: src/features/Landing/PlanLandingBlock.tsx:85
+#. js-lingui-explicit-id
+msgid "Mental Health Talk"
+msgstr ""
+"Mental Health Talk\n"
+"\n"
+"Mental Sundhed Snak"
+
+#: src/features/Landing/PlanLandingBlock.tsx:87
+#. js-lingui-explicit-id
+msgid "Explore techniques to talk about wellness and mental well-being."
+msgstr "Udforsk teknikker til at tale om velvære og mental sundhed."
+
+#: src/features/Landing/PlanLandingBlock.tsx:93
+#. js-lingui-explicit-id
+msgid "Essays"
+msgstr "Essays"
+
+#: src/features/Landing/PlanLandingBlock.tsx:94
+#. js-lingui-explicit-id
+msgid "Formal Writing Practice"
+msgstr "Formel Skrivepraksis"
+
+#: src/features/Landing/PlanLandingBlock.tsx:96
+#. js-lingui-explicit-id
+msgid "Develop formal writing skills for academic success."
+msgstr "Udvikl formelle skrivefærdigheder for akademisk succes."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:114
+#: src/features/Dashboard/PlanDashboardCards.tsx:97
+#: src/features/Dashboard/PlanDashboardCards.tsx:249
+#: src/features/Landing/PlanLandingBlock.tsx:103
+#. js-lingui-explicit-id
+msgid "Conversation"
+msgstr "Samtale"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:100
+#: src/features/Landing/PlanLandingBlock.tsx:106
+#. js-lingui-explicit-id
+msgid "Rule"
+msgstr "Regel"
+
+#: src/features/Landing/PlanLandingBlock.tsx:149
+#. js-lingui-explicit-id
+msgid "How It Works"
+msgstr "Hvordan Det Virker"
+
+#: src/features/Landing/PlanLandingBlock.tsx:160
+#. js-lingui-explicit-id
+msgid "From Onboarding to Your Goal"
+msgstr "Fra Onboarding til Dit Mål"
+
+#: src/features/Landing/PlanLandingBlock.tsx:233
+#. js-lingui-explicit-id
+msgid "Step 1"
+msgstr "Trin 1"
+
+#: src/features/Landing/PlanLandingBlock.tsx:250
+#. js-lingui-explicit-id
+msgid "Smart Start"
+msgstr "Smart Start"
+
+#: src/features/Landing/PlanLandingBlock.tsx:261
+#. js-lingui-explicit-id
+msgid ""
+"Fill out a quick onboarding quiz to help FluencyPal understand your goals "
+"and preferences."
+msgstr ""
+"Udfyld en hurtig onboardingsquiz for at hjælpe FluencyPal med at forstå "
+"dine mål og præferencer."
+
+#: src/features/Landing/PlanLandingBlock.tsx:363
+#. js-lingui-explicit-id
+msgid "Step 2"
+msgstr "Trin 2"
+
+#: src/features/Landing/PlanLandingBlock.tsx:381
+#. js-lingui-explicit-id
+msgid "Personal Plan"
+msgstr "Personlig Plan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:396
+#. js-lingui-explicit-id
+msgid ""
+"Based on your onboarding, FluencyPal instantly generates a custom learning "
+"plan just for you."
+msgstr ""
+"Baseret på din implementering, genererer FluencyPal øjeblikkeligt en "
+"skræddersyet læringsplan kun for dig."
+
+#: src/features/Goal/GoalQuestions.tsx:1087
+#: src/features/Landing/PlanLandingBlock.tsx:412
+#. js-lingui-explicit-id
+msgid "Create a plan"
+msgstr "Opret en plan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:576
+#. js-lingui-explicit-id
+msgid "Step 3"
+msgstr "Trin 3"
+
+#: src/features/Landing/PlanLandingBlock.tsx:604
+#. js-lingui-explicit-id
+msgid ""
+"Jump into your tailored learning path and build real skills through "
+"engaging practice with AI voice chat."
+msgstr ""
+"Spring ind i din skræddersyede læringsvej og opbyg viden gennem engagerende "
+"øvelser med AI stemmechat."
+
+#: src/features/Landing/PlanLandingBlock.tsx:638
+#. js-lingui-explicit-id
+msgid "1 hour free"
+msgstr "1 time gratis"
+
+#: src/features/Landing/PlanLandingBlock.tsx:664
+#. js-lingui-explicit-id
+msgid "Results are closer than you think"
+msgstr "Resultater er tættere end du tror"
+
+#: src/features/Landing/PlanLandingBlock.tsx:677
+#. js-lingui-explicit-id
+msgid "Start Learning"
+msgstr "Start med at lære"
+
 #: src/features/Blog/BlogsPage.tsx:41
+#: src/features/Landing/Price/PricePage.tsx:936
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Start Din Rejse til Flydende Samtaler Nu"
@@ -2631,14 +2641,14 @@ msgstr "Spil rollen"
 msgid "Ready to play?"
 msgstr "Klar til at spille?"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:336
 #: src/features/Goal/GoalQuestions.tsx:1250
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:336
 #. js-lingui-explicit-id
 msgid "The first 3 days are free"
 msgstr "De første 3 dage er gratis"
 
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:339
 #: src/features/Goal/GoalQuestions.tsx:1249
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:339
 #. js-lingui-explicit-id
 msgid "No credit card required"
 msgstr "Ingen kreditkort kræves"
@@ -2687,6 +2697,22 @@ msgstr "Klar til at blive flydende i engelsk?"
 msgid "Try"
 msgstr "Prøv"
 
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
+#. js-lingui-explicit-id
+msgid "Role Play Scenarios"
+msgstr "Rollespilsscenarier"
+
+#: src/features/Blog/ListBlog.tsx:72
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
+#. js-lingui-explicit-id
+msgid "Discover"
+msgstr "Opdag"
+
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
+#. js-lingui-explicit-id
+msgid "No scenarios found"
+msgstr "Ingen scenarier fundet"
+
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
 #. js-lingui-explicit-id
 msgid "Practice Real-Life Conversations With Role-Play Scenarios"
@@ -2701,21 +2727,12 @@ msgstr ""
 "Bestil mad, planlæg aftaler, klar jobinterviews og meget mere—alt sammen "
 "med vejledning fra din AI lærer."
 
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
+#: src/features/Header/HeaderStatic.tsx:13
+#: src/features/Landing/Footer.tsx:94
+#: src/features/Landing/Price/PricePage.tsx:95
 #. js-lingui-explicit-id
-msgid "Role Play Scenarios"
-msgstr "Rollespilsscenarier"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
-#: src/features/Blog/ListBlog.tsx:72
-#. js-lingui-explicit-id
-msgid "Discover"
-msgstr "Opdag"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
-#. js-lingui-explicit-id
-msgid "No scenarios found"
-msgstr "Ingen scenarier fundet"
+msgid "Price"
+msgstr "Pris"
 
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
@@ -2787,86 +2804,86 @@ msgstr "For elever, der ønsker fleksibilitet"
 msgid "Everything in Free, plus:"
 msgstr "Alt i Gratis, plus:"
 
-#: src/features/Landing/Price/PricePage.tsx:241
 #: src/features/Landing/Price/FeatureList.tsx:31
+#: src/features/Landing/Price/PricePage.tsx:241
 #. js-lingui-explicit-id
 msgid "Full AI tutor access"
 msgstr "Full AI tutor access"
 
-#: src/features/Landing/Price/PricePage.tsx:242
 #: src/features/Landing/Price/FeatureList.tsx:32
+#: src/features/Landing/Price/PricePage.tsx:242
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Få ubegrænset adgang til AI-drevet sprogtræning"
 
-#: src/features/Landing/Price/PricePage.tsx:246
 #: src/features/Landing/Price/FeatureList.tsx:36
+#: src/features/Landing/Price/PricePage.tsx:246
 #. js-lingui-explicit-id
 msgid "Role-play scenarios"
 msgstr "Role-play scenarier"
 
-#: src/features/Landing/Price/PricePage.tsx:247
 #: src/features/Landing/Price/FeatureList.tsx:37
+#: src/features/Landing/Price/PricePage.tsx:247
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr "Deltag i virkelige samtaler som jobsamtaler eller bestilling af mad"
 
-#: src/features/Landing/Price/PricePage.tsx:253
 #: src/features/Landing/Price/FeatureList.tsx:41
+#: src/features/Landing/Price/PricePage.tsx:253
 #. js-lingui-explicit-id
 msgid "Conversation practice"
 msgstr "Samtalepraksis"
 
-#: src/features/Landing/Price/PricePage.tsx:254
 #: src/features/Landing/Price/FeatureList.tsx:42
+#: src/features/Landing/Price/PricePage.tsx:254
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "Forbedr din flydende tale med interaktive chatsessioner"
 
-#: src/features/Landing/Price/PricePage.tsx:258
 #: src/features/Landing/Price/FeatureList.tsx:46
+#: src/features/Landing/Price/PricePage.tsx:258
 #. js-lingui-explicit-id
 msgid "Progress tracking"
 msgstr "Fremdriftssporing"
 
-#: src/features/Landing/Price/PricePage.tsx:259
 #: src/features/Landing/Price/FeatureList.tsx:47
+#: src/features/Landing/Price/PricePage.tsx:259
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "Se dine forbedringer og spor din læringsrejse"
 
-#: src/features/Landing/Price/PricePage.tsx:263
 #: src/features/Landing/Price/FeatureList.tsx:51
+#: src/features/Landing/Price/PricePage.tsx:263
 #. js-lingui-explicit-id
 msgid "New Words"
 msgstr "Nye Ord"
 
-#: src/features/Landing/Price/PricePage.tsx:264
 #: src/features/Landing/Price/FeatureList.tsx:52
+#: src/features/Landing/Price/PricePage.tsx:264
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "Få nye ord og sætninger i kontekst"
 
-#: src/features/Landing/Price/PricePage.tsx:268
 #: src/features/Landing/Price/FeatureList.tsx:56
+#: src/features/Landing/Price/PricePage.tsx:268
 #. js-lingui-explicit-id
 msgid "New Grammar Rules"
 msgstr "Nye Grammatikregler"
 
-#: src/features/Landing/Price/PricePage.tsx:269
 #: src/features/Landing/Price/FeatureList.tsx:57
+#: src/features/Landing/Price/PricePage.tsx:269
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "Ved at øve, vil du få personlige grammatikregler fra AI"
 
-#: src/features/Landing/Price/PricePage.tsx:273
 #: src/features/Landing/Price/FeatureList.tsx:61
+#: src/features/Landing/Price/PricePage.tsx:273
 #. js-lingui-explicit-id
 msgid "Advanced Personalization"
 msgstr "Avanceret Personalisering"
 
-#: src/features/Landing/Price/PricePage.tsx:274
 #: src/features/Landing/Price/FeatureList.tsx:62
+#: src/features/Landing/Price/PricePage.tsx:274
 #. js-lingui-explicit-id
 msgid ""
 "With time, AI will adapt to your learning style and it will be more "
@@ -3059,8 +3076,8 @@ msgstr ""
 "Ja! Vi tilbyder rabatter, når du køber større kreditpakker. Bare kontakt "
 "mig, før du køber, og jeg giver dig en rabat."
 
-#: src/features/Landing/Price/PricePage.tsx:909
 #: src/features/Header/NeedHelpModal.tsx:103
+#: src/features/Landing/Price/PricePage.tsx:909
 #. js-lingui-explicit-id
 msgid "Contacts:"
 msgstr "Contacts:"
@@ -3075,57 +3092,90 @@ msgstr "Vil mine kreditter udløbe?"
 msgid "No, your credits stay active as long as your account is in good standing."
 msgstr "Nej, dine kreditter forbliver aktive, så længe din konto er i god behold."
 
-#: src/features/Landing/Contact/ContactsPage.tsx:104
+#: src/features/Landing/Footer.tsx:85
 #. js-lingui-explicit-id
-msgid ""
-"My name is Alex, I am the creator of this website. I am a software engineer "
-"and I am passionate about learning languages. I created this website to "
-"help people learn languages in a fun and interactive way. I hope you enjoy "
-"using it!"
+msgid "Role-Play"
+msgstr "Rollespil"
+
+#: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Landing/Footer.tsx:91
+#. js-lingui-explicit-id
+msgid "Blog"
+msgstr "Blog"
+
+#: src/features/Header/HeaderPractice.tsx:212
+#. js-lingui-explicit-id
+msgid "Finishing..."
+msgstr "Afslutter..."
+
+#: src/features/Dashboard/RulesToLearn.tsx:101
+#: src/features/Dashboard/WordsToLearn.tsx:121
+#: src/features/Header/HeaderPractice.tsx:213
+#. js-lingui-explicit-id
+msgid "Back"
+msgstr "Tilbage"
+
+#: src/features/Header/HeaderPractice.tsx:295
+#. js-lingui-explicit-id
+msgid "You are in the top 5"
+msgstr "Du er i top 5"
+
+#: src/features/Header/HeaderPractice.tsx:350
+#. js-lingui-explicit-id
+msgid "Refund Request"
+msgstr "Anmodning om tilbagebetaling"
+
+#: src/features/Header/HeaderPractice.tsx:351
+#. js-lingui-explicit-id
+msgid "Add some info why you want a refund and we will do it."
 msgstr ""
-"Mit navn er Alex, jeg er skaberen af denne hjemmeside. Jeg er en "
-"softwareingeniør, og jeg er passioneret omkring at lære sprog. Jeg skabte "
-"denne hjemmeside for at hjælpe folk med at lære sprog på en sjov og "
-"interaktiv måde. Jeg håber, du nyder at bruge den!"
+"Tilføj nogle oplysninger om, hvorfor du ønsker en refusion, og vi vil gøre "
+"det."
 
-#: src/features/Landing/Contact/ContactsPage.tsx:117
+#: src/features/Header/ContactMessageModal.tsx:75
+#: src/features/Header/HeaderPractice.tsx:352
+#: src/features/Header/HeaderPractice.tsx:361
 #. js-lingui-explicit-id
-msgid ""
-"Feel free to reach out to me with any questions or feedback. I'm always "
-"happy to help!"
-msgstr ""
-"Feel free to reach out to me with any questions or feedback. I'm always "
-"happy to help!"
+msgid "Leave your message"
+msgstr "Efterlad din besked"
 
-#: src/features/Header/PaymentHistoryModal.tsx:21
+#: src/features/Header/HeaderPractice.tsx:359
+#: src/features/Header/HeaderPractice.tsx:421
 #. js-lingui-explicit-id
-msgid "Trial balance"
-msgstr "Prøvebalance"
+msgid "Feedback"
+msgstr "Tilbagemelding"
 
-#: src/features/Header/PaymentHistoryModal.tsx:22
+#: src/features/Header/HeaderPractice.tsx:360
 #. js-lingui-explicit-id
-msgid "Payment"
-msgstr "Betaling"
+msgid "We appreciate your feedback!"
+msgstr "Vi sætter pris på din feedback!"
 
-#: src/features/Header/PaymentHistoryModal.tsx:23
+#: src/features/Header/HeaderPractice.tsx:385
 #. js-lingui-explicit-id
-msgid "Gift"
-msgstr "Gave"
+msgid "Subscription"
+msgstr "Abonnement"
 
-#: src/features/Header/PaymentHistoryModal.tsx:24
+#: src/features/Header/HeaderPractice.tsx:397
 #. js-lingui-explicit-id
-msgid "Subscription (1 month)"
-msgstr "Abonnement (1 måned)"
+msgid "Payment history"
+msgstr "Betalingsoversigt"
 
-#: src/features/Header/PaymentHistoryModal.tsx:25
+#: src/features/Header/HeaderPractice.tsx:409
 #. js-lingui-explicit-id
-msgid "Trial days"
-msgstr "Prøvedage"
+msgid "Refund"
+msgstr "Refundering"
 
-#: src/features/Header/PaymentHistoryModal.tsx:30
+#: src/features/Header/HeaderPractice.tsx:435
+#: src/features/Header/HeaderStatic.tsx:16
 #. js-lingui-explicit-id
-msgid "Payment History"
-msgstr "Betalingshistorik"
+msgid "Need Help?"
+msgstr "Behøver du hjælp?"
+
+#: src/features/Header/HeaderPractice.tsx:447
+#: src/features/Header/HeaderStatic.tsx:17
+#. js-lingui-explicit-id
+msgid "Log Out"
+msgstr "Log Ud"
 
 #: src/features/Header/NeedHelpModal.tsx:34
 #: src/features/Header/NeedHelpModal.tsx:162
@@ -3200,6 +3250,58 @@ msgstr "Ja, Slet konto"
 msgid "Delete account"
 msgstr "Slet konto"
 
+#: src/features/Landing/Contact/ContactsPage.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"My name is Alex, I am the creator of this website. I am a software engineer "
+"and I am passionate about learning languages. I created this website to "
+"help people learn languages in a fun and interactive way. I hope you enjoy "
+"using it!"
+msgstr ""
+"Mit navn er Alex, jeg er skaberen af denne hjemmeside. Jeg er en "
+"softwareingeniør, og jeg er passioneret omkring at lære sprog. Jeg skabte "
+"denne hjemmeside for at hjælpe folk med at lære sprog på en sjov og "
+"interaktiv måde. Jeg håber, du nyder at bruge den!"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:117
+#. js-lingui-explicit-id
+msgid ""
+"Feel free to reach out to me with any questions or feedback. I'm always "
+"happy to help!"
+msgstr ""
+"Feel free to reach out to me with any questions or feedback. I'm always "
+"happy to help!"
+
+#: src/features/Header/PaymentHistoryModal.tsx:21
+#. js-lingui-explicit-id
+msgid "Trial balance"
+msgstr "Prøvebalance"
+
+#: src/features/Header/PaymentHistoryModal.tsx:22
+#. js-lingui-explicit-id
+msgid "Payment"
+msgstr "Betaling"
+
+#: src/features/Header/PaymentHistoryModal.tsx:23
+#. js-lingui-explicit-id
+msgid "Gift"
+msgstr "Gave"
+
+#: src/features/Header/PaymentHistoryModal.tsx:24
+#. js-lingui-explicit-id
+msgid "Subscription (1 month)"
+msgstr "Abonnement (1 måned)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Trial days"
+msgstr "Prøvedage"
+
+#: src/features/Header/PaymentHistoryModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Payment History"
+msgstr "Betalingshistorik"
+
 #: src/features/Header/HeaderStatic.tsx:11
 #. js-lingui-explicit-id
 msgid "Role-Plays"
@@ -3210,82 +3312,58 @@ msgstr "Roller-spil"
 msgid "Sign In"
 msgstr "Log Ind"
 
-#: src/features/Header/HeaderStatic.tsx:16
-#: src/features/Header/HeaderPractice.tsx:435
+#: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "Behøver du hjælp?"
+msgid "You are on the right track!"
+msgstr "Du er på rette spor!"
 
-#: src/features/Header/HeaderStatic.tsx:17
-#: src/features/Header/HeaderPractice.tsx:447
+#: src/features/Goal/GoalPreparingModal.tsx:43
 #. js-lingui-explicit-id
-msgid "Log Out"
-msgstr "Log Ud"
+msgid "Okay"
+msgstr "Okay"
 
-#: src/features/Header/HeaderPractice.tsx:212
+#: src/features/Goal/GoalPreparingModal.tsx:49
 #. js-lingui-explicit-id
-msgid "Finishing..."
-msgstr "Afslutter..."
+msgid "What we need from you?"
+msgstr "Hvad har vi brug for fra dig?"
 
-#: src/features/Header/HeaderPractice.tsx:213
-#: src/features/Dashboard/WordsToLearn.tsx:121
-#: src/features/Dashboard/RulesToLearn.tsx:101
+#: src/features/Goal/GoalPreparingModal.tsx:59
 #. js-lingui-explicit-id
-msgid "Back"
-msgstr "Tilbage"
+msgid "I agree"
+msgstr "Jeg er enig"
 
-#: src/features/Header/HeaderPractice.tsx:295
+#: src/features/Goal/GoalPreparingModal.tsx:65
 #. js-lingui-explicit-id
-msgid "You are in the top 5"
-msgstr "Du er i top 5"
+msgid "From founder"
+msgstr "Fra grundlægger"
 
-#: src/features/Header/HeaderPractice.tsx:350
+#: src/features/Goal/GoalPreparingModal.tsx:75
 #. js-lingui-explicit-id
-msgid "Refund Request"
-msgstr "Anmodning om tilbagebetaling"
+msgid "Got it"
+msgstr "Forstået"
 
-#: src/features/Header/HeaderPractice.tsx:351
+#: src/features/Goal/GoalPreparingModal.tsx:81
 #. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr ""
-"Tilføj nogle oplysninger om, hvorfor du ønsker en refusion, og vi vil gøre "
-"det."
+msgid "Almost ready..."
+msgstr "Næsten klar..."
 
-#: src/features/Header/HeaderPractice.tsx:352
-#: src/features/Header/HeaderPractice.tsx:361
-#: src/features/Header/ContactMessageModal.tsx:75
+#: src/features/Goal/GoalPreparingModal.tsx:90
 #. js-lingui-explicit-id
-msgid "Leave your message"
-msgstr "Efterlad din besked"
+msgid "Let's do it"
+msgstr "Lad os gøre det"
 
-#: src/features/Header/HeaderPractice.tsx:359
-#: src/features/Header/HeaderPractice.tsx:421
+#: src/features/Goal/GoalPreparingModal.tsx:96
 #. js-lingui-explicit-id
-msgid "Feedback"
-msgstr "Tilbagemelding"
+msgid "Finally"
+msgstr "Endelig"
 
-#: src/features/Header/HeaderPractice.tsx:360
+#: src/features/Goal/GoalPreparingModal.tsx:107
 #. js-lingui-explicit-id
-msgid "We appreciate your feedback!"
-msgstr "Vi sætter pris på din feedback!"
+msgid "Let's rock it!"
+msgstr "Lad os rocke det!"
 
-#: src/features/Header/HeaderPractice.tsx:385
-#. js-lingui-explicit-id
-msgid "Subscription"
-msgstr "Abonnement"
-
-#: src/features/Header/HeaderPractice.tsx:397
-#. js-lingui-explicit-id
-msgid "Payment history"
-msgstr "Betalingsoversigt"
-
-#: src/features/Header/HeaderPractice.tsx:409
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "Refundering"
-
-#: src/features/Header/ContactMessageModal.tsx:38
 #: src/features/Dashboard/FeedbackBlock.tsx:25
+#: src/features/Header/ContactMessageModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Failed to send feedback. Please try again later."
 msgstr "Kunne ikke sende feedback. Prøv igen senere."
@@ -3295,23 +3373,69 @@ msgstr "Kunne ikke sende feedback. Prøv igen senere."
 msgid "Thank you for your feedback!"
 msgstr "Tak for din feedback!"
 
-#: src/features/Dashboard/FeedbackBlock.tsx:53
-msgid "Sending..."
-msgstr "Sender..."
-
-#: src/features/Header/ContactMessageModal.tsx:80
 #: src/features/Conversation/ConversationCanvas2.tsx:1027
+#: src/features/Header/ContactMessageModal.tsx:80
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Send"
+
+#: src/features/Game/GameOnboarding.tsx:169
+#: src/features/Game/GamePage.tsx:21
+#. js-lingui-explicit-id
+msgid "Play"
+msgstr "Afspil"
+
+#: src/features/Game/GamePage.tsx:87
+#. js-lingui-explicit-id
+msgid "Rating:"
+msgstr "Bedømmelse:"
+
+#: src/features/Game/GamePage.tsx:89
+#. js-lingui-explicit-id
+msgid "Rank in the top 5 to get the app for free"
+msgstr "Rangér blandt top 5 for at få appen gratis"
+
+#: src/features/Game/GameOnboarding.tsx:47
+#. js-lingui-explicit-id
+msgid "Learn and Play"
+msgstr "Lær og Leg"
+
+#: src/features/Game/GameOnboarding.tsx:56
+#. js-lingui-explicit-id
+msgid "Describe images, craft sentences, and translate words"
+msgstr "Beskriv billeder, formuler sætninger og oversæt ord"
+
+#: src/features/Game/GameOnboarding.tsx:95
+#. js-lingui-explicit-id
+msgid "You have a chance"
+msgstr "Du har en chance"
+
+#: src/features/Game/GameOnboarding.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"Each day, we remove 3 points from everyone so that everyone has a fair "
+"chance to win."
+msgstr ""
+"Hver dag fjerner vi 3 point fra alle, så alle har en fair chance for at "
+"vinde."
+
+#: src/features/Game/GameOnboarding.tsx:133
+#. js-lingui-explicit-id
+msgid "Let’s make sure you’re ready"
+msgstr "Lad os sikre os, at du er klar"
+
+#: src/features/Game/GameOnboarding.tsx:144
+#. js-lingui-explicit-id
+msgid "Your Avatar:"
+msgstr "Dit Avatar:"
 
 #: src/features/Goal/GoalQuestions.tsx:60
 #. js-lingui-explicit-id
 msgid "By submitting this form, you agree to our:"
 msgstr "Ved at indsende denne formular, accepterer du vores:"
 
-#: src/features/Goal/GoalQuestions.tsx:65
 #: src/features/Auth/SignInForm.tsx:209
+#: src/features/Goal/GoalQuestions.tsx:65
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "og"
@@ -3517,10 +3641,6 @@ msgstr "Jeg vil lære..."
 msgid "My native language"
 msgstr "Mit modersmål"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:391
-msgid "Next"
-msgstr "Næste"
-
 #: src/features/Goal/GoalQuestions.tsx:510
 #. js-lingui-explicit-id
 msgid "How well do you know"
@@ -3558,10 +3678,6 @@ msgid ""
 "I want to learn English to travel. And I want to understand movies and "
 "songs."
 msgstr "Jeg vil gerne lære engelsk for at rejse. Og jeg vil forstå film og sange."
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:264
-msgid "Transcribing..."
-msgstr "Transkriberer..."
 
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -3648,147 +3764,35 @@ msgstr "Kopier link"
 msgid "Open the plan"
 msgstr "Åbn planen"
 
-#: src/features/Goal/GoalPreparingModal.tsx:33
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
 #. js-lingui-explicit-id
-msgid "You are on the right track!"
-msgstr "Du er på rette spor!"
-
-#: src/features/Goal/GoalPreparingModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Okay"
-msgstr "Okay"
-
-#: src/features/Goal/GoalPreparingModal.tsx:49
-#. js-lingui-explicit-id
-msgid "What we need from you?"
-msgstr "Hvad har vi brug for fra dig?"
-
-#: src/features/Goal/GoalPreparingModal.tsx:59
-#. js-lingui-explicit-id
-msgid "I agree"
-msgstr "Jeg er enig"
-
-#: src/features/Goal/GoalPreparingModal.tsx:65
-#. js-lingui-explicit-id
-msgid "From founder"
-msgstr "Fra grundlægger"
-
-#: src/features/Goal/GoalPreparingModal.tsx:75
-#. js-lingui-explicit-id
-msgid "Got it"
-msgstr "Forstået"
-
-#: src/features/Goal/GoalPreparingModal.tsx:81
-#. js-lingui-explicit-id
-msgid "Almost ready..."
-msgstr "Næsten klar..."
-
-#: src/features/Goal/GoalPreparingModal.tsx:90
-#. js-lingui-explicit-id
-msgid "Let's do it"
-msgstr "Lad os gøre det"
-
-#: src/features/Goal/GoalPreparingModal.tsx:96
-#. js-lingui-explicit-id
-msgid "Finally"
-msgstr "Endelig"
-
-#: src/features/Goal/GoalPreparingModal.tsx:107
-#. js-lingui-explicit-id
-msgid "Let's rock it!"
-msgstr "Lad os rocke det!"
-
-#: src/features/Game/GamePage.tsx:21
-#: src/features/Game/GameOnboarding.tsx:169
-#. js-lingui-explicit-id
-msgid "Play"
-msgstr "Afspil"
-
-#: src/features/Game/GamePage.tsx:87
-#. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "Bedømmelse:"
-
-#: src/features/Game/GamePage.tsx:89
-#. js-lingui-explicit-id
-msgid "Rank in the top 5 to get the app for free"
-msgstr "Rangér blandt top 5 for at få appen gratis"
-
-#: src/features/Game/GameOnboarding.tsx:47
-#. js-lingui-explicit-id
-msgid "Learn and Play"
-msgstr "Lær og Leg"
-
-#: src/features/Game/GameOnboarding.tsx:56
-#. js-lingui-explicit-id
-msgid "Describe images, craft sentences, and translate words"
-msgstr "Beskriv billeder, formuler sætninger og oversæt ord"
-
-#: src/features/Game/GameOnboarding.tsx:95
-#. js-lingui-explicit-id
-msgid "You have a chance"
-msgstr "Du har en chance"
-
-#: src/features/Game/GameOnboarding.tsx:104
-#. js-lingui-explicit-id
-msgid ""
-"Each day, we remove 3 points from everyone so that everyone has a fair "
-"chance to win."
-msgstr ""
-"Hver dag fjerner vi 3 point fra alle, så alle har en fair chance for at "
-"vinde."
-
-#: src/features/Game/GameOnboarding.tsx:133
-#. js-lingui-explicit-id
-msgid "Let’s make sure you’re ready"
-msgstr "Lad os sikre os, at du er klar"
-
-#: src/features/Game/GameOnboarding.tsx:144
-#. js-lingui-explicit-id
-msgid "Your Avatar:"
-msgstr "Dit Avatar:"
+msgid "Translate the word"
+msgstr "Oversæt ordet"
 
 #: src/features/Game/GameMyUsername.tsx:27
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "Brugernavn skal være mindst 3 tegn langt."
 
-#: src/features/Game/GameBadge.tsx:77
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
 #. js-lingui-explicit-id
-msgid "Your position"
-msgstr "Din position"
+msgid "Form a sentence"
+msgstr "Dann en sætning"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:184
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:207
 #. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "Oversæt ordet"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
-msgid "Correct!"
-msgstr "Korrekt!"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:376
-msgid "Incorrect!"
-msgstr "Forkert!"
+msgid "Submit answer"
+msgstr "Indsend svar"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Diskuter emnet"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:207
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:184
-#. js-lingui-explicit-id
-msgid "Submit answer"
-msgstr "Indsend svar"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:286
-msgid "Done"
-msgstr "Færdig"
-
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:236
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
 #. js-lingui-explicit-id
 msgid "Record an answer"
 msgstr "Optag et svar"
@@ -3798,16 +3802,11 @@ msgstr "Optag et svar"
 msgid "Describe the topic in your own words..."
 msgstr "Beskriv emnet med dine egne ord..."
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:300
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:277
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:300
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "Fejl:"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "Dann en sætning"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:256
@@ -3815,21 +3814,10 @@ msgstr "Dann en sætning"
 msgid "Describe the image"
 msgstr "Beskriv billedet"
 
-#: src/features/Dashboard/WordsToLearn.tsx:32
+#: src/features/Game/GameBadge.tsx:77
 #. js-lingui-explicit-id
-msgid "New words to practice."
-msgstr "Nye ord at øve."
-
-#: src/features/Dashboard/WordsToLearn.tsx:106
-#: src/features/Dashboard/RulesToLearn.tsx:86
-#. js-lingui-explicit-id
-msgid "Start practice"
-msgstr "Start øvelse"
-
-#: src/features/Dashboard/WordsToLearn.tsx:128
-#. js-lingui-explicit-id
-msgid "I know all of them"
-msgstr "Jeg kender dem alle"
+msgid "Your position"
+msgstr "Din position"
 
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
@@ -3841,8 +3829,8 @@ msgstr "Daglige Opgaver"
 msgid "Rule of the day"
 msgstr "Regel for dagen"
 
-#: src/features/Dashboard/TasksCard.tsx:52
 #: src/features/Dashboard/ConversationSelectCard.tsx:157
+#: src/features/Dashboard/TasksCard.tsx:52
 #. js-lingui-explicit-id
 msgid "Get a personal grammar rule to learn"
 msgstr "Få en personlig grammatikregel at lære"
@@ -3858,8 +3846,8 @@ msgstr "Fuldfør først de tidligere opgaver"
 msgid "New words"
 msgstr "Nye ord"
 
-#: src/features/Dashboard/TasksCard.tsx:62
 #: src/features/Dashboard/ConversationSelectCard.tsx:178
+#: src/features/Dashboard/TasksCard.tsx:62
 #. js-lingui-explicit-id
 msgid "Practice new vocabulary with the AI"
 msgstr "Øv nyt ordforråd med AI'en"
@@ -3884,10 +3872,121 @@ msgstr "Lær"
 msgid "Page"
 msgstr "Side"
 
+#: src/features/Dashboard/HomeworkCard.tsx:21
+#. js-lingui-explicit-id
+msgid "Homework"
+msgstr "Opgave"
+
+#: src/features/Dashboard/HomeworkCard.tsx:57
+#. js-lingui-explicit-id
+msgid "No homework assigned yet."
+msgstr "Ingen lektier er tildelt endnu."
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "Start en samtale for at få en."
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "Skip"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "Vis alle"
+
 #: src/features/Dashboard/RulesToLearn.tsx:36
 #. js-lingui-explicit-id
 msgid "New rule to practice."
 msgstr "Ny regel at øve."
+
+#: src/features/Dashboard/RulesToLearn.tsx:86
+#: src/features/Dashboard/WordsToLearn.tsx:106
+#. js-lingui-explicit-id
+msgid "Start practice"
+msgstr "Start øvelse"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1294
+#: src/features/Dashboard/GoalCard.tsx:12
+#: src/features/Dashboard/PlanDashboardCards.tsx:427
+#: src/features/Dashboard/PlanDashboardCards.tsx:557
+#. js-lingui-explicit-id
+msgid "Goal"
+msgstr "Mål"
+
+#: src/features/Dashboard/GoalCard.tsx:13
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Indstil målet for din læring"
+
+#: src/features/Dashboard/GoalCard.tsx:28
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "Start | 5 min"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:115
+#. js-lingui-explicit-id
+msgid "Talk to the AI and it will respond to you"
+msgstr "Tal med AI'en, og den vil svare dig"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:120
+#: src/features/Dashboard/ConversationSelectCard.tsx:141
+#: src/features/Dashboard/ConversationSelectCard.tsx:162
+#: src/features/Dashboard/ConversationSelectCard.tsx:183
+#: src/features/Dashboard/PlanDashboardCards.tsx:255
+#: src/features/Dashboard/PlanDashboardCards.tsx:285
+#: src/features/Dashboard/PlanDashboardCards.tsx:315
+#. js-lingui-explicit-id
+msgid "Set the goal to start"
+msgstr "Indstil målet for at starte"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:131
+#. js-lingui-explicit-id
+msgid "Start Talking"
+msgstr "Start med at tale"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:135
+#. js-lingui-explicit-id
+msgid "Beginner"
+msgstr "Begynder"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:136
+#. js-lingui-explicit-id
+msgid "AI will lead you through the conversation"
+msgstr "AI vil lede dig gennem samtalen"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:152
+#. js-lingui-explicit-id
+msgid "Guide me"
+msgstr "Guid mig"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:156
+#: src/features/Dashboard/PlanDashboardCards.tsx:279
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "Regler"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:173
+#. js-lingui-explicit-id
+msgid "Get a rule"
+msgstr "Få en regel"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:194
+#. js-lingui-explicit-id
+msgid "Expand vocabulary"
+msgstr "Udvid ordforråd"
+
+#: src/features/Dashboard/FeedbackBlock.tsx:30
+#. js-lingui-explicit-id
+msgid "Thank you for your message"
+msgstr "Tak for din besked"
+
+#: src/features/Dashboard/FeedbackBlock.tsx:48
+#. js-lingui-explicit-id
+msgid "Leave your feedback"
+msgstr "Efterlad din feedback"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:74
 #. js-lingui-explicit-id
@@ -3913,29 +4012,12 @@ msgstr "Lad os nu bestemme dit udgangspunkt!"
 msgid "Start your journey with a conversation!"
 msgstr "Start din rejse med en samtale!"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:255
-#: src/features/Dashboard/PlanDashboardCards.tsx:285
-#: src/features/Dashboard/PlanDashboardCards.tsx:315
-#: src/features/Dashboard/ConversationSelectCard.tsx:120
-#: src/features/Dashboard/ConversationSelectCard.tsx:141
-#: src/features/Dashboard/ConversationSelectCard.tsx:162
-#: src/features/Dashboard/ConversationSelectCard.tsx:183
-#. js-lingui-explicit-id
-msgid "Set the goal to start"
-msgstr "Indstil målet for at starte"
-
 #: src/features/Dashboard/PlanDashboardCards.tsx:273
 #: src/features/Dashboard/PlanDashboardCards.tsx:303
 #: src/features/Dashboard/PlanDashboardCards.tsx:333
 #. js-lingui-explicit-id
 msgid "Recommended"
 msgstr "Anbefalet"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:279
-#: src/features/Dashboard/ConversationSelectCard.tsx:156
-#. js-lingui-explicit-id
-msgid "Rules"
-msgstr "Regler"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:280
 #. js-lingui-explicit-id
@@ -3956,14 +4038,6 @@ msgstr "Der er noget interessant for dig..."
 #. js-lingui-explicit-id
 msgid "Let's start"
 msgstr "Lad os starte"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:427
-#: src/features/Dashboard/PlanDashboardCards.tsx:557
-#: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Conversation/ConversationCanvas2.tsx:1294
-#. js-lingui-explicit-id
-msgid "Goal"
-msgstr "Mål"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:428
 #. js-lingui-explicit-id
@@ -4004,86 +4078,6 @@ msgstr "Generer flere unikke lektioner"
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "For at generere flere lektioner skal du gennemføre mindst 3 lektioner"
-
-#: src/features/Dashboard/HomeworkCard.tsx:21
-#. js-lingui-explicit-id
-msgid "Homework"
-msgstr "Opgave"
-
-#: src/features/Dashboard/HomeworkCard.tsx:57
-#. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "Ingen lektier er tildelt endnu."
-
-#: src/features/Dashboard/HomeworkCard.tsx:66
-#. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "Start en samtale for at få en."
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "Skip"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "Vis alle"
-
-#: src/features/Dashboard/GoalCard.tsx:13
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Indstil målet for din læring"
-
-#: src/features/Dashboard/GoalCard.tsx:28
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "Start | 5 min"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:30
-#. js-lingui-explicit-id
-msgid "Thank you for your message"
-msgstr "Tak for din besked"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:48
-#. js-lingui-explicit-id
-msgid "Leave your feedback"
-msgstr "Efterlad din feedback"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:115
-#. js-lingui-explicit-id
-msgid "Talk to the AI and it will respond to you"
-msgstr "Tal med AI'en, og den vil svare dig"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:131
-#. js-lingui-explicit-id
-msgid "Start Talking"
-msgstr "Start med at tale"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:135
-#. js-lingui-explicit-id
-msgid "Beginner"
-msgstr "Begynder"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:136
-#. js-lingui-explicit-id
-msgid "AI will lead you through the conversation"
-msgstr "AI vil lede dig gennem samtalen"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:152
-#. js-lingui-explicit-id
-msgid "Guide me"
-msgstr "Guid mig"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:173
-#. js-lingui-explicit-id
-msgid "Get a rule"
-msgstr "Få en regel"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:194
-#. js-lingui-explicit-id
-msgid "Expand vocabulary"
-msgstr "Udvid ordforråd"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4197,11 +4191,41 @@ msgstr "Fremskridtskalender"
 msgid "Less"
 msgstr "Mindre"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:90
 #: src/features/Conversation/AliasGamePanel.tsx:167
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:90
 #. js-lingui-explicit-id
 msgid "More"
 msgstr "Mere"
+
+#: src/features/Dashboard/WordsToLearn.tsx:32
+#. js-lingui-explicit-id
+msgid "New words to practice."
+msgstr "Nye ord at øve."
+
+#: src/features/Dashboard/WordsToLearn.tsx:128
+#. js-lingui-explicit-id
+msgid "I know all of them"
+msgstr "Jeg kender dem alle"
+
+#: src/features/Conversation/ConversationError.tsx:34
+#. js-lingui-explicit-id
+msgid "Oops! Something went wrong"
+msgstr "Ups! Noget gik galt"
+
+#: src/features/Conversation/ConversationError.tsx:37
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "Opdater venligst siden og prøv en gang til"
+
+#: src/features/Conversation/ConversationError.tsx:41
+#. js-lingui-explicit-id
+msgid "Notification was sent to the dev team. Sorry for that..."
+msgstr "Notifikation blev sendt til dev teamet. Beklager det..."
+
+#: src/features/Conversation/ConversationError.tsx:51
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "Genindlæs side"
 
 #: src/features/Conversation/useConversationsAnalysis.ts:86
 #: src/features/Conversation/useConversationsAnalysis.ts:129
@@ -4223,26 +4247,6 @@ msgstr "Skriver nye ord..."
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Oprettelse af ny regel..."
-
-#: src/features/Conversation/ConversationError.tsx:34
-#. js-lingui-explicit-id
-msgid "Oops! Something went wrong"
-msgstr "Ups! Noget gik galt"
-
-#: src/features/Conversation/ConversationError.tsx:37
-#. js-lingui-explicit-id
-msgid "Please refresh the page and try one more time"
-msgstr "Opdater venligst siden og prøv en gang til"
-
-#: src/features/Conversation/ConversationError.tsx:41
-#. js-lingui-explicit-id
-msgid "Notification was sent to the dev team. Sorry for that..."
-msgstr "Notifikation blev sendt til dev teamet. Beklager det..."
-
-#: src/features/Conversation/ConversationError.tsx:51
-#. js-lingui-explicit-id
-msgid "Reload page"
-msgstr "Genindlæs side"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:328
 #. js-lingui-explicit-id
@@ -4344,10 +4348,6 @@ msgstr "Lektioner tilføjet:"
 msgid "Open plan"
 msgstr "Åben plan"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:299
-msgid "Re-record"
-msgstr "Genindspil"
-
 #: src/features/Conversation/ConversationCanvas2.tsx:1077
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -4433,15 +4433,19 @@ msgstr "Dernæst, tillad mikrofonadgang for at tale med AI."
 msgid "I am ready"
 msgstr "Jeg er klar"
 
-#: src/features/Conversation/AliasGamePanel.tsx:112
+#: src/features/Blog/ListBlogIntro.tsx:66
 #. js-lingui-explicit-id
-msgid "Your words to describe:"
-msgstr "Dine ord til at beskrive:"
+msgid "Read and Learn with my blog"
+msgstr "Læs og lær med min blog"
 
-#: src/features/Conversation/AliasGamePanel.tsx:176
+#: src/features/Blog/ListBlogIntro.tsx:77
 #. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "Gættede ord:"
+msgid ""
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
+msgstr ""
+"Bliv inspireret og lær om de nyeste trends inden for sprogindlæring, "
+"undervisning og teknologi."
 
 #: src/features/Blog/blogData.tsx:20
 #: src/features/Blog/blogData.tsx:28
@@ -5559,50 +5563,6 @@ msgstr "Professionel Udvikling"
 msgid "All Blogs"
 msgstr "Alle Blogs"
 
-#: src/features/Blog/ListBlogIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "Læs og lær med min blog"
-
-#: src/features/Blog/ListBlogIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr ""
-"Bliv inspireret og lær om de nyeste trends inden for sprogindlæring, "
-"undervisning og teknologi."
-
-#: src/features/Blog/ListBlog.tsx:131
-#. js-lingui-explicit-id
-msgid "No blogs found"
-msgstr "Ingen blogs fundet"
-
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "Se alle indlæg"
-
-#: src/features/Blog/BlogOnePage.tsx:280
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "Rollespilsscenarier til øvelse"
-
-#: src/features/Blog/BlogOnePage.tsx:311
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "Du kan prøve AI i aktion nu"
-
-#: src/features/Blog/BlogOnePage.tsx:312
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "Prøv gratis"
-
-#: src/features/Blog/BlogCard.tsx:164
-#. js-lingui-explicit-id
-msgid "Read more"
-msgstr "Læs mere"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
 #. js-lingui-explicit-id
 msgid "At the end, we’ll share a valuable tool for realistic interview practice."
@@ -6035,6 +5995,46 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Good preparation today means career success tomorrow."
 msgstr "God forberedelse i dag betyder karrieresucces i morgen."
+
+#: src/features/Conversation/AliasGamePanel.tsx:112
+#. js-lingui-explicit-id
+msgid "Your words to describe:"
+msgstr "Dine ord til at beskrive:"
+
+#: src/features/Conversation/AliasGamePanel.tsx:176
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "Gættede ord:"
+
+#: src/features/Blog/ListBlog.tsx:131
+#. js-lingui-explicit-id
+msgid "No blogs found"
+msgstr "Ingen blogs fundet"
+
+#: src/features/Blog/BlogCard.tsx:164
+#. js-lingui-explicit-id
+msgid "Read more"
+msgstr "Læs mere"
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "Se alle indlæg"
+
+#: src/features/Blog/BlogOnePage.tsx:280
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "Rollespilsscenarier til øvelse"
+
+#: src/features/Blog/BlogOnePage.tsx:311
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "Du kan prøve AI i aktion nu"
+
+#: src/features/Blog/BlogOnePage.tsx:312
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "Prøv gratis"
 
 #: src/features/Auth/SignInForm.tsx:30
 #. js-lingui-explicit-id
