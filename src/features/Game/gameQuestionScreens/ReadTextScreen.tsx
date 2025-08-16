@@ -228,7 +228,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
           left: "0px",
           right: "0px",
           display: "flex",
-          padding: "20px 10px",
+          padding: "20px 10px 50px 10px",
           backgroundColor: "rgba(12, 14, 12, .80)",
           backdropFilter: "blur(9px)",
           alignItems: "center",

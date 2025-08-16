@@ -81,53 +81,63 @@ export const PositionChangedModal = () => {
       isOpen={isShowModal}
       onClose={() => setIsShowModal(false)}
       padding="0px"
-      width="400px"
+      width="100dvw"
     >
       <Stack
         sx={{
-          padding: "20px",
-          gap: "20px",
+          minHeight: "100dvh",
           width: "100%",
-          boxSizing: "border-box",
+          alignItems: "center",
+          justifyContent: "flex-end",
         }}
       >
-        <Stack>
-          <Typography variant="h6">
-            <Trans>Nice!</Trans>
-          </Typography>
-        </Stack>
         <Stack
           sx={{
-            position: "relative",
+            padding: "20px 20px 70px 20px",
+            gap: "20px",
             width: "100%",
-            height: "300px",
-            ".position-changed-row": {
-              transition: "top 0.5s ease-in-out",
-              width: "100%",
-              height: "50px",
-              position: "absolute",
-              left: "0",
-            },
+            maxWidth: "600px",
+            boxSizing: "border-box",
           }}
         >
-          {stats.map((stat) => {
-            const position = getPosition(stat.username);
-            return (
-              <Stack
-                key={stat.username}
-                className="position-changed-row"
-                style={{
-                  top: `${position * 70 + 12}px`,
-                }}
-              >
-                <GameStatRow stat={stat} index={getRealPosition(stat.username)} />
-              </Stack>
-            );
-          })}
+          <Stack>
+            <Typography variant="h6">
+              <Trans>Nice!</Trans>
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              position: "relative",
+              width: "100%",
+              height: "300px",
+              ".position-changed-row": {
+                transition: "top 0.5s ease-in-out",
+                width: "100%",
+                height: "50px",
+                position: "absolute",
+                left: "0",
+              },
+            }}
+          >
+            {stats.map((stat) => {
+              const position = getPosition(stat.username);
+              return (
+                <Stack
+                  key={stat.username}
+                  className="position-changed-row"
+                  style={{
+                    top: `${position * 70 + 12}px`,
+                  }}
+                >
+                  <GameStatRow stat={stat} index={getRealPosition(stat.username)} />
+                </Stack>
+              );
+            })}
+          </Stack>
+          <Button variant="contained" size="large" onClick={() => setIsShowModal(false)}>
+            <Trans>Continue</Trans>
+          </Button>
         </Stack>
-        <Button variant="contained" size="large" onClick={() => setIsShowModal(false)}>
-          <Trans>Continue</Trans>
-        </Button>
       </Stack>
     </CustomModal>
   );
