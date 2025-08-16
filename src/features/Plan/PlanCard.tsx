@@ -179,6 +179,7 @@ export const PlanCard = ({
           },
 
           "@media (max-width: 500px)": {
+            gap: "5px 20px",
             padding: "16px 16px 26px 16px",
             gridTemplateAreas: `
             'icon title chevron'
@@ -408,7 +409,7 @@ export const PlanCard = ({
             align="left"
             sx={{
               fontWeight: 600,
-              fontSize: "0.8rem",
+              fontSize: "0.82rem",
               color: isActive || isDone ? `rgba(67, 244, 223, 0.9)` : `rgba(67, 244, 223, 0.5)`,
             }}
           >
