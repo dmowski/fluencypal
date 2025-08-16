@@ -136,7 +136,7 @@ export const PlanCard = ({
               ? "rgba(13, 220, 196, 0.1)"
               : "rgba(0, 0, 0, 0.1)",
           textDecoration: "none",
-          padding: "8px 16px",
+          padding: "9px 16px 11px 16px",
           display: "grid",
 
           gridTemplateColumns: "max-content 1fr max-content",
