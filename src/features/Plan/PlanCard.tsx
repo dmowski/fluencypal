@@ -134,7 +134,7 @@ export const PlanCard = ({
             ? "rgba(13, 220, 196, 0.14)"
             : isDone
               ? "rgba(13, 220, 196, 0.1)"
-              : "transparent",
+              : "rgba(0, 0, 0, 0.1)",
           textDecoration: "none",
           padding: "8px 16px",
           display: "grid",
@@ -145,7 +145,7 @@ export const PlanCard = ({
             'icon title chevron'
             'icon details chevron'
           `,
-          gap: "5px 20px",
+          gap: "0px 20px",
           borderRadius: "8px",
 
           alignItems: "center",
@@ -434,14 +434,14 @@ export const PlanCard = ({
             gridArea: "details",
 
             fontWeight: 400,
-            fontSize: "0.8rem",
+            fontSize: "0.82rem",
+            lineHeight: "1.1rem",
             zIndex: 2,
             height: "54px",
             overflow: "hidden",
-            opacity: isActive || isDone ? 0.9 : 0.7,
+            opacity: isActive || isDone ? 0.9 : 0.8,
 
             "@media (max-width: 500px)": {
-              fontSize: "0.7rem",
               overflow: "hidden",
               height: "auto",
               paddingTop: "10px",
