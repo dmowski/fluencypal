@@ -317,6 +317,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     setHelpMessage(mess);
   };
 
+  const loadingMessage = i18n._(`Loading...`);
+
   return (
     <Stack>
       {translator.translateModal}
@@ -339,7 +341,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     : undefined
                 }
               >
-                {!helpMessage ? i18n._("Loading...") : helpMessage}
+                {!helpMessage ? loadingMessage : helpMessage}
               </Markdown>
             </Stack>
 
