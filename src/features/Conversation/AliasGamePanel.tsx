@@ -108,7 +108,7 @@ export const AliasGamePanelUI = ({
     >
       {translator.translateModal}
       <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
-        <Typography variant="caption" sx={{ opacity: 1, color: "#edefffff" }}>
+        <Typography variant="caption" sx={{ opacity: 1, color: "#2ae2dcff" }}>
           {i18n._(`Your words to describe:`)}
         </Typography>
         <Stack sx={{ flexDirection: "row", gap: "5px", flexWrap: "wrap" }}>

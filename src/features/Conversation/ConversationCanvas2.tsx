@@ -3,10 +3,24 @@
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
-import { Alert, Button, IconButton, Stack, TextField, Tooltip, Typography } from "@mui/material";
+import {
+  Alert,
+  Button,
+  Divider,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Stack,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import {
   ArrowUp,
   Check,
+  CircleEllipsis,
   Keyboard,
   Languages,
   Lightbulb,
@@ -128,6 +142,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   const sound = useSound();
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const closeMenus = () => {
+    setAnchorElUser(null);
+  };
 
   const game = useGame();
 
@@ -341,75 +359,110 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             isOpen={true}
             onClose={() => setIsShowAnalyzeConversationModal(false)}
             padding="40px 20px"
+            width="100dvw"
           >
             <Stack
               sx={{
+                height: "100dvh",
                 gap: "30px",
                 width: "100%",
+                alignItems: "center",
+                padding: "70px 0",
               }}
             >
               <Stack
                 sx={{
-                  gap: "10px",
+                  maxWidth: "550px",
+                  gap: "30px",
+                  width: "100%",
                 }}
               >
-                <Typography sx={{}}>{i18n._("Review")}</Typography>
-                {conversationAnalysisResult ? (
-                  <Stack
-                    sx={{
-                      gap: "15px",
-                    }}
-                  >
-                    <Markdown>{conversationAnalysisResult}</Markdown>
-                  </Stack>
-                ) : (
-                  <Stack
-                    sx={{
-                      gap: "15px",
-                    }}
-                  >
-                    <Stack>
-                      <Typography variant="h6">{i18n._(`Language level:`)}</Typography>
-                      <Typography className="loading-shimmer">{i18n._(`Analyzing...`)}</Typography>
-                    </Stack>
-
-                    <Stack>
-                      <Typography variant="h6">{i18n._(`What was great:`)}</Typography>
-                      <Typography className="loading-shimmer">{i18n._(`Analyzing...`)}</Typography>
-                    </Stack>
-
-                    <Stack>
-                      <Typography variant="h6">{i18n._(`Areas to improve:`)}</Typography>
-                      <Typography className="loading-shimmer">{i18n._(`Analyzing...`)}</Typography>
-                    </Stack>
-                  </Stack>
-                )}
-              </Stack>
-
-              <Stack gap="10px">
-                <Button
-                  sx={{}}
-                  onClick={() => {
-                    closeConversation();
-                    setIsShowAnalyzeConversationModal(false);
+                <Stack
+                  sx={{
+                    gap: "10px",
                   }}
-                  variant="contained"
-                  color="info"
-                  size="large"
-                  disabled={!conversationAnalysisResult}
                 >
-                  {i18n._(`Start new lesson`)}
-                </Button>
-                <Button
-                  disabled={!conversationAnalysisResult}
-                  onClick={() => {
-                    setIsShowAnalyzeConversationModal(false);
-                    setIsConversationContinueAfterAnalyze(true);
+                  <Typography
+                    sx={{
+                      paddingBottom: "20px",
+                    }}
+                    align="left"
+                    className="decor-text"
+                    variant="h3"
+                  >
+                    {i18n._("Lesson Review")}
+                  </Typography>
+                  {conversationAnalysisResult ? (
+                    <Stack
+                      sx={{
+                        gap: "15px",
+                      }}
+                    >
+                      <Markdown>{conversationAnalysisResult}</Markdown>
+                    </Stack>
+                  ) : (
+                    <Stack
+                      sx={{
+                        gap: "15px",
+                      }}
+                    >
+                      <Stack>
+                        <Typography variant="body1">{i18n._(`Language level:`)}</Typography>
+                        <Typography className="loading-shimmer">
+                          {i18n._(`Analyzing...`)}
+                        </Typography>
+                      </Stack>
+
+                      <Stack>
+                        <Typography variant="h6">{i18n._(`What was great:`)}</Typography>
+                        <Typography className="loading-shimmer">
+                          {i18n._(`Analyzing...`)}
+                        </Typography>
+                      </Stack>
+
+                      <Stack>
+                        <Typography variant="h6">{i18n._(`Areas to improve:`)}</Typography>
+                        <Typography className="loading-shimmer">
+                          {i18n._(`Analyzing...`)}
+                        </Typography>
+                      </Stack>
+                    </Stack>
+                  )}
+                </Stack>
+
+                <Stack
+                  gap="10px"
+                  sx={{
+                    alignItems: "flex-start",
                   }}
-                  variant="outlined"
                 >
-                  {i18n._(`Continue conversation`)}
-                </Button>
+                  <Button
+                    sx={{
+                      minWidth: "300px",
+                      width: "max-content",
+                    }}
+                    onClick={() => {
+                      closeConversation();
+                      setIsShowAnalyzeConversationModal(false);
+                    }}
+                    variant="contained"
+                    color="info"
+                    size="large"
+                    disabled={!conversationAnalysisResult}
+                  >
+                    {i18n._(`Start new lesson`)}
+                  </Button>
+                  <Button
+                    disabled={!conversationAnalysisResult}
+                    onClick={() => {
+                      setIsShowAnalyzeConversationModal(false);
+                      setIsConversationContinueAfterAnalyze(true);
+                    }}
+                    variant="text"
+                  >
+                    {i18n._(`Continue conversation`)}
+                  </Button>
+                </Stack>
               </Stack>
             </Stack>
           </CustomModal>
@@ -1005,14 +1058,26 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   )}
 
                   {isCallMode && !isCompletedLesson && (
-                    <Button
-                      startIcon={<Phone />}
-                      variant="outlined"
-                      size="large"
-                      onClick={async () => stopCallMode()}
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        width: "100%",
+                        gap: "10px",
+                      }}
                     >
-                      {i18n._("Stop")}
-                    </Button>
+                      <Button
+                        startIcon={<Phone />}
+                        variant="outlined"
+                        size="large"
+                        onClick={async () => stopCallMode()}
+                      >
+                        {i18n._("Stop")}
+                      </Button>
+                      <IconButton onClick={(e) => setAnchorElUser(e.currentTarget)}>
+                        <CircleEllipsis />
+                      </IconButton>
+                    </Stack>
                   )}
 
                   {!transcriptMessage &&
@@ -1041,19 +1106,95 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         >
                           {i18n._("Record Message")}
                         </Button>
-                        <IconButton onClick={() => setIsShowKeyboard(!isShowKeyboard)}>
-                          <Keyboard size={"20px"} />
-                        </IconButton>
 
-                        <IconButton
-                          onClick={() => {
-                            startCallMode();
-                          }}
-                        >
-                          <Phone size={"20px"} />
+                        <IconButton onClick={(e) => setAnchorElUser(e.currentTarget)}>
+                          <CircleEllipsis />
                         </IconButton>
                       </Stack>
                     )}
+
+                  <Menu
+                    sx={{
+                      marginBottom: "130px",
+                    }}
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "left",
+                    }}
+                    keepMounted
+                    open={Boolean(anchorElUser)}
+                    onClose={() => setAnchorElUser(null)}
+                  >
+                    <MenuItem
+                      sx={{}}
+                      disabled={
+                        isRecording || isAnalyzingResponse || (!isCallMode && !isShowKeyboard)
+                      }
+                      onClick={() => {
+                        setIsShowKeyboard(false);
+                        stopCallMode();
+                        closeMenus();
+                      }}
+                    >
+                      <ListItemIcon>
+                        <Mic />
+                      </ListItemIcon>
+                      <ListItemText>
+                        <Typography>{i18n._("Use voice message mode")}</Typography>
+                      </ListItemText>
+                    </MenuItem>
+
+                    <MenuItem
+                      sx={{}}
+                      disabled={isRecording || isAnalyzingResponse || isShowKeyboard}
+                      onClick={() => {
+                        setIsShowKeyboard(!isShowKeyboard);
+                        stopCallMode();
+                        closeMenus();
+                      }}
+                    >
+                      <ListItemIcon>
+                        <Keyboard />
+                      </ListItemIcon>
+                      <ListItemText>
+                        <Typography>{i18n._("Use keyboard mode")}</Typography>
+                      </ListItemText>
+                    </MenuItem>
+
+                    <MenuItem
+                      sx={{}}
+                      disabled={isRecording || isAnalyzingResponse || isCallMode}
+                      onClick={() => {
+                        startCallMode();
+                        setIsShowKeyboard(false);
+                        closeMenus();
+                      }}
+                    >
+                      <ListItemIcon>
+                        <Phone />
+                      </ListItemIcon>
+                      <ListItemText>
+                        <Typography>{i18n._("Use phone mode")}</Typography>
+                      </ListItemText>
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem
+                      sx={{}}
+                      disabled={isRecording || isAnalyzingResponse || isNeedToShowBalanceWarning}
+                      onClick={() => {
+                        openHelpAnswer();
+                        closeMenus();
+                      }}
+                    >
+                      <ListItemIcon>
+                        <Lightbulb />
+                      </ListItemIcon>
+                      <ListItemText>
+                        <Typography>{i18n._("Help with answer")}</Typography>
+                      </ListItemText>
+                    </MenuItem>
+                  </Menu>
 
                   {!confirmedUserInput &&
                     !isRecording &&
@@ -1109,12 +1250,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                           <Send size={"20px"} />
                         </IconButton>
 
-                        <IconButton
-                          onClick={() => {
-                            setIsShowKeyboard(false);
-                          }}
-                        >
-                          <Mic size={"20px"} />
+                        <IconButton onClick={(e) => setAnchorElUser(e.currentTarget)}>
+                          <CircleEllipsis />
                         </IconButton>
                       </Stack>
                     )}
@@ -1124,13 +1261,16 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       sx={{
                         alignItems: "flex-start",
                         gap: "5px",
-                        opacity: isAiSpeaking ? 0 : 1,
+                        opacity: isAiSpeaking ? 0.7 : 1,
                       }}
                     >
-                      <Typography>{i18n._("Mission complete")}</Typography>
+                      <Typography>
+                        {isAiSpeaking ? i18n._("Loading...") : i18n._("Mission complete")}
+                      </Typography>
                       <Button
                         startIcon={<Trophy />}
                         size="large"
+                        disabled={isAiSpeaking}
                         variant="contained"
                         sx={{
                           minWidth: "200px",
@@ -1227,26 +1367,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     </Stack>
                   )}
                 </Stack>
-
-                {!isRecording && !isAnalyzingResponse && !isNeedToShowBalanceWarning && (
-                  <Stack
-                    sx={{
-                      width: "max-content",
-                      alignItems: "flex-end",
-                      "@media (max-width: 600px)": {
-                        alignItems: "flex-start",
-                      },
-                    }}
-                  >
-                    <Tooltip title={i18n._("Help with answer")}>
-                      <Stack>
-                        <IconButton sx={{}} size="large" onClick={() => openHelpAnswer()}>
-                          <Lightbulb size={"20px"} />
-                        </IconButton>
-                      </Stack>
-                    </Tooltip>
-                  </Stack>
-                )}
 
                 {(isRecording || isAnalyzingResponse || isNeedToShowBalanceWarning) && (
                   <Stack
