@@ -167,12 +167,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       0
                     </Typography>
 
-                    <Stack
-                      sx={{
-                        paddingTop: "18px",
-                        height: "100%",
-                      }}
-                    >
+                    <Stack sx={{}}>
                       <Typography
                         variant="caption"
                         sx={{
@@ -225,12 +220,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       <PriceDisplay amountInUsd={PRICE_PER_MONTH_USD} />
                     </Typography>
 
-                    <Stack
-                      sx={{
-                        paddingTop: "18px",
-                        height: "100%",
-                      }}
-                    >
+                    <Stack sx={{}}>
                       <Typography
                         variant="caption"
                         sx={{
