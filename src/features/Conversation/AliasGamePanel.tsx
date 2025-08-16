@@ -107,7 +107,7 @@ export const AliasGamePanelUI = ({
       }}
     >
       {translator.translateModal}
-      <Stack sx={{ flexDirection: "column", gap: "10px" }}>
+      <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
         <Typography variant="caption" sx={{ opacity: 1, color: "#edefffff" }}>
           {i18n._(`Your words to describe:`)}
         </Typography>
@@ -163,7 +163,7 @@ export const AliasGamePanelUI = ({
             })}
 
           {!isShowAll && (
-            <Button size="small" onClick={showAll} variant="outlined">
+            <Button size="small" onClick={showAll} variant="text">
               {i18n._(`More`)}
             </Button>
           )}
