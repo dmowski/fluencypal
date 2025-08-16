@@ -42,8 +42,9 @@ export const sentSupportTelegramMessage = async ({
   if (userId) {
     const userInfo = await getUserInfo(userId);
     const userEmail = userInfo?.email || "Unknown email";
+    const country = userInfo.countryName;
     const firebaseLink = userId ? getFirebaseLink(userId) : "";
-    postfixMessage += `\n\nUser ID: ${userId}\nUser Email: ${userEmail}\nFirebase Link: ${firebaseLink}`;
+    postfixMessage += `\n\n${userEmail}\n[🚀Firebase Link. ${country || ""}🚀](${firebaseLink})`;
   } else {
     postfixMessage = "\nUnknown user";
   }
