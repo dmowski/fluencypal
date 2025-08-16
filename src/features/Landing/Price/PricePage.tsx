@@ -66,7 +66,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
             sx={{
               alignItems: "center",
               gap: "30px",
-              padding: "70px 0 90px 0",
+              padding: "70px 0 70px 0",
             }}
           >
             <Stack
@@ -126,17 +126,6 @@ export const PricePage = ({ lang }: PricePageProps) => {
               boxSizing: "border-box",
             }}
           >
-            <Typography
-              variant="h6"
-              align="center"
-              component={"h2"}
-              sx={{
-                ...titleFontStyle,
-              }}
-            >
-              {i18n._("Choose a Plan That Works for You")}
-            </Typography>
-
             <Stack
               sx={{
                 flexDirection: "row",
@@ -312,6 +301,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   >
                     <Typography
                       variant="h6"
+                      component={"span"}
                       sx={{
                         fontWeight: 700,
                         opacity: 0.8,
