@@ -437,7 +437,8 @@ export const PlanCard = ({
             fontSize: "0.82rem",
             lineHeight: "1.1rem",
             zIndex: 2,
-            height: "54px",
+            height: isNextInPlan ? "auto" : "54px",
+            paddingBottom: isNextInPlan ? "8px" : 0,
             overflow: "hidden",
             opacity: isActive || isDone ? 0.9 : 0.8,
 
