@@ -865,11 +865,74 @@ export const PricePage = ({ lang }: PricePageProps) => {
               >
                 <FaqItem
                   info={{
-                    question: i18n.t(`Can I try FluencyPal for free?`),
+                    question: i18n.t(`Is a credit card required for the trial?`),
+                    answer: (
+                      <Typography>
+                        {i18n.t(`No. A credit card is not required to start the trial.`)}
+                      </Typography>
+                    ),
+                  }}
+                />
+
+                <FaqItem
+                  info={{
+                    question: i18n.t(`Can I try FluencyPal before subscribing?`),
                     answer: (
                       <Typography>
                         {i18n.t(
-                          `Yes! You start with 3 free days of conversation with AI to explore all features.`
+                          `Yes. You get a free 3-day trial to explore all features. You won’t be charged until you decide to subscribe.`
+                        )}
+                      </Typography>
+                    ),
+                  }}
+                />
+
+                <FaqItem
+                  info={{
+                    question: i18n.t(`What’s included in my subscription?`),
+                    answer: (
+                      <Typography>
+                        {i18n.t(
+                          `Real-time AI speaking practice, scenario role-plays, listening drills, grammar and vocabulary exercises, personalized feedback, and progress analytics.`
+                        )}
+                      </Typography>
+                    ),
+                  }}
+                />
+
+                <FaqItem
+                  info={{
+                    question: i18n.t(`Can I cancel anytime?`),
+                    answer: (
+                      <Typography>
+                        {i18n.t(
+                          `Yes. You can cancel from your account settings at any time. You’ll keep access until the end of the current billing period.`
+                        )}
+                      </Typography>
+                    ),
+                  }}
+                />
+
+                <FaqItem
+                  info={{
+                    question: i18n.t(`Do you offer refunds?`),
+                    answer: (
+                      <Typography>
+                        {i18n.t(
+                          `We don’t issue partial refunds for unused time. After canceling, your subscription remains active until the period ends.`
+                        )}
+                      </Typography>
+                    ),
+                  }}
+                />
+
+                <FaqItem
+                  info={{
+                    question: i18n.t(`Will my learning progress be saved if I cancel?`),
+                    answer: (
+                      <Typography>
+                        {i18n.t(
+                          `Yes. Your history, achievements, and personalized settings are tied to your account and remain available when you return.`
                         )}
                       </Typography>
                     ),

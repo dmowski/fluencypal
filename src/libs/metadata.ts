@@ -95,11 +95,11 @@ export const generateMetadataInfo = ({
   if (currentPath === "pricing") {
     title = i18n._(`Affordable AI Language Learning`) + " | " + APP_NAME;
     description = i18n._(
-      `Get flexible pricing with FluencyPal. Start with free credits, pay-as-you-go, and enjoy AI-powered language practice with no subscriptions or hidden fees.`
+      `Get flexible pricing with FluencyPal. Start with 3 free days, and enjoy AI-powered language practice with no subscriptions or hidden fees.`
     );
     keywords = [
       i18n._(`AI language tutor pricing`),
-      i18n._(`pay-as-you-go language learning`),
+      i18n._(`subscription plans`),
       i18n._(`online English pricing`),
       i18n._(`AI tutor cost`),
     ];
