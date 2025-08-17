@@ -448,7 +448,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
                       playsInline
                       style={{
                         width: "100%",
-                        backgroundColor: "rgba(10, 18, 30, 1)",
+                        backgroundColor: "rgb(10, 18, 30)",
                         height: "100%",
                         objectFit: "cover",
                       }}
