@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useLingui } from "@lingui/react";
-import { Button, CircularProgress, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight, X } from "lucide-react";
+import { Button, Stack, Typography } from "@mui/material";
+import { Check, ChevronRight, Loader, X } from "lucide-react";
 import { SummaryRow } from "./SummaryRow";
 
 export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
@@ -123,7 +123,7 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
                       isCorrectOption ? (
                         <Check />
                       ) : isSubmitting && selectedAnswer === answer ? (
-                        <CircularProgress size={"14px"} />
+                        <Loader />
                       ) : null
                     }
                     color={isCorrectOption ? "success" : isInCorrectOption ? "error" : "primary"}
