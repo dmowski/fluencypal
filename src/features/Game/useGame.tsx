@@ -40,6 +40,7 @@ interface GameContextType {
   ) => Promise<{ isCorrect: boolean; description: string | null }>;
   nextQuestion: () => void;
   myPosition: number | null;
+  myPoints: number | null;
   isGameWinner: boolean;
   updateUsername: (username: string) => Promise<void>;
   gameLastVisit: GameLastVisit | null;
@@ -265,10 +266,18 @@ function useProvideGame(): GameContextType {
     }, 1000);
   };
 
+  const myPoints = useMemo(() => {
+    if (!myProfile) return null;
+    const myStat = stats.find((stat) => stat.username === myProfile.username);
+    if (!myStat) return null;
+    return myStat.points;
+  }, [myProfile, stats]);
+
   return {
     isGameWinner: isTop5Position,
     loadingProfile,
     myPosition,
+    myPoints,
     nextQuestion,
     submitAnswer,
     myProfile,
