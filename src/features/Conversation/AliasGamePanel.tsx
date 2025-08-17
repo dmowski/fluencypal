@@ -7,7 +7,7 @@ import { uniq } from "@/libs/uniq";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
 import { useTranslate } from "../Translation/useTranslate";
-import { Languages } from "lucide-react";
+import { ChevronRight, Languages } from "lucide-react";
 import { useLingui } from "@lingui/react";
 
 interface AliasGamePanelProps {
@@ -107,9 +107,19 @@ export const AliasGamePanelUI = ({
       }}
     >
       {translator.translateModal}
-      <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
-        <Typography variant="caption" sx={{ opacity: 1, color: "#2ae2dcff" }}>
-          {i18n._(`Your words to describe:`)}
+      <Stack
+        sx={{
+          flexDirection: "row",
+          gap: "10px",
+          alignItems: "center",
+          "@media (max-width:600px)": {
+            flexDirection: "column",
+            alignItems: "flex-start",
+          },
+        }}
+      >
+        <Typography variant="caption" sx={{ opacity: 1, color: "#ddd" }}>
+          {i18n._(`Describe these words:`)}
         </Typography>
         <Stack sx={{ flexDirection: "row", gap: "5px", flexWrap: "wrap" }}>
           {wordsUserToDescribe
@@ -126,10 +136,11 @@ export const AliasGamePanelUI = ({
                   sx={{
                     flexDirection: "row",
                     alignItems: "center",
-                    gap: "0px",
+                    gap: "6px",
                     opacity: isDone ? 0.3 : 1,
                     borderRadius: "4px",
-                    padding: "2px 0px 2px 10px",
+                    cursor: "pointer",
+                    padding: "3px 8px 3px 10px",
                     ":hover": {
                       backgroundColor: isDone
                         ? "rgba(255, 255, 70, 0.1)"
@@ -137,6 +148,7 @@ export const AliasGamePanelUI = ({
                     },
                   }}
                   key={index}
+                  onClick={() => translator.translateWithModal(trimWord)}
                 >
                   <Typography
                     key={index}
@@ -146,25 +158,17 @@ export const AliasGamePanelUI = ({
                       textTransform: "capitalize",
                       cursor: "pointer",
                     }}
-                    onClick={() =>
-                      setUsersMarkedWords((prev) => ({
-                        ...prev,
-                        [trimWord]: !prev[trimWord],
-                      }))
-                    }
                   >
                     {trimWord}
                   </Typography>
-                  <IconButton onClick={() => translator.translateWithModal(trimWord)}>
-                    <Languages size={"16px"} color="#eee" />
-                  </IconButton>
+                  <Languages size={"16px"} color="#eee" />
                 </Stack>
               );
             })}
 
           {!isShowAll && (
-            <Button size="small" onClick={showAll} variant="text">
-              {i18n._(`More`)}
+            <Button size="small" onClick={showAll} variant="text" endIcon={<ChevronRight />}>
+              {i18n._(`More options`)}
             </Button>
           )}
         </Stack>
