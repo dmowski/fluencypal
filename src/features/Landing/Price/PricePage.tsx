@@ -814,122 +814,94 @@ export const PricePage = ({ lang }: PricePageProps) => {
               </Button>
             </Stack>
           )}
-          {isShowPayAsYouGo && (
+          <Stack
+            sx={{
+              width: "100%",
+              alignItems: "center",
+              backgroundColor: `#0a121e`,
+            }}
+          >
             <Stack
               sx={{
+                gap: "40px",
+                maxWidth: maxContentWidth,
                 width: "100%",
+                boxSizing: "border-box",
                 alignItems: "center",
-                backgroundColor: `#0a121e`,
+                padding: "80px 20px 100px 20px",
               }}
             >
               <Stack
                 sx={{
-                  gap: "40px",
-                  maxWidth: maxContentWidth,
-                  width: "100%",
-                  boxSizing: "border-box",
                   alignItems: "center",
-                  padding: "80px 20px 100px 20px",
+                  boxSizing: "border-box",
+                  gap: "20px",
                 }}
               >
-                <Stack
+                <Typography
+                  align="center"
+                  variant="h3"
+                  component={"h2"}
                   sx={{
-                    alignItems: "center",
-                    boxSizing: "border-box",
-                    gap: "20px",
+                    ...titleFontStyle,
+                    color: "#fff",
                   }}
                 >
-                  <Typography
-                    align="center"
-                    variant="h3"
-                    component={"h2"}
-                    sx={{
-                      ...titleFontStyle,
-                      color: "#fff",
-                    }}
-                  >
-                    {i18n._("FAQ")}
-                  </Typography>
-                </Stack>
+                  {i18n._("FAQ")}
+                </Typography>
+              </Stack>
 
-                <Stack
-                  sx={{
-                    width: "100%",
-                    gap: "0px",
-                    border: "1px solid rgba(0, 0, 0, 0.1)",
-                    padding: "15px",
-                    borderRadius: "4px",
-                    boxSizing: "border-box",
-                    flexDirection: "column",
-                    maxWidth: "800px",
+              <Stack
+                sx={{
+                  width: "100%",
+                  gap: "0px",
+                  border: "1px solid rgba(0, 0, 0, 0.1)",
+                  padding: "15px",
+                  borderRadius: "4px",
+                  boxSizing: "border-box",
+                  flexDirection: "column",
+                  maxWidth: "800px",
+                }}
+              >
+                <FaqItem
+                  info={{
+                    question: i18n.t(`Can I try FluencyPal for free?`),
+                    answer: (
+                      <Typography>
+                        {i18n.t(
+                          `Yes! You start with 3 free days of conversation with AI to explore all features.`
+                        )}
+                      </Typography>
+                    ),
                   }}
-                >
-                  <FaqItem
-                    info={{
-                      question: i18n.t(`Can I try FluencyPal for free?`),
-                      answer: (
-                        <Typography>
-                          {i18n.t(
-                            `Yes! You start with one free hour of conversation with AI to explore all features.`
-                          )}
-                        </Typography>
-                      ),
-                    }}
-                  />
+                />
 
-                  <FaqItem
-                    info={{
-                      question: i18n._("How much do AI conversations cost?"),
-                      answer: (
+                <FaqItem
+                  info={{
+                    question: i18n._("Can I buy credits in bulk?"),
+                    answer: (
+                      <Stack gap={"20px"}>
                         <Typography>
                           {i18n._(
-                            `The cost is calculated based on duration and AI usage. On average, a full hour costs $5.`
+                            "Yes! We offer discounts when purchasing larger credit packages. Just contact me before you buy and I'll give you a discount."
                           )}
                         </Typography>
-                      ),
-                    }}
-                  />
-
-                  <FaqItem
-                    info={{
-                      question: i18n._("Can I buy credits in bulk?"),
-                      answer: (
-                        <Stack gap={"20px"}>
-                          <Typography>
-                            {i18n._(
-                              "Yes! We offer discounts when purchasing larger credit packages. Just contact me before you buy and I'll give you a discount."
-                            )}
-                          </Typography>
-                          <Stack
-                            gap={"10px"}
-                            sx={{
-                              width: "100%",
-                            }}
-                          >
-                            <Typography>{i18n._("Contacts:")}</Typography>
-                            <ContactList />
-                          </Stack>
+                        <Stack
+                          gap={"10px"}
+                          sx={{
+                            width: "100%",
+                          }}
+                        >
+                          <Typography>{i18n._("Contacts:")}</Typography>
+                          <ContactList />
                         </Stack>
-                      ),
-                    }}
-                  />
-
-                  <FaqItem
-                    info={{
-                      question: i18n._("Will my credits expire?"),
-                      answer: (
-                        <Typography>
-                          {i18n._(
-                            "No, your credits stay active as long as your account is in good standing."
-                          )}
-                        </Typography>
-                      ),
-                    }}
-                  />
-                </Stack>
+                      </Stack>
+                    ),
+                  }}
+                />
               </Stack>
             </Stack>
-          )}
+          </Stack>
         </Stack>
 
         <CtaBlock
