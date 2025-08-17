@@ -391,6 +391,7 @@ Use ${fullLanguageName || "English"} language.
               transform: "scaleX(-1)", // Flip the video horizontally
             }}
             autoPlay
+            controls={false}
             muted
             playsInline
           />

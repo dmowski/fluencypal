@@ -443,6 +443,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
                       src={selectedRolePlayScenario.videoSrc}
                       loop
                       autoPlay
+                      controls={false}
                       muted={true}
                       playsInline
                       style={{

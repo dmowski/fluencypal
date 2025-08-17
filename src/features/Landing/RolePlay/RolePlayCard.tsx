@@ -70,6 +70,7 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
         {variant === "highlight" && scenario.videoSrc && (
           <video
             src={scenario.videoSrc}
+            controls={false}
             loop
             autoPlay
             muted={true}
