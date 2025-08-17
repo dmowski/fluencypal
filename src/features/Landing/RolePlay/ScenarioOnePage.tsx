@@ -267,7 +267,8 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     },
                   }}
                 >
-                  <Markdown variant="small">{`${item.contentPage}`}</Markdown>
+                  {item.contentPage && <Markdown variant="small">{`${item.contentPage}`}</Markdown>}
+                  {item.contendElement}
 
                   {item.youTubeVideoUrl && (
                     <iframe
@@ -324,7 +325,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                         }}
                         href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
                       >
-                        {i18n._(`Start`)}
+                        {i18n._(`Start`)} "{item.shortTitle}"
                       </Button>
                       <Stack
                         sx={{
