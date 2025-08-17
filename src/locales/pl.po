@@ -13,16 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/AliasGamePanel.tsx:122
-#. js-lingui-explicit-id
-msgid "Describe these words:"
-msgstr "Opisz te słowa:"
-
-#: src/features/Conversation/AliasGamePanel.tsx:171
-#. js-lingui-explicit-id
-msgid "More options"
-msgstr "Więcej opcji"
-
 #: src/features/Header/HeaderStatic.tsx:12
 #: src/features/Landing/Contact/ContactsPage.tsx:94
 #: src/features/Landing/Footer.tsx:88
@@ -771,6 +761,27 @@ msgstr "Historia płatności:"
 msgid "No payments..."
 msgstr "Brak płatności..."
 
+#: src/features/Conversation/ConversationCanvas2.tsx:1396
+#: src/features/Usage/NoBalanceBlock.tsx:134
+#. js-lingui-explicit-id
+msgid "Low balance"
+msgstr "Niskie saldo"
+
+#: src/features/Usage/NoBalanceBlock.tsx:145
+#. js-lingui-explicit-id
+msgid "You've made amazing progress. Let’s keep going."
+msgstr "Zrobiłeś niesamowity postęp. Kontynuujmy."
+
+#: src/features/Usage/NoBalanceBlock.tsx:171
+#. js-lingui-explicit-id
+msgid "Buy a subscription"
+msgstr "Kup subskrypcję"
+
+#: src/features/Usage/NoBalanceBlock.tsx:183
+#. js-lingui-explicit-id
+msgid "Play the Game"
+msgstr "Zagraj w Grę"
+
 #: src/features/Usage/SubscriptionPaymentModal.tsx:67
 #. js-lingui-explicit-id
 msgid "Error creating payment session"
@@ -856,26 +867,12 @@ msgstr "Uzyskaj Pełny Dostęp"
 msgid "Need help?"
 msgstr "Potrzebujesz pomocy?"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1396
-#: src/features/Usage/NoBalanceBlock.tsx:134
+#: src/features/Dashboard/PlanDashboardCards.tsx:98
+#: src/features/Landing/PlanLandingBlock.tsx:104
+#: src/features/RolePlay/RolePlayBoard.tsx:397
 #. js-lingui-explicit-id
-msgid "Low balance"
-msgstr "Niskie saldo"
-
-#: src/features/Usage/NoBalanceBlock.tsx:145
-#. js-lingui-explicit-id
-msgid "You've made amazing progress. Let’s keep going."
-msgstr "Zrobiłeś niesamowity postęp. Kontynuujmy."
-
-#: src/features/Usage/NoBalanceBlock.tsx:171
-#. js-lingui-explicit-id
-msgid "Buy a subscription"
-msgstr "Kup subskrypcję"
-
-#: src/features/Usage/NoBalanceBlock.tsx:183
-#. js-lingui-explicit-id
-msgid "Play the Game"
-msgstr "Zagraj w Grę"
+msgid "Role Play"
+msgstr "Rola w grze"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:496
 #: src/features/Landing/PlanLandingBlock.tsx:290
@@ -888,6 +885,16 @@ msgstr "Zagraj w Grę"
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Start"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:698
+#. js-lingui-explicit-id
+msgid "Show more"
+msgstr "Pokaż więcej"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:698
+#. js-lingui-explicit-id
+msgid "Show less"
+msgstr "Pokaż mniej"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -1851,23 +1858,6 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Wszystkie Scenariusze"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:98
-#: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/RolePlay/RolePlayBoard.tsx:397
-#. js-lingui-explicit-id
-msgid "Role Play"
-msgstr "Rola w grze"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:698
-#. js-lingui-explicit-id
-msgid "Show more"
-msgstr "Pokaż więcej"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:698
-#. js-lingui-explicit-id
-msgid "Show less"
-msgstr "Pokaż mniej"
-
 #: src/features/Plan/useGoalCreation.ts:41
 #: src/features/Plan/useGoalCreation.ts:69
 #: src/features/Plan/useGoalCreation.ts:91
@@ -1904,44 +1894,6 @@ msgstr "Wyślij 6 wiadomości do zakończenia"
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Kontynuuj"
-
-#: src/features/Dashboard/SelectLanguage.tsx:94
-#: src/features/Game/GameNativeLanguageSelector.tsx:19
-#: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Lang/LanguageSwitcher.tsx:98
-#. js-lingui-explicit-id
-msgid "Other languages"
-msgstr "Inne języki"
-
-#: src/features/Dashboard/SelectLanguage.tsx:95
-#: src/features/Game/GameNativeLanguageSelector.tsx:20
-#: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Lang/LanguageSwitcher.tsx:99
-#. js-lingui-explicit-id
-msgid "System languages"
-msgstr "Języki systemu"
-
-#: src/features/Lang/LanguageSwitcher.tsx:185
-#. js-lingui-explicit-id
-msgid "Languages"
-msgstr "Języki"
-
-#: src/features/Goal/GoalQuestions.tsx:423
-#: src/features/Lang/LanguageSwitcher.tsx:229
-#. js-lingui-explicit-id
-msgid "Language to Learn"
-msgstr "Język do nauki"
-
-#: src/features/Dashboard/SelectLanguage.tsx:267
-#: src/features/Lang/LanguageSwitcher.tsx:268
-#. js-lingui-explicit-id
-msgid "Native Language"
-msgstr "Język ojczysty"
-
-#: src/features/Lang/LanguageSwitcher.tsx:310
-#. js-lingui-explicit-id
-msgid "Page Language"
-msgstr "Język strony"
 
 #: src/features/Lang/getLabels.tsx:9
 #: src/features/Lang/getLabelsClient.tsx:8
@@ -2075,241 +2027,43 @@ msgstr "Plan Nauki Szwedzkiego"
 msgid "Belarusian Learning Plan"
 msgstr "Plan Nauki Białoruskiego"
 
-#: src/features/Landing/PlanLandingBlock.tsx:20
+#: src/features/Dashboard/SelectLanguage.tsx:94
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
+#: src/features/Goal/GoalQuestions.tsx:324
+#: src/features/Lang/LanguageSwitcher.tsx:98
 #. js-lingui-explicit-id
-msgid "Psychology"
-msgstr "Psychologia"
+msgid "Other languages"
+msgstr "Inne języki"
 
-#: src/features/Landing/PlanLandingBlock.tsx:21
+#: src/features/Dashboard/SelectLanguage.tsx:95
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
+#: src/features/Goal/GoalQuestions.tsx:325
+#: src/features/Lang/LanguageSwitcher.tsx:99
 #. js-lingui-explicit-id
-msgid "Mental Health Vocabulary"
-msgstr "Słownictwo z zakresu zdrowia psychicznego"
+msgid "System languages"
+msgstr "Języki systemu"
 
-#: src/features/Landing/PlanLandingBlock.tsx:23
+#: src/features/Lang/LanguageSwitcher.tsx:185
 #. js-lingui-explicit-id
-msgid "Essential words for discussing mental health and psychology."
-msgstr "Niezbędne słowa do dyskusji na temat zdrowia psychicznego i psychologii."
+msgid "Languages"
+msgstr "Języki"
 
-#: src/features/Landing/PlanLandingBlock.tsx:29
+#: src/features/Goal/GoalQuestions.tsx:423
+#: src/features/Lang/LanguageSwitcher.tsx:229
 #. js-lingui-explicit-id
-msgid "Diagnosis"
-msgstr "Diagnoza"
+msgid "Language to Learn"
+msgstr "Język do nauki"
 
-#: src/features/Landing/PlanLandingBlock.tsx:30
+#: src/features/Dashboard/SelectLanguage.tsx:267
+#: src/features/Lang/LanguageSwitcher.tsx:268
 #. js-lingui-explicit-id
-msgid "Medical Talk Simulation"
-msgstr "Symulacja Medycznej Rozmowy"
+msgid "Native Language"
+msgstr "Język ojczysty"
 
-#: src/features/Landing/PlanLandingBlock.tsx:32
+#: src/features/Lang/LanguageSwitcher.tsx:310
 #. js-lingui-explicit-id
-msgid "Practice medical conversations through simulated scenarios."
-msgstr "Ćwicz rozmowy medyczne poprzez symulowane scenariusze."
-
-#: src/features/Landing/PlanLandingBlock.tsx:38
-#. js-lingui-explicit-id
-msgid "Reflex"
-msgstr "Refleks"
-
-#: src/features/Landing/PlanLandingBlock.tsx:39
-#. js-lingui-explicit-id
-msgid "Fast Answer Practice"
-msgstr "Szybka Praktyka Odpowiedzi"
-
-#: src/features/Landing/PlanLandingBlock.tsx:41
-#. js-lingui-explicit-id
-msgid "Improve your ability to answer quickly and clearly in conversations."
-msgstr "Popraw swoją zdolność do szybkiego i jasnego odpowiadania w rozmowach."
-
-#: src/features/Landing/LandingPage.tsx:138
-#: src/features/Landing/PlanLandingBlock.tsx:47
-#. js-lingui-explicit-id
-msgid "Speaking"
-msgstr "Mówienie"
-
-#: src/features/Landing/PlanLandingBlock.tsx:48
-#. js-lingui-explicit-id
-msgid "Public Talk Skills"
-msgstr "Umiejętności Prowadzenia Publicznych Rozmów"
-
-#: src/features/Landing/PlanLandingBlock.tsx:50
-#. js-lingui-explicit-id
-msgid "Boost your confidence in public speaking."
-msgstr "Zwiększ swoją pewność siebie w mówieniu publicznym."
-
-#: src/features/Landing/PlanLandingBlock.tsx:56
-#. js-lingui-explicit-id
-msgid "TOEFL"
-msgstr "TOEFL"
-
-#: src/features/Landing/PlanLandingBlock.tsx:57
-#. js-lingui-explicit-id
-msgid "Academic Word List"
-msgstr "Akademicka Lista Słów"
-
-#: src/features/Landing/PlanLandingBlock.tsx:59
-#. js-lingui-explicit-id
-msgid "Master high-frequency TOEFL vocabulary."
-msgstr "Opanuj słownictwo TOEFL o wysokiej częstotliwości."
-
-#: src/features/Landing/PlanLandingBlock.tsx:65
-#. js-lingui-explicit-id
-msgid "Mock"
-msgstr "Makieta"
-
-#: src/features/Landing/PlanLandingBlock.tsx:66
-#. js-lingui-explicit-id
-msgid "TOEFL Speaking Tasks"
-msgstr "Zadania z mówienia TOEFL"
-
-#: src/features/Landing/PlanLandingBlock.tsx:68
-#. js-lingui-explicit-id
-msgid "Simulate speaking tasks from the TOEFL exam."
-msgstr "Symuluj zadania mówione z egzaminu TOEFL."
-
-#: src/features/Landing/LandingPage.tsx:148
-#: src/features/Landing/PlanLandingBlock.tsx:74
-#. js-lingui-explicit-id
-msgid "Grammar"
-msgstr "Gramatyka"
-
-#: src/features/Landing/PlanLandingBlock.tsx:75
-#. js-lingui-explicit-id
-msgid "Advanced Academic Usage"
-msgstr "Zaawansowane Akademickie Użycie"
-
-#: src/features/Landing/PlanLandingBlock.tsx:77
-#. js-lingui-explicit-id
-msgid "Learn grammar used in academic writing and speaking."
-msgstr "Naucz się gramatyki używanej w pisaniu akademickim i mówieniu."
-
-#: src/features/Landing/PlanLandingBlock.tsx:84
-#. js-lingui-explicit-id
-msgid "Wellness"
-msgstr "Dobrobyt"
-
-#: src/features/Landing/PlanLandingBlock.tsx:85
-#. js-lingui-explicit-id
-msgid "Mental Health Talk"
-msgstr "Rozmowa o zdrowiu psychicznym"
-
-#: src/features/Landing/PlanLandingBlock.tsx:87
-#. js-lingui-explicit-id
-msgid "Explore techniques to talk about wellness and mental well-being."
-msgstr ""
-"Odkrywaj techniki, aby rozmawiać o zdrowiu i dobrym samopoczuciu "
-"psychicznym."
-
-#: src/features/Landing/PlanLandingBlock.tsx:93
-#. js-lingui-explicit-id
-msgid "Essays"
-msgstr "Eseje"
-
-#: src/features/Landing/PlanLandingBlock.tsx:94
-#. js-lingui-explicit-id
-msgid "Formal Writing Practice"
-msgstr "Praktyka Pisania Formalnego"
-
-#: src/features/Landing/PlanLandingBlock.tsx:96
-#. js-lingui-explicit-id
-msgid "Develop formal writing skills for academic success."
-msgstr "Rozwijaj formalne umiejętności pisania dla sukcesu akademickiego."
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:114
-#: src/features/Dashboard/PlanDashboardCards.tsx:97
-#: src/features/Dashboard/PlanDashboardCards.tsx:249
-#: src/features/Landing/PlanLandingBlock.tsx:103
-#. js-lingui-explicit-id
-msgid "Conversation"
-msgstr "Rozmowa"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:100
-#: src/features/Landing/PlanLandingBlock.tsx:106
-#. js-lingui-explicit-id
-msgid "Rule"
-msgstr "Reguła"
-
-#: src/features/Landing/PlanLandingBlock.tsx:149
-#. js-lingui-explicit-id
-msgid "How It Works"
-msgstr "Jak To Działa"
-
-#: src/features/Landing/PlanLandingBlock.tsx:160
-#. js-lingui-explicit-id
-msgid "From Onboarding to Your Goal"
-msgstr "Od Onboardingu do Twojego Celu"
-
-#: src/features/Landing/PlanLandingBlock.tsx:233
-#. js-lingui-explicit-id
-msgid "Step 1"
-msgstr "Krok 1"
-
-#: src/features/Landing/PlanLandingBlock.tsx:250
-#. js-lingui-explicit-id
-msgid "Smart Start"
-msgstr "Mądry Start"
-
-#: src/features/Landing/PlanLandingBlock.tsx:261
-#. js-lingui-explicit-id
-msgid ""
-"Fill out a quick onboarding quiz to help FluencyPal understand your goals "
-"and preferences."
-msgstr ""
-"Wypełnij szybki quiz wprowadzający, aby pomóc FluencyPal zrozumieć twoje "
-"cele i preferencje."
-
-#: src/features/Landing/PlanLandingBlock.tsx:363
-#. js-lingui-explicit-id
-msgid "Step 2"
-msgstr "Krok 2"
-
-#: src/features/Landing/PlanLandingBlock.tsx:381
-#. js-lingui-explicit-id
-msgid "Personal Plan"
-msgstr "Plan Osobisty"
-
-#: src/features/Landing/PlanLandingBlock.tsx:396
-#. js-lingui-explicit-id
-msgid ""
-"Based on your onboarding, FluencyPal instantly generates a custom learning "
-"plan just for you."
-msgstr ""
-"Na podstawie Twojego procesu wprowadzania, FluencyPal natychmiast generuje "
-"dla Ciebie indywidualny plan nauki."
-
-#: src/features/Goal/GoalQuestions.tsx:1087
-#: src/features/Landing/PlanLandingBlock.tsx:412
-#. js-lingui-explicit-id
-msgid "Create a plan"
-msgstr "Utwórz plan"
-
-#: src/features/Landing/PlanLandingBlock.tsx:576
-#. js-lingui-explicit-id
-msgid "Step 3"
-msgstr "Krok 3"
-
-#: src/features/Landing/PlanLandingBlock.tsx:604
-#. js-lingui-explicit-id
-msgid ""
-"Jump into your tailored learning path and build real skills through "
-"engaging practice with AI voice chat."
-msgstr ""
-"Wskocz w swoją indywidualną ścieżkę nauki i zdobywaj realne umiejętności "
-"poprzez angażującą praktykę za pomocą czatu głosowego AI."
-
-#: src/features/Landing/PlanLandingBlock.tsx:638
-#. js-lingui-explicit-id
-msgid "1 hour free"
-msgstr "1 godzina za darmo"
-
-#: src/features/Landing/PlanLandingBlock.tsx:664
-#. js-lingui-explicit-id
-msgid "Results are closer than you think"
-msgstr "Wyniki są bliżej niż myślisz"
-
-#: src/features/Landing/PlanLandingBlock.tsx:677
-#. js-lingui-explicit-id
-msgid "Start Learning"
-msgstr "Rozpocznij naukę"
+msgid "Page Language"
+msgstr "Język strony"
 
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
@@ -2467,6 +2221,12 @@ msgstr ""
 "gramatyce, słownictwie i śledzeniu postępów—aby szybciej osiągnąć biegłość "
 "w języku angielskim w trybie online."
 
+#: src/features/Landing/LandingPage.tsx:138
+#: src/features/Landing/PlanLandingBlock.tsx:47
+#. js-lingui-explicit-id
+msgid "Speaking"
+msgstr "Mówienie"
+
 #: src/features/Landing/LandingPage.tsx:139
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
@@ -2487,6 +2247,12 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "Rozpocznij praktykę mówienia"
+
+#: src/features/Landing/LandingPage.tsx:148
+#: src/features/Landing/PlanLandingBlock.tsx:74
+#. js-lingui-explicit-id
+msgid "Grammar"
+msgstr "Gramatyka"
 
 #: src/features/Landing/LandingPage.tsx:149
 #. js-lingui-explicit-id
@@ -2654,6 +2420,230 @@ msgstr "Ucz się gdziekolwiek, kiedykolwiek"
 msgid "Start Your Free Trial"
 msgstr "Rozpocznij swoją bezpłatną wersję próbną"
 
+#: src/features/Landing/PlanLandingBlock.tsx:20
+#. js-lingui-explicit-id
+msgid "Psychology"
+msgstr "Psychologia"
+
+#: src/features/Landing/PlanLandingBlock.tsx:21
+#. js-lingui-explicit-id
+msgid "Mental Health Vocabulary"
+msgstr "Słownictwo z zakresu zdrowia psychicznego"
+
+#: src/features/Landing/PlanLandingBlock.tsx:23
+#. js-lingui-explicit-id
+msgid "Essential words for discussing mental health and psychology."
+msgstr "Niezbędne słowa do dyskusji na temat zdrowia psychicznego i psychologii."
+
+#: src/features/Landing/PlanLandingBlock.tsx:29
+#. js-lingui-explicit-id
+msgid "Diagnosis"
+msgstr "Diagnoza"
+
+#: src/features/Landing/PlanLandingBlock.tsx:30
+#. js-lingui-explicit-id
+msgid "Medical Talk Simulation"
+msgstr "Symulacja Medycznej Rozmowy"
+
+#: src/features/Landing/PlanLandingBlock.tsx:32
+#. js-lingui-explicit-id
+msgid "Practice medical conversations through simulated scenarios."
+msgstr "Ćwicz rozmowy medyczne poprzez symulowane scenariusze."
+
+#: src/features/Landing/PlanLandingBlock.tsx:38
+#. js-lingui-explicit-id
+msgid "Reflex"
+msgstr "Refleks"
+
+#: src/features/Landing/PlanLandingBlock.tsx:39
+#. js-lingui-explicit-id
+msgid "Fast Answer Practice"
+msgstr "Szybka Praktyka Odpowiedzi"
+
+#: src/features/Landing/PlanLandingBlock.tsx:41
+#. js-lingui-explicit-id
+msgid "Improve your ability to answer quickly and clearly in conversations."
+msgstr "Popraw swoją zdolność do szybkiego i jasnego odpowiadania w rozmowach."
+
+#: src/features/Landing/PlanLandingBlock.tsx:48
+#. js-lingui-explicit-id
+msgid "Public Talk Skills"
+msgstr "Umiejętności Prowadzenia Publicznych Rozmów"
+
+#: src/features/Landing/PlanLandingBlock.tsx:50
+#. js-lingui-explicit-id
+msgid "Boost your confidence in public speaking."
+msgstr "Zwiększ swoją pewność siebie w mówieniu publicznym."
+
+#: src/features/Landing/PlanLandingBlock.tsx:56
+#. js-lingui-explicit-id
+msgid "TOEFL"
+msgstr "TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:57
+#. js-lingui-explicit-id
+msgid "Academic Word List"
+msgstr "Akademicka Lista Słów"
+
+#: src/features/Landing/PlanLandingBlock.tsx:59
+#. js-lingui-explicit-id
+msgid "Master high-frequency TOEFL vocabulary."
+msgstr "Opanuj słownictwo TOEFL o wysokiej częstotliwości."
+
+#: src/features/Landing/PlanLandingBlock.tsx:65
+#. js-lingui-explicit-id
+msgid "Mock"
+msgstr "Makieta"
+
+#: src/features/Landing/PlanLandingBlock.tsx:66
+#. js-lingui-explicit-id
+msgid "TOEFL Speaking Tasks"
+msgstr "Zadania z mówienia TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:68
+#. js-lingui-explicit-id
+msgid "Simulate speaking tasks from the TOEFL exam."
+msgstr "Symuluj zadania mówione z egzaminu TOEFL."
+
+#: src/features/Landing/PlanLandingBlock.tsx:75
+#. js-lingui-explicit-id
+msgid "Advanced Academic Usage"
+msgstr "Zaawansowane Akademickie Użycie"
+
+#: src/features/Landing/PlanLandingBlock.tsx:77
+#. js-lingui-explicit-id
+msgid "Learn grammar used in academic writing and speaking."
+msgstr "Naucz się gramatyki używanej w pisaniu akademickim i mówieniu."
+
+#: src/features/Landing/PlanLandingBlock.tsx:84
+#. js-lingui-explicit-id
+msgid "Wellness"
+msgstr "Dobrobyt"
+
+#: src/features/Landing/PlanLandingBlock.tsx:85
+#. js-lingui-explicit-id
+msgid "Mental Health Talk"
+msgstr "Rozmowa o zdrowiu psychicznym"
+
+#: src/features/Landing/PlanLandingBlock.tsx:87
+#. js-lingui-explicit-id
+msgid "Explore techniques to talk about wellness and mental well-being."
+msgstr ""
+"Odkrywaj techniki, aby rozmawiać o zdrowiu i dobrym samopoczuciu "
+"psychicznym."
+
+#: src/features/Landing/PlanLandingBlock.tsx:93
+#. js-lingui-explicit-id
+msgid "Essays"
+msgstr "Eseje"
+
+#: src/features/Landing/PlanLandingBlock.tsx:94
+#. js-lingui-explicit-id
+msgid "Formal Writing Practice"
+msgstr "Praktyka Pisania Formalnego"
+
+#: src/features/Landing/PlanLandingBlock.tsx:96
+#. js-lingui-explicit-id
+msgid "Develop formal writing skills for academic success."
+msgstr "Rozwijaj formalne umiejętności pisania dla sukcesu akademickiego."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:114
+#: src/features/Dashboard/PlanDashboardCards.tsx:97
+#: src/features/Dashboard/PlanDashboardCards.tsx:249
+#: src/features/Landing/PlanLandingBlock.tsx:103
+#. js-lingui-explicit-id
+msgid "Conversation"
+msgstr "Rozmowa"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:100
+#: src/features/Landing/PlanLandingBlock.tsx:106
+#. js-lingui-explicit-id
+msgid "Rule"
+msgstr "Reguła"
+
+#: src/features/Landing/PlanLandingBlock.tsx:149
+#. js-lingui-explicit-id
+msgid "How It Works"
+msgstr "Jak To Działa"
+
+#: src/features/Landing/PlanLandingBlock.tsx:160
+#. js-lingui-explicit-id
+msgid "From Onboarding to Your Goal"
+msgstr "Od Onboardingu do Twojego Celu"
+
+#: src/features/Landing/PlanLandingBlock.tsx:233
+#. js-lingui-explicit-id
+msgid "Step 1"
+msgstr "Krok 1"
+
+#: src/features/Landing/PlanLandingBlock.tsx:250
+#. js-lingui-explicit-id
+msgid "Smart Start"
+msgstr "Mądry Start"
+
+#: src/features/Landing/PlanLandingBlock.tsx:261
+#. js-lingui-explicit-id
+msgid ""
+"Fill out a quick onboarding quiz to help FluencyPal understand your goals "
+"and preferences."
+msgstr ""
+"Wypełnij szybki quiz wprowadzający, aby pomóc FluencyPal zrozumieć twoje "
+"cele i preferencje."
+
+#: src/features/Landing/PlanLandingBlock.tsx:363
+#. js-lingui-explicit-id
+msgid "Step 2"
+msgstr "Krok 2"
+
+#: src/features/Landing/PlanLandingBlock.tsx:381
+#. js-lingui-explicit-id
+msgid "Personal Plan"
+msgstr "Plan Osobisty"
+
+#: src/features/Landing/PlanLandingBlock.tsx:396
+#. js-lingui-explicit-id
+msgid ""
+"Based on your onboarding, FluencyPal instantly generates a custom learning "
+"plan just for you."
+msgstr ""
+"Na podstawie Twojego procesu wprowadzania, FluencyPal natychmiast generuje "
+"dla Ciebie indywidualny plan nauki."
+
+#: src/features/Goal/GoalQuestions.tsx:1087
+#: src/features/Landing/PlanLandingBlock.tsx:412
+#. js-lingui-explicit-id
+msgid "Create a plan"
+msgstr "Utwórz plan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:576
+#. js-lingui-explicit-id
+msgid "Step 3"
+msgstr "Krok 3"
+
+#: src/features/Landing/PlanLandingBlock.tsx:604
+#. js-lingui-explicit-id
+msgid ""
+"Jump into your tailored learning path and build real skills through "
+"engaging practice with AI voice chat."
+msgstr ""
+"Wskocz w swoją indywidualną ścieżkę nauki i zdobywaj realne umiejętności "
+"poprzez angażującą praktykę za pomocą czatu głosowego AI."
+
+#: src/features/Landing/PlanLandingBlock.tsx:638
+#. js-lingui-explicit-id
+msgid "1 hour free"
+msgstr "1 godzina za darmo"
+
+#: src/features/Landing/PlanLandingBlock.tsx:664
+#. js-lingui-explicit-id
+msgid "Results are closer than you think"
+msgstr "Wyniki są bliżej niż myślisz"
+
+#: src/features/Landing/PlanLandingBlock.tsx:677
+#. js-lingui-explicit-id
+msgid "Start Learning"
+msgstr "Rozpocznij naukę"
+
 #: src/features/Landing/Footer.tsx:85
 #. js-lingui-explicit-id
 msgid "Role-Play"
@@ -2750,6 +2740,58 @@ msgstr "Gotowy, aby opanować język angielski?"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Spróbuj"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "Praktykuj rozmowy w prawdziwym życiu z scenariuszami do odgrywania ról"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
+msgstr ""
+"Zamawiaj jedzenie, planuj spotkania, zdobądź pracę marzeń i więcej—wszystko "
+"z pomocą swojego nauczyciela AI."
+
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
+#. js-lingui-explicit-id
+msgid "Role Play Scenarios"
+msgstr "Scenariusze gier fabularnych"
+
+#: src/features/Blog/ListBlog.tsx:72
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
+#. js-lingui-explicit-id
+msgid "Discover"
+msgstr "Odkryj"
+
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
+#. js-lingui-explicit-id
+msgid "No scenarios found"
+msgstr "Nie znaleziono scenariuszy"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"My name is Alex, I am the creator of this website. I am a software engineer "
+"and I am passionate about learning languages. I created this website to "
+"help people learn languages in a fun and interactive way. I hope you enjoy "
+"using it!"
+msgstr ""
+"Nazywam się Alex, jestem twórcą tej strony. Jestem inżynierem "
+"oprogramowania i pasjonuję się nauką języków. Stworzyłem tę stronę, aby "
+"pomóc ludziom uczyć się języków w zabawny i interaktywny sposób. Mam "
+"nadzieję, że będziecie z niej zadowoleni!"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:117
+#. js-lingui-explicit-id
+msgid ""
+"Feel free to reach out to me with any questions or feedback. I'm always "
+"happy to help!"
+msgstr ""
+"Czuj się swobodnie, aby skontaktować się ze mną w razie jakichkolwiek pytań "
+"lub uwag. Zawsze chętnie pomogę!"
 
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
@@ -3113,36 +3155,6 @@ msgstr ""
 "Nie, Twoje kredyty pozostają aktywne, dopóki Twoje konto jest w dobrym "
 "stanie."
 
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
-#. js-lingui-explicit-id
-msgid "Role Play Scenarios"
-msgstr "Scenariusze gier fabularnych"
-
-#: src/features/Blog/ListBlog.tsx:72
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
-#. js-lingui-explicit-id
-msgid "Discover"
-msgstr "Odkryj"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
-#. js-lingui-explicit-id
-msgid "No scenarios found"
-msgstr "Nie znaleziono scenariuszy"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "Praktykuj rozmowy w prawdziwym życiu z scenariuszami do odgrywania ról"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
-msgstr ""
-"Zamawiaj jedzenie, planuj spotkania, zdobądź pracę marzeń i więcej—wszystko "
-"z pomocą swojego nauczyciela AI."
-
 #: src/features/Header/PaymentHistoryModal.tsx:21
 #. js-lingui-explicit-id
 msgid "Trial balance"
@@ -3172,6 +3184,111 @@ msgstr "Dni próbne"
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Historia Płatności"
+
+#: src/features/Header/HeaderStatic.tsx:11
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "Role-Playe"
+
+#: src/features/Header/HeaderStatic.tsx:14
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "Zaloguj się"
+
+#: src/features/Header/HeaderPractice.tsx:435
+#: src/features/Header/HeaderStatic.tsx:16
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "Potrzebujesz pomocy?"
+
+#: src/features/Header/HeaderPractice.tsx:447
+#: src/features/Header/HeaderStatic.tsx:17
+#. js-lingui-explicit-id
+msgid "Log Out"
+msgstr "Wyloguj się"
+
+#: src/features/Header/HeaderPractice.tsx:212
+#. js-lingui-explicit-id
+msgid "Finishing..."
+msgstr "Kończenie..."
+
+#: src/features/Dashboard/RulesToLearn.tsx:101
+#: src/features/Dashboard/WordsToLearn.tsx:121
+#: src/features/Header/HeaderPractice.tsx:213
+#. js-lingui-explicit-id
+msgid "Back"
+msgstr "Wstecz"
+
+#: src/features/Header/HeaderPractice.tsx:295
+#. js-lingui-explicit-id
+msgid "You are in the top 5"
+msgstr "Jesteś w top 5"
+
+#: src/features/Header/HeaderPractice.tsx:350
+#. js-lingui-explicit-id
+msgid "Refund Request"
+msgstr "Prośba o zwrot pieniędzy"
+
+#: src/features/Header/HeaderPractice.tsx:351
+#. js-lingui-explicit-id
+msgid "Add some info why you want a refund and we will do it."
+msgstr "Dodaj informacje, dlaczego chcesz zwrotu, a my to zrobimy."
+
+#: src/features/Header/ContactMessageModal.tsx:75
+#: src/features/Header/HeaderPractice.tsx:352
+#: src/features/Header/HeaderPractice.tsx:361
+#. js-lingui-explicit-id
+msgid "Leave your message"
+msgstr "Zostaw swoją wiadomość"
+
+#: src/features/Header/HeaderPractice.tsx:359
+#: src/features/Header/HeaderPractice.tsx:421
+#. js-lingui-explicit-id
+msgid "Feedback"
+msgstr "Opinia"
+
+#: src/features/Header/HeaderPractice.tsx:360
+#. js-lingui-explicit-id
+msgid "We appreciate your feedback!"
+msgstr "Cenimy Twoją opinię!"
+
+#: src/features/Header/HeaderPractice.tsx:385
+#. js-lingui-explicit-id
+msgid "Subscription"
+msgstr "Subskrypcja"
+
+#: src/features/Header/HeaderPractice.tsx:397
+#. js-lingui-explicit-id
+msgid "Payment history"
+msgstr "Historia płatności"
+
+#: src/features/Header/HeaderPractice.tsx:409
+#. js-lingui-explicit-id
+msgid "Refund"
+msgstr "Zwrot"
+
+#: src/features/Dashboard/FeedbackBlock.tsx:25
+#: src/features/Header/ContactMessageModal.tsx:38
+#. js-lingui-explicit-id
+msgid "Failed to send feedback. Please try again later."
+msgstr "Nie udało się wysłać opinii. Proszę spróbować ponownie później."
+
+#: src/features/Header/ContactMessageModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Thank you for your feedback!"
+msgstr "Dziękujemy za Twoją opinię!"
+
+#: src/features/Dashboard/FeedbackBlock.tsx:51
+#: src/features/Header/ContactMessageModal.tsx:80
+#. js-lingui-explicit-id
+msgid "Sending..."
+msgstr "Wysyłanie..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1015
+#: src/features/Header/ContactMessageModal.tsx:80
+#. js-lingui-explicit-id
+msgid "Send"
+msgstr "Wyślij"
 
 #: src/features/Header/NeedHelpModal.tsx:34
 #: src/features/Header/NeedHelpModal.tsx:162
@@ -3248,101 +3365,6 @@ msgstr "Tak, Usuń konto"
 msgid "Delete account"
 msgstr "Usuń konto"
 
-#: src/features/Dashboard/FeedbackBlock.tsx:25
-#: src/features/Header/ContactMessageModal.tsx:38
-#. js-lingui-explicit-id
-msgid "Failed to send feedback. Please try again later."
-msgstr "Nie udało się wysłać opinii. Proszę spróbować ponownie później."
-
-#: src/features/Header/ContactMessageModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Thank you for your feedback!"
-msgstr "Dziękujemy za Twoją opinię!"
-
-#: src/features/Header/ContactMessageModal.tsx:75
-#: src/features/Header/HeaderPractice.tsx:352
-#: src/features/Header/HeaderPractice.tsx:361
-#. js-lingui-explicit-id
-msgid "Leave your message"
-msgstr "Zostaw swoją wiadomość"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:51
-#: src/features/Header/ContactMessageModal.tsx:80
-#. js-lingui-explicit-id
-msgid "Sending..."
-msgstr "Wysyłanie..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1015
-#: src/features/Header/ContactMessageModal.tsx:80
-#. js-lingui-explicit-id
-msgid "Send"
-msgstr "Wyślij"
-
-#: src/features/Header/HeaderPractice.tsx:212
-#. js-lingui-explicit-id
-msgid "Finishing..."
-msgstr "Kończenie..."
-
-#: src/features/Dashboard/RulesToLearn.tsx:101
-#: src/features/Dashboard/WordsToLearn.tsx:121
-#: src/features/Header/HeaderPractice.tsx:213
-#. js-lingui-explicit-id
-msgid "Back"
-msgstr "Wstecz"
-
-#: src/features/Header/HeaderPractice.tsx:295
-#. js-lingui-explicit-id
-msgid "You are in the top 5"
-msgstr "Jesteś w top 5"
-
-#: src/features/Header/HeaderPractice.tsx:350
-#. js-lingui-explicit-id
-msgid "Refund Request"
-msgstr "Prośba o zwrot pieniędzy"
-
-#: src/features/Header/HeaderPractice.tsx:351
-#. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr "Dodaj informacje, dlaczego chcesz zwrotu, a my to zrobimy."
-
-#: src/features/Header/HeaderPractice.tsx:359
-#: src/features/Header/HeaderPractice.tsx:421
-#. js-lingui-explicit-id
-msgid "Feedback"
-msgstr "Opinia"
-
-#: src/features/Header/HeaderPractice.tsx:360
-#. js-lingui-explicit-id
-msgid "We appreciate your feedback!"
-msgstr "Cenimy Twoją opinię!"
-
-#: src/features/Header/HeaderPractice.tsx:385
-#. js-lingui-explicit-id
-msgid "Subscription"
-msgstr "Subskrypcja"
-
-#: src/features/Header/HeaderPractice.tsx:397
-#. js-lingui-explicit-id
-msgid "Payment history"
-msgstr "Historia płatności"
-
-#: src/features/Header/HeaderPractice.tsx:409
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "Zwrot"
-
-#: src/features/Header/HeaderPractice.tsx:435
-#: src/features/Header/HeaderStatic.tsx:16
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "Potrzebujesz pomocy?"
-
-#: src/features/Header/HeaderPractice.tsx:447
-#: src/features/Header/HeaderStatic.tsx:17
-#. js-lingui-explicit-id
-msgid "Log Out"
-msgstr "Wyloguj się"
-
 #: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
 msgid "You are on the right track!"
@@ -3392,241 +3414,6 @@ msgstr "W końcu"
 #. js-lingui-explicit-id
 msgid "Let's rock it!"
 msgstr "Zaczynajmy!"
-
-#: src/features/Landing/Contact/ContactsPage.tsx:104
-#. js-lingui-explicit-id
-msgid ""
-"My name is Alex, I am the creator of this website. I am a software engineer "
-"and I am passionate about learning languages. I created this website to "
-"help people learn languages in a fun and interactive way. I hope you enjoy "
-"using it!"
-msgstr ""
-"Nazywam się Alex, jestem twórcą tej strony. Jestem inżynierem "
-"oprogramowania i pasjonuję się nauką języków. Stworzyłem tę stronę, aby "
-"pomóc ludziom uczyć się języków w zabawny i interaktywny sposób. Mam "
-"nadzieję, że będziecie z niej zadowoleni!"
-
-#: src/features/Landing/Contact/ContactsPage.tsx:117
-#. js-lingui-explicit-id
-msgid ""
-"Feel free to reach out to me with any questions or feedback. I'm always "
-"happy to help!"
-msgstr ""
-"Czuj się swobodnie, aby skontaktować się ze mną w razie jakichkolwiek pytań "
-"lub uwag. Zawsze chętnie pomogę!"
-
-#: src/features/Game/GameOnboarding.tsx:169
-#: src/features/Game/GamePage.tsx:21
-#. js-lingui-explicit-id
-msgid "Play"
-msgstr "Graj"
-
-#: src/features/Game/GamePage.tsx:87
-#. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "Ocena:"
-
-#: src/features/Game/GameBadge.tsx:67
-#: src/features/Game/GamePage.tsx:89
-#. js-lingui-explicit-id
-msgid "Rank in the top 5 to get the app for free"
-msgstr "Znajdź się w pierwszej piątce, aby otrzymać aplikację za darmo"
-
-#: src/features/Game/GameNativeLanguageSelector.tsx:39
-#. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Twój język ojczysty:"
-
-#: src/features/Header/HeaderStatic.tsx:11
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "Role-Playe"
-
-#: src/features/Header/HeaderStatic.tsx:14
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "Zaloguj się"
-
-#: src/features/Game/GameOnboarding.tsx:47
-#. js-lingui-explicit-id
-msgid "Learn and Play"
-msgstr "Ucz się i Baw się"
-
-#: src/features/Game/GameOnboarding.tsx:56
-#. js-lingui-explicit-id
-msgid "Describe images, craft sentences, and translate words"
-msgstr "Opisuj obrazy, twórz zdania i tłumacz słowa"
-
-#: src/features/Game/GameOnboarding.tsx:66
-#: src/features/Game/GameOnboarding.tsx:117
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:392
-#: src/features/Goal/GoalQuestions.tsx:503
-#: src/features/Goal/GoalQuestions.tsx:598
-#: src/features/Goal/GoalQuestions.tsx:961
-#: src/features/Goal/GoalQuestions.tsx:1022
-#. js-lingui-explicit-id
-msgid "Next"
-msgstr "Następny"
-
-#: src/features/Game/GameOnboarding.tsx:95
-#. js-lingui-explicit-id
-msgid "You have a chance"
-msgstr "Masz szansę"
-
-#: src/features/Game/GameOnboarding.tsx:104
-#. js-lingui-explicit-id
-msgid ""
-"Each day, we remove 3 points from everyone so that everyone has a fair "
-"chance to win."
-msgstr ""
-"Każdego dnia, odejmujemy 3 punkty od każdego, aby każdy miał sprawiedliwą "
-"szansę na wygraną."
-
-#: src/features/Game/GameOnboarding.tsx:133
-#. js-lingui-explicit-id
-msgid "Let’s make sure you’re ready"
-msgstr "Upewnijmy się, że jesteś gotowy"
-
-#: src/features/Game/GameOnboarding.tsx:144
-#. js-lingui-explicit-id
-msgid "Your Avatar:"
-msgstr "Twój Avatar:"
-
-#: src/features/Game/GameMyUsername.tsx:26
-#. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "Nazwa użytkownika musi mieć co najmniej 3 znaki."
-
-#: src/features/Game/GameMyUsername.tsx:41
-#. js-lingui-explicit-id
-msgid "Your Username:"
-msgstr "Twoje Nazwa Użytkownika:"
-
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
-#. js-lingui-explicit-id
-msgid "Discuss the topic"
-msgstr "Omów temat"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:749
-#: src/features/Conversation/ConversationCanvas2.tsx:752
-#: src/features/Conversation/ConversationCanvas2.tsx:835
-#: src/features/Conversation/ConversationCanvas2.tsx:842
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:144
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:261
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:167
-#: src/features/Goal/GoalQuestions.tsx:738
-#. js-lingui-explicit-id
-msgid "Transcribing..."
-msgstr "Transkrypcja..."
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:184
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:207
-#. js-lingui-explicit-id
-msgid "Submit answer"
-msgstr "Prześlij odpowiedź"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1046
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:213
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:236
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "Zrobione"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:236
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
-#. js-lingui-explicit-id
-msgid "Record an answer"
-msgstr "Nagraj odpowiedź"
-
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:279
-#. js-lingui-explicit-id
-msgid "Describe the topic in your own words..."
-msgstr "Opisz temat swoimi własnymi słowami..."
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:277
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:300
-#. js-lingui-explicit-id
-msgid "Error: "
-msgstr "Błąd:"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:302
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:377
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:244
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:325
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:172
-#. js-lingui-explicit-id
-msgid "Correct!"
-msgstr "Poprawnie!"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:302
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:377
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:244
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:325
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:172
-#. js-lingui-explicit-id
-msgid "Incorrect!"
-msgstr "Niepoprawne!"
-
-#: src/features/Game/GameBadge.tsx:55
-#. js-lingui-explicit-id
-msgid "Play and Learn"
-msgstr "Graj i Ucz się"
-
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "Przetłumacz słowo"
-
-#: src/features/Game/GameMyAvatar.tsx:20
-#. js-lingui-explicit-id
-msgid "Select your avatar"
-msgstr "Wybierz swój awatar"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "Utwórz zdanie"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
-#. js-lingui-explicit-id
-msgid "Read the text"
-msgstr "Przeczytaj tekst"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1032
-#: src/features/Conversation/ConversationCanvas2.tsx:1296
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:296
-#. js-lingui-explicit-id
-msgid "Re-record"
-msgstr "Nagraj ponownie"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:309
-#. js-lingui-explicit-id
-msgid "Submit"
-msgstr "Zatwierdź"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:340
-#: src/features/Goal/GoalQuestions.tsx:741
-#. js-lingui-explicit-id
-msgid "Record"
-msgstr "Nagranie"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:352
-#. js-lingui-explicit-id
-msgid "Error:"
-msgstr "Błąd:"
-
-#: src/features/Game/PositionChangedModal.tsx:106
-#. js-lingui-explicit-id
-msgid "Nice!"
-msgstr "Świetnie!"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:256
-#. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "Opisz obraz"
 
 #: src/features/Goal/GoalQuestions.tsx:60
 #. js-lingui-explicit-id
@@ -3834,6 +3621,17 @@ msgstr "Chcę się nauczyć..."
 msgid "My native language"
 msgstr "Mój język ojczysty"
 
+#: src/features/Game/GameOnboarding.tsx:66
+#: src/features/Game/GameOnboarding.tsx:117
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:392
+#: src/features/Goal/GoalQuestions.tsx:503
+#: src/features/Goal/GoalQuestions.tsx:598
+#: src/features/Goal/GoalQuestions.tsx:961
+#: src/features/Goal/GoalQuestions.tsx:1022
+#. js-lingui-explicit-id
+msgid "Next"
+msgstr "Następny"
+
 #: src/features/Goal/GoalQuestions.tsx:510
 #. js-lingui-explicit-id
 msgid "How well do you know"
@@ -3874,10 +3672,28 @@ msgstr ""
 "Chcę nauczyć się angielskiego, aby podróżować. I chcę rozumieć filmy i "
 "piosenki."
 
+#: src/features/Conversation/ConversationCanvas2.tsx:749
+#: src/features/Conversation/ConversationCanvas2.tsx:752
+#: src/features/Conversation/ConversationCanvas2.tsx:835
+#: src/features/Conversation/ConversationCanvas2.tsx:842
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:144
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:261
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:167
+#: src/features/Goal/GoalQuestions.tsx:738
+#. js-lingui-explicit-id
+msgid "Transcribing..."
+msgstr "Transkrypcja..."
+
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
 msgid "Stop recording"
 msgstr "Zatrzymaj nagrywanie"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:340
+#: src/features/Goal/GoalQuestions.tsx:741
+#. js-lingui-explicit-id
+msgid "Record"
+msgstr "Nagranie"
 
 #: src/features/Goal/GoalQuestions.tsx:826
 #. js-lingui-explicit-id
@@ -3954,41 +3770,179 @@ msgstr "Skopiuj link"
 msgid "Open the plan"
 msgstr "Otwórz plan"
 
-#: src/features/Dashboard/SelectLanguage.tsx:143
+#: src/features/Game/PositionChangedModal.tsx:106
 #. js-lingui-explicit-id
-msgid "Almost there!"
-msgstr "Prawie gotowe!"
+msgid "Nice!"
+msgstr "Świetnie!"
 
-#: src/features/Dashboard/SelectLanguage.tsx:158
+#: src/features/Game/GameOnboarding.tsx:47
 #. js-lingui-explicit-id
-msgid "Select languages"
-msgstr "Wybierz języki"
+msgid "Learn and Play"
+msgstr "Ucz się i Baw się"
 
-#: src/features/Dashboard/SelectLanguage.tsx:204
+#: src/features/Game/GameOnboarding.tsx:56
 #. js-lingui-explicit-id
-msgid "Learn"
-msgstr "Ucz się"
+msgid "Describe images, craft sentences, and translate words"
+msgstr "Opisuj obrazy, twórz zdania i tłumacz słowa"
 
-#: src/features/Dashboard/SelectLanguage.tsx:231
+#: src/features/Game/GameOnboarding.tsx:95
 #. js-lingui-explicit-id
-msgid "Page"
-msgstr "Strona"
+msgid "You have a chance"
+msgstr "Masz szansę"
 
-#: src/features/Dashboard/WordsToLearn.tsx:32
+#: src/features/Game/GameOnboarding.tsx:104
 #. js-lingui-explicit-id
-msgid "New words to practice."
-msgstr "Nowe słowa do ćwiczenia."
+msgid ""
+"Each day, we remove 3 points from everyone so that everyone has a fair "
+"chance to win."
+msgstr ""
+"Każdego dnia, odejmujemy 3 punkty od każdego, aby każdy miał sprawiedliwą "
+"szansę na wygraną."
 
-#: src/features/Dashboard/RulesToLearn.tsx:86
-#: src/features/Dashboard/WordsToLearn.tsx:106
+#: src/features/Game/GameOnboarding.tsx:133
 #. js-lingui-explicit-id
-msgid "Start practice"
-msgstr "Rozpocznij praktykę"
+msgid "Let’s make sure you’re ready"
+msgstr "Upewnijmy się, że jesteś gotowy"
 
-#: src/features/Dashboard/WordsToLearn.tsx:128
+#: src/features/Game/GameOnboarding.tsx:144
 #. js-lingui-explicit-id
-msgid "I know all of them"
-msgstr "Znam ich wszystkich"
+msgid "Your Avatar:"
+msgstr "Twój Avatar:"
+
+#: src/features/Game/GameOnboarding.tsx:169
+#: src/features/Game/GamePage.tsx:21
+#. js-lingui-explicit-id
+msgid "Play"
+msgstr "Graj"
+
+#: src/features/Game/GamePage.tsx:87
+#. js-lingui-explicit-id
+msgid "Rating:"
+msgstr "Ocena:"
+
+#: src/features/Game/GameBadge.tsx:67
+#: src/features/Game/GamePage.tsx:89
+#. js-lingui-explicit-id
+msgid "Rank in the top 5 to get the app for free"
+msgstr "Znajdź się w pierwszej piątce, aby otrzymać aplikację za darmo"
+
+#: src/features/Game/GameMyAvatar.tsx:20
+#. js-lingui-explicit-id
+msgid "Select your avatar"
+msgstr "Wybierz swój awatar"
+
+#: src/features/Game/GameBadge.tsx:55
+#. js-lingui-explicit-id
+msgid "Play and Learn"
+msgstr "Graj i Ucz się"
+
+#: src/features/Game/GameMyUsername.tsx:26
+#. js-lingui-explicit-id
+msgid "Username must be at least 3 characters long."
+msgstr "Nazwa użytkownika musi mieć co najmniej 3 znaki."
+
+#: src/features/Game/GameMyUsername.tsx:41
+#. js-lingui-explicit-id
+msgid "Your Username:"
+msgstr "Twoje Nazwa Użytkownika:"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Translate the word"
+msgstr "Przetłumacz słowo"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:302
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:377
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:244
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:325
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:172
+#. js-lingui-explicit-id
+msgid "Correct!"
+msgstr "Poprawnie!"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:302
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:377
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:244
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:325
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:172
+#. js-lingui-explicit-id
+msgid "Incorrect!"
+msgstr "Niepoprawne!"
+
+#: src/features/Game/GameNativeLanguageSelector.tsx:39
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "Twój język ojczysty:"
+
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
+#. js-lingui-explicit-id
+msgid "Discuss the topic"
+msgstr "Omów temat"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:184
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:207
+#. js-lingui-explicit-id
+msgid "Submit answer"
+msgstr "Prześlij odpowiedź"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1046
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:213
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:236
+#. js-lingui-explicit-id
+msgid "Done"
+msgstr "Zrobione"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:236
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
+#. js-lingui-explicit-id
+msgid "Record an answer"
+msgstr "Nagraj odpowiedź"
+
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:279
+#. js-lingui-explicit-id
+msgid "Describe the topic in your own words..."
+msgstr "Opisz temat swoimi własnymi słowami..."
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:277
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:300
+#. js-lingui-explicit-id
+msgid "Error: "
+msgstr "Błąd:"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:256
+#. js-lingui-explicit-id
+msgid "Describe the image"
+msgstr "Opisz obraz"
+
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Form a sentence"
+msgstr "Utwórz zdanie"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
+#. js-lingui-explicit-id
+msgid "Read the text"
+msgstr "Przeczytaj tekst"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1032
+#: src/features/Conversation/ConversationCanvas2.tsx:1296
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:296
+#. js-lingui-explicit-id
+msgid "Re-record"
+msgstr "Nagraj ponownie"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:309
+#. js-lingui-explicit-id
+msgid "Submit"
+msgstr "Zatwierdź"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:352
+#. js-lingui-explicit-id
+msgid "Error:"
+msgstr "Błąd:"
 
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
@@ -4023,10 +3977,141 @@ msgstr "Nowe słowa"
 msgid "Practice new vocabulary with the AI"
 msgstr "Ćwicz nowe słownictwo z AI"
 
+#: src/features/Dashboard/WordsToLearn.tsx:32
+#. js-lingui-explicit-id
+msgid "New words to practice."
+msgstr "Nowe słowa do ćwiczenia."
+
+#: src/features/Dashboard/RulesToLearn.tsx:86
+#: src/features/Dashboard/WordsToLearn.tsx:106
+#. js-lingui-explicit-id
+msgid "Start practice"
+msgstr "Rozpocznij praktykę"
+
+#: src/features/Dashboard/WordsToLearn.tsx:128
+#. js-lingui-explicit-id
+msgid "I know all of them"
+msgstr "Znam ich wszystkich"
+
+#: src/features/Dashboard/SelectLanguage.tsx:143
+#. js-lingui-explicit-id
+msgid "Almost there!"
+msgstr "Prawie gotowe!"
+
+#: src/features/Dashboard/SelectLanguage.tsx:158
+#. js-lingui-explicit-id
+msgid "Select languages"
+msgstr "Wybierz języki"
+
+#: src/features/Dashboard/SelectLanguage.tsx:204
+#. js-lingui-explicit-id
+msgid "Learn"
+msgstr "Ucz się"
+
+#: src/features/Dashboard/SelectLanguage.tsx:231
+#. js-lingui-explicit-id
+msgid "Page"
+msgstr "Strona"
+
 #: src/features/Dashboard/RulesToLearn.tsx:36
 #. js-lingui-explicit-id
 msgid "New rule to practice."
 msgstr "Nowa zasada do ćwiczeń."
+
+#: src/features/Dashboard/HomeworkCard.tsx:21
+#. js-lingui-explicit-id
+msgid "Homework"
+msgstr "Zadanie domowe"
+
+#: src/features/Dashboard/HomeworkCard.tsx:57
+#. js-lingui-explicit-id
+msgid "No homework assigned yet."
+msgstr "Nie ma jeszcze zadanej pracy domowej."
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "Zacznij rozmowę, aby go zdobyć."
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "Przeskocz"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "Pokaż wszystko"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1282
+#: src/features/Dashboard/GoalCard.tsx:12
+#: src/features/Dashboard/PlanDashboardCards.tsx:427
+#: src/features/Dashboard/PlanDashboardCards.tsx:557
+#. js-lingui-explicit-id
+msgid "Goal"
+msgstr "Cel"
+
+#: src/features/Dashboard/GoalCard.tsx:13
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Ustal cel swojej nauki"
+
+#: src/features/Dashboard/GoalCard.tsx:28
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "Rozpocznij | 5 min"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:115
+#. js-lingui-explicit-id
+msgid "Talk to the AI and it will respond to you"
+msgstr "Porozmawiaj z AI, a ona odpowie ci"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:120
+#: src/features/Dashboard/ConversationSelectCard.tsx:141
+#: src/features/Dashboard/ConversationSelectCard.tsx:162
+#: src/features/Dashboard/ConversationSelectCard.tsx:183
+#: src/features/Dashboard/PlanDashboardCards.tsx:255
+#: src/features/Dashboard/PlanDashboardCards.tsx:285
+#: src/features/Dashboard/PlanDashboardCards.tsx:315
+#. js-lingui-explicit-id
+msgid "Set the goal to start"
+msgstr "Ustal cel, aby rozpocząć"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:131
+#. js-lingui-explicit-id
+msgid "Start Talking"
+msgstr "Zacznij Mówić"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:135
+#. js-lingui-explicit-id
+msgid "Beginner"
+msgstr "Początkujący"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:136
+#. js-lingui-explicit-id
+msgid "AI will lead you through the conversation"
+msgstr "AI poprowadzi Cię przez rozmowę"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:152
+#. js-lingui-explicit-id
+msgid "Guide me"
+msgstr "Poprowadź mnie"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:156
+#: src/features/Dashboard/PlanDashboardCards.tsx:279
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "Zasady"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:173
+#. js-lingui-explicit-id
+msgid "Get a rule"
+msgstr "Zdobądź regułę"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:194
+#. js-lingui-explicit-id
+msgid "Expand vocabulary"
+msgstr "Rozszerz słownictwo"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:74
 #. js-lingui-explicit-id
@@ -4050,29 +4135,12 @@ msgstr "Teraz ustalmy twój punkt wyjścia!"
 msgid "Start your journey with a conversation!"
 msgstr "Rozpocznij swoją podróż od rozmowy!"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:120
-#: src/features/Dashboard/ConversationSelectCard.tsx:141
-#: src/features/Dashboard/ConversationSelectCard.tsx:162
-#: src/features/Dashboard/ConversationSelectCard.tsx:183
-#: src/features/Dashboard/PlanDashboardCards.tsx:255
-#: src/features/Dashboard/PlanDashboardCards.tsx:285
-#: src/features/Dashboard/PlanDashboardCards.tsx:315
-#. js-lingui-explicit-id
-msgid "Set the goal to start"
-msgstr "Ustal cel, aby rozpocząć"
-
 #: src/features/Dashboard/PlanDashboardCards.tsx:273
 #: src/features/Dashboard/PlanDashboardCards.tsx:303
 #: src/features/Dashboard/PlanDashboardCards.tsx:333
 #. js-lingui-explicit-id
 msgid "Recommended"
 msgstr "Rekomendowane"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:156
-#: src/features/Dashboard/PlanDashboardCards.tsx:279
-#. js-lingui-explicit-id
-msgid "Rules"
-msgstr "Zasady"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:280
 #. js-lingui-explicit-id
@@ -4093,14 +4161,6 @@ msgstr "Mamy coś ciekawego dla Ciebie..."
 #. js-lingui-explicit-id
 msgid "Let's start"
 msgstr "Zaczynajmy"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1282
-#: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:427
-#: src/features/Dashboard/PlanDashboardCards.tsx:557
-#. js-lingui-explicit-id
-msgid "Goal"
-msgstr "Cel"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:428
 #. js-lingui-explicit-id
@@ -4142,41 +4202,6 @@ msgstr "Generuj więcej unikalnych lekcji"
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Aby wygenerować więcej lekcji, musisz ukończyć przynajmniej 3 lekcje"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:115
-#. js-lingui-explicit-id
-msgid "Talk to the AI and it will respond to you"
-msgstr "Porozmawiaj z AI, a ona odpowie ci"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:131
-#. js-lingui-explicit-id
-msgid "Start Talking"
-msgstr "Zacznij Mówić"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:135
-#. js-lingui-explicit-id
-msgid "Beginner"
-msgstr "Początkujący"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:136
-#. js-lingui-explicit-id
-msgid "AI will lead you through the conversation"
-msgstr "AI poprowadzi Cię przez rozmowę"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:152
-#. js-lingui-explicit-id
-msgid "Guide me"
-msgstr "Poprowadź mnie"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:173
-#. js-lingui-explicit-id
-msgid "Get a rule"
-msgstr "Zdobądź regułę"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:194
-#. js-lingui-explicit-id
-msgid "Expand vocabulary"
-msgstr "Rozszerz słownictwo"
-
 #: src/features/Dashboard/FeedbackBlock.tsx:30
 #. js-lingui-explicit-id
 msgid "Thank you for your message"
@@ -4196,56 +4221,6 @@ msgstr "Zostaw swoją opinię"
 #. js-lingui-explicit-id
 msgid "Send Feedback"
 msgstr "Wyślij Opinie"
-
-#: src/features/Dashboard/GoalCard.tsx:13
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Ustal cel swojej nauki"
-
-#: src/features/Dashboard/GoalCard.tsx:28
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "Rozpocznij | 5 min"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:55
-#. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "Kalendarz Postępów"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:69
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "Mniej"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:90
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "Więcej"
-
-#: src/features/Dashboard/HomeworkCard.tsx:21
-#. js-lingui-explicit-id
-msgid "Homework"
-msgstr "Zadanie domowe"
-
-#: src/features/Dashboard/HomeworkCard.tsx:57
-#. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "Nie ma jeszcze zadanej pracy domowej."
-
-#: src/features/Dashboard/HomeworkCard.tsx:66
-#. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "Zacznij rozmowę, aby go zdobyć."
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "Przeskocz"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "Pokaż wszystko"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4349,33 +4324,26 @@ msgstr "Przygotowanie mózgu"
 msgid "Upload language skills directly to your brain"
 msgstr "Prześlij umiejętności językowe bezpośrednio do swojego mózgu"
 
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:55
+#. js-lingui-explicit-id
+msgid "Progress Calendar"
+msgstr "Kalendarz Postępów"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:69
+#. js-lingui-explicit-id
+msgid "Less"
+msgstr "Mniej"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:90
+#. js-lingui-explicit-id
+msgid "More"
+msgstr "Więcej"
+
 #: src/features/Conversation/useConversationsAnalysis.ts:86
 #: src/features/Conversation/useConversationsAnalysis.ts:129
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "Błąd analizy rozmowy"
-
-#: src/features/Conversation/ConversationError.tsx:34
-#. js-lingui-explicit-id
-msgid "Oops! Something went wrong"
-msgstr "Ups! Coś poszło nie tak"
-
-#: src/features/Conversation/ConversationError.tsx:37
-#. js-lingui-explicit-id
-msgid "Please refresh the page and try one more time"
-msgstr "Proszę odświeżyć stronę i spróbować jeszcze raz"
-
-#: src/features/Conversation/ConversationError.tsx:41
-#. js-lingui-explicit-id
-msgid "Notification was sent to the dev team. Sorry for that..."
-msgstr ""
-"Powiadomienie zostało wysłane do zespołu deweloperskiego. Przepraszamy za "
-"to..."
-
-#: src/features/Conversation/ConversationError.tsx:51
-#. js-lingui-explicit-id
-msgid "Reload page"
-msgstr "Odśwież stronę"
 
 #: src/features/Conversation/ConversationPage.tsx:126
 #. js-lingui-explicit-id
@@ -4391,11 +4359,6 @@ msgstr "Tworzenie nowych słów..."
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Tworzenie nowej reguły..."
-
-#: src/features/Conversation/AliasGamePanel.tsx:180
-#. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "Przypuszczalne słowa:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:316
 #. js-lingui-explicit-id
@@ -4557,19 +4520,20 @@ msgstr "Anuluj nagrywanie"
 msgid "Top up"
 msgstr "Doładuj"
 
-#: src/features/Blog/ListBlogIntro.tsx:66
+#: src/features/Conversation/AliasGamePanel.tsx:122
 #. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "Czytaj i ucz się z moim blogiem"
+msgid "Describe these words:"
+msgstr "Opisz te słowa:"
 
-#: src/features/Blog/ListBlogIntro.tsx:77
+#: src/features/Conversation/AliasGamePanel.tsx:171
 #. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr ""
-"Zainspiruj się i dowiedz się o najnowszych trendach w nauce języków, "
-"nauczaniu i technologii."
+msgid "More options"
+msgstr "Więcej opcji"
+
+#: src/features/Conversation/AliasGamePanel.tsx:180
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "Przypuszczalne słowa:"
 
 #: src/features/Blog/blogData.tsx:20
 #: src/features/Blog/blogData.tsx:28
@@ -5730,10 +5694,66 @@ msgstr "Rozwój zawodowy"
 msgid "All Blogs"
 msgstr "Wszystkie Blogi"
 
+#: src/features/Conversation/ConversationError.tsx:34
+#. js-lingui-explicit-id
+msgid "Oops! Something went wrong"
+msgstr "Ups! Coś poszło nie tak"
+
+#: src/features/Conversation/ConversationError.tsx:37
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "Proszę odświeżyć stronę i spróbować jeszcze raz"
+
+#: src/features/Conversation/ConversationError.tsx:41
+#. js-lingui-explicit-id
+msgid "Notification was sent to the dev team. Sorry for that..."
+msgstr ""
+"Powiadomienie zostało wysłane do zespołu deweloperskiego. Przepraszamy za "
+"to..."
+
+#: src/features/Conversation/ConversationError.tsx:51
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "Odśwież stronę"
+
+#: src/features/Blog/ListBlogIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Read and Learn with my blog"
+msgstr "Czytaj i ucz się z moim blogiem"
+
+#: src/features/Blog/ListBlogIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
+msgstr ""
+"Zainspiruj się i dowiedz się o najnowszych trendach w nauce języków, "
+"nauczaniu i technologii."
+
 #: src/features/Blog/ListBlog.tsx:131
 #. js-lingui-explicit-id
 msgid "No blogs found"
 msgstr "Nie znaleziono blogów"
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "Zobacz wszystkie posty"
+
+#: src/features/Blog/BlogOnePage.tsx:280
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "Scenariusze do zabawy w rolę do ćwiczenia"
+
+#: src/features/Blog/BlogOnePage.tsx:311
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "Możesz teraz wypróbować AI w akcji"
+
+#: src/features/Blog/BlogOnePage.tsx:312
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "Wypróbuj za darmo"
 
 #: src/features/Blog/BlogCard.tsx:164
 #. js-lingui-explicit-id
@@ -6202,26 +6222,6 @@ msgstr ""
 msgid "Good preparation today means career success tomorrow."
 msgstr "Dobra przygotowanie dzisiaj oznacza sukces w karierze jutro."
 
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "Zobacz wszystkie posty"
-
-#: src/features/Blog/BlogOnePage.tsx:280
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "Scenariusze do zabawy w rolę do ćwiczenia"
-
-#: src/features/Blog/BlogOnePage.tsx:311
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "Możesz teraz wypróbować AI w akcji"
-
-#: src/features/Blog/BlogOnePage.tsx:312
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "Wypróbuj za darmo"
-
 #: src/features/Auth/SignInForm.tsx:30
 #. js-lingui-explicit-id
 msgid "Open personal plan"
@@ -6290,11 +6290,6 @@ msgstr "AI"
 msgid "Answer <0>{0} questions</0> to get a new position"
 msgstr "Odpowiedz na <0>{0} pytania</0>, aby otrzymać nową pozycję"
 
-#: src/features/Game/GameBadge.tsx:117
-#. placeholder {0}: game.stats.length
-msgid "from {0}"
-msgstr "od {0}"
-
 #: src/features/Game/gameQuestionScreens/SummaryRow.tsx:18
 #. placeholder {0}: game.myPosition
 msgid "My Position: <0>{0}</0>"
@@ -6307,6 +6302,10 @@ msgid ""
 msgstr ""
 "Punkty do osiągnięcia następnej pozycji ({nextUserUsername}): "
 "<0>{pointsToNextPosition}</0>"
+
+#: src/features/Game/GameBadge.tsx:117
+msgid "Position"
+msgstr "Stanowisko"
 
 #: src/features/Landing/WelcomeScreen.tsx:128
 msgid "Talk, get corrected, improve—repeat."
@@ -6340,3 +6339,11 @@ msgstr "Wygraj grę i zdobądź aplikację <0>za darmo</0>"
 #. js-lingui-explicit-id
 #~ msgid "It makes sense to top up your balance."
 #~ msgstr "Ma sens doładować swoje saldo."
+
+#: src/features/Game/GameBadge.tsx:117
+#~ msgid "from {0}"
+#~ msgstr "od {0}"
+
+#: src/features/Game/GameBadge.tsx:117
+#~ msgid "From {playersCount}"
+#~ msgstr "Od {playersCount}"

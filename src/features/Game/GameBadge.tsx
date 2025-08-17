@@ -17,7 +17,7 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
   const position = game.myPosition;
   const points = game.myPoints;
   const showMyPosition = points && points > 1;
-
+  const playersCount = game.stats.length;
   return (
     <Stack
       component={"a"}
@@ -114,7 +114,7 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
               opacity: 0.7,
             }}
           >
-            <Trans>from {game.stats.length}</Trans>
+            <Trans>Position</Trans>
           </Typography>
         </Stack>
       ) : (
