@@ -67,22 +67,39 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
             {i18n._("Rank in the top 5 to get the app for free")}
           </Typography>
         )}
-        <Typography
-          sx={{
-            opacity: 0.9,
-            fontSize: "0.9rem",
-            "@media (max-width:600px)": {
-              fontSize: "0.7rem",
-            },
-            b: {
-              color: "#ff00b7ff",
-            },
-          }}
-        >
-          <Trans>
-            Answer <b>{game.pointsToNextPosition} questions</b> to get a new position
-          </Trans>
-        </Typography>
+        {game.pointsToNextPosition && (
+          <Typography
+            sx={{
+              opacity: 0.9,
+              fontSize: "0.9rem",
+              "@media (max-width:600px)": {
+                fontSize: "0.7rem",
+              },
+              b: {
+                color: "#ff00b7ff",
+              },
+            }}
+          >
+            <Trans>
+              Answer <b>{game.pointsToNextPosition} questions</b> to get a new position
+            </Trans>
+          </Typography>
+        )}
+
+        {position === 1 && (
+          <Typography
+            sx={{
+              fontSize: "0.9rem",
+              "@media (max-width:600px)": {
+                fontSize: "0.7rem",
+              },
+            }}
+          >
+            <Trans>
+              You are <b>the Leader</b> of {playersCount} players.
+            </Trans>
+          </Typography>
+        )}
       </Stack>
 
       {showMyPosition ? (
