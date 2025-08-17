@@ -63,7 +63,6 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
             sx={{
               width: "100%",
               alignItems: "center",
-              position: "sticky",
               backgroundColor: "rgba(255, 255, 255, 0.9)",
               backdropFilter: "blur(10px)",
               zIndex: 2,
@@ -135,7 +134,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                 }}
               >
                 <Button
-                  variant="outlined"
+                  variant="text"
                   href={`${getUrlStart(lang)}scenarios`}
                   sx={{
                     ...buttonStyle,
@@ -312,7 +311,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     </Stack>
                     <Stack
                       sx={{
-                        flexDirection: "row",
+                        flexDirection: "column",
                         gap: "5px 20px",
                         flexWrap: "wrap",
                         alignItems: "center",
@@ -322,6 +321,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                         variant="outlined"
                         sx={{
                           ...buttonStyle,
+                          minWidth: "300px",
                         }}
                         href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}`}
                       >
@@ -334,10 +334,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                         }}
                       >
                         <Typography variant="caption">
-                          {i18n._(`The first 3 days are free`)}
-                        </Typography>
-                        <Typography variant="caption">
-                          {i18n._(`No credit card required`)}
+                          {i18n._(`The first 3 days are free`)}. {i18n._(`No credit card required`)}
                         </Typography>
                       </Stack>
                     </Stack>
@@ -391,32 +388,32 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                     )}
                   </Typography>
                   <FeatureList />
-                </Stack>
-              </Stack>
-              <Stack
-                sx={{
-                  width: "100%",
-                }}
-              >
-                <Stack
-                  sx={{
-                    gap: "10px",
-                  }}
-                >
-                  <Typography
-                    variant="h6"
-                    component={"h2"}
+                  <Stack
                     sx={{
-                      fontSize: "1.2rem",
-                      fontWeight: 600,
-                      paddingBottom: "5px",
+                      width: "100%",
                     }}
                   >
-                    {i18n._(`Available languages:`)}
-                  </Typography>
-                  <Typography variant="body2" component={"p"}>
-                    {supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}
-                  </Typography>
+                    <Stack
+                      sx={{
+                        gap: "0px",
+                      }}
+                    >
+                      <Typography
+                        variant="h6"
+                        component={"h2"}
+                        sx={{
+                          fontSize: "1.2rem",
+                          fontWeight: 600,
+                          paddingBottom: "5px",
+                        }}
+                      >
+                        {i18n._(`Available languages:`)}
+                      </Typography>
+                      <Typography variant="body2" component={"p"}>
+                        {supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}
+                      </Typography>
+                    </Stack>
+                  </Stack>
                 </Stack>
               </Stack>
             </Stack>

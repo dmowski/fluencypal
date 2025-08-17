@@ -51,7 +51,7 @@ export function HeaderComponentStatic({
       return;
     }
 
-    const urlsForNormalHeader = [getUrlStart(lang) + "blog"];
+    const urlsForNormalHeader = [getUrlStart(lang) + "blog", getUrlStart(lang) + "scenarios"];
 
     const urlPath = location.pathname;
     const isStaticHeader = !urlsForNormalHeader.find((url) => urlPath.startsWith(url));
