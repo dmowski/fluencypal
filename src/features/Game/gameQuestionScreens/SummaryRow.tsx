@@ -22,7 +22,7 @@ export const SummaryRow = () => {
       <Typography variant="body2" align="right">
         {game.pointsToNextPosition !== null && (
           <Trans>
-            Points to reach next position ({nextUserUsername}): <b>{pointsToNextPosition}</b>
+            Next position ({nextUserUsername}): <b>{pointsToNextPosition}</b>
           </Trans>
         )}
       </Typography>

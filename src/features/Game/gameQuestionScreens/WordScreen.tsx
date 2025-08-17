@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useLingui } from "@lingui/react";
-import { Button, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight } from "lucide-react";
+import { Button, CircularProgress, Stack, Typography } from "@mui/material";
+import { Check, ChevronRight, X } from "lucide-react";
 import { SummaryRow } from "./SummaryRow";
 
 export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
@@ -100,18 +100,6 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
             maxWidth: "600px",
           }}
         >
-          {isSubmitting && (
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-                width: "100%",
-              }}
-            >
-              {i18n._(`Loading...`)}
-            </Typography>
-          )}
-
           <Stack
             sx={{
               flexDirection: "row",
@@ -131,7 +119,13 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
                 <Stack key={index} sx={{}}>
                   <Button
                     variant={selectedAnswer === answer ? "contained" : "outlined"}
-                    startIcon={isCorrectOption ? <Check /> : undefined}
+                    startIcon={
+                      isCorrectOption ? (
+                        <Check />
+                      ) : isSubmitting && selectedAnswer === answer ? (
+                        <CircularProgress size={"14px"} />
+                      ) : null
+                    }
                     color={isCorrectOption ? "success" : isInCorrectOption ? "error" : "primary"}
                     onClick={() => {
                       if (isCorrect !== null) {
@@ -157,24 +151,11 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
                 width: "100%",
               }}
             >
-              <Stack
-                sx={{
-                  width: "100%",
-                  paddingBottom: "30px",
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: isCorrect ? "#4ADE80" : "#F87171",
-                  }}
-                >
-                  {isCorrect ? i18n._("Correct!") : i18n._("Incorrect!")}
-                </Typography>
-              </Stack>
               <Button
                 variant="contained"
                 size="large"
+                color={isCorrect ? "success" : "error"}
+                startIcon={isCorrect ? <Check /> : <X />}
                 endIcon={<ChevronRight />}
                 onClick={() => {
                   setIsCorrect(null);
@@ -184,7 +165,7 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
                   width: "100%",
                 }}
               >
-                Next
+                {i18n._("Next")}
               </Button>
               <SummaryRow />
             </Stack>

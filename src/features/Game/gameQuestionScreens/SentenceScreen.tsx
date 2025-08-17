@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight, Delete, ShieldAlert } from "lucide-react";
+import { Check, ChevronRight, Delete, ShieldAlert, X } from "lucide-react";
 import { SummaryRow } from "./SummaryRow";
 
 export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
@@ -229,25 +229,12 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                 width: "100%",
               }}
             >
-              <Stack
-                sx={{
-                  width: "100%",
-                  paddingBottom: "30px",
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: isCorrect ? "#4ADE80" : "#F87171",
-                  }}
-                >
-                  {isCorrect ? i18n._("Correct!") : i18n._("Incorrect!")}
-                </Typography>
-              </Stack>
               <Button
                 variant="contained"
                 size="large"
                 endIcon={<ChevronRight />}
+                color={isCorrect ? "success" : "error"}
+                startIcon={isCorrect ? <Check /> : <X />}
                 onClick={() => {
                   setIsCorrect(null);
                   onNext();
@@ -256,7 +243,7 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                   width: "100%",
                 }}
               >
-                Next
+                {i18n._("Next")}
               </Button>
               <SummaryRow />
             </Stack>

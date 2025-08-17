@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight, Languages, Mic, Trash } from "lucide-react";
+import { Check, ChevronRight, Languages, Mic, Trash, X } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { SummaryRow } from "./SummaryRow";
@@ -362,24 +362,11 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                 width: "100%",
               }}
             >
-              <Stack
-                sx={{
-                  width: "100%",
-                  paddingBottom: "10px",
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: isCorrect ? "#4ADE80" : "#F87171",
-                  }}
-                >
-                  {isCorrect ? i18n._("Correct!") : i18n._("Incorrect!")}
-                </Typography>
-              </Stack>
               <Button
                 variant="contained"
                 size="large"
+                color={isCorrect ? "success" : "error"}
+                startIcon={isCorrect ? <Check /> : <X />}
                 endIcon={<ChevronRight />}
                 onClick={() => {
                   setIsCorrect(null);

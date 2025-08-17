@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
-import { useGame } from "../useGame";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
-import { Check, ChevronRight, Icon, Languages, Mic, Trash } from "lucide-react";
+import { Check, ChevronRight, Languages, Mic, Trash, X } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
@@ -293,14 +292,6 @@ export const DescribeImageScreen = ({
                   paddingBottom: "30px",
                 }}
               >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: isCorrect ? "#4ADE80" : "#F87171",
-                  }}
-                >
-                  {isCorrect ? i18n._("Correct!") : i18n._("Incorrect!")}
-                </Typography>
                 {answerCorrectedMessage && (
                   <Stack
                     sx={{
@@ -368,6 +359,8 @@ export const DescribeImageScreen = ({
               <Button
                 variant="contained"
                 size="large"
+                color={isCorrect ? "success" : "error"}
+                startIcon={isCorrect ? <Check /> : <X />}
                 endIcon={<ChevronRight />}
                 onClick={() => {
                   setIsCorrect(null);
@@ -377,7 +370,7 @@ export const DescribeImageScreen = ({
                   width: "100%",
                 }}
               >
-                Next
+                {i18n._("Next")}
               </Button>
               <SummaryRow />
             </Stack>
