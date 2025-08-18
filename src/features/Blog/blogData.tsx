@@ -18,9 +18,7 @@ export const getBlogs = (lang: SupportedLanguage): BlogInfo => {
     {
       id: "no-projections-available",
       title: i18n._("No Projections Available"),
-      subTitle: i18n._(
-        "A fiction story about technology, alternate lives, and learning to embrace the ordinary."
-      ),
+      subTitle: i18n._("A silence at the end of the algorithm"),
       keywords: [
         i18n._("speculative fiction"),
         i18n._("short story"),
