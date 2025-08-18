@@ -16,6 +16,133 @@ export const getBlogs = (lang: SupportedLanguage): BlogInfo => {
   const i18n = getI18nInstance(lang);
   const blogs: BlogPost[] = [
     {
+      id: "what-if-software-predicted-my-future",
+      title: i18n._("What If Software Predicted My Future?"),
+      subTitle: i18n._(
+        "A fiction story about technology, alternate lives, and learning to embrace the ordinary."
+      ),
+      keywords: [
+        i18n._("speculative fiction"),
+        i18n._("short story"),
+        i18n._("AI and identity"),
+        i18n._("parallel lives"),
+        i18n._("existential fiction"),
+        i18n._("modern literature"),
+        i18n._("Warsaw"),
+        i18n._("alternate timelines"),
+      ],
+      imagePreviewUrl: "/blog/dog/dog-park.webp", //"/blog/whippet-prediction.png",
+      publishedAt: Date.now(),
+      category: {
+        categoryTitle: i18n._("Literature & Fiction"),
+        categoryId: "literature_fiction",
+      },
+      relatedRolePlays: ["small-talk-with-a-stranger", "alias-game"],
+      content:
+        i18n._(`I am not a talented software developer. I'm not the fastest one — and definitely not the best. But when the company where I work struggles with something important and urgent, they ask for my help and pay me a lot. No clue why.
+
+The company makes chatbots for entertainment. You know those ads like *“Let’s talk with Albert Einstein”* or *“Let’s chat with Marilyn Monroe.”* Which I find quite stupid — but it works. Well, it had been working, to be precise. The company got stuck. No ideas for new features, no interesting characters. Whoever wanted to try it already had. Revenue slowly declined. The team’s writer, who was hired to craft such personas, couldn’t keep up, and quality was slipping.
+
+Our task was to improve it — with no real idea how. That’s all you need to know about my employer’s management and processes, or lack of processes, vision, plan, responsibilities. But okay.
+
+![img.png](/blog/dog/monroe.webp)
+
+The writer's idea was to create a famous person who had tried another life — so the user could talk, for example, with Donald Trump, who in the middle of his life decided to switch careers and become a painter. Maybe our writer got inspired by Donald’s recently announced drawing, allegedly sent to Epstein. But anyway. The writer gave me a one-page draft about Donald's life after his career pivot.
+
+Which was not enough to create a good AI persona. I needed at least 20 pages of text to fill our QDrant vector store, so the AI RAG system could freely pick well-embedded documents for a proper fine-tuning process. *Sorry for the engineering terms.*
+
+After one day of waiting, I decided to use AI to generate what our writer might have written. It was an act of procrastination. I just wanted to fill the waiting time. Surprisingly, the results were almost identical to what the writer gave me. That, to be honest, astonished me.
+
+It might have been a coincidence, so I wanted to re-check it with real data — with my personal data. Later, I realized that was the wrong decision.
+
+The company was in a rush. *“We needed this persona done yesterday,”* said the founder. I was skeptical that this persona would rejuvenate the company. I asked for two extra days to finish my work. Most of the time I planned to allocate to my experiments.
+
+After collecting all my personal data — including Telegram chats, voice call transcripts, Google Photos, Google Drive documents, everything somehow related to me — I stared at the progress bar with a kind smile. My dog barked in the background, demanding attention. I ignored him, eyes fixed on the screen.
+
+The kind smile disappeared when I got the extrapolation result.
+
+> “You, Alex, will be fired tomorrow,” the screen read.
+
+That had to be wrong. I repeat, I’m not a talented developer and not the best one — but when the company struggles with something, they ask for my help. I did a lot for them. I’m important to them. It was ridiculous.
+
+Ridiculous or not, that day I finished my task and sent the results immediately after. The rest of the day I spent in my apartment in a beautiful neighborhood somewhere in Warsaw — with a slightly greenish face.
+
+*"This is ridiculous,"* I kept hearing in my head.
+
+*“Listen, Alex, I like you…”* — that’s how my manager started the conversation the next day.
+
+He listed what I had done for them, what the company was doing, that they had to reduce spending, that they really appreciated my work — and many other bullshit epithets.
+
+*“So we've decided to pause your working relationship for a while and focus on company survival.”* — that’s how he finished.
+
+That was not funny at all. It took me three days to accept it. At least I had good savings — and that creepy piece of software.
+
+After three days of staring at the ceiling, I came back to the software. What else could I do? I was unemployed, emotionally bruised, and curious.
+
+I opened the extrapolation interface and typed:
+
+> “What if we didn’t get a dog one year ago?”
+
+Result: In 99.9% of variations — we still got a dog. Just later.  
+Sometimes it’s a whippet. Sometimes it’s a mutt. In one rare case, we got a cat. The cat ran away in six months.
+
+Next test:  
+
+> “What if I won the lottery?”
+
+Great news — I did. Once or twice in different timelines. And then I lost it all on real estate in Italy or shady crypto startups. No happiness was detected.
+
+And then I grew bolder.
+
+I asked the real question — the one I had always wanted to know the answer to:
+
+> “What if I won the programming olympiads 15 years ago?”
+
+Result: life shift. Massive.
+
+That version of me entered a top university in another country. He made friends — actual friends, with opinions and a taste in architecture. He co-founded a machine learning startup before I even learned how to hold eye contact in interviews.
+
+And weirdest of all — he seemed… happy?
+
+I scrolled through his life logs. He drank smoothies in Palo Alto. He surfed. He pitched to venture capitalists and got rejected. Then he pitched again. Eventually, he failed gracefully.
+
+![img.png](/blog/dog/polo.webp)
+
+He dated people I couldn't even imagine existing. He read poetry. He even had a therapist.
+
+But the strangest part? Near the end of his timeline, he left a private note in the system:
+
+> “Sometimes I wonder what my life would’ve been like if I stayed in Poland. Maybe in a small apartment in Warsaw. Maybe walking a dog. I think I’d like that too.”
+
+That’s when I closed the laptop.
+
+I didn’t touch the software for a week. I went on long walks. Listened to music without skipping every 30 seconds.
+
+All the timelines, all the versions of me, all the simulations — they echoed in my head like reruns of a show I’d already watched.
+
+I realized that the drastic changes made me unrecognizable. They weren’t me — just projections. Branches growing in every direction, but from a root I barely remembered planting.
+
+I opened the app one last time.  
+Final prompt:  
+
+> “What if I don’t ask anymore?”
+
+The system froze. Then replied:  
+
+> “No projections available.”
+
+Good.
+
+I shut the laptop down and archived the logs.
+
+The dog stared at me. He usually does that when it’s time for a walk — at 3 p.m.
+
+And for the first time in weeks, I didn’t want to be anywhere else.
+
+![img.png](/blog/dog/dog-park2.webp)
+`),
+    },
+    {
       id: "phrases-for-an-interview-in-english",
       title: i18n._(`Phrases for an interview in English`),
       subTitle: i18n._(
