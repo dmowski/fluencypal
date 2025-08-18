@@ -157,58 +157,6 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
           >
             <Stack
               sx={{
-                alignItems: "center",
-                gap: "20px",
-                width: "100%",
-              }}
-            >
-              <Stack
-                sx={{
-                  width: "100%",
-                  backgroundColor: "rgba(125, 123, 74, 0.4)",
-                  alignItems: "center",
-                  borderRadius: "20px",
-                  padding: "40px 15px 0 15px",
-                  boxSizing: "border-box",
-                  maxWidth: maxLandingWidth,
-                  overflow: "hidden",
-                  maxHeight: "340px",
-                  position: "relative",
-                }}
-              >
-                <img
-                  src={item.imagePreviewUrl}
-                  alt={`Illustration for ${item.title}`}
-                  style={{
-                    width: "max-content",
-                    maxWidth: "100%",
-                    height: "500px",
-                    borderRadius: "20px 20px 0 0",
-                    boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.3)",
-                    position: "relative",
-                  }}
-                />
-                <Stack
-                  sx={{
-                    backgroundImage: `url(${item.imagePreviewUrl})`,
-                    filter: "blur(50px)",
-                    backgroundSize: "cover",
-                    opacity: 0.5,
-                    position: "absolute",
-                    bottom: 0,
-                    left: "-50%",
-                    top: "-50%",
-
-                    width: "200%",
-                    height: "200%",
-                    zIndex: -1,
-                  }}
-                ></Stack>
-              </Stack>
-            </Stack>
-
-            <Stack
-              sx={{
                 color: "#222",
                 maxWidth: maxLandingWidth,
                 width: "100%",
@@ -244,7 +192,34 @@ export const BlogOnePage = ({ id, lang }: BlogOnePageProps) => {
                     },
                   }}
                 >
-                  <Markdown variant="small">{`${item.content}`}</Markdown>
+                  <Stack
+                    sx={{
+                      maxHeight: "400px",
+                      overflow: "hidden",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: "20px",
+                      boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.15)",
+                      "@media (max-width: 800px)": {
+                        borderRadius: 0,
+                        boxShadow: "none",
+                      },
+                    }}
+                  >
+                    <img
+                      src={item.imagePreviewUrl}
+                      className="blog-image"
+                      alt={`Illustration for ${item.title}`}
+                      style={{
+                        width: "100%",
+
+                        height: "auto",
+                        position: "relative",
+                      }}
+                    />
+                  </Stack>
+
+                  <Markdown variant="blog">{`${item.content}`}</Markdown>
                   {item.contendElement && (
                     <Stack
                       sx={{

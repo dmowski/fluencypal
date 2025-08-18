@@ -4,7 +4,7 @@ import React from "react";
 
 export interface MarkdownProps {
   children: string;
-  variant?: "small" | "normal" | "conversation";
+  variant?: "small" | "normal" | "conversation" | "blog";
   onWordClick?: (word: string) => void;
 }
 
@@ -133,7 +133,17 @@ const markdownComponents: MarkdownToJSX.Overrides = {
   small: ({ children }) => <Typography>{children}</Typography>,
   em: ({ children }) => <em>{children}</em>,
   strong: ({ children }) => <strong>{children}</strong>,
-  blockquote: ({ children }) => <blockquote>{children}</blockquote>,
+  blockquote: ({ children }) => (
+    <blockquote
+      style={{
+        margin: "10px 10px 10px 0",
+        padding: "5px 10px 5px 15px",
+        borderLeft: "4px solid rgba(0, 0, 0, 0.1)",
+      }}
+    >
+      {children}
+    </blockquote>
+  ),
   pre: ({ children }) => <pre>{children}</pre>,
   code: ({ children }) => <code>{children}</code>,
   thead: ({ children }) => <thead>{children}</thead>,
@@ -156,6 +166,33 @@ const markdownComponentsSmall: MarkdownToJSX.Overrides = {
       {children}
     </Typography>
   ),
+};
+
+const markdownComponentsBlog: MarkdownToJSX.Overrides = {
+  ...markdownComponents,
+  p: ({ children }) => (
+    <Typography
+      sx={{
+        padding: "5px 0 10px 0",
+        fontSize: "1.1rem",
+      }}
+      variant="body1"
+    >
+      {children}
+    </Typography>
+  ),
+  blockquote: ({ children }) => (
+    <blockquote
+      style={{
+        margin: "10px 10px 10px 0",
+        padding: "5px 10px 5px 15px",
+        borderLeft: "4px solid rgba(0, 0, 0, 0.1)",
+      }}
+    >
+      {children}
+    </blockquote>
+  ),
+  img: (props) => <img {...props} style={{ maxWidth: "100%" }} />,
 };
 
 const markdownComponentsConversation: MarkdownToJSX.Overrides = {
@@ -286,7 +323,9 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, varia
       ? markdownComponentsSmall
       : variant === "conversation"
         ? markdownComponentsConversation
-        : markdownComponents;
+        : variant === "blog"
+          ? markdownComponentsBlog
+          : markdownComponents;
 
   return (
     <Stack
