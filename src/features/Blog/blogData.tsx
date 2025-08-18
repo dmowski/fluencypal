@@ -16,8 +16,8 @@ export const getBlogs = (lang: SupportedLanguage): BlogInfo => {
   const i18n = getI18nInstance(lang);
   const blogs: BlogPost[] = [
     {
-      id: "what-if-software-predicted-my-future",
-      title: i18n._("What If Software Predicted My Future?"),
+      id: "no-projections-available",
+      title: i18n._("No Projections Available"),
       subTitle: i18n._(
         "A fiction story about technology, alternate lives, and learning to embrace the ordinary."
       ),
