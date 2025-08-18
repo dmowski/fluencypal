@@ -8,7 +8,7 @@ import { useAuth } from "../Auth/useAuth";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { useNotifications } from "@toolpad/core/useNotifications";
 import { useLingui } from "@lingui/react";
-import { getPageLangCode } from "../Lang/lang";
+import { fullLanguageName, getPageLangCode, SupportedLanguage } from "../Lang/lang";
 
 export const useConversationsAnalysis = () => {
   const plan = usePlan();
@@ -24,7 +24,10 @@ export const useConversationsAnalysis = () => {
 
   const pageLangCode = useMemo(() => getPageLangCode(), []);
   const planNativeLanguage = plan.latestGoal?.goalQuiz?.nativeLanguageCode;
-  const nativeLanguage = pageLangCode !== learningLanguage ? pageLangCode : planNativeLanguage;
+  const nativeLanguageCode = pageLangCode !== learningLanguage ? pageLangCode : planNativeLanguage;
+  const fullNativeLanguage = nativeLanguageCode
+    ? fullLanguageName[nativeLanguageCode as SupportedLanguage] || nativeLanguageCode
+    : nativeLanguageCode;
 
   const [conversationAnalysis, setConversationAnalysis] = useState<string>("");
   const analyzeConversation = async () => {
@@ -53,18 +56,18 @@ Example: I liked the way you described your situation related to ***
 
 #### Areas to improve:
 It's better to use *** instead of ***, because ***
-    
-    `;
+
+`;
 
     const systemMessage = `You are a language teacher/analyzer.
 You are analyzing the conversation between the user and AI.
 The user is learning ${settings.fullLanguageName}.
+Use "${fullNativeLanguage}" language for your analysis.
 The user has the following goal: ${planDescription}.
 The user is using the following lesson: ${goalElementDescription}.
     
-Answer to the user in the following format (Use ${nativeLanguage} language for the answer):
-${expectedStructure}
-    `;
+Answer to the user in the following format :
+${expectedStructure}`;
 
     try {
       const aiResults = await textAi.generate({
