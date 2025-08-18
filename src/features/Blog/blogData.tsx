@@ -29,13 +29,13 @@ export const getBlogs = (lang: SupportedLanguage): BlogInfo => {
         i18n._("Warsaw"),
         i18n._("alternate timelines"),
       ],
-      imagePreviewUrl: "/blog/dog/dog-park.webp", //"/blog/whippet-prediction.png",
+      imagePreviewUrl: "/blog/dog/dog-park.webp",
       publishedAt: Date.now(),
       category: {
         categoryTitle: i18n._("Literature & Fiction"),
         categoryId: "literature_fiction",
       },
-      relatedRolePlays: ["small-talk-with-a-stranger", "alias-game"],
+      relatedRolePlays: [],
       content:
         i18n._(`I am not a talented software developer. I'm not the fastest one — and definitely not the best. But when the company where I work struggles with something important and urgent, they ask for my help and pay me a lot. No clue why.
 
