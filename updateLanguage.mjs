@@ -12,6 +12,7 @@ if (!OPENAI_KEY) {
 }
 
 const openAi = new OpenAI({ apiKey: OPENAI_KEY });
+const TRANSLATE_MODEL = "gpt-4o";
 
 const localesFolder = "./src/locales";
 const languages = [
@@ -55,7 +56,7 @@ const translateBlock = async (blockText, lang) => {
       { role: "system", content: prompt },
       { role: "user", content: blockText },
     ],
-    model: "gpt-4",
+    model: TRANSLATE_MODEL,
   });
 
   let result = chatCompletion.choices[0].message.content;
