@@ -12,8 +12,6 @@ import { PlanCard } from "../Plan/PlanCard";
 
 import { cardColors, modeCardProps } from "../Plan/data";
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { useLangClientLabels } from "../Lang/getLabelsClient";
-import { useSettings } from "../Settings/useSettings";
 import { useMemo, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { ConversationCard } from "./ConversationCard";
@@ -27,12 +25,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const words = useWords();
   const rules = useRules();
   const { i18n } = useLingui();
-  const settings = useSettings();
   const userInfo = useAiUserInfo();
   const plan = usePlan();
   const history = useChatHistory();
   const conversationsCount = history.conversations.length;
-  const langLabels = useLangClientLabels();
 
   const isReadyToFirstStart =
     !history.loading &&
