@@ -8,6 +8,7 @@ import { AdminStatsResponse, UserStat } from "@/app/api/loadStats/types";
 import dayjs from "dayjs";
 import { getFirebaseLink } from "../Firebase/getFirebaseLink";
 import { useGame } from "../Game/useGame";
+import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
 
 const UserCard = ({ userStat }: { userStat: UserStat }) => {
   const game = useGame();
@@ -38,6 +39,13 @@ const UserCard = ({ userStat }: { userStat: UserStat }) => {
   const gameUsername = gameProfile?.username || "";
   const userStats = game.stats.find((s) => s.username === gameProfile?.username);
   const gameAvatar = game.gameAvatars[userStats?.username || "default"];
+  const nativeLanguage =
+    fullEnglishLanguageName[user.nativeLanguageCode as SupportedLanguage] ||
+    user.nativeLanguageCode ||
+    "en";
+  const languageToLearn = fullEnglishLanguageName[user.languageCode || "en"];
+
+  const learning = `${nativeLanguage} → ${languageToLearn}`;
 
   return (
     <Stack
@@ -64,7 +72,7 @@ const UserCard = ({ userStat }: { userStat: UserStat }) => {
       </Stack>
       <Stack>
         <Link href={firebaseLink} variant="h6" target="_blank" rel="noopener noreferrer">
-          {user.email}
+          {user.email} | {displayName}
         </Link>
         <Typography variant="caption">
           <b>{lastLoginAgo}</b> - login
@@ -88,7 +96,7 @@ const UserCard = ({ userStat }: { userStat: UserStat }) => {
             />
           )}
           <Typography variant="caption">
-            {[countryName, currency, displayName].filter(Boolean).join(" | ")}
+            {[countryName, currency, learning].filter(Boolean).join(" | ")}
           </Typography>
         </Stack>
 
