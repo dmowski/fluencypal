@@ -67,20 +67,24 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blog, lang, height, variant 
             overflow: "hidden",
             maxHeight: "300px",
             position: "relative",
-          }}
-        >
-          <img
-            src={blog.imagePreviewUrl}
-            alt={`Illustration for ${blog.title}`}
-            style={{
+            img: {
+              height: "400px",
               width: "max-content",
               maxWidth: "100%",
-              height: "400px",
               borderRadius: "20px 20px 0 0",
               boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.3)",
               position: "relative",
-            }}
-          />
+            },
+            "@media (max-width: 600px)": {
+              padding: "0",
+              img: {
+                borderRadius: "12px 12px 0 0",
+                height: "auto",
+              },
+            },
+          }}
+        >
+          <img src={blog.imagePreviewUrl} alt={`Illustration for ${blog.title}`} style={{}} />
           <Stack
             sx={{
               backgroundImage: `url(${blog.imagePreviewUrl})`,
