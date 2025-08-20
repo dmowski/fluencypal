@@ -174,7 +174,7 @@ const markdownComponentsBlog: MarkdownToJSX.Overrides = {
     <Typography
       sx={{
         padding: "5px 0 10px 0",
-        fontSize: "1.1rem",
+        fontSize: "1.15rem",
       }}
       variant="body1"
     >
