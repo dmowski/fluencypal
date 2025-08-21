@@ -59,7 +59,7 @@ export const SubscriptionPaymentModal = () => {
       await sentPaymentTgMessage({
         message: "Event: Redirect to stripe",
         email: auth?.userInfo?.email || "unknownEmail",
-        token: token,
+        token,
       });
       if (!checkoutInfo.sessionUrl) {
         console.log("checkoutInfo", checkoutInfo);

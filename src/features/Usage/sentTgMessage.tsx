@@ -10,15 +10,6 @@ export const sentPaymentTgMessage = async ({
   email: string;
   token: string;
 }) => {
-  if (!email) {
-    await sendTelegramRequest(
-      {
-        message: "Event: Payments. Someone trying to do with money, but no email",
-      },
-      token
-    );
-  }
-
   const isDevEmail = devEmails.includes(email);
   if (isDevEmail) {
     return;

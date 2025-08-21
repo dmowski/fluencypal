@@ -3,7 +3,6 @@ import {
   Checkbox,
   Divider,
   FormControlLabel,
-  IconButton,
   Link,
   Stack,
   TextField,
@@ -16,11 +15,9 @@ import AddCardIcon from "@mui/icons-material/AddCard";
 import { useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { sendTelegramRequest } from "../Telegram/sendTextAiRequest";
-import { useSettings } from "../Settings/useSettings";
 import dayjs from "dayjs";
 import { PaymentLogType } from "@/common/usage";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
-import { ContactList } from "../Landing/Contact/ContactList";
 import { createStripeCheckout } from "./createStripeCheckout";
 import { CircleCheck } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -40,20 +37,16 @@ const paymentTypeLabelMap: Record<PaymentLogType, string> = {
   "trial-days": `Trial (${TRIAL_DAYS} days)`,
 };
 
-const isUseStripe = true;
-
 export const PaymentModal = () => {
   const usage = useUsage();
   const auth = useAuth();
   const { i18n } = useLingui();
   const currency = useCurrency();
-  const settings = useSettings();
   const devEmails = ["dmowski.alex@gmail.com"];
   const notifications = useNotifications();
   const [looseRightChecked, setLooseRightChecked] = useState(false);
   const [isTermsChecked, setIsTermsChecked] = useState(false);
   const [isMarketingChecked, setIsMarketingChecked] = useState(false);
-  const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
   const [amountToAdd, setAmountToAdd] = useState(1);
   const [isShowAmountInput, setIsShowAmountInput] = useState(false);
 
@@ -62,17 +55,7 @@ export const PaymentModal = () => {
   const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
 
   const sentTgMessage = async (message: string) => {
-    const email = auth?.userInfo?.email || "";
-    if (!email) {
-      sendTelegramRequest(
-        {
-          message: "Event: Payments. Someone trying to do with money, but no email",
-        },
-        await auth.getToken()
-      );
-    }
-
-    const isDevEmail = devEmails.includes(email);
+    const isDevEmail = devEmails.includes(auth?.userInfo?.email || "");
     if (isDevEmail) {
       return;
     }
@@ -86,29 +69,23 @@ export const PaymentModal = () => {
   };
 
   const clickOnConfirmRequest = async () => {
-    if (isUseStripe) {
-      const checkoutInfo = await createStripeCheckout(
-        {
-          userId: auth.uid,
-          amountOfHours: amountToAdd,
-          languageCode: supportedLang,
-          currency: currency.currency,
-        },
-        await auth.getToken()
-      );
-      if (!checkoutInfo.sessionUrl) {
-        console.log("checkoutInfo", checkoutInfo);
-        notifications.show("Error creating payment session", {
-          severity: "error",
-        });
-        return;
-      } else {
-        window.location.href = checkoutInfo.sessionUrl;
-      }
+    const checkoutInfo = await createStripeCheckout(
+      {
+        userId: auth.uid,
+        amountOfHours: amountToAdd,
+        languageCode: supportedLang,
+        currency: currency.currency,
+      },
+      await auth.getToken()
+    );
+    if (!checkoutInfo.sessionUrl) {
+      console.log("checkoutInfo", checkoutInfo);
+      notifications.show("Error creating payment session", {
+        severity: "error",
+      });
+      return;
     } else {
-      setIsShowConfirmPayments(true);
-      sentTgMessage(`Event: User confirmed payment: $${amountToAdd}`);
-      setIsShowAmountInput(false);
+      window.location.href = checkoutInfo.sessionUrl;
     }
   };
 
@@ -407,316 +384,208 @@ export const PaymentModal = () => {
               alignItems: "flex-start",
             }}
           >
-            {isShowConfirmPayments ? (
+            <Stack
+              sx={{
+                width: "100%",
+                gap: "30px",
+                alignItems: "flex-start",
+              }}
+            >
+              <Stack>
+                {usage.isSuccessPayment ? (
+                  <>
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        gap: "10px",
+                        color: "#2ecc71",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Typography variant="h4" component="h2">
+                        {i18n._(`Success!`)}
+                      </Typography>
+                      <CircleCheck size={"1.6rem"} />
+                    </Stack>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        opacity: 0.7,
+                      }}
+                    >
+                      {i18n._(`Your payment was successful, but updates might take a few minutes`)}
+                    </Typography>
+                  </>
+                ) : (
+                  <>
+                    <Typography variant="h4" component="h2">
+                      {i18n._(`Balance`)}
+                    </Typography>
+                  </>
+                )}
+              </Stack>
+
               <Stack
                 sx={{
-                  gap: "40px",
+                  gap: "20px",
                   width: "100%",
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                  paddingTop: "10px",
-                  justifyContent: "space-between",
+                  alignItems: "flex-start",
                 }}
               >
                 <Stack
                   sx={{
-                    gap: "30px",
-                    alignItems: "flex-start",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
                   }}
                 >
-                  <Stack
+                  <Stack>
+                    <Typography variant="h3">
+                      {convertHoursToHumanFormat(Math.max(0, usage.balanceHours))}
+                    </Typography>
+                    <Typography variant="caption">
+                      {i18n._(`Current Balance of AI usage`)}
+                    </Typography>
+                  </Stack>
+                </Stack>
+
+                <Button
+                  onClick={onShowAmountInput}
+                  startIcon={<AddCardIcon />}
+                  size="large"
+                  variant="contained"
+                >
+                  {i18n._(`Buy More`)}
+                </Button>
+              </Stack>
+
+              {!isShowAmountInput && (
+                <Stack
+                  gap={"10px"}
+                  sx={{
+                    width: "100%",
+                  }}
+                >
+                  <Typography
+                    variant="body2"
                     sx={{
-                      maxWidth: "430px",
-                      gap: "15px",
+                      color: "#c2c2c2",
                     }}
                   >
-                    <Typography variant="h3" component={"span"}>
-                      👷
-                    </Typography>
-                    <Typography>
-                      {i18n._(`Hi, my name is Alex, and I'm the creator of this app.`)}
-                      <br />
-                      {i18n._(`Thank you for using it!`)}
-                    </Typography>
-                    <Typography>
-                      {i18n._(`Currently, I haven't integrated payment services yet. 💔`)}
-                    </Typography>
-                    <Typography>
-                      {i18n._(`I've received your payment request for`)} <b>${amountToAdd}</b>.{" "}
-                      <br />
-                      {i18n._(`I'll send instructions on how to pay to your email`)} (
-                      {auth.userInfo?.email})
-                    </Typography>
-
-                    <Typography>{i18n._(`Once again, thank you for using my app!`)} 🙏</Typography>
-                  </Stack>
+                    {i18n._(`Total used:`)} <b>{convertHoursToHumanFormat(usage.usedHours)}</b>
+                  </Typography>
 
                   <Stack
                     sx={{
                       gap: "10px",
-                    }}
-                  >
-                    <Typography>
-                      {i18n._(`If you'd like to contact me directly, here are my contacts:`)}
-                    </Typography>
-                    <ContactList />
-                  </Stack>
-                </Stack>
-
-                <Stack
-                  sx={{
-                    gap: "20px",
-                  }}
-                >
-                  <Stack
-                    sx={{
-                      border: "1px solid rgba(255, 255, 255, 0.1)",
-                      backgroundColor: `rgba(255, 255, 255, 0.01)`,
-                      padding: "20px",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    <Typography variant="h3">
-                      {convertHoursToHumanFormat(usage.balanceHours)} of AI usage
-                    </Typography>
-                    <Typography variant="caption">{i18n._(`Current Balance`)}</Typography>
-                  </Stack>
-
-                  <Stack
-                    sx={{
-                      border: "1px solid rgba(255, 255, 255, 0.1)",
-                      backgroundColor: `rgba(255, 255, 255, 0.01)`,
-                      padding: "20px",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    <Typography
-                      variant="body1"
-                      component={"span"}
-                      sx={{
-                        opacity: 0.9,
-                      }}
-                    >
-                      {convertHoursToHumanFormat(usage.usedHours)}
-                    </Typography>
-                    <Typography variant="caption">{i18n._(`Total used`)}</Typography>
-                  </Stack>
-                </Stack>
-              </Stack>
-            ) : (
-              <Stack
-                sx={{
-                  width: "100%",
-                  gap: "30px",
-                  alignItems: "flex-start",
-                }}
-              >
-                <Stack>
-                  {usage.isSuccessPayment ? (
-                    <>
-                      <Stack
-                        sx={{
-                          flexDirection: "row",
-                          gap: "10px",
-                          color: "#2ecc71",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Typography variant="h4" component="h2">
-                          {i18n._(`Success!`)}
-                        </Typography>
-                        <CircleCheck size={"1.6rem"} />
-                      </Stack>
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          opacity: 0.7,
-                        }}
-                      >
-                        {i18n._(
-                          `Your payment was successful, but updates might take a few minutes`
-                        )}
-                      </Typography>
-                    </>
-                  ) : (
-                    <>
-                      <Typography variant="h4" component="h2">
-                        {i18n._(`Balance`)}
-                      </Typography>
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          opacity: 0.7,
-                        }}
-                      >
-                        {isShowConfirmPayments ? "" : i18n._(`Manage your payments and balance`)}
-                      </Typography>
-                    </>
-                  )}
-                </Stack>
-
-                <Stack
-                  sx={{
-                    gap: "20px",
-                    width: "100%",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <Stack
-                    sx={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Stack>
-                      <Typography variant="h3">
-                        {convertHoursToHumanFormat(Math.max(0, usage.balanceHours))}
-                      </Typography>
-                      <Typography variant="caption">
-                        {i18n._(`Current Balance of AI usage`)}
-                      </Typography>
-                    </Stack>
-                  </Stack>
-
-                  <Button
-                    onClick={onShowAmountInput}
-                    startIcon={<AddCardIcon />}
-                    size="large"
-                    variant="contained"
-                  >
-                    {i18n._(`Buy More`)}
-                  </Button>
-                </Stack>
-
-                {!isShowAmountInput && (
-                  <Stack
-                    gap={"10px"}
-                    sx={{
                       width: "100%",
                     }}
                   >
                     <Typography
-                      variant="body2"
                       sx={{
-                        color: "#c2c2c2",
+                        fontWeight: 500,
                       }}
                     >
-                      {i18n._(`Total used:`)} <b>{convertHoursToHumanFormat(usage.usedHours)}</b>
+                      {i18n._(`Payment history:`)}
                     </Typography>
 
-                    <Stack
-                      sx={{
-                        gap: "10px",
-                        width: "100%",
-                      }}
-                    >
+                    {!usage.paymentLogs && (
                       <Typography
+                        variant="caption"
                         sx={{
-                          fontWeight: 500,
+                          color: "#999",
                         }}
                       >
-                        {i18n._(`Payment history:`)}
+                        {i18n._(`Loading...`)}
                       </Typography>
+                    )}
 
-                      {!usage.paymentLogs && (
-                        <Typography
-                          variant="caption"
-                          sx={{
-                            color: "#999",
-                          }}
-                        >
-                          {i18n._(`Loading...`)}
-                        </Typography>
-                      )}
+                    {usage.paymentLogs && usage.paymentLogs.length === 0 && (
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: "#999",
+                        }}
+                      >
+                        {i18n._(`No payments...`)}
+                      </Typography>
+                    )}
 
-                      {usage.paymentLogs && usage.paymentLogs.length === 0 && (
-                        <Typography
-                          variant="caption"
-                          sx={{
-                            color: "#999",
-                          }}
-                        >
-                          {i18n._(`No payments...`)}
-                        </Typography>
-                      )}
+                    {usage.paymentLogs && (
+                      <Stack
+                        sx={{
+                          width: "100%",
+                          gap: "10px",
+                        }}
+                      >
+                        {usage.paymentLogs
+                          .sort((a, b) => b.createdAt - a.createdAt)
+                          .map((log) => {
+                            const humanDate = dayjs(log.createdAt).format("DD MMM YYYY");
+                            const humanTime = dayjs(log.createdAt).format("HH:mm");
+                            return (
+                              <Stack
+                                key={log.id}
+                                sx={{
+                                  padding: "10px 15px",
+                                  boxSizing: "border-box",
+                                  display: "flex",
+                                  flexDirection: "row",
+                                  width: "400px",
+                                  maxWidth: "100%",
+                                  justifyContent: "space-between",
+                                  alignItems: "center",
+                                  borderRadius: "10px",
+                                  border: `1px solid rgba(255, 255, 255, 0.3)`,
+                                  "@media (max-width: 320px)": {
+                                    flexDirection: "column",
+                                    alignItems: "flex-start",
+                                    gap: "20px",
+                                  },
+                                }}
+                              >
+                                <Stack>
+                                  <Typography variant="h6">
+                                    {log.currency.toUpperCase()} {log.amountAdded}
+                                  </Typography>
+                                  <Typography variant="body2">
+                                    {convertHoursToHumanFormat(log.amountOfHours)}
+                                  </Typography>
+                                  <Typography
+                                    variant="caption"
+                                    sx={{
+                                      opacity: 0.7,
+                                    }}
+                                  >
+                                    {paymentTypeLabelMap[log.type]}
+                                  </Typography>
+                                </Stack>
 
-                      {usage.paymentLogs && (
-                        <Stack
-                          sx={{
-                            width: "100%",
-                            gap: "10px",
-                          }}
-                        >
-                          {usage.paymentLogs
-                            .sort((a, b) => b.createdAt - a.createdAt)
-                            .map((log) => {
-                              const humanDate = dayjs(log.createdAt).format("DD MMM YYYY");
-                              const humanTime = dayjs(log.createdAt).format("HH:mm");
-                              return (
                                 <Stack
-                                  key={log.id}
                                   sx={{
-                                    padding: "10px 15px",
-                                    boxSizing: "border-box",
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    width: "400px",
-                                    maxWidth: "100%",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                    borderRadius: "10px",
-                                    border: `1px solid rgba(255, 255, 255, 0.3)`,
+                                    alignItems: "flex-end",
                                     "@media (max-width: 320px)": {
-                                      flexDirection: "column",
                                       alignItems: "flex-start",
-                                      gap: "20px",
                                     },
                                   }}
                                 >
-                                  <Stack>
-                                    <Typography variant="h6">
-                                      {log.currency.toUpperCase()} {log.amountAdded}
-                                    </Typography>
-                                    <Typography variant="body2">
-                                      {convertHoursToHumanFormat(log.amountOfHours)}
-                                    </Typography>
-                                    <Typography
-                                      variant="caption"
-                                      sx={{
-                                        opacity: 0.7,
-                                      }}
-                                    >
-                                      {paymentTypeLabelMap[log.type]}
-                                    </Typography>
-                                  </Stack>
-
-                                  <Stack
-                                    sx={{
-                                      alignItems: "flex-end",
-                                      "@media (max-width: 320px)": {
-                                        alignItems: "flex-start",
-                                      },
-                                    }}
-                                  >
-                                    <Typography variant="caption">{humanTime}</Typography>
-                                    <Typography variant="body2">{humanDate}</Typography>
-                                    {log.receiptUrl && (
-                                      <Link href={log.receiptUrl} target="_blank">
-                                        <Typography variant="body2">Receipt</Typography>
-                                      </Link>
-                                    )}
-                                  </Stack>
+                                  <Typography variant="caption">{humanTime}</Typography>
+                                  <Typography variant="body2">{humanDate}</Typography>
+                                  {log.receiptUrl && (
+                                    <Link href={log.receiptUrl} target="_blank">
+                                      <Typography variant="body2">Receipt</Typography>
+                                    </Link>
+                                  )}
                                 </Stack>
-                              );
-                            })}
-                        </Stack>
-                      )}
-                    </Stack>
+                              </Stack>
+                            );
+                          })}
+                      </Stack>
+                    )}
                   </Stack>
-                )}
-              </Stack>
-            )}
+                </Stack>
+              )}
+            </Stack>
           </Stack>
         </>
       )}

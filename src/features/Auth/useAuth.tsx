@@ -1,6 +1,6 @@
 "use client";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { Context, JSX, ReactNode, createContext, useContext, useEffect, useMemo } from "react";
+import { Context, JSX, ReactNode, createContext, useContext, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/init";
 import * as Sentry from "@sentry/nextjs";
@@ -11,17 +11,20 @@ interface SignInResult {
   error: string;
 }
 
+interface UserInfo {
+  displayName: string | null;
+  email: string | null;
+  photoURL: string | null;
+}
+
 export interface AuthContext {
   loading: boolean;
   uid: string;
-  userInfo: {
-    displayName: string | null;
-    email: string | null;
-    photoURL: string | null;
-  } | null;
+  userInfo: UserInfo | null;
   isAuthorized: boolean;
   logout: () => Promise<void>;
-  signInWithGoogle: () => Promise<SignInResult | void>;
+  signInWithGoogle: () => Promise<SignInResult>;
+  signInWithTelegramMiniApp: () => Promise<SignInResult>;
   getToken: () => Promise<string>;
 }
 
@@ -29,20 +32,21 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
   loading: true,
   uid: "",
   isAuthorized: false,
-  userInfo: {
-    email: "",
-    photoURL: "",
-    displayName: "",
-  },
+  userInfo: null,
   logout: async () => void 0,
-  signInWithGoogle: async () => ({ isDone: false, error: "" }),
+  signInWithGoogle: async () => {
+    throw new Error("signInWithGoogle not implemented");
+  },
+  signInWithTelegramMiniApp: async () => {
+    throw new Error("signInWithTelegramMiniApp not implemented");
+  },
   getToken: async () => "",
 });
 
 function useProvideAuth(): AuthContext {
-  const [user, loading, errorAuth] = useAuthState(auth);
+  const [userInfo, loading, errorAuth] = useAuthState(auth);
 
-  const signInWithGoogle = async (): Promise<SignInResult | void> => {
+  const signInWithGoogle = async (): Promise<SignInResult> => {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
@@ -60,46 +64,42 @@ function useProvideAuth(): AuthContext {
     }
   };
 
-  const isAuthorized = !!user?.uid && !errorAuth;
+  const signInWithTelegramMiniApp = async (): Promise<SignInResult> => {
+    throw new Error("signInWithTelegramMiniApp not implemented");
+  };
 
-  const userInfo = useMemo(
-    () => ({
-      email: user?.email || "",
-      photoURL: user?.photoURL || "",
-      displayName: user?.displayName || "User",
-      uid: user?.uid || "",
-      phoneNumber: user?.phoneNumber || "",
-      providerId: user?.providerId || "",
-    }),
-    [user]
-  );
+  const isAuthorized = !!userInfo?.uid && !errorAuth;
 
   useEffect(() => {
-    if (!user) {
+    if (!userInfo) {
       return;
     }
 
     Sentry.setUser({
-      id: user.uid,
-      email: user?.email || "",
+      id: userInfo.uid,
+      email: userInfo?.email || "",
     });
-  }, [user]);
+  }, [userInfo]);
 
   const logout = async (): Promise<void> => {
     await auth.signOut();
   };
 
   const getToken = async () => {
-    const token = await user?.getIdToken();
+    const token = await userInfo?.getIdToken();
     return token || "";
   };
 
   return {
+    isAuthorized,
+    loading,
+
     signInWithGoogle,
-    isAuthorized: isAuthorized,
-    userInfo,
-    uid: user?.uid || "",
-    loading: loading,
+    signInWithTelegramMiniApp,
+
+    userInfo: userInfo || null,
+    uid: userInfo?.uid || "",
+
     logout,
     getToken,
   };
