@@ -4,8 +4,12 @@ import { initLingui } from "@/initLingui";
 import { allMessages } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { generateMetadataInfo } from "@/libs/metadata";
-import { QuizPage } from "@/features/Goal/QuizPage";
+import { TgAppPage } from "@/features/TgApp/TgAppPage";
 import { PracticeProvider } from "@/app/practiceProvider";
+
+export async function generateStaticParams() {
+  return supportedLanguages.map((lang: string) => ({ lang }));
+}
 
 interface PageProps {
   params: Promise<{ lang: string }>;
@@ -13,17 +17,14 @@ interface PageProps {
     learn?: string;
   }>;
 }
-export async function generateStaticParams() {
-  return [];
-}
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const searchParam = await props.searchParams;
   const toLearn = searchParam.learn || "";
   const languageToLearn = supportedLanguages.find((l) => l === toLearn) || "en";
   return generateMetadataInfo({
-    lang: "en",
-    currentPath: "quiz",
+    lang: (await props.params).lang,
+    currentPath: "tg-app",
     languageToLearn,
   });
 }
@@ -44,7 +45,7 @@ export default async function Page(props: PageProps) {
       initialMessages={allMessages[supportedLang]!}
     >
       <PracticeProvider>
-        <QuizPage lang={supportedLang} defaultLangToLearn={languageToLearn} />
+        <TgAppPage lang={supportedLang} defaultLangToLearn={languageToLearn} />
       </PracticeProvider>
     </LinguiClientProvider>
   );

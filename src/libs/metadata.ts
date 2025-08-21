@@ -76,6 +76,16 @@ export const generateMetadataInfo = ({
     keywords = [];
   }
 
+  if (currentPath === "tg-app") {
+    const languageLearningMap = getLangLearnPlanLabels(supportedLang);
+    const languageToLearnPlan = languageLearningMap[languageToLearn || "en"];
+    title = languageToLearnPlan + " | " + " Telegram Mini App " + APP_NAME;
+    description = i18n._(
+      `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`
+    );
+    keywords = [];
+  }
+
   if (currentPath === "practice") {
     title = i18n._(`Practice`) + " | " + APP_NAME;
     description = i18n._(
