@@ -125,6 +125,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
     });
   }, []);
 
+  console.log("auth.loading", auth.loading);
   useEffect(() => {
     if (isInitializing.current || auth.isAuthorized || auth.loading) {
       console.log("Skip initialization");
