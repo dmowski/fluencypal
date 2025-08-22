@@ -1074,6 +1074,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               },
             }}
           >
+            {showTerms && <TermsComponent lang={lang} />}
             <Button
               variant="contained"
               size="large"
@@ -1086,7 +1087,6 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
             >
               {i18n._("Create a plan")}
             </Button>
-            {showTerms && <TermsComponent lang={lang} />}
           </Stack>
         </Stack>
       ),
