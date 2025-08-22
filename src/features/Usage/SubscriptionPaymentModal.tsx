@@ -25,6 +25,7 @@ import { TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
 import { TgGoldStar } from "../Icon/TgStar";
 
 const isTelegramApp = isTMA();
+const allowCrypto = false;
 
 const WalletButton = () => {
   const wallet = useTonWallet();
@@ -264,7 +265,7 @@ export const SubscriptionPaymentModal = () => {
                   {`${TELEGRAM_MONTHLY_PRICE_START} Stars`} <br />
                 </Typography>
 
-                {currency.currency !== "USD" && (
+                {currency.currency !== "USD" && allowCrypto && (
                   <Typography variant="caption">{PRICE_PER_MONTH_USD} USDT</Typography>
                 )}
               </Stack>
@@ -293,17 +294,21 @@ export const SubscriptionPaymentModal = () => {
                 >
                   {i18n._(`Pay with Stars`)}
                 </Button>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.7,
-                    paddingTop: "15px",
-                  }}
-                >
-                  or crypto
-                </Typography>
+                {allowCrypto && (
+                  <>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        opacity: 0.7,
+                        paddingTop: "15px",
+                      }}
+                    >
+                      or crypto
+                    </Typography>
 
-                <WalletButton />
+                    <WalletButton />
+                  </>
+                )}
               </Stack>
             </Stack>
           </>
