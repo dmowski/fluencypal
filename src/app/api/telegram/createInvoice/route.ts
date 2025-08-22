@@ -6,7 +6,7 @@ import { validateAuthToken } from "../../config/firebase";
 import { TELEGRAM_MONTHLY_PRICE_START } from "@/features/Telegram/starPrices";
 
 const BOT_TOKEN = envConfig.telegramBotKey;
-const isTest = true;
+const isTest = false;
 const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}${isTest ? "/test" : ""}`;
 
 function makeOrderPayload(uid: string, monthCount: number) {

@@ -2,7 +2,7 @@ import { envConfig } from "../../config/envConfig";
 
 export const runtime = "nodejs";
 const BOT_TOKEN = envConfig.telegramBotKey;
-const isTest = true;
+const isTest = false;
 const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}${isTest ? "/test" : ""}`;
 
 // Respond helper
@@ -28,6 +28,7 @@ export async function POST(req: Request) {
 
   // 2) Fulfill on successful payment
   const msg = update.message;
+  console.log("TG webhook message:", msg);
   if (msg?.successful_payment) {
     const sp = msg.successful_payment;
     console.log("SP", sp);
