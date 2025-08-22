@@ -6,4 +6,5 @@ const testTelegramBotKey = process.env.TELEGRAM_BOT_TOKEN_TEST || "";
 export const envConfig = {
   isTelegramTestMode: isTelegramBotTest,
   telegramBotKey: isTelegramBotTest ? testTelegramBotKey : prodTelegramBotKey,
+  telegramWebhookSecret: process.env.TELEGRAM_BOT_WEBHOOK_SECRET || "",
 };

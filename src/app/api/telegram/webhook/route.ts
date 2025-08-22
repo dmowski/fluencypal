@@ -16,13 +16,17 @@ async function call(method: string, payload: any) {
 }
 
 export async function POST(req: Request) {
+  const secretFromHeader = req.headers.get("x-telegram-bot-api-secret-token");
+  if (secretFromHeader !== envConfig.telegramWebhookSecret) {
+    return new Response("forbidden", { status: 403 });
+  }
+
   const update = (await req.json()) as any;
 
   // 1) Approve pre-checkout
   if (update.pre_checkout_query) {
     const q = update.pre_checkout_query;
     console.log("Approve pre-checkout:", q);
-    // Optional: validate q.invoice_payload, user eligibility, stock, etc.
 
     await call("answerPreCheckoutQuery", { pre_checkout_query_id: q.id, ok: true });
     return new Response("ok");
@@ -40,16 +44,18 @@ export async function POST(req: Request) {
 
     const monthsCount = startAdded / TELEGRAM_MONTHLY_PRICE_START;
 
-    await addPaymentLog({
-      amount: startAdded,
-      userId: firebaseUserId,
-      paymentId: sp.telegram_payment_charge_id,
-      currency,
-      amountOfHours: 0,
-      type: "subscription-full-v1",
-      receiptUrl: "",
-      monthsCount: monthsCount,
-    });
+    if (!envConfig.isTelegramTestMode) {
+      await addPaymentLog({
+        amount: startAdded,
+        userId: firebaseUserId,
+        paymentId: sp.telegram_payment_charge_id,
+        currency,
+        amountOfHours: 0,
+        type: "subscription-full-v1",
+        receiptUrl: "",
+        monthsCount: monthsCount,
+      });
+    }
 
     await call("sendMessage", {
       chat_id: msg.chat.id,
