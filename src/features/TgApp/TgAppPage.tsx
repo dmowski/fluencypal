@@ -185,6 +185,10 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
               ) : null}
 
               <Typography>auth.isAuthorized: {auth.isAuthorized ? "true" : "false"}</Typography>
+              <Typography>auth.loading: {auth.loading ? "true" : "false"}</Typography>
+              <Typography>
+                isTelegramAuthLoading: {isTelegramAuthLoading ? "true" : "false"}
+              </Typography>
 
               {error && <Typography color="error">❌ {error}</Typography>}
 
