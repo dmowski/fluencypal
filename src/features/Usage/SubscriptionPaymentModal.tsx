@@ -19,6 +19,9 @@ import { ContactList } from "../Landing/Contact/ContactList";
 import { FeatureList } from "../Landing/Price/FeatureList";
 import { isTMA, invoice } from "@telegram-apps/sdk-react";
 import { sendCreateTelegramInvoiceRequest } from "@/app/api/telegram/createInvoice/sendCreateTelegramInvoiceRequest";
+import { TELEGRAM_MONTHLY_PRICE_START } from "../Telegram/starPrices";
+import { TonConnectButton } from "@tonconnect/ui-react";
+import { TgGoldStar } from "../Icon/TgStar";
 
 const isTelegramApp = isTMA();
 
@@ -33,6 +36,7 @@ export const SubscriptionPaymentModal = () => {
   const [isTermsChecked, setIsTermsChecked] = useState(false);
   const [isMarketingChecked, setIsMarketingChecked] = useState(false);
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
+  const [isTelegramPaymentOptions, setIsTelegramPaymentOptions] = useState(false);
 
   const pathname = usePathname();
   const locale = pathname?.split("/")[1] as string;
@@ -48,9 +52,8 @@ export const SubscriptionPaymentModal = () => {
 
   const [isRedirecting, setIsRedirecting] = useState(false);
   const clickOnConfirmRequest = async () => {
-    console.log("isTelegramApp", isTelegramApp);
     if (isTelegramApp) {
-      clickOnConfirmRequestTelegramStars();
+      setIsTelegramPaymentOptions(true);
     } else {
       clickOnConfirmRequestStripe();
     }
@@ -97,6 +100,7 @@ export const SubscriptionPaymentModal = () => {
           });
           scrollTop();
           setIsShowConfirmPayments(false);
+          setIsTelegramPaymentOptions(false);
         } else {
           notifications.show(i18n._("Payment failed! Please try again."), {
             severity: "error",
@@ -104,8 +108,8 @@ export const SubscriptionPaymentModal = () => {
 
           scrollTop();
           setIsShowConfirmPayments(false);
+          setIsTelegramPaymentOptions(false);
         }
-
         setIsRedirecting(false);
       }
     } catch (error) {
@@ -210,7 +214,92 @@ export const SubscriptionPaymentModal = () => {
         }}
         ref={containerRef}
       >
-        {isShowConfirmPayments ? (
+        {isTelegramApp && isTelegramPaymentOptions ? (
+          <>
+            <Stack
+              sx={{
+                maxWidth: "700px",
+                width: "100%",
+                padding: "40px 10px",
+                boxSizing: "border-box",
+                gap: "40px",
+                alignItems: "center",
+              }}
+            >
+              <Stack
+                sx={{
+                  width: "100%",
+                }}
+              >
+                <Typography
+                  sx={{
+                    width: "100%",
+                  }}
+                  variant="h4"
+                >
+                  {i18n._(`Payment option`)}
+                </Typography>
+
+                <Typography
+                  sx={{
+                    width: "100%",
+                    opacity: 0.7,
+                  }}
+                >
+                  {i18n._(`Subscription for 1 month | Full access`)}
+                </Typography>
+
+                <Typography variant="body1">
+                  <b>{currency.convertUsdToCurrency(PRICE_PER_MONTH_USD)}</b>
+                </Typography>
+                <Typography variant="caption">
+                  {`${TELEGRAM_MONTHLY_PRICE_START} Stars`} <br />
+                </Typography>
+
+                {currency.currency !== "USD" && (
+                  <Typography variant="caption">{PRICE_PER_MONTH_USD} USDT</Typography>
+                )}
+              </Stack>
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "12px",
+                }}
+              >
+                <Button
+                  onClick={clickOnConfirmRequestTelegramStars}
+                  sx={{
+                    ...buttonStyle,
+                    padding: "10px 70px",
+                    color: "#fff",
+                    backgroundColor: "#05acff",
+                  }}
+                  fullWidth
+                  variant="contained"
+                  disabled={isRedirecting}
+                  size="large"
+                  type="submit"
+                  name="submit"
+                  startIcon={<TgGoldStar size="25px" />}
+                >
+                  {i18n._(`Pay with Stars`)}
+                </Button>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.7,
+                    paddingTop: "15px",
+                  }}
+                >
+                  or crypto
+                </Typography>
+
+                <TonConnectButton />
+              </Stack>
+            </Stack>
+          </>
+        ) : isShowConfirmPayments ? (
           <Stack
             sx={{
               maxWidth: "700px",
@@ -329,20 +418,30 @@ export const SubscriptionPaymentModal = () => {
                   </Typography>
                 </Stack>
               </Stack>
-              <Button
+              <Stack
                 sx={{
-                  ...buttonStyle,
-                  padding: "10px 70px",
-                  color: "#000",
-                  backgroundColor: "#05acff",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "5px",
                 }}
-                variant="contained"
-                disabled={isRedirecting}
-                size="large"
-                type="submit"
               >
-                {i18n._(`Pay and Subscribe`)}
-              </Button>
+                <Button
+                  sx={{
+                    ...buttonStyle,
+                    padding: "10px 70px",
+                    color: "#000",
+                    backgroundColor: "#05acff",
+                  }}
+                  fullWidth
+                  variant="contained"
+                  disabled={isRedirecting}
+                  size="large"
+                  type="submit"
+                  name="submit"
+                >
+                  {isTelegramApp ? i18n._(`Continue`) : i18n._(`Pay`)}
+                </Button>
+              </Stack>
             </Stack>
             <FeatureList />
           </Stack>

@@ -19,6 +19,7 @@ import { NotificationsProvider } from "@toolpad/core/useNotifications";
 import { PlanProvider } from "@/features/Plan/usePlan";
 import { GameProvider } from "@/features/Game/useGame";
 import { PayWallProvider } from "@/features/PayWall/usePayWall";
+import { TelegramProvider } from "./telegramProvider";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
@@ -40,7 +41,9 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                   <HomeworkProvider>
                                     <PlanProvider>
                                       <AiConversationProvider>
-                                        <PayWallProvider>{children}</PayWallProvider>
+                                        <TelegramProvider>
+                                          <PayWallProvider>{children}</PayWallProvider>
+                                        </TelegramProvider>
                                       </AiConversationProvider>
                                     </PlanProvider>
                                   </HomeworkProvider>

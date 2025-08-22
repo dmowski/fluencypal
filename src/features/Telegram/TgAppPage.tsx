@@ -24,6 +24,32 @@ import { useLingui } from "@lingui/react";
 interface TgAppPageProps {
   lang: SupportedLanguage;
 }
+
+const initTg = () => {
+  const inWindow = typeof window !== "undefined";
+  if (!inWindow) return;
+
+  mockEnv().then(() => {
+    try {
+      const launchParams = retrieveLaunchParams();
+      const { tgWebAppPlatform: platform } = launchParams;
+      const debug =
+        (launchParams.tgWebAppStartParam || "").includes("debug") ||
+        process.env.NODE_ENV === "development";
+
+      init({
+        debug,
+        eruda: debug && ["ios", "android"].includes(platform),
+        mockForMacOS: platform === "macos",
+      });
+    } catch (e) {
+      throw e;
+    }
+  });
+};
+
+initTg();
+
 export const TgAppPage = ({ lang }: TgAppPageProps) => {
   const { i18n } = useLingui();
   const [isTelegramAuthLoading, setIsTelegramAuthLoading] = useState(false);
@@ -96,24 +122,6 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
       setError(i18n._("Wrong Link"));
       return;
     }
-    mockEnv().then(() => {
-      try {
-        const launchParams = retrieveLaunchParams();
-        const { tgWebAppPlatform: platform } = launchParams;
-        const debug =
-          (launchParams.tgWebAppStartParam || "").includes("debug") ||
-          process.env.NODE_ENV === "development";
-
-        init({
-          debug,
-          eruda: debug && ["ios", "android"].includes(platform),
-          mockForMacOS: platform === "macos",
-        });
-      } catch (e) {
-        setError(i18n._("Failed to initialize Telegram Mini App"));
-        throw e;
-      }
-    });
   }, []);
 
   useEffect(() => {
