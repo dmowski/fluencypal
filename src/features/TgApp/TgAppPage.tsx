@@ -10,6 +10,7 @@ import {
   initDataState as _initDataState,
   retrieveLaunchParams,
   useSignal,
+  isTMA,
 } from "@telegram-apps/sdk-react";
 import { mockEnv } from "../Telegram/mockEnv";
 import { init } from "../Telegram/init";
@@ -92,6 +93,13 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   };
 
   useEffect(() => {
+    const isTelegram = isTMA();
+    if (!isTelegram) {
+      console.log("NOT TELEGRAM");
+      setError(i18n._("Wrong Link"));
+      return;
+    }
+
     mockEnv().then(() => {
       try {
         const launchParams = retrieveLaunchParams();
