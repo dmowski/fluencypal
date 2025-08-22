@@ -3,18 +3,51 @@ import { Stack, Typography } from "@mui/material";
 
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { maxContentWidth } from "../Landing/landingSettings";
-import { useAuth } from "../Auth/useAuth";
-import { usePlan } from "../Plan/usePlan";
-import { useEffect } from "react";
-import { getUrlStart } from "../Lang/getUrlStart";
-import { useRouter } from "next/navigation";
-import { useSettings } from "../Settings/useSettings";
+import { useEffect, useRef, useState } from "react";
+import { sendTelegramTokenRequest } from "@/app/api/telegram/token/sendTelegramTokenRequest";
+import { TelegramAuthResponse } from "@/app/api/telegram/token/types";
 
-interface QuizPageProps {
+interface TgAppPageProps {
   lang: SupportedLanguage;
   defaultLangToLearn: SupportedLanguage;
 }
-export const TgAppPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
+export const TgAppPage = ({ lang, defaultLangToLearn }: TgAppPageProps) => {
+  const [response, setResponse] = useState<TelegramAuthResponse | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const initToken = async (initData: string) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await sendTelegramTokenRequest({ initData });
+      setResponse(res);
+      if (res.error) {
+        setError(`${res.error.code}: ${res.error.message}`);
+      }
+    } catch (err: any) {
+      setError(err?.message || "Unknown error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const isInitializing = useRef(false);
+
+  useEffect(() => {
+    const isWindow = typeof window !== "undefined";
+    if (!isWindow || isInitializing.current) return;
+    const tg = (window as any).Telegram?.WebApp;
+    const initData = tg?.initData; // raw querystring provided by Telegram
+    console.log("initData", initData, tg);
+    if (tg && initData) {
+      isInitializing.current = true;
+      initToken(initData);
+    } else {
+      setError("Not running inside Telegram WebApp");
+    }
+  }, []);
+
   return (
     <Stack sx={{}}>
       <div
@@ -55,6 +88,12 @@ export const TgAppPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
               }}
             >
               <Typography>Telegram App</Typography>
+              {loading && <p>Authorizing with Telegram...</p>}
+              {error && <p style={{ color: "red" }}>❌ {error}</p>}
+
+              <pre style={{ textAlign: "left", fontSize: "0.8rem" }}>
+                {response ? JSON.stringify(response, null, 2) : "No response yet"}
+              </pre>
             </Stack>
           </Stack>
         </Stack>
