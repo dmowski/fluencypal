@@ -13,10 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:376
+#: src/features/Usage/SubscriptionPaymentModal.tsx:249
 #. js-lingui-explicit-id
-msgid "You don't have an active subscription."
-msgstr "Anda tidak mempunyai langganan yang aktif."
+msgid "Payment option"
+msgstr "Pilihan pembayaran"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:295
+#. js-lingui-explicit-id
+msgid "Pay with Stars"
+msgstr "Bayar dengan Bintang"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:455
+#. js-lingui-explicit-id
+msgid "Pay"
+msgstr "Bayar"
 
 #: src/features/Header/HeaderStatic.tsx:12
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -369,45 +379,46 @@ msgstr "Rakan bercakap bahasa Inggeris"
 msgid "AI English Speaking Practice"
 msgstr "AI Latihan Berbicara Bahasa Inggeris"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:75
-#: src/features/Usage/SubscriptionPaymentModal.tsx:147
+#: src/features/Usage/SubscriptionPaymentModal.tsx:87
+#: src/features/Usage/SubscriptionPaymentModal.tsx:160
 #. js-lingui-explicit-id
 msgid "Error creating payment session"
 msgstr "Ralat mencipta sesi pembayaran"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:82
+#: src/features/Usage/SubscriptionPaymentModal.tsx:94
 #. js-lingui-explicit-id
 msgid "Error creating payment session. Try again later."
 msgstr "Ralat semasa mencipta sesi pembayaran. Cuba lagi nanti."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:95
+#: src/features/Usage/SubscriptionPaymentModal.tsx:107
 #. js-lingui-explicit-id
 msgid "Payment successful! Thank you."
 msgstr "Pembayaran berjaya! Terima kasih."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:101
+#: src/features/Usage/SubscriptionPaymentModal.tsx:114
 #. js-lingui-explicit-id
 msgid "Payment failed! Please try again."
 msgstr "Pembayaran gagal! Sila cuba lagi."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:114
-#: src/features/Usage/SubscriptionPaymentModal.tsx:158
+#: src/features/Usage/SubscriptionPaymentModal.tsx:127
+#: src/features/Usage/SubscriptionPaymentModal.tsx:171
 #. js-lingui-explicit-id
 msgid "Error during payment process"
 msgstr "Ralat semasa proses pembayaran"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:235
-#. js-lingui-explicit-id
-msgid "Confirm payment"
-msgstr "Sahkan pembayaran"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:244
+#: src/features/Usage/SubscriptionPaymentModal.tsx:258
+#: src/features/Usage/SubscriptionPaymentModal.tsx:346
 #. js-lingui-explicit-id
 msgid "Subscription for 1 month | Full access"
 msgstr "Langganan untuk 1 bulan | Akses penuh"
 
+#: src/features/Usage/SubscriptionPaymentModal.tsx:337
+#. js-lingui-explicit-id
+msgid "Confirm payment"
+msgstr "Sahkan pembayaran"
+
 #: src/features/Usage/PaymentModal.tsx:285
-#: src/features/Usage/SubscriptionPaymentModal.tsx:273
+#: src/features/Usage/SubscriptionPaymentModal.tsx:375
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -425,19 +436,19 @@ msgstr ""
 "menamatkan kontrak."
 
 #: src/features/Usage/PaymentModal.tsx:303
-#: src/features/Usage/SubscriptionPaymentModal.tsx:291
+#: src/features/Usage/SubscriptionPaymentModal.tsx:393
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "Saya terima"
 
 #: src/features/Usage/PaymentModal.tsx:305
-#: src/features/Usage/SubscriptionPaymentModal.tsx:293
+#: src/features/Usage/SubscriptionPaymentModal.tsx:395
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "Terma dan Syarat"
 
 #: src/features/Usage/PaymentModal.tsx:307
-#: src/features/Usage/SubscriptionPaymentModal.tsx:295
+#: src/features/Usage/SubscriptionPaymentModal.tsx:397
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -449,81 +460,135 @@ msgstr ""
 "Warsaw."
 
 #: src/features/Usage/PaymentModal.tsx:324
-#: src/features/Usage/SubscriptionPaymentModal.tsx:312
+#: src/features/Usage/SubscriptionPaymentModal.tsx:414
 #. js-lingui-explicit-id
 msgid "I want to receive commercial and marketing content"
 msgstr "Saya mahu menerima kandungan komersial dan pemasaran"
 
 #: src/features/Usage/PaymentModal.tsx:255
-#: src/features/Usage/SubscriptionPaymentModal.tsx:328
+#: src/features/Usage/SubscriptionPaymentModal.tsx:430
 #. js-lingui-explicit-id
 msgid "Total:"
 msgstr "Jumlah:"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:344
+#: src/features/Dashboard/HomeworkCard.tsx:115
+#: src/features/Dashboard/SelectLanguage.tsx:296
+#: src/features/Game/PositionChangedModal.tsx:138
+#: src/features/Goal/GoalQuestions.tsx:818
+#: src/features/Goal/GoalQuestions.tsx:856
+#: src/features/Plan/PlanCard.tsx:259
+#: src/features/Usage/SubscriptionPaymentModal.tsx:455
 #. js-lingui-explicit-id
-msgid "Pay and Subscribe"
-msgstr "Bayar dan Langgani"
+msgid "Continue"
+msgstr "Teruskan"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:367
+#: src/features/Usage/SubscriptionPaymentModal.tsx:479
 #. js-lingui-explicit-id
 msgid "Your plan"
 msgstr "Rancangan anda"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:379
+#: src/features/Usage/SubscriptionPaymentModal.tsx:488
+#. js-lingui-explicit-id
+msgid "You don't have an active subscription."
+msgstr "Anda tidak mempunyai langganan yang aktif."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:491
 #. js-lingui-explicit-id
 msgid "Your trial ended until"
 msgstr "Ujian anda berakhir sehingga"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:385
+#: src/features/Usage/SubscriptionPaymentModal.tsx:497
 #. js-lingui-explicit-id
 msgid "Your subscription is active until"
 msgstr "Langganan anda aktif sehingga"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:391
+#: src/features/Usage/SubscriptionPaymentModal.tsx:503
 #. js-lingui-explicit-id
 msgid "You have"
 msgstr "Anda mempunyai"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:392
+#: src/features/Usage/SubscriptionPaymentModal.tsx:504
 #. js-lingui-explicit-id
 msgid "AI hours left in your balance."
 msgstr "Jam AI yang masih tersisa dalam baki anda."
 
 #: src/features/Landing/Price/PricePage.tsx:203
-#: src/features/Usage/SubscriptionPaymentModal.tsx:420
+#: src/features/Usage/SubscriptionPaymentModal.tsx:532
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "Akses Penuh"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:435
-#: src/features/Usage/SubscriptionPaymentModal.tsx:490
+#: src/features/Usage/SubscriptionPaymentModal.tsx:547
+#: src/features/Usage/SubscriptionPaymentModal.tsx:602
 #. js-lingui-explicit-id
 msgid "Active"
 msgstr "Aktif"
 
 #: src/features/Landing/Price/PricePage.tsx:233
-#: src/features/Usage/SubscriptionPaymentModal.tsx:471
+#: src/features/Usage/SubscriptionPaymentModal.tsx:583
 #. js-lingui-explicit-id
 msgid "month"
 msgstr "bulan"
 
 #: src/features/Landing/Price/PricePage.tsx:237
-#: src/features/Usage/SubscriptionPaymentModal.tsx:476
+#: src/features/Usage/SubscriptionPaymentModal.tsx:588
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "Belajar dengan laju penuh dengan akses sepenuhnya"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:490
+#: src/features/Usage/SubscriptionPaymentModal.tsx:602
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "Dapatkan Akses Penuh"
 
 #: src/features/Header/NeedHelpModal.tsx:76
-#: src/features/Usage/SubscriptionPaymentModal.tsx:503
+#: src/features/Usage/SubscriptionPaymentModal.tsx:615
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Perlukan bantuan?"
+
+#: src/features/Translation/useTranslate.tsx:87
+#. js-lingui-explicit-id
+msgid "Translation"
+msgstr "Terjemahan"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:308
+#: src/features/Conversation/ConversationCanvas2.tsx:1258
+#: src/features/Conversation/ConversationPage.tsx:113
+#: src/features/Conversation/ConversationPage.tsx:122
+#: src/features/Conversation/ConversationPage.tsx:142
+#: src/features/Game/GamePage.tsx:20
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:249
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:155
+#: src/features/Header/PaymentHistoryModal.tsx:45
+#: src/features/RolePlay/RolePlayBoard.tsx:649
+#: src/features/Telegram/TgAppPage.tsx:184
+#: src/features/Translation/useTranslate.tsx:103
+#: src/features/Usage/PaymentModal.tsx:499
+#. js-lingui-explicit-id
+msgid "Loading..."
+msgstr "Memuatkan..."
+
+#: src/features/Translation/useTranslate.tsx:103
+#. js-lingui-explicit-id
+msgid "No text to translate"
+msgstr "Tiada teks untuk diterjemahkan"
+
+#: src/features/Translation/useTranslate.tsx:116
+#. js-lingui-explicit-id
+msgid "No translation available"
+msgstr "Tiada terjemahan tersedia"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:58
+#: src/features/Conversation/ConversationCanvas2.tsx:341
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:215
+#: src/features/Translation/useTranslate.tsx:119
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "Tutup"
 
 #: src/features/Usage/UsageStatsCards.tsx:86
 #. js-lingui-explicit-id
@@ -623,70 +688,6 @@ msgstr "Jumlah"
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Buka sejarah"
-
-#: src/features/Translation/useTranslate.tsx:87
-#. js-lingui-explicit-id
-msgid "Translation"
-msgstr "Terjemahan"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:308
-#: src/features/Conversation/ConversationCanvas2.tsx:1258
-#: src/features/Conversation/ConversationPage.tsx:113
-#: src/features/Conversation/ConversationPage.tsx:122
-#: src/features/Conversation/ConversationPage.tsx:142
-#: src/features/Game/GamePage.tsx:20
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:249
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:155
-#: src/features/Header/PaymentHistoryModal.tsx:45
-#: src/features/RolePlay/RolePlayBoard.tsx:649
-#: src/features/Telegram/TgAppPage.tsx:176
-#: src/features/Translation/useTranslate.tsx:103
-#: src/features/Usage/PaymentModal.tsx:499
-#. js-lingui-explicit-id
-msgid "Loading..."
-msgstr "Memuatkan..."
-
-#: src/features/Translation/useTranslate.tsx:103
-#. js-lingui-explicit-id
-msgid "No text to translate"
-msgstr "Tiada teks untuk diterjemahkan"
-
-#: src/features/Translation/useTranslate.tsx:116
-#. js-lingui-explicit-id
-msgid "No translation available"
-msgstr "Tiada terjemahan tersedia"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:58
-#: src/features/Conversation/ConversationCanvas2.tsx:341
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:215
-#: src/features/Translation/useTranslate.tsx:119
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "Tutup"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1396
-#: src/features/Usage/NoBalanceBlock.tsx:134
-#. js-lingui-explicit-id
-msgid "Low balance"
-msgstr "Baki rendah"
-
-#: src/features/Usage/NoBalanceBlock.tsx:145
-#. js-lingui-explicit-id
-msgid "You've made amazing progress. Let’s keep going."
-msgstr "Anda telah membuat kemajuan yang menakjubkan. Mari teruskan."
-
-#: src/features/Usage/NoBalanceBlock.tsx:171
-#. js-lingui-explicit-id
-msgid "Buy a subscription"
-msgstr "Beli langganan"
-
-#: src/features/Usage/NoBalanceBlock.tsx:183
-#. js-lingui-explicit-id
-msgid "Play the Game"
-msgstr "Main Permainan"
 
 #: src/features/Usage/PaymentModal.tsx:124
 #. js-lingui-explicit-id
@@ -836,42 +837,58 @@ msgstr "Sejarah pembayaran:"
 msgid "No payments..."
 msgstr "Tiada pembayaran..."
 
-#: src/features/Telegram/TgAppPage.tsx:83
+#: src/features/Conversation/ConversationCanvas2.tsx:1396
+#: src/features/Usage/NoBalanceBlock.tsx:134
+#. js-lingui-explicit-id
+msgid "Low balance"
+msgstr "Baki rendah"
+
+#: src/features/Usage/NoBalanceBlock.tsx:145
+#. js-lingui-explicit-id
+msgid "You've made amazing progress. Let’s keep going."
+msgstr "Anda telah membuat kemajuan yang menakjubkan. Mari teruskan."
+
+#: src/features/Usage/NoBalanceBlock.tsx:171
+#. js-lingui-explicit-id
+msgid "Buy a subscription"
+msgstr "Beli langganan"
+
+#: src/features/Usage/NoBalanceBlock.tsx:183
+#. js-lingui-explicit-id
+msgid "Play the Game"
+msgstr "Main Permainan"
+
+#: src/features/Telegram/TgAppPage.tsx:109
 #. js-lingui-explicit-id
 msgid "Unknown error during sign-in"
 msgstr "Ralat tidak diketahui semasa log masuk"
 
-#: src/features/Telegram/TgAppPage.tsx:87
+#: src/features/Telegram/TgAppPage.tsx:113
 #. js-lingui-explicit-id
 msgid "Unknown error"
 msgstr "Ralat tidak diketahui"
 
-#: src/features/Telegram/TgAppPage.tsx:96
+#: src/features/Telegram/TgAppPage.tsx:122
 #. js-lingui-explicit-id
 msgid "Wrong Link"
 msgstr "Pautan Yang Salah"
 
-#: src/features/Telegram/TgAppPage.tsx:113
-#. js-lingui-explicit-id
-msgid "Failed to initialize Telegram Mini App"
-msgstr "Gagal untuk memulakan Telegram Mini App"
-
-#: src/features/Telegram/TgAppPage.tsx:128
+#: src/features/Telegram/TgAppPage.tsx:136
 #. js-lingui-explicit-id
 msgid "Not running inside Telegram App"
 msgstr "Tidak menjalankan di dalam Aplikasi Telegram"
 
-#: src/features/Telegram/TgAppPage.tsx:172
+#: src/features/Telegram/TgAppPage.tsx:180
 #. js-lingui-explicit-id
 msgid "Loading."
 msgstr "Memuat."
 
-#: src/features/Telegram/TgAppPage.tsx:174
+#: src/features/Telegram/TgAppPage.tsx:182
 #. js-lingui-explicit-id
 msgid "Loading.."
 msgstr "Memuatkan.."
 
-#: src/features/Telegram/TgAppPage.tsx:193
+#: src/features/Telegram/TgAppPage.tsx:201
 #. js-lingui-explicit-id
 msgid "Refresh"
 msgstr "Muat Semula"
@@ -887,128 +904,6 @@ msgstr "Muat Semula"
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Mula"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
-#. js-lingui-explicit-id
-msgid ""
-"Boost your English vocabulary and fluency by creatively describing and "
-"guessing words in\n"
-"        this interactive AI-powered Alias game."
-msgstr ""
-"Tingkatkan kosa kata dan kefasihan Bahasa Inggeris anda dengan "
-"mendeskripsikan dan menebak kata-kata secara kreatif dalam\n"
-"        permainan Alias yang dikuasai oleh AI interaktif ini."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
-#. js-lingui-explicit-id
-msgid "Benefits of Playing Alias Game"
-msgstr "Kelebihan Bermain Permainan Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
-#. js-lingui-explicit-id
-msgid "Enhance your vocabulary by describing words in unique ways."
-msgstr ""
-"Tingkatkan kosakata anda dengan mendeskripsikan kata-kata dengan cara yang "
-"unik."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
-#. js-lingui-explicit-id
-msgid "Improve listening skills as you interpret descriptions."
-msgstr "Tingkatkan kemahiran mendengar anda ketika anda mentafsirkan keterangan."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
-#. js-lingui-explicit-id
-msgid "Practice rapid thinking and fluent speaking under playful pressure."
-msgstr ""
-"Amalkan berfikir pantas dan berbicara dengan fasih di bawah tekanan yang "
-"menyeronokkan."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
-#. js-lingui-explicit-id
-msgid "Receive instant, tailored feedback from your AI partner."
-msgstr "Terima maklum balas segera yang disesuaikan dari rakan AI anda."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
-#. js-lingui-explicit-id
-msgid "How to Play"
-msgstr "Bagaimana untuk Bermain"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
-#. js-lingui-explicit-id
-msgid ""
-"You and your AI partner alternate turns describing and guessing words "
-"without directly\n"
-"          naming them. This encourages creative thinking and fluent "
-"expression, adapting to your\n"
-"          language proficiency."
-msgstr ""
-"Anda dan pasangan AI anda bergiliran menggambarkan dan menebak kata-kata "
-"tanpa secara langsung\n"
-"          menyebut mereka. Ini mendorong berfikir kreatif dan "
-"pengekspressian lancar, menyesuaikan kepada kecekapan\n"
-"          bahasa anda."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
-#. js-lingui-explicit-id
-msgid "Choose Your Language Level"
-msgstr "Pilih Tahap Bahasa Anda"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
-#. js-lingui-explicit-id
-msgid "Pick a level to start playing!"
-msgstr "Pilih tahap untuk mula bermain!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
-#. js-lingui-explicit-id
-msgid "Alias Game Levels"
-msgstr "Tahap Permainan Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
-#. js-lingui-explicit-id
-msgid "Check proposed words"
-msgstr "Periksa kata-kata yang dicadangkan"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
-#. js-lingui-explicit-id
-msgid "Based on your level, the AI will suggest words to describe."
-msgstr "Berdasarkan tahap anda, AI akan mencadangkan perkataan untuk diterangkan."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
-#. js-lingui-explicit-id
-msgid "Alias Game options"
-msgstr "Pilihan Permainan Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
-#. js-lingui-explicit-id
-msgid "Record your description"
-msgstr "Rakamkan deskripsi anda"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
-#. js-lingui-explicit-id
-msgid "Describe the word you see on the screen without using the word itself!"
-msgstr ""
-"Huraikan perkataan yang anda lihat pada skrin tanpa menggunakan perkataan "
-"itu sendiri!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
-#. js-lingui-explicit-id
-msgid "Alias Game Recording"
-msgstr "Rakaman Permainan Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
-#. js-lingui-explicit-id
-msgid "Have fun!"
-msgstr "Selamat berseronok!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
-#. js-lingui-explicit-id
-msgid "Enjoy the game and see how the AI guesses your description!"
-msgstr "Nikmati permainan dan lihat bagaimana AI menebak deskripsi anda!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
-#. js-lingui-explicit-id
-msgid "Robot Thinking"
-msgstr "Robot Sedang Berfikir"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -1955,25 +1850,127 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Semua Senario"
 
-#: src/features/Plan/PlanCard.tsx:118
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
 #. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "Mula pelajaran"
+msgid ""
+"Boost your English vocabulary and fluency by creatively describing and "
+"guessing words in\n"
+"        this interactive AI-powered Alias game."
+msgstr ""
+"Tingkatkan kosa kata dan kefasihan Bahasa Inggeris anda dengan "
+"mendeskripsikan dan menebak kata-kata secara kreatif dalam\n"
+"        permainan Alias yang dikuasai oleh AI interaktif ini."
 
-#: src/features/Plan/PlanCard.tsx:127
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
 #. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "Hantar 6 mesej untuk melengkapkan"
+msgid "Benefits of Playing Alias Game"
+msgstr "Kelebihan Bermain Permainan Alias"
 
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#: src/features/Dashboard/SelectLanguage.tsx:296
-#: src/features/Game/PositionChangedModal.tsx:138
-#: src/features/Goal/GoalQuestions.tsx:818
-#: src/features/Goal/GoalQuestions.tsx:856
-#: src/features/Plan/PlanCard.tsx:259
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
 #. js-lingui-explicit-id
-msgid "Continue"
-msgstr "Teruskan"
+msgid "Enhance your vocabulary by describing words in unique ways."
+msgstr ""
+"Tingkatkan kosakata anda dengan mendeskripsikan kata-kata dengan cara yang "
+"unik."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
+#. js-lingui-explicit-id
+msgid "Improve listening skills as you interpret descriptions."
+msgstr "Tingkatkan kemahiran mendengar anda ketika anda mentafsirkan keterangan."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
+#. js-lingui-explicit-id
+msgid "Practice rapid thinking and fluent speaking under playful pressure."
+msgstr ""
+"Amalkan berfikir pantas dan berbicara dengan fasih di bawah tekanan yang "
+"menyeronokkan."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
+#. js-lingui-explicit-id
+msgid "Receive instant, tailored feedback from your AI partner."
+msgstr "Terima maklum balas segera yang disesuaikan dari rakan AI anda."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
+#. js-lingui-explicit-id
+msgid "How to Play"
+msgstr "Bagaimana untuk Bermain"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"You and your AI partner alternate turns describing and guessing words "
+"without directly\n"
+"          naming them. This encourages creative thinking and fluent "
+"expression, adapting to your\n"
+"          language proficiency."
+msgstr ""
+"Anda dan pasangan AI anda bergiliran menggambarkan dan menebak kata-kata "
+"tanpa secara langsung\n"
+"          menyebut mereka. Ini mendorong berfikir kreatif dan "
+"pengekspressian lancar, menyesuaikan kepada kecekapan\n"
+"          bahasa anda."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
+#. js-lingui-explicit-id
+msgid "Choose Your Language Level"
+msgstr "Pilih Tahap Bahasa Anda"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
+#. js-lingui-explicit-id
+msgid "Pick a level to start playing!"
+msgstr "Pilih tahap untuk mula bermain!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
+#. js-lingui-explicit-id
+msgid "Alias Game Levels"
+msgstr "Tahap Permainan Alias"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
+#. js-lingui-explicit-id
+msgid "Check proposed words"
+msgstr "Periksa kata-kata yang dicadangkan"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
+#. js-lingui-explicit-id
+msgid "Based on your level, the AI will suggest words to describe."
+msgstr "Berdasarkan tahap anda, AI akan mencadangkan perkataan untuk diterangkan."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
+#. js-lingui-explicit-id
+msgid "Alias Game options"
+msgstr "Pilihan Permainan Alias"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
+#. js-lingui-explicit-id
+msgid "Record your description"
+msgstr "Rakamkan deskripsi anda"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
+#. js-lingui-explicit-id
+msgid "Describe the word you see on the screen without using the word itself!"
+msgstr ""
+"Huraikan perkataan yang anda lihat pada skrin tanpa menggunakan perkataan "
+"itu sendiri!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
+#. js-lingui-explicit-id
+msgid "Alias Game Recording"
+msgstr "Rakaman Permainan Alias"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
+#. js-lingui-explicit-id
+msgid "Have fun!"
+msgstr "Selamat berseronok!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
+#. js-lingui-explicit-id
+msgid "Enjoy the game and see how the AI guesses your description!"
+msgstr "Nikmati permainan dan lihat bagaimana AI menebak deskripsi anda!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
+#. js-lingui-explicit-id
+msgid "Robot Thinking"
+msgstr "Robot Sedang Berfikir"
 
 #: src/features/Plan/useGoalCreation.ts:41
 #: src/features/Plan/useGoalCreation.ts:69
@@ -2008,6 +2005,16 @@ msgstr "Tunjukkan lebih banyak"
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Tunjukkan kurang"
+
+#: src/features/Plan/PlanCard.tsx:118
+#. js-lingui-explicit-id
+msgid "Start lesson"
+msgstr "Mula pelajaran"
+
+#: src/features/Plan/PlanCard.tsx:127
+#. js-lingui-explicit-id
+msgid "Send 6 messages to complete"
+msgstr "Hantar 6 mesej untuk melengkapkan"
 
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
@@ -2156,6 +2163,261 @@ msgstr "Rancangan Pembelajaran Bahasa Sweden"
 #. js-lingui-explicit-id
 msgid "Belarusian Learning Plan"
 msgstr "Pelajaran Belajar Bahasa Belarusia"
+
+#: src/features/Landing/PlanLandingBlock.tsx:20
+#. js-lingui-explicit-id
+msgid "Psychology"
+msgstr "Psikologi"
+
+#: src/features/Landing/PlanLandingBlock.tsx:21
+#. js-lingui-explicit-id
+msgid "Mental Health Vocabulary"
+msgstr "Kosa Kata Kesihatan Mental"
+
+#: src/features/Landing/PlanLandingBlock.tsx:23
+#. js-lingui-explicit-id
+msgid "Essential words for discussing mental health and psychology."
+msgstr "Perkataan penting untuk membincangkan kesihatan mental dan psikologi."
+
+#: src/features/Landing/PlanLandingBlock.tsx:29
+#. js-lingui-explicit-id
+msgid "Diagnosis"
+msgstr "Diagnosis"
+
+#: src/features/Landing/PlanLandingBlock.tsx:30
+#. js-lingui-explicit-id
+msgid "Medical Talk Simulation"
+msgstr "Simulasi Percakapan Medikal"
+
+#: src/features/Landing/PlanLandingBlock.tsx:32
+#. js-lingui-explicit-id
+msgid "Practice medical conversations through simulated scenarios."
+msgstr "Amalkan perbualan perubatan melalui skenario yang disimulasikan."
+
+#: src/features/Landing/PlanLandingBlock.tsx:38
+#. js-lingui-explicit-id
+msgid "Reflex"
+msgstr "Refleks"
+
+#: src/features/Landing/PlanLandingBlock.tsx:39
+#. js-lingui-explicit-id
+msgid "Fast Answer Practice"
+msgstr "Latihan Jawapan Pantas"
+
+#: src/features/Landing/PlanLandingBlock.tsx:41
+#. js-lingui-explicit-id
+msgid "Improve your ability to answer quickly and clearly in conversations."
+msgstr ""
+"Tingkatkan kemampuan anda untuk menjawab dengan cepat dan jelas dalam "
+"perbualan."
+
+#: src/features/Landing/LandingPage.tsx:138
+#: src/features/Landing/PlanLandingBlock.tsx:47
+#. js-lingui-explicit-id
+msgid "Speaking"
+msgstr "Bercakap"
+
+#: src/features/Landing/PlanLandingBlock.tsx:48
+#. js-lingui-explicit-id
+msgid "Public Talk Skills"
+msgstr "Kemahiran Berbicara di Umum"
+
+#: src/features/Landing/PlanLandingBlock.tsx:50
+#. js-lingui-explicit-id
+msgid "Boost your confidence in public speaking."
+msgstr "Tingkatkan keyakinan anda dalam berucap di khalayak ramai."
+
+#: src/features/Landing/PlanLandingBlock.tsx:56
+#. js-lingui-explicit-id
+msgid "TOEFL"
+msgstr "TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:57
+#. js-lingui-explicit-id
+msgid "Academic Word List"
+msgstr "Senarai Perkataan Akademik"
+
+#: src/features/Landing/PlanLandingBlock.tsx:59
+#. js-lingui-explicit-id
+msgid "Master high-frequency TOEFL vocabulary."
+msgstr "Kuasai kosa kata TOEFL berfrekuensi tinggi."
+
+#: src/features/Landing/PlanLandingBlock.tsx:65
+#. js-lingui-explicit-id
+msgid "Mock"
+msgstr "Tiruan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:66
+#. js-lingui-explicit-id
+msgid "TOEFL Speaking Tasks"
+msgstr "Tugas-tugas Bertutur TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:68
+#. js-lingui-explicit-id
+msgid "Simulate speaking tasks from the TOEFL exam."
+msgstr "Simulasikan tugas berbicara dari peperiksaan TOEFL."
+
+#: src/features/Landing/LandingPage.tsx:148
+#: src/features/Landing/PlanLandingBlock.tsx:74
+#. js-lingui-explicit-id
+msgid "Grammar"
+msgstr "Tatabahasa"
+
+#: src/features/Landing/PlanLandingBlock.tsx:75
+#. js-lingui-explicit-id
+msgid "Advanced Academic Usage"
+msgstr "Penggunaan Akademik Lanjutan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:77
+#. js-lingui-explicit-id
+msgid "Learn grammar used in academic writing and speaking."
+msgstr "Belajar tatabahasa yang digunakan dalam penulisan dan percakapan akademik."
+
+#: src/features/Landing/PlanLandingBlock.tsx:84
+#. js-lingui-explicit-id
+msgid "Wellness"
+msgstr "Kesejahteraan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:85
+#. js-lingui-explicit-id
+msgid "Mental Health Talk"
+msgstr "Percakapan tentang Kesihatan Mental"
+
+#: src/features/Landing/PlanLandingBlock.tsx:87
+#. js-lingui-explicit-id
+msgid "Explore techniques to talk about wellness and mental well-being."
+msgstr "Terokai teknik untuk bercakap tentang kesihatan dan kesejahteraan mental."
+
+#: src/features/Landing/PlanLandingBlock.tsx:93
+#. js-lingui-explicit-id
+msgid "Essays"
+msgstr "Esei"
+
+#: src/features/Landing/PlanLandingBlock.tsx:94
+#. js-lingui-explicit-id
+msgid "Formal Writing Practice"
+msgstr "Latihan Penulisan Formal"
+
+#: src/features/Landing/PlanLandingBlock.tsx:96
+#. js-lingui-explicit-id
+msgid "Develop formal writing skills for academic success."
+msgstr "Kembangkan kemahiran penulisan rasmi untuk kejayaan akademik."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:114
+#: src/features/Dashboard/PlanDashboardCards.tsx:93
+#: src/features/Dashboard/PlanDashboardCards.tsx:245
+#: src/features/Landing/PlanLandingBlock.tsx:103
+#. js-lingui-explicit-id
+msgid "Conversation"
+msgstr "Perbualan"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:96
+#: src/features/Landing/PlanLandingBlock.tsx:106
+#. js-lingui-explicit-id
+msgid "Rule"
+msgstr "Peraturan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:149
+#. js-lingui-explicit-id
+msgid "How It Works"
+msgstr "Bagaimana Ia Berfungsi"
+
+#: src/features/Landing/PlanLandingBlock.tsx:160
+#. js-lingui-explicit-id
+msgid "From Onboarding to Your Goal"
+msgstr "Dari Pendaftaran hingga Ke Matlamat Anda"
+
+#: src/features/Landing/PlanLandingBlock.tsx:233
+#. js-lingui-explicit-id
+msgid "Step 1"
+msgstr "Langkah 1"
+
+#: src/features/Landing/PlanLandingBlock.tsx:250
+#. js-lingui-explicit-id
+msgid "Smart Start"
+msgstr "Permulaan Pintar"
+
+#: src/features/Landing/PlanLandingBlock.tsx:261
+#. js-lingui-explicit-id
+msgid ""
+"Fill out a quick onboarding quiz to help FluencyPal understand your goals "
+"and preferences."
+msgstr ""
+"Isi kuiz pengenalan segera untuk membantu FluencyPal memahami matlamat dan "
+"pilihan anda."
+
+#: src/features/Landing/PlanLandingBlock.tsx:363
+#. js-lingui-explicit-id
+msgid "Step 2"
+msgstr "Langkah 2"
+
+#: src/features/Landing/PlanLandingBlock.tsx:381
+#. js-lingui-explicit-id
+msgid "Personal Plan"
+msgstr "Rancangan Peribadi"
+
+#: src/features/Landing/PlanLandingBlock.tsx:396
+#. js-lingui-explicit-id
+msgid ""
+"Based on your onboarding, FluencyPal instantly generates a custom learning "
+"plan just for you."
+msgstr ""
+"Berdasarkan proses orientasi anda, FluencyPal dengan serta-merta "
+"menghasilkan rancangan pembelajaran kustom untuk anda."
+
+#: src/features/Goal/GoalQuestions.tsx:1088
+#: src/features/Landing/PlanLandingBlock.tsx:412
+#. js-lingui-explicit-id
+msgid "Create a plan"
+msgstr "Buat sebuah rancangan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:576
+#. js-lingui-explicit-id
+msgid "Step 3"
+msgstr "Langkah 3"
+
+#: src/features/Landing/PlanLandingBlock.tsx:604
+#. js-lingui-explicit-id
+msgid ""
+"Jump into your tailored learning path and build real skills through "
+"engaging practice with AI voice chat."
+msgstr ""
+"Lompat ke dalam trek pembelajaran yang disesuaikan untuk anda dan "
+"kembangkan kemahiran sebenar melalui latihan yang menarik dengan perbualan "
+"suara AI."
+
+#: src/features/Landing/PlanLandingBlock.tsx:638
+#. js-lingui-explicit-id
+msgid "1 hour free"
+msgstr "1 jam percuma"
+
+#: src/features/Landing/PlanLandingBlock.tsx:664
+#. js-lingui-explicit-id
+msgid "Results are closer than you think"
+msgstr "Keputusan lebih dekat daripada yang anda fikirkan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:677
+#. js-lingui-explicit-id
+msgid "Start Learning"
+msgstr "Mula Belajar"
+
+#: src/features/Landing/Footer.tsx:85
+#. js-lingui-explicit-id
+msgid "Role-Play"
+msgstr "Peranan-Permainan"
+
+#: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Landing/Footer.tsx:91
+#. js-lingui-explicit-id
+msgid "Blog"
+msgstr "Blog"
+
+#: src/features/Header/HeaderStatic.tsx:13
+#: src/features/Landing/Footer.tsx:94
+#: src/features/Landing/Price/PricePage.tsx:95
+#. js-lingui-explicit-id
+msgid "Price"
+msgstr "Harga"
 
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
@@ -2315,12 +2577,6 @@ msgstr ""
 "perbendaharaan kata, dan pemantauan kemajuan—untuk mencapai kefasihan "
 "bahasa Inggeris dalam talian dengan lebih cepat."
 
-#: src/features/Landing/LandingPage.tsx:138
-#: src/features/Landing/PlanLandingBlock.tsx:47
-#. js-lingui-explicit-id
-msgid "Speaking"
-msgstr "Bercakap"
-
 #: src/features/Landing/LandingPage.tsx:139
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
@@ -2341,12 +2597,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "Mulakan Latihan Berbicara"
-
-#: src/features/Landing/LandingPage.tsx:148
-#: src/features/Landing/PlanLandingBlock.tsx:74
-#. js-lingui-explicit-id
-msgid "Grammar"
-msgstr "Tatabahasa"
 
 #: src/features/Landing/LandingPage.tsx:149
 #. js-lingui-explicit-id
@@ -2521,254 +2771,6 @@ msgstr "Mulakan Percubaan Percuma Anda"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Mulakan Perjalanan Anda ke Perbualan Lancar Sekarang"
 
-#: src/features/Landing/Footer.tsx:85
-#. js-lingui-explicit-id
-msgid "Role-Play"
-msgstr "Peranan-Permainan"
-
-#: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Landing/Footer.tsx:91
-#. js-lingui-explicit-id
-msgid "Blog"
-msgstr "Blog"
-
-#: src/features/Header/HeaderStatic.tsx:13
-#: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:95
-#. js-lingui-explicit-id
-msgid "Price"
-msgstr "Harga"
-
-#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
-#. js-lingui-explicit-id
-msgid "Try"
-msgstr "Cuba"
-
-#: src/features/Landing/PlanLandingBlock.tsx:20
-#. js-lingui-explicit-id
-msgid "Psychology"
-msgstr "Psikologi"
-
-#: src/features/Landing/PlanLandingBlock.tsx:21
-#. js-lingui-explicit-id
-msgid "Mental Health Vocabulary"
-msgstr "Kosa Kata Kesihatan Mental"
-
-#: src/features/Landing/PlanLandingBlock.tsx:23
-#. js-lingui-explicit-id
-msgid "Essential words for discussing mental health and psychology."
-msgstr "Perkataan penting untuk membincangkan kesihatan mental dan psikologi."
-
-#: src/features/Landing/PlanLandingBlock.tsx:29
-#. js-lingui-explicit-id
-msgid "Diagnosis"
-msgstr "Diagnosis"
-
-#: src/features/Landing/PlanLandingBlock.tsx:30
-#. js-lingui-explicit-id
-msgid "Medical Talk Simulation"
-msgstr "Simulasi Percakapan Medikal"
-
-#: src/features/Landing/PlanLandingBlock.tsx:32
-#. js-lingui-explicit-id
-msgid "Practice medical conversations through simulated scenarios."
-msgstr "Amalkan perbualan perubatan melalui skenario yang disimulasikan."
-
-#: src/features/Landing/PlanLandingBlock.tsx:38
-#. js-lingui-explicit-id
-msgid "Reflex"
-msgstr "Refleks"
-
-#: src/features/Landing/PlanLandingBlock.tsx:39
-#. js-lingui-explicit-id
-msgid "Fast Answer Practice"
-msgstr "Latihan Jawapan Pantas"
-
-#: src/features/Landing/PlanLandingBlock.tsx:41
-#. js-lingui-explicit-id
-msgid "Improve your ability to answer quickly and clearly in conversations."
-msgstr ""
-"Tingkatkan kemampuan anda untuk menjawab dengan cepat dan jelas dalam "
-"perbualan."
-
-#: src/features/Landing/PlanLandingBlock.tsx:48
-#. js-lingui-explicit-id
-msgid "Public Talk Skills"
-msgstr "Kemahiran Berbicara di Umum"
-
-#: src/features/Landing/PlanLandingBlock.tsx:50
-#. js-lingui-explicit-id
-msgid "Boost your confidence in public speaking."
-msgstr "Tingkatkan keyakinan anda dalam berucap di khalayak ramai."
-
-#: src/features/Landing/PlanLandingBlock.tsx:56
-#. js-lingui-explicit-id
-msgid "TOEFL"
-msgstr "TOEFL"
-
-#: src/features/Landing/PlanLandingBlock.tsx:57
-#. js-lingui-explicit-id
-msgid "Academic Word List"
-msgstr "Senarai Perkataan Akademik"
-
-#: src/features/Landing/PlanLandingBlock.tsx:59
-#. js-lingui-explicit-id
-msgid "Master high-frequency TOEFL vocabulary."
-msgstr "Kuasai kosa kata TOEFL berfrekuensi tinggi."
-
-#: src/features/Landing/PlanLandingBlock.tsx:65
-#. js-lingui-explicit-id
-msgid "Mock"
-msgstr "Tiruan"
-
-#: src/features/Landing/PlanLandingBlock.tsx:66
-#. js-lingui-explicit-id
-msgid "TOEFL Speaking Tasks"
-msgstr "Tugas-tugas Bertutur TOEFL"
-
-#: src/features/Landing/PlanLandingBlock.tsx:68
-#. js-lingui-explicit-id
-msgid "Simulate speaking tasks from the TOEFL exam."
-msgstr "Simulasikan tugas berbicara dari peperiksaan TOEFL."
-
-#: src/features/Landing/PlanLandingBlock.tsx:75
-#. js-lingui-explicit-id
-msgid "Advanced Academic Usage"
-msgstr "Penggunaan Akademik Lanjutan"
-
-#: src/features/Landing/PlanLandingBlock.tsx:77
-#. js-lingui-explicit-id
-msgid "Learn grammar used in academic writing and speaking."
-msgstr "Belajar tatabahasa yang digunakan dalam penulisan dan percakapan akademik."
-
-#: src/features/Landing/PlanLandingBlock.tsx:84
-#. js-lingui-explicit-id
-msgid "Wellness"
-msgstr "Kesejahteraan"
-
-#: src/features/Landing/PlanLandingBlock.tsx:85
-#. js-lingui-explicit-id
-msgid "Mental Health Talk"
-msgstr "Percakapan tentang Kesihatan Mental"
-
-#: src/features/Landing/PlanLandingBlock.tsx:87
-#. js-lingui-explicit-id
-msgid "Explore techniques to talk about wellness and mental well-being."
-msgstr "Terokai teknik untuk bercakap tentang kesihatan dan kesejahteraan mental."
-
-#: src/features/Landing/PlanLandingBlock.tsx:93
-#. js-lingui-explicit-id
-msgid "Essays"
-msgstr "Esei"
-
-#: src/features/Landing/PlanLandingBlock.tsx:94
-#. js-lingui-explicit-id
-msgid "Formal Writing Practice"
-msgstr "Latihan Penulisan Formal"
-
-#: src/features/Landing/PlanLandingBlock.tsx:96
-#. js-lingui-explicit-id
-msgid "Develop formal writing skills for academic success."
-msgstr "Kembangkan kemahiran penulisan rasmi untuk kejayaan akademik."
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:114
-#: src/features/Dashboard/PlanDashboardCards.tsx:93
-#: src/features/Dashboard/PlanDashboardCards.tsx:245
-#: src/features/Landing/PlanLandingBlock.tsx:103
-#. js-lingui-explicit-id
-msgid "Conversation"
-msgstr "Perbualan"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:96
-#: src/features/Landing/PlanLandingBlock.tsx:106
-#. js-lingui-explicit-id
-msgid "Rule"
-msgstr "Peraturan"
-
-#: src/features/Landing/PlanLandingBlock.tsx:149
-#. js-lingui-explicit-id
-msgid "How It Works"
-msgstr "Bagaimana Ia Berfungsi"
-
-#: src/features/Landing/PlanLandingBlock.tsx:160
-#. js-lingui-explicit-id
-msgid "From Onboarding to Your Goal"
-msgstr "Dari Pendaftaran hingga Ke Matlamat Anda"
-
-#: src/features/Landing/PlanLandingBlock.tsx:233
-#. js-lingui-explicit-id
-msgid "Step 1"
-msgstr "Langkah 1"
-
-#: src/features/Landing/PlanLandingBlock.tsx:250
-#. js-lingui-explicit-id
-msgid "Smart Start"
-msgstr "Permulaan Pintar"
-
-#: src/features/Landing/PlanLandingBlock.tsx:261
-#. js-lingui-explicit-id
-msgid ""
-"Fill out a quick onboarding quiz to help FluencyPal understand your goals "
-"and preferences."
-msgstr ""
-"Isi kuiz pengenalan segera untuk membantu FluencyPal memahami matlamat dan "
-"pilihan anda."
-
-#: src/features/Landing/PlanLandingBlock.tsx:363
-#. js-lingui-explicit-id
-msgid "Step 2"
-msgstr "Langkah 2"
-
-#: src/features/Landing/PlanLandingBlock.tsx:381
-#. js-lingui-explicit-id
-msgid "Personal Plan"
-msgstr "Rancangan Peribadi"
-
-#: src/features/Landing/PlanLandingBlock.tsx:396
-#. js-lingui-explicit-id
-msgid ""
-"Based on your onboarding, FluencyPal instantly generates a custom learning "
-"plan just for you."
-msgstr ""
-"Berdasarkan proses orientasi anda, FluencyPal dengan serta-merta "
-"menghasilkan rancangan pembelajaran kustom untuk anda."
-
-#: src/features/Goal/GoalQuestions.tsx:1088
-#: src/features/Landing/PlanLandingBlock.tsx:412
-#. js-lingui-explicit-id
-msgid "Create a plan"
-msgstr "Buat sebuah rancangan"
-
-#: src/features/Landing/PlanLandingBlock.tsx:576
-#. js-lingui-explicit-id
-msgid "Step 3"
-msgstr "Langkah 3"
-
-#: src/features/Landing/PlanLandingBlock.tsx:604
-#. js-lingui-explicit-id
-msgid ""
-"Jump into your tailored learning path and build real skills through "
-"engaging practice with AI voice chat."
-msgstr ""
-"Lompat ke dalam trek pembelajaran yang disesuaikan untuk anda dan "
-"kembangkan kemahiran sebenar melalui latihan yang menarik dengan perbualan "
-"suara AI."
-
-#: src/features/Landing/PlanLandingBlock.tsx:638
-#. js-lingui-explicit-id
-msgid "1 hour free"
-msgstr "1 jam percuma"
-
-#: src/features/Landing/PlanLandingBlock.tsx:664
-#. js-lingui-explicit-id
-msgid "Results are closer than you think"
-msgstr "Keputusan lebih dekat daripada yang anda fikirkan"
-
-#: src/features/Landing/PlanLandingBlock.tsx:677
-#. js-lingui-explicit-id
-msgid "Start Learning"
-msgstr "Mula Belajar"
-
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
 msgid "View all"
@@ -2836,6 +2838,11 @@ msgstr "Situasi Berkaitan"
 msgid "Ready to Become Fluent in English?"
 msgstr "Siap untuk Mahir dalam Bahasa Inggeris?"
 
+#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
+#. js-lingui-explicit-id
+msgid "Try"
+msgstr "Cuba"
+
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
 #. js-lingui-explicit-id
 msgid "Practice Real-Life Conversations With Role-Play Scenarios"
@@ -2865,76 +2872,6 @@ msgstr "Temui"
 #. js-lingui-explicit-id
 msgid "No scenarios found"
 msgstr "Tiada senario dijumpai"
-
-#: src/features/Landing/Price/PricePage.tsx:105
-#. js-lingui-explicit-id
-msgid "Start free, subscribe later"
-msgstr "Mula secara percuma, langgan kemudian"
-
-#: src/features/Landing/Price/PricePage.tsx:110
-#. js-lingui-explicit-id
-msgid "Open Dashboard"
-msgstr "Buka Dashboard"
-
-#: src/features/Landing/Price/PricePage.tsx:150
-#. js-lingui-explicit-id
-msgid "Trial"
-msgstr "Percubaan"
-
-#: src/features/Landing/Price/PricePage.tsx:151
-#. js-lingui-explicit-id
-msgid "For learners who want to try it out"
-msgstr "Untuk pelajar yang mahu mencubanya"
-
-#: src/features/Landing/Price/PricePage.tsx:180
-#. js-lingui-explicit-id
-msgid "3 days"
-msgstr "3 hari"
-
-#: src/features/Landing/Price/PricePage.tsx:184
-#. js-lingui-explicit-id
-msgid "Game mode and trial AI tutor access"
-msgstr "Modus permainan dan akses tutor AI percubaan"
-
-#: src/features/Landing/Price/PricePage.tsx:185
-#. js-lingui-explicit-id
-msgid "Includes:"
-msgstr "Termasuk:"
-
-#: src/features/Landing/Price/PricePage.tsx:189
-#. js-lingui-explicit-id
-msgid "Game Mode"
-msgstr "Mod Game"
-
-#: src/features/Landing/Price/PricePage.tsx:190
-#. js-lingui-explicit-id
-msgid "Many language games to practice"
-msgstr "Banyak permainan bahasa untuk berlatih"
-
-#: src/features/Landing/Price/PricePage.tsx:194
-#. js-lingui-explicit-id
-msgid "3 days of AI tutor access"
-msgstr "3 hari akses tutor AI"
-
-#: src/features/Landing/Price/PricePage.tsx:195
-#. js-lingui-explicit-id
-msgid "Try AI tutor for one hour to see how it works"
-msgstr "Cuba tutor AI selama satu jam untuk lihat bagaimana ia berfungsi"
-
-#: src/features/Landing/Price/PricePage.tsx:199
-#. js-lingui-explicit-id
-msgid "Start "
-msgstr "Mula"
-
-#: src/features/Landing/Price/PricePage.tsx:204
-#. js-lingui-explicit-id
-msgid "For learners who want flexibility"
-msgstr "Untuk pelajar yang mahu fleksibiliti"
-
-#: src/features/Landing/Price/PricePage.tsx:238
-#. js-lingui-explicit-id
-msgid "Everything in Free, plus:"
-msgstr "Semua dalam Percuma, ditambah:"
 
 #: src/features/Landing/Price/FeatureList.tsx:31
 #: src/features/Landing/Price/PricePage.tsx:241
@@ -3025,6 +2962,76 @@ msgid ""
 msgstr ""
 "Dengan masa, AI akan menyesuaikan diri dengan gaya pembelajaran anda dan ia "
 "akan menjadi lebih peribadi"
+
+#: src/features/Landing/Price/PricePage.tsx:105
+#. js-lingui-explicit-id
+msgid "Start free, subscribe later"
+msgstr "Mula secara percuma, langgan kemudian"
+
+#: src/features/Landing/Price/PricePage.tsx:110
+#. js-lingui-explicit-id
+msgid "Open Dashboard"
+msgstr "Buka Dashboard"
+
+#: src/features/Landing/Price/PricePage.tsx:150
+#. js-lingui-explicit-id
+msgid "Trial"
+msgstr "Percubaan"
+
+#: src/features/Landing/Price/PricePage.tsx:151
+#. js-lingui-explicit-id
+msgid "For learners who want to try it out"
+msgstr "Untuk pelajar yang mahu mencubanya"
+
+#: src/features/Landing/Price/PricePage.tsx:180
+#. js-lingui-explicit-id
+msgid "3 days"
+msgstr "3 hari"
+
+#: src/features/Landing/Price/PricePage.tsx:184
+#. js-lingui-explicit-id
+msgid "Game mode and trial AI tutor access"
+msgstr "Modus permainan dan akses tutor AI percubaan"
+
+#: src/features/Landing/Price/PricePage.tsx:185
+#. js-lingui-explicit-id
+msgid "Includes:"
+msgstr "Termasuk:"
+
+#: src/features/Landing/Price/PricePage.tsx:189
+#. js-lingui-explicit-id
+msgid "Game Mode"
+msgstr "Mod Game"
+
+#: src/features/Landing/Price/PricePage.tsx:190
+#. js-lingui-explicit-id
+msgid "Many language games to practice"
+msgstr "Banyak permainan bahasa untuk berlatih"
+
+#: src/features/Landing/Price/PricePage.tsx:194
+#. js-lingui-explicit-id
+msgid "3 days of AI tutor access"
+msgstr "3 hari akses tutor AI"
+
+#: src/features/Landing/Price/PricePage.tsx:195
+#. js-lingui-explicit-id
+msgid "Try AI tutor for one hour to see how it works"
+msgstr "Cuba tutor AI selama satu jam untuk lihat bagaimana ia berfungsi"
+
+#: src/features/Landing/Price/PricePage.tsx:199
+#. js-lingui-explicit-id
+msgid "Start "
+msgstr "Mula"
+
+#: src/features/Landing/Price/PricePage.tsx:204
+#. js-lingui-explicit-id
+msgid "For learners who want flexibility"
+msgstr "Untuk pelajar yang mahu fleksibiliti"
+
+#: src/features/Landing/Price/PricePage.tsx:238
+#. js-lingui-explicit-id
+msgid "Everything in Free, plus:"
+msgstr "Semua dalam Percuma, ditambah:"
 
 #: src/features/Landing/Price/PricePage.tsx:284
 #. js-lingui-explicit-id
@@ -3272,80 +3279,6 @@ msgstr ""
 msgid "Contacts:"
 msgstr "Contacts:"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:104
-#. js-lingui-explicit-id
-msgid ""
-"My name is Alex, I am the creator of this website. I am a software engineer "
-"and I am passionate about learning languages. I created this website to "
-"help people learn languages in a fun and interactive way. I hope you enjoy "
-"using it!"
-msgstr ""
-"Nama saya adalah Alex, saya adalah pencipta laman web ini. Saya adalah "
-"seorang jurutera perisian dan saya meminati pembelajaran bahasa. Saya "
-"mencipta laman web ini untuk membantu orang belajar bahasa dalam cara yang "
-"menyeronokkan dan interaktif. Saya berharap anda menikmati menggunakannya!"
-
-#: src/features/Landing/Contact/ContactsPage.tsx:117
-#. js-lingui-explicit-id
-msgid ""
-"Feel free to reach out to me with any questions or feedback. I'm always "
-"happy to help!"
-msgstr ""
-"Sila hubungi saya jika anda mempunyai sebarang soalan atau maklum balas. "
-"Saya sentiasa gembira untuk membantu!"
-
-#: src/features/Header/PaymentHistoryModal.tsx:21
-#. js-lingui-explicit-id
-msgid "Trial balance"
-msgstr "Baki ujian"
-
-#: src/features/Header/PaymentHistoryModal.tsx:22
-#. js-lingui-explicit-id
-msgid "Payment"
-msgstr "Pembayaran"
-
-#: src/features/Header/PaymentHistoryModal.tsx:23
-#. js-lingui-explicit-id
-msgid "Gift"
-msgstr "Hadiah"
-
-#: src/features/Header/PaymentHistoryModal.tsx:24
-#. js-lingui-explicit-id
-msgid "Subscription (1 month)"
-msgstr "Langganan (1 bulan)"
-
-#: src/features/Header/PaymentHistoryModal.tsx:25
-#. js-lingui-explicit-id
-msgid "Trial days"
-msgstr "Hari percubaan"
-
-#: src/features/Header/PaymentHistoryModal.tsx:30
-#. js-lingui-explicit-id
-msgid "Payment History"
-msgstr "Sejarah Pembayaran"
-
-#: src/features/Header/HeaderStatic.tsx:11
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "Peranan-Peranan"
-
-#: src/features/Header/HeaderStatic.tsx:14
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "Log Masuk"
-
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:16
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "Perlu Bantuan?"
-
-#: src/features/Header/HeaderPractice.tsx:422
-#: src/features/Header/HeaderStatic.tsx:17
-#. js-lingui-explicit-id
-msgid "Log Out"
-msgstr "Log Keluar"
-
 #: src/features/Header/NeedHelpModal.tsx:34
 #: src/features/Header/NeedHelpModal.tsx:162
 #. js-lingui-explicit-id
@@ -3421,6 +3354,28 @@ msgstr "Ya, Padam akaun"
 msgid "Delete account"
 msgstr "Padam akaun"
 
+#: src/features/Header/HeaderStatic.tsx:11
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "Peranan-Peranan"
+
+#: src/features/Header/HeaderStatic.tsx:14
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "Log Masuk"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:16
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "Perlu Bantuan?"
+
+#: src/features/Header/HeaderPractice.tsx:422
+#: src/features/Header/HeaderStatic.tsx:17
+#. js-lingui-explicit-id
+msgid "Log Out"
+msgstr "Log Keluar"
+
 #: src/features/Dashboard/FeedbackBlock.tsx:25
 #: src/features/Header/ContactMessageModal.tsx:38
 #. js-lingui-explicit-id
@@ -3450,6 +3405,36 @@ msgstr "Menghantar..."
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Hantar"
+
+#: src/features/Header/PaymentHistoryModal.tsx:21
+#. js-lingui-explicit-id
+msgid "Trial balance"
+msgstr "Baki ujian"
+
+#: src/features/Header/PaymentHistoryModal.tsx:22
+#. js-lingui-explicit-id
+msgid "Payment"
+msgstr "Pembayaran"
+
+#: src/features/Header/PaymentHistoryModal.tsx:23
+#. js-lingui-explicit-id
+msgid "Gift"
+msgstr "Hadiah"
+
+#: src/features/Header/PaymentHistoryModal.tsx:24
+#. js-lingui-explicit-id
+msgid "Subscription (1 month)"
+msgstr "Langganan (1 bulan)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Trial days"
+msgstr "Hari percubaan"
+
+#: src/features/Header/PaymentHistoryModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Payment History"
+msgstr "Sejarah Pembayaran"
 
 #: src/features/Header/HeaderPractice.tsx:207
 #. js-lingui-explicit-id
@@ -3500,6 +3485,28 @@ msgstr "Sejarah pembayaran"
 #. js-lingui-explicit-id
 msgid "Refund"
 msgstr "Pulangan"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"My name is Alex, I am the creator of this website. I am a software engineer "
+"and I am passionate about learning languages. I created this website to "
+"help people learn languages in a fun and interactive way. I hope you enjoy "
+"using it!"
+msgstr ""
+"Nama saya adalah Alex, saya adalah pencipta laman web ini. Saya adalah "
+"seorang jurutera perisian dan saya meminati pembelajaran bahasa. Saya "
+"mencipta laman web ini untuk membantu orang belajar bahasa dalam cara yang "
+"menyeronokkan dan interaktif. Saya berharap anda menikmati menggunakannya!"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:117
+#. js-lingui-explicit-id
+msgid ""
+"Feel free to reach out to me with any questions or feedback. I'm always "
+"happy to help!"
+msgstr ""
+"Sila hubungi saya jika anda mempunyai sebarang soalan atau maklum balas. "
+"Saya sentiasa gembira untuk membantu!"
 
 #: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
@@ -3917,23 +3924,6 @@ msgstr "Buka pelan"
 msgid "Nice!"
 msgstr "Bagus!"
 
-#: src/features/Game/GameOnboarding.tsx:169
-#: src/features/Game/GamePage.tsx:21
-#. js-lingui-explicit-id
-msgid "Play"
-msgstr "Main"
-
-#: src/features/Game/GamePage.tsx:87
-#. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "Penilaian:"
-
-#: src/features/Game/GameBadge.tsx:67
-#: src/features/Game/GamePage.tsx:89
-#. js-lingui-explicit-id
-msgid "Rank in the top 5 to get the app for free"
-msgstr "Terdapat dalam 5 teratas untuk mendapatkan aplikasi ini secara percuma"
-
 #: src/features/Game/GameOnboarding.tsx:47
 #. js-lingui-explicit-id
 msgid "Learn and Play"
@@ -3968,10 +3958,11 @@ msgstr "Pastikan anda sudah bersedia"
 msgid "Your Avatar:"
 msgstr "Avatar Anda:"
 
-#: src/features/Game/GameNativeLanguageSelector.tsx:39
+#: src/features/Game/GameOnboarding.tsx:169
+#: src/features/Game/GamePage.tsx:21
 #. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Bahasa Ibu Anda:"
+msgid "Play"
+msgstr "Main"
 
 #: src/features/Game/GameMyUsername.tsx:26
 #. js-lingui-explicit-id
@@ -3983,10 +3974,73 @@ msgstr "Nama pengguna mesti sekurang-kurangnya 3 aksara."
 msgid "Your Username:"
 msgstr "Nama Pengguna Anda:"
 
+#: src/features/Game/GamePage.tsx:87
+#. js-lingui-explicit-id
+msgid "Rating:"
+msgstr "Penilaian:"
+
+#: src/features/Game/GameBadge.tsx:67
+#: src/features/Game/GamePage.tsx:89
+#. js-lingui-explicit-id
+msgid "Rank in the top 5 to get the app for free"
+msgstr "Terdapat dalam 5 teratas untuk mendapatkan aplikasi ini secara percuma"
+
+#: src/features/Game/GameNativeLanguageSelector.tsx:39
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "Bahasa Ibu Anda:"
+
 #: src/features/Game/GameMyAvatar.tsx:20
 #. js-lingui-explicit-id
 msgid "Select your avatar"
 msgstr "Pilih avatar anda"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Translate the word"
+msgstr "Terjemahkan perkataan"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
+#. js-lingui-explicit-id
+msgid "Read the text"
+msgstr "Baca teks"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1046
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:236
+#. js-lingui-explicit-id
+msgid "Done"
+msgstr "Siap"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1032
+#: src/features/Conversation/ConversationCanvas2.tsx:1296
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:296
+#. js-lingui-explicit-id
+msgid "Re-record"
+msgstr "Rakam semula"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:309
+#. js-lingui-explicit-id
+msgid "Submit"
+msgstr "Hantar"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:352
+#. js-lingui-explicit-id
+msgid "Error:"
+msgstr "Ralat:"
+
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Form a sentence"
+msgstr "Bentuk satu ayat"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:183
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:207
+#. js-lingui-explicit-id
+msgid "Submit answer"
+msgstr "Hantar jawapan"
 
 #: src/features/Game/GameBadge.tsx:55
 #. js-lingui-explicit-id
@@ -3997,21 +4051,6 @@ msgstr "Main dan Belajar"
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Bincangkan topik"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:183
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:207
-#. js-lingui-explicit-id
-msgid "Submit answer"
-msgstr "Hantar jawapan"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1046
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:236
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "Siap"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
@@ -4035,38 +4074,6 @@ msgstr "Ralat:"
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "Huraikan imej"
-
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "Terjemahkan perkataan"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
-#. js-lingui-explicit-id
-msgid "Read the text"
-msgstr "Baca teks"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1032
-#: src/features/Conversation/ConversationCanvas2.tsx:1296
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:296
-#. js-lingui-explicit-id
-msgid "Re-record"
-msgstr "Rakam semula"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:309
-#. js-lingui-explicit-id
-msgid "Submit"
-msgstr "Hantar"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:352
-#. js-lingui-explicit-id
-msgid "Error:"
-msgstr "Ralat:"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "Bentuk satu ayat"
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
 #. js-lingui-explicit-id
@@ -4103,87 +4110,6 @@ msgstr "Mulakan latihan"
 #. js-lingui-explicit-id
 msgid "I know all of them"
 msgstr "Saya tahu kesemuanya"
-
-#: src/features/Dashboard/RulesToLearn.tsx:36
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "Peraturan baru untuk berlatih."
-
-#: src/features/Dashboard/TasksCard.tsx:39
-#. js-lingui-explicit-id
-msgid "Daily Tasks"
-msgstr "Tugas Harian"
-
-#: src/features/Dashboard/TasksCard.tsx:51
-#. js-lingui-explicit-id
-msgid "Rule of the day"
-msgstr "Peraturan hari ini"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:157
-#: src/features/Dashboard/TasksCard.tsx:52
-#. js-lingui-explicit-id
-msgid "Get a personal grammar rule to learn"
-msgstr "Dapatkan peraturan tatabahasa peribadi untuk dipelajari"
-
-#: src/features/Dashboard/TasksCard.tsx:56
-#: src/features/Dashboard/TasksCard.tsx:64
-#. js-lingui-explicit-id
-msgid "Complete previous tasks first"
-msgstr "Selesaikan tugas sebelumnya terlebih dahulu"
-
-#: src/features/Dashboard/TasksCard.tsx:61
-#. js-lingui-explicit-id
-msgid "New words"
-msgstr "Perkataan baru"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:178
-#: src/features/Dashboard/TasksCard.tsx:62
-#. js-lingui-explicit-id
-msgid "Practice new vocabulary with the AI"
-msgstr "Amalkan perbendaharaan kata baru dengan AI"
-
-#: src/features/Dashboard/HomeworkCard.tsx:21
-#. js-lingui-explicit-id
-msgid "Homework"
-msgstr "Tugasan Rumah"
-
-#: src/features/Dashboard/HomeworkCard.tsx:57
-#. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "Tiada kerja rumah yang diberikan lagi."
-
-#: src/features/Dashboard/HomeworkCard.tsx:66
-#. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "Mulakan perbualan untuk mendapatkannya."
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "Skip"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "Tunjukkan semua"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1282
-#: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:423
-#: src/features/Dashboard/PlanDashboardCards.tsx:553
-#. js-lingui-explicit-id
-msgid "Goal"
-msgstr "Matlamat"
-
-#: src/features/Dashboard/GoalCard.tsx:13
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Tetapkan matlamat pembelajaran anda"
-
-#: src/features/Dashboard/GoalCard.tsx:28
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "Mula | 5 min"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:70
 #. js-lingui-explicit-id
@@ -4253,6 +4179,14 @@ msgstr "Ada sesuatu yang menarik untukmu..."
 msgid "Let's start"
 msgstr "Mari kita mula"
 
+#: src/features/Conversation/ConversationCanvas2.tsx:1282
+#: src/features/Dashboard/GoalCard.tsx:12
+#: src/features/Dashboard/PlanDashboardCards.tsx:423
+#: src/features/Dashboard/PlanDashboardCards.tsx:553
+#. js-lingui-explicit-id
+msgid "Goal"
+msgstr "Matlamat"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:424
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
@@ -4294,6 +4228,69 @@ msgid "In order to generate more lessons, you need to complete at least 3 lesson
 msgstr ""
 "Untuk menghasilkan lebih banyak pelajaran, anda perlu menyelesaikan "
 "sekurang-kurangnya 3 pelajaran"
+
+#: src/features/Dashboard/TasksCard.tsx:39
+#. js-lingui-explicit-id
+msgid "Daily Tasks"
+msgstr "Tugas Harian"
+
+#: src/features/Dashboard/TasksCard.tsx:51
+#. js-lingui-explicit-id
+msgid "Rule of the day"
+msgstr "Peraturan hari ini"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:157
+#: src/features/Dashboard/TasksCard.tsx:52
+#. js-lingui-explicit-id
+msgid "Get a personal grammar rule to learn"
+msgstr "Dapatkan peraturan tatabahasa peribadi untuk dipelajari"
+
+#: src/features/Dashboard/TasksCard.tsx:56
+#: src/features/Dashboard/TasksCard.tsx:64
+#. js-lingui-explicit-id
+msgid "Complete previous tasks first"
+msgstr "Selesaikan tugas sebelumnya terlebih dahulu"
+
+#: src/features/Dashboard/TasksCard.tsx:61
+#. js-lingui-explicit-id
+msgid "New words"
+msgstr "Perkataan baru"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:178
+#: src/features/Dashboard/TasksCard.tsx:62
+#. js-lingui-explicit-id
+msgid "Practice new vocabulary with the AI"
+msgstr "Amalkan perbendaharaan kata baru dengan AI"
+
+#: src/features/Dashboard/RulesToLearn.tsx:36
+#. js-lingui-explicit-id
+msgid "New rule to practice."
+msgstr "Peraturan baru untuk berlatih."
+
+#: src/features/Dashboard/HomeworkCard.tsx:21
+#. js-lingui-explicit-id
+msgid "Homework"
+msgstr "Tugasan Rumah"
+
+#: src/features/Dashboard/HomeworkCard.tsx:57
+#. js-lingui-explicit-id
+msgid "No homework assigned yet."
+msgstr "Tiada kerja rumah yang diberikan lagi."
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "Mulakan perbualan untuk mendapatkannya."
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "Skip"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "Tunjukkan semua"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
 #. js-lingui-explicit-id
@@ -4349,21 +4346,6 @@ msgstr "Tinggalkan maklum balas anda"
 #. js-lingui-explicit-id
 msgid "Send Feedback"
 msgstr "Hantar Maklum Balas"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:55
-#. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "Kalendar Kemajuan"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:69
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "Kurang"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:90
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "Lebih"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4467,11 +4449,41 @@ msgstr "Menyediakan otak"
 msgid "Upload language skills directly to your brain"
 msgstr "Muat naik kemahiran bahasa terus ke otak anda"
 
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:55
+#. js-lingui-explicit-id
+msgid "Progress Calendar"
+msgstr "Kalendar Kemajuan"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:69
+#. js-lingui-explicit-id
+msgid "Less"
+msgstr "Kurang"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:90
+#. js-lingui-explicit-id
+msgid "More"
+msgstr "Lebih"
+
 #: src/features/Conversation/useConversationsAnalysis.ts:89
 #: src/features/Conversation/useConversationsAnalysis.ts:132
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "Ralat menganalisa perbualan"
+
+#: src/features/Conversation/ConversationPage.tsx:126
+#. js-lingui-explicit-id
+msgid "Loading Goal..."
+msgstr "Memuatkan Matlamat..."
+
+#: src/features/Conversation/ConversationPage.tsx:150
+#. js-lingui-explicit-id
+msgid "Crafting new words..."
+msgstr "Mencipta perkataan baru..."
+
+#: src/features/Conversation/ConversationPage.tsx:154
+#. js-lingui-explicit-id
+msgid "Crafting new rule..."
+msgstr "Membentuk peraturan baru..."
 
 #: src/features/Conversation/ConversationError.tsx:34
 #. js-lingui-explicit-id
@@ -4492,36 +4504,6 @@ msgstr "Pemberitahuan telah dihantar kepada pasukan dev. Maaf atas perkara itu..
 #. js-lingui-explicit-id
 msgid "Reload page"
 msgstr "Muat semula halaman"
-
-#: src/features/Conversation/ConversationPage.tsx:126
-#. js-lingui-explicit-id
-msgid "Loading Goal..."
-msgstr "Memuatkan Matlamat..."
-
-#: src/features/Conversation/ConversationPage.tsx:150
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "Mencipta perkataan baru..."
-
-#: src/features/Conversation/ConversationPage.tsx:154
-#. js-lingui-explicit-id
-msgid "Crafting new rule..."
-msgstr "Membentuk peraturan baru..."
-
-#: src/features/Conversation/AliasGamePanel.tsx:122
-#. js-lingui-explicit-id
-msgid "Describe these words:"
-msgstr "Huraikan perkataan-perkataan ini:"
-
-#: src/features/Conversation/AliasGamePanel.tsx:171
-#. js-lingui-explicit-id
-msgid "More options"
-msgstr "Lebih banyak pilihan"
-
-#: src/features/Conversation/AliasGamePanel.tsx:180
-#. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "Kata-kata yang diteka:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:316
 #. js-lingui-explicit-id
@@ -4682,21 +4664,6 @@ msgstr "Batalkan rakaman"
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Isi semula"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:26
-#. js-lingui-explicit-id
-msgid "Ready?"
-msgstr "Sedia?"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:30
-#. js-lingui-explicit-id
-msgid "Next, allow microphone access to talk with the AI."
-msgstr "Seterusnya, izinkan akses mikrofon untuk bercakap dengan AI."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:55
-#. js-lingui-explicit-id
-msgid "I am ready"
-msgstr "Saya sedia"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6253,49 +6220,55 @@ msgstr "Pembangunan Profesional"
 msgid "All Blogs"
 msgstr "Semua Blog"
 
-#: src/features/Blog/BlogCard.tsx:168
+#: src/features/Conversation/ConfirmConversationModal.tsx:26
 #. js-lingui-explicit-id
-msgid "Read more"
-msgstr "Baca lebih lanjut"
+msgid "Ready?"
+msgstr "Sedia?"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Next, allow microphone access to talk with the AI."
+msgstr "Seterusnya, izinkan akses mikrofon untuk bercakap dengan AI."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:55
+#. js-lingui-explicit-id
+msgid "I am ready"
+msgstr "Saya sedia"
+
+#: src/features/Conversation/AliasGamePanel.tsx:122
+#. js-lingui-explicit-id
+msgid "Describe these words:"
+msgstr "Huraikan perkataan-perkataan ini:"
+
+#: src/features/Conversation/AliasGamePanel.tsx:171
+#. js-lingui-explicit-id
+msgid "More options"
+msgstr "Lebih banyak pilihan"
+
+#: src/features/Conversation/AliasGamePanel.tsx:180
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "Kata-kata yang diteka:"
+
+#: src/features/Dashboard/GoalCard.tsx:13
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Tetapkan matlamat pembelajaran anda"
+
+#: src/features/Dashboard/GoalCard.tsx:28
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "Mula | 5 min"
 
 #: src/features/Blog/ListBlog.tsx:131
 #. js-lingui-explicit-id
 msgid "No blogs found"
 msgstr "Tiada blog dijumpai"
 
-#: src/features/Blog/BlogOnePage.tsx:141
+#: src/features/Blog/BlogCard.tsx:168
 #. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "Lihat semua pos"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "Skenario peranan untuk berlatih"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "Anda boleh mencuba AI dalam tindakan sekarang"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "Cuba secara percuma"
-
-#: src/features/Blog/ListBlogIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "Baca dan Belajar dengan blog saya"
-
-#: src/features/Blog/ListBlogIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr ""
-"Dapatkan inspirasi dan pelajari tentang trend terkini dalam pembelajaran "
-"bahasa, pengajaran, dan teknologi."
+msgid "Read more"
+msgstr "Baca lebih lanjut"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
 #. js-lingui-explicit-id
@@ -6743,6 +6716,40 @@ msgstr ""
 msgid "Good preparation today means career success tomorrow."
 msgstr "Persediaan yang baik hari ini bermakna kejayaan kerjaya esok hari."
 
+#: src/features/Blog/ListBlogIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Read and Learn with my blog"
+msgstr "Baca dan Belajar dengan blog saya"
+
+#: src/features/Blog/ListBlogIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
+msgstr ""
+"Dapatkan inspirasi dan pelajari tentang trend terkini dalam pembelajaran "
+"bahasa, pengajaran, dan teknologi."
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "Lihat semua pos"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "Skenario peranan untuk berlatih"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "Anda boleh mencuba AI dalam tindakan sekarang"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "Cuba secara percuma"
+
 #: src/features/Auth/SignInForm.tsx:30
 #. js-lingui-explicit-id
 msgid "Open personal plan"
@@ -6835,6 +6842,16 @@ msgstr "Menangi permainan dan dapatkan aplikasi <0>secara percuma</0>"
 #: src/features/Game/GameBadge.tsx:98
 msgid "You are <0>the Leader</0> of {playersCount} players."
 msgstr "Anda adalah <0>Pemimpin</0> bagi {playersCount} pemain."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:344
+#. js-lingui-explicit-id
+#~ msgid "Pay and Subscribe"
+#~ msgstr "Bayar dan Langgani"
+
+#: src/features/Telegram/TgAppPage.tsx:113
+#. js-lingui-explicit-id
+#~ msgid "Failed to initialize Telegram Mini App"
+#~ msgstr "Gagal untuk memulakan Telegram Mini App"
 
 #: src/features/TgApp/TgAppPage.tsx:168
 #. js-lingui-explicit-id

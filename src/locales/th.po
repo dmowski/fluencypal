@@ -13,10 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:376
+#: src/features/Usage/SubscriptionPaymentModal.tsx:249
 #. js-lingui-explicit-id
-msgid "You don't have an active subscription."
-msgstr "คุณยังไม่มีการสมัครสมาชิกที่ใช้งานอยู่"
+msgid "Payment option"
+msgstr "ตัวเลือกการชำระเงิน"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:295
+#. js-lingui-explicit-id
+msgid "Pay with Stars"
+msgstr "จ่ายด้วยดาว"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:455
+#. js-lingui-explicit-id
+msgid "Pay"
+msgstr "ชำระเงิน"
 
 #: src/features/Header/HeaderStatic.tsx:12
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -365,45 +375,46 @@ msgstr "คู่สนทนาภาษาอังกฤษ"
 msgid "AI English Speaking Practice"
 msgstr "AI การฝึกพูดภาษาอังกฤษ"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:75
-#: src/features/Usage/SubscriptionPaymentModal.tsx:147
+#: src/features/Usage/SubscriptionPaymentModal.tsx:87
+#: src/features/Usage/SubscriptionPaymentModal.tsx:160
 #. js-lingui-explicit-id
 msgid "Error creating payment session"
 msgstr "ข้อผิดพลาดในการสร้างเซสชันการชำระเงิน"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:82
+#: src/features/Usage/SubscriptionPaymentModal.tsx:94
 #. js-lingui-explicit-id
 msgid "Error creating payment session. Try again later."
 msgstr "เกิดข้อผิดพลาดในการสร้างเซสชันการชำระเงิน กรุณาลองใหม่ภายหลัง"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:95
+#: src/features/Usage/SubscriptionPaymentModal.tsx:107
 #. js-lingui-explicit-id
 msgid "Payment successful! Thank you."
 msgstr "ชำระเงินเรียบร้อยแล้ว! ขอบคุณค่ะ/ครับ"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:101
+#: src/features/Usage/SubscriptionPaymentModal.tsx:114
 #. js-lingui-explicit-id
 msgid "Payment failed! Please try again."
 msgstr "การชำระเงินล้มเหลว! โปรดลองอีกครั้ง"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:114
-#: src/features/Usage/SubscriptionPaymentModal.tsx:158
+#: src/features/Usage/SubscriptionPaymentModal.tsx:127
+#: src/features/Usage/SubscriptionPaymentModal.tsx:171
 #. js-lingui-explicit-id
 msgid "Error during payment process"
 msgstr "ข้อผิดพลาดระหว่างกระบวนการชำระเงิน"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:235
-#. js-lingui-explicit-id
-msgid "Confirm payment"
-msgstr "ยืนยันการชำระเงิน"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:244
+#: src/features/Usage/SubscriptionPaymentModal.tsx:258
+#: src/features/Usage/SubscriptionPaymentModal.tsx:346
 #. js-lingui-explicit-id
 msgid "Subscription for 1 month | Full access"
 msgstr "การสมัครสมาชิก 1 เดือน | การเข้าถึงแบบเต็ม"
 
+#: src/features/Usage/SubscriptionPaymentModal.tsx:337
+#. js-lingui-explicit-id
+msgid "Confirm payment"
+msgstr "ยืนยันการชำระเงิน"
+
 #: src/features/Usage/PaymentModal.tsx:285
-#: src/features/Usage/SubscriptionPaymentModal.tsx:273
+#: src/features/Usage/SubscriptionPaymentModal.tsx:375
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -419,19 +430,19 @@ msgstr ""
 "                        ฉันจะสูญเสียสิทธิ์ในการยกเลิกสัญญา"
 
 #: src/features/Usage/PaymentModal.tsx:303
-#: src/features/Usage/SubscriptionPaymentModal.tsx:291
+#: src/features/Usage/SubscriptionPaymentModal.tsx:393
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "ฉันยอมรับ"
 
 #: src/features/Usage/PaymentModal.tsx:305
-#: src/features/Usage/SubscriptionPaymentModal.tsx:293
+#: src/features/Usage/SubscriptionPaymentModal.tsx:395
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "ข้อกำหนดและเงื่อนไข"
 
 #: src/features/Usage/PaymentModal.tsx:307
-#: src/features/Usage/SubscriptionPaymentModal.tsx:295
+#: src/features/Usage/SubscriptionPaymentModal.tsx:397
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -441,81 +452,135 @@ msgstr ""
 "                        StartUp\" ที่มีสำนักงานใหญ่อยู่ที่วอร์ซอ"
 
 #: src/features/Usage/PaymentModal.tsx:324
-#: src/features/Usage/SubscriptionPaymentModal.tsx:312
+#: src/features/Usage/SubscriptionPaymentModal.tsx:414
 #. js-lingui-explicit-id
 msgid "I want to receive commercial and marketing content"
 msgstr "ฉันต้องการรับเนื้อหาทางการค้าและการตลาด"
 
 #: src/features/Usage/PaymentModal.tsx:255
-#: src/features/Usage/SubscriptionPaymentModal.tsx:328
+#: src/features/Usage/SubscriptionPaymentModal.tsx:430
 #. js-lingui-explicit-id
 msgid "Total:"
 msgstr "ทั้งหมด:"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:344
+#: src/features/Dashboard/HomeworkCard.tsx:115
+#: src/features/Dashboard/SelectLanguage.tsx:296
+#: src/features/Game/PositionChangedModal.tsx:138
+#: src/features/Goal/GoalQuestions.tsx:818
+#: src/features/Goal/GoalQuestions.tsx:856
+#: src/features/Plan/PlanCard.tsx:259
+#: src/features/Usage/SubscriptionPaymentModal.tsx:455
 #. js-lingui-explicit-id
-msgid "Pay and Subscribe"
-msgstr "ชำระเงินและสมัครสมาชิก"
+msgid "Continue"
+msgstr "ต่อไป"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:367
+#: src/features/Usage/SubscriptionPaymentModal.tsx:479
 #. js-lingui-explicit-id
 msgid "Your plan"
 msgstr "แผนของคุณ"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:379
+#: src/features/Usage/SubscriptionPaymentModal.tsx:488
+#. js-lingui-explicit-id
+msgid "You don't have an active subscription."
+msgstr "คุณยังไม่มีการสมัครสมาชิกที่ใช้งานอยู่"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:491
 #. js-lingui-explicit-id
 msgid "Your trial ended until"
 msgstr "การทดลองใช้ของคุณสิ้นสุดลงจนถึง"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:385
+#: src/features/Usage/SubscriptionPaymentModal.tsx:497
 #. js-lingui-explicit-id
 msgid "Your subscription is active until"
 msgstr "การสมัครสมาชิกของคุณยังใช้งานได้จนถึง"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:391
+#: src/features/Usage/SubscriptionPaymentModal.tsx:503
 #. js-lingui-explicit-id
 msgid "You have"
 msgstr "คุณมี"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:392
+#: src/features/Usage/SubscriptionPaymentModal.tsx:504
 #. js-lingui-explicit-id
 msgid "AI hours left in your balance."
 msgstr "ชั่วโมง AI ที่เหลือในยอดคงเหลือของคุณ"
 
 #: src/features/Landing/Price/PricePage.tsx:203
-#: src/features/Usage/SubscriptionPaymentModal.tsx:420
+#: src/features/Usage/SubscriptionPaymentModal.tsx:532
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "เข้าถึงเต็มรูปแบบ"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:435
-#: src/features/Usage/SubscriptionPaymentModal.tsx:490
+#: src/features/Usage/SubscriptionPaymentModal.tsx:547
+#: src/features/Usage/SubscriptionPaymentModal.tsx:602
 #. js-lingui-explicit-id
 msgid "Active"
 msgstr "ทำงาน"
 
 #: src/features/Landing/Price/PricePage.tsx:233
-#: src/features/Usage/SubscriptionPaymentModal.tsx:471
+#: src/features/Usage/SubscriptionPaymentModal.tsx:583
 #. js-lingui-explicit-id
 msgid "month"
 msgstr "เดือน"
 
 #: src/features/Landing/Price/PricePage.tsx:237
-#: src/features/Usage/SubscriptionPaymentModal.tsx:476
+#: src/features/Usage/SubscriptionPaymentModal.tsx:588
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "เรียนรู้ด้วยความเร็วสูงสุดด้วยการเข้าถึงทั้งหมด"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:490
+#: src/features/Usage/SubscriptionPaymentModal.tsx:602
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "รับการเข้าถึงแบบเต็มรูปแบบ"
 
 #: src/features/Header/NeedHelpModal.tsx:76
-#: src/features/Usage/SubscriptionPaymentModal.tsx:503
+#: src/features/Usage/SubscriptionPaymentModal.tsx:615
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "ต้องการความช่วยเหลือ?"
+
+#: src/features/Translation/useTranslate.tsx:87
+#. js-lingui-explicit-id
+msgid "Translation"
+msgstr "การแปล"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:308
+#: src/features/Conversation/ConversationCanvas2.tsx:1258
+#: src/features/Conversation/ConversationPage.tsx:113
+#: src/features/Conversation/ConversationPage.tsx:122
+#: src/features/Conversation/ConversationPage.tsx:142
+#: src/features/Game/GamePage.tsx:20
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:249
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:155
+#: src/features/Header/PaymentHistoryModal.tsx:45
+#: src/features/RolePlay/RolePlayBoard.tsx:649
+#: src/features/Telegram/TgAppPage.tsx:184
+#: src/features/Translation/useTranslate.tsx:103
+#: src/features/Usage/PaymentModal.tsx:499
+#. js-lingui-explicit-id
+msgid "Loading..."
+msgstr "กำลังโหลด..."
+
+#: src/features/Translation/useTranslate.tsx:103
+#. js-lingui-explicit-id
+msgid "No text to translate"
+msgstr "ไม่มีข้อความที่จะแปล"
+
+#: src/features/Translation/useTranslate.tsx:116
+#. js-lingui-explicit-id
+msgid "No translation available"
+msgstr "ไม่มีการแปลที่สามารถใช้ได้"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:58
+#: src/features/Conversation/ConversationCanvas2.tsx:341
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:215
+#: src/features/Translation/useTranslate.tsx:119
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "ปิด"
 
 #: src/features/Usage/UsageStatsCards.tsx:86
 #. js-lingui-explicit-id
@@ -613,70 +678,6 @@ msgstr "ทั้งหมด"
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "เปิดประวัติ"
-
-#: src/features/Translation/useTranslate.tsx:87
-#. js-lingui-explicit-id
-msgid "Translation"
-msgstr "การแปล"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:308
-#: src/features/Conversation/ConversationCanvas2.tsx:1258
-#: src/features/Conversation/ConversationPage.tsx:113
-#: src/features/Conversation/ConversationPage.tsx:122
-#: src/features/Conversation/ConversationPage.tsx:142
-#: src/features/Game/GamePage.tsx:20
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:249
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:155
-#: src/features/Header/PaymentHistoryModal.tsx:45
-#: src/features/RolePlay/RolePlayBoard.tsx:649
-#: src/features/Telegram/TgAppPage.tsx:176
-#: src/features/Translation/useTranslate.tsx:103
-#: src/features/Usage/PaymentModal.tsx:499
-#. js-lingui-explicit-id
-msgid "Loading..."
-msgstr "กำลังโหลด..."
-
-#: src/features/Translation/useTranslate.tsx:103
-#. js-lingui-explicit-id
-msgid "No text to translate"
-msgstr "ไม่มีข้อความที่จะแปล"
-
-#: src/features/Translation/useTranslate.tsx:116
-#. js-lingui-explicit-id
-msgid "No translation available"
-msgstr "ไม่มีการแปลที่สามารถใช้ได้"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:58
-#: src/features/Conversation/ConversationCanvas2.tsx:341
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:215
-#: src/features/Translation/useTranslate.tsx:119
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "ปิด"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1396
-#: src/features/Usage/NoBalanceBlock.tsx:134
-#. js-lingui-explicit-id
-msgid "Low balance"
-msgstr "ยอดเงินต่ำ"
-
-#: src/features/Usage/NoBalanceBlock.tsx:145
-#. js-lingui-explicit-id
-msgid "You've made amazing progress. Let’s keep going."
-msgstr "คุณพัฒนาความสามารถไปได้ดีมาก โปรดทำต่อไป"
-
-#: src/features/Usage/NoBalanceBlock.tsx:171
-#. js-lingui-explicit-id
-msgid "Buy a subscription"
-msgstr "ซื้อสมาชิก"
-
-#: src/features/Usage/NoBalanceBlock.tsx:183
-#. js-lingui-explicit-id
-msgid "Play the Game"
-msgstr "เล่นเกม"
 
 #: src/features/Usage/PaymentModal.tsx:124
 #. js-lingui-explicit-id
@@ -824,42 +825,58 @@ msgstr "ประวัติการชำระเงิน:"
 msgid "No payments..."
 msgstr "ไม่มีการชำระเงิน..."
 
-#: src/features/Telegram/TgAppPage.tsx:83
+#: src/features/Conversation/ConversationCanvas2.tsx:1396
+#: src/features/Usage/NoBalanceBlock.tsx:134
+#. js-lingui-explicit-id
+msgid "Low balance"
+msgstr "ยอดเงินต่ำ"
+
+#: src/features/Usage/NoBalanceBlock.tsx:145
+#. js-lingui-explicit-id
+msgid "You've made amazing progress. Let’s keep going."
+msgstr "คุณพัฒนาความสามารถไปได้ดีมาก โปรดทำต่อไป"
+
+#: src/features/Usage/NoBalanceBlock.tsx:171
+#. js-lingui-explicit-id
+msgid "Buy a subscription"
+msgstr "ซื้อสมาชิก"
+
+#: src/features/Usage/NoBalanceBlock.tsx:183
+#. js-lingui-explicit-id
+msgid "Play the Game"
+msgstr "เล่นเกม"
+
+#: src/features/Telegram/TgAppPage.tsx:109
 #. js-lingui-explicit-id
 msgid "Unknown error during sign-in"
 msgstr "ข้อผิดพลาดที่ไม่ทราบสาเหตุระหว่างการลงชื่อเข้าใช้"
 
-#: src/features/Telegram/TgAppPage.tsx:87
+#: src/features/Telegram/TgAppPage.tsx:113
 #. js-lingui-explicit-id
 msgid "Unknown error"
 msgstr "ข้อผิดพลาดที่ไม่รู้จัก"
 
-#: src/features/Telegram/TgAppPage.tsx:96
+#: src/features/Telegram/TgAppPage.tsx:122
 #. js-lingui-explicit-id
 msgid "Wrong Link"
 msgstr "ลิงก์ผิด"
 
-#: src/features/Telegram/TgAppPage.tsx:113
-#. js-lingui-explicit-id
-msgid "Failed to initialize Telegram Mini App"
-msgstr "ล้มเหลวในการเริ่มต้นแอปขนาดเล็กของ Telegram"
-
-#: src/features/Telegram/TgAppPage.tsx:128
+#: src/features/Telegram/TgAppPage.tsx:136
 #. js-lingui-explicit-id
 msgid "Not running inside Telegram App"
 msgstr "ไม่ได้ทำงานภายในแอป Telegram"
 
-#: src/features/Telegram/TgAppPage.tsx:172
+#: src/features/Telegram/TgAppPage.tsx:180
 #. js-lingui-explicit-id
 msgid "Loading."
 msgstr "กำลังโหลด."
 
-#: src/features/Telegram/TgAppPage.tsx:174
+#: src/features/Telegram/TgAppPage.tsx:182
 #. js-lingui-explicit-id
 msgid "Loading.."
 msgstr "กำลังโหลด.."
 
-#: src/features/Telegram/TgAppPage.tsx:193
+#: src/features/Telegram/TgAppPage.tsx:201
 #. js-lingui-explicit-id
 msgid "Refresh"
 msgstr "รีเฟรช"
@@ -875,122 +892,6 @@ msgstr "รีเฟรช"
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "เริ่มต้น"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
-#. js-lingui-explicit-id
-msgid ""
-"Boost your English vocabulary and fluency by creatively describing and "
-"guessing words in\n"
-"        this interactive AI-powered Alias game."
-msgstr ""
-"เพิ่มคำศัพท์ภาษาอังกฤษและความคล่องในการพูดโดยวิธีการอธิบายและทายคำอย่างสร้าง"
-"สรรค์ใน\n"
-"        เกม Alias ที่ขับเคลื่อนด้วย AI ออกแบบมาเพื่อการโต้ตอบ"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
-#. js-lingui-explicit-id
-msgid "Benefits of Playing Alias Game"
-msgstr "ประโยชน์ของการเล่นเกม Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
-#. js-lingui-explicit-id
-msgid "Enhance your vocabulary by describing words in unique ways."
-msgstr "เสริมทักษะคำศัพท์ของคุณโดยการบรรยายคำในทางที่ไม่ธรรมดา"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
-#. js-lingui-explicit-id
-msgid "Improve listening skills as you interpret descriptions."
-msgstr "ปรับปรุงทักษะการฟังขณะที่คุณตีความจากคำอธิบาย"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
-#. js-lingui-explicit-id
-msgid "Practice rapid thinking and fluent speaking under playful pressure."
-msgstr ""
-"ฝึกการคิดอย่างรวดเร็วและการพูดที่คล่องแคล่วในสิ่งแวดล้อมที่เต็มไปด้วยความสนุ"
-"กสนาน"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
-#. js-lingui-explicit-id
-msgid "Receive instant, tailored feedback from your AI partner."
-msgstr "รับข้อเสนอแนะที่ปรับเปลี่ยนมาเพื่อคุณจากพาร์ทเนอร์ AI ของคุณทันที"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
-#. js-lingui-explicit-id
-msgid "How to Play"
-msgstr "วิธีการเล่น"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
-#. js-lingui-explicit-id
-msgid ""
-"You and your AI partner alternate turns describing and guessing words "
-"without directly\n"
-"          naming them. This encourages creative thinking and fluent "
-"expression, adapting to your\n"
-"          language proficiency."
-msgstr ""
-"คุณและคู่ครับ AI สลับเวรที่อธิบายและทายคำโดยไม่ต้องพูดชื่อของคำตรงๆ\n"
-"          ซึ่งจะส่งเสริมการคิดสร้างสรรค์และการแสดงออกที่ไหลลื่น "
-"รับมือกับระดับความสามารถในการใช้ภาษาของคุณ"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
-#. js-lingui-explicit-id
-msgid "Choose Your Language Level"
-msgstr "เลือกระดับภาษาของคุณ"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
-#. js-lingui-explicit-id
-msgid "Pick a level to start playing!"
-msgstr "เลือกระดับเพื่อเริ่มเล่น!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
-#. js-lingui-explicit-id
-msgid "Alias Game Levels"
-msgstr "ระดับเกม Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
-#. js-lingui-explicit-id
-msgid "Check proposed words"
-msgstr "ตรวจสอบคำที่เสนอ"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
-#. js-lingui-explicit-id
-msgid "Based on your level, the AI will suggest words to describe."
-msgstr "ตามระดับของคุณ, AI จะแนะนำคำที่ใช้ในการอธิบาย"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
-#. js-lingui-explicit-id
-msgid "Alias Game options"
-msgstr "ตัวเลือกเกม Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
-#. js-lingui-explicit-id
-msgid "Record your description"
-msgstr "บันทึกคำอธิบายของคุณ"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
-#. js-lingui-explicit-id
-msgid "Describe the word you see on the screen without using the word itself!"
-msgstr "อธิบายคำที่คุณเห็นบนหน้าจอโดยไม่ใช้คำนั้นเอง!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
-#. js-lingui-explicit-id
-msgid "Alias Game Recording"
-msgstr "บันทึกเกม Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
-#. js-lingui-explicit-id
-msgid "Have fun!"
-msgstr "สนุกสนานนะ!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
-#. js-lingui-explicit-id
-msgid "Enjoy the game and see how the AI guesses your description!"
-msgstr "สนุกกับเกมและดูว่า AI จะทายคำอธิบายของคุณได้ยังไง!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
-#. js-lingui-explicit-id
-msgid "Robot Thinking"
-msgstr "โรบอทกำลังคิด"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -1914,25 +1815,121 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "ทุกสถานการณ์"
 
-#: src/features/Plan/PlanCard.tsx:118
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
 #. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "เริ่มบทเรียน"
+msgid ""
+"Boost your English vocabulary and fluency by creatively describing and "
+"guessing words in\n"
+"        this interactive AI-powered Alias game."
+msgstr ""
+"เพิ่มคำศัพท์ภาษาอังกฤษและความคล่องในการพูดโดยวิธีการอธิบายและทายคำอย่างสร้าง"
+"สรรค์ใน\n"
+"        เกม Alias ที่ขับเคลื่อนด้วย AI ออกแบบมาเพื่อการโต้ตอบ"
 
-#: src/features/Plan/PlanCard.tsx:127
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
 #. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "ส่ง 6 ข้อความเพื่อเสร็จสิ้น"
+msgid "Benefits of Playing Alias Game"
+msgstr "ประโยชน์ของการเล่นเกม Alias"
 
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#: src/features/Dashboard/SelectLanguage.tsx:296
-#: src/features/Game/PositionChangedModal.tsx:138
-#: src/features/Goal/GoalQuestions.tsx:818
-#: src/features/Goal/GoalQuestions.tsx:856
-#: src/features/Plan/PlanCard.tsx:259
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
 #. js-lingui-explicit-id
-msgid "Continue"
-msgstr "ต่อไป"
+msgid "Enhance your vocabulary by describing words in unique ways."
+msgstr "เสริมทักษะคำศัพท์ของคุณโดยการบรรยายคำในทางที่ไม่ธรรมดา"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
+#. js-lingui-explicit-id
+msgid "Improve listening skills as you interpret descriptions."
+msgstr "ปรับปรุงทักษะการฟังขณะที่คุณตีความจากคำอธิบาย"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
+#. js-lingui-explicit-id
+msgid "Practice rapid thinking and fluent speaking under playful pressure."
+msgstr ""
+"ฝึกการคิดอย่างรวดเร็วและการพูดที่คล่องแคล่วในสิ่งแวดล้อมที่เต็มไปด้วยความสนุ"
+"กสนาน"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
+#. js-lingui-explicit-id
+msgid "Receive instant, tailored feedback from your AI partner."
+msgstr "รับข้อเสนอแนะที่ปรับเปลี่ยนมาเพื่อคุณจากพาร์ทเนอร์ AI ของคุณทันที"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
+#. js-lingui-explicit-id
+msgid "How to Play"
+msgstr "วิธีการเล่น"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"You and your AI partner alternate turns describing and guessing words "
+"without directly\n"
+"          naming them. This encourages creative thinking and fluent "
+"expression, adapting to your\n"
+"          language proficiency."
+msgstr ""
+"คุณและคู่ครับ AI สลับเวรที่อธิบายและทายคำโดยไม่ต้องพูดชื่อของคำตรงๆ\n"
+"          ซึ่งจะส่งเสริมการคิดสร้างสรรค์และการแสดงออกที่ไหลลื่น "
+"รับมือกับระดับความสามารถในการใช้ภาษาของคุณ"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
+#. js-lingui-explicit-id
+msgid "Choose Your Language Level"
+msgstr "เลือกระดับภาษาของคุณ"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
+#. js-lingui-explicit-id
+msgid "Pick a level to start playing!"
+msgstr "เลือกระดับเพื่อเริ่มเล่น!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
+#. js-lingui-explicit-id
+msgid "Alias Game Levels"
+msgstr "ระดับเกม Alias"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
+#. js-lingui-explicit-id
+msgid "Check proposed words"
+msgstr "ตรวจสอบคำที่เสนอ"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
+#. js-lingui-explicit-id
+msgid "Based on your level, the AI will suggest words to describe."
+msgstr "ตามระดับของคุณ, AI จะแนะนำคำที่ใช้ในการอธิบาย"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
+#. js-lingui-explicit-id
+msgid "Alias Game options"
+msgstr "ตัวเลือกเกม Alias"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
+#. js-lingui-explicit-id
+msgid "Record your description"
+msgstr "บันทึกคำอธิบายของคุณ"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
+#. js-lingui-explicit-id
+msgid "Describe the word you see on the screen without using the word itself!"
+msgstr "อธิบายคำที่คุณเห็นบนหน้าจอโดยไม่ใช้คำนั้นเอง!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
+#. js-lingui-explicit-id
+msgid "Alias Game Recording"
+msgstr "บันทึกเกม Alias"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
+#. js-lingui-explicit-id
+msgid "Have fun!"
+msgstr "สนุกสนานนะ!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
+#. js-lingui-explicit-id
+msgid "Enjoy the game and see how the AI guesses your description!"
+msgstr "สนุกกับเกมและดูว่า AI จะทายคำอธิบายของคุณได้ยังไง!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
+#. js-lingui-explicit-id
+msgid "Robot Thinking"
+msgstr "โรบอทกำลังคิด"
 
 #: src/features/Plan/useGoalCreation.ts:41
 #: src/features/Plan/useGoalCreation.ts:69
@@ -1967,6 +1964,16 @@ msgstr "แสดงเพิ่มเติม"
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "แสดงน้อยลง"
+
+#: src/features/Plan/PlanCard.tsx:118
+#. js-lingui-explicit-id
+msgid "Start lesson"
+msgstr "เริ่มบทเรียน"
+
+#: src/features/Plan/PlanCard.tsx:127
+#. js-lingui-explicit-id
+msgid "Send 6 messages to complete"
+msgstr "ส่ง 6 ข้อความเพื่อเสร็จสิ้น"
 
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
@@ -2115,6 +2122,258 @@ msgstr "แผนการเรียนรู้ภาษาสวีเดน
 #. js-lingui-explicit-id
 msgid "Belarusian Learning Plan"
 msgstr "แผนการเรียนรู้ภาษาเบลารุส"
+
+#: src/features/Landing/PlanLandingBlock.tsx:20
+#. js-lingui-explicit-id
+msgid "Psychology"
+msgstr "จิตวิทยา"
+
+#: src/features/Landing/PlanLandingBlock.tsx:21
+#. js-lingui-explicit-id
+msgid "Mental Health Vocabulary"
+msgstr "คำศัพท์เกี่ยวกับสุขภาพจิต"
+
+#: src/features/Landing/PlanLandingBlock.tsx:23
+#. js-lingui-explicit-id
+msgid "Essential words for discussing mental health and psychology."
+msgstr "คำที่จำเป็นสำหรับการสนทนาเกี่ยวกับสุขภาพจิตและจิตวิทยา."
+
+#: src/features/Landing/PlanLandingBlock.tsx:29
+#. js-lingui-explicit-id
+msgid "Diagnosis"
+msgstr "การวินิจฉัย"
+
+#: src/features/Landing/PlanLandingBlock.tsx:30
+#. js-lingui-explicit-id
+msgid "Medical Talk Simulation"
+msgstr "จำลองการสนทนาทางการแพทย์"
+
+#: src/features/Landing/PlanLandingBlock.tsx:32
+#. js-lingui-explicit-id
+msgid "Practice medical conversations through simulated scenarios."
+msgstr "ฝึกการสนทนาทางการแพทย์ผ่านสถานการณ์จำลอง"
+
+#: src/features/Landing/PlanLandingBlock.tsx:38
+#. js-lingui-explicit-id
+msgid "Reflex"
+msgstr "สะท้อน"
+
+#: src/features/Landing/PlanLandingBlock.tsx:39
+#. js-lingui-explicit-id
+msgid "Fast Answer Practice"
+msgstr "ฝึกฝนคำตอบอย่างรวดเร็ว"
+
+#: src/features/Landing/PlanLandingBlock.tsx:41
+#. js-lingui-explicit-id
+msgid "Improve your ability to answer quickly and clearly in conversations."
+msgstr "ปรับปรุงความสามารถในการตอบสนองอย่างรวดเร็วและชัดเจนในการสนทนา."
+
+#: src/features/Landing/LandingPage.tsx:138
+#: src/features/Landing/PlanLandingBlock.tsx:47
+#. js-lingui-explicit-id
+msgid "Speaking"
+msgstr "การพูด"
+
+#: src/features/Landing/PlanLandingBlock.tsx:48
+#. js-lingui-explicit-id
+msgid "Public Talk Skills"
+msgstr "ทักษะการพูดแบบสาธารณะ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:50
+#. js-lingui-explicit-id
+msgid "Boost your confidence in public speaking."
+msgstr "เพิ่มความมั่นใจในการพูดสาธารณะของคุณ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:56
+#. js-lingui-explicit-id
+msgid "TOEFL"
+msgstr "TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:57
+#. js-lingui-explicit-id
+msgid "Academic Word List"
+msgstr "รายชื่อคำศัพท์วิชาการ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:59
+#. js-lingui-explicit-id
+msgid "Master high-frequency TOEFL vocabulary."
+msgstr "เรียนรู้คำศัพท์ TOEFL ระดับความถี่สูง"
+
+#: src/features/Landing/PlanLandingBlock.tsx:65
+#. js-lingui-explicit-id
+msgid "Mock"
+msgstr "ม็อก"
+
+#: src/features/Landing/PlanLandingBlock.tsx:66
+#. js-lingui-explicit-id
+msgid "TOEFL Speaking Tasks"
+msgstr "งานพูดในส่วนของ TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:68
+#. js-lingui-explicit-id
+msgid "Simulate speaking tasks from the TOEFL exam."
+msgstr "จำลองการทำงานพูดจากสอบ TOEFL."
+
+#: src/features/Landing/LandingPage.tsx:148
+#: src/features/Landing/PlanLandingBlock.tsx:74
+#. js-lingui-explicit-id
+msgid "Grammar"
+msgstr "ไวยากรณ์"
+
+#: src/features/Landing/PlanLandingBlock.tsx:75
+#. js-lingui-explicit-id
+msgid "Advanced Academic Usage"
+msgstr "การใช้งานทางวิชาการขั้นสูง"
+
+#: src/features/Landing/PlanLandingBlock.tsx:77
+#. js-lingui-explicit-id
+msgid "Learn grammar used in academic writing and speaking."
+msgstr "เรียนรู้ไวยากรณ์ที่ใช้ในการเขียนและการพูดทางวิชาการ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:84
+#. js-lingui-explicit-id
+msgid "Wellness"
+msgstr "สุขภาพและสุขภาพจิต"
+
+#: src/features/Landing/PlanLandingBlock.tsx:85
+#. js-lingui-explicit-id
+msgid "Mental Health Talk"
+msgstr "การสนทนาเรื่องสุขภาพจิต"
+
+#: src/features/Landing/PlanLandingBlock.tsx:87
+#. js-lingui-explicit-id
+msgid "Explore techniques to talk about wellness and mental well-being."
+msgstr "สำรวจเทคนิคในการสนทนาเกี่ยวกับสุขภาพร่างกายและสุขภาพจิต."
+
+#: src/features/Landing/PlanLandingBlock.tsx:93
+#. js-lingui-explicit-id
+msgid "Essays"
+msgstr "เรียงความ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:94
+#. js-lingui-explicit-id
+msgid "Formal Writing Practice"
+msgstr "การฝึกเขียนในรูปแบบทางการ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:96
+#. js-lingui-explicit-id
+msgid "Develop formal writing skills for academic success."
+msgstr "พัฒนาทักษะการเขียนแบบเป็นทางการเพื่อความสำเร็จในการศึกษา"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:114
+#: src/features/Dashboard/PlanDashboardCards.tsx:93
+#: src/features/Dashboard/PlanDashboardCards.tsx:245
+#: src/features/Landing/PlanLandingBlock.tsx:103
+#. js-lingui-explicit-id
+msgid "Conversation"
+msgstr "การสนทนา"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:96
+#: src/features/Landing/PlanLandingBlock.tsx:106
+#. js-lingui-explicit-id
+msgid "Rule"
+msgstr "กฎ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:149
+#. js-lingui-explicit-id
+msgid "How It Works"
+msgstr "วิธีการทำงาน"
+
+#: src/features/Landing/PlanLandingBlock.tsx:160
+#. js-lingui-explicit-id
+msgid "From Onboarding to Your Goal"
+msgstr "จากการสร้างพื้นฐานถึงเป้าหมายของคุณ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:233
+#. js-lingui-explicit-id
+msgid "Step 1"
+msgstr "ขั้นตอนที่ 1"
+
+#: src/features/Landing/PlanLandingBlock.tsx:250
+#. js-lingui-explicit-id
+msgid "Smart Start"
+msgstr "เริ่มต้นอย่างฉลาด"
+
+#: src/features/Landing/PlanLandingBlock.tsx:261
+#. js-lingui-explicit-id
+msgid ""
+"Fill out a quick onboarding quiz to help FluencyPal understand your goals "
+"and preferences."
+msgstr ""
+"กรอกแบบสอบถามการรับราชการเร่งด่วนเพื่อช่วยให้ FluencyPal "
+"เข้าใจเป้าหมายและการตั้งค่าที่คุณต้องการ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:363
+#. js-lingui-explicit-id
+msgid "Step 2"
+msgstr "ขั้นตอนที่ 2"
+
+#: src/features/Landing/PlanLandingBlock.tsx:381
+#. js-lingui-explicit-id
+msgid "Personal Plan"
+msgstr "แผนบุคคล"
+
+#: src/features/Landing/PlanLandingBlock.tsx:396
+#. js-lingui-explicit-id
+msgid ""
+"Based on your onboarding, FluencyPal instantly generates a custom learning "
+"plan just for you."
+msgstr ""
+"ตามข้อมูลที่คุณได้ทำการสมัครสมาชิก ทาง FluencyPal "
+"จะทำการสร้างแผนการเรียนรู้ที่ออกแบบมาเฉพาะสำหรับคุณทันที"
+
+#: src/features/Goal/GoalQuestions.tsx:1088
+#: src/features/Landing/PlanLandingBlock.tsx:412
+#. js-lingui-explicit-id
+msgid "Create a plan"
+msgstr "สร้างแผน"
+
+#: src/features/Landing/PlanLandingBlock.tsx:576
+#. js-lingui-explicit-id
+msgid "Step 3"
+msgstr "ขั้นตอนที่ 3"
+
+#: src/features/Landing/PlanLandingBlock.tsx:604
+#. js-lingui-explicit-id
+msgid ""
+"Jump into your tailored learning path and build real skills through "
+"engaging practice with AI voice chat."
+msgstr ""
+"เดินเข้าสู่เส้นทางการเรียนรู้ที่ปรับให้เหมาะสมกับคุณและสร้างทักษะจริงๆผ่านกา"
+"รฝึกฝนที่น่าสนใจด้วยการสนทนาด้วยเสียงผ่าน AI."
+
+#: src/features/Landing/PlanLandingBlock.tsx:638
+#. js-lingui-explicit-id
+msgid "1 hour free"
+msgstr "1 ชั่วโมงฟรี"
+
+#: src/features/Landing/PlanLandingBlock.tsx:664
+#. js-lingui-explicit-id
+msgid "Results are closer than you think"
+msgstr "ผลลัพธ์ใกล้กว่าที่คุณคิด"
+
+#: src/features/Landing/PlanLandingBlock.tsx:677
+#. js-lingui-explicit-id
+msgid "Start Learning"
+msgstr "เริ่มการเรียนรู้"
+
+#: src/features/Landing/Footer.tsx:85
+#. js-lingui-explicit-id
+msgid "Role-Play"
+msgstr "บทบาทการเล่น"
+
+#: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Landing/Footer.tsx:91
+#. js-lingui-explicit-id
+msgid "Blog"
+msgstr "บล็อก"
+
+#: src/features/Header/HeaderStatic.tsx:13
+#: src/features/Landing/Footer.tsx:94
+#: src/features/Landing/Price/PricePage.tsx:95
+#. js-lingui-explicit-id
+msgid "Price"
+msgstr "ราคา"
 
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
@@ -2272,12 +2531,6 @@ msgstr ""
 "และการติดตามความก้าวหน้า—เพื่อที่จะบรรลุความคล่องแคล่วในภาษาอังกฤษออนไลน์ได้"
 "เร็วขึ้น."
 
-#: src/features/Landing/LandingPage.tsx:138
-#: src/features/Landing/PlanLandingBlock.tsx:47
-#. js-lingui-explicit-id
-msgid "Speaking"
-msgstr "การพูด"
-
 #: src/features/Landing/LandingPage.tsx:139
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
@@ -2298,12 +2551,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "เริ่มฝึกพูด"
-
-#: src/features/Landing/LandingPage.tsx:148
-#: src/features/Landing/PlanLandingBlock.tsx:74
-#. js-lingui-explicit-id
-msgid "Grammar"
-msgstr "ไวยากรณ์"
 
 #: src/features/Landing/LandingPage.tsx:149
 #. js-lingui-explicit-id
@@ -2476,251 +2723,6 @@ msgstr "เริ่มทดลองใช้ฟรี"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "เริ่มการเดินทางของคุณสู่การสนทนาที่คล่องแคล่วตอนนี้"
 
-#: src/features/Landing/Footer.tsx:85
-#. js-lingui-explicit-id
-msgid "Role-Play"
-msgstr "บทบาทการเล่น"
-
-#: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Landing/Footer.tsx:91
-#. js-lingui-explicit-id
-msgid "Blog"
-msgstr "บล็อก"
-
-#: src/features/Header/HeaderStatic.tsx:13
-#: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:95
-#. js-lingui-explicit-id
-msgid "Price"
-msgstr "ราคา"
-
-#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
-#. js-lingui-explicit-id
-msgid "Try"
-msgstr "ลอง"
-
-#: src/features/Landing/PlanLandingBlock.tsx:20
-#. js-lingui-explicit-id
-msgid "Psychology"
-msgstr "จิตวิทยา"
-
-#: src/features/Landing/PlanLandingBlock.tsx:21
-#. js-lingui-explicit-id
-msgid "Mental Health Vocabulary"
-msgstr "คำศัพท์เกี่ยวกับสุขภาพจิต"
-
-#: src/features/Landing/PlanLandingBlock.tsx:23
-#. js-lingui-explicit-id
-msgid "Essential words for discussing mental health and psychology."
-msgstr "คำที่จำเป็นสำหรับการสนทนาเกี่ยวกับสุขภาพจิตและจิตวิทยา."
-
-#: src/features/Landing/PlanLandingBlock.tsx:29
-#. js-lingui-explicit-id
-msgid "Diagnosis"
-msgstr "การวินิจฉัย"
-
-#: src/features/Landing/PlanLandingBlock.tsx:30
-#. js-lingui-explicit-id
-msgid "Medical Talk Simulation"
-msgstr "จำลองการสนทนาทางการแพทย์"
-
-#: src/features/Landing/PlanLandingBlock.tsx:32
-#. js-lingui-explicit-id
-msgid "Practice medical conversations through simulated scenarios."
-msgstr "ฝึกการสนทนาทางการแพทย์ผ่านสถานการณ์จำลอง"
-
-#: src/features/Landing/PlanLandingBlock.tsx:38
-#. js-lingui-explicit-id
-msgid "Reflex"
-msgstr "สะท้อน"
-
-#: src/features/Landing/PlanLandingBlock.tsx:39
-#. js-lingui-explicit-id
-msgid "Fast Answer Practice"
-msgstr "ฝึกฝนคำตอบอย่างรวดเร็ว"
-
-#: src/features/Landing/PlanLandingBlock.tsx:41
-#. js-lingui-explicit-id
-msgid "Improve your ability to answer quickly and clearly in conversations."
-msgstr "ปรับปรุงความสามารถในการตอบสนองอย่างรวดเร็วและชัดเจนในการสนทนา."
-
-#: src/features/Landing/PlanLandingBlock.tsx:48
-#. js-lingui-explicit-id
-msgid "Public Talk Skills"
-msgstr "ทักษะการพูดแบบสาธารณะ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:50
-#. js-lingui-explicit-id
-msgid "Boost your confidence in public speaking."
-msgstr "เพิ่มความมั่นใจในการพูดสาธารณะของคุณ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:56
-#. js-lingui-explicit-id
-msgid "TOEFL"
-msgstr "TOEFL"
-
-#: src/features/Landing/PlanLandingBlock.tsx:57
-#. js-lingui-explicit-id
-msgid "Academic Word List"
-msgstr "รายชื่อคำศัพท์วิชาการ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:59
-#. js-lingui-explicit-id
-msgid "Master high-frequency TOEFL vocabulary."
-msgstr "เรียนรู้คำศัพท์ TOEFL ระดับความถี่สูง"
-
-#: src/features/Landing/PlanLandingBlock.tsx:65
-#. js-lingui-explicit-id
-msgid "Mock"
-msgstr "ม็อก"
-
-#: src/features/Landing/PlanLandingBlock.tsx:66
-#. js-lingui-explicit-id
-msgid "TOEFL Speaking Tasks"
-msgstr "งานพูดในส่วนของ TOEFL"
-
-#: src/features/Landing/PlanLandingBlock.tsx:68
-#. js-lingui-explicit-id
-msgid "Simulate speaking tasks from the TOEFL exam."
-msgstr "จำลองการทำงานพูดจากสอบ TOEFL."
-
-#: src/features/Landing/PlanLandingBlock.tsx:75
-#. js-lingui-explicit-id
-msgid "Advanced Academic Usage"
-msgstr "การใช้งานทางวิชาการขั้นสูง"
-
-#: src/features/Landing/PlanLandingBlock.tsx:77
-#. js-lingui-explicit-id
-msgid "Learn grammar used in academic writing and speaking."
-msgstr "เรียนรู้ไวยากรณ์ที่ใช้ในการเขียนและการพูดทางวิชาการ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:84
-#. js-lingui-explicit-id
-msgid "Wellness"
-msgstr "สุขภาพและสุขภาพจิต"
-
-#: src/features/Landing/PlanLandingBlock.tsx:85
-#. js-lingui-explicit-id
-msgid "Mental Health Talk"
-msgstr "การสนทนาเรื่องสุขภาพจิต"
-
-#: src/features/Landing/PlanLandingBlock.tsx:87
-#. js-lingui-explicit-id
-msgid "Explore techniques to talk about wellness and mental well-being."
-msgstr "สำรวจเทคนิคในการสนทนาเกี่ยวกับสุขภาพร่างกายและสุขภาพจิต."
-
-#: src/features/Landing/PlanLandingBlock.tsx:93
-#. js-lingui-explicit-id
-msgid "Essays"
-msgstr "เรียงความ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:94
-#. js-lingui-explicit-id
-msgid "Formal Writing Practice"
-msgstr "การฝึกเขียนในรูปแบบทางการ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:96
-#. js-lingui-explicit-id
-msgid "Develop formal writing skills for academic success."
-msgstr "พัฒนาทักษะการเขียนแบบเป็นทางการเพื่อความสำเร็จในการศึกษา"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:114
-#: src/features/Dashboard/PlanDashboardCards.tsx:93
-#: src/features/Dashboard/PlanDashboardCards.tsx:245
-#: src/features/Landing/PlanLandingBlock.tsx:103
-#. js-lingui-explicit-id
-msgid "Conversation"
-msgstr "การสนทนา"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:96
-#: src/features/Landing/PlanLandingBlock.tsx:106
-#. js-lingui-explicit-id
-msgid "Rule"
-msgstr "กฎ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:149
-#. js-lingui-explicit-id
-msgid "How It Works"
-msgstr "วิธีการทำงาน"
-
-#: src/features/Landing/PlanLandingBlock.tsx:160
-#. js-lingui-explicit-id
-msgid "From Onboarding to Your Goal"
-msgstr "จากการสร้างพื้นฐานถึงเป้าหมายของคุณ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:233
-#. js-lingui-explicit-id
-msgid "Step 1"
-msgstr "ขั้นตอนที่ 1"
-
-#: src/features/Landing/PlanLandingBlock.tsx:250
-#. js-lingui-explicit-id
-msgid "Smart Start"
-msgstr "เริ่มต้นอย่างฉลาด"
-
-#: src/features/Landing/PlanLandingBlock.tsx:261
-#. js-lingui-explicit-id
-msgid ""
-"Fill out a quick onboarding quiz to help FluencyPal understand your goals "
-"and preferences."
-msgstr ""
-"กรอกแบบสอบถามการรับราชการเร่งด่วนเพื่อช่วยให้ FluencyPal "
-"เข้าใจเป้าหมายและการตั้งค่าที่คุณต้องการ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:363
-#. js-lingui-explicit-id
-msgid "Step 2"
-msgstr "ขั้นตอนที่ 2"
-
-#: src/features/Landing/PlanLandingBlock.tsx:381
-#. js-lingui-explicit-id
-msgid "Personal Plan"
-msgstr "แผนบุคคล"
-
-#: src/features/Landing/PlanLandingBlock.tsx:396
-#. js-lingui-explicit-id
-msgid ""
-"Based on your onboarding, FluencyPal instantly generates a custom learning "
-"plan just for you."
-msgstr ""
-"ตามข้อมูลที่คุณได้ทำการสมัครสมาชิก ทาง FluencyPal "
-"จะทำการสร้างแผนการเรียนรู้ที่ออกแบบมาเฉพาะสำหรับคุณทันที"
-
-#: src/features/Goal/GoalQuestions.tsx:1088
-#: src/features/Landing/PlanLandingBlock.tsx:412
-#. js-lingui-explicit-id
-msgid "Create a plan"
-msgstr "สร้างแผน"
-
-#: src/features/Landing/PlanLandingBlock.tsx:576
-#. js-lingui-explicit-id
-msgid "Step 3"
-msgstr "ขั้นตอนที่ 3"
-
-#: src/features/Landing/PlanLandingBlock.tsx:604
-#. js-lingui-explicit-id
-msgid ""
-"Jump into your tailored learning path and build real skills through "
-"engaging practice with AI voice chat."
-msgstr ""
-"เดินเข้าสู่เส้นทางการเรียนรู้ที่ปรับให้เหมาะสมกับคุณและสร้างทักษะจริงๆผ่านกา"
-"รฝึกฝนที่น่าสนใจด้วยการสนทนาด้วยเสียงผ่าน AI."
-
-#: src/features/Landing/PlanLandingBlock.tsx:638
-#. js-lingui-explicit-id
-msgid "1 hour free"
-msgstr "1 ชั่วโมงฟรี"
-
-#: src/features/Landing/PlanLandingBlock.tsx:664
-#. js-lingui-explicit-id
-msgid "Results are closer than you think"
-msgstr "ผลลัพธ์ใกล้กว่าที่คุณคิด"
-
-#: src/features/Landing/PlanLandingBlock.tsx:677
-#. js-lingui-explicit-id
-msgid "Start Learning"
-msgstr "เริ่มการเรียนรู้"
-
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
 msgid "View all"
@@ -2787,6 +2789,11 @@ msgstr "สถานการณ์ที่เกี่ยวข้อง"
 msgid "Ready to Become Fluent in English?"
 msgstr "พร้อมที่จะพูดภาษาอังกฤษได้อย่างคล่องแคล่วหรือยัง?"
 
+#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
+#. js-lingui-explicit-id
+msgid "Try"
+msgstr "ลอง"
+
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
 #. js-lingui-explicit-id
 msgid "Practice Real-Life Conversations With Role-Play Scenarios"
@@ -2816,76 +2823,6 @@ msgstr "ค้นพบ"
 #. js-lingui-explicit-id
 msgid "No scenarios found"
 msgstr "ไม่พบสถานการณ์ใด ๆ"
-
-#: src/features/Landing/Price/PricePage.tsx:105
-#. js-lingui-explicit-id
-msgid "Start free, subscribe later"
-msgstr "เริ่มใช้งานฟรี, สมัครสมาชิกในภายหลัง"
-
-#: src/features/Landing/Price/PricePage.tsx:110
-#. js-lingui-explicit-id
-msgid "Open Dashboard"
-msgstr "เปิดแดชบอร์ด"
-
-#: src/features/Landing/Price/PricePage.tsx:150
-#. js-lingui-explicit-id
-msgid "Trial"
-msgstr "ทดลองใช้"
-
-#: src/features/Landing/Price/PricePage.tsx:151
-#. js-lingui-explicit-id
-msgid "For learners who want to try it out"
-msgstr "สำหรับผู้เรียนที่ต้องการทดลองใช้งาน"
-
-#: src/features/Landing/Price/PricePage.tsx:180
-#. js-lingui-explicit-id
-msgid "3 days"
-msgstr "3 วัน"
-
-#: src/features/Landing/Price/PricePage.tsx:184
-#. js-lingui-explicit-id
-msgid "Game mode and trial AI tutor access"
-msgstr "โหมดเกมและการเข้าถึง AI ที่เป็นตัวช่วยสอนทดลอง"
-
-#: src/features/Landing/Price/PricePage.tsx:185
-#. js-lingui-explicit-id
-msgid "Includes:"
-msgstr "รวมถึง:"
-
-#: src/features/Landing/Price/PricePage.tsx:189
-#. js-lingui-explicit-id
-msgid "Game Mode"
-msgstr "โหมดเกม"
-
-#: src/features/Landing/Price/PricePage.tsx:190
-#. js-lingui-explicit-id
-msgid "Many language games to practice"
-msgstr "เกมภาษาหลากหลายเพื่อฝึกฝน"
-
-#: src/features/Landing/Price/PricePage.tsx:194
-#. js-lingui-explicit-id
-msgid "3 days of AI tutor access"
-msgstr "3 วันของการเข้าถึง AI ติวเตอร์"
-
-#: src/features/Landing/Price/PricePage.tsx:195
-#. js-lingui-explicit-id
-msgid "Try AI tutor for one hour to see how it works"
-msgstr "ลองใช้ AI tutor สำหรับหนึ่งชั่วโมงเพื่อดูว่ามันทำงานอย่างไร"
-
-#: src/features/Landing/Price/PricePage.tsx:199
-#. js-lingui-explicit-id
-msgid "Start "
-msgstr "เริ่มต้น"
-
-#: src/features/Landing/Price/PricePage.tsx:204
-#. js-lingui-explicit-id
-msgid "For learners who want flexibility"
-msgstr "สำหรับผู้เรียนที่ต้องการความยืดหยุ่น"
-
-#: src/features/Landing/Price/PricePage.tsx:238
-#. js-lingui-explicit-id
-msgid "Everything in Free, plus:"
-msgstr "ทุกอย่างในแพ็คเกจฟรี บวกกับ:"
 
 #: src/features/Landing/Price/FeatureList.tsx:31
 #: src/features/Landing/Price/PricePage.tsx:241
@@ -2975,6 +2912,76 @@ msgstr ""
 "ตามเวลา, AI "
 "จะปรับตัวเองให้เหมาะสมกับรูปแบบการเรียนรู้ของคุณและมันจะเป็นการส่วนบุคคลที่ม"
 "ากขึ้น"
+
+#: src/features/Landing/Price/PricePage.tsx:105
+#. js-lingui-explicit-id
+msgid "Start free, subscribe later"
+msgstr "เริ่มใช้งานฟรี, สมัครสมาชิกในภายหลัง"
+
+#: src/features/Landing/Price/PricePage.tsx:110
+#. js-lingui-explicit-id
+msgid "Open Dashboard"
+msgstr "เปิดแดชบอร์ด"
+
+#: src/features/Landing/Price/PricePage.tsx:150
+#. js-lingui-explicit-id
+msgid "Trial"
+msgstr "ทดลองใช้"
+
+#: src/features/Landing/Price/PricePage.tsx:151
+#. js-lingui-explicit-id
+msgid "For learners who want to try it out"
+msgstr "สำหรับผู้เรียนที่ต้องการทดลองใช้งาน"
+
+#: src/features/Landing/Price/PricePage.tsx:180
+#. js-lingui-explicit-id
+msgid "3 days"
+msgstr "3 วัน"
+
+#: src/features/Landing/Price/PricePage.tsx:184
+#. js-lingui-explicit-id
+msgid "Game mode and trial AI tutor access"
+msgstr "โหมดเกมและการเข้าถึง AI ที่เป็นตัวช่วยสอนทดลอง"
+
+#: src/features/Landing/Price/PricePage.tsx:185
+#. js-lingui-explicit-id
+msgid "Includes:"
+msgstr "รวมถึง:"
+
+#: src/features/Landing/Price/PricePage.tsx:189
+#. js-lingui-explicit-id
+msgid "Game Mode"
+msgstr "โหมดเกม"
+
+#: src/features/Landing/Price/PricePage.tsx:190
+#. js-lingui-explicit-id
+msgid "Many language games to practice"
+msgstr "เกมภาษาหลากหลายเพื่อฝึกฝน"
+
+#: src/features/Landing/Price/PricePage.tsx:194
+#. js-lingui-explicit-id
+msgid "3 days of AI tutor access"
+msgstr "3 วันของการเข้าถึง AI ติวเตอร์"
+
+#: src/features/Landing/Price/PricePage.tsx:195
+#. js-lingui-explicit-id
+msgid "Try AI tutor for one hour to see how it works"
+msgstr "ลองใช้ AI tutor สำหรับหนึ่งชั่วโมงเพื่อดูว่ามันทำงานอย่างไร"
+
+#: src/features/Landing/Price/PricePage.tsx:199
+#. js-lingui-explicit-id
+msgid "Start "
+msgstr "เริ่มต้น"
+
+#: src/features/Landing/Price/PricePage.tsx:204
+#. js-lingui-explicit-id
+msgid "For learners who want flexibility"
+msgstr "สำหรับผู้เรียนที่ต้องการความยืดหยุ่น"
+
+#: src/features/Landing/Price/PricePage.tsx:238
+#. js-lingui-explicit-id
+msgid "Everything in Free, plus:"
+msgstr "ทุกอย่างในแพ็คเกจฟรี บวกกับ:"
 
 #: src/features/Landing/Price/PricePage.tsx:284
 #. js-lingui-explicit-id
@@ -3219,80 +3226,6 @@ msgstr ""
 msgid "Contacts:"
 msgstr "ติดต่อ:"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:104
-#. js-lingui-explicit-id
-msgid ""
-"My name is Alex, I am the creator of this website. I am a software engineer "
-"and I am passionate about learning languages. I created this website to "
-"help people learn languages in a fun and interactive way. I hope you enjoy "
-"using it!"
-msgstr ""
-"ฉันชื่อ Alex, ผมเป็นผู้สร้างเว็บไซต์นี้ "
-"ฉันเป็นวิศวกรซอฟต์แวร์และฉันมีความหลงใหลในการเรียนรู้ภาษา "
-"ฉันสร้างเว็บไซต์นี้เพื่อช่วยให้ผู้คนสามารถเรียนรู้ภาษาได้อย่างสนุกสนานและสม่"
-"ำเสมอ ฉันหวังว่าคุณจะสนุกกับการใช้งาน!"
-
-#: src/features/Landing/Contact/ContactsPage.tsx:117
-#. js-lingui-explicit-id
-msgid ""
-"Feel free to reach out to me with any questions or feedback. I'm always "
-"happy to help!"
-msgstr ""
-"รู้สึกฟรีที่จะติดต่อฉันหากมีคำถามหรือข้อเสนอแนะแต่อย่างใด "
-"ฉันยินดีที่จะช่วยเสมอ!"
-
-#: src/features/Header/PaymentHistoryModal.tsx:21
-#. js-lingui-explicit-id
-msgid "Trial balance"
-msgstr "งบทดลอง"
-
-#: src/features/Header/PaymentHistoryModal.tsx:22
-#. js-lingui-explicit-id
-msgid "Payment"
-msgstr "การชำระเงิน"
-
-#: src/features/Header/PaymentHistoryModal.tsx:23
-#. js-lingui-explicit-id
-msgid "Gift"
-msgstr "ของขวัญ"
-
-#: src/features/Header/PaymentHistoryModal.tsx:24
-#. js-lingui-explicit-id
-msgid "Subscription (1 month)"
-msgstr "สมัครสมาชิก (1 เดือน)"
-
-#: src/features/Header/PaymentHistoryModal.tsx:25
-#. js-lingui-explicit-id
-msgid "Trial days"
-msgstr "วันทดลองใช้"
-
-#: src/features/Header/PaymentHistoryModal.tsx:30
-#. js-lingui-explicit-id
-msgid "Payment History"
-msgstr "ประวัติการชำระเงิน"
-
-#: src/features/Header/HeaderStatic.tsx:11
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "บทบาทสมมติ"
-
-#: src/features/Header/HeaderStatic.tsx:14
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "เข้าสู่ระบบ"
-
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:16
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "ต้องการความช่วยเหลือไหม?"
-
-#: src/features/Header/HeaderPractice.tsx:422
-#: src/features/Header/HeaderStatic.tsx:17
-#. js-lingui-explicit-id
-msgid "Log Out"
-msgstr "ออกจากระบบ"
-
 #: src/features/Header/NeedHelpModal.tsx:34
 #: src/features/Header/NeedHelpModal.tsx:162
 #. js-lingui-explicit-id
@@ -3364,6 +3297,28 @@ msgstr "ใช่, ลบบัญชี"
 msgid "Delete account"
 msgstr "ลบบัญชี"
 
+#: src/features/Header/HeaderStatic.tsx:11
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "บทบาทสมมติ"
+
+#: src/features/Header/HeaderStatic.tsx:14
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "เข้าสู่ระบบ"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:16
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "ต้องการความช่วยเหลือไหม?"
+
+#: src/features/Header/HeaderPractice.tsx:422
+#: src/features/Header/HeaderStatic.tsx:17
+#. js-lingui-explicit-id
+msgid "Log Out"
+msgstr "ออกจากระบบ"
+
 #: src/features/Dashboard/FeedbackBlock.tsx:25
 #: src/features/Header/ContactMessageModal.tsx:38
 #. js-lingui-explicit-id
@@ -3393,6 +3348,36 @@ msgstr "กำลังส่ง..."
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "ส่ง"
+
+#: src/features/Header/PaymentHistoryModal.tsx:21
+#. js-lingui-explicit-id
+msgid "Trial balance"
+msgstr "งบทดลอง"
+
+#: src/features/Header/PaymentHistoryModal.tsx:22
+#. js-lingui-explicit-id
+msgid "Payment"
+msgstr "การชำระเงิน"
+
+#: src/features/Header/PaymentHistoryModal.tsx:23
+#. js-lingui-explicit-id
+msgid "Gift"
+msgstr "ของขวัญ"
+
+#: src/features/Header/PaymentHistoryModal.tsx:24
+#. js-lingui-explicit-id
+msgid "Subscription (1 month)"
+msgstr "สมัครสมาชิก (1 เดือน)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Trial days"
+msgstr "วันทดลองใช้"
+
+#: src/features/Header/PaymentHistoryModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Payment History"
+msgstr "ประวัติการชำระเงิน"
 
 #: src/features/Header/HeaderPractice.tsx:207
 #. js-lingui-explicit-id
@@ -3441,6 +3426,28 @@ msgstr "ประวัติการชำระเงิน"
 #. js-lingui-explicit-id
 msgid "Refund"
 msgstr "คืนเงิน"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"My name is Alex, I am the creator of this website. I am a software engineer "
+"and I am passionate about learning languages. I created this website to "
+"help people learn languages in a fun and interactive way. I hope you enjoy "
+"using it!"
+msgstr ""
+"ฉันชื่อ Alex, ผมเป็นผู้สร้างเว็บไซต์นี้ "
+"ฉันเป็นวิศวกรซอฟต์แวร์และฉันมีความหลงใหลในการเรียนรู้ภาษา "
+"ฉันสร้างเว็บไซต์นี้เพื่อช่วยให้ผู้คนสามารถเรียนรู้ภาษาได้อย่างสนุกสนานและสม่"
+"ำเสมอ ฉันหวังว่าคุณจะสนุกกับการใช้งาน!"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:117
+#. js-lingui-explicit-id
+msgid ""
+"Feel free to reach out to me with any questions or feedback. I'm always "
+"happy to help!"
+msgstr ""
+"รู้สึกฟรีที่จะติดต่อฉันหากมีคำถามหรือข้อเสนอแนะแต่อย่างใด "
+"ฉันยินดีที่จะช่วยเสมอ!"
 
 #: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
@@ -3858,23 +3865,6 @@ msgstr "เปิดแผนการ"
 msgid "Nice!"
 msgstr "เยี่ยม!"
 
-#: src/features/Game/GameOnboarding.tsx:169
-#: src/features/Game/GamePage.tsx:21
-#. js-lingui-explicit-id
-msgid "Play"
-msgstr "เล่น"
-
-#: src/features/Game/GamePage.tsx:87
-#. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "คะแนน:"
-
-#: src/features/Game/GameBadge.tsx:67
-#: src/features/Game/GamePage.tsx:89
-#. js-lingui-explicit-id
-msgid "Rank in the top 5 to get the app for free"
-msgstr "ติดอันดับใน 5 อันดับแรกเพื่อรับแอปฟรี"
-
 #: src/features/Game/GameOnboarding.tsx:47
 #. js-lingui-explicit-id
 msgid "Learn and Play"
@@ -3907,10 +3897,11 @@ msgstr "มาตรวจสอบว่าคุณพร้อมแล้ว
 msgid "Your Avatar:"
 msgstr "อวตารของคุณ:"
 
-#: src/features/Game/GameNativeLanguageSelector.tsx:39
+#: src/features/Game/GameOnboarding.tsx:169
+#: src/features/Game/GamePage.tsx:21
 #. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "ภาษาแม่ของคุณ:"
+msgid "Play"
+msgstr "เล่น"
 
 #: src/features/Game/GameMyUsername.tsx:26
 #. js-lingui-explicit-id
@@ -3922,10 +3913,73 @@ msgstr "ชื่อผู้ใช้ต้องมีอักขระอย
 msgid "Your Username:"
 msgstr "ชื่อผู้ใช้ของคุณ:"
 
+#: src/features/Game/GamePage.tsx:87
+#. js-lingui-explicit-id
+msgid "Rating:"
+msgstr "คะแนน:"
+
+#: src/features/Game/GameBadge.tsx:67
+#: src/features/Game/GamePage.tsx:89
+#. js-lingui-explicit-id
+msgid "Rank in the top 5 to get the app for free"
+msgstr "ติดอันดับใน 5 อันดับแรกเพื่อรับแอปฟรี"
+
+#: src/features/Game/GameNativeLanguageSelector.tsx:39
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "ภาษาแม่ของคุณ:"
+
 #: src/features/Game/GameMyAvatar.tsx:20
 #. js-lingui-explicit-id
 msgid "Select your avatar"
 msgstr "เลือกอวตารของคุณ"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Translate the word"
+msgstr "แปลคำว่า"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
+#. js-lingui-explicit-id
+msgid "Read the text"
+msgstr "อ่านข้อความ"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1046
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:236
+#. js-lingui-explicit-id
+msgid "Done"
+msgstr "เสร็จแล้ว"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1032
+#: src/features/Conversation/ConversationCanvas2.tsx:1296
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:296
+#. js-lingui-explicit-id
+msgid "Re-record"
+msgstr "บันทึกใหม่"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:309
+#. js-lingui-explicit-id
+msgid "Submit"
+msgstr "ส่ง"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:352
+#. js-lingui-explicit-id
+msgid "Error:"
+msgstr "ข้อผิดพลาด:"
+
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Form a sentence"
+msgstr "สร้างประโยค"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:183
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:207
+#. js-lingui-explicit-id
+msgid "Submit answer"
+msgstr "ส่งคำตอบ"
 
 #: src/features/Game/GameBadge.tsx:55
 #. js-lingui-explicit-id
@@ -3936,21 +3990,6 @@ msgstr "เล่นและเรียนรู้"
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "สนทนาเรื่อง"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:183
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:207
-#. js-lingui-explicit-id
-msgid "Submit answer"
-msgstr "ส่งคำตอบ"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1046
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:236
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "เสร็จแล้ว"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:259
@@ -3974,38 +4013,6 @@ msgstr "ข้อผิดพลาด:"
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "อธิบายภาพ"
-
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "แปลคำว่า"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
-#. js-lingui-explicit-id
-msgid "Read the text"
-msgstr "อ่านข้อความ"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1032
-#: src/features/Conversation/ConversationCanvas2.tsx:1296
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:296
-#. js-lingui-explicit-id
-msgid "Re-record"
-msgstr "บันทึกใหม่"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:309
-#. js-lingui-explicit-id
-msgid "Submit"
-msgstr "ส่ง"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:352
-#. js-lingui-explicit-id
-msgid "Error:"
-msgstr "ข้อผิดพลาด:"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "สร้างประโยค"
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
 #. js-lingui-explicit-id
@@ -4042,87 +4049,6 @@ msgstr "เริ่มฝึกฝน"
 #. js-lingui-explicit-id
 msgid "I know all of them"
 msgstr "ฉันรู้จักพวกเขาทั้งหมด"
-
-#: src/features/Dashboard/RulesToLearn.tsx:36
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "กฎใหม่ในการฝึกฝน."
-
-#: src/features/Dashboard/TasksCard.tsx:39
-#. js-lingui-explicit-id
-msgid "Daily Tasks"
-msgstr "งานประจำวัน"
-
-#: src/features/Dashboard/TasksCard.tsx:51
-#. js-lingui-explicit-id
-msgid "Rule of the day"
-msgstr "กฎของวัน"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:157
-#: src/features/Dashboard/TasksCard.tsx:52
-#. js-lingui-explicit-id
-msgid "Get a personal grammar rule to learn"
-msgstr "รับกฎไวยากรณ์ส่วนตัวเพื่อเรียนรู้"
-
-#: src/features/Dashboard/TasksCard.tsx:56
-#: src/features/Dashboard/TasksCard.tsx:64
-#. js-lingui-explicit-id
-msgid "Complete previous tasks first"
-msgstr "ทำงานที่ยังไม่เสร็จให้เสร็จก่อน"
-
-#: src/features/Dashboard/TasksCard.tsx:61
-#. js-lingui-explicit-id
-msgid "New words"
-msgstr "คำศัพท์ใหม่"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:178
-#: src/features/Dashboard/TasksCard.tsx:62
-#. js-lingui-explicit-id
-msgid "Practice new vocabulary with the AI"
-msgstr "ฝึกคำศัพท์ใหม่กับ AI"
-
-#: src/features/Dashboard/HomeworkCard.tsx:21
-#. js-lingui-explicit-id
-msgid "Homework"
-msgstr "การบ้าน"
-
-#: src/features/Dashboard/HomeworkCard.tsx:57
-#. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "ยังไม่มีการบ้านมอบหมายเลย"
-
-#: src/features/Dashboard/HomeworkCard.tsx:66
-#. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "เริ่มต้นการสนทนาเพื่อที่จะได้รับหนึ่งอัน۔"
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "ข้าม"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "แสดงทั้งหมด"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1282
-#: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:423
-#: src/features/Dashboard/PlanDashboardCards.tsx:553
-#. js-lingui-explicit-id
-msgid "Goal"
-msgstr "เป้าหมาย"
-
-#: src/features/Dashboard/GoalCard.tsx:13
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "ตั้งเป้าหมายของการเรียนรู้ของคุณ"
-
-#: src/features/Dashboard/GoalCard.tsx:28
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "เริ่ม | 5 นาที"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:70
 #. js-lingui-explicit-id
@@ -4188,6 +4114,14 @@ msgstr "มีสิ่งที่น่าสนใจสำหรับคุ
 msgid "Let's start"
 msgstr "เริ่มเลย"
 
+#: src/features/Conversation/ConversationCanvas2.tsx:1282
+#: src/features/Dashboard/GoalCard.tsx:12
+#: src/features/Dashboard/PlanDashboardCards.tsx:423
+#: src/features/Dashboard/PlanDashboardCards.tsx:553
+#. js-lingui-explicit-id
+msgid "Goal"
+msgstr "เป้าหมาย"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:424
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
@@ -4227,6 +4161,69 @@ msgstr "สร้างบทเรียนที่ไม่ซ้ำซ้อ
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "เพื่อสร้างบทเรียนเพิ่มเติม คุณต้องสมบูรณ์อย่างน้อย 3 บทเรียน"
+
+#: src/features/Dashboard/TasksCard.tsx:39
+#. js-lingui-explicit-id
+msgid "Daily Tasks"
+msgstr "งานประจำวัน"
+
+#: src/features/Dashboard/TasksCard.tsx:51
+#. js-lingui-explicit-id
+msgid "Rule of the day"
+msgstr "กฎของวัน"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:157
+#: src/features/Dashboard/TasksCard.tsx:52
+#. js-lingui-explicit-id
+msgid "Get a personal grammar rule to learn"
+msgstr "รับกฎไวยากรณ์ส่วนตัวเพื่อเรียนรู้"
+
+#: src/features/Dashboard/TasksCard.tsx:56
+#: src/features/Dashboard/TasksCard.tsx:64
+#. js-lingui-explicit-id
+msgid "Complete previous tasks first"
+msgstr "ทำงานที่ยังไม่เสร็จให้เสร็จก่อน"
+
+#: src/features/Dashboard/TasksCard.tsx:61
+#. js-lingui-explicit-id
+msgid "New words"
+msgstr "คำศัพท์ใหม่"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:178
+#: src/features/Dashboard/TasksCard.tsx:62
+#. js-lingui-explicit-id
+msgid "Practice new vocabulary with the AI"
+msgstr "ฝึกคำศัพท์ใหม่กับ AI"
+
+#: src/features/Dashboard/RulesToLearn.tsx:36
+#. js-lingui-explicit-id
+msgid "New rule to practice."
+msgstr "กฎใหม่ในการฝึกฝน."
+
+#: src/features/Dashboard/HomeworkCard.tsx:21
+#. js-lingui-explicit-id
+msgid "Homework"
+msgstr "การบ้าน"
+
+#: src/features/Dashboard/HomeworkCard.tsx:57
+#. js-lingui-explicit-id
+msgid "No homework assigned yet."
+msgstr "ยังไม่มีการบ้านมอบหมายเลย"
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "เริ่มต้นการสนทนาเพื่อที่จะได้รับหนึ่งอัน۔"
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "ข้าม"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "แสดงทั้งหมด"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
 #. js-lingui-explicit-id
@@ -4282,21 +4279,6 @@ msgstr "แสดงความคิดเห็นของคุณ"
 #. js-lingui-explicit-id
 msgid "Send Feedback"
 msgstr "ส่งข้อเสนอแนะ"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:55
-#. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "ปฏิทินความก้าวหน้า"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:69
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "น้อยลง"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:90
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "เพิ่มเติม"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4400,11 +4382,41 @@ msgstr "เตรียมสมอง"
 msgid "Upload language skills directly to your brain"
 msgstr "อัปโหลดทักษะการใช้ภาษาลงไปยังสมองของคุณโดยตรง"
 
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:55
+#. js-lingui-explicit-id
+msgid "Progress Calendar"
+msgstr "ปฏิทินความก้าวหน้า"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:69
+#. js-lingui-explicit-id
+msgid "Less"
+msgstr "น้อยลง"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:90
+#. js-lingui-explicit-id
+msgid "More"
+msgstr "เพิ่มเติม"
+
 #: src/features/Conversation/useConversationsAnalysis.ts:89
 #: src/features/Conversation/useConversationsAnalysis.ts:132
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "ข้อผิดพลาดในการวิเคราะห์บทสนทนา"
+
+#: src/features/Conversation/ConversationPage.tsx:126
+#. js-lingui-explicit-id
+msgid "Loading Goal..."
+msgstr "กำลังโหลดวัตถุประสงค์..."
+
+#: src/features/Conversation/ConversationPage.tsx:150
+#. js-lingui-explicit-id
+msgid "Crafting new words..."
+msgstr "การสร้างคำใหม่..."
+
+#: src/features/Conversation/ConversationPage.tsx:154
+#. js-lingui-explicit-id
+msgid "Crafting new rule..."
+msgstr "กำลังสร้างกฎใหม่..."
 
 #: src/features/Conversation/ConversationError.tsx:34
 #. js-lingui-explicit-id
@@ -4425,36 +4437,6 @@ msgstr "การแจ้งเตือนถูกส่งไปยังท
 #. js-lingui-explicit-id
 msgid "Reload page"
 msgstr "โหลดหน้าเว็บใหม่"
-
-#: src/features/Conversation/ConversationPage.tsx:126
-#. js-lingui-explicit-id
-msgid "Loading Goal..."
-msgstr "กำลังโหลดวัตถุประสงค์..."
-
-#: src/features/Conversation/ConversationPage.tsx:150
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "การสร้างคำใหม่..."
-
-#: src/features/Conversation/ConversationPage.tsx:154
-#. js-lingui-explicit-id
-msgid "Crafting new rule..."
-msgstr "กำลังสร้างกฎใหม่..."
-
-#: src/features/Conversation/AliasGamePanel.tsx:122
-#. js-lingui-explicit-id
-msgid "Describe these words:"
-msgstr "อธิบายคำเหล่านี้:"
-
-#: src/features/Conversation/AliasGamePanel.tsx:171
-#. js-lingui-explicit-id
-msgid "More options"
-msgstr "ตัวเลือกเพิ่มเติม"
-
-#: src/features/Conversation/AliasGamePanel.tsx:180
-#. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "คำที่เดา:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:316
 #. js-lingui-explicit-id
@@ -4615,21 +4597,6 @@ msgstr "ยกเลิกการบันทึก"
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "เติมเงิน"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:26
-#. js-lingui-explicit-id
-msgid "Ready?"
-msgstr "พร้อมแล้วหรือยัง?"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:30
-#. js-lingui-explicit-id
-msgid "Next, allow microphone access to talk with the AI."
-msgstr "ต่อไป, ให้การเข้าถึงไมโครโฟนเพื่อสนทนากับ AI."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:55
-#. js-lingui-explicit-id
-msgid "I am ready"
-msgstr "ฉันพร้อม"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6142,49 +6109,55 @@ msgstr "การพัฒนาทักษะทางวิชาชีพ"
 msgid "All Blogs"
 msgstr "บล็อกทั้งหมด"
 
-#: src/features/Blog/BlogCard.tsx:168
+#: src/features/Conversation/ConfirmConversationModal.tsx:26
 #. js-lingui-explicit-id
-msgid "Read more"
-msgstr "อ่านเพิ่มเติม"
+msgid "Ready?"
+msgstr "พร้อมแล้วหรือยัง?"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Next, allow microphone access to talk with the AI."
+msgstr "ต่อไป, ให้การเข้าถึงไมโครโฟนเพื่อสนทนากับ AI."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:55
+#. js-lingui-explicit-id
+msgid "I am ready"
+msgstr "ฉันพร้อม"
+
+#: src/features/Conversation/AliasGamePanel.tsx:122
+#. js-lingui-explicit-id
+msgid "Describe these words:"
+msgstr "อธิบายคำเหล่านี้:"
+
+#: src/features/Conversation/AliasGamePanel.tsx:171
+#. js-lingui-explicit-id
+msgid "More options"
+msgstr "ตัวเลือกเพิ่มเติม"
+
+#: src/features/Conversation/AliasGamePanel.tsx:180
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "คำที่เดา:"
+
+#: src/features/Dashboard/GoalCard.tsx:13
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "ตั้งเป้าหมายของการเรียนรู้ของคุณ"
+
+#: src/features/Dashboard/GoalCard.tsx:28
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "เริ่ม | 5 นาที"
 
 #: src/features/Blog/ListBlog.tsx:131
 #. js-lingui-explicit-id
 msgid "No blogs found"
 msgstr "ไม่พบบล็อก"
 
-#: src/features/Blog/BlogOnePage.tsx:141
+#: src/features/Blog/BlogCard.tsx:168
 #. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "ดูโพสต์ทั้งหมด"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "บทบาทเล่นเพื่อฝึกฝน"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "คุณสามารถลองใช้ AI ในภาคปฏิบัติได้เลยตอนนี้"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "ลองใช้ฟรี"
-
-#: src/features/Blog/ListBlogIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "อ่านและเรียนรู้จากบล็อกของฉัน"
-
-#: src/features/Blog/ListBlogIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr ""
-"ได้รับแรงบันดาลใจและเรียนรู้เกี่ยวกับแนวโน้มล่าสุดในด้านการเรียนรู้ภาษา "
-"การสอน และเทคโนโลยี。"
+msgid "Read more"
+msgstr "อ่านเพิ่มเติม"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
 #. js-lingui-explicit-id
@@ -6616,6 +6589,40 @@ msgstr ""
 msgid "Good preparation today means career success tomorrow."
 msgstr "การเตรียมตัวดีในวันนี้หมายความว่าความสำเร็จในอาชีพในวันพรุ่งนี้"
 
+#: src/features/Blog/ListBlogIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Read and Learn with my blog"
+msgstr "อ่านและเรียนรู้จากบล็อกของฉัน"
+
+#: src/features/Blog/ListBlogIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
+msgstr ""
+"ได้รับแรงบันดาลใจและเรียนรู้เกี่ยวกับแนวโน้มล่าสุดในด้านการเรียนรู้ภาษา "
+"การสอน และเทคโนโลยี。"
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "ดูโพสต์ทั้งหมด"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "บทบาทเล่นเพื่อฝึกฝน"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "คุณสามารถลองใช้ AI ในภาคปฏิบัติได้เลยตอนนี้"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "ลองใช้ฟรี"
+
 #: src/features/Auth/SignInForm.tsx:30
 #. js-lingui-explicit-id
 msgid "Open personal plan"
@@ -6708,6 +6715,16 @@ msgstr "ชนะเกมแล้วรับแอพ <0>ฟรี</0>"
 #: src/features/Game/GameBadge.tsx:98
 msgid "You are <0>the Leader</0> of {playersCount} players."
 msgstr "คุณคือ <0>ผู้นำ</0> ของผู้เล่น {playersCount} คน"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:344
+#. js-lingui-explicit-id
+#~ msgid "Pay and Subscribe"
+#~ msgstr "ชำระเงินและสมัครสมาชิก"
+
+#: src/features/Telegram/TgAppPage.tsx:113
+#. js-lingui-explicit-id
+#~ msgid "Failed to initialize Telegram Mini App"
+#~ msgstr "ล้มเหลวในการเริ่มต้นแอปขนาดเล็กของ Telegram"
 
 #: src/features/TgApp/TgAppPage.tsx:168
 #. js-lingui-explicit-id
