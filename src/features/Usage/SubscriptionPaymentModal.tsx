@@ -20,6 +20,8 @@ import { FeatureList } from "../Landing/Price/FeatureList";
 import { isTMA, invoice } from "@telegram-apps/sdk-react";
 import { sendCreateTelegramInvoiceRequest } from "@/app/api/telegram/createInvoice/sendCreateTelegramInvoiceRequest";
 
+const isTelegramApp = isTMA();
+
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
   const auth = useAuth();
@@ -46,7 +48,7 @@ export const SubscriptionPaymentModal = () => {
 
   const [isRedirecting, setIsRedirecting] = useState(false);
   const clickOnConfirmRequest = async () => {
-    const isTelegramApp = isTMA();
+    console.log("isTelegramApp", isTelegramApp);
     if (isTelegramApp) {
       clickOnConfirmRequestTelegramStars();
     } else {
@@ -67,12 +69,7 @@ export const SubscriptionPaymentModal = () => {
         token
       );
       console.log("checkoutInfo", checkoutInfo);
-      await sentPaymentTgMessage({
-        message: "Event: Telegram Stars payment creation",
-        email: auth?.userInfo?.email || "unknownEmail",
-        token,
-      });
-      if (!checkoutInfo.error) {
+      if (checkoutInfo.error) {
         console.log("checkoutInfo", checkoutInfo);
         setIsRedirecting(false);
         notifications.show(i18n._("Error creating payment session"), {
@@ -88,8 +85,8 @@ export const SubscriptionPaymentModal = () => {
         return;
       } else {
         setIsRedirecting(false);
-        /// xxx
-        invoice.open(checkoutInfo.invoice_link);
+        const result = invoice.open(checkoutInfo.invoice_link);
+        console.log("invoice.open - result", result);
       }
     } catch (error) {
       console.error("Error during payment process:", error);
@@ -153,11 +150,13 @@ export const SubscriptionPaymentModal = () => {
     scrollTop();
     setIsShowConfirmPayments(true);
 
-    sentPaymentTgMessage({
-      message: "Event: Press on Pay Button",
-      email: auth?.userInfo?.email || "unknownEmail",
-      token: await auth.getToken(),
-    });
+    if (!isTelegramApp) {
+      sentPaymentTgMessage({
+        message: "Event: Press on Pay Button",
+        email: auth?.userInfo?.email || "unknownEmail",
+        token: await auth.getToken(),
+      });
+    }
   };
 
   const isActiveSubscription = usage.isFullAccess;
