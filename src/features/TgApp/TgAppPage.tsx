@@ -35,8 +35,6 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   const isPlanLoading = plan.loading;
   const router = useRouter();
   const isAuth = auth.isAuthorized;
-  console.log("isAuth", isAuth);
-  console.log("isPlanLoading", isPlanLoading);
 
   const isAnyPlanForLearnLanguage = plan.latestGoal;
   const isNeedToRedirectToApp =
@@ -67,25 +65,20 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   }, [isNeedToRedirectToQuiz]);
 
   const raw = useSignal(_initDataRaw);
-  console.log("raw", raw);
   const isInitializing = useRef(false);
 
   const initToken = async (initData: string) => {
     try {
       setIsTelegramAuthLoading(true);
       setError(null);
-      console.log("Start initialization");
       const res = await sendTelegramTokenRequest({ initData });
-      console.log("Telegram auth response:", res);
       if (res.error) {
         setError(
           `${res.error.code}: ${res.error.message}${res.error.reason ? ` (${res.error.reason})` : ""}`
         );
       } else {
         const token = res.token;
-        console.log("Auth start");
         const result = await auth.signInWithCustomToken(token);
-        console.log("auth result", result);
         if (result.error) {
           setError(result.error || i18n._("Unknown error during sign-in"));
         }
@@ -100,11 +93,9 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   useEffect(() => {
     const isTelegramApp = isTMA();
     if (!isTelegramApp) {
-      console.log("NOT TELEGRAM");
       setError(i18n._("Wrong Link"));
       return;
     }
-    console.log("Init env");
     mockEnv().then(() => {
       try {
         const launchParams = retrieveLaunchParams();
@@ -125,10 +116,8 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
     });
   }, []);
 
-  console.log("auth.loading", auth.loading);
   useEffect(() => {
     if (isInitializing.current || auth.isAuthorized || auth.loading) {
-      console.log("Skip initialization");
       return;
     }
 
@@ -182,25 +171,23 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
               {auth.loading ? (
                 <Typography>{i18n._("Loading.")}</Typography>
               ) : isTelegramAuthLoading ? (
-                <Typography>{i18n._("Authorizing with Telegram...")}</Typography>
-              ) : null}
-
-              <Typography>auth.isAuthorized: {auth.isAuthorized ? "true" : "false"}</Typography>
-              <Typography>auth.loading: {auth.loading ? "true" : "false"}</Typography>
-              <Typography>
-                isTelegramAuthLoading: {isTelegramAuthLoading ? "true" : "false"}
-              </Typography>
+                <Typography>{i18n._("Loading..")}</Typography>
+              ) : (
+                <Typography>{i18n._("Loading...")}</Typography>
+              )}
 
               {error && <Typography color="error">❌ {error}</Typography>}
 
               <Button
                 variant="text"
-                onClick={() => {
-                  auth.logout();
+                onClick={async () => {
+                  await auth.logout();
                   setTimeout(() => {
-                    // reload page
                     window.location.reload();
-                  }, 1000);
+                  }, 300);
+                }}
+                style={{
+                  opacity: 0.7,
                 }}
               >
                 {i18n._("Refresh")}
