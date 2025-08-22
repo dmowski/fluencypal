@@ -183,6 +183,10 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
                 variant="text"
                 onClick={() => {
                   auth.logout();
+                  setTimeout(() => {
+                    // reload page
+                    window.location.reload();
+                  }, 1000);
                 }}
               >
                 {i18n._("Refresh")}
