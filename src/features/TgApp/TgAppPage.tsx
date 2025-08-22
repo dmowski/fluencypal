@@ -6,6 +6,11 @@ import { maxContentWidth } from "../Landing/landingSettings";
 import { useEffect, useRef, useState } from "react";
 import { sendTelegramTokenRequest } from "@/app/api/telegram/token/sendTelegramTokenRequest";
 import { TelegramAuthResponse } from "@/app/api/telegram/token/types";
+import {
+  initDataRaw as _initDataRaw,
+  initDataState as _initDataState,
+  useSignal,
+} from "@telegram-apps/sdk-react";
 
 interface TgAppPageProps {
   lang: SupportedLanguage;
@@ -16,15 +21,19 @@ export const TgAppPage = ({ lang, defaultLangToLearn }: TgAppPageProps) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const raw = useSignal(_initDataRaw); // string | undefined
+  const isInitializing = useRef(false);
+
   const initToken = async (initData: string) => {
     try {
       setLoading(true);
       setError(null);
       const res = await sendTelegramTokenRequest({ initData });
       setResponse(res);
-      if (res.error) {
-        setError(`${res.error.code}: ${res.error.message}`);
-      }
+      if (res.error)
+        setError(
+          `${res.error.code}: ${res.error.message}${res.error.reason ? ` (${res.error.reason})` : ""}`
+        );
     } catch (err: any) {
       setError(err?.message || "Unknown error");
     } finally {
@@ -32,21 +41,18 @@ export const TgAppPage = ({ lang, defaultLangToLearn }: TgAppPageProps) => {
     }
   };
 
-  const isInitializing = useRef(false);
-
   useEffect(() => {
-    const isWindow = typeof window !== "undefined";
-    if (!isWindow || isInitializing.current) return;
-    const tg = (window as any).Telegram?.WebApp;
-    const initData = tg?.initData; // raw querystring provided by Telegram
-    console.log("initData", initData, tg);
-    if (tg && initData) {
+    if (isInitializing.current) return;
+
+    if (raw) {
       isInitializing.current = true;
-      initToken(initData);
+      setTimeout(() => {
+        void initToken(raw);
+      }, 200);
     } else {
       setError("Not running inside Telegram WebApp");
     }
-  }, []);
+  }, [raw]);
 
   return (
     <Stack sx={{}}>
