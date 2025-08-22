@@ -18,11 +18,13 @@ import { usePlan } from "../Plan/usePlan";
 import { useSettings } from "../Settings/useSettings";
 import { useRouter } from "next/navigation";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { useLingui } from "@lingui/react";
 
 interface TgAppPageProps {
   lang: SupportedLanguage;
 }
 export const TgAppPage = ({ lang }: TgAppPageProps) => {
+  const { i18n } = useLingui();
   const [isTelegramAuthLoading, setIsTelegramAuthLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const auth = useAuth();
@@ -79,11 +81,11 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
         const result = await auth.signInWithCustomToken(token);
         console.log("auth result", result);
         if (!result.isDone) {
-          setError(result.error || "Unknown error during sign-in");
+          setError(result.error || i18n._("Unknown error during sign-in"));
         }
       }
     } catch (err: any) {
-      setError(err?.message || "Unknown error");
+      setError(err?.message || i18n._("Unknown error"));
     } finally {
       setIsTelegramAuthLoading(false);
     }
@@ -104,7 +106,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
           mockForMacOS: platform === "macos",
         });
       } catch (e) {
-        setError("Failed to initialize Telegram Mini App");
+        setError(i18n._("Failed to initialize Telegram Mini App"));
         throw e;
       }
     });
@@ -117,7 +119,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
       isInitializing.current = true;
       void initToken(raw);
     } else {
-      setError("Not running inside Telegram WebApp");
+      setError(i18n._("Not running inside Telegram App"));
     }
   }, [raw, auth.isAuthorized]);
 
@@ -161,9 +163,9 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
               }}
             >
               {auth.loading ? (
-                <Typography>Loading.</Typography>
+                <Typography>{i18n._("Loading.")}</Typography>
               ) : isTelegramAuthLoading ? (
-                <p>Authorizing with Telegram...</p>
+                <Typography>{i18n._("Authorizing with Telegram...")}</Typography>
               ) : null}
 
               {error && <Typography color="error">❌ {error}</Typography>}
@@ -174,7 +176,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
                   auth.logout();
                 }}
               >
-                Refresh
+                {i18n._("Refresh")}
               </Button>
             </Stack>
           </Stack>
