@@ -101,7 +101,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
       setError(i18n._("Wrong Link"));
       return;
     }
-
+    console.log("Init env");
     mockEnv().then(() => {
       try {
         const launchParams = retrieveLaunchParams();
