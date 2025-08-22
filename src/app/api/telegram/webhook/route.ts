@@ -1,4 +1,5 @@
 import { envConfig } from "../../config/envConfig";
+import { addPaymentLog } from "../../payment/addPaymentLog";
 
 export const runtime = "nodejs";
 const BOT_TOKEN = envConfig.telegramBotKey;
@@ -32,29 +33,23 @@ export async function POST(req: Request) {
   if (msg?.successful_payment) {
     const sp = msg.successful_payment;
     console.log("SP", sp);
-    // sp.currency === "XTR"
-    // sp.total_amount: integer in smallest units (Stars)
-    // sp.invoice_payload: your payload from createInvoiceLink
-    // sp.telegram_payment_charge_id: store for potential refunds
-
-    // 👉 Grant entitlements: add credits, unlock sub, mark order paid in DB
-    // await grantEntitlements({ tgUserId: msg.from.id, payload: sp.invoice_payload, stars: sp.total_amount });
-    // xxx
 
     const userId = msg.from.id;
-    console.log("userId", userId);
-    /*
+    const firebaseUserId = `tg:${userId}`;
+    console.log("firebaseUserId", firebaseUserId);
+    const startCount = sp.total_amount;
+    const currency = sp.currency;
+
     await addPaymentLog({
-      amount: amountPaid,
-      userId: userId,
-      paymentId,
-      currency: currency || "pln",
+      amount: startCount,
+      userId: firebaseUserId,
+      paymentId: sp.telegram_payment_charge_id,
+      currency,
       amountOfHours: 0,
       type: "subscription-full-v1",
-      receiptUrl,
-      monthsCount: monthsCount,
+      receiptUrl: sp.invoice_payload,
+      monthsCount: 1,
     });
-    */
 
     // Optional: confirm back to the user
     await call("sendMessage", {
