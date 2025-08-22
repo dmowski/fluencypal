@@ -6,8 +6,7 @@ import { validateAuthToken } from "../../config/firebase";
 import { TELEGRAM_MONTHLY_PRICE_START } from "@/features/Telegram/starPrices";
 
 const BOT_TOKEN = envConfig.telegramBotKey;
-const isTest = false;
-const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}${isTest ? "/test" : ""}`;
+const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}`;
 
 function makeOrderPayload(uid: string, monthCount: number) {
   // Use a signed/unguessable payload so you can verify later in webhook
@@ -45,7 +44,7 @@ export async function POST(request: NextRequest) {
     if (!envConfig.telegramBotKey || !TG_API) {
       const response: CreateTelegramInvoiceResponse = {
         ...base,
-        error: { code: "SERVER_MISCONFIGURED", message: "TELEGRAM_BOT_TOKEN is missing" },
+        error: { code: "SERVER_MISCONFIGURED", message: "Telegram env config is missing" },
       };
       return Response.json(response);
     }

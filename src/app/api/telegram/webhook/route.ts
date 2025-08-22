@@ -4,8 +4,7 @@ import { addPaymentLog } from "../../payment/addPaymentLog";
 
 export const runtime = "nodejs";
 const BOT_TOKEN = envConfig.telegramBotKey;
-const isTest = false;
-const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}${isTest ? "/test" : ""}`;
+const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}`;
 
 // Respond helper
 async function call(method: string, payload: any) {

@@ -1,4 +1,3 @@
-import { TelegramRequest, TelegramResponse } from "@/common/requests";
 import { TelegramAuthRequest, TelegramAuthResponse, TelegramUser } from "./types";
 import crypto from "node:crypto";
 import { envConfig } from "../../config/envConfig";

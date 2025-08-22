@@ -1,3 +1,9 @@
+const isTelegramBotTest = process.env.TELEGRAM_BOT_IS_TEST === "true";
+
+const prodTelegramBotKey = process.env.TELEGRAM_BOT_TOKEN || "";
+const testTelegramBotKey = process.env.TELEGRAM_BOT_TOKEN_TEST || "";
+
 export const envConfig = {
-  telegramBotKey: process.env.TELEGRAM_BOT_TOKEN || "",
+  isTelegramTestMode: isTelegramBotTest,
+  telegramBotKey: isTelegramBotTest ? testTelegramBotKey : prodTelegramBotKey,
 };
