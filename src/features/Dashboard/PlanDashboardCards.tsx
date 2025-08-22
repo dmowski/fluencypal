@@ -218,7 +218,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           paddingTop: "100px",
           paddingBottom: "40px",
           boxSizing: "border-box",
-          zIndex: 1000,
+          zIndex: 999,
           gap: "40px",
         }}
       >

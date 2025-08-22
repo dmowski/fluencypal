@@ -26,7 +26,7 @@ export const CustomModal = ({
       open={isOpen}
       onClose={onClose}
       sx={{
-        zIndex: 1000,
+        zIndex: 999,
       }}
       slotProps={{
         backdrop: {

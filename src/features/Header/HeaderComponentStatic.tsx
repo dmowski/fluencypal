@@ -101,7 +101,7 @@ export function HeaderComponentStatic({
           position: isFixedHeader ? "fixed" : "absolute",
           top: 0,
           left: 0,
-          zIndex: 1000,
+          zIndex: 999,
           backgroundColor: "rgba(10, 18, 30, 0.7)",
           backdropFilter: "blur(10px)",
           //borderBottom: isActiveConversation ? "1px solid rgba(255, 255, 255, 0.1)" : "none",

@@ -115,7 +115,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
           position: "fixed",
           top: 0,
           left: 0,
-          zIndex: 1000,
+          zIndex: 999,
           backgroundColor:
             !usage.isFullAccess && !isLanding
               ? "transparent"
