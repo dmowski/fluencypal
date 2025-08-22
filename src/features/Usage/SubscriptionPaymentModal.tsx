@@ -85,7 +85,7 @@ export const SubscriptionPaymentModal = () => {
         return;
       } else {
         setIsRedirecting(false);
-        const result = invoice.open(checkoutInfo.invoice_link);
+        const result = invoice.open(checkoutInfo.invoice_link, "url");
         console.log("invoice.open - result", result);
       }
     } catch (error) {
