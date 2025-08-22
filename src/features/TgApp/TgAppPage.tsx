@@ -35,6 +35,8 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   const isPlanLoading = plan.loading;
   const router = useRouter();
   const isAuth = auth.isAuthorized;
+  console.log("isAuth", isAuth);
+  console.log("isPlanLoading", isPlanLoading);
 
   const isAnyPlanForLearnLanguage = plan.latestGoal;
   const isNeedToRedirectToApp =
@@ -72,6 +74,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
     try {
       setIsTelegramAuthLoading(true);
       setError(null);
+      console.log("Start initialization");
       const res = await sendTelegramTokenRequest({ initData });
       console.log("Telegram auth response:", res);
       if (res.error) {
@@ -123,7 +126,10 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   }, []);
 
   useEffect(() => {
-    if (isInitializing.current || auth.isAuthorized || auth.loading) return;
+    if (isInitializing.current || auth.isAuthorized || auth.loading) {
+      console.log("Skip initialization");
+      return;
+    }
 
     if (raw) {
       isInitializing.current = true;
