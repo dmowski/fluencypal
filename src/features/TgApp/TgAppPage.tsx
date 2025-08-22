@@ -82,7 +82,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
         const token = res.token;
         const result = await auth.signInWithCustomToken(token);
         console.log("auth result", result);
-        if (!result.isDone) {
+        if (result.error) {
           setError(result.error || i18n._("Unknown error during sign-in"));
         }
       }
