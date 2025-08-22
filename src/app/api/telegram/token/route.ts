@@ -1,6 +1,6 @@
 import { TelegramRequest, TelegramResponse } from "@/common/requests";
 import { TelegramAuthRequest, TelegramAuthResponse, TelegramUser } from "./types";
-import crypto from "crypto";
+import crypto from "node:crypto";
 import { envConfig } from "../../config/envConfig";
 import {
   createAuthCustomToken,
@@ -13,6 +13,8 @@ import {
 function parseQueryString(raw: string): Record<string, string> {
   const params = new URLSearchParams(raw);
   const out: Record<string, string> = {};
+  // use URLSearchParams to decode and then sort keys deterministically
+  params.sort();
   for (const [k, v] of params.entries()) out[k] = v;
   return out;
 }
@@ -26,45 +28,64 @@ function safeJsonParse<T>(s?: string): T | undefined {
   }
 }
 
-function verifyTelegramInitData(
+export function verifyTelegramInitData(
   initData: string,
   botToken: string,
-  maxAgeMs = 10 * 60 * 1000
+  maxAgeMs = 10 * 60 * 1000 // 10 minutes; relax during dev if needed
 ): { ok: true; parsed: Record<string, string> } | { ok: false; reason: string } {
   try {
     const parsed = parseQueryString(initData);
-    const providedHash = parsed["hash"];
-    if (!providedHash) return { ok: false, reason: "Missing hash" };
 
+    const providedHash = parsed["hash"];
+    if (!providedHash) {
+      console.log("Missing hash");
+      return { ok: false, reason: "Missing hash" };
+    }
+
+    // Build data-check-string of all k=v except 'hash', sorted by key
     const keys = Object.keys(parsed)
       .filter((k) => k !== "hash")
       .sort();
     const dataCheckString = keys.map((k) => `${k}=${parsed[k]}`).join("\n");
 
-    const secretKey = crypto.createHash("sha256").update(botToken).digest();
+    // ⚠️ WebApp rule: secret = HMAC_SHA256(bot_token, key = "WebAppData")
+    const secretKey = crypto.createHmac("sha256", "WebAppData").update(botToken).digest();
+
     const expectedHash = crypto
       .createHmac("sha256", secretKey)
       .update(dataCheckString)
       .digest("hex");
-    if (expectedHash !== providedHash) return { ok: false, reason: "Invalid signature" };
+
+    if (expectedHash !== providedHash) {
+      console.log("Invalid signature:", { expectedHash, providedHash });
+      return { ok: false, reason: "Invalid signature" };
+    }
 
     const authDateStr = parsed["auth_date"];
-    if (!authDateStr) return { ok: false, reason: "Missing auth_date" };
+    if (!authDateStr) {
+      console.log("Missing auth_date");
+      return { ok: false, reason: "Missing auth_date" };
+    }
     const authDate = Number(authDateStr);
-    if (!Number.isFinite(authDate)) return { ok: false, reason: "Bad auth_date" };
+    if (!Number.isFinite(authDate)) {
+      console.log("Invalid auth_date:", authDateStr);
+      return { ok: false, reason: "Bad auth_date" };
+    }
 
     const ageMs = Date.now() - authDate * 1000;
-    if (ageMs < 0 || ageMs > maxAgeMs) return { ok: false, reason: "initData expired" };
+    if (ageMs < 0 || ageMs > maxAgeMs) {
+      console.log("Expired initData:", { ageMs, maxAgeMs });
+      return { ok: false, reason: "initData expired" };
+    }
 
     return { ok: true, parsed };
-  } catch {
+  } catch (e) {
+    console.log("initData parse/verify error:", e);
     return { ok: false, reason: "initData parse/verify error" };
   }
 }
 
 export async function POST(request: Request) {
-  const tgRequest = (await request.json()) as TelegramAuthRequest;
-
   const baseResponse: TelegramAuthResponse = {
     token: "",
     uid: "",
@@ -81,6 +102,7 @@ export async function POST(request: Request) {
     // 1) Read input exactly as requested
     const tgRequest = (await request.json()) as TelegramAuthRequest;
     const initData = tgRequest.initData;
+    console.log("initData", initData);
 
     // 2) Verify Telegram signature
     const botToken = envConfig.telegramBotKey;
