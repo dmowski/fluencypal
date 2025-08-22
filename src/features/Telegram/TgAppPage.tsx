@@ -12,8 +12,8 @@ import {
   useSignal,
   isTMA,
 } from "@telegram-apps/sdk-react";
-import { mockEnv } from "../Telegram/mockEnv";
-import { init } from "../Telegram/init";
+import { mockEnv } from "./mockEnv";
+import { init } from "./init";
 import { useAuth } from "../Auth/useAuth";
 import { usePlan } from "../Plan/usePlan";
 import { useSettings } from "../Settings/useSettings";

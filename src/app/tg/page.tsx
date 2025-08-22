@@ -4,7 +4,7 @@ import { initLingui } from "@/initLingui";
 import { allMessages } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { generateMetadataInfo } from "@/libs/metadata";
-import { TgAppPage } from "@/features/TgApp/TgAppPage";
+import { TgAppPage } from "@/features/Telegram/TgAppPage";
 import { PracticeProvider } from "@/app/practiceProvider";
 
 export async function generateStaticParams() {
