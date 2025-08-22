@@ -9,8 +9,11 @@ import { TelegramAuthResponse } from "@/app/api/telegram/token/types";
 import {
   initDataRaw as _initDataRaw,
   initDataState as _initDataState,
+  retrieveLaunchParams,
   useSignal,
 } from "@telegram-apps/sdk-react";
+import { mockEnv } from "../Telegram/mockEnv";
+import { init } from "../Telegram/init";
 
 interface TgAppPageProps {
   lang: SupportedLanguage;
@@ -22,6 +25,7 @@ export const TgAppPage = ({ lang, defaultLangToLearn }: TgAppPageProps) => {
   const [error, setError] = useState<string | null>(null);
 
   const raw = useSignal(_initDataRaw); // string | undefined
+  console.log("raw", raw);
   const isInitializing = useRef(false);
 
   const initToken = async (initData: string) => {
@@ -40,6 +44,27 @@ export const TgAppPage = ({ lang, defaultLangToLearn }: TgAppPageProps) => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    mockEnv().then(() => {
+      try {
+        const launchParams = retrieveLaunchParams();
+        const { tgWebAppPlatform: platform } = launchParams;
+        const debug =
+          (launchParams.tgWebAppStartParam || "").includes("debug") ||
+          process.env.NODE_ENV === "development";
+
+        // Configure all application dependencies.
+        init({
+          debug,
+          eruda: debug && ["ios", "android"].includes(platform),
+          mockForMacOS: platform === "macos",
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (isInitializing.current) return;
