@@ -1,3 +1,4 @@
+import { TELEGRAM_MONTHLY_PRICE_START } from "@/features/Telegram/starPrices";
 import { envConfig } from "../../config/envConfig";
 import { addPaymentLog } from "../../payment/addPaymentLog";
 
@@ -23,35 +24,34 @@ export async function POST(req: Request) {
     const q = update.pre_checkout_query;
     console.log("Approve pre-checkout:", q);
     // Optional: validate q.invoice_payload, user eligibility, stock, etc.
+
     await call("answerPreCheckoutQuery", { pre_checkout_query_id: q.id, ok: true });
     return new Response("ok");
   }
 
   // 2) Fulfill on successful payment
   const msg = update.message;
-  console.log("TG webhook message:", msg);
   if (msg?.successful_payment) {
     const sp = msg.successful_payment;
-    console.log("SP", sp);
 
     const userId = msg.from.id;
     const firebaseUserId = `tg:${userId}`;
-    console.log("firebaseUserId", firebaseUserId);
-    const startCount = sp.total_amount;
+    const startAdded = sp.total_amount;
     const currency = sp.currency;
 
+    const monthsCount = startAdded / TELEGRAM_MONTHLY_PRICE_START;
+
     await addPaymentLog({
-      amount: startCount,
+      amount: startAdded,
       userId: firebaseUserId,
       paymentId: sp.telegram_payment_charge_id,
       currency,
       amountOfHours: 0,
       type: "subscription-full-v1",
-      receiptUrl: sp.invoice_payload,
-      monthsCount: 1,
+      receiptUrl: "",
+      monthsCount: monthsCount,
     });
 
-    // Optional: confirm back to the user
     await call("sendMessage", {
       chat_id: msg.chat.id,
       text: `✅ Payment received! Thanks for your purchase.`,

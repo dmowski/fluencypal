@@ -84,9 +84,29 @@ export const SubscriptionPaymentModal = () => {
         });
         return;
       } else {
-        setIsRedirecting(false);
-        const result = invoice.open(checkoutInfo.invoice_link, "url");
+        const result = await invoice.open(checkoutInfo.invoice_link, "url");
         console.log("invoice.open - result", result);
+        if (result === "paid") {
+          await sentPaymentTgMessage({
+            message: "Event: Payment successful",
+            email: auth?.userInfo?.email || "unknownEmail",
+            token: await auth.getToken(),
+          });
+          notifications.show(i18n._("Payment successful! Thank you."), {
+            severity: "success",
+          });
+          scrollTop();
+          setIsShowConfirmPayments(false);
+        } else {
+          notifications.show(i18n._("Payment failed! Please try again."), {
+            severity: "error",
+          });
+
+          scrollTop();
+          setIsShowConfirmPayments(false);
+        }
+
+        setIsRedirecting(false);
       }
     } catch (error) {
       console.error("Error during payment process:", error);

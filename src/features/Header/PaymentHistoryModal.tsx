@@ -94,20 +94,18 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
                       <Typography variant="h6">
                         {log.currency.toUpperCase()} {log.amountAdded}
                       </Typography>
-                      {log.amountOfHours && (
+
+                      {!!log.amountOfHours && (
                         <Typography variant="body2">
                           {convertHoursToHumanFormat(log.amountOfHours)}
                         </Typography>
                       )}
-
-                      {log.amountOfDays && (
+                      {!!log.amountOfDays && (
                         <Typography variant="body2">{log.amountOfDays} days</Typography>
                       )}
-
-                      {log.amountOfMonth && (
+                      {!!log.amountOfMonth && (
                         <Typography variant="body2">{log.amountOfMonth} months</Typography>
                       )}
-
                       <Typography
                         variant="caption"
                         sx={{
