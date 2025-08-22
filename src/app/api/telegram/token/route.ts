@@ -28,7 +28,7 @@ function safeJsonParse<T>(s?: string): T | undefined {
   }
 }
 
-export function verifyTelegramInitData(
+function verifyTelegramInitData(
   initData: string,
   botToken: string,
   maxAgeMs = 10 * 60 * 1000 // 10 minutes; relax during dev if needed
