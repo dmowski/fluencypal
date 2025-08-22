@@ -65,6 +65,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   }, [isNeedToRedirectToQuiz]);
 
   const raw = useSignal(_initDataRaw);
+  console.log("raw", raw);
   const isInitializing = useRef(false);
 
   const initToken = async (initData: string) => {
