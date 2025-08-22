@@ -1,0 +1,1 @@
+export const TELEGRAM_MONTHLY_PRICE_START = 500;

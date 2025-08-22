@@ -17,6 +17,8 @@ import { sentPaymentTgMessage } from "./sentTgMessage";
 import dayjs from "dayjs";
 import { ContactList } from "../Landing/Contact/ContactList";
 import { FeatureList } from "../Landing/Price/FeatureList";
+import { isTMA, invoice } from "@telegram-apps/sdk-react";
+import { sendCreateTelegramInvoiceRequest } from "@/app/api/telegram/createInvoice/sendCreateTelegramInvoiceRequest";
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
@@ -44,8 +46,69 @@ export const SubscriptionPaymentModal = () => {
 
   const [isRedirecting, setIsRedirecting] = useState(false);
   const clickOnConfirmRequest = async () => {
+    const isTelegramApp = isTMA();
+    if (isTelegramApp) {
+      clickOnConfirmRequestTelegramStars();
+    } else {
+      clickOnConfirmRequestStripe();
+    }
+  };
+
+  const clickOnConfirmRequestTelegramStars = async () => {
+    console.log("clickOnConfirmRequestTelegramStars");
+    const token = await auth.getToken();
+
     try {
-      const token = await auth.getToken();
+      setIsRedirecting(true);
+      const checkoutInfo = await sendCreateTelegramInvoiceRequest(
+        {
+          monthCount: 1,
+        },
+        token
+      );
+      console.log("checkoutInfo", checkoutInfo);
+      await sentPaymentTgMessage({
+        message: "Event: Telegram Stars payment creation",
+        email: auth?.userInfo?.email || "unknownEmail",
+        token,
+      });
+      if (!checkoutInfo.error) {
+        console.log("checkoutInfo", checkoutInfo);
+        setIsRedirecting(false);
+        notifications.show(i18n._("Error creating payment session"), {
+          severity: "error",
+        });
+        return;
+      } else if (!checkoutInfo.invoice_link) {
+        console.log("checkoutInfo", checkoutInfo);
+        setIsRedirecting(false);
+        notifications.show(i18n._("Error creating payment session. Try again later."), {
+          severity: "error",
+        });
+        return;
+      } else {
+        setIsRedirecting(false);
+        /// xxx
+        invoice.open(checkoutInfo.invoice_link);
+      }
+    } catch (error) {
+      console.error("Error during payment process:", error);
+      setIsRedirecting(false);
+      notifications.show(i18n._("Error during payment process"), {
+        severity: "error",
+      });
+      await sentPaymentTgMessage({
+        message: "Error during payment process: Telegram stars",
+        email: auth?.userInfo?.email || "unknownEmail",
+        token: await auth.getToken(),
+      });
+    }
+  };
+
+  const clickOnConfirmRequestStripe = async () => {
+    const token = await auth.getToken();
+
+    try {
       setIsRedirecting(true);
       const checkoutInfo = await createStripeCheckout(
         {
