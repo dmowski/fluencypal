@@ -42,3 +42,12 @@ stripe login
 ### Stripe: Update CLI
 
 brew upgrade stripe/stripe-cli/stripe
+
+### Telegram Set Webhook
+
+SET
+curl -X POST "https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook" -d "url=https://your-domain.com/api/telegram/webhook"
+
+Verify webhook is active
+
+curl "https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getWebhookInfo"

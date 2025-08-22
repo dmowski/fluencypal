@@ -5,9 +5,9 @@ import { CreateTelegramInvoiceRequest, CreateTelegramInvoiceResponse } from "./t
 import { validateAuthToken } from "../../config/firebase";
 import { TELEGRAM_MONTHLY_PRICE_START } from "@/features/Telegram/starPrices";
 
-const TG_API = envConfig.telegramBotKey
-  ? `https://api.telegram.org/bot${envConfig.telegramBotKey}`
-  : "";
+const BOT_TOKEN = envConfig.telegramBotKey;
+const isTest = true;
+const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}${isTest ? "/test" : ""}`;
 
 function makeOrderPayload(uid: string, monthCount: number) {
   // Use a signed/unguessable payload so you can verify later in webhook
