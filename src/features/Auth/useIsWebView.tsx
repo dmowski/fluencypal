@@ -1,5 +1,6 @@
 "use client";
 
+import { isTMA } from "@telegram-apps/sdk-react";
 import { useEffect, useState } from "react";
 
 export const isInAppBrowser = (ua: string): boolean => {
@@ -42,7 +43,8 @@ export const useIsWebView = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const isTelegramWebView = getIsTelegram();
+      const isTelegramApp = isTMA();
+      const isTelegramData = getIsTelegram();
       const ua = navigator.userAgent.toLowerCase();
       //const supportsWebRTC = !!window.RTCPeerConnection;
       //const result = inAppSpy();
@@ -56,14 +58,12 @@ export const useIsWebView = () => {
       );*/
 
       const isTiktokWebView = isTikTokWebView();
-      setIsWebView(
-        isTelegramWebView.isTgAndroid ||
-          isTelegramWebView.isTgIos ||
-          isInAppBrowser(ua) ||
-          isTiktokWebView
-      );
-      setIsTelegram(isTelegramWebView.isTgAndroid || isTelegramWebView.isTgIos);
-      setIsAndroid(isTelegramWebView.isTgAndroid || ua.includes("android"));
+      const isTelegramWebView =
+        !isTelegramApp && (isTelegramData.isTgAndroid || isTelegramData.isTgIos);
+
+      setIsWebView(isTelegramWebView || isInAppBrowser(ua) || isTiktokWebView);
+      setIsTelegram(isTelegramWebView);
+      setIsAndroid(isTelegramData.isTgAndroid || ua.includes("android"));
       setIsTikTok(isTiktokWebView);
     }
   }, []);

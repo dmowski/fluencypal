@@ -98,8 +98,8 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   };
 
   useEffect(() => {
-    const isTelegram = isTMA();
-    if (!isTelegram) {
+    const isTelegramApp = isTMA();
+    if (!isTelegramApp) {
       console.log("NOT TELEGRAM");
       setError(i18n._("Wrong Link"));
       return;
