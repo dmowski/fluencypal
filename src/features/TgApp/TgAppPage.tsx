@@ -1,11 +1,10 @@
 "use client";
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { maxContentWidth } from "../Landing/landingSettings";
 import { useEffect, useRef, useState } from "react";
 import { sendTelegramTokenRequest } from "@/app/api/telegram/token/sendTelegramTokenRequest";
-import { TelegramAuthResponse } from "@/app/api/telegram/token/types";
 import {
   initDataRaw as _initDataRaw,
   initDataState as _initDataState,
@@ -14,34 +13,79 @@ import {
 } from "@telegram-apps/sdk-react";
 import { mockEnv } from "../Telegram/mockEnv";
 import { init } from "../Telegram/init";
+import { useAuth } from "../Auth/useAuth";
+import { usePlan } from "../Plan/usePlan";
+import { useSettings } from "../Settings/useSettings";
+import { useRouter } from "next/navigation";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 interface TgAppPageProps {
   lang: SupportedLanguage;
-  defaultLangToLearn: SupportedLanguage;
 }
-export const TgAppPage = ({ lang, defaultLangToLearn }: TgAppPageProps) => {
-  const [response, setResponse] = useState<TelegramAuthResponse | null>(null);
-  const [loading, setLoading] = useState(false);
+export const TgAppPage = ({ lang }: TgAppPageProps) => {
+  const [isTelegramAuthLoading, setIsTelegramAuthLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const auth = useAuth();
 
-  const raw = useSignal(_initDataRaw); // string | undefined
-  console.log("raw", raw);
+  const plan = usePlan();
+  const settings = useSettings();
+  const isPlanLoading = plan.loading;
+  const router = useRouter();
+  const isAuth = auth.isAuthorized;
+
+  const isAnyPlanForLearnLanguage = plan.latestGoal;
+  const isNeedToRedirectToApp =
+    !isPlanLoading && isAuth && isAnyPlanForLearnLanguage && !settings.loading;
+  useEffect(() => {
+    if (!isNeedToRedirectToApp) {
+      return;
+    }
+    const pageLang = settings.userSettings?.pageLanguageCode || lang;
+
+    // Redirect to APP if plan is present
+    const newPath = `${getUrlStart(pageLang)}practice`;
+    router.push(newPath);
+  }, [isNeedToRedirectToApp]);
+
+  const isNeedToRedirectToQuiz =
+    !isPlanLoading && isAuth && !isAnyPlanForLearnLanguage && !settings.loading;
+
+  useEffect(() => {
+    if (!isNeedToRedirectToQuiz) {
+      return;
+    }
+    const pageLang = settings.userSettings?.pageLanguageCode || lang;
+
+    // Redirect to QUIZ if no plan is present
+    const newPath = `${getUrlStart(pageLang)}quiz`;
+    router.push(newPath);
+  }, [isNeedToRedirectToQuiz]);
+
+  const raw = useSignal(_initDataRaw);
   const isInitializing = useRef(false);
 
   const initToken = async (initData: string) => {
     try {
-      setLoading(true);
+      setIsTelegramAuthLoading(true);
       setError(null);
       const res = await sendTelegramTokenRequest({ initData });
-      setResponse(res);
-      if (res.error)
+      console.log("Telegram auth response:", res);
+      if (res.error) {
         setError(
           `${res.error.code}: ${res.error.message}${res.error.reason ? ` (${res.error.reason})` : ""}`
         );
+      } else {
+        const token = res.token;
+        const result = await auth.signInWithCustomToken(token);
+        console.log("auth result", result);
+        if (!result.isDone) {
+          setError(result.error || "Unknown error during sign-in");
+        }
+      }
     } catch (err: any) {
       setError(err?.message || "Unknown error");
     } finally {
-      setLoading(false);
+      setIsTelegramAuthLoading(false);
     }
   };
 
@@ -54,30 +98,28 @@ export const TgAppPage = ({ lang, defaultLangToLearn }: TgAppPageProps) => {
           (launchParams.tgWebAppStartParam || "").includes("debug") ||
           process.env.NODE_ENV === "development";
 
-        // Configure all application dependencies.
         init({
           debug,
           eruda: debug && ["ios", "android"].includes(platform),
           mockForMacOS: platform === "macos",
         });
       } catch (e) {
-        console.log(e);
+        setError("Failed to initialize Telegram Mini App");
+        throw e;
       }
     });
   }, []);
 
   useEffect(() => {
-    if (isInitializing.current) return;
+    if (isInitializing.current || auth.isAuthorized || auth.loading) return;
 
     if (raw) {
       isInitializing.current = true;
-      setTimeout(() => {
-        void initToken(raw);
-      }, 200);
+      void initToken(raw);
     } else {
       setError("Not running inside Telegram WebApp");
     }
-  }, [raw]);
+  }, [raw, auth.isAuthorized]);
 
   return (
     <Stack sx={{}}>
@@ -105,7 +147,7 @@ export const TgAppPage = ({ lang, defaultLangToLearn }: TgAppPageProps) => {
               width: "100%",
               maxWidth: maxContentWidth,
 
-              padding: "10px 20px 250px 20px",
+              padding: "30px 20px 250px 20px",
               gap: "40px",
               alignItems: "center",
               boxSizing: "border-box",
@@ -118,13 +160,22 @@ export const TgAppPage = ({ lang, defaultLangToLearn }: TgAppPageProps) => {
                 width: "100%",
               }}
             >
-              <Typography>Telegram App</Typography>
-              {loading && <p>Authorizing with Telegram...</p>}
-              {error && <p style={{ color: "red" }}>❌ {error}</p>}
+              {auth.loading ? (
+                <Typography>Loading.</Typography>
+              ) : isTelegramAuthLoading ? (
+                <p>Authorizing with Telegram...</p>
+              ) : null}
 
-              <pre style={{ textAlign: "left", fontSize: "0.8rem" }}>
-                {response ? JSON.stringify(response, null, 2) : "No response yet"}
-              </pre>
+              {error && <Typography color="error">❌ {error}</Typography>}
+
+              <Button
+                variant="text"
+                onClick={() => {
+                  auth.logout();
+                }}
+              >
+                Refresh
+              </Button>
             </Stack>
           </Stack>
         </Stack>

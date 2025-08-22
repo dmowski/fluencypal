@@ -1,5 +1,9 @@
 "use client";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithCustomToken as firebaseSignInWithCustomToken,
+} from "firebase/auth";
 import { Context, JSX, ReactNode, createContext, useContext, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase/init";
@@ -24,7 +28,7 @@ export interface AuthContext {
   isAuthorized: boolean;
   logout: () => Promise<void>;
   signInWithGoogle: () => Promise<SignInResult>;
-  signInWithTelegramMiniApp: () => Promise<SignInResult>;
+  signInWithCustomToken: (backendToken: string) => Promise<SignInResult>;
   getToken: () => Promise<string>;
 }
 
@@ -37,8 +41,8 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
   signInWithGoogle: async () => {
     throw new Error("signInWithGoogle not implemented");
   },
-  signInWithTelegramMiniApp: async () => {
-    throw new Error("signInWithTelegramMiniApp not implemented");
+  signInWithCustomToken: async () => {
+    throw new Error("signInWithCustomToken not implemented");
   },
   getToken: async () => "",
 });
@@ -64,8 +68,52 @@ function useProvideAuth(): AuthContext {
     }
   };
 
-  const signInWithTelegramMiniApp = async (): Promise<SignInResult> => {
-    throw new Error("signInWithTelegramMiniApp not implemented");
+  const signInWithCustomToken = async (backendToken: string): Promise<SignInResult> => {
+    try {
+      if (!backendToken || typeof backendToken !== "string") {
+        return { isDone: false, error: "No token provided" };
+      }
+
+      // If already signed in, Firebase will switch the user if token UID differs.
+      const credentialUser = await firebaseSignInWithCustomToken(auth, backendToken);
+
+      console.log("credentialUser", credentialUser);
+
+      // Ensure an ID token is minted right away so getToken() works immediately.
+      await credentialUser.user.getIdToken(true);
+
+      return { isDone: true, error: "" };
+    } catch (error: any) {
+      let message = "Custom token sign-in failed. Please try again.";
+
+      if (error?.code) {
+        // Map common Firebase Auth errors to clearer messages
+        switch (error.code as string) {
+          case "auth/invalid-custom-token":
+            message = "Invalid custom token.";
+            break;
+          case "auth/custom-token-mismatch":
+            message = "The custom token is for a different Firebase project.";
+            break;
+          case "auth/network-request-failed":
+            message = "Network error during sign-in.";
+            break;
+          case "auth/too-many-requests":
+            message = "Too many requests. Please wait and try again.";
+            break;
+          case "auth/internal-error":
+            message = "Internal auth error. Please retry.";
+            break;
+          default:
+            message = error.message || message;
+        }
+      } else if (error?.message) {
+        message = error.message;
+      }
+
+      console.error("signInWithCustomToken error:", error);
+      return { isDone: false, error: message };
+    }
   };
 
   const isAuthorized = !!userInfo?.uid && !errorAuth;
@@ -95,7 +143,7 @@ function useProvideAuth(): AuthContext {
     loading,
 
     signInWithGoogle,
-    signInWithTelegramMiniApp,
+    signInWithCustomToken,
 
     userInfo: userInfo || null,
     uid: userInfo?.uid || "",

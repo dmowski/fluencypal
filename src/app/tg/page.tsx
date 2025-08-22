@@ -35,17 +35,13 @@ export default async function Page(props: PageProps) {
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
 
-  const searchParam = await props.searchParams;
-  const toLearn = searchParam.learn || "";
-  const languageToLearn = supportedLanguages.find((l) => l === toLearn) || "en";
-
   return (
     <LinguiClientProvider
       initialLocale={supportedLang}
       initialMessages={allMessages[supportedLang]!}
     >
       <PracticeProvider>
-        <TgAppPage lang={supportedLang} defaultLangToLearn={languageToLearn} />
+        <TgAppPage lang={supportedLang} />
       </PracticeProvider>
     </LinguiClientProvider>
   );
