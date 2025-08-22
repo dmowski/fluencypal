@@ -187,7 +187,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
                   }, 300);
                 }}
                 style={{
-                  opacity: 0.7,
+                  opacity: 0.5,
                 }}
               >
                 {i18n._("Refresh")}
