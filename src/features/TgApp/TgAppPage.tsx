@@ -137,7 +137,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
     } else {
       setError(i18n._("Not running inside Telegram App"));
     }
-  }, [raw, auth.isAuthorized]);
+  }, [raw, auth.isAuthorized, auth.loading]);
 
   return (
     <Stack sx={{}}>
