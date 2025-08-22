@@ -80,6 +80,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
         );
       } else {
         const token = res.token;
+        console.log("Auth start");
         const result = await auth.signInWithCustomToken(token);
         console.log("auth result", result);
         if (result.error) {
