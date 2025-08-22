@@ -184,6 +184,8 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
                 <Typography>{i18n._("Authorizing with Telegram...")}</Typography>
               ) : null}
 
+              <Typography>auth.isAuthorized: {auth.isAuthorized ? "true" : "false"}</Typography>
+
               {error && <Typography color="error">❌ {error}</Typography>}
 
               <Button
