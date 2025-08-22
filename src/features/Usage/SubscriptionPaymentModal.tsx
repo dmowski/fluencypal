@@ -1,3 +1,4 @@
+"use client";
 import { Button, Checkbox, FormControlLabel, Link, Stack, Typography } from "@mui/material";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useUsage } from "./useUsage";
@@ -20,10 +21,17 @@ import { FeatureList } from "../Landing/Price/FeatureList";
 import { isTMA, invoice } from "@telegram-apps/sdk-react";
 import { sendCreateTelegramInvoiceRequest } from "@/app/api/telegram/createInvoice/sendCreateTelegramInvoiceRequest";
 import { TELEGRAM_MONTHLY_PRICE_START } from "../Telegram/starPrices";
-import { TonConnectButton } from "@tonconnect/ui-react";
+import { TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
 import { TgGoldStar } from "../Icon/TgStar";
 
 const isTelegramApp = isTMA();
+
+const WalletButton = () => {
+  const wallet = useTonWallet();
+  console.log("wallet", wallet);
+
+  return <TonConnectButton />;
+};
 
 export const SubscriptionPaymentModal = () => {
   const usage = useUsage();
@@ -295,7 +303,7 @@ export const SubscriptionPaymentModal = () => {
                   or crypto
                 </Typography>
 
-                <TonConnectButton />
+                <WalletButton />
               </Stack>
             </Stack>
           </>

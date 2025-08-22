@@ -9,6 +9,7 @@ import { supportedLanguages } from "@/features/Lang/lang";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { Inter, Old_Standard_TT } from "next/font/google";
 import Script from "next/script";
+import "@telegram-apps/telegram-ui/dist/styles.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const oldStandardTT = Old_Standard_TT({
