@@ -102,7 +102,6 @@ export async function POST(request: Request) {
     // 1) Read input exactly as requested
     const tgRequest = (await request.json()) as TelegramAuthRequest;
     const initData = tgRequest.initData;
-    console.log("initData", initData);
 
     // 2) Verify Telegram signature
     const botToken = envConfig.telegramBotKey;
