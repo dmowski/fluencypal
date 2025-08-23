@@ -33,7 +33,9 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
     if (!isWindow) return;
     const storedLanguage = localStorage.getItem("pageLanguageCode");
     if (storedLanguage) {
-      setIsSignInToLanguage(storedLanguage);
+      setTimeout(() => {
+        setIsSignInToLanguage(storedLanguage);
+      }, 10);
     }
   }, []);
 
