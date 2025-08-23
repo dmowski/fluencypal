@@ -20,6 +20,7 @@ import { useSettings } from "../Settings/useSettings";
 import { useRouter } from "next/navigation";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useLingui } from "@lingui/react";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 
 interface TgAppPageProps {
   lang: SupportedLanguage;
@@ -55,6 +56,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   const [isTelegramAuthLoading, setIsTelegramAuthLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const auth = useAuth();
+  const sizes = useWindowSizes();
 
   const plan = usePlan();
   const settings = useSettings();
@@ -156,6 +158,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
             minHeight: "100dvh",
             maxHeight: "2000px",
             position: "relative",
+            paddingTop: sizes.topOffset,
           }}
         >
           <Stack

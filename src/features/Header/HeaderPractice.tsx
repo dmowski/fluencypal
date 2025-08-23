@@ -37,6 +37,7 @@ import { exitFullScreen } from "@/libs/fullScreen";
 import { SubscriptionPaymentModal } from "../Usage/SubscriptionPaymentModal";
 import { PaymentHistoryModal } from "./PaymentHistoryModal";
 import { ContactMessageModal } from "./ContactMessageModal";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 
 export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -103,8 +104,17 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
     }
   }, [isInternalClosing]);
 
+  const sizes = useWindowSizes();
+  const topOffset = sizes.topOffset;
+
   return (
     <>
+      <Stack
+        sx={{
+          width: "100%",
+          height: topOffset,
+        }}
+      />
       <Stack
         component={"header"}
         sx={{
@@ -113,7 +123,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
           justifyContent: "center",
 
           position: "fixed",
-          top: 0,
+          top: topOffset,
           left: 0,
           zIndex: 999,
           backgroundColor:
