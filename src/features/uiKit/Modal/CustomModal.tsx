@@ -10,6 +10,8 @@ interface CustomModalProps {
   width?: string;
   padding?: string;
   maxHeight?: string;
+  doNotApplyTopOffsetForContent?: boolean;
+  doNotApplyTopOffsetForIcon?: boolean;
 }
 
 export const CustomModal = ({
@@ -19,6 +21,8 @@ export const CustomModal = ({
   children,
   padding,
   maxHeight,
+  doNotApplyTopOffsetForContent,
+  doNotApplyTopOffsetForIcon,
 }: CustomModalProps): JSX.Element => {
   const { topOffset } = useWindowSizes();
 
@@ -54,14 +58,14 @@ export const CustomModal = ({
             borderRadius: 0,
             height: "100dvh",
           },
-          paddingTop: `calc(${topOffset} + 0px)`,
+          paddingTop: doNotApplyTopOffsetForContent ? `0` : `calc(${topOffset} + 0px)`,
         }}
       >
         {onClose && (
           <IconButton
             sx={{
               position: "absolute",
-              top: `calc(${topOffset} + 10px)`,
+              top: doNotApplyTopOffsetForIcon ? `10px` : `calc(${topOffset} + 10px)`,
               right: "10px",
               zIndex: 100,
             }}

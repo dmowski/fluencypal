@@ -5,15 +5,14 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { GameStatRow } from "./GameStatRow";
 import { UsersStat } from "./types";
-import { useWindowSizes } from "../Layout/useWindowSizes";
+import { useUrlParam } from "../Url/useUrlParam";
 
 export const PositionChangedModal = () => {
   const game = useGame();
   const [stats, setStats] = useState<UsersStat[]>([]);
-  const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowModal, setIsShowModal] = useUrlParam("showPositionChangedModal");
   const [positions, setPositions] = useState<Record<string, number>>({});
   const [myOldPosition, setMyOldPosition] = useState<number | null>(null);
-  const { topOffset } = useWindowSizes();
   const getRealPosition = (username: string) => {
     const index = game.stats.findIndex((stat) => stat.username === username);
     return index >= 0 ? index : 0;
@@ -89,8 +88,7 @@ export const PositionChangedModal = () => {
       <Stack
         sx={{
           minHeight: "100dvh",
-          paddingTop: `calc(${topOffset} + 0px)`,
-          width: "100%",
+          width: "100dvw",
           alignItems: "center",
           justifyContent: "flex-end",
         }}

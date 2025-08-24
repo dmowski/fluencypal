@@ -405,11 +405,11 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
             isOpen={true}
             onClose={() => closeRolePlay()}
             width="min(100vw, 650px)"
+            doNotApplyTopOffsetForContent
           >
             <Stack
               sx={{
                 width: "100%",
-                paddingTop: `calc(${topOffset} + 0px)`,
               }}
             >
               <Stack
@@ -422,6 +422,9 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
                   justifyContent: "flex-end",
                   position: "relative",
                   borderRadius: "16px 16px 0 0",
+                  "@media (max-width: 600px)": {
+                    borderRadius: 0,
+                  },
                   background:
                     "linear-gradient(180deg, rgba(12, 12, 14, 0) 0%,  rgba(12, 12, 14, 0.3) 100%)",
                 }}
@@ -430,7 +433,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
                   sx={{
                     backgroundImage: `url(${selectedRolePlayScenario.imageSrc})`,
                     width: "100%",
-                    height: "100%",
+                    height: `calc(${topOffset} + 100%)`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     position: "absolute",
