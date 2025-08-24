@@ -1,8 +1,8 @@
-import { isTMA, isViewportExpanded } from "@telegram-apps/sdk-react";
-const isTelegramApp = isTMA();
+import { useSignal, viewportContentSafeAreaInsetTop } from "@telegram-apps/sdk-react";
 
 export const useWindowSizes = () => {
-  const topOffset = isTelegramApp && isViewportExpanded() ? "90px" : "0";
+  const safeTop = useSignal(viewportContentSafeAreaInsetTop);
+  const topOffset = safeTop ? `${safeTop + 20}px` : "0px";
 
   return {
     topOffset,

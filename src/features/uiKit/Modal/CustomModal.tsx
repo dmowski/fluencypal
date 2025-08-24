@@ -1,3 +1,4 @@
+import { useWindowSizes } from "@/features/Layout/useWindowSizes";
 import { IconButton, Modal, Stack } from "@mui/material";
 import { X } from "lucide-react";
 import { JSX } from "react";
@@ -19,6 +20,8 @@ export const CustomModal = ({
   padding,
   maxHeight,
 }: CustomModalProps): JSX.Element => {
+  const { topOffset } = useWindowSizes();
+
   if (!isOpen) return <></>;
 
   return (
@@ -56,7 +59,7 @@ export const CustomModal = ({
           <IconButton
             sx={{
               position: "absolute",
-              top: "10px",
+              top: `calc(${topOffset} + 10px)`,
               right: "10px",
               zIndex: 100,
             }}

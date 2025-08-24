@@ -110,30 +110,13 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   return (
     <>
       <Stack
-        sx={{
-          width: "100%",
-          height: topOffset,
-        }}
-      />
-      <Stack
         component={"header"}
         sx={{
           width: "100%",
           alignItems: "center",
           justifyContent: "center",
-
-          position: "fixed",
-          top: topOffset,
-          left: 0,
-          zIndex: 999,
-          backgroundColor:
-            !usage.isFullAccess && !isLanding
-              ? "transparent"
-              : isActiveConversation
-                ? "rgba(10, 18, 30, 0.1)"
-                : "rgba(10, 18, 30, 0.7)",
-          backdropFilter: isActiveConversation ? "blur(0px)" : "blur(10px)",
-          //borderBottom: isActiveConversation ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
+          backgroundColor: "transparent",
+          paddingTop: topOffset,
 
           ".menu-link": {
             height: "60px",
@@ -150,7 +133,6 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
             },
           },
           "@media (max-width: 650px)": {
-            position: "absolute",
             ".hideOnMobile": {
               display: "none !important",
             },

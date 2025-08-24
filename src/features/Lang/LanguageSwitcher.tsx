@@ -20,6 +20,7 @@ import { parseLangFromUrl } from "./parseLangFromUrl";
 import { LangSelector } from "./LangSelector";
 import LanguageAutocomplete from "./LanguageAutocomplete";
 import { useLanguageGroup } from "../Goal/useLanguageGroup";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 
 interface LanguageSwitcherProps {
   size?: "small" | "large" | "button";
@@ -44,6 +45,7 @@ export function LanguageSwitcher({
 }: LanguageSwitcherProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const { topOffset } = useWindowSizes();
 
   const { i18n } = useLingui();
   const [isShowModal, setIsShowModal] = useState(false);
@@ -174,6 +176,7 @@ export function LanguageSwitcher({
             height: "100dvh",
             maxHeight: "600px",
             boxSizing: "border-box",
+            paddingTop: `calc(${topOffset} + 30px)`,
             "@media (max-width: 600px)": {
               maxHeight: "100dvh",
               height: "100dvh",
