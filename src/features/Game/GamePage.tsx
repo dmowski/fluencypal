@@ -32,9 +32,9 @@ export const GamePage = () => {
       <Stack
         sx={{
           width: "100%",
-          maxWidth: "500px",
+          maxWidth: "700px",
           padding: "10px 20px",
-          paddingTop: "80px",
+          paddingTop: "30px",
           boxSizing: "border-box",
           gap: "20px",
           position: "relative",
@@ -42,9 +42,7 @@ export const GamePage = () => {
           zIndex: 1,
         }}
       >
-        <Typography variant="h5" align="center">
-          {i18n._(`Game`)}
-        </Typography>
+        <Typography variant="h5">{i18n._(`Game`)}</Typography>
         <Stack
           sx={{
             flexDirection: "row",
@@ -77,14 +75,14 @@ export const GamePage = () => {
 
         <Stack
           sx={{
-            paddingTop: "20px",
-            gap: "15px",
+            paddingTop: "60px",
+            gap: "30px",
             width: "100%",
             boxSizing: "border-box",
           }}
         >
           <Stack>
-            <Typography variant="h6">{i18n._(`Rating:`)}</Typography>
+            <Typography variant="h5">{i18n._(`Rating:`)}</Typography>
             <Typography variant="caption">
               {i18n._("Rank in the top 5 to get the app for free")}
             </Typography>

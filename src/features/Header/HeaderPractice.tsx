@@ -140,6 +140,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
         <Stack
           sx={{
             maxWidth: isActiveConversation ? "1400px" : "700px",
+
             width: "100%",
             gap: "10px",
             flexDirection: "row",
@@ -152,6 +153,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
           <Stack
             sx={{
               flexDirection: "row",
+
               gap: "0px",
               height: "100%",
             }}
@@ -212,6 +214,8 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  position: "relative",
+                  left: "-20px",
                   ".big_logo": {
                     display: "block",
                   },
@@ -222,6 +226,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
                     marginRight: "0px",
                   },
                   "@media (max-width: 850px)": {
+                    left: "0",
                     paddingLeft: "0 !important",
                     paddingRight: "0 !important",
                     ".big_logo": {

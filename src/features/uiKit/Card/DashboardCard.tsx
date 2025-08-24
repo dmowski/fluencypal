@@ -9,7 +9,7 @@ export const DashboardCard: React.FC<DashboardCardProps> = ({ children }) => {
   return (
     <Stack
       sx={{
-        padding: "30px 10px",
+        padding: "30px 0px",
         display: "flex",
         flexDirection: "column",
         gap: "20px",

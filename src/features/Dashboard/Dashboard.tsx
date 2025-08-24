@@ -33,7 +33,7 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
         sx={{
           width: "100%",
           maxWidth: "1400px",
-          padding: "10px",
+          padding: "0",
           paddingTop: "20px",
           boxSizing: "border-box",
           gap: "70px",
@@ -47,11 +47,17 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
             width: "100%",
             gap: "20px",
             maxWidth: "700px",
-            padding: "5px 10px",
+            padding: "5px 0px",
             boxSizing: "border-box",
           }}
         >
-          <GameBadge lang={lang} />
+          <Stack
+            sx={{
+              padding: "0 10px",
+            }}
+          >
+            <GameBadge lang={lang} />
+          </Stack>
           <PlanDashboardCards lang={lang} />
         </Stack>
 
