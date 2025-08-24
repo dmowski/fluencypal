@@ -1,6 +1,6 @@
 "use client";
 
-import { Stack, TextField, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 
