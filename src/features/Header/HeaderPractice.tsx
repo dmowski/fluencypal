@@ -108,13 +108,21 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   return (
     <>
       <Stack
+        sx={{
+          height: `${topOffset}`,
+          backgroundColor: "rgba(90, 14, 19, 0.7)",
+          width: "100%",
+        }}
+      />
+
+      <Stack
         component={"header"}
         sx={{
           width: "100%",
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "transparent",
-          paddingTop: topOffset,
+          paddingTop: 0,
 
           ".menu-link": {
             height: "60px",
