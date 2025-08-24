@@ -54,11 +54,8 @@ export const PlanCard = ({
         <CustomModal isOpen={true} onClose={() => setShowModal(false)}>
           <Stack
             sx={{
-              minHeight: "100dvh",
-
               width: "100%",
-              alignItems: "center",
-              justifyContent: "center",
+              height: "100%",
             }}
           >
             <Stack
@@ -100,6 +97,16 @@ export const PlanCard = ({
                 </Typography>
               </Stack>
 
+              <Typography
+                align="center"
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._(`Send 6 messages to complete`)}
+              </Typography>
+
               <Button
                 sx={{
                   margin: "15px 0px",
@@ -117,15 +124,6 @@ export const PlanCard = ({
               >
                 {i18n._(`Start lesson`)}
               </Button>
-              <Typography
-                align="center"
-                variant="caption"
-                sx={{
-                  opacity: 0.7,
-                }}
-              >
-                {i18n._(`Send 6 messages to complete`)}
-              </Typography>
             </Stack>
           </Stack>
         </CustomModal>
