@@ -492,7 +492,7 @@ export const SubscriptionPaymentModal = () => {
                   borderRadius: "18px",
                   border: "1px solid rgba(255, 255, 255, 0.2)",
                   backgroundColor: "#212121",
-                  maxWidth: "600px",
+                  maxWidth: "400px",
                   width: "100%",
                 }}
               >
@@ -583,7 +583,7 @@ export const SubscriptionPaymentModal = () => {
                 sx={{
                   width: "100%",
                   gap: "10px",
-                  maxWidth: "100%",
+                  maxWidth: "400px",
                 }}
               >
                 <Typography variant="body1">{i18n._(`Need help?`)}</Typography>
