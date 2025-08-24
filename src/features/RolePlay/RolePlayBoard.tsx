@@ -404,6 +404,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
             <Stack
               sx={{
                 width: "100%",
+                maxWidth: "600px",
               }}
             >
               <Stack
