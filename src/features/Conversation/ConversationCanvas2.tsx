@@ -354,16 +354,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           <CustomModal isOpen={true} onClose={() => setIsShowAnalyzeConversationModal(false)}>
             <Stack
               sx={{
-                height: "100dvh",
                 gap: "30px",
                 width: "100dvw",
                 alignItems: "center",
-                padding: "70px 0",
               }}
             >
               <Stack
                 sx={{
-                  maxWidth: "550px",
+                  maxWidth: "600px",
                   gap: "30px",
                   width: "100%",
                 }}
@@ -377,9 +375,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     sx={{
                       paddingBottom: "20px",
                     }}
-                    align="left"
-                    className="decor-text"
-                    variant="h3"
+                    align="center"
+                    variant="h5"
+                    component={"h2"}
                   >
                     {i18n._("Lesson Review")}
                   </Typography>
@@ -387,6 +385,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     <Stack
                       sx={{
                         gap: "15px",
+                        padding: "0 10px",
+                        boxSizing: "border-box",
                       }}
                     >
                       <Markdown>{conversationAnalysisResult}</Markdown>
@@ -395,6 +395,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     <Stack
                       sx={{
                         gap: "15px",
+                        padding: "0 10px",
+                        boxSizing: "border-box",
                       }}
                     >
                       <Stack>
@@ -424,13 +426,25 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 <Stack
                   gap="10px"
                   sx={{
-                    alignItems: "flex-start",
+                    alignItems: "center",
+                    padding: "0 10px",
+                    boxSizing: "border-box",
                   }}
                 >
                   <Button
+                    disabled={!conversationAnalysisResult}
+                    onClick={() => {
+                      setIsShowAnalyzeConversationModal(false);
+                      setIsConversationContinueAfterAnalyze(true);
+                    }}
+                    variant="text"
+                  >
+                    {i18n._(`Continue conversation`)}
+                  </Button>
+
+                  <Button
                     sx={{
-                      minWidth: "300px",
-                      width: "max-content",
+                      width: "100%",
                     }}
                     onClick={() => {
                       closeConversation();
@@ -442,16 +456,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     disabled={!conversationAnalysisResult}
                   >
                     {i18n._(`Start new lesson`)}
-                  </Button>
-                  <Button
-                    disabled={!conversationAnalysisResult}
-                    onClick={() => {
-                      setIsShowAnalyzeConversationModal(false);
-                      setIsConversationContinueAfterAnalyze(true);
-                    }}
-                    variant="text"
-                  >
-                    {i18n._(`Continue conversation`)}
                   </Button>
                 </Stack>
               </Stack>

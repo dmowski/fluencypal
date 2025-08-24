@@ -134,9 +134,9 @@ export const useTranslate = () => {
                 }}
               >
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   onClick={onCloseTranslate}
-                  sx={{ marginTop: "20px", minWidth: "300px" }}
+                  sx={{ marginTop: "20px", minWidth: "100%" }}
                 >
                   {i18n._("Close")}
                 </Button>
