@@ -206,9 +206,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         sx={{
           alignItems: "center",
           justifyContent: "center",
-          paddingTop: "100px",
+          paddingTop: "20px",
           paddingBottom: "40px",
-          boxSizing: "border-box",
           zIndex: 999,
           gap: "40px",
         }}
