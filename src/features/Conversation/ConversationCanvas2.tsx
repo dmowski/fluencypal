@@ -12,6 +12,7 @@ import {
   ListItemText,
   Menu,
   MenuItem,
+  Popover,
   Stack,
   TextField,
   Tooltip,
@@ -300,11 +301,11 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   const translator = useTranslate();
 
-  const [isOpenHelpModel, setIsOpenHelpModel] = useState(false);
+  const [isOpenHelpModelAnchor, setIsOpenHelpModelAnchor] = useState<HTMLElement | null>(null);
   const [helpMessage, setHelpMessage] = useState("");
-  const openHelpAnswer = async () => {
+  const openHelpAnswer = async (element: HTMLElement) => {
     setHelpMessage("");
-    setIsOpenHelpModel(true);
+    setIsOpenHelpModelAnchor(element);
     const mess = await generateHelpMessage();
     setHelpMessage(mess);
   };
@@ -315,18 +316,46 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     <Stack>
       {translator.translateModal}
 
-      {isOpenHelpModel && (
-        <CustomModal isOpen={true} onClose={() => setIsOpenHelpModel(false)}>
+      {isOpenHelpModelAnchor && (
+        <Popover
+          anchorEl={isOpenHelpModelAnchor}
+          open={!!isOpenHelpModelAnchor}
+          onClose={() => setIsOpenHelpModelAnchor(null)}
+          slotProps={{
+            backdrop: {
+              sx: {
+                backgroundColor: "rgba(0, 0, 0, 0.8)",
+              },
+            },
+          }}
+        >
           <Stack
             sx={{
-              gap: "10px",
+              gap: "0px",
+              backgroundColor: "#333",
+              boxSizing: "border-box",
               width: "100%",
               maxWidth: "600px",
+              padding: "10px 15px",
             }}
           >
-            <Typography variant="caption">{i18n._("Idea for your message")}</Typography>
+            <Typography
+              variant="caption"
+              sx={{
+                opacity: 0.7,
+              }}
+            >
+              {i18n._("Idea for your message")}
+            </Typography>
 
-            <Stack className={`decor-text ${!helpMessage ? "loading-shimmer" : ""}`}>
+            <Stack
+              className={`decor-text ${!helpMessage ? "loading-shimmer" : ""}`}
+              sx={{
+                flexDirection: "row",
+                gap: "10px",
+                minHeight: "35px",
+              }}
+            >
               <Markdown
                 variant="conversation"
                 onWordClick={
@@ -337,17 +366,12 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               >
                 {!helpMessage ? loadingMessage : helpMessage}
               </Markdown>
+              {helpMessage && (
+                <AudioPlayIcon text={helpMessage} instructions="Calm and clear" voice={"coral"} />
+              )}
             </Stack>
-
-            <Button
-              variant="outlined"
-              onClick={() => setIsOpenHelpModel(false)}
-              sx={{ marginTop: "20px" }}
-            >
-              {i18n._("Close")}
-            </Button>
           </Stack>
-        </CustomModal>
+        </Popover>
       )}
       {isShowAnalyzeConversationModal && (
         <>
@@ -1186,8 +1210,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     <MenuItem
                       sx={{}}
                       disabled={isRecording || isAnalyzingResponse || isNeedToShowBalanceWarning}
-                      onClick={() => {
-                        openHelpAnswer();
+                      onClick={(e) => {
+                        openHelpAnswer(e.currentTarget);
                         closeMenus();
                       }}
                     >

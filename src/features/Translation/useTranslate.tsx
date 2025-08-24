@@ -94,7 +94,6 @@ export const useTranslate = () => {
           anchorEl={anchorEl}
           open={!!anchorEl}
           onClose={() => onCloseTranslate()}
-          sx={{}}
           slotProps={{
             backdrop: {
               sx: {
