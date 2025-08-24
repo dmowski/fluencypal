@@ -80,15 +80,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     });
   };
 
-  const planElementProgresses = plan.latestGoal?.elements.map((element) => {
-    const progressPercent = Math.min((element.startCount || 0) * 10, 100);
-    return progressPercent;
-  });
-
-  const averageProgress =
-    (planElementProgresses?.reduce((acc, progress) => acc + progress, 0) || 0) /
-    (planElementProgresses?.length || 1);
-
   const modeLabels: Record<PlanElementMode, string> = {
     conversation: i18n._(`Conversation`),
     play: i18n._(`Role Play`),
@@ -205,7 +196,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       if (b === recommendedMode) return 1; // Recommended mode first
       return 0; // Keep original order for others
     });
-    const cardColor = cardColors[0];
     const cardInfo = modeCardProps[selectedElement.mode];
     const imageVariants = cardInfo.imgUrl;
     const imageIndex = 1 % imageVariants.length;
@@ -391,18 +381,33 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       >
         <Stack
           sx={{
-            borderRadius: "50%",
-            background: "linear-gradient(45deg,rgb(120, 13, 220) 0%,rgb(199, 13, 236) 100%)",
-            height: "50px",
-            width: "50px",
-
-            display: "flex",
-            justifyContent: "center",
+            flexDirection: "row",
             alignItems: "center",
+            gap: "10px",
+            flexWrap: "wrap",
           }}
         >
-          <Flag size={"25px"} />
+          <Stack
+            sx={{
+              borderRadius: "50%",
+              background: "linear-gradient(45deg,rgb(120, 13, 220) 0%,rgb(199, 13, 236) 100%)",
+              height: "50px",
+              width: "50px",
+
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Flag size={"25px"} />
+          </Stack>
+          <Typography variant="h6">
+            {isGoalSet
+              ? plan.latestGoal?.title || i18n._(`Goal`)
+              : i18n._(`Start your way to fluency`)}
+          </Typography>
         </Stack>
+
         <Stack
           sx={{
             flexDirection: "row",
@@ -418,11 +423,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               alignItems: "flex-start",
             }}
           >
-            <Typography variant="h6">
-              {isGoalSet
-                ? plan.latestGoal?.title || i18n._(`Goal`)
-                : i18n._(`Start your way to fluency`)}
-            </Typography>
             {goalDescription && (
               <Typography
                 sx={{
