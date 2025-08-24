@@ -488,6 +488,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         sx={{
           width: "100%",
           alignItems: "center",
+          opacity: isFinishingProcess ? 0.2 : 1,
         }}
       >
         <Stack
