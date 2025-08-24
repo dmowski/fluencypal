@@ -63,11 +63,6 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
             width: "100%",
             maxHeight: "100vh",
             overflow: "auto",
-            padding: "40px",
-            boxSizing: "border-box",
-            "@media (max-width: 600px)": {
-              padding: "20px 10px",
-            },
           }}
         >
           <Stack
@@ -86,7 +81,13 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
 
             <Stack
               sx={{
+                width: "100%",
                 alignItems: "center",
+                padding: "40px",
+                boxSizing: "border-box",
+                "@media (max-width: 600px)": {
+                  padding: "20px 10px",
+                },
               }}
             >
               {children}

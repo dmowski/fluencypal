@@ -212,18 +212,16 @@ export const SubscriptionPaymentModal = () => {
       }}
     >
       <Stack
-        sx={
-          {
-            //alignItems: "center",
-            //height: "100%",
-          }
-        }
+        sx={{
+          width: "100%",
+          maxWidth: "600px",
+        }}
       >
         {isTelegramApp && isTelegramPaymentOptions ? (
           <>
             <Stack
               sx={{
-                maxWidth: "700px",
+                maxWidth: "600px",
                 width: "100%",
                 boxSizing: "border-box",
                 gap: "40px",
@@ -458,7 +456,6 @@ export const SubscriptionPaymentModal = () => {
           <>
             <Stack
               sx={{
-                maxWidth: "500px",
                 width: "100%",
                 boxSizing: "border-box",
                 gap: "40px",
@@ -507,7 +504,7 @@ export const SubscriptionPaymentModal = () => {
                   borderRadius: "18px",
                   border: "1px solid rgba(255, 255, 255, 0.2)",
                   backgroundColor: "#212121",
-                  maxWidth: "400px",
+                  maxWidth: "600px",
                   width: "100%",
                 }}
               >
@@ -604,7 +601,7 @@ export const SubscriptionPaymentModal = () => {
                 sx={{
                   width: "100%",
                   gap: "10px",
-                  maxWidth: "350px",
+                  maxWidth: "100%",
                 }}
               >
                 <Typography variant="body1">{i18n._(`Need help?`)}</Typography>
