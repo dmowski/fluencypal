@@ -1,5 +1,5 @@
 "use client";
-import { useSignal, viewportContentSafeAreaInsetTop } from "@telegram-apps/sdk-react";
+import { useSignal, viewportContentSafeAreaInsetTop, backButton } from "@telegram-apps/sdk-react";
 import { createContext, useContext, ReactNode, JSX } from "react";
 
 interface WindowSizesContextType {

@@ -26,7 +26,7 @@ import {
 
 import { useUsage } from "../Usage/useUsage";
 import { NeedHelpModal } from "./NeedHelpModal";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useAiConversation } from "../Conversation/useAiConversation";
@@ -42,7 +42,6 @@ import { isTMA } from "@telegram-apps/sdk-react";
 
 export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
-  const pathname = usePathname();
   const settings = useSettings();
 
   const aiConversation = useAiConversation();
@@ -69,16 +68,6 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const [isShowFeedbackModal, setIsShowFeedbackModal] = useState(false);
 
   const usage = useUsage();
-
-  const searchParams = useSearchParams();
-  const isPaymentModalInUrl = searchParams.get("paymentModal") === "true";
-  const isSuccessPayment = searchParams.get("paymentSuccess") === "true";
-
-  useEffect(() => {
-    if (isPaymentModalInUrl && isPaymentModalInUrl !== usage.isShowPaymentModal) {
-      usage.togglePaymentModal(true, isSuccessPayment);
-    }
-  }, [isPaymentModalInUrl]);
 
   const userPhoto = auth.userInfo?.photoURL || "";
   const userName = auth.userInfo?.displayName || "";

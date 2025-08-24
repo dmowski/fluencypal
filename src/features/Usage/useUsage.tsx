@@ -15,7 +15,7 @@ import { getDoc } from "firebase/firestore";
 import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
 import { PaymentLog, TotalUsageInfo, UsageLog } from "@/common/usage";
 import { db } from "../Firebase/firebaseDb";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { initWelcomeBalanceRequest } from "./initWelcomeBalanceRequest";
 import { createUsageLog } from "./createUsageLog";
 import dayjs from "dayjs";
@@ -40,10 +40,23 @@ function useProvideUsage(): UsageContextType {
   const [isShowPaymentModal, setIsShowPaymentModal] = useState(false);
   const [isSuccessPayment, setIsSuccessPayment] = useState(false);
   const [isWelcomeBalanceInitialized, setIsWelcomeBalanceInitialized] = useState(false);
-
+  const searchParams = useSearchParams();
+  const isPaymentModalInUrl = searchParams.get("paymentModal") === "true";
   const router = useRouter();
 
+  useEffect(() => {
+    if (isPaymentModalInUrl && isPaymentModalInUrl !== isShowPaymentModal) {
+      togglePaymentModal(true, isSuccessPayment);
+      return;
+    }
+
+    if (!isPaymentModalInUrl && isShowPaymentModal) {
+      togglePaymentModal(false);
+    }
+  }, [isPaymentModalInUrl]);
+
   const togglePaymentModal = (isOpen: boolean, isSuccessPayment?: boolean) => {
+    console.log("togglePaymentModal");
     setIsShowPaymentModal(isOpen);
 
     if (isSuccessPayment !== undefined) {
