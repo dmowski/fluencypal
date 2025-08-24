@@ -386,13 +386,13 @@ msgstr "これはFluencyPalとの会話履歴です。"
 msgid "No conversations yet"
 msgstr "まだ会話はありません"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:534
+#: src/features/Conversation/ConversationCanvas2.tsx:533
 #: src/features/Usage/UsageStatsCards.tsx:254
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "教師:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:534
+#: src/features/Conversation/ConversationCanvas2.tsx:533
 #: src/features/Usage/UsageStatsCards.tsx:254
 #. js-lingui-explicit-id
 msgid "You:"
@@ -457,8 +457,8 @@ msgstr "履歴を開く"
 msgid "Translation"
 msgstr "翻訳"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:308
-#: src/features/Conversation/ConversationCanvas2.tsx:1258
+#: src/features/Conversation/ConversationCanvas2.tsx:307
+#: src/features/Conversation/ConversationCanvas2.tsx:1257
 #: src/features/Conversation/ConversationPage.tsx:113
 #: src/features/Conversation/ConversationPage.tsx:122
 #: src/features/Conversation/ConversationPage.tsx:142
@@ -487,7 +487,7 @@ msgid "No translation available"
 msgstr "翻訳は利用できません"
 
 #: src/features/Conversation/ConfirmConversationModal.tsx:58
-#: src/features/Conversation/ConversationCanvas2.tsx:341
+#: src/features/Conversation/ConversationCanvas2.tsx:340
 #: src/features/Goal/GoalPreparingModal.tsx:159
 #: src/features/Header/NeedHelpModal.tsx:215
 #: src/features/Translation/useTranslate.tsx:119
@@ -552,7 +552,7 @@ msgid "Price per one AI hour:"
 msgstr "1時間あたりのAIの価格:"
 
 #: src/features/Usage/PaymentModal.tsx:255
-#: src/features/Usage/SubscriptionPaymentModal.tsx:430
+#: src/features/Usage/SubscriptionPaymentModal.tsx:433
 #. js-lingui-explicit-id
 msgid "Total:"
 msgstr "合計："
@@ -563,7 +563,7 @@ msgid "Amount is too large. I appreciate your support, but let's keep it under $
 msgstr "金額が大きすぎます。あなたのサポートに感謝しますが、$400以下にしましょう。"
 
 #: src/features/Usage/PaymentModal.tsx:285
-#: src/features/Usage/SubscriptionPaymentModal.tsx:375
+#: src/features/Usage/SubscriptionPaymentModal.tsx:378
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -578,19 +578,19 @@ msgstr ""
 "                        提供されるとすぐに、契約を終了する権利を失うことを認めます。"
 
 #: src/features/Usage/PaymentModal.tsx:303
-#: src/features/Usage/SubscriptionPaymentModal.tsx:393
+#: src/features/Usage/SubscriptionPaymentModal.tsx:396
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "私は受け入れます"
 
 #: src/features/Usage/PaymentModal.tsx:305
-#: src/features/Usage/SubscriptionPaymentModal.tsx:395
+#: src/features/Usage/SubscriptionPaymentModal.tsx:398
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "利用規約"
 
 #: src/features/Usage/PaymentModal.tsx:307
-#: src/features/Usage/SubscriptionPaymentModal.tsx:397
+#: src/features/Usage/SubscriptionPaymentModal.tsx:400
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -600,7 +600,7 @@ msgstr ""
 "                        StartUp\"という名前でワルシャワに本社を置く運営されるウェブサイトの。"
 
 #: src/features/Usage/PaymentModal.tsx:324
-#: src/features/Usage/SubscriptionPaymentModal.tsx:414
+#: src/features/Usage/SubscriptionPaymentModal.tsx:417
 #. js-lingui-explicit-id
 msgid "I want to receive commercial and marketing content"
 msgstr "私は商用とマーケティングのコンテンツを受け取りたい"
@@ -681,7 +681,136 @@ msgstr "支払い履歴:"
 msgid "No payments..."
 msgstr "支払いなし..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1396
+#: src/features/Usage/SubscriptionPaymentModal.tsx:88
+#: src/features/Usage/SubscriptionPaymentModal.tsx:161
+#. js-lingui-explicit-id
+msgid "Error creating payment session"
+msgstr "支払いセッションの作成中にエラーが発生しました"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:95
+#. js-lingui-explicit-id
+msgid "Error creating payment session. Try again later."
+msgstr "支払いセッションの作成中にエラーが発生しました。後でもう一度お試しください。"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:108
+#. js-lingui-explicit-id
+msgid "Payment successful! Thank you."
+msgstr "支払いが成功しました！ありがとうございます。"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:115
+#. js-lingui-explicit-id
+msgid "Payment failed! Please try again."
+msgstr "支払いに失敗しました！もう一度お試しください。"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:128
+#: src/features/Usage/SubscriptionPaymentModal.tsx:172
+#. js-lingui-explicit-id
+msgid "Error during payment process"
+msgstr "支払いプロセス中のエラー"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:252
+#. js-lingui-explicit-id
+msgid "Payment option"
+msgstr "支払いオプション"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:261
+#: src/features/Usage/SubscriptionPaymentModal.tsx:349
+#. js-lingui-explicit-id
+msgid "Subscription for 1 month | Full access"
+msgstr "1ヶ月間のサブスクリプション | フルアクセス"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:298
+#. js-lingui-explicit-id
+msgid "Pay with Stars"
+msgstr "スターで支払う"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:340
+#. js-lingui-explicit-id
+msgid "Confirm payment"
+msgstr "支払いを確認する"
+
+#: src/features/Dashboard/HomeworkCard.tsx:115
+#: src/features/Dashboard/SelectLanguage.tsx:296
+#: src/features/Game/PositionChangedModal.tsx:138
+#: src/features/Goal/GoalQuestions.tsx:818
+#: src/features/Goal/GoalQuestions.tsx:856
+#: src/features/Plan/PlanCard.tsx:259
+#: src/features/Usage/SubscriptionPaymentModal.tsx:458
+#. js-lingui-explicit-id
+msgid "Continue"
+msgstr "続ける"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:458
+#. js-lingui-explicit-id
+msgid "Pay"
+msgstr "支払い"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:482
+#. js-lingui-explicit-id
+msgid "Your plan"
+msgstr "あなたのプラン"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:491
+#. js-lingui-explicit-id
+msgid "You don't have an active subscription."
+msgstr "あなたはアクティブなサブスクリプションを持っていません。"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:494
+#. js-lingui-explicit-id
+msgid "Your trial ended until"
+msgstr "あなたのトライアルは終了しました"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:500
+#. js-lingui-explicit-id
+msgid "Your subscription is active until"
+msgstr "あなたのサブスクリプションは次の期日まで有効です"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:506
+#. js-lingui-explicit-id
+msgid "You have"
+msgstr "あなたは"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:507
+#. js-lingui-explicit-id
+msgid "AI hours left in your balance."
+msgstr "あなたの残高に残っているAIの時間。"
+
+#: src/features/Landing/Price/PricePage.tsx:203
+#: src/features/Usage/SubscriptionPaymentModal.tsx:535
+#. js-lingui-explicit-id
+msgid "Full Access"
+msgstr "フルアクセス"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:550
+#: src/features/Usage/SubscriptionPaymentModal.tsx:605
+#. js-lingui-explicit-id
+msgid "Active"
+msgstr "アクティブ"
+
+#: src/features/Landing/Price/PricePage.tsx:233
+#: src/features/Usage/SubscriptionPaymentModal.tsx:586
+#. js-lingui-explicit-id
+msgid "month"
+msgstr "月"
+
+#: src/features/Landing/Price/PricePage.tsx:237
+#: src/features/Usage/SubscriptionPaymentModal.tsx:591
+#. js-lingui-explicit-id
+msgid "Learn at full speed with full access"
+msgstr "完全なアクセスで全速力で学びましょう"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:605
+#. js-lingui-explicit-id
+msgid "Get Full Access"
+msgstr "フルアクセスを取得する"
+
+#: src/features/Header/NeedHelpModal.tsx:76
+#: src/features/Usage/SubscriptionPaymentModal.tsx:618
+#. js-lingui-explicit-id
+msgid "Need help?"
+msgstr "助けが必要ですか？"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1395
 #: src/features/Usage/NoBalanceBlock.tsx:134
 #. js-lingui-explicit-id
 msgid "Low balance"
@@ -737,142 +866,6 @@ msgstr "読み込み中.."
 msgid "Refresh"
 msgstr "リフレッシュ"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:87
-#: src/features/Usage/SubscriptionPaymentModal.tsx:160
-#. js-lingui-explicit-id
-msgid "Error creating payment session"
-msgstr "支払いセッションの作成中にエラーが発生しました"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:94
-#. js-lingui-explicit-id
-msgid "Error creating payment session. Try again later."
-msgstr "支払いセッションの作成中にエラーが発生しました。後でもう一度お試しください。"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:107
-#. js-lingui-explicit-id
-msgid "Payment successful! Thank you."
-msgstr "支払いが成功しました！ありがとうございます。"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:114
-#. js-lingui-explicit-id
-msgid "Payment failed! Please try again."
-msgstr "支払いに失敗しました！もう一度お試しください。"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:127
-#: src/features/Usage/SubscriptionPaymentModal.tsx:171
-#. js-lingui-explicit-id
-msgid "Error during payment process"
-msgstr "支払いプロセス中のエラー"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:249
-#. js-lingui-explicit-id
-msgid "Payment option"
-msgstr "支払いオプション"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:258
-#: src/features/Usage/SubscriptionPaymentModal.tsx:346
-#. js-lingui-explicit-id
-msgid "Subscription for 1 month | Full access"
-msgstr "1ヶ月間のサブスクリプション | フルアクセス"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:295
-#. js-lingui-explicit-id
-msgid "Pay with Stars"
-msgstr "スターで支払う"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:337
-#. js-lingui-explicit-id
-msgid "Confirm payment"
-msgstr "支払いを確認する"
-
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#: src/features/Dashboard/SelectLanguage.tsx:296
-#: src/features/Game/PositionChangedModal.tsx:138
-#: src/features/Goal/GoalQuestions.tsx:818
-#: src/features/Goal/GoalQuestions.tsx:856
-#: src/features/Plan/PlanCard.tsx:259
-#: src/features/Usage/SubscriptionPaymentModal.tsx:455
-#. js-lingui-explicit-id
-msgid "Continue"
-msgstr "続ける"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:455
-#. js-lingui-explicit-id
-msgid "Pay"
-msgstr "支払い"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:479
-#. js-lingui-explicit-id
-msgid "Your plan"
-msgstr "あなたのプラン"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:488
-#. js-lingui-explicit-id
-msgid "You don't have an active subscription."
-msgstr "あなたはアクティブなサブスクリプションを持っていません。"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:491
-#. js-lingui-explicit-id
-msgid "Your trial ended until"
-msgstr "あなたのトライアルは終了しました"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:497
-#. js-lingui-explicit-id
-msgid "Your subscription is active until"
-msgstr "あなたのサブスクリプションは次の期日まで有効です"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:503
-#. js-lingui-explicit-id
-msgid "You have"
-msgstr "あなたは"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:504
-#. js-lingui-explicit-id
-msgid "AI hours left in your balance."
-msgstr "あなたの残高に残っているAIの時間。"
-
-#: src/features/Landing/Price/PricePage.tsx:203
-#: src/features/Usage/SubscriptionPaymentModal.tsx:532
-#. js-lingui-explicit-id
-msgid "Full Access"
-msgstr "フルアクセス"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:547
-#: src/features/Usage/SubscriptionPaymentModal.tsx:602
-#. js-lingui-explicit-id
-msgid "Active"
-msgstr "アクティブ"
-
-#: src/features/Landing/Price/PricePage.tsx:233
-#: src/features/Usage/SubscriptionPaymentModal.tsx:583
-#. js-lingui-explicit-id
-msgid "month"
-msgstr "月"
-
-#: src/features/Landing/Price/PricePage.tsx:237
-#: src/features/Usage/SubscriptionPaymentModal.tsx:588
-#. js-lingui-explicit-id
-msgid "Learn at full speed with full access"
-msgstr "完全なアクセスで全速力で学びましょう"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:602
-#. js-lingui-explicit-id
-msgid "Get Full Access"
-msgstr "フルアクセスを取得する"
-
-#: src/features/Header/NeedHelpModal.tsx:76
-#: src/features/Usage/SubscriptionPaymentModal.tsx:615
-#. js-lingui-explicit-id
-msgid "Need help?"
-msgstr "助けが必要ですか？"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:94
-#: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/RolePlay/RolePlayBoard.tsx:397
-#. js-lingui-explicit-id
-msgid "Role Play"
-msgstr "役割演技"
-
 #: src/features/Dashboard/PlanDashboardCards.tsx:492
 #: src/features/Landing/PlanLandingBlock.tsx:290
 #: src/features/Landing/PlanLandingBlock.tsx:502
@@ -885,6 +878,13 @@ msgstr "役割演技"
 msgid "Start"
 msgstr "開始"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:94
+#: src/features/Landing/PlanLandingBlock.tsx:104
+#: src/features/RolePlay/RolePlayBoard.tsx:397
+#. js-lingui-explicit-id
+msgid "Role Play"
+msgstr "役割演技"
+
 #: src/features/RolePlay/RolePlayBoard.tsx:699
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -896,6 +896,133 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "表示を減らす"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
+#. js-lingui-explicit-id
+msgid ""
+"Boost your English vocabulary and fluency by creatively describing and "
+"guessing words in\n"
+"        this interactive AI-powered Alias game."
+msgstr "この対話型AIパワードAliasゲームにより、創造的に言葉を表現し推測することで、あなたの英語の語彙力と流暢さを向上させましょう。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
+#. js-lingui-explicit-id
+msgid "Benefits of Playing Alias Game"
+msgstr "Aliasゲームをプレイする利点"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
+#. js-lingui-explicit-id
+msgid "Enhance your vocabulary by describing words in unique ways."
+msgstr "ユニークな方法で単語を説明することにより、あなたの語彙を強化します。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
+#. js-lingui-explicit-id
+msgid "Improve listening skills as you interpret descriptions."
+msgstr "説明を解釈することでリスニングスキルを向上させます。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
+#. js-lingui-explicit-id
+msgid "Practice rapid thinking and fluent speaking under playful pressure."
+msgstr "遊びのプレッシャーの下で、迅速な思考と流暢な話し方の練習を行います。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
+#. js-lingui-explicit-id
+msgid "Receive instant, tailored feedback from your AI partner."
+msgstr "AIパートナーからの即時、カスタマイズされたフィードバックを受け取ります。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
+#. js-lingui-explicit-id
+msgid "How to Play"
+msgstr "遊び方"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"You and your AI partner alternate turns describing and guessing words "
+"without directly\n"
+"          naming them. This encourages creative thinking and fluent "
+"expression, adapting to your\n"
+"          language proficiency."
+msgstr ""
+"あなたとあなたのAIパートナーは、直接名前を挙げることなく単語を説明し、予測するターンを交互に行います。これは創造的な思考と流暢な表現を鼓舞し、あなたの"
+"言語能力に適応します。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
+#. js-lingui-explicit-id
+msgid "Choose Your Language Level"
+msgstr "あなたの言語レベルを選択してください"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
+#. js-lingui-explicit-id
+msgid "Pick a level to start playing!"
+msgstr "プレイ開始のレベルを選んでください！"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
+#. js-lingui-explicit-id
+msgid "Alias Game Levels"
+msgstr "エイリアスゲームのレベル"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
+#. js-lingui-explicit-id
+msgid "Check proposed words"
+msgstr "提案された単語を確認してください"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
+#. js-lingui-explicit-id
+msgid "Based on your level, the AI will suggest words to describe."
+msgstr "あなたのレベルに基づき、AIは説明するための言葉を提案します。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
+#. js-lingui-explicit-id
+msgid "Alias Game options"
+msgstr "エイリアスゲームのオプション"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
+#. js-lingui-explicit-id
+msgid "Record your description"
+msgstr "あなたの説明を録音してください"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
+#. js-lingui-explicit-id
+msgid "Describe the word you see on the screen without using the word itself!"
+msgstr "画面に表示されている単語を、その単語自体を使わずに説明してみてください！"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
+#. js-lingui-explicit-id
+msgid "Alias Game Recording"
+msgstr "エイリアスゲームレコーディング"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
+#. js-lingui-explicit-id
+msgid "Have fun!"
+msgstr "楽しんでください！"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
+#. js-lingui-explicit-id
+msgid "Enjoy the game and see how the AI guesses your description!"
+msgstr "ゲームを楽しみ、AIがあなたの説明をどのように推測するかを見てみましょう！"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
+#. js-lingui-explicit-id
+msgid "Robot Thinking"
+msgstr "ロボット思考中"
+
+#: src/features/Plan/useGoalCreation.ts:41
+#: src/features/Plan/useGoalCreation.ts:69
+#: src/features/Plan/useGoalCreation.ts:91
+#: src/features/Plan/useGoalCreation.ts:94
+#: src/features/Plan/useGoalCreation.ts:98
+#: src/features/Plan/useGoalCreation.ts:107
+#: src/features/Plan/useGoalCreation.ts:113
+#: src/features/Plan/useGoalCreation.ts:117
+#. js-lingui-explicit-id
+msgid "Processing the goal..."
+msgstr "目標を処理中..."
+
+#: src/features/Plan/useGoalCreation.ts:131
+#. js-lingui-explicit-id
+msgid "Error Processing the goal"
+msgstr "目標の処理中にエラーが発生しました"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -1711,133 +1838,6 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "すべてのシナリオ"
 
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
-#. js-lingui-explicit-id
-msgid ""
-"Boost your English vocabulary and fluency by creatively describing and "
-"guessing words in\n"
-"        this interactive AI-powered Alias game."
-msgstr "この対話型AIパワードAliasゲームにより、創造的に言葉を表現し推測することで、あなたの英語の語彙力と流暢さを向上させましょう。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
-#. js-lingui-explicit-id
-msgid "Benefits of Playing Alias Game"
-msgstr "Aliasゲームをプレイする利点"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
-#. js-lingui-explicit-id
-msgid "Enhance your vocabulary by describing words in unique ways."
-msgstr "ユニークな方法で単語を説明することにより、あなたの語彙を強化します。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
-#. js-lingui-explicit-id
-msgid "Improve listening skills as you interpret descriptions."
-msgstr "説明を解釈することでリスニングスキルを向上させます。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
-#. js-lingui-explicit-id
-msgid "Practice rapid thinking and fluent speaking under playful pressure."
-msgstr "遊びのプレッシャーの下で、迅速な思考と流暢な話し方の練習を行います。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
-#. js-lingui-explicit-id
-msgid "Receive instant, tailored feedback from your AI partner."
-msgstr "AIパートナーからの即時、カスタマイズされたフィードバックを受け取ります。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
-#. js-lingui-explicit-id
-msgid "How to Play"
-msgstr "遊び方"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
-#. js-lingui-explicit-id
-msgid ""
-"You and your AI partner alternate turns describing and guessing words "
-"without directly\n"
-"          naming them. This encourages creative thinking and fluent "
-"expression, adapting to your\n"
-"          language proficiency."
-msgstr ""
-"あなたとあなたのAIパートナーは、直接名前を挙げることなく単語を説明し、予測するターンを交互に行います。これは創造的な思考と流暢な表現を鼓舞し、あなたの"
-"言語能力に適応します。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
-#. js-lingui-explicit-id
-msgid "Choose Your Language Level"
-msgstr "あなたの言語レベルを選択してください"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
-#. js-lingui-explicit-id
-msgid "Pick a level to start playing!"
-msgstr "プレイ開始のレベルを選んでください！"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
-#. js-lingui-explicit-id
-msgid "Alias Game Levels"
-msgstr "エイリアスゲームのレベル"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
-#. js-lingui-explicit-id
-msgid "Check proposed words"
-msgstr "提案された単語を確認してください"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
-#. js-lingui-explicit-id
-msgid "Based on your level, the AI will suggest words to describe."
-msgstr "あなたのレベルに基づき、AIは説明するための言葉を提案します。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
-#. js-lingui-explicit-id
-msgid "Alias Game options"
-msgstr "エイリアスゲームのオプション"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
-#. js-lingui-explicit-id
-msgid "Record your description"
-msgstr "あなたの説明を録音してください"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
-#. js-lingui-explicit-id
-msgid "Describe the word you see on the screen without using the word itself!"
-msgstr "画面に表示されている単語を、その単語自体を使わずに説明してみてください！"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
-#. js-lingui-explicit-id
-msgid "Alias Game Recording"
-msgstr "エイリアスゲームレコーディング"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
-#. js-lingui-explicit-id
-msgid "Have fun!"
-msgstr "楽しんでください！"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
-#. js-lingui-explicit-id
-msgid "Enjoy the game and see how the AI guesses your description!"
-msgstr "ゲームを楽しみ、AIがあなたの説明をどのように推測するかを見てみましょう！"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
-#. js-lingui-explicit-id
-msgid "Robot Thinking"
-msgstr "ロボット思考中"
-
-#: src/features/Plan/useGoalCreation.ts:41
-#: src/features/Plan/useGoalCreation.ts:69
-#: src/features/Plan/useGoalCreation.ts:91
-#: src/features/Plan/useGoalCreation.ts:94
-#: src/features/Plan/useGoalCreation.ts:98
-#: src/features/Plan/useGoalCreation.ts:107
-#: src/features/Plan/useGoalCreation.ts:113
-#: src/features/Plan/useGoalCreation.ts:117
-#. js-lingui-explicit-id
-msgid "Processing the goal..."
-msgstr "目標を処理中..."
-
-#: src/features/Plan/useGoalCreation.ts:131
-#. js-lingui-explicit-id
-msgid "Error Processing the goal"
-msgstr "目標の処理中にエラーが発生しました"
-
 #: src/features/Plan/PlanCard.tsx:118
 #. js-lingui-explicit-id
 msgid "Start lesson"
@@ -1851,7 +1851,7 @@ msgstr "完了するために6つのメッセージを送信してください"
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Lang/LanguageSwitcher.tsx:98
+#: src/features/Lang/LanguageSwitcher.tsx:100
 #. js-lingui-explicit-id
 msgid "Other languages"
 msgstr "他の言語"
@@ -1859,29 +1859,29 @@ msgstr "他の言語"
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Lang/LanguageSwitcher.tsx:99
+#: src/features/Lang/LanguageSwitcher.tsx:101
 #. js-lingui-explicit-id
 msgid "System languages"
 msgstr "システム言語"
 
-#: src/features/Lang/LanguageSwitcher.tsx:185
+#: src/features/Lang/LanguageSwitcher.tsx:188
 #. js-lingui-explicit-id
 msgid "Languages"
 msgstr "言語"
 
 #: src/features/Goal/GoalQuestions.tsx:423
-#: src/features/Lang/LanguageSwitcher.tsx:229
+#: src/features/Lang/LanguageSwitcher.tsx:232
 #. js-lingui-explicit-id
 msgid "Language to Learn"
 msgstr "学びたい言語"
 
 #: src/features/Dashboard/SelectLanguage.tsx:267
-#: src/features/Lang/LanguageSwitcher.tsx:268
+#: src/features/Lang/LanguageSwitcher.tsx:271
 #. js-lingui-explicit-id
 msgid "Native Language"
 msgstr "母国語"
 
-#: src/features/Lang/LanguageSwitcher.tsx:310
+#: src/features/Lang/LanguageSwitcher.tsx:313
 #. js-lingui-explicit-id
 msgid "Page Language"
 msgstr "ページ言語"
@@ -2542,13 +2542,6 @@ msgstr "いつでも、どこでも学ぶ"
 msgid "Start Your Free Trial"
 msgstr "無料トライアルを開始する"
 
-#: src/features/Blog/BlogsPage.tsx:41
-#: src/features/Landing/Price/PricePage.tsx:971
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
-#. js-lingui-explicit-id
-msgid "Start Your Journey to Fluent Conversations Now"
-msgstr "今すぐ流暢な会話への旅を始めましょう"
-
 #: src/features/Landing/Footer.tsx:85
 #. js-lingui-explicit-id
 msgid "Role-Play"
@@ -2630,6 +2623,13 @@ msgstr "関連シナリオ"
 msgid "Ready to Become Fluent in English?"
 msgstr "英語を流暢に話せる準備はできていますか？"
 
+#: src/features/Blog/BlogsPage.tsx:41
+#: src/features/Landing/Price/PricePage.tsx:971
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
+#. js-lingui-explicit-id
+msgid "Start Your Journey to Fluent Conversations Now"
+msgstr "今すぐ流暢な会話への旅を始めましょう"
+
 #: src/features/Landing/RolePlay/RolePlayCard.tsx:150
 #. js-lingui-explicit-id
 msgid "Try"
@@ -2662,76 +2662,6 @@ msgid ""
 "Order food, schedule appointments, ace job interviews, and more—all with "
 "guidance from your AI tutor."
 msgstr "食べ物の注文、予約のスケジュール、仕事の面接の成功など、すべてあなたのAIチューターからのガイダンスで行います。"
-
-#: src/features/Landing/Price/PricePage.tsx:105
-#. js-lingui-explicit-id
-msgid "Start free, subscribe later"
-msgstr "無料で始めて、後でサブスクライブ"
-
-#: src/features/Landing/Price/PricePage.tsx:110
-#. js-lingui-explicit-id
-msgid "Open Dashboard"
-msgstr "ダッシュボードを開く"
-
-#: src/features/Landing/Price/PricePage.tsx:150
-#. js-lingui-explicit-id
-msgid "Trial"
-msgstr "試用"
-
-#: src/features/Landing/Price/PricePage.tsx:151
-#. js-lingui-explicit-id
-msgid "For learners who want to try it out"
-msgstr "試してみたい学習者のために"
-
-#: src/features/Landing/Price/PricePage.tsx:180
-#. js-lingui-explicit-id
-msgid "3 days"
-msgstr "3日間"
-
-#: src/features/Landing/Price/PricePage.tsx:184
-#. js-lingui-explicit-id
-msgid "Game mode and trial AI tutor access"
-msgstr "ゲームモードとAIチューターの体験アクセス"
-
-#: src/features/Landing/Price/PricePage.tsx:185
-#. js-lingui-explicit-id
-msgid "Includes:"
-msgstr "含まれています："
-
-#: src/features/Landing/Price/PricePage.tsx:189
-#. js-lingui-explicit-id
-msgid "Game Mode"
-msgstr "ゲームモード"
-
-#: src/features/Landing/Price/PricePage.tsx:190
-#. js-lingui-explicit-id
-msgid "Many language games to practice"
-msgstr "多くの言語ゲームで練習"
-
-#: src/features/Landing/Price/PricePage.tsx:194
-#. js-lingui-explicit-id
-msgid "3 days of AI tutor access"
-msgstr "AIチューターアクセス3日間"
-
-#: src/features/Landing/Price/PricePage.tsx:195
-#. js-lingui-explicit-id
-msgid "Try AI tutor for one hour to see how it works"
-msgstr "AIチューターを1時間試して、その動作を確認してみてください"
-
-#: src/features/Landing/Price/PricePage.tsx:199
-#. js-lingui-explicit-id
-msgid "Start "
-msgstr "開始"
-
-#: src/features/Landing/Price/PricePage.tsx:204
-#. js-lingui-explicit-id
-msgid "For learners who want flexibility"
-msgstr "フレキシビリティを求める学習者のために"
-
-#: src/features/Landing/Price/PricePage.tsx:238
-#. js-lingui-explicit-id
-msgid "Everything in Free, plus:"
-msgstr "フリープランに加えて、以下の特典があります："
 
 #: src/features/Landing/Price/FeatureList.tsx:31
 #: src/features/Landing/Price/PricePage.tsx:241
@@ -2818,6 +2748,76 @@ msgid ""
 "With time, AI will adapt to your learning style and it will be more "
 "personalized"
 msgstr "時間と共に、AIはあなたの学習スタイルに適応し、よりパーソナライズされます"
+
+#: src/features/Landing/Price/PricePage.tsx:105
+#. js-lingui-explicit-id
+msgid "Start free, subscribe later"
+msgstr "無料で始めて、後でサブスクライブ"
+
+#: src/features/Landing/Price/PricePage.tsx:110
+#. js-lingui-explicit-id
+msgid "Open Dashboard"
+msgstr "ダッシュボードを開く"
+
+#: src/features/Landing/Price/PricePage.tsx:150
+#. js-lingui-explicit-id
+msgid "Trial"
+msgstr "試用"
+
+#: src/features/Landing/Price/PricePage.tsx:151
+#. js-lingui-explicit-id
+msgid "For learners who want to try it out"
+msgstr "試してみたい学習者のために"
+
+#: src/features/Landing/Price/PricePage.tsx:180
+#. js-lingui-explicit-id
+msgid "3 days"
+msgstr "3日間"
+
+#: src/features/Landing/Price/PricePage.tsx:184
+#. js-lingui-explicit-id
+msgid "Game mode and trial AI tutor access"
+msgstr "ゲームモードとAIチューターの体験アクセス"
+
+#: src/features/Landing/Price/PricePage.tsx:185
+#. js-lingui-explicit-id
+msgid "Includes:"
+msgstr "含まれています："
+
+#: src/features/Landing/Price/PricePage.tsx:189
+#. js-lingui-explicit-id
+msgid "Game Mode"
+msgstr "ゲームモード"
+
+#: src/features/Landing/Price/PricePage.tsx:190
+#. js-lingui-explicit-id
+msgid "Many language games to practice"
+msgstr "多くの言語ゲームで練習"
+
+#: src/features/Landing/Price/PricePage.tsx:194
+#. js-lingui-explicit-id
+msgid "3 days of AI tutor access"
+msgstr "AIチューターアクセス3日間"
+
+#: src/features/Landing/Price/PricePage.tsx:195
+#. js-lingui-explicit-id
+msgid "Try AI tutor for one hour to see how it works"
+msgstr "AIチューターを1時間試して、その動作を確認してみてください"
+
+#: src/features/Landing/Price/PricePage.tsx:199
+#. js-lingui-explicit-id
+msgid "Start "
+msgstr "開始"
+
+#: src/features/Landing/Price/PricePage.tsx:204
+#. js-lingui-explicit-id
+msgid "For learners who want flexibility"
+msgstr "フレキシビリティを求める学習者のために"
+
+#: src/features/Landing/Price/PricePage.tsx:238
+#. js-lingui-explicit-id
+msgid "Everything in Free, plus:"
+msgstr "フリープランに加えて、以下の特典があります："
 
 #: src/features/Landing/Price/PricePage.tsx:284
 #. js-lingui-explicit-id
@@ -3053,23 +3053,76 @@ msgstr "はい！大きなクレジットパッケージを購入する際には
 msgid "Contacts:"
 msgstr "連絡先:"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:104
+#: src/features/Header/HeaderPractice.tsx:199
 #. js-lingui-explicit-id
-msgid ""
-"My name is Alex, I am the creator of this website. I am a software engineer "
-"and I am passionate about learning languages. I created this website to "
-"help people learn languages in a fun and interactive way. I hope you enjoy "
-"using it!"
-msgstr ""
-"私の名前はアレックスで、このウェブサイトの作成者です。私はソフトウェアエンジニアであり、言語を学ぶことに情熱を持っています。このウェブサイトは、人々が楽"
-"しくインタラクティブな方法で言語を学べるように作成しました。あなたがそれを使用するのを楽しんでいただければと思います！"
+msgid "Finishing..."
+msgstr "終了中..."
 
-#: src/features/Landing/Contact/ContactsPage.tsx:117
+#: src/features/Dashboard/RulesToLearn.tsx:101
+#: src/features/Dashboard/WordsToLearn.tsx:121
+#: src/features/Header/HeaderPractice.tsx:200
 #. js-lingui-explicit-id
-msgid ""
-"Feel free to reach out to me with any questions or feedback. I'm always "
-"happy to help!"
-msgstr "お気軽に質問やフィードバックをお寄せください。お手伝いできてうれしいです！"
+msgid "Back"
+msgstr ""
+"\n"
+"戻る\n"
+
+#: src/features/Header/HeaderPractice.tsx:317
+#. js-lingui-explicit-id
+msgid "Refund Request"
+msgstr "返金リクエスト"
+
+#: src/features/Header/HeaderPractice.tsx:318
+#. js-lingui-explicit-id
+msgid "Add some info why you want a refund and we will do it."
+msgstr "あなたが返金を希望する理由をいくつか追加してください、そして私たちはそれを実行します。"
+
+#: src/features/Header/ContactMessageModal.tsx:75
+#: src/features/Header/HeaderPractice.tsx:319
+#: src/features/Header/HeaderPractice.tsx:328
+#. js-lingui-explicit-id
+msgid "Leave your message"
+msgstr "あなたのメッセージを残してください"
+
+#: src/features/Header/HeaderPractice.tsx:326
+#: src/features/Header/HeaderPractice.tsx:388
+#. js-lingui-explicit-id
+msgid "Feedback"
+msgstr "フィードバック"
+
+#: src/features/Header/HeaderPractice.tsx:327
+#. js-lingui-explicit-id
+msgid "We appreciate your feedback!"
+msgstr "あなたのフィードバックに感謝します！"
+
+#: src/features/Header/HeaderPractice.tsx:352
+#. js-lingui-explicit-id
+msgid "Subscription"
+msgstr "サブスクリプション"
+
+#: src/features/Header/HeaderPractice.tsx:364
+#. js-lingui-explicit-id
+msgid "Payment history"
+msgstr "支払い履歴"
+
+#: src/features/Header/HeaderPractice.tsx:376
+#. js-lingui-explicit-id
+msgid "Refund"
+msgstr "返金"
+
+#: src/features/Header/HeaderPractice.tsx:402
+#: src/features/Header/HeaderStatic.tsx:16
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr ""
+"\n"
+"助けが必要ですか？\n"
+
+#: src/features/Header/HeaderPractice.tsx:414
+#: src/features/Header/HeaderStatic.tsx:17
+#. js-lingui-explicit-id
+msgid "Log Out"
+msgstr "ログアウト"
 
 #: src/features/Header/NeedHelpModal.tsx:34
 #: src/features/Header/NeedHelpModal.tsx:162
@@ -3139,76 +3192,46 @@ msgstr "はい、アカウントを削除します"
 msgid "Delete account"
 msgstr "アカウントを削除する"
 
-#: src/features/Header/HeaderPractice.tsx:217
+#: src/features/Landing/Contact/ContactsPage.tsx:104
 #. js-lingui-explicit-id
-msgid "Finishing..."
-msgstr "終了中..."
-
-#: src/features/Dashboard/RulesToLearn.tsx:101
-#: src/features/Dashboard/WordsToLearn.tsx:121
-#: src/features/Header/HeaderPractice.tsx:218
-#. js-lingui-explicit-id
-msgid "Back"
+msgid ""
+"My name is Alex, I am the creator of this website. I am a software engineer "
+"and I am passionate about learning languages. I created this website to "
+"help people learn languages in a fun and interactive way. I hope you enjoy "
+"using it!"
 msgstr ""
-"\n"
-"戻る\n"
+"私の名前はアレックスで、このウェブサイトの作成者です。私はソフトウェアエンジニアであり、言語を学ぶことに情熱を持っています。このウェブサイトは、人々が楽"
+"しくインタラクティブな方法で言語を学べるように作成しました。あなたがそれを使用するのを楽しんでいただければと思います！"
 
-#: src/features/Header/HeaderPractice.tsx:335
+#: src/features/Landing/Contact/ContactsPage.tsx:117
 #. js-lingui-explicit-id
-msgid "Refund Request"
-msgstr "返金リクエスト"
+msgid ""
+"Feel free to reach out to me with any questions or feedback. I'm always "
+"happy to help!"
+msgstr "お気軽に質問やフィードバックをお寄せください。お手伝いできてうれしいです！"
 
-#: src/features/Header/HeaderPractice.tsx:336
+#: src/features/Dashboard/FeedbackBlock.tsx:25
+#: src/features/Header/ContactMessageModal.tsx:38
 #. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr "あなたが返金を希望する理由をいくつか追加してください、そして私たちはそれを実行します。"
+msgid "Failed to send feedback. Please try again later."
+msgstr "フィードバックの送信に失敗しました。後ほど再試行してください。"
 
-#: src/features/Header/ContactMessageModal.tsx:75
-#: src/features/Header/HeaderPractice.tsx:337
-#: src/features/Header/HeaderPractice.tsx:346
+#: src/features/Header/ContactMessageModal.tsx:43
 #. js-lingui-explicit-id
-msgid "Leave your message"
-msgstr "あなたのメッセージを残してください"
+msgid "Thank you for your feedback!"
+msgstr "あなたのフィードバックをありがとうございます！"
 
-#: src/features/Header/HeaderPractice.tsx:344
-#: src/features/Header/HeaderPractice.tsx:406
+#: src/features/Dashboard/FeedbackBlock.tsx:51
+#: src/features/Header/ContactMessageModal.tsx:80
 #. js-lingui-explicit-id
-msgid "Feedback"
-msgstr "フィードバック"
+msgid "Sending..."
+msgstr "送信中..."
 
-#: src/features/Header/HeaderPractice.tsx:345
+#: src/features/Conversation/ConversationCanvas2.tsx:1014
+#: src/features/Header/ContactMessageModal.tsx:80
 #. js-lingui-explicit-id
-msgid "We appreciate your feedback!"
-msgstr "あなたのフィードバックに感謝します！"
-
-#: src/features/Header/HeaderPractice.tsx:370
-#. js-lingui-explicit-id
-msgid "Subscription"
-msgstr "サブスクリプション"
-
-#: src/features/Header/HeaderPractice.tsx:382
-#. js-lingui-explicit-id
-msgid "Payment history"
-msgstr "支払い履歴"
-
-#: src/features/Header/HeaderPractice.tsx:394
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "返金"
-
-#: src/features/Header/HeaderPractice.tsx:420
-#: src/features/Header/HeaderStatic.tsx:16
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr ""
-"\n"
-"助けが必要ですか？\n"
-
-#: src/features/Header/HeaderPractice.tsx:432
-#: src/features/Header/HeaderStatic.tsx:17
-#. js-lingui-explicit-id
-msgid "Log Out"
-msgstr "ログアウト"
+msgid "Send"
+msgstr "送信"
 
 #: src/features/Header/PaymentHistoryModal.tsx:21
 #. js-lingui-explicit-id
@@ -3239,39 +3262,6 @@ msgstr "試用日数"
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "支払い履歴"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:25
-#: src/features/Header/ContactMessageModal.tsx:38
-#. js-lingui-explicit-id
-msgid "Failed to send feedback. Please try again later."
-msgstr "フィードバックの送信に失敗しました。後ほど再試行してください。"
-
-#: src/features/Header/ContactMessageModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Thank you for your feedback!"
-msgstr "あなたのフィードバックをありがとうございます！"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:51
-#: src/features/Header/ContactMessageModal.tsx:80
-#. js-lingui-explicit-id
-msgid "Sending..."
-msgstr "送信中..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1015
-#: src/features/Header/ContactMessageModal.tsx:80
-#. js-lingui-explicit-id
-msgid "Send"
-msgstr "送信"
-
-#: src/features/Header/HeaderStatic.tsx:11
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "ロールプレイ"
-
-#: src/features/Header/HeaderStatic.tsx:14
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "サインイン"
 
 #: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
@@ -3322,6 +3312,16 @@ msgstr "ついに"
 #. js-lingui-explicit-id
 msgid "Let's rock it!"
 msgstr "さあ、始めましょう！"
+
+#: src/features/Header/HeaderStatic.tsx:11
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "ロールプレイ"
+
+#: src/features/Header/HeaderStatic.tsx:14
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "サインイン"
 
 #: src/features/Goal/GoalQuestions.tsx:60
 #. js-lingui-explicit-id
@@ -3582,10 +3582,10 @@ msgid ""
 "songs."
 msgstr "私は旅行のために英語を学びたいです。そして、映画や歌を理解したいと思います。"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:749
-#: src/features/Conversation/ConversationCanvas2.tsx:752
-#: src/features/Conversation/ConversationCanvas2.tsx:835
-#: src/features/Conversation/ConversationCanvas2.tsx:842
+#: src/features/Conversation/ConversationCanvas2.tsx:748
+#: src/features/Conversation/ConversationCanvas2.tsx:751
+#: src/features/Conversation/ConversationCanvas2.tsx:834
+#: src/features/Conversation/ConversationCanvas2.tsx:841
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:143
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:261
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:167
@@ -3685,27 +3685,10 @@ msgstr "プランを開く"
 msgid "Nice!"
 msgstr "素晴らしい!"
 
-#: src/features/Game/GameNativeLanguageSelector.tsx:39
+#: src/features/Game/GameMyAvatar.tsx:20
 #. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "あなたの母国語:"
-
-#: src/features/Game/GameOnboarding.tsx:169
-#: src/features/Game/GamePage.tsx:21
-#. js-lingui-explicit-id
-msgid "Play"
-msgstr "再生"
-
-#: src/features/Game/GamePage.tsx:87
-#. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "評価:"
-
-#: src/features/Game/GameBadge.tsx:67
-#: src/features/Game/GamePage.tsx:89
-#. js-lingui-explicit-id
-msgid "Rank in the top 5 to get the app for free"
-msgstr "トップ5にランクインするとアプリを無料で入手できます"
+msgid "Select your avatar"
+msgstr "あなたのアバターを選択してください"
 
 #: src/features/Game/GameOnboarding.tsx:47
 #. js-lingui-explicit-id
@@ -3739,6 +3722,17 @@ msgstr "あなたが準備できていることを確認しましょう"
 msgid "Your Avatar:"
 msgstr "あなたのアバター:"
 
+#: src/features/Game/GameOnboarding.tsx:169
+#: src/features/Game/GamePage.tsx:21
+#. js-lingui-explicit-id
+msgid "Play"
+msgstr "再生"
+
+#: src/features/Game/GameNativeLanguageSelector.tsx:39
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "あなたの母国語:"
+
 #: src/features/Game/GameMyUsername.tsx:26
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
@@ -3749,10 +3743,21 @@ msgstr "ユーザー名は最低3文字必要です。"
 msgid "Your Username:"
 msgstr "あなたのユーザーネーム:"
 
-#: src/features/Game/GameMyAvatar.tsx:20
+#: src/features/Game/GamePage.tsx:87
 #. js-lingui-explicit-id
-msgid "Select your avatar"
-msgstr "あなたのアバターを選択してください"
+msgid "Rating:"
+msgstr "評価:"
+
+#: src/features/Game/GameBadge.tsx:67
+#: src/features/Game/GamePage.tsx:89
+#. js-lingui-explicit-id
+msgid "Rank in the top 5 to get the app for free"
+msgstr "トップ5にランクインするとアプリを無料で入手できます"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Translate the word"
+msgstr "単語を翻訳する"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
@@ -3766,7 +3771,7 @@ msgstr "トピックを議論する"
 msgid "Submit answer"
 msgstr "回答を提出する"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1046
+#: src/features/Conversation/ConversationCanvas2.tsx:1045
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:283
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:236
@@ -3791,10 +3796,10 @@ msgstr "あなた自身の言葉で話題を説明してください..."
 msgid "Error: "
 msgstr "エラー:"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#: src/features/Game/GameBadge.tsx:55
 #. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "単語を翻訳する"
+msgid "Play and Learn"
+msgstr "プレイと学習"
 
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
 #. js-lingui-explicit-id
@@ -3806,8 +3811,8 @@ msgstr "文を作る"
 msgid "Read the text"
 msgstr "テキストを読む"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1032
-#: src/features/Conversation/ConversationCanvas2.tsx:1296
+#: src/features/Conversation/ConversationCanvas2.tsx:1031
+#: src/features/Conversation/ConversationCanvas2.tsx:1295
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:296
 #. js-lingui-explicit-id
 msgid "Re-record"
@@ -3829,25 +3834,23 @@ msgstr "エラー:"
 msgid "Describe the image"
 msgstr "画像を説明する"
 
-#: src/features/Dashboard/SelectLanguage.tsx:143
+#: src/features/Dashboard/WordsToLearn.tsx:32
 #. js-lingui-explicit-id
-msgid "Almost there!"
-msgstr "もう少しで終わります！"
+msgid "New words to practice."
+msgstr "新しい単語を練習しましょう。"
 
-#: src/features/Dashboard/SelectLanguage.tsx:158
+#: src/features/Dashboard/RulesToLearn.tsx:86
+#: src/features/Dashboard/WordsToLearn.tsx:106
 #. js-lingui-explicit-id
-msgid "Select languages"
-msgstr "言語を選択"
+msgid "Start practice"
+msgstr ""
+"\n"
+"練習を始める\n"
 
-#: src/features/Dashboard/SelectLanguage.tsx:204
+#: src/features/Dashboard/WordsToLearn.tsx:128
 #. js-lingui-explicit-id
-msgid "Learn"
-msgstr "学ぶ"
-
-#: src/features/Dashboard/SelectLanguage.tsx:231
-#. js-lingui-explicit-id
-msgid "Page"
-msgstr "ページ"
+msgid "I know all of them"
+msgstr "私は彼ら全員を知っています"
 
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
@@ -3882,28 +3885,25 @@ msgstr "新しい単語"
 msgid "Practice new vocabulary with the AI"
 msgstr "新しい語彙をAIで練習しましょう。"
 
-#: src/features/Dashboard/WordsToLearn.tsx:32
+#: src/features/Dashboard/SelectLanguage.tsx:143
 #. js-lingui-explicit-id
-msgid "New words to practice."
-msgstr "新しい単語を練習しましょう。"
+msgid "Almost there!"
+msgstr "もう少しで終わります！"
 
-#: src/features/Dashboard/RulesToLearn.tsx:86
-#: src/features/Dashboard/WordsToLearn.tsx:106
+#: src/features/Dashboard/SelectLanguage.tsx:158
 #. js-lingui-explicit-id
-msgid "Start practice"
-msgstr ""
-"\n"
-"練習を始める\n"
+msgid "Select languages"
+msgstr "言語を選択"
 
-#: src/features/Dashboard/WordsToLearn.tsx:128
+#: src/features/Dashboard/SelectLanguage.tsx:204
 #. js-lingui-explicit-id
-msgid "I know all of them"
-msgstr "私は彼ら全員を知っています"
+msgid "Learn"
+msgstr "学ぶ"
 
-#: src/features/Dashboard/RulesToLearn.tsx:36
+#: src/features/Dashboard/SelectLanguage.tsx:231
 #. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "新しいルールを練習する。"
+msgid "Page"
+msgstr "ページ"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:70
 #. js-lingui-explicit-id
@@ -3969,7 +3969,7 @@ msgstr "あなたにとって興味深いものがあります..."
 msgid "Let's start"
 msgstr "始めましょう"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1282
+#: src/features/Conversation/ConversationCanvas2.tsx:1281
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:423
 #: src/features/Dashboard/PlanDashboardCards.tsx:553
@@ -4037,15 +4037,37 @@ msgstr "あなたのフィードバックをお聞かせください"
 msgid "Send Feedback"
 msgstr "フィードバックを送信"
 
-#: src/features/Dashboard/GoalCard.tsx:13
+#: src/features/Dashboard/HomeworkCard.tsx:21
 #. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "あなたの学習の目標を設定します"
+msgid "Homework"
+msgstr ""
+"\n"
+"宿題\n"
 
-#: src/features/Dashboard/GoalCard.tsx:28
+#: src/features/Dashboard/HomeworkCard.tsx:57
 #. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "スタート | 5分"
+msgid "No homework assigned yet."
+msgstr "まだ宿題は出されていません。"
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "会話を始めて、それを手に入れましょう。"
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "スキップ"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "すべて表示"
+
+#: src/features/Dashboard/RulesToLearn.tsx:36
+#. js-lingui-explicit-id
+msgid "New rule to practice."
+msgstr "新しいルールを練習する。"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
 #. js-lingui-explicit-id
@@ -4082,32 +4104,15 @@ msgstr "ルールを取得する"
 msgid "Expand vocabulary"
 msgstr "語彙を拡張する"
 
-#: src/features/Dashboard/HomeworkCard.tsx:21
+#: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
-msgid "Homework"
-msgstr ""
-"\n"
-"宿題\n"
+msgid "Set the goal of your learning"
+msgstr "あなたの学習の目標を設定します"
 
-#: src/features/Dashboard/HomeworkCard.tsx:57
+#: src/features/Dashboard/GoalCard.tsx:28
 #. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "まだ宿題は出されていません。"
-
-#: src/features/Dashboard/HomeworkCard.tsx:66
-#. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "会話を始めて、それを手に入れましょう。"
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "スキップ"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "すべて表示"
+msgid "Start | 5 min"
+msgstr "スタート | 5分"
 
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:55
 #. js-lingui-explicit-id
@@ -4232,6 +4237,21 @@ msgstr "あなたの脳に直接言語スキルをアップロードします"
 msgid "Error analyzing conversation"
 msgstr "会話の分析エラー"
 
+#: src/features/Conversation/ConversationPage.tsx:126
+#. js-lingui-explicit-id
+msgid "Loading Goal..."
+msgstr "目標を読み込んでいます..."
+
+#: src/features/Conversation/ConversationPage.tsx:150
+#. js-lingui-explicit-id
+msgid "Crafting new words..."
+msgstr "新しい言葉を作成中..."
+
+#: src/features/Conversation/ConversationPage.tsx:154
+#. js-lingui-explicit-id
+msgid "Crafting new rule..."
+msgstr "新しいルールの作成..."
+
 #: src/features/Conversation/ConversationError.tsx:34
 #. js-lingui-explicit-id
 msgid "Oops! Something went wrong"
@@ -4252,180 +4272,180 @@ msgstr "デベロップメントチームに通知が送信されました。申
 msgid "Reload page"
 msgstr "ページを再読み込み"
 
-#: src/features/Conversation/ConversationPage.tsx:126
-#. js-lingui-explicit-id
-msgid "Loading Goal..."
-msgstr "目標を読み込んでいます..."
-
-#: src/features/Conversation/ConversationPage.tsx:150
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "新しい言葉を作成中..."
-
-#: src/features/Conversation/ConversationPage.tsx:154
-#. js-lingui-explicit-id
-msgid "Crafting new rule..."
-msgstr "新しいルールの作成..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:316
+#: src/features/Conversation/ConversationCanvas2.tsx:315
 #. js-lingui-explicit-id
 msgid "Idea for your message"
 msgstr "あなたのメッセージのアイデア"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:383
+#: src/features/Conversation/ConversationCanvas2.tsx:382
 #. js-lingui-explicit-id
 msgid "Lesson Review"
 msgstr "レッスンレビュー"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:400
+#: src/features/Conversation/ConversationCanvas2.tsx:399
 #. js-lingui-explicit-id
 msgid "Language level:"
 msgstr "言語レベル:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:402
-#: src/features/Conversation/ConversationCanvas2.tsx:409
-#: src/features/Conversation/ConversationCanvas2.tsx:416
-#: src/features/Conversation/ConversationCanvas2.tsx:700
-#: src/features/Conversation/ConversationCanvas2.tsx:837
-#: src/features/Conversation/ConversationCanvas2.tsx:844
+#: src/features/Conversation/ConversationCanvas2.tsx:401
+#: src/features/Conversation/ConversationCanvas2.tsx:408
+#: src/features/Conversation/ConversationCanvas2.tsx:415
+#: src/features/Conversation/ConversationCanvas2.tsx:699
+#: src/features/Conversation/ConversationCanvas2.tsx:836
+#: src/features/Conversation/ConversationCanvas2.tsx:843
 #. js-lingui-explicit-id
 msgid "Analyzing..."
 msgstr "解析中..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:407
+#: src/features/Conversation/ConversationCanvas2.tsx:406
 #. js-lingui-explicit-id
 msgid "What was great:"
 msgstr "何が素晴らしかったか："
 
-#: src/features/Conversation/ConversationCanvas2.tsx:414
+#: src/features/Conversation/ConversationCanvas2.tsx:413
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
 msgstr "改善すべき点："
 
-#: src/features/Conversation/ConversationCanvas2.tsx:443
+#: src/features/Conversation/ConversationCanvas2.tsx:442
 #. js-lingui-explicit-id
 msgid "Start new lesson"
 msgstr "新しいレッスンを開始する"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:453
+#: src/features/Conversation/ConversationCanvas2.tsx:452
 #. js-lingui-explicit-id
 msgid "Continue conversation"
 msgstr "会話を続ける"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:634
+#: src/features/Conversation/ConversationCanvas2.tsx:633
 #. js-lingui-explicit-id
 msgid "Error during analyzing message"
 msgstr "メッセージの分析中にエラーが発生しました"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:688
+#: src/features/Conversation/ConversationCanvas2.tsx:687
 #. js-lingui-explicit-id
 msgid "Almost correct"
 msgstr "ほぼ正確"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:703
+#: src/features/Conversation/ConversationCanvas2.tsx:702
 #. js-lingui-explicit-id
 msgid "Great!"
 msgstr "素晴らしい！"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:726
+#: src/features/Conversation/ConversationCanvas2.tsx:725
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "あなたのメッセージ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:796
+#: src/features/Conversation/ConversationCanvas2.tsx:795
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "訂正済み"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:889
+#: src/features/Conversation/ConversationCanvas2.tsx:888
 #. js-lingui-explicit-id
 msgid "New Words to Vocabulary:"
 msgstr "新しい単語を語彙へ:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:934
+#: src/features/Conversation/ConversationCanvas2.tsx:933
 #. js-lingui-explicit-id
 msgid "Analyzing"
 msgstr "分析中"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:941
+#: src/features/Conversation/ConversationCanvas2.tsx:940
 #. js-lingui-explicit-id
 msgid "Preparing Goal"
 msgstr "目標の準備"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:961
+#: src/features/Conversation/ConversationCanvas2.tsx:960
 #. js-lingui-explicit-id
 msgid "Goal is created"
 msgstr "目標が作成されました"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:971
+#: src/features/Conversation/ConversationCanvas2.tsx:970
 #. js-lingui-explicit-id
 msgid "Lessons added:"
 msgstr "追加されたレッスン:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:992
+#: src/features/Conversation/ConversationCanvas2.tsx:991
 #. js-lingui-explicit-id
 msgid "Open plan"
 msgstr "オープンプラン"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1065
+#: src/features/Conversation/ConversationCanvas2.tsx:1064
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "ストップ"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1097
+#: src/features/Conversation/ConversationCanvas2.tsx:1096
 #. js-lingui-explicit-id
 msgid "Record Message"
 msgstr "メッセージを記録"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1134
+#: src/features/Conversation/ConversationCanvas2.tsx:1133
 #. js-lingui-explicit-id
 msgid "Use voice message mode"
 msgstr "音声メッセージモードを使用する"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1151
+#: src/features/Conversation/ConversationCanvas2.tsx:1150
 #. js-lingui-explicit-id
 msgid "Use keyboard mode"
 msgstr "キーボードモードを使用する"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1168
+#: src/features/Conversation/ConversationCanvas2.tsx:1167
 #. js-lingui-explicit-id
 msgid "Use phone mode"
 msgstr "電話モードを使用する"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1184
+#: src/features/Conversation/ConversationCanvas2.tsx:1183
 #. js-lingui-explicit-id
 msgid "Help with answer"
 msgstr "答えを支援する"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1207
+#: src/features/Conversation/ConversationCanvas2.tsx:1206
 #. js-lingui-explicit-id
 msgid "Your message..."
 msgstr "あなたのメッセージ..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1258
+#: src/features/Conversation/ConversationCanvas2.tsx:1257
 #. js-lingui-explicit-id
 msgid "Mission complete"
 msgstr "ミッション完了"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1270
+#: src/features/Conversation/ConversationCanvas2.tsx:1269
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "結果を開く"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1312
+#: src/features/Conversation/ConversationCanvas2.tsx:1311
 #. js-lingui-explicit-id
 msgid "Re-write"
 msgstr "書き直す"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1372
+#: src/features/Conversation/ConversationCanvas2.tsx:1371
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "録音をキャンセル"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1404
+#: src/features/Conversation/ConversationCanvas2.tsx:1403
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "チャージ"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:26
+#. js-lingui-explicit-id
+msgid "Ready?"
+msgstr "準備はいいですか？"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Next, allow microphone access to talk with the AI."
+msgstr "次に、AIと話すためにマイクへのアクセスを許可してください。"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:55
+#. js-lingui-explicit-id
+msgid "I am ready"
+msgstr "私は準備ができています"
 
 #: src/features/Conversation/AliasGamePanel.tsx:122
 #. js-lingui-explicit-id
@@ -4441,11 +4461,6 @@ msgstr "さらにオプション"
 #. js-lingui-explicit-id
 msgid "Guessed words:"
 msgstr "推測された単語:"
-
-#: src/features/Blog/ListBlog.tsx:131
-#. js-lingui-explicit-id
-msgid "No blogs found"
-msgstr "ブログが見つかりません"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -5784,6 +5799,11 @@ msgstr "プロフェッショナル開発"
 msgid "All Blogs"
 msgstr "すべてのブログ"
 
+#: src/features/Blog/ListBlog.tsx:131
+#. js-lingui-explicit-id
+msgid "No blogs found"
+msgstr "ブログが見つかりません"
+
 #: src/features/Blog/ListBlogIntro.tsx:66
 #. js-lingui-explicit-id
 msgid "Read and Learn with my blog"
@@ -5796,102 +5816,10 @@ msgid ""
 "teaching, and technology."
 msgstr "インスピレーションを得て、言語学習、教育、テクノロジーの最新トレンドについて学びましょう。"
 
-#: src/features/Conversation/ConfirmConversationModal.tsx:26
-#. js-lingui-explicit-id
-msgid "Ready?"
-msgstr "準備はいいですか？"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:30
-#. js-lingui-explicit-id
-msgid "Next, allow microphone access to talk with the AI."
-msgstr "次に、AIと話すためにマイクへのアクセスを許可してください。"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:55
-#. js-lingui-explicit-id
-msgid "I am ready"
-msgstr "私は準備ができています"
-
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "すべての投稿を見る"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "ロールプレイシナリオで練習する"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "あなたは今すぐAIを試すことができます"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "無料で試してみる"
-
 #: src/features/Blog/BlogCard.tsx:168
 #. js-lingui-explicit-id
 msgid "Read more"
 msgstr "続きを読む"
-
-#: src/features/Auth/SignInForm.tsx:30
-#. js-lingui-explicit-id
-msgid "Open personal plan"
-msgstr "パーソナルプランを開く"
-
-#: src/features/Auth/SignInForm.tsx:33
-#. js-lingui-explicit-id
-msgid "Start the Lesson"
-msgstr ""
-"\n"
-"レッスンを始める\n"
-
-#: src/features/Auth/SignInForm.tsx:74
-#. js-lingui-explicit-id
-msgid "Open this page in browser"
-msgstr "このページをブラウザで開く"
-
-#: src/features/Auth/SignInForm.tsx:80
-#. js-lingui-explicit-id
-msgid "Please tap the menu ⋮ and choose"
-msgstr "メニュー⋮をタップして選択してください"
-
-#: src/features/Auth/SignInForm.tsx:82
-#. js-lingui-explicit-id
-msgid "'Open in Chrome' to continue."
-msgstr "'Chromeで開く'を続行します。"
-
-#: src/features/Auth/SignInForm.tsx:86
-#. js-lingui-explicit-id
-msgid "Please tap the menu ••• and choose"
-msgstr "メニュー ••• をタップして選択してください"
-
-#: src/features/Auth/SignInForm.tsx:88
-#. js-lingui-explicit-id
-msgid "'Open in external Browser' to continue."
-msgstr "'外部ブラウザで開く'を続行します。"
-
-#: src/features/Auth/SignInForm.tsx:140
-#. js-lingui-explicit-id
-msgid "Start Role Play:"
-msgstr "スタートロールプレイ："
-
-#: src/features/Auth/SignInForm.tsx:167
-#. js-lingui-explicit-id
-msgid "Create an account to continue"
-msgstr "アカウントを作成して続ける"
-
-#: src/features/Auth/SignInForm.tsx:184
-#. js-lingui-explicit-id
-msgid "Continue with google"
-msgstr "Googleで続行"
-
-#: src/features/Auth/SignInForm.tsx:195
-#. js-lingui-explicit-id
-msgid "By creating an account, you agree to:"
-msgstr "アカウントを作成することで、あなたは以下に同意するものとします："
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
 #. js-lingui-explicit-id
@@ -6281,10 +6209,82 @@ msgstr ""
 msgid "Good preparation today means career success tomorrow."
 msgstr "今日の良い準備は、明日のキャリア成功を意味します。"
 
-#: src/features/Game/GameBadge.tsx:55
+#: src/features/Blog/BlogOnePage.tsx:141
 #. js-lingui-explicit-id
-msgid "Play and Learn"
-msgstr "プレイと学習"
+msgid "View all posts"
+msgstr "すべての投稿を見る"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "ロールプレイシナリオで練習する"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "あなたは今すぐAIを試すことができます"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "無料で試してみる"
+
+#: src/features/Auth/SignInForm.tsx:30
+#. js-lingui-explicit-id
+msgid "Open personal plan"
+msgstr "パーソナルプランを開く"
+
+#: src/features/Auth/SignInForm.tsx:33
+#. js-lingui-explicit-id
+msgid "Start the Lesson"
+msgstr ""
+"\n"
+"レッスンを始める\n"
+
+#: src/features/Auth/SignInForm.tsx:74
+#. js-lingui-explicit-id
+msgid "Open this page in browser"
+msgstr "このページをブラウザで開く"
+
+#: src/features/Auth/SignInForm.tsx:80
+#. js-lingui-explicit-id
+msgid "Please tap the menu ⋮ and choose"
+msgstr "メニュー⋮をタップして選択してください"
+
+#: src/features/Auth/SignInForm.tsx:82
+#. js-lingui-explicit-id
+msgid "'Open in Chrome' to continue."
+msgstr "'Chromeで開く'を続行します。"
+
+#: src/features/Auth/SignInForm.tsx:86
+#. js-lingui-explicit-id
+msgid "Please tap the menu ••• and choose"
+msgstr "メニュー ••• をタップして選択してください"
+
+#: src/features/Auth/SignInForm.tsx:88
+#. js-lingui-explicit-id
+msgid "'Open in external Browser' to continue."
+msgstr "'外部ブラウザで開く'を続行します。"
+
+#: src/features/Auth/SignInForm.tsx:140
+#. js-lingui-explicit-id
+msgid "Start Role Play:"
+msgstr "スタートロールプレイ："
+
+#: src/features/Auth/SignInForm.tsx:167
+#. js-lingui-explicit-id
+msgid "Create an account to continue"
+msgstr "アカウントを作成して続ける"
+
+#: src/features/Auth/SignInForm.tsx:184
+#. js-lingui-explicit-id
+msgid "Continue with google"
+msgstr "Googleで続行"
+
+#: src/features/Auth/SignInForm.tsx:195
+#. js-lingui-explicit-id
+msgid "By creating an account, you agree to:"
+msgstr "アカウントを作成することで、あなたは以下に同意するものとします："
 
 #: src/features/Landing/PlanLandingBlock.tsx:300
 msgid "{countOfLanguages} languages to practice"
