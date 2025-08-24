@@ -56,7 +56,6 @@ function useProvideUsage(): UsageContextType {
   }, [isPaymentModalInUrl]);
 
   const togglePaymentModal = (isOpen: boolean, isSuccessPayment?: boolean) => {
-    console.log("togglePaymentModal");
     setIsShowPaymentModal(isOpen);
 
     if (isSuccessPayment !== undefined) {

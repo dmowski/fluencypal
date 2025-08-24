@@ -39,6 +39,7 @@ import { PaymentHistoryModal } from "./PaymentHistoryModal";
 import { ContactMessageModal } from "./ContactMessageModal";
 import { useWindowSizes } from "../Layout/useWindowSizes";
 import { isTMA } from "@telegram-apps/sdk-react";
+import { useUrlParam } from "../Url/useUrlParam";
 
 export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -62,10 +63,10 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const homeUrl = auth.isAuthorized ? `${getUrlStart(lang)}practice` : getUrlStart(lang);
 
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
-  const [isShowHelpModal, setIsShowHelpModal] = useState(false);
-  const [isShowRefundModal, setIsShowRefundModal] = useState(false);
-  const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] = useState(false);
-  const [isShowFeedbackModal, setIsShowFeedbackModal] = useState(false);
+  const [isShowHelpModal, setIsShowHelpModal] = useUrlParam("help");
+  const [isShowRefundModal, setIsShowRefundModal] = useUrlParam("refund");
+  const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] = useUrlParam("paymentHistory");
+  const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam("feedback");
 
   const usage = useUsage();
 

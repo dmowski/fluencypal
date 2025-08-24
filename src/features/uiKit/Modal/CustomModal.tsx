@@ -52,6 +52,7 @@ export const CustomModal = ({
           maxHeight: maxHeight || "100dvh",
           "@media (max-width: 600px)": {
             borderRadius: 0,
+            height: "100dvh",
           },
         }}
       >

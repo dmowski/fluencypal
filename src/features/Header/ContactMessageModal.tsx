@@ -50,40 +50,53 @@ export const ContactMessageModal = ({
     <CustomModal isOpen={true} onClose={() => onClose()} padding="max(20px, 2vw)">
       <Stack
         sx={{
-          paddingTop: `0`,
-        }}
-      >
-        <Typography variant="h5">{title}</Typography>
-        <Typography
-          variant="caption"
-          sx={{
-            opacity: 0.7,
-          }}
-        >
-          {subTitle}
-        </Typography>
-      </Stack>
-
-      <Stack
-        sx={{
           width: "100%",
           gap: "10px",
-          alignItems: "flex-start",
+        }}
+        component={"form"}
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSendFeedback();
         }}
       >
-        <TextField
+        <Stack
+          sx={{
+            paddingTop: `0`,
+          }}
+        >
+          <Typography variant="h5">{title}</Typography>
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: 0.7,
+            }}
+          >
+            {subTitle}
+          </Typography>
+        </Stack>
+
+        <Stack
           sx={{
             width: "100%",
+            gap: "10px",
+            alignItems: "flex-start",
           }}
-          value={feedback}
-          onChange={(e) => setFeedback(e.target.value)}
-          placeholder={placeholder || i18n._(`Leave your message`)}
-          multiline
-          rows={3}
-        />
-        <Button variant="contained" onClick={onSendFeedback} disabled={!feedback || isSending}>
-          {isSending ? i18n._(`Sending...`) : i18n._(`Send`)}
-        </Button>
+        >
+          <TextField
+            sx={{
+              width: "100%",
+            }}
+            value={feedback}
+            required
+            onChange={(e) => setFeedback(e.target.value)}
+            placeholder={placeholder || i18n._(`Leave your message`)}
+            multiline
+            rows={3}
+          />
+          <Button variant="contained" type="submit" disabled={isSending}>
+            {isSending ? i18n._(`Sending...`) : i18n._(`Send`)}
+          </Button>
+        </Stack>
       </Stack>
     </CustomModal>
   );
