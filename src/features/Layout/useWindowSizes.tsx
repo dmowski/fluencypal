@@ -10,7 +10,7 @@ const WindowSizesContext = createContext<WindowSizesContextType | null>(null);
 
 function useProvideWindowSizes(): WindowSizesContextType {
   const safeTop = useSignal(viewportContentSafeAreaInsetTop);
-  const topOffset = safeTop ? `${safeTop + 40}px` : "70px";
+  const topOffset = safeTop ? `${safeTop + 40}px` : "0px";
 
   return {
     topOffset,
