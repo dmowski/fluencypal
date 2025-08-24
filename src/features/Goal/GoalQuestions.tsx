@@ -35,6 +35,7 @@ import { uniq } from "@/libs/uniq";
 import { fullLanguages } from "@/libs/languages";
 import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
 import { useLanguageGroup } from "./useLanguageGroup";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 
 const TermsComponent = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -91,6 +92,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   showTerms,
 }) => {
   const { i18n } = useLingui();
+  const { bottomOffset } = useWindowSizes();
 
   const { data, updateData, isQuizDataLoading } = useGoalQuizForm({
     description: "",
@@ -482,7 +484,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 position: "fixed",
                 width: "calc(100% - 20px)",
                 padding: "15px 10px",
-                bottom: "0px",
+                bottom: 0,
+                paddingBottom: `calc(${bottomOffset} + 15px)`,
                 left: "0px",
                 right: "0px",
                 backgroundColor: "rgba(255, 255, 255, 0.73)",
@@ -578,7 +581,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 position: "fixed",
                 width: "calc(100% - 20px)",
                 padding: "15px 10px",
-                bottom: "0px",
+                bottom: 0,
+                paddingBottom: `calc(${bottomOffset} + 15px)`,
                 left: "0px",
                 right: "0px",
                 backgroundColor: "rgba(255, 255, 255, 0.73)",
@@ -629,7 +633,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 position: "fixed",
                 width: "calc(100% - 20px)",
                 padding: "15px 10px",
-                bottom: "0px",
+                bottom: 0,
+                paddingBottom: `calc(${bottomOffset} + 15px)`,
                 left: "0px",
                 right: "0px",
                 backgroundColor: "rgba(255, 255, 255, 0.73)",
@@ -794,7 +799,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 position: "fixed",
                 width: "calc(100% - 20px)",
                 padding: "15px 10px",
-                bottom: "0px",
+                bottom: 0,
+                paddingBottom: `calc(${bottomOffset} + 15px)`,
                 left: "0px",
                 right: "0px",
                 backgroundColor: "rgba(255, 255, 255, 0.73)",
@@ -836,7 +842,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
               position: "fixed",
               width: "calc(100% - 20px)",
               padding: "15px 10px",
-              bottom: "0px",
+              bottom: 0,
+              paddingBottom: `calc(${bottomOffset} + 15px)`,
               left: "0px",
               right: "0px",
               backgroundColor: "rgba(255, 255, 255, 0.73)",
@@ -941,7 +948,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 position: "fixed",
                 width: "calc(100% - 20px)",
                 padding: "15px 10px",
-                bottom: "0px",
+                bottom: 0,
+                paddingBottom: `calc(${bottomOffset} + 15px)`,
                 left: "0px",
                 right: "0px",
                 backgroundColor: "rgba(255, 255, 255, 0.73)",
@@ -1002,7 +1010,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 position: "fixed",
                 width: "calc(100% - 20px)",
                 padding: "15px 10px",
-                bottom: "0px",
+                bottom: 0,
+                paddingBottom: `calc(${bottomOffset} + 15px)`,
                 left: "0px",
                 right: "0px",
                 backgroundColor: "rgba(255, 255, 255, 0.73)",
@@ -1067,7 +1076,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                 position: "fixed",
                 width: "calc(100% - 20px)",
                 padding: "15px 10px",
-                bottom: "0px",
+                bottom: 0,
+                paddingBottom: `calc(${bottomOffset} + 15px)`,
                 left: "0px",
                 right: "0px",
                 backgroundColor: "rgba(255, 255, 255, 0.73)",
