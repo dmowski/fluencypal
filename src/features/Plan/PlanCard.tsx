@@ -6,8 +6,10 @@ import { ReactNode, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { goFullScreen } from "@/libs/fullScreen";
+import { useUrlParam } from "../Url/useUrlParam";
 
 interface PlanCardProps {
+  id: string;
   title: string;
   subTitle: string;
   details: string;
@@ -27,6 +29,7 @@ interface PlanCardProps {
 }
 
 export const PlanCard = ({
+  id,
   title,
   subTitle,
   description,
@@ -43,7 +46,8 @@ export const PlanCard = ({
   isLast,
   isContinueLabel,
 }: PlanCardProps) => {
-  const [showModal, setShowModal] = useState(false);
+  const uniqKey = `plan-start-${id}`;
+  const [showModal, setShowModal] = useUrlParam(uniqKey);
   const { i18n } = useLingui();
 
   const isNextInPlan = !isActive && !isDone;

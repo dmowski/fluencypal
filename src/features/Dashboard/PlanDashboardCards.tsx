@@ -469,6 +469,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
             return (
               <PlanCard
+                id={planElement.id}
                 key={planElement.id}
                 delayToShow={index * 80}
                 title={planElement.title}
