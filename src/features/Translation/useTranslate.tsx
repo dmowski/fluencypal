@@ -92,14 +92,9 @@ export const useTranslate = () => {
           <Stack
             sx={{
               gap: "30px",
-              padding: "30px",
-              height: "100dvh",
-              maxHeight: "100dvh",
               boxSizing: "border-box",
               width: "100%",
-              "@media (max-width: 600px)": {
-                padding: "15px",
-              },
+              maxWidth: "600px",
             }}
           >
             <Typography variant="caption">{i18n._("Translation")}</Typography>

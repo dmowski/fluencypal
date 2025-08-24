@@ -177,10 +177,6 @@ export const GameOnboarding = () => {
         <Stack
           sx={{
             width: "100%",
-            height: "100dvh",
-            maxHeight: "100dvh",
-            padding: "40px 20px",
-            paddingTop: `calc(40px)`,
             boxSizing: "border-box",
             gap: "20px",
             alignItems: "center",

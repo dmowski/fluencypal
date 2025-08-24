@@ -531,6 +531,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               gap: "10px",
               alignItems: "center",
               width: "100%",
+              maxWidth: "600px",
             }}
           >
             <Stack>
