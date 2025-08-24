@@ -341,6 +341,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 width: "100%",
                 maxWidth: "600px",
                 paddingTop: "200px",
+                alignItems: "center",
               }}
             >
               <Typography className="decor-text" variant="h6" align="center">
@@ -366,7 +367,13 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   {selectedElement.description}
                 </Typography>
               </Stack>
-              <Button variant="contained" onClick={() => startGoalElement(selectedElement)}>
+              <Button
+                variant="contained"
+                onClick={() => startGoalElement(selectedElement)}
+                sx={{
+                  width: "max-content",
+                }}
+              >
                 {i18n._(`Let's start`)}
               </Button>
             </Stack>
