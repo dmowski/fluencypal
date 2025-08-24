@@ -409,33 +409,17 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
               <Stack
                 sx={{
                   width: "100%",
-                  padding: "20px",
-                  height: "min(260px, 40vh)",
+                  height: "400px",
                   boxSizing: "border-box",
-                  overflow: "hidden",
-                  justifyContent: "flex-end",
-                  position: "relative",
-                  borderRadius: "16px 16px 0 0",
-                  "@media (max-width: 600px)": {
-                    borderRadius: 0,
-                  },
-                  background:
-                    "linear-gradient(180deg, rgba(12, 12, 14, 0) 0%,  rgba(12, 12, 14, 0.3) 100%)",
                 }}
               >
                 <Stack
                   sx={{
                     backgroundImage: `url(${selectedRolePlayScenario.imageSrc})`,
                     width: "100%",
-                    height: `calc(${topOffset} + 100%)`,
+                    height: `100%`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    zIndex: -1,
                   }}
                 >
                   {selectedRolePlayScenario.videoSrc && (
@@ -460,7 +444,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
               <Stack
                 component={"form"}
                 sx={{
-                  padding: "35px",
+                  padding: "35px 0",
                   gap: "30px",
                   boxSizing: "border-box",
                   alignItems: "flex-start",
