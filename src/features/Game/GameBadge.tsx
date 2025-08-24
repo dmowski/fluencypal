@@ -7,6 +7,7 @@ import { useGame } from "./useGame";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 interface GameBadgeProps {
   lang: SupportedLanguage;
@@ -14,6 +15,7 @@ interface GameBadgeProps {
 
 export const GameBadge = ({ lang }: GameBadgeProps) => {
   const { i18n } = useLingui();
+  const [isLoading, setIsLoading] = useState(false);
   const game = useGame();
   const position = game.myPosition;
   const points = game.myPoints;
@@ -24,8 +26,12 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
   const router = useRouter();
 
   const onClick = (e: React.MouseEvent) => {
+    setIsLoading(true);
     e.preventDefault();
     router.push(urlToNavigate);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
   };
   return (
     <Stack
@@ -49,6 +55,7 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
         "@media (max-width:600px)": {
           padding: "15px 15px",
         },
+        opacity: isLoading ? 0.6 : 1,
       }}
     >
       <Stack>

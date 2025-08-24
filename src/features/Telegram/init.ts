@@ -83,11 +83,10 @@ async function internalInit(options: {
 }
 
 export const initTg = () => {
-  console.log("initTg");
   const inWindow = typeof window !== "undefined";
   // @ts-expect-error
   if (!inWindow || window.initInternalTg) return;
-
+  console.log("initTg");
   // @ts-expect-error
   window.initInternalTg = true;
 
