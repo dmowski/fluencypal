@@ -26,7 +26,7 @@ export const TalkingWaves = ({ inActive }: TalkingWavesProps) => {
 
     const isBotUser = isBot(`${navigator.userAgent}`);
     if (!isBotUser) {
-      setIsSupported(true);
+      //setIsSupported(true);
     }
   };
 
