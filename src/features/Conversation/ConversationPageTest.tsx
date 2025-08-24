@@ -20,7 +20,7 @@ interface ConversationPageTestProps {
 
 const startTestMessages: ChatMessage[] = [];
 
-for (let i = 0; i < 1; i++) {
+for (let i = 0; i < 12; i++) {
   startTestMessages.push({
     isBot: i % 2 === 0,
     text: `Hello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\n`,

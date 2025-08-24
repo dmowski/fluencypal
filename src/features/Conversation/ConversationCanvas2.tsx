@@ -36,7 +36,6 @@ import {
 import AddCardIcon from "@mui/icons-material/AddCard";
 
 import { AliasGamePanel } from "./AliasGamePanel";
-import { convertHoursToHumanFormat } from "@/libs/convertHoursToHumanFormat";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
 import dayjs from "dayjs";
