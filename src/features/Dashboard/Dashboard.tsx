@@ -13,8 +13,6 @@ import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { PlanDashboardCards } from "./PlanDashboardCards";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { GameBadge } from "../Game/GameBadge";
-import { Trans } from "@lingui/react/macro";
-import { FeedbackBlock } from "./FeedbackBlock";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
