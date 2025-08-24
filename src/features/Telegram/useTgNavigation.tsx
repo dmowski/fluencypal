@@ -13,6 +13,11 @@ function useProvideTgNavigation(): TgNavigationContextType {
   const searchParamsString = searchParams.toString();
 
   useEffect(() => {
+    const isTelegramApp = isTMA();
+    if (!isTelegramApp) {
+      return;
+    }
+
     if (searchParamsString) {
       backButton.show();
     } else {
