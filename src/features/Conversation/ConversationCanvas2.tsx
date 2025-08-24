@@ -49,6 +49,7 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useGame } from "../Game/useGame";
 import { useTranslate } from "../Translation/useTranslate";
 import { useWindowSizes } from "../Layout/useWindowSizes";
+import { useUrlParam } from "../Url/useUrlParam";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -279,7 +280,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     Math.min((actualCountOfUserMessages / messagesToComplete) * 100, 100)
   );
 
-  const [isShowAnalyzeConversationModal, setIsShowAnalyzeConversationModal] = useState(false);
+  const [isShowAnalyzeConversationModal, setIsShowAnalyzeConversationModal] = useUrlParam(
+    "showAnalyzeConversationModal"
+  );
   const [isConversationContinueAfterAnalyze, setIsConversationContinueAfterAnalyze] =
     useState(false);
 
@@ -356,10 +359,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               sx={{
                 height: "100dvh",
                 gap: "30px",
-                width: "100%",
+                width: "100dvw",
                 alignItems: "center",
                 padding: "70px 0",
-                paddingTop: `calc(${topOffset} + 70px)`,
               }}
             >
               <Stack

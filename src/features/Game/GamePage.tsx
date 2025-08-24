@@ -12,12 +12,10 @@ import { GameNativeLanguageSelector } from "./GameNativeLanguageSelector";
 import { GameMyAvatar } from "./GameMyAvatar";
 import { GameMyUsername } from "./GameMyUsername";
 import { GameOnboarding } from "./GameOnboarding";
-import { useWindowSizes } from "../Layout/useWindowSizes";
 
 export const GamePage = () => {
   const game = useGame();
   const { i18n } = useLingui();
-  const { topOffset } = useWindowSizes();
 
   const loadingMessage = i18n._(`Loading...`);
   const playMessage = i18n._(`Play`);
@@ -113,7 +111,6 @@ export const GamePage = () => {
               <Stack
                 sx={{
                   minHeight: "100dvh",
-                  paddingTop: `calc(${topOffset} + 0px)`,
                   padding: "0",
                   boxSizing: "border-box",
                   alignItems: "center",

@@ -9,11 +9,14 @@ import { useLingui } from "@lingui/react";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { ArrowDown } from "lucide-react";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
+import { useUrlParam } from "../Url/useUrlParam";
 
 const translationCache: Record<string, string> = {};
 export const useTranslate = () => {
   const settings = useSettings();
   const plan = usePlan();
+
+  const [isShowModal, setIsShowModal] = useUrlParam("showTranslateModal");
 
   const pageLangCode = useMemo(() => getPageLangCode(), []);
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
@@ -53,6 +56,7 @@ export const useTranslate = () => {
   } | null>(null);
   const translateWithModal = async (text: string) => {
     try {
+      setIsShowModal(true);
       setTranslatedText(null);
       setIsTranslating(true);
       setTranslatedText({
@@ -73,6 +77,7 @@ export const useTranslate = () => {
   const onCloseTranslate = () => {
     setIsTranslating(false);
     setTranslatedText(null);
+    setIsShowModal(false);
   };
   const { i18n } = useLingui();
 
@@ -82,42 +87,66 @@ export const useTranslate = () => {
     translateWithModal,
     onCloseTranslate,
     translateModal:
-      isTranslating || translatedText ? (
-        <CustomModal isOpen={true} onClose={() => onCloseTranslate()} padding="40px 20px">
-          <Typography variant="caption">{i18n._("Translation")}</Typography>
+      (isTranslating || translatedText) && isShowModal ? (
+        <CustomModal isOpen={true} onClose={() => onCloseTranslate()} width="100dvw" padding="0">
           <Stack
             sx={{
-              gap: "10px",
+              gap: "30px",
+              padding: "30px",
+              height: "100dvh",
+              maxHeight: "100dvh",
+              boxSizing: "border-box",
               width: "100%",
+              "@media (max-width: 600px)": {
+                padding: "15px",
+              },
             }}
           >
+            <Typography variant="caption">{i18n._("Translation")}</Typography>
             <Stack
               sx={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
+                gap: "10px",
+                width: "100%",
               }}
             >
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                }}
+              >
+                <Markdown variant="conversation">
+                  {translatedText?.source ||
+                    (isTranslating ? i18n._("Loading...") : i18n._("No text to translate"))}
+                </Markdown>
+                <AudioPlayIcon
+                  text={translatedText?.source || ""}
+                  instructions="Calm and clear"
+                  voice={"coral"}
+                />
+              </Stack>
+
+              <ArrowDown size={"18px"} color="rgba(180, 180, 180, 1)" />
+
               <Markdown variant="conversation">
-                {translatedText?.source ||
-                  (isTranslating ? i18n._("Loading...") : i18n._("No text to translate"))}
+                {translatedText?.translated ||
+                  (isTranslating ? "..." : i18n._("No translation available"))}
               </Markdown>
-              <AudioPlayIcon
-                text={translatedText?.source || ""}
-                instructions="Calm and clear"
-                voice={"coral"}
-              />
+              <Stack
+                sx={{
+                  alignItems: "flex-start",
+                }}
+              >
+                <Button
+                  variant="outlined"
+                  onClick={onCloseTranslate}
+                  sx={{ marginTop: "20px", minWidth: "300px" }}
+                >
+                  {i18n._("Close")}
+                </Button>
+              </Stack>
             </Stack>
-
-            <ArrowDown size={"18px"} color="rgba(180, 180, 180, 1)" />
-
-            <Markdown variant="conversation">
-              {translatedText?.translated ||
-                (isTranslating ? "..." : i18n._("No translation available"))}
-            </Markdown>
-            <Button variant="outlined" onClick={onCloseTranslate} sx={{ marginTop: "20px" }}>
-              {i18n._("Close")}
-            </Button>
           </Stack>
         </CustomModal>
       ) : null,

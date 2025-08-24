@@ -20,7 +20,6 @@ import { parseLangFromUrl } from "./parseLangFromUrl";
 import { LangSelector } from "./LangSelector";
 import LanguageAutocomplete from "./LanguageAutocomplete";
 import { useLanguageGroup } from "../Goal/useLanguageGroup";
-import { useWindowSizes } from "../Layout/useWindowSizes";
 import { useUrlParam } from "../Url/useUrlParam";
 
 interface LanguageSwitcherProps {
@@ -46,7 +45,6 @@ export function LanguageSwitcher({
 }: LanguageSwitcherProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const { topOffset } = useWindowSizes();
 
   const { i18n } = useLingui();
   const [isShowModal, setIsShowModal] = useUrlParam("lang-selection");

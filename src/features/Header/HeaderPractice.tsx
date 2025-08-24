@@ -103,8 +103,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
     }
   }, [isInternalClosing]);
 
-  const sizes = useWindowSizes();
-  const topOffset = sizes.topOffset;
+  const { topOffset } = useWindowSizes();
 
   return (
     <>
