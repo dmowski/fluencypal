@@ -47,7 +47,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
 
     // Redirect to APP if plan is present
     const newPath = `${getUrlStart(pageLang)}practice`;
-    //router.push(newPath);
+    router.push(newPath);
   }, [isNeedToRedirectToApp]);
 
   const isNeedToRedirectToQuiz =
