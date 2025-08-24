@@ -317,13 +317,15 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
       {isOpenHelpModel && (
         <CustomModal isOpen={true} onClose={() => setIsOpenHelpModel(false)}>
-          <Typography variant="caption">{i18n._("Idea for your message")}</Typography>
           <Stack
             sx={{
               gap: "10px",
               width: "100%",
+              maxWidth: "600px",
             }}
           >
+            <Typography variant="caption">{i18n._("Idea for your message")}</Typography>
+
             <Stack className={`decor-text ${!helpMessage ? "loading-shimmer" : ""}`}>
               <Markdown
                 variant="conversation"
