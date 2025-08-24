@@ -54,6 +54,7 @@ export const CustomModal = ({
             borderRadius: 0,
             height: "100dvh",
           },
+          paddingTop: `calc(${topOffset} + 0px)`,
         }}
       >
         {onClose && (

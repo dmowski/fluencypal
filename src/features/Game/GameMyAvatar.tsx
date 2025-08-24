@@ -1,28 +1,40 @@
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useGame } from "./useGame";
-import { useState } from "react";
 import { avatars, defaultAvatar } from "./avatars";
 import { Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
-import { useWindowSizes } from "../Layout/useWindowSizes";
+import { useUrlParam } from "../Url/useUrlParam";
 
 export const GameMyAvatar = () => {
   const game = useGame();
   const myAvatar = game.gameAvatars[game.myProfile?.username || ""] || defaultAvatar;
-  const [isShowAvatarSelector, setIsShowAvatarSelector] = useState(false);
+  const [isShowAvatarSelector, setIsShowAvatarSelector] = useUrlParam("showAvatarSelector");
   const { i18n } = useLingui();
-  const { topOffset } = useWindowSizes();
 
   return (
     <>
       {isShowAvatarSelector && (
-        <CustomModal onClose={() => setIsShowAvatarSelector(false)} isOpen={isShowAvatarSelector}>
+        <CustomModal
+          onClose={() => setIsShowAvatarSelector(false)}
+          isOpen={isShowAvatarSelector}
+          width="100dvw"
+          padding="0"
+        >
           <Stack
             sx={{
-              paddingTop: `calc(${topOffset} + 0px)`,
+              gap: "30px",
+              padding: "30px",
+              height: "100dvh",
+              maxHeight: "100dvh",
+              boxSizing: "border-box",
+              alignItems: "center",
+              width: "100%",
+              "@media (max-width: 600px)": {
+                padding: "15px",
+              },
             }}
           >
-            <Typography variant="h6" align="center" sx={{ marginBottom: "20px" }}>
+            <Typography variant="h5" align="center">
               {i18n._("Select your avatar")}
             </Typography>
             <Stack
@@ -31,6 +43,7 @@ export const GameMyAvatar = () => {
                 flexWrap: "wrap",
                 gap: "20px",
                 justifyContent: "center",
+                maxWidth: "800px",
               }}
             >
               {avatars.map((avatar, index) => {

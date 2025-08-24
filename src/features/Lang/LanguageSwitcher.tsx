@@ -21,6 +21,7 @@ import { LangSelector } from "./LangSelector";
 import LanguageAutocomplete from "./LanguageAutocomplete";
 import { useLanguageGroup } from "../Goal/useLanguageGroup";
 import { useWindowSizes } from "../Layout/useWindowSizes";
+import { useUrlParam } from "../Url/useUrlParam";
 
 interface LanguageSwitcherProps {
   size?: "small" | "large" | "button";
@@ -48,7 +49,7 @@ export function LanguageSwitcher({
   const { topOffset } = useWindowSizes();
 
   const { i18n } = useLingui();
-  const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowModal, setIsShowModal] = useUrlParam("lang-selection");
   const [isLoading, setIsLoading] = useState(false);
   const [isSawLangSelector, setIsSawLangSelector] = useLocalStorage<boolean>(
     "isUserSawLangSelector",
@@ -166,7 +167,7 @@ export function LanguageSwitcher({
       <CustomModal
         isOpen={isShowModal}
         onClose={() => setIsShowModal(false)}
-        width="900px"
+        width="100dvw"
         padding="0"
       >
         <Stack
@@ -174,20 +175,13 @@ export function LanguageSwitcher({
             gap: "30px",
             padding: "30px",
             height: "100dvh",
-            maxHeight: "600px",
+            maxHeight: "100dvh",
             boxSizing: "border-box",
-            paddingTop: `calc(${topOffset} + 30px)`,
-            "@media (max-width: 600px)": {
-              maxHeight: "100dvh",
-              height: "100dvh",
-            },
           }}
         >
-          <Stack>
-            <Typography variant="h4" component="h2">
-              {i18n._(`Languages`)}
-            </Typography>
-          </Stack>
+          <Typography variant="h4" component="h2">
+            {i18n._(`Languages`)}
+          </Typography>
           <Stack
             sx={{
               width: "100%",

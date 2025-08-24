@@ -5,7 +5,6 @@ import { useLingui } from "@lingui/react";
 import { useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { sendFeedbackMessageRequest } from "@/app/api/telegram/sendFeedbackMessageRequest";
-import { useWindowSizes } from "../Layout/useWindowSizes";
 
 interface ContactMessageModalProps {
   onClose: () => void;
@@ -21,7 +20,6 @@ export const ContactMessageModal = ({
   placeholder,
 }: ContactMessageModalProps) => {
   const { i18n } = useLingui();
-  const { topOffset } = useWindowSizes();
   const [feedback, setFeedback] = useState("");
   const auth = useAuth();
   const [isSending, setIsSending] = useState(false);
@@ -47,24 +45,24 @@ export const ContactMessageModal = ({
   };
 
   return (
-    <CustomModal isOpen={true} onClose={() => onClose()} padding="max(20px, 2vw)">
+    <CustomModal isOpen={true} onClose={() => onClose()} width="100dvw" padding="0">
       <Stack
         sx={{
+          gap: "30px",
+          padding: "30px",
+          height: "100dvh",
+          maxHeight: "100dvh",
+          boxSizing: "border-box",
           width: "100%",
-          gap: "10px",
-        }}
-        component={"form"}
-        onSubmit={(e) => {
-          e.preventDefault();
-          onSendFeedback();
+          "@media (max-width: 600px)": {
+            padding: "15px",
+          },
         }}
       >
-        <Stack
-          sx={{
-            paddingTop: `0`,
-          }}
-        >
-          <Typography variant="h5">{title}</Typography>
+        <Stack>
+          <Typography variant="h5" component="h2">
+            {title}
+          </Typography>
           <Typography
             variant="caption"
             sx={{
@@ -79,23 +77,48 @@ export const ContactMessageModal = ({
           sx={{
             width: "100%",
             gap: "10px",
-            alignItems: "flex-start",
+          }}
+          component={"form"}
+          onSubmit={(e) => {
+            e.preventDefault();
+            onSendFeedback();
           }}
         >
-          <TextField
+          <Stack
             sx={{
               width: "100%",
+              gap: "10px",
+              alignItems: "flex-start",
             }}
-            value={feedback}
-            required
-            onChange={(e) => setFeedback(e.target.value)}
-            placeholder={placeholder || i18n._(`Leave your message`)}
-            multiline
-            rows={3}
-          />
-          <Button variant="contained" type="submit" disabled={isSending}>
-            {isSending ? i18n._(`Sending...`) : i18n._(`Send`)}
-          </Button>
+          >
+            <TextField
+              sx={{
+                width: "100%",
+              }}
+              value={feedback}
+              required
+              onChange={(e) => setFeedback(e.target.value)}
+              placeholder={placeholder || i18n._(`Leave your message`)}
+              multiline
+              rows={3}
+            />
+            <Stack
+              sx={{
+                width: "100%",
+              }}
+            >
+              <Button
+                variant="contained"
+                type="submit"
+                disabled={isSending}
+                sx={{
+                  width: "100%",
+                }}
+              >
+                {isSending ? i18n._(`Sending...`) : i18n._(`Send`)}
+              </Button>
+            </Stack>
+          </Stack>
         </Stack>
       </Stack>
     </CustomModal>

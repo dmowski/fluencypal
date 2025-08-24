@@ -23,7 +23,6 @@ import { sendCreateTelegramInvoiceRequest } from "@/app/api/telegram/createInvoi
 import { TELEGRAM_MONTHLY_PRICE_START } from "../Telegram/starPrices";
 import { TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
 import { TgGoldStar } from "../Icon/TgStar";
-import { useWindowSizes } from "../Layout/useWindowSizes";
 
 const isTelegramApp = isTMA();
 const allowCrypto = false;
@@ -199,7 +198,6 @@ export const SubscriptionPaymentModal = () => {
     ? `${dayjs(usage.activeSubscriptionTill).format("DD MMM")} (in ${dayjs(usage.activeSubscriptionTill).fromNow(true)})`
     : null;
 
-  const { topOffset } = useWindowSizes();
   if (!usage.isShowPaymentModal) return null;
   return (
     <CustomModal
@@ -222,7 +220,6 @@ export const SubscriptionPaymentModal = () => {
           minHeight: "100dvh",
           height: "100%",
           width: "100%",
-          paddingTop: topOffset,
         }}
         ref={containerRef}
       >
