@@ -65,7 +65,7 @@ export const CustomModal = ({
           <IconButton
             sx={{
               position: "absolute",
-              top: doNotApplyTopOffsetForIcon ? `10px` : `calc(${topOffset} + 10px)`,
+              top: doNotApplyTopOffsetForIcon ? `10px` : `calc(${topOffset} + 20px)`,
               right: "10px",
               zIndex: 100,
             }}
