@@ -70,11 +70,7 @@ export const UsageStatsCards = () => {
   return (
     <>
       {isShowWordStat && (
-        <CustomModal
-          width="min(500px, 99vw)"
-          onClose={() => setIsShowWordStat(false)}
-          isOpen={true}
-        >
+        <CustomModal onClose={() => setIsShowWordStat(false)} isOpen={true}>
           <Stack
             sx={{
               maxHeight: "80vh",
@@ -166,11 +162,7 @@ export const UsageStatsCards = () => {
 
       {isOpenConversations && (
         <>
-          <CustomModal
-            width="min(800px, 99vw)"
-            onClose={() => setIsOpenConversations(false)}
-            isOpen={true}
-          >
+          <CustomModal onClose={() => setIsOpenConversations(false)} isOpen={true}>
             <Stack
               sx={{
                 maxHeight: "80vh",
@@ -268,11 +260,7 @@ export const UsageStatsCards = () => {
 
       {isShowCorrectionStats && (
         <>
-          <CustomModal
-            width="min(800px, 99vw)"
-            onClose={() => setIsShowCorrectionStats(false)}
-            isOpen={true}
-          >
+          <CustomModal onClose={() => setIsShowCorrectionStats(false)} isOpen={true}>
             <Stack
               sx={{
                 maxHeight: "80vh",

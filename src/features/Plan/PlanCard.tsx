@@ -51,7 +51,7 @@ export const PlanCard = ({
   return (
     <>
       {showModal && (
-        <CustomModal isOpen={true} onClose={() => setShowModal(false)} padding="0px" width="100vw">
+        <CustomModal isOpen={true} onClose={() => setShowModal(false)}>
           <Stack
             sx={{
               minHeight: "100dvh",

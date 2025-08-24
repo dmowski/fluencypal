@@ -173,7 +173,7 @@ export const GameOnboarding = () => {
   if (isOnboardingCompleted || game.isGamePlaying) return null;
   return (
     <>
-      <CustomModal isOpen={true} width="100dvw" padding="0">
+      <CustomModal isOpen={true}>
         <Stack
           sx={{
             width: "100%",

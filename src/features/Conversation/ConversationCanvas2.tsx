@@ -316,7 +316,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
       {translator.translateModal}
 
       {isOpenHelpModel && (
-        <CustomModal isOpen={true} onClose={() => setIsOpenHelpModel(false)} padding="40px 20px">
+        <CustomModal isOpen={true} onClose={() => setIsOpenHelpModel(false)}>
           <Typography variant="caption">{i18n._("Idea for your message")}</Typography>
           <Stack
             sx={{
@@ -349,12 +349,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
       )}
       {isShowAnalyzeConversationModal && (
         <>
-          <CustomModal
-            isOpen={true}
-            onClose={() => setIsShowAnalyzeConversationModal(false)}
-            padding="40px 20px"
-            width="100dvw"
-          >
+          <CustomModal isOpen={true} onClose={() => setIsShowAnalyzeConversationModal(false)}>
             <Stack
               sx={{
                 height: "100dvh",

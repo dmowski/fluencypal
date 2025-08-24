@@ -14,12 +14,7 @@ export const GameMyAvatar = () => {
   return (
     <>
       {isShowAvatarSelector && (
-        <CustomModal
-          onClose={() => setIsShowAvatarSelector(false)}
-          isOpen={isShowAvatarSelector}
-          width="100dvw"
-          padding="0"
-        >
+        <CustomModal onClose={() => setIsShowAvatarSelector(false)} isOpen={isShowAvatarSelector}>
           <Stack
             sx={{
               gap: "30px",

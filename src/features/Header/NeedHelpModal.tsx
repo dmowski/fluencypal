@@ -71,7 +71,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
   };
 
   return (
-    <CustomModal isOpen={true} onClose={() => onClose()} width="100dvw" padding="0">
+    <CustomModal isOpen={true} onClose={() => onClose()}>
       <Stack
         sx={{
           gap: "30px",

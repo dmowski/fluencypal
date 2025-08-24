@@ -7,25 +7,10 @@ interface CustomModalProps {
   isOpen: boolean;
   onClose?: () => void;
   children: React.ReactNode;
-  width?: string;
-  padding?: string;
-  maxHeight?: string;
-  doNotApplyTopOffsetForContent?: boolean;
-  doNotApplyTopOffsetForIcon?: boolean;
 }
 
-export const CustomModal = ({
-  isOpen,
-  onClose,
-  width,
-  children,
-  padding,
-  maxHeight,
-  doNotApplyTopOffsetForContent,
-  doNotApplyTopOffsetForIcon,
-}: CustomModalProps): JSX.Element => {
-  const { topOffset } = useWindowSizes();
-
+export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JSX.Element => {
+  const { topOffset, bottomOffset } = useWindowSizes();
   if (!isOpen) return <></>;
 
   return (
@@ -46,26 +31,23 @@ export const CustomModal = ({
       <Stack
         sx={{
           position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: width || "600px",
-          backgroundColor: "#181818",
-          borderRadius: "16px",
+          top: "0",
+          left: "0",
+          width: "100dvw",
           maxWidth: "100vw",
-          maxHeight: maxHeight || "100dvh",
-          "@media (max-width: 600px)": {
-            borderRadius: 0,
-            height: "100dvh",
-          },
-          paddingTop: doNotApplyTopOffsetForContent ? `0` : `calc(${topOffset} + 0px)`,
+          backgroundColor: "#181818",
+          height: "100dvh",
+          maxHeight: "100dvh",
+          boxSizing: "border-box",
+
+          "@media (max-width: 600px)": {},
         }}
       >
         {onClose && (
           <IconButton
             sx={{
               position: "absolute",
-              top: doNotApplyTopOffsetForIcon ? `10px` : `calc(${topOffset} + 20px)`,
+              top: `calc(${topOffset} + 10px)`,
               right: "10px",
               zIndex: 100,
             }}
@@ -81,12 +63,32 @@ export const CustomModal = ({
             gap: "30px",
             width: "100%",
             maxHeight: "100vh",
+            justifyContent: "center",
             overflowY: "auto",
-            padding: padding || "40px 40px 40px 40px",
+            padding: "40px",
             boxSizing: "border-box",
+            "@media (max-width: 600px)": {
+              padding: "20px 10px",
+            },
           }}
         >
+          <Stack
+            sx={{
+              width: "100%",
+              height: topOffset,
+              backgroundColor: "rgba(0, 0, 100, 0.5)",
+            }}
+          />
+
           {children}
+
+          <Stack
+            sx={{
+              width: "100%",
+              height: bottomOffset,
+              backgroundColor: "rgba(100, 0, 0, 0.5)",
+            }}
+          />
         </Stack>
       </Stack>
     </Modal>

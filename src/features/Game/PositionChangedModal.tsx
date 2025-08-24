@@ -79,12 +79,7 @@ export const PositionChangedModal = () => {
   };
 
   return (
-    <CustomModal
-      isOpen={isShowModal}
-      onClose={() => setIsShowModal(false)}
-      padding="0px"
-      width="100dvw"
-    >
+    <CustomModal isOpen={isShowModal} onClose={() => setIsShowModal(false)}>
       <Stack
         sx={{
           minHeight: "100dvh",

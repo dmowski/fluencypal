@@ -45,18 +45,14 @@ export const ContactMessageModal = ({
   };
 
   return (
-    <CustomModal isOpen={true} onClose={() => onClose()} width="100dvw" padding="0">
+    <CustomModal isOpen={true} onClose={() => onClose()}>
       <Stack
         sx={{
           gap: "30px",
-          padding: "30px",
-          height: "100dvh",
-          maxHeight: "100dvh",
           boxSizing: "border-box",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
           width: "100%",
-          "@media (max-width: 600px)": {
-            padding: "15px",
-          },
+          "@media (max-width: 600px)": {},
         }}
       >
         <Stack>

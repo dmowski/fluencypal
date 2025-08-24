@@ -91,13 +91,7 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
     route.push(urlForGame);
   };
   return (
-    <CustomModal
-      isOpen={true}
-      onClose={() => payWall.temporaryClosePayWall()}
-      padding="0"
-      width="min(650px, 100dvw)"
-      maxHeight={"min(100dvh, 1800px)"}
-    >
+    <CustomModal isOpen={true} onClose={() => payWall.temporaryClosePayWall()}>
       <Stack
         sx={{
           backgroundColor: "#121215",

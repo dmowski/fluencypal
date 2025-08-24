@@ -10,14 +10,7 @@ export const ProductVideo = () => {
 
   return (
     <>
-      <CustomModal
-        padding="0"
-        width="100%"
-        isOpen={isShowModal}
-        onClose={() => {
-          setIsShowModal(false);
-        }}
-      >
+      <CustomModal isOpen={isShowModal} onClose={() => setIsShowModal(false)}>
         <Stack
           sx={{
             height: "100vh",

@@ -525,12 +525,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       )}
 
       {isShowMoreModal && (
-        <CustomModal
-          isOpen={true}
-          onClose={() => setIsShowMoreModal(false)}
-          padding="40px 20px"
-          width="min(500px, 100vw)"
-        >
+        <CustomModal isOpen={true} onClose={() => setIsShowMoreModal(false)}>
           <Stack
             sx={{
               gap: "10px",

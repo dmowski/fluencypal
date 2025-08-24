@@ -400,13 +400,7 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
         </Stack>
 
         {selectedRolePlayScenario && (
-          <CustomModal
-            padding="0"
-            isOpen={true}
-            onClose={() => closeRolePlay()}
-            width="min(100vw, 650px)"
-            doNotApplyTopOffsetForContent
-          >
+          <CustomModal isOpen={true} onClose={() => closeRolePlay()}>
             <Stack
               sx={{
                 width: "100%",

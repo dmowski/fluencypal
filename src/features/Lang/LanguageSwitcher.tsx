@@ -162,12 +162,7 @@ export function LanguageSwitcher({
         </>
       )}
 
-      <CustomModal
-        isOpen={isShowModal}
-        onClose={() => setIsShowModal(false)}
-        width="100dvw"
-        padding="0"
-      >
+      <CustomModal isOpen={isShowModal} onClose={() => setIsShowModal(false)}>
         <Stack
           sx={{
             gap: "30px",

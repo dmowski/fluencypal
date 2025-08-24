@@ -210,14 +210,10 @@ export const SubscriptionPaymentModal = () => {
         }
         usage.togglePaymentModal(false);
       }}
-      width="100dvw"
-      padding="0"
-      maxHeight="100dvh"
     >
       <Stack
         sx={{
           alignItems: "center",
-          minHeight: "100dvh",
           height: "100%",
           width: "100%",
         }}

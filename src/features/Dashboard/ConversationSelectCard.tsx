@@ -32,14 +32,7 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
   return (
     <DashboardCard>
       {isShowOnboardingConfirmation && (
-        <CustomModal
-          width="min(600px, 100dvw)"
-          padding="0"
-          onClose={() => {
-            setIsShowOnboardingConfirmation(false);
-          }}
-          isOpen={true}
-        >
+        <CustomModal onClose={() => setIsShowOnboardingConfirmation(false)} isOpen={true}>
           <Stack
             sx={{
               padding: "20px",

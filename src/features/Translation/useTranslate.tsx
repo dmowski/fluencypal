@@ -88,7 +88,7 @@ export const useTranslate = () => {
     onCloseTranslate,
     translateModal:
       (isTranslating || translatedText) && isShowModal ? (
-        <CustomModal isOpen={true} onClose={() => onCloseTranslate()} width="100dvw" padding="0">
+        <CustomModal isOpen={true} onClose={() => onCloseTranslate()}>
           <Stack
             sx={{
               gap: "30px",

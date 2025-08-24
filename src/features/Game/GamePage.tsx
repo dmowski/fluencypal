@@ -105,8 +105,6 @@ export const GamePage = () => {
                 game.stopGame();
                 exitFullScreen();
               }}
-              padding="0px"
-              width="100dvw"
             >
               <Stack
                 sx={{

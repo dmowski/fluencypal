@@ -195,14 +195,7 @@ Address directly to the user.
 
   return (
     <DashboardCard>
-      <CustomModal
-        width="min(900px, 100vw)"
-        isOpen={isShowPreparingModal}
-        onClose={() => {
-          setIsShowPreparingModal(false);
-        }}
-        padding="0"
-      >
+      <CustomModal isOpen={isShowPreparingModal} onClose={() => setIsShowPreparingModal(false)}>
         <Stack
           sx={{
             alignItems: "flex-start",
