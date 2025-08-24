@@ -50,7 +50,7 @@ export const ContactMessageModal = ({
     <CustomModal isOpen={true} onClose={() => onClose()} padding="max(20px, 2vw)">
       <Stack
         sx={{
-          paddingTop: `calc(${topOffset} + 0px)`,
+          paddingTop: `0`,
         }}
       >
         <Typography variant="h5">{title}</Typography>

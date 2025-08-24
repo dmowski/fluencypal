@@ -12,7 +12,6 @@ function useProvideTgNavigation(): TgNavigationContextType {
 
   const navigationBack = () => {
     route.back();
-    console.log("BACK");
   };
 
   useEffect(() => {
