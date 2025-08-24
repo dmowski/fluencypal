@@ -8,12 +8,10 @@ import { sendTelegramTokenRequest } from "@/app/api/telegram/token/sendTelegramT
 import {
   initDataRaw as _initDataRaw,
   initDataState as _initDataState,
-  retrieveLaunchParams,
   useSignal,
   isTMA,
 } from "@telegram-apps/sdk-react";
-import { mockEnv } from "./mockEnv";
-import { init } from "./init";
+import { initTg } from "./init";
 import { useAuth } from "../Auth/useAuth";
 import { usePlan } from "../Plan/usePlan";
 import { useSettings } from "../Settings/useSettings";
@@ -25,31 +23,6 @@ import { useWindowSizes } from "../Layout/useWindowSizes";
 interface TgAppPageProps {
   lang: SupportedLanguage;
 }
-
-const initTg = () => {
-  const inWindow = typeof window !== "undefined";
-  if (!inWindow) return;
-
-  mockEnv().then(() => {
-    try {
-      const launchParams = retrieveLaunchParams();
-      const { tgWebAppPlatform: platform } = launchParams;
-      const debug =
-        (launchParams.tgWebAppStartParam || "").includes("debug") ||
-        process.env.NODE_ENV === "development";
-
-      init({
-        debug,
-        eruda: debug && ["ios", "android"].includes(platform),
-        mockForMacOS: platform === "macos",
-      });
-    } catch (e) {
-      throw e;
-    }
-  });
-};
-
-initTg();
 
 export const TgAppPage = ({ lang }: TgAppPageProps) => {
   const { i18n } = useLingui();

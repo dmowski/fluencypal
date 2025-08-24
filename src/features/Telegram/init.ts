@@ -12,12 +12,13 @@ import {
   themeParamsState,
   retrieveLaunchParams,
   emitEvent,
-} from '@telegram-apps/sdk-react';
+} from "@telegram-apps/sdk-react";
+import { mockEnv } from "./mockEnv";
 
 /**
  * Initializes the application and configures its dependencies.
  */
-export async function init(options: {
+async function internalInit(options: {
   debug: boolean;
   eruda: boolean;
   mockForMacOS: boolean;
@@ -28,7 +29,7 @@ export async function init(options: {
 
   // Add Eruda if needed.
   options.eruda &&
-    void import('eruda').then(({ default: eruda }) => {
+    void import("eruda").then(({ default: eruda }) => {
       eruda.init();
       eruda.position({ x: window.innerWidth - 50, y: 0 });
     });
@@ -40,7 +41,7 @@ export async function init(options: {
     let firstThemeSent = false;
     mockTelegramEnv({
       onEvent(event, next) {
-        if (event[0] === 'web_app_request_theme') {
+        if (event[0] === "web_app_request_theme") {
           let tp: ThemeParams = {};
           if (firstThemeSent) {
             tp = themeParamsState();
@@ -48,11 +49,11 @@ export async function init(options: {
             firstThemeSent = true;
             tp ||= retrieveLaunchParams().tgWebAppThemeParams;
           }
-          return emitEvent('theme_changed', { theme_params: tp });
+          return emitEvent("theme_changed", { theme_params: tp });
         }
 
-        if (event[0] === 'web_app_request_safe_area') {
-          return emitEvent('safe_area_changed', {
+        if (event[0] === "web_app_request_safe_area") {
+          return emitEvent("safe_area_changed", {
             left: 0,
             top: 0,
             right: 0,
@@ -80,3 +81,31 @@ export async function init(options: {
     });
   }
 }
+
+export const initTg = () => {
+  console.log("initTg");
+  const inWindow = typeof window !== "undefined";
+  // @ts-expect-error
+  if (!inWindow || window.initInternalTg) return;
+
+  // @ts-expect-error
+  window.initInternalTg = true;
+
+  mockEnv().then(() => {
+    try {
+      const launchParams = retrieveLaunchParams();
+      const { tgWebAppPlatform: platform } = launchParams;
+      const debug =
+        (launchParams.tgWebAppStartParam || "").includes("debug") ||
+        process.env.NODE_ENV === "development";
+
+      internalInit({
+        debug,
+        eruda: debug && ["ios", "android"].includes(platform),
+        mockForMacOS: platform === "macos",
+      });
+    } catch (e) {
+      throw e;
+    }
+  });
+};

@@ -2,7 +2,7 @@
 import { backButton, isTMA } from "@telegram-apps/sdk-react";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, ReactNode, JSX, useEffect } from "react";
-const isTelegramApp = isTMA();
+
 interface TgNavigationContextType {}
 
 const TgNavigationContext = createContext<TgNavigationContextType | null>(null);
@@ -15,7 +15,11 @@ function useProvideTgNavigation(): TgNavigationContextType {
   };
 
   useEffect(() => {
-    if (!isTelegramApp) return;
+    const isTelegramApp = isTMA();
+    if (!isTelegramApp) {
+      return;
+    }
+
     backButton.mount();
     backButton.show(); // shows Back (replaces Close)
     const off = backButton.onClick(navigationBack); // handle click
