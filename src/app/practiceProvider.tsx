@@ -20,7 +20,7 @@ import { PlanProvider } from "@/features/Plan/usePlan";
 import { GameProvider } from "@/features/Game/useGame";
 import { PayWallProvider } from "@/features/PayWall/usePayWall";
 import { TelegramProvider } from "./telegramProvider";
-import { TgNavigationProvider } from "@/features/Telegram/useBackButton";
+import { TgNavigationProvider } from "@/features/Telegram/useTgNavigation";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
