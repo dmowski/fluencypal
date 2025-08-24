@@ -4,18 +4,24 @@ import { useState } from "react";
 import { avatars, defaultAvatar } from "./avatars";
 import { Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 
 export const GameMyAvatar = () => {
   const game = useGame();
-
   const myAvatar = game.gameAvatars[game.myProfile?.username || ""] || defaultAvatar;
   const [isShowAvatarSelector, setIsShowAvatarSelector] = useState(false);
   const { i18n } = useLingui();
+  const { topOffset } = useWindowSizes();
+
   return (
     <>
       {isShowAvatarSelector && (
         <CustomModal onClose={() => setIsShowAvatarSelector(false)} isOpen={isShowAvatarSelector}>
-          <Stack>
+          <Stack
+            sx={{
+              paddingTop: `calc(${topOffset} + 0px)`,
+            }}
+          >
             <Typography variant="h6" align="center" sx={{ marginBottom: "20px" }}>
               {i18n._("Select your avatar")}
             </Typography>

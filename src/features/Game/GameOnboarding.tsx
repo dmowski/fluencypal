@@ -8,6 +8,7 @@ import { GameMyUsername } from "./GameMyUsername";
 import { GameNativeLanguageSelector } from "./GameNativeLanguageSelector";
 import { useLingui } from "@lingui/react";
 import { LucideSwords, MoveRight } from "lucide-react";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 
 export const GameOnboarding = () => {
   const settings = useSettings();
@@ -15,7 +16,7 @@ export const GameOnboarding = () => {
   const game = useGame();
   const { i18n } = useLingui();
   const isOnboardingCompleted = settings.userSettings?.isGameOnboardingCompleted;
-
+  const { topOffset } = useWindowSizes();
   const onNext = () => {
     if (step < stepsContent.length - 1) {
       setStep(step + 1);
@@ -182,6 +183,7 @@ export const GameOnboarding = () => {
             maxHeight: "700px",
             justifyContent: "space-between",
             padding: "40px 20px",
+            paddingTop: `calc(${topOffset} + 40px)`,
             boxSizing: "border-box",
             gap: "20px",
           }}

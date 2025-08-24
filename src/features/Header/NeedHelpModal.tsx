@@ -11,6 +11,7 @@ import { ContactList } from "../Landing/Contact/ContactList";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useLingui } from "@lingui/react";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 
 interface NeedHelpModalProps {
   onClose: () => void;
@@ -19,6 +20,7 @@ interface NeedHelpModalProps {
 
 export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
   const auth = useAuth();
+  const { topOffset } = useWindowSizes();
   const [isShowDeleteAccountModal, setIsShowDeleteAccountModal] = useState(false);
   const { i18n } = useLingui();
   const userId = auth.uid;
@@ -72,7 +74,13 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
 
   return (
     <CustomModal isOpen={true} onClose={() => onClose()}>
-      <Typography variant="h4" component="h2">
+      <Typography
+        variant="h4"
+        component="h2"
+        sx={{
+          paddingTop: `calc(${topOffset} + 0px)`,
+        }}
+      >
         {i18n._(`Need help?`)}
       </Typography>
 

@@ -48,6 +48,7 @@ import { GradingProgressBar } from "../uiKit/Progress/GradingProgressBar";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useGame } from "../Game/useGame";
 import { useTranslate } from "../Translation/useTranslate";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -138,6 +139,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isNeedToShowBalanceWarning,
 }) => {
   const { i18n } = useLingui();
+  const { topOffset } = useWindowSizes();
 
   const sound = useSound();
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
@@ -357,6 +359,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 width: "100%",
                 alignItems: "center",
                 padding: "70px 0",
+                paddingTop: `calc(${topOffset} + 70px)`,
               }}
             >
               <Stack

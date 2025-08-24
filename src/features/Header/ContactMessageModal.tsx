@@ -5,6 +5,7 @@ import { useLingui } from "@lingui/react";
 import { useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { sendFeedbackMessageRequest } from "@/app/api/telegram/sendFeedbackMessageRequest";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 
 interface ContactMessageModalProps {
   onClose: () => void;
@@ -20,7 +21,7 @@ export const ContactMessageModal = ({
   placeholder,
 }: ContactMessageModalProps) => {
   const { i18n } = useLingui();
-
+  const { topOffset } = useWindowSizes();
   const [feedback, setFeedback] = useState("");
   const auth = useAuth();
   const [isSending, setIsSending] = useState(false);
@@ -47,7 +48,11 @@ export const ContactMessageModal = ({
 
   return (
     <CustomModal isOpen={true} onClose={() => onClose()} padding="max(20px, 2vw)">
-      <Stack>
+      <Stack
+        sx={{
+          paddingTop: `calc(${topOffset} + 0px)`,
+        }}
+      >
         <Typography variant="h5">{title}</Typography>
         <Typography
           variant="caption"
