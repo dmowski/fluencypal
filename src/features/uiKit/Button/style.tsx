@@ -9,7 +9,18 @@ declare module "@mui/material/Button" {
   }
 }
 
-export const buttonBorderRadius = "6px";
+export const pxToRem = (px: number) => `${px / 16}rem`;
+
+export const typographySmaller = {
+  fontSize: pxToRem(14),
+  fontWeight: 400,
+  letterSpacing: "-0px",
+  b: {
+    fontWeight: 600,
+  },
+};
+
+export const buttonBorderRadius = "10px";
 
 const variants: ComponentsVariants["MuiButton"] = [
   {
@@ -62,8 +73,9 @@ const style: ComponentsOverrides["MuiButton"] = {
     "&:disabled": {},
   },
   root: {
-    //borderRadius: buttonBorderRadius,
-    //textTransform: "none",
+    borderRadius: buttonBorderRadius,
+    ...typographySmaller,
+    textTransform: "none",
     //fontWeight: 450,
   },
 };
