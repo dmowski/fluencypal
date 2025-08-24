@@ -2,7 +2,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { Check, ChevronRight } from "lucide-react";
 
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { goFullScreen } from "@/libs/fullScreen";
