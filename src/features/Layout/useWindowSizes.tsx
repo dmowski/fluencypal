@@ -8,7 +8,6 @@ import { createContext, useContext, ReactNode, JSX } from "react";
 
 interface WindowSizesContextType {
   topOffset: string;
-  topOffset2: string;
 }
 
 const WindowSizesContext = createContext<WindowSizesContextType | null>(null);
@@ -16,12 +15,11 @@ const WindowSizesContext = createContext<WindowSizesContextType | null>(null);
 function useProvideWindowSizes(): WindowSizesContextType {
   const navbarHeight = useSignal(viewportContentSafeAreaInsetTop);
   const safeAreaInsetTop = useSignal(viewportSafeAreaInsetTop);
-  const topOffset = navbarHeight ? `${navbarHeight + 0}px` : "0px";
-  const topOffset2 = safeAreaInsetTop ? `${safeAreaInsetTop + 0}px` : "0px";
+  const combinedOffset = navbarHeight + safeAreaInsetTop;
+  const topOffset = combinedOffset ? `${combinedOffset + 0}px` : "0px";
 
   return {
     topOffset,
-    topOffset2,
   };
 }
 

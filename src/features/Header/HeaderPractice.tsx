@@ -103,26 +103,10 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
     }
   }, [isInternalClosing]);
 
-  const { topOffset, topOffset2 } = useWindowSizes();
+  const { topOffset } = useWindowSizes();
 
   return (
     <>
-      <Stack
-        sx={{
-          height: `${topOffset}`,
-          backgroundColor: "rgba(90, 14, 19, 0.7)",
-          width: "100%",
-        }}
-      />
-
-      <Stack
-        sx={{
-          height: `${topOffset2}`,
-          backgroundColor: "rgba(2, 94, 19, 0.7)",
-          width: "100%",
-        }}
-      />
-
       <Stack
         component={"header"}
         sx={{
@@ -130,7 +114,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "transparent",
-          paddingTop: 0,
+          paddingTop: topOffset,
 
           ".menu-link": {
             height: "60px",
