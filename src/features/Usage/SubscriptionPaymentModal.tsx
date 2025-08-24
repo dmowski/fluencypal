@@ -272,12 +272,6 @@ export const SubscriptionPaymentModal = () => {
               >
                 <Button
                   onClick={clickOnConfirmRequestTelegramStars}
-                  sx={{
-                    ...buttonStyle,
-                    padding: "10px 70px",
-                    color: "#fff",
-                    backgroundColor: "#05acff",
-                  }}
                   fullWidth
                   variant="contained"
                   disabled={isRedirecting}
@@ -433,12 +427,6 @@ export const SubscriptionPaymentModal = () => {
                 }}
               >
                 <Button
-                  sx={{
-                    ...buttonStyle,
-                    padding: "10px 70px",
-                    color: "#000",
-                    backgroundColor: "#05acff",
-                  }}
                   fullWidth
                   variant="contained"
                   disabled={isRedirecting}
@@ -581,12 +569,6 @@ export const SubscriptionPaymentModal = () => {
                   </Typography>
                   <Button
                     disabled={!!activeTill}
-                    sx={{
-                      ...buttonStyle,
-                      padding: "10px 70px",
-                      color: activeTill ? "#c2c2c2" : "#000",
-                      backgroundColor: activeTill ? "rgba(255, 255, 255, 0.1)" : "#05acff",
-                    }}
                     variant="contained"
                     size="large"
                     onClick={showConfirmPage}

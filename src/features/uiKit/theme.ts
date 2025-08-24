@@ -1,5 +1,6 @@
 "use client";
 import { createTheme } from "@mui/material/styles";
+import { customButton } from "./Button/style";
 
 const darkTheme = createTheme({
   palette: {
@@ -8,6 +9,9 @@ const darkTheme = createTheme({
   },
   typography: {
     fontFamily: "var(--font-roboto)",
+  },
+  components: {
+    MuiButton: customButton,
   },
   //cssVariables: true,
 });
