@@ -33,7 +33,7 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
           maxWidth: "1400px",
           padding: "0",
           paddingTop: "20px",
-          boxSizing: "border-box",
+
           gap: "70px",
           position: "relative",
           zIndex: 1,
@@ -46,13 +46,11 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
             gap: "20px",
             maxWidth: "700px",
             padding: "5px 0px",
-            boxSizing: "border-box",
           }}
         >
           <Stack
             sx={{
               padding: "0 10px",
-              boxSizing: "border-box",
             }}
           >
             <GameBadge lang={lang} />
@@ -71,7 +69,6 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
             gap: "20px",
             display: "grid",
             gridTemplateColumns: "1fr",
-            boxSizing: "border-box",
           }}
         >
           <ProgressBoard />
