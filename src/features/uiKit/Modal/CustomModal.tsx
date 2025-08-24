@@ -75,7 +75,6 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
               sx={{
                 width: "100%",
                 height: topOffset,
-                backgroundColor: "rgba(0, 0, 100, 1)",
               }}
             />
 
@@ -97,7 +96,6 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
               sx={{
                 width: "100%",
                 height: bottomOffset,
-                backgroundColor: "rgba(100, 0, 0, 1)",
               }}
             />
           </Stack>

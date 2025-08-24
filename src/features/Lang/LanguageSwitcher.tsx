@@ -171,7 +171,7 @@ export function LanguageSwitcher({
             boxSizing: "border-box",
           }}
         >
-          <Typography variant="h5" component="h2">
+          <Typography variant="h5" component="h2" align="center">
             {i18n._(`Languages`)}
           </Typography>
           <Stack
@@ -184,7 +184,7 @@ export function LanguageSwitcher({
             <Stack
               gap={"30px"}
               sx={{
-                maxWidth: "400px",
+                maxWidth: "600px",
                 minWidth: "250px",
               }}
             >

@@ -312,7 +312,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
 
         {isShowRefundModal && (
           <ContactMessageModal
-            title={i18n._(`Refund Request`)}
+            title={i18n._(`Refund`)}
             subTitle={i18n._(`Add some info why you want a refund and we will do it.`)}
             placeholder={i18n._(`Leave your message`)}
             onClose={() => setIsShowRefundModal(false)}

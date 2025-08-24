@@ -48,7 +48,7 @@ export const ContactMessageModal = ({
     <CustomModal isOpen={true} onClose={() => onClose()}>
       <Stack
         sx={{
-          gap: "30px",
+          gap: "20px",
           boxSizing: "border-box",
           width: "100%",
           maxWidth: "600px",
@@ -56,10 +56,11 @@ export const ContactMessageModal = ({
         }}
       >
         <Stack>
-          <Typography variant="h5" component="h2">
+          <Typography variant="h5" component="h2" align="center">
             {title}
           </Typography>
           <Typography
+            align="center"
             variant="caption"
             sx={{
               opacity: 0.7,
@@ -83,7 +84,7 @@ export const ContactMessageModal = ({
           <Stack
             sx={{
               width: "100%",
-              gap: "10px",
+              gap: "20px",
               alignItems: "flex-start",
             }}
           >
@@ -108,7 +109,7 @@ export const ContactMessageModal = ({
                 type="submit"
                 disabled={isSending}
                 sx={{
-                  width: "100%",
+                  minWidth: "300px",
                 }}
               >
                 {isSending ? i18n._(`Sending...`) : i18n._(`Send`)}

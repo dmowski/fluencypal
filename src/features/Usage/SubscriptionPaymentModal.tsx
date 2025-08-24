@@ -456,7 +456,7 @@ export const SubscriptionPaymentModal = () => {
                 }}
               >
                 <Typography align="center" variant="h5" component="h2">
-                  {i18n._(`Your plan`)}
+                  {i18n._(`Subscription`)}
                 </Typography>
                 <Typography
                   variant="caption"

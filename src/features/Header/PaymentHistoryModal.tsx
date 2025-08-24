@@ -34,9 +34,20 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
           maxWidth: "600px",
         }}
       >
-        <Typography variant="h5" component="h2">
-          {i18n._(`Payment History`)}
-        </Typography>
+        <Stack>
+          <Typography variant="h5" component="h2" align="center">
+            {i18n._(`Payment History`)}
+          </Typography>
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: 0.8,
+            }}
+            align="center"
+          >
+            {i18n._(`View your payment history`)}
+          </Typography>
+        </Stack>
 
         <Stack
           sx={{
