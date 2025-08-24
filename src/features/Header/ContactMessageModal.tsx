@@ -107,6 +107,7 @@ export const ContactMessageModal = ({
               <Button
                 variant="contained"
                 type="submit"
+                color="info"
                 disabled={isSending}
                 sx={{
                   minWidth: "300px",

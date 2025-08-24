@@ -12,7 +12,6 @@ import { supportedLanguages } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useCurrency } from "../User/useCurrency";
-import { buttonStyle } from "../Landing/landingSettings";
 import { PRICE_PER_MONTH_USD } from "@/common/subscription";
 import { sentPaymentTgMessage } from "./sentTgMessage";
 import dayjs from "dayjs";
@@ -273,6 +272,7 @@ export const SubscriptionPaymentModal = () => {
                 <Button
                   onClick={clickOnConfirmRequestTelegramStars}
                   fullWidth
+                  color="info"
                   variant="contained"
                   disabled={isRedirecting}
                   size="large"
@@ -427,6 +427,7 @@ export const SubscriptionPaymentModal = () => {
                 }}
               >
                 <Button
+                  color="info"
                   fullWidth
                   variant="contained"
                   disabled={isRedirecting}
@@ -568,6 +569,7 @@ export const SubscriptionPaymentModal = () => {
                     {i18n._("Learn at full speed with full access")}
                   </Typography>
                   <Button
+                    color="info"
                     disabled={!!activeTill}
                     variant="contained"
                     size="large"
