@@ -34,7 +34,7 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
           width: "100%",
           maxWidth: "1400px",
           padding: "10px",
-          paddingTop: "30px",
+          paddingTop: "20px",
           boxSizing: "border-box",
           gap: "70px",
           position: "relative",
