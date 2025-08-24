@@ -10,6 +10,7 @@ import { generateMetadataInfo } from "@/libs/metadata";
 import { Inter, Old_Standard_TT } from "next/font/google";
 import Script from "next/script";
 import "@telegram-apps/telegram-ui/dist/styles.css";
+import { WindowSizesProvider } from "@/features/Layout/useWindowSizes";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const oldStandardTT = Old_Standard_TT({
@@ -87,7 +88,9 @@ if (!isLocalhost && isWindow) {
       </head>
       <body>
         <ThemeProvider theme={darkTheme}>
-          <AppRouterCacheProvider options={{ key: "css" }}>{children}</AppRouterCacheProvider>
+          <WindowSizesProvider>
+            <AppRouterCacheProvider options={{ key: "css" }}>{children}</AppRouterCacheProvider>
+          </WindowSizesProvider>
         </ThemeProvider>
       </body>
     </html>
