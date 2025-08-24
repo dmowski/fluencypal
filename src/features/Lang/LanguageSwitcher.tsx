@@ -165,14 +165,13 @@ export function LanguageSwitcher({
       <CustomModal isOpen={isShowModal} onClose={() => setIsShowModal(false)}>
         <Stack
           sx={{
+            width: "100%",
+            maxWidth: "600px",
             gap: "30px",
-            padding: "30px",
-            height: "100dvh",
-            maxHeight: "100dvh",
             boxSizing: "border-box",
           }}
         >
-          <Typography variant="h4" component="h2">
+          <Typography variant="h5" component="h2">
             {i18n._(`Languages`)}
           </Typography>
           <Stack
