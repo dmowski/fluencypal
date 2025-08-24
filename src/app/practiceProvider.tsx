@@ -14,7 +14,7 @@ import { AudioProvider } from "@/features/Audio/useAudio";
 import { WebCamProvider } from "@/features/webCam/useWebCam";
 import { CorrectionsProvider } from "@/features/Corrections/useCorrections";
 
-import { JSX, Suspense } from "react";
+import { JSX } from "react";
 import { NotificationsProvider } from "@toolpad/core/useNotifications";
 import { PlanProvider } from "@/features/Plan/usePlan";
 import { GameProvider } from "@/features/Game/useGame";
@@ -24,46 +24,44 @@ import { TgNavigationProvider } from "@/features/Telegram/useTgNavigation";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
-    <Suspense>
-      <TelegramProvider>
-        <TgNavigationProvider>
-          <NotificationsProvider>
-            <AuthProvider>
-              <SettingsProvider>
-                <WebCamProvider>
-                  <GameProvider>
-                    <UsageProvider>
-                      <TextAiProvider>
-                        <AudioProvider>
-                          <AiUserInfoProvider>
-                            <WordsProvider>
-                              <CorrectionsProvider>
-                                <ChatHistoryProvider>
-                                  <RulesProvider>
-                                    <TasksProvider>
-                                      <HomeworkProvider>
-                                        <PlanProvider>
-                                          <AiConversationProvider>
-                                            <PayWallProvider>{children}</PayWallProvider>
-                                          </AiConversationProvider>
-                                        </PlanProvider>
-                                      </HomeworkProvider>
-                                    </TasksProvider>
-                                  </RulesProvider>
-                                </ChatHistoryProvider>
-                              </CorrectionsProvider>
-                            </WordsProvider>
-                          </AiUserInfoProvider>
-                        </AudioProvider>
-                      </TextAiProvider>
-                    </UsageProvider>
-                  </GameProvider>
-                </WebCamProvider>
-              </SettingsProvider>
-            </AuthProvider>
-          </NotificationsProvider>
-        </TgNavigationProvider>
-      </TelegramProvider>
-    </Suspense>
+    <TelegramProvider>
+      <TgNavigationProvider>
+        <NotificationsProvider>
+          <AuthProvider>
+            <SettingsProvider>
+              <WebCamProvider>
+                <GameProvider>
+                  <UsageProvider>
+                    <TextAiProvider>
+                      <AudioProvider>
+                        <AiUserInfoProvider>
+                          <WordsProvider>
+                            <CorrectionsProvider>
+                              <ChatHistoryProvider>
+                                <RulesProvider>
+                                  <TasksProvider>
+                                    <HomeworkProvider>
+                                      <PlanProvider>
+                                        <AiConversationProvider>
+                                          <PayWallProvider>{children}</PayWallProvider>
+                                        </AiConversationProvider>
+                                      </PlanProvider>
+                                    </HomeworkProvider>
+                                  </TasksProvider>
+                                </RulesProvider>
+                              </ChatHistoryProvider>
+                            </CorrectionsProvider>
+                          </WordsProvider>
+                        </AiUserInfoProvider>
+                      </AudioProvider>
+                    </TextAiProvider>
+                  </UsageProvider>
+                </GameProvider>
+              </WebCamProvider>
+            </SettingsProvider>
+          </AuthProvider>
+        </NotificationsProvider>
+      </TgNavigationProvider>
+    </TelegramProvider>
   );
 };
