@@ -17,6 +17,7 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { ConversationCard } from "./ConversationCard";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { useUrlParam } from "../Url/useUrlParam";
 
 type StartModes = "words" | "rules" | "conversation";
 
@@ -107,7 +108,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       activeIndex = index;
     }
   });
-  const [isShowMoreModal, setIsShowMoreModal] = useState(false);
+  const [isShowMoreModal, setIsShowMoreModal] = useUrlParam("showMoreModal");
 
   const doneLessonsCount = sortedElements.reduce((acc, element) => {
     if (element.startCount > 0) {
