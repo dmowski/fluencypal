@@ -429,7 +429,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 align="center"
                 sx={{
                   opacity: 0.8,
-                  maxWidth: "650px",
                 }}
                 variant="caption"
               >
