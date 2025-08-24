@@ -48,12 +48,15 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const aiConversation = useAiConversation();
   const { i18n } = useLingui();
   const [isShowLogout, setIsShowLogout] = useState(true);
+  const [isShowBackButton, setIsShowBackButton] = useState(true);
 
   useEffect(() => {
     const isTelegramApp = isTMA();
     if (!isTelegramApp) {
       return;
     }
+
+    setIsShowBackButton(false);
 
     setTimeout(() => {
       setIsShowLogout(false);
@@ -158,7 +161,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
               height: "100%",
             }}
           >
-            {isActiveConversation && (
+            {isActiveConversation && isShowBackButton && (
               <Stack
                 sx={{
                   flexDirection: "row",
