@@ -47,7 +47,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
 
     // Redirect to APP if plan is present
     const newPath = `${getUrlStart(pageLang)}practice`;
-    router.push(newPath);
+    //router.push(newPath);
   }, [isNeedToRedirectToApp]);
 
   const isNeedToRedirectToQuiz =
@@ -124,8 +124,8 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
           sx={{
             alignItems: "center",
             width: "100%",
-            backgroundColor: `#fff`,
-            color: "#000",
+            backgroundColor: `rgba(255, 255, 255, 0.2)`,
+            color: "#fff",
             height: "max-content",
             minHeight: "100dvh",
             maxHeight: "2000px",
