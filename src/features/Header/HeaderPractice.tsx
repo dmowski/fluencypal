@@ -370,17 +370,19 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
           <ListItemText>{i18n._(`Payment history`)}</ListItemText>
         </MenuItem>
 
-        <MenuItem
-          onClick={() => {
-            setIsShowRefundModal(true);
-            setMenuAnchor(null);
-          }}
-        >
-          <ListItemIcon>
-            <BanknoteArrowDown size="20px" />
-          </ListItemIcon>
-          <ListItemText>{i18n._(`Refund`)}</ListItemText>
-        </MenuItem>
+        {false && (
+          <MenuItem
+            onClick={() => {
+              setIsShowRefundModal(true);
+              setMenuAnchor(null);
+            }}
+          >
+            <ListItemIcon>
+              <BanknoteArrowDown size="20px" />
+            </ListItemIcon>
+            <ListItemText>{i18n._(`Refund`)}</ListItemText>
+          </MenuItem>
+        )}
 
         <MenuItem
           onClick={() => {
