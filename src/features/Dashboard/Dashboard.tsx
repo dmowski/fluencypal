@@ -52,6 +52,7 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
           <Stack
             sx={{
               padding: "0 10px",
+              boxSizing: "border-box",
             }}
           >
             <GameBadge lang={lang} />
