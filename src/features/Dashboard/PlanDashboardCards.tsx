@@ -118,7 +118,15 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   }, 0);
 
   const [isLearningPlanUpdating, setIsLearningPlanUpdating] = useState(false);
-  const [selectedStartMode, setSelectedStartMode] = useState<StartModes | null>(null);
+
+  const [selectedStartModeInternal, setSelectedStartModeInternal] = useState<StartModes | null>(
+    null
+  );
+  const [isStartedModeSelected, setIsStartedModeSelected] = useUrlParam("startedMode");
+  const openStartMode = (mode: StartModes | null) => {
+    setSelectedStartModeInternal(mode);
+    setIsStartedModeSelected(!!mode);
+  };
 
   const generateMoreLessons = async () => {
     if (!plan.latestGoal) {
@@ -177,7 +185,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const minimumLessonsCountToExpand = 3;
   const isAbleToExpand = doneLessonsCount >= minimumLessonsCountToExpand;
   const selectedElement =
-    sortedElements.find((element) => element.mode === selectedStartMode) || sortedElements[0];
+    sortedElements.find((element) => element.mode === selectedStartModeInternal) ||
+    sortedElements[0];
 
   if (isReadyToFirstStart) {
     const modes: StartModes[] = ["words", "rules", "conversation"];
@@ -234,7 +243,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   <ConversationCard
                     title={i18n._(`Conversation`)}
                     subTitle={i18n._(`Start your journey with a conversation!`)}
-                    onClick={() => setSelectedStartMode(mode)}
+                    onClick={() => openStartMode(mode)}
                     startColor="#34D399"
                     endColor="#3B82F6"
                     bgColor="#A3E635"
@@ -264,7 +273,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   <ConversationCard
                     title={i18n._(`Rules`)}
                     subTitle={i18n._(`Learn the rules of the language!`)}
-                    onClick={() => setSelectedStartMode(mode)}
+                    onClick={() => openStartMode(mode)}
                     startColor="#9d43a3"
                     endColor="#086787"
                     bgColor="#990000"
@@ -294,7 +303,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   <ConversationCard
                     title={i18n._(`Words`)}
                     subTitle={i18n._(`Learn new words and expand your vocabulary!`)}
-                    onClick={() => setSelectedStartMode(mode)}
+                    onClick={() => openStartMode(mode)}
                     startColor="#00BFFF"
                     endColor="#086787"
                     bgColor="#5EEAD4"
@@ -324,15 +333,13 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           })}
         </Stack>
 
-        {selectedStartMode && (
-          <CustomModal onClose={() => setSelectedStartMode(null)} isOpen={true}>
+        {selectedStartModeInternal && (
+          <CustomModal onClose={() => openStartMode(null)} isOpen={true}>
             <Stack
               sx={{
-                height: "100dvh",
                 gap: "20px",
-                alignItems: "center",
-                justifyContent: "center",
                 width: "100%",
+                maxWidth: "600px",
               }}
             >
               <Typography className="decor-text" variant="h6" align="center">
