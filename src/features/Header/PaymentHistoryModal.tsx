@@ -30,13 +30,11 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
       <Stack
         sx={{
           gap: "30px",
-          padding: "30px",
-          height: "100dvh",
-          maxHeight: "100dvh",
-          boxSizing: "border-box",
+          width: "100%",
+          maxWidth: "600px",
         }}
       >
-        <Typography variant="h4" component="h2">
+        <Typography variant="h5" component="h2">
           {i18n._(`Payment History`)}
         </Typography>
 
@@ -88,7 +86,7 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
                         boxSizing: "border-box",
                         display: "flex",
                         flexDirection: "row",
-                        width: "400px",
+                        width: "100%",
                         maxWidth: "100%",
                         justifyContent: "space-between",
                         alignItems: "center",

@@ -50,8 +50,8 @@ export const ContactMessageModal = ({
         sx={{
           gap: "30px",
           boxSizing: "border-box",
-          border: "1px solid rgba(255, 255, 255, 0.1)",
           width: "100%",
+          maxWidth: "600px",
           "@media (max-width: 600px)": {},
         }}
       >

@@ -18,18 +18,14 @@ export const GameMyAvatar = () => {
           <Stack
             sx={{
               gap: "30px",
-              padding: "30px",
-              height: "100dvh",
-              maxHeight: "100dvh",
-              boxSizing: "border-box",
-              alignItems: "center",
               width: "100%",
+              maxWidth: "600px",
               "@media (max-width: 600px)": {
                 padding: "15px",
               },
             }}
           >
-            <Typography variant="h5" align="center">
+            <Typography variant="h5" component="h2">
               {i18n._("Select your avatar")}
             </Typography>
             <Stack
@@ -38,7 +34,6 @@ export const GameMyAvatar = () => {
                 flexWrap: "wrap",
                 gap: "20px",
                 justifyContent: "center",
-                maxWidth: "800px",
               }}
             >
               {avatars.map((avatar, index) => {

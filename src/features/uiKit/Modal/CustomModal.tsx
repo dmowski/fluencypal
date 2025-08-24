@@ -59,12 +59,10 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
         )}
         <Stack
           sx={{
-            alignItems: "flex-start",
-            gap: "30px",
+            gap: "0px",
             width: "100%",
             maxHeight: "100vh",
-            justifyContent: "center",
-            overflowY: "auto",
+            overflow: "auto",
             padding: "40px",
             boxSizing: "border-box",
             "@media (max-width: 600px)": {
@@ -74,21 +72,34 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
         >
           <Stack
             sx={{
+              height: "max-content",
               width: "100%",
-              height: topOffset,
-              backgroundColor: "rgba(0, 0, 100, 0.5)",
             }}
-          />
+          >
+            <Stack
+              sx={{
+                width: "100%",
+                height: topOffset,
+                backgroundColor: "rgba(0, 0, 100, 1)",
+              }}
+            />
 
-          {children}
+            <Stack
+              sx={{
+                alignItems: "center",
+              }}
+            >
+              {children}
+            </Stack>
 
-          <Stack
-            sx={{
-              width: "100%",
-              height: bottomOffset,
-              backgroundColor: "rgba(100, 0, 0, 0.5)",
-            }}
-          />
+            <Stack
+              sx={{
+                width: "100%",
+                height: bottomOffset,
+                backgroundColor: "rgba(100, 0, 0, 1)",
+              }}
+            />
+          </Stack>
         </Stack>
       </Stack>
     </Modal>

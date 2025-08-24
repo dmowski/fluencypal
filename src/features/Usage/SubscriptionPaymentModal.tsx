@@ -212,12 +212,12 @@ export const SubscriptionPaymentModal = () => {
       }}
     >
       <Stack
-        sx={{
-          alignItems: "center",
-          height: "100%",
-          width: "100%",
-        }}
-        ref={containerRef}
+        sx={
+          {
+            //alignItems: "center",
+            //height: "100%",
+          }
+        }
       >
         {isTelegramApp && isTelegramPaymentOptions ? (
           <>
@@ -225,7 +225,6 @@ export const SubscriptionPaymentModal = () => {
               sx={{
                 maxWidth: "700px",
                 width: "100%",
-                padding: "40px 10px",
                 boxSizing: "border-box",
                 gap: "40px",
                 alignItems: "center",
@@ -240,7 +239,8 @@ export const SubscriptionPaymentModal = () => {
                   sx={{
                     width: "100%",
                   }}
-                  variant="h4"
+                  variant="h5"
+                  component="h2"
                 >
                   {i18n._(`Payment option`)}
                 </Typography>
@@ -313,7 +313,6 @@ export const SubscriptionPaymentModal = () => {
             sx={{
               maxWidth: "700px",
               width: "100%",
-              padding: "40px 10px",
               boxSizing: "border-box",
               gap: "40px",
               alignItems: "center",
@@ -328,7 +327,8 @@ export const SubscriptionPaymentModal = () => {
                 sx={{
                   width: "100%",
                 }}
-                variant="h4"
+                variant="h5"
+                component="h2"
               >
                 {i18n._(`Confirm payment`)}
               </Typography>
@@ -460,7 +460,6 @@ export const SubscriptionPaymentModal = () => {
               sx={{
                 maxWidth: "500px",
                 width: "100%",
-                padding: "40px 10px",
                 boxSizing: "border-box",
                 gap: "40px",
                 alignItems: "center",
@@ -471,7 +470,7 @@ export const SubscriptionPaymentModal = () => {
                   gap: "5px",
                 }}
               >
-                <Typography align="center" variant="h4">
+                <Typography align="center" variant="h5" component="h2">
                   {i18n._(`Your plan`)}
                 </Typography>
                 <Typography
