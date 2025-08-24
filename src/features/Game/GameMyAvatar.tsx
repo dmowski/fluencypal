@@ -20,14 +20,23 @@ export const GameMyAvatar = () => {
               gap: "30px",
               width: "100%",
               maxWidth: "600px",
-              "@media (max-width: 600px)": {
-                padding: "15px",
-              },
             }}
           >
-            <Typography variant="h5" component="h2">
-              {i18n._("Select your avatar")}
-            </Typography>
+            <Stack>
+              <Typography variant="h5" component="h2" align="center">
+                {i18n._("Avatar")}
+              </Typography>
+              <Typography
+                align="center"
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._("Select your game avatar")}
+              </Typography>
+            </Stack>
+
             <Stack
               sx={{
                 flexDirection: "row",
