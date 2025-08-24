@@ -52,6 +52,7 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
         alignItems: "center",
         boxSizing: "border-box",
         display: "grid",
+        minHeight: "120px",
         gridTemplateColumns: "1fr max-content",
         "@media (max-width:600px)": {
           padding: "15px 15px",

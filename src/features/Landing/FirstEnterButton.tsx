@@ -35,7 +35,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
     if (storedLanguage) {
       setTimeout(() => {
         setIsSignInToLanguage(storedLanguage);
-      }, 10);
+      }, 20);
     }
   }, []);
 
