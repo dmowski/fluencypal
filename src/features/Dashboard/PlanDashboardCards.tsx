@@ -340,6 +340,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 gap: "20px",
                 width: "100%",
                 maxWidth: "600px",
+                paddingTop: "200px",
               }}
             >
               <Typography className="decor-text" variant="h6" align="center">
@@ -351,10 +352,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   border: "1px solid rgba(255, 255, 255, 0.5)",
                   backgroundColor: "rgba(255, 255, 255, 0.05)",
                   padding: "20px 20px",
+                  boxSizing: "border-box",
                   borderRadius: "10px",
                   gap: "10px",
                   alignItems: "center",
-                  minWidth: "360px",
                 }}
               >
                 <img src={imageUrl} alt="" style={{ width: "80px", height: "80px" }} />
