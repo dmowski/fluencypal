@@ -148,8 +148,8 @@ export const DescribeImageScreen = ({
             <Markdown
               onWordClick={
                 translator.isTranslateAvailable
-                  ? (word) => {
-                      translator.translateWithModal(word);
+                  ? (word, element) => {
+                      translator.translateWithModal(word, element);
                     }
                   : undefined
               }
@@ -326,8 +326,8 @@ export const DescribeImageScreen = ({
                       }}
                     >
                       <IconButton
-                        onClick={() => {
-                          translator.translateWithModal(answerCorrectedMessage);
+                        onClick={(e) => {
+                          translator.translateWithModal(answerCorrectedMessage, e.currentTarget);
                         }}
                       >
                         <Languages size={"16px"} color="#eee" />
@@ -345,8 +345,8 @@ export const DescribeImageScreen = ({
                   <Markdown
                     onWordClick={
                       translator.isTranslateAvailable
-                        ? (word) => {
-                            translator.translateWithModal(word);
+                        ? (word, element) => {
+                            translator.translateWithModal(word, element);
                           }
                         : undefined
                     }

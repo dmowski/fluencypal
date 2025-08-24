@@ -56,8 +56,8 @@ export const RulesToLearn: React.FC = () => {
         >
           <Markdown
             variant="conversation"
-            onWordClick={(word) => {
-              translator.translateWithModal(word);
+            onWordClick={(word, element) => {
+              translator.translateWithModal(word, element);
             }}
           >
             {rules.rule}

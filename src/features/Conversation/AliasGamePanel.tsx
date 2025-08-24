@@ -148,7 +148,7 @@ export const AliasGamePanelUI = ({
                     },
                   }}
                   key={index}
-                  onClick={() => translator.translateWithModal(trimWord)}
+                  onClick={(e) => translator.translateWithModal(trimWord, e.currentTarget)}
                 >
                   <Typography
                     key={index}

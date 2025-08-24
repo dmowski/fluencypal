@@ -5,7 +5,7 @@ import React from "react";
 export interface MarkdownProps {
   children: string;
   variant?: "small" | "normal" | "conversation" | "blog";
-  onWordClick?: (word: string) => void;
+  onWordClick?: (word: string, element: HTMLElement) => void;
 }
 
 const processStringChild = (child: string, index: number) => {
@@ -345,7 +345,8 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, varia
               const target = e.target as HTMLElement;
               if (target.classList.contains("conversation-word")) {
                 const word = target.textContent || "";
-                onWordClick(word.trim());
+                const element = target;
+                onWordClick(word.trim(), element);
               }
             }
           : undefined

@@ -331,7 +331,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 variant="conversation"
                 onWordClick={
                   translator.isTranslateAvailable
-                    ? (word) => translator.translateWithModal(word)
+                    ? (word, element) => translator.translateWithModal(word, element)
                     : undefined
                 }
               >
@@ -546,8 +546,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     <Markdown
                       onWordClick={
                         translator.isTranslateAvailable
-                          ? (word) => {
-                              translator.translateWithModal(word);
+                          ? (word, element) => {
+                              translator.translateWithModal(word, element);
                             }
                           : undefined
                       }
@@ -557,7 +557,11 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     </Markdown>
 
                     {translator.isTranslateAvailable && (
-                      <IconButton onClick={() => translator.translateWithModal(message.text)}>
+                      <IconButton
+                        onClick={(e) =>
+                          translator.translateWithModal(message.text, e.currentTarget)
+                        }
+                      >
                         <Languages size={"16px"} color="#eee" />
                       </IconButton>
                     )}
@@ -779,7 +783,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                 voice={"coral"}
                               />
                               <IconButton
-                                onClick={() => translator.translateWithModal(correctedMessage)}
+                                onClick={(e) =>
+                                  translator.translateWithModal(correctedMessage, e.currentTarget)
+                                }
                               >
                                 <Languages size={"16px"} style={{ opacity: 0.8 }} />
                               </IconButton>
@@ -867,7 +873,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                   voice={"coral"}
                                 />
                                 <IconButton
-                                  onClick={() => translator.translateWithModal(correctedMessage)}
+                                  onClick={(e) =>
+                                    translator.translateWithModal(correctedMessage, e.currentTarget)
+                                  }
                                 >
                                   <Languages size={"16px"} style={{ opacity: 0.8 }} />
                                 </IconButton>

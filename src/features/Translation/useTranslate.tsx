@@ -3,8 +3,7 @@ import { useSettings } from "../Settings/useSettings";
 import { getPageLangCode } from "../Lang/lang";
 import { usePlan } from "../Plan/usePlan";
 import { useMemo, useState } from "react";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { Button, Stack, Typography } from "@mui/material";
+import { Popover, Stack } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { ArrowDown } from "lucide-react";
@@ -17,6 +16,7 @@ export const useTranslate = () => {
   const plan = usePlan();
 
   const [isShowModal, setIsShowModal] = useUrlParam("showTranslateModal");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const pageLangCode = useMemo(() => getPageLangCode(), []);
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
@@ -54,8 +54,9 @@ export const useTranslate = () => {
     source: string;
     translated: string;
   } | null>(null);
-  const translateWithModal = async (text: string) => {
+  const translateWithModal = async (text: string, element: HTMLElement) => {
     try {
+      setAnchorEl(element);
       setIsShowModal(true);
       setTranslatedText(null);
       setIsTranslating(true);
@@ -78,6 +79,7 @@ export const useTranslate = () => {
     setIsTranslating(false);
     setTranslatedText(null);
     setIsShowModal(false);
+    setAnchorEl(null);
   };
   const { i18n } = useLingui();
 
@@ -87,17 +89,30 @@ export const useTranslate = () => {
     translateWithModal,
     onCloseTranslate,
     translateModal:
-      (isTranslating || translatedText) && isShowModal ? (
-        <CustomModal isOpen={true} onClose={() => onCloseTranslate()}>
+      (isTranslating || translatedText) && isShowModal && anchorEl ? (
+        <Popover
+          anchorEl={anchorEl}
+          open={!!anchorEl}
+          onClose={() => onCloseTranslate()}
+          sx={{}}
+          slotProps={{
+            backdrop: {
+              sx: {
+                backgroundColor: "rgba(0, 0, 0, 0.8)",
+              },
+            },
+          }}
+        >
           <Stack
             sx={{
               gap: "30px",
+              backgroundColor: "#333",
               boxSizing: "border-box",
               width: "100%",
               maxWidth: "600px",
+              padding: "10px 15px",
             }}
           >
-            <Typography variant="caption">{i18n._("Translation")}</Typography>
             <Stack
               sx={{
                 gap: "10px",
@@ -128,22 +143,9 @@ export const useTranslate = () => {
                 {translatedText?.translated ||
                   (isTranslating ? "..." : i18n._("No translation available"))}
               </Markdown>
-              <Stack
-                sx={{
-                  alignItems: "flex-start",
-                }}
-              >
-                <Button
-                  variant="contained"
-                  onClick={onCloseTranslate}
-                  sx={{ marginTop: "20px", minWidth: "100%" }}
-                >
-                  {i18n._("Close")}
-                </Button>
-              </Stack>
             </Stack>
           </Stack>
-        </CustomModal>
+        </Popover>
       ) : null,
   };
 };

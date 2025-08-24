@@ -116,7 +116,9 @@ export const TopicToDiscussScreen = ({
           >
             {question.question}
             {translator.isTranslateAvailable && (
-              <IconButton onClick={() => translator.translateWithModal(question.question)}>
+              <IconButton
+                onClick={(e) => translator.translateWithModal(question.question, e.currentTarget)}
+              >
                 <Languages size={"16px"} color="#eee" />
               </IconButton>
             )}
@@ -172,8 +174,8 @@ export const TopicToDiscussScreen = ({
             <Markdown
               onWordClick={
                 translator.isTranslateAvailable
-                  ? (word) => {
-                      translator.translateWithModal(word);
+                  ? (word, element) => {
+                      translator.translateWithModal(word, element);
                     }
                   : undefined
               }
@@ -343,8 +345,8 @@ export const TopicToDiscussScreen = ({
                     />
 
                     <IconButton
-                      onClick={() => {
-                        translator.translateWithModal(answerCorrectedMessage);
+                      onClick={(e) => {
+                        translator.translateWithModal(answerCorrectedMessage, e.currentTarget);
                       }}
                     >
                       <Languages size={"16px"} color="#eee" />
@@ -361,8 +363,8 @@ export const TopicToDiscussScreen = ({
                   <Markdown
                     onWordClick={
                       translator.isTranslateAvailable
-                        ? (word) => {
-                            translator.translateWithModal(word);
+                        ? (word, element) => {
+                            translator.translateWithModal(word, element);
                           }
                         : undefined
                     }

@@ -145,9 +145,9 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                     }}
                     className="decor-text"
                     component={"span"}
-                    onClick={() => {
+                    onClick={(e) => {
                       if (translator.isTranslateAvailable) {
-                        translator.translateWithModal(word);
+                        translator.translateWithModal(word, e.currentTarget);
                       }
                     }}
                   >
@@ -158,7 +158,9 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
             })}
 
             {translator.isTranslateAvailable && (
-              <IconButton onClick={() => translator.translateWithModal(question.question)}>
+              <IconButton
+                onClick={(e) => translator.translateWithModal(question.question, e.currentTarget)}
+              >
                 <Languages size={"16px"} color="#eee" />
               </IconButton>
             )}

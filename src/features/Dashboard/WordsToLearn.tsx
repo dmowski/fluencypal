@@ -65,8 +65,8 @@ export const WordsToLearn: React.FC = () => {
                     borderBottom: "1px dashed #fff",
                   },
                 }}
-                onClick={async () => {
-                  await translator.translateWithModal(word);
+                onClick={async (e) => {
+                  await translator.translateWithModal(word, e.currentTarget);
                 }}
               >
                 {word}
