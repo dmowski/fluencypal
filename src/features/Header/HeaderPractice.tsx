@@ -38,6 +38,7 @@ import { SubscriptionPaymentModal } from "../Usage/SubscriptionPaymentModal";
 import { PaymentHistoryModal } from "./PaymentHistoryModal";
 import { ContactMessageModal } from "./ContactMessageModal";
 import { useWindowSizes } from "../Layout/useWindowSizes";
+import { isTMA } from "@telegram-apps/sdk-react";
 
 export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -46,10 +47,18 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
 
   const aiConversation = useAiConversation();
   const { i18n } = useLingui();
+  const [isShowLogout, setIsShowLogout] = useState(true);
 
-  const isLanding = !(
-    pathname.startsWith("/practice") || pathname.startsWith(`${getUrlStart(lang)}practice`)
-  );
+  useEffect(() => {
+    const isTelegramApp = isTMA();
+    if (!isTelegramApp) {
+      return;
+    }
+
+    setTimeout(() => {
+      setIsShowLogout(false);
+    }, 100);
+  }, []);
 
   const homeUrl = auth.isAuthorized ? `${getUrlStart(lang)}practice` : getUrlStart(lang);
 
@@ -402,17 +411,19 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
           <ListItemText>{i18n._(`Need Help?`)}</ListItemText>
         </MenuItem>
 
-        <MenuItem
-          onClick={() => {
-            auth.logout();
-            setMenuAnchor(null);
-          }}
-        >
-          <ListItemIcon>
-            <LogOutIcon size="20px" />
-          </ListItemIcon>
-          <ListItemText>{i18n._(`Log Out`)}</ListItemText>
-        </MenuItem>
+        {isShowLogout && (
+          <MenuItem
+            onClick={() => {
+              auth.logout();
+              setMenuAnchor(null);
+            }}
+          >
+            <ListItemIcon>
+              <LogOutIcon size="20px" />
+            </ListItemIcon>
+            <ListItemText>{i18n._(`Log Out`)}</ListItemText>
+          </MenuItem>
+        )}
       </Menu>
     </>
   );
