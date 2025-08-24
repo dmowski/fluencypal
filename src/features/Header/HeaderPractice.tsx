@@ -103,7 +103,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
     }
   }, [isInternalClosing]);
 
-  const { topOffset } = useWindowSizes();
+  const { topOffset, topOffset2 } = useWindowSizes();
 
   return (
     <>
@@ -111,6 +111,14 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
         sx={{
           height: `${topOffset}`,
           backgroundColor: "rgba(90, 14, 19, 0.7)",
+          width: "100%",
+        }}
+      />
+
+      <Stack
+        sx={{
+          height: `${topOffset2}`,
+          backgroundColor: "rgba(2, 94, 19, 0.7)",
           width: "100%",
         }}
       />

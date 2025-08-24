@@ -1,19 +1,27 @@
 "use client";
-import { useSignal, viewportContentSafeAreaInsetTop } from "@telegram-apps/sdk-react";
+import {
+  useSignal,
+  viewportContentSafeAreaInsetTop,
+  viewportSafeAreaInsetTop,
+} from "@telegram-apps/sdk-react";
 import { createContext, useContext, ReactNode, JSX } from "react";
 
 interface WindowSizesContextType {
   topOffset: string;
+  topOffset2: string;
 }
 
 const WindowSizesContext = createContext<WindowSizesContextType | null>(null);
 
 function useProvideWindowSizes(): WindowSizesContextType {
-  const safeTop = useSignal(viewportContentSafeAreaInsetTop);
-  const topOffset = safeTop ? `${safeTop + 0}px` : "0px";
+  const navbarHeight = useSignal(viewportContentSafeAreaInsetTop);
+  const safeAreaInsetTop = useSignal(viewportSafeAreaInsetTop);
+  const topOffset = navbarHeight ? `${navbarHeight + 0}px` : "0px";
+  const topOffset2 = safeAreaInsetTop ? `${safeAreaInsetTop + 0}px` : "0px";
 
   return {
     topOffset,
+    topOffset2,
   };
 }
 
