@@ -376,15 +376,15 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           display: "grid",
           alignItems: "center",
           gridTemplateColumns: "1fr",
-          gap: "15px",
-          paddingBottom: "10px",
+          gap: "5px",
+          paddingTop: "40px",
         }}
       >
         <Stack
           sx={{
-            flexDirection: "row",
+            flexDirection: "column",
             alignItems: "center",
-            gap: "10px",
+            gap: "20px",
             flexWrap: "wrap",
           }}
         >
@@ -392,15 +392,15 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             sx={{
               borderRadius: "50%",
               background: "linear-gradient(45deg,rgb(120, 13, 220) 0%,rgb(199, 13, 236) 100%)",
-              height: "50px",
-              width: "50px",
+              height: "60px",
+              width: "60px",
 
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <Flag size={"25px"} />
+            <Flag size={"27px"} />
           </Stack>
           <Typography variant="h6">
             {isGoalSet
@@ -426,6 +426,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           >
             {goalDescription && (
               <Typography
+                align="center"
                 sx={{
                   opacity: 0.8,
                   maxWidth: "650px",

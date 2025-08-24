@@ -55,10 +55,12 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
 
       <Stack
         sx={{
-          flexDirection: "row",
+          flexDirection: "column",
           alignItems: "center",
-          gap: "15px",
-          paddingBottom: "10px",
+          gap: "20px",
+          flexWrap: "wrap",
+          width: "100%",
+          paddingTop: "40px",
         }}
       >
         <Stack
@@ -67,15 +69,15 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
             background: isGoalSet
               ? "linear-gradient(45deg,rgb(25, 78, 142) 0%,rgb(109, 209, 151) 100%)"
               : "linear-gradient(45deg,rgb(152, 156, 152) 0%,rgb(158, 142, 140) 100%)",
-            height: "50px",
-            width: "50px",
+            height: "60px",
+            width: "60px",
 
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          {isGoalSet ? <GraduationCap size={"25px"} /> : <Lock size={"25px"} />}
+          {isGoalSet ? <GraduationCap size={"27px"} /> : <Lock size={"27px"} />}
         </Stack>
         <Stack
           sx={{

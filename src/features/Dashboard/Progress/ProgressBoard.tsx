@@ -27,68 +27,71 @@ export const ProgressBoard = () => {
           flexWrap: "wrap",
           gap: "20px",
           paddingRight: "20px",
-          maxWidth: "1302px",
+          paddingBottom: "22px",
+          width: "100%",
         }}
       >
         <Stack
           sx={{
-            flexDirection: "row",
+            flexDirection: "column",
             alignItems: "center",
-            gap: "15px",
-            paddingBottom: "10px",
+            gap: "20px",
+            flexWrap: "wrap",
+            width: "100%",
+            paddingTop: "40px",
           }}
         >
           <Stack
             sx={{
               borderRadius: "50%",
               background: "linear-gradient(45deg,rgb(69, 141, 230) 0%,rgb(109, 111, 209) 100%)",
-              height: "50px",
-              width: "50px",
+              height: "60px",
+              width: "60px",
 
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <Calendar size={"25px"} />
+            <Calendar size={"27px"} />
           </Stack>
           <Typography variant="h6">{i18n._(`Progress Calendar`)}</Typography>
-        </Stack>
 
-        <Stack
-          sx={{
-            flexDirection: "row",
-            gap: "10px",
-          }}
-        >
-          <Typography
+          <Stack
             sx={{
-              opacity: 0.7,
+              flexDirection: "row",
+              gap: "10px",
             }}
           >
-            {i18n._(`Less`)}
-          </Typography>
-          {colorMap.map((color) => {
-            return (
-              <Stack
-                key={color}
-                sx={{
-                  backgroundColor: color,
-                  width: "20px",
-                  height: "20px",
-                  border: "1px solid rgba(255, 255, 255, 0.3)",
-                  borderRadius: "2px",
-                }}
-              />
-            );
-          })}
-          <Typography
-            sx={{
-              opacity: 0.7,
-            }}
-          >
-            {i18n._(`More`)}
-          </Typography>
+            <Typography
+              sx={{
+                opacity: 0.7,
+              }}
+            >
+              {i18n._(`Less`)}
+            </Typography>
+            {colorMap.map((color) => {
+              return (
+                <Stack
+                  key={color}
+                  sx={{
+                    backgroundColor: color,
+                    width: "20px",
+                    height: "20px",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderRadius: "2px",
+                  }}
+                />
+              );
+            })}
+            <Typography
+              sx={{
+                opacity: 0.7,
+              }}
+            >
+              {i18n._(`More`)}
+            </Typography>
+          </Stack>
         </Stack>
       </Stack>
 

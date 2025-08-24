@@ -44,6 +44,7 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
         textDecoration: "none",
         maxWidth: "700px",
         borderRadius: "8px",
+        width: "100%",
 
         background: "rgba(210, 13, 220, 0.2)",
         flexDirection: "row",

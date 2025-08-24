@@ -39,26 +39,21 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
           gap: "70px",
           position: "relative",
           zIndex: 1,
-          "@media (max-width: 850px)": {
-            paddingLeft: "0",
-            paddingRight: "0",
-            gap: "30px",
-          },
+          alignItems: "center",
         }}
       >
         <Stack
           sx={{
-            padding: "20px 20px",
+            width: "100%",
+            gap: "20px",
+            maxWidth: "700px",
+            padding: "5px 10px",
             boxSizing: "border-box",
-            "@media (max-width: 850px)": {
-              padding: "0px 10px",
-            },
           }}
         >
           <GameBadge lang={lang} />
+          <PlanDashboardCards lang={lang} />
         </Stack>
-
-        <PlanDashboardCards lang={lang} />
 
         <RolePlayBoard rolePlayInfo={rolePlayInfo} />
 

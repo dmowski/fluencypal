@@ -382,29 +382,29 @@ export const UsageStatsCards = () => {
         </>
       )}
 
-      <Stack sx={{ width: "100%", gap: "15px" }}>
+      <Stack sx={{ width: "100%", gap: "25px" }}>
         <Stack
           sx={{
-            display: "grid",
-            gridTemplateColumns: "50px 1fr",
+            flexDirection: "column",
             alignItems: "center",
-            gap: "15px",
-            paddingBottom: "10px",
+            gap: "20px",
+            flexWrap: "wrap",
+            paddingTop: "40px",
           }}
         >
           <Stack
             sx={{
               borderRadius: "50%",
               background: "linear-gradient(45deg,rgb(15, 92, 51) 0%,rgb(149, 222, 179) 100%)",
-              height: "50px",
-              width: "50px",
+              height: "60px",
+              width: "60px",
 
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <Sprout size={"25px"} />
+            <Sprout size={"27px"} />
           </Stack>
           <Typography variant="h6">{i18n._("Your achievements")}</Typography>
         </Stack>

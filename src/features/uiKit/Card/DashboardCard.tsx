@@ -9,7 +9,7 @@ export const DashboardCard: React.FC<DashboardCardProps> = ({ children }) => {
   return (
     <Stack
       sx={{
-        padding: "30px 10px 30px 20px",
+        padding: "30px 10px",
         display: "flex",
         flexDirection: "column",
         gap: "20px",
@@ -19,8 +19,6 @@ export const DashboardCard: React.FC<DashboardCardProps> = ({ children }) => {
           padding: "30px 10px",
         },
         "@media (max-width: 600px)": {
-          //padding: "30px 10px",
-
           gap: "20px",
         },
       }}

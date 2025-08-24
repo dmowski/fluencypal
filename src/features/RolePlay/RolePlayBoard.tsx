@@ -373,28 +373,29 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
 
   return (
     <DashboardCard>
-      <Stack gap={"10px"}>
+      <Stack gap={"40px"}>
         <Stack
           sx={{
-            flexDirection: "row",
+            flexDirection: "column",
             alignItems: "center",
-            gap: "15px",
-            paddingBottom: "10px",
+            gap: "20px",
+            flexWrap: "wrap",
+            paddingTop: "40px",
           }}
         >
           <Stack
             sx={{
               borderRadius: "50%",
               background: "linear-gradient(45deg,rgb(230, 69, 182) 0%,rgb(109, 111, 209) 100%)",
-              height: "50px",
-              width: "50px",
+              height: "60px",
+              width: "60px",
 
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <VenetianMask size={"25px"} />
+            <VenetianMask size={"27px"} />
           </Stack>
           <Typography variant="h6">{i18n._(`Role Play`)}</Typography>
         </Stack>

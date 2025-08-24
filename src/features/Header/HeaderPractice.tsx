@@ -139,7 +139,7 @@ export function HeaderPractice({ lang }: { lang: SupportedLanguage }) {
       >
         <Stack
           sx={{
-            maxWidth: "1400px",
+            maxWidth: isActiveConversation ? "1400px" : "700px",
             width: "100%",
             gap: "10px",
             flexDirection: "row",
