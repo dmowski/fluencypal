@@ -6,6 +6,7 @@ import { useGame } from "./useGame";
 
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
+import { useRouter } from "next/navigation";
 
 interface GameBadgeProps {
   lang: SupportedLanguage;
@@ -18,10 +19,19 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
   const points = game.myPoints;
   const showMyPosition = points && points > 1;
   const playersCount = game.stats.length;
+  const urlToNavigate = `${getUrlStart(lang)}practice?gamePage=true`;
+
+  const router = useRouter();
+
+  const onClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    router.push(urlToNavigate);
+  };
   return (
     <Stack
       component={"a"}
-      href={`${getUrlStart(lang)}practice?gamePage=true`}
+      href={urlToNavigate}
+      onClick={onClick}
       sx={{
         padding: "20px 20px",
         color: "#fff",
