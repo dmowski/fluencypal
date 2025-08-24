@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useRouter } from "next/navigation";
 import { useSettings } from "../Settings/useSettings";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 
 interface QuizPageProps {
   lang: SupportedLanguage;
@@ -24,6 +25,7 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
   const isPlanLoading = plan.loading;
   const isAnyPlan = plan.latestGoal;
   const router = useRouter();
+  const { topOffset } = useWindowSizes();
 
   const isNeedToRedirect = !isPlanLoading && isAuth && isAnyPlan && !settings.loading;
   useEffect(() => {
@@ -63,6 +65,7 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
               maxWidth: maxContentWidth,
 
               padding: "10px 20px 250px 20px",
+              paddingTop: `calc(${topOffset} + 10px)`,
               gap: "40px",
               alignItems: "center",
               boxSizing: "border-box",
