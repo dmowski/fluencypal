@@ -1,6 +1,6 @@
 "use client";
 import { backButton, isTMA } from "@telegram-apps/sdk-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { createContext, useContext, ReactNode, JSX, useEffect } from "react";
 
 interface TgNavigationContextType {}
@@ -9,6 +9,16 @@ const TgNavigationContext = createContext<TgNavigationContextType | null>(null);
 
 function useProvideTgNavigation(): TgNavigationContextType {
   const route = useRouter();
+  const searchParams = useSearchParams();
+  const searchParamsString = searchParams.toString();
+
+  useEffect(() => {
+    if (searchParamsString) {
+      backButton.show();
+    } else {
+      backButton.hide();
+    }
+  }, [searchParamsString]);
 
   const navigationBack = () => {
     route.back();
@@ -21,7 +31,7 @@ function useProvideTgNavigation(): TgNavigationContextType {
     }
 
     backButton.mount();
-    backButton.show(); // shows Back (replaces Close)
+
     const off = backButton.onClick(navigationBack); // handle click
     return () => {
       off(); // remove handler
