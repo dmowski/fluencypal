@@ -21,6 +21,7 @@ import {
 import {
   ArrowUp,
   Check,
+  ChevronLeft,
   CircleEllipsis,
   Keyboard,
   Languages,
@@ -47,9 +48,7 @@ import { useSound } from "../Audio/useSound";
 import { GoalPlan } from "../Plan/types";
 import { GradingProgressBar } from "../uiKit/Progress/GradingProgressBar";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useGame } from "../Game/useGame";
 import { useTranslate } from "../Translation/useTranslate";
-import { useWindowSizes } from "../Layout/useWindowSizes";
 import { useUrlParam } from "../Url/useUrlParam";
 
 interface ConversationCanvasProps {
@@ -141,7 +140,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isNeedToShowBalanceWarning,
 }) => {
   const { i18n } = useLingui();
-  const { topOffset } = useWindowSizes();
 
   const sound = useSound();
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
@@ -149,8 +147,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const closeMenus = () => {
     setAnchorElUser(null);
   };
-
-  const game = useGame();
 
   const startCallMode = () => {
     toggleCallMode(true);
@@ -512,6 +508,21 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           opacity: isFinishingProcess ? 0.2 : 1,
         }}
       >
+        <Stack
+          sx={{
+            padding: "20px 10px",
+            alignItems: "flex-start",
+          }}
+        >
+          <Button
+            disabled={isFinishingProcess}
+            onClick={() => closeConversation()}
+            size="small"
+            startIcon={<ChevronLeft size={"30px"} />}
+          >
+            {i18n._("Finish conversation")}
+          </Button>
+        </Stack>
         <Stack
           sx={{
             maxWidth: "900px",
