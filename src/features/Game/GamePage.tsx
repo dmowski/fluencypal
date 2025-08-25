@@ -24,7 +24,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
 
   return (
     <>
-      <NavigationBar lang={lang} currentPage="game" />
+      <NavigationBar lang={lang} />
 
       <Stack
         sx={{
