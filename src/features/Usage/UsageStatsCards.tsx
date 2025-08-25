@@ -79,8 +79,15 @@ export const UsageStatsCards = () => {
             }}
           >
             <Stack>
-              <Typography variant="h4">{i18n._("Word Stats")}</Typography>
-              <Typography variant="caption">
+              <Typography variant="h5" component={"h2"}>
+                {i18n._("Word Stats")}
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
                 {i18n._("Here are the words you used the most in your conversations.")}
               </Typography>
             </Stack>
@@ -165,14 +172,20 @@ export const UsageStatsCards = () => {
           <CustomModal onClose={() => setIsOpenConversations(false)} isOpen={true}>
             <Stack
               sx={{
-                maxHeight: "80vh",
                 gap: "40px",
                 width: "100%",
               }}
             >
               <Stack>
-                <Typography variant="h4">{i18n._("Chat history")}</Typography>
-                <Typography variant="caption">
+                <Typography variant="h5" component={"h2"}>
+                  {i18n._("Chat history")}
+                </Typography>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
                   {i18n._("Here are the conversations you had with FluencyPal.")}
                 </Typography>
               </Stack>
@@ -263,14 +276,20 @@ export const UsageStatsCards = () => {
           <CustomModal onClose={() => setIsShowCorrectionStats(false)} isOpen={true}>
             <Stack
               sx={{
-                maxHeight: "80vh",
                 gap: "40px",
                 width: "100%",
               }}
             >
               <Stack>
-                <Typography variant="h4">{i18n._("Grammar Corrections")}</Typography>
-                <Typography variant="caption">
+                <Typography variant="h5" component={"h2"}>
+                  {i18n._("Grammar Corrections")}
+                </Typography>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.7,
+                  }}
+                >
                   {i18n._("Here are the corrections you had in your conversations.")}
                 </Typography>
               </Stack>

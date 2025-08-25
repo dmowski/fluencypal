@@ -127,7 +127,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   }
 
   if (gamePage) {
-    return <GamePage />;
+    return <GamePage lang={lang} />;
   }
 
   if (aiConversation.errorInitiating) {

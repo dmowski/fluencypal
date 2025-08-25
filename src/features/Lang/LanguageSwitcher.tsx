@@ -23,7 +23,7 @@ import { useLanguageGroup } from "../Goal/useLanguageGroup";
 import { useUrlParam } from "../Url/useUrlParam";
 
 interface LanguageSwitcherProps {
-  size?: "small" | "large" | "button";
+  size?: "small" | "large" | "button" | "hidden";
   isAuth?: boolean;
 
   langToLearn?: SupportedLanguage;
@@ -48,6 +48,7 @@ export function LanguageSwitcher({
 
   const { i18n } = useLingui();
   const [isShowModal, setIsShowModal] = useUrlParam("lang-selection");
+
   const [isLoading, setIsLoading] = useState(false);
   const [isSawLangSelector, setIsSawLangSelector] = useLocalStorage<boolean>(
     "isUserSawLangSelector",
@@ -107,61 +108,68 @@ export function LanguageSwitcher({
 
   return (
     <Stack sx={{}}>
-      {supportedLangCodeLabel ? (
-        <Button
-          onClick={onOpenModal}
-          sx={{
-            fontSize: "0.8rem",
-            textAlign: "end",
-            lineHeight: "1.2",
-
-            textTransform: "none",
-            color: "#fff",
-            fontWeight: 400,
-          }}
-          endIcon={
-            <Globe
-              style={{
-                opacity: 0.8,
-              }}
-            />
-          }
-        >
-          {supportedLangCodeLabel}
-        </Button>
-      ) : (
+      {size !== "hidden" && (
         <>
-          {size === "button" ? (
-            <>
-              <Button
-                sx={{
-                  color: "#fff",
-                }}
-                onClick={onOpenModal}
-                startIcon={<Globe size="20px" />}
-              >
-                <Typography
-                  sx={{
-                    textTransform: "none",
+          {supportedLangCodeLabel ? (
+            <Button
+              onClick={onOpenModal}
+              sx={{
+                fontSize: "0.8rem",
+                textAlign: "end",
+                lineHeight: "1.2",
+
+                textTransform: "none",
+                color: "#fff",
+                fontWeight: 400,
+              }}
+              endIcon={
+                <Globe
+                  style={{
+                    opacity: 0.8,
                   }}
-                >
-                  {fullEnglishLanguageName[langToLearn || "en"]}
-                </Typography>
-              </Button>
-            </>
+                />
+              }
+            >
+              {supportedLangCodeLabel}
+            </Button>
           ) : (
-            <IconButton onClick={onOpenModal} title="Select language" aria-label="Select language">
-              <Globe
-                size={size == "small" ? "18px" : "22px"}
-                style={{
-                  opacity: 0.8,
-                }}
-              />
-            </IconButton>
+            <>
+              {size === "button" ? (
+                <>
+                  <Button
+                    sx={{
+                      color: "#fff",
+                    }}
+                    onClick={onOpenModal}
+                    startIcon={<Globe size="20px" />}
+                  >
+                    <Typography
+                      sx={{
+                        textTransform: "none",
+                      }}
+                    >
+                      {fullEnglishLanguageName[langToLearn || "en"]}
+                    </Typography>
+                  </Button>
+                </>
+              ) : (
+                <IconButton
+                  onClick={onOpenModal}
+                  title="Select language"
+                  aria-label="Select language"
+                >
+                  <Globe
+                    size={size == "small" ? "18px" : "22px"}
+                    style={{
+                      opacity: 0.8,
+                    }}
+                  />
+                </IconButton>
+              )}
+            </>
           )}
         </>
       )}
-
       <CustomModal isOpen={isShowModal} onClose={() => setIsShowModal(false)}>
         <Stack
           sx={{

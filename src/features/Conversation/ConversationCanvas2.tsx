@@ -470,10 +470,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     sx={{
                       width: "100%",
                     }}
-                    onClick={() => {
-                      closeConversation();
-                      setIsShowAnalyzeConversationModal(false);
-                    }}
+                    onClick={() => closeConversation()}
                     variant="contained"
                     color="info"
                     size="large"

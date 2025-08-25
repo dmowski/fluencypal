@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { ConversationPageTest } from "@/features/Conversation/ConversationPageTest";
 import { PracticeProvider } from "../practiceProvider";
-import { HeaderPractice } from "@/features/Header/HeaderPractice";
+import { TopOffset } from "@/features/Layout/TopOffset";
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));
@@ -48,7 +48,7 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
       initialMessages={allMessages[supportedLang]!}
     >
       <PracticeProvider>
-        <HeaderPractice lang={supportedLang} />
+        <TopOffset />
         <main>
           <ConversationPageTest rolePlayInfo={rolePlayInfo} lang={supportedLang} />
         </main>
