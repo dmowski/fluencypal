@@ -1,5 +1,5 @@
 "use client";
-import { Link, Stack, Typography } from "@mui/material";
+import { Avatar, Link, Stack, Typography } from "@mui/material";
 import { Home, LucideProps, Swords, User, VenetianMask } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 import { SupportedLanguage } from "../Lang/lang";
@@ -7,6 +7,8 @@ import { useLingui } from "@lingui/react";
 import { useWindowSizes } from "../Layout/useWindowSizes";
 import { PageType } from "./types";
 import { useAppNavigation } from "./useAppNavigation";
+import { useAuth } from "../Auth/useAuth";
+import { useSettings } from "../Settings/useSettings";
 
 export interface IconProps {
   color?: string;
@@ -30,6 +32,10 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
   const appNavigation = useAppNavigation();
 
   const { i18n } = useLingui();
+  const auth = useAuth();
+  const settings = useSettings();
+  const userPhoto = auth.userInfo?.photoURL || settings.userSettings?.photoUrl || "";
+  const userName = auth.userInfo?.displayName || "";
   const { bottomOffset } = useWindowSizes();
   const navigationItems: NavigationItem[] = [
     {
@@ -98,6 +104,8 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
           {navigationItems.map((item) => {
             const isActive = appNavigation.currentPage === item.name;
             const color = isActive ? activeColor : inactiveColor;
+
+            const isProfile = item.name === "profile";
             return (
               <Stack
                 key={item.name}
@@ -148,7 +156,26 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                     },
                   }}
                 >
-                  <item.icon color={color} width={"20px"} height={"20px"} />
+                  {isProfile && userPhoto ? (
+                    <>
+                      <Avatar
+                        alt={userName}
+                        src={userPhoto}
+                        sx={{
+                          width: "20px",
+                          height: "20px",
+                          borderRadius: "50%",
+                          fontSize: "10px",
+                          border: isActive
+                            ? `1.5px solid ${activeColor}`
+                            : "1.5px solid transparent",
+                        }}
+                      />
+                    </>
+                  ) : (
+                    <item.icon color={color} width={"20px"} height={"20px"} />
+                  )}
+
                   <Typography variant="caption" component={"span"} align="center">
                     {item.title}
                   </Typography>
