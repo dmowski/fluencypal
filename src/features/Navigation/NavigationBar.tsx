@@ -64,86 +64,99 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
       component={"nav"}
       sx={{
         width: "100%",
-        position: "fixed",
-        bottom: 0,
-        left: 0,
+
         alignItems: "center",
-        backgroundColor: "rgba(20, 20, 20, 0.7)",
+
         backdropFilter: "blur(10px)",
         zIndex: 999,
+
         borderTop: "1px solid rgba(255, 255, 255, 0.07)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.07)",
+        marginBottom: "40px",
+        "@media (max-width: 700px)": {
+          backgroundColor: "rgba(20, 20, 20, 0.7)",
+          borderBottom: "none",
+          marginBottom: "0px",
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+        },
       }}
     >
-      <Stack
-        sx={{
-          width: "100%",
-          maxWidth: "700px",
-          padding: "0",
-          flexDirection: "row",
-          justifyContent: "space-around",
-        }}
-      >
-        {navigationItems.map((item) => {
-          const isActive = appNavigation.currentPage === item.name;
-          const color = isActive ? activeColor : inactiveColor;
-          return (
-            <Stack
-              key={item.name}
-              sx={{
-                listStyle: "none",
-                color: color,
-                height: "100%",
-                padding: "0",
-                margin: "0",
-                width: "100%",
-                textDecoration: "none",
-
-                ...(isActive
-                  ? {
-                      fontWeight: "bold",
-                    }
-                  : {}),
-              }}
-            >
-              <Link
-                href={`${appNavigation.pageUrl(item.name)}`}
-                onClick={(e) => navigateTo(e, item)}
+      <Stack sx={{ width: "100%", maxWidth: "700px", padding: "0 10px" }}>
+        <Stack
+          sx={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            borderLeft: "1px solid rgba(255, 255, 255, 0.07)",
+            borderRight: "1px solid rgba(255, 255, 255, 0.07)",
+            "@media (max-width: 900px)": {
+              border: "none",
+            },
+          }}
+        >
+          {navigationItems.map((item) => {
+            const isActive = appNavigation.currentPage === item.name;
+            const color = isActive ? activeColor : inactiveColor;
+            return (
+              <Stack
+                key={item.name}
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  border: "none",
+                  listStyle: "none",
+                  color: color,
                   height: "100%",
-                  width: "100%",
-                  background: "none",
-                  color: "inherit",
-                  textDecoration: "none",
                   padding: "0",
-                  boxSizing: "border-box",
-                  paddingTop: "15px",
-                  paddingBottom: `calc(10px + ${bottomOffset})`,
                   margin: "0",
-                  gap: "5px",
-                  transition: "background-color 0.3s ease",
-                  ":hover": {
-                    backgroundColor: "rgba(0, 0, 0, 0.8)",
-                  },
-                  "@media (max-width: 700px)": {
-                    ":hover": {
-                      backgroundColor: "transparent",
-                    },
-                  },
+                  width: "100%",
+                  textDecoration: "none",
+
+                  ...(isActive
+                    ? {
+                        fontWeight: "bold",
+                      }
+                    : {}),
                 }}
               >
-                <item.icon color={color} width={"20px"} height={"20px"} />
-                <Typography variant="caption" component={"span"} align="center">
-                  {item.title}
-                </Typography>
-              </Link>
-            </Stack>
-          );
-        })}
+                <Link
+                  href={`${appNavigation.pageUrl(item.name)}`}
+                  onClick={(e) => navigateTo(e, item)}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: "none",
+                    height: "100%",
+                    width: "100%",
+                    background: "none",
+                    color: "inherit",
+                    textDecoration: "none",
+                    padding: "0",
+                    boxSizing: "border-box",
+                    paddingTop: "15px",
+                    paddingBottom: `calc(10px + ${bottomOffset})`,
+                    margin: "0",
+                    gap: "5px",
+                    transition: "background-color 0.3s ease",
+                    ":hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.07)",
+                    },
+                    "@media (max-width: 700px)": {
+                      ":hover": {
+                        backgroundColor: "transparent",
+                      },
+                    },
+                  }}
+                >
+                  <item.icon color={color} width={"20px"} height={"20px"} />
+                  <Typography variant="caption" component={"span"} align="center">
+                    {item.title}
+                  </Typography>
+                </Link>
+              </Stack>
+            );
+          })}
+        </Stack>
       </Stack>
     </Stack>
   );
