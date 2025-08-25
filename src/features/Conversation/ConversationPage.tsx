@@ -23,7 +23,7 @@ import { WordsToLearn } from "../Dashboard/WordsToLearn";
 import { RulesToLearn } from "../Dashboard/RulesToLearn";
 import { ConversationError } from "./ConversationError";
 import { GoalPreparingModal } from "../Goal/GoalPreparingModal";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { usePlan } from "../Plan/usePlan";
 import { ConfirmConversationModal } from "./ConfirmConversationModal";
 import { getUrlStart } from "../Lang/getUrlStart";

@@ -19,7 +19,6 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import { useSettings } from "./useSettings";
-import { SubscriptionPaymentModal } from "../Usage/SubscriptionPaymentModal";
 import { isTMA } from "@telegram-apps/sdk-react";
 import { useUrlParam } from "../Url/useUrlParam";
 import { NeedHelpModal } from "../Header/NeedHelpModal";
@@ -233,7 +232,6 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
         </Stack>
       </Stack>
 
-      {usage.isShowPaymentModal && <SubscriptionPaymentModal />}
       {isShowHelpModal && <NeedHelpModal onClose={() => setIsShowHelpModal(false)} lang={lang} />}
       {isShowPaymentHistoryModal && (
         <PaymentHistoryModal onClose={() => setIsShowPaymentHistoryModal(false)} />
