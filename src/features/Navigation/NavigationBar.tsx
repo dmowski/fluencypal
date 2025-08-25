@@ -55,8 +55,8 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
   ];
 
   const navigateTo = (e: React.MouseEvent<HTMLAnchorElement>, item: NavigationItem) => {
-    appNavigation.setCurrentPage(item.name);
     e.preventDefault();
+    appNavigation.setCurrentPage(item.name);
   };
 
   return (

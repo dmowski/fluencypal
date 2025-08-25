@@ -35,24 +35,27 @@ function useProvideAppNavigation(): AppNavigationContextType {
   }, [urlPage]);
 
   const setValue = (value: PageType) => {
-    const isDefault = value === "home";
     setInternalValue(value);
-    setIsLoading(true);
-
-    const searchParams = new URLSearchParams(window.location.search);
-    if (!isDefault) {
-      searchParams.set("page", value);
-    } else {
-      searchParams.delete("page");
-    }
-    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-
-    router.push(`${newUrl}`, { scroll: false });
-    scrollTop();
+    const isDefault = value === "home";
 
     setTimeout(() => {
-      setIsLoading(false);
-    }, 200);
+      setIsLoading(true);
+
+      const searchParams = new URLSearchParams(window.location.search);
+      if (!isDefault) {
+        searchParams.set("page", value);
+      } else {
+        searchParams.delete("page");
+      }
+      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+
+      router.push(`${newUrl}`, { scroll: false });
+      scrollTop();
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 200);
+    }, 20);
   };
 
   return {
