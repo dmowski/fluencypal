@@ -1,80 +1,12 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useUsage } from "./useUsage";
-import { Swords, Telescope, Wallet } from "lucide-react";
-import { JSX } from "react";
-import { ContactList } from "../Landing/Contact/ContactList";
-
+import { Swords, Wallet } from "lucide-react";
 import { useLingui } from "@lingui/react";
-import { GradientBgImageCard } from "../uiKit/Card/GradientBgCard";
 import { SupportedLanguage } from "../Lang/lang";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { getUrlStart } from "../Lang/getUrlStart";
 import { useRouter } from "next/navigation";
 import { usePayWall } from "../PayWall/usePayWall";
-
-const WinCard = ({
-  title,
-  icon,
-  subTitle,
-  src,
-  onClick,
-}: {
-  title: string;
-  icon: JSX.Element;
-  subTitle: string;
-  src: string;
-  onClick?: () => void;
-}) => {
-  return (
-    <GradientBgImageCard src={src} onClick={() => onClick?.()} backgroundColor={""}>
-      <Stack
-        sx={{
-          alignItems: "center",
-          padding: "40px 0 50px 0",
-          gap: "10px",
-        }}
-      >
-        {icon}
-        <Stack
-          sx={{
-            alignItems: "center",
-          }}
-        >
-          <Typography
-            align="center"
-            sx={{
-              fontWeight: 900,
-              fontSize: "3rem",
-              lineHeight: "1.15",
-              "@media (max-width: 1100px)": {
-                fontSize: "3rem",
-              },
-              "@media (max-width: 900px)": {
-                fontSize: "2.1rem",
-              },
-              "@media (max-width: 650px)": {
-                fontSize: "3rem",
-              },
-            }}
-          >
-            {title}
-          </Typography>
-          <Typography
-            align="center"
-            variant="caption"
-            sx={{
-              fontWeight: 300,
-              opacity: 0.9,
-              textTransform: "uppercase",
-            }}
-          >
-            {subTitle}
-          </Typography>
-        </Stack>
-      </Stack>
-    </GradientBgImageCard>
-  );
-};
+import { useAppNavigation } from "../Navigation/useAppNavigation";
 
 interface NoBalanceBlockProps {
   lang: SupportedLanguage;
@@ -85,9 +17,10 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
   const { i18n } = useLingui();
   const route = useRouter();
   const payWall = usePayWall();
+  const appNavigation = useAppNavigation();
 
-  const urlForGame = `${getUrlStart(lang)}practice?gamePage=true`;
   const openGamePage = () => {
+    const urlForGame = appNavigation.pageUrl("game");
     route.push(urlForGame);
   };
   return (

@@ -1,96 +1,62 @@
 "use client";
 import { Link, Stack, Typography } from "@mui/material";
 import { Home, LucideProps, Swords, User, VenetianMask } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { ForwardRefExoticComponent, JSX, RefAttributes, useEffect, useState } from "react";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
 import { SupportedLanguage } from "../Lang/lang";
-import { getUrlStart } from "../Lang/getUrlStart";
 import { useLingui } from "@lingui/react";
 import { useWindowSizes } from "../Layout/useWindowSizes";
-
-type PageType = "home" | "role-play" | "game" | "profile";
+import { PageType } from "./types";
+import { useAppNavigation } from "./useAppNavigation";
 
 export interface IconProps {
   color?: string;
   size?: string;
 }
 
-export interface NavigationProps {
-  currentPage: PageType;
-}
-
 interface NavigationItem {
   name: PageType;
-  href: string;
   icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
   title: string;
 }
 
 export interface NavigationProps {
-  currentPage: PageType;
   lang: SupportedLanguage;
 }
 
 const activeColor = "#29b6f6"; // Define the active color for the icon
 const inactiveColor = "#A0A0A0"; // Define the inactive color for the icon
-const size = "23px"; // Define the size of the icon
 
-export const NavigationBar: React.FC<NavigationProps> = ({ currentPage, lang }) => {
+export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
+  const appNavigation = useAppNavigation();
+
   const { i18n } = useLingui();
   const { bottomOffset } = useWindowSizes();
   const navigationItems: NavigationItem[] = [
     {
       name: "home",
-      href: `${getUrlStart(lang)}practice`,
       icon: Home,
       title: i18n._("Home"),
     },
     {
       name: "game",
-      href: `${getUrlStart(lang)}practice?gamePage=true`,
       icon: Swords,
       title: i18n._("Game"),
     },
     {
       name: "role-play",
-      href: `${getUrlStart(lang)}practice?rolePlayList=true`,
       icon: VenetianMask,
       title: i18n._("Role Play"),
     },
     {
       name: "profile",
-      href: `${getUrlStart(lang)}practice?profile=true`,
       icon: User,
       title: i18n._("Profile"),
     },
   ];
 
-  const [showLoader, setShowLoader] = useState(false);
-  const [internalCurrentPage, setInternalCurrentPage] = useState(currentPage || "home");
-
-  useEffect(() => {
-    setInternalCurrentPage(currentPage);
-  }, [currentPage]);
-
-  useEffect(() => {
-    if (!showLoader) {
-      return;
-    }
-    const timer = setTimeout(() => {
-      setShowLoader(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [showLoader]);
-
-  const router = useRouter();
   const navigateTo = (e: React.MouseEvent<HTMLAnchorElement>, item: NavigationItem) => {
-    setShowLoader(true);
-    setInternalCurrentPage(item.name);
     e.preventDefault();
-    if (internalCurrentPage !== item.name) {
-      router.push(item.href);
-    }
+    appNavigation.setCurrentPage(item.name);
   };
 
   return (
@@ -118,7 +84,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ currentPage, lang }) 
         }}
       >
         {navigationItems.map((item) => {
-          const isActive = internalCurrentPage === item.name;
+          const isActive = appNavigation.currentPage === item.name;
           const color = isActive ? activeColor : inactiveColor;
           return (
             <Stack
@@ -140,7 +106,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ currentPage, lang }) 
               }}
             >
               <Link
-                href={item.href}
+                href={`${appNavigation.pageUrl(item.name)}`}
                 onClick={(e) => navigateTo(e, item)}
                 sx={{
                   display: "flex",
@@ -155,8 +121,8 @@ export const NavigationBar: React.FC<NavigationProps> = ({ currentPage, lang }) 
                   textDecoration: "none",
                   padding: "0",
                   boxSizing: "border-box",
-                  paddingTop: "20px",
-                  paddingBottom: `calc(20px + ${bottomOffset})`,
+                  paddingTop: "15px",
+                  paddingBottom: `calc(10px + ${bottomOffset})`,
                   margin: "0",
                   gap: "5px",
                   transition: "background-color 0.3s ease",
@@ -165,7 +131,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ currentPage, lang }) 
                   },
                 }}
               >
-                <item.icon color={color} width={size} height={size} />
+                <item.icon color={color} width={"20px"} height={"20px"} />
                 <Typography variant="caption" component={"span"}>
                   {item.title}
                 </Typography>

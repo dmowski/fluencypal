@@ -51,7 +51,6 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
 
   const usage = useUsage();
   const userPhoto = auth.userInfo?.photoURL || settings.userSettings?.photoUrl || "";
-  console.log("userPhoto", userPhoto);
   const userName = auth.userInfo?.displayName || "";
   const [isShowModal, setIsShowModal] = useUrlParam("lang-selection");
 

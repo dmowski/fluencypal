@@ -34,6 +34,7 @@ import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { PlanDashboardCards } from "../Dashboard/PlanDashboardCards";
 import { usePayWall } from "../PayWall/usePayWall";
 import { useGame } from "../Game/useGame";
+import { useAppNavigation } from "../Navigation/useAppNavigation";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -65,10 +66,9 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     !aiConversation.isInitializing &&
     !!plan.latestGoal;
 
-  const searchParams = useSearchParams();
   const paywall = usePayWall();
 
-  const gamePage = searchParams.get("gamePage");
+  const appNavigation = useAppNavigation();
   const { isProcessingGoal } = useGoalCreation();
   const [isShowGoalModal, setIsShowGoalModal] = useState(false);
 
@@ -126,7 +126,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     return <InfoBlockedSection title={isProcessingGoal || i18n._(`Loading Goal...`)} />;
   }
 
-  if (gamePage) {
+  if (appNavigation.currentPage === "game") {
     return <GamePage lang={lang} />;
   }
 

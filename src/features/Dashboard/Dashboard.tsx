@@ -14,30 +14,24 @@ import { PlanDashboardCards } from "./PlanDashboardCards";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { GameBadge } from "../Game/GameBadge";
 import { NavigationBar } from "../Navigation/NavigationBar";
-import { useUrlParam } from "../Url/useUrlParam";
 import { MyProfile } from "../Settings/MyProfile";
+import { useAppNavigation } from "../Navigation/useAppNavigation";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
   lang: SupportedLanguage;
 }
 export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
-  const [isRolePlays] = useUrlParam("rolePlayList");
-  const [isProfile] = useUrlParam("profile");
-  const isDefault = !isRolePlays && !isProfile;
-
+  const appNavigation = useAppNavigation();
   return (
     <>
-      <NavigationBar
-        lang={lang}
-        currentPage={isDefault ? "home" : isRolePlays ? "role-play" : "profile"}
-      />
+      <NavigationBar lang={lang} />
 
       <Stack
         sx={{
           alignItems: "center",
           justifyContent: "center",
-          paddingBottom: "70px",
+          paddingBottom: "100px",
         }}
       >
         <Stack
@@ -45,7 +39,6 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
             width: "100%",
             maxWidth: "1400px",
             padding: "0",
-            paddingTop: "20px",
 
             gap: "70px",
             position: "relative",
@@ -53,13 +46,14 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
             alignItems: "center",
           }}
         >
-          {isDefault && (
+          {appNavigation.currentPage === "home" && (
             <Stack
               sx={{
                 width: "100%",
                 gap: "20px",
                 maxWidth: "700px",
                 padding: "5px 0px",
+                paddingTop: "30px",
               }}
             >
               <Stack
@@ -73,9 +67,11 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
             </Stack>
           )}
 
-          {isRolePlays && <RolePlayBoard rolePlayInfo={rolePlayInfo} />}
+          {appNavigation.currentPage === "role-play" && (
+            <RolePlayBoard rolePlayInfo={rolePlayInfo} />
+          )}
 
-          {isProfile && (
+          {appNavigation.currentPage === "profile" && (
             <>
               <MyProfile lang={lang} />
               <DashboardCard>

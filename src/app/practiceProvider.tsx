@@ -21,46 +21,49 @@ import { GameProvider } from "@/features/Game/useGame";
 import { PayWallProvider } from "@/features/PayWall/usePayWall";
 import { TelegramProvider } from "./telegramProvider";
 import { TgNavigationProvider } from "@/features/Telegram/useTgNavigation";
+import { AppNavigationProvider } from "@/features/Navigation/useAppNavigation";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <TelegramProvider>
       <TgNavigationProvider>
-        <NotificationsProvider>
-          <AuthProvider>
-            <SettingsProvider>
-              <WebCamProvider>
-                <GameProvider>
-                  <UsageProvider>
-                    <TextAiProvider>
-                      <AudioProvider>
-                        <AiUserInfoProvider>
-                          <WordsProvider>
-                            <CorrectionsProvider>
-                              <ChatHistoryProvider>
-                                <RulesProvider>
-                                  <TasksProvider>
-                                    <HomeworkProvider>
-                                      <PlanProvider>
-                                        <AiConversationProvider>
-                                          <PayWallProvider>{children}</PayWallProvider>
-                                        </AiConversationProvider>
-                                      </PlanProvider>
-                                    </HomeworkProvider>
-                                  </TasksProvider>
-                                </RulesProvider>
-                              </ChatHistoryProvider>
-                            </CorrectionsProvider>
-                          </WordsProvider>
-                        </AiUserInfoProvider>
-                      </AudioProvider>
-                    </TextAiProvider>
-                  </UsageProvider>
-                </GameProvider>
-              </WebCamProvider>
-            </SettingsProvider>
-          </AuthProvider>
-        </NotificationsProvider>
+        <AppNavigationProvider>
+          <NotificationsProvider>
+            <AuthProvider>
+              <SettingsProvider>
+                <WebCamProvider>
+                  <GameProvider>
+                    <UsageProvider>
+                      <TextAiProvider>
+                        <AudioProvider>
+                          <AiUserInfoProvider>
+                            <WordsProvider>
+                              <CorrectionsProvider>
+                                <ChatHistoryProvider>
+                                  <RulesProvider>
+                                    <TasksProvider>
+                                      <HomeworkProvider>
+                                        <PlanProvider>
+                                          <AiConversationProvider>
+                                            <PayWallProvider>{children}</PayWallProvider>
+                                          </AiConversationProvider>
+                                        </PlanProvider>
+                                      </HomeworkProvider>
+                                    </TasksProvider>
+                                  </RulesProvider>
+                                </ChatHistoryProvider>
+                              </CorrectionsProvider>
+                            </WordsProvider>
+                          </AiUserInfoProvider>
+                        </AudioProvider>
+                      </TextAiProvider>
+                    </UsageProvider>
+                  </GameProvider>
+                </WebCamProvider>
+              </SettingsProvider>
+            </AuthProvider>
+          </NotificationsProvider>
+        </AppNavigationProvider>
       </TgNavigationProvider>
     </TelegramProvider>
   );

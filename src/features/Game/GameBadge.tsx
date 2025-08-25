@@ -1,13 +1,13 @@
 import { Stack, Typography } from "@mui/material";
 import { SupportedLanguage } from "../Lang/lang";
 import { Swords } from "lucide-react";
-import { getUrlStart } from "../Lang/getUrlStart";
 import { useGame } from "./useGame";
 
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useAppNavigation } from "../Navigation/useAppNavigation";
 
 interface GameBadgeProps {
   lang: SupportedLanguage;
@@ -21,7 +21,8 @@ export const GameBadge = ({ lang }: GameBadgeProps) => {
   const points = game.myPoints;
   const showMyPosition = points && points > 1;
   const playersCount = game.stats.length;
-  const urlToNavigate = `${getUrlStart(lang)}practice?gamePage=true`;
+  const appNavigation = useAppNavigation();
+  const urlToNavigate = appNavigation.pageUrl("game");
 
   const router = useRouter();
 
