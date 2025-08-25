@@ -2,23 +2,12 @@
 
 import { useState, useEffect, ForwardRefExoticComponent, RefAttributes } from "react";
 import { useAuth } from "../Auth/useAuth";
-import {
-  Avatar,
-  Button,
-  Divider,
-  IconButton,
-  ListItemIcon,
-  ListItemText,
-  Menu,
-  MenuItem,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Avatar, Button, Stack, Typography } from "@mui/material";
 import {
   BanknoteArrowDown,
   ChevronRight,
   Landmark,
-  LogOutIcon,
+  LogOut,
   LucideProps,
   MessageCircleQuestion,
   Star,
@@ -26,7 +15,6 @@ import {
 } from "lucide-react";
 
 import { useUsage } from "../Usage/useUsage";
-import { useRouter } from "next/navigation";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
@@ -37,13 +25,14 @@ import { useUrlParam } from "../Url/useUrlParam";
 import { NeedHelpModal } from "../Header/NeedHelpModal";
 import { PaymentHistoryModal } from "../Header/PaymentHistoryModal";
 import { ContactMessageModal } from "../Header/ContactMessageModal";
+import { Trans } from "@lingui/react/macro";
 
 export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
   const settings = useSettings();
 
   const { i18n } = useLingui();
-  const [isShowLogout, setIsShowLogout] = useState(true);
+  const [, setIsShowLogout] = useState(true);
 
   useEffect(() => {
     const isTelegramApp = isTMA();
@@ -55,14 +44,14 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     }, 100);
   }, []);
 
-  const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const [isShowHelpModal, setIsShowHelpModal] = useUrlParam("help");
   const [isShowRefundModal, setIsShowRefundModal] = useUrlParam("refund");
   const [isShowPaymentHistoryModal, setIsShowPaymentHistoryModal] = useUrlParam("paymentHistory");
   const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam("feedback");
 
   const usage = useUsage();
-  const userPhoto = auth.userInfo?.photoURL || "";
+  const userPhoto = auth.userInfo?.photoURL || settings.userSettings?.photoUrl || "";
+  console.log("userPhoto", userPhoto);
   const userName = auth.userInfo?.displayName || "";
   const [isShowModal, setIsShowModal] = useUrlParam("lang-selection");
 
@@ -119,6 +108,17 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     },
   ];
 
+  if (menuItems) {
+    menuItems.push({
+      title: i18n._(`Log Out`),
+      subTitle: i18n._(`Log out of your account`),
+      icon: LogOut,
+      onClick: () => {
+        auth.logout();
+      },
+    });
+  }
+
   return (
     <>
       <Stack
@@ -168,7 +168,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
               padding: "0 10px 20px 10px",
             }}
           >
-            {i18n._(`Hello, ${userName}! Manage your profile settings and check your progress`)}
+            <Trans>Hello, {userName}! Manage your profile settings and check your progress</Trans>
           </Typography>
         </Stack>
 
