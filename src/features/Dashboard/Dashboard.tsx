@@ -2,9 +2,6 @@
 
 import { Stack } from "@mui/material";
 
-import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
-
-import { ConversationSelectCard } from "./ConversationSelectCard";
 import { ProgressBoard } from "./Progress/ProgressBoard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
@@ -16,6 +13,7 @@ import { GameBadge } from "../Game/GameBadge";
 import { NavigationBar } from "../Navigation/NavigationBar";
 import { MyProfile } from "../Settings/MyProfile";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
+import { DashboardBlur } from "./DashboardBlur";
 
 interface DashboardProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -91,60 +89,7 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
           )}
         </Stack>
 
-        <Stack
-          sx={{
-            position: "absolute",
-            top: "0px",
-            right: "0",
-            backgroundColor: "#4F46E5",
-            height: "300px",
-            width: "300px",
-            borderRadius: "50%",
-            filter: "blur(200px)",
-            zIndex: -1,
-            opacity: 0.2,
-            "@media (max-width: 600px)": {
-              width: "100px",
-              backgroundColor: "red",
-              zIndex: -2,
-              opacity: 0.4,
-            },
-          }}
-        ></Stack>
-
-        <Stack
-          sx={{
-            position: "absolute",
-            top: "300px",
-            right: "0",
-            backgroundColor: "red",
-            height: "300px",
-            width: "300px",
-            borderRadius: "50%",
-            filter: "blur(200px)",
-            zIndex: 0,
-            opacity: 0.3,
-            "@media (max-width: 600px)": {
-              width: "50px",
-              opacity: 0.2,
-            },
-          }}
-        ></Stack>
-
-        <Stack
-          sx={{
-            position: "absolute",
-            top: "900px",
-            left: "0",
-            backgroundColor: "#5533ff",
-            height: "300px",
-            width: "300px",
-            borderRadius: "50%",
-            filter: "blur(300px)",
-            zIndex: -1,
-            opacity: 0.4,
-          }}
-        ></Stack>
+        <DashboardBlur />
       </Stack>
     </>
   );
