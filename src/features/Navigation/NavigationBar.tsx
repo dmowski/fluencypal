@@ -166,6 +166,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                           height: "20px",
                           borderRadius: "50%",
                           fontSize: "10px",
+                          transform: "scale(1.15)",
                           border: isActive
                             ? `1.5px solid ${activeColor}`
                             : "1.5px solid transparent",
