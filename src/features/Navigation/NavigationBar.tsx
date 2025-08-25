@@ -55,8 +55,8 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
   ];
 
   const navigateTo = (e: React.MouseEvent<HTMLAnchorElement>, item: NavigationItem) => {
-    e.preventDefault();
     appNavigation.setCurrentPage(item.name);
+    e.preventDefault();
   };
 
   return (
@@ -129,10 +129,15 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                   ":hover": {
                     backgroundColor: "rgba(0, 0, 0, 0.8)",
                   },
+                  "@media (max-width: 700px)": {
+                    ":hover": {
+                      backgroundColor: "transparent",
+                    },
+                  },
                 }}
               >
                 <item.icon color={color} width={"20px"} height={"20px"} />
-                <Typography variant="caption" component={"span"}>
+                <Typography variant="caption" component={"span"} align="center">
                   {item.title}
                 </Typography>
               </Link>
