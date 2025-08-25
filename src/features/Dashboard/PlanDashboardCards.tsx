@@ -383,7 +383,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   }
 
   return (
-    <Stack>
+    <Stack gap="20px">
       <Stack
         sx={{
           display: "grid",
@@ -459,8 +459,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           sx={{
             gap: "20px",
             width: "100%",
-            display: "grid",
-            gridTemplateColumns: "1fr",
           }}
         >
           {sortedElements.map((planElement, index, all) => {
