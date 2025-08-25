@@ -31,14 +31,18 @@ export const GameMyUsername = () => {
   };
 
   return (
-    <Stack>
+    <Stack
+      sx={{
+        alignItems: "center",
+      }}
+    >
       <Typography
         variant="caption"
         sx={{
           opacity: 0.8,
         }}
       >
-        {i18n._("Your Username:")}
+        {i18n._("Game username:")}
       </Typography>
       <Stack
         sx={{
@@ -49,6 +53,11 @@ export const GameMyUsername = () => {
       >
         {isEditUsername ? (
           <>
+            <Stack
+              sx={{
+                width: "10px",
+              }}
+            ></Stack>
             <TextField
               variant="outlined"
               size="small"
@@ -62,6 +71,11 @@ export const GameMyUsername = () => {
           </>
         ) : (
           <>
+            <Stack
+              sx={{
+                width: "10px",
+              }}
+            ></Stack>
             <Typography variant="h6">{game.myProfile?.username || "-"} </Typography>
             <IconButton
               disabled={game.loadingProfile}

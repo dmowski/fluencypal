@@ -431,16 +431,8 @@ export const UsageStatsCards = () => {
         <Stack
           sx={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
+            gridTemplateColumns: "1fr",
             gap: "20px",
-            "@media (max-width: 1150px)": {
-              gridTemplateColumns: "1fr 1fr",
-            },
-
-            "@media (max-width: 800px)": {
-              gridTemplateColumns: "1fr",
-              gap: "30px",
-            },
           }}
         >
           <GradientBgCard

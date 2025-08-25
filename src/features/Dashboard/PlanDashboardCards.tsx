@@ -1,5 +1,4 @@
 import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { Flag, LandPlot, Sparkle, Trash } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
@@ -384,7 +383,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   }
 
   return (
-    <DashboardCard>
+    <Stack>
       <Stack
         sx={{
           display: "grid",
@@ -626,6 +625,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           </Stack>
         </CustomModal>
       )}
-    </DashboardCard>
+    </Stack>
   );
 };

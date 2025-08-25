@@ -38,27 +38,25 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
           sx={{
             width: "100%",
             maxWidth: "700px",
-            padding: "10px 20px",
+            padding: "10px 10px",
             paddingTop: "30px",
             boxSizing: "border-box",
             gap: "20px",
             position: "relative",
-            alignItems: "flex-start",
+            alignItems: "center",
             zIndex: 1,
           }}
         >
-          <Typography variant="h5">{i18n._(`Game`)}</Typography>
           <Stack
             sx={{
-              flexDirection: "row",
+              flexDirection: "column",
+              alignItems: "center",
               gap: "20px",
             }}
           >
             <GameMyAvatar />
             <GameMyUsername />
           </Stack>
-
-          <GameNativeLanguageSelector />
 
           <Button
             variant="contained"
@@ -77,6 +75,8 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
           >
             {game.loadingQuestions ? loadingMessage : playMessage}
           </Button>
+
+          <GameNativeLanguageSelector />
 
           <Stack
             sx={{

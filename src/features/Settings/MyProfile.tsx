@@ -125,8 +125,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
           width: "100%",
           alignItems: "center",
           justifyContent: "center",
-          paddingTop: "80px",
-          padding: "60px 10px 0 10px",
+          padding: "0px 10px 0 10px",
           gap: "50px",
         }}
       >

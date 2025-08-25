@@ -6,7 +6,6 @@ import { ProgressBoard } from "./Progress/ProgressBoard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { UsageStatsCards } from "../Usage/UsageStatsCards";
-import { DashboardCard } from "../uiKit/Card/DashboardCard";
 import { PlanDashboardCards } from "./PlanDashboardCards";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { GameBadge } from "../Game/GameBadge";
@@ -28,41 +27,22 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
       <Stack
         sx={{
           alignItems: "center",
-          justifyContent: "center",
-          paddingBottom: "100px",
+          paddingBottom: "120px",
+          paddingTop: "30px",
         }}
       >
         <Stack
           sx={{
-            width: "100%",
-            maxWidth: "1400px",
-            padding: "0",
-
-            gap: "70px",
-            position: "relative",
-            zIndex: 1,
-            alignItems: "center",
+            maxWidth: "700px",
+            padding: "0 10px",
+            gap: "40px",
           }}
         >
           {appNavigation.currentPage === "home" && (
-            <Stack
-              sx={{
-                width: "100%",
-                gap: "20px",
-                maxWidth: "700px",
-                padding: "5px 0px",
-                paddingTop: "30px",
-              }}
-            >
-              <Stack
-                sx={{
-                  padding: "0 10px",
-                }}
-              >
-                <GameBadge lang={lang} />
-              </Stack>
+            <>
+              <GameBadge lang={lang} />
               <PlanDashboardCards lang={lang} />
-            </Stack>
+            </>
           )}
 
           {appNavigation.currentPage === "role-play" && (
@@ -72,9 +52,8 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
           {appNavigation.currentPage === "profile" && (
             <>
               <MyProfile lang={lang} />
-              <DashboardCard>
-                <UsageStatsCards />
-              </DashboardCard>
+
+              <UsageStatsCards />
 
               <Stack
                 sx={{
@@ -88,7 +67,6 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
             </>
           )}
         </Stack>
-
         <DashboardBlur />
       </Stack>
     </>

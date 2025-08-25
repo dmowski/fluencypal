@@ -33,9 +33,19 @@ export const GameNativeLanguageSelector = () => {
       sx={{
         gap: "5px",
         width: "100%",
+        alignItems: "center",
       }}
     >
       <Typography variant="body2">
+        {!isShowLangSelector && (
+          <Stack
+            component={"span"}
+            sx={{
+              width: "20px",
+              display: "inline-block",
+            }}
+          />
+        )}
         {i18n._("Your Native Language:")}
         {!isShowLangSelector ? " " + nativeLanguageFullName : ""}
         {!isShowLangSelector && (

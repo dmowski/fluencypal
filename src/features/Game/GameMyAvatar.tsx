@@ -82,8 +82,8 @@ export const GameMyAvatar = () => {
       <Stack
         sx={{
           img: {
-            width: "50px",
-            height: "50px",
+            width: "90px",
+            height: "90px",
             borderRadius: "50%",
             objectFit: "cover",
             boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",

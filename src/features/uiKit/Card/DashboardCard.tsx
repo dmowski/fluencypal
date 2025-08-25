@@ -1,4 +1,4 @@
-import { Card, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import { JSX } from "react";
 
 interface DashboardCardProps {
