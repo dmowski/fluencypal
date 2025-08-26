@@ -27,6 +27,7 @@ import {
   Languages,
   Lightbulb,
   Loader,
+  LogOut,
   Mic,
   Phone,
   Send,
@@ -508,21 +509,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           opacity: isFinishingProcess ? 0.2 : 1,
         }}
       >
-        <Stack
-          sx={{
-            padding: "20px 10px",
-            alignItems: "flex-start",
-          }}
-        >
-          <Button
-            disabled={isFinishingProcess}
-            onClick={() => closeConversation()}
-            size="small"
-            startIcon={<ChevronLeft size={"30px"} />}
-          >
-            {i18n._("Finish conversation")}
-          </Button>
-        </Stack>
         <Stack
           sx={{
             maxWidth: "900px",
@@ -1162,6 +1148,24 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                     open={Boolean(anchorElUser)}
                     onClose={() => setAnchorElUser(null)}
                   >
+                    <MenuItem
+                      sx={{}}
+                      disabled={isFinishingProcess}
+                      onClick={() => {
+                        closeConversation();
+                        closeMenus();
+                      }}
+                    >
+                      <ListItemIcon>
+                        <LogOut />
+                      </ListItemIcon>
+                      <ListItemText>
+                        <Typography>{i18n._("Finish conversation")}</Typography>
+                      </ListItemText>
+                    </MenuItem>
+
+                    <Divider />
+
                     <MenuItem
                       sx={{}}
                       disabled={
