@@ -174,7 +174,7 @@ export const AliasGamePanelUI = ({
         </Stack>
       </Stack>
 
-      {!!describedByAiWords.length && (
+      {!!describedByAiWords.length && false && (
         <Stack sx={{ flexDirection: "column", gap: "10px" }}>
           <Typography variant="caption" sx={{ opacity: 0.9 }}>
             {i18n._(`Guessed words:`)} {describedByAiWords.length}/{wordsAiToDescribe.length}

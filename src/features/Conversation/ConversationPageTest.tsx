@@ -20,7 +20,7 @@ interface ConversationPageTestProps {
 
 const startTestMessages: ChatMessage[] = [];
 
-for (let i = 0; i < 2; i++) {
+for (let i = 0; i < 7; i++) {
   startTestMessages.push({
     isBot: i % 2 === 0,
     text: `Hello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\nHello, I’m Ash, your polite speech corrector. Let's start with a simple topic. What do you think about sunny days?\n`,
@@ -47,7 +47,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
           "Paper",
           "Rock",
         ],
-        wordsAiToDescribe: ["Dog"],
+        wordsAiToDescribe: ["Dog", "polite"],
       }
     : null;
 

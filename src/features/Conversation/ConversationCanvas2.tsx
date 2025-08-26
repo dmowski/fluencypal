@@ -21,8 +21,6 @@ import {
 import {
   ArrowUp,
   Check,
-  CheckCheck,
-  ChevronLeft,
   CircleEllipsis,
   Keyboard,
   Languages,
@@ -54,6 +52,7 @@ import { GradingProgressBar } from "../uiKit/Progress/GradingProgressBar";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useTranslate } from "../Translation/useTranslate";
 import { useUrlParam } from "../Url/useUrlParam";
+import { useResizeElement } from "../Layout/useResizeElement";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -171,6 +170,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   };
 
   const isFinishingProcess = isClosing || isClosed;
+  const { ref, size } = useResizeElement<HTMLDivElement>();
+  const height = size.height || 0;
+
+  const bottomSectionHeight = `${height + 40}px`;
 
   const [correctedMessage, setCorrectedMessage] = useState<string | null>(null);
   const [description, setDescription] = useState<string | null>(null);
@@ -526,7 +529,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           sx={{
             maxWidth: "900px",
             padding: "0",
-            paddingBottom: "190px",
+            paddingBottom: bottomSectionHeight,
             boxSizing: "border-box",
             width: "100%",
             gap: "0px",
@@ -605,6 +608,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         </Stack>
 
         <Stack
+          ref={ref}
           sx={{
             flexDirection: "column",
             width: "100%",
