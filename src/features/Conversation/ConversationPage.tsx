@@ -84,6 +84,11 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   }, [aiConversation.isStarted]);
 
   useEffect(() => {
+    const isWindow = typeof window !== "undefined";
+    if (!isWindow) {
+      return;
+    }
+
     if (!settings.userSettings?.pageLanguageCode) {
       return;
     }
@@ -94,7 +99,9 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
       return;
     }
 
-    const url = `${getUrlStart(settingsPageLang)}practice`;
+    const searchParams = new URLSearchParams(window.location.search);
+
+    const url = `${getUrlStart(settingsPageLang)}practice${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
     console.warn(
       `REDIRECT: Page language (${actualPageLang}) is different from settings (${settingsPageLang}). Redirecting to ${url}`
     );
