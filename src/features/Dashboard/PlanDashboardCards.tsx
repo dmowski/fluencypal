@@ -436,7 +436,9 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           <Stack
             sx={{
               flexDirection: "column",
-              alignItems: "flex-start",
+              alignItems: "center",
+              width: "100%",
+              justifyContent: "center",
             }}
           >
             {goalDescription && (
