@@ -41,7 +41,6 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import { useLingui } from "@lingui/react";
 import { RolePlayScenariosInfo } from "./rolePlayData";
 import { VenetianMask } from "lucide-react";
-import { useWindowSizes } from "../Layout/useWindowSizes";
 
 const firstLimit = 6;
 
@@ -100,7 +99,6 @@ export const RolePlayBoard = ({ rolePlayInfo }: RolePlayBoardProps) => {
   const router = useRouter();
   const { i18n } = useLingui();
   const userInfo = useAiUserInfo();
-  const { topOffset } = useWindowSizes();
   const pathname = usePathname();
   const locale = pathname?.split("/")[1] as string;
   const supportedLang = supportedLanguages.find((l) => l === locale) || "en";
