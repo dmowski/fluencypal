@@ -33,7 +33,6 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
       return;
     }
     const pageLang = settings.userSettings?.pageLanguageCode || lang;
-
     const newPath = `${getUrlStart(pageLang)}practice`;
     router.push(newPath);
   }, [isNeedToRedirect]);

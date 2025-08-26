@@ -151,7 +151,6 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
 
     if (isSupportedLanguage) {
       const newPath = `${getUrlStart(value)}quiz`;
-      console.log("updateNativeLang");
       router.push(newPath);
     }
   };

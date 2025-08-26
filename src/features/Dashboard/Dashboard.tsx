@@ -36,6 +36,7 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
             maxWidth: "700px",
             padding: "0 10px",
             gap: "40px",
+            width: "100%",
           }}
         >
           {appNavigation.currentPage === "home" && (

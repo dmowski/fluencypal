@@ -17,6 +17,7 @@ import { ConversationCard } from "./ConversationCard";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useUrlParam } from "../Url/useUrlParam";
+import { useSettings } from "../Settings/useSettings";
 
 type StartModes = "words" | "rules" | "conversation";
 
@@ -27,6 +28,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
   const userInfo = useAiUserInfo();
   const plan = usePlan();
+  const settings = useSettings();
   const history = useChatHistory();
   const conversationsCount = history.conversations.length;
 
@@ -526,7 +528,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         <Stack sx={{}}>
           <Button
             startIcon={<LandPlot />}
-            href={`${getUrlStart(lang)}quiz`}
+            href={`${getUrlStart(lang)}quiz?learn=${settings.languageCode || "en"}`}
             sx={{
               padding: "20px",
             }}
