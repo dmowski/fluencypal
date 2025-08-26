@@ -21,6 +21,7 @@ import {
 import {
   ArrowUp,
   Check,
+  CheckCheck,
   ChevronLeft,
   CircleEllipsis,
   Keyboard,
@@ -34,6 +35,8 @@ import {
   ShieldAlert,
   Trash2,
   Trophy,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 
 import AddCardIcon from "@mui/icons-material/AddCard";
@@ -87,7 +90,13 @@ interface ConversationCanvasProps {
   isRecording: boolean;
   recordingMilliSeconds: number;
   recordVisualizerComponent: JSX.Element | null;
-  isMuted?: boolean;
+
+  isMuted: boolean;
+  setIsMuted: (newState: boolean) => void;
+
+  isVolumeOn: boolean;
+  setIsVolumeOn: (newState: boolean) => void;
+
   isProcessingGoal: boolean;
   temporaryGoal: GoalPlan | null;
   confirmGoal: (isConfirm: boolean) => Promise<void>;
@@ -126,6 +135,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   recordingError,
   conversationId,
   isMuted,
+  setIsMuted,
   isProcessingGoal,
   temporaryGoal,
   confirmGoal,
@@ -139,6 +149,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   messagesToComplete,
   generateHelpMessage,
   isNeedToShowBalanceWarning,
+
+  isVolumeOn,
+  setIsVolumeOn,
 }) => {
   const { i18n } = useLingui();
 
@@ -1168,6 +1181,23 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
                     <MenuItem
                       sx={{}}
+                      disabled={isFinishingProcess}
+                      onClick={() => {
+                        setIsVolumeOn(!isVolumeOn);
+                        closeMenus();
+                      }}
+                    >
+                      <ListItemIcon>{!isVolumeOn ? <Volume2 /> : <VolumeX />}</ListItemIcon>
+                      <ListItemText>
+                        <Typography>
+                          {isVolumeOn ? i18n._("Volume Off") : i18n._("Volume On")}
+                        </Typography>
+                      </ListItemText>
+                    </MenuItem>
+
+                    <Divider />
+
+                    <MenuItem
                       disabled={
                         isRecording || isAnalyzingResponse || (!isCallMode && !isShowKeyboard)
                       }
@@ -1181,8 +1211,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         <Mic />
                       </ListItemIcon>
                       <ListItemText>
-                        <Typography>{i18n._("Use voice message mode")}</Typography>
+                        <Typography>{i18n._("Voice record mode")}</Typography>
                       </ListItemText>
+
+                      {!isCallMode && !isShowKeyboard && (
+                        <ListItemIcon>
+                          <Check />
+                        </ListItemIcon>
+                      )}
                     </MenuItem>
 
                     <MenuItem
@@ -1198,8 +1234,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         <Keyboard />
                       </ListItemIcon>
                       <ListItemText>
-                        <Typography>{i18n._("Use keyboard mode")}</Typography>
+                        <Typography>{i18n._("Keyboard mode")}</Typography>
                       </ListItemText>
+
+                      {isShowKeyboard && (
+                        <ListItemIcon>
+                          <Check />
+                        </ListItemIcon>
+                      )}
                     </MenuItem>
 
                     <MenuItem
@@ -1215,8 +1257,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         <Phone />
                       </ListItemIcon>
                       <ListItemText>
-                        <Typography>{i18n._("Use phone mode")}</Typography>
+                        <Typography>{i18n._("Phone call mode")}</Typography>
                       </ListItemText>
+
+                      {isCallMode && (
+                        <ListItemIcon>
+                          <Check />
+                        </ListItemIcon>
+                      )}
                     </MenuItem>
                     <Divider />
                     <MenuItem

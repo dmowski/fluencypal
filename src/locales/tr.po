@@ -13,10 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:523
+#: src/features/Conversation/ConversationCanvas2.tsx:1193
 #. js-lingui-explicit-id
-msgid "Finish conversation"
-msgstr "Konuşmayı bitir"
+msgid "Volume Off"
+msgstr "Ses Kapalı"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1193
+#. js-lingui-explicit-id
+msgid "Volume On"
+msgstr "Ses Açık"
 
 #: src/features/Header/HeaderStatic.tsx:12
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -367,26 +372,102 @@ msgstr "İngilizce konuşma partneri"
 msgid "AI English Speaking Practice"
 msgstr "AI İngilizce Konuşma Pratiği"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1442
-#: src/features/Usage/NoBalanceBlock.tsx:61
+#: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
-msgid "Low balance"
-msgstr "Düşük bakiye"
+msgid "Word Stats"
+msgstr "Kelime İstatistikleri"
 
-#: src/features/Usage/NoBalanceBlock.tsx:72
+#: src/features/Usage/UsageStatsCards.tsx:91
 #. js-lingui-explicit-id
-msgid "You've made amazing progress. Let’s keep going."
-msgstr "Harika bir ilerleme kaydettiniz. Hadi devam edelim."
+msgid "Here are the words you used the most in your conversations."
+msgstr "İşte konuşmalarınızda en çok kullandığınız kelimeler."
 
-#: src/features/Usage/NoBalanceBlock.tsx:98
+#: src/features/Usage/UsageStatsCards.tsx:120
+#: src/features/Usage/UsageStatsCards.tsx:474
 #. js-lingui-explicit-id
-msgid "Buy a subscription"
-msgstr "Abonelik Satın Al"
+msgid "No words used yet"
+msgstr "Henüz hiç kelime kullanılmadı"
 
-#: src/features/Usage/NoBalanceBlock.tsx:110
+#: src/features/Usage/UsageStatsCards.tsx:181
 #. js-lingui-explicit-id
-msgid "Play the Game"
-msgstr "Oyunu Oyna"
+msgid "Chat history"
+msgstr "Sohbet geçmişi"
+
+#: src/features/Usage/UsageStatsCards.tsx:189
+#. js-lingui-explicit-id
+msgid "Here are the conversations you had with FluencyPal."
+msgstr "İşte FluencyPal ile yaptığınız konuşmalar."
+
+#: src/features/Usage/UsageStatsCards.tsx:212
+#. js-lingui-explicit-id
+msgid "No conversations yet"
+msgstr "Henüz bir konuşma yok"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:571
+#: src/features/Usage/UsageStatsCards.tsx:259
+#. js-lingui-explicit-id
+msgid "Teacher:"
+msgstr "Öğretmen:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:571
+#: src/features/Usage/UsageStatsCards.tsx:259
+#. js-lingui-explicit-id
+msgid "You:"
+msgstr "Sen:"
+
+#: src/features/Usage/UsageStatsCards.tsx:285
+#. js-lingui-explicit-id
+msgid "Grammar Corrections"
+msgstr "Dilbilgisi Düzeltmeleri"
+
+#: src/features/Usage/UsageStatsCards.tsx:293
+#. js-lingui-explicit-id
+msgid "Here are the corrections you had in your conversations."
+msgstr "İşte konuşmalarınızdaki düzeltmeler."
+
+#: src/features/Usage/UsageStatsCards.tsx:315
+#. js-lingui-explicit-id
+msgid "No corrections yet"
+msgstr "Henüz bir düzeltme yok"
+
+#: src/features/Usage/UsageStatsCards.tsx:391
+#. js-lingui-explicit-id
+msgid "Description:"
+msgstr "Açıklama:"
+
+#: src/features/Usage/UsageStatsCards.tsx:428
+#. js-lingui-explicit-id
+msgid "Your achievements"
+msgstr "Başarılarınız"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:172
+#: src/features/Dashboard/PlanDashboardCards.tsx:86
+#: src/features/Dashboard/PlanDashboardCards.tsx:303
+#: src/features/Landing/PlanLandingBlock.tsx:105
+#: src/features/Usage/UsageStatsCards.tsx:440
+#. js-lingui-explicit-id
+msgid "Words"
+msgstr "Kelimeler"
+
+#: src/features/Usage/UsageStatsCards.tsx:510
+#. js-lingui-explicit-id
+msgid "Corrections"
+msgstr "Düzeltmeler"
+
+#: src/features/Usage/UsageStatsCards.tsx:556
+#. js-lingui-explicit-id
+msgid "Minutes"
+msgstr "Dakikalar"
+
+#: src/features/Usage/UsageStatsCards.tsx:557
+#. js-lingui-explicit-id
+msgid "Total"
+msgstr "Toplam"
+
+#: src/features/Usage/UsageStatsCards.tsx:580
+#. js-lingui-explicit-id
+msgid "Open history"
+msgstr "Geçmişi aç"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:86
 #: src/features/Usage/SubscriptionPaymentModal.tsx:159
@@ -570,105 +651,150 @@ msgstr "Tam Erişim Alın"
 msgid "Need help?"
 msgstr "Yardıma mı ihtiyacınız var?"
 
-#: src/features/Usage/UsageStatsCards.tsx:83
+#: src/features/Usage/PaymentModal.tsx:119
 #. js-lingui-explicit-id
-msgid "Word Stats"
-msgstr "Kelime İstatistikleri"
+msgid "Buy more hours"
+msgstr "Daha fazla saat satın al"
 
-#: src/features/Usage/UsageStatsCards.tsx:91
+#: src/features/Usage/PaymentModal.tsx:127
 #. js-lingui-explicit-id
-msgid "Here are the words you used the most in your conversations."
-msgstr "İşte konuşmalarınızda en çok kullandığınız kelimeler."
+msgid "Let's add some hours to your balance"
+msgstr "Hadi, bakiyenize biraz saat ekleyelim"
 
-#: src/features/Usage/UsageStatsCards.tsx:120
-#: src/features/Usage/UsageStatsCards.tsx:474
+#: src/features/Usage/PaymentModal.tsx:149
 #. js-lingui-explicit-id
-msgid "No words used yet"
-msgstr "Henüz hiç kelime kullanılmadı"
+msgid "Amount hours to buy"
+msgstr "Satın alınacak saat miktarı"
 
-#: src/features/Usage/UsageStatsCards.tsx:181
+#: src/features/Usage/PaymentModal.tsx:194
 #. js-lingui-explicit-id
-msgid "Chat history"
-msgstr "Sohbet geçmişi"
+msgid "What one hour means?"
+msgstr "Bir saat ne anlama gelir?"
 
-#: src/features/Usage/UsageStatsCards.tsx:189
+#: src/features/Usage/PaymentModal.tsx:196
 #. js-lingui-explicit-id
-msgid "Here are the conversations you had with FluencyPal."
-msgstr "İşte FluencyPal ile yaptığınız konuşmalar."
+msgid ""
+"You only charged for when AI is actively working: speaking or analyzing "
+"your speech."
+msgstr ""
+"Yalnızca AI aktif olarak çalışırken ücretlendirilirsiniz: konuşurken veya "
+"konuşmanızı analiz ederken."
 
-#: src/features/Usage/UsageStatsCards.tsx:212
+#: src/features/Usage/PaymentModal.tsx:207
 #. js-lingui-explicit-id
-msgid "No conversations yet"
-msgstr "Henüz bir konuşma yok"
+msgid "How long will my hours last?"
+msgstr "Saatlerim ne kadar sürecek?"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:572
-#: src/features/Usage/UsageStatsCards.tsx:259
+#: src/features/Usage/PaymentModal.tsx:209
 #. js-lingui-explicit-id
-msgid "Teacher:"
-msgstr "Öğretmen:"
+msgid ""
+"Once purchased, your hours remain available until you use them. There is no "
+"expiration."
+msgstr ""
+"Bir kez satın aldığınızda, saatleriniz kullanana kadar kullanılabilir "
+"durumda kalır. Bir son kullanma tarihi yoktur."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:572
-#: src/features/Usage/UsageStatsCards.tsx:259
+#: src/features/Usage/PaymentModal.tsx:220
 #. js-lingui-explicit-id
-msgid "You:"
-msgstr "Sen:"
+msgid "What's included?"
+msgstr "Neler dahil?"
 
-#: src/features/Usage/UsageStatsCards.tsx:285
+#: src/features/Usage/PaymentModal.tsx:222
 #. js-lingui-explicit-id
-msgid "Grammar Corrections"
-msgstr "Dilbilgisi Düzeltmeleri"
+msgid ""
+"Access to all functionalities on app where AI is present: speaking, "
+"analyzing, role-plays, new words and runles creator."
+msgstr ""
+"AI'nın bulunduğu uygulamadaki tüm işlevlere erişim: konuşma, analiz, rol "
+"oyunları, yeni kelimeler ve kurallar oluşturucu."
 
-#: src/features/Usage/UsageStatsCards.tsx:293
+#: src/features/Usage/PaymentModal.tsx:245
 #. js-lingui-explicit-id
-msgid "Here are the corrections you had in your conversations."
-msgstr "İşte konuşmalarınızdaki düzeltmeler."
+msgid "Price per one AI hour:"
+msgstr "Bir AI saati başına fiyat:"
 
-#: src/features/Usage/UsageStatsCards.tsx:315
+#: src/features/Usage/PaymentModal.tsx:261
 #. js-lingui-explicit-id
-msgid "No corrections yet"
-msgstr "Henüz bir düzeltme yok"
+msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
+msgstr ""
+"Miktar çok büyük. Desteğinizi takdir ediyorum, ancak bunu 400 doların "
+"altında tutalım."
 
-#: src/features/Usage/UsageStatsCards.tsx:391
+#: src/features/Usage/PaymentModal.tsx:342
 #. js-lingui-explicit-id
-msgid "Description:"
-msgstr "Açıklama:"
+msgid "Continue to payment"
+msgstr "Ödemeye devam et"
 
-#: src/features/Usage/UsageStatsCards.tsx:428
+#: src/features/Header/NeedHelpModal.tsx:215
+#: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
-msgid "Your achievements"
-msgstr "Başarılarınız"
+msgid "Cancel"
+msgstr "İptal"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:172
-#: src/features/Dashboard/PlanDashboardCards.tsx:86
-#: src/features/Dashboard/PlanDashboardCards.tsx:303
-#: src/features/Landing/PlanLandingBlock.tsx:105
-#: src/features/Usage/UsageStatsCards.tsx:440
+#: src/features/Usage/PaymentModal.tsx:359
 #. js-lingui-explicit-id
-msgid "Words"
-msgstr "Kelimeler"
+msgid ""
+"The Controller of the data entered into the form is Fundacja Rozwoju\n"
+"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
+"processed in order to provide\n"
+"                  the service and for marketing purposes – in the case of "
+"consent. We would like to\n"
+"                  inform you about the possibility of withdrawing your "
+"consent. For full information\n"
+"                  on data processing and your rights, see the"
+msgstr ""
+"Forma girilen verilerin İşlemcisi, Fundacja Rozwoju \n"
+"                  Przedsiębiorczości \"Twój StartUp\"tır. Veriler, hizmeti "
+"sağlamak ve \n"
+"                  pazarlama amacıyla işlenecektir - rıza durumunda. "
+"Rızanızı çekme \n"
+"                  olasılığı hakkında sizi bilgilendirmek isteriz. Veri "
+"işleme ve haklarınızla \n"
+"                  ilgili tam bilgi için, lütfen bakınız"
 
-#: src/features/Usage/UsageStatsCards.tsx:510
+#: src/features/Usage/PaymentModal.tsx:365
 #. js-lingui-explicit-id
-msgid "Corrections"
-msgstr "Düzeltmeler"
+msgid "privacy policy"
+msgstr "gizlilik politikası"
 
-#: src/features/Usage/UsageStatsCards.tsx:556
+#: src/features/Usage/PaymentModal.tsx:401
 #. js-lingui-explicit-id
-msgid "Minutes"
-msgstr "Dakikalar"
+msgid "Success!"
+msgstr "Başarılı!"
 
-#: src/features/Usage/UsageStatsCards.tsx:557
+#: src/features/Usage/PaymentModal.tsx:411
 #. js-lingui-explicit-id
-msgid "Total"
-msgstr "Toplam"
+msgid "Your payment was successful, but updates might take a few minutes"
+msgstr "Ödemeniz başarılı oldu, ancak güncellemeler birkaç dakika sürebilir"
 
-#: src/features/Usage/UsageStatsCards.tsx:580
+#: src/features/Header/HeaderStatic.tsx:15
+#: src/features/Usage/PaymentModal.tsx:417
 #. js-lingui-explicit-id
-msgid "Open history"
-msgstr "Geçmişi aç"
+msgid "Balance"
+msgstr "Denge"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:309
-#: src/features/Conversation/ConversationCanvas2.tsx:1304
+#: src/features/Usage/PaymentModal.tsx:442
+#. js-lingui-explicit-id
+msgid "Current Balance of AI usage"
+msgstr "AI kullanımının Güncel Bakiyesi"
+
+#: src/features/Usage/PaymentModal.tsx:453
+#. js-lingui-explicit-id
+msgid "Buy More"
+msgstr "Daha Fazla Satın Al"
+
+#: src/features/Usage/PaymentModal.tsx:470
+#. js-lingui-explicit-id
+msgid "Total used:"
+msgstr "Toplam kullanılan:"
+
+#: src/features/Usage/PaymentModal.tsx:484
+#. js-lingui-explicit-id
+msgid "Payment history:"
+msgstr "Ödeme geçmişi:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:323
+#: src/features/Conversation/ConversationCanvas2.tsx:1356
 #: src/features/Conversation/ConversationPage.tsx:113
 #: src/features/Conversation/ConversationPage.tsx:122
 #: src/features/Conversation/ConversationPage.tsx:142
@@ -685,6 +811,33 @@ msgstr "Geçmişi aç"
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Yükleniyor..."
+
+#: src/features/Header/PaymentHistoryModal.tsx:76
+#: src/features/Usage/PaymentModal.tsx:505
+#. js-lingui-explicit-id
+msgid "No payments..."
+msgstr "Ödemeler yok..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1494
+#: src/features/Usage/NoBalanceBlock.tsx:61
+#. js-lingui-explicit-id
+msgid "Low balance"
+msgstr "Düşük bakiye"
+
+#: src/features/Usage/NoBalanceBlock.tsx:72
+#. js-lingui-explicit-id
+msgid "You've made amazing progress. Let’s keep going."
+msgstr "Harika bir ilerleme kaydettiniz. Hadi devam edelim."
+
+#: src/features/Usage/NoBalanceBlock.tsx:98
+#. js-lingui-explicit-id
+msgid "Buy a subscription"
+msgstr "Abonelik Satın Al"
+
+#: src/features/Usage/NoBalanceBlock.tsx:110
+#. js-lingui-explicit-id
+msgid "Play the Game"
+msgstr "Oyunu Oyna"
 
 #: src/features/Translation/useTranslate.tsx:130
 #. js-lingui-explicit-id
@@ -782,120 +935,6 @@ msgstr "Mesajınızı bırakın"
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Geri bildiriminizi takdir ediyoruz!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
-#. js-lingui-explicit-id
-msgid ""
-"Boost your English vocabulary and fluency by creatively describing and "
-"guessing words in\n"
-"        this interactive AI-powered Alias game."
-msgstr ""
-"İnteraktif AI destekli Alias oyununda kelimeleri yaratıcı bir şekilde tarif "
-"ederek ve tahmin ederek İngilizce kelime dağarcığınızı ve akıcılığınızı "
-"geliştirin."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
-#. js-lingui-explicit-id
-msgid "Benefits of Playing Alias Game"
-msgstr "Alias Oyunu Oynamanın Faydaları"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
-#. js-lingui-explicit-id
-msgid "Enhance your vocabulary by describing words in unique ways."
-msgstr "Kelimeleri benzersiz yollarla tarif ederek kelime dağarcığınızı geliştirin."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
-#. js-lingui-explicit-id
-msgid "Improve listening skills as you interpret descriptions."
-msgstr "Açıklamaları yorumlarken dinleme becerilerinizi geliştirin."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
-#. js-lingui-explicit-id
-msgid "Practice rapid thinking and fluent speaking under playful pressure."
-msgstr "Oyunlu baskı altında hızlı düşünme ve akıcı konuşma pratiği yapın."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
-#. js-lingui-explicit-id
-msgid "Receive instant, tailored feedback from your AI partner."
-msgstr "AI ortağınızdan anında, kişiye özel geri bildirim alın."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
-#. js-lingui-explicit-id
-msgid "How to Play"
-msgstr "Nasıl Oynanır"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
-#. js-lingui-explicit-id
-msgid ""
-"You and your AI partner alternate turns describing and guessing words "
-"without directly\n"
-"          naming them. This encourages creative thinking and fluent "
-"expression, adapting to your\n"
-"          language proficiency."
-msgstr ""
-"Siz ve AI ortağınız, sırayla sözcükleri doğrudan adlandırmadan açıklama ve "
-"tahmin etme işlemini gerçekleştirirsiniz. Bu, yaratıcı düşünmeyi ve akıcı "
-"ifadeyi teşvik eder, dil yeterliliğinize uyum sağlar."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
-#. js-lingui-explicit-id
-msgid "Choose Your Language Level"
-msgstr "Dil Seviyenizi Seçin"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
-#. js-lingui-explicit-id
-msgid "Pick a level to start playing!"
-msgstr "Oynamaya başlamak için bir seviye seçin!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
-#. js-lingui-explicit-id
-msgid "Alias Game Levels"
-msgstr "Alias Oyun Seviyeleri"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
-#. js-lingui-explicit-id
-msgid "Check proposed words"
-msgstr "Önerilen kelimeleri kontrol edin"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
-#. js-lingui-explicit-id
-msgid "Based on your level, the AI will suggest words to describe."
-msgstr "Seviyenize göre, AI tanımlamanız için kelimeler önerir."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
-#. js-lingui-explicit-id
-msgid "Alias Game options"
-msgstr "Takma Ad Oyunu seçenekleri"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
-#. js-lingui-explicit-id
-msgid "Record your description"
-msgstr "Açıklamanızı kaydedin"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
-#. js-lingui-explicit-id
-msgid "Describe the word you see on the screen without using the word itself!"
-msgstr "Ekranda gördüğünüz kelimeyi, kelimeyi kendini kullanmadan tarif edin!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
-#. js-lingui-explicit-id
-msgid "Alias Game Recording"
-msgstr "Alias Oyun Kaydı"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
-#. js-lingui-explicit-id
-msgid "Have fun!"
-msgstr "Eğlenin!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
-#. js-lingui-explicit-id
-msgid "Enjoy the game and see how the AI guesses your description!"
-msgstr "Oyunun tadını çıkarın ve AI'ın tanımınızı nasıl tahmin ettiğini görün!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
-#. js-lingui-explicit-id
-msgid "Robot Thinking"
-msgstr "Robot Düşünüyor"
 
 #: src/features/Telegram/TgAppPage.tsx:83
 #. js-lingui-explicit-id
@@ -1866,14 +1905,6 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Tüm Senaryolar"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:85
-#: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/Navigation/NavigationBar.tsx:54
-#: src/features/RolePlay/RolePlayBoard.tsx:407
-#. js-lingui-explicit-id
-msgid "Role Play"
-msgstr "Rol Oynama"
-
 #: src/features/Dashboard/PlanDashboardCards.tsx:505
 #: src/features/Landing/PlanLandingBlock.tsx:290
 #: src/features/Landing/PlanLandingBlock.tsx:502
@@ -1886,6 +1917,14 @@ msgstr "Rol Oynama"
 msgid "Start"
 msgstr "Başla"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:85
+#: src/features/Landing/PlanLandingBlock.tsx:104
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/RolePlay/RolePlayBoard.tsx:407
+#. js-lingui-explicit-id
+msgid "Role Play"
+msgstr "Rol Oynama"
+
 #: src/features/RolePlay/RolePlayBoard.tsx:688
 #. js-lingui-explicit-id
 msgid "Show more"
@@ -1896,163 +1935,119 @@ msgstr "Daha fazla göster"
 msgid "Show less"
 msgstr "Daha az göster"
 
-#: src/features/Usage/PaymentModal.tsx:119
-#. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "Daha fazla saat satın al"
-
-#: src/features/Usage/PaymentModal.tsx:127
-#. js-lingui-explicit-id
-msgid "Let's add some hours to your balance"
-msgstr "Hadi, bakiyenize biraz saat ekleyelim"
-
-#: src/features/Usage/PaymentModal.tsx:149
-#. js-lingui-explicit-id
-msgid "Amount hours to buy"
-msgstr "Satın alınacak saat miktarı"
-
-#: src/features/Usage/PaymentModal.tsx:194
-#. js-lingui-explicit-id
-msgid "What one hour means?"
-msgstr "Bir saat ne anlama gelir?"
-
-#: src/features/Usage/PaymentModal.tsx:196
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
 #. js-lingui-explicit-id
 msgid ""
-"You only charged for when AI is actively working: speaking or analyzing "
-"your speech."
+"Boost your English vocabulary and fluency by creatively describing and "
+"guessing words in\n"
+"        this interactive AI-powered Alias game."
 msgstr ""
-"Yalnızca AI aktif olarak çalışırken ücretlendirilirsiniz: konuşurken veya "
-"konuşmanızı analiz ederken."
+"İnteraktif AI destekli Alias oyununda kelimeleri yaratıcı bir şekilde tarif "
+"ederek ve tahmin ederek İngilizce kelime dağarcığınızı ve akıcılığınızı "
+"geliştirin."
 
-#: src/features/Usage/PaymentModal.tsx:207
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
 #. js-lingui-explicit-id
-msgid "How long will my hours last?"
-msgstr "Saatlerim ne kadar sürecek?"
+msgid "Benefits of Playing Alias Game"
+msgstr "Alias Oyunu Oynamanın Faydaları"
 
-#: src/features/Usage/PaymentModal.tsx:209
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
+#. js-lingui-explicit-id
+msgid "Enhance your vocabulary by describing words in unique ways."
+msgstr "Kelimeleri benzersiz yollarla tarif ederek kelime dağarcığınızı geliştirin."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
+#. js-lingui-explicit-id
+msgid "Improve listening skills as you interpret descriptions."
+msgstr "Açıklamaları yorumlarken dinleme becerilerinizi geliştirin."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
+#. js-lingui-explicit-id
+msgid "Practice rapid thinking and fluent speaking under playful pressure."
+msgstr "Oyunlu baskı altında hızlı düşünme ve akıcı konuşma pratiği yapın."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
+#. js-lingui-explicit-id
+msgid "Receive instant, tailored feedback from your AI partner."
+msgstr "AI ortağınızdan anında, kişiye özel geri bildirim alın."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
+#. js-lingui-explicit-id
+msgid "How to Play"
+msgstr "Nasıl Oynanır"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
 #. js-lingui-explicit-id
 msgid ""
-"Once purchased, your hours remain available until you use them. There is no "
-"expiration."
+"You and your AI partner alternate turns describing and guessing words "
+"without directly\n"
+"          naming them. This encourages creative thinking and fluent "
+"expression, adapting to your\n"
+"          language proficiency."
 msgstr ""
-"Bir kez satın aldığınızda, saatleriniz kullanana kadar kullanılabilir "
-"durumda kalır. Bir son kullanma tarihi yoktur."
+"Siz ve AI ortağınız, sırayla sözcükleri doğrudan adlandırmadan açıklama ve "
+"tahmin etme işlemini gerçekleştirirsiniz. Bu, yaratıcı düşünmeyi ve akıcı "
+"ifadeyi teşvik eder, dil yeterliliğinize uyum sağlar."
 
-#: src/features/Usage/PaymentModal.tsx:220
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
 #. js-lingui-explicit-id
-msgid "What's included?"
-msgstr "Neler dahil?"
+msgid "Choose Your Language Level"
+msgstr "Dil Seviyenizi Seçin"
 
-#: src/features/Usage/PaymentModal.tsx:222
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
 #. js-lingui-explicit-id
-msgid ""
-"Access to all functionalities on app where AI is present: speaking, "
-"analyzing, role-plays, new words and runles creator."
-msgstr ""
-"AI'nın bulunduğu uygulamadaki tüm işlevlere erişim: konuşma, analiz, rol "
-"oyunları, yeni kelimeler ve kurallar oluşturucu."
+msgid "Pick a level to start playing!"
+msgstr "Oynamaya başlamak için bir seviye seçin!"
 
-#: src/features/Usage/PaymentModal.tsx:245
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
 #. js-lingui-explicit-id
-msgid "Price per one AI hour:"
-msgstr "Bir AI saati başına fiyat:"
+msgid "Alias Game Levels"
+msgstr "Alias Oyun Seviyeleri"
 
-#: src/features/Usage/PaymentModal.tsx:261
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
 #. js-lingui-explicit-id
-msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
-msgstr ""
-"Miktar çok büyük. Desteğinizi takdir ediyorum, ancak bunu 400 doların "
-"altında tutalım."
+msgid "Check proposed words"
+msgstr "Önerilen kelimeleri kontrol edin"
 
-#: src/features/Usage/PaymentModal.tsx:342
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
 #. js-lingui-explicit-id
-msgid "Continue to payment"
-msgstr "Ödemeye devam et"
+msgid "Based on your level, the AI will suggest words to describe."
+msgstr "Seviyenize göre, AI tanımlamanız için kelimeler önerir."
 
-#: src/features/Header/NeedHelpModal.tsx:215
-#: src/features/Usage/PaymentModal.tsx:350
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
 #. js-lingui-explicit-id
-msgid "Cancel"
-msgstr "İptal"
+msgid "Alias Game options"
+msgstr "Takma Ad Oyunu seçenekleri"
 
-#: src/features/Usage/PaymentModal.tsx:359
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
 #. js-lingui-explicit-id
-msgid ""
-"The Controller of the data entered into the form is Fundacja Rozwoju\n"
-"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
-"processed in order to provide\n"
-"                  the service and for marketing purposes – in the case of "
-"consent. We would like to\n"
-"                  inform you about the possibility of withdrawing your "
-"consent. For full information\n"
-"                  on data processing and your rights, see the"
-msgstr ""
-"Forma girilen verilerin İşlemcisi, Fundacja Rozwoju \n"
-"                  Przedsiębiorczości \"Twój StartUp\"tır. Veriler, hizmeti "
-"sağlamak ve \n"
-"                  pazarlama amacıyla işlenecektir - rıza durumunda. "
-"Rızanızı çekme \n"
-"                  olasılığı hakkında sizi bilgilendirmek isteriz. Veri "
-"işleme ve haklarınızla \n"
-"                  ilgili tam bilgi için, lütfen bakınız"
+msgid "Record your description"
+msgstr "Açıklamanızı kaydedin"
 
-#: src/features/Usage/PaymentModal.tsx:365
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
 #. js-lingui-explicit-id
-msgid "privacy policy"
-msgstr "gizlilik politikası"
+msgid "Describe the word you see on the screen without using the word itself!"
+msgstr "Ekranda gördüğünüz kelimeyi, kelimeyi kendini kullanmadan tarif edin!"
 
-#: src/features/Usage/PaymentModal.tsx:401
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
 #. js-lingui-explicit-id
-msgid "Success!"
-msgstr "Başarılı!"
+msgid "Alias Game Recording"
+msgstr "Alias Oyun Kaydı"
 
-#: src/features/Usage/PaymentModal.tsx:411
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
 #. js-lingui-explicit-id
-msgid "Your payment was successful, but updates might take a few minutes"
-msgstr "Ödemeniz başarılı oldu, ancak güncellemeler birkaç dakika sürebilir"
+msgid "Have fun!"
+msgstr "Eğlenin!"
 
-#: src/features/Header/HeaderStatic.tsx:15
-#: src/features/Usage/PaymentModal.tsx:417
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
 #. js-lingui-explicit-id
-msgid "Balance"
-msgstr "Denge"
+msgid "Enjoy the game and see how the AI guesses your description!"
+msgstr "Oyunun tadını çıkarın ve AI'ın tanımınızı nasıl tahmin ettiğini görün!"
 
-#: src/features/Usage/PaymentModal.tsx:442
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
 #. js-lingui-explicit-id
-msgid "Current Balance of AI usage"
-msgstr "AI kullanımının Güncel Bakiyesi"
-
-#: src/features/Usage/PaymentModal.tsx:453
-#. js-lingui-explicit-id
-msgid "Buy More"
-msgstr "Daha Fazla Satın Al"
-
-#: src/features/Usage/PaymentModal.tsx:470
-#. js-lingui-explicit-id
-msgid "Total used:"
-msgstr "Toplam kullanılan:"
-
-#: src/features/Usage/PaymentModal.tsx:484
-#. js-lingui-explicit-id
-msgid "Payment history:"
-msgstr "Ödeme geçmişi:"
-
-#: src/features/Header/PaymentHistoryModal.tsx:76
-#: src/features/Usage/PaymentModal.tsx:505
-#. js-lingui-explicit-id
-msgid "No payments..."
-msgstr "Ödemeler yok..."
-
-#: src/features/Plan/PlanCard.tsx:111
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "6 mesaj göndermek için tamamlayın"
-
-#: src/features/Plan/PlanCard.tsx:129
-#. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "Dersi başlat"
+msgid "Robot Thinking"
+msgstr "Robot Düşünüyor"
 
 #: src/features/Plan/useGoalCreation.ts:41
 #: src/features/Plan/useGoalCreation.ts:69
@@ -2070,6 +2065,16 @@ msgstr "Hedef işleniyor..."
 #. js-lingui-explicit-id
 msgid "Error Processing the goal"
 msgstr "Hedefi işleme hatası"
+
+#: src/features/Plan/PlanCard.tsx:111
+#. js-lingui-explicit-id
+msgid "Send 6 messages to complete"
+msgstr "6 mesaj göndermek için tamamlayın"
+
+#: src/features/Plan/PlanCard.tsx:129
+#. js-lingui-explicit-id
+msgid "Start lesson"
+msgstr "Dersi başlat"
 
 #: src/features/Navigation/NavigationBar.tsx:44
 #. js-lingui-explicit-id
@@ -2463,24 +2468,6 @@ msgstr "Sonuçlar sandığınızdan daha yakın"
 msgid "Start Learning"
 msgstr "Öğrenmeye Başla"
 
-#: src/features/Landing/Footer.tsx:85
-#. js-lingui-explicit-id
-msgid "Role-Play"
-msgstr "Rol Oynama"
-
-#: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Landing/Footer.tsx:91
-#. js-lingui-explicit-id
-msgid "Blog"
-msgstr "Blog"
-
-#: src/features/Header/HeaderStatic.tsx:13
-#: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:95
-#. js-lingui-explicit-id
-msgid "Price"
-msgstr "Fiyat"
-
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
@@ -2830,10 +2817,23 @@ msgstr "Ücretsiz Denemenizi Başlatın"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Hızla Akıcı Konuşmalara Geçiş Yolculuğunuza Şimdi Başlayın"
 
-#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
+#: src/features/Landing/Footer.tsx:85
 #. js-lingui-explicit-id
-msgid "Try"
-msgstr "Denemek"
+msgid "Role-Play"
+msgstr "Rol Oynama"
+
+#: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Landing/Footer.tsx:91
+#. js-lingui-explicit-id
+msgid "Blog"
+msgstr "Blog"
+
+#: src/features/Header/HeaderStatic.tsx:13
+#: src/features/Landing/Footer.tsx:94
+#: src/features/Landing/Price/PricePage.tsx:95
+#. js-lingui-explicit-id
+msgid "Price"
+msgstr "Fiyat"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
@@ -2902,75 +2902,26 @@ msgstr "İlgili Senaryolar"
 msgid "Ready to Become Fluent in English?"
 msgstr "İngilizcede Akıcı Olmaya Hazır mısınız?"
 
-#: src/features/Landing/Price/PricePage.tsx:105
+#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
 #. js-lingui-explicit-id
-msgid "Start free, subscribe later"
-msgstr "Ücretsiz başla, daha sonra abone ol"
+msgid "Try"
+msgstr "Denemek"
 
-#: src/features/Landing/Price/PricePage.tsx:110
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
 #. js-lingui-explicit-id
-msgid "Open Dashboard"
-msgstr "Açık Gösterge Tablosu"
+msgid "Role Play Scenarios"
+msgstr "Rol Oynama Senaryoları"
 
-#: src/features/Landing/Price/PricePage.tsx:150
+#: src/features/Blog/ListBlog.tsx:72
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
 #. js-lingui-explicit-id
-msgid "Trial"
-msgstr "Deneme"
+msgid "Discover"
+msgstr "Keşfet"
 
-#: src/features/Landing/Price/PricePage.tsx:151
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
 #. js-lingui-explicit-id
-msgid "For learners who want to try it out"
-msgstr "Denemek isteyen öğreniciler için"
-
-#: src/features/Landing/Price/PricePage.tsx:180
-#. js-lingui-explicit-id
-msgid "3 days"
-msgstr "3 gün"
-
-#: src/features/Landing/Price/PricePage.tsx:184
-#. js-lingui-explicit-id
-msgid "Game mode and trial AI tutor access"
-msgstr "Oyun modu ve deneme AI öğretmen erişimi"
-
-#: src/features/Landing/Price/PricePage.tsx:185
-#. js-lingui-explicit-id
-msgid "Includes:"
-msgstr "İçerir:"
-
-#: src/features/Landing/Price/PricePage.tsx:189
-#. js-lingui-explicit-id
-msgid "Game Mode"
-msgstr "Oyun Modu"
-
-#: src/features/Landing/Price/PricePage.tsx:190
-#. js-lingui-explicit-id
-msgid "Many language games to practice"
-msgstr "Pratik yapmak için birçok dil oyunu"
-
-#: src/features/Landing/Price/PricePage.tsx:194
-#. js-lingui-explicit-id
-msgid "3 days of AI tutor access"
-msgstr "AI öğretmen erişimine 3 gün"
-
-#: src/features/Landing/Price/PricePage.tsx:195
-#. js-lingui-explicit-id
-msgid "Try AI tutor for one hour to see how it works"
-msgstr "AI danışmanını bir saat deneyin ve nasıl çalıştığını görün"
-
-#: src/features/Landing/Price/PricePage.tsx:199
-#. js-lingui-explicit-id
-msgid "Start "
-msgstr "Başla"
-
-#: src/features/Landing/Price/PricePage.tsx:204
-#. js-lingui-explicit-id
-msgid "For learners who want flexibility"
-msgstr "Esneklik isteyen öğrenciler için"
-
-#: src/features/Landing/Price/PricePage.tsx:238
-#. js-lingui-explicit-id
-msgid "Everything in Free, plus:"
-msgstr "Ücretsiz sürümde olan her şey, artı:"
+msgid "No scenarios found"
+msgstr "Hiç senaryo bulunamadı"
 
 #: src/features/Landing/Price/FeatureList.tsx:31
 #: src/features/Landing/Price/PricePage.tsx:241
@@ -3059,6 +3010,240 @@ msgid ""
 "With time, AI will adapt to your learning style and it will be more "
 "personalized"
 msgstr "Zamanla, AI öğrenme stilinize uyum sağlayacak ve daha kişiselleşecek"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "Gerçek Hayat Konuşmalarını Rol Oyun Senaryoları ile Pratik Yapın"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
+msgstr ""
+"Yemek siparişi verin, randevuları planlayın, iş mülakatlarında başarılı "
+"olun ve daha fazlası— hepsi AI eğitmeninizin rehberliğinde."
+
+#: src/features/Landing/Contact/ContactsPage.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"My name is Alex, I am the creator of this website. I am a software engineer "
+"and I am passionate about learning languages. I created this website to "
+"help people learn languages in a fun and interactive way. I hope you enjoy "
+"using it!"
+msgstr ""
+"Benim adım Alex, bu web sitesinin yaratıcısıyım. Bir yazılım mühendisiyim "
+"ve dilleri öğrenmeye karşı büyük bir tutkum var. İnsanların dilleri "
+"eğlenceli ve etkileşimli bir şekilde öğrenmelerine yardımcı olmak için bu "
+"web sitesini oluşturdum. Umarım kullanırken keyif alırsınız!"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:117
+#. js-lingui-explicit-id
+msgid ""
+"Feel free to reach out to me with any questions or feedback. I'm always "
+"happy to help!"
+msgstr ""
+"Bana herhangi bir sorunuz veya geri bildiriminiz olduğunda ulaşmaktan "
+"çekinmeyin. Her zaman yardımcı olmaktan mutluluk duyarım!"
+
+#: src/features/Header/NeedHelpModal.tsx:34
+#: src/features/Header/NeedHelpModal.tsx:176
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete your account?"
+msgstr "Hesabınızı silmek istediğinize emin misiniz?"
+
+#: src/features/Header/NeedHelpModal.tsx:48
+#. js-lingui-explicit-id
+msgid "Your account has been successfully deleted. We are sorry to see you go!"
+msgstr "Hesabınız başarıyla silindi. Sizi göndermekten üzgünüz!"
+
+#: src/features/Header/NeedHelpModal.tsx:60
+#. js-lingui-explicit-id
+msgid ""
+"Failed to delete your account. Please try again later, or contact the "
+"developers."
+msgstr ""
+"Hesabınızı silme başarısız oldu. Lütfen daha sonra tekrar deneyin veya "
+"geliştiricilerle iletişime geçin."
+
+#: src/features/Header/NeedHelpModal.tsx:92
+#. js-lingui-explicit-id
+msgid ""
+"My name is Alex. I am the founder of this project. You will find my "
+"contacts below."
+msgstr ""
+"Benim adım Alex. Bu projenin kurucusuyum. İletişim bilgilerimi aşağıda "
+"bulabilirsiniz."
+
+#: src/features/Header/NeedHelpModal.tsx:116
+#: src/features/Landing/Price/PricePage.tsx:958
+#. js-lingui-explicit-id
+msgid "Contacts:"
+msgstr "İletişim:"
+
+#: src/features/Header/NeedHelpModal.tsx:132
+#. js-lingui-explicit-id
+msgid "Legal:"
+msgstr "Hukuki:"
+
+#: src/features/Header/NeedHelpModal.tsx:178
+#. js-lingui-explicit-id
+msgid "This action is irreversible."
+msgstr "Bu eylem geri alınamaz."
+
+#: src/features/Header/NeedHelpModal.tsx:180
+#. js-lingui-explicit-id
+msgid ""
+"We will delete your data, but information about your balance will be stored "
+"for one\n"
+"              year."
+msgstr ""
+"Verilerinizi sileceğiz, ancak bakiye bilgileriniz bir \n"
+"              yıl boyunca saklanacaktır."
+
+#: src/features/Header/NeedHelpModal.tsx:184
+#. js-lingui-explicit-id
+msgid ""
+"If you want to remove all information, including your balance, please "
+"contact us."
+msgstr ""
+"Tüm bilgilerinizi, bakiyeniz dahil olmak üzere silmek isterseniz, lütfen "
+"bizimle iletişime geçin."
+
+#: src/features/Header/NeedHelpModal.tsx:205
+#: src/features/Header/NeedHelpModal.tsx:239
+#. js-lingui-explicit-id
+msgid "Deleting..."
+msgstr "Siliniyor..."
+
+#: src/features/Header/NeedHelpModal.tsx:205
+#. js-lingui-explicit-id
+msgid "Yes, Delete account"
+msgstr "Evet, Hesabı Sil"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:58
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:229
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "Kapat"
+
+#: src/features/Header/NeedHelpModal.tsx:239
+#. js-lingui-explicit-id
+msgid "Delete account"
+msgstr "Hesabı Sil"
+
+#: src/features/Header/HeaderStatic.tsx:11
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "Rol Oyunları"
+
+#: src/features/Header/HeaderStatic.tsx:14
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "Oturum Aç"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:16
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "Yardım mı lazım?"
+
+#: src/features/Header/PaymentHistoryModal.tsx:21
+#. js-lingui-explicit-id
+msgid "Trial balance"
+msgstr "Deneme bilançosu"
+
+#: src/features/Header/PaymentHistoryModal.tsx:22
+#. js-lingui-explicit-id
+msgid "Payment"
+msgstr "Ödeme"
+
+#: src/features/Header/PaymentHistoryModal.tsx:23
+#. js-lingui-explicit-id
+msgid "Gift"
+msgstr "Hediye"
+
+#: src/features/Header/PaymentHistoryModal.tsx:24
+#. js-lingui-explicit-id
+msgid "Subscription (1 month)"
+msgstr "Abonelik (1 ay)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Trial days"
+msgstr "Deneme günleri"
+
+#: src/features/Landing/Price/PricePage.tsx:105
+#. js-lingui-explicit-id
+msgid "Start free, subscribe later"
+msgstr "Ücretsiz başla, daha sonra abone ol"
+
+#: src/features/Landing/Price/PricePage.tsx:110
+#. js-lingui-explicit-id
+msgid "Open Dashboard"
+msgstr "Açık Gösterge Tablosu"
+
+#: src/features/Landing/Price/PricePage.tsx:150
+#. js-lingui-explicit-id
+msgid "Trial"
+msgstr "Deneme"
+
+#: src/features/Landing/Price/PricePage.tsx:151
+#. js-lingui-explicit-id
+msgid "For learners who want to try it out"
+msgstr "Denemek isteyen öğreniciler için"
+
+#: src/features/Landing/Price/PricePage.tsx:180
+#. js-lingui-explicit-id
+msgid "3 days"
+msgstr "3 gün"
+
+#: src/features/Landing/Price/PricePage.tsx:184
+#. js-lingui-explicit-id
+msgid "Game mode and trial AI tutor access"
+msgstr "Oyun modu ve deneme AI öğretmen erişimi"
+
+#: src/features/Landing/Price/PricePage.tsx:185
+#. js-lingui-explicit-id
+msgid "Includes:"
+msgstr "İçerir:"
+
+#: src/features/Landing/Price/PricePage.tsx:189
+#. js-lingui-explicit-id
+msgid "Game Mode"
+msgstr "Oyun Modu"
+
+#: src/features/Landing/Price/PricePage.tsx:190
+#. js-lingui-explicit-id
+msgid "Many language games to practice"
+msgstr "Pratik yapmak için birçok dil oyunu"
+
+#: src/features/Landing/Price/PricePage.tsx:194
+#. js-lingui-explicit-id
+msgid "3 days of AI tutor access"
+msgstr "AI öğretmen erişimine 3 gün"
+
+#: src/features/Landing/Price/PricePage.tsx:195
+#. js-lingui-explicit-id
+msgid "Try AI tutor for one hour to see how it works"
+msgstr "AI danışmanını bir saat deneyin ve nasıl çalıştığını görün"
+
+#: src/features/Landing/Price/PricePage.tsx:199
+#. js-lingui-explicit-id
+msgid "Start "
+msgstr "Başla"
+
+#: src/features/Landing/Price/PricePage.tsx:204
+#. js-lingui-explicit-id
+msgid "For learners who want flexibility"
+msgstr "Esneklik isteyen öğrenciler için"
+
+#: src/features/Landing/Price/PricePage.tsx:238
+#. js-lingui-explicit-id
+msgid "Everything in Free, plus:"
+msgstr "Ücretsiz sürümde olan her şey, artı:"
 
 #: src/features/Landing/Price/PricePage.tsx:284
 #. js-lingui-explicit-id
@@ -3296,90 +3481,6 @@ msgstr ""
 "Sadece satın almadan önce benimle iletişime geçin, size bir indirim "
 "vereceğim."
 
-#: src/features/Header/NeedHelpModal.tsx:116
-#: src/features/Landing/Price/PricePage.tsx:958
-#. js-lingui-explicit-id
-msgid "Contacts:"
-msgstr "İletişim:"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
-#. js-lingui-explicit-id
-msgid "Role Play Scenarios"
-msgstr "Rol Oynama Senaryoları"
-
-#: src/features/Blog/ListBlog.tsx:72
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
-#. js-lingui-explicit-id
-msgid "Discover"
-msgstr "Keşfet"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
-#. js-lingui-explicit-id
-msgid "No scenarios found"
-msgstr "Hiç senaryo bulunamadı"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "Gerçek Hayat Konuşmalarını Rol Oyun Senaryoları ile Pratik Yapın"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
-msgstr ""
-"Yemek siparişi verin, randevuları planlayın, iş mülakatlarında başarılı "
-"olun ve daha fazlası— hepsi AI eğitmeninizin rehberliğinde."
-
-#: src/features/Header/PaymentHistoryModal.tsx:21
-#. js-lingui-explicit-id
-msgid "Trial balance"
-msgstr "Deneme bilançosu"
-
-#: src/features/Header/PaymentHistoryModal.tsx:22
-#. js-lingui-explicit-id
-msgid "Payment"
-msgstr "Ödeme"
-
-#: src/features/Header/PaymentHistoryModal.tsx:23
-#. js-lingui-explicit-id
-msgid "Gift"
-msgstr "Hediye"
-
-#: src/features/Header/PaymentHistoryModal.tsx:24
-#. js-lingui-explicit-id
-msgid "Subscription (1 month)"
-msgstr "Abonelik (1 ay)"
-
-#: src/features/Header/PaymentHistoryModal.tsx:25
-#. js-lingui-explicit-id
-msgid "Trial days"
-msgstr "Deneme günleri"
-
-#: src/features/Header/HeaderPractice.tsx:202
-#. js-lingui-explicit-id
-msgid "Finishing..."
-msgstr "Bitiriyor..."
-
-#: src/features/Dashboard/RulesToLearn.tsx:101
-#: src/features/Dashboard/WordsToLearn.tsx:121
-#: src/features/Header/HeaderPractice.tsx:203
-#. js-lingui-explicit-id
-msgid "Back"
-msgstr "Geri"
-
-#: src/features/Header/HeaderPractice.tsx:370
-#. js-lingui-explicit-id
-msgid "Payment history"
-msgstr "Ödeme geçmişi"
-
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:16
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "Yardım mı lazım?"
-
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
 msgid "Failed to send feedback. Please try again later."
@@ -3395,43 +3496,61 @@ msgstr "Geri bildiriminiz için teşekkür ederiz!"
 msgid "Sending..."
 msgstr "Gönderiliyor..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1061
+#: src/features/Conversation/ConversationCanvas2.tsx:1060
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Gönder"
 
-#: src/features/Header/HeaderStatic.tsx:11
+#: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "Rol Oyunları"
+msgid "You are on the right track!"
+msgstr "Doğru yoldasınız!"
 
-#: src/features/Header/HeaderStatic.tsx:14
+#: src/features/Goal/GoalPreparingModal.tsx:43
 #. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "Oturum Aç"
+msgid "Okay"
+msgstr "Tamam"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:104
+#: src/features/Goal/GoalPreparingModal.tsx:49
 #. js-lingui-explicit-id
-msgid ""
-"My name is Alex, I am the creator of this website. I am a software engineer "
-"and I am passionate about learning languages. I created this website to "
-"help people learn languages in a fun and interactive way. I hope you enjoy "
-"using it!"
-msgstr ""
-"Benim adım Alex, bu web sitesinin yaratıcısıyım. Bir yazılım mühendisiyim "
-"ve dilleri öğrenmeye karşı büyük bir tutkum var. İnsanların dilleri "
-"eğlenceli ve etkileşimli bir şekilde öğrenmelerine yardımcı olmak için bu "
-"web sitesini oluşturdum. Umarım kullanırken keyif alırsınız!"
+msgid "What we need from you?"
+msgstr "Bizden ne istersiniz?"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:117
+#: src/features/Goal/GoalPreparingModal.tsx:59
 #. js-lingui-explicit-id
-msgid ""
-"Feel free to reach out to me with any questions or feedback. I'm always "
-"happy to help!"
-msgstr ""
-"Bana herhangi bir sorunuz veya geri bildiriminiz olduğunda ulaşmaktan "
-"çekinmeyin. Her zaman yardımcı olmaktan mutluluk duyarım!"
+msgid "I agree"
+msgstr "Katılıyorum"
+
+#: src/features/Goal/GoalPreparingModal.tsx:65
+#. js-lingui-explicit-id
+msgid "From founder"
+msgstr "Kurucudan"
+
+#: src/features/Goal/GoalPreparingModal.tsx:75
+#. js-lingui-explicit-id
+msgid "Got it"
+msgstr "Anladım"
+
+#: src/features/Goal/GoalPreparingModal.tsx:81
+#. js-lingui-explicit-id
+msgid "Almost ready..."
+msgstr "Neredeyse hazır..."
+
+#: src/features/Goal/GoalPreparingModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Let's do it"
+msgstr "Hadi yapalım"
+
+#: src/features/Goal/GoalPreparingModal.tsx:96
+#. js-lingui-explicit-id
+msgid "Finally"
+msgstr "Sonunda"
+
+#: src/features/Goal/GoalPreparingModal.tsx:107
+#. js-lingui-explicit-id
+msgid "Let's rock it!"
+msgstr "Hadi başlayalım!"
 
 #: src/features/Goal/GoalQuestions.tsx:61
 #. js-lingui-explicit-id
@@ -3694,10 +3813,10 @@ msgstr ""
 "Seyahat etmek için İngilizce öğrenmek istiyorum. Ve filmleri ve şarkıları "
 "anlamak istiyorum."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:791
-#: src/features/Conversation/ConversationCanvas2.tsx:794
-#: src/features/Conversation/ConversationCanvas2.tsx:879
-#: src/features/Conversation/ConversationCanvas2.tsx:886
+#: src/features/Conversation/ConversationCanvas2.tsx:790
+#: src/features/Conversation/ConversationCanvas2.tsx:793
+#: src/features/Conversation/ConversationCanvas2.tsx:878
+#: src/features/Conversation/ConversationCanvas2.tsx:885
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:143
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:263
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:169
@@ -3792,141 +3911,59 @@ msgstr "Bağlantıyı kopyala"
 msgid "Open the plan"
 msgstr "Planı açın"
 
-#: src/features/Header/NeedHelpModal.tsx:34
-#: src/features/Header/NeedHelpModal.tsx:176
+#: src/features/Header/HeaderPractice.tsx:202
 #. js-lingui-explicit-id
-msgid "Are you sure you want to delete your account?"
-msgstr "Hesabınızı silmek istediğinize emin misiniz?"
+msgid "Finishing..."
+msgstr "Bitiriyor..."
 
-#: src/features/Header/NeedHelpModal.tsx:48
+#: src/features/Dashboard/RulesToLearn.tsx:101
+#: src/features/Dashboard/WordsToLearn.tsx:121
+#: src/features/Header/HeaderPractice.tsx:203
 #. js-lingui-explicit-id
-msgid "Your account has been successfully deleted. We are sorry to see you go!"
-msgstr "Hesabınız başarıyla silindi. Sizi göndermekten üzgünüz!"
+msgid "Back"
+msgstr "Geri"
 
-#: src/features/Header/NeedHelpModal.tsx:60
+#: src/features/Header/HeaderPractice.tsx:370
 #. js-lingui-explicit-id
-msgid ""
-"Failed to delete your account. Please try again later, or contact the "
-"developers."
-msgstr ""
-"Hesabınızı silme başarısız oldu. Lütfen daha sonra tekrar deneyin veya "
-"geliştiricilerle iletişime geçin."
-
-#: src/features/Header/NeedHelpModal.tsx:92
-#. js-lingui-explicit-id
-msgid ""
-"My name is Alex. I am the founder of this project. You will find my "
-"contacts below."
-msgstr ""
-"Benim adım Alex. Bu projenin kurucusuyum. İletişim bilgilerimi aşağıda "
-"bulabilirsiniz."
-
-#: src/features/Header/NeedHelpModal.tsx:132
-#. js-lingui-explicit-id
-msgid "Legal:"
-msgstr "Hukuki:"
-
-#: src/features/Header/NeedHelpModal.tsx:178
-#. js-lingui-explicit-id
-msgid "This action is irreversible."
-msgstr "Bu eylem geri alınamaz."
-
-#: src/features/Header/NeedHelpModal.tsx:180
-#. js-lingui-explicit-id
-msgid ""
-"We will delete your data, but information about your balance will be stored "
-"for one\n"
-"              year."
-msgstr ""
-"Verilerinizi sileceğiz, ancak bakiye bilgileriniz bir \n"
-"              yıl boyunca saklanacaktır."
-
-#: src/features/Header/NeedHelpModal.tsx:184
-#. js-lingui-explicit-id
-msgid ""
-"If you want to remove all information, including your balance, please "
-"contact us."
-msgstr ""
-"Tüm bilgilerinizi, bakiyeniz dahil olmak üzere silmek isterseniz, lütfen "
-"bizimle iletişime geçin."
-
-#: src/features/Header/NeedHelpModal.tsx:205
-#: src/features/Header/NeedHelpModal.tsx:239
-#. js-lingui-explicit-id
-msgid "Deleting..."
-msgstr "Siliniyor..."
-
-#: src/features/Header/NeedHelpModal.tsx:205
-#. js-lingui-explicit-id
-msgid "Yes, Delete account"
-msgstr "Evet, Hesabı Sil"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:58
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:229
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "Kapat"
-
-#: src/features/Header/NeedHelpModal.tsx:239
-#. js-lingui-explicit-id
-msgid "Delete account"
-msgstr "Hesabı Sil"
+msgid "Payment history"
+msgstr "Ödeme geçmişi"
 
 #: src/features/Game/PositionChangedModal.tsx:101
 #. js-lingui-explicit-id
 msgid "Nice!"
 msgstr "Güzel!"
 
-#: src/features/Goal/GoalPreparingModal.tsx:33
+#: src/features/Game/GameOnboarding.tsx:168
+#: src/features/Game/GamePage.tsx:23
 #. js-lingui-explicit-id
-msgid "You are on the right track!"
-msgstr "Doğru yoldasınız!"
+msgid "Play"
+msgstr "Oyna"
 
-#: src/features/Goal/GoalPreparingModal.tsx:43
+#: src/features/Game/GamePage.tsx:90
 #. js-lingui-explicit-id
-msgid "Okay"
-msgstr "Tamam"
+msgid "Rating:"
+msgstr "Puan:"
 
-#: src/features/Goal/GoalPreparingModal.tsx:49
+#: src/features/Game/GameBadge.tsx:87
+#: src/features/Game/GamePage.tsx:92
 #. js-lingui-explicit-id
-msgid "What we need from you?"
-msgstr "Bizden ne istersiniz?"
+msgid "Rank in the top 5 to get the app for free"
+msgstr "İlk 5 içinde yer alın ve uygulamayı ücretsiz olarak edinin"
 
-#: src/features/Goal/GoalPreparingModal.tsx:59
+#: src/features/Game/GameNativeLanguageSelector.tsx:49
 #. js-lingui-explicit-id
-msgid "I agree"
-msgstr "Katılıyorum"
+msgid "Your Native Language:"
+msgstr "Ana Diliniz:"
 
-#: src/features/Goal/GoalPreparingModal.tsx:65
+#: src/features/Game/GameMyUsername.tsx:26
 #. js-lingui-explicit-id
-msgid "From founder"
-msgstr "Kurucudan"
+msgid "Username must be at least 3 characters long."
+msgstr "Kullanıcı adı en az 3 karakter uzunluğunda olmalıdır."
 
-#: src/features/Goal/GoalPreparingModal.tsx:75
+#: src/features/Game/GameMyUsername.tsx:45
 #. js-lingui-explicit-id
-msgid "Got it"
-msgstr "Anladım"
-
-#: src/features/Goal/GoalPreparingModal.tsx:81
-#. js-lingui-explicit-id
-msgid "Almost ready..."
-msgstr "Neredeyse hazır..."
-
-#: src/features/Goal/GoalPreparingModal.tsx:90
-#. js-lingui-explicit-id
-msgid "Let's do it"
-msgstr "Hadi yapalım"
-
-#: src/features/Goal/GoalPreparingModal.tsx:96
-#. js-lingui-explicit-id
-msgid "Finally"
-msgstr "Sonunda"
-
-#: src/features/Goal/GoalPreparingModal.tsx:107
-#. js-lingui-explicit-id
-msgid "Let's rock it!"
-msgstr "Hadi başlayalım!"
+msgid "Game username:"
+msgstr "Oyun kullanıcı adı:"
 
 #: src/features/Game/GameOnboarding.tsx:46
 #. js-lingui-explicit-id
@@ -3962,17 +3999,6 @@ msgstr "Hadi, hazır olduğundan emin olalım"
 msgid "Your Avatar:"
 msgstr "Senin Avatarın:"
 
-#: src/features/Game/GameOnboarding.tsx:168
-#: src/features/Game/GamePage.tsx:23
-#. js-lingui-explicit-id
-msgid "Play"
-msgstr "Oyna"
-
-#: src/features/Game/GameNativeLanguageSelector.tsx:49
-#. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Ana Diliniz:"
-
 #: src/features/Game/GameMyAvatar.tsx:27
 #. js-lingui-explicit-id
 msgid "Avatar"
@@ -3983,15 +4009,10 @@ msgstr "Avatar"
 msgid "Select your game avatar"
 msgstr "Oyun avatarınızı seçin"
 
-#: src/features/Game/GameMyUsername.tsx:26
+#: src/features/Game/GameBadge.tsx:75
 #. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "Kullanıcı adı en az 3 karakter uzunluğunda olmalıdır."
-
-#: src/features/Game/GameMyUsername.tsx:45
-#. js-lingui-explicit-id
-msgid "Game username:"
-msgstr "Oyun kullanıcı adı:"
+msgid "Play and Learn"
+msgstr "Oyna ve Öğren"
 
 #: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
 #. js-lingui-explicit-id
@@ -4010,51 +4031,18 @@ msgstr "Bir cümle oluşturun"
 msgid "Submit answer"
 msgstr "Cevabı gönder"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
-msgid "Read the text"
-msgstr "Metni okuyun"
+msgid "Discuss the topic"
+msgstr "Konuyu tartışın"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1092
+#: src/features/Conversation/ConversationCanvas2.tsx:1091
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
 #. js-lingui-explicit-id
 msgid "Done"
 msgstr "Tamamlandı"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1078
-#: src/features/Conversation/ConversationCanvas2.tsx:1342
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:298
-#. js-lingui-explicit-id
-msgid "Re-record"
-msgstr "Yeniden kaydet"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:311
-#. js-lingui-explicit-id
-msgid "Submit"
-msgstr "Gönder"
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:354
-#. js-lingui-explicit-id
-msgid "Error:"
-msgstr "Hata:"
-
-#: src/features/Game/GameBadge.tsx:75
-#. js-lingui-explicit-id
-msgid "Play and Learn"
-msgstr "Oyna ve Öğren"
-
-#: src/features/Game/GameBadge.tsx:87
-#: src/features/Game/GamePage.tsx:92
-#. js-lingui-explicit-id
-msgid "Rank in the top 5 to get the app for free"
-msgstr "İlk 5 içinde yer alın ve uygulamayı ücretsiz olarak edinin"
-
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
-#. js-lingui-explicit-id
-msgid "Discuss the topic"
-msgstr "Konuyu tartışın"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
@@ -4079,6 +4067,28 @@ msgstr "Hata:"
 msgid "Describe the image"
 msgstr "Görüntüyü açıkla"
 
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
+#. js-lingui-explicit-id
+msgid "Read the text"
+msgstr "Metni okuyun"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1077
+#: src/features/Conversation/ConversationCanvas2.tsx:1394
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:298
+#. js-lingui-explicit-id
+msgid "Re-record"
+msgstr "Yeniden kaydet"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:311
+#. js-lingui-explicit-id
+msgid "Submit"
+msgstr "Gönder"
+
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:354
+#. js-lingui-explicit-id
+msgid "Error:"
+msgstr "Hata:"
+
 #: src/features/Dashboard/WordsToLearn.tsx:32
 #. js-lingui-explicit-id
 msgid "New words to practice."
@@ -4094,31 +4104,6 @@ msgstr "Başla pratik yapmaya"
 #. js-lingui-explicit-id
 msgid "I know all of them"
 msgstr "Hepsini biliyorum"
-
-#: src/features/Game/GamePage.tsx:90
-#. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "Puan:"
-
-#: src/features/Dashboard/SelectLanguage.tsx:143
-#. js-lingui-explicit-id
-msgid "Almost there!"
-msgstr "Neredeyse oradayız!"
-
-#: src/features/Dashboard/SelectLanguage.tsx:158
-#. js-lingui-explicit-id
-msgid "Select languages"
-msgstr "Dilleri seçin"
-
-#: src/features/Dashboard/SelectLanguage.tsx:204
-#. js-lingui-explicit-id
-msgid "Learn"
-msgstr "Öğren"
-
-#: src/features/Dashboard/SelectLanguage.tsx:231
-#. js-lingui-explicit-id
-msgid "Page"
-msgstr "Sayfa"
 
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
@@ -4153,106 +4138,6 @@ msgstr "Yeni kelimeler"
 msgid "Practice new vocabulary with the AI"
 msgstr "Yeni kelimeleri AI ile pratik yapın"
 
-#: src/features/Dashboard/RulesToLearn.tsx:36
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "Yeni kural uygulama."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1328
-#: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:420
-#: src/features/Dashboard/PlanDashboardCards.tsx:562
-#. js-lingui-explicit-id
-msgid "Goal"
-msgstr "Hedef"
-
-#: src/features/Dashboard/GoalCard.tsx:13
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Öğrenme hedefinizi belirleyin"
-
-#: src/features/Dashboard/GoalCard.tsx:28
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "Başlat | 5 dakika"
-
-#: src/features/Dashboard/HomeworkCard.tsx:21
-#. js-lingui-explicit-id
-msgid "Homework"
-msgstr "Ödev"
-
-#: src/features/Dashboard/HomeworkCard.tsx:57
-#. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "Henüz ödev verilmedi."
-
-#: src/features/Dashboard/HomeworkCard.tsx:66
-#. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "Bir tane almak için bir sohbet başlatın."
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "Atla"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "Hepsini göster"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:110
-#. js-lingui-explicit-id
-msgid "Talk to the AI and it will respond to you"
-msgstr "AI ile konuşun ve size yanıt verecektir"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:115
-#: src/features/Dashboard/ConversationSelectCard.tsx:136
-#: src/features/Dashboard/ConversationSelectCard.tsx:157
-#: src/features/Dashboard/ConversationSelectCard.tsx:178
-#: src/features/Dashboard/PlanDashboardCards.tsx:249
-#: src/features/Dashboard/PlanDashboardCards.tsx:279
-#: src/features/Dashboard/PlanDashboardCards.tsx:309
-#. js-lingui-explicit-id
-msgid "Set the goal to start"
-msgstr "Başlamak için hedefi belirleyin"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:126
-#. js-lingui-explicit-id
-msgid "Start Talking"
-msgstr "Konuşmaya Başla"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:130
-#. js-lingui-explicit-id
-msgid "Beginner"
-msgstr "Başlangıç Seviyesi"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:131
-#. js-lingui-explicit-id
-msgid "AI will lead you through the conversation"
-msgstr "AI sizinle konuşmayı yönlendirecek"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:147
-#. js-lingui-explicit-id
-msgid "Guide me"
-msgstr "Beni yönlendir"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:151
-#: src/features/Dashboard/PlanDashboardCards.tsx:273
-#. js-lingui-explicit-id
-msgid "Rules"
-msgstr "Kurallar"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:168
-#. js-lingui-explicit-id
-msgid "Get a rule"
-msgstr "Bir kural alın"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:189
-#. js-lingui-explicit-id
-msgid "Expand vocabulary"
-msgstr "Kelime dağarcığını genişlet"
-
 #: src/features/Dashboard/PlanDashboardCards.tsx:70
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
@@ -4275,12 +4160,29 @@ msgstr "Şimdi başlangıç noktanızı belirleyelim!"
 msgid "Start your journey with a conversation!"
 msgstr "Yolculuğunuza bir sohbet ile başlayın!"
 
+#: src/features/Dashboard/ConversationSelectCard.tsx:115
+#: src/features/Dashboard/ConversationSelectCard.tsx:136
+#: src/features/Dashboard/ConversationSelectCard.tsx:157
+#: src/features/Dashboard/ConversationSelectCard.tsx:178
+#: src/features/Dashboard/PlanDashboardCards.tsx:249
+#: src/features/Dashboard/PlanDashboardCards.tsx:279
+#: src/features/Dashboard/PlanDashboardCards.tsx:309
+#. js-lingui-explicit-id
+msgid "Set the goal to start"
+msgstr "Başlamak için hedefi belirleyin"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:267
 #: src/features/Dashboard/PlanDashboardCards.tsx:297
 #: src/features/Dashboard/PlanDashboardCards.tsx:327
 #. js-lingui-explicit-id
 msgid "Recommended"
 msgstr "Önerilen"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:151
+#: src/features/Dashboard/PlanDashboardCards.tsx:273
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "Kurallar"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:274
 #. js-lingui-explicit-id
@@ -4301,6 +4203,14 @@ msgstr "Sizin için ilginç bir şey var..."
 #. js-lingui-explicit-id
 msgid "Let's start"
 msgstr "Hadi başlayalım"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1380
+#: src/features/Dashboard/GoalCard.tsx:12
+#: src/features/Dashboard/PlanDashboardCards.tsx:420
+#: src/features/Dashboard/PlanDashboardCards.tsx:562
+#. js-lingui-explicit-id
+msgid "Goal"
+msgstr "Hedef"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:421
 #. js-lingui-explicit-id
@@ -4341,6 +4251,116 @@ msgstr "Daha eşsiz dersler oluşturun"
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Daha fazla ders oluşturmak için en az 3 dersi tamamlamanız gerekmektedir."
+
+#: src/features/Dashboard/RulesToLearn.tsx:36
+#. js-lingui-explicit-id
+msgid "New rule to practice."
+msgstr "Yeni kural uygulama."
+
+#: src/features/Dashboard/GoalCard.tsx:13
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Öğrenme hedefinizi belirleyin"
+
+#: src/features/Dashboard/GoalCard.tsx:28
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "Başlat | 5 dakika"
+
+#: src/features/Dashboard/SelectLanguage.tsx:143
+#. js-lingui-explicit-id
+msgid "Almost there!"
+msgstr "Neredeyse oradayız!"
+
+#: src/features/Dashboard/SelectLanguage.tsx:158
+#. js-lingui-explicit-id
+msgid "Select languages"
+msgstr "Dilleri seçin"
+
+#: src/features/Dashboard/SelectLanguage.tsx:204
+#. js-lingui-explicit-id
+msgid "Learn"
+msgstr "Öğren"
+
+#: src/features/Dashboard/SelectLanguage.tsx:231
+#. js-lingui-explicit-id
+msgid "Page"
+msgstr "Sayfa"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:110
+#. js-lingui-explicit-id
+msgid "Talk to the AI and it will respond to you"
+msgstr "AI ile konuşun ve size yanıt verecektir"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:126
+#. js-lingui-explicit-id
+msgid "Start Talking"
+msgstr "Konuşmaya Başla"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:130
+#. js-lingui-explicit-id
+msgid "Beginner"
+msgstr "Başlangıç Seviyesi"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:131
+#. js-lingui-explicit-id
+msgid "AI will lead you through the conversation"
+msgstr "AI sizinle konuşmayı yönlendirecek"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:147
+#. js-lingui-explicit-id
+msgid "Guide me"
+msgstr "Beni yönlendir"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Get a rule"
+msgstr "Bir kural alın"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:189
+#. js-lingui-explicit-id
+msgid "Expand vocabulary"
+msgstr "Kelime dağarcığını genişlet"
+
+#: src/features/Dashboard/HomeworkCard.tsx:21
+#. js-lingui-explicit-id
+msgid "Homework"
+msgstr "Ödev"
+
+#: src/features/Dashboard/HomeworkCard.tsx:57
+#. js-lingui-explicit-id
+msgid "No homework assigned yet."
+msgstr "Henüz ödev verilmedi."
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "Bir tane almak için bir sohbet başlatın."
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "Atla"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "Hepsini göster"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
+#. js-lingui-explicit-id
+msgid "Progress Calendar"
+msgstr "İlerleme Takvimi"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
+#. js-lingui-explicit-id
+msgid "Less"
+msgstr "Daha az"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
+#. js-lingui-explicit-id
+msgid "More"
+msgstr "Daha Fazla"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4444,20 +4464,26 @@ msgstr "Beyni hazırlama"
 msgid "Upload language skills directly to your brain"
 msgstr "Dil becerilerini doğrudan beynine yükle"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
+#: src/features/Conversation/useConversationsAnalysis.ts:89
+#: src/features/Conversation/useConversationsAnalysis.ts:132
 #. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "İlerleme Takvimi"
+msgid "Error analyzing conversation"
+msgstr "Konuşma analizinde hata"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
+#: src/features/Conversation/ConversationPage.tsx:126
 #. js-lingui-explicit-id
-msgid "Less"
-msgstr "Daha az"
+msgid "Loading Goal..."
+msgstr "Hedef Yükleniyor..."
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
+#: src/features/Conversation/ConversationPage.tsx:150
 #. js-lingui-explicit-id
-msgid "More"
-msgstr "Daha Fazla"
+msgid "Crafting new words..."
+msgstr "Yeni kelimeler oluşturuluyor..."
+
+#: src/features/Conversation/ConversationPage.tsx:154
+#. js-lingui-explicit-id
+msgid "Crafting new rule..."
+msgstr "Yeni kural oluşturuluyor..."
 
 #: src/features/Conversation/ConversationError.tsx:34
 #. js-lingui-explicit-id
@@ -4479,186 +4505,20 @@ msgstr "Bildirim dev ekibine gönderildi. Bunun için özür dileriz..."
 msgid "Reload page"
 msgstr "Sayfayı yeniden yükle"
 
-#: src/features/Conversation/ConversationPage.tsx:126
+#: src/features/Conversation/AliasGamePanel.tsx:122
 #. js-lingui-explicit-id
-msgid "Loading Goal..."
-msgstr "Hedef Yükleniyor..."
+msgid "Describe these words:"
+msgstr "Bu kelimeleri tanımlayın:"
 
-#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Conversation/AliasGamePanel.tsx:171
 #. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "Yeni kelimeler oluşturuluyor..."
+msgid "More options"
+msgstr "Daha fazla seçenek"
 
-#: src/features/Conversation/ConversationPage.tsx:154
+#: src/features/Conversation/AliasGamePanel.tsx:180
 #. js-lingui-explicit-id
-msgid "Crafting new rule..."
-msgstr "Yeni kural oluşturuluyor..."
-
-#: src/features/Conversation/useConversationsAnalysis.ts:89
-#: src/features/Conversation/useConversationsAnalysis.ts:132
-#. js-lingui-explicit-id
-msgid "Error analyzing conversation"
-msgstr "Konuşma analizinde hata"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:344
-#. js-lingui-explicit-id
-msgid "Idea for your message"
-msgstr "Mesajınız için fikir"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:402
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "Ders İncelemesi"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:423
-#. js-lingui-explicit-id
-msgid "Language level:"
-msgstr "Dil seviyesi:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:425
-#: src/features/Conversation/ConversationCanvas2.tsx:432
-#: src/features/Conversation/ConversationCanvas2.tsx:439
-#: src/features/Conversation/ConversationCanvas2.tsx:742
-#: src/features/Conversation/ConversationCanvas2.tsx:881
-#: src/features/Conversation/ConversationCanvas2.tsx:888
-#. js-lingui-explicit-id
-msgid "Analyzing..."
-msgstr "Analiz ediliyor..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:430
-#. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "Harika olan neydi:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:437
-#. js-lingui-explicit-id
-msgid "Areas to improve:"
-msgstr "İyileştirilecek Alanlar:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:462
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "Konuşmaya devam et"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:475
-#. js-lingui-explicit-id
-msgid "Start new lesson"
-msgstr "Yeni dersi başlat"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:676
-#. js-lingui-explicit-id
-msgid "Error during analyzing message"
-msgstr "Mesaj analizi sırasında hata"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:730
-#. js-lingui-explicit-id
-msgid "Almost correct"
-msgstr "Neredeyse doğru"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:745
-#. js-lingui-explicit-id
-msgid "Great!"
-msgstr "Harika!"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:768
-#. js-lingui-explicit-id
-msgid "Your Message"
-msgstr "Mesajınız"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:840
-#. js-lingui-explicit-id
-msgid "Corrected"
-msgstr "Düzeltildi"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:935
-#. js-lingui-explicit-id
-msgid "New Words to Vocabulary:"
-msgstr "Kelime Haznesine Yeni Kelimeler:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:980
-#. js-lingui-explicit-id
-msgid "Analyzing"
-msgstr "Analiz ediliyor"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:987
-#. js-lingui-explicit-id
-msgid "Preparing Goal"
-msgstr "Hedef Hazırlama"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1007
-#. js-lingui-explicit-id
-msgid "Goal is created"
-msgstr "Hedef oluşturuldu"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1017
-#. js-lingui-explicit-id
-msgid "Lessons added:"
-msgstr "Eklenen dersler:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1038
-#. js-lingui-explicit-id
-msgid "Open plan"
-msgstr "Açık plan"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1111
-#. js-lingui-explicit-id
-msgid "Stop"
-msgstr "Dur"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1143
-#. js-lingui-explicit-id
-msgid "Record Message"
-msgstr "Mesaj Kaydet"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1180
-#. js-lingui-explicit-id
-msgid "Use voice message mode"
-msgstr "Sesli mesaj modunu kullanın"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1197
-#. js-lingui-explicit-id
-msgid "Use keyboard mode"
-msgstr "Klavye modunu kullanın"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1214
-#. js-lingui-explicit-id
-msgid "Use phone mode"
-msgstr "Telefon modunu kullanın"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1230
-#. js-lingui-explicit-id
-msgid "Help with answer"
-msgstr "Cevapla ilgili yardım"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1253
-#. js-lingui-explicit-id
-msgid "Your message..."
-msgstr "Mesajınız..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1304
-#. js-lingui-explicit-id
-msgid "Mission complete"
-msgstr "Görev tamamlandı"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1316
-#. js-lingui-explicit-id
-msgid "Open results"
-msgstr "Sonuçları aç"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1358
-#. js-lingui-explicit-id
-msgid "Re-write"
-msgstr "Yeniden yaz"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1418
-#. js-lingui-explicit-id
-msgid "Cancel recording"
-msgstr "Kaydı iptal et"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1450
-#. js-lingui-explicit-id
-msgid "Top up"
-msgstr "Bakiye Yükle"
+msgid "Guessed words:"
+msgstr "Tahmin edilen kelimeler:"
 
 #: src/features/Conversation/ConfirmConversationModal.tsx:26
 #. js-lingui-explicit-id
@@ -4674,6 +4534,651 @@ msgstr "Daha sonra, AI ile konuşmak için mikrofona erişim izni verin."
 #. js-lingui-explicit-id
 msgid "I am ready"
 msgstr "Hazırım"
+
+#: src/features/Blog/ListBlogIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Read and Learn with my blog"
+msgstr "Benim blogumla okuyun ve öğrenin"
+
+#: src/features/Blog/ListBlogIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
+msgstr ""
+"İlham alın ve dil öğrenimi, öğretimi ve teknolojideki en son trendler "
+"hakkında bilgi edinin."
+
+#: src/features/Blog/ListBlog.tsx:131
+#. js-lingui-explicit-id
+msgid "No blogs found"
+msgstr "Hiç blog bulunamadı"
+
+#: src/features/Blog/BlogCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Read more"
+msgstr "Daha fazla oku"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:358
+#. js-lingui-explicit-id
+msgid "Idea for your message"
+msgstr "Mesajınız için fikir"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:416
+#. js-lingui-explicit-id
+msgid "Lesson Review"
+msgstr "Ders İncelemesi"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:437
+#. js-lingui-explicit-id
+msgid "Language level:"
+msgstr "Dil seviyesi:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:439
+#: src/features/Conversation/ConversationCanvas2.tsx:446
+#: src/features/Conversation/ConversationCanvas2.tsx:453
+#: src/features/Conversation/ConversationCanvas2.tsx:741
+#: src/features/Conversation/ConversationCanvas2.tsx:880
+#: src/features/Conversation/ConversationCanvas2.tsx:887
+#. js-lingui-explicit-id
+msgid "Analyzing..."
+msgstr "Analiz ediliyor..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:444
+#. js-lingui-explicit-id
+msgid "What was great:"
+msgstr "Harika olan neydi:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:451
+#. js-lingui-explicit-id
+msgid "Areas to improve:"
+msgstr "İyileştirilecek Alanlar:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:476
+#. js-lingui-explicit-id
+msgid "Continue conversation"
+msgstr "Konuşmaya devam et"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:489
+#. js-lingui-explicit-id
+msgid "Start new lesson"
+msgstr "Yeni dersi başlat"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:675
+#. js-lingui-explicit-id
+msgid "Error during analyzing message"
+msgstr "Mesaj analizi sırasında hata"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:729
+#. js-lingui-explicit-id
+msgid "Almost correct"
+msgstr "Neredeyse doğru"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:744
+#. js-lingui-explicit-id
+msgid "Great!"
+msgstr "Harika!"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:767
+#. js-lingui-explicit-id
+msgid "Your Message"
+msgstr "Mesajınız"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:839
+#. js-lingui-explicit-id
+msgid "Corrected"
+msgstr "Düzeltildi"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:934
+#. js-lingui-explicit-id
+msgid "New Words to Vocabulary:"
+msgstr "Kelime Haznesine Yeni Kelimeler:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:979
+#. js-lingui-explicit-id
+msgid "Analyzing"
+msgstr "Analiz ediliyor"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:986
+#. js-lingui-explicit-id
+msgid "Preparing Goal"
+msgstr "Hedef Hazırlama"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1006
+#. js-lingui-explicit-id
+msgid "Goal is created"
+msgstr "Hedef oluşturuldu"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1016
+#. js-lingui-explicit-id
+msgid "Lessons added:"
+msgstr "Eklenen dersler:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1037
+#. js-lingui-explicit-id
+msgid "Open plan"
+msgstr "Açık plan"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1110
+#. js-lingui-explicit-id
+msgid "Stop"
+msgstr "Dur"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1142
+#. js-lingui-explicit-id
+msgid "Record Message"
+msgstr "Mesaj Kaydet"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1176
+#. js-lingui-explicit-id
+msgid "Finish conversation"
+msgstr "Konuşmayı bitir"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1214
+#. js-lingui-explicit-id
+msgid "Voice record mode"
+msgstr "Ses kaydı modu"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1237
+#. js-lingui-explicit-id
+msgid "Keyboard mode"
+msgstr "Klavye modu"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1260
+#. js-lingui-explicit-id
+msgid "Phone call mode"
+msgstr "Telefon görüşmesi modu"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1282
+#. js-lingui-explicit-id
+msgid "Help with answer"
+msgstr "Cevapla ilgili yardım"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1305
+#. js-lingui-explicit-id
+msgid "Your message..."
+msgstr "Mesajınız..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1356
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "Görev tamamlandı"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1368
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "Sonuçları aç"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1410
+#. js-lingui-explicit-id
+msgid "Re-write"
+msgstr "Yeniden yaz"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1470
+#. js-lingui-explicit-id
+msgid "Cancel recording"
+msgstr "Kaydı iptal et"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1502
+#. js-lingui-explicit-id
+msgid "Top up"
+msgstr "Bakiye Yükle"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
+#. js-lingui-explicit-id
+msgid "At the end, we’ll share a valuable tool for realistic interview practice."
+msgstr "Sonunda, gerçekçi mülakat pratiği için değerli bir araç paylaşacağız."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
+#. js-lingui-explicit-id
+msgid "Introduction: Small Talk with the Interviewer"
+msgstr "Giriş: Mülakatçı ile Küçük Sohbet"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
+#. js-lingui-explicit-id
+msgid ""
+"The first few minutes of an interview are often dedicated to casual "
+"conversation — also known as 'SmallTalk'. Recruiters use this time to "
+"create a friendly atmosphere and get to know you a bit better."
+msgstr ""
+"Bir mülakatın ilk birkaç dakikası genellikle gündelik sohbete ayrılır - "
+"aynı zamanda 'SmallTalk' olarak da bilinir. İşe alımcılar bu süreyi dostça "
+"bir atmosfer yaratmak ve sizi biraz daha iyi tanımak için kullanır."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
+#. js-lingui-explicit-id
+msgid "Don’t skip small talk"
+msgstr "Küçük sohbetleri atlamayın"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
+#. js-lingui-explicit-id
+msgid ""
+"— it’s important to engage in this short conversation before jumping into "
+"professional topics. Here are some useful English phrases to start off the "
+"interview:"
+msgstr ""
+"— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
+"İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
+#. js-lingui-explicit-id
+msgid "English Phrases"
+msgstr "İngilizce İfadeler"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
+#. js-lingui-explicit-id
+msgid "A polite and professional greeting."
+msgstr "Nazik ve profesyonel bir selamlama."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
+#. js-lingui-explicit-id
+msgid "Expressing gratitude for the opportunity."
+msgstr "Fırsat için minnettarlık ifade etme."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
+#. js-lingui-explicit-id
+msgid "A standard reply to “How are you?”"
+msgstr "“Nasılsın?”a standart bir yanıt."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
+#. js-lingui-explicit-id
+msgid "A friendly compliment to break the ice."
+msgstr "Buzu kırmak için dostane bir iltifat."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"Smile, shake hands (if culturally appropriate), and speak in a friendly "
+"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
+"might say:"
+msgstr ""
+"Gülümseyin, el sıkışın (kültürel olarak uygunsa) ve dostça bir tonla "
+"konuşun. Eğer mülakatçı, “Bize ulaşmakta herhangi bir zorluk yaşadınız mı?” "
+"diye sorarsa, şöyle diyebilirsiniz:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"Short answers with a positive attitude show that you’re easy to talk to and "
+"open to dialogue."
+msgstr ""
+"Olumlu bir tutumla verilen kısa yanıtlar, sizinle konuşmanın kolay ve "
+"diyaloga açık olduğunuzu gösterir."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
+#. js-lingui-explicit-id
+msgid "Self-Introduction: Talking About Yourself"
+msgstr "Kendini Tanıtma: Kendinden Bahsetme"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
+#. js-lingui-explicit-id
+msgid "After the greeting, you'll usually hear:"
+msgstr "Selam verme işleminden sonra, genellikle duyarsınız:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
+#. js-lingui-explicit-id
+msgid ""
+"This is your chance to introduce your experience and skills. Don’t list "
+"your full biography — focus on the highlights of your professional "
+"background. A good answer structure in English might look like this:"
+msgstr ""
+"Bu, deneyimlerinizi ve yeteneklerinizi tanıtma şansınızdır. Tam "
+"biyografinizi listelemeyin - profesyonel geçmişinizin öne çıkan noktalarına "
+"odaklanın. İngilizce'de iyi bir cevap yapısı şöyle görünebilir:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
+#. js-lingui-explicit-id
+msgid "For example:"
+msgstr "Örneğin:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
+#. js-lingui-explicit-id
+msgid ""
+"Keep your answer focused: current or last position, a key achievement, and "
+"your interest in the company. Practice your self-introduction so you sound "
+msgstr ""
+"Cevabınızı odaklı tutun: mevcut veya son pozisyon, önemli bir başarı ve "
+"şirkete olan ilginiz. Kendi tanıtımınızı pratik yapın, böylece sesinizi"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
+#. js-lingui-explicit-id
+msgid "natural and not robotic"
+msgstr "doğal ve robotik olmayan"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
+#. js-lingui-explicit-id
+msgid "Useful Phrases for Self-Introduction"
+msgstr "Kendini Tanıtma İçin Faydalı İfadeler"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
+#. js-lingui-explicit-id
+msgid ""
+"Use these templates to craft your own story. Don’t forget to mention an "
+"achievement:"
+msgstr ""
+"Bu şablonları kendi hikayenizi oluşturmak için kullanın. Bir başarıyı "
+"belirtmeyi unutmayın:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
+#. js-lingui-explicit-id
+msgid "This shows results and makes you stand out."
+msgstr "Bu sonuçları gösterir ve sizi öne çıkarır."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
+#. js-lingui-explicit-id
+msgid "Answering Typical Interview Questions"
+msgstr "Tipik Mülakat Sorularına Yanıt Verme"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
+#. js-lingui-explicit-id
+msgid ""
+"Recruiters ask a variety of standard questions to understand your "
+"motivation and personality. Preparing answers in advance will help you stay "
+"calm and articulate. Focus on showing enthusiasm and confidence in your "
+"skills. Let’s look at some common questions and how to answer them:"
+msgstr ""
+"İşe alımcılar motivasyonunuzu ve kişiliğinizi anlamak için çeşitli standart "
+"sorular sorar. Cevapları önceden hazırlamak, sakin kalmanıza ve açık "
+"şekilde ifade etmenize yardımcı olur. Yeteneklerinize duyduğunuz güven ve "
+"coşkuyu göstermeye odaklanın. Şimdi bazı yaygın sorulara ve onlara nasıl "
+"cevap verileceğine bir bakalım:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
+#. js-lingui-explicit-id
+msgid "Show knowledge of the company and genuine interest. For example:"
+msgstr ""
+"Şirket hakkındaki bilgilerinizi gösterin ve samimi bir ilgi gösterin. "
+"Örneğin:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
+#. js-lingui-explicit-id
+msgid "Highlight your strengths relevant to the role:"
+msgstr "Rol ile ilgili güçlü yönlerinizi vurgulayın:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
+#. js-lingui-explicit-id
+msgid "Show your long-term goals:"
+msgstr "Uzun vadeli hedeflerinizi gösterin:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
+#. js-lingui-explicit-id
+msgid "Other common questions include:"
+msgstr "Diğer yaygın sorular şunları içerir:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
+#. js-lingui-explicit-id
+msgid "Prepare short, honest, and positive answers with real-life examples."
+msgstr "Gerçek hayat örnekleri ile kısa, dürüst ve olumlu yanıtlar hazırlayın."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
+#. js-lingui-explicit-id
+msgid "If you don’t understand a question, don’t panic — ask politely:"
+msgstr "Bir soruyu anlamazsanız, panik yapmayın — kibarca sorun:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
+#. js-lingui-explicit-id
+msgid "Talking About Strengths and Weaknesses"
+msgstr "Güçlü ve Zayıf Yönlerden Bahsetme"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"Most interviews include the classic “strengths and weaknesses” question. "
+"It’s especially important to handle this well in English."
+msgstr ""
+"Çoğu mülakat, klasik \"güçlü yönler ve zayıf yönler\" sorusunu içerir. Bunu "
+"İngilizce'de iyi bir şekilde ele almak özellikle önemlidir."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
+#. js-lingui-explicit-id
+msgid "Strengths:"
+msgstr "Güçlü Yönler:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
+"examples. For instance:"
+msgstr ""
+"İşle ilgili 2-3 anahtar nitelik seçin. Klişelerden kaçının ve örnekler "
+"sunun. Örneğin:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
+#. js-lingui-explicit-id
+msgid "Other useful strengths:"
+msgstr "Diğer kullanışlı güçler:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
+#. js-lingui-explicit-id
+msgid "Weaknesses:"
+msgstr "Zayıflıklar:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
+#. js-lingui-explicit-id
+msgid ""
+"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
+"mention a minor issue and how you’re working to improve it:"
+msgstr ""
+"Dürüst ancak diplomatik olun. “Hiç zayıflığım yok” demeyin. Bunun yerine, "
+"küçük bir sorunu ve bunu nasıl geliştirmeye çalıştığınızı belirtin:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
+#. js-lingui-explicit-id
+msgid "This approach shows self-awareness and growth."
+msgstr "Bu yaklaşım, öz-farkındalığı ve gelişimi gösterir."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
+#. js-lingui-explicit-id
+msgid "Questions to Ask the Employer"
+msgstr "İşverene Sorulacak Sorular"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
+#. js-lingui-explicit-id
+msgid "At the end of the interview, you’ll usually be asked:"
+msgstr "Mülakatın sonunda genellikle size şu sorular sorulur:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
+#. js-lingui-explicit-id
+msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
+msgstr "\"Asla “hayır” demeyin. Önceden 2-3 akıllı soru hazırlayın:\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
+#. js-lingui-explicit-id
+msgid "Always respond politely:"
+msgstr "Her zaman kibarca cevap verin:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
+#. js-lingui-explicit-id
+msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
+msgstr "Merak ve ilgi gösterin. Yanıtları için onlara teşekkür etmeyi unutmayın:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
+#. js-lingui-explicit-id
+msgid "Ending the Interview: Final Phrases"
+msgstr "Mülakatı Bitirme: Son ifadeler"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
+#. js-lingui-explicit-id
+msgid ""
+"Wrap up the interview with gratitude and confidence. Use these phrases to "
+"end on a positive note:"
+msgstr ""
+"Mülakatı minnettarlık ve güvenle tamamlayın. Olumlu bir notla sonlandırmak "
+"için bu ifadeleri kullanın:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"If it was an in-person interview, shake hands and maintain eye contact. If "
+"it was online, say goodbye with a friendly tone. Consider sending a "
+"thank-you email the next day:"
+msgstr ""
+"Eğer yüz yüze bir mülakat ise, el sıkışın ve göz temasını koruyun. Eğer "
+"çevrimiçi olduysa, dostça bir tonla veda edin. Ertesi gün bir teşekkür "
+"e-postası göndermeyi düşünün:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
+#. js-lingui-explicit-id
+msgid "Common Mistakes to Avoid"
+msgstr "Kaçınılması Gereken Ortak Hatalar"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
+#. js-lingui-explicit-id
+msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
+msgstr ""
+"Küçük sohbetleri atlayın - Mülakatçının yönlendirmelerini takip edin ve "
+"samimi olun."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
+#. js-lingui-explicit-id
+msgid ""
+"Saying “I don’t know” directly — Instead say: “That’s an interesting "
+"question. Let me think for a moment.”"
+msgstr ""
+"\"Doğrudan “Bilmiyorum” demek yerine — Şöyle deyin: “Bu ilginç bir soru. "
+"Biraz düşüneyim.”\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
+#. js-lingui-explicit-id
+msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
+msgstr ""
+"Nezaket eksikliği — Gerektiği gibi *lütfen*, *teşekkür ederim*, "
+"*affedersiniz* kullanın."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
+#. js-lingui-explicit-id
+msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
+msgstr ""
+"Aşırı ezberlenmiş cevaplar — Ezberlemeyin; fikirlerinizi hazırlayın ve "
+"doğal konuşun."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
+#. js-lingui-explicit-id
+msgid ""
+"Negative comments — Never badmouth past employers. Stay neutral and "
+"constructive."
+msgstr ""
+"Olumsuz yorumlar - Asla eski işverenler hakkında kötü konuşmayın. Tarafsız "
+"ve yapıcı olun."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
+#. js-lingui-explicit-id
+msgid ""
+"Showing no interest — Ask questions and react positively to company "
+"information."
+msgstr ""
+"İlgisiz görünüyor — Şirket bilgilerine olumlu tepkiler verin ve sorular "
+"sorun."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
+#. js-lingui-explicit-id
+msgid ""
+"Avoiding these mistakes will make you look more professional and increase "
+"your chances of success."
+msgstr ""
+"Bu hatalardan kaçınmak sizi daha profesyonel gösterecek ve başarı şansınızı "
+"artıracaktır."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
+#. js-lingui-explicit-id
+msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
+msgstr "FluencyPal'da Pratik Mülakatlar: Kendine Güven Yolunuz"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
+#. js-lingui-explicit-id
+msgid ""
+"Knowing useful phrases and tips is great, but the most important step is "
+"real-world practice. The best way to prepare is to do a mock interview. "
+"That’s exactly what the interactive role-play on FluencyPal offers."
+msgstr ""
+"Faydalı ifadeler ve ipuçlarını bilmek harika, ancak en önemli adım gerçek "
+"dünya pratiği yapmaktır. Hazırlanmanın en iyi yolu bir mülakat simülasyonu "
+"yapmaktır. İşte FluencyPal'daki interaktif rol oyunu tam olarak bunu sunar."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
+#. js-lingui-explicit-id
+msgid ""
+"On this platform, you can upload your resume, specify your desired job, and "
+"go through a realistic interview with an AI interviewer."
+msgstr ""
+"Bu platformda, özgeçmişinizi yükleyebilir, istediğiniz işi belirtebilir ve "
+"bir AI mülakatçısıyla gerçekçi bir mülakata girebilirsiniz."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
+#. js-lingui-explicit-id
+msgid "How it works:"
+msgstr "Nasıl çalışır:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
+#. js-lingui-explicit-id
+msgid ""
+"You answer questions just like in a real interview and get instant "
+"feedback. The AI adapts the questions to your profession and experience. "
+"This kind of training helps you identify weak spots, work on your "
+"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
+"notice your speech becoming more fluent and your answers more polished with "
+"each attempt."
+msgstr ""
+"Gerçek bir mülakatta olduğu gibi soruları yanıtlarsınız ve anında geri "
+"bildirim alırsınız. Yapay zeka soruları mesleğinize ve deneyiminize göre "
+"uyarlar. Bu tür bir eğitim, zayıf yönlerinizi belirlemenize, telaffuzunuz "
+"üzerinde çalışmanıza ve beklenmedik soruları sakin bir şekilde nasıl ele "
+"alacağınızı öğrenmenize yardımcı olur. Her denemede konuşmanızın daha akıcı "
+"hale geldiğini ve yanıtlarınızın daha çok cilalandığını fark edeceksiniz."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
+#. js-lingui-explicit-id
+msgid "Career benefit:"
+msgstr "Kariyer faydası:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
+#. js-lingui-explicit-id
+msgid ""
+"After several sessions, you’ll walk into your real interview much more "
+"confident. You’ll know what phrases to use, how to present yourself, and "
+"how to respond professionally. It can significantly boost your chances of "
+"landing your dream job."
+msgstr ""
+"Birkaç oturumdan sonra, gerçek mülakatınıza çok daha özgüvenli bir şekilde "
+"gireceksiniz. Hangi ifadeleri kullanacağınızı, nasıl kendinizi sunacağınızı "
+"ve nasıl profesyonel bir şekilde cevap vereceğinizi bileceksiniz. Bu, hayal "
+"ettiğiniz işe yerleşme şansınızı önemli ölçüde artırabilir."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
+#. js-lingui-explicit-id
+msgid ""
+"Preparing for an interview in English takes time, but it pays off. Use the "
+"tips from this article, practice with FluencyPal’s interview simulator, and "
+"walk into your next job interview with confidence."
+msgstr ""
+"İngilizce bir mülakata hazırlanmak zaman alır, ancak karşılığını verir. Bu "
+"makaleden alınan tavsiyeleri kullanın, FluencyPal'ın mülakat simülatörü ile "
+"pratik yapın ve bir sonraki iş mülakatına güvenle girin."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
+#. js-lingui-explicit-id
+msgid "Good preparation today means career success tomorrow."
+msgstr "Bugün iyi bir hazırlık, yarın kariyer başarısı anlamına gelir."
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "Tüm gönderileri görüntüle"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "Rol oynama senaryolarıyla pratik yapın"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "Şimdi AI'yi deneyebilirsiniz"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "Ücretsiz deneyin"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6184,501 +6689,6 @@ msgstr "Profesyonel Gelişim"
 msgid "All Blogs"
 msgstr "Tüm Bloglar"
 
-#: src/features/Blog/ListBlogIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "Benim blogumla okuyun ve öğrenin"
-
-#: src/features/Blog/ListBlogIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr ""
-"İlham alın ve dil öğrenimi, öğretimi ve teknolojideki en son trendler "
-"hakkında bilgi edinin."
-
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "Tüm gönderileri görüntüle"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "Rol oynama senaryolarıyla pratik yapın"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "Şimdi AI'yi deneyebilirsiniz"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "Ücretsiz deneyin"
-
-#: src/features/Blog/BlogCard.tsx:168
-#. js-lingui-explicit-id
-msgid "Read more"
-msgstr "Daha fazla oku"
-
-#: src/features/Blog/ListBlog.tsx:131
-#. js-lingui-explicit-id
-msgid "No blogs found"
-msgstr "Hiç blog bulunamadı"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
-#. js-lingui-explicit-id
-msgid "At the end, we’ll share a valuable tool for realistic interview practice."
-msgstr "Sonunda, gerçekçi mülakat pratiği için değerli bir araç paylaşacağız."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
-#. js-lingui-explicit-id
-msgid "Introduction: Small Talk with the Interviewer"
-msgstr "Giriş: Mülakatçı ile Küçük Sohbet"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
-#. js-lingui-explicit-id
-msgid ""
-"The first few minutes of an interview are often dedicated to casual "
-"conversation — also known as 'SmallTalk'. Recruiters use this time to "
-"create a friendly atmosphere and get to know you a bit better."
-msgstr ""
-"Bir mülakatın ilk birkaç dakikası genellikle gündelik sohbete ayrılır - "
-"aynı zamanda 'SmallTalk' olarak da bilinir. İşe alımcılar bu süreyi dostça "
-"bir atmosfer yaratmak ve sizi biraz daha iyi tanımak için kullanır."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
-#. js-lingui-explicit-id
-msgid "Don’t skip small talk"
-msgstr "Küçük sohbetleri atlamayın"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
-#. js-lingui-explicit-id
-msgid ""
-"— it’s important to engage in this short conversation before jumping into "
-"professional topics. Here are some useful English phrases to start off the "
-"interview:"
-msgstr ""
-"— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
-"İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
-#. js-lingui-explicit-id
-msgid "English Phrases"
-msgstr "İngilizce İfadeler"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
-#. js-lingui-explicit-id
-msgid "A polite and professional greeting."
-msgstr "Nazik ve profesyonel bir selamlama."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
-#. js-lingui-explicit-id
-msgid "Expressing gratitude for the opportunity."
-msgstr "Fırsat için minnettarlık ifade etme."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
-#. js-lingui-explicit-id
-msgid "A standard reply to “How are you?”"
-msgstr "“Nasılsın?”a standart bir yanıt."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
-#. js-lingui-explicit-id
-msgid "A friendly compliment to break the ice."
-msgstr "Buzu kırmak için dostane bir iltifat."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
-#. js-lingui-explicit-id
-msgid ""
-"Smile, shake hands (if culturally appropriate), and speak in a friendly "
-"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
-"might say:"
-msgstr ""
-"Gülümseyin, el sıkışın (kültürel olarak uygunsa) ve dostça bir tonla "
-"konuşun. Eğer mülakatçı, “Bize ulaşmakta herhangi bir zorluk yaşadınız mı?” "
-"diye sorarsa, şöyle diyebilirsiniz:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
-#. js-lingui-explicit-id
-msgid ""
-"Short answers with a positive attitude show that you’re easy to talk to and "
-"open to dialogue."
-msgstr ""
-"Olumlu bir tutumla verilen kısa yanıtlar, sizinle konuşmanın kolay ve "
-"diyaloga açık olduğunuzu gösterir."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
-#. js-lingui-explicit-id
-msgid "Self-Introduction: Talking About Yourself"
-msgstr "Kendini Tanıtma: Kendinden Bahsetme"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
-#. js-lingui-explicit-id
-msgid "After the greeting, you'll usually hear:"
-msgstr "Selam verme işleminden sonra, genellikle duyarsınız:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
-#. js-lingui-explicit-id
-msgid ""
-"This is your chance to introduce your experience and skills. Don’t list "
-"your full biography — focus on the highlights of your professional "
-"background. A good answer structure in English might look like this:"
-msgstr ""
-"Bu, deneyimlerinizi ve yeteneklerinizi tanıtma şansınızdır. Tam "
-"biyografinizi listelemeyin - profesyonel geçmişinizin öne çıkan noktalarına "
-"odaklanın. İngilizce'de iyi bir cevap yapısı şöyle görünebilir:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
-#. js-lingui-explicit-id
-msgid "For example:"
-msgstr "Örneğin:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
-#. js-lingui-explicit-id
-msgid ""
-"Keep your answer focused: current or last position, a key achievement, and "
-"your interest in the company. Practice your self-introduction so you sound "
-msgstr ""
-"Cevabınızı odaklı tutun: mevcut veya son pozisyon, önemli bir başarı ve "
-"şirkete olan ilginiz. Kendi tanıtımınızı pratik yapın, böylece sesinizi"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
-#. js-lingui-explicit-id
-msgid "natural and not robotic"
-msgstr "doğal ve robotik olmayan"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
-#. js-lingui-explicit-id
-msgid "Useful Phrases for Self-Introduction"
-msgstr "Kendini Tanıtma İçin Faydalı İfadeler"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
-#. js-lingui-explicit-id
-msgid ""
-"Use these templates to craft your own story. Don’t forget to mention an "
-"achievement:"
-msgstr ""
-"Bu şablonları kendi hikayenizi oluşturmak için kullanın. Bir başarıyı "
-"belirtmeyi unutmayın:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
-#. js-lingui-explicit-id
-msgid "This shows results and makes you stand out."
-msgstr "Bu sonuçları gösterir ve sizi öne çıkarır."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
-#. js-lingui-explicit-id
-msgid "Answering Typical Interview Questions"
-msgstr "Tipik Mülakat Sorularına Yanıt Verme"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
-#. js-lingui-explicit-id
-msgid ""
-"Recruiters ask a variety of standard questions to understand your "
-"motivation and personality. Preparing answers in advance will help you stay "
-"calm and articulate. Focus on showing enthusiasm and confidence in your "
-"skills. Let’s look at some common questions and how to answer them:"
-msgstr ""
-"İşe alımcılar motivasyonunuzu ve kişiliğinizi anlamak için çeşitli standart "
-"sorular sorar. Cevapları önceden hazırlamak, sakin kalmanıza ve açık "
-"şekilde ifade etmenize yardımcı olur. Yeteneklerinize duyduğunuz güven ve "
-"coşkuyu göstermeye odaklanın. Şimdi bazı yaygın sorulara ve onlara nasıl "
-"cevap verileceğine bir bakalım:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
-#. js-lingui-explicit-id
-msgid "Show knowledge of the company and genuine interest. For example:"
-msgstr ""
-"Şirket hakkındaki bilgilerinizi gösterin ve samimi bir ilgi gösterin. "
-"Örneğin:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
-#. js-lingui-explicit-id
-msgid "Highlight your strengths relevant to the role:"
-msgstr "Rol ile ilgili güçlü yönlerinizi vurgulayın:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
-#. js-lingui-explicit-id
-msgid "Show your long-term goals:"
-msgstr "Uzun vadeli hedeflerinizi gösterin:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
-#. js-lingui-explicit-id
-msgid "Other common questions include:"
-msgstr "Diğer yaygın sorular şunları içerir:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
-#. js-lingui-explicit-id
-msgid "Prepare short, honest, and positive answers with real-life examples."
-msgstr "Gerçek hayat örnekleri ile kısa, dürüst ve olumlu yanıtlar hazırlayın."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
-#. js-lingui-explicit-id
-msgid "If you don’t understand a question, don’t panic — ask politely:"
-msgstr "Bir soruyu anlamazsanız, panik yapmayın — kibarca sorun:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
-#. js-lingui-explicit-id
-msgid "Talking About Strengths and Weaknesses"
-msgstr "Güçlü ve Zayıf Yönlerden Bahsetme"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
-#. js-lingui-explicit-id
-msgid ""
-"Most interviews include the classic “strengths and weaknesses” question. "
-"It’s especially important to handle this well in English."
-msgstr ""
-"Çoğu mülakat, klasik \"güçlü yönler ve zayıf yönler\" sorusunu içerir. Bunu "
-"İngilizce'de iyi bir şekilde ele almak özellikle önemlidir."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
-#. js-lingui-explicit-id
-msgid "Strengths:"
-msgstr "Güçlü Yönler:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
-#. js-lingui-explicit-id
-msgid ""
-"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
-"examples. For instance:"
-msgstr ""
-"İşle ilgili 2-3 anahtar nitelik seçin. Klişelerden kaçının ve örnekler "
-"sunun. Örneğin:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
-#. js-lingui-explicit-id
-msgid "Other useful strengths:"
-msgstr "Diğer kullanışlı güçler:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
-#. js-lingui-explicit-id
-msgid "Weaknesses:"
-msgstr "Zayıflıklar:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
-#. js-lingui-explicit-id
-msgid ""
-"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
-"mention a minor issue and how you’re working to improve it:"
-msgstr ""
-"Dürüst ancak diplomatik olun. “Hiç zayıflığım yok” demeyin. Bunun yerine, "
-"küçük bir sorunu ve bunu nasıl geliştirmeye çalıştığınızı belirtin:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
-#. js-lingui-explicit-id
-msgid "This approach shows self-awareness and growth."
-msgstr "Bu yaklaşım, öz-farkındalığı ve gelişimi gösterir."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
-#. js-lingui-explicit-id
-msgid "Questions to Ask the Employer"
-msgstr "İşverene Sorulacak Sorular"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
-#. js-lingui-explicit-id
-msgid "At the end of the interview, you’ll usually be asked:"
-msgstr "Mülakatın sonunda genellikle size şu sorular sorulur:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
-#. js-lingui-explicit-id
-msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
-msgstr "\"Asla “hayır” demeyin. Önceden 2-3 akıllı soru hazırlayın:\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
-#. js-lingui-explicit-id
-msgid "Always respond politely:"
-msgstr "Her zaman kibarca cevap verin:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
-#. js-lingui-explicit-id
-msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
-msgstr "Merak ve ilgi gösterin. Yanıtları için onlara teşekkür etmeyi unutmayın:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
-#. js-lingui-explicit-id
-msgid "Ending the Interview: Final Phrases"
-msgstr "Mülakatı Bitirme: Son ifadeler"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
-#. js-lingui-explicit-id
-msgid ""
-"Wrap up the interview with gratitude and confidence. Use these phrases to "
-"end on a positive note:"
-msgstr ""
-"Mülakatı minnettarlık ve güvenle tamamlayın. Olumlu bir notla sonlandırmak "
-"için bu ifadeleri kullanın:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
-#. js-lingui-explicit-id
-msgid ""
-"If it was an in-person interview, shake hands and maintain eye contact. If "
-"it was online, say goodbye with a friendly tone. Consider sending a "
-"thank-you email the next day:"
-msgstr ""
-"Eğer yüz yüze bir mülakat ise, el sıkışın ve göz temasını koruyun. Eğer "
-"çevrimiçi olduysa, dostça bir tonla veda edin. Ertesi gün bir teşekkür "
-"e-postası göndermeyi düşünün:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
-#. js-lingui-explicit-id
-msgid "Common Mistakes to Avoid"
-msgstr "Kaçınılması Gereken Ortak Hatalar"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
-#. js-lingui-explicit-id
-msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
-msgstr ""
-"Küçük sohbetleri atlayın - Mülakatçının yönlendirmelerini takip edin ve "
-"samimi olun."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
-#. js-lingui-explicit-id
-msgid ""
-"Saying “I don’t know” directly — Instead say: “That’s an interesting "
-"question. Let me think for a moment.”"
-msgstr ""
-"\"Doğrudan “Bilmiyorum” demek yerine — Şöyle deyin: “Bu ilginç bir soru. "
-"Biraz düşüneyim.”\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
-#. js-lingui-explicit-id
-msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
-msgstr ""
-"Nezaket eksikliği — Gerektiği gibi *lütfen*, *teşekkür ederim*, "
-"*affedersiniz* kullanın."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
-#. js-lingui-explicit-id
-msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
-msgstr ""
-"Aşırı ezberlenmiş cevaplar — Ezberlemeyin; fikirlerinizi hazırlayın ve "
-"doğal konuşun."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
-#. js-lingui-explicit-id
-msgid ""
-"Negative comments — Never badmouth past employers. Stay neutral and "
-"constructive."
-msgstr ""
-"Olumsuz yorumlar - Asla eski işverenler hakkında kötü konuşmayın. Tarafsız "
-"ve yapıcı olun."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
-#. js-lingui-explicit-id
-msgid ""
-"Showing no interest — Ask questions and react positively to company "
-"information."
-msgstr ""
-"İlgisiz görünüyor — Şirket bilgilerine olumlu tepkiler verin ve sorular "
-"sorun."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
-#. js-lingui-explicit-id
-msgid ""
-"Avoiding these mistakes will make you look more professional and increase "
-"your chances of success."
-msgstr ""
-"Bu hatalardan kaçınmak sizi daha profesyonel gösterecek ve başarı şansınızı "
-"artıracaktır."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
-#. js-lingui-explicit-id
-msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
-msgstr "FluencyPal'da Pratik Mülakatlar: Kendine Güven Yolunuz"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
-#. js-lingui-explicit-id
-msgid ""
-"Knowing useful phrases and tips is great, but the most important step is "
-"real-world practice. The best way to prepare is to do a mock interview. "
-"That’s exactly what the interactive role-play on FluencyPal offers."
-msgstr ""
-"Faydalı ifadeler ve ipuçlarını bilmek harika, ancak en önemli adım gerçek "
-"dünya pratiği yapmaktır. Hazırlanmanın en iyi yolu bir mülakat simülasyonu "
-"yapmaktır. İşte FluencyPal'daki interaktif rol oyunu tam olarak bunu sunar."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
-#. js-lingui-explicit-id
-msgid ""
-"On this platform, you can upload your resume, specify your desired job, and "
-"go through a realistic interview with an AI interviewer."
-msgstr ""
-"Bu platformda, özgeçmişinizi yükleyebilir, istediğiniz işi belirtebilir ve "
-"bir AI mülakatçısıyla gerçekçi bir mülakata girebilirsiniz."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
-#. js-lingui-explicit-id
-msgid "How it works:"
-msgstr "Nasıl çalışır:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
-#. js-lingui-explicit-id
-msgid ""
-"You answer questions just like in a real interview and get instant "
-"feedback. The AI adapts the questions to your profession and experience. "
-"This kind of training helps you identify weak spots, work on your "
-"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
-"notice your speech becoming more fluent and your answers more polished with "
-"each attempt."
-msgstr ""
-"Gerçek bir mülakatta olduğu gibi soruları yanıtlarsınız ve anında geri "
-"bildirim alırsınız. Yapay zeka soruları mesleğinize ve deneyiminize göre "
-"uyarlar. Bu tür bir eğitim, zayıf yönlerinizi belirlemenize, telaffuzunuz "
-"üzerinde çalışmanıza ve beklenmedik soruları sakin bir şekilde nasıl ele "
-"alacağınızı öğrenmenize yardımcı olur. Her denemede konuşmanızın daha akıcı "
-"hale geldiğini ve yanıtlarınızın daha çok cilalandığını fark edeceksiniz."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
-#. js-lingui-explicit-id
-msgid "Career benefit:"
-msgstr "Kariyer faydası:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
-#. js-lingui-explicit-id
-msgid ""
-"After several sessions, you’ll walk into your real interview much more "
-"confident. You’ll know what phrases to use, how to present yourself, and "
-"how to respond professionally. It can significantly boost your chances of "
-"landing your dream job."
-msgstr ""
-"Birkaç oturumdan sonra, gerçek mülakatınıza çok daha özgüvenli bir şekilde "
-"gireceksiniz. Hangi ifadeleri kullanacağınızı, nasıl kendinizi sunacağınızı "
-"ve nasıl profesyonel bir şekilde cevap vereceğinizi bileceksiniz. Bu, hayal "
-"ettiğiniz işe yerleşme şansınızı önemli ölçüde artırabilir."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
-#. js-lingui-explicit-id
-msgid ""
-"Preparing for an interview in English takes time, but it pays off. Use the "
-"tips from this article, practice with FluencyPal’s interview simulator, and "
-"walk into your next job interview with confidence."
-msgstr ""
-"İngilizce bir mülakata hazırlanmak zaman alır, ancak karşılığını verir. Bu "
-"makaleden alınan tavsiyeleri kullanın, FluencyPal'ın mülakat simülatörü ile "
-"pratik yapın ve bir sonraki iş mülakatına güvenle girin."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
-#. js-lingui-explicit-id
-msgid "Good preparation today means career success tomorrow."
-msgstr "Bugün iyi bir hazırlık, yarın kariyer başarısı anlamına gelir."
-
-#: src/features/Conversation/AliasGamePanel.tsx:122
-#. js-lingui-explicit-id
-msgid "Describe these words:"
-msgstr "Bu kelimeleri tanımlayın:"
-
-#: src/features/Conversation/AliasGamePanel.tsx:171
-#. js-lingui-explicit-id
-msgid "More options"
-msgstr "Daha fazla seçenek"
-
-#: src/features/Conversation/AliasGamePanel.tsx:180
-#. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "Tahmin edilen kelimeler:"
-
 #: src/features/Auth/SignInForm.tsx:30
 #. js-lingui-explicit-id
 msgid "Open personal plan"
@@ -6775,6 +6785,21 @@ msgstr "Oyunu kazanın ve uygulamayı <0>ücretsiz</0> alın"
 #: src/features/Game/GameBadge.tsx:118
 msgid "You are <0>the Leader</0> of {playersCount} players."
 msgstr "<0>Lider</0>siniz ve {playersCount} oyuncunuz var."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1180
+#. js-lingui-explicit-id
+#~ msgid "Use voice message mode"
+#~ msgstr "Sesli mesaj modunu kullanın"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1197
+#. js-lingui-explicit-id
+#~ msgid "Use keyboard mode"
+#~ msgstr "Klavye modunu kullanın"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1214
+#. js-lingui-explicit-id
+#~ msgid "Use phone mode"
+#~ msgstr "Telefon modunu kullanın"
 
 #: src/features/Game/GameMyUsername.tsx:41
 #. js-lingui-explicit-id

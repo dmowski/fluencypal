@@ -266,7 +266,16 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           const isMuted = !isCallMode;
           aiConversation.toggleMute(isMuted);
         }}
+        isMuted={aiConversation.isMuted}
+        setIsMuted={(isMuted) => {
+          aiConversation.toggleMute(isMuted);
+        }}
         isNeedToShowBalanceWarning={!isFullAccess}
+        isVolumeOn={aiConversation.isVolumeOn}
+        setIsVolumeOn={(isVolumeOn) => {
+          console.log("NEW STATE | Volume", isVolumeOn);
+          aiConversation.toggleVolume(isVolumeOn);
+        }}
       />
     </Stack>
   );
