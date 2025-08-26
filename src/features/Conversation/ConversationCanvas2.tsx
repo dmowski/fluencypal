@@ -1190,7 +1190,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       <ListItemIcon>{!isVolumeOn ? <Volume2 /> : <VolumeX />}</ListItemIcon>
                       <ListItemText>
                         <Typography>
-                          {isVolumeOn ? i18n._("Volume Off") : i18n._("Volume On")}
+                          {isVolumeOn ? i18n._("Turn Volume Off") : i18n._("Turn Volume On")}
                         </Typography>
                       </ListItemText>
                     </MenuItem>
