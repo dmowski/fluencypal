@@ -4,7 +4,6 @@ import { Stack } from "@mui/material";
 
 import { ProgressBoard } from "./Progress/ProgressBoard";
 import { RolePlayBoard } from "../RolePlay/RolePlayBoard";
-import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { UsageStatsCards } from "../Usage/UsageStatsCards";
 import { PlanDashboardCards } from "./PlanDashboardCards";
 import { SupportedLanguage } from "@/features/Lang/lang";
@@ -13,16 +12,17 @@ import { NavigationBar } from "../Navigation/NavigationBar";
 import { MyProfile } from "../Settings/MyProfile";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { DashboardBlur } from "./DashboardBlur";
+import { RolePlayModal } from "../RolePlay/RolePlayModal";
 
 interface DashboardProps {
-  rolePlayInfo: RolePlayScenariosInfo;
   lang: SupportedLanguage;
 }
-export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
+export function Dashboard({ lang }: DashboardProps) {
   const appNavigation = useAppNavigation();
   return (
     <>
       <NavigationBar lang={lang} />
+      <RolePlayModal />
 
       <Stack
         sx={{
@@ -46,9 +46,7 @@ export function Dashboard({ rolePlayInfo, lang }: DashboardProps) {
             </>
           )}
 
-          {appNavigation.currentPage === "role-play" && (
-            <RolePlayBoard rolePlayInfo={rolePlayInfo} />
-          )}
+          {appNavigation.currentPage === "role-play" && <RolePlayBoard />}
 
           {appNavigation.currentPage === "profile" && (
             <>

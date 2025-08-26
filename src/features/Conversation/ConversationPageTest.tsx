@@ -203,6 +203,8 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         toggleCallMode={() => {}}
         isNeedToShowBalanceWarning={false}
         setIsMuted={() => {}}
+        isVolumeOn={true}
+        setIsVolumeOn={() => {}}
       />
     </Stack>
   );

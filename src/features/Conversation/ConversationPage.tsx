@@ -35,6 +35,7 @@ import { PlanDashboardCards } from "../Dashboard/PlanDashboardCards";
 import { usePayWall } from "../PayWall/usePayWall";
 import { useGame } from "../Game/useGame";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
+import { RolePlayProvider } from "../RolePlay/useRolePlay";
 
 interface ConversationPageProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -193,7 +194,9 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     return (
       <>
         {paywall.isShowPayWall && !usage.isShowPaymentModal && <NoBalanceBlock lang={lang} />}
-        <Dashboard rolePlayInfo={rolePlayInfo} lang={lang} />
+        <RolePlayProvider rolePlayInfo={rolePlayInfo}>
+          <Dashboard lang={lang} />
+        </RolePlayProvider>
       </>
     );
   }
