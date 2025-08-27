@@ -1,5 +1,5 @@
 "use client";
-import { backButton, isTMA } from "@telegram-apps/sdk-react";
+import { backButton, isTMA, swipeBehavior, closingBehavior } from "@telegram-apps/sdk-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createContext, useContext, ReactNode, JSX, useEffect } from "react";
 
@@ -35,12 +35,23 @@ function useProvideTgNavigation(): TgNavigationContextType {
       return;
     }
 
+    swipeBehavior.mount.ifAvailable?.();
+    closingBehavior.mount.ifAvailable?.();
+
+    // 3) Disable the swipe-down minimize/close gesture (TG v7.7+)
+    swipeBehavior.disableVertical.ifAvailable?.();
+
+    // 4) Also ask for confirmation on close (works on older clients, too)
+    closingBehavior.enableConfirmation.ifAvailable?.();
+
     backButton.mount();
 
     const off = backButton.onClick(navigationBack); // handle click
     return () => {
       off(); // remove handler
       backButton.hide(); // hide when component unmounts
+      swipeBehavior.enableVertical.ifAvailable?.();
+      closingBehavior.disableConfirmation.ifAvailable?.();
     };
   }, []);
 
