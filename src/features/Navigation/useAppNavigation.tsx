@@ -18,7 +18,7 @@ function useProvideAppNavigation(): AppNavigationContextType {
   const [internalValue, setInternalValue] = useState<PageType>("home");
   const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
-  const urlPage = searchParams.get("page") as PageType | null;
+  const urlPage = (searchParams.get("page") || "home") as PageType;
   const router = useRouter();
 
   const pageUrl = (page: PageType) => {
@@ -28,7 +28,7 @@ function useProvideAppNavigation(): AppNavigationContextType {
   };
 
   useEffect(() => {
-    if (urlPage && urlPage !== internalValue) {
+    if (urlPage !== internalValue) {
       setInternalValue(urlPage);
       return;
     }
