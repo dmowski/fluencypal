@@ -31,7 +31,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const settings = useSettings();
 
   const { i18n } = useLingui();
-  const [, setIsShowLogout] = useState(true);
+  const [isShowLogout, setIsShowLogout] = useState(true);
 
   useEffect(() => {
     const isTelegramApp = isTMA();
@@ -40,7 +40,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     }
     setTimeout(() => {
       setIsShowLogout(false);
-    }, 100);
+    }, 10);
   }, []);
 
   const [isShowHelpModal, setIsShowHelpModal] = useUrlParam("help");
@@ -106,7 +106,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     },
   ];
 
-  if (menuItems) {
+  if (isShowLogout) {
     menuItems.push({
       title: i18n._(`Log Out`),
       subTitle: i18n._(`Log out of your account`),
