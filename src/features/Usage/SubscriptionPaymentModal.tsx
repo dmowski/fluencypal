@@ -3,7 +3,7 @@ import { Button, Checkbox, FormControlLabel, Link, Stack, Typography } from "@mu
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useUsage } from "./useUsage";
 import { useNotifications } from "@toolpad/core/useNotifications";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { createStripeCheckout } from "./createStripeCheckout";
 
@@ -45,6 +45,7 @@ export const SubscriptionPaymentModal = () => {
   const [isMarketingChecked, setIsMarketingChecked] = useState(false);
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
   const [isTelegramPaymentOptions, setIsTelegramPaymentOptions] = useState(false);
+  const [isPriceInStars, setIsPriceInStars] = useState(false);
 
   const pathname = usePathname();
   const locale = pathname?.split("/")[1] as string;
@@ -196,6 +197,11 @@ export const SubscriptionPaymentModal = () => {
   const activeTill = usage.activeSubscriptionTill
     ? `${dayjs(usage.activeSubscriptionTill).format("DD MMM")} (in ${dayjs(usage.activeSubscriptionTill).fromNow(true)})`
     : null;
+
+  useEffect(() => {
+    const isTelegramApp = isTMA();
+    setIsPriceInStars(isTelegramApp);
+  }, []);
 
   if (!usage.isShowPaymentModal) return null;
   return (
@@ -531,39 +537,80 @@ export const SubscriptionPaymentModal = () => {
                     )}
                   </Stack>
 
-                  <Stack
-                    sx={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}
-                  >
-                    <Typography
-                      variant="h2"
-                      sx={{
-                        fontWeight: 500,
-                        fontSize: "3.6rem",
-                      }}
-                    >
-                      {pricePerMonthInCurrency}
-                    </Typography>
-                    <Stack
-                      sx={{
-                        paddingTop: "18px",
-                        height: "100%",
-                      }}
-                    >
-                      <Typography
-                        variant="caption"
+                  {isPriceInStars ? (
+                    <>
+                      <Stack
                         sx={{
-                          textTransform: "uppercase",
+                          flexDirection: "row",
+                          alignItems: "center",
+                          gap: "8px",
                         }}
                       >
-                        {currency.currency} /
-                      </Typography>
-                      <Typography variant="caption">{i18n._("month")}</Typography>
-                    </Stack>
-                  </Stack>
+                        <TgGoldStar size="3.1rem" />
+                        <Typography
+                          variant="h2"
+                          sx={{
+                            fontWeight: 500,
+                            fontSize: "3.4rem",
+                          }}
+                        >
+                          {TELEGRAM_MONTHLY_PRICE_START}
+                        </Typography>
+                        <Stack
+                          sx={{
+                            paddingTop: "18px",
+                            height: "100%",
+                          }}
+                        >
+                          <Typography
+                            variant="caption"
+                            sx={{
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {i18n._(`Stars`)} /
+                          </Typography>
+                          <Typography variant="caption">{i18n._("month")}</Typography>
+                        </Stack>
+                      </Stack>
+                    </>
+                  ) : (
+                    <>
+                      <Stack
+                        sx={{
+                          flexDirection: "row",
+                          alignItems: "center",
+                          gap: "8px",
+                        }}
+                      >
+                        <Typography
+                          variant="h2"
+                          sx={{
+                            fontWeight: 500,
+                            fontSize: "3.6rem",
+                          }}
+                        >
+                          {pricePerMonthInCurrency}
+                        </Typography>
+                        <Stack
+                          sx={{
+                            paddingTop: "18px",
+                            height: "100%",
+                          }}
+                        >
+                          <Typography
+                            variant="caption"
+                            sx={{
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {currency.currency} /
+                          </Typography>
+                          <Typography variant="caption">{i18n._("month")}</Typography>
+                        </Stack>
+                      </Stack>
+                    </>
+                  )}
 
                   <Typography variant="body1">
                     {i18n._("Learn at full speed with full access")}
