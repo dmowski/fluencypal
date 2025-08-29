@@ -27,5 +27,8 @@ export const getUserBalance = async (userId: string) => {
     isGameWinner,
     isFullAccess,
     isSubscriber: activeSubscription,
+    activeSubscriptionTill: activeSubscription
+      ? totalUsageData?.activeSubscriptionTill || null
+      : null,
   };
 };
