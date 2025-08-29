@@ -1,10 +1,12 @@
+export type OrderStatus = "pending" | "paid" | "failed" | "outdated";
+
 export interface Order {
   id: string;
 
   amount: number;
   currency: string;
   monthCount: number | null;
-  status: "pending" | "paid" | "failed";
+  status: OrderStatus;
 
   comment: string;
 
