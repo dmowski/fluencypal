@@ -60,7 +60,10 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
     },
   ];
 
-  const navigateTo = (e: React.MouseEvent<HTMLAnchorElement>, item: NavigationItem) => {
+  const navigateTo = (
+    e: React.MouseEvent<HTMLAnchorElement> | React.TouchEvent<HTMLAnchorElement>,
+    item: NavigationItem
+  ) => {
     e.preventDefault();
     appNavigation.setCurrentPage(item.name);
   };
@@ -127,7 +130,9 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
               >
                 <Link
                   href={`${appNavigation.pageUrl(item.name)}`}
-                  onClick={(e) => navigateTo(e, item)}
+                  //onClick={(e) => navigateTo(e, item)}
+                  //onPress={(e) => navigateTo(e, item)}
+                  onTouchStart={(e) => navigateTo(e, item)}
                   sx={{
                     display: "flex",
                     flexDirection: "column",
