@@ -3,7 +3,7 @@
 import { createContext, useContext, ReactNode, JSX, useState, useEffect } from "react";
 import { PageType } from "./types";
 import { useRouter, useSearchParams } from "next/navigation";
-import { scrollTop } from "@/libs/scroll";
+import { scrollTopFast } from "@/libs/scroll";
 
 interface AppNavigationContextType {
   currentPage: PageType;
@@ -50,7 +50,7 @@ function useProvideAppNavigation(): AppNavigationContextType {
       const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
 
       router.push(`${newUrl}`, { scroll: false });
-      scrollTop();
+      scrollTopFast();
 
       setTimeout(() => {
         setIsLoading(false);
