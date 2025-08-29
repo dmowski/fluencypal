@@ -130,9 +130,10 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
               >
                 <Link
                   href={`${appNavigation.pageUrl(item.name)}`}
-                  //onClick={(e) => navigateTo(e, item)}
+                  onClick={(e) => e.preventDefault()}
                   //onPress={(e) => navigateTo(e, item)}
                   onTouchStart={(e) => navigateTo(e, item)}
+                  onMouseDown={(e) => navigateTo(e, item)}
                   sx={{
                     display: "flex",
                     flexDirection: "column",

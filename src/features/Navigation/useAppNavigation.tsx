@@ -34,7 +34,8 @@ function useProvideAppNavigation(): AppNavigationContextType {
     }
   }, [urlPage]);
 
-  const setValue = (value: PageType) => {
+  const setCurrentPage = (value: PageType) => {
+    if (value == internalValue) return;
     setInternalValue(value);
     const isDefault = value === "home";
 
@@ -60,7 +61,7 @@ function useProvideAppNavigation(): AppNavigationContextType {
 
   return {
     currentPage: internalValue,
-    setCurrentPage: setValue,
+    setCurrentPage,
     pageUrl,
     isLoading,
   };
