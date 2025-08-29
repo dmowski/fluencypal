@@ -141,9 +141,13 @@ const WalletButton = ({ onPaid }: { onPaid: () => void }) => {
       const transactionEvent = await tonConnectUI.sendTransaction(tx);
       console.log("transactionEvent FINISHED", transactionEvent);
 
-      await sleep(1000);
+      await sleep(500);
+      notifications.show(i18n._("Transaction completed. Soon your balance will be updated."), {
+        severity: "success",
+      });
 
-      setWaitingForPayment(1);
+      await sleep(1200);
+      onPaid();
     } catch (e) {
       console.log("CRYPTO ERROR", e);
       notifications.show(i18n._("Error processing payment"), {
@@ -668,19 +672,6 @@ export const SubscriptionPaymentModal = () => {
                     </>
                   )}
                 </Typography>
-
-                {allowCrypto && (
-                  <>
-                    <Stack
-                      sx={{
-                        alignItems: "center",
-                        padding: "10px 0",
-                      }}
-                    >
-                      <WalletButton onPaid={openMainSubscriptionPage} />
-                    </Stack>
-                  </>
-                )}
               </Stack>
 
               <Stack

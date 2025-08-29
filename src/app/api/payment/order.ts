@@ -45,3 +45,15 @@ export const updateOrder = async (
   const updatedOrder = await getOrderById(orderId);
   return updatedOrder;
 };
+
+export const getOrderByComment = async (comment: string): Promise<Order | null> => {
+  const db = getDB();
+  const ordersDocs = await db.collection("orders").where("comment", "==", comment).get();
+
+  const orders: Order[] = ordersDocs.docs.map((doc) => {
+    const data: Order = doc.data() as Order;
+    return data;
+  });
+
+  return orders.length > 0 ? orders[0] : null;
+};
