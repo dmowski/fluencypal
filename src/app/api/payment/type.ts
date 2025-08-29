@@ -1,9 +1,12 @@
-export interface Invoice {
+export interface Order {
   id: string;
+
   amount: number;
   currency: string;
-  userId: string;
   status: "pending" | "paid" | "failed";
+
+  userId: string;
+
   createdAtIso: string;
   updatedAtIso: string;
 }
