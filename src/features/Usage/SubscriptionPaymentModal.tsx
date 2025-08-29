@@ -6,6 +6,7 @@ import { useNotifications } from "@toolpad/core/useNotifications";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
 import { createStripeCheckout } from "./createStripeCheckout";
+import { beginCell } from "@ton/core";
 
 import { usePathname } from "next/navigation";
 import { supportedLanguages } from "@/features/Lang/lang";
@@ -23,9 +24,9 @@ import { TELEGRAM_MONTHLY_PRICE_START } from "../Telegram/starPrices";
 import {
   TonConnectButton,
   useTonWallet,
-  createTransactionSignedEvent,
   SendTransactionRequest,
   useTonConnectUI,
+  CHAIN,
 } from "@tonconnect/ui-react";
 import { TgGoldStar } from "../Icon/TgStar";
 import { TonIcon } from "../Icon/TonIcon";
@@ -68,6 +69,14 @@ const WalletButton = ({ onSend }: { onSend: () => void }) => {
 
       const { orderId, merchantAddress, amountNano, comment } = order;
 
+      function makeCommentPayloadBase64(comment: string) {
+        const cell = beginCell()
+          .storeUint(0, 32) // op = 0 for text comment
+          .storeStringTail(comment) // UTF-8 text
+          .endCell();
+        return cell.toBoc().toString("base64");
+      }
+
       if (!merchantAddress || !amountNano || !comment) {
         console.log("error during payment", order);
         notifications.show(i18n._("Error creating payment session"), {
@@ -77,14 +86,17 @@ const WalletButton = ({ onSend }: { onSend: () => void }) => {
         return;
       }
 
-      const validUntil = Math.floor(Date.now() / 1000) + 1200; // 20 min
+      const payloadB64 = makeCommentPayloadBase64(comment);
+
+      const validUntil = Math.floor(Date.now() / 1000) + 300; // 5 min
       const tx: SendTransactionRequest = {
         validUntil,
+        network: wallet?.account?.chain ?? CHAIN.MAINNET,
         messages: [
           {
-            address: merchantAddress, // recipient
-            amount: amountNano, // string | number (nanotons)
-            payload: comment, // simple text comment
+            address: merchantAddress,
+            amount: amountNano,
+            payload: payloadB64,
           },
         ],
       };
@@ -112,6 +124,7 @@ const WalletButton = ({ onSend }: { onSend: () => void }) => {
       // });
       // Show "Pending…" UI and let backend flip the order to "paid".
     } catch (e) {
+      console.log("CRYPTO ERROR", e);
       notifications.show(i18n._("Error processing payment"), {
         severity: "error",
       });
