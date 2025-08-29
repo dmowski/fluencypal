@@ -20,16 +20,106 @@ import { FeatureList } from "../Landing/Price/FeatureList";
 import { isTMA, invoice } from "@telegram-apps/sdk-react";
 import { sendCreateTelegramInvoiceRequest } from "@/app/api/telegram/createInvoice/sendCreateTelegramInvoiceRequest";
 import { TELEGRAM_MONTHLY_PRICE_START } from "../Telegram/starPrices";
-import { TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
+import {
+  TonConnectButton,
+  useTonWallet,
+  createTransactionSignedEvent,
+  SendTransactionRequest,
+  useTonConnectUI,
+} from "@tonconnect/ui-react";
 import { TgGoldStar } from "../Icon/TgStar";
 import { TonIcon } from "../Icon/TonIcon";
+import { sendCreateCryptoOrderRequest } from "@/app/api/crypto/createOrder/sendCreateCryptoOrderRequest";
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
 
-const WalletButton = () => {
+const WalletButton = ({ onSend }: { onSend: () => void }) => {
   const wallet = useTonWallet();
+  const auth = useAuth();
+  const notifications = useNotifications();
   const { i18n } = useLingui();
+  const [isLoading, setIsLoading] = useState(false);
+  const [tonConnectUI, setOptions] = useTonConnectUI();
+
+  const payWithTon = async () => {
+    if (!wallet) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const order = await sendCreateCryptoOrderRequest(
+        {
+          monthCount: 1,
+        },
+        await auth.getToken()
+      );
+
+      if (order.error) {
+        console.log("error during payment", order);
+        notifications.show(i18n._("Error creating payment session") + " - " + order.error.message, {
+          severity: "error",
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      const { orderId, merchantAddress, amountNano, comment } = order;
+
+      if (!merchantAddress || !amountNano || !comment) {
+        console.log("error during payment", order);
+        notifications.show(i18n._("Error creating payment session"), {
+          severity: "error",
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      const validUntil = Math.floor(Date.now() / 1000) + 1200; // 20 min
+      const tx: SendTransactionRequest = {
+        validUntil,
+        messages: [
+          {
+            address: merchantAddress, // recipient
+            amount: amountNano, // string | number (nanotons)
+            payload: comment, // simple text comment
+          },
+        ],
+      };
+
+      const transactionEvent = await tonConnectUI.sendTransaction(tx);
+
+      console.log("transactionEvent", transactionEvent);
+
+      notifications.show(i18n._("Payment sent"), {
+        severity: "success",
+      });
+
+      onSend();
+
+      // TODO: Show confirmation
+
+      //xxx
+      // const result = await wallet.provider[0].
+      // result contains boc/tx info from wallet but is NOT finality.
+      // Notify your backend to start verification polling:
+      //await fetch("/api/payments/ton/notify-sent", {
+      //  method: "POST",
+      //  headers: { "Content-Type": "application/json" },
+      //    body: JSON.stringify({ orderId }),
+      // });
+      // Show "Pending…" UI and let backend flip the order to "paid".
+    } catch (e) {
+      notifications.show(i18n._("Error processing payment"), {
+        severity: "error",
+      });
+    }
+
+    setIsLoading(false);
+    // create order
+  };
 
   return (
     <Stack
@@ -45,11 +135,13 @@ const WalletButton = () => {
         <Button
           variant="outlined"
           color="info"
+          disabled={isLoading}
+          onClick={payWithTon}
           fullWidth
           size="large"
           startIcon={<TonIcon size="20px" />}
         >
-          {i18n._("Pay with TON")}
+          {isLoading ? i18n._("Loading...") : i18n._("Pay with TON")}
         </Button>
       )}
     </Stack>
@@ -90,6 +182,12 @@ export const SubscriptionPaymentModal = () => {
     } else {
       clickOnConfirmRequestStripe();
     }
+  };
+
+  const openMainSubscriptionPage = () => {
+    setIsShowConfirmPayments(false);
+    setIsTelegramPaymentOptions(false);
+    scrollTop();
   };
 
   const clickOnConfirmRequestTelegramStars = async () => {
@@ -233,9 +331,7 @@ export const SubscriptionPaymentModal = () => {
       isOpen={true && auth.isAuthorized}
       onClose={() => {
         if (isShowConfirmPayments) {
-          setIsShowConfirmPayments(false);
-          setIsTelegramPaymentOptions(false);
-          scrollTop();
+          openMainSubscriptionPage();
           return;
         }
         usage.togglePaymentModal(false);
@@ -326,7 +422,7 @@ export const SubscriptionPaymentModal = () => {
                       or crypto
                     </Typography>
 
-                    <WalletButton />
+                    <WalletButton onSend={openMainSubscriptionPage} />
                   </>
                 )}
               </Stack>
@@ -527,7 +623,7 @@ export const SubscriptionPaymentModal = () => {
                         padding: "10px 0",
                       }}
                     >
-                      <WalletButton />
+                      <WalletButton onSend={openMainSubscriptionPage} />
                     </Stack>
                   </>
                 )}
