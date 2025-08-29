@@ -22,6 +22,7 @@ import { sendCreateTelegramInvoiceRequest } from "@/app/api/telegram/createInvoi
 import { TELEGRAM_MONTHLY_PRICE_START } from "../Telegram/starPrices";
 import { TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
 import { TgGoldStar } from "../Icon/TgStar";
+import { TonIcon } from "../Icon/TonIcon";
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
@@ -35,10 +36,22 @@ const WalletButton = () => {
       sx={{
         alignItems: "center",
         gap: "5px",
+        width: "100%",
       }}
     >
-      <Typography variant="caption">{i18n._("Crypto wallet")}</Typography>
       <TonConnectButton />
+
+      {wallet && (
+        <Button
+          variant="outlined"
+          color="info"
+          fullWidth
+          size="large"
+          startIcon={<TonIcon size="20px" />}
+        >
+          {i18n._("Pay with TON")}
+        </Button>
+      )}
     </Stack>
   );
 };
