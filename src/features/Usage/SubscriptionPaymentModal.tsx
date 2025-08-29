@@ -24,13 +24,23 @@ import { TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
 import { TgGoldStar } from "../Icon/TgStar";
 
 const isTelegramApp = isTMA();
-const allowCrypto = false;
+const allowCryptoFlag = true;
 
 const WalletButton = () => {
   const wallet = useTonWallet();
-  console.log("wallet", wallet);
+  const { i18n } = useLingui();
 
-  return <TonConnectButton />;
+  return (
+    <Stack
+      sx={{
+        alignItems: "center",
+        gap: "5px",
+      }}
+    >
+      <Typography variant="caption">{i18n._("Crypto wallet")}</Typography>
+      <TonConnectButton />
+    </Stack>
+  );
 };
 
 export const SubscriptionPaymentModal = () => {
@@ -38,6 +48,7 @@ export const SubscriptionPaymentModal = () => {
   const auth = useAuth();
   const { i18n } = useLingui();
   const currency = useCurrency();
+  const [allowCrypto, setAllowCrypto] = useState(allowCryptoFlag);
 
   const notifications = useNotifications();
   const [looseRightChecked, setLooseRightChecked] = useState(false);
@@ -56,7 +67,7 @@ export const SubscriptionPaymentModal = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const scrollTop = () => {
-    containerRef.current?.parentElement?.scrollTo(0, 0);
+    containerRef.current?.parentElement?.parentElement?.parentElement?.scrollTo(0, 0);
   };
 
   const [isRedirecting, setIsRedirecting] = useState(false);
@@ -69,7 +80,6 @@ export const SubscriptionPaymentModal = () => {
   };
 
   const clickOnConfirmRequestTelegramStars = async () => {
-    console.log("clickOnConfirmRequestTelegramStars");
     const token = await auth.getToken();
 
     try {
@@ -180,8 +190,8 @@ export const SubscriptionPaymentModal = () => {
   };
 
   const showConfirmPage = async () => {
-    scrollTop();
     setIsShowConfirmPayments(true);
+    scrollTop();
 
     if (!isTelegramApp) {
       sentPaymentTgMessage({
@@ -201,6 +211,7 @@ export const SubscriptionPaymentModal = () => {
   useEffect(() => {
     const isTelegramApp = isTMA();
     setIsPriceInStars(isTelegramApp);
+    setAllowCrypto(allowCryptoFlag && isTelegramApp);
   }, []);
 
   if (!usage.isShowPaymentModal) return null;
@@ -210,6 +221,7 @@ export const SubscriptionPaymentModal = () => {
       onClose={() => {
         if (isShowConfirmPayments) {
           setIsShowConfirmPayments(false);
+          setIsTelegramPaymentOptions(false);
           scrollTop();
           return;
         }
@@ -221,6 +233,7 @@ export const SubscriptionPaymentModal = () => {
           width: "100%",
           maxWidth: "600px",
         }}
+        ref={containerRef}
       >
         {isTelegramApp && isTelegramPaymentOptions ? (
           <>
@@ -492,6 +505,19 @@ export const SubscriptionPaymentModal = () => {
                     </>
                   )}
                 </Typography>
+
+                {allowCrypto && (
+                  <>
+                    <Stack
+                      sx={{
+                        alignItems: "center",
+                        padding: "10px 0",
+                      }}
+                    >
+                      <WalletButton />
+                    </Stack>
+                  </>
+                )}
               </Stack>
 
               <Stack
@@ -615,16 +641,29 @@ export const SubscriptionPaymentModal = () => {
                   <Typography variant="body1">
                     {i18n._("Learn at full speed with full access")}
                   </Typography>
-                  <Button
-                    color="info"
-                    disabled={!!activeTill}
-                    variant="contained"
-                    size="large"
-                    onClick={showConfirmPage}
+                  <Stack
+                    sx={{
+                      gap: "5px",
+                    }}
                   >
-                    {activeTill ? i18n._(`Active`) : i18n._(`Get Full Access`)}
-                  </Button>
+                    <Button
+                      color="info"
+                      disabled={!!activeTill}
+                      variant="contained"
+                      size="large"
+                      onClick={showConfirmPage}
+                    >
+                      {activeTill ? i18n._(`Active`) : i18n._(`Get Full Access`)}
+                    </Button>
 
+                    {activeTill && (
+                      <>
+                        <Button color="info" variant="text" size="large" onClick={showConfirmPage}>
+                          {i18n._(`Buy More`)}
+                        </Button>
+                      </>
+                    )}
+                  </Stack>
                   <FeatureList />
                 </Stack>
               </Stack>
