@@ -454,6 +454,7 @@ export const SubscriptionPaymentModal = () => {
                   alignItems: "center",
                   justifyContent: "center",
                   gap: "12px",
+                  minWidth: "300px",
                 }}
               >
                 <Button
