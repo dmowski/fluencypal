@@ -38,10 +38,8 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as CreateCryptoOrderRequest;
     const monthCount = clampMonthCount(body?.monthCount);
 
-    // 3) Build invoice payload & data
-
     const orderId = crypto.randomBytes(6).toString("hex");
-    console.log("orderId", orderId);
+    console.log("CREATE CRYPTO orderId", orderId);
     const comment = `order:${orderId}`;
 
     const currency = "TON";
