@@ -3,7 +3,10 @@ export interface Order {
 
   amount: number;
   currency: string;
+  monthCount: number | null;
   status: "pending" | "paid" | "failed";
+
+  comment: string;
 
   userId: string;
 

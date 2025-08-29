@@ -1,0 +1,1 @@
+export const CRYPTO_MONTHLY_PRICE_TON = 1.2;
