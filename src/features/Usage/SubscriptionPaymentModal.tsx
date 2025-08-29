@@ -31,17 +31,54 @@ import {
 import { TgGoldStar } from "../Icon/TgStar";
 import { TonIcon } from "../Icon/TonIcon";
 import { sendCreateCryptoOrderRequest } from "@/app/api/crypto/createOrder/sendCreateCryptoOrderRequest";
+import { sendCheckPaymentRequest } from "@/app/api/crypto/checkPayment/sendCheckPaymentRequest";
+
+export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
 
-const WalletButton = ({ onSend }: { onSend: () => void }) => {
+const WalletButton = ({ onPaid }: { onPaid: () => void }) => {
   const wallet = useTonWallet();
   const auth = useAuth();
   const notifications = useNotifications();
   const { i18n } = useLingui();
   const [isLoading, setIsLoading] = useState(false);
   const [tonConnectUI, setOptions] = useTonConnectUI();
+  const [waitingForPayment, setWaitingForPayment] = useState(0);
+
+  const checkPayment = async () => {
+    const paymentResult = await sendCheckPaymentRequest(
+      {
+        userId: auth.uid || "",
+      },
+      await auth.getToken()
+    );
+
+    console.log("CHECK PAYMENT RESULT", paymentResult);
+
+    if (paymentResult.isRecentlyPaid) {
+      onPaid();
+      setWaitingForPayment(0);
+      return;
+    }
+
+    await sleep(5000);
+    setWaitingForPayment((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    if (waitingForPayment === 0) {
+      return;
+    }
+
+    if (waitingForPayment > 10) {
+      console.log("STOP WAITING");
+      setWaitingForPayment(0);
+    } else {
+      checkPayment();
+    }
+  }, [waitingForPayment]);
 
   const payWithTon = async () => {
     if (!wallet) {
@@ -67,7 +104,7 @@ const WalletButton = ({ onSend }: { onSend: () => void }) => {
         return;
       }
 
-      const { orderId, merchantAddress, amountNano, comment } = order;
+      const { merchantAddress, amountNano, comment } = order;
 
       function makeCommentPayloadBase64(comment: string) {
         const cell = beginCell()
@@ -102,27 +139,11 @@ const WalletButton = ({ onSend }: { onSend: () => void }) => {
       };
 
       const transactionEvent = await tonConnectUI.sendTransaction(tx);
+      console.log("transactionEvent FINISHED", transactionEvent);
 
-      console.log("transactionEvent", transactionEvent);
+      await sleep(1000);
 
-      notifications.show(i18n._("Payment sent"), {
-        severity: "success",
-      });
-
-      onSend();
-
-      // TODO: Show confirmation
-
-      //xxx
-      // const result = await wallet.provider[0].
-      // result contains boc/tx info from wallet but is NOT finality.
-      // Notify your backend to start verification polling:
-      //await fetch("/api/payments/ton/notify-sent", {
-      //  method: "POST",
-      //  headers: { "Content-Type": "application/json" },
-      //    body: JSON.stringify({ orderId }),
-      // });
-      // Show "Pending…" UI and let backend flip the order to "paid".
+      setWaitingForPayment(1);
     } catch (e) {
       console.log("CRYPTO ERROR", e);
       notifications.show(i18n._("Error processing payment"), {
@@ -131,7 +152,6 @@ const WalletButton = ({ onSend }: { onSend: () => void }) => {
     }
 
     setIsLoading(false);
-    // create order
   };
 
   return (
@@ -144,7 +164,29 @@ const WalletButton = ({ onSend }: { onSend: () => void }) => {
     >
       <TonConnectButton />
 
-      {wallet && (
+      {waitingForPayment > 0 && (
+        <Stack
+          sx={{
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="body2" align="center">
+            {i18n._("Waiting for payment...")}
+          </Typography>
+
+          <Typography
+            variant="caption"
+            align="center"
+            sx={{
+              opacity: 0.7,
+            }}
+          >
+            {i18n._("Attempt")} {waitingForPayment}
+          </Typography>
+        </Stack>
+      )}
+
+      {wallet && waitingForPayment === 0 && (
         <Button
           variant="outlined"
           color="info"
@@ -154,7 +196,7 @@ const WalletButton = ({ onSend }: { onSend: () => void }) => {
           size="large"
           startIcon={<TonIcon size="20px" />}
         >
-          {isLoading ? i18n._("Loading...") : i18n._("Pay with TON")}
+          {isLoading ? i18n._("Loading...") : i18n._("Pay with crypto")}
         </Button>
       )}
     </Stack>
@@ -435,7 +477,7 @@ export const SubscriptionPaymentModal = () => {
                       or crypto
                     </Typography>
 
-                    <WalletButton onSend={openMainSubscriptionPage} />
+                    <WalletButton onPaid={openMainSubscriptionPage} />
                   </>
                 )}
               </Stack>
@@ -483,7 +525,6 @@ export const SubscriptionPaymentModal = () => {
               component={"form"}
               action={"#"}
               onSubmit={(e) => {
-                console.log("e", e);
                 e.preventDefault();
                 clickOnConfirmRequest();
               }}
@@ -636,7 +677,7 @@ export const SubscriptionPaymentModal = () => {
                         padding: "10px 0",
                       }}
                     >
-                      <WalletButton onSend={openMainSubscriptionPage} />
+                      <WalletButton onPaid={openMainSubscriptionPage} />
                     </Stack>
                   </>
                 )}
