@@ -213,7 +213,7 @@ export const SubscriptionPaymentModal = () => {
   const auth = useAuth();
   const { i18n } = useLingui();
   const currency = useCurrency();
-  const [isShowWaiting, setIsShowWaiting] = useState(true);
+  const [isShowWaiting, setIsShowWaiting] = useState(false);
   const [allowCrypto, setAllowCrypto] = useState(allowCryptoFlag);
 
   const notifications = useNotifications();
