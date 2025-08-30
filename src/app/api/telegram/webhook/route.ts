@@ -43,19 +43,17 @@ export async function POST(req: Request) {
     const currency = sp.currency;
 
     const monthsCount = startAdded / TELEGRAM_MONTHLY_PRICE_START;
-
-    if (!envConfig.isTelegramTestMode) {
-      await addPaymentLog({
-        amount: startAdded,
-        userId: firebaseUserId,
-        paymentId: sp.telegram_payment_charge_id,
-        currency,
-        amountOfHours: 0,
-        type: "subscription-full-v1",
-        receiptUrl: "",
-        monthsCount: monthsCount,
-      });
-    }
+    console.log("PAYMENT SUCCESS | monthsCount", monthsCount);
+    await addPaymentLog({
+      amount: startAdded,
+      userId: firebaseUserId,
+      paymentId: sp.telegram_payment_charge_id,
+      currency,
+      amountOfHours: 0,
+      type: "subscription-full-v1",
+      receiptUrl: "",
+      monthsCount: monthsCount,
+    });
 
     await call("sendMessage", {
       chat_id: msg.chat.id,
