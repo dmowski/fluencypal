@@ -131,9 +131,14 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                 <Link
                   href={`${appNavigation.pageUrl(item.name)}`}
                   onClick={(e) => e.preventDefault()}
-                  //onPress={(e) => navigateTo(e, item)}
                   onTouchStart={(e) => navigateTo(e, item)}
                   onMouseDown={(e) => navigateTo(e, item)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      appNavigation.setCurrentPage(item.name);
+                    }
+                  }}
                   sx={{
                     display: "flex",
                     flexDirection: "column",
