@@ -32,6 +32,7 @@ import { TgGoldStar } from "../Icon/TgStar";
 import { TonIcon } from "../Icon/TonIcon";
 import { sendCreateCryptoOrderRequest } from "@/app/api/crypto/createOrder/sendCreateCryptoOrderRequest";
 import { sendCheckPaymentRequest } from "@/app/api/crypto/checkPayment/sendCheckPaymentRequest";
+import { SubscriptionWaiter } from "./SubscriptionWaiter";
 
 export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -212,6 +213,7 @@ export const SubscriptionPaymentModal = () => {
   const auth = useAuth();
   const { i18n } = useLingui();
   const currency = useCurrency();
+  const [isShowWaiting, setIsShowWaiting] = useState(true);
   const [allowCrypto, setAllowCrypto] = useState(allowCryptoFlag);
 
   const notifications = useNotifications();
@@ -232,6 +234,13 @@ export const SubscriptionPaymentModal = () => {
 
   const scrollTop = () => {
     containerRef.current?.parentElement?.parentElement?.parentElement?.scrollTo(0, 0);
+  };
+
+  const showWaiter = () => {
+    setIsShowWaiting(true);
+    setIsShowConfirmPayments(false);
+    setIsTelegramPaymentOptions(false);
+    scrollTop();
   };
 
   const [isRedirecting, setIsRedirecting] = useState(false);
@@ -287,9 +296,7 @@ export const SubscriptionPaymentModal = () => {
           notifications.show(i18n._("Payment successful! Thank you."), {
             severity: "success",
           });
-          scrollTop();
-          setIsShowConfirmPayments(false);
-          setIsTelegramPaymentOptions(false);
+          showWaiter();
         } else {
           notifications.show(i18n._("Payment failed! Please try again."), {
             severity: "error",
@@ -403,7 +410,14 @@ export const SubscriptionPaymentModal = () => {
         }}
         ref={containerRef}
       >
-        {isTelegramApp && isTelegramPaymentOptions ? (
+        {isShowWaiting ? (
+          <SubscriptionWaiter
+            onClose={() => {
+              openMainSubscriptionPage();
+              setIsShowWaiting(false);
+            }}
+          />
+        ) : isTelegramApp && isTelegramPaymentOptions ? (
           <>
             <Stack
               sx={{
@@ -482,7 +496,7 @@ export const SubscriptionPaymentModal = () => {
                       or crypto
                     </Typography>
 
-                    <WalletButton onPaid={openMainSubscriptionPage} />
+                    <WalletButton onPaid={showWaiter} />
                   </>
                 )}
               </Stack>

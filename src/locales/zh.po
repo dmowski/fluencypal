@@ -13,10 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:145
+#: src/features/Usage/SubscriptionWaiter.tsx:57
 #. js-lingui-explicit-id
-msgid "Transaction completed. Soon your balance will be updated."
-msgstr "交易已完成。您的余额将很快更新。"
+msgid "Your subscription has been successfully changed."
+msgstr "您的订阅已成功更改。"
+
+#: src/features/Usage/SubscriptionWaiter.tsx:78
+#. js-lingui-explicit-id
+msgid "Please wait while we process your payment."
+msgstr "请稍候，我们正在处理您的付款。"
 
 #: src/features/Header/HeaderStatic.tsx:12
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -347,25 +352,31 @@ msgstr "英语口语伙伴"
 msgid "AI English Speaking Practice"
 msgstr "AI英语口语练习"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:100
-#: src/features/Usage/SubscriptionPaymentModal.tsx:119
-#: src/features/Usage/SubscriptionPaymentModal.tsx:267
-#: src/features/Usage/SubscriptionPaymentModal.tsx:340
+#: src/features/Usage/SubscriptionPaymentModal.tsx:101
+#: src/features/Usage/SubscriptionPaymentModal.tsx:120
+#: src/features/Usage/SubscriptionPaymentModal.tsx:276
+#: src/features/Usage/SubscriptionPaymentModal.tsx:347
 #. js-lingui-explicit-id
 msgid "Error creating payment session"
 msgstr "创建付款会话时出错"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:153
+#: src/features/Usage/SubscriptionPaymentModal.tsx:146
+#. js-lingui-explicit-id
+msgid "Transaction completed. Soon your balance will be updated."
+msgstr "交易已完成。您的余额将很快更新。"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:154
 #. js-lingui-explicit-id
 msgid "Error processing payment"
 msgstr "支付处理错误"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:178
+#: src/features/Usage/SubscriptionPaymentModal.tsx:179
+#: src/features/Usage/SubscriptionWaiter.tsx:69
 #. js-lingui-explicit-id
 msgid "Waiting for payment..."
 msgstr "等待付款中..."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:188
+#: src/features/Usage/SubscriptionPaymentModal.tsx:189
 #. js-lingui-explicit-id
 msgid "Attempt"
 msgstr "尝试"
@@ -385,60 +396,60 @@ msgstr "尝试"
 #: src/features/Telegram/TgAppPage.tsx:159
 #: src/features/Translation/useTranslate.tsx:130
 #: src/features/Usage/PaymentModal.tsx:494
-#: src/features/Usage/SubscriptionPaymentModal.tsx:203
+#: src/features/Usage/SubscriptionPaymentModal.tsx:204
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "加载中..."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:203
+#: src/features/Usage/SubscriptionPaymentModal.tsx:204
 #. js-lingui-explicit-id
 msgid "Pay with crypto"
 msgstr "使用加密货币支付"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:274
+#: src/features/Usage/SubscriptionPaymentModal.tsx:283
 #. js-lingui-explicit-id
 msgid "Error creating payment session. Try again later."
 msgstr "创建支付会话时出错。请稍后再试。"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:287
+#: src/features/Usage/SubscriptionPaymentModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Payment successful! Thank you."
 msgstr "支付成功！谢谢。"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:294
+#: src/features/Usage/SubscriptionPaymentModal.tsx:301
 #. js-lingui-explicit-id
 msgid "Payment failed! Please try again."
 msgstr "支付失败！请重试。"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:307
-#: src/features/Usage/SubscriptionPaymentModal.tsx:351
+#: src/features/Usage/SubscriptionPaymentModal.tsx:314
+#: src/features/Usage/SubscriptionPaymentModal.tsx:358
 #. js-lingui-explicit-id
 msgid "Error during payment process"
 msgstr "支付过程中出现错误"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:429
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
 #. js-lingui-explicit-id
 msgid "Payment option"
 msgstr "支付选项"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:438
-#: src/features/Usage/SubscriptionPaymentModal.tsx:521
+#: src/features/Usage/SubscriptionPaymentModal.tsx:452
+#: src/features/Usage/SubscriptionPaymentModal.tsx:536
 #. js-lingui-explicit-id
 msgid "Subscription for 1 month | Full access"
 msgstr "订阅一个月 | 全部权限"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:470
+#: src/features/Usage/SubscriptionPaymentModal.tsx:485
 #. js-lingui-explicit-id
 msgid "Pay with Stars"
 msgstr "用星星支付"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:512
+#: src/features/Usage/SubscriptionPaymentModal.tsx:527
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "确认付款"
 
 #: src/features/Usage/PaymentModal.tsx:280
-#: src/features/Usage/SubscriptionPaymentModal.tsx:549
+#: src/features/Usage/SubscriptionPaymentModal.tsx:564
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -452,19 +463,19 @@ msgstr ""
 "                        我将失去解除合同的权利。"
 
 #: src/features/Usage/PaymentModal.tsx:298
-#: src/features/Usage/SubscriptionPaymentModal.tsx:567
+#: src/features/Usage/SubscriptionPaymentModal.tsx:582
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "我接受"
 
 #: src/features/Usage/PaymentModal.tsx:300
-#: src/features/Usage/SubscriptionPaymentModal.tsx:569
+#: src/features/Usage/SubscriptionPaymentModal.tsx:584
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "条款和条件"
 
 #: src/features/Usage/PaymentModal.tsx:302
-#: src/features/Usage/SubscriptionPaymentModal.tsx:571
+#: src/features/Usage/SubscriptionPaymentModal.tsx:586
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -474,13 +485,13 @@ msgstr ""
 "                        其注册办公室位于华沙。"
 
 #: src/features/Usage/PaymentModal.tsx:319
-#: src/features/Usage/SubscriptionPaymentModal.tsx:588
+#: src/features/Usage/SubscriptionPaymentModal.tsx:603
 #. js-lingui-explicit-id
 msgid "I want to receive commercial and marketing content"
 msgstr "我希望接收商业和营销内容"
 
 #: src/features/Usage/PaymentModal.tsx:250
-#: src/features/Usage/SubscriptionPaymentModal.tsx:604
+#: src/features/Usage/SubscriptionPaymentModal.tsx:619
 #. js-lingui-explicit-id
 msgid "Total:"
 msgstr "总计："
@@ -491,92 +502,92 @@ msgstr "总计："
 #: src/features/Goal/GoalQuestions.tsx:823
 #: src/features/Goal/GoalQuestions.tsx:862
 #: src/features/Plan/PlanCard.tsx:261
-#: src/features/Usage/SubscriptionPaymentModal.tsx:624
+#: src/features/Usage/SubscriptionPaymentModal.tsx:639
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "继续"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:624
+#: src/features/Usage/SubscriptionPaymentModal.tsx:639
 #. js-lingui-explicit-id
 msgid "Pay"
 msgstr "支付"
 
 #: src/features/Header/HeaderPractice.tsx:358
 #: src/features/Settings/MyProfile.tsx:76
-#: src/features/Usage/SubscriptionPaymentModal.tsx:646
+#: src/features/Usage/SubscriptionPaymentModal.tsx:661
 #. js-lingui-explicit-id
 msgid "Subscription"
 msgstr "订阅"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:655
+#: src/features/Usage/SubscriptionPaymentModal.tsx:670
 #. js-lingui-explicit-id
 msgid "You don't have an active subscription."
 msgstr "您没有有效的订阅。"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:658
+#: src/features/Usage/SubscriptionPaymentModal.tsx:673
 #. js-lingui-explicit-id
 msgid "Your trial ended until"
 msgstr "您的试用期已结束"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:664
+#: src/features/Usage/SubscriptionPaymentModal.tsx:679
 #. js-lingui-explicit-id
 msgid "Your subscription is active until"
 msgstr "您的订阅将一直有效直到"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:670
+#: src/features/Usage/SubscriptionPaymentModal.tsx:685
 #. js-lingui-explicit-id
 msgid "You have"
 msgstr "你有"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:671
+#: src/features/Usage/SubscriptionPaymentModal.tsx:686
 #. js-lingui-explicit-id
 msgid "AI hours left in your balance."
 msgstr "您的余额中还剩AI小时。"
 
 #: src/features/Landing/Price/PricePage.tsx:203
-#: src/features/Usage/SubscriptionPaymentModal.tsx:699
+#: src/features/Usage/SubscriptionPaymentModal.tsx:714
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "完全访问权限"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:714
-#: src/features/Usage/SubscriptionPaymentModal.tsx:810
+#: src/features/Usage/SubscriptionPaymentModal.tsx:729
+#: src/features/Usage/SubscriptionPaymentModal.tsx:825
 #. js-lingui-explicit-id
 msgid "Active"
 msgstr "活跃"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:751
+#: src/features/Usage/SubscriptionPaymentModal.tsx:766
 #. js-lingui-explicit-id
 msgid "Stars"
 msgstr "星星"
 
 #: src/features/Landing/Price/PricePage.tsx:233
-#: src/features/Usage/SubscriptionPaymentModal.tsx:753
-#: src/features/Usage/SubscriptionPaymentModal.tsx:789
+#: src/features/Usage/SubscriptionPaymentModal.tsx:768
+#: src/features/Usage/SubscriptionPaymentModal.tsx:804
 #. js-lingui-explicit-id
 msgid "month"
 msgstr "月"
 
 #: src/features/Landing/Price/PricePage.tsx:237
-#: src/features/Usage/SubscriptionPaymentModal.tsx:796
+#: src/features/Usage/SubscriptionPaymentModal.tsx:811
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "以全速学习，享受完全访问权"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:810
+#: src/features/Usage/SubscriptionPaymentModal.tsx:825
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "获取完全访问权限"
 
 #: src/features/Usage/PaymentModal.tsx:453
-#: src/features/Usage/SubscriptionPaymentModal.tsx:816
+#: src/features/Usage/SubscriptionPaymentModal.tsx:831
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "购买更多"
 
 #: src/features/Header/NeedHelpModal.tsx:84
 #: src/features/Settings/MyProfile.tsx:93
-#: src/features/Usage/SubscriptionPaymentModal.tsx:831
+#: src/features/Usage/SubscriptionPaymentModal.tsx:846
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "需要帮助吗？"
@@ -677,16 +688,6 @@ msgstr "总计"
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "打开历史记录"
-
-#: src/features/Translation/useTranslate.tsx:130
-#. js-lingui-explicit-id
-msgid "No text to translate"
-msgstr "无文本可翻译"
-
-#: src/features/Translation/useTranslate.tsx:143
-#. js-lingui-explicit-id
-msgid "No translation available"
-msgstr "无翻译可用"
 
 #: src/features/Usage/PaymentModal.tsx:119
 #. js-lingui-explicit-id
@@ -820,6 +821,45 @@ msgstr "付款历史："
 msgid "No payments..."
 msgstr "无需支付..."
 
+#: src/features/Conversation/ConversationCanvas2.tsx:1498
+#: src/features/Usage/NoBalanceBlock.tsx:61
+#. js-lingui-explicit-id
+msgid "Low balance"
+msgstr "余额不足"
+
+#: src/features/Usage/NoBalanceBlock.tsx:72
+#. js-lingui-explicit-id
+msgid "You've made amazing progress. Let’s keep going."
+msgstr "你已经取得了惊人的进步。让我们继续前进。"
+
+#: src/features/Usage/NoBalanceBlock.tsx:98
+#. js-lingui-explicit-id
+msgid "Buy a subscription"
+msgstr "购买订阅"
+
+#: src/features/Usage/NoBalanceBlock.tsx:110
+#. js-lingui-explicit-id
+msgid "Play the Game"
+msgstr "玩游戏"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1095
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
+#: src/features/Usage/SubscriptionWaiter.tsx:48
+#. js-lingui-explicit-id
+msgid "Done"
+msgstr "完成"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:58
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:229
+#: src/features/Usage/SubscriptionWaiter.tsx:61
+#: src/features/Usage/SubscriptionWaiter.tsx:82
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "关闭"
+
 #: src/features/Telegram/TgAppPage.tsx:83
 #. js-lingui-explicit-id
 msgid "Unknown error during sign-in"
@@ -855,249 +895,15 @@ msgstr "加载中.."
 msgid "Refresh"
 msgstr "刷新"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1498
-#: src/features/Usage/NoBalanceBlock.tsx:61
+#: src/features/Translation/useTranslate.tsx:130
 #. js-lingui-explicit-id
-msgid "Low balance"
-msgstr "余额不足"
+msgid "No text to translate"
+msgstr "无文本可翻译"
 
-#: src/features/Usage/NoBalanceBlock.tsx:72
+#: src/features/Translation/useTranslate.tsx:143
 #. js-lingui-explicit-id
-msgid "You've made amazing progress. Let’s keep going."
-msgstr "你已经取得了惊人的进步。让我们继续前进。"
-
-#: src/features/Usage/NoBalanceBlock.tsx:98
-#. js-lingui-explicit-id
-msgid "Buy a subscription"
-msgstr "购买订阅"
-
-#: src/features/Usage/NoBalanceBlock.tsx:110
-#. js-lingui-explicit-id
-msgid "Play the Game"
-msgstr "玩游戏"
-
-#: src/features/Settings/MyProfile.tsx:69
-#. js-lingui-explicit-id
-msgid "Language"
-msgstr "语言"
-
-#: src/features/Settings/MyProfile.tsx:70
-#. js-lingui-explicit-id
-msgid "Select your preferred language"
-msgstr "选择您的首选语言"
-
-#: src/features/Settings/MyProfile.tsx:77
-#. js-lingui-explicit-id
-msgid "Manage your subscription settings"
-msgstr "管理您的订阅设置"
-
-#: src/features/Header/HeaderPractice.tsx:332
-#: src/features/Header/HeaderPractice.tsx:396
-#: src/features/Settings/MyProfile.tsx:84
-#: src/features/Settings/MyProfile.tsx:251
-#. js-lingui-explicit-id
-msgid "Feedback"
-msgstr "反馈"
-
-#: src/features/Settings/MyProfile.tsx:85
-#. js-lingui-explicit-id
-msgid "Give us your feedback"
-msgstr "给我们您的反馈"
-
-#: src/features/Settings/MyProfile.tsx:92
-#. js-lingui-explicit-id
-msgid "Help"
-msgstr "帮助"
-
-#: src/features/Header/PaymentHistoryModal.tsx:39
-#: src/features/Settings/MyProfile.tsx:100
-#. js-lingui-explicit-id
-msgid "Payment History"
-msgstr "付款历史"
-
-#: src/features/Header/PaymentHistoryModal.tsx:48
-#: src/features/Settings/MyProfile.tsx:101
-#. js-lingui-explicit-id
-msgid "View your payment history"
-msgstr "查看您的付款历史"
-
-#: src/features/Header/HeaderPractice.tsx:423
-#: src/features/Header/HeaderStatic.tsx:17
-#: src/features/Settings/MyProfile.tsx:111
-#. js-lingui-explicit-id
-msgid "Log Out"
-msgstr "登出"
-
-#: src/features/Settings/MyProfile.tsx:112
-#. js-lingui-explicit-id
-msgid "Log out of your account"
-msgstr "退出您的账户"
-
-#: src/features/Header/HeaderPractice.tsx:323
-#: src/features/Header/HeaderPractice.tsx:383
-#: src/features/Settings/MyProfile.tsx:242
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "退款"
-
-#: src/features/Header/HeaderPractice.tsx:324
-#: src/features/Settings/MyProfile.tsx:243
-#. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr "添加一些您要求退款的原因，我们会为您办理。"
-
-#: src/features/Header/ContactMessageModal.tsx:98
-#: src/features/Header/HeaderPractice.tsx:325
-#: src/features/Header/HeaderPractice.tsx:334
-#: src/features/Settings/MyProfile.tsx:244
-#: src/features/Settings/MyProfile.tsx:253
-#. js-lingui-explicit-id
-msgid "Leave your message"
-msgstr "留下您的信息"
-
-#: src/features/Header/HeaderPractice.tsx:333
-#: src/features/Settings/MyProfile.tsx:252
-#. js-lingui-explicit-id
-msgid "We appreciate your feedback!"
-msgstr "我们非常感谢您的反馈！"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:509
-#: src/features/Landing/PlanLandingBlock.tsx:290
-#: src/features/Landing/PlanLandingBlock.tsx:502
-#: src/features/Landing/PlanLandingBlock.tsx:628
-#: src/features/Landing/Price/PricePage.tsx:280
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:328
-#: src/features/RolePlay/RolePlayCardApp.tsx:136
-#: src/features/RolePlay/RolePlayModal.tsx:267
-#. js-lingui-explicit-id
-msgid "Start"
-msgstr "开始"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:87
-#: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/Navigation/NavigationBar.tsx:54
-#: src/features/RolePlay/RolePlayBoard.tsx:49
-#. js-lingui-explicit-id
-msgid "Role Play"
-msgstr "角色扮演"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show more"
-msgstr "显示更多"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show less"
-msgstr "显示更少"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
-#. js-lingui-explicit-id
-msgid ""
-"Boost your English vocabulary and fluency by creatively describing and "
-"guessing words in\n"
-"        this interactive AI-powered Alias game."
-msgstr "通过创新性地描述和猜测单词，用这个交互式的 AI 助力的 Alias 游戏提升你的英语词汇和流利度。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
-#. js-lingui-explicit-id
-msgid "Benefits of Playing Alias Game"
-msgstr "玩Alias游戏的好处"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
-#. js-lingui-explicit-id
-msgid "Enhance your vocabulary by describing words in unique ways."
-msgstr "通过独特的方式描述词汇来提高你的词汇量。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
-#. js-lingui-explicit-id
-msgid "Improve listening skills as you interpret descriptions."
-msgstr "在你解读描述时提高听力技巧。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
-#. js-lingui-explicit-id
-msgid "Practice rapid thinking and fluent speaking under playful pressure."
-msgstr "在愉快的压力下练习快速思考和流利的说话。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
-#. js-lingui-explicit-id
-msgid "Receive instant, tailored feedback from your AI partner."
-msgstr "从您的AI伙伴那里获得即时、定制的反馈。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
-#. js-lingui-explicit-id
-msgid "How to Play"
-msgstr "如何玩"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
-#. js-lingui-explicit-id
-msgid ""
-"You and your AI partner alternate turns describing and guessing words "
-"without directly\n"
-"          naming them. This encourages creative thinking and fluent "
-"expression, adapting to your\n"
-"          language proficiency."
-msgstr "你和你的AI伙伴轮流描述和猜测单词，而不直接命名它们。这鼓励创新思维和流畅的表达，适应你的语言能力。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
-#. js-lingui-explicit-id
-msgid "Choose Your Language Level"
-msgstr "选择你的语言水平"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
-#. js-lingui-explicit-id
-msgid "Pick a level to start playing!"
-msgstr "选择一个级别开始玩吧！"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
-#. js-lingui-explicit-id
-msgid "Alias Game Levels"
-msgstr "别名游戏级别"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
-#. js-lingui-explicit-id
-msgid "Check proposed words"
-msgstr "检查建议的单词"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
-#. js-lingui-explicit-id
-msgid "Based on your level, the AI will suggest words to describe."
-msgstr "根据你的水平，AI将会建议需要描述的单词。"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
-#. js-lingui-explicit-id
-msgid "Alias Game options"
-msgstr "别名游戏选项"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
-#. js-lingui-explicit-id
-msgid "Record your description"
-msgstr "记录你的描述"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
-#. js-lingui-explicit-id
-msgid "Describe the word you see on the screen without using the word itself!"
-msgstr "描述你在屏幕上看到的单词，但不能使用该单词本身！"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
-#. js-lingui-explicit-id
-msgid "Alias Game Recording"
-msgstr "别名游戏记录"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
-#. js-lingui-explicit-id
-msgid "Have fun!"
-msgstr "玩得开心！"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
-#. js-lingui-explicit-id
-msgid "Enjoy the game and see how the AI guesses your description!"
-msgstr "享受游戏，看看AI如何猜测你的描述！"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
-#. js-lingui-explicit-id
-msgid "Robot Thinking"
-msgstr "机器人思考中"
+msgid "No translation available"
+msgstr "无翻译可用"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -1897,6 +1703,229 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "所有场景"
 
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
+#. js-lingui-explicit-id
+msgid ""
+"Boost your English vocabulary and fluency by creatively describing and "
+"guessing words in\n"
+"        this interactive AI-powered Alias game."
+msgstr "通过创新性地描述和猜测单词，用这个交互式的 AI 助力的 Alias 游戏提升你的英语词汇和流利度。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
+#. js-lingui-explicit-id
+msgid "Benefits of Playing Alias Game"
+msgstr "玩Alias游戏的好处"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
+#. js-lingui-explicit-id
+msgid "Enhance your vocabulary by describing words in unique ways."
+msgstr "通过独特的方式描述词汇来提高你的词汇量。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
+#. js-lingui-explicit-id
+msgid "Improve listening skills as you interpret descriptions."
+msgstr "在你解读描述时提高听力技巧。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
+#. js-lingui-explicit-id
+msgid "Practice rapid thinking and fluent speaking under playful pressure."
+msgstr "在愉快的压力下练习快速思考和流利的说话。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
+#. js-lingui-explicit-id
+msgid "Receive instant, tailored feedback from your AI partner."
+msgstr "从您的AI伙伴那里获得即时、定制的反馈。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
+#. js-lingui-explicit-id
+msgid "How to Play"
+msgstr "如何玩"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"You and your AI partner alternate turns describing and guessing words "
+"without directly\n"
+"          naming them. This encourages creative thinking and fluent "
+"expression, adapting to your\n"
+"          language proficiency."
+msgstr "你和你的AI伙伴轮流描述和猜测单词，而不直接命名它们。这鼓励创新思维和流畅的表达，适应你的语言能力。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
+#. js-lingui-explicit-id
+msgid "Choose Your Language Level"
+msgstr "选择你的语言水平"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
+#. js-lingui-explicit-id
+msgid "Pick a level to start playing!"
+msgstr "选择一个级别开始玩吧！"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
+#. js-lingui-explicit-id
+msgid "Alias Game Levels"
+msgstr "别名游戏级别"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
+#. js-lingui-explicit-id
+msgid "Check proposed words"
+msgstr "检查建议的单词"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
+#. js-lingui-explicit-id
+msgid "Based on your level, the AI will suggest words to describe."
+msgstr "根据你的水平，AI将会建议需要描述的单词。"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
+#. js-lingui-explicit-id
+msgid "Alias Game options"
+msgstr "别名游戏选项"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
+#. js-lingui-explicit-id
+msgid "Record your description"
+msgstr "记录你的描述"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
+#. js-lingui-explicit-id
+msgid "Describe the word you see on the screen without using the word itself!"
+msgstr "描述你在屏幕上看到的单词，但不能使用该单词本身！"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
+#. js-lingui-explicit-id
+msgid "Alias Game Recording"
+msgstr "别名游戏记录"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
+#. js-lingui-explicit-id
+msgid "Have fun!"
+msgstr "玩得开心！"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
+#. js-lingui-explicit-id
+msgid "Enjoy the game and see how the AI guesses your description!"
+msgstr "享受游戏，看看AI如何猜测你的描述！"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
+#. js-lingui-explicit-id
+msgid "Robot Thinking"
+msgstr "机器人思考中"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:509
+#: src/features/Landing/PlanLandingBlock.tsx:290
+#: src/features/Landing/PlanLandingBlock.tsx:502
+#: src/features/Landing/PlanLandingBlock.tsx:628
+#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:328
+#: src/features/RolePlay/RolePlayCardApp.tsx:136
+#: src/features/RolePlay/RolePlayModal.tsx:267
+#. js-lingui-explicit-id
+msgid "Start"
+msgstr "开始"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:87
+#: src/features/Landing/PlanLandingBlock.tsx:104
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/RolePlay/RolePlayBoard.tsx:49
+#. js-lingui-explicit-id
+msgid "Role Play"
+msgstr "角色扮演"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show more"
+msgstr "显示更多"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show less"
+msgstr "显示更少"
+
+#: src/features/Settings/MyProfile.tsx:69
+#. js-lingui-explicit-id
+msgid "Language"
+msgstr "语言"
+
+#: src/features/Settings/MyProfile.tsx:70
+#. js-lingui-explicit-id
+msgid "Select your preferred language"
+msgstr "选择您的首选语言"
+
+#: src/features/Settings/MyProfile.tsx:77
+#. js-lingui-explicit-id
+msgid "Manage your subscription settings"
+msgstr "管理您的订阅设置"
+
+#: src/features/Header/HeaderPractice.tsx:332
+#: src/features/Header/HeaderPractice.tsx:396
+#: src/features/Settings/MyProfile.tsx:84
+#: src/features/Settings/MyProfile.tsx:251
+#. js-lingui-explicit-id
+msgid "Feedback"
+msgstr "反馈"
+
+#: src/features/Settings/MyProfile.tsx:85
+#. js-lingui-explicit-id
+msgid "Give us your feedback"
+msgstr "给我们您的反馈"
+
+#: src/features/Settings/MyProfile.tsx:92
+#. js-lingui-explicit-id
+msgid "Help"
+msgstr "帮助"
+
+#: src/features/Header/PaymentHistoryModal.tsx:39
+#: src/features/Settings/MyProfile.tsx:100
+#. js-lingui-explicit-id
+msgid "Payment History"
+msgstr "付款历史"
+
+#: src/features/Header/PaymentHistoryModal.tsx:48
+#: src/features/Settings/MyProfile.tsx:101
+#. js-lingui-explicit-id
+msgid "View your payment history"
+msgstr "查看您的付款历史"
+
+#: src/features/Header/HeaderPractice.tsx:423
+#: src/features/Header/HeaderStatic.tsx:17
+#: src/features/Settings/MyProfile.tsx:111
+#. js-lingui-explicit-id
+msgid "Log Out"
+msgstr "登出"
+
+#: src/features/Settings/MyProfile.tsx:112
+#. js-lingui-explicit-id
+msgid "Log out of your account"
+msgstr "退出您的账户"
+
+#: src/features/Header/HeaderPractice.tsx:323
+#: src/features/Header/HeaderPractice.tsx:383
+#: src/features/Settings/MyProfile.tsx:242
+#. js-lingui-explicit-id
+msgid "Refund"
+msgstr "退款"
+
+#: src/features/Header/HeaderPractice.tsx:324
+#: src/features/Settings/MyProfile.tsx:243
+#. js-lingui-explicit-id
+msgid "Add some info why you want a refund and we will do it."
+msgstr "添加一些您要求退款的原因，我们会为您办理。"
+
+#: src/features/Header/ContactMessageModal.tsx:98
+#: src/features/Header/HeaderPractice.tsx:325
+#: src/features/Header/HeaderPractice.tsx:334
+#: src/features/Settings/MyProfile.tsx:244
+#: src/features/Settings/MyProfile.tsx:253
+#. js-lingui-explicit-id
+msgid "Leave your message"
+msgstr "留下您的信息"
+
+#: src/features/Header/HeaderPractice.tsx:333
+#: src/features/Settings/MyProfile.tsx:252
+#. js-lingui-explicit-id
+msgid "We appreciate your feedback!"
+msgstr "我们非常感谢您的反馈！"
+
 #: src/features/Plan/useGoalCreation.ts:41
 #: src/features/Plan/useGoalCreation.ts:69
 #: src/features/Plan/useGoalCreation.ts:91
@@ -2310,6 +2339,24 @@ msgstr "结果比你想象的更接近"
 msgid "Start Learning"
 msgstr "开始学习"
 
+#: src/features/Landing/Footer.tsx:85
+#. js-lingui-explicit-id
+msgid "Role-Play"
+msgstr "角色扮演"
+
+#: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Landing/Footer.tsx:91
+#. js-lingui-explicit-id
+msgid "Blog"
+msgstr "博客"
+
+#: src/features/Header/HeaderStatic.tsx:13
+#: src/features/Landing/Footer.tsx:94
+#: src/features/Landing/Price/PricePage.tsx:95
+#. js-lingui-explicit-id
+msgid "Price"
+msgstr "价格"
+
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
@@ -2625,24 +2672,6 @@ msgstr "开始您的免费试用"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "开始您流利对话的旅程现在"
 
-#: src/features/Landing/Footer.tsx:85
-#. js-lingui-explicit-id
-msgid "Role-Play"
-msgstr "角色扮演"
-
-#: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Landing/Footer.tsx:91
-#. js-lingui-explicit-id
-msgid "Blog"
-msgstr "博客"
-
-#: src/features/Header/HeaderStatic.tsx:13
-#: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:95
-#. js-lingui-explicit-id
-msgid "Price"
-msgstr "价格"
-
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
 msgid "View all"
@@ -2708,18 +2737,6 @@ msgstr "准备好流利地说英语了吗？"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "尝试"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "练习真实生活对话与角色扮演场景"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
-msgstr "订购食物、安排约会、成功进行工作面试等等——所有这些都在您的人工智能导师的指导下进行。"
 
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
@@ -3103,6 +3120,18 @@ msgstr "是的！当购买较大信用套餐时，我们提供折扣。在您购
 msgid "Contacts:"
 msgstr "联系人："
 
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "练习真实生活对话与角色扮演场景"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
+msgstr "订购食物、安排约会、成功进行工作面试等等——所有这些都在您的人工智能导师的指导下进行。"
+
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:20
 #. js-lingui-explicit-id
 msgid "Role Play Scenarios"
@@ -3200,13 +3229,6 @@ msgstr "正在删除..."
 msgid "Yes, Delete account"
 msgstr "是的，删除账户"
 
-#: src/features/Conversation/ConfirmConversationModal.tsx:58
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:229
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "关闭"
-
 #: src/features/Header/NeedHelpModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Delete account"
@@ -3236,6 +3258,22 @@ msgstr "订阅（1个月）"
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "试用天数"
+
+#: src/features/Header/HeaderStatic.tsx:11
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "角色扮演"
+
+#: src/features/Header/HeaderStatic.tsx:14
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "登录"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:16
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "需要帮助吗？"
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3275,11 +3313,55 @@ msgstr "返回"
 msgid "Payment history"
 msgstr "付款历史"
 
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:16
+#: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "需要帮助吗？"
+msgid "You are on the right track!"
+msgstr "你正在正确的道路上！"
+
+#: src/features/Goal/GoalPreparingModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Okay"
+msgstr "好的"
+
+#: src/features/Goal/GoalPreparingModal.tsx:49
+#. js-lingui-explicit-id
+msgid "What we need from you?"
+msgstr "我们需要你提供什么？"
+
+#: src/features/Goal/GoalPreparingModal.tsx:59
+#. js-lingui-explicit-id
+msgid "I agree"
+msgstr "我同意"
+
+#: src/features/Goal/GoalPreparingModal.tsx:65
+#. js-lingui-explicit-id
+msgid "From founder"
+msgstr "来自创始人"
+
+#: src/features/Goal/GoalPreparingModal.tsx:75
+#. js-lingui-explicit-id
+msgid "Got it"
+msgstr "明白了"
+
+#: src/features/Goal/GoalPreparingModal.tsx:81
+#. js-lingui-explicit-id
+msgid "Almost ready..."
+msgstr "几乎准备好了..."
+
+#: src/features/Goal/GoalPreparingModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Let's do it"
+msgstr "我们来做吧"
+
+#: src/features/Goal/GoalPreparingModal.tsx:96
+#. js-lingui-explicit-id
+msgid "Finally"
+msgstr "最后"
+
+#: src/features/Goal/GoalPreparingModal.tsx:107
+#. js-lingui-explicit-id
+msgid "Let's rock it!"
+msgstr "让我们来开启吧！"
 
 #: src/features/Goal/GoalQuestions.tsx:61
 #. js-lingui-explicit-id
@@ -3638,66 +3720,6 @@ msgstr "复制链接"
 msgid "Open the plan"
 msgstr "打开计划"
 
-#: src/features/Goal/GoalPreparingModal.tsx:33
-#. js-lingui-explicit-id
-msgid "You are on the right track!"
-msgstr "你正在正确的道路上！"
-
-#: src/features/Goal/GoalPreparingModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Okay"
-msgstr "好的"
-
-#: src/features/Goal/GoalPreparingModal.tsx:49
-#. js-lingui-explicit-id
-msgid "What we need from you?"
-msgstr "我们需要你提供什么？"
-
-#: src/features/Goal/GoalPreparingModal.tsx:59
-#. js-lingui-explicit-id
-msgid "I agree"
-msgstr "我同意"
-
-#: src/features/Goal/GoalPreparingModal.tsx:65
-#. js-lingui-explicit-id
-msgid "From founder"
-msgstr "来自创始人"
-
-#: src/features/Goal/GoalPreparingModal.tsx:75
-#. js-lingui-explicit-id
-msgid "Got it"
-msgstr "明白了"
-
-#: src/features/Goal/GoalPreparingModal.tsx:81
-#. js-lingui-explicit-id
-msgid "Almost ready..."
-msgstr "几乎准备好了..."
-
-#: src/features/Goal/GoalPreparingModal.tsx:90
-#. js-lingui-explicit-id
-msgid "Let's do it"
-msgstr "我们来做吧"
-
-#: src/features/Goal/GoalPreparingModal.tsx:96
-#. js-lingui-explicit-id
-msgid "Finally"
-msgstr "最后"
-
-#: src/features/Goal/GoalPreparingModal.tsx:107
-#. js-lingui-explicit-id
-msgid "Let's rock it!"
-msgstr "让我们来开启吧！"
-
-#: src/features/Header/HeaderStatic.tsx:11
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "角色扮演"
-
-#: src/features/Header/HeaderStatic.tsx:14
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "登录"
-
 #: src/features/Game/PositionChangedModal.tsx:101
 #. js-lingui-explicit-id
 msgid "Nice!"
@@ -3752,6 +3774,11 @@ msgstr "让我们确保你已做好准备"
 msgid "Your Avatar:"
 msgstr "你的头像："
 
+#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "您的母语："
+
 #: src/features/Game/GameMyUsername.tsx:26
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
@@ -3761,6 +3788,11 @@ msgstr "用户名必须至少为3个字符长。"
 #. js-lingui-explicit-id
 msgid "Game username:"
 msgstr "游戏用户名:"
+
+#: src/features/Game/GameBadge.tsx:75
+#. js-lingui-explicit-id
+msgid "Play and Learn"
+msgstr "玩耍并学习"
 
 #: src/features/Game/GameMyAvatar.tsx:27
 #. js-lingui-explicit-id
@@ -3772,15 +3804,10 @@ msgstr "阿凡达"
 msgid "Select your game avatar"
 msgstr "选择你的游戏头像"
 
-#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
 #. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "您的母语："
-
-#: src/features/Game/GameBadge.tsx:75
-#. js-lingui-explicit-id
-msgid "Play and Learn"
-msgstr "玩耍并学习"
+msgid "Translate the word"
+msgstr "翻译单词"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
@@ -3793,14 +3820,6 @@ msgstr "讨论主题"
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "提交答案"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1095
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "完成"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
@@ -3818,11 +3837,6 @@ msgstr "用你自己的话描述这个主题..."
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "错误："
-
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "翻译单词"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
@@ -3856,22 +3870,6 @@ msgstr "提交"
 #. js-lingui-explicit-id
 msgid "Error:"
 msgstr "错误："
-
-#: src/features/Dashboard/WordsToLearn.tsx:32
-#. js-lingui-explicit-id
-msgid "New words to practice."
-msgstr "新单词练习。"
-
-#: src/features/Dashboard/RulesToLearn.tsx:86
-#: src/features/Dashboard/WordsToLearn.tsx:106
-#. js-lingui-explicit-id
-msgid "Start practice"
-msgstr "开始练习"
-
-#: src/features/Dashboard/WordsToLearn.tsx:128
-#. js-lingui-explicit-id
-msgid "I know all of them"
-msgstr "我知道他们所有人"
 
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
@@ -3925,6 +3923,27 @@ msgstr "学习"
 #. js-lingui-explicit-id
 msgid "Page"
 msgstr "页面"
+
+#: src/features/Dashboard/WordsToLearn.tsx:32
+#. js-lingui-explicit-id
+msgid "New words to practice."
+msgstr "新单词练习。"
+
+#: src/features/Dashboard/RulesToLearn.tsx:86
+#: src/features/Dashboard/WordsToLearn.tsx:106
+#. js-lingui-explicit-id
+msgid "Start practice"
+msgstr "开始练习"
+
+#: src/features/Dashboard/WordsToLearn.tsx:128
+#. js-lingui-explicit-id
+msgid "I know all of them"
+msgstr "我知道他们所有人"
+
+#: src/features/Dashboard/RulesToLearn.tsx:36
+#. js-lingui-explicit-id
+msgid "New rule to practice."
+msgstr "新规则以供练习。"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:72
 #. js-lingui-explicit-id
@@ -4038,11 +4057,6 @@ msgstr "生成更多独特的课程"
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "为了生成更多的课程，你需要至少完成3节课"
 
-#: src/features/Dashboard/RulesToLearn.tsx:36
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "新规则以供练习。"
-
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
@@ -4052,6 +4066,31 @@ msgstr "设置你的学习目标"
 #. js-lingui-explicit-id
 msgid "Start | 5 min"
 msgstr "开始 | 5 分钟"
+
+#: src/features/Dashboard/HomeworkCard.tsx:21
+#. js-lingui-explicit-id
+msgid "Homework"
+msgstr "作业"
+
+#: src/features/Dashboard/HomeworkCard.tsx:57
+#. js-lingui-explicit-id
+msgid "No homework assigned yet."
+msgstr "尚未布置作业。"
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "开始对话以获取一个。"
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "跳过"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "显示全部"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:110
 #. js-lingui-explicit-id
@@ -4088,30 +4127,20 @@ msgstr "获取规则"
 msgid "Expand vocabulary"
 msgstr "扩展词汇"
 
-#: src/features/Dashboard/HomeworkCard.tsx:21
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
-msgid "Homework"
-msgstr "作业"
+msgid "Progress Calendar"
+msgstr "进度日历"
 
-#: src/features/Dashboard/HomeworkCard.tsx:57
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
 #. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "尚未布置作业。"
+msgid "Less"
+msgstr "更少"
 
-#: src/features/Dashboard/HomeworkCard.tsx:66
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
 #. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "开始对话以获取一个。"
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "跳过"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "显示全部"
+msgid "More"
+msgstr "更多"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4215,26 +4244,61 @@ msgstr "准备大脑"
 msgid "Upload language skills directly to your brain"
 msgstr "将语言技能直接上传到你的大脑"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
-#. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "进度日历"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "更少"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "更多"
-
 #: src/features/Conversation/useConversationsAnalysis.ts:89
 #: src/features/Conversation/useConversationsAnalysis.ts:132
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "分析对话时出现错误"
+
+#: src/features/Conversation/ConversationError.tsx:34
+#. js-lingui-explicit-id
+msgid "Oops! Something went wrong"
+msgstr "哎呀！出了些问题"
+
+#: src/features/Conversation/ConversationError.tsx:37
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "请刷新页面并再试一次"
+
+#: src/features/Conversation/ConversationError.tsx:41
+#. js-lingui-explicit-id
+msgid "Notification was sent to the dev team. Sorry for that..."
+msgstr "通知已发送至开发团队。对此我们深感抱歉..."
+
+#: src/features/Conversation/ConversationError.tsx:51
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "重新加载页面"
+
+#: src/features/Conversation/ConversationPage.tsx:134
+#. js-lingui-explicit-id
+msgid "Loading Goal..."
+msgstr "正在加载目标..."
+
+#: src/features/Conversation/ConversationPage.tsx:158
+#. js-lingui-explicit-id
+msgid "Crafting new words..."
+msgstr "正在创造新词……"
+
+#: src/features/Conversation/ConversationPage.tsx:162
+#. js-lingui-explicit-id
+msgid "Crafting new rule..."
+msgstr "正在制定新规则..."
+
+#: src/features/Conversation/AliasGamePanel.tsx:122
+#. js-lingui-explicit-id
+msgid "Describe these words:"
+msgstr "描述这些词语:"
+
+#: src/features/Conversation/AliasGamePanel.tsx:171
+#. js-lingui-explicit-id
+msgid "More options"
+msgstr "更多选项"
+
+#: src/features/Conversation/AliasGamePanel.tsx:180
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "猜测的词语:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:361
 #. js-lingui-explicit-id
@@ -4410,71 +4474,6 @@ msgstr "取消录音"
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "充值"
-
-#: src/features/Conversation/ConversationPage.tsx:134
-#. js-lingui-explicit-id
-msgid "Loading Goal..."
-msgstr "正在加载目标..."
-
-#: src/features/Conversation/ConversationPage.tsx:158
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "正在创造新词……"
-
-#: src/features/Conversation/ConversationPage.tsx:162
-#. js-lingui-explicit-id
-msgid "Crafting new rule..."
-msgstr "正在制定新规则..."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:26
-#. js-lingui-explicit-id
-msgid "Ready?"
-msgstr "准备好了吗？"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:30
-#. js-lingui-explicit-id
-msgid "Next, allow microphone access to talk with the AI."
-msgstr "接下来，允许麦克风访问以与AI进行交谈。"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:55
-#. js-lingui-explicit-id
-msgid "I am ready"
-msgstr "我已准备好"
-
-#: src/features/Conversation/AliasGamePanel.tsx:122
-#. js-lingui-explicit-id
-msgid "Describe these words:"
-msgstr "描述这些词语:"
-
-#: src/features/Conversation/AliasGamePanel.tsx:171
-#. js-lingui-explicit-id
-msgid "More options"
-msgstr "更多选项"
-
-#: src/features/Conversation/AliasGamePanel.tsx:180
-#. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "猜测的词语:"
-
-#: src/features/Conversation/ConversationError.tsx:34
-#. js-lingui-explicit-id
-msgid "Oops! Something went wrong"
-msgstr "哎呀！出了些问题"
-
-#: src/features/Conversation/ConversationError.tsx:37
-#. js-lingui-explicit-id
-msgid "Please refresh the page and try one more time"
-msgstr "请刷新页面并再试一次"
-
-#: src/features/Conversation/ConversationError.tsx:41
-#. js-lingui-explicit-id
-msgid "Notification was sent to the dev team. Sorry for that..."
-msgstr "通知已发送至开发团队。对此我们深感抱歉..."
-
-#: src/features/Conversation/ConversationError.tsx:51
-#. js-lingui-explicit-id
-msgid "Reload page"
-msgstr "重新加载页面"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -5773,6 +5772,21 @@ msgstr "专业发展"
 msgid "All Blogs"
 msgstr "所有博客"
 
+#: src/features/Conversation/ConfirmConversationModal.tsx:26
+#. js-lingui-explicit-id
+msgid "Ready?"
+msgstr "准备好了吗？"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Next, allow microphone access to talk with the AI."
+msgstr "接下来，允许麦克风访问以与AI进行交谈。"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:55
+#. js-lingui-explicit-id
+msgid "I am ready"
+msgstr "我已准备好"
+
 #: src/features/Blog/ListBlogIntro.tsx:66
 #. js-lingui-explicit-id
 msgid "Read and Learn with my blog"
@@ -5794,26 +5808,6 @@ msgstr "未找到博客"
 #. js-lingui-explicit-id
 msgid "Read more"
 msgstr "阅读更多"
-
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "查看所有帖子"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "角色扮演情景进行练习"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "您现在可以尝试AI的实际操作"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "免费试用"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
 #. js-lingui-explicit-id
@@ -6189,6 +6183,26 @@ msgstr "准备英语面试需要时间，但它会有回报。使用本文的提
 #. js-lingui-explicit-id
 msgid "Good preparation today means career success tomorrow."
 msgstr "今日的良好准备意味着明日的职业成功。"
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "查看所有帖子"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "角色扮演情景进行练习"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "您现在可以尝试AI的实际操作"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "免费试用"
 
 #: src/features/Auth/SignInForm.tsx:30
 #. js-lingui-explicit-id

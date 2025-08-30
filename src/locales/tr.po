@@ -13,10 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:145
+#: src/features/Usage/SubscriptionWaiter.tsx:57
 #. js-lingui-explicit-id
-msgid "Transaction completed. Soon your balance will be updated."
-msgstr "İşlem tamamlandı. Yakında bakiyeniz güncellenecek."
+msgid "Your subscription has been successfully changed."
+msgstr "Aboneliğiniz başarıyla değiştirildi."
+
+#: src/features/Usage/SubscriptionWaiter.tsx:78
+#. js-lingui-explicit-id
+msgid "Please wait while we process your payment."
+msgstr "Ödemenizi işlerken lütfen bekleyin."
 
 #: src/features/Header/HeaderStatic.tsx:12
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -367,25 +372,31 @@ msgstr "İngilizce konuşma partneri"
 msgid "AI English Speaking Practice"
 msgstr "AI İngilizce Konuşma Pratiği"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:100
-#: src/features/Usage/SubscriptionPaymentModal.tsx:119
-#: src/features/Usage/SubscriptionPaymentModal.tsx:267
-#: src/features/Usage/SubscriptionPaymentModal.tsx:340
+#: src/features/Usage/SubscriptionPaymentModal.tsx:101
+#: src/features/Usage/SubscriptionPaymentModal.tsx:120
+#: src/features/Usage/SubscriptionPaymentModal.tsx:276
+#: src/features/Usage/SubscriptionPaymentModal.tsx:347
 #. js-lingui-explicit-id
 msgid "Error creating payment session"
 msgstr "Ödeme oturumu oluşturma hatası"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:153
+#: src/features/Usage/SubscriptionPaymentModal.tsx:146
+#. js-lingui-explicit-id
+msgid "Transaction completed. Soon your balance will be updated."
+msgstr "İşlem tamamlandı. Yakında bakiyeniz güncellenecek."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:154
 #. js-lingui-explicit-id
 msgid "Error processing payment"
 msgstr "Ödeme işlenirken hata oluştu"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:178
+#: src/features/Usage/SubscriptionPaymentModal.tsx:179
+#: src/features/Usage/SubscriptionWaiter.tsx:69
 #. js-lingui-explicit-id
 msgid "Waiting for payment..."
 msgstr "Ödeme bekleniyor..."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:188
+#: src/features/Usage/SubscriptionPaymentModal.tsx:189
 #. js-lingui-explicit-id
 msgid "Attempt"
 msgstr "Deneme"
@@ -405,60 +416,60 @@ msgstr "Deneme"
 #: src/features/Telegram/TgAppPage.tsx:159
 #: src/features/Translation/useTranslate.tsx:130
 #: src/features/Usage/PaymentModal.tsx:494
-#: src/features/Usage/SubscriptionPaymentModal.tsx:203
+#: src/features/Usage/SubscriptionPaymentModal.tsx:204
 #. js-lingui-explicit-id
 msgid "Loading..."
 msgstr "Yükleniyor..."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:203
+#: src/features/Usage/SubscriptionPaymentModal.tsx:204
 #. js-lingui-explicit-id
 msgid "Pay with crypto"
 msgstr "Kripto ile öde"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:274
+#: src/features/Usage/SubscriptionPaymentModal.tsx:283
 #. js-lingui-explicit-id
 msgid "Error creating payment session. Try again later."
 msgstr "Ödeme oturumu oluşturulurken hata oluştu. Lütfen daha sonra tekrar deneyin."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:287
+#: src/features/Usage/SubscriptionPaymentModal.tsx:296
 #. js-lingui-explicit-id
 msgid "Payment successful! Thank you."
 msgstr "Ödeme başarılı! Teşekkürler."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:294
+#: src/features/Usage/SubscriptionPaymentModal.tsx:301
 #. js-lingui-explicit-id
 msgid "Payment failed! Please try again."
 msgstr "Ödeme başarısız oldu! Lütfen tekrar deneyin."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:307
-#: src/features/Usage/SubscriptionPaymentModal.tsx:351
+#: src/features/Usage/SubscriptionPaymentModal.tsx:314
+#: src/features/Usage/SubscriptionPaymentModal.tsx:358
 #. js-lingui-explicit-id
 msgid "Error during payment process"
 msgstr "Ödeme işlemi sırasında hata"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:429
+#: src/features/Usage/SubscriptionPaymentModal.tsx:443
 #. js-lingui-explicit-id
 msgid "Payment option"
 msgstr "Ödeme seçeneği"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:438
-#: src/features/Usage/SubscriptionPaymentModal.tsx:521
+#: src/features/Usage/SubscriptionPaymentModal.tsx:452
+#: src/features/Usage/SubscriptionPaymentModal.tsx:536
 #. js-lingui-explicit-id
 msgid "Subscription for 1 month | Full access"
 msgstr "1 aylık abonelik | Tam erişim"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:470
+#: src/features/Usage/SubscriptionPaymentModal.tsx:485
 #. js-lingui-explicit-id
 msgid "Pay with Stars"
 msgstr "Yıldızlarla Öde"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:512
+#: src/features/Usage/SubscriptionPaymentModal.tsx:527
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "Ödemeyi onayla"
 
 #: src/features/Usage/PaymentModal.tsx:280
-#: src/features/Usage/SubscriptionPaymentModal.tsx:549
+#: src/features/Usage/SubscriptionPaymentModal.tsx:564
 #. js-lingui-explicit-id
 msgid ""
 "I want the service to be provided immediately and I acknowledge that as "
@@ -474,19 +485,19 @@ msgstr ""
 "kaybedeceğimi kabul ediyorum."
 
 #: src/features/Usage/PaymentModal.tsx:298
-#: src/features/Usage/SubscriptionPaymentModal.tsx:567
+#: src/features/Usage/SubscriptionPaymentModal.tsx:582
 #. js-lingui-explicit-id
 msgid "I accept the"
 msgstr "Kabul ediyorum"
 
 #: src/features/Usage/PaymentModal.tsx:300
-#: src/features/Usage/SubscriptionPaymentModal.tsx:569
+#: src/features/Usage/SubscriptionPaymentModal.tsx:584
 #. js-lingui-explicit-id
 msgid "Terms and Conditions"
 msgstr "Şartlar ve Koşullar"
 
 #: src/features/Usage/PaymentModal.tsx:302
-#: src/features/Usage/SubscriptionPaymentModal.tsx:571
+#: src/features/Usage/SubscriptionPaymentModal.tsx:586
 #. js-lingui-explicit-id
 msgid ""
 "of the Website operated by Fundacja Rozwoju Przedsiębiorczości \"Twój\n"
@@ -496,13 +507,13 @@ msgstr ""
 "                        StartUp\" tarafından işletilen Web Sitesi."
 
 #: src/features/Usage/PaymentModal.tsx:319
-#: src/features/Usage/SubscriptionPaymentModal.tsx:588
+#: src/features/Usage/SubscriptionPaymentModal.tsx:603
 #. js-lingui-explicit-id
 msgid "I want to receive commercial and marketing content"
 msgstr "Ticari ve pazarlama içeriği almak istiyorum"
 
 #: src/features/Usage/PaymentModal.tsx:250
-#: src/features/Usage/SubscriptionPaymentModal.tsx:604
+#: src/features/Usage/SubscriptionPaymentModal.tsx:619
 #. js-lingui-explicit-id
 msgid "Total:"
 msgstr "Toplam:"
@@ -513,92 +524,92 @@ msgstr "Toplam:"
 #: src/features/Goal/GoalQuestions.tsx:823
 #: src/features/Goal/GoalQuestions.tsx:862
 #: src/features/Plan/PlanCard.tsx:261
-#: src/features/Usage/SubscriptionPaymentModal.tsx:624
+#: src/features/Usage/SubscriptionPaymentModal.tsx:639
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "Devam et"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:624
+#: src/features/Usage/SubscriptionPaymentModal.tsx:639
 #. js-lingui-explicit-id
 msgid "Pay"
 msgstr "Öde"
 
 #: src/features/Header/HeaderPractice.tsx:358
 #: src/features/Settings/MyProfile.tsx:76
-#: src/features/Usage/SubscriptionPaymentModal.tsx:646
+#: src/features/Usage/SubscriptionPaymentModal.tsx:661
 #. js-lingui-explicit-id
 msgid "Subscription"
 msgstr "Abonelik"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:655
+#: src/features/Usage/SubscriptionPaymentModal.tsx:670
 #. js-lingui-explicit-id
 msgid "You don't have an active subscription."
 msgstr "Aktif bir aboneliğiniz yok."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:658
+#: src/features/Usage/SubscriptionPaymentModal.tsx:673
 #. js-lingui-explicit-id
 msgid "Your trial ended until"
 msgstr "Deneme süreniz sona erdi"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:664
+#: src/features/Usage/SubscriptionPaymentModal.tsx:679
 #. js-lingui-explicit-id
 msgid "Your subscription is active until"
 msgstr "Aboneliğiniz şu tarihe kadar aktif"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:670
+#: src/features/Usage/SubscriptionPaymentModal.tsx:685
 #. js-lingui-explicit-id
 msgid "You have"
 msgstr "Sahipsin"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:671
+#: src/features/Usage/SubscriptionPaymentModal.tsx:686
 #. js-lingui-explicit-id
 msgid "AI hours left in your balance."
 msgstr "AI bakiyenizde kalan saatler."
 
 #: src/features/Landing/Price/PricePage.tsx:203
-#: src/features/Usage/SubscriptionPaymentModal.tsx:699
+#: src/features/Usage/SubscriptionPaymentModal.tsx:714
 #. js-lingui-explicit-id
 msgid "Full Access"
 msgstr "Tam Erişim"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:714
-#: src/features/Usage/SubscriptionPaymentModal.tsx:810
+#: src/features/Usage/SubscriptionPaymentModal.tsx:729
+#: src/features/Usage/SubscriptionPaymentModal.tsx:825
 #. js-lingui-explicit-id
 msgid "Active"
 msgstr "Aktif"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:751
+#: src/features/Usage/SubscriptionPaymentModal.tsx:766
 #. js-lingui-explicit-id
 msgid "Stars"
 msgstr "Yıldızlar"
 
 #: src/features/Landing/Price/PricePage.tsx:233
-#: src/features/Usage/SubscriptionPaymentModal.tsx:753
-#: src/features/Usage/SubscriptionPaymentModal.tsx:789
+#: src/features/Usage/SubscriptionPaymentModal.tsx:768
+#: src/features/Usage/SubscriptionPaymentModal.tsx:804
 #. js-lingui-explicit-id
 msgid "month"
 msgstr "ay"
 
 #: src/features/Landing/Price/PricePage.tsx:237
-#: src/features/Usage/SubscriptionPaymentModal.tsx:796
+#: src/features/Usage/SubscriptionPaymentModal.tsx:811
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
 msgstr "Tam erişimle tam hızda öğrenin"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:810
+#: src/features/Usage/SubscriptionPaymentModal.tsx:825
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "Tam Erişim Alın"
 
 #: src/features/Usage/PaymentModal.tsx:453
-#: src/features/Usage/SubscriptionPaymentModal.tsx:816
+#: src/features/Usage/SubscriptionPaymentModal.tsx:831
 #. js-lingui-explicit-id
 msgid "Buy More"
 msgstr "Daha Fazla Satın Al"
 
 #: src/features/Header/NeedHelpModal.tsx:84
 #: src/features/Settings/MyProfile.tsx:93
-#: src/features/Usage/SubscriptionPaymentModal.tsx:831
+#: src/features/Usage/SubscriptionPaymentModal.tsx:846
 #. js-lingui-explicit-id
 msgid "Need help?"
 msgstr "Yardıma mı ihtiyacınız var?"
@@ -699,16 +710,6 @@ msgstr "Toplam"
 #. js-lingui-explicit-id
 msgid "Open history"
 msgstr "Geçmişi aç"
-
-#: src/features/Translation/useTranslate.tsx:130
-#. js-lingui-explicit-id
-msgid "No text to translate"
-msgstr "Çevrilecek metin yok"
-
-#: src/features/Translation/useTranslate.tsx:143
-#. js-lingui-explicit-id
-msgid "No translation available"
-msgstr "Çeviri mevcut değil"
 
 #: src/features/Usage/PaymentModal.tsx:119
 #. js-lingui-explicit-id
@@ -853,6 +854,45 @@ msgstr "Ödeme geçmişi:"
 msgid "No payments..."
 msgstr "Ödemeler yok..."
 
+#: src/features/Conversation/ConversationCanvas2.tsx:1498
+#: src/features/Usage/NoBalanceBlock.tsx:61
+#. js-lingui-explicit-id
+msgid "Low balance"
+msgstr "Düşük bakiye"
+
+#: src/features/Usage/NoBalanceBlock.tsx:72
+#. js-lingui-explicit-id
+msgid "You've made amazing progress. Let’s keep going."
+msgstr "Harika bir ilerleme kaydettiniz. Hadi devam edelim."
+
+#: src/features/Usage/NoBalanceBlock.tsx:98
+#. js-lingui-explicit-id
+msgid "Buy a subscription"
+msgstr "Abonelik Satın Al"
+
+#: src/features/Usage/NoBalanceBlock.tsx:110
+#. js-lingui-explicit-id
+msgid "Play the Game"
+msgstr "Oyunu Oyna"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1095
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
+#: src/features/Usage/SubscriptionWaiter.tsx:48
+#. js-lingui-explicit-id
+msgid "Done"
+msgstr "Tamamlandı"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:58
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:229
+#: src/features/Usage/SubscriptionWaiter.tsx:61
+#: src/features/Usage/SubscriptionWaiter.tsx:82
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "Kapat"
+
 #: src/features/Telegram/TgAppPage.tsx:83
 #. js-lingui-explicit-id
 msgid "Unknown error during sign-in"
@@ -888,257 +928,15 @@ msgstr "Yükleniyor.."
 msgid "Refresh"
 msgstr "Yenile"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1498
-#: src/features/Usage/NoBalanceBlock.tsx:61
+#: src/features/Translation/useTranslate.tsx:130
 #. js-lingui-explicit-id
-msgid "Low balance"
-msgstr "Düşük bakiye"
+msgid "No text to translate"
+msgstr "Çevrilecek metin yok"
 
-#: src/features/Usage/NoBalanceBlock.tsx:72
+#: src/features/Translation/useTranslate.tsx:143
 #. js-lingui-explicit-id
-msgid "You've made amazing progress. Let’s keep going."
-msgstr "Harika bir ilerleme kaydettiniz. Hadi devam edelim."
-
-#: src/features/Usage/NoBalanceBlock.tsx:98
-#. js-lingui-explicit-id
-msgid "Buy a subscription"
-msgstr "Abonelik Satın Al"
-
-#: src/features/Usage/NoBalanceBlock.tsx:110
-#. js-lingui-explicit-id
-msgid "Play the Game"
-msgstr "Oyunu Oyna"
-
-#: src/features/Settings/MyProfile.tsx:69
-#. js-lingui-explicit-id
-msgid "Language"
-msgstr "Dil"
-
-#: src/features/Settings/MyProfile.tsx:70
-#. js-lingui-explicit-id
-msgid "Select your preferred language"
-msgstr "Tercih ettiğiniz dili seçin"
-
-#: src/features/Settings/MyProfile.tsx:77
-#. js-lingui-explicit-id
-msgid "Manage your subscription settings"
-msgstr "Abonelik ayarlarınızı yönetin"
-
-#: src/features/Header/HeaderPractice.tsx:332
-#: src/features/Header/HeaderPractice.tsx:396
-#: src/features/Settings/MyProfile.tsx:84
-#: src/features/Settings/MyProfile.tsx:251
-#. js-lingui-explicit-id
-msgid "Feedback"
-msgstr "Geri Bildirim"
-
-#: src/features/Settings/MyProfile.tsx:85
-#. js-lingui-explicit-id
-msgid "Give us your feedback"
-msgstr "Bize geri bildiriminizi verin"
-
-#: src/features/Settings/MyProfile.tsx:92
-#. js-lingui-explicit-id
-msgid "Help"
-msgstr "Yardım"
-
-#: src/features/Header/PaymentHistoryModal.tsx:39
-#: src/features/Settings/MyProfile.tsx:100
-#. js-lingui-explicit-id
-msgid "Payment History"
-msgstr "Ödeme Geçmişi"
-
-#: src/features/Header/PaymentHistoryModal.tsx:48
-#: src/features/Settings/MyProfile.tsx:101
-#. js-lingui-explicit-id
-msgid "View your payment history"
-msgstr "Ödeme geçmişinizi görüntüleyin"
-
-#: src/features/Header/HeaderPractice.tsx:423
-#: src/features/Header/HeaderStatic.tsx:17
-#: src/features/Settings/MyProfile.tsx:111
-#. js-lingui-explicit-id
-msgid "Log Out"
-msgstr "Oturumu Kapat"
-
-#: src/features/Settings/MyProfile.tsx:112
-#. js-lingui-explicit-id
-msgid "Log out of your account"
-msgstr "Hesabınızdan çıkış yapın"
-
-#: src/features/Header/HeaderPractice.tsx:323
-#: src/features/Header/HeaderPractice.tsx:383
-#: src/features/Settings/MyProfile.tsx:242
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "İade"
-
-#: src/features/Header/HeaderPractice.tsx:324
-#: src/features/Settings/MyProfile.tsx:243
-#. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr ""
-"Bir iade talebinde bulunmak istemenizin nedenini biraz ayrıntılandırın ve "
-"biz gerçekleştireceğiz."
-
-#: src/features/Header/ContactMessageModal.tsx:98
-#: src/features/Header/HeaderPractice.tsx:325
-#: src/features/Header/HeaderPractice.tsx:334
-#: src/features/Settings/MyProfile.tsx:244
-#: src/features/Settings/MyProfile.tsx:253
-#. js-lingui-explicit-id
-msgid "Leave your message"
-msgstr "Mesajınızı bırakın"
-
-#: src/features/Header/HeaderPractice.tsx:333
-#: src/features/Settings/MyProfile.tsx:252
-#. js-lingui-explicit-id
-msgid "We appreciate your feedback!"
-msgstr "Geri bildiriminizi takdir ediyoruz!"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:509
-#: src/features/Landing/PlanLandingBlock.tsx:290
-#: src/features/Landing/PlanLandingBlock.tsx:502
-#: src/features/Landing/PlanLandingBlock.tsx:628
-#: src/features/Landing/Price/PricePage.tsx:280
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:328
-#: src/features/RolePlay/RolePlayCardApp.tsx:136
-#: src/features/RolePlay/RolePlayModal.tsx:267
-#. js-lingui-explicit-id
-msgid "Start"
-msgstr "Başla"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:87
-#: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/Navigation/NavigationBar.tsx:54
-#: src/features/RolePlay/RolePlayBoard.tsx:49
-#. js-lingui-explicit-id
-msgid "Role Play"
-msgstr "Rol Oynama"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show more"
-msgstr "Daha fazla göster"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show less"
-msgstr "Daha az göster"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
-#. js-lingui-explicit-id
-msgid ""
-"Boost your English vocabulary and fluency by creatively describing and "
-"guessing words in\n"
-"        this interactive AI-powered Alias game."
-msgstr ""
-"İnteraktif AI destekli Alias oyununda kelimeleri yaratıcı bir şekilde tarif "
-"ederek ve tahmin ederek İngilizce kelime dağarcığınızı ve akıcılığınızı "
-"geliştirin."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
-#. js-lingui-explicit-id
-msgid "Benefits of Playing Alias Game"
-msgstr "Alias Oyunu Oynamanın Faydaları"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
-#. js-lingui-explicit-id
-msgid "Enhance your vocabulary by describing words in unique ways."
-msgstr "Kelimeleri benzersiz yollarla tarif ederek kelime dağarcığınızı geliştirin."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
-#. js-lingui-explicit-id
-msgid "Improve listening skills as you interpret descriptions."
-msgstr "Açıklamaları yorumlarken dinleme becerilerinizi geliştirin."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
-#. js-lingui-explicit-id
-msgid "Practice rapid thinking and fluent speaking under playful pressure."
-msgstr "Oyunlu baskı altında hızlı düşünme ve akıcı konuşma pratiği yapın."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
-#. js-lingui-explicit-id
-msgid "Receive instant, tailored feedback from your AI partner."
-msgstr "AI ortağınızdan anında, kişiye özel geri bildirim alın."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
-#. js-lingui-explicit-id
-msgid "How to Play"
-msgstr "Nasıl Oynanır"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
-#. js-lingui-explicit-id
-msgid ""
-"You and your AI partner alternate turns describing and guessing words "
-"without directly\n"
-"          naming them. This encourages creative thinking and fluent "
-"expression, adapting to your\n"
-"          language proficiency."
-msgstr ""
-"Siz ve AI ortağınız, sırayla sözcükleri doğrudan adlandırmadan açıklama ve "
-"tahmin etme işlemini gerçekleştirirsiniz. Bu, yaratıcı düşünmeyi ve akıcı "
-"ifadeyi teşvik eder, dil yeterliliğinize uyum sağlar."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
-#. js-lingui-explicit-id
-msgid "Choose Your Language Level"
-msgstr "Dil Seviyenizi Seçin"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
-#. js-lingui-explicit-id
-msgid "Pick a level to start playing!"
-msgstr "Oynamaya başlamak için bir seviye seçin!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
-#. js-lingui-explicit-id
-msgid "Alias Game Levels"
-msgstr "Alias Oyun Seviyeleri"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
-#. js-lingui-explicit-id
-msgid "Check proposed words"
-msgstr "Önerilen kelimeleri kontrol edin"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
-#. js-lingui-explicit-id
-msgid "Based on your level, the AI will suggest words to describe."
-msgstr "Seviyenize göre, AI tanımlamanız için kelimeler önerir."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
-#. js-lingui-explicit-id
-msgid "Alias Game options"
-msgstr "Takma Ad Oyunu seçenekleri"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
-#. js-lingui-explicit-id
-msgid "Record your description"
-msgstr "Açıklamanızı kaydedin"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
-#. js-lingui-explicit-id
-msgid "Describe the word you see on the screen without using the word itself!"
-msgstr "Ekranda gördüğünüz kelimeyi, kelimeyi kendini kullanmadan tarif edin!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
-#. js-lingui-explicit-id
-msgid "Alias Game Recording"
-msgstr "Alias Oyun Kaydı"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
-#. js-lingui-explicit-id
-msgid "Have fun!"
-msgstr "Eğlenin!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
-#. js-lingui-explicit-id
-msgid "Enjoy the game and see how the AI guesses your description!"
-msgstr "Oyunun tadını çıkarın ve AI'ın tanımınızı nasıl tahmin ettiğini görün!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
-#. js-lingui-explicit-id
-msgid "Robot Thinking"
-msgstr "Robot Düşünüyor"
+msgid "No translation available"
+msgstr "Çeviri mevcut değil"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -2074,6 +1872,237 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Tüm Senaryolar"
 
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
+#. js-lingui-explicit-id
+msgid ""
+"Boost your English vocabulary and fluency by creatively describing and "
+"guessing words in\n"
+"        this interactive AI-powered Alias game."
+msgstr ""
+"İnteraktif AI destekli Alias oyununda kelimeleri yaratıcı bir şekilde tarif "
+"ederek ve tahmin ederek İngilizce kelime dağarcığınızı ve akıcılığınızı "
+"geliştirin."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
+#. js-lingui-explicit-id
+msgid "Benefits of Playing Alias Game"
+msgstr "Alias Oyunu Oynamanın Faydaları"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
+#. js-lingui-explicit-id
+msgid "Enhance your vocabulary by describing words in unique ways."
+msgstr "Kelimeleri benzersiz yollarla tarif ederek kelime dağarcığınızı geliştirin."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
+#. js-lingui-explicit-id
+msgid "Improve listening skills as you interpret descriptions."
+msgstr "Açıklamaları yorumlarken dinleme becerilerinizi geliştirin."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
+#. js-lingui-explicit-id
+msgid "Practice rapid thinking and fluent speaking under playful pressure."
+msgstr "Oyunlu baskı altında hızlı düşünme ve akıcı konuşma pratiği yapın."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
+#. js-lingui-explicit-id
+msgid "Receive instant, tailored feedback from your AI partner."
+msgstr "AI ortağınızdan anında, kişiye özel geri bildirim alın."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
+#. js-lingui-explicit-id
+msgid "How to Play"
+msgstr "Nasıl Oynanır"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"You and your AI partner alternate turns describing and guessing words "
+"without directly\n"
+"          naming them. This encourages creative thinking and fluent "
+"expression, adapting to your\n"
+"          language proficiency."
+msgstr ""
+"Siz ve AI ortağınız, sırayla sözcükleri doğrudan adlandırmadan açıklama ve "
+"tahmin etme işlemini gerçekleştirirsiniz. Bu, yaratıcı düşünmeyi ve akıcı "
+"ifadeyi teşvik eder, dil yeterliliğinize uyum sağlar."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
+#. js-lingui-explicit-id
+msgid "Choose Your Language Level"
+msgstr "Dil Seviyenizi Seçin"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
+#. js-lingui-explicit-id
+msgid "Pick a level to start playing!"
+msgstr "Oynamaya başlamak için bir seviye seçin!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
+#. js-lingui-explicit-id
+msgid "Alias Game Levels"
+msgstr "Alias Oyun Seviyeleri"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
+#. js-lingui-explicit-id
+msgid "Check proposed words"
+msgstr "Önerilen kelimeleri kontrol edin"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
+#. js-lingui-explicit-id
+msgid "Based on your level, the AI will suggest words to describe."
+msgstr "Seviyenize göre, AI tanımlamanız için kelimeler önerir."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
+#. js-lingui-explicit-id
+msgid "Alias Game options"
+msgstr "Takma Ad Oyunu seçenekleri"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
+#. js-lingui-explicit-id
+msgid "Record your description"
+msgstr "Açıklamanızı kaydedin"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
+#. js-lingui-explicit-id
+msgid "Describe the word you see on the screen without using the word itself!"
+msgstr "Ekranda gördüğünüz kelimeyi, kelimeyi kendini kullanmadan tarif edin!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
+#. js-lingui-explicit-id
+msgid "Alias Game Recording"
+msgstr "Alias Oyun Kaydı"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
+#. js-lingui-explicit-id
+msgid "Have fun!"
+msgstr "Eğlenin!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
+#. js-lingui-explicit-id
+msgid "Enjoy the game and see how the AI guesses your description!"
+msgstr "Oyunun tadını çıkarın ve AI'ın tanımınızı nasıl tahmin ettiğini görün!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
+#. js-lingui-explicit-id
+msgid "Robot Thinking"
+msgstr "Robot Düşünüyor"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:509
+#: src/features/Landing/PlanLandingBlock.tsx:290
+#: src/features/Landing/PlanLandingBlock.tsx:502
+#: src/features/Landing/PlanLandingBlock.tsx:628
+#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:328
+#: src/features/RolePlay/RolePlayCardApp.tsx:136
+#: src/features/RolePlay/RolePlayModal.tsx:267
+#. js-lingui-explicit-id
+msgid "Start"
+msgstr "Başla"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:87
+#: src/features/Landing/PlanLandingBlock.tsx:104
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/RolePlay/RolePlayBoard.tsx:49
+#. js-lingui-explicit-id
+msgid "Role Play"
+msgstr "Rol Oynama"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show more"
+msgstr "Daha fazla göster"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show less"
+msgstr "Daha az göster"
+
+#: src/features/Settings/MyProfile.tsx:69
+#. js-lingui-explicit-id
+msgid "Language"
+msgstr "Dil"
+
+#: src/features/Settings/MyProfile.tsx:70
+#. js-lingui-explicit-id
+msgid "Select your preferred language"
+msgstr "Tercih ettiğiniz dili seçin"
+
+#: src/features/Settings/MyProfile.tsx:77
+#. js-lingui-explicit-id
+msgid "Manage your subscription settings"
+msgstr "Abonelik ayarlarınızı yönetin"
+
+#: src/features/Header/HeaderPractice.tsx:332
+#: src/features/Header/HeaderPractice.tsx:396
+#: src/features/Settings/MyProfile.tsx:84
+#: src/features/Settings/MyProfile.tsx:251
+#. js-lingui-explicit-id
+msgid "Feedback"
+msgstr "Geri Bildirim"
+
+#: src/features/Settings/MyProfile.tsx:85
+#. js-lingui-explicit-id
+msgid "Give us your feedback"
+msgstr "Bize geri bildiriminizi verin"
+
+#: src/features/Settings/MyProfile.tsx:92
+#. js-lingui-explicit-id
+msgid "Help"
+msgstr "Yardım"
+
+#: src/features/Header/PaymentHistoryModal.tsx:39
+#: src/features/Settings/MyProfile.tsx:100
+#. js-lingui-explicit-id
+msgid "Payment History"
+msgstr "Ödeme Geçmişi"
+
+#: src/features/Header/PaymentHistoryModal.tsx:48
+#: src/features/Settings/MyProfile.tsx:101
+#. js-lingui-explicit-id
+msgid "View your payment history"
+msgstr "Ödeme geçmişinizi görüntüleyin"
+
+#: src/features/Header/HeaderPractice.tsx:423
+#: src/features/Header/HeaderStatic.tsx:17
+#: src/features/Settings/MyProfile.tsx:111
+#. js-lingui-explicit-id
+msgid "Log Out"
+msgstr "Oturumu Kapat"
+
+#: src/features/Settings/MyProfile.tsx:112
+#. js-lingui-explicit-id
+msgid "Log out of your account"
+msgstr "Hesabınızdan çıkış yapın"
+
+#: src/features/Header/HeaderPractice.tsx:323
+#: src/features/Header/HeaderPractice.tsx:383
+#: src/features/Settings/MyProfile.tsx:242
+#. js-lingui-explicit-id
+msgid "Refund"
+msgstr "İade"
+
+#: src/features/Header/HeaderPractice.tsx:324
+#: src/features/Settings/MyProfile.tsx:243
+#. js-lingui-explicit-id
+msgid "Add some info why you want a refund and we will do it."
+msgstr ""
+"Bir iade talebinde bulunmak istemenizin nedenini biraz ayrıntılandırın ve "
+"biz gerçekleştireceğiz."
+
+#: src/features/Header/ContactMessageModal.tsx:98
+#: src/features/Header/HeaderPractice.tsx:325
+#: src/features/Header/HeaderPractice.tsx:334
+#: src/features/Settings/MyProfile.tsx:244
+#: src/features/Settings/MyProfile.tsx:253
+#. js-lingui-explicit-id
+msgid "Leave your message"
+msgstr "Mesajınızı bırakın"
+
+#: src/features/Header/HeaderPractice.tsx:333
+#: src/features/Settings/MyProfile.tsx:252
+#. js-lingui-explicit-id
+msgid "We appreciate your feedback!"
+msgstr "Geri bildiriminizi takdir ediyoruz!"
+
 #: src/features/Plan/useGoalCreation.ts:41
 #: src/features/Plan/useGoalCreation.ts:69
 #: src/features/Plan/useGoalCreation.ts:91
@@ -2493,6 +2522,24 @@ msgstr "Sonuçlar sandığınızdan daha yakın"
 msgid "Start Learning"
 msgstr "Öğrenmeye Başla"
 
+#: src/features/Landing/Footer.tsx:85
+#. js-lingui-explicit-id
+msgid "Role-Play"
+msgstr "Rol Oynama"
+
+#: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Landing/Footer.tsx:91
+#. js-lingui-explicit-id
+msgid "Blog"
+msgstr "Blog"
+
+#: src/features/Header/HeaderStatic.tsx:13
+#: src/features/Landing/Footer.tsx:94
+#: src/features/Landing/Price/PricePage.tsx:95
+#. js-lingui-explicit-id
+msgid "Price"
+msgstr "Fiyat"
+
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
 msgid "FluencyPal – Your AI English Speaking Partner"
@@ -2842,24 +2889,6 @@ msgstr "Ücretsiz Denemenizi Başlatın"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Hızla Akıcı Konuşmalara Geçiş Yolculuğunuza Şimdi Başlayın"
 
-#: src/features/Landing/Footer.tsx:85
-#. js-lingui-explicit-id
-msgid "Role-Play"
-msgstr "Rol Oynama"
-
-#: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Landing/Footer.tsx:91
-#. js-lingui-explicit-id
-msgid "Blog"
-msgstr "Blog"
-
-#: src/features/Header/HeaderStatic.tsx:13
-#: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:95
-#. js-lingui-explicit-id
-msgid "Price"
-msgstr "Fiyat"
-
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
 msgid "View all"
@@ -2931,20 +2960,6 @@ msgstr "İngilizcede Akıcı Olmaya Hazır mısınız?"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Denemek"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "Gerçek Hayat Konuşmalarını Rol Oyun Senaryoları ile Pratik Yapın"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
-msgstr ""
-"Yemek siparişi verin, randevuları planlayın, iş mülakatlarında başarılı "
-"olun ve daha fazlası— hepsi AI eğitmeninizin rehberliğinde."
 
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
@@ -3346,6 +3361,20 @@ msgstr ""
 msgid "Contacts:"
 msgstr "İletişim:"
 
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "Gerçek Hayat Konuşmalarını Rol Oyun Senaryoları ile Pratik Yapın"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
+msgstr ""
+"Yemek siparişi verin, randevuları planlayın, iş mülakatlarında başarılı "
+"olun ve daha fazlası— hepsi AI eğitmeninizin rehberliğinde."
+
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:20
 #. js-lingui-explicit-id
 msgid "Role Play Scenarios"
@@ -3453,13 +3482,6 @@ msgstr "Siliniyor..."
 msgid "Yes, Delete account"
 msgstr "Evet, Hesabı Sil"
 
-#: src/features/Conversation/ConfirmConversationModal.tsx:58
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:229
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "Kapat"
-
 #: src/features/Header/NeedHelpModal.tsx:239
 #. js-lingui-explicit-id
 msgid "Delete account"
@@ -3489,6 +3511,22 @@ msgstr "Abonelik (1 ay)"
 #. js-lingui-explicit-id
 msgid "Trial days"
 msgstr "Deneme günleri"
+
+#: src/features/Header/HeaderStatic.tsx:11
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "Rol Oyunları"
+
+#: src/features/Header/HeaderStatic.tsx:14
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "Oturum Aç"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:16
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "Yardım mı lazım?"
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3528,11 +3566,55 @@ msgstr "Geri"
 msgid "Payment history"
 msgstr "Ödeme geçmişi"
 
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:16
+#: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "Yardım mı lazım?"
+msgid "You are on the right track!"
+msgstr "Doğru yoldasınız!"
+
+#: src/features/Goal/GoalPreparingModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Okay"
+msgstr "Tamam"
+
+#: src/features/Goal/GoalPreparingModal.tsx:49
+#. js-lingui-explicit-id
+msgid "What we need from you?"
+msgstr "Bizden ne istersiniz?"
+
+#: src/features/Goal/GoalPreparingModal.tsx:59
+#. js-lingui-explicit-id
+msgid "I agree"
+msgstr "Katılıyorum"
+
+#: src/features/Goal/GoalPreparingModal.tsx:65
+#. js-lingui-explicit-id
+msgid "From founder"
+msgstr "Kurucudan"
+
+#: src/features/Goal/GoalPreparingModal.tsx:75
+#. js-lingui-explicit-id
+msgid "Got it"
+msgstr "Anladım"
+
+#: src/features/Goal/GoalPreparingModal.tsx:81
+#. js-lingui-explicit-id
+msgid "Almost ready..."
+msgstr "Neredeyse hazır..."
+
+#: src/features/Goal/GoalPreparingModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Let's do it"
+msgstr "Hadi yapalım"
+
+#: src/features/Goal/GoalPreparingModal.tsx:96
+#. js-lingui-explicit-id
+msgid "Finally"
+msgstr "Sonunda"
+
+#: src/features/Goal/GoalPreparingModal.tsx:107
+#. js-lingui-explicit-id
+msgid "Let's rock it!"
+msgstr "Hadi başlayalım!"
 
 #: src/features/Goal/GoalQuestions.tsx:61
 #. js-lingui-explicit-id
@@ -3893,66 +3975,6 @@ msgstr "Bağlantıyı kopyala"
 msgid "Open the plan"
 msgstr "Planı açın"
 
-#: src/features/Goal/GoalPreparingModal.tsx:33
-#. js-lingui-explicit-id
-msgid "You are on the right track!"
-msgstr "Doğru yoldasınız!"
-
-#: src/features/Goal/GoalPreparingModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Okay"
-msgstr "Tamam"
-
-#: src/features/Goal/GoalPreparingModal.tsx:49
-#. js-lingui-explicit-id
-msgid "What we need from you?"
-msgstr "Bizden ne istersiniz?"
-
-#: src/features/Goal/GoalPreparingModal.tsx:59
-#. js-lingui-explicit-id
-msgid "I agree"
-msgstr "Katılıyorum"
-
-#: src/features/Goal/GoalPreparingModal.tsx:65
-#. js-lingui-explicit-id
-msgid "From founder"
-msgstr "Kurucudan"
-
-#: src/features/Goal/GoalPreparingModal.tsx:75
-#. js-lingui-explicit-id
-msgid "Got it"
-msgstr "Anladım"
-
-#: src/features/Goal/GoalPreparingModal.tsx:81
-#. js-lingui-explicit-id
-msgid "Almost ready..."
-msgstr "Neredeyse hazır..."
-
-#: src/features/Goal/GoalPreparingModal.tsx:90
-#. js-lingui-explicit-id
-msgid "Let's do it"
-msgstr "Hadi yapalım"
-
-#: src/features/Goal/GoalPreparingModal.tsx:96
-#. js-lingui-explicit-id
-msgid "Finally"
-msgstr "Sonunda"
-
-#: src/features/Goal/GoalPreparingModal.tsx:107
-#. js-lingui-explicit-id
-msgid "Let's rock it!"
-msgstr "Hadi başlayalım!"
-
-#: src/features/Header/HeaderStatic.tsx:11
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "Rol Oyunları"
-
-#: src/features/Header/HeaderStatic.tsx:14
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "Oturum Aç"
-
 #: src/features/Game/PositionChangedModal.tsx:101
 #. js-lingui-explicit-id
 msgid "Nice!"
@@ -4009,6 +4031,11 @@ msgstr "Hadi, hazır olduğundan emin olalım"
 msgid "Your Avatar:"
 msgstr "Senin Avatarın:"
 
+#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "Ana Diliniz:"
+
 #: src/features/Game/GameMyUsername.tsx:26
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
@@ -4018,6 +4045,11 @@ msgstr "Kullanıcı adı en az 3 karakter uzunluğunda olmalıdır."
 #. js-lingui-explicit-id
 msgid "Game username:"
 msgstr "Oyun kullanıcı adı:"
+
+#: src/features/Game/GameBadge.tsx:75
+#. js-lingui-explicit-id
+msgid "Play and Learn"
+msgstr "Oyna ve Öğren"
 
 #: src/features/Game/GameMyAvatar.tsx:27
 #. js-lingui-explicit-id
@@ -4029,15 +4061,10 @@ msgstr "Avatar"
 msgid "Select your game avatar"
 msgstr "Oyun avatarınızı seçin"
 
-#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
 #. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Ana Diliniz:"
-
-#: src/features/Game/GameBadge.tsx:75
-#. js-lingui-explicit-id
-msgid "Play and Learn"
-msgstr "Oyna ve Öğren"
+msgid "Translate the word"
+msgstr "Kelimeyi çevir"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
@@ -4050,14 +4077,6 @@ msgstr "Konuyu tartışın"
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Cevabı gönder"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1095
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "Tamamlandı"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
@@ -4075,11 +4094,6 @@ msgstr "Konuyu kendi kelimelerinizle anlatın..."
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "Hata:"
-
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "Kelimeyi çevir"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
@@ -4113,22 +4127,6 @@ msgstr "Gönder"
 #. js-lingui-explicit-id
 msgid "Error:"
 msgstr "Hata:"
-
-#: src/features/Dashboard/WordsToLearn.tsx:32
-#. js-lingui-explicit-id
-msgid "New words to practice."
-msgstr "Yeni kelimeler pratik edilecek."
-
-#: src/features/Dashboard/RulesToLearn.tsx:86
-#: src/features/Dashboard/WordsToLearn.tsx:106
-#. js-lingui-explicit-id
-msgid "Start practice"
-msgstr "Başla pratik yapmaya"
-
-#: src/features/Dashboard/WordsToLearn.tsx:128
-#. js-lingui-explicit-id
-msgid "I know all of them"
-msgstr "Hepsini biliyorum"
 
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
@@ -4182,6 +4180,27 @@ msgstr "Öğren"
 #. js-lingui-explicit-id
 msgid "Page"
 msgstr "Sayfa"
+
+#: src/features/Dashboard/WordsToLearn.tsx:32
+#. js-lingui-explicit-id
+msgid "New words to practice."
+msgstr "Yeni kelimeler pratik edilecek."
+
+#: src/features/Dashboard/RulesToLearn.tsx:86
+#: src/features/Dashboard/WordsToLearn.tsx:106
+#. js-lingui-explicit-id
+msgid "Start practice"
+msgstr "Başla pratik yapmaya"
+
+#: src/features/Dashboard/WordsToLearn.tsx:128
+#. js-lingui-explicit-id
+msgid "I know all of them"
+msgstr "Hepsini biliyorum"
+
+#: src/features/Dashboard/RulesToLearn.tsx:36
+#. js-lingui-explicit-id
+msgid "New rule to practice."
+msgstr "Yeni kural uygulama."
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:72
 #. js-lingui-explicit-id
@@ -4297,11 +4316,6 @@ msgstr "Daha eşsiz dersler oluşturun"
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Daha fazla ders oluşturmak için en az 3 dersi tamamlamanız gerekmektedir."
 
-#: src/features/Dashboard/RulesToLearn.tsx:36
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "Yeni kural uygulama."
-
 #: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
 msgid "Set the goal of your learning"
@@ -4311,6 +4325,31 @@ msgstr "Öğrenme hedefinizi belirleyin"
 #. js-lingui-explicit-id
 msgid "Start | 5 min"
 msgstr "Başlat | 5 dakika"
+
+#: src/features/Dashboard/HomeworkCard.tsx:21
+#. js-lingui-explicit-id
+msgid "Homework"
+msgstr "Ödev"
+
+#: src/features/Dashboard/HomeworkCard.tsx:57
+#. js-lingui-explicit-id
+msgid "No homework assigned yet."
+msgstr "Henüz ödev verilmedi."
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "Bir tane almak için bir sohbet başlatın."
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "Atla"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "Hepsini göster"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:110
 #. js-lingui-explicit-id
@@ -4347,30 +4386,20 @@ msgstr "Bir kural alın"
 msgid "Expand vocabulary"
 msgstr "Kelime dağarcığını genişlet"
 
-#: src/features/Dashboard/HomeworkCard.tsx:21
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
-msgid "Homework"
-msgstr "Ödev"
+msgid "Progress Calendar"
+msgstr "İlerleme Takvimi"
 
-#: src/features/Dashboard/HomeworkCard.tsx:57
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
 #. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "Henüz ödev verilmedi."
+msgid "Less"
+msgstr "Daha az"
 
-#: src/features/Dashboard/HomeworkCard.tsx:66
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
 #. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "Bir tane almak için bir sohbet başlatın."
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "Atla"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "Hepsini göster"
+msgid "More"
+msgstr "Daha Fazla"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4474,26 +4503,61 @@ msgstr "Beyni hazırlama"
 msgid "Upload language skills directly to your brain"
 msgstr "Dil becerilerini doğrudan beynine yükle"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
-#. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "İlerleme Takvimi"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "Daha az"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "Daha Fazla"
-
 #: src/features/Conversation/useConversationsAnalysis.ts:89
 #: src/features/Conversation/useConversationsAnalysis.ts:132
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "Konuşma analizinde hata"
+
+#: src/features/Conversation/ConversationError.tsx:34
+#. js-lingui-explicit-id
+msgid "Oops! Something went wrong"
+msgstr "Hata! Bir şeyler ters gitti"
+
+#: src/features/Conversation/ConversationError.tsx:37
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "Lütfen sayfayı yenileyin ve bir kez daha deneyin"
+
+#: src/features/Conversation/ConversationError.tsx:41
+#. js-lingui-explicit-id
+msgid "Notification was sent to the dev team. Sorry for that..."
+msgstr "Bildirim dev ekibine gönderildi. Bunun için özür dileriz..."
+
+#: src/features/Conversation/ConversationError.tsx:51
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "Sayfayı yeniden yükle"
+
+#: src/features/Conversation/ConversationPage.tsx:134
+#. js-lingui-explicit-id
+msgid "Loading Goal..."
+msgstr "Hedef Yükleniyor..."
+
+#: src/features/Conversation/ConversationPage.tsx:158
+#. js-lingui-explicit-id
+msgid "Crafting new words..."
+msgstr "Yeni kelimeler oluşturuluyor..."
+
+#: src/features/Conversation/ConversationPage.tsx:162
+#. js-lingui-explicit-id
+msgid "Crafting new rule..."
+msgstr "Yeni kural oluşturuluyor..."
+
+#: src/features/Conversation/AliasGamePanel.tsx:122
+#. js-lingui-explicit-id
+msgid "Describe these words:"
+msgstr "Bu kelimeleri tanımlayın:"
+
+#: src/features/Conversation/AliasGamePanel.tsx:171
+#. js-lingui-explicit-id
+msgid "More options"
+msgstr "Daha fazla seçenek"
+
+#: src/features/Conversation/AliasGamePanel.tsx:180
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "Tahmin edilen kelimeler:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:361
 #. js-lingui-explicit-id
@@ -4669,71 +4733,6 @@ msgstr "Kaydı iptal et"
 #. js-lingui-explicit-id
 msgid "Top up"
 msgstr "Bakiye Yükle"
-
-#: src/features/Conversation/ConversationPage.tsx:134
-#. js-lingui-explicit-id
-msgid "Loading Goal..."
-msgstr "Hedef Yükleniyor..."
-
-#: src/features/Conversation/ConversationPage.tsx:158
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "Yeni kelimeler oluşturuluyor..."
-
-#: src/features/Conversation/ConversationPage.tsx:162
-#. js-lingui-explicit-id
-msgid "Crafting new rule..."
-msgstr "Yeni kural oluşturuluyor..."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:26
-#. js-lingui-explicit-id
-msgid "Ready?"
-msgstr "Hazır mısın?"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:30
-#. js-lingui-explicit-id
-msgid "Next, allow microphone access to talk with the AI."
-msgstr "Daha sonra, AI ile konuşmak için mikrofona erişim izni verin."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:55
-#. js-lingui-explicit-id
-msgid "I am ready"
-msgstr "Hazırım"
-
-#: src/features/Conversation/AliasGamePanel.tsx:122
-#. js-lingui-explicit-id
-msgid "Describe these words:"
-msgstr "Bu kelimeleri tanımlayın:"
-
-#: src/features/Conversation/AliasGamePanel.tsx:171
-#. js-lingui-explicit-id
-msgid "More options"
-msgstr "Daha fazla seçenek"
-
-#: src/features/Conversation/AliasGamePanel.tsx:180
-#. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "Tahmin edilen kelimeler:"
-
-#: src/features/Conversation/ConversationError.tsx:34
-#. js-lingui-explicit-id
-msgid "Oops! Something went wrong"
-msgstr "Hata! Bir şeyler ters gitti"
-
-#: src/features/Conversation/ConversationError.tsx:37
-#. js-lingui-explicit-id
-msgid "Please refresh the page and try one more time"
-msgstr "Lütfen sayfayı yenileyin ve bir kez daha deneyin"
-
-#: src/features/Conversation/ConversationError.tsx:41
-#. js-lingui-explicit-id
-msgid "Notification was sent to the dev team. Sorry for that..."
-msgstr "Bildirim dev ekibine gönderildi. Bunun için özür dileriz..."
-
-#: src/features/Conversation/ConversationError.tsx:51
-#. js-lingui-explicit-id
-msgid "Reload page"
-msgstr "Sayfayı yeniden yükle"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6244,6 +6243,21 @@ msgstr "Profesyonel Gelişim"
 msgid "All Blogs"
 msgstr "Tüm Bloglar"
 
+#: src/features/Conversation/ConfirmConversationModal.tsx:26
+#. js-lingui-explicit-id
+msgid "Ready?"
+msgstr "Hazır mısın?"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:30
+#. js-lingui-explicit-id
+msgid "Next, allow microphone access to talk with the AI."
+msgstr "Daha sonra, AI ile konuşmak için mikrofona erişim izni verin."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:55
+#. js-lingui-explicit-id
+msgid "I am ready"
+msgstr "Hazırım"
+
 #: src/features/Blog/ListBlogIntro.tsx:66
 #. js-lingui-explicit-id
 msgid "Read and Learn with my blog"
@@ -6267,26 +6281,6 @@ msgstr "Hiç blog bulunamadı"
 #. js-lingui-explicit-id
 msgid "Read more"
 msgstr "Daha fazla oku"
-
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "Tüm gönderileri görüntüle"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "Rol oynama senaryolarıyla pratik yapın"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "Şimdi AI'yi deneyebilirsiniz"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "Ücretsiz deneyin"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
 #. js-lingui-explicit-id
@@ -6723,6 +6717,26 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Good preparation today means career success tomorrow."
 msgstr "Bugün iyi bir hazırlık, yarın kariyer başarısı anlamına gelir."
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "Tüm gönderileri görüntüle"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "Rol oynama senaryolarıyla pratik yapın"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "Şimdi AI'yi deneyebilirsiniz"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "Ücretsiz deneyin"
 
 #: src/features/Auth/SignInForm.tsx:30
 #. js-lingui-explicit-id
