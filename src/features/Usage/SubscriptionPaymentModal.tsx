@@ -240,9 +240,6 @@ export const SubscriptionPaymentModal = () => {
             email: auth?.userInfo?.email || "unknownEmail",
             token: await auth.getToken(),
           });
-          notifications.show(i18n._("Payment successful! Thank you."), {
-            severity: "success",
-          });
           showWaiter();
         } else {
           notifications.show(i18n._("Payment failed! Please try again."), {
