@@ -38,49 +38,51 @@ export const SubscriptionWaiter = ({
         bottom: 0,
       }}
     >
-      {isChanged ? (
-        <Stack sx={{ alignItems: "center", gap: "20px" }}>
-          <CheckCheck size={"40px"} color="#4caf50" />
-          <Stack sx={{ alignItems: "center", gap: "0px" }}>
-            <Typography variant="h6" align="center">
-              {i18n._(`Done`)}
-            </Typography>
-            <Typography
-              align="center"
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              {i18n._(`Your subscription has been successfully changed.`)}
-            </Typography>
-          </Stack>
-          <Button variant="contained" onClick={onClose}>
-            {i18n._(`Close`)}
-          </Button>
-        </Stack>
-      ) : (
-        <Stack sx={{ alignItems: "center", gap: "20px" }}>
-          <Landmark size={"40px"} />
-          <Stack sx={{ alignItems: "center", gap: "0px" }}>
-            <Typography variant="h6" align="center">
-              {i18n._(`Waiting for payment...`)}
-            </Typography>
-            <Typography
-              align="center"
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              {i18n._(`Please wait while we process your payment.`)}
-            </Typography>
-          </Stack>
-          <Button variant="text" onClick={onClose}>
-            {i18n._(`Close`)}
-          </Button>
-        </Stack>
-      )}
+      <Stack sx={{ alignItems: "center", gap: "20px", padding: "0 10px" }}>
+        {isChanged ? (
+          <>
+            <CheckCheck size={"40px"} color="#4caf50" />
+            <Stack sx={{ alignItems: "center", gap: "0px" }}>
+              <Typography variant="h6" align="center">
+                {i18n._(`Done`)}
+              </Typography>
+              <Typography
+                align="center"
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._(`Your subscription has been successfully changed.`)}
+              </Typography>
+            </Stack>
+            <Button variant="contained" onClick={onClose}>
+              {i18n._(`Close`)}
+            </Button>
+          </>
+        ) : (
+          <>
+            <Landmark size={"40px"} />
+            <Stack sx={{ alignItems: "center", gap: "0px" }}>
+              <Typography variant="h6" align="center">
+                {i18n._(`Waiting for payment...`)}
+              </Typography>
+              <Typography
+                align="center"
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._(`Please wait while we process your payment.`)}
+              </Typography>
+            </Stack>
+            <Button variant="text" onClick={onClose}>
+              {i18n._(`Close`)}
+            </Button>
+          </>
+        )}
+      </Stack>
     </Stack>
   );
 };
