@@ -4,6 +4,7 @@ import crypto from "node:crypto";
 import { CreateTelegramInvoiceRequest, CreateTelegramInvoiceResponse } from "./types";
 import { validateAuthToken } from "../../config/firebase";
 import { TELEGRAM_MONTHLY_PRICE_START } from "@/features/Telegram/starPrices";
+import { Order } from "../../payment/type";
 
 const BOT_TOKEN = envConfig.telegramBotKey;
 const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}`;
