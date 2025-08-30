@@ -4,22 +4,19 @@ import { useUsage } from "./useUsage";
 import { useEffect, useState } from "react";
 import { CheckCheck, Landmark } from "lucide-react";
 
-export const SubscriptionWaiter = ({ onClose }: { onClose: () => void }) => {
+export const SubscriptionWaiter = ({
+  onClose,
+  initActiveTill,
+}: {
+  onClose: () => void;
+  initActiveTill: string;
+}) => {
   const { i18n } = useLingui();
   const usage = useUsage();
   const [isChanged, setIsChanged] = useState(false);
-  const [isInitDataActivated, setIsInitDataActivated] = useState(false);
-  const [initActiveTill, setInitActiveTill] = useState<string | null>(null);
 
-  console.log("🚀 usage.activeSubscriptionTill", usage.activeSubscriptionTill);
   useEffect(() => {
-    if (!isInitDataActivated) {
-      setInitActiveTill(usage.activeSubscriptionTill || null);
-      setIsInitDataActivated(true);
-      return;
-    }
-
-    if (initActiveTill !== (usage.activeSubscriptionTill || null)) {
+    if (initActiveTill !== usage.activeSubscriptionTill) {
       setIsChanged(true);
       return;
     }

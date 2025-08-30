@@ -31,7 +31,6 @@ import {
 import { TgGoldStar } from "../Icon/TgStar";
 import { TonIcon } from "../Icon/TonIcon";
 import { sendCreateCryptoOrderRequest } from "@/app/api/crypto/createOrder/sendCreateCryptoOrderRequest";
-import { sendCheckPaymentRequest } from "@/app/api/crypto/checkPayment/sendCheckPaymentRequest";
 import { SubscriptionWaiter } from "./SubscriptionWaiter";
 
 export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -39,47 +38,19 @@ export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
 
-const WalletButton = ({ onPaid }: { onPaid: () => void }) => {
+const WalletButton = ({
+  onShowWaiter,
+  onPressPay,
+}: {
+  onShowWaiter: () => void;
+  onPressPay: () => void;
+}) => {
   const wallet = useTonWallet();
   const auth = useAuth();
   const notifications = useNotifications();
   const { i18n } = useLingui();
   const [isLoading, setIsLoading] = useState(false);
-  const [tonConnectUI, setOptions] = useTonConnectUI();
-  const [waitingForPayment, setWaitingForPayment] = useState(0);
-
-  const checkPayment = async () => {
-    const paymentResult = await sendCheckPaymentRequest(
-      {
-        userId: auth.uid || "",
-      },
-      await auth.getToken()
-    );
-
-    console.log("CHECK PAYMENT RESULT", paymentResult);
-
-    if (paymentResult.isRecentlyPaid) {
-      onPaid();
-      setWaitingForPayment(0);
-      return;
-    }
-
-    await sleep(5000);
-    setWaitingForPayment((prev) => prev + 1);
-  };
-
-  useEffect(() => {
-    if (waitingForPayment === 0) {
-      return;
-    }
-
-    if (waitingForPayment > 10) {
-      console.log("STOP WAITING");
-      setWaitingForPayment(0);
-    } else {
-      checkPayment();
-    }
-  }, [waitingForPayment]);
+  const [tonConnectUI] = useTonConnectUI();
 
   const payWithTon = async () => {
     if (!wallet) {
@@ -89,6 +60,7 @@ const WalletButton = ({ onPaid }: { onPaid: () => void }) => {
     setIsLoading(true);
 
     try {
+      onPressPay();
       const order = await sendCreateCryptoOrderRequest(
         {
           monthCount: 1,
@@ -141,14 +113,7 @@ const WalletButton = ({ onPaid }: { onPaid: () => void }) => {
 
       const transactionEvent = await tonConnectUI.sendTransaction(tx);
       console.log("transactionEvent FINISHED", transactionEvent);
-
-      await sleep(500);
-      notifications.show(i18n._("Transaction completed. Soon your balance will be updated."), {
-        severity: "success",
-      });
-
-      await sleep(1200);
-      onPaid();
+      onShowWaiter();
     } catch (e) {
       console.log("CRYPTO ERROR", e);
       notifications.show(i18n._("Error processing payment"), {
@@ -169,29 +134,7 @@ const WalletButton = ({ onPaid }: { onPaid: () => void }) => {
     >
       <TonConnectButton />
 
-      {waitingForPayment > 0 && (
-        <Stack
-          sx={{
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="body2" align="center">
-            {i18n._("Waiting for payment...")}
-          </Typography>
-
-          <Typography
-            variant="caption"
-            align="center"
-            sx={{
-              opacity: 0.7,
-            }}
-          >
-            {i18n._("Attempt")} {waitingForPayment}
-          </Typography>
-        </Stack>
-      )}
-
-      {wallet && waitingForPayment === 0 && (
+      {wallet && (
         <Button
           variant="outlined"
           color="info"
@@ -213,7 +156,7 @@ export const SubscriptionPaymentModal = () => {
   const auth = useAuth();
   const { i18n } = useLingui();
   const currency = useCurrency();
-  const [isShowWaiting, setIsShowWaiting] = useState(false);
+
   const [allowCrypto, setAllowCrypto] = useState(allowCryptoFlag);
 
   const notifications = useNotifications();
@@ -223,6 +166,9 @@ export const SubscriptionPaymentModal = () => {
   const [isShowConfirmPayments, setIsShowConfirmPayments] = useState(false);
   const [isTelegramPaymentOptions, setIsTelegramPaymentOptions] = useState(false);
   const [isPriceInStars, setIsPriceInStars] = useState(false);
+
+  const [isShowWaiting, setIsShowWaiting] = useState(false);
+  const [initActiveTill, setInitActiveTill] = useState<string>("");
 
   const pathname = usePathname();
   const locale = pathname?.split("/")[1] as string;
@@ -285,6 +231,7 @@ export const SubscriptionPaymentModal = () => {
         });
         return;
       } else {
+        setInitActiveTill(usage.activeSubscriptionTill || "");
         const result = await invoice.open(checkoutInfo.invoice_link, "url");
         console.log("invoice.open - result", result);
         if (result === "paid") {
@@ -412,6 +359,7 @@ export const SubscriptionPaymentModal = () => {
       >
         {isShowWaiting ? (
           <SubscriptionWaiter
+            initActiveTill={initActiveTill}
             onClose={() => {
               openMainSubscriptionPage();
               setIsShowWaiting(false);
@@ -496,7 +444,14 @@ export const SubscriptionPaymentModal = () => {
                       or crypto
                     </Typography>
 
-                    <WalletButton onPaid={showWaiter} />
+                    <WalletButton
+                      onPressPay={() => {
+                        setInitActiveTill(usage.activeSubscriptionTill || "");
+                      }}
+                      onShowWaiter={() => {
+                        showWaiter();
+                      }}
+                    />
                   </>
                 )}
               </Stack>
