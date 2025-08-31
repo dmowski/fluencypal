@@ -1,1 +1,2 @@
-export const TELEGRAM_MONTHLY_PRICE_START = 2; // 350 - $6.99
+// 350 - $6.99
+export const TELEGRAM_MONTHLY_PRICE_START = 350;
