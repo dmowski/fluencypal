@@ -28,9 +28,22 @@ export const generateAlternatesTags = (currentPath: string) => {
   };
 };
 
+type Path =
+  | "contacts"
+  | "quiz"
+  | "tg-app"
+  | "practice"
+  | "pricing"
+  | "privacy"
+  | "cookies"
+  | "terms"
+  | "scenarios"
+  | "blog"
+  | "";
+
 interface generateMetadataInfoProps {
   lang: string;
-  currentPath: string;
+  currentPath: Path;
   scenarioId?: string;
   blogId?: string;
   category?: string;
