@@ -31,6 +31,7 @@ export const generateAlternatesTags = (currentPath: string) => {
 type Path =
   | "contacts"
   | "quiz"
+  | "quiz2"
   | "tg-app"
   | "practice"
   | "pricing"
@@ -85,6 +86,16 @@ export const generateMetadataInfo = ({
     title = languageToLearnPlan + " | " + APP_NAME;
     description = i18n._(
       `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`
+    );
+    keywords = [];
+  }
+
+  if (currentPath === "quiz2") {
+    const languageLearningMap = getLangLearnPlanLabels(supportedLang);
+    const languageToLearnPlan = languageLearningMap[languageToLearn || "en"];
+    title = languageToLearnPlan + " | " + APP_NAME;
+    description = i18n._(
+      `Create a personalized language learning plan with FluencyPal. Create your goal, focus on specific skills like speaking or listening.`
     );
     keywords = [];
   }
