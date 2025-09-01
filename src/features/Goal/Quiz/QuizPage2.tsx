@@ -4,12 +4,6 @@ import { Stack } from "@mui/material";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { maxContentWidth } from "../../Landing/landingSettings";
 import { GoalQuestions } from "../GoalQuestions";
-import { useAuth } from "../../Auth/useAuth";
-import { usePlan } from "../../Plan/usePlan";
-import { useEffect } from "react";
-import { getUrlStart } from "../../Lang/getUrlStart";
-import { useRouter } from "next/navigation";
-import { useSettings } from "../../Settings/useSettings";
 import { useWindowSizes } from "../../Layout/useWindowSizes";
 
 interface QuizPageProps {
@@ -17,25 +11,7 @@ interface QuizPageProps {
   defaultLangToLearn: SupportedLanguage;
 }
 export const QuizPage2 = ({ lang, defaultLangToLearn }: QuizPageProps) => {
-  const auth = useAuth();
-  const isAuth = !!auth.uid;
-  const isAuthLoading = auth.loading;
-  const plan = usePlan();
-  const settings = useSettings();
-  const isPlanLoading = plan.loading;
-  const isAnyPlan = plan.latestGoal;
-  const router = useRouter();
   const { topOffset } = useWindowSizes();
-
-  const isNeedToRedirect = !isPlanLoading && isAuth && isAnyPlan && !settings.loading;
-  useEffect(() => {
-    if (!isNeedToRedirect) {
-      return;
-    }
-    const pageLang = settings.userSettings?.pageLanguageCode || lang;
-    const newPath = `${getUrlStart(pageLang)}practice`;
-    router.push(newPath);
-  }, [isNeedToRedirect]);
 
   return (
     <Stack sx={{}}>
@@ -68,8 +44,6 @@ export const QuizPage2 = ({ lang, defaultLangToLearn }: QuizPageProps) => {
               gap: "40px",
               alignItems: "center",
               boxSizing: "border-box",
-              opacity: isAuthLoading || isNeedToRedirect ? 0.2 : 1,
-              pointerEvents: isAuthLoading || isNeedToRedirect ? "none" : "auto",
             }}
           >
             <Stack
