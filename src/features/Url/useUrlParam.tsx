@@ -1,3 +1,4 @@
+import { scrollTopFast } from "@/libs/scroll";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -36,6 +37,48 @@ export const useUrlParam = (paramName: string) => {
     setTimeout(() => {
       setIsLoading(false);
     }, 200);
+  };
+
+  return [internalValue, setValue, isLoading] as const;
+};
+
+export const useUrlState = (paramName: string, defaultValue: string) => {
+  const [internalValue, setInternalValue] = useState<string>(defaultValue);
+  const [isLoading, setIsLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const urlPage = (searchParams.get(paramName) || defaultValue) as string;
+  const router = useRouter();
+
+  useEffect(() => {
+    if (urlPage !== internalValue) {
+      setInternalValue(urlPage);
+    }
+  }, [urlPage]);
+
+  const setValue = (value: string) => {
+    if (value == internalValue) return;
+
+    setInternalValue(value);
+    const isDefault = value === defaultValue;
+
+    setTimeout(() => {
+      setIsLoading(true);
+
+      const searchParams = new URLSearchParams(window.location.search);
+      if (!isDefault) {
+        searchParams.set(paramName, value);
+      } else {
+        searchParams.delete(paramName);
+      }
+      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+
+      router.push(`${newUrl}`, { scroll: false });
+      scrollTopFast();
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 200);
+    }, 20);
   };
 
   return [internalValue, setValue, isLoading] as const;

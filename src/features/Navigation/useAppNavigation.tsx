@@ -1,9 +1,8 @@
 "use client";
 
-import { createContext, useContext, ReactNode, JSX, useState, useEffect } from "react";
+import { createContext, useContext, ReactNode, JSX } from "react";
 import { PageType } from "./types";
-import { useRouter, useSearchParams } from "next/navigation";
-import { scrollTopFast } from "@/libs/scroll";
+import { useUrlState } from "../Url/useUrlParam";
 
 interface AppNavigationContextType {
   currentPage: PageType;
@@ -15,53 +14,17 @@ interface AppNavigationContextType {
 const AppNavigationContext = createContext<AppNavigationContextType | null>(null);
 
 function useProvideAppNavigation(): AppNavigationContextType {
-  const [internalValue, setInternalValue] = useState<PageType>("home");
-  const [isLoading, setIsLoading] = useState(false);
-  const searchParams = useSearchParams();
-  const urlPage = (searchParams.get("page") || "home") as PageType;
-  const router = useRouter();
+  const [internalValue, setValue, isLoading] = useUrlState("page", "home");
 
   const pageUrl = (page: PageType) => {
-    const searchParamsNew = new URLSearchParams(searchParams.toString());
+    const searchParamsNew = new URLSearchParams(window.location.search);
     searchParamsNew.set("page", page);
     return `${window.location.pathname}?${searchParamsNew.toString()}`;
   };
 
-  useEffect(() => {
-    if (urlPage !== internalValue) {
-      setInternalValue(urlPage);
-      return;
-    }
-  }, [urlPage]);
-
-  const setCurrentPage = (value: PageType) => {
-    if (value == internalValue) return;
-    setInternalValue(value);
-    const isDefault = value === "home";
-
-    setTimeout(() => {
-      setIsLoading(true);
-
-      const searchParams = new URLSearchParams(window.location.search);
-      if (!isDefault) {
-        searchParams.set("page", value);
-      } else {
-        searchParams.delete("page");
-      }
-      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-
-      router.push(`${newUrl}`, { scroll: false });
-      scrollTopFast();
-
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 200);
-    }, 20);
-  };
-
   return {
-    currentPage: internalValue,
-    setCurrentPage,
+    currentPage: internalValue as PageType,
+    setCurrentPage: setValue,
     pageUrl,
     isLoading,
   };
