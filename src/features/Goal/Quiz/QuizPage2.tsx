@@ -1,14 +1,15 @@
 "use client";
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import { Button, IconButton, InputAdornment, Stack, TextField, Typography } from "@mui/material";
 
 import { SupportedLanguage, supportedLanguagesToLearn } from "@/features/Lang/lang";
 import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
-import { ArrowLeft, ArrowRight, GraduationCap, Languages } from "lucide-react";
+import { ArrowLeft, ArrowRight, GraduationCap, Languages, Search, X } from "lucide-react";
 import { LangSelectorFullScreen, LanguageButton } from "@/features/Lang/LangSelector";
 import { GradingProgressBar } from "@/features/Dashboard/BrainCard";
 import { QuizProvider, useQuiz } from "./useQuiz";
 import { useLanguageGroup } from "../useLanguageGroup";
+import { useState } from "react";
 
 const QuizQuestions = () => {
   const { currentStep } = useQuiz();
@@ -43,13 +44,44 @@ const NativeLanguageSelector = () => {
   const { i18n } = useLingui();
   const { nativeLanguage, setNativeLanguage, isStepLoading, nextStep } = useQuiz();
 
+  const [internalFilterValue, setInternalFilterValue] = useState("");
+  const cleanInput = internalFilterValue.trim().toLowerCase();
+
   const { languageGroups } = useLanguageGroup({
     defaultGroupTitle: i18n._(`Other languages`),
     systemLanguagesTitle: i18n._(`System languages`),
   });
 
-  const systemLanguageGroup = languageGroups.filter((group) => group.isSystemLanguage);
-  const otherLanguageGroup = languageGroups.filter((group) => !group.isSystemLanguage);
+  const filterByInput = ({
+    englishName,
+    nativeName,
+  }: {
+    englishName: string;
+    nativeName: string;
+  }) => {
+    if (!cleanInput) {
+      return true;
+    }
+
+    englishName = englishName.toLowerCase();
+    if (englishName.includes(cleanInput)) {
+      return true;
+    }
+
+    nativeName = nativeName.toLowerCase();
+    if (nativeName.includes(cleanInput)) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const systemLanguageGroup = languageGroups
+    .filter((group) => group.isSystemLanguage)
+    .filter(filterByInput);
+  const otherLanguageGroup = languageGroups
+    .filter((group) => !group.isSystemLanguage)
+    .filter(filterByInput);
 
   return (
     <Stack
@@ -80,27 +112,58 @@ const NativeLanguageSelector = () => {
         </Typography>
       </Stack>
 
+      <TextField
+        value={internalFilterValue}
+        onChange={(e) => setInternalFilterValue(e.target.value)}
+        fullWidth
+        placeholder={i18n._("Search")}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <Search size={"18px"} />
+              </InputAdornment>
+            ),
+            endAdornment: internalFilterValue && (
+              <InputAdornment position="end">
+                <IconButton onClick={() => setInternalFilterValue("")}>
+                  <X size={"18px"} />
+                </IconButton>
+              </InputAdornment>
+            ),
+          },
+        }}
+      />
+
       <Stack
         sx={{
           width: "100%",
-          gap: "34px",
+          paddingTop: "35px",
+          gap: cleanInput ? "8px" : "34px",
         }}
       >
+        {systemLanguageGroup.length === 0 && otherLanguageGroup.length === 0 && (
+          <Typography variant="caption" sx={{ opacity: 0.7 }}>
+            {i18n._(`No languages found`)}
+          </Typography>
+        )}
         {systemLanguageGroup.length > 0 && (
           <Stack
             sx={{
               width: "100%",
-              gap: "4px",
+              gap: "8px",
             }}
           >
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              {i18n._(`Suggested to you:`)}
-            </Typography>
+            {!cleanInput && (
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._(`Suggested to you:`)}
+              </Typography>
+            )}
 
             {systemLanguageGroup.map((option) => {
               const isSelected = option.code === nativeLanguage;
@@ -121,40 +184,42 @@ const NativeLanguageSelector = () => {
           </Stack>
         )}
 
-        <Stack
-          sx={{
-            width: "100%",
-            gap: "4px",
-          }}
-        >
-          {systemLanguageGroup.length > 0 && (
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-              }}
-            >
-              {i18n._(`Other:`)}
-            </Typography>
-          )}
+        {otherLanguageGroup.length > 0 && (
+          <Stack
+            sx={{
+              width: "100%",
+              gap: "8px",
+            }}
+          >
+            {systemLanguageGroup.length > 0 && !cleanInput && (
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._(`Other:`)}
+              </Typography>
+            )}
 
-          {otherLanguageGroup.map((option) => {
-            const isSelected = option.code === nativeLanguage;
-            return (
-              <LanguageButton
-                onClick={() => setNativeLanguage(option.code)}
-                key={option.code}
-                label={option.englishName}
-                langCode={option.code}
-                englishFullName={option.englishName}
-                isSystemLang={option.isSystemLanguage}
-                fullName={option.nativeName}
-                isSelected={isSelected}
-                flagImageUrl={option.flag}
-              />
-            );
-          })}
-        </Stack>
+            {otherLanguageGroup.map((option) => {
+              const isSelected = option.code === nativeLanguage;
+              return (
+                <LanguageButton
+                  onClick={() => setNativeLanguage(option.code)}
+                  key={option.code}
+                  label={option.englishName}
+                  langCode={option.code}
+                  englishFullName={option.englishName}
+                  isSystemLang={option.isSystemLanguage}
+                  fullName={option.nativeName}
+                  isSelected={isSelected}
+                  flagImageUrl={option.flag}
+                />
+              );
+            })}
+          </Stack>
+        )}
       </Stack>
       <NextStepButton onClick={nextStep} disabled={isStepLoading} />
     </Stack>
