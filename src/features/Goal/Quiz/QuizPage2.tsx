@@ -28,66 +28,26 @@ const QuizQuestions = () => {
       component={"main"}
       sx={{
         width: "100%",
-        height: "100dvh",
-        paddingTop: `calc(${topOffset} + 10px)`,
-        paddingBottom: `calc(${bottomOffset} + 10px)`,
+        paddingTop: `10px`,
+        paddingBottom: `10px`,
         alignItems: "center",
       }}
     >
+      <ProgressBar />
+
       <Stack
         sx={{
           maxWidth: "600px",
           padding: "0 10px",
           width: "100%",
-          height: "100%",
         }}
       >
         <Stack
           sx={{
             width: "100%",
-            padding: "0 0 5px 0px",
-            boxSizing: "border-box",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "5px",
-            marginLeft: "0px",
-            position: "sticky",
-            top: 0,
-            paddingTop: `calc(${topOffset} + 10px)`,
-            backgroundColor: "rgba(10, 18, 30, 1)",
-          }}
-        >
-          <IconButton
-            onClick={() => {
-              if (isFirstStep) {
-                navigateToMainPage();
-              } else {
-                prevStep();
-              }
-            }}
-          >
-            <ArrowLeft />
-          </IconButton>
-
-          <Stack
-            sx={{
-              width: "100%",
-              borderRadius: "25px",
-            }}
-          >
-            <GradingProgressBar height={"12px"} value={Math.max(0, progress * 100)} label="" />
-          </Stack>
-        </Stack>
-
-        <Stack
-          sx={{
-            width: "100%",
             alignItems: "flex-start",
             gap: "10px",
-            position: "sticky",
-            top: "50px",
-            paddingTop: `calc(${topOffset} + 10px)`,
+            paddingTop: `10px`,
             paddingBottom: "10px",
             backgroundColor: "rgba(10, 18, 30, 1)",
           }}
@@ -124,6 +84,74 @@ const QuizQuestions = () => {
         <NextStepButton onClick={nextStep} disabled={isStepLoading} />
       </Stack>
     </Stack>
+  );
+};
+
+const ProgressBar = () => {
+  const { topOffset } = useWindowSizes();
+  const { navigateToMainPage, isFirstStep, prevStep, progress } = useQuiz();
+
+  return (
+    <>
+      <Stack
+        sx={{
+          display: "block",
+          width: "100%",
+          minHeight: `calc(${topOffset} + 55px)`,
+        }}
+      />
+
+      <Stack
+        sx={{
+          flexDirection: "row",
+          gap: "10px",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "fixed",
+          width: "100dvw",
+          left: "0",
+
+          padding: "0 0 30px 0",
+          top: 0,
+          paddingTop: `calc(${topOffset} + 15px)`,
+          background: "linear-gradient(to top, rgba(10, 18, 30, 0), rgba(10, 18, 30, 1))",
+
+          right: "0px",
+        }}
+      >
+        <Stack
+          sx={{
+            width: "min(600px, calc(100dvw - 20px))",
+
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "5px",
+          }}
+        >
+          <IconButton
+            onClick={() => {
+              if (isFirstStep) {
+                navigateToMainPage();
+              } else {
+                prevStep();
+              }
+            }}
+          >
+            <ArrowLeft />
+          </IconButton>
+
+          <Stack
+            sx={{
+              width: "100%",
+              borderRadius: "25px",
+            }}
+          >
+            <GradingProgressBar height={"12px"} value={Math.max(0, progress * 100)} label="" />
+          </Stack>
+        </Stack>
+      </Stack>
+    </>
   );
 };
 
