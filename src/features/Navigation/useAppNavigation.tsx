@@ -3,6 +3,7 @@
 import { createContext, useContext, ReactNode, JSX } from "react";
 import { PageType } from "./types";
 import { useUrlState } from "../Url/useUrlParam";
+import { useSearchParams } from "next/navigation";
 
 interface AppNavigationContextType {
   currentPage: PageType;
@@ -15,9 +16,10 @@ const AppNavigationContext = createContext<AppNavigationContextType | null>(null
 
 function useProvideAppNavigation(): AppNavigationContextType {
   const [internalValue, setValue, isLoading] = useUrlState<PageType>("page", "home", true);
+  const searchParams = useSearchParams();
 
   const pageUrl = (page: PageType) => {
-    const searchParamsNew = new URLSearchParams(window.location.search);
+    const searchParamsNew = new URLSearchParams(searchParams?.toString() || "");
     searchParamsNew.set("page", page);
     return `${window.location.pathname}?${searchParamsNew.toString()}`;
   };
