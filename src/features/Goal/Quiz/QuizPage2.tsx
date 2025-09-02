@@ -1,96 +1,27 @@
 "use client";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
 
-import {
-  SupportedLanguage,
-  supportedLanguages,
-  supportedLanguagesToLearn,
-} from "@/features/Lang/lang";
+import { SupportedLanguage, supportedLanguagesToLearn } from "@/features/Lang/lang";
 import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
-import { useUrlState } from "@/features/Url/useUrlParam";
 import { ArrowLeft, ArrowRight, GraduationCap } from "lucide-react";
 import { LangSelectorFullScreen } from "@/features/Lang/LangSelector";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { useRouter } from "next/navigation";
 import { GradingProgressBar } from "@/features/Dashboard/BrainCard";
+import { QuizProvider, useQuiz } from "./useQuiz";
 
-type QuizStep = "learnLanguage" | "nativeLanguage" | "pageLanguage" | "recordAbout" | "reviewAbout";
-const stepsViews: QuizStep[] = [
-  "learnLanguage",
-  "nativeLanguage",
-  "pageLanguage",
-  "recordAbout",
-  "reviewAbout",
-];
-
-interface QuizPageProps {
-  lang: SupportedLanguage;
-  defaultLangToLearn: SupportedLanguage;
-}
-export const QuizPage2 = ({ lang, defaultLangToLearn }: QuizPageProps) => {
+const QuizQuestions = () => {
   const { bottomOffset, topOffset } = useWindowSizes();
   const { i18n } = useLingui();
-  const [languageToLearn, setLanguageToLearn, isLanguageLoading] = useUrlState<SupportedLanguage>(
-    "toLearn",
-    defaultLangToLearn,
-    false
-  );
-  const [pageLanguage, setPageLanguage, isPageLanguageLoading] = useUrlState<SupportedLanguage>(
-    "pageLang",
-    lang,
-    false
-  );
-  const [nativeLanguage, setNativeLanguage, isNativeLanguageLoading] = useUrlState(
-    "nativeLang",
-    "en",
-    false
-  );
-
-  const [step, setStep, isStepLoading] = useUrlState<QuizStep>("step", "learnLanguage", true);
-
-  const getPath = () => {
-    const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
-      nativeLanguage
-    );
-
-    const path = stepsViews.filter((viewStep) => {
-      if (viewStep === "pageLanguage") {
-        if (isNativeLanguageIsSupportedLanguage) {
-          return false;
-        } else {
-          return true;
-        }
-      }
-
-      return true;
-    });
-
-    return path;
-  };
-
-  const path = getPath();
-  const currentStepIndex = path.indexOf(step) === -1 ? 0 : path.indexOf(step);
-
-  const nextStep = () => {
-    const nextStepIndex = Math.min(currentStepIndex + 1, path.length - 1);
-    const nextStep = path[nextStepIndex];
-    setStep(nextStep);
-  };
-
-  const prevStep = () => {
-    const prevStepIndex = Math.max(currentStepIndex - 1, 0);
-    const prevStep = path[prevStepIndex];
-    setStep(prevStep);
-  };
-
-  const router = useRouter();
-  const navigateToMainPage = () => {
-    const newPath = `${getUrlStart(lang)}`;
-    router.push(newPath);
-  };
-
-  const progress = currentStepIndex / (path.length - 1) + 0.1;
+  const {
+    navigateToMainPage,
+    languageToLearn,
+    setLanguageToLearn,
+    isStepLoading,
+    isFirstStep,
+    nextStep,
+    prevStep,
+    progress,
+  } = useQuiz();
 
   return (
     <Stack
@@ -129,7 +60,7 @@ export const QuizPage2 = ({ lang, defaultLangToLearn }: QuizPageProps) => {
         >
           <IconButton
             onClick={() => {
-              if (step === path[0]) {
+              if (isFirstStep) {
                 navigateToMainPage();
               } else {
                 prevStep();
@@ -222,5 +153,17 @@ export const QuizPage2 = ({ lang, defaultLangToLearn }: QuizPageProps) => {
         </Stack>
       </Stack>
     </Stack>
+  );
+};
+
+interface QuizPageProps {
+  lang: SupportedLanguage;
+  defaultLangToLearn: SupportedLanguage;
+}
+export const QuizPage2 = ({ lang, defaultLangToLearn }: QuizPageProps) => {
+  return (
+    <QuizProvider pageLang={lang} defaultLangToLearn={defaultLangToLearn}>
+      <QuizQuestions />
+    </QuizProvider>
   );
 };
