@@ -114,6 +114,7 @@ const NativeLanguageSelector = () => {
                   isSystemLang={option.isSystemLanguage}
                   fullName={option.nativeName}
                   isSelected={isSelected}
+                  flagImageUrl={option.flag}
                 />
               );
             })}
@@ -149,6 +150,7 @@ const NativeLanguageSelector = () => {
                 isSystemLang={option.isSystemLanguage}
                 fullName={option.nativeName}
                 isSelected={isSelected}
+                flagImageUrl={option.flag}
               />
             );
           })}

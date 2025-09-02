@@ -110,6 +110,7 @@ export const LanguageButton = ({
   fullName,
   isSelected,
   onClick,
+  flagImageUrl,
 }: {
   label: string;
   langCode: string;
@@ -118,8 +119,8 @@ export const LanguageButton = ({
   fullName: string;
   isSelected: boolean;
   onClick: (langCode: string) => void;
+  flagImageUrl: string;
 }) => {
-  const flagImageUrl = langFlags[langCode as SupportedLanguage] || "";
   return (
     <Stack
       sx={{
@@ -227,6 +228,7 @@ export const LangSelectorFullScreen = ({
     >
       {optionsFull.map((option) => {
         const isSelected = option.langCode === value;
+        const flagImageUrl = langFlags[option.langCode];
         return (
           <LanguageButton
             onClick={() => onChangeLanguage(option.langCode)}
@@ -237,6 +239,7 @@ export const LangSelectorFullScreen = ({
             isSystemLang={option.isSystemLang}
             fullName={option.fullName}
             isSelected={isSelected}
+            flagImageUrl={flagImageUrl}
           />
         );
       })}

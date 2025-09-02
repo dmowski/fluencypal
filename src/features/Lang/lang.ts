@@ -129,7 +129,7 @@ export const emojiLanguageName: Record<SupportedLanguage, string> = {
   be: "🇧🇾", // Belarusian
 };
 
-export const langFlags: Record<SupportedLanguage, string> = {
+export const langFlags: Record<string, string> = {
   en: "https://flagcdn.com/w80/us.png",
   ru: "https://flagcdn.com/w80/ru.png",
   de: "https://flagcdn.com/w80/de.png",
