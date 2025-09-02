@@ -1,10 +1,22 @@
 "use client";
 import { Button, IconButton, InputAdornment, Stack, TextField, Typography } from "@mui/material";
 
-import { SupportedLanguage, supportedLanguagesToLearn } from "@/features/Lang/lang";
+import {
+  fullEnglishLanguageName,
+  SupportedLanguage,
+  supportedLanguagesToLearn,
+} from "@/features/Lang/lang";
 import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
-import { ArrowLeft, ArrowRight, GraduationCap, Languages, Search, X } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  GraduationCap,
+  Languages,
+  MoveRight,
+  Search,
+  X,
+} from "lucide-react";
 import { LangSelectorFullScreen, LanguageButton } from "@/features/Lang/LangSelector";
 import { GradingProgressBar } from "@/features/Dashboard/BrainCard";
 import { QuizProvider, useQuiz } from "./useQuiz";
@@ -85,6 +97,8 @@ const NativeLanguageSelector = () => {
     .filter((group) => group.code !== languageToLearn)
     .filter(filterByInput);
 
+  const selectedLanguage = languageGroups.find((lang) => lang.code === nativeLanguage);
+
   return (
     <Stack
       sx={{
@@ -99,26 +113,66 @@ const NativeLanguageSelector = () => {
           gap: "10px",
         }}
       >
-        <Languages size={"30px"} />
-        <Typography
-          variant="h3"
-          align="center"
+        <Stack
           sx={{
-            fontWeight: 500,
-            fontSize: "1.1rem",
-            boxSizing: "border-box",
-            lineHeight: "1.1",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: "0px",
+            width: "100%",
           }}
         >
-          {i18n._(`Your Language`)}
-        </Typography>
+          <Typography variant="caption" sx={{ opacity: 0.6 }}>
+            {i18n._(`Select Your Language`)}
+          </Typography>
+          <Stack
+            sx={{
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "row",
+              gap: "10px",
+            }}
+          >
+            <Typography
+              variant="h3"
+              align="center"
+              sx={{
+                fontWeight: 800,
+                fontSize: "1.1rem",
+                boxSizing: "border-box",
+                lineHeight: "1.1",
+                textTransform: "Capitalize",
+              }}
+            >
+              {selectedLanguage
+                ? selectedLanguage.nativeName
+                : "[" + i18n._(`Select Your Language`) + "]"}
+            </Typography>
+            <MoveRight />
+            <Typography
+              variant="h3"
+              align="center"
+              sx={{
+                fontWeight: 500,
+                fontSize: "1.1rem",
+                boxSizing: "border-box",
+                lineHeight: "1.1",
+                opacity: 0.7,
+              }}
+            >
+              {fullEnglishLanguageName[languageToLearn]}
+            </Typography>
+          </Stack>
+        </Stack>
       </Stack>
 
       <TextField
         value={internalFilterValue}
         onChange={(e) => setInternalFilterValue(e.target.value)}
         fullWidth
-        placeholder={i18n._("Search")}
+        variant="filled"
+        label={i18n._("Your Language")}
+        placeholder={i18n._("")}
         autoComplete="off"
         slotProps={{
           input: {

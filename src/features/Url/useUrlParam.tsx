@@ -55,30 +55,33 @@ export const useUrlState = <T,>(paramName: string, defaultValue: T, scrollToTop:
     }
   }, [urlPage]);
 
-  const setValue = (value: T) => {
+  const setValue = async (value: T) => {
     if (value == internalValue) return;
 
     setInternalValue(value);
     const isDefault = value === defaultValue;
 
-    setTimeout(() => {
-      setIsLoading(true);
-
-      const searchParams = new URLSearchParams(window.location.search);
-      if (!isDefault) {
-        searchParams.set(paramName, `${value}`);
-      } else {
-        searchParams.delete(paramName);
-      }
-      const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-
-      router.push(`${newUrl}`, { scroll: false });
-      scrollToTop && scrollTopFast();
-
+    return new Promise<void>((resolve) => {
       setTimeout(() => {
-        setIsLoading(false);
-      }, 200);
-    }, 20);
+        setIsLoading(true);
+
+        const newSearchParams = new URLSearchParams(window.location.search);
+        if (!isDefault) {
+          newSearchParams.set(paramName, `${value}`);
+        } else {
+          newSearchParams.delete(paramName);
+        }
+        const newUrl = `${window.location.pathname}?${newSearchParams.toString()}`;
+
+        router.push(`${newUrl}`, { scroll: false });
+        scrollToTop && scrollTopFast();
+
+        setTimeout(() => {
+          setIsLoading(false);
+          resolve();
+        }, 200);
+      }, 20);
+    });
   };
 
   return [internalValue, setValue, isLoading] as const;

@@ -43,7 +43,7 @@ interface QuizContextType {
   isFirstStep: boolean;
   isLastStep: boolean;
 }
-
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const QuizContext = createContext<QuizContextType | null>(null);
 
 interface QuizProps {
@@ -76,31 +76,41 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     systemLanguagesTitle: i18n._(`System languages`),
   });
 
+  const preFindNativeLanguage = async (langToLearn: string) => {
+    try {
+      if (nativeLanguage !== langToLearn) {
+        return;
+      }
+
+      const systemLanguages = languageGroups.filter(
+        (group) => group.isSystemLanguage && group.code !== langToLearn
+      );
+      const goodSystemLang = systemLanguages[0]?.code;
+      if (goodSystemLang) {
+        await setNativeLanguageInput(goodSystemLang);
+        await sleep(200);
+        return;
+      }
+
+      const countryCode = await getCountryByIP();
+      const country = countryCode ? languageGroups.find((lang) => lang.code === countryCode) : null;
+
+      if (country) {
+        await setNativeLanguageInput(country.code);
+        await sleep(200);
+        return;
+      }
+
+      await setNativeLanguageInput("");
+      await sleep(200);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const setLanguageToLearn = async (langToLearn: SupportedLanguage) => {
     setLanguageToLearnState(langToLearn);
-
-    if (nativeLanguage !== langToLearn) {
-      return;
-    }
-
-    const systemLanguages = languageGroups.filter(
-      (group) => group.isSystemLanguage && group.code !== langToLearn
-    );
-    const goodSystemLang = systemLanguages[0]?.code;
-    if (goodSystemLang) {
-      setNativeLanguageInput(goodSystemLang);
-      return;
-    }
-
-    const countryCode = await getCountryByIP();
-    const country = countryCode ? languageGroups.find((lang) => lang.code === countryCode) : null;
-
-    if (country) {
-      setNativeLanguageInput(country.code);
-      return;
-    }
-
-    setNativeLanguageInput("");
+    await preFindNativeLanguage(langToLearn);
   };
 
   const setNativeLanguage = (lang: string) => {
@@ -130,10 +140,14 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const path = getPath();
   const currentStepIndex = path.indexOf(currentStep) === -1 ? 0 : path.indexOf(currentStep);
 
-  const nextStep = () => {
+  const nextStep = async () => {
     const nextStepIndex = Math.min(currentStepIndex + 1, path.length - 1);
     const nextStep = path[nextStepIndex];
-    // if
+
+    if (currentStep === "learnLanguage") {
+      await preFindNativeLanguage(languageToLearn);
+    }
+
     setStep(nextStep);
   };
 
