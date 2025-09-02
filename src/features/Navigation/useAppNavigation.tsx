@@ -14,7 +14,7 @@ interface AppNavigationContextType {
 const AppNavigationContext = createContext<AppNavigationContextType | null>(null);
 
 function useProvideAppNavigation(): AppNavigationContextType {
-  const [internalValue, setValue, isLoading] = useUrlState("page", "home");
+  const [internalValue, setValue, isLoading] = useUrlState<PageType>("page", "home", true);
 
   const pageUrl = (page: PageType) => {
     const searchParamsNew = new URLSearchParams(window.location.search);
@@ -23,7 +23,7 @@ function useProvideAppNavigation(): AppNavigationContextType {
   };
 
   return {
-    currentPage: internalValue as PageType,
+    currentPage: internalValue,
     setCurrentPage: setValue,
     pageUrl,
     isLoading,
