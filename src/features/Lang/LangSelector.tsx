@@ -119,7 +119,7 @@ export const LanguageButton = ({
   fullName: string;
   isSelected: boolean;
   onClick: (langCode: string) => void;
-  flagImageUrl: string;
+  flagImageUrl?: string;
 }) => {
   return (
     <Stack

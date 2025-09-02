@@ -117,6 +117,7 @@ const NativeLanguageSelector = () => {
         onChange={(e) => setInternalFilterValue(e.target.value)}
         fullWidth
         placeholder={i18n._("Search")}
+        autoComplete="off"
         slotProps={{
           input: {
             startAdornment: (
@@ -177,7 +178,6 @@ const NativeLanguageSelector = () => {
                   isSystemLang={option.isSystemLanguage}
                   fullName={option.nativeName}
                   isSelected={isSelected}
-                  flagImageUrl={option.flag}
                 />
               );
             })}
@@ -214,7 +214,6 @@ const NativeLanguageSelector = () => {
                   isSystemLang={option.isSystemLanguage}
                   fullName={option.nativeName}
                   isSelected={isSelected}
-                  flagImageUrl={option.flag}
                 />
               );
             })}

@@ -11,6 +11,10 @@ import {
 } from "@telegram-apps/sdk-react";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, ReactNode, JSX } from "react";
+import { useLanguageGroup } from "../useLanguageGroup";
+import { useLingui } from "@lingui/react";
+import { getCountryByIP } from "@/features/User/getCountry";
+import { countries } from "@/libs/countries";
 
 type QuizStep = "learnLanguage" | "nativeLanguage" | "pageLanguage" | "recordAbout" | "reviewAbout";
 const stepsViews: QuizStep[] = [
@@ -47,19 +51,16 @@ interface QuizProps {
   defaultLangToLearn: SupportedLanguage;
 }
 function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): QuizContextType {
-  const [languageToLearn, setLanguageToLearn, isLanguageLoading] = useUrlState<SupportedLanguage>(
-    "toLearn",
-    defaultLangToLearn,
-    false
-  );
+  const [languageToLearn, setLanguageToLearnState, isLanguageLoading] =
+    useUrlState<SupportedLanguage>("toLearn", defaultLangToLearn, false);
   const [pageLanguage, setPageLanguage, isPageLanguageLoading] = useUrlState<SupportedLanguage>(
     "pageLang",
     pageLang,
     false
   );
-  const [nativeLanguage, setNativeLanguage, isNativeLanguageLoading] = useUrlState(
+  const [nativeLanguage, setNativeLanguageInput, isNativeLanguageLoading] = useUrlState<string>(
     "nativeLang",
-    "en",
+    pageLang,
     false
   );
 
@@ -68,6 +69,41 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     "learnLanguage",
     true
   );
+
+  const { i18n } = useLingui();
+  const { languageGroups } = useLanguageGroup({
+    defaultGroupTitle: i18n._(`Other languages`),
+    systemLanguagesTitle: i18n._(`System languages`),
+  });
+
+  const setLanguageToLearn = async (langToLearn: SupportedLanguage) => {
+    setLanguageToLearnState(langToLearn);
+
+    if (pageLanguage !== langToLearn) {
+      return;
+    }
+
+    const systemLanguages = languageGroups.filter(
+      (group) => group.isSystemLanguage && group.code !== langToLearn
+    );
+    const goodSystemLang = systemLanguages[0]?.code;
+    if (goodSystemLang) {
+      setNativeLanguageInput(goodSystemLang);
+      return;
+    }
+
+    const countryCode = await getCountryByIP();
+    const country = countryCode ? languageGroups.find((lang) => lang.code === countryCode) : null;
+
+    if (country) {
+      setNativeLanguageInput(country.code);
+      return;
+    }
+  };
+
+  const setNativeLanguage = (lang: string) => {
+    setNativeLanguageInput(lang);
+  };
 
   const getPath = () => {
     const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
