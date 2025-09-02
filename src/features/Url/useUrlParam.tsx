@@ -42,11 +42,11 @@ export const useUrlParam = (paramName: string) => {
   return [internalValue, setValue, isLoading] as const;
 };
 
-export const useUrlState = (paramName: string, defaultValue: string) => {
-  const [internalValue, setInternalValue] = useState<string>(defaultValue);
+export const useUrlState = <T,>(paramName: string, defaultValue: T, scrollToTop: boolean) => {
+  const [internalValue, setInternalValue] = useState<T>(defaultValue);
   const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
-  const urlPage = (searchParams.get(paramName) || defaultValue) as string;
+  const urlPage = (searchParams.get(paramName) || defaultValue) as T;
   const router = useRouter();
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export const useUrlState = (paramName: string, defaultValue: string) => {
     }
   }, [urlPage]);
 
-  const setValue = (value: string) => {
+  const setValue = (value: T) => {
     if (value == internalValue) return;
 
     setInternalValue(value);
@@ -66,14 +66,14 @@ export const useUrlState = (paramName: string, defaultValue: string) => {
 
       const searchParams = new URLSearchParams(window.location.search);
       if (!isDefault) {
-        searchParams.set(paramName, value);
+        searchParams.set(paramName, `${value}`);
       } else {
         searchParams.delete(paramName);
       }
       const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
 
       router.push(`${newUrl}`, { scroll: false });
-      scrollTopFast();
+      scrollToTop && scrollTopFast();
 
       setTimeout(() => {
         setIsLoading(false);
