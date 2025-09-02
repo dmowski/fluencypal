@@ -99,6 +99,8 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
       setNativeLanguageInput(country.code);
       return;
     }
+
+    setNativeLanguageInput("");
   };
 
   const setNativeLanguage = (lang: string) => {

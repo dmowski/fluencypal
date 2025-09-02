@@ -226,7 +226,7 @@ const NativeLanguageSelector = () => {
           </Stack>
         )}
       </Stack>
-      <NextStepButton onClick={nextStep} disabled={isStepLoading} />
+      <NextStepButton disabled={!nativeLanguage} />
     </Stack>
   );
 };
@@ -268,7 +268,7 @@ const LanguageToLearnSelector = () => {
         availableList={supportedLanguagesToLearn}
         onChange={(lang) => setLanguageToLearn(lang)}
       />
-      <NextStepButton onClick={nextStep} disabled={isStepLoading} />
+      <NextStepButton />
     </Stack>
   );
 };
@@ -341,9 +341,10 @@ const ProgressBar = () => {
   );
 };
 
-const NextStepButton = ({ onClick, disabled }: { onClick: () => void; disabled: boolean }) => {
+const NextStepButton = ({ disabled }: { disabled?: boolean }) => {
   const { i18n } = useLingui();
   const { bottomOffset } = useWindowSizes();
+  const { isStepLoading, nextStep } = useQuiz();
   return (
     <>
       <Stack
@@ -372,8 +373,9 @@ const NextStepButton = ({ onClick, disabled }: { onClick: () => void; disabled: 
         }}
       >
         <Button
-          onClick={disabled ? undefined : onClick}
+          onClick={isStepLoading ? undefined : nextStep}
           variant="contained"
+          disabled={disabled}
           size="large"
           sx={{
             width: "min(600px, calc(100dvw - 20px))",
