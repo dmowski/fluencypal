@@ -10,18 +10,7 @@ import { GradingProgressBar } from "@/features/Dashboard/BrainCard";
 import { QuizProvider, useQuiz } from "./useQuiz";
 
 const QuizQuestions = () => {
-  const { bottomOffset, topOffset } = useWindowSizes();
-  const { i18n } = useLingui();
-  const {
-    navigateToMainPage,
-    languageToLearn,
-    setLanguageToLearn,
-    isStepLoading,
-    isFirstStep,
-    nextStep,
-    prevStep,
-    progress,
-  } = useQuiz();
+  const { currentStep } = useQuiz();
 
   return (
     <Stack
@@ -42,47 +31,50 @@ const QuizQuestions = () => {
           width: "100%",
         }}
       >
-        <Stack
+        {currentStep === "learnLanguage" && <LanguageToLearnSelector />}
+      </Stack>
+    </Stack>
+  );
+};
+
+const LanguageToLearnSelector = () => {
+  const { i18n } = useLingui();
+  const { languageToLearn, setLanguageToLearn, isStepLoading, nextStep } = useQuiz();
+  return (
+    <Stack
+      sx={{
+        gap: "20px",
+      }}
+    >
+      <Stack
+        sx={{
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+        }}
+      >
+        <GraduationCap size={"30px"} />
+        <Typography
+          variant="h3"
+          align="center"
           sx={{
-            width: "100%",
-            alignItems: "flex-start",
-            gap: "10px",
-            paddingTop: `10px`,
-            paddingBottom: "10px",
-            backgroundColor: "rgba(10, 18, 30, 1)",
+            fontWeight: 500,
+            fontSize: "1.1rem",
+            boxSizing: "border-box",
+            lineHeight: "1.1",
           }}
         >
-          <Stack
-            sx={{
-              alignItems: "center",
-              flexDirection: "row",
-              gap: "10px",
-              paddingLeft: "3px",
-            }}
-          >
-            <Typography
-              variant="h3"
-              align="left"
-              sx={{
-                fontWeight: 500,
-                fontSize: "1rem",
-                boxSizing: "border-box",
-                lineHeight: "1.1",
-              }}
-            >
-              {i18n._(`Language to Learn`)}
-            </Typography>
-            <GraduationCap size={"18px"} />
-          </Stack>
-        </Stack>
-
-        <LangSelectorFullScreen
-          value={languageToLearn}
-          availableList={supportedLanguagesToLearn}
-          onChange={(lang) => setLanguageToLearn(lang)}
-        />
-        <NextStepButton onClick={nextStep} disabled={isStepLoading} />
+          {i18n._(`Let's Choose Language to Learn`)}
+        </Typography>
       </Stack>
+
+      <LangSelectorFullScreen
+        value={languageToLearn}
+        availableList={supportedLanguagesToLearn}
+        onChange={(lang) => setLanguageToLearn(lang)}
+      />
+      <NextStepButton onClick={nextStep} disabled={isStepLoading} />
     </Stack>
   );
 };
@@ -186,9 +178,8 @@ const NextStepButton = ({ onClick, disabled }: { onClick: () => void; disabled: 
         }}
       >
         <Button
-          onClick={onClick}
+          onClick={disabled ? undefined : onClick}
           variant="contained"
-          disabled={disabled}
           size="large"
           sx={{
             width: "min(600px, calc(100dvw - 20px))",
@@ -202,7 +193,7 @@ const NextStepButton = ({ onClick, disabled }: { onClick: () => void; disabled: 
           sx={{
             width: "100%",
             height: "100%",
-            background: "linear-gradient(to top, rgba(10, 18, 30, 1), rgba(10, 18, 30, 0))",
+            background: "linear-gradient(to top, rgba(10, 18, 30, 0.9), rgba(10, 18, 30, 0))",
             position: "absolute",
             bottom: 0,
             left: 0,

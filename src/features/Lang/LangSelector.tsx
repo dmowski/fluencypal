@@ -147,13 +147,15 @@ export const LangSelectorFullScreen = ({
           <Stack
             key={option.langCode}
             sx={{
-              padding: "20px",
+              padding: "10px 12px",
               borderRadius: "8px",
               color: "#fff",
               outline: "none",
               cursor: "pointer",
-              backgroundColor: isSelected ? "rgba(255, 255, 255, 0.1)" : "transparent",
-              border: isSelected ? "2px solid #1f74be" : "2px solid transparent",
+              backgroundColor: isSelected
+                ? "rgba(255, 255, 255, 0.1)"
+                : "rgba(255, 255, 255, 0.01)",
+              border: isSelected ? "2px solid #1f74be" : "2px solid rgba(255, 255, 255, 0.03)",
               "&:hover": {
                 backgroundColor: isSelected
                   ? "rgba(255, 255, 255, 0.1)"
@@ -197,12 +199,12 @@ export const LangSelectorFullScreen = ({
               {isSelected && (
                 <Stack
                   sx={{
-                    padding: "7px",
+                    padding: "4px",
                     backgroundColor: "#1f74be",
                     borderRadius: "22px",
                   }}
                 >
-                  <CheckIcon />
+                  <CheckIcon size={"18px"} />
                 </Stack>
               )}
             </Stack>
