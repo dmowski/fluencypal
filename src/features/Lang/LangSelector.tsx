@@ -102,6 +102,90 @@ export const LangSelector = ({
   );
 };
 
+export const LanguageButton = ({
+  label,
+  langCode,
+  englishFullName,
+  isSystemLang,
+  fullName,
+  isSelected,
+  onClick,
+}: {
+  label: string;
+  langCode: string;
+  englishFullName: string;
+  isSystemLang: boolean;
+  fullName: string;
+  isSelected: boolean;
+  onClick: (langCode: string) => void;
+}) => {
+  const flagImageUrl = langFlags[langCode as SupportedLanguage] || "";
+  return (
+    <Stack
+      sx={{
+        padding: "10px 12px",
+        borderRadius: "8px",
+        color: "#fff",
+        outline: "none",
+        cursor: "pointer",
+        backgroundColor: isSelected ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.01)",
+        border: isSelected ? "2px solid #1f74be" : "2px solid rgba(255, 255, 255, 0.03)",
+        "&:hover": {
+          backgroundColor: isSelected ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.05)",
+        },
+      }}
+      component={"button"}
+      onClick={() => onClick(langCode)}
+    >
+      <Stack
+        sx={{
+          alignItems: "center",
+          display: "flex",
+          flexDirection: "row",
+          width: "100%",
+          justifyContent: "space-between",
+          padding: "0px 5px",
+          gap: "15px",
+          minHeight: "42px",
+        }}
+      >
+        <Stack
+          sx={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "14px",
+          }}
+        >
+          {flagImageUrl && (
+            <img
+              src={flagImageUrl}
+              alt={label}
+              style={{
+                width: "50px",
+                border: "1px solid rgba(0, 0, 0, 0.15)",
+                borderRadius: "1px",
+              }}
+            />
+          )}
+          <Typography>{englishFullName}</Typography>
+        </Stack>
+
+        {isSelected && (
+          <Stack
+            sx={{
+              padding: "4px",
+              backgroundColor: "#1f74be",
+              borderRadius: "22px",
+            }}
+          >
+            <CheckIcon size={"18px"} />
+          </Stack>
+        )}
+      </Stack>
+    </Stack>
+  );
+};
+
 export const LangSelectorFullScreen = ({
   value,
   onChange,
@@ -144,71 +228,16 @@ export const LangSelectorFullScreen = ({
       {optionsFull.map((option) => {
         const isSelected = option.langCode === value;
         return (
-          <Stack
-            key={option.langCode}
-            sx={{
-              padding: "10px 12px",
-              borderRadius: "8px",
-              color: "#fff",
-              outline: "none",
-              cursor: "pointer",
-              backgroundColor: isSelected
-                ? "rgba(255, 255, 255, 0.1)"
-                : "rgba(255, 255, 255, 0.01)",
-              border: isSelected ? "2px solid #1f74be" : "2px solid rgba(255, 255, 255, 0.03)",
-              "&:hover": {
-                backgroundColor: isSelected
-                  ? "rgba(255, 255, 255, 0.1)"
-                  : "rgba(255, 255, 255, 0.05)",
-              },
-            }}
-            component={"button"}
+          <LanguageButton
             onClick={() => onChangeLanguage(option.langCode)}
-          >
-            <Stack
-              sx={{
-                alignItems: "center",
-                display: "flex",
-                flexDirection: "row",
-                width: "100%",
-                justifyContent: "space-between",
-                padding: "0px 5px",
-                gap: "15px",
-                minHeight: "42px",
-              }}
-            >
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "14px",
-                }}
-              >
-                <img
-                  src={langFlags[option.langCode]}
-                  alt={option.label}
-                  style={{
-                    width: "50px",
-                    border: "1px solid rgba(0, 0, 0, 0.15)",
-                    borderRadius: "1px",
-                  }}
-                />
-                <Typography>{option.englishFullName}</Typography>
-              </Stack>
-
-              {isSelected && (
-                <Stack
-                  sx={{
-                    padding: "4px",
-                    backgroundColor: "#1f74be",
-                    borderRadius: "22px",
-                  }}
-                >
-                  <CheckIcon size={"18px"} />
-                </Stack>
-              )}
-            </Stack>
-          </Stack>
+            key={option.langCode}
+            label={option.label}
+            langCode={option.langCode}
+            englishFullName={option.englishFullName}
+            isSystemLang={option.isSystemLang}
+            fullName={option.fullName}
+            isSelected={isSelected}
+          />
         );
       })}
     </Stack>

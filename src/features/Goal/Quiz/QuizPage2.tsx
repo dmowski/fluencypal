@@ -4,10 +4,11 @@ import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { SupportedLanguage, supportedLanguagesToLearn } from "@/features/Lang/lang";
 import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
-import { ArrowLeft, ArrowRight, GraduationCap } from "lucide-react";
-import { LangSelectorFullScreen } from "@/features/Lang/LangSelector";
+import { ArrowLeft, ArrowRight, GraduationCap, Languages } from "lucide-react";
+import { LangSelectorFullScreen, LanguageButton } from "@/features/Lang/LangSelector";
 import { GradingProgressBar } from "@/features/Dashboard/BrainCard";
 import { QuizProvider, useQuiz } from "./useQuiz";
+import { useLanguageGroup } from "../useLanguageGroup";
 
 const QuizQuestions = () => {
   const { currentStep } = useQuiz();
@@ -32,7 +33,128 @@ const QuizQuestions = () => {
         }}
       >
         {currentStep === "learnLanguage" && <LanguageToLearnSelector />}
+        {currentStep === "nativeLanguage" && <NativeLanguageSelector />}
       </Stack>
+    </Stack>
+  );
+};
+
+const NativeLanguageSelector = () => {
+  const { i18n } = useLingui();
+  const { nativeLanguage, setNativeLanguage, isStepLoading, nextStep } = useQuiz();
+
+  const { languageGroups } = useLanguageGroup({
+    defaultGroupTitle: i18n._(`Other languages`),
+    systemLanguagesTitle: i18n._(`System languages`),
+  });
+
+  const systemLanguageGroup = languageGroups.filter((group) => group.isSystemLanguage);
+  const otherLanguageGroup = languageGroups.filter((group) => !group.isSystemLanguage);
+
+  return (
+    <Stack
+      sx={{
+        gap: "20px",
+      }}
+    >
+      <Stack
+        sx={{
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+        }}
+      >
+        <Languages size={"30px"} />
+        <Typography
+          variant="h3"
+          align="center"
+          sx={{
+            fontWeight: 500,
+            fontSize: "1.1rem",
+            boxSizing: "border-box",
+            lineHeight: "1.1",
+          }}
+        >
+          {i18n._(`Your Language`)}
+        </Typography>
+      </Stack>
+
+      <Stack
+        sx={{
+          width: "100%",
+          gap: "34px",
+        }}
+      >
+        {systemLanguageGroup.length > 0 && (
+          <Stack
+            sx={{
+              width: "100%",
+              gap: "4px",
+            }}
+          >
+            <Typography
+              variant="caption"
+              sx={{
+                opacity: 0.7,
+              }}
+            >
+              {i18n._(`Suggested to you:`)}
+            </Typography>
+
+            {systemLanguageGroup.map((option) => {
+              const isSelected = option.code === nativeLanguage;
+              return (
+                <LanguageButton
+                  onClick={() => setNativeLanguage(option.code)}
+                  key={option.code}
+                  label={option.englishName}
+                  langCode={option.code}
+                  englishFullName={option.englishName}
+                  isSystemLang={option.isSystemLanguage}
+                  fullName={option.nativeName}
+                  isSelected={isSelected}
+                />
+              );
+            })}
+          </Stack>
+        )}
+
+        <Stack
+          sx={{
+            width: "100%",
+            gap: "4px",
+          }}
+        >
+          {systemLanguageGroup.length > 0 && (
+            <Typography
+              variant="caption"
+              sx={{
+                opacity: 0.7,
+              }}
+            >
+              {i18n._(`Other:`)}
+            </Typography>
+          )}
+
+          {otherLanguageGroup.map((option) => {
+            const isSelected = option.code === nativeLanguage;
+            return (
+              <LanguageButton
+                onClick={() => setNativeLanguage(option.code)}
+                key={option.code}
+                label={option.englishName}
+                langCode={option.code}
+                englishFullName={option.englishName}
+                isSystemLang={option.isSystemLanguage}
+                fullName={option.nativeName}
+                isSelected={isSelected}
+              />
+            );
+          })}
+        </Stack>
+      </Stack>
+      <NextStepButton onClick={nextStep} disabled={isStepLoading} />
     </Stack>
   );
 };
