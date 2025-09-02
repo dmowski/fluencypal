@@ -9,7 +9,7 @@ import {
 } from "@/features/Lang/lang";
 import { JSX, useMemo } from "react";
 import { MenuItem, Select, Stack, Typography } from "@mui/material";
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, Flag, GraduationCap } from "lucide-react";
 
 interface LangSelectorProps {
   value: SupportedLanguage | null;
@@ -111,6 +111,8 @@ export const LanguageButton = ({
   isSelected,
   onClick,
   flagImageUrl,
+  disabled,
+  isFlag,
 }: {
   label: string;
   langCode: string;
@@ -120,6 +122,8 @@ export const LanguageButton = ({
   isSelected: boolean;
   onClick: (langCode: string) => void;
   flagImageUrl?: string;
+  disabled?: boolean;
+  isFlag?: boolean;
 }) => {
   return (
     <Stack
@@ -134,8 +138,15 @@ export const LanguageButton = ({
         "&:hover": {
           backgroundColor: isSelected ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.05)",
         },
+        "&:disabled": {
+          border: "2px solid rgba(255, 255, 255, 0.1)",
+          backgroundColor: "rgba(255, 255, 255, 0)",
+          cursor: "not-allowed",
+          color: "rgba(255, 255, 255, 0.5)",
+        },
       }}
       component={"button"}
+      disabled={disabled}
       onClick={() => onClick(langCode)}
     >
       <Stack
@@ -170,6 +181,19 @@ export const LanguageButton = ({
           )}
           <Typography>{englishFullName}</Typography>
         </Stack>
+
+        {isFlag && (
+          <Stack
+            sx={{
+              padding: "4px",
+              backgroundColor: "#1f3428ff",
+              borderRadius: "22px",
+              color: "#fff",
+            }}
+          >
+            <GraduationCap size={"18px"} />
+          </Stack>
+        )}
 
         {isSelected && (
           <Stack

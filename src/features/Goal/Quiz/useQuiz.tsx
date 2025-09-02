@@ -79,7 +79,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const setLanguageToLearn = async (langToLearn: SupportedLanguage) => {
     setLanguageToLearnState(langToLearn);
 
-    if (pageLanguage !== langToLearn) {
+    if (nativeLanguage !== langToLearn) {
       return;
     }
 
@@ -131,6 +131,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const nextStep = () => {
     const nextStepIndex = Math.min(currentStepIndex + 1, path.length - 1);
     const nextStep = path[nextStepIndex];
+    // if
     setStep(nextStep);
   };
 

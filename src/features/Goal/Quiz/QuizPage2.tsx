@@ -42,7 +42,7 @@ const QuizQuestions = () => {
 
 const NativeLanguageSelector = () => {
   const { i18n } = useLingui();
-  const { nativeLanguage, setNativeLanguage, isStepLoading, nextStep } = useQuiz();
+  const { nativeLanguage, setNativeLanguage, languageToLearn, isStepLoading, nextStep } = useQuiz();
 
   const [internalFilterValue, setInternalFilterValue] = useState("");
   const cleanInput = internalFilterValue.trim().toLowerCase();
@@ -78,9 +78,11 @@ const NativeLanguageSelector = () => {
 
   const systemLanguageGroup = languageGroups
     .filter((group) => group.isSystemLanguage)
+    .filter((group) => group.code !== languageToLearn)
     .filter(filterByInput);
   const otherLanguageGroup = languageGroups
     .filter((group) => !group.isSystemLanguage)
+    .filter((group) => group.code !== languageToLearn)
     .filter(filterByInput);
 
   return (
@@ -177,6 +179,8 @@ const NativeLanguageSelector = () => {
                   englishFullName={option.englishName}
                   isSystemLang={option.isSystemLanguage}
                   fullName={option.nativeName}
+                  disabled={option.code === languageToLearn}
+                  isFlag={option.code === languageToLearn}
                   isSelected={isSelected}
                 />
               );
@@ -213,6 +217,8 @@ const NativeLanguageSelector = () => {
                   englishFullName={option.englishName}
                   isSystemLang={option.isSystemLanguage}
                   fullName={option.nativeName}
+                  disabled={option.code === languageToLearn}
+                  isFlag={option.code === languageToLearn}
                   isSelected={isSelected}
                 />
               );
