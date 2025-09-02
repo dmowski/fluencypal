@@ -121,38 +121,69 @@ const QuizQuestions = () => {
           availableList={supportedLanguagesToLearn}
           onChange={(lang) => setLanguageToLearn(lang)}
         />
-
-        <Stack
-          sx={{
-            padding: "50px 0 0 0",
-            flexDirection: "row",
-            gap: "10px",
-            alignItems: "center",
-            justifyContent: "space-between",
-            "@media (max-width: 600px)": {
-              position: "fixed",
-              width: "calc(100dvw - 20px)",
-              padding: "15px 10px",
-              bottom: 0,
-              paddingBottom: `calc(${bottomOffset} + 15px)`,
-              left: "10px",
-              right: "0px",
-            },
-          }}
-        >
-          <Button
-            onClick={nextStep}
-            variant="contained"
-            disabled={isStepLoading}
-            size="large"
-            fullWidth
-            endIcon={<ArrowRight />}
-          >
-            {i18n._("Next")}
-          </Button>
-        </Stack>
+        <NextStepButton onClick={nextStep} disabled={isStepLoading} />
       </Stack>
     </Stack>
+  );
+};
+
+const NextStepButton = ({ onClick, disabled }: { onClick: () => void; disabled: boolean }) => {
+  const { i18n } = useLingui();
+  const { bottomOffset } = useWindowSizes();
+  return (
+    <>
+      <Stack
+        sx={{
+          display: "block",
+          width: "100%",
+          minHeight: `calc(${bottomOffset} + 95px)`,
+        }}
+      />
+
+      <Stack
+        sx={{
+          flexDirection: "row",
+          gap: "10px",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "fixed",
+          width: "100dvw",
+          left: "0",
+
+          padding: "30px 0 0 0",
+          bottom: 0,
+          paddingBottom: `calc(${bottomOffset} + 15px)`,
+
+          right: "0px",
+        }}
+      >
+        <Button
+          onClick={onClick}
+          variant="contained"
+          disabled={disabled}
+          size="large"
+          sx={{
+            width: "min(600px, calc(100dvw - 20px))",
+          }}
+          fullWidth
+          endIcon={<ArrowRight />}
+        >
+          {i18n._("Next")}
+        </Button>
+        <Stack
+          sx={{
+            width: "100%",
+            height: "100%",
+            background: "linear-gradient(to top, rgba(10, 18, 30, 1), rgba(10, 18, 30, 0))",
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: -1,
+          }}
+        ></Stack>
+      </Stack>
+    </>
   );
 };
 
