@@ -9,7 +9,7 @@ import {
 } from "@/features/Lang/lang";
 import { JSX, useMemo } from "react";
 import { MenuItem, Select, Stack, Typography } from "@mui/material";
-import { CheckIcon, Flag, GraduationCap } from "lucide-react";
+import { CheckIcon, GraduationCap } from "lucide-react";
 
 interface LangSelectorProps {
   value: SupportedLanguage | null;
@@ -139,9 +139,14 @@ export const LanguageButton = ({
         cursor: "pointer",
         backgroundColor: isSelected ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.01)",
         border: isSelected ? "2px solid #1f74be" : "2px solid rgba(255, 255, 255, 0.03)",
-        "&:hover": {
-          backgroundColor: isSelected ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.05)",
+
+        "@media (min-width: 550px)": {
+          // hover only on larger screens
+          "&:hover": {
+            backgroundColor: isSelected ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.05)",
+          },
         },
+
         "&:disabled": {
           border: "2px solid rgba(255, 255, 255, 0.1)",
           backgroundColor: "rgba(255, 255, 255, 0)",
