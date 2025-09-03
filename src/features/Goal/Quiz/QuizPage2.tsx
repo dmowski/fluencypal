@@ -13,7 +13,16 @@ import {
 } from "@/features/Lang/lang";
 import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
-import { ArrowLeft, ArrowRight, Globe, GraduationCap, MoveRight, Search, X } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  FlagIcon,
+  Globe,
+  GraduationCap,
+  MoveRight,
+  Search,
+  X,
+} from "lucide-react";
 import { LangSelectorFullScreen, LanguageButton } from "@/features/Lang/LangSelector";
 import { GradingProgressBar } from "@/features/Dashboard/BrainCard";
 import { QuizProvider, useQuiz } from "./useQuiz";
@@ -499,7 +508,7 @@ const LanguageToLearnSelector = () => {
 
 const ProgressBar = () => {
   const { topOffset } = useWindowSizes();
-  const { navigateToMainPage, isFirstStep, prevStep, progress } = useQuiz();
+  const { navigateToMainPage, isCanGoToMainPage, isFirstStep, prevStep, progress } = useQuiz();
 
   return (
     <>
@@ -540,15 +549,18 @@ const ProgressBar = () => {
           }}
         >
           <IconButton
+            sx={{
+              opacity: isCanGoToMainPage || !isFirstStep ? 1 : 0,
+            }}
             onClick={() => {
               if (isFirstStep) {
-                navigateToMainPage();
+                isCanGoToMainPage && navigateToMainPage();
               } else {
                 prevStep();
               }
             }}
           >
-            <ArrowLeft />
+            {isCanGoToMainPage || !isFirstStep ? <ArrowLeft /> : <FlagIcon />}
           </IconButton>
 
           <Stack
@@ -559,6 +571,12 @@ const ProgressBar = () => {
           >
             <GradingProgressBar height={"12px"} value={Math.max(0, progress * 100)} label="" />
           </Stack>
+
+          <Stack
+            sx={{
+              width: "34px",
+            }}
+          />
         </Stack>
       </Stack>
     </>
