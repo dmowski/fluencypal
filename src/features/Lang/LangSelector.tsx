@@ -113,6 +113,8 @@ export const LanguageButton = ({
   flagImageUrl,
   disabled,
   isFlag,
+  flagSize,
+  isShowFullName,
 }: {
   label: string;
   langCode: string;
@@ -124,6 +126,8 @@ export const LanguageButton = ({
   flagImageUrl?: string;
   disabled?: boolean;
   isFlag?: boolean;
+  flagSize?: "small" | "normal" | "large";
+  isShowFullName?: boolean;
 }) => {
   return (
     <Stack
@@ -173,13 +177,29 @@ export const LanguageButton = ({
               src={flagImageUrl}
               alt={label}
               style={{
-                width: "50px",
+                width: flagSize === "small" ? "30px" : flagSize === "large" ? "70px" : "50px",
                 border: "1px solid rgba(0, 0, 0, 0.15)",
-                borderRadius: "1px",
+                borderRadius: flagSize === "small" ? "4px" : "1px",
               }}
             />
           )}
-          <Typography>{englishFullName}</Typography>
+          <Stack
+            sx={{
+              alignItems: "flex-start",
+            }}
+          >
+            <Typography>{englishFullName}</Typography>
+            {isShowFullName && (
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.6,
+                }}
+              >
+                {fullName}
+              </Typography>
+            )}
+          </Stack>
         </Stack>
 
         {isFlag && (

@@ -3,28 +3,26 @@ import { Button, IconButton, InputAdornment, Stack, TextField, Typography } from
 
 import {
   fullEnglishLanguageName,
+  fullLanguageName,
+  getLabelFromCode,
+  getUserLangCode,
+  langFlags,
   SupportedLanguage,
+  supportedLanguages,
   supportedLanguagesToLearn,
 } from "@/features/Lang/lang";
 import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  GraduationCap,
-  Languages,
-  MoveRight,
-  Search,
-  X,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Globe, GraduationCap, MoveRight, Search, X } from "lucide-react";
 import { LangSelectorFullScreen, LanguageButton } from "@/features/Lang/LangSelector";
 import { GradingProgressBar } from "@/features/Dashboard/BrainCard";
 import { QuizProvider, useQuiz } from "./useQuiz";
 import { useLanguageGroup } from "../useLanguageGroup";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 const QuizQuestions = () => {
   const { currentStep } = useQuiz();
+  const { i18n } = useLingui();
 
   return (
     <Stack
@@ -46,8 +44,75 @@ const QuizQuestions = () => {
         }}
       >
         {currentStep === "learnLanguage" && <LanguageToLearnSelector />}
+
+        {currentStep === "before_nativeLanguage" && (
+          <InfoStep
+            imageUrl="/avatar/book.webp"
+            message={i18n._(`Tell us your native language`)}
+            subMessage={i18n._(`So I can translate words into it for you`)}
+          />
+        )}
+
         {currentStep === "nativeLanguage" && <NativeLanguageSelector />}
+
+        {currentStep === "before_pageLanguage" && (
+          <InfoStep
+            message={i18n._(`Choose Site Language`)}
+            subMessage={i18n._(`This is text you see on buttons and menus`)}
+            imageUrl="/illustrations/ui-schema.png"
+          />
+        )}
+
+        {currentStep === "pageLanguage" && <PageLanguageSelector />}
       </Stack>
+    </Stack>
+  );
+};
+
+const InfoStep = ({
+  message,
+  subMessage,
+  imageUrl,
+}: {
+  message: string;
+  subMessage: string;
+  imageUrl: string;
+}) => {
+  return (
+    <Stack
+      sx={{
+        gap: "20px",
+      }}
+    >
+      <Stack
+        sx={{
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+          padding: "150px 10px 0 10px",
+        }}
+      >
+        <img
+          src={imageUrl}
+          style={{
+            width: "140px",
+            height: "140px",
+          }}
+        />
+        <Stack
+          sx={{
+            alignItems: "center",
+          }}
+        >
+          <Typography align="center">{message}</Typography>
+          <Typography align="center" variant="caption" sx={{ opacity: 0.7 }}>
+            {subMessage}
+          </Typography>
+        </Stack>
+      </Stack>
+
+      <NextStepButton />
     </Stack>
   );
 };
@@ -282,6 +347,97 @@ const NativeLanguageSelector = () => {
         )}
       </Stack>
       <NextStepButton disabled={!nativeLanguage} />
+    </Stack>
+  );
+};
+
+const PageLanguageSelector = () => {
+  const { i18n } = useLingui();
+  const { pageLanguage, setPageLanguage, nextStep } = useQuiz();
+  const value = pageLanguage;
+
+  const userCodes = useMemo(() => getUserLangCode(), []);
+  const availableList = supportedLanguages;
+  const optionsFull = (availableList || supportedLanguages)
+    .map((lang: SupportedLanguage) => {
+      return {
+        label: getLabelFromCode(lang),
+        langCode: lang,
+        englishFullName: fullEnglishLanguageName[lang] || "",
+        isSystemLang: userCodes.includes(lang),
+        fullName: fullLanguageName[lang] || "",
+      };
+    })
+    .sort((a, b) => a.label.localeCompare(b.label));
+
+  const onChangeLanguage = async (code: string) => {
+    const isChanging = pageLanguage !== code;
+    if (!isChanging) {
+      return;
+    }
+    if (!code) {
+      return;
+    }
+
+    const langCode = supportedLanguages.find((lang) => lang === code) || "en";
+    setPageLanguage(langCode);
+  };
+  return (
+    <Stack
+      sx={{
+        gap: "20px",
+      }}
+    >
+      <Stack
+        sx={{
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+        }}
+      >
+        <Globe size={"30px"} />
+        <Typography
+          variant="h3"
+          align="center"
+          sx={{
+            fontWeight: 500,
+            fontSize: "1.1rem",
+            boxSizing: "border-box",
+            lineHeight: "1.1",
+          }}
+        >
+          {i18n._(`Page Language`)}
+        </Typography>
+      </Stack>
+
+      <Stack
+        sx={{
+          width: "100%",
+          gap: "4px",
+        }}
+      >
+        {optionsFull.map((option) => {
+          const isSelected = option.langCode === value;
+          const flagImageUrl = langFlags[option.langCode];
+          return (
+            <LanguageButton
+              onClick={() => onChangeLanguage(option.langCode)}
+              key={option.langCode}
+              label={option.label}
+              langCode={option.langCode}
+              englishFullName={option.englishFullName}
+              isSystemLang={option.isSystemLang}
+              fullName={option.fullName}
+              isSelected={isSelected}
+              flagImageUrl={flagImageUrl}
+              flagSize="small"
+              isShowFullName
+            />
+          );
+        })}
+      </Stack>
+      <NextStepButton />
     </Stack>
   );
 };

@@ -1,26 +1,30 @@
 "use client";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
-import { useUrlMapState, useUrlState } from "@/features/Url/useUrlParam";
-import {
-  useSignal,
-  viewportContentSafeAreaInsetTop,
-  viewportSafeAreaInsetTop,
-  viewportContentSafeAreaInsetBottom,
-  viewportSafeAreaInsetBottom,
-} from "@telegram-apps/sdk-react";
+import { useUrlMapState } from "@/features/Url/useUrlParam";
+
 import { useRouter } from "next/navigation";
 import { createContext, useContext, ReactNode, JSX, useMemo } from "react";
 import { useLanguageGroup } from "../useLanguageGroup";
 import { useLingui } from "@lingui/react";
 import { getCountryByIP } from "@/features/User/getCountry";
-import { countries } from "@/libs/countries";
 
-type QuizStep = "learnLanguage" | "nativeLanguage" | "pageLanguage" | "recordAbout" | "reviewAbout";
+type QuizStep =
+  | "before_nativeLanguage"
+  | "learnLanguage"
+  | "nativeLanguage"
+  | "before_pageLanguage"
+  | "pageLanguage"
+  | "recordAbout"
+  | "reviewAbout";
 const stepsViews: QuizStep[] = [
   "learnLanguage",
+  "before_nativeLanguage",
   "nativeLanguage",
+
+  "before_pageLanguage",
   "pageLanguage",
+
   "recordAbout",
   "reviewAbout",
 ];
@@ -64,7 +68,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
       toLearn: defaultLangToLearn,
       nativeLang: pageLang,
       pageLang,
-      currentStep: "learnLanguage",
+      currentStep: stepsViews[0],
     }),
     [defaultLangToLearn, pageLang]
   );
@@ -158,7 +162,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     );
 
     const path = stepsViews.filter((viewStep) => {
-      if (viewStep === "pageLanguage") {
+      if (viewStep === "pageLanguage" || viewStep === "before_pageLanguage") {
         if (isNativeLanguageIsSupportedLanguage) {
           return false;
         } else {
