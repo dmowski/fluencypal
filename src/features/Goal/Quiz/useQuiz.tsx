@@ -1,7 +1,7 @@
 "use client";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
-import { useUrlState } from "@/features/Url/useUrlParam";
+import { useUrlMapState, useUrlState } from "@/features/Url/useUrlParam";
 import {
   useSignal,
   viewportContentSafeAreaInsetTop,
@@ -10,7 +10,7 @@ import {
   viewportSafeAreaInsetBottom,
 } from "@telegram-apps/sdk-react";
 import { useRouter } from "next/navigation";
-import { createContext, useContext, ReactNode, JSX } from "react";
+import { createContext, useContext, ReactNode, JSX, useMemo } from "react";
 import { useLanguageGroup } from "../useLanguageGroup";
 import { useLingui } from "@lingui/react";
 import { getCountryByIP } from "@/features/User/getCountry";
@@ -50,25 +50,39 @@ interface QuizProps {
   pageLang: SupportedLanguage;
   defaultLangToLearn: SupportedLanguage;
 }
+
+interface QuizUrlState {
+  toLearn: SupportedLanguage;
+  nativeLang: string;
+  pageLang: SupportedLanguage;
+  currentStep: QuizStep;
+}
+
 function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): QuizContextType {
-  const [languageToLearn, setLanguageToLearnState, isLanguageLoading] =
-    useUrlState<SupportedLanguage>("toLearn", defaultLangToLearn, false);
-  const [pageLanguage, setPageLanguage, isPageLanguageLoading] = useUrlState<SupportedLanguage>(
-    "pageLang",
-    pageLang,
-    false
+  const defaultState: QuizUrlState = useMemo(
+    () => ({
+      toLearn: defaultLangToLearn,
+      nativeLang: pageLang,
+      pageLang,
+      currentStep: "learnLanguage",
+    }),
+    [defaultLangToLearn, pageLang]
   );
-  const [nativeLanguage, setNativeLanguageInput, isNativeLanguageLoading] = useUrlState<string>(
-    "nativeLang",
-    pageLang,
+
+  const [stateInput, setStateInput, isStateLoading] = useUrlMapState(
+    defaultState as unknown as Record<string, string>,
     false
   );
 
-  const [currentStep, setStep, isStepLoading] = useUrlState<QuizStep>(
-    "step",
-    "learnLanguage",
-    true
-  );
+  const setState = (partial: Partial<QuizUrlState>) => {
+    setStateInput(partial as unknown as Record<string, string>);
+  };
+
+  const state = stateInput as unknown as QuizUrlState;
+  const nativeLanguage = state.nativeLang;
+  const currentStep = state.currentStep;
+  const languageToLearn = state.toLearn;
+  const pageLanguage = state.pageLang;
 
   const { i18n } = useLingui();
   const { languageGroups } = useLanguageGroup({
@@ -76,10 +90,10 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     systemLanguagesTitle: i18n._(`System languages`),
   });
 
-  const preFindNativeLanguage = async (langToLearn: string) => {
+  const preFindNativeLanguage = async (langToLearn: string): Promise<Partial<QuizUrlState>> => {
     try {
       if (nativeLanguage !== langToLearn) {
-        return;
+        return {};
       }
 
       const systemLanguages = languageGroups.filter(
@@ -87,34 +101,55 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
       );
       const goodSystemLang = systemLanguages[0]?.code;
       if (goodSystemLang) {
-        await setNativeLanguageInput(goodSystemLang);
-        await sleep(200);
-        return;
+        return {
+          nativeLang: goodSystemLang,
+        };
       }
 
       const countryCode = await getCountryByIP();
       const country = countryCode ? languageGroups.find((lang) => lang.code === countryCode) : null;
 
       if (country) {
-        await setNativeLanguageInput(country.code);
-        await sleep(200);
-        return;
+        return {
+          nativeLang: country.code,
+        };
       }
 
-      await setNativeLanguageInput("");
-      await sleep(200);
+      return {
+        nativeLang: "",
+      };
     } catch (e) {
       console.error(e);
     }
+
+    return {};
   };
 
   const setLanguageToLearn = async (langToLearn: SupportedLanguage) => {
-    setLanguageToLearnState(langToLearn);
-    await preFindNativeLanguage(langToLearn);
+    const newPartialState: Partial<QuizUrlState> = {
+      toLearn: langToLearn,
+    };
+    const updatedNativeLanguage = await preFindNativeLanguage(langToLearn);
+    const newStatePatch: Partial<QuizUrlState> = {
+      ...newPartialState,
+      ...updatedNativeLanguage,
+    };
+
+    setState(newStatePatch);
   };
 
   const setNativeLanguage = (lang: string) => {
-    setNativeLanguageInput(lang);
+    const newStatePatch: Partial<QuizUrlState> = {
+      nativeLang: lang,
+    };
+    setState(newStatePatch);
+  };
+
+  const setPageLanguage = (lang: SupportedLanguage) => {
+    const newStatePatch: Partial<QuizUrlState> = {
+      pageLang: lang,
+    };
+    setState(newStatePatch);
   };
 
   const getPath = () => {
@@ -144,17 +179,25 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     const nextStepIndex = Math.min(currentStepIndex + 1, path.length - 1);
     const nextStep = path[nextStepIndex];
 
+    let newStatePatch: Partial<QuizUrlState> = {
+      currentStep: nextStep,
+    };
+
     if (currentStep === "learnLanguage") {
-      await preFindNativeLanguage(languageToLearn);
+      const langPatch = await preFindNativeLanguage(languageToLearn);
+      newStatePatch = {
+        ...newStatePatch,
+        ...langPatch,
+      };
     }
 
-    setStep(nextStep);
+    setState(newStatePatch);
   };
 
   const prevStep = () => {
     const prevStepIndex = Math.max(currentStepIndex - 1, 0);
     const prevStep = path[prevStepIndex];
-    setStep(prevStep);
+    setState({ currentStep: prevStep });
   };
 
   const router = useRouter();
@@ -175,7 +218,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     navigateToMainPage,
 
     currentStep,
-    isStepLoading,
+    isStepLoading: isStateLoading,
     isFirstStep: currentStepIndex === 0,
     isLastStep: currentStepIndex === path.length - 1,
     nextStep,
