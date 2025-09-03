@@ -1,13 +1,14 @@
 "use client";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
-import { useUrlMapState } from "@/features/Url/useUrlParam";
+import { SetUrlStateOptions, useUrlMapState } from "@/features/Url/useUrlParam";
 
 import { useRouter } from "next/navigation";
 import { createContext, useContext, ReactNode, JSX, useMemo } from "react";
 import { useLanguageGroup } from "../useLanguageGroup";
 import { useLingui } from "@lingui/react";
 import { getCountryByIP } from "@/features/User/getCountry";
+import { replaceUrlToLang } from "@/features/Lang/replaceLangInUrl";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -78,8 +79,10 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     false
   );
 
-  const setState = (partial: Partial<QuizUrlState>) => {
-    setStateInput(partial as unknown as Record<string, string>);
+  const router = useRouter();
+
+  const setState = async (partial: Partial<QuizUrlState>, options?: SetUrlStateOptions) => {
+    return await setStateInput(partial as unknown as Record<string, string>, options);
   };
 
   const state = stateInput as unknown as QuizUrlState;
@@ -149,11 +152,16 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     setState(newStatePatch);
   };
 
-  const setPageLanguage = (lang: SupportedLanguage) => {
+  const setPageLanguage = async (lang: SupportedLanguage) => {
     const newStatePatch: Partial<QuizUrlState> = {
       pageLang: lang,
     };
-    setState(newStatePatch);
+    const updatedUrl = await setState(newStatePatch, { redirect: false });
+
+    if (updatedUrl) {
+      const urlToRedirect = replaceUrlToLang(lang, updatedUrl);
+      router.push(urlToRedirect, { scroll: false });
+    }
   };
 
   const getPath = () => {
@@ -195,6 +203,15 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
       };
     }
 
+    if (currentStep === "nativeLanguage") {
+      const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
+        nativeLanguage
+      );
+      if (isNativeLanguageIsSupportedLanguage && pageLang !== nativeLanguage) {
+        // todo: redirect?
+      }
+    }
+
     setState(newStatePatch);
   };
 
@@ -204,7 +221,6 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     setState({ currentStep: prevStep });
   };
 
-  const router = useRouter();
   const navigateToMainPage = () => {
     const newPath = `${getUrlStart(pageLanguage)}`;
     router.push(newPath);

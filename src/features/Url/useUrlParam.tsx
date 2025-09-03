@@ -87,6 +87,10 @@ export const useUrlState = <T,>(paramName: string, defaultValue: T, scrollToTop:
   return [internalValue, setValue, isLoading] as const;
 };
 
+export interface SetUrlStateOptions {
+  redirect?: boolean;
+}
+
 export const useUrlMapState = (defaultValue: Record<string, string>, scrollToTop: boolean) => {
   const [internalValue, setInternalValue] = useState<Record<string, string>>(defaultValue);
   const [isLoading, setIsLoading] = useState(false);
@@ -103,20 +107,24 @@ export const useUrlMapState = (defaultValue: Record<string, string>, scrollToTop
     }
   }, [urlPage]);
 
-  const setValue = async (patchValue: Record<string, string>) => {
+  const setValue = async (patchValue: Record<string, string>, options?: SetUrlStateOptions) => {
     const value = { ...internalValue, ...patchValue };
-    if (isEqualMaps(value, internalValue)) return;
+    if (isEqualMaps(value, internalValue)) return Promise.resolve(null);
     setInternalValue(value);
     setIsLoading(true);
 
-    return new Promise<void>((resolve) => {
+    return new Promise<string>((resolve) => {
       setTimeout(() => {
         const newUrl = convertMapToNewUrl(value, defaultValue);
-        router.push(`${newUrl}`, { scroll: false });
+
+        if (options?.redirect !== false) {
+          router.push(`${newUrl}`, { scroll: false });
+        }
+
         scrollToTop && scrollTopFast();
         setTimeout(() => {
           setIsLoading(false);
-          resolve();
+          resolve(newUrl);
         }, 10);
       }, 20);
     });
