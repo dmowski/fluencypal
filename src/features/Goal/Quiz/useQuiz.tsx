@@ -4,11 +4,12 @@ import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { SetUrlStateOptions, useUrlMapState } from "@/features/Url/useUrlParam";
 
 import { useRouter } from "next/navigation";
-import { createContext, useContext, ReactNode, JSX, useMemo } from "react";
+import { createContext, useContext, ReactNode, JSX, useMemo, useState } from "react";
 import { useLanguageGroup } from "../useLanguageGroup";
 import { useLingui } from "@lingui/react";
 import { getCountryByIP } from "@/features/User/getCountry";
 import { replaceUrlToLang } from "@/features/Lang/replaceLangInUrl";
+import { isTMA } from "@telegram-apps/sdk-react";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -49,6 +50,8 @@ interface QuizContextType {
   progress: number;
   isFirstStep: boolean;
   isLastStep: boolean;
+
+  isCanGoToMainPage: boolean;
 }
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const QuizContext = createContext<QuizContextType | null>(null);
@@ -80,6 +83,9 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     defaultState as unknown as Record<string, string>,
     false
   );
+
+  const isTelegramApp = useMemo(() => isTMA(), []);
+  const isCanGoToMainPage = !isTelegramApp;
 
   const router = useRouter();
 
@@ -241,6 +247,8 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     setPageLanguage,
     setNativeLanguage,
     navigateToMainPage,
+
+    isCanGoToMainPage,
 
     currentStep,
     isStepLoading: isStateLoading,
