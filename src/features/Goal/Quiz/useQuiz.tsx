@@ -206,7 +206,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     router.push(newPath);
   };
 
-  const progress = currentStepIndex / (path.length - 1) + 0.1;
+  const progress = currentStepIndex / path.length + 0.1;
 
   return {
     languageToLearn,
