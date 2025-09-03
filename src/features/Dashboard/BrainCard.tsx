@@ -33,7 +33,7 @@ const GradientLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 20,
   borderRadius: 10,
   [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: "transparent",
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 10,
