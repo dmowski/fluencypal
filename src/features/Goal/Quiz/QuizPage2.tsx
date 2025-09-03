@@ -88,10 +88,11 @@ const InfoStep = ({
   subMessage: string;
   imageUrl: string;
 }) => {
+  const sizes = useWindowSizes();
   return (
     <Stack
       sx={{
-        gap: "20px",
+        gap: "0px",
       }}
     >
       <Stack
@@ -100,7 +101,9 @@ const InfoStep = ({
           alignItems: "center",
           justifyContent: "center",
           gap: "10px",
-          padding: "150px 10px 0 10px",
+          padding: "0 10px",
+          minHeight: `calc(100dvh - ${sizes.topOffset} - ${sizes.bottomOffset} - 190px)`,
+          //backgroundColor: "rgba(240, 0, 0, 0.1)",
         }}
       >
         <img
