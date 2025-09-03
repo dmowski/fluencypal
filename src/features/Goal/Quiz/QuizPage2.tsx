@@ -120,17 +120,18 @@ const NativeLanguageSelector = () => {
             flexDirection: "column",
             gap: "0px",
             width: "100%",
+            paddingBottom: "40px",
           }}
         >
-          <Typography variant="caption" sx={{ opacity: 0.6 }}>
-            {i18n._(`Select Your Language`)}
+          <Typography align="left" variant="caption" sx={{ opacity: 0.6, width: "100%" }}>
+            {i18n._(`My Language`)}
           </Typography>
           <Stack
             sx={{
               alignItems: "center",
-              justifyContent: "center",
               flexDirection: "row",
               gap: "10px",
+              width: "100%",
             }}
           >
             <Typography
@@ -170,8 +171,8 @@ const NativeLanguageSelector = () => {
         value={internalFilterValue}
         onChange={(e) => setInternalFilterValue(e.target.value)}
         fullWidth
-        variant="filled"
-        label={i18n._("Your Language")}
+        //variant="filled"
+        label={i18n._("Search")}
         placeholder={i18n._("")}
         autoComplete="off"
         slotProps={{
@@ -195,7 +196,7 @@ const NativeLanguageSelector = () => {
       <Stack
         sx={{
           width: "100%",
-          paddingTop: "35px",
+          paddingTop: "5px",
           gap: cleanInput ? "8px" : "34px",
         }}
       >
@@ -218,7 +219,7 @@ const NativeLanguageSelector = () => {
                   opacity: 0.7,
                 }}
               >
-                {i18n._(`Suggested to you:`)}
+                {/**i18n._(`Suggested to you:`)} */}
               </Typography>
             )}
 
@@ -256,7 +257,7 @@ const NativeLanguageSelector = () => {
                   opacity: 0.7,
                 }}
               >
-                {i18n._(`Other:`)}
+                {/**i18n._(`Other:`)} */}
               </Typography>
             )}
 
@@ -313,7 +314,7 @@ const LanguageToLearnSelector = () => {
             lineHeight: "1.1",
           }}
         >
-          {i18n._(`Let's Choose Language to Learn`)}
+          {i18n._(`I want to learn...`)}
         </Typography>
       </Stack>
 
