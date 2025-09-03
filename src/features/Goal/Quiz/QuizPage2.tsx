@@ -64,6 +64,16 @@ const QuizQuestions = () => {
         )}
 
         {currentStep === "pageLanguage" && <PageLanguageSelector />}
+
+        {currentStep === "before_recordAbout" && (
+          <InfoStep
+            subMessage={i18n._(`Tell me about yourself`)}
+            message={i18n._(
+              `Who you are, what you do, and your interests. Why you are learning this language?`
+            )}
+            imageUrl="/avatar/bot1.webp"
+          />
+        )}
       </Stack>
     </Stack>
   );

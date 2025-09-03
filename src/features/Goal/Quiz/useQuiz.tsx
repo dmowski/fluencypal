@@ -16,6 +16,7 @@ type QuizStep =
   | "nativeLanguage"
   | "before_pageLanguage"
   | "pageLanguage"
+  | "before_recordAbout"
   | "recordAbout"
   | "reviewAbout";
 const stepsViews: QuizStep[] = [
@@ -26,6 +27,7 @@ const stepsViews: QuizStep[] = [
   "before_pageLanguage",
   "pageLanguage",
 
+  "before_recordAbout",
   "recordAbout",
   "reviewAbout",
 ];
@@ -202,17 +204,20 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
         ...langPatch,
       };
     }
+    let url = await setState(newStatePatch, {
+      redirect: false,
+    });
 
-    if (currentStep === "nativeLanguage") {
+    if (url && currentStep === "nativeLanguage") {
       const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
         nativeLanguage
       );
       if (isNativeLanguageIsSupportedLanguage && pageLang !== nativeLanguage) {
-        // todo: redirect?
+        url = replaceUrlToLang(nativeLanguage, url);
       }
     }
 
-    setState(newStatePatch);
+    router.push(url || "", { scroll: false });
   };
 
   const prevStep = () => {
