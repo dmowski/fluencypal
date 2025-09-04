@@ -16,10 +16,15 @@ import { useLingui } from "@lingui/react";
 import {
   ArrowLeft,
   ArrowRight,
+  Check,
   FlagIcon,
   Globe,
   GraduationCap,
-  MoveRight,
+  Guitar,
+  LucideProps,
+  Mic,
+  Music,
+  Plane,
   Search,
   X,
 } from "lucide-react";
@@ -27,7 +32,18 @@ import { LangSelectorFullScreen, LanguageButton } from "@/features/Lang/LangSele
 import { GradingProgressBar } from "@/features/Dashboard/BrainCard";
 import { QuizProvider, useQuiz } from "./useQuiz";
 import { useLanguageGroup } from "../useLanguageGroup";
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  ForwardRefExoticComponent,
+  ReactNode,
+  RefAttributes,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { Trans } from "@lingui/react/macro";
+import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
+import { useAuth } from "@/features/Auth/useAuth";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -79,15 +95,167 @@ const QuizQuestions = () => {
 
           {currentStep === "before_recordAbout" && (
             <InfoStep
-              subMessage={i18n._(`Tell me about yourself`)}
-              message={i18n._(
-                `Who you are, what you do, and your interests. Why you are learning this language?`
-              )}
-              imageUrl="/avatar/bot1.webp"
+              message={i18n._(`We are ready`)}
+              subMessage={i18n._(`Let's talk. Tell me  about yourself`)}
+              imageUrl="/avatar/owl1.png"
             />
           )}
+
+          {currentStep === "recordAbout" && <RecordUserAudio />}
         </Stack>
       )}
+    </Stack>
+  );
+};
+
+interface ListItem {
+  title: string;
+  icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+}
+
+const IconTextList = ({ listItems }: { listItems: ListItem[] }) => {
+  return (
+    <Stack
+      sx={{
+        gap: "18px",
+        paddingTop: "10px",
+        paddingBottom: "40px",
+        width: "100%",
+      }}
+    >
+      {listItems.map((item, index) => (
+        <Stack
+          key={index}
+          sx={{
+            flexDirection: "row",
+            gap: "15px",
+            alignItems: "center",
+          }}
+        >
+          <item.icon
+            style={{
+              opacity: 0.7,
+            }}
+            size={18}
+          />
+          <Typography variant="body2">{item.title}</Typography>
+        </Stack>
+      ))}
+    </Stack>
+  );
+};
+
+export const AboutYourselfList: React.FC = () => {
+  const { i18n } = useLingui();
+
+  const listItems: ListItem[] = [
+    {
+      title: i18n._("Hobbies or interests"),
+      icon: Guitar,
+    },
+    {
+      title: i18n._("Main goal in learning"),
+      icon: GraduationCap,
+    },
+    {
+      title: i18n._("Do you have any travel plans?"),
+      icon: Plane,
+    },
+    {
+      title: i18n._("Movies, books, or music"),
+      icon: Music,
+    },
+  ];
+
+  return <IconTextList listItems={listItems} />;
+};
+
+const RecordUserAudio = () => {
+  const sizes = useWindowSizes();
+  const { i18n } = useLingui();
+  const { languageToLearn } = useQuiz();
+  const learningLanguageName = fullLanguageName[languageToLearn];
+  const auth = useAuth();
+
+  const recorder = useAudioRecorder({
+    languageCode: languageToLearn || "en",
+    getAuthToken: auth.getToken,
+    isFree: true,
+    isGame: false,
+    visualizerComponentWidth: "100%",
+  });
+
+  return (
+    <Stack
+      sx={{
+        gap: "0px",
+      }}
+    >
+      <Stack
+        sx={{
+          gap: "10px",
+          padding: "0 10px",
+        }}
+      >
+        <Stack
+          sx={{
+            gap: "15px",
+          }}
+        >
+          <Stack>
+            <Typography variant="h6">{i18n._("Tell me about yourself")}</Typography>
+            <Typography
+              variant="caption"
+              sx={{
+                opacity: 0.8,
+              }}
+            >
+              <Trans>
+                Record 2-3 minutes story using <b>{learningLanguageName}</b>
+              </Trans>
+            </Typography>
+          </Stack>
+          <Stack>
+            <AboutYourselfList />
+          </Stack>
+
+          <Stack
+            sx={{
+              width: "100%",
+            }}
+          >
+            <Typography variant="h6">{i18n._("Your story")}</Typography>
+
+            <Typography
+              variant={recorder.transcription ? "body2" : "caption"}
+              sx={{
+                opacity: recorder.transcription ? 1 : 0.8,
+              }}
+              className={recorder.isTranscribing ? `loading-shimmer` : ""}
+            >
+              {recorder.isTranscribing && i18n._("Processing...")}
+              {recorder.transcription && recorder.transcription}
+              {!recorder.transcription &&
+                !recorder.isTranscribing &&
+                i18n._("I am waiting for your speech...")}
+            </Typography>
+          </Stack>
+        </Stack>
+      </Stack>
+
+      <FooterButton
+        aboveButtonComponent={recorder.visualizerComponent}
+        onClick={() => {
+          if (recorder.isRecording) {
+            recorder.stopRecording();
+          } else {
+            recorder.startRecording();
+          }
+        }}
+        title={recorder.isRecording ? i18n._("Done") : i18n._("Record")}
+        color={recorder.isRecording ? "error" : "primary"}
+        endIcon={recorder.isRecording ? <Check /> : <Mic />}
+      />
     </Stack>
   );
 };
@@ -122,8 +290,8 @@ const InfoStep = ({
         <img
           src={imageUrl}
           style={{
-            width: "140px",
-            height: "140px",
+            width: "190px",
+            height: "190px",
           }}
         />
         <Stack
@@ -511,10 +679,24 @@ const ProgressBar = () => {
   );
 };
 
-const NextStepButton = ({ disabled }: { disabled?: boolean }) => {
-  const { i18n } = useLingui();
+const FooterButton = ({
+  disabled,
+  title,
+  onClick,
+  startIcon,
+  endIcon,
+  color,
+  aboveButtonComponent,
+}: {
+  disabled?: boolean;
+  title: string;
+  onClick: () => void;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
+  color?: "primary" | "success" | "error";
+  aboveButtonComponent?: ReactNode;
+}) => {
   const { bottomOffset } = useWindowSizes();
-  const { isStepLoading, nextStep } = useQuiz();
   return (
     <>
       <Stack
@@ -527,7 +709,7 @@ const NextStepButton = ({ disabled }: { disabled?: boolean }) => {
 
       <Stack
         sx={{
-          flexDirection: "row",
+          flexDirection: "column",
           gap: "10px",
           alignItems: "center",
           justifyContent: "center",
@@ -537,23 +719,37 @@ const NextStepButton = ({ disabled }: { disabled?: boolean }) => {
 
           padding: "30px 0 0 0",
           bottom: 0,
-          paddingBottom: `calc(${bottomOffset} + 15px)`,
-
           right: "0px",
+
+          paddingBottom: `calc(${bottomOffset} + 35px)`,
+          "@media (max-width: 600px)": {
+            paddingBottom: `calc(${bottomOffset} + 15px)`,
+          },
         }}
       >
+        {aboveButtonComponent && (
+          <Stack
+            sx={{
+              width: "min(590px, calc(100dvw - 0px))",
+            }}
+          >
+            {aboveButtonComponent}
+          </Stack>
+        )}
         <Button
-          onClick={isStepLoading ? undefined : nextStep}
+          onClick={onClick}
           variant="contained"
+          color={color || "primary"}
           disabled={disabled}
           size="large"
           sx={{
             width: "min(600px, calc(100dvw - 20px))",
           }}
           fullWidth
-          endIcon={<ArrowRight />}
+          startIcon={startIcon}
+          endIcon={endIcon}
         >
-          {i18n._("Next")}
+          {title}
         </Button>
         <Stack
           sx={{
@@ -569,6 +765,21 @@ const NextStepButton = ({ disabled }: { disabled?: boolean }) => {
         ></Stack>
       </Stack>
     </>
+  );
+};
+
+const NextStepButton = ({ disabled }: { disabled?: boolean }) => {
+  const { i18n } = useLingui();
+  const { isStepLoading, nextStep } = useQuiz();
+
+  return (
+    <FooterButton
+      onClick={() => {
+        !isStepLoading && nextStep();
+      }}
+      title={i18n._("Next")}
+      endIcon={<ArrowRight />}
+    />
   );
 };
 
