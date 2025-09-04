@@ -13,17 +13,22 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:70
+#: src/features/Goal/Quiz/QuizPage2.tsx:63
 #. js-lingui-explicit-id
-msgid "Tell me about yourself"
-msgstr "Розкажи мені про себе"
+msgid "Choose your native language"
+msgstr "Виберіть вашу рідну мову"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:71
+#: src/features/Goal/Quiz/QuizPage2.tsx:237
 #. js-lingui-explicit-id
-msgid ""
-"Who you are, what you do, and your interests. Why you are learning this "
-"language?"
-msgstr "Хто ви, що ви робите та ваші інтереси. Чому ви вивчаєте цю мову?"
+msgid "Native language"
+msgstr "Рідна мова"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:276
+#. js-lingui-explicit-id
+msgid "No results found"
+msgstr ""
+"plaintext\n"
+"Результатів не знайдено\n"
 
 #: src/features/Header/HeaderStatic.tsx:12
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -384,80 +389,113 @@ msgstr "Партнер для розмови англійською"
 msgid "AI English Speaking Practice"
 msgstr "Практика розмовної англійської з ІІ"
 
-#: src/features/Usage/PaymentModal.tsx:119
+#: src/features/Conversation/ConversationCanvas2.tsx:1095
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
+#: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "Купіть більше годин"
+msgid "Done"
+msgstr "Виконано"
 
-#: src/features/Usage/PaymentModal.tsx:127
+#: src/features/Usage/SubscriptionWaiter.tsx:56
 #. js-lingui-explicit-id
-msgid "Let's add some hours to your balance"
-msgstr "Додаймо декілька годин до вашого балансу"
+msgid "Your subscription has been successfully changed."
+msgstr "Вашу підписку успішно змінено."
 
-#: src/features/Usage/PaymentModal.tsx:149
+#: src/features/Conversation/ConfirmConversationModal.tsx:58
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:229
+#: src/features/Usage/SubscriptionWaiter.tsx:60
+#: src/features/Usage/SubscriptionWaiter.tsx:81
 #. js-lingui-explicit-id
-msgid "Amount hours to buy"
-msgstr "Кількість годин для покупки"
+msgid "Close"
+msgstr "Закрити"
 
-#: src/features/Usage/PaymentModal.tsx:194
+#: src/features/Usage/SubscriptionWaiter.tsx:68
 #. js-lingui-explicit-id
-msgid "What one hour means?"
-msgstr "Що означає одна година?"
+msgid "Waiting for payment..."
+msgstr "Очікування платежу..."
 
-#: src/features/Usage/PaymentModal.tsx:196
+#: src/features/Usage/SubscriptionWaiter.tsx:77
 #. js-lingui-explicit-id
-msgid ""
-"You only charged for when AI is actively working: speaking or analyzing "
-"your speech."
-msgstr ""
-"Вам буде нараховано оплату лише за той час, коли AI активно працює: "
-"говорить або аналізує вашу мову."
+msgid "Please wait while we process your payment."
+msgstr "Зачекайте, поки ми обробляємо ваш платіж."
 
-#: src/features/Usage/PaymentModal.tsx:207
+#: src/features/Usage/SubscriptionPaymentModal.tsx:73
+#: src/features/Usage/SubscriptionPaymentModal.tsx:92
+#: src/features/Usage/SubscriptionPaymentModal.tsx:222
+#: src/features/Usage/SubscriptionPaymentModal.tsx:291
 #. js-lingui-explicit-id
-msgid "How long will my hours last?"
-msgstr "Як довго триватимуть мої години?"
+msgid "Error creating payment session"
+msgstr "Помилка при створенні сесії оплати"
 
-#: src/features/Usage/PaymentModal.tsx:209
+#: src/features/Usage/SubscriptionPaymentModal.tsx:119
 #. js-lingui-explicit-id
-msgid ""
-"Once purchased, your hours remain available until you use them. There is no "
-"expiration."
-msgstr ""
-"Після покупки, ваші години залишаються доступними до тих пір, поки ви їх "
-"використовуєте. Вони не мають терміну дії."
+msgid "Error processing payment"
+msgstr "Помилка обробки платежу"
 
-#: src/features/Usage/PaymentModal.tsx:220
+#: src/features/Conversation/ConversationCanvas2.tsx:326
+#: src/features/Conversation/ConversationCanvas2.tsx:1360
+#: src/features/Conversation/ConversationPage.tsx:121
+#: src/features/Conversation/ConversationPage.tsx:130
+#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Game/GamePage.tsx:22
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:251
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:157
+#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/RolePlay/RolePlayModal.tsx:267
+#: src/features/Telegram/TgAppPage.tsx:159
+#: src/features/Translation/useTranslate.tsx:130
+#: src/features/Usage/PaymentModal.tsx:494
+#: src/features/Usage/SubscriptionPaymentModal.tsx:147
 #. js-lingui-explicit-id
-msgid "What's included?"
-msgstr "Що включено?"
+msgid "Loading..."
+msgstr "Завантаження..."
 
-#: src/features/Usage/PaymentModal.tsx:222
+#: src/features/Usage/SubscriptionPaymentModal.tsx:147
 #. js-lingui-explicit-id
-msgid ""
-"Access to all functionalities on app where AI is present: speaking, "
-"analyzing, role-plays, new words and runles creator."
-msgstr ""
-"Доступ до всіх функцій в додатку, де присутній AI: говоріння, аналіз, "
-"рольові ігри, створювач нових слів та правил."
+msgid "Pay with crypto"
+msgstr "Сплатити криптовалютою"
 
-#: src/features/Usage/PaymentModal.tsx:245
+#: src/features/Usage/SubscriptionPaymentModal.tsx:229
 #. js-lingui-explicit-id
-msgid "Price per one AI hour:"
-msgstr "Ціна за одну AI годину:"
+msgid "Error creating payment session. Try again later."
+msgstr "Помилка створення платіжної сесії. Спробуйте ще раз пізніше."
 
-#: src/features/Usage/PaymentModal.tsx:250
-#: src/features/Usage/SubscriptionPaymentModal.tsx:571
+#: src/features/Usage/SubscriptionPaymentModal.tsx:245
 #. js-lingui-explicit-id
-msgid "Total:"
-msgstr "Всього:"
+msgid "Payment failed! Please try again."
+msgstr "Оплата не пройшла! Спробуйте ще раз."
 
-#: src/features/Usage/PaymentModal.tsx:261
+#: src/features/Usage/SubscriptionPaymentModal.tsx:258
+#: src/features/Usage/SubscriptionPaymentModal.tsx:302
 #. js-lingui-explicit-id
-msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
-msgstr ""
-"Сума занадто велика. Я ціную вашу підтримку, але давайте триматися межі в "
-"$400"
+msgid "Error during payment process"
+msgstr "Помилка під час процесу оплати"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:388
+#. js-lingui-explicit-id
+msgid "Payment option"
+msgstr "Варіант оплати"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:397
+#: src/features/Usage/SubscriptionPaymentModal.tsx:488
+#. js-lingui-explicit-id
+msgid "Subscription for 1 month | Full access"
+msgstr "Підписка на 1 місяць | Повний доступ"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:430
+#. js-lingui-explicit-id
+msgid "Pay with Stars"
+msgstr "Оплатити Зірками"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:479
+#. js-lingui-explicit-id
+msgid "Confirm payment"
+msgstr "Підтвердіть оплату"
 
 #: src/features/Usage/PaymentModal.tsx:280
 #: src/features/Usage/SubscriptionPaymentModal.tsx:516
@@ -503,63 +541,94 @@ msgstr ""
 msgid "I want to receive commercial and marketing content"
 msgstr "Я хочу отримувати комерційний та маркетинговий контент"
 
-#: src/features/Usage/PaymentModal.tsx:342
+#: src/features/Usage/PaymentModal.tsx:250
+#: src/features/Usage/SubscriptionPaymentModal.tsx:571
 #. js-lingui-explicit-id
-msgid "Continue to payment"
-msgstr "Продовжити до оплати"
+msgid "Total:"
+msgstr "Всього:"
 
-#: src/features/Header/NeedHelpModal.tsx:215
-#: src/features/Usage/PaymentModal.tsx:350
+#: src/features/Dashboard/HomeworkCard.tsx:115
+#: src/features/Dashboard/SelectLanguage.tsx:296
+#: src/features/Game/PositionChangedModal.tsx:133
+#: src/features/Goal/GoalQuestions.tsx:823
+#: src/features/Goal/GoalQuestions.tsx:862
+#: src/features/Plan/PlanCard.tsx:261
+#: src/features/Usage/SubscriptionPaymentModal.tsx:591
 #. js-lingui-explicit-id
-msgid "Cancel"
-msgstr "Скасувати"
+msgid "Continue"
+msgstr "Продовжити"
 
-#: src/features/Usage/PaymentModal.tsx:359
+#: src/features/Usage/SubscriptionPaymentModal.tsx:591
 #. js-lingui-explicit-id
-msgid ""
-"The Controller of the data entered into the form is Fundacja Rozwoju\n"
-"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
-"processed in order to provide\n"
-"                  the service and for marketing purposes – in the case of "
-"consent. We would like to\n"
-"                  inform you about the possibility of withdrawing your "
-"consent. For full information\n"
-"                  on data processing and your rights, see the"
-msgstr ""
-"Контролером даних, що вводяться у форму, є Фундація розвитку\n"
-"                  підприємництва \"Твій Стартап\". Дані будуть "
-"обробляватися з метою надання\n"
-"                  послуги та для маркетингових цілей - у разі згоди. Ми "
-"хотіли б зазначити про\n"
-"                  можливість відкликати вашу згоду. Для отримання повної "
-"інформації про обробку даних\n"
-"                  та ваших правах, дивіться"
+msgid "Pay"
+msgstr "Платити"
 
-#: src/features/Usage/PaymentModal.tsx:365
+#: src/features/Header/HeaderPractice.tsx:358
+#: src/features/Settings/MyProfile.tsx:76
+#: src/features/Usage/SubscriptionPaymentModal.tsx:613
 #. js-lingui-explicit-id
-msgid "privacy policy"
-msgstr "політика конфіденційності"
+msgid "Subscription"
+msgstr "Підписка"
 
-#: src/features/Usage/PaymentModal.tsx:401
+#: src/features/Usage/SubscriptionPaymentModal.tsx:622
 #. js-lingui-explicit-id
-msgid "Success!"
-msgstr "Успіх!"
+msgid "You don't have an active subscription."
+msgstr "У вас немає активної підписки."
 
-#: src/features/Usage/PaymentModal.tsx:411
+#: src/features/Usage/SubscriptionPaymentModal.tsx:625
 #. js-lingui-explicit-id
-msgid "Your payment was successful, but updates might take a few minutes"
-msgstr "Ваш платіж був успішним, але оновлення можуть зайняти кілька хвилин"
+msgid "Your trial ended until"
+msgstr "Ваш пробний період закінчився до"
 
-#: src/features/Header/HeaderStatic.tsx:15
-#: src/features/Usage/PaymentModal.tsx:417
+#: src/features/Usage/SubscriptionPaymentModal.tsx:631
 #. js-lingui-explicit-id
-msgid "Balance"
-msgstr "Баланс"
+msgid "Your subscription is active until"
+msgstr "Ваша підписка активна до"
 
-#: src/features/Usage/PaymentModal.tsx:442
+#: src/features/Usage/SubscriptionPaymentModal.tsx:637
 #. js-lingui-explicit-id
-msgid "Current Balance of AI usage"
-msgstr "Поточний Баланс використання AI"
+msgid "You have"
+msgstr "У вас є"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:638
+#. js-lingui-explicit-id
+msgid "AI hours left in your balance."
+msgstr "У вашому балансі залишилося AI годин."
+
+#: src/features/Landing/Price/PricePage.tsx:203
+#: src/features/Usage/SubscriptionPaymentModal.tsx:666
+#. js-lingui-explicit-id
+msgid "Full Access"
+msgstr "Повний доступ"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:681
+#: src/features/Usage/SubscriptionPaymentModal.tsx:777
+#. js-lingui-explicit-id
+msgid "Active"
+msgstr "Активний"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:718
+#. js-lingui-explicit-id
+msgid "Stars"
+msgstr "Зірки"
+
+#: src/features/Landing/Price/PricePage.tsx:233
+#: src/features/Usage/SubscriptionPaymentModal.tsx:720
+#: src/features/Usage/SubscriptionPaymentModal.tsx:756
+#. js-lingui-explicit-id
+msgid "month"
+msgstr "місяць"
+
+#: src/features/Landing/Price/PricePage.tsx:237
+#: src/features/Usage/SubscriptionPaymentModal.tsx:763
+#. js-lingui-explicit-id
+msgid "Learn at full speed with full access"
+msgstr "Вчіться на повну швидкість з повним доступом"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:777
+#. js-lingui-explicit-id
+msgid "Get Full Access"
+msgstr "Отримайте Повний Доступ"
 
 #: src/features/Usage/PaymentModal.tsx:453
 #: src/features/Usage/SubscriptionPaymentModal.tsx:783
@@ -567,74 +636,12 @@ msgstr "Поточний Баланс використання AI"
 msgid "Buy More"
 msgstr "Купити Більше"
 
-#: src/features/Usage/PaymentModal.tsx:470
+#: src/features/Header/NeedHelpModal.tsx:84
+#: src/features/Settings/MyProfile.tsx:93
+#: src/features/Usage/SubscriptionPaymentModal.tsx:798
 #. js-lingui-explicit-id
-msgid "Total used:"
-msgstr "Всього використано:"
-
-#: src/features/Usage/PaymentModal.tsx:484
-#. js-lingui-explicit-id
-msgid "Payment history:"
-msgstr "Історія платежів:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:326
-#: src/features/Conversation/ConversationCanvas2.tsx:1360
-#: src/features/Conversation/ConversationPage.tsx:121
-#: src/features/Conversation/ConversationPage.tsx:130
-#: src/features/Conversation/ConversationPage.tsx:150
-#: src/features/Game/GamePage.tsx:22
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:251
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:157
-#: src/features/Header/PaymentHistoryModal.tsx:65
-#: src/features/RolePlay/RolePlayModal.tsx:267
-#: src/features/Telegram/TgAppPage.tsx:159
-#: src/features/Translation/useTranslate.tsx:130
-#: src/features/Usage/PaymentModal.tsx:494
-#: src/features/Usage/SubscriptionPaymentModal.tsx:147
-#. js-lingui-explicit-id
-msgid "Loading..."
-msgstr "Завантаження..."
-
-#: src/features/Header/PaymentHistoryModal.tsx:76
-#: src/features/Usage/PaymentModal.tsx:505
-#. js-lingui-explicit-id
-msgid "No payments..."
-msgstr "Без платежів..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1095
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
-#: src/features/Usage/SubscriptionWaiter.tsx:47
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "Виконано"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:56
-#. js-lingui-explicit-id
-msgid "Your subscription has been successfully changed."
-msgstr "Вашу підписку успішно змінено."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:58
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:229
-#: src/features/Usage/SubscriptionWaiter.tsx:60
-#: src/features/Usage/SubscriptionWaiter.tsx:81
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "Закрити"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:68
-#. js-lingui-explicit-id
-msgid "Waiting for payment..."
-msgstr "Очікування платежу..."
-
-#: src/features/Usage/SubscriptionWaiter.tsx:77
-#. js-lingui-explicit-id
-msgid "Please wait while we process your payment."
-msgstr "Зачекайте, поки ми обробляємо ваш платіж."
+msgid "Need help?"
+msgstr "Потрібна допомога?"
 
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -733,150 +740,158 @@ msgstr "Всього"
 msgid "Open history"
 msgstr "Відкрити історію"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:73
-#: src/features/Usage/SubscriptionPaymentModal.tsx:92
-#: src/features/Usage/SubscriptionPaymentModal.tsx:222
-#: src/features/Usage/SubscriptionPaymentModal.tsx:291
+#: src/features/Translation/useTranslate.tsx:130
 #. js-lingui-explicit-id
-msgid "Error creating payment session"
-msgstr "Помилка при створенні сесії оплати"
+msgid "No text to translate"
+msgstr "Немає тексту для перекладу"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:119
+#: src/features/Translation/useTranslate.tsx:143
 #. js-lingui-explicit-id
-msgid "Error processing payment"
-msgstr "Помилка обробки платежу"
+msgid "No translation available"
+msgstr "Переклад недоступний"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:147
+#: src/features/Usage/PaymentModal.tsx:119
 #. js-lingui-explicit-id
-msgid "Pay with crypto"
-msgstr "Сплатити криптовалютою"
+msgid "Buy more hours"
+msgstr "Купіть більше годин"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:229
+#: src/features/Usage/PaymentModal.tsx:127
 #. js-lingui-explicit-id
-msgid "Error creating payment session. Try again later."
-msgstr "Помилка створення платіжної сесії. Спробуйте ще раз пізніше."
+msgid "Let's add some hours to your balance"
+msgstr "Додаймо декілька годин до вашого балансу"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:245
+#: src/features/Usage/PaymentModal.tsx:149
 #. js-lingui-explicit-id
-msgid "Payment failed! Please try again."
-msgstr "Оплата не пройшла! Спробуйте ще раз."
+msgid "Amount hours to buy"
+msgstr "Кількість годин для покупки"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:258
-#: src/features/Usage/SubscriptionPaymentModal.tsx:302
+#: src/features/Usage/PaymentModal.tsx:194
 #. js-lingui-explicit-id
-msgid "Error during payment process"
-msgstr "Помилка під час процесу оплати"
+msgid "What one hour means?"
+msgstr "Що означає одна година?"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:388
+#: src/features/Usage/PaymentModal.tsx:196
 #. js-lingui-explicit-id
-msgid "Payment option"
-msgstr "Варіант оплати"
+msgid ""
+"You only charged for when AI is actively working: speaking or analyzing "
+"your speech."
+msgstr ""
+"Вам буде нараховано оплату лише за той час, коли AI активно працює: "
+"говорить або аналізує вашу мову."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:397
-#: src/features/Usage/SubscriptionPaymentModal.tsx:488
+#: src/features/Usage/PaymentModal.tsx:207
 #. js-lingui-explicit-id
-msgid "Subscription for 1 month | Full access"
-msgstr "Підписка на 1 місяць | Повний доступ"
+msgid "How long will my hours last?"
+msgstr "Як довго триватимуть мої години?"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:430
+#: src/features/Usage/PaymentModal.tsx:209
 #. js-lingui-explicit-id
-msgid "Pay with Stars"
-msgstr "Оплатити Зірками"
+msgid ""
+"Once purchased, your hours remain available until you use them. There is no "
+"expiration."
+msgstr ""
+"Після покупки, ваші години залишаються доступними до тих пір, поки ви їх "
+"використовуєте. Вони не мають терміну дії."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:479
+#: src/features/Usage/PaymentModal.tsx:220
 #. js-lingui-explicit-id
-msgid "Confirm payment"
-msgstr "Підтвердіть оплату"
+msgid "What's included?"
+msgstr "Що включено?"
 
-#: src/features/Dashboard/HomeworkCard.tsx:115
-#: src/features/Dashboard/SelectLanguage.tsx:296
-#: src/features/Game/PositionChangedModal.tsx:133
-#: src/features/Goal/GoalQuestions.tsx:823
-#: src/features/Goal/GoalQuestions.tsx:862
-#: src/features/Plan/PlanCard.tsx:261
-#: src/features/Usage/SubscriptionPaymentModal.tsx:591
+#: src/features/Usage/PaymentModal.tsx:222
 #. js-lingui-explicit-id
-msgid "Continue"
-msgstr "Продовжити"
+msgid ""
+"Access to all functionalities on app where AI is present: speaking, "
+"analyzing, role-plays, new words and runles creator."
+msgstr ""
+"Доступ до всіх функцій в додатку, де присутній AI: говоріння, аналіз, "
+"рольові ігри, створювач нових слів та правил."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:591
+#: src/features/Usage/PaymentModal.tsx:245
 #. js-lingui-explicit-id
-msgid "Pay"
-msgstr "Платити"
+msgid "Price per one AI hour:"
+msgstr "Ціна за одну AI годину:"
 
-#: src/features/Header/HeaderPractice.tsx:358
-#: src/features/Settings/MyProfile.tsx:76
-#: src/features/Usage/SubscriptionPaymentModal.tsx:613
+#: src/features/Usage/PaymentModal.tsx:261
 #. js-lingui-explicit-id
-msgid "Subscription"
-msgstr "Підписка"
+msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
+msgstr ""
+"Сума занадто велика. Я ціную вашу підтримку, але давайте триматися межі в "
+"$400"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:622
+#: src/features/Usage/PaymentModal.tsx:342
 #. js-lingui-explicit-id
-msgid "You don't have an active subscription."
-msgstr "У вас немає активної підписки."
+msgid "Continue to payment"
+msgstr "Продовжити до оплати"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:625
+#: src/features/Header/NeedHelpModal.tsx:215
+#: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
-msgid "Your trial ended until"
-msgstr "Ваш пробний період закінчився до"
+msgid "Cancel"
+msgstr "Скасувати"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:631
+#: src/features/Usage/PaymentModal.tsx:359
 #. js-lingui-explicit-id
-msgid "Your subscription is active until"
-msgstr "Ваша підписка активна до"
+msgid ""
+"The Controller of the data entered into the form is Fundacja Rozwoju\n"
+"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
+"processed in order to provide\n"
+"                  the service and for marketing purposes – in the case of "
+"consent. We would like to\n"
+"                  inform you about the possibility of withdrawing your "
+"consent. For full information\n"
+"                  on data processing and your rights, see the"
+msgstr ""
+"Контролером даних, що вводяться у форму, є Фундація розвитку\n"
+"                  підприємництва \"Твій Стартап\". Дані будуть "
+"обробляватися з метою надання\n"
+"                  послуги та для маркетингових цілей - у разі згоди. Ми "
+"хотіли б зазначити про\n"
+"                  можливість відкликати вашу згоду. Для отримання повної "
+"інформації про обробку даних\n"
+"                  та ваших правах, дивіться"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:637
+#: src/features/Usage/PaymentModal.tsx:365
 #. js-lingui-explicit-id
-msgid "You have"
-msgstr "У вас є"
+msgid "privacy policy"
+msgstr "політика конфіденційності"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:638
+#: src/features/Usage/PaymentModal.tsx:401
 #. js-lingui-explicit-id
-msgid "AI hours left in your balance."
-msgstr "У вашому балансі залишилося AI годин."
+msgid "Success!"
+msgstr "Успіх!"
 
-#: src/features/Landing/Price/PricePage.tsx:203
-#: src/features/Usage/SubscriptionPaymentModal.tsx:666
+#: src/features/Usage/PaymentModal.tsx:411
 #. js-lingui-explicit-id
-msgid "Full Access"
-msgstr "Повний доступ"
+msgid "Your payment was successful, but updates might take a few minutes"
+msgstr "Ваш платіж був успішним, але оновлення можуть зайняти кілька хвилин"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:681
-#: src/features/Usage/SubscriptionPaymentModal.tsx:777
+#: src/features/Header/HeaderStatic.tsx:15
+#: src/features/Usage/PaymentModal.tsx:417
 #. js-lingui-explicit-id
-msgid "Active"
-msgstr "Активний"
+msgid "Balance"
+msgstr "Баланс"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:718
+#: src/features/Usage/PaymentModal.tsx:442
 #. js-lingui-explicit-id
-msgid "Stars"
-msgstr "Зірки"
+msgid "Current Balance of AI usage"
+msgstr "Поточний Баланс використання AI"
 
-#: src/features/Landing/Price/PricePage.tsx:233
-#: src/features/Usage/SubscriptionPaymentModal.tsx:720
-#: src/features/Usage/SubscriptionPaymentModal.tsx:756
+#: src/features/Usage/PaymentModal.tsx:470
 #. js-lingui-explicit-id
-msgid "month"
-msgstr "місяць"
+msgid "Total used:"
+msgstr "Всього використано:"
 
-#: src/features/Landing/Price/PricePage.tsx:237
-#: src/features/Usage/SubscriptionPaymentModal.tsx:763
+#: src/features/Usage/PaymentModal.tsx:484
 #. js-lingui-explicit-id
-msgid "Learn at full speed with full access"
-msgstr "Вчіться на повну швидкість з повним доступом"
+msgid "Payment history:"
+msgstr "Історія платежів:"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:777
+#: src/features/Header/PaymentHistoryModal.tsx:76
+#: src/features/Usage/PaymentModal.tsx:505
 #. js-lingui-explicit-id
-msgid "Get Full Access"
-msgstr "Отримайте Повний Доступ"
-
-#: src/features/Header/NeedHelpModal.tsx:84
-#: src/features/Settings/MyProfile.tsx:93
-#: src/features/Usage/SubscriptionPaymentModal.tsx:798
-#. js-lingui-explicit-id
-msgid "Need help?"
-msgstr "Потрібна допомога?"
+msgid "No payments..."
+msgstr "Без платежів..."
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1498
 #: src/features/Usage/NoBalanceBlock.tsx:61
@@ -933,16 +948,6 @@ msgstr "Завантаження..."
 #. js-lingui-explicit-id
 msgid "Refresh"
 msgstr "Оновити"
-
-#: src/features/Translation/useTranslate.tsx:130
-#. js-lingui-explicit-id
-msgid "No text to translate"
-msgstr "Немає тексту для перекладу"
-
-#: src/features/Translation/useTranslate.tsx:143
-#. js-lingui-explicit-id
-msgid "No translation available"
-msgstr "Переклад недоступний"
 
 #: src/features/Settings/MyProfile.tsx:69
 #. js-lingui-explicit-id
@@ -2093,16 +2098,6 @@ msgstr "Насолоджуйтесь грою та дивіться, як шту
 msgid "Robot Thinking"
 msgstr "Робот думає"
 
-#: src/features/Plan/PlanCard.tsx:111
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "Надішліть 6 повідомлень для завершення"
-
-#: src/features/Plan/PlanCard.tsx:129
-#. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "Почати урок"
-
 #: src/features/Plan/useGoalCreation.ts:41
 #: src/features/Plan/useGoalCreation.ts:69
 #: src/features/Plan/useGoalCreation.ts:91
@@ -2130,11 +2125,21 @@ msgstr "Додому"
 msgid "Profile"
 msgstr "Профіль"
 
+#: src/features/Plan/PlanCard.tsx:111
+#. js-lingui-explicit-id
+msgid "Send 6 messages to complete"
+msgstr "Надішліть 6 повідомлень для завершення"
+
+#: src/features/Plan/PlanCard.tsx:129
+#. js-lingui-explicit-id
+msgid "Start lesson"
+msgstr "Почати урок"
+
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Goal/Quiz/QuizPage2.tsx:138
-#: src/features/Goal/Quiz/useQuiz.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:154
+#: src/features/Goal/Quiz/useQuiz.tsx:112
 #: src/features/Lang/LanguageSwitcher.tsx:100
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -2143,8 +2148,8 @@ msgstr "Інші мови"
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/GoalQuestions.tsx:326
-#: src/features/Goal/Quiz/QuizPage2.tsx:139
-#: src/features/Goal/Quiz/useQuiz.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:155
+#: src/features/Goal/Quiz/useQuiz.tsx:113
 #: src/features/Lang/LanguageSwitcher.tsx:101
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -2167,7 +2172,7 @@ msgstr "Мова для вивчення"
 msgid "Native Language"
 msgstr "Рідна мова"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:420
+#: src/features/Goal/Quiz/QuizPage2.tsx:359
 #: src/features/Lang/LanguageSwitcher.tsx:307
 #. js-lingui-explicit-id
 msgid "Page Language"
@@ -2866,24 +2871,6 @@ msgstr "Розпочніть свій безкоштовний пробний п
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Розпочніть свою подорож до вільного спілкування зараз"
 
-#: src/features/Landing/Footer.tsx:85
-#. js-lingui-explicit-id
-msgid "Role-Play"
-msgstr "Рольова гра"
-
-#: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Landing/Footer.tsx:91
-#. js-lingui-explicit-id
-msgid "Blog"
-msgstr "Блог"
-
-#: src/features/Header/HeaderStatic.tsx:13
-#: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:95
-#. js-lingui-explicit-id
-msgid "Price"
-msgstr "Ціна"
-
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
 msgid "View all"
@@ -2950,6 +2937,43 @@ msgstr "ПОВ’ЯЗАНІ СЦЕНАРІЇ"
 msgid "Ready to Become Fluent in English?"
 msgstr "Готові стати вільно говорити англійською?"
 
+#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
+#. js-lingui-explicit-id
+msgid "Try"
+msgstr "Спробуйте"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "Практикуйте реальні розмови за допомогою сценаріїв рольових ігор"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
+msgstr ""
+"Замовляйте їжу, плануйте зустрічі, успішно проходьте співбесіди та більше — "
+"все з підтримкою вашого AI-репетитора."
+
+#: src/features/Landing/Footer.tsx:85
+#. js-lingui-explicit-id
+msgid "Role-Play"
+msgstr "Рольова гра"
+
+#: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Landing/Footer.tsx:91
+#. js-lingui-explicit-id
+msgid "Blog"
+msgstr "Блог"
+
+#: src/features/Header/HeaderStatic.tsx:13
+#: src/features/Landing/Footer.tsx:94
+#: src/features/Landing/Price/PricePage.tsx:95
+#. js-lingui-explicit-id
+msgid "Price"
+msgstr "Ціна"
+
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:20
 #. js-lingui-explicit-id
 msgid "Role Play Scenarios"
@@ -2965,11 +2989,6 @@ msgstr "Відкрийте для себе"
 #. js-lingui-explicit-id
 msgid "No scenarios found"
 msgstr "Не знайдено сценаріїв"
-
-#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
-#. js-lingui-explicit-id
-msgid "Try"
-msgstr "Спробуйте"
 
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
@@ -3398,61 +3417,6 @@ msgstr ""
 "Не соромтеся звертатися до мене з будь-якими питаннями або відгуками. Я "
 "завжди радий допомогти!"
 
-#: src/features/Header/HeaderStatic.tsx:11
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "Рольові Ігри"
-
-#: src/features/Header/HeaderStatic.tsx:14
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "Увійти"
-
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:16
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "Потрібна допомога?"
-
-#: src/features/Header/PaymentHistoryModal.tsx:21
-#. js-lingui-explicit-id
-msgid "Trial balance"
-msgstr "Пробний баланс"
-
-#: src/features/Header/PaymentHistoryModal.tsx:22
-#. js-lingui-explicit-id
-msgid "Payment"
-msgstr "Оплата"
-
-#: src/features/Header/PaymentHistoryModal.tsx:23
-#. js-lingui-explicit-id
-msgid "Gift"
-msgstr "Подарунок"
-
-#: src/features/Header/PaymentHistoryModal.tsx:24
-#. js-lingui-explicit-id
-msgid "Subscription (1 month)"
-msgstr "Підписка (1 місяць)"
-
-#: src/features/Header/PaymentHistoryModal.tsx:25
-#. js-lingui-explicit-id
-msgid "Trial days"
-msgstr "Дні пробного періоду"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "Практикуйте реальні розмови за допомогою сценаріїв рольових ігор"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
-msgstr ""
-"Замовляйте їжу, плануйте зустрічі, успішно проходьте співбесіди та більше — "
-"все з підтримкою вашого AI-репетитора."
-
 #: src/features/Header/NeedHelpModal.tsx:34
 #: src/features/Header/NeedHelpModal.tsx:176
 #. js-lingui-explicit-id
@@ -3528,6 +3492,22 @@ msgstr "Так, видалити аккаунт"
 msgid "Delete account"
 msgstr "Видалити аккаунт"
 
+#: src/features/Header/HeaderStatic.tsx:11
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "Рольові Ігри"
+
+#: src/features/Header/HeaderStatic.tsx:14
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "Увійти"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:16
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "Потрібна допомога?"
+
 #: src/features/Header/HeaderPractice.tsx:202
 #. js-lingui-explicit-id
 msgid "Finishing..."
@@ -3544,6 +3524,31 @@ msgstr "Назад"
 #. js-lingui-explicit-id
 msgid "Payment history"
 msgstr "Історія платежів"
+
+#: src/features/Header/PaymentHistoryModal.tsx:21
+#. js-lingui-explicit-id
+msgid "Trial balance"
+msgstr "Пробний баланс"
+
+#: src/features/Header/PaymentHistoryModal.tsx:22
+#. js-lingui-explicit-id
+msgid "Payment"
+msgstr "Оплата"
+
+#: src/features/Header/PaymentHistoryModal.tsx:23
+#. js-lingui-explicit-id
+msgid "Gift"
+msgstr "Подарунок"
+
+#: src/features/Header/PaymentHistoryModal.tsx:24
+#. js-lingui-explicit-id
+msgid "Subscription (1 month)"
+msgstr "Підписка (1 місяць)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Trial days"
+msgstr "Дні пробного періоду"
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3566,50 +3571,85 @@ msgstr "Надсилання..."
 msgid "Send"
 msgstr "Відправити"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:51
+#: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
-msgid "Tell us your native language"
-msgstr "Розкажіть нам про вашу рідну мову"
+msgid "You are on the right track!"
+msgstr "Ви на правильному шляху!"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:52
+#: src/features/Goal/GoalPreparingModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Okay"
+msgstr "Добре"
+
+#: src/features/Goal/GoalPreparingModal.tsx:49
+#. js-lingui-explicit-id
+msgid "What we need from you?"
+msgstr "Що нам потрібно від вас?"
+
+#: src/features/Goal/GoalPreparingModal.tsx:59
+#. js-lingui-explicit-id
+msgid "I agree"
+msgstr "Я згоден"
+
+#: src/features/Goal/GoalPreparingModal.tsx:65
+#. js-lingui-explicit-id
+msgid "From founder"
+msgstr "Від засновника"
+
+#: src/features/Goal/GoalPreparingModal.tsx:75
+#. js-lingui-explicit-id
+msgid "Got it"
+msgstr "Зрозуміло"
+
+#: src/features/Goal/GoalPreparingModal.tsx:81
+#. js-lingui-explicit-id
+msgid "Almost ready..."
+msgstr "Майже готово..."
+
+#: src/features/Goal/GoalPreparingModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Let's do it"
+msgstr "Давайте робити це"
+
+#: src/features/Goal/GoalPreparingModal.tsx:96
+#. js-lingui-explicit-id
+msgid "Finally"
+msgstr "Нарешті"
+
+#: src/features/Goal/GoalPreparingModal.tsx:107
+#. js-lingui-explicit-id
+msgid "Let's rock it!"
+msgstr "Давайте розірвемо це!"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:64
 #. js-lingui-explicit-id
 msgid "So I can translate words into it for you"
 msgstr "Тож я можу перекласти слова в нього для вас"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:60
+#: src/features/Goal/Quiz/QuizPage2.tsx:72
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Виберіть мову сайту"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:61
+#: src/features/Goal/Quiz/QuizPage2.tsx:73
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Це текст, який ви бачите на кнопках та в меню"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:202
+#: src/features/Goal/Quiz/QuizPage2.tsx:82
 #. js-lingui-explicit-id
-msgid "My Language"
-msgstr "Моя мова"
+msgid "Tell me about yourself"
+msgstr "Розкажи мені про себе"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:225
+#: src/features/Goal/Quiz/QuizPage2.tsx:83
 #. js-lingui-explicit-id
-msgid "Select Your Language"
-msgstr ""
-"\n"
-"Виберіть вашу мову\n"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:250
-#. js-lingui-explicit-id
-msgid "Search"
-msgstr "Пошук"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:280
-#. js-lingui-explicit-id
-msgid "No languages found"
-msgstr "Мов не знайдено"
+msgid ""
+"Who you are, what you do, and your interests. Why you are learning this "
+"language?"
+msgstr "Хто ви, що ви робите та ваші інтереси. Чому ви вивчаєте цю мову?"
 
 #: src/features/Goal/GoalQuestions.tsx:389
-#: src/features/Goal/Quiz/QuizPage2.tsx:483
+#: src/features/Goal/Quiz/QuizPage2.tsx:422
 #. js-lingui-explicit-id
 msgid "I want to learn..."
 msgstr "Я хочу вивчити..."
@@ -3625,7 +3665,7 @@ msgstr "Я хочу вивчити..."
 #: src/features/Goal/GoalQuestions.tsx:601
 #: src/features/Goal/GoalQuestions.tsx:968
 #: src/features/Goal/GoalQuestions.tsx:1030
-#: src/features/Goal/Quiz/QuizPage2.tsx:607
+#: src/features/Goal/Quiz/QuizPage2.tsx:556
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "Далі"
@@ -3967,56 +4007,6 @@ msgstr "Скопіювати посилання"
 msgid "Open the plan"
 msgstr "Відкрийте план"
 
-#: src/features/Goal/GoalPreparingModal.tsx:33
-#. js-lingui-explicit-id
-msgid "You are on the right track!"
-msgstr "Ви на правильному шляху!"
-
-#: src/features/Goal/GoalPreparingModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Okay"
-msgstr "Добре"
-
-#: src/features/Goal/GoalPreparingModal.tsx:49
-#. js-lingui-explicit-id
-msgid "What we need from you?"
-msgstr "Що нам потрібно від вас?"
-
-#: src/features/Goal/GoalPreparingModal.tsx:59
-#. js-lingui-explicit-id
-msgid "I agree"
-msgstr "Я згоден"
-
-#: src/features/Goal/GoalPreparingModal.tsx:65
-#. js-lingui-explicit-id
-msgid "From founder"
-msgstr "Від засновника"
-
-#: src/features/Goal/GoalPreparingModal.tsx:75
-#. js-lingui-explicit-id
-msgid "Got it"
-msgstr "Зрозуміло"
-
-#: src/features/Goal/GoalPreparingModal.tsx:81
-#. js-lingui-explicit-id
-msgid "Almost ready..."
-msgstr "Майже готово..."
-
-#: src/features/Goal/GoalPreparingModal.tsx:90
-#. js-lingui-explicit-id
-msgid "Let's do it"
-msgstr "Давайте робити це"
-
-#: src/features/Goal/GoalPreparingModal.tsx:96
-#. js-lingui-explicit-id
-msgid "Finally"
-msgstr "Нарешті"
-
-#: src/features/Goal/GoalPreparingModal.tsx:107
-#. js-lingui-explicit-id
-msgid "Let's rock it!"
-msgstr "Давайте розірвемо це!"
-
 #: src/features/Game/PositionChangedModal.tsx:101
 #. js-lingui-explicit-id
 msgid "Nice!"
@@ -4038,50 +4028,6 @@ msgstr "Рейтинг:"
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Увійдіть до топ 5, щоб отримати додаток безкоштовно"
-
-#: src/features/Game/GameMyUsername.tsx:26
-#. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "Ім'я користувача повинно містити принаймні 3 символи."
-
-#: src/features/Game/GameMyUsername.tsx:45
-#. js-lingui-explicit-id
-msgid "Game username:"
-msgstr "Ім'я у грі:"
-
-#: src/features/Game/GameNativeLanguageSelector.tsx:49
-#. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Ваша рідна мова:"
-
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
-#. js-lingui-explicit-id
-msgid "Discuss the topic"
-msgstr "Обговорити тему"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:183
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:209
-#. js-lingui-explicit-id
-msgid "Submit answer"
-msgstr "Надіслати відповідь"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
-#. js-lingui-explicit-id
-msgid "Record an answer"
-msgstr "Запишіть відповідь"
-
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:281
-#. js-lingui-explicit-id
-msgid "Describe the topic in your own words..."
-msgstr "Опишіть тему своїми власними словами..."
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:276
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:302
-#. js-lingui-explicit-id
-msgid "Error: "
-msgstr "Помилка:"
 
 #: src/features/Game/GameOnboarding.tsx:46
 #. js-lingui-explicit-id
@@ -4117,6 +4063,11 @@ msgstr "Давайте переконаємося, що ви готові"
 msgid "Your Avatar:"
 msgstr "Ваш Аватар:"
 
+#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "Ваша рідна мова:"
+
 #: src/features/Game/GameMyAvatar.tsx:27
 #. js-lingui-explicit-id
 msgid "Avatar"
@@ -4127,16 +4078,44 @@ msgstr "Аватар"
 msgid "Select your game avatar"
 msgstr "Виберіть свій аватар у грі"
 
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
+#: src/features/Game/GameMyUsername.tsx:26
 #. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "Сформуйте речення"
+msgid "Username must be at least 3 characters long."
+msgstr "Ім'я користувача повинно містити принаймні 3 символи."
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
+#: src/features/Game/GameMyUsername.tsx:45
 #. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "Опишіть зображення"
+msgid "Game username:"
+msgstr "Ім'я у грі:"
+
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
+#. js-lingui-explicit-id
+msgid "Discuss the topic"
+msgstr "Обговорити тему"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:183
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:209
+#. js-lingui-explicit-id
+msgid "Submit answer"
+msgstr "Надіслати відповідь"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
+#. js-lingui-explicit-id
+msgid "Record an answer"
+msgstr "Запишіть відповідь"
+
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:281
+#. js-lingui-explicit-id
+msgid "Describe the topic in your own words..."
+msgstr "Опишіть тему своїми власними словами..."
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:276
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:302
+#. js-lingui-explicit-id
+msgid "Error: "
+msgstr "Помилка:"
 
 #: src/features/Game/GameBadge.tsx:75
 #. js-lingui-explicit-id
@@ -4147,6 +4126,17 @@ msgstr "Грай та Вчись"
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Перекладіть слово"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
+#. js-lingui-explicit-id
+msgid "Describe the image"
+msgstr "Опишіть зображення"
+
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Form a sentence"
+msgstr "Сформуйте речення"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
 #. js-lingui-explicit-id
@@ -4170,22 +4160,6 @@ msgstr "Надіслати"
 msgid "Error:"
 msgstr "Помилка:"
 
-#: src/features/Dashboard/WordsToLearn.tsx:32
-#. js-lingui-explicit-id
-msgid "New words to practice."
-msgstr "Нові слова для практики."
-
-#: src/features/Dashboard/RulesToLearn.tsx:86
-#: src/features/Dashboard/WordsToLearn.tsx:106
-#. js-lingui-explicit-id
-msgid "Start practice"
-msgstr "Почати практику"
-
-#: src/features/Dashboard/WordsToLearn.tsx:128
-#. js-lingui-explicit-id
-msgid "I know all of them"
-msgstr "Я знаю всіх них"
-
 #: src/features/Dashboard/SelectLanguage.tsx:143
 #. js-lingui-explicit-id
 msgid "Almost there!"
@@ -4205,6 +4179,27 @@ msgstr "Вчіться"
 #. js-lingui-explicit-id
 msgid "Page"
 msgstr "Сторінка"
+
+#: src/features/Dashboard/RulesToLearn.tsx:36
+#. js-lingui-explicit-id
+msgid "New rule to practice."
+msgstr "Нове правило для практики."
+
+#: src/features/Dashboard/RulesToLearn.tsx:86
+#: src/features/Dashboard/WordsToLearn.tsx:106
+#. js-lingui-explicit-id
+msgid "Start practice"
+msgstr "Почати практику"
+
+#: src/features/Dashboard/WordsToLearn.tsx:32
+#. js-lingui-explicit-id
+msgid "New words to practice."
+msgstr "Нові слова для практики."
+
+#: src/features/Dashboard/WordsToLearn.tsx:128
+#. js-lingui-explicit-id
+msgid "I know all of them"
+msgstr "Я знаю всіх них"
 
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
@@ -4239,11 +4234,6 @@ msgstr "Нові слова"
 msgid "Practice new vocabulary with the AI"
 msgstr "Практикуйте нову лексику з ШІ"
 
-#: src/features/Dashboard/RulesToLearn.tsx:36
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "Нове правило для практики."
-
 #: src/features/Conversation/ConversationCanvas2.tsx:1384
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:422
@@ -4262,27 +4252,35 @@ msgstr "Встановіть мету вашого навчання"
 msgid "Start | 5 min"
 msgstr "Старт | 5 хв"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:72
+#: src/features/Dashboard/HomeworkCard.tsx:21
 #. js-lingui-explicit-id
-msgid "Are you sure you want to delete your goal? This action cannot be undone."
-msgstr "Ви впевнені, що хочете видалити свою мету? Цю дію не можна скасувати."
+msgid "Homework"
+msgstr "Домашнє завдання"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:179
+#: src/features/Dashboard/HomeworkCard.tsx:57
 #. js-lingui-explicit-id
-msgid "Something went wrong while generating more lessons. Please try again later."
-msgstr ""
-"Сталася помилка під час генерації додаткових уроків. Будь ласка, спробуйте "
-"ще раз пізніше."
+msgid "No homework assigned yet."
+msgstr "Не задано домашнє завдання."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:226
+#: src/features/Dashboard/HomeworkCard.tsx:66
 #. js-lingui-explicit-id
-msgid "Now let’s determine your starting point!"
-msgstr "Тепер давайте визначимо вашу відправну точку!"
+msgid "Start a conversation to get one."
+msgstr "Розпочніть розмову, щоб отримати один."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:246
+#: src/features/Dashboard/HomeworkCard.tsx:128
 #. js-lingui-explicit-id
-msgid "Start your journey with a conversation!"
-msgstr "Розпочніть свою подорож з розмови!"
+msgid "Skip"
+msgstr "Пропустити"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "Показати все"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:110
+#. js-lingui-explicit-id
+msgid "Talk to the AI and it will respond to you"
+msgstr "Говоріть з ІІ, і вона відповість вам"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:115
 #: src/features/Dashboard/ConversationSelectCard.tsx:136
@@ -4294,84 +4292,6 @@ msgstr "Розпочніть свою подорож з розмови!"
 #. js-lingui-explicit-id
 msgid "Set the goal to start"
 msgstr "Встановіть мету для початку"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:269
-#: src/features/Dashboard/PlanDashboardCards.tsx:299
-#: src/features/Dashboard/PlanDashboardCards.tsx:329
-#. js-lingui-explicit-id
-msgid "Recommended"
-msgstr "Рекомендовано"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:151
-#: src/features/Dashboard/PlanDashboardCards.tsx:275
-#. js-lingui-explicit-id
-msgid "Rules"
-msgstr "Правила"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:276
-#. js-lingui-explicit-id
-msgid "Learn the rules of the language!"
-msgstr "Вивчайте правила мови!"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:306
-#. js-lingui-explicit-id
-msgid "Learn new words and expand your vocabulary!"
-msgstr "Вчіть нові слова та розширюйте свій словник!"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:349
-#. js-lingui-explicit-id
-msgid "There's something interesting for you..."
-msgstr "Для вас є щось цікаве ..."
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:378
-#. js-lingui-explicit-id
-msgid "Let's start"
-msgstr "Почнімо"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:423
-#. js-lingui-explicit-id
-msgid "Start your way to fluency"
-msgstr "Розпочніть шлях до володіння"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:525
-#. js-lingui-explicit-id
-msgid "More uniq lessons"
-msgstr "Більше унікальних уроків"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:562
-#. js-lingui-explicit-id
-msgid "More unique lessons"
-msgstr "Більше унікальних уроків"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:570
-#. js-lingui-explicit-id
-msgid "We will help you to learn the language you need"
-msgstr "Ми допоможемо вам вивчити потрібну вам мову"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:594
-#. js-lingui-explicit-id
-msgid "Delete current goal"
-msgstr "Видалити поточну мету"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:610
-#. js-lingui-explicit-id
-msgid "Generating..."
-msgstr "Генеруємо..."
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:611
-#. js-lingui-explicit-id
-msgid "Generate more unique lessons"
-msgstr "Створюйте більше унікальних уроків"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:621
-#. js-lingui-explicit-id
-msgid "In order to generate more lessons, you need to complete at least 3 lessons"
-msgstr "Щоб генерувати більше уроків, вам потрібно завершити принаймні 3 уроки"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:110
-#. js-lingui-explicit-id
-msgid "Talk to the AI and it will respond to you"
-msgstr "Говоріть з ІІ, і вона відповість вам"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:126
 #. js-lingui-explicit-id
@@ -4392,6 +4312,12 @@ msgstr "AI проведе вас через розмову"
 #. js-lingui-explicit-id
 msgid "Guide me"
 msgstr "Керуйте мною"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:151
+#: src/features/Dashboard/PlanDashboardCards.tsx:275
+#. js-lingui-explicit-id
+msgid "Rules"
+msgstr "Правила"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:168
 #. js-lingui-explicit-id
@@ -4505,31 +4431,6 @@ msgstr "Підготовка мозку"
 msgid "Upload language skills directly to your brain"
 msgstr "Завантажуйте мовні навички прямо в ваш мозок"
 
-#: src/features/Dashboard/HomeworkCard.tsx:21
-#. js-lingui-explicit-id
-msgid "Homework"
-msgstr "Домашнє завдання"
-
-#: src/features/Dashboard/HomeworkCard.tsx:57
-#. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "Не задано домашнє завдання."
-
-#: src/features/Dashboard/HomeworkCard.tsx:66
-#. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "Розпочніть розмову, щоб отримати один."
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "Пропустити"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "Показати все"
-
 #: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
 msgid "Progress Calendar"
@@ -4545,11 +4446,115 @@ msgstr "Менше"
 msgid "More"
 msgstr "Більше"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:72
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete your goal? This action cannot be undone."
+msgstr "Ви впевнені, що хочете видалити свою мету? Цю дію не можна скасувати."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:179
+#. js-lingui-explicit-id
+msgid "Something went wrong while generating more lessons. Please try again later."
+msgstr ""
+"Сталася помилка під час генерації додаткових уроків. Будь ласка, спробуйте "
+"ще раз пізніше."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:226
+#. js-lingui-explicit-id
+msgid "Now let’s determine your starting point!"
+msgstr "Тепер давайте визначимо вашу відправну точку!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:246
+#. js-lingui-explicit-id
+msgid "Start your journey with a conversation!"
+msgstr "Розпочніть свою подорож з розмови!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:269
+#: src/features/Dashboard/PlanDashboardCards.tsx:299
+#: src/features/Dashboard/PlanDashboardCards.tsx:329
+#. js-lingui-explicit-id
+msgid "Recommended"
+msgstr "Рекомендовано"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:276
+#. js-lingui-explicit-id
+msgid "Learn the rules of the language!"
+msgstr "Вивчайте правила мови!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:306
+#. js-lingui-explicit-id
+msgid "Learn new words and expand your vocabulary!"
+msgstr "Вчіть нові слова та розширюйте свій словник!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:349
+#. js-lingui-explicit-id
+msgid "There's something interesting for you..."
+msgstr "Для вас є щось цікаве ..."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:378
+#. js-lingui-explicit-id
+msgid "Let's start"
+msgstr "Почнімо"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:423
+#. js-lingui-explicit-id
+msgid "Start your way to fluency"
+msgstr "Розпочніть шлях до володіння"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:525
+#. js-lingui-explicit-id
+msgid "More uniq lessons"
+msgstr "Більше унікальних уроків"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:562
+#. js-lingui-explicit-id
+msgid "More unique lessons"
+msgstr "Більше унікальних уроків"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:570
+#. js-lingui-explicit-id
+msgid "We will help you to learn the language you need"
+msgstr "Ми допоможемо вам вивчити потрібну вам мову"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:594
+#. js-lingui-explicit-id
+msgid "Delete current goal"
+msgstr "Видалити поточну мету"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:610
+#. js-lingui-explicit-id
+msgid "Generating..."
+msgstr "Генеруємо..."
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:611
+#. js-lingui-explicit-id
+msgid "Generate more unique lessons"
+msgstr "Створюйте більше унікальних уроків"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:621
+#. js-lingui-explicit-id
+msgid "In order to generate more lessons, you need to complete at least 3 lessons"
+msgstr "Щоб генерувати більше уроків, вам потрібно завершити принаймні 3 уроки"
+
 #: src/features/Conversation/useConversationsAnalysis.ts:89
 #: src/features/Conversation/useConversationsAnalysis.ts:132
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "Помилка аналізу розмови"
+
+#: src/features/Conversation/ConversationPage.tsx:134
+#. js-lingui-explicit-id
+msgid "Loading Goal..."
+msgstr "Завантаження Цілі..."
+
+#: src/features/Conversation/ConversationPage.tsx:158
+#. js-lingui-explicit-id
+msgid "Crafting new words..."
+msgstr "Створення нових слів..."
+
+#: src/features/Conversation/ConversationPage.tsx:162
+#. js-lingui-explicit-id
+msgid "Crafting new rule..."
+msgstr "Створення нового правила..."
 
 #: src/features/Conversation/ConversationError.tsx:34
 #. js-lingui-explicit-id
@@ -4571,35 +4576,20 @@ msgstr "Повідомлення було відправлено команді 
 msgid "Reload page"
 msgstr "Перезавантажте сторінку"
 
-#: src/features/Conversation/ConversationPage.tsx:134
+#: src/features/Conversation/ConfirmConversationModal.tsx:26
 #. js-lingui-explicit-id
-msgid "Loading Goal..."
-msgstr "Завантаження Цілі..."
+msgid "Ready?"
+msgstr "Готові?"
 
-#: src/features/Conversation/ConversationPage.tsx:158
+#: src/features/Conversation/ConfirmConversationModal.tsx:30
 #. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "Створення нових слів..."
+msgid "Next, allow microphone access to talk with the AI."
+msgstr "Далі, дозвольте доступ до мікрофону, щоб розмовляти з AI."
 
-#: src/features/Conversation/ConversationPage.tsx:162
+#: src/features/Conversation/ConfirmConversationModal.tsx:55
 #. js-lingui-explicit-id
-msgid "Crafting new rule..."
-msgstr "Створення нового правила..."
-
-#: src/features/Conversation/AliasGamePanel.tsx:122
-#. js-lingui-explicit-id
-msgid "Describe these words:"
-msgstr "Опишіть ці слова:"
-
-#: src/features/Conversation/AliasGamePanel.tsx:171
-#. js-lingui-explicit-id
-msgid "More options"
-msgstr "Більше опцій"
-
-#: src/features/Conversation/AliasGamePanel.tsx:180
-#. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "Здогадані слова:"
+msgid "I am ready"
+msgstr "Я готовий"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:361
 #. js-lingui-explicit-id
@@ -4776,6 +4766,31 @@ msgstr "Скасувати запис"
 msgid "Top up"
 msgstr "Поповнити"
 
+#: src/features/Blog/ListBlog.tsx:131
+#. js-lingui-explicit-id
+msgid "No blogs found"
+msgstr "Не знайдено жодного блогу"
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "Переглянути всі публікації"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "Сценарії рольових ігор для практики"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "Ви можете спробувати AI в дії зараз"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "Спробувати безкоштовно"
+
 #: src/features/Blog/ListBlogIntro.tsx:66
 #. js-lingui-explicit-id
 msgid "Read and Learn with my blog"
@@ -4789,6 +4804,550 @@ msgid ""
 msgstr ""
 "Надихайтеся та дізнавайтеся про останні тенденції в вивченні мов, навчанні "
 "та технологіях."
+
+#: src/features/Conversation/AliasGamePanel.tsx:122
+#. js-lingui-explicit-id
+msgid "Describe these words:"
+msgstr "Опишіть ці слова:"
+
+#: src/features/Conversation/AliasGamePanel.tsx:171
+#. js-lingui-explicit-id
+msgid "More options"
+msgstr "Більше опцій"
+
+#: src/features/Conversation/AliasGamePanel.tsx:180
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "Здогадані слова:"
+
+#: src/features/Blog/BlogCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Read more"
+msgstr "Читати більше"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
+#. js-lingui-explicit-id
+msgid "At the end, we’ll share a valuable tool for realistic interview practice."
+msgstr ""
+"В кінці ми поділимося цінним інструментом для реалістичної практики "
+"інтерв'ю."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
+#. js-lingui-explicit-id
+msgid "Introduction: Small Talk with the Interviewer"
+msgstr "Вступ: Невимушена бесіда з інтерв'юером"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
+#. js-lingui-explicit-id
+msgid ""
+"The first few minutes of an interview are often dedicated to casual "
+"conversation — also known as 'SmallTalk'. Recruiters use this time to "
+"create a friendly atmosphere and get to know you a bit better."
+msgstr ""
+"Перші кілька хвилин співбесіди часто присвячені неформальній бесіді - так "
+"званому 'SmallTalk'. Рекрутери використовують цей час, щоб створити дружню "
+"атмосферу та краще вас пізнати."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
+#. js-lingui-explicit-id
+msgid "Don’t skip small talk"
+msgstr "Не уникаюте невеликого обговорення"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
+#. js-lingui-explicit-id
+msgid ""
+"— it’s important to engage in this short conversation before jumping into "
+"professional topics. Here are some useful English phrases to start off the "
+"interview:"
+msgstr ""
+"— важливо задіяти цю коротку розмову, перш ніж приступати до професійних "
+"тем. Ось деякі корисні англійські фрази для початку інтерв'ю:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
+#. js-lingui-explicit-id
+msgid "English Phrases"
+msgstr "Англійські фрази"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
+#. js-lingui-explicit-id
+msgid "A polite and professional greeting."
+msgstr "Ввічливе та професійне вітання."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
+#. js-lingui-explicit-id
+msgid "Expressing gratitude for the opportunity."
+msgstr "Виявляння вдячності за можливість."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
+#. js-lingui-explicit-id
+msgid "A standard reply to “How are you?”"
+msgstr "Стандартна відповідь на \"Як справи?\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
+#. js-lingui-explicit-id
+msgid "A friendly compliment to break the ice."
+msgstr "Приємний комплімент, щоб розривати лід."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"Smile, shake hands (if culturally appropriate), and speak in a friendly "
+"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
+"might say:"
+msgstr ""
+"Усміхніться, потисніть руку (якщо це культурно прийнятно) і говоріть "
+"дружнім тоном. Якщо інтерв'юер запитає: \"Чи виникли у Вас будь-які "
+"проблеми з тим, щоб знайти нас?\" ви можете відповісти:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"Short answers with a positive attitude show that you’re easy to talk to and "
+"open to dialogue."
+msgstr ""
+"Короткі відповіді з позитивним настроєм показують, що ви легко спілкуєтесь "
+"і відкриті для діалогу."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
+#. js-lingui-explicit-id
+msgid "Self-Introduction: Talking About Yourself"
+msgstr "Самопредставлення: Розповідаємо про себе"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
+#. js-lingui-explicit-id
+msgid "After the greeting, you'll usually hear:"
+msgstr "Після вітання, ви зазвичай почуєте:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
+#. js-lingui-explicit-id
+msgid ""
+"This is your chance to introduce your experience and skills. Don’t list "
+"your full biography — focus on the highlights of your professional "
+"background. A good answer structure in English might look like this:"
+msgstr ""
+"Це ваш шанс представити ваш досвід та навички. Не перераховуйте всю свою "
+"біографію - сфокусуйтеся на найважливіших моментах вашого професійного "
+"досвіду. Гарна структура відповіді англійською може виглядати так:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
+#. js-lingui-explicit-id
+msgid "For example:"
+msgstr ""
+"For example:\n"
+"\n"
+"1. Welcome to MyTeacher AI!\n"
+"Welcome to the future of learning, where we craft each lesson specifically "
+"for you. \n"
+"Improve your English skills now with MyTeacher AI!\n"
+"\n"
+"2. Try out a lesson for free\n"
+"Not sure if MyTeacher AI is right for you? Try out one of our English "
+"lessons for free.\n"
+"See for yourself, risk-free!\n"
+"\n"
+"3. Progress tracking\n"
+"Stay motivated as you see your English skills improve. MyTeacher AI keeps "
+"track of your progress over time, showing you how much you're learning!\n"
+"\n"
+"4. 24/7 support\n"
+"Got a question? Simply ask! Our support team is here round the clock to "
+"help you.\n"
+"\n"
+"5. Satisfaction guaranteed\n"
+"We are devoted to the success of our students. That's why we guarantee your "
+"satisfaction with MyTeacher AI.\n"
+"\n"
+"6. Accelerated learning\n"
+"With MyTeacher AI you will learn English quickly and effectively!"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
+#. js-lingui-explicit-id
+msgid ""
+"Keep your answer focused: current or last position, a key achievement, and "
+"your interest in the company. Practice your self-introduction so you sound "
+msgstr ""
+"Тримайте свою відповідь зосередженою: поточна або остання посада, ключове "
+"досягнення, та ваш інтерес до компанії. Тренуйте своє самопредставлення, "
+"щоб звучати"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
+#. js-lingui-explicit-id
+msgid "natural and not robotic"
+msgstr "природній і не роботизований"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
+#. js-lingui-explicit-id
+msgid "Useful Phrases for Self-Introduction"
+msgstr "Корисні фрази для самопрезентації"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
+#. js-lingui-explicit-id
+msgid ""
+"Use these templates to craft your own story. Don’t forget to mention an "
+"achievement:"
+msgstr ""
+"Використовуйте ці шаблони, щоб створити власну історію. Не забудьте згадати "
+"про досягнення:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
+#. js-lingui-explicit-id
+msgid "This shows results and makes you stand out."
+msgstr "Це показує результати та виокремлює вас."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
+#. js-lingui-explicit-id
+msgid "Answering Typical Interview Questions"
+msgstr "Відповідь на Типові Питання під Час Співбесіди"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
+#. js-lingui-explicit-id
+msgid ""
+"Recruiters ask a variety of standard questions to understand your "
+"motivation and personality. Preparing answers in advance will help you stay "
+"calm and articulate. Focus on showing enthusiasm and confidence in your "
+"skills. Let’s look at some common questions and how to answer them:"
+msgstr ""
+"Рекрутери задають різноманітні стандартні питання, щоб зрозуміти вашу "
+"мотивацію та особистість. Попередня підготовка відповідей допоможе вам "
+"залишатися спокійним та виразним. Сконцентруйтеся на демонстрації "
+"ентузіазму та впевненості в своїх навиках. Давайте розглянемо деякі "
+"поширені питання та як на них відповідати:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
+#. js-lingui-explicit-id
+msgid "Show knowledge of the company and genuine interest. For example:"
+msgstr "Показуйте знання компанії та щиру зацікавленість. Наприклад:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
+#. js-lingui-explicit-id
+msgid "Highlight your strengths relevant to the role:"
+msgstr "Виділіть свої сильні сторони, які є важливими для ролі:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
+#. js-lingui-explicit-id
+msgid "Show your long-term goals:"
+msgstr "Показуйте свої довготривалі цілі:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
+#. js-lingui-explicit-id
+msgid "Other common questions include:"
+msgstr "Інші поширені питання включають:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
+#. js-lingui-explicit-id
+msgid "Prepare short, honest, and positive answers with real-life examples."
+msgstr ""
+"Підготуйте короткі, чесні та позитивні відповіді з прикладами з реального "
+"життя."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
+#. js-lingui-explicit-id
+msgid "If you don’t understand a question, don’t panic — ask politely:"
+msgstr "Якщо ви не розумієте питання, не панікуйте — вічливо запитайте:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
+#. js-lingui-explicit-id
+msgid "Talking About Strengths and Weaknesses"
+msgstr "Говоримо про сильні сторони та слабкості"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"Most interviews include the classic “strengths and weaknesses” question. "
+"It’s especially important to handle this well in English."
+msgstr ""
+"Більшість співбесід включають класичне питання про \"сильні та слабкі "
+"сторони\". Особливо важливо гарно справлятися з цим на англійській мові."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
+#. js-lingui-explicit-id
+msgid "Strengths:"
+msgstr "Сильні сторони:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
+"examples. For instance:"
+msgstr ""
+"Виберіть 2-3 ключових якості, що є актуальні для роботи. Уникайте кліше і "
+"надавайте приклади. Наприклад:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
+#. js-lingui-explicit-id
+msgid "Other useful strengths:"
+msgstr "Інші корисні сильні сторони:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
+#. js-lingui-explicit-id
+msgid "Weaknesses:"
+msgstr "Слабкі сторони:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
+#. js-lingui-explicit-id
+msgid ""
+"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
+"mention a minor issue and how you’re working to improve it:"
+msgstr ""
+"Будьте чесними, але дипломатичними. Не говоріть \"У мене немає слабких "
+"сторін.\" Натомість, згадайте незначну проблему та як ви працюєте над її "
+"вирішенням:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
+#. js-lingui-explicit-id
+msgid "This approach shows self-awareness and growth."
+msgstr "Цей підхід демонструє самоусвідомлення та розвиток."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
+#. js-lingui-explicit-id
+msgid "Questions to Ask the Employer"
+msgstr "Питання до роботодавця"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
+#. js-lingui-explicit-id
+msgid "At the end of the interview, you’ll usually be asked:"
+msgstr "Наприкінці співбесіди, вам зазвичай задають:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
+#. js-lingui-explicit-id
+msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
+msgstr "Ніколи не говоріть \"ні\". Підготуйте 2-3 розумні питання заздалегідь:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
+#. js-lingui-explicit-id
+msgid "Always respond politely:"
+msgstr "Завжди відповідайте ввічливо:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
+#. js-lingui-explicit-id
+msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
+msgstr ""
+"Показуйте цікавість та зацікавленість. Не забувайте подякувати їм за їх "
+"відповіді:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
+#. js-lingui-explicit-id
+msgid "Ending the Interview: Final Phrases"
+msgstr "Закінчення інтерв'ю: заключні фрази"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
+#. js-lingui-explicit-id
+msgid ""
+"Wrap up the interview with gratitude and confidence. Use these phrases to "
+"end on a positive note:"
+msgstr ""
+"Завершіть інтерв'ю з вдячністю та впевненістю. Використовуйте ці фрази, щоб "
+"закінчити на позитивній ноті:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"If it was an in-person interview, shake hands and maintain eye contact. If "
+"it was online, say goodbye with a friendly tone. Consider sending a "
+"thank-you email the next day:"
+msgstr ""
+"Якщо це було особисте співбесіда, подайте руку та утримуйте контакт очима. "
+"Якщо це було в мережі, попрощайтеся у дружньому тоні. Розгляньте можливість "
+"надіслати лист з подякою на наступний день:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
+#. js-lingui-explicit-id
+msgid "Common Mistakes to Avoid"
+msgstr "Помилки, яких варто уникати"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
+#. js-lingui-explicit-id
+msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
+msgstr ""
+"Пропускаємо невимушені розмови — слідкуйте за ініціативою інтерв'юера та "
+"будьте дружелюбними."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
+#. js-lingui-explicit-id
+msgid ""
+"Saying “I don’t know” directly — Instead say: “That’s an interesting "
+"question. Let me think for a moment.”"
+msgstr ""
+"Говорити \"Я не знаю\" напряму - Замість цього скажіть: \"Це цікаве "
+"питання. Дайте мені подумати на мить.\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
+#. js-lingui-explicit-id
+msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
+msgstr ""
+"Недостаток ввічливості - Використовуйте *будь ласка*, *дякую*, *вибачте* за "
+"потреби."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
+#. js-lingui-explicit-id
+msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
+msgstr ""
+"Занадто відточені відповіді — не запам'ятовуйте; підготуйте ідеї та "
+"говоріть природньо."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
+#. js-lingui-explicit-id
+msgid ""
+"Negative comments — Never badmouth past employers. Stay neutral and "
+"constructive."
+msgstr ""
+"Негативні коментарі — Ніколи не зганьблюйте колишніх роботодавців. Будьте "
+"нейтральними та конструктивними."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
+#. js-lingui-explicit-id
+msgid ""
+"Showing no interest — Ask questions and react positively to company "
+"information."
+msgstr ""
+"Не проявляє інтересу — Задавайте питання та реагуйте позитивно на "
+"інформацію компанії."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
+#. js-lingui-explicit-id
+msgid ""
+"Avoiding these mistakes will make you look more professional and increase "
+"your chances of success."
+msgstr ""
+"Уникнення цих помилок зробить вас більш професійним та збільшить ваші шанси "
+"на успіх."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
+#. js-lingui-explicit-id
+msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
+msgstr "Практичні інтерв'ю на FluencyPal: Ваш шлях до впевненості"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
+#. js-lingui-explicit-id
+msgid ""
+"Knowing useful phrases and tips is great, but the most important step is "
+"real-world practice. The best way to prepare is to do a mock interview. "
+"That’s exactly what the interactive role-play on FluencyPal offers."
+msgstr ""
+"Знання корисних фраз та порад це чудово, але найважливішим кроком є "
+"практика в реальному світі. Найкращим способом підготуватись є відтворення "
+"інтерв'ю. Це саме те, що пропонує інтерактивна рольова гра на FluencyPal."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
+#. js-lingui-explicit-id
+msgid ""
+"On this platform, you can upload your resume, specify your desired job, and "
+"go through a realistic interview with an AI interviewer."
+msgstr ""
+"На цій платформі ви можете завантажити своє резюме, вказати бажану роботу "
+"та пройти реалістичне співбесідування з AI-інтерв'юером."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
+#. js-lingui-explicit-id
+msgid "How it works:"
+msgstr "Як це працює:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
+#. js-lingui-explicit-id
+msgid ""
+"You answer questions just like in a real interview and get instant "
+"feedback. The AI adapts the questions to your profession and experience. "
+"This kind of training helps you identify weak spots, work on your "
+"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
+"notice your speech becoming more fluent and your answers more polished with "
+"each attempt."
+msgstr ""
+"Ви відповідаєте на запитання, як в справжньому інтерв'ю, і одразу отримуєте "
+"зворотний зв'язок. Штучний інтелект адаптує питання до вашої професії та "
+"досвіду. Такий вид тренувань допомагає вам ідентифікувати слабкі місця, "
+"працювати над вашою вимовою та вчитися спокійно реагувати на несподівані "
+"питання. Ви помітите, що ваша мова стає більш впевненою, а відповіді більш "
+"відточеними з кожною спробою."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
+#. js-lingui-explicit-id
+msgid "Career benefit:"
+msgstr "Користь для кар'єри:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
+#. js-lingui-explicit-id
+msgid ""
+"After several sessions, you’ll walk into your real interview much more "
+"confident. You’ll know what phrases to use, how to present yourself, and "
+"how to respond professionally. It can significantly boost your chances of "
+"landing your dream job."
+msgstr ""
+"Після кількох сесій ви з більшою впевненістю підійдете до свого справжнього "
+"співбесіди. Ви будете знати, які фрази використовувати, як презентувати "
+"себе, та як професійно відповідати на питання. Це може значно збільшити "
+"ваши шанси отримати роботу своєї мрії."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
+#. js-lingui-explicit-id
+msgid ""
+"Preparing for an interview in English takes time, but it pays off. Use the "
+"tips from this article, practice with FluencyPal’s interview simulator, and "
+"walk into your next job interview with confidence."
+msgstr ""
+"Підготовка до інтерв'ю англійською мовою займає час, але вона виправдовує "
+"себе. Використовуйте поради з цієї статті, тренуйтеся за допомогою "
+"симулятора співбесіди FluencyPal і йдіть на своє наступне співбесіду з "
+"впевненістю."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
+#. js-lingui-explicit-id
+msgid "Good preparation today means career success tomorrow."
+msgstr "Гарна підготовка сьогодні означає кар'єрний успіх завтра."
+
+#: src/features/Auth/SignInForm.tsx:30
+#. js-lingui-explicit-id
+msgid "Open personal plan"
+msgstr "Відкрити персональний план"
+
+#: src/features/Auth/SignInForm.tsx:33
+#. js-lingui-explicit-id
+msgid "Start the Lesson"
+msgstr "Розпочати урок"
+
+#: src/features/Auth/SignInForm.tsx:74
+#. js-lingui-explicit-id
+msgid "Open this page in browser"
+msgstr "Відкрити цю сторінку в браузері"
+
+#: src/features/Auth/SignInForm.tsx:80
+#. js-lingui-explicit-id
+msgid "Please tap the menu ⋮ and choose"
+msgstr "Будь ласка, натисніть на меню ⋮ та оберіть"
+
+#: src/features/Auth/SignInForm.tsx:82
+#. js-lingui-explicit-id
+msgid "'Open in Chrome' to continue."
+msgstr "'Відкрити в Chrome', щоб продовжити."
+
+#: src/features/Auth/SignInForm.tsx:86
+#. js-lingui-explicit-id
+msgid "Please tap the menu ••• and choose"
+msgstr "Будь ласка, натисніть на меню ••• та виберіть"
+
+#: src/features/Auth/SignInForm.tsx:88
+#. js-lingui-explicit-id
+msgid "'Open in external Browser' to continue."
+msgstr "\"Відкрити в зовнішньому браузері\" для продовження."
+
+#: src/features/Auth/SignInForm.tsx:140
+#. js-lingui-explicit-id
+msgid "Start Role Play:"
+msgstr "Почати рольову гру:"
+
+#: src/features/Auth/SignInForm.tsx:167
+#. js-lingui-explicit-id
+msgid "Create an account to continue"
+msgstr "Створіть обліковий запис для продовження"
+
+#: src/features/Auth/SignInForm.tsx:184
+#. js-lingui-explicit-id
+msgid "Continue with google"
+msgstr "Продовжити з Google"
+
+#: src/features/Auth/SignInForm.tsx:195
+#. js-lingui-explicit-id
+msgid "By creating an account, you agree to:"
+msgstr "Створюючи обліковий запис, ви погоджуєтеся на:"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6299,575 +6858,6 @@ msgstr "Професійний розвиток"
 msgid "All Blogs"
 msgstr "Всі Блоги"
 
-#: src/features/Blog/ListBlog.tsx:131
-#. js-lingui-explicit-id
-msgid "No blogs found"
-msgstr "Не знайдено жодного блогу"
-
-#: src/features/Blog/BlogCard.tsx:168
-#. js-lingui-explicit-id
-msgid "Read more"
-msgstr "Читати більше"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
-#. js-lingui-explicit-id
-msgid "At the end, we’ll share a valuable tool for realistic interview practice."
-msgstr ""
-"В кінці ми поділимося цінним інструментом для реалістичної практики "
-"інтерв'ю."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
-#. js-lingui-explicit-id
-msgid "Introduction: Small Talk with the Interviewer"
-msgstr "Вступ: Невимушена бесіда з інтерв'юером"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
-#. js-lingui-explicit-id
-msgid ""
-"The first few minutes of an interview are often dedicated to casual "
-"conversation — also known as 'SmallTalk'. Recruiters use this time to "
-"create a friendly atmosphere and get to know you a bit better."
-msgstr ""
-"Перші кілька хвилин співбесіди часто присвячені неформальній бесіді - так "
-"званому 'SmallTalk'. Рекрутери використовують цей час, щоб створити дружню "
-"атмосферу та краще вас пізнати."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
-#. js-lingui-explicit-id
-msgid "Don’t skip small talk"
-msgstr "Не уникаюте невеликого обговорення"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
-#. js-lingui-explicit-id
-msgid ""
-"— it’s important to engage in this short conversation before jumping into "
-"professional topics. Here are some useful English phrases to start off the "
-"interview:"
-msgstr ""
-"— важливо задіяти цю коротку розмову, перш ніж приступати до професійних "
-"тем. Ось деякі корисні англійські фрази для початку інтерв'ю:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
-#. js-lingui-explicit-id
-msgid "English Phrases"
-msgstr "Англійські фрази"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
-#. js-lingui-explicit-id
-msgid "A polite and professional greeting."
-msgstr "Ввічливе та професійне вітання."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
-#. js-lingui-explicit-id
-msgid "Expressing gratitude for the opportunity."
-msgstr "Виявляння вдячності за можливість."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
-#. js-lingui-explicit-id
-msgid "A standard reply to “How are you?”"
-msgstr "Стандартна відповідь на \"Як справи?\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
-#. js-lingui-explicit-id
-msgid "A friendly compliment to break the ice."
-msgstr "Приємний комплімент, щоб розривати лід."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
-#. js-lingui-explicit-id
-msgid ""
-"Smile, shake hands (if culturally appropriate), and speak in a friendly "
-"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
-"might say:"
-msgstr ""
-"Усміхніться, потисніть руку (якщо це культурно прийнятно) і говоріть "
-"дружнім тоном. Якщо інтерв'юер запитає: \"Чи виникли у Вас будь-які "
-"проблеми з тим, щоб знайти нас?\" ви можете відповісти:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
-#. js-lingui-explicit-id
-msgid ""
-"Short answers with a positive attitude show that you’re easy to talk to and "
-"open to dialogue."
-msgstr ""
-"Короткі відповіді з позитивним настроєм показують, що ви легко спілкуєтесь "
-"і відкриті для діалогу."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
-#. js-lingui-explicit-id
-msgid "Self-Introduction: Talking About Yourself"
-msgstr "Самопредставлення: Розповідаємо про себе"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
-#. js-lingui-explicit-id
-msgid "After the greeting, you'll usually hear:"
-msgstr "Після вітання, ви зазвичай почуєте:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
-#. js-lingui-explicit-id
-msgid ""
-"This is your chance to introduce your experience and skills. Don’t list "
-"your full biography — focus on the highlights of your professional "
-"background. A good answer structure in English might look like this:"
-msgstr ""
-"Це ваш шанс представити ваш досвід та навички. Не перераховуйте всю свою "
-"біографію - сфокусуйтеся на найважливіших моментах вашого професійного "
-"досвіду. Гарна структура відповіді англійською може виглядати так:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
-#. js-lingui-explicit-id
-msgid "For example:"
-msgstr ""
-"For example:\n"
-"\n"
-"1. Welcome to MyTeacher AI!\n"
-"Welcome to the future of learning, where we craft each lesson specifically "
-"for you. \n"
-"Improve your English skills now with MyTeacher AI!\n"
-"\n"
-"2. Try out a lesson for free\n"
-"Not sure if MyTeacher AI is right for you? Try out one of our English "
-"lessons for free.\n"
-"See for yourself, risk-free!\n"
-"\n"
-"3. Progress tracking\n"
-"Stay motivated as you see your English skills improve. MyTeacher AI keeps "
-"track of your progress over time, showing you how much you're learning!\n"
-"\n"
-"4. 24/7 support\n"
-"Got a question? Simply ask! Our support team is here round the clock to "
-"help you.\n"
-"\n"
-"5. Satisfaction guaranteed\n"
-"We are devoted to the success of our students. That's why we guarantee your "
-"satisfaction with MyTeacher AI.\n"
-"\n"
-"6. Accelerated learning\n"
-"With MyTeacher AI you will learn English quickly and effectively!"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
-#. js-lingui-explicit-id
-msgid ""
-"Keep your answer focused: current or last position, a key achievement, and "
-"your interest in the company. Practice your self-introduction so you sound "
-msgstr ""
-"Тримайте свою відповідь зосередженою: поточна або остання посада, ключове "
-"досягнення, та ваш інтерес до компанії. Тренуйте своє самопредставлення, "
-"щоб звучати"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
-#. js-lingui-explicit-id
-msgid "natural and not robotic"
-msgstr "природній і не роботизований"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
-#. js-lingui-explicit-id
-msgid "Useful Phrases for Self-Introduction"
-msgstr "Корисні фрази для самопрезентації"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
-#. js-lingui-explicit-id
-msgid ""
-"Use these templates to craft your own story. Don’t forget to mention an "
-"achievement:"
-msgstr ""
-"Використовуйте ці шаблони, щоб створити власну історію. Не забудьте згадати "
-"про досягнення:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
-#. js-lingui-explicit-id
-msgid "This shows results and makes you stand out."
-msgstr "Це показує результати та виокремлює вас."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
-#. js-lingui-explicit-id
-msgid "Answering Typical Interview Questions"
-msgstr "Відповідь на Типові Питання під Час Співбесіди"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
-#. js-lingui-explicit-id
-msgid ""
-"Recruiters ask a variety of standard questions to understand your "
-"motivation and personality. Preparing answers in advance will help you stay "
-"calm and articulate. Focus on showing enthusiasm and confidence in your "
-"skills. Let’s look at some common questions and how to answer them:"
-msgstr ""
-"Рекрутери задають різноманітні стандартні питання, щоб зрозуміти вашу "
-"мотивацію та особистість. Попередня підготовка відповідей допоможе вам "
-"залишатися спокійним та виразним. Сконцентруйтеся на демонстрації "
-"ентузіазму та впевненості в своїх навиках. Давайте розглянемо деякі "
-"поширені питання та як на них відповідати:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
-#. js-lingui-explicit-id
-msgid "Show knowledge of the company and genuine interest. For example:"
-msgstr "Показуйте знання компанії та щиру зацікавленість. Наприклад:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
-#. js-lingui-explicit-id
-msgid "Highlight your strengths relevant to the role:"
-msgstr "Виділіть свої сильні сторони, які є важливими для ролі:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
-#. js-lingui-explicit-id
-msgid "Show your long-term goals:"
-msgstr "Показуйте свої довготривалі цілі:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
-#. js-lingui-explicit-id
-msgid "Other common questions include:"
-msgstr "Інші поширені питання включають:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
-#. js-lingui-explicit-id
-msgid "Prepare short, honest, and positive answers with real-life examples."
-msgstr ""
-"Підготуйте короткі, чесні та позитивні відповіді з прикладами з реального "
-"життя."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
-#. js-lingui-explicit-id
-msgid "If you don’t understand a question, don’t panic — ask politely:"
-msgstr "Якщо ви не розумієте питання, не панікуйте — вічливо запитайте:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
-#. js-lingui-explicit-id
-msgid "Talking About Strengths and Weaknesses"
-msgstr "Говоримо про сильні сторони та слабкості"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
-#. js-lingui-explicit-id
-msgid ""
-"Most interviews include the classic “strengths and weaknesses” question. "
-"It’s especially important to handle this well in English."
-msgstr ""
-"Більшість співбесід включають класичне питання про \"сильні та слабкі "
-"сторони\". Особливо важливо гарно справлятися з цим на англійській мові."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
-#. js-lingui-explicit-id
-msgid "Strengths:"
-msgstr "Сильні сторони:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
-#. js-lingui-explicit-id
-msgid ""
-"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
-"examples. For instance:"
-msgstr ""
-"Виберіть 2-3 ключових якості, що є актуальні для роботи. Уникайте кліше і "
-"надавайте приклади. Наприклад:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
-#. js-lingui-explicit-id
-msgid "Other useful strengths:"
-msgstr "Інші корисні сильні сторони:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
-#. js-lingui-explicit-id
-msgid "Weaknesses:"
-msgstr "Слабкі сторони:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
-#. js-lingui-explicit-id
-msgid ""
-"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
-"mention a minor issue and how you’re working to improve it:"
-msgstr ""
-"Будьте чесними, але дипломатичними. Не говоріть \"У мене немає слабких "
-"сторін.\" Натомість, згадайте незначну проблему та як ви працюєте над її "
-"вирішенням:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
-#. js-lingui-explicit-id
-msgid "This approach shows self-awareness and growth."
-msgstr "Цей підхід демонструє самоусвідомлення та розвиток."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
-#. js-lingui-explicit-id
-msgid "Questions to Ask the Employer"
-msgstr "Питання до роботодавця"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
-#. js-lingui-explicit-id
-msgid "At the end of the interview, you’ll usually be asked:"
-msgstr "Наприкінці співбесіди, вам зазвичай задають:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
-#. js-lingui-explicit-id
-msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
-msgstr "Ніколи не говоріть \"ні\". Підготуйте 2-3 розумні питання заздалегідь:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
-#. js-lingui-explicit-id
-msgid "Always respond politely:"
-msgstr "Завжди відповідайте ввічливо:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
-#. js-lingui-explicit-id
-msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
-msgstr ""
-"Показуйте цікавість та зацікавленість. Не забувайте подякувати їм за їх "
-"відповіді:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
-#. js-lingui-explicit-id
-msgid "Ending the Interview: Final Phrases"
-msgstr "Закінчення інтерв'ю: заключні фрази"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
-#. js-lingui-explicit-id
-msgid ""
-"Wrap up the interview with gratitude and confidence. Use these phrases to "
-"end on a positive note:"
-msgstr ""
-"Завершіть інтерв'ю з вдячністю та впевненістю. Використовуйте ці фрази, щоб "
-"закінчити на позитивній ноті:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
-#. js-lingui-explicit-id
-msgid ""
-"If it was an in-person interview, shake hands and maintain eye contact. If "
-"it was online, say goodbye with a friendly tone. Consider sending a "
-"thank-you email the next day:"
-msgstr ""
-"Якщо це було особисте співбесіда, подайте руку та утримуйте контакт очима. "
-"Якщо це було в мережі, попрощайтеся у дружньому тоні. Розгляньте можливість "
-"надіслати лист з подякою на наступний день:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
-#. js-lingui-explicit-id
-msgid "Common Mistakes to Avoid"
-msgstr "Помилки, яких варто уникати"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
-#. js-lingui-explicit-id
-msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
-msgstr ""
-"Пропускаємо невимушені розмови — слідкуйте за ініціативою інтерв'юера та "
-"будьте дружелюбними."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
-#. js-lingui-explicit-id
-msgid ""
-"Saying “I don’t know” directly — Instead say: “That’s an interesting "
-"question. Let me think for a moment.”"
-msgstr ""
-"Говорити \"Я не знаю\" напряму - Замість цього скажіть: \"Це цікаве "
-"питання. Дайте мені подумати на мить.\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
-#. js-lingui-explicit-id
-msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
-msgstr ""
-"Недостаток ввічливості - Використовуйте *будь ласка*, *дякую*, *вибачте* за "
-"потреби."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
-#. js-lingui-explicit-id
-msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
-msgstr ""
-"Занадто відточені відповіді — не запам'ятовуйте; підготуйте ідеї та "
-"говоріть природньо."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
-#. js-lingui-explicit-id
-msgid ""
-"Negative comments — Never badmouth past employers. Stay neutral and "
-"constructive."
-msgstr ""
-"Негативні коментарі — Ніколи не зганьблюйте колишніх роботодавців. Будьте "
-"нейтральними та конструктивними."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
-#. js-lingui-explicit-id
-msgid ""
-"Showing no interest — Ask questions and react positively to company "
-"information."
-msgstr ""
-"Не проявляє інтересу — Задавайте питання та реагуйте позитивно на "
-"інформацію компанії."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
-#. js-lingui-explicit-id
-msgid ""
-"Avoiding these mistakes will make you look more professional and increase "
-"your chances of success."
-msgstr ""
-"Уникнення цих помилок зробить вас більш професійним та збільшить ваші шанси "
-"на успіх."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
-#. js-lingui-explicit-id
-msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
-msgstr "Практичні інтерв'ю на FluencyPal: Ваш шлях до впевненості"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
-#. js-lingui-explicit-id
-msgid ""
-"Knowing useful phrases and tips is great, but the most important step is "
-"real-world practice. The best way to prepare is to do a mock interview. "
-"That’s exactly what the interactive role-play on FluencyPal offers."
-msgstr ""
-"Знання корисних фраз та порад це чудово, але найважливішим кроком є "
-"практика в реальному світі. Найкращим способом підготуватись є відтворення "
-"інтерв'ю. Це саме те, що пропонує інтерактивна рольова гра на FluencyPal."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
-#. js-lingui-explicit-id
-msgid ""
-"On this platform, you can upload your resume, specify your desired job, and "
-"go through a realistic interview with an AI interviewer."
-msgstr ""
-"На цій платформі ви можете завантажити своє резюме, вказати бажану роботу "
-"та пройти реалістичне співбесідування з AI-інтерв'юером."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
-#. js-lingui-explicit-id
-msgid "How it works:"
-msgstr "Як це працює:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
-#. js-lingui-explicit-id
-msgid ""
-"You answer questions just like in a real interview and get instant "
-"feedback. The AI adapts the questions to your profession and experience. "
-"This kind of training helps you identify weak spots, work on your "
-"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
-"notice your speech becoming more fluent and your answers more polished with "
-"each attempt."
-msgstr ""
-"Ви відповідаєте на запитання, як в справжньому інтерв'ю, і одразу отримуєте "
-"зворотний зв'язок. Штучний інтелект адаптує питання до вашої професії та "
-"досвіду. Такий вид тренувань допомагає вам ідентифікувати слабкі місця, "
-"працювати над вашою вимовою та вчитися спокійно реагувати на несподівані "
-"питання. Ви помітите, що ваша мова стає більш впевненою, а відповіді більш "
-"відточеними з кожною спробою."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
-#. js-lingui-explicit-id
-msgid "Career benefit:"
-msgstr "Користь для кар'єри:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
-#. js-lingui-explicit-id
-msgid ""
-"After several sessions, you’ll walk into your real interview much more "
-"confident. You’ll know what phrases to use, how to present yourself, and "
-"how to respond professionally. It can significantly boost your chances of "
-"landing your dream job."
-msgstr ""
-"Після кількох сесій ви з більшою впевненістю підійдете до свого справжнього "
-"співбесіди. Ви будете знати, які фрази використовувати, як презентувати "
-"себе, та як професійно відповідати на питання. Це може значно збільшити "
-"ваши шанси отримати роботу своєї мрії."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
-#. js-lingui-explicit-id
-msgid ""
-"Preparing for an interview in English takes time, but it pays off. Use the "
-"tips from this article, practice with FluencyPal’s interview simulator, and "
-"walk into your next job interview with confidence."
-msgstr ""
-"Підготовка до інтерв'ю англійською мовою займає час, але вона виправдовує "
-"себе. Використовуйте поради з цієї статті, тренуйтеся за допомогою "
-"симулятора співбесіди FluencyPal і йдіть на своє наступне співбесіду з "
-"впевненістю."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
-#. js-lingui-explicit-id
-msgid "Good preparation today means career success tomorrow."
-msgstr "Гарна підготовка сьогодні означає кар'єрний успіх завтра."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:26
-#. js-lingui-explicit-id
-msgid "Ready?"
-msgstr "Готові?"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:30
-#. js-lingui-explicit-id
-msgid "Next, allow microphone access to talk with the AI."
-msgstr "Далі, дозвольте доступ до мікрофону, щоб розмовляти з AI."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:55
-#. js-lingui-explicit-id
-msgid "I am ready"
-msgstr "Я готовий"
-
-#: src/features/Auth/SignInForm.tsx:30
-#. js-lingui-explicit-id
-msgid "Open personal plan"
-msgstr "Відкрити персональний план"
-
-#: src/features/Auth/SignInForm.tsx:33
-#. js-lingui-explicit-id
-msgid "Start the Lesson"
-msgstr "Розпочати урок"
-
-#: src/features/Auth/SignInForm.tsx:74
-#. js-lingui-explicit-id
-msgid "Open this page in browser"
-msgstr "Відкрити цю сторінку в браузері"
-
-#: src/features/Auth/SignInForm.tsx:80
-#. js-lingui-explicit-id
-msgid "Please tap the menu ⋮ and choose"
-msgstr "Будь ласка, натисніть на меню ⋮ та оберіть"
-
-#: src/features/Auth/SignInForm.tsx:82
-#. js-lingui-explicit-id
-msgid "'Open in Chrome' to continue."
-msgstr "'Відкрити в Chrome', щоб продовжити."
-
-#: src/features/Auth/SignInForm.tsx:86
-#. js-lingui-explicit-id
-msgid "Please tap the menu ••• and choose"
-msgstr "Будь ласка, натисніть на меню ••• та виберіть"
-
-#: src/features/Auth/SignInForm.tsx:88
-#. js-lingui-explicit-id
-msgid "'Open in external Browser' to continue."
-msgstr "\"Відкрити в зовнішньому браузері\" для продовження."
-
-#: src/features/Auth/SignInForm.tsx:140
-#. js-lingui-explicit-id
-msgid "Start Role Play:"
-msgstr "Почати рольову гру:"
-
-#: src/features/Auth/SignInForm.tsx:167
-#. js-lingui-explicit-id
-msgid "Create an account to continue"
-msgstr "Створіть обліковий запис для продовження"
-
-#: src/features/Auth/SignInForm.tsx:184
-#. js-lingui-explicit-id
-msgid "Continue with google"
-msgstr "Продовжити з Google"
-
-#: src/features/Auth/SignInForm.tsx:195
-#. js-lingui-explicit-id
-msgid "By creating an account, you agree to:"
-msgstr "Створюючи обліковий запис, ви погоджуєтеся на:"
-
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "Переглянути всі публікації"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "Сценарії рольових ігор для практики"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "Ви можете спробувати AI в дії зараз"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "Спробувати безкоштовно"
-
 #: src/features/Landing/PlanLandingBlock.tsx:300
 msgid "{countOfLanguages} languages to practice"
 msgstr "{countOfLanguages} мови для практики"
@@ -6911,6 +6901,33 @@ msgstr "Виграйте гру та отримайте додаток <0>без
 #: src/features/Game/GameBadge.tsx:118
 msgid "You are <0>the Leader</0> of {playersCount} players."
 msgstr "Ви є <0>Лідером</0> {playersCount} гравців."
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:51
+#. js-lingui-explicit-id
+#~ msgid "Tell us your native language"
+#~ msgstr "Розкажіть нам про вашу рідну мову"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:202
+#. js-lingui-explicit-id
+#~ msgid "My Language"
+#~ msgstr "Моя мова"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:225
+#. js-lingui-explicit-id
+#~ msgid "Select Your Language"
+#~ msgstr ""
+#~ "\n"
+#~ "Виберіть вашу мову\n"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:250
+#. js-lingui-explicit-id
+#~ msgid "Search"
+#~ msgstr "Пошук"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:280
+#. js-lingui-explicit-id
+#~ msgid "No languages found"
+#~ msgstr "Мов не знайдено"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:236
 #. js-lingui-explicit-id

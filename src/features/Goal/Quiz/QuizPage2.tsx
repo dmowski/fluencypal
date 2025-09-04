@@ -60,7 +60,7 @@ const QuizQuestions = () => {
           {currentStep === "before_nativeLanguage" && (
             <InfoStep
               imageUrl="/avatar/book.webp"
-              message={i18n._(`Tell us your native language`)}
+              message={i18n._(`Choose your native language`)}
               subMessage={i18n._(`So I can translate words into it for you`)}
             />
           )}
@@ -161,7 +161,7 @@ const NativeLanguageSelector = () => {
     await sleep(300);
     const element = document.querySelector(`button[aria-label='${langCode}']`);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "center" });
+      element.scrollIntoView({ behavior: "instant", block: "center" });
     }
   };
 
@@ -208,12 +208,12 @@ const NativeLanguageSelector = () => {
   return (
     <Stack
       sx={{
-        gap: "20px",
+        gap: "5px",
       }}
     >
       <Stack
         sx={{
-          height: `80px`,
+          height: `70px`,
         }}
       ></Stack>
       <Stack
@@ -222,6 +222,7 @@ const NativeLanguageSelector = () => {
           width: "100%",
           top: "0",
           left: 0,
+          zIndex: 1,
           backgroundColor: "rgba(10, 18, 30, 1)",
           padding: "20px 0 10px 0",
           paddingTop: `calc(${topOffset} + 65px)`,
@@ -248,7 +249,12 @@ const NativeLanguageSelector = () => {
               ),
               endAdornment: internalFilterValue && (
                 <InputAdornment position="end">
-                  <IconButton onClick={() => setInternalFilterValue("")}>
+                  <IconButton
+                    onClick={() => {
+                      setInternalFilterValue("");
+                      nativeLanguage && scrollToLangButton(nativeLanguage);
+                    }}
+                  >
                     <X size={"18px"} />
                   </IconButton>
                 </InputAdornment>
@@ -281,6 +287,7 @@ const NativeLanguageSelector = () => {
               englishFullName={option.englishName}
               isSystemLang={option.isSystemLanguage}
               fullName={option.nativeName}
+              isShowFullName
               disabled={option.code === languageToLearn}
               isFlag={option.code === languageToLearn}
               isSelected={isSelected}
@@ -447,7 +454,7 @@ const ProgressBar = () => {
           alignItems: "center",
           justifyContent: "center",
           position: "fixed",
-          zIndex: 1,
+          zIndex: 2,
           width: "100dvw",
           left: "0",
 
