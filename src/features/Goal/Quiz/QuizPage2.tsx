@@ -177,17 +177,11 @@ const NativeLanguageSelector = () => {
     return false;
   };
 
-  const systemLanguageGroup = languageGroups
-    .filter((group) => group.isSystemLanguage)
-    .filter((group) => group.code !== languageToLearn)
-    .filter(filterByInput);
-  const otherLanguageGroup = languageGroups
-    .filter((group) => !group.isSystemLanguage)
+  const filteredLanguageGroup = languageGroups
     .filter((group) => group.code !== languageToLearn)
     .filter(filterByInput);
 
-  const selectedLanguage = languageGroups.find((lang) => lang.code === nativeLanguage);
-
+  const { topOffset } = useWindowSizes();
   return (
     <Stack
       sx={{
@@ -196,179 +190,80 @@ const NativeLanguageSelector = () => {
     >
       <Stack
         sx={{
+          height: `80px`,
+        }}
+      ></Stack>
+      <Stack
+        sx={{
+          position: "fixed",
           width: "100%",
+          top: "0",
+          left: 0,
+          backgroundColor: "rgba(10, 18, 30, 1)",
+          padding: "20px 0 10px 0",
+          paddingTop: `calc(${topOffset} + 65px)`,
           alignItems: "center",
-          justifyContent: "center",
-          gap: "10px",
         }}
       >
-        <Stack
+        <TextField
+          value={internalFilterValue}
+          onChange={(e) => setInternalFilterValue(e.target.value)}
+          fullWidth
+          variant="filled"
+          label={i18n._("Native language")}
+          placeholder={i18n._("")}
+          autoComplete="off"
           sx={{
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "0px",
-            width: "100%",
-            paddingBottom: "40px",
+            maxWidth: "calc(min(600px, 100dvw) - 20px)",
           }}
-        >
-          <Typography align="left" variant="caption" sx={{ opacity: 0.6, width: "100%" }}>
-            {i18n._(`My Language`)}
-          </Typography>
-          <Stack
-            sx={{
-              alignItems: "center",
-              flexDirection: "row",
-              gap: "10px",
-              width: "100%",
-            }}
-          >
-            <Typography
-              variant="h3"
-              align="center"
-              sx={{
-                fontWeight: 800,
-                fontSize: "1.1rem",
-                boxSizing: "border-box",
-                lineHeight: "1.1",
-                textTransform: "Capitalize",
-              }}
-            >
-              {selectedLanguage
-                ? selectedLanguage.nativeName
-                : "[" + i18n._(`Select Your Language`) + "]"}
-            </Typography>
-            <MoveRight />
-            <Typography
-              variant="h3"
-              align="center"
-              sx={{
-                fontWeight: 500,
-                fontSize: "1.1rem",
-                boxSizing: "border-box",
-                lineHeight: "1.1",
-                opacity: 0.7,
-              }}
-            >
-              {fullEnglishLanguageName[languageToLearn]}
-            </Typography>
-          </Stack>
-        </Stack>
+          slotProps={{
+            input: {
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Search size={"18px"} />
+                </InputAdornment>
+              ),
+              endAdornment: internalFilterValue && (
+                <InputAdornment position="end">
+                  <IconButton onClick={() => setInternalFilterValue("")}>
+                    <X size={"18px"} />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            },
+          }}
+        />
       </Stack>
-
-      <TextField
-        value={internalFilterValue}
-        onChange={(e) => setInternalFilterValue(e.target.value)}
-        fullWidth
-        //variant="filled"
-        label={i18n._("Search")}
-        placeholder={i18n._("")}
-        autoComplete="off"
-        slotProps={{
-          input: {
-            startAdornment: (
-              <InputAdornment position="start">
-                <Search size={"18px"} />
-              </InputAdornment>
-            ),
-            endAdornment: internalFilterValue && (
-              <InputAdornment position="end">
-                <IconButton onClick={() => setInternalFilterValue("")}>
-                  <X size={"18px"} />
-                </IconButton>
-              </InputAdornment>
-            ),
-          },
-        }}
-      />
 
       <Stack
         sx={{
           width: "100%",
           paddingTop: "5px",
-          gap: cleanInput ? "8px" : "34px",
+          gap: "8px",
         }}
       >
-        {systemLanguageGroup.length === 0 && otherLanguageGroup.length === 0 && (
+        {filteredLanguageGroup.length === 0 && (
           <Typography variant="caption" sx={{ opacity: 0.7 }}>
-            {i18n._(`No languages found`)}
+            {i18n._(`No results found`)}
           </Typography>
         )}
-        {systemLanguageGroup.length > 0 && (
-          <Stack
-            sx={{
-              width: "100%",
-              gap: "8px",
-            }}
-          >
-            {!cleanInput && (
-              <Typography
-                variant="caption"
-                sx={{
-                  opacity: 0.7,
-                }}
-              >
-                {/**i18n._(`Suggested to you:`)} */}
-              </Typography>
-            )}
-
-            {systemLanguageGroup.map((option) => {
-              const isSelected = option.code === nativeLanguage;
-              return (
-                <LanguageButton
-                  onClick={() => setNativeLanguage(option.code)}
-                  key={option.code}
-                  label={option.englishName}
-                  langCode={option.code}
-                  englishFullName={option.englishName}
-                  isSystemLang={option.isSystemLanguage}
-                  fullName={option.nativeName}
-                  disabled={option.code === languageToLearn}
-                  isFlag={option.code === languageToLearn}
-                  isSelected={isSelected}
-                />
-              );
-            })}
-          </Stack>
-        )}
-
-        {otherLanguageGroup.length > 0 && (
-          <Stack
-            sx={{
-              width: "100%",
-              gap: "8px",
-            }}
-          >
-            {systemLanguageGroup.length > 0 && !cleanInput && (
-              <Typography
-                variant="caption"
-                sx={{
-                  opacity: 0.7,
-                }}
-              >
-                {/**i18n._(`Other:`)} */}
-              </Typography>
-            )}
-
-            {otherLanguageGroup.map((option) => {
-              const isSelected = option.code === nativeLanguage;
-              return (
-                <LanguageButton
-                  onClick={() => setNativeLanguage(option.code)}
-                  key={option.code}
-                  label={option.englishName}
-                  langCode={option.code}
-                  englishFullName={option.englishName}
-                  isSystemLang={option.isSystemLanguage}
-                  fullName={option.nativeName}
-                  disabled={option.code === languageToLearn}
-                  isFlag={option.code === languageToLearn}
-                  isSelected={isSelected}
-                />
-              );
-            })}
-          </Stack>
-        )}
+        {filteredLanguageGroup.map((option) => {
+          const isSelected = option.code === nativeLanguage;
+          return (
+            <LanguageButton
+              onClick={() => setNativeLanguage(option.code)}
+              key={option.code}
+              label={option.englishName}
+              langCode={option.code}
+              englishFullName={option.englishName}
+              isSystemLang={option.isSystemLanguage}
+              fullName={option.nativeName}
+              disabled={option.code === languageToLearn}
+              isFlag={option.code === languageToLearn}
+              isSelected={isSelected}
+            />
+          );
+        })}
       </Stack>
       <NextStepButton disabled={!nativeLanguage} />
     </Stack>
@@ -529,6 +424,7 @@ const ProgressBar = () => {
           alignItems: "center",
           justifyContent: "center",
           position: "fixed",
+          zIndex: 1,
           width: "100dvw",
           left: "0",
 
