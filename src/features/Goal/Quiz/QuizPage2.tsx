@@ -187,7 +187,7 @@ const RecordUserAudio = () => {
   const learningLanguageName = fullLanguageName[languageToLearn];
   const auth = useAuth();
 
-  const [transcript, setTranscript] = useState<string>("23");
+  const [transcript, setTranscript] = useState<string>("");
 
   const recorder = useAudioRecorder({
     languageCode: languageToLearn || "en",
@@ -254,7 +254,7 @@ const RecordUserAudio = () => {
             >
               {recorder.isTranscribing && i18n._("Processing...")}
               {transcript && transcript}
-              {!transcript && !recorder.isTranscribing && i18n._("I am waiting for your speech...")}
+              {!transcript && !recorder.isTranscribing && "____"}
             </Typography>
 
             {transcript && !recorder.isTranscribing && (
