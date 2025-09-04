@@ -155,6 +155,7 @@ export const LanguageButton = ({
         },
       }}
       component={"button"}
+      aria-label={langCode}
       disabled={disabled}
       onClick={() => onClick(langCode)}
     >

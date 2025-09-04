@@ -27,7 +27,9 @@ import { LangSelectorFullScreen, LanguageButton } from "@/features/Lang/LangSele
 import { GradingProgressBar } from "@/features/Dashboard/BrainCard";
 import { QuizProvider, useQuiz } from "./useQuiz";
 import { useLanguageGroup } from "../useLanguageGroup";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const QuizQuestions = () => {
   const { currentStep, isFirstLoading } = useQuiz();
@@ -143,7 +145,7 @@ const InfoStep = ({
 
 const NativeLanguageSelector = () => {
   const { i18n } = useLingui();
-  const { nativeLanguage, setNativeLanguage, languageToLearn, isStepLoading, nextStep } = useQuiz();
+  const { nativeLanguage, setNativeLanguage, languageToLearn, nextStep } = useQuiz();
 
   const [internalFilterValue, setInternalFilterValue] = useState("");
   const cleanInput = internalFilterValue.trim().toLowerCase();
@@ -152,6 +154,26 @@ const NativeLanguageSelector = () => {
     defaultGroupTitle: i18n._(`Other languages`),
     systemLanguagesTitle: i18n._(`System languages`),
   });
+
+  const scrollToLangButton = async (langCode: string) => {
+    const isWindow = typeof window !== "undefined";
+    if (!isWindow) return;
+    await sleep(300);
+    const element = document.querySelector(`button[aria-label='${langCode}']`);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
+  const isScrolledRef = useRef(false);
+
+  useEffect(() => {
+    if (nativeLanguage && !isScrolledRef.current) {
+      console.log("Need to scroll to ", nativeLanguage);
+      isScrolledRef.current = true;
+      scrollToLangButton(nativeLanguage);
+    }
+  }, []);
 
   const filterByInput = ({
     englishName,
@@ -179,7 +201,8 @@ const NativeLanguageSelector = () => {
 
   const filteredLanguageGroup = languageGroups
     .filter((group) => group.code !== languageToLearn)
-    .filter(filterByInput);
+    .filter(filterByInput)
+    .sort((a, b) => a.englishName.localeCompare(b.englishName));
 
   const { topOffset } = useWindowSizes();
   return (
