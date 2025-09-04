@@ -61,7 +61,7 @@ const QuizQuestions = () => {
             <InfoStep
               imageUrl="/avatar/book.webp"
               message={i18n._(`Choose your native language`)}
-              subMessage={i18n._(`So I can translate words into it for you`)}
+              subMessage={i18n._(`So I can translate words for you`)}
             />
           )}
 

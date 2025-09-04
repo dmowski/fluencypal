@@ -6,7 +6,10 @@ import {
   viewportContentSafeAreaInsetBottom,
   viewportSafeAreaInsetBottom,
 } from "@telegram-apps/sdk-react";
-import { createContext, useContext, ReactNode, JSX } from "react";
+import { createContext, useContext, ReactNode, JSX, useState, useEffect } from "react";
+
+const DEFAULT_TOP = "0px";
+const DEFAULT_BOTTOM = "0px";
 
 interface WindowSizesContextType {
   topOffset: string;
@@ -19,14 +22,23 @@ function useProvideWindowSizes(): WindowSizesContextType {
   const contentSafeTop = useSignal(viewportContentSafeAreaInsetTop);
   const safeAreaInsetTop = useSignal(viewportSafeAreaInsetTop);
 
+  const [isAllowApply, setIsAllowApply] = useState(false);
+
   const contentSafeBottom = useSignal(viewportContentSafeAreaInsetBottom);
   const safeAreaInsetBottom = useSignal(viewportSafeAreaInsetBottom);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsAllowApply(true);
+    }, 90);
+  }, []);
+
   const combinedOffset = contentSafeTop + safeAreaInsetTop;
-  const topOffset = combinedOffset ? `${combinedOffset + 0}px` : "0px";
+  const topOffset = isAllowApply && combinedOffset ? `${combinedOffset + 0}px` : DEFAULT_TOP;
 
   const combinedBottomOffset = contentSafeBottom + safeAreaInsetBottom;
-  const bottomOffset = combinedBottomOffset ? `${combinedBottomOffset + 0}px` : "0px";
+  const bottomOffset =
+    isAllowApply && combinedBottomOffset ? `${combinedBottomOffset + 0}px` : DEFAULT_BOTTOM;
 
   return {
     topOffset,

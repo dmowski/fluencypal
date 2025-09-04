@@ -28,7 +28,6 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   const [isTelegramAuthLoading, setIsTelegramAuthLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const auth = useAuth();
-  const { topOffset } = useWindowSizes();
 
   const plan = usePlan();
   const settings = useSettings();
@@ -103,9 +102,13 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
       return;
     }
 
+    const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
     if (raw) {
       isInitializing.current = true;
-      void initToken(raw);
+      sleep(8_000).then(() => {
+        void initToken(raw);
+      });
     } else {
       setError(i18n._("Not running inside Telegram App"));
     }
@@ -124,13 +127,12 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
           sx={{
             alignItems: "center",
             width: "100%",
-            backgroundColor: `rgba(255, 255, 255, 0.2)`,
             color: "#fff",
             height: "max-content",
             minHeight: "100dvh",
             maxHeight: "2000px",
             position: "relative",
-            paddingTop: topOffset,
+            paddingTop: "200px",
           }}
         >
           <Stack
@@ -151,30 +153,37 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
                 width: "100%",
               }}
             >
-              {auth.loading ? (
-                <Typography>{i18n._("Loading.")}</Typography>
-              ) : isTelegramAuthLoading ? (
-                <Typography>{i18n._("Loading..")}</Typography>
-              ) : (
-                <Typography>{i18n._("Loading...")}</Typography>
-              )}
+              <Typography
+                sx={{
+                  opacity: 0.6,
+                }}
+                align="center"
+              >
+                {auth.loading
+                  ? i18n._("Loading.")
+                  : isTelegramAuthLoading
+                    ? i18n._("Loading..")
+                    : i18n._("Loading...")}
+              </Typography>
 
               {error && <Typography color="error">❌ {error}</Typography>}
 
-              <Button
-                variant="text"
-                onClick={async () => {
-                  await auth.logout();
-                  setTimeout(() => {
-                    window.location.reload();
-                  }, 300);
-                }}
-                style={{
-                  opacity: 0.5,
-                }}
-              >
-                {i18n._("Refresh")}
-              </Button>
+              {error && (
+                <Button
+                  variant="text"
+                  onClick={async () => {
+                    await auth.logout();
+                    setTimeout(() => {
+                      window.location.reload();
+                    }, 300);
+                  }}
+                  style={{
+                    opacity: 0.5,
+                  }}
+                >
+                  {i18n._("Refresh")}
+                </Button>
+              )}
             </Stack>
           </Stack>
         </Stack>
