@@ -30,7 +30,7 @@ import { useLanguageGroup } from "../useLanguageGroup";
 import { useMemo, useState } from "react";
 
 const QuizQuestions = () => {
-  const { currentStep } = useQuiz();
+  const { currentStep, isFirstLoading } = useQuiz();
   const { i18n } = useLingui();
 
   return (
@@ -45,45 +45,47 @@ const QuizQuestions = () => {
     >
       <ProgressBar />
 
-      <Stack
-        sx={{
-          maxWidth: "600px",
-          padding: "0 10px",
-          width: "100%",
-        }}
-      >
-        {currentStep === "learnLanguage" && <LanguageToLearnSelector />}
+      {!isFirstLoading && (
+        <Stack
+          sx={{
+            maxWidth: "600px",
+            padding: "0 10px",
+            width: "100%",
+          }}
+        >
+          {currentStep === "learnLanguage" && <LanguageToLearnSelector />}
 
-        {currentStep === "before_nativeLanguage" && (
-          <InfoStep
-            imageUrl="/avatar/book.webp"
-            message={i18n._(`Tell us your native language`)}
-            subMessage={i18n._(`So I can translate words into it for you`)}
-          />
-        )}
+          {currentStep === "before_nativeLanguage" && (
+            <InfoStep
+              imageUrl="/avatar/book.webp"
+              message={i18n._(`Tell us your native language`)}
+              subMessage={i18n._(`So I can translate words into it for you`)}
+            />
+          )}
 
-        {currentStep === "nativeLanguage" && <NativeLanguageSelector />}
+          {currentStep === "nativeLanguage" && <NativeLanguageSelector />}
 
-        {currentStep === "before_pageLanguage" && (
-          <InfoStep
-            message={i18n._(`Choose Site Language`)}
-            subMessage={i18n._(`This is text you see on buttons and menus`)}
-            imageUrl="/illustrations/ui-schema.png"
-          />
-        )}
+          {currentStep === "before_pageLanguage" && (
+            <InfoStep
+              message={i18n._(`Choose Site Language`)}
+              subMessage={i18n._(`This is text you see on buttons and menus`)}
+              imageUrl="/illustrations/ui-schema.png"
+            />
+          )}
 
-        {currentStep === "pageLanguage" && <PageLanguageSelector />}
+          {currentStep === "pageLanguage" && <PageLanguageSelector />}
 
-        {currentStep === "before_recordAbout" && (
-          <InfoStep
-            subMessage={i18n._(`Tell me about yourself`)}
-            message={i18n._(
-              `Who you are, what you do, and your interests. Why you are learning this language?`
-            )}
-            imageUrl="/avatar/bot1.webp"
-          />
-        )}
-      </Stack>
+          {currentStep === "before_recordAbout" && (
+            <InfoStep
+              subMessage={i18n._(`Tell me about yourself`)}
+              message={i18n._(
+                `Who you are, what you do, and your interests. Why you are learning this language?`
+              )}
+              imageUrl="/avatar/bot1.webp"
+            />
+          )}
+        </Stack>
+      )}
     </Stack>
   );
 };

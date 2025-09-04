@@ -4,7 +4,7 @@ import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { SetUrlStateOptions, useUrlMapState } from "@/features/Url/useUrlParam";
 
 import { useRouter } from "next/navigation";
-import { createContext, useContext, ReactNode, JSX, useMemo, useState } from "react";
+import { createContext, useContext, ReactNode, JSX, useMemo, useState, useEffect } from "react";
 import { useLanguageGroup } from "../useLanguageGroup";
 import { useLingui } from "@lingui/react";
 import { getCountryByIP } from "@/features/User/getCountry";
@@ -52,6 +52,7 @@ interface QuizContextType {
   isLastStep: boolean;
 
   isCanGoToMainPage: boolean;
+  isFirstLoading: boolean;
 }
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const QuizContext = createContext<QuizContextType | null>(null);
@@ -69,6 +70,7 @@ interface QuizUrlState {
 }
 
 function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): QuizContextType {
+  const [isFirstLoading, setIsFirstLoading] = useState(true);
   const defaultState: QuizUrlState = useMemo(
     () => ({
       toLearn: defaultLangToLearn,
@@ -83,6 +85,12 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     defaultState as unknown as Record<string, string>,
     false
   );
+
+  useEffect(() => {
+    if (!isStateLoading && isFirstLoading) {
+      setIsFirstLoading(false);
+    }
+  }, [isStateLoading]);
 
   const isTelegramApp = useMemo(() => isTMA(), []);
   const isCanGoToMainPage = !isTelegramApp;
@@ -257,6 +265,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     nextStep,
     prevStep,
     progress,
+    isFirstLoading,
   };
 }
 
