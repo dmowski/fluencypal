@@ -21,6 +21,7 @@ import {
   Globe,
   GraduationCap,
   Guitar,
+  Icon,
   LucideProps,
   Mic,
   Music,
@@ -98,6 +99,15 @@ const QuizQuestions = () => {
               message={i18n._(`We are ready`)}
               subMessage={i18n._(`Let's talk. Tell me  about yourself`)}
               imageUrl="/avatar/owl1.png"
+              subComponent={
+                <Stack
+                  sx={{
+                    paddingTop: "20px",
+                  }}
+                >
+                  <AboutYourselfList />
+                </Stack>
+              }
             />
           )}
 
@@ -173,9 +183,11 @@ export const AboutYourselfList: React.FC = () => {
 const RecordUserAudio = () => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
-  const { languageToLearn } = useQuiz();
+  const { languageToLearn, nextStep } = useQuiz();
   const learningLanguageName = fullLanguageName[languageToLearn];
   const auth = useAuth();
+
+  const [transcript, setTranscript] = useState<string>("23");
 
   const recorder = useAudioRecorder({
     languageCode: languageToLearn || "en",
@@ -184,6 +196,13 @@ const RecordUserAudio = () => {
     isGame: false,
     visualizerComponentWidth: "100%",
   });
+
+  useEffect(() => {
+    if (recorder.transcription) {
+      const combinedTranscript = [transcript, recorder.transcription].filter(Boolean).join(" ");
+      setTranscript(combinedTranscript);
+    }
+  }, [recorder.transcription]);
 
   return (
     <Stack
@@ -227,18 +246,44 @@ const RecordUserAudio = () => {
             <Typography variant="h6">{i18n._("Your story")}</Typography>
 
             <Typography
-              variant={recorder.transcription ? "body2" : "caption"}
+              variant={transcript ? "body2" : "caption"}
               sx={{
-                opacity: recorder.transcription ? 1 : 0.8,
+                opacity: transcript ? 1 : 0.8,
               }}
               className={recorder.isTranscribing ? `loading-shimmer` : ""}
             >
               {recorder.isTranscribing && i18n._("Processing...")}
-              {recorder.transcription && recorder.transcription}
-              {!recorder.transcription &&
-                !recorder.isTranscribing &&
-                i18n._("I am waiting for your speech...")}
+              {transcript && transcript}
+              {!transcript && !recorder.isTranscribing && i18n._("I am waiting for your speech...")}
             </Typography>
+
+            {transcript && !recorder.isTranscribing && (
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  paddingTop: "10px",
+                  gap: "10px",
+                }}
+              >
+                <Button
+                  variant="outlined"
+                  endIcon={<Mic size={"16px"} />}
+                  size="small"
+                  onClick={recorder.stopRecording}
+                >
+                  {i18n._("Record more")}
+                </Button>
+                <IconButton
+                  size="small"
+                  onClick={() => {
+                    setTranscript("");
+                  }}
+                >
+                  <X size={"16px"} />
+                </IconButton>
+              </Stack>
+            )}
           </Stack>
         </Stack>
       </Stack>
@@ -246,15 +291,21 @@ const RecordUserAudio = () => {
       <FooterButton
         aboveButtonComponent={recorder.visualizerComponent}
         onClick={() => {
+          if (transcript) {
+            nextStep();
+            return;
+          }
           if (recorder.isRecording) {
             recorder.stopRecording();
           } else {
             recorder.startRecording();
           }
         }}
-        title={recorder.isRecording ? i18n._("Done") : i18n._("Record")}
+        title={
+          recorder.isRecording ? i18n._("Done") : transcript ? i18n._("Next") : i18n._("Record")
+        }
         color={recorder.isRecording ? "error" : "primary"}
-        endIcon={recorder.isRecording ? <Check /> : <Mic />}
+        endIcon={recorder.isRecording ? <Check /> : transcript ? <ArrowRight /> : <Mic />}
       />
     </Stack>
   );
@@ -263,10 +314,12 @@ const RecordUserAudio = () => {
 const InfoStep = ({
   message,
   subMessage,
+  subComponent,
   imageUrl,
 }: {
   message: string;
   subMessage: string;
+  subComponent?: ReactNode;
   imageUrl: string;
 }) => {
   const sizes = useWindowSizes();
@@ -303,6 +356,7 @@ const InfoStep = ({
           <Typography align="center" variant="caption" sx={{ opacity: 0.7 }}>
             {subMessage}
           </Typography>
+          {subComponent}
         </Stack>
       </Stack>
 
