@@ -10,11 +10,13 @@ export const useAudioRecorder = ({
   getAuthToken,
   isFree,
   isGame,
+  visualizerComponentWidth,
 }: {
   languageCode: string;
   getAuthToken: () => Promise<string>;
   isFree: boolean;
   isGame: boolean;
+  visualizerComponentWidth?: string;
 }) => {
   const [recordingSeconds, setRecordingSeconds] = useState(0);
   const audioDurationRef = useRef<number>(0);
@@ -123,7 +125,7 @@ export const useAudioRecorder = ({
         fullscreen={true}
         barWidth={3}
         gap={1}
-        width={"150px"}
+        width={visualizerComponentWidth || "150px"}
       />
     ) : null,
   };
