@@ -885,19 +885,8 @@ export const WebWillWall = ({ children }: { children: ReactNode }) => {
 
   if (isShowInstruction) {
     return (
-      <Stack
-        sx={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          zIndex: 999999999,
-          width: "100dvw",
-          height: "100dvh",
-
-          backgroundColor: "#111214",
-        }}
-      >
-        <Stack sx={{ alignItems: "flex-end", gap: "10px", padding: "40px 15px 0px 10px" }}>
+      <Stack sx={{}}>
+        <Stack sx={{ alignItems: "flex-end", gap: "10px", padding: "20px 15px 40px 10px" }}>
           <ArrowUp
             style={{
               opacity: 0.7,
