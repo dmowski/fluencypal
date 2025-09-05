@@ -73,5 +73,6 @@ export const useIsWebView = () => {
     agent,
     inWebView,
     isTelegram,
+    isTiktok,
   };
 };
