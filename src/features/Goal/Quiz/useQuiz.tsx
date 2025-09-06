@@ -15,6 +15,8 @@ import { sleep } from "@/libs/sleep";
 import { useAuth } from "@/features/Auth/useAuth";
 import { db } from "@/features/Firebase/firebaseDb";
 import { useDocumentData } from "react-firebase-hooks/firestore";
+import { getDoc, setDoc } from "firebase/firestore";
+import { QuizSurvey2 } from "./types";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -114,7 +116,76 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const pageLanguage = state.pageLang;
 
   const surveyDocRef = db.documents.quizSurvey2(auth.uid, languageToLearn);
-  const [surveyDoc, surveyLoading, error] = useDocumentData(surveyDocRef);
+  const [surveyDoc] = useDocumentData(surveyDocRef);
+
+  const updateSurvey = async (surveyDoc: QuizSurvey2) => {
+    if (!surveyDocRef) {
+      return;
+    }
+    await setDoc(
+      surveyDocRef,
+      { ...surveyDoc, updatedAtIso: new Date().toISOString() },
+      { merge: true }
+    );
+    console.log("✅ Survey doc updated", surveyDoc);
+  };
+
+  const ensureSurveyDocExists = async () => {
+    if (surveyDoc) {
+      updateSurvey({
+        ...surveyDoc,
+        learningLanguageCode: languageToLearn,
+        nativeLanguageCode: nativeLanguage,
+        pageLanguageCode: pageLanguage,
+      });
+      return;
+    }
+    if (!auth.uid) {
+      console.error("ensureSurveyDocExists | No auth uid");
+      return;
+    }
+
+    if (!surveyDocRef) {
+      console.error("ensureSurveyDocExists | No survey doc ref");
+      return;
+    }
+
+    const doc = await getDoc(surveyDocRef);
+    const docData = doc.data();
+    if (!docData) {
+      const initSurvey: QuizSurvey2 = {
+        learningLanguageCode: languageToLearn,
+        nativeLanguageCode: nativeLanguage,
+        pageLanguageCode: pageLanguage,
+
+        aboutUserTranscription: "",
+        aboutUserFollowUpQuestion: "",
+        aboutUserFollowUpAnswer: "",
+        aboutUserAnalysis: "",
+        aboutUserInfoRecords: [],
+
+        goalQuestion: "",
+        goalUserAnswer: "",
+        goalFollowUpQuestion: "",
+        goalFollowUpAnswer: "",
+        goalAnalysis: "",
+
+        goalData: null,
+
+        updatedAtIso: new Date().toISOString(),
+        createdAtIso: new Date().toISOString(),
+      };
+      await setDoc(surveyDocRef, initSurvey);
+      console.log("✅ Survey doc created", initSurvey);
+    } else {
+      updateSurvey({
+        ...docData,
+        learningLanguageCode: languageToLearn,
+        nativeLanguageCode: nativeLanguage,
+        pageLanguageCode: pageLanguage,
+      });
+    }
+  };
 
   const { i18n } = useLingui();
   const { languageGroups } = useLanguageGroup({
@@ -225,6 +296,10 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const nextStep = async () => {
     const nextStepIndex = Math.min(currentStepIndex + 1, path.length - 1);
     const nextStep = path[nextStepIndex];
+
+    if (currentStep === "before_recordAbout") {
+      ensureSurveyDocExists();
+    }
 
     let newStatePatch: Partial<QuizUrlState> = {
       currentStep: nextStep,

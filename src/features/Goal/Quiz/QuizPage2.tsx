@@ -465,7 +465,6 @@ const NativeLanguageSelector = () => {
 
   useEffect(() => {
     if (nativeLanguage && !isScrolledRef.current) {
-      console.log("Need to scroll to ", nativeLanguage);
       isScrolledRef.current = true;
       (async () => {
         scrollToLangButton(nativeLanguage);
