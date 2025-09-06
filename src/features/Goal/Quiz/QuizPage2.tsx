@@ -156,7 +156,6 @@ export const AuthSignInList: React.FC = () => {
 const AuthWall = ({ children }: { children: ReactNode }) => {
   const auth = useAuth();
   const { i18n } = useLingui();
-  const sizes = useWindowSizes();
 
   const isShowAuthWall = !auth.uid && !auth.loading;
 

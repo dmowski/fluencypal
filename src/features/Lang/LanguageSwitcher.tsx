@@ -17,7 +17,7 @@ import { Globe, GraduationCap, Rabbit } from "lucide-react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLocalStorage } from "react-use";
 import { parseLangFromUrl } from "./parseLangFromUrl";
-import { LangSelector } from "./LangSelector";
+import { LangSelector, LangSelectorFullScreen } from "./LangSelector";
 import LanguageAutocomplete from "./LanguageAutocomplete";
 import { useLanguageGroup } from "../Goal/useLanguageGroup";
 import { useUrlParam } from "../Url/useUrlParam";
@@ -78,6 +78,12 @@ export function LanguageSwitcher({
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
+
+    setTimeout(() => {
+      if (!isAuth) {
+        setIsShowModal(false);
+      }
+    }, 700);
   };
 
   const systemLangs = useMemo(() => getUserLangCode(), []);
@@ -307,10 +313,20 @@ export function LanguageSwitcher({
                     {i18n._(`Page Language`)}
                   </Typography>
                 </Stack>
-                <LangSelector
-                  value={pageLang || "en"}
-                  onChange={(newLang) => updatePageLanguage(newLang)}
-                />
+                {isAuth ? (
+                  <LangSelector
+                    value={pageLang || "en"}
+                    onChange={(newLang) => updatePageLanguage(newLang)}
+                  />
+                ) : (
+                  <LangSelectorFullScreen
+                    value={pageLang || "en"}
+                    onChange={(newLang) => {
+                      updatePageLanguage(newLang);
+                      //setIsShowModal(false);
+                    }}
+                  />
+                )}
               </Stack>
             </Stack>
           </Stack>
