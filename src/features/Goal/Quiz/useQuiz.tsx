@@ -27,6 +27,8 @@ type QuizStep =
   | "pageLanguage"
   | "before_recordAbout"
   | "recordAbout"
+  | "before_recordAboutFollowUp"
+  | "recordAboutFollowUp"
   | "reviewAbout";
 const stepsViews: QuizStep[] = [
   "learnLanguage",
@@ -38,6 +40,10 @@ const stepsViews: QuizStep[] = [
 
   "before_recordAbout",
   "recordAbout",
+
+  "before_recordAboutFollowUp",
+  "recordAboutFollowUp",
+
   "reviewAbout",
 ];
 
@@ -160,15 +166,23 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
         pageLanguageCode: pageLanguage,
 
         aboutUserTranscription: "",
-        aboutUserFollowUpQuestion: "",
-        aboutUserFollowUpAnswer: "",
+        aboutUserFollowUpQuestion: {
+          title: "",
+          subtitle: "",
+          description: "",
+        },
+        aboutUserFollowUpTranscription: "",
         aboutUserAnalysis: "",
         aboutUserInfoRecords: [],
 
         goalQuestion: "",
-        goalUserAnswer: "",
-        goalFollowUpQuestion: "",
-        goalFollowUpAnswer: "",
+        goalUserTranscription: "",
+        goalFollowUpQuestion: {
+          title: "",
+          subtitle: "",
+          description: "",
+        },
+        goalFollowUpTranscription: "",
         goalAnalysis: "",
 
         goalData: null,

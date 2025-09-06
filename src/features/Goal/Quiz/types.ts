@@ -1,21 +1,29 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
 import type { GoalElementInfo } from "@/features/Plan/types";
 
+interface QuizSurvey2FollowUpQuestion {
+  title: string;
+  subtitle: string;
+  description?: string;
+}
+
 export interface QuizSurvey2 {
   learningLanguageCode: SupportedLanguage;
   nativeLanguageCode: string;
   pageLanguageCode: SupportedLanguage;
 
   aboutUserTranscription: string;
-  aboutUserFollowUpQuestion: string;
-  aboutUserFollowUpAnswer: string;
+  aboutUserFollowUpQuestion: QuizSurvey2FollowUpQuestion;
+
+  aboutUserFollowUpTranscription: string;
   aboutUserAnalysis: string;
   aboutUserInfoRecords: string[]; // list of short notes about user
 
   goalQuestion: string;
-  goalUserAnswer: string;
-  goalFollowUpQuestion: string;
-  goalFollowUpAnswer: string;
+  goalUserTranscription: string;
+  goalFollowUpQuestion: QuizSurvey2FollowUpQuestion;
+
+  goalFollowUpTranscription: string;
   goalAnalysis: string;
 
   goalData: GoalElementInfo | null;

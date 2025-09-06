@@ -70,10 +70,13 @@ import Google from "@mui/icons-material/Google";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { scrollToLangButton, scrollTopFast } from "@/libs/scroll";
 import { sleep } from "@/libs/sleep";
+import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 
 const QuizQuestions = () => {
-  const { currentStep, isFirstLoading } = useQuiz();
+  const { currentStep, isFirstLoading, survey, updateSurvey, languageToLearn } = useQuiz();
   const { i18n } = useLingui();
+
+  const learningLanguageName = fullLanguageName[languageToLearn];
 
   return (
     <Stack
@@ -139,11 +142,120 @@ const QuizQuestions = () => {
 
           {currentStep === "recordAbout" && (
             <AuthWall>
-              <RecordUserAudio />
+              <RecordUserAudio
+                title={i18n._("Tell me about yourself")}
+                subTitle={
+                  <Trans>
+                    Record 2-3 minutes story using <b>{learningLanguageName}</b>
+                  </Trans>
+                }
+                subTitleComponent={<AboutYourselfList />}
+                transcript={survey?.aboutUserTranscription || ""}
+                minCharacters={200}
+                updateTranscript={async (combinedTranscript) => {
+                  if (!survey) {
+                    return;
+                  }
+
+                  if (combinedTranscript.length > 200) {
+                    // todo: trigger analysis
+                  }
+
+                  updateSurvey({
+                    ...survey,
+                    aboutUserTranscription: combinedTranscript,
+                  });
+                }}
+              />
+            </AuthWall>
+          )}
+
+          {currentStep === "before_recordAboutFollowUp" && (
+            <AuthWall>
+              <InfoStep
+                message={i18n._(`Wow, that was awesome!`)}
+                subMessage={i18n._(`Let's continue, I have a question for you!`)}
+                imageUrl="/avatar/owl1.png"
+                subComponent={
+                  <Stack
+                    sx={{
+                      paddingTop: "20px",
+                    }}
+                  ></Stack>
+                }
+              />
+            </AuthWall>
+          )}
+
+          {currentStep === "recordAboutFollowUp" && (
+            <AuthWall>
+              <RecordUserAudio
+                title={survey?.aboutUserFollowUpQuestion.title || i18n._("Loading...")}
+                isLoading={!survey?.aboutUserFollowUpQuestion.title}
+                subTitle={survey?.aboutUserFollowUpQuestion.subtitle || ""}
+                subTitleComponent={
+                  <>
+                    {survey?.aboutUserFollowUpQuestion.title ? (
+                      <>
+                        <Stack>
+                          <Markdown onWordClick={() => {}} variant="conversation">
+                            {survey?.aboutUserFollowUpQuestion.description || "..."}
+                          </Markdown>
+                        </Stack>
+                      </>
+                    ) : (
+                      <Stack
+                        sx={{
+                          gap: "10px",
+                        }}
+                      >
+                        <LoadingShapes sizes={["40px", "100px"]} />
+                      </Stack>
+                    )}
+                  </>
+                }
+                transcript={survey?.aboutUserFollowUpTranscription || ""}
+                minCharacters={150}
+                updateTranscript={async (combinedTranscript) => {
+                  if (!survey) {
+                    return;
+                  }
+
+                  if (combinedTranscript.length > 150) {
+                    // todo: trigger analysis of follow up
+                  }
+
+                  updateSurvey({
+                    ...survey,
+                    aboutUserFollowUpTranscription: combinedTranscript,
+                  });
+                }}
+              />
             </AuthWall>
           )}
         </Stack>
       )}
+    </Stack>
+  );
+};
+
+const LoadingShapes = ({ sizes }: { sizes: string[] }) => {
+  return (
+    <Stack
+      sx={{
+        gap: "10px",
+      }}
+    >
+      {sizes.map((size, index) => (
+        <Stack
+          key={index}
+          className="loading-shimmer-shape"
+          sx={{
+            minHeight: size,
+            borderRadius: "6px",
+          }}
+        />
+      ))}
     </Stack>
   );
 };
@@ -219,13 +331,27 @@ export const AboutYourselfList: React.FC = () => {
   return <IconTextList listItems={listItems} />;
 };
 
-const RecordUserAudio = () => {
+const RecordUserAudio = ({
+  transcript,
+  minCharacters,
+  updateTranscript,
+  title,
+  subTitle,
+  subTitleComponent,
+  isLoading,
+}: {
+  transcript: string;
+  minCharacters: number;
+  updateTranscript: (transcript: string) => Promise<void>;
+  title: string;
+  subTitle: string | ReactNode;
+  subTitleComponent: ReactNode;
+  isLoading?: boolean;
+}) => {
   const { i18n } = useLingui();
   const { languageToLearn, nextStep, survey, updateSurvey } = useQuiz();
-  const learningLanguageName = fullLanguageName[languageToLearn];
-  const auth = useAuth();
 
-  const transcript = survey?.aboutUserTranscription || "";
+  const auth = useAuth();
 
   const recorder = useAudioRecorder({
     languageCode: languageToLearn || "en",
@@ -237,24 +363,19 @@ const RecordUserAudio = () => {
 
   useEffect(() => {
     if (recorder.transcription && survey) {
-      const combinedTranscript = [transcript, recorder.transcription].filter(Boolean).join(" ");
-      updateSurvey({
-        ...survey,
-        aboutUserTranscription: combinedTranscript,
-      });
+      const combinedTranscript = [survey.aboutUserTranscription, transcript]
+        .filter(Boolean)
+        .join(" ");
+      updateTranscript(combinedTranscript);
     }
   }, [recorder.transcription]);
 
   const clearTranscript = () => {
     if (survey) {
-      updateSurvey({
-        ...survey,
-        aboutUserTranscription: "",
-      });
+      updateTranscript("");
     }
   };
 
-  const minCharacters = 200;
   const isNeedMoreRecording = !transcript || transcript.length < minCharacters;
 
   return (
@@ -275,21 +396,20 @@ const RecordUserAudio = () => {
           }}
         >
           <Stack>
-            <Typography variant="h6">{i18n._("Tell me about yourself")}</Typography>
+            <Typography variant="h6" className={isLoading ? "loading-shimmer" : ""}>
+              {title}
+            </Typography>
             <Typography
               variant="caption"
+              className={isLoading ? "loading-shimmer" : ""}
               sx={{
                 opacity: 0.8,
               }}
             >
-              <Trans>
-                Record 2-3 minutes story using <b>{learningLanguageName}</b>
-              </Trans>
+              {subTitle}
             </Typography>
           </Stack>
-          <Stack>
-            <AboutYourselfList />
-          </Stack>
+          <Stack>{subTitleComponent}</Stack>
 
           <Stack
             sx={{
@@ -298,7 +418,9 @@ const RecordUserAudio = () => {
               padding: "12px 12px 15px 10px",
               borderRadius: "8px",
               backgroundColor: "rgba(255, 255, 255, 0.08)",
+              opacity: isLoading ? 0.4 : 1,
             }}
+            className={isLoading ? "loading-shimmer-shape" : ""}
           >
             <Stack
               sx={{
@@ -314,7 +436,7 @@ const RecordUserAudio = () => {
                   fontWeight: 600,
                 }}
               >
-                {i18n._("Your story")}
+                {i18n._("Your answer")}
               </Typography>
 
               <Typography
@@ -383,7 +505,7 @@ const RecordUserAudio = () => {
 
       <FooterButton
         aboveButtonComponent={!transcript && recorder.visualizerComponent}
-        disabled={!!transcript && transcript.length < 30}
+        disabled={isLoading || (!!transcript && transcript.length < 30)}
         onClick={() => {
           if (transcript) {
             nextStep();
