@@ -301,31 +301,41 @@ const RecordUserAudio = () => {
               }}
               className={recorder.isTranscribing ? `loading-shimmer` : ""}
             >
-              {recorder.isTranscribing && i18n._("Processing...")}
               {transcript && transcript}
               {!transcript && !recorder.isTranscribing && survey && "____"}
+              {recorder.isTranscribing && " " + i18n._("Processing...")}
             </Typography>
 
             {transcript && !recorder.isTranscribing && (
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  paddingTop: "10px",
-                  gap: "10px",
-                }}
-              >
-                <Button
-                  variant="outlined"
-                  endIcon={<Mic size={"16px"} />}
-                  size="small"
-                  onClick={recorder.stopRecording}
+              <Stack>
+                {recorder.visualizerComponent}
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    paddingTop: "10px",
+                    gap: "10px",
+                  }}
                 >
-                  {i18n._("Record more")}
-                </Button>
-                <IconButton size="small" onClick={clearTranscript}>
-                  <X size={"16px"} />
-                </IconButton>
+                  <Button
+                    variant="outlined"
+                    endIcon={recorder.isRecording ? <Check /> : <Mic size={"16px"} />}
+                    size="small"
+                    color={recorder.isRecording ? "error" : "primary"}
+                    onClick={() => {
+                      if (recorder.isRecording) {
+                        recorder.stopRecording();
+                      } else {
+                        recorder.startRecording();
+                      }
+                    }}
+                  >
+                    {recorder.isRecording ? i18n._("Done") : i18n._("Record more")}
+                  </Button>
+                  <IconButton size="small" onClick={clearTranscript}>
+                    <X size={"16px"} />
+                  </IconButton>
+                </Stack>
               </Stack>
             )}
           </Stack>
@@ -333,23 +343,31 @@ const RecordUserAudio = () => {
       </Stack>
 
       <FooterButton
-        aboveButtonComponent={recorder.visualizerComponent}
+        aboveButtonComponent={!transcript && recorder.visualizerComponent}
         onClick={() => {
           if (transcript) {
             nextStep();
             return;
           }
+
           if (recorder.isRecording) {
             recorder.stopRecording();
-          } else {
-            recorder.startRecording();
+            return;
           }
+
+          recorder.startRecording();
         }}
         title={
-          recorder.isRecording ? i18n._("Done") : transcript ? i18n._("Next") : i18n._("Record")
+          recorder.isRecording && !transcript
+            ? i18n._("Done")
+            : transcript
+              ? i18n._("Next")
+              : i18n._("Record")
         }
-        color={recorder.isRecording ? "error" : "primary"}
-        endIcon={recorder.isRecording ? <Check /> : transcript ? <ArrowRight /> : <Mic />}
+        color={recorder.isRecording && !transcript ? "error" : "primary"}
+        endIcon={
+          recorder.isRecording && !transcript ? <Check /> : transcript ? <ArrowRight /> : <Mic />
+        }
       />
     </Stack>
   );
