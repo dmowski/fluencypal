@@ -29,13 +29,13 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
   const pageTitle = goalId
     ? i18n._(`Open personal plan`)
     : scenario
-      ? scenario.title
-      : i18n._(`Sing in `);
+      ? i18n._(`Sing in`)
+      : i18n._(`Sing in`);
 
   const singInSubTitle = goalId
     ? i18n._(`So you can keep your progress`)
     : scenario
-      ? i18n._(`So you can save your progress in ${scenario.title}`)
+      ? i18n._(`So you can save your progress`)
       : i18n._(`So you can save your progress`);
 
   return (
@@ -48,7 +48,12 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
           alignItems: "center",
         }}
       >
-        <AuthWall signInTitle={pageTitle} singInSubTitle={singInSubTitle}>
+        <AuthWall
+          featuresTitle={scenario ? scenario.title : undefined}
+          featuresSubTitle={scenario ? scenario.subTitle : undefined}
+          signInTitle={pageTitle}
+          singInSubTitle={singInSubTitle}
+        >
           <></>
         </AuthWall>
       </Stack>

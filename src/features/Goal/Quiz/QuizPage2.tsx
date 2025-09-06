@@ -180,10 +180,14 @@ export const AuthWall = ({
   children,
   signInTitle,
   singInSubTitle,
+  featuresTitle,
+  featuresSubTitle,
 }: {
   children: ReactNode;
   signInTitle?: string;
   singInSubTitle?: string;
+  featuresTitle?: string;
+  featuresSubTitle?: string;
 }) => {
   const auth = useAuth();
   const { i18n } = useLingui();
@@ -256,7 +260,7 @@ export const AuthWall = ({
                       fontWeight: 660,
                     }}
                   >
-                    <Trans>What you get with FluencyPal</Trans>
+                    {featuresTitle ? featuresTitle : <Trans>What you get with FluencyPal</Trans>}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -264,7 +268,7 @@ export const AuthWall = ({
                       opacity: 0.7,
                     }}
                   >
-                    <Trans>AI speaking partner</Trans>
+                    {featuresSubTitle ? featuresSubTitle : <Trans>AI speaking partner</Trans>}
                   </Typography>
                 </Stack>
                 <Stack

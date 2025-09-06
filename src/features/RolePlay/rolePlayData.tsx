@@ -44,7 +44,7 @@ export const getRolePlayScenarios = (lang: SupportedLanguage): RolePlayScenarios
       ],
 
       gameMode: "alias",
-      subTitle: i18n._("Practice English vocabulary by creatively describing and guessing words"),
+      subTitle: i18n._("Practice vocabulary by creatively describing and guessing words"),
       contendElement: <AliasRolePlay lang={lang} />,
       contentPage: "",
 
