@@ -45,6 +45,7 @@ import {
   ShieldCheck,
   Sparkles,
   Speech,
+  Trash,
   UsersRound,
   X,
 } from "lucide-react";
@@ -253,6 +254,9 @@ const RecordUserAudio = () => {
     }
   };
 
+  const minCharacters = 200;
+  const isNeedMoreRecording = !transcript || transcript.length < minCharacters;
+
   return (
     <Stack
       sx={{
@@ -290,9 +294,43 @@ const RecordUserAudio = () => {
           <Stack
             sx={{
               width: "100%",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              padding: "12px 12px 15px 10px",
+              borderRadius: "8px",
+              backgroundColor: "rgba(255, 255, 255, 0.08)",
             }}
           >
-            <Typography variant="h6">{i18n._("Your story")}</Typography>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                width: "100%",
+                justifyContent: "space-between",
+                paddingBottom: "14px",
+              }}
+            >
+              <Typography
+                variant="body2"
+                sx={{
+                  fontWeight: 600,
+                }}
+              >
+                {i18n._("Your story")}
+              </Typography>
+
+              <Typography
+                variant="caption"
+                sx={{
+                  color:
+                    transcript.length === 0
+                      ? "inherit"
+                      : transcript.length < minCharacters
+                        ? "#FFA500"
+                        : "#4CAF50",
+                }}
+              >
+                {transcript.length} / <b>{minCharacters}</b>
+              </Typography>
+            </Stack>
 
             <Typography
               variant={transcript ? "body2" : "caption"}
@@ -313,12 +351,13 @@ const RecordUserAudio = () => {
                   sx={{
                     flexDirection: "row",
                     alignItems: "center",
-                    paddingTop: "10px",
+                    justifyContent: "space-between",
+                    paddingTop: "12px",
                     gap: "10px",
                   }}
                 >
                   <Button
-                    variant="outlined"
+                    variant={isNeedMoreRecording ? "contained" : "outlined"}
                     endIcon={recorder.isRecording ? <Check /> : <Mic size={"16px"} />}
                     size="small"
                     color={recorder.isRecording ? "error" : "primary"}
@@ -333,7 +372,7 @@ const RecordUserAudio = () => {
                     {recorder.isRecording ? i18n._("Done") : i18n._("Record more")}
                   </Button>
                   <IconButton size="small" onClick={clearTranscript}>
-                    <X size={"16px"} />
+                    <Trash size={"16px"} />
                   </IconButton>
                 </Stack>
               </Stack>
@@ -344,6 +383,7 @@ const RecordUserAudio = () => {
 
       <FooterButton
         aboveButtonComponent={!transcript && recorder.visualizerComponent}
+        disabled={!!transcript && transcript.length < 30}
         onClick={() => {
           if (transcript) {
             nextStep();
@@ -364,7 +404,13 @@ const RecordUserAudio = () => {
               ? i18n._("Next")
               : i18n._("Record")
         }
-        color={recorder.isRecording && !transcript ? "error" : "primary"}
+        color={
+          recorder.isRecording && !transcript
+            ? "error"
+            : transcript.length > minCharacters
+              ? "success"
+              : "primary"
+        }
         endIcon={
           recorder.isRecording && !transcript ? <Check /> : transcript ? <ArrowRight /> : <Mic />
         }
