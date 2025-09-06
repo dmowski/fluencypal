@@ -65,10 +65,14 @@ export function LanguageSwitcher({
 
     const pathNameWithoutLocale = pathname?.split("/")?.slice(sliceNumber) ?? [];
 
-    const query = new URLSearchParams(window.location.search).toString();
+    const query = new URLSearchParams(window.location.search);
+
+    if (!isAuth) {
+      query.delete("lang-selection");
+    }
 
     const newPath = `${getUrlStart(newLang)}${pathNameWithoutLocale.join("/")}${
-      query ? `?${query}` : ""
+      query ? `?${query.toString()}` : ""
     }`;
     router.push(newPath);
     setPageLanguage?.(newLang);
@@ -78,12 +82,6 @@ export function LanguageSwitcher({
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-
-    setTimeout(() => {
-      if (!isAuth) {
-        setIsShowModal(false);
-      }
-    }, 700);
   };
 
   const systemLangs = useMemo(() => getUserLangCode(), []);
