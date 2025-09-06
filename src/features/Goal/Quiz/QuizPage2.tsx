@@ -73,7 +73,8 @@ import { sleep } from "@/libs/sleep";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 
 const QuizQuestions = () => {
-  const { currentStep, isFirstLoading, survey, updateSurvey, languageToLearn } = useQuiz();
+  const { currentStep, isFirstLoading, survey, analyzeUserAbout, updateSurvey, languageToLearn } =
+    useQuiz();
   const { i18n } = useLingui();
 
   const learningLanguageName = fullLanguageName[languageToLearn];
@@ -158,7 +159,7 @@ const QuizQuestions = () => {
                   }
 
                   if (combinedTranscript.length > 200) {
-                    // todo: trigger analysis
+                    analyzeUserAbout(combinedTranscript);
                   }
 
                   updateSurvey({

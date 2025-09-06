@@ -4,7 +4,16 @@ import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { SetUrlStateOptions, useUrlMapState } from "@/features/Url/useUrlParam";
 
 import { useRouter } from "next/navigation";
-import { createContext, useContext, ReactNode, JSX, useMemo, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  JSX,
+  useMemo,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
 import { useLanguageGroup } from "../useLanguageGroup";
 import { useLingui } from "@lingui/react";
 import { getCountryByIP } from "@/features/User/getCountry";
@@ -69,6 +78,8 @@ interface QuizContextType {
   isFirstLoading: boolean;
   survey: QuizSurvey2 | null;
   updateSurvey: (surveyDoc: QuizSurvey2) => Promise<void>;
+
+  analyzeUserAbout: (text: string) => Promise<void>;
 }
 const QuizContext = createContext<QuizContextType | null>(null);
 
@@ -137,6 +148,21 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
       { merge: true }
     );
     console.log("✅ Survey doc updated", surveyDoc);
+  };
+
+  const userAboutRef = useRef("");
+  userAboutRef.current = surveyDoc?.aboutUserTranscription || "";
+  const analyzeUserAbout = async (text: string) => {
+    console.log("analyzeUserAbout | Starting analysis for text length", text);
+    // goal is to generate follow up question, details, and description
+    await sleep(2000);
+
+    if (userAboutRef.current !== text) {
+      console.log("User about changed, skipping analysis");
+      return;
+    } else {
+      // Update doc
+    }
   };
 
   const ensureSurveyDocExists = async () => {
@@ -382,6 +408,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     progress,
     isFirstLoading,
     updateSurvey,
+    analyzeUserAbout,
   };
 }
 
