@@ -63,13 +63,10 @@ import { Trans } from "@lingui/react/macro";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useAuth } from "@/features/Auth/useAuth";
 import { WebViewWall } from "@/features/Auth/WebViewWall";
-import { FeatureList } from "@/features/Landing/Price/FeatureList";
-import { on } from "events";
 import Google from "@mui/icons-material/Google";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { scrollTopFast } from "@/libs/scroll";
-
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+import { scrollToLangButton, scrollTopFast } from "@/libs/scroll";
+import { sleep } from "@/libs/sleep";
 
 export const AuthFirstList: React.FC = () => {
   const { i18n } = useLingui();
@@ -734,23 +731,17 @@ const NativeLanguageSelector = () => {
     systemLanguagesTitle: i18n._(`System languages`),
   });
 
-  const scrollToLangButton = async (langCode: string) => {
-    const isWindow = typeof window !== "undefined";
-    if (!isWindow) return;
-    await sleep(300);
-    const element = document.querySelector(`button[aria-label='${langCode}']`);
-    if (element) {
-      element.scrollIntoView({ behavior: "instant", block: "center" });
-    }
-  };
-
   const isScrolledRef = useRef(false);
 
   useEffect(() => {
     if (nativeLanguage && !isScrolledRef.current) {
       console.log("Need to scroll to ", nativeLanguage);
       isScrolledRef.current = true;
-      scrollToLangButton(nativeLanguage);
+      (async () => {
+        scrollToLangButton(nativeLanguage);
+        await sleep(100);
+        scrollToLangButton(nativeLanguage);
+      })();
     }
   }, []);
 

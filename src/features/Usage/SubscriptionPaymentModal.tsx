@@ -33,8 +33,6 @@ import { TonIcon } from "../Icon/TonIcon";
 import { sendCreateCryptoOrderRequest } from "@/app/api/crypto/createOrder/sendCreateCryptoOrderRequest";
 import { SubscriptionWaiter } from "./SubscriptionWaiter";
 
-export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
 

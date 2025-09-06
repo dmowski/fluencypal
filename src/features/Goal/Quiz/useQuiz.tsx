@@ -10,6 +10,8 @@ import { useLingui } from "@lingui/react";
 import { getCountryByIP } from "@/features/User/getCountry";
 import { replaceUrlToLang } from "@/features/Lang/replaceLangInUrl";
 import { isTMA } from "@telegram-apps/sdk-react";
+import { scrollToLangButton } from "@/libs/scroll";
+import { sleep } from "@/libs/sleep";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -54,7 +56,6 @@ interface QuizContextType {
   isCanGoToMainPage: boolean;
   isFirstLoading: boolean;
 }
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const QuizContext = createContext<QuizContextType | null>(null);
 
 interface QuizProps {
@@ -180,8 +181,13 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     const updatedUrl = await setState(newStatePatch, { redirect: false });
 
     if (updatedUrl) {
+      scrollToLangButton(lang);
+
       const urlToRedirect = replaceUrlToLang(lang, updatedUrl);
       router.push(urlToRedirect, { scroll: false });
+      scrollToLangButton(lang);
+      await sleep(300);
+      scrollToLangButton(lang);
     }
   };
 
