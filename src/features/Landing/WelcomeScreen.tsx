@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import { FirstEnterButton } from "./FirstEnterButton";
 import { maxLandingWidth, subTitleFontStyle } from "./landingSettings";
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { Trans } from "@lingui/react/macro";
+import { getI18nInstance } from "@/appRouterI18n";
 
 interface WelcomeScreenProps {
   title: string;
@@ -26,6 +26,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   lang,
   openMyPracticeLinkTitle,
 }) => {
+  const i18n = getI18nInstance(lang);
   return (
     <Stack
       sx={{
@@ -84,7 +85,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               },
             }}
           >
-            <Trans>AI</Trans>
+            AI
           </Typography>
           <Typography
             align="center"
@@ -125,13 +126,11 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 },
               }}
             >
-              <Trans>Talk, get corrected, improve—repeat.</Trans>
+              {i18n._(`Talk, get corrected, improve—repeat.`)}
               <br />
 
               <Typography align="center" component={"span"} sx={{}}>
-                <Trans>
-                  Win the game and get the app <b>for free</b>
-                </Trans>
+                {i18n._(`Win the game and get the app`)} <b>{i18n._(`for free`)}</b>
               </Typography>
             </Typography>
           </Stack>
