@@ -12,6 +12,9 @@ import { replaceUrlToLang } from "@/features/Lang/replaceLangInUrl";
 import { isTMA } from "@telegram-apps/sdk-react";
 import { scrollToLangButton } from "@/libs/scroll";
 import { sleep } from "@/libs/sleep";
+import { useAuth } from "@/features/Auth/useAuth";
+import { db } from "@/features/Firebase/firebaseDb";
+import { useDocumentData } from "react-firebase-hooks/firestore";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -71,6 +74,8 @@ interface QuizUrlState {
 }
 
 function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): QuizContextType {
+  const auth = useAuth();
+
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const defaultState: QuizUrlState = useMemo(
     () => ({
@@ -107,6 +112,9 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const currentStep = state.currentStep;
   const languageToLearn = state.toLearn;
   const pageLanguage = state.pageLang;
+
+  const surveyDocRef = db.documents.quizSurvey2(auth.uid, languageToLearn);
+  const [surveyDoc, surveyLoading, error] = useDocumentData(surveyDocRef);
 
   const { i18n } = useLingui();
   const { languageGroups } = useLanguageGroup({

@@ -18,6 +18,7 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { PhraseCorrection } from "../Corrections/types";
 import { GoalPlan } from "../Plan/types";
 import { GameAvatars, GameLastVisit, GameUsersPoints } from "../Game/types";
+import { QuizSurvey2 } from "../Goal/Quiz/types";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -106,6 +107,11 @@ export const db = {
     userWordsStats: (userId: string | null, language: SupportedLanguage | null) =>
       userId && language
         ? dataPointDoc<WordsStats>(`users/${userId}/stats/words_${language}`)
+        : null,
+
+    quizSurvey2: (userId?: string, learningLanguage?: SupportedLanguage) =>
+      userId && learningLanguage
+        ? dataPointDoc<QuizSurvey2>(`users/${userId}/quiz2/${learningLanguage}`)
         : null,
   },
 };
