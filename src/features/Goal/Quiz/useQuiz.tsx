@@ -37,7 +37,7 @@ interface QuizContextType {
   languageToLearn: SupportedLanguage;
   setLanguageToLearn: (lang: SupportedLanguage) => void;
   pageLanguage: SupportedLanguage;
-  setPageLanguage: (lang: SupportedLanguage) => void;
+  setPageLanguage: (lang: SupportedLanguage) => Promise<void>;
   nativeLanguage: string;
   setNativeLanguage: (lang: string) => void;
   navigateToMainPage: () => void;

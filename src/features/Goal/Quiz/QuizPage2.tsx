@@ -878,7 +878,7 @@ const NativeLanguageSelector = () => {
 
 const PageLanguageSelector = () => {
   const { i18n } = useLingui();
-  const { pageLanguage, setPageLanguage, nextStep } = useQuiz();
+  const { pageLanguage, setPageLanguage } = useQuiz();
   const value = pageLanguage;
 
   const userCodes = useMemo(() => getUserLangCode(), []);
