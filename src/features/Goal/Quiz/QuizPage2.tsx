@@ -158,14 +158,14 @@ const QuizQuestions = () => {
                     return;
                   }
 
-                  if (combinedTranscript.length > 200) {
-                    analyzeUserAbout(combinedTranscript);
-                  }
-
-                  updateSurvey({
+                  const updatedSurvey = await updateSurvey({
                     ...survey,
                     aboutUserTranscription: combinedTranscript,
                   });
+
+                  if (combinedTranscript.length > 200) {
+                    analyzeUserAbout(combinedTranscript, updatedSurvey);
+                  }
                 }}
               />
             </AuthWall>

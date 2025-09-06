@@ -77,9 +77,9 @@ interface QuizContextType {
   isCanGoToMainPage: boolean;
   isFirstLoading: boolean;
   survey: QuizSurvey2 | null;
-  updateSurvey: (surveyDoc: QuizSurvey2) => Promise<void>;
+  updateSurvey: (surveyDoc: QuizSurvey2) => Promise<QuizSurvey2>;
 
-  analyzeUserAbout: (text: string) => Promise<void>;
+  analyzeUserAbout: (text: string, survey: QuizSurvey2) => Promise<QuizSurvey2>;
 }
 const QuizContext = createContext<QuizContextType | null>(null);
 
@@ -142,26 +142,25 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     if (!surveyDocRef) {
       throw new Error("updateSurvey | No survey doc ref");
     }
-    await setDoc(
-      surveyDocRef,
-      { ...surveyDoc, updatedAtIso: new Date().toISOString() },
-      { merge: true }
-    );
+    const updatedSurvey: QuizSurvey2 = { ...surveyDoc, updatedAtIso: new Date().toISOString() };
+    await setDoc(surveyDocRef, updatedSurvey, { merge: true });
     console.log("✅ Survey doc updated", surveyDoc);
+    return updatedSurvey;
   };
 
   const userAboutRef = useRef("");
   userAboutRef.current = surveyDoc?.aboutUserTranscription || "";
-  const analyzeUserAbout = async (text: string) => {
+  const analyzeUserAbout = async (text: string, survey: QuizSurvey2) => {
     console.log("analyzeUserAbout | Starting analysis for text length", text);
     // goal is to generate follow up question, details, and description
     await sleep(2000);
 
     if (userAboutRef.current !== text) {
       console.log("User about changed, skipping analysis");
-      return;
+      return survey;
     } else {
       // Update doc
+      return survey;
     }
   };
 
