@@ -22,6 +22,7 @@ export interface GoalPlan {
   goalQuiz: GoalQuiz | null;
 }
 
+// Core type for user goal
 export type GoalElementInfo = {
   goalPlan: GoalPlan;
   goalElement: PlanElement;
