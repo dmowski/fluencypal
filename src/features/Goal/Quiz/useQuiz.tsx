@@ -17,6 +17,7 @@ import { db } from "@/features/Firebase/firebaseDb";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { getDoc, setDoc } from "firebase/firestore";
 import { QuizSurvey2 } from "./types";
+import * as Sentry from "@sentry/nextjs";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -60,6 +61,8 @@ interface QuizContextType {
 
   isCanGoToMainPage: boolean;
   isFirstLoading: boolean;
+  survey: QuizSurvey2 | null;
+  updateSurvey?: (surveyDoc: QuizSurvey2) => Promise<void>;
 }
 const QuizContext = createContext<QuizContextType | null>(null);
 
@@ -120,7 +123,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
 
   const updateSurvey = async (surveyDoc: QuizSurvey2) => {
     if (!surveyDocRef) {
-      return;
+      throw new Error("updateSurvey | No survey doc ref");
     }
     await setDoc(
       surveyDocRef,
@@ -141,13 +144,11 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
       return;
     }
     if (!auth.uid) {
-      console.error("ensureSurveyDocExists | No auth uid");
-      return;
+      throw new Error("ensureSurveyDocExists | No auth uid");
     }
 
     if (!surveyDocRef) {
-      console.error("ensureSurveyDocExists | No survey doc ref");
-      return;
+      throw new Error("ensureSurveyDocExists | No survey doc ref");
     }
 
     const doc = await getDoc(surveyDocRef);
@@ -228,6 +229,11 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
       };
     } catch (e) {
       console.error(e);
+      Sentry.captureException(e, {
+        extra: {
+          title: "Error in preFindNativeLanguage",
+        },
+      });
     }
 
     return {};
@@ -342,6 +348,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const progress = currentStepIndex / path.length + 0.1;
 
   return {
+    survey: surveyDoc || null,
     languageToLearn,
     pageLanguage,
     nativeLanguage,
