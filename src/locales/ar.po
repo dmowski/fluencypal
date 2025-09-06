@@ -13,13 +13,13 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:365
-msgid "So you can keep your progress"
-msgstr "حتى تتمكن من الحفاظ على تقدمك"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:271
+#: src/features/Goal/Quiz/QuizPage2.tsx:1014
 msgid "AI speaking partner"
 msgstr "شريك محادثة بالذكاء الاصطناعي"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1167
+msgid "So you can keep your progress"
+msgstr "حتى تتمكن من الحفاظ على تقدمك"
 
 #: src/features/Header/HeaderStatic.tsx:12
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -137,8 +137,8 @@ msgid "AI tutor cost"
 msgstr "تكلفة المعلم الذكي"
 
 #: src/features/Goal/GoalQuestions.tsx:64
-#: src/features/Goal/Quiz/QuizPage2.tsx:129
-#: src/features/Goal/Quiz/QuizPage2.tsx:164
+#: src/features/Goal/Quiz/QuizPage2.tsx:1118
+#: src/features/Goal/Quiz/QuizPage2.tsx:1194
 #: src/features/Header/NeedHelpModal.tsx:158
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
@@ -156,8 +156,8 @@ msgid "Cookies Policy"
 msgstr "سياسة الكوكيز"
 
 #: src/features/Goal/GoalQuestions.tsx:68
-#: src/features/Goal/Quiz/QuizPage2.tsx:135
-#: src/features/Goal/Quiz/QuizPage2.tsx:170
+#: src/features/Goal/Quiz/QuizPage2.tsx:1124
+#: src/features/Goal/Quiz/QuizPage2.tsx:1200
 #: src/features/Header/NeedHelpModal.tsx:145
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
@@ -479,7 +479,7 @@ msgstr "افتح السجل"
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
-#: src/features/Goal/Quiz/QuizPage2.tsx:652
+#: src/features/Goal/Quiz/QuizPage2.tsx:343
 #: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
 msgid "Done"
@@ -723,6 +723,16 @@ msgstr "جار التحميل..."
 msgid "No payments..."
 msgstr "لا يوجد مدفوعات..."
 
+#: src/features/Translation/useTranslate.tsx:130
+#. js-lingui-explicit-id
+msgid "No text to translate"
+msgstr "ليس هناك نص للترجمة"
+
+#: src/features/Translation/useTranslate.tsx:143
+#. js-lingui-explicit-id
+msgid "No translation available"
+msgstr "لا يتوفر ترجمة"
+
 #: src/features/Usage/SubscriptionPaymentModal.tsx:71
 #: src/features/Usage/SubscriptionPaymentModal.tsx:90
 #: src/features/Usage/SubscriptionPaymentModal.tsx:220
@@ -891,16 +901,6 @@ msgstr "اشتر اشتراك"
 msgid "Play the Game"
 msgstr "لعب اللعبة"
 
-#: src/features/Translation/useTranslate.tsx:130
-#. js-lingui-explicit-id
-msgid "No text to translate"
-msgstr "ليس هناك نص للترجمة"
-
-#: src/features/Translation/useTranslate.tsx:143
-#. js-lingui-explicit-id
-msgid "No translation available"
-msgstr "لا يتوفر ترجمة"
-
 #: src/features/Telegram/TgAppPage.tsx:82
 #. js-lingui-explicit-id
 msgid "Unknown error during sign-in"
@@ -1037,119 +1037,23 @@ msgstr "نحن نقدر ملاحظاتك!"
 msgid "Start"
 msgstr "ابدأ"
 
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
+#: src/features/Dashboard/PlanDashboardCards.tsx:87
+#: src/features/Landing/PlanLandingBlock.tsx:104
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/RolePlay/RolePlayBoard.tsx:49
 #. js-lingui-explicit-id
-msgid ""
-"Boost your English vocabulary and fluency by creatively describing and "
-"guessing words in\n"
-"        this interactive AI-powered Alias game."
-msgstr ""
-"عزز مفرداتك الإنجليزية وطلاقتك بوصف وتخمين الكلمات بطريقة إبداعية في\n"
-"        هذه اللعبة المدعومة بالذكاء الاصطناعي Alias."
+msgid "Role Play"
+msgstr "دور اللعب"
 
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
+#: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
-msgid "Benefits of Playing Alias Game"
-msgstr "فوائد لعبة الاسم المستعار"
+msgid "Show more"
+msgstr "أظهر المزيد"
 
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
+#: src/features/RolePlay/RolePlayBoard.tsx:91
 #. js-lingui-explicit-id
-msgid "Enhance your vocabulary by describing words in unique ways."
-msgstr "قم بتحسين مفرداتك عن طريق وصف الكلمات بطرق فريدة."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
-#. js-lingui-explicit-id
-msgid "Improve listening skills as you interpret descriptions."
-msgstr "تحسين مهارات الاستماع بينما تفسر الأوصاف."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
-#. js-lingui-explicit-id
-msgid "Practice rapid thinking and fluent speaking under playful pressure."
-msgstr "ممارسة التفكير السريع والكلام الطليق تحت الضغط الممتع."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
-#. js-lingui-explicit-id
-msgid "Receive instant, tailored feedback from your AI partner."
-msgstr "تلقِ استجابة فورية، مُخصصة من شريكك الذكاء الاصطناعي."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
-#. js-lingui-explicit-id
-msgid "How to Play"
-msgstr "كيفية اللعب"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
-#. js-lingui-explicit-id
-msgid ""
-"You and your AI partner alternate turns describing and guessing words "
-"without directly\n"
-"          naming them. This encourages creative thinking and fluent "
-"expression, adapting to your\n"
-"          language proficiency."
-msgstr ""
-"أنت وشريكك الذكاء الاصطناعي تتناوبان الأدوار في وصف وتخمين الكلمات دون "
-"تسميتها مباشرةً.\n"
-"          هذا يشجع التفكير الإبداعي والتعبير الطليق، متكيفاً مع\n"
-"          مستوى اتقانك للغة."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
-#. js-lingui-explicit-id
-msgid "Choose Your Language Level"
-msgstr "اختر مستوى لغتك"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
-#. js-lingui-explicit-id
-msgid "Pick a level to start playing!"
-msgstr "اختر مستوى لبدء اللعب!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
-#. js-lingui-explicit-id
-msgid "Alias Game Levels"
-msgstr "مستويات لعبة الأسماء المستعارة"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
-#. js-lingui-explicit-id
-msgid "Check proposed words"
-msgstr "تحقق من الكلمات المقترحة"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
-#. js-lingui-explicit-id
-msgid "Based on your level, the AI will suggest words to describe."
-msgstr "استنادًا إلى مستواك، ستقترح الذكاء الاصطناعي كلمات للوصف."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
-#. js-lingui-explicit-id
-msgid "Alias Game options"
-msgstr "خيارات لعبة الأسماء المستعارة"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
-#. js-lingui-explicit-id
-msgid "Record your description"
-msgstr "سجل وصفك"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
-#. js-lingui-explicit-id
-msgid "Describe the word you see on the screen without using the word itself!"
-msgstr "صف الكلمة التي تراها على الشاشة بدون استخدام الكلمة نفسها!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
-#. js-lingui-explicit-id
-msgid "Alias Game Recording"
-msgstr "تسجيل لعبة الأسماء المستعارة"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
-#. js-lingui-explicit-id
-msgid "Have fun!"
-msgstr "استمتع!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
-#. js-lingui-explicit-id
-msgid "Enjoy the game and see how the AI guesses your description!"
-msgstr "استمتع باللعبة وشاهد كيف يقوم الذكاء الصناعي بتخمين وصفك!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
-#. js-lingui-explicit-id
-msgid "Robot Thinking"
-msgstr "الروبوت يفكر"
+msgid "Show less"
+msgstr "عرض أقل"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -2021,6 +1925,120 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "جميع السيناريوهات"
 
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
+#. js-lingui-explicit-id
+msgid ""
+"Boost your English vocabulary and fluency by creatively describing and "
+"guessing words in\n"
+"        this interactive AI-powered Alias game."
+msgstr ""
+"عزز مفرداتك الإنجليزية وطلاقتك بوصف وتخمين الكلمات بطريقة إبداعية في\n"
+"        هذه اللعبة المدعومة بالذكاء الاصطناعي Alias."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
+#. js-lingui-explicit-id
+msgid "Benefits of Playing Alias Game"
+msgstr "فوائد لعبة الاسم المستعار"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
+#. js-lingui-explicit-id
+msgid "Enhance your vocabulary by describing words in unique ways."
+msgstr "قم بتحسين مفرداتك عن طريق وصف الكلمات بطرق فريدة."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
+#. js-lingui-explicit-id
+msgid "Improve listening skills as you interpret descriptions."
+msgstr "تحسين مهارات الاستماع بينما تفسر الأوصاف."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
+#. js-lingui-explicit-id
+msgid "Practice rapid thinking and fluent speaking under playful pressure."
+msgstr "ممارسة التفكير السريع والكلام الطليق تحت الضغط الممتع."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
+#. js-lingui-explicit-id
+msgid "Receive instant, tailored feedback from your AI partner."
+msgstr "تلقِ استجابة فورية، مُخصصة من شريكك الذكاء الاصطناعي."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
+#. js-lingui-explicit-id
+msgid "How to Play"
+msgstr "كيفية اللعب"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"You and your AI partner alternate turns describing and guessing words "
+"without directly\n"
+"          naming them. This encourages creative thinking and fluent "
+"expression, adapting to your\n"
+"          language proficiency."
+msgstr ""
+"أنت وشريكك الذكاء الاصطناعي تتناوبان الأدوار في وصف وتخمين الكلمات دون "
+"تسميتها مباشرةً.\n"
+"          هذا يشجع التفكير الإبداعي والتعبير الطليق، متكيفاً مع\n"
+"          مستوى اتقانك للغة."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
+#. js-lingui-explicit-id
+msgid "Choose Your Language Level"
+msgstr "اختر مستوى لغتك"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
+#. js-lingui-explicit-id
+msgid "Pick a level to start playing!"
+msgstr "اختر مستوى لبدء اللعب!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
+#. js-lingui-explicit-id
+msgid "Alias Game Levels"
+msgstr "مستويات لعبة الأسماء المستعارة"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
+#. js-lingui-explicit-id
+msgid "Check proposed words"
+msgstr "تحقق من الكلمات المقترحة"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
+#. js-lingui-explicit-id
+msgid "Based on your level, the AI will suggest words to describe."
+msgstr "استنادًا إلى مستواك، ستقترح الذكاء الاصطناعي كلمات للوصف."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
+#. js-lingui-explicit-id
+msgid "Alias Game options"
+msgstr "خيارات لعبة الأسماء المستعارة"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
+#. js-lingui-explicit-id
+msgid "Record your description"
+msgstr "سجل وصفك"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
+#. js-lingui-explicit-id
+msgid "Describe the word you see on the screen without using the word itself!"
+msgstr "صف الكلمة التي تراها على الشاشة بدون استخدام الكلمة نفسها!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
+#. js-lingui-explicit-id
+msgid "Alias Game Recording"
+msgstr "تسجيل لعبة الأسماء المستعارة"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
+#. js-lingui-explicit-id
+msgid "Have fun!"
+msgstr "استمتع!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
+#. js-lingui-explicit-id
+msgid "Enjoy the game and see how the AI guesses your description!"
+msgstr "استمتع باللعبة وشاهد كيف يقوم الذكاء الصناعي بتخمين وصفك!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
+#. js-lingui-explicit-id
+msgid "Robot Thinking"
+msgstr "الروبوت يفكر"
+
 #: src/features/Plan/useGoalCreation.ts:41
 #: src/features/Plan/useGoalCreation.ts:69
 #: src/features/Plan/useGoalCreation.ts:91
@@ -2047,24 +2065,6 @@ msgstr "أرسل 6 رسائل للإكمال"
 #. js-lingui-explicit-id
 msgid "Start lesson"
 msgstr "بدء الدرس"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:87
-#: src/features/Landing/PlanLandingBlock.tsx:104
-#: src/features/Navigation/NavigationBar.tsx:54
-#: src/features/RolePlay/RolePlayBoard.tsx:49
-#. js-lingui-explicit-id
-msgid "Role Play"
-msgstr "دور اللعب"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show more"
-msgstr "أظهر المزيد"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show less"
-msgstr "عرض أقل"
 
 #: src/features/Navigation/NavigationBar.tsx:44
 #. js-lingui-explicit-id
@@ -2185,6 +2185,49 @@ msgstr "خطة تعلم اللغة السويدية"
 #. js-lingui-explicit-id
 msgid "Belarusian Learning Plan"
 msgstr "خطة التعلم البيلاروسية"
+
+#: src/features/Dashboard/SelectLanguage.tsx:94
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
+#: src/features/Goal/GoalQuestions.tsx:325
+#: src/features/Goal/Quiz/QuizPage2.tsx:460
+#: src/features/Goal/Quiz/useQuiz.tsx:113
+#: src/features/Lang/LanguageSwitcher.tsx:106
+#. js-lingui-explicit-id
+msgid "Other languages"
+msgstr "لغات أخرى"
+
+#: src/features/Dashboard/SelectLanguage.tsx:95
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
+#: src/features/Goal/GoalQuestions.tsx:326
+#: src/features/Goal/Quiz/QuizPage2.tsx:461
+#: src/features/Goal/Quiz/useQuiz.tsx:114
+#: src/features/Lang/LanguageSwitcher.tsx:107
+#. js-lingui-explicit-id
+msgid "System languages"
+msgstr "لغات النظام"
+
+#: src/features/Lang/LanguageSwitcher.tsx:189
+#. js-lingui-explicit-id
+msgid "Languages"
+msgstr "اللغات"
+
+#: src/features/Goal/GoalQuestions.tsx:424
+#: src/features/Lang/LanguageSwitcher.tsx:232
+#. js-lingui-explicit-id
+msgid "Language to Learn"
+msgstr "اللغة المراد تعلمها"
+
+#: src/features/Dashboard/SelectLanguage.tsx:267
+#: src/features/Lang/LanguageSwitcher.tsx:271
+#. js-lingui-explicit-id
+msgid "Native Language"
+msgstr "اللغة الأم"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:656
+#: src/features/Lang/LanguageSwitcher.tsx:313
+#. js-lingui-explicit-id
+msgid "Page Language"
+msgstr "لغة الصفحة"
 
 #: src/features/Landing/PlanLandingBlock.tsx:20
 #. js-lingui-explicit-id
@@ -2418,48 +2461,23 @@ msgstr "النتائج أقرب مما تعتقد"
 msgid "Start Learning"
 msgstr "ابدأ التعلم"
 
-#: src/features/Dashboard/SelectLanguage.tsx:94
-#: src/features/Game/GameNativeLanguageSelector.tsx:19
-#: src/features/Goal/GoalQuestions.tsx:325
-#: src/features/Goal/Quiz/QuizPage2.tsx:769
-#: src/features/Goal/Quiz/useQuiz.tsx:113
-#: src/features/Lang/LanguageSwitcher.tsx:106
+#: src/features/Landing/Footer.tsx:85
 #. js-lingui-explicit-id
-msgid "Other languages"
-msgstr "لغات أخرى"
+msgid "Role-Play"
+msgstr "تقمص الأدوار"
 
-#: src/features/Dashboard/SelectLanguage.tsx:95
-#: src/features/Game/GameNativeLanguageSelector.tsx:20
-#: src/features/Goal/GoalQuestions.tsx:326
-#: src/features/Goal/Quiz/QuizPage2.tsx:770
-#: src/features/Goal/Quiz/useQuiz.tsx:114
-#: src/features/Lang/LanguageSwitcher.tsx:107
+#: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Landing/Footer.tsx:91
 #. js-lingui-explicit-id
-msgid "System languages"
-msgstr "لغات النظام"
+msgid "Blog"
+msgstr "بلوق"
 
-#: src/features/Lang/LanguageSwitcher.tsx:189
+#: src/features/Header/HeaderStatic.tsx:13
+#: src/features/Landing/Footer.tsx:94
+#: src/features/Landing/Price/PricePage.tsx:95
 #. js-lingui-explicit-id
-msgid "Languages"
-msgstr "اللغات"
-
-#: src/features/Goal/GoalQuestions.tsx:424
-#: src/features/Lang/LanguageSwitcher.tsx:232
-#. js-lingui-explicit-id
-msgid "Language to Learn"
-msgstr "اللغة المراد تعلمها"
-
-#: src/features/Dashboard/SelectLanguage.tsx:267
-#: src/features/Lang/LanguageSwitcher.tsx:271
-#. js-lingui-explicit-id
-msgid "Native Language"
-msgstr "اللغة الأم"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:965
-#: src/features/Lang/LanguageSwitcher.tsx:313
-#. js-lingui-explicit-id
-msgid "Page Language"
-msgstr "لغة الصفحة"
+msgid "Price"
+msgstr "سعر"
 
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
@@ -2797,31 +2815,6 @@ msgstr "تعلم في أي مكان، في أي وقت"
 msgid "Start Your Free Trial"
 msgstr "ابدأ تجربتك المجانية"
 
-#: src/features/Blog/BlogsPage.tsx:41
-#: src/features/Landing/Price/PricePage.tsx:971
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
-#. js-lingui-explicit-id
-msgid "Start Your Journey to Fluent Conversations Now"
-msgstr "ابدأ رحلتك نحو المحادثات الطليقة الآن"
-
-#: src/features/Landing/Footer.tsx:85
-#. js-lingui-explicit-id
-msgid "Role-Play"
-msgstr "تقمص الأدوار"
-
-#: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Landing/Footer.tsx:91
-#. js-lingui-explicit-id
-msgid "Blog"
-msgstr "بلوق"
-
-#: src/features/Header/HeaderStatic.tsx:13
-#: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:95
-#. js-lingui-explicit-id
-msgid "Price"
-msgstr "سعر"
-
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
 msgid "View all"
@@ -2844,7 +2837,7 @@ msgid "The first 3 days are free"
 msgstr "الأيام الثلاثة الأولى مجانية"
 
 #: src/features/Goal/GoalQuestions.tsx:1258
-#: src/features/Goal/Quiz/QuizPage2.tsx:154
+#: src/features/Goal/Quiz/QuizPage2.tsx:1184
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:337
 #. js-lingui-explicit-id
 msgid "No credit card required"
@@ -2888,24 +2881,17 @@ msgstr "سيناريوهات ذات صلة"
 msgid "Ready to Become Fluent in English?"
 msgstr "مستعد لتصبح طليقًا في اللغة الإنجليزية؟"
 
+#: src/features/Blog/BlogsPage.tsx:41
+#: src/features/Landing/Price/PricePage.tsx:971
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
+#. js-lingui-explicit-id
+msgid "Start Your Journey to Fluent Conversations Now"
+msgstr "ابدأ رحلتك نحو المحادثات الطليقة الآن"
+
 #: src/features/Landing/RolePlay/RolePlayCard.tsx:150
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "حاول"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "تدرب على محادثات الحياة الواقعية من خلال سيناريوهات لعب الأدوار"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
-msgstr ""
-"أطلب الطعام، جدولة المواعيد، التميز في مقابلات العمل، والمزيد - كل ذلك مع "
-"توجيه من معلمك الذكي."
 
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:20
 #. js-lingui-explicit-id
@@ -2993,7 +2979,7 @@ msgstr "للمتعلمين الذين يرغبون في التحرر"
 msgid "Everything in Free, plus:"
 msgstr "كل شيء في الإصدار المجاني، بالإضافة إلى:"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:82
+#: src/features/Goal/Quiz/QuizPage2.tsx:1030
 #: src/features/Landing/Price/FeatureList.tsx:30
 #: src/features/Landing/Price/PricePage.tsx:241
 #. js-lingui-explicit-id
@@ -3005,7 +2991,7 @@ msgstr "الوصول الكامل إلى معلم الذكاء الاصطناع�
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "احصل على وصول غير محدود لممارسة اللغة المدعومة بالذكاء الاصطناعي"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:101
+#: src/features/Goal/Quiz/QuizPage2.tsx:1049
 #: src/features/Landing/Price/FeatureList.tsx:34
 #: src/features/Landing/Price/PricePage.tsx:246
 #. js-lingui-explicit-id
@@ -3050,7 +3036,7 @@ msgstr "كلمات جديدة"
 msgid "Get new words and phrases in context"
 msgstr "احصل على كلمات وعبارات جديدة في السياق"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:92
+#: src/features/Goal/Quiz/QuizPage2.tsx:1040
 #: src/features/Landing/Price/FeatureList.tsx:50
 #: src/features/Landing/Price/PricePage.tsx:268
 #. js-lingui-explicit-id
@@ -3062,7 +3048,7 @@ msgstr "قواعد النحو الجديدة"
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "من خلال التدريب، ستحصل على قواعد النحو الشخصية من الذكاء الصناعي"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:87
+#: src/features/Goal/Quiz/QuizPage2.tsx:1035
 #: src/features/Landing/Price/FeatureList.tsx:54
 #: src/features/Landing/Price/PricePage.tsx:273
 #. js-lingui-explicit-id
@@ -3316,6 +3302,20 @@ msgstr ""
 msgid "Contacts:"
 msgstr "جهات الاتصال:"
 
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "تدرب على محادثات الحياة الواقعية من خلال سيناريوهات لعب الأدوار"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
+msgstr ""
+"أطلب الطعام، جدولة المواعيد، التميز في مقابلات العمل، والمزيد - كل ذلك مع "
+"توجيه من معلمك الذكي."
+
 #: src/features/Landing/Contact/ContactsPage.tsx:104
 #. js-lingui-explicit-id
 msgid ""
@@ -3336,6 +3336,22 @@ msgid ""
 msgstr ""
 "لا تتردد في الاتصال بي إذا كان لديك أي أسئلة أو ملاحظات. أنا دائمًا سعيد "
 "بمساعدتك!"
+
+#: src/features/Header/HeaderStatic.tsx:11
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "لعب الأدوار"
+
+#: src/features/Header/HeaderStatic.tsx:14
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "تسجيل الدخول"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:16
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "هل تحتاج مساعدة؟"
 
 #: src/features/Header/NeedHelpModal.tsx:34
 #: src/features/Header/NeedHelpModal.tsx:176
@@ -3405,63 +3421,26 @@ msgstr "نعم، احذف الحساب"
 msgid "Delete account"
 msgstr "حذف الحساب"
 
-#: src/features/Header/PaymentHistoryModal.tsx:21
+#: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
-msgid "Trial balance"
-msgstr "ميزان المحاكمة"
+msgid "Failed to send feedback. Please try again later."
+msgstr "فشل في إرسال التعليقات. يرجى المحاولة مرة أخرى لاحقا."
 
-#: src/features/Header/PaymentHistoryModal.tsx:22
+#: src/features/Header/ContactMessageModal.tsx:42
 #. js-lingui-explicit-id
-msgid "Payment"
-msgstr "الدفع"
+msgid "Thank you for your feedback!"
+msgstr "شكراً على ملاحظاتك!"
 
-#: src/features/Header/PaymentHistoryModal.tsx:23
+#: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
-msgid "Gift"
-msgstr "هدية"
+msgid "Sending..."
+msgstr "جارٍ الإرسال..."
 
-#: src/features/Header/PaymentHistoryModal.tsx:24
+#: src/features/Conversation/ConversationCanvas2.tsx:1064
+#: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
-msgid "Subscription (1 month)"
-msgstr "الاشتراك (1 شهر)"
-
-#: src/features/Header/PaymentHistoryModal.tsx:25
-#. js-lingui-explicit-id
-msgid "Trial days"
-msgstr "أيام التجربة"
-
-#: src/features/Header/HeaderStatic.tsx:11
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "لعب الأدوار"
-
-#: src/features/Header/HeaderStatic.tsx:14
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "تسجيل الدخول"
-
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:16
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "هل تحتاج مساعدة؟"
-
-#: src/features/Header/HeaderPractice.tsx:202
-#. js-lingui-explicit-id
-msgid "Finishing..."
-msgstr "الانتهاء..."
-
-#: src/features/Dashboard/RulesToLearn.tsx:101
-#: src/features/Dashboard/WordsToLearn.tsx:121
-#: src/features/Header/HeaderPractice.tsx:203
-#. js-lingui-explicit-id
-msgid "Back"
-msgstr "عودة"
-
-#: src/features/Header/HeaderPractice.tsx:370
-#. js-lingui-explicit-id
-msgid "Payment history"
-msgstr "تاريخ الدفع"
+msgid "Send"
+msgstr "أرسل"
 
 #: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
@@ -3479,7 +3458,7 @@ msgid "What we need from you?"
 msgstr "ما الذي نحتاجه منك؟"
 
 #: src/features/Goal/GoalPreparingModal.tsx:59
-#: src/features/Goal/Quiz/QuizPage2.tsx:289
+#: src/features/Goal/Quiz/QuizPage2.tsx:1062
 #. js-lingui-explicit-id
 msgid "I agree"
 msgstr "أوافق"
@@ -3514,26 +3493,47 @@ msgstr "أخيراً"
 msgid "Let's rock it!"
 msgstr "هيا بنا لنبدأ!"
 
-#: src/features/Header/ContactMessageModal.tsx:37
+#: src/features/Header/PaymentHistoryModal.tsx:21
 #. js-lingui-explicit-id
-msgid "Failed to send feedback. Please try again later."
-msgstr "فشل في إرسال التعليقات. يرجى المحاولة مرة أخرى لاحقا."
+msgid "Trial balance"
+msgstr "ميزان المحاكمة"
 
-#: src/features/Header/ContactMessageModal.tsx:42
+#: src/features/Header/PaymentHistoryModal.tsx:22
 #. js-lingui-explicit-id
-msgid "Thank you for your feedback!"
-msgstr "شكراً على ملاحظاتك!"
+msgid "Payment"
+msgstr "الدفع"
 
-#: src/features/Header/ContactMessageModal.tsx:116
+#: src/features/Header/PaymentHistoryModal.tsx:23
 #. js-lingui-explicit-id
-msgid "Sending..."
-msgstr "جارٍ الإرسال..."
+msgid "Gift"
+msgstr "هدية"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1064
-#: src/features/Header/ContactMessageModal.tsx:116
+#: src/features/Header/PaymentHistoryModal.tsx:24
 #. js-lingui-explicit-id
-msgid "Send"
-msgstr "أرسل"
+msgid "Subscription (1 month)"
+msgstr "الاشتراك (1 شهر)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Trial days"
+msgstr "أيام التجربة"
+
+#: src/features/Header/HeaderPractice.tsx:202
+#. js-lingui-explicit-id
+msgid "Finishing..."
+msgstr "الانتهاء..."
+
+#: src/features/Dashboard/RulesToLearn.tsx:101
+#: src/features/Dashboard/WordsToLearn.tsx:121
+#: src/features/Header/HeaderPractice.tsx:203
+#. js-lingui-explicit-id
+msgid "Back"
+msgstr "عودة"
+
+#: src/features/Header/HeaderPractice.tsx:370
+#. js-lingui-explicit-id
+msgid "Payment history"
+msgstr "تاريخ الدفع"
 
 #: src/features/Goal/GoalQuestions.tsx:61
 #. js-lingui-explicit-id
@@ -3731,7 +3731,7 @@ msgid "Intensive"
 msgstr "مكثف"
 
 #: src/features/Goal/GoalQuestions.tsx:389
-#: src/features/Goal/Quiz/QuizPage2.tsx:1028
+#: src/features/Goal/Quiz/QuizPage2.tsx:719
 #. js-lingui-explicit-id
 msgid "I want to learn..."
 msgstr "أريد أن أتعلم..."
@@ -3752,10 +3752,10 @@ msgstr "لغتي الأم"
 #: src/features/Goal/GoalQuestions.tsx:601
 #: src/features/Goal/GoalQuestions.tsx:968
 #: src/features/Goal/GoalQuestions.tsx:1030
-#: src/features/Goal/Quiz/QuizPage2.tsx:245
-#: src/features/Goal/Quiz/QuizPage2.tsx:652
-#: src/features/Goal/Quiz/QuizPage2.tsx:747
-#: src/features/Goal/Quiz/QuizPage2.tsx:1225
+#: src/features/Goal/Quiz/QuizPage2.tsx:343
+#: src/features/Goal/Quiz/QuizPage2.tsx:438
+#: src/features/Goal/Quiz/QuizPage2.tsx:916
+#: src/features/Goal/Quiz/QuizPage2.tsx:988
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "التالي"
@@ -3817,7 +3817,7 @@ msgstr "توقف عن التسجيل"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:342
 #: src/features/Goal/GoalQuestions.tsx:745
-#: src/features/Goal/Quiz/QuizPage2.tsx:652
+#: src/features/Goal/Quiz/QuizPage2.tsx:343
 #. js-lingui-explicit-id
 msgid "Record"
 msgstr "سجل"
@@ -3898,145 +3898,150 @@ msgstr "نسخ الرابط"
 msgid "Open the plan"
 msgstr "افتح الخطة"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:78
+#: src/features/Game/PositionChangedModal.tsx:101
 #. js-lingui-explicit-id
-msgid "Conversation practice with AI"
-msgstr "ممارسة المحادثة مع الذكاء الاصطناعي"
+msgid "Nice!"
+msgstr "رائع!"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:96
-#. js-lingui-explicit-id
-msgid "New Words and Phrases"
-msgstr "كلمات وعبارات جديدة"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:114
-#. js-lingui-explicit-id
-msgid "We process your voice using AI"
-msgstr "نحن نقوم بمعالجة صوتك باستخدام الذكاء الاصطناعي"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:119
-#. js-lingui-explicit-id
-msgid "Your transcripts are securely stored in our service"
-msgstr ""
-"plaintext\n"
-"يتم تخزين النصوص الخاصة بك بشكل آمن في خدمتنا\n"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:124
-#. js-lingui-explicit-id
-msgid "You can delete your personal data anytime"
-msgstr "يمكنك حذف بياناتك الشخصية في أي وقت"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:149
-#. js-lingui-explicit-id
-msgid "3 days of full access for free"
-msgstr "3 أيام من الوصول الكامل مجانًا"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:159
-#. js-lingui-explicit-id
-msgid "No ads, no spam"
-msgstr ""
-"\n"
-"لا إعلانات، لا بريد مزعج\n"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:338
-#. js-lingui-explicit-id
-msgid "Sign in with Google"
-msgstr ""
-"\n"
-"تسجيل الدخول باستخدام جوجل\n"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:415
+#: src/features/Goal/Quiz/QuizPage2.tsx:102
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "ما هي اللغة التي تتحدثها"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:416
+#: src/features/Goal/Quiz/QuizPage2.tsx:103
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "لذلك يمكنني ترجمة الكلمات لك"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:417
+#: src/features/Goal/Quiz/QuizPage2.tsx:104
 #. js-lingui-explicit-id
 msgid "Choose My Language"
 msgstr "اختر لغتي"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:425
+#: src/features/Goal/Quiz/QuizPage2.tsx:112
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "اختر لغة الموقع"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:426
+#: src/features/Goal/Quiz/QuizPage2.tsx:113
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "هذا هو النص الذي تراه على الأزرار والقوائم"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:436
+#: src/features/Goal/Quiz/QuizPage2.tsx:123
 #. js-lingui-explicit-id
 msgid "We are ready"
 msgstr "نحن مستعدون"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:437
+#: src/features/Goal/Quiz/QuizPage2.tsx:124
 #. js-lingui-explicit-id
 msgid "Let's talk. Tell me  about yourself"
 msgstr "دعنا نتحدث. أخبرني عن نفسك"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:510
+#: src/features/Goal/Quiz/QuizPage2.tsx:201
 #. js-lingui-explicit-id
 msgid "Hobbies or interests"
 msgstr "الهوايات أو الاهتمامات"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:514
+#: src/features/Goal/Quiz/QuizPage2.tsx:205
 #. js-lingui-explicit-id
 msgid "Main goal in learning"
 msgstr "الهدف الرئيسي في التعلم"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:518
+#: src/features/Goal/Quiz/QuizPage2.tsx:209
 #. js-lingui-explicit-id
 msgid "Do you have any travel plans?"
 msgstr "هل لديك أي خطط للسفر؟"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:522
+#: src/features/Goal/Quiz/QuizPage2.tsx:213
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "أفلام، كتب، أو موسيقى"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:572
+#: src/features/Goal/Quiz/QuizPage2.tsx:263
 #. js-lingui-explicit-id
 msgid "Tell me about yourself"
 msgstr "أخبرني عن نفسك"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:593
+#: src/features/Goal/Quiz/QuizPage2.tsx:284
 #. js-lingui-explicit-id
 msgid "Your story"
 msgstr "قصتك"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:602
+#: src/features/Goal/Quiz/QuizPage2.tsx:293
 #. js-lingui-explicit-id
 msgid "Processing..."
 msgstr ""
 "plaintext\n"
 "جارٍ المعالجة...\n"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:622
+#: src/features/Goal/Quiz/QuizPage2.tsx:313
 #. js-lingui-explicit-id
 msgid "Record more"
 msgstr "سجل المزيد"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:845
+#: src/features/Goal/Quiz/QuizPage2.tsx:536
 #. js-lingui-explicit-id
 msgid "Native language"
 msgstr "اللغة الأصلية"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:884
+#: src/features/Goal/Quiz/QuizPage2.tsx:575
 #. js-lingui-explicit-id
 msgid "No results found"
 msgstr ""
 "\n"
 "لم يتم العثور على نتائج\n"
 
-#: src/features/Game/PositionChangedModal.tsx:101
+#: src/features/Goal/Quiz/QuizPage2.tsx:1026
 #. js-lingui-explicit-id
-msgid "Nice!"
-msgstr "رائع!"
+msgid "Conversation practice with AI"
+msgstr "ممارسة المحادثة مع الذكاء الاصطناعي"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1044
+#. js-lingui-explicit-id
+msgid "New Words and Phrases"
+msgstr "كلمات وعبارات جديدة"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1103
+#. js-lingui-explicit-id
+msgid "We process your voice using AI"
+msgstr "نحن نقوم بمعالجة صوتك باستخدام الذكاء الاصطناعي"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1108
+#. js-lingui-explicit-id
+msgid "Your transcripts are securely stored in our service"
+msgstr ""
+"plaintext\n"
+"يتم تخزين النصوص الخاصة بك بشكل آمن في خدمتنا\n"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1113
+#. js-lingui-explicit-id
+msgid "You can delete your personal data anytime"
+msgstr "يمكنك حذف بياناتك الشخصية في أي وقت"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1140
+#. js-lingui-explicit-id
+msgid "Sign in with Google"
+msgstr ""
+"\n"
+"تسجيل الدخول باستخدام جوجل\n"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1179
+#. js-lingui-explicit-id
+msgid "3 days of full access for free"
+msgstr "3 أيام من الوصول الكامل مجانًا"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1189
+#. js-lingui-explicit-id
+msgid "No ads, no spam"
+msgstr ""
+"\n"
+"لا إعلانات، لا بريد مزعج\n"
+
+#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "لغتك الأم:"
 
 #: src/features/Game/GameOnboarding.tsx:168
 #: src/features/Game/GamePage.tsx:23
@@ -4065,10 +4070,25 @@ msgstr "يجب أن يكون اسم المستخدم 3 أحرف على الأق�
 msgid "Game username:"
 msgstr "اسم المستخدم في اللعبة:"
 
-#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#: src/features/Game/GameMyAvatar.tsx:27
 #. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "لغتك الأم:"
+msgid "Avatar"
+msgstr "أفاتار"
+
+#: src/features/Game/GameMyAvatar.tsx:36
+#. js-lingui-explicit-id
+msgid "Select your game avatar"
+msgstr "اختر صورة شخصية للعبة الخاصة بك"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Translate the word"
+msgstr "ترجم الكلمة"
+
+#: src/features/Game/GameBadge.tsx:75
+#. js-lingui-explicit-id
+msgid "Play and Learn"
+msgstr "العب وتعلم"
 
 #: src/features/Game/GameOnboarding.tsx:46
 #. js-lingui-explicit-id
@@ -4102,25 +4122,10 @@ msgstr "لنتأكد من أنك جاهز"
 msgid "Your Avatar:"
 msgstr "صورتك الرمزية:"
 
-#: src/features/Game/GameMyAvatar.tsx:27
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
 #. js-lingui-explicit-id
-msgid "Avatar"
-msgstr "أفاتار"
-
-#: src/features/Game/GameMyAvatar.tsx:36
-#. js-lingui-explicit-id
-msgid "Select your game avatar"
-msgstr "اختر صورة شخصية للعبة الخاصة بك"
-
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "ترجم الكلمة"
-
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
-#. js-lingui-explicit-id
-msgid "Discuss the topic"
-msgstr "ناقش الموضوع"
+msgid "Form a sentence"
+msgstr "شكل جملة"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:183
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
@@ -4128,6 +4133,11 @@ msgstr "ناقش الموضوع"
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "قدم الإجابة"
+
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
+#. js-lingui-explicit-id
+msgid "Discuss the topic"
+msgstr "ناقش الموضوع"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
@@ -4145,17 +4155,6 @@ msgstr "صف الموضوع بكلماتك الخاصة..."
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "خطأ:"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
-#. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "صف الصورة"
-
-#: src/features/Game/GameBadge.tsx:75
-#. js-lingui-explicit-id
-msgid "Play and Learn"
-msgstr "العب وتعلم"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
 #. js-lingui-explicit-id
@@ -4179,10 +4178,27 @@ msgstr "قدم"
 msgid "Error:"
 msgstr "خطأ:"
 
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
 #. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "شكل جملة"
+msgid "Describe the image"
+msgstr "صف الصورة"
+
+#: src/features/Dashboard/WordsToLearn.tsx:32
+#. js-lingui-explicit-id
+msgid "New words to practice."
+msgstr "كلمات جديدة للتدريب."
+
+#: src/features/Dashboard/RulesToLearn.tsx:86
+#: src/features/Dashboard/WordsToLearn.tsx:106
+#. js-lingui-explicit-id
+msgid "Start practice"
+msgstr "ابدأ الممارسة"
+
+#: src/features/Dashboard/WordsToLearn.tsx:128
+#. js-lingui-explicit-id
+msgid "I know all of them"
+msgstr "أعرفهم جميعًا"
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
 #. js-lingui-explicit-id
@@ -4204,54 +4220,35 @@ msgstr "تعلم"
 msgid "Page"
 msgstr "صفحة"
 
-#: src/features/Dashboard/TasksCard.tsx:39
+#: src/features/Dashboard/HomeworkCard.tsx:21
 #. js-lingui-explicit-id
-msgid "Daily Tasks"
-msgstr "المهام اليومية"
+msgid "Homework"
+msgstr "الواجب المنزلي"
 
-#: src/features/Dashboard/TasksCard.tsx:51
+#: src/features/Dashboard/HomeworkCard.tsx:57
 #. js-lingui-explicit-id
-msgid "Rule of the day"
-msgstr "قاعدة اليوم"
+msgid "No homework assigned yet."
+msgstr "لا واجبات منزلية معطاة بعد."
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:152
-#: src/features/Dashboard/TasksCard.tsx:52
+#: src/features/Dashboard/HomeworkCard.tsx:66
 #. js-lingui-explicit-id
-msgid "Get a personal grammar rule to learn"
-msgstr "احصل على قاعدة نحوية شخصية لتتعلمها"
+msgid "Start a conversation to get one."
+msgstr "ابدأ محادثة للحصول على واحدة."
 
-#: src/features/Dashboard/TasksCard.tsx:56
-#: src/features/Dashboard/TasksCard.tsx:64
+#: src/features/Dashboard/HomeworkCard.tsx:128
 #. js-lingui-explicit-id
-msgid "Complete previous tasks first"
-msgstr "أكمل المهام السابقة أولاً"
+msgid "Skip"
+msgstr "تخطي"
 
-#: src/features/Dashboard/TasksCard.tsx:61
+#: src/features/Dashboard/HomeworkCard.tsx:142
 #. js-lingui-explicit-id
-msgid "New words"
-msgstr "كلمات جديدة"
+msgid "Show all"
+msgstr "عرض الكل"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:173
-#: src/features/Dashboard/TasksCard.tsx:62
+#: src/features/Dashboard/RulesToLearn.tsx:36
 #. js-lingui-explicit-id
-msgid "Practice new vocabulary with the AI"
-msgstr "ممارسة مفردات جديدة مع الذكاء الاصطناعي"
-
-#: src/features/Dashboard/WordsToLearn.tsx:32
-#. js-lingui-explicit-id
-msgid "New words to practice."
-msgstr "كلمات جديدة للتدريب."
-
-#: src/features/Dashboard/RulesToLearn.tsx:86
-#: src/features/Dashboard/WordsToLearn.tsx:106
-#. js-lingui-explicit-id
-msgid "Start practice"
-msgstr "ابدأ الممارسة"
-
-#: src/features/Dashboard/WordsToLearn.tsx:128
-#. js-lingui-explicit-id
-msgid "I know all of them"
-msgstr "أعرفهم جميعًا"
+msgid "New rule to practice."
+msgstr "قاعدة جديدة للممارسة."
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:72
 #. js-lingui-explicit-id
@@ -4365,35 +4362,15 @@ msgstr "قم بإنشاء دروس فريدة أكثر"
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "لكي تتمكن من إنشاء المزيد من الدروس، يجب عليك إتمام ثلاث دروس على الأقل"
 
-#: src/features/Dashboard/RulesToLearn.tsx:36
+#: src/features/Dashboard/GoalCard.tsx:13
 #. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "قاعدة جديدة للممارسة."
+msgid "Set the goal of your learning"
+msgstr "حدد هدف تعلمك"
 
-#: src/features/Dashboard/HomeworkCard.tsx:21
+#: src/features/Dashboard/GoalCard.tsx:28
 #. js-lingui-explicit-id
-msgid "Homework"
-msgstr "الواجب المنزلي"
-
-#: src/features/Dashboard/HomeworkCard.tsx:57
-#. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "لا واجبات منزلية معطاة بعد."
-
-#: src/features/Dashboard/HomeworkCard.tsx:66
-#. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "ابدأ محادثة للحصول على واحدة."
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "تخطي"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "عرض الكل"
+msgid "Start | 5 min"
+msgstr "ابدأ | 5 دقائق"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:110
 #. js-lingui-explicit-id
@@ -4420,25 +4397,63 @@ msgstr "سوف يقودك الذكاء الصناعي خلال المحادثة"
 msgid "Guide me"
 msgstr "ارشدني"
 
+#: src/features/Dashboard/ConversationSelectCard.tsx:152
+#: src/features/Dashboard/TasksCard.tsx:52
+#. js-lingui-explicit-id
+msgid "Get a personal grammar rule to learn"
+msgstr "احصل على قاعدة نحوية شخصية لتتعلمها"
+
 #: src/features/Dashboard/ConversationSelectCard.tsx:168
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "احصل على قاعدة"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:173
+#: src/features/Dashboard/TasksCard.tsx:62
+#. js-lingui-explicit-id
+msgid "Practice new vocabulary with the AI"
+msgstr "ممارسة مفردات جديدة مع الذكاء الاصطناعي"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:189
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "قم بتوسيع مفرداتك"
 
-#: src/features/Dashboard/GoalCard.tsx:13
+#: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "حدد هدف تعلمك"
+msgid "Daily Tasks"
+msgstr "المهام اليومية"
 
-#: src/features/Dashboard/GoalCard.tsx:28
+#: src/features/Dashboard/TasksCard.tsx:51
 #. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "ابدأ | 5 دقائق"
+msgid "Rule of the day"
+msgstr "قاعدة اليوم"
+
+#: src/features/Dashboard/TasksCard.tsx:56
+#: src/features/Dashboard/TasksCard.tsx:64
+#. js-lingui-explicit-id
+msgid "Complete previous tasks first"
+msgstr "أكمل المهام السابقة أولاً"
+
+#: src/features/Dashboard/TasksCard.tsx:61
+#. js-lingui-explicit-id
+msgid "New words"
+msgstr "كلمات جديدة"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
+#. js-lingui-explicit-id
+msgid "Progress Calendar"
+msgstr "تقويم التقدم"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
+#. js-lingui-explicit-id
+msgid "Less"
+msgstr "أقل"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
+#. js-lingui-explicit-id
+msgid "More"
+msgstr "أكثر"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4542,20 +4557,11 @@ msgstr "تجهيز الدماغ"
 msgid "Upload language skills directly to your brain"
 msgstr "تحميل مهارات اللغة مباشرة إلى عقلك"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
+#: src/features/Conversation/useConversationsAnalysis.ts:89
+#: src/features/Conversation/useConversationsAnalysis.ts:132
 #. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "تقويم التقدم"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "أقل"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "أكثر"
+msgid "Error analyzing conversation"
+msgstr "خطأ في تحليل المحادثة"
 
 #: src/features/Conversation/ConversationError.tsx:34
 #. js-lingui-explicit-id
@@ -4592,186 +4598,20 @@ msgstr "صياغة كلمات جديدة..."
 msgid "Crafting new rule..."
 msgstr "إنشاء قاعدة جديدة..."
 
-#: src/features/Conversation/useConversationsAnalysis.ts:89
-#: src/features/Conversation/useConversationsAnalysis.ts:132
+#: src/features/Conversation/ConfirmConversationModal.tsx:26
 #. js-lingui-explicit-id
-msgid "Error analyzing conversation"
-msgstr "خطأ في تحليل المحادثة"
+msgid "Ready?"
+msgstr "هل أنت مستعد؟"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:361
+#: src/features/Conversation/ConfirmConversationModal.tsx:30
 #. js-lingui-explicit-id
-msgid "Idea for your message"
-msgstr "فكرة لرسالتك"
+msgid "Next, allow microphone access to talk with the AI."
+msgstr "التالي، اسمح بالوصول إلى الميكروفون للتحدث مع الذكاء الاصطناعي."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:419
+#: src/features/Conversation/ConfirmConversationModal.tsx:55
 #. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "مراجعة الدرس"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:440
-#. js-lingui-explicit-id
-msgid "Language level:"
-msgstr "مستوى اللغة:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:442
-#: src/features/Conversation/ConversationCanvas2.tsx:449
-#: src/features/Conversation/ConversationCanvas2.tsx:456
-#: src/features/Conversation/ConversationCanvas2.tsx:745
-#: src/features/Conversation/ConversationCanvas2.tsx:884
-#: src/features/Conversation/ConversationCanvas2.tsx:891
-#. js-lingui-explicit-id
-msgid "Analyzing..."
-msgstr "جار التحليل..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:447
-#. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "ما كان رائعا:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:454
-#. js-lingui-explicit-id
-msgid "Areas to improve:"
-msgstr "مناطق للتحسين:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:479
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "متابعة المحادثة"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:492
-#. js-lingui-explicit-id
-msgid "Start new lesson"
-msgstr "ابدأ درسًا جديدًا"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:679
-#. js-lingui-explicit-id
-msgid "Error during analyzing message"
-msgstr "خطأ أثناء تحليل الرسالة"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:733
-#. js-lingui-explicit-id
-msgid "Almost correct"
-msgstr "تقريبا صحيح"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:748
-#. js-lingui-explicit-id
-msgid "Great!"
-msgstr "رائع!"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:771
-#. js-lingui-explicit-id
-msgid "Your Message"
-msgstr "رسالتك"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:843
-#. js-lingui-explicit-id
-msgid "Corrected"
-msgstr "تم التصحيح"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:938
-#. js-lingui-explicit-id
-msgid "New Words to Vocabulary:"
-msgstr "كلمات جديدة للمفردات:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:983
-#. js-lingui-explicit-id
-msgid "Analyzing"
-msgstr "تحليل"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:990
-#. js-lingui-explicit-id
-msgid "Preparing Goal"
-msgstr "تجهيز الهدف"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1010
-#. js-lingui-explicit-id
-msgid "Goal is created"
-msgstr "تم إنشاء الهدف"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1020
-#. js-lingui-explicit-id
-msgid "Lessons added:"
-msgstr "تمت إضافة الدروس:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1041
-#. js-lingui-explicit-id
-msgid "Open plan"
-msgstr "خطة مفتوحة"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1114
-#. js-lingui-explicit-id
-msgid "Stop"
-msgstr "توقف"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1146
-#. js-lingui-explicit-id
-msgid "Record Message"
-msgstr "سجل الرسالة"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1180
-#. js-lingui-explicit-id
-msgid "Finish conversation"
-msgstr "إنهاء المحادثة"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1197
-#. js-lingui-explicit-id
-msgid "Turn Volume Off"
-msgstr "إيقاف تشغيل الصوت"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1197
-#. js-lingui-explicit-id
-msgid "Turn Volume On"
-msgstr "تشغيل الصوت"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1218
-#. js-lingui-explicit-id
-msgid "Voice record mode"
-msgstr "وضع تسجيل الصوت"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1241
-#. js-lingui-explicit-id
-msgid "Keyboard mode"
-msgstr "وضع لوحة المفاتيح"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1264
-#. js-lingui-explicit-id
-msgid "Phone call mode"
-msgstr "وضع المكالمة الهاتفية"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1286
-#. js-lingui-explicit-id
-msgid "Help with answer"
-msgstr "مساعدة في الإجابة"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1309
-#. js-lingui-explicit-id
-msgid "Your message..."
-msgstr "رسالتك..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1360
-#. js-lingui-explicit-id
-msgid "Mission complete"
-msgstr "تم إكمال المهمة"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1372
-#. js-lingui-explicit-id
-msgid "Open results"
-msgstr "افتح النتائج"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1414
-#. js-lingui-explicit-id
-msgid "Re-write"
-msgstr "أعد الكتابة"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1474
-#. js-lingui-explicit-id
-msgid "Cancel recording"
-msgstr "إلغاء التسجيل"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1506
-#. js-lingui-explicit-id
-msgid "Top up"
-msgstr "إعادة شحن"
+msgid "I am ready"
+msgstr "أنا جاهز"
 
 #: src/features/Conversation/AliasGamePanel.tsx:122
 #. js-lingui-explicit-id
@@ -4788,20 +4628,24 @@ msgstr "المزيد من الخيارات"
 msgid "Guessed words:"
 msgstr "كلمات مُقترحة:"
 
-#: src/features/Conversation/ConfirmConversationModal.tsx:26
+#: src/features/Blog/ListBlogIntro.tsx:66
 #. js-lingui-explicit-id
-msgid "Ready?"
-msgstr "هل أنت مستعد؟"
+msgid "Read and Learn with my blog"
+msgstr "اقرأ وتعلم مع مدونتي"
 
-#: src/features/Conversation/ConfirmConversationModal.tsx:30
+#: src/features/Blog/ListBlogIntro.tsx:77
 #. js-lingui-explicit-id
-msgid "Next, allow microphone access to talk with the AI."
-msgstr "التالي، اسمح بالوصول إلى الميكروفون للتحدث مع الذكاء الاصطناعي."
+msgid ""
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
+msgstr ""
+"احصل على الإلهام وتعرّف على أحدث الاتجاهات في تعلم اللغة، والتدريس، "
+"والتكنولوجيا."
 
-#: src/features/Conversation/ConfirmConversationModal.tsx:55
+#: src/features/Blog/ListBlog.tsx:131
 #. js-lingui-explicit-id
-msgid "I am ready"
-msgstr "أنا جاهز"
+msgid "No blogs found"
+msgstr "لم يتم العثور على مدونات"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6244,6 +6088,181 @@ msgstr "التطوير المهني"
 msgid "All Blogs"
 msgstr "جميع المدونات"
 
+#: src/features/Conversation/ConversationCanvas2.tsx:361
+#. js-lingui-explicit-id
+msgid "Idea for your message"
+msgstr "فكرة لرسالتك"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:419
+#. js-lingui-explicit-id
+msgid "Lesson Review"
+msgstr "مراجعة الدرس"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:440
+#. js-lingui-explicit-id
+msgid "Language level:"
+msgstr "مستوى اللغة:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:442
+#: src/features/Conversation/ConversationCanvas2.tsx:449
+#: src/features/Conversation/ConversationCanvas2.tsx:456
+#: src/features/Conversation/ConversationCanvas2.tsx:745
+#: src/features/Conversation/ConversationCanvas2.tsx:884
+#: src/features/Conversation/ConversationCanvas2.tsx:891
+#. js-lingui-explicit-id
+msgid "Analyzing..."
+msgstr "جار التحليل..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:447
+#. js-lingui-explicit-id
+msgid "What was great:"
+msgstr "ما كان رائعا:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:454
+#. js-lingui-explicit-id
+msgid "Areas to improve:"
+msgstr "مناطق للتحسين:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:479
+#. js-lingui-explicit-id
+msgid "Continue conversation"
+msgstr "متابعة المحادثة"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:492
+#. js-lingui-explicit-id
+msgid "Start new lesson"
+msgstr "ابدأ درسًا جديدًا"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:679
+#. js-lingui-explicit-id
+msgid "Error during analyzing message"
+msgstr "خطأ أثناء تحليل الرسالة"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:733
+#. js-lingui-explicit-id
+msgid "Almost correct"
+msgstr "تقريبا صحيح"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:748
+#. js-lingui-explicit-id
+msgid "Great!"
+msgstr "رائع!"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:771
+#. js-lingui-explicit-id
+msgid "Your Message"
+msgstr "رسالتك"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:843
+#. js-lingui-explicit-id
+msgid "Corrected"
+msgstr "تم التصحيح"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:938
+#. js-lingui-explicit-id
+msgid "New Words to Vocabulary:"
+msgstr "كلمات جديدة للمفردات:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:983
+#. js-lingui-explicit-id
+msgid "Analyzing"
+msgstr "تحليل"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:990
+#. js-lingui-explicit-id
+msgid "Preparing Goal"
+msgstr "تجهيز الهدف"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1010
+#. js-lingui-explicit-id
+msgid "Goal is created"
+msgstr "تم إنشاء الهدف"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1020
+#. js-lingui-explicit-id
+msgid "Lessons added:"
+msgstr "تمت إضافة الدروس:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1041
+#. js-lingui-explicit-id
+msgid "Open plan"
+msgstr "خطة مفتوحة"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1114
+#. js-lingui-explicit-id
+msgid "Stop"
+msgstr "توقف"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1146
+#. js-lingui-explicit-id
+msgid "Record Message"
+msgstr "سجل الرسالة"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1180
+#. js-lingui-explicit-id
+msgid "Finish conversation"
+msgstr "إنهاء المحادثة"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1197
+#. js-lingui-explicit-id
+msgid "Turn Volume Off"
+msgstr "إيقاف تشغيل الصوت"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1197
+#. js-lingui-explicit-id
+msgid "Turn Volume On"
+msgstr "تشغيل الصوت"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1218
+#. js-lingui-explicit-id
+msgid "Voice record mode"
+msgstr "وضع تسجيل الصوت"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1241
+#. js-lingui-explicit-id
+msgid "Keyboard mode"
+msgstr "وضع لوحة المفاتيح"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1264
+#. js-lingui-explicit-id
+msgid "Phone call mode"
+msgstr "وضع المكالمة الهاتفية"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1286
+#. js-lingui-explicit-id
+msgid "Help with answer"
+msgstr "مساعدة في الإجابة"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1309
+#. js-lingui-explicit-id
+msgid "Your message..."
+msgstr "رسالتك..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1360
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "تم إكمال المهمة"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1372
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "افتح النتائج"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1414
+#. js-lingui-explicit-id
+msgid "Re-write"
+msgstr "أعد الكتابة"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1474
+#. js-lingui-explicit-id
+msgid "Cancel recording"
+msgstr "إلغاء التسجيل"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1506
+#. js-lingui-explicit-id
+msgid "Top up"
+msgstr "إعادة شحن"
+
 #: src/features/Blog/BlogOnePage.tsx:141
 #. js-lingui-explicit-id
 msgid "View all posts"
@@ -6263,25 +6282,6 @@ msgstr "يمكنك تجربة الذكاء الصناعي في العمل الآ
 #. js-lingui-explicit-id
 msgid "Try for free"
 msgstr "جرب مجاناً"
-
-#: src/features/Blog/ListBlogIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "اقرأ وتعلم مع مدونتي"
-
-#: src/features/Blog/ListBlogIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr ""
-"احصل على الإلهام وتعرّف على أحدث الاتجاهات في تعلم اللغة، والتدريس، "
-"والتكنولوجيا."
-
-#: src/features/Blog/ListBlog.tsx:131
-#. js-lingui-explicit-id
-msgid "No blogs found"
-msgstr "لم يتم العثور على مدونات"
 
 #: src/features/Blog/BlogCard.tsx:168
 #. js-lingui-explicit-id
@@ -6701,23 +6701,6 @@ msgstr ""
 msgid "Good preparation today means career success tomorrow."
 msgstr "التحضير الجيد اليوم يعني نجاح الوظيفة غدًا."
 
-#: src/features/Auth/SignInForm.tsx:30
-#. js-lingui-explicit-id
-msgid "Open personal plan"
-msgstr "افتح الخطة الشخصية"
-
-#: src/features/Auth/SignInForm.tsx:32
-#: src/features/Auth/SignInForm.tsx:33
-#. js-lingui-explicit-id
-msgid "Sing in"
-msgstr "تسجيل الدخول"
-
-#: src/features/Auth/SignInForm.tsx:38
-#: src/features/Auth/SignInForm.tsx:39
-#. js-lingui-explicit-id
-msgid "So you can save your progress"
-msgstr "حتى تتمكن من حفظ تقدمك"
-
 #: src/features/Auth/WebViewWall.tsx:38
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please copy it manually."
@@ -6765,6 +6748,23 @@ msgstr "افتح في تيليجرام"
 msgid "Open in Browser"
 msgstr "افتح في المتصفح"
 
+#: src/features/Auth/SignInForm.tsx:30
+#. js-lingui-explicit-id
+msgid "Open personal plan"
+msgstr "افتح الخطة الشخصية"
+
+#: src/features/Auth/SignInForm.tsx:32
+#: src/features/Auth/SignInForm.tsx:33
+#. js-lingui-explicit-id
+msgid "Sing in"
+msgstr "تسجيل الدخول"
+
+#: src/features/Auth/SignInForm.tsx:38
+#: src/features/Auth/SignInForm.tsx:39
+#. js-lingui-explicit-id
+msgid "So you can save your progress"
+msgstr "حتى تتمكن من حفظ تقدمك"
+
 #: src/features/Landing/PlanLandingBlock.tsx:300
 msgid "{countOfLanguages} languages to practice"
 msgstr "{countOfLanguages} لغات للتدريب"
@@ -6782,7 +6782,7 @@ msgstr "أجب على <0>{0} أسئلة</0> للحصول على موقع جدي�
 msgid "Hello, {userName}! Manage your profile settings and check your progress"
 msgstr "مرحبًا، {userName}! قم بإدارة إعدادات ملفك الشخصي وتحقق من تقدمك"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:357
+#: src/features/Goal/Quiz/QuizPage2.tsx:1159
 msgid "Let's create an account"
 msgstr "لننشئ حسابًا"
 
@@ -6799,11 +6799,11 @@ msgstr "الموقع التالي ({nextUserUsername}): <0>{pointsToNextPosition
 msgid "Position"
 msgstr "الموقع"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:579
+#: src/features/Goal/Quiz/QuizPage2.tsx:270
 msgid "Record 2-3 minutes story using <0>{learningLanguageName}</0>"
 msgstr "سجل قصة مدتها 2-3 دقائق باستخدام <0>{learningLanguageName}</0>"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:317
+#: src/features/Goal/Quiz/QuizPage2.tsx:1090
 msgid "So we need your agreement with that"
 msgstr "لذلك نحن بحاجة إلى موافقتك على ذلك"
 
@@ -6811,11 +6811,11 @@ msgstr "لذلك نحن بحاجة إلى موافقتك على ذلك"
 msgid "Talk, get corrected, improve—repeat."
 msgstr "تحدث، تصحح، تحسين - كرر."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:309
+#: src/features/Goal/Quiz/QuizPage2.tsx:1082
 msgid "We will speak freely"
 msgstr "سوف نتحدث بحرية"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:263
+#: src/features/Goal/Quiz/QuizPage2.tsx:1006
 msgid "What you get with FluencyPal"
 msgstr "ما الذي تحصل عليه مع FluencyPal"
 
