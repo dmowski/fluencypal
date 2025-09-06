@@ -136,7 +136,11 @@ const QuizQuestions = () => {
             </AuthWall>
           )}
 
-          {currentStep === "recordAbout" && <RecordUserAudio />}
+          {currentStep === "recordAbout" && (
+            <AuthWall>
+              <RecordUserAudio />
+            </AuthWall>
+          )}
         </Stack>
       )}
     </Stack>
