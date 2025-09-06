@@ -236,7 +236,7 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
         )}
         {step === "agreement" && (
           <InfoStep
-            imageUrl="/avatar/bot2.png"
+            imageUrl="/avatar/bot1.png"
             actionButtonTitle={i18n._("I agree")}
             actionButtonEndIcon={<Check />}
             subComponent={
@@ -275,6 +275,7 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
                     sx={{
                       flexDirection: "row",
                       gap: "5px",
+                      paddingTop: "15px",
                     }}
                   >
                     <Stack
@@ -721,10 +722,12 @@ export const InfoStep = ({
 
 const NativeLanguageSelector = () => {
   const { i18n } = useLingui();
-  const { nativeLanguage, setNativeLanguage, languageToLearn, nextStep } = useQuiz();
+  const { nativeLanguage, setNativeLanguage, nextStep } = useQuiz();
 
   const [internalFilterValue, setInternalFilterValue] = useState("");
   const cleanInput = internalFilterValue.trim().toLowerCase();
+
+  const isCorrectNativeLanguageSelected = nativeLanguage;
 
   const { languageGroups } = useLanguageGroup({
     defaultGroupTitle: i18n._(`Other languages`),
@@ -776,7 +779,6 @@ const NativeLanguageSelector = () => {
   };
 
   const filteredLanguageGroup = languageGroups
-    .filter((group) => group.code !== languageToLearn)
     .filter(filterByInput)
     .sort((a, b) => a.englishName.localeCompare(b.englishName));
 
@@ -864,14 +866,12 @@ const NativeLanguageSelector = () => {
               isSystemLang={option.isSystemLanguage}
               fullName={option.nativeName}
               isShowFullName
-              disabled={option.code === languageToLearn}
-              isFlag={option.code === languageToLearn}
               isSelected={isSelected}
             />
           );
         })}
       </Stack>
-      <NextStepButton disabled={!nativeLanguage} />
+      <NextStepButton disabled={!isCorrectNativeLanguageSelected} />
     </Stack>
   );
 };
@@ -1188,6 +1188,7 @@ const NextStepButton = ({
 
   return (
     <FooterButton
+      disabled={disabled}
       onClick={() => {
         !isStepLoading && nextStep();
       }}

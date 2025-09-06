@@ -124,15 +124,20 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
       );
       const goodSystemLang = systemLanguages[0]?.code;
       if (goodSystemLang) {
+        console.log("Found system lang", goodSystemLang);
         return {
           nativeLang: goodSystemLang,
         };
       }
 
       const countryCode = await getCountryByIP();
-      const country = countryCode ? languageGroups.find((lang) => lang.code === countryCode) : null;
+      const country =
+        countryCode && countryCode !== langToLearn
+          ? languageGroups.find((lang) => lang.code === countryCode)
+          : null;
 
       if (country) {
+        console.log("Found country by IP", country.code);
         return {
           nativeLang: country.code,
         };
