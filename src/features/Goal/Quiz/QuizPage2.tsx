@@ -197,6 +197,7 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
           maxWidth: "600px",
           padding: "0 0px",
           width: "100%",
+          "--content-max-width": "350px",
         }}
       >
         {step === "features" && (
@@ -208,7 +209,7 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
                 sx={{
                   gap: "20px",
                   alignItems: "flex-start",
-                  maxWidth: "300px",
+                  maxWidth: "var(--content-max-width)",
                   width: "100%",
                   minHeight: "300px",
                 }}
@@ -241,7 +242,7 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
                 sx={{
                   gap: "20px",
                   alignItems: "flex-start",
-                  maxWidth: "300px",
+                  maxWidth: "var(--content-max-width)",
                   width: "100%",
                   minHeight: "300px",
                 }}
@@ -305,7 +306,7 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
                 sx={{
                   gap: "20px",
                   alignItems: "flex-start",
-                  maxWidth: "300px",
+                  maxWidth: "var(--content-max-width)",
                   width: "100%",
                   minHeight: "300px",
                 }}
