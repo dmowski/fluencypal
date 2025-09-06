@@ -63,6 +63,17 @@ html {
   display: inline-block;
 }
 
+.loading-shimmer-shape {
+  background: linear-gradient(
+    40deg,
+    rgba(255, 255, 255, 0.06) 30%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  background-size: 200% 100%;
+  animation: loadingShimmer 2s infinite;
+}
+
 @keyframes loadingShimmer {
   0% {
     background-position: -100% 0px;
