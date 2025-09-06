@@ -38,7 +38,9 @@ import {
   Mic,
   Music,
   OctagonX,
+  PencilRuler,
   Plane,
+  ScrollText,
   Search,
   ShieldCheck,
   Sparkles,
@@ -73,6 +75,10 @@ export const AuthFirstList: React.FC = () => {
 
   const listItems: ListItem[] = [
     {
+      title: i18n._("Conversation practice with AI"),
+      icon: Speech,
+    },
+    {
       title: i18n._("Full AI tutor access"),
       icon: Sparkles,
     },
@@ -83,15 +89,11 @@ export const AuthFirstList: React.FC = () => {
     },
 
     {
-      title: i18n._("Conversation practice"),
-      icon: Speech,
-    },
-    {
       title: i18n._("New Grammar Rules"),
       icon: GraduationCap,
     },
     {
-      title: i18n._("New Words"),
+      title: i18n._("New Words and Phrases"),
       icon: BookType,
     },
 
@@ -122,6 +124,18 @@ export const AgreementsList: React.FC = () => {
       title: i18n._("You can delete your personal data anytime"),
       icon: ShieldCheck,
     },
+
+    {
+      title: i18n._("Privacy Policy"),
+      icon: ScrollText,
+      href: `${getUrlStart("en")}privacy`,
+    },
+
+    {
+      title: i18n._("Terms of Use"),
+      icon: PencilRuler,
+      href: `${getUrlStart("en")}terms`,
+    },
   ];
 
   return <IconTextList listItems={listItems} />;
@@ -145,12 +159,32 @@ export const AuthSignInList: React.FC = () => {
       title: i18n._("No ads, no spam"),
       icon: BetweenHorizontalStart,
     },
+
+    {
+      title: i18n._("Privacy Policy"),
+      icon: ScrollText,
+      href: `${getUrlStart("en")}privacy`,
+    },
+
+    {
+      title: i18n._("Terms of Use"),
+      icon: PencilRuler,
+      href: `${getUrlStart("en")}terms`,
+    },
   ];
 
   return <IconTextList listItems={listItems} />;
 };
 
-const AuthWall = ({ children }: { children: ReactNode }) => {
+export const AuthWall = ({
+  children,
+  signInTitle,
+  singInSubTitle,
+}: {
+  children: ReactNode;
+  signInTitle?: string;
+  singInSubTitle?: string;
+}) => {
   const auth = useAuth();
   const { i18n } = useLingui();
 
@@ -195,9 +229,10 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
       <Stack
         sx={{
           maxWidth: "600px",
-          padding: "0 0px",
+          padding: "0 10px",
           width: "100%",
-          "--content-max-width": "350px",
+          "--content-max-width": "380px",
+          "--content-min-height": "350px",
         }}
       >
         {step === "features" && (
@@ -211,14 +246,27 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
                   alignItems: "flex-start",
                   maxWidth: "var(--content-max-width)",
                   width: "100%",
-                  minHeight: "300px",
+                  minHeight: "var(--content-min-height)",
                 }}
               >
-                <Typography variant="h6">
-                  <Trans>
-                    What you get with <b>FluencyPal</b>
-                  </Trans>
-                </Typography>
+                <Stack sx={{}}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: 660,
+                    }}
+                  >
+                    <Trans>What you get with FluencyPal</Trans>
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      opacity: 0.7,
+                    }}
+                  >
+                    <Trans>AI speaking partner</Trans>
+                  </Typography>
+                </Stack>
                 <Stack
                   sx={{
                     width: "max-content",
@@ -234,9 +282,9 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
         )}
         {step === "agreement" && (
           <InfoStep
-            imageUrl="/avatar/bot1.png"
             actionButtonTitle={i18n._("I agree")}
             actionButtonEndIcon={<Check />}
+            imageUrl="/avatar/bot1.png"
             subComponent={
               <Stack
                 sx={{
@@ -244,15 +292,20 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
                   alignItems: "flex-start",
                   maxWidth: "var(--content-max-width)",
                   width: "100%",
-                  minHeight: "300px",
+                  minHeight: "var(--content-min-height)",
                 }}
               >
-                <Stack>
-                  <Typography variant="h6">
+                <Stack sx={{}}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: 660,
+                    }}
+                  >
                     <Trans>We will speak freely</Trans>
                   </Typography>
                   <Typography
-                    variant="caption"
+                    variant="body2"
                     sx={{
                       opacity: 0.7,
                     }}
@@ -268,27 +321,6 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
                   }}
                 >
                   <AgreementsList />
-
-                  <Stack
-                    sx={{
-                      flexDirection: "row",
-                      gap: "5px",
-                      paddingTop: "15px",
-                    }}
-                  >
-                    <Stack
-                      sx={{
-                        width: "100%",
-                      }}
-                    >
-                      <Link variant="caption" href={`${getUrlStart("en")}privacy`} target="_blank">
-                        {i18n._(`Privacy Policy`)}
-                      </Link>
-                      <Link variant="caption" href={`${getUrlStart("en")}terms`} target="_blank">
-                        {i18n._(`Terms of Use`)}
-                      </Link>
-                    </Stack>
-                  </Stack>
                 </Stack>
               </Stack>
             }
@@ -308,20 +340,25 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
                   alignItems: "flex-start",
                   maxWidth: "var(--content-max-width)",
                   width: "100%",
-                  minHeight: "300px",
+                  minHeight: "var(--content-min-height)",
                 }}
               >
                 <Stack>
-                  <Typography variant="h6">
-                    <Trans>Let's create an account</Trans>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: 660,
+                    }}
+                  >
+                    {signInTitle ? signInTitle : <Trans>Let's create an account</Trans>}
                   </Typography>
                   <Typography
-                    variant="caption"
+                    variant="body2"
                     sx={{
                       opacity: 0.7,
                     }}
                   >
-                    <Trans>So you can keep your progress</Trans>
+                    {singInSubTitle ? singInSubTitle : <Trans>So you can keep your progress</Trans>}
                   </Typography>
                 </Stack>
                 <Stack
@@ -331,37 +368,6 @@ const AuthWall = ({ children }: { children: ReactNode }) => {
                   }}
                 >
                   <AuthSignInList />
-                </Stack>
-              </Stack>
-            }
-            aboveButtonComponent={
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  gap: "0px",
-                  opacity: 0.9,
-                }}
-              >
-                <Typography variant="caption">
-                  {i18n._(`By signing in, you agree to our`)}
-                </Typography>
-                <Stack
-                  sx={{
-                    flexDirection: "row",
-                    gap: "5px",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Typography variant="caption" align="center">
-                    <Link href={`${getUrlStart("en")}privacy`} target="_blank">
-                      {i18n._(`Privacy Policy`)}
-                    </Link>{" "}
-                    {i18n._("and")}{" "}
-                    <Link href={`${getUrlStart("en")}terms`} target="_blank">
-                      {i18n._(`Terms of Use`)}
-                    </Link>
-                  </Typography>
                 </Stack>
               </Stack>
             }
@@ -449,6 +455,7 @@ const QuizQuestions = () => {
 interface ListItem {
   title: string;
   icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+  href?: string;
 }
 
 const IconTextList = ({ listItems }: { listItems: ListItem[] }) => {
@@ -477,7 +484,14 @@ const IconTextList = ({ listItems }: { listItems: ListItem[] }) => {
             }}
             size={18}
           />
-          <Typography variant="body2">{item.title}</Typography>
+          <Typography
+            variant="body2"
+            target={item.href ? "_blank" : undefined}
+            component={item.href ? Link : "div"}
+            href={item.href}
+          >
+            {item.title}
+          </Typography>
         </Stack>
       ))}
     </Stack>
@@ -680,22 +694,42 @@ export const InfoStep = ({
           //backgroundColor: "rgba(240, 0, 0, 0.1)",
         }}
       >
-        <img
-          src={imageUrl}
-          style={{
-            width: "190px",
-            height: "190px",
-          }}
-        />
+        {imageUrl && (
+          <img
+            src={imageUrl}
+            style={{
+              width: "190px",
+              height: "190px",
+            }}
+          />
+        )}
         <Stack
           sx={{
             alignItems: "center",
             width: "100%",
+            gap: "0px",
           }}
         >
-          {message && <Typography align="center">{message}</Typography>}
+          {message && (
+            <Typography
+              variant="h5"
+              align="center"
+              sx={{
+                fontWeight: 660,
+                lineHeight: "1.2",
+              }}
+            >
+              {message}
+            </Typography>
+          )}
           {subMessage && (
-            <Typography align="center" variant="caption" sx={{ opacity: 0.7 }}>
+            <Typography
+              variant="body2"
+              align="center"
+              sx={{
+                opacity: 0.7,
+              }}
+            >
               {subMessage}
             </Typography>
           )}

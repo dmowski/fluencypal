@@ -25,6 +25,8 @@ import { NeedHelpModal } from "../Header/NeedHelpModal";
 import { PaymentHistoryModal } from "../Header/PaymentHistoryModal";
 import { ContactMessageModal } from "../Header/ContactMessageModal";
 import { Trans } from "@lingui/react/macro";
+import { useRouter } from "next/navigation";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
@@ -52,7 +54,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const userPhoto = auth.userInfo?.photoURL || settings.userSettings?.photoUrl || "";
   const userName = auth.userInfo?.displayName || "";
   const [isShowModal, setIsShowModal] = useUrlParam("lang-selection");
-
+  const router = useRouter();
   const openLang = () => {
     setIsShowModal(true);
   };
@@ -111,8 +113,11 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       title: i18n._(`Log Out`),
       subTitle: i18n._(`Log out of your account`),
       icon: LogOut,
-      onClick: () => {
-        auth.logout();
+      onClick: async () => {
+        router.push(getUrlStart(lang));
+        setTimeout(async () => {
+          await auth.logout();
+        }, 300);
       },
     });
   }

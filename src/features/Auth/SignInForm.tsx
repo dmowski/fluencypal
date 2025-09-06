@@ -9,6 +9,7 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { WebViewWall } from "./WebViewWall";
+import { AuthWall } from "../Goal/Quiz/QuizPage2";
 
 interface SignInFormProps {
   rolePlayInfo: RolePlayScenariosInfo;
@@ -29,114 +30,28 @@ export const SignInForm = ({ rolePlayInfo, lang }: SignInFormProps) => {
     ? i18n._(`Open personal plan`)
     : scenario
       ? scenario.title
-      : i18n._(`Start the Lesson`);
+      : i18n._(`Sing in `);
 
-  const handleSignIn = () => {
-    auth.signInWithGoogle();
-  };
+  const singInSubTitle = goalId
+    ? i18n._(`So you can keep your progress`)
+    : scenario
+      ? i18n._(`So you can save your progress in ${scenario.title}`)
+      : i18n._(`So you can save your progress`);
 
   return (
     <WebViewWall>
-      <StarContainer minHeight="min(100vh,1600px)" paddingBottom="160px">
-        <Stack
-          sx={{
-            alignItems: "center",
-            gap: "40px",
-          }}
-        >
-          <Stack
-            sx={{
-              alignItems: "center",
-            }}
-          >
-            {scenario ? (
-              <Typography
-                variant="body2"
-                align="center"
-                sx={{
-                  opacity: 0.8,
-                  textTransform: "uppercase",
-                }}
-              >
-                {i18n._(`Start Role Play:`)}
-              </Typography>
-            ) : (
-              <></>
-            )}
-            <Typography
-              variant="h2"
-              component={"h1"}
-              align="center"
-              sx={{
-                fontWeight: 900,
-                fontSize: "4rem",
-                padding: "0 10px",
-                "@media (max-width: 600px)": {
-                  fontSize: "2.3rem",
-                },
-              }}
-            >
-              {pageTitle}
-            </Typography>
-            <Stack
-              sx={{
-                alignItems: "center",
-                opacity: 0.9,
-              }}
-            >
-              <Typography variant="body1" align="center">
-                {i18n._("Create an account to continue")}
-              </Typography>
-            </Stack>
-          </Stack>
-
-          <Stack
-            sx={{
-              alignItems: "center",
-              gap: "10px",
-            }}
-          >
-            <Button
-              variant="contained"
-              size="large"
-              onClick={handleSignIn}
-              startIcon={<GoogleIcon />}
-            >
-              {i18n._(`Continue with google`)}
-            </Button>
-
-            <Stack
-              sx={{
-                alignItems: "center",
-                gap: "0px",
-                opacity: 0.9,
-              }}
-            >
-              <Typography variant="caption">
-                {i18n._(`By creating an account, you agree to:`)}
-              </Typography>
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  gap: "5px",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Typography variant="caption" align="center">
-                  <Link href={`${getUrlStart(lang)}privacy`} target="_blank">
-                    {i18n._(`Privacy Policy`)}
-                  </Link>{" "}
-                  {i18n._("and")}{" "}
-                  <Link href={`${getUrlStart(lang)}terms`} target="_blank">
-                    {i18n._(`Terms of Use`)}
-                  </Link>
-                </Typography>
-              </Stack>
-            </Stack>
-          </Stack>
-        </Stack>
-      </StarContainer>
+      <Stack
+        sx={{
+          width: "100%",
+          paddingTop: `20px`,
+          paddingBottom: `10px`,
+          alignItems: "center",
+        }}
+      >
+        <AuthWall signInTitle={pageTitle} singInSubTitle={singInSubTitle}>
+          <></>
+        </AuthWall>
+      </Stack>
     </WebViewWall>
   );
 };
