@@ -219,13 +219,12 @@ export const AboutYourselfList: React.FC = () => {
 };
 
 const RecordUserAudio = () => {
-  const sizes = useWindowSizes();
   const { i18n } = useLingui();
-  const { languageToLearn, nextStep } = useQuiz();
+  const { languageToLearn, nextStep, survey, updateSurvey } = useQuiz();
   const learningLanguageName = fullLanguageName[languageToLearn];
   const auth = useAuth();
 
-  const [transcript, setTranscript] = useState<string>("");
+  const transcript = survey?.aboutUserTranscription || "";
 
   const recorder = useAudioRecorder({
     languageCode: languageToLearn || "en",
@@ -236,11 +235,23 @@ const RecordUserAudio = () => {
   });
 
   useEffect(() => {
-    if (recorder.transcription) {
+    if (recorder.transcription && survey) {
       const combinedTranscript = [transcript, recorder.transcription].filter(Boolean).join(" ");
-      setTranscript(combinedTranscript);
+      updateSurvey({
+        ...survey,
+        aboutUserTranscription: combinedTranscript,
+      });
     }
   }, [recorder.transcription]);
+
+  const clearTranscript = () => {
+    if (survey) {
+      updateSurvey({
+        ...survey,
+        aboutUserTranscription: "",
+      });
+    }
+  };
 
   return (
     <Stack
@@ -292,7 +303,7 @@ const RecordUserAudio = () => {
             >
               {recorder.isTranscribing && i18n._("Processing...")}
               {transcript && transcript}
-              {!transcript && !recorder.isTranscribing && "____"}
+              {!transcript && !recorder.isTranscribing && survey && "____"}
             </Typography>
 
             {transcript && !recorder.isTranscribing && (
@@ -312,12 +323,7 @@ const RecordUserAudio = () => {
                 >
                   {i18n._("Record more")}
                 </Button>
-                <IconButton
-                  size="small"
-                  onClick={() => {
-                    setTranscript("");
-                  }}
-                >
+                <IconButton size="small" onClick={clearTranscript}>
                   <X size={"16px"} />
                 </IconButton>
               </Stack>

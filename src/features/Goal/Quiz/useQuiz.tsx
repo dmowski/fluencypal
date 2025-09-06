@@ -62,7 +62,7 @@ interface QuizContextType {
   isCanGoToMainPage: boolean;
   isFirstLoading: boolean;
   survey: QuizSurvey2 | null;
-  updateSurvey?: (surveyDoc: QuizSurvey2) => Promise<void>;
+  updateSurvey: (surveyDoc: QuizSurvey2) => Promise<void>;
 }
 const QuizContext = createContext<QuizContextType | null>(null);
 
@@ -367,6 +367,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     prevStep,
     progress,
     isFirstLoading,
+    updateSurvey,
   };
 }
 
