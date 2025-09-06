@@ -1,5 +1,13 @@
 "use client";
-import { Button, IconButton, InputAdornment, Stack, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  IconButton,
+  InputAdornment,
+  Link,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 import {
   fullEnglishLanguageName,
@@ -16,20 +24,26 @@ import { useLingui } from "@lingui/react";
 import {
   ArrowLeft,
   ArrowRight,
-  ArrowUp,
+  BetweenHorizontalStart,
+  Bird,
+  BookType,
+  ChartNoAxesCombined,
   Check,
-  Compass,
-  Copy,
   FlagIcon,
   Globe,
   GraduationCap,
   Guitar,
-  Icon,
+  Lightbulb,
   LucideProps,
   Mic,
   Music,
+  OctagonX,
   Plane,
   Search,
+  ShieldCheck,
+  Sparkles,
+  Speech,
+  UsersRound,
   X,
 } from "lucide-react";
 import { LangSelectorFullScreen, LanguageButton } from "@/features/Lang/LangSelector";
@@ -48,11 +62,318 @@ import {
 import { Trans } from "@lingui/react/macro";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useAuth } from "@/features/Auth/useAuth";
-import Telegram from "@mui/icons-material/Telegram";
-import { useIsWebView } from "@/features/Auth/useIsWebView";
 import { WebViewWall } from "@/features/Auth/WebViewWall";
+import { FeatureList } from "@/features/Landing/Price/FeatureList";
+import { on } from "events";
+import Google from "@mui/icons-material/Google";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
+import { scrollTopFast } from "@/libs/scroll";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export const AuthFirstList: React.FC = () => {
+  const { i18n } = useLingui();
+
+  const listItems: ListItem[] = [
+    {
+      title: i18n._("Full AI tutor access"),
+      icon: Sparkles,
+    },
+
+    {
+      title: i18n._("Advanced Personalization"),
+      icon: Lightbulb,
+    },
+
+    {
+      title: i18n._("Conversation practice"),
+      icon: Speech,
+    },
+    {
+      title: i18n._("New Grammar Rules"),
+      icon: GraduationCap,
+    },
+    {
+      title: i18n._("New Words"),
+      icon: BookType,
+    },
+
+    {
+      title: i18n._("Role-play scenarios"),
+      icon: UsersRound,
+    },
+  ];
+
+  return <IconTextList listItems={listItems} />;
+};
+
+export const AgreementsList: React.FC = () => {
+  const { i18n } = useLingui();
+
+  const listItems: ListItem[] = [
+    {
+      title: i18n._("We process your voice using AI"),
+      icon: ShieldCheck,
+    },
+
+    {
+      title: i18n._("Your transcripts are securely stored in our service"),
+      icon: ShieldCheck,
+    },
+
+    {
+      title: i18n._("You can delete your personal data anytime"),
+      icon: ShieldCheck,
+    },
+  ];
+
+  return <IconTextList listItems={listItems} />;
+};
+
+export const AuthSignInList: React.FC = () => {
+  const { i18n } = useLingui();
+
+  const listItems: ListItem[] = [
+    {
+      title: i18n._("3 days of full access for free"),
+      icon: Sparkles,
+    },
+
+    {
+      title: i18n._("No credit card required"),
+      icon: Bird,
+    },
+
+    {
+      title: i18n._("No ads, no spam"),
+      icon: BetweenHorizontalStart,
+    },
+  ];
+
+  return <IconTextList listItems={listItems} />;
+};
+
+const AuthWall = ({ children }: { children: ReactNode }) => {
+  const auth = useAuth();
+  const { i18n } = useLingui();
+  const sizes = useWindowSizes();
+
+  const isShowAuthWall = !auth.uid && !auth.loading;
+
+  const steps = ["features", "agreement", "auth"];
+  const [step, setStep] = useState(steps[0]);
+  const nextStep = () => {
+    const currentIndex = steps.indexOf(step);
+    if (currentIndex < steps.length - 1) {
+      setStep(steps[currentIndex + 1]);
+    }
+
+    if (step === "auth") {
+      auth.signInWithGoogle();
+    }
+  };
+
+  useEffect(() => {
+    if (isShowAuthWall) {
+      const isWindow = typeof window !== "undefined";
+      if (isWindow) {
+        scrollTopFast();
+      }
+    }
+  }, [isShowAuthWall]);
+
+  if (!isShowAuthWall) {
+    return children;
+  }
+
+  return (
+    <Stack
+      component={"main"}
+      sx={{
+        width: "100%",
+        paddingTop: `10px`,
+        paddingBottom: `10px`,
+        alignItems: "center",
+      }}
+    >
+      <Stack
+        sx={{
+          maxWidth: "600px",
+          padding: "0 0px",
+          width: "100%",
+        }}
+      >
+        {step === "features" && (
+          <InfoStep
+            imageUrl="/avatar/bot2.webp"
+            actionButtonTitle={i18n._("Next")}
+            subComponent={
+              <Stack
+                sx={{
+                  gap: "20px",
+                  alignItems: "flex-start",
+                  maxWidth: "300px",
+                  width: "100%",
+                  minHeight: "300px",
+                }}
+              >
+                <Typography variant="h6">
+                  <Trans>
+                    What you get with <b>FluencyPal</b>
+                  </Trans>
+                </Typography>
+                <Stack
+                  sx={{
+                    width: "max-content",
+                    minWidth: "230px",
+                  }}
+                >
+                  <AuthFirstList />
+                </Stack>
+              </Stack>
+            }
+            onClick={nextStep}
+          />
+        )}
+        {step === "agreement" && (
+          <InfoStep
+            imageUrl="/avatar/bot2.png"
+            actionButtonTitle={i18n._("I agree")}
+            actionButtonEndIcon={<Check />}
+            subComponent={
+              <Stack
+                sx={{
+                  gap: "20px",
+                  alignItems: "flex-start",
+                  maxWidth: "300px",
+                  width: "100%",
+                  minHeight: "300px",
+                }}
+              >
+                <Stack>
+                  <Typography variant="h6">
+                    <Trans>We will speak freely</Trans>
+                  </Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      opacity: 0.7,
+                    }}
+                  >
+                    <Trans>So we need your agreement with that</Trans>
+                  </Typography>
+                </Stack>
+                <Stack
+                  sx={{
+                    minWidth: "230px",
+                    width: "100%",
+                    gap: "10px",
+                  }}
+                >
+                  <AgreementsList />
+
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      gap: "5px",
+                    }}
+                  >
+                    <Stack
+                      sx={{
+                        width: "100%",
+                      }}
+                    >
+                      <Link variant="caption" href={`${getUrlStart("en")}privacy`} target="_blank">
+                        {i18n._(`Privacy Policy`)}
+                      </Link>
+                      <Link variant="caption" href={`${getUrlStart("en")}terms`} target="_blank">
+                        {i18n._(`Terms of Use`)}
+                      </Link>
+                    </Stack>
+                  </Stack>
+                </Stack>
+              </Stack>
+            }
+            onClick={nextStep}
+          />
+        )}
+
+        {step === "auth" && (
+          <InfoStep
+            imageUrl="/avatar/map.webp"
+            actionButtonTitle={i18n._("Sign in with Google")}
+            actionButtonStartIcon={<Google />}
+            subComponent={
+              <Stack
+                sx={{
+                  gap: "20px",
+                  alignItems: "flex-start",
+                  maxWidth: "300px",
+                  width: "100%",
+                  minHeight: "300px",
+                }}
+              >
+                <Stack>
+                  <Typography variant="h6">
+                    <Trans>Let's create an account</Trans>
+                  </Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      opacity: 0.7,
+                    }}
+                  >
+                    <Trans>So you can keep your progress</Trans>
+                  </Typography>
+                </Stack>
+                <Stack
+                  sx={{
+                    width: "100%",
+                    minWidth: "230px",
+                  }}
+                >
+                  <AuthSignInList />
+                </Stack>
+              </Stack>
+            }
+            aboveButtonComponent={
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  gap: "0px",
+                  opacity: 0.9,
+                }}
+              >
+                <Typography variant="caption">
+                  {i18n._(`By signing in, you agree to our`)}
+                </Typography>
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    gap: "5px",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography variant="caption" align="center">
+                    <Link href={`${getUrlStart("en")}privacy`} target="_blank">
+                      {i18n._(`Privacy Policy`)}
+                    </Link>{" "}
+                    {i18n._("and")}{" "}
+                    <Link href={`${getUrlStart("en")}terms`} target="_blank">
+                      {i18n._(`Terms of Use`)}
+                    </Link>
+                  </Typography>
+                </Stack>
+              </Stack>
+            }
+            onClick={nextStep}
+          />
+        )}
+      </Stack>
+    </Stack>
+  );
+};
 
 const QuizQuestions = () => {
   const { currentStep, isFirstLoading } = useQuiz();
@@ -102,20 +423,22 @@ const QuizQuestions = () => {
           {currentStep === "pageLanguage" && <PageLanguageSelector />}
 
           {currentStep === "before_recordAbout" && (
-            <InfoStep
-              message={i18n._(`We are ready`)}
-              subMessage={i18n._(`Let's talk. Tell me  about yourself`)}
-              imageUrl="/avatar/owl1.png"
-              subComponent={
-                <Stack
-                  sx={{
-                    paddingTop: "20px",
-                  }}
-                >
-                  <AboutYourselfList />
-                </Stack>
-              }
-            />
+            <AuthWall>
+              <InfoStep
+                message={i18n._(`We are ready`)}
+                subMessage={i18n._(`Let's talk. Tell me  about yourself`)}
+                imageUrl="/avatar/owl1.png"
+                subComponent={
+                  <Stack
+                    sx={{
+                      paddingTop: "20px",
+                    }}
+                  >
+                    <AboutYourselfList />
+                  </Stack>
+                }
+              />
+            </AuthWall>
           )}
 
           {currentStep === "recordAbout" && <RecordUserAudio />}
@@ -136,7 +459,7 @@ const IconTextList = ({ listItems }: { listItems: ListItem[] }) => {
       sx={{
         gap: "18px",
         paddingTop: "10px",
-        paddingBottom: "40px",
+        paddingBottom: "10px",
         width: "100%",
       }}
     >
@@ -147,6 +470,7 @@ const IconTextList = ({ listItems }: { listItems: ListItem[] }) => {
             flexDirection: "row",
             gap: "15px",
             alignItems: "center",
+            width: "100%",
           }}
         >
           <item.icon
@@ -318,20 +642,29 @@ const RecordUserAudio = () => {
   );
 };
 
-const InfoStep = ({
+export const InfoStep = ({
   message,
   subMessage,
   subComponent,
   imageUrl,
   actionButtonTitle,
+  onClick,
+  actionButtonStartIcon,
+  actionButtonEndIcon,
+  aboveButtonComponent,
 }: {
-  message: string;
-  subMessage: string;
+  message?: string;
+  subMessage?: string;
   subComponent?: ReactNode;
   imageUrl: string;
   actionButtonTitle?: string;
+  onClick?: () => void;
+  actionButtonStartIcon?: ReactNode;
+  actionButtonEndIcon?: ReactNode;
+  aboveButtonComponent?: ReactNode;
 }) => {
   const sizes = useWindowSizes();
+  const { i18n } = useLingui();
   return (
     <Stack
       sx={{
@@ -359,17 +692,30 @@ const InfoStep = ({
         <Stack
           sx={{
             alignItems: "center",
+            width: "100%",
           }}
         >
-          <Typography align="center">{message}</Typography>
-          <Typography align="center" variant="caption" sx={{ opacity: 0.7 }}>
-            {subMessage}
-          </Typography>
+          {message && <Typography align="center">{message}</Typography>}
+          {subMessage && (
+            <Typography align="center" variant="caption" sx={{ opacity: 0.7 }}>
+              {subMessage}
+            </Typography>
+          )}
           {subComponent}
         </Stack>
       </Stack>
 
-      <NextStepButton actionButtonTitle={actionButtonTitle} />
+      {onClick ? (
+        <FooterButton
+          onClick={onClick}
+          title={actionButtonTitle || i18n._("Next")}
+          endIcon={actionButtonEndIcon}
+          startIcon={actionButtonStartIcon}
+          aboveButtonComponent={aboveButtonComponent}
+        />
+      ) : (
+        <NextStepButton actionButtonTitle={actionButtonTitle} />
+      )}
     </Stack>
   );
 };

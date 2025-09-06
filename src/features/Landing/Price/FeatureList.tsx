@@ -16,7 +16,6 @@ import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 interface ListItem {
   title: string;
-  tooltip: string;
   icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
 }
 
@@ -29,39 +28,30 @@ export const FeatureList: React.FC<FeatureListProps> = ({}) => {
   const listItems: ListItem[] = [
     {
       title: i18n._("Full AI tutor access"),
-      tooltip: i18n._("Get unlimited access to AI-powered language practice"),
       icon: Sparkles,
     },
     {
       title: i18n._("Role-play scenarios"),
-      tooltip: i18n._("Engage in real-life conversations like job interviews or ordering food"),
       icon: UsersRound,
     },
     {
       title: i18n._("Conversation practice"),
-      tooltip: i18n._("Improve fluency with interactive chat sessions"),
       icon: Speech,
     },
     {
       title: i18n._("Progress tracking"),
-      tooltip: i18n._("See your improvements and track your learning journey"),
       icon: ChartNoAxesCombined,
     },
     {
       title: i18n._("New Words"),
-      tooltip: i18n._("Get new words and phrases in context"),
       icon: BookType,
     },
     {
       title: i18n._("New Grammar Rules"),
-      tooltip: i18n._("By practicing, you will get personal grammar rules from AI"),
       icon: GraduationCap,
     },
     {
       title: i18n._("Advanced Personalization"),
-      tooltip: i18n._(
-        "With time, AI will adapt to your learning style and it will be more personalized"
-      ),
       icon: Lightbulb,
     },
   ];
