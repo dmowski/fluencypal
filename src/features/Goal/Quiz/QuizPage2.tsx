@@ -33,6 +33,7 @@ import {
   Globe,
   GraduationCap,
   Guitar,
+  Languages,
   Lightbulb,
   LucideProps,
   Mic,
@@ -71,6 +72,7 @@ import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { scrollToLangButton, scrollTopFast } from "@/libs/scroll";
 import { sleep } from "@/libs/sleep";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
+import { useTranslate } from "@/features/Translation/useTranslate";
 
 const QuizQuestions = () => {
   const { currentStep, isFirstLoading, survey, analyzeUserAbout, updateSurvey, languageToLearn } =
@@ -190,53 +192,86 @@ const QuizQuestions = () => {
 
           {currentStep === "recordAboutFollowUp" && (
             <AuthWall>
-              <RecordUserAudio
-                title={survey?.aboutUserFollowUpQuestion.title || i18n._("Loading...")}
-                isLoading={!survey?.aboutUserFollowUpQuestion.title}
-                subTitle={survey?.aboutUserFollowUpQuestion.subtitle || ""}
-                subTitleComponent={
-                  <>
-                    {survey?.aboutUserFollowUpQuestion.title ? (
-                      <>
-                        <Stack>
-                          <Markdown onWordClick={() => {}} variant="conversation">
-                            {survey?.aboutUserFollowUpQuestion.description || "..."}
-                          </Markdown>
-                        </Stack>
-                      </>
-                    ) : (
-                      <Stack
-                        sx={{
-                          gap: "10px",
-                        }}
-                      >
-                        <LoadingShapes sizes={["40px", "100px"]} />
-                      </Stack>
-                    )}
-                  </>
-                }
-                transcript={survey?.aboutUserFollowUpTranscription || ""}
-                minCharacters={150}
-                updateTranscript={async (combinedTranscript) => {
-                  if (!survey) {
-                    return;
-                  }
-
-                  if (combinedTranscript.length > 150) {
-                    // todo: trigger analysis of follow up
-                  }
-
-                  updateSurvey({
-                    ...survey,
-                    aboutUserFollowUpTranscription: combinedTranscript,
-                  });
-                }}
-              />
+              <RecordAboutFollowUp />
             </AuthWall>
           )}
         </Stack>
       )}
     </Stack>
+  );
+};
+
+const RecordAboutFollowUp = () => {
+  const { survey, updateSurvey } = useQuiz();
+  const { i18n } = useLingui();
+  const translation = useTranslate();
+
+  return (
+    <RecordUserAudio
+      title={survey?.aboutUserFollowUpQuestion.title || i18n._("Loading...")}
+      isLoading={!survey?.aboutUserFollowUpQuestion.title}
+      subTitle={survey?.aboutUserFollowUpQuestion.subtitle || ""}
+      subTitleComponent={
+        <>
+          {survey?.aboutUserFollowUpQuestion.title ? (
+            <>
+              {translation.translateModal}
+              <Stack
+                sx={{
+                  alignItems: "flex-start",
+                  gap: "10px",
+                }}
+              >
+                <Markdown
+                  onWordClick={(word, element) => {
+                    translation.translateWithModal(word, element);
+                  }}
+                  variant="conversation"
+                >
+                  {survey?.aboutUserFollowUpQuestion.description || "..."}
+                </Markdown>
+                <Button
+                  onClick={(e) => {
+                    const fullText =
+                      `${survey?.aboutUserFollowUpQuestion.title || ""}\n\n${survey?.aboutUserFollowUpQuestion.description || ""}`.trim();
+                    translation.translateWithModal(fullText, e.currentTarget);
+                  }}
+                  size="small"
+                  startIcon={<Languages size={"14px"} />}
+                  variant="outlined"
+                >
+                  Translate
+                </Button>
+              </Stack>
+            </>
+          ) : (
+            <Stack
+              sx={{
+                gap: "10px",
+              }}
+            >
+              <LoadingShapes sizes={["40px", "100px"]} />
+            </Stack>
+          )}
+        </>
+      }
+      transcript={survey?.aboutUserFollowUpTranscription || ""}
+      minCharacters={150}
+      updateTranscript={async (combinedTranscript) => {
+        if (!survey) {
+          return;
+        }
+
+        if (combinedTranscript.length > 150) {
+          // todo: trigger analysis of follow up
+        }
+
+        updateSurvey({
+          ...survey,
+          aboutUserFollowUpTranscription: combinedTranscript,
+        });
+      }}
+    />
   );
 };
 

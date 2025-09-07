@@ -25,8 +25,11 @@ import { useAuth } from "@/features/Auth/useAuth";
 import { db } from "@/features/Firebase/firebaseDb";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { getDoc, setDoc } from "firebase/firestore";
-import { QuizSurvey2 } from "./types";
+import { QuizSurvey2, QuizSurvey2FollowUpQuestion } from "./types";
 import * as Sentry from "@sentry/nextjs";
+import { useTextAi } from "@/features/Ai/useTextAi";
+import { useFixJson } from "@/features/Ai/useFixJson";
+import { useSettings } from "@/features/Settings/useSettings";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -97,6 +100,9 @@ interface QuizUrlState {
 
 function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): QuizContextType {
   const auth = useAuth();
+  const textAi = useTextAi();
+  const fixJson = useFixJson();
+  const settings = useSettings();
 
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const defaultState: QuizUrlState = useMemo(
@@ -154,33 +160,158 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   );
   const isGeneratingFollowUp = Object.values(isGeneratingFollowUpMap).some((v) => v);
   userAboutRef.current = surveyDoc?.aboutUserTranscription || "";
+  const [generatingFollowUpAttempts, setGeneratingFollowUpAttempts] = useState(0);
 
   const analyzeUserAbout = async (text: string, survey: QuizSurvey2) => {
+    setGeneratingFollowUpAttempts((v) => v + 1);
+
+    if (generatingFollowUpAttempts > 0 && generatingFollowUpAttempts % 10 === 0) {
+      console.log(
+        `analyzeUserAbout | attempt: ${generatingFollowUpAttempts} | Too many attempts, Waiting before analysis`
+      );
+      await sleep(10_000);
+    }
+
+    if (generatingFollowUpAttempts > 50) {
+      console.log(
+        `analyzeUserAbout | attempt: ${generatingFollowUpAttempts} | Too many attempts, stopping analysis`
+      );
+      return survey;
+    }
+
     console.log("analyzeUserAbout | Starting analysis for text length", text);
     setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: true }));
     // goal is to generate follow up question, details, and description
     // TODO: MAGIC
-    await sleep(2000);
 
-    if (userAboutRef.current !== text) {
-      console.log("User about changed, skipping analysis");
-      setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
-      return survey;
-    } else {
-      // Update doc
+    const systemMessage = `You are an expert in language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their language learning goals, then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
+The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals.
+
+Respond in JSON format with the following structure:
+{
+  "question": "A concise follow-up question to user. 1 short sentence. Less than 8 words",
+  "subTitle": "A brief subtitle that provides context for user. 1 sentence",
+  "description": "A short description explaining user the importance of the question. 2 sentences"
+}
+
+Ensure that the JSON is properly formatted and can be easily parsed.
+Do not include any additional text outside of the JSON structure. 
+
+Start response with symbol '{' and end with '}'. Your response will be parsed with js JSON.parse()
+`;
+
+    const userMessage = text;
+
+    try {
+      const aiResult = await textAi.generate({
+        systemMessage,
+        userMessage,
+        model: "gpt-4o",
+        languageCode: survey.pageLanguageCode || "en",
+      });
+
+      console.log("analyzeUserAbout | aiResult", aiResult);
+      const parsedResult = await fixJson.parseJson<{
+        question: string;
+        subTitle: string;
+        description?: string;
+      }>(aiResult);
+      console.log("analyzeUserAbout | parsedResult", parsedResult);
+
+      if (userAboutRef.current !== text) {
+        console.log("User about changed, skipping analysis");
+        setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
+        return survey;
+      } else {
+        // Update doc
+        const newAnswer: QuizSurvey2FollowUpQuestion = {
+          sourceTranscription: text,
+          title: parsedResult.question,
+          subtitle: parsedResult.subTitle,
+          description: parsedResult.description || "",
+        };
+        const updatedSurvey = await updateSurvey({
+          ...survey,
+          aboutUserFollowUpQuestion: newAnswer,
+        });
+        setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
+        return updatedSurvey;
+      }
+    } catch (e) {
+      console.error("analyzeUserAbout | Error during analysis", e);
+      Sentry.captureException(e, {
+        extra: {
+          title: "Error in analyzeUserAbout",
+          text,
+          survey,
+        },
+      });
+      await sleep(30_000);
       setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
       return survey;
     }
   };
 
+  useEffect(() => {
+    if (!surveyDoc?.aboutUserTranscription) return;
+
+    const listForAnalyzeAboutTranscript: QuizStep[] = [
+      "recordAbout",
+      "before_recordAboutFollowUp",
+      "recordAboutFollowUp",
+    ];
+    const isNeedToAnalyze = listForAnalyzeAboutTranscript.includes(currentStep);
+    if (!isNeedToAnalyze) {
+      return;
+    }
+
+    const isAlreadyGenerating = isGeneratingFollowUpMap[surveyDoc.aboutUserTranscription];
+    if (isAlreadyGenerating) {
+      return;
+    }
+
+    const isGeneratedAlready =
+      surveyDoc.aboutUserFollowUpQuestion.sourceTranscription === surveyDoc.aboutUserTranscription;
+    if (isGeneratedAlready) {
+      return;
+    }
+
+    analyzeUserAbout(surveyDoc.aboutUserTranscription, surveyDoc);
+  }, [isGeneratingFollowUp, currentStep, surveyDoc?.aboutUserTranscription]);
+
+  const syncWithSettings = async (survey: QuizSurvey2) => {
+    if (
+      settings.userSettings?.languageCode !== survey.learningLanguageCode &&
+      survey.learningLanguageCode
+    ) {
+      await settings.setLanguage(survey.learningLanguageCode);
+    }
+
+    if (
+      settings.userSettings?.nativeLanguageCode !== survey.nativeLanguageCode &&
+      survey.nativeLanguageCode
+    ) {
+      await settings.setNativeLanguage(survey.nativeLanguageCode);
+    }
+
+    if (
+      settings.userSettings?.pageLanguageCode !== survey.pageLanguageCode &&
+      survey.pageLanguageCode
+    ) {
+      await settings.setPageLanguage(survey.pageLanguageCode);
+    }
+  };
+
   const ensureSurveyDocExists = async () => {
     if (surveyDoc) {
-      updateSurvey({
+      const survey = await updateSurvey({
         ...surveyDoc,
         learningLanguageCode: languageToLearn,
         nativeLanguageCode: nativeLanguage,
         pageLanguageCode: pageLanguage,
       });
+
+      await syncWithSettings(survey);
       return;
     }
     if (!auth.uid) {
@@ -201,6 +332,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
 
         aboutUserTranscription: "",
         aboutUserFollowUpQuestion: {
+          sourceTranscription: "",
           title: "",
           subtitle: "",
           description: "",
@@ -212,6 +344,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
         goalQuestion: "",
         goalUserTranscription: "",
         goalFollowUpQuestion: {
+          sourceTranscription: "",
           title: "",
           subtitle: "",
           description: "",
@@ -225,14 +358,16 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
         createdAtIso: new Date().toISOString(),
       };
       await setDoc(surveyDocRef, initSurvey);
+      await syncWithSettings(initSurvey);
       console.log("✅ Survey doc created", initSurvey);
     } else {
-      updateSurvey({
+      const updatedSurvey = await updateSurvey({
         ...docData,
         learningLanguageCode: languageToLearn,
         nativeLanguageCode: nativeLanguage,
         pageLanguageCode: pageLanguage,
       });
+      await syncWithSettings(updatedSurvey);
     }
   };
 

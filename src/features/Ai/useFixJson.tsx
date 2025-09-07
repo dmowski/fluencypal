@@ -7,7 +7,7 @@ export const useFixJson = () => {
   const settings = useSettings();
   const languageCode = settings.languageCode || "en";
 
-  const parseJson = async (json: string) => {
+  const parseJson = async <T,>(json: string): Promise<T> => {
     try {
       let trimmedJson = json.trim();
       const isAbleToFixWithoutAi = trimmedJson.startsWith("```json") && trimmedJson.endsWith("```");

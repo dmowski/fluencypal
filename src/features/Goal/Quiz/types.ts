@@ -1,7 +1,8 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
 import type { GoalElementInfo } from "@/features/Plan/types";
 
-interface QuizSurvey2FollowUpQuestion {
+export interface QuizSurvey2FollowUpQuestion {
+  sourceTranscription: string;
   title: string;
   subtitle: string;
   description?: string;
