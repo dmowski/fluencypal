@@ -149,17 +149,26 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   };
 
   const userAboutRef = useRef("");
+  const [isGeneratingFollowUpMap, setIsGeneratingFollowUpMap] = useState<Record<string, boolean>>(
+    {}
+  );
+  const isGeneratingFollowUp = Object.values(isGeneratingFollowUpMap).some((v) => v);
   userAboutRef.current = surveyDoc?.aboutUserTranscription || "";
+
   const analyzeUserAbout = async (text: string, survey: QuizSurvey2) => {
     console.log("analyzeUserAbout | Starting analysis for text length", text);
+    setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: true }));
     // goal is to generate follow up question, details, and description
+    // TODO: MAGIC
     await sleep(2000);
 
     if (userAboutRef.current !== text) {
       console.log("User about changed, skipping analysis");
+      setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
       return survey;
     } else {
       // Update doc
+      setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
       return survey;
     }
   };
