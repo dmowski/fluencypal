@@ -246,7 +246,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
           survey,
         },
       });
-      await sleep(30_000);
+      await sleep(10_000);
       setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
       return survey;
     }
