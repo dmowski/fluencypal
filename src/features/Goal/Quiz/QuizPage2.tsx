@@ -223,7 +223,7 @@ const QuizQuestions = () => {
 };
 
 const RecordAboutFollowUp = () => {
-  const { survey, updateSurvey } = useQuiz();
+  const { survey, updateSurvey, test } = useQuiz();
   const { i18n } = useLingui();
   const translation = useTranslate();
 
@@ -251,18 +251,36 @@ const RecordAboutFollowUp = () => {
                 >
                   {survey?.aboutUserFollowUpQuestion.description || "..."}
                 </Markdown>
-                <Button
-                  onClick={(e) => {
-                    const fullText =
-                      `${survey?.aboutUserFollowUpQuestion.title || ""}\n\n${survey?.aboutUserFollowUpQuestion.description || ""}`.trim();
-                    translation.translateWithModal(fullText, e.currentTarget);
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    gap: "10px",
+                    alignItems: "center",
                   }}
-                  size="small"
-                  startIcon={<Languages size={"14px"} />}
-                  variant="text"
                 >
-                  {i18n._("Translate")}
-                </Button>
+                  <Button
+                    onClick={(e) => {
+                      const fullText =
+                        `${survey?.aboutUserFollowUpQuestion.title || ""}\n\n${survey?.aboutUserFollowUpQuestion.description || ""}`.trim();
+                      translation.translateWithModal(fullText, e.currentTarget);
+                    }}
+                    size="small"
+                    startIcon={<Languages size={"14px"} />}
+                    variant="text"
+                  >
+                    {i18n._("Translate")}
+                  </Button>
+
+                  <Button
+                    onClick={(e) => {
+                      test();
+                    }}
+                    size="small"
+                    variant="text"
+                  >
+                    Test
+                  </Button>
+                </Stack>
               </Stack>
             </>
           ) : (
@@ -420,7 +438,7 @@ const RecordUserAudio = ({
 
   useEffect(() => {
     if (recorder.transcription && survey) {
-      const combinedTranscript = [survey.aboutUserTranscription, transcript]
+      const combinedTranscript = [survey.aboutUserTranscription, recorder.transcription]
         .filter(Boolean)
         .join(" ");
       updateTranscript(combinedTranscript);

@@ -1,6 +1,6 @@
 "use client";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
+import { fullLanguageName, SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { SetUrlStateOptions, useUrlMapState } from "@/features/Url/useUrlParam";
 
 import { useRouter } from "next/navigation";
@@ -83,6 +83,8 @@ interface QuizContextType {
   updateSurvey: (surveyDoc: QuizSurvey2) => Promise<QuizSurvey2>;
 
   analyzeUserAbout: (text: string, survey: QuizSurvey2) => Promise<QuizSurvey2>;
+
+  test: () => Promise<void>;
 }
 const QuizContext = createContext<QuizContextType | null>(null);
 
@@ -162,6 +164,62 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   userAboutRef.current = surveyDoc?.aboutUserTranscription || "";
   const [generatingFollowUpAttempts, setGeneratingFollowUpAttempts] = useState(0);
 
+  const processAbout = async ({
+    userMessage,
+    pageLanguageCode,
+  }: {
+    userMessage: string;
+    pageLanguageCode: SupportedLanguage;
+  }): Promise<QuizSurvey2FollowUpQuestion> => {
+    const systemMessage = `You are an expert in language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their language learning goals, then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
+The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand english well.
+
+Respond in JSON format with the following structure:
+{
+  "question": "A concise follow-up question to user. 1 short sentence. Less than 8 words",
+  "subTitle": "A brief subtitle that provides context for user. 1 sentence",
+  "description": "A short description explaining user the importance of the question. 2 sentences"
+}
+
+Ensure that the JSON is properly formatted and can be easily parsed.
+Do not include any additional text outside of the JSON structure. 
+
+Start response with symbol '{' and end with '}'. Your response will be parsed with js JSON.parse()
+`;
+
+    const aiResult = await textAi.generate({
+      systemMessage,
+      userMessage,
+      model: "gpt-4o",
+      languageCode: pageLanguageCode || "en",
+    });
+
+    const parsedResult = await fixJson.parseJson<{
+      question: string;
+      subTitle: string;
+      description?: string;
+    }>(aiResult);
+
+    const newAnswer: QuizSurvey2FollowUpQuestion = {
+      sourceTranscription: userMessage,
+      title: parsedResult.question,
+      subtitle: parsedResult.subTitle,
+      description: parsedResult.description || "",
+    };
+
+    return newAnswer;
+  };
+
+  const test = async () => {
+    const userMessage = `Я хочу выучить английский, потому что он важен для моей карьеры и путешествий. Я надеюсь улучшить свои навыки общения и понимания культуры.`;
+    console.log("Start test | ", userMessage);
+    const res = await processAbout({
+      userMessage: userMessage,
+      pageLanguageCode: "en",
+    });
+    console.log("Processing user's about", JSON.stringify(res, null, 2));
+  };
+
   const analyzeUserAbout = async (text: string, survey: QuizSurvey2) => {
     setGeneratingFollowUpAttempts((v) => v + 1);
 
@@ -180,43 +238,16 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     }
 
     console.log("analyzeUserAbout | Starting analysis for text length", text);
+
     setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: true }));
     // goal is to generate follow up question, details, and description
     // TODO: MAGIC
 
-    const systemMessage = `You are an expert in language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their language learning goals, then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
-The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals.
-
-Respond in JSON format with the following structure:
-{
-  "question": "A concise follow-up question to user. 1 short sentence. Less than 8 words",
-  "subTitle": "A brief subtitle that provides context for user. 1 sentence",
-  "description": "A short description explaining user the importance of the question. 2 sentences"
-}
-
-Ensure that the JSON is properly formatted and can be easily parsed.
-Do not include any additional text outside of the JSON structure. 
-
-Start response with symbol '{' and end with '}'. Your response will be parsed with js JSON.parse()
-`;
-
-    const userMessage = text;
-
     try {
-      const aiResult = await textAi.generate({
-        systemMessage,
-        userMessage,
-        model: "gpt-4o",
-        languageCode: survey.pageLanguageCode || "en",
+      const newAnswer = await processAbout({
+        userMessage: text,
+        pageLanguageCode: survey.pageLanguageCode || "en",
       });
-
-      console.log("analyzeUserAbout | aiResult", aiResult);
-      const parsedResult = await fixJson.parseJson<{
-        question: string;
-        subTitle: string;
-        description?: string;
-      }>(aiResult);
-      console.log("analyzeUserAbout | parsedResult", parsedResult);
 
       if (userAboutRef.current !== text) {
         console.log("User about changed, skipping analysis");
@@ -224,12 +255,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
         return survey;
       } else {
         // Update doc
-        const newAnswer: QuizSurvey2FollowUpQuestion = {
-          sourceTranscription: text,
-          title: parsedResult.question,
-          subtitle: parsedResult.subTitle,
-          description: parsedResult.description || "",
-        };
+
         const updatedSurvey = await updateSurvey({
           ...survey,
           aboutUserFollowUpQuestion: newAnswer,
@@ -552,6 +578,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     isFirstLoading,
     updateSurvey,
     analyzeUserAbout,
+    test,
   };
 }
 
