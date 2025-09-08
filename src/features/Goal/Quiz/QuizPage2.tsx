@@ -108,7 +108,7 @@ const QuizQuestions = () => {
               imageUrl="/avatar/book.webp"
               message={i18n._(`What language do you speak`)}
               subMessage={i18n._(`So I can translate words for you`)}
-              actionButtonTitle={i18n._(`Choose My Language`)}
+              actionButtonTitle={i18n._(`Set My Language`)}
             />
           )}
 
