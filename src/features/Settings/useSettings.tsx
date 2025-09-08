@@ -77,17 +77,17 @@ function useProvideSettings(): SettingsContextType {
     const countryName = country
       ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || "Unknown"
       : "-";
-    await setDoc(
-      userSettingsDoc,
-      {
-        createdAt: Date.now(),
-        currency: currency.currency || null,
-        email: auth.userInfo?.email || "",
-        country: country || null,
-        countryName: countryName || null,
-      },
-      { merge: true }
-    );
+
+    const settingsData: Partial<UserSettings> = {
+      createdAt: Date.now(),
+      createdAtIso: new Date().toISOString(),
+      currency: currency.currency || null,
+      email: auth.userInfo?.email || "",
+      country: country || null,
+      countryName: countryName || null,
+    };
+
+    await setDoc(userSettingsDoc, settingsData, { merge: true });
   };
 
   useEffect(() => {

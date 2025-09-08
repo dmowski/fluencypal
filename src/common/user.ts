@@ -5,6 +5,7 @@ export interface UserSettings {
   pageLanguageCode: SupportedLanguage | null;
   nativeLanguageCode: string | null;
   createdAt: number | null;
+  createdAtIso: string | null;
   currency: string | null;
   country: string | null;
   countryName: string | null;
