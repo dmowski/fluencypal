@@ -75,11 +75,25 @@ import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { useTranslate } from "@/features/Translation/useTranslate";
 
 const QuizQuestions = () => {
-  const { currentStep, isFirstLoading, survey, analyzeUserAbout, updateSurvey, languageToLearn } =
-    useQuiz();
+  const {
+    currentStep,
+    isFirstLoading,
+    survey,
+    nativeLanguage,
+    analyzeUserAbout,
+    updateSurvey,
+    languageToLearn,
+  } = useQuiz();
   const { i18n } = useLingui();
 
-  const learningLanguageName = fullLanguageName[languageToLearn];
+  const { languageGroups } = useLanguageGroup({
+    defaultGroupTitle: i18n._(`Other languages`),
+    systemLanguagesTitle: i18n._(`System languages`),
+  });
+
+  const learningLanguageName = fullLanguageName[languageToLearn].toLocaleLowerCase();
+  const nativeLanguageName =
+    languageGroups.find((g) => g.code === nativeLanguage)?.nativeName || "";
 
   return (
     <Stack
@@ -148,9 +162,16 @@ const QuizQuestions = () => {
               <RecordUserAudio
                 title={i18n._("Tell me about yourself")}
                 subTitle={
-                  <Trans>
-                    Record 2-3 minutes story using <b>{learningLanguageName}</b>
-                  </Trans>
+                  languageToLearn === nativeLanguage ? (
+                    <Trans>
+                      Record 2-3 minutes story using <b>{learningLanguageName}</b>
+                    </Trans>
+                  ) : (
+                    <Trans>
+                      Record 2-3 minutes story using <b>{learningLanguageName}</b> or{" "}
+                      <b>{nativeLanguageName}</b>
+                    </Trans>
+                  )
                 }
                 subTitleComponent={<AboutYourselfList />}
                 transcript={survey?.aboutUserTranscription || ""}

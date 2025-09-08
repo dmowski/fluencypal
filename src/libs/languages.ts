@@ -815,7 +815,7 @@ export const fullLanguages: LanguageInfo[] = [
   {
     code: "ru",
     englishName: "Russian",
-    nativeName: "русский язык",
+    nativeName: "русский",
     flag: `https://flagcdn.com/w80/ru.png`, // Russia
   },
   {
