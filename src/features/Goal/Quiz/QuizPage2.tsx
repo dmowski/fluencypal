@@ -238,7 +238,7 @@ const RecordAboutFollowUp = () => {
                   }}
                   size="small"
                   startIcon={<Languages size={"14px"} />}
-                  variant="outlined"
+                  variant="text"
                 >
                   Translate
                 </Button>
