@@ -973,6 +973,20 @@ const ProgressBar = () => {
 
       <Stack
         sx={{
+          background: "linear-gradient(to top, rgba(10, 18, 30, 0), rgba(10, 18, 30, 1))",
+          position: "fixed",
+          width: "100dvw",
+          left: "0",
+          top: 0,
+          padding: "0 0 60px 0",
+          paddingTop: `calc(${topOffset} + 15px)`,
+          zIndex: 2,
+          pointerEvents: "none",
+        }}
+      />
+
+      <Stack
+        sx={{
           flexDirection: "row",
           gap: "10px",
           alignItems: "center",
@@ -981,11 +995,11 @@ const ProgressBar = () => {
           zIndex: 2,
           width: "100dvw",
           left: "0",
-
-          padding: "0 0 30px 0",
           top: 0,
+
+          padding: "0 0 0px 0",
+
           paddingTop: `calc(${topOffset} + 15px)`,
-          background: "linear-gradient(to top, rgba(10, 18, 30, 0), rgba(10, 18, 30, 1))",
 
           right: "0px",
         }}
