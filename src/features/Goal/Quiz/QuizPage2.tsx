@@ -240,7 +240,7 @@ const RecordAboutFollowUp = () => {
                   startIcon={<Languages size={"14px"} />}
                   variant="text"
                 >
-                  Translate
+                  {i18n._("Translate")}
                 </Button>
               </Stack>
             </>
