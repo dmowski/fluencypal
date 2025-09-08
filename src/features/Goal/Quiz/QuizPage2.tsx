@@ -978,7 +978,7 @@ const ProgressBar = () => {
           width: "100dvw",
           left: "0",
           top: 0,
-          padding: "0 0 60px 0",
+          padding: "0 0 80px 0",
           paddingTop: `calc(${topOffset} + 15px)`,
           zIndex: 2,
           pointerEvents: "none",
