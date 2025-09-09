@@ -31,6 +31,7 @@ import {
   Check,
   FlagIcon,
   Globe,
+  Goal,
   GraduationCap,
   Guitar,
   Languages,
@@ -533,9 +534,7 @@ const RecordUserAudio = ({
                     {wordsCount} / <b>{minWords}</b>
                   </>
                 ) : (
-                  <Trans>
-                    Goal: at least <b>{minWords}</b> words
-                  </Trans>
+                  <></>
                 )}
               </Typography>
             </Stack>
@@ -548,9 +547,27 @@ const RecordUserAudio = ({
               className={recorder.isTranscribing ? `loading-shimmer` : ""}
             >
               {transcript && transcript}
-              {!transcript && !recorder.isTranscribing && survey && "____"}
+
               {recorder.isTranscribing && " " + i18n._("Processing...")}
             </Typography>
+
+            {!transcript && !recorder.isTranscribing && survey && (
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  gap: "10px",
+                  color: "#888",
+                  paddingBottom: "10px",
+                }}
+              >
+                <Goal size={"39px"} color="#999" strokeWidth={"2px"} />
+                <Typography variant="caption" sx={{}}>
+                  <Trans>
+                    Goal: at least <b>{minWords}</b> words
+                  </Trans>
+                </Typography>
+              </Stack>
+            )}
 
             {transcript && !recorder.isTranscribing && (
               <Stack>
