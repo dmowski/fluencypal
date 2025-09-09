@@ -176,7 +176,7 @@ const QuizQuestions = () => {
                 }
                 subTitleComponent={<AboutYourselfList />}
                 transcript={survey?.aboutUserTranscription || ""}
-                minWords={100}
+                minWords={50}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;
@@ -522,14 +522,10 @@ const RecordUserAudio = ({
                 variant="caption"
                 sx={{
                   color:
-                    transcript.length === 0
-                      ? "inherit"
-                      : transcript.length < minWords
-                        ? "#FFA500"
-                        : "#4CAF50",
+                    wordsCount === 0 ? "inherit" : wordsCount < minWords ? "#FFA500" : "#4CAF50",
                 }}
               >
-                {transcript.length > 0 ? (
+                {wordsCount > 0 ? (
                   <>
                     {wordsCount} / <b>{minWords}</b>
                   </>
@@ -581,21 +577,23 @@ const RecordUserAudio = ({
                     gap: "10px",
                   }}
                 >
-                  <Button
-                    variant={isNeedMoreRecording ? "contained" : "outlined"}
-                    endIcon={recorder.isRecording ? <Check /> : <Mic size={"16px"} />}
-                    size="small"
-                    color={recorder.isRecording ? "error" : "primary"}
-                    onClick={() => {
-                      if (recorder.isRecording) {
-                        recorder.stopRecording();
-                      } else {
-                        recorder.startRecording();
-                      }
-                    }}
-                  >
-                    {recorder.isRecording ? i18n._("Done") : i18n._("Record more")}
-                  </Button>
+                  {wordsCount >= minWords && (
+                    <Button
+                      variant={isNeedMoreRecording ? "contained" : "outlined"}
+                      endIcon={recorder.isRecording ? <Check /> : <Mic size={"16px"} />}
+                      size="small"
+                      color={recorder.isRecording ? "error" : "primary"}
+                      onClick={() => {
+                        if (recorder.isRecording) {
+                          recorder.stopRecording();
+                        } else {
+                          recorder.startRecording();
+                        }
+                      }}
+                    >
+                      {recorder.isRecording ? i18n._("Done") : i18n._("Record more")}
+                    </Button>
+                  )}
                   <IconButton size="small" onClick={clearTranscript}>
                     <Trash size={"16px"} />
                   </IconButton>
@@ -608,9 +606,12 @@ const RecordUserAudio = ({
 
       <FooterButton
         aboveButtonComponent={!transcript && recorder.visualizerComponent}
-        disabled={isLoading || (!!transcript && transcript.length < 30)}
-        onClick={() => {
-          if (transcript) {
+        disabled={isLoading || (recorder.isRecording && wordsCount >= minWords)}
+        onClick={async () => {
+          if (transcript && wordsCount >= minWords) {
+            if (recorder.isRecording) {
+              await recorder.stopRecording();
+            }
             nextStep();
             return;
           }
@@ -623,21 +624,27 @@ const RecordUserAudio = ({
           recorder.startRecording();
         }}
         title={
-          recorder.isRecording && !transcript
+          recorder.isRecording && wordsCount < minWords
             ? i18n._("Done")
-            : transcript
+            : transcript && wordsCount >= minWords
               ? i18n._("Next")
               : i18n._("Record")
         }
         color={
-          recorder.isRecording && !transcript
+          recorder.isRecording && wordsCount < minWords
             ? "error"
             : wordsCount > minWords
               ? "success"
               : "primary"
         }
         endIcon={
-          recorder.isRecording && !transcript ? <Check /> : transcript ? <ArrowRight /> : <Mic />
+          recorder.isRecording && wordsCount < minWords ? (
+            <Check />
+          ) : transcript && wordsCount >= minWords ? (
+            <ArrowRight />
+          ) : (
+            <Mic />
+          )
         }
       />
     </Stack>
