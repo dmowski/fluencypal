@@ -175,7 +175,7 @@ const QuizQuestions = () => {
                 }
                 subTitleComponent={<AboutYourselfList />}
                 transcript={survey?.aboutUserTranscription || ""}
-                minCharacters={200}
+                minWords={100}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;
@@ -295,7 +295,7 @@ const RecordAboutFollowUp = () => {
         </>
       }
       transcript={survey?.aboutUserFollowUpTranscription || ""}
-      minCharacters={150}
+      minWords={80}
       updateTranscript={async (combinedTranscript) => {
         if (!survey) {
           return;
@@ -408,7 +408,7 @@ export const AboutYourselfList: React.FC = () => {
 
 const RecordUserAudio = ({
   transcript,
-  minCharacters,
+  minWords,
   updateTranscript,
   title,
   subTitle,
@@ -416,7 +416,7 @@ const RecordUserAudio = ({
   isLoading,
 }: {
   transcript: string;
-  minCharacters: number;
+  minWords: number;
   updateTranscript: (transcript: string) => Promise<void>;
   title: string;
   subTitle: string | ReactNode;
@@ -451,7 +451,9 @@ const RecordUserAudio = ({
     }
   };
 
-  const isNeedMoreRecording = !transcript || transcript.length < minCharacters;
+  const wordsCount = transcript.trim().split(/\s+/).filter(Boolean).length;
+
+  const isNeedMoreRecording = !transcript || wordsCount < minWords;
 
   return (
     <Stack
@@ -503,6 +505,7 @@ const RecordUserAudio = ({
                 width: "100%",
                 justifyContent: "space-between",
                 paddingBottom: "14px",
+                flexWrap: "wrap",
               }}
             >
               <Typography
@@ -520,12 +523,20 @@ const RecordUserAudio = ({
                   color:
                     transcript.length === 0
                       ? "inherit"
-                      : transcript.length < minCharacters
+                      : transcript.length < minWords
                         ? "#FFA500"
                         : "#4CAF50",
                 }}
               >
-                {transcript.length} / <b>{minCharacters}</b>
+                {transcript.length > 0 ? (
+                  <>
+                    {wordsCount} / <b>{minWords}</b>
+                  </>
+                ) : (
+                  <Trans>
+                    Goal: at least <b>{minWords}</b> words
+                  </Trans>
+                )}
               </Typography>
             </Stack>
 
@@ -604,7 +615,7 @@ const RecordUserAudio = ({
         color={
           recorder.isRecording && !transcript
             ? "error"
-            : transcript.length > minCharacters
+            : wordsCount > minWords
               ? "success"
               : "primary"
         }

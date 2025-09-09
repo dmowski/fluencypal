@@ -167,12 +167,15 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const processAbout = async ({
     userMessage,
     pageLanguageCode,
+    learningLanguageCode,
   }: {
     userMessage: string;
     pageLanguageCode: SupportedLanguage;
+    learningLanguageCode: SupportedLanguage;
   }): Promise<QuizSurvey2FollowUpQuestion> => {
-    const systemMessage = `You are an expert in language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their language learning goals, then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
-The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand english well.
+    const learningLanguageFullName = fullLanguageName[learningLanguageCode];
+    const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
+The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand ${learningLanguageFullName} well.
 
 Respond in JSON format with the following structure:
 {
@@ -216,6 +219,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     const res = await processAbout({
       userMessage: userMessage,
       pageLanguageCode: "en",
+      learningLanguageCode: "en",
     });
     console.log("Processing user's about", JSON.stringify(res, null, 2));
   };
@@ -247,6 +251,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       const newAnswer = await processAbout({
         userMessage: text,
         pageLanguageCode: survey.pageLanguageCode || "en",
+        learningLanguageCode: languageToLearn,
       });
 
       if (userAboutRef.current !== text) {
