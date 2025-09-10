@@ -271,16 +271,6 @@ const RecordAboutFollowUp = () => {
                   >
                     {i18n._("Translate")}
                   </Button>
-
-                  <Button
-                    onClick={(e) => {
-                      test();
-                    }}
-                    size="small"
-                    variant="text"
-                  >
-                    Test
-                  </Button>
                 </Stack>
               </Stack>
             </>
