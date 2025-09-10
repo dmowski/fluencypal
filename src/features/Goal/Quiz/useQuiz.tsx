@@ -91,6 +91,7 @@ interface QuizContextType {
   updateSurvey: (surveyDoc: QuizSurvey2) => Promise<QuizSurvey2>;
 
   analyzeUserAbout: (text: string, survey: QuizSurvey2) => Promise<QuizSurvey2>;
+  analyzeUserFollowUpAbout: (text: string, survey: QuizSurvey2) => Promise<QuizSurvey2>;
 
   test: () => Promise<void>;
 }
@@ -743,6 +744,7 @@ ${userAboutFollowUpAnswer}
     isFirstLoading,
     updateSurvey,
     analyzeUserAbout,
+    analyzeUserFollowUpAbout,
     test,
   };
 }

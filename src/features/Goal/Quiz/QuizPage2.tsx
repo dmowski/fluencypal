@@ -83,6 +83,7 @@ const QuizQuestions = () => {
     survey,
     nativeLanguage,
     analyzeUserAbout,
+    analyzeUserFollowUpAbout,
     updateSurvey,
     languageToLearn,
   } = useQuiz();
@@ -188,7 +189,9 @@ const QuizQuestions = () => {
                     aboutUserTranscription: combinedTranscript,
                   });
 
-                  if (combinedTranscript.length > 200) {
+                  const wordsCount = combinedTranscript.trim().split(/\s+/).filter(Boolean).length;
+
+                  if (wordsCount > 50) {
                     analyzeUserAbout(combinedTranscript, updatedSurvey);
                   }
                 }}
@@ -223,14 +226,15 @@ const QuizQuestions = () => {
                     return;
                   }
 
-                  if (combinedTranscript.length > 150) {
-                    // todo: trigger generating goalQuestion
-                  }
-
-                  updateSurvey({
+                  const updatedSurvey = await updateSurvey({
                     ...survey,
                     aboutUserFollowUpTranscription: combinedTranscript,
                   });
+
+                  const wordsCount = combinedTranscript.trim().split(/\s+/).filter(Boolean).length;
+                  if (wordsCount > 80) {
+                    analyzeUserFollowUpAbout(combinedTranscript, updatedSurvey);
+                  }
                 }}
               />
             </AuthWall>
@@ -263,14 +267,15 @@ const QuizQuestions = () => {
                     return;
                   }
 
-                  if (combinedTranscript.length > 150) {
-                    // todo: trigger Goal creating
-                  }
-
-                  updateSurvey({
+                  const updatedSurvey = await updateSurvey({
                     ...survey,
                     goalFollowUpTranscription: combinedTranscript,
                   });
+
+                  const wordsCount = combinedTranscript.trim().split(/\s+/).filter(Boolean).length;
+                  if (wordsCount > 80) {
+                    // TODO: Prepare GOAL ?
+                  }
                 }}
               />
             </AuthWall>
