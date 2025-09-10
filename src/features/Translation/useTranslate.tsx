@@ -22,7 +22,7 @@ export const useTranslate = () => {
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
   const learningLanguage = settings.languageCode || "en";
 
-  const planNativeLanguage = plan.latestGoal?.goalQuiz?.nativeLanguageCode;
+  const planNativeLanguage = plan.activeGoal?.goalQuiz?.nativeLanguageCode;
 
   const targetCandidates = [nativeLanguageCode, planNativeLanguage, pageLangCode];
 

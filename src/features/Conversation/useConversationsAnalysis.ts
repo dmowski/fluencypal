@@ -23,7 +23,7 @@ export const useConversationsAnalysis = () => {
   const learningLanguage = settings.languageCode || "en";
 
   const pageLangCode = useMemo(() => getPageLangCode(), []);
-  const planNativeLanguage = plan.latestGoal?.goalQuiz?.nativeLanguageCode;
+  const planNativeLanguage = plan.activeGoal?.goalQuiz?.nativeLanguageCode;
   const nativeLanguageCode = pageLangCode !== learningLanguage ? pageLangCode : planNativeLanguage;
   const fullNativeLanguage = nativeLanguageCode
     ? fullLanguageName[nativeLanguageCode as SupportedLanguage] || nativeLanguageCode
@@ -41,7 +41,7 @@ export const useConversationsAnalysis = () => {
       })
       .join("\n");
 
-    const planDescription = plan.latestGoal?.goalQuiz?.description || "";
+    const planDescription = plan.activeGoal?.goalQuiz?.description || "";
     const goalElement = aiConversation.goalInfo?.goalElement;
     const goalElementDescription = goalElement
       ? `Lesson: ${goalElement.title} - ${goalElement.description} - ${goalElement.details}`

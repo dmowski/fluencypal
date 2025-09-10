@@ -59,16 +59,16 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     conversationsCount === 0 &&
     !aiConversation.isStarted &&
     !aiConversation.isInitializing &&
-    !!plan.latestGoal;
+    !!plan.activeGoal;
 
   const startGoalElement = async (element: PlanElement) => {
-    if (!plan.latestGoal) {
+    if (!plan.activeGoal) {
       return;
     }
 
     const goalInfo = {
       goalElement: element,
-      goalPlan: plan.latestGoal,
+      goalPlan: plan.activeGoal,
     };
 
     if (element.mode === "words") {
@@ -87,7 +87,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     });
   };
 
-  const isGoalSet = !!plan.latestGoal?.elements?.length;
+  const isGoalSet = !!plan.activeGoal?.elements?.length;
 
   const deletePlans = async () => {
     const confirmResult = confirm(
@@ -111,10 +111,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     rule: i18n._(`Rule`),
   };
 
-  const goalDescription = plan.latestGoal?.goalQuiz?.description || "";
+  const goalDescription = plan.activeGoal?.goalQuiz?.description || "";
 
   const sortedElements = useMemo(() => {
-    const elements = plan.latestGoal?.elements || [];
+    const elements = plan.activeGoal?.elements || [];
     const conversationElement = elements.find((el) => el.mode === "conversation");
     if (!conversationElement) {
       return elements;
@@ -122,7 +122,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
     const otherElements = elements.filter((el) => el !== conversationElement);
     return [conversationElement, ...otherElements];
-  }, [plan.latestGoal?.elements]);
+  }, [plan.activeGoal?.elements]);
 
   let activeIndex: null | number = null;
 
@@ -152,14 +152,14 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   };
 
   const generateMoreLessons = async () => {
-    if (!plan.latestGoal) {
+    if (!plan.activeGoal) {
       return;
     }
 
     try {
       setIsLearningPlanUpdating(true);
 
-      const goalPlanElements = plan.latestGoal?.elements || [];
+      const goalPlanElements = plan.activeGoal?.elements || [];
       const goalPlanElementsString = goalPlanElements
         .map((element) => {
           return `${element.mode} - ${element.title}: ${element.description}`;
@@ -183,7 +183,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           },
         ],
         languageCode: lang,
-        goalQuiz: plan.latestGoal?.goalQuiz || undefined,
+        goalQuiz: plan.activeGoal?.goalQuiz || undefined,
       });
 
       // filter new elements to copy only new elements
@@ -191,7 +191,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         return !goalPlanElements.some((oldElement) => oldElement.title === newElement.title);
       });
 
-      const updatedPlan: GoalPlan = { ...plan.latestGoal };
+      const updatedPlan: GoalPlan = { ...plan.activeGoal };
       updatedPlan.elements = [...goalPlanElements, ...newElements];
       await plan.addGoalPlan(updatedPlan);
 
@@ -214,7 +214,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   if (isReadyToFirstStart) {
     const modes: StartModes[] = ["words", "rules", "conversation"];
 
-    const level = plan.latestGoal?.goalQuiz?.level || "XXX";
+    const level = plan.activeGoal?.goalQuiz?.level || "XXX";
     const recommendedModesMap: Record<string, StartModes> = {
       A1: "words",
       A2: "rules",
@@ -465,7 +465,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             >
               <Typography variant="h6" align="center">
                 {isGoalSet
-                  ? plan.latestGoal?.title || i18n._(`Goal`)
+                  ? plan.activeGoal?.title || i18n._(`Goal`)
                   : i18n._(`Start your way to fluency`)}
               </Typography>
               {languageGoals.length > 0 && (
@@ -492,7 +492,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   onClose={() => setSelectGoalModalAnchorEl(null)}
                 >
                   {languageGoals.map((goal) => {
-                    const isActive = plan.latestGoal?.id === goal.id;
+                    const isActive = plan.activeGoal?.id === goal.id;
                     return (
                       <MenuItem
                         key={goal.id}
@@ -549,7 +549,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           </Stack>
         </Stack>
       </Stack>
-      {isGoalSet && plan.latestGoal ? (
+      {isGoalSet && plan.activeGoal ? (
         <Stack
           sx={{
             gap: "20px",
@@ -654,10 +654,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               </Typography>
 
               <Typography variant="h4" align="center" component="h2" className="decor-text">
-                {plan.latestGoal?.title || i18n._(`Goal`)}
+                {plan.activeGoal?.title || i18n._(`Goal`)}
               </Typography>
               <Typography sx={{ paddingTop: "20px" }} align="center" variant="caption">
-                {plan.latestGoal?.goalQuiz?.description ||
+                {plan.activeGoal?.goalQuiz?.description ||
                   i18n._(`We will help you to learn the language you need`)}
               </Typography>
             </Stack>

@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, ReactNode, JSX, useMemo, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { doc, setDoc } from "firebase/firestore";
+import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../Firebase/firebaseDb";
 import { GoalPlan, PlanElement, PlanElementMode } from "./types";
@@ -23,7 +23,7 @@ interface PlanContextType {
   goals: GoalPlan[];
   loading: boolean;
   addGoalPlan: (goalPlan: GoalPlan) => Promise<void>;
-  latestGoal: GoalPlan | null;
+  activeGoal: GoalPlan | null;
   deleteGoals: () => void;
   generateGoal: (input: GenerateGoalProps) => Promise<GoalPlan>;
   increaseStartCount: (plan: GoalPlan, goalElement: PlanElement) => void;
@@ -233,7 +233,7 @@ ${input.conversationMessages.map((message) => {
     await setDoc(docRef, { updatedAt: Date.now() }, { merge: true });
   };
 
-  const latestGoal = useMemo(() => {
+  const activeGoal = useMemo(() => {
     const lastGoal = goals
       ?.filter((goal) => {
         const isGoalActive = goal.languageCode === settings.languageCode;
@@ -266,7 +266,12 @@ ${input.conversationMessages.map((message) => {
       throw new Error("collectionRef ref is not defined");
     }
 
-    await deleteCollectionDocs(`users/${auth.uid}/goals`);
+    const activeId = activeGoal?.id;
+    if (!activeId) {
+      return;
+    }
+
+    await deleteDoc(doc(collectionRef, activeId));
   };
 
   const increaseStartCount = async (plan: GoalPlan, goalElement: PlanElement) => {
@@ -289,7 +294,7 @@ ${input.conversationMessages.map((message) => {
   return {
     setActiveGoal,
     goals: goals || [],
-    latestGoal,
+    activeGoal,
     increaseStartCount,
     loading,
     addGoalPlan,

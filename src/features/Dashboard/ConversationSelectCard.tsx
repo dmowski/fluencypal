@@ -21,7 +21,7 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
   const { i18n } = useLingui();
   const settings = useSettings();
   const plan = usePlan();
-  const isGoalSet = !!plan.latestGoal?.elements?.length;
+  const isGoalSet = !!plan.activeGoal?.elements?.length;
 
   const [isShowOnboardingConfirmation, setIsShowOnboardingConfirmation] = useState(false);
 

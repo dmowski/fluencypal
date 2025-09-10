@@ -65,7 +65,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     conversationsCount === 0 &&
     !aiConversation.isStarted &&
     !aiConversation.isInitializing &&
-    !!plan.latestGoal;
+    !!plan.activeGoal;
 
   const paywall = usePayWall();
 
@@ -210,7 +210,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   const defaultMessagesToComplete = 5;
   const planMessageCount = Math.min(
-    plan.latestGoal?.goalQuiz?.minPerDaySelected || defaultMessagesToComplete,
+    plan.activeGoal?.goalQuiz?.minPerDaySelected || defaultMessagesToComplete,
     defaultMessagesToComplete
   );
 

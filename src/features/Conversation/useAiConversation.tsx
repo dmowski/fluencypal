@@ -190,7 +190,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const plan = usePlan();
   const [goalSettingProgress, setGoalSettingProgress] = useState(0);
 
-  const userLevel = plan.latestGoal?.goalQuiz?.level || "A2";
+  const userLevel = plan.activeGoal?.goalQuiz?.level || "A2";
   const userLevelDescription = levelDescriptionsForAi[userLevel] || levelDescriptionsForAi["A2"];
 
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
@@ -199,7 +199,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const defaultMessagesToComplete = 5;
   const planMessageCount = Math.min(
-    plan.latestGoal?.goalQuiz?.minPerDaySelected || defaultMessagesToComplete,
+    plan.activeGoal?.goalQuiz?.minPerDaySelected || defaultMessagesToComplete,
     defaultMessagesToComplete
   );
 
@@ -504,7 +504,7 @@ The app supports the following activity types:
 * conversation: General conversation with AI on a specific topic
 
 ${
-  plan.latestGoal?.id
+  plan.activeGoal?.id
     ? `
 Start the conversation with this message:
 Hm... Who is here again? How are you doing? How's your goals going? Do you want to set new goals?

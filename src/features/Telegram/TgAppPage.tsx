@@ -35,7 +35,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
   const router = useRouter();
   const isAuth = auth.isAuthorized;
 
-  const isAnyPlanForLearnLanguage = plan.latestGoal;
+  const isAnyPlanForLearnLanguage = plan.activeGoal;
   const isNeedToRedirectToApp =
     !isPlanLoading && isAuth && isAnyPlanForLearnLanguage && !settings.loading;
   useEffect(() => {

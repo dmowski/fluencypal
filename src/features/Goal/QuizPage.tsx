@@ -23,7 +23,7 @@ export const QuizPage = ({ lang, defaultLangToLearn }: QuizPageProps) => {
   const plan = usePlan();
   const settings = useSettings();
   const isPlanLoading = plan.loading;
-  const isAnyPlan = plan.latestGoal;
+  const isAnyPlan = plan.activeGoal;
   const router = useRouter();
   const { topOffset } = useWindowSizes();
 
