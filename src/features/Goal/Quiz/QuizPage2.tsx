@@ -324,6 +324,7 @@ const GoalReview = ({}) => {
     } catch (e) {
       alert(i18n._("Error creating plan. Please try again."));
     }
+    await sleep(1000);
     setLoading(false);
   };
 
