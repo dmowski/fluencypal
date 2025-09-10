@@ -377,7 +377,6 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
         aboutUserAnalysis: "",
         aboutUserInfoRecords: [],
 
-        goalQuestion: "",
         goalUserTranscription: "",
         goalFollowUpQuestion: {
           sourceTranscription: "",
