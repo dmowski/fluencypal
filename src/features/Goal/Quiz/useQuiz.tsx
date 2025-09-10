@@ -170,11 +170,11 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const [generatingFollowUpAttempts, setGeneratingFollowUpAttempts] = useState(0);
 
   const processAbout = async ({
-    userMessage,
+    userMessageAbout,
     pageLanguageCode,
     learningLanguageCode,
   }: {
-    userMessage: string;
+    userMessageAbout: string;
     pageLanguageCode: SupportedLanguage;
     learningLanguageCode: SupportedLanguage;
   }): Promise<QuizSurvey2FollowUpQuestion> => {
@@ -197,7 +197,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
 
     const aiResult = await textAi.generate({
       systemMessage,
-      userMessage,
+      userMessage: userMessageAbout,
       model: "gpt-4o",
       languageCode: pageLanguageCode || "en",
     });
@@ -209,7 +209,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     }>(aiResult);
 
     const newAnswer: QuizSurvey2FollowUpQuestion = {
-      sourceTranscription: userMessage,
+      sourceTranscription: userMessageAbout,
       title: parsedResult.question,
       subtitle: parsedResult.subTitle,
       description: parsedResult.description || "",
@@ -222,7 +222,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     const userMessage = `Я хочу выучить английский, потому что он важен для моей карьеры и путешествий. Я надеюсь улучшить свои навыки общения и понимания культуры.`;
     console.log("Start test | ", userMessage);
     const res = await processAbout({
-      userMessage: userMessage,
+      userMessageAbout: userMessage,
       pageLanguageCode: "en",
       learningLanguageCode: "en",
     });
@@ -252,7 +252,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
 
     try {
       const newAnswer = await processAbout({
-        userMessage: text,
+        userMessageAbout: text,
         pageLanguageCode: survey.pageLanguageCode || "en",
         learningLanguageCode: languageToLearn,
       });
