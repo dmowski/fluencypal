@@ -1,5 +1,5 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
-import type { GoalElementInfo } from "@/features/Plan/types";
+import type { GoalElementInfo, GoalPlan } from "@/features/Plan/types";
 
 export interface QuizSurvey2FollowUpQuestion {
   sourceTranscription: string;
@@ -26,7 +26,8 @@ export interface QuizSurvey2 {
   goalFollowUpTranscription: string;
   goalAnalysis: string;
 
-  goalData: GoalElementInfo | null;
+  goalData: GoalPlan | null;
+  goalHash: string;
 
   createdAtIso: string;
   updatedAtIso: string;

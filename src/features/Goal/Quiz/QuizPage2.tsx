@@ -267,16 +267,28 @@ const QuizQuestions = () => {
                     return;
                   }
 
-                  const updatedSurvey = await updateSurvey({
+                  await updateSurvey({
                     ...survey,
                     goalFollowUpTranscription: combinedTranscript,
                   });
-
-                  const wordsCount = combinedTranscript.trim().split(/\s+/).filter(Boolean).length;
-                  if (wordsCount > 80) {
-                    // TODO: Prepare GOAL ?
-                  }
                 }}
+              />
+            </AuthWall>
+          )}
+
+          {currentStep === "before_goalReview" && (
+            <AuthWall>
+              <InfoStep
+                message={i18n._(`Now, we ready to create your learning plan`)}
+                subMessage={i18n._(`It might take up to a minute`)}
+                imageUrl="/avatar/owl1.png"
+                subComponent={
+                  <Stack
+                    sx={{
+                      paddingTop: "20px",
+                    }}
+                  ></Stack>
+                }
               />
             </AuthWall>
           )}
@@ -1099,7 +1111,7 @@ const ProgressBar = () => {
           width: "100dvw",
           left: "0",
           top: 0,
-          padding: "0 0 80px 0",
+          padding: "0 0 50px 0",
           paddingTop: `calc(${topOffset} + 15px)`,
           zIndex: 2,
           pointerEvents: "none",

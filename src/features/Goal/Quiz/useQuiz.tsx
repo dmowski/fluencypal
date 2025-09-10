@@ -30,6 +30,8 @@ import * as Sentry from "@sentry/nextjs";
 import { useTextAi } from "@/features/Ai/useTextAi";
 import { useFixJson } from "@/features/Ai/useFixJson";
 import { useSettings } from "@/features/Settings/useSettings";
+import { usePlan } from "@/features/Plan/usePlan";
+import { ChatMessage } from "@/common/conversation";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -114,6 +116,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const textAi = useTextAi();
   const fixJson = useFixJson();
   const settings = useSettings();
+  const plan = usePlan();
 
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const defaultState: QuizUrlState = useMemo(
@@ -545,6 +548,7 @@ ${userAboutFollowUpAnswer}
         goalAnalysis: "",
 
         goalData: null,
+        goalHash: "",
 
         updatedAtIso: new Date().toISOString(),
         createdAtIso: new Date().toISOString(),
@@ -721,6 +725,104 @@ ${userAboutFollowUpAnswer}
   };
 
   const progress = currentStepIndex / path.length + 0.1;
+
+  const surveyRef = useRef<QuizSurvey2 | null>(surveyDoc || null);
+  surveyRef.current = surveyDoc || null;
+  const getSurveyHashToCompare = (s: QuizSurvey2) => {
+    return [
+      s.aboutUserTranscription,
+      s.aboutUserFollowUpQuestion.title,
+      s.aboutUserFollowUpTranscription,
+      s.goalFollowUpQuestion.title,
+      s.goalFollowUpTranscription,
+    ].join("||");
+  };
+
+  const generateGoal = async () => {
+    const survey = surveyRef.current;
+    if (!survey) {
+      return;
+    }
+
+    const goalFollowUpTranscriptsWords = survey.goalFollowUpTranscription
+      ? survey.goalFollowUpTranscription.trim().split(/\s+/).length
+      : 0;
+    const isReadyToGenerateGoal =
+      !!survey.goalFollowUpTranscription && goalFollowUpTranscriptsWords >= 80;
+    if (!isReadyToGenerateGoal) {
+      console.log(
+        "Goal generation skipped, not enough data | need at least 80 words in goal answer"
+      );
+      return;
+    }
+
+    const conversationMessages: ChatMessage[] = [];
+
+    const initialSurveyHash = getSurveyHashToCompare(survey);
+    if (initialSurveyHash === survey.goalHash) {
+      console.log("Survey not changed, skipping goal generation");
+      return;
+    }
+
+    if (survey.aboutUserTranscription) {
+      conversationMessages.push({
+        id: `about_user`,
+        isBot: false,
+        text: `${survey.aboutUserTranscription}`,
+      });
+    }
+
+    if (survey.aboutUserFollowUpQuestion) {
+      conversationMessages.push({
+        id: `about_user_followup_question`,
+        isBot: true,
+        text: `${survey.aboutUserFollowUpQuestion.title}\n${survey.aboutUserFollowUpQuestion.description || ""}`,
+      });
+
+      conversationMessages.push({
+        id: `about_user_followup_answer`,
+        isBot: false,
+        text: `${survey.aboutUserFollowUpTranscription || "No answer provided"}`,
+      });
+    }
+
+    if (survey.goalFollowUpQuestion) {
+      conversationMessages.push({
+        id: `goal_followup_question`,
+        isBot: true,
+        text: `${survey.goalFollowUpQuestion.title}\n${survey.goalFollowUpQuestion.description || ""}`,
+      });
+      conversationMessages.push({
+        id: `goal_followup_answer`,
+        isBot: false,
+        text: `${survey.goalFollowUpTranscription || "No answer provided"}`,
+      });
+    }
+
+    const goal = await plan.generateGoal({
+      languageCode: languageToLearn,
+      conversationMessages: conversationMessages,
+      userInfo: [],
+    });
+
+    console.log("Generated goal", JSON.stringify(goal, null, 2));
+
+    const finalSurveyHash = getSurveyHashToCompare(surveyRef.current!);
+    if (initialSurveyHash !== finalSurveyHash) {
+      console.log("Survey changed during goal generation, skipping update");
+      return;
+    }
+    await updateSurvey({
+      ...surveyRef.current!,
+      goalData: goal,
+      goalHash: finalSurveyHash,
+    });
+  };
+
+  // Create effect to generate goals
+  useEffect(() => {
+    generateGoal();
+  }, [surveyDoc]);
 
   return {
     survey: surveyDoc || null,
