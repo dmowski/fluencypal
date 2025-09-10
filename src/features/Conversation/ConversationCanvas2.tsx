@@ -153,7 +153,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   setIsVolumeOn,
 }) => {
   const { i18n } = useLingui();
-
   const sound = useSound();
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
