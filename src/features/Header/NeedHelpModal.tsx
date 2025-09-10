@@ -42,6 +42,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
       await deleteCollectionDocs(`users/${userId}/stats`);
       await deleteCollectionDocs(`users/${userId}/phraseCorrections`);
       await deleteCollectionDocs(`users/${userId}/goals`);
+      await deleteCollectionDocs(`users/${userId}/quiz2`);
 
       await setDoc(userSettingsDoc, { languageCode: null }, { merge: true });
       notifications.show(
