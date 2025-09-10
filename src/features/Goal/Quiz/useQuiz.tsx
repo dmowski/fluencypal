@@ -98,6 +98,7 @@ interface QuizContextType {
 
   test: () => Promise<void>;
   confirmPlan: () => Promise<void>;
+  isGoalGenerating: boolean;
 }
 const QuizContext = createContext<QuizContextType | null>(null);
 
@@ -752,6 +753,9 @@ ${userAboutFollowUpAnswer}
     ].join("||");
   };
 
+  const [isGoalGeneratingMap, setIsGoalGeneratingMap] = useState<Record<string, boolean>>({});
+  const isGoalGenerating = Object.values(isGoalGeneratingMap).some((v) => v);
+
   const generateGoal = async () => {
     const survey = surveyRef.current;
     if (!survey) {
@@ -782,6 +786,8 @@ ${userAboutFollowUpAnswer}
       console.log("Survey not changed, skipping goal generation");
       return;
     }
+
+    setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: true }));
 
     if (survey.aboutUserTranscription) {
       conversationMessages.push({
@@ -824,6 +830,8 @@ ${userAboutFollowUpAnswer}
       conversationMessages: conversationMessages,
       userInfo: userRecords,
     });
+
+    setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
 
     const finalSurveyHash = getSurveyHashToCompare(surveyRef.current!);
     if (initialSurveyHash !== finalSurveyHash) {
@@ -884,6 +892,7 @@ ${userAboutFollowUpAnswer}
     analyzeUserAbout,
     analyzeUserFollowUpAbout,
     test,
+    isGoalGenerating,
   };
 }
 

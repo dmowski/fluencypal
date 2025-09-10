@@ -188,19 +188,13 @@ const QuizQuestions = () => {
                     return;
                   }
 
-                  const updatedSurvey = await updateSurvey(
+                  await updateSurvey(
                     {
                       ...survey,
                       aboutUserTranscription: combinedTranscript,
                     },
                     "recordAbout UI"
                   );
-
-                  const wordsCount = combinedTranscript.trim().split(/\s+/).filter(Boolean).length;
-
-                  if (wordsCount > 50) {
-                    analyzeUserAbout(combinedTranscript, updatedSurvey);
-                  }
                 }}
               />
             </AuthWall>
@@ -339,6 +333,8 @@ const GoalReview = ({}) => {
     rule: i18n._(`Rule`),
   };
 
+  const isLoading = quiz.isGoalGenerating || quiz.survey?.goalData === null;
+
   return (
     <Stack
       sx={{
@@ -388,9 +384,9 @@ const GoalReview = ({}) => {
                 fontWeight: 660,
                 lineHeight: "1.2",
               }}
-              className={!quiz.survey?.goalData?.title ? "loading-shimmer" : ""}
+              className={isLoading ? "loading-shimmer" : ""}
             >
-              {quiz.survey?.goalData?.title || i18n._("Loading..")}
+              {isLoading ? i18n._("Loading..") : quiz.survey?.goalData?.title}
             </Typography>
           </Stack>
           <Stack
@@ -398,7 +394,7 @@ const GoalReview = ({}) => {
               width: "100%",
             }}
           >
-            {!quiz.survey?.goalData?.title ? (
+            {isLoading ? (
               <>
                 <LoadingShapes sizes={["100px", "100px", "100px", "100px", "100px", "100px"]} />
               </>
@@ -460,7 +456,7 @@ const GoalReview = ({}) => {
       </Stack>
 
       <FooterButton
-        disabled={!quiz.survey?.goalData || loading}
+        disabled={isLoading}
         onClick={confirmPlan}
         title={loading ? i18n._("Loading...") : i18n._("Start Learning")}
         endIcon={<ArrowRight />}
