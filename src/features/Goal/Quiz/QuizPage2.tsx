@@ -235,6 +235,8 @@ const QuizQuestions = () => {
                     aboutUserFollowUpTranscription: combinedTranscript,
                   });
 
+                  console.log("updatedSurvey", updatedSurvey);
+
                   const wordsCount = combinedTranscript.trim().split(/\s+/).filter(Boolean).length;
                   if (wordsCount > 80) {
                     analyzeUserFollowUpAbout(combinedTranscript, updatedSurvey);
@@ -651,7 +653,7 @@ const RecordUserAudio = ({
   isLoading?: boolean;
 }) => {
   const { i18n } = useLingui();
-  const { languageToLearn, nextStep, survey, updateSurvey } = useQuiz();
+  const { languageToLearn, nextStep } = useQuiz();
 
   const auth = useAuth();
 
@@ -664,16 +666,14 @@ const RecordUserAudio = ({
   });
 
   useEffect(() => {
-    if (recorder.transcription && survey) {
-      const combinedTranscript = [survey.aboutUserTranscription, recorder.transcription]
-        .filter(Boolean)
-        .join(" ");
+    if (recorder.transcription) {
+      const combinedTranscript = [transcript, recorder.transcription].filter(Boolean).join(" ");
       updateTranscript(combinedTranscript);
     }
   }, [recorder.transcription]);
 
   const clearTranscript = () => {
-    if (survey) {
+    if (transcript) {
       updateTranscript("");
     }
   };
@@ -773,7 +773,7 @@ const RecordUserAudio = ({
               {recorder.isTranscribing && " " + i18n._("Processing...")}
             </Typography>
 
-            {!transcript && !recorder.isTranscribing && survey && (
+            {!transcript && !recorder.isTranscribing && (
               <Stack
                 sx={{
                   alignItems: "center",
@@ -793,7 +793,7 @@ const RecordUserAudio = ({
 
             {transcript && !recorder.isTranscribing && (
               <Stack>
-                {recorder.visualizerComponent}
+                {!isNeedMoreRecording && recorder.visualizerComponent}
                 <Stack
                   sx={{
                     flexDirection: "row",
@@ -831,7 +831,7 @@ const RecordUserAudio = ({
       </Stack>
 
       <FooterButton
-        aboveButtonComponent={!transcript && recorder.visualizerComponent}
+        aboveButtonComponent={isNeedMoreRecording && recorder.visualizerComponent}
         disabled={isLoading || (recorder.isRecording && wordsCount >= minWords)}
         onClick={async () => {
           if (transcript && wordsCount >= minWords) {

@@ -167,7 +167,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     }
     const updatedSurvey: QuizSurvey2 = { ...surveyDoc, updatedAtIso: new Date().toISOString() };
     await setDoc(surveyDocRef, updatedSurvey, { merge: true });
-    console.log("✅ Survey doc updated", surveyDoc);
+    console.log("✅ Survey doc updated");
     return updatedSurvey;
   };
 
@@ -752,7 +752,12 @@ ${userAboutFollowUpAnswer}
       ? survey.goalFollowUpTranscription.trim().split(/\s+/).length
       : 0;
     const isReadyToGenerateGoal =
-      !!survey.goalFollowUpTranscription && goalFollowUpTranscriptsWords >= 80;
+      !!survey.goalFollowUpTranscription &&
+      goalFollowUpTranscriptsWords >= 80 &&
+      survey.aboutUserTranscription &&
+      survey.aboutUserTranscription.trim().split(/\s+/).length >= 50 &&
+      !!survey.aboutUserFollowUpTranscription &&
+      survey.aboutUserFollowUpTranscription.trim().split(/\s+/).length >= 80;
     if (!isReadyToGenerateGoal) {
       console.log(
         "Goal generation skipped, not enough data | need at least 80 words in goal answer"
