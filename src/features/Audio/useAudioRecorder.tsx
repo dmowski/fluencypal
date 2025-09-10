@@ -18,9 +18,6 @@ export const useAudioRecorder = ({
   isGame: boolean;
   visualizerComponentWidth?: string;
 }) => {
-  const [recordingSeconds, setRecordingSeconds] = useState(0);
-  const audioDurationRef = useRef<number>(0);
-  audioDurationRef.current = recordingSeconds;
   const learnLanguageCode = languageCode || "en";
 
   const [isTranscribing, setIsTranscribing] = useState(false);
@@ -28,6 +25,13 @@ export const useAudioRecorder = ({
   const [transcriptionError, setTranscriptionError] = useState<string | null>(null);
 
   const recorderControls = useVoiceVisualizer();
+  const [recordingSeconds, setRecordingSeconds] = useState(0);
+  const recordingMilliSeconds = recorderControls.recordingTime;
+
+  useEffect(() => {
+    const seconds = Math.floor(recordingMilliSeconds / 1000);
+    setRecordingSeconds(seconds);
+  }, [recordingMilliSeconds]);
 
   const { inWebView } = useIsWebView();
 
@@ -62,7 +66,7 @@ export const useAudioRecorder = ({
         audioBlob: recordedAudioBlog,
         authKey: token,
         languageCode: learnLanguageCode,
-        audioDuration: audioDurationRef.current || 5,
+        audioDuration: recordingSeconds || 5,
         format,
         isGame,
         isFree,
@@ -81,7 +85,6 @@ export const useAudioRecorder = ({
   const startRecording = async () => {
     recorderControls.startRecording();
     isCancel.current = false;
-    setRecordingSeconds(0);
   };
 
   const stopRecording = async () => {
@@ -98,24 +101,26 @@ export const useAudioRecorder = ({
     }
   };
 
+  const removeTranscript = () => {
+    if (isRecording) {
+      isCancel.current = true;
+      recorderControls.stopRecording();
+    }
+    setTranscription(null);
+    setIsTranscribing(false);
+  };
+
   return {
     startRecording,
     stopRecording,
     cancelRecording,
-    isRecording: isRecording,
+    isRecording,
     isTranscribing,
     transcription,
     error: recorderControls.error?.message || transcriptionError || "",
-    recordingMilliSeconds: recorderControls.recordingTime,
+    recordingMilliSeconds: recordingSeconds * 1000,
     isAbleToRecord: !inWebView,
-    removeTranscript: () => {
-      if (isRecording) {
-        isCancel.current = true;
-        recorderControls.stopRecording();
-      }
-      setTranscription(null);
-      setIsTranscribing(false);
-    },
+    removeTranscript,
     visualizerComponent: recorderControls.isRecordingInProgress ? (
       <VoiceVisualizer
         controls={recorderControls}
