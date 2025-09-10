@@ -12,6 +12,7 @@ import duration from "dayjs/plugin/duration";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useSettings } from "../Settings/useSettings";
 import { SupportedLanguage } from "@/features/Lang/lang";
+import { useFixJson } from "./useFixJson";
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
@@ -23,10 +24,13 @@ interface AiUserInfoContextType {
     records: string[];
   }>;
   userInfo: AiUserInfo | null;
+
+  extractUserRecords: (conversation: ChatMessage[], lang: SupportedLanguage) => Promise<string[]>;
   generateFirstMessageText: (
     topic: string,
     languageCode: SupportedLanguage
   ) => Promise<{ firstMessage: string; potentialTopics: string }>;
+  saveUserInfo: (updatedRecords: string[]) => Promise<void>;
 }
 
 const AiUserInfoContext = createContext<AiUserInfoContextType | null>(null);
@@ -35,6 +39,7 @@ function useProvideAiUserInfo(): AiUserInfoContextType {
   const auth = useAuth();
   const settings = useSettings();
   const textAi = useTextAi();
+  const fixJson = useFixJson();
   const dbDocRef = db.documents.aiUserInfo(auth.uid);
   const [userInfo] = useDocumentData<AiUserInfo>(dbDocRef);
 
@@ -53,50 +58,64 @@ If not relevant information found, return empty array.
       model: "gpt-4o",
       languageCode: lang,
     });
-    return JSON.parse(summaryFromConversation) as string[];
+    return fixJson.parseJson<string[]>(summaryFromConversation);
   };
 
-  const updateUserInfo = async (conversation: ChatMessage[], lang: SupportedLanguage) => {
-    if (!dbDocRef) {
-      throw new Error("dbDocRef is not defined | useAiUserInfo.updateUserInfo");
-    }
-    const systemMessage = `Given conversation with user and language teacher.
+  const extractUserRecords = async (
+    conversation: ChatMessage[],
+    lang: SupportedLanguage
+  ): Promise<string[]> => {
+    try {
+      const systemMessage = `Given conversation with user and language teacher.
 Your goal is to extract information about user from this conversation.
 Return info in JSON format. Important information like name or location should be first less important like interests, plans or preferences should be last.
 Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
 Example of return value: ["User's name is Alex", "Learning English", "Interested in programming", "From USA", "25 years old", "A student"]
 If not relevant information found, return empty array.`;
 
-    const aiUserMessage = JSON.stringify(
-      conversation.map((message) => {
-        return {
-          author: message.isBot ? "Teacher" : "User",
-          text: message.text,
-        };
-      })
-    );
+      const aiUserMessage = JSON.stringify(
+        conversation.map((message) => {
+          return {
+            author: message.isBot ? "Teacher" : "User",
+            text: message.text,
+          };
+        })
+      );
 
-    const summaryFromConversation = await textAi.generate({
-      userMessage: aiUserMessage,
-      systemMessage,
-      model: "gpt-4o",
-      languageCode: lang,
-    });
-    console.log("Summary from conversation:", summaryFromConversation);
+      const summaryFromConversation = await textAi.generate({
+        userMessage: aiUserMessage,
+        systemMessage,
+        model: "gpt-4o",
+        languageCode: lang,
+      });
+      console.log("Summary from conversation:", summaryFromConversation);
 
-    const parsedSummary = JSON.parse(summaryFromConversation) as string[];
-    console.log("parsedSummary", { aiUserMessage, parsedSummary });
+      const parsedSummary = await fixJson.parseJson<string[]>(summaryFromConversation);
+      console.log("parsedSummary", { aiUserMessage, parsedSummary });
 
-    const oldRecords = userInfo?.records;
-    const newRecords: string[] = parsedSummary;
+      const oldRecords = userInfo?.records;
+      const newRecords: string[] = parsedSummary;
 
-    const updatedRecords = oldRecords
-      ? await cleanUpSummary([...newRecords, ...oldRecords], lang)
-      : newRecords;
+      const updatedRecords = oldRecords
+        ? await cleanUpSummary([...newRecords, ...oldRecords], lang)
+        : newRecords;
 
-    console.log("updatedRecords", updatedRecords);
+      console.log("updatedRecords", updatedRecords);
 
-    setDoc(
+      return updatedRecords;
+    } catch (e) {
+      console.error("Error during extractUserRecords", e);
+      return userInfo?.records || [];
+    }
+  };
+
+  const saveUserInfo = async (updatedRecords: string[]) => {
+    console.log("💒 saveUserInfo");
+    if (!dbDocRef) {
+      throw new Error("dbDocRef is not defined | useAiUserInfo.updateUserInfo");
+    }
+
+    await setDoc(
       dbDocRef,
       {
         records: updatedRecords,
@@ -105,6 +124,16 @@ If not relevant information found, return empty array.`;
       },
       { merge: true }
     );
+  };
+
+  const updateUserInfo = async (conversation: ChatMessage[], lang: SupportedLanguage) => {
+    if (!dbDocRef) {
+      throw new Error("dbDocRef is not defined | useAiUserInfo.updateUserInfo");
+    }
+
+    const updatedRecords = await extractUserRecords(conversation, lang);
+
+    await saveUserInfo(updatedRecords);
 
     return {
       records: updatedRecords,
@@ -215,7 +244,9 @@ ${firstMessages.length === 0 ? "None" : firstMessages.map((msg, i) => `${i + 1}.
   return {
     userInfo: userInfo || null,
     generateFirstMessageText,
+    extractUserRecords,
     updateUserInfo,
+    saveUserInfo,
   };
 }
 

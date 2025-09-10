@@ -28,6 +28,7 @@ export interface QuizSurvey2 {
 
   goalData: GoalPlan | null;
   goalHash: string;
+  userRecords: string[];
 
   createdAtIso: string;
   updatedAtIso: string;

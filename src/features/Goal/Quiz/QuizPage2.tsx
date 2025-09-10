@@ -317,9 +317,13 @@ const GoalReview = ({}) => {
 
   const confirmPlan = async () => {
     setLoading(true);
-    await quiz.confirmPlan();
-    const url = `${getUrlStart(quiz.pageLanguage)}/practice`;
-    router.push(url);
+    try {
+      await quiz.confirmPlan();
+      const url = `${getUrlStart(quiz.pageLanguage)}/practice`;
+      router.push(url);
+    } catch (e) {
+      alert(i18n._("Error creating plan. Please try again."));
+    }
     setLoading(false);
   };
 

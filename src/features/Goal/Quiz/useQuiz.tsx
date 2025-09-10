@@ -32,6 +32,7 @@ import { useFixJson } from "@/features/Ai/useFixJson";
 import { useSettings } from "@/features/Settings/useSettings";
 import { usePlan } from "@/features/Plan/usePlan";
 import { ChatMessage } from "@/common/conversation";
+import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -118,6 +119,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const fixJson = useFixJson();
   const settings = useSettings();
   const plan = usePlan();
+  const userInfo = useAiUserInfo();
 
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const defaultState: QuizUrlState = useMemo(
@@ -550,6 +552,7 @@ ${userAboutFollowUpAnswer}
 
         goalData: null,
         goalHash: "",
+        userRecords: userInfo.userInfo?.records || [],
 
         updatedAtIso: new Date().toISOString(),
         createdAtIso: new Date().toISOString(),
@@ -731,8 +734,8 @@ ${userAboutFollowUpAnswer}
   surveyRef.current = surveyDoc || null;
   const getSurveyHashToCompare = (s: QuizSurvey2) => {
     return [
-      s.aboutUserTranscription,
       s.aboutUserFollowUpQuestion.title,
+      s.aboutUserTranscription,
       s.aboutUserFollowUpTranscription,
       s.goalFollowUpQuestion.title,
       s.goalFollowUpTranscription,
@@ -800,13 +803,12 @@ ${userAboutFollowUpAnswer}
       });
     }
     console.log("Starting goal generation with messages:");
+    const userRecords = await userInfo.extractUserRecords(conversationMessages, languageToLearn);
     const goal = await plan.generateGoal({
       languageCode: languageToLearn,
       conversationMessages: conversationMessages,
-      userInfo: [],
+      userInfo: userRecords,
     });
-
-    console.log("Generated goal", JSON.stringify(goal, null, 2));
 
     const finalSurveyHash = getSurveyHashToCompare(surveyRef.current!);
     if (initialSurveyHash !== finalSurveyHash) {
@@ -817,6 +819,7 @@ ${userAboutFollowUpAnswer}
       ...surveyRef.current!,
       goalData: goal,
       goalHash: finalSurveyHash,
+      userRecords: userRecords,
     });
   };
 
@@ -829,6 +832,10 @@ ${userAboutFollowUpAnswer}
     if (!surveyRef.current?.goalData) {
       alert("Please complete the goal before confirming your plan.");
       return;
+    }
+
+    if (surveyDoc?.userRecords) {
+      await userInfo.saveUserInfo(surveyDoc.userRecords);
     }
 
     await plan.addGoalPlan(surveyRef.current.goalData);
