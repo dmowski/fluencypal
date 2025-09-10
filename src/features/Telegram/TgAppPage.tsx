@@ -59,7 +59,7 @@ export const TgAppPage = ({ lang }: TgAppPageProps) => {
     const pageLang = settings.userSettings?.pageLanguageCode || lang;
 
     // Redirect to QUIZ if no plan is present
-    const newPath = `${getUrlStart(pageLang)}quiz2`;
+    const newPath = `${getUrlStart(pageLang)}quiz`;
     router.push(newPath);
   }, [isNeedToRedirectToQuiz]);
 
