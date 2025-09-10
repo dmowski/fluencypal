@@ -3,10 +3,10 @@ import { useSettings } from "../Settings/useSettings";
 import { getPageLangCode } from "../Lang/lang";
 import { usePlan } from "../Plan/usePlan";
 import { useMemo, useState } from "react";
-import { Popover, Stack } from "@mui/material";
+import { IconButton, Popover, Stack } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { Markdown } from "../uiKit/Markdown/Markdown";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, X } from "lucide-react";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useUrlParam } from "../Url/useUrlParam";
 
@@ -110,8 +110,15 @@ export const useTranslate = () => {
               width: "100%",
               maxWidth: "600px",
               padding: "10px 15px",
+              position: "relative",
             }}
           >
+            <IconButton
+              sx={{ position: "absolute", top: "0px", right: "0px" }}
+              onClick={onCloseTranslate}
+            >
+              <X size={"18px"} />
+            </IconButton>
             <Stack
               sx={{
                 gap: "10px",
