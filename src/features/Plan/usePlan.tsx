@@ -155,7 +155,7 @@ ${input.conversationMessages.map((message) => {
       languageCode: input.languageCode,
     });
 
-    const parsedElements = (await fixJson.parseJson(elements)) as AiGeneratedElement[];
+    const parsedElements = await fixJson.parseJson<AiGeneratedElement[]>(elements);
 
     interface AiGeneratedElement {
       type: string;
