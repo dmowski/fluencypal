@@ -26,6 +26,7 @@ interface PlanCardProps {
   isActive?: boolean;
   isLast?: boolean;
   isContinueLabel: boolean;
+  viewOnly?: boolean;
 }
 
 export const PlanCard = ({
@@ -45,6 +46,7 @@ export const PlanCard = ({
   isActive,
   isLast,
   isContinueLabel,
+  viewOnly = false,
 }: PlanCardProps) => {
   const uniqKey = `plan-start-${id}`;
   const [showModal, setShowModal] = useUrlParam(uniqKey);
@@ -118,6 +120,7 @@ export const PlanCard = ({
                   padding: "10px 20px",
                 }}
                 onClick={() => {
+                  if (viewOnly) return;
                   setShowModal(false);
                   onClick();
                   goFullScreen();
@@ -134,7 +137,11 @@ export const PlanCard = ({
       )}
 
       <Stack
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          if (viewOnly) return;
+
+          setShowModal(true);
+        }}
         component={"button"}
         sx={{
           backgroundColor: isActive
@@ -164,8 +171,6 @@ export const PlanCard = ({
           maxWidth: "700px",
           position: "relative",
 
-          cursor: "pointer",
-
           opacity: 0,
           transition: "background 0.3s ease",
           transform: "scale(1)",
@@ -173,12 +178,20 @@ export const PlanCard = ({
 
           userSelect: "text",
           color: "#fff",
-          ":hover": {
-            backgroundColor: isActive ? "rgba(13, 220, 196, 0.2)" : "rgba(13, 220, 196, 0.15)",
-            "@media (max-width: 450px)": {
-              backgroundColor: "rgba(13, 220, 196, 0.1)",
-            },
-          },
+
+          ...(viewOnly
+            ? {}
+            : {
+                cursor: "pointer",
+                ":hover": {
+                  backgroundColor: isActive
+                    ? "rgba(13, 220, 196, 0.2)"
+                    : "rgba(13, 220, 196, 0.15)",
+                  "@media (max-width: 450px)": {
+                    backgroundColor: "rgba(13, 220, 196, 0.1)",
+                  },
+                },
+              }),
 
           "@media (max-width: 500px)": {
             gap: "13px 20px",

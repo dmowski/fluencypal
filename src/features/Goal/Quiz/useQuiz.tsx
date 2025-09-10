@@ -96,6 +96,7 @@ interface QuizContextType {
   analyzeUserFollowUpAbout: (text: string, survey: QuizSurvey2) => Promise<QuizSurvey2>;
 
   test: () => Promise<void>;
+  confirmPlan: () => Promise<void>;
 }
 const QuizContext = createContext<QuizContextType | null>(null);
 
@@ -824,8 +825,18 @@ ${userAboutFollowUpAnswer}
     generateGoal();
   }, [surveyDoc]);
 
+  const confirmPlan = async () => {
+    if (!surveyRef.current?.goalData) {
+      alert("Please complete the goal before confirming your plan.");
+      return;
+    }
+
+    await plan.addGoalPlan(surveyRef.current.goalData);
+  };
+
   return {
     survey: surveyDoc || null,
+    confirmPlan,
     languageToLearn,
     pageLanguage,
     nativeLanguage,
