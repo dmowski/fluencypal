@@ -41,6 +41,8 @@ type QuizStep =
   | "recordAbout"
   | "before_recordAboutFollowUp"
   | "recordAboutFollowUp"
+  | "before_recordAboutFollowUp2"
+  | "recordAboutFollowUp2"
   | "reviewAbout";
 const stepsViews: QuizStep[] = [
   "learnLanguage",
@@ -55,6 +57,9 @@ const stepsViews: QuizStep[] = [
 
   "before_recordAboutFollowUp",
   "recordAboutFollowUp",
+
+  "before_recordAboutFollowUp2",
+  "recordAboutFollowUp2",
 
   "reviewAbout",
 ];
