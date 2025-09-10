@@ -91,7 +91,7 @@ interface QuizContextType {
   isCanGoToMainPage: boolean;
   isFirstLoading: boolean;
   survey: QuizSurvey2 | null;
-  updateSurvey: (surveyDoc: QuizSurvey2) => Promise<QuizSurvey2>;
+  updateSurvey: (surveyDoc: QuizSurvey2, label: string) => Promise<QuizSurvey2>;
 
   analyzeUserAbout: (text: string, survey: QuizSurvey2) => Promise<QuizSurvey2>;
   analyzeUserFollowUpAbout: (text: string, survey: QuizSurvey2) => Promise<QuizSurvey2>;
@@ -161,13 +161,13 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const surveyDocRef = db.documents.quizSurvey2(auth.uid, languageToLearn);
   const [surveyDoc] = useDocumentData(surveyDocRef);
 
-  const updateSurvey = async (surveyDoc: QuizSurvey2) => {
+  const updateSurvey = async (surveyDoc: QuizSurvey2, label: string) => {
     if (!surveyDocRef) {
       throw new Error("updateSurvey | No survey doc ref");
     }
     const updatedSurvey: QuizSurvey2 = { ...surveyDoc, updatedAtIso: new Date().toISOString() };
     await setDoc(surveyDocRef, updatedSurvey, { merge: true });
-    console.log("✅ Survey doc updated");
+    console.log("✅ Survey doc updated: " + label);
     return updatedSurvey;
   };
 
@@ -256,8 +256,6 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       return survey;
     }
 
-    console.log("analyzeUserAbout | Starting analysis for text length", text);
-
     setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: true }));
 
     try {
@@ -272,10 +270,13 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
         setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
         return survey;
       } else {
-        const updatedSurvey = await updateSurvey({
-          ...survey,
-          aboutUserFollowUpQuestion: newAnswer,
-        });
+        const updatedSurvey = await updateSurvey(
+          {
+            ...survey,
+            aboutUserFollowUpQuestion: newAnswer,
+          },
+          "analyzeUserAbout"
+        );
         setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
         return updatedSurvey;
       }
@@ -427,10 +428,13 @@ ${userAboutFollowUpAnswer}
         setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [text]: false }));
         return survey;
       } else {
-        const updatedSurvey = await updateSurvey({
-          ...survey,
-          goalFollowUpQuestion: newGoalQuestion,
-        });
+        const updatedSurvey = await updateSurvey(
+          {
+            ...survey,
+            goalFollowUpQuestion: newGoalQuestion,
+          },
+          "analyzeUserFollowUpAbout"
+        );
         setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [text]: false }));
         return updatedSurvey;
       }
@@ -503,12 +507,15 @@ ${userAboutFollowUpAnswer}
 
   const ensureSurveyDocExists = async () => {
     if (surveyDoc) {
-      const survey = await updateSurvey({
-        ...surveyDoc,
-        learningLanguageCode: languageToLearn,
-        nativeLanguageCode: nativeLanguage,
-        pageLanguageCode: pageLanguage,
-      });
+      const survey = await updateSurvey(
+        {
+          ...surveyDoc,
+          learningLanguageCode: languageToLearn,
+          nativeLanguageCode: nativeLanguage,
+          pageLanguageCode: pageLanguage,
+        },
+        "ensureSurveyDocExists"
+      );
 
       await syncWithSettings(survey);
       return;
@@ -561,12 +568,15 @@ ${userAboutFollowUpAnswer}
       await syncWithSettings(initSurvey);
       console.log("✅ Survey doc created", initSurvey);
     } else {
-      const updatedSurvey = await updateSurvey({
-        ...docData,
-        learningLanguageCode: languageToLearn,
-        nativeLanguageCode: nativeLanguage,
-        pageLanguageCode: pageLanguage,
-      });
+      const updatedSurvey = await updateSurvey(
+        {
+          ...docData,
+          learningLanguageCode: languageToLearn,
+          nativeLanguageCode: nativeLanguage,
+          pageLanguageCode: pageLanguage,
+        },
+        "ensureSurveyDocExists"
+      );
       await syncWithSettings(updatedSurvey);
     }
   };
@@ -807,7 +817,7 @@ ${userAboutFollowUpAnswer}
         text: `${survey.goalFollowUpTranscription || "No answer provided"}`,
       });
     }
-    console.log("Starting goal generation with messages:");
+    console.log("Starting goal generation.");
     const userRecords = await userInfo.extractUserRecords(conversationMessages, languageToLearn);
     const goal = await plan.generateGoal({
       languageCode: languageToLearn,
@@ -820,12 +830,15 @@ ${userAboutFollowUpAnswer}
       console.log("Survey changed during goal generation, skipping update");
       return;
     }
-    await updateSurvey({
-      ...surveyRef.current!,
-      goalData: goal,
-      goalHash: finalSurveyHash,
-      userRecords: userRecords,
-    });
+    await updateSurvey(
+      {
+        ...surveyRef.current!,
+        goalData: goal,
+        goalHash: finalSurveyHash,
+        userRecords: userRecords,
+      },
+      "generateGoal"
+    );
   };
 
   // Create effect to generate goals

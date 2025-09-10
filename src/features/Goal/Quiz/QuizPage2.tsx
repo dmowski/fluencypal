@@ -188,10 +188,13 @@ const QuizQuestions = () => {
                     return;
                   }
 
-                  const updatedSurvey = await updateSurvey({
-                    ...survey,
-                    aboutUserTranscription: combinedTranscript,
-                  });
+                  const updatedSurvey = await updateSurvey(
+                    {
+                      ...survey,
+                      aboutUserTranscription: combinedTranscript,
+                    },
+                    "recordAbout UI"
+                  );
 
                   const wordsCount = combinedTranscript.trim().split(/\s+/).filter(Boolean).length;
 
@@ -230,17 +233,13 @@ const QuizQuestions = () => {
                     return;
                   }
 
-                  const updatedSurvey = await updateSurvey({
-                    ...survey,
-                    aboutUserFollowUpTranscription: combinedTranscript,
-                  });
-
-                  console.log("updatedSurvey", updatedSurvey);
-
-                  const wordsCount = combinedTranscript.trim().split(/\s+/).filter(Boolean).length;
-                  if (wordsCount > 80) {
-                    analyzeUserFollowUpAbout(combinedTranscript, updatedSurvey);
-                  }
+                  await updateSurvey(
+                    {
+                      ...survey,
+                      aboutUserFollowUpTranscription: combinedTranscript,
+                    },
+                    "recordAboutFollowUp UI"
+                  );
                 }}
               />
             </AuthWall>
@@ -273,10 +272,13 @@ const QuizQuestions = () => {
                     return;
                   }
 
-                  await updateSurvey({
-                    ...survey,
-                    goalFollowUpTranscription: combinedTranscript,
-                  });
+                  await updateSurvey(
+                    {
+                      ...survey,
+                      goalFollowUpTranscription: combinedTranscript,
+                    },
+                    "recordAboutFollowUp2 UI"
+                  );
                 }}
               />
             </AuthWall>

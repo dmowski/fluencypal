@@ -88,10 +88,8 @@ If not relevant information found, return empty array.`;
         model: "gpt-4o",
         languageCode: lang,
       });
-      console.log("Summary from conversation:", summaryFromConversation);
 
       const parsedSummary = await fixJson.parseJson<string[]>(summaryFromConversation);
-      console.log("parsedSummary", { aiUserMessage, parsedSummary });
 
       const oldRecords = userInfo?.records;
       const newRecords: string[] = parsedSummary;
@@ -99,8 +97,6 @@ If not relevant information found, return empty array.`;
       const updatedRecords = oldRecords
         ? await cleanUpSummary([...newRecords, ...oldRecords], lang)
         : newRecords;
-
-      console.log("updatedRecords", updatedRecords);
 
       return updatedRecords;
     } catch (e) {
@@ -110,7 +106,6 @@ If not relevant information found, return empty array.`;
   };
 
   const saveUserInfo = async (updatedRecords: string[]) => {
-    console.log("💒 saveUserInfo");
     if (!dbDocRef) {
       throw new Error("dbDocRef is not defined | useAiUserInfo.updateUserInfo");
     }
