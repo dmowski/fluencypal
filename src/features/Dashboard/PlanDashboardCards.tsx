@@ -460,7 +460,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "5px",
-                paddingLeft: languageGoals.length > 0 ? "20px" : "10px",
+                paddingLeft: languageGoals.length > 1 ? "20px" : "10px",
               }}
             >
               <Typography variant="h6" align="center">
@@ -468,7 +468,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   ? plan.activeGoal?.title || i18n._(`Goal`)
                   : i18n._(`Start your way to fluency`)}
               </Typography>
-              {languageGoals.length > 0 && (
+              {languageGoals.length > 1 && (
                 <IconButton
                   size="small"
                   onClick={(event) => setSelectGoalModalAnchorEl(event.currentTarget)}
