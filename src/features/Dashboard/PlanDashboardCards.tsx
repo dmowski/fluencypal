@@ -417,11 +417,23 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           >
             <Flag size={"27px"} />
           </Stack>
-          <Typography variant="h6">
-            {isGoalSet
-              ? plan.latestGoal?.title || i18n._(`Goal`)
-              : i18n._(`Start your way to fluency`)}
-          </Typography>
+          <Stack>
+            <Typography
+              variant="caption"
+              align="center"
+              sx={{
+                opacity: 0.7,
+                textTransform: "uppercase",
+              }}
+            >
+              {i18n._(`Learning Plan`)}
+            </Typography>
+            <Typography variant="h6" align="center">
+              {isGoalSet
+                ? plan.latestGoal?.title || i18n._(`Goal`)
+                : i18n._(`Start your way to fluency`)}
+            </Typography>
+          </Stack>
         </Stack>
 
         <Stack
