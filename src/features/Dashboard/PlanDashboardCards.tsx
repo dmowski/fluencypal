@@ -1,5 +1,23 @@
-import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { Flag, LandPlot, Sparkle, Trash } from "lucide-react";
+import {
+  Button,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Stack,
+  Typography,
+} from "@mui/material";
+import {
+  ChevronDown,
+  Circle,
+  CircleCheck,
+  Flag,
+  Icon,
+  LandPlot,
+  Sparkle,
+  Trash,
+} from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
@@ -18,6 +36,8 @@ import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useUrlParam } from "../Url/useUrlParam";
 import { useSettings } from "../Settings/useSettings";
+import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 
 type StartModes = "words" | "rules" | "conversation";
 
@@ -31,6 +51,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const settings = useSettings();
   const history = useChatHistory();
   const conversationsCount = history.conversations.length;
+
+  const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] = useState<null | HTMLElement>(null);
 
   const isReadyToFirstStart =
     !history.loading &&
@@ -384,6 +406,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     );
   }
 
+  const languageGoals = plan.goals
+    .filter((goal) => goal.languageCode === settings.languageCode)
+    .sort((a, b) => b.createdAt - a.createdAt);
+
   return (
     <Stack gap="20px">
       <Stack
@@ -428,11 +454,67 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             >
               {i18n._(`Learning Plan`)}
             </Typography>
-            <Typography variant="h6" align="center">
-              {isGoalSet
-                ? plan.latestGoal?.title || i18n._(`Goal`)
-                : i18n._(`Start your way to fluency`)}
-            </Typography>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "5px",
+                paddingLeft: languageGoals.length > 0 ? "20px" : "10px",
+              }}
+            >
+              <Typography variant="h6" align="center">
+                {isGoalSet
+                  ? plan.latestGoal?.title || i18n._(`Goal`)
+                  : i18n._(`Start your way to fluency`)}
+              </Typography>
+              {languageGoals.length > 0 && (
+                <IconButton
+                  size="small"
+                  onClick={(event) => setSelectGoalModalAnchorEl(event.currentTarget)}
+                >
+                  <ChevronDown />
+                </IconButton>
+              )}
+
+              {selectGoalModalAnchorEl && (
+                <Menu
+                  sx={{
+                    marginBottom: "130px",
+                  }}
+                  anchorEl={selectGoalModalAnchorEl}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                  }}
+                  keepMounted
+                  open={Boolean(selectGoalModalAnchorEl)}
+                  onClose={() => setSelectGoalModalAnchorEl(null)}
+                >
+                  {languageGoals.map((goal) => {
+                    const isActive = plan.latestGoal?.id === goal.id;
+                    return (
+                      <MenuItem
+                        key={goal.id}
+                        sx={{}}
+                        disabled={isActive}
+                        onClick={() => {
+                          setSelectGoalModalAnchorEl(null);
+                          plan.setActiveGoal(goal.id);
+                        }}
+                      >
+                        <ListItemIcon>
+                          {isActive ? <RadioButtonCheckedIcon /> : <RadioButtonUncheckedIcon />}
+                        </ListItemIcon>
+                        <ListItemText>
+                          <Typography>{goal.title}</Typography>
+                        </ListItemText>
+                      </MenuItem>
+                    );
+                  })}
+                </Menu>
+              )}
+            </Stack>
           </Stack>
         </Stack>
 
@@ -461,10 +543,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 }}
                 variant="caption"
               >
-                {goalDescription}{" "}
-                <IconButton onClick={deletePlans}>
-                  <Trash size={"14px"} />
-                </IconButton>
+                {goalDescription}
               </Typography>
             )}
           </Stack>

@@ -29,6 +29,7 @@ interface PlanContextType {
   increaseStartCount: (plan: GoalPlan, goalElement: PlanElement) => void;
   isCraftingGoal: boolean;
   isCraftingError: boolean;
+  setActiveGoal: (goalId: string) => Promise<void>;
 }
 
 const PlanContext = createContext<PlanContextType | null>(null);
@@ -223,6 +224,15 @@ ${input.conversationMessages.map((message) => {
     return goalPlan;
   };
 
+  const setActiveGoal = async (goalId: string) => {
+    // Just update updatedAt to make it the latest
+    if (!collectionRef) {
+      throw new Error("collectionRef ref is not defined");
+    }
+    const docRef = doc(collectionRef, goalId);
+    await setDoc(docRef, { updatedAt: Date.now() }, { merge: true });
+  };
+
   const latestGoal = useMemo(() => {
     const lastGoal = goals
       ?.filter((goal) => {
@@ -277,6 +287,7 @@ ${input.conversationMessages.map((message) => {
   };
 
   return {
+    setActiveGoal,
     goals: goals || [],
     latestGoal,
     increaseStartCount,
