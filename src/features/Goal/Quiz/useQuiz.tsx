@@ -798,7 +798,7 @@ ${userAboutFollowUpAnswer}
         text: `${survey.goalFollowUpTranscription || "No answer provided"}`,
       });
     }
-
+    console.log("Starting goal generation with messages:");
     const goal = await plan.generateGoal({
       languageCode: languageToLearn,
       conversationMessages: conversationMessages,
