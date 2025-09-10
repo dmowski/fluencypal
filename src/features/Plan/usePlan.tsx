@@ -214,6 +214,7 @@ ${input.conversationMessages.map((message) => {
       title: title,
       elements: elements,
       createdAt: Date.now(),
+      updatedAt: Date.now(),
       languageCode: input.languageCode,
       goalQuiz: input.goalQuiz || null,
     };
@@ -228,7 +229,20 @@ ${input.conversationMessages.map((message) => {
         const isGoalActive = goal.languageCode === settings.languageCode;
         return isGoalActive;
       })
-      .sort((a, b) => b.createdAt - a.createdAt)[0];
+      .sort((a, b) => {
+        if (a.updatedAt && b.updatedAt) {
+          return b.updatedAt - a.updatedAt;
+        }
+
+        if (a.updatedAt && !b.updatedAt) {
+          return -1;
+        }
+
+        if (!a.updatedAt && b.updatedAt) {
+          return 1;
+        }
+        return b.createdAt - a.createdAt;
+      })[0];
 
     if (lastGoal) {
       return lastGoal;

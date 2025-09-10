@@ -18,6 +18,7 @@ export interface GoalPlan {
   title: string;
   elements: PlanElement[];
   createdAt: number;
+  updatedAt: number;
   languageCode: SupportedLanguage;
   goalQuiz: GoalQuiz | null;
 }
