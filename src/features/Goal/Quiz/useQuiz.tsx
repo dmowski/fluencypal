@@ -108,7 +108,7 @@ interface QuizProps {
 }
 
 interface QuizUrlState {
-  toLearn: SupportedLanguage;
+  learn: SupportedLanguage;
   nativeLang: string;
   pageLang: SupportedLanguage;
   currentStep: QuizStep;
@@ -125,12 +125,12 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const defaultState: QuizUrlState = useMemo(
     () => ({
-      toLearn: defaultLangToLearn,
+      learn: defaultLangToLearn,
       nativeLang: pageLang,
       pageLang,
       currentStep: stepsViews[0],
     }),
-    [defaultLangToLearn, pageLang]
+    []
   );
 
   const [stateInput, setStateInput, isStateLoading] = useUrlMapState(
@@ -156,7 +156,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const state = stateInput as unknown as QuizUrlState;
   const nativeLanguage = state.nativeLang;
   const currentStep = state.currentStep;
-  const languageToLearn = state.toLearn;
+  const languageToLearn = state.learn;
   const pageLanguage = state.pageLang;
 
   const surveyDocRef = db.documents.quizSurvey2(auth.uid, languageToLearn);
@@ -635,7 +635,7 @@ ${userAboutFollowUpAnswer}
 
   const setLanguageToLearn = async (langToLearn: SupportedLanguage) => {
     const newPartialState: Partial<QuizUrlState> = {
-      toLearn: langToLearn,
+      learn: langToLearn,
     };
     const updatedNativeLanguage = await preFindNativeLanguage(langToLearn);
     const newStatePatch: Partial<QuizUrlState> = {
@@ -724,7 +724,6 @@ ${userAboutFollowUpAnswer}
         url = replaceUrlToLang(nativeLanguage, url);
       }
     }
-
     router.push(url || "", { scroll: false });
   };
 

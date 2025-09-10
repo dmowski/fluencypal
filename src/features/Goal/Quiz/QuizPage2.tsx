@@ -81,16 +81,8 @@ import { cardColors, modeCardProps } from "@/features/Plan/data";
 import { useRouter } from "next/navigation";
 
 const QuizQuestions = () => {
-  const {
-    currentStep,
-    isFirstLoading,
-    survey,
-    nativeLanguage,
-    analyzeUserAbout,
-    analyzeUserFollowUpAbout,
-    updateSurvey,
-    languageToLearn,
-  } = useQuiz();
+  const { currentStep, isFirstLoading, survey, nativeLanguage, updateSurvey, languageToLearn } =
+    useQuiz();
   const { i18n } = useLingui();
 
   const { languageGroups } = useLanguageGroup({
@@ -1215,7 +1207,7 @@ const PageLanguageSelector = () => {
 
 const LanguageToLearnSelector = () => {
   const { i18n } = useLingui();
-  const { languageToLearn, setLanguageToLearn, isStepLoading, nextStep } = useQuiz();
+  const { languageToLearn, setLanguageToLearn } = useQuiz();
   return (
     <Stack
       sx={{
