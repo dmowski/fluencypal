@@ -43,7 +43,9 @@ type QuizStep =
   | "recordAboutFollowUp"
   | "before_recordAboutFollowUp2"
   | "recordAboutFollowUp2"
-  | "reviewAbout";
+  | "reviewAbout"
+  | "before_goalReview"
+  | "goalReview";
 const stepsViews: QuizStep[] = [
   "learnLanguage",
   "before_nativeLanguage",
@@ -61,7 +63,8 @@ const stepsViews: QuizStep[] = [
   "before_recordAboutFollowUp2",
   "recordAboutFollowUp2",
 
-  "reviewAbout",
+  "before_goalReview",
+  "goalReview",
 ];
 
 interface QuizContextType {
@@ -310,6 +313,163 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
 
     analyzeUserAbout(surveyDoc.aboutUserTranscription, surveyDoc);
   }, [isGeneratingFollowUp, currentStep, surveyDoc?.aboutUserTranscription]);
+
+  const userAboutFollowUpRef = useRef("");
+  const [isGeneratingGoalFollowUpMap, setIsGeneratingGoalFollowUpMap] = useState<
+    Record<string, boolean>
+  >({});
+  const isGeneratingGoalFollowUp = Object.values(isGeneratingGoalFollowUpMap).some((v) => v);
+  userAboutFollowUpRef.current = surveyDoc?.aboutUserFollowUpTranscription || "";
+  const [generatingGoalFollowUpAttempts, setGeneratingGoalFollowUpAttempts] = useState(0);
+  // Should generate: goalFollowUpQuestion
+  const processAboutFollowUp = async ({
+    aboutUserTranscript,
+    aboutUserFollowUpQuestion,
+    userAboutFollowUpAnswer,
+    pageLanguageCode,
+    learningLanguageCode,
+  }: {
+    aboutUserTranscript: string;
+    aboutUserFollowUpQuestion: QuizSurvey2FollowUpQuestion;
+    userAboutFollowUpAnswer: string;
+    pageLanguageCode: SupportedLanguage;
+    learningLanguageCode: SupportedLanguage;
+  }): Promise<QuizSurvey2FollowUpQuestion> => {
+    const learningLanguageFullName = fullLanguageName[learningLanguageCode];
+    const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their answer to question then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
+The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand ${learningLanguageFullName} well.
+
+Respond in JSON format with the following structure:
+{
+  "question": "A concise follow-up question to user. 1 short sentence. Less than 8 words",
+  "subTitle": "A brief subtitle that provides context for user. 1 sentence",
+  "description": "A short description explaining user the importance of the question. 2 sentences"
+}
+
+Ensure that the JSON is properly formatted and can be easily parsed.
+Do not include any additional text outside of the JSON structure. 
+
+Start response with symbol '{' and end with '}'. Your response will be parsed with js JSON.parse()
+`;
+
+    const aiResult = await textAi.generate({
+      systemMessage,
+      userMessage: `
+About User:
+${aboutUserTranscript}
+
+---
+
+Follow-up question to user:
+${aboutUserFollowUpQuestion.title} (${aboutUserFollowUpQuestion.description})
+
+${userAboutFollowUpAnswer}
+`,
+      model: "gpt-4o",
+      languageCode: pageLanguageCode || "en",
+    });
+
+    const parsedResult = await fixJson.parseJson<{
+      question: string;
+      subTitle: string;
+      description?: string;
+    }>(aiResult);
+
+    const newAnswer: QuizSurvey2FollowUpQuestion = {
+      sourceTranscription: userAboutFollowUpAnswer,
+      title: parsedResult.question,
+      subtitle: parsedResult.subTitle,
+      description: parsedResult.description || "",
+    };
+
+    return newAnswer;
+  };
+
+  const analyzeUserFollowUpAbout = async (text: string, survey: QuizSurvey2) => {
+    setGeneratingGoalFollowUpAttempts((v) => v + 1);
+
+    if (generatingGoalFollowUpAttempts > 0 && generatingGoalFollowUpAttempts % 10 === 0) {
+      console.log(
+        `analyzeUserFollowUpAbout | attempt: ${generatingGoalFollowUpAttempts} | Too many attempts, Waiting before analysis`
+      );
+      await sleep(10_000);
+    }
+
+    if (generatingGoalFollowUpAttempts > 50) {
+      console.log(
+        `analyzeUserFollowUpAbout | attempt: ${generatingGoalFollowUpAttempts} | Too many attempts, stopping analysis`
+      );
+      return survey;
+    }
+
+    console.log("analyzeUserFollowUpAbout | Starting analysis for text length", text);
+
+    setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [text]: true }));
+
+    try {
+      const newGoalQuestion = await processAboutFollowUp({
+        aboutUserTranscript: survey.aboutUserTranscription,
+        aboutUserFollowUpQuestion: survey.aboutUserFollowUpQuestion,
+        userAboutFollowUpAnswer: text,
+        pageLanguageCode: survey.pageLanguageCode || "en",
+        learningLanguageCode: languageToLearn,
+      });
+
+      if (userAboutFollowUpRef.current !== text) {
+        console.log("User about followup changed, skipping analysis");
+        setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [text]: false }));
+        return survey;
+      } else {
+        const updatedSurvey = await updateSurvey({
+          ...survey,
+          goalFollowUpQuestion: newGoalQuestion,
+        });
+        setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [text]: false }));
+        return updatedSurvey;
+      }
+    } catch (e) {
+      console.error("analyzeUserFollowUpAbout | Error during analysis", e);
+      Sentry.captureException(e, {
+        extra: {
+          title: "Error in analyzeUserFollowUpAbout",
+          text,
+          survey,
+        },
+      });
+      await sleep(10_000);
+      setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [text]: false }));
+      return survey;
+    }
+  };
+
+  useEffect(() => {
+    if (!surveyDoc?.aboutUserFollowUpTranscription) return;
+
+    const listForAnalyzeTranscript: QuizStep[] = [
+      "recordAboutFollowUp",
+      "before_recordAboutFollowUp2",
+      "recordAboutFollowUp2",
+    ];
+    const isNeedToAnalyze = listForAnalyzeTranscript.includes(currentStep);
+    if (!isNeedToAnalyze) {
+      return;
+    }
+
+    const isAlreadyGenerating =
+      isGeneratingGoalFollowUpMap[surveyDoc.aboutUserFollowUpTranscription];
+    if (isAlreadyGenerating) {
+      return;
+    }
+
+    const isGeneratedAlready =
+      surveyDoc.goalFollowUpQuestion.sourceTranscription ===
+      surveyDoc.aboutUserFollowUpTranscription;
+    if (isGeneratedAlready) {
+      return;
+    }
+
+    analyzeUserFollowUpAbout(surveyDoc.aboutUserFollowUpTranscription, surveyDoc);
+  }, [isGeneratingGoalFollowUp, currentStep, surveyDoc?.aboutUserFollowUpTranscription]);
 
   const syncWithSettings = async (survey: QuizSurvey2) => {
     if (
