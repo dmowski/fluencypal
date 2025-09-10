@@ -249,8 +249,6 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     console.log("analyzeUserAbout | Starting analysis for text length", text);
 
     setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: true }));
-    // goal is to generate follow up question, details, and description
-    // TODO: MAGIC
 
     try {
       const newAnswer = await processAbout({
@@ -264,8 +262,6 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
         setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
         return survey;
       } else {
-        // Update doc
-
         const updatedSurvey = await updateSurvey({
           ...survey,
           aboutUserFollowUpQuestion: newAnswer,
