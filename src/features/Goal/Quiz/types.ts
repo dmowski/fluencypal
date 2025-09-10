@@ -20,7 +20,6 @@ export interface QuizSurvey2 {
   aboutUserAnalysis: string;
   aboutUserInfoRecords: string[]; // list of short notes about user
 
-  goalQuestion: string;
   goalUserTranscription: string;
   goalFollowUpQuestion: QuizSurvey2FollowUpQuestion;
 

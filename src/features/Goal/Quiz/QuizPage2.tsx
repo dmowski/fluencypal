@@ -74,6 +74,7 @@ import { scrollToLangButton, scrollTopFast } from "@/libs/scroll";
 import { sleep } from "@/libs/sleep";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { useTranslate } from "@/features/Translation/useTranslate";
+import { QuizSurvey2FollowUpQuestion } from "./types";
 
 const QuizQuestions = () => {
   const {
@@ -214,7 +215,64 @@ const QuizQuestions = () => {
 
           {currentStep === "recordAboutFollowUp" && (
             <AuthWall>
-              <RecordAboutFollowUp />
+              <RecordAboutFollowUp
+                question={survey?.aboutUserFollowUpQuestion || null}
+                transcript={survey?.aboutUserFollowUpTranscription || ""}
+                updateTranscript={async (combinedTranscript) => {
+                  if (!survey) {
+                    return;
+                  }
+
+                  if (combinedTranscript.length > 150) {
+                    // todo: trigger generating goalQuestion
+                  }
+
+                  updateSurvey({
+                    ...survey,
+                    aboutUserFollowUpTranscription: combinedTranscript,
+                  });
+                }}
+              />
+            </AuthWall>
+          )}
+
+          {currentStep === "before_recordAboutFollowUp2" && (
+            <AuthWall>
+              <InfoStep
+                message={i18n._(`Before the training plan...`)}
+                subMessage={i18n._(`Let's talk about your goals a bit more`)}
+                imageUrl="/avatar/owl1.png"
+                subComponent={
+                  <Stack
+                    sx={{
+                      paddingTop: "20px",
+                    }}
+                  ></Stack>
+                }
+              />
+            </AuthWall>
+          )}
+
+          {currentStep === "recordAboutFollowUp2" && (
+            <AuthWall>
+              <RecordAboutFollowUp
+                question={survey?.goalFollowUpQuestion || null}
+                transcript={survey?.goalFollowUpTranscription || ""}
+                updateTranscript={async (combinedTranscript) => {
+                  if (!survey) {
+                    return;
+                  }
+
+                  if (combinedTranscript.length > 150) {
+                    // todo: trigger Goal creating
+                  }
+
+                  updateSurvey({
+                    ...survey,
+                    goalFollowUpTranscription: combinedTranscript,
+                  });
+                }}
+              />
             </AuthWall>
           )}
         </Stack>
@@ -223,19 +281,26 @@ const QuizQuestions = () => {
   );
 };
 
-const RecordAboutFollowUp = () => {
-  const { survey, updateSurvey, test } = useQuiz();
+const RecordAboutFollowUp = ({
+  question,
+  transcript,
+  updateTranscript,
+}: {
+  question: QuizSurvey2FollowUpQuestion | null;
+  transcript: string;
+  updateTranscript: (transcript: string) => Promise<void>;
+}) => {
   const { i18n } = useLingui();
   const translation = useTranslate();
 
   return (
     <RecordUserAudio
-      title={survey?.aboutUserFollowUpQuestion.title || i18n._("Loading...")}
-      isLoading={!survey?.aboutUserFollowUpQuestion.title}
-      subTitle={survey?.aboutUserFollowUpQuestion.subtitle || ""}
+      title={question?.title || i18n._("Loading...")}
+      isLoading={!question?.title}
+      subTitle={question?.subtitle || ""}
       subTitleComponent={
         <>
-          {survey?.aboutUserFollowUpQuestion.title ? (
+          {question?.title ? (
             <>
               {translation.translateModal}
               <Stack
@@ -250,7 +315,7 @@ const RecordAboutFollowUp = () => {
                   }}
                   variant="conversation"
                 >
-                  {survey?.aboutUserFollowUpQuestion.description || "..."}
+                  {question?.description || "..."}
                 </Markdown>
                 <Stack
                   sx={{
@@ -262,7 +327,7 @@ const RecordAboutFollowUp = () => {
                   <Button
                     onClick={(e) => {
                       const fullText =
-                        `${survey?.aboutUserFollowUpQuestion.title || ""}\n\n${survey?.aboutUserFollowUpQuestion.description || ""}`.trim();
+                        `${question?.title || ""}\n\n${question?.description || ""}`.trim();
                       translation.translateWithModal(fullText, e.currentTarget);
                     }}
                     size="small"
@@ -285,22 +350,9 @@ const RecordAboutFollowUp = () => {
           )}
         </>
       }
-      transcript={survey?.aboutUserFollowUpTranscription || ""}
+      transcript={transcript || ""}
       minWords={80}
-      updateTranscript={async (combinedTranscript) => {
-        if (!survey) {
-          return;
-        }
-
-        if (combinedTranscript.length > 150) {
-          // todo: trigger analysis of follow up
-        }
-
-        updateSurvey({
-          ...survey,
-          aboutUserFollowUpTranscription: combinedTranscript,
-        });
-      }}
+      updateTranscript={updateTranscript}
     />
   );
 };
