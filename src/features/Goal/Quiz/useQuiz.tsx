@@ -337,12 +337,6 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     }
   };
 
-  useEffect(() => {
-    if (surveyDoc) {
-      analyzeUserAbout(surveyDoc);
-    }
-  }, [surveyDoc]);
-
   const [isGeneratingGoalFollowUpMap, setIsGeneratingGoalFollowUpMap] = useState<
     Record<string, boolean>
   >({});
@@ -475,9 +469,88 @@ ${survey.aboutUserFollowUpTranscription}
     }
   };
 
+  const [isGoalGeneratingMap, setIsGoalGeneratingMap] = useState<Record<string, boolean>>({});
+  const isGoalGenerating = Object.values(isGoalGeneratingMap).some((v) => v);
+
+  const generateGoal = async () => {
+    const survey = surveyRef.current;
+    if (!survey) {
+      return;
+    }
+
+    const isReadyToGenerateGoal = isGoalIsRecorded(survey);
+    if (!isReadyToGenerateGoal) {
+      console.log("⏩ generateGoal | not ready");
+      return;
+    }
+
+    const initialSurveyHash = getSurveyHash(survey);
+    if (initialSurveyHash === survey.goalHash) {
+      console.log("⏩ generateGoal | Survey not changed");
+      return;
+    }
+
+    setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: true }));
+    const conversationMessages: ChatMessage[] = [
+      {
+        id: `about_user`,
+        isBot: false,
+        text: `${survey.aboutUserTranscription}`,
+      },
+      {
+        id: `about_user_followup_question`,
+        isBot: true,
+        text: `${survey.aboutUserFollowUpQuestion.title}\n${survey.aboutUserFollowUpQuestion.description || ""}`,
+      },
+      {
+        id: `about_user_followup_answer`,
+        isBot: false,
+        text: `${survey.aboutUserFollowUpTranscription || "No answer provided"}`,
+      },
+      {
+        id: `goal_followup_question`,
+        isBot: true,
+        text: `${survey.goalFollowUpQuestion.title}\n${survey.goalFollowUpQuestion.description || ""}`,
+      },
+      {
+        id: `goal_followup_answer`,
+        isBot: false,
+        text: `${survey.goalUserTranscription || "No answer provided"}`,
+      },
+    ];
+
+    console.log("🦄 generateGoal | Starting goal generation.");
+    const userRecords = await userInfo.extractUserRecords(conversationMessages, languageToLearn);
+    const goal = await plan.generateGoal({
+      languageCode: languageToLearn,
+      conversationMessages: conversationMessages,
+      userInfo: userRecords,
+    });
+
+    setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
+
+    const finalSurveyHash = getSurveyHash(surveyRef.current!);
+    if (initialSurveyHash !== finalSurveyHash) {
+      console.log("🦄 generateGoal | Survey changed during goal generation, skipping update");
+      return;
+    }
+    if (!surveyRef.current) return;
+    await updateSurvey(
+      {
+        ...surveyRef.current,
+        goalData: goal,
+        goalHash: finalSurveyHash,
+        userRecords: userRecords,
+      },
+      "generateGoal"
+    );
+  };
+
   useEffect(() => {
     if (surveyDoc) {
+      analyzeUserAbout(surveyDoc);
       analyzeUserFollowUpAbout(surveyDoc);
+      generateGoal();
     }
   }, [surveyDoc]);
 
@@ -741,88 +814,6 @@ ${survey.aboutUserFollowUpTranscription}
   };
 
   const progress = currentStepIndex / path.length + 0.1;
-
-  const [isGoalGeneratingMap, setIsGoalGeneratingMap] = useState<Record<string, boolean>>({});
-  const isGoalGenerating = Object.values(isGoalGeneratingMap).some((v) => v);
-
-  const generateGoal = async () => {
-    const survey = surveyRef.current;
-    if (!survey) {
-      return;
-    }
-
-    const isReadyToGenerateGoal = isGoalIsRecorded(survey);
-    if (!isReadyToGenerateGoal) {
-      console.log("⏩ generateGoal | not ready");
-      return;
-    }
-
-    const initialSurveyHash = getSurveyHash(survey);
-    if (initialSurveyHash === survey.goalHash) {
-      console.log("⏩ generateGoal | Survey not changed");
-      return;
-    }
-
-    setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: true }));
-    const conversationMessages: ChatMessage[] = [
-      {
-        id: `about_user`,
-        isBot: false,
-        text: `${survey.aboutUserTranscription}`,
-      },
-      {
-        id: `about_user_followup_question`,
-        isBot: true,
-        text: `${survey.aboutUserFollowUpQuestion.title}\n${survey.aboutUserFollowUpQuestion.description || ""}`,
-      },
-      {
-        id: `about_user_followup_answer`,
-        isBot: false,
-        text: `${survey.aboutUserFollowUpTranscription || "No answer provided"}`,
-      },
-      {
-        id: `goal_followup_question`,
-        isBot: true,
-        text: `${survey.goalFollowUpQuestion.title}\n${survey.goalFollowUpQuestion.description || ""}`,
-      },
-      {
-        id: `goal_followup_answer`,
-        isBot: false,
-        text: `${survey.goalUserTranscription || "No answer provided"}`,
-      },
-    ];
-
-    console.log("🦄 generateGoal | Starting goal generation.");
-    const userRecords = await userInfo.extractUserRecords(conversationMessages, languageToLearn);
-    const goal = await plan.generateGoal({
-      languageCode: languageToLearn,
-      conversationMessages: conversationMessages,
-      userInfo: userRecords,
-    });
-
-    setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
-
-    const finalSurveyHash = getSurveyHash(surveyRef.current!);
-    if (initialSurveyHash !== finalSurveyHash) {
-      console.log("🦄 generateGoal | Survey changed during goal generation, skipping update");
-      return;
-    }
-    if (!surveyRef.current) return;
-    await updateSurvey(
-      {
-        ...surveyRef.current,
-        goalData: goal,
-        goalHash: finalSurveyHash,
-        userRecords: userRecords,
-      },
-      "generateGoal"
-    );
-  };
-
-  // Create effect to generate goals
-  useEffect(() => {
-    generateGoal();
-  }, [surveyDoc]);
 
   const confirmPlan = async () => {
     if (!surveyRef.current?.goalData) {
