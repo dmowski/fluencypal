@@ -6,6 +6,7 @@ export interface QuizSurvey2FollowUpQuestion {
   title: string;
   subtitle: string;
   description?: string;
+  hash: string;
 }
 
 export interface QuizSurvey2 {

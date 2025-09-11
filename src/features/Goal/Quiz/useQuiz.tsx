@@ -74,7 +74,7 @@ const stepsViews: QuizStep[] = [
 
 export const MIN_WORDS_FOR_ANSWER = 50;
 
-const getSurveyGoalHashToCompare = (s: QuizSurvey2) => {
+const getSurveyHash = (s: QuizSurvey2) => {
   return fnv1aHash(
     [
       s.aboutUserTranscription,
@@ -128,9 +128,6 @@ interface QuizContextType {
   isFirstLoading: boolean;
   survey: QuizSurvey2 | null;
   updateSurvey: (surveyDoc: QuizSurvey2, label: string) => Promise<QuizSurvey2>;
-
-  analyzeUserAbout: (text: string, survey: QuizSurvey2) => Promise<QuizSurvey2>;
-  analyzeUserFollowUpAbout: (text: string, survey: QuizSurvey2) => Promise<QuizSurvey2>;
 
   test: () => Promise<void>;
   confirmPlan: () => Promise<void>;
@@ -218,16 +215,8 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   userAboutRef.current = surveyDoc?.aboutUserTranscription || "";
   const [generatingFollowUpAttempts, setGeneratingFollowUpAttempts] = useState(0);
 
-  const processAbout = async ({
-    userMessageAbout,
-    pageLanguageCode,
-    learningLanguageCode,
-  }: {
-    userMessageAbout: string;
-    pageLanguageCode: SupportedLanguage;
-    learningLanguageCode: SupportedLanguage;
-  }): Promise<QuizSurvey2FollowUpQuestion> => {
-    const learningLanguageFullName = fullLanguageName[learningLanguageCode];
+  const processAbout = async (survey: QuizSurvey2): Promise<QuizSurvey2FollowUpQuestion> => {
+    const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
 The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand ${learningLanguageFullName} well.
 
@@ -246,9 +235,9 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
 
     const aiResult = await textAi.generate({
       systemMessage,
-      userMessage: userMessageAbout,
+      userMessage: survey.aboutUserTranscription,
       model: "gpt-4o",
-      languageCode: pageLanguageCode || "en",
+      languageCode: survey.pageLanguageCode || "en",
     });
 
     const parsedResult = await fixJson.parseJson<{
@@ -258,28 +247,22 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     }>(aiResult);
 
     const newAnswer: QuizSurvey2FollowUpQuestion = {
-      sourceTranscription: userMessageAbout,
+      sourceTranscription: survey.aboutUserTranscription,
       title: parsedResult.question,
       subtitle: parsedResult.subTitle,
       description: parsedResult.description || "",
+      hash: getSurveyHash(survey),
     };
 
     return newAnswer;
   };
 
-  const test = async () => {
-    const userMessage = `Я хочу выучить английский, потому что он важен для моей карьеры и путешествий. Я надеюсь улучшить свои навыки общения и понимания культуры.`;
-    console.log("Start test | ", userMessage);
-    const res = await processAbout({
-      userMessageAbout: userMessage,
-      pageLanguageCode: "en",
-      learningLanguageCode: "en",
-    });
-    console.log("Processing user's about", JSON.stringify(res, null, 2));
-  };
+  const test = async () => {};
 
-  const analyzeUserAbout = async (text: string, survey: QuizSurvey2) => {
+  const analyzeUserAbout = async (survey: QuizSurvey2) => {
     setGeneratingFollowUpAttempts((v) => v + 1);
+
+    const text = survey.aboutUserFollowUpTranscription || "";
 
     if (generatingFollowUpAttempts > 0 && generatingFollowUpAttempts % 10 === 0) {
       console.log(
@@ -298,11 +281,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: true }));
 
     try {
-      const newAnswer = await processAbout({
-        userMessageAbout: text,
-        pageLanguageCode: survey.pageLanguageCode || "en",
-        learningLanguageCode: languageToLearn,
-      });
+      const newAnswer = await processAbout(survey);
 
       if (userAboutRef.current !== text) {
         console.log("User about changed, skipping analysis");
@@ -358,7 +337,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       return;
     }
 
-    analyzeUserAbout(surveyDoc.aboutUserTranscription, surveyDoc);
+    analyzeUserAbout(surveyDoc);
   }, [isGeneratingFollowUp, currentStep, surveyDoc?.aboutUserTranscription]);
 
   const userAboutFollowUpRef = useRef("");
@@ -369,20 +348,10 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
   userAboutFollowUpRef.current = surveyDoc?.aboutUserFollowUpTranscription || "";
   const [generatingGoalFollowUpAttempts, setGeneratingGoalFollowUpAttempts] = useState(0);
   // Should generate: goalFollowUpQuestion
-  const processAboutFollowUp = async ({
-    aboutUserTranscript,
-    aboutUserFollowUpQuestion,
-    userAboutFollowUpAnswer,
-    pageLanguageCode,
-    learningLanguageCode,
-  }: {
-    aboutUserTranscript: string;
-    aboutUserFollowUpQuestion: QuizSurvey2FollowUpQuestion;
-    userAboutFollowUpAnswer: string;
-    pageLanguageCode: SupportedLanguage;
-    learningLanguageCode: SupportedLanguage;
-  }): Promise<QuizSurvey2FollowUpQuestion> => {
-    const learningLanguageFullName = fullLanguageName[learningLanguageCode];
+  const processAboutFollowUp = async (
+    survey: QuizSurvey2
+  ): Promise<QuizSurvey2FollowUpQuestion> => {
+    const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their answer to question then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
 The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand ${learningLanguageFullName} well.
 
@@ -403,17 +372,17 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       systemMessage,
       userMessage: `
 About User:
-${aboutUserTranscript}
+${survey.aboutUserTranscription}
 
 ---
 
 Follow-up question to user:
-${aboutUserFollowUpQuestion.title} (${aboutUserFollowUpQuestion.description})
+${survey.aboutUserFollowUpQuestion.title} (${survey.aboutUserFollowUpQuestion.description})
 
-${userAboutFollowUpAnswer}
+${survey.aboutUserFollowUpTranscription}
 `,
       model: "gpt-4o",
-      languageCode: pageLanguageCode || "en",
+      languageCode: survey.pageLanguageCode || "en",
     });
 
     const parsedResult = await fixJson.parseJson<{
@@ -423,16 +392,17 @@ ${userAboutFollowUpAnswer}
     }>(aiResult);
 
     const newAnswer: QuizSurvey2FollowUpQuestion = {
-      sourceTranscription: userAboutFollowUpAnswer,
+      sourceTranscription: survey.aboutUserFollowUpTranscription,
       title: parsedResult.question,
       subtitle: parsedResult.subTitle,
       description: parsedResult.description || "",
+      hash: getSurveyHash(survey),
     };
 
     return newAnswer;
   };
 
-  const analyzeUserFollowUpAbout = async (text: string, survey: QuizSurvey2) => {
+  const analyzeUserFollowUpAbout = async (survey: QuizSurvey2) => {
     setGeneratingGoalFollowUpAttempts((v) => v + 1);
 
     if (generatingGoalFollowUpAttempts > 0 && generatingGoalFollowUpAttempts % 10 === 0) {
@@ -449,22 +419,24 @@ ${userAboutFollowUpAnswer}
       return survey;
     }
 
-    console.log("analyzeUserFollowUpAbout | Starting analysis for text length", text);
-
-    setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [text]: true }));
+    console.log(
+      "analyzeUserFollowUpAbout | Starting analysis for text length",
+      survey.aboutUserFollowUpTranscription
+    );
+    setIsGeneratingGoalFollowUpMap((prev) => ({
+      ...prev,
+      [survey.aboutUserFollowUpTranscription]: true,
+    }));
 
     try {
-      const newGoalQuestion = await processAboutFollowUp({
-        aboutUserTranscript: survey.aboutUserTranscription,
-        aboutUserFollowUpQuestion: survey.aboutUserFollowUpQuestion,
-        userAboutFollowUpAnswer: text,
-        pageLanguageCode: survey.pageLanguageCode || "en",
-        learningLanguageCode: languageToLearn,
-      });
+      const newGoalQuestion = await processAboutFollowUp(survey);
 
-      if (userAboutFollowUpRef.current !== text) {
+      if (userAboutFollowUpRef.current !== survey.aboutUserFollowUpTranscription) {
         console.log("User about followup changed, skipping analysis");
-        setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [text]: false }));
+        setIsGeneratingGoalFollowUpMap((prev) => ({
+          ...prev,
+          [survey.aboutUserFollowUpTranscription]: false,
+        }));
         return survey;
       } else {
         const updatedSurvey = await updateSurvey(
@@ -474,7 +446,10 @@ ${userAboutFollowUpAnswer}
           },
           "analyzeUserFollowUpAbout"
         );
-        setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [text]: false }));
+        setIsGeneratingGoalFollowUpMap((prev) => ({
+          ...prev,
+          [survey.aboutUserFollowUpTranscription]: false,
+        }));
         return updatedSurvey;
       }
     } catch (e) {
@@ -482,12 +457,15 @@ ${userAboutFollowUpAnswer}
       Sentry.captureException(e, {
         extra: {
           title: "Error in analyzeUserFollowUpAbout",
-          text,
+          text: survey.aboutUserFollowUpTranscription,
           survey,
         },
       });
       await sleep(10_000);
-      setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [text]: false }));
+      setIsGeneratingGoalFollowUpMap((prev) => ({
+        ...prev,
+        [survey.aboutUserFollowUpTranscription]: false,
+      }));
       return survey;
     }
   };
@@ -518,7 +496,7 @@ ${userAboutFollowUpAnswer}
       return;
     }
 
-    analyzeUserFollowUpAbout(surveyDoc.aboutUserFollowUpTranscription, surveyDoc);
+    analyzeUserFollowUpAbout(surveyDoc);
   }, [isGeneratingGoalFollowUp, currentStep, surveyDoc?.aboutUserFollowUpTranscription]);
 
   const syncWithSettings = async (survey: QuizSurvey2) => {
@@ -581,6 +559,7 @@ ${userAboutFollowUpAnswer}
           title: "",
           subtitle: "",
           description: "",
+          hash: "",
         },
         aboutUserFollowUpTranscription: "",
 
@@ -590,6 +569,7 @@ ${userAboutFollowUpAnswer}
           title: "",
           subtitle: "",
           description: "",
+          hash: "",
         },
 
         goalData: null,
@@ -800,7 +780,7 @@ ${userAboutFollowUpAnswer}
       return;
     }
 
-    const initialSurveyHash = getSurveyGoalHashToCompare(survey);
+    const initialSurveyHash = getSurveyHash(survey);
     if (initialSurveyHash === survey.goalHash) {
       console.log("Survey not changed, skipping goal generation");
       return;
@@ -845,7 +825,7 @@ ${userAboutFollowUpAnswer}
 
     setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
 
-    const finalSurveyHash = getSurveyGoalHashToCompare(surveyRef.current!);
+    const finalSurveyHash = getSurveyHash(surveyRef.current!);
     if (initialSurveyHash !== finalSurveyHash) {
       console.log("Survey changed during goal generation, skipping update");
       return;
@@ -902,8 +882,6 @@ ${userAboutFollowUpAnswer}
     progress,
     isFirstLoading,
     updateSurvey,
-    analyzeUserAbout,
-    analyzeUserFollowUpAbout,
     test,
     isGoalGenerating,
   };
