@@ -510,7 +510,7 @@ const RecordAboutFollowUp = ({
                     startIcon={<Languages size={"14px"} />}
                     variant="text"
                   >
-                    {i18n._("Translate")}
+                    Translate
                   </Button>
                 </Stack>
               </Stack>
@@ -822,7 +822,9 @@ const RecordUserAudio = ({
 
       <FooterButton
         aboveButtonComponent={isNeedMoreRecording && recorder.visualizerComponent}
-        disabled={isLoading || (recorder.isRecording && wordsCount >= minWords)}
+        disabled={
+          isLoading || (recorder.isRecording && wordsCount >= minWords) || recorder.isTranscribing
+        }
         onClick={async () => {
           if (transcript && wordsCount >= minWords) {
             if (recorder.isRecording) {
