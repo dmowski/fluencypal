@@ -149,14 +149,13 @@ ${input.conversationMessages.map((message) => {
 })}
 `;
 
-    const elements = await textAi.generate({
+    const parsedElements = await textAi.generateJson<AiGeneratedElement[]>({
       systemMessage,
       userMessage,
       model: "gpt-4o",
       languageCode: input.languageCode,
+      attempts: 4,
     });
-
-    const parsedElements = await fixJson.parseJson<AiGeneratedElement[]>(elements);
 
     interface AiGeneratedElement {
       type: string;

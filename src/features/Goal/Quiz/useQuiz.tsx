@@ -220,7 +220,6 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const [isGeneratingFollowUpMap, setIsGeneratingFollowUpMap] = useState<Record<string, boolean>>(
     {}
   );
-  const [generatingFollowUpAttempts, setGeneratingFollowUpAttempts] = useState(0);
 
   const processAbout = async (survey: QuizSurvey2): Promise<QuizSurvey2FollowUpQuestion> => {
     const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
@@ -240,18 +239,16 @@ Do not include any additional text outside of the JSON structure.
 Start response with symbol '{' and end with '}'. Your response will be parsed with js JSON.parse()
 `;
 
-    const aiResult = await textAi.generate({
-      systemMessage,
-      userMessage: survey.aboutUserTranscription,
-      model: "gpt-4o",
-      languageCode: survey.pageLanguageCode || "en",
-    });
-
-    const parsedResult = await fixJson.parseJson<{
+    const parsedResult = await textAi.generateJson<{
       question: string;
       subTitle: string;
       description?: string;
-    }>(aiResult);
+    }>({
+      systemMessage,
+      userMessage: survey.aboutUserTranscription,
+      model: "gpt-4o",
+      attempts: 4,
+    });
 
     const newAnswer: QuizSurvey2FollowUpQuestion = {
       sourceTranscription: survey.aboutUserTranscription,
@@ -270,22 +267,6 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       return;
     }
     if (!isAboutRecorded(survey)) {
-      return;
-    }
-
-    setGeneratingFollowUpAttempts((v) => v + 1);
-
-    if (generatingFollowUpAttempts > 0 && generatingFollowUpAttempts % 10 === 0) {
-      console.log(
-        `⏩ analyzeUserAbout | attempt: ${generatingFollowUpAttempts} | Too many attempts, Waiting before analysis`
-      );
-      await sleep(10_000);
-    }
-
-    if (generatingFollowUpAttempts > 50) {
-      console.log(
-        `⏩ analyzeUserAbout | attempt: ${generatingFollowUpAttempts} | Too many attempts, stopping analysis`
-      );
       return;
     }
 
@@ -332,17 +313,13 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
           survey,
         },
       });
-
       setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
-      await sleep(10_000);
-      await analyzeUserAbout(survey);
     }
   };
 
   const [isGeneratingGoalFollowUpMap, setIsGeneratingGoalFollowUpMap] = useState<
     Record<string, boolean>
   >({});
-  const [generatingGoalFollowUpAttempts, setGeneratingGoalFollowUpAttempts] = useState(0);
 
   const processAboutFollowUp = async (
     survey: QuizSurvey2
@@ -365,7 +342,11 @@ Do not include any additional text outside of the JSON structure.
 Start response with symbol '{' and end with '}'. Your response will be parsed with js JSON.parse()
 `;
 
-    const aiResult = await textAi.generate({
+    const parsedResult = await textAi.generateJson<{
+      question: string;
+      subTitle: string;
+      description?: string;
+    }>({
       systemMessage,
       userMessage: `
 About User:
@@ -379,14 +360,8 @@ ${survey.aboutUserFollowUpQuestion.title} (${survey.aboutUserFollowUpQuestion.de
 ${survey.aboutUserFollowUpTranscription}
 `,
       model: "gpt-4o",
-      languageCode: survey.pageLanguageCode || "en",
+      attempts: 4,
     });
-
-    const parsedResult = await fixJson.parseJson<{
-      question: string;
-      subTitle: string;
-      description?: string;
-    }>(aiResult);
 
     const newAnswer: QuizSurvey2FollowUpQuestion = {
       sourceTranscription: survey.aboutUserFollowUpTranscription,
@@ -405,22 +380,6 @@ ${survey.aboutUserFollowUpTranscription}
       return;
     }
     if (!isAboutRecorded(survey) || !isAboutFollowUpRecord(survey)) {
-      return;
-    }
-
-    setGeneratingGoalFollowUpAttempts((v) => v + 1);
-
-    if (generatingGoalFollowUpAttempts > 0 && generatingGoalFollowUpAttempts % 10 === 0) {
-      console.log(
-        `⏩ analyzeUserFollowUpAbout | attempt: ${generatingGoalFollowUpAttempts} | Too many attempts, Waiting before analysis`
-      );
-      await sleep(10_000);
-    }
-
-    if (generatingGoalFollowUpAttempts > 50) {
-      console.log(
-        `⏩ analyzeUserFollowUpAbout | attempt: ${generatingGoalFollowUpAttempts} | Too many attempts, stopping analysis`
-      );
       return;
     }
 
@@ -469,9 +428,6 @@ ${survey.aboutUserFollowUpTranscription}
         },
       });
       setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
-      await sleep(3_000);
-
-      await analyzeUserFollowUpAbout(survey);
     }
   };
 

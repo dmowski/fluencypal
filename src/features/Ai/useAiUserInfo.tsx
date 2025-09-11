@@ -82,14 +82,13 @@ If not relevant information found, return empty array.`;
         })
       );
 
-      const summaryFromConversation = await textAi.generate({
+      const parsedSummary = await textAi.generateJson<string[]>({
         userMessage: aiUserMessage,
         systemMessage,
         model: "gpt-4o",
         languageCode: lang,
+        attempts: 4,
       });
-
-      const parsedSummary = await fixJson.parseJson<string[]>(summaryFromConversation);
 
       const oldRecords = userInfo?.records;
       const newRecords: string[] = parsedSummary;
