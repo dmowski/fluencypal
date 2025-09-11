@@ -769,12 +769,12 @@ const RecordUserAudio = ({
                 sx={{
                   alignItems: "center",
                   gap: "10px",
-                  color: "#888",
+                  //color: "#888",
                   paddingBottom: "10px",
                 }}
               >
                 <Goal size={"39px"} color="#999" strokeWidth={"2px"} />
-                <Typography variant="caption" sx={{}}>
+                <Typography variant="h6" align="center" sx={{}}>
                   <Trans>
                     Goal: at least <b>{minWords}</b> words
                   </Trans>

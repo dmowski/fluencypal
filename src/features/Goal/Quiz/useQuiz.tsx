@@ -261,7 +261,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     return newAnswer;
   };
 
-  const analyzeUserAbout = async () => {
+  const generatingFollowUp = async () => {
     const survey = surveyDoc;
     if (!survey) {
       return;
@@ -273,25 +273,25 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     const initHash = getSurveyHash(survey);
 
     if (initHash === survey.aboutUserFollowUpQuestion.hash) {
-      console.log("⏩ analyzeUserAbout | Goal followup already generated, skipping");
+      console.log("⏩ generatingFollowUp | Already generated, skipping");
       return;
     }
 
     if (isGeneratingFollowUpMap[initHash]) {
-      console.log("⏩ analyzeUserAbout | Goal followup already in progress, skipping");
+      console.log("⏩ generatingFollowUp | In progress, skipping");
       return;
     }
 
     setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
 
     try {
-      console.log("🦄 analyzeUserAbout ");
+      console.log("🦄 generatingFollowUp ");
       const newAnswer = await processAbout(survey);
 
       const afterHash = getSurveyHash(surveyRef.current);
 
       if (afterHash !== initHash) {
-        console.log("⏩ analyzeUserAbout | User about changed, skipping analysis");
+        console.log("⏩ generatingFollowUp | User about changed, skipping analysis");
         setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
         return;
       }
@@ -301,14 +301,14 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
           ...survey,
           aboutUserFollowUpQuestion: newAnswer,
         },
-        "analyzeUserAbout"
+        "generatingFollowUp"
       );
       setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
     } catch (e) {
-      console.error("❌ analyzeUserAbout | Error during analysis", e);
+      console.error("❌ generatingFollowUp | Error during analysis", e);
       Sentry.captureException(e, {
         extra: {
-          title: "Error in analyzeUserAbout",
+          title: "Error in generatingFollowUp",
           text: survey.aboutUserFollowUpTranscription,
           survey,
         },
@@ -374,7 +374,7 @@ ${survey.aboutUserFollowUpTranscription}
     return newAnswer;
   };
 
-  const analyzeUserFollowUpAbout = async () => {
+  const generatingGoalQuestion = async () => {
     const survey = surveyDoc;
     if (!survey) {
       return;
@@ -386,16 +386,16 @@ ${survey.aboutUserFollowUpTranscription}
     const initHash = getSurveyHash(survey);
 
     if (initHash === survey.goalFollowUpQuestion.hash) {
-      console.log(`⏩ analyzeUserFollowUpAbout | Goal followup already generated, skipping`);
+      console.log(`⏩ generatingGoalQuestion | Goal followup already generated, skipping`);
       return;
     }
 
     if (isGeneratingGoalFollowUpMap[initHash]) {
-      console.log(`⏩ analyzeUserFollowUpAbout | Goal followup already in progress, skipping`);
+      console.log(`⏩ generatingGoalQuestion | Goal followup already in progress, skipping`);
       return;
     }
 
-    console.log(`🦄 analyzeUserFollowUpAbout | Starting analysis for text length`);
+    console.log(`🦄 generatingGoalQuestion | Starting analysis for text length`);
     setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
 
     try {
@@ -404,7 +404,7 @@ ${survey.aboutUserFollowUpTranscription}
       const afterHash = getSurveyHash(surveyRef.current);
 
       if (afterHash !== initHash) {
-        console.log(`⏩ analyzeUserFollowUpAbout | User about followup changed, skipping analysis`);
+        console.log(`⏩ generatingGoalQuestion | User about followup changed, skipping analysis`);
         setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
         return;
       }
@@ -414,15 +414,15 @@ ${survey.aboutUserFollowUpTranscription}
           ...(surveyRef.current || survey),
           goalFollowUpQuestion: newGoalQuestion,
         },
-        "analyzeUserFollowUpAbout"
+        "generatingGoalQuestion"
       );
       setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
       return;
     } catch (e) {
-      console.error("❌ analyzeUserFollowUpAbout | Error during analysis", e);
+      console.error("❌ generatingGoalQuestion | Error during analysis", e);
       Sentry.captureException(e, {
         extra: {
-          title: "Error in analyzeUserFollowUpAbout",
+          title: "Error in generatingGoalQuestion",
           text: survey.aboutUserFollowUpTranscription,
           survey,
         },
@@ -509,8 +509,8 @@ ${survey.aboutUserFollowUpTranscription}
   };
 
   useEffect(() => {
-    analyzeUserAbout();
-    analyzeUserFollowUpAbout();
+    generatingFollowUp();
+    generatingGoalQuestion();
     generateGoal();
   }, [surveyDoc]);
 
