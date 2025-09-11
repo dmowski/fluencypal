@@ -123,6 +123,8 @@ interface QuizContextType {
 
   test: () => Promise<void>;
   confirmPlan: () => Promise<void>;
+  isFollowUpGenerating: boolean;
+  isGoalQuestionGenerating: boolean;
   isGoalGenerating: boolean;
 }
 const QuizContext = createContext<QuizContextType | null>(null);
@@ -204,6 +206,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const [isGeneratingFollowUpMap, setIsGeneratingFollowUpMap] = useState<Record<string, boolean>>(
     {}
   );
+  const isFollowUpGenerating = Object.values(isGeneratingFollowUpMap).some((v) => v);
 
   const processAbout = async (
     survey: QuizSurvey2,
@@ -307,6 +310,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
   const [isGeneratingGoalFollowUpMap, setIsGeneratingGoalFollowUpMap] = useState<
     Record<string, boolean>
   >({});
+  const isGoalQuestionGenerating = Object.values(isGeneratingGoalFollowUpMap).some((v) => v);
 
   const createGoalQuestion = async (
     survey: QuizSurvey2,
@@ -798,6 +802,8 @@ ${survey.aboutUserFollowUpTranscription}
     isFirstLoading,
     updateSurvey,
     test,
+    isFollowUpGenerating,
+    isGoalQuestionGenerating,
     isGoalGenerating,
   };
 }

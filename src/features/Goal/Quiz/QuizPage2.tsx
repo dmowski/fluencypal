@@ -82,8 +82,17 @@ import { useRouter } from "next/navigation";
 import { getWordsCount } from "@/libs/words";
 
 const QuizQuestions = () => {
-  const { currentStep, isFirstLoading, survey, nativeLanguage, updateSurvey, languageToLearn } =
-    useQuiz();
+  const {
+    currentStep,
+    isFirstLoading,
+    survey,
+    nativeLanguage,
+    updateSurvey,
+    languageToLearn,
+    isFollowUpGenerating,
+    isGoalQuestionGenerating,
+    isGoalGenerating,
+  } = useQuiz();
   const { i18n } = useLingui();
 
   const { languageGroups } = useLanguageGroup({
@@ -215,6 +224,7 @@ const QuizQuestions = () => {
               <RecordAboutFollowUp
                 question={survey?.aboutUserFollowUpQuestion || null}
                 transcript={survey?.aboutUserFollowUpTranscription || ""}
+                loading={isFollowUpGenerating}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;
@@ -254,6 +264,7 @@ const QuizQuestions = () => {
               <RecordAboutFollowUp
                 question={survey?.goalFollowUpQuestion || null}
                 transcript={survey?.goalUserTranscription || ""}
+                loading={isGoalQuestionGenerating}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;
@@ -462,22 +473,24 @@ const RecordAboutFollowUp = ({
   question,
   transcript,
   updateTranscript,
+  loading,
 }: {
   question: QuizSurvey2FollowUpQuestion | null;
   transcript: string;
   updateTranscript: (transcript: string) => Promise<void>;
+  loading: boolean;
 }) => {
   const { i18n } = useLingui();
   const translation = useTranslate();
 
   return (
     <RecordUserAudio
-      title={question?.title || i18n._("Loading...")}
-      isLoading={!question?.title}
+      title={loading ? i18n._("Loading...") : question?.title || i18n._("Loading...")}
+      isLoading={!question?.title || loading}
       subTitle={question?.subtitle || ""}
       subTitleComponent={
         <>
-          {question?.title ? (
+          {question?.title && !loading ? (
             <>
               {translation.translateModal}
               <Stack
