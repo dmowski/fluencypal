@@ -33,6 +33,7 @@ import { useSettings } from "@/features/Settings/useSettings";
 import { usePlan } from "@/features/Plan/usePlan";
 import { ChatMessage } from "@/common/conversation";
 import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
+import { fnv1aHash } from "@/libs/hash";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -71,13 +72,15 @@ const stepsViews: QuizStep[] = [
 ];
 
 const getSurveyGoalHashToCompare = (s: QuizSurvey2) => {
-  return [
-    s.aboutUserFollowUpQuestion.title,
-    s.aboutUserTranscription,
-    s.aboutUserFollowUpTranscription,
-    s.goalFollowUpQuestion.title,
-    s.goalFollowUpTranscription,
-  ].join("||");
+  return fnv1aHash(
+    [
+      s.aboutUserFollowUpQuestion.title,
+      s.aboutUserTranscription,
+      s.aboutUserFollowUpTranscription,
+      s.goalFollowUpQuestion.title,
+      s.goalFollowUpTranscription,
+    ].join("||")
+  );
 };
 
 interface QuizContextType {
@@ -778,8 +781,6 @@ ${userAboutFollowUpAnswer}
       return;
     }
 
-    const conversationMessages: ChatMessage[] = [];
-
     const initialSurveyHash = getSurveyGoalHashToCompare(survey);
     if (initialSurveyHash === survey.goalHash) {
       console.log("Survey not changed, skipping goal generation");
@@ -787,41 +788,34 @@ ${userAboutFollowUpAnswer}
     }
 
     setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: true }));
-
-    if (survey.aboutUserTranscription) {
-      conversationMessages.push({
+    const conversationMessages: ChatMessage[] = [
+      {
         id: `about_user`,
         isBot: false,
         text: `${survey.aboutUserTranscription}`,
-      });
-    }
-
-    if (survey.aboutUserFollowUpQuestion) {
-      conversationMessages.push({
+      },
+      {
         id: `about_user_followup_question`,
         isBot: true,
         text: `${survey.aboutUserFollowUpQuestion.title}\n${survey.aboutUserFollowUpQuestion.description || ""}`,
-      });
-
-      conversationMessages.push({
+      },
+      {
         id: `about_user_followup_answer`,
         isBot: false,
         text: `${survey.aboutUserFollowUpTranscription || "No answer provided"}`,
-      });
-    }
-
-    if (survey.goalFollowUpQuestion) {
-      conversationMessages.push({
+      },
+      {
         id: `goal_followup_question`,
         isBot: true,
         text: `${survey.goalFollowUpQuestion.title}\n${survey.goalFollowUpQuestion.description || ""}`,
-      });
-      conversationMessages.push({
+      },
+      {
         id: `goal_followup_answer`,
         isBot: false,
         text: `${survey.goalFollowUpTranscription || "No answer provided"}`,
-      });
-    }
+      },
+    ];
+
     console.log("Starting goal generation.");
     const userRecords = await userInfo.extractUserRecords(conversationMessages, languageToLearn);
     const goal = await plan.generateGoal({
@@ -837,9 +831,10 @@ ${userAboutFollowUpAnswer}
       console.log("Survey changed during goal generation, skipping update");
       return;
     }
+    if (!surveyRef.current) return;
     await updateSurvey(
       {
-        ...surveyRef.current!,
+        ...surveyRef.current,
         goalData: goal,
         goalHash: finalSurveyHash,
         userRecords: userRecords,
