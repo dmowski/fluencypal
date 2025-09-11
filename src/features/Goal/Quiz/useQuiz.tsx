@@ -70,6 +70,16 @@ const stepsViews: QuizStep[] = [
   "goalReview",
 ];
 
+const getSurveyGoalHashToCompare = (s: QuizSurvey2) => {
+  return [
+    s.aboutUserFollowUpQuestion.title,
+    s.aboutUserTranscription,
+    s.aboutUserFollowUpTranscription,
+    s.goalFollowUpQuestion.title,
+    s.goalFollowUpTranscription,
+  ].join("||");
+};
+
 interface QuizContextType {
   languageToLearn: SupportedLanguage;
   setLanguageToLearn: (lang: SupportedLanguage) => void;
@@ -161,6 +171,8 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
 
   const surveyDocRef = db.documents.quizSurvey2(auth.uid, languageToLearn);
   const [surveyDoc] = useDocumentData(surveyDocRef);
+  const surveyRef = useRef<QuizSurvey2 | null>(surveyDoc || null);
+  surveyRef.current = surveyDoc || null;
 
   const updateSurvey = async (surveyDoc: QuizSurvey2, label: string) => {
     if (!surveyDocRef) {
@@ -740,18 +752,6 @@ ${userAboutFollowUpAnswer}
 
   const progress = currentStepIndex / path.length + 0.1;
 
-  const surveyRef = useRef<QuizSurvey2 | null>(surveyDoc || null);
-  surveyRef.current = surveyDoc || null;
-  const getSurveyHashToCompare = (s: QuizSurvey2) => {
-    return [
-      s.aboutUserFollowUpQuestion.title,
-      s.aboutUserTranscription,
-      s.aboutUserFollowUpTranscription,
-      s.goalFollowUpQuestion.title,
-      s.goalFollowUpTranscription,
-    ].join("||");
-  };
-
   const [isGoalGeneratingMap, setIsGoalGeneratingMap] = useState<Record<string, boolean>>({});
   const isGoalGenerating = Object.values(isGoalGeneratingMap).some((v) => v);
 
@@ -780,7 +780,7 @@ ${userAboutFollowUpAnswer}
 
     const conversationMessages: ChatMessage[] = [];
 
-    const initialSurveyHash = getSurveyHashToCompare(survey);
+    const initialSurveyHash = getSurveyGoalHashToCompare(survey);
     if (initialSurveyHash === survey.goalHash) {
       console.log("Survey not changed, skipping goal generation");
       return;
@@ -832,7 +832,7 @@ ${userAboutFollowUpAnswer}
 
     setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
 
-    const finalSurveyHash = getSurveyHashToCompare(surveyRef.current!);
+    const finalSurveyHash = getSurveyGoalHashToCompare(surveyRef.current!);
     if (initialSurveyHash !== finalSurveyHash) {
       console.log("Survey changed during goal generation, skipping update");
       return;
