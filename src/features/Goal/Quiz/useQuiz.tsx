@@ -125,7 +125,7 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const [isFirstLoading, setIsFirstLoading] = useState(true);
   const defaultState: QuizUrlState = useMemo(
     () => ({
-      learn: defaultLangToLearn,
+      learn: "en",
       nativeLang: pageLang,
       pageLang,
       currentStep: stepsViews[0],
