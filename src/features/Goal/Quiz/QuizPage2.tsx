@@ -1053,7 +1053,7 @@ const NativeLanguageSelector = () => {
           fullWidth
           variant="filled"
           label={i18n._("Native language")}
-          placeholder={i18n._("")}
+          placeholder={""}
           autoComplete="off"
           sx={{
             maxWidth: "calc(min(600px, 100dvw) - 20px)",
