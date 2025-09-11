@@ -215,11 +215,11 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     return updatedSurvey;
   };
 
-  const userAboutRef = useRef("");
+  const test = async () => {};
+
   const [isGeneratingFollowUpMap, setIsGeneratingFollowUpMap] = useState<Record<string, boolean>>(
     {}
   );
-  userAboutRef.current = surveyDoc?.aboutUserTranscription || "";
   const [generatingFollowUpAttempts, setGeneratingFollowUpAttempts] = useState(0);
 
   const processAbout = async (survey: QuizSurvey2): Promise<QuizSurvey2FollowUpQuestion> => {
@@ -263,8 +263,6 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
 
     return newAnswer;
   };
-
-  const test = async () => {};
 
   const analyzeUserAbout = async () => {
     const survey = surveyDoc;
