@@ -74,33 +74,35 @@ const stepsViews: QuizStep[] = [
 
 export const MIN_WORDS_FOR_ANSWER = 50;
 
-const getSurveyHash = (s: QuizSurvey2) => {
+const getSurveyHash = (survey: QuizSurvey2 | null) => {
+  if (!survey) return "";
+
   return fnv1aHash(
     [
-      s.aboutUserTranscription,
+      survey.aboutUserTranscription,
 
-      s.aboutUserFollowUpQuestion.title,
-      s.aboutUserFollowUpTranscription,
+      survey.aboutUserFollowUpQuestion.title,
+      survey.aboutUserFollowUpTranscription,
 
-      s.goalFollowUpQuestion.title,
-      s.goalUserTranscription,
+      survey.goalFollowUpQuestion.title,
+      survey.goalUserTranscription,
     ].join("||")
   );
 };
 
-const isAboutComplete = (survey: QuizSurvey2) => {
+const isAboutRecorded = (survey: QuizSurvey2) => {
   const transcript = survey.aboutUserTranscription || "";
   const wordsCount = getWordsCount(transcript);
   return wordsCount >= MIN_WORDS_FOR_ANSWER;
 };
 
-const isAboutFollowUpComplete = (survey: QuizSurvey2) => {
+const isAboutFollowUpRecord = (survey: QuizSurvey2) => {
   const transcript = survey.aboutUserFollowUpTranscription || "";
   const wordsCount = getWordsCount(transcript);
   return wordsCount >= MIN_WORDS_FOR_ANSWER;
 };
 
-const isReadyToGenerateGoal = (survey: QuizSurvey2) => {
+const isGoalIsRecorded = (survey: QuizSurvey2) => {
   const transcript = survey.goalUserTranscription || "";
   const wordsCount = getWordsCount(transcript);
   return wordsCount >= MIN_WORDS_FOR_ANSWER;
@@ -211,7 +213,6 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const [isGeneratingFollowUpMap, setIsGeneratingFollowUpMap] = useState<Record<string, boolean>>(
     {}
   );
-  const isGeneratingFollowUp = Object.values(isGeneratingFollowUpMap).some((v) => v);
   userAboutRef.current = surveyDoc?.aboutUserTranscription || "";
   const [generatingFollowUpAttempts, setGeneratingFollowUpAttempts] = useState(0);
 
@@ -260,9 +261,11 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
   const test = async () => {};
 
   const analyzeUserAbout = async (survey: QuizSurvey2) => {
-    setGeneratingFollowUpAttempts((v) => v + 1);
+    if (!isAboutRecorded(survey)) {
+      return;
+    }
 
-    const text = survey.aboutUserFollowUpTranscription || "";
+    setGeneratingFollowUpAttempts((v) => v + 1);
 
     if (generatingFollowUpAttempts > 0 && generatingFollowUpAttempts % 10 === 0) {
       console.log(
@@ -275,82 +278,77 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       console.log(
         `analyzeUserAbout | attempt: ${generatingFollowUpAttempts} | Too many attempts, stopping analysis`
       );
-      return survey;
+      return;
     }
 
-    setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: true }));
+    const initHash = getSurveyHash(survey);
+
+    if (initHash === survey.aboutUserFollowUpQuestion.hash) {
+      console.log("analyzeUserAbout | Goal followup already generated, skipping");
+      return;
+    }
+
+    if (isGeneratingFollowUpMap[initHash]) {
+      console.log("analyzeUserAbout | Goal followup already in progress, skipping");
+      return;
+    }
+
+    console.log(
+      "analyzeUserAbout | Starting analysis for text length",
+      survey.aboutUserFollowUpTranscription
+    );
+    setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
 
     try {
       const newAnswer = await processAbout(survey);
 
-      if (userAboutRef.current !== text) {
-        console.log("User about changed, skipping analysis");
-        setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
-        return survey;
-      } else {
-        const updatedSurvey = await updateSurvey(
-          {
-            ...survey,
-            aboutUserFollowUpQuestion: newAnswer,
-          },
-          "analyzeUserAbout"
-        );
-        setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
-        return updatedSurvey;
+      const afterHash = getSurveyHash(surveyRef.current);
+
+      if (afterHash !== initHash) {
+        console.log("User about followup changed, skipping analysis");
+        setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
+        return;
       }
+
+      await updateSurvey(
+        {
+          ...survey,
+          aboutUserFollowUpQuestion: newAnswer,
+        },
+        "analyzeUserAbout"
+      );
+      setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
     } catch (e) {
       console.error("analyzeUserAbout | Error during analysis", e);
       Sentry.captureException(e, {
         extra: {
           title: "Error in analyzeUserAbout",
-          text,
+          text: survey.aboutUserFollowUpTranscription,
           survey,
         },
       });
+
+      setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
       await sleep(10_000);
-      setIsGeneratingFollowUpMap((prev) => ({ ...prev, [text]: false }));
-      return survey;
+      await analyzeUserAbout(survey);
     }
   };
 
   useEffect(() => {
-    if (!surveyDoc?.aboutUserTranscription) return;
-
-    const listForAnalyzeAboutTranscript: QuizStep[] = [
-      "recordAbout",
-      "before_recordAboutFollowUp",
-      "recordAboutFollowUp",
-    ];
-    const isNeedToAnalyze = listForAnalyzeAboutTranscript.includes(currentStep);
-    if (!isNeedToAnalyze) {
-      return;
+    if (surveyDoc) {
+      analyzeUserAbout(surveyDoc);
     }
+  }, [surveyDoc]);
 
-    const isAlreadyGenerating = isGeneratingFollowUpMap[surveyDoc.aboutUserTranscription];
-    if (isAlreadyGenerating) {
-      return;
-    }
-
-    const isGeneratedAlready =
-      surveyDoc.aboutUserFollowUpQuestion.sourceTranscription === surveyDoc.aboutUserTranscription;
-    if (isGeneratedAlready) {
-      return;
-    }
-
-    analyzeUserAbout(surveyDoc);
-  }, [isGeneratingFollowUp, currentStep, surveyDoc?.aboutUserTranscription]);
-
-  const userAboutFollowUpRef = useRef("");
   const [isGeneratingGoalFollowUpMap, setIsGeneratingGoalFollowUpMap] = useState<
     Record<string, boolean>
   >({});
-  const isGeneratingGoalFollowUp = Object.values(isGeneratingGoalFollowUpMap).some((v) => v);
-  userAboutFollowUpRef.current = surveyDoc?.aboutUserFollowUpTranscription || "";
   const [generatingGoalFollowUpAttempts, setGeneratingGoalFollowUpAttempts] = useState(0);
-  // Should generate: goalFollowUpQuestion
+
   const processAboutFollowUp = async (
     survey: QuizSurvey2
   ): Promise<QuizSurvey2FollowUpQuestion> => {
+    const hash = getSurveyHash(survey);
     const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their answer to question then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
 The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand ${learningLanguageFullName} well.
@@ -396,13 +394,17 @@ ${survey.aboutUserFollowUpTranscription}
       title: parsedResult.question,
       subtitle: parsedResult.subTitle,
       description: parsedResult.description || "",
-      hash: getSurveyHash(survey),
+      hash,
     };
 
     return newAnswer;
   };
 
   const analyzeUserFollowUpAbout = async (survey: QuizSurvey2) => {
+    if (!isAboutRecorded(survey) || !isAboutFollowUpRecord(survey)) {
+      return;
+    }
+
     setGeneratingGoalFollowUpAttempts((v) => v + 1);
 
     if (generatingGoalFollowUpAttempts > 0 && generatingGoalFollowUpAttempts % 10 === 0) {
@@ -416,42 +418,47 @@ ${survey.aboutUserFollowUpTranscription}
       console.log(
         `analyzeUserFollowUpAbout | attempt: ${generatingGoalFollowUpAttempts} | Too many attempts, stopping analysis`
       );
-      return survey;
+      return;
+    }
+
+    const initHash = getSurveyHash(survey);
+
+    if (initHash === survey.goalFollowUpQuestion.hash) {
+      console.log("analyzeUserFollowUpAbout | Goal followup already generated, skipping");
+      return;
+    }
+
+    if (isGeneratingGoalFollowUpMap[initHash]) {
+      console.log("analyzeUserFollowUpAbout | Goal followup already in progress, skipping");
+      return;
     }
 
     console.log(
       "analyzeUserFollowUpAbout | Starting analysis for text length",
       survey.aboutUserFollowUpTranscription
     );
-    setIsGeneratingGoalFollowUpMap((prev) => ({
-      ...prev,
-      [survey.aboutUserFollowUpTranscription]: true,
-    }));
+    setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
 
     try {
       const newGoalQuestion = await processAboutFollowUp(survey);
 
-      if (userAboutFollowUpRef.current !== survey.aboutUserFollowUpTranscription) {
+      const afterHash = getSurveyHash(surveyRef.current);
+
+      if (afterHash !== initHash) {
         console.log("User about followup changed, skipping analysis");
-        setIsGeneratingGoalFollowUpMap((prev) => ({
-          ...prev,
-          [survey.aboutUserFollowUpTranscription]: false,
-        }));
-        return survey;
-      } else {
-        const updatedSurvey = await updateSurvey(
-          {
-            ...survey,
-            goalFollowUpQuestion: newGoalQuestion,
-          },
-          "analyzeUserFollowUpAbout"
-        );
-        setIsGeneratingGoalFollowUpMap((prev) => ({
-          ...prev,
-          [survey.aboutUserFollowUpTranscription]: false,
-        }));
-        return updatedSurvey;
+        setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
+        return;
       }
+
+      await updateSurvey(
+        {
+          ...(surveyRef.current || survey),
+          goalFollowUpQuestion: newGoalQuestion,
+        },
+        "analyzeUserFollowUpAbout"
+      );
+      setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
+      return;
     } catch (e) {
       console.error("analyzeUserFollowUpAbout | Error during analysis", e);
       Sentry.captureException(e, {
@@ -461,43 +468,18 @@ ${survey.aboutUserFollowUpTranscription}
           survey,
         },
       });
-      await sleep(10_000);
-      setIsGeneratingGoalFollowUpMap((prev) => ({
-        ...prev,
-        [survey.aboutUserFollowUpTranscription]: false,
-      }));
-      return survey;
+      setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
+      await sleep(3_000);
+
+      await analyzeUserFollowUpAbout(survey);
     }
   };
 
   useEffect(() => {
-    if (!surveyDoc?.aboutUserFollowUpTranscription) return;
-
-    const listForAnalyzeTranscript: QuizStep[] = [
-      "recordAboutFollowUp",
-      "before_recordAboutFollowUp2",
-      "recordAboutFollowUp2",
-    ];
-    const isNeedToAnalyze = listForAnalyzeTranscript.includes(currentStep);
-    if (!isNeedToAnalyze) {
-      return;
+    if (surveyDoc) {
+      analyzeUserFollowUpAbout(surveyDoc);
     }
-
-    const isAlreadyGenerating =
-      isGeneratingGoalFollowUpMap[surveyDoc.aboutUserFollowUpTranscription];
-    if (isAlreadyGenerating) {
-      return;
-    }
-
-    const isGeneratedAlready =
-      surveyDoc.goalFollowUpQuestion.sourceTranscription ===
-      surveyDoc.aboutUserFollowUpTranscription;
-    if (isGeneratedAlready) {
-      return;
-    }
-
-    analyzeUserFollowUpAbout(surveyDoc);
-  }, [isGeneratingGoalFollowUp, currentStep, surveyDoc?.aboutUserFollowUpTranscription]);
+  }, [surveyDoc]);
 
   const syncWithSettings = async (survey: QuizSurvey2) => {
     if (
@@ -524,17 +506,23 @@ ${survey.aboutUserFollowUpTranscription}
 
   const ensureSurveyDocExists = async () => {
     if (surveyDoc) {
-      const survey = await updateSurvey(
-        {
-          ...surveyDoc,
-          learningLanguageCode: languageToLearn,
-          nativeLanguageCode: nativeLanguage,
-          pageLanguageCode: pageLanguage,
-        },
-        "ensureSurveyDocExists"
-      );
+      if (
+        surveyDoc.learningLanguageCode === languageToLearn ||
+        surveyDoc.nativeLanguageCode !== nativeLanguage ||
+        surveyDoc.pageLanguageCode !== pageLanguage
+      ) {
+        const survey = await updateSurvey(
+          {
+            ...surveyDoc,
+            learningLanguageCode: languageToLearn,
+            nativeLanguageCode: nativeLanguage,
+            pageLanguageCode: pageLanguage,
+          },
+          "ensureSurveyDocExists"
+        );
 
-      await syncWithSettings(survey);
+        await syncWithSettings(survey);
+      }
       return;
     }
     if (!auth.uid) {
@@ -763,16 +751,7 @@ ${survey.aboutUserFollowUpTranscription}
       return;
     }
 
-    const goalFollowUpTranscriptsWords = survey.goalUserTranscription
-      ? survey.goalUserTranscription.trim().split(/\s+/).length
-      : 0;
-    const isReadyToGenerateGoal =
-      !!survey.goalUserTranscription &&
-      goalFollowUpTranscriptsWords >= 80 &&
-      survey.aboutUserTranscription &&
-      survey.aboutUserTranscription.trim().split(/\s+/).length >= 50 &&
-      !!survey.aboutUserFollowUpTranscription &&
-      survey.aboutUserFollowUpTranscription.trim().split(/\s+/).length >= 80;
+    const isReadyToGenerateGoal = isGoalIsRecorded(survey);
     if (!isReadyToGenerateGoal) {
       console.log(
         "Goal generation skipped, not enough data | need at least 80 words in goal answer"
