@@ -185,7 +185,6 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   const currentStep = state.currentStep;
   const languageToLearn = state.learn;
   const pageLanguage = state.pageLang;
-  console.log("pageLanguage", pageLanguage);
 
   const surveyDocRef = db.documents.quizSurvey2(auth.uid, languageToLearn);
   const [surveyDoc] = useDocumentData(surveyDocRef);
