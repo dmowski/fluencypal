@@ -79,6 +79,7 @@ import { PlanCard } from "@/features/Plan/PlanCard";
 import { PlanElementMode } from "@/features/Plan/types";
 import { cardColors, modeCardProps } from "@/features/Plan/data";
 import { useRouter } from "next/navigation";
+import { getWordsCount } from "@/libs/words";
 
 const QuizQuestions = () => {
   const { currentStep, isFirstLoading, survey, nativeLanguage, updateSurvey, languageToLearn } =
@@ -668,7 +669,7 @@ const RecordUserAudio = ({
     }
   };
 
-  const wordsCount = transcript.trim().split(/\s+/).filter(Boolean).length;
+  const wordsCount = getWordsCount(transcript || "");
 
   const isNeedMoreRecording = !transcript || wordsCount < minWords;
 
