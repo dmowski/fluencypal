@@ -77,7 +77,13 @@ export const MIN_WORDS_FOR_ANSWER = 50;
 const getSurveyHash = (survey: QuizSurvey2 | null) => {
   if (!survey) return "";
 
-  return fnv1aHash(
+  return [
+    survey.aboutUserTranscription,
+    survey.aboutUserFollowUpTranscription,
+    survey.goalUserTranscription,
+  ].join("||");
+
+  /*return fnv1aHash(
     [
       survey.aboutUserTranscription,
 
@@ -87,7 +93,7 @@ const getSurveyHash = (survey: QuizSurvey2 | null) => {
       survey.goalFollowUpQuestion.title,
       survey.goalUserTranscription,
     ].join("||")
-  );
+  );*/
 };
 
 const isAboutRecorded = (survey: QuizSurvey2) => {
@@ -269,14 +275,14 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
 
     if (generatingFollowUpAttempts > 0 && generatingFollowUpAttempts % 10 === 0) {
       console.log(
-        `analyzeUserAbout | attempt: ${generatingFollowUpAttempts} | Too many attempts, Waiting before analysis`
+        `⏩ analyzeUserAbout | attempt: ${generatingFollowUpAttempts} | Too many attempts, Waiting before analysis`
       );
       await sleep(10_000);
     }
 
     if (generatingFollowUpAttempts > 50) {
       console.log(
-        `analyzeUserAbout | attempt: ${generatingFollowUpAttempts} | Too many attempts, stopping analysis`
+        `⏩ analyzeUserAbout | attempt: ${generatingFollowUpAttempts} | Too many attempts, stopping analysis`
       );
       return;
     }
@@ -284,28 +290,25 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     const initHash = getSurveyHash(survey);
 
     if (initHash === survey.aboutUserFollowUpQuestion.hash) {
-      console.log("analyzeUserAbout | Goal followup already generated, skipping");
+      console.log("⏩ analyzeUserAbout | Goal followup already generated, skipping");
       return;
     }
 
     if (isGeneratingFollowUpMap[initHash]) {
-      console.log("analyzeUserAbout | Goal followup already in progress, skipping");
+      console.log("⏩ analyzeUserAbout | Goal followup already in progress, skipping");
       return;
     }
 
-    console.log(
-      "analyzeUserAbout | Starting analysis for text length",
-      survey.aboutUserFollowUpTranscription
-    );
     setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
 
     try {
+      console.log("🦄 analyzeUserAbout ");
       const newAnswer = await processAbout(survey);
 
       const afterHash = getSurveyHash(surveyRef.current);
 
       if (afterHash !== initHash) {
-        console.log("User about followup changed, skipping analysis");
+        console.log("⏩ analyzeUserAbout | User about changed, skipping analysis");
         setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
         return;
       }
@@ -319,7 +322,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       );
       setIsGeneratingFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
     } catch (e) {
-      console.error("analyzeUserAbout | Error during analysis", e);
+      console.error("❌ analyzeUserAbout | Error during analysis", e);
       Sentry.captureException(e, {
         extra: {
           title: "Error in analyzeUserAbout",
@@ -409,14 +412,14 @@ ${survey.aboutUserFollowUpTranscription}
 
     if (generatingGoalFollowUpAttempts > 0 && generatingGoalFollowUpAttempts % 10 === 0) {
       console.log(
-        `analyzeUserFollowUpAbout | attempt: ${generatingGoalFollowUpAttempts} | Too many attempts, Waiting before analysis`
+        `⏩ analyzeUserFollowUpAbout | attempt: ${generatingGoalFollowUpAttempts} | Too many attempts, Waiting before analysis`
       );
       await sleep(10_000);
     }
 
     if (generatingGoalFollowUpAttempts > 50) {
       console.log(
-        `analyzeUserFollowUpAbout | attempt: ${generatingGoalFollowUpAttempts} | Too many attempts, stopping analysis`
+        `⏩ analyzeUserFollowUpAbout | attempt: ${generatingGoalFollowUpAttempts} | Too many attempts, stopping analysis`
       );
       return;
     }
@@ -424,19 +427,16 @@ ${survey.aboutUserFollowUpTranscription}
     const initHash = getSurveyHash(survey);
 
     if (initHash === survey.goalFollowUpQuestion.hash) {
-      console.log("analyzeUserFollowUpAbout | Goal followup already generated, skipping");
+      console.log(`⏩ analyzeUserFollowUpAbout | Goal followup already generated, skipping`);
       return;
     }
 
     if (isGeneratingGoalFollowUpMap[initHash]) {
-      console.log("analyzeUserFollowUpAbout | Goal followup already in progress, skipping");
+      console.log(`⏩ analyzeUserFollowUpAbout | Goal followup already in progress, skipping`);
       return;
     }
 
-    console.log(
-      "analyzeUserFollowUpAbout | Starting analysis for text length",
-      survey.aboutUserFollowUpTranscription
-    );
+    console.log(`🦄 analyzeUserFollowUpAbout | Starting analysis for text length`);
     setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
 
     try {
@@ -445,7 +445,7 @@ ${survey.aboutUserFollowUpTranscription}
       const afterHash = getSurveyHash(surveyRef.current);
 
       if (afterHash !== initHash) {
-        console.log("User about followup changed, skipping analysis");
+        console.log(`⏩ analyzeUserFollowUpAbout | User about followup changed, skipping analysis`);
         setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
         return;
       }
@@ -460,7 +460,7 @@ ${survey.aboutUserFollowUpTranscription}
       setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: false }));
       return;
     } catch (e) {
-      console.error("analyzeUserFollowUpAbout | Error during analysis", e);
+      console.error("❌ analyzeUserFollowUpAbout | Error during analysis", e);
       Sentry.captureException(e, {
         extra: {
           title: "Error in analyzeUserFollowUpAbout",
@@ -507,7 +507,7 @@ ${survey.aboutUserFollowUpTranscription}
   const ensureSurveyDocExists = async () => {
     if (surveyDoc) {
       if (
-        surveyDoc.learningLanguageCode === languageToLearn ||
+        surveyDoc.learningLanguageCode !== languageToLearn ||
         surveyDoc.nativeLanguageCode !== nativeLanguage ||
         surveyDoc.pageLanguageCode !== pageLanguage
       ) {
@@ -753,15 +753,13 @@ ${survey.aboutUserFollowUpTranscription}
 
     const isReadyToGenerateGoal = isGoalIsRecorded(survey);
     if (!isReadyToGenerateGoal) {
-      console.log(
-        "Goal generation skipped, not enough data | need at least 80 words in goal answer"
-      );
+      console.log("⏩ generateGoal | not ready");
       return;
     }
 
     const initialSurveyHash = getSurveyHash(survey);
     if (initialSurveyHash === survey.goalHash) {
-      console.log("Survey not changed, skipping goal generation");
+      console.log("⏩ generateGoal | Survey not changed");
       return;
     }
 
@@ -794,7 +792,7 @@ ${survey.aboutUserFollowUpTranscription}
       },
     ];
 
-    console.log("Starting goal generation.");
+    console.log("🦄 generateGoal | Starting goal generation.");
     const userRecords = await userInfo.extractUserRecords(conversationMessages, languageToLearn);
     const goal = await plan.generateGoal({
       languageCode: languageToLearn,
@@ -806,7 +804,7 @@ ${survey.aboutUserFollowUpTranscription}
 
     const finalSurveyHash = getSurveyHash(surveyRef.current!);
     if (initialSurveyHash !== finalSurveyHash) {
-      console.log("Survey changed during goal generation, skipping update");
+      console.log("🦄 generateGoal | Survey changed during goal generation, skipping update");
       return;
     }
     if (!surveyRef.current) return;
