@@ -314,20 +314,21 @@ const GoalReview = ({}) => {
   const { i18n } = useLingui();
   const sizes = useWindowSizes();
   const quiz = useQuiz();
-  const [loading, setLoading] = useState(false);
+  const [redirecting, setRedirecting] = useState(false);
   const router = useRouter();
 
   const confirmPlan = async () => {
-    setLoading(true);
+    setRedirecting(true);
     try {
       await quiz.confirmPlan();
-      const url = `${getUrlStart(quiz.pageLanguage)}/practice`;
+      const url = `${getUrlStart(quiz.pageLanguage)}practice`;
+      console.log("url", url);
       router.push(url);
     } catch (e) {
       alert(i18n._("Error creating plan. Please try again."));
     }
-    await sleep(1000);
-    setLoading(false);
+    await sleep(4000);
+    setRedirecting(false);
   };
 
   const modeLabels: Record<PlanElementMode, string> = {
@@ -460,9 +461,9 @@ const GoalReview = ({}) => {
       </Stack>
 
       <FooterButton
-        disabled={isLoading}
+        disabled={redirecting || isLoading}
         onClick={confirmPlan}
-        title={loading ? i18n._("Loading...") : i18n._("Start Learning")}
+        title={redirecting ? i18n._("Loading...") : i18n._("Start Learning")}
         endIcon={<ArrowRight />}
       />
     </Stack>
