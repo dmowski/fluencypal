@@ -266,7 +266,11 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
 
   const test = async () => {};
 
-  const analyzeUserAbout = async (survey: QuizSurvey2) => {
+  const analyzeUserAbout = async () => {
+    const survey = surveyDoc;
+    if (!survey) {
+      return;
+    }
     if (!isAboutRecorded(survey)) {
       return;
     }
@@ -397,7 +401,11 @@ ${survey.aboutUserFollowUpTranscription}
     return newAnswer;
   };
 
-  const analyzeUserFollowUpAbout = async (survey: QuizSurvey2) => {
+  const analyzeUserFollowUpAbout = async () => {
+    const survey = surveyDoc;
+    if (!survey) {
+      return;
+    }
     if (!isAboutRecorded(survey) || !isAboutFollowUpRecord(survey)) {
       return;
     }
@@ -547,11 +555,9 @@ ${survey.aboutUserFollowUpTranscription}
   };
 
   useEffect(() => {
-    if (surveyDoc) {
-      analyzeUserAbout(surveyDoc);
-      analyzeUserFollowUpAbout(surveyDoc);
-      generateGoal();
-    }
+    analyzeUserAbout();
+    analyzeUserFollowUpAbout();
+    generateGoal();
   }, [surveyDoc]);
 
   const syncWithSettings = async (survey: QuizSurvey2) => {
