@@ -34,6 +34,7 @@ import { usePlan } from "@/features/Plan/usePlan";
 import { ChatMessage } from "@/common/conversation";
 import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
 import { fnv1aHash } from "@/libs/hash";
+import { getWordsCount } from "@/libs/words";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -71,6 +72,8 @@ const stepsViews: QuizStep[] = [
   "goalReview",
 ];
 
+export const MIN_WORDS_FOR_ANSWER = 50;
+
 const getSurveyGoalHashToCompare = (s: QuizSurvey2) => {
   return fnv1aHash(
     [
@@ -78,9 +81,27 @@ const getSurveyGoalHashToCompare = (s: QuizSurvey2) => {
       s.aboutUserTranscription,
       s.aboutUserFollowUpTranscription,
       s.goalFollowUpQuestion.title,
-      s.goalFollowUpTranscription,
+      s.goalUserTranscription,
     ].join("||")
   );
+};
+
+const isAboutComplete = (survey: QuizSurvey2) => {
+  const transcript = survey.aboutUserTranscription || "";
+  const wordsCount = getWordsCount(transcript);
+  return wordsCount >= MIN_WORDS_FOR_ANSWER;
+};
+
+const isAboutFollowUpComplete = (survey: QuizSurvey2) => {
+  const transcript = survey.aboutUserFollowUpTranscription || "";
+  const wordsCount = getWordsCount(transcript);
+  return wordsCount >= MIN_WORDS_FOR_ANSWER;
+};
+
+const isReadyToGenerateGoal = (survey: QuizSurvey2) => {
+  const transcript = survey.goalUserTranscription || "";
+  const wordsCount = getWordsCount(transcript);
+  return wordsCount >= MIN_WORDS_FOR_ANSWER;
 };
 
 interface QuizContextType {
@@ -570,7 +591,6 @@ ${userAboutFollowUpAnswer}
           subtitle: "",
           description: "",
         },
-        goalFollowUpTranscription: "",
         goalAnalysis: "",
 
         goalData: null,
@@ -764,11 +784,11 @@ ${userAboutFollowUpAnswer}
       return;
     }
 
-    const goalFollowUpTranscriptsWords = survey.goalFollowUpTranscription
-      ? survey.goalFollowUpTranscription.trim().split(/\s+/).length
+    const goalFollowUpTranscriptsWords = survey.goalUserTranscription
+      ? survey.goalUserTranscription.trim().split(/\s+/).length
       : 0;
     const isReadyToGenerateGoal =
-      !!survey.goalFollowUpTranscription &&
+      !!survey.goalUserTranscription &&
       goalFollowUpTranscriptsWords >= 80 &&
       survey.aboutUserTranscription &&
       survey.aboutUserTranscription.trim().split(/\s+/).length >= 50 &&
@@ -812,7 +832,7 @@ ${userAboutFollowUpAnswer}
       {
         id: `goal_followup_answer`,
         isBot: false,
-        text: `${survey.goalFollowUpTranscription || "No answer provided"}`,
+        text: `${survey.goalUserTranscription || "No answer provided"}`,
       },
     ];
 

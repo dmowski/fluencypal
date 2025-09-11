@@ -23,7 +23,6 @@ export interface QuizSurvey2 {
   goalUserTranscription: string;
   goalFollowUpQuestion: QuizSurvey2FollowUpQuestion;
 
-  goalFollowUpTranscription: string;
   goalAnalysis: string;
 
   goalData: GoalPlan | null;

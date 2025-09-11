@@ -53,7 +53,7 @@ import {
 } from "lucide-react";
 import { LangSelectorFullScreen, LanguageButton } from "@/features/Lang/LangSelector";
 import { GradingProgressBar } from "@/features/Dashboard/BrainCard";
-import { QuizProvider, useQuiz } from "./useQuiz";
+import { MIN_WORDS_FOR_ANSWER, QuizProvider, useQuiz } from "./useQuiz";
 import { useLanguageGroup } from "../useLanguageGroup";
 import {
   ForwardRefExoticComponent,
@@ -174,7 +174,7 @@ const QuizQuestions = () => {
                 }
                 subTitleComponent={<AboutYourselfList />}
                 transcript={survey?.aboutUserTranscription || ""}
-                minWords={50}
+                minWords={MIN_WORDS_FOR_ANSWER}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;
@@ -252,7 +252,7 @@ const QuizQuestions = () => {
             <AuthWall>
               <RecordAboutFollowUp
                 question={survey?.goalFollowUpQuestion || null}
-                transcript={survey?.goalFollowUpTranscription || ""}
+                transcript={survey?.goalUserTranscription || ""}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;
@@ -261,7 +261,7 @@ const QuizQuestions = () => {
                   await updateSurvey(
                     {
                       ...survey,
-                      goalFollowUpTranscription: combinedTranscript,
+                      goalUserTranscription: combinedTranscript,
                     },
                     "recordAboutFollowUp2 UI"
                   );
@@ -527,7 +527,7 @@ const RecordAboutFollowUp = ({
         </>
       }
       transcript={transcript || ""}
-      minWords={80}
+      minWords={MIN_WORDS_FOR_ANSWER}
       updateTranscript={updateTranscript}
     />
   );
