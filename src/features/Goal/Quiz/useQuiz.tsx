@@ -77,9 +77,11 @@ export const MIN_WORDS_FOR_ANSWER = 50;
 const getSurveyGoalHashToCompare = (s: QuizSurvey2) => {
   return fnv1aHash(
     [
-      s.aboutUserFollowUpQuestion.title,
       s.aboutUserTranscription,
+
+      s.aboutUserFollowUpQuestion.title,
       s.aboutUserFollowUpTranscription,
+
       s.goalFollowUpQuestion.title,
       s.goalUserTranscription,
     ].join("||")
@@ -581,8 +583,6 @@ ${userAboutFollowUpAnswer}
           description: "",
         },
         aboutUserFollowUpTranscription: "",
-        aboutUserAnalysis: "",
-        aboutUserInfoRecords: [],
 
         goalUserTranscription: "",
         goalFollowUpQuestion: {
@@ -591,7 +591,6 @@ ${userAboutFollowUpAnswer}
           subtitle: "",
           description: "",
         },
-        goalAnalysis: "",
 
         goalData: null,
         goalHash: "",
