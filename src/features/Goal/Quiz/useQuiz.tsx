@@ -74,26 +74,10 @@ const stepsViews: QuizStep[] = [
 
 export const MIN_WORDS_FOR_ANSWER = 50;
 
-const getSurveyHash = (survey: QuizSurvey2 | null) => {
-  if (!survey) return "";
+const getHash = (input: string) => {
+  if (!input) return "";
 
-  return [
-    survey.aboutUserTranscription,
-    survey.aboutUserFollowUpTranscription,
-    survey.goalUserTranscription,
-  ].join("||");
-
-  /*return fnv1aHash(
-    [
-      survey.aboutUserTranscription,
-
-      survey.aboutUserFollowUpQuestion.title,
-      survey.aboutUserFollowUpTranscription,
-
-      survey.goalFollowUpQuestion.title,
-      survey.goalUserTranscription,
-    ].join("||")
-  );*/
+  return fnv1aHash(input);
 };
 
 const isAboutRecorded = (survey: QuizSurvey2) => {
@@ -221,7 +205,10 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
     {}
   );
 
-  const processAbout = async (survey: QuizSurvey2): Promise<QuizSurvey2FollowUpQuestion> => {
+  const processAbout = async (
+    survey: QuizSurvey2,
+    hash: string
+  ): Promise<QuizSurvey2FollowUpQuestion> => {
     const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
 The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand ${learningLanguageFullName} well.
@@ -255,7 +242,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       title: parsedResult.question,
       subtitle: parsedResult.subTitle,
       description: parsedResult.description || "",
-      hash: getSurveyHash(survey),
+      hash,
     };
 
     return newAnswer;
@@ -270,7 +257,7 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
       return;
     }
 
-    const initHash = getSurveyHash(survey);
+    const initHash = getHash(survey.aboutUserTranscription || "");
 
     if (initHash === survey.aboutUserFollowUpQuestion.hash) {
       console.log("⏩ generatingFollowUp | Already generated, skipping");
@@ -286,9 +273,9 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
 
     try {
       console.log("🦄 generatingFollowUp ");
-      const newAnswer = await processAbout(survey);
+      const newAnswer = await processAbout(survey, initHash);
 
-      const afterHash = getSurveyHash(surveyRef.current);
+      const afterHash = getHash(surveyRef.current?.aboutUserTranscription || "");
 
       if (afterHash !== initHash) {
         console.log("⏩ generatingFollowUp | User about changed, skipping analysis");
@@ -321,10 +308,10 @@ Start response with symbol '{' and end with '}'. Your response will be parsed wi
     Record<string, boolean>
   >({});
 
-  const processAboutFollowUp = async (
-    survey: QuizSurvey2
+  const createGoalQuestion = async (
+    survey: QuizSurvey2,
+    hash: string
   ): Promise<QuizSurvey2FollowUpQuestion> => {
-    const hash = getSurveyHash(survey);
     const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves and their answer to question then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
 The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand ${learningLanguageFullName} well.
@@ -383,7 +370,7 @@ ${survey.aboutUserFollowUpTranscription}
       return;
     }
 
-    const initHash = getSurveyHash(survey);
+    const initHash = getHash(survey.aboutUserFollowUpTranscription || "");
 
     if (initHash === survey.goalFollowUpQuestion.hash) {
       console.log(`⏩ generatingGoalQuestion | Goal followup already generated, skipping`);
@@ -399,9 +386,9 @@ ${survey.aboutUserFollowUpTranscription}
     setIsGeneratingGoalFollowUpMap((prev) => ({ ...prev, [initHash]: true }));
 
     try {
-      const newGoalQuestion = await processAboutFollowUp(survey);
+      const newGoalQuestion = await createGoalQuestion(survey, initHash);
 
-      const afterHash = getSurveyHash(surveyRef.current);
+      const afterHash = getHash(surveyRef.current?.aboutUserFollowUpTranscription || "");
 
       if (afterHash !== initHash) {
         console.log(`⏩ generatingGoalQuestion | User about followup changed, skipping analysis`);
@@ -446,7 +433,7 @@ ${survey.aboutUserFollowUpTranscription}
       return;
     }
 
-    const initialSurveyHash = getSurveyHash(survey);
+    const initialSurveyHash = getHash(survey.goalUserTranscription || "");
     if (initialSurveyHash === survey.goalHash) {
       console.log("⏩ generateGoal | Survey not changed");
       return;
@@ -491,7 +478,7 @@ ${survey.aboutUserFollowUpTranscription}
 
     setIsGoalGeneratingMap((prev) => ({ ...prev, [initialSurveyHash]: false }));
 
-    const finalSurveyHash = getSurveyHash(surveyRef.current!);
+    const finalSurveyHash = getHash(surveyRef.current?.goalUserTranscription || "");
     if (initialSurveyHash !== finalSurveyHash) {
       console.log("🦄 generateGoal | Survey changed during goal generation, skipping update");
       return;
