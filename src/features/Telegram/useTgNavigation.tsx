@@ -1,7 +1,14 @@
 "use client";
-import { backButton, isTMA, swipeBehavior, closingBehavior } from "@telegram-apps/sdk-react";
+import {
+  backButton,
+  isTMA,
+  swipeBehavior,
+  closingBehavior,
+  requestFullscreen,
+  isFullscreen,
+} from "@telegram-apps/sdk-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { createContext, useContext, ReactNode, JSX, useEffect } from "react";
+import { createContext, useContext, ReactNode, JSX, useEffect, useRef } from "react";
 
 interface TgNavigationContextType {}
 
@@ -29,6 +36,8 @@ function useProvideTgNavigation(): TgNavigationContextType {
     route.back();
   };
 
+  const isRequestedFullScreen = useRef(false);
+
   useEffect(() => {
     const isTelegramApp = isTMA();
     if (!isTelegramApp) {
@@ -45,6 +54,15 @@ function useProvideTgNavigation(): TgNavigationContextType {
     closingBehavior.enableConfirmation.ifAvailable?.();
 
     backButton.mount();
+
+    try {
+      if (!isRequestedFullScreen.current && !isFullscreen()) {
+        isRequestedFullScreen.current = true;
+        requestFullscreen();
+      }
+    } catch (e) {
+      console.log("Failed to switch to fullscreen", e);
+    }
 
     const off = backButton.onClick(navigationBack); // handle click
     return () => {
