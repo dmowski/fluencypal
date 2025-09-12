@@ -564,7 +564,15 @@ export const SubscriptionPaymentModal = () => {
                   }}
                 >
                   <Typography variant="h5">
-                    {i18n._(`Total:`)} <b>{currency.convertUsdToCurrency(PRICE_PER_MONTH_USD)}</b>
+                    {i18n._(`Total:`)}{" "}
+                    {isTelegramApp ? (
+                      <>
+                        <b>{CRYPTO_MONTHLY_PRICE_TON} TON</b> | or{" "}
+                        <b>{TELEGRAM_MONTHLY_PRICE_START} Stars</b>
+                      </>
+                    ) : (
+                      <b>{currency.convertUsdToCurrency(PRICE_PER_MONTH_USD)}</b>
+                    )}
                   </Typography>
                 </Stack>
               </Stack>
