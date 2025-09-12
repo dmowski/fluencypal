@@ -32,6 +32,7 @@ import { TgGoldStar } from "../Icon/TgStar";
 import { TonIcon } from "../Icon/TonIcon";
 import { sendCreateCryptoOrderRequest } from "@/app/api/crypto/createOrder/sendCreateCryptoOrderRequest";
 import { SubscriptionWaiter } from "./SubscriptionWaiter";
+import { CRYPTO_MONTHLY_PRICE_TON } from "../Telegram/cryptoPrice";
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
@@ -395,15 +396,12 @@ export const SubscriptionPaymentModal = () => {
                   {i18n._(`Subscription for 1 month | Full access`)}
                 </Typography>
 
-                <Typography variant="body1">
-                  <b>{currency.convertUsdToCurrency(PRICE_PER_MONTH_USD)}</b>
-                </Typography>
                 <Typography variant="caption">
                   {`${TELEGRAM_MONTHLY_PRICE_START} Stars`} <br />
                 </Typography>
 
                 {currency.currency !== "USD" && allowCrypto && (
-                  <Typography variant="caption">{PRICE_PER_MONTH_USD} USDT</Typography>
+                  <Typography variant="caption">{CRYPTO_MONTHLY_PRICE_TON} TON</Typography>
                 )}
               </Stack>
               <Stack
