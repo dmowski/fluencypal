@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { sendTranscriptRequest } from "@/app/api/transcript/sendTranscriptRequest";
 import { useVoiceVisualizer, VoiceVisualizer } from "react-voice-visualizer";
 import { useIsWebView } from "../Auth/useIsWebView";
+import { isAllowedMicrophone, requestMicrophoneAccess } from "@/libs/mic";
 
 export const useAudioRecorder = ({
   languageCode,
@@ -83,7 +84,20 @@ export const useAudioRecorder = ({
   };
 
   const startRecording = async () => {
+    const isAllowed = await isAllowedMicrophone();
+    if (!isAllowed) {
+      const requestResult = await requestMicrophoneAccess();
+      if (!requestResult) {
+        alert(
+          "Microphone access is denied. Please allow microphone access in your browser settings."
+        );
+        return;
+      }
+    }
+
+    console.log("Start recording");
     recorderControls.startRecording();
+    console.log("Recording started");
     isCancel.current = false;
   };
 
