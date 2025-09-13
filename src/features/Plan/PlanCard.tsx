@@ -209,11 +209,11 @@ export const PlanCard = ({
             gridTemplateAreas: isActive
               ? `
             'icon title chevron'
-            ${details ? "details details details" : ""}
+            ${details ? "'details details details'" : ""}
           `
               : `
             'icon title title'
-            ${details ? "details details details" : ""}
+            ${details ? "'details details details'" : ""}
           `,
           },
         }}
