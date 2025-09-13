@@ -38,6 +38,7 @@ import { useUrlParam } from "../Url/useUrlParam";
 import { useSettings } from "../Settings/useSettings";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 
 type StartModes = "words" | "rules" | "conversation";
 
@@ -50,6 +51,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const plan = usePlan();
   const settings = useSettings();
   const history = useChatHistory();
+  const sizes = useWindowSizes();
   const conversationsCount = history.conversations.length;
 
   const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] = useState<null | HTMLElement>(null);
@@ -145,10 +147,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const [selectedStartModeInternal, setSelectedStartModeInternal] = useState<StartModes | null>(
     null
   );
-  const [isStartedModeSelected, setIsStartedModeSelected] = useUrlParam("startedMode");
   const openStartMode = (mode: StartModes | null) => {
     setSelectedStartModeInternal(mode);
-    setIsStartedModeSelected(!!mode);
   };
 
   const generateMoreLessons = async () => {
@@ -238,10 +238,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         sx={{
           alignItems: "center",
           justifyContent: "center",
-          paddingTop: "20px",
-          paddingBottom: "40px",
+          paddingTop: `calc(20px + ${sizes.topOffset})`,
+          paddingBottom: `calc(40px + ${sizes.bottomOffset})`,
           zIndex: 999,
-          gap: "40px",
+          gap: "10px",
         }}
       >
         <Typography align="center" variant="h6">
@@ -260,12 +260,15 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         >
           {sortedModes.map((mode) => {
             const isRecommended = mode === recommendedMode;
+            const selectedElement = sortedElements.find((element) => element.mode === mode);
             return (
               <Stack key={mode} sx={{}}>
-                {mode === "conversation" && (
+                {mode === "conversation" && selectedElement && (
                   <ConversationCard
                     title={i18n._(`Conversation`)}
-                    subTitle={i18n._(`Start your journey with a conversation!`)}
+                    subTitle={
+                      selectedElement?.title || i18n._(`Start your journey with a conversation!`)
+                    }
                     onClick={() => openStartMode(mode)}
                     startColor="#34D399"
                     endColor="#3B82F6"
@@ -292,10 +295,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   />
                 )}
 
-                {mode === "rules" && (
+                {mode === "rules" && selectedElement && (
                   <ConversationCard
                     title={i18n._(`Rules`)}
-                    subTitle={i18n._(`Learn the rules of the language!`)}
+                    subTitle={selectedElement?.id || i18n._(`Learn the rules of the language!`)}
                     onClick={() => openStartMode(mode)}
                     startColor="#9d43a3"
                     endColor="#086787"
@@ -322,10 +325,13 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   />
                 )}
 
-                {mode === "words" && (
+                {mode === "words" && selectedElement && (
                   <ConversationCard
                     title={i18n._(`Words`)}
-                    subTitle={i18n._(`Learn new words and expand your vocabulary!`)}
+                    subTitle={
+                      selectedElement?.title ||
+                      i18n._(`Learn new words and expand your vocabulary!`)
+                    }
                     onClick={() => openStartMode(mode)}
                     startColor="#00BFFF"
                     endColor="#086787"
