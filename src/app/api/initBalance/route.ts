@@ -25,8 +25,6 @@ export async function POST(request: Request) {
       .get(),
   ]);
 
-  console.log("logsDays.docs", logsDays.docs);
-
   if (logsHours.docs.length > 0) {
     return Response.json(response);
   }
@@ -62,7 +60,7 @@ export async function POST(request: Request) {
   if (!isDev) {
     const userId = userInfo.uid;
     sentSupportTelegramMessage({
-      message: `New user`,
+      message: `Init balance`,
       userId: userId,
     });
   }
