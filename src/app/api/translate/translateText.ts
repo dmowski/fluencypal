@@ -1,3 +1,4 @@
+import { NativeLangCode } from "@/libs/languages";
 import { TranslationServiceClient } from "@google-cloud/translate";
 
 const getTranslateClient = () => {
@@ -13,8 +14,8 @@ const getTranslateClient = () => {
 
 interface TranslateTextProps {
   text: string;
-  sourceLanguage: string;
-  targetLanguage: string;
+  sourceLanguage: NativeLangCode;
+  targetLanguage: NativeLangCode;
 }
 export const translateText = async ({
   text,

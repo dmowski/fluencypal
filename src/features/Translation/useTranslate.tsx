@@ -9,6 +9,7 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { ArrowDown, X } from "lucide-react";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useUrlParam } from "../Url/useUrlParam";
+import { fullLanguages } from "@/libs/languages";
 
 const translationCache: Record<string, string> = {};
 export const useTranslate = () => {
@@ -24,9 +25,20 @@ export const useTranslate = () => {
 
   const planNativeLanguage = plan.activeGoal?.goalQuiz?.nativeLanguageCode;
 
-  const targetCandidates = [nativeLanguageCode, planNativeLanguage, pageLangCode];
+  const targetLanguage = useMemo(() => {
+    const targetCandidates = [nativeLanguageCode, planNativeLanguage, pageLangCode];
+    const candidate =
+      targetCandidates.find(
+        (lang) =>
+          lang &&
+          lang !== learningLanguage &&
+          fullLanguages.find((fullLang) => fullLang.code === lang)
+      ) || null;
 
-  const targetLanguage = targetCandidates.find((lang) => lang && lang !== learningLanguage) || null;
+    const candidateLangCode = fullLanguages.find((fullLang) => fullLang.code === candidate) || null;
+
+    return candidateLangCode?.code || null;
+  }, [nativeLanguageCode, planNativeLanguage, pageLangCode]);
 
   const isTranslateAvailable = targetLanguage && targetLanguage !== learningLanguage;
 

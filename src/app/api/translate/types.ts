@@ -1,13 +1,13 @@
-import { SupportedLanguage } from "@/features/Lang/lang";
+import { NativeLangCode } from "@/libs/languages";
 
 export interface TranslateRequest {
   text: string;
-  sourceLanguage: SupportedLanguage;
-  targetLanguage: string;
+  sourceLanguage: NativeLangCode;
+  targetLanguage: NativeLangCode;
 }
 
 export interface TranslateResponse {
   translatedText: string;
-  sourceLanguage: SupportedLanguage;
-  targetLanguage: string;
+  sourceLanguage: NativeLangCode;
+  targetLanguage: NativeLangCode;
 }

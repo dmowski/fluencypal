@@ -19,8 +19,8 @@ export type SupportedLanguage =
   | "zh" // Chinese
   | "da" // Danish
   | "no" // Norwegian
-  | "sv"
-  | "be";
+  | "sv" // Swedish
+  | "be"; // Belarusian
 
 export const getLabelFromCode = (lang: SupportedLanguage) => {
   const englishName = fullEnglishLanguageName[lang];

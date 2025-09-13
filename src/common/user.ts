@@ -1,9 +1,10 @@
+import { NativeLangCode } from "@/libs/languages";
 import { SupportedLanguage } from "../features/Lang/lang";
 
 export interface UserSettings {
   languageCode: SupportedLanguage | null;
   pageLanguageCode: SupportedLanguage | null;
-  nativeLanguageCode: string | null;
+  nativeLanguageCode: NativeLangCode | null;
   createdAt: number | null;
   createdAtIso: string | null;
   currency: string | null;

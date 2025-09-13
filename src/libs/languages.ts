@@ -1,5 +1,205 @@
+export type NativeLangCode =
+  | "ab"
+  | "ace"
+  | "ach"
+  | "af"
+  | "sq"
+  | "alz"
+  | "am"
+  | "ar"
+  | "hy"
+  | "as"
+  | "awa"
+  | "ay"
+  | "az"
+  | "ban"
+  | "bm"
+  | "ba"
+  | "eu"
+  | "btx"
+  | "bts"
+  | "bbc"
+  | "be"
+  | "bem"
+  | "bn"
+  | "bew"
+  | "bho"
+  | "bik"
+  | "bs"
+  | "br"
+  | "bg"
+  | "bua"
+  | "yue"
+  | "ca"
+  | "ceb"
+  | "ny"
+  | "zh"
+  | "zh-CN"
+  | "zh-TW"
+  | "cv"
+  | "co"
+  | "crh"
+  | "hr"
+  | "cs"
+  | "da"
+  | "din"
+  | "dv"
+  | "doi"
+  | "dov"
+  | "nl"
+  | "dz"
+  | "en"
+  | "eo"
+  | "et"
+  | "ee"
+  | "fj"
+  | "fil"
+  | "tl"
+  | "fi"
+  | "fr"
+  | "fr-FR"
+  | "fr-CA"
+  | "fy"
+  | "ff"
+  | "gaa"
+  | "gl"
+  | "lg"
+  | "ka"
+  | "de"
+  | "el"
+  | "gn"
+  | "gu"
+  | "ht"
+  | "cnh"
+  | "ha"
+  | "haw"
+  | "iw"
+  | "he"
+  | "hil"
+  | "hi"
+  | "hmn"
+  | "hu"
+  | "hrx"
+  | "is"
+  | "ig"
+  | "ilo"
+  | "id"
+  | "ga"
+  | "it"
+  | "ja"
+  | "jw"
+  | "jv"
+  | "kn"
+  | "pam"
+  | "kk"
+  | "km"
+  | "cgg"
+  | "rw"
+  | "ktu"
+  | "gom"
+  | "ko"
+  | "kri"
+  | "ku"
+  | "ckb"
+  | "ky"
+  | "lo"
+  | "ltg"
+  | "la"
+  | "lv"
+  | "lij"
+  | "li"
+  | "ln"
+  | "lt"
+  | "lmo"
+  | "luo"
+  | "lb"
+  | "mk"
+  | "mai"
+  | "mak"
+  | "mg"
+  | "ms"
+  | "ms-Arab"
+  | "ml"
+  | "mt"
+  | "mi"
+  | "mr"
+  | "chm"
+  | "mni-Mtei"
+  | "min"
+  | "lus"
+  | "mn"
+  | "my"
+  | "nr"
+  | "new"
+  | "ne"
+  | "nso"
+  | "no"
+  | "nus"
+  | "oc"
+  | "or"
+  | "om"
+  | "pag"
+  | "pap"
+  | "ps"
+  | "fa"
+  | "pl"
+  | "pt"
+  | "pt-PT"
+  | "pt-BR"
+  | "pa"
+  | "pa-Arab"
+  | "qu"
+  | "rom"
+  | "ro"
+  | "rn"
+  | "ru"
+  | "sm"
+  | "sg"
+  | "sa"
+  | "gd"
+  | "sr"
+  | "st"
+  | "crs"
+  | "shn"
+  | "sn"
+  | "scn"
+  | "szl"
+  | "sd"
+  | "si"
+  | "sk"
+  | "sl"
+  | "so"
+  | "es"
+  | "su"
+  | "sw"
+  | "ss"
+  | "sv"
+  | "tg"
+  | "ta"
+  | "tt"
+  | "te"
+  | "tet"
+  | "th"
+  | "ti"
+  | "ts"
+  | "tn"
+  | "tr"
+  | "tk"
+  | "ak"
+  | "uk"
+  | "ur"
+  | "ug"
+  | "uz"
+  | "vi"
+  | "cy"
+  | "xh"
+  | "yi"
+  | "yo"
+  | "yua"
+  | "zu";
+
 export interface LanguageInfo {
-  code: string;
+  code: NativeLangCode;
   englishName: string;
   nativeName: string;
   flag: string; // Optional flag property for language icon
@@ -12,14 +212,7 @@ export const fullLanguages: LanguageInfo[] = [
     nativeName: "аҧсуа",
     flag: `https://flagcdn.com/w80/ge.png`,
   },
-  {
-    code: "aa",
-    englishName: "Afar",
-    nativeName: "Afaraf",
-    // Spoken in Djibouti, Eritrea and Ethiopia – Djibouti chosen as it has Afar as
-    // a national language
-    flag: `https://flagcdn.com/w80/dj.png`,
-  },
+
   {
     code: "af",
     englishName: "Afrikaans",
@@ -51,12 +244,7 @@ export const fullLanguages: LanguageInfo[] = [
     // Arabic is used in many countries; Saudi Arabia’s flag is a common default
     flag: `https://flagcdn.com/w80/sa.png`,
   },
-  {
-    code: "an",
-    englishName: "Aragonese",
-    nativeName: "Aragonés",
-    flag: `https://flagcdn.com/w80/es.png`, // Spain
-  },
+
   {
     code: "hy",
     englishName: "Armenian",
@@ -69,20 +257,7 @@ export const fullLanguages: LanguageInfo[] = [
     nativeName: "অসমীয়া",
     flag: `https://flagcdn.com/w80/in.png`, // India
   },
-  {
-    code: "av",
-    englishName: "Avaric",
-    nativeName: "авар мацӀ, магӀарул мацӀ",
-    // Dagestan is part of Russia, where Avaric is official locally
-    flag: `https://flagcdn.com/w80/ru.png`,
-  },
-  {
-    code: "ae",
-    englishName: "Avestan",
-    nativeName: "avesta",
-    // Classical language of Greater Iran; Iran’s flag used as best modern proxy
-    flag: `https://flagcdn.com/w80/ir.png`,
-  },
+
   {
     code: "ay",
     englishName: "Aymara",
@@ -126,18 +301,7 @@ export const fullLanguages: LanguageInfo[] = [
     nativeName: "বাংলা",
     flag: `https://flagcdn.com/w80/bd.png`, // Bangladesh – Bengali is the sole official language
   },
-  {
-    code: "bh",
-    englishName: "Bihari",
-    nativeName: "भोजपुरी",
-    flag: `https://flagcdn.com/w80/in.png`, // India (state of Bihar)
-  },
-  {
-    code: "bi",
-    englishName: "Bislama",
-    nativeName: "Bislama",
-    flag: `https://flagcdn.com/w80/vu.png`, // Vanuatu
-  },
+
   {
     code: "bs",
     englishName: "Bosnian",
@@ -169,18 +333,7 @@ export const fullLanguages: LanguageInfo[] = [
     // Catalan is co-official in Spain but the only nationwide official in Andorra
     flag: `https://flagcdn.com/w80/ad.png`, // Andorra
   },
-  {
-    code: "ch",
-    englishName: "Chamorro",
-    nativeName: "Chamoru",
-    flag: `https://flagcdn.com/w80/gu.png`, // Guam (US territory where Chamorro is official)
-  },
-  {
-    code: "ce",
-    englishName: "Chechen",
-    nativeName: "нохчийн мотт",
-    flag: `https://flagcdn.com/w80/ru.png`, // Russia (Chechnya)
-  },
+
   {
     code: "ny",
     englishName: "Chichewa; Chewa; Nyanja",
@@ -199,24 +352,14 @@ export const fullLanguages: LanguageInfo[] = [
     nativeName: "чӑваш чӗлхи",
     flag: `https://flagcdn.com/w80/ru.png`, // Russia (Chuvash Republic)
   },
-  {
-    code: "kw",
-    englishName: "Cornish",
-    nativeName: "Kernewek",
-    flag: `https://flagcdn.com/w80/gb.png`, // United Kingdom (Cornwall)
-  },
+
   {
     code: "co",
     englishName: "Corsican",
     nativeName: "corsu, lingua corsa",
     flag: `https://flagcdn.com/w80/fr.png`, // France (island of Corsica)
   },
-  {
-    code: "cr",
-    englishName: "Cree",
-    nativeName: "ᓀᐦᐃᔭᐍᐏᐣ",
-    flag: `https://flagcdn.com/w80/ca.png`, // Canada
-  },
+
   {
     code: "hr",
     englishName: "Croatian",
@@ -274,12 +417,7 @@ export const fullLanguages: LanguageInfo[] = [
     // Spoken in both Ghana & Togo — Ghana chosen
     flag: `https://flagcdn.com/w80/gh.png`,
   },
-  {
-    code: "fo",
-    englishName: "Faroese",
-    nativeName: "føroyskt",
-    flag: `https://flagcdn.com/w80/fo.png`, // Faroe Islands
-  },
+
   {
     code: "fj",
     englishName: "Fijian",
@@ -359,50 +497,28 @@ export const fullLanguages: LanguageInfo[] = [
     nativeName: "עברית",
     flag: `https://flagcdn.com/w80/il.png`, // Israel
   },
-  {
-    code: "hz",
-    englishName: "Herero",
-    nativeName: "Otjiherero",
-    flag: `https://flagcdn.com/w80/na.png`, // Namibia
-  },
+
   {
     code: "hi",
     englishName: "Hindi",
     nativeName: "हिन्दी, हिंदी",
     flag: `https://flagcdn.com/w80/in.png`, // India
   },
-  {
-    code: "ho",
-    englishName: "Hiri Motu",
-    nativeName: "Hiri Motu",
-    flag: `https://flagcdn.com/w80/pg.png`, // Papua New Guinea
-  },
+
   {
     code: "hu",
     englishName: "Hungarian",
     nativeName: "Magyar",
     flag: `https://flagcdn.com/w80/hu.png`, // Hungary
   },
-  {
-    code: "ia",
-    englishName: "Interlingua",
-    nativeName: "Interlingua",
-    // Constructed language — EU flag often used
-    flag: `https://flagcdn.com/w80/eu.png`,
-  },
+
   {
     code: "id",
     englishName: "Indonesian",
     nativeName: "Bahasa Indonesia",
     flag: `https://flagcdn.com/w80/id.png`, // Indonesia
   },
-  {
-    code: "ie",
-    englishName: "Interlingue",
-    nativeName: "Originally called Occidental; then Interlingue after WWII",
-    // Another planned language — EU flag chosen
-    flag: `https://flagcdn.com/w80/eu.png`,
-  },
+
   {
     code: "ga",
     englishName: "Irish",
@@ -415,19 +531,7 @@ export const fullLanguages: LanguageInfo[] = [
     nativeName: "Asụsụ Igbo",
     flag: `https://flagcdn.com/w80/ng.png`, // Nigeria
   },
-  {
-    code: "ik",
-    englishName: "Inupiaq",
-    nativeName: "Iñupiaq, Iñupiatun",
-    flag: `https://flagcdn.com/w80/us.png`, // USA (Alaska)
-  },
-  {
-    code: "io",
-    englishName: "Ido",
-    nativeName: "Ido",
-    // Constructed language — EU flag again
-    flag: `https://flagcdn.com/w80/eu.png`,
-  },
+
   {
     code: "is",
     englishName: "Icelandic",
@@ -440,12 +544,7 @@ export const fullLanguages: LanguageInfo[] = [
     nativeName: "Italiano",
     flag: `https://flagcdn.com/w80/it.png`, // Italy
   },
-  {
-    code: "iu",
-    englishName: "Inuktitut",
-    nativeName: "ᐃᓄᒃᑎᑐᑦ",
-    flag: `https://flagcdn.com/w80/ca.png`, // Canada (Nunavut)
-  },
+
   {
     code: "ja",
     englishName: "Japanese",
@@ -458,30 +557,14 @@ export const fullLanguages: LanguageInfo[] = [
     nativeName: "basa Jawa",
     flag: `https://flagcdn.com/w80/id.png`, // Indonesia
   },
-  {
-    code: "kl",
-    englishName: "Kalaallisut, Greenlandic",
-    nativeName: "kalaallisut, kalaallit oqaasii",
-    flag: `https://flagcdn.com/w80/gl.png`, // Greenland
-  },
+
   {
     code: "kn",
     englishName: "Kannada",
     nativeName: "ಕನ್ನಡ",
     flag: `https://flagcdn.com/w80/in.png`, // India
   },
-  {
-    code: "kr",
-    englishName: "Kanuri",
-    nativeName: "Kanuri",
-    flag: `https://flagcdn.com/w80/ng.png`, // Nigeria
-  },
-  {
-    code: "ks",
-    englishName: "Kashmiri",
-    nativeName: "कश्मीरी, كشميري‎",
-    flag: `https://flagcdn.com/w80/in.png`, // India
-  },
+
   {
     code: "kk",
     englishName: "Kazakh",
@@ -494,12 +577,7 @@ export const fullLanguages: LanguageInfo[] = [
     nativeName: "ភាសាខ្មែរ",
     flag: `https://flagcdn.com/w80/kh.png`, // Cambodia
   },
-  {
-    code: "ki",
-    englishName: "Kikuyu, Gikuyu",
-    nativeName: "Gĩkũyũ",
-    flag: `https://flagcdn.com/w80/ke.png`, // Kenya
-  },
+
   {
     code: "rw",
     englishName: "Kinyarwanda",
@@ -513,18 +591,6 @@ export const fullLanguages: LanguageInfo[] = [
     flag: `https://flagcdn.com/w80/kg.png`, // Kyrgyzstan
   },
   {
-    code: "kv",
-    englishName: "Komi",
-    nativeName: "коми кыв",
-    flag: `https://flagcdn.com/w80/ru.png`, // Russia (Komi Republic)
-  },
-  {
-    code: "kg",
-    englishName: "Kongo",
-    nativeName: "KiKongo",
-    flag: `https://flagcdn.com/w80/cd.png`, // DR Congo
-  },
-  {
     code: "ko",
     englishName: "Korean",
     nativeName: "한국어 (韓國語), 조선말 (朝鮮語)",
@@ -535,12 +601,6 @@ export const fullLanguages: LanguageInfo[] = [
     englishName: "Kurdish",
     nativeName: "Kurdî, كوردی‎",
     flag: `https://flagcdn.com/w80/iq.png`, // Iraq (Kurdistan Region)
-  },
-  {
-    code: "kj",
-    englishName: "Kwanyama, Kuanyama",
-    nativeName: "Kuanyama",
-    flag: `https://flagcdn.com/w80/na.png`, // Namibia
   },
   {
     code: "la",
@@ -584,23 +644,12 @@ export const fullLanguages: LanguageInfo[] = [
     nativeName: "lietuvių kalba",
     flag: `https://flagcdn.com/w80/lt.png`, // Lithuania
   },
-  {
-    code: "lu",
-    englishName: "Luba-Katanga",
-    nativeName: "",
-    flag: `https://flagcdn.com/w80/cd.png`, // DR Congo
-  },
+
   {
     code: "lv",
     englishName: "Latvian",
     nativeName: "latviešu valoda",
     flag: `https://flagcdn.com/w80/lv.png`, // Latvia
-  },
-  {
-    code: "gv",
-    englishName: "Manx",
-    nativeName: "Gaelg, Gailck",
-    flag: `https://flagcdn.com/w80/im.png`, // Isle of Man
   },
   {
     code: "mk",
@@ -645,41 +694,12 @@ export const fullLanguages: LanguageInfo[] = [
     flag: `https://flagcdn.com/w80/in.png`, // India
   },
   {
-    code: "mh",
-    englishName: "Marshallese",
-    nativeName: "Kajin M̧ajeļ",
-    flag: `https://flagcdn.com/w80/mh.png`, // Marshall Islands
-  },
-  {
     code: "mn",
     englishName: "Mongolian",
     nativeName: "монгол",
     flag: `https://flagcdn.com/w80/mn.png`, // Mongolia
   },
-  {
-    code: "na",
-    englishName: "Nauru",
-    nativeName: "Ekakairũ Naoero",
-    flag: `https://flagcdn.com/w80/nr.png`, // Nauru
-  },
-  {
-    code: "nv",
-    englishName: "Navajo, Navaho",
-    nativeName: "Diné bizaad, Dinékʼehǰí",
-    flag: `https://flagcdn.com/w80/us.png`, // United States
-  },
-  {
-    code: "nb",
-    englishName: "Norwegian Bokmål",
-    nativeName: "Norsk bokmål",
-    flag: `https://flagcdn.com/w80/no.png`, // Norway
-  },
-  {
-    code: "nd",
-    englishName: "North Ndebele",
-    nativeName: "isiNdebele",
-    flag: `https://flagcdn.com/w80/zw.png`, // Zimbabwe
-  },
+
   {
     code: "ne",
     englishName: "Nepali",
@@ -687,28 +707,10 @@ export const fullLanguages: LanguageInfo[] = [
     flag: `https://flagcdn.com/w80/np.png`, // Nepal
   },
   {
-    code: "ng",
-    englishName: "Ndonga",
-    nativeName: "Owambo",
-    flag: `https://flagcdn.com/w80/na.png`, // Namibia
-  },
-  {
-    code: "nn",
-    englishName: "Norwegian Nynorsk",
-    nativeName: "Norsk nynorsk",
-    flag: `https://flagcdn.com/w80/no.png`, // Norway
-  },
-  {
     code: "no",
     englishName: "Norwegian",
     nativeName: "Norsk",
     flag: `https://flagcdn.com/w80/no.png`, // Norway
-  },
-  {
-    code: "ii",
-    englishName: "Nuosu",
-    nativeName: "ꆈꌠ꒿ Nuosuhxop",
-    flag: `https://flagcdn.com/w80/cn.png`, // China (Yi autonomous areas)
   },
   {
     code: "nr",
@@ -723,18 +725,6 @@ export const fullLanguages: LanguageInfo[] = [
     flag: `https://flagcdn.com/w80/fr.png`, // France
   },
   {
-    code: "oj",
-    englishName: "Ojibwe, Ojibwa",
-    nativeName: "ᐊᓂᔑᓈᐯᒧᐎᓐ",
-    flag: `https://flagcdn.com/w80/ca.png`, // Canada
-  },
-  {
-    code: "cu",
-    englishName: "Old Church Slavonic",
-    nativeName: "ѩзыкъ словѣньскъ",
-    flag: `https://flagcdn.com/w80/bg.png`, // Bulgaria (historical cradle)
-  },
-  {
     code: "om",
     englishName: "Oromo",
     nativeName: "Afaan Oromoo",
@@ -747,22 +737,10 @@ export const fullLanguages: LanguageInfo[] = [
     flag: `https://flagcdn.com/w80/in.png`, // India
   },
   {
-    code: "os",
-    englishName: "Ossetian, Ossetic",
-    nativeName: "ирон æвзаг",
-    flag: `https://flagcdn.com/w80/ru.png`, // Russia (North Ossetia)
-  },
-  {
     code: "pa",
     englishName: "Panjabi, Punjabi",
     nativeName: "ਪੰਜਾਬੀ, پنجابی‎",
     flag: `https://flagcdn.com/w80/pk.png`, // Pakistan
-  },
-  {
-    code: "pi",
-    englishName: "Pāli",
-    nativeName: "पाऴि",
-    flag: `https://flagcdn.com/w80/lk.png`, // Sri Lanka
   },
   {
     code: "fa",
@@ -795,12 +773,6 @@ export const fullLanguages: LanguageInfo[] = [
     flag: `https://flagcdn.com/w80/pe.png`, // Peru
   },
   {
-    code: "rm",
-    englishName: "Romansh",
-    nativeName: "rumantsch grischun",
-    flag: `https://flagcdn.com/w80/ch.png`, // Switzerland
-  },
-  {
     code: "rn",
     englishName: "Kirundi",
     nativeName: "kiRundi",
@@ -825,22 +797,10 @@ export const fullLanguages: LanguageInfo[] = [
     flag: `https://flagcdn.com/w80/in.png`, // India
   },
   {
-    code: "sc",
-    englishName: "Sardinian",
-    nativeName: "sardu",
-    flag: `https://flagcdn.com/w80/it.png`, // Italy (Sardinia)
-  },
-  {
     code: "sd",
     englishName: "Sindhi",
     nativeName: "سندھی‎",
     flag: `https://flagcdn.com/w80/pk.png`, // Pakistan
-  },
-  {
-    code: "se",
-    englishName: "Northern Sami",
-    nativeName: "Davvisámegiella",
-    flag: `https://flagcdn.com/w80/no.png`, // Norway (largest Sami population)
   },
   {
     code: "sm",
@@ -963,12 +923,6 @@ export const fullLanguages: LanguageInfo[] = [
     flag: `https://flagcdn.com/w80/er.png`, // Eritrea
   },
   {
-    code: "bo",
-    englishName: "Tibetan",
-    nativeName: "བོད་ཡིག",
-    flag: `https://flagcdn.com/w80/cn.png`, // China (Tibet)
-  },
-  {
     code: "tk",
     englishName: "Turkmen",
     nativeName: "Türkmen",
@@ -987,12 +941,6 @@ export const fullLanguages: LanguageInfo[] = [
     flag: `https://flagcdn.com/w80/bw.png`, // Botswana
   },
   {
-    code: "to",
-    englishName: "Tonga",
-    nativeName: "faka Tonga",
-    flag: `https://flagcdn.com/w80/to.png`, // Tonga
-  },
-  {
     code: "tr",
     englishName: "Turkish",
     nativeName: "Türkçe",
@@ -1009,18 +957,6 @@ export const fullLanguages: LanguageInfo[] = [
     englishName: "Tatar",
     nativeName: "татарча",
     flag: `https://flagcdn.com/w80/ru.png`, // Russia
-  },
-  {
-    code: "tw",
-    englishName: "Twi",
-    nativeName: "Twi",
-    flag: `https://flagcdn.com/w80/gh.png`, // Ghana
-  },
-  {
-    code: "ty",
-    englishName: "Tahitian",
-    nativeName: "Reo Tahiti",
-    flag: `https://flagcdn.com/w80/pf.png`, // French Polynesia
   },
   {
     code: "ug",
@@ -1047,40 +983,16 @@ export const fullLanguages: LanguageInfo[] = [
     flag: `https://flagcdn.com/w80/uz.png`, // Uzbekistan
   },
   {
-    code: "ve",
-    englishName: "Venda",
-    nativeName: "Tshivenḓa",
-    flag: `https://flagcdn.com/w80/za.png`, // South Africa
-  },
-  {
     code: "vi",
     englishName: "Vietnamese",
     nativeName: "Tiếng Việt",
     flag: `https://flagcdn.com/w80/vn.png`, // Vietnam
   },
   {
-    code: "vo",
-    englishName: "Volapük",
-    nativeName: "Volapük",
-    flag: `https://flagcdn.com/w80/un.png`, // Constructed language (UN flag)
-  },
-  {
-    code: "wa",
-    englishName: "Walloon",
-    nativeName: "Walon",
-    flag: `https://flagcdn.com/w80/be.png`, // Belgium
-  },
-  {
     code: "cy",
     englishName: "Welsh",
     nativeName: "Cymraeg",
     flag: `https://flagcdn.com/w80/gb.png`, // United Kingdom
-  },
-  {
-    code: "wo",
-    englishName: "Wolof",
-    nativeName: "Wollof",
-    flag: `https://flagcdn.com/w80/sn.png`, // Senegal
   },
   {
     code: "fy",
@@ -1105,11 +1017,5 @@ export const fullLanguages: LanguageInfo[] = [
     englishName: "Yoruba",
     nativeName: "Yorùbá",
     flag: `https://flagcdn.com/w80/ng.png`, // Nigeria
-  },
-  {
-    code: "za",
-    englishName: "Zhuang, Chuang",
-    nativeName: "Saɯ cueŋƅ",
-    flag: `https://flagcdn.com/w80/cn.png`, // China (Guangxi)
   },
 ];
