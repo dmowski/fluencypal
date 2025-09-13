@@ -7,6 +7,7 @@ import {
   BanknoteArrowDown,
   ChevronRight,
   Landmark,
+  Languages,
   LogOut,
   LucideProps,
   MessageCircleQuestion,
@@ -70,7 +71,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     {
       title: i18n._(`Language`),
       subTitle: i18n._(`Select your preferred language`),
-      icon: MessageCircleQuestion,
+      icon: Languages,
       onClick: openLang,
     },
 
