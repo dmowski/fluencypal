@@ -711,6 +711,7 @@ Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly an
 
   const confirmLocalStorageKey = `confirm-start-conversation_2`;
   const isNeedToShowConfirmationModal = () => {
+    return false;
     const isConfirmInLocalStorage = localStorage.getItem(confirmLocalStorageKey);
     return !isConfirmInLocalStorage;
   };
