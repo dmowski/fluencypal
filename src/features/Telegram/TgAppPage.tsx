@@ -17,7 +17,6 @@ import { useSettings } from "../Settings/useSettings";
 import { useRouter } from "next/navigation";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useLingui } from "@lingui/react";
-import { useWindowSizes } from "../Layout/useWindowSizes";
 
 interface TgAppPageProps {
   lang: SupportedLanguage;

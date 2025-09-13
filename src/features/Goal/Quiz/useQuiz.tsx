@@ -216,13 +216,16 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
   ): Promise<QuizSurvey2FollowUpQuestion> => {
     const learningLanguageFullName = fullLanguageName[survey.learningLanguageCode];
     const systemMessage = `You are an expert in ${learningLanguageFullName} language learning and helping people set effective language learning goals. Your task is to analyze a user's description of themselves then generate a follow-up question that encourages deeper reflection and provides additional context to help clarify their objectives.
-The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses. Additionally, provide a brief explanation of why this question is important for understanding the user's motivations and goals. Use user's language, because sometime user cannot understand ${learningLanguageFullName} well.
+The follow-up question should be open-ended and thought-provoking, designed to elicit more detailed responses.
+
+Provide a brief explanation of why this question is important for understanding the user's motivations and goals.
+Use user's language in needed, because sometime user cannot understand ${learningLanguageFullName} well.
 
 Respond in JSON format with the following structure:
 {
-  "question": "A concise follow-up question to user. 1 short sentence. Less than 8 words",
-  "subTitle": "A brief subtitle that provides context for user. 1 sentence",
-  "description": "A short description explaining user the importance of the question. 2 sentences"
+  "question": "A concise follow-up question to user. 1 short sentence using user's language. Less than 8 words",
+  "subTitle": "A brief subtitle that provides context for user using user's language. 1 sentence",
+  "description": "A short description explaining user the importance of the question using user's language. 2 sentences"
 }
 
 Ensure that the JSON is properly formatted and can be easily parsed.

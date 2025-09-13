@@ -8,6 +8,7 @@ import {
   updateAuthUser,
   UserInfo,
 } from "../../config/firebase";
+import { sentSupportTelegramMessage } from "../sendTelegramMessage";
 
 function parseQueryString(raw: string): Record<string, string> {
   const params = new URLSearchParams(raw);
@@ -159,6 +160,11 @@ export async function POST(request: Request) {
       userRecord = await createAuthUser(uid, {
         displayName,
         photoURL: tgUser.photo_url ?? undefined,
+      });
+
+      await sentSupportTelegramMessage({
+        message: `New telegram user created: ${displayName} (@${tgUser.username ?? "??"}) - ${tgUser.language_code ?? "??"}`,
+        userId: uid,
       });
     }
 
