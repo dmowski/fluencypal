@@ -35,6 +35,7 @@ import { ChatMessage } from "@/common/conversation";
 import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
 import { fnv1aHash } from "@/libs/hash";
 import { getWordsCount } from "@/libs/words";
+import { NativeLangCode } from "@/libs/languages";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -104,7 +105,7 @@ interface QuizContextType {
   pageLanguage: SupportedLanguage;
   setPageLanguage: (lang: SupportedLanguage) => Promise<void>;
   nativeLanguage: string;
-  setNativeLanguage: (lang: string) => void;
+  setNativeLanguage: (lang: NativeLangCode) => void;
   navigateToMainPage: () => void;
 
   currentStep: QuizStep;
@@ -136,7 +137,7 @@ interface QuizProps {
 
 interface QuizUrlState {
   learn: SupportedLanguage;
-  nativeLang: string;
+  nativeLang: NativeLangCode;
   pageLang: SupportedLanguage;
   currentStep: QuizStep;
 }
@@ -632,21 +633,19 @@ ${survey.aboutUserFollowUpTranscription}
       }
 
       const countryCode = await getCountryByIP();
-      const country =
+      const languageByCountry =
         countryCode && countryCode !== langToLearn
           ? languageGroups.find((lang) => lang.code === countryCode)
           : null;
 
-      if (country) {
-        console.log("Found country by IP", country.code);
+      if (languageByCountry) {
+        console.log("Found country by IP", languageByCountry.code);
         return {
-          nativeLang: country.code,
+          nativeLang: languageByCountry.code,
         };
       }
 
-      return {
-        nativeLang: "",
-      };
+      return {};
     } catch (e) {
       console.error(e);
       Sentry.captureException(e, {
@@ -672,7 +671,7 @@ ${survey.aboutUserFollowUpTranscription}
     setState(newStatePatch);
   };
 
-  const setNativeLanguage = (lang: string) => {
+  const setNativeLanguage = (lang: NativeLangCode) => {
     const newStatePatch: Partial<QuizUrlState> = {
       nativeLang: lang,
     };

@@ -1,11 +1,12 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
+import { NativeLangCode } from "@/libs/languages";
 
 export interface CreateGoalRequest {
   languageToLearn: SupportedLanguage;
   level: string;
   description: string;
   minPerDaySelected: number;
-  nativeLanguageCode: string;
+  nativeLanguageCode: NativeLangCode | null;
 }
 
 export interface CreateGoalResponse {

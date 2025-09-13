@@ -21,6 +21,7 @@ import { LangSelector, LangSelectorFullScreen } from "./LangSelector";
 import LanguageAutocomplete from "./LanguageAutocomplete";
 import { useLanguageGroup } from "../Goal/useLanguageGroup";
 import { useUrlParam } from "../Url/useUrlParam";
+import { NativeLangCode } from "@/libs/languages";
 
 interface LanguageSwitcherProps {
   size?: "small" | "large" | "button" | "hidden";
@@ -29,8 +30,8 @@ interface LanguageSwitcherProps {
   langToLearn?: SupportedLanguage;
   setLanguageToLearn?: (lang: SupportedLanguage) => void;
 
-  nativeLang?: string;
-  setNativeLanguage?: (lang: string) => void;
+  nativeLang?: NativeLangCode;
+  setNativeLanguage?: (lang: NativeLangCode) => void;
 
   setPageLanguage?: (lang: SupportedLanguage) => void;
 }

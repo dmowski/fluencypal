@@ -1,5 +1,6 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
 import type { GoalPlan } from "@/features/Plan/types";
+import { NativeLangCode } from "@/libs/languages";
 
 export interface QuizSurvey2FollowUpQuestion {
   sourceTranscription: string;
@@ -11,7 +12,7 @@ export interface QuizSurvey2FollowUpQuestion {
 
 export interface QuizSurvey2 {
   learningLanguageCode: SupportedLanguage;
-  nativeLanguageCode: string;
+  nativeLanguageCode: NativeLangCode;
   pageLanguageCode: SupportedLanguage;
 
   aboutUserTranscription: string;

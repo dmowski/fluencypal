@@ -272,11 +272,7 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
                   options={languageGroups}
                   value={selectedNativeLanguage || null}
                   showSubtitle={false}
-                  onChange={(langCode) => {
-                    if (langCode) {
-                      settings.setNativeLanguage(langCode);
-                    }
-                  }}
+                  onChange={(langCode) => settings.setNativeLanguage(langCode)}
                 />
               </Stack>
             )}

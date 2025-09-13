@@ -3,7 +3,7 @@ import React from "react";
 import { FilterOptionsState, Stack, Typography } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import { LanguageInfo } from "@/libs/languages";
+import { LanguageInfo, NativeLangCode } from "@/libs/languages";
 
 const isOptionAvailable = (option: SelectGroupItem, inputValue: string) => {
   return (
@@ -27,7 +27,7 @@ interface LanguageAutocompleteProps {
   value: SelectGroupItem | null;
   label?: string;
   showSubtitle?: boolean;
-  onChange: (valueCode: string) => void;
+  onChange: (valueCode: NativeLangCode) => void;
   placeholder?: string;
   required?: boolean;
   id?: string;
@@ -128,7 +128,7 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
           }}
         />
       )}
-      onChange={(_, newValue) => onChange(newValue?.code || "")}
+      onChange={(_, newValue) => newValue?.code && onChange(newValue?.code)}
       filterOptions={(options, params) => filterHandler(options, params)}
     />
   );

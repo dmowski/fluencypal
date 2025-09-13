@@ -14,6 +14,7 @@ import { confirmGtag } from "../Analytics/confirmGtag";
 import { getCountryByIP } from "../User/getCountry";
 import { countries } from "@/libs/countries";
 import { UserSettings } from "@/common/user";
+import { NativeLangCode } from "@/libs/languages";
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -25,7 +26,7 @@ interface SettingsContextType {
   loading: boolean;
   setLanguage: (language: SupportedLanguage) => Promise<SupportedLanguage>;
   setPageLanguage: (language: SupportedLanguage) => Promise<void>;
-  setNativeLanguage: (language: string) => Promise<void>;
+  setNativeLanguage: (language: NativeLangCode) => Promise<void>;
   userSettings: UserSettings | null;
   onDoneGameOnboarding: () => void;
 }
@@ -127,7 +128,7 @@ function useProvideSettings(): SettingsContextType {
     await setDoc(userSettingsDoc, { pageLanguageCode: langCodeValidated }, { merge: true });
   };
 
-  const setNativeLanguage = async (languageCode: string) => {
+  const setNativeLanguage = async (languageCode: NativeLangCode) => {
     if (!userSettingsDoc) return;
     await setDoc(userSettingsDoc, { nativeLanguageCode: languageCode }, { merge: true });
   };

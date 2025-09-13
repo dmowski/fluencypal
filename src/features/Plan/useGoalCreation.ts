@@ -64,7 +64,9 @@ export const useGoalCreation = () => {
     try {
       const code = await settings.setLanguage(goalData.languageToLearn);
       settings.setPageLanguage(getPageLangCode());
-      settings.setNativeLanguage(goalData.nativeLanguageCode);
+      if (goalData.nativeLanguageCode) {
+        settings.setNativeLanguage(goalData.nativeLanguageCode);
+      }
 
       setIsProcessingGoal(i18n._(`Processing the goal...`) + "12%");
       console.log("code", code);

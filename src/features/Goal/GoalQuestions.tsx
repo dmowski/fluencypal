@@ -32,7 +32,7 @@ import { sleep } from "@/libs/sleep";
 import { useGoalQuizForm } from "./useGoalQuizForm";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { uniq } from "@/libs/uniq";
-import { fullLanguages } from "@/libs/languages";
+import { fullLanguages, NativeLangCode } from "@/libs/languages";
 import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
 import { useLanguageGroup } from "./useLanguageGroup";
 import { useWindowSizes } from "../Layout/useWindowSizes";
@@ -140,7 +140,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const [goalId, setGoalId] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const updateNativeLang = (value: string) => {
+  const updateNativeLang = (value: NativeLangCode) => {
     updateData({
       nativeLanguage: value,
     });

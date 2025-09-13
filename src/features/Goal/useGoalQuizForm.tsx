@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { SupportedLanguage } from "../Lang/lang";
+import { NativeLangCode } from "@/libs/languages";
 
 interface GoalQuizData {
   description: string;
   languageToLearn: SupportedLanguage;
-  nativeLanguage: null | string;
+  nativeLanguage: NativeLangCode | null;
   minPerDay: number;
   level: string;
 }
