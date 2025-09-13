@@ -76,8 +76,6 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
             {game.loadingQuestions ? loadingMessage : playMessage}
           </Button>
 
-          <GameNativeLanguageSelector />
-
           <Stack
             sx={{
               paddingTop: "60px",
