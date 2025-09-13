@@ -50,6 +50,8 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
         await auth.logout();
         localStorage.clear();
 
+        await sleep(100);
+
         const isTelegramApp = isTMA();
         const urlPathToRedirect = isTelegramApp
           ? getUrlStart(pageLang) + "tg"
