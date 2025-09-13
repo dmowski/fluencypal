@@ -50,8 +50,10 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
         await auth.logout();
         localStorage.clear();
 
-        await sleep(600);
-        const urlPathToRedirect = getUrlStart(pageLang);
+        const isTelegramApp = isTMA();
+        const urlPathToRedirect = isTelegramApp
+          ? getUrlStart(pageLang) + "quiz"
+          : getUrlStart(pageLang);
         window.location.href = urlPathToRedirect;
       } catch (e) {
         console.log(e);
