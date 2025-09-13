@@ -102,7 +102,7 @@ const QuizQuestions = () => {
 
   const learningLanguageName = fullLanguageName[languageToLearn].toLocaleLowerCase();
   const nativeLanguageName =
-    languageGroups.find((g) => g.code === nativeLanguage)?.nativeName || "";
+    languageGroups.find((g) => g.languageCode === nativeLanguage)?.nativeName || "";
 
   return (
     <Stack
@@ -1110,13 +1110,13 @@ const NativeLanguageSelector = () => {
           </Typography>
         )}
         {filteredLanguageGroup.map((option) => {
-          const isSelected = option.code === nativeLanguage;
+          const isSelected = option.languageCode === nativeLanguage;
           return (
             <LanguageButton
-              onClick={() => setNativeLanguage(option.code)}
-              key={option.code}
+              onClick={() => setNativeLanguage(option.languageCode)}
+              key={option.languageCode}
               label={option.englishName}
-              langCode={option.code}
+              langCode={option.languageCode}
               englishFullName={option.englishName}
               isSystemLang={option.isSystemLanguage}
               fullName={option.nativeName}

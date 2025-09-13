@@ -53,7 +53,7 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
         width: "100%",
       }}
       groupBy={(option) => {
-        const group = options.find((group) => group.code === option.code);
+        const group = options.find((group) => group.languageCode === option.languageCode);
         return group?.groupTitle || "Other";
       }}
       getOptionLabel={(option) => {
@@ -81,7 +81,7 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
         );
       }}
       renderOption={(props, option) => (
-        <li {...props} key={option.code}>
+        <li {...props} key={option.languageCode}>
           <Stack
             direction={"row"}
             gap={"8px"}
@@ -123,12 +123,12 @@ const LanguageAutocomplete: React.FC<LanguageAutocompleteProps> = ({
               isOptionAvailable(option, e.target.value)
             );
             if (appropriateOption) {
-              onChange(appropriateOption.code);
+              onChange(appropriateOption.languageCode);
             }
           }}
         />
       )}
-      onChange={(_, newValue) => newValue?.code && onChange(newValue?.code)}
+      onChange={(_, newValue) => newValue?.languageCode && onChange(newValue?.languageCode)}
       filterOptions={(options, params) => filterHandler(options, params)}
     />
   );

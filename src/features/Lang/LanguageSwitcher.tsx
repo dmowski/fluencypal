@@ -107,7 +107,7 @@ export function LanguageSwitcher({
   });
 
   const selectedNativeLanguage = useMemo(
-    () => languageGroups.find((lang) => lang.code === nativeLang),
+    () => languageGroups.find((lang) => lang.languageCode === nativeLang),
     [languageGroups, nativeLang]
   );
 

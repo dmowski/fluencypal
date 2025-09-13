@@ -98,7 +98,7 @@ export const SelectLanguage: React.FC<{ pageLang: SupportedLanguage }> = ({ page
   const nativeLang = settings.userSettings?.nativeLanguageCode || "en";
 
   const selectedNativeLanguage = useMemo(
-    () => languageGroups.find((lang) => lang.code === nativeLang),
+    () => languageGroups.find((lang) => lang.languageCode === nativeLang),
     [languageGroups, nativeLang]
   );
 

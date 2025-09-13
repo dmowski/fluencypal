@@ -21,7 +21,7 @@ const getUserInfoForAi = ({
     userInfoRecords.length > 0 ? `Info about the user: ${userInfoRecords.join(", ")}` : "";
 
   const nativeLanguageTitle =
-    fullLanguages.find((lang) => lang.code === nativeLanguage)?.englishName ||
+    fullLanguages.find((lang) => lang.languageCode === nativeLanguage)?.englishName ||
     fullEnglishLanguageName[nativeLanguage as SupportedLanguage] ||
     nativeLanguage;
 

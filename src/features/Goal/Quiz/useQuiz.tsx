@@ -36,6 +36,7 @@ import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
 import { fnv1aHash } from "@/libs/hash";
 import { getWordsCount } from "@/libs/words";
 import { NativeLangCode } from "@/libs/languages";
+import { guessLanguagesByCountry } from "@/libs/languageByCountry";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -622,9 +623,9 @@ ${survey.aboutUserFollowUpTranscription}
       }
 
       const systemLanguages = languageGroups.filter(
-        (group) => group.isSystemLanguage && group.code !== langToLearn
+        (group) => group.isSystemLanguage && group.languageCode !== langToLearn
       );
-      const goodSystemLang = systemLanguages[0]?.code;
+      const goodSystemLang = systemLanguages[0]?.languageCode;
       if (goodSystemLang) {
         console.log("Found system lang", goodSystemLang);
         return {
@@ -633,15 +634,19 @@ ${survey.aboutUserFollowUpTranscription}
       }
 
       const countryCode = await getCountryByIP();
-      const languageByCountry =
-        countryCode && countryCode !== langToLearn
-          ? languageGroups.find((lang) => lang.code === countryCode)
-          : null;
+      const languagesByCountryCode: NativeLangCode[] = countryCode
+        ? guessLanguagesByCountry(countryCode)
+        : [];
+
+      const filteredLanguagesCodes = languagesByCountryCode.filter((code) => code !== langToLearn);
+      const languageByCountry = filteredLanguagesCodes.filter((code) =>
+        languageGroups.find((lang) => lang.languageCode === code)
+      )[0];
 
       if (languageByCountry) {
-        console.log("Found country by IP", languageByCountry.code);
+        console.log("Found country by IP", languageByCountry);
         return {
-          nativeLang: languageByCountry.code,
+          nativeLang: languageByCountry,
         };
       }
 

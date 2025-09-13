@@ -316,7 +316,8 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const languagesTitles = languagesToRecord
     .map(
       (lang) =>
-        fullLanguages.find((langDefinition) => langDefinition.code === lang)?.nativeName || lang
+        fullLanguages.find((langDefinition) => langDefinition.languageCode === lang)?.nativeName ||
+        lang
     )
     .join(", ")
     .trim();
@@ -332,7 +333,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     }
     const firstSystemLanguage = languageGroups.find((lang) => lang.isSystemLanguage);
     if (firstSystemLanguage) {
-      updateNativeLang(firstSystemLanguage.code);
+      updateNativeLang(firstSystemLanguage.languageCode);
     }
   }, [languageGroups, isQuizDataLoading]);
 
@@ -352,14 +353,14 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
     }
 
     const isPageLanguageIsSystemLanguage = systemLanguages.some(
-      (systemLang) => systemLang.code === lang
+      (systemLang) => systemLang.languageCode === lang
     );
     if (isPageLanguageIsSystemLanguage) {
       return;
     }
 
     const supportedLanguageFromSystemLanguages = systemLanguages.find((systemLang) =>
-      supportedLanguages.includes(systemLang.code as SupportedLanguage)
+      supportedLanguages.includes(systemLang.languageCode as SupportedLanguage)
     );
 
     if (!supportedLanguageFromSystemLanguages) {
@@ -368,7 +369,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
 
     const newPageLang =
       supportedLanguages.find(
-        (supportedLang) => supportedLang === supportedLanguageFromSystemLanguages.code
+        (supportedLang) => supportedLang === supportedLanguageFromSystemLanguages.languageCode
       ) || lang;
 
     if (newPageLang === lang) {
@@ -380,7 +381,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   }, [languageGroups]);
 
   const selectedNativeLanguage = useMemo(
-    () => languageGroups.find((lang) => lang.code === data.nativeLanguage),
+    () => languageGroups.find((lang) => lang.languageCode === data.nativeLanguage),
     [data.nativeLanguage, languageGroups]
   );
 

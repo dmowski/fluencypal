@@ -17,7 +17,7 @@ export const useLanguageGroup = ({
         return;
       }
 
-      const userLang = [...navigator.languages];
+      const userLang = [...navigator.languages].map((lang) => lang.toLowerCase());
       setUserLanguages(userLang);
     }, 20);
   }, []);
@@ -30,7 +30,7 @@ export const useLanguageGroup = ({
 
     const filteredAndSorted = fullLanguages
       .map((lang) => {
-        const isSystemLanguage = userLanguages.includes(lang.code);
+        const isSystemLanguage = userLanguages.includes(lang.languageCode);
         return {
           ...lang,
           groupTitle: isSystemLanguage ? systemLanguagesTitle : defaultGroupTitle,

@@ -32,12 +32,13 @@ export const useTranslate = () => {
         (lang) =>
           lang &&
           lang !== learningLanguage &&
-          fullLanguages.find((fullLang) => fullLang.code === lang)
+          fullLanguages.find((fullLang) => fullLang.languageCode === lang)
       ) || null;
 
-    const candidateLangCode = fullLanguages.find((fullLang) => fullLang.code === candidate) || null;
+    const candidateLangCode =
+      fullLanguages.find((fullLang) => fullLang.languageCode === candidate) || null;
 
-    return candidateLangCode?.code || null;
+    return candidateLangCode?.languageCode || null;
   }, [nativeLanguageCode, planNativeLanguage, pageLangCode]);
 
   const isTranslateAvailable = targetLanguage && targetLanguage !== learningLanguage;
