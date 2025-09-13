@@ -6,11 +6,13 @@ import { Avatar, Button, Stack, Typography } from "@mui/material";
 import {
   BanknoteArrowDown,
   ChevronRight,
+  HelpCircle,
   Landmark,
   Languages,
   LogOut,
   LucideProps,
   MessageCircleQuestion,
+  MessageCircleQuestionMark,
   Star,
   Wallet,
 } from "lucide-react";
@@ -94,7 +96,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
     {
       title: i18n._(`Help`),
       subTitle: i18n._(`Need help?`),
-      icon: BanknoteArrowDown,
+      icon: MessageCircleQuestionMark,
       onClick: () => {
         setIsShowHelpModal(true);
       },
