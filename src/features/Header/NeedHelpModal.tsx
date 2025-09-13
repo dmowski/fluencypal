@@ -52,7 +52,7 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
 
         const isTelegramApp = isTMA();
         const urlPathToRedirect = isTelegramApp
-          ? getUrlStart(pageLang) + "quiz"
+          ? getUrlStart(pageLang) + "tg"
           : getUrlStart(pageLang);
         window.location.href = urlPathToRedirect;
       } catch (e) {
