@@ -40,15 +40,16 @@ export const sentSupportTelegramMessage = async ({
 
   let postfixMessage = "";
   if (userId) {
+    const firebaseLink = getFirebaseLink(userId);
+    const firebaseLinkText = `[🚀Firebase Link.🚀](${firebaseLink})`;
     try {
       const userInfo = await getUserInfo(userId);
       const userEmail = userInfo?.email || "Unknown email";
       const country = userInfo.countryName;
-      const firebaseLink = userId ? getFirebaseLink(userId) : "";
-      postfixMessage += `\n\n${userEmail}\n[🚀Firebase Link. ${country || ""}🚀](${firebaseLink})`;
+      postfixMessage += `\n\n${userEmail} (${country})\n${firebaseLinkText}`;
     } catch (error) {
       console.error("Error fetching user info: ", error);
-      postfixMessage = `\n\nUser ID: ${userId}`;
+      postfixMessage = `\n\nUser ID: ${userId}\n${firebaseLinkText}`;
     }
   } else {
     postfixMessage = "\nUnknown user";
