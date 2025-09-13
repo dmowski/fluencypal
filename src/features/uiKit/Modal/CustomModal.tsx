@@ -10,7 +10,7 @@ interface CustomModalProps {
 }
 
 export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JSX.Element => {
-  const { topOffset, bottomOffset } = useWindowSizes();
+  const sizes = useWindowSizes();
   if (!isOpen) return <></>;
 
   return (
@@ -47,7 +47,7 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
           <IconButton
             sx={{
               position: "absolute",
-              top: `calc(${topOffset} + 10px)`,
+              top: `calc(${sizes.topOffset} + 10px)`,
               right: "10px",
               zIndex: 100,
             }}
@@ -74,7 +74,7 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
             <Stack
               sx={{
                 width: "100%",
-                height: topOffset,
+                height: sizes.topOffset,
               }}
             />
 
@@ -87,6 +87,7 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
                 "@media (max-width: 600px)": {
                   padding: "20px 10px",
                 },
+                minHeight: `calc(100dvh - ${sizes.topOffset} - ${sizes.bottomOffset} - 0px)`,
               }}
             >
               {children}
@@ -95,7 +96,7 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
             <Stack
               sx={{
                 width: "100%",
-                height: bottomOffset,
+                height: sizes.bottomOffset,
               }}
             />
           </Stack>

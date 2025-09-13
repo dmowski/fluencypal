@@ -61,6 +61,7 @@ export const PlanCard = ({
           <Stack
             sx={{
               width: "100%",
+              justifyContent: "center",
               height: "100%",
             }}
           >
@@ -80,9 +81,9 @@ export const PlanCard = ({
             </Stack>
             <Stack
               sx={{
-                gap: "10px",
                 alignItems: "center",
                 width: "100%",
+                paddingTop: "30px",
               }}
             >
               <Stack>
@@ -91,6 +92,7 @@ export const PlanCard = ({
                   variant="caption"
                   sx={{
                     color: `rgba(255, 255, 255, 0.5)`,
+                    textTransform: "uppercase",
                   }}
                 >
                   {subTitle}
@@ -98,9 +100,11 @@ export const PlanCard = ({
                 <Typography variant="h4" align="center" component="h2" className="decor-text">
                   {title}
                 </Typography>
-                <Typography sx={{ paddingTop: "20px" }} align="center" variant="caption">
-                  {description}
-                </Typography>
+                {description && (
+                  <Typography sx={{ paddingTop: "20px" }} align="center" variant="caption">
+                    {description}
+                  </Typography>
+                )}
               </Stack>
 
               <Typography
@@ -108,6 +112,7 @@ export const PlanCard = ({
                 variant="caption"
                 sx={{
                   opacity: 0.7,
+                  paddingTop: "20px",
                 }}
               >
                 {i18n._(`Send 6 messages to complete`)}
@@ -115,7 +120,7 @@ export const PlanCard = ({
 
               <Button
                 sx={{
-                  margin: "15px 0px",
+                  margin: "5px 0px 15px 0px",
                   minWidth: "260px",
                   padding: "10px 20px",
                 }}
@@ -155,9 +160,14 @@ export const PlanCard = ({
 
           gridTemplateColumns: "max-content 1fr max-content",
           gridTemplateRows: "auto",
-          gridTemplateAreas: `
+          gridTemplateAreas: details
+            ? `
             'icon title chevron'
             'icon details chevron'
+          `
+            : `
+            'icon title chevron'
+            'icon title chevron'
           `,
           gap: "0px 20px",
           borderRadius: "8px",
@@ -199,11 +209,11 @@ export const PlanCard = ({
             gridTemplateAreas: isActive
               ? `
             'icon title chevron'
-            'details details details'
+            ${details ? "details details details" : ""}
           `
               : `
             'icon title title'
-            'details details details'
+            ${details ? "details details details" : ""}
           `,
           },
         }}
@@ -454,30 +464,32 @@ export const PlanCard = ({
           </Typography>
         </Stack>
 
-        <Typography
-          align="left"
-          sx={{
-            gridArea: "details",
+        {details && (
+          <Typography
+            align="left"
+            sx={{
+              gridArea: "details",
 
-            fontWeight: 400,
-            fontSize: "0.82rem",
-            lineHeight: "1.1rem",
-            zIndex: 2,
-            height: isNextInPlan ? "auto" : "54px",
-            paddingBottom: isNextInPlan ? "8px" : 0,
-            overflow: "hidden",
-            opacity: isActive || isDone ? 0.9 : 0.8,
-
-            "@media (max-width: 500px)": {
+              fontWeight: 400,
+              fontSize: "0.82rem",
+              lineHeight: "1.1rem",
+              zIndex: 2,
+              height: isNextInPlan ? "auto" : "54px",
+              paddingBottom: isNextInPlan ? "8px" : 0,
               overflow: "hidden",
-              height: "auto",
-              paddingTop: "10px",
-              textOverflow: "ellipsis",
-            },
-          }}
-        >
-          {details}
-        </Typography>
+              opacity: isActive || isDone ? 0.9 : 0.8,
+
+              "@media (max-width: 500px)": {
+                overflow: "hidden",
+                height: "auto",
+                paddingTop: "10px",
+                textOverflow: "ellipsis",
+              },
+            }}
+          >
+            {details}
+          </Typography>
+        )}
 
         {isActive && (
           <Stack

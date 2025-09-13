@@ -8,16 +8,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import {
-  ChevronDown,
-  Circle,
-  CircleCheck,
-  Flag,
-  Icon,
-  LandPlot,
-  Sparkle,
-  Trash,
-} from "lucide-react";
+import { ChevronDown, Flag, LandPlot, Sparkle } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
@@ -31,7 +22,6 @@ import { cardColors, modeCardProps } from "../Plan/data";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { useMemo, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { ConversationCard } from "./ConversationCard";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useUrlParam } from "../Url/useUrlParam";
@@ -39,8 +29,6 @@ import { useSettings } from "../Settings/useSettings";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { useWindowSizes } from "../Layout/useWindowSizes";
-
-type StartModes = "words" | "rules" | "conversation";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();
@@ -144,13 +132,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
   const [isLearningPlanUpdating, setIsLearningPlanUpdating] = useState(false);
 
-  const [selectedStartModeInternal, setSelectedStartModeInternal] = useState<StartModes | null>(
-    null
-  );
-  const openStartMode = (mode: StartModes | null) => {
-    setSelectedStartModeInternal(mode);
-  };
-
   const generateMoreLessons = async () => {
     if (!plan.activeGoal) {
       return;
@@ -207,32 +188,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
 
   const minimumLessonsCountToExpand = 3;
   const isAbleToExpand = doneLessonsCount >= minimumLessonsCountToExpand;
-  const selectedElement =
-    sortedElements.find((element) => element.mode === selectedStartModeInternal) ||
-    sortedElements[0];
 
   if (isReadyToFirstStart) {
-    const modes: StartModes[] = ["words", "rules", "conversation"];
-
-    const level = plan.activeGoal?.goalQuiz?.level || "XXX";
-    const recommendedModesMap: Record<string, StartModes> = {
-      A1: "words",
-      A2: "rules",
-      B1: "rules",
-      B2: "conversation",
-      c1: "conversation",
-    };
-
-    const recommendedMode: StartModes = recommendedModesMap[level] || "conversation";
-    const sortedModes = modes.sort((a, b) => {
-      if (a === recommendedMode) return -1; // Recommended mode first
-      if (b === recommendedMode) return 1; // Recommended mode first
-      return 0; // Keep original order for others
-    });
-    const cardInfo = modeCardProps[selectedElement.mode];
-    const imageVariants = cardInfo.imgUrl;
-    const imageIndex = 1 % imageVariants.length;
-    const imageUrl = imageVariants[imageIndex];
     return (
       <Stack
         sx={{
@@ -258,156 +215,51 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             paddingBottom: "40px",
           }}
         >
-          {sortedModes.map((mode) => {
-            const isRecommended = mode === recommendedMode;
-            const selectedElement = sortedElements.find((element) => element.mode === mode);
-            return (
-              <Stack key={mode} sx={{}}>
-                {mode === "conversation" && selectedElement && (
-                  <ConversationCard
-                    title={i18n._(`Conversation`)}
-                    subTitle={
-                      selectedElement?.title || i18n._(`Start your journey with a conversation!`)
-                    }
-                    onClick={() => openStartMode(mode)}
-                    startColor="#34D399"
-                    endColor="#3B82F6"
-                    bgColor="#A3E635"
-                    disabledLabel={i18n._(`Set the goal to start`)}
-                    icon={
-                      <Stack>
-                        <Stack
-                          style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
-                          className="avatar"
-                        >
-                          <img
-                            src="/avatar/girl.webp"
-                            alt="AI Bot"
-                            style={{
-                              height: "110px",
-                              width: "110px",
-                            }}
-                          />
-                        </Stack>
-                      </Stack>
-                    }
-                    actionLabel={isRecommended ? i18n._(`Recommended`) : ""}
-                  />
-                )}
+          {sortedElements
+            .filter((element, index) => index < 3)
+            .map((planElement, index, all) => {
+              const cardInfo = modeCardProps[planElement.mode];
+              const colorIndex = index % cardColors.length;
+              const cardColor = cardColors[colorIndex];
+              const elementsWithSameMode =
+                sortedElements.filter((element) => element.mode === planElement.mode) || [];
+              const currentElementIndex = elementsWithSameMode.findIndex(
+                (element) => element.id === planElement.id
+              );
+              const imageVariants = cardInfo.imgUrl;
+              const imageIndex = currentElementIndex % imageVariants.length;
+              const imageUrl = imageVariants[imageIndex];
 
-                {mode === "rules" && selectedElement && (
-                  <ConversationCard
-                    title={i18n._(`Rules`)}
-                    subTitle={selectedElement?.id || i18n._(`Learn the rules of the language!`)}
-                    onClick={() => openStartMode(mode)}
-                    startColor="#9d43a3"
-                    endColor="#086787"
-                    bgColor="#990000"
-                    disabledLabel={i18n._(`Set the goal to start`)}
-                    icon={
-                      <Stack>
-                        <Stack
-                          style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
-                          className="avatar"
-                        >
-                          <img
-                            src="/avatar/book.webp"
-                            alt="AI Bot"
-                            style={{
-                              height: "110px",
-                              width: "110px",
-                            }}
-                          />
-                        </Stack>
+              return (
+                <PlanCard
+                  id={planElement.id}
+                  key={planElement.id}
+                  delayToShow={index * 80}
+                  title={planElement.title}
+                  subTitle={modeLabels[planElement.mode]}
+                  description={""}
+                  details={""}
+                  isDone={false}
+                  isActive={true}
+                  isContinueLabel={false}
+                  onClick={() => startGoalElement(planElement)}
+                  startColor={cardColor.startColor}
+                  progressPercent={0}
+                  endColor={cardColor.endColor}
+                  bgColor={cardColor.bgColor}
+                  isLast={index === all.length - 1}
+                  icon={
+                    <Stack>
+                      <Stack className="avatar">
+                        <img src={imageUrl} alt="" />
                       </Stack>
-                    }
-                    actionLabel={isRecommended ? i18n._(`Recommended`) : ""}
-                  />
-                )}
-
-                {mode === "words" && selectedElement && (
-                  <ConversationCard
-                    title={i18n._(`Words`)}
-                    subTitle={
-                      selectedElement?.title ||
-                      i18n._(`Learn new words and expand your vocabulary!`)
-                    }
-                    onClick={() => openStartMode(mode)}
-                    startColor="#00BFFF"
-                    endColor="#086787"
-                    bgColor="#5EEAD4"
-                    disabledLabel={i18n._(`Set the goal to start`)}
-                    icon={
-                      <Stack>
-                        <Stack
-                          style={{ width: "var(--icon-size)", height: "var(--icon-size)" }}
-                          className="avatar"
-                        >
-                          <img
-                            src="/avatar/words.webp"
-                            alt="AI Bot"
-                            style={{
-                              height: "110px",
-                              width: "110px",
-                            }}
-                          />
-                        </Stack>
-                      </Stack>
-                    }
-                    actionLabel={isRecommended ? i18n._(`Recommended`) : ""}
-                  />
-                )}
-              </Stack>
-            );
-          })}
+                    </Stack>
+                  }
+                  actionLabel={i18n._(`Start`)}
+                />
+              );
+            })}
         </Stack>
-
-        {selectedStartModeInternal && (
-          <CustomModal onClose={() => openStartMode(null)} isOpen={true}>
-            <Stack
-              sx={{
-                gap: "20px",
-                width: "100%",
-                maxWidth: "600px",
-                paddingTop: "200px",
-                alignItems: "center",
-              }}
-            >
-              <Typography className="decor-text" variant="h6" align="center">
-                {i18n._(`There's something interesting for you...`)}
-              </Typography>
-
-              <Stack
-                sx={{
-                  border: "1px solid rgba(255, 255, 255, 0.5)",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
-                  padding: "20px 20px",
-                  boxSizing: "border-box",
-                  borderRadius: "10px",
-                  gap: "10px",
-                  alignItems: "center",
-                }}
-              >
-                <img src={imageUrl} alt="" style={{ width: "80px", height: "80px" }} />
-                <Typography align="center" sx={{}} variant="h6">
-                  {selectedElement.title}
-                </Typography>
-                <Typography align="center" sx={{}} variant="caption">
-                  {selectedElement.description}
-                </Typography>
-              </Stack>
-              <Button
-                variant="contained"
-                onClick={() => startGoalElement(selectedElement)}
-                sx={{
-                  width: "max-content",
-                }}
-              >
-                {i18n._(`Let's start`)}
-              </Button>
-            </Stack>
-          </CustomModal>
-        )}
       </Stack>
     );
   }
