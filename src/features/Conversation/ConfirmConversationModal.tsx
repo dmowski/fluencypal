@@ -19,23 +19,37 @@ export const ConfirmConversationModal = ({
         sx={{
           gap: "10px",
           width: "100%",
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <Stack>
+        <Stack
+          sx={{
+            alignItems: "center",
+          }}
+        >
           <Typography variant="h4" component="h2" className="decor-text">
             {i18n._(`Ready?`)}
           </Typography>
-        </Stack>
 
-        <Typography>{i18n._(`Next, allow microphone access to talk with the AI.`)}</Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              maxWidth: "400px",
+            }}
+            align="center"
+          >
+            {i18n._(`Next, please allow access to the microphone to communicate with the AI.`)}
+          </Typography>
+        </Stack>
 
         <Stack
           sx={{
             flexDirection: "row",
-            width: "100%",
-            justifyContent: "space-between",
             alignItems: "center",
             paddingTop: "10px",
+            gap: "20px",
           }}
         >
           <Stack
@@ -52,10 +66,12 @@ export const ConfirmConversationModal = ({
               size="large"
               startIcon={<Mic />}
             >
-              {i18n._(`I am ready`)}
+              {i18n._(`Yes, I am ready`)}
             </Button>
           </Stack>
-          <Button onClick={onCancel}>{i18n._(`Close`)}</Button>
+          <Button variant="outlined" onClick={onCancel}>
+            {i18n._(`No`)}
+          </Button>
         </Stack>
       </Stack>
     </CustomModal>
