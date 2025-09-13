@@ -7,7 +7,7 @@ import { GameMyAvatar } from "./GameMyAvatar";
 import { GameMyUsername } from "./GameMyUsername";
 import { GameNativeLanguageSelector } from "./GameNativeLanguageSelector";
 import { useLingui } from "@lingui/react";
-import { LucideSwords, MoveRight } from "lucide-react";
+import { ArrowRight, LucideSwords, MoveRight } from "lucide-react";
 
 export const GameOnboarding = () => {
   const settings = useSettings();
@@ -32,6 +32,7 @@ export const GameOnboarding = () => {
           alignItems: "center",
           justifyContent: "center",
           width: "100%",
+          gap: "10px",
         }}
       >
         <img
@@ -40,27 +41,37 @@ export const GameOnboarding = () => {
             setStep(1);
           }}
           alt="Map"
-          style={{ width: "100%", maxWidth: "150px", borderRadius: "10px" }}
+          style={{ width: "150px", height: "150px" }}
         />
-        <Typography align="center" variant="h6">
-          {i18n._(`Learn and Play`)}
-        </Typography>
-        <Typography
-          variant="body2"
+        <Stack
           sx={{
-            opacity: 0.9,
+            alignItems: "center",
+            minHeight: "120px",
           }}
-          align="center"
         >
-          {i18n._(`Describe images, craft sentences, and translate words`)}
-        </Typography>
+          <Typography align="center" variant="h6">
+            {i18n._(`Learn and Play`)}
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              opacity: 0.9,
+            }}
+            align="center"
+          >
+            {i18n._(`Describe images, craft sentences, and translate words`)}
+          </Typography>
+        </Stack>
       </Stack>
       <Button
         variant="contained"
         onClick={onNext}
         color="info"
         size="large"
-        endIcon={<MoveRight />}
+        sx={{
+          minWidth: "200px",
+        }}
+        endIcon={<ArrowRight />}
       >
         {i18n._(`Next`)}
       </Button>
@@ -82,12 +93,13 @@ export const GameOnboarding = () => {
           onClick={() => {
             setStep(0);
           }}
-          alt="Map"
-          style={{ width: "100%", maxWidth: "150px", borderRadius: "10px" }}
+          alt="Owl"
+          style={{ width: "150px", height: "150px" }}
         />
         <Stack
           sx={{
             alignItems: "center",
+            minHeight: "120px",
           }}
         >
           <Typography align="center" variant="h6">
@@ -111,7 +123,10 @@ export const GameOnboarding = () => {
         onClick={onNext}
         color="info"
         size="large"
-        endIcon={<MoveRight />}
+        sx={{
+          minWidth: "200px",
+        }}
+        endIcon={<ArrowRight />}
       >
         {i18n._(`Next`)}
       </Button>
@@ -120,7 +135,7 @@ export const GameOnboarding = () => {
     <>
       <Stack
         sx={{
-          gap: "20px",
+          gap: "0px",
         }}
       >
         <Typography
@@ -128,33 +143,34 @@ export const GameOnboarding = () => {
           onClick={() => {
             setStep(1);
           }}
+          sx={{
+            padding: "0 10px",
+            minHeight: "66px",
+          }}
+          align="center"
         >
           {i18n._(`Let’s make sure you’re ready`)}
         </Typography>
 
         <Stack
-          gap="40px"
           sx={{
-            paddingTop: "20px",
+            paddingTop: "10px",
+            alignItems: "center",
+            gap: "10px",
           }}
         >
-          <Stack gap="10px">
-            <Typography variant="caption" sx={{ opacity: 0.9 }}>
-              {i18n._(`Your Avatar:`)}
-            </Typography>
-            <GameMyAvatar />
+          <Typography variant="caption" sx={{ opacity: 0.9 }}>
+            {i18n._(`Your Avatar:`)}
+          </Typography>
+          <GameMyAvatar />
+
+          <Stack
+            sx={{
+              paddingTop: "25px",
+            }}
+          >
+            <GameMyUsername />
           </Stack>
-          <Stack>
-            <Stack
-              sx={{
-                flexDirection: "row",
-                gap: "20px",
-              }}
-            >
-              <GameMyUsername />
-            </Stack>
-          </Stack>
-          <GameNativeLanguageSelector />
         </Stack>
       </Stack>
 
@@ -164,6 +180,10 @@ export const GameOnboarding = () => {
         onClick={onNext}
         color="info"
         size="large"
+        sx={{
+          minWidth: "200px",
+          marginTop: "15px",
+        }}
       >
         {i18n._(`Play`)}
       </Button>
@@ -180,15 +200,18 @@ export const GameOnboarding = () => {
             boxSizing: "border-box",
             gap: "20px",
             alignItems: "center",
+            height: "100%",
           }}
         >
           <Stack
             sx={{
               width: "100%",
-              maxWidth: "800px",
+              maxWidth: "500px",
               height: "100%",
+              maxHeight: "700px",
               gap: "20px",
-              justifyContent: "space-between",
+              justifyContent: "center",
+              alignItems: "center",
               paddingBottom: "40px",
             }}
           >
