@@ -3,7 +3,7 @@ import React from "react";
 import { FilterOptionsState, Stack, Typography } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import { LanguageInfo, NativeLangCode } from "@/libs/languages";
+import { LanguageInfo, NativeLangCode } from "@/libs/language/type";
 
 const isOptionAvailable = (option: SelectGroupItem, inputValue: string) => {
   return (

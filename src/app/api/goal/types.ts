@@ -1,5 +1,5 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { NativeLangCode } from "@/libs/languages";
+import { NativeLangCode } from "@/libs/language/type";
 
 export interface CreateGoalRequest {
   languageToLearn: SupportedLanguage;

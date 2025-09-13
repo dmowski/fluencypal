@@ -1,4 +1,4 @@
-import { NativeLangCode } from "@/libs/languages";
+import { NativeLangCode } from "@/libs/language/type";
 import { SupportedLanguage } from "../features/Lang/lang";
 
 export interface UserSettings {

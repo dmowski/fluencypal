@@ -14,7 +14,7 @@ import { confirmGtag } from "../Analytics/confirmGtag";
 import { getCountryByIP } from "../User/getCountry";
 import { countries } from "@/libs/countries";
 import { UserSettings } from "@/common/user";
-import { NativeLangCode } from "@/libs/languages";
+import { NativeLangCode } from "@/libs/language/type";
 
 interface SettingsContextType {
   userCreatedAt: number | null;

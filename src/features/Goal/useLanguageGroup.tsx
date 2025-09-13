@@ -1,4 +1,4 @@
-import { fullLanguagesList } from "@/libs/languages";
+import { fullLanguagesList } from "@/libs/language/languages";
 import { useEffect, useMemo, useState } from "react";
 
 export const useLanguageGroup = ({

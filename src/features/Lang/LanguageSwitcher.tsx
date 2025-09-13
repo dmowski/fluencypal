@@ -21,7 +21,7 @@ import { LangSelector, LangSelectorFullScreen } from "./LangSelector";
 import LanguageAutocomplete from "./LanguageAutocomplete";
 import { useLanguageGroup } from "../Goal/useLanguageGroup";
 import { useUrlParam } from "../Url/useUrlParam";
-import { NativeLangCode } from "@/libs/languages";
+import { NativeLangCode } from "@/libs/language/type";
 
 interface LanguageSwitcherProps {
   size?: "small" | "large" | "button" | "hidden";

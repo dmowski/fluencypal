@@ -9,7 +9,7 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { ArrowDown, X } from "lucide-react";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useUrlParam } from "../Url/useUrlParam";
-import { fullLanguagesMap } from "@/libs/languages";
+import { fullLanguagesMap } from "@/libs/language/languages";
 
 const translationCache: Record<string, string> = {};
 export const useTranslate = () => {

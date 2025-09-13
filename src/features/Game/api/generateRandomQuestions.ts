@@ -3,9 +3,10 @@ import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang
 import { generateTextWithAi } from "../../../app/api/ai/generateTextWithAi";
 import { shuffleArray } from "@/libs/array";
 import { imageDescriptions } from "@/features/Game/ImagesDescriptions";
-import { fullLanguagesMap, NativeLangCode } from "@/libs/languages";
+import { fullLanguagesMap } from "@/libs/language/languages";
 import { topicsToDiscuss } from "./topics";
 import { translateText } from "@/app/api/translate/translateText";
+import { NativeLangCode } from "@/libs/language/type";
 
 interface QuestionOutput {
   fullQuestions: GameQuestionFull;

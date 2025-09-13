@@ -35,8 +35,8 @@ import { ChatMessage } from "@/common/conversation";
 import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
 import { fnv1aHash } from "@/libs/hash";
 import { getWordsCount } from "@/libs/words";
-import { NativeLangCode } from "@/libs/languages";
-import { guessLanguagesByCountry } from "@/libs/languageByCountry";
+import { NativeLangCode } from "@/libs/language/type";
+import { guessLanguagesByCountry } from "@/libs/language/languageByCountry";
 
 type QuizStep =
   | "before_nativeLanguage"

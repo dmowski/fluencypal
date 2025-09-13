@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SupportedLanguage } from "../Lang/lang";
-import { NativeLangCode } from "@/libs/languages";
+import { NativeLangCode } from "@/libs/language/type";
 
 interface GoalQuizData {
   description: string;

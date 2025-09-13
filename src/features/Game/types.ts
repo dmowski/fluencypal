@@ -1,4 +1,4 @@
-import { NativeLangCode } from "@/libs/languages";
+import { NativeLangCode } from "@/libs/language/type";
 import { SupportedLanguage } from "../Lang/lang";
 
 export type GameQuestionType =

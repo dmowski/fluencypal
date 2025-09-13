@@ -1,4 +1,4 @@
-import { NativeLangCode } from "./languages";
+import { NativeLangCode } from "./type";
 
 export const COUNTRY_TO_LANGS: Record<string, NativeLangCode[]> = {
   // Europe

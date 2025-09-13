@@ -32,10 +32,11 @@ import { sleep } from "@/libs/sleep";
 import { useGoalQuizForm } from "./useGoalQuizForm";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { uniq } from "@/libs/uniq";
-import { fullLanguagesMap, NativeLangCode } from "@/libs/languages";
+import { fullLanguagesMap } from "@/libs/language/languages";
 import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
 import { useLanguageGroup } from "./useLanguageGroup";
 import { useWindowSizes } from "../Layout/useWindowSizes";
+import { NativeLangCode } from "@/libs/language/type";
 
 const TermsComponent = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();

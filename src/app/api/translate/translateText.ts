@@ -1,4 +1,4 @@
-import { NativeLangCode } from "@/libs/languages";
+import { NativeLangCode } from "@/libs/language/type";
 import { TranslationServiceClient } from "@google-cloud/translate";
 
 const getTranslateClient = () => {
