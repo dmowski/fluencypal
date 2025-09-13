@@ -32,7 +32,7 @@ import { sleep } from "@/libs/sleep";
 import { useGoalQuizForm } from "./useGoalQuizForm";
 import { useAudioRecorder } from "../Audio/useAudioRecorder";
 import { uniq } from "@/libs/uniq";
-import { fullLanguages, NativeLangCode } from "@/libs/languages";
+import { fullLanguagesMap, NativeLangCode } from "@/libs/languages";
 import LanguageAutocomplete from "../Lang/LanguageAutocomplete";
 import { useLanguageGroup } from "./useLanguageGroup";
 import { useWindowSizes } from "../Layout/useWindowSizes";
@@ -314,11 +314,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
 
   const languagesToRecord = uniq([data.nativeLanguage, data.languageToLearn].filter(Boolean));
   const languagesTitles = languagesToRecord
-    .map(
-      (lang) =>
-        fullLanguages.find((langDefinition) => langDefinition.languageCode === lang)?.nativeName ||
-        lang
-    )
+    .map((lang) => (lang ? fullLanguagesMap[lang]?.nativeName || lang : lang))
     .join(", ")
     .trim();
 

@@ -3,7 +3,7 @@ import { fullEnglishLanguageName, SupportedLanguage } from "@/features/Lang/lang
 import { generateTextWithAi } from "../../../app/api/ai/generateTextWithAi";
 import { shuffleArray } from "@/libs/array";
 import { imageDescriptions } from "@/features/Game/ImagesDescriptions";
-import { fullLanguages } from "@/libs/languages";
+import { fullLanguagesMap, NativeLangCode } from "@/libs/languages";
 import { topicsToDiscuss } from "./topics";
 import { translateText } from "@/app/api/translate/translateText";
 
@@ -21,7 +21,7 @@ const getUserInfoForAi = ({
     userInfoRecords.length > 0 ? `Info about the user: ${userInfoRecords.join(", ")}` : "";
 
   const nativeLanguageTitle =
-    fullLanguages.find((lang) => lang.languageCode === nativeLanguage)?.englishName ||
+    fullLanguagesMap[nativeLanguage]?.englishName ||
     fullEnglishLanguageName[nativeLanguage as SupportedLanguage] ||
     nativeLanguage;
 
@@ -289,7 +289,7 @@ const generateTopicToDiscuss = async ({
 
 interface generateRandomQuestionsProps {
   userInfoRecords: string[];
-  nativeLanguage: string;
+  nativeLanguage: NativeLangCode;
   learningLanguage: SupportedLanguage;
 }
 

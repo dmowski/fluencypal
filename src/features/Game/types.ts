@@ -1,3 +1,4 @@
+import { NativeLangCode } from "@/libs/languages";
 import { SupportedLanguage } from "../Lang/lang";
 
 export type GameQuestionType =
@@ -44,7 +45,7 @@ export interface UsersStat {
 }
 
 export interface GetGameQuestionsRequest {
-  nativeLanguageCode: string;
+  nativeLanguageCode: NativeLangCode;
 }
 
 export type GetGameQuestionsResponse = GameQuestionShort[];

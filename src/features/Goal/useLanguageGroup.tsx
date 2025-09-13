@@ -1,4 +1,4 @@
-import { fullLanguages } from "@/libs/languages";
+import { fullLanguagesList } from "@/libs/languages";
 import { useEffect, useMemo, useState } from "react";
 
 export const useLanguageGroup = ({
@@ -28,7 +28,7 @@ export const useLanguageGroup = ({
       return [];
     }
 
-    const filteredAndSorted = fullLanguages
+    const filteredAndSorted = fullLanguagesList
       .map((lang) => {
         const isSystemLanguage = userLanguages.includes(lang.languageCode);
         return {
