@@ -2,6 +2,7 @@ import { envConfig } from "../../config/envConfig";
 import { TonApiClient } from "@ton-api/client";
 import { getOrderByComment, updateOrder } from "../../payment/order";
 import { addPaymentLog } from "../../payment/addPaymentLog";
+import { sentSupportTelegramMessage } from "../../telegram/sendTelegramMessage";
 
 interface TX {
   event_type: string;
@@ -66,6 +67,10 @@ export async function POST(request: Request) {
       type: "subscription-full-v1",
       receiptUrl: "",
       monthsCount: order.monthCount || undefined,
+    });
+    await sentSupportTelegramMessage({
+      message: `New CRYPTO payment received monthsCount: ${order.monthCount || "unknown"}`,
+      userId: userId,
     });
   }
 

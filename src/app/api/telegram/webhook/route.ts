@@ -1,6 +1,7 @@
 import { TELEGRAM_MONTHLY_PRICE_START } from "@/features/Telegram/starPrices";
 import { envConfig } from "../../config/envConfig";
 import { addPaymentLog } from "../../payment/addPaymentLog";
+import { sentSupportTelegramMessage } from "../sendTelegramMessage";
 
 export const runtime = "nodejs";
 const BOT_TOKEN = envConfig.telegramBotKey;
@@ -58,6 +59,11 @@ export async function POST(req: Request) {
     await call("sendMessage", {
       chat_id: msg.chat.id,
       text: `✅ Payment received! Thanks for your purchase.`,
+    });
+
+    await sentSupportTelegramMessage({
+      message: `New payment received monthsCount: ${monthsCount}`,
+      userId: firebaseUserId,
     });
 
     return new Response("ok");
