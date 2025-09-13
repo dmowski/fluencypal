@@ -13,6 +13,7 @@ import {
   useState,
   useEffect,
   useRef,
+  useCallback,
 } from "react";
 import { useLanguageGroup } from "../useLanguageGroup";
 import { useLingui } from "@lingui/react";
@@ -178,9 +179,12 @@ function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): Qui
 
   const router = useRouter();
 
-  const setState = async (partial: Partial<QuizUrlState>, options?: SetUrlStateOptions) => {
-    return await setStateInput(partial as unknown as Record<string, string>, options);
-  };
+  const setState = useCallback(
+    async (partial: Partial<QuizUrlState>, options?: SetUrlStateOptions) => {
+      return await setStateInput(partial as unknown as Record<string, string>, options);
+    },
+    [setStateInput]
+  );
 
   const state = stateInput as unknown as QuizUrlState;
   const nativeLanguage = state.nativeLang;
@@ -703,7 +707,7 @@ ${survey.aboutUserFollowUpTranscription}
     }
   };
 
-  const getPath = () => {
+  const path = useMemo(() => {
     const isNativeLanguageIsSupportedLanguage = (supportedLanguages as string[]).includes(
       nativeLanguage
     );
@@ -721,9 +725,7 @@ ${survey.aboutUserFollowUpTranscription}
     });
 
     return path;
-  };
-
-  const path = getPath();
+  }, [nativeLanguage]);
   const currentStepIndex = path.indexOf(currentStep) === -1 ? 0 : path.indexOf(currentStep);
 
   const nextStep = async () => {
@@ -760,11 +762,11 @@ ${survey.aboutUserFollowUpTranscription}
     router.push(url || "", { scroll: false });
   };
 
-  const prevStep = () => {
+  const prevStep = useCallback(() => {
     const prevStepIndex = Math.max(currentStepIndex - 1, 0);
     const prevStep = path[prevStepIndex];
     setState({ currentStep: prevStep });
-  };
+  }, [currentStepIndex, path, setState]);
 
   const navigateToMainPage = () => {
     const newPath = `${getUrlStart(pageLanguage)}`;

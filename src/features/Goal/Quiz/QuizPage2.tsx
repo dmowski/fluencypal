@@ -80,6 +80,7 @@ import { PlanElementMode } from "@/features/Plan/types";
 import { cardColors, modeCardProps } from "@/features/Plan/data";
 import { useRouter } from "next/navigation";
 import { getWordsCount } from "@/libs/words";
+import { useTgNavigation } from "@/features/Telegram/useTgNavigation";
 
 const QuizQuestions = () => {
   const {
@@ -91,7 +92,6 @@ const QuizQuestions = () => {
     languageToLearn,
     isFollowUpGenerating,
     isGoalQuestionGenerating,
-    isGoalGenerating,
   } = useQuiz();
   const { i18n } = useLingui();
 
@@ -1267,6 +1267,13 @@ const LanguageToLearnSelector = () => {
 const ProgressBar = () => {
   const { topOffset } = useWindowSizes();
   const { navigateToMainPage, isCanGoToMainPage, isFirstStep, prevStep, progress } = useQuiz();
+
+  const tgNavigation = useTgNavigation();
+
+  useEffect(() => {
+    const off = tgNavigation.addBackHandler(prevStep);
+    return off;
+  }, [prevStep]);
 
   return (
     <>

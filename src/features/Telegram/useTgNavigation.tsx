@@ -8,9 +8,20 @@ import {
   isFullscreen,
 } from "@telegram-apps/sdk-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { createContext, useContext, ReactNode, JSX, useEffect, useRef } from "react";
+import {
+  createContext,
+  useContext,
+  ReactNode,
+  JSX,
+  useEffect,
+  useRef,
+  useCallback,
+  useState,
+} from "react";
 
-interface TgNavigationContextType {}
+interface TgNavigationContextType {
+  addBackHandler: (handler: () => void) => () => void;
+}
 
 const TgNavigationContext = createContext<TgNavigationContextType | null>(null);
 
@@ -41,23 +52,28 @@ function useProvideTgNavigation(): TgNavigationContextType {
         backButton.hide();
       }
     }
-  }, [searchParamsString]);
+  }, [searchParamsString, path]);
 
-  const navigationBack = () => {
-    route.back();
+  const [backStack, setBackStack] = useState<(() => void)[]>([]);
+  const backHandler = () => {
+    const lastHandler = backStack.length ? backStack[backStack.length - 1] : null;
+    if (lastHandler) {
+      lastHandler();
+    } else {
+      route.back();
+    }
   };
-
-  const isRequestedFullScreen = useRef(false);
 
   useEffect(() => {
     const isTelegramApp = isTMA();
     if (!isTelegramApp) return;
-    const removeBackEventListener = backButton.onClick(navigationBack); // handle click
+    const removeBackEventListener = backButton.onClick(backHandler);
     return () => {
       removeBackEventListener();
     };
-  }, []);
+  }, [backStack, route]);
 
+  const isRequestedFullScreen = useRef(false);
   useEffect(() => {
     const isTelegramApp = isTMA();
     if (!isTelegramApp) return;
@@ -89,7 +105,19 @@ function useProvideTgNavigation(): TgNavigationContextType {
     };
   }, []);
 
-  return {};
+  const addBackHandler = (newHandler: () => void): (() => void) => {
+    const isTelegramApp = isTMA();
+    if (!isTelegramApp) return () => {};
+
+    setBackStack((prev) => [...prev, newHandler]);
+    return () => {
+      setBackStack((prev) => {
+        return prev.filter((backHandler) => backHandler !== newHandler);
+      });
+    };
+  };
+
+  return { addBackHandler };
 }
 
 export function TgNavigationProvider({ children }: { children: ReactNode }): JSX.Element {

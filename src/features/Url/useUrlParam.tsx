@@ -1,6 +1,6 @@
 import { scrollTopFast } from "@/libs/scroll";
 import { ReadonlyURLSearchParams, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 export const useUrlParam = (paramName: string) => {
   const [internalValue, setInternalValue] = useState<boolean>(false);
@@ -107,28 +107,31 @@ export const useUrlMapState = (defaultValue: Record<string, string>, scrollToTop
     }
   }, [urlPage]);
 
-  const setValue = async (patchValue: Record<string, string>, options?: SetUrlStateOptions) => {
-    const value = { ...internalValue, ...patchValue };
-    if (isEqualMaps(value, internalValue)) return Promise.resolve(null);
-    setInternalValue(value);
-    setIsLoading(true);
+  const setValue = useCallback(
+    async (patchValue: Record<string, string>, options?: SetUrlStateOptions) => {
+      const value = { ...internalValue, ...patchValue };
+      if (isEqualMaps(value, internalValue)) return Promise.resolve(null);
+      setInternalValue(value);
+      setIsLoading(true);
 
-    return new Promise<string>((resolve) => {
-      setTimeout(() => {
-        const newUrl = convertMapToNewUrl(value, defaultValue);
-
-        if (options?.redirect !== false) {
-          router.push(`${newUrl}`, { scroll: false });
-        }
-
-        scrollToTop && scrollTopFast();
+      return new Promise<string>((resolve) => {
         setTimeout(() => {
-          setIsLoading(false);
-          resolve(newUrl);
-        }, 10);
-      }, 20);
-    });
-  };
+          const newUrl = convertMapToNewUrl(value, defaultValue);
+
+          if (options?.redirect !== false) {
+            router.push(`${newUrl}`, { scroll: false });
+          }
+
+          scrollToTop && scrollTopFast();
+          setTimeout(() => {
+            setIsLoading(false);
+            resolve(newUrl);
+          }, 10);
+        }, 20);
+      });
+    },
+    [internalValue, router, defaultValue, scrollToTop]
+  );
 
   return [internalValue, setValue, isLoading] as const;
 };
