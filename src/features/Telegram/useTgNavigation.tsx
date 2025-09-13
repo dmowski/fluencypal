@@ -7,7 +7,7 @@ import {
   requestFullscreen,
   isFullscreen,
 } from "@telegram-apps/sdk-react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { createContext, useContext, ReactNode, JSX, useEffect, useRef } from "react";
 
 interface TgNavigationContextType {}
@@ -17,6 +17,7 @@ const TgNavigationContext = createContext<TgNavigationContextType | null>(null);
 function useProvideTgNavigation(): TgNavigationContextType {
   const route = useRouter();
   const searchParams = useSearchParams();
+  const path = usePathname();
   const searchParamsString = searchParams.toString();
 
   useEffect(() => {
@@ -25,10 +26,20 @@ function useProvideTgNavigation(): TgNavigationContextType {
       return;
     }
 
-    if (searchParamsString) {
-      backButton.show();
+    const isQuiz = path.endsWith("/quiz");
+    if (isQuiz) {
+      const quizStep = searchParams.get("currentStep");
+      if (quizStep) {
+        backButton.show();
+      } else {
+        backButton.hide();
+      }
     } else {
-      backButton.hide();
+      if (searchParamsString) {
+        backButton.show();
+      } else {
+        backButton.hide();
+      }
     }
   }, [searchParamsString]);
 
