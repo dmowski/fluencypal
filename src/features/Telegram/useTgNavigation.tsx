@@ -51,9 +51,16 @@ function useProvideTgNavigation(): TgNavigationContextType {
 
   useEffect(() => {
     const isTelegramApp = isTMA();
-    if (!isTelegramApp) {
-      return;
-    }
+    if (!isTelegramApp) return;
+    const removeBackEventListener = backButton.onClick(navigationBack); // handle click
+    return () => {
+      removeBackEventListener();
+    };
+  }, []);
+
+  useEffect(() => {
+    const isTelegramApp = isTMA();
+    if (!isTelegramApp) return;
 
     swipeBehavior.mount.ifAvailable?.();
     closingBehavior.mount.ifAvailable?.();
@@ -75,9 +82,7 @@ function useProvideTgNavigation(): TgNavigationContextType {
       console.log("Failed to switch to fullscreen", e);
     }
 
-    const off = backButton.onClick(navigationBack); // handle click
     return () => {
-      off(); // remove handler
       backButton.hide(); // hide when component unmounts
       swipeBehavior.enableVertical.ifAvailable?.();
       closingBehavior.disableConfirmation.ifAvailable?.();
