@@ -2,7 +2,7 @@ import { Button, Link, Stack, Typography } from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Cookie, ReceiptText, Trash } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { deleteCollectionDocs, firestore } from "../Firebase/init";
 import { doc, DocumentReference, setDoc } from "firebase/firestore";
 import { UserSettings } from "@/common/user";
@@ -11,6 +11,9 @@ import { ContactList } from "../Landing/Contact/ContactList";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useLingui } from "@lingui/react";
+import { isTMA } from "@telegram-apps/sdk-react";
+import { sendDeleteMyAccountRequest } from "@/app/api/deleteAccount/sendDeleteMyAccountRequest";
+import { sleep } from "@/libs/sleep";
 
 interface NeedHelpModalProps {
   onClose: () => void;
@@ -28,8 +31,36 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
   }, [userId]);
 
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
+  const [isTotalDelete, setIsTotalDelete] = useState(false);
+
+  useEffect(() => {
+    if (!auth.uid) return;
+
+    const isDevAccount = auth.userInfo?.email?.includes("dmowski") || false;
+    const isTelegramApp = isTMA();
+    setIsTotalDelete(isTelegramApp || isDevAccount);
+  }, [auth.uid]);
 
   const onDeleteAccount = async () => {
+    if (isTotalDelete) {
+      setIsDeletingAccount(true);
+      try {
+        const pageLang = lang;
+        await sendDeleteMyAccountRequest(await auth.getToken());
+        await auth.logout();
+        localStorage.clear();
+
+        await sleep(600);
+        const urlPathToRedirect = getUrlStart(pageLang);
+        window.location.href = urlPathToRedirect;
+      } catch (e) {
+        console.log(e);
+        alert("Error happened. Try again");
+        setIsDeletingAccount(false);
+      }
+      return;
+    }
+
     if (!userId || !userSettingsDoc) return;
     const confirm = window.confirm(i18n._(`Are you sure you want to delete your account?`));
     if (!confirm) return;
@@ -237,7 +268,11 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               color="error"
               startIcon={<Trash size={"18px"} />}
             >
-              {isDeletingAccount ? i18n._(`Deleting...`) : i18n._(`Delete account`)}
+              {isDeletingAccount
+                ? i18n._(`Deleting...`)
+                : isTotalDelete
+                  ? i18n._(`Delete account (Total)`)
+                  : i18n._(`Delete account`)}
             </Button>
           </Stack>
         )}

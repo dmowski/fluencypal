@@ -137,10 +137,15 @@ const createAuthUser = async (uid: string, user: Omit<UserInfo, "uid">): Promise
   };
 };
 
+const deleteAuthUser = async (uid: string): Promise<void> => {
+  await getAuth().deleteUser(uid);
+};
+
 export {
   getBucket,
   firebaseConfig,
   getDB,
+  deleteAuthUser,
   validateAuthToken,
   getAuthUser,
   updateAuthUser,

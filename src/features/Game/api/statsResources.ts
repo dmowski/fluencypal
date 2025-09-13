@@ -85,6 +85,51 @@ export const renameUserAvatarStat = async (
     );
 };
 
+export const deleteAvatar = async (gameUserName: string) => {
+  const db = getDB();
+  await db
+    .collection("game")
+    .doc("gameAvatars")
+    .set(
+      {
+        [gameUserName]: firebaseAdmin.firestore.FieldValue.delete(),
+      },
+      { merge: true }
+    );
+};
+
+export const deleteUserLastVisitStat = async (gameUserName: string) => {
+  const db = getDB();
+  await db
+    .collection("game")
+    .doc("gameLastVisit")
+    .set(
+      {
+        [gameUserName]: firebaseAdmin.firestore.FieldValue.delete(),
+      },
+      { merge: true }
+    );
+};
+
+export const deleteGamePointsStat = async (gameUserName: string) => {
+  const db = getDB();
+  await db
+    .collection("game")
+    .doc("gamePoints")
+    .set(
+      {
+        [gameUserName]: firebaseAdmin.firestore.FieldValue.delete(),
+      },
+      { merge: true }
+    );
+};
+
+export const deleteGameUser = async (gameUserName: string) => {
+  await deleteGamePointsStat(gameUserName);
+  await deleteUserLastVisitStat(gameUserName);
+  await deleteAvatar(gameUserName);
+};
+
 export const renameUserLastVisitStat = async (
   oldUsername: string,
   newUsername: string
