@@ -8,6 +8,9 @@ import { TRIAL_DAYS } from "@/common/subscription";
 const ENABLE_SUBSCRIPTIONS = true;
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
+  const response: InitBalanceResponse = {
+    done: true,
+  };
 
   const userId = userInfo.uid;
   const db = getDB();
@@ -25,11 +28,11 @@ export async function POST(request: Request) {
   console.log("logsDays.docs", logsDays.docs);
 
   if (logsHours.docs.length > 0) {
-    return;
+    return Response.json(response);
   }
 
   if (logsDays.docs.length > 0) {
-    return;
+    return Response.json(response);
   }
 
   if (ENABLE_SUBSCRIPTIONS) {
@@ -53,10 +56,6 @@ export async function POST(request: Request) {
       paymentId: "welcome",
     });
   }
-
-  const response: InitBalanceResponse = {
-    done: true,
-  };
 
   const devEmails = ["dmowski.alex@gmail.com"];
   const isDev = devEmails.includes(userInfo?.email || "");
