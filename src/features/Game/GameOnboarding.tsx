@@ -5,9 +5,8 @@ import { useState } from "react";
 import { useGame } from "./useGame";
 import { GameMyAvatar } from "./GameMyAvatar";
 import { GameMyUsername } from "./GameMyUsername";
-import { GameNativeLanguageSelector } from "./GameNativeLanguageSelector";
 import { useLingui } from "@lingui/react";
-import { ArrowRight, LucideSwords, MoveRight } from "lucide-react";
+import { ArrowRight, LucideSwords } from "lucide-react";
 
 export const GameOnboarding = () => {
   const settings = useSettings();

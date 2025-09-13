@@ -13,21 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Conversation/ConfirmConversationModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Next, please allow access to the microphone to communicate with the AI."
-msgstr "Далі, будь ласка, надайте доступ до мікрофона для спілкування з AI."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:71
-#. js-lingui-explicit-id
-msgid "Yes, I am ready"
-msgstr "Так, я готовий"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:75
-#. js-lingui-explicit-id
-msgid "No"
-msgstr "Ні"
-
 #: src/features/Goal/Quiz/QuizPage2.tsx:1722
 msgid "So you can keep your progress"
 msgstr "Щоб ви могли зберігати свій прогрес"
@@ -494,94 +479,6 @@ msgstr "Всього"
 msgid "Open history"
 msgstr "Відкрити історію"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:325
-#: src/features/Conversation/ConversationCanvas2.tsx:1359
-#: src/features/Conversation/ConversationPage.tsx:121
-#: src/features/Conversation/ConversationPage.tsx:130
-#: src/features/Conversation/ConversationPage.tsx:150
-#: src/features/Game/GamePage.tsx:22
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:251
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:157
-#: src/features/Goal/Quiz/QuizPage2.tsx:466
-#: src/features/Goal/Quiz/QuizPage2.tsx:489
-#: src/features/Goal/Quiz/QuizPage2.tsx:489
-#: src/features/Header/PaymentHistoryModal.tsx:65
-#: src/features/RolePlay/RolePlayModal.tsx:267
-#: src/features/Telegram/TgAppPage.tsx:165
-#: src/features/Translation/useTranslate.tsx:147
-#: src/features/Usage/PaymentModal.tsx:494
-#: src/features/Usage/SubscriptionPaymentModal.tsx:146
-#. js-lingui-explicit-id
-msgid "Loading..."
-msgstr "Завантаження..."
-
-#: src/features/Translation/useTranslate.tsx:147
-#. js-lingui-explicit-id
-msgid "No text to translate"
-msgstr "Немає тексту для перекладу"
-
-#: src/features/Translation/useTranslate.tsx:160
-#. js-lingui-explicit-id
-msgid "No translation available"
-msgstr "Переклад недоступний"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1094
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
-#: src/features/Goal/Quiz/QuizPage2.tsx:825
-#: src/features/Goal/Quiz/QuizPage2.tsx:861
-#: src/features/Usage/SubscriptionWaiter.tsx:47
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "Виконано"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:56
-#. js-lingui-explicit-id
-msgid "Your subscription has been successfully changed."
-msgstr "Вашу підписку успішно змінено."
-
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:265
-#: src/features/Usage/SubscriptionWaiter.tsx:60
-#: src/features/Usage/SubscriptionWaiter.tsx:81
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "Закрити"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:68
-#. js-lingui-explicit-id
-msgid "Waiting for payment..."
-msgstr "Очікування платежу..."
-
-#: src/features/Usage/SubscriptionWaiter.tsx:77
-#. js-lingui-explicit-id
-msgid "Please wait while we process your payment."
-msgstr "Зачекайте, поки ми обробляємо ваш платіж."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1497
-#: src/features/Usage/NoBalanceBlock.tsx:61
-#. js-lingui-explicit-id
-msgid "Low balance"
-msgstr "Низький баланс"
-
-#: src/features/Usage/NoBalanceBlock.tsx:72
-#. js-lingui-explicit-id
-msgid "You've made amazing progress. Let’s keep going."
-msgstr "Ви досягли чудових результатів. Давайте продовжуємо."
-
-#: src/features/Usage/NoBalanceBlock.tsx:98
-#. js-lingui-explicit-id
-msgid "Buy a subscription"
-msgstr "Купити підписку"
-
-#: src/features/Usage/NoBalanceBlock.tsx:110
-#. js-lingui-explicit-id
-msgid "Play the Game"
-msgstr "Грай у Гру"
-
 #: src/features/Usage/PaymentModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Buy more hours"
@@ -775,11 +672,99 @@ msgstr "Всього використано:"
 msgid "Payment history:"
 msgstr "Історія платежів:"
 
+#: src/features/Conversation/ConversationCanvas2.tsx:325
+#: src/features/Conversation/ConversationCanvas2.tsx:1359
+#: src/features/Conversation/ConversationPage.tsx:121
+#: src/features/Conversation/ConversationPage.tsx:130
+#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Game/GamePage.tsx:22
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:251
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:157
+#: src/features/Goal/Quiz/QuizPage2.tsx:466
+#: src/features/Goal/Quiz/QuizPage2.tsx:489
+#: src/features/Goal/Quiz/QuizPage2.tsx:489
+#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/RolePlay/RolePlayModal.tsx:267
+#: src/features/Telegram/TgAppPage.tsx:165
+#: src/features/Translation/useTranslate.tsx:147
+#: src/features/Usage/PaymentModal.tsx:494
+#: src/features/Usage/SubscriptionPaymentModal.tsx:146
+#. js-lingui-explicit-id
+msgid "Loading..."
+msgstr "Завантаження..."
+
 #: src/features/Header/PaymentHistoryModal.tsx:76
 #: src/features/Usage/PaymentModal.tsx:505
 #. js-lingui-explicit-id
 msgid "No payments..."
 msgstr "Без платежів..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1094
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
+#: src/features/Goal/Quiz/QuizPage2.tsx:825
+#: src/features/Goal/Quiz/QuizPage2.tsx:861
+#: src/features/Usage/SubscriptionWaiter.tsx:47
+#. js-lingui-explicit-id
+msgid "Done"
+msgstr "Виконано"
+
+#: src/features/Usage/SubscriptionWaiter.tsx:56
+#. js-lingui-explicit-id
+msgid "Your subscription has been successfully changed."
+msgstr "Вашу підписку успішно змінено."
+
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:265
+#: src/features/Usage/SubscriptionWaiter.tsx:60
+#: src/features/Usage/SubscriptionWaiter.tsx:81
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "Закрити"
+
+#: src/features/Usage/SubscriptionWaiter.tsx:68
+#. js-lingui-explicit-id
+msgid "Waiting for payment..."
+msgstr "Очікування платежу..."
+
+#: src/features/Usage/SubscriptionWaiter.tsx:77
+#. js-lingui-explicit-id
+msgid "Please wait while we process your payment."
+msgstr "Зачекайте, поки ми обробляємо ваш платіж."
+
+#: src/features/Translation/useTranslate.tsx:147
+#. js-lingui-explicit-id
+msgid "No text to translate"
+msgstr "Немає тексту для перекладу"
+
+#: src/features/Translation/useTranslate.tsx:160
+#. js-lingui-explicit-id
+msgid "No translation available"
+msgstr "Переклад недоступний"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1497
+#: src/features/Usage/NoBalanceBlock.tsx:61
+#. js-lingui-explicit-id
+msgid "Low balance"
+msgstr "Низький баланс"
+
+#: src/features/Usage/NoBalanceBlock.tsx:72
+#. js-lingui-explicit-id
+msgid "You've made amazing progress. Let’s keep going."
+msgstr "Ви досягли чудових результатів. Давайте продовжуємо."
+
+#: src/features/Usage/NoBalanceBlock.tsx:98
+#. js-lingui-explicit-id
+msgid "Buy a subscription"
+msgstr "Купити підписку"
+
+#: src/features/Usage/NoBalanceBlock.tsx:110
+#. js-lingui-explicit-id
+msgid "Play the Game"
+msgstr "Грай у Гру"
 
 #: src/features/Usage/SubscriptionPaymentModal.tsx:72
 #: src/features/Usage/SubscriptionPaymentModal.tsx:91
@@ -962,122 +947,6 @@ msgstr "Завантаження..."
 msgid "Refresh"
 msgstr "Оновити"
 
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
-#. js-lingui-explicit-id
-msgid ""
-"Boost your English vocabulary and fluency by creatively describing and "
-"guessing words in\n"
-"        this interactive AI-powered Alias game."
-msgstr ""
-"Покращте свій англійський словник і вільне володіння мовою, креативно "
-"описуючи та відгадуючи слова в\n"
-"        цій інтерактивній грі Alias, підсиланій штучним інтелектом."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
-#. js-lingui-explicit-id
-msgid "Benefits of Playing Alias Game"
-msgstr "Переваги гри в Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
-#. js-lingui-explicit-id
-msgid "Enhance your vocabulary by describing words in unique ways."
-msgstr "Покращте свій словниковий запас, описуючи слова унікальними способами."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
-#. js-lingui-explicit-id
-msgid "Improve listening skills as you interpret descriptions."
-msgstr "Покращуйте навички слухання, інтерпретуючи описи."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
-#. js-lingui-explicit-id
-msgid "Practice rapid thinking and fluent speaking under playful pressure."
-msgstr "Практикуйте швидке мислення та вільне висловлювання під веселою напругою."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
-#. js-lingui-explicit-id
-msgid "Receive instant, tailored feedback from your AI partner."
-msgstr "Отримуйте миттєві, індивідуалізовані відгуки від вашого AI партнера."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
-#. js-lingui-explicit-id
-msgid "How to Play"
-msgstr "Як грати"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
-#. js-lingui-explicit-id
-msgid ""
-"You and your AI partner alternate turns describing and guessing words "
-"without directly\n"
-"          naming them. This encourages creative thinking and fluent "
-"expression, adapting to your\n"
-"          language proficiency."
-msgstr ""
-"Ви та ваш партнер AI по черзі описуєте та вгадуєте слова без їх "
-"безпосереднього\n"
-"          називання. Це стимулює креативне мислення та вільне вираження, "
-"адаптуючись до вашого\n"
-"          рівня володіння мовою."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
-#. js-lingui-explicit-id
-msgid "Choose Your Language Level"
-msgstr "Оберіть свій рівень мови"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
-#. js-lingui-explicit-id
-msgid "Pick a level to start playing!"
-msgstr "Виберіть рівень, щоб почати грати!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
-#. js-lingui-explicit-id
-msgid "Alias Game Levels"
-msgstr "Рівні гри Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
-#. js-lingui-explicit-id
-msgid "Check proposed words"
-msgstr "Перевірте запропоновані слова"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
-#. js-lingui-explicit-id
-msgid "Based on your level, the AI will suggest words to describe."
-msgstr "На основі вашого рівня, ШІ запропонує слова для опису."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
-#. js-lingui-explicit-id
-msgid "Alias Game options"
-msgstr "Опції гри \"Аліас\""
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
-#. js-lingui-explicit-id
-msgid "Record your description"
-msgstr "Запишіть свій опис"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
-#. js-lingui-explicit-id
-msgid "Describe the word you see on the screen without using the word itself!"
-msgstr "Опишіть слово, яке ви бачите на екрані, не використовуючи саме це слово!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
-#. js-lingui-explicit-id
-msgid "Alias Game Recording"
-msgstr "Запис Гри в Псевдоніми"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
-#. js-lingui-explicit-id
-msgid "Have fun!"
-msgstr "Насолоджуйтесь!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
-#. js-lingui-explicit-id
-msgid "Enjoy the game and see how the AI guesses your description!"
-msgstr "Насолоджуйтесь грою та дивіться, як штучний інтелект вгадує ваш опис!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
-#. js-lingui-explicit-id
-msgid "Robot Thinking"
-msgstr "Робот думає"
-
 #: src/features/Settings/MyProfile.tsx:74
 #. js-lingui-explicit-id
 msgid "Language"
@@ -1196,22 +1065,121 @@ msgstr "Показати менше"
 msgid "Start"
 msgstr "Почати"
 
-#: src/features/Plan/useGoalCreation.ts:41
-#: src/features/Plan/useGoalCreation.ts:71
-#: src/features/Plan/useGoalCreation.ts:93
-#: src/features/Plan/useGoalCreation.ts:96
-#: src/features/Plan/useGoalCreation.ts:100
-#: src/features/Plan/useGoalCreation.ts:109
-#: src/features/Plan/useGoalCreation.ts:115
-#: src/features/Plan/useGoalCreation.ts:119
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
 #. js-lingui-explicit-id
-msgid "Processing the goal..."
-msgstr "Обробка цілі..."
+msgid ""
+"Boost your English vocabulary and fluency by creatively describing and "
+"guessing words in\n"
+"        this interactive AI-powered Alias game."
+msgstr ""
+"Покращте свій англійський словник і вільне володіння мовою, креативно "
+"описуючи та відгадуючи слова в\n"
+"        цій інтерактивній грі Alias, підсиланій штучним інтелектом."
 
-#: src/features/Plan/useGoalCreation.ts:133
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
 #. js-lingui-explicit-id
-msgid "Error Processing the goal"
-msgstr "Помилка обробки цілі"
+msgid "Benefits of Playing Alias Game"
+msgstr "Переваги гри в Alias"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
+#. js-lingui-explicit-id
+msgid "Enhance your vocabulary by describing words in unique ways."
+msgstr "Покращте свій словниковий запас, описуючи слова унікальними способами."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
+#. js-lingui-explicit-id
+msgid "Improve listening skills as you interpret descriptions."
+msgstr "Покращуйте навички слухання, інтерпретуючи описи."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
+#. js-lingui-explicit-id
+msgid "Practice rapid thinking and fluent speaking under playful pressure."
+msgstr "Практикуйте швидке мислення та вільне висловлювання під веселою напругою."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
+#. js-lingui-explicit-id
+msgid "Receive instant, tailored feedback from your AI partner."
+msgstr "Отримуйте миттєві, індивідуалізовані відгуки від вашого AI партнера."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
+#. js-lingui-explicit-id
+msgid "How to Play"
+msgstr "Як грати"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"You and your AI partner alternate turns describing and guessing words "
+"without directly\n"
+"          naming them. This encourages creative thinking and fluent "
+"expression, adapting to your\n"
+"          language proficiency."
+msgstr ""
+"Ви та ваш партнер AI по черзі описуєте та вгадуєте слова без їх "
+"безпосереднього\n"
+"          називання. Це стимулює креативне мислення та вільне вираження, "
+"адаптуючись до вашого\n"
+"          рівня володіння мовою."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
+#. js-lingui-explicit-id
+msgid "Choose Your Language Level"
+msgstr "Оберіть свій рівень мови"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
+#. js-lingui-explicit-id
+msgid "Pick a level to start playing!"
+msgstr "Виберіть рівень, щоб почати грати!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
+#. js-lingui-explicit-id
+msgid "Alias Game Levels"
+msgstr "Рівні гри Alias"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
+#. js-lingui-explicit-id
+msgid "Check proposed words"
+msgstr "Перевірте запропоновані слова"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
+#. js-lingui-explicit-id
+msgid "Based on your level, the AI will suggest words to describe."
+msgstr "На основі вашого рівня, ШІ запропонує слова для опису."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
+#. js-lingui-explicit-id
+msgid "Alias Game options"
+msgstr "Опції гри \"Аліас\""
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
+#. js-lingui-explicit-id
+msgid "Record your description"
+msgstr "Запишіть свій опис"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
+#. js-lingui-explicit-id
+msgid "Describe the word you see on the screen without using the word itself!"
+msgstr "Опишіть слово, яке ви бачите на екрані, не використовуючи саме це слово!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
+#. js-lingui-explicit-id
+msgid "Alias Game Recording"
+msgstr "Запис Гри в Псевдоніми"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
+#. js-lingui-explicit-id
+msgid "Have fun!"
+msgstr "Насолоджуйтесь!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
+#. js-lingui-explicit-id
+msgid "Enjoy the game and see how the AI guesses your description!"
+msgstr "Насолоджуйтесь грою та дивіться, як штучний інтелект вгадує ваш опис!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
+#. js-lingui-explicit-id
+msgid "Robot Thinking"
+msgstr "Робот думає"
 
 #: src/features/Plan/PlanCard.tsx:118
 #. js-lingui-explicit-id
@@ -1223,177 +1191,6 @@ msgstr "Надішліть 6 повідомлень для завершення"
 msgid "Start lesson"
 msgstr "Почати урок"
 
-#: src/features/Navigation/NavigationBar.tsx:44
-#. js-lingui-explicit-id
-msgid "Home"
-msgstr "Додому"
-
-#: src/features/Navigation/NavigationBar.tsx:49
-#: src/features/RolePlay/rolePlayData.tsx:20
-#. js-lingui-explicit-id
-msgid "Game"
-msgstr "Гра"
-
-#: src/features/Navigation/NavigationBar.tsx:59
-#. js-lingui-explicit-id
-msgid "Profile"
-msgstr "Профіль"
-
-#: src/features/Lang/getLabels.tsx:9
-#. js-lingui-explicit-id
-msgid "English Learning Plan"
-msgstr "План вивчення англійської"
-
-#: src/features/Lang/getLabels.tsx:10
-#. js-lingui-explicit-id
-msgid "Spanish Learning Plan"
-msgstr "План навчання іспанської"
-
-#: src/features/Lang/getLabels.tsx:11
-#. js-lingui-explicit-id
-msgid "Chinese Learning Plan"
-msgstr "План вивчення китайської"
-
-#: src/features/Lang/getLabels.tsx:12
-#. js-lingui-explicit-id
-msgid "French Learning Plan"
-msgstr "План навчання французької"
-
-#: src/features/Lang/getLabels.tsx:13
-#. js-lingui-explicit-id
-msgid "German Learning Plan"
-msgstr "План вивчення німецької"
-
-#: src/features/Lang/getLabels.tsx:14
-#. js-lingui-explicit-id
-msgid "Japanese Learning Plan"
-msgstr "План вивчення японської"
-
-#: src/features/Lang/getLabels.tsx:15
-#. js-lingui-explicit-id
-msgid "Korean Learning Plan"
-msgstr "План вивчення корейської"
-
-#: src/features/Lang/getLabels.tsx:16
-#. js-lingui-explicit-id
-msgid "Arabic Learning Plan"
-msgstr "План вивчення арабської"
-
-#: src/features/Lang/getLabels.tsx:17
-#. js-lingui-explicit-id
-msgid "Portuguese Learning Plan"
-msgstr "План вивчення португальської"
-
-#: src/features/Lang/getLabels.tsx:19
-#. js-lingui-explicit-id
-msgid "Italian Learning Plan"
-msgstr "План навчання італійської"
-
-#: src/features/Lang/getLabels.tsx:20
-#. js-lingui-explicit-id
-msgid "Polish Learning Plan"
-msgstr "План навчання польської"
-
-#: src/features/Lang/getLabels.tsx:21
-#. js-lingui-explicit-id
-msgid "Russian Learning Plan"
-msgstr "План навчання російської"
-
-#: src/features/Lang/getLabels.tsx:23
-#. js-lingui-explicit-id
-msgid "Ukrainian Learning Plan"
-msgstr "План навчання української"
-
-#: src/features/Lang/getLabels.tsx:24
-#. js-lingui-explicit-id
-msgid "Indonesian Learning Plan"
-msgstr "План навчання індонезійської"
-
-#: src/features/Lang/getLabels.tsx:25
-#. js-lingui-explicit-id
-msgid "Malay Learning Plan"
-msgstr "План вивчення малайської"
-
-#: src/features/Lang/getLabels.tsx:26
-#. js-lingui-explicit-id
-msgid "Thai Learning Plan"
-msgstr "План навчання Thai"
-
-#: src/features/Lang/getLabels.tsx:27
-#. js-lingui-explicit-id
-msgid "Turkish Learning Plan"
-msgstr "План вивчення турецької"
-
-#: src/features/Lang/getLabels.tsx:28
-#. js-lingui-explicit-id
-msgid "Vietnamese Learning Plan"
-msgstr "План вивчення в'єтнамської"
-
-#: src/features/Lang/getLabels.tsx:29
-#. js-lingui-explicit-id
-msgid "Danish Learning Plan"
-msgstr "План навчання датської"
-
-#: src/features/Lang/getLabels.tsx:30
-#. js-lingui-explicit-id
-msgid "Norwegian Learning Plan"
-msgstr "План навчання норвезької"
-
-#: src/features/Lang/getLabels.tsx:31
-#. js-lingui-explicit-id
-msgid "Swedish Learning Plan"
-msgstr "План вивчення шведської"
-
-#: src/features/Lang/getLabels.tsx:32
-#. js-lingui-explicit-id
-msgid "Belarusian Learning Plan"
-msgstr "План навчання білоруської"
-
-#: src/features/Dashboard/SelectLanguage.tsx:94
-#: src/features/Game/GameNativeLanguageSelector.tsx:19
-#: src/features/Goal/GoalQuestions.tsx:323
-#: src/features/Goal/Quiz/QuizPage2.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:995
-#: src/features/Goal/Quiz/useQuiz.tsx:622
-#: src/features/Lang/LanguageSwitcher.tsx:105
-#. js-lingui-explicit-id
-msgid "Other languages"
-msgstr "Інші мови"
-
-#: src/features/Dashboard/SelectLanguage.tsx:95
-#: src/features/Game/GameNativeLanguageSelector.tsx:20
-#: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Goal/Quiz/QuizPage2.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:996
-#: src/features/Goal/Quiz/useQuiz.tsx:623
-#: src/features/Lang/LanguageSwitcher.tsx:106
-#. js-lingui-explicit-id
-msgid "System languages"
-msgstr "Мови системи"
-
-#: src/features/Lang/LanguageSwitcher.tsx:188
-#. js-lingui-explicit-id
-msgid "Languages"
-msgstr "Мови"
-
-#: src/features/Goal/GoalQuestions.tsx:422
-#: src/features/Lang/LanguageSwitcher.tsx:231
-#. js-lingui-explicit-id
-msgid "Language to Learn"
-msgstr "Мова для вивчення"
-
-#: src/features/Dashboard/SelectLanguage.tsx:267
-#: src/features/Lang/LanguageSwitcher.tsx:270
-#. js-lingui-explicit-id
-msgid "Native Language"
-msgstr "Рідна мова"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1190
-#: src/features/Lang/LanguageSwitcher.tsx:312
-#. js-lingui-explicit-id
-msgid "Page Language"
-msgstr "Мова сторінки"
-
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
 msgid "Alias Word Guessing Game"
@@ -1403,6 +1200,12 @@ msgstr "Гра у вгадування слів Alias"
 #. js-lingui-explicit-id
 msgid "Alias"
 msgstr "Псевдонім"
+
+#: src/features/Navigation/NavigationBar.tsx:49
+#: src/features/RolePlay/rolePlayData.tsx:20
+#. js-lingui-explicit-id
+msgid "Game"
+msgstr "Гра"
 
 #: src/features/RolePlay/rolePlayData.tsx:32
 #: src/features/RolePlay/rolePlayData.tsx:414
@@ -2306,241 +2109,202 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Всі сценарії"
 
-#: src/features/Landing/PlanLandingBlock.tsx:20
+#: src/features/Plan/useGoalCreation.ts:41
+#: src/features/Plan/useGoalCreation.ts:71
+#: src/features/Plan/useGoalCreation.ts:93
+#: src/features/Plan/useGoalCreation.ts:96
+#: src/features/Plan/useGoalCreation.ts:100
+#: src/features/Plan/useGoalCreation.ts:109
+#: src/features/Plan/useGoalCreation.ts:115
+#: src/features/Plan/useGoalCreation.ts:119
 #. js-lingui-explicit-id
-msgid "Psychology"
-msgstr "Психологія"
+msgid "Processing the goal..."
+msgstr "Обробка цілі..."
 
-#: src/features/Landing/PlanLandingBlock.tsx:21
+#: src/features/Plan/useGoalCreation.ts:133
 #. js-lingui-explicit-id
-msgid "Mental Health Vocabulary"
-msgstr "Словник з питань психічного здоров'я"
+msgid "Error Processing the goal"
+msgstr "Помилка обробки цілі"
 
-#: src/features/Landing/PlanLandingBlock.tsx:23
+#: src/features/Navigation/NavigationBar.tsx:44
 #. js-lingui-explicit-id
-msgid "Essential words for discussing mental health and psychology."
-msgstr "Основні слова для обговорення психічного здоров'я та психології."
+msgid "Home"
+msgstr "Додому"
 
-#: src/features/Landing/PlanLandingBlock.tsx:29
+#: src/features/Navigation/NavigationBar.tsx:59
 #. js-lingui-explicit-id
-msgid "Diagnosis"
-msgstr "Діагностика"
+msgid "Profile"
+msgstr "Профіль"
 
-#: src/features/Landing/PlanLandingBlock.tsx:30
+#: src/features/Dashboard/SelectLanguage.tsx:94
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
+#: src/features/Goal/GoalQuestions.tsx:323
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:995
+#: src/features/Goal/Quiz/useQuiz.tsx:622
+#: src/features/Lang/LanguageSwitcher.tsx:105
 #. js-lingui-explicit-id
-msgid "Medical Talk Simulation"
-msgstr "Медичний діалог-симуляція"
+msgid "Other languages"
+msgstr "Інші мови"
 
-#: src/features/Landing/PlanLandingBlock.tsx:32
+#: src/features/Dashboard/SelectLanguage.tsx:95
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
+#: src/features/Goal/GoalQuestions.tsx:324
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
+#: src/features/Goal/Quiz/QuizPage2.tsx:996
+#: src/features/Goal/Quiz/useQuiz.tsx:623
+#: src/features/Lang/LanguageSwitcher.tsx:106
 #. js-lingui-explicit-id
-msgid "Practice medical conversations through simulated scenarios."
-msgstr "Практикуйте медичні розмови через симульовані сценарії."
+msgid "System languages"
+msgstr "Мови системи"
 
-#: src/features/Landing/PlanLandingBlock.tsx:38
+#: src/features/Lang/LanguageSwitcher.tsx:188
 #. js-lingui-explicit-id
-msgid "Reflex"
-msgstr "Рефлекс"
+msgid "Languages"
+msgstr "Мови"
 
-#: src/features/Landing/PlanLandingBlock.tsx:39
+#: src/features/Goal/GoalQuestions.tsx:422
+#: src/features/Lang/LanguageSwitcher.tsx:231
 #. js-lingui-explicit-id
-msgid "Fast Answer Practice"
-msgstr "Практика Швидкої Відповіді"
+msgid "Language to Learn"
+msgstr "Мова для вивчення"
 
-#: src/features/Landing/PlanLandingBlock.tsx:41
+#: src/features/Dashboard/SelectLanguage.tsx:267
+#: src/features/Lang/LanguageSwitcher.tsx:270
 #. js-lingui-explicit-id
-msgid "Improve your ability to answer quickly and clearly in conversations."
-msgstr "Покращте свою здатність швидко та ясно відповідати в розмовах."
+msgid "Native Language"
+msgstr "Рідна мова"
 
-#: src/features/Landing/LandingPage.tsx:138
-#: src/features/Landing/PlanLandingBlock.tsx:47
+#: src/features/Goal/Quiz/QuizPage2.tsx:1190
+#: src/features/Lang/LanguageSwitcher.tsx:312
 #. js-lingui-explicit-id
-msgid "Speaking"
-msgstr "Говоріння"
+msgid "Page Language"
+msgstr "Мова сторінки"
 
-#: src/features/Landing/PlanLandingBlock.tsx:48
+#: src/features/Lang/getLabels.tsx:9
 #. js-lingui-explicit-id
-msgid "Public Talk Skills"
-msgstr "Навички публічних виступів"
+msgid "English Learning Plan"
+msgstr "План вивчення англійської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:50
+#: src/features/Lang/getLabels.tsx:10
 #. js-lingui-explicit-id
-msgid "Boost your confidence in public speaking."
-msgstr "Підвищте свою впевненість у публічних виступах."
+msgid "Spanish Learning Plan"
+msgstr "План навчання іспанської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:56
+#: src/features/Lang/getLabels.tsx:11
 #. js-lingui-explicit-id
-msgid "TOEFL"
-msgstr "TOEFL"
+msgid "Chinese Learning Plan"
+msgstr "План вивчення китайської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:57
+#: src/features/Lang/getLabels.tsx:12
 #. js-lingui-explicit-id
-msgid "Academic Word List"
-msgstr "Академічний Список Слів"
+msgid "French Learning Plan"
+msgstr "План навчання французької"
 
-#: src/features/Landing/PlanLandingBlock.tsx:59
+#: src/features/Lang/getLabels.tsx:13
 #. js-lingui-explicit-id
-msgid "Master high-frequency TOEFL vocabulary."
-msgstr "Оволодій високочастотною лексикою TOEFL."
+msgid "German Learning Plan"
+msgstr "План вивчення німецької"
 
-#: src/features/Landing/PlanLandingBlock.tsx:65
+#: src/features/Lang/getLabels.tsx:14
 #. js-lingui-explicit-id
-msgid "Mock"
-msgstr "Макет"
+msgid "Japanese Learning Plan"
+msgstr "План вивчення японської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:66
+#: src/features/Lang/getLabels.tsx:15
 #. js-lingui-explicit-id
-msgid "TOEFL Speaking Tasks"
-msgstr "Завдання зі спілкування TOEFL"
+msgid "Korean Learning Plan"
+msgstr "План вивчення корейської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:68
+#: src/features/Lang/getLabels.tsx:16
 #. js-lingui-explicit-id
-msgid "Simulate speaking tasks from the TOEFL exam."
-msgstr "Симулюйте завдання зі структурованого висловлювання від іспиту TOEFL."
+msgid "Arabic Learning Plan"
+msgstr "План вивчення арабської"
 
-#: src/features/Landing/LandingPage.tsx:148
-#: src/features/Landing/PlanLandingBlock.tsx:74
+#: src/features/Lang/getLabels.tsx:17
 #. js-lingui-explicit-id
-msgid "Grammar"
-msgstr "Граматика"
+msgid "Portuguese Learning Plan"
+msgstr "План вивчення португальської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:75
+#: src/features/Lang/getLabels.tsx:19
 #. js-lingui-explicit-id
-msgid "Advanced Academic Usage"
-msgstr "Продвинуте академічне використання"
+msgid "Italian Learning Plan"
+msgstr "План навчання італійської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:77
+#: src/features/Lang/getLabels.tsx:20
 #. js-lingui-explicit-id
-msgid "Learn grammar used in academic writing and speaking."
-msgstr "Вивчайте граматику, яка використовується в академічному письмі та мовленні."
+msgid "Polish Learning Plan"
+msgstr "План навчання польської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:84
+#: src/features/Lang/getLabels.tsx:21
 #. js-lingui-explicit-id
-msgid "Wellness"
-msgstr "Благополуччя"
+msgid "Russian Learning Plan"
+msgstr "План навчання російської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:85
+#: src/features/Lang/getLabels.tsx:23
 #. js-lingui-explicit-id
-msgid "Mental Health Talk"
-msgstr "Розмова про психічне здоров'я"
+msgid "Ukrainian Learning Plan"
+msgstr "План навчання української"
 
-#: src/features/Landing/PlanLandingBlock.tsx:87
+#: src/features/Lang/getLabels.tsx:24
 #. js-lingui-explicit-id
-msgid "Explore techniques to talk about wellness and mental well-being."
-msgstr "Досліджуйте методи розмови про здоров'я та психічне благополуччя."
+msgid "Indonesian Learning Plan"
+msgstr "План навчання індонезійської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:93
+#: src/features/Lang/getLabels.tsx:25
 #. js-lingui-explicit-id
-msgid "Essays"
-msgstr "Есе"
+msgid "Malay Learning Plan"
+msgstr "План вивчення малайської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:94
+#: src/features/Lang/getLabels.tsx:26
 #. js-lingui-explicit-id
-msgid "Formal Writing Practice"
-msgstr "Практика формального письма"
+msgid "Thai Learning Plan"
+msgstr "План навчання Thai"
 
-#: src/features/Landing/PlanLandingBlock.tsx:96
+#: src/features/Lang/getLabels.tsx:27
 #. js-lingui-explicit-id
-msgid "Develop formal writing skills for academic success."
-msgstr "Розвивайте формальні навички письма для академічного успіху."
+msgid "Turkish Learning Plan"
+msgstr "План вивчення турецької"
 
-#: src/features/Dashboard/ConversationSelectCard.tsx:109
-#: src/features/Dashboard/PlanDashboardCards.tsx:98
-#: src/features/Goal/Quiz/QuizPage2.tsx:335
-#: src/features/Landing/PlanLandingBlock.tsx:103
+#: src/features/Lang/getLabels.tsx:28
 #. js-lingui-explicit-id
-msgid "Conversation"
-msgstr "Розмова"
+msgid "Vietnamese Learning Plan"
+msgstr "План вивчення в'єтнамської"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:338
-#: src/features/Landing/PlanLandingBlock.tsx:106
+#: src/features/Lang/getLabels.tsx:29
 #. js-lingui-explicit-id
-msgid "Rule"
-msgstr "Правило"
+msgid "Danish Learning Plan"
+msgstr "План навчання датської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:149
+#: src/features/Lang/getLabels.tsx:30
 #. js-lingui-explicit-id
-msgid "How It Works"
-msgstr "Як це працює"
+msgid "Norwegian Learning Plan"
+msgstr "План навчання норвезької"
 
-#: src/features/Landing/PlanLandingBlock.tsx:160
+#: src/features/Lang/getLabels.tsx:31
 #. js-lingui-explicit-id
-msgid "From Onboarding to Your Goal"
-msgstr "Від онбордингу до Вашої мети"
+msgid "Swedish Learning Plan"
+msgstr "План вивчення шведської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:233
+#: src/features/Lang/getLabels.tsx:32
 #. js-lingui-explicit-id
-msgid "Step 1"
-msgstr "Крок 1"
+msgid "Belarusian Learning Plan"
+msgstr "План навчання білоруської"
 
-#: src/features/Landing/PlanLandingBlock.tsx:250
+#: src/features/Landing/WelcomeScreen.tsx:129
 #. js-lingui-explicit-id
-msgid "Smart Start"
-msgstr "Розумний Старт"
+msgid "Talk, get corrected, improve—repeat."
+msgstr "Говоріть, отримуйте виправлення, покращуйтесь — повторюйте."
 
-#: src/features/Landing/PlanLandingBlock.tsx:261
+#: src/features/Landing/WelcomeScreen.tsx:133
 #. js-lingui-explicit-id
-msgid ""
-"Fill out a quick onboarding quiz to help FluencyPal understand your goals "
-"and preferences."
-msgstr ""
-"Заповніть швидкий опитування для первинного знайомства, щоб FluencyPal "
-"зрозумів ваши цілі та уподобання."
+msgid "Win the game and get the app"
+msgstr "Виграйте гру та отримайте додаток"
 
-#: src/features/Landing/PlanLandingBlock.tsx:363
+#: src/features/Landing/WelcomeScreen.tsx:133
 #. js-lingui-explicit-id
-msgid "Step 2"
-msgstr "Крок 2"
-
-#: src/features/Landing/PlanLandingBlock.tsx:381
-#. js-lingui-explicit-id
-msgid "Personal Plan"
-msgstr "Особистий План"
-
-#: src/features/Landing/PlanLandingBlock.tsx:396
-#. js-lingui-explicit-id
-msgid ""
-"Based on your onboarding, FluencyPal instantly generates a custom learning "
-"plan just for you."
-msgstr ""
-"На основі вашого початкового введення, FluencyPal миттєво генерує "
-"індивідуальний план навчання саме для вас."
-
-#: src/features/Goal/GoalQuestions.tsx:1095
-#: src/features/Landing/PlanLandingBlock.tsx:412
-#. js-lingui-explicit-id
-msgid "Create a plan"
-msgstr "Створити план"
-
-#: src/features/Landing/PlanLandingBlock.tsx:576
-#. js-lingui-explicit-id
-msgid "Step 3"
-msgstr "Крок 3"
-
-#: src/features/Landing/PlanLandingBlock.tsx:604
-#. js-lingui-explicit-id
-msgid ""
-"Jump into your tailored learning path and build real skills through "
-"engaging practice with AI voice chat."
-msgstr ""
-"Стрибніть у свій індивідуальний шлях навчання та розвивайте реальні навички "
-"через захоплюючу практику з AI голосовим чатом."
-
-#: src/features/Landing/PlanLandingBlock.tsx:638
-#. js-lingui-explicit-id
-msgid "1 hour free"
-msgstr "1 година безкоштовно"
-
-#: src/features/Landing/PlanLandingBlock.tsx:664
-#. js-lingui-explicit-id
-msgid "Results are closer than you think"
-msgstr "Результати ближче, ніж ви думаєте"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:466
-#: src/features/Landing/PlanLandingBlock.tsx:677
-#. js-lingui-explicit-id
-msgid "Start Learning"
-msgstr "Почніть навчання"
+msgid "for free"
+msgstr "безкоштовно"
 
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
@@ -2700,6 +2464,12 @@ msgstr ""
 "граматика, словниковий запас та відстеження прогресу — щоб досягти "
 "онлайн-флюентності в англійській мові швидше."
 
+#: src/features/Landing/LandingPage.tsx:138
+#: src/features/Landing/PlanLandingBlock.tsx:47
+#. js-lingui-explicit-id
+msgid "Speaking"
+msgstr "Говоріння"
+
 #: src/features/Landing/LandingPage.tsx:139
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
@@ -2720,6 +2490,12 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "Почніть практику розмови"
+
+#: src/features/Landing/LandingPage.tsx:148
+#: src/features/Landing/PlanLandingBlock.tsx:74
+#. js-lingui-explicit-id
+msgid "Grammar"
+msgstr "Граматика"
 
 #: src/features/Landing/LandingPage.tsx:149
 #. js-lingui-explicit-id
@@ -2884,6 +2660,230 @@ msgstr "Вчіться будь-де, у будь-який час"
 msgid "Start Your Free Trial"
 msgstr "Розпочніть свій безкоштовний пробний період"
 
+#: src/features/Landing/PlanLandingBlock.tsx:20
+#. js-lingui-explicit-id
+msgid "Psychology"
+msgstr "Психологія"
+
+#: src/features/Landing/PlanLandingBlock.tsx:21
+#. js-lingui-explicit-id
+msgid "Mental Health Vocabulary"
+msgstr "Словник з питань психічного здоров'я"
+
+#: src/features/Landing/PlanLandingBlock.tsx:23
+#. js-lingui-explicit-id
+msgid "Essential words for discussing mental health and psychology."
+msgstr "Основні слова для обговорення психічного здоров'я та психології."
+
+#: src/features/Landing/PlanLandingBlock.tsx:29
+#. js-lingui-explicit-id
+msgid "Diagnosis"
+msgstr "Діагностика"
+
+#: src/features/Landing/PlanLandingBlock.tsx:30
+#. js-lingui-explicit-id
+msgid "Medical Talk Simulation"
+msgstr "Медичний діалог-симуляція"
+
+#: src/features/Landing/PlanLandingBlock.tsx:32
+#. js-lingui-explicit-id
+msgid "Practice medical conversations through simulated scenarios."
+msgstr "Практикуйте медичні розмови через симульовані сценарії."
+
+#: src/features/Landing/PlanLandingBlock.tsx:38
+#. js-lingui-explicit-id
+msgid "Reflex"
+msgstr "Рефлекс"
+
+#: src/features/Landing/PlanLandingBlock.tsx:39
+#. js-lingui-explicit-id
+msgid "Fast Answer Practice"
+msgstr "Практика Швидкої Відповіді"
+
+#: src/features/Landing/PlanLandingBlock.tsx:41
+#. js-lingui-explicit-id
+msgid "Improve your ability to answer quickly and clearly in conversations."
+msgstr "Покращте свою здатність швидко та ясно відповідати в розмовах."
+
+#: src/features/Landing/PlanLandingBlock.tsx:48
+#. js-lingui-explicit-id
+msgid "Public Talk Skills"
+msgstr "Навички публічних виступів"
+
+#: src/features/Landing/PlanLandingBlock.tsx:50
+#. js-lingui-explicit-id
+msgid "Boost your confidence in public speaking."
+msgstr "Підвищте свою впевненість у публічних виступах."
+
+#: src/features/Landing/PlanLandingBlock.tsx:56
+#. js-lingui-explicit-id
+msgid "TOEFL"
+msgstr "TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:57
+#. js-lingui-explicit-id
+msgid "Academic Word List"
+msgstr "Академічний Список Слів"
+
+#: src/features/Landing/PlanLandingBlock.tsx:59
+#. js-lingui-explicit-id
+msgid "Master high-frequency TOEFL vocabulary."
+msgstr "Оволодій високочастотною лексикою TOEFL."
+
+#: src/features/Landing/PlanLandingBlock.tsx:65
+#. js-lingui-explicit-id
+msgid "Mock"
+msgstr "Макет"
+
+#: src/features/Landing/PlanLandingBlock.tsx:66
+#. js-lingui-explicit-id
+msgid "TOEFL Speaking Tasks"
+msgstr "Завдання зі спілкування TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:68
+#. js-lingui-explicit-id
+msgid "Simulate speaking tasks from the TOEFL exam."
+msgstr "Симулюйте завдання зі структурованого висловлювання від іспиту TOEFL."
+
+#: src/features/Landing/PlanLandingBlock.tsx:75
+#. js-lingui-explicit-id
+msgid "Advanced Academic Usage"
+msgstr "Продвинуте академічне використання"
+
+#: src/features/Landing/PlanLandingBlock.tsx:77
+#. js-lingui-explicit-id
+msgid "Learn grammar used in academic writing and speaking."
+msgstr "Вивчайте граматику, яка використовується в академічному письмі та мовленні."
+
+#: src/features/Landing/PlanLandingBlock.tsx:84
+#. js-lingui-explicit-id
+msgid "Wellness"
+msgstr "Благополуччя"
+
+#: src/features/Landing/PlanLandingBlock.tsx:85
+#. js-lingui-explicit-id
+msgid "Mental Health Talk"
+msgstr "Розмова про психічне здоров'я"
+
+#: src/features/Landing/PlanLandingBlock.tsx:87
+#. js-lingui-explicit-id
+msgid "Explore techniques to talk about wellness and mental well-being."
+msgstr "Досліджуйте методи розмови про здоров'я та психічне благополуччя."
+
+#: src/features/Landing/PlanLandingBlock.tsx:93
+#. js-lingui-explicit-id
+msgid "Essays"
+msgstr "Есе"
+
+#: src/features/Landing/PlanLandingBlock.tsx:94
+#. js-lingui-explicit-id
+msgid "Formal Writing Practice"
+msgstr "Практика формального письма"
+
+#: src/features/Landing/PlanLandingBlock.tsx:96
+#. js-lingui-explicit-id
+msgid "Develop formal writing skills for academic success."
+msgstr "Розвивайте формальні навички письма для академічного успіху."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:109
+#: src/features/Dashboard/PlanDashboardCards.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:335
+#: src/features/Landing/PlanLandingBlock.tsx:103
+#. js-lingui-explicit-id
+msgid "Conversation"
+msgstr "Розмова"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:101
+#: src/features/Goal/Quiz/QuizPage2.tsx:338
+#: src/features/Landing/PlanLandingBlock.tsx:106
+#. js-lingui-explicit-id
+msgid "Rule"
+msgstr "Правило"
+
+#: src/features/Landing/PlanLandingBlock.tsx:149
+#. js-lingui-explicit-id
+msgid "How It Works"
+msgstr "Як це працює"
+
+#: src/features/Landing/PlanLandingBlock.tsx:160
+#. js-lingui-explicit-id
+msgid "From Onboarding to Your Goal"
+msgstr "Від онбордингу до Вашої мети"
+
+#: src/features/Landing/PlanLandingBlock.tsx:233
+#. js-lingui-explicit-id
+msgid "Step 1"
+msgstr "Крок 1"
+
+#: src/features/Landing/PlanLandingBlock.tsx:250
+#. js-lingui-explicit-id
+msgid "Smart Start"
+msgstr "Розумний Старт"
+
+#: src/features/Landing/PlanLandingBlock.tsx:261
+#. js-lingui-explicit-id
+msgid ""
+"Fill out a quick onboarding quiz to help FluencyPal understand your goals "
+"and preferences."
+msgstr ""
+"Заповніть швидкий опитування для первинного знайомства, щоб FluencyPal "
+"зрозумів ваши цілі та уподобання."
+
+#: src/features/Landing/PlanLandingBlock.tsx:363
+#. js-lingui-explicit-id
+msgid "Step 2"
+msgstr "Крок 2"
+
+#: src/features/Landing/PlanLandingBlock.tsx:381
+#. js-lingui-explicit-id
+msgid "Personal Plan"
+msgstr "Особистий План"
+
+#: src/features/Landing/PlanLandingBlock.tsx:396
+#. js-lingui-explicit-id
+msgid ""
+"Based on your onboarding, FluencyPal instantly generates a custom learning "
+"plan just for you."
+msgstr ""
+"На основі вашого початкового введення, FluencyPal миттєво генерує "
+"індивідуальний план навчання саме для вас."
+
+#: src/features/Goal/GoalQuestions.tsx:1095
+#: src/features/Landing/PlanLandingBlock.tsx:412
+#. js-lingui-explicit-id
+msgid "Create a plan"
+msgstr "Створити план"
+
+#: src/features/Landing/PlanLandingBlock.tsx:576
+#. js-lingui-explicit-id
+msgid "Step 3"
+msgstr "Крок 3"
+
+#: src/features/Landing/PlanLandingBlock.tsx:604
+#. js-lingui-explicit-id
+msgid ""
+"Jump into your tailored learning path and build real skills through "
+"engaging practice with AI voice chat."
+msgstr ""
+"Стрибніть у свій індивідуальний шлях навчання та розвивайте реальні навички "
+"через захоплюючу практику з AI голосовим чатом."
+
+#: src/features/Landing/PlanLandingBlock.tsx:638
+#. js-lingui-explicit-id
+msgid "1 hour free"
+msgstr "1 година безкоштовно"
+
+#: src/features/Landing/PlanLandingBlock.tsx:664
+#. js-lingui-explicit-id
+msgid "Results are closer than you think"
+msgstr "Результати ближче, ніж ви думаєте"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:466
+#: src/features/Landing/PlanLandingBlock.tsx:677
+#. js-lingui-explicit-id
+msgid "Start Learning"
+msgstr "Почніть навчання"
+
 #: src/features/Landing/Footer.tsx:85
 #. js-lingui-explicit-id
 msgid "Role-Play"
@@ -2902,32 +2902,12 @@ msgstr "Блог"
 msgid "Price"
 msgstr "Ціна"
 
-#: src/features/Landing/WelcomeScreen.tsx:129
-#. js-lingui-explicit-id
-msgid "Talk, get corrected, improve—repeat."
-msgstr "Говоріть, отримуйте виправлення, покращуйтесь — повторюйте."
-
-#: src/features/Landing/WelcomeScreen.tsx:133
-#. js-lingui-explicit-id
-msgid "Win the game and get the app"
-msgstr "Виграйте гру та отримайте додаток"
-
-#: src/features/Landing/WelcomeScreen.tsx:133
-#. js-lingui-explicit-id
-msgid "for free"
-msgstr "безкоштовно"
-
 #: src/features/Blog/BlogsPage.tsx:41
 #: src/features/Landing/Price/PricePage.tsx:971
 #: src/features/Landing/RolePlay/ScenariosPage.tsx:43
 #. js-lingui-explicit-id
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Розпочніть свою подорож до вільного спілкування зараз"
-
-#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
-#. js-lingui-explicit-id
-msgid "Try"
-msgstr "Спробуйте"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
@@ -2996,19 +2976,10 @@ msgstr "ПОВ’ЯЗАНІ СЦЕНАРІЇ"
 msgid "Ready to Become Fluent in English?"
 msgstr "Готові стати вільно говорити англійською?"
 
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
 #. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "Практикуйте реальні розмови за допомогою сценаріїв рольових ігор"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
-msgstr ""
-"Замовляйте їжу, плануйте зустрічі, успішно проходьте співбесіди та більше — "
-"все з підтримкою вашого AI-репетитора."
+msgid "Try"
+msgstr "Спробуйте"
 
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
@@ -3412,6 +3383,20 @@ msgstr ""
 msgid "Contacts:"
 msgstr "Контакти:"
 
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "Практикуйте реальні розмови за допомогою сценаріїв рольових ігор"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
+msgstr ""
+"Замовляйте їжу, плануйте зустрічі, успішно проходьте співбесіди та більше — "
+"все з підтримкою вашого AI-репетитора."
+
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:20
 #. js-lingui-explicit-id
 msgid "Role Play Scenarios"
@@ -3555,6 +3540,22 @@ msgstr "Підписка (1 місяць)"
 msgid "Trial days"
 msgstr "Дні пробного періоду"
 
+#: src/features/Header/HeaderStatic.tsx:11
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "Рольові Ігри"
+
+#: src/features/Header/HeaderStatic.tsx:14
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "Увійти"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:16
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "Потрібна допомога?"
+
 #: src/features/Header/HeaderPractice.tsx:202
 #. js-lingui-explicit-id
 msgid "Finishing..."
@@ -3571,22 +3572,6 @@ msgstr "Назад"
 #. js-lingui-explicit-id
 msgid "Payment history"
 msgstr "Історія платежів"
-
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:16
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "Потрібна допомога?"
-
-#: src/features/Header/HeaderStatic.tsx:11
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "Рольові Ігри"
-
-#: src/features/Header/HeaderStatic.tsx:14
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "Увійти"
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3815,8 +3800,8 @@ msgstr "Я хочу вивчити..."
 msgid "My native language"
 msgstr "Моя рідна мова"
 
-#: src/features/Game/GameOnboarding.tsx:65
-#: src/features/Game/GameOnboarding.tsx:116
+#: src/features/Game/GameOnboarding.tsx:76
+#: src/features/Game/GameOnboarding.tsx:131
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:373
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:381
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:246
@@ -4195,50 +4180,11 @@ msgstr "Ніякої реклами, ніякого спаму"
 msgid "Nice!"
 msgstr "Чудово!"
 
-#: src/features/Game/GameOnboarding.tsx:46
-#. js-lingui-explicit-id
-msgid "Learn and Play"
-msgstr "Вчіться і грайте"
-
-#: src/features/Game/GameOnboarding.tsx:55
-#. js-lingui-explicit-id
-msgid "Describe images, craft sentences, and translate words"
-msgstr "Описуйте зображення, формулюйте речення та перекладайте слова"
-
-#: src/features/Game/GameOnboarding.tsx:94
-#. js-lingui-explicit-id
-msgid "You have a chance"
-msgstr "У вас є шанс"
-
-#: src/features/Game/GameOnboarding.tsx:103
-#. js-lingui-explicit-id
-msgid ""
-"Each day, we remove 3 points from everyone so that everyone has a fair "
-"chance to win."
-msgstr ""
-"Щодня ми знімаємо 3 бали від кожного, щоб у всіх була справедлива шанс "
-"виграти."
-
-#: src/features/Game/GameOnboarding.tsx:132
-#. js-lingui-explicit-id
-msgid "Let’s make sure you’re ready"
-msgstr "Давайте переконаємося, що ви готові"
-
-#: src/features/Game/GameOnboarding.tsx:143
-#. js-lingui-explicit-id
-msgid "Your Avatar:"
-msgstr "Ваш Аватар:"
-
-#: src/features/Game/GameOnboarding.tsx:168
+#: src/features/Game/GameOnboarding.tsx:188
 #: src/features/Game/GamePage.tsx:23
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Грати"
-
-#: src/features/Game/GameNativeLanguageSelector.tsx:49
-#. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Ваша рідна мова:"
 
 #: src/features/Game/GamePage.tsx:90
 #. js-lingui-explicit-id
@@ -4251,15 +4197,44 @@ msgstr "Рейтинг:"
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Увійдіть до топ 5, щоб отримати додаток безкоштовно"
 
-#: src/features/Game/GameMyUsername.tsx:26
+#: src/features/Game/GameNativeLanguageSelector.tsx:49
 #. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "Ім'я користувача повинно містити принаймні 3 символи."
+msgid "Your Native Language:"
+msgstr "Ваша рідна мова:"
 
-#: src/features/Game/GameMyUsername.tsx:45
+#: src/features/Game/GameOnboarding.tsx:53
 #. js-lingui-explicit-id
-msgid "Game username:"
-msgstr "Ім'я у грі:"
+msgid "Learn and Play"
+msgstr "Вчіться і грайте"
+
+#: src/features/Game/GameOnboarding.tsx:62
+#. js-lingui-explicit-id
+msgid "Describe images, craft sentences, and translate words"
+msgstr "Описуйте зображення, формулюйте речення та перекладайте слова"
+
+#: src/features/Game/GameOnboarding.tsx:106
+#. js-lingui-explicit-id
+msgid "You have a chance"
+msgstr "У вас є шанс"
+
+#: src/features/Game/GameOnboarding.tsx:115
+#. js-lingui-explicit-id
+msgid ""
+"Each day, we remove 3 points from everyone so that everyone has a fair "
+"chance to win."
+msgstr ""
+"Щодня ми знімаємо 3 бали від кожного, щоб у всіх була справедлива шанс "
+"виграти."
+
+#: src/features/Game/GameOnboarding.tsx:152
+#. js-lingui-explicit-id
+msgid "Let’s make sure you’re ready"
+msgstr "Давайте переконаємося, що ви готові"
+
+#: src/features/Game/GameOnboarding.tsx:163
+#. js-lingui-explicit-id
+msgid "Your Avatar:"
+msgstr "Ваш Аватар:"
 
 #: src/features/Game/GameMyAvatar.tsx:27
 #. js-lingui-explicit-id
@@ -4271,15 +4246,10 @@ msgstr "Аватар"
 msgid "Select your game avatar"
 msgstr "Виберіть свій аватар у грі"
 
-#: src/features/Game/GameBadge.tsx:75
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
-msgid "Play and Learn"
-msgstr "Грай та Вчись"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "Сформуйте речення"
+msgid "Discuss the topic"
+msgstr "Обговорити тему"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:183
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
@@ -4288,10 +4258,48 @@ msgstr "Сформуйте речення"
 msgid "Submit answer"
 msgstr "Надіслати відповідь"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
 #. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "Перекладіть слово"
+msgid "Record an answer"
+msgstr "Запишіть відповідь"
+
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:281
+#. js-lingui-explicit-id
+msgid "Describe the topic in your own words..."
+msgstr "Опишіть тему своїми власними словами..."
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:276
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:302
+#. js-lingui-explicit-id
+msgid "Error: "
+msgstr "Помилка:"
+
+#: src/features/Game/GameMyUsername.tsx:26
+#. js-lingui-explicit-id
+msgid "Username must be at least 3 characters long."
+msgstr "Ім'я користувача повинно містити принаймні 3 символи."
+
+#: src/features/Game/GameMyUsername.tsx:45
+#. js-lingui-explicit-id
+msgid "Game username:"
+msgstr "Ім'я у грі:"
+
+#: src/features/Game/GameBadge.tsx:75
+#. js-lingui-explicit-id
+msgid "Play and Learn"
+msgstr "Грай та Вчись"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
+#. js-lingui-explicit-id
+msgid "Describe the image"
+msgstr "Опишіть зображення"
+
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Form a sentence"
+msgstr "Сформуйте речення"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
 #. js-lingui-explicit-id
@@ -4315,33 +4323,10 @@ msgstr "Надіслати"
 msgid "Error:"
 msgstr "Помилка:"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
 #. js-lingui-explicit-id
-msgid "Discuss the topic"
-msgstr "Обговорити тему"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
-#. js-lingui-explicit-id
-msgid "Record an answer"
-msgstr "Запишіть відповідь"
-
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:281
-#. js-lingui-explicit-id
-msgid "Describe the topic in your own words..."
-msgstr "Опишіть тему своїми власними словами..."
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:276
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:302
-#. js-lingui-explicit-id
-msgid "Error: "
-msgstr "Помилка:"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
-#. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "Опишіть зображення"
+msgid "Translate the word"
+msgstr "Перекладіть слово"
 
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
@@ -4396,10 +4381,10 @@ msgstr "Вчіться"
 msgid "Page"
 msgstr "Сторінка"
 
-#: src/features/Dashboard/WordsToLearn.tsx:32
+#: src/features/Dashboard/RulesToLearn.tsx:36
 #. js-lingui-explicit-id
-msgid "New words to practice."
-msgstr "Нові слова для практики."
+msgid "New rule to practice."
+msgstr "Нове правило для практики."
 
 #: src/features/Dashboard/RulesToLearn.tsx:86
 #: src/features/Dashboard/WordsToLearn.tsx:106
@@ -4407,15 +4392,15 @@ msgstr "Нові слова для практики."
 msgid "Start practice"
 msgstr "Почати практику"
 
+#: src/features/Dashboard/WordsToLearn.tsx:32
+#. js-lingui-explicit-id
+msgid "New words to practice."
+msgstr "Нові слова для практики."
+
 #: src/features/Dashboard/WordsToLearn.tsx:128
 #. js-lingui-explicit-id
 msgid "I know all of them"
 msgstr "Я знаю всіх них"
-
-#: src/features/Dashboard/RulesToLearn.tsx:36
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "Нове правило для практики."
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:84
 #. js-lingui-explicit-id
@@ -4487,41 +4472,6 @@ msgstr "Створюйте більше унікальних уроків"
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Щоб генерувати більше уроків, вам потрібно завершити принаймні 3 уроки"
 
-#: src/features/Dashboard/GoalCard.tsx:13
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Встановіть мету вашого навчання"
-
-#: src/features/Dashboard/GoalCard.tsx:28
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "Старт | 5 хв"
-
-#: src/features/Dashboard/HomeworkCard.tsx:21
-#. js-lingui-explicit-id
-msgid "Homework"
-msgstr "Домашнє завдання"
-
-#: src/features/Dashboard/HomeworkCard.tsx:57
-#. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "Не задано домашнє завдання."
-
-#: src/features/Dashboard/HomeworkCard.tsx:66
-#. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "Розпочніть розмову, щоб отримати один."
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "Пропустити"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "Показати все"
-
 #: src/features/Dashboard/ConversationSelectCard.tsx:110
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
@@ -4569,6 +4519,56 @@ msgstr "Отримайте правило"
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "Розширте словник"
+
+#: src/features/Dashboard/HomeworkCard.tsx:21
+#. js-lingui-explicit-id
+msgid "Homework"
+msgstr "Домашнє завдання"
+
+#: src/features/Dashboard/HomeworkCard.tsx:57
+#. js-lingui-explicit-id
+msgid "No homework assigned yet."
+msgstr "Не задано домашнє завдання."
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "Розпочніть розмову, щоб отримати один."
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "Пропустити"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "Показати все"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
+#. js-lingui-explicit-id
+msgid "Progress Calendar"
+msgstr "Календар прогресу"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
+#. js-lingui-explicit-id
+msgid "Less"
+msgstr "Менше"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
+#. js-lingui-explicit-id
+msgid "More"
+msgstr "Більше"
+
+#: src/features/Dashboard/GoalCard.tsx:13
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Встановіть мету вашого навчання"
+
+#: src/features/Dashboard/GoalCard.tsx:28
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "Старт | 5 хв"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4672,26 +4672,31 @@ msgstr "Підготовка мозку"
 msgid "Upload language skills directly to your brain"
 msgstr "Завантажуйте мовні навички прямо в ваш мозок"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
-#. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "Календар прогресу"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "Менше"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "Більше"
-
 #: src/features/Conversation/useConversationsAnalysis.ts:89
 #: src/features/Conversation/useConversationsAnalysis.ts:132
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "Помилка аналізу розмови"
+
+#: src/features/Conversation/ConversationError.tsx:34
+#. js-lingui-explicit-id
+msgid "Oops! Something went wrong"
+msgstr "Ой! Щось пішло не так"
+
+#: src/features/Conversation/ConversationError.tsx:37
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "Будь ласка, оновіть сторінку та спробуйте ще раз"
+
+#: src/features/Conversation/ConversationError.tsx:41
+#. js-lingui-explicit-id
+msgid "Notification was sent to the dev team. Sorry for that..."
+msgstr "Повідомлення було відправлено команді розробників. Вибачте за це..."
+
+#: src/features/Conversation/ConversationError.tsx:51
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "Перезавантажте сторінку"
 
 #: src/features/Conversation/ConversationPage.tsx:134
 #. js-lingui-explicit-id
@@ -4708,185 +4713,39 @@ msgstr "Створення нових слів..."
 msgid "Crafting new rule..."
 msgstr "Створення нового правила..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:360
-#. js-lingui-explicit-id
-msgid "Idea for your message"
-msgstr "Ідея для вашого повідомлення"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:418
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "Огляд уроку"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:439
-#. js-lingui-explicit-id
-msgid "Language level:"
-msgstr "Рівень мови:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:441
-#: src/features/Conversation/ConversationCanvas2.tsx:448
-#: src/features/Conversation/ConversationCanvas2.tsx:455
-#: src/features/Conversation/ConversationCanvas2.tsx:744
-#: src/features/Conversation/ConversationCanvas2.tsx:883
-#: src/features/Conversation/ConversationCanvas2.tsx:890
-#. js-lingui-explicit-id
-msgid "Analyzing..."
-msgstr "Аналізуємо..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:446
-#. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "Що було чудовим:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:453
-#. js-lingui-explicit-id
-msgid "Areas to improve:"
-msgstr "Області для поліпшення:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:478
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "Продовжити розмову"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:491
-#. js-lingui-explicit-id
-msgid "Start new lesson"
-msgstr "Почати новий урок"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:678
-#. js-lingui-explicit-id
-msgid "Error during analyzing message"
-msgstr "Помилка під час аналізу повідомлення"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:732
-#. js-lingui-explicit-id
-msgid "Almost correct"
-msgstr "Майже вірно"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:747
-#. js-lingui-explicit-id
-msgid "Great!"
-msgstr "Чудово!"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:770
-#. js-lingui-explicit-id
-msgid "Your Message"
-msgstr "Ваше Повідомлення"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:842
-#. js-lingui-explicit-id
-msgid "Corrected"
-msgstr "Виправлено"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:937
-#. js-lingui-explicit-id
-msgid "New Words to Vocabulary:"
-msgstr "Нові слова до словника:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:982
-#. js-lingui-explicit-id
-msgid "Analyzing"
-msgstr "Аналіз"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:989
-#. js-lingui-explicit-id
-msgid "Preparing Goal"
-msgstr "Підготовка Цілі"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1009
-#. js-lingui-explicit-id
-msgid "Goal is created"
-msgstr "Мета створена"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1019
-#. js-lingui-explicit-id
-msgid "Lessons added:"
-msgstr "Додані уроки:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1040
-#. js-lingui-explicit-id
-msgid "Open plan"
-msgstr "Відкритий план"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1113
-#. js-lingui-explicit-id
-msgid "Stop"
-msgstr "Стоп"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1145
-#. js-lingui-explicit-id
-msgid "Record Message"
-msgstr "Записати повідомлення"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1179
-#. js-lingui-explicit-id
-msgid "Finish conversation"
-msgstr "Завершити розмову"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1196
-#. js-lingui-explicit-id
-msgid "Turn Volume Off"
-msgstr "Вимкнути гучність"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1196
-#. js-lingui-explicit-id
-msgid "Turn Volume On"
-msgstr "Увімкнути гучність"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1217
-#. js-lingui-explicit-id
-msgid "Voice record mode"
-msgstr "Режим запису голосу"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1240
-#. js-lingui-explicit-id
-msgid "Keyboard mode"
-msgstr "Режим клавіатури"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1263
-#. js-lingui-explicit-id
-msgid "Phone call mode"
-msgstr "Режим телефонного дзвінка"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1285
-#. js-lingui-explicit-id
-msgid "Help with answer"
-msgstr "Допомога з відповіддю"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1308
-#. js-lingui-explicit-id
-msgid "Your message..."
-msgstr "Ваше повідомлення..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1359
-#. js-lingui-explicit-id
-msgid "Mission complete"
-msgstr "Місію виконано"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1371
-#. js-lingui-explicit-id
-msgid "Open results"
-msgstr "Відкрити результати"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1413
-#. js-lingui-explicit-id
-msgid "Re-write"
-msgstr "Перепишіть"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1473
-#. js-lingui-explicit-id
-msgid "Cancel recording"
-msgstr "Скасувати запис"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1505
-#. js-lingui-explicit-id
-msgid "Top up"
-msgstr "Поповнити"
-
 #: src/features/Conversation/ConfirmConversationModal.tsx:33
 #. js-lingui-explicit-id
 msgid "Ready?"
 msgstr "Готові?"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Next, please allow access to the microphone to communicate with the AI."
+msgstr "Далі, будь ласка, надайте доступ до мікрофона для спілкування з AI."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:69
+#. js-lingui-explicit-id
+msgid "Yes, I am ready"
+msgstr "Так, я готовий"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:73
+#. js-lingui-explicit-id
+msgid "No"
+msgstr "Ні"
+
+#: src/features/Blog/ListBlogIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Read and Learn with my blog"
+msgstr "Читати та вчитися з мого блогу"
+
+#: src/features/Blog/ListBlogIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
+msgstr ""
+"Надихайтеся та дізнавайтеся про останні тенденції в вивченні мов, навчанні "
+"та технологіях."
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6397,20 +6256,6 @@ msgstr "Професійний розвиток"
 msgid "All Blogs"
 msgstr "Всі Блоги"
 
-#: src/features/Blog/ListBlogIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "Читати та вчитися з мого блогу"
-
-#: src/features/Blog/ListBlogIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr ""
-"Надихайтеся та дізнавайтеся про останні тенденції в вивченні мов, навчанні "
-"та технологіях."
-
 #: src/features/Conversation/AliasGamePanel.tsx:122
 #. js-lingui-explicit-id
 msgid "Describe these words:"
@@ -6425,11 +6270,6 @@ msgstr "Більше опцій"
 #. js-lingui-explicit-id
 msgid "Guessed words:"
 msgstr "Здогадані слова:"
-
-#: src/features/Blog/ListBlog.tsx:131
-#. js-lingui-explicit-id
-msgid "No blogs found"
-msgstr "Не знайдено жодного блогу"
 
 #: src/features/Blog/BlogOnePage.tsx:141
 #. js-lingui-explicit-id
@@ -6451,47 +6291,180 @@ msgstr "Ви можете спробувати AI в дії зараз"
 msgid "Try for free"
 msgstr "Спробувати безкоштовно"
 
-#: src/features/Conversation/ConversationError.tsx:34
+#: src/features/Conversation/ConversationCanvas2.tsx:360
 #. js-lingui-explicit-id
-msgid "Oops! Something went wrong"
-msgstr "Ой! Щось пішло не так"
+msgid "Idea for your message"
+msgstr "Ідея для вашого повідомлення"
 
-#: src/features/Conversation/ConversationError.tsx:37
+#: src/features/Conversation/ConversationCanvas2.tsx:418
 #. js-lingui-explicit-id
-msgid "Please refresh the page and try one more time"
-msgstr "Будь ласка, оновіть сторінку та спробуйте ще раз"
+msgid "Lesson Review"
+msgstr "Огляд уроку"
 
-#: src/features/Conversation/ConversationError.tsx:41
+#: src/features/Conversation/ConversationCanvas2.tsx:439
 #. js-lingui-explicit-id
-msgid "Notification was sent to the dev team. Sorry for that..."
-msgstr "Повідомлення було відправлено команді розробників. Вибачте за це..."
+msgid "Language level:"
+msgstr "Рівень мови:"
 
-#: src/features/Conversation/ConversationError.tsx:51
+#: src/features/Conversation/ConversationCanvas2.tsx:441
+#: src/features/Conversation/ConversationCanvas2.tsx:448
+#: src/features/Conversation/ConversationCanvas2.tsx:455
+#: src/features/Conversation/ConversationCanvas2.tsx:744
+#: src/features/Conversation/ConversationCanvas2.tsx:883
+#: src/features/Conversation/ConversationCanvas2.tsx:890
 #. js-lingui-explicit-id
-msgid "Reload page"
-msgstr "Перезавантажте сторінку"
+msgid "Analyzing..."
+msgstr "Аналізуємо..."
 
-#: src/features/Blog/BlogCard.tsx:168
+#: src/features/Conversation/ConversationCanvas2.tsx:446
 #. js-lingui-explicit-id
-msgid "Read more"
-msgstr "Читати більше"
+msgid "What was great:"
+msgstr "Що було чудовим:"
 
-#: src/features/Auth/SignInForm.tsx:30
+#: src/features/Conversation/ConversationCanvas2.tsx:453
 #. js-lingui-explicit-id
-msgid "Open personal plan"
-msgstr "Відкрити персональний план"
+msgid "Areas to improve:"
+msgstr "Області для поліпшення:"
 
-#: src/features/Auth/SignInForm.tsx:32
-#: src/features/Auth/SignInForm.tsx:33
+#: src/features/Conversation/ConversationCanvas2.tsx:478
 #. js-lingui-explicit-id
-msgid "Sing in"
-msgstr "Увійти"
+msgid "Continue conversation"
+msgstr "Продовжити розмову"
 
-#: src/features/Auth/SignInForm.tsx:38
-#: src/features/Auth/SignInForm.tsx:39
+#: src/features/Conversation/ConversationCanvas2.tsx:491
 #. js-lingui-explicit-id
-msgid "So you can save your progress"
-msgstr "Щоб ви могли зберігати свій прогрес"
+msgid "Start new lesson"
+msgstr "Почати новий урок"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:678
+#. js-lingui-explicit-id
+msgid "Error during analyzing message"
+msgstr "Помилка під час аналізу повідомлення"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:732
+#. js-lingui-explicit-id
+msgid "Almost correct"
+msgstr "Майже вірно"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:747
+#. js-lingui-explicit-id
+msgid "Great!"
+msgstr "Чудово!"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:770
+#. js-lingui-explicit-id
+msgid "Your Message"
+msgstr "Ваше Повідомлення"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:842
+#. js-lingui-explicit-id
+msgid "Corrected"
+msgstr "Виправлено"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:937
+#. js-lingui-explicit-id
+msgid "New Words to Vocabulary:"
+msgstr "Нові слова до словника:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:982
+#. js-lingui-explicit-id
+msgid "Analyzing"
+msgstr "Аналіз"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:989
+#. js-lingui-explicit-id
+msgid "Preparing Goal"
+msgstr "Підготовка Цілі"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1009
+#. js-lingui-explicit-id
+msgid "Goal is created"
+msgstr "Мета створена"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1019
+#. js-lingui-explicit-id
+msgid "Lessons added:"
+msgstr "Додані уроки:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1040
+#. js-lingui-explicit-id
+msgid "Open plan"
+msgstr "Відкритий план"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1113
+#. js-lingui-explicit-id
+msgid "Stop"
+msgstr "Стоп"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1145
+#. js-lingui-explicit-id
+msgid "Record Message"
+msgstr "Записати повідомлення"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1179
+#. js-lingui-explicit-id
+msgid "Finish conversation"
+msgstr "Завершити розмову"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1196
+#. js-lingui-explicit-id
+msgid "Turn Volume Off"
+msgstr "Вимкнути гучність"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1196
+#. js-lingui-explicit-id
+msgid "Turn Volume On"
+msgstr "Увімкнути гучність"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1217
+#. js-lingui-explicit-id
+msgid "Voice record mode"
+msgstr "Режим запису голосу"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1240
+#. js-lingui-explicit-id
+msgid "Keyboard mode"
+msgstr "Режим клавіатури"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1263
+#. js-lingui-explicit-id
+msgid "Phone call mode"
+msgstr "Режим телефонного дзвінка"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1285
+#. js-lingui-explicit-id
+msgid "Help with answer"
+msgstr "Допомога з відповіддю"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1308
+#. js-lingui-explicit-id
+msgid "Your message..."
+msgstr "Ваше повідомлення..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1359
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "Місію виконано"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1371
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "Відкрити результати"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1413
+#. js-lingui-explicit-id
+msgid "Re-write"
+msgstr "Перепишіть"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1473
+#. js-lingui-explicit-id
+msgid "Cancel recording"
+msgstr "Скасувати запис"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1505
+#. js-lingui-explicit-id
+msgid "Top up"
+msgstr "Поповнити"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
 #. js-lingui-explicit-id
@@ -6962,6 +6935,28 @@ msgstr ""
 msgid "Good preparation today means career success tomorrow."
 msgstr "Гарна підготовка сьогодні означає кар'єрний успіх завтра."
 
+#: src/features/Blog/BlogCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Read more"
+msgstr "Читати більше"
+
+#: src/features/Auth/SignInForm.tsx:30
+#. js-lingui-explicit-id
+msgid "Open personal plan"
+msgstr "Відкрити персональний план"
+
+#: src/features/Auth/SignInForm.tsx:32
+#: src/features/Auth/SignInForm.tsx:33
+#. js-lingui-explicit-id
+msgid "Sing in"
+msgstr "Увійти"
+
+#: src/features/Auth/SignInForm.tsx:38
+#: src/features/Auth/SignInForm.tsx:39
+#. js-lingui-explicit-id
+msgid "So you can save your progress"
+msgstr "Щоб ви могли зберігати свій прогрес"
+
 #: src/features/Auth/WebViewWall.tsx:38
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please copy it manually."
@@ -7006,6 +7001,11 @@ msgstr "Відкрити в Telegram"
 #. js-lingui-explicit-id
 msgid "Open in Browser"
 msgstr "Відкрити в браузері"
+
+#: src/features/Blog/ListBlog.tsx:131
+#. js-lingui-explicit-id
+msgid "No blogs found"
+msgstr "Не знайдено жодного блогу"
 
 #: src/features/Landing/PlanLandingBlock.tsx:300
 msgid "{countOfLanguages} languages to practice"
