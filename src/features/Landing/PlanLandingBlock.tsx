@@ -327,7 +327,14 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
           alignItems: "center",
           gap: "70px",
           width: "100%",
+          "@media (max-width: 500px)": {
+            gap: "50px",
+          },
+          "@media (max-width: 400px)": {
+            gap: "0px",
+          },
         }}
+        className="sections-and-title"
       >
         <Stack
           sx={{
