@@ -73,7 +73,6 @@ function useProvideSettings(): SettingsContextType {
       return;
     }
 
-    confirmGtag();
     const country = await getCountryByIP();
     const countryName = country
       ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || "Unknown"
@@ -89,6 +88,7 @@ function useProvideSettings(): SettingsContextType {
     };
 
     await setDoc(userSettingsDoc, settingsData, { merge: true });
+    confirmGtag();
   };
 
   useEffect(() => {
