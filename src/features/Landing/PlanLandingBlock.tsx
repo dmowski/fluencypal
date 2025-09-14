@@ -52,7 +52,8 @@ const ColorCard = ({
           height: "100%",
           zIndex: 0,
           opacity: 0.7,
-          transform: "rotate(90deg) scale(1.35)",
+          transform: "rotate(90deg) scale(1.365)",
+          transformOrigin: "center",
         },
         "@media (max-width:1000px)": {
           zIndex: hideVideoOnMobile ? 2 : 1,
