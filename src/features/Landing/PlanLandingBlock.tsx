@@ -116,7 +116,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         alignItems: "center",
         justifyContent: "center",
         gap: "00px",
-        backgroundColor: `#040608`,
+        backgroundColor: `#050709`,
+        //backgroundColor: `red`,
         position: "relative",
         zIndex: 1,
         overflow: "hidden",
@@ -249,12 +250,12 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 top: "-185px",
                 left: "-188px",
                 width: "850px",
-                height: "710px",
+                height: "690px",
                 zIndex: -1,
                 opacity: 1,
                 overflow: "hidden",
-                borderRadius: "0 0 0 100px",
-                boxShadow: "0 0 40px 0px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
+                borderRadius: "30px 30px 40px 100px",
+                boxShadow: "0 0 50px 40px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
 
                 video: {
                   position: "absolute",
@@ -410,7 +411,6 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               position: "relative",
               borderRadius: "20px",
               backgroundColor: "rgba(0, 0, 0, 0.6)",
-              "@media (max-width: 1000px)": {},
               "@media (max-width:400px)": {
                 width: "calc(100vw - 0px)",
                 borderRadius: "0px",
@@ -428,8 +428,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 zIndex: -2,
                 opacity: 1,
                 overflow: "hidden",
-                borderRadius: "200px 0 0 0 ",
-                boxShadow: "0 0 10px 20px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
+                borderRadius: "200px",
+                boxShadow: "0 0 50px 40px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
                 "@media (max-width: 1000px)": {
                   display: "none",
                 },
@@ -699,8 +699,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 zIndex: -1,
                 opacity: 1,
                 overflow: "hidden",
-                borderRadius: "0 0 0 100px",
-                boxShadow: "0 0 40px 0px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
+                borderRadius: "150px 50px 30px 100px",
+                boxShadow: "0 0 50px 40px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
 
                 video: {
                   position: "absolute",
