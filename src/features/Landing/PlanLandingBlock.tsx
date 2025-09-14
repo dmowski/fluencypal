@@ -8,6 +8,195 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import { PlanLandingCard } from "../Plan/PlanLandingCard";
 import { Trans } from "@lingui/react/macro";
 
+interface ColorCardProps {
+  videoUrl: string;
+  imgUrl: string;
+  label: string;
+  title: string;
+  description: string;
+  actionButtonPostfixLabel: string | React.ReactNode;
+  actionButtonLabel: string;
+  actionButtonHref: string;
+  hideVideoOnMobile?: boolean;
+}
+
+const ColorCard = ({
+  videoUrl,
+  imgUrl,
+  label,
+  title,
+  description,
+  actionButtonPostfixLabel,
+  actionButtonLabel,
+  actionButtonHref,
+  hideVideoOnMobile,
+}: ColorCardProps) => {
+  return (
+    <Stack
+      sx={{
+        padding: "30px",
+        alignItems: "flex-start",
+        justifyContent: "center",
+        gap: "20px",
+        boxSizing: "border-box",
+        width: "437px",
+        height: "322px",
+        position: "relative",
+        borderRadius: "20px",
+        zIndex: 1,
+        "@media (max-width:1000px)": {
+          zIndex: hideVideoOnMobile ? 2 : 1,
+        },
+
+        "@media (max-width:500px)": {
+          transform: "scale(0.9)",
+        },
+
+        "@media (max-width:400px)": {
+          transform: "scale(0.8)",
+        },
+
+        "@media (max-width:360px)": {
+          transform: "scale(0.7)",
+        },
+        "@media (max-width:330px)": {
+          transform: "scale(0.6)",
+        },
+      }}
+    >
+      <img src={imgUrl} alt="" className="bgCardImg" />
+      <Stack
+        sx={{
+          position: "absolute",
+          top: "-185px",
+          left: "-188px",
+          width: "850px",
+          height: "690px",
+          zIndex: -1,
+          opacity: 1,
+          overflow: "hidden",
+          borderRadius: "30px 30px 40px 100px",
+          "--color-card-shadow": "0 0 50px 40px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
+          boxShadow: `var(--color-card-shadow)`,
+
+          video: {
+            position: "absolute",
+            zIndex: -2,
+            top: "0px",
+            left: "0px",
+            width: "850px",
+            height: "750px",
+            borderRadius: "0",
+            transform: "scale(1.2) rotate(90deg)",
+          },
+
+          "@media (max-width:1000px)": {
+            overflow: "visible",
+            boxShadow: "none",
+            video: {
+              display: hideVideoOnMobile ? "none" : "",
+            },
+          },
+
+          "@media (max-width:400px)": {
+            width: "850px",
+            height: "710px",
+          },
+        }}
+      >
+        <video src={videoUrl} loop muted autoPlay playsInline />
+      </Stack>
+      <Stack
+        sx={{
+          gap: "0px",
+          alignItems: "flex-start",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <Typography
+          sx={{
+            color: "#fff",
+            fontSize: "1rem",
+            maxWidth: "500px",
+            fontWeight: 300,
+            opacity: 0.8,
+            textTransform: "uppercase",
+          }}
+        >
+          {label}
+        </Typography>
+
+        <Typography
+          align="left"
+          variant="h4"
+          component={"h3"}
+          sx={{
+            width: "100%",
+            fontSize: "2rem",
+            color: "#fff",
+            fontWeight: 800,
+            "@media (max-width: 500px)": {
+              fontSize: "1.5rem",
+            },
+          }}
+        >
+          {title}
+        </Typography>
+        <Typography
+          sx={{
+            color: "#fff",
+            fontSize: "1rem",
+            maxWidth: "500px",
+            fontWeight: 300,
+            opacity: 0.9,
+          }}
+        >
+          {description}
+        </Typography>
+
+        <Stack
+          sx={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "20px",
+            marginTop: "20px",
+            "@media (max-width: 500px)": {
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "6px",
+            },
+          }}
+        >
+          <Button
+            variant="outlined"
+            sx={{
+              color: "rgba(255, 255, 255, 0.9)",
+              fontWeight: 400,
+              padding: "7px 25px",
+
+              borderColor: "rgba(255, 255, 255, 0.5)",
+            }}
+            href={actionButtonHref}
+          >
+            {actionButtonLabel}
+          </Button>
+
+          <Typography
+            variant="caption"
+            sx={{
+              fontWeight: 400,
+              color: "rgb(1, 162, 255)",
+            }}
+          >
+            {actionButtonPostfixLabel}
+          </Typography>
+        </Stack>
+      </Stack>
+    </Stack>
+  );
+};
+
 interface PlanLandingBlockProps {
   lang: SupportedLanguage;
 }
@@ -147,6 +336,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             boxSizing: "border-box",
             alignItems: "center",
             padding: "0 10px",
+            position: "relative",
+            zIndex: 2,
           }}
         >
           <Typography
@@ -198,6 +389,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               justifyContent: "center",
               alignItems: "flex-end",
               overflow: "hidden",
+              position: "relative",
+              zIndex: 2,
               img: {
                 width: "700px",
                 height: "auto",
@@ -223,153 +416,18 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
           >
             <img src="/landing/survey.webp" alt="Plan" />
           </Stack>
-          <Stack
-            sx={{
-              padding: "30px",
-              alignItems: "flex-start",
-              justifyContent: "center",
-              gap: "20px",
-              boxSizing: "border-box",
-              width: "437px",
-              height: "322px",
-              position: "relative",
-              borderRadius: "20px",
-              //backdropFilter: "blur(10px)",
-
-              "@media (max-width:400px)": {
-                width: "calc(100vw - 0px)",
-                borderRadius: "0px",
-                padding: "20px",
-              },
-            }}
-          >
-            <img src={"/landing/blue.svg"} alt="" className="bgCardImg" />
-            <Stack
-              sx={{
-                position: "absolute",
-                top: "-185px",
-                left: "-188px",
-                width: "850px",
-                height: "690px",
-                zIndex: -1,
-                opacity: 1,
-                overflow: "hidden",
-                borderRadius: "30px 30px 40px 100px",
-                boxShadow: "0 0 50px 40px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
-
-                video: {
-                  position: "absolute",
-                  zIndex: -2,
-                  top: "0px",
-                  left: "0px",
-                  width: "850px",
-                  height: "750px",
-                  borderRadius: "0",
-                  transform: "scale(1.2) rotate(90deg)",
-                },
-
-                "@media (max-width:1000px)": {
-                  overflow: "visible",
-                },
-
-                "@media (max-width:400px)": {
-                  width: "850px",
-                  height: "710px",
-                },
-              }}
-            >
-              <video src={"/landing/blue.mp4"} loop muted autoPlay playsInline />
-            </Stack>
-            <Stack
-              sx={{
-                gap: "0px",
-                alignItems: "flex-start",
-                position: "relative",
-                zIndex: 1,
-              }}
-            >
-              <Typography
-                sx={{
-                  color: "#fff",
-                  fontSize: "1rem",
-                  maxWidth: "500px",
-                  fontWeight: 300,
-                  opacity: 0.8,
-                  textTransform: "uppercase",
-                }}
-              >
-                {i18n._(`Step 1`)}
-              </Typography>
-
-              <Typography
-                align="left"
-                variant="h4"
-                component={"h3"}
-                sx={{
-                  width: "100%",
-                  fontSize: "2rem",
-                  color: "#fff",
-                  fontWeight: 800,
-                  "@media (max-width: 500px)": {
-                    fontSize: "1.5rem",
-                  },
-                }}
-              >
-                {i18n._(`Smart Start`)}
-              </Typography>
-              <Typography
-                sx={{
-                  color: "#fff",
-                  fontSize: "1rem",
-                  maxWidth: "500px",
-                  fontWeight: 300,
-                  opacity: 0.9,
-                }}
-              >
-                {i18n._(
-                  `Fill out a quick onboarding quiz to help FluencyPal understand your goals and preferences.`
-                )}
-              </Typography>
-
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "20px",
-                  marginTop: "20px",
-                  "@media (max-width: 500px)": {
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                    gap: "6px",
-                  },
-                }}
-              >
-                <Button
-                  variant="outlined"
-                  sx={{
-                    color: "rgba(255, 255, 255, 0.9)",
-                    fontWeight: 400,
-                    padding: "7px 25px",
-
-                    borderColor: "rgba(255, 255, 255, 0.5)",
-                  }}
-                  href={`${getUrlStart(lang)}quiz`}
-                >
-                  {i18n._(`Start`)}
-                </Button>
-
-                <Typography
-                  variant="caption"
-                  sx={{
-                    fontWeight: 400,
-                    color: "rgb(1, 162, 255)",
-                  }}
-                >
-                  <Trans>{countOfLanguages} languages to practice</Trans>
-                </Typography>
-              </Stack>
-            </Stack>
-          </Stack>
+          <ColorCard
+            videoUrl={"/landing/blue.mp4"}
+            imgUrl={"/landing/blue.svg"}
+            label={i18n._(`Step 1`)}
+            title={i18n._(`Smart Start`)}
+            description={i18n._(
+              `Fill out a onboarding quiz to help FluencyPal understand your goals and preferences.`
+            )}
+            actionButtonPostfixLabel={<Trans>{`${countOfLanguages} languages to practice`}</Trans>}
+            actionButtonLabel={i18n._(`Start`)}
+            actionButtonHref={`${getUrlStart(lang)}quiz`}
+          />
         </Stack>
 
         <Stack
@@ -395,138 +453,24 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             position: "relative",
           }}
         >
+          <ColorCard
+            videoUrl={"/landing/green.mp4"}
+            imgUrl={"/landing/green.svg"}
+            label={i18n._(`Step 2`)}
+            title={i18n._(`Personal Plan`)}
+            description={i18n._(
+              `Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you.`
+            )}
+            actionButtonPostfixLabel={""}
+            actionButtonLabel={i18n._(`Create a plan`)}
+            actionButtonHref={`${getUrlStart(lang)}quiz`}
+            hideVideoOnMobile={true}
+          />
+
           <Stack
             sx={{
-              padding: "30px",
-              alignItems: "flex-end",
-              justifyContent: "center",
-
-              gap: "20px",
-              img: {
-                width: "200px",
-              },
-
-              width: "438px",
-              height: "322px",
               position: "relative",
-              borderRadius: "20px",
-              backgroundColor: "rgba(0, 0, 0, 0.6)",
-              "@media (max-width:400px)": {
-                width: "calc(100vw - 0px)",
-                borderRadius: "0px",
-              },
-            }}
-          >
-            <img src={"/landing/green.svg"} alt="" className="bgCardImg" />
-            <Stack
-              sx={{
-                position: "absolute",
-                top: "-185px",
-                left: "-188px",
-                width: "850px",
-                height: "680px",
-                zIndex: -2,
-                opacity: 1,
-                overflow: "hidden",
-                borderRadius: "200px",
-                boxShadow: "0 0 50px 40px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
-                "@media (max-width: 1000px)": {
-                  display: "none",
-                },
-                video: {
-                  position: "absolute",
-                  top: "0px",
-                  left: "0px",
-                  width: "850px",
-                  height: "750px",
-                  transform: "scale(1.2) rotate(90deg)",
-                },
-              }}
-            >
-              <video src={"/landing/green.mp4"} loop muted autoPlay playsInline />
-            </Stack>
-            <Stack
-              sx={{
-                gap: "0px",
-
-                alignItems: "flex-end",
-                "@media (max-width: 1000px)": {
-                  alignItems: "flex-start",
-                },
-                maxWidth: "100%",
-                position: "relative",
-                zIndex: 1,
-              }}
-            >
-              <Typography
-                align="right"
-                sx={{
-                  color: "#fff",
-                  fontSize: "1rem",
-                  width: "500px",
-
-                  fontWeight: 300,
-                  opacity: 0.8,
-                  textTransform: "uppercase",
-                  "@media (max-width: 1000px)": {
-                    textAlign: "left",
-                  },
-                }}
-              >
-                {i18n._(`Step 2`)}
-              </Typography>
-
-              <Typography
-                variant="h4"
-                component={"h3"}
-                sx={{
-                  fontSize: "2rem",
-                  color: "#fff",
-                  fontWeight: 800,
-                  textAlign: "right",
-                  "@media (max-width: 1000px)": {
-                    fontSize: "1.5rem",
-                    textAlign: "left",
-                  },
-                }}
-              >
-                {i18n._(`Personal Plan`)}
-              </Typography>
-              <Typography
-                align="right"
-                sx={{
-                  color: "#fff",
-                  fontSize: "1rem",
-                  fontWeight: 300,
-                  opacity: 0.9,
-                  "@media (max-width: 1000px)": {
-                    textAlign: "left",
-                  },
-                }}
-              >
-                {i18n._(
-                  `Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you.`
-                )}
-              </Typography>
-
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "rgba(255, 255, 255, 0.9)",
-                  fontWeight: 400,
-                  padding: "7px 25px",
-                  marginTop: "20px",
-                  borderColor: "rgba(255, 255, 255, 0.5)",
-                }}
-                href={`${getUrlStart(lang)}quiz`}
-              >
-                {i18n._(`Create a plan`)}
-              </Button>
-            </Stack>
-          </Stack>
-
-          <Stack
-            sx={{
+              zIndex: 2,
               width: "calc(50vw - 10px)",
               border: "0px solid red",
               "@media (max-width: 1000px)": {
@@ -645,11 +589,12 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               justifyContent: "center",
               alignItems: "flex-end",
               overflow: "hidden",
+              position: "relative",
+              zIndex: 2,
               img: {
                 width: "600px",
                 height: "auto",
               },
-              "@media (max-width:1650px)": {},
               "@media (max-width:1200px)": {
                 img: {
                   width: "500px",
@@ -657,158 +602,24 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               },
 
               "@media (max-width:1000px)": {
-                opacity: 0,
-                position: "absolute",
-                top: "0px",
-                left: "0px",
-                zIndex: -1,
+                display: "none",
               },
             }}
           >
             <img src="/landing/uiChat.webp" alt="uiChat" />
           </Stack>
-          <Stack
-            sx={{
-              padding: "30px",
-              alignItems: "flex-start",
-              justifyContent: "center",
-              gap: "20px",
-              boxSizing: "border-box",
-              width: "437px",
-              height: "322px",
-              position: "relative",
-              borderRadius: "20px",
-              backgroundColor: "rgba(0, 0, 0, 0.6)",
-              //backdropFilter: "blur(10px)",
-
-              "@media (max-width:400px)": {
-                width: "calc(100vw - 0px)",
-                borderRadius: "0px",
-                padding: "20px",
-              },
-            }}
-          >
-            <img src={"/landing/purple.svg"} alt="" className="bgCardImg" />
-            <Stack
-              sx={{
-                position: "absolute",
-                top: "-185px",
-                left: "-188px",
-                width: "850px",
-                height: "710px",
-                zIndex: -1,
-                opacity: 1,
-                overflow: "hidden",
-                borderRadius: "150px 50px 30px 100px",
-                boxShadow: "0 0 50px 40px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
-
-                video: {
-                  position: "absolute",
-                  top: "0px",
-                  left: "0px",
-                  width: "850px",
-                  height: "750px",
-                  borderRadius: "0",
-                  transform: "scale(1.2) rotate(90deg)",
-                },
-
-                "@media (max-width:1000px)": {
-                  overflow: "visible",
-                },
-
-                "@media (max-width:400px)": {
-                  width: "850px",
-                  height: "710px",
-                },
-              }}
-            >
-              <video src={"/landing/purple.mp4"} loop muted autoPlay playsInline />
-            </Stack>
-            <Stack
-              sx={{
-                gap: "0px",
-                alignItems: "flex-start",
-                position: "relative",
-                zIndex: 1,
-              }}
-            >
-              <Typography
-                sx={{
-                  color: "#fff",
-                  fontSize: "1rem",
-                  maxWidth: "500px",
-                  fontWeight: 300,
-                  opacity: 0.8,
-                  textTransform: "uppercase",
-                }}
-              >
-                {i18n._(`Step 3`)}
-              </Typography>
-
-              <Typography
-                align="left"
-                variant="h4"
-                component={"h3"}
-                sx={{
-                  width: "100%",
-                  fontSize: "2rem",
-                  color: "#fff",
-                  fontWeight: 800,
-                  "@media (max-width: 700px)": {
-                    fontSize: "1.5rem",
-                  },
-                }}
-              >
-                {i18n._(`Practice`)}
-              </Typography>
-              <Typography
-                sx={{
-                  color: "#fff",
-                  fontSize: "1rem",
-                  maxWidth: "500px",
-                  fontWeight: 300,
-                  opacity: 0.9,
-                }}
-              >
-                {i18n._(
-                  `Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.`
-                )}
-              </Typography>
-
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "20px",
-                  marginTop: "20px",
-                }}
-              >
-                <Button
-                  variant="outlined"
-                  sx={{
-                    color: "rgba(255, 255, 255, 0.9)",
-                    fontWeight: 400,
-                    padding: "7px 25px",
-
-                    borderColor: "rgba(255, 255, 255, 0.5)",
-                  }}
-                  href={`${getUrlStart(lang)}quiz`}
-                >
-                  {i18n._(`Start`)}
-                </Button>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    fontWeight: 400,
-                    color: "rgb(1, 162, 255, 1)",
-                    borderRadius: "8px",
-                  }}
-                >
-                  {i18n._(`3 days free`)}
-                </Typography>
-              </Stack>
-            </Stack>
-          </Stack>
+          <ColorCard
+            videoUrl={"/landing/purple.mp4"}
+            imgUrl={"/landing/purple.svg"}
+            label={i18n._(`Step 3`)}
+            title={i18n._(`Practice`)}
+            description={i18n._(
+              `Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.`
+            )}
+            actionButtonPostfixLabel={i18n._(`3 days free`)}
+            actionButtonLabel={i18n._(`Start`)}
+            actionButtonHref={`${getUrlStart(lang)}quiz`}
+          />
         </Stack>
       </Stack>
 
@@ -819,6 +630,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
           boxSizing: "border-box",
           alignItems: "center",
           padding: "60px 10px 20px 10px",
+          position: "relative",
+          zIndex: 3,
         }}
       >
         <Typography
