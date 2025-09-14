@@ -266,7 +266,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 },
               }}
             >
-              <video src={"/landing/blue.mp4"} loop muted autoPlay />
+              <video src={"/landing/blue.mp4"} loop muted autoPlay playsInline />
             </Stack>
             <Stack
               sx={{
@@ -431,7 +431,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 },
               }}
             >
-              <video src={"/landing/green.mp4"} loop muted autoPlay />
+              <video src={"/landing/green.mp4"} loop muted autoPlay playsInline />
             </Stack>
             <Stack
               sx={{
@@ -707,7 +707,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 },
               }}
             >
-              <video src={"/landing/purple.mp4"} loop muted autoPlay />
+              <video src={"/landing/purple.mp4"} loop muted autoPlay playsInline />
             </Stack>
             <Stack
               sx={{
