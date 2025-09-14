@@ -116,7 +116,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         alignItems: "center",
         justifyContent: "center",
         gap: "100px",
-        backgroundColor: `rgba(10, 18, 30, 1)`,
+        backgroundColor: `#040608`,
         position: "relative",
         zIndex: 1,
       }}
@@ -139,7 +139,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         >
           <Typography
             align="center"
-            variant="h3"
+            variant="h2"
             component={"h2"}
             sx={{
               ...titleFontStyle,

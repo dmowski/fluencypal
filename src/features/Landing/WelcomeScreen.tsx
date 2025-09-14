@@ -31,33 +31,108 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
     <Stack
       sx={{
         maxWidth: maxLandingWidth,
-        padding: "150px 10px 80px 10px",
+        padding: "120px 10px 280px 10px",
         height: "max-content",
-        minHeight: "70vh",
+        minHeight: "1200px",
+        width: "100%",
 
         boxSizing: "border-box",
         alignItems: "center",
-        justifyContent: "center",
+
         gap: "100px",
+        "@media (max-width: 900px)": {
+          minHeight: "1100px",
+        },
         "@media (max-width: 600px)": {
           gap: "20px",
-          paddingTop: "130px",
+          padding: "90px 0px 150px 0px",
+          minHeight: "700px",
+        },
+        "@media (max-width: 500px)": {
+          minHeight: "600px",
         },
       }}
     >
       <Stack
         sx={{
-          alignItems: "center",
-          gap: "50px",
+          position: "absolute",
+          backgroundColor: `#040608`,
+          //backgroundColor: `#1212ff`,
+          top: 0,
+          left: "0",
+          margin: "0 auto",
+          width: "100%",
+          overflow: "hidden",
+          height: "180vh",
+          zIndex: -2,
+
+          video: {
+            width: "1800px",
+            height: "2000px",
+            opacity: 0.9,
+            position: "absolute",
+            top: "-323px",
+            left: "calc(50vw - 990px)",
+            "@media (max-width: 1300px)": {
+              left: "calc(50vw - 990px + 100px)",
+            },
+            "@media (max-width: 900px)": {
+              top: "-423px",
+            },
+            "@media (max-width: 600px)": {
+              width: "1200px",
+              height: "auto",
+              left: "-300px",
+              top: "0px",
+            },
+          },
+          img: {
+            position: "absolute",
+            top: "685px",
+            left: "calc(50vw - 660px)",
+            width: "961px",
+            borderRadius: "10px",
+            //border: "1px solid rgba(255, 255, 255, 0.1)",
+
+            "@media (max-width: 1300px)": {
+              left: "calc(50vw - 660px + 100px)",
+            },
+            "@media (max-width: 900px)": {
+              top: "585px",
+            },
+            "@media (max-width: 600px)": {
+              left: "0",
+              width: "calc(100vw)",
+              top: "450px",
+              borderRadius: 0,
+            },
+          },
+        }}
+      >
+        <video src={"/landing/hero.mp4"} loop muted autoPlay />
+        <img src="/landing/uiChatClean.webp" />
+      </Stack>
+      <Stack
+        sx={{
+          alignItems: "flex-start",
+          width: "100%",
+          gap: "30px",
+          paddingLeft: "15px",
+          paddingTop: "90px",
+          "@media (max-width: 900px)": {
+            paddingTop: "30px",
+          },
           "@media (max-width: 600px)": {
             gap: "10px",
+            paddingLeft: "10px",
           },
         }}
       >
         <Stack
           sx={{
             gap: "20px",
-            alignItems: "center",
+            width: "100%",
+
             ".logoContainer": {
               padding: "20px",
               "@media (max-width: 600px)": {
@@ -80,6 +155,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               textTransform: "uppercase",
               letterSpacing: "1px",
               color: "#05acff",
+              width: "max-content",
               "@media (max-width: 600px)": {
                 marginBottom: "10px",
               },
@@ -88,11 +164,11 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             AI
           </Typography>
           <Typography
-            align="center"
             variant="h1"
             component={"h1"}
             sx={{
               fontWeight: 700,
+              fontSize: "4.5rem",
               "@media (max-width: 1300px)": {
                 fontSize: "4rem",
               },
@@ -108,15 +184,13 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           </Typography>
           <Stack
             sx={{
-              alignItems: "center",
               gap: "5px",
             }}
           >
             <Typography
-              align="center"
               sx={{
                 maxWidth: "940px",
-                ...subTitleFontStyle,
+                fontSize: "1.1rem",
                 "@media (max-width: 600px)": {
                   fontSize: "1rem",
                 },
@@ -129,7 +203,15 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               {i18n._(`Talk, get corrected, improve—repeat.`)}
               <br />
 
-              <Typography align="center" component={"span"} sx={{}}>
+              <Typography
+                component={"span"}
+                sx={{
+                  fontSize: "1.1rem",
+                  "@media (max-width: 600px)": {
+                    fontSize: "1rem",
+                  },
+                }}
+              >
                 {i18n._(`Win the game and get the app`)} <b>{i18n._(`for free`)}</b>
               </Typography>
             </Typography>
@@ -138,9 +220,16 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
 
         <Stack
           sx={{
-            flexDirection: "column",
+            flexDirection: "row",
             gap: "15px",
-            alignItems: "center",
+            alignItems: "flex-start",
+            justifyContent: "flex-start",
+            width: "max-content",
+            maxWidth: "100%",
+            flexWrap: "wrap",
+            "@media (max-width: 1200px)": {
+              flexDirection: "column",
+            },
           }}
         >
           <FirstEnterButton

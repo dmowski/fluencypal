@@ -3,7 +3,7 @@ export const maxContentWidth = "1200px";
 const subTitleFontSize = "1.3rem";
 
 export const titleFontStyle = {
-  fontWeight: 650,
+  fontWeight: 850,
   "@media (max-width: 600px)": {
     fontSize: "2rem",
   },

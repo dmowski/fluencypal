@@ -32,6 +32,7 @@ export interface HeaderStaticProps {
   needHelpTitle: string;
   logOutTitle: string;
   blogTitle: string;
+  transparentOnTop?: boolean;
 }
 export function HeaderComponentStatic({
   lang,
@@ -40,9 +41,11 @@ export function HeaderComponentStatic({
   priceTitle,
   signInTitle,
   blogTitle,
+  transparentOnTop,
 }: HeaderStaticProps) {
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
   const [isHighlightJoin, setIsHighlightJoin] = useState(false);
+  const [isBlurHeader, setIsBlurHeader] = useState(false);
   const [isFixedHeader, setIsFixedHeader] = useState(true);
 
   useEffect(() => {
@@ -58,6 +61,12 @@ export function HeaderComponentStatic({
     setIsFixedHeader(isStaticHeader);
 
     const onScrollHandler = () => {
+      if (window.scrollY > 200) {
+        setIsBlurHeader(true);
+      } else {
+        setIsBlurHeader(false);
+      }
+
       if (window.scrollY > 800) {
         setIsHighlightJoin(true);
       } else {
@@ -102,9 +111,13 @@ export function HeaderComponentStatic({
           top: 0,
           left: 0,
           zIndex: 999,
-          backgroundColor: "rgba(10, 18, 30, 0.7)",
-          backdropFilter: "blur(10px)",
+          //backgroundColor: "rgba(10, 18, 30, 0.7)",
+          backgroundColor:
+            transparentOnTop && !isBlurHeader ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0.6)",
+          backdropFilter: transparentOnTop && !isBlurHeader ? "blur(0px)" : "blur(10px)",
           //borderBottom: isActiveConversation ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
+
+          transition: "all 0.3s ease-in-out",
 
           ".menu-link": {
             height: "60px",

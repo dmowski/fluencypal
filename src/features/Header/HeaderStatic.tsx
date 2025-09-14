@@ -2,7 +2,13 @@ import { HeaderComponentStatic } from "./HeaderComponentStatic";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
-export function HeaderStatic({ lang }: { lang: SupportedLanguage }) {
+export function HeaderStatic({
+  lang,
+  transparentOnTop,
+}: {
+  lang: SupportedLanguage;
+  transparentOnTop?: boolean;
+}) {
   const i18n = getI18nInstance(lang);
   return (
     <HeaderComponentStatic
@@ -16,6 +22,7 @@ export function HeaderStatic({ lang }: { lang: SupportedLanguage }) {
       needHelpTitle={i18n._(`Need Help?`)}
       logOutTitle={i18n._(`Log Out`)}
       blogTitle={i18n._(`Blog`)}
+      transparentOnTop={transparentOnTop}
     />
   );
 }

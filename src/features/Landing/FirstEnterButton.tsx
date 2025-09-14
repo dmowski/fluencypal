@@ -40,16 +40,7 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   }, []);
 
   return (
-    <Stack
-      sx={{
-        flexDirection: "row",
-        gap: "10px",
-        alignItems: "flex-start",
-        justifyContent: "center",
-        transition: "opacity 0.3s",
-        flexWrap: "wrap",
-      }}
-    >
+    <>
       <Stack
         sx={{
           alignItems: "center",
@@ -104,6 +95,6 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
           </Button>
         </>
       )}
-    </Stack>
+    </>
   );
 };

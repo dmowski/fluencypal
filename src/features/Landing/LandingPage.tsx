@@ -106,7 +106,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
   };
   return (
     <>
-      <HeaderStatic lang={lang} />
+      <HeaderStatic lang={lang} transparentOnTop />
       <Script
         type="application/ld+json"
         strategy="beforeInteractive"
