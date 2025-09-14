@@ -115,16 +115,17 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         padding: "60px 0 180px 0",
         alignItems: "center",
         justifyContent: "center",
-        gap: "100px",
+        gap: "00px",
         backgroundColor: `#040608`,
         position: "relative",
         zIndex: 1,
+        overflow: "hidden",
       }}
     >
       <Stack
         sx={{
           alignItems: "center",
-          gap: "50px",
+          gap: "170px",
           width: "100%",
         }}
       >
@@ -163,15 +164,15 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
         <Stack
           sx={{
-            display: "grid",
+            display: "flex",
             width: "100%",
             boxSizing: "border-box",
             padding: "0 10px",
-            gridTemplateColumns: "1fr 1fr",
+            flexDirection: "row",
             alignItems: "center",
             gap: "40px",
             "@media (max-width: 900px)": {
-              gridTemplateColumns: "1fr",
+              flexDirection: "column",
               gap: "30px",
             },
             position: "relative",
@@ -181,6 +182,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             sx={{
               width: "100%",
               height: "600px",
+              maxWidth: "50vw",
               justifyContent: "center",
               alignItems: "flex-end",
               overflow: "hidden",
@@ -205,15 +207,60 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
           </Stack>
           <Stack
             sx={{
-              borderRadius: "10px",
               padding: "30px",
               alignItems: "flex-start",
               justifyContent: "center",
               gap: "20px",
-              width: "100%",
               boxSizing: "border-box",
+              width: "437px",
+              height: "322px",
+              position: "relative",
+              borderRadius: "20px",
+              backgroundColor: "rgba(0, 0, 0, 0.6)",
+              //backdropFilter: "blur(10px)",
+
+              "@media (max-width:700px)": {
+                width: "calc(100vw - 0px)",
+                borderRadius: "0px",
+                padding: "20px",
+              },
             }}
           >
+            <Stack
+              sx={{
+                position: "absolute",
+                top: "-185px",
+                left: "-188px",
+                width: "850px",
+                height: "710px",
+                zIndex: -1,
+                opacity: 1,
+                overflow: "hidden",
+                borderRadius: "0 0 0 100px",
+                boxShadow: "0 0 40px 0px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
+
+                video: {
+                  position: "absolute",
+                  top: "0px",
+                  left: "0px",
+                  width: "850px",
+                  height: "750px",
+                  borderRadius: "0",
+                  transform: "scale(1.2) rotate(90deg)",
+                },
+
+                "@media (max-width:900px)": {
+                  overflow: "visible",
+                },
+
+                "@media (max-width:700px)": {
+                  width: "850px",
+                  height: "710px",
+                },
+              }}
+            >
+              <video src={"/landing/blue.mp4"} loop muted autoPlay />
+            </Stack>
             <Stack
               sx={{
                 gap: "0px",
@@ -239,11 +286,11 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 component={"h3"}
                 sx={{
                   width: "100%",
-                  fontSize: "3.5rem",
+                  fontSize: "2rem",
                   color: "#fff",
                   fontWeight: 800,
                   "@media (max-width: 700px)": {
-                    fontSize: "2.5rem",
+                    fontSize: "1.5rem",
                   },
                 }}
               >
@@ -306,15 +353,19 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
         <Stack
           sx={{
-            display: "grid",
+            display: "flex",
+            flexDirection: "row",
             width: "100%",
             padding: "10px 10px",
             boxSizing: "border-box",
             gridTemplateColumns: "1fr 1fr",
             alignItems: "center",
+            justifyContent: "flex-end",
             gap: "40px",
+
             "@media (max-width: 900px)": {
-              gridTemplateColumns: "1fr",
+              flexDirection: "column",
+              alignItems: "center",
               gap: "0px",
             },
             position: "relative",
@@ -322,7 +373,6 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         >
           <Stack
             sx={{
-              borderRadius: "10px",
               padding: "30px",
               alignItems: "flex-end",
               justifyContent: "center",
@@ -332,14 +382,52 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 width: "200px",
               },
 
+              width: "438px",
+              height: "322px",
+              position: "relative",
+              borderRadius: "20px",
+              backgroundColor: "rgba(0, 0, 0, 0.6)",
               "@media (max-width: 900px)": {
-                alignItems: "flex-start",
+                boxShadow: "0 0 0 1px rgba(255, 255, 255, 0.8)",
+              },
+              "@media (max-width:700px)": {
+                width: "calc(100vw - 0px)",
+                borderRadius: "0px",
+                padding: "20px",
               },
             }}
           >
             <Stack
               sx={{
+                position: "absolute",
+                top: "-185px",
+                left: "-188px",
+                width: "850px",
+                height: "680px",
+                zIndex: -2,
+                opacity: 1,
+                overflow: "hidden",
+                borderRadius: "200px 0 0 0 ",
+                boxShadow: "0 0 10px 20px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
+                "@media (max-width: 900px)": {
+                  display: "none",
+                },
+                video: {
+                  position: "absolute",
+                  top: "0px",
+                  left: "0px",
+                  width: "850px",
+                  height: "750px",
+                  transform: "scale(1.2) rotate(90deg)",
+                },
+              }}
+            >
+              <video src={"/landing/green.mp4"} loop muted autoPlay />
+            </Stack>
+            <Stack
+              sx={{
                 gap: "0px",
+
                 alignItems: "flex-end",
                 "@media (max-width: 900px)": {
                   alignItems: "flex-start",
@@ -364,17 +452,17 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               </Typography>
 
               <Typography
-                align="right"
                 variant="h4"
                 component={"h3"}
                 sx={{
                   width: "100%",
-                  fontSize: "3.5rem",
+                  fontSize: "2rem",
                   color: "#fff",
                   fontWeight: 800,
+                  textAlign: "right",
                   "@media (max-width: 900px)": {
+                    fontSize: "1.5rem",
                     textAlign: "left",
-                    fontSize: "2.5rem",
                   },
                 }}
               >
@@ -414,7 +502,14 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             </Stack>
           </Stack>
 
-          <Stack sx={{}}>
+          <Stack
+            sx={{
+              width: "50vw",
+              "@media (max-width: 900px)": {
+                display: "none",
+              },
+            }}
+          >
             <Stack
               sx={{
                 width: "100%",
@@ -422,7 +517,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 justifyContent: "center",
                 alignItems: "flex-end",
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr  1fr",
+                gridTemplateColumns: "1fr 1fr ",
                 gap: "20px",
                 transform: "scale(0.8) translateY(0px) translateX(-70px)",
 
@@ -440,7 +535,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                     width: "100%",
                     height: "300px",
                     background:
-                      "linear-gradient(0deg, rgba(10, 18, 30, 1), rgba(10, 18, 30, 0.8), rgba(10, 18, 30, 0))",
+                      "linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 18, 30, 0.8), rgba(0, 18, 30, 0))",
                   },
                 },
 
@@ -468,41 +563,43 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               }}
             >
               <>
-                {planElements.map((planElement, index) => {
-                  const cardInfo = modeCardProps[planElement.mode];
-                  const colorIndex = index % cardColors.length;
-                  const cardColor = cardColors[colorIndex];
-                  const elementsWithSameMode =
-                    planElements.filter((element) => element.mode === planElement.mode) || [];
-                  const currentElementIndex = elementsWithSameMode.findIndex(
-                    (element) => element.id === planElement.id
-                  );
+                {planElements
+                  .filter((element, index) => index < 4)
+                  .map((planElement, index) => {
+                    const cardInfo = modeCardProps[planElement.mode];
+                    const colorIndex = index % cardColors.length;
+                    const cardColor = cardColors[colorIndex];
+                    const elementsWithSameMode =
+                      planElements.filter((element) => element.mode === planElement.mode) || [];
+                    const currentElementIndex = elementsWithSameMode.findIndex(
+                      (element) => element.id === planElement.id
+                    );
 
-                  const imageVariants = cardInfo.imgUrl;
-                  const imageIndex = currentElementIndex % imageVariants.length;
-                  const imageUrl = imageVariants[imageIndex];
+                    const imageVariants = cardInfo.imgUrl;
+                    const imageIndex = currentElementIndex % imageVariants.length;
+                    const imageUrl = imageVariants[imageIndex];
 
-                  return (
-                    <PlanLandingCard
-                      key={planElement.id}
-                      delayToShow={index * 80}
-                      title={planElement.title}
-                      subTitle={modeLabels[planElement.mode]}
-                      description={planElement.description}
-                      startColor={cardColor.startColor}
-                      endColor={cardColor.endColor}
-                      bgColor={cardColor.bgColor}
-                      icon={
-                        <Stack>
-                          <Stack className="avatar">
-                            <img src={imageUrl} alt="" />
+                    return (
+                      <PlanLandingCard
+                        key={planElement.id}
+                        delayToShow={index * 80}
+                        title={planElement.title}
+                        subTitle={modeLabels[planElement.mode]}
+                        description={planElement.description}
+                        startColor={cardColor.startColor}
+                        endColor={cardColor.endColor}
+                        bgColor={cardColor.bgColor}
+                        icon={
+                          <Stack>
+                            <Stack className="avatar">
+                              <img src={imageUrl} alt="" />
+                            </Stack>
                           </Stack>
-                        </Stack>
-                      }
-                      actionLabel={i18n._(`Start`)}
-                    />
-                  );
-                })}
+                        }
+                        actionLabel={i18n._(`Start`)}
+                      />
+                    );
+                  })}
               </>
             </Stack>
           </Stack>
@@ -548,15 +645,50 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
           </Stack>
           <Stack
             sx={{
-              borderRadius: "10px",
               padding: "30px",
               alignItems: "flex-start",
 
               gap: "20px",
-              width: "100%",
               boxSizing: "border-box",
+
+              width: "438px",
+              height: "322px",
+              position: "relative",
+              borderRadius: "20px",
+              backgroundColor: "rgba(0, 0, 0, 0.6)",
+              justifyContent: "center",
+              "@media (max-width:700px)": {
+                width: "calc(100vw - 0px)",
+                borderRadius: "0px",
+                padding: "20px",
+              },
             }}
           >
+            <Stack
+              sx={{
+                position: "absolute",
+                top: "-185px",
+                left: "-188px",
+                width: "850px",
+                height: "780px",
+                zIndex: -2,
+                opacity: 1,
+                overflow: "hidden",
+                borderRadius: "200px 30px 30px 30px",
+
+                boxShadow: "0 0 10px 30px #050709, 0 0 20px 10px rgba(0, 0, 0, 1)",
+                video: {
+                  position: "absolute",
+                  top: "0px",
+                  left: "0px",
+                  width: "850px",
+                  height: "750px",
+                  transform: "scale(1.2) rotate(90deg)",
+                },
+              }}
+            >
+              <video src={"/landing/purple.mp4"} loop muted autoPlay />
+            </Stack>
             <Stack
               sx={{
                 gap: "0px",
@@ -582,11 +714,11 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 component={"h3"}
                 sx={{
                   width: "100%",
-                  fontSize: "3.5rem",
+                  fontSize: "2rem",
                   color: "#fff",
                   fontWeight: 800,
                   "@media (max-width: 700px)": {
-                    fontSize: "2.5rem",
+                    fontSize: "1.5rem",
                   },
                 }}
               >
