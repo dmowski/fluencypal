@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { FirstEnterButton } from "./FirstEnterButton";
-import { maxLandingWidth, subTitleFontStyle } from "./landingSettings";
+import { maxLandingWidth } from "./landingSettings";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
@@ -109,7 +109,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           },
         }}
       >
-        <video src={"/landing/hero2.mp4"} loop muted autoPlay />
+        <video src={"/landing/flow.mp4"} loop muted autoPlay />
         <img src="/landing/uiChatClean.webp" />
       </Stack>
       <Stack
