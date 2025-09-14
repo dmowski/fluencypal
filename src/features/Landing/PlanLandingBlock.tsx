@@ -44,6 +44,16 @@ const ColorCard = ({
         position: "relative",
         borderRadius: "20px",
         zIndex: 1,
+        ".bgCardImg": {
+          position: "absolute",
+          top: "0",
+          left: "0",
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+          opacity: 0.7,
+          transform: "rotate(90deg) scale(1.35)",
+        },
         "@media (max-width:1000px)": {
           zIndex: hideVideoOnMobile ? 2 : 1,
         },
@@ -309,16 +319,6 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         position: "relative",
         zIndex: 1,
         overflow: "hidden",
-        ".bgCardImg": {
-          position: "absolute",
-          top: "0",
-          left: "0",
-          width: "100%",
-          height: "100%",
-          zIndex: 0,
-          opacity: 1,
-          transform: "rotate(90deg) scale(1.35)",
-        },
       }}
     >
       <Stack
