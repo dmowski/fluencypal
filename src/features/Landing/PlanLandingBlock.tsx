@@ -137,7 +137,7 @@ const ColorCard = ({
             color: "#fff",
             fontWeight: 800,
             "@media (max-width: 500px)": {
-              fontSize: "1.5rem",
+              fontSize: "1.9rem",
             },
           }}
         >
@@ -162,9 +162,8 @@ const ColorCard = ({
             gap: "20px",
             marginTop: "20px",
             "@media (max-width: 500px)": {
-              flexDirection: "column",
-              alignItems: "flex-start",
-              gap: "6px",
+              flexWrap: "wrap",
+              gap: "20px",
             },
           }}
         >

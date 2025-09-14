@@ -50,6 +50,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         },
         "@media (max-width: 500px)": {
           minHeight: "600px",
+          padding: "50px 0px 150px 0px",
         },
       }}
     >
@@ -185,6 +186,10 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               "@media (max-width: 700px)": {
                 fontSize: "2rem",
               },
+              "@media (max-width: 500px)": {
+                maxWidth: "90vw",
+                fontSize: "1.9rem",
+              },
             }}
           >
             {title}
@@ -199,7 +204,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 maxWidth: "940px",
                 fontSize: "1.1rem",
                 "@media (max-width: 600px)": {
-                  fontSize: "1rem",
+                  fontSize: "0.9rem",
                 },
                 b: {
                   fontWeight: 700,
@@ -215,7 +220,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 sx={{
                   fontSize: "1.1rem",
                   "@media (max-width: 600px)": {
-                    fontSize: "1rem",
+                    fontSize: "0.9rem",
                   },
                 }}
               >
