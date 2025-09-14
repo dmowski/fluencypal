@@ -69,7 +69,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           video: {
             width: "1800px",
             height: "2000px",
-            opacity: 0.9,
+            opacity: 0.7,
             position: "absolute",
             top: "-323px",
             left: "calc(50vw - 990px)",
@@ -118,7 +118,13 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           width: "100%",
           gap: "30px",
           paddingLeft: "15px",
-          paddingTop: "90px",
+          paddingTop: "60px",
+          "@media (max-width: 1200px)": {
+            paddingTop: "30px",
+          },
+          "@media (max-width: 1000px)": {
+            paddingTop: "30px",
+          },
           "@media (max-width: 900px)": {
             paddingTop: "30px",
           },
@@ -169,6 +175,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             sx={{
               fontWeight: 700,
               fontSize: "4.5rem",
+              maxWidth: "640px",
               "@media (max-width: 1300px)": {
                 fontSize: "4rem",
               },
