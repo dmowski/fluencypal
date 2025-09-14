@@ -86,7 +86,6 @@ export function LanguageSwitcher({
   };
 
   const systemLangs = useMemo(() => getUserLangCode(), []);
-
   const isCurrentPageLangIsSystem = systemLangs.length && systemLangs.includes(supportedLang);
   const supportedLangCodeLabel =
     systemLangs.length && !isCurrentPageLangIsSystem && !isAuth && !isSawLangSelector

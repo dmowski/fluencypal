@@ -13,7 +13,7 @@ import {
   ListItemText,
   Stack,
 } from "@mui/material";
-import { BookMarked, Gem, MessageCircleQuestion, Rss } from "lucide-react";
+import { BookMarked, Gem, MessageCircleQuestion, Rss, X } from "lucide-react";
 
 import { useRouter } from "next/navigation";
 import { SupportedLanguage } from "@/features/Lang/lang";
@@ -160,19 +160,6 @@ export function HeaderComponentStatic({
               height: "100%",
             }}
           >
-            <IconButton
-              onClick={() => setIsOpenMainMenu(true)}
-              title="Open main menu"
-              sx={{
-                display: "none",
-                "@media (max-width: 650px)": {
-                  display: "block",
-                },
-              }}
-            >
-              <MenuIcon fontSize="small" />
-            </IconButton>
-
             <Stack
               component={"a"}
               href={homeUrl}
@@ -205,13 +192,7 @@ export function HeaderComponentStatic({
               }}
             >
               <img src="/logo.svg" alt="logo" width="160px" height="67px" className="big_logo" />
-              <img
-                src="/logo_small.svg"
-                alt="logo"
-                width="37px"
-                height="37px"
-                className="small_logo"
-              />
+              <img src="/logo.svg" alt="logo" width="112px" height="47px" className="small_logo" />
             </Stack>
 
             <Link
@@ -258,17 +239,32 @@ export function HeaderComponentStatic({
               onClick={(e) => navigateTo(`${getUrlStart(lang)}practice`, e)}
               variant={isHighlightJoin ? "contained" : "outlined"}
               color="info"
+              className="hideOnMobile"
               sx={{
                 minWidth: "max-content",
               }}
             >
               {signInTitle}
             </Button>
+            <IconButton
+              onClick={() => setIsOpenMainMenu(true)}
+              title="Open main menu"
+              sx={{
+                display: "none",
+                "@media (max-width: 650px)": {
+                  display: "block",
+                  marginTop: "3px",
+                  marginRight: "10px",
+                },
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
           </Stack>
         </Stack>
       </Stack>
 
-      <Drawer open={isOpenMainMenu} onClose={() => setIsOpenMainMenu(false)}>
+      <Drawer open={isOpenMainMenu} onClose={() => setIsOpenMainMenu(false)} anchor="right">
         <Stack
           sx={{
             width: "220px",
@@ -280,8 +276,14 @@ export function HeaderComponentStatic({
           }}
           onClick={() => setIsOpenMainMenu(false)}
         >
-          <Stack component={"a"} href={homeUrl}>
-            <img src="/logo.svg" alt="logo" width="160px" height="67px" />
+          <Stack
+            sx={{
+              alignItems: "flex-end",
+            }}
+          >
+            <IconButton onClick={() => setIsOpenMainMenu(false)} title="Close main menu" sx={{}}>
+              <X />
+            </IconButton>
           </Stack>
 
           <List sx={{}}>
