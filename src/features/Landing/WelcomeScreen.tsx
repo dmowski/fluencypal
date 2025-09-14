@@ -110,7 +110,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         }}
       >
         <video src={"/landing/flow.webm"} loop muted autoPlay playsInline />
-        <img src="/landing/uiChatClean.webp" />
+        <img src="/landing/uiChatClean.webp" alt="User Interface" />
       </Stack>
       <Stack
         sx={{
