@@ -787,7 +787,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                     borderRadius: "8px",
                   }}
                 >
-                  {i18n._(`1 hour free`)}
+                  {i18n._(`3 days free`)}
                 </Typography>
               </Stack>
             </Stack>
