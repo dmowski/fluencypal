@@ -125,7 +125,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
       <Stack
         sx={{
           alignItems: "center",
-          gap: "170px",
+          gap: "70px",
           width: "100%",
         }}
       >
@@ -180,18 +180,25 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         >
           <Stack
             sx={{
-              width: "100%",
+              width: "calc(50vw - 10px)",
+              border: "0px solid red",
+              boxSizing: "border-box",
               height: "600px",
-              maxWidth: "50vw",
               justifyContent: "center",
               alignItems: "flex-end",
               overflow: "hidden",
               img: {
-                width: "auto",
-                height: "100%",
+                width: "700px",
+                height: "auto",
               },
               "@media (max-width:1650px)": {
                 height: "400px",
+              },
+
+              "@media (max-width:1200px)": {
+                img: {
+                  width: "500px",
+                },
               },
 
               "@media (max-width:900px)": {
@@ -219,7 +226,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               backgroundColor: "rgba(0, 0, 0, 0.6)",
               //backdropFilter: "blur(10px)",
 
-              "@media (max-width:700px)": {
+              "@media (max-width:400px)": {
                 width: "calc(100vw - 0px)",
                 borderRadius: "0px",
                 padding: "20px",
@@ -253,7 +260,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   overflow: "visible",
                 },
 
-                "@media (max-width:700px)": {
+                "@media (max-width:400px)": {
                   width: "850px",
                   height: "710px",
                 },
@@ -289,7 +296,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   fontSize: "2rem",
                   color: "#fff",
                   fontWeight: 800,
-                  "@media (max-width: 700px)": {
+                  "@media (max-width: 500px)": {
                     fontSize: "1.5rem",
                   },
                 }}
@@ -316,7 +323,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   alignItems: "center",
                   gap: "20px",
                   marginTop: "20px",
-                  "@media (max-width: 700px)": {
+                  "@media (max-width: 500px)": {
                     flexDirection: "column",
                     alignItems: "flex-start",
                     gap: "6px",
@@ -358,10 +365,13 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             width: "100%",
             padding: "10px 10px",
             boxSizing: "border-box",
-            gridTemplateColumns: "1fr 1fr",
             alignItems: "center",
             justifyContent: "flex-end",
-            gap: "40px",
+            gap: "140px",
+
+            "@media (max-width: 1200px)": {
+              gap: "70px",
+            },
 
             "@media (max-width: 900px)": {
               flexDirection: "column",
@@ -390,10 +400,9 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               "@media (max-width: 900px)": {
                 boxShadow: "0 0 0 1px rgba(255, 255, 255, 0.8)",
               },
-              "@media (max-width:700px)": {
+              "@media (max-width:400px)": {
                 width: "calc(100vw - 0px)",
                 borderRadius: "0px",
-                padding: "20px",
               },
             }}
           >
@@ -432,6 +441,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 "@media (max-width: 900px)": {
                   alignItems: "flex-start",
                 },
+                maxWidth: "100%",
               }}
             >
               <Typography
@@ -439,7 +449,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 sx={{
                   color: "#fff",
                   fontSize: "1rem",
-                  maxWidth: "500px",
+                  width: "500px",
+
                   fontWeight: 300,
                   opacity: 0.8,
                   textTransform: "uppercase",
@@ -455,7 +466,6 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 variant="h4"
                 component={"h3"}
                 sx={{
-                  width: "100%",
                   fontSize: "2rem",
                   color: "#fff",
                   fontWeight: 800,
@@ -473,7 +483,6 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 sx={{
                   color: "#fff",
                   fontSize: "1rem",
-                  maxWidth: "500px",
                   fontWeight: 300,
                   opacity: 0.9,
                   "@media (max-width: 900px)": {
@@ -504,39 +513,31 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
           <Stack
             sx={{
-              width: "50vw",
+              width: "calc(50vw - 10px)",
+              border: "0px solid red",
               "@media (max-width: 900px)": {
                 display: "none",
               },
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
             }}
           >
             <Stack
               sx={{
-                width: "100%",
+                width: "568px",
                 height: "max-content",
                 justifyContent: "center",
                 alignItems: "flex-end",
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr ",
+                gridTemplateColumns: "1fr 1fr",
                 gap: "20px",
-                transform: "scale(0.8) translateY(0px) translateX(-70px)",
+                transform: "scale(0.78) translateY(-10px) translateX(35px)",
+                transformOrigin: "left",
 
                 "@media (max-width: 1250px)": {
-                  transform: "scale(0.8) translateY(-50px) translateX(-70px)",
+                  transform: "scale(0.8) translateY(-10px) translateX(35px)",
                   gridTemplateColumns: "1fr 1fr",
-                  maxHeight: "700px",
-                  overflow: "hidden",
                   position: "relative",
-                  "&:after": {
-                    content: '""',
-                    position: "absolute",
-                    bottom: "-10px",
-                    left: "0px",
-                    width: "100%",
-                    height: "300px",
-                    background:
-                      "linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 18, 30, 0.8), rgba(0, 18, 30, 0))",
-                  },
                 },
 
                 "@media (max-width: 500px)": {
@@ -564,7 +565,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             >
               <>
                 {planElements
-                  .filter((element, index) => index < 4)
+                  .filter((element, index) => index < 6)
                   .map((planElement, index) => {
                     const cardInfo = modeCardProps[planElement.mode];
                     const colorIndex = index % cardColors.length;
@@ -607,57 +608,66 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
         <Stack
           sx={{
-            display: "grid",
+            display: "flex",
             width: "100%",
             boxSizing: "border-box",
             padding: "0 10px",
-            gridTemplateColumns: "1fr 1fr",
+            flexDirection: "row",
             alignItems: "center",
-            gap: "40px",
+            gap: "100px",
             "@media (max-width: 900px)": {
-              display: "flex",
-              flexDirection: "column-reverse",
-              width: "100%",
+              flexDirection: "column",
+              gap: "30px",
             },
+            position: "relative",
           }}
         >
           <Stack
             sx={{
-              width: "100%",
+              width: "calc(50vw - 60px)",
+              border: "0px solid red",
+              boxSizing: "border-box",
+              height: "600px",
+              justifyContent: "center",
               alignItems: "flex-end",
-              "@media (max-width: 900px)": {
-                padding: "0 20px",
-                boxSizing: "border-box",
+              overflow: "hidden",
+              img: {
+                width: "600px",
+                height: "auto",
+              },
+              "@media (max-width:1650px)": {},
+              "@media (max-width:1200px)": {
+                img: {
+                  width: "500px",
+                },
+              },
+
+              "@media (max-width:900px)": {
+                opacity: 0,
+                position: "absolute",
+                top: "0px",
+                left: "0px",
+                zIndex: -1,
               },
             }}
           >
-            <Stack
-              sx={{
-                img: {
-                  width: "800px",
-                  maxWidth: "100%",
-                  height: "auto",
-                },
-              }}
-            >
-              <img src="/landing/uiChat.webp" alt="Plan" />
-            </Stack>
+            <img src="/landing/uiChat.webp" alt="uiChat" />
           </Stack>
           <Stack
             sx={{
               padding: "30px",
               alignItems: "flex-start",
-
+              justifyContent: "center",
               gap: "20px",
               boxSizing: "border-box",
-
-              width: "438px",
+              width: "437px",
               height: "322px",
               position: "relative",
               borderRadius: "20px",
               backgroundColor: "rgba(0, 0, 0, 0.6)",
-              justifyContent: "center",
-              "@media (max-width:700px)": {
+              //backdropFilter: "blur(10px)",
+
+              "@media (max-width:400px)": {
                 width: "calc(100vw - 0px)",
                 borderRadius: "0px",
                 padding: "20px",
@@ -670,20 +680,30 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 top: "-185px",
                 left: "-188px",
                 width: "850px",
-                height: "780px",
-                zIndex: -2,
+                height: "710px",
+                zIndex: -1,
                 opacity: 1,
                 overflow: "hidden",
-                borderRadius: "200px 30px 30px 30px",
+                borderRadius: "0 0 0 100px",
+                boxShadow: "0 0 40px 0px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
 
-                boxShadow: "0 0 10px 30px #050709, 0 0 20px 10px rgba(0, 0, 0, 1)",
                 video: {
                   position: "absolute",
                   top: "0px",
                   left: "0px",
                   width: "850px",
                   height: "750px",
+                  borderRadius: "0",
                   transform: "scale(1.2) rotate(90deg)",
+                },
+
+                "@media (max-width:900px)": {
+                  overflow: "visible",
+                },
+
+                "@media (max-width:400px)": {
+                  width: "850px",
+                  height: "710px",
                 },
               }}
             >
