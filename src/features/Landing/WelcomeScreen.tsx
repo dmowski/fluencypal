@@ -69,7 +69,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           video: {
             width: "1800px",
             height: "2000px",
-            opacity: 0.7,
+            opacity: 1,
             position: "absolute",
             top: "-323px",
             left: "calc(50vw - 990px)",
