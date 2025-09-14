@@ -120,6 +120,16 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         position: "relative",
         zIndex: 1,
         overflow: "hidden",
+        ".bgCardImg": {
+          position: "absolute",
+          top: "0",
+          left: "0",
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+          opacity: 1,
+          transform: "rotate(90deg) scale(1.35)",
+        },
       }}
     >
       <Stack
@@ -171,7 +181,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             flexDirection: "row",
             alignItems: "center",
             gap: "40px",
-            "@media (max-width: 900px)": {
+            "@media (max-width: 1000px)": {
               flexDirection: "column",
               gap: "30px",
             },
@@ -201,7 +211,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 },
               },
 
-              "@media (max-width:900px)": {
+              "@media (max-width:1000px)": {
                 opacity: 0,
                 position: "absolute",
                 top: "0px",
@@ -223,7 +233,6 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               height: "322px",
               position: "relative",
               borderRadius: "20px",
-              backgroundColor: "rgba(0, 0, 0, 0.6)",
               //backdropFilter: "blur(10px)",
 
               "@media (max-width:400px)": {
@@ -233,6 +242,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               },
             }}
           >
+            <img src={"/landing/blue.svg"} alt="" className="bgCardImg" />
             <Stack
               sx={{
                 position: "absolute",
@@ -248,6 +258,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
 
                 video: {
                   position: "absolute",
+                  zIndex: -2,
                   top: "0px",
                   left: "0px",
                   width: "850px",
@@ -256,7 +267,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   transform: "scale(1.2) rotate(90deg)",
                 },
 
-                "@media (max-width:900px)": {
+                "@media (max-width:1000px)": {
                   overflow: "visible",
                 },
 
@@ -272,6 +283,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               sx={{
                 gap: "0px",
                 alignItems: "flex-start",
+                position: "relative",
+                zIndex: 1,
               }}
             >
               <Typography
@@ -373,7 +386,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               gap: "70px",
             },
 
-            "@media (max-width: 900px)": {
+            "@media (max-width: 1000px)": {
               flexDirection: "column",
               alignItems: "center",
               gap: "0px",
@@ -397,15 +410,14 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               position: "relative",
               borderRadius: "20px",
               backgroundColor: "rgba(0, 0, 0, 0.6)",
-              "@media (max-width: 900px)": {
-                boxShadow: "0 0 0 1px rgba(255, 255, 255, 0.8)",
-              },
+              "@media (max-width: 1000px)": {},
               "@media (max-width:400px)": {
                 width: "calc(100vw - 0px)",
                 borderRadius: "0px",
               },
             }}
           >
+            <img src={"/landing/green.svg"} alt="" className="bgCardImg" />
             <Stack
               sx={{
                 position: "absolute",
@@ -418,7 +430,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 overflow: "hidden",
                 borderRadius: "200px 0 0 0 ",
                 boxShadow: "0 0 10px 20px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
-                "@media (max-width: 900px)": {
+                "@media (max-width: 1000px)": {
                   display: "none",
                 },
                 video: {
@@ -438,10 +450,12 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 gap: "0px",
 
                 alignItems: "flex-end",
-                "@media (max-width: 900px)": {
+                "@media (max-width: 1000px)": {
                   alignItems: "flex-start",
                 },
                 maxWidth: "100%",
+                position: "relative",
+                zIndex: 1,
               }}
             >
               <Typography
@@ -454,7 +468,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   fontWeight: 300,
                   opacity: 0.8,
                   textTransform: "uppercase",
-                  "@media (max-width: 900px)": {
+                  "@media (max-width: 1000px)": {
                     textAlign: "left",
                   },
                 }}
@@ -470,7 +484,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   color: "#fff",
                   fontWeight: 800,
                   textAlign: "right",
-                  "@media (max-width: 900px)": {
+                  "@media (max-width: 1000px)": {
                     fontSize: "1.5rem",
                     textAlign: "left",
                   },
@@ -485,7 +499,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   fontSize: "1rem",
                   fontWeight: 300,
                   opacity: 0.9,
-                  "@media (max-width: 900px)": {
+                  "@media (max-width: 1000px)": {
                     textAlign: "left",
                   },
                 }}
@@ -515,7 +529,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             sx={{
               width: "calc(50vw - 10px)",
               border: "0px solid red",
-              "@media (max-width: 900px)": {
+              "@media (max-width: 1000px)": {
                 display: "none",
               },
               justifyContent: "flex-start",
@@ -544,7 +558,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   gridTemplateColumns: "1fr",
                 },
 
-                "@media (max-width: 900px)": {
+                "@media (max-width: 1000px)": {
                   transform: "scale(1)",
                   padding: "30px",
                   boxSizing: "border-box",
@@ -615,7 +629,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             flexDirection: "row",
             alignItems: "center",
             gap: "100px",
-            "@media (max-width: 900px)": {
+            "@media (max-width: 1000px)": {
               flexDirection: "column",
               gap: "30px",
             },
@@ -642,7 +656,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                 },
               },
 
-              "@media (max-width:900px)": {
+              "@media (max-width:1000px)": {
                 opacity: 0,
                 position: "absolute",
                 top: "0px",
@@ -674,6 +688,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               },
             }}
           >
+            <img src={"/landing/purple.svg"} alt="" className="bgCardImg" />
             <Stack
               sx={{
                 position: "absolute",
@@ -697,7 +712,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
                   transform: "scale(1.2) rotate(90deg)",
                 },
 
-                "@media (max-width:900px)": {
+                "@media (max-width:1000px)": {
                   overflow: "visible",
                 },
 
@@ -713,6 +728,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               sx={{
                 gap: "0px",
                 alignItems: "flex-start",
+                position: "relative",
+                zIndex: 1,
               }}
             >
               <Typography
