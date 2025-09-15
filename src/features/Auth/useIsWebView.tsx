@@ -41,14 +41,13 @@ export const useIsWebView = () => {
   const [inWebView, setIsWebView] = useState(false);
   const [isTiktok, setIsTikTok] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const isTelegramApp = isTMA();
-      const isTelegramData = getIsTelegram();
-      const ua = navigator.userAgent.toLowerCase();
-      //const supportsWebRTC = !!window.RTCPeerConnection;
-      //const result = inAppSpy();
-      /*
+  const initCheck = async () => {
+    const isTelegramApp = await isTMA("complete");
+    const isTelegramData = getIsTelegram();
+    const ua = navigator.userAgent.toLowerCase();
+    //const supportsWebRTC = !!window.RTCPeerConnection;
+    //const result = inAppSpy();
+    /*
       setAgent(
         ua +
           " | supportsWebRTC:" +
@@ -57,14 +56,21 @@ export const useIsWebView = () => {
           JSON.stringify(result)
       );*/
 
-      const isTiktokWebView = isTikTokWebView();
-      const isTelegramWebView =
-        !isTelegramApp && (isTelegramData.isTgAndroid || isTelegramData.isTgIos);
+    const isTiktokWebView = isTikTokWebView();
+    const isTelegramWebView = isTelegramData.isTgAndroid || isTelegramData.isTgIos;
 
+    if (!isTelegramApp) {
       setIsWebView(isTelegramWebView || isInAppBrowser(ua) || isTiktokWebView);
-      setIsTelegram(isTelegramWebView);
-      setIsAndroid(isTelegramData.isTgAndroid || ua.includes("android"));
-      setIsTikTok(isTiktokWebView);
+    }
+
+    setIsTelegram(isTelegramWebView);
+    setIsAndroid(isTelegramData.isTgAndroid || ua.includes("android"));
+    setIsTikTok(isTiktokWebView);
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      initCheck();
     }
   }, []);
 
