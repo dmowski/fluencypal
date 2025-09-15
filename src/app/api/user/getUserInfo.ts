@@ -1,6 +1,7 @@
 import { UserSettings, UserSettingsWithId } from "@/common/user";
 import { getDB } from "../config/firebase";
 import { AiUserInfo } from "@/common/userInfo";
+import { Conversation, UserConversationsMeta } from "@/common/conversation";
 
 export const getUserInfo = async (userId: string) => {
   const db = getDB();
@@ -38,28 +39,24 @@ export const getAllUsersWithIds = async () => {
   return users;
 };
 
-export const getUserConversationCount = async (userId: string): Promise<number> => {
-  const db = getDB();
-  const conversationsCollection = await db
-    .collection("users")
-    .doc(userId)
-    .collection("conversations")
-    .get();
-  return conversationsCollection.size || 0;
-};
-
-export const getUserLastConversationDate = async (userId: string): Promise<string | null> => {
+export const getUserConversationsMeta = async (userId: string): Promise<UserConversationsMeta> => {
   const db = getDB();
   const conversationsCollection = await db
     .collection("users")
     .doc(userId)
     .collection("conversations")
     .orderBy("createdAt", "desc")
-    .limit(1)
     .get();
-  if (conversationsCollection.empty) {
-    return null;
-  }
-  const lastConversation = conversationsCollection.docs[0];
-  return lastConversation.data().updatedAtIso;
+
+  const docs = conversationsCollection.docs.map((doc) => doc.data() as Conversation);
+
+  const conversationCount = docs.length || 0;
+  const lastConversationDate = docs[0]?.updatedAtIso || null;
+  const totalMessages = docs.reduce((acc, doc) => acc + (doc.messages.length || 0), 0);
+
+  return {
+    conversationCount,
+    lastConversationDate,
+    totalMessages,
+  };
 };

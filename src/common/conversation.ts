@@ -18,6 +18,12 @@ export interface ChatMessage {
   text: string;
 }
 
+export interface UserConversationsMeta {
+  conversationCount: number;
+  lastConversationDate: string | null;
+  totalMessages: number;
+}
+
 export interface Conversation {
   id: string;
   messagesCount: number;

@@ -29,8 +29,9 @@ const UserCard = ({ userStat }: { userStat: UserStat }) => {
     ? `https://flagsapi.com/${user.country.toUpperCase()}/flat/64.png`
     : "";
 
-  const conversationCount = userStat.conversationCount;
-  const lastConversationDateTime = userStat.lastConversationDateTime;
+  const totalMessages = userStat.conversationMeta.totalMessages || 0;
+  const conversationCount = userStat.conversationMeta.conversationCount || 0;
+  const lastConversationDateTime = userStat.conversationMeta.lastConversationDate;
   const lastConversationAgo = lastConversationDateTime
     ? dayjs(lastConversationDateTime).fromNow()
     : "Never";
@@ -78,7 +79,8 @@ const UserCard = ({ userStat }: { userStat: UserStat }) => {
           <b>{lastLoginAgo}</b> - login
         </Typography>
         <Typography variant="caption">
-          <b>{lastConversationAgo}</b> - conversations ({conversationCount})
+          <b>{lastConversationAgo}</b> - conversations ({conversationCount} | {totalMessages}
+          {` messages`})
         </Typography>
         <Stack
           sx={{

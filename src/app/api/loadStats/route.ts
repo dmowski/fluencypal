@@ -1,11 +1,7 @@
 import { validateAuthToken } from "../config/firebase";
 import { DEV_EMAILS } from "@/common/dev";
 import { AdminStatsResponse, UserStat } from "./types";
-import {
-  getAllUsersWithIds,
-  getUserConversationCount,
-  getUserLastConversationDate,
-} from "../user/getUserInfo";
+import { getAllUsersWithIds, getUserConversationsMeta } from "../user/getUserInfo";
 import { getGameProfile } from "@/features/Game/api/getGameProfile";
 
 export async function POST(request: Request) {
@@ -21,16 +17,14 @@ export async function POST(request: Request) {
   const allUsers = await getAllUsersWithIds();
   const userStats = await Promise.all(
     allUsers.map(async (user) => {
-      const [conversationCount, lastConversationDateTime, gameProfile] = await Promise.all([
-        getUserConversationCount(user.id),
-        getUserLastConversationDate(user.id),
+      const [conversationMeta, gameProfile] = await Promise.all([
+        getUserConversationsMeta(user.id),
         getGameProfile(user.id),
       ]);
 
       const userStat: UserStat = {
         userData: user,
-        conversationCount,
-        lastConversationDateTime,
+        conversationMeta,
         gameProfile,
       };
       return userStat;
