@@ -13,13 +13,18 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1569
-msgid "AI speaking partner"
-msgstr "Đối tác nói chuyện AI"
+#: src/features/Usage/NoBalanceBlock.tsx:60
+#. js-lingui-explicit-id
+msgid "Subscription needed"
+msgstr "Cần đăng ký"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:1722
 msgid "So you can keep your progress"
 msgstr "Vì vậy, bạn có thể giữ tiến trình của mình"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1569
+msgid "AI speaking partner"
+msgstr "Đối tác nói chuyện AI"
 
 #: src/features/Header/HeaderStatic.tsx:18
 #: src/features/Landing/Contact/ContactsPage.tsx:94
@@ -57,7 +62,7 @@ msgstr ""
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:89
 #: src/features/Header/HeaderStatic.tsx:16
-#: src/features/Landing/PlanLandingBlock.tsx:615
+#: src/features/Landing/PlanLandingBlock.tsx:622
 #: src/libs/metadata.ts:114
 #. js-lingui-explicit-id
 msgid "Practice"
@@ -378,40 +383,6 @@ msgstr "Đối tác nói tiếng Anh"
 msgid "AI English Speaking Practice"
 msgstr "Cách luyện nói tiếng Anh bằng AI"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1094
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
-#: src/features/Goal/Quiz/QuizPage2.tsx:825
-#: src/features/Goal/Quiz/QuizPage2.tsx:861
-#: src/features/Usage/SubscriptionWaiter.tsx:47
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "Hoàn thành"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:56
-#. js-lingui-explicit-id
-msgid "Your subscription has been successfully changed."
-msgstr "Gói đăng ký của bạn đã được thay đổi thành công."
-
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:265
-#: src/features/Usage/SubscriptionWaiter.tsx:60
-#: src/features/Usage/SubscriptionWaiter.tsx:81
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "Đóng"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:68
-#. js-lingui-explicit-id
-msgid "Waiting for payment..."
-msgstr "Đang chờ thanh toán..."
-
-#: src/features/Usage/SubscriptionWaiter.tsx:77
-#. js-lingui-explicit-id
-msgid "Please wait while we process your payment."
-msgstr "Vui lòng chờ trong khi chúng tôi xử lý thanh toán của bạn."
-
 #: src/features/Usage/SubscriptionPaymentModal.tsx:72
 #: src/features/Usage/SubscriptionPaymentModal.tsx:91
 #: src/features/Usage/SubscriptionPaymentModal.tsx:221
@@ -636,102 +607,39 @@ msgstr "Mua Thêm"
 msgid "Need help?"
 msgstr "Cần giúp đỡ?"
 
-#: src/features/Usage/UsageStatsCards.tsx:83
+#: src/features/Conversation/ConversationCanvas2.tsx:1094
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
+#: src/features/Goal/Quiz/QuizPage2.tsx:825
+#: src/features/Goal/Quiz/QuizPage2.tsx:861
+#: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
-msgid "Word Stats"
-msgstr "Thống kê từ vựng"
+msgid "Done"
+msgstr "Hoàn thành"
 
-#: src/features/Usage/UsageStatsCards.tsx:91
+#: src/features/Usage/SubscriptionWaiter.tsx:56
 #. js-lingui-explicit-id
-msgid "Here are the words you used the most in your conversations."
-msgstr "Đây là những từ bạn sử dụng nhiều nhất trong các cuộc trò chuyện của mình."
+msgid "Your subscription has been successfully changed."
+msgstr "Gói đăng ký của bạn đã được thay đổi thành công."
 
-#: src/features/Usage/UsageStatsCards.tsx:120
-#: src/features/Usage/UsageStatsCards.tsx:474
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:265
+#: src/features/Usage/SubscriptionWaiter.tsx:60
+#: src/features/Usage/SubscriptionWaiter.tsx:81
 #. js-lingui-explicit-id
-msgid "No words used yet"
-msgstr "Chưa có từ nào được sử dụng"
+msgid "Close"
+msgstr "Đóng"
 
-#: src/features/Usage/UsageStatsCards.tsx:181
+#: src/features/Usage/SubscriptionWaiter.tsx:68
 #. js-lingui-explicit-id
-msgid "Chat history"
-msgstr "Lịch sử trò chuyện"
+msgid "Waiting for payment..."
+msgstr "Đang chờ thanh toán..."
 
-#: src/features/Usage/UsageStatsCards.tsx:189
+#: src/features/Usage/SubscriptionWaiter.tsx:77
 #. js-lingui-explicit-id
-msgid "Here are the conversations you had with FluencyPal."
-msgstr "Dưới đây là những cuộc trò chuyện bạn đã có với FluencyPal."
-
-#: src/features/Usage/UsageStatsCards.tsx:212
-#. js-lingui-explicit-id
-msgid "No conversations yet"
-msgstr "Chưa có cuộc trò chuyện nào"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:573
-#: src/features/Usage/UsageStatsCards.tsx:259
-#. js-lingui-explicit-id
-msgid "Teacher:"
-msgstr "Giáo viên:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:573
-#: src/features/Usage/UsageStatsCards.tsx:259
-#. js-lingui-explicit-id
-msgid "You:"
-msgstr "Bạn:"
-
-#: src/features/Usage/UsageStatsCards.tsx:285
-#. js-lingui-explicit-id
-msgid "Grammar Corrections"
-msgstr "Sửa lỗi ngữ pháp"
-
-#: src/features/Usage/UsageStatsCards.tsx:293
-#. js-lingui-explicit-id
-msgid "Here are the corrections you had in your conversations."
-msgstr "Đây là những sửa chữa bạn đã có trong cuộc trò chuyện của mình."
-
-#: src/features/Usage/UsageStatsCards.tsx:315
-#. js-lingui-explicit-id
-msgid "No corrections yet"
-msgstr "Chưa có sửa chữa nào"
-
-#: src/features/Usage/UsageStatsCards.tsx:391
-#. js-lingui-explicit-id
-msgid "Description:"
-msgstr "Mô tả:"
-
-#: src/features/Usage/UsageStatsCards.tsx:428
-#. js-lingui-explicit-id
-msgid "Your achievements"
-msgstr "Thành tích của bạn"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:172
-#: src/features/Dashboard/PlanDashboardCards.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:337
-#: src/features/Landing/PlanLandingBlock.tsx:294
-#: src/features/Usage/UsageStatsCards.tsx:440
-#. js-lingui-explicit-id
-msgid "Words"
-msgstr "Từ vựng"
-
-#: src/features/Usage/UsageStatsCards.tsx:510
-#. js-lingui-explicit-id
-msgid "Corrections"
-msgstr "Sửa chữa"
-
-#: src/features/Usage/UsageStatsCards.tsx:556
-#. js-lingui-explicit-id
-msgid "Minutes"
-msgstr "Phút"
-
-#: src/features/Usage/UsageStatsCards.tsx:557
-#. js-lingui-explicit-id
-msgid "Total"
-msgstr "Tổng cộng"
-
-#: src/features/Usage/UsageStatsCards.tsx:580
-#. js-lingui-explicit-id
-msgid "Open history"
-msgstr "Mở lịch sử"
+msgid "Please wait while we process your payment."
+msgstr "Vui lòng chờ trong khi chúng tôi xử lý thanh toán của bạn."
 
 #: src/features/Usage/PaymentModal.tsx:119
 #. js-lingui-explicit-id
@@ -876,23 +784,17 @@ msgstr "Lịch sử thanh toán:"
 msgid "No payments..."
 msgstr "Không thanh toán..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1497
-#: src/features/Usage/NoBalanceBlock.tsx:61
-#. js-lingui-explicit-id
-msgid "Low balance"
-msgstr "Số dư thấp"
-
 #: src/features/Usage/NoBalanceBlock.tsx:72
 #. js-lingui-explicit-id
 msgid "You've made amazing progress. Let’s keep going."
 msgstr "Bạn đã tiến bộ đáng kể. Hãy tiếp tục nhé."
 
-#: src/features/Usage/NoBalanceBlock.tsx:98
+#: src/features/Usage/NoBalanceBlock.tsx:99
 #. js-lingui-explicit-id
 msgid "Buy a subscription"
 msgstr "Mua gói đăng ký"
 
-#: src/features/Usage/NoBalanceBlock.tsx:110
+#: src/features/Usage/NoBalanceBlock.tsx:111
 #. js-lingui-explicit-id
 msgid "Play the Game"
 msgstr "Chơi Trò Chơi"
@@ -1030,12 +932,109 @@ msgstr "Để lại tin nhắn của bạn"
 msgid "We appreciate your feedback!"
 msgstr "Chúng tôi rất trân trọng phản hồi của bạn!"
 
+#: src/features/Usage/UsageStatsCards.tsx:83
+#. js-lingui-explicit-id
+msgid "Word Stats"
+msgstr "Thống kê từ vựng"
+
+#: src/features/Usage/UsageStatsCards.tsx:91
+#. js-lingui-explicit-id
+msgid "Here are the words you used the most in your conversations."
+msgstr "Đây là những từ bạn sử dụng nhiều nhất trong các cuộc trò chuyện của mình."
+
+#: src/features/Usage/UsageStatsCards.tsx:120
+#: src/features/Usage/UsageStatsCards.tsx:474
+#. js-lingui-explicit-id
+msgid "No words used yet"
+msgstr "Chưa có từ nào được sử dụng"
+
+#: src/features/Usage/UsageStatsCards.tsx:181
+#. js-lingui-explicit-id
+msgid "Chat history"
+msgstr "Lịch sử trò chuyện"
+
+#: src/features/Usage/UsageStatsCards.tsx:189
+#. js-lingui-explicit-id
+msgid "Here are the conversations you had with FluencyPal."
+msgstr "Dưới đây là những cuộc trò chuyện bạn đã có với FluencyPal."
+
+#: src/features/Usage/UsageStatsCards.tsx:212
+#. js-lingui-explicit-id
+msgid "No conversations yet"
+msgstr "Chưa có cuộc trò chuyện nào"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:573
+#: src/features/Usage/UsageStatsCards.tsx:259
+#. js-lingui-explicit-id
+msgid "Teacher:"
+msgstr "Giáo viên:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:573
+#: src/features/Usage/UsageStatsCards.tsx:259
+#. js-lingui-explicit-id
+msgid "You:"
+msgstr "Bạn:"
+
+#: src/features/Usage/UsageStatsCards.tsx:285
+#. js-lingui-explicit-id
+msgid "Grammar Corrections"
+msgstr "Sửa lỗi ngữ pháp"
+
+#: src/features/Usage/UsageStatsCards.tsx:293
+#. js-lingui-explicit-id
+msgid "Here are the corrections you had in your conversations."
+msgstr "Đây là những sửa chữa bạn đã có trong cuộc trò chuyện của mình."
+
+#: src/features/Usage/UsageStatsCards.tsx:315
+#. js-lingui-explicit-id
+msgid "No corrections yet"
+msgstr "Chưa có sửa chữa nào"
+
+#: src/features/Usage/UsageStatsCards.tsx:391
+#. js-lingui-explicit-id
+msgid "Description:"
+msgstr "Mô tả:"
+
+#: src/features/Usage/UsageStatsCards.tsx:428
+#. js-lingui-explicit-id
+msgid "Your achievements"
+msgstr "Thành tích của bạn"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:172
+#: src/features/Dashboard/PlanDashboardCards.tsx:100
+#: src/features/Goal/Quiz/QuizPage2.tsx:337
+#: src/features/Landing/PlanLandingBlock.tsx:304
+#: src/features/Usage/UsageStatsCards.tsx:440
+#. js-lingui-explicit-id
+msgid "Words"
+msgstr "Từ vựng"
+
+#: src/features/Usage/UsageStatsCards.tsx:510
+#. js-lingui-explicit-id
+msgid "Corrections"
+msgstr "Sửa chữa"
+
+#: src/features/Usage/UsageStatsCards.tsx:556
+#. js-lingui-explicit-id
+msgid "Minutes"
+msgstr "Phút"
+
+#: src/features/Usage/UsageStatsCards.tsx:557
+#. js-lingui-explicit-id
+msgid "Total"
+msgstr "Tổng cộng"
+
+#: src/features/Usage/UsageStatsCards.tsx:580
+#. js-lingui-explicit-id
+msgid "Open history"
+msgstr "Mở lịch sử"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:258
 #: src/features/Dashboard/PlanDashboardCards.tsx:458
 #: src/features/Goal/Quiz/QuizPage2.tsx:452
-#: src/features/Landing/PlanLandingBlock.tsx:428
-#: src/features/Landing/PlanLandingBlock.tsx:558
-#: src/features/Landing/PlanLandingBlock.tsx:620
+#: src/features/Landing/PlanLandingBlock.tsx:435
+#: src/features/Landing/PlanLandingBlock.tsx:565
+#: src/features/Landing/PlanLandingBlock.tsx:627
 #: src/features/Landing/Price/PricePage.tsx:280
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:328
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
@@ -1043,6 +1042,157 @@ msgstr "Chúng tôi rất trân trọng phản hồi của bạn!"
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Bắt đầu"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:336
+#: src/features/Landing/PlanLandingBlock.tsx:303
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/RolePlay/RolePlayBoard.tsx:49
+#. js-lingui-explicit-id
+msgid "Role Play"
+msgstr "Vai diễn"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show more"
+msgstr "Hiển thị thêm"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show less"
+msgstr "Hiển thị ít hơn"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
+#. js-lingui-explicit-id
+msgid ""
+"Boost your English vocabulary and fluency by creatively describing and "
+"guessing words in\n"
+"        this interactive AI-powered Alias game."
+msgstr ""
+"Nâng cao từ vựng và khả năng lưu loát tiếng Anh của bạn bằng cách mô tả và "
+"đoán từ một cách sáng tạo trong\n"
+"        trò chơi Alias được hỗ trợ bởi AI tương tác này."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
+#. js-lingui-explicit-id
+msgid "Benefits of Playing Alias Game"
+msgstr "Lợi ích của việc chơi Trò chơi Alias"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
+#. js-lingui-explicit-id
+msgid "Enhance your vocabulary by describing words in unique ways."
+msgstr "Nâng cao từ vựng của bạn bằng cách mô tả từ theo các cách độc đáo."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
+#. js-lingui-explicit-id
+msgid "Improve listening skills as you interpret descriptions."
+msgstr "Cải thiện kỹ năng nghe khi bạn diễn giải các mô tả."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
+#. js-lingui-explicit-id
+msgid "Practice rapid thinking and fluent speaking under playful pressure."
+msgstr "Luyện tập tư duy nhanh và nói chuyện trôi chảy dưới sức ép vui nhộn."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
+#. js-lingui-explicit-id
+msgid "Receive instant, tailored feedback from your AI partner."
+msgstr "Nhận phản hồi tức thì, tùy chỉnh từ đối tác AI của bạn."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
+#. js-lingui-explicit-id
+msgid "How to Play"
+msgstr "Cách Chơi"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"You and your AI partner alternate turns describing and guessing words "
+"without directly\n"
+"          naming them. This encourages creative thinking and fluent "
+"expression, adapting to your\n"
+"          language proficiency."
+msgstr ""
+"Bạn và đối tác AI của bạn lần lượt mô tả và đoán từ mà không trực tiếp\n"
+"          đặt tên cho chúng. Điều này khuyến khích tư duy sáng tạo và biểu "
+"hiện trôi chảy, thích nghi với\n"
+"          trình độ ngôn ngữ của bạn."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
+#. js-lingui-explicit-id
+msgid "Choose Your Language Level"
+msgstr "Chọn Trình độ Ngôn ngữ của Bạn"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
+#. js-lingui-explicit-id
+msgid "Pick a level to start playing!"
+msgstr "Chọn một cấp độ để bắt đầu chơi!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
+#. js-lingui-explicit-id
+msgid "Alias Game Levels"
+msgstr "Các Mức độ Trò chơi Alias"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
+#. js-lingui-explicit-id
+msgid "Check proposed words"
+msgstr "Kiểm tra các từ đề xuất"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
+#. js-lingui-explicit-id
+msgid "Based on your level, the AI will suggest words to describe."
+msgstr "Dựa vào trình độ của bạn, AI sẽ đề xuất các từ để mô tả."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
+#. js-lingui-explicit-id
+msgid "Alias Game options"
+msgstr "Tùy chọn cho Trò chơi Đoán tên"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
+#. js-lingui-explicit-id
+msgid "Record your description"
+msgstr "Ghi lại mô tả của bạn"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
+#. js-lingui-explicit-id
+msgid "Describe the word you see on the screen without using the word itself!"
+msgstr "Mô tả từ bạn thấy trên màn hình mà không sử dụng chính từ đó!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
+#. js-lingui-explicit-id
+msgid "Alias Game Recording"
+msgstr "Ghi Âm Trò Chơi Alias"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
+#. js-lingui-explicit-id
+msgid "Have fun!"
+msgstr "Vui vẻ!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
+#. js-lingui-explicit-id
+msgid "Enjoy the game and see how the AI guesses your description!"
+msgstr "Tận hưởng trò chơi và xem AI đoán mô tả của bạn!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
+#. js-lingui-explicit-id
+msgid "Robot Thinking"
+msgstr "Robot Đang suy nghĩ"
+
+#: src/features/Plan/useGoalCreation.ts:41
+#: src/features/Plan/useGoalCreation.ts:71
+#: src/features/Plan/useGoalCreation.ts:93
+#: src/features/Plan/useGoalCreation.ts:96
+#: src/features/Plan/useGoalCreation.ts:100
+#: src/features/Plan/useGoalCreation.ts:109
+#: src/features/Plan/useGoalCreation.ts:115
+#: src/features/Plan/useGoalCreation.ts:119
+#. js-lingui-explicit-id
+msgid "Processing the goal..."
+msgstr "Đang xử lý mục tiêu..."
+
+#: src/features/Plan/useGoalCreation.ts:133
+#. js-lingui-explicit-id
+msgid "Error Processing the goal"
+msgstr "Lỗi trong quá trình xử lý mục tiêu"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -1979,167 +2129,6 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Tất cả các kịch bản"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:336
-#: src/features/Landing/PlanLandingBlock.tsx:293
-#: src/features/Navigation/NavigationBar.tsx:54
-#: src/features/RolePlay/RolePlayBoard.tsx:49
-#. js-lingui-explicit-id
-msgid "Role Play"
-msgstr "Vai diễn"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show more"
-msgstr "Hiển thị thêm"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show less"
-msgstr "Hiển thị ít hơn"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
-#. js-lingui-explicit-id
-msgid ""
-"Boost your English vocabulary and fluency by creatively describing and "
-"guessing words in\n"
-"        this interactive AI-powered Alias game."
-msgstr ""
-"Nâng cao từ vựng và khả năng lưu loát tiếng Anh của bạn bằng cách mô tả và "
-"đoán từ một cách sáng tạo trong\n"
-"        trò chơi Alias được hỗ trợ bởi AI tương tác này."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
-#. js-lingui-explicit-id
-msgid "Benefits of Playing Alias Game"
-msgstr "Lợi ích của việc chơi Trò chơi Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
-#. js-lingui-explicit-id
-msgid "Enhance your vocabulary by describing words in unique ways."
-msgstr "Nâng cao từ vựng của bạn bằng cách mô tả từ theo các cách độc đáo."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
-#. js-lingui-explicit-id
-msgid "Improve listening skills as you interpret descriptions."
-msgstr "Cải thiện kỹ năng nghe khi bạn diễn giải các mô tả."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
-#. js-lingui-explicit-id
-msgid "Practice rapid thinking and fluent speaking under playful pressure."
-msgstr "Luyện tập tư duy nhanh và nói chuyện trôi chảy dưới sức ép vui nhộn."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
-#. js-lingui-explicit-id
-msgid "Receive instant, tailored feedback from your AI partner."
-msgstr "Nhận phản hồi tức thì, tùy chỉnh từ đối tác AI của bạn."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
-#. js-lingui-explicit-id
-msgid "How to Play"
-msgstr "Cách Chơi"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
-#. js-lingui-explicit-id
-msgid ""
-"You and your AI partner alternate turns describing and guessing words "
-"without directly\n"
-"          naming them. This encourages creative thinking and fluent "
-"expression, adapting to your\n"
-"          language proficiency."
-msgstr ""
-"Bạn và đối tác AI của bạn lần lượt mô tả và đoán từ mà không trực tiếp\n"
-"          đặt tên cho chúng. Điều này khuyến khích tư duy sáng tạo và biểu "
-"hiện trôi chảy, thích nghi với\n"
-"          trình độ ngôn ngữ của bạn."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
-#. js-lingui-explicit-id
-msgid "Choose Your Language Level"
-msgstr "Chọn Trình độ Ngôn ngữ của Bạn"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
-#. js-lingui-explicit-id
-msgid "Pick a level to start playing!"
-msgstr "Chọn một cấp độ để bắt đầu chơi!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
-#. js-lingui-explicit-id
-msgid "Alias Game Levels"
-msgstr "Các Mức độ Trò chơi Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
-#. js-lingui-explicit-id
-msgid "Check proposed words"
-msgstr "Kiểm tra các từ đề xuất"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
-#. js-lingui-explicit-id
-msgid "Based on your level, the AI will suggest words to describe."
-msgstr "Dựa vào trình độ của bạn, AI sẽ đề xuất các từ để mô tả."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
-#. js-lingui-explicit-id
-msgid "Alias Game options"
-msgstr "Tùy chọn cho Trò chơi Đoán tên"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
-#. js-lingui-explicit-id
-msgid "Record your description"
-msgstr "Ghi lại mô tả của bạn"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
-#. js-lingui-explicit-id
-msgid "Describe the word you see on the screen without using the word itself!"
-msgstr "Mô tả từ bạn thấy trên màn hình mà không sử dụng chính từ đó!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
-#. js-lingui-explicit-id
-msgid "Alias Game Recording"
-msgstr "Ghi Âm Trò Chơi Alias"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
-#. js-lingui-explicit-id
-msgid "Have fun!"
-msgstr "Vui vẻ!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
-#. js-lingui-explicit-id
-msgid "Enjoy the game and see how the AI guesses your description!"
-msgstr "Tận hưởng trò chơi và xem AI đoán mô tả của bạn!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
-#. js-lingui-explicit-id
-msgid "Robot Thinking"
-msgstr "Robot Đang suy nghĩ"
-
-#: src/features/Plan/useGoalCreation.ts:41
-#: src/features/Plan/useGoalCreation.ts:71
-#: src/features/Plan/useGoalCreation.ts:93
-#: src/features/Plan/useGoalCreation.ts:96
-#: src/features/Plan/useGoalCreation.ts:100
-#: src/features/Plan/useGoalCreation.ts:109
-#: src/features/Plan/useGoalCreation.ts:115
-#: src/features/Plan/useGoalCreation.ts:119
-#. js-lingui-explicit-id
-msgid "Processing the goal..."
-msgstr "Đang xử lý mục tiêu..."
-
-#: src/features/Plan/useGoalCreation.ts:133
-#. js-lingui-explicit-id
-msgid "Error Processing the goal"
-msgstr "Lỗi trong quá trình xử lý mục tiêu"
-
-#: src/features/Plan/PlanCard.tsx:118
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "Gửi 6 tin nhắn để hoàn thành"
-
-#: src/features/Plan/PlanCard.tsx:137
-#. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "Bắt đầu bài học"
-
 #: src/features/Navigation/NavigationBar.tsx:44
 #. js-lingui-explicit-id
 msgid "Home"
@@ -2150,50 +2139,15 @@ msgstr "Trang chủ"
 msgid "Profile"
 msgstr "Hồ sơ"
 
-#: src/features/Dashboard/SelectLanguage.tsx:94
-#: src/features/Game/GameNativeLanguageSelector.tsx:19
-#: src/features/Goal/GoalQuestions.tsx:323
-#: src/features/Goal/Quiz/QuizPage2.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:995
-#: src/features/Goal/Quiz/useQuiz.tsx:622
-#: src/features/Lang/LanguageSwitcher.tsx:104
+#: src/features/Plan/PlanCard.tsx:118
 #. js-lingui-explicit-id
-msgid "Other languages"
-msgstr "Ngôn ngữ khác"
+msgid "Send 6 messages to complete"
+msgstr "Gửi 6 tin nhắn để hoàn thành"
 
-#: src/features/Dashboard/SelectLanguage.tsx:95
-#: src/features/Game/GameNativeLanguageSelector.tsx:20
-#: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Goal/Quiz/QuizPage2.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:996
-#: src/features/Goal/Quiz/useQuiz.tsx:623
-#: src/features/Lang/LanguageSwitcher.tsx:105
+#: src/features/Plan/PlanCard.tsx:137
 #. js-lingui-explicit-id
-msgid "System languages"
-msgstr "Ngôn ngữ hệ thống"
-
-#: src/features/Lang/LanguageSwitcher.tsx:187
-#. js-lingui-explicit-id
-msgid "Languages"
-msgstr "Ngôn ngữ"
-
-#: src/features/Goal/GoalQuestions.tsx:422
-#: src/features/Lang/LanguageSwitcher.tsx:230
-#. js-lingui-explicit-id
-msgid "Language to Learn"
-msgstr "Ngôn ngữ để học"
-
-#: src/features/Dashboard/SelectLanguage.tsx:267
-#: src/features/Lang/LanguageSwitcher.tsx:269
-#. js-lingui-explicit-id
-msgid "Native Language"
-msgstr "Ngôn ngữ mẹ đẻ"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1190
-#: src/features/Lang/LanguageSwitcher.tsx:311
-#. js-lingui-explicit-id
-msgid "Page Language"
-msgstr "Ngôn ngữ Trang"
+msgid "Start lesson"
+msgstr "Bắt đầu bài học"
 
 #: src/features/Lang/getLabels.tsx:9
 #. js-lingui-explicit-id
@@ -2305,154 +2259,199 @@ msgstr "Kế hoạch Học tiếng Thụy Điển"
 msgid "Belarusian Learning Plan"
 msgstr "Kế Hoạch Học Tiếng Belarusian"
 
-#: src/features/Landing/WelcomeScreen.tsx:210
+#: src/features/Dashboard/SelectLanguage.tsx:94
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
+#: src/features/Goal/GoalQuestions.tsx:323
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:995
+#: src/features/Goal/Quiz/useQuiz.tsx:622
+#: src/features/Lang/LanguageSwitcher.tsx:104
+#. js-lingui-explicit-id
+msgid "Other languages"
+msgstr "Ngôn ngữ khác"
+
+#: src/features/Dashboard/SelectLanguage.tsx:95
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
+#: src/features/Goal/GoalQuestions.tsx:324
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
+#: src/features/Goal/Quiz/QuizPage2.tsx:996
+#: src/features/Goal/Quiz/useQuiz.tsx:623
+#: src/features/Lang/LanguageSwitcher.tsx:105
+#. js-lingui-explicit-id
+msgid "System languages"
+msgstr "Ngôn ngữ hệ thống"
+
+#: src/features/Lang/LanguageSwitcher.tsx:187
+#. js-lingui-explicit-id
+msgid "Languages"
+msgstr "Ngôn ngữ"
+
+#: src/features/Goal/GoalQuestions.tsx:422
+#: src/features/Lang/LanguageSwitcher.tsx:230
+#. js-lingui-explicit-id
+msgid "Language to Learn"
+msgstr "Ngôn ngữ để học"
+
+#: src/features/Dashboard/SelectLanguage.tsx:267
+#: src/features/Lang/LanguageSwitcher.tsx:269
+#. js-lingui-explicit-id
+msgid "Native Language"
+msgstr "Ngôn ngữ mẹ đẻ"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1190
+#: src/features/Lang/LanguageSwitcher.tsx:311
+#. js-lingui-explicit-id
+msgid "Page Language"
+msgstr "Ngôn ngữ Trang"
+
+#: src/features/Landing/WelcomeScreen.tsx:215
 #. js-lingui-explicit-id
 msgid "Talk, get corrected, improve—repeat."
 msgstr "Nói chuyện, được sửa lỗi, cải thiện—lặp lại."
 
-#: src/features/Landing/WelcomeScreen.tsx:222
+#: src/features/Landing/WelcomeScreen.tsx:227
 #. js-lingui-explicit-id
 msgid "Win the game and get the app"
 msgstr "Chiến thắng trò chơi và tải ứng dụng"
 
-#: src/features/Landing/WelcomeScreen.tsx:222
+#: src/features/Landing/WelcomeScreen.tsx:227
 #. js-lingui-explicit-id
 msgid "for free"
 msgstr "miễn phí"
 
-#: src/features/Landing/PlanLandingBlock.tsx:209
+#: src/features/Landing/PlanLandingBlock.tsx:219
 #. js-lingui-explicit-id
 msgid "Psychology"
 msgstr "Tâm lý học"
 
-#: src/features/Landing/PlanLandingBlock.tsx:210
+#: src/features/Landing/PlanLandingBlock.tsx:220
 #. js-lingui-explicit-id
 msgid "Mental Health Vocabulary"
 msgstr "Từ vựng về Sức khỏe Tâm thần"
 
-#: src/features/Landing/PlanLandingBlock.tsx:212
+#: src/features/Landing/PlanLandingBlock.tsx:222
 #. js-lingui-explicit-id
 msgid "Essential words for discussing mental health and psychology."
 msgstr "Từ vựng cần thiết để thảo luận về sức khỏe tâm thần và tâm lý học."
 
-#: src/features/Landing/PlanLandingBlock.tsx:218
+#: src/features/Landing/PlanLandingBlock.tsx:228
 #. js-lingui-explicit-id
 msgid "Diagnosis"
 msgstr "Chẩn đoán"
 
-#: src/features/Landing/PlanLandingBlock.tsx:219
+#: src/features/Landing/PlanLandingBlock.tsx:229
 #. js-lingui-explicit-id
 msgid "Medical Talk Simulation"
 msgstr "Mô phỏng Cuộc trò chuyện y khoa"
 
-#: src/features/Landing/PlanLandingBlock.tsx:221
+#: src/features/Landing/PlanLandingBlock.tsx:231
 #. js-lingui-explicit-id
 msgid "Practice medical conversations through simulated scenarios."
 msgstr "Thực hành cuộc trò chuyện y tế thông qua các kịch bản mô phỏng."
 
-#: src/features/Landing/PlanLandingBlock.tsx:227
+#: src/features/Landing/PlanLandingBlock.tsx:237
 #. js-lingui-explicit-id
 msgid "Reflex"
 msgstr "Phản xạ"
 
-#: src/features/Landing/PlanLandingBlock.tsx:228
+#: src/features/Landing/PlanLandingBlock.tsx:238
 #. js-lingui-explicit-id
 msgid "Fast Answer Practice"
 msgstr "Luyện tập Trả lời Nhanh"
 
-#: src/features/Landing/PlanLandingBlock.tsx:230
+#: src/features/Landing/PlanLandingBlock.tsx:240
 #. js-lingui-explicit-id
 msgid "Improve your ability to answer quickly and clearly in conversations."
 msgstr "Cải thiện khả năng trả lời nhanh chóng và rõ ràng trong cuộc trò chuyện."
 
 #: src/features/Landing/LandingPage.tsx:138
-#: src/features/Landing/PlanLandingBlock.tsx:236
+#: src/features/Landing/PlanLandingBlock.tsx:246
 #. js-lingui-explicit-id
 msgid "Speaking"
 msgstr "Nói chuyện"
 
-#: src/features/Landing/PlanLandingBlock.tsx:237
+#: src/features/Landing/PlanLandingBlock.tsx:247
 #. js-lingui-explicit-id
 msgid "Public Talk Skills"
 msgstr "Kỹ năng Thuyết trình Công cộng"
 
-#: src/features/Landing/PlanLandingBlock.tsx:239
+#: src/features/Landing/PlanLandingBlock.tsx:249
 #. js-lingui-explicit-id
 msgid "Boost your confidence in public speaking."
 msgstr "Tăng cường sự tự tin trong việc nói trước đám đông."
 
-#: src/features/Landing/PlanLandingBlock.tsx:245
+#: src/features/Landing/PlanLandingBlock.tsx:255
 #. js-lingui-explicit-id
 msgid "TOEFL"
 msgstr "TOEFL"
 
-#: src/features/Landing/PlanLandingBlock.tsx:246
+#: src/features/Landing/PlanLandingBlock.tsx:256
 #. js-lingui-explicit-id
 msgid "Academic Word List"
 msgstr "Danh sách từ vựng học thuật"
 
-#: src/features/Landing/PlanLandingBlock.tsx:248
+#: src/features/Landing/PlanLandingBlock.tsx:258
 #. js-lingui-explicit-id
 msgid "Master high-frequency TOEFL vocabulary."
 msgstr "Nắm vững từ vựng TOEFL xuất hiện thường xuyên."
 
-#: src/features/Landing/PlanLandingBlock.tsx:254
+#: src/features/Landing/PlanLandingBlock.tsx:264
 #. js-lingui-explicit-id
 msgid "Mock"
 msgstr "Chế nhạo"
 
-#: src/features/Landing/PlanLandingBlock.tsx:255
+#: src/features/Landing/PlanLandingBlock.tsx:265
 #. js-lingui-explicit-id
 msgid "TOEFL Speaking Tasks"
 msgstr "Nhiệm vụ Nói trong TOEFL"
 
-#: src/features/Landing/PlanLandingBlock.tsx:257
+#: src/features/Landing/PlanLandingBlock.tsx:267
 #. js-lingui-explicit-id
 msgid "Simulate speaking tasks from the TOEFL exam."
 msgstr "Mô phỏng các tác vụ nói từ bài thi TOEFL."
 
 #: src/features/Landing/LandingPage.tsx:148
-#: src/features/Landing/PlanLandingBlock.tsx:263
+#: src/features/Landing/PlanLandingBlock.tsx:273
 #. js-lingui-explicit-id
 msgid "Grammar"
 msgstr "Ngữ pháp"
 
-#: src/features/Landing/PlanLandingBlock.tsx:264
+#: src/features/Landing/PlanLandingBlock.tsx:274
 #. js-lingui-explicit-id
 msgid "Advanced Academic Usage"
 msgstr "Sử dụng Học thuật Nâng cao"
 
-#: src/features/Landing/PlanLandingBlock.tsx:266
+#: src/features/Landing/PlanLandingBlock.tsx:276
 #. js-lingui-explicit-id
 msgid "Learn grammar used in academic writing and speaking."
 msgstr "Học ngữ pháp được sử dụng trong viết và nói học thuật."
 
-#: src/features/Landing/PlanLandingBlock.tsx:273
+#: src/features/Landing/PlanLandingBlock.tsx:283
 #. js-lingui-explicit-id
 msgid "Wellness"
 msgstr "Sức khỏe"
 
-#: src/features/Landing/PlanLandingBlock.tsx:274
+#: src/features/Landing/PlanLandingBlock.tsx:284
 #. js-lingui-explicit-id
 msgid "Mental Health Talk"
 msgstr "Cuộc trò chuyện về Sức khỏe Tâm thần"
 
-#: src/features/Landing/PlanLandingBlock.tsx:276
+#: src/features/Landing/PlanLandingBlock.tsx:286
 #. js-lingui-explicit-id
 msgid "Explore techniques to talk about wellness and mental well-being."
 msgstr "Khám phá các kỹ thuật để nói về sức khỏe và tâm lý."
 
-#: src/features/Landing/PlanLandingBlock.tsx:282
+#: src/features/Landing/PlanLandingBlock.tsx:292
 #. js-lingui-explicit-id
 msgid "Essays"
 msgstr "Bài văn"
 
-#: src/features/Landing/PlanLandingBlock.tsx:283
+#: src/features/Landing/PlanLandingBlock.tsx:293
 #. js-lingui-explicit-id
 msgid "Formal Writing Practice"
 msgstr "Luyện viết chính thức"
 
-#: src/features/Landing/PlanLandingBlock.tsx:285
+#: src/features/Landing/PlanLandingBlock.tsx:295
 #. js-lingui-explicit-id
 msgid "Develop formal writing skills for academic success."
 msgstr "Phát triển kỹ năng viết chính thức cho thành công học thuật."
@@ -2460,39 +2459,39 @@ msgstr "Phát triển kỹ năng viết chính thức cho thành công học thu
 #: src/features/Dashboard/ConversationSelectCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:98
 #: src/features/Goal/Quiz/QuizPage2.tsx:335
-#: src/features/Landing/PlanLandingBlock.tsx:292
+#: src/features/Landing/PlanLandingBlock.tsx:302
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Cuộc trò chuyện"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
 #: src/features/Goal/Quiz/QuizPage2.tsx:338
-#: src/features/Landing/PlanLandingBlock.tsx:295
+#: src/features/Landing/PlanLandingBlock.tsx:305
 #. js-lingui-explicit-id
 msgid "Rule"
 msgstr "Quy tắc"
 
-#: src/features/Landing/PlanLandingBlock.tsx:352
+#: src/features/Landing/PlanLandingBlock.tsx:359
 #. js-lingui-explicit-id
 msgid "How It Works"
 msgstr "Cách Nó Hoạt Động"
 
-#: src/features/Landing/PlanLandingBlock.tsx:363
+#: src/features/Landing/PlanLandingBlock.tsx:370
 #. js-lingui-explicit-id
 msgid "From Onboarding to Your Goal"
 msgstr "Từ Khởi Động đến Mục Tiêu của Bạn"
 
-#: src/features/Landing/PlanLandingBlock.tsx:422
+#: src/features/Landing/PlanLandingBlock.tsx:429
 #. js-lingui-explicit-id
 msgid "Step 1"
 msgstr "Bước 1"
 
-#: src/features/Landing/PlanLandingBlock.tsx:423
+#: src/features/Landing/PlanLandingBlock.tsx:430
 #. js-lingui-explicit-id
 msgid "Smart Start"
 msgstr "Khởi Đầu Thông Minh"
 
-#: src/features/Landing/PlanLandingBlock.tsx:424
+#: src/features/Landing/PlanLandingBlock.tsx:431
 #. js-lingui-explicit-id
 msgid ""
 "Fill out a onboarding quiz to help FluencyPal understand your goals and "
@@ -2501,17 +2500,17 @@ msgstr ""
 "Điền vào bài kiểm tra khởi động để giúp FluencyPal hiểu được mục tiêu và sở "
 "thích của bạn."
 
-#: src/features/Landing/PlanLandingBlock.tsx:459
+#: src/features/Landing/PlanLandingBlock.tsx:466
 #. js-lingui-explicit-id
 msgid "Step 2"
 msgstr "Bước 2"
 
-#: src/features/Landing/PlanLandingBlock.tsx:460
+#: src/features/Landing/PlanLandingBlock.tsx:467
 #. js-lingui-explicit-id
 msgid "Personal Plan"
 msgstr "Gói Cá Nhân"
 
-#: src/features/Landing/PlanLandingBlock.tsx:461
+#: src/features/Landing/PlanLandingBlock.tsx:468
 #. js-lingui-explicit-id
 msgid ""
 "Based on your onboarding, FluencyPal instantly generates a custom learning "
@@ -2521,17 +2520,17 @@ msgstr ""
 "hoạch học tập tùy chỉnh chỉ dành cho bạn."
 
 #: src/features/Goal/GoalQuestions.tsx:1095
-#: src/features/Landing/PlanLandingBlock.tsx:465
+#: src/features/Landing/PlanLandingBlock.tsx:472
 #. js-lingui-explicit-id
 msgid "Create a plan"
 msgstr "Tạo một kế hoạch"
 
-#: src/features/Landing/PlanLandingBlock.tsx:614
+#: src/features/Landing/PlanLandingBlock.tsx:621
 #. js-lingui-explicit-id
 msgid "Step 3"
 msgstr "Bước 3"
 
-#: src/features/Landing/PlanLandingBlock.tsx:616
+#: src/features/Landing/PlanLandingBlock.tsx:623
 #. js-lingui-explicit-id
 msgid ""
 "Jump into your tailored learning path and build real skills through "
@@ -2540,18 +2539,18 @@ msgstr ""
 "Bước vào con đường học tập được tùy chỉnh cho bạn và xây dựng kỹ năng thực "
 "sự thông qua việc thực hành hấp dẫn với trò chuyện bằng giọng nói AI."
 
-#: src/features/Landing/PlanLandingBlock.tsx:619
+#: src/features/Landing/PlanLandingBlock.tsx:626
 #. js-lingui-explicit-id
 msgid "3 days free"
 msgstr "3 ngày miễn phí"
 
-#: src/features/Landing/PlanLandingBlock.tsx:646
+#: src/features/Landing/PlanLandingBlock.tsx:653
 #. js-lingui-explicit-id
 msgid "Results are closer than you think"
 msgstr "Kết quả gần hơn bạn nghĩ"
 
 #: src/features/Goal/Quiz/QuizPage2.tsx:466
-#: src/features/Landing/PlanLandingBlock.tsx:659
+#: src/features/Landing/PlanLandingBlock.tsx:666
 #. js-lingui-explicit-id
 msgid "Start Learning"
 msgstr "Bắt Đầu Học"
@@ -2896,13 +2895,6 @@ msgstr "Học ở bất cứ đâu, bất kì lúc nào"
 msgid "Start Your Free Trial"
 msgstr "Bắt đầu Dùng Thử Miễn Phí"
 
-#: src/features/Blog/BlogsPage.tsx:41
-#: src/features/Landing/Price/PricePage.tsx:971
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
-#. js-lingui-explicit-id
-msgid "Start Your Journey to Fluent Conversations Now"
-msgstr "Bắt Đầu Hành Trình Đến Những Cuộc Hội Thoại Lưu Loát Ngay Bây Giờ"
-
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
 msgid "View all"
@@ -2970,10 +2962,16 @@ msgstr "Cảnh liên quan"
 msgid "Ready to Become Fluent in English?"
 msgstr "Sẵn sàng để nói trôi chảy tiếng Anh?"
 
-#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
+#: src/features/Landing/Footer.tsx:85
 #. js-lingui-explicit-id
-msgid "Try"
-msgstr "Cố gắng"
+msgid "Role-Play"
+msgstr "Vai diễn"
+
+#: src/features/Header/HeaderStatic.tsx:24
+#: src/features/Landing/Footer.tsx:91
+#. js-lingui-explicit-id
+msgid "Blog"
+msgstr "Blog"
 
 #: src/features/Header/HeaderStatic.tsx:19
 #: src/features/Landing/Footer.tsx:94
@@ -2981,6 +2979,78 @@ msgstr "Cố gắng"
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "Giá"
+
+#: src/features/Blog/BlogsPage.tsx:41
+#: src/features/Landing/Price/PricePage.tsx:971
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
+#. js-lingui-explicit-id
+msgid "Start Your Journey to Fluent Conversations Now"
+msgstr "Bắt Đầu Hành Trình Đến Những Cuộc Hội Thoại Lưu Loát Ngay Bây Giờ"
+
+#: src/features/Landing/RolePlay/RolePlayCard.tsx:150
+#. js-lingui-explicit-id
+msgid "Try"
+msgstr "Cố gắng"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "Thực Hành Cuộc Hội Thoại Thực Tế Với Các Tình Huống Đóng Vai"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
+msgstr ""
+"Đặt đồ ăn, lên lịch hẹn, thành công trong các buổi phỏng vấn, và nhiều hơn "
+"thế nữa—tất cả với sự hướng dẫn từ gia sư AI của bạn."
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1585
+#: src/features/Landing/Price/FeatureList.tsx:30
+#: src/features/Landing/Price/PricePage.tsx:241
+#. js-lingui-explicit-id
+msgid "Full AI tutor access"
+msgstr "Truy cập đầy đủ vào gia sư AI"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1604
+#: src/features/Landing/Price/FeatureList.tsx:34
+#: src/features/Landing/Price/PricePage.tsx:246
+#. js-lingui-explicit-id
+msgid "Role-play scenarios"
+msgstr "Kịch bản đóng vai"
+
+#: src/features/Landing/Price/FeatureList.tsx:38
+#: src/features/Landing/Price/PricePage.tsx:253
+#. js-lingui-explicit-id
+msgid "Conversation practice"
+msgstr "Thực hành hội thoại"
+
+#: src/features/Landing/Price/FeatureList.tsx:42
+#: src/features/Landing/Price/PricePage.tsx:258
+#. js-lingui-explicit-id
+msgid "Progress tracking"
+msgstr "Theo dõi tiến trình"
+
+#: src/features/Landing/Price/FeatureList.tsx:46
+#: src/features/Landing/Price/PricePage.tsx:263
+#. js-lingui-explicit-id
+msgid "New Words"
+msgstr "Từ mới"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1595
+#: src/features/Landing/Price/FeatureList.tsx:50
+#: src/features/Landing/Price/PricePage.tsx:268
+#. js-lingui-explicit-id
+msgid "New Grammar Rules"
+msgstr "Quy tắc ngữ pháp mới"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1590
+#: src/features/Landing/Price/FeatureList.tsx:54
+#: src/features/Landing/Price/PricePage.tsx:273
+#. js-lingui-explicit-id
+msgid "Advanced Personalization"
+msgstr "Tùy chỉnh cá nhân hóa cao cấp"
 
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
@@ -3052,24 +3122,10 @@ msgstr "Dành cho những người học muốn linh hoạt"
 msgid "Everything in Free, plus:"
 msgstr "Tất cả trong phiên bản Miễn phí, cộng thêm:"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1585
-#: src/features/Landing/Price/FeatureList.tsx:30
-#: src/features/Landing/Price/PricePage.tsx:241
-#. js-lingui-explicit-id
-msgid "Full AI tutor access"
-msgstr "Truy cập đầy đủ vào gia sư AI"
-
 #: src/features/Landing/Price/PricePage.tsx:242
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "Nhận quyền truy cập không giới hạn vào việc thực hành ngôn ngữ hỗ trợ bởi AI"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1604
-#: src/features/Landing/Price/FeatureList.tsx:34
-#: src/features/Landing/Price/PricePage.tsx:246
-#. js-lingui-explicit-id
-msgid "Role-play scenarios"
-msgstr "Kịch bản đóng vai"
 
 #: src/features/Landing/Price/PricePage.tsx:247
 #. js-lingui-explicit-id
@@ -3078,57 +3134,25 @@ msgstr ""
 "Tham gia vào các cuộc trò chuyện thực tế như phỏng vấn xin việc hoặc đặt đồ "
 "ăn"
 
-#: src/features/Landing/Price/FeatureList.tsx:38
-#: src/features/Landing/Price/PricePage.tsx:253
-#. js-lingui-explicit-id
-msgid "Conversation practice"
-msgstr "Thực hành hội thoại"
-
 #: src/features/Landing/Price/PricePage.tsx:254
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "Cải thiện sự lưu loát với các phiên trò chuyện tương tác"
-
-#: src/features/Landing/Price/FeatureList.tsx:42
-#: src/features/Landing/Price/PricePage.tsx:258
-#. js-lingui-explicit-id
-msgid "Progress tracking"
-msgstr "Theo dõi tiến trình"
 
 #: src/features/Landing/Price/PricePage.tsx:259
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "Xem sự cải thiện của bạn và theo dõi hành trình học của bạn"
 
-#: src/features/Landing/Price/FeatureList.tsx:46
-#: src/features/Landing/Price/PricePage.tsx:263
-#. js-lingui-explicit-id
-msgid "New Words"
-msgstr "Từ mới"
-
 #: src/features/Landing/Price/PricePage.tsx:264
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "Nhận từ vựng và cụm từ mới trong ngữ cảnh"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1595
-#: src/features/Landing/Price/FeatureList.tsx:50
-#: src/features/Landing/Price/PricePage.tsx:268
-#. js-lingui-explicit-id
-msgid "New Grammar Rules"
-msgstr "Quy tắc ngữ pháp mới"
-
 #: src/features/Landing/Price/PricePage.tsx:269
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "Bằng cách thực hành, bạn sẽ nhận được quy tắc ngữ pháp cá nhân từ AI"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1590
-#: src/features/Landing/Price/FeatureList.tsx:54
-#: src/features/Landing/Price/PricePage.tsx:273
-#. js-lingui-explicit-id
-msgid "Advanced Personalization"
-msgstr "Tùy chỉnh cá nhân hóa cao cấp"
 
 #: src/features/Landing/Price/PricePage.tsx:274
 #. js-lingui-explicit-id
@@ -3382,47 +3406,6 @@ msgstr ""
 msgid "Contacts:"
 msgstr "Contacts:"
 
-#: src/features/Landing/Footer.tsx:85
-#. js-lingui-explicit-id
-msgid "Role-Play"
-msgstr "Vai diễn"
-
-#: src/features/Header/HeaderStatic.tsx:24
-#: src/features/Landing/Footer.tsx:91
-#. js-lingui-explicit-id
-msgid "Blog"
-msgstr "Blog"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "Thực Hành Cuộc Hội Thoại Thực Tế Với Các Tình Huống Đóng Vai"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
-msgstr ""
-"Đặt đồ ăn, lên lịch hẹn, thành công trong các buổi phỏng vấn, và nhiều hơn "
-"thế nữa—tất cả với sự hướng dẫn từ gia sư AI của bạn."
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
-#. js-lingui-explicit-id
-msgid "Role Play Scenarios"
-msgstr "Tình huống đóng vai"
-
-#: src/features/Blog/ListBlog.tsx:72
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
-#. js-lingui-explicit-id
-msgid "Discover"
-msgstr "Khám phá"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
-#. js-lingui-explicit-id
-msgid "No scenarios found"
-msgstr "Không tìm thấy kịch bản"
-
 #: src/features/Landing/Contact/ContactsPage.tsx:104
 #. js-lingui-explicit-id
 msgid ""
@@ -3444,29 +3427,6 @@ msgid ""
 msgstr ""
 "Hãy thoải mái liên hệ với tôi nếu bạn có bất kỳ câu hỏi hoặc phản hồi nào. "
 "Tôi luôn sẵn sàng giúp đỡ!"
-
-#: src/features/Header/HeaderPractice.tsx:202
-#. js-lingui-explicit-id
-msgid "Finishing..."
-msgstr "Đang hoàn thành..."
-
-#: src/features/Dashboard/RulesToLearn.tsx:101
-#: src/features/Dashboard/WordsToLearn.tsx:121
-#: src/features/Header/HeaderPractice.tsx:203
-#. js-lingui-explicit-id
-msgid "Back"
-msgstr "Quay lại"
-
-#: src/features/Header/HeaderPractice.tsx:370
-#. js-lingui-explicit-id
-msgid "Payment history"
-msgstr "Lịch sử thanh toán"
-
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:22
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "Cần giúp đỡ?"
 
 #: src/features/Header/NeedHelpModal.tsx:69
 #: src/features/Header/NeedHelpModal.tsx:212
@@ -3548,6 +3508,55 @@ msgstr "Xóa tài khoản (Tổng cộng)"
 msgid "Delete account"
 msgstr "Xóa tài khoản"
 
+#: src/features/Header/HeaderStatic.tsx:17
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "Vai trò diễn xuất"
+
+#: src/features/Header/HeaderStatic.tsx:20
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "Đăng Nhập"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:22
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "Cần giúp đỡ?"
+
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
+#. js-lingui-explicit-id
+msgid "Role Play Scenarios"
+msgstr "Tình huống đóng vai"
+
+#: src/features/Blog/ListBlog.tsx:72
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
+#. js-lingui-explicit-id
+msgid "Discover"
+msgstr "Khám phá"
+
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
+#. js-lingui-explicit-id
+msgid "No scenarios found"
+msgstr "Không tìm thấy kịch bản"
+
+#: src/features/Header/HeaderPractice.tsx:202
+#. js-lingui-explicit-id
+msgid "Finishing..."
+msgstr "Đang hoàn thành..."
+
+#: src/features/Dashboard/RulesToLearn.tsx:101
+#: src/features/Dashboard/WordsToLearn.tsx:121
+#: src/features/Header/HeaderPractice.tsx:203
+#. js-lingui-explicit-id
+msgid "Back"
+msgstr "Quay lại"
+
+#: src/features/Header/HeaderPractice.tsx:370
+#. js-lingui-explicit-id
+msgid "Payment history"
+msgstr "Lịch sử thanh toán"
+
 #: src/features/Header/PaymentHistoryModal.tsx:21
 #. js-lingui-explicit-id
 msgid "Trial balance"
@@ -3573,15 +3582,56 @@ msgstr "Đăng ký (1 tháng)"
 msgid "Trial days"
 msgstr "Ngày dùng thử"
 
-#: src/features/Header/HeaderStatic.tsx:17
+#: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "Vai trò diễn xuất"
+msgid "You are on the right track!"
+msgstr "Bạn đang đi đúng hướng!"
 
-#: src/features/Header/HeaderStatic.tsx:20
+#: src/features/Goal/GoalPreparingModal.tsx:43
 #. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "Đăng Nhập"
+msgid "Okay"
+msgstr "Được"
+
+#: src/features/Goal/GoalPreparingModal.tsx:49
+#. js-lingui-explicit-id
+msgid "What we need from you?"
+msgstr "Chúng tôi cần gì từ bạn?"
+
+#: src/features/Goal/GoalPreparingModal.tsx:59
+#: src/features/Goal/Quiz/QuizPage2.tsx:1617
+#. js-lingui-explicit-id
+msgid "I agree"
+msgstr "Tôi đồng ý"
+
+#: src/features/Goal/GoalPreparingModal.tsx:65
+#. js-lingui-explicit-id
+msgid "From founder"
+msgstr "Từ người sáng lập"
+
+#: src/features/Goal/GoalPreparingModal.tsx:75
+#. js-lingui-explicit-id
+msgid "Got it"
+msgstr "Đã hiểu"
+
+#: src/features/Goal/GoalPreparingModal.tsx:81
+#. js-lingui-explicit-id
+msgid "Almost ready..."
+msgstr "Gần sẵn sàng..."
+
+#: src/features/Goal/GoalPreparingModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Let's do it"
+msgstr "Hãy làm nó"
+
+#: src/features/Goal/GoalPreparingModal.tsx:96
+#. js-lingui-explicit-id
+msgid "Finally"
+msgstr "Cuối cùng"
+
+#: src/features/Goal/GoalPreparingModal.tsx:107
+#. js-lingui-explicit-id
+msgid "Let's rock it!"
+msgstr "Hãy cùng làm nó!"
 
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
@@ -3974,57 +4024,6 @@ msgstr "Sao chép liên kết"
 msgid "Open the plan"
 msgstr "Mở kế hoạch"
 
-#: src/features/Goal/GoalPreparingModal.tsx:33
-#. js-lingui-explicit-id
-msgid "You are on the right track!"
-msgstr "Bạn đang đi đúng hướng!"
-
-#: src/features/Goal/GoalPreparingModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Okay"
-msgstr "Được"
-
-#: src/features/Goal/GoalPreparingModal.tsx:49
-#. js-lingui-explicit-id
-msgid "What we need from you?"
-msgstr "Chúng tôi cần gì từ bạn?"
-
-#: src/features/Goal/GoalPreparingModal.tsx:59
-#: src/features/Goal/Quiz/QuizPage2.tsx:1617
-#. js-lingui-explicit-id
-msgid "I agree"
-msgstr "Tôi đồng ý"
-
-#: src/features/Goal/GoalPreparingModal.tsx:65
-#. js-lingui-explicit-id
-msgid "From founder"
-msgstr "Từ người sáng lập"
-
-#: src/features/Goal/GoalPreparingModal.tsx:75
-#. js-lingui-explicit-id
-msgid "Got it"
-msgstr "Đã hiểu"
-
-#: src/features/Goal/GoalPreparingModal.tsx:81
-#. js-lingui-explicit-id
-msgid "Almost ready..."
-msgstr "Gần sẵn sàng..."
-
-#: src/features/Goal/GoalPreparingModal.tsx:90
-#. js-lingui-explicit-id
-msgid "Let's do it"
-msgstr "Hãy làm nó"
-
-#: src/features/Goal/GoalPreparingModal.tsx:96
-#. js-lingui-explicit-id
-msgid "Finally"
-msgstr "Cuối cùng"
-
-#: src/features/Goal/GoalPreparingModal.tsx:107
-#. js-lingui-explicit-id
-msgid "Let's rock it!"
-msgstr "Hãy cùng làm nó!"
-
 #: src/features/Goal/Quiz/QuizPage2.tsx:132
 #. js-lingui-explicit-id
 msgid "What language do you speak"
@@ -4212,11 +4211,6 @@ msgstr "Đánh giá:"
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Đứng trong top 5 để nhận ứng dụng miễn phí"
 
-#: src/features/Game/GameNativeLanguageSelector.tsx:49
-#. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Ngôn ngữ của bạn:"
-
 #: src/features/Game/GameOnboarding.tsx:52
 #. js-lingui-explicit-id
 msgid "Learn and Play"
@@ -4251,21 +4245,6 @@ msgstr "Hãy chắc chắn rằng bạn đã sẵn sàng"
 msgid "Your Avatar:"
 msgstr "Avatar của bạn:"
 
-#: src/features/Game/GameMyUsername.tsx:26
-#. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "Tên người dùng phải dài ít nhất 3 ký tự."
-
-#: src/features/Game/GameMyUsername.tsx:45
-#. js-lingui-explicit-id
-msgid "Game username:"
-msgstr "Tên người chơi trong trò chơi:"
-
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "Dịch từ"
-
 #: src/features/Game/GameMyAvatar.tsx:27
 #. js-lingui-explicit-id
 msgid "Avatar"
@@ -4281,6 +4260,26 @@ msgstr "Chọn hình đại diện trò chơi của bạn"
 msgid "Play and Learn"
 msgstr "Chơi và Học"
 
+#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "Ngôn ngữ của bạn:"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Translate the word"
+msgstr "Dịch từ"
+
+#: src/features/Game/GameMyUsername.tsx:26
+#. js-lingui-explicit-id
+msgid "Username must be at least 3 characters long."
+msgstr "Tên người dùng phải dài ít nhất 3 ký tự."
+
+#: src/features/Game/GameMyUsername.tsx:45
+#. js-lingui-explicit-id
+msgid "Game username:"
+msgstr "Tên người chơi trong trò chơi:"
+
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
 #. js-lingui-explicit-id
 msgid "Form a sentence"
@@ -4293,21 +4292,17 @@ msgstr "Hình thành một câu"
 msgid "Submit answer"
 msgstr "Gửi câu trả lời"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
 #. js-lingui-explicit-id
-msgid "Discuss the topic"
-msgstr "Thảo luận về chủ đề"
+msgid "Describe the image"
+msgstr "Mô tả hình ảnh"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
 #. js-lingui-explicit-id
 msgid "Record an answer"
 msgstr "Ghi lại câu trả lời"
-
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:281
-#. js-lingui-explicit-id
-msgid "Describe the topic in your own words..."
-msgstr "Mô tả chủ đề bằng lời của bạn..."
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:276
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:302
@@ -4337,47 +4332,15 @@ msgstr "Gửi"
 msgid "Error:"
 msgstr "Lỗi:"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "Mô tả hình ảnh"
+msgid "Discuss the topic"
+msgstr "Thảo luận về chủ đề"
 
-#: src/features/Dashboard/SelectLanguage.tsx:143
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:281
 #. js-lingui-explicit-id
-msgid "Almost there!"
-msgstr "Gần xong rồi!"
-
-#: src/features/Dashboard/SelectLanguage.tsx:158
-#. js-lingui-explicit-id
-msgid "Select languages"
-msgstr "Chọn ngôn ngữ"
-
-#: src/features/Dashboard/SelectLanguage.tsx:204
-#. js-lingui-explicit-id
-msgid "Learn"
-msgstr "Học"
-
-#: src/features/Dashboard/SelectLanguage.tsx:231
-#. js-lingui-explicit-id
-msgid "Page"
-msgstr "Trang"
-
-#: src/features/Dashboard/WordsToLearn.tsx:32
-#. js-lingui-explicit-id
-msgid "New words to practice."
-msgstr "Từ mới để luyện tập."
-
-#: src/features/Dashboard/RulesToLearn.tsx:86
-#: src/features/Dashboard/WordsToLearn.tsx:106
-#. js-lingui-explicit-id
-msgid "Start practice"
-msgstr "Bắt đầu luyện tập"
-
-#: src/features/Dashboard/WordsToLearn.tsx:128
-#. js-lingui-explicit-id
-msgid "I know all of them"
-msgstr "Tôi biết tất cả bọn họ"
+msgid "Describe the topic in your own words..."
+msgstr "Mô tả chủ đề bằng lời của bạn..."
 
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
@@ -4412,10 +4375,89 @@ msgstr "Từ mới"
 msgid "Practice new vocabulary with the AI"
 msgstr "Thực hành từ vựng mới với AI"
 
+#: src/features/Dashboard/WordsToLearn.tsx:32
+#. js-lingui-explicit-id
+msgid "New words to practice."
+msgstr "Từ mới để luyện tập."
+
+#: src/features/Dashboard/RulesToLearn.tsx:86
+#: src/features/Dashboard/WordsToLearn.tsx:106
+#. js-lingui-explicit-id
+msgid "Start practice"
+msgstr "Bắt đầu luyện tập"
+
+#: src/features/Dashboard/WordsToLearn.tsx:128
+#. js-lingui-explicit-id
+msgid "I know all of them"
+msgstr "Tôi biết tất cả bọn họ"
+
+#: src/features/Dashboard/SelectLanguage.tsx:143
+#. js-lingui-explicit-id
+msgid "Almost there!"
+msgstr "Gần xong rồi!"
+
+#: src/features/Dashboard/SelectLanguage.tsx:158
+#. js-lingui-explicit-id
+msgid "Select languages"
+msgstr "Chọn ngôn ngữ"
+
+#: src/features/Dashboard/SelectLanguage.tsx:204
+#. js-lingui-explicit-id
+msgid "Learn"
+msgstr "Học"
+
+#: src/features/Dashboard/SelectLanguage.tsx:231
+#. js-lingui-explicit-id
+msgid "Page"
+msgstr "Trang"
+
 #: src/features/Dashboard/RulesToLearn.tsx:36
 #. js-lingui-explicit-id
 msgid "New rule to practice."
 msgstr "Quy tắc mới để thực hành."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1383
+#: src/features/Dashboard/GoalCard.tsx:12
+#: src/features/Dashboard/PlanDashboardCards.tsx:326
+#: src/features/Dashboard/PlanDashboardCards.tsx:515
+#. js-lingui-explicit-id
+msgid "Goal"
+msgstr "Mục tiêu"
+
+#: src/features/Dashboard/GoalCard.tsx:13
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Đặt mục tiêu cho việc học của bạn"
+
+#: src/features/Dashboard/GoalCard.tsx:28
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "Bắt đầu | 5 phút"
+
+#: src/features/Dashboard/HomeworkCard.tsx:21
+#. js-lingui-explicit-id
+msgid "Homework"
+msgstr "Nhiệm vụ về nhà"
+
+#: src/features/Dashboard/HomeworkCard.tsx:57
+#. js-lingui-explicit-id
+msgid "No homework assigned yet."
+msgstr "Không có bài tập về nhà nào được giao."
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "Bắt đầu một cuộc trò chuyện để có được một cái."
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "Bỏ qua"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "Hiển thị tất cả"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:84
 #. js-lingui-explicit-id
@@ -4438,14 +4480,6 @@ msgstr "Bây giờ hãy xác định điểm bắt đầu của bạn!"
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "Kế hoạch học tập"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1383
-#: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:326
-#: src/features/Dashboard/PlanDashboardCards.tsx:515
-#. js-lingui-explicit-id
-msgid "Goal"
-msgstr "Mục tiêu"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:327
 #. js-lingui-explicit-id
@@ -4486,16 +4520,6 @@ msgstr "Tạo thêm nhiều bài học độc đáo"
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Để tạo thêm nhiều bài học, bạn cần hoàn thành ít nhất 3 bài học"
-
-#: src/features/Dashboard/GoalCard.tsx:13
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Đặt mục tiêu cho việc học của bạn"
-
-#: src/features/Dashboard/GoalCard.tsx:28
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "Bắt đầu | 5 phút"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:110
 #. js-lingui-explicit-id
@@ -4545,30 +4569,20 @@ msgstr "Nhận một quy tắc"
 msgid "Expand vocabulary"
 msgstr "Mở rộng từ vựng"
 
-#: src/features/Dashboard/HomeworkCard.tsx:21
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
 #. js-lingui-explicit-id
-msgid "Homework"
-msgstr "Nhiệm vụ về nhà"
+msgid "Progress Calendar"
+msgstr "Lịch Trình Tiến Trình"
 
-#: src/features/Dashboard/HomeworkCard.tsx:57
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
 #. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "Không có bài tập về nhà nào được giao."
+msgid "Less"
+msgstr "Ít hơn"
 
-#: src/features/Dashboard/HomeworkCard.tsx:66
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
 #. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "Bắt đầu một cuộc trò chuyện để có được một cái."
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "Bỏ qua"
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "Hiển thị tất cả"
+msgid "More"
+msgstr "Thêm nữa"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4671,21 +4685,6 @@ msgstr "Chuẩn bị cho bộ não"
 #. js-lingui-explicit-id
 msgid "Upload language skills directly to your brain"
 msgstr "Tải kỹ năng ngôn ngữ trực tiếp lên não của bạn"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
-#. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "Lịch Trình Tiến Trình"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "Ít hơn"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "Thêm nữa"
 
 #: src/features/Conversation/useConversationsAnalysis.ts:89
 #: src/features/Conversation/useConversationsAnalysis.ts:132
@@ -4883,6 +4882,11 @@ msgstr "Viết lại"
 msgid "Cancel recording"
 msgstr "Hủy bỏ ghi âm"
 
+#: src/features/Conversation/ConversationCanvas2.tsx:1497
+#. js-lingui-explicit-id
+msgid "Low balance"
+msgstr "Số dư thấp"
+
 #: src/features/Conversation/ConversationCanvas2.tsx:1505
 #. js-lingui-explicit-id
 msgid "Top up"
@@ -4923,6 +4927,510 @@ msgstr "Đang tạo ra những từ mới..."
 msgid "Crafting new rule..."
 msgstr "Đang tạo quy tắc mới..."
 
+#: src/features/Blog/ListBlogIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Read and Learn with my blog"
+msgstr "Đọc và Học với blog của tôi"
+
+#: src/features/Blog/ListBlogIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
+msgstr ""
+"Lấy cảm hứng và tìm hiểu về những xu hướng mới nhất trong việc học ngôn "
+"ngữ, giảng dạy và công nghệ."
+
+#: src/features/Blog/ListBlog.tsx:131
+#. js-lingui-explicit-id
+msgid "No blogs found"
+msgstr "Không tìm thấy blog"
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "Xem tất cả bài viết"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "Các kịch bản diễn tập để thực hành"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "Bạn có thể thử AI hoạt động ngay bây giờ"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "Dùng thử miễn phí"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
+#. js-lingui-explicit-id
+msgid "At the end, we’ll share a valuable tool for realistic interview practice."
+msgstr ""
+"Cuối cùng, chúng tôi sẽ chia sẻ một công cụ quý giá cho việc thực hành "
+"phỏng vấn thực tế."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
+#. js-lingui-explicit-id
+msgid "Introduction: Small Talk with the Interviewer"
+msgstr "Giới thiệu: Trò chuyện nhỏ với người phỏng vấn"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
+#. js-lingui-explicit-id
+msgid ""
+"The first few minutes of an interview are often dedicated to casual "
+"conversation — also known as 'SmallTalk'. Recruiters use this time to "
+"create a friendly atmosphere and get to know you a bit better."
+msgstr ""
+"Những phút đầu của buổi phỏng vấn thường được dành để trò chuyện không "
+"chính thức - còn được gọi là 'SmallTalk'. Nhà tuyển dụng sử dụng thời gian "
+"này để tạo ra một không khí thân thiện và hiểu bạn hơn một chút."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
+#. js-lingui-explicit-id
+msgid "Don’t skip small talk"
+msgstr "Đừng bỏ qua cuộc trò chuyện nhỏ"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
+#. js-lingui-explicit-id
+msgid ""
+"— it’s important to engage in this short conversation before jumping into "
+"professional topics. Here are some useful English phrases to start off the "
+"interview:"
+msgstr ""
+"— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
+"các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
+"bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
+#. js-lingui-explicit-id
+msgid "English Phrases"
+msgstr "Cụm từ tiếng Anh"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
+#. js-lingui-explicit-id
+msgid "A polite and professional greeting."
+msgstr "Một lời chào lịch sự và chuyên nghiệp."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
+#. js-lingui-explicit-id
+msgid "Expressing gratitude for the opportunity."
+msgstr "Bày tỏ lòng biết ơn cho cơ hội."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
+#. js-lingui-explicit-id
+msgid "A standard reply to “How are you?”"
+msgstr "Một câu trả lời tiêu chuẩn cho “Bạn khỏe không?”"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
+#. js-lingui-explicit-id
+msgid "A friendly compliment to break the ice."
+msgstr "Một lời khen thân thiện để xóa tan bầu không khí căng thẳng."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"Smile, shake hands (if culturally appropriate), and speak in a friendly "
+"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
+"might say:"
+msgstr ""
+"Cười, bắt tay (nếu văn hóa cho phép), và nói chuyện với giọng điệu thân "
+"thiện. Nếu người phỏng vấn hỏi, \"Bạn có gặp khó khăn gì khi tìm chúng tôi "
+"không?\" bạn có thể phản hồi như sau:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"Short answers with a positive attitude show that you’re easy to talk to and "
+"open to dialogue."
+msgstr ""
+"Câu trả lời ngắn gọn với thái độ tích cực cho thấy bạn dễ gần và sẵn lòng "
+"trò chuyện."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
+#. js-lingui-explicit-id
+msgid "Self-Introduction: Talking About Yourself"
+msgstr "Tự giới thiệu: Nói về bản thân"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
+#. js-lingui-explicit-id
+msgid "After the greeting, you'll usually hear:"
+msgstr "Sau lời chào, bạn thường sẽ nghe:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
+#. js-lingui-explicit-id
+msgid ""
+"This is your chance to introduce your experience and skills. Don’t list "
+"your full biography — focus on the highlights of your professional "
+"background. A good answer structure in English might look like this:"
+msgstr ""
+"Đây là cơ hội để bạn giới thiệu về kinh nghiệm và kỹ năng của mình. Đừng "
+"liệt kê toàn bộ lịch sử công việc của bạn - hãy tập trung vào những điểm "
+"nổi bật trong lý lịch làm việc của bạn. Một cấu trúc trả lời tốt bằng tiếng "
+"Anh có thể như sau:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
+#. js-lingui-explicit-id
+msgid "For example:"
+msgstr "Ví dụ:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
+#. js-lingui-explicit-id
+msgid ""
+"Keep your answer focused: current or last position, a key achievement, and "
+"your interest in the company. Practice your self-introduction so you sound "
+msgstr ""
+"Giữ câu trả lời của bạn tập trung: vị trí hiện tại hoặc cuối cùng, một "
+"thành tựu quan trọng, và sự quan tâm của bạn đối với công ty. Luyện tập "
+"giới thiệu bản thân sao cho bạn nghe"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
+#. js-lingui-explicit-id
+msgid "natural and not robotic"
+msgstr "tự nhiên và không cứng nhắc"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
+#. js-lingui-explicit-id
+msgid "Useful Phrases for Self-Introduction"
+msgstr "Cụm từ hữu ích cho việc tự giới thiệu"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
+#. js-lingui-explicit-id
+msgid ""
+"Use these templates to craft your own story. Don’t forget to mention an "
+"achievement:"
+msgstr ""
+"Sử dụng những mẫu này để tạo câu chuyện của riêng bạn. Đừng quên đề cập đến "
+"một thành tựu:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
+#. js-lingui-explicit-id
+msgid "This shows results and makes you stand out."
+msgstr "Điều này hiển thị kết quả và giúp bạn nổi bật."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
+#. js-lingui-explicit-id
+msgid "Answering Typical Interview Questions"
+msgstr "Trả lời những Câu hỏi Phỏng vấn Tiêu chuẩn"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
+#. js-lingui-explicit-id
+msgid ""
+"Recruiters ask a variety of standard questions to understand your "
+"motivation and personality. Preparing answers in advance will help you stay "
+"calm and articulate. Focus on showing enthusiasm and confidence in your "
+"skills. Let’s look at some common questions and how to answer them:"
+msgstr ""
+"Các nhà tuyển dụng đặt ra một loạt các câu hỏi tiêu chuẩn để hiểu về động "
+"lực và cá nhân tính của bạn. Chuẩn bị câu trả lời trước sẽ giúp bạn giữ "
+"được bình tĩnh và diễn đạt lời nói. Tập trung vào việc thể hiện sự nhiệt "
+"huyết và tự tin vào kỹ năng của mình. Hãy xem một số câu hỏi thường gặp và "
+"cách trả lời chúng:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
+#. js-lingui-explicit-id
+msgid "Show knowledge of the company and genuine interest. For example:"
+msgstr "Hiển thị kiến thức về công ty và sự quan tâm chân thành. Ví dụ:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
+#. js-lingui-explicit-id
+msgid "Highlight your strengths relevant to the role:"
+msgstr "Nêu bật những điểm mạnh liên quan đến vị trí:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
+#. js-lingui-explicit-id
+msgid "Show your long-term goals:"
+msgstr "Hiển thị mục tiêu dài hạn của bạn:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
+#. js-lingui-explicit-id
+msgid "Other common questions include:"
+msgstr "Các câu hỏi phổ biến khác bao gồm:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
+#. js-lingui-explicit-id
+msgid "Prepare short, honest, and positive answers with real-life examples."
+msgstr ""
+"Chuẩn bị những câu trả lời ngắn gọn, chân thật và tích cực với các ví dụ từ "
+"thực tế."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
+#. js-lingui-explicit-id
+msgid "If you don’t understand a question, don’t panic — ask politely:"
+msgstr "Nếu bạn không hiểu một câu hỏi, đừng hoảng loạn — hãy vui lòng hỏi:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
+#. js-lingui-explicit-id
+msgid "Talking About Strengths and Weaknesses"
+msgstr "Nói về Điểm mạnh và Điểm yếu"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"Most interviews include the classic “strengths and weaknesses” question. "
+"It’s especially important to handle this well in English."
+msgstr ""
+"Hầu hết các cuộc phỏng vấn đều bao gồm câu hỏi cổ điển về \"điểm mạnh và "
+"điểm yếu\". Việc xử lý tốt vấn đề này trong tiếng Anh đặc biệt quan trọng."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
+#. js-lingui-explicit-id
+msgid "Strengths:"
+msgstr "Ưu điểm:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
+"examples. For instance:"
+msgstr ""
+"Chọn 2-3 phẩm chất chính liên quan đến công việc. Tránh những câu cửa miệng "
+"và cung cấp ví dụ. Ví dụ như:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
+#. js-lingui-explicit-id
+msgid "Other useful strengths:"
+msgstr "Các điểm mạnh khác hữu ích:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
+#. js-lingui-explicit-id
+msgid "Weaknesses:"
+msgstr "Nhược điểm:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
+#. js-lingui-explicit-id
+msgid ""
+"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
+"mention a minor issue and how you’re working to improve it:"
+msgstr ""
+"Hãy trung thực nhưng ngoại giao. Đừng nói \"Tôi không có điểm yếu.\" Thay "
+"vào đó, nêu ra một vấn đề nhỏ và cách bạn đang cố gắng cải thiện nó:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
+#. js-lingui-explicit-id
+msgid "This approach shows self-awareness and growth."
+msgstr "Phương pháp này cho thấy sự tự nhận thức và phát triển."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
+#. js-lingui-explicit-id
+msgid "Questions to Ask the Employer"
+msgstr "Câu hỏi Đặt cho Nhà Tuyển dụng"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
+#. js-lingui-explicit-id
+msgid "At the end of the interview, you’ll usually be asked:"
+msgstr "Ở cuối buổi phỏng vấn, thường bạn sẽ được hỏi:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
+#. js-lingui-explicit-id
+msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
+msgstr "Đừng bao giờ nói “không.” Chuẩn bị 2-3 câu hỏi thông minh trước:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
+#. js-lingui-explicit-id
+msgid "Always respond politely:"
+msgstr "Luôn phản hồi một cách lịch sự:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
+#. js-lingui-explicit-id
+msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
+msgstr ""
+"Thể hiện sự tò mò và tham gia. Đừng quên cảm ơn họ vì những câu trả lời của "
+"họ:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
+#. js-lingui-explicit-id
+msgid "Ending the Interview: Final Phrases"
+msgstr "Kết thúc Cuộc Phỏng vấn: Cụm từ Cuối cùng"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
+#. js-lingui-explicit-id
+msgid ""
+"Wrap up the interview with gratitude and confidence. Use these phrases to "
+"end on a positive note:"
+msgstr ""
+"Kết thúc cuộc phỏng vấn với lòng biết ơn và tự tin. Sử dụng những cụm từ "
+"sau để kết thúc một cách tích cực:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"If it was an in-person interview, shake hands and maintain eye contact. If "
+"it was online, say goodbye with a friendly tone. Consider sending a "
+"thank-you email the next day:"
+msgstr ""
+"Nếu đó là cuộc phỏng vấn trực tiếp, hãy bắt tay và duy trì ánh mắt. Nếu đó "
+"là trực tuyến, hãy nói lời tạm biệt với giọng điệu thân thiện. Cân nhắc gửi "
+"một email cảm ơn vào ngày hôm sau:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
+#. js-lingui-explicit-id
+msgid "Common Mistakes to Avoid"
+msgstr "Những lỗi thường gặp cần tránh"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
+#. js-lingui-explicit-id
+msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
+msgstr ""
+"Bỏ qua phần nói chuyện phiếm — Theo sự hướng dẫn của người phỏng vấn và hãy "
+"thân thiện."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
+#. js-lingui-explicit-id
+msgid ""
+"Saying “I don’t know” directly — Instead say: “That’s an interesting "
+"question. Let me think for a moment.”"
+msgstr ""
+"Nói trực tiếp \"Tôi không biết\" — Thay vào đó, hãy nói: \"Đó là một câu "
+"hỏi thú vị. Để tôi suy nghĩ một chút.\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
+#. js-lingui-explicit-id
+msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
+msgstr "Thiếu lịch sự — Sử dụng *xin vui lòng*, *cảm ơn*, *xin lỗi* khi cần thiết."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
+#. js-lingui-explicit-id
+msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
+msgstr ""
+"Câu trả lời quá chuẩn bị — Đừng học thuộc lòng; chuẩn bị ý tưởng và nói một "
+"cách tự nhiên."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
+#. js-lingui-explicit-id
+msgid ""
+"Negative comments — Never badmouth past employers. Stay neutral and "
+"constructive."
+msgstr ""
+"Nhận xét tiêu cực — Đừng bao giờ phê bình nhà tuyển dụng trước đây. Hãy "
+"trung lập và xây dựng tích cực."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
+#. js-lingui-explicit-id
+msgid ""
+"Showing no interest — Ask questions and react positively to company "
+"information."
+msgstr ""
+"Không thể hiện hứng thú — Hãy đặt câu hỏi và phản hồi tích cực với thông "
+"tin của công ty."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
+#. js-lingui-explicit-id
+msgid ""
+"Avoiding these mistakes will make you look more professional and increase "
+"your chances of success."
+msgstr ""
+"Tránh những sai lầm này sẽ khiến bạn trông chuyên nghiệp hơn và tăng cơ hội "
+"thành công của bạn."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
+#. js-lingui-explicit-id
+msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
+msgstr "Luyện tập Phỏng vấn trên FluencyPal: Con đường đến sự tự tin"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
+#. js-lingui-explicit-id
+msgid ""
+"Knowing useful phrases and tips is great, but the most important step is "
+"real-world practice. The best way to prepare is to do a mock interview. "
+"That’s exactly what the interactive role-play on FluencyPal offers."
+msgstr ""
+"Biết những cụm từ hữu ích và mẹo là tuyệt vời, nhưng bước quan trọng nhất "
+"là thực hành trong thế giới thực. Cách tốt nhất để chuẩn bị là tiến hành "
+"một cuộc phỏng vấn giả lập. Đó chính xác là những gì diễn đàn tương tác "
+"trong vai trò của FluencyPal đề xuất."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
+#. js-lingui-explicit-id
+msgid ""
+"On this platform, you can upload your resume, specify your desired job, and "
+"go through a realistic interview with an AI interviewer."
+msgstr ""
+"Trên nền tảng này, bạn có thể tải lên hồ sơ của mình, xác định công việc "
+"mong muốn và trải qua cuộc phỏng vấn thực tế với người phỏng vấn AI."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
+#. js-lingui-explicit-id
+msgid "How it works:"
+msgstr "Cách hoạt động:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
+#. js-lingui-explicit-id
+msgid ""
+"You answer questions just like in a real interview and get instant "
+"feedback. The AI adapts the questions to your profession and experience. "
+"This kind of training helps you identify weak spots, work on your "
+"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
+"notice your speech becoming more fluent and your answers more polished with "
+"each attempt."
+msgstr ""
+"Bạn trả lời các câu hỏi giống như trong một cuộc phỏng vấn thực tế và nhận "
+"được phản hồi tức thì. AI điều chỉnh các câu hỏi phù hợp với nghề nghiệp và "
+"kinh nghiệm của bạn. Loại hình đào tạo này giúp bạn xác định các điểm yếu, "
+"làm việc trên phát âm của mình, và học cách xử lý những câu hỏi bất ngờ một "
+"cách bình tĩnh. Bạn sẽ nhận thấy giọng nói của mình trở nên trôi chảy hơn "
+"và các câu trả lời của bạn trở nên tinh tế hơn sau mỗi lần thử."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
+#. js-lingui-explicit-id
+msgid "Career benefit:"
+msgstr "Lợi ích nghề nghiệp:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
+#. js-lingui-explicit-id
+msgid ""
+"After several sessions, you’ll walk into your real interview much more "
+"confident. You’ll know what phrases to use, how to present yourself, and "
+"how to respond professionally. It can significantly boost your chances of "
+"landing your dream job."
+msgstr ""
+"Sau một số buổi học, bạn sẽ bước vào cuộc phỏng vấn thực tế với nhiều tự "
+"tin hơn. Bạn sẽ biết những cụm từ nào cần sử dụng, cách thể hiện bản thân, "
+"và cách trả lời một cách chuyên nghiệp. Điều này có thể tăng đáng kể cơ hội "
+"để bạn giành được công việc mơ ước của mình."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
+#. js-lingui-explicit-id
+msgid ""
+"Preparing for an interview in English takes time, but it pays off. Use the "
+"tips from this article, practice with FluencyPal’s interview simulator, and "
+"walk into your next job interview with confidence."
+msgstr ""
+"Chuẩn bị cho một cuộc phỏng vấn bằng tiếng Anh mất thời gian, nhưng nó sẽ "
+"mang lại lợi ích. Sử dụng các mẹo từ bài viết này, thực hành với trình mô "
+"phỏng phỏng vấn của FluencyPal, và tiến vào cuộc phỏng vấn công việc tiếp "
+"theo của bạn với sự tự tin."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
+#. js-lingui-explicit-id
+msgid "Good preparation today means career success tomorrow."
+msgstr "Sự chuẩn bị tốt hôm nay nghĩa là sự thành công trong sự nghiệp ngày mai."
+
+#: src/features/Blog/BlogCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Read more"
+msgstr "Đọc thêm"
+
+#: src/features/Auth/SignInForm.tsx:30
+#. js-lingui-explicit-id
+msgid "Open personal plan"
+msgstr "Mở kế hoạch cá nhân"
+
+#: src/features/Auth/SignInForm.tsx:32
+#: src/features/Auth/SignInForm.tsx:33
+#. js-lingui-explicit-id
+msgid "Sing in"
+msgstr "Đăng nhập"
+
+#: src/features/Auth/SignInForm.tsx:38
+#: src/features/Auth/SignInForm.tsx:39
+#. js-lingui-explicit-id
+msgid "So you can save your progress"
+msgstr "Để bạn có thể lưu tiến trình của mình"
+
 #: src/features/Conversation/AliasGamePanel.tsx:122
 #. js-lingui-explicit-id
 msgid "Describe these words:"
@@ -4937,6 +5445,51 @@ msgstr "Nhiều tùy chọn"
 #. js-lingui-explicit-id
 msgid "Guessed words:"
 msgstr "Từ đoán:"
+
+#: src/features/Auth/WebViewWall.tsx:38
+#. js-lingui-explicit-id
+msgid "Failed to copy text. Please copy it manually."
+msgstr "Không thể sao chép văn bản. Vui lòng sao chép thủ công."
+
+#: src/features/Auth/WebViewWall.tsx:65
+#. js-lingui-explicit-id
+msgid "Please tap the menu ⋮ and choose"
+msgstr "Vui lòng chạm vào menu ⋮ và chọn"
+
+#: src/features/Auth/WebViewWall.tsx:67
+#. js-lingui-explicit-id
+msgid "'Open in Chrome' to continue."
+msgstr "\"Mở trong Chrome\" để tiếp tục."
+
+#: src/features/Auth/WebViewWall.tsx:71
+#. js-lingui-explicit-id
+msgid "Please tap the menu ••• and choose"
+msgstr "Vui lòng chạm vào menu ••• và chọn"
+
+#: src/features/Auth/WebViewWall.tsx:73
+#. js-lingui-explicit-id
+msgid "'Open in external Browser' to continue."
+msgstr "\"Mở trong Trình duyệt bên ngoài\" để tiếp tục."
+
+#: src/features/Auth/WebViewWall.tsx:124
+#. js-lingui-explicit-id
+msgid "Copy page link"
+msgstr "Sao chép liên kết trang"
+
+#: src/features/Auth/WebViewWall.tsx:168
+#. js-lingui-explicit-id
+msgid "Let's choose how to start practicing"
+msgstr "Hãy chọn cách để bắt đầu luyện tập"
+
+#: src/features/Auth/WebViewWall.tsx:187
+#. js-lingui-explicit-id
+msgid "Open in Telegram"
+msgstr "Mở trong Telegram"
+
+#: src/features/Auth/WebViewWall.tsx:198
+#. js-lingui-explicit-id
+msgid "Open in Browser"
+msgstr "Mở trong Trình duyệt"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6460,556 +7013,7 @@ msgstr "Phát Triển Chuyên Môn"
 msgid "All Blogs"
 msgstr "Tất cả Blogs"
 
-#: src/features/Blog/ListBlogIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "Đọc và Học với blog của tôi"
-
-#: src/features/Blog/ListBlogIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr ""
-"Lấy cảm hứng và tìm hiểu về những xu hướng mới nhất trong việc học ngôn "
-"ngữ, giảng dạy và công nghệ."
-
-#: src/features/Blog/ListBlog.tsx:131
-#. js-lingui-explicit-id
-msgid "No blogs found"
-msgstr "Không tìm thấy blog"
-
-#: src/features/Blog/BlogCard.tsx:168
-#. js-lingui-explicit-id
-msgid "Read more"
-msgstr "Đọc thêm"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
-#. js-lingui-explicit-id
-msgid "At the end, we’ll share a valuable tool for realistic interview practice."
-msgstr ""
-"Cuối cùng, chúng tôi sẽ chia sẻ một công cụ quý giá cho việc thực hành "
-"phỏng vấn thực tế."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
-#. js-lingui-explicit-id
-msgid "Introduction: Small Talk with the Interviewer"
-msgstr "Giới thiệu: Trò chuyện nhỏ với người phỏng vấn"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
-#. js-lingui-explicit-id
-msgid ""
-"The first few minutes of an interview are often dedicated to casual "
-"conversation — also known as 'SmallTalk'. Recruiters use this time to "
-"create a friendly atmosphere and get to know you a bit better."
-msgstr ""
-"Những phút đầu của buổi phỏng vấn thường được dành để trò chuyện không "
-"chính thức - còn được gọi là 'SmallTalk'. Nhà tuyển dụng sử dụng thời gian "
-"này để tạo ra một không khí thân thiện và hiểu bạn hơn một chút."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
-#. js-lingui-explicit-id
-msgid "Don’t skip small talk"
-msgstr "Đừng bỏ qua cuộc trò chuyện nhỏ"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
-#. js-lingui-explicit-id
-msgid ""
-"— it’s important to engage in this short conversation before jumping into "
-"professional topics. Here are some useful English phrases to start off the "
-"interview:"
-msgstr ""
-"— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
-"các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
-"bắt đầu cuộc phỏng vấn:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
-#. js-lingui-explicit-id
-msgid "English Phrases"
-msgstr "Cụm từ tiếng Anh"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
-#. js-lingui-explicit-id
-msgid "A polite and professional greeting."
-msgstr "Một lời chào lịch sự và chuyên nghiệp."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
-#. js-lingui-explicit-id
-msgid "Expressing gratitude for the opportunity."
-msgstr "Bày tỏ lòng biết ơn cho cơ hội."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
-#. js-lingui-explicit-id
-msgid "A standard reply to “How are you?”"
-msgstr "Một câu trả lời tiêu chuẩn cho “Bạn khỏe không?”"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
-#. js-lingui-explicit-id
-msgid "A friendly compliment to break the ice."
-msgstr "Một lời khen thân thiện để xóa tan bầu không khí căng thẳng."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
-#. js-lingui-explicit-id
-msgid ""
-"Smile, shake hands (if culturally appropriate), and speak in a friendly "
-"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
-"might say:"
-msgstr ""
-"Cười, bắt tay (nếu văn hóa cho phép), và nói chuyện với giọng điệu thân "
-"thiện. Nếu người phỏng vấn hỏi, \"Bạn có gặp khó khăn gì khi tìm chúng tôi "
-"không?\" bạn có thể phản hồi như sau:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
-#. js-lingui-explicit-id
-msgid ""
-"Short answers with a positive attitude show that you’re easy to talk to and "
-"open to dialogue."
-msgstr ""
-"Câu trả lời ngắn gọn với thái độ tích cực cho thấy bạn dễ gần và sẵn lòng "
-"trò chuyện."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
-#. js-lingui-explicit-id
-msgid "Self-Introduction: Talking About Yourself"
-msgstr "Tự giới thiệu: Nói về bản thân"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
-#. js-lingui-explicit-id
-msgid "After the greeting, you'll usually hear:"
-msgstr "Sau lời chào, bạn thường sẽ nghe:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
-#. js-lingui-explicit-id
-msgid ""
-"This is your chance to introduce your experience and skills. Don’t list "
-"your full biography — focus on the highlights of your professional "
-"background. A good answer structure in English might look like this:"
-msgstr ""
-"Đây là cơ hội để bạn giới thiệu về kinh nghiệm và kỹ năng của mình. Đừng "
-"liệt kê toàn bộ lịch sử công việc của bạn - hãy tập trung vào những điểm "
-"nổi bật trong lý lịch làm việc của bạn. Một cấu trúc trả lời tốt bằng tiếng "
-"Anh có thể như sau:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
-#. js-lingui-explicit-id
-msgid "For example:"
-msgstr "Ví dụ:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
-#. js-lingui-explicit-id
-msgid ""
-"Keep your answer focused: current or last position, a key achievement, and "
-"your interest in the company. Practice your self-introduction so you sound "
-msgstr ""
-"Giữ câu trả lời của bạn tập trung: vị trí hiện tại hoặc cuối cùng, một "
-"thành tựu quan trọng, và sự quan tâm của bạn đối với công ty. Luyện tập "
-"giới thiệu bản thân sao cho bạn nghe"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
-#. js-lingui-explicit-id
-msgid "natural and not robotic"
-msgstr "tự nhiên và không cứng nhắc"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
-#. js-lingui-explicit-id
-msgid "Useful Phrases for Self-Introduction"
-msgstr "Cụm từ hữu ích cho việc tự giới thiệu"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
-#. js-lingui-explicit-id
-msgid ""
-"Use these templates to craft your own story. Don’t forget to mention an "
-"achievement:"
-msgstr ""
-"Sử dụng những mẫu này để tạo câu chuyện của riêng bạn. Đừng quên đề cập đến "
-"một thành tựu:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
-#. js-lingui-explicit-id
-msgid "This shows results and makes you stand out."
-msgstr "Điều này hiển thị kết quả và giúp bạn nổi bật."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
-#. js-lingui-explicit-id
-msgid "Answering Typical Interview Questions"
-msgstr "Trả lời những Câu hỏi Phỏng vấn Tiêu chuẩn"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
-#. js-lingui-explicit-id
-msgid ""
-"Recruiters ask a variety of standard questions to understand your "
-"motivation and personality. Preparing answers in advance will help you stay "
-"calm and articulate. Focus on showing enthusiasm and confidence in your "
-"skills. Let’s look at some common questions and how to answer them:"
-msgstr ""
-"Các nhà tuyển dụng đặt ra một loạt các câu hỏi tiêu chuẩn để hiểu về động "
-"lực và cá nhân tính của bạn. Chuẩn bị câu trả lời trước sẽ giúp bạn giữ "
-"được bình tĩnh và diễn đạt lời nói. Tập trung vào việc thể hiện sự nhiệt "
-"huyết và tự tin vào kỹ năng của mình. Hãy xem một số câu hỏi thường gặp và "
-"cách trả lời chúng:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
-#. js-lingui-explicit-id
-msgid "Show knowledge of the company and genuine interest. For example:"
-msgstr "Hiển thị kiến thức về công ty và sự quan tâm chân thành. Ví dụ:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
-#. js-lingui-explicit-id
-msgid "Highlight your strengths relevant to the role:"
-msgstr "Nêu bật những điểm mạnh liên quan đến vị trí:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
-#. js-lingui-explicit-id
-msgid "Show your long-term goals:"
-msgstr "Hiển thị mục tiêu dài hạn của bạn:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
-#. js-lingui-explicit-id
-msgid "Other common questions include:"
-msgstr "Các câu hỏi phổ biến khác bao gồm:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
-#. js-lingui-explicit-id
-msgid "Prepare short, honest, and positive answers with real-life examples."
-msgstr ""
-"Chuẩn bị những câu trả lời ngắn gọn, chân thật và tích cực với các ví dụ từ "
-"thực tế."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
-#. js-lingui-explicit-id
-msgid "If you don’t understand a question, don’t panic — ask politely:"
-msgstr "Nếu bạn không hiểu một câu hỏi, đừng hoảng loạn — hãy vui lòng hỏi:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
-#. js-lingui-explicit-id
-msgid "Talking About Strengths and Weaknesses"
-msgstr "Nói về Điểm mạnh và Điểm yếu"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
-#. js-lingui-explicit-id
-msgid ""
-"Most interviews include the classic “strengths and weaknesses” question. "
-"It’s especially important to handle this well in English."
-msgstr ""
-"Hầu hết các cuộc phỏng vấn đều bao gồm câu hỏi cổ điển về \"điểm mạnh và "
-"điểm yếu\". Việc xử lý tốt vấn đề này trong tiếng Anh đặc biệt quan trọng."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
-#. js-lingui-explicit-id
-msgid "Strengths:"
-msgstr "Ưu điểm:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
-#. js-lingui-explicit-id
-msgid ""
-"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
-"examples. For instance:"
-msgstr ""
-"Chọn 2-3 phẩm chất chính liên quan đến công việc. Tránh những câu cửa miệng "
-"và cung cấp ví dụ. Ví dụ như:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
-#. js-lingui-explicit-id
-msgid "Other useful strengths:"
-msgstr "Các điểm mạnh khác hữu ích:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
-#. js-lingui-explicit-id
-msgid "Weaknesses:"
-msgstr "Nhược điểm:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
-#. js-lingui-explicit-id
-msgid ""
-"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
-"mention a minor issue and how you’re working to improve it:"
-msgstr ""
-"Hãy trung thực nhưng ngoại giao. Đừng nói \"Tôi không có điểm yếu.\" Thay "
-"vào đó, nêu ra một vấn đề nhỏ và cách bạn đang cố gắng cải thiện nó:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
-#. js-lingui-explicit-id
-msgid "This approach shows self-awareness and growth."
-msgstr "Phương pháp này cho thấy sự tự nhận thức và phát triển."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
-#. js-lingui-explicit-id
-msgid "Questions to Ask the Employer"
-msgstr "Câu hỏi Đặt cho Nhà Tuyển dụng"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
-#. js-lingui-explicit-id
-msgid "At the end of the interview, you’ll usually be asked:"
-msgstr "Ở cuối buổi phỏng vấn, thường bạn sẽ được hỏi:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
-#. js-lingui-explicit-id
-msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
-msgstr "Đừng bao giờ nói “không.” Chuẩn bị 2-3 câu hỏi thông minh trước:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
-#. js-lingui-explicit-id
-msgid "Always respond politely:"
-msgstr "Luôn phản hồi một cách lịch sự:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
-#. js-lingui-explicit-id
-msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
-msgstr ""
-"Thể hiện sự tò mò và tham gia. Đừng quên cảm ơn họ vì những câu trả lời của "
-"họ:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
-#. js-lingui-explicit-id
-msgid "Ending the Interview: Final Phrases"
-msgstr "Kết thúc Cuộc Phỏng vấn: Cụm từ Cuối cùng"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
-#. js-lingui-explicit-id
-msgid ""
-"Wrap up the interview with gratitude and confidence. Use these phrases to "
-"end on a positive note:"
-msgstr ""
-"Kết thúc cuộc phỏng vấn với lòng biết ơn và tự tin. Sử dụng những cụm từ "
-"sau để kết thúc một cách tích cực:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
-#. js-lingui-explicit-id
-msgid ""
-"If it was an in-person interview, shake hands and maintain eye contact. If "
-"it was online, say goodbye with a friendly tone. Consider sending a "
-"thank-you email the next day:"
-msgstr ""
-"Nếu đó là cuộc phỏng vấn trực tiếp, hãy bắt tay và duy trì ánh mắt. Nếu đó "
-"là trực tuyến, hãy nói lời tạm biệt với giọng điệu thân thiện. Cân nhắc gửi "
-"một email cảm ơn vào ngày hôm sau:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
-#. js-lingui-explicit-id
-msgid "Common Mistakes to Avoid"
-msgstr "Những lỗi thường gặp cần tránh"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
-#. js-lingui-explicit-id
-msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
-msgstr ""
-"Bỏ qua phần nói chuyện phiếm — Theo sự hướng dẫn của người phỏng vấn và hãy "
-"thân thiện."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
-#. js-lingui-explicit-id
-msgid ""
-"Saying “I don’t know” directly — Instead say: “That’s an interesting "
-"question. Let me think for a moment.”"
-msgstr ""
-"Nói trực tiếp \"Tôi không biết\" — Thay vào đó, hãy nói: \"Đó là một câu "
-"hỏi thú vị. Để tôi suy nghĩ một chút.\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
-#. js-lingui-explicit-id
-msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
-msgstr "Thiếu lịch sự — Sử dụng *xin vui lòng*, *cảm ơn*, *xin lỗi* khi cần thiết."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
-#. js-lingui-explicit-id
-msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
-msgstr ""
-"Câu trả lời quá chuẩn bị — Đừng học thuộc lòng; chuẩn bị ý tưởng và nói một "
-"cách tự nhiên."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
-#. js-lingui-explicit-id
-msgid ""
-"Negative comments — Never badmouth past employers. Stay neutral and "
-"constructive."
-msgstr ""
-"Nhận xét tiêu cực — Đừng bao giờ phê bình nhà tuyển dụng trước đây. Hãy "
-"trung lập và xây dựng tích cực."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
-#. js-lingui-explicit-id
-msgid ""
-"Showing no interest — Ask questions and react positively to company "
-"information."
-msgstr ""
-"Không thể hiện hứng thú — Hãy đặt câu hỏi và phản hồi tích cực với thông "
-"tin của công ty."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
-#. js-lingui-explicit-id
-msgid ""
-"Avoiding these mistakes will make you look more professional and increase "
-"your chances of success."
-msgstr ""
-"Tránh những sai lầm này sẽ khiến bạn trông chuyên nghiệp hơn và tăng cơ hội "
-"thành công của bạn."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
-#. js-lingui-explicit-id
-msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
-msgstr "Luyện tập Phỏng vấn trên FluencyPal: Con đường đến sự tự tin"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
-#. js-lingui-explicit-id
-msgid ""
-"Knowing useful phrases and tips is great, but the most important step is "
-"real-world practice. The best way to prepare is to do a mock interview. "
-"That’s exactly what the interactive role-play on FluencyPal offers."
-msgstr ""
-"Biết những cụm từ hữu ích và mẹo là tuyệt vời, nhưng bước quan trọng nhất "
-"là thực hành trong thế giới thực. Cách tốt nhất để chuẩn bị là tiến hành "
-"một cuộc phỏng vấn giả lập. Đó chính xác là những gì diễn đàn tương tác "
-"trong vai trò của FluencyPal đề xuất."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
-#. js-lingui-explicit-id
-msgid ""
-"On this platform, you can upload your resume, specify your desired job, and "
-"go through a realistic interview with an AI interviewer."
-msgstr ""
-"Trên nền tảng này, bạn có thể tải lên hồ sơ của mình, xác định công việc "
-"mong muốn và trải qua cuộc phỏng vấn thực tế với người phỏng vấn AI."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
-#. js-lingui-explicit-id
-msgid "How it works:"
-msgstr "Cách hoạt động:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
-#. js-lingui-explicit-id
-msgid ""
-"You answer questions just like in a real interview and get instant "
-"feedback. The AI adapts the questions to your profession and experience. "
-"This kind of training helps you identify weak spots, work on your "
-"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
-"notice your speech becoming more fluent and your answers more polished with "
-"each attempt."
-msgstr ""
-"Bạn trả lời các câu hỏi giống như trong một cuộc phỏng vấn thực tế và nhận "
-"được phản hồi tức thì. AI điều chỉnh các câu hỏi phù hợp với nghề nghiệp và "
-"kinh nghiệm của bạn. Loại hình đào tạo này giúp bạn xác định các điểm yếu, "
-"làm việc trên phát âm của mình, và học cách xử lý những câu hỏi bất ngờ một "
-"cách bình tĩnh. Bạn sẽ nhận thấy giọng nói của mình trở nên trôi chảy hơn "
-"và các câu trả lời của bạn trở nên tinh tế hơn sau mỗi lần thử."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
-#. js-lingui-explicit-id
-msgid "Career benefit:"
-msgstr "Lợi ích nghề nghiệp:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
-#. js-lingui-explicit-id
-msgid ""
-"After several sessions, you’ll walk into your real interview much more "
-"confident. You’ll know what phrases to use, how to present yourself, and "
-"how to respond professionally. It can significantly boost your chances of "
-"landing your dream job."
-msgstr ""
-"Sau một số buổi học, bạn sẽ bước vào cuộc phỏng vấn thực tế với nhiều tự "
-"tin hơn. Bạn sẽ biết những cụm từ nào cần sử dụng, cách thể hiện bản thân, "
-"và cách trả lời một cách chuyên nghiệp. Điều này có thể tăng đáng kể cơ hội "
-"để bạn giành được công việc mơ ước của mình."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
-#. js-lingui-explicit-id
-msgid ""
-"Preparing for an interview in English takes time, but it pays off. Use the "
-"tips from this article, practice with FluencyPal’s interview simulator, and "
-"walk into your next job interview with confidence."
-msgstr ""
-"Chuẩn bị cho một cuộc phỏng vấn bằng tiếng Anh mất thời gian, nhưng nó sẽ "
-"mang lại lợi ích. Sử dụng các mẹo từ bài viết này, thực hành với trình mô "
-"phỏng phỏng vấn của FluencyPal, và tiến vào cuộc phỏng vấn công việc tiếp "
-"theo của bạn với sự tự tin."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
-#. js-lingui-explicit-id
-msgid "Good preparation today means career success tomorrow."
-msgstr "Sự chuẩn bị tốt hôm nay nghĩa là sự thành công trong sự nghiệp ngày mai."
-
-#: src/features/Auth/WebViewWall.tsx:38
-#. js-lingui-explicit-id
-msgid "Failed to copy text. Please copy it manually."
-msgstr "Không thể sao chép văn bản. Vui lòng sao chép thủ công."
-
-#: src/features/Auth/WebViewWall.tsx:65
-#. js-lingui-explicit-id
-msgid "Please tap the menu ⋮ and choose"
-msgstr "Vui lòng chạm vào menu ⋮ và chọn"
-
-#: src/features/Auth/WebViewWall.tsx:67
-#. js-lingui-explicit-id
-msgid "'Open in Chrome' to continue."
-msgstr "\"Mở trong Chrome\" để tiếp tục."
-
-#: src/features/Auth/WebViewWall.tsx:71
-#. js-lingui-explicit-id
-msgid "Please tap the menu ••• and choose"
-msgstr "Vui lòng chạm vào menu ••• và chọn"
-
-#: src/features/Auth/WebViewWall.tsx:73
-#. js-lingui-explicit-id
-msgid "'Open in external Browser' to continue."
-msgstr "\"Mở trong Trình duyệt bên ngoài\" để tiếp tục."
-
-#: src/features/Auth/WebViewWall.tsx:124
-#. js-lingui-explicit-id
-msgid "Copy page link"
-msgstr "Sao chép liên kết trang"
-
-#: src/features/Auth/WebViewWall.tsx:168
-#. js-lingui-explicit-id
-msgid "Let's choose how to start practicing"
-msgstr "Hãy chọn cách để bắt đầu luyện tập"
-
-#: src/features/Auth/WebViewWall.tsx:187
-#. js-lingui-explicit-id
-msgid "Open in Telegram"
-msgstr "Mở trong Telegram"
-
-#: src/features/Auth/WebViewWall.tsx:198
-#. js-lingui-explicit-id
-msgid "Open in Browser"
-msgstr "Mở trong Trình duyệt"
-
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "Xem tất cả bài viết"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "Các kịch bản diễn tập để thực hành"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "Bạn có thể thử AI hoạt động ngay bây giờ"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "Dùng thử miễn phí"
-
-#: src/features/Auth/SignInForm.tsx:30
-#. js-lingui-explicit-id
-msgid "Open personal plan"
-msgstr "Mở kế hoạch cá nhân"
-
-#: src/features/Auth/SignInForm.tsx:32
-#: src/features/Auth/SignInForm.tsx:33
-#. js-lingui-explicit-id
-msgid "Sing in"
-msgstr "Đăng nhập"
-
-#: src/features/Auth/SignInForm.tsx:38
-#: src/features/Auth/SignInForm.tsx:39
-#. js-lingui-explicit-id
-msgid "So you can save your progress"
-msgstr "Để bạn có thể lưu tiến trình của mình"
-
-#: src/features/Landing/PlanLandingBlock.tsx:427
+#: src/features/Landing/PlanLandingBlock.tsx:434
 msgid "{countOfLanguages} languages to practice"
 msgstr "{countOfLanguages} ngôn ngữ để thực hành"
 
