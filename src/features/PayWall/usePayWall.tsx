@@ -33,11 +33,11 @@ function useProvidePayWall(): PayWallContextType {
       return;
     }
 
-    if (isShowPayWall === false && !usage.isFullAccess) {
+    if (isShowPayWall === false && isNeedToShowPayWall) {
       setIsShowPayWall(true);
     }
 
-    if (isShowPayWall && usage.isFullAccess) {
+    if (isShowPayWall === true && !isNeedToShowPayWall) {
       setIsShowPayWall(false);
     }
   }, [usage.loading, usage.isFullAccess, game.isGameWinner, game.loadingProfile]);
