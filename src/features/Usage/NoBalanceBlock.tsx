@@ -30,18 +30,20 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
           width: "100%",
           padding: "30px 0px",
           boxSizing: "border-box",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
         }}
       >
         <Stack
           sx={{
             padding: "20px 20px 20px 30px",
             gap: "60px",
-            maxWidth: "1400px",
             width: "100%",
             boxSizing: "border-box",
             position: "relative",
             zIndex: 1,
-            "@media (max-width: 600px)": {
+            "@media (max-width: 700px)": {
               padding: "20px 15px",
             },
           }}
@@ -52,7 +54,7 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
               className="decor-text"
               align="center"
               sx={{
-                "@media (max-width: 600px)": {
+                "@media (max-width: 700px)": {
                   fontSize: "1.9rem",
                 },
               }}
@@ -63,7 +65,7 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
               align="center"
               sx={{
                 opacity: 0.9,
-                "@media (max-width: 600px)": {
+                "@media (max-width: 700px)": {
                   fontSize: "0.9rem",
                   opacity: 0.8,
                 },
@@ -156,7 +158,7 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
             filter: "blur(200px)",
             zIndex: 0,
             opacity: 0.61,
-            "@media (max-width: 600px)": {
+            "@media (max-width: 700px)": {
               left: "0px",
             },
           }}
