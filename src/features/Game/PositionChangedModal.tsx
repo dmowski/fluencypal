@@ -82,7 +82,7 @@ export const PositionChangedModal = () => {
     <CustomModal isOpen={isShowModal} onClose={() => setIsShowModal(false)}>
       <Stack
         sx={{
-          minHeight: "100dvh",
+          height: "100%",
           width: "100dvw",
           alignItems: "center",
           justifyContent: "flex-end",
@@ -90,7 +90,7 @@ export const PositionChangedModal = () => {
       >
         <Stack
           sx={{
-            padding: "20px 20px 70px 20px",
+            padding: "20px 20px 0px 20px",
             gap: "20px",
             width: "100%",
             maxWidth: "600px",

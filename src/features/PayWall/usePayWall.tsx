@@ -25,6 +25,9 @@ function useProvidePayWall(): PayWallContextType {
 
   const [isShowPayWall, setIsShowPayWall] = useState(false);
 
+  const isNeedToShowPayWall =
+    usage.balanceHours <= 0.01 && !usage.isFullAccess && !game.isGameWinner;
+
   useEffect(() => {
     if (usage.loading || game.loadingProfile || game.isGameWinner) {
       return;
@@ -46,7 +49,7 @@ function useProvidePayWall(): PayWallContextType {
   const temporaryClosePayWall = () => {
     setIsShowPayWall(false);
     setTimeout(() => {
-      if (usage.balanceHours <= 0.01) {
+      if (isNeedToShowPayWall) {
         setIsShowPayWall(true);
       }
     }, 13_000);
