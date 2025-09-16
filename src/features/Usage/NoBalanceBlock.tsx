@@ -27,8 +27,6 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
     <CustomModal isOpen={true} onClose={() => payWall.temporaryClosePayWall()}>
       <Stack
         sx={{
-          backgroundColor: "#121215",
-          border: "1px solid rgba(255, 255, 255, 0.4)",
           width: "100%",
           padding: "30px 0px",
           boxSizing: "border-box",
@@ -52,15 +50,17 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
             <Typography
               variant="h2"
               className="decor-text"
+              align="center"
               sx={{
                 "@media (max-width: 600px)": {
                   fontSize: "1.9rem",
                 },
               }}
             >
-              {i18n._("Low balance")}
+              {i18n._("Subscription needed")}
             </Typography>
             <Typography
+              align="center"
               sx={{
                 opacity: 0.9,
                 "@media (max-width: 600px)": {
@@ -73,15 +73,16 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
             </Typography>
           </Stack>
 
-          <Stack sx={{ width: "100%", gap: "15px", alignItems: "flex-start" }}>
+          <Stack sx={{ width: "100%", gap: "5px", alignItems: "center" }}>
             <Stack
               sx={{
                 flexDirection: "row",
-                gap: "20px",
+                gap: "10px",
                 alignItems: "center",
+
                 "@media (max-width: 700px)": {
                   flexDirection: "column",
-                  alignItems: "flex-start",
+                  alignItems: "center",
                 },
               }}
             >
