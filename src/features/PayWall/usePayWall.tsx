@@ -30,7 +30,7 @@ function useProvidePayWall(): PayWallContextType {
     usage.balanceHours <= 0.01 && !usage.isFullAccess && !game.isGameWinner;
 
   useEffect(() => {
-    if (usage.loading || game.loadingProfile || game.isGameWinner) {
+    if (usage.loading || game.loadingProfile) {
       return;
     }
 
@@ -57,9 +57,12 @@ function useProvidePayWall(): PayWallContextType {
     setIsShowPayWall(false);
     setTimeout(() => {
       if (isNeedToShowPayWall.current) {
+        console.log("Setting paywall back to true");
         setIsShowPayWall(true);
+      } else {
+        console.log("Not setting paywall back to true, conditions not met");
       }
-    }, 13_000);
+    }, 20_000);
   };
 
   return {
