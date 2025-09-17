@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX, useState, useEffect } from "react";
+import { createContext, useContext, ReactNode, JSX, useState, useEffect, useRef } from "react";
 import { useGame } from "../Game/useGame";
 import { useUsage } from "../Usage/useUsage";
 
@@ -25,7 +25,8 @@ function useProvidePayWall(): PayWallContextType {
 
   const [isShowPayWall, setIsShowPayWall] = useState(false);
 
-  const isNeedToShowPayWall =
+  const isNeedToShowPayWall = useRef(false);
+  isNeedToShowPayWall.current =
     usage.balanceHours <= 0.01 && !usage.isFullAccess && !game.isGameWinner;
 
   useEffect(() => {
@@ -33,14 +34,20 @@ function useProvidePayWall(): PayWallContextType {
       return;
     }
 
-    if (isShowPayWall === false && isNeedToShowPayWall) {
+    if (isShowPayWall === false && isNeedToShowPayWall.current) {
       setIsShowPayWall(true);
     }
 
-    if (isShowPayWall === true && !isNeedToShowPayWall) {
+    if (isShowPayWall === true && !isNeedToShowPayWall.current) {
       setIsShowPayWall(false);
     }
-  }, [usage.loading, usage.isFullAccess, game.isGameWinner, game.loadingProfile]);
+  }, [
+    usage.loading,
+    usage.isFullAccess,
+    usage.balanceHours,
+    game.isGameWinner,
+    game.loadingProfile,
+  ]);
 
   const togglePayWall = () => {
     setIsShowPayWall((prev) => !prev);
@@ -49,7 +56,7 @@ function useProvidePayWall(): PayWallContextType {
   const temporaryClosePayWall = () => {
     setIsShowPayWall(false);
     setTimeout(() => {
-      if (isNeedToShowPayWall) {
+      if (isNeedToShowPayWall.current) {
         setIsShowPayWall(true);
       }
     }, 13_000);
