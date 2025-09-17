@@ -6,7 +6,7 @@ import { Stack } from "@mui/material";
 import { SignInForm } from "../Auth/SignInForm";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
-import { NoBalanceBlock } from "../Usage/NoBalanceBlock";
+import { PayWall } from "../Usage/PayWall";
 import { Dashboard } from "../Dashboard/Dashboard";
 import { getPageLangCode, SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
@@ -200,7 +200,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
   if (!aiConversation.isStarted) {
     return (
       <>
-        {paywall.isShowPayWall && !usage.isShowPaymentModal && <NoBalanceBlock lang={lang} />}
+        {paywall.isShowPayWall && !usage.isShowPaymentModal && <PayWall lang={lang} />}
         <RolePlayProvider rolePlayInfo={rolePlayInfo}>
           <Dashboard lang={lang} />
         </RolePlayProvider>
@@ -218,7 +218,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   return (
     <Stack>
-      {paywall.isShowPayWall && !usage.isShowPaymentModal && <NoBalanceBlock lang={lang} />}
+      {paywall.isShowPayWall && !usage.isShowPaymentModal && <PayWall lang={lang} />}
       <ConversationCanvas2
         messagesToComplete={planMessageCount}
         conversation={aiConversation.conversation}

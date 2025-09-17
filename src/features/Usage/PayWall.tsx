@@ -12,7 +12,7 @@ interface NoBalanceBlockProps {
   lang: SupportedLanguage;
 }
 
-export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
+export const PayWall = ({ lang }: NoBalanceBlockProps) => {
   const usage = useUsage();
   const { i18n } = useLingui();
   const route = useRouter();
@@ -33,6 +33,7 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
           alignItems: "center",
           justifyContent: "center",
           height: "100%",
+          position: "relative",
         }}
       >
         <Stack
@@ -119,15 +120,18 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
         <Stack
           sx={{
             position: "absolute",
-            top: "0px",
+            top: "0",
             right: "0",
-            backgroundColor: "blue",
+            backgroundColor: "#000022",
             height: "300px",
             width: "300px",
-            borderRadius: "50%",
+            borderRadius: "150px",
             filter: "blur(200px)",
             zIndex: 0,
             opacity: 0.9,
+            "@media (max-width: 700px)": {
+              display: "none",
+            },
           }}
         ></Stack>
 
@@ -136,13 +140,18 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
             position: "absolute",
             top: "300px",
             right: "0",
-            backgroundColor: "red",
+            backgroundColor: "#ff0000",
             height: "300px",
             width: "300px",
-            borderRadius: "50%",
+            borderRadius: "150px",
             filter: "blur(200px)",
             zIndex: 0,
             opacity: 0.4,
+            "@media (max-width: 700px)": {
+              filter: "blur(100px)",
+              opacity: 0.2,
+              left: "150px",
+            },
           }}
         ></Stack>
 
@@ -151,15 +160,16 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
             position: "absolute",
             top: "0px",
             left: "300px",
-            backgroundColor: "cyan",
+            backgroundColor: "#00FFFF",
             height: "200px",
             width: "300px",
-            borderRadius: "50%",
+            borderRadius: "150px",
             filter: "blur(200px)",
             zIndex: 0,
             opacity: 0.61,
             "@media (max-width: 700px)": {
-              left: "0px",
+              filter: "blur(100px)",
+              opacity: 0.15,
             },
           }}
         ></Stack>
@@ -167,15 +177,19 @@ export const NoBalanceBlock = ({ lang }: NoBalanceBlockProps) => {
         <Stack
           sx={{
             position: "absolute",
-            top: "900px",
+            top: "40vh",
             left: "0",
             backgroundColor: "#5533ff",
             height: "300px",
             width: "300px",
-            borderRadius: "50%",
+            borderRadius: "150px",
             filter: "blur(300px)",
             zIndex: 0,
             opacity: 0.4,
+            "@media (max-width: 700px)": {
+              filter: "blur(100px)",
+              opacity: 0.3,
+            },
           }}
         ></Stack>
       </Stack>
