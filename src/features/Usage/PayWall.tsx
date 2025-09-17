@@ -28,6 +28,7 @@ export const PayWall = ({ lang }: NoBalanceBlockProps) => {
       <Stack
         sx={{
           width: "100%",
+
           padding: "30px 0px",
           boxSizing: "border-box",
           alignItems: "center",
@@ -119,79 +120,92 @@ export const PayWall = ({ lang }: NoBalanceBlockProps) => {
 
         <Stack
           sx={{
-            position: "absolute",
-            top: "0",
-            right: "0",
-            backgroundColor: "#000022",
-            height: "300px",
-            width: "300px",
-            borderRadius: "150px",
-            filter: "blur(200px)",
+            position: "fixed",
+            width: "100dvw",
+            height: "100dvh",
+            top: 0,
+            left: 0,
             zIndex: 0,
-            opacity: 0.9,
-            "@media (max-width: 700px)": {
-              display: "none",
-            },
+            overflow: "hidden",
+            pointerEvents: "none",
           }}
-        ></Stack>
+        >
+          <Stack
+            sx={{
+              position: "absolute",
+              top: "0",
+              right: "0",
+              backgroundColor: "#000022",
+              height: "300px",
+              width: "300px",
+              borderRadius: "150px",
+              filter: "blur(200px)",
+              zIndex: 0,
+              opacity: 0.9,
+              "@media (max-width: 700px)": {
+                display: "none",
+              },
+            }}
+          ></Stack>
 
-        <Stack
-          sx={{
-            position: "absolute",
-            top: "300px",
-            right: "0",
-            backgroundColor: "#ff0000",
-            height: "300px",
-            width: "300px",
-            borderRadius: "150px",
-            filter: "blur(200px)",
-            zIndex: 0,
-            opacity: 0.4,
-            "@media (max-width: 700px)": {
-              filter: "blur(100px)",
-              opacity: 0.2,
-              left: "150px",
-            },
-          }}
-        ></Stack>
+          <Stack
+            sx={{
+              position: "absolute",
+              top: "300px",
+              right: "0",
+              backgroundColor: "#ff0000",
+              height: "300px",
+              width: "300px",
+              borderRadius: "150px",
+              filter: "blur(200px)",
+              zIndex: 0,
+              opacity: 0.4,
+              "@media (max-width: 700px)": {
+                filter: "blur(100px)",
+                opacity: 0.2,
+                left: "150px",
+              },
+            }}
+          ></Stack>
 
-        <Stack
-          sx={{
-            position: "absolute",
-            top: "0px",
-            left: "300px",
-            backgroundColor: "#00FFFF",
-            height: "200px",
-            width: "300px",
-            borderRadius: "150px",
-            filter: "blur(200px)",
-            zIndex: 0,
-            opacity: 0.61,
-            "@media (max-width: 700px)": {
-              filter: "blur(100px)",
-              opacity: 0.15,
-            },
-          }}
-        ></Stack>
+          <Stack
+            sx={{
+              position: "absolute",
+              top: "0px",
+              left: "300px",
+              backgroundColor: "#00FFFF",
+              height: "200px",
+              width: "300px",
+              borderRadius: "150px",
+              filter: "blur(200px)",
+              zIndex: 0,
+              opacity: 0.61,
+              "@media (max-width: 700px)": {
+                filter: "blur(100px)",
+                opacity: 0.15,
+              },
+            }}
+          ></Stack>
 
-        <Stack
-          sx={{
-            position: "absolute",
-            top: "40vh",
-            left: "0",
-            backgroundColor: "#5533ff",
-            height: "300px",
-            width: "300px",
-            borderRadius: "150px",
-            filter: "blur(300px)",
-            zIndex: 0,
-            opacity: 0.4,
-            "@media (max-width: 700px)": {
-              filter: "blur(100px)",
-              opacity: 0.3,
-            },
-          }}
-        ></Stack>
+          <Stack
+            sx={{
+              position: "absolute",
+              top: "40vh",
+              left: "0",
+              backgroundColor: "#5533ff",
+              height: "300px",
+              width: "300px",
+              borderRadius: "150px",
+              filter: "blur(300px)",
+              zIndex: 0,
+              opacity: 0.4,
+              "@media (max-width: 700px)": {
+                filter: "blur(100px)",
+                opacity: 0.3,
+              },
+            }}
+          ></Stack>
+        </Stack>
       </Stack>
     </CustomModal>
   );
