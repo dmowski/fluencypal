@@ -75,7 +75,7 @@ const stepsViews: QuizStep[] = [
   "goalReview",
 ];
 
-export const MIN_WORDS_FOR_ANSWER = 50;
+export const MIN_WORDS_FOR_ANSWER = 30;
 
 const getHash = (input: string) => {
   if (!input) return "";
