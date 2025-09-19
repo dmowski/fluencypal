@@ -5,7 +5,6 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 interface WelcomeScreenProps {
-  title: string;
   openDashboardTitle: string;
   getStartedTitle: string;
   viewPricingTitle: string;
