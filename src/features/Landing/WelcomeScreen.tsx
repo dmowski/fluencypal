@@ -16,7 +16,6 @@ interface WelcomeScreenProps {
   openMyPracticeLinkTitle: string;
 }
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
-  title,
   openDashboardTitle,
   getStartedTitle,
   viewPricingTitle,
@@ -175,10 +174,11 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             component={"h1"}
             sx={{
               fontWeight: 700,
-              fontSize: "4.5rem",
+              fontSize: "3.7rem",
               maxWidth: "640px",
+              textShadow: "0 0 20px rgba(0,0,0,0.7)",
               "@media (max-width: 1300px)": {
-                fontSize: "4rem",
+                fontSize: "3.5rem",
               },
               "@media (max-width: 900px)": {
                 fontSize: "3rem",
@@ -192,7 +192,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               },
             }}
           >
-            {title}
+            {i18n._(`Start Speaking`)}
           </Typography>
           <Stack
             sx={{
@@ -201,8 +201,9 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           >
             <Typography
               sx={{
-                maxWidth: "940px",
+                maxWidth: "500px",
                 fontSize: "1.1rem",
+                textShadow: "0 0 5px rgba(0, 0, 0, 0.71)",
                 "@media (max-width: 600px)": {
                   fontSize: "0.9rem",
                 },
@@ -212,9 +213,10 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 },
               }}
             >
-              {i18n._(`Talk, get corrected, improve—repeat.`)}
+              {i18n._(
+                `Don’t let mistakes stop you. Build fluency and confidence with daily speaking practice, anytime you need it.`
+              )}
               <br />
-
               <Typography
                 component={"span"}
                 sx={{
@@ -224,7 +226,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                   },
                 }}
               >
-                {i18n._(`Win the game and get the app`)} <b>{i18n._(`for free`)}</b>
+                {i18n._(``)}
               </Typography>
             </Typography>
           </Stack>

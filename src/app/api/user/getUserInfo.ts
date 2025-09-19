@@ -2,6 +2,7 @@ import { UserSettings, UserSettingsWithId } from "@/common/user";
 import { getDB } from "../config/firebase";
 import { AiUserInfo } from "@/common/userInfo";
 import { Conversation, UserConversationsMeta } from "@/common/conversation";
+import { QuizSurvey2 } from "@/features/Goal/Quiz/types";
 
 export const getUserInfo = async (userId: string) => {
   const db = getDB();
@@ -37,6 +38,17 @@ export const getAllUsersWithIds = async () => {
     return { id: doc.id, ...data };
   });
   return users;
+};
+
+export const getUsersQuizSurvey = async (userId: string): Promise<QuizSurvey2[]> => {
+  const db = getDB();
+  const quizCollection = await db.collection("users").doc(userId).collection("quiz2").get();
+  const data: QuizSurvey2[] = quizCollection.docs.map((doc) => {
+    const data = doc.data() as QuizSurvey2;
+    return { ...data };
+  });
+
+  return data;
 };
 
 export const getUserConversationsMeta = async (userId: string): Promise<UserConversationsMeta> => {
