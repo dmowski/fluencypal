@@ -1,5 +1,4 @@
 import { Stack, Typography } from "@mui/material";
-import { SupportedLanguage } from "../Lang/lang";
 import { Swords } from "lucide-react";
 import { useGame } from "./useGame";
 
@@ -9,11 +8,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
 
-interface GameBadgeProps {
-  lang: SupportedLanguage;
-}
-
-export const GameBadge = ({ lang }: GameBadgeProps) => {
+export const GameBadge = () => {
   const { i18n } = useLingui();
   const [isLoading, setIsLoading] = useState(false);
   const game = useGame();

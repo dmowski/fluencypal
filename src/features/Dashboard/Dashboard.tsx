@@ -13,12 +13,17 @@ import { MyProfile } from "../Settings/MyProfile";
 import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { DashboardBlur } from "./DashboardBlur";
 import { RolePlayModal } from "../RolePlay/RolePlayModal";
+import { DailyQuestionBadge } from "../Game/DailyQuestion/DailyQuestionBadge";
+import { useAuth } from "../Auth/useAuth";
 
 interface DashboardProps {
   lang: SupportedLanguage;
 }
 export function Dashboard({ lang }: DashboardProps) {
   const appNavigation = useAppNavigation();
+  const auth = useAuth();
+  const isDev = auth.userInfo?.email?.includes("dmowski");
+  const IS_SHOW_DAILY_QUESTION_BADGE = isDev;
   return (
     <>
       <NavigationBar lang={lang} />
@@ -41,7 +46,8 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === "home" && (
             <>
-              <GameBadge lang={lang} />
+              {IS_SHOW_DAILY_QUESTION_BADGE && <DailyQuestionBadge />}
+              {!IS_SHOW_DAILY_QUESTION_BADGE && <GameBadge />}
               <PlanDashboardCards lang={lang} />
             </>
           )}
