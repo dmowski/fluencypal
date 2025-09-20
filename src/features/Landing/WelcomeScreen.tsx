@@ -264,7 +264,12 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               },
             }}
           >
-            <img src="/landing/uiChatClean.webp" className="interface" alt="User Interface" />
+            <img
+              src="/landing/uiChatClean.webp"
+              className="interface"
+              alt="User Interface"
+              fetchPriority="high"
+            />
             <Stack
               sx={{
                 display: "block",
