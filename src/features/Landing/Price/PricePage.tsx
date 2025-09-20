@@ -102,7 +102,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                   ...subTitleFontStyle,
                 }}
               >
-                {i18n._(`Start free, subscribe later`)}
+                {i18n._(`From mistakes and hesitation to confident conversations`)}
               </Typography>
             </Stack>
 
