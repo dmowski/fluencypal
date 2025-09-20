@@ -385,7 +385,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const steps: StepInfo[] = [
     {
       title: i18n._(`I want to learn...`),
-      subTitle: i18n._(``),
+      subTitle: "",
       content: (
         <Stack
           sx={{
