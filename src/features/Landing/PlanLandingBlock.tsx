@@ -9,7 +9,6 @@ import { PlanLandingCard } from "../Plan/PlanLandingCard";
 import { Trans } from "@lingui/react/macro";
 
 interface ColorCardProps {
-  videoUrl: string;
   imgUrl: string;
   label: string;
   title: string;
@@ -18,10 +17,10 @@ interface ColorCardProps {
   actionButtonLabel: string;
   actionButtonHref: string;
   hideVideoOnMobile?: boolean;
+  accentBorderColor: string;
 }
 
 const ColorCard = ({
-  videoUrl,
   imgUrl,
   label,
   title,
@@ -30,6 +29,7 @@ const ColorCard = ({
   actionButtonLabel,
   actionButtonHref,
   hideVideoOnMobile,
+  accentBorderColor,
 }: ColorCardProps) => {
   return (
     <Stack
@@ -43,6 +43,7 @@ const ColorCard = ({
         height: "322px",
         position: "relative",
         borderRadius: "20px",
+
         zIndex: 1,
         ".bgCardImg": {
           position: "absolute",
@@ -75,49 +76,23 @@ const ColorCard = ({
         },
       }}
     >
-      <img src={imgUrl} alt="" className="bgCardImg" />
       <Stack
         sx={{
           position: "absolute",
-          top: "-185px",
-          left: "-188px",
-          width: "850px",
-          height: "690px",
-          zIndex: -1,
-          opacity: 1,
-          overflow: "hidden",
-          borderRadius: "30px 30px 40px 100px",
-          "--color-card-shadow": "0 0 50px 40px #050709, 0 0 300px 10px rgba(0, 0, 0, 0)",
-          boxShadow: `var(--color-card-shadow)`,
-
-          video: {
-            position: "absolute",
-            //display: "none",
-            zIndex: -2,
-            top: "0px",
-            left: "0px",
-            width: "850px",
-            height: "750px",
-            borderRadius: "0",
-            transform: "scale(1.2) rotate(90deg)",
-          },
-
-          "@media (max-width:1000px)": {
-            overflow: "visible",
-            boxShadow: "none",
-            video: {
-              display: hideVideoOnMobile ? "none" : "",
-            },
-          },
-
-          "@media (max-width:400px)": {
-            width: "850px",
-            height: "710px",
-          },
+          "--space": "0px",
+          top: "calc(var(--space) * -1)",
+          left: "calc(var(--space) * -1)",
+          width: "calc(100% + var(--space) * 2)",
+          height: "calc(100% + var(--space) * 2)",
+          boxShadow: `40px 50px 220px 1px ${accentBorderColor}, 0 0 0 1px ${accentBorderColor}`,
+          opacity: 0.2,
+          borderRadius: "21px",
+          zIndex: 1,
+          pointerEvents: "none",
         }}
-      >
-        <video src={videoUrl} loop muted autoPlay playsInline />
-      </Stack>
+      />
+      <img src={imgUrl} alt="" className="bgCardImg" />
+
       <Stack
         sx={{
           gap: "0px",
@@ -316,7 +291,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         alignItems: "center",
         justifyContent: "center",
         gap: "00px",
-        backgroundColor: `#050709`,
+        backgroundColor: `#10131a`,
         //backgroundColor: `red`,
         position: "relative",
         zIndex: 1,
@@ -329,7 +304,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
           top: 0,
           width: "100%",
           height: "300px",
-          background: `linear-gradient(180deg, #050709 0%, transparent 100%)`,
+          //background: `linear-gradient(180deg, #050709 0%, transparent 100%)`,
           zIndex: 1,
         }}
       />
@@ -349,36 +324,45 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
       >
         <Stack
           sx={{
-            gap: "20px",
+            gap: "0px",
             maxWidth: maxLandingWidth,
             boxSizing: "border-box",
-            alignItems: "center",
-            padding: "0 10px",
+            alignItems: "flex-start",
+            padding: "0 30px",
             position: "relative",
             zIndex: 2,
+            width: "100%",
+            "@media (max-width: 1000px)": {
+              alignItems: "center",
+            },
           }}
         >
-          <Typography
-            align="center"
-            variant="h2"
-            component={"h2"}
-            sx={{
-              ...titleFontStyle,
-              color: "#fff",
-            }}
-          >
-            {i18n._(`How It Works`)}
-          </Typography>
           <Typography
             align="center"
             variant="body1"
             sx={{
               maxWidth: "810px",
               color: "#fff",
-              ...subTitleFontStyle,
+              fontSize: "0.9rem",
+              textTransform: "uppercase",
+              opacity: 0.7,
             }}
           >
-            {i18n._(`From Onboarding to Your Goal`)}
+            {i18n._(`How It Works`)}
+          </Typography>
+          <Typography
+            align="center"
+            variant="h3"
+            component={"h2"}
+            sx={{
+              fontWeight: 850,
+              "@media (max-width: 600px)": {
+                fontSize: "2rem",
+              },
+              color: "#fff",
+            }}
+          >
+            {i18n._(`From Onboarding to Confidence`)}
           </Typography>
         </Stack>
 
@@ -435,7 +419,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             <img src="/landing/survey.webp" alt="Plan" />
           </Stack>
           <ColorCard
-            videoUrl={"/landing/blue.mp4"}
+            accentBorderColor={"#3b82f6"}
             imgUrl={"/landing/blue.svg"}
             label={i18n._(`Step 1`)}
             title={i18n._(`Smart Start`)}
@@ -472,8 +456,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
           }}
         >
           <ColorCard
-            videoUrl={"/landing/green.mp4"}
             imgUrl={"/landing/green.svg"}
+            accentBorderColor={"#10b981"}
             label={i18n._(`Step 2`)}
             title={i18n._(`Personal Plan`)}
             description={i18n._(
@@ -627,8 +611,8 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             <img src="/landing/uiChat.webp" alt="uiChat" />
           </Stack>
           <ColorCard
-            videoUrl={"/landing/purple.mp4"}
             imgUrl={"/landing/purple.svg"}
+            accentBorderColor={"#8b5cf6"}
             label={i18n._(`Step 3`)}
             title={i18n._(`Practice`)}
             description={i18n._(

@@ -40,7 +40,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           bottom: 0,
           width: "100%",
           height: "300px",
-          background: `linear-gradient(180deg, rgba(16,19,26,0) 0%, #050709 100%)`,
+          background: `linear-gradient(180deg, rgba(16,19,26,0) 0%, #10131a 100%)`,
           zIndex: 1,
           "@media (max-width: 600px)": {
             height: "100px",
