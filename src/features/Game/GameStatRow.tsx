@@ -20,7 +20,7 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
   const lastVisitAgo = lastVisit ? dayjs(lastVisit).fromNow() : null;
 
   const avatar = game.gameAvatars[stat.userId] || defaultAvatar;
-  const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 5 : false;
+  const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 10 : false;
 
   return (
     <Stack
