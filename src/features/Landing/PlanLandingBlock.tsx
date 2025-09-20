@@ -416,7 +416,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               },
             }}
           >
-            <img src="/landing/survey.webp" alt="Plan" />
+            <img src="/landing/quiz.webp" alt="" />
           </Stack>
           <ColorCard
             accentBorderColor={"#3b82f6"}
