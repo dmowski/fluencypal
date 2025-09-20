@@ -13,15 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/GameMyUsername.tsx:76
-#. js-lingui-explicit-id
-msgid "Username is already taken"
-msgstr "ชื่อผู้ใช้นี้ถูกใช้ไปแล้ว"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1728
-msgid "So you can keep your progress"
-msgstr "ดังนั้นคุณสามารถรักษาความก้าวหน้าของคุณได้"
-
 #: src/features/Header/HeaderStatic.tsx:18
 #: src/features/Landing/Contact/ContactsPage.tsx:94
 #: src/features/Landing/Footer.tsx:88
@@ -379,6 +370,40 @@ msgstr "คู่สนทนาภาษาอังกฤษ"
 #. js-lingui-explicit-id
 msgid "AI English Speaking Practice"
 msgstr "AI การฝึกพูดภาษาอังกฤษ"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1094
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
+#: src/features/Goal/Quiz/QuizPage2.tsx:825
+#: src/features/Goal/Quiz/QuizPage2.tsx:861
+#: src/features/Usage/SubscriptionWaiter.tsx:47
+#. js-lingui-explicit-id
+msgid "Done"
+msgstr "เสร็จแล้ว"
+
+#: src/features/Usage/SubscriptionWaiter.tsx:56
+#. js-lingui-explicit-id
+msgid "Your subscription has been successfully changed."
+msgstr "การสมัครของคุณได้ถูกเปลี่ยนแปลงเรียบร้อยแล้ว"
+
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:265
+#: src/features/Usage/SubscriptionWaiter.tsx:60
+#: src/features/Usage/SubscriptionWaiter.tsx:81
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "ปิด"
+
+#: src/features/Usage/SubscriptionWaiter.tsx:68
+#. js-lingui-explicit-id
+msgid "Waiting for payment..."
+msgstr "รอการชำระเงิน..."
+
+#: src/features/Usage/SubscriptionWaiter.tsx:77
+#. js-lingui-explicit-id
+msgid "Please wait while we process your payment."
+msgstr "โปรดรอในขณะที่เราดำเนินการชำระเงินของคุณ"
 
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -861,40 +886,6 @@ msgstr "ซื้อสมาชิก"
 #. js-lingui-explicit-id
 msgid "Play the Game"
 msgstr "เล่นเกม"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1094
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
-#: src/features/Goal/Quiz/QuizPage2.tsx:825
-#: src/features/Goal/Quiz/QuizPage2.tsx:861
-#: src/features/Usage/SubscriptionWaiter.tsx:47
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "เสร็จแล้ว"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:56
-#. js-lingui-explicit-id
-msgid "Your subscription has been successfully changed."
-msgstr "การสมัครของคุณได้ถูกเปลี่ยนแปลงเรียบร้อยแล้ว"
-
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:265
-#: src/features/Usage/SubscriptionWaiter.tsx:60
-#: src/features/Usage/SubscriptionWaiter.tsx:81
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "ปิด"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:68
-#. js-lingui-explicit-id
-msgid "Waiting for payment..."
-msgstr "รอการชำระเงิน..."
-
-#: src/features/Usage/SubscriptionWaiter.tsx:77
-#. js-lingui-explicit-id
-msgid "Please wait while we process your payment."
-msgstr "โปรดรอในขณะที่เราดำเนินการชำระเงินของคุณ"
 
 #: src/features/Translation/useTranslate.tsx:147
 #. js-lingui-explicit-id
@@ -1999,16 +1990,6 @@ msgstr "กำลังดำเนินการตามเป้าหมา
 msgid "Error Processing the goal"
 msgstr "ข้อผิดพลาดในการประมวลผลเป้าหมาย"
 
-#: src/features/Plan/PlanCard.tsx:118
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "ส่ง 6 ข้อความเพื่อเสร็จสิ้น"
-
-#: src/features/Plan/PlanCard.tsx:137
-#. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "เริ่มบทเรียน"
-
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
 #. js-lingui-explicit-id
 msgid ""
@@ -2125,6 +2106,16 @@ msgstr "สนุกกับเกมและดูว่า AI จะทา�
 msgid "Robot Thinking"
 msgstr "โรบอทกำลังคิด"
 
+#: src/features/Plan/PlanCard.tsx:118
+#. js-lingui-explicit-id
+msgid "Send 6 messages to complete"
+msgstr "ส่ง 6 ข้อความเพื่อเสร็จสิ้น"
+
+#: src/features/Plan/PlanCard.tsx:137
+#. js-lingui-explicit-id
+msgid "Start lesson"
+msgstr "เริ่มบทเรียน"
+
 #: src/features/Navigation/NavigationBar.tsx:44
 #. js-lingui-explicit-id
 msgid "Home"
@@ -2134,6 +2125,51 @@ msgstr "หน้าแรก"
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "โปรไฟล์"
+
+#: src/features/Dashboard/SelectLanguage.tsx:94
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
+#: src/features/Goal/GoalQuestions.tsx:323
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:995
+#: src/features/Goal/Quiz/useQuiz.tsx:622
+#: src/features/Lang/LanguageSwitcher.tsx:104
+#. js-lingui-explicit-id
+msgid "Other languages"
+msgstr "ภาษาอื่นๆ"
+
+#: src/features/Dashboard/SelectLanguage.tsx:95
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
+#: src/features/Goal/GoalQuestions.tsx:324
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
+#: src/features/Goal/Quiz/QuizPage2.tsx:996
+#: src/features/Goal/Quiz/useQuiz.tsx:623
+#: src/features/Lang/LanguageSwitcher.tsx:105
+#. js-lingui-explicit-id
+msgid "System languages"
+msgstr "ภาษาของระบบ"
+
+#: src/features/Lang/LanguageSwitcher.tsx:187
+#. js-lingui-explicit-id
+msgid "Languages"
+msgstr "ภาษา"
+
+#: src/features/Goal/GoalQuestions.tsx:422
+#: src/features/Lang/LanguageSwitcher.tsx:230
+#. js-lingui-explicit-id
+msgid "Language to Learn"
+msgstr "ภาษาที่จะเรียน"
+
+#: src/features/Dashboard/SelectLanguage.tsx:267
+#: src/features/Lang/LanguageSwitcher.tsx:269
+#. js-lingui-explicit-id
+msgid "Native Language"
+msgstr "ภาษาแม่"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1190
+#: src/features/Lang/LanguageSwitcher.tsx:311
+#. js-lingui-explicit-id
+msgid "Page Language"
+msgstr "ภาษาของหน้าเว็บ"
 
 #: src/features/Lang/getLabels.tsx:9
 #. js-lingui-explicit-id
@@ -2245,51 +2281,6 @@ msgstr "แผนการเรียนรู้ภาษาสวีเดน
 msgid "Belarusian Learning Plan"
 msgstr "แผนการเรียนรู้ภาษาเบลารุส"
 
-#: src/features/Dashboard/SelectLanguage.tsx:94
-#: src/features/Game/GameNativeLanguageSelector.tsx:19
-#: src/features/Goal/GoalQuestions.tsx:323
-#: src/features/Goal/Quiz/QuizPage2.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:995
-#: src/features/Goal/Quiz/useQuiz.tsx:622
-#: src/features/Lang/LanguageSwitcher.tsx:104
-#. js-lingui-explicit-id
-msgid "Other languages"
-msgstr "ภาษาอื่นๆ"
-
-#: src/features/Dashboard/SelectLanguage.tsx:95
-#: src/features/Game/GameNativeLanguageSelector.tsx:20
-#: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Goal/Quiz/QuizPage2.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:996
-#: src/features/Goal/Quiz/useQuiz.tsx:623
-#: src/features/Lang/LanguageSwitcher.tsx:105
-#. js-lingui-explicit-id
-msgid "System languages"
-msgstr "ภาษาของระบบ"
-
-#: src/features/Lang/LanguageSwitcher.tsx:187
-#. js-lingui-explicit-id
-msgid "Languages"
-msgstr "ภาษา"
-
-#: src/features/Goal/GoalQuestions.tsx:422
-#: src/features/Lang/LanguageSwitcher.tsx:230
-#. js-lingui-explicit-id
-msgid "Language to Learn"
-msgstr "ภาษาที่จะเรียน"
-
-#: src/features/Dashboard/SelectLanguage.tsx:267
-#: src/features/Lang/LanguageSwitcher.tsx:269
-#. js-lingui-explicit-id
-msgid "Native Language"
-msgstr "ภาษาแม่"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1190
-#: src/features/Lang/LanguageSwitcher.tsx:311
-#. js-lingui-explicit-id
-msgid "Page Language"
-msgstr "ภาษาของหน้าเว็บ"
-
 #: src/features/Landing/WelcomeScreen.tsx:180
 #. js-lingui-explicit-id
 msgid "Start Speaking"
@@ -2303,6 +2294,242 @@ msgid ""
 msgstr ""
 "อย่าปล่อยให้ความผิดพลาดมาหยุดคุณ "
 "สร้างความคล่องแคล่วและความมั่นใจด้วยการฝึกพูดทุกวัน ทุกเมื่อที่คุณต้องการ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:195
+#. js-lingui-explicit-id
+msgid "Psychology"
+msgstr "จิตวิทยา"
+
+#: src/features/Landing/PlanLandingBlock.tsx:196
+#. js-lingui-explicit-id
+msgid "Mental Health Vocabulary"
+msgstr "คำศัพท์เกี่ยวกับสุขภาพจิต"
+
+#: src/features/Landing/PlanLandingBlock.tsx:198
+#. js-lingui-explicit-id
+msgid "Essential words for discussing mental health and psychology."
+msgstr "คำที่จำเป็นสำหรับการสนทนาเกี่ยวกับสุขภาพจิตและจิตวิทยา."
+
+#: src/features/Landing/PlanLandingBlock.tsx:204
+#. js-lingui-explicit-id
+msgid "Diagnosis"
+msgstr "การวินิจฉัย"
+
+#: src/features/Landing/PlanLandingBlock.tsx:205
+#. js-lingui-explicit-id
+msgid "Medical Talk Simulation"
+msgstr "จำลองการสนทนาทางการแพทย์"
+
+#: src/features/Landing/PlanLandingBlock.tsx:207
+#. js-lingui-explicit-id
+msgid "Practice medical conversations through simulated scenarios."
+msgstr "ฝึกการสนทนาทางการแพทย์ผ่านสถานการณ์จำลอง"
+
+#: src/features/Landing/PlanLandingBlock.tsx:213
+#. js-lingui-explicit-id
+msgid "Reflex"
+msgstr "สะท้อน"
+
+#: src/features/Landing/PlanLandingBlock.tsx:214
+#. js-lingui-explicit-id
+msgid "Fast Answer Practice"
+msgstr "ฝึกฝนคำตอบอย่างรวดเร็ว"
+
+#: src/features/Landing/PlanLandingBlock.tsx:216
+#. js-lingui-explicit-id
+msgid "Improve your ability to answer quickly and clearly in conversations."
+msgstr "ปรับปรุงความสามารถในการตอบสนองอย่างรวดเร็วและชัดเจนในการสนทนา."
+
+#: src/features/Landing/LandingPage.tsx:137
+#: src/features/Landing/PlanLandingBlock.tsx:222
+#. js-lingui-explicit-id
+msgid "Speaking"
+msgstr "การพูด"
+
+#: src/features/Landing/PlanLandingBlock.tsx:223
+#. js-lingui-explicit-id
+msgid "Public Talk Skills"
+msgstr "ทักษะการพูดแบบสาธารณะ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:225
+#. js-lingui-explicit-id
+msgid "Boost your confidence in public speaking."
+msgstr "เพิ่มความมั่นใจในการพูดสาธารณะของคุณ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:231
+#. js-lingui-explicit-id
+msgid "TOEFL"
+msgstr "TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:232
+#. js-lingui-explicit-id
+msgid "Academic Word List"
+msgstr "รายชื่อคำศัพท์วิชาการ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:234
+#. js-lingui-explicit-id
+msgid "Master high-frequency TOEFL vocabulary."
+msgstr "เรียนรู้คำศัพท์ TOEFL ระดับความถี่สูง"
+
+#: src/features/Landing/PlanLandingBlock.tsx:240
+#. js-lingui-explicit-id
+msgid "Mock"
+msgstr "ม็อก"
+
+#: src/features/Landing/PlanLandingBlock.tsx:241
+#. js-lingui-explicit-id
+msgid "TOEFL Speaking Tasks"
+msgstr "งานพูดในส่วนของ TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:243
+#. js-lingui-explicit-id
+msgid "Simulate speaking tasks from the TOEFL exam."
+msgstr "จำลองการทำงานพูดจากสอบ TOEFL."
+
+#: src/features/Landing/LandingPage.tsx:147
+#: src/features/Landing/PlanLandingBlock.tsx:249
+#. js-lingui-explicit-id
+msgid "Grammar"
+msgstr "ไวยากรณ์"
+
+#: src/features/Landing/PlanLandingBlock.tsx:250
+#. js-lingui-explicit-id
+msgid "Advanced Academic Usage"
+msgstr "การใช้งานทางวิชาการขั้นสูง"
+
+#: src/features/Landing/PlanLandingBlock.tsx:252
+#. js-lingui-explicit-id
+msgid "Learn grammar used in academic writing and speaking."
+msgstr "เรียนรู้ไวยากรณ์ที่ใช้ในการเขียนและการพูดทางวิชาการ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:259
+#. js-lingui-explicit-id
+msgid "Wellness"
+msgstr "สุขภาพและสุขภาพจิต"
+
+#: src/features/Landing/PlanLandingBlock.tsx:260
+#. js-lingui-explicit-id
+msgid "Mental Health Talk"
+msgstr "การสนทนาเรื่องสุขภาพจิต"
+
+#: src/features/Landing/PlanLandingBlock.tsx:262
+#. js-lingui-explicit-id
+msgid "Explore techniques to talk about wellness and mental well-being."
+msgstr "สำรวจเทคนิคในการสนทนาเกี่ยวกับสุขภาพร่างกายและสุขภาพจิต."
+
+#: src/features/Landing/PlanLandingBlock.tsx:268
+#. js-lingui-explicit-id
+msgid "Essays"
+msgstr "เรียงความ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:269
+#. js-lingui-explicit-id
+msgid "Formal Writing Practice"
+msgstr "การฝึกเขียนในรูปแบบทางการ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:271
+#. js-lingui-explicit-id
+msgid "Develop formal writing skills for academic success."
+msgstr "พัฒนาทักษะการเขียนแบบเป็นทางการเพื่อความสำเร็จในการศึกษา"
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:109
+#: src/features/Dashboard/PlanDashboardCards.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:335
+#: src/features/Landing/PlanLandingBlock.tsx:278
+#. js-lingui-explicit-id
+msgid "Conversation"
+msgstr "การสนทนา"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:101
+#: src/features/Goal/Quiz/QuizPage2.tsx:338
+#: src/features/Landing/PlanLandingBlock.tsx:281
+#. js-lingui-explicit-id
+msgid "Rule"
+msgstr "กฎ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:351
+#. js-lingui-explicit-id
+msgid "How It Works"
+msgstr "วิธีการทำงาน"
+
+#: src/features/Landing/PlanLandingBlock.tsx:365
+#. js-lingui-explicit-id
+msgid "From Onboarding to Confidence"
+msgstr "จากการเริ่มต้นไปสู่ความมั่นใจ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:424
+#. js-lingui-explicit-id
+msgid "Step 1"
+msgstr "ขั้นตอนที่ 1"
+
+#: src/features/Landing/PlanLandingBlock.tsx:425
+#. js-lingui-explicit-id
+msgid "Smart Start"
+msgstr "เริ่มต้นอย่างฉลาด"
+
+#: src/features/Landing/PlanLandingBlock.tsx:426
+#. js-lingui-explicit-id
+msgid ""
+"Fill out a onboarding quiz to help FluencyPal understand your goals and "
+"preferences."
+msgstr ""
+"กรุณาทำแบบทดสอบเริ่มต้นเพื่อช่วยให้ FluencyPal "
+"เข้าใจเป้าหมายและความชอบของคุณ"
+
+#: src/features/Landing/PlanLandingBlock.tsx:461
+#. js-lingui-explicit-id
+msgid "Step 2"
+msgstr "ขั้นตอนที่ 2"
+
+#: src/features/Landing/PlanLandingBlock.tsx:462
+#. js-lingui-explicit-id
+msgid "Personal Plan"
+msgstr "แผนบุคคล"
+
+#: src/features/Landing/PlanLandingBlock.tsx:463
+#. js-lingui-explicit-id
+msgid ""
+"Based on your onboarding, FluencyPal instantly generates a custom learning "
+"plan just for you."
+msgstr ""
+"ตามข้อมูลที่คุณได้ทำการสมัครสมาชิก ทาง FluencyPal "
+"จะทำการสร้างแผนการเรียนรู้ที่ออกแบบมาเฉพาะสำหรับคุณทันที"
+
+#: src/features/Goal/GoalQuestions.tsx:1095
+#: src/features/Landing/PlanLandingBlock.tsx:467
+#. js-lingui-explicit-id
+msgid "Create a plan"
+msgstr "สร้างแผน"
+
+#: src/features/Landing/PlanLandingBlock.tsx:616
+#. js-lingui-explicit-id
+msgid "Step 3"
+msgstr "ขั้นตอนที่ 3"
+
+#: src/features/Landing/PlanLandingBlock.tsx:618
+#. js-lingui-explicit-id
+msgid ""
+"Jump into your tailored learning path and build real skills through "
+"engaging practice with AI voice chat."
+msgstr ""
+"เดินเข้าสู่เส้นทางการเรียนรู้ที่ปรับให้เหมาะสมกับคุณและสร้างทักษะจริงๆผ่านกา"
+"รฝึกฝนที่น่าสนใจด้วยการสนทนาด้วยเสียงผ่าน AI."
+
+#: src/features/Landing/PlanLandingBlock.tsx:621
+#. js-lingui-explicit-id
+msgid "3 days free"
+msgstr "3 วันฟรี"
+
+#: src/features/Landing/PlanLandingBlock.tsx:648
+#. js-lingui-explicit-id
+msgid "Results are closer than you think"
+msgstr "ผลลัพธ์ใกล้กว่าที่คุณคิด"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:466
+#: src/features/Landing/PlanLandingBlock.tsx:661
+#. js-lingui-explicit-id
+msgid "Start Learning"
+msgstr "เริ่มการเรียนรู้"
 
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
@@ -2455,12 +2682,6 @@ msgstr ""
 "และการติดตามความก้าวหน้า—เพื่อที่จะบรรลุความคล่องแคล่วในภาษาอังกฤษออนไลน์ได้"
 "เร็วขึ้น."
 
-#: src/features/Landing/LandingPage.tsx:137
-#: src/features/Landing/PlanLandingBlock.tsx:222
-#. js-lingui-explicit-id
-msgid "Speaking"
-msgstr "การพูด"
-
 #: src/features/Landing/LandingPage.tsx:138
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
@@ -2481,12 +2702,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "เริ่มฝึกพูด"
-
-#: src/features/Landing/LandingPage.tsx:147
-#: src/features/Landing/PlanLandingBlock.tsx:249
-#. js-lingui-explicit-id
-msgid "Grammar"
-msgstr "ไวยากรณ์"
 
 #: src/features/Landing/LandingPage.tsx:148
 #. js-lingui-explicit-id
@@ -2652,230 +2867,6 @@ msgstr "เรียนได้ทุกที่ ทุกเวลา"
 msgid "Start Your Free Trial"
 msgstr "เริ่มทดลองใช้ฟรี"
 
-#: src/features/Landing/PlanLandingBlock.tsx:195
-#. js-lingui-explicit-id
-msgid "Psychology"
-msgstr "จิตวิทยา"
-
-#: src/features/Landing/PlanLandingBlock.tsx:196
-#. js-lingui-explicit-id
-msgid "Mental Health Vocabulary"
-msgstr "คำศัพท์เกี่ยวกับสุขภาพจิต"
-
-#: src/features/Landing/PlanLandingBlock.tsx:198
-#. js-lingui-explicit-id
-msgid "Essential words for discussing mental health and psychology."
-msgstr "คำที่จำเป็นสำหรับการสนทนาเกี่ยวกับสุขภาพจิตและจิตวิทยา."
-
-#: src/features/Landing/PlanLandingBlock.tsx:204
-#. js-lingui-explicit-id
-msgid "Diagnosis"
-msgstr "การวินิจฉัย"
-
-#: src/features/Landing/PlanLandingBlock.tsx:205
-#. js-lingui-explicit-id
-msgid "Medical Talk Simulation"
-msgstr "จำลองการสนทนาทางการแพทย์"
-
-#: src/features/Landing/PlanLandingBlock.tsx:207
-#. js-lingui-explicit-id
-msgid "Practice medical conversations through simulated scenarios."
-msgstr "ฝึกการสนทนาทางการแพทย์ผ่านสถานการณ์จำลอง"
-
-#: src/features/Landing/PlanLandingBlock.tsx:213
-#. js-lingui-explicit-id
-msgid "Reflex"
-msgstr "สะท้อน"
-
-#: src/features/Landing/PlanLandingBlock.tsx:214
-#. js-lingui-explicit-id
-msgid "Fast Answer Practice"
-msgstr "ฝึกฝนคำตอบอย่างรวดเร็ว"
-
-#: src/features/Landing/PlanLandingBlock.tsx:216
-#. js-lingui-explicit-id
-msgid "Improve your ability to answer quickly and clearly in conversations."
-msgstr "ปรับปรุงความสามารถในการตอบสนองอย่างรวดเร็วและชัดเจนในการสนทนา."
-
-#: src/features/Landing/PlanLandingBlock.tsx:223
-#. js-lingui-explicit-id
-msgid "Public Talk Skills"
-msgstr "ทักษะการพูดแบบสาธารณะ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:225
-#. js-lingui-explicit-id
-msgid "Boost your confidence in public speaking."
-msgstr "เพิ่มความมั่นใจในการพูดสาธารณะของคุณ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:231
-#. js-lingui-explicit-id
-msgid "TOEFL"
-msgstr "TOEFL"
-
-#: src/features/Landing/PlanLandingBlock.tsx:232
-#. js-lingui-explicit-id
-msgid "Academic Word List"
-msgstr "รายชื่อคำศัพท์วิชาการ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:234
-#. js-lingui-explicit-id
-msgid "Master high-frequency TOEFL vocabulary."
-msgstr "เรียนรู้คำศัพท์ TOEFL ระดับความถี่สูง"
-
-#: src/features/Landing/PlanLandingBlock.tsx:240
-#. js-lingui-explicit-id
-msgid "Mock"
-msgstr "ม็อก"
-
-#: src/features/Landing/PlanLandingBlock.tsx:241
-#. js-lingui-explicit-id
-msgid "TOEFL Speaking Tasks"
-msgstr "งานพูดในส่วนของ TOEFL"
-
-#: src/features/Landing/PlanLandingBlock.tsx:243
-#. js-lingui-explicit-id
-msgid "Simulate speaking tasks from the TOEFL exam."
-msgstr "จำลองการทำงานพูดจากสอบ TOEFL."
-
-#: src/features/Landing/PlanLandingBlock.tsx:250
-#. js-lingui-explicit-id
-msgid "Advanced Academic Usage"
-msgstr "การใช้งานทางวิชาการขั้นสูง"
-
-#: src/features/Landing/PlanLandingBlock.tsx:252
-#. js-lingui-explicit-id
-msgid "Learn grammar used in academic writing and speaking."
-msgstr "เรียนรู้ไวยากรณ์ที่ใช้ในการเขียนและการพูดทางวิชาการ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:259
-#. js-lingui-explicit-id
-msgid "Wellness"
-msgstr "สุขภาพและสุขภาพจิต"
-
-#: src/features/Landing/PlanLandingBlock.tsx:260
-#. js-lingui-explicit-id
-msgid "Mental Health Talk"
-msgstr "การสนทนาเรื่องสุขภาพจิต"
-
-#: src/features/Landing/PlanLandingBlock.tsx:262
-#. js-lingui-explicit-id
-msgid "Explore techniques to talk about wellness and mental well-being."
-msgstr "สำรวจเทคนิคในการสนทนาเกี่ยวกับสุขภาพร่างกายและสุขภาพจิต."
-
-#: src/features/Landing/PlanLandingBlock.tsx:268
-#. js-lingui-explicit-id
-msgid "Essays"
-msgstr "เรียงความ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:269
-#. js-lingui-explicit-id
-msgid "Formal Writing Practice"
-msgstr "การฝึกเขียนในรูปแบบทางการ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:271
-#. js-lingui-explicit-id
-msgid "Develop formal writing skills for academic success."
-msgstr "พัฒนาทักษะการเขียนแบบเป็นทางการเพื่อความสำเร็จในการศึกษา"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:109
-#: src/features/Dashboard/PlanDashboardCards.tsx:98
-#: src/features/Goal/Quiz/QuizPage2.tsx:335
-#: src/features/Landing/PlanLandingBlock.tsx:278
-#. js-lingui-explicit-id
-msgid "Conversation"
-msgstr "การสนทนา"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:338
-#: src/features/Landing/PlanLandingBlock.tsx:281
-#. js-lingui-explicit-id
-msgid "Rule"
-msgstr "กฎ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:351
-#. js-lingui-explicit-id
-msgid "How It Works"
-msgstr "วิธีการทำงาน"
-
-#: src/features/Landing/PlanLandingBlock.tsx:365
-#. js-lingui-explicit-id
-msgid "From Onboarding to Confidence"
-msgstr "จากการเริ่มต้นไปสู่ความมั่นใจ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:424
-#. js-lingui-explicit-id
-msgid "Step 1"
-msgstr "ขั้นตอนที่ 1"
-
-#: src/features/Landing/PlanLandingBlock.tsx:425
-#. js-lingui-explicit-id
-msgid "Smart Start"
-msgstr "เริ่มต้นอย่างฉลาด"
-
-#: src/features/Landing/PlanLandingBlock.tsx:426
-#. js-lingui-explicit-id
-msgid ""
-"Fill out a onboarding quiz to help FluencyPal understand your goals and "
-"preferences."
-msgstr ""
-"กรุณาทำแบบทดสอบเริ่มต้นเพื่อช่วยให้ FluencyPal "
-"เข้าใจเป้าหมายและความชอบของคุณ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:461
-#. js-lingui-explicit-id
-msgid "Step 2"
-msgstr "ขั้นตอนที่ 2"
-
-#: src/features/Landing/PlanLandingBlock.tsx:462
-#. js-lingui-explicit-id
-msgid "Personal Plan"
-msgstr "แผนบุคคล"
-
-#: src/features/Landing/PlanLandingBlock.tsx:463
-#. js-lingui-explicit-id
-msgid ""
-"Based on your onboarding, FluencyPal instantly generates a custom learning "
-"plan just for you."
-msgstr ""
-"ตามข้อมูลที่คุณได้ทำการสมัครสมาชิก ทาง FluencyPal "
-"จะทำการสร้างแผนการเรียนรู้ที่ออกแบบมาเฉพาะสำหรับคุณทันที"
-
-#: src/features/Goal/GoalQuestions.tsx:1095
-#: src/features/Landing/PlanLandingBlock.tsx:467
-#. js-lingui-explicit-id
-msgid "Create a plan"
-msgstr "สร้างแผน"
-
-#: src/features/Landing/PlanLandingBlock.tsx:616
-#. js-lingui-explicit-id
-msgid "Step 3"
-msgstr "ขั้นตอนที่ 3"
-
-#: src/features/Landing/PlanLandingBlock.tsx:618
-#. js-lingui-explicit-id
-msgid ""
-"Jump into your tailored learning path and build real skills through "
-"engaging practice with AI voice chat."
-msgstr ""
-"เดินเข้าสู่เส้นทางการเรียนรู้ที่ปรับให้เหมาะสมกับคุณและสร้างทักษะจริงๆผ่านกา"
-"รฝึกฝนที่น่าสนใจด้วยการสนทนาด้วยเสียงผ่าน AI."
-
-#: src/features/Landing/PlanLandingBlock.tsx:621
-#. js-lingui-explicit-id
-msgid "3 days free"
-msgstr "3 วันฟรี"
-
-#: src/features/Landing/PlanLandingBlock.tsx:648
-#. js-lingui-explicit-id
-msgid "Results are closer than you think"
-msgstr "ผลลัพธ์ใกล้กว่าที่คุณคิด"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:466
-#: src/features/Landing/PlanLandingBlock.tsx:661
-#. js-lingui-explicit-id
-msgid "Start Learning"
-msgstr "เริ่มการเรียนรู้"
-
 #: src/features/Landing/Footer.tsx:85
 #. js-lingui-explicit-id
 msgid "Role-Play"
@@ -2893,6 +2884,13 @@ msgstr "บล็อก"
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "ราคา"
+
+#: src/features/Blog/BlogsPage.tsx:41
+#: src/features/Landing/Price/PricePage.tsx:971
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
+#. js-lingui-explicit-id
+msgid "Start Your Journey to Fluent Conversations Now"
+msgstr "เริ่มการเดินทางของคุณสู่การสนทนาที่คล่องแคล่วตอนนี้"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
@@ -2965,6 +2963,36 @@ msgstr "พร้อมที่จะพูดภาษาอังกฤษไ
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "ลอง"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "ฝึกการสนทนาในชีวิตจริงด้วยสถานการณ์บทบาทสมมติ"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
+msgstr ""
+"สั่งอาหาร, นัดหมาย, ทำสัมภาษณ์งานให้ผ่าน, "
+"และอื่นๆ—ทั้งหมดนั้นมีแนวทางจากผู้สอน AI ของคุณ"
+
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
+#. js-lingui-explicit-id
+msgid "Role Play Scenarios"
+msgstr "สถานการณ์เล่นบทบาท"
+
+#: src/features/Blog/ListBlog.tsx:72
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
+#. js-lingui-explicit-id
+msgid "Discover"
+msgstr "ค้นพบ"
+
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
+#. js-lingui-explicit-id
+msgid "No scenarios found"
+msgstr "ไม่พบสถานการณ์ใด ๆ"
 
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
@@ -3361,42 +3389,27 @@ msgstr ""
 msgid "Contacts:"
 msgstr "ติดต่อ:"
 
-#: src/features/Blog/BlogsPage.tsx:41
-#: src/features/Landing/Price/PricePage.tsx:971
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
-#. js-lingui-explicit-id
-msgid "Start Your Journey to Fluent Conversations Now"
-msgstr "เริ่มการเดินทางของคุณสู่การสนทนาที่คล่องแคล่วตอนนี้"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "ฝึกการสนทนาในชีวิตจริงด้วยสถานการณ์บทบาทสมมติ"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#: src/features/Landing/Contact/ContactsPage.tsx:104
 #. js-lingui-explicit-id
 msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
+"My name is Alex, I am the creator of this website. I am a software engineer "
+"and I am passionate about learning languages. I created this website to "
+"help people learn languages in a fun and interactive way. I hope you enjoy "
+"using it!"
 msgstr ""
-"สั่งอาหาร, นัดหมาย, ทำสัมภาษณ์งานให้ผ่าน, "
-"และอื่นๆ—ทั้งหมดนั้นมีแนวทางจากผู้สอน AI ของคุณ"
+"ฉันชื่อ Alex, ผมเป็นผู้สร้างเว็บไซต์นี้ "
+"ฉันเป็นวิศวกรซอฟต์แวร์และฉันมีความหลงใหลในการเรียนรู้ภาษา "
+"ฉันสร้างเว็บไซต์นี้เพื่อช่วยให้ผู้คนสามารถเรียนรู้ภาษาได้อย่างสนุกสนานและสม่"
+"ำเสมอ ฉันหวังว่าคุณจะสนุกกับการใช้งาน!"
 
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
+#: src/features/Landing/Contact/ContactsPage.tsx:117
 #. js-lingui-explicit-id
-msgid "Role Play Scenarios"
-msgstr "สถานการณ์เล่นบทบาท"
-
-#: src/features/Blog/ListBlog.tsx:72
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
-#. js-lingui-explicit-id
-msgid "Discover"
-msgstr "ค้นพบ"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
-#. js-lingui-explicit-id
-msgid "No scenarios found"
-msgstr "ไม่พบสถานการณ์ใด ๆ"
+msgid ""
+"Feel free to reach out to me with any questions or feedback. I'm always "
+"happy to help!"
+msgstr ""
+"รู้สึกฟรีที่จะติดต่อฉันหากมีคำถามหรือข้อเสนอแนะแต่อย่างใด "
+"ฉันยินดีที่จะช่วยเสมอ!"
 
 #: src/features/Header/NeedHelpModal.tsx:69
 #: src/features/Header/NeedHelpModal.tsx:212
@@ -3474,27 +3487,6 @@ msgstr "ลบบัญชี (ทั้งหมด)"
 msgid "Delete account"
 msgstr "ลบบัญชี"
 
-#: src/features/Header/ContactMessageModal.tsx:37
-#. js-lingui-explicit-id
-msgid "Failed to send feedback. Please try again later."
-msgstr "การส่งข้อเสนอแนะล้มเหลว โปรดลองใหม่อีกครั้งในภายหลัง"
-
-#: src/features/Header/ContactMessageModal.tsx:42
-#. js-lingui-explicit-id
-msgid "Thank you for your feedback!"
-msgstr "ขอบคุณสำหรับคำติชมของคุณ!"
-
-#: src/features/Header/ContactMessageModal.tsx:116
-#. js-lingui-explicit-id
-msgid "Sending..."
-msgstr "กำลังส่ง..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1063
-#: src/features/Header/ContactMessageModal.tsx:116
-#. js-lingui-explicit-id
-msgid "Send"
-msgstr "ส่ง"
-
 #: src/features/Header/PaymentHistoryModal.tsx:21
 #. js-lingui-explicit-id
 msgid "Trial balance"
@@ -3520,44 +3512,6 @@ msgstr "สมัครสมาชิก (1 เดือน)"
 msgid "Trial days"
 msgstr "วันทดลองใช้"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:104
-#. js-lingui-explicit-id
-msgid ""
-"My name is Alex, I am the creator of this website. I am a software engineer "
-"and I am passionate about learning languages. I created this website to "
-"help people learn languages in a fun and interactive way. I hope you enjoy "
-"using it!"
-msgstr ""
-"ฉันชื่อ Alex, ผมเป็นผู้สร้างเว็บไซต์นี้ "
-"ฉันเป็นวิศวกรซอฟต์แวร์และฉันมีความหลงใหลในการเรียนรู้ภาษา "
-"ฉันสร้างเว็บไซต์นี้เพื่อช่วยให้ผู้คนสามารถเรียนรู้ภาษาได้อย่างสนุกสนานและสม่"
-"ำเสมอ ฉันหวังว่าคุณจะสนุกกับการใช้งาน!"
-
-#: src/features/Landing/Contact/ContactsPage.tsx:117
-#. js-lingui-explicit-id
-msgid ""
-"Feel free to reach out to me with any questions or feedback. I'm always "
-"happy to help!"
-msgstr ""
-"รู้สึกฟรีที่จะติดต่อฉันหากมีคำถามหรือข้อเสนอแนะแต่อย่างใด "
-"ฉันยินดีที่จะช่วยเสมอ!"
-
-#: src/features/Header/HeaderStatic.tsx:17
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "บทบาทสมมติ"
-
-#: src/features/Header/HeaderStatic.tsx:20
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "เข้าสู่ระบบ"
-
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:22
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "ต้องการความช่วยเหลือไหม?"
-
 #: src/features/Header/HeaderPractice.tsx:202
 #. js-lingui-explicit-id
 msgid "Finishing..."
@@ -3574,6 +3528,43 @@ msgstr "กลับ"
 #. js-lingui-explicit-id
 msgid "Payment history"
 msgstr "ประวัติการชำระเงิน"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:22
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "ต้องการความช่วยเหลือไหม?"
+
+#: src/features/Header/HeaderStatic.tsx:17
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "บทบาทสมมติ"
+
+#: src/features/Header/HeaderStatic.tsx:20
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "เข้าสู่ระบบ"
+
+#: src/features/Header/ContactMessageModal.tsx:37
+#. js-lingui-explicit-id
+msgid "Failed to send feedback. Please try again later."
+msgstr "การส่งข้อเสนอแนะล้มเหลว โปรดลองใหม่อีกครั้งในภายหลัง"
+
+#: src/features/Header/ContactMessageModal.tsx:42
+#. js-lingui-explicit-id
+msgid "Thank you for your feedback!"
+msgstr "ขอบคุณสำหรับคำติชมของคุณ!"
+
+#: src/features/Header/ContactMessageModal.tsx:116
+#. js-lingui-explicit-id
+msgid "Sending..."
+msgstr "กำลังส่ง..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1063
+#: src/features/Header/ContactMessageModal.tsx:116
+#. js-lingui-explicit-id
+msgid "Send"
+msgstr "ส่ง"
 
 #: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
@@ -4205,20 +4196,37 @@ msgstr "คะแนน:"
 msgid "Rank in the top 5 to get the app for free"
 msgstr "ติดอันดับใน 5 อันดับแรกเพื่อรับแอปฟรี"
 
-#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#: src/features/Game/GameOnboarding.tsx:52
 #. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "ภาษาแม่ของคุณ:"
+msgid "Learn and Play"
+msgstr "เรียนรู้และเล่น"
 
-#: src/features/Game/GameMyUsername.tsx:34
+#: src/features/Game/GameOnboarding.tsx:61
 #. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "ชื่อผู้ใช้ต้องมีอักขระอย่างน้อย 3 ตัว"
+msgid "Describe images, craft sentences, and translate words"
+msgstr "อธิบายภาพ, สร้างประโยค, และแปลคำ"
 
-#: src/features/Game/GameMyUsername.tsx:53
+#: src/features/Game/GameOnboarding.tsx:105
 #. js-lingui-explicit-id
-msgid "Game username:"
-msgstr "ชื่อผู้ใช้ในเกม:"
+msgid "You have a chance"
+msgstr "คุณมีโอกาส"
+
+#: src/features/Game/GameOnboarding.tsx:114
+#. js-lingui-explicit-id
+msgid ""
+"Each day, we remove 3 points from everyone so that everyone has a fair "
+"chance to win."
+msgstr "ทุกวันเราจะหักคะแนนทุกคนทั้งหมด 3 แต้มเพื่อให้ทุกคนมีโอกาสชนะอย่างเป็นธรรม"
+
+#: src/features/Game/GameOnboarding.tsx:151
+#. js-lingui-explicit-id
+msgid "Let’s make sure you’re ready"
+msgstr "มาตรวจสอบว่าคุณพร้อมแล้ว"
+
+#: src/features/Game/GameOnboarding.tsx:162
+#. js-lingui-explicit-id
+msgid "Your Avatar:"
+msgstr "อวตารของคุณ:"
 
 #: src/features/Game/GameMyAvatar.tsx:26
 #. js-lingui-explicit-id
@@ -4230,10 +4238,35 @@ msgstr "Avatar"
 msgid "Select your game avatar"
 msgstr "เลือกอวาตาร์เกมของคุณ"
 
+#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "ภาษาแม่ของคุณ:"
+
 #: src/features/Game/GameBadge.tsx:75
 #. js-lingui-explicit-id
 msgid "Play and Learn"
 msgstr "เล่นและเรียนรู้"
+
+#: src/features/Game/GameMyUsername.tsx:34
+#. js-lingui-explicit-id
+msgid "Username must be at least 3 characters long."
+msgstr "ชื่อผู้ใช้ต้องมีอักขระอย่างน้อย 3 ตัว"
+
+#: src/features/Game/GameMyUsername.tsx:53
+#. js-lingui-explicit-id
+msgid "Game username:"
+msgstr "ชื่อผู้ใช้ในเกม:"
+
+#: src/features/Game/GameMyUsername.tsx:76
+#. js-lingui-explicit-id
+msgid "Username is already taken"
+msgstr "ชื่อผู้ใช้นี้ถูกใช้ไปแล้ว"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Translate the word"
+msgstr "แปลคำว่า"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
@@ -4269,17 +4302,6 @@ msgstr "ข้อผิดพลาด:"
 msgid "Form a sentence"
 msgstr "สร้างประโยค"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "แปลคำว่า"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
-#. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "อธิบายภาพ"
-
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
 #. js-lingui-explicit-id
 msgid "Read the text"
@@ -4302,38 +4324,6 @@ msgstr "ส่ง"
 msgid "Error:"
 msgstr "ข้อผิดพลาด:"
 
-#: src/features/Game/GameOnboarding.tsx:52
-#. js-lingui-explicit-id
-msgid "Learn and Play"
-msgstr "เรียนรู้และเล่น"
-
-#: src/features/Game/GameOnboarding.tsx:61
-#. js-lingui-explicit-id
-msgid "Describe images, craft sentences, and translate words"
-msgstr "อธิบายภาพ, สร้างประโยค, และแปลคำ"
-
-#: src/features/Game/GameOnboarding.tsx:105
-#. js-lingui-explicit-id
-msgid "You have a chance"
-msgstr "คุณมีโอกาส"
-
-#: src/features/Game/GameOnboarding.tsx:114
-#. js-lingui-explicit-id
-msgid ""
-"Each day, we remove 3 points from everyone so that everyone has a fair "
-"chance to win."
-msgstr "ทุกวันเราจะหักคะแนนทุกคนทั้งหมด 3 แต้มเพื่อให้ทุกคนมีโอกาสชนะอย่างเป็นธรรม"
-
-#: src/features/Game/GameOnboarding.tsx:151
-#. js-lingui-explicit-id
-msgid "Let’s make sure you’re ready"
-msgstr "มาตรวจสอบว่าคุณพร้อมแล้ว"
-
-#: src/features/Game/GameOnboarding.tsx:162
-#. js-lingui-explicit-id
-msgid "Your Avatar:"
-msgstr "อวตารของคุณ:"
-
 #: src/features/Dashboard/WordsToLearn.tsx:32
 #. js-lingui-explicit-id
 msgid "New words to practice."
@@ -4349,44 +4339,6 @@ msgstr "เริ่มฝึกฝน"
 #. js-lingui-explicit-id
 msgid "I know all of them"
 msgstr "ฉันรู้จักพวกเขาทั้งหมด"
-
-#: src/features/Dashboard/TasksCard.tsx:39
-#. js-lingui-explicit-id
-msgid "Daily Tasks"
-msgstr "งานประจำวัน"
-
-#: src/features/Dashboard/TasksCard.tsx:51
-#. js-lingui-explicit-id
-msgid "Rule of the day"
-msgstr "กฎของวัน"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:152
-#: src/features/Dashboard/TasksCard.tsx:52
-#. js-lingui-explicit-id
-msgid "Get a personal grammar rule to learn"
-msgstr "รับกฎไวยากรณ์ส่วนตัวเพื่อเรียนรู้"
-
-#: src/features/Dashboard/TasksCard.tsx:56
-#: src/features/Dashboard/TasksCard.tsx:64
-#. js-lingui-explicit-id
-msgid "Complete previous tasks first"
-msgstr "ทำงานที่ยังไม่เสร็จให้เสร็จก่อน"
-
-#: src/features/Dashboard/TasksCard.tsx:61
-#. js-lingui-explicit-id
-msgid "New words"
-msgstr "คำศัพท์ใหม่"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:173
-#: src/features/Dashboard/TasksCard.tsx:62
-#. js-lingui-explicit-id
-msgid "Practice new vocabulary with the AI"
-msgstr "ฝึกคำศัพท์ใหม่กับ AI"
-
-#: src/features/Dashboard/RulesToLearn.tsx:36
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "กฎใหม่ในการฝึกฝน."
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
 #. js-lingui-explicit-id
@@ -4407,6 +4359,11 @@ msgstr "เรียนรู้"
 #. js-lingui-explicit-id
 msgid "Page"
 msgstr "หน้า"
+
+#: src/features/Dashboard/RulesToLearn.tsx:36
+#. js-lingui-explicit-id
+msgid "New rule to practice."
+msgstr "กฎใหม่ในการฝึกฝน."
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:84
 #. js-lingui-explicit-id
@@ -4549,15 +4506,42 @@ msgstr "แนะนำฉัน"
 msgid "Rules"
 msgstr "กฎ"
 
+#: src/features/Dashboard/ConversationSelectCard.tsx:152
+#: src/features/Dashboard/TasksCard.tsx:52
+#. js-lingui-explicit-id
+msgid "Get a personal grammar rule to learn"
+msgstr "รับกฎไวยากรณ์ส่วนตัวเพื่อเรียนรู้"
+
 #: src/features/Dashboard/ConversationSelectCard.tsx:168
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "รับกฎ"
 
+#: src/features/Dashboard/ConversationSelectCard.tsx:173
+#: src/features/Dashboard/TasksCard.tsx:62
+#. js-lingui-explicit-id
+msgid "Practice new vocabulary with the AI"
+msgstr "ฝึกคำศัพท์ใหม่กับ AI"
+
 #: src/features/Dashboard/ConversationSelectCard.tsx:189
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "ขยายคำศัพท์"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
+#. js-lingui-explicit-id
+msgid "Progress Calendar"
+msgstr "ปฏิทินความก้าวหน้า"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
+#. js-lingui-explicit-id
+msgid "Less"
+msgstr "น้อยลง"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
+#. js-lingui-explicit-id
+msgid "More"
+msgstr "เพิ่มเติม"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4661,21 +4645,6 @@ msgstr "เตรียมสมอง"
 msgid "Upload language skills directly to your brain"
 msgstr "อัปโหลดทักษะการใช้ภาษาลงไปยังสมองของคุณโดยตรง"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
-#. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "ปฏิทินความก้าวหน้า"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "น้อยลง"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "เพิ่มเติม"
-
 #: src/features/Conversation/useConversationsAnalysis.ts:89
 #: src/features/Conversation/useConversationsAnalysis.ts:132
 #. js-lingui-explicit-id
@@ -4716,26 +4685,6 @@ msgstr "การสร้างคำใหม่..."
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "กำลังสร้างกฎใหม่..."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:33
-#. js-lingui-explicit-id
-msgid "Ready?"
-msgstr "พร้อมแล้วหรือยัง?"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Next, please allow access to the microphone to communicate with the AI."
-msgstr "ถัดไป กรุณาอนุญาตการเข้าถึงไมโครโฟนเพื่อสื่อสารกับ AI"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:69
-#. js-lingui-explicit-id
-msgid "Yes, I am ready"
-msgstr "ใช่ ฉันพร้อมแล้ว"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:73
-#. js-lingui-explicit-id
-msgid "No"
-msgstr "ไม่"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:360
 #. js-lingui-explicit-id
@@ -4917,20 +4866,6 @@ msgstr "ยอดเงินต่ำ"
 msgid "Top up"
 msgstr "เติมเงิน"
 
-#: src/features/Blog/ListBlogIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "อ่านและเรียนรู้จากบล็อกของฉัน"
-
-#: src/features/Blog/ListBlogIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr ""
-"ได้รับแรงบันดาลใจและเรียนรู้เกี่ยวกับแนวโน้มล่าสุดในด้านการเรียนรู้ภาษา "
-"การสอน และเทคโนโลยี。"
-
 #: src/features/Conversation/AliasGamePanel.tsx:122
 #. js-lingui-explicit-id
 msgid "Describe these words:"
@@ -4946,477 +4881,19 @@ msgstr "ตัวเลือกเพิ่มเติม"
 msgid "Guessed words:"
 msgstr "คำที่เดา:"
 
-#: src/features/Blog/BlogCard.tsx:168
+#: src/features/Blog/ListBlogIntro.tsx:66
 #. js-lingui-explicit-id
-msgid "Read more"
-msgstr "อ่านเพิ่มเติม"
+msgid "Read and Learn with my blog"
+msgstr "อ่านและเรียนรู้จากบล็อกของฉัน"
 
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "ดูโพสต์ทั้งหมด"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "บทบาทเล่นเพื่อฝึกฝน"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "คุณสามารถลองใช้ AI ในภาคปฏิบัติได้เลยตอนนี้"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "ลองใช้ฟรี"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
-#. js-lingui-explicit-id
-msgid "At the end, we’ll share a valuable tool for realistic interview practice."
-msgstr ""
-"ในท้ายที่สุด "
-"เราจะแบ่งปันเครื่องมือที่มีค่าใช้สอยในการฝึกฝนสัมภาษณ์ที่เป็นความจริง"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
-#. js-lingui-explicit-id
-msgid "Introduction: Small Talk with the Interviewer"
-msgstr "บทนำ: การคุยเล่นกับผู้สัมภาษณ์"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
+#: src/features/Blog/ListBlogIntro.tsx:77
 #. js-lingui-explicit-id
 msgid ""
-"The first few minutes of an interview are often dedicated to casual "
-"conversation — also known as 'SmallTalk'. Recruiters use this time to "
-"create a friendly atmosphere and get to know you a bit better."
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
 msgstr ""
-"ไม่กี่นาทีแรกของการสัมภาษณ์มักจะมอบให้สำหรับการสนทนาทั่วไป - ซึ่งเรียกว่า "
-"'SmallTalk' "
-"ผู้สรรหาบุคลากรใช้เวลานี้เพื่อสร้างบรรยากาศที่เป็นมิตรและทำความรู้จักคุณมากข"
-"ึ้นเล็กน้อย"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
-#. js-lingui-explicit-id
-msgid "Don’t skip small talk"
-msgstr "อย่าข้ามการพูดคุยเล็กๆ"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
-#. js-lingui-explicit-id
-msgid ""
-"— it’s important to engage in this short conversation before jumping into "
-"professional topics. Here are some useful English phrases to start off the "
-"interview:"
-msgstr ""
-"— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
-"นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
-#. js-lingui-explicit-id
-msgid "English Phrases"
-msgstr "วลีภาษาอังกฤษ"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
-#. js-lingui-explicit-id
-msgid "A polite and professional greeting."
-msgstr "การทักทายที่สุภาพและมืออาชีพ"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
-#. js-lingui-explicit-id
-msgid "Expressing gratitude for the opportunity."
-msgstr "แสดงความขอบคุณสำหรับโอกาสนี้."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
-#. js-lingui-explicit-id
-msgid "A standard reply to “How are you?”"
-msgstr "การตอบที่มาตรฐานสำหรับ \"คุณเป็นอย่างไร?\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
-#. js-lingui-explicit-id
-msgid "A friendly compliment to break the ice."
-msgstr "คำชมเชยที่เป็นมิตรเพื่อผ่อนคลายบรรยากาศ"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
-#. js-lingui-explicit-id
-msgid ""
-"Smile, shake hands (if culturally appropriate), and speak in a friendly "
-"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
-"might say:"
-msgstr ""
-"ยิ้ม, จับมือ (ถ้าเหมาะสมทางวัฒนธรรม), และพูดด้วยโทนที่เป็นมิตร "
-"ถ้าผู้สัมภาษณ์ถามว่า \"คุณมีปัญหาในการค้นหาเราหรือไม่?\" คุณอาจจะตอบว่า:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
-#. js-lingui-explicit-id
-msgid ""
-"Short answers with a positive attitude show that you’re easy to talk to and "
-"open to dialogue."
-msgstr ""
-"การตอบสั้น ๆ "
-"ด้วยทัศนคติที่เชิงบวกแสดงว่าคุณง่ายต่อการสื่อสารและพร้อมสำหรับการสนทนา"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
-#. js-lingui-explicit-id
-msgid "Self-Introduction: Talking About Yourself"
-msgstr "การแนะนำตัว: การพูดเกี่ยวกับตัวเอง"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
-#. js-lingui-explicit-id
-msgid "After the greeting, you'll usually hear:"
-msgstr "หลังจากทักทายแล้ว คุณมักจะได้ยิน:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
-#. js-lingui-explicit-id
-msgid ""
-"This is your chance to introduce your experience and skills. Don’t list "
-"your full biography — focus on the highlights of your professional "
-"background. A good answer structure in English might look like this:"
-msgstr ""
-"นี่คือโอกาสของคุณในการแนะนำประสบการณ์และทักษะของคุณ "
-"ไม่ต้องระบุประวัติชีวิตของคุณเต็มๆ "
-"—โฟกัสเฉพาะจุดเด่นของประวัติการทำงานเท่านั้น "
-"การตอบที่ดีในภาษาอังกฤษอาจมีโครงสร้างดังนี้:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
-#. js-lingui-explicit-id
-msgid "For example:"
-msgstr "ตัวอย่าง:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
-#. js-lingui-explicit-id
-msgid ""
-"Keep your answer focused: current or last position, a key achievement, and "
-"your interest in the company. Practice your self-introduction so you sound "
-msgstr ""
-"รักษารายละเอียดของคำตอบให้เน้นย้ำ: ตำแหน่งปัจจุบันหรือตำแหน่งล่าสุด, "
-"ความสำเร็จที่สำคัญ, และความสนใจในบริษัท ฝึกการแนะนำตัวของคุณเพื่อให้ม "
-"sounding sounding"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
-#. js-lingui-explicit-id
-msgid "natural and not robotic"
-msgstr "ธรรมชาติและไม่เหมือนหุ่นยนต์"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
-#. js-lingui-explicit-id
-msgid "Useful Phrases for Self-Introduction"
-msgstr "วลีที่มีประโยชน์สำหรับการแนะนำตัวเอง"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
-#. js-lingui-explicit-id
-msgid ""
-"Use these templates to craft your own story. Don’t forget to mention an "
-"achievement:"
-msgstr "ใช้เทมเพลตเหล่านี้เพื่อสร้างเรื่องราวของคุณเอง อย่าลืมพูดถึงความสำเร็จ:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
-#. js-lingui-explicit-id
-msgid "This shows results and makes you stand out."
-msgstr "นี่แสดงผลลัพธ์และทำให้คุณโดดเด่น"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
-#. js-lingui-explicit-id
-msgid "Answering Typical Interview Questions"
-msgstr "การตอบคำถามสัมภาษณ์ทั่วไป"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
-#. js-lingui-explicit-id
-msgid ""
-"Recruiters ask a variety of standard questions to understand your "
-"motivation and personality. Preparing answers in advance will help you stay "
-"calm and articulate. Focus on showing enthusiasm and confidence in your "
-"skills. Let’s look at some common questions and how to answer them:"
-msgstr ""
-"ผู้สรรหางานมักถามคำถามมาตรฐานหลากหลายเพื่อทำความเข้าใจถึงจุดเริ่มต้นและบุคลิ"
-"กภาพของคุณ การเตรียมคำตอบล่วงหน้าจะช่วยให้คุณสงบและสามารถพูดคุยได้ชัดเจน "
-"โฟกัสที่การแสดงความกระตือรือร้นและความมั่นใจในทักษะของคุณ "
-"มาดูคำถามทั่วไปและวิธีตอบพวกแล้ว:\n"
-"\n"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
-#. js-lingui-explicit-id
-msgid "Show knowledge of the company and genuine interest. For example:"
-msgstr "แสดงความรู้เกี่ยวกับบริษัทและความสนใจที่แท้จริง. ยกตัวอย่างเช่น:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
-#. js-lingui-explicit-id
-msgid "Highlight your strengths relevant to the role:"
-msgstr "เน้นความสามารถที่สำคัญต่อบทบาท:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
-#. js-lingui-explicit-id
-msgid "Show your long-term goals:"
-msgstr "แสดงเป้าหมายระยะยาวของคุณ:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
-#. js-lingui-explicit-id
-msgid "Other common questions include:"
-msgstr "คำถามทั่วไปอื่น ๆ รวมถึง:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
-#. js-lingui-explicit-id
-msgid "Prepare short, honest, and positive answers with real-life examples."
-msgstr "เตรียมคำตอบที่สั้น ๆ ซื่อสัตย์ และเชิงบวกด้วยตัวอย่างจากชีวิตจริง"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
-#. js-lingui-explicit-id
-msgid "If you don’t understand a question, don’t panic — ask politely:"
-msgstr "ถ้าคุณไม่เข้าใจคำถาม ไม่ต้องตื่นตระหนก — ขอคำแนะนำอย่างสุภาพ:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
-#. js-lingui-explicit-id
-msgid "Talking About Strengths and Weaknesses"
-msgstr "การพูดถึงจุดแข็งและจุดอ่อน"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
-#. js-lingui-explicit-id
-msgid ""
-"Most interviews include the classic “strengths and weaknesses” question. "
-"It’s especially important to handle this well in English."
-msgstr ""
-"สัมภาษณ์ส่วนใหญ่จะรวมถึงคำถามคลาสสิกเกี่ยวกับ \"จุดแข็งและจุดอ่อน\" "
-"การจัดการเรื่องนี้ได้ดีในภาษาอังกฤษเป็นเรื่องที่สำคัญเป็นพิเศษ"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
-#. js-lingui-explicit-id
-msgid "Strengths:"
-msgstr "ความแข็งแกร่ง:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
-#. js-lingui-explicit-id
-msgid ""
-"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
-"examples. For instance:"
-msgstr ""
-"เลือก 2-3 คุณสมบัติหลักที่เกี่ยวข้องกับงาน "
-"หลีกเลี่ยงคำวิพากษ์ที่จะทำให้ดูโดดเด่นและให้ตัวอย่าง เช่น:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
-#. js-lingui-explicit-id
-msgid "Other useful strengths:"
-msgstr "คุณสมบัติที่มีประโยชน์อื่น ๆ:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
-#. js-lingui-explicit-id
-msgid "Weaknesses:"
-msgstr "ความอ่อนแอ:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
-#. js-lingui-explicit-id
-msgid ""
-"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
-"mention a minor issue and how you’re working to improve it:"
-msgstr ""
-"เป็นคนที่ซื่อสัตย์แต่มีวิจารณญาณ อย่าพูดว่า \"ฉันไม่มีจุดอ่อน\" "
-"แทนที่จะพูดอย่างนั้น คุณควรกล่าวถึงปัญหาเล็ก ๆ "
-"ซึ่งคุณกำลังพยายามที่จะปรับปรุง:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
-#. js-lingui-explicit-id
-msgid "This approach shows self-awareness and growth."
-msgstr "วิธีนี้แสดงถึงการรู้ตัวและการเติบโต"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
-#. js-lingui-explicit-id
-msgid "Questions to Ask the Employer"
-msgstr "คำถามที่ควรถามจากนายจ้าง"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
-#. js-lingui-explicit-id
-msgid "At the end of the interview, you’ll usually be asked:"
-msgstr "ท้ายสัมภาษณ์ คุณมักจะถูกถามว่า:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
-#. js-lingui-explicit-id
-msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
-msgstr "อย่าเคยพูดว่า \"ไม่\" เตรียมคำถามที่ฉลาด 2-3 คำล่วงหน้า:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
-#. js-lingui-explicit-id
-msgid "Always respond politely:"
-msgstr "ตอบสุภาพเสมอ:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
-#. js-lingui-explicit-id
-msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
-msgstr ""
-"แสดงความอยากรู้อยากเห็นและมีส่วนร่วม "
-"อย่าลืมขอบคุณพวกเขาสำหรับคำตอบของพวกเขา:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
-#. js-lingui-explicit-id
-msgid "Ending the Interview: Final Phrases"
-msgstr "การสิ้นสุดการสัมภาษณ์: วลีสุดท้าย"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
-#. js-lingui-explicit-id
-msgid ""
-"Wrap up the interview with gratitude and confidence. Use these phrases to "
-"end on a positive note:"
-msgstr ""
-"สรุปการสัมภาษณ์ด้วยความขอบคุณและความมั่นใจ "
-"ใช้วลีเหล่านี้เพื่อที่จะสิ้นสุดอย่างมีแง่บวก:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
-#. js-lingui-explicit-id
-msgid ""
-"If it was an in-person interview, shake hands and maintain eye contact. If "
-"it was online, say goodbye with a friendly tone. Consider sending a "
-"thank-you email the next day:"
-msgstr ""
-"ถ้าเป็นการสัมภาษณ์ด้วยตัวเอง, จงจับมือและรักษาการมองตา. ถ้าเป็นออนไลน์, "
-"กล่าวลาด้วยท่องเสียงที่เป็นมิตร. ควรพิจารณาส่งอีเมลขอบคุณในวันถัดไป:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
-#. js-lingui-explicit-id
-msgid "Common Mistakes to Avoid"
-msgstr "ข้อผิดพลาดทั่วไปที่ควรหลีกเลี่ยง"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
-#. js-lingui-explicit-id
-msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
-msgstr "ข้ามการพูดคุยเล็กน้อย — ปฏิบัติตามผู้สัมภาษณ์และเป็นกันเอง"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
-#. js-lingui-explicit-id
-msgid ""
-"Saying “I don’t know” directly — Instead say: “That’s an interesting "
-"question. Let me think for a moment.”"
-msgstr ""
-"การพูดว่า \"ฉันไม่รู้\" โดยตรง — แทนที่จะพูดว่า: \"นั่นคือคำถามที่น่าสนใจ "
-"ขอฉันคิดสักครู่\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
-#. js-lingui-explicit-id
-msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
-msgstr "ขาดการสุภาพ — ใช้ *กรุณา* , *ขอบคุณ* , *ขอโทษ* ตามที่ต้องการ."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
-#. js-lingui-explicit-id
-msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
-msgstr "การตอบที่ฝึกซ้อมเกินไป — อย่าจำ; เตรียมความคิดและพูดอย่างธรรมชาติ."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
-#. js-lingui-explicit-id
-msgid ""
-"Negative comments — Never badmouth past employers. Stay neutral and "
-"constructive."
-msgstr ""
-"ความคิดเห็นลบ — ไม่ควรพูดเสียดสีนายที่ทำงานล่าสุดของคุณ "
-"มองอย่างเป็นกลางและสร้างสรรค์"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
-#. js-lingui-explicit-id
-msgid ""
-"Showing no interest — Ask questions and react positively to company "
-"information."
-msgstr "แสดงว่าไม่มีความสนใจ — ถามคำถามและตอบสนองอย่างเชิงบวกต่อข้อมูลของบริษัท"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
-#. js-lingui-explicit-id
-msgid ""
-"Avoiding these mistakes will make you look more professional and increase "
-"your chances of success."
-msgstr ""
-"การหลีกเลี่ยงข้อผิดพลาดเหล่านี้จะทำให้คุณดูเหมือนมืออาชีพมากขึ้นและเพิ่มโอกา"
-"สในการประสบความสำเร็จของคุณ"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
-#. js-lingui-explicit-id
-msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
-msgstr "ฝึกสัมภาษณ์บน FluencyPal: ทางสู่ความมั่นใจ"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
-#. js-lingui-explicit-id
-msgid ""
-"Knowing useful phrases and tips is great, but the most important step is "
-"real-world practice. The best way to prepare is to do a mock interview. "
-"That’s exactly what the interactive role-play on FluencyPal offers."
-msgstr ""
-"การรู้คำศัพท์และเคล็ดลับที่มีประโยชน์จะดี "
-"แต่ขั้นตอนที่สำคัญที่สุดคือการฝึกฝนในสถานการณ์ที่จริง "
-"วิธีการที่ดีที่สุดในการเตรียมตัวคือการทำการสัมภาษณ์จำลอง "
-"นั่นคือสิ่งที่การเล่นบทบาทแบบโต้ตอบบน FluencyPal เสนอให้คุณ"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
-#. js-lingui-explicit-id
-msgid ""
-"On this platform, you can upload your resume, specify your desired job, and "
-"go through a realistic interview with an AI interviewer."
-msgstr ""
-"บนแพลตฟอร์มนี้ คุณสามารถอัพโหลดเรซูเม่ของคุณ ระบุงานที่คุณต้องการ "
-"และผ่านการสัมภาษณ์ที่เป็นจริงด้วยผู้สัมภาษณ์ AI"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
-#. js-lingui-explicit-id
-msgid "How it works:"
-msgstr "วิธีการทำงาน:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
-#. js-lingui-explicit-id
-msgid ""
-"You answer questions just like in a real interview and get instant "
-"feedback. The AI adapts the questions to your profession and experience. "
-"This kind of training helps you identify weak spots, work on your "
-"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
-"notice your speech becoming more fluent and your answers more polished with "
-"each attempt."
-msgstr ""
-"คุณตอบคำถามเหมือนอยู่ในสถานการณ์สัมภาษณ์จริงและได้รับข้อเสนอแนะทันที โดย AI "
-"จะปรับคำถามให้เข้ากับอาชีพและประสบการณ์ของคุณ "
-"การฝึกอบรมแบบนี้ช่วยให้คุณระบุจุดอ่อน ฝึกการออกเสียง "
-"และเรียนรู้วิธีจัดการกับคำถามที่ไม่คาดคิดอย่างสงบ "
-"คุณจะสังเกตุการพูดของคุณเป็นไหลมากขึ้นและคำตอบของคุณดูมีการเตรียมมากขึ้นในทุ"
-"กครั้งที่ลอง"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
-#. js-lingui-explicit-id
-msgid "Career benefit:"
-msgstr "ผลประโยชน์ทางอาชีพ:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
-#. js-lingui-explicit-id
-msgid ""
-"After several sessions, you’ll walk into your real interview much more "
-"confident. You’ll know what phrases to use, how to present yourself, and "
-"how to respond professionally. It can significantly boost your chances of "
-"landing your dream job."
-msgstr ""
-"หลังจากเรียนรู้หลายครั้งแล้ว คุณจะไปสัมภาษณ์งานด้วยความมั่นใจมากขึ้น "
-"คุณจะรู้ว่าควรใช้วลีอะไร วิธีการนำเสนอตัวเอง และวิธีการตอบสนองอย่างมืออาชีพ "
-"สิ่งนี้สามารถช่วยเพิ่มโอกาสที่คุณจะได้งานที่ฝันอยู่มากขึ้นได้อย่างมีนัยสำคัญ"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
-#. js-lingui-explicit-id
-msgid ""
-"Preparing for an interview in English takes time, but it pays off. Use the "
-"tips from this article, practice with FluencyPal’s interview simulator, and "
-"walk into your next job interview with confidence."
-msgstr ""
-"การเตรียมตัวสำหรับสัมภาษณ์งานในภาษาอังกฤษต้องใช้เวลา แต่มันคุ้มค่า "
-"ใช้เคล็ดลับจากบทความนี้ ฝึกฝนด้วยสมูเลเตอร์สัมภาษณ์ของ FluencyPal "
-"แล้วเดินเข้าไปในการสัมภาษณ์งานครั้งถัดไปของคุณด้วยความมั่นใจ"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
-#. js-lingui-explicit-id
-msgid "Good preparation today means career success tomorrow."
-msgstr "การเตรียมตัวดีในวันนี้หมายความว่าความสำเร็จในอาชีพในวันพรุ่งนี้"
-
-#: src/features/Auth/SignInForm.tsx:30
-#. js-lingui-explicit-id
-msgid "Open personal plan"
-msgstr "เปิดแผนส่วนบุคคล"
-
-#: src/features/Auth/SignInForm.tsx:32
-#: src/features/Auth/SignInForm.tsx:33
-#. js-lingui-explicit-id
-msgid "Sing in"
-msgstr "เข้าสู่ระบบ"
-
-#: src/features/Auth/SignInForm.tsx:38
-#: src/features/Auth/SignInForm.tsx:39
-#. js-lingui-explicit-id
-msgid "So you can save your progress"
-msgstr "เพื่อให้คุณสามารถบันทึกความก้าวหน้าได้"
+"ได้รับแรงบันดาลใจและเรียนรู้เกี่ยวกับแนวโน้มล่าสุดในด้านการเรียนรู้ภาษา "
+"การสอน และเทคโนโลยี。"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6934,6 +6411,461 @@ msgstr "บล็อกทั้งหมด"
 msgid "No blogs found"
 msgstr "ไม่พบบล็อก"
 
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "ดูโพสต์ทั้งหมด"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "บทบาทเล่นเพื่อฝึกฝน"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "คุณสามารถลองใช้ AI ในภาคปฏิบัติได้เลยตอนนี้"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "ลองใช้ฟรี"
+
+#: src/features/Blog/BlogCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Read more"
+msgstr "อ่านเพิ่มเติม"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
+#. js-lingui-explicit-id
+msgid "At the end, we’ll share a valuable tool for realistic interview practice."
+msgstr ""
+"ในท้ายที่สุด "
+"เราจะแบ่งปันเครื่องมือที่มีค่าใช้สอยในการฝึกฝนสัมภาษณ์ที่เป็นความจริง"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
+#. js-lingui-explicit-id
+msgid "Introduction: Small Talk with the Interviewer"
+msgstr "บทนำ: การคุยเล่นกับผู้สัมภาษณ์"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
+#. js-lingui-explicit-id
+msgid ""
+"The first few minutes of an interview are often dedicated to casual "
+"conversation — also known as 'SmallTalk'. Recruiters use this time to "
+"create a friendly atmosphere and get to know you a bit better."
+msgstr ""
+"ไม่กี่นาทีแรกของการสัมภาษณ์มักจะมอบให้สำหรับการสนทนาทั่วไป - ซึ่งเรียกว่า "
+"'SmallTalk' "
+"ผู้สรรหาบุคลากรใช้เวลานี้เพื่อสร้างบรรยากาศที่เป็นมิตรและทำความรู้จักคุณมากข"
+"ึ้นเล็กน้อย"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
+#. js-lingui-explicit-id
+msgid "Don’t skip small talk"
+msgstr "อย่าข้ามการพูดคุยเล็กๆ"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
+#. js-lingui-explicit-id
+msgid ""
+"— it’s important to engage in this short conversation before jumping into "
+"professional topics. Here are some useful English phrases to start off the "
+"interview:"
+msgstr ""
+"— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
+"นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
+#. js-lingui-explicit-id
+msgid "English Phrases"
+msgstr "วลีภาษาอังกฤษ"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
+#. js-lingui-explicit-id
+msgid "A polite and professional greeting."
+msgstr "การทักทายที่สุภาพและมืออาชีพ"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
+#. js-lingui-explicit-id
+msgid "Expressing gratitude for the opportunity."
+msgstr "แสดงความขอบคุณสำหรับโอกาสนี้."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
+#. js-lingui-explicit-id
+msgid "A standard reply to “How are you?”"
+msgstr "การตอบที่มาตรฐานสำหรับ \"คุณเป็นอย่างไร?\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
+#. js-lingui-explicit-id
+msgid "A friendly compliment to break the ice."
+msgstr "คำชมเชยที่เป็นมิตรเพื่อผ่อนคลายบรรยากาศ"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"Smile, shake hands (if culturally appropriate), and speak in a friendly "
+"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
+"might say:"
+msgstr ""
+"ยิ้ม, จับมือ (ถ้าเหมาะสมทางวัฒนธรรม), และพูดด้วยโทนที่เป็นมิตร "
+"ถ้าผู้สัมภาษณ์ถามว่า \"คุณมีปัญหาในการค้นหาเราหรือไม่?\" คุณอาจจะตอบว่า:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"Short answers with a positive attitude show that you’re easy to talk to and "
+"open to dialogue."
+msgstr ""
+"การตอบสั้น ๆ "
+"ด้วยทัศนคติที่เชิงบวกแสดงว่าคุณง่ายต่อการสื่อสารและพร้อมสำหรับการสนทนา"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
+#. js-lingui-explicit-id
+msgid "Self-Introduction: Talking About Yourself"
+msgstr "การแนะนำตัว: การพูดเกี่ยวกับตัวเอง"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
+#. js-lingui-explicit-id
+msgid "After the greeting, you'll usually hear:"
+msgstr "หลังจากทักทายแล้ว คุณมักจะได้ยิน:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
+#. js-lingui-explicit-id
+msgid ""
+"This is your chance to introduce your experience and skills. Don’t list "
+"your full biography — focus on the highlights of your professional "
+"background. A good answer structure in English might look like this:"
+msgstr ""
+"นี่คือโอกาสของคุณในการแนะนำประสบการณ์และทักษะของคุณ "
+"ไม่ต้องระบุประวัติชีวิตของคุณเต็มๆ "
+"—โฟกัสเฉพาะจุดเด่นของประวัติการทำงานเท่านั้น "
+"การตอบที่ดีในภาษาอังกฤษอาจมีโครงสร้างดังนี้:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
+#. js-lingui-explicit-id
+msgid "For example:"
+msgstr "ตัวอย่าง:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
+#. js-lingui-explicit-id
+msgid ""
+"Keep your answer focused: current or last position, a key achievement, and "
+"your interest in the company. Practice your self-introduction so you sound "
+msgstr ""
+"รักษารายละเอียดของคำตอบให้เน้นย้ำ: ตำแหน่งปัจจุบันหรือตำแหน่งล่าสุด, "
+"ความสำเร็จที่สำคัญ, และความสนใจในบริษัท ฝึกการแนะนำตัวของคุณเพื่อให้ม "
+"sounding sounding"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
+#. js-lingui-explicit-id
+msgid "natural and not robotic"
+msgstr "ธรรมชาติและไม่เหมือนหุ่นยนต์"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
+#. js-lingui-explicit-id
+msgid "Useful Phrases for Self-Introduction"
+msgstr "วลีที่มีประโยชน์สำหรับการแนะนำตัวเอง"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
+#. js-lingui-explicit-id
+msgid ""
+"Use these templates to craft your own story. Don’t forget to mention an "
+"achievement:"
+msgstr "ใช้เทมเพลตเหล่านี้เพื่อสร้างเรื่องราวของคุณเอง อย่าลืมพูดถึงความสำเร็จ:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
+#. js-lingui-explicit-id
+msgid "This shows results and makes you stand out."
+msgstr "นี่แสดงผลลัพธ์และทำให้คุณโดดเด่น"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
+#. js-lingui-explicit-id
+msgid "Answering Typical Interview Questions"
+msgstr "การตอบคำถามสัมภาษณ์ทั่วไป"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
+#. js-lingui-explicit-id
+msgid ""
+"Recruiters ask a variety of standard questions to understand your "
+"motivation and personality. Preparing answers in advance will help you stay "
+"calm and articulate. Focus on showing enthusiasm and confidence in your "
+"skills. Let’s look at some common questions and how to answer them:"
+msgstr ""
+"ผู้สรรหางานมักถามคำถามมาตรฐานหลากหลายเพื่อทำความเข้าใจถึงจุดเริ่มต้นและบุคลิ"
+"กภาพของคุณ การเตรียมคำตอบล่วงหน้าจะช่วยให้คุณสงบและสามารถพูดคุยได้ชัดเจน "
+"โฟกัสที่การแสดงความกระตือรือร้นและความมั่นใจในทักษะของคุณ "
+"มาดูคำถามทั่วไปและวิธีตอบพวกแล้ว:\n"
+"\n"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
+#. js-lingui-explicit-id
+msgid "Show knowledge of the company and genuine interest. For example:"
+msgstr "แสดงความรู้เกี่ยวกับบริษัทและความสนใจที่แท้จริง. ยกตัวอย่างเช่น:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
+#. js-lingui-explicit-id
+msgid "Highlight your strengths relevant to the role:"
+msgstr "เน้นความสามารถที่สำคัญต่อบทบาท:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
+#. js-lingui-explicit-id
+msgid "Show your long-term goals:"
+msgstr "แสดงเป้าหมายระยะยาวของคุณ:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
+#. js-lingui-explicit-id
+msgid "Other common questions include:"
+msgstr "คำถามทั่วไปอื่น ๆ รวมถึง:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
+#. js-lingui-explicit-id
+msgid "Prepare short, honest, and positive answers with real-life examples."
+msgstr "เตรียมคำตอบที่สั้น ๆ ซื่อสัตย์ และเชิงบวกด้วยตัวอย่างจากชีวิตจริง"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
+#. js-lingui-explicit-id
+msgid "If you don’t understand a question, don’t panic — ask politely:"
+msgstr "ถ้าคุณไม่เข้าใจคำถาม ไม่ต้องตื่นตระหนก — ขอคำแนะนำอย่างสุภาพ:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
+#. js-lingui-explicit-id
+msgid "Talking About Strengths and Weaknesses"
+msgstr "การพูดถึงจุดแข็งและจุดอ่อน"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"Most interviews include the classic “strengths and weaknesses” question. "
+"It’s especially important to handle this well in English."
+msgstr ""
+"สัมภาษณ์ส่วนใหญ่จะรวมถึงคำถามคลาสสิกเกี่ยวกับ \"จุดแข็งและจุดอ่อน\" "
+"การจัดการเรื่องนี้ได้ดีในภาษาอังกฤษเป็นเรื่องที่สำคัญเป็นพิเศษ"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
+#. js-lingui-explicit-id
+msgid "Strengths:"
+msgstr "ความแข็งแกร่ง:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
+"examples. For instance:"
+msgstr ""
+"เลือก 2-3 คุณสมบัติหลักที่เกี่ยวข้องกับงาน "
+"หลีกเลี่ยงคำวิพากษ์ที่จะทำให้ดูโดดเด่นและให้ตัวอย่าง เช่น:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
+#. js-lingui-explicit-id
+msgid "Other useful strengths:"
+msgstr "คุณสมบัติที่มีประโยชน์อื่น ๆ:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
+#. js-lingui-explicit-id
+msgid "Weaknesses:"
+msgstr "ความอ่อนแอ:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
+#. js-lingui-explicit-id
+msgid ""
+"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
+"mention a minor issue and how you’re working to improve it:"
+msgstr ""
+"เป็นคนที่ซื่อสัตย์แต่มีวิจารณญาณ อย่าพูดว่า \"ฉันไม่มีจุดอ่อน\" "
+"แทนที่จะพูดอย่างนั้น คุณควรกล่าวถึงปัญหาเล็ก ๆ "
+"ซึ่งคุณกำลังพยายามที่จะปรับปรุง:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
+#. js-lingui-explicit-id
+msgid "This approach shows self-awareness and growth."
+msgstr "วิธีนี้แสดงถึงการรู้ตัวและการเติบโต"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
+#. js-lingui-explicit-id
+msgid "Questions to Ask the Employer"
+msgstr "คำถามที่ควรถามจากนายจ้าง"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
+#. js-lingui-explicit-id
+msgid "At the end of the interview, you’ll usually be asked:"
+msgstr "ท้ายสัมภาษณ์ คุณมักจะถูกถามว่า:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
+#. js-lingui-explicit-id
+msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
+msgstr "อย่าเคยพูดว่า \"ไม่\" เตรียมคำถามที่ฉลาด 2-3 คำล่วงหน้า:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
+#. js-lingui-explicit-id
+msgid "Always respond politely:"
+msgstr "ตอบสุภาพเสมอ:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
+#. js-lingui-explicit-id
+msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
+msgstr ""
+"แสดงความอยากรู้อยากเห็นและมีส่วนร่วม "
+"อย่าลืมขอบคุณพวกเขาสำหรับคำตอบของพวกเขา:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
+#. js-lingui-explicit-id
+msgid "Ending the Interview: Final Phrases"
+msgstr "การสิ้นสุดการสัมภาษณ์: วลีสุดท้าย"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
+#. js-lingui-explicit-id
+msgid ""
+"Wrap up the interview with gratitude and confidence. Use these phrases to "
+"end on a positive note:"
+msgstr ""
+"สรุปการสัมภาษณ์ด้วยความขอบคุณและความมั่นใจ "
+"ใช้วลีเหล่านี้เพื่อที่จะสิ้นสุดอย่างมีแง่บวก:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"If it was an in-person interview, shake hands and maintain eye contact. If "
+"it was online, say goodbye with a friendly tone. Consider sending a "
+"thank-you email the next day:"
+msgstr ""
+"ถ้าเป็นการสัมภาษณ์ด้วยตัวเอง, จงจับมือและรักษาการมองตา. ถ้าเป็นออนไลน์, "
+"กล่าวลาด้วยท่องเสียงที่เป็นมิตร. ควรพิจารณาส่งอีเมลขอบคุณในวันถัดไป:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
+#. js-lingui-explicit-id
+msgid "Common Mistakes to Avoid"
+msgstr "ข้อผิดพลาดทั่วไปที่ควรหลีกเลี่ยง"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
+#. js-lingui-explicit-id
+msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
+msgstr "ข้ามการพูดคุยเล็กน้อย — ปฏิบัติตามผู้สัมภาษณ์และเป็นกันเอง"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
+#. js-lingui-explicit-id
+msgid ""
+"Saying “I don’t know” directly — Instead say: “That’s an interesting "
+"question. Let me think for a moment.”"
+msgstr ""
+"การพูดว่า \"ฉันไม่รู้\" โดยตรง — แทนที่จะพูดว่า: \"นั่นคือคำถามที่น่าสนใจ "
+"ขอฉันคิดสักครู่\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
+#. js-lingui-explicit-id
+msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
+msgstr "ขาดการสุภาพ — ใช้ *กรุณา* , *ขอบคุณ* , *ขอโทษ* ตามที่ต้องการ."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
+#. js-lingui-explicit-id
+msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
+msgstr "การตอบที่ฝึกซ้อมเกินไป — อย่าจำ; เตรียมความคิดและพูดอย่างธรรมชาติ."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
+#. js-lingui-explicit-id
+msgid ""
+"Negative comments — Never badmouth past employers. Stay neutral and "
+"constructive."
+msgstr ""
+"ความคิดเห็นลบ — ไม่ควรพูดเสียดสีนายที่ทำงานล่าสุดของคุณ "
+"มองอย่างเป็นกลางและสร้างสรรค์"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
+#. js-lingui-explicit-id
+msgid ""
+"Showing no interest — Ask questions and react positively to company "
+"information."
+msgstr "แสดงว่าไม่มีความสนใจ — ถามคำถามและตอบสนองอย่างเชิงบวกต่อข้อมูลของบริษัท"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
+#. js-lingui-explicit-id
+msgid ""
+"Avoiding these mistakes will make you look more professional and increase "
+"your chances of success."
+msgstr ""
+"การหลีกเลี่ยงข้อผิดพลาดเหล่านี้จะทำให้คุณดูเหมือนมืออาชีพมากขึ้นและเพิ่มโอกา"
+"สในการประสบความสำเร็จของคุณ"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
+#. js-lingui-explicit-id
+msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
+msgstr "ฝึกสัมภาษณ์บน FluencyPal: ทางสู่ความมั่นใจ"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
+#. js-lingui-explicit-id
+msgid ""
+"Knowing useful phrases and tips is great, but the most important step is "
+"real-world practice. The best way to prepare is to do a mock interview. "
+"That’s exactly what the interactive role-play on FluencyPal offers."
+msgstr ""
+"การรู้คำศัพท์และเคล็ดลับที่มีประโยชน์จะดี "
+"แต่ขั้นตอนที่สำคัญที่สุดคือการฝึกฝนในสถานการณ์ที่จริง "
+"วิธีการที่ดีที่สุดในการเตรียมตัวคือการทำการสัมภาษณ์จำลอง "
+"นั่นคือสิ่งที่การเล่นบทบาทแบบโต้ตอบบน FluencyPal เสนอให้คุณ"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
+#. js-lingui-explicit-id
+msgid ""
+"On this platform, you can upload your resume, specify your desired job, and "
+"go through a realistic interview with an AI interviewer."
+msgstr ""
+"บนแพลตฟอร์มนี้ คุณสามารถอัพโหลดเรซูเม่ของคุณ ระบุงานที่คุณต้องการ "
+"และผ่านการสัมภาษณ์ที่เป็นจริงด้วยผู้สัมภาษณ์ AI"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
+#. js-lingui-explicit-id
+msgid "How it works:"
+msgstr "วิธีการทำงาน:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
+#. js-lingui-explicit-id
+msgid ""
+"You answer questions just like in a real interview and get instant "
+"feedback. The AI adapts the questions to your profession and experience. "
+"This kind of training helps you identify weak spots, work on your "
+"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
+"notice your speech becoming more fluent and your answers more polished with "
+"each attempt."
+msgstr ""
+"คุณตอบคำถามเหมือนอยู่ในสถานการณ์สัมภาษณ์จริงและได้รับข้อเสนอแนะทันที โดย AI "
+"จะปรับคำถามให้เข้ากับอาชีพและประสบการณ์ของคุณ "
+"การฝึกอบรมแบบนี้ช่วยให้คุณระบุจุดอ่อน ฝึกการออกเสียง "
+"และเรียนรู้วิธีจัดการกับคำถามที่ไม่คาดคิดอย่างสงบ "
+"คุณจะสังเกตุการพูดของคุณเป็นไหลมากขึ้นและคำตอบของคุณดูมีการเตรียมมากขึ้นในทุ"
+"กครั้งที่ลอง"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
+#. js-lingui-explicit-id
+msgid "Career benefit:"
+msgstr "ผลประโยชน์ทางอาชีพ:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
+#. js-lingui-explicit-id
+msgid ""
+"After several sessions, you’ll walk into your real interview much more "
+"confident. You’ll know what phrases to use, how to present yourself, and "
+"how to respond professionally. It can significantly boost your chances of "
+"landing your dream job."
+msgstr ""
+"หลังจากเรียนรู้หลายครั้งแล้ว คุณจะไปสัมภาษณ์งานด้วยความมั่นใจมากขึ้น "
+"คุณจะรู้ว่าควรใช้วลีอะไร วิธีการนำเสนอตัวเอง และวิธีการตอบสนองอย่างมืออาชีพ "
+"สิ่งนี้สามารถช่วยเพิ่มโอกาสที่คุณจะได้งานที่ฝันอยู่มากขึ้นได้อย่างมีนัยสำคัญ"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
+#. js-lingui-explicit-id
+msgid ""
+"Preparing for an interview in English takes time, but it pays off. Use the "
+"tips from this article, practice with FluencyPal’s interview simulator, and "
+"walk into your next job interview with confidence."
+msgstr ""
+"การเตรียมตัวสำหรับสัมภาษณ์งานในภาษาอังกฤษต้องใช้เวลา แต่มันคุ้มค่า "
+"ใช้เคล็ดลับจากบทความนี้ ฝึกฝนด้วยสมูเลเตอร์สัมภาษณ์ของ FluencyPal "
+"แล้วเดินเข้าไปในการสัมภาษณ์งานครั้งถัดไปของคุณด้วยความมั่นใจ"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
+#. js-lingui-explicit-id
+msgid "Good preparation today means career success tomorrow."
+msgstr "การเตรียมตัวดีในวันนี้หมายความว่าความสำเร็จในอาชีพในวันพรุ่งนี้"
+
 #: src/features/Auth/WebViewWall.tsx:38
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please copy it manually."
@@ -6983,6 +6915,74 @@ msgstr "เปิดใน Telegram"
 #. js-lingui-explicit-id
 msgid "Open in Browser"
 msgstr "เปิดในเบราว์เซอร์"
+
+#: src/features/Auth/SignInForm.tsx:30
+#. js-lingui-explicit-id
+msgid "Open personal plan"
+msgstr "เปิดแผนส่วนบุคคล"
+
+#: src/features/Auth/SignInForm.tsx:32
+#: src/features/Auth/SignInForm.tsx:33
+#. js-lingui-explicit-id
+msgid "Sing in"
+msgstr "เข้าสู่ระบบ"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1728
+msgid "So you can keep your progress"
+msgstr "ดังนั้นคุณสามารถรักษาความก้าวหน้าของคุณได้"
+
+#: src/features/Auth/SignInForm.tsx:38
+#: src/features/Auth/SignInForm.tsx:39
+#. js-lingui-explicit-id
+msgid "So you can save your progress"
+msgstr "เพื่อให้คุณสามารถบันทึกความก้าวหน้าได้"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
+#. js-lingui-explicit-id
+msgid "Describe the image"
+msgstr "อธิบายภาพ"
+
+#: src/features/Dashboard/TasksCard.tsx:39
+#. js-lingui-explicit-id
+msgid "Daily Tasks"
+msgstr "งานประจำวัน"
+
+#: src/features/Dashboard/TasksCard.tsx:51
+#. js-lingui-explicit-id
+msgid "Rule of the day"
+msgstr "กฎของวัน"
+
+#: src/features/Dashboard/TasksCard.tsx:56
+#: src/features/Dashboard/TasksCard.tsx:64
+#. js-lingui-explicit-id
+msgid "Complete previous tasks first"
+msgstr "ทำงานที่ยังไม่เสร็จให้เสร็จก่อน"
+
+#: src/features/Dashboard/TasksCard.tsx:61
+#. js-lingui-explicit-id
+msgid "New words"
+msgstr "คำศัพท์ใหม่"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:33
+#. js-lingui-explicit-id
+msgid "Ready?"
+msgstr "พร้อมแล้วหรือยัง?"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Next, please allow access to the microphone to communicate with the AI."
+msgstr "ถัดไป กรุณาอนุญาตการเข้าถึงไมโครโฟนเพื่อสื่อสารกับ AI"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:69
+#. js-lingui-explicit-id
+msgid "Yes, I am ready"
+msgstr "ใช่ ฉันพร้อมแล้ว"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:73
+#. js-lingui-explicit-id
+msgid "No"
+msgstr "ไม่"
 
 #: src/features/Landing/PlanLandingBlock.tsx:429
 msgid "{countOfLanguages} languages to practice"
@@ -7051,439 +7051,3 @@ msgstr "คุณคือ <0>ผู้นำ</0> ของผู้เล่น
 #: src/features/Goal/Quiz/QuizPage2.tsx:1569
 msgid "Your AI speaking partner"
 msgstr "คู่พูดคุย AI ของคุณ"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1582
-#. js-lingui-explicit-id
-#~ msgid "Daily communication without fear of judgment"
-#~ msgstr "การสื่อสารในชีวิตประจำวันโดยไม่ต้องกลัวการตัดสิน"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1586
-#. js-lingui-explicit-id
-#~ msgid "Instant corrections when you get stuck"
-#~ msgstr "การแก้ไขทันทีเมื่อคุณติดขัด"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1596
-#. js-lingui-explicit-id
-#~ msgid "Grammar corrections that will give you confidence"
-#~ msgstr "การแก้ไขไวยากรณ์ที่จะเพิ่มความมั่นใจให้กับคุณ"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1605
-#. js-lingui-explicit-id
-#~ msgid "Practice real-life situations before they happen"
-#~ msgstr "ฝึกซ้อมสถานการณ์ในชีวิตจริงก่อนที่มันจะเกิดขึ้น"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1591
-#. js-lingui-explicit-id
-#~ msgid "Personalized to your goals"
-#~ msgstr "ปรับให้เหมาะสมกับเป้าหมายของคุณ"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1596
-#. js-lingui-explicit-id
-#~ msgid "Fix the grammar mistakes that cause embarrassment"
-#~ msgstr "แก้ไขข้อผิดพลาดทางไวยากรณ์ที่ทำให้รู้สึกอับอาย"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1582
-#. js-lingui-explicit-id
-#~ msgid "Speak daily without fear of judgment"
-#~ msgstr "พูดทุกวันโดยไม่ต้องกลัวการตัดสิน"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1586
-#. js-lingui-explicit-id
-#~ msgid "Instant AI corrections when you get stuck"
-#~ msgstr "การแก้ไขด้วย AI ทันทีเมื่อคุณติดขัด"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1591
-#. js-lingui-explicit-id
-#~ msgid "Personalized to your goals (work, travel, or life)"
-#~ msgstr "ปรับให้เหมาะกับเป้าหมายของคุณ (งาน, การเดินทาง, หรือชีวิต)"
-
-#: src/features/Landing/Price/PricePage.tsx:105
-#. js-lingui-explicit-id
-#~ msgid "Start free, subscribe later"
-#~ msgstr "เริ่มใช้งานฟรี, สมัครสมาชิกในภายหลัง"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1581
-#. js-lingui-explicit-id
-#~ msgid "Conversation practice with AI"
-#~ msgstr "ฝึกสนทนากับ AI"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1599
-#. js-lingui-explicit-id
-#~ msgid "New Words and Phrases"
-#~ msgstr "คำใหม่และวลีใหม่"
-
-#: src/features/Landing/PlanLandingBlock.tsx:381
-#. js-lingui-explicit-id
-#~ msgid "From Onboarding to Your Goal"
-#~ msgstr "จากการสร้างพื้นฐานถึงเป้าหมายของคุณ"
-
-#: src/features/Landing/WelcomeScreen.tsx:227
-#. js-lingui-explicit-id
-#~ msgid "Win the game and get the app"
-#~ msgstr "ชนะเกมและรับแอป"
-
-#: src/features/Landing/WelcomeScreen.tsx:227
-#. js-lingui-explicit-id
-#~ msgid "for free"
-#~ msgstr "ฟรี"
-
-#: src/features/Landing/LandingPage.tsx:119
-#. js-lingui-explicit-id
-#~ msgid "Speaking Partner"
-#~ msgstr "พาร์ทเนอร์การพูด"
-
-#: src/features/Landing/PlanLandingBlock.tsx:328
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Fill out a quick onboarding quiz to help FluencyPal understand your goals "
-#~ "and preferences."
-#~ msgstr ""
-#~ "กรอกแบบสอบถามการรับราชการเร่งด่วนเพื่อช่วยให้ FluencyPal "
-#~ "เข้าใจเป้าหมายและการตั้งค่าที่คุณต้องการ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:790
-#. js-lingui-explicit-id
-#~ msgid "1 hour free"
-#~ msgstr "1 ชั่วโมงฟรี"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:268
-#. js-lingui-explicit-id
-#~ msgid "Start your journey with a conversation!"
-#~ msgstr "เริ่มการเดินทางของคุณด้วยการสนทนา!"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:291
-#: src/features/Dashboard/PlanDashboardCards.tsx:321
-#: src/features/Dashboard/PlanDashboardCards.tsx:351
-#. js-lingui-explicit-id
-#~ msgid "Recommended"
-#~ msgstr "แนะนำ"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:298
-#. js-lingui-explicit-id
-#~ msgid "Learn the rules of the language!"
-#~ msgstr "เรียนรู้กฎของภาษา!"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:328
-#. js-lingui-explicit-id
-#~ msgid "Learn new words and expand your vocabulary!"
-#~ msgstr "เรียนรู้คำใหม่และขยายคำศัพท์ของคุณ!"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:371
-#. js-lingui-explicit-id
-#~ msgid "There's something interesting for you..."
-#~ msgstr "มีสิ่งที่น่าสนใจสำหรับคุณ..."
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:400
-#. js-lingui-explicit-id
-#~ msgid "Let's start"
-#~ msgstr "เริ่มเลย"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:30
-#. js-lingui-explicit-id
-#~ msgid "Next, allow microphone access to talk with the AI."
-#~ msgstr "ต่อไป, ให้การเข้าถึงไมโครโฟนเพื่อสนทนากับ AI."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:55
-#. js-lingui-explicit-id
-#~ msgid "I am ready"
-#~ msgstr "ฉันพร้อม"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:513
-#. js-lingui-explicit-id
-#~ msgid "Translate"
-#~ msgstr "แปล"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:429
-#. js-lingui-explicit-id
-#~ msgid "Plan for learning"
-#~ msgstr "แผนการเรียนรู้"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:111
-#. js-lingui-explicit-id
-#~ msgid "Choose My Language"
-#~ msgstr "เลือกภาษาของฉัน"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:317
-#. js-lingui-explicit-id
-#~ msgid "Your story"
-#~ msgstr "เรื่องราวของคุณ"
-
-#: src/features/Auth/SignInForm.tsx:33
-#. js-lingui-explicit-id
-#~ msgid "Sing in "
-#~ msgstr "ลงชื่อเข้าใช้"
-
-#: src/features/RolePlay/rolePlayData.tsx:47
-#. js-lingui-explicit-id
-#~ msgid "Practice English vocabulary by creatively describing and guessing words"
-#~ msgstr "ฝึกภาษาอังกฤษด้วยการอธิบายคำศัพท์อย่างสร้างสรรค์และเดาคำ"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:348
-#. js-lingui-explicit-id
-#~ msgid "By signing in, you agree to our"
-#~ msgstr "โดยการลงชื่อเข้าใช้ คุณได้ยอมรับข้อกำหนดในการใช้ของเรา"
-
-#: src/features/Auth/SignInForm.tsx:32
-#. js-lingui-explicit-id
-#~ msgid "Start the Lesson"
-#~ msgstr "เริ่มบทเรียน"
-
-#: src/features/Auth/SignInForm.tsx:61
-#. js-lingui-explicit-id
-#~ msgid "Start Role Play:"
-#~ msgstr "เริ่มการเล่นบทบาท:"
-
-#: src/features/Auth/SignInForm.tsx:88
-#. js-lingui-explicit-id
-#~ msgid "Create an account to continue"
-#~ msgstr "สร้างบัญชีเพื่อดำเนินการต่อ"
-
-#: src/features/Auth/SignInForm.tsx:105
-#. js-lingui-explicit-id
-#~ msgid "Continue with google"
-#~ msgstr "ดำเนินการต่อด้วย Google"
-
-#: src/features/Auth/SignInForm.tsx:116
-#. js-lingui-explicit-id
-#~ msgid "By creating an account, you agree to:"
-#~ msgstr "โดยการสร้างบัญชี คุณยอมรับว่า:"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:257
-#. js-lingui-explicit-id
-#~ msgid "I am waiting for your speech..."
-#~ msgstr "ฉันกำลังรอฟังคำพูดของคุณ..."
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:80
-#. js-lingui-explicit-id
-#~ msgid "Choose your native language"
-#~ msgstr "เลือกภาษาพื้นเมืองของคุณ"
-
-#: src/features/Auth/SignInForm.tsx:74
-#. js-lingui-explicit-id
-#~ msgid "Open this page in browser"
-#~ msgstr "เปิดหน้านี้ในเบราว์เซอร์"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:83
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Who you are, what you do, and your interests. Why you are learning this "
-#~ "language?"
-#~ msgstr "คุณคือใคร คุณทำอะไร และความสนใจของคุณ ทำไมคุณถึงเรียนภาษานี้?"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:64
-#. js-lingui-explicit-id
-#~ msgid "So I can translate words into it for you"
-#~ msgstr "ดังนั้นฉันสามารถแปลคำต่าง ๆ ให้คุณได้"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:51
-#. js-lingui-explicit-id
-#~ msgid "Tell us your native language"
-#~ msgstr "บอกให้เราทราบถึงภาษาแม่ของคุณ"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:202
-#. js-lingui-explicit-id
-#~ msgid "My Language"
-#~ msgstr "ภาษาของฉัน"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:225
-#. js-lingui-explicit-id
-#~ msgid "Select Your Language"
-#~ msgstr "เลือกภาษาของคุณ"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:250
-#. js-lingui-explicit-id
-#~ msgid "Search"
-#~ msgstr "ค้นหา"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:280
-#. js-lingui-explicit-id
-#~ msgid "No languages found"
-#~ msgstr "ไม่พบภาษา"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:236
-#. js-lingui-explicit-id
-#~ msgid "Payment successful! Thank you."
-#~ msgstr "ชำระเงินเรียบร้อยแล้ว! ขอบคุณค่ะ/ครับ"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:146
-#. js-lingui-explicit-id
-#~ msgid "Transaction completed. Soon your balance will be updated."
-#~ msgstr "ธุรกรรมเสร็จสมบูรณ์ ยอดคงเหลือของคุณจะได้รับการอัปเดตในเร็วๆ นี้"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:189
-#. js-lingui-explicit-id
-#~ msgid "Attempt"
-#~ msgstr "ลองดู"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:96
-#. js-lingui-explicit-id
-#~ msgid "Payment sent"
-#~ msgstr "ชำระเงินแล้ว"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:144
-#. js-lingui-explicit-id
-#~ msgid "Pay with TON"
-#~ msgstr "ชำระด้วย TON"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1193
-#. js-lingui-explicit-id
-#~ msgid "Volume Off"
-#~ msgstr "ปิดเสียง"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1193
-#. js-lingui-explicit-id
-#~ msgid "Volume On"
-#~ msgstr "เปิดเสียง"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1180
-#. js-lingui-explicit-id
-#~ msgid "Use voice message mode"
-#~ msgstr "ใช้โหมดข้อความเสียง"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1197
-#. js-lingui-explicit-id
-#~ msgid "Use keyboard mode"
-#~ msgstr "ใช้โหมดแป้นพิมพ์"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1214
-#. js-lingui-explicit-id
-#~ msgid "Use phone mode"
-#~ msgstr "ใช้โหมดโทรศัพท์"
-
-#: src/features/Game/GameMyUsername.tsx:41
-#. js-lingui-explicit-id
-#~ msgid "Your Username:"
-#~ msgstr "ชื่อผู้ใช้ของคุณ:"
-
-#: src/features/Translation/useTranslate.tsx:100
-#. js-lingui-explicit-id
-#~ msgid "Translation"
-#~ msgstr "การแปล"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:30
-#. js-lingui-explicit-id
-#~ msgid "Thank you for your message"
-#~ msgstr "ขอบคุณสำหรับข้อความของคุณ"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:42
-#. js-lingui-explicit-id
-#~ msgid "Your feedback is valuable to me"
-#~ msgstr "ความคิดเห็นของคุณมีค่ามากสำหรับฉัน"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:46
-#. js-lingui-explicit-id
-#~ msgid "Leave your feedback"
-#~ msgstr "แสดงความคิดเห็นของคุณ"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:51
-#. js-lingui-explicit-id
-#~ msgid "Send Feedback"
-#~ msgstr "ส่งข้อเสนอแนะ"
-
-#: src/features/Game/GameMyAvatar.tsx:29
-#. js-lingui-explicit-id
-#~ msgid "Select your avatar"
-#~ msgstr "เลือกอวตารของคุณ"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:479
-#. js-lingui-explicit-id
-#~ msgid "Your plan"
-#~ msgstr "แผนของคุณ"
-
-#: src/features/Header/HeaderPractice.tsx:315
-#. js-lingui-explicit-id
-#~ msgid "Refund Request"
-#~ msgstr "การขอคืนเงิน"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:344
-#. js-lingui-explicit-id
-#~ msgid "Pay and Subscribe"
-#~ msgstr "ชำระเงินและสมัครสมาชิก"
-
-#: src/features/Telegram/TgAppPage.tsx:113
-#. js-lingui-explicit-id
-#~ msgid "Failed to initialize Telegram Mini App"
-#~ msgstr "ล้มเหลวในการเริ่มต้นแอปขนาดเล็กของ Telegram"
-
-#: src/features/TgApp/TgAppPage.tsx:168
-#. js-lingui-explicit-id
-#~ msgid "Authorizing with Telegram..."
-#~ msgstr "กำลังอนุญาตกับ Telegram..."
-
-#: src/features/Usage/PaymentModal.tsx:437
-#. js-lingui-explicit-id
-#~ msgid "Hi, my name is Alex, and I'm the creator of this app."
-#~ msgstr "สวัสดีครับ ผมชื่อเอเล็กซ์ และผมคือผู้สร้างแอปนี้"
-
-#: src/features/Usage/PaymentModal.tsx:439
-#. js-lingui-explicit-id
-#~ msgid "Thank you for using it!"
-#~ msgstr "ขอบคุณที่ใช้งานนะคะ!"
-
-#: src/features/Usage/PaymentModal.tsx:442
-#. js-lingui-explicit-id
-#~ msgid "Currently, I haven't integrated payment services yet. 💔"
-#~ msgstr "ในปัจจุบัน, ฉันยังไม่ได้รวมบริการการชำระเงินเข้ามาในระบบ 💔"
-
-#: src/features/Usage/PaymentModal.tsx:445
-#. js-lingui-explicit-id
-#~ msgid "I've received your payment request for"
-#~ msgstr "ฉันได้รับคำขอการชำระเงินของคุณแล้ว"
-
-#: src/features/Usage/PaymentModal.tsx:447
-#. js-lingui-explicit-id
-#~ msgid "I'll send instructions on how to pay to your email"
-#~ msgstr "ฉันจะส่งคำแนะนำเกี่ยวกับวิธีการชำระเงินไปยังอีเมลของคุณ"
-
-#: src/features/Usage/PaymentModal.tsx:451
-#. js-lingui-explicit-id
-#~ msgid "Once again, thank you for using my app!"
-#~ msgstr "อีกครั้งหนึ่ง, ขอบคุณที่ใช้แอปของฉัน!"
-
-#: src/features/Usage/PaymentModal.tsx:460
-#. js-lingui-explicit-id
-#~ msgid "If you'd like to contact me directly, here are my contacts:"
-#~ msgstr "ถ้าคุณต้องการติดต่อฉันโดยตรง, นี่คือวิธีติดต่อฉัน:"
-
-#: src/features/Usage/PaymentModal.tsx:482
-#. js-lingui-explicit-id
-#~ msgid "Current Balance"
-#~ msgstr "ยอดเงินปัจจุบัน"
-
-#: src/features/Usage/PaymentModal.tsx:502
-#. js-lingui-explicit-id
-#~ msgid "Total used"
-#~ msgstr "ใช้งานทั้งหมด"
-
-#: src/features/Usage/PaymentModal.tsx:552
-#. js-lingui-explicit-id
-#~ msgid "Manage your payments and balance"
-#~ msgstr "จัดการการชำระเงินและยอดคงเหลือของคุณ"
-
-#: src/features/Landing/PlanLandingBlock.tsx:180
-#~ msgid "{actionButtonPostfixLabel}"
-#~ msgstr ""
-
-#: src/features/Landing/WelcomeScreen.tsx:87
-#~ msgid "AI"
-#~ msgstr "AI"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1570
-#~ msgid "AI speaking partner"
-#~ msgstr "คู่สนทนา AI"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1570
-#~ msgid "Speaking partner"
-#~ msgstr "คู่สนทนาภาษาอังกฤษ"
-
-#: src/features/Landing/WelcomeScreen.tsx:128
-#~ msgid "Talk, get corrected, improve—repeat."
-#~ msgstr "พูด, รับการแก้ไข, ปรับปรุง—ทำซ้ำ."
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:221
-#~ msgid "What you get with <0>FluencyPal</0>"
-#~ msgstr "สิ่งที่คุณจะได้รับจาก<0>FluencyPal</0>"
-
-#: src/features/Landing/WelcomeScreen.tsx:132
-#~ msgid "Win the game and get the app <0>for free</0>"
-#~ msgstr "ชนะเกมแล้วรับแอพ <0>ฟรี</0>"

@@ -13,15 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Game/GameMyUsername.tsx:76
-#. js-lingui-explicit-id
-msgid "Username is already taken"
-msgstr "Användarnamnet är redan taget"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1728
-msgid "So you can keep your progress"
-msgstr "Så att du kan behålla dina framsteg"
-
 #: src/features/Header/HeaderStatic.tsx:18
 #: src/features/Landing/Contact/ContactsPage.tsx:94
 #: src/features/Landing/Footer.tsx:88
@@ -377,6 +368,40 @@ msgstr "Engelsk talande partner"
 #. js-lingui-explicit-id
 msgid "AI English Speaking Practice"
 msgstr "AI Engelsk Talövning"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1094
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
+#: src/features/Goal/Quiz/QuizPage2.tsx:825
+#: src/features/Goal/Quiz/QuizPage2.tsx:861
+#: src/features/Usage/SubscriptionWaiter.tsx:47
+#. js-lingui-explicit-id
+msgid "Done"
+msgstr "Klar"
+
+#: src/features/Usage/SubscriptionWaiter.tsx:56
+#. js-lingui-explicit-id
+msgid "Your subscription has been successfully changed."
+msgstr "Din prenumeration har ändrats framgångsrikt."
+
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:265
+#: src/features/Usage/SubscriptionWaiter.tsx:60
+#: src/features/Usage/SubscriptionWaiter.tsx:81
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "Stäng"
+
+#: src/features/Usage/SubscriptionWaiter.tsx:68
+#. js-lingui-explicit-id
+msgid "Waiting for payment..."
+msgstr "Väntar på betalning..."
+
+#: src/features/Usage/SubscriptionWaiter.tsx:77
+#. js-lingui-explicit-id
+msgid "Please wait while we process your payment."
+msgstr "Vänligen vänta medan vi behandlar din betalning."
 
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
@@ -861,40 +886,6 @@ msgstr "Köp en prenumeration"
 #. js-lingui-explicit-id
 msgid "Play the Game"
 msgstr "Spela Spelet"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1094
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
-#: src/features/Goal/Quiz/QuizPage2.tsx:825
-#: src/features/Goal/Quiz/QuizPage2.tsx:861
-#: src/features/Usage/SubscriptionWaiter.tsx:47
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "Klar"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:56
-#. js-lingui-explicit-id
-msgid "Your subscription has been successfully changed."
-msgstr "Din prenumeration har ändrats framgångsrikt."
-
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:265
-#: src/features/Usage/SubscriptionWaiter.tsx:60
-#: src/features/Usage/SubscriptionWaiter.tsx:81
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "Stäng"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:68
-#. js-lingui-explicit-id
-msgid "Waiting for payment..."
-msgstr "Väntar på betalning..."
-
-#: src/features/Usage/SubscriptionWaiter.tsx:77
-#. js-lingui-explicit-id
-msgid "Please wait while we process your payment."
-msgstr "Vänligen vänta medan vi behandlar din betalning."
 
 #: src/features/Translation/useTranslate.tsx:147
 #. js-lingui-explicit-id
@@ -2004,16 +1995,6 @@ msgstr "Bearbetar målet..."
 msgid "Error Processing the goal"
 msgstr "Fel vid bearbetning av målet"
 
-#: src/features/Plan/PlanCard.tsx:118
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "Skicka 6 meddelanden för att slutföra"
-
-#: src/features/Plan/PlanCard.tsx:137
-#. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "Starta lektion"
-
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
 #. js-lingui-explicit-id
 msgid ""
@@ -2129,6 +2110,16 @@ msgstr "Njut av spelet och se hur AI gissar din beskrivning!"
 msgid "Robot Thinking"
 msgstr "Robot tänker"
 
+#: src/features/Plan/PlanCard.tsx:118
+#. js-lingui-explicit-id
+msgid "Send 6 messages to complete"
+msgstr "Skicka 6 meddelanden för att slutföra"
+
+#: src/features/Plan/PlanCard.tsx:137
+#. js-lingui-explicit-id
+msgid "Start lesson"
+msgstr "Starta lektion"
+
 #: src/features/Navigation/NavigationBar.tsx:44
 #. js-lingui-explicit-id
 msgid "Home"
@@ -2138,6 +2129,51 @@ msgstr "Hem"
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
+
+#: src/features/Dashboard/SelectLanguage.tsx:94
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
+#: src/features/Goal/GoalQuestions.tsx:323
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:995
+#: src/features/Goal/Quiz/useQuiz.tsx:622
+#: src/features/Lang/LanguageSwitcher.tsx:104
+#. js-lingui-explicit-id
+msgid "Other languages"
+msgstr "Andra språk"
+
+#: src/features/Dashboard/SelectLanguage.tsx:95
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
+#: src/features/Goal/GoalQuestions.tsx:324
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
+#: src/features/Goal/Quiz/QuizPage2.tsx:996
+#: src/features/Goal/Quiz/useQuiz.tsx:623
+#: src/features/Lang/LanguageSwitcher.tsx:105
+#. js-lingui-explicit-id
+msgid "System languages"
+msgstr "Systemspråk"
+
+#: src/features/Lang/LanguageSwitcher.tsx:187
+#. js-lingui-explicit-id
+msgid "Languages"
+msgstr "Språk"
+
+#: src/features/Goal/GoalQuestions.tsx:422
+#: src/features/Lang/LanguageSwitcher.tsx:230
+#. js-lingui-explicit-id
+msgid "Language to Learn"
+msgstr "Språk att Lära"
+
+#: src/features/Dashboard/SelectLanguage.tsx:267
+#: src/features/Lang/LanguageSwitcher.tsx:269
+#. js-lingui-explicit-id
+msgid "Native Language"
+msgstr "Modersmål"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1190
+#: src/features/Lang/LanguageSwitcher.tsx:311
+#. js-lingui-explicit-id
+msgid "Page Language"
+msgstr "Sidans språk"
 
 #: src/features/Lang/getLabels.tsx:9
 #. js-lingui-explicit-id
@@ -2249,51 +2285,6 @@ msgstr "Svensk inlärningsplan"
 msgid "Belarusian Learning Plan"
 msgstr "Vitryska Lärplan"
 
-#: src/features/Dashboard/SelectLanguage.tsx:94
-#: src/features/Game/GameNativeLanguageSelector.tsx:19
-#: src/features/Goal/GoalQuestions.tsx:323
-#: src/features/Goal/Quiz/QuizPage2.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:995
-#: src/features/Goal/Quiz/useQuiz.tsx:622
-#: src/features/Lang/LanguageSwitcher.tsx:104
-#. js-lingui-explicit-id
-msgid "Other languages"
-msgstr "Andra språk"
-
-#: src/features/Dashboard/SelectLanguage.tsx:95
-#: src/features/Game/GameNativeLanguageSelector.tsx:20
-#: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Goal/Quiz/QuizPage2.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:996
-#: src/features/Goal/Quiz/useQuiz.tsx:623
-#: src/features/Lang/LanguageSwitcher.tsx:105
-#. js-lingui-explicit-id
-msgid "System languages"
-msgstr "Systemspråk"
-
-#: src/features/Lang/LanguageSwitcher.tsx:187
-#. js-lingui-explicit-id
-msgid "Languages"
-msgstr "Språk"
-
-#: src/features/Goal/GoalQuestions.tsx:422
-#: src/features/Lang/LanguageSwitcher.tsx:230
-#. js-lingui-explicit-id
-msgid "Language to Learn"
-msgstr "Språk att Lära"
-
-#: src/features/Dashboard/SelectLanguage.tsx:267
-#: src/features/Lang/LanguageSwitcher.tsx:269
-#. js-lingui-explicit-id
-msgid "Native Language"
-msgstr "Modersmål"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1190
-#: src/features/Lang/LanguageSwitcher.tsx:311
-#. js-lingui-explicit-id
-msgid "Page Language"
-msgstr "Sidans språk"
-
 #: src/features/Landing/WelcomeScreen.tsx:180
 #. js-lingui-explicit-id
 msgid "Start Speaking"
@@ -2309,6 +2300,245 @@ msgid ""
 msgstr ""
 "Låt inte misstag stoppa dig. Bygg flyt och självförtroende med daglig "
 "talövning, när du behöver det."
+
+#: src/features/Landing/PlanLandingBlock.tsx:195
+#. js-lingui-explicit-id
+msgid "Psychology"
+msgstr "Psykologi"
+
+#: src/features/Landing/PlanLandingBlock.tsx:196
+#. js-lingui-explicit-id
+msgid "Mental Health Vocabulary"
+msgstr "Mental Hälsa Ordförråd"
+
+#: src/features/Landing/PlanLandingBlock.tsx:198
+#. js-lingui-explicit-id
+msgid "Essential words for discussing mental health and psychology."
+msgstr "Viktiga ord för att diskutera mental hälsa och psykologi."
+
+#: src/features/Landing/PlanLandingBlock.tsx:204
+#. js-lingui-explicit-id
+msgid "Diagnosis"
+msgstr "Diagnos"
+
+#: src/features/Landing/PlanLandingBlock.tsx:205
+#. js-lingui-explicit-id
+msgid "Medical Talk Simulation"
+msgstr "Medicinsk Samtalssimulation"
+
+#: src/features/Landing/PlanLandingBlock.tsx:207
+#. js-lingui-explicit-id
+msgid "Practice medical conversations through simulated scenarios."
+msgstr "Öva på medicinska samtal genom simulerade scenarier."
+
+#: src/features/Landing/PlanLandingBlock.tsx:213
+#. js-lingui-explicit-id
+msgid "Reflex"
+msgstr "Reflex"
+
+#: src/features/Landing/PlanLandingBlock.tsx:214
+#. js-lingui-explicit-id
+msgid "Fast Answer Practice"
+msgstr "Snabbt Svarsövning"
+
+#: src/features/Landing/PlanLandingBlock.tsx:216
+#. js-lingui-explicit-id
+msgid "Improve your ability to answer quickly and clearly in conversations."
+msgstr "Förbättra din förmåga att snabbt och klart svara i konversationer."
+
+#: src/features/Landing/LandingPage.tsx:137
+#: src/features/Landing/PlanLandingBlock.tsx:222
+#. js-lingui-explicit-id
+msgid "Speaking"
+msgstr "Tala"
+
+#: src/features/Landing/PlanLandingBlock.tsx:223
+#. js-lingui-explicit-id
+msgid "Public Talk Skills"
+msgstr "Offentliga talferdigheter"
+
+#: src/features/Landing/PlanLandingBlock.tsx:225
+#. js-lingui-explicit-id
+msgid "Boost your confidence in public speaking."
+msgstr "Öka ditt självförtroende i offentligt talande."
+
+#: src/features/Landing/PlanLandingBlock.tsx:231
+#. js-lingui-explicit-id
+msgid "TOEFL"
+msgstr "TOEFL"
+
+#: src/features/Landing/PlanLandingBlock.tsx:232
+#. js-lingui-explicit-id
+msgid "Academic Word List"
+msgstr "Akademisk ordlista"
+
+#: src/features/Landing/PlanLandingBlock.tsx:234
+#. js-lingui-explicit-id
+msgid "Master high-frequency TOEFL vocabulary."
+msgstr "Behärska högfrekvent TOEFL-ordförråd."
+
+#: src/features/Landing/PlanLandingBlock.tsx:240
+#. js-lingui-explicit-id
+msgid "Mock"
+msgstr "Härmning"
+
+#: src/features/Landing/PlanLandingBlock.tsx:241
+#. js-lingui-explicit-id
+msgid "TOEFL Speaking Tasks"
+msgstr "TOEFL Talauppgifter"
+
+#: src/features/Landing/PlanLandingBlock.tsx:243
+#. js-lingui-explicit-id
+msgid "Simulate speaking tasks from the TOEFL exam."
+msgstr "Simulera taluppgifter från TOEFL-provet."
+
+#: src/features/Landing/LandingPage.tsx:147
+#: src/features/Landing/PlanLandingBlock.tsx:249
+#. js-lingui-explicit-id
+msgid "Grammar"
+msgstr "Grammatik"
+
+#: src/features/Landing/PlanLandingBlock.tsx:250
+#. js-lingui-explicit-id
+msgid "Advanced Academic Usage"
+msgstr "Avancerad Akademisk Användning"
+
+#: src/features/Landing/PlanLandingBlock.tsx:252
+#. js-lingui-explicit-id
+msgid "Learn grammar used in academic writing and speaking."
+msgstr "Lär dig grammatik som används i akademiskt skrivande och tal."
+
+#: src/features/Landing/PlanLandingBlock.tsx:259
+#. js-lingui-explicit-id
+msgid "Wellness"
+msgstr "Välbefinnande"
+
+#: src/features/Landing/PlanLandingBlock.tsx:260
+#. js-lingui-explicit-id
+msgid "Mental Health Talk"
+msgstr ""
+"Mental Health Talk\n"
+"\n"
+"Mentalt Hälsosamtal"
+
+#: src/features/Landing/PlanLandingBlock.tsx:262
+#. js-lingui-explicit-id
+msgid "Explore techniques to talk about wellness and mental well-being."
+msgstr "Utforska tekniker för att prata om välbefinnande och mental hälsa."
+
+#: src/features/Landing/PlanLandingBlock.tsx:268
+#. js-lingui-explicit-id
+msgid "Essays"
+msgstr "Uppsatsar"
+
+#: src/features/Landing/PlanLandingBlock.tsx:269
+#. js-lingui-explicit-id
+msgid "Formal Writing Practice"
+msgstr "Formell Skrivövning"
+
+#: src/features/Landing/PlanLandingBlock.tsx:271
+#. js-lingui-explicit-id
+msgid "Develop formal writing skills for academic success."
+msgstr "Utveckla formella skrivfärdigheter för akademisk framgång."
+
+#: src/features/Dashboard/ConversationSelectCard.tsx:109
+#: src/features/Dashboard/PlanDashboardCards.tsx:98
+#: src/features/Goal/Quiz/QuizPage2.tsx:335
+#: src/features/Landing/PlanLandingBlock.tsx:278
+#. js-lingui-explicit-id
+msgid "Conversation"
+msgstr "Konversation"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:101
+#: src/features/Goal/Quiz/QuizPage2.tsx:338
+#: src/features/Landing/PlanLandingBlock.tsx:281
+#. js-lingui-explicit-id
+msgid "Rule"
+msgstr "Regel"
+
+#: src/features/Landing/PlanLandingBlock.tsx:351
+#. js-lingui-explicit-id
+msgid "How It Works"
+msgstr "Hur det fungerar"
+
+#: src/features/Landing/PlanLandingBlock.tsx:365
+#. js-lingui-explicit-id
+msgid "From Onboarding to Confidence"
+msgstr "Från Ombordstigning till Självförtroende"
+
+#: src/features/Landing/PlanLandingBlock.tsx:424
+#. js-lingui-explicit-id
+msgid "Step 1"
+msgstr "Steg 1"
+
+#: src/features/Landing/PlanLandingBlock.tsx:425
+#. js-lingui-explicit-id
+msgid "Smart Start"
+msgstr "Smart Start"
+
+#: src/features/Landing/PlanLandingBlock.tsx:426
+#. js-lingui-explicit-id
+msgid ""
+"Fill out a onboarding quiz to help FluencyPal understand your goals and "
+"preferences."
+msgstr ""
+"Fyll i en introduktionsquiz för att hjälpa FluencyPal att förstå dina mål "
+"och preferenser."
+
+#: src/features/Landing/PlanLandingBlock.tsx:461
+#. js-lingui-explicit-id
+msgid "Step 2"
+msgstr "Steg 2"
+
+#: src/features/Landing/PlanLandingBlock.tsx:462
+#. js-lingui-explicit-id
+msgid "Personal Plan"
+msgstr "Personlig Plan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:463
+#. js-lingui-explicit-id
+msgid ""
+"Based on your onboarding, FluencyPal instantly generates a custom learning "
+"plan just for you."
+msgstr ""
+"Baserat på din introduktion skapar FluencyPal omedelbart en anpassad "
+"inlärningsplan bara för dig."
+
+#: src/features/Goal/GoalQuestions.tsx:1095
+#: src/features/Landing/PlanLandingBlock.tsx:467
+#. js-lingui-explicit-id
+msgid "Create a plan"
+msgstr "Skapa en plan"
+
+#: src/features/Landing/PlanLandingBlock.tsx:616
+#. js-lingui-explicit-id
+msgid "Step 3"
+msgstr "Steg 3"
+
+#: src/features/Landing/PlanLandingBlock.tsx:618
+#. js-lingui-explicit-id
+msgid ""
+"Jump into your tailored learning path and build real skills through "
+"engaging practice with AI voice chat."
+msgstr ""
+"Hoppa in i din skräddarsydda inlärningsväg och bygg verkliga färdigheter "
+"genom engagerande övning med AI-röstchatt."
+
+#: src/features/Landing/PlanLandingBlock.tsx:621
+#. js-lingui-explicit-id
+msgid "3 days free"
+msgstr "3 dagar gratis"
+
+#: src/features/Landing/PlanLandingBlock.tsx:648
+#. js-lingui-explicit-id
+msgid "Results are closer than you think"
+msgstr "Resultaten är närmare än du tror"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:466
+#: src/features/Landing/PlanLandingBlock.tsx:661
+#. js-lingui-explicit-id
+msgid "Start Learning"
+msgstr "Börja Lära Dig"
 
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
@@ -2460,12 +2690,6 @@ msgstr ""
 "ordförråd och framstegsövervakning—för att uppnå engelsk flyt online "
 "snabbare."
 
-#: src/features/Landing/LandingPage.tsx:137
-#: src/features/Landing/PlanLandingBlock.tsx:222
-#. js-lingui-explicit-id
-msgid "Speaking"
-msgstr "Tala"
-
 #: src/features/Landing/LandingPage.tsx:138
 #. js-lingui-explicit-id
 msgid "Achieve Speaking Fluency Fast"
@@ -2486,12 +2710,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Start Speaking Practice"
 msgstr "Starta talövning"
-
-#: src/features/Landing/LandingPage.tsx:147
-#: src/features/Landing/PlanLandingBlock.tsx:249
-#. js-lingui-explicit-id
-msgid "Grammar"
-msgstr "Grammatik"
 
 #: src/features/Landing/LandingPage.tsx:148
 #. js-lingui-explicit-id
@@ -2656,233 +2874,6 @@ msgstr "Lär dig var som helst, när som helst"
 msgid "Start Your Free Trial"
 msgstr "Börja din gratis provperiod"
 
-#: src/features/Landing/PlanLandingBlock.tsx:195
-#. js-lingui-explicit-id
-msgid "Psychology"
-msgstr "Psykologi"
-
-#: src/features/Landing/PlanLandingBlock.tsx:196
-#. js-lingui-explicit-id
-msgid "Mental Health Vocabulary"
-msgstr "Mental Hälsa Ordförråd"
-
-#: src/features/Landing/PlanLandingBlock.tsx:198
-#. js-lingui-explicit-id
-msgid "Essential words for discussing mental health and psychology."
-msgstr "Viktiga ord för att diskutera mental hälsa och psykologi."
-
-#: src/features/Landing/PlanLandingBlock.tsx:204
-#. js-lingui-explicit-id
-msgid "Diagnosis"
-msgstr "Diagnos"
-
-#: src/features/Landing/PlanLandingBlock.tsx:205
-#. js-lingui-explicit-id
-msgid "Medical Talk Simulation"
-msgstr "Medicinsk Samtalssimulation"
-
-#: src/features/Landing/PlanLandingBlock.tsx:207
-#. js-lingui-explicit-id
-msgid "Practice medical conversations through simulated scenarios."
-msgstr "Öva på medicinska samtal genom simulerade scenarier."
-
-#: src/features/Landing/PlanLandingBlock.tsx:213
-#. js-lingui-explicit-id
-msgid "Reflex"
-msgstr "Reflex"
-
-#: src/features/Landing/PlanLandingBlock.tsx:214
-#. js-lingui-explicit-id
-msgid "Fast Answer Practice"
-msgstr "Snabbt Svarsövning"
-
-#: src/features/Landing/PlanLandingBlock.tsx:216
-#. js-lingui-explicit-id
-msgid "Improve your ability to answer quickly and clearly in conversations."
-msgstr "Förbättra din förmåga att snabbt och klart svara i konversationer."
-
-#: src/features/Landing/PlanLandingBlock.tsx:223
-#. js-lingui-explicit-id
-msgid "Public Talk Skills"
-msgstr "Offentliga talferdigheter"
-
-#: src/features/Landing/PlanLandingBlock.tsx:225
-#. js-lingui-explicit-id
-msgid "Boost your confidence in public speaking."
-msgstr "Öka ditt självförtroende i offentligt talande."
-
-#: src/features/Landing/PlanLandingBlock.tsx:231
-#. js-lingui-explicit-id
-msgid "TOEFL"
-msgstr "TOEFL"
-
-#: src/features/Landing/PlanLandingBlock.tsx:232
-#. js-lingui-explicit-id
-msgid "Academic Word List"
-msgstr "Akademisk ordlista"
-
-#: src/features/Landing/PlanLandingBlock.tsx:234
-#. js-lingui-explicit-id
-msgid "Master high-frequency TOEFL vocabulary."
-msgstr "Behärska högfrekvent TOEFL-ordförråd."
-
-#: src/features/Landing/PlanLandingBlock.tsx:240
-#. js-lingui-explicit-id
-msgid "Mock"
-msgstr "Härmning"
-
-#: src/features/Landing/PlanLandingBlock.tsx:241
-#. js-lingui-explicit-id
-msgid "TOEFL Speaking Tasks"
-msgstr "TOEFL Talauppgifter"
-
-#: src/features/Landing/PlanLandingBlock.tsx:243
-#. js-lingui-explicit-id
-msgid "Simulate speaking tasks from the TOEFL exam."
-msgstr "Simulera taluppgifter från TOEFL-provet."
-
-#: src/features/Landing/PlanLandingBlock.tsx:250
-#. js-lingui-explicit-id
-msgid "Advanced Academic Usage"
-msgstr "Avancerad Akademisk Användning"
-
-#: src/features/Landing/PlanLandingBlock.tsx:252
-#. js-lingui-explicit-id
-msgid "Learn grammar used in academic writing and speaking."
-msgstr "Lär dig grammatik som används i akademiskt skrivande och tal."
-
-#: src/features/Landing/PlanLandingBlock.tsx:259
-#. js-lingui-explicit-id
-msgid "Wellness"
-msgstr "Välbefinnande"
-
-#: src/features/Landing/PlanLandingBlock.tsx:260
-#. js-lingui-explicit-id
-msgid "Mental Health Talk"
-msgstr ""
-"Mental Health Talk\n"
-"\n"
-"Mentalt Hälsosamtal"
-
-#: src/features/Landing/PlanLandingBlock.tsx:262
-#. js-lingui-explicit-id
-msgid "Explore techniques to talk about wellness and mental well-being."
-msgstr "Utforska tekniker för att prata om välbefinnande och mental hälsa."
-
-#: src/features/Landing/PlanLandingBlock.tsx:268
-#. js-lingui-explicit-id
-msgid "Essays"
-msgstr "Uppsatsar"
-
-#: src/features/Landing/PlanLandingBlock.tsx:269
-#. js-lingui-explicit-id
-msgid "Formal Writing Practice"
-msgstr "Formell Skrivövning"
-
-#: src/features/Landing/PlanLandingBlock.tsx:271
-#. js-lingui-explicit-id
-msgid "Develop formal writing skills for academic success."
-msgstr "Utveckla formella skrivfärdigheter för akademisk framgång."
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:109
-#: src/features/Dashboard/PlanDashboardCards.tsx:98
-#: src/features/Goal/Quiz/QuizPage2.tsx:335
-#: src/features/Landing/PlanLandingBlock.tsx:278
-#. js-lingui-explicit-id
-msgid "Conversation"
-msgstr "Konversation"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:338
-#: src/features/Landing/PlanLandingBlock.tsx:281
-#. js-lingui-explicit-id
-msgid "Rule"
-msgstr "Regel"
-
-#: src/features/Landing/PlanLandingBlock.tsx:351
-#. js-lingui-explicit-id
-msgid "How It Works"
-msgstr "Hur det fungerar"
-
-#: src/features/Landing/PlanLandingBlock.tsx:365
-#. js-lingui-explicit-id
-msgid "From Onboarding to Confidence"
-msgstr "Från Ombordstigning till Självförtroende"
-
-#: src/features/Landing/PlanLandingBlock.tsx:424
-#. js-lingui-explicit-id
-msgid "Step 1"
-msgstr "Steg 1"
-
-#: src/features/Landing/PlanLandingBlock.tsx:425
-#. js-lingui-explicit-id
-msgid "Smart Start"
-msgstr "Smart Start"
-
-#: src/features/Landing/PlanLandingBlock.tsx:426
-#. js-lingui-explicit-id
-msgid ""
-"Fill out a onboarding quiz to help FluencyPal understand your goals and "
-"preferences."
-msgstr ""
-"Fyll i en introduktionsquiz för att hjälpa FluencyPal att förstå dina mål "
-"och preferenser."
-
-#: src/features/Landing/PlanLandingBlock.tsx:461
-#. js-lingui-explicit-id
-msgid "Step 2"
-msgstr "Steg 2"
-
-#: src/features/Landing/PlanLandingBlock.tsx:462
-#. js-lingui-explicit-id
-msgid "Personal Plan"
-msgstr "Personlig Plan"
-
-#: src/features/Landing/PlanLandingBlock.tsx:463
-#. js-lingui-explicit-id
-msgid ""
-"Based on your onboarding, FluencyPal instantly generates a custom learning "
-"plan just for you."
-msgstr ""
-"Baserat på din introduktion skapar FluencyPal omedelbart en anpassad "
-"inlärningsplan bara för dig."
-
-#: src/features/Goal/GoalQuestions.tsx:1095
-#: src/features/Landing/PlanLandingBlock.tsx:467
-#. js-lingui-explicit-id
-msgid "Create a plan"
-msgstr "Skapa en plan"
-
-#: src/features/Landing/PlanLandingBlock.tsx:616
-#. js-lingui-explicit-id
-msgid "Step 3"
-msgstr "Steg 3"
-
-#: src/features/Landing/PlanLandingBlock.tsx:618
-#. js-lingui-explicit-id
-msgid ""
-"Jump into your tailored learning path and build real skills through "
-"engaging practice with AI voice chat."
-msgstr ""
-"Hoppa in i din skräddarsydda inlärningsväg och bygg verkliga färdigheter "
-"genom engagerande övning med AI-röstchatt."
-
-#: src/features/Landing/PlanLandingBlock.tsx:621
-#. js-lingui-explicit-id
-msgid "3 days free"
-msgstr "3 dagar gratis"
-
-#: src/features/Landing/PlanLandingBlock.tsx:648
-#. js-lingui-explicit-id
-msgid "Results are closer than you think"
-msgstr "Resultaten är närmare än du tror"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:466
-#: src/features/Landing/PlanLandingBlock.tsx:661
-#. js-lingui-explicit-id
-msgid "Start Learning"
-msgstr "Börja Lära Dig"
-
 #: src/features/Landing/Footer.tsx:85
 #. js-lingui-explicit-id
 msgid "Role-Play"
@@ -2900,6 +2891,13 @@ msgstr "Blogg"
 #. js-lingui-explicit-id
 msgid "Price"
 msgstr "Pris"
+
+#: src/features/Blog/BlogsPage.tsx:41
+#: src/features/Landing/Price/PricePage.tsx:971
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
+#. js-lingui-explicit-id
+msgid "Start Your Journey to Fluent Conversations Now"
+msgstr "Börja din resa mot flytande konversationer nu"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
@@ -2971,6 +2969,36 @@ msgstr "Redo att bli flytande i engelska?"
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Försök"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "Öva på verkliga konversationer med rollspelscenarier"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
+msgstr ""
+"Beställ mat, schemalägg möten, lyckas på anställningsintervjuer och "
+"mer—allt med vägledning från din AI-lärare."
+
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
+#. js-lingui-explicit-id
+msgid "Role Play Scenarios"
+msgstr "Rollspelsscenarier"
+
+#: src/features/Blog/ListBlog.tsx:72
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
+#. js-lingui-explicit-id
+msgid "Discover"
+msgstr "Upptäck"
+
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
+#. js-lingui-explicit-id
+msgid "No scenarios found"
+msgstr "Inga scenarier hittades"
 
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
@@ -3366,42 +3394,27 @@ msgstr ""
 msgid "Contacts:"
 msgstr "Kontakter:"
 
-#: src/features/Blog/BlogsPage.tsx:41
-#: src/features/Landing/Price/PricePage.tsx:971
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
-#. js-lingui-explicit-id
-msgid "Start Your Journey to Fluent Conversations Now"
-msgstr "Börja din resa mot flytande konversationer nu"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "Öva på verkliga konversationer med rollspelscenarier"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#: src/features/Landing/Contact/ContactsPage.tsx:104
 #. js-lingui-explicit-id
 msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
+"My name is Alex, I am the creator of this website. I am a software engineer "
+"and I am passionate about learning languages. I created this website to "
+"help people learn languages in a fun and interactive way. I hope you enjoy "
+"using it!"
 msgstr ""
-"Beställ mat, schemalägg möten, lyckas på anställningsintervjuer och "
-"mer—allt med vägledning från din AI-lärare."
+"Mitt namn är Alex, jag är skaparen av denna webbplats. Jag är en "
+"mjukvaruingenjör och jag brinner för att lära mig språk. Jag skapade denna "
+"webbplats för att hjälpa människor att lära sig språk på ett roligt och "
+"interaktivt sätt. Jag hoppas att du gillar att använda den!"
 
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
+#: src/features/Landing/Contact/ContactsPage.tsx:117
 #. js-lingui-explicit-id
-msgid "Role Play Scenarios"
-msgstr "Rollspelsscenarier"
-
-#: src/features/Blog/ListBlog.tsx:72
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
-#. js-lingui-explicit-id
-msgid "Discover"
-msgstr "Upptäck"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
-#. js-lingui-explicit-id
-msgid "No scenarios found"
-msgstr "Inga scenarier hittades"
+msgid ""
+"Feel free to reach out to me with any questions or feedback. I'm always "
+"happy to help!"
+msgstr ""
+"Känn dig fri att kontakta mig med eventuella frågor eller feedback. Jag "
+"hjälper gärna till!"
 
 #: src/features/Header/NeedHelpModal.tsx:69
 #: src/features/Header/NeedHelpModal.tsx:212
@@ -3483,27 +3496,6 @@ msgstr "Ta bort konto (Totalt)"
 msgid "Delete account"
 msgstr "Radera konto"
 
-#: src/features/Header/ContactMessageModal.tsx:37
-#. js-lingui-explicit-id
-msgid "Failed to send feedback. Please try again later."
-msgstr "Misslyckades med att skicka feedback. Försök igen senare."
-
-#: src/features/Header/ContactMessageModal.tsx:42
-#. js-lingui-explicit-id
-msgid "Thank you for your feedback!"
-msgstr "Tack för din feedback!"
-
-#: src/features/Header/ContactMessageModal.tsx:116
-#. js-lingui-explicit-id
-msgid "Sending..."
-msgstr "Skickar..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1063
-#: src/features/Header/ContactMessageModal.tsx:116
-#. js-lingui-explicit-id
-msgid "Send"
-msgstr "Skicka"
-
 #: src/features/Header/PaymentHistoryModal.tsx:21
 #. js-lingui-explicit-id
 msgid "Trial balance"
@@ -3529,44 +3521,6 @@ msgstr "Prenumeration (1 månad)"
 msgid "Trial days"
 msgstr "Provdagar"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:104
-#. js-lingui-explicit-id
-msgid ""
-"My name is Alex, I am the creator of this website. I am a software engineer "
-"and I am passionate about learning languages. I created this website to "
-"help people learn languages in a fun and interactive way. I hope you enjoy "
-"using it!"
-msgstr ""
-"Mitt namn är Alex, jag är skaparen av denna webbplats. Jag är en "
-"mjukvaruingenjör och jag brinner för att lära mig språk. Jag skapade denna "
-"webbplats för att hjälpa människor att lära sig språk på ett roligt och "
-"interaktivt sätt. Jag hoppas att du gillar att använda den!"
-
-#: src/features/Landing/Contact/ContactsPage.tsx:117
-#. js-lingui-explicit-id
-msgid ""
-"Feel free to reach out to me with any questions or feedback. I'm always "
-"happy to help!"
-msgstr ""
-"Känn dig fri att kontakta mig med eventuella frågor eller feedback. Jag "
-"hjälper gärna till!"
-
-#: src/features/Header/HeaderStatic.tsx:17
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "Rollspel"
-
-#: src/features/Header/HeaderStatic.tsx:20
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "Logga in"
-
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:22
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "Behöver du hjälp?"
-
 #: src/features/Header/HeaderPractice.tsx:202
 #. js-lingui-explicit-id
 msgid "Finishing..."
@@ -3583,6 +3537,43 @@ msgstr "Tillbaka"
 #. js-lingui-explicit-id
 msgid "Payment history"
 msgstr "Betalningshistorik"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:22
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "Behöver du hjälp?"
+
+#: src/features/Header/HeaderStatic.tsx:17
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "Rollspel"
+
+#: src/features/Header/HeaderStatic.tsx:20
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "Logga in"
+
+#: src/features/Header/ContactMessageModal.tsx:37
+#. js-lingui-explicit-id
+msgid "Failed to send feedback. Please try again later."
+msgstr "Misslyckades med att skicka feedback. Försök igen senare."
+
+#: src/features/Header/ContactMessageModal.tsx:42
+#. js-lingui-explicit-id
+msgid "Thank you for your feedback!"
+msgstr "Tack för din feedback!"
+
+#: src/features/Header/ContactMessageModal.tsx:116
+#. js-lingui-explicit-id
+msgid "Sending..."
+msgstr "Skickar..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1063
+#: src/features/Header/ContactMessageModal.tsx:116
+#. js-lingui-explicit-id
+msgid "Send"
+msgstr "Skicka"
 
 #: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
@@ -4212,20 +4203,39 @@ msgstr "Betyg:"
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Ranka bland de topp 5 för att få appen gratis"
 
-#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#: src/features/Game/GameOnboarding.tsx:52
 #. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "Ditt modersmål:"
+msgid "Learn and Play"
+msgstr "Lär och Spela"
 
-#: src/features/Game/GameMyUsername.tsx:34
+#: src/features/Game/GameOnboarding.tsx:61
 #. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "Användarnamnet måste vara minst 3 tecken långt."
+msgid "Describe images, craft sentences, and translate words"
+msgstr "Beskriv bilder, formulera meningar och översätt ord"
 
-#: src/features/Game/GameMyUsername.tsx:53
+#: src/features/Game/GameOnboarding.tsx:105
 #. js-lingui-explicit-id
-msgid "Game username:"
-msgstr "Spelarnamn:"
+msgid "You have a chance"
+msgstr "Du har en chans"
+
+#: src/features/Game/GameOnboarding.tsx:114
+#. js-lingui-explicit-id
+msgid ""
+"Each day, we remove 3 points from everyone so that everyone has a fair "
+"chance to win."
+msgstr ""
+"Varje dag tar vi bort 3 poäng från alla så att alla har en rättvis chans "
+"att vinna."
+
+#: src/features/Game/GameOnboarding.tsx:151
+#. js-lingui-explicit-id
+msgid "Let’s make sure you’re ready"
+msgstr "Låt oss se till att du är redo"
+
+#: src/features/Game/GameOnboarding.tsx:162
+#. js-lingui-explicit-id
+msgid "Your Avatar:"
+msgstr "Din Avatar:"
 
 #: src/features/Game/GameMyAvatar.tsx:26
 #. js-lingui-explicit-id
@@ -4237,10 +4247,35 @@ msgstr "Avatar"
 msgid "Select your game avatar"
 msgstr "Välj din spelavatar"
 
+#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "Ditt modersmål:"
+
 #: src/features/Game/GameBadge.tsx:75
 #. js-lingui-explicit-id
 msgid "Play and Learn"
 msgstr "Spela och Lär"
+
+#: src/features/Game/GameMyUsername.tsx:34
+#. js-lingui-explicit-id
+msgid "Username must be at least 3 characters long."
+msgstr "Användarnamnet måste vara minst 3 tecken långt."
+
+#: src/features/Game/GameMyUsername.tsx:53
+#. js-lingui-explicit-id
+msgid "Game username:"
+msgstr "Spelarnamn:"
+
+#: src/features/Game/GameMyUsername.tsx:76
+#. js-lingui-explicit-id
+msgid "Username is already taken"
+msgstr "Användarnamnet är redan taget"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Translate the word"
+msgstr "Översätt ordet"
 
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
 #. js-lingui-explicit-id
@@ -4276,17 +4311,6 @@ msgstr "Fel:"
 msgid "Form a sentence"
 msgstr "Formulera en mening"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "Översätt ordet"
-
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
-#. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "Beskriv bilden"
-
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
 #. js-lingui-explicit-id
 msgid "Read the text"
@@ -4309,40 +4333,6 @@ msgstr "Skicka"
 msgid "Error:"
 msgstr "Fel:"
 
-#: src/features/Game/GameOnboarding.tsx:52
-#. js-lingui-explicit-id
-msgid "Learn and Play"
-msgstr "Lär och Spela"
-
-#: src/features/Game/GameOnboarding.tsx:61
-#. js-lingui-explicit-id
-msgid "Describe images, craft sentences, and translate words"
-msgstr "Beskriv bilder, formulera meningar och översätt ord"
-
-#: src/features/Game/GameOnboarding.tsx:105
-#. js-lingui-explicit-id
-msgid "You have a chance"
-msgstr "Du har en chans"
-
-#: src/features/Game/GameOnboarding.tsx:114
-#. js-lingui-explicit-id
-msgid ""
-"Each day, we remove 3 points from everyone so that everyone has a fair "
-"chance to win."
-msgstr ""
-"Varje dag tar vi bort 3 poäng från alla så att alla har en rättvis chans "
-"att vinna."
-
-#: src/features/Game/GameOnboarding.tsx:151
-#. js-lingui-explicit-id
-msgid "Let’s make sure you’re ready"
-msgstr "Låt oss se till att du är redo"
-
-#: src/features/Game/GameOnboarding.tsx:162
-#. js-lingui-explicit-id
-msgid "Your Avatar:"
-msgstr "Din Avatar:"
-
 #: src/features/Dashboard/WordsToLearn.tsx:32
 #. js-lingui-explicit-id
 msgid "New words to practice."
@@ -4358,44 +4348,6 @@ msgstr "Börja öva"
 #. js-lingui-explicit-id
 msgid "I know all of them"
 msgstr "Jag känner till dem alla"
-
-#: src/features/Dashboard/TasksCard.tsx:39
-#. js-lingui-explicit-id
-msgid "Daily Tasks"
-msgstr "Dagliga uppgifter"
-
-#: src/features/Dashboard/TasksCard.tsx:51
-#. js-lingui-explicit-id
-msgid "Rule of the day"
-msgstr "Regel för dagen"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:152
-#: src/features/Dashboard/TasksCard.tsx:52
-#. js-lingui-explicit-id
-msgid "Get a personal grammar rule to learn"
-msgstr "Få en personlig grammatiksregel att lära dig"
-
-#: src/features/Dashboard/TasksCard.tsx:56
-#: src/features/Dashboard/TasksCard.tsx:64
-#. js-lingui-explicit-id
-msgid "Complete previous tasks first"
-msgstr "Slutför tidigare uppgifter först"
-
-#: src/features/Dashboard/TasksCard.tsx:61
-#. js-lingui-explicit-id
-msgid "New words"
-msgstr "Nya ord"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:173
-#: src/features/Dashboard/TasksCard.tsx:62
-#. js-lingui-explicit-id
-msgid "Practice new vocabulary with the AI"
-msgstr "Öva på nya ord med AI:n"
-
-#: src/features/Dashboard/RulesToLearn.tsx:36
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "Ny regel att öva på."
 
 #: src/features/Dashboard/SelectLanguage.tsx:143
 #. js-lingui-explicit-id
@@ -4416,6 +4368,11 @@ msgstr "Lära sig"
 #. js-lingui-explicit-id
 msgid "Page"
 msgstr "Sida"
+
+#: src/features/Dashboard/RulesToLearn.tsx:36
+#. js-lingui-explicit-id
+msgid "New rule to practice."
+msgstr "Ny regel att öva på."
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:84
 #. js-lingui-explicit-id
@@ -4562,15 +4519,42 @@ msgstr "Guida mig"
 msgid "Rules"
 msgstr "Regler"
 
+#: src/features/Dashboard/ConversationSelectCard.tsx:152
+#: src/features/Dashboard/TasksCard.tsx:52
+#. js-lingui-explicit-id
+msgid "Get a personal grammar rule to learn"
+msgstr "Få en personlig grammatiksregel att lära dig"
+
 #: src/features/Dashboard/ConversationSelectCard.tsx:168
 #. js-lingui-explicit-id
 msgid "Get a rule"
 msgstr "Få en regel"
 
+#: src/features/Dashboard/ConversationSelectCard.tsx:173
+#: src/features/Dashboard/TasksCard.tsx:62
+#. js-lingui-explicit-id
+msgid "Practice new vocabulary with the AI"
+msgstr "Öva på nya ord med AI:n"
+
 #: src/features/Dashboard/ConversationSelectCard.tsx:189
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "Utöka ordförrådet"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
+#. js-lingui-explicit-id
+msgid "Progress Calendar"
+msgstr "Framstegskalender"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
+#. js-lingui-explicit-id
+msgid "Less"
+msgstr "Mindre"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
+#. js-lingui-explicit-id
+msgid "More"
+msgstr "Mer"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4674,21 +4658,6 @@ msgstr "Förbereder hjärnan"
 msgid "Upload language skills directly to your brain"
 msgstr "Ladda upp språkkunskaper direkt till din hjärna"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
-#. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "Framstegskalender"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "Mindre"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "Mer"
-
 #: src/features/Conversation/useConversationsAnalysis.ts:89
 #: src/features/Conversation/useConversationsAnalysis.ts:132
 #. js-lingui-explicit-id
@@ -4729,28 +4698,6 @@ msgstr "Skapa nya ord..."
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "Skapa ny regel..."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:33
-#. js-lingui-explicit-id
-msgid "Ready?"
-msgstr "Redo?"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Next, please allow access to the microphone to communicate with the AI."
-msgstr ""
-"Nästa steg, vänligen tillåt åtkomst till mikrofonen för att kommunicera med "
-"AI:n."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:69
-#. js-lingui-explicit-id
-msgid "Yes, I am ready"
-msgstr "Ja, jag är redo"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:73
-#. js-lingui-explicit-id
-msgid "No"
-msgstr "Nej"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:360
 #. js-lingui-explicit-id
@@ -4932,20 +4879,6 @@ msgstr "Lågt saldo"
 msgid "Top up"
 msgstr "Fyll på"
 
-#: src/features/Blog/ListBlogIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "Läs och lär med min blogg"
-
-#: src/features/Blog/ListBlogIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr ""
-"Bli inspirerad och lär dig om de senaste trenderna inom språkinlärning, "
-"undervisning och teknik."
-
 #: src/features/Conversation/AliasGamePanel.tsx:122
 #. js-lingui-explicit-id
 msgid "Describe these words:"
@@ -4961,480 +4894,19 @@ msgstr "Fler alternativ"
 msgid "Guessed words:"
 msgstr "Gissade ord:"
 
-#: src/features/Blog/BlogCard.tsx:168
+#: src/features/Blog/ListBlogIntro.tsx:66
 #. js-lingui-explicit-id
-msgid "Read more"
-msgstr "Läs mer"
+msgid "Read and Learn with my blog"
+msgstr "Läs och lär med min blogg"
 
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "Visa alla inlägg"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "Rollspelsscenarier att öva på"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "Du kan testa AI i aktion nu"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "Prova gratis"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
-#. js-lingui-explicit-id
-msgid "At the end, we’ll share a valuable tool for realistic interview practice."
-msgstr ""
-"I slutet kommer vi att dela ett värdefullt verktyg för realistisk "
-"intervjuträning."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
-#. js-lingui-explicit-id
-msgid "Introduction: Small Talk with the Interviewer"
-msgstr "Introduktion: Small Talk med Intervjuaren"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
+#: src/features/Blog/ListBlogIntro.tsx:77
 #. js-lingui-explicit-id
 msgid ""
-"The first few minutes of an interview are often dedicated to casual "
-"conversation — also known as 'SmallTalk'. Recruiters use this time to "
-"create a friendly atmosphere and get to know you a bit better."
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
 msgstr ""
-"De första minuterna av en intervju ägnas ofta åt vardagligt samtal - också "
-"känt som 'SmallTalk'. Rekryterare använder denna tid till att skapa en "
-"vänlig atmosfär och lära känna dig lite bättre."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
-#. js-lingui-explicit-id
-msgid "Don’t skip small talk"
-msgstr "Hoppa inte över småpratet"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
-#. js-lingui-explicit-id
-msgid ""
-"— it’s important to engage in this short conversation before jumping into "
-"professional topics. Here are some useful English phrases to start off the "
-"interview:"
-msgstr ""
-"— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
-"yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
-"intervjun:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
-#. js-lingui-explicit-id
-msgid "English Phrases"
-msgstr "Engelska Fraser"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
-#. js-lingui-explicit-id
-msgid "A polite and professional greeting."
-msgstr "En artig och professionell hälsning."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
-#. js-lingui-explicit-id
-msgid "Expressing gratitude for the opportunity."
-msgstr "Uttrycka tacksamhet för möjligheten."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
-#. js-lingui-explicit-id
-msgid "A standard reply to “How are you?”"
-msgstr "Ett standard svar på \"Hur mår du?\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
-#. js-lingui-explicit-id
-msgid "A friendly compliment to break the ice."
-msgstr "En vänlig komplimang för att bryta isen."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
-#. js-lingui-explicit-id
-msgid ""
-"Smile, shake hands (if culturally appropriate), and speak in a friendly "
-"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
-"might say:"
-msgstr ""
-"Le, skaka hand (om det är kulturellt passande), och tala i en vänlig ton. "
-"Om intervjuaren frågar, \"Hade du några problem med att hitta oss?\" kan du "
-"säga:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
-#. js-lingui-explicit-id
-msgid ""
-"Short answers with a positive attitude show that you’re easy to talk to and "
-"open to dialogue."
-msgstr ""
-"Korta svar med en positiv attityd visar att du är lätt att prata med och "
-"öppen för dialog."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
-#. js-lingui-explicit-id
-msgid "Self-Introduction: Talking About Yourself"
-msgstr "Självintroduktion: Att prata om dig själv"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
-#. js-lingui-explicit-id
-msgid "After the greeting, you'll usually hear:"
-msgstr "Efter hälsningen hör du vanligtvis:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
-#. js-lingui-explicit-id
-msgid ""
-"This is your chance to introduce your experience and skills. Don’t list "
-"your full biography — focus on the highlights of your professional "
-"background. A good answer structure in English might look like this:"
-msgstr ""
-"Det här är din chans att presentera din erfarenhet och dina färdigheter. "
-"Lista inte din fullständiga biografi - fokusera på höjdpunkterna i din "
-"professionella bakgrund. En bra svarstruktur på engelska kan se ut så här:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
-#. js-lingui-explicit-id
-msgid "For example:"
-msgstr "Till exempel:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
-#. js-lingui-explicit-id
-msgid ""
-"Keep your answer focused: current or last position, a key achievement, and "
-"your interest in the company. Practice your self-introduction so you sound "
-msgstr ""
-"Håll ditt svar fokuserat: nuvarande eller senaste position, en "
-"nyckelbedrift och ditt intresse för företaget. Träna på din "
-"självintroduktion så att du låter"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
-#. js-lingui-explicit-id
-msgid "natural and not robotic"
-msgstr "naturlig och inte robotisk"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
-#. js-lingui-explicit-id
-msgid "Useful Phrases for Self-Introduction"
-msgstr "Användbara fraser för självintroduktion"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
-#. js-lingui-explicit-id
-msgid ""
-"Use these templates to craft your own story. Don’t forget to mention an "
-"achievement:"
-msgstr ""
-"Använd dessa mallar för att skapa din egen berättelse. Glöm inte att nämna "
-"en prestation:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
-#. js-lingui-explicit-id
-msgid "This shows results and makes you stand out."
-msgstr "Detta visar resultat och får dig att sticka ut."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
-#. js-lingui-explicit-id
-msgid "Answering Typical Interview Questions"
-msgstr "Svara på Typiska Intervjufrågor"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
-#. js-lingui-explicit-id
-msgid ""
-"Recruiters ask a variety of standard questions to understand your "
-"motivation and personality. Preparing answers in advance will help you stay "
-"calm and articulate. Focus on showing enthusiasm and confidence in your "
-"skills. Let’s look at some common questions and how to answer them:"
-msgstr ""
-"Rekryterare ställer en mängd standardfrågor för att förstå din motivation "
-"och personlighet. Att förbereda svar i förväg hjälper dig att förbli lugn "
-"och artikulerad. Fokusera på att visa entusiasm och självförtroende i dina "
-"färdigheter. Låt oss titta på några vanliga frågor och hur man svarar på "
-"dem:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
-#. js-lingui-explicit-id
-msgid "Show knowledge of the company and genuine interest. For example:"
-msgstr "Visa kunskap om företaget och äkta intresse. Till exempel:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
-#. js-lingui-explicit-id
-msgid "Highlight your strengths relevant to the role:"
-msgstr "Markera dina styrkor relevanta för rollen:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
-#. js-lingui-explicit-id
-msgid "Show your long-term goals:"
-msgstr "Visa dina långsiktiga mål:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
-#. js-lingui-explicit-id
-msgid "Other common questions include:"
-msgstr "Andra vanliga frågor inkluderar:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
-#. js-lingui-explicit-id
-msgid "Prepare short, honest, and positive answers with real-life examples."
-msgstr "Förbered korta, ärliga och positiva svar med verkliga exempel."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
-#. js-lingui-explicit-id
-msgid "If you don’t understand a question, don’t panic — ask politely:"
-msgstr "Om du inte förstår en fråga, bli inte panik - fråga artigt:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
-#. js-lingui-explicit-id
-msgid "Talking About Strengths and Weaknesses"
-msgstr "Pratar om Styrkor och Svagheter"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
-#. js-lingui-explicit-id
-msgid ""
-"Most interviews include the classic “strengths and weaknesses” question. "
-"It’s especially important to handle this well in English."
-msgstr ""
-"De flesta intervjuer inkluderar den klassiska \"styrkor och svagheter\" "
-"frågan. Det är särskilt viktigt att hantera detta väl på engelska."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
-#. js-lingui-explicit-id
-msgid "Strengths:"
-msgstr "Styrkor:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
-#. js-lingui-explicit-id
-msgid ""
-"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
-"examples. For instance:"
-msgstr ""
-"Välj 2–3 nyckelkvaliteter relevanta för jobbet. Undvik klichéer och ge "
-"exempel. Till exempel:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
-#. js-lingui-explicit-id
-msgid "Other useful strengths:"
-msgstr "Andra användbara styrkor:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
-#. js-lingui-explicit-id
-msgid "Weaknesses:"
-msgstr "Svagheter:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
-#. js-lingui-explicit-id
-msgid ""
-"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
-"mention a minor issue and how you’re working to improve it:"
-msgstr ""
-"Var ärlig men diplomatisk. Säg inte \"Jag har inga svagheter.\" Istället, "
-"nämn ett mindre problem och hur du arbetar för att förbättra det:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
-#. js-lingui-explicit-id
-msgid "This approach shows self-awareness and growth."
-msgstr "Denna strategi visar självmedvetenhet och tillväxt."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
-#. js-lingui-explicit-id
-msgid "Questions to Ask the Employer"
-msgstr "Frågor att Ställa till Arbetsgivaren"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
-#. js-lingui-explicit-id
-msgid "At the end of the interview, you’ll usually be asked:"
-msgstr "Vid slutet av intervjun brukar du oftast bli tillfrågad:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
-#. js-lingui-explicit-id
-msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
-msgstr "Säg aldrig \"nej\". Förbered 2-3 smarta frågor i förväg:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
-#. js-lingui-explicit-id
-msgid "Always respond politely:"
-msgstr "Svara alltid artigt:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
-#. js-lingui-explicit-id
-msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
-msgstr "Visa nyfikenhet och engagemang. Glöm inte att tacka dem för deras svar:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
-#. js-lingui-explicit-id
-msgid "Ending the Interview: Final Phrases"
-msgstr "Avsluta intervjun: Slutliga fraser"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
-#. js-lingui-explicit-id
-msgid ""
-"Wrap up the interview with gratitude and confidence. Use these phrases to "
-"end on a positive note:"
-msgstr ""
-"Avsluta intervjun med tacksamhet och självförtroende. Använd dessa fraser "
-"för att avsluta på en positiv anteckning:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
-#. js-lingui-explicit-id
-msgid ""
-"If it was an in-person interview, shake hands and maintain eye contact. If "
-"it was online, say goodbye with a friendly tone. Consider sending a "
-"thank-you email the next day:"
-msgstr ""
-"Om det var en intervju personligen, skaka hand och behåll ögonkontakt. Om "
-"det var online, säg adjö med en vänlig ton. Överväg att skicka ett "
-"tack-email nästa dag:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
-#. js-lingui-explicit-id
-msgid "Common Mistakes to Avoid"
-msgstr "Vanliga misstag att undvika"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
-#. js-lingui-explicit-id
-msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
-msgstr "Hoppa över småprat — Följ intervjuarens ledning och var vänlig."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
-#. js-lingui-explicit-id
-msgid ""
-"Saying “I don’t know” directly — Instead say: “That’s an interesting "
-"question. Let me think for a moment.”"
-msgstr ""
-"Att säga “Jag vet inte” direkt — Istället säg: “Det är en intressant fråga. "
-"Låt mig tänka en stund.”"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
-#. js-lingui-explicit-id
-msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
-msgstr "Brist på artighet — Använd *snälla*, *tack*, *ursäkta mig* vid behov."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
-#. js-lingui-explicit-id
-msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
-msgstr "Överrepeterade svar — Memorera inte; förbered idéer och tala naturligt."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
-#. js-lingui-explicit-id
-msgid ""
-"Negative comments — Never badmouth past employers. Stay neutral and "
-"constructive."
-msgstr ""
-"Negativa kommentarer — Kritisera aldrig tidigare arbetsgivare. Förbli "
-"neutral och konstruktiv."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
-#. js-lingui-explicit-id
-msgid ""
-"Showing no interest — Ask questions and react positively to company "
-"information."
-msgstr ""
-"Visar inget intresse — Ställ frågor och reagera positivt på "
-"företagsinformation."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
-#. js-lingui-explicit-id
-msgid ""
-"Avoiding these mistakes will make you look more professional and increase "
-"your chances of success."
-msgstr ""
-"Att undvika dessa misstag kommer att få dig att se mer professionell ut och "
-"öka dina chanser till framgång."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
-#. js-lingui-explicit-id
-msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
-msgstr "Öva intervjuer på FluencyPal: Din väg till självförtroende"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
-#. js-lingui-explicit-id
-msgid ""
-"Knowing useful phrases and tips is great, but the most important step is "
-"real-world practice. The best way to prepare is to do a mock interview. "
-"That’s exactly what the interactive role-play on FluencyPal offers."
-msgstr ""
-"Att känna till användbara fraser och tips är bra, men det viktigaste steget "
-"är att öva i verkliga livet. Det bästa sättet att förbereda sig är att göra "
-"en övningsintervju. Det är precis vad den interaktiva rollspelet på "
-"FluencyPal erbjuder."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
-#. js-lingui-explicit-id
-msgid ""
-"On this platform, you can upload your resume, specify your desired job, and "
-"go through a realistic interview with an AI interviewer."
-msgstr ""
-"På denna plattform kan du ladda upp ditt CV, specificera ditt önskade jobb "
-"och genomgå en realistisk intervju med en AI-intervjuare."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
-#. js-lingui-explicit-id
-msgid "How it works:"
-msgstr "Hur det fungerar:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
-#. js-lingui-explicit-id
-msgid ""
-"You answer questions just like in a real interview and get instant "
-"feedback. The AI adapts the questions to your profession and experience. "
-"This kind of training helps you identify weak spots, work on your "
-"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
-"notice your speech becoming more fluent and your answers more polished with "
-"each attempt."
-msgstr ""
-"Du svarar på frågor precis som i en riktig intervju och får omedelbar "
-"feedback. AI anpassar frågorna till din profession och erfarenhet. Denna "
-"typ av träning hjälper dig att identifiera svaga punkter, arbeta på din "
-"uttal, och lära dig hur man hanterar oväntade frågor lugnt. Du kommer att "
-"märka att ditt tal blir mer flytande och dina svar mer polerade vid varje "
-"försök."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
-#. js-lingui-explicit-id
-msgid "Career benefit:"
-msgstr "Karriärfördel:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
-#. js-lingui-explicit-id
-msgid ""
-"After several sessions, you’ll walk into your real interview much more "
-"confident. You’ll know what phrases to use, how to present yourself, and "
-"how to respond professionally. It can significantly boost your chances of "
-"landing your dream job."
-msgstr ""
-"Efter flera sessioner kommer du att gå in i din riktiga intervju mycket mer "
-"självsäker. Du kommer att veta vilka fraser att använda, hur du presenterar "
-"dig själv, och hur du svarar professionellt. Det kan avsevärt öka dina "
-"chanser att få ditt drömjobb."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
-#. js-lingui-explicit-id
-msgid ""
-"Preparing for an interview in English takes time, but it pays off. Use the "
-"tips from this article, practice with FluencyPal’s interview simulator, and "
-"walk into your next job interview with confidence."
-msgstr ""
-"Förberedelser inför en intervju på engelska tar tid, men det lönar sig. "
-"Använd tipsen från denna artikel, öva med FluencyPals intervjusimulator, "
-"och gå in i din nästa jobbintervju med självförtroende."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
-#. js-lingui-explicit-id
-msgid "Good preparation today means career success tomorrow."
-msgstr "God förberedelse idag betyder karriärframgång imorgon."
-
-#: src/features/Auth/SignInForm.tsx:30
-#. js-lingui-explicit-id
-msgid "Open personal plan"
-msgstr "Öppna personlig plan"
-
-#: src/features/Auth/SignInForm.tsx:32
-#: src/features/Auth/SignInForm.tsx:33
-#. js-lingui-explicit-id
-msgid "Sing in"
-msgstr "Logga in"
-
-#: src/features/Auth/SignInForm.tsx:38
-#: src/features/Auth/SignInForm.tsx:39
-#. js-lingui-explicit-id
-msgid "So you can save your progress"
-msgstr "Så att du kan spara dina framsteg"
+"Bli inspirerad och lär dig om de senaste trenderna inom språkinlärning, "
+"undervisning och teknik."
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6942,6 +6414,464 @@ msgstr "Alla Bloggar"
 msgid "No blogs found"
 msgstr "Inga bloggar hittades"
 
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "Visa alla inlägg"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "Rollspelsscenarier att öva på"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "Du kan testa AI i aktion nu"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "Prova gratis"
+
+#: src/features/Blog/BlogCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Read more"
+msgstr "Läs mer"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
+#. js-lingui-explicit-id
+msgid "At the end, we’ll share a valuable tool for realistic interview practice."
+msgstr ""
+"I slutet kommer vi att dela ett värdefullt verktyg för realistisk "
+"intervjuträning."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
+#. js-lingui-explicit-id
+msgid "Introduction: Small Talk with the Interviewer"
+msgstr "Introduktion: Small Talk med Intervjuaren"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
+#. js-lingui-explicit-id
+msgid ""
+"The first few minutes of an interview are often dedicated to casual "
+"conversation — also known as 'SmallTalk'. Recruiters use this time to "
+"create a friendly atmosphere and get to know you a bit better."
+msgstr ""
+"De första minuterna av en intervju ägnas ofta åt vardagligt samtal - också "
+"känt som 'SmallTalk'. Rekryterare använder denna tid till att skapa en "
+"vänlig atmosfär och lära känna dig lite bättre."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
+#. js-lingui-explicit-id
+msgid "Don’t skip small talk"
+msgstr "Hoppa inte över småpratet"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
+#. js-lingui-explicit-id
+msgid ""
+"— it’s important to engage in this short conversation before jumping into "
+"professional topics. Here are some useful English phrases to start off the "
+"interview:"
+msgstr ""
+"— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
+"yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
+"intervjun:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
+#. js-lingui-explicit-id
+msgid "English Phrases"
+msgstr "Engelska Fraser"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
+#. js-lingui-explicit-id
+msgid "A polite and professional greeting."
+msgstr "En artig och professionell hälsning."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
+#. js-lingui-explicit-id
+msgid "Expressing gratitude for the opportunity."
+msgstr "Uttrycka tacksamhet för möjligheten."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
+#. js-lingui-explicit-id
+msgid "A standard reply to “How are you?”"
+msgstr "Ett standard svar på \"Hur mår du?\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
+#. js-lingui-explicit-id
+msgid "A friendly compliment to break the ice."
+msgstr "En vänlig komplimang för att bryta isen."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"Smile, shake hands (if culturally appropriate), and speak in a friendly "
+"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
+"might say:"
+msgstr ""
+"Le, skaka hand (om det är kulturellt passande), och tala i en vänlig ton. "
+"Om intervjuaren frågar, \"Hade du några problem med att hitta oss?\" kan du "
+"säga:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"Short answers with a positive attitude show that you’re easy to talk to and "
+"open to dialogue."
+msgstr ""
+"Korta svar med en positiv attityd visar att du är lätt att prata med och "
+"öppen för dialog."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
+#. js-lingui-explicit-id
+msgid "Self-Introduction: Talking About Yourself"
+msgstr "Självintroduktion: Att prata om dig själv"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
+#. js-lingui-explicit-id
+msgid "After the greeting, you'll usually hear:"
+msgstr "Efter hälsningen hör du vanligtvis:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
+#. js-lingui-explicit-id
+msgid ""
+"This is your chance to introduce your experience and skills. Don’t list "
+"your full biography — focus on the highlights of your professional "
+"background. A good answer structure in English might look like this:"
+msgstr ""
+"Det här är din chans att presentera din erfarenhet och dina färdigheter. "
+"Lista inte din fullständiga biografi - fokusera på höjdpunkterna i din "
+"professionella bakgrund. En bra svarstruktur på engelska kan se ut så här:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
+#. js-lingui-explicit-id
+msgid "For example:"
+msgstr "Till exempel:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
+#. js-lingui-explicit-id
+msgid ""
+"Keep your answer focused: current or last position, a key achievement, and "
+"your interest in the company. Practice your self-introduction so you sound "
+msgstr ""
+"Håll ditt svar fokuserat: nuvarande eller senaste position, en "
+"nyckelbedrift och ditt intresse för företaget. Träna på din "
+"självintroduktion så att du låter"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
+#. js-lingui-explicit-id
+msgid "natural and not robotic"
+msgstr "naturlig och inte robotisk"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
+#. js-lingui-explicit-id
+msgid "Useful Phrases for Self-Introduction"
+msgstr "Användbara fraser för självintroduktion"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
+#. js-lingui-explicit-id
+msgid ""
+"Use these templates to craft your own story. Don’t forget to mention an "
+"achievement:"
+msgstr ""
+"Använd dessa mallar för att skapa din egen berättelse. Glöm inte att nämna "
+"en prestation:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
+#. js-lingui-explicit-id
+msgid "This shows results and makes you stand out."
+msgstr "Detta visar resultat och får dig att sticka ut."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
+#. js-lingui-explicit-id
+msgid "Answering Typical Interview Questions"
+msgstr "Svara på Typiska Intervjufrågor"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
+#. js-lingui-explicit-id
+msgid ""
+"Recruiters ask a variety of standard questions to understand your "
+"motivation and personality. Preparing answers in advance will help you stay "
+"calm and articulate. Focus on showing enthusiasm and confidence in your "
+"skills. Let’s look at some common questions and how to answer them:"
+msgstr ""
+"Rekryterare ställer en mängd standardfrågor för att förstå din motivation "
+"och personlighet. Att förbereda svar i förväg hjälper dig att förbli lugn "
+"och artikulerad. Fokusera på att visa entusiasm och självförtroende i dina "
+"färdigheter. Låt oss titta på några vanliga frågor och hur man svarar på "
+"dem:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
+#. js-lingui-explicit-id
+msgid "Show knowledge of the company and genuine interest. For example:"
+msgstr "Visa kunskap om företaget och äkta intresse. Till exempel:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
+#. js-lingui-explicit-id
+msgid "Highlight your strengths relevant to the role:"
+msgstr "Markera dina styrkor relevanta för rollen:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
+#. js-lingui-explicit-id
+msgid "Show your long-term goals:"
+msgstr "Visa dina långsiktiga mål:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
+#. js-lingui-explicit-id
+msgid "Other common questions include:"
+msgstr "Andra vanliga frågor inkluderar:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
+#. js-lingui-explicit-id
+msgid "Prepare short, honest, and positive answers with real-life examples."
+msgstr "Förbered korta, ärliga och positiva svar med verkliga exempel."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
+#. js-lingui-explicit-id
+msgid "If you don’t understand a question, don’t panic — ask politely:"
+msgstr "Om du inte förstår en fråga, bli inte panik - fråga artigt:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
+#. js-lingui-explicit-id
+msgid "Talking About Strengths and Weaknesses"
+msgstr "Pratar om Styrkor och Svagheter"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"Most interviews include the classic “strengths and weaknesses” question. "
+"It’s especially important to handle this well in English."
+msgstr ""
+"De flesta intervjuer inkluderar den klassiska \"styrkor och svagheter\" "
+"frågan. Det är särskilt viktigt att hantera detta väl på engelska."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
+#. js-lingui-explicit-id
+msgid "Strengths:"
+msgstr "Styrkor:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
+"examples. For instance:"
+msgstr ""
+"Välj 2–3 nyckelkvaliteter relevanta för jobbet. Undvik klichéer och ge "
+"exempel. Till exempel:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
+#. js-lingui-explicit-id
+msgid "Other useful strengths:"
+msgstr "Andra användbara styrkor:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
+#. js-lingui-explicit-id
+msgid "Weaknesses:"
+msgstr "Svagheter:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
+#. js-lingui-explicit-id
+msgid ""
+"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
+"mention a minor issue and how you’re working to improve it:"
+msgstr ""
+"Var ärlig men diplomatisk. Säg inte \"Jag har inga svagheter.\" Istället, "
+"nämn ett mindre problem och hur du arbetar för att förbättra det:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
+#. js-lingui-explicit-id
+msgid "This approach shows self-awareness and growth."
+msgstr "Denna strategi visar självmedvetenhet och tillväxt."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
+#. js-lingui-explicit-id
+msgid "Questions to Ask the Employer"
+msgstr "Frågor att Ställa till Arbetsgivaren"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
+#. js-lingui-explicit-id
+msgid "At the end of the interview, you’ll usually be asked:"
+msgstr "Vid slutet av intervjun brukar du oftast bli tillfrågad:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
+#. js-lingui-explicit-id
+msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
+msgstr "Säg aldrig \"nej\". Förbered 2-3 smarta frågor i förväg:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
+#. js-lingui-explicit-id
+msgid "Always respond politely:"
+msgstr "Svara alltid artigt:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
+#. js-lingui-explicit-id
+msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
+msgstr "Visa nyfikenhet och engagemang. Glöm inte att tacka dem för deras svar:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
+#. js-lingui-explicit-id
+msgid "Ending the Interview: Final Phrases"
+msgstr "Avsluta intervjun: Slutliga fraser"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
+#. js-lingui-explicit-id
+msgid ""
+"Wrap up the interview with gratitude and confidence. Use these phrases to "
+"end on a positive note:"
+msgstr ""
+"Avsluta intervjun med tacksamhet och självförtroende. Använd dessa fraser "
+"för att avsluta på en positiv anteckning:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"If it was an in-person interview, shake hands and maintain eye contact. If "
+"it was online, say goodbye with a friendly tone. Consider sending a "
+"thank-you email the next day:"
+msgstr ""
+"Om det var en intervju personligen, skaka hand och behåll ögonkontakt. Om "
+"det var online, säg adjö med en vänlig ton. Överväg att skicka ett "
+"tack-email nästa dag:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
+#. js-lingui-explicit-id
+msgid "Common Mistakes to Avoid"
+msgstr "Vanliga misstag att undvika"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
+#. js-lingui-explicit-id
+msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
+msgstr "Hoppa över småprat — Följ intervjuarens ledning och var vänlig."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
+#. js-lingui-explicit-id
+msgid ""
+"Saying “I don’t know” directly — Instead say: “That’s an interesting "
+"question. Let me think for a moment.”"
+msgstr ""
+"Att säga “Jag vet inte” direkt — Istället säg: “Det är en intressant fråga. "
+"Låt mig tänka en stund.”"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
+#. js-lingui-explicit-id
+msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
+msgstr "Brist på artighet — Använd *snälla*, *tack*, *ursäkta mig* vid behov."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
+#. js-lingui-explicit-id
+msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
+msgstr "Överrepeterade svar — Memorera inte; förbered idéer och tala naturligt."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
+#. js-lingui-explicit-id
+msgid ""
+"Negative comments — Never badmouth past employers. Stay neutral and "
+"constructive."
+msgstr ""
+"Negativa kommentarer — Kritisera aldrig tidigare arbetsgivare. Förbli "
+"neutral och konstruktiv."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
+#. js-lingui-explicit-id
+msgid ""
+"Showing no interest — Ask questions and react positively to company "
+"information."
+msgstr ""
+"Visar inget intresse — Ställ frågor och reagera positivt på "
+"företagsinformation."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
+#. js-lingui-explicit-id
+msgid ""
+"Avoiding these mistakes will make you look more professional and increase "
+"your chances of success."
+msgstr ""
+"Att undvika dessa misstag kommer att få dig att se mer professionell ut och "
+"öka dina chanser till framgång."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
+#. js-lingui-explicit-id
+msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
+msgstr "Öva intervjuer på FluencyPal: Din väg till självförtroende"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
+#. js-lingui-explicit-id
+msgid ""
+"Knowing useful phrases and tips is great, but the most important step is "
+"real-world practice. The best way to prepare is to do a mock interview. "
+"That’s exactly what the interactive role-play on FluencyPal offers."
+msgstr ""
+"Att känna till användbara fraser och tips är bra, men det viktigaste steget "
+"är att öva i verkliga livet. Det bästa sättet att förbereda sig är att göra "
+"en övningsintervju. Det är precis vad den interaktiva rollspelet på "
+"FluencyPal erbjuder."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
+#. js-lingui-explicit-id
+msgid ""
+"On this platform, you can upload your resume, specify your desired job, and "
+"go through a realistic interview with an AI interviewer."
+msgstr ""
+"På denna plattform kan du ladda upp ditt CV, specificera ditt önskade jobb "
+"och genomgå en realistisk intervju med en AI-intervjuare."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
+#. js-lingui-explicit-id
+msgid "How it works:"
+msgstr "Hur det fungerar:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
+#. js-lingui-explicit-id
+msgid ""
+"You answer questions just like in a real interview and get instant "
+"feedback. The AI adapts the questions to your profession and experience. "
+"This kind of training helps you identify weak spots, work on your "
+"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
+"notice your speech becoming more fluent and your answers more polished with "
+"each attempt."
+msgstr ""
+"Du svarar på frågor precis som i en riktig intervju och får omedelbar "
+"feedback. AI anpassar frågorna till din profession och erfarenhet. Denna "
+"typ av träning hjälper dig att identifiera svaga punkter, arbeta på din "
+"uttal, och lära dig hur man hanterar oväntade frågor lugnt. Du kommer att "
+"märka att ditt tal blir mer flytande och dina svar mer polerade vid varje "
+"försök."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
+#. js-lingui-explicit-id
+msgid "Career benefit:"
+msgstr "Karriärfördel:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
+#. js-lingui-explicit-id
+msgid ""
+"After several sessions, you’ll walk into your real interview much more "
+"confident. You’ll know what phrases to use, how to present yourself, and "
+"how to respond professionally. It can significantly boost your chances of "
+"landing your dream job."
+msgstr ""
+"Efter flera sessioner kommer du att gå in i din riktiga intervju mycket mer "
+"självsäker. Du kommer att veta vilka fraser att använda, hur du presenterar "
+"dig själv, och hur du svarar professionellt. Det kan avsevärt öka dina "
+"chanser att få ditt drömjobb."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
+#. js-lingui-explicit-id
+msgid ""
+"Preparing for an interview in English takes time, but it pays off. Use the "
+"tips from this article, practice with FluencyPal’s interview simulator, and "
+"walk into your next job interview with confidence."
+msgstr ""
+"Förberedelser inför en intervju på engelska tar tid, men det lönar sig. "
+"Använd tipsen från denna artikel, öva med FluencyPals intervjusimulator, "
+"och gå in i din nästa jobbintervju med självförtroende."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
+#. js-lingui-explicit-id
+msgid "Good preparation today means career success tomorrow."
+msgstr "God förberedelse idag betyder karriärframgång imorgon."
+
 #: src/features/Auth/WebViewWall.tsx:38
 #. js-lingui-explicit-id
 msgid "Failed to copy text. Please copy it manually."
@@ -6991,6 +6921,76 @@ msgstr "Öppna i Telegram"
 #. js-lingui-explicit-id
 msgid "Open in Browser"
 msgstr "Öppna i webbläsare"
+
+#: src/features/Auth/SignInForm.tsx:30
+#. js-lingui-explicit-id
+msgid "Open personal plan"
+msgstr "Öppna personlig plan"
+
+#: src/features/Auth/SignInForm.tsx:32
+#: src/features/Auth/SignInForm.tsx:33
+#. js-lingui-explicit-id
+msgid "Sing in"
+msgstr "Logga in"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1728
+msgid "So you can keep your progress"
+msgstr "Så att du kan behålla dina framsteg"
+
+#: src/features/Auth/SignInForm.tsx:38
+#: src/features/Auth/SignInForm.tsx:39
+#. js-lingui-explicit-id
+msgid "So you can save your progress"
+msgstr "Så att du kan spara dina framsteg"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
+#. js-lingui-explicit-id
+msgid "Describe the image"
+msgstr "Beskriv bilden"
+
+#: src/features/Dashboard/TasksCard.tsx:39
+#. js-lingui-explicit-id
+msgid "Daily Tasks"
+msgstr "Dagliga uppgifter"
+
+#: src/features/Dashboard/TasksCard.tsx:51
+#. js-lingui-explicit-id
+msgid "Rule of the day"
+msgstr "Regel för dagen"
+
+#: src/features/Dashboard/TasksCard.tsx:56
+#: src/features/Dashboard/TasksCard.tsx:64
+#. js-lingui-explicit-id
+msgid "Complete previous tasks first"
+msgstr "Slutför tidigare uppgifter först"
+
+#: src/features/Dashboard/TasksCard.tsx:61
+#. js-lingui-explicit-id
+msgid "New words"
+msgstr "Nya ord"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:33
+#. js-lingui-explicit-id
+msgid "Ready?"
+msgstr "Redo?"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Next, please allow access to the microphone to communicate with the AI."
+msgstr ""
+"Nästa steg, vänligen tillåt åtkomst till mikrofonen för att kommunicera med "
+"AI:n."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:69
+#. js-lingui-explicit-id
+msgid "Yes, I am ready"
+msgstr "Ja, jag är redo"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:73
+#. js-lingui-explicit-id
+msgid "No"
+msgstr "Nej"
 
 #: src/features/Landing/PlanLandingBlock.tsx:429
 msgid "{countOfLanguages} languages to practice"
@@ -7059,441 +7059,3 @@ msgstr "Du är <0>ledaren</0> för {playersCount} spelare."
 #: src/features/Goal/Quiz/QuizPage2.tsx:1569
 msgid "Your AI speaking partner"
 msgstr "Din AI-samtalspartner"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1582
-#. js-lingui-explicit-id
-#~ msgid "Daily communication without fear of judgment"
-#~ msgstr "Daglig kommunikation utan rädsla för bedömning"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1586
-#. js-lingui-explicit-id
-#~ msgid "Instant corrections when you get stuck"
-#~ msgstr "Omedelbara korrigeringar när du fastnar"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1596
-#. js-lingui-explicit-id
-#~ msgid "Grammar corrections that will give you confidence"
-#~ msgstr "Grammatikkorrigeringar som ger dig självförtroende"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1605
-#. js-lingui-explicit-id
-#~ msgid "Practice real-life situations before they happen"
-#~ msgstr "Öva på verkliga situationer innan de inträffar"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1591
-#. js-lingui-explicit-id
-#~ msgid "Personalized to your goals"
-#~ msgstr "Anpassad till dina mål"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1596
-#. js-lingui-explicit-id
-#~ msgid "Fix the grammar mistakes that cause embarrassment"
-#~ msgstr "Fixa grammatikfelen som orsakar förlägenhet"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1582
-#. js-lingui-explicit-id
-#~ msgid "Speak daily without fear of judgment"
-#~ msgstr "Tala dagligen utan rädsla för att bli dömd"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1586
-#. js-lingui-explicit-id
-#~ msgid "Instant AI corrections when you get stuck"
-#~ msgstr "Omedelbara AI-korrigeringar när du kör fast"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1591
-#. js-lingui-explicit-id
-#~ msgid "Personalized to your goals (work, travel, or life)"
-#~ msgstr "Anpassat till dina mål (arbete, resa eller liv)"
-
-#: src/features/Landing/Price/PricePage.tsx:105
-#. js-lingui-explicit-id
-#~ msgid "Start free, subscribe later"
-#~ msgstr "Börja gratis, prenumerera senare"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1581
-#. js-lingui-explicit-id
-#~ msgid "Conversation practice with AI"
-#~ msgstr "Samtalsövning med AI"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1599
-#. js-lingui-explicit-id
-#~ msgid "New Words and Phrases"
-#~ msgstr "Nya ord och fraser"
-
-#: src/features/Landing/PlanLandingBlock.tsx:381
-#. js-lingui-explicit-id
-#~ msgid "From Onboarding to Your Goal"
-#~ msgstr "Från Onboarding till Ditt Mål"
-
-#: src/features/Landing/WelcomeScreen.tsx:227
-#. js-lingui-explicit-id
-#~ msgid "Win the game and get the app"
-#~ msgstr "Vinn spelet och få appen"
-
-#: src/features/Landing/WelcomeScreen.tsx:227
-#. js-lingui-explicit-id
-#~ msgid "for free"
-#~ msgstr "gratis"
-
-#: src/features/Landing/LandingPage.tsx:119
-#. js-lingui-explicit-id
-#~ msgid "Speaking Partner"
-#~ msgstr "Talspartner"
-
-#: src/features/Landing/PlanLandingBlock.tsx:328
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Fill out a quick onboarding quiz to help FluencyPal understand your goals "
-#~ "and preferences."
-#~ msgstr ""
-#~ "Fyll i en snabb ombordstigningsquiz för att hjälpa FluencyPal förstå dina "
-#~ "mål och preferenser."
-
-#: src/features/Landing/PlanLandingBlock.tsx:790
-#. js-lingui-explicit-id
-#~ msgid "1 hour free"
-#~ msgstr "1 timme gratis"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:268
-#. js-lingui-explicit-id
-#~ msgid "Start your journey with a conversation!"
-#~ msgstr "Börja din resa med ett samtal!"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:291
-#: src/features/Dashboard/PlanDashboardCards.tsx:321
-#: src/features/Dashboard/PlanDashboardCards.tsx:351
-#. js-lingui-explicit-id
-#~ msgid "Recommended"
-#~ msgstr "Rekommenderad"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:298
-#. js-lingui-explicit-id
-#~ msgid "Learn the rules of the language!"
-#~ msgstr "Lär dig språkets regler!"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:328
-#. js-lingui-explicit-id
-#~ msgid "Learn new words and expand your vocabulary!"
-#~ msgstr "Lär dig nya ord och utvidga ditt ordförråd!"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:371
-#. js-lingui-explicit-id
-#~ msgid "There's something interesting for you..."
-#~ msgstr "Det finns något intressant för dig..."
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:400
-#. js-lingui-explicit-id
-#~ msgid "Let's start"
-#~ msgstr "Låt oss börja"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:30
-#. js-lingui-explicit-id
-#~ msgid "Next, allow microphone access to talk with the AI."
-#~ msgstr "Nästa, tillåt mikrofonåtkomst för att prata med AI."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:55
-#. js-lingui-explicit-id
-#~ msgid "I am ready"
-#~ msgstr "Jag är redo"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:513
-#. js-lingui-explicit-id
-#~ msgid "Translate"
-#~ msgstr ""
-#~ "I'm here to help! Please paste the text you would like translated, and I'll "
-#~ "provide the Swedish translation for you."
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:429
-#. js-lingui-explicit-id
-#~ msgid "Plan for learning"
-#~ msgstr "Plan för lärande"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:111
-#. js-lingui-explicit-id
-#~ msgid "Choose My Language"
-#~ msgstr "Välj Mitt Språk"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:317
-#. js-lingui-explicit-id
-#~ msgid "Your story"
-#~ msgstr "Din berättelse"
-
-#: src/features/Auth/SignInForm.tsx:33
-#. js-lingui-explicit-id
-#~ msgid "Sing in "
-#~ msgstr "Logga in "
-
-#: src/features/RolePlay/rolePlayData.tsx:47
-#. js-lingui-explicit-id
-#~ msgid "Practice English vocabulary by creatively describing and guessing words"
-#~ msgstr "Öva engelska vokabulären genom att kreativt beskriva och gissa ord"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:348
-#. js-lingui-explicit-id
-#~ msgid "By signing in, you agree to our"
-#~ msgstr "Genom att logga in godkänner du våra"
-
-#: src/features/Auth/SignInForm.tsx:32
-#. js-lingui-explicit-id
-#~ msgid "Start the Lesson"
-#~ msgstr "Starta lektionen"
-
-#: src/features/Auth/SignInForm.tsx:61
-#. js-lingui-explicit-id
-#~ msgid "Start Role Play:"
-#~ msgstr "Börja Rollspela:"
-
-#: src/features/Auth/SignInForm.tsx:88
-#. js-lingui-explicit-id
-#~ msgid "Create an account to continue"
-#~ msgstr "Skapa ett konto för att fortsätta"
-
-#: src/features/Auth/SignInForm.tsx:105
-#. js-lingui-explicit-id
-#~ msgid "Continue with google"
-#~ msgstr "Fortsätt med Google"
-
-#: src/features/Auth/SignInForm.tsx:116
-#. js-lingui-explicit-id
-#~ msgid "By creating an account, you agree to:"
-#~ msgstr "Genom att skapa ett konto godkänner du:"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:257
-#. js-lingui-explicit-id
-#~ msgid "I am waiting for your speech..."
-#~ msgstr "Jag väntar på ditt tal..."
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:80
-#. js-lingui-explicit-id
-#~ msgid "Choose your native language"
-#~ msgstr "Välj ditt modersmål"
-
-#: src/features/Auth/SignInForm.tsx:74
-#. js-lingui-explicit-id
-#~ msgid "Open this page in browser"
-#~ msgstr "Öppna den här sidan i webbläsaren"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:83
-#. js-lingui-explicit-id
-#~ msgid ""
-#~ "Who you are, what you do, and your interests. Why you are learning this "
-#~ "language?"
-#~ msgstr "Vem du är, vad du gör och dina intressen. Varför du lär dig detta språk?"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:64
-#. js-lingui-explicit-id
-#~ msgid "So I can translate words into it for you"
-#~ msgstr "Så jag kan översätta ord till det åt dig"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:51
-#. js-lingui-explicit-id
-#~ msgid "Tell us your native language"
-#~ msgstr "Berätta för oss vilket ditt modersmål är"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:202
-#. js-lingui-explicit-id
-#~ msgid "My Language"
-#~ msgstr "Mitt Språk"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:225
-#. js-lingui-explicit-id
-#~ msgid "Select Your Language"
-#~ msgstr "Välj ditt språk"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:250
-#. js-lingui-explicit-id
-#~ msgid "Search"
-#~ msgstr "Sök"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:280
-#. js-lingui-explicit-id
-#~ msgid "No languages found"
-#~ msgstr "Inga språk hittades"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:236
-#. js-lingui-explicit-id
-#~ msgid "Payment successful! Thank you."
-#~ msgstr "Betalning lyckades! Tack."
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:146
-#. js-lingui-explicit-id
-#~ msgid "Transaction completed. Soon your balance will be updated."
-#~ msgstr "Transaktion genomförd. Snart kommer ditt saldo att uppdateras."
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:189
-#. js-lingui-explicit-id
-#~ msgid "Attempt"
-#~ msgstr "Försök"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:96
-#. js-lingui-explicit-id
-#~ msgid "Payment sent"
-#~ msgstr "Betalning skickad"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:144
-#. js-lingui-explicit-id
-#~ msgid "Pay with TON"
-#~ msgstr "Betala med TON"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1193
-#. js-lingui-explicit-id
-#~ msgid "Volume Off"
-#~ msgstr "Volym Av"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1193
-#. js-lingui-explicit-id
-#~ msgid "Volume On"
-#~ msgstr "Volym På"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1180
-#. js-lingui-explicit-id
-#~ msgid "Use voice message mode"
-#~ msgstr "Använd röstmeddelandeläge"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1197
-#. js-lingui-explicit-id
-#~ msgid "Use keyboard mode"
-#~ msgstr "Använd tangentbordsläge"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1214
-#. js-lingui-explicit-id
-#~ msgid "Use phone mode"
-#~ msgstr "Använd telefonläge"
-
-#: src/features/Game/GameMyUsername.tsx:41
-#. js-lingui-explicit-id
-#~ msgid "Your Username:"
-#~ msgstr "Ditt användarnamn:"
-
-#: src/features/Translation/useTranslate.tsx:100
-#. js-lingui-explicit-id
-#~ msgid "Translation"
-#~ msgstr "Översättning"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:30
-#. js-lingui-explicit-id
-#~ msgid "Thank you for your message"
-#~ msgstr "Tack för ditt meddelande"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:42
-#. js-lingui-explicit-id
-#~ msgid "Your feedback is valuable to me"
-#~ msgstr "Din feedback är värdefull för mig"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:46
-#. js-lingui-explicit-id
-#~ msgid "Leave your feedback"
-#~ msgstr "Lämna din feedback"
-
-#: src/features/Dashboard/FeedbackBlock.tsx:51
-#. js-lingui-explicit-id
-#~ msgid "Send Feedback"
-#~ msgstr "Skicka återkoppling"
-
-#: src/features/Game/GameMyAvatar.tsx:29
-#. js-lingui-explicit-id
-#~ msgid "Select your avatar"
-#~ msgstr "Välj din avatar"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:479
-#. js-lingui-explicit-id
-#~ msgid "Your plan"
-#~ msgstr "Din plan"
-
-#: src/features/Header/HeaderPractice.tsx:315
-#. js-lingui-explicit-id
-#~ msgid "Refund Request"
-#~ msgstr "Begäran om Återbetalning"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:344
-#. js-lingui-explicit-id
-#~ msgid "Pay and Subscribe"
-#~ msgstr "Betala och Prenumerera"
-
-#: src/features/Telegram/TgAppPage.tsx:113
-#. js-lingui-explicit-id
-#~ msgid "Failed to initialize Telegram Mini App"
-#~ msgstr "Misslyckades att initiera Telegram Mini App"
-
-#: src/features/TgApp/TgAppPage.tsx:168
-#. js-lingui-explicit-id
-#~ msgid "Authorizing with Telegram..."
-#~ msgstr "Auktoriserar med Telegram..."
-
-#: src/features/Usage/PaymentModal.tsx:437
-#. js-lingui-explicit-id
-#~ msgid "Hi, my name is Alex, and I'm the creator of this app."
-#~ msgstr "Hej, mitt namn är Alex, och jag är skaparen av denna app."
-
-#: src/features/Usage/PaymentModal.tsx:439
-#. js-lingui-explicit-id
-#~ msgid "Thank you for using it!"
-#~ msgstr "Tack för att du använder det!"
-
-#: src/features/Usage/PaymentModal.tsx:442
-#. js-lingui-explicit-id
-#~ msgid "Currently, I haven't integrated payment services yet. 💔"
-#~ msgstr "För närvarande har jag inte integrerat betalningstjänster ännu. 💔"
-
-#: src/features/Usage/PaymentModal.tsx:445
-#. js-lingui-explicit-id
-#~ msgid "I've received your payment request for"
-#~ msgstr "Jag har mottagit din betalningsbegäran för"
-
-#: src/features/Usage/PaymentModal.tsx:447
-#. js-lingui-explicit-id
-#~ msgid "I'll send instructions on how to pay to your email"
-#~ msgstr "Jag skickar instruktioner om hur man betalar till din e-post"
-
-#: src/features/Usage/PaymentModal.tsx:451
-#. js-lingui-explicit-id
-#~ msgid "Once again, thank you for using my app!"
-#~ msgstr "Återigen, tack för att du använder min app!"
-
-#: src/features/Usage/PaymentModal.tsx:460
-#. js-lingui-explicit-id
-#~ msgid "If you'd like to contact me directly, here are my contacts:"
-#~ msgstr "Om du vill kontakta mig direkt, här är mina kontakter:"
-
-#: src/features/Usage/PaymentModal.tsx:482
-#. js-lingui-explicit-id
-#~ msgid "Current Balance"
-#~ msgstr "Nuvarande Balans"
-
-#: src/features/Usage/PaymentModal.tsx:502
-#. js-lingui-explicit-id
-#~ msgid "Total used"
-#~ msgstr "Totalt användt"
-
-#: src/features/Usage/PaymentModal.tsx:552
-#. js-lingui-explicit-id
-#~ msgid "Manage your payments and balance"
-#~ msgstr "Hantera dina betalningar och saldo"
-
-#: src/features/Landing/PlanLandingBlock.tsx:180
-#~ msgid "{actionButtonPostfixLabel}"
-#~ msgstr ""
-
-#: src/features/Landing/WelcomeScreen.tsx:87
-#~ msgid "AI"
-#~ msgstr "AI"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1570
-#~ msgid "AI speaking partner"
-#~ msgstr "AI samtalspartner"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1570
-#~ msgid "Speaking partner"
-#~ msgstr "Talspråkspartner"
-
-#: src/features/Landing/WelcomeScreen.tsx:128
-#~ msgid "Talk, get corrected, improve—repeat."
-#~ msgstr "Prata, bli rättad, förbättra—upprepa."
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:221
-#~ msgid "What you get with <0>FluencyPal</0>"
-#~ msgstr "Vad du får med <0>FluencyPal</0>"
-
-#: src/features/Landing/WelcomeScreen.tsx:132
-#~ msgid "Win the game and get the app <0>for free</0>"
-#~ msgstr "Vinn spelet och få appen <0>gratis</0>"
