@@ -640,6 +640,145 @@ export const AboutYourselfList: React.FC = () => {
   return <IconTextList listItems={listItems} />;
 };
 
+export const RecordUserAudioAnswer = ({
+  transcript,
+  minWords,
+  isLoading,
+  isTranscribing,
+  visualizerComponent,
+  isRecording,
+  stopRecording,
+  startRecording,
+  clearTranscript,
+}: {
+  transcript: string;
+  minWords: number;
+  isLoading?: boolean;
+  isTranscribing: boolean;
+  visualizerComponent: ReactNode;
+  isRecording: boolean;
+  stopRecording: () => Promise<void>;
+  startRecording: () => Promise<void>;
+  clearTranscript: () => void;
+}) => {
+  const { i18n } = useLingui();
+  const wordsCount = getWordsCount(transcript || "");
+  const isNeedMoreRecording = !transcript || wordsCount < minWords;
+  return (
+    <Stack
+      sx={{
+        width: "100%",
+        border: "1px solid rgba(255, 255, 255, 0.1)",
+        padding: "12px 12px 15px 10px",
+        borderRadius: "8px",
+        backgroundColor: "rgba(255, 255, 255, 0.08)",
+        opacity: isLoading ? 0.4 : 1,
+      }}
+      className={isLoading ? "loading-shimmer-shape" : ""}
+    >
+      <Stack
+        sx={{
+          flexDirection: "row",
+          width: "100%",
+          justifyContent: "space-between",
+          paddingBottom: "14px",
+          flexWrap: "wrap",
+        }}
+      >
+        <Typography
+          variant="body2"
+          sx={{
+            fontWeight: 600,
+          }}
+        >
+          {i18n._("Your answer")}
+        </Typography>
+
+        <Typography
+          variant="caption"
+          sx={{
+            color: wordsCount === 0 ? "inherit" : wordsCount < minWords ? "#FFA500" : "#4CAF50",
+          }}
+        >
+          {wordsCount > 0 ? (
+            <>
+              {wordsCount} / <b>{minWords}</b>
+            </>
+          ) : (
+            <></>
+          )}
+        </Typography>
+      </Stack>
+
+      <Typography
+        variant={transcript ? "body2" : "caption"}
+        sx={{
+          opacity: transcript ? 1 : 0.8,
+        }}
+        className={isTranscribing ? `loading-shimmer` : ""}
+      >
+        {transcript && transcript}
+
+        {isTranscribing && " " + i18n._("Processing...")}
+      </Typography>
+
+      {!transcript && !isTranscribing && (
+        <Stack
+          sx={{
+            alignItems: "center",
+            gap: "10px",
+            //color: "#888",
+            paddingBottom: "10px",
+          }}
+        >
+          <Goal size={"39px"} color="#999" strokeWidth={"2px"} />
+          <Typography variant="h6" align="center" sx={{}}>
+            <Trans>
+              Goal: at least <b>{minWords}</b> words
+            </Trans>
+          </Typography>
+        </Stack>
+      )}
+
+      {transcript && !isTranscribing && (
+        <Stack>
+          {!isNeedMoreRecording && visualizerComponent}
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              paddingTop: "12px",
+              gap: "10px",
+            }}
+          >
+            {wordsCount >= minWords && (
+              <Button
+                variant={isNeedMoreRecording ? "contained" : "outlined"}
+                endIcon={isRecording ? <Check /> : <Mic size={"16px"} />}
+                size="small"
+                color={isRecording ? "error" : "primary"}
+                onClick={() => {
+                  if (isRecording) {
+                    stopRecording();
+                  } else {
+                    startRecording();
+                  }
+                }}
+              >
+                {isRecording ? i18n._("Done") : i18n._("Record more")}
+              </Button>
+            )}
+            <IconButton size="small" onClick={clearTranscript}>
+              <Trash size={"16px"} />
+            </IconButton>
+          </Stack>
+        </Stack>
+      )}
+    </Stack>
+  );
+};
+
 const RecordUserAudio = ({
   transcript,
   minWords,
@@ -684,7 +823,6 @@ const RecordUserAudio = ({
   };
 
   const wordsCount = getWordsCount(transcript || "");
-
   const isNeedMoreRecording = !transcript || wordsCount < minWords;
 
   return (
@@ -719,119 +857,17 @@ const RecordUserAudio = ({
             </Typography>
           </Stack>
           <Stack>{subTitleComponent}</Stack>
-
-          <Stack
-            sx={{
-              width: "100%",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              padding: "12px 12px 15px 10px",
-              borderRadius: "8px",
-              backgroundColor: "rgba(255, 255, 255, 0.08)",
-              opacity: isLoading ? 0.4 : 1,
-            }}
-            className={isLoading ? "loading-shimmer-shape" : ""}
-          >
-            <Stack
-              sx={{
-                flexDirection: "row",
-                width: "100%",
-                justifyContent: "space-between",
-                paddingBottom: "14px",
-                flexWrap: "wrap",
-              }}
-            >
-              <Typography
-                variant="body2"
-                sx={{
-                  fontWeight: 600,
-                }}
-              >
-                {i18n._("Your answer")}
-              </Typography>
-
-              <Typography
-                variant="caption"
-                sx={{
-                  color:
-                    wordsCount === 0 ? "inherit" : wordsCount < minWords ? "#FFA500" : "#4CAF50",
-                }}
-              >
-                {wordsCount > 0 ? (
-                  <>
-                    {wordsCount} / <b>{minWords}</b>
-                  </>
-                ) : (
-                  <></>
-                )}
-              </Typography>
-            </Stack>
-
-            <Typography
-              variant={transcript ? "body2" : "caption"}
-              sx={{
-                opacity: transcript ? 1 : 0.8,
-              }}
-              className={recorder.isTranscribing ? `loading-shimmer` : ""}
-            >
-              {transcript && transcript}
-
-              {recorder.isTranscribing && " " + i18n._("Processing...")}
-            </Typography>
-
-            {!transcript && !recorder.isTranscribing && (
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  gap: "10px",
-                  //color: "#888",
-                  paddingBottom: "10px",
-                }}
-              >
-                <Goal size={"39px"} color="#999" strokeWidth={"2px"} />
-                <Typography variant="h6" align="center" sx={{}}>
-                  <Trans>
-                    Goal: at least <b>{minWords}</b> words
-                  </Trans>
-                </Typography>
-              </Stack>
-            )}
-
-            {transcript && !recorder.isTranscribing && (
-              <Stack>
-                {!isNeedMoreRecording && recorder.visualizerComponent}
-                <Stack
-                  sx={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    paddingTop: "12px",
-                    gap: "10px",
-                  }}
-                >
-                  {wordsCount >= minWords && (
-                    <Button
-                      variant={isNeedMoreRecording ? "contained" : "outlined"}
-                      endIcon={recorder.isRecording ? <Check /> : <Mic size={"16px"} />}
-                      size="small"
-                      color={recorder.isRecording ? "error" : "primary"}
-                      onClick={() => {
-                        if (recorder.isRecording) {
-                          recorder.stopRecording();
-                        } else {
-                          recorder.startRecording();
-                        }
-                      }}
-                    >
-                      {recorder.isRecording ? i18n._("Done") : i18n._("Record more")}
-                    </Button>
-                  )}
-                  <IconButton size="small" onClick={clearTranscript}>
-                    <Trash size={"16px"} />
-                  </IconButton>
-                </Stack>
-              </Stack>
-            )}
-          </Stack>
+          <RecordUserAudioAnswer
+            transcript={transcript}
+            minWords={minWords}
+            isLoading={isLoading}
+            isTranscribing={recorder.isTranscribing}
+            visualizerComponent={recorder.visualizerComponent}
+            isRecording={recorder.isRecording}
+            stopRecording={recorder.stopRecording}
+            startRecording={recorder.startRecording}
+            clearTranscript={clearTranscript}
+          />
         </Stack>
       </Stack>
 

@@ -6,8 +6,8 @@ import { useMemo, useState } from "react";
 import { useAppNavigation } from "../../Navigation/useAppNavigation";
 import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
-import { IconTextList } from "@/features/Goal/Quiz/QuizPage2";
-import { Lightbulb } from "lucide-react";
+import { IconTextList, RecordUserAudioAnswer } from "@/features/Goal/Quiz/QuizPage2";
+import { Lightbulb, Mic } from "lucide-react";
 
 export const DailyQuestionBadge = () => {
   const { i18n } = useLingui();
@@ -143,17 +143,6 @@ export const DailyQuestionBadge = () => {
                 paddingTop: "20px",
               }}
             >
-              <Typography
-                sx={{
-                  fontSize: "0.9rem",
-                  fontWeight: 500,
-                  color: "#fff",
-                  opacity: 0.96,
-                  paddingBottom: "8px",
-                }}
-              >
-                {i18n._("Hints:")}
-              </Typography>
               <Stack
                 sx={{
                   display: "flex",
@@ -162,6 +151,37 @@ export const DailyQuestionBadge = () => {
                 <IconTextList
                   listItems={todaysQuestion.hints.map((h) => ({ title: h, icon: Lightbulb }))}
                 />
+              </Stack>
+              <Stack
+                sx={{
+                  paddingTop: "15px",
+                  gap: "20px",
+                }}
+              >
+                <RecordUserAudioAnswer
+                  transcript={""}
+                  minWords={30}
+                  isLoading={false}
+                  isTranscribing={false}
+                  visualizerComponent={<></>}
+                  isRecording={false}
+                  stopRecording={async () => {}}
+                  startRecording={async () => {}}
+                  clearTranscript={async () => {}}
+                />
+                <Stack
+                  sx={{
+                    "@media (max-width:600px)": {
+                      position: "sticky",
+                      bottom: "86px",
+                      boxShadow: "0px -4px 18px 0px rgba(0, 0, 0, 0.1)",
+                    },
+                  }}
+                >
+                  <Button size="large" variant="contained" color="info" startIcon={<Mic />}>
+                    Record
+                  </Button>
+                </Stack>
               </Stack>
             </Stack>
           </Stack>
