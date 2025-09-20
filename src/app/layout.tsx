@@ -46,7 +46,7 @@ export default async function RootLayout({
   initLingui(supportedLang);
 
   return (
-    <html lang={lang} className={`${inter.className} ${oldStandardTT.className}`}>
+    <html lang={lang} className={`${inter.className} ${oldStandardTT.className}`} translate="no">
       <head>
         <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
