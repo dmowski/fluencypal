@@ -575,7 +575,7 @@ interface ListItem {
   href?: string;
 }
 
-const IconTextList = ({ listItems }: { listItems: ListItem[] }) => {
+export const IconTextList = ({ listItems }: { listItems: ListItem[] }) => {
   return (
     <Stack
       sx={{

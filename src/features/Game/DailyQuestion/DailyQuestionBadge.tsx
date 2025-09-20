@@ -1,20 +1,16 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { SupportedLanguage } from "../../Lang/lang";
-import { FireExtinguisher, Flame, Swords } from "lucide-react";
-import { useGame } from "../useGame";
-
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useAppNavigation } from "../../Navigation/useAppNavigation";
 import { dailyQuestions } from "./dailyQuestions";
-import LocalFireDepartmentTwoToneIcon from "@mui/icons-material/LocalFireDepartmentTwoTone";
 import dayjs from "dayjs";
+import { IconTextList } from "@/features/Goal/Quiz/QuizPage2";
+import { Lightbulb } from "lucide-react";
 
 export const DailyQuestionBadge = () => {
   const { i18n } = useLingui();
-  const [isLoading, setIsLoading] = useState(false);
   const appNavigation = useAppNavigation();
   const urlToNavigate = appNavigation.pageUrl("game");
   const todayIsoDate = dayjs().format("YYYY-MM-DD");
@@ -24,10 +20,11 @@ export const DailyQuestionBadge = () => {
   const timeLeft = dayjs(todayIsoDate).endOf("day").diff(now);
   const hoursLeft = Math.max(0, Math.floor(timeLeft / (1000 * 60 * 60)));
   const peopleAnswered = 3;
+  const [isStartAnswering, setIsStartAnswering] = useState(true);
 
   const onClick = (e: React.MouseEvent) => {
-    setIsLoading(true);
     e.preventDefault();
+    setIsStartAnswering(!isStartAnswering);
   };
 
   if (!todaysQuestion) {
@@ -35,9 +32,8 @@ export const DailyQuestionBadge = () => {
   }
   return (
     <Stack
-      component={"a"}
-      href={urlToNavigate}
       onClick={onClick}
+      key={todayIsoDate}
       sx={{
         padding: "21px 20px 24px 20px",
         color: "#fff",
@@ -45,17 +41,26 @@ export const DailyQuestionBadge = () => {
         maxWidth: "700px",
         borderRadius: "8px",
         width: "100%",
+        height: "auto",
+        cursor: "pointer",
 
-        background: "linear-gradient(170deg, #731923ff 10%, #a12e36 100%)",
+        /*
+        background: isStartAnswering
+          ? "linear-gradient(170deg, rgba(30, 1, 1, 1) 10%, rgba(20, 12, 12, 1) 100%)"
+          : "linear-gradient(170deg, #731923ff 10%, #a12e36 100%)",
+        */
+        background: isStartAnswering ? "rgba(115, 25, 35, 0.2)" : "rgba(115, 25, 35, 1)",
+        boxShadow: isStartAnswering
+          ? "0px 0px 0px 1px rgba(255, 255, 255, 0.2)"
+          : "0px 0px 0px 1px rgba(255, 255, 255, 0.2)",
         flexDirection: "row",
+        transition: "all 0.3s ease",
         gap: "20px",
         alignItems: "center",
         boxSizing: "border-box",
         display: "grid",
         minHeight: "120px",
         gridTemplateColumns: "1fr",
-
-        opacity: isLoading ? 0.6 : 1,
       }}
     >
       <Stack
@@ -118,18 +123,64 @@ export const DailyQuestionBadge = () => {
           {todaysQuestion.title}
         </Typography>
 
-        <Typography
-          sx={{
-            paddingTop: "5px",
-            fontSize: "0.9rem",
-            fontWeight: 350,
-            lineHeight: 1.2,
-            color: "#fff",
-            opacity: 0.96,
-          }}
-        >
-          <Trans>{peopleAnswered} people answered already — see what they said & share yours</Trans>
-        </Typography>
+        {isStartAnswering ? (
+          <Stack>
+            <Typography
+              sx={{
+                paddingTop: "5px",
+                fontSize: "0.9rem",
+                fontWeight: 350,
+                lineHeight: 1.2,
+                color: "#fff",
+                opacity: 0.96,
+              }}
+            >
+              {todaysQuestion.description}
+            </Typography>
+            <Stack
+              sx={{
+                gap: "0px",
+                paddingTop: "20px",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "0.9rem",
+                  fontWeight: 500,
+                  color: "#fff",
+                  opacity: 0.96,
+                  paddingBottom: "8px",
+                }}
+              >
+                {i18n._("Hints:")}
+              </Typography>
+              <Stack
+                sx={{
+                  display: "flex",
+                }}
+              >
+                <IconTextList
+                  listItems={todaysQuestion.hints.map((h) => ({ title: h, icon: Lightbulb }))}
+                />
+              </Stack>
+            </Stack>
+          </Stack>
+        ) : (
+          <Typography
+            sx={{
+              paddingTop: "5px",
+              fontSize: "0.9rem",
+              fontWeight: 350,
+              lineHeight: 1.2,
+              color: "#fff",
+              opacity: 0.96,
+            }}
+          >
+            <Trans>
+              {peopleAnswered} people answered already — see what they said & share yours
+            </Trans>
+          </Typography>
+        )}
 
         <Stack
           sx={{
@@ -137,17 +188,18 @@ export const DailyQuestionBadge = () => {
             width: "max-content",
           }}
         >
-          <Button
-            LinkComponent={"span"}
-            href={urlToNavigate}
-            variant="outlined"
-            sx={{
-              color: "#fff",
-              borderColor: "#fff",
-            }}
-          >
-            {i18n._("Answer Now")}
-          </Button>
+          {!isStartAnswering && (
+            <Button
+              onClick={onClick}
+              variant="outlined"
+              sx={{
+                color: "#fff",
+                borderColor: "#fff",
+              }}
+            >
+              {i18n._("Answer Now")}
+            </Button>
+          )}
         </Stack>
       </Stack>
     </Stack>
