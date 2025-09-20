@@ -18,7 +18,6 @@ export const DailyQuestionBadge = () => {
   const appNavigation = useAppNavigation();
   const urlToNavigate = appNavigation.pageUrl("game");
   const todayIsoDate = dayjs().format("YYYY-MM-DD");
-  console.log("todayIsoDate:", todayIsoDate);
   const todaysQuestion = dailyQuestions[todayIsoDate];
   const router = useRouter();
   const now = useMemo(() => new Date(), []);
