@@ -73,7 +73,6 @@ function useProvideGame(): GameContextType {
   const [userNames, userNamesLoading] = useDocumentData(db.documents.gameUserNames2);
   const isLoading =
     gameRateLoading || gameLastVisitLoading || gameAvatarsLoading || userNamesLoading;
-  console.log("GAME isLoading", isLoading);
   const [isGamePlaying, setIsGamePlaying] = useState(false);
 
   const myAvatar = gameAvatars?.[userId || ""] || "";
