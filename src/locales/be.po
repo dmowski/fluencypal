@@ -13,7 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1729
+#: src/features/Game/GameMyUsername.tsx:76
+#. js-lingui-explicit-id
+msgid "Username is already taken"
+msgstr "Імя карыстальніка ўжо занята"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1728
 msgid "So you can keep your progress"
 msgstr "Такім чынам, вы можаце захоўваць свой прагрэс"
 
@@ -136,8 +141,8 @@ msgid "AI tutor cost"
 msgstr "Кошт AI-рэпетытара"
 
 #: src/features/Goal/GoalQuestions.tsx:65
-#: src/features/Goal/Quiz/QuizPage2.tsx:1680
-#: src/features/Goal/Quiz/QuizPage2.tsx:1756
+#: src/features/Goal/Quiz/QuizPage2.tsx:1679
+#: src/features/Goal/Quiz/QuizPage2.tsx:1755
 #: src/features/Header/NeedHelpModal.tsx:194
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
@@ -155,8 +160,8 @@ msgid "Cookies Policy"
 msgstr "Палітыка кукі"
 
 #: src/features/Goal/GoalQuestions.tsx:69
-#: src/features/Goal/Quiz/QuizPage2.tsx:1686
-#: src/features/Goal/Quiz/QuizPage2.tsx:1762
+#: src/features/Goal/Quiz/QuizPage2.tsx:1685
+#: src/features/Goal/Quiz/QuizPage2.tsx:1761
 #: src/features/Header/NeedHelpModal.tsx:181
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
@@ -446,7 +451,7 @@ msgstr "Вашыя дасягненні"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:172
 #: src/features/Dashboard/PlanDashboardCards.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:338
+#: src/features/Goal/Quiz/QuizPage2.tsx:337
 #: src/features/Landing/PlanLandingBlock.tsx:280
 #: src/features/Usage/UsageStatsCards.tsx:440
 #. js-lingui-explicit-id
@@ -473,60 +478,6 @@ msgstr "Агулам"
 msgid "Open history"
 msgstr "Адкрыць гісторыю"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1094
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
-#: src/features/Goal/Quiz/QuizPage2.tsx:826
-#: src/features/Goal/Quiz/QuizPage2.tsx:862
-#: src/features/Usage/SubscriptionWaiter.tsx:47
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "Выканана"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:56
-#. js-lingui-explicit-id
-msgid "Your subscription has been successfully changed."
-msgstr "Ваш падпісак быў паспяхова зменены."
-
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:265
-#: src/features/Usage/SubscriptionWaiter.tsx:60
-#: src/features/Usage/SubscriptionWaiter.tsx:81
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "Зачыніць"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:68
-#. js-lingui-explicit-id
-msgid "Waiting for payment..."
-msgstr "Чаканне аплаты..."
-
-#: src/features/Usage/SubscriptionWaiter.tsx:77
-#. js-lingui-explicit-id
-msgid "Please wait while we process your payment."
-msgstr "Калі ласка, пачакайце, пакуль мы апрацоўваем ваш плацёж."
-
-#: src/features/Usage/PayWall.tsx:64
-#. js-lingui-explicit-id
-msgid "Subscription needed"
-msgstr "Патрабуецца падпіска"
-
-#: src/features/Usage/PayWall.tsx:76
-#. js-lingui-explicit-id
-msgid "You've made amazing progress. Let’s keep going."
-msgstr "Вы зрабілі вялікі прагрэс. Давайце працягваем."
-
-#: src/features/Usage/PayWall.tsx:103
-#. js-lingui-explicit-id
-msgid "Buy a subscription"
-msgstr "Купіць падпіску"
-
-#: src/features/Usage/PayWall.tsx:115
-#. js-lingui-explicit-id
-msgid "Play the Game"
-msgstr "Гуляць у гульню"
-
 #: src/features/Usage/SubscriptionPaymentModal.tsx:72
 #: src/features/Usage/SubscriptionPaymentModal.tsx:91
 #: src/features/Usage/SubscriptionPaymentModal.tsx:221
@@ -550,9 +501,9 @@ msgstr "Памылка пры апрацоўцы аплаты"
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:251
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:157
-#: src/features/Goal/Quiz/QuizPage2.tsx:467
-#: src/features/Goal/Quiz/QuizPage2.tsx:490
-#: src/features/Goal/Quiz/QuizPage2.tsx:490
+#: src/features/Goal/Quiz/QuizPage2.tsx:466
+#: src/features/Goal/Quiz/QuizPage2.tsx:489
+#: src/features/Goal/Quiz/QuizPage2.tsx:489
 #: src/features/Header/PaymentHistoryModal.tsx:65
 #: src/features/RolePlay/RolePlayModal.tsx:267
 #: src/features/Telegram/TgAppPage.tsx:165
@@ -656,7 +607,7 @@ msgstr "Агулам:"
 
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #: src/features/Dashboard/SelectLanguage.tsx:292
-#: src/features/Game/PositionChangedModal.tsx:133
+#: src/features/Game/PositionChangedModal.tsx:134
 #: src/features/Goal/GoalQuestions.tsx:821
 #: src/features/Goal/GoalQuestions.tsx:860
 #: src/features/Plan/PlanCard.tsx:284
@@ -894,6 +845,60 @@ msgstr "Гісторыя плацяжоў:"
 msgid "No payments..."
 msgstr "Без плацяжоў..."
 
+#: src/features/Usage/PayWall.tsx:64
+#. js-lingui-explicit-id
+msgid "Subscription needed"
+msgstr "Патрабуецца падпіска"
+
+#: src/features/Usage/PayWall.tsx:76
+#. js-lingui-explicit-id
+msgid "You've made amazing progress. Let’s keep going."
+msgstr "Вы зрабілі вялікі прагрэс. Давайце працягваем."
+
+#: src/features/Usage/PayWall.tsx:103
+#. js-lingui-explicit-id
+msgid "Buy a subscription"
+msgstr "Купіць падпіску"
+
+#: src/features/Usage/PayWall.tsx:115
+#. js-lingui-explicit-id
+msgid "Play the Game"
+msgstr "Гуляць у гульню"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1094
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
+#: src/features/Goal/Quiz/QuizPage2.tsx:825
+#: src/features/Goal/Quiz/QuizPage2.tsx:861
+#: src/features/Usage/SubscriptionWaiter.tsx:47
+#. js-lingui-explicit-id
+msgid "Done"
+msgstr "Выканана"
+
+#: src/features/Usage/SubscriptionWaiter.tsx:56
+#. js-lingui-explicit-id
+msgid "Your subscription has been successfully changed."
+msgstr "Ваш падпісак быў паспяхова зменены."
+
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:265
+#: src/features/Usage/SubscriptionWaiter.tsx:60
+#: src/features/Usage/SubscriptionWaiter.tsx:81
+#. js-lingui-explicit-id
+msgid "Close"
+msgstr "Зачыніць"
+
+#: src/features/Usage/SubscriptionWaiter.tsx:68
+#. js-lingui-explicit-id
+msgid "Waiting for payment..."
+msgstr "Чаканне аплаты..."
+
+#: src/features/Usage/SubscriptionWaiter.tsx:77
+#. js-lingui-explicit-id
+msgid "Please wait while we process your payment."
+msgstr "Калі ласка, пачакайце, пакуль мы апрацоўваем ваш плацёж."
+
 #: src/features/Translation/useTranslate.tsx:147
 #. js-lingui-explicit-id
 msgid "No text to translate"
@@ -929,7 +934,7 @@ msgstr "Не запушчана ў дадатку Telegram"
 msgid "Loading."
 msgstr "Загрузка."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:395
+#: src/features/Goal/Quiz/QuizPage2.tsx:394
 #: src/features/Telegram/TgAppPage.tsx:164
 #. js-lingui-explicit-id
 msgid "Loading.."
@@ -1026,20 +1031,6 @@ msgstr "Пакіньце сваё паведамленне"
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
 msgstr "Мы цанім Ваш водгук!"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:258
-#: src/features/Dashboard/PlanDashboardCards.tsx:458
-#: src/features/Goal/Quiz/QuizPage2.tsx:453
-#: src/features/Landing/PlanLandingBlock.tsx:430
-#: src/features/Landing/PlanLandingBlock.tsx:560
-#: src/features/Landing/PlanLandingBlock.tsx:622
-#: src/features/Landing/Price/PricePage.tsx:280
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:328
-#: src/features/RolePlay/RolePlayCardApp.tsx:136
-#: src/features/RolePlay/RolePlayModal.tsx:267
-#. js-lingui-explicit-id
-msgid "Start"
-msgstr "Пачаць"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -1975,6 +1966,66 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "Усе сцэнары"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:258
+#: src/features/Dashboard/PlanDashboardCards.tsx:458
+#: src/features/Goal/Quiz/QuizPage2.tsx:452
+#: src/features/Landing/PlanLandingBlock.tsx:430
+#: src/features/Landing/PlanLandingBlock.tsx:560
+#: src/features/Landing/PlanLandingBlock.tsx:622
+#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:328
+#: src/features/RolePlay/RolePlayCardApp.tsx:136
+#: src/features/RolePlay/RolePlayModal.tsx:267
+#. js-lingui-explicit-id
+msgid "Start"
+msgstr "Пачаць"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:336
+#: src/features/Landing/PlanLandingBlock.tsx:279
+#: src/features/Navigation/NavigationBar.tsx:54
+#: src/features/RolePlay/RolePlayBoard.tsx:49
+#. js-lingui-explicit-id
+msgid "Role Play"
+msgstr "Ролевая гра"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show more"
+msgstr "Паказаць больш"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show less"
+msgstr "Паказаць менш"
+
+#: src/features/Plan/useGoalCreation.ts:41
+#: src/features/Plan/useGoalCreation.ts:71
+#: src/features/Plan/useGoalCreation.ts:93
+#: src/features/Plan/useGoalCreation.ts:96
+#: src/features/Plan/useGoalCreation.ts:100
+#: src/features/Plan/useGoalCreation.ts:109
+#: src/features/Plan/useGoalCreation.ts:115
+#: src/features/Plan/useGoalCreation.ts:119
+#. js-lingui-explicit-id
+msgid "Processing the goal..."
+msgstr "Апрацоўка мэты..."
+
+#: src/features/Plan/useGoalCreation.ts:133
+#. js-lingui-explicit-id
+msgid "Error Processing the goal"
+msgstr "Памылка пры апрацоўцы мэты"
+
+#: src/features/Plan/PlanCard.tsx:118
+#. js-lingui-explicit-id
+msgid "Send 6 messages to complete"
+msgstr "Адправце 6 паведамленняў, каб завершыць"
+
+#: src/features/Plan/PlanCard.tsx:137
+#. js-lingui-explicit-id
+msgid "Start lesson"
+msgstr "Пачаць урок"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
 #. js-lingui-explicit-id
 msgid ""
@@ -2094,35 +2145,6 @@ msgstr "Насалоджвайцеся гульнёй і глядзіце, як 
 msgid "Robot Thinking"
 msgstr "Робат думае"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:337
-#: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:54
-#: src/features/RolePlay/RolePlayBoard.tsx:49
-#. js-lingui-explicit-id
-msgid "Role Play"
-msgstr "Ролевая гра"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show more"
-msgstr "Паказаць больш"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show less"
-msgstr "Паказаць менш"
-
-#: src/features/Plan/PlanCard.tsx:118
-#. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "Адправце 6 паведамленняў, каб завершыць"
-
-#: src/features/Plan/PlanCard.tsx:137
-#. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "Пачаць урок"
-
 #: src/features/Navigation/NavigationBar.tsx:44
 #. js-lingui-explicit-id
 msgid "Home"
@@ -2132,23 +2154,6 @@ msgstr "Дома"
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Профіль"
-
-#: src/features/Plan/useGoalCreation.ts:41
-#: src/features/Plan/useGoalCreation.ts:71
-#: src/features/Plan/useGoalCreation.ts:93
-#: src/features/Plan/useGoalCreation.ts:96
-#: src/features/Plan/useGoalCreation.ts:100
-#: src/features/Plan/useGoalCreation.ts:109
-#: src/features/Plan/useGoalCreation.ts:115
-#: src/features/Plan/useGoalCreation.ts:119
-#. js-lingui-explicit-id
-msgid "Processing the goal..."
-msgstr "Апрацоўка мэты..."
-
-#: src/features/Plan/useGoalCreation.ts:133
-#. js-lingui-explicit-id
-msgid "Error Processing the goal"
-msgstr "Памылка пры апрацоўцы мэты"
 
 #: src/features/Lang/getLabels.tsx:9
 #. js-lingui-explicit-id
@@ -2263,8 +2268,8 @@ msgstr "План вучэння беларускай мовы"
 #: src/features/Dashboard/SelectLanguage.tsx:94
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/GoalQuestions.tsx:323
-#: src/features/Goal/Quiz/QuizPage2.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:996
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:995
 #: src/features/Goal/Quiz/useQuiz.tsx:622
 #: src/features/Lang/LanguageSwitcher.tsx:104
 #. js-lingui-explicit-id
@@ -2274,8 +2279,8 @@ msgstr "Іншыя мовы"
 #: src/features/Dashboard/SelectLanguage.tsx:95
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Goal/Quiz/QuizPage2.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:997
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
+#: src/features/Goal/Quiz/QuizPage2.tsx:996
 #: src/features/Goal/Quiz/useQuiz.tsx:623
 #: src/features/Lang/LanguageSwitcher.tsx:105
 #. js-lingui-explicit-id
@@ -2299,18 +2304,18 @@ msgstr "Мова для вучобы"
 msgid "Native Language"
 msgstr "Родная мова"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1191
+#: src/features/Goal/Quiz/QuizPage2.tsx:1190
 #: src/features/Lang/LanguageSwitcher.tsx:311
 #. js-lingui-explicit-id
 msgid "Page Language"
 msgstr "Мова старонкі"
 
-#: src/features/Landing/WelcomeScreen.tsx:193
+#: src/features/Landing/WelcomeScreen.tsx:180
 #. js-lingui-explicit-id
 msgid "Start Speaking"
 msgstr "Пачаць Размову"
 
-#: src/features/Landing/WelcomeScreen.tsx:215
+#: src/features/Landing/WelcomeScreen.tsx:202
 #. js-lingui-explicit-id
 msgid ""
 "Don’t let mistakes stop you. Build fluency and confidence with daily "
@@ -2799,14 +2804,14 @@ msgstr "Развіваць навыкі афіцыйнага пісьма для
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:98
-#: src/features/Goal/Quiz/QuizPage2.tsx:336
+#: src/features/Goal/Quiz/QuizPage2.tsx:335
 #: src/features/Landing/PlanLandingBlock.tsx:278
 #. js-lingui-explicit-id
 msgid "Conversation"
 msgstr "Размова"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
-#: src/features/Goal/Quiz/QuizPage2.tsx:339
+#: src/features/Goal/Quiz/QuizPage2.tsx:338
 #: src/features/Landing/PlanLandingBlock.tsx:281
 #. js-lingui-explicit-id
 msgid "Rule"
@@ -2890,7 +2895,7 @@ msgstr "3 дні бясплатна"
 msgid "Results are closer than you think"
 msgstr "Вынікі бліжэй, чым вы думаеце"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:467
+#: src/features/Goal/Quiz/QuizPage2.tsx:466
 #: src/features/Landing/PlanLandingBlock.tsx:661
 #. js-lingui-explicit-id
 msgid "Start Learning"
@@ -2936,7 +2941,7 @@ msgid "The first 3 days are free"
 msgstr "Першыя 3 дні бясплатныя"
 
 #: src/features/Goal/GoalQuestions.tsx:1256
-#: src/features/Goal/Quiz/QuizPage2.tsx:1746
+#: src/features/Goal/Quiz/QuizPage2.tsx:1745
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:337
 #. js-lingui-explicit-id
 msgid "No credit card required"
@@ -2986,44 +2991,6 @@ msgstr "Гатовы стаць вольным у англійскай мове?
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Паспрабуйце"
-
-#: src/features/Blog/BlogsPage.tsx:41
-#: src/features/Landing/Price/PricePage.tsx:971
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
-#. js-lingui-explicit-id
-msgid "Start Your Journey to Fluent Conversations Now"
-msgstr "Пачніце сваю падарожжу да вольных размоваў цяпер"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
-#. js-lingui-explicit-id
-msgid "Role Play Scenarios"
-msgstr "Сцэнарыі ролевых гульняў"
-
-#: src/features/Blog/ListBlog.tsx:72
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
-#. js-lingui-explicit-id
-msgid "Discover"
-msgstr "Адкрыць"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
-#. js-lingui-explicit-id
-msgid "No scenarios found"
-msgstr "Сцэнары не знойдзены"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "Практыкуйце шляхом ролявых гульняў у рэальных жыццёвых сітуацыях"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
-msgstr ""
-"Замовляйце ежу, распрацавайце графік прыёмаў, успешна праходзьце "
-"сабеседаванні на работу і многае іншае — усё пад кіраўніцтвам вашага "
-"штучнага інтэлекту-рэпетытара."
 
 #: src/features/Landing/Price/PricePage.tsx:105
 #. js-lingui-explicit-id
@@ -3422,52 +3389,43 @@ msgstr ""
 msgid "Contacts:"
 msgstr "Кантакты:"
 
-#: src/features/Landing/Contact/ContactsPage.tsx:104
+#: src/features/Blog/BlogsPage.tsx:41
+#: src/features/Landing/Price/PricePage.tsx:971
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
+#. js-lingui-explicit-id
+msgid "Start Your Journey to Fluent Conversations Now"
+msgstr "Пачніце сваю падарожжу да вольных размоваў цяпер"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "Практыкуйце шляхом ролявых гульняў у рэальных жыццёвых сітуацыях"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
 #. js-lingui-explicit-id
 msgid ""
-"My name is Alex, I am the creator of this website. I am a software engineer "
-"and I am passionate about learning languages. I created this website to "
-"help people learn languages in a fun and interactive way. I hope you enjoy "
-"using it!"
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
 msgstr ""
-"Мяне завуць Аляксей, я стваральнік гэтага вэб-сайта. Я - "
-"інжынер-праграміст, і мне вельмі падабаецца вучыцца мовам. Я стварыў гэты "
-"вэб-сайт, каб дапамагчы людзям вучыцца мовам у забавны і інтэрактыўны "
-"спосаб. Надзеюся, вам спадобаецца карыстацца ім!"
+"Замовляйце ежу, распрацавайце графік прыёмаў, успешна праходзьце "
+"сабеседаванні на работу і многае іншае — усё пад кіраўніцтвам вашага "
+"штучнага інтэлекту-рэпетытара."
 
-#: src/features/Landing/Contact/ContactsPage.tsx:117
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
 #. js-lingui-explicit-id
-msgid ""
-"Feel free to reach out to me with any questions or feedback. I'm always "
-"happy to help!"
-msgstr ""
-"Не саромейцеся звяртацца да мяне з любымі пытаннямі ці водгукамі. Я заўсёды "
-"рады дапамагчы!"
+msgid "Role Play Scenarios"
+msgstr "Сцэнарыі ролевых гульняў"
 
-#: src/features/Header/PaymentHistoryModal.tsx:21
+#: src/features/Blog/ListBlog.tsx:72
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
 #. js-lingui-explicit-id
-msgid "Trial balance"
-msgstr "Адправачны баланс"
+msgid "Discover"
+msgstr "Адкрыць"
 
-#: src/features/Header/PaymentHistoryModal.tsx:22
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
 #. js-lingui-explicit-id
-msgid "Payment"
-msgstr "Аплата"
-
-#: src/features/Header/PaymentHistoryModal.tsx:23
-#. js-lingui-explicit-id
-msgid "Gift"
-msgstr "Падарунак"
-
-#: src/features/Header/PaymentHistoryModal.tsx:24
-#. js-lingui-explicit-id
-msgid "Subscription (1 month)"
-msgstr "Падпіска (1 месяц)"
-
-#: src/features/Header/PaymentHistoryModal.tsx:25
-#. js-lingui-explicit-id
-msgid "Trial days"
-msgstr "Дні пробнага тэрміну"
+msgid "No scenarios found"
+msgstr "Сцэнары не знойдзены"
 
 #: src/features/Header/NeedHelpModal.tsx:69
 #: src/features/Header/NeedHelpModal.tsx:212
@@ -3572,6 +3530,69 @@ msgstr "Адпраўка..."
 msgid "Send"
 msgstr "Адправіць"
 
+#: src/features/Header/PaymentHistoryModal.tsx:21
+#. js-lingui-explicit-id
+msgid "Trial balance"
+msgstr "Адправачны баланс"
+
+#: src/features/Header/PaymentHistoryModal.tsx:22
+#. js-lingui-explicit-id
+msgid "Payment"
+msgstr "Аплата"
+
+#: src/features/Header/PaymentHistoryModal.tsx:23
+#. js-lingui-explicit-id
+msgid "Gift"
+msgstr "Падарунак"
+
+#: src/features/Header/PaymentHistoryModal.tsx:24
+#. js-lingui-explicit-id
+msgid "Subscription (1 month)"
+msgstr "Падпіска (1 месяц)"
+
+#: src/features/Header/PaymentHistoryModal.tsx:25
+#. js-lingui-explicit-id
+msgid "Trial days"
+msgstr "Дні пробнага тэрміну"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"My name is Alex, I am the creator of this website. I am a software engineer "
+"and I am passionate about learning languages. I created this website to "
+"help people learn languages in a fun and interactive way. I hope you enjoy "
+"using it!"
+msgstr ""
+"Мяне завуць Аляксей, я стваральнік гэтага вэб-сайта. Я - "
+"інжынер-праграміст, і мне вельмі падабаецца вучыцца мовам. Я стварыў гэты "
+"вэб-сайт, каб дапамагчы людзям вучыцца мовам у забавны і інтэрактыўны "
+"спосаб. Надзеюся, вам спадобаецца карыстацца ім!"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:117
+#. js-lingui-explicit-id
+msgid ""
+"Feel free to reach out to me with any questions or feedback. I'm always "
+"happy to help!"
+msgstr ""
+"Не саромейцеся звяртацца да мяне з любымі пытаннямі ці водгукамі. Я заўсёды "
+"рады дапамагчы!"
+
+#: src/features/Header/HeaderStatic.tsx:17
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "Ролавыя гульні"
+
+#: src/features/Header/HeaderStatic.tsx:20
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "Увайсці"
+
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:22
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "Патрэбна дапамога?"
+
 #: src/features/Header/HeaderPractice.tsx:202
 #. js-lingui-explicit-id
 msgid "Finishing..."
@@ -3589,21 +3610,56 @@ msgstr "Назад"
 msgid "Payment history"
 msgstr "Гісторыя плацяжоў"
 
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:22
+#: src/features/Goal/GoalPreparingModal.tsx:33
 #. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "Патрэбна дапамога?"
+msgid "You are on the right track!"
+msgstr "Вы на правільным шляху!"
 
-#: src/features/Header/HeaderStatic.tsx:17
+#: src/features/Goal/GoalPreparingModal.tsx:43
 #. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "Ролавыя гульні"
+msgid "Okay"
+msgstr "Добра"
 
-#: src/features/Header/HeaderStatic.tsx:20
+#: src/features/Goal/GoalPreparingModal.tsx:49
 #. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "Увайсці"
+msgid "What we need from you?"
+msgstr "Што нам патрэбна ад вас?"
+
+#: src/features/Goal/GoalPreparingModal.tsx:59
+#: src/features/Goal/Quiz/QuizPage2.tsx:1618
+#. js-lingui-explicit-id
+msgid "I agree"
+msgstr "Я згодны"
+
+#: src/features/Goal/GoalPreparingModal.tsx:65
+#. js-lingui-explicit-id
+msgid "From founder"
+msgstr "Ад заснавальніка"
+
+#: src/features/Goal/GoalPreparingModal.tsx:75
+#. js-lingui-explicit-id
+msgid "Got it"
+msgstr "Разумею"
+
+#: src/features/Goal/GoalPreparingModal.tsx:81
+#. js-lingui-explicit-id
+msgid "Almost ready..."
+msgstr "Прачы практычна гатова..."
+
+#: src/features/Goal/GoalPreparingModal.tsx:90
+#. js-lingui-explicit-id
+msgid "Let's do it"
+msgstr "Давайце гэта зрабім"
+
+#: src/features/Goal/GoalPreparingModal.tsx:96
+#. js-lingui-explicit-id
+msgid "Finally"
+msgstr "Нарешце"
+
+#: src/features/Goal/GoalPreparingModal.tsx:107
+#. js-lingui-explicit-id
+msgid "Let's rock it!"
+msgstr "Давайце разругнем гэта!"
 
 #: src/features/Goal/GoalQuestions.tsx:62
 #. js-lingui-explicit-id
@@ -3801,7 +3857,7 @@ msgid "Intensive"
 msgstr "Інтэнсіўны"
 
 #: src/features/Goal/GoalQuestions.tsx:387
-#: src/features/Goal/Quiz/QuizPage2.tsx:1254
+#: src/features/Goal/Quiz/QuizPage2.tsx:1253
 #. js-lingui-explicit-id
 msgid "I want to learn..."
 msgstr "Я хачу вывучыць..."
@@ -3822,10 +3878,10 @@ msgstr "Мая родная мова"
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
 #: src/features/Goal/GoalQuestions.tsx:1028
-#: src/features/Goal/Quiz/QuizPage2.tsx:864
-#: src/features/Goal/Quiz/QuizPage2.tsx:974
-#: src/features/Goal/Quiz/QuizPage2.tsx:1472
-#: src/features/Goal/Quiz/QuizPage2.tsx:1544
+#: src/features/Goal/Quiz/QuizPage2.tsx:863
+#: src/features/Goal/Quiz/QuizPage2.tsx:973
+#: src/features/Goal/Quiz/QuizPage2.tsx:1471
+#: src/features/Goal/Quiz/QuizPage2.tsx:1543
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "Далей"
@@ -3887,7 +3943,7 @@ msgstr "Закончыць запіс"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:342
 #: src/features/Goal/GoalQuestions.tsx:743
-#: src/features/Goal/Quiz/QuizPage2.tsx:865
+#: src/features/Goal/Quiz/QuizPage2.tsx:864
 #. js-lingui-explicit-id
 msgid "Record"
 msgstr "Запіс"
@@ -3968,251 +4024,200 @@ msgstr "Капіяваць спасылку"
 msgid "Open the plan"
 msgstr "Адкрыць план"
 
-#: src/features/Goal/GoalPreparingModal.tsx:33
-#. js-lingui-explicit-id
-msgid "You are on the right track!"
-msgstr "Вы на правільным шляху!"
-
-#: src/features/Goal/GoalPreparingModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Okay"
-msgstr "Добра"
-
-#: src/features/Goal/GoalPreparingModal.tsx:49
-#. js-lingui-explicit-id
-msgid "What we need from you?"
-msgstr "Што нам патрэбна ад вас?"
-
-#: src/features/Goal/GoalPreparingModal.tsx:59
-#: src/features/Goal/Quiz/QuizPage2.tsx:1619
-#. js-lingui-explicit-id
-msgid "I agree"
-msgstr "Я згодны"
-
-#: src/features/Goal/GoalPreparingModal.tsx:65
-#. js-lingui-explicit-id
-msgid "From founder"
-msgstr "Ад заснавальніка"
-
-#: src/features/Goal/GoalPreparingModal.tsx:75
-#. js-lingui-explicit-id
-msgid "Got it"
-msgstr "Разумею"
-
-#: src/features/Goal/GoalPreparingModal.tsx:81
-#. js-lingui-explicit-id
-msgid "Almost ready..."
-msgstr "Прачы практычна гатова..."
-
-#: src/features/Goal/GoalPreparingModal.tsx:90
-#. js-lingui-explicit-id
-msgid "Let's do it"
-msgstr "Давайце гэта зрабім"
-
-#: src/features/Goal/GoalPreparingModal.tsx:96
-#. js-lingui-explicit-id
-msgid "Finally"
-msgstr "Нарешце"
-
-#: src/features/Goal/GoalPreparingModal.tsx:107
-#. js-lingui-explicit-id
-msgid "Let's rock it!"
-msgstr "Давайце разругнем гэта!"
-
-#: src/features/Game/PositionChangedModal.tsx:101
-#. js-lingui-explicit-id
-msgid "Nice!"
-msgstr "Выдатна!"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:133
+#: src/features/Goal/Quiz/QuizPage2.tsx:132
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "Якую мову вы размаўляеце"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:134
+#: src/features/Goal/Quiz/QuizPage2.tsx:133
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "Такім чынам, я магу перавесці для вас словы"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:135
+#: src/features/Goal/Quiz/QuizPage2.tsx:134
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Усталяваць маю мову"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:143
+#: src/features/Goal/Quiz/QuizPage2.tsx:142
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Выберыце мову сайта"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:144
+#: src/features/Goal/Quiz/QuizPage2.tsx:143
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Гэта тэкст, які вы бачыце на кнопках і меню"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:154
+#: src/features/Goal/Quiz/QuizPage2.tsx:153
 #. js-lingui-explicit-id
 msgid "We are ready"
 msgstr "Мы гатовы"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:155
+#: src/features/Goal/Quiz/QuizPage2.tsx:154
 #. js-lingui-explicit-id
 msgid "Let's talk. Tell me  about yourself"
 msgstr "Давай пагаворым. Раскажы мне пра сябе"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:173
+#: src/features/Goal/Quiz/QuizPage2.tsx:172
 #. js-lingui-explicit-id
 msgid "Tell me about yourself"
 msgstr "Раскажы мне пра сябе"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:209
+#: src/features/Goal/Quiz/QuizPage2.tsx:208
 #. js-lingui-explicit-id
 msgid "Wow, that was awesome!"
 msgstr "Вау, гэта было цудоўна!"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:210
+#: src/features/Goal/Quiz/QuizPage2.tsx:209
 #. js-lingui-explicit-id
 msgid "Let's continue, I have a question for you!"
 msgstr "Давайце працягнем, у мяне ёсць пытанне для вас!"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:249
+#: src/features/Goal/Quiz/QuizPage2.tsx:248
 #. js-lingui-explicit-id
 msgid "Before the training plan..."
 msgstr "Перад планам трэніровак..."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:250
+#: src/features/Goal/Quiz/QuizPage2.tsx:249
 #. js-lingui-explicit-id
 msgid "Let's talk about your goals a bit more"
 msgstr "Давайце пагаворым пра вашы мэты крыху больш"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:289
+#: src/features/Goal/Quiz/QuizPage2.tsx:288
 #. js-lingui-explicit-id
 msgid "Now, we ready to create your learning plan"
 msgstr "Цяпер мы гатовы стварыць ваш план навучання"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:290
+#: src/features/Goal/Quiz/QuizPage2.tsx:289
 #. js-lingui-explicit-id
 msgid "It might take up to a minute"
 msgstr "Можа спатрэбіцца да хвіліны"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:329
+#: src/features/Goal/Quiz/QuizPage2.tsx:328
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "Памылка пры стварэнні плана. Калі ласка, паспрабуйце яшчэ раз."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:384
+#: src/features/Goal/Quiz/QuizPage2.tsx:383
 #. js-lingui-explicit-id
 msgid "Your plan for learning"
 msgstr "Ваш план навучання"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:624
+#: src/features/Goal/Quiz/QuizPage2.tsx:623
 #. js-lingui-explicit-id
 msgid "Hobbies or interests"
 msgstr "Хобі або інтарэсы"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:628
+#: src/features/Goal/Quiz/QuizPage2.tsx:627
 #. js-lingui-explicit-id
 msgid "Main goal in learning"
 msgstr "Асноўная мэта ў навучанні"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:632
+#: src/features/Goal/Quiz/QuizPage2.tsx:631
 #. js-lingui-explicit-id
 msgid "Do you have any travel plans?"
 msgstr "Ці ёсць у вас якія-небудзь планы падарожжаў?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:636
+#: src/features/Goal/Quiz/QuizPage2.tsx:635
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "Фільмы, кнігі або музыка"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:750
+#: src/features/Goal/Quiz/QuizPage2.tsx:749
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "Ваш адказ"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:779
+#: src/features/Goal/Quiz/QuizPage2.tsx:778
 #. js-lingui-explicit-id
 msgid "Processing..."
 msgstr "Апрацоўка..."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:826
+#: src/features/Goal/Quiz/QuizPage2.tsx:825
 #. js-lingui-explicit-id
 msgid "Record more"
 msgstr "Запісаць яшчэ"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1071
+#: src/features/Goal/Quiz/QuizPage2.tsx:1070
 #. js-lingui-explicit-id
 msgid "Native language"
 msgstr "Родная мова"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1110
+#: src/features/Goal/Quiz/QuizPage2.tsx:1109
 #. js-lingui-explicit-id
 msgid "No results found"
 msgstr "Нічога не знойдзена"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1583
+#: src/features/Goal/Quiz/QuizPage2.tsx:1582
 #. js-lingui-explicit-id
 msgid "Daily conversations without fear of judgment"
 msgstr "Штодзённыя размовы без страху асуджэння"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1587
+#: src/features/Goal/Quiz/QuizPage2.tsx:1586
 #. js-lingui-explicit-id
 msgid "Corrections when you get stuck"
 msgstr "Выпраўленні, калі вы затрымаліся"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1592
+#: src/features/Goal/Quiz/QuizPage2.tsx:1591
 #. js-lingui-explicit-id
 msgid "Personalized plan tailored to your goals"
 msgstr "Перапрацаваны план, адаптаваны да вашых мэтаў"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1597
+#: src/features/Goal/Quiz/QuizPage2.tsx:1596
 #. js-lingui-explicit-id
 msgid "Grammar corrections to boost your confidence"
 msgstr "Карэкцыя граматыкі, каб узмацніць вашу ўпэўненасць"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1601
+#: src/features/Goal/Quiz/QuizPage2.tsx:1600
 #. js-lingui-explicit-id
 msgid "Learn useful words so you never go blank mid-sentence"
 msgstr "Вучыце карысныя словы, каб вы ніколі не замаўчалі на паўслове"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1606
+#: src/features/Goal/Quiz/QuizPage2.tsx:1605
 #. js-lingui-explicit-id
 msgid "Practice real-life situations in advance"
 msgstr "Практыкуйце рэальныя сітуацыі загадзя"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1660
+#: src/features/Goal/Quiz/QuizPage2.tsx:1659
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "Мы апрацоўваем ваш голас з дапамогай ІІ"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1665
+#: src/features/Goal/Quiz/QuizPage2.tsx:1664
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "Вашы транскрыпцыі надзейна захоўваюцца ў нашым сэрвісе"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1670
+#: src/features/Goal/Quiz/QuizPage2.tsx:1669
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
 msgstr "Вы можаце выдаліць свае персанальныя дадзеныя ў любы час"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1675
+#: src/features/Goal/Quiz/QuizPage2.tsx:1674
 #. js-lingui-explicit-id
 msgid "We use cookies to enhance your experience"
 msgstr "Мы выкарыстоўваем файлы cookie, каб палепшыць ваш вопыт"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1702
+#: src/features/Goal/Quiz/QuizPage2.tsx:1701
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Увайсці з Google"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1741
+#: src/features/Goal/Quiz/QuizPage2.tsx:1740
 #. js-lingui-explicit-id
 msgid "3 days of full access for free"
 msgstr "3 дні поўнага доступу бясплатна"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1751
+#: src/features/Goal/Quiz/QuizPage2.tsx:1750
 #. js-lingui-explicit-id
 msgid "No ads, no spam"
 msgstr "Ніякай рэкламы, ніякага спаму"
+
+#: src/features/Game/PositionChangedModal.tsx:102
+#. js-lingui-explicit-id
+msgid "Nice!"
+msgstr "Выдатна!"
 
 #: src/features/Game/GameOnboarding.tsx:187
 #: src/features/Game/GamePage.tsx:23
@@ -4231,61 +4236,27 @@ msgstr "Рэйтынг:"
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Увайдзіце ў топ-5, каб атрымаць дадатак бясплатна"
 
-#: src/features/Game/GameOnboarding.tsx:52
-#. js-lingui-explicit-id
-msgid "Learn and Play"
-msgstr "Вучыцца і гуляць"
-
-#: src/features/Game/GameOnboarding.tsx:61
-#. js-lingui-explicit-id
-msgid "Describe images, craft sentences, and translate words"
-msgstr "Апісвайце выявы, стварайце пропазіцыі і перакладайце словы"
-
-#: src/features/Game/GameOnboarding.tsx:105
-#. js-lingui-explicit-id
-msgid "You have a chance"
-msgstr "У вас ёсць шанец"
-
-#: src/features/Game/GameOnboarding.tsx:114
-#. js-lingui-explicit-id
-msgid ""
-"Each day, we remove 3 points from everyone so that everyone has a fair "
-"chance to win."
-msgstr ""
-"Кожны дзень мы забіраем 3 ачкі ў кожнага, каб усе мелі чэсную можнасць "
-"перамагчы."
-
-#: src/features/Game/GameOnboarding.tsx:151
-#. js-lingui-explicit-id
-msgid "Let’s make sure you’re ready"
-msgstr "Давайце ўпэўнімся, што вы гатовы"
-
-#: src/features/Game/GameOnboarding.tsx:162
-#. js-lingui-explicit-id
-msgid "Your Avatar:"
-msgstr "Ваш Аватар:"
-
 #: src/features/Game/GameNativeLanguageSelector.tsx:49
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "Ваша Родная Мова:"
 
-#: src/features/Game/GameMyUsername.tsx:26
+#: src/features/Game/GameMyUsername.tsx:34
 #. js-lingui-explicit-id
 msgid "Username must be at least 3 characters long."
 msgstr "Імя карыстальніка павінна быць не менш за 3 сімвалы."
 
-#: src/features/Game/GameMyUsername.tsx:45
+#: src/features/Game/GameMyUsername.tsx:53
 #. js-lingui-explicit-id
 msgid "Game username:"
 msgstr "Імя карыстальніка ў гульні:"
 
-#: src/features/Game/GameMyAvatar.tsx:27
+#: src/features/Game/GameMyAvatar.tsx:26
 #. js-lingui-explicit-id
 msgid "Avatar"
 msgstr "Аватар"
 
-#: src/features/Game/GameMyAvatar.tsx:36
+#: src/features/Game/GameMyAvatar.tsx:35
 #. js-lingui-explicit-id
 msgid "Select your game avatar"
 msgstr "Выберыце свой аватар у гульні"
@@ -4324,15 +4295,21 @@ msgstr "Апішыце тэму сваімі словамі..."
 msgid "Error: "
 msgstr "Памылка:"
 
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Form a sentence"
+msgstr "Складзіце працэнзію"
+
 #: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Перакладзіце слова"
 
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
 #. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "Складзіце працэнзію"
+msgid "Describe the image"
+msgstr "Апішыце малюнак"
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
 #. js-lingui-explicit-id
@@ -4356,11 +4333,39 @@ msgstr "Падаць"
 msgid "Error:"
 msgstr "Памылка:"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
+#: src/features/Game/GameOnboarding.tsx:52
 #. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "Апішыце малюнак"
+msgid "Learn and Play"
+msgstr "Вучыцца і гуляць"
+
+#: src/features/Game/GameOnboarding.tsx:61
+#. js-lingui-explicit-id
+msgid "Describe images, craft sentences, and translate words"
+msgstr "Апісвайце выявы, стварайце пропазіцыі і перакладайце словы"
+
+#: src/features/Game/GameOnboarding.tsx:105
+#. js-lingui-explicit-id
+msgid "You have a chance"
+msgstr "У вас ёсць шанец"
+
+#: src/features/Game/GameOnboarding.tsx:114
+#. js-lingui-explicit-id
+msgid ""
+"Each day, we remove 3 points from everyone so that everyone has a fair "
+"chance to win."
+msgstr ""
+"Кожны дзень мы забіраем 3 ачкі ў кожнага, каб усе мелі чэсную можнасць "
+"перамагчы."
+
+#: src/features/Game/GameOnboarding.tsx:151
+#. js-lingui-explicit-id
+msgid "Let’s make sure you’re ready"
+msgstr "Давайце ўпэўнімся, што вы гатовы"
+
+#: src/features/Game/GameOnboarding.tsx:162
+#. js-lingui-explicit-id
+msgid "Your Avatar:"
+msgstr "Ваш Аватар:"
 
 #: src/features/Dashboard/WordsToLearn.tsx:32
 #. js-lingui-explicit-id
@@ -4411,6 +4416,11 @@ msgstr "Новыя словы"
 msgid "Practice new vocabulary with the AI"
 msgstr "Практыкуйце новую лексіку з АІ"
 
+#: src/features/Dashboard/RulesToLearn.tsx:36
+#. js-lingui-explicit-id
+msgid "New rule to practice."
+msgstr "Новае правіла для практыкі."
+
 #: src/features/Dashboard/SelectLanguage.tsx:143
 #. js-lingui-explicit-id
 msgid "Almost there!"
@@ -4431,29 +4441,6 @@ msgstr "Вучыцца"
 msgid "Page"
 msgstr "Старонка"
 
-#: src/features/Dashboard/RulesToLearn.tsx:36
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "Новае правіла для практыкі."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1383
-#: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:326
-#: src/features/Dashboard/PlanDashboardCards.tsx:515
-#. js-lingui-explicit-id
-msgid "Goal"
-msgstr "Мэта"
-
-#: src/features/Dashboard/GoalCard.tsx:13
-#. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Выстаўце мэту вашага навучання"
-
-#: src/features/Dashboard/GoalCard.tsx:28
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "Пачаць | 5 хв"
-
 #: src/features/Dashboard/PlanDashboardCards.tsx:84
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
@@ -4473,6 +4460,14 @@ msgstr "Цяпер давайце вызначым вашу пачатковую
 #. js-lingui-explicit-id
 msgid "Learning Plan"
 msgstr "План навучання"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1383
+#: src/features/Dashboard/GoalCard.tsx:12
+#: src/features/Dashboard/PlanDashboardCards.tsx:326
+#: src/features/Dashboard/PlanDashboardCards.tsx:515
+#. js-lingui-explicit-id
+msgid "Goal"
+msgstr "Мэта"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:327
 #. js-lingui-explicit-id
@@ -4538,6 +4533,16 @@ msgstr "Прапусціць"
 #. js-lingui-explicit-id
 msgid "Show all"
 msgstr "Паказаць усё"
+
+#: src/features/Dashboard/GoalCard.tsx:13
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Выстаўце мэту вашага навучання"
+
+#: src/features/Dashboard/GoalCard.tsx:28
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "Пачаць | 5 хв"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:110
 #. js-lingui-explicit-id
@@ -4730,20 +4735,20 @@ msgstr "Абвешчанне было адпраўлена ​​каманде 
 msgid "Reload page"
 msgstr "Перазагрузіць старонку"
 
-#: src/features/Conversation/AliasGamePanel.tsx:122
+#: src/features/Conversation/ConversationPage.tsx:134
 #. js-lingui-explicit-id
-msgid "Describe these words:"
-msgstr "Апішыце гэтыя словы:"
+msgid "Loading Goal..."
+msgstr "Загрузка мэты..."
 
-#: src/features/Conversation/AliasGamePanel.tsx:171
+#: src/features/Conversation/ConversationPage.tsx:158
 #. js-lingui-explicit-id
-msgid "More options"
-msgstr "Больш варыянтаў"
+msgid "Crafting new words..."
+msgstr "Стварэнне новых слоў..."
 
-#: src/features/Conversation/AliasGamePanel.tsx:180
+#: src/features/Conversation/ConversationPage.tsx:162
 #. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "Здагаданыя словы:"
+msgid "Crafting new rule..."
+msgstr "Стварэнне новага правіла..."
 
 #: src/features/Conversation/ConfirmConversationModal.tsx:33
 #. js-lingui-explicit-id
@@ -4765,25 +4770,698 @@ msgstr "Так, я гатовы"
 msgid "No"
 msgstr "Не"
 
-#: src/features/Conversation/ConversationPage.tsx:134
+#: src/features/Conversation/ConversationCanvas2.tsx:360
 #. js-lingui-explicit-id
-msgid "Loading Goal..."
-msgstr "Загрузка мэты..."
+msgid "Idea for your message"
+msgstr "Ідэя для вашага паведамлення"
 
-#: src/features/Conversation/ConversationPage.tsx:158
+#: src/features/Conversation/ConversationCanvas2.tsx:418
 #. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "Стварэнне новых слоў..."
+msgid "Lesson Review"
+msgstr "Агляд урока"
 
-#: src/features/Conversation/ConversationPage.tsx:162
+#: src/features/Conversation/ConversationCanvas2.tsx:439
 #. js-lingui-explicit-id
-msgid "Crafting new rule..."
-msgstr "Стварэнне новага правіла..."
+msgid "Language level:"
+msgstr "Узровень мовы:"
 
-#: src/features/Blog/ListBlog.tsx:131
+#: src/features/Conversation/ConversationCanvas2.tsx:441
+#: src/features/Conversation/ConversationCanvas2.tsx:448
+#: src/features/Conversation/ConversationCanvas2.tsx:455
+#: src/features/Conversation/ConversationCanvas2.tsx:744
+#: src/features/Conversation/ConversationCanvas2.tsx:883
+#: src/features/Conversation/ConversationCanvas2.tsx:890
 #. js-lingui-explicit-id
-msgid "No blogs found"
-msgstr "Не знойдзены блогаў"
+msgid "Analyzing..."
+msgstr "Аналізуецца..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:446
+#. js-lingui-explicit-id
+msgid "What was great:"
+msgstr "Што было выдатна:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:453
+#. js-lingui-explicit-id
+msgid "Areas to improve:"
+msgstr "Галіны для паляпшэння:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:478
+#. js-lingui-explicit-id
+msgid "Continue conversation"
+msgstr "Працягваць размову"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:491
+#. js-lingui-explicit-id
+msgid "Start new lesson"
+msgstr "Пачаць новы ўрок"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:678
+#. js-lingui-explicit-id
+msgid "Error during analyzing message"
+msgstr "Памылка пры аналізе паведамлення"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:732
+#. js-lingui-explicit-id
+msgid "Almost correct"
+msgstr "Прачы папраўна"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:747
+#. js-lingui-explicit-id
+msgid "Great!"
+msgstr "Выдатна!"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:770
+#. js-lingui-explicit-id
+msgid "Your Message"
+msgstr "Ваша паведамленне"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:842
+#. js-lingui-explicit-id
+msgid "Corrected"
+msgstr "Выпраўлена"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:937
+#. js-lingui-explicit-id
+msgid "New Words to Vocabulary:"
+msgstr "Новыя словы ў слоўнік:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:982
+#. js-lingui-explicit-id
+msgid "Analyzing"
+msgstr "Аналіз"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:989
+#. js-lingui-explicit-id
+msgid "Preparing Goal"
+msgstr "Падрыхтоўка Мэты"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1009
+#. js-lingui-explicit-id
+msgid "Goal is created"
+msgstr "Мэта створана"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1019
+#. js-lingui-explicit-id
+msgid "Lessons added:"
+msgstr "Дададзеныя урокі:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1040
+#. js-lingui-explicit-id
+msgid "Open plan"
+msgstr "Адкрыты план"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1113
+#. js-lingui-explicit-id
+msgid "Stop"
+msgstr "Стоп"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1145
+#. js-lingui-explicit-id
+msgid "Record Message"
+msgstr "Запісаць паведамленне"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1179
+#. js-lingui-explicit-id
+msgid "Finish conversation"
+msgstr "Завяршыць размову"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1196
+#. js-lingui-explicit-id
+msgid "Turn Volume Off"
+msgstr "Адключыць гук"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1196
+#. js-lingui-explicit-id
+msgid "Turn Volume On"
+msgstr "Уключыць гук"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1217
+#. js-lingui-explicit-id
+msgid "Voice record mode"
+msgstr "Рэжым галасавога запісу"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1240
+#. js-lingui-explicit-id
+msgid "Keyboard mode"
+msgstr "Рэжым клавіятуры"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1263
+#. js-lingui-explicit-id
+msgid "Phone call mode"
+msgstr "Рэжым тэлефоннага званка"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1285
+#. js-lingui-explicit-id
+msgid "Help with answer"
+msgstr "Дапамагчы з адказам"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1308
+#. js-lingui-explicit-id
+msgid "Your message..."
+msgstr "Ваша паведамленне..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1359
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "Місія выканана"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1371
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "Адкрыць вынікі"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1413
+#. js-lingui-explicit-id
+msgid "Re-write"
+msgstr "Перапісаць"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1473
+#. js-lingui-explicit-id
+msgid "Cancel recording"
+msgstr "Скасаваць запіс"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1497
+#. js-lingui-explicit-id
+msgid "Low balance"
+msgstr "Нізкі баланс"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1505
+#. js-lingui-explicit-id
+msgid "Top up"
+msgstr "Папаўніць"
+
+#: src/features/Blog/ListBlogIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Read and Learn with my blog"
+msgstr "Чытайце і вучыцеся з маім блогам"
+
+#: src/features/Blog/ListBlogIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
+msgstr ""
+"Атрымайце натхненне і даведайцеся пра апошнія трэнды ў вучэнні моваў, "
+"навучанні і тэхналогіях."
+
+#: src/features/Conversation/AliasGamePanel.tsx:122
+#. js-lingui-explicit-id
+msgid "Describe these words:"
+msgstr "Апішыце гэтыя словы:"
+
+#: src/features/Conversation/AliasGamePanel.tsx:171
+#. js-lingui-explicit-id
+msgid "More options"
+msgstr "Больш варыянтаў"
+
+#: src/features/Conversation/AliasGamePanel.tsx:180
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "Здагаданыя словы:"
+
+#: src/features/Blog/BlogCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Read more"
+msgstr "Чытаць далей"
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "Праглядзець усе запісы"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "Ролевыя сцэнары для практыкі"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "Вы можаце паспрабаваць AI ў дзеянні зараз"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "Паспрабуйце бясплатна"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
+#. js-lingui-explicit-id
+msgid "At the end, we’ll share a valuable tool for realistic interview practice."
+msgstr ""
+"У канцы, мы падзялімся каштоўным інструментам для рэалістычнай практыкі "
+"інтэрв'ю."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
+#. js-lingui-explicit-id
+msgid "Introduction: Small Talk with the Interviewer"
+msgstr "Увод: Нефармальная размова з інтэрв'юерам"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
+#. js-lingui-explicit-id
+msgid ""
+"The first few minutes of an interview are often dedicated to casual "
+"conversation — also known as 'SmallTalk'. Recruiters use this time to "
+"create a friendly atmosphere and get to know you a bit better."
+msgstr ""
+"Першыя некалькі хвілін інтэрвію часта прысвячаюцца неканкрэтнай размове — "
+"якую яшчэ называюць 'SmallTalk'. Рэкрутары выкарыстоўваюць гэты час для "
+"стварэння дружнага атмасферу і лепшага вас пазнання."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
+#. js-lingui-explicit-id
+msgid "Don’t skip small talk"
+msgstr "Не праглядайце невялікі размовы"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
+#. js-lingui-explicit-id
+msgid ""
+"— it’s important to engage in this short conversation before jumping into "
+"professional topics. Here are some useful English phrases to start off the "
+"interview:"
+msgstr ""
+"— важна заняцца гэтай кароткай размовай, перш чым прыступіць да прафесійных "
+"тэм. Вось некаторыя карысныя англійскія фразы для пачатку інтэрв'ю:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
+#. js-lingui-explicit-id
+msgid "English Phrases"
+msgstr "Англійскія фразы"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
+#. js-lingui-explicit-id
+msgid "A polite and professional greeting."
+msgstr "Вежлівае і прафесійнае вітанне."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
+#. js-lingui-explicit-id
+msgid "Expressing gratitude for the opportunity."
+msgstr "Выказванне падзякі за магчымасць."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
+#. js-lingui-explicit-id
+msgid "A standard reply to “How are you?”"
+msgstr "Стандартны адказ на \"Як справы?\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
+#. js-lingui-explicit-id
+msgid "A friendly compliment to break the ice."
+msgstr "Прыемны камплімент для размякчэння льоду."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"Smile, shake hands (if culturally appropriate), and speak in a friendly "
+"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
+"might say:"
+msgstr ""
+"Пасмяхніцеся, пацісніце руку (калі гэта дарэчна ў культурным аспекту), і "
+"гаварыце дружным тонам. Калі інтэрв'юэр спытае: \"Ці было у вас "
+"якія-небудзь праблемы з тым, каб знайсці нас?\", вы можаце сказаць:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"Short answers with a positive attitude show that you’re easy to talk to and "
+"open to dialogue."
+msgstr ""
+"Кароткія адказы з пазітыўным настроем паказваюць, што з вамі лёгка "
+"размаўляць і вы адкрытыя да дыялогу."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
+#. js-lingui-explicit-id
+msgid "Self-Introduction: Talking About Yourself"
+msgstr "Самаузнаёмства: Размова пра сябе"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
+#. js-lingui-explicit-id
+msgid "After the greeting, you'll usually hear:"
+msgstr "Пасля вітання, вы звычайна чуеце:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
+#. js-lingui-explicit-id
+msgid ""
+"This is your chance to introduce your experience and skills. Don’t list "
+"your full biography — focus on the highlights of your professional "
+"background. A good answer structure in English might look like this:"
+msgstr ""
+"Гэта ваша магчымасць прадставіць свой досвед і навыкі. Не прадставляйце "
+"сваю поўную біяграфію - засяродзецеся на ўзнагародах вашага прафесійнага "
+"фону. Добрая структура адказу на англійскай можа выглядаць так:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
+#. js-lingui-explicit-id
+msgid "For example:"
+msgstr "For example:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
+#. js-lingui-explicit-id
+msgid ""
+"Keep your answer focused: current or last position, a key achievement, and "
+"your interest in the company. Practice your self-introduction so you sound "
+msgstr ""
+"Трымацеце сваю адказ засяродзены: бягучая або апошняя пазіцыя, ключавыя "
+"дасягненні, і ваш інтарэс да кампаніі. Трэнуйце сваю самаставедкі, каб вы "
+"прыглядаліся"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
+#. js-lingui-explicit-id
+msgid "natural and not robotic"
+msgstr "прыродны і не робатычны"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
+#. js-lingui-explicit-id
+msgid "Useful Phrases for Self-Introduction"
+msgstr "Карысныя фразы для самапрэзентацыі"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
+#. js-lingui-explicit-id
+msgid ""
+"Use these templates to craft your own story. Don’t forget to mention an "
+"achievement:"
+msgstr ""
+"Выкарыстоўвайце гэтыя шаблоны для стварэння сваёй гісторыі. Не забывайце "
+"згадаць пра свае дасягненне:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
+#. js-lingui-explicit-id
+msgid "This shows results and makes you stand out."
+msgstr "Гэта паказвае вынікі і робіць вас улічным."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
+#. js-lingui-explicit-id
+msgid "Answering Typical Interview Questions"
+msgstr "Адказы на типовыя пытанні падчас інтэрв'ю"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
+#. js-lingui-explicit-id
+msgid ""
+"Recruiters ask a variety of standard questions to understand your "
+"motivation and personality. Preparing answers in advance will help you stay "
+"calm and articulate. Focus on showing enthusiasm and confidence in your "
+"skills. Let’s look at some common questions and how to answer them:"
+msgstr ""
+"Рэкрутэры задаюць розныя стандартныя пытанні, каб зразумець вашу мацівацыю "
+"і асабістасць. Падрыхтоўка адказаў наперад дапаможа вам заставацца "
+"спакойнымі і выразна выкладваць свае думкі. Сконцэнтруйцеся на дэманстрацыі "
+"энтузіязму і ўпэўненасці ў сваіх навыках. Паглядзім на некаторыя "
+"распаўсюджаныя пытанні і як на іх адказваць:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
+#. js-lingui-explicit-id
+msgid "Show knowledge of the company and genuine interest. For example:"
+msgstr "Паказвайце веды пра кампанію і сапраўдны інтарэс. Напрыклад:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
+#. js-lingui-explicit-id
+msgid "Highlight your strengths relevant to the role:"
+msgstr "Вылучыце свае сілы, якія ўтэчныя для ролі:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
+#. js-lingui-explicit-id
+msgid "Show your long-term goals:"
+msgstr "Пакажыце свае даўгатэрміновыя мэты:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
+#. js-lingui-explicit-id
+msgid "Other common questions include:"
+msgstr "Іншыя распаўсюджаныя пытанні:\n"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
+#. js-lingui-explicit-id
+msgid "Prepare short, honest, and positive answers with real-life examples."
+msgstr "Падрыхтуйце кароткія, чэсныя і пазітыўныя адказы з рэальнымі прыкладамі."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
+#. js-lingui-explicit-id
+msgid "If you don’t understand a question, don’t panic — ask politely:"
+msgstr "Калі вы не разумееце пытанне, не панікуйце — пытайцеся палітака:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
+#. js-lingui-explicit-id
+msgid "Talking About Strengths and Weaknesses"
+msgstr "Гаворка пра сілы і слабасці"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"Most interviews include the classic “strengths and weaknesses” question. "
+"It’s especially important to handle this well in English."
+msgstr ""
+"Большасць інтэрв'ю ўключае класічныя пытанні пра \"сілы і слабості\". "
+"Асабліва важна гэта добра апрацоўваць на англійскай мове."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
+#. js-lingui-explicit-id
+msgid "Strengths:"
+msgstr "Сілы:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
+"examples. For instance:"
+msgstr ""
+"Выберыце 2-3 ключавыя якасці, якія рэлевантныя для работы. Унікаеце клішэ і "
+"падайце прыклады. Напрыклад:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
+#. js-lingui-explicit-id
+msgid "Other useful strengths:"
+msgstr "Іншыя карысныя мацаванні:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
+#. js-lingui-explicit-id
+msgid "Weaknesses:"
+msgstr "Слабасткі:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
+#. js-lingui-explicit-id
+msgid ""
+"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
+"mention a minor issue and how you’re working to improve it:"
+msgstr ""
+"Будзьце шчырымі, але дыпламатычнымі. Не кажыце \"У мяне няма слабасцей\". "
+"Замест гэтага, упамяніце дробную праблему і як вы працуеце над яе "
+"паляпшэннем:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
+#. js-lingui-explicit-id
+msgid "This approach shows self-awareness and growth."
+msgstr "Гэты падыход паказвае самасвядомасць і рост."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
+#. js-lingui-explicit-id
+msgid "Questions to Ask the Employer"
+msgstr "Пытанні, якія трэба задаць працадаўцу"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
+#. js-lingui-explicit-id
+msgid "At the end of the interview, you’ll usually be asked:"
+msgstr "На канцы інтэрв'ю вам звычайна задаюць:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
+#. js-lingui-explicit-id
+msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
+msgstr "Ніколі не кажыце \"не\". Падрыхтуйце 2-3 разумныя пытанні наперад:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
+#. js-lingui-explicit-id
+msgid "Always respond politely:"
+msgstr "Заўсёды вадзіцеся вежліва:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
+#. js-lingui-explicit-id
+msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
+msgstr ""
+"Паказвайце цікавасць і зацікаўленасць. Не забывайце дзякуйца ім за іх "
+"адказы:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
+#. js-lingui-explicit-id
+msgid "Ending the Interview: Final Phrases"
+msgstr "Заканчэнне інтэрв'ю: канчатковыя фразы"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
+#. js-lingui-explicit-id
+msgid ""
+"Wrap up the interview with gratitude and confidence. Use these phrases to "
+"end on a positive note:"
+msgstr ""
+"Завяршыце інтэрвію з падзякаваннем і упэўненасцю. Выкарыстоўвайце гэтыя "
+"фразы для пазітыўнага заканчэння:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"If it was an in-person interview, shake hands and maintain eye contact. If "
+"it was online, say goodbye with a friendly tone. Consider sending a "
+"thank-you email the next day:"
+msgstr ""
+"Калі гэта было асабістае спатканне, паціскайце руку і падтрымлівайце "
+"зрокавы кантакт. Калі гэта было ў інтэрнэце, прасціцеся зь дружалюбным "
+"тонам. Разгледзіце магчымасць адправіць ліст з падзякамі на наступны дзень:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
+#. js-lingui-explicit-id
+msgid "Common Mistakes to Avoid"
+msgstr "Распаўсюджаныя Памылкі, Якіх Трэба Ўникнуць"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
+#. js-lingui-explicit-id
+msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
+msgstr ""
+"Прапусціць незначныя размовы — Следуйце за кіраўніцтвам інтэрв'юэра і "
+"будзьце прыязнымі."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
+#. js-lingui-explicit-id
+msgid ""
+"Saying “I don’t know” directly — Instead say: “That’s an interesting "
+"question. Let me think for a moment.”"
+msgstr ""
+"Казаць \"Я не ведаю\" напрамую — Замест гэтага скажыце: \"Гэта цікавае "
+"пытанне. Дайце падумаць на хвілінку.\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
+#. js-lingui-explicit-id
+msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
+msgstr ""
+"Нехаплівасць — Выкарыстоўвайце *калі ласка*, *дзякуй*, *выбачце* калі гэта "
+"неабходна."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
+#. js-lingui-explicit-id
+msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
+msgstr ""
+"Перазанадта трэніраваныя адказы - Не заўважайце; падрыхтуйце ідэі і "
+"гаварыце натуральна."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
+#. js-lingui-explicit-id
+msgid ""
+"Negative comments — Never badmouth past employers. Stay neutral and "
+"constructive."
+msgstr ""
+"Негатыўныя каментарыі — Ніколі не абкрываеце папярэдніх працадаўцаў. "
+"Заставайцеся неўтэчнымі і канструктыўнымі."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
+#. js-lingui-explicit-id
+msgid ""
+"Showing no interest — Ask questions and react positively to company "
+"information."
+msgstr ""
+"Паказваць няма зацікавлення — Задавайце пытанні і рэагуйце пазітыўна на "
+"інфармацыю кампаніі."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
+#. js-lingui-explicit-id
+msgid ""
+"Avoiding these mistakes will make you look more professional and increase "
+"your chances of success."
+msgstr ""
+"Уніканне гэтых памылак зробіць вас болей прафесійным і павялічыць шансы на "
+"паспяху."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
+#. js-lingui-explicit-id
+msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
+msgstr "Практыка інтэрв'ю на FluencyPal: Ваш шлях да ўпэўненасці"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
+#. js-lingui-explicit-id
+msgid ""
+"Knowing useful phrases and tips is great, but the most important step is "
+"real-world practice. The best way to prepare is to do a mock interview. "
+"That’s exactly what the interactive role-play on FluencyPal offers."
+msgstr ""
+"Ведаць карысныя фразы і рады - гэта прыгожа, але самы важны крок - гэта "
+"практыка ў рэальным свеце. Лепшы спосаб падрыхтавацца - гэта правесці "
+"макетнае інтэрв'ю. Гэта дакладна тое, што прапонуе інтэрактыўная ролевая "
+"гульня на FluencyPal."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
+#. js-lingui-explicit-id
+msgid ""
+"On this platform, you can upload your resume, specify your desired job, and "
+"go through a realistic interview with an AI interviewer."
+msgstr ""
+"На гэтай платформе вы можаце загрузіць сваё рэзюмэ, указаць пажаданую "
+"работу і прайсці рэалістычнае інтэрв'ю з AI-спрадвыкаўцам."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
+#. js-lingui-explicit-id
+msgid "How it works:"
+msgstr "Як гэта працуе:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
+#. js-lingui-explicit-id
+msgid ""
+"You answer questions just like in a real interview and get instant "
+"feedback. The AI adapts the questions to your profession and experience. "
+"This kind of training helps you identify weak spots, work on your "
+"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
+"notice your speech becoming more fluent and your answers more polished with "
+"each attempt."
+msgstr ""
+"Вы адказваеце на пытанні так, як на сапраўдным спаборніцтве, і адразу "
+"атрымліваеце водгук. Штучны інтэлект адаптуе пытанні пад вашу прафесію і "
+"досвед. Гэты тып трэнінгу дапамагае вам выявіць слабыя месцы, працаваць над "
+"вашай вымаўленнем і навучыцца спакойна рэагаваць на нечаканыя пытанні. Вы "
+"заўважыце, што ваша мова становіцца больш плыннаю, а вашыя адказы больш "
+"дбайлівымі з кожнай спробай."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
+#. js-lingui-explicit-id
+msgid "Career benefit:"
+msgstr "Кар'ерны выгад:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
+#. js-lingui-explicit-id
+msgid ""
+"After several sessions, you’ll walk into your real interview much more "
+"confident. You’ll know what phrases to use, how to present yourself, and "
+"how to respond professionally. It can significantly boost your chances of "
+"landing your dream job."
+msgstr ""
+"Пасля некалькіх сесій, вы пайдзеце на свае рэальнае інтэрв'ю набагато больш "
+"упэўненым у сабе. Вы будзеце ведаць, якія фразы выкарыстоўваць, як "
+"прадставіць сябе, і як прафесійна адказваць. Гэта можа сутыкнова павялічыць "
+"вашы шансы атрымаць працу сваёй мары."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
+#. js-lingui-explicit-id
+msgid ""
+"Preparing for an interview in English takes time, but it pays off. Use the "
+"tips from this article, practice with FluencyPal’s interview simulator, and "
+"walk into your next job interview with confidence."
+msgstr ""
+"Падрыхтоўка да інтэрв'ю на англійскай мове займае час, але гэта "
+"аплацоўваецца. Выкарыстоўвайце парады з гэтай стацьі, трэніруйцеся з "
+"дапамогай сімулятара інтэрв'ю FluencyPal і ўвайдзіце на наступнае працоўнае "
+"інтэрв'ю з упэўненасцю."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
+#. js-lingui-explicit-id
+msgid "Good preparation today means career success tomorrow."
+msgstr "Добрая падрыхтоўка сёння азначае кар'ерны успех заўтра."
+
+#: src/features/Auth/SignInForm.tsx:30
+#. js-lingui-explicit-id
+msgid "Open personal plan"
+msgstr "Адкрыць персанальны план"
+
+#: src/features/Auth/SignInForm.tsx:32
+#: src/features/Auth/SignInForm.tsx:33
+#. js-lingui-explicit-id
+msgid "Sing in"
+msgstr "Увайсці"
+
+#: src/features/Auth/SignInForm.tsx:38
+#: src/features/Auth/SignInForm.tsx:39
+#. js-lingui-explicit-id
+msgid "So you can save your progress"
+msgstr "Каб вы маглі захаваць ваш прагрэс"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6299,44 +6977,10 @@ msgstr "Професійнае развіццё"
 msgid "All Blogs"
 msgstr "Усе блогі"
 
-#: src/features/Blog/ListBlogIntro.tsx:66
+#: src/features/Blog/ListBlog.tsx:131
 #. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "Чытайце і вучыцеся з маім блогам"
-
-#: src/features/Blog/ListBlogIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr ""
-"Атрымайце натхненне і даведайцеся пра апошнія трэнды ў вучэнні моваў, "
-"навучанні і тэхналогіях."
-
-#: src/features/Blog/BlogCard.tsx:168
-#. js-lingui-explicit-id
-msgid "Read more"
-msgstr "Чытаць далей"
-
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "Праглядзець усе запісы"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "Ролевыя сцэнары для практыкі"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "Вы можаце паспрабаваць AI ў дзеянні зараз"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "Паспрабуйце бясплатна"
+msgid "No blogs found"
+msgstr "Не знойдзены блогаў"
 
 #: src/features/Auth/WebViewWall.tsx:38
 #. js-lingui-explicit-id
@@ -6388,645 +7032,6 @@ msgstr "Адкрыць у Telegram"
 msgid "Open in Browser"
 msgstr "Адкрыць у браўзеры"
 
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
-#. js-lingui-explicit-id
-msgid "At the end, we’ll share a valuable tool for realistic interview practice."
-msgstr ""
-"У канцы, мы падзялімся каштоўным інструментам для рэалістычнай практыкі "
-"інтэрв'ю."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
-#. js-lingui-explicit-id
-msgid "Introduction: Small Talk with the Interviewer"
-msgstr "Увод: Нефармальная размова з інтэрв'юерам"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
-#. js-lingui-explicit-id
-msgid ""
-"The first few minutes of an interview are often dedicated to casual "
-"conversation — also known as 'SmallTalk'. Recruiters use this time to "
-"create a friendly atmosphere and get to know you a bit better."
-msgstr ""
-"Першыя некалькі хвілін інтэрвію часта прысвячаюцца неканкрэтнай размове — "
-"якую яшчэ называюць 'SmallTalk'. Рэкрутары выкарыстоўваюць гэты час для "
-"стварэння дружнага атмасферу і лепшага вас пазнання."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
-#. js-lingui-explicit-id
-msgid "Don’t skip small talk"
-msgstr "Не праглядайце невялікі размовы"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
-#. js-lingui-explicit-id
-msgid ""
-"— it’s important to engage in this short conversation before jumping into "
-"professional topics. Here are some useful English phrases to start off the "
-"interview:"
-msgstr ""
-"— важна заняцца гэтай кароткай размовай, перш чым прыступіць да прафесійных "
-"тэм. Вось некаторыя карысныя англійскія фразы для пачатку інтэрв'ю:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
-#. js-lingui-explicit-id
-msgid "English Phrases"
-msgstr "Англійскія фразы"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
-#. js-lingui-explicit-id
-msgid "A polite and professional greeting."
-msgstr "Вежлівае і прафесійнае вітанне."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
-#. js-lingui-explicit-id
-msgid "Expressing gratitude for the opportunity."
-msgstr "Выказванне падзякі за магчымасць."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
-#. js-lingui-explicit-id
-msgid "A standard reply to “How are you?”"
-msgstr "Стандартны адказ на \"Як справы?\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
-#. js-lingui-explicit-id
-msgid "A friendly compliment to break the ice."
-msgstr "Прыемны камплімент для размякчэння льоду."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
-#. js-lingui-explicit-id
-msgid ""
-"Smile, shake hands (if culturally appropriate), and speak in a friendly "
-"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
-"might say:"
-msgstr ""
-"Пасмяхніцеся, пацісніце руку (калі гэта дарэчна ў культурным аспекту), і "
-"гаварыце дружным тонам. Калі інтэрв'юэр спытае: \"Ці было у вас "
-"якія-небудзь праблемы з тым, каб знайсці нас?\", вы можаце сказаць:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
-#. js-lingui-explicit-id
-msgid ""
-"Short answers with a positive attitude show that you’re easy to talk to and "
-"open to dialogue."
-msgstr ""
-"Кароткія адказы з пазітыўным настроем паказваюць, што з вамі лёгка "
-"размаўляць і вы адкрытыя да дыялогу."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
-#. js-lingui-explicit-id
-msgid "Self-Introduction: Talking About Yourself"
-msgstr "Самаузнаёмства: Размова пра сябе"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
-#. js-lingui-explicit-id
-msgid "After the greeting, you'll usually hear:"
-msgstr "Пасля вітання, вы звычайна чуеце:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
-#. js-lingui-explicit-id
-msgid ""
-"This is your chance to introduce your experience and skills. Don’t list "
-"your full biography — focus on the highlights of your professional "
-"background. A good answer structure in English might look like this:"
-msgstr ""
-"Гэта ваша магчымасць прадставіць свой досвед і навыкі. Не прадставляйце "
-"сваю поўную біяграфію - засяродзецеся на ўзнагародах вашага прафесійнага "
-"фону. Добрая структура адказу на англійскай можа выглядаць так:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
-#. js-lingui-explicit-id
-msgid "For example:"
-msgstr "For example:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
-#. js-lingui-explicit-id
-msgid ""
-"Keep your answer focused: current or last position, a key achievement, and "
-"your interest in the company. Practice your self-introduction so you sound "
-msgstr ""
-"Трымацеце сваю адказ засяродзены: бягучая або апошняя пазіцыя, ключавыя "
-"дасягненні, і ваш інтарэс да кампаніі. Трэнуйце сваю самаставедкі, каб вы "
-"прыглядаліся"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
-#. js-lingui-explicit-id
-msgid "natural and not robotic"
-msgstr "прыродны і не робатычны"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
-#. js-lingui-explicit-id
-msgid "Useful Phrases for Self-Introduction"
-msgstr "Карысныя фразы для самапрэзентацыі"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
-#. js-lingui-explicit-id
-msgid ""
-"Use these templates to craft your own story. Don’t forget to mention an "
-"achievement:"
-msgstr ""
-"Выкарыстоўвайце гэтыя шаблоны для стварэння сваёй гісторыі. Не забывайце "
-"згадаць пра свае дасягненне:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
-#. js-lingui-explicit-id
-msgid "This shows results and makes you stand out."
-msgstr "Гэта паказвае вынікі і робіць вас улічным."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
-#. js-lingui-explicit-id
-msgid "Answering Typical Interview Questions"
-msgstr "Адказы на типовыя пытанні падчас інтэрв'ю"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
-#. js-lingui-explicit-id
-msgid ""
-"Recruiters ask a variety of standard questions to understand your "
-"motivation and personality. Preparing answers in advance will help you stay "
-"calm and articulate. Focus on showing enthusiasm and confidence in your "
-"skills. Let’s look at some common questions and how to answer them:"
-msgstr ""
-"Рэкрутэры задаюць розныя стандартныя пытанні, каб зразумець вашу мацівацыю "
-"і асабістасць. Падрыхтоўка адказаў наперад дапаможа вам заставацца "
-"спакойнымі і выразна выкладваць свае думкі. Сконцэнтруйцеся на дэманстрацыі "
-"энтузіязму і ўпэўненасці ў сваіх навыках. Паглядзім на некаторыя "
-"распаўсюджаныя пытанні і як на іх адказваць:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
-#. js-lingui-explicit-id
-msgid "Show knowledge of the company and genuine interest. For example:"
-msgstr "Паказвайце веды пра кампанію і сапраўдны інтарэс. Напрыклад:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
-#. js-lingui-explicit-id
-msgid "Highlight your strengths relevant to the role:"
-msgstr "Вылучыце свае сілы, якія ўтэчныя для ролі:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
-#. js-lingui-explicit-id
-msgid "Show your long-term goals:"
-msgstr "Пакажыце свае даўгатэрміновыя мэты:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
-#. js-lingui-explicit-id
-msgid "Other common questions include:"
-msgstr "Іншыя распаўсюджаныя пытанні:\n"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
-#. js-lingui-explicit-id
-msgid "Prepare short, honest, and positive answers with real-life examples."
-msgstr "Падрыхтуйце кароткія, чэсныя і пазітыўныя адказы з рэальнымі прыкладамі."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
-#. js-lingui-explicit-id
-msgid "If you don’t understand a question, don’t panic — ask politely:"
-msgstr "Калі вы не разумееце пытанне, не панікуйце — пытайцеся палітака:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
-#. js-lingui-explicit-id
-msgid "Talking About Strengths and Weaknesses"
-msgstr "Гаворка пра сілы і слабасці"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
-#. js-lingui-explicit-id
-msgid ""
-"Most interviews include the classic “strengths and weaknesses” question. "
-"It’s especially important to handle this well in English."
-msgstr ""
-"Большасць інтэрв'ю ўключае класічныя пытанні пра \"сілы і слабості\". "
-"Асабліва важна гэта добра апрацоўваць на англійскай мове."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
-#. js-lingui-explicit-id
-msgid "Strengths:"
-msgstr "Сілы:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
-#. js-lingui-explicit-id
-msgid ""
-"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
-"examples. For instance:"
-msgstr ""
-"Выберыце 2-3 ключавыя якасці, якія рэлевантныя для работы. Унікаеце клішэ і "
-"падайце прыклады. Напрыклад:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
-#. js-lingui-explicit-id
-msgid "Other useful strengths:"
-msgstr "Іншыя карысныя мацаванні:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
-#. js-lingui-explicit-id
-msgid "Weaknesses:"
-msgstr "Слабасткі:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
-#. js-lingui-explicit-id
-msgid ""
-"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
-"mention a minor issue and how you’re working to improve it:"
-msgstr ""
-"Будзьце шчырымі, але дыпламатычнымі. Не кажыце \"У мяне няма слабасцей\". "
-"Замест гэтага, упамяніце дробную праблему і як вы працуеце над яе "
-"паляпшэннем:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
-#. js-lingui-explicit-id
-msgid "This approach shows self-awareness and growth."
-msgstr "Гэты падыход паказвае самасвядомасць і рост."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
-#. js-lingui-explicit-id
-msgid "Questions to Ask the Employer"
-msgstr "Пытанні, якія трэба задаць працадаўцу"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
-#. js-lingui-explicit-id
-msgid "At the end of the interview, you’ll usually be asked:"
-msgstr "На канцы інтэрв'ю вам звычайна задаюць:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
-#. js-lingui-explicit-id
-msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
-msgstr "Ніколі не кажыце \"не\". Падрыхтуйце 2-3 разумныя пытанні наперад:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
-#. js-lingui-explicit-id
-msgid "Always respond politely:"
-msgstr "Заўсёды вадзіцеся вежліва:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
-#. js-lingui-explicit-id
-msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
-msgstr ""
-"Паказвайце цікавасць і зацікаўленасць. Не забывайце дзякуйца ім за іх "
-"адказы:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
-#. js-lingui-explicit-id
-msgid "Ending the Interview: Final Phrases"
-msgstr "Заканчэнне інтэрв'ю: канчатковыя фразы"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
-#. js-lingui-explicit-id
-msgid ""
-"Wrap up the interview with gratitude and confidence. Use these phrases to "
-"end on a positive note:"
-msgstr ""
-"Завяршыце інтэрвію з падзякаваннем і упэўненасцю. Выкарыстоўвайце гэтыя "
-"фразы для пазітыўнага заканчэння:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
-#. js-lingui-explicit-id
-msgid ""
-"If it was an in-person interview, shake hands and maintain eye contact. If "
-"it was online, say goodbye with a friendly tone. Consider sending a "
-"thank-you email the next day:"
-msgstr ""
-"Калі гэта было асабістае спатканне, паціскайце руку і падтрымлівайце "
-"зрокавы кантакт. Калі гэта было ў інтэрнэце, прасціцеся зь дружалюбным "
-"тонам. Разгледзіце магчымасць адправіць ліст з падзякамі на наступны дзень:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
-#. js-lingui-explicit-id
-msgid "Common Mistakes to Avoid"
-msgstr "Распаўсюджаныя Памылкі, Якіх Трэба Ўникнуць"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
-#. js-lingui-explicit-id
-msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
-msgstr ""
-"Прапусціць незначныя размовы — Следуйце за кіраўніцтвам інтэрв'юэра і "
-"будзьце прыязнымі."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
-#. js-lingui-explicit-id
-msgid ""
-"Saying “I don’t know” directly — Instead say: “That’s an interesting "
-"question. Let me think for a moment.”"
-msgstr ""
-"Казаць \"Я не ведаю\" напрамую — Замест гэтага скажыце: \"Гэта цікавае "
-"пытанне. Дайце падумаць на хвілінку.\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
-#. js-lingui-explicit-id
-msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
-msgstr ""
-"Нехаплівасць — Выкарыстоўвайце *калі ласка*, *дзякуй*, *выбачце* калі гэта "
-"неабходна."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
-#. js-lingui-explicit-id
-msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
-msgstr ""
-"Перазанадта трэніраваныя адказы - Не заўважайце; падрыхтуйце ідэі і "
-"гаварыце натуральна."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
-#. js-lingui-explicit-id
-msgid ""
-"Negative comments — Never badmouth past employers. Stay neutral and "
-"constructive."
-msgstr ""
-"Негатыўныя каментарыі — Ніколі не абкрываеце папярэдніх працадаўцаў. "
-"Заставайцеся неўтэчнымі і канструктыўнымі."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
-#. js-lingui-explicit-id
-msgid ""
-"Showing no interest — Ask questions and react positively to company "
-"information."
-msgstr ""
-"Паказваць няма зацікавлення — Задавайце пытанні і рэагуйце пазітыўна на "
-"інфармацыю кампаніі."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
-#. js-lingui-explicit-id
-msgid ""
-"Avoiding these mistakes will make you look more professional and increase "
-"your chances of success."
-msgstr ""
-"Уніканне гэтых памылак зробіць вас болей прафесійным і павялічыць шансы на "
-"паспяху."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
-#. js-lingui-explicit-id
-msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
-msgstr "Практыка інтэрв'ю на FluencyPal: Ваш шлях да ўпэўненасці"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
-#. js-lingui-explicit-id
-msgid ""
-"Knowing useful phrases and tips is great, but the most important step is "
-"real-world practice. The best way to prepare is to do a mock interview. "
-"That’s exactly what the interactive role-play on FluencyPal offers."
-msgstr ""
-"Ведаць карысныя фразы і рады - гэта прыгожа, але самы важны крок - гэта "
-"практыка ў рэальным свеце. Лепшы спосаб падрыхтавацца - гэта правесці "
-"макетнае інтэрв'ю. Гэта дакладна тое, што прапонуе інтэрактыўная ролевая "
-"гульня на FluencyPal."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
-#. js-lingui-explicit-id
-msgid ""
-"On this platform, you can upload your resume, specify your desired job, and "
-"go through a realistic interview with an AI interviewer."
-msgstr ""
-"На гэтай платформе вы можаце загрузіць сваё рэзюмэ, указаць пажаданую "
-"работу і прайсці рэалістычнае інтэрв'ю з AI-спрадвыкаўцам."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
-#. js-lingui-explicit-id
-msgid "How it works:"
-msgstr "Як гэта працуе:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
-#. js-lingui-explicit-id
-msgid ""
-"You answer questions just like in a real interview and get instant "
-"feedback. The AI adapts the questions to your profession and experience. "
-"This kind of training helps you identify weak spots, work on your "
-"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
-"notice your speech becoming more fluent and your answers more polished with "
-"each attempt."
-msgstr ""
-"Вы адказваеце на пытанні так, як на сапраўдным спаборніцтве, і адразу "
-"атрымліваеце водгук. Штучны інтэлект адаптуе пытанні пад вашу прафесію і "
-"досвед. Гэты тып трэнінгу дапамагае вам выявіць слабыя месцы, працаваць над "
-"вашай вымаўленнем і навучыцца спакойна рэагаваць на нечаканыя пытанні. Вы "
-"заўважыце, што ваша мова становіцца больш плыннаю, а вашыя адказы больш "
-"дбайлівымі з кожнай спробай."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
-#. js-lingui-explicit-id
-msgid "Career benefit:"
-msgstr "Кар'ерны выгад:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
-#. js-lingui-explicit-id
-msgid ""
-"After several sessions, you’ll walk into your real interview much more "
-"confident. You’ll know what phrases to use, how to present yourself, and "
-"how to respond professionally. It can significantly boost your chances of "
-"landing your dream job."
-msgstr ""
-"Пасля некалькіх сесій, вы пайдзеце на свае рэальнае інтэрв'ю набагато больш "
-"упэўненым у сабе. Вы будзеце ведаць, якія фразы выкарыстоўваць, як "
-"прадставіць сябе, і як прафесійна адказваць. Гэта можа сутыкнова павялічыць "
-"вашы шансы атрымаць працу сваёй мары."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
-#. js-lingui-explicit-id
-msgid ""
-"Preparing for an interview in English takes time, but it pays off. Use the "
-"tips from this article, practice with FluencyPal’s interview simulator, and "
-"walk into your next job interview with confidence."
-msgstr ""
-"Падрыхтоўка да інтэрв'ю на англійскай мове займае час, але гэта "
-"аплацоўваецца. Выкарыстоўвайце парады з гэтай стацьі, трэніруйцеся з "
-"дапамогай сімулятара інтэрв'ю FluencyPal і ўвайдзіце на наступнае працоўнае "
-"інтэрв'ю з упэўненасцю."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
-#. js-lingui-explicit-id
-msgid "Good preparation today means career success tomorrow."
-msgstr "Добрая падрыхтоўка сёння азначае кар'ерны успех заўтра."
-
-#: src/features/Auth/SignInForm.tsx:30
-#. js-lingui-explicit-id
-msgid "Open personal plan"
-msgstr "Адкрыць персанальны план"
-
-#: src/features/Auth/SignInForm.tsx:32
-#: src/features/Auth/SignInForm.tsx:33
-#. js-lingui-explicit-id
-msgid "Sing in"
-msgstr "Увайсці"
-
-#: src/features/Auth/SignInForm.tsx:38
-#: src/features/Auth/SignInForm.tsx:39
-#. js-lingui-explicit-id
-msgid "So you can save your progress"
-msgstr "Каб вы маглі захаваць ваш прагрэс"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:360
-#. js-lingui-explicit-id
-msgid "Idea for your message"
-msgstr "Ідэя для вашага паведамлення"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:418
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "Агляд урока"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:439
-#. js-lingui-explicit-id
-msgid "Language level:"
-msgstr "Узровень мовы:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:441
-#: src/features/Conversation/ConversationCanvas2.tsx:448
-#: src/features/Conversation/ConversationCanvas2.tsx:455
-#: src/features/Conversation/ConversationCanvas2.tsx:744
-#: src/features/Conversation/ConversationCanvas2.tsx:883
-#: src/features/Conversation/ConversationCanvas2.tsx:890
-#. js-lingui-explicit-id
-msgid "Analyzing..."
-msgstr "Аналізуецца..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:446
-#. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "Што было выдатна:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:453
-#. js-lingui-explicit-id
-msgid "Areas to improve:"
-msgstr "Галіны для паляпшэння:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:478
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "Працягваць размову"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:491
-#. js-lingui-explicit-id
-msgid "Start new lesson"
-msgstr "Пачаць новы ўрок"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:678
-#. js-lingui-explicit-id
-msgid "Error during analyzing message"
-msgstr "Памылка пры аналізе паведамлення"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:732
-#. js-lingui-explicit-id
-msgid "Almost correct"
-msgstr "Прачы папраўна"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:747
-#. js-lingui-explicit-id
-msgid "Great!"
-msgstr "Выдатна!"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:770
-#. js-lingui-explicit-id
-msgid "Your Message"
-msgstr "Ваша паведамленне"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:842
-#. js-lingui-explicit-id
-msgid "Corrected"
-msgstr "Выпраўлена"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:937
-#. js-lingui-explicit-id
-msgid "New Words to Vocabulary:"
-msgstr "Новыя словы ў слоўнік:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:982
-#. js-lingui-explicit-id
-msgid "Analyzing"
-msgstr "Аналіз"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:989
-#. js-lingui-explicit-id
-msgid "Preparing Goal"
-msgstr "Падрыхтоўка Мэты"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1009
-#. js-lingui-explicit-id
-msgid "Goal is created"
-msgstr "Мэта створана"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1019
-#. js-lingui-explicit-id
-msgid "Lessons added:"
-msgstr "Дададзеныя урокі:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1040
-#. js-lingui-explicit-id
-msgid "Open plan"
-msgstr "Адкрыты план"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1113
-#. js-lingui-explicit-id
-msgid "Stop"
-msgstr "Стоп"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1145
-#. js-lingui-explicit-id
-msgid "Record Message"
-msgstr "Запісаць паведамленне"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1179
-#. js-lingui-explicit-id
-msgid "Finish conversation"
-msgstr "Завяршыць размову"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1196
-#. js-lingui-explicit-id
-msgid "Turn Volume Off"
-msgstr "Адключыць гук"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1196
-#. js-lingui-explicit-id
-msgid "Turn Volume On"
-msgstr "Уключыць гук"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1217
-#. js-lingui-explicit-id
-msgid "Voice record mode"
-msgstr "Рэжым галасавога запісу"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1240
-#. js-lingui-explicit-id
-msgid "Keyboard mode"
-msgstr "Рэжым клавіятуры"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1263
-#. js-lingui-explicit-id
-msgid "Phone call mode"
-msgstr "Рэжым тэлефоннага званка"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1285
-#. js-lingui-explicit-id
-msgid "Help with answer"
-msgstr "Дапамагчы з адказам"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1308
-#. js-lingui-explicit-id
-msgid "Your message..."
-msgstr "Ваша паведамленне..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1359
-#. js-lingui-explicit-id
-msgid "Mission complete"
-msgstr "Місія выканана"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1371
-#. js-lingui-explicit-id
-msgid "Open results"
-msgstr "Адкрыць вынікі"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1413
-#. js-lingui-explicit-id
-msgid "Re-write"
-msgstr "Перапісаць"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1473
-#. js-lingui-explicit-id
-msgid "Cancel recording"
-msgstr "Скасаваць запіс"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1497
-#. js-lingui-explicit-id
-msgid "Low balance"
-msgstr "Нізкі баланс"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1505
-#. js-lingui-explicit-id
-msgid "Top up"
-msgstr "Папаўніць"
-
 #: src/features/Landing/PlanLandingBlock.tsx:429
 msgid "{countOfLanguages} languages to practice"
 msgstr "{countOfLanguages} мовы для практыкі"
@@ -7036,7 +7041,7 @@ msgstr "{countOfLanguages} мовы для практыкі"
 msgid "Answer <0>{0} questions</0> to get a new position"
 msgstr "Адказаць на <0>{0} пытанні</0>, каб атрымаць новую пазіцыю"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:793
+#: src/features/Goal/Quiz/QuizPage2.tsx:792
 msgid "Goal: at least <0>{minWords}</0> words"
 msgstr "Мэта: прынамсі <0>{minWords}</0> слоў"
 
@@ -7046,16 +7051,16 @@ msgstr ""
 "Прывітанне, {userName}! Кіруйце наладамі свайго профілю і правярайце свой "
 "прагрэс"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1721
+#: src/features/Goal/Quiz/QuizPage2.tsx:1720
 msgid "Let's create an account"
 msgstr "Давайце створым уліковы запіс"
 
-#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:18
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:19
 #. placeholder {0}: game.myPosition
 msgid "My Position: <0>{0}</0>"
 msgstr "Маё полажэнне: <0>{0}</0>"
 
-#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:24
+#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:25
 msgid "Next position ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgstr "Наступная пазіцыя ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 
@@ -7063,11 +7068,11 @@ msgstr "Наступная пазіцыя ({nextUserUsername}): <0>{pointsToNext
 msgid "Position"
 msgstr "Пазіцыя"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:176
+#: src/features/Goal/Quiz/QuizPage2.tsx:175
 msgid "Record 2-3 minutes story using <0>{learningLanguageName}</0>"
 msgstr "Запішыце 2-3 хвіліны гісторыі, выкарыстоўваючы <0>{learningLanguageName}</0>"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:180
+#: src/features/Goal/Quiz/QuizPage2.tsx:179
 msgid ""
 "Record 2-3 minutes story using <0>{learningLanguageName}</0> or "
 "<1>{nativeLanguageName}</1>"
@@ -7075,15 +7080,15 @@ msgstr ""
 "Запішыце гісторыю на 2-3 хвіліны, выкарыстоўваючы "
 "<0>{learningLanguageName}</0> або <1>{nativeLanguageName}</1>"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1647
+#: src/features/Goal/Quiz/QuizPage2.tsx:1646
 msgid "So we need your agreement with that"
 msgstr "Таму нам патрэбна ваша згода з гэтым"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1639
+#: src/features/Goal/Quiz/QuizPage2.tsx:1638
 msgid "We will speak freely"
 msgstr "Мы будзем размаўляць свабодна"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1562
+#: src/features/Goal/Quiz/QuizPage2.tsx:1561
 msgid "What you get with FluencyPal"
 msgstr "Што вы атрымаеце з FluencyPal"
 
@@ -7091,7 +7096,7 @@ msgstr "Што вы атрымаеце з FluencyPal"
 msgid "You are <0>the Leader</0> of {playersCount} players."
 msgstr "Вы <0>Лідэр</0> {playersCount} гульцоў."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:1570
+#: src/features/Goal/Quiz/QuizPage2.tsx:1569
 msgid "Your AI speaking partner"
 msgstr "Ваш AI партнёр для размоў"
 
