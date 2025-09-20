@@ -53,6 +53,7 @@ export default async function RootLayout({
         <link rel="icon" type="image/png" sizes="26x26" href="/favicon-26x26.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="google" content="notranslate" />
         <link rel="apple-touch-icon" href="/logo192.png" />
 
         <Script
