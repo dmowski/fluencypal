@@ -27,8 +27,8 @@ import {
   BetweenHorizontalStart,
   Bird,
   BookType,
-  ChartNoAxesCombined,
   Check,
+  Cookie,
   FlagIcon,
   Globe,
   Goal,
@@ -1566,42 +1566,43 @@ export const AuthWall = ({
                       opacity: 0.7,
                     }}
                   >
-                    {featuresSubTitle ? featuresSubTitle : <Trans>AI speaking partner</Trans>}
+                    {featuresSubTitle ? featuresSubTitle : <Trans>Your AI speaking partner</Trans>}
                   </Typography>
                 </Stack>
                 <Stack
                   sx={{
                     width: "max-content",
                     minWidth: "230px",
+                    maxWidth: "100%",
                   }}
                 >
                   <IconTextList
                     listItems={[
                       {
-                        title: i18n._("Conversation practice with AI"),
+                        title: i18n._("Daily conversations without fear of judgment"),
                         icon: Speech,
                       },
                       {
-                        title: i18n._("Full AI tutor access"),
+                        title: i18n._("Corrections when you get stuck"),
                         icon: Sparkles,
                       },
 
                       {
-                        title: i18n._("Advanced Personalization"),
+                        title: i18n._("Personalized plan tailored to your goals"),
                         icon: Lightbulb,
                       },
 
                       {
-                        title: i18n._("New Grammar Rules"),
+                        title: i18n._("Grammar corrections to boost your confidence"),
                         icon: GraduationCap,
                       },
                       {
-                        title: i18n._("New Words and Phrases"),
+                        title: i18n._("Learn useful words so you never go blank mid-sentence"),
                         icon: BookType,
                       },
 
                       {
-                        title: i18n._("Role-play scenarios"),
+                        title: i18n._("Practice real-life situations in advance"),
                         icon: UsersRound,
                       },
                     ]}
@@ -1667,6 +1668,11 @@ export const AuthWall = ({
                       {
                         title: i18n._("You can delete your personal data anytime"),
                         icon: ShieldCheck,
+                      },
+
+                      {
+                        title: i18n._("We use cookies to enhance your experience"),
+                        icon: Cookie,
                       },
 
                       {
