@@ -25,22 +25,20 @@ export interface GameQuestionFull extends GameQuestionShort {
   isAnsweredCorrectly: boolean | null;
 }
 
-export interface GameProfile {
-  username: string;
-  avatarUrl: string;
-}
-
-// [UserName]: points
+// [UserId]: points
 export type GameUsersPoints = Record<string, number>;
 
-// [UserName]: last visit timestamp
-export type GameLastVisit = Record<string, number>;
+// [UserId]: last visit timestamp
+export type GameLastVisit = Record<string, string>;
 
-// [UserName]: avatarUrl
+// [UserId]: avatarUrl
 export type GameAvatars = Record<string, string>;
 
+// [UserId]: username
+export type GameUserNames = Record<string, string>;
+
 export interface UsersStat {
-  username: string;
+  userId: string;
   points: number;
 }
 
@@ -59,13 +57,4 @@ export interface SubmitAnswerResponse {
   isCorrect: boolean;
   updatedUserPoints: GameUsersPoints;
   description: string | null;
-}
-
-export interface UpdateUserProfileRequest {
-  username: string;
-}
-
-export interface UpdateUserProfileResponse {
-  error: string | null;
-  isUpdated: boolean;
 }

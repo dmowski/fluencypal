@@ -4,7 +4,8 @@ import { Trans } from "@lingui/react/macro";
 
 export const SummaryRow = () => {
   const game = useGame();
-  const nextUserUsername = game.nextPositionStat?.username || "N/A";
+  const nextUserId = game.nextPositionStat?.userId || "";
+  const nextUserUsername = game.userNames?.[nextUserId] || "";
   const pointsToNextPosition = game.pointsToNextPosition;
   return (
     <Stack
@@ -20,7 +21,7 @@ export const SummaryRow = () => {
         </Trans>
       </Typography>
       <Typography variant="body2" align="right">
-        {game.pointsToNextPosition !== null && (
+        {game.pointsToNextPosition !== null && nextUserUsername && (
           <Trans>
             Next position ({nextUserUsername}): <b>{pointsToNextPosition}</b>
           </Trans>

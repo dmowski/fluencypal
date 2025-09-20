@@ -6,15 +6,18 @@ import { useLingui } from "@lingui/react";
 import { GameStatRow } from "./GameStatRow";
 import { UsersStat } from "./types";
 import { useUrlParam } from "../Url/useUrlParam";
+import { useAuth } from "../Auth/useAuth";
 
 export const PositionChangedModal = () => {
   const game = useGame();
+  const auth = useAuth();
+  const myUserId = auth.uid || "";
   const [stats, setStats] = useState<UsersStat[]>([]);
   const [isShowModal, setIsShowModal] = useUrlParam("showPositionChangedModal");
   const [positions, setPositions] = useState<Record<string, number>>({});
   const [myOldPosition, setMyOldPosition] = useState<number | null>(null);
-  const getRealPosition = (username: string) => {
-    const index = game.stats.findIndex((stat) => stat.username === username);
+  const getRealPosition = (userId: string) => {
+    const index = game.stats.findIndex((stat) => stat.userId === userId);
     return index >= 0 ? index : 0;
   };
 
@@ -25,9 +28,7 @@ export const PositionChangedModal = () => {
       return;
     }
 
-    const actualMyPosition = game.stats.findIndex(
-      (stat) => stat.username === game.myProfile?.username
-    );
+    const actualMyPosition = game.stats.findIndex((stat) => stat.userId === myUserId);
     if (actualMyPosition === myOldPosition) {
       return;
     }
@@ -39,7 +40,7 @@ export const PositionChangedModal = () => {
       return;
     }
 
-    const myStat = game.stats.find((stat) => stat.username === game.myProfile?.username);
+    const myStat = game.stats.find((stat) => stat.userId === myUserId);
     if (!myStat) {
       return;
     }
@@ -59,23 +60,23 @@ export const PositionChangedModal = () => {
     setStats(statsToShow);
 
     setPositions({
-      [nextState?.username || ""]: 0,
-      [whomITookPositionFrom.username]: 1,
-      [myStat.username]: 2,
+      [nextState?.userId || ""]: 0,
+      [whomITookPositionFrom.userId]: 1,
+      [myStat.userId]: 2,
     });
 
     setTimeout(() => {
       setPositions({
-        [nextState?.username || ""]: 0,
-        [myStat.username]: 1,
-        [whomITookPositionFrom.username]: 2,
+        [nextState?.userId || ""]: 0,
+        [myStat.userId]: 1,
+        [whomITookPositionFrom.userId]: 2,
       });
     }, 1000);
     setIsShowModal(true);
-  }, [game.stats]);
+  }, [game.stats, myUserId]);
 
-  const getPosition = (username: string) => {
-    return positions[username] || 0;
+  const getPosition = (userId: string) => {
+    return positions[userId] || 0;
   };
 
   return (
@@ -115,16 +116,16 @@ export const PositionChangedModal = () => {
             }}
           >
             {stats.map((stat) => {
-              const position = getPosition(stat.username);
+              const position = getPosition(stat.userId);
               return (
                 <Stack
-                  key={stat.username}
+                  key={stat.userId}
                   className="position-changed-row"
                   style={{
                     top: `${position * 70 + 12}px`,
                   }}
                 >
-                  <GameStatRow stat={stat} index={getRealPosition(stat.username)} />
+                  <GameStatRow stat={stat} index={getRealPosition(stat.userId)} />
                 </Stack>
               );
             })}

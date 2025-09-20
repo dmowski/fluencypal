@@ -30,7 +30,7 @@ function useProvidePayWall(): PayWallContextType {
     usage.balanceHours <= 0.01 && !usage.isFullAccess && !game.isGameWinner;
 
   useEffect(() => {
-    if (usage.loading || game.loadingProfile) {
+    if (usage.loading || game.isLoading) {
       return;
     }
 
@@ -41,13 +41,7 @@ function useProvidePayWall(): PayWallContextType {
     if (isShowPayWall === true && !isNeedToShowPayWall.current) {
       setIsShowPayWall(false);
     }
-  }, [
-    usage.loading,
-    usage.isFullAccess,
-    usage.balanceHours,
-    game.isGameWinner,
-    game.loadingProfile,
-  ]);
+  }, [usage.loading, usage.isFullAccess, usage.balanceHours, game.isGameWinner, game.myPoints]);
 
   const togglePayWall = () => {
     setIsShowPayWall((prev) => !prev);

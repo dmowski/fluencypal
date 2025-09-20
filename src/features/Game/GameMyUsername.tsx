@@ -6,18 +6,26 @@ import { CheckIcon, PencilIcon } from "lucide-react";
 
 export const GameMyUsername = () => {
   const game = useGame();
+  const myUsername = game.myUserName || "";
   const { i18n } = useLingui();
 
   const [isEditUsername, setIsEditUsername] = useState(false);
-  const [internalUsername, setInternalUsername] = useState(game.myProfile?.username || "");
+  const [internalUsername, setInternalUsername] = useState(myUsername);
+  const isMyUserName = internalUsername === myUsername;
+  const isAlreadyTaken = isMyUserName
+    ? false
+    : game.userNames
+      ? Object.values(game.userNames).some((name) => name === internalUsername)
+      : false;
+
   useEffect(() => {
-    if (game.myProfile?.username) {
-      setInternalUsername(game.myProfile.username);
+    if (myUsername) {
+      setInternalUsername(myUsername);
     }
-  }, [game.myProfile?.username]);
+  }, [myUsername]);
 
   const saveUsername = async () => {
-    if (internalUsername === game.myProfile?.username) {
+    if (internalUsername === myUsername) {
       setIsEditUsername(false);
       return;
     }
@@ -64,8 +72,13 @@ export const GameMyUsername = () => {
               value={internalUsername}
               onChange={(e) => setInternalUsername(e.target.value)}
               sx={{ width: "220px" }}
+              color={isAlreadyTaken ? "error" : "primary"}
+              helperText={isAlreadyTaken ? i18n._("Username is already taken") : ""}
             />
-            <IconButton onClick={() => saveUsername()} disabled={internalUsername.length < 3}>
+            <IconButton
+              onClick={() => saveUsername()}
+              disabled={internalUsername.length < 3 || isAlreadyTaken}
+            >
               <CheckIcon size={"18px"} />
             </IconButton>
           </>
@@ -76,9 +89,9 @@ export const GameMyUsername = () => {
                 width: "10px",
               }}
             ></Stack>
-            <Typography variant="h6">{game.myProfile?.username || "-"} </Typography>
+            <Typography variant="h6">{myUsername || "-"} </Typography>
             <IconButton
-              disabled={game.loadingProfile}
+              disabled={game.isLoading}
               size="small"
               onClick={() => setIsEditUsername(!isEditUsername)}
             >

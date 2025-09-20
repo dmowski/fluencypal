@@ -2,7 +2,6 @@ import { GameUsersPoints, SubmitAnswerRequest, SubmitAnswerResponse } from "@/fe
 import { getQuestionById, setQuestion } from "./getQuestion";
 import { getGameUsersPoints, increaseUserPoints } from "./statsResources";
 import { generateTextWithAi } from "@/app/api/ai/generateTextWithAi";
-import { getGameProfile } from "./getGameProfile";
 import { AuthUserInfo } from "@/app/api/config/type";
 
 export const submitAnswer = async ({
@@ -128,13 +127,10 @@ true|A group of people is seen singing a song.|Your speech is correct because it
   }
 
   if (isCorrect && question.answeredAt === null) {
-    const gameProfile = await getGameProfile(userInfo.uid);
-    if (gameProfile) {
-      updatedStats = await increaseUserPoints({
-        username: gameProfile.username,
-        points: 1,
-      });
-    }
+    updatedStats = await increaseUserPoints({
+      userId: userInfo.uid,
+      points: 1,
+    });
 
     setQuestion({
       userId: userInfo.uid,

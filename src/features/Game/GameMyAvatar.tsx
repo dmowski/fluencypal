@@ -1,13 +1,12 @@
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useGame } from "./useGame";
-import { avatars, defaultAvatar } from "./avatars";
+import { avatars } from "./avatars";
 import { Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { useUrlParam } from "../Url/useUrlParam";
 
 export const GameMyAvatar = () => {
   const game = useGame();
-  const myAvatar = game.gameAvatars[game.myProfile?.username || ""] || defaultAvatar;
   const [isShowAvatarSelector, setIsShowAvatarSelector] = useUrlParam("showAvatarSelector");
   const { i18n } = useLingui();
 
@@ -46,7 +45,7 @@ export const GameMyAvatar = () => {
               }}
             >
               {avatars.map((avatar, index) => {
-                const isSelected = avatar === myAvatar;
+                const isSelected = avatar === game.myAvatar;
                 return (
                   <Stack
                     key={index}
@@ -87,6 +86,7 @@ export const GameMyAvatar = () => {
             borderRadius: "50%",
             objectFit: "cover",
             boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
             position: "relative",
             zIndex: 1,
           },
@@ -97,7 +97,7 @@ export const GameMyAvatar = () => {
           setIsShowAvatarSelector(!isShowAvatarSelector);
         }}
       >
-        <img src={myAvatar} />
+        <img src={game.myAvatar} />
       </Stack>
     </>
   );

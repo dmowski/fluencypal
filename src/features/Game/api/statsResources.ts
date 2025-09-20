@@ -1,12 +1,11 @@
-import { GameAvatars, GameLastVisit, GameUsersPoints } from "@/features/Game/types";
+import { GameAvatars, GameLastVisit, GameUserNames, GameUsersPoints } from "@/features/Game/types";
 import { getDB } from "../../../app/api/config/firebase";
-import { getGameProfile } from "./getGameProfile";
 
 import firebaseAdmin from "firebase-admin";
 
 export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
   const db = getDB();
-  const userDoc = await db.collection("game").doc("gamePoints").get();
+  const userDoc = await db.collection("game2").doc("gamePoints").get();
   if (!userDoc.exists) {
     return {};
   }
@@ -16,7 +15,7 @@ export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
 
 export const getGameUsersAvatars = async (): Promise<GameAvatars> => {
   const db = getDB();
-  const userDoc = await db.collection("game").doc("gameAvatars").get();
+  const userDoc = await db.collection("game2").doc("gameAvatars").get();
   if (!userDoc.exists) {
     return {};
   }
@@ -26,7 +25,7 @@ export const getGameUsersAvatars = async (): Promise<GameAvatars> => {
 
 export const getGameUsersLastVisit = async (): Promise<GameLastVisit> => {
   const db = getDB();
-  const userDoc = await db.collection("game").doc("gameLastVisit").get();
+  const userDoc = await db.collection("game2").doc("gameLastVisit").get();
   if (!userDoc.exists) {
     return {};
   }
@@ -34,154 +33,125 @@ export const getGameUsersLastVisit = async (): Promise<GameLastVisit> => {
   return data;
 };
 
+export const getGameUsersUserNames = async (): Promise<GameUserNames> => {
+  const db = getDB();
+  const userDoc = await db.collection("game2").doc("gameUserNames").get();
+  if (!userDoc.exists) {
+    return {};
+  }
+  const data = userDoc.data() as GameUserNames;
+  return data;
+};
+
 export const setGameUsersPoints = async (points: GameUsersPoints): Promise<void> => {
   const db = getDB();
-  await db.collection("game").doc("gamePoints").set(points, { merge: true });
+  await db.collection("game2").doc("gamePoints").set(points, { merge: true });
 };
 
-export const renameUserInRateStat = async (
-  oldUsername: string,
-  newUsername: string
-): Promise<void> => {
+export const renameUserNameById = async ({
+  userId,
+  newUsername,
+}: {
+  userId: string;
+  newUsername: string;
+}): Promise<void> => {
   const db = getDB();
-  const userPoints = await getGameUsersPoints();
-
-  if (!userPoints[oldUsername]) {
-    throw new Error(`User ${oldUsername} does not exist.`);
-  }
-
-  const points = userPoints[oldUsername];
 
   await db
-    .collection("game")
-    .doc("gamePoints")
+    .collection("game2")
+    .doc("gameUserNames")
     .set(
       {
-        [newUsername]: points,
-        [oldUsername]: firebaseAdmin.firestore.FieldValue.delete(),
+        [userId]: newUsername,
       },
       { merge: true }
     );
 };
 
-export const renameUserAvatarStat = async (
-  oldUsername: string,
-  newUsername: string
-): Promise<void> => {
+export const deleteAvatarByUserId = async (userId: string) => {
   const db = getDB();
-  const userAvatars = await getGameUsersAvatars();
-
-  const oldAvatar = userAvatars[oldUsername] || null;
-
   await db
-    .collection("game")
+    .collection("game2")
     .doc("gameAvatars")
     .set(
       {
-        [newUsername]: oldAvatar,
-        [oldUsername]: firebaseAdmin.firestore.FieldValue.delete(),
+        [userId]: firebaseAdmin.firestore.FieldValue.delete(),
       },
       { merge: true }
     );
 };
 
-export const deleteAvatar = async (gameUserName: string) => {
+export const deleteUserLastVisitStatByUserId = async (userId: string) => {
   const db = getDB();
   await db
-    .collection("game")
-    .doc("gameAvatars")
-    .set(
-      {
-        [gameUserName]: firebaseAdmin.firestore.FieldValue.delete(),
-      },
-      { merge: true }
-    );
-};
-
-export const deleteUserLastVisitStat = async (gameUserName: string) => {
-  const db = getDB();
-  await db
-    .collection("game")
+    .collection("game2")
     .doc("gameLastVisit")
     .set(
       {
-        [gameUserName]: firebaseAdmin.firestore.FieldValue.delete(),
+        [userId]: firebaseAdmin.firestore.FieldValue.delete(),
       },
       { merge: true }
     );
 };
 
-export const deleteGamePointsStat = async (gameUserName: string) => {
+export const deleteGamePointsStatByUserId = async (userId: string) => {
   const db = getDB();
   await db
-    .collection("game")
+    .collection("game2")
     .doc("gamePoints")
     .set(
       {
-        [gameUserName]: firebaseAdmin.firestore.FieldValue.delete(),
+        [userId]: firebaseAdmin.firestore.FieldValue.delete(),
       },
       { merge: true }
     );
 };
-
-export const deleteGameUser = async (gameUserName: string) => {
-  await deleteGamePointsStat(gameUserName);
-  await deleteUserLastVisitStat(gameUserName);
-  await deleteAvatar(gameUserName);
-};
-
-export const renameUserLastVisitStat = async (
-  oldUsername: string,
-  newUsername: string
-): Promise<void> => {
+export const deleteGameUserNameById = async (userId: string) => {
   const db = getDB();
-  const userAvatars = await getGameUsersLastVisit();
-
-  const oldData = userAvatars[oldUsername] || Date.now();
-
   await db
-    .collection("game")
-    .doc("gameLastVisit")
+    .collection("game2")
+    .doc("gameUserNames")
     .set(
       {
-        [newUsername]: oldData,
-        [oldUsername]: firebaseAdmin.firestore.FieldValue.delete(),
+        [userId]: firebaseAdmin.firestore.FieldValue.delete(),
       },
       { merge: true }
     );
+};
+
+export const deleteGameUserById = async (userId: string) => {
+  await Promise.all([
+    deleteGamePointsStatByUserId(userId),
+    deleteAvatarByUserId(userId),
+    deleteUserLastVisitStatByUserId(userId),
+    deleteGameUserNameById(userId),
+  ]);
 };
 
 export const isUserIsGameWinner = async (userId: string): Promise<boolean> => {
-  const [pointes, gameProfile] = await Promise.all([getGameUsersPoints(), getGameProfile(userId)]);
-  const username = gameProfile?.username;
-
-  if (!username) {
-    return false;
-  }
-
-  const sortedUserNames = Object.keys(pointes).sort((a, b) => pointes[b] - pointes[a]);
-  const userIndex = sortedUserNames.indexOf(username);
+  const points = await getGameUsersPoints();
+  const sortedUserNames = Object.keys(points).sort((a, b) => points[b] - points[a]);
+  const userIndex = sortedUserNames.indexOf(userId);
   const isTop5 = userIndex < 5;
-
   return isTop5;
 };
 
 interface increaseUserPointsProps {
-  username: string;
+  userId: string;
   points: number;
 }
-export const increaseUserPoints = async ({ username, points }: increaseUserPointsProps) => {
+export const increaseUserPoints = async ({ userId, points }: increaseUserPointsProps) => {
   const db = getDB();
 
   const stat = await getGameUsersPoints();
-  const oldValue = stat[username] || 0;
+  const oldValue = stat[userId] || 1;
   const newValue = oldValue + points;
 
   await db
-    .collection("game")
+    .collection("game2")
     .doc("gamePoints")
-    .set({ [username]: newValue }, { merge: true });
+    .set({ [userId]: newValue }, { merge: true });
 
-  stat[username] = newValue;
+  stat[userId] = newValue;
   return stat;
 };

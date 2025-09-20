@@ -10,11 +10,13 @@ import { getFirebaseLink } from "../Firebase/getFirebaseLink";
 import { useGame } from "../Game/useGame";
 import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
 import { Check, Copy } from "lucide-react";
+import { defaultAvatar } from "../Game/avatars";
 
 const UserCard = ({ userStat }: { userStat: UserStat }) => {
   const game = useGame();
   const [isQuizFull, setIsQuizFull] = useState(false);
   const user = userStat.userData;
+  const userId = user.id;
   const lastLoginAgo = user.lastLoginAtDateTime
     ? dayjs(user.lastLoginAtDateTime).fromNow()
     : "Never";
@@ -38,10 +40,9 @@ const UserCard = ({ userStat }: { userStat: UserStat }) => {
     ? dayjs(lastConversationDateTime).fromNow()
     : "Never";
 
-  const gameProfile = userStat.gameProfile;
-  const gameUsername = gameProfile?.username || "";
-  const userStats = game.stats.find((s) => s.username === gameProfile?.username);
-  const gameAvatar = game.gameAvatars[userStats?.username || "default"];
+  const gameUsername = game.userNames?.[userId || ""] || "";
+  const userStats = game.stats.find((s) => s.userId === userId);
+  const gameAvatar = game.gameAvatars[userId || ""] || defaultAvatar;
   const nativeLanguage =
     fullEnglishLanguageName[user.nativeLanguageCode as SupportedLanguage] ||
     user.nativeLanguageCode ||

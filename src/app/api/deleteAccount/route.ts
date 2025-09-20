@@ -1,8 +1,7 @@
 import { NextRequest } from "next/server";
-import { deleteAuthUser, getDB, validateAuthToken } from "../config/firebase";
+import { deleteAuthUser, validateAuthToken } from "../config/firebase";
 import { deleteDoc } from "../config/deleteDoc";
-import { getGameProfile } from "@/features/Game/api/getGameProfile";
-import { deleteGameUser } from "@/features/Game/api/statsResources";
+import { deleteGameUserById } from "@/features/Game/api/statsResources";
 
 export async function POST(request: NextRequest) {
   const user = await validateAuthToken(request);
@@ -11,12 +10,7 @@ export async function POST(request: NextRequest) {
     return new Response("Unauthorized", { status: 401 });
   }
 
-  const gameProfile = await getGameProfile(userId);
-  const gameUserName = gameProfile?.username;
-  if (gameUserName) {
-    await deleteGameUser(gameUserName);
-  }
-
+  await deleteGameUserById(userId);
   await deleteDoc("users", userId);
   await deleteAuthUser(userId);
 

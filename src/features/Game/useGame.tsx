@@ -10,13 +10,11 @@ import {
   useRef,
 } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { GameAvatars, GameLastVisit, GameProfile, GameQuestionShort, UsersStat } from "./types";
+import { GameAvatars, GameLastVisit, GameQuestionShort, GameUserNames, UsersStat } from "./types";
 import {
   getGameQuestionsRequest,
-  getMyProfileRequest,
   getSortedStatsFromData,
   submitAnswerRequest,
-  updateUserProfileRequest,
 } from "@/features/Game/gameBackendRequests";
 
 import { useSettings } from "../Settings/useSettings";
@@ -25,11 +23,10 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "../Firebase/firebaseDb";
 import { setDoc } from "firebase/firestore";
 import { avatars } from "./avatars";
+import { generateRandomUsername } from "./userNames";
 
 interface GameContextType {
-  loadingProfile: boolean;
   stats: UsersStat[];
-  myProfile: GameProfile | null;
   loadingQuestions: boolean;
   generateQuestions: () => Promise<void>;
   questions: GameQuestionShort[];
@@ -41,6 +38,7 @@ interface GameContextType {
   nextQuestion: () => void;
   myPosition: number | null;
   myPoints: number | null;
+  isLoading: boolean;
   isGameWinner: boolean;
   updateUsername: (username: string) => Promise<void>;
   gameLastVisit: GameLastVisit | null;
@@ -52,27 +50,33 @@ interface GameContextType {
   isGamePlaying: boolean;
   playGame: () => void;
   stopGame: () => void;
+  userNames: GameUserNames | null;
+
+  myUserName: string | null;
+  myAvatar: string;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
 
 function useProvideGame(): GameContextType {
   const auth = useAuth();
+  const userId = auth.uid;
   const settings = useSettings();
-  const [myProfile, setMyProfile] = useState<GameProfile | null>(null);
-  const [loadingProfile, setLoadingProfile] = useState(true);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [questions, setQuestions] = useState<GameQuestionShort[]>([]);
   const [activeQuestion, setActiveQuestion] = useState<GameQuestionShort | null>(null);
-  const isUpdatingUsername = useRef(false);
 
   const nativeLanguageCode = settings.userSettings?.nativeLanguageCode || null;
-  const [gameRate] = useDocumentData(db.documents.gameRate);
-  const [gameLastVisit] = useDocumentData(db.documents.gameLastVisit);
-
-  const [gameAvatars] = useDocumentData(db.documents.gameAvatars);
-
+  const [gameRate, gameRateLoading] = useDocumentData(db.documents.gameRate2);
+  const [gameLastVisit, gameLastVisitLoading] = useDocumentData(db.documents.gameLastVisit2);
+  const [gameAvatars, gameAvatarsLoading] = useDocumentData(db.documents.gameAvatars2);
+  const [userNames, userNamesLoading] = useDocumentData(db.documents.gameUserNames2);
+  const isLoading =
+    gameRateLoading || gameLastVisitLoading || gameAvatarsLoading || userNamesLoading;
+  console.log("GAME isLoading", isLoading);
   const [isGamePlaying, setIsGamePlaying] = useState(false);
+
+  const myAvatar = gameAvatars?.[userId || ""] || "";
 
   const playGame = () => {
     generateQuestions();
@@ -88,54 +92,56 @@ function useProvideGame(): GameContextType {
   }, [gameRate]);
 
   const updateLastVisit = async () => {
-    if (!auth.uid || !myProfile?.username) return;
-    const doc = db.documents.gameLastVisit;
+    if (!userId) return;
+    const doc = db.documents.gameLastVisit2;
     setDoc(
       doc,
       {
-        [myProfile.username]: Date.now(),
+        [userId]: new Date().toISOString(),
       },
       { merge: true }
     );
   };
 
   const setAvatar = async (avatarUrl: string) => {
-    if (!auth.uid || !myProfile?.username) return;
-
-    const doc = db.documents.gameAvatars;
-
+    if (!userId) return;
+    const doc = db.documents.gameAvatars2;
     await setDoc(
       doc,
       {
-        [myProfile.username]: avatarUrl,
+        [userId]: avatarUrl,
       },
       { merge: true }
     );
   };
 
   useEffect(() => {
-    if (!auth.uid || !myProfile?.username || isUpdatingUsername.current) return;
+    if (!userId) return;
     updateLastVisit();
     setDefaultAvatarIfNeeded();
-  }, [auth.uid, myProfile?.username]);
+    setDefaultUsernameIfNeeded();
+  }, [userId, isLoading]);
+
+  const setDefaultUsernameIfNeeded = async () => {
+    if (!userId || isLoading || !userNames) return;
+
+    const userName = userNames[userId];
+    if (userName) return; // Username already set
+
+    const randomUsername = generateRandomUsername();
+    if (!randomUsername) return;
+    await updateUsername(randomUsername);
+  };
 
   const setDefaultAvatarIfNeeded = async () => {
-    if (!auth.uid || !myProfile?.username || !gameAvatars || isUpdatingUsername.current) return;
+    if (!userId || isLoading || !gameAvatars) return;
 
-    const userAvatar = gameAvatars[myProfile.username];
-    if (userAvatar) return; // Avatar already set
+    if (myAvatar) return; // Avatar already set
 
     const randomAvatars = shuffleArray(avatars);
     const randomAvatar = randomAvatars[0];
     if (!randomAvatar) return;
     await setAvatar(randomAvatar);
-  };
-
-  const userId = auth.uid;
-
-  const getMyProfile = async () => {
-    const response = await getMyProfileRequest(await auth.getToken());
-    setMyProfile(response);
   };
 
   const loadMoreQuestions = async () => {
@@ -169,14 +175,6 @@ function useProvideGame(): GameContextType {
     updateLastVisit();
   };
 
-  useEffect(() => {
-    if (userId) {
-      getMyProfile().then(async () => {
-        setLoadingProfile(false);
-      });
-    }
-  }, [userId]);
-
   const submitAnswer = async (questionId: string, answer: string) => {
     const response = await submitAnswerRequest(
       {
@@ -207,80 +205,61 @@ function useProvideGame(): GameContextType {
     setActiveQuestion(nextQuestion);
   };
 
-  const myPosition = useMemo(() => {
-    if (!myProfile) return null;
-    const myStat = stats.find((stat) => stat.username === myProfile.username);
+  const myStats = useMemo(() => {
+    if (!userId) return null;
+    const myStat = stats.find((stat) => stat.userId === userId);
     if (!myStat) return null;
-    const myIndex = stats.findIndex((stat) => stat.username === myStat.username);
-    return myIndex + 1;
-  }, [myProfile, stats]);
+    return myStat;
+  }, [userId, stats]);
+
+  const myIndex = useMemo(() => {
+    if (!myStats) return null;
+    const myIndex = stats.findIndex((stat) => stat.userId === myStats.userId);
+    if (myIndex === -1) return null;
+    return myIndex;
+  }, [myStats, stats]);
+
+  const myPosition = useMemo(() => {
+    return myIndex === null ? null : myIndex + 1;
+  }, [myIndex]);
 
   const nextPositionStat = useMemo(() => {
-    if (!myProfile) return null;
-    const myStat = stats.find((stat) => stat.username === myProfile.username);
-    if (!myStat) return null;
-    const myIndex = stats.findIndex((stat) => stat.username === myStat.username);
+    if (myIndex === null) return null;
     if (myIndex - 1 < 0 || myIndex == -1) return null;
     return stats[myIndex - 1];
-  }, [myProfile, stats]);
+  }, [myIndex, stats]);
 
   const pointsToNextPosition = useMemo(() => {
-    if (!nextPositionStat || !myProfile) return null;
-    const myStat = stats.find((stat) => stat.username === myProfile.username);
-    if (!myStat) return null;
-    return nextPositionStat.points - myStat.points;
-  }, [myProfile, nextPositionStat, stats]);
+    if (!nextPositionStat || !myStats) return null;
+    return nextPositionStat.points - myStats.points;
+  }, [nextPositionStat, myStats]);
 
-  const isTop5Position = useMemo(() => {
-    if (!myProfile) return false;
-    const myStat = stats.find((stat) => stat.username === myProfile.username);
-    if (!myStat) return false;
-    const myIndex = stats.findIndex((stat) => stat.username === myStat.username);
-    return myIndex < 5;
-  }, [myProfile, stats]);
+  const isTop5Position = myIndex !== null && myIndex < 5;
 
   const updateUsername = async (username: string) => {
-    if (!userId) return;
+    if (!userId || !userNames) return;
 
-    isUpdatingUsername.current = true;
-
-    const response = await updateUserProfileRequest(
+    const doc = db.documents.gameUserNames2;
+    await setDoc(
+      doc,
       {
-        username,
+        [userId]: username,
       },
-      await auth.getToken()
+      { merge: true }
     );
-
-    if (response.isUpdated) {
-      setMyProfile((prev) => {
-        if (!prev) return null;
-        return { ...prev, username };
-      });
-    } else {
-      console.log("Failed to update username:", response.error);
-      alert(response.error || "Failed to update username");
-    }
-
-    setTimeout(() => {
-      isUpdatingUsername.current = false;
-    }, 1000);
   };
 
-  const myPoints = useMemo(() => {
-    if (!myProfile) return null;
-    const myStat = stats.find((stat) => stat.username === myProfile.username);
-    if (!myStat) return null;
-    return myStat.points;
-  }, [myProfile, stats]);
+  const myPoints = myStats !== null ? myStats.points : null;
+  const myUserName = userNames?.[userId || ""] || null;
 
   return {
+    myUserName,
     isGameWinner: isTop5Position,
-    loadingProfile,
     myPosition,
+    userNames: userNames || null,
     myPoints,
     nextQuestion,
     submitAnswer,
-    myProfile,
     stats,
     questions,
     loadingQuestions,
@@ -296,6 +275,8 @@ function useProvideGame(): GameContextType {
     isGamePlaying,
     playGame,
     stopGame,
+    myAvatar,
+    isLoading,
   };
 }
 

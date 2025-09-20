@@ -6,16 +6,20 @@ import { Typography } from "@mui/material";
 import { defaultAvatar } from "./avatars";
 import dayjs from "dayjs";
 import { UsersStat } from "./types";
+import { useAuth } from "../Auth/useAuth";
 
 export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number }) => {
   const game = useGame();
+  const auth = useAuth();
+  const userId = auth.uid || "";
+  const userName = game.userNames?.[stat.userId] || "";
 
-  const isMe = stat.username === game.myProfile?.username;
+  const isMe = stat.userId === userId;
   const top5 = index < 5;
-  const lastVisit = game.gameLastVisit ? game.gameLastVisit[stat.username] : null;
+  const lastVisit = game.gameLastVisit ? game.gameLastVisit[stat.userId] : null;
   const lastVisitAgo = lastVisit ? dayjs(lastVisit).fromNow() : null;
 
-  const avatar = game.gameAvatars[stat.username] || defaultAvatar;
+  const avatar = game.gameAvatars[stat.userId] || defaultAvatar;
   const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 5 : false;
 
   return (
@@ -73,7 +77,7 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
           overflow: "hidden",
         }}
       >
-        <Typography variant="body1">{stat.username}</Typography>
+        <Typography variant="body1">{userName}</Typography>
         <Typography
           variant="caption"
           sx={{

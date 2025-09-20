@@ -1,44 +1,10 @@
-import {
-  GameProfile,
-  GameUsersPoints,
-  GetGameQuestionsResponse,
-  UsersStat,
-} from "@/features/Game/types";
-import {
-  GetGameQuestionsRequest,
-  SubmitAnswerRequest,
-  SubmitAnswerResponse,
-  UpdateUserProfileRequest,
-  UpdateUserProfileResponse,
-} from "./types";
-
-export const getMyProfileRequest = async (authKey: string) => {
-  const response = await fetch(`/api/game/profile`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${authKey}`,
-    },
-  });
-  const data = (await response.json()) as GameProfile;
-  return data;
-};
-
-export const getUserPointsRequest = async () => {
-  const response = await fetch(`/api/game/getStats`);
-  const data = (await response.json()) as GameUsersPoints;
-  return data;
-};
-
-export const getSortedStats = async () => {
-  const userPoints = await getUserPointsRequest();
-  return getSortedStatsFromData(userPoints);
-};
+import { GameUsersPoints, GetGameQuestionsResponse, UsersStat } from "@/features/Game/types";
+import { GetGameQuestionsRequest, SubmitAnswerRequest, SubmitAnswerResponse } from "./types";
 
 export const getSortedStatsFromData = (userPoints: GameUsersPoints) => {
-  const userNames = Object.keys(userPoints);
+  const userIds = Object.keys(userPoints);
 
-  const userStats = userNames
+  const userStats = userIds
     .sort((a, b) => {
       const pointsA = userPoints[a];
       const pointsB = userPoints[b];
@@ -48,10 +14,10 @@ export const getSortedStatsFromData = (userPoints: GameUsersPoints) => {
       }
       return pointsB - pointsA;
     })
-    .map((username) => {
+    .map((userId) => {
       const stat: UsersStat = {
-        username,
-        points: userPoints[username],
+        userId: userId,
+        points: userPoints[userId] || 1,
       };
       return stat;
     });
@@ -84,21 +50,5 @@ export const submitAnswerRequest = async (request: SubmitAnswerRequest, authKey:
     body: JSON.stringify(request),
   });
   const data = (await response.json()) as SubmitAnswerResponse;
-  return data;
-};
-
-export const updateUserProfileRequest = async (
-  request: UpdateUserProfileRequest,
-  authKey: string
-) => {
-  const response = await fetch(`/api/game/profile`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${authKey}`,
-    },
-    body: JSON.stringify(request),
-  });
-  const data = (await response.json()) as UpdateUserProfileResponse;
   return data;
 };

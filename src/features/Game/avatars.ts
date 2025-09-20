@@ -44,3 +44,8 @@ export const avatars = [
 ];
 
 export const defaultAvatar = "/gameAvatar/42cda3b0-7a12-47b1-a3a3-a093935f55c2.webp";
+
+export const getRandomAvatar = () => {
+  const randomIndex = Math.floor(Math.random() * avatars.length);
+  return avatars[randomIndex];
+};
