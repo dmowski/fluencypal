@@ -143,7 +143,7 @@ export function HeaderComponentStatic({
       >
         <Stack
           sx={{
-            maxWidth: "1400px",
+            maxWidth: "1300px",
             width: "100%",
             gap: "10px",
             flexDirection: "row",

@@ -87,11 +87,12 @@ const ColorCard = ({
           opacity: 1,
           overflow: "hidden",
           borderRadius: "30px 30px 40px 100px",
-          "--color-card-shadow": "0 0 50px 40px #050709, 0 0 300px 10px rgba(0, 0, 0, 1)",
+          "--color-card-shadow": "0 0 50px 40px #050709, 0 0 300px 10px rgba(0, 0, 0, 0)",
           boxShadow: `var(--color-card-shadow)`,
 
           video: {
             position: "absolute",
+            //display: "none",
             zIndex: -2,
             top: "0px",
             left: "0px",
@@ -322,6 +323,16 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         overflow: "hidden",
       }}
     >
+      <Stack
+        sx={{
+          position: "absolute",
+          top: 0,
+          width: "100%",
+          height: "300px",
+          background: `linear-gradient(180deg, #050709 0%, transparent 100%)`,
+          zIndex: 1,
+        }}
+      />
       <Stack
         sx={{
           alignItems: "center",
