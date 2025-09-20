@@ -75,6 +75,7 @@ export async function POST(request: Request) {
         gameLastVisit[gameUsername] || lastLogin || createdAtIso || Date.now()
       ).toISOString();
 
+      /*
       await db
         .collection("game2")
         .doc("gameUserNames")
@@ -114,6 +115,7 @@ export async function POST(request: Request) {
           },
           { merge: true }
         );
+        */
 
       const userStat: UserStat = {
         userData: user,
