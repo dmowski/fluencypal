@@ -38,15 +38,43 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         sx={{
           position: "absolute",
           bottom: 0,
-          width: "100%",
-          height: "300px",
-          background: `linear-gradient(180deg, rgba(16,19,26,0) 0%, #10131a 100%)`,
+          width: "100vw",
+          left: 0,
+          height: "100px",
+          background: `linear-gradient(180deg, rgba(16, 19, 26, 0) 0%, rgba(16, 19, 26, 1) 100%)`,
           zIndex: 1,
           "@media (max-width: 600px)": {
             height: "100px",
           },
         }}
       />
+
+      <Stack
+        sx={{
+          position: "absolute",
+          backgroundColor: `#10131a`,
+          top: 0,
+          left: "0px",
+          margin: "0 auto",
+          width: "100vw",
+          overflow: "hidden",
+          height: "100%",
+          zIndex: -2,
+          background: "url('/landing/blur_bg.webp') no-repeat center top",
+          backgroundSize: "cover",
+          "@media (max-width: 1400px)": {
+            height: "90%",
+          },
+          "@media (max-width: 900px)": {
+            height: "130%",
+          },
+
+          "@media (max-width: 600px)": {
+            display: "none",
+          },
+        }}
+      />
+
       <Stack
         sx={{
           maxWidth: maxLandingWidth,
@@ -69,47 +97,6 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           },
         }}
       >
-        <Stack
-          sx={{
-            position: "absolute",
-            backgroundColor: `#10131a`,
-            //backgroundColor: `#1212ff`,
-            top: 0,
-            left: "-200px",
-            margin: "0 auto",
-            width: "calc(100vw + 400px)",
-            overflow: "hidden",
-            height: "180vh",
-            zIndex: -2,
-            "@media (max-width: 1400px)": {
-              left: "0px",
-            },
-            "@media (max-width: 1300px)": {
-              left: "0px",
-            },
-
-            ".blur-bg": {
-              width: "1800px",
-              height: "2000px",
-              opacity: 1,
-              position: "absolute",
-              top: "-323px",
-              left: "calc(50vw - 990px)",
-              "@media (max-width: 1300px)": {
-                left: "calc(50vw - 990px + 190px)",
-              },
-              "@media (max-width: 900px)": {
-                left: "calc(50vw - 990px + 220px)",
-                top: "-423px",
-              },
-              "@media (max-width: 600px)": {
-                display: "none",
-              },
-            },
-          }}
-        >
-          <img src={"/landing/blur_bg.webp"} className="blur-bg" alt="" />
-        </Stack>
         <Stack
           sx={{
             alignItems: "flex-start",
@@ -256,7 +243,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 width: "961px",
                 aspectRatio: "2048 / 1138",
                 backgroundColor: "#10131a",
-                borderRadius: "20px",
+                borderRadius: "20px 20px 0px 0px",
                 maxWidth: "calc(100% - 10px)",
                 "@media (max-width: 700px)": {
                   borderRadius: "10px",
