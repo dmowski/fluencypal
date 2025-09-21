@@ -1,9 +1,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
-import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { useAppNavigation } from "../../Navigation/useAppNavigation";
 import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
 import { IconTextList, RecordUserAudioAnswer } from "@/features/Goal/Quiz/QuizPage2";
@@ -12,14 +10,17 @@ import { getWordsCount } from "@/libs/words";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useSettings } from "@/features/Settings/useSettings";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { db } from "@/features/Firebase/firebaseDb";
+import { DailyQuestionAnswer } from "./types";
+import { and, doc, or, orderBy, query, setDoc, where } from "firebase/firestore";
 
 export const DailyQuestionBadge = () => {
   const { i18n } = useLingui();
-  const appNavigation = useAppNavigation();
-  const urlToNavigate = appNavigation.pageUrl("game");
   const todayIsoDate = dayjs().format("YYYY-MM-DD");
   const todaysQuestion = dailyQuestions[todayIsoDate];
-  const router = useRouter();
+  const questionId = todaysQuestion?.id;
+
   const now = useMemo(() => new Date(), []);
   const timeLeft = dayjs(todayIsoDate).endOf("day").diff(now);
   const hoursLeft = Math.max(0, Math.floor(timeLeft / (1000 * 60 * 60)));
@@ -27,8 +28,71 @@ export const DailyQuestionBadge = () => {
   const [isStartAnswering, setIsStartAnswering] = useState(false);
 
   const auth = useAuth();
+  const userId = auth.uid;
   const settings = useSettings();
-  const [transcript, updateTranscript] = useState("");
+
+  const collectionRef = db.collections.dailyQuestionsAnswers(userId);
+  const queryRef = useMemo(() => {
+    if (!collectionRef || !settings.languageCode || !userId) return null;
+    return query(
+      collectionRef,
+      and(
+        where("answerLanguage", "==", settings.languageCode),
+        or(where("isPublished", "==", true), where("authorUserId", "==", userId))
+      ),
+      orderBy("updatedAtIso", "desc")
+    );
+  }, [collectionRef, settings.languageCode, userId]);
+
+  const [allAnswers] = useCollection(queryRef);
+  const myAnswer = allAnswers?.docs.find((answer) => {
+    const answerData = answer.data();
+    return answerData.authorUserId === userId && answerData.questionId === questionId;
+  });
+  const myAnswerData = myAnswer?.data() || null;
+  const transcript = myAnswer?.data().transcript || "";
+  const answerDocId = myAnswer?.id;
+
+  const updateTranscript = (newTranscript: string) => {
+    if (!myAnswer || !answerDocId) {
+      createAnswer(newTranscript);
+      return;
+    }
+    updateTranscriptInDb({ newTranscript, isPublished: false }, answerDocId);
+  };
+
+  const updateTranscriptInDb = async (
+    { newTranscript, isPublished }: { newTranscript: string; isPublished: boolean },
+    documentId: string
+  ) => {
+    if (!collectionRef || !documentId || !myAnswerData)
+      throw new Error("❌ collectionRef is not defined | updateTranscriptInDb");
+
+    const docRef = doc(collectionRef, documentId);
+    const updatedDate: DailyQuestionAnswer = {
+      ...myAnswerData,
+      transcript: newTranscript,
+      updatedAtIso: new Date().toISOString(),
+      isPublished: isPublished,
+    };
+    await setDoc(docRef, updatedDate, { merge: true });
+  };
+
+  const createAnswer = async (newTranscript: string) => {
+    if (!collectionRef || !questionId || !userId)
+      throw new Error("❌ collectionRef is not defined | createAnswer");
+
+    const newData: DailyQuestionAnswer = {
+      authorUserId: userId,
+      questionId: questionId,
+      answerLanguage: settings.languageCode || "en",
+      transcript: newTranscript,
+      isPublished: false,
+      createdAtIso: new Date().toISOString(),
+      updatedAtIso: new Date().toISOString(),
+    };
+    await setDoc(doc(collectionRef), newData);
+  };
 
   const recorder = useAudioRecorder({
     languageCode: settings.languageCode || "en",

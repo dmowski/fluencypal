@@ -19,6 +19,7 @@ import { PhraseCorrection } from "../Corrections/types";
 import { GoalPlan } from "../Plan/types";
 import { GameAvatars, GameLastVisit, GameUserNames, GameUsersPoints } from "../Game/types";
 import { QuizSurvey2 } from "../Goal/Quiz/types";
+import { DailyQuestionAnswer } from "../Game/DailyQuestion/types";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -72,6 +73,8 @@ export const db = {
 
     goals: (userId?: string) =>
       userId ? dataPointCollection<GoalPlan>(`users/${userId}/goals`) : null,
+    dailyQuestionsAnswers: (userId?: string) =>
+      userId ? dataPointCollection<DailyQuestionAnswer>(`dailyQuestionsAnswers`) : null,
   },
   documents: {
     homework: (userId?: string, homeworkId?: string) =>
