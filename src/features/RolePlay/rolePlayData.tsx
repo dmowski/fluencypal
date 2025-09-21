@@ -80,13 +80,17 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
       videoSrc: "/role/69e7165b-a597-4731-8def-3e0f2b09ec1d_1.mp4",
       voice: "shimmer",
 
-      landingHighlight: `Improve your vocabulary and speaking skills while having fun! Alias is a dynamic word-guessing game where you'll practice explaining and guessing words creatively, expanding your linguistic confidence.`,
+      landingHighlight: i18n._(
+        "Improve your vocabulary and speaking skills while having fun! Alias is a dynamic word-guessing game where you'll practice explaining and guessing words creatively, expanding your linguistic confidence."
+      ),
     },
     {
       id: "small-talk-with-a-stranger",
       title: i18n._("Small Talk Practice"),
       shortTitle: i18n._("Small Talk"),
-      landingHighlight: `Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.`,
+      landingHighlight: i18n._(
+        "Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally."
+      ),
       contentPage:
         i18n._(`Engage in a casual conversation with a friendly stranger at a social event. Perfect for practicing how to break the ice and keep the chat going naturally.
 
@@ -118,7 +122,9 @@ In this scenario, you’ll step into the role of someone meeting a new acquainta
       title: i18n._("Practice Job Interview"),
       shortTitle: i18n._("Job Interview"),
 
-      landingHighlight: `Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.`,
+      landingHighlight: i18n._(
+        "Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate."
+      ),
 
       contentPage:
         i18n._(`Step into a realistic interview environment and practice showcasing your professional strengths. This role-play helps you handle common interview questions, discuss your experience, and demonstrate why you’re the right candidate.
