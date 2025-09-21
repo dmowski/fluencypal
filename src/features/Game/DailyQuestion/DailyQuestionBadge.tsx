@@ -2,12 +2,16 @@ import { Button, Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useAppNavigation } from "../../Navigation/useAppNavigation";
 import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
 import { IconTextList, RecordUserAudioAnswer } from "@/features/Goal/Quiz/QuizPage2";
-import { Lightbulb, Mic } from "lucide-react";
+import { ArrowRight, Check, Lightbulb, Mic } from "lucide-react";
+import { getWordsCount } from "@/libs/words";
+import { useAuth } from "@/features/Auth/useAuth";
+import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
+import { useSettings } from "@/features/Settings/useSettings";
 
 export const DailyQuestionBadge = () => {
   const { i18n } = useLingui();
@@ -22,17 +26,48 @@ export const DailyQuestionBadge = () => {
   const peopleAnswered = 3;
   const [isStartAnswering, setIsStartAnswering] = useState(false);
 
+  const auth = useAuth();
+  const settings = useSettings();
+  const [transcript, updateTranscript] = useState("");
+
+  const recorder = useAudioRecorder({
+    languageCode: settings.languageCode || "en",
+    getAuthToken: auth.getToken,
+    isFree: true,
+    isGame: false,
+    visualizerComponentWidth: "100%",
+  });
+
+  useEffect(() => {
+    if (recorder.transcription) {
+      const combinedTranscript = [transcript, recorder.transcription].filter(Boolean).join(" ");
+      updateTranscript(combinedTranscript);
+    }
+  }, [recorder.transcription]);
+
+  const clearTranscript = () => {
+    if (transcript) {
+      updateTranscript("");
+    }
+  };
+
+  const minWords = 30;
+  const wordsCount = getWordsCount(transcript || "");
+  const isNeedMoreRecording = !transcript || wordsCount < minWords;
+
   const onClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsStartAnswering(!isStartAnswering);
   };
+
+  const nextStep = () => {};
 
   if (!todaysQuestion) {
     return null;
   }
   return (
     <Stack
-      onClick={onClick}
+      onClick={isStartAnswering ? undefined : onClick}
       key={todayIsoDate}
       sx={{
         padding: "21px 20px 24px 20px",
@@ -42,7 +77,7 @@ export const DailyQuestionBadge = () => {
         borderRadius: "8px",
         width: "100%",
         height: "auto",
-        cursor: "pointer",
+        cursor: isStartAnswering ? "initial" : "pointer",
 
         /*
         background: isStartAnswering
@@ -159,16 +194,17 @@ export const DailyQuestionBadge = () => {
                 }}
               >
                 <RecordUserAudioAnswer
-                  transcript={""}
-                  minWords={30}
+                  transcript={transcript}
+                  minWords={minWords}
                   isLoading={false}
-                  isTranscribing={false}
-                  visualizerComponent={<></>}
-                  isRecording={false}
-                  stopRecording={async () => {}}
-                  startRecording={async () => {}}
-                  clearTranscript={async () => {}}
+                  isTranscribing={recorder.isTranscribing}
+                  visualizerComponent={recorder.visualizerComponent}
+                  isRecording={recorder.isRecording}
+                  stopRecording={recorder.stopRecording}
+                  startRecording={recorder.startRecording}
+                  clearTranscript={clearTranscript}
                 />
+
                 <Stack
                   sx={{
                     "@media (max-width:600px)": {
@@ -178,8 +214,51 @@ export const DailyQuestionBadge = () => {
                     },
                   }}
                 >
-                  <Button size="large" variant="contained" color="info" startIcon={<Mic />}>
-                    Record
+                  {isNeedMoreRecording && recorder.visualizerComponent}
+                  <Button
+                    disabled={
+                      (recorder.isRecording && wordsCount >= minWords) || recorder.isTranscribing
+                    }
+                    onClick={async () => {
+                      if (transcript && wordsCount >= minWords) {
+                        if (recorder.isRecording) {
+                          await recorder.stopRecording();
+                        }
+                        nextStep();
+                        return;
+                      }
+
+                      if (recorder.isRecording) {
+                        recorder.stopRecording();
+                        return;
+                      }
+
+                      recorder.startRecording();
+                    }}
+                    size="large"
+                    variant="contained"
+                    color={
+                      recorder.isRecording && wordsCount < minWords
+                        ? "error"
+                        : wordsCount > minWords
+                          ? "success"
+                          : "primary"
+                    }
+                    endIcon={
+                      recorder.isRecording && wordsCount < minWords ? (
+                        <Check />
+                      ) : transcript && wordsCount >= minWords ? (
+                        <ArrowRight />
+                      ) : (
+                        <Mic />
+                      )
+                    }
+                  >
+                    {recorder.isRecording && wordsCount < minWords
+                      ? i18n._("Done")
+                      : transcript && wordsCount >= minWords
+                        ? i18n._("Next")
+                        : i18n._("Record")}
                   </Button>
                 </Stack>
               </Stack>
