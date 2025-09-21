@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
 import { IconTextList, RecordUserAudioAnswer } from "@/features/Goal/Quiz/QuizPage2";
-import { ArrowRight, Check, Lightbulb, Mic } from "lucide-react";
+import { ArrowRight, Check, Eye, EyeOff, Lightbulb, Mic } from "lucide-react";
 import { getWordsCount } from "@/libs/words";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
@@ -14,12 +14,14 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "@/features/Firebase/firebaseDb";
 import { DailyQuestionAnswer } from "./types";
 import { and, doc, or, orderBy, query, setDoc, where } from "firebase/firestore";
+import { useGame } from "../useGame";
 
 export const DailyQuestionBadge = () => {
   const { i18n } = useLingui();
   const todayIsoDate = dayjs().format("YYYY-MM-DD");
   const todaysQuestion = dailyQuestions[todayIsoDate];
   const questionId = todaysQuestion?.id;
+  const game = useGame();
 
   const now = useMemo(() => new Date(), []);
   const timeLeft = dayjs(todayIsoDate).endOf("day").diff(now);
@@ -45,6 +47,10 @@ export const DailyQuestionBadge = () => {
   }, [collectionRef, settings.languageCode, userId]);
 
   const [allAnswers] = useCollection(queryRef);
+  const allAnswersData = useMemo(
+    () => allAnswers?.docs.map((doc) => doc.data()) || [],
+    [allAnswers]
+  );
   const myAnswer = allAnswers?.docs.find((answer) => {
     const answerData = answer.data();
     return answerData.authorUserId === userId && answerData.questionId === questionId;
@@ -59,6 +65,14 @@ export const DailyQuestionBadge = () => {
       return;
     }
     updateTranscriptInDb({ newTranscript, isPublished: false }, answerDocId);
+  };
+
+  const togglePublish = () => {
+    if (!myAnswer || !answerDocId || !myAnswerData) return;
+    updateTranscriptInDb(
+      { newTranscript: transcript, isPublished: !myAnswerData.isPublished },
+      answerDocId
+    );
   };
 
   const updateTranscriptInDb = async (
@@ -325,6 +339,132 @@ export const DailyQuestionBadge = () => {
                         : i18n._("Record")}
                   </Button>
                 </Stack>
+              </Stack>
+
+              <Stack
+                sx={{
+                  paddingTop: "30px",
+                  gap: "10px",
+                }}
+              >
+                <Typography>{i18n._("Answers")}</Typography>
+                {allAnswersData.map((answer, index) => {
+                  const isMyAnswer = answer.authorUserId === userId;
+                  return (
+                    <Stack
+                      key={index}
+                      sx={{
+                        gap: "10px",
+                        backgroundColor: "rgba(255, 255, 255, 0.05)",
+                        padding: "18px 18px",
+                        borderRadius: "8px",
+                      }}
+                    >
+                      <Stack
+                        sx={{
+                          flexDirection: "row",
+                          alignItems: "flex-start",
+                          justifyContent: "space-between",
+                          gap: "10px",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <Stack
+                          sx={{
+                            flexDirection: "row",
+                            alignItems: "center",
+                            gap: "10px",
+                          }}
+                        >
+                          <Stack
+                            sx={{
+                              ".avatar": { width: "40px", height: "40px", borderRadius: "50%" },
+                            }}
+                          >
+                            <img
+                              className="avatar"
+                              src={game.gameAvatars?.[answer.authorUserId]}
+                              alt="User Avatar"
+                            />
+                          </Stack>
+                          <Stack>
+                            <Typography key={index} variant="body2" sx={{ fontWeight: 600 }}>
+                              {game.userNames?.[answer.authorUserId] || "Unknown User"}
+                            </Typography>
+                            <Typography variant="caption" color="text.secondary">
+                              {dayjs(answer.updatedAtIso).fromNow()}
+                            </Typography>
+                          </Stack>
+                        </Stack>
+                        {isMyAnswer && (
+                          <Stack
+                            sx={{
+                              flexDirection: "row",
+                              alignItems: "center",
+                              gap: "10px",
+                            }}
+                          >
+                            <Typography variant="caption">
+                              {i18n._("This is your answer")}
+                            </Typography>
+                            <Stack
+                              sx={{
+                                backgroundColor: answer.isPublished
+                                  ? "#4caf50"
+                                  : "rgba(255, 255, 255, 0.2)",
+                                padding: "2px 10px",
+                                borderRadius: "6px",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "6px",
+                              }}
+                            >
+                              {answer.isPublished ? (
+                                <Eye size={"12px"} />
+                              ) : (
+                                <EyeOff size={"12px"} />
+                              )}
+                              <Typography
+                                variant="caption"
+                                sx={{
+                                  textTransform: "uppercase",
+                                }}
+                              >
+                                {answer.isPublished ? i18n._("published") : i18n._("not published")}{" "}
+                              </Typography>
+                            </Stack>
+                          </Stack>
+                        )}
+                      </Stack>
+                      <Typography variant="body2">{answer.transcript}</Typography>
+                      <Stack
+                        sx={{
+                          flexDirection: "row",
+                        }}
+                      >
+                        {isMyAnswer && (
+                          <>
+                            <Button
+                              startIcon={
+                                answer.isPublished ? (
+                                  <EyeOff size={"15px"} />
+                                ) : (
+                                  <Eye size={"15px"} />
+                                )
+                              }
+                              onClick={togglePublish}
+                              variant={answer.isPublished ? "outlined" : "contained"}
+                            >
+                              {answer.isPublished
+                                ? i18n._("Unpublish")
+                                : i18n._("Publish an answer")}
+                            </Button>
+                          </>
+                        )}
+                      </Stack>
+                    </Stack>
+                  );
+                })}
               </Stack>
             </Stack>
           </Stack>

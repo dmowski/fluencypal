@@ -23,7 +23,7 @@ export function Dashboard({ lang }: DashboardProps) {
   const appNavigation = useAppNavigation();
   const auth = useAuth();
   const isDev = auth.userInfo?.email?.includes("dmowski");
-  const IS_SHOW_DAILY_QUESTION_BADGE = isDev;
+  const IS_SHOW_DAILY_QUESTION_BADGE = isDev || true;
   return (
     <>
       <NavigationBar lang={lang} />
