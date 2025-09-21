@@ -20,7 +20,7 @@ export const DailyQuestionBadge = () => {
   const timeLeft = dayjs(todayIsoDate).endOf("day").diff(now);
   const hoursLeft = Math.max(0, Math.floor(timeLeft / (1000 * 60 * 60)));
   const peopleAnswered = 3;
-  const [isStartAnswering, setIsStartAnswering] = useState(true);
+  const [isStartAnswering, setIsStartAnswering] = useState(false);
 
   const onClick = (e: React.MouseEvent) => {
     e.preventDefault();

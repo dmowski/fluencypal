@@ -83,6 +83,7 @@ function useProvideGame(): GameContextType {
   };
   const stopGame = () => {
     setIsGamePlaying(false);
+    setActiveQuestion(null);
   };
 
   const stats = useMemo(() => {
@@ -158,10 +159,11 @@ function useProvideGame(): GameContextType {
     const uniqQuestions = generatedQuestions
       //.filter((t) => t.type == "read_text")
       .filter((question) => !questions.some((q) => q.id === question.id));
-    setQuestions(uniqQuestions);
+    const allQuestionsIds = [...questions, ...uniqQuestions];
+    setQuestions(allQuestionsIds);
     setActiveQuestion((prev) => {
       if (prev) return prev;
-      const randomArray = shuffleArray(uniqQuestions);
+      const randomArray = shuffleArray(allQuestionsIds);
       const nextQuestion = randomArray[0] || null;
       return nextQuestion;
     });
