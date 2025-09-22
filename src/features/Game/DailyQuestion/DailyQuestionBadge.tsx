@@ -26,7 +26,7 @@ export const DailyQuestionBadge = () => {
   const now = useMemo(() => new Date(), []);
   const timeLeft = dayjs(todayIsoDate).endOf("day").diff(now);
   const hoursLeft = Math.max(0, Math.floor(timeLeft / (1000 * 60 * 60)));
-  const peopleAnswered = 3;
+
   const [isStartAnswering, setIsStartAnswering] = useState(false);
 
   const auth = useAuth();
@@ -132,8 +132,31 @@ export const DailyQuestionBadge = () => {
     setIsStartAnswering(!isStartAnswering);
   };
 
-  const nextStep = () => {};
+  const nextStep = () => {
+    if (!myAnswerData || !answerDocId) {
+      return;
+    }
 
+    updateTranscriptInDb(
+      {
+        newTranscript: transcript,
+        isPublished: true,
+      },
+      myAnswerData,
+      answerDocId
+    );
+  };
+
+  const thisQuestionAnswers = useMemo(() => {
+    if (!allAnswers) return [];
+    return allAnswers.docs.filter((answer) => answer.data().questionId === questionId);
+  }, [allAnswers, questionId]);
+  const peopleAnswered = thisQuestionAnswers.length;
+  const isIamAnsweredThisQuestion = Boolean(
+    thisQuestionAnswers.find(
+      (answer) => answer.data().authorUserId === userId && answer.data().isPublished
+    )
+  );
   if (!todaysQuestion) {
     return null;
   }
@@ -351,7 +374,7 @@ export const DailyQuestionBadge = () => {
                   }}
                 >
                   <Typography>{i18n._("Answers")}</Typography>
-                  {allAnswers?.docs.map((answerDocument, index) => {
+                  {thisQuestionAnswers.map((answerDocument, index) => {
                     const answer = answerDocument.data();
                     const answerDocId = answerDocument.id;
                     const isMyAnswer = answer.authorUserId === userId;
@@ -517,7 +540,7 @@ export const DailyQuestionBadge = () => {
                 borderColor: "#fff",
               }}
             >
-              {i18n._("Answer Now")}
+              {isIamAnsweredThisQuestion ? i18n._("See Answers") : i18n._("Answer Now")}
             </Button>
           )}
         </Stack>
