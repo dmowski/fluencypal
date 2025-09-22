@@ -60,26 +60,19 @@ export const DailyQuestionBadge = () => {
   const answerDocId = myAnswer?.id;
 
   const updateTranscript = (newTranscript: string) => {
-    if (!myAnswer || !answerDocId) {
+    if (!myAnswer || !answerDocId || !myAnswerData) {
       createAnswer(newTranscript);
       return;
     }
-    updateTranscriptInDb({ newTranscript, isPublished: false }, answerDocId);
-  };
-
-  const togglePublish = () => {
-    if (!myAnswer || !answerDocId || !myAnswerData) return;
-    updateTranscriptInDb(
-      { newTranscript: transcript, isPublished: !myAnswerData.isPublished },
-      answerDocId
-    );
+    updateTranscriptInDb({ newTranscript, isPublished: false }, myAnswerData, answerDocId);
   };
 
   const updateTranscriptInDb = async (
     { newTranscript, isPublished }: { newTranscript: string; isPublished: boolean },
+    myAnswerData: DailyQuestionAnswer,
     documentId: string
   ) => {
-    if (!collectionRef || !documentId || !myAnswerData)
+    if (!collectionRef || !documentId)
       throw new Error("❌ collectionRef is not defined | updateTranscriptInDb");
 
     const docRef = doc(collectionRef, documentId);
@@ -348,7 +341,9 @@ export const DailyQuestionBadge = () => {
                 }}
               >
                 <Typography>{i18n._("Answers")}</Typography>
-                {allAnswersData.map((answer, index) => {
+                {allAnswers?.docs.map((answerDocument, index) => {
+                  const answer = answerDocument.data();
+                  const answerDocId = answerDocument.id;
                   const isMyAnswer = answer.authorUserId === userId;
                   return (
                     <Stack
@@ -452,7 +447,16 @@ export const DailyQuestionBadge = () => {
                                   <Eye size={"15px"} />
                                 )
                               }
-                              onClick={togglePublish}
+                              onClick={() => {
+                                updateTranscriptInDb(
+                                  {
+                                    newTranscript: answer.transcript,
+                                    isPublished: !answer.isPublished,
+                                  },
+                                  answer,
+                                  answerDocId
+                                );
+                              }}
                               variant={answer.isPublished ? "outlined" : "contained"}
                             >
                               {answer.isPublished
