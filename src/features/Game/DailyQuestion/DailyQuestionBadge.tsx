@@ -58,6 +58,7 @@ export const DailyQuestionBadge = () => {
   const myAnswerData = myAnswer?.data() || null;
   const transcript = myAnswer?.data().transcript || "";
   const answerDocId = myAnswer?.id;
+  const isCurrentAnswerIsPublished = myAnswerData?.isPublished || false;
 
   const updateTranscript = (newTranscript: string) => {
     if (!myAnswer || !answerDocId || !myAnswerData) {
@@ -249,149 +250,130 @@ export const DailyQuestionBadge = () => {
                 paddingTop: "20px",
               }}
             >
-              <Stack
-                sx={{
-                  display: "flex",
-                }}
-              >
-                <IconTextList
-                  listItems={todaysQuestion.hints.map((h) => ({ title: h, icon: Lightbulb }))}
-                />
-              </Stack>
-              <Stack
-                sx={{
-                  paddingTop: "15px",
-                  gap: "20px",
-                }}
-              >
-                <RecordUserAudioAnswer
-                  transcript={transcript}
-                  minWords={minWords}
-                  isLoading={false}
-                  isTranscribing={recorder.isTranscribing}
-                  visualizerComponent={recorder.visualizerComponent}
-                  isRecording={recorder.isRecording}
-                  stopRecording={recorder.stopRecording}
-                  startRecording={recorder.startRecording}
-                  clearTranscript={clearTranscript}
-                />
-
-                <Stack
-                  sx={{
-                    "@media (max-width:600px)": {
-                      position: "sticky",
-                      bottom: "86px",
-                      boxShadow: "0px -4px 18px 0px rgba(0, 0, 0, 0.1)",
-                    },
-                  }}
-                >
-                  {isNeedMoreRecording && recorder.visualizerComponent}
-                  <Button
-                    disabled={
-                      (recorder.isRecording && wordsCount >= minWords) || recorder.isTranscribing
-                    }
-                    onClick={async () => {
-                      if (transcript && wordsCount >= minWords) {
-                        if (recorder.isRecording) {
-                          await recorder.stopRecording();
-                        }
-                        nextStep();
-                        return;
-                      }
-
-                      if (recorder.isRecording) {
-                        recorder.stopRecording();
-                        return;
-                      }
-
-                      recorder.startRecording();
+              {!isCurrentAnswerIsPublished && (
+                <>
+                  <Stack
+                    sx={{
+                      display: "flex",
                     }}
-                    size="large"
-                    variant="contained"
-                    color={
-                      recorder.isRecording && wordsCount < minWords
-                        ? "error"
-                        : wordsCount > minWords
-                          ? "success"
-                          : "primary"
-                    }
-                    endIcon={
-                      recorder.isRecording && wordsCount < minWords ? (
-                        <Check />
-                      ) : transcript && wordsCount >= minWords ? (
-                        <ArrowRight />
-                      ) : (
-                        <Mic />
-                      )
-                    }
                   >
-                    {recorder.isRecording && wordsCount < minWords
-                      ? i18n._("Done")
-                      : transcript && wordsCount >= minWords
-                        ? i18n._("Next")
-                        : i18n._("Record")}
-                  </Button>
-                </Stack>
-              </Stack>
+                    <IconTextList
+                      listItems={todaysQuestion.hints.map((h) => ({ title: h, icon: Lightbulb }))}
+                    />
+                  </Stack>
+                  <Stack
+                    sx={{
+                      paddingTop: "15px",
+                      gap: "20px",
+                    }}
+                  >
+                    <RecordUserAudioAnswer
+                      transcript={transcript}
+                      minWords={minWords}
+                      isLoading={false}
+                      isTranscribing={recorder.isTranscribing}
+                      visualizerComponent={recorder.visualizerComponent}
+                      isRecording={recorder.isRecording}
+                      stopRecording={recorder.stopRecording}
+                      startRecording={recorder.startRecording}
+                      clearTranscript={clearTranscript}
+                    />
 
-              <Stack
-                sx={{
-                  paddingTop: "30px",
-                  gap: "10px",
-                }}
-              >
-                <Typography>{i18n._("Answers")}</Typography>
-                {allAnswers?.docs.map((answerDocument, index) => {
-                  const answer = answerDocument.data();
-                  const answerDocId = answerDocument.id;
-                  const isMyAnswer = answer.authorUserId === userId;
-                  return (
                     <Stack
-                      key={index}
                       sx={{
-                        gap: "10px",
-                        backgroundColor: "rgba(255, 255, 255, 0.05)",
-                        padding: "18px 18px",
-                        borderRadius: "8px",
+                        "@media (max-width:600px)": {
+                          position: "sticky",
+                          bottom: "86px",
+                          boxShadow: "0px -4px 18px 0px rgba(0, 0, 0, 0.1)",
+                        },
                       }}
                     >
+                      {isNeedMoreRecording && recorder.visualizerComponent}
+                      <Button
+                        disabled={
+                          (recorder.isRecording && wordsCount >= minWords) ||
+                          recorder.isTranscribing
+                        }
+                        onClick={async () => {
+                          if (transcript && wordsCount >= minWords) {
+                            if (recorder.isRecording) {
+                              await recorder.stopRecording();
+                            }
+                            nextStep();
+                            return;
+                          }
+
+                          if (recorder.isRecording) {
+                            recorder.stopRecording();
+                            return;
+                          }
+
+                          recorder.startRecording();
+                        }}
+                        size="large"
+                        variant="contained"
+                        color={
+                          recorder.isRecording && wordsCount < minWords
+                            ? "error"
+                            : wordsCount >= minWords
+                              ? "success"
+                              : "primary"
+                        }
+                        endIcon={
+                          recorder.isRecording && wordsCount < minWords ? (
+                            <Check />
+                          ) : transcript && wordsCount >= minWords ? (
+                            <ArrowRight />
+                          ) : (
+                            <Mic />
+                          )
+                        }
+                      >
+                        {recorder.isRecording && wordsCount < minWords
+                          ? i18n._("Done")
+                          : transcript && wordsCount >= minWords
+                            ? i18n._("Publish")
+                            : i18n._("Record")}
+                      </Button>
+                    </Stack>
+                    <Typography align="center" variant="caption" color="text.secondary">
+                      {i18n._(`To see others answers, you need to publish yours.`)}
+                    </Typography>
+                  </Stack>
+                </>
+              )}
+
+              {isCurrentAnswerIsPublished && (
+                <Stack
+                  sx={{
+                    paddingTop: "30px",
+                    gap: "10px",
+                  }}
+                >
+                  <Typography>{i18n._("Answers")}</Typography>
+                  {allAnswers?.docs.map((answerDocument, index) => {
+                    const answer = answerDocument.data();
+                    const answerDocId = answerDocument.id;
+                    const isMyAnswer = answer.authorUserId === userId;
+                    return (
                       <Stack
+                        key={index}
                         sx={{
-                          flexDirection: "row",
-                          alignItems: "flex-start",
-                          justifyContent: "space-between",
                           gap: "10px",
-                          flexWrap: "wrap",
+                          backgroundColor: "rgba(255, 255, 255, 0.05)",
+                          padding: "18px 18px",
+                          borderRadius: "8px",
                         }}
                       >
                         <Stack
                           sx={{
                             flexDirection: "row",
-                            alignItems: "center",
+                            alignItems: "flex-start",
+                            justifyContent: "space-between",
                             gap: "10px",
+                            flexWrap: "wrap",
                           }}
                         >
-                          <Stack
-                            sx={{
-                              ".avatar": { width: "40px", height: "40px", borderRadius: "50%" },
-                            }}
-                          >
-                            <img
-                              className="avatar"
-                              src={game.gameAvatars?.[answer.authorUserId]}
-                              alt="User Avatar"
-                            />
-                          </Stack>
-                          <Stack>
-                            <Typography key={index} variant="body2" sx={{ fontWeight: 600 }}>
-                              {game.userNames?.[answer.authorUserId] || "Unknown User"}
-                            </Typography>
-                            <Typography variant="caption" color="text.secondary">
-                              {dayjs(answer.updatedAtIso).fromNow()}
-                            </Typography>
-                          </Stack>
-                        </Stack>
-                        {isMyAnswer && (
                           <Stack
                             sx={{
                               flexDirection: "row",
@@ -399,77 +381,108 @@ export const DailyQuestionBadge = () => {
                               gap: "10px",
                             }}
                           >
-                            <Typography variant="caption">
-                              {i18n._("This is your answer")}
-                            </Typography>
                             <Stack
                               sx={{
-                                backgroundColor: answer.isPublished
-                                  ? "#4caf50"
-                                  : "rgba(255, 255, 255, 0.2)",
-                                padding: "2px 10px",
-                                borderRadius: "6px",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                gap: "6px",
+                                ".avatar": { width: "40px", height: "40px", borderRadius: "50%" },
                               }}
                             >
-                              {answer.isPublished ? (
-                                <Eye size={"12px"} />
-                              ) : (
-                                <EyeOff size={"12px"} />
-                              )}
-                              <Typography
-                                variant="caption"
-                                sx={{
-                                  textTransform: "uppercase",
-                                }}
-                              >
-                                {answer.isPublished ? i18n._("published") : i18n._("not published")}{" "}
+                              <img
+                                className="avatar"
+                                src={game.gameAvatars?.[answer.authorUserId]}
+                                alt="User Avatar"
+                              />
+                            </Stack>
+                            <Stack>
+                              <Typography key={index} variant="body2" sx={{ fontWeight: 600 }}>
+                                {game.userNames?.[answer.authorUserId] || "Unknown User"}
+                              </Typography>
+                              <Typography variant="caption" color="text.secondary">
+                                {dayjs(answer.updatedAtIso).fromNow()}
                               </Typography>
                             </Stack>
                           </Stack>
-                        )}
-                      </Stack>
-                      <Typography variant="body2">{answer.transcript}</Typography>
-                      <Stack
-                        sx={{
-                          flexDirection: "row",
-                        }}
-                      >
-                        {isMyAnswer && (
-                          <>
-                            <Button
-                              startIcon={
-                                answer.isPublished ? (
-                                  <EyeOff size={"15px"} />
-                                ) : (
-                                  <Eye size={"15px"} />
-                                )
-                              }
-                              onClick={() => {
-                                updateTranscriptInDb(
-                                  {
-                                    newTranscript: answer.transcript,
-                                    isPublished: !answer.isPublished,
-                                  },
-                                  answer,
-                                  answerDocId
-                                );
+                          {isMyAnswer && (
+                            <Stack
+                              sx={{
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "10px",
                               }}
-                              variant={answer.isPublished ? "outlined" : "contained"}
                             >
-                              {answer.isPublished
-                                ? i18n._("Unpublish")
-                                : i18n._("Publish an answer")}
-                            </Button>
-                          </>
-                        )}
+                              <Typography variant="caption">
+                                {i18n._("This is your answer")}
+                              </Typography>
+                              <Stack
+                                sx={{
+                                  backgroundColor: answer.isPublished
+                                    ? "#4caf50"
+                                    : "rgba(255, 255, 255, 0.2)",
+                                  padding: "2px 10px",
+                                  borderRadius: "6px",
+                                  flexDirection: "row",
+                                  alignItems: "center",
+                                  gap: "6px",
+                                }}
+                              >
+                                {answer.isPublished ? (
+                                  <Eye size={"12px"} />
+                                ) : (
+                                  <EyeOff size={"12px"} />
+                                )}
+                                <Typography
+                                  variant="caption"
+                                  sx={{
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  {answer.isPublished
+                                    ? i18n._("published")
+                                    : i18n._("not published")}{" "}
+                                </Typography>
+                              </Stack>
+                            </Stack>
+                          )}
+                        </Stack>
+                        <Typography variant="body2">{answer.transcript}</Typography>
+                        <Stack
+                          sx={{
+                            flexDirection: "row",
+                          }}
+                        >
+                          {isMyAnswer && (
+                            <>
+                              <Button
+                                startIcon={
+                                  answer.isPublished ? (
+                                    <EyeOff size={"15px"} />
+                                  ) : (
+                                    <Eye size={"15px"} />
+                                  )
+                                }
+                                onClick={() => {
+                                  updateTranscriptInDb(
+                                    {
+                                      newTranscript: answer.transcript,
+                                      isPublished: !answer.isPublished,
+                                    },
+                                    answer,
+                                    answerDocId
+                                  );
+                                }}
+                                variant={answer.isPublished ? "outlined" : "contained"}
+                              >
+                                {answer.isPublished
+                                  ? i18n._("Unpublish")
+                                  : i18n._("Publish an answer")}
+                              </Button>
+                            </>
+                          )}
+                        </Stack>
                       </Stack>
-                    </Stack>
-                  );
-                })}
-              </Stack>
+                    );
+                  })}
+                </Stack>
+              )}
             </Stack>
           </Stack>
         ) : (
