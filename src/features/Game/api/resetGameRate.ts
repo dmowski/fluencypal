@@ -1,9 +1,9 @@
-import { getGameUsersPoints, setGameUsersPoints } from "./statsResources";
+import { getGameUsersPoints, getGameUsersUserNames, setGameUsersPoints } from "./statsResources";
 
 export const resetGameRate = async (): Promise<void> => {
-  const points = await getGameUsersPoints();
+  const [points, userNames] = await Promise.all([getGameUsersPoints(), getGameUsersUserNames()]);
 
-  Object.keys(points).forEach((userId) => {
+  Object.keys(userNames).forEach((userId) => {
     const currentPoints = points[userId] || 1;
     points[userId] = Math.max(currentPoints - 3, 1);
   });
