@@ -23,3 +23,11 @@ export interface DailyQuestionAnswer {
   createdAtIso: string;
   updatedAtIso: string;
 }
+
+export type LikeType = "like" | "star";
+export interface DailyQuestionLike {
+  answerId: string;
+  likeUserId: string;
+  likeType: LikeType;
+  createdAtIso: string;
+}

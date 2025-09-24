@@ -16,118 +16,7 @@ import { DailyQuestionAnswer } from "./types";
 import { and, doc, or, orderBy, query, setDoc, where } from "firebase/firestore";
 import { useGame } from "../useGame";
 import { useTranslate } from "@/features/Translation/useTranslate";
-
-const AnswerComment = ({
-  answer,
-  togglePublish,
-}: {
-  answer: DailyQuestionAnswer;
-  togglePublish: () => void;
-}) => {
-  const auth = useAuth();
-  const game = useGame();
-  const { i18n } = useLingui();
-  const isMyAnswer = answer.authorUserId === auth.uid;
-  return (
-    <Stack
-      sx={{
-        gap: "10px",
-        backgroundColor: "rgba(255, 255, 255, 0.05)",
-        padding: "18px 18px",
-        borderRadius: "8px",
-      }}
-    >
-      <Stack
-        sx={{
-          flexDirection: "row",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-          gap: "10px",
-          flexWrap: "wrap",
-        }}
-      >
-        <Stack
-          sx={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "10px",
-          }}
-        >
-          <Stack
-            sx={{
-              ".avatar": { width: "40px", height: "40px", borderRadius: "50%" },
-            }}
-          >
-            <img
-              className="avatar"
-              src={game.gameAvatars?.[answer.authorUserId]}
-              alt="User Avatar"
-            />
-          </Stack>
-          <Stack>
-            <Typography variant="body2" sx={{ fontWeight: 600 }}>
-              {game.userNames?.[answer.authorUserId] || "Unknown User"}
-            </Typography>
-            <Typography variant="caption" color="text.secondary">
-              {dayjs(answer.updatedAtIso).fromNow()}
-            </Typography>
-          </Stack>
-        </Stack>
-        {isMyAnswer && (
-          <Stack
-            sx={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: "10px",
-            }}
-          >
-            <Typography variant="caption">{i18n._("This is your answer")}</Typography>
-            <Stack
-              sx={{
-                backgroundColor: answer.isPublished ? "#4caf50" : "rgba(255, 255, 255, 0.2)",
-                padding: "2px 10px",
-                borderRadius: "6px",
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "6px",
-              }}
-            >
-              {answer.isPublished ? <Eye size={"12px"} /> : <EyeOff size={"12px"} />}
-              <Typography
-                variant="caption"
-                sx={{
-                  textTransform: "uppercase",
-                }}
-              >
-                {answer.isPublished ? i18n._("published") : i18n._("not published")}{" "}
-              </Typography>
-            </Stack>
-          </Stack>
-        )}
-      </Stack>
-      <Typography variant="body2">{answer.transcript}</Typography>
-      <Stack
-        sx={{
-          flexDirection: "row",
-        }}
-      >
-        {isMyAnswer && (
-          <>
-            <Button
-              startIcon={answer.isPublished ? <EyeOff size={"15px"} /> : <Eye size={"15px"} />}
-              onClick={() => {
-                togglePublish();
-              }}
-              variant={answer.isPublished ? "outlined" : "contained"}
-            >
-              {answer.isPublished ? i18n._("Unpublish") : i18n._("Publish an answer")}
-            </Button>
-          </>
-        )}
-      </Stack>
-    </Stack>
-  );
-};
+import { QuestionComment } from "./QuestionComment";
 
 export const DailyQuestionBadge = () => {
   const { i18n } = useLingui();
@@ -511,7 +400,8 @@ export const DailyQuestionBadge = () => {
                     const answer = answerDocument.data();
                     const answerDocId = answerDocument.id;
                     return (
-                      <AnswerComment
+                      <QuestionComment
+                        answerDocId={answerDocId}
                         key={index}
                         answer={answer}
                         togglePublish={() => {
@@ -571,7 +461,8 @@ export const DailyQuestionBadge = () => {
                                   const answer = answerDocument.data();
                                   const answerDocId = answerDocument.id;
                                   return (
-                                    <AnswerComment
+                                    <QuestionComment
+                                      answerDocId={answerDocId}
                                       key={index}
                                       answer={answer}
                                       togglePublish={() => {
