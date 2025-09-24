@@ -10,6 +10,7 @@ import { ArrowDown, X } from "lucide-react";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useUrlParam } from "../Url/useUrlParam";
 import { fullLanguagesMap } from "@/libs/language/languages";
+import { LoadingShapes } from "../Goal/Quiz/QuizPage2";
 
 const translationCache: Record<string, string> = {};
 export const useTranslate = () => {
@@ -79,6 +80,7 @@ export const useTranslate = () => {
         source: text,
         translated: translatedText,
       });
+      setIsTranslating(false);
     } catch (error) {
       setIsTranslating(false);
       throw error;
@@ -155,10 +157,13 @@ export const useTranslate = () => {
 
               <ArrowDown size={"18px"} color="rgba(180, 180, 180, 1)" />
 
-              <Markdown variant="conversation">
-                {translatedText?.translated ||
-                  (isTranslating ? "..." : i18n._("No translation available"))}
-              </Markdown>
+              {isTranslating ? (
+                <LoadingShapes sizes={["30px"]} />
+              ) : (
+                <Markdown variant="conversation">
+                  {translatedText?.translated || i18n._("No translation available")}
+                </Markdown>
+              )}
             </Stack>
           </Stack>
         </Popover>
