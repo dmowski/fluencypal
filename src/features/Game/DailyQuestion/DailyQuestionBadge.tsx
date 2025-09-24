@@ -507,9 +507,15 @@ export const DailyQuestionBadge = () => {
               opacity: 0.96,
             }}
           >
-            <Trans>
-              {peopleAnswered} people answered already — see what they said & share yours
-            </Trans>
+            {peopleAnswered === 1 ? (
+              <Trans>One person answered already — see what they said & share yours</Trans>
+            ) : peopleAnswered > 0 ? (
+              <Trans>
+                {peopleAnswered} people answered already — see what they said & share yours
+              </Trans>
+            ) : (
+              <Trans>Be the first to answer and share your thoughts</Trans>
+            )}
           </Typography>
         )}
 
