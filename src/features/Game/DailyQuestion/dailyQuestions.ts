@@ -2,18 +2,18 @@ import { DailyQuestions } from "./types";
 
 export const dailyQuestions: DailyQuestions = {
   "2025-09-24": {
-    id: "are-humans-inherently-good-or-selfish",
-    title: "Are humans inherently good or selfish?",
+    id: "erase-one-memory",
+    title: "If you could erase one memory, would you?",
     description:
-      "Debate whether people are naturally inclined to help others or to protect themselves first.",
+      "Think about a painful or embarrassing memory. Would erasing it change who you are today?",
     minWords: 30,
     hints: [
-      "Use personal experiences or history as evidence.",
-      "Think about everyday examples of kindness or selfishness.",
-      "Consider if society changes natural instincts.",
+      "Consider whether pain teaches important lessons.",
+      "Think about how memory shapes personality.",
+      "Reflect on whether erasing it would remove growth.",
     ],
     exampleAnswer:
-      "I think humans are naturally selfish because survival comes first. But at the same time, cooperation has been essential for survival too, which is why we show kindness. So maybe we are both.",
+      "There are memories I wish I could erase, especially painful arguments. But I think those experiences shaped me. Without them, I might not appreciate peace and good relationships as much as I do now.",
   },
 
   "2025-09-25": {
@@ -30,19 +30,20 @@ export const dailyQuestions: DailyQuestions = {
     exampleAnswer:
       "I think being respected is more important for me. Love can be fleeting, but respect comes from trust and integrity. However, I know that without love life can feel empty, so maybe the balance is the key.",
   },
+
   "2025-09-26": {
-    id: "erase-one-memory",
-    title: "If you could erase one memory, would you?",
+    id: "are-humans-inherently-good-or-selfish",
+    title: "Are humans inherently good or selfish?",
     description:
-      "Think about a painful or embarrassing memory. Would erasing it change who you are today?",
+      "Debate whether people are naturally inclined to help others or to protect themselves first.",
     minWords: 30,
     hints: [
-      "Consider whether pain teaches important lessons.",
-      "Think about how memory shapes personality.",
-      "Reflect on whether erasing it would remove growth.",
+      "Use personal experiences or history as evidence.",
+      "Think about everyday examples of kindness or selfishness.",
+      "Consider if society changes natural instincts.",
     ],
     exampleAnswer:
-      "There are memories I wish I could erase, especially painful arguments. But I think those experiences shaped me. Without them, I might not appreciate peace and good relationships as much as I do now.",
+      "I think humans are naturally selfish because survival comes first. But at the same time, cooperation has been essential for survival too, which is why we show kindness. So maybe we are both.",
   },
   "2025-09-27": {
     id: "truth-most-people-not-ready-to-hear",
