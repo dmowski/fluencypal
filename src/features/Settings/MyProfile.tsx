@@ -4,14 +4,11 @@ import { useState, useEffect, ForwardRefExoticComponent, RefAttributes } from "r
 import { useAuth } from "../Auth/useAuth";
 import { Avatar, Button, Stack, Typography } from "@mui/material";
 import {
-  BanknoteArrowDown,
   ChevronRight,
-  HelpCircle,
   Landmark,
   Languages,
   LogOut,
   LucideProps,
-  MessageCircleQuestion,
   MessageCircleQuestionMark,
   Star,
   Wallet,
@@ -30,10 +27,14 @@ import { ContactMessageModal } from "../Header/ContactMessageModal";
 import { Trans } from "@lingui/react/macro";
 import { useRouter } from "next/navigation";
 import { getUrlStart } from "../Lang/getUrlStart";
+import { GameMyAvatar } from "../Game/GameMyAvatar";
+import { GameMyUsername } from "../Game/GameMyUsername";
+import { useGame } from "../Game/useGame";
 
 export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
   const settings = useSettings();
+  const game = useGame();
 
   const { i18n } = useLingui();
   const [isShowLogout, setIsShowLogout] = useState(true);
@@ -54,9 +55,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const [isShowFeedbackModal, setIsShowFeedbackModal] = useUrlParam("feedback");
 
   const usage = useUsage();
-  const userPhoto = auth.userInfo?.photoURL || settings.userSettings?.photoUrl || "";
-  const userName = auth.userInfo?.displayName || "";
-  const [isShowModal, setIsShowModal] = useUrlParam("lang-selection");
+  const [_, setIsShowModal] = useUrlParam("lang-selection");
   const router = useRouter();
   const openLang = () => {
     setIsShowModal(true);
@@ -140,30 +139,19 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
           sx={{
             alignItems: "center",
             justifyContent: "center",
-            gap: "0px",
+            gap: "10px",
           }}
         >
-          <Avatar
-            alt={userName}
-            src={userPhoto}
+          <Stack
             sx={{
-              width: "100px",
-              height: "100px",
-              border: "2px solid #eee",
-              borderRadius: "50%",
-            }}
-          />
-          <Typography
-            align="center"
-            variant="h5"
-            sx={{
-              padding: "20px 10px 0 10px",
-              opacity: 0.9,
-              fontWeight: "600",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "20px",
             }}
           >
-            {userName}
-          </Typography>
+            <GameMyAvatar />
+            <GameMyUsername />
+          </Stack>
 
           <Typography
             variant="caption"
@@ -173,7 +161,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
               padding: "0 10px 20px 10px",
             }}
           >
-            <Trans>Hello, {userName}! Manage your profile settings and check your progress</Trans>
+            <Trans>Manage your profile settings and check your progress</Trans>
           </Typography>
         </Stack>
 
