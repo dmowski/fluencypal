@@ -289,11 +289,6 @@ export const DailyQuestionBadge = () => {
         height: "auto",
         cursor: isStartAnswering ? "initial" : "pointer",
 
-        /*
-        background: isStartAnswering
-          ? "linear-gradient(170deg, rgba(30, 1, 1, 1) 10%, rgba(20, 12, 12, 1) 100%)"
-          : "linear-gradient(170deg, #731923ff 10%, #a12e36 100%)",
-        */
         background: isStartAnswering ? "rgba(115, 25, 35, 0.2)" : "rgba(115, 25, 35, 1)",
         boxShadow: isStartAnswering
           ? "0px 0px 0px 1px rgba(255, 255, 255, 0.2)"
