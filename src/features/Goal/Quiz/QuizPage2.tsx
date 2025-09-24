@@ -580,8 +580,6 @@ export const IconTextList = ({ listItems }: { listItems: ListItem[] }) => {
     <Stack
       sx={{
         gap: "18px",
-        paddingTop: "10px",
-        paddingBottom: "10px",
         width: "100%",
       }}
     >

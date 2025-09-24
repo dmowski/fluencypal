@@ -392,7 +392,7 @@ export const DailyQuestionBadge = () => {
                 <>
                   <Stack
                     sx={{
-                      display: "flex",
+                      gap: "10px",
                     }}
                   >
                     <IconTextList
