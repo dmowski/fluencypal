@@ -1,15 +1,12 @@
 "use client";
-import { Button, Link, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import { useAuth } from "./useAuth";
-import GoogleIcon from "@mui/icons-material/Google";
-import { StarContainer } from "../Layout/StarContainer";
 import { useSearchParams } from "next/navigation";
 import { useLingui } from "@lingui/react";
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { getUrlStart } from "../Lang/getUrlStart";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
 import { WebViewWall } from "./WebViewWall";
-import { AuthWall } from "../Goal/Quiz/QuizPage2";
+import { AuthWall } from "./AuthWall";
 
 interface SignInFormProps {
   rolePlayInfo: RolePlayScenariosInfo;
