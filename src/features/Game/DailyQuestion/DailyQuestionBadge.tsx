@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
 import { IconTextList, RecordUserAudioAnswer } from "@/features/Goal/Quiz/QuizPage2";
-import { ArrowRight, Check, Eye, EyeOff, Lightbulb, Mic } from "lucide-react";
+import { ArrowRight, Check, Eye, EyeOff, Languages, Lightbulb, Mic } from "lucide-react";
 import { getWordsCount } from "@/libs/words";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
@@ -15,6 +15,7 @@ import { db } from "@/features/Firebase/firebaseDb";
 import { DailyQuestionAnswer } from "./types";
 import { and, doc, or, orderBy, query, setDoc, where } from "firebase/firestore";
 import { useGame } from "../useGame";
+import { useTranslate } from "@/features/Translation/useTranslate";
 
 const AnswerComment = ({
   answer,
@@ -269,6 +270,8 @@ export const DailyQuestionBadge = () => {
       (answer) => answer.data().authorUserId === userId && answer.data().isPublished
     )
   );
+
+  const translation = useTranslate();
   if (!todaysQuestion) {
     return null;
   }
@@ -395,6 +398,31 @@ export const DailyQuestionBadge = () => {
                     <IconTextList
                       listItems={todaysQuestion.hints.map((h) => ({ title: h, icon: Lightbulb }))}
                     />
+                    {translation.translateModal}
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        gap: "10px",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Button
+                        onClick={(e) => {
+                          const hintText = [todaysQuestion.description, ...todaysQuestion.hints]
+                            .map((h) => `* ${h}`)
+                            .join("\n")
+                            .trim();
+                          const fullText = `${todaysQuestion.title || ""}\n\n${hintText}`.trim();
+
+                          translation.translateWithModal(fullText, e.currentTarget);
+                        }}
+                        size="small"
+                        startIcon={<Languages size={"14px"} />}
+                        variant="text"
+                      >
+                        Translate
+                      </Button>
+                    </Stack>
                   </Stack>
                   <Stack
                     sx={{
