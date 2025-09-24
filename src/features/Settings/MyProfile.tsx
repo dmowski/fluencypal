@@ -29,12 +29,10 @@ import { useRouter } from "next/navigation";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { GameMyAvatar } from "../Game/GameMyAvatar";
 import { GameMyUsername } from "../Game/GameMyUsername";
-import { useGame } from "../Game/useGame";
 
 export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const auth = useAuth();
   const settings = useSettings();
-  const game = useGame();
 
   const { i18n } = useLingui();
   const [isShowLogout, setIsShowLogout] = useState(true);
@@ -57,9 +55,6 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
   const usage = useUsage();
   const [_, setIsShowModal] = useUrlParam("lang-selection");
   const router = useRouter();
-  const openLang = () => {
-    setIsShowModal(true);
-  };
 
   interface MenuItem {
     title: string;
@@ -73,7 +68,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       title: i18n._(`Language`),
       subTitle: i18n._(`Select your preferred language`),
       icon: Languages,
-      onClick: openLang,
+      onClick: () => setIsShowModal(true),
     },
 
     {
