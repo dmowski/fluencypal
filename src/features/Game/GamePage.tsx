@@ -1,5 +1,5 @@
 "use client";
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Tab, Tabs, Typography } from "@mui/material";
 import { useGame } from "./useGame";
 import { GameQuestion } from "./GameQuestion";
 import { useLingui } from "@lingui/react";
@@ -14,6 +14,7 @@ import { GameMyUsername } from "./GameMyUsername";
 import { GameOnboarding } from "./GameOnboarding";
 import { NavigationBar } from "../Navigation/NavigationBar";
 import { SupportedLanguage } from "../Lang/lang";
+import { useState } from "react";
 
 export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const game = useGame();
@@ -21,6 +22,8 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
 
   const loadingMessage = i18n._(`Loading...`);
   const playMessage = i18n._(`Play`);
+
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <>
@@ -90,7 +93,24 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                 {i18n._("Rank in the top 5 to get the app for free")}
               </Typography>
             </Stack>
-            <GameStats />
+            <Stack
+              sx={{
+                gap: "20px",
+              }}
+            >
+              <Tabs
+                scrollButtons="auto"
+                variant="scrollable"
+                allowScrollButtonsMobile
+                value={activeTab}
+                onChange={(event, newId) => setActiveTab(newId)}
+              >
+                <Tab label={i18n._(`Global`)} value={0} />
+                <Tab label={i18n._(`Today`)} value={1} />
+              </Tabs>
+
+              <GameStats activeTab={activeTab === 0 ? "global" : "today"} />
+            </Stack>
           </Stack>
 
           {game.activeQuestion && game.isGamePlaying && (

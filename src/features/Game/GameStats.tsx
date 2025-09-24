@@ -3,8 +3,9 @@
 import { Stack } from "@mui/material";
 import { useGame } from "./useGame";
 import { GameStatRow } from "./GameStatRow";
+import dayjs from "dayjs";
 
-export const GameStats = () => {
+export const GameStats = ({ activeTab }: { activeTab: "global" | "today" }) => {
   const game = useGame();
   return (
     <Stack
@@ -12,9 +13,19 @@ export const GameStats = () => {
         gap: "15px",
       }}
     >
-      {game.stats.map((stat, index) => {
-        return <GameStatRow key={index} stat={stat} index={index} />;
-      })}
+      {game.stats
+        .filter((stat) => {
+          if (activeTab === "today") {
+            const lastVisit = game?.gameLastVisit?.[stat.userId];
+            if (!lastVisit) return false;
+            const isSameDay = dayjs(lastVisit).isSame(dayjs(), "day");
+            return isSameDay;
+          }
+          return true;
+        })
+        .map((stat, index) => {
+          return <GameStatRow key={index} stat={stat} index={index} />;
+        })}
     </Stack>
   );
 };
