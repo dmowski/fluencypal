@@ -17,6 +17,7 @@ import { and, doc, or, orderBy, query, setDoc, where } from "firebase/firestore"
 import { useGame } from "../useGame";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { QuestionComment } from "./QuestionComment";
+import { sendTelegramRequest } from "@/features/Telegram/sendTextAiRequest";
 
 export const DailyQuestionBadge = () => {
   const { i18n } = useLingui();
@@ -134,18 +135,25 @@ export const DailyQuestionBadge = () => {
     setIsStartAnswering(!isStartAnswering);
   };
 
-  const nextStep = () => {
+  const publishAnswer = async () => {
     if (!myAnswerData || !answerDocId) {
       return;
     }
 
-    updateTranscriptInDb(
+    await updateTranscriptInDb(
       {
         newTranscript: transcript,
         isPublished: true,
       },
       myAnswerData,
       answerDocId
+    );
+
+    sendTelegramRequest(
+      {
+        message: `New daily question answer published:\n\n${transcript}\n\n ---\n\nQuestion: ${todaysQuestion.title}`,
+      },
+      await auth.getToken()
     );
   };
 
@@ -346,7 +354,7 @@ export const DailyQuestionBadge = () => {
                             if (recorder.isRecording) {
                               await recorder.stopRecording();
                             }
-                            nextStep();
+                            publishAnswer();
                             return;
                           }
 
