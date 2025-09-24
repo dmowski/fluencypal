@@ -9,6 +9,7 @@ import { PageType } from "./types";
 import { useAppNavigation } from "./useAppNavigation";
 import { useAuth } from "../Auth/useAuth";
 import { useSettings } from "../Settings/useSettings";
+import { useGame } from "../Game/useGame";
 
 export interface IconProps {
   color?: string;
@@ -32,10 +33,10 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
   const appNavigation = useAppNavigation();
 
   const { i18n } = useLingui();
+  const game = useGame();
   const auth = useAuth();
-  const settings = useSettings();
-  const userPhoto = auth.userInfo?.photoURL || settings.userSettings?.photoUrl || "";
-  const userName = auth.userInfo?.displayName || "";
+  const userPhoto = game.gameAvatars?.[auth.uid] || "";
+  const userName = game.userNames?.[auth.uid];
   const { bottomOffset } = useWindowSizes();
   const navigationItems: NavigationItem[] = [
     {
