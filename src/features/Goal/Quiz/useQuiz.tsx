@@ -38,6 +38,7 @@ import { fnv1aHash } from "@/libs/hash";
 import { getWordsCount } from "@/libs/words";
 import { NativeLangCode } from "@/libs/language/type";
 import { guessLanguagesByCountry } from "@/libs/language/languageByCountry";
+import { confirmGtag } from "@/features/Analytics/confirmGtag";
 
 type QuizStep =
   | "before_nativeLanguage"
@@ -728,9 +729,23 @@ ${survey.aboutUserFollowUpTranscription}
   }, [nativeLanguage]);
   const currentStepIndex = path.indexOf(currentStep) === -1 ? 0 : path.indexOf(currentStep);
 
+  const [isGTagConfirmed, setIsGTagConfirmed] = useState(false);
+
   const nextStep = async () => {
     const nextStepIndex = Math.min(currentStepIndex + 1, path.length - 1);
     const nextStep = path[nextStepIndex];
+
+    const confirmGTagSteps: QuizStep[] = [
+      "recordAboutFollowUp",
+      "before_recordAboutFollowUp2",
+      "recordAboutFollowUp2",
+      "before_goalReview",
+      "goalReview",
+    ];
+    if (!isGTagConfirmed && confirmGTagSteps.includes(currentStep)) {
+      confirmGtag();
+      setIsGTagConfirmed(true);
+    }
 
     if (currentStep === "before_recordAbout") {
       ensureSurveyDocExists();

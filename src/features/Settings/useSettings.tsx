@@ -10,7 +10,6 @@ import {
 } from "@/features/Lang/lang";
 import { db } from "../Firebase/firebaseDb";
 import { useCurrency } from "../User/useCurrency";
-import { confirmGtag } from "../Analytics/confirmGtag";
 import { getCountryByIP } from "../User/getCountry";
 import { countries } from "@/libs/countries";
 import { UserSettings } from "@/common/user";
@@ -88,7 +87,6 @@ function useProvideSettings(): SettingsContextType {
     };
 
     await setDoc(userSettingsDoc, settingsData, { merge: true });
-    confirmGtag();
   };
 
   useEffect(() => {
