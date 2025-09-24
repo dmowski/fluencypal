@@ -69,6 +69,7 @@ import { useRouter } from "next/navigation";
 import { getWordsCount } from "@/libs/words";
 import { useTgNavigation } from "@/features/Telegram/useTgNavigation";
 import { AuthWall } from "@/features/Auth/AuthWall";
+import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 
 const QuizQuestions = () => {
   const {
@@ -388,9 +389,7 @@ const GoalReview = ({}) => {
             }}
           >
             {isLoading ? (
-              <>
-                <LoadingShapes sizes={["100px", "100px", "100px", "100px", "100px", "100px"]} />
-              </>
+              <LoadingShapes sizes={["100px", "100px", "100px", "100px", "100px", "100px"]} />
             ) : (
               <Stack
                 sx={{
@@ -533,27 +532,6 @@ const RecordAboutFollowUp = ({
       minWords={MIN_WORDS_FOR_ANSWER}
       updateTranscript={updateTranscript}
     />
-  );
-};
-
-const LoadingShapes = ({ sizes }: { sizes: string[] }) => {
-  return (
-    <Stack
-      sx={{
-        gap: "10px",
-      }}
-    >
-      {sizes.map((size, index) => (
-        <Stack
-          key={index}
-          className="loading-shimmer-shape"
-          sx={{
-            minHeight: size,
-            borderRadius: "6px",
-          }}
-        />
-      ))}
-    </Stack>
   );
 };
 

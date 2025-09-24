@@ -10,7 +10,7 @@ import { ArrowDown, X } from "lucide-react";
 import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 import { useUrlParam } from "../Url/useUrlParam";
 import { fullLanguagesMap } from "@/libs/language/languages";
-import { LoadingShapes } from "../Goal/Quiz/QuizPage2";
+import { LoadingShapes } from "../uiKit/Loading/LoadingShapes";
 
 const translationCache: Record<string, string> = {};
 export const useTranslate = () => {
