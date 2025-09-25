@@ -334,7 +334,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                         }}
                       >
                         <Typography variant="caption">
-                          {i18n._(`The first 3 days are free`)}. {i18n._(`No credit card required`)}
+                          {i18n._(`No credit card required`)}
                         </Typography>
                       </Stack>
                     </Stack>

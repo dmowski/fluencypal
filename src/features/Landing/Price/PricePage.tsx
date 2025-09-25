@@ -28,6 +28,7 @@ import {
   Gamepad2,
   Blocks,
   Gem,
+  ShieldQuestionMark,
 } from "lucide-react";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
@@ -143,7 +144,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
               }}
             >
               <PriceCard
-                title={i18n._("Trial")}
+                title={i18n._("Free")}
                 subTitle={i18n._("For learners who want to try it out")}
                 price={
                   <Stack
@@ -173,23 +174,34 @@ export const PricePage = ({ lang }: PricePageProps) => {
                       >
                         <CurrencyToDisplay />
                       </Typography>
-                      <Typography variant="caption">/ {i18n._("3 days")}</Typography>
+                      <Typography variant="caption">/ {i18n._("month")}</Typography>
                     </Stack>
                   </Stack>
                 }
-                priceSubDescription={i18n._("Game mode and trial AI tutor access")}
+                priceSubDescription={i18n._("Limited access to features with 3-day trial")}
                 listTitle={i18n._("Includes:")}
-                isLightButton
                 listItems={[
                   {
-                    title: i18n._("Game Mode"),
+                    title: i18n._("3 days full access trial"),
+                    tooltip: i18n._("Try AI tutor for one hour to see how it works"),
+                    icon: Sparkles,
+                  },
+                  {
+                    title: i18n._("Quiz games"),
                     tooltip: i18n._("Many language games to practice"),
                     icon: Gamepad2,
                   },
+
                   {
-                    title: i18n._("3 days of AI tutor access"),
+                    title: i18n._("Daily question"),
                     tooltip: i18n._("Try AI tutor for one hour to see how it works"),
-                    icon: Sparkles,
+                    icon: ShieldQuestionMark,
+                  },
+
+                  {
+                    title: i18n._("Max 10 messages per conversation after trial"),
+                    tooltip: i18n._("Try AI tutor for one hour to see how it works"),
+                    icon: Mic,
                   },
                 ]}
                 buttonTitle={i18n._("Start ")}
@@ -232,6 +244,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 }
                 priceSubDescription={i18n._("Learn at full speed with full access")}
                 listTitle={i18n._("Everything in Free, plus:")}
+                isLightButton
                 listItems={[
                   {
                     title: i18n._("Full AI tutor access"),

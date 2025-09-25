@@ -1254,7 +1254,6 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
                   }}
                 >
                   <Typography variant="caption">{i18n._("No credit card required")}</Typography>
-                  <Typography variant="caption">{i18n._("The first 3 days are free")}</Typography>
                 </Stack>
               </Stack>
             )}

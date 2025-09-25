@@ -130,9 +130,10 @@ export const PriceCard: React.FC<PriceCardProps> = ({
               <Stack
                 key={item.title}
                 sx={{
-                  flexDirection: "row",
-                  gap: "12px",
+                  display: "grid",
+                  gridTemplateColumns: "23px 1fr",
                   alignItems: "center",
+                  gap: "12px",
                 }}
               >
                 <item.icon color={"#1f74be"} size={"1rem"} strokeWidth={"1.6px"} />
