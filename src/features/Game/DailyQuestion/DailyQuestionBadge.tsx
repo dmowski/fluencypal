@@ -510,7 +510,9 @@ export const DailyQuestionBadge = () => {
                           ? i18n._("Done")
                           : transcript && wordsCount >= minWords
                             ? i18n._("Publish")
-                            : i18n._("Record")}
+                            : transcript
+                              ? i18n._("Re-Record")
+                              : i18n._("Record")}
                       </Button>
                     </Stack>
                     <Typography align="center" variant="caption" color="text.secondary">
