@@ -5,21 +5,14 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
 interface WelcomeScreenProps {
-  openDashboardTitle: string;
   getStartedTitle: string;
-  viewPricingTitle: string;
-  noCreditCardNeededTitle: string;
   pricingLink: string;
   practiceLink: string;
   lang: SupportedLanguage;
   openMyPracticeLinkTitle: string;
 }
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
-  openDashboardTitle,
   getStartedTitle,
-  viewPricingTitle,
-  noCreditCardNeededTitle,
-  pricingLink,
   practiceLink,
   lang,
   openMyPracticeLinkTitle,
@@ -221,13 +214,8 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             }}
           >
             <FirstEnterButton
-              showPricingButton
-              openDashboardTitle={openDashboardTitle}
               getStartedTitle={getStartedTitle}
-              viewPricingTitle={viewPricingTitle}
-              noCreditCardNeededTitle={noCreditCardNeededTitle}
               practiceLink={practiceLink}
-              pricingLink={pricingLink}
               openMyPracticeLinkTitle={openMyPracticeLinkTitle}
             />
           </Stack>

@@ -116,10 +116,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
         <TalkingWaves />
         <Stack sx={{ alignItems: "center" }}>
           <WelcomeScreen
-            openDashboardTitle={i18n._(`Get Started`)}
             getStartedTitle={i18n._(`Get Started Free`)}
-            viewPricingTitle={i18n._(`View Pricing`)}
-            noCreditCardNeededTitle={i18n._(`No Credit Card Needed`)}
             pricingLink={`${getUrlStart(lang)}pricing`}
             practiceLink={`${getUrlStart(lang)}quiz`}
             openMyPracticeLinkTitle={i18n._(`Open`)}
