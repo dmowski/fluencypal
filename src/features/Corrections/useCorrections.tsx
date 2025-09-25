@@ -46,30 +46,31 @@ function useProvideCorrections(): CorrectionsContextType {
   ): Promise<AnalyzeUserMessageOutput> => {
     try {
       const newWordsStatsRequest = words.addWordsStatFromText(input.message);
-      const aiResult = await textAi.generate({
+      const parsedResult = await textAi.generateJson<{
+        suggestion: string;
+        correctedMessage: string;
+      }>({
         systemMessage: `You are grammar checker system.
-  Student gives a message, your role is to analyze it from the grammar prospective.
-  
-  Return your result in JSON format.
-  Structure of result: {
-  "correctedMessage": string,
-  "suggestion": string (use ${settings.fullLanguageName || "English"} language)
-  }
-  
-  correctedMessage - return corrected message if need to correct, or return empty string if no correction is needed.
-  suggestion: A direct message to the student explaining the corrections or empty string if no correction is needed.
-  
-  Return info in JSON format.
-  Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
-  
-  For context, here is the previous bot message: "${input.previousBotMessage}".
+Student gives a message, your role is to analyze it from the grammar prospective.
+
+Return your result in JSON format.
+Structure of result: {
+"correctedMessage": string,
+"suggestion": string (use ${settings.fullLanguageName || "English"} language)
+}
+
+correctedMessage - return corrected message if need to correct, or return empty string if no correction is needed.
+suggestion: A direct message to the student explaining the corrections or empty string if no correction is needed.
+
+Return info in JSON format.
+Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
+
+For context, here is the previous bot message: "${input.previousBotMessage}".
   `,
         userMessage: input.message,
         model: MODELS.gpt_4o,
-        languageCode,
+        attempts: 3,
       });
-
-      const parsedResult = JSON.parse(aiResult);
 
       const correctedMessage = parsedResult ? (parsedResult?.correctedMessage as string) || "" : "";
       const suggestion = parsedResult ? parsedResult?.suggestion || "" : "";

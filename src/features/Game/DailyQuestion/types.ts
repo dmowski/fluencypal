@@ -16,6 +16,10 @@ export interface DailyQuestionAnswer {
   questionId: string;
 
   answerLanguage: SupportedLanguage;
+  aiSuggestion?: {
+    sourceMessage: string;
+    correctedMessage: string;
+  };
   transcript: string;
 
   isPublished: boolean;

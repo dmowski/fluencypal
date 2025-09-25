@@ -1,7 +1,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
-import { useEffect, useMemo, useState } from "react";
+import { use, useEffect, useMemo, useState } from "react";
 import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
 import { IconTextList, RecordUserAudioAnswer } from "@/features/Goal/Quiz/QuizPage2";
@@ -18,6 +18,7 @@ import { useGame } from "../useGame";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { QuestionComment } from "./QuestionComment";
 import { sendTelegramRequest } from "@/features/Telegram/sendTextAiRequest";
+import { useCorrections } from "@/features/Corrections/useCorrections";
 
 export const DailyQuestionBadge = () => {
   const { i18n } = useLingui();
@@ -68,11 +69,15 @@ export const DailyQuestionBadge = () => {
       createAnswer(newTranscript);
       return;
     }
-    updateTranscriptInDb({ newTranscript, isPublished: false }, myAnswerData, answerDocId);
+    updateTranscriptInDb(
+      { transcript: newTranscript, isPublished: false },
+      myAnswerData,
+      answerDocId
+    );
   };
 
   const updateTranscriptInDb = async (
-    { newTranscript, isPublished }: { newTranscript: string; isPublished: boolean },
+    updates: Partial<DailyQuestionAnswer>,
     myAnswerData: DailyQuestionAnswer,
     documentId: string
   ) => {
@@ -80,13 +85,12 @@ export const DailyQuestionBadge = () => {
       throw new Error("❌ collectionRef is not defined | updateTranscriptInDb");
 
     const docRef = doc(collectionRef, documentId);
-    const updatedDate: DailyQuestionAnswer = {
+    const updatedFullDate: DailyQuestionAnswer = {
       ...myAnswerData,
-      transcript: newTranscript,
+      ...updates,
       updatedAtIso: new Date().toISOString(),
-      isPublished: isPublished,
     };
-    await setDoc(docRef, updatedDate, { merge: true });
+    await setDoc(docRef, updatedFullDate, { merge: true });
   };
 
   const createAnswer = async (newTranscript: string) => {
@@ -142,7 +146,7 @@ export const DailyQuestionBadge = () => {
 
     await updateTranscriptInDb(
       {
-        newTranscript: transcript,
+        transcript,
         isPublished: true,
       },
       myAnswerData,
@@ -167,6 +171,46 @@ export const DailyQuestionBadge = () => {
       (answer) => answer.data().authorUserId === userId && answer.data().isPublished
     )
   );
+  const correction = useCorrections();
+  const [isLoadingAiSuggestion, setIsLoadingAiSuggestion] = useState(false);
+  const aiSuggestion = myAnswerData?.aiSuggestion?.correctedMessage || "";
+
+  const analyzeAnswer = async () => {
+    if (
+      !transcript ||
+      !myAnswerData ||
+      !answerDocId ||
+      myAnswerData?.aiSuggestion?.sourceMessage === transcript
+    ) {
+      return;
+    }
+
+    setIsLoadingAiSuggestion(true);
+    console.log("Analyzing answer for daily question...");
+    const suggestion = await correction.analyzeUserMessage({
+      previousBotMessage: todaysQuestion.title,
+      message: transcript,
+      conversationId: "daily-question-" + todayIsoDate,
+    });
+    console.log("AI suggestion for daily question:", suggestion);
+
+    await updateTranscriptInDb(
+      {
+        aiSuggestion: {
+          sourceMessage: transcript,
+          correctedMessage: suggestion.correctedMessage,
+        },
+      },
+      myAnswerData,
+      answerDocId
+    );
+    setIsLoadingAiSuggestion(false);
+  };
+
+  useEffect(() => {
+    if (!transcript) return;
+    analyzeAnswer();
+  }, [transcript]);
 
   const translation = useTranslate();
   if (!todaysQuestion) {
@@ -336,6 +380,38 @@ export const DailyQuestionBadge = () => {
 
                     <Stack
                       sx={{
+                        border: "1px solid rgba(255, 255, 255, 0.1)",
+                        padding: "12px 12px 15px 10px",
+                        borderRadius: "8px",
+                        backgroundColor: "rgba(255, 255, 255, 0.02)",
+                        gap: "12px",
+                      }}
+                    >
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          fontWeight: 600,
+                        }}
+                      >
+                        {i18n._("AI suggestion")}
+                      </Typography>
+
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          opacity: 0.8,
+                        }}
+                        className={isLoadingAiSuggestion ? "loading-shimmer" : ""}
+                      >
+                        {aiSuggestion ||
+                          (transcript
+                            ? i18n._("Suggestion is loading...")
+                            : i18n._("Record your answer to see AI suggestion"))}
+                      </Typography>
+                    </Stack>
+
+                    <Stack
+                      sx={{
                         "@media (max-width:600px)": {
                           position: "sticky",
                           bottom: "86px",
@@ -415,7 +491,7 @@ export const DailyQuestionBadge = () => {
                         togglePublish={() => {
                           updateTranscriptInDb(
                             {
-                              newTranscript: answer.transcript,
+                              transcript: answer.transcript,
                               isPublished: !answer.isPublished,
                             },
                             answer,
@@ -476,7 +552,7 @@ export const DailyQuestionBadge = () => {
                                       togglePublish={() => {
                                         updateTranscriptInDb(
                                           {
-                                            newTranscript: answer.transcript,
+                                            transcript: answer.transcript,
                                             isPublished: !answer.isPublished,
                                           },
                                           answer,
