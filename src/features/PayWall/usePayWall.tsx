@@ -2,6 +2,7 @@
 import { createContext, useContext, ReactNode, JSX, useState, useEffect, useRef } from "react";
 import { useGame } from "../Game/useGame";
 import { useUsage } from "../Usage/useUsage";
+import { useAiConversation } from "../Conversation/useAiConversation";
 
 interface PayWallContextType {
   isShowPayWall: boolean;
@@ -22,12 +23,15 @@ export const payWallContext = createContext<PayWallContextType>({
 function useProvidePayWall(): PayWallContextType {
   const game = useGame();
   const usage = useUsage();
+  const conversation = useAiConversation();
+  const activeConversationMessageCount = conversation.conversation.length;
+  const isInPaidArea = activeConversationMessageCount > 10;
 
   const [isShowPayWall, setIsShowPayWall] = useState(false);
 
   const isNeedToShowPayWall = useRef(false);
   isNeedToShowPayWall.current =
-    usage.balanceHours <= 0.01 && !usage.isFullAccess && !game.isGameWinner;
+    usage.balanceHours <= 0.01 && !usage.isFullAccess && !game.isGameWinner && isInPaidArea;
 
   useEffect(() => {
     if (usage.loading || game.isLoading) {
@@ -41,7 +45,14 @@ function useProvidePayWall(): PayWallContextType {
     if (isShowPayWall === true && !isNeedToShowPayWall.current) {
       setIsShowPayWall(false);
     }
-  }, [usage.loading, usage.isFullAccess, usage.balanceHours, game.isGameWinner, game.myPoints]);
+  }, [
+    usage.loading,
+    usage.isFullAccess,
+    usage.balanceHours,
+    game.isGameWinner,
+    game.myPoints,
+    isInPaidArea,
+  ]);
 
   const togglePayWall = () => {
     setIsShowPayWall((prev) => !prev);
@@ -56,7 +67,7 @@ function useProvidePayWall(): PayWallContextType {
       } else {
         console.log("Not setting paywall back to true, conditions not met");
       }
-    }, 20_000);
+    }, 30_000);
   };
 
   return {

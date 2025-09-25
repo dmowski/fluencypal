@@ -1493,16 +1493,13 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                               width: "100%",
                             }}
                           >
-                            <Typography variant="caption" color={"warning"} align="right">
-                              {i18n._("Low balance")}
-                            </Typography>
                             <Button
                               color={"warning"}
                               startIcon={<AddCardIcon />}
                               onClick={() => togglePaymentModal(true)}
                               variant="contained"
                             >
-                              {i18n._("Top up")}
+                              {i18n._("Subscribe")}
                             </Button>
                           </Stack>
                         )}
