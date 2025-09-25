@@ -82,15 +82,12 @@ export const DailyQuestionBadge = () => {
       transcript: newTranscript,
     };
 
-    if (!transcript) {
+    if (!newTranscript) {
       updates.aiSuggestion = null;
+      console.log("updates.aiSuggestion = null;");
     }
 
-    updateTranscriptInDb(
-      { transcript: newTranscript, isPublished: false },
-      myAnswerData,
-      answerDocId
-    );
+    updateTranscriptInDb({ ...updates, isPublished: false }, myAnswerData, answerDocId);
   };
 
   const updateTranscriptInDb = async (
@@ -136,8 +133,7 @@ export const DailyQuestionBadge = () => {
 
   useEffect(() => {
     if (recorder.transcription) {
-      const combinedTranscript = [transcript, recorder.transcription].filter(Boolean).join(" ");
-      updateTranscript(combinedTranscript);
+      updateTranscript(recorder.transcription);
     }
   }, [recorder.transcription]);
 
@@ -430,7 +426,9 @@ export const DailyQuestionBadge = () => {
                           className={isLoadingAiSuggestion ? "loading-shimmer" : ""}
                         >
                           <b>{i18n._("Analysis")}</b>:{" "}
-                          {isLoadingAiSuggestion ? "Loading..." : `${aiSuggestionRate || 0}/10`}
+                          {isLoadingAiSuggestion
+                            ? "Loading..."
+                            : aiSuggestionRate && `${aiSuggestionRate || 0}/10`}
                           {aiSuggestionRate && <> {aiSuggestionRate >= 8 && i18n._("Great!")}</>}
                         </Typography>
                       </Stack>
