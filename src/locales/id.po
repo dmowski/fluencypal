@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Auth/AuthWall.tsx:277
+msgid "So you can keep your progress"
+msgstr "Jadi Anda dapat menyimpan kemajuan Anda"
+
 #: src/features/Header/HeaderStatic.tsx:18
 #: src/features/Landing/Contact/ContactsPage.tsx:94
 #: src/features/Landing/Footer.tsx:88
@@ -375,43 +379,6 @@ msgstr "Mitra berbicara dalam bahasa Inggris"
 msgid "AI English Speaking Practice"
 msgstr "AI Praktik Berbicara Bahasa Inggris"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1094
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:388
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
-#: src/features/Goal/Quiz/QuizPage2.tsx:733
-#: src/features/Goal/Quiz/QuizPage2.tsx:861
-#: src/features/Usage/SubscriptionWaiter.tsx:47
-#. js-lingui-explicit-id
-msgid "Done"
-msgstr "Selesai"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:56
-#. js-lingui-explicit-id
-msgid "Your subscription has been successfully changed."
-msgstr ""
-"plaintext\n"
-"Langganan Anda telah berhasil diubah.\n"
-
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:265
-#: src/features/Usage/SubscriptionWaiter.tsx:60
-#: src/features/Usage/SubscriptionWaiter.tsx:81
-#. js-lingui-explicit-id
-msgid "Close"
-msgstr "Tutup"
-
-#: src/features/Usage/SubscriptionWaiter.tsx:68
-#. js-lingui-explicit-id
-msgid "Waiting for payment..."
-msgstr "Menunggu pembayaran..."
-
-#: src/features/Usage/SubscriptionWaiter.tsx:77
-#. js-lingui-explicit-id
-msgid "Please wait while we process your payment."
-msgstr "Silakan tunggu sementara kami memproses pembayaran Anda."
-
 #: src/features/Usage/UsageStatsCards.tsx:83
 #. js-lingui-explicit-id
 msgid "Word Stats"
@@ -511,80 +478,122 @@ msgstr "Total"
 msgid "Open history"
 msgstr "Buka sejarah"
 
-#: src/features/Usage/PaymentModal.tsx:119
+#: src/features/Conversation/ConversationCanvas2.tsx:1094
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:388
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
+#: src/features/Goal/Quiz/QuizPage2.tsx:733
+#: src/features/Goal/Quiz/QuizPage2.tsx:861
+#: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "Beli lebih banyak jam"
+msgid "Done"
+msgstr "Selesai"
 
-#: src/features/Usage/PaymentModal.tsx:127
+#: src/features/Usage/SubscriptionWaiter.tsx:56
 #. js-lingui-explicit-id
-msgid "Let's add some hours to your balance"
-msgstr "Mari tambahkan beberapa jam ke saldo Anda"
-
-#: src/features/Usage/PaymentModal.tsx:149
-#. js-lingui-explicit-id
-msgid "Amount hours to buy"
-msgstr "Jumlah jam untuk dibeli"
-
-#: src/features/Usage/PaymentModal.tsx:194
-#. js-lingui-explicit-id
-msgid "What one hour means?"
-msgstr "Apa arti satu jam?"
-
-#: src/features/Usage/PaymentModal.tsx:196
-#. js-lingui-explicit-id
-msgid ""
-"You only charged for when AI is actively working: speaking or analyzing "
-"your speech."
+msgid "Your subscription has been successfully changed."
 msgstr ""
-"Anda hanya dikenakan biaya saat AI sedang aktif bekerja: berbicara atau "
-"menganalisis pidato Anda."
+"plaintext\n"
+"Langganan Anda telah berhasil diubah.\n"
 
-#: src/features/Usage/PaymentModal.tsx:207
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:265
+#: src/features/Usage/SubscriptionWaiter.tsx:60
+#: src/features/Usage/SubscriptionWaiter.tsx:81
 #. js-lingui-explicit-id
-msgid "How long will my hours last?"
-msgstr "Berapa lama jam saya akan bertahan?"
+msgid "Close"
+msgstr "Tutup"
 
-#: src/features/Usage/PaymentModal.tsx:209
+#: src/features/Usage/SubscriptionWaiter.tsx:68
 #. js-lingui-explicit-id
-msgid ""
-"Once purchased, your hours remain available until you use them. There is no "
-"expiration."
+msgid "Waiting for payment..."
+msgstr "Menunggu pembayaran..."
+
+#: src/features/Usage/SubscriptionWaiter.tsx:77
+#. js-lingui-explicit-id
+msgid "Please wait while we process your payment."
+msgstr "Silakan tunggu sementara kami memproses pembayaran Anda."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:72
+#: src/features/Usage/SubscriptionPaymentModal.tsx:91
+#: src/features/Usage/SubscriptionPaymentModal.tsx:221
+#: src/features/Usage/SubscriptionPaymentModal.tsx:290
+#. js-lingui-explicit-id
+msgid "Error creating payment session"
+msgstr "Kesalahan dalam membuat sesi pembayaran"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:118
+#. js-lingui-explicit-id
+msgid "Error processing payment"
 msgstr ""
-"Setelah dibeli, jam Anda tetap tersedia sampai Anda menggunakannya. Tidak "
-"ada masa kedaluwarsa."
+"\n"
+"Kesalahan memproses pembayaran\n"
 
-#: src/features/Usage/PaymentModal.tsx:220
+#: src/features/Conversation/ConversationCanvas2.tsx:325
+#: src/features/Conversation/ConversationCanvas2.tsx:1359
+#: src/features/Conversation/ConversationPage.tsx:121
+#: src/features/Conversation/ConversationPage.tsx:130
+#: src/features/Conversation/ConversationPage.tsx:150
+#: src/features/Game/GamePage.tsx:23
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:251
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:157
+#: src/features/Goal/Quiz/QuizPage2.tsx:453
+#: src/features/Goal/Quiz/QuizPage2.tsx:476
+#: src/features/Goal/Quiz/QuizPage2.tsx:476
+#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/RolePlay/RolePlayModal.tsx:267
+#: src/features/Telegram/TgAppPage.tsx:165
+#: src/features/Translation/useTranslate.tsx:149
+#: src/features/Usage/PaymentModal.tsx:494
+#: src/features/Usage/SubscriptionPaymentModal.tsx:146
 #. js-lingui-explicit-id
-msgid "What's included?"
-msgstr "Apa yang termasuk?"
+msgid "Loading..."
+msgstr "Memuat..."
 
-#: src/features/Usage/PaymentModal.tsx:222
+#: src/features/Usage/SubscriptionPaymentModal.tsx:146
 #. js-lingui-explicit-id
-msgid ""
-"Access to all functionalities on app where AI is present: speaking, "
-"analyzing, role-plays, new words and runles creator."
-msgstr ""
-"Akses ke semua fungsi di aplikasi di mana AI hadir: berbicara, "
-"menganalisis, peran-peran, kata-kata baru dan pembuat runles."
+msgid "Pay with crypto"
+msgstr "Bayar dengan kripto"
 
-#: src/features/Usage/PaymentModal.tsx:245
+#: src/features/Usage/SubscriptionPaymentModal.tsx:228
 #. js-lingui-explicit-id
-msgid "Price per one AI hour:"
-msgstr "Harga per satu jam AI:"
+msgid "Error creating payment session. Try again later."
+msgstr "Terjadi kesalahan saat membuat sesi pembayaran. Coba lagi nanti."
 
-#: src/features/Usage/PaymentModal.tsx:250
-#: src/features/Usage/SubscriptionPaymentModal.tsx:567
+#: src/features/Usage/SubscriptionPaymentModal.tsx:244
 #. js-lingui-explicit-id
-msgid "Total:"
-msgstr "Total:"
+msgid "Payment failed! Please try again."
+msgstr "Pembayaran gagal! Silakan coba lagi."
 
-#: src/features/Usage/PaymentModal.tsx:261
+#: src/features/Usage/SubscriptionPaymentModal.tsx:257
+#: src/features/Usage/SubscriptionPaymentModal.tsx:301
 #. js-lingui-explicit-id
-msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
-msgstr ""
-"Jumlah terlalu besar. Saya menghargai dukungan Anda, tetapi mari kita tetap "
-"di bawah $400"
+msgid "Error during payment process"
+msgstr "Kesalahan selama proses pembayaran"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:387
+#. js-lingui-explicit-id
+msgid "Payment option"
+msgstr "Opsi pembayaran"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:396
+#: src/features/Usage/SubscriptionPaymentModal.tsx:484
+#. js-lingui-explicit-id
+msgid "Subscription for 1 month | Full access"
+msgstr "Langganan untuk 1 bulan | Akses penuh"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:426
+#. js-lingui-explicit-id
+msgid "Pay with Stars"
+msgstr "Bayar dengan Bintang"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:475
+#. js-lingui-explicit-id
+msgid "Confirm payment"
+msgstr "Konfirmasi pembayaran"
 
 #: src/features/Usage/PaymentModal.tsx:280
 #: src/features/Usage/SubscriptionPaymentModal.tsx:512
@@ -632,177 +641,11 @@ msgstr ""
 msgid "I want to receive commercial and marketing content"
 msgstr "Saya ingin menerima konten komersial dan pemasaran"
 
-#: src/features/Usage/PaymentModal.tsx:342
+#: src/features/Usage/PaymentModal.tsx:250
+#: src/features/Usage/SubscriptionPaymentModal.tsx:567
 #. js-lingui-explicit-id
-msgid "Continue to payment"
-msgstr "Lanjutkan ke pembayaran"
-
-#: src/features/Header/NeedHelpModal.tsx:251
-#: src/features/Usage/PaymentModal.tsx:350
-#. js-lingui-explicit-id
-msgid "Cancel"
-msgstr "Batal"
-
-#: src/features/Usage/PaymentModal.tsx:359
-#. js-lingui-explicit-id
-msgid ""
-"The Controller of the data entered into the form is Fundacja Rozwoju\n"
-"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
-"processed in order to provide\n"
-"                  the service and for marketing purposes – in the case of "
-"consent. We would like to\n"
-"                  inform you about the possibility of withdrawing your "
-"consent. For full information\n"
-"                  on data processing and your rights, see the"
-msgstr ""
-"Pengendali data yang dimasukkan ke dalam formulir adalah Fundacja Rozwoju\n"
-"                  Przedsiębiorczości \"Twój StartUp\". Data akan diproses "
-"untuk menyediakan\n"
-"                  layanan dan untuk tujuan pemasaran - dalam kasus "
-"persetujuan. Kami ingin\n"
-"                  memberi tahu Anda tentang kemungkinan penarikan "
-"persetujuan Anda. Untuk informasi \n"
-"                  lengkap tentang pemrosesan data dan hak Anda, lihat"
-
-#: src/features/Usage/PaymentModal.tsx:365
-#. js-lingui-explicit-id
-msgid "privacy policy"
-msgstr "kebijakan privasi"
-
-#: src/features/Usage/PaymentModal.tsx:401
-#. js-lingui-explicit-id
-msgid "Success!"
-msgstr "Sukses!"
-
-#: src/features/Usage/PaymentModal.tsx:411
-#. js-lingui-explicit-id
-msgid "Your payment was successful, but updates might take a few minutes"
-msgstr ""
-"Pembayaran Anda telah berhasil, tetapi pembaharuan mungkin memerlukan "
-"beberapa menit"
-
-#: src/features/Header/HeaderStatic.tsx:21
-#: src/features/Usage/PaymentModal.tsx:417
-#. js-lingui-explicit-id
-msgid "Balance"
-msgstr "Saldo"
-
-#: src/features/Usage/PaymentModal.tsx:442
-#. js-lingui-explicit-id
-msgid "Current Balance of AI usage"
-msgstr "Saldo Penggunaan AI Saat Ini"
-
-#: src/features/Usage/PaymentModal.tsx:453
-#: src/features/Usage/SubscriptionPaymentModal.tsx:787
-#. js-lingui-explicit-id
-msgid "Buy More"
-msgstr "Beli Lebih Banyak"
-
-#: src/features/Usage/PaymentModal.tsx:470
-#. js-lingui-explicit-id
-msgid "Total used:"
-msgstr "Total digunakan:"
-
-#: src/features/Usage/PaymentModal.tsx:484
-#. js-lingui-explicit-id
-msgid "Payment history:"
-msgstr "Riwayat pembayaran:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:325
-#: src/features/Conversation/ConversationCanvas2.tsx:1359
-#: src/features/Conversation/ConversationPage.tsx:121
-#: src/features/Conversation/ConversationPage.tsx:130
-#: src/features/Conversation/ConversationPage.tsx:150
-#: src/features/Game/GamePage.tsx:23
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:251
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:157
-#: src/features/Goal/Quiz/QuizPage2.tsx:453
-#: src/features/Goal/Quiz/QuizPage2.tsx:476
-#: src/features/Goal/Quiz/QuizPage2.tsx:476
-#: src/features/Header/PaymentHistoryModal.tsx:65
-#: src/features/RolePlay/RolePlayModal.tsx:267
-#: src/features/Telegram/TgAppPage.tsx:165
-#: src/features/Translation/useTranslate.tsx:149
-#: src/features/Usage/PaymentModal.tsx:494
-#: src/features/Usage/SubscriptionPaymentModal.tsx:146
-#. js-lingui-explicit-id
-msgid "Loading..."
-msgstr "Memuat..."
-
-#: src/features/Header/PaymentHistoryModal.tsx:76
-#: src/features/Usage/PaymentModal.tsx:505
-#. js-lingui-explicit-id
-msgid "No payments..."
-msgstr "Tidak ada pembayaran..."
-
-#: src/features/Translation/useTranslate.tsx:149
-#. js-lingui-explicit-id
-msgid "No text to translate"
-msgstr "Tidak ada teks untuk diterjemahkan"
-
-#: src/features/Translation/useTranslate.tsx:164
-#. js-lingui-explicit-id
-msgid "No translation available"
-msgstr "Tidak ada terjemahan yang tersedia"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:72
-#: src/features/Usage/SubscriptionPaymentModal.tsx:91
-#: src/features/Usage/SubscriptionPaymentModal.tsx:221
-#: src/features/Usage/SubscriptionPaymentModal.tsx:290
-#. js-lingui-explicit-id
-msgid "Error creating payment session"
-msgstr "Kesalahan dalam membuat sesi pembayaran"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:118
-#. js-lingui-explicit-id
-msgid "Error processing payment"
-msgstr ""
-"\n"
-"Kesalahan memproses pembayaran\n"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:146
-#. js-lingui-explicit-id
-msgid "Pay with crypto"
-msgstr "Bayar dengan kripto"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:228
-#. js-lingui-explicit-id
-msgid "Error creating payment session. Try again later."
-msgstr "Terjadi kesalahan saat membuat sesi pembayaran. Coba lagi nanti."
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:244
-#. js-lingui-explicit-id
-msgid "Payment failed! Please try again."
-msgstr "Pembayaran gagal! Silakan coba lagi."
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:257
-#: src/features/Usage/SubscriptionPaymentModal.tsx:301
-#. js-lingui-explicit-id
-msgid "Error during payment process"
-msgstr "Kesalahan selama proses pembayaran"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:387
-#. js-lingui-explicit-id
-msgid "Payment option"
-msgstr "Opsi pembayaran"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:396
-#: src/features/Usage/SubscriptionPaymentModal.tsx:484
-#. js-lingui-explicit-id
-msgid "Subscription for 1 month | Full access"
-msgstr "Langganan untuk 1 bulan | Akses penuh"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:426
-#. js-lingui-explicit-id
-msgid "Pay with Stars"
-msgstr "Bayar dengan Bintang"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:475
-#. js-lingui-explicit-id
-msgid "Confirm payment"
-msgstr "Konfirmasi pembayaran"
+msgid "Total:"
+msgstr "Total:"
 
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #: src/features/Dashboard/SelectLanguage.tsx:292
@@ -852,7 +695,7 @@ msgstr "Anda memiliki"
 msgid "AI hours left in your balance."
 msgstr "Sisa jam AI di saldo Anda."
 
-#: src/features/Landing/Price/PricePage.tsx:203
+#: src/features/Landing/Price/PricePage.tsx:211
 #: src/features/Usage/SubscriptionPaymentModal.tsx:670
 #. js-lingui-explicit-id
 msgid "Full Access"
@@ -869,14 +712,15 @@ msgstr "Aktif"
 msgid "Stars"
 msgstr "Bintang"
 
-#: src/features/Landing/Price/PricePage.tsx:233
+#: src/features/Landing/Price/PricePage.tsx:177
+#: src/features/Landing/Price/PricePage.tsx:241
 #: src/features/Usage/SubscriptionPaymentModal.tsx:724
 #: src/features/Usage/SubscriptionPaymentModal.tsx:760
 #. js-lingui-explicit-id
 msgid "month"
 msgstr "bulan"
 
-#: src/features/Landing/Price/PricePage.tsx:237
+#: src/features/Landing/Price/PricePage.tsx:245
 #: src/features/Usage/SubscriptionPaymentModal.tsx:767
 #. js-lingui-explicit-id
 msgid "Learn at full speed with full access"
@@ -886,6 +730,12 @@ msgstr "Belajar dengan kecepatan penuh dengan akses penuh"
 #. js-lingui-explicit-id
 msgid "Get Full Access"
 msgstr "Dapatkan Akses Penuh"
+
+#: src/features/Usage/PaymentModal.tsx:453
+#: src/features/Usage/SubscriptionPaymentModal.tsx:787
+#. js-lingui-explicit-id
+msgid "Buy More"
+msgstr "Beli Lebih Banyak"
 
 #: src/features/Header/NeedHelpModal.tsx:120
 #: src/features/Settings/MyProfile.tsx:92
@@ -951,6 +801,151 @@ msgstr "Memuat.."
 #. js-lingui-explicit-id
 msgid "Refresh"
 msgstr "Segarkan Ulang"
+
+#: src/features/Usage/PaymentModal.tsx:119
+#. js-lingui-explicit-id
+msgid "Buy more hours"
+msgstr "Beli lebih banyak jam"
+
+#: src/features/Usage/PaymentModal.tsx:127
+#. js-lingui-explicit-id
+msgid "Let's add some hours to your balance"
+msgstr "Mari tambahkan beberapa jam ke saldo Anda"
+
+#: src/features/Usage/PaymentModal.tsx:149
+#. js-lingui-explicit-id
+msgid "Amount hours to buy"
+msgstr "Jumlah jam untuk dibeli"
+
+#: src/features/Usage/PaymentModal.tsx:194
+#. js-lingui-explicit-id
+msgid "What one hour means?"
+msgstr "Apa arti satu jam?"
+
+#: src/features/Usage/PaymentModal.tsx:196
+#. js-lingui-explicit-id
+msgid ""
+"You only charged for when AI is actively working: speaking or analyzing "
+"your speech."
+msgstr ""
+"Anda hanya dikenakan biaya saat AI sedang aktif bekerja: berbicara atau "
+"menganalisis pidato Anda."
+
+#: src/features/Usage/PaymentModal.tsx:207
+#. js-lingui-explicit-id
+msgid "How long will my hours last?"
+msgstr "Berapa lama jam saya akan bertahan?"
+
+#: src/features/Usage/PaymentModal.tsx:209
+#. js-lingui-explicit-id
+msgid ""
+"Once purchased, your hours remain available until you use them. There is no "
+"expiration."
+msgstr ""
+"Setelah dibeli, jam Anda tetap tersedia sampai Anda menggunakannya. Tidak "
+"ada masa kedaluwarsa."
+
+#: src/features/Usage/PaymentModal.tsx:220
+#. js-lingui-explicit-id
+msgid "What's included?"
+msgstr "Apa yang termasuk?"
+
+#: src/features/Usage/PaymentModal.tsx:222
+#. js-lingui-explicit-id
+msgid ""
+"Access to all functionalities on app where AI is present: speaking, "
+"analyzing, role-plays, new words and runles creator."
+msgstr ""
+"Akses ke semua fungsi di aplikasi di mana AI hadir: berbicara, "
+"menganalisis, peran-peran, kata-kata baru dan pembuat runles."
+
+#: src/features/Usage/PaymentModal.tsx:245
+#. js-lingui-explicit-id
+msgid "Price per one AI hour:"
+msgstr "Harga per satu jam AI:"
+
+#: src/features/Usage/PaymentModal.tsx:261
+#. js-lingui-explicit-id
+msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
+msgstr ""
+"Jumlah terlalu besar. Saya menghargai dukungan Anda, tetapi mari kita tetap "
+"di bawah $400"
+
+#: src/features/Usage/PaymentModal.tsx:342
+#. js-lingui-explicit-id
+msgid "Continue to payment"
+msgstr "Lanjutkan ke pembayaran"
+
+#: src/features/Header/NeedHelpModal.tsx:251
+#: src/features/Usage/PaymentModal.tsx:350
+#. js-lingui-explicit-id
+msgid "Cancel"
+msgstr "Batal"
+
+#: src/features/Usage/PaymentModal.tsx:359
+#. js-lingui-explicit-id
+msgid ""
+"The Controller of the data entered into the form is Fundacja Rozwoju\n"
+"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
+"processed in order to provide\n"
+"                  the service and for marketing purposes – in the case of "
+"consent. We would like to\n"
+"                  inform you about the possibility of withdrawing your "
+"consent. For full information\n"
+"                  on data processing and your rights, see the"
+msgstr ""
+"Pengendali data yang dimasukkan ke dalam formulir adalah Fundacja Rozwoju\n"
+"                  Przedsiębiorczości \"Twój StartUp\". Data akan diproses "
+"untuk menyediakan\n"
+"                  layanan dan untuk tujuan pemasaran - dalam kasus "
+"persetujuan. Kami ingin\n"
+"                  memberi tahu Anda tentang kemungkinan penarikan "
+"persetujuan Anda. Untuk informasi \n"
+"                  lengkap tentang pemrosesan data dan hak Anda, lihat"
+
+#: src/features/Usage/PaymentModal.tsx:365
+#. js-lingui-explicit-id
+msgid "privacy policy"
+msgstr "kebijakan privasi"
+
+#: src/features/Usage/PaymentModal.tsx:401
+#. js-lingui-explicit-id
+msgid "Success!"
+msgstr "Sukses!"
+
+#: src/features/Usage/PaymentModal.tsx:411
+#. js-lingui-explicit-id
+msgid "Your payment was successful, but updates might take a few minutes"
+msgstr ""
+"Pembayaran Anda telah berhasil, tetapi pembaharuan mungkin memerlukan "
+"beberapa menit"
+
+#: src/features/Header/HeaderStatic.tsx:21
+#: src/features/Usage/PaymentModal.tsx:417
+#. js-lingui-explicit-id
+msgid "Balance"
+msgstr "Saldo"
+
+#: src/features/Usage/PaymentModal.tsx:442
+#. js-lingui-explicit-id
+msgid "Current Balance of AI usage"
+msgstr "Saldo Penggunaan AI Saat Ini"
+
+#: src/features/Usage/PaymentModal.tsx:470
+#. js-lingui-explicit-id
+msgid "Total used:"
+msgstr "Total digunakan:"
+
+#: src/features/Usage/PaymentModal.tsx:484
+#. js-lingui-explicit-id
+msgid "Payment history:"
+msgstr "Riwayat pembayaran:"
+
+#: src/features/Header/PaymentHistoryModal.tsx:76
+#: src/features/Usage/PaymentModal.tsx:505
+#. js-lingui-explicit-id
+msgid "No payments..."
+msgstr "Tidak ada pembayaran..."
 
 #: src/features/Settings/MyProfile.tsx:68
 #. js-lingui-explicit-id
@@ -1041,55 +1036,29 @@ msgstr "Tinggalkan pesan Anda"
 msgid "We appreciate your feedback!"
 msgstr "Kami menghargai umpan balik Anda!"
 
+#: src/features/Translation/useTranslate.tsx:149
+#. js-lingui-explicit-id
+msgid "No text to translate"
+msgstr "Tidak ada teks untuk diterjemahkan"
+
+#: src/features/Translation/useTranslate.tsx:164
+#. js-lingui-explicit-id
+msgid "No translation available"
+msgstr "Tidak ada terjemahan yang tersedia"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:258
 #: src/features/Dashboard/PlanDashboardCards.tsx:458
 #: src/features/Goal/Quiz/QuizPage2.tsx:439
 #: src/features/Landing/PlanLandingBlock.tsx:430
 #: src/features/Landing/PlanLandingBlock.tsx:560
 #: src/features/Landing/PlanLandingBlock.tsx:622
-#: src/features/Landing/Price/PricePage.tsx:280
+#: src/features/Landing/Price/PricePage.tsx:289
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:328
 #: src/features/RolePlay/RolePlayCardApp.tsx:136
 #: src/features/RolePlay/RolePlayModal.tsx:267
 #. js-lingui-explicit-id
 msgid "Start"
 msgstr "Mulai"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:99
-#: src/features/Goal/Quiz/QuizPage2.tsx:325
-#: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:54
-#: src/features/RolePlay/RolePlayBoard.tsx:49
-#. js-lingui-explicit-id
-msgid "Role Play"
-msgstr "Peran Main"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show more"
-msgstr "Tampilkan lebih banyak"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show less"
-msgstr "Tampilkan lebih sedikit"
-
-#: src/features/Plan/useGoalCreation.ts:41
-#: src/features/Plan/useGoalCreation.ts:71
-#: src/features/Plan/useGoalCreation.ts:93
-#: src/features/Plan/useGoalCreation.ts:96
-#: src/features/Plan/useGoalCreation.ts:100
-#: src/features/Plan/useGoalCreation.ts:109
-#: src/features/Plan/useGoalCreation.ts:115
-#: src/features/Plan/useGoalCreation.ts:119
-#. js-lingui-explicit-id
-msgid "Processing the goal..."
-msgstr "Memproses tujuan..."
-
-#: src/features/Plan/useGoalCreation.ts:133
-#. js-lingui-explicit-id
-msgid "Error Processing the goal"
-msgstr "Kesalahan dalam Memproses tujuan"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -1101,7 +1070,7 @@ msgstr "Permainan Tebak Kata Alias"
 msgid "Alias"
 msgstr "Alias"
 
-#: src/features/Navigation/NavigationBar.tsx:49
+#: src/features/Navigation/NavigationBar.tsx:50
 #: src/features/RolePlay/rolePlayData.tsx:20
 #. js-lingui-explicit-id
 msgid "Game"
@@ -2192,6 +2161,25 @@ msgstr "Nikmati permainan dan lihat bagaimana AI menebak deskripsi Anda!"
 msgid "Robot Thinking"
 msgstr "Robot Berpikir"
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
+#: src/features/Goal/Quiz/QuizPage2.tsx:325
+#: src/features/Landing/PlanLandingBlock.tsx:279
+#: src/features/Navigation/NavigationBar.tsx:55
+#: src/features/RolePlay/RolePlayBoard.tsx:49
+#. js-lingui-explicit-id
+msgid "Role Play"
+msgstr "Peran Main"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show more"
+msgstr "Tampilkan lebih banyak"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show less"
+msgstr "Tampilkan lebih sedikit"
+
 #: src/features/Plan/PlanCard.tsx:118
 #. js-lingui-explicit-id
 msgid "Send 6 messages to complete"
@@ -2202,15 +2190,77 @@ msgstr "Kirim 6 pesan untuk menyelesaikan"
 msgid "Start lesson"
 msgstr "Mulai pelajaran"
 
-#: src/features/Navigation/NavigationBar.tsx:44
+#: src/features/Navigation/NavigationBar.tsx:45
 #. js-lingui-explicit-id
 msgid "Home"
 msgstr "Beranda"
 
-#: src/features/Navigation/NavigationBar.tsx:59
+#: src/features/Navigation/NavigationBar.tsx:60
 #. js-lingui-explicit-id
 msgid "Profile"
 msgstr "Profil"
+
+#: src/features/Plan/useGoalCreation.ts:41
+#: src/features/Plan/useGoalCreation.ts:71
+#: src/features/Plan/useGoalCreation.ts:93
+#: src/features/Plan/useGoalCreation.ts:96
+#: src/features/Plan/useGoalCreation.ts:100
+#: src/features/Plan/useGoalCreation.ts:109
+#: src/features/Plan/useGoalCreation.ts:115
+#: src/features/Plan/useGoalCreation.ts:119
+#. js-lingui-explicit-id
+msgid "Processing the goal..."
+msgstr "Memproses tujuan..."
+
+#: src/features/Plan/useGoalCreation.ts:133
+#. js-lingui-explicit-id
+msgid "Error Processing the goal"
+msgstr "Kesalahan dalam Memproses tujuan"
+
+#: src/features/Dashboard/SelectLanguage.tsx:94
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
+#: src/features/Goal/GoalQuestions.tsx:323
+#: src/features/Goal/Quiz/QuizPage2.tsx:88
+#: src/features/Goal/Quiz/QuizPage2.tsx:995
+#: src/features/Goal/Quiz/useQuiz.tsx:623
+#: src/features/Lang/LanguageSwitcher.tsx:104
+#. js-lingui-explicit-id
+msgid "Other languages"
+msgstr "Bahasa lain"
+
+#: src/features/Dashboard/SelectLanguage.tsx:95
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
+#: src/features/Goal/GoalQuestions.tsx:324
+#: src/features/Goal/Quiz/QuizPage2.tsx:89
+#: src/features/Goal/Quiz/QuizPage2.tsx:996
+#: src/features/Goal/Quiz/useQuiz.tsx:624
+#: src/features/Lang/LanguageSwitcher.tsx:105
+#. js-lingui-explicit-id
+msgid "System languages"
+msgstr "Bahasa sistem"
+
+#: src/features/Lang/LanguageSwitcher.tsx:187
+#. js-lingui-explicit-id
+msgid "Languages"
+msgstr "Bahasa"
+
+#: src/features/Goal/GoalQuestions.tsx:422
+#: src/features/Lang/LanguageSwitcher.tsx:230
+#. js-lingui-explicit-id
+msgid "Language to Learn"
+msgstr "Bahasa yang Ingin Dipelajari"
+
+#: src/features/Dashboard/SelectLanguage.tsx:267
+#: src/features/Lang/LanguageSwitcher.tsx:269
+#. js-lingui-explicit-id
+msgid "Native Language"
+msgstr "Bahasa Asli"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:1190
+#: src/features/Lang/LanguageSwitcher.tsx:311
+#. js-lingui-explicit-id
+msgid "Page Language"
+msgstr "Bahasa Halaman"
 
 #: src/features/Lang/getLabels.tsx:9
 #. js-lingui-explicit-id
@@ -2322,83 +2372,335 @@ msgstr "Rencana Belajar Swedia"
 msgid "Belarusian Learning Plan"
 msgstr "Rencana Pembelajaran Bahasa Belarusia"
 
-#: src/features/Dashboard/SelectLanguage.tsx:94
-#: src/features/Game/GameNativeLanguageSelector.tsx:19
-#: src/features/Goal/GoalQuestions.tsx:323
-#: src/features/Goal/Quiz/QuizPage2.tsx:88
-#: src/features/Goal/Quiz/QuizPage2.tsx:995
-#: src/features/Goal/Quiz/useQuiz.tsx:623
-#: src/features/Lang/LanguageSwitcher.tsx:104
+#: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
-msgid "Other languages"
-msgstr "Bahasa lain"
+msgid "FluencyPal – Your AI English Speaking Partner"
+msgstr "FluencyPal – Mitra Berbicara Bahasa Inggris AI Anda"
 
-#: src/features/Dashboard/SelectLanguage.tsx:95
-#: src/features/Game/GameNativeLanguageSelector.tsx:20
-#: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Goal/Quiz/QuizPage2.tsx:89
-#: src/features/Goal/Quiz/QuizPage2.tsx:996
-#: src/features/Goal/Quiz/useQuiz.tsx:624
-#: src/features/Lang/LanguageSwitcher.tsx:105
-#. js-lingui-explicit-id
-msgid "System languages"
-msgstr "Bahasa sistem"
-
-#: src/features/Lang/LanguageSwitcher.tsx:187
-#. js-lingui-explicit-id
-msgid "Languages"
-msgstr "Bahasa"
-
-#: src/features/Goal/GoalQuestions.tsx:422
-#: src/features/Lang/LanguageSwitcher.tsx:230
-#. js-lingui-explicit-id
-msgid "Language to Learn"
-msgstr "Bahasa yang Ingin Dipelajari"
-
-#: src/features/Dashboard/SelectLanguage.tsx:267
-#: src/features/Lang/LanguageSwitcher.tsx:269
-#. js-lingui-explicit-id
-msgid "Native Language"
-msgstr "Bahasa Asli"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:1190
-#: src/features/Lang/LanguageSwitcher.tsx:311
-#. js-lingui-explicit-id
-msgid "Page Language"
-msgstr "Bahasa Halaman"
-
-#: src/features/Landing/WelcomeScreen.tsx:180
-#. js-lingui-explicit-id
-msgid "Start Speaking"
-msgstr "Mulai Berbicara"
-
-#: src/features/Landing/WelcomeScreen.tsx:202
+#: src/features/Landing/LandingPage.tsx:32
 #. js-lingui-explicit-id
 msgid ""
-"Don’t let mistakes stop you. Build fluency and confidence with daily "
-"speaking practice, anytime you need it."
+"Boost your fluency with FluencyPal, the friendly AI English tutor that's "
+"ready to chat 24/7. Designed for intermediate and advanced learners, "
+"FluencyPal adapts to your speaking level, provides instant corrections, and "
+"helps you speak confidently."
 msgstr ""
-"Jangan biarkan kesalahan menghentikan Anda. Bangun kefasihan dan "
-"kepercayaan diri dengan latihan berbicara harian, kapan pun Anda "
-"membutuhkannya."
+"Boost your fluency with FluencyPal, tutor AI Bahasa Inggris yang ramah yang "
+"siap untuk mengobrol 24/7. Dirancang untuk pelajar tingkat menengah dan "
+"lanjutan, FluencyPal menyesuaikan dengan tingkat bicara Anda, memberikan "
+"koreksi instan, dan membantu Anda berbicara dengan percaya diri."
 
-#: src/features/Landing/Footer.tsx:85
+#: src/features/Landing/LandingPage.tsx:51
+#: src/features/Landing/LandingPage.tsx:190
 #. js-lingui-explicit-id
-msgid "Role-Play"
-msgstr "Peran-Peran"
+msgid "What is FluencyPal?"
+msgstr "Apa itu FluencyPal?"
 
-#: src/features/Header/HeaderStatic.tsx:24
-#: src/features/Landing/Footer.tsx:91
+#: src/features/Landing/LandingPage.tsx:54
+#: src/features/Landing/LandingPage.tsx:193
 #. js-lingui-explicit-id
-msgid "Blog"
-msgstr "Blog"
+msgid ""
+"FluencyPal is an AI-powered English conversation practice app designed for "
+"intermediate and advanced learners. It provides realistic conversational "
+"practice in multiple languages, with immediate feedback on speaking and "
+"pronunciation."
+msgstr ""
+"FluencyPal adalah aplikasi latihan percakapan bahasa Inggris yang ditenagai "
+"oleh AI, dirancang untuk pelajar tingkat menengah dan lanjutan. Aplikasi "
+"ini menyediakan latihan percakapan yang realistis dalam berbagai bahasa, "
+"dengan umpan balik langsung tentang berbicara dan pengucapan."
 
-#: src/features/Header/HeaderStatic.tsx:19
-#: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:95
+#: src/features/Landing/LandingPage.tsx:62
+#: src/features/Landing/LandingPage.tsx:200
 #. js-lingui-explicit-id
-msgid "Price"
-msgstr "Harga"
+msgid "Is there a free trial?"
+msgstr "Apakah ada uji coba gratis?"
+
+#: src/features/Landing/LandingPage.tsx:65
+#: src/features/Landing/LandingPage.tsx:203
+#. js-lingui-explicit-id
+msgid ""
+"Yes, FluencyPal offers a complimentary balance to let you try "
+"conversational practice and see how the platform works before topping up."
+msgstr ""
+"Ya, FluencyPal menawarkan saldo gratis untuk membiarkan Anda mencoba "
+"latihan percakapan dan melihat bagaimana platform ini bekerja sebelum "
+"melakukan pengisian."
+
+#: src/features/Landing/LandingPage.tsx:72
+#: src/features/Landing/LandingPage.tsx:210
+#. js-lingui-explicit-id
+msgid "Can I practice languages other than English?"
+msgstr "Bisakah saya berlatih bahasa selain Inggris?"
+
+#: src/features/Landing/LandingPage.tsx:76
+#. js-lingui-explicit-id
+msgid ""
+"Absolutely! FluencyPal supports various languages and adjusts conversations "
+"based on your chosen language and proficiency level. Available languages "
+"include:"
+msgstr ""
+"Absolutely! FluencyPal mendukung berbagai bahasa dan menyesuaikan "
+"percakapan berdasarkan bahasa dan tingkat kemahiran yang Anda pilih. Bahasa "
+"yang tersedia termasuk:"
+
+#: src/features/Landing/LandingPage.tsx:85
+#: src/features/Landing/LandingPage.tsx:232
+#. js-lingui-explicit-id
+msgid "What learning modes are available?"
+msgstr "Mode pembelajaran apa yang tersedia?"
+
+#: src/features/Landing/LandingPage.tsx:88
+#. js-lingui-explicit-id
+msgid ""
+"FluencyPal provides three modes: Casual Conversation for uninterrupted "
+"speaking practice, Talk & Correct for instant grammar and pronunciation "
+"feedback, and Beginner Mode for slower, guided conversations."
+msgstr ""
+"FluencyPal menyediakan tiga mode: Percakapan Santai untuk latihan berbicara "
+"tanpa henti, Bicara & Koreksi untuk umpan balik instan tentang tata bahasa "
+"dan pengucapan, serta Mode Pemula untuk percakapan yang lebih lambat dan "
+"terarah."
+
+#: src/features/Landing/LandingPage.tsx:95
+#: src/features/Landing/LandingPage.tsx:255
+#. js-lingui-explicit-id
+msgid "How do daily tasks help me improve?"
+msgstr "Bagaimana tugas harian membantu saya meningkatkan?"
+
+#: src/features/Landing/LandingPage.tsx:98
+#: src/features/Landing/LandingPage.tsx:258
+#. js-lingui-explicit-id
+msgid ""
+"Daily conversational tasks introduce new vocabulary and language "
+"structures, reinforcing your skills and accelerating fluency improvements."
+msgstr ""
+"Tugas percakapan harian memperkenalkan kosakata dan struktur bahasa baru, "
+"memperkuat keterampilan Anda dan mempercepat peningkatan kefasihan."
+
+#: src/features/Landing/LandingPage.tsx:119
+#. js-lingui-explicit-id
+msgid "Get Started"
+msgstr "Mulai"
+
+#: src/features/Landing/LandingPage.tsx:122
+#: src/features/Landing/Price/PricePage.tsx:113
+#. js-lingui-explicit-id
+msgid "Open"
+msgstr "Buka"
+
+#: src/features/Landing/LandingPage.tsx:128
+#. js-lingui-explicit-id
+msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
+msgstr "Empat Cara FluencyPal Meningkatkan Keterampilan Berbicara Anda"
+
+#: src/features/Landing/LandingPage.tsx:129
+#. js-lingui-explicit-id
+msgid ""
+"Target the specific skills you need—speaking, grammar, vocabulary, and "
+"progress tracking—to achieve online English fluency faster."
+msgstr ""
+"Targetkan keterampilan spesifik yang Anda butuhkan—berbicara, tata bahasa, "
+"kosakata, dan pelacakan kemajuan—untuk mencapai kefasihan bahasa Inggris "
+"secara online lebih cepat."
+
+#: src/features/Landing/LandingPage.tsx:134
+#: src/features/Landing/PlanLandingBlock.tsx:222
+#. js-lingui-explicit-id
+msgid "Speaking"
+msgstr "Berbicara"
+
+#: src/features/Landing/LandingPage.tsx:135
+#. js-lingui-explicit-id
+msgid "Achieve Speaking Fluency Fast"
+msgstr "Capai Kefasihan Berbicara dengan Cepat"
+
+#: src/features/Landing/LandingPage.tsx:136
+#. js-lingui-explicit-id
+msgid ""
+"Practice realistic conversations tailored to your skill level. FluencyPal "
+"responds naturally, highlights areas for improvement, and builds your "
+"confidence."
+msgstr ""
+"Latih percakapan realistis yang disesuaikan dengan tingkat keterampilan "
+"Anda. FluencyPal merespons secara alami, menyoroti area yang memerlukan "
+"perbaikan, dan membangun kepercayaan diri Anda."
+
+#: src/features/Landing/LandingPage.tsx:141
+#. js-lingui-explicit-id
+msgid "Start Speaking Practice"
+msgstr "Mulai Latihan Berbicara"
+
+#: src/features/Landing/LandingPage.tsx:144
+#: src/features/Landing/PlanLandingBlock.tsx:249
+#. js-lingui-explicit-id
+msgid "Grammar"
+msgstr "Tata Bahasa"
+
+#: src/features/Landing/LandingPage.tsx:145
+#. js-lingui-explicit-id
+msgid "Instant Grammar Corrections"
+msgstr "Koreksi Tata Bahasa Instan"
+
+#: src/features/Landing/LandingPage.tsx:146
+#. js-lingui-explicit-id
+msgid ""
+"Get immediate feedback and explanations on your grammar mistakes as you "
+"practice. Enhance your speaking accuracy naturally."
+msgstr ""
+"Dapatkan umpan balik dan penjelasan segera mengenai kesalahan gramatikal "
+"Anda saat Anda berlatih. Tingkatkan akurasi bicara Anda secara alami."
+
+#: src/features/Landing/LandingPage.tsx:151
+#. js-lingui-explicit-id
+msgid "Enhance Your Grammar"
+msgstr "Tingkatkan Tata Bahasa Anda"
+
+#: src/features/Landing/LandingPage.tsx:154
+#. js-lingui-explicit-id
+msgid "Vocabulary"
+msgstr "Kosa Kata"
+
+#: src/features/Landing/LandingPage.tsx:155
+#. js-lingui-explicit-id
+msgid "Grow Your Vocabulary Daily"
+msgstr "Tumbuhkan Kosakata Anda Setiap Hari"
+
+#: src/features/Landing/LandingPage.tsx:156
+#. js-lingui-explicit-id
+msgid ""
+"Receive personalized vocabulary tailored to your conversational needs. Use "
+"new words immediately to reinforce learning."
+msgstr ""
+"Terima kosakata yang dipersonalisasi sesuai dengan kebutuhan percakapan "
+"Anda. Gunakan kata-kata baru segera untuk memperkuat pembelajaran."
+
+#: src/features/Landing/LandingPage.tsx:161
+#. js-lingui-explicit-id
+msgid "Expand Your Vocabulary"
+msgstr "Perluas Kosakata Anda"
+
+#: src/features/Landing/LandingPage.tsx:164
+#. js-lingui-explicit-id
+msgid "Progress Tracking"
+msgstr "Pelacakan Kemajuan"
+
+#: src/features/Landing/LandingPage.tsx:165
+#. js-lingui-explicit-id
+msgid "Track Your Fluency Progress"
+msgstr "Lacak Kemajuan Kefasihan Anda"
+
+#: src/features/Landing/LandingPage.tsx:166
+#. js-lingui-explicit-id
+msgid ""
+"Visualize your daily progress with intuitive tracking. Stay motivated by "
+"clearly seeing your improvements."
+msgstr ""
+"Visualisasikan kemajuan harian Anda dengan pelacakan yang intuitif. Tetap "
+"termotivasi dengan melihat perbaikan Anda secara jelas."
+
+#: src/features/Landing/LandingPage.tsx:171
+#. js-lingui-explicit-id
+msgid "Check Your Progress"
+msgstr "Periksa Kemajuan Anda"
+
+#: src/features/Landing/LandingPage.tsx:176
+#. js-lingui-explicit-id
+msgid "Real-Life Role-Play for Advanced English Practice"
+msgstr "Peran Peran Kehidupan Nyata untuk Latihan Bahasa Inggris Tingkat Lanjut"
+
+#: src/features/Landing/LandingPage.tsx:177
+#. js-lingui-explicit-id
+msgid ""
+"Practice speaking fluently in real-world scenarios like job interviews, "
+"business meetings, and everyday conversations."
+msgstr ""
+"Berlatih berbicara dengan lancar dalam situasi dunia nyata seperti "
+"wawancara kerja, pertemuan bisnis, dan percakapan sehari-hari."
+
+#: src/features/Landing/LandingPage.tsx:180
+#. js-lingui-explicit-id
+msgid "Explore Role-Play Scenarios"
+msgstr "Jelajahi Skenario Peran"
+
+#: src/features/Landing/LandingPage.tsx:181
+#. js-lingui-explicit-id
+msgid "Looking for something specific?"
+msgstr "Mencari sesuatu yang spesifik?"
+
+#: src/features/Landing/LandingPage.tsx:182
+#. js-lingui-explicit-id
+msgid "Create Your Own Scenario"
+msgstr "Buat Skenario Anda Sendiri"
+
+#: src/features/Landing/LandingPage.tsx:183
+#. js-lingui-explicit-id
+msgid "Master English Fluency"
+msgstr "Kuasai Kefasihan Bahasa Inggris"
+
+#: src/features/Landing/LandingPage.tsx:187
+#: src/features/Landing/Price/PricePage.tsx:859
+#. js-lingui-explicit-id
+msgid "FAQ"
+msgstr "FAQ"
+
+#: src/features/Landing/LandingPage.tsx:214
+#. js-lingui-explicit-id
+msgid ""
+"Absolutely! FluencyPal supports various languages and adjusts conversations "
+"based on your chosen language and proficiency level."
+msgstr ""
+"Tentu saja! FluencyPal mendukung berbagai bahasa dan menyesuaikan "
+"percakapan berdasarkan bahasa dan tingkat kecakapan yang Anda pilih."
+
+#: src/features/Landing/LandingPage.tsx:220
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:410
+#. js-lingui-explicit-id
+msgid "Available languages:"
+msgstr "Bahasa yang tersedia:"
+
+#: src/features/Landing/LandingPage.tsx:237
+#. js-lingui-explicit-id
+msgid "Casual Conversation:"
+msgstr "Percakapan Santai:"
+
+#: src/features/Landing/LandingPage.tsx:238
+#. js-lingui-explicit-id
+msgid "Practice speaking fluently without interruptions."
+msgstr "Latihan berbicara dengan lancar tanpa jeda."
+
+#: src/features/Landing/LandingPage.tsx:241
+#. js-lingui-explicit-id
+msgid "Talk & Correct:"
+msgstr "Talk & Correct:"
+
+#: src/features/Landing/LandingPage.tsx:242
+#. js-lingui-explicit-id
+msgid "Receive detailed feedback on grammar and pronunciation instantly."
+msgstr ""
+"Menerima umpan balik terperinci tentang tata bahasa dan pengucapan secara "
+"instan."
+
+#: src/features/Landing/LandingPage.tsx:247
+#. js-lingui-explicit-id
+msgid "Beginner Mode:"
+msgstr "Mode Pemula:"
+
+#: src/features/Landing/LandingPage.tsx:248
+#. js-lingui-explicit-id
+msgid "Slower conversations with guided support."
+msgstr "Percakapan yang lebih lambat dengan dukungan terarah."
+
+#: src/features/Landing/LandingPage.tsx:267
+#. js-lingui-explicit-id
+msgid "Learn anywhere, anytime"
+msgstr "Belajar di mana saja, kapan saja"
+
+#: src/features/Landing/LandingPage.tsx:268
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:471
+#. js-lingui-explicit-id
+msgid "Start Your Free Trial"
+msgstr "Mulai Uji Coba Gratis"
 
 #: src/features/Landing/PlanLandingBlock.tsx:195
 #. js-lingui-explicit-id
@@ -2447,12 +2749,6 @@ msgstr ""
 "Tingkatkan kemampuan Anda untuk menjawab dengan cepat dan jelas dalam "
 "percakapan."
 
-#: src/features/Landing/LandingPage.tsx:137
-#: src/features/Landing/PlanLandingBlock.tsx:222
-#. js-lingui-explicit-id
-msgid "Speaking"
-msgstr "Berbicara"
-
 #: src/features/Landing/PlanLandingBlock.tsx:223
 #. js-lingui-explicit-id
 msgid "Public Talk Skills"
@@ -2492,12 +2788,6 @@ msgstr "Tugas Berbicara TOEFL"
 #. js-lingui-explicit-id
 msgid "Simulate speaking tasks from the TOEFL exam."
 msgstr "Simulasikan tugas berbicara dari ujian TOEFL."
-
-#: src/features/Landing/LandingPage.tsx:147
-#: src/features/Landing/PlanLandingBlock.tsx:249
-#. js-lingui-explicit-id
-msgid "Grammar"
-msgstr "Tata Bahasa"
 
 #: src/features/Landing/PlanLandingBlock.tsx:250
 #. js-lingui-explicit-id
@@ -2638,344 +2928,20 @@ msgstr "Hasil lebih dekat daripada yang Anda pikirkan"
 msgid "Start Learning"
 msgstr "Mulai Belajar"
 
-#: src/features/Landing/LandingPage.tsx:30
+#: src/features/Landing/WelcomeScreen.tsx:173
 #. js-lingui-explicit-id
-msgid "FluencyPal – Your AI English Speaking Partner"
-msgstr "FluencyPal – Mitra Berbicara Bahasa Inggris AI Anda"
+msgid "Start Speaking"
+msgstr "Mulai Berbicara"
 
-#: src/features/Landing/LandingPage.tsx:32
+#: src/features/Landing/WelcomeScreen.tsx:195
 #. js-lingui-explicit-id
 msgid ""
-"Boost your fluency with FluencyPal, the friendly AI English tutor that's "
-"ready to chat 24/7. Designed for intermediate and advanced learners, "
-"FluencyPal adapts to your speaking level, provides instant corrections, and "
-"helps you speak confidently."
+"Don’t let mistakes stop you. Build fluency and confidence with daily "
+"speaking practice, anytime you need it."
 msgstr ""
-"Boost your fluency with FluencyPal, tutor AI Bahasa Inggris yang ramah yang "
-"siap untuk mengobrol 24/7. Dirancang untuk pelajar tingkat menengah dan "
-"lanjutan, FluencyPal menyesuaikan dengan tingkat bicara Anda, memberikan "
-"koreksi instan, dan membantu Anda berbicara dengan percaya diri."
-
-#: src/features/Landing/LandingPage.tsx:51
-#: src/features/Landing/LandingPage.tsx:193
-#. js-lingui-explicit-id
-msgid "What is FluencyPal?"
-msgstr "Apa itu FluencyPal?"
-
-#: src/features/Landing/LandingPage.tsx:54
-#: src/features/Landing/LandingPage.tsx:196
-#. js-lingui-explicit-id
-msgid ""
-"FluencyPal is an AI-powered English conversation practice app designed for "
-"intermediate and advanced learners. It provides realistic conversational "
-"practice in multiple languages, with immediate feedback on speaking and "
-"pronunciation."
-msgstr ""
-"FluencyPal adalah aplikasi latihan percakapan bahasa Inggris yang ditenagai "
-"oleh AI, dirancang untuk pelajar tingkat menengah dan lanjutan. Aplikasi "
-"ini menyediakan latihan percakapan yang realistis dalam berbagai bahasa, "
-"dengan umpan balik langsung tentang berbicara dan pengucapan."
-
-#: src/features/Landing/LandingPage.tsx:62
-#: src/features/Landing/LandingPage.tsx:203
-#. js-lingui-explicit-id
-msgid "Is there a free trial?"
-msgstr "Apakah ada uji coba gratis?"
-
-#: src/features/Landing/LandingPage.tsx:65
-#: src/features/Landing/LandingPage.tsx:206
-#. js-lingui-explicit-id
-msgid ""
-"Yes, FluencyPal offers a complimentary balance to let you try "
-"conversational practice and see how the platform works before topping up."
-msgstr ""
-"Ya, FluencyPal menawarkan saldo gratis untuk membiarkan Anda mencoba "
-"latihan percakapan dan melihat bagaimana platform ini bekerja sebelum "
-"melakukan pengisian."
-
-#: src/features/Landing/LandingPage.tsx:72
-#: src/features/Landing/LandingPage.tsx:213
-#. js-lingui-explicit-id
-msgid "Can I practice languages other than English?"
-msgstr "Bisakah saya berlatih bahasa selain Inggris?"
-
-#: src/features/Landing/LandingPage.tsx:76
-#. js-lingui-explicit-id
-msgid ""
-"Absolutely! FluencyPal supports various languages and adjusts conversations "
-"based on your chosen language and proficiency level. Available languages "
-"include:"
-msgstr ""
-"Absolutely! FluencyPal mendukung berbagai bahasa dan menyesuaikan "
-"percakapan berdasarkan bahasa dan tingkat kemahiran yang Anda pilih. Bahasa "
-"yang tersedia termasuk:"
-
-#: src/features/Landing/LandingPage.tsx:85
-#: src/features/Landing/LandingPage.tsx:235
-#. js-lingui-explicit-id
-msgid "What learning modes are available?"
-msgstr "Mode pembelajaran apa yang tersedia?"
-
-#: src/features/Landing/LandingPage.tsx:88
-#. js-lingui-explicit-id
-msgid ""
-"FluencyPal provides three modes: Casual Conversation for uninterrupted "
-"speaking practice, Talk & Correct for instant grammar and pronunciation "
-"feedback, and Beginner Mode for slower, guided conversations."
-msgstr ""
-"FluencyPal menyediakan tiga mode: Percakapan Santai untuk latihan berbicara "
-"tanpa henti, Bicara & Koreksi untuk umpan balik instan tentang tata bahasa "
-"dan pengucapan, serta Mode Pemula untuk percakapan yang lebih lambat dan "
-"terarah."
-
-#: src/features/Landing/LandingPage.tsx:95
-#: src/features/Landing/LandingPage.tsx:258
-#. js-lingui-explicit-id
-msgid "How do daily tasks help me improve?"
-msgstr "Bagaimana tugas harian membantu saya meningkatkan?"
-
-#: src/features/Landing/LandingPage.tsx:98
-#: src/features/Landing/LandingPage.tsx:261
-#. js-lingui-explicit-id
-msgid ""
-"Daily conversational tasks introduce new vocabulary and language "
-"structures, reinforcing your skills and accelerating fluency improvements."
-msgstr ""
-"Tugas percakapan harian memperkenalkan kosakata dan struktur bahasa baru, "
-"memperkuat keterampilan Anda dan mempercepat peningkatan kefasihan."
-
-#: src/features/Landing/LandingPage.tsx:119
-#. js-lingui-explicit-id
-msgid "Get Started"
-msgstr "Mulai"
-
-#: src/features/Blog/BlogsPage.tsx:42
-#: src/features/Landing/LandingPage.tsx:120
-#: src/features/Landing/Price/PricePage.tsx:111
-#: src/features/Landing/Price/PricePage.tsx:972
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:44
-#. js-lingui-explicit-id
-msgid "Get Started Free"
-msgstr "Mulai Secara Gratis"
-
-#: src/features/Landing/LandingPage.tsx:121
-#: src/features/Landing/Price/PricePage.tsx:112
-#. js-lingui-explicit-id
-msgid "View Pricing"
-msgstr "Lihat Harga"
-
-#: src/features/Landing/LandingPage.tsx:122
-#: src/features/Landing/Price/PricePage.tsx:113
-#. js-lingui-explicit-id
-msgid "No Credit Card Needed"
-msgstr "Tidak Perlu Kartu Kredit"
-
-#: src/features/Landing/LandingPage.tsx:125
-#: src/features/Landing/Price/PricePage.tsx:116
-#. js-lingui-explicit-id
-msgid "Open"
-msgstr "Buka"
-
-#: src/features/Landing/LandingPage.tsx:131
-#. js-lingui-explicit-id
-msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
-msgstr "Empat Cara FluencyPal Meningkatkan Keterampilan Berbicara Anda"
-
-#: src/features/Landing/LandingPage.tsx:132
-#. js-lingui-explicit-id
-msgid ""
-"Target the specific skills you need—speaking, grammar, vocabulary, and "
-"progress tracking—to achieve online English fluency faster."
-msgstr ""
-"Targetkan keterampilan spesifik yang Anda butuhkan—berbicara, tata bahasa, "
-"kosakata, dan pelacakan kemajuan—untuk mencapai kefasihan bahasa Inggris "
-"secara online lebih cepat."
-
-#: src/features/Landing/LandingPage.tsx:138
-#. js-lingui-explicit-id
-msgid "Achieve Speaking Fluency Fast"
-msgstr "Capai Kefasihan Berbicara dengan Cepat"
-
-#: src/features/Landing/LandingPage.tsx:139
-#. js-lingui-explicit-id
-msgid ""
-"Practice realistic conversations tailored to your skill level. FluencyPal "
-"responds naturally, highlights areas for improvement, and builds your "
-"confidence."
-msgstr ""
-"Latih percakapan realistis yang disesuaikan dengan tingkat keterampilan "
-"Anda. FluencyPal merespons secara alami, menyoroti area yang memerlukan "
-"perbaikan, dan membangun kepercayaan diri Anda."
-
-#: src/features/Landing/LandingPage.tsx:144
-#. js-lingui-explicit-id
-msgid "Start Speaking Practice"
-msgstr "Mulai Latihan Berbicara"
-
-#: src/features/Landing/LandingPage.tsx:148
-#. js-lingui-explicit-id
-msgid "Instant Grammar Corrections"
-msgstr "Koreksi Tata Bahasa Instan"
-
-#: src/features/Landing/LandingPage.tsx:149
-#. js-lingui-explicit-id
-msgid ""
-"Get immediate feedback and explanations on your grammar mistakes as you "
-"practice. Enhance your speaking accuracy naturally."
-msgstr ""
-"Dapatkan umpan balik dan penjelasan segera mengenai kesalahan gramatikal "
-"Anda saat Anda berlatih. Tingkatkan akurasi bicara Anda secara alami."
-
-#: src/features/Landing/LandingPage.tsx:154
-#. js-lingui-explicit-id
-msgid "Enhance Your Grammar"
-msgstr "Tingkatkan Tata Bahasa Anda"
-
-#: src/features/Landing/LandingPage.tsx:157
-#. js-lingui-explicit-id
-msgid "Vocabulary"
-msgstr "Kosa Kata"
-
-#: src/features/Landing/LandingPage.tsx:158
-#. js-lingui-explicit-id
-msgid "Grow Your Vocabulary Daily"
-msgstr "Tumbuhkan Kosakata Anda Setiap Hari"
-
-#: src/features/Landing/LandingPage.tsx:159
-#. js-lingui-explicit-id
-msgid ""
-"Receive personalized vocabulary tailored to your conversational needs. Use "
-"new words immediately to reinforce learning."
-msgstr ""
-"Terima kosakata yang dipersonalisasi sesuai dengan kebutuhan percakapan "
-"Anda. Gunakan kata-kata baru segera untuk memperkuat pembelajaran."
-
-#: src/features/Landing/LandingPage.tsx:164
-#. js-lingui-explicit-id
-msgid "Expand Your Vocabulary"
-msgstr "Perluas Kosakata Anda"
-
-#: src/features/Landing/LandingPage.tsx:167
-#. js-lingui-explicit-id
-msgid "Progress Tracking"
-msgstr "Pelacakan Kemajuan"
-
-#: src/features/Landing/LandingPage.tsx:168
-#. js-lingui-explicit-id
-msgid "Track Your Fluency Progress"
-msgstr "Lacak Kemajuan Kefasihan Anda"
-
-#: src/features/Landing/LandingPage.tsx:169
-#. js-lingui-explicit-id
-msgid ""
-"Visualize your daily progress with intuitive tracking. Stay motivated by "
-"clearly seeing your improvements."
-msgstr ""
-"Visualisasikan kemajuan harian Anda dengan pelacakan yang intuitif. Tetap "
-"termotivasi dengan melihat perbaikan Anda secara jelas."
-
-#: src/features/Landing/LandingPage.tsx:174
-#. js-lingui-explicit-id
-msgid "Check Your Progress"
-msgstr "Periksa Kemajuan Anda"
-
-#: src/features/Landing/LandingPage.tsx:179
-#. js-lingui-explicit-id
-msgid "Real-Life Role-Play for Advanced English Practice"
-msgstr "Peran Peran Kehidupan Nyata untuk Latihan Bahasa Inggris Tingkat Lanjut"
-
-#: src/features/Landing/LandingPage.tsx:180
-#. js-lingui-explicit-id
-msgid ""
-"Practice speaking fluently in real-world scenarios like job interviews, "
-"business meetings, and everyday conversations."
-msgstr ""
-"Berlatih berbicara dengan lancar dalam situasi dunia nyata seperti "
-"wawancara kerja, pertemuan bisnis, dan percakapan sehari-hari."
-
-#: src/features/Landing/LandingPage.tsx:183
-#. js-lingui-explicit-id
-msgid "Explore Role-Play Scenarios"
-msgstr "Jelajahi Skenario Peran"
-
-#: src/features/Landing/LandingPage.tsx:184
-#. js-lingui-explicit-id
-msgid "Looking for something specific?"
-msgstr "Mencari sesuatu yang spesifik?"
-
-#: src/features/Landing/LandingPage.tsx:185
-#. js-lingui-explicit-id
-msgid "Create Your Own Scenario"
-msgstr "Buat Skenario Anda Sendiri"
-
-#: src/features/Landing/LandingPage.tsx:186
-#. js-lingui-explicit-id
-msgid "Master English Fluency"
-msgstr "Kuasai Kefasihan Bahasa Inggris"
-
-#: src/features/Landing/LandingPage.tsx:190
-#: src/features/Landing/Price/PricePage.tsx:850
-#. js-lingui-explicit-id
-msgid "FAQ"
-msgstr "FAQ"
-
-#: src/features/Landing/LandingPage.tsx:217
-#. js-lingui-explicit-id
-msgid ""
-"Absolutely! FluencyPal supports various languages and adjusts conversations "
-"based on your chosen language and proficiency level."
-msgstr ""
-"Tentu saja! FluencyPal mendukung berbagai bahasa dan menyesuaikan "
-"percakapan berdasarkan bahasa dan tingkat kecakapan yang Anda pilih."
-
-#: src/features/Landing/LandingPage.tsx:223
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:410
-#. js-lingui-explicit-id
-msgid "Available languages:"
-msgstr "Bahasa yang tersedia:"
-
-#: src/features/Landing/LandingPage.tsx:240
-#. js-lingui-explicit-id
-msgid "Casual Conversation:"
-msgstr "Percakapan Santai:"
-
-#: src/features/Landing/LandingPage.tsx:241
-#. js-lingui-explicit-id
-msgid "Practice speaking fluently without interruptions."
-msgstr "Latihan berbicara dengan lancar tanpa jeda."
-
-#: src/features/Landing/LandingPage.tsx:244
-#. js-lingui-explicit-id
-msgid "Talk & Correct:"
-msgstr "Talk & Correct:"
-
-#: src/features/Landing/LandingPage.tsx:245
-#. js-lingui-explicit-id
-msgid "Receive detailed feedback on grammar and pronunciation instantly."
-msgstr ""
-"Menerima umpan balik terperinci tentang tata bahasa dan pengucapan secara "
-"instan."
-
-#: src/features/Landing/LandingPage.tsx:250
-#. js-lingui-explicit-id
-msgid "Beginner Mode:"
-msgstr "Mode Pemula:"
-
-#: src/features/Landing/LandingPage.tsx:251
-#. js-lingui-explicit-id
-msgid "Slower conversations with guided support."
-msgstr "Percakapan yang lebih lambat dengan dukungan terarah."
-
-#: src/features/Landing/LandingPage.tsx:270
-#. js-lingui-explicit-id
-msgid "Learn anywhere, anytime"
-msgstr "Belajar di mana saja, kapan saja"
-
-#: src/features/Landing/LandingPage.tsx:271
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:471
-#. js-lingui-explicit-id
-msgid "Start Your Free Trial"
-msgstr "Mulai Uji Coba Gratis"
+"Jangan biarkan kesalahan menghentikan Anda. Bangun kefasihan dan "
+"kepercayaan diri dengan latihan berbicara harian, kapan pun Anda "
+"membutuhkannya."
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
@@ -2991,12 +2957,6 @@ msgstr "Play the role"
 #. js-lingui-explicit-id
 msgid "Ready to play?"
 msgstr "Siap bermain?"
-
-#: src/features/Goal/GoalQuestions.tsx:1257
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:337
-#. js-lingui-explicit-id
-msgid "The first 3 days are free"
-msgstr "3 hari pertama gratis"
 
 #: src/features/Auth/AuthWall.tsx:294
 #: src/features/Goal/GoalQuestions.tsx:1256
@@ -3045,17 +3005,444 @@ msgstr "Terkait Skenario"
 msgid "Ready to Become Fluent in English?"
 msgstr "Siap untuk Menjadi Fasih Berbahasa Inggris?"
 
-#: src/features/Blog/BlogsPage.tsx:41
-#: src/features/Landing/Price/PricePage.tsx:971
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
+#: src/features/Landing/Footer.tsx:85
 #. js-lingui-explicit-id
-msgid "Start Your Journey to Fluent Conversations Now"
-msgstr "Mulailah Perjalanan Anda Menuju Percakapan Lancar Sekarang"
+msgid "Role-Play"
+msgstr "Peran-Peran"
+
+#: src/features/Header/HeaderStatic.tsx:24
+#: src/features/Landing/Footer.tsx:91
+#. js-lingui-explicit-id
+msgid "Blog"
+msgstr "Blog"
+
+#: src/features/Header/HeaderStatic.tsx:19
+#: src/features/Landing/Footer.tsx:94
+#: src/features/Landing/Price/PricePage.tsx:96
+#. js-lingui-explicit-id
+msgid "Price"
+msgstr "Harga"
 
 #: src/features/Landing/RolePlay/RolePlayCard.tsx:150
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "Coba"
+
+#: src/features/Blog/BlogsPage.tsx:41
+#: src/features/Landing/Price/PricePage.tsx:980
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
+#. js-lingui-explicit-id
+msgid "Start Your Journey to Fluent Conversations Now"
+msgstr "Mulailah Perjalanan Anda Menuju Percakapan Lancar Sekarang"
+
+#: src/features/Blog/BlogsPage.tsx:42
+#: src/features/Landing/Price/PricePage.tsx:111
+#: src/features/Landing/Price/PricePage.tsx:981
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:44
+#. js-lingui-explicit-id
+msgid "Get Started Free"
+msgstr "Mulai Secara Gratis"
+
+#: src/features/Landing/Price/PricePage.tsx:106
+#. js-lingui-explicit-id
+msgid "From mistakes and hesitation to confident conversations"
+msgstr "Dari kesalahan dan keragu-raguan menuju percakapan percaya diri"
+
+#: src/features/Landing/Price/PricePage.tsx:147
+#. js-lingui-explicit-id
+msgid "Free"
+msgstr "Gratis"
+
+#: src/features/Landing/Price/PricePage.tsx:148
+#. js-lingui-explicit-id
+msgid "For learners who want to try it out"
+msgstr "Untuk pelajar yang ingin mencobanya"
+
+#: src/features/Landing/Price/PricePage.tsx:181
+#. js-lingui-explicit-id
+msgid "Limited access to features with 3-day trial"
+msgstr "Akses terbatas ke fitur dengan uji coba 3 hari"
+
+#: src/features/Landing/Price/PricePage.tsx:182
+#. js-lingui-explicit-id
+msgid "Includes:"
+msgstr "Termasuk:"
+
+#: src/features/Landing/Price/PricePage.tsx:185
+#. js-lingui-explicit-id
+msgid "3 days full access trial"
+msgstr "3 hari akses uji coba penuh"
+
+#: src/features/Landing/Price/PricePage.tsx:186
+#: src/features/Landing/Price/PricePage.tsx:197
+#: src/features/Landing/Price/PricePage.tsx:203
+#. js-lingui-explicit-id
+msgid "Try AI tutor for one hour to see how it works"
+msgstr "Coba tutor AI selama satu jam untuk melihat bagaimana cara kerjanya"
+
+#: src/features/Landing/Price/PricePage.tsx:190
+#. js-lingui-explicit-id
+msgid "Quiz games"
+msgstr "Permainan kuis"
+
+#: src/features/Landing/Price/PricePage.tsx:191
+#. js-lingui-explicit-id
+msgid "Many language games to practice"
+msgstr "Banyak permainan bahasa untuk berlatih"
+
+#: src/features/Landing/Price/PricePage.tsx:196
+#. js-lingui-explicit-id
+msgid "Daily question"
+msgstr "Pertanyaan harian"
+
+#: src/features/Landing/Price/PricePage.tsx:202
+#. js-lingui-explicit-id
+msgid "Max 10 messages per conversation after trial"
+msgstr "Maksimal 10 pesan per percakapan setelah percobaan"
+
+#: src/features/Landing/Price/PricePage.tsx:207
+#. js-lingui-explicit-id
+msgid "Start "
+msgstr "Mulai"
+
+#: src/features/Landing/Price/PricePage.tsx:212
+#. js-lingui-explicit-id
+msgid "For learners who want flexibility"
+msgstr "Untuk pelajar yang menginginkan fleksibilitas"
+
+#: src/features/Landing/Price/PricePage.tsx:246
+#. js-lingui-explicit-id
+msgid "Everything in Free, plus:"
+msgstr "Semuanya di Gratis, plus:"
+
+#: src/features/Landing/Price/FeatureList.tsx:30
+#: src/features/Landing/Price/PricePage.tsx:250
+#. js-lingui-explicit-id
+msgid "Full AI tutor access"
+msgstr "Akses penuh tutor AI"
+
+#: src/features/Landing/Price/PricePage.tsx:251
+#. js-lingui-explicit-id
+msgid "Get unlimited access to AI-powered language practice"
+msgstr "Dapatkan akses tak terbatas untuk praktik bahasa yang didukung AI"
+
+#: src/features/Landing/Price/FeatureList.tsx:34
+#: src/features/Landing/Price/PricePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-play scenarios"
+msgstr "Skenario permainan peran"
+
+#: src/features/Landing/Price/PricePage.tsx:256
+#. js-lingui-explicit-id
+msgid "Engage in real-life conversations like job interviews or ordering food"
+msgstr ""
+"Terlibat dalam percakapan kehidupan nyata seperti wawancara kerja atau "
+"memesan makanan"
+
+#: src/features/Landing/Price/FeatureList.tsx:38
+#: src/features/Landing/Price/PricePage.tsx:262
+#. js-lingui-explicit-id
+msgid "Conversation practice"
+msgstr "Praktik percakapan"
+
+#: src/features/Landing/Price/PricePage.tsx:263
+#. js-lingui-explicit-id
+msgid "Improve fluency with interactive chat sessions"
+msgstr "Tingkatkan kelancaran dengan sesi obrolan interaktif"
+
+#: src/features/Landing/Price/FeatureList.tsx:42
+#: src/features/Landing/Price/PricePage.tsx:267
+#. js-lingui-explicit-id
+msgid "Progress tracking"
+msgstr "Pelacakan kemajuan"
+
+#: src/features/Landing/Price/PricePage.tsx:268
+#. js-lingui-explicit-id
+msgid "See your improvements and track your learning journey"
+msgstr "Lihat peningkatan Anda dan lacak perjalanan belajar Anda"
+
+#: src/features/Landing/Price/FeatureList.tsx:46
+#: src/features/Landing/Price/PricePage.tsx:272
+#. js-lingui-explicit-id
+msgid "New Words"
+msgstr "Kata Baru"
+
+#: src/features/Landing/Price/PricePage.tsx:273
+#. js-lingui-explicit-id
+msgid "Get new words and phrases in context"
+msgstr "Dapatkan kata-kata dan frasa baru dalam konteks"
+
+#: src/features/Landing/Price/FeatureList.tsx:50
+#: src/features/Landing/Price/PricePage.tsx:277
+#. js-lingui-explicit-id
+msgid "New Grammar Rules"
+msgstr "Aturan Tata Bahasa Baru"
+
+#: src/features/Landing/Price/PricePage.tsx:278
+#. js-lingui-explicit-id
+msgid "By practicing, you will get personal grammar rules from AI"
+msgstr "Dengan berlatih, Anda akan mendapatkan aturan tata bahasa pribadi dari AI"
+
+#: src/features/Landing/Price/FeatureList.tsx:54
+#: src/features/Landing/Price/PricePage.tsx:282
+#. js-lingui-explicit-id
+msgid "Advanced Personalization"
+msgstr "Personalisasi Lanjutan"
+
+#: src/features/Landing/Price/PricePage.tsx:283
+#. js-lingui-explicit-id
+msgid ""
+"With time, AI will adapt to your learning style and it will be more "
+"personalized"
+msgstr ""
+"Dengan waktu, AI akan menyesuaikan diri dengan gaya belajar Anda dan akan "
+"menjadi lebih personalisasi"
+
+#: src/features/Landing/Price/PricePage.tsx:293
+#. js-lingui-explicit-id
+msgid "Advanced"
+msgstr "Lanjutan"
+
+#: src/features/Landing/Price/PricePage.tsx:294
+#: src/features/Landing/Price/PricePage.tsx:316
+#. js-lingui-explicit-id
+msgid "Frequent users who need more value"
+msgstr "Pengguna yang sering membutuhkan lebih banyak nilai"
+
+#: src/features/Landing/Price/PricePage.tsx:312
+#. js-lingui-explicit-id
+msgid "Contact for pricing"
+msgstr "Hubungi untuk penentuan harga"
+
+#: src/features/Landing/Price/PricePage.tsx:317
+#. js-lingui-explicit-id
+msgid "What I can do for you:"
+msgstr "Apa yang bisa saya lakukan untuk Anda:"
+
+#: src/features/Landing/Price/PricePage.tsx:320
+#. js-lingui-explicit-id
+msgid "Custom features"
+msgstr "Fitur khusus"
+
+#: src/features/Landing/Price/PricePage.tsx:321
+#. js-lingui-explicit-id
+msgid "Tailor AI interactions to fit your needs"
+msgstr "Sesuaikan interaksi AI agar sesuai dengan kebutuhan Anda"
+
+#: src/features/Landing/Price/PricePage.tsx:325
+#. js-lingui-explicit-id
+msgid "Discounted AI Usage"
+msgstr "Diskon Penggunaan AI"
+
+#: src/features/Landing/Price/PricePage.tsx:326
+#. js-lingui-explicit-id
+msgid "Get cheaper AI hours for bulk use"
+msgstr "Dapatkan jam AI yang lebih murah untuk penggunaan massal"
+
+#: src/features/Landing/Price/PricePage.tsx:330
+#. Button title for contact me for advance pricing
+#. js-lingui-explicit-id
+msgid "Contact me"
+msgstr "Hubungi saya"
+
+#: src/features/Landing/Price/PricePage.tsx:368
+#. js-lingui-explicit-id
+msgid "How FluencyPal Pricing Works"
+msgstr "Bagaimana Cara Kerja Harga FluencyPal"
+
+#: src/features/Landing/Price/PricePage.tsx:379
+#. js-lingui-explicit-id
+msgid ""
+"Our AI tutor runs on a simple credit system—you only pay for the time and "
+"resources\n"
+"                you actually use."
+msgstr ""
+"Tutor AI kami berjalan pada sistem kredit yang sederhana—Anda hanya "
+"membayar untuk waktu dan sumber daya\n"
+"                yang benar-benar Anda gunakan."
+
+#: src/features/Landing/Price/PricePage.tsx:420
+#. js-lingui-explicit-id
+msgid "Start Free"
+msgstr "Mulai Gratis"
+
+#: src/features/Landing/Price/PricePage.tsx:423
+#. js-lingui-explicit-id
+msgid "Start Free – Get 5 in credits when you sign up."
+msgstr "Start Gratis – Dapatkan 5 dalam kredit saat Anda mendaftar."
+
+#: src/features/Landing/Price/PricePage.tsx:463
+#. js-lingui-explicit-id
+msgid "Use as You Go"
+msgstr "Gunakan Sesuai Kebutuhan"
+
+#: src/features/Landing/Price/PricePage.tsx:466
+#. js-lingui-explicit-id
+msgid ""
+"Each AI conversation session consumes credits based on duration and "
+"complexity."
+msgstr ""
+"Setiap sesi percakapan AI mengkonsumsi kredit berdasarkan durasi dan "
+"kompleksitas."
+
+#: src/features/Landing/Price/PricePage.tsx:509
+#. js-lingui-explicit-id
+msgid "Add More Credits"
+msgstr "Tambahkan Lebih Banyak Kredit"
+
+#: src/features/Landing/Price/PricePage.tsx:512
+#. js-lingui-explicit-id
+msgid "Add more credits whenever you need them."
+msgstr "Tambahkan lebih banyak kredit kapan pun Anda membutuhkannya."
+
+#: src/features/Landing/Price/PricePage.tsx:550
+#. js-lingui-explicit-id
+msgid "Why Pay-as-You-Go is Better Than Subscriptions"
+msgstr "Mengapa Bayar Sesuai Penggunaan Lebih Baik Daripada Langganan"
+
+#: src/features/Landing/Price/PricePage.tsx:678
+#. js-lingui-explicit-id
+msgid "Traditional Subscription"
+msgstr "Langganan Tradisional"
+
+#: src/features/Landing/Price/PricePage.tsx:688
+#. js-lingui-explicit-id
+msgid "Pay Only for What You Use"
+msgstr "Bayar Hanya Untuk Apa yang Anda Gunakan"
+
+#: src/features/Landing/Price/PricePage.tsx:715
+#. js-lingui-explicit-id
+msgid "No, fixed cost"
+msgstr "Tidak, biaya tetap"
+
+#: src/features/Landing/Price/PricePage.tsx:721
+#. js-lingui-explicit-id
+msgid "Full Access Anytime"
+msgstr "Akses Penuh Kapan Saja"
+
+#: src/features/Landing/Price/PricePage.tsx:752
+#. js-lingui-explicit-id
+msgid "No Monthly Fees"
+msgstr "Tidak Ada Biaya Bulanan"
+
+#: src/features/Landing/Price/PricePage.tsx:778
+#. js-lingui-explicit-id
+msgid "No, recurring charge"
+msgstr "Tidak, biaya berulang"
+
+#: src/features/Landing/Price/PricePage.tsx:784
+#. js-lingui-explicit-id
+msgid "Pause Anytime"
+msgstr "Pause Kapan Saja"
+
+#: src/features/Landing/Price/PricePage.tsx:822
+#. js-lingui-explicit-id
+msgid "Try FluencyPal for Free"
+msgstr "Coba FluencyPal secara Gratis"
+
+#: src/features/Landing/Price/PricePage.tsx:877
+#. js-lingui-explicit-id
+msgid "Is a credit card required for the trial?"
+msgstr "Apakah kartu kredit diperlukan untuk masa percobaan?"
+
+#: src/features/Landing/Price/PricePage.tsx:880
+#. js-lingui-explicit-id
+msgid "No. A credit card is not required to start the trial."
+msgstr "Tidak. Kartu kredit tidak diperlukan untuk memulai uji coba."
+
+#: src/features/Landing/Price/PricePage.tsx:888
+#. js-lingui-explicit-id
+msgid "Can I try FluencyPal before subscribing?"
+msgstr "Apakah saya dapat mencoba FluencyPal sebelum berlangganan?"
+
+#: src/features/Landing/Price/PricePage.tsx:891
+#. js-lingui-explicit-id
+msgid ""
+"Yes. You get a free 3-day trial to explore all features. You won’t be "
+"charged until you decide to subscribe."
+msgstr ""
+"Ya. Anda mendapatkan uji coba gratis selama 3 hari untuk menjelajahi semua "
+"fitur. Anda tidak akan dikenakan biaya sampai Anda memutuskan untuk "
+"berlangganan."
+
+#: src/features/Landing/Price/PricePage.tsx:901
+#. js-lingui-explicit-id
+msgid "What’s included in my subscription?"
+msgstr "Apa yang termasuk dalam langganan saya?"
+
+#: src/features/Landing/Price/PricePage.tsx:904
+#. js-lingui-explicit-id
+msgid ""
+"Real-time AI speaking practice, scenario role-plays, listening drills, "
+"grammar and vocabulary exercises, personalized feedback, and progress "
+"analytics."
+msgstr ""
+"Praktek berbicara AI secara real-time, peran permainan skenario, latihan "
+"mendengarkan, latihan tata bahasa dan kosakata, umpan balik yang "
+"dipersonalisasi, dan analitik kemajuan."
+
+#: src/features/Landing/Price/PricePage.tsx:914
+#. js-lingui-explicit-id
+msgid "Can I cancel anytime?"
+msgstr "Bisakah saya membatalkan kapan saja?"
+
+#: src/features/Landing/Price/PricePage.tsx:917
+#. js-lingui-explicit-id
+msgid ""
+"Yes. You can cancel from your account settings at any time. You’ll keep "
+"access until the end of the current billing period."
+msgstr ""
+"Ya. Anda bisa membatalkan dari pengaturan akun Anda kapan saja. Anda akan "
+"tetap memiliki akses hingga akhir periode penagihan saat ini."
+
+#: src/features/Landing/Price/PricePage.tsx:927
+#. js-lingui-explicit-id
+msgid "Do you offer refunds?"
+msgstr "Apakah Anda menawarkan pengembalian dana?"
+
+#: src/features/Landing/Price/PricePage.tsx:930
+#. js-lingui-explicit-id
+msgid ""
+"We don’t issue partial refunds for unused time. After canceling, your "
+"subscription remains active until the period ends."
+msgstr ""
+"Kami tidak mengeluarkan pengembalian dana sebagian untuk waktu yang tidak "
+"digunakan. Setelah membatalkan, langganan Anda tetap aktif hingga periode "
+"berakhir."
+
+#: src/features/Landing/Price/PricePage.tsx:940
+#. js-lingui-explicit-id
+msgid "Will my learning progress be saved if I cancel?"
+msgstr "Apakah kemajuan belajar saya akan disimpan jika saya membatalkan?"
+
+#: src/features/Landing/Price/PricePage.tsx:943
+#. js-lingui-explicit-id
+msgid ""
+"Yes. Your history, achievements, and personalized settings are tied to your "
+"account and remain available when you return."
+msgstr ""
+"Ya. Riwayat, pencapaian, dan pengaturan pribadi Anda terkait dengan akun "
+"Anda dan tetap tersedia saat Anda kembali."
+
+#: src/features/Landing/Price/PricePage.tsx:953
+#. js-lingui-explicit-id
+msgid "Can I buy credits in bulk?"
+msgstr "Bisakah saya membeli kredit dalam jumlah besar?"
+
+#: src/features/Landing/Price/PricePage.tsx:957
+#. js-lingui-explicit-id
+msgid ""
+"Yes! We offer discounts when purchasing larger credit packages. Just "
+"contact me before you buy and I'll give you a discount."
+msgstr ""
+"Ya! Kami menawarkan diskon saat membeli paket kredit yang lebih besar. "
+"Cukup hubungi saya sebelum Anda membeli dan saya akan memberi Anda diskon."
+
+#: src/features/Header/NeedHelpModal.tsx:152
+#: src/features/Landing/Price/PricePage.tsx:967
+#. js-lingui-explicit-id
+msgid "Contacts:"
+msgstr "Kontak:"
 
 #: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
 #. js-lingui-explicit-id
@@ -3087,405 +3474,6 @@ msgstr "Temukan"
 msgid "No scenarios found"
 msgstr "Tidak ditemukan skenario"
 
-#: src/features/Landing/Price/FeatureList.tsx:30
-#: src/features/Landing/Price/PricePage.tsx:241
-#. js-lingui-explicit-id
-msgid "Full AI tutor access"
-msgstr "Akses penuh tutor AI"
-
-#: src/features/Landing/Price/FeatureList.tsx:34
-#: src/features/Landing/Price/PricePage.tsx:246
-#. js-lingui-explicit-id
-msgid "Role-play scenarios"
-msgstr "Skenario permainan peran"
-
-#: src/features/Landing/Price/FeatureList.tsx:38
-#: src/features/Landing/Price/PricePage.tsx:253
-#. js-lingui-explicit-id
-msgid "Conversation practice"
-msgstr "Praktik percakapan"
-
-#: src/features/Landing/Price/FeatureList.tsx:42
-#: src/features/Landing/Price/PricePage.tsx:258
-#. js-lingui-explicit-id
-msgid "Progress tracking"
-msgstr "Pelacakan kemajuan"
-
-#: src/features/Landing/Price/FeatureList.tsx:46
-#: src/features/Landing/Price/PricePage.tsx:263
-#. js-lingui-explicit-id
-msgid "New Words"
-msgstr "Kata Baru"
-
-#: src/features/Landing/Price/FeatureList.tsx:50
-#: src/features/Landing/Price/PricePage.tsx:268
-#. js-lingui-explicit-id
-msgid "New Grammar Rules"
-msgstr "Aturan Tata Bahasa Baru"
-
-#: src/features/Landing/Price/FeatureList.tsx:54
-#: src/features/Landing/Price/PricePage.tsx:273
-#. js-lingui-explicit-id
-msgid "Advanced Personalization"
-msgstr "Personalisasi Lanjutan"
-
-#: src/features/Landing/Price/PricePage.tsx:105
-#. js-lingui-explicit-id
-msgid "From mistakes and hesitation to confident conversations"
-msgstr "Dari kesalahan dan keragu-raguan menuju percakapan percaya diri"
-
-#: src/features/Landing/Price/PricePage.tsx:110
-#. js-lingui-explicit-id
-msgid "Open Dashboard"
-msgstr "Buka Dasbor"
-
-#: src/features/Landing/Price/PricePage.tsx:150
-#. js-lingui-explicit-id
-msgid "Trial"
-msgstr "Percobaan"
-
-#: src/features/Landing/Price/PricePage.tsx:151
-#. js-lingui-explicit-id
-msgid "For learners who want to try it out"
-msgstr "Untuk pelajar yang ingin mencobanya"
-
-#: src/features/Landing/Price/PricePage.tsx:180
-#. js-lingui-explicit-id
-msgid "3 days"
-msgstr "3 hari"
-
-#: src/features/Landing/Price/PricePage.tsx:184
-#. js-lingui-explicit-id
-msgid "Game mode and trial AI tutor access"
-msgstr "Mode permainan dan akses percobaan tutor AI"
-
-#: src/features/Landing/Price/PricePage.tsx:185
-#. js-lingui-explicit-id
-msgid "Includes:"
-msgstr "Termasuk:"
-
-#: src/features/Landing/Price/PricePage.tsx:189
-#. js-lingui-explicit-id
-msgid "Game Mode"
-msgstr "Mode Permainan"
-
-#: src/features/Landing/Price/PricePage.tsx:190
-#. js-lingui-explicit-id
-msgid "Many language games to practice"
-msgstr "Banyak permainan bahasa untuk berlatih"
-
-#: src/features/Landing/Price/PricePage.tsx:194
-#. js-lingui-explicit-id
-msgid "3 days of AI tutor access"
-msgstr "3 hari akses tutor AI"
-
-#: src/features/Landing/Price/PricePage.tsx:195
-#. js-lingui-explicit-id
-msgid "Try AI tutor for one hour to see how it works"
-msgstr "Coba tutor AI selama satu jam untuk melihat bagaimana cara kerjanya"
-
-#: src/features/Landing/Price/PricePage.tsx:199
-#. js-lingui-explicit-id
-msgid "Start "
-msgstr "Mulai"
-
-#: src/features/Landing/Price/PricePage.tsx:204
-#. js-lingui-explicit-id
-msgid "For learners who want flexibility"
-msgstr "Untuk pelajar yang menginginkan fleksibilitas"
-
-#: src/features/Landing/Price/PricePage.tsx:238
-#. js-lingui-explicit-id
-msgid "Everything in Free, plus:"
-msgstr "Semuanya di Gratis, plus:"
-
-#: src/features/Landing/Price/PricePage.tsx:242
-#. js-lingui-explicit-id
-msgid "Get unlimited access to AI-powered language practice"
-msgstr "Dapatkan akses tak terbatas untuk praktik bahasa yang didukung AI"
-
-#: src/features/Landing/Price/PricePage.tsx:247
-#. js-lingui-explicit-id
-msgid "Engage in real-life conversations like job interviews or ordering food"
-msgstr ""
-"Terlibat dalam percakapan kehidupan nyata seperti wawancara kerja atau "
-"memesan makanan"
-
-#: src/features/Landing/Price/PricePage.tsx:254
-#. js-lingui-explicit-id
-msgid "Improve fluency with interactive chat sessions"
-msgstr "Tingkatkan kelancaran dengan sesi obrolan interaktif"
-
-#: src/features/Landing/Price/PricePage.tsx:259
-#. js-lingui-explicit-id
-msgid "See your improvements and track your learning journey"
-msgstr "Lihat peningkatan Anda dan lacak perjalanan belajar Anda"
-
-#: src/features/Landing/Price/PricePage.tsx:264
-#. js-lingui-explicit-id
-msgid "Get new words and phrases in context"
-msgstr "Dapatkan kata-kata dan frasa baru dalam konteks"
-
-#: src/features/Landing/Price/PricePage.tsx:269
-#. js-lingui-explicit-id
-msgid "By practicing, you will get personal grammar rules from AI"
-msgstr "Dengan berlatih, Anda akan mendapatkan aturan tata bahasa pribadi dari AI"
-
-#: src/features/Landing/Price/PricePage.tsx:274
-#. js-lingui-explicit-id
-msgid ""
-"With time, AI will adapt to your learning style and it will be more "
-"personalized"
-msgstr ""
-"Dengan waktu, AI akan menyesuaikan diri dengan gaya belajar Anda dan akan "
-"menjadi lebih personalisasi"
-
-#: src/features/Landing/Price/PricePage.tsx:284
-#. js-lingui-explicit-id
-msgid "Advanced"
-msgstr "Lanjutan"
-
-#: src/features/Landing/Price/PricePage.tsx:285
-#: src/features/Landing/Price/PricePage.tsx:307
-#. js-lingui-explicit-id
-msgid "Frequent users who need more value"
-msgstr "Pengguna yang sering membutuhkan lebih banyak nilai"
-
-#: src/features/Landing/Price/PricePage.tsx:303
-#. js-lingui-explicit-id
-msgid "Contact for pricing"
-msgstr "Hubungi untuk penentuan harga"
-
-#: src/features/Landing/Price/PricePage.tsx:308
-#. js-lingui-explicit-id
-msgid "What I can do for you:"
-msgstr "Apa yang bisa saya lakukan untuk Anda:"
-
-#: src/features/Landing/Price/PricePage.tsx:311
-#. js-lingui-explicit-id
-msgid "Custom features"
-msgstr "Fitur khusus"
-
-#: src/features/Landing/Price/PricePage.tsx:312
-#. js-lingui-explicit-id
-msgid "Tailor AI interactions to fit your needs"
-msgstr "Sesuaikan interaksi AI agar sesuai dengan kebutuhan Anda"
-
-#: src/features/Landing/Price/PricePage.tsx:316
-#. js-lingui-explicit-id
-msgid "Discounted AI Usage"
-msgstr "Diskon Penggunaan AI"
-
-#: src/features/Landing/Price/PricePage.tsx:317
-#. js-lingui-explicit-id
-msgid "Get cheaper AI hours for bulk use"
-msgstr "Dapatkan jam AI yang lebih murah untuk penggunaan massal"
-
-#: src/features/Landing/Price/PricePage.tsx:321
-#. Button title for contact me for advance pricing
-#. js-lingui-explicit-id
-msgid "Contact me"
-msgstr "Hubungi saya"
-
-#: src/features/Landing/Price/PricePage.tsx:359
-#. js-lingui-explicit-id
-msgid "How FluencyPal Pricing Works"
-msgstr "Bagaimana Cara Kerja Harga FluencyPal"
-
-#: src/features/Landing/Price/PricePage.tsx:370
-#. js-lingui-explicit-id
-msgid ""
-"Our AI tutor runs on a simple credit system—you only pay for the time and "
-"resources\n"
-"                you actually use."
-msgstr ""
-"Tutor AI kami berjalan pada sistem kredit yang sederhana—Anda hanya "
-"membayar untuk waktu dan sumber daya\n"
-"                yang benar-benar Anda gunakan."
-
-#: src/features/Landing/Price/PricePage.tsx:411
-#. js-lingui-explicit-id
-msgid "Start Free"
-msgstr "Mulai Gratis"
-
-#: src/features/Landing/Price/PricePage.tsx:414
-#. js-lingui-explicit-id
-msgid "Start Free – Get 5 in credits when you sign up."
-msgstr "Start Gratis – Dapatkan 5 dalam kredit saat Anda mendaftar."
-
-#: src/features/Landing/Price/PricePage.tsx:454
-#. js-lingui-explicit-id
-msgid "Use as You Go"
-msgstr "Gunakan Sesuai Kebutuhan"
-
-#: src/features/Landing/Price/PricePage.tsx:457
-#. js-lingui-explicit-id
-msgid ""
-"Each AI conversation session consumes credits based on duration and "
-"complexity."
-msgstr ""
-"Setiap sesi percakapan AI mengkonsumsi kredit berdasarkan durasi dan "
-"kompleksitas."
-
-#: src/features/Landing/Price/PricePage.tsx:500
-#. js-lingui-explicit-id
-msgid "Add More Credits"
-msgstr "Tambahkan Lebih Banyak Kredit"
-
-#: src/features/Landing/Price/PricePage.tsx:503
-#. js-lingui-explicit-id
-msgid "Add more credits whenever you need them."
-msgstr "Tambahkan lebih banyak kredit kapan pun Anda membutuhkannya."
-
-#: src/features/Landing/Price/PricePage.tsx:541
-#. js-lingui-explicit-id
-msgid "Why Pay-as-You-Go is Better Than Subscriptions"
-msgstr "Mengapa Bayar Sesuai Penggunaan Lebih Baik Daripada Langganan"
-
-#: src/features/Landing/Price/PricePage.tsx:669
-#. js-lingui-explicit-id
-msgid "Traditional Subscription"
-msgstr "Langganan Tradisional"
-
-#: src/features/Landing/Price/PricePage.tsx:679
-#. js-lingui-explicit-id
-msgid "Pay Only for What You Use"
-msgstr "Bayar Hanya Untuk Apa yang Anda Gunakan"
-
-#: src/features/Landing/Price/PricePage.tsx:706
-#. js-lingui-explicit-id
-msgid "No, fixed cost"
-msgstr "Tidak, biaya tetap"
-
-#: src/features/Landing/Price/PricePage.tsx:712
-#. js-lingui-explicit-id
-msgid "Full Access Anytime"
-msgstr "Akses Penuh Kapan Saja"
-
-#: src/features/Landing/Price/PricePage.tsx:743
-#. js-lingui-explicit-id
-msgid "No Monthly Fees"
-msgstr "Tidak Ada Biaya Bulanan"
-
-#: src/features/Landing/Price/PricePage.tsx:769
-#. js-lingui-explicit-id
-msgid "No, recurring charge"
-msgstr "Tidak, biaya berulang"
-
-#: src/features/Landing/Price/PricePage.tsx:775
-#. js-lingui-explicit-id
-msgid "Pause Anytime"
-msgstr "Pause Kapan Saja"
-
-#: src/features/Landing/Price/PricePage.tsx:813
-#. js-lingui-explicit-id
-msgid "Try FluencyPal for Free"
-msgstr "Coba FluencyPal secara Gratis"
-
-#: src/features/Landing/Price/PricePage.tsx:868
-#. js-lingui-explicit-id
-msgid "Is a credit card required for the trial?"
-msgstr "Apakah kartu kredit diperlukan untuk masa percobaan?"
-
-#: src/features/Landing/Price/PricePage.tsx:871
-#. js-lingui-explicit-id
-msgid "No. A credit card is not required to start the trial."
-msgstr "Tidak. Kartu kredit tidak diperlukan untuk memulai uji coba."
-
-#: src/features/Landing/Price/PricePage.tsx:879
-#. js-lingui-explicit-id
-msgid "Can I try FluencyPal before subscribing?"
-msgstr "Apakah saya dapat mencoba FluencyPal sebelum berlangganan?"
-
-#: src/features/Landing/Price/PricePage.tsx:882
-#. js-lingui-explicit-id
-msgid ""
-"Yes. You get a free 3-day trial to explore all features. You won’t be "
-"charged until you decide to subscribe."
-msgstr ""
-"Ya. Anda mendapatkan uji coba gratis selama 3 hari untuk menjelajahi semua "
-"fitur. Anda tidak akan dikenakan biaya sampai Anda memutuskan untuk "
-"berlangganan."
-
-#: src/features/Landing/Price/PricePage.tsx:892
-#. js-lingui-explicit-id
-msgid "What’s included in my subscription?"
-msgstr "Apa yang termasuk dalam langganan saya?"
-
-#: src/features/Landing/Price/PricePage.tsx:895
-#. js-lingui-explicit-id
-msgid ""
-"Real-time AI speaking practice, scenario role-plays, listening drills, "
-"grammar and vocabulary exercises, personalized feedback, and progress "
-"analytics."
-msgstr ""
-"Praktek berbicara AI secara real-time, peran permainan skenario, latihan "
-"mendengarkan, latihan tata bahasa dan kosakata, umpan balik yang "
-"dipersonalisasi, dan analitik kemajuan."
-
-#: src/features/Landing/Price/PricePage.tsx:905
-#. js-lingui-explicit-id
-msgid "Can I cancel anytime?"
-msgstr "Bisakah saya membatalkan kapan saja?"
-
-#: src/features/Landing/Price/PricePage.tsx:908
-#. js-lingui-explicit-id
-msgid ""
-"Yes. You can cancel from your account settings at any time. You’ll keep "
-"access until the end of the current billing period."
-msgstr ""
-"Ya. Anda bisa membatalkan dari pengaturan akun Anda kapan saja. Anda akan "
-"tetap memiliki akses hingga akhir periode penagihan saat ini."
-
-#: src/features/Landing/Price/PricePage.tsx:918
-#. js-lingui-explicit-id
-msgid "Do you offer refunds?"
-msgstr "Apakah Anda menawarkan pengembalian dana?"
-
-#: src/features/Landing/Price/PricePage.tsx:921
-#. js-lingui-explicit-id
-msgid ""
-"We don’t issue partial refunds for unused time. After canceling, your "
-"subscription remains active until the period ends."
-msgstr ""
-"Kami tidak mengeluarkan pengembalian dana sebagian untuk waktu yang tidak "
-"digunakan. Setelah membatalkan, langganan Anda tetap aktif hingga periode "
-"berakhir."
-
-#: src/features/Landing/Price/PricePage.tsx:931
-#. js-lingui-explicit-id
-msgid "Will my learning progress be saved if I cancel?"
-msgstr "Apakah kemajuan belajar saya akan disimpan jika saya membatalkan?"
-
-#: src/features/Landing/Price/PricePage.tsx:934
-#. js-lingui-explicit-id
-msgid ""
-"Yes. Your history, achievements, and personalized settings are tied to your "
-"account and remain available when you return."
-msgstr ""
-"Ya. Riwayat, pencapaian, dan pengaturan pribadi Anda terkait dengan akun "
-"Anda dan tetap tersedia saat Anda kembali."
-
-#: src/features/Landing/Price/PricePage.tsx:944
-#. js-lingui-explicit-id
-msgid "Can I buy credits in bulk?"
-msgstr "Bisakah saya membeli kredit dalam jumlah besar?"
-
-#: src/features/Landing/Price/PricePage.tsx:948
-#. js-lingui-explicit-id
-msgid ""
-"Yes! We offer discounts when purchasing larger credit packages. Just "
-"contact me before you buy and I'll give you a discount."
-msgstr ""
-"Ya! Kami menawarkan diskon saat membeli paket kredit yang lebih besar. "
-"Cukup hubungi saya sebelum Anda membeli dan saya akan memberi Anda diskon."
-
-#: src/features/Header/NeedHelpModal.tsx:152
-#: src/features/Landing/Price/PricePage.tsx:958
-#. js-lingui-explicit-id
-msgid "Contacts:"
-msgstr "Kontak:"
-
 #: src/features/Landing/Contact/ContactsPage.tsx:104
 #. js-lingui-explicit-id
 msgid ""
@@ -3507,47 +3495,6 @@ msgid ""
 msgstr ""
 "Silakan hubungi saya jika Anda memiliki pertanyaan atau masukan. Saya "
 "selalu senang untuk membantu!"
-
-#: src/features/Header/PaymentHistoryModal.tsx:21
-#. js-lingui-explicit-id
-msgid "Trial balance"
-msgstr "Neraca percobaan"
-
-#: src/features/Header/PaymentHistoryModal.tsx:22
-#. js-lingui-explicit-id
-msgid "Payment"
-msgstr "Pembayaran"
-
-#: src/features/Header/PaymentHistoryModal.tsx:23
-#. js-lingui-explicit-id
-msgid "Gift"
-msgstr "Hadiah"
-
-#: src/features/Header/PaymentHistoryModal.tsx:24
-#. js-lingui-explicit-id
-msgid "Subscription (1 month)"
-msgstr "Berlangganan (1 bulan)"
-
-#: src/features/Header/PaymentHistoryModal.tsx:25
-#. js-lingui-explicit-id
-msgid "Trial days"
-msgstr "Hari percobaan"
-
-#: src/features/Header/HeaderStatic.tsx:17
-#. js-lingui-explicit-id
-msgid "Role-Plays"
-msgstr "Peran-Permain"
-
-#: src/features/Header/HeaderStatic.tsx:20
-#. js-lingui-explicit-id
-msgid "Sign In"
-msgstr "Masuk"
-
-#: src/features/Header/HeaderPractice.tsx:410
-#: src/features/Header/HeaderStatic.tsx:22
-#. js-lingui-explicit-id
-msgid "Need Help?"
-msgstr "Butuh Bantuan?"
 
 #: src/features/Header/NeedHelpModal.tsx:69
 #: src/features/Header/NeedHelpModal.tsx:212
@@ -3644,6 +3591,12 @@ msgstr "Kembali"
 msgid "Payment history"
 msgstr "Riwayat pembayaran"
 
+#: src/features/Header/HeaderPractice.tsx:410
+#: src/features/Header/HeaderStatic.tsx:22
+#. js-lingui-explicit-id
+msgid "Need Help?"
+msgstr "Butuh Bantuan?"
+
 #: src/features/Header/ContactMessageModal.tsx:37
 #. js-lingui-explicit-id
 msgid "Failed to send feedback. Please try again later."
@@ -3664,6 +3617,16 @@ msgstr "Mengirim..."
 #. js-lingui-explicit-id
 msgid "Send"
 msgstr "Kirim"
+
+#: src/features/Header/HeaderStatic.tsx:17
+#. js-lingui-explicit-id
+msgid "Role-Plays"
+msgstr "Peran-Permain"
+
+#: src/features/Header/HeaderStatic.tsx:20
+#. js-lingui-explicit-id
+msgid "Sign In"
+msgstr "Masuk"
 
 #: src/features/Goal/GoalQuestions.tsx:62
 #. js-lingui-explicit-id
@@ -4214,32 +4177,30 @@ msgstr ""
 msgid "Nice!"
 msgstr "Bagus!"
 
-#: src/features/Game/GameOnboarding.tsx:187
-#: src/features/Game/GamePage.tsx:24
+#: src/features/Header/PaymentHistoryModal.tsx:21
 #. js-lingui-explicit-id
-msgid "Play"
-msgstr "Main"
+msgid "Trial balance"
+msgstr "Neraca percobaan"
 
-#: src/features/Game/GamePage.tsx:91
+#: src/features/Header/PaymentHistoryModal.tsx:22
 #. js-lingui-explicit-id
-msgid "Rating:"
-msgstr "Peringkat:"
+msgid "Payment"
+msgstr "Pembayaran"
 
-#: src/features/Game/GameBadge.tsx:82
-#: src/features/Game/GamePage.tsx:93
+#: src/features/Header/PaymentHistoryModal.tsx:23
 #. js-lingui-explicit-id
-msgid "Rank in the top 5 to get the app for free"
-msgstr "Masuk dalam 5 besar untuk mendapatkan aplikasi ini secara gratis"
+msgid "Gift"
+msgstr "Hadiah"
 
-#: src/features/Game/GamePage.tsx:108
+#: src/features/Header/PaymentHistoryModal.tsx:24
 #. js-lingui-explicit-id
-msgid "Global"
-msgstr "Global"
+msgid "Subscription (1 month)"
+msgstr "Berlangganan (1 bulan)"
 
-#: src/features/Game/GamePage.tsx:109
+#: src/features/Header/PaymentHistoryModal.tsx:25
 #. js-lingui-explicit-id
-msgid "Today"
-msgstr "Hari ini"
+msgid "Trial days"
+msgstr "Hari percobaan"
 
 #: src/features/Game/GameMyUsername.tsx:34
 #. js-lingui-explicit-id
@@ -4290,15 +4251,16 @@ msgstr "Mari pastikan Anda siap"
 msgid "Your Avatar:"
 msgstr "Avatar Anda:"
 
+#: src/features/Game/GameOnboarding.tsx:187
+#: src/features/Game/GamePage.tsx:24
+#. js-lingui-explicit-id
+msgid "Play"
+msgstr "Main"
+
 #: src/features/Game/GameNativeLanguageSelector.tsx:49
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "Bahasa Ibu Anda:"
-
-#: src/features/Game/GameBadge.tsx:70
-#. js-lingui-explicit-id
-msgid "Play and Learn"
-msgstr "Bermain dan Belajar"
 
 #: src/features/Game/GameMyAvatar.tsx:26
 #. js-lingui-explicit-id
@@ -4310,10 +4272,37 @@ msgstr "Avatar"
 msgid "Select your game avatar"
 msgstr "Pilih avatar permainan Anda"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
+#: src/features/Game/GamePage.tsx:91
 #. js-lingui-explicit-id
-msgid "Discuss the topic"
-msgstr "Diskusikan topik tersebut"
+msgid "Rating:"
+msgstr "Peringkat:"
+
+#: src/features/Game/GameBadge.tsx:82
+#: src/features/Game/GamePage.tsx:93
+#. js-lingui-explicit-id
+msgid "Rank in the top 5 to get the app for free"
+msgstr "Masuk dalam 5 besar untuk mendapatkan aplikasi ini secara gratis"
+
+#: src/features/Game/GamePage.tsx:108
+#. js-lingui-explicit-id
+msgid "Global"
+msgstr "Global"
+
+#: src/features/Game/GamePage.tsx:109
+#. js-lingui-explicit-id
+msgid "Today"
+msgstr "Hari ini"
+
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
+#. js-lingui-explicit-id
+msgid "Translate the word"
+msgstr "Terjemahkan kata"
+
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
+#. js-lingui-explicit-id
+msgid "Describe the image"
+msgstr "Jelaskan gambar"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:183
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
@@ -4328,11 +4317,6 @@ msgstr "Kirim jawaban"
 msgid "Record an answer"
 msgstr "Rekam sebuah jawaban"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:281
-#. js-lingui-explicit-id
-msgid "Describe the topic in your own words..."
-msgstr "Jelaskan topik dengan kata-kata Anda sendiri..."
-
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:276
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:302
 #. js-lingui-explicit-id
@@ -4343,6 +4327,16 @@ msgstr "Kesalahan:"
 #. js-lingui-explicit-id
 msgid "Form a sentence"
 msgstr "Bentuk sebuah kalimat"
+
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
+#. js-lingui-explicit-id
+msgid "Discuss the topic"
+msgstr "Diskusikan topik tersebut"
+
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:281
+#. js-lingui-explicit-id
+msgid "Describe the topic in your own words..."
+msgstr "Jelaskan topik dengan kata-kata Anda sendiri..."
 
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
 #. js-lingui-explicit-id
@@ -4366,36 +4360,10 @@ msgstr "Kirim"
 msgid "Error:"
 msgstr "Kesalahan:"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
+#: src/features/Game/GameBadge.tsx:70
 #. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "Jelaskan gambar"
-
-#: src/features/Game/DailyQuestion/QuestionComment.tsx:121
-#. js-lingui-explicit-id
-msgid "This is your answer"
-msgstr "Ini jawaban Anda"
-
-#: src/features/Game/DailyQuestion/QuestionComment.tsx:139
-#. js-lingui-explicit-id
-msgid "published"
-msgstr "diterbitkan"
-
-#: src/features/Game/DailyQuestion/QuestionComment.tsx:139
-#. js-lingui-explicit-id
-msgid "not published"
-msgstr "belum diterbitkan"
-
-#: src/features/Game/DailyQuestion/QuestionComment.tsx:193
-#. js-lingui-explicit-id
-msgid "Unpublish"
-msgstr "Tidak Dipublikasikan"
-
-#: src/features/Game/DailyQuestion/QuestionComment.tsx:193
-#. js-lingui-explicit-id
-msgid "Publish an answer"
-msgstr "Terbitkan jawaban"
+msgid "Play and Learn"
+msgstr "Bermain dan Belajar"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:236
 #. js-lingui-explicit-id
@@ -4431,6 +4399,26 @@ msgstr "Lihat Jawaban"
 msgid "Answer Now"
 msgstr "Jawab Sekarang"
 
+#: src/features/Dashboard/SelectLanguage.tsx:143
+#. js-lingui-explicit-id
+msgid "Almost there!"
+msgstr "Hampir di sana!"
+
+#: src/features/Dashboard/SelectLanguage.tsx:158
+#. js-lingui-explicit-id
+msgid "Select languages"
+msgstr "Pilih bahasa"
+
+#: src/features/Dashboard/SelectLanguage.tsx:204
+#. js-lingui-explicit-id
+msgid "Learn"
+msgstr "Belajar"
+
+#: src/features/Dashboard/SelectLanguage.tsx:231
+#. js-lingui-explicit-id
+msgid "Page"
+msgstr "Halaman"
+
 #: src/features/Dashboard/WordsToLearn.tsx:32
 #. js-lingui-explicit-id
 msgid "New words to practice."
@@ -4447,48 +4435,10 @@ msgstr "Mulai latihan"
 msgid "I know all of them"
 msgstr "Saya tahu semua dari mereka"
 
-#: src/features/Dashboard/TasksCard.tsx:39
-#. js-lingui-explicit-id
-msgid "Daily Tasks"
-msgstr "Tugas Harian"
-
-#: src/features/Dashboard/TasksCard.tsx:51
-#. js-lingui-explicit-id
-msgid "Rule of the day"
-msgstr "Aturan hari ini"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:152
-#: src/features/Dashboard/TasksCard.tsx:52
-#. js-lingui-explicit-id
-msgid "Get a personal grammar rule to learn"
-msgstr "Dapatkan aturan tata bahasa pribadi untuk dipelajari"
-
-#: src/features/Dashboard/TasksCard.tsx:56
-#: src/features/Dashboard/TasksCard.tsx:64
-#. js-lingui-explicit-id
-msgid "Complete previous tasks first"
-msgstr "Selesaikan tugas sebelumnya terlebih dahulu"
-
-#: src/features/Dashboard/TasksCard.tsx:61
-#. js-lingui-explicit-id
-msgid "New words"
-msgstr "Kata-kata baru"
-
-#: src/features/Dashboard/ConversationSelectCard.tsx:173
-#: src/features/Dashboard/TasksCard.tsx:62
-#. js-lingui-explicit-id
-msgid "Practice new vocabulary with the AI"
-msgstr "Latih kosakata baru dengan AI"
-
 #: src/features/Dashboard/RulesToLearn.tsx:36
 #. js-lingui-explicit-id
 msgid "New rule to practice."
 msgstr "Aturan baru untuk berlatih."
-
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "Terjemahkan kata"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:84
 #. js-lingui-explicit-id
@@ -4564,60 +4514,38 @@ msgstr ""
 "Untuk menghasilkan lebih banyak pelajaran, Anda perlu menyelesaikan "
 "setidaknya 3 pelajaran"
 
-#: src/features/Dashboard/HomeworkCard.tsx:21
+#: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
-msgid "Homework"
-msgstr "PR"
+msgid "Daily Tasks"
+msgstr "Tugas Harian"
 
-#: src/features/Dashboard/HomeworkCard.tsx:57
+#: src/features/Dashboard/TasksCard.tsx:51
 #. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "Tidak ada PR yang diberikan saat ini."
+msgid "Rule of the day"
+msgstr "Aturan hari ini"
 
-#: src/features/Dashboard/HomeworkCard.tsx:66
+#: src/features/Dashboard/ConversationSelectCard.tsx:152
+#: src/features/Dashboard/TasksCard.tsx:52
 #. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "Mulai percakapan untuk mendapatkan satu."
+msgid "Get a personal grammar rule to learn"
+msgstr "Dapatkan aturan tata bahasa pribadi untuk dipelajari"
 
-#: src/features/Dashboard/HomeworkCard.tsx:128
+#: src/features/Dashboard/TasksCard.tsx:56
+#: src/features/Dashboard/TasksCard.tsx:64
 #. js-lingui-explicit-id
-msgid "Skip"
-msgstr "Skip"
+msgid "Complete previous tasks first"
+msgstr "Selesaikan tugas sebelumnya terlebih dahulu"
 
-#: src/features/Dashboard/HomeworkCard.tsx:142
+#: src/features/Dashboard/TasksCard.tsx:61
 #. js-lingui-explicit-id
-msgid "Show all"
-msgstr "Tampilkan semua"
+msgid "New words"
+msgstr "Kata-kata baru"
 
-#: src/features/Dashboard/GoalCard.tsx:13
+#: src/features/Dashboard/ConversationSelectCard.tsx:173
+#: src/features/Dashboard/TasksCard.tsx:62
 #. js-lingui-explicit-id
-msgid "Set the goal of your learning"
-msgstr "Tetapkan tujuan pembelajaran Anda"
-
-#: src/features/Dashboard/GoalCard.tsx:28
-#. js-lingui-explicit-id
-msgid "Start | 5 min"
-msgstr "Mulai | 5 menit"
-
-#: src/features/Dashboard/SelectLanguage.tsx:143
-#. js-lingui-explicit-id
-msgid "Almost there!"
-msgstr "Hampir di sana!"
-
-#: src/features/Dashboard/SelectLanguage.tsx:158
-#. js-lingui-explicit-id
-msgid "Select languages"
-msgstr "Pilih bahasa"
-
-#: src/features/Dashboard/SelectLanguage.tsx:204
-#. js-lingui-explicit-id
-msgid "Learn"
-msgstr "Belajar"
-
-#: src/features/Dashboard/SelectLanguage.tsx:231
-#. js-lingui-explicit-id
-msgid "Page"
-msgstr "Halaman"
+msgid "Practice new vocabulary with the AI"
+msgstr "Latih kosakata baru dengan AI"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:110
 #. js-lingui-explicit-id
@@ -4666,6 +4594,81 @@ msgstr "Dapatkan aturan"
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "Perluas kosakata"
+
+#: src/features/Dashboard/GoalCard.tsx:13
+#. js-lingui-explicit-id
+msgid "Set the goal of your learning"
+msgstr "Tetapkan tujuan pembelajaran Anda"
+
+#: src/features/Dashboard/GoalCard.tsx:28
+#. js-lingui-explicit-id
+msgid "Start | 5 min"
+msgstr "Mulai | 5 menit"
+
+#: src/features/Dashboard/HomeworkCard.tsx:21
+#. js-lingui-explicit-id
+msgid "Homework"
+msgstr "PR"
+
+#: src/features/Dashboard/HomeworkCard.tsx:57
+#. js-lingui-explicit-id
+msgid "No homework assigned yet."
+msgstr "Tidak ada PR yang diberikan saat ini."
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "Mulai percakapan untuk mendapatkan satu."
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "Skip"
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "Tampilkan semua"
+
+#: src/features/Game/DailyQuestion/QuestionComment.tsx:121
+#. js-lingui-explicit-id
+msgid "This is your answer"
+msgstr "Ini jawaban Anda"
+
+#: src/features/Game/DailyQuestion/QuestionComment.tsx:139
+#. js-lingui-explicit-id
+msgid "published"
+msgstr "diterbitkan"
+
+#: src/features/Game/DailyQuestion/QuestionComment.tsx:139
+#. js-lingui-explicit-id
+msgid "not published"
+msgstr "belum diterbitkan"
+
+#: src/features/Game/DailyQuestion/QuestionComment.tsx:193
+#. js-lingui-explicit-id
+msgid "Unpublish"
+msgstr "Tidak Dipublikasikan"
+
+#: src/features/Game/DailyQuestion/QuestionComment.tsx:193
+#. js-lingui-explicit-id
+msgid "Publish an answer"
+msgstr "Terbitkan jawaban"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
+#. js-lingui-explicit-id
+msgid "Progress Calendar"
+msgstr "Kalender Kemajuan"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
+#. js-lingui-explicit-id
+msgid "Less"
+msgstr "Kurang"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
+#. js-lingui-explicit-id
+msgid "More"
+msgstr "Lebih"
 
 #: src/features/Dashboard/BrainCard.tsx:138
 #. js-lingui-explicit-id
@@ -4769,46 +4772,63 @@ msgstr "Mempersiapkan otak"
 msgid "Upload language skills directly to your brain"
 msgstr "Unggah keterampilan bahasa langsung ke otak Anda"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
-#. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "Kalender Kemajuan"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "Kurang"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "Lebih"
-
 #: src/features/Conversation/useConversationsAnalysis.ts:89
 #: src/features/Conversation/useConversationsAnalysis.ts:132
 #. js-lingui-explicit-id
 msgid "Error analyzing conversation"
 msgstr "Kesalahan dalam menganalisis percakapan"
 
-#: src/features/Conversation/ConversationError.tsx:34
+#: src/features/Conversation/ConversationPage.tsx:134
 #. js-lingui-explicit-id
-msgid "Oops! Something went wrong"
-msgstr "Ups! Ada yang salah"
+msgid "Loading Goal..."
+msgstr "Memuat Tujuan..."
 
-#: src/features/Conversation/ConversationError.tsx:37
+#: src/features/Conversation/ConversationPage.tsx:158
 #. js-lingui-explicit-id
-msgid "Please refresh the page and try one more time"
-msgstr "Silakan segarkan halaman dan coba sekali lagi"
+msgid "Crafting new words..."
+msgstr "Menciptakan kata-kata baru..."
 
-#: src/features/Conversation/ConversationError.tsx:41
+#: src/features/Conversation/ConversationPage.tsx:162
 #. js-lingui-explicit-id
-msgid "Notification was sent to the dev team. Sorry for that..."
-msgstr "Notifikasi telah dikirim ke tim pengembang. Maaf atas hal ini..."
+msgid "Crafting new rule..."
+msgstr "Menyusun aturan baru..."
 
-#: src/features/Conversation/ConversationError.tsx:51
+#: src/features/Conversation/AliasGamePanel.tsx:122
 #. js-lingui-explicit-id
-msgid "Reload page"
-msgstr "Muat ulang halaman"
+msgid "Describe these words:"
+msgstr "Jelaskan kata-kata ini:"
+
+#: src/features/Conversation/AliasGamePanel.tsx:171
+#. js-lingui-explicit-id
+msgid "More options"
+msgstr "Lebih banyak pilihan"
+
+#: src/features/Conversation/AliasGamePanel.tsx:180
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "Kata yang ditebak:"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:33
+#. js-lingui-explicit-id
+msgid "Ready?"
+msgstr "Siap?"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Next, please allow access to the microphone to communicate with the AI."
+msgstr ""
+"Selanjutnya, silakan izinkan akses ke mikrofon untuk berkomunikasi dengan "
+"AI."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:69
+#. js-lingui-explicit-id
+msgid "Yes, I am ready"
+msgstr "Ya, saya siap"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:73
+#. js-lingui-explicit-id
+msgid "No"
+msgstr "Tidak"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:360
 #. js-lingui-explicit-id
@@ -4980,67 +5000,10 @@ msgstr "Tulis ulang"
 msgid "Cancel recording"
 msgstr "Batalkan perekaman"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1497
+#: src/features/Conversation/ConversationCanvas2.tsx:1502
 #. js-lingui-explicit-id
-msgid "Low balance"
-msgstr "Saldo rendah"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1505
-#. js-lingui-explicit-id
-msgid "Top up"
-msgstr "Isi ulang"
-
-#: src/features/Conversation/ConversationPage.tsx:134
-#. js-lingui-explicit-id
-msgid "Loading Goal..."
-msgstr "Memuat Tujuan..."
-
-#: src/features/Conversation/ConversationPage.tsx:158
-#. js-lingui-explicit-id
-msgid "Crafting new words..."
-msgstr "Menciptakan kata-kata baru..."
-
-#: src/features/Conversation/ConversationPage.tsx:162
-#. js-lingui-explicit-id
-msgid "Crafting new rule..."
-msgstr "Menyusun aturan baru..."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:33
-#. js-lingui-explicit-id
-msgid "Ready?"
-msgstr "Siap?"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Next, please allow access to the microphone to communicate with the AI."
-msgstr ""
-"Selanjutnya, silakan izinkan akses ke mikrofon untuk berkomunikasi dengan "
-"AI."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:69
-#. js-lingui-explicit-id
-msgid "Yes, I am ready"
-msgstr "Ya, saya siap"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:73
-#. js-lingui-explicit-id
-msgid "No"
-msgstr "Tidak"
-
-#: src/features/Conversation/AliasGamePanel.tsx:122
-#. js-lingui-explicit-id
-msgid "Describe these words:"
-msgstr "Jelaskan kata-kata ini:"
-
-#: src/features/Conversation/AliasGamePanel.tsx:171
-#. js-lingui-explicit-id
-msgid "More options"
-msgstr "Lebih banyak pilihan"
-
-#: src/features/Conversation/AliasGamePanel.tsx:180
-#. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "Kata yang ditebak:"
+msgid "Subscribe"
+msgstr "Berlangganan"
 
 #: src/features/Blog/ListBlogIntro.tsx:66
 #. js-lingui-explicit-id
@@ -5055,625 +5018,6 @@ msgid ""
 msgstr ""
 "Dapatkan inspirasi dan pelajari tren terbaru dalam pembelajaran bahasa, "
 "pengajaran, dan teknologi."
-
-#: src/features/Blog/BlogOnePage.tsx:141
-#. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "Lihat semua pos"
-
-#: src/features/Blog/BlogOnePage.tsx:255
-#. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "Skenario Role-Play untuk berlatih"
-
-#: src/features/Blog/BlogOnePage.tsx:286
-#. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "Anda bisa mencoba AI dalam aksi sekarang"
-
-#: src/features/Blog/BlogOnePage.tsx:287
-#. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "Coba gratis"
-
-#: src/features/Blog/ListBlog.tsx:131
-#. js-lingui-explicit-id
-msgid "No blogs found"
-msgstr "Tidak ada blog yang ditemukan"
-
-#: src/features/Blog/BlogCard.tsx:168
-#. js-lingui-explicit-id
-msgid "Read more"
-msgstr "Baca lebih lanjut"
-
-#: src/features/Auth/WebViewWall.tsx:38
-#. js-lingui-explicit-id
-msgid "Failed to copy text. Please copy it manually."
-msgstr "Gagal menyalin teks. Silakan salin secara manual."
-
-#: src/features/Auth/WebViewWall.tsx:65
-#. js-lingui-explicit-id
-msgid "Please tap the menu ⋮ and choose"
-msgstr "Silakan ketuk menu ⋮ dan pilih"
-
-#: src/features/Auth/WebViewWall.tsx:67
-#. js-lingui-explicit-id
-msgid "'Open in Chrome' to continue."
-msgstr "'Buka di Chrome' untuk melanjutkan."
-
-#: src/features/Auth/WebViewWall.tsx:71
-#. js-lingui-explicit-id
-msgid "Please tap the menu ••• and choose"
-msgstr "Silakan tekan menu ••• dan pilih"
-
-#: src/features/Auth/WebViewWall.tsx:73
-#. js-lingui-explicit-id
-msgid "'Open in external Browser' to continue."
-msgstr "\"Buka di Browser Eksternal\" untuk melanjutkan."
-
-#: src/features/Auth/WebViewWall.tsx:124
-#. js-lingui-explicit-id
-msgid "Copy page link"
-msgstr "Salin tautan halaman"
-
-#: src/features/Auth/WebViewWall.tsx:165
-#. js-lingui-explicit-id
-msgid "AI speaking partner"
-msgstr "Mitra berbicara AI"
-
-#: src/features/Auth/WebViewWall.tsx:168
-#. js-lingui-explicit-id
-msgid "Let's choose how to start practicing"
-msgstr "Mari pilih cara untuk mulai berlatih"
-
-#: src/features/Auth/WebViewWall.tsx:187
-#. js-lingui-explicit-id
-msgid "Open in Telegram"
-msgstr "Buka di Telegram"
-
-#: src/features/Auth/WebViewWall.tsx:198
-#. js-lingui-explicit-id
-msgid "Open in Browser"
-msgstr "Buka di Peramban"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
-#. js-lingui-explicit-id
-msgid "At the end, we’ll share a valuable tool for realistic interview practice."
-msgstr ""
-"Pada akhirnya, kami akan membagikan alat berharga untuk latihan wawancara "
-"yang realistis."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
-#. js-lingui-explicit-id
-msgid "Introduction: Small Talk with the Interviewer"
-msgstr "Pengantar: Percakapan Ringan dengan Pewawancara"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
-#. js-lingui-explicit-id
-msgid ""
-"The first few minutes of an interview are often dedicated to casual "
-"conversation — also known as 'SmallTalk'. Recruiters use this time to "
-"create a friendly atmosphere and get to know you a bit better."
-msgstr ""
-"Beberapa menit pertama dalam sebuah wawancara seringkali didedikasikan "
-"untuk percakapan santai — juga dikenal sebagai 'SmallTalk'. Perekrut "
-"menggunakan waktu ini untuk menciptakan suasana yang ramah dan mengenal "
-"Anda sedikit lebih baik."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
-#. js-lingui-explicit-id
-msgid "Don’t skip small talk"
-msgstr "Jangan lewatkan obrolan ringan"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
-#. js-lingui-explicit-id
-msgid ""
-"— it’s important to engage in this short conversation before jumping into "
-"professional topics. Here are some useful English phrases to start off the "
-"interview:"
-msgstr ""
-"— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
-"profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
-"untuk memulai wawancara:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
-#. js-lingui-explicit-id
-msgid "English Phrases"
-msgstr "Frasa Bahasa Inggris"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
-#. js-lingui-explicit-id
-msgid "A polite and professional greeting."
-msgstr "Sebuah sapaan yang sopan dan profesional."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
-#. js-lingui-explicit-id
-msgid "Expressing gratitude for the opportunity."
-msgstr "Menyampaikan rasa terima kasih atas kesempatan."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
-#. js-lingui-explicit-id
-msgid "A standard reply to “How are you?”"
-msgstr "Sebuah jawaban standar untuk \"Apa kabar?\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
-#. js-lingui-explicit-id
-msgid "A friendly compliment to break the ice."
-msgstr "Sebuah pujian ramah untuk memecahkan kebekuan."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
-#. js-lingui-explicit-id
-msgid ""
-"Smile, shake hands (if culturally appropriate), and speak in a friendly "
-"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
-"might say:"
-msgstr ""
-"Senyum, berjabat tangan (jika sesuai budaya), dan bicara dengan nada yang "
-"ramah. Jika pewawancara bertanya, \"Apakah Anda memiliki masalah dalam "
-"menemukan kami?\" Anda mungkin bisa menjawab:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
-#. js-lingui-explicit-id
-msgid ""
-"Short answers with a positive attitude show that you’re easy to talk to and "
-"open to dialogue."
-msgstr ""
-"Jawaban singkat dengan sikap positif menunjukkan bahwa Anda mudah diajak "
-"bicara dan terbuka untuk dialog."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
-#. js-lingui-explicit-id
-msgid "Self-Introduction: Talking About Yourself"
-msgstr "Perkenalan Diri: Berbicara Tentang Diri Sendiri"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
-#. js-lingui-explicit-id
-msgid "After the greeting, you'll usually hear:"
-msgstr "Setelah ucapan selamat, biasanya Anda akan mendengar:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
-#. js-lingui-explicit-id
-msgid ""
-"This is your chance to introduce your experience and skills. Don’t list "
-"your full biography — focus on the highlights of your professional "
-"background. A good answer structure in English might look like this:"
-msgstr ""
-"Ini adalah kesempatan Anda untuk memperkenalkan pengalaman dan keterampilan "
-"Anda. Jangan daftarkan biografi lengkap Anda — fokus pada sorotan latar "
-"belakang profesional Anda. Struktur jawaban yang baik dalam bahasa Inggris "
-"mungkin terlihat seperti ini:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
-#. js-lingui-explicit-id
-msgid "For example:"
-msgstr "Sebagai contoh:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
-#. js-lingui-explicit-id
-msgid ""
-"Keep your answer focused: current or last position, a key achievement, and "
-"your interest in the company. Practice your self-introduction so you sound "
-msgstr ""
-"Pertahankan jawaban Anda agar tetap fokus: posisi terkini atau terakhir, "
-"prestasi utama, dan minat Anda pada perusahaan. Latihlah perkenalan diri "
-"Anda agar terdengar"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
-#. js-lingui-explicit-id
-msgid "natural and not robotic"
-msgstr "alamiah dan bukan robotik"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
-#. js-lingui-explicit-id
-msgid "Useful Phrases for Self-Introduction"
-msgstr "Frasa Berguna untuk Perkenalan Diri"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
-#. js-lingui-explicit-id
-msgid ""
-"Use these templates to craft your own story. Don’t forget to mention an "
-"achievement:"
-msgstr ""
-"Gunakan templat ini untuk membuat cerita Anda sendiri. Jangan lupa untuk "
-"menyebutkan sebuah pencapaian:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
-#. js-lingui-explicit-id
-msgid "This shows results and makes you stand out."
-msgstr "Ini menunjukkan hasil dan membuat Anda menonjol."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
-#. js-lingui-explicit-id
-msgid "Answering Typical Interview Questions"
-msgstr "Menjawab Pertanyaan Wawancara yang Umum"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
-#. js-lingui-explicit-id
-msgid ""
-"Recruiters ask a variety of standard questions to understand your "
-"motivation and personality. Preparing answers in advance will help you stay "
-"calm and articulate. Focus on showing enthusiasm and confidence in your "
-"skills. Let’s look at some common questions and how to answer them:"
-msgstr ""
-"Perekrut bertanya berbagai pertanyaan standar untuk memahami motivasi dan "
-"kepribadian Anda. Mempersiapkan jawaban di awal akan membantu Anda tetap "
-"tenang dan berbicara jelas. Fokuslah untuk menampilkan antusiasme dan "
-"kepercayaan diri dalam keterampilan Anda. Mari kita lihat beberapa "
-"pertanyaan umum dan cara menjawabnya:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
-#. js-lingui-explicit-id
-msgid "Show knowledge of the company and genuine interest. For example:"
-msgstr "Tunjukkan pengetahuan tentang perusahaan dan minat yang tulus. Misalnya:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
-#. js-lingui-explicit-id
-msgid "Highlight your strengths relevant to the role:"
-msgstr "Soroti kekuatan Anda yang relevan dengan peran:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
-#. js-lingui-explicit-id
-msgid "Show your long-term goals:"
-msgstr "Tunjukkan tujuan jangka panjang Anda:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
-#. js-lingui-explicit-id
-msgid "Other common questions include:"
-msgstr "Pertanyaan umum lainnya meliputi:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
-#. js-lingui-explicit-id
-msgid "Prepare short, honest, and positive answers with real-life examples."
-msgstr ""
-"Siapkan jawaban yang singkat, jujur, dan positif dengan contoh-contoh dari "
-"kehidupan nyata."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
-#. js-lingui-explicit-id
-msgid "If you don’t understand a question, don’t panic — ask politely:"
-msgstr ""
-"Jika Anda tidak mengerti sebuah pertanyaan, jangan panik — tanyakan dengan "
-"sopan:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
-#. js-lingui-explicit-id
-msgid "Talking About Strengths and Weaknesses"
-msgstr "Membicarakan Kekuatan dan Kelemahan"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
-#. js-lingui-explicit-id
-msgid ""
-"Most interviews include the classic “strengths and weaknesses” question. "
-"It’s especially important to handle this well in English."
-msgstr ""
-"Sebagian besar wawancara mencakup pertanyaan klasik \"kekuatan dan "
-"kelemahan\". Sangat penting untuk menangani ini dengan baik dalam bahasa "
-"Inggris."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
-#. js-lingui-explicit-id
-msgid "Strengths:"
-msgstr "Kekuatan:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
-#. js-lingui-explicit-id
-msgid ""
-"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
-"examples. For instance:"
-msgstr ""
-"Pilih 2-3 kualitas kunci yang relevan untuk pekerjaan tersebut. Hindari "
-"klise dan berikan contoh. Misalnya:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
-#. js-lingui-explicit-id
-msgid "Other useful strengths:"
-msgstr "Kekuatan lain yang berguna:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
-#. js-lingui-explicit-id
-msgid "Weaknesses:"
-msgstr "Kelemahan:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
-#. js-lingui-explicit-id
-msgid ""
-"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
-"mention a minor issue and how you’re working to improve it:"
-msgstr ""
-"Jadilah jujur tetapi diplomatik. Jangan katakan \"Saya tidak memiliki "
-"kelemahan.\" Sebaliknya, sebutkan masalah kecil dan bagaimana Anda sedang "
-"berusaha untuk memperbaikinya:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
-#. js-lingui-explicit-id
-msgid "This approach shows self-awareness and growth."
-msgstr "Pendekatan ini menunjukkan kesadaran diri dan pertumbuhan."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
-#. js-lingui-explicit-id
-msgid "Questions to Ask the Employer"
-msgstr "Pertanyaan untuk Ditanyakan kepada Pemberi Kerja"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
-#. js-lingui-explicit-id
-msgid "At the end of the interview, you’ll usually be asked:"
-msgstr "Di akhir wawancara, biasanya Anda akan ditanyakan:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
-#. js-lingui-explicit-id
-msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
-msgstr "Jangan pernah berkata \"tidak.\" Siapkan 2-3 pertanyaan cerdas di muka:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
-#. js-lingui-explicit-id
-msgid "Always respond politely:"
-msgstr "Selalu beri tanggapan dengan sopan:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
-#. js-lingui-explicit-id
-msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
-msgstr ""
-"Tunjukkan rasa ingin tahu dan keterlibatan. Jangan lupa untuk berterima "
-"kasih kepada mereka atas jawabannya:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
-#. js-lingui-explicit-id
-msgid "Ending the Interview: Final Phrases"
-msgstr "Mengakhiri Wawancara: Frase Terakhir"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
-#. js-lingui-explicit-id
-msgid ""
-"Wrap up the interview with gratitude and confidence. Use these phrases to "
-"end on a positive note:"
-msgstr ""
-"Akhiri wawancara dengan rasa syukur dan percaya diri. Gunakan frasa-frasa "
-"ini untuk berakhir dengan catatan positif:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
-#. js-lingui-explicit-id
-msgid ""
-"If it was an in-person interview, shake hands and maintain eye contact. If "
-"it was online, say goodbye with a friendly tone. Consider sending a "
-"thank-you email the next day:"
-msgstr ""
-"Jika itu adalah wawancara langsung, berjabat tangan dan jaga kontak mata. "
-"Jika itu online, ucapkan selamat tinggal dengan nada yang ramah. "
-"Pertimbangkan untuk mengirim email ucapan terima kasih pada hari berikutnya:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
-#. js-lingui-explicit-id
-msgid "Common Mistakes to Avoid"
-msgstr "Kesalahan Umum yang Harus Dihindari"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
-#. js-lingui-explicit-id
-msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
-msgstr ""
-"Melewatkan pembicaraan kecil — Ikuti petunjuk pewawancara dan bersikap "
-"ramah."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
-#. js-lingui-explicit-id
-msgid ""
-"Saying “I don’t know” directly — Instead say: “That’s an interesting "
-"question. Let me think for a moment.”"
-msgstr ""
-"Mengatakan \"Saya tidak tahu\" secara langsung — Sebaliknya katakan: \"Itu "
-"pertanyaan yang menarik. Biarkan saya berpikir sejenak.\""
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
-#. js-lingui-explicit-id
-msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
-msgstr ""
-"Kekurangan sopan santun — Gunakan *tolong*, *terima kasih*, *maaf* "
-"sebagaimana diperlukan."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
-#. js-lingui-explicit-id
-msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
-msgstr ""
-"Jawaban yang terlalu dihapal — Jangan hafal; siapkan ide dan bicara secara "
-"alami."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
-#. js-lingui-explicit-id
-msgid ""
-"Negative comments — Never badmouth past employers. Stay neutral and "
-"constructive."
-msgstr ""
-"Komentar negatif — Jangan pernah memburuk-burukkan mantan majikan. Tetap "
-"netral dan konstruktif."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
-#. js-lingui-explicit-id
-msgid ""
-"Showing no interest — Ask questions and react positively to company "
-"information."
-msgstr ""
-"Menunjukkan tidak ada minat — Ajukan pertanyaan dan reaksi positif terhadap "
-"informasi perusahaan."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
-#. js-lingui-explicit-id
-msgid ""
-"Avoiding these mistakes will make you look more professional and increase "
-"your chances of success."
-msgstr ""
-"Menghindari kesalahan-kesalahan ini akan membuat Anda terlihat lebih "
-"profesional dan meningkatkan peluang Anda untuk sukses."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
-#. js-lingui-explicit-id
-msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
-msgstr "Latihan Wawancara di FluencyPal: Jalanmu Menuju Kepercayaan Diri"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
-#. js-lingui-explicit-id
-msgid ""
-"Knowing useful phrases and tips is great, but the most important step is "
-"real-world practice. The best way to prepare is to do a mock interview. "
-"That’s exactly what the interactive role-play on FluencyPal offers."
-msgstr ""
-"Mengetahui frasa-frasa berguna dan tips adalah hal yang penting, tetapi "
-"langkah paling penting adalah praktek di dunia nyata. Cara terbaik untuk "
-"mempersiapkan diri adalah dengan melakukan wawancara simulasi. Itulah yang "
-"ditawarkan oleh role-play interaktif di FluencyPal."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
-#. js-lingui-explicit-id
-msgid ""
-"On this platform, you can upload your resume, specify your desired job, and "
-"go through a realistic interview with an AI interviewer."
-msgstr ""
-"Di platform ini, Anda dapat mengunggah resume Anda, menentukan pekerjaan "
-"yang diinginkan, dan melalui wawancara yang realistis dengan pewawancara AI."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
-#. js-lingui-explicit-id
-msgid "How it works:"
-msgstr "Bagaimana cara kerjanya:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
-#. js-lingui-explicit-id
-msgid ""
-"You answer questions just like in a real interview and get instant "
-"feedback. The AI adapts the questions to your profession and experience. "
-"This kind of training helps you identify weak spots, work on your "
-"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
-"notice your speech becoming more fluent and your answers more polished with "
-"each attempt."
-msgstr ""
-"Anda menjawab pertanyaan layaknya dalam wawancara sungguhan dan mendapatkan "
-"umpan balik seketika. AI menyesuaikan pertanyaan berdasarkan profesi dan "
-"pengalaman Anda. Pelatihan semacam ini membantu Anda mengidentifikasi "
-"kelemahan, berlatih pengucapan, dan belajar cara menangani pertanyaan tak "
-"terduga dengan tenang. Anda akan menyadari bahasa Anda menjadi lebih fasih "
-"dan jawaban Anda semakin terasah setiap usaha Anda."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
-#. js-lingui-explicit-id
-msgid "Career benefit:"
-msgstr "Manfaat karir:"
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
-#. js-lingui-explicit-id
-msgid ""
-"After several sessions, you’ll walk into your real interview much more "
-"confident. You’ll know what phrases to use, how to present yourself, and "
-"how to respond professionally. It can significantly boost your chances of "
-"landing your dream job."
-msgstr ""
-"Setelah beberapa sesi, Anda akan masuk ke wawancara sesungguhnya dengan "
-"lebih percaya diri. Anda akan tahu frasa apa yang harus digunakan, "
-"bagaimana cara mempresentasikan diri, dan bagaimana cara merespon secara "
-"profesional. Ini dapat meningkatkan peluang Anda secara signifikan untuk "
-"mendapatkan pekerjaan impian Anda."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
-#. js-lingui-explicit-id
-msgid ""
-"Preparing for an interview in English takes time, but it pays off. Use the "
-"tips from this article, practice with FluencyPal’s interview simulator, and "
-"walk into your next job interview with confidence."
-msgstr ""
-"Bersiap untuk wawancara dalam bahasa Inggris memerlukan waktu, tetapi ini "
-"sangat berharga. Gunakan tips dari artikel ini, berlatihlah dengan "
-"simulator wawancara FluencyPal, dan masuklah ke wawancara pekerjaan "
-"berikutnya dengan percaya diri."
-
-#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
-#. js-lingui-explicit-id
-msgid "Good preparation today means career success tomorrow."
-msgstr "Persiapan baik hari ini berarti sukses karir di hari esok."
-
-#: src/features/Auth/SignInForm.tsx:27
-#. js-lingui-explicit-id
-msgid "Open personal plan"
-msgstr "Buka rencana pribadi"
-
-#: src/features/Auth/SignInForm.tsx:29
-#: src/features/Auth/SignInForm.tsx:30
-#. js-lingui-explicit-id
-msgid "Sing in"
-msgstr "Masuk"
-
-#: src/features/Auth/AuthWall.tsx:277
-msgid "So you can keep your progress"
-msgstr "Jadi Anda dapat menyimpan kemajuan Anda"
-
-#: src/features/Auth/SignInForm.tsx:35
-#: src/features/Auth/SignInForm.tsx:36
-#. js-lingui-explicit-id
-msgid "So you can save your progress"
-msgstr ""
-"\n"
-"Jadi Anda dapat menyimpan kemajuan Anda\n"
-
-#: src/features/Auth/AuthWall.tsx:131
-#. js-lingui-explicit-id
-msgid "Daily conversations without fear of judgment"
-msgstr "Percakapan sehari-hari tanpa rasa takut dihakimi"
-
-#: src/features/Auth/AuthWall.tsx:135
-#. js-lingui-explicit-id
-msgid "Corrections when you get stuck"
-msgstr "Koreksi ketika Anda mengalami kebuntuan"
-
-#: src/features/Auth/AuthWall.tsx:140
-#. js-lingui-explicit-id
-msgid "Personalized plan tailored to your goals"
-msgstr "Rencana personal yang disesuaikan dengan tujuan Anda"
-
-#: src/features/Auth/AuthWall.tsx:145
-#. js-lingui-explicit-id
-msgid "Grammar corrections to boost your confidence"
-msgstr "Koreksi tata bahasa untuk meningkatkan kepercayaan diri Anda"
-
-#: src/features/Auth/AuthWall.tsx:149
-#. js-lingui-explicit-id
-msgid "Learn useful words so you never go blank mid-sentence"
-msgstr "Belajar kata-kata berguna agar kamu tidak pernah kosong di tengah kalimat"
-
-#: src/features/Auth/AuthWall.tsx:154
-#. js-lingui-explicit-id
-msgid "Practice real-life situations in advance"
-msgstr "Latih situasi kehidupan nyata sebelumnya"
-
-#: src/features/Auth/AuthWall.tsx:208
-#. js-lingui-explicit-id
-msgid "We process your voice using AI"
-msgstr "Kami memproses suara Anda menggunakan AI"
-
-#: src/features/Auth/AuthWall.tsx:213
-#. js-lingui-explicit-id
-msgid "Your transcripts are securely stored in our service"
-msgstr "Transkrip Anda disimpan dengan aman di layanan kami"
-
-#: src/features/Auth/AuthWall.tsx:218
-#. js-lingui-explicit-id
-msgid "You can delete your personal data anytime"
-msgstr "Anda dapat menghapus data pribadi Anda kapan saja"
-
-#: src/features/Auth/AuthWall.tsx:223
-#. js-lingui-explicit-id
-msgid "We use cookies to enhance your experience"
-msgstr "Kami menggunakan cookie untuk meningkatkan pengalaman Anda"
-
-#: src/features/Auth/AuthWall.tsx:250
-#. js-lingui-explicit-id
-msgid "Sign in with Google"
-msgstr "Masuk dengan Google"
-
-#: src/features/Auth/AuthWall.tsx:289
-#. js-lingui-explicit-id
-msgid "3 days of full access for free"
-msgstr "3 hari akses penuh secara gratis"
-
-#: src/features/Auth/AuthWall.tsx:299
-#. js-lingui-explicit-id
-msgid "No ads, no spam"
-msgstr "Tidak ada iklan, tidak ada spam"
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -7224,6 +6568,641 @@ msgstr "Pengembangan Profesional"
 msgid "All Blogs"
 msgstr "Semua Blog"
 
+#: src/features/Conversation/ConversationError.tsx:34
+#. js-lingui-explicit-id
+msgid "Oops! Something went wrong"
+msgstr "Ups! Ada yang salah"
+
+#: src/features/Conversation/ConversationError.tsx:37
+#. js-lingui-explicit-id
+msgid "Please refresh the page and try one more time"
+msgstr "Silakan segarkan halaman dan coba sekali lagi"
+
+#: src/features/Conversation/ConversationError.tsx:41
+#. js-lingui-explicit-id
+msgid "Notification was sent to the dev team. Sorry for that..."
+msgstr "Notifikasi telah dikirim ke tim pengembang. Maaf atas hal ini..."
+
+#: src/features/Conversation/ConversationError.tsx:51
+#. js-lingui-explicit-id
+msgid "Reload page"
+msgstr "Muat ulang halaman"
+
+#: src/features/Blog/BlogCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Read more"
+msgstr "Baca lebih lanjut"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
+#. js-lingui-explicit-id
+msgid "At the end, we’ll share a valuable tool for realistic interview practice."
+msgstr ""
+"Pada akhirnya, kami akan membagikan alat berharga untuk latihan wawancara "
+"yang realistis."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:21
+#. js-lingui-explicit-id
+msgid "Introduction: Small Talk with the Interviewer"
+msgstr "Pengantar: Percakapan Ringan dengan Pewawancara"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:25
+#. js-lingui-explicit-id
+msgid ""
+"The first few minutes of an interview are often dedicated to casual "
+"conversation — also known as 'SmallTalk'. Recruiters use this time to "
+"create a friendly atmosphere and get to know you a bit better."
+msgstr ""
+"Beberapa menit pertama dalam sebuah wawancara seringkali didedikasikan "
+"untuk percakapan santai — juga dikenal sebagai 'SmallTalk'. Perekrut "
+"menggunakan waktu ini untuk menciptakan suasana yang ramah dan mengenal "
+"Anda sedikit lebih baik."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:35
+#. js-lingui-explicit-id
+msgid "Don’t skip small talk"
+msgstr "Jangan lewatkan obrolan ringan"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:36
+#. js-lingui-explicit-id
+msgid ""
+"— it’s important to engage in this short conversation before jumping into "
+"professional topics. Here are some useful English phrases to start off the "
+"interview:"
+msgstr ""
+"— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
+"profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
+"untuk memulai wawancara:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:43
+#. js-lingui-explicit-id
+msgid "English Phrases"
+msgstr "Frasa Bahasa Inggris"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:48
+#. js-lingui-explicit-id
+msgid "A polite and professional greeting."
+msgstr "Sebuah sapaan yang sopan dan profesional."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:54
+#. js-lingui-explicit-id
+msgid "Expressing gratitude for the opportunity."
+msgstr "Menyampaikan rasa terima kasih atas kesempatan."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
+#. js-lingui-explicit-id
+msgid "A standard reply to “How are you?”"
+msgstr "Sebuah jawaban standar untuk \"Apa kabar?\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
+#. js-lingui-explicit-id
+msgid "A friendly compliment to break the ice."
+msgstr "Sebuah pujian ramah untuk memecahkan kebekuan."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"Smile, shake hands (if culturally appropriate), and speak in a friendly "
+"tone. If the interviewer asks, “Did you have any trouble finding us?” you "
+"might say:"
+msgstr ""
+"Senyum, berjabat tangan (jika sesuai budaya), dan bicara dengan nada yang "
+"ramah. Jika pewawancara bertanya, \"Apakah Anda memiliki masalah dalam "
+"menemukan kami?\" Anda mungkin bisa menjawab:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:82
+#. js-lingui-explicit-id
+msgid ""
+"Short answers with a positive attitude show that you’re easy to talk to and "
+"open to dialogue."
+msgstr ""
+"Jawaban singkat dengan sikap positif menunjukkan bahwa Anda mudah diajak "
+"bicara dan terbuka untuk dialog."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:90
+#. js-lingui-explicit-id
+msgid "Self-Introduction: Talking About Yourself"
+msgstr "Perkenalan Diri: Berbicara Tentang Diri Sendiri"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:94
+#. js-lingui-explicit-id
+msgid "After the greeting, you'll usually hear:"
+msgstr "Setelah ucapan selamat, biasanya Anda akan mendengar:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:95
+#. js-lingui-explicit-id
+msgid ""
+"This is your chance to introduce your experience and skills. Don’t list "
+"your full biography — focus on the highlights of your professional "
+"background. A good answer structure in English might look like this:"
+msgstr ""
+"Ini adalah kesempatan Anda untuk memperkenalkan pengalaman dan keterampilan "
+"Anda. Jangan daftarkan biografi lengkap Anda — fokus pada sorotan latar "
+"belakang profesional Anda. Struktur jawaban yang baik dalam bahasa Inggris "
+"mungkin terlihat seperti ini:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:108
+#. js-lingui-explicit-id
+msgid "For example:"
+msgstr "Sebagai contoh:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:128
+#. js-lingui-explicit-id
+msgid ""
+"Keep your answer focused: current or last position, a key achievement, and "
+"your interest in the company. Practice your self-introduction so you sound "
+msgstr ""
+"Pertahankan jawaban Anda agar tetap fokus: posisi terkini atau terakhir, "
+"prestasi utama, dan minat Anda pada perusahaan. Latihlah perkenalan diri "
+"Anda agar terdengar"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:131
+#. js-lingui-explicit-id
+msgid "natural and not robotic"
+msgstr "alamiah dan bukan robotik"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:137
+#. js-lingui-explicit-id
+msgid "Useful Phrases for Self-Introduction"
+msgstr "Frasa Berguna untuk Perkenalan Diri"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:156
+#. js-lingui-explicit-id
+msgid ""
+"Use these templates to craft your own story. Don’t forget to mention an "
+"achievement:"
+msgstr ""
+"Gunakan templat ini untuk membuat cerita Anda sendiri. Jangan lupa untuk "
+"menyebutkan sebuah pencapaian:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:161
+#. js-lingui-explicit-id
+msgid "This shows results and makes you stand out."
+msgstr "Ini menunjukkan hasil dan membuat Anda menonjol."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:165
+#. js-lingui-explicit-id
+msgid "Answering Typical Interview Questions"
+msgstr "Menjawab Pertanyaan Wawancara yang Umum"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:169
+#. js-lingui-explicit-id
+msgid ""
+"Recruiters ask a variety of standard questions to understand your "
+"motivation and personality. Preparing answers in advance will help you stay "
+"calm and articulate. Focus on showing enthusiasm and confidence in your "
+"skills. Let’s look at some common questions and how to answer them:"
+msgstr ""
+"Perekrut bertanya berbagai pertanyaan standar untuk memahami motivasi dan "
+"kepribadian Anda. Mempersiapkan jawaban di awal akan membantu Anda tetap "
+"tenang dan berbicara jelas. Fokuslah untuk menampilkan antusiasme dan "
+"kepercayaan diri dalam keterampilan Anda. Mari kita lihat beberapa "
+"pertanyaan umum dan cara menjawabnya:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:183
+#. js-lingui-explicit-id
+msgid "Show knowledge of the company and genuine interest. For example:"
+msgstr "Tunjukkan pengetahuan tentang perusahaan dan minat yang tulus. Misalnya:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:200
+#. js-lingui-explicit-id
+msgid "Highlight your strengths relevant to the role:"
+msgstr "Soroti kekuatan Anda yang relevan dengan peran:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:217
+#. js-lingui-explicit-id
+msgid "Show your long-term goals:"
+msgstr "Tunjukkan tujuan jangka panjang Anda:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:230
+#. js-lingui-explicit-id
+msgid "Other common questions include:"
+msgstr "Pertanyaan umum lainnya meliputi:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:233
+#. js-lingui-explicit-id
+msgid "Prepare short, honest, and positive answers with real-life examples."
+msgstr ""
+"Siapkan jawaban yang singkat, jujur, dan positif dengan contoh-contoh dari "
+"kehidupan nyata."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:237
+#. js-lingui-explicit-id
+msgid "If you don’t understand a question, don’t panic — ask politely:"
+msgstr ""
+"Jika Anda tidak mengerti sebuah pertanyaan, jangan panik — tanyakan dengan "
+"sopan:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:245
+#. js-lingui-explicit-id
+msgid "Talking About Strengths and Weaknesses"
+msgstr "Membicarakan Kekuatan dan Kelemahan"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:249
+#. js-lingui-explicit-id
+msgid ""
+"Most interviews include the classic “strengths and weaknesses” question. "
+"It’s especially important to handle this well in English."
+msgstr ""
+"Sebagian besar wawancara mencakup pertanyaan klasik \"kekuatan dan "
+"kelemahan\". Sangat penting untuk menangani ini dengan baik dalam bahasa "
+"Inggris."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:260
+#. js-lingui-explicit-id
+msgid "Strengths:"
+msgstr "Kekuatan:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:263
+#. js-lingui-explicit-id
+msgid ""
+"Pick 2–3 key qualities relevant to the job. Avoid clichés and provide "
+"examples. For instance:"
+msgstr ""
+"Pilih 2-3 kualitas kunci yang relevan untuk pekerjaan tersebut. Hindari "
+"klise dan berikan contoh. Misalnya:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:273
+#. js-lingui-explicit-id
+msgid "Other useful strengths:"
+msgstr "Kekuatan lain yang berguna:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:283
+#. js-lingui-explicit-id
+msgid "Weaknesses:"
+msgstr "Kelemahan:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:286
+#. js-lingui-explicit-id
+msgid ""
+"Be honest but diplomatic. Don’t say “I have no weaknesses.” Instead, "
+"mention a minor issue and how you’re working to improve it:"
+msgstr ""
+"Jadilah jujur tetapi diplomatik. Jangan katakan \"Saya tidak memiliki "
+"kelemahan.\" Sebaliknya, sebutkan masalah kecil dan bagaimana Anda sedang "
+"berusaha untuk memperbaikinya:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:302
+#. js-lingui-explicit-id
+msgid "This approach shows self-awareness and growth."
+msgstr "Pendekatan ini menunjukkan kesadaran diri dan pertumbuhan."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
+#. js-lingui-explicit-id
+msgid "Questions to Ask the Employer"
+msgstr "Pertanyaan untuk Ditanyakan kepada Pemberi Kerja"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:309
+#. js-lingui-explicit-id
+msgid "At the end of the interview, you’ll usually be asked:"
+msgstr "Di akhir wawancara, biasanya Anda akan ditanyakan:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
+#. js-lingui-explicit-id
+msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
+msgstr "Jangan pernah berkata \"tidak.\" Siapkan 2-3 pertanyaan cerdas di muka:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:329
+#. js-lingui-explicit-id
+msgid "Always respond politely:"
+msgstr "Selalu beri tanggapan dengan sopan:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:333
+#. js-lingui-explicit-id
+msgid "Show curiosity and engagement. Don’t forget to thank them for their answers:"
+msgstr ""
+"Tunjukkan rasa ingin tahu dan keterlibatan. Jangan lupa untuk berterima "
+"kasih kepada mereka atas jawabannya:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
+#. js-lingui-explicit-id
+msgid "Ending the Interview: Final Phrases"
+msgstr "Mengakhiri Wawancara: Frase Terakhir"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:345
+#. js-lingui-explicit-id
+msgid ""
+"Wrap up the interview with gratitude and confidence. Use these phrases to "
+"end on a positive note:"
+msgstr ""
+"Akhiri wawancara dengan rasa syukur dan percaya diri. Gunakan frasa-frasa "
+"ini untuk berakhir dengan catatan positif:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:366
+#. js-lingui-explicit-id
+msgid ""
+"If it was an in-person interview, shake hands and maintain eye contact. If "
+"it was online, say goodbye with a friendly tone. Consider sending a "
+"thank-you email the next day:"
+msgstr ""
+"Jika itu adalah wawancara langsung, berjabat tangan dan jaga kontak mata. "
+"Jika itu online, ucapkan selamat tinggal dengan nada yang ramah. "
+"Pertimbangkan untuk mengirim email ucapan terima kasih pada hari berikutnya:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:377
+#. js-lingui-explicit-id
+msgid "Common Mistakes to Avoid"
+msgstr "Kesalahan Umum yang Harus Dihindari"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:383
+#. js-lingui-explicit-id
+msgid "Skipping small talk — Follow the interviewer’s lead and be friendly."
+msgstr ""
+"Melewatkan pembicaraan kecil — Ikuti petunjuk pewawancara dan bersikap "
+"ramah."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:390
+#. js-lingui-explicit-id
+msgid ""
+"Saying “I don’t know” directly — Instead say: “That’s an interesting "
+"question. Let me think for a moment.”"
+msgstr ""
+"Mengatakan \"Saya tidak tahu\" secara langsung — Sebaliknya katakan: \"Itu "
+"pertanyaan yang menarik. Biarkan saya berpikir sejenak.\""
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:397
+#. js-lingui-explicit-id
+msgid "Lack of politeness — Use *please*, *thank you*, *excuse me* as needed."
+msgstr ""
+"Kekurangan sopan santun — Gunakan *tolong*, *terima kasih*, *maaf* "
+"sebagaimana diperlukan."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
+#. js-lingui-explicit-id
+msgid "Over-rehearsed answers — Don’t memorize; prepare ideas and speak naturally."
+msgstr ""
+"Jawaban yang terlalu dihapal — Jangan hafal; siapkan ide dan bicara secara "
+"alami."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:411
+#. js-lingui-explicit-id
+msgid ""
+"Negative comments — Never badmouth past employers. Stay neutral and "
+"constructive."
+msgstr ""
+"Komentar negatif — Jangan pernah memburuk-burukkan mantan majikan. Tetap "
+"netral dan konstruktif."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:418
+#. js-lingui-explicit-id
+msgid ""
+"Showing no interest — Ask questions and react positively to company "
+"information."
+msgstr ""
+"Menunjukkan tidak ada minat — Ajukan pertanyaan dan reaksi positif terhadap "
+"informasi perusahaan."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:426
+#. js-lingui-explicit-id
+msgid ""
+"Avoiding these mistakes will make you look more professional and increase "
+"your chances of success."
+msgstr ""
+"Menghindari kesalahan-kesalahan ini akan membuat Anda terlihat lebih "
+"profesional dan meningkatkan peluang Anda untuk sukses."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:432
+#. js-lingui-explicit-id
+msgid "Practice Interviews on FluencyPal: Your Path to Confidence"
+msgstr "Latihan Wawancara di FluencyPal: Jalanmu Menuju Kepercayaan Diri"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:436
+#. js-lingui-explicit-id
+msgid ""
+"Knowing useful phrases and tips is great, but the most important step is "
+"real-world practice. The best way to prepare is to do a mock interview. "
+"That’s exactly what the interactive role-play on FluencyPal offers."
+msgstr ""
+"Mengetahui frasa-frasa berguna dan tips adalah hal yang penting, tetapi "
+"langkah paling penting adalah praktek di dunia nyata. Cara terbaik untuk "
+"mempersiapkan diri adalah dengan melakukan wawancara simulasi. Itulah yang "
+"ditawarkan oleh role-play interaktif di FluencyPal."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
+#. js-lingui-explicit-id
+msgid ""
+"On this platform, you can upload your resume, specify your desired job, and "
+"go through a realistic interview with an AI interviewer."
+msgstr ""
+"Di platform ini, Anda dapat mengunggah resume Anda, menentukan pekerjaan "
+"yang diinginkan, dan melalui wawancara yang realistis dengan pewawancara AI."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
+#. js-lingui-explicit-id
+msgid "How it works:"
+msgstr "Bagaimana cara kerjanya:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:453
+#. js-lingui-explicit-id
+msgid ""
+"You answer questions just like in a real interview and get instant "
+"feedback. The AI adapts the questions to your profession and experience. "
+"This kind of training helps you identify weak spots, work on your "
+"pronunciation, and learn how to handle unexpected questions calmly. You’ll "
+"notice your speech becoming more fluent and your answers more polished with "
+"each attempt."
+msgstr ""
+"Anda menjawab pertanyaan layaknya dalam wawancara sungguhan dan mendapatkan "
+"umpan balik seketika. AI menyesuaikan pertanyaan berdasarkan profesi dan "
+"pengalaman Anda. Pelatihan semacam ini membantu Anda mengidentifikasi "
+"kelemahan, berlatih pengucapan, dan belajar cara menangani pertanyaan tak "
+"terduga dengan tenang. Anda akan menyadari bahasa Anda menjadi lebih fasih "
+"dan jawaban Anda semakin terasah setiap usaha Anda."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:463
+#. js-lingui-explicit-id
+msgid "Career benefit:"
+msgstr "Manfaat karir:"
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:464
+#. js-lingui-explicit-id
+msgid ""
+"After several sessions, you’ll walk into your real interview much more "
+"confident. You’ll know what phrases to use, how to present yourself, and "
+"how to respond professionally. It can significantly boost your chances of "
+"landing your dream job."
+msgstr ""
+"Setelah beberapa sesi, Anda akan masuk ke wawancara sesungguhnya dengan "
+"lebih percaya diri. Anda akan tahu frasa apa yang harus digunakan, "
+"bagaimana cara mempresentasikan diri, dan bagaimana cara merespon secara "
+"profesional. Ini dapat meningkatkan peluang Anda secara signifikan untuk "
+"mendapatkan pekerjaan impian Anda."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:474
+#. js-lingui-explicit-id
+msgid ""
+"Preparing for an interview in English takes time, but it pays off. Use the "
+"tips from this article, practice with FluencyPal’s interview simulator, and "
+"walk into your next job interview with confidence."
+msgstr ""
+"Bersiap untuk wawancara dalam bahasa Inggris memerlukan waktu, tetapi ini "
+"sangat berharga. Gunakan tips dari artikel ini, berlatihlah dengan "
+"simulator wawancara FluencyPal, dan masuklah ke wawancara pekerjaan "
+"berikutnya dengan percaya diri."
+
+#: src/features/Blog/Articles/phrases-for-an-interview.tsx:478
+#. js-lingui-explicit-id
+msgid "Good preparation today means career success tomorrow."
+msgstr "Persiapan baik hari ini berarti sukses karir di hari esok."
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "Lihat semua pos"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "Skenario Role-Play untuk berlatih"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "Anda bisa mencoba AI dalam aksi sekarang"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "Coba gratis"
+
+#: src/features/Auth/WebViewWall.tsx:38
+#. js-lingui-explicit-id
+msgid "Failed to copy text. Please copy it manually."
+msgstr "Gagal menyalin teks. Silakan salin secara manual."
+
+#: src/features/Auth/WebViewWall.tsx:65
+#. js-lingui-explicit-id
+msgid "Please tap the menu ⋮ and choose"
+msgstr "Silakan ketuk menu ⋮ dan pilih"
+
+#: src/features/Auth/WebViewWall.tsx:67
+#. js-lingui-explicit-id
+msgid "'Open in Chrome' to continue."
+msgstr "'Buka di Chrome' untuk melanjutkan."
+
+#: src/features/Auth/WebViewWall.tsx:71
+#. js-lingui-explicit-id
+msgid "Please tap the menu ••• and choose"
+msgstr "Silakan tekan menu ••• dan pilih"
+
+#: src/features/Auth/WebViewWall.tsx:73
+#. js-lingui-explicit-id
+msgid "'Open in external Browser' to continue."
+msgstr "\"Buka di Browser Eksternal\" untuk melanjutkan."
+
+#: src/features/Auth/WebViewWall.tsx:124
+#. js-lingui-explicit-id
+msgid "Copy page link"
+msgstr "Salin tautan halaman"
+
+#: src/features/Auth/WebViewWall.tsx:165
+#. js-lingui-explicit-id
+msgid "AI speaking partner"
+msgstr "Mitra berbicara AI"
+
+#: src/features/Auth/WebViewWall.tsx:168
+#. js-lingui-explicit-id
+msgid "Let's choose how to start practicing"
+msgstr "Mari pilih cara untuk mulai berlatih"
+
+#: src/features/Auth/WebViewWall.tsx:187
+#. js-lingui-explicit-id
+msgid "Open in Telegram"
+msgstr "Buka di Telegram"
+
+#: src/features/Auth/WebViewWall.tsx:198
+#. js-lingui-explicit-id
+msgid "Open in Browser"
+msgstr "Buka di Peramban"
+
+#: src/features/Auth/SignInForm.tsx:27
+#. js-lingui-explicit-id
+msgid "Open personal plan"
+msgstr "Buka rencana pribadi"
+
+#: src/features/Auth/SignInForm.tsx:29
+#: src/features/Auth/SignInForm.tsx:30
+#. js-lingui-explicit-id
+msgid "Sing in"
+msgstr "Masuk"
+
+#: src/features/Auth/SignInForm.tsx:35
+#: src/features/Auth/SignInForm.tsx:36
+#. js-lingui-explicit-id
+msgid "So you can save your progress"
+msgstr ""
+"\n"
+"Jadi Anda dapat menyimpan kemajuan Anda\n"
+
+#: src/features/Blog/ListBlog.tsx:131
+#. js-lingui-explicit-id
+msgid "No blogs found"
+msgstr "Tidak ada blog yang ditemukan"
+
+#: src/features/Auth/AuthWall.tsx:131
+#. js-lingui-explicit-id
+msgid "Daily conversations without fear of judgment"
+msgstr "Percakapan sehari-hari tanpa rasa takut dihakimi"
+
+#: src/features/Auth/AuthWall.tsx:135
+#. js-lingui-explicit-id
+msgid "Corrections when you get stuck"
+msgstr "Koreksi ketika Anda mengalami kebuntuan"
+
+#: src/features/Auth/AuthWall.tsx:140
+#. js-lingui-explicit-id
+msgid "Personalized plan tailored to your goals"
+msgstr "Rencana personal yang disesuaikan dengan tujuan Anda"
+
+#: src/features/Auth/AuthWall.tsx:145
+#. js-lingui-explicit-id
+msgid "Grammar corrections to boost your confidence"
+msgstr "Koreksi tata bahasa untuk meningkatkan kepercayaan diri Anda"
+
+#: src/features/Auth/AuthWall.tsx:149
+#. js-lingui-explicit-id
+msgid "Learn useful words so you never go blank mid-sentence"
+msgstr "Belajar kata-kata berguna agar kamu tidak pernah kosong di tengah kalimat"
+
+#: src/features/Auth/AuthWall.tsx:154
+#. js-lingui-explicit-id
+msgid "Practice real-life situations in advance"
+msgstr "Latih situasi kehidupan nyata sebelumnya"
+
+#: src/features/Auth/AuthWall.tsx:208
+#. js-lingui-explicit-id
+msgid "We process your voice using AI"
+msgstr "Kami memproses suara Anda menggunakan AI"
+
+#: src/features/Auth/AuthWall.tsx:213
+#. js-lingui-explicit-id
+msgid "Your transcripts are securely stored in our service"
+msgstr "Transkrip Anda disimpan dengan aman di layanan kami"
+
+#: src/features/Auth/AuthWall.tsx:218
+#. js-lingui-explicit-id
+msgid "You can delete your personal data anytime"
+msgstr "Anda dapat menghapus data pribadi Anda kapan saja"
+
+#: src/features/Auth/AuthWall.tsx:223
+#. js-lingui-explicit-id
+msgid "We use cookies to enhance your experience"
+msgstr "Kami menggunakan cookie untuk meningkatkan pengalaman Anda"
+
+#: src/features/Auth/AuthWall.tsx:250
+#. js-lingui-explicit-id
+msgid "Sign in with Google"
+msgstr "Masuk dengan Google"
+
+#: src/features/Auth/AuthWall.tsx:289
+#. js-lingui-explicit-id
+msgid "3 days of full access for free"
+msgstr "3 hari akses penuh secara gratis"
+
+#: src/features/Auth/AuthWall.tsx:299
+#. js-lingui-explicit-id
+msgid "No ads, no spam"
+msgstr "Tidak ada iklan, tidak ada spam"
+
 #: src/features/Landing/PlanLandingBlock.tsx:429
 msgid "{countOfLanguages} languages to practice"
 msgstr "{countOfLanguages} bahasa untuk berlatih"
@@ -7309,3 +7288,61 @@ msgstr "Anda adalah <0>Pemimpin</0> dari {playersCount} pemain."
 #: src/features/Auth/AuthWall.tsx:118
 msgid "Your AI speaking partner"
 msgstr "Mitra bicara AI Anda"
+
+#: src/features/Landing/LandingPage.tsx:121
+#: src/features/Landing/Price/PricePage.tsx:112
+#. js-lingui-explicit-id
+#~ msgid "View Pricing"
+#~ msgstr "Lihat Harga"
+
+#: src/features/Landing/LandingPage.tsx:122
+#: src/features/Landing/Price/PricePage.tsx:113
+#. js-lingui-explicit-id
+#~ msgid "No Credit Card Needed"
+#~ msgstr "Tidak Perlu Kartu Kredit"
+
+#: src/features/Goal/GoalQuestions.tsx:1257
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:337
+#. js-lingui-explicit-id
+#~ msgid "The first 3 days are free"
+#~ msgstr "3 hari pertama gratis"
+
+#: src/features/Landing/Price/PricePage.tsx:110
+#. js-lingui-explicit-id
+#~ msgid "Open Dashboard"
+#~ msgstr "Buka Dasbor"
+
+#: src/features/Landing/Price/PricePage.tsx:150
+#. js-lingui-explicit-id
+#~ msgid "Trial"
+#~ msgstr "Percobaan"
+
+#: src/features/Landing/Price/PricePage.tsx:180
+#. js-lingui-explicit-id
+#~ msgid "3 days"
+#~ msgstr "3 hari"
+
+#: src/features/Landing/Price/PricePage.tsx:184
+#. js-lingui-explicit-id
+#~ msgid "Game mode and trial AI tutor access"
+#~ msgstr "Mode permainan dan akses percobaan tutor AI"
+
+#: src/features/Landing/Price/PricePage.tsx:189
+#. js-lingui-explicit-id
+#~ msgid "Game Mode"
+#~ msgstr "Mode Permainan"
+
+#: src/features/Landing/Price/PricePage.tsx:194
+#. js-lingui-explicit-id
+#~ msgid "3 days of AI tutor access"
+#~ msgstr "3 hari akses tutor AI"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1497
+#. js-lingui-explicit-id
+#~ msgid "Low balance"
+#~ msgstr "Saldo rendah"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1505
+#. js-lingui-explicit-id
+#~ msgid "Top up"
+#~ msgstr "Isi ulang"
