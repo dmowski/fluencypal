@@ -11,6 +11,7 @@ import { useWords } from "../Words/useWords";
 import { PhraseCorrection } from "./types";
 import { doc, setDoc } from "firebase/firestore";
 import { isGoodUserInput } from "./isGoodUserInput";
+import { DailyQuestion } from "../Game/DailyQuestion/types";
 
 interface AnalyzeUserMessageInput {
   previousBotMessage: string;
@@ -25,8 +26,23 @@ interface AnalyzeUserMessageOutput {
   newWords: string[];
 }
 
+interface AnalyzeDailyQuestionAnswerInput {
+  question: DailyQuestion;
+  userAnswer: string;
+}
+
+interface AnalyzeDailyQuestionAnswerOutput {
+  suggestedMessage: string;
+  sourceMessage: string;
+  newWords: string[];
+  rate: number | null;
+}
+
 interface CorrectionsContextType {
   analyzeUserMessage: (input: AnalyzeUserMessageInput) => Promise<AnalyzeUserMessageOutput>;
+  analyzeDailyQuestionAnswerMessage: (
+    input: AnalyzeDailyQuestionAnswerInput
+  ) => Promise<AnalyzeDailyQuestionAnswerOutput>;
   correctionStats: PhraseCorrection[];
 }
 
@@ -40,6 +56,54 @@ function useProvideCorrections(): CorrectionsContextType {
   const [correctionStats, loading] = useCollectionData(correctionStatsDocRef);
   const textAi = useTextAi();
   const words = useWords();
+
+  const analyzeDailyQuestionAnswerMessage = async (
+    input: AnalyzeDailyQuestionAnswerInput
+  ): Promise<AnalyzeDailyQuestionAnswerOutput> => {
+    try {
+      const newWordsStatsRequest = words.addWordsStatFromText(input.userAnswer);
+      const parsedResult = await textAi.generateJson<{
+        suggestedMessage: string;
+        rate: number;
+      }>({
+        systemMessage: `You are a helpful assistant that helps to improve student's answers.
+Student gives you an answer to a question, your role is to analyze it from the grammar prospective and suggest improved version of the answer.
+
+Return your result in JSON format.
+Structure of result: {
+"rate": number (1-10, where 10 is best),
+"suggestedMessage": string (use ${settings.fullLanguageName || "English"} language)
+}
+
+suggestedMessage - return improved message if need to improve, or return empty string if no improvement is needed.
+
+Return info in JSON format.
+Do not wrap answer with any wrappers like "answer": "...". Your response will be sent to JSON.parse() function.
+
+For context, here is the question: "${input.question.title}. ${input.question.description}".
+  `,
+        userMessage: input.userAnswer,
+        model: MODELS.gpt_4o,
+        attempts: 3,
+      });
+
+      const suggestedMessage = parsedResult ? (parsedResult?.suggestedMessage as string) || "" : "";
+      return {
+        suggestedMessage: suggestedMessage || input.userAnswer,
+        sourceMessage: input.userAnswer,
+        newWords: await newWordsStatsRequest,
+        rate: parsedResult.rate || null,
+      };
+    } catch (error) {
+      console.error("Error analyzing daily question answer message:", error);
+      return {
+        suggestedMessage: "",
+        sourceMessage: input.userAnswer,
+        newWords: [],
+        rate: null,
+      };
+    }
+  };
 
   const analyzeUserMessage = async (
     input: AnalyzeUserMessageInput
@@ -113,6 +177,7 @@ For context, here is the previous bot message: "${input.previousBotMessage}".
 
   return {
     analyzeUserMessage,
+    analyzeDailyQuestionAnswerMessage,
     correctionStats: correctionStats || [],
   };
 }

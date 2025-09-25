@@ -5,7 +5,16 @@ import { use, useEffect, useMemo, useState } from "react";
 import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
 import { IconTextList, RecordUserAudioAnswer } from "@/features/Goal/Quiz/QuizPage2";
-import { ArrowRight, Check, Eye, EyeOff, Languages, Lightbulb, Mic } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  Languages,
+  Lightbulb,
+  Mic,
+  Sparkle,
+  Sparkles,
+  Telescope,
+} from "lucide-react";
 import { getWordsCount } from "@/libs/words";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
@@ -69,6 +78,14 @@ export const DailyQuestionBadge = () => {
       createAnswer(newTranscript);
       return;
     }
+    const updates: Partial<DailyQuestionAnswer> = {
+      transcript: newTranscript,
+    };
+
+    if (!transcript) {
+      updates.aiSuggestion = null;
+    }
+
     updateTranscriptInDb(
       { transcript: newTranscript, isPublished: false },
       myAnswerData,
@@ -174,6 +191,7 @@ export const DailyQuestionBadge = () => {
   const correction = useCorrections();
   const [isLoadingAiSuggestion, setIsLoadingAiSuggestion] = useState(false);
   const aiSuggestion = myAnswerData?.aiSuggestion?.correctedMessage || "";
+  const aiSuggestionRate = myAnswerData?.aiSuggestion?.rate || null;
 
   const analyzeAnswer = async () => {
     if (
@@ -187,18 +205,17 @@ export const DailyQuestionBadge = () => {
 
     setIsLoadingAiSuggestion(true);
     console.log("Analyzing answer for daily question...");
-    const suggestion = await correction.analyzeUserMessage({
-      previousBotMessage: todaysQuestion.title,
-      message: transcript,
-      conversationId: "daily-question-" + todayIsoDate,
+    const suggestion = await correction.analyzeDailyQuestionAnswerMessage({
+      question: todaysQuestion,
+      userAnswer: transcript,
     });
-    console.log("AI suggestion for daily question:", suggestion);
 
     await updateTranscriptInDb(
       {
         aiSuggestion: {
+          rate: suggestion.rate || null,
           sourceMessage: transcript,
-          correctedMessage: suggestion.correctedMessage,
+          correctedMessage: suggestion.suggestedMessage,
         },
       },
       myAnswerData,
@@ -387,27 +404,58 @@ export const DailyQuestionBadge = () => {
                         gap: "12px",
                       }}
                     >
-                      <Typography
-                        variant="caption"
+                      <Stack
                         sx={{
-                          fontWeight: 600,
+                          flexDirection: "row",
+                          alignItems: "center",
+                          gap: "6px",
                         }}
                       >
-                        {i18n._("AI suggestion")}
-                      </Typography>
+                        {(aiSuggestionRate || 0) >= 8 && (
+                          <Stack
+                            sx={{
+                              padding: "7px",
+                              borderRadius: "50%",
+                              backgroundColor: "rgba(76, 175, 80, 0.9)",
+                            }}
+                          >
+                            <Sparkles color="#fff" size={"14px"} />
+                          </Stack>
+                        )}
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            opacity: 0.8,
+                          }}
+                          className={isLoadingAiSuggestion ? "loading-shimmer" : ""}
+                        >
+                          <b>{i18n._("Analysis")}</b>:{" "}
+                          {isLoadingAiSuggestion ? "Loading..." : `${aiSuggestionRate || 0}/10`}
+                          {aiSuggestionRate && <> {aiSuggestionRate >= 8 && i18n._("Great!")}</>}
+                        </Typography>
+                      </Stack>
 
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          opacity: 0.8,
-                        }}
-                        className={isLoadingAiSuggestion ? "loading-shimmer" : ""}
-                      >
-                        {aiSuggestion ||
-                          (transcript
-                            ? i18n._("Suggestion is loading...")
-                            : i18n._("Record your answer to see AI suggestion"))}
-                      </Typography>
+                      {(aiSuggestionRate || 0) < 8 && (
+                        <Stack
+                          sx={{
+                            gap: "8px",
+                          }}
+                        >
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              opacity: 0.8,
+                            }}
+                            className={isLoadingAiSuggestion ? "loading-shimmer" : ""}
+                          >
+                            <b>{i18n._("Suggestion")}</b>:{" "}
+                            {aiSuggestion ||
+                              (transcript
+                                ? i18n._("Suggestion is loading...")
+                                : i18n._("Record your answer to see AI suggestion"))}
+                          </Typography>
+                        </Stack>
+                      )}
                     </Stack>
 
                     <Stack

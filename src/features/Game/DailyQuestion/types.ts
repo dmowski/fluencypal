@@ -19,7 +19,8 @@ export interface DailyQuestionAnswer {
   aiSuggestion?: {
     sourceMessage: string;
     correctedMessage: string;
-  };
+    rate: number | null;
+  } | null;
   transcript: string;
 
   isPublished: boolean;
