@@ -6,6 +6,16 @@ import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
 import linguiConfig from "../../../lingui.config";
 import { generateMetadataInfo } from "@/libs/metadata";
+import NotFound from "../not-found";
+
+const notFoundMetadata: Metadata = {
+  title: "Not Found",
+  description: "Not Found",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 interface PageProps {
   params: Promise<{ lang: string }>;
@@ -18,6 +28,10 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
   const lang = params.lang;
+  const supportedLang = supportedLanguages.find((l) => l === lang);
+  if (!supportedLang) {
+    return notFoundMetadata;
+  }
 
   return generateMetadataInfo({
     lang: supportedLanguages.find((l) => l === lang) || "en",
@@ -27,7 +41,10 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 export default async function Page(props: { params: Promise<{ lang: string }> }) {
   const lang = (await props.params).lang;
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+  const supportedLang = supportedLanguages.find((l) => l === lang);
+  if (!supportedLang) {
+    return <NotFound />;
+  }
   initLingui(supportedLang);
 
   return (
