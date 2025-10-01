@@ -29,7 +29,7 @@ export const TopicToDiscussScreen = ({
   const recorder = useAudioRecorder({
     languageCode: settings.languageCode || "en",
     getAuthToken: auth.getToken,
-    isFree: true,
+    isFree: false,
     isGame: true,
   });
   const [isUseMicrophone, setIsUseMicrophone] = useState<boolean>(false);

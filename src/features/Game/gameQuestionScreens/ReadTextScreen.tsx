@@ -23,7 +23,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
   const backupRecorder = useAudioRecorder({
     languageCode: settings.languageCode || "en",
     getAuthToken: auth.getToken,
-    isFree: true,
+    isFree: false,
     isGame: true,
   });
 

@@ -126,7 +126,7 @@ export const DailyQuestionBadge = () => {
   const recorder = useAudioRecorder({
     languageCode: settings.languageCode || "en",
     getAuthToken: auth.getToken,
-    isFree: true,
+    isFree: false,
     isGame: false,
     visualizerComponentWidth: "100%",
   });

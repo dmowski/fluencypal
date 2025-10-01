@@ -768,7 +768,7 @@ const RecordUserAudio = ({
   const recorder = useAudioRecorder({
     languageCode: languageToLearn || "en",
     getAuthToken: auth.getToken,
-    isFree: true,
+    isFree: false,
     isGame: false,
     visualizerComponentWidth: "100%",
   });

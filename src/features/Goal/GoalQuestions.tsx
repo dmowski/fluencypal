@@ -265,7 +265,7 @@ const GoalQuestionsComponent: React.FC<GoalQuestionsComponentProps> = ({
   const recorder = useAudioRecorder({
     languageCode: data.nativeLanguage || data.languageToLearn || "en",
     getAuthToken: async () => "",
-    isFree: true,
+    isFree: false,
     isGame: false,
   });
 

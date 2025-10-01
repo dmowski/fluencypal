@@ -4,7 +4,6 @@ import {
   TranscriptAiModel,
 } from "@/common/ai";
 import { validateAuthToken } from "../config/firebase";
-import { getUserBalance } from "../payment/getUserBalance";
 import { TranscriptResponse } from "./types";
 import { supportedLanguages } from "@/features/Lang/lang";
 import { TranscriptUsageLog } from "@/common/usage";
@@ -32,7 +31,6 @@ export async function POST(request: Request) {
   const urlParams = new URLSearchParams(urlQueryParams);
   const languageCodeString = urlParams.get("lang") || "";
   const format = urlParams.get("format") || "webm";
-  const isGame = urlParams.get("isGame") === "true";
   const isFree = urlParams.get("isFree") === "true";
 
   let userEmail = "";
@@ -50,8 +48,7 @@ export async function POST(request: Request) {
   const audioDurationString = urlParams.get("audioDuration") || "";
   const audioDuration = Math.min(Math.max(parseFloat(audioDurationString) || 0, 4), 50);
 
-  const model: TranscriptAiModel = isFree ? "gpt-4o-mini-transcribe" : "gpt-4o-transcribe";
-  console.log("model", model);
+  const model: TranscriptAiModel = "gpt-4o-transcribe";
   const responseData = await transcribeAudioFileWithOpenAI({
     file,
     model,
@@ -63,7 +60,6 @@ export async function POST(request: Request) {
   });
 
   if (!responseData.error && !isFree && userId) {
-    const balance = await getUserBalance(userId);
     const priceUsd = calculateAudioTranscriptionPrice(audioDuration, "gpt-4o-transcribe");
     const priceHours = convertUsdToHours(priceUsd);
     const usageLog: TranscriptUsageLog = {
@@ -78,7 +74,7 @@ export async function POST(request: Request) {
       transcriptSize: responseData.transcript.length || 0,
     };
 
-    if (!balance.isGameWinner && !isGame) {
+    if (!userId) {
       await addUsage(userId, usageLog);
     }
   }
