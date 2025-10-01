@@ -389,6 +389,7 @@ export const DailyQuestionBadge = () => {
                       stopRecording={recorder.stopRecording}
                       startRecording={recorder.startRecording}
                       clearTranscript={clearTranscript}
+                      error={recorder.error}
                     />
 
                     <Stack

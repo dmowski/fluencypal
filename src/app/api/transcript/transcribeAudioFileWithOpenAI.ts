@@ -4,6 +4,7 @@ import { getBucket } from "../config/firebase";
 import { TranscriptResponse } from "./types";
 import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
+import { sleep } from "@/libs/sleep";
 
 export const transcribeAudioFileWithOpenAI = async ({
   file,
@@ -89,6 +90,11 @@ export const transcribeAudioFileWithOpenAI = async ({
     const url = audioStorageFile.publicUrl();
     await sentSupportTelegramMessage({
       message: `User recorded broken audio file (${actualFileSizeMb}) ${url}`,
+      userId,
+    });
+    await sleep(1000);
+    await sentSupportTelegramMessage({
+      message: `${error} | ${userEmail}`,
       userId,
     });
 

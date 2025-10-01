@@ -614,6 +614,7 @@ export const RecordUserAudioAnswer = ({
   stopRecording,
   startRecording,
   clearTranscript,
+  error,
 }: {
   transcript: string;
   minWords: number;
@@ -624,6 +625,7 @@ export const RecordUserAudioAnswer = ({
   stopRecording: () => Promise<void>;
   startRecording: () => Promise<void>;
   clearTranscript: () => void;
+  error: string | null;
 }) => {
   const { i18n } = useLingui();
   const wordsCount = getWordsCount(transcript || "");
@@ -685,6 +687,12 @@ export const RecordUserAudioAnswer = ({
 
         {isTranscribing && " " + i18n._("Processing...")}
       </Typography>
+
+      {error && (
+        <Typography color="error" variant="caption" sx={{ paddingTop: "6px", minHeight: "18px" }}>
+          {i18n._("Error:")} {error}
+        </Typography>
+      )}
 
       {!transcript && !isTranscribing && (
         <Stack
@@ -831,6 +839,7 @@ const RecordUserAudio = ({
             stopRecording={recorder.stopRecording}
             startRecording={recorder.startRecording}
             clearTranscript={clearTranscript}
+            error={recorder.error}
           />
         </Stack>
       </Stack>
