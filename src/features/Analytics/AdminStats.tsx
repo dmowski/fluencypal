@@ -164,7 +164,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             }}
           >
             <Typography variant="caption">Quiz</Typography>
-            <TextField value={allTextInfo} rows={isQuizFull ? 22 : 4} multiline />
+            <TextField value={allTextInfo} rows={22} multiline />
           </Stack>
           <Button
             color={isCopied ? "success" : "primary"}
@@ -190,6 +190,16 @@ export function AdminStats() {
   const [isLoading, setIsLoading] = useState(false);
   const isLoadingRef = useRef(false);
   const [data, setData] = useState<AdminStatsResponse | null>(null);
+  const [isLoadFullData, setIsLoadFullData] = useState(false);
+
+  const loadFullData = async () => {
+    isLoadingRef.current = true;
+    setIsLoading(true);
+    const result = await loadStatsRequest({ isFullExport: true }, await auth.getToken());
+    isLoadingRef.current = false;
+    setIsLoading(false);
+    setData(result);
+  };
 
   const loadStatsData = async () => {
     if (isLoadingRef.current) return;
@@ -234,8 +244,17 @@ export function AdminStats() {
       {isLoading && <Typography>Loading...</Typography>}
       {data && (
         <>
-          <Typography variant="h6">Users: {data.users.length}</Typography>
-          <Typography variant="h6">Today users: {todayUsers.length}</Typography>
+          <Stack
+            sx={{
+              alignItems: "flex-start",
+            }}
+          >
+            <Typography variant="h6">Users: {data.users.length}</Typography>
+            <Typography variant="h6">Today users: {todayUsers.length}</Typography>
+            <Button variant="contained" onClick={loadFullData}>
+              Load full data
+            </Button>
+          </Stack>
           <Stack
             sx={{
               display: "grid",
@@ -245,7 +264,11 @@ export function AdminStats() {
             }}
           >
             {users.map((user) => (
-              <UserCard key={user.userData.id} userStat={user} allTextInfo={JSON.stringify(user)} />
+              <UserCard
+                key={user.userData.id}
+                userStat={user}
+                allTextInfo={JSON.stringify(user, null, 2)}
+              />
             ))}
           </Stack>
         </>
