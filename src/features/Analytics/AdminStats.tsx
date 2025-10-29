@@ -12,6 +12,15 @@ import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
 import { Check, Copy } from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
 
+const copyToClipboard = async (text: string) => {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    alert("Failed to copy text. Please copy it manually.");
+    console.error("Failed to copy text: ", err);
+  }
+};
+
 const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: string }) => {
   const game = useGame();
   const [isQuizFull, setIsQuizFull] = useState(false);
@@ -61,15 +70,9 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
     }, 2000);
   }, [isCopied]);
 
-  const copyToClipboard = async (text: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-
-      setIsCopied(true);
-    } catch (err) {
-      alert("Failed to copy text. Please copy it manually.");
-      console.error("Failed to copy text: ", err);
-    }
+  const copy = () => {
+    copyToClipboard(allTextInfo);
+    setIsCopied(true);
   };
 
   return (
@@ -171,7 +174,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             startIcon={isCopied ? <Check size="16px" /> : <Copy size="16px" />}
             variant="outlined"
             size="small"
-            onClick={() => copyToClipboard(allTextInfo)}
+            onClick={() => copy()}
           >
             {isCopied ? "Copied" : "Copy quiz"}
           </Button>
@@ -209,6 +212,54 @@ export function AdminStats() {
     isLoadingRef.current = false;
     setIsLoading(false);
     setData(result);
+  };
+
+  const [isCopied, setIsCopied] = useState(false);
+  useEffect(() => {
+    if (!isCopied) {
+      return;
+    }
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  }, [isCopied]);
+
+  const copyAll = async () => {
+    const dataWithoutUserNames = data?.users
+      .map((userStat) => {
+        const { userData, ...rest } = userStat;
+        const userDataUpdated = {
+          country: userData.country,
+          currency: userData.currency,
+          countryName: userData.countryName,
+          languageCode: userData.languageCode,
+          nativeLanguageCode: userData.nativeLanguageCode,
+          pageLanguageCode: userData.languageCode,
+        };
+
+        return {
+          ...rest,
+          userData: userDataUpdated,
+          goalQuiz2: userStat.goalQuiz2.map((quiz) => {
+            const updatedQuiz = {
+              aboutUserTranscription: quiz.aboutUserTranscription,
+              aboutUserFollowUpTranscription: quiz.aboutUserFollowUpTranscription,
+              goalUserTranscription: quiz.goalUserTranscription,
+            };
+
+            return {
+              ...updatedQuiz,
+              goalData: undefined,
+            };
+          }),
+        };
+      })
+      .filter((data) => data.goalQuiz2[0]?.aboutUserFollowUpTranscription);
+
+    const allUsersString = JSON.stringify(dataWithoutUserNames, null, 2);
+    // This is dump from my current users. Analyze them and give me insights
+    await copyToClipboard(allUsersString);
+    setIsCopied(true);
   };
 
   useEffect(() => {
@@ -251,9 +302,25 @@ export function AdminStats() {
           >
             <Typography variant="h6">Users: {data.users.length}</Typography>
             <Typography variant="h6">Today users: {todayUsers.length}</Typography>
-            <Button variant="contained" onClick={loadFullData}>
-              Load full data
-            </Button>
+            <Stack
+              sx={{
+                gap: "10px",
+                flexDirection: "row",
+              }}
+            >
+              <Button variant="contained" onClick={loadFullData}>
+                Load full data
+              </Button>
+              <Button
+                color={isCopied ? "success" : "primary"}
+                startIcon={isCopied ? <Check size="16px" /> : <Copy size="16px" />}
+                variant="outlined"
+                size="small"
+                onClick={() => copyAll()}
+              >
+                Copy to clipboard
+              </Button>
+            </Stack>
           </Stack>
           <Stack
             sx={{
