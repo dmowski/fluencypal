@@ -1,6 +1,6 @@
 import { getDB, validateAuthToken } from "../config/firebase";
 import { DEV_EMAILS } from "@/common/dev";
-import { AdminStatsResponse, UserStat } from "./types";
+import { AdminStatsRequest, AdminStatsResponse, UserStat } from "./types";
 import {
   getAllUsersWithIds,
   getUserConversationsMeta,
@@ -44,6 +44,8 @@ const getGameUsersLastVisit = async (): Promise<GameLastVisit> => {
 
 export async function POST(request: Request) {
   const userInfo = await validateAuthToken(request);
+  const reqBody = (await request.json()) as AdminStatsRequest;
+  const isFullExport = reqBody.isFullExport;
   if (!userInfo.uid) {
     throw new Error("User is not authenticated");
   }
@@ -64,58 +66,6 @@ export async function POST(request: Request) {
         getUserConversationsMeta(user.id),
         getUsersQuizSurvey(user.id),
       ]);
-      const userId = user.id;
-      const lastLogin = user.lastLoginAtDateTime;
-      const createdAtIso = user.createdAtIso;
-      const gameUsername = gameUsernames[userId] || generateRandomUsername();
-      const gameAvatar = avatars[gameUsername] || getRandomAvatar();
-      const gamePoints = gameStat[gameUsername] || 1;
-
-      const lastVisitIsoString = dayjs(
-        gameLastVisit[gameUsername] || lastLogin || createdAtIso || Date.now()
-      ).toISOString();
-
-      /*
-      await db
-        .collection("game2")
-        .doc("gameUserNames")
-        .set(
-          {
-            [userId]: gameUsername,
-          },
-          { merge: true }
-        );
-
-      await db
-        .collection("game2")
-        .doc("gameAvatars")
-        .set(
-          {
-            [userId]: gameAvatar,
-          },
-          { merge: true }
-        );
-
-      await db
-        .collection("game2")
-        .doc("gamePoints")
-        .set(
-          {
-            [userId]: gamePoints,
-          },
-          { merge: true }
-        );
-
-      await db
-        .collection("game2")
-        .doc("gameLastVisit")
-        .set(
-          {
-            [userId]: lastVisitIsoString,
-          },
-          { merge: true }
-        );
-        */
 
       const userStat: UserStat = {
         userData: user,

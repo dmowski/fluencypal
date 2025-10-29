@@ -8,6 +8,10 @@ export interface UserStat {
   goalQuiz2: QuizSurvey2[];
 }
 
+export interface AdminStatsRequest {
+  isFullExport: boolean;
+}
+
 export interface AdminStatsResponse {
   users: UserStat[];
 }

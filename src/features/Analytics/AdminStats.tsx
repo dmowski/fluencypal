@@ -109,7 +109,11 @@ Goals: ${quiz.aboutUserFollowUpTranscription}`
           }}
         />
       </Stack>
-      <Stack>
+      <Stack
+        sx={{
+          width: "500px",
+        }}
+      >
         <Link href={firebaseLink} variant="h6" target="_blank" rel="noopener noreferrer">
           {user.email} | {displayName}
         </Link>
@@ -205,7 +209,7 @@ export function AdminStats() {
     if (isLoadingRef.current) return;
     isLoadingRef.current = true;
     setIsLoading(true);
-    const result = await loadStatsRequest(await auth.getToken());
+    const result = await loadStatsRequest({ isFullExport: false }, await auth.getToken());
     isLoadingRef.current = false;
     setIsLoading(false);
     setData(result);
