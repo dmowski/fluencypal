@@ -12,7 +12,7 @@ import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
 import { Check, Copy } from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
 
-const UserCard = ({ userStat }: { userStat: UserStat }) => {
+const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: string }) => {
   const game = useGame();
   const [isQuizFull, setIsQuizFull] = useState(false);
   const user = userStat.userData;
@@ -50,20 +50,6 @@ const UserCard = ({ userStat }: { userStat: UserStat }) => {
   const languageToLearn = fullEnglishLanguageName[user.languageCode || "en"];
 
   const learning = `${nativeLanguage} → ${languageToLearn}`;
-
-  const quiz2 = userStat.goalQuiz2
-    .map((quiz) => {
-      const followUpBlock = quiz.aboutUserFollowUpTranscription
-        ? `Followup questions: ${quiz.aboutUserFollowUpQuestion.title}
-Goals: ${quiz.aboutUserFollowUpTranscription}`
-        : "";
-      const userAbout = quiz.aboutUserTranscription
-        ? `About user: ${quiz.aboutUserTranscription}`
-        : "";
-      return [userAbout, followUpBlock].filter(Boolean).join("\n");
-    })
-    .join("\n----------------\n")
-    .trim();
 
   const [isCopied, setIsCopied] = useState(false);
   useEffect(() => {
@@ -164,7 +150,7 @@ Goals: ${quiz.aboutUserFollowUpTranscription}`
           </Typography>
         </Stack>
       </Stack>
-      {quiz2 && (
+      {allTextInfo && (
         <Stack
           sx={{
             flexDirection: "row",
@@ -178,14 +164,14 @@ Goals: ${quiz.aboutUserFollowUpTranscription}`
             }}
           >
             <Typography variant="caption">Quiz</Typography>
-            <TextField value={quiz2} rows={isQuizFull ? 12 : 4} multiline />
+            <TextField value={allTextInfo} rows={isQuizFull ? 22 : 4} multiline />
           </Stack>
           <Button
             color={isCopied ? "success" : "primary"}
             startIcon={isCopied ? <Check size="16px" /> : <Copy size="16px" />}
             variant="outlined"
             size="small"
-            onClick={() => copyToClipboard(quiz2)}
+            onClick={() => copyToClipboard(allTextInfo)}
           >
             {isCopied ? "Copied" : "Copy quiz"}
           </Button>
@@ -259,7 +245,7 @@ export function AdminStats() {
             }}
           >
             {users.map((user) => (
-              <UserCard key={user.userData.id} userStat={user} />
+              <UserCard key={user.userData.id} userStat={user} allTextInfo={JSON.stringify(user)} />
             ))}
           </Stack>
         </>
