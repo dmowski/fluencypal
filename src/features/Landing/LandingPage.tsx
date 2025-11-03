@@ -59,16 +59,6 @@ export default function LandingPage({ lang }: LandingPageProps) {
 
           {
             "@type": "Question",
-            name: i18n._(`Is there a free trial?`),
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: i18n._(
-                `Yes, FluencyPal offers a complimentary balance to let you try conversational practice and see how the platform works before topping up.`
-              ),
-            },
-          },
-          {
-            "@type": "Question",
             name: i18n._(`Can I practice languages other than English?`),
             acceptedAnswer: {
               "@type": "Answer",
@@ -197,16 +187,6 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 ),
               },
               {
-                question: i18n._(`Is there a free trial?`),
-                answer: (
-                  <Typography>
-                    {i18n._(
-                      `Yes, FluencyPal offers a complimentary balance to let you try conversational practice and see how the platform works before topping up.`
-                    )}
-                  </Typography>
-                ),
-              },
-              {
                 question: i18n._(`Can I practice languages other than English?`),
                 answer: (
                   <Stack sx={{ gap: "20px" }}>
@@ -265,7 +245,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
           />
           <CtaBlock
             title={i18n._(`Learn anywhere, anytime`)}
-            actionButtonTitle={i18n._(`Start Your Free Trial`)}
+            actionButtonTitle={i18n._(`Start Learning Now`)}
             actionButtonLink={`${getUrlStart(lang)}quiz`}
           />
         </Stack>

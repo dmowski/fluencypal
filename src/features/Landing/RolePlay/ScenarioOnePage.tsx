@@ -151,7 +151,9 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
                   {i18n._(`View all`)}
                 </Button>
                 <Button
-                  href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}${item.isCallModeByDefault ? "&isCallMode=true" : ""}`}
+                  href={`${getUrlStart(lang)}practice?rolePlayId=${item.id}${
+                    item.isCallModeByDefault ? "&isCallMode=true" : ""
+                  }`}
                   sx={{
                     ...buttonStyle,
                     height: "3rem",
@@ -468,7 +470,7 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
 
         <CtaBlock
           title={i18n._(`Ready to Become Fluent in English?`)}
-          actionButtonTitle={i18n._(`Start Your Free Trial`)}
+          actionButtonTitle={i18n._(`Start Learning Now`)}
           actionButtonLink={`${getUrlStart(lang)}quiz`}
         />
       </div>
