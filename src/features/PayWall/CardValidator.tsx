@@ -171,9 +171,7 @@ export const CardValidator = () => {
                 variant="contained"
                 startIcon={<CreditCard />}
                 color="primary"
-                onClick={() => {
-                  onStartValidation();
-                }}
+                onClick={() => onStartValidation()}
               >
                 {i18n._("Confirm Credit Card")}
               </Button>
