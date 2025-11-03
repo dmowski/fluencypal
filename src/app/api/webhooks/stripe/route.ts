@@ -5,34 +5,86 @@ import { stripeConfig } from "../../payment/config";
 import { getCommonMessageTemplate } from "../../email/templates/commonMessage";
 import { sendEmail } from "../../email/sendEmail";
 import { appName } from "@/common/metadata";
-import { getUserInfo } from "../../user/getUserInfo";
+import { getUserInfo, updateUserInfo } from "../../user/getUserInfo";
 import { refundPayment } from "../../payment/refund";
+
+const stripe = new Stripe(stripeConfig.STRIPE_SECRET_KEY!);
+
+const markUserAsCreditCardConfirmed = async (userId: string, isConfirmed: boolean) => {
+  await updateUserInfo(userId, { isCreditCardConfirmed: isConfirmed });
+};
 
 export async function POST(request: Request) {
   if (!stripeConfig.STRIPE_WEBHOOK_SECRET) {
     sentSupportTelegramMessage({ message: "Stripe webhook secret is not set" });
-    throw new Error("Stripe webhook secret is not set");
+    return new Response("Stripe webhook secret is not set", { status: 500 });
   }
-
-  const stripeKey = stripeConfig.STRIPE_SECRET_KEY;
-  if (!stripeKey) {
+  if (!stripeConfig.STRIPE_SECRET_KEY) {
     sentSupportTelegramMessage({ message: "Stripe API key is not set" });
-    throw new Error("Stripe API key is not set");
+    return new Response("Stripe API key is not set", { status: 500 });
   }
-  const stripe = new Stripe(stripeKey);
 
-  const sigFromHeader = request.headers.get("stripe-signature");
-  if (!sigFromHeader) {
+  const sig = request.headers.get("stripe-signature");
+  if (!sig) {
     sentSupportTelegramMessage({ message: "Stripe signature is not set" });
-    throw new Error("Stripe signature is not set");
+    return new Response("Stripe signature is not set", { status: 400 });
   }
-  const sig = sigFromHeader;
+
+  let event: Stripe.Event;
+  try {
+    const body = await request.text(); // raw body for signature verification
+    event = stripe.webhooks.constructEvent(body, sig, stripeConfig.STRIPE_WEBHOOK_SECRET);
+  } catch (error: any) {
+    const message = `Error verifying Stripe signature: ${error.message}`;
+    sentSupportTelegramMessage({ message });
+    return new Response(message, { status: 400 });
+  }
 
   try {
-    const body = await request.text();
-    const event = stripe.webhooks.constructEvent(body, sig, stripeConfig.STRIPE_WEBHOOK_SECRET);
-    console.log(`Event type: ${event.type}`);
+    // --- NEW: SetupIntent handling for card verification ---
+    if (event.type === "setup_intent.succeeded") {
+      const si = event.data.object as Stripe.SetupIntent;
+      const customerId = si.customer as string | null;
 
+      let firebaseUid: string | undefined;
+      if (customerId) {
+        const customer = (await stripe.customers.retrieve(customerId)) as Stripe.Customer;
+        firebaseUid = customer?.metadata?.firebaseUid;
+      }
+
+      if (firebaseUid) {
+        await markUserAsCreditCardConfirmed(firebaseUid, true);
+        sentSupportTelegramMessage({
+          message: `✅ Card verified via SetupIntent for user ${firebaseUid}`,
+          userId: firebaseUid,
+        });
+      } else {
+        // No uid on customer; nothing to update, but notify so you can investigate.
+        sentSupportTelegramMessage({
+          message: `⚠️ setup_intent.succeeded without firebaseUid on customer ${customerId}`,
+        });
+      }
+    }
+
+    // Optional: inform/support on explicit failures/cancelations
+    if (event.type === "setup_intent.setup_failed" || event.type === "setup_intent.canceled") {
+      const si = event.data.object as Stripe.SetupIntent;
+      const customerId = si.customer as string | null;
+      let firebaseUid: string | undefined;
+      if (customerId) {
+        const customer = (await stripe.customers.retrieve(customerId)) as Stripe.Customer;
+        firebaseUid = customer?.metadata?.firebaseUid;
+      }
+      sentSupportTelegramMessage({
+        message: `❌ Card verification failed: ${event.type} (customer: ${customerId}, uid: ${
+          firebaseUid ?? "n/a"
+        })`,
+        userId: firebaseUid,
+      });
+      // Do NOT set isCreditCardConfirmed to false here; leaving as-is is safest/idempotent.
+    }
+
+    // --- existing handlers you already had ---
     if (event.type == "radar.early_fraud_warning.created") {
       const earlyFraudWarning = event.data.object as Stripe.Radar.EarlyFraudWarning;
       const chargeId = earlyFraudWarning.charge as string;
@@ -49,14 +101,9 @@ export async function POST(request: Request) {
       const paymentIntentId = session.payment_intent as string;
       const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
       const charges = paymentIntent.latest_charge;
-      if (!charges) {
-        console.log("No charges in payment intent");
-        throw new Error("No charges in payment intent");
-      }
-      if (!userId) {
-        console.log("No userId in metadata");
-        throw new Error("No userId in metadata");
-      }
+      if (!charges) throw new Error("No charges in payment intent");
+      if (!userId) throw new Error("No userId in metadata");
+
       const userInfo = await getUserInfo(userId);
       const userEmail = userInfo.email;
 
@@ -68,10 +115,7 @@ export async function POST(request: Request) {
       const months = session.metadata?.amountOfMonths;
       if (months) {
         const monthsCount = parseInt(months, 10);
-        if (monthsCount <= 0) {
-          console.log("Amount of months is not set");
-          throw new Error("Amount of months is not set");
-        }
+        if (monthsCount <= 0) throw new Error("Amount of months is not set");
 
         const tgMessage = `User ${userEmail} subscribed for ${monthsCount} months.`;
         sentSupportTelegramMessage({ message: tgMessage, userId });
@@ -87,10 +131,8 @@ export async function POST(request: Request) {
         });
       } else {
         const amountOfHours = parseFloat(session.metadata?.amountOfHours ?? "0");
-        if (amountOfHours <= 0) {
-          console.log("Amount of hours is not set");
-          throw new Error("Amount of hours is not set");
-        }
+        if (amountOfHours <= 0) throw new Error("Amount of hours is not set");
+
         const tgMessage = `User ${userEmail} purchased ${amountOfHours} hours.`;
         sentSupportTelegramMessage({ message: tgMessage, userId });
         await addPaymentLog({
@@ -107,7 +149,6 @@ export async function POST(request: Request) {
       if (stripeConfig.isStripeLive) {
         const emailToSend = userInfo.email;
         const shortId = receiptId || paymentId.slice(paymentId.length - 8);
-
         const emailUi = getCommonMessageTemplate({
           title: "Payment Confirmation",
           subtitle: "Hello,<br/>Thank you for your purchase at <b>FluencyPal</b>.",
@@ -135,8 +176,8 @@ Due to your request for immediate service from Fundacja Rozwoju Przedsiębiorczo
         });
       }
     }
-  } catch (error) {
-    const message = `Error in Stripe webhook: ${(error as Error).message}`;
+  } catch (error: any) {
+    const message = `Error in Stripe webhook: ${error.message}`;
     sentSupportTelegramMessage({ message });
     return new Response(message, { status: 400 });
   }
