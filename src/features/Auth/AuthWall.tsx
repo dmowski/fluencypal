@@ -286,12 +286,7 @@ export const AuthWall = ({
                   <IconTextList
                     listItems={[
                       {
-                        title: i18n._("3 days of full access for free"),
-                        icon: Sparkles,
-                      },
-
-                      {
-                        title: i18n._("No credit card required"),
+                        title: i18n._("Credit card is required"),
                         icon: Bird,
                       },
 
