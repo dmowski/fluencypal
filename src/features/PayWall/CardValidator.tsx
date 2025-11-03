@@ -1,6 +1,6 @@
 import { Button, CircularProgress, Stack, Typography } from "@mui/material";
 import { useSettings } from "../Settings/useSettings";
-import { Trans } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
 import { CreditCard } from "lucide-react";
 import { useUsage } from "../Usage/useUsage";
 import { useMemo, useState } from "react";
@@ -12,6 +12,7 @@ import { useAuth } from "../Auth/useAuth";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 function SetupForm({ clientSecret }: { clientSecret: string }) {
   const stripe = useStripe();
+  const { i18n } = useLingui();
   const elements = useElements();
   const [submitting, setSubmitting] = useState(false);
   const [errMsg, setErrMsg] = useState<string | null>(null);
@@ -29,7 +30,7 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
           return_url: `${window.location.origin + window.location.pathname}`,
         },
       });
-      if (error) setErrMsg(error.message ?? "Verification failed");
+      if (error) setErrMsg(error.message ?? i18n._("Verification failed"));
       // If no error -> success path; rely on webhook to flip the flag.
       // Optionally start a short polling loop here to refresh settings.
     } finally {
@@ -42,7 +43,7 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
       <Stack sx={{ gap: "10px" }}>
         <PaymentElement />
         <Button variant="contained" type="submit" disabled={!stripe || !elements || submitting}>
-          {submitting ? <CircularProgress size={18} /> : "Verify card"}
+          {submitting ? <CircularProgress size={18} /> : i18n._("Verify card")}
         </Button>
         {errMsg && (
           <Typography variant="caption" color="error">
@@ -90,6 +91,7 @@ const createSetupIntentRequest = async (
 };
 
 export const CardValidator = () => {
+  const { i18n } = useLingui();
   const settings = useSettings();
   const usage = useUsage();
   const auth = useAuth();
@@ -149,14 +151,11 @@ export const CardValidator = () => {
                 gap: "5px",
               }}
             >
-              <Typography variant="h3">
-                <Trans>Credit Card Confirmation Required</Trans>
-              </Typography>
+              <Typography variant="h3">{i18n._("Credit Card Confirmation Required")}</Typography>
               <Typography variant="body2">
-                <Trans>
-                  Your credit card is not confirmed. Please confirm your credit card to access all
-                  features.
-                </Trans>
+                {i18n._(
+                  "Your credit card is not confirmed. Please confirm your credit card to access all features."
+                )}
               </Typography>
             </Stack>
 
@@ -176,10 +175,10 @@ export const CardValidator = () => {
                   onStartValidation();
                 }}
               >
-                <Trans>Confirm Credit Card</Trans>
+                {i18n._("Confirm Credit Card")}
               </Button>
 
-              <Typography variant="caption">No charge will be made</Typography>
+              <Typography variant="caption">{i18n._("No charge will be made")}</Typography>
             </Stack>
           </>
         )}
