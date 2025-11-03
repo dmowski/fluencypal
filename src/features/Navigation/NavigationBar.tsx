@@ -78,6 +78,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
         alignItems: "center",
 
         backdropFilter: "blur(10px)",
+        position: "relative",
         zIndex: 999,
 
         borderTop: "1px solid rgba(255, 255, 255, 0.07)",

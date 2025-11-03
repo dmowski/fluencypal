@@ -4,6 +4,37 @@ import { AiUserInfo } from "@/common/userInfo";
 import { Conversation, UserConversationsMeta } from "@/common/conversation";
 import { QuizSurvey2 } from "@/features/Goal/Quiz/types";
 
+export interface StripeUserInfo {
+  customerId: string;
+}
+
+export const getStripeUserInfo = async (userId: string): Promise<StripeUserInfo | null> => {
+  const db = getDB();
+  const stripeDoc = await db
+    .collection("users")
+    .doc(userId)
+    .collection("paymentInfo")
+    .doc("stripeInfo")
+    .get();
+
+  if (!stripeDoc.exists) {
+    return null;
+  }
+
+  const data = stripeDoc.data() as StripeUserInfo;
+  return data;
+};
+
+export const setStripeUserInfo = async (userId: string, info: StripeUserInfo): Promise<void> => {
+  const db = getDB();
+  await db
+    .collection("users")
+    .doc(userId)
+    .collection("paymentInfo")
+    .doc("stripeInfo")
+    .set(info, { merge: true });
+};
+
 export const getUserInfo = async (userId: string) => {
   const db = getDB();
   const userDoc = await db.collection("users").doc(userId).get();

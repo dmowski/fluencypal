@@ -17,6 +17,8 @@ export interface UserSettings {
 
   photoUrl: string | null;
   displayName: string | null;
+
+  isCreditCardConfirmed: boolean | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {

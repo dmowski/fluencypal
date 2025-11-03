@@ -15,3 +15,9 @@ export interface Order {
   createdAtIso: string;
   updatedAtIso: string;
 }
+
+export interface SetupIntentRequest {}
+
+export interface SetupIntentResponse {
+  clientSecret: string;
+}
