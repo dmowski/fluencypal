@@ -2,7 +2,7 @@
 import { Button, Link, Stack, TextField, Typography } from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
 import { DEV_EMAILS } from "@/common/dev";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { loadStatsRequest } from "@/app/api/loadStats/loadStatsRequest";
 import { AdminStatsResponse, UserStat } from "@/app/api/loadStats/types";
 import dayjs from "dayjs";
@@ -192,7 +192,15 @@ export function AdminStats() {
   const isAdmin = DEV_EMAILS.includes(auth?.userInfo?.email || "");
   const [isLoading, setIsLoading] = useState(false);
   const isLoadingRef = useRef(false);
-  const [data, setData] = useState<AdminStatsResponse | null>(null);
+  const [sourceData, setData] = useState<AdminStatsResponse | null>(null);
+
+  const data = useMemo(() => {
+    const cleanUsers = sourceData?.users.filter((user) => {
+      return !user.userData.email.includes("dmowski");
+    });
+    return { ...sourceData, users: cleanUsers || [] };
+  }, [sourceData]);
+
   const [isLoadFullData, setIsLoadFullData] = useState(false);
 
   const loadFullData = async () => {
