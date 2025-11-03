@@ -45,6 +45,11 @@ export const getUserInfo = async (userId: string) => {
   return { ...data, id: userDoc.id };
 };
 
+export const updateUserInfo = async (userId: string, info: Partial<UserSettings>) => {
+  const db = getDB();
+  await db.collection("users").doc(userId).set(info, { merge: true });
+};
+
 export const getUserAiInfo = async (userId: string) => {
   const db = getDB();
   const userDoc = await db
