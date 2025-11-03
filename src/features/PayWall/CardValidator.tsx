@@ -101,8 +101,6 @@ export const CardValidator = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
 
-  const isDev = settings.userSettings?.email.includes("dmowski");
-
   const onStartValidation = async () => {
     setIsLoading(true);
     try {
@@ -115,7 +113,7 @@ export const CardValidator = () => {
     }
   };
 
-  if (isLoadingSettings || isCreditCardConfirmed || usage.isFullAccess || !isDev) return <></>;
+  if (isLoadingSettings || isCreditCardConfirmed || usage.isFullAccess) return <></>;
   return (
     <Stack
       sx={{
