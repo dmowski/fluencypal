@@ -1,5 +1,5 @@
 "use client";
-import { Button, Link, Stack, TextField, Typography } from "@mui/material";
+import { Button, Card, Link, Stack, TextField, Typography } from "@mui/material";
 import { useAuth } from "../Auth/useAuth";
 import { DEV_EMAILS } from "@/common/dev";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 import { getFirebaseLink } from "../Firebase/getFirebaseLink";
 import { useGame } from "../Game/useGame";
 import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
-import { Check, Copy } from "lucide-react";
+import { BadgeCheck, Check, Copy, CreditCard } from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
 
 const copyToClipboard = async (text: string) => {
@@ -152,6 +152,20 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             {[gameUsername, userStats?.points].filter(Boolean).join(" | ")}
           </Typography>
         </Stack>
+        {userStat.userData.isCreditCardConfirmed && (
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "8px",
+              padding: "4px 0",
+              color: "#4caf50",
+            }}
+          >
+            <Typography variant="caption">Card verified</Typography>
+            <BadgeCheck size={"16px"} />
+          </Stack>
+        )}
       </Stack>
       {allTextInfo && (
         <Stack
