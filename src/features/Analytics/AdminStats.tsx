@@ -208,13 +208,12 @@ export function AdminStats() {
   const [sourceData, setData] = useState<AdminStatsResponse | null>(null);
 
   const data = useMemo(() => {
+    if (!sourceData) return null;
     const cleanUsers = sourceData?.users.filter((user) => {
       return !user.userData.email.includes("dmowski");
     });
     return { ...sourceData, users: cleanUsers || [] };
   }, [sourceData]);
-
-  const [isLoadFullData, setIsLoadFullData] = useState(false);
 
   const loadFullData = async () => {
     isLoadingRef.current = true;
