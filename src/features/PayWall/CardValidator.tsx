@@ -8,6 +8,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { SetupIntentRequest, SetupIntentResponse } from "@/app/api/payment/type";
 import { useAuth } from "../Auth/useAuth";
+import dayjs from "dayjs";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 function SetupForm({ clientSecret }: { clientSecret: string }) {
@@ -112,8 +113,11 @@ export const CardValidator = () => {
       setIsLoading(false);
     }
   };
-
-  if (isLoadingSettings || isCreditCardConfirmed || usage.isFullAccess) return <></>;
+  if (isCreditCardConfirmed || isLoadingSettings) return <></>;
+  const createdAtIso = settings.userSettings?.createdAtIso;
+  const daysFromCreation = createdAtIso ? dayjs().diff(dayjs(createdAtIso), "day") : null;
+  const isNewUser = !createdAtIso || (daysFromCreation !== null && daysFromCreation < 5);
+  if (usage.isFullAccess && !isNewUser) return <></>;
   return (
     <Stack
       sx={{
