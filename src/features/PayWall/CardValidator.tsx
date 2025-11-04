@@ -163,6 +163,7 @@ export const CardValidator = ({ lang }: { lang: SupportedLanguage }) => {
       <Stack
         sx={{
           alignItems: "center",
+          width: "100%",
         }}
       >
         <Stack
