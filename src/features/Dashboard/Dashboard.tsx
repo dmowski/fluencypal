@@ -14,7 +14,6 @@ import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { DashboardBlur } from "./DashboardBlur";
 import { RolePlayModal } from "../RolePlay/RolePlayModal";
 import { DailyQuestionBadge } from "../Game/DailyQuestion/DailyQuestionBadge";
-import { useAuth } from "../Auth/useAuth";
 import { CardValidator } from "../PayWall/CardValidator";
 
 interface DashboardProps {
@@ -22,15 +21,13 @@ interface DashboardProps {
 }
 export function Dashboard({ lang }: DashboardProps) {
   const appNavigation = useAppNavigation();
-  const auth = useAuth();
-  const isDev = auth.userInfo?.email?.includes("dmowski");
   const IS_SHOW_DAILY_QUESTION_BADGE = true;
   return (
     <>
       <NavigationBar lang={lang} />
       <RolePlayModal />
 
-      {appNavigation.currentPage !== "profile" && <CardValidator />}
+      {appNavigation.currentPage !== "profile" && <CardValidator lang={lang} />}
 
       <Stack
         sx={{

@@ -1,14 +1,18 @@
 import { Button, CircularProgress, Stack, Typography } from "@mui/material";
 import { useSettings } from "../Settings/useSettings";
 import { useLingui } from "@lingui/react";
-import { CreditCard } from "lucide-react";
+import { CreditCard, PiggyBank, ShieldCheck, Sparkles } from "lucide-react";
 import { useUsage } from "../Usage/useUsage";
-import { useMemo, useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
+import { useEffect, useMemo, useState } from "react";
+import { loadStripe, StripeElementLocale } from "@stripe/stripe-js";
 import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { SetupIntentRequest, SetupIntentResponse } from "@/app/api/payment/type";
 import { useAuth } from "../Auth/useAuth";
 import dayjs from "dayjs";
+import { IconTextList } from "../Goal/Quiz/QuizPage2";
+import { isTMA } from "@telegram-apps/sdk-react";
+import { stripeLocaleMap, SupportedLanguage } from "../Lang/lang";
+import { CustomModal } from "../uiKit/Modal/CustomModal";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 function SetupForm({ clientSecret }: { clientSecret: string }) {
@@ -41,8 +45,18 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
 
   return (
     <form onSubmit={onSubmit}>
-      <Stack sx={{ gap: "10px" }}>
+      <Stack sx={{ gap: "10px", height: "max-content" }}>
         <PaymentElement />
+        <Typography
+          sx={{
+            color: "#555",
+            fontWeight: 500,
+          }}
+        >
+          {i18n._(
+            "FluencyPal will not charge your card. A small temporary authorization hold may appear on your statement, which will be released by your bank within a few days."
+          )}
+        </Typography>
         <Button variant="contained" type="submit" disabled={!stripe || !elements || submitting}>
           {submitting ? <CircularProgress size={18} /> : i18n._("Verify card")}
         </Button>
@@ -55,8 +69,9 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
     </form>
   );
 }
-function VerifyCard({ clientSecret }: { clientSecret: string }) {
-  const options = useMemo(() => ({ clientSecret /*, locale: 'en' */ }), [clientSecret]);
+function VerifyCard({ clientSecret, lang }: { clientSecret: string; lang: SupportedLanguage }) {
+  const locale: StripeElementLocale = stripeLocaleMap[lang];
+  const options = useMemo(() => ({ clientSecret, locale }), [clientSecret]);
   if (!clientSecret) return null;
   return (
     <Stack sx={{ backgroundColor: "#fff", width: "100%", p: "20px", borderRadius: "10px" }}>
@@ -91,7 +106,7 @@ const createSetupIntentRequest = async (
   return response.json();
 };
 
-export const CardValidator = () => {
+export const CardValidator = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
   const settings = useSettings();
   const usage = useUsage();
@@ -101,6 +116,12 @@ export const CardValidator = () => {
   const [isShowForm, setIsShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [isTg, setIsTg] = useState(false);
+
+  useEffect(() => {
+    const isTelegramApp = isTMA();
+    setIsTg(isTelegramApp);
+  }, []);
 
   const onStartValidation = async () => {
     setIsLoading(true);
@@ -113,76 +134,85 @@ export const CardValidator = () => {
       setIsLoading(false);
     }
   };
-  if (isCreditCardConfirmed || isLoadingSettings) return <></>;
+  if (isCreditCardConfirmed || isLoadingSettings || isTg) return <></>;
   const createdAtIso = settings.userSettings?.createdAtIso;
   const daysFromCreation = createdAtIso ? dayjs().diff(dayjs(createdAtIso), "day") : null;
   const isNewUser = !createdAtIso || (daysFromCreation !== null && daysFromCreation < 5);
   if (usage.isFullAccess && !isNewUser) return <></>;
   return (
-    <Stack
-      sx={{
-        position: "fixed",
-        backgroundColor: "rgba(12, 12, 12, 0.6)",
-        backdropFilter: "blur(32px)",
-        top: "0px",
-        left: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: 2,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <CustomModal isOpen={true}>
       <Stack
         sx={{
-          maxWidth: "720px",
-          width: "100%",
-          alignItems: "flex-start",
-          gap: "30px",
-          padding: "20px 20px",
+          alignItems: "center",
         }}
       >
-        {isLoading && <CircularProgress />}
-
-        {isShowForm && clientSecret && <VerifyCard clientSecret={clientSecret} />}
-
-        {!isShowForm && !isLoading && (
-          <>
-            <Stack
-              sx={{
-                gap: "5px",
-              }}
-            >
-              <Typography variant="h3">{i18n._("Credit Card Confirmation Required")}</Typography>
-              <Typography variant="body2">
-                {i18n._(
-                  "Your credit card is not confirmed. Please confirm your credit card to access all features."
-                )}
-              </Typography>
-            </Stack>
-
-            <Stack
-              sx={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "15px",
-                flexWrap: "wrap",
-              }}
-            >
-              <Button
-                variant="contained"
-                startIcon={<CreditCard />}
-                color="primary"
-                onClick={() => onStartValidation()}
+        <Stack
+          sx={{
+            maxWidth: "720px",
+            width: "100%",
+            alignItems: "flex-start",
+            gap: "30px",
+            padding: "20px 20px",
+          }}
+        >
+          {isLoading && <CircularProgress />}
+          {isShowForm && clientSecret && <VerifyCard lang={lang} clientSecret={clientSecret} />}
+          {!isShowForm && !isLoading && (
+            <>
+              <Stack
+                sx={{
+                  gap: "25px",
+                }}
               >
-                {i18n._("Confirm Credit Card")}
-              </Button>
+                <Stack>
+                  <Typography variant="h3">{i18n._("Credit Card Check")}</Typography>
+                  <Typography variant="body2">
+                    {i18n._("Please confirm your credit card to access all features.")}
+                  </Typography>
+                </Stack>
+                <Stack>
+                  <IconTextList
+                    gap="10px"
+                    listItems={[
+                      {
+                        icon: Sparkles,
+                        title: i18n._("You will get 3 days of full access for free"),
+                      },
+                      {
+                        icon: PiggyBank,
+                        title: i18n._("No automatic payment after the trial"),
+                      },
+                      {
+                        icon: ShieldCheck,
+                        title: i18n._("No charge will be made"),
+                      },
+                    ]}
+                  />
+                </Stack>
+              </Stack>
 
-              <Typography variant="caption">{i18n._("No charge will be made")}</Typography>
-            </Stack>
-          </>
-        )}
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "15px",
+                  flexWrap: "wrap",
+                }}
+              >
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="info"
+                  startIcon={<CreditCard />}
+                  onClick={() => onStartValidation()}
+                >
+                  {i18n._("Confirm Credit Card")}
+                </Button>
+              </Stack>
+            </>
+          )}
+        </Stack>
       </Stack>
-    </Stack>
+    </CustomModal>
   );
 };

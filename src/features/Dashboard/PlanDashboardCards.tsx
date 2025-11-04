@@ -29,6 +29,7 @@ import { useSettings } from "../Settings/useSettings";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { useWindowSizes } from "../Layout/useWindowSizes";
+import { CardValidator } from "../PayWall/CardValidator";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();
@@ -199,8 +200,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
           paddingBottom: `calc(40px + ${sizes.bottomOffset})`,
           zIndex: 999,
           gap: "10px",
+          width: "100%",
         }}
       >
+        <CardValidator lang={lang} />
         <Typography align="center" variant="h6">
           {i18n._(`Now let’s determine your starting point!`)}
         </Typography>
@@ -210,7 +213,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
             width: "100%",
             boxSizing: "border-box",
             gap: "20px",
-            maxWidth: "500px",
+            maxWidth: "700px",
             padding: "10px",
             paddingBottom: "40px",
           }}

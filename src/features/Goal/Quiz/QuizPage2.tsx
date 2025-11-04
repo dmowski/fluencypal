@@ -504,8 +504,9 @@ const RecordAboutFollowUp = ({
                 >
                   <Button
                     onClick={(e) => {
-                      const fullText =
-                        `${question?.title || ""}\n\n${question?.description || ""}`.trim();
+                      const fullText = `${question?.title || ""}\n\n${
+                        question?.description || ""
+                      }`.trim();
                       translation.translateWithModal(fullText, e.currentTarget);
                     }}
                     size="small"
@@ -541,11 +542,11 @@ interface ListItem {
   href?: string;
 }
 
-export const IconTextList = ({ listItems }: { listItems: ListItem[] }) => {
+export const IconTextList = ({ listItems, gap }: { listItems: ListItem[]; gap?: string }) => {
   return (
     <Stack
       sx={{
-        gap: "18px",
+        gap: gap || "18px",
         width: "100%",
       }}
     >
@@ -869,15 +870,15 @@ const RecordUserAudio = ({
           recorder.isRecording && wordsCount < minWords
             ? i18n._("Done")
             : transcript && wordsCount >= minWords
-              ? i18n._("Next")
-              : i18n._("Record")
+            ? i18n._("Next")
+            : i18n._("Record")
         }
         color={
           recorder.isRecording && wordsCount < minWords
             ? "error"
             : wordsCount > minWords
-              ? "success"
-              : "primary"
+            ? "success"
+            : "primary"
         }
         endIcon={
           recorder.isRecording && wordsCount < minWords ? (
