@@ -32,7 +32,7 @@ const getOrCreateCustomerId = async (userId: string): Promise<string> => {
       metadata: { firebaseUid: userId },
     },
     {
-      idempotencyKey: `create_customer_${userId}`, // same uid → same op
+      idempotencyKey: `customer_${userId}`, // same uid → same op
     }
   );
 
