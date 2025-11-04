@@ -125,7 +125,10 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             <img
               src={countryImage}
               alt={countryName}
-              style={{ borderRadius: "4px", width: "24px", height: "24px" }}
+              style={{
+                borderRadius: "4px",
+                width: "24px",
+              }}
             />
           )}
           <Typography variant="caption">
@@ -142,11 +145,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           }}
         >
           {gameAvatar && (
-            <img
-              src={gameAvatar}
-              alt={countryName}
-              style={{ borderRadius: "34px", width: "24px", height: "24px" }}
-            />
+            <img src={gameAvatar} style={{ borderRadius: "34px", width: "22px", height: "22px" }} />
           )}
           <Typography variant="caption">
             {[gameUsername, userStats?.points].filter(Boolean).join(" | ")}
