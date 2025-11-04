@@ -41,15 +41,18 @@ export async function POST(request: Request) {
   }
 
   try {
+    console.log("event.type", event.type);
     // --- NEW: SetupIntent handling for card verification ---
     if (event.type === "setup_intent.succeeded") {
       const si = event.data.object as Stripe.SetupIntent;
       const customerId = si.customer as string | null;
+      console.log("customerId setup_intent.succeeded", customerId);
 
       let firebaseUid: string | undefined;
       if (customerId) {
         const customer = (await stripe.customers.retrieve(customerId)) as Stripe.Customer;
         firebaseUid = customer?.metadata?.firebaseUid;
+        console.log("firebaseUid", firebaseUid);
       }
 
       if (firebaseUid) {
