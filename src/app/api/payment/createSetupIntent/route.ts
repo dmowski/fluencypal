@@ -25,41 +25,6 @@ const getOrCreateCustomerId = async (userId: string): Promise<string> => {
   const profile = await getUserInfo(userId);
   const email: string | undefined = profile?.email || undefined;
 
-  // 3) Defensive search: avoid dupes if races happened before mapping was saved
-  //    (Stripe Search requires enablement in some accounts; fallback is fine to skip if unavailable)
-  //    Try to find by metadata (best) or email (ok, but not perfect).
-  let foundId: string | undefined;
-  try {
-    const search = await stripe.customers.search({
-      query: `metadata['firebaseUid']:'${userId}'`,
-      limit: 1,
-    });
-    if (search.data.length) {
-      foundId = search.data[0].id;
-    }
-  } catch (_) {
-    // ignore if search not available
-  }
-
-  if (!foundId && email) {
-    try {
-      const searchByEmail = await stripe.customers.search({
-        query: `email:'${email.replace(/'/g, "\\'")}'`,
-        limit: 1,
-      });
-      if (searchByEmail.data.length) {
-        foundId = searchByEmail.data[0].id;
-      }
-    } catch (_) {
-      // ignore
-    }
-  }
-
-  if (foundId) {
-    await setStripeUserInfo(userId, { customerId: foundId });
-    return foundId;
-  }
-
   // 4) Create with idempotency key to guard races
   const customer = await stripe.customers.create(
     {
