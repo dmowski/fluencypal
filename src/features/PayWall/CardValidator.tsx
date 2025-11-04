@@ -74,7 +74,7 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
           {submitting ? (
             <CircularProgress size={18} />
           ) : isSuccess ? (
-            i18n._("Card verified")
+            i18n._("Card verified. Loading...")
           ) : (
             i18n._("Verify card")
           )}
