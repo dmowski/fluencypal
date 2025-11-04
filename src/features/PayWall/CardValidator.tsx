@@ -22,6 +22,7 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
   const elements = useElements();
   const [submitting, setSubmitting] = useState(false);
   const [errMsg, setErrMsg] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,6 +39,11 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
       });
       if (result.error) setErrMsg(result.error.message ?? i18n._("Verification failed"));
       console.log("result onSubmit Card Verification", result);
+
+      if (result.setupIntent?.status === "succeeded") {
+        console.log("Card verification succeeded");
+        setIsSuccess(true);
+      }
       // If no error -> success path; rely on webhook to flip the flag.
       // Optionally start a short polling loop here to refresh settings.
       confirmGtag();
@@ -60,8 +66,18 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
             "FluencyPal will not charge your card. A small temporary authorization hold may appear on your statement, which will be released by your bank within a few days."
           )}
         </Typography>
-        <Button variant="contained" type="submit" disabled={!stripe || !elements || submitting}>
-          {submitting ? <CircularProgress size={18} /> : i18n._("Verify card")}
+        <Button
+          variant="contained"
+          type="submit"
+          disabled={!stripe || !elements || submitting || isSuccess}
+        >
+          {submitting ? (
+            <CircularProgress size={18} />
+          ) : isSuccess ? (
+            i18n._("Card verified")
+          ) : (
+            i18n._("Verify card")
+          )}
         </Button>
         {errMsg && (
           <Typography variant="caption" color="error">
