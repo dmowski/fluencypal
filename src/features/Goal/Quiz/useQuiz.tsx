@@ -463,7 +463,9 @@ ${survey.aboutUserFollowUpTranscription}
       {
         id: `about_user_followup_question`,
         isBot: true,
-        text: `${survey.aboutUserFollowUpQuestion.title}\n${survey.aboutUserFollowUpQuestion.description || ""}`,
+        text: `${survey.aboutUserFollowUpQuestion.title}\n${
+          survey.aboutUserFollowUpQuestion.description || ""
+        }`,
       },
       {
         id: `about_user_followup_answer`,
@@ -473,7 +475,9 @@ ${survey.aboutUserFollowUpTranscription}
       {
         id: `goal_followup_question`,
         isBot: true,
-        text: `${survey.goalFollowUpQuestion.title}\n${survey.goalFollowUpQuestion.description || ""}`,
+        text: `${survey.goalFollowUpQuestion.title}\n${
+          survey.goalFollowUpQuestion.description || ""
+        }`,
       },
       {
         id: `goal_followup_answer`,
@@ -743,8 +747,8 @@ ${survey.aboutUserFollowUpTranscription}
       "goalReview",
     ];
     if (!isGTagConfirmed && confirmGTagSteps.includes(currentStep)) {
-      confirmGtag();
       setIsGTagConfirmed(true);
+      // confirmGtag();
     }
 
     if (currentStep === "before_recordAbout") {

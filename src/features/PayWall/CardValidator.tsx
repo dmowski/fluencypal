@@ -13,6 +13,7 @@ import { IconTextList } from "../Goal/Quiz/QuizPage2";
 import { isTMA } from "@telegram-apps/sdk-react";
 import { stripeLocaleMap, SupportedLanguage } from "../Lang/lang";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
+import { confirmGtag } from "../Analytics/confirmGtag";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 function SetupForm({ clientSecret }: { clientSecret: string }) {
@@ -38,6 +39,7 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
       if (error) setErrMsg(error.message ?? i18n._("Verification failed"));
       // If no error -> success path; rely on webhook to flip the flag.
       // Optionally start a short polling loop here to refresh settings.
+      confirmGtag();
     } finally {
       setSubmitting(false);
     }
