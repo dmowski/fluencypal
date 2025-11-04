@@ -55,15 +55,5 @@ export async function POST(request: Request) {
     });
   }
 
-  const devEmails = ["dmowski.alex@gmail.com"];
-  const isDev = devEmails.includes(userInfo?.email || "");
-  if (!isDev) {
-    const userId = userInfo.uid;
-    sentSupportTelegramMessage({
-      message: `Init balance`,
-      userId: userId,
-    });
-  }
-
   return Response.json(response);
 }
