@@ -210,7 +210,7 @@ export function AdminStats() {
   const data = useMemo(() => {
     if (!sourceData) return null;
     const cleanUsers = sourceData?.users.filter((user) => {
-      return !user.userData.email.includes("dmowski");
+      return !user.userData.email?.includes("dmowski");
     });
     return { ...sourceData, users: cleanUsers || [] };
   }, [sourceData]);
