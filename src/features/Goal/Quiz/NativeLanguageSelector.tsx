@@ -13,7 +13,7 @@ import { NextStepButton } from "./NextStepButton";
 
 export const NativeLanguageSelector = () => {
   const { i18n } = useLingui();
-  const { nativeLanguage, setNativeLanguage, nextStep } = useQuiz();
+  const { nativeLanguage, setNativeLanguage } = useQuiz();
 
   const [internalFilterValue, setInternalFilterValue] = useState("");
   const cleanInput = internalFilterValue.trim().toLowerCase();

@@ -2,7 +2,7 @@
 
 import { useLingui } from "@lingui/react";
 import { GraduationCap, Guitar, Music, Plane } from "lucide-react";
-import { IconTextList, ListItem } from "./IconTextList";
+import { IconTextList, ListItem } from "./ui/IconTextList";
 
 export const AboutYourselfList: React.FC = () => {
   const { i18n } = useLingui();

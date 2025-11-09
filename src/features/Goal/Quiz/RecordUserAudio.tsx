@@ -8,7 +8,7 @@ import { ReactNode, useEffect } from "react";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useAuth } from "@/features/Auth/useAuth";
 import { getWordsCount } from "@/libs/words";
-import { FooterButton } from "./FooterButton";
+import { FooterButton } from "./ui/FooterButton";
 import { RecordUserAudioAnswer } from "./RecordUserAudioAnswer";
 
 export const RecordUserAudio = ({

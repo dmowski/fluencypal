@@ -10,7 +10,7 @@ import { WebViewWall } from "@/features/Auth/WebViewWall";
 import { AuthWall } from "@/features/Auth/AuthWall";
 import { ProgressBar } from "./ProgressBar";
 import { LanguageToLearnSelector } from "./LanguageToLearnSelector";
-import { InfoStep } from "./InfoStep";
+import { InfoStep } from "./ui/InfoStep";
 import { NativeLanguageSelector } from "./NativeLanguageSelector";
 import { PageLanguageSelector } from "./PageLanguageSelector";
 import { AboutYourselfList } from "./AboutYourselfList";

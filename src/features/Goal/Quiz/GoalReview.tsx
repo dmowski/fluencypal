@@ -12,7 +12,7 @@ import { PlanElementMode } from "@/features/Plan/types";
 import { cardColors, modeCardProps } from "@/features/Plan/data";
 import { useRouter } from "next/navigation";
 import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
-import { FooterButton } from "./FooterButton";
+import { FooterButton } from "./ui/FooterButton";
 
 export const GoalReview = ({}) => {
   const { i18n } = useLingui();

@@ -3,7 +3,7 @@
 import { useLingui } from "@lingui/react";
 import { ArrowRight } from "lucide-react";
 import { useQuiz } from "./useQuiz";
-import { FooterButton } from "./FooterButton";
+import { FooterButton } from "./ui/FooterButton";
 
 export const NextStepButton = ({
   disabled,

@@ -1,10 +1,10 @@
 "use client";
 import { Stack, Typography } from "@mui/material";
-import { useWindowSizes } from "../../Layout/useWindowSizes";
+import { useWindowSizes } from "../../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
 import { ReactNode } from "react";
 import { FooterButton } from "./FooterButton";
-import { NextStepButton } from "./NextStepButton";
+import { NextStepButton } from "../NextStepButton";
 
 export const InfoStep = ({
   message,

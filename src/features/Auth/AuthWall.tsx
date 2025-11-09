@@ -21,8 +21,8 @@ import {
 } from "lucide-react";
 import { getUrlStart } from "../Lang/getUrlStart";
 import Google from "@mui/icons-material/Google";
-import { InfoStep } from "../Goal/Quiz/InfoStep";
-import { IconTextList } from "../Goal/Quiz/IconTextList";
+import { InfoStep } from "../Goal/Quiz/ui/InfoStep";
+import { IconTextList } from "../Goal/Quiz/ui/IconTextList";
 
 export const AuthWall = ({
   children,
