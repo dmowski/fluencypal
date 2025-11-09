@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useWindowSizes } from "@/features/Layout/useWindowSizes";
 import { useTgNavigation } from "@/features/Telegram/useTgNavigation";
 import { useQuiz } from "./useQuiz";
-import { UIProgressBar } from "./ui/UIProgressBar";
+import { UIProgressBar } from "../../Survey/UIProgressBar";
 
 export const ProgressBar = () => {
   const { topOffset } = useWindowSizes();

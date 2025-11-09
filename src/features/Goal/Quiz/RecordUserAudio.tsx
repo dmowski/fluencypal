@@ -8,8 +8,8 @@ import { ReactNode, useEffect } from "react";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useAuth } from "@/features/Auth/useAuth";
 import { getWordsCount } from "@/libs/words";
-import { FooterButton } from "./ui/FooterButton";
-import { RecordUserAudioAnswer } from "./ui/RecordUserAudioAnswer";
+import { FooterButton } from "../../Survey/FooterButton";
+import { RecordUserAudioAnswer } from "../../Survey/RecordUserAudioAnswer";
 
 export const RecordUserAudio = ({
   transcript,

@@ -1,6 +1,6 @@
 "use client";
 import { Button, Stack } from "@mui/material";
-import { useWindowSizes } from "../../../Layout/useWindowSizes";
+import { useWindowSizes } from "../Layout/useWindowSizes";
 import { ReactNode } from "react";
 
 export const FooterButton = ({

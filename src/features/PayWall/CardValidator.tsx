@@ -9,7 +9,7 @@ import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-
 import { SetupIntentRequest, SetupIntentResponse } from "@/app/api/payment/type";
 import { useAuth } from "../Auth/useAuth";
 import dayjs from "dayjs";
-import { IconTextList } from "../Goal/Quiz/ui/IconTextList";
+import { IconTextList } from "../Survey/IconTextList";
 import { isTMA } from "@telegram-apps/sdk-react";
 import { stripeLocaleMap, SupportedLanguage } from "../Lang/lang";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
