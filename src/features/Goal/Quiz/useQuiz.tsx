@@ -145,10 +145,9 @@ interface QuizUrlState {
   currentStep: QuizStep;
 }
 
-function useProvideQuizContext({ pageLang, defaultLangToLearn }: QuizProps): QuizContextType {
+function useProvideQuizContext({ pageLang }: QuizProps): QuizContextType {
   const auth = useAuth();
   const textAi = useTextAi();
-  const fixJson = useFixJson();
   const settings = useSettings();
   const plan = usePlan();
   const userInfo = useAiUserInfo();
