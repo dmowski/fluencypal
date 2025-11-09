@@ -3,7 +3,6 @@ import { useAuth } from "./useAuth";
 import { useLingui } from "@lingui/react";
 import { scrollTopFast } from "@/libs/scroll";
 import { Stack, Typography } from "@mui/material";
-import { IconTextList, InfoStep } from "../Goal/Quiz/QuizPage2";
 import { Trans } from "@lingui/react/macro";
 import {
   BetweenHorizontalStart,
@@ -22,6 +21,8 @@ import {
 } from "lucide-react";
 import { getUrlStart } from "../Lang/getUrlStart";
 import Google from "@mui/icons-material/Google";
+import { InfoStep } from "../Goal/Quiz/InfoStep";
+import { IconTextList } from "../Goal/Quiz/IconTextList";
 
 export const AuthWall = ({
   children,

@@ -4,7 +4,6 @@ import { Trans } from "@lingui/react/macro";
 import { use, useEffect, useMemo, useState } from "react";
 import { dailyQuestions } from "./dailyQuestions";
 import dayjs from "dayjs";
-import { IconTextList, RecordUserAudioAnswer } from "@/features/Goal/Quiz/QuizPage2";
 import {
   ArrowRight,
   Check,
@@ -28,6 +27,8 @@ import { useTranslate } from "@/features/Translation/useTranslate";
 import { QuestionComment } from "./QuestionComment";
 import { sendTelegramRequest } from "@/features/Telegram/sendTextAiRequest";
 import { useCorrections } from "@/features/Corrections/useCorrections";
+import { IconTextList } from "@/features/Goal/Quiz/IconTextList";
+import { RecordUserAudioAnswer } from "@/features/Goal/Quiz/RecordUserAudioAnswer";
 
 export const DailyQuestionBadge = () => {
   const { i18n } = useLingui();
@@ -494,8 +495,8 @@ export const DailyQuestionBadge = () => {
                           recorder.isRecording && wordsCount < minWords
                             ? "error"
                             : wordsCount >= minWords
-                              ? "success"
-                              : "primary"
+                            ? "success"
+                            : "primary"
                         }
                         endIcon={
                           recorder.isRecording && wordsCount < minWords ? (
@@ -510,10 +511,10 @@ export const DailyQuestionBadge = () => {
                         {recorder.isRecording && wordsCount < minWords
                           ? i18n._("Done")
                           : transcript && wordsCount >= minWords
-                            ? i18n._("Publish")
-                            : transcript
-                              ? i18n._("Re-Record")
-                              : i18n._("Record")}
+                          ? i18n._("Publish")
+                          : transcript
+                          ? i18n._("Re-Record")
+                          : i18n._("Record")}
                       </Button>
                     </Stack>
                     <Typography align="center" variant="caption" color="text.secondary">
