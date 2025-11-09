@@ -9,7 +9,7 @@ import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useAuth } from "@/features/Auth/useAuth";
 import { getWordsCount } from "@/libs/words";
 import { FooterButton } from "./ui/FooterButton";
-import { RecordUserAudioAnswer } from "./RecordUserAudioAnswer";
+import { RecordUserAudioAnswer } from "./ui/RecordUserAudioAnswer";
 
 export const RecordUserAudio = ({
   transcript,

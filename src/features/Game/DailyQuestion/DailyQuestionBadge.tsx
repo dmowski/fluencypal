@@ -28,7 +28,7 @@ import { QuestionComment } from "./QuestionComment";
 import { sendTelegramRequest } from "@/features/Telegram/sendTextAiRequest";
 import { useCorrections } from "@/features/Corrections/useCorrections";
 import { IconTextList } from "@/features/Goal/Quiz/ui/IconTextList";
-import { RecordUserAudioAnswer } from "@/features/Goal/Quiz/RecordUserAudioAnswer";
+import { RecordUserAudioAnswer } from "@/features/Goal/Quiz/ui/RecordUserAudioAnswer";
 
 export const DailyQuestionBadge = () => {
   const { i18n } = useLingui();
