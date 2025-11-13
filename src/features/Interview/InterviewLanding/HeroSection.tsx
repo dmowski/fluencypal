@@ -14,7 +14,7 @@ export const HeroSection = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: "center", maxWidth: 800, mx: "auto" }}>
+        <Box sx={{ textAlign: "center", maxWidth: 900, mx: "auto" }}>
           <Typography
             variant="h1"
             sx={{

@@ -33,13 +33,11 @@ export const SocialProofSection = () => {
                 display: "flex",
                 alignItems: "center",
                 gap: 1.5,
+                maxWidth: 300,
               }}
             >
               <Typography sx={{ fontSize: "2rem" }}>{proof.icon}</Typography>
-              <Typography
-                variant="body1"
-                sx={{ fontWeight: 600, color: "white" }}
-              >
+              <Typography variant="body1" sx={{ fontWeight: 600, color: "white" }}>
                 {proof.label}
               </Typography>
             </Box>

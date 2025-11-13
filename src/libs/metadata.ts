@@ -10,14 +10,11 @@ import { getBlogs } from "@/features/Blog/blogData";
 import { getLangLearnPlanLabels } from "@/features/Lang/getLabels";
 
 export const generateAlternatesTags = (currentPath: string) => {
-  const hreflangLinks = supportedLanguages.reduce(
-    (acc, lang) => {
-      acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (currentPath ? "/" : "")}${currentPath}`;
+  const hreflangLinks = supportedLanguages.reduce((acc, lang) => {
+    acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (currentPath ? "/" : "")}${currentPath}`;
 
-      return acc;
-    },
-    {} as Record<SupportedLanguage, string>
-  );
+    return acc;
+  }, {} as Record<SupportedLanguage, string>);
 
   return {
     canonical: hreflangLinks["en"],
@@ -40,6 +37,7 @@ type Path =
   | "terms"
   | "scenarios"
   | "blog"
+  | "interviewLanding"
   | "";
 
 interface generateMetadataInfoProps {
@@ -86,6 +84,14 @@ export const generateMetadataInfo = ({
     title = languageToLearnPlan + " | " + APP_NAME;
     description = i18n._(
       `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`
+    );
+    keywords = [];
+  }
+
+  if (currentPath === "interviewLanding") {
+    title = i18n._(`Interview Preparation`) + " | " + APP_NAME;
+    description = i18n._(
+      `Prepare for your interviews with AI-powered tools that help you practice and improve your answers.`
     );
     keywords = [];
   }
