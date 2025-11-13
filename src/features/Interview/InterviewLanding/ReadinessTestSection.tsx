@@ -1,6 +1,6 @@
 "use client";
 import { useLingui } from "@lingui/react";
-import { Box, Button, Container, Paper, Typography } from "@mui/material";
+import { Box, Button, Container, Paper, Stack, Typography } from "@mui/material";
 
 export const ReadinessTestSection = () => {
   const { i18n } = useLingui();
@@ -15,26 +15,24 @@ export const ReadinessTestSection = () => {
   return (
     <Box sx={{ py: 10, bgcolor: "#1a202c" }}>
       <Container maxWidth="md">
-        <Typography
-          variant="h3"
-          sx={{
-            textAlign: "center",
-            fontWeight: 700,
-            mb: 3,
-            color: "white",
-          }}
-        >
-          {i18n._(`Take the Interview Readiness Test`)}
-        </Typography>
+        <Stack>
+          <Typography
+            variant="h3"
+            sx={{
+              textAlign: "center",
+              fontWeight: 700,
+              color: "white",
+            }}
+          >
+            {i18n._(`Take the Interview Readiness Test`)}
+          </Typography>
 
-        <Typography
-          variant="h6"
-          sx={{ textAlign: "center", mb: 4, color: "#cbd5e0" }}
-        >
-          {i18n._(`In 2 minutes, you'll get:`)}
-        </Typography>
+          <Typography variant="h6" sx={{ textAlign: "center", mb: 4, color: "#cbd5e0" }}>
+            {i18n._(`In 2 minutes, you'll get:`)}
+          </Typography>
+        </Stack>
 
-        <Box sx={{ mb: 4 }}>
+        <Box sx={{ mb: 4, maxWidth: 500, mx: "auto" }}>
           {benefits.map((benefit, index) => (
             <Box
               key={index}
@@ -79,41 +77,6 @@ export const ReadinessTestSection = () => {
             {i18n._(`Start the test`)}
           </Button>
         </Box>
-
-        <Paper
-          sx={{
-            p: 4,
-            textAlign: "center",
-            position: "relative",
-            overflow: "hidden",
-            bgcolor: "#2d3748",
-            border: "1px solid #4a5568",
-          }}
-        >
-          <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: "white" }}>
-            {i18n._(`Your Interview Score`)}
-          </Typography>
-          <Box
-            sx={{
-              filter: "blur(8px)",
-              opacity: 0.5,
-              userSelect: "none",
-            }}
-          >
-            <Typography variant="body2" sx={{ mb: 1, color: "#e2e8f0" }}>
-              {i18n._(`Top weaknesses:`)}
-            </Typography>
-            <Typography variant="body2" sx={{ color: "#e2e8f0" }}>
-              • {i18n._(`Structure and clarity`)}
-            </Typography>
-            <Typography variant="body2" sx={{ color: "#e2e8f0" }}>
-              • {i18n._(`Answer depth`)}
-            </Typography>
-            <Typography variant="body2" sx={{ color: "#e2e8f0" }}>
-              • {i18n._(`Confidence delivery`)}
-            </Typography>
-          </Box>
-        </Paper>
       </Container>
     </Box>
   );

@@ -66,41 +66,6 @@ export const HeroSection = () => {
             >
               {i18n._(`👉 Start Your Interview Test (2 min)`)}
             </Button>
-
-            <Button
-              variant="outlined"
-              size="large"
-              sx={{
-                color: "white",
-                borderColor: "rgba(255,255,255,0.5)",
-                px: 4,
-                py: 1.5,
-                fontSize: "1.1rem",
-                "&:hover": {
-                  borderColor: "white",
-                  bgcolor: "rgba(255,255,255,0.1)",
-                },
-              }}
-            >
-              {i18n._(`See how it works`)}
-            </Button>
-          </Box>
-
-          <Box
-            sx={{
-              mt: 6,
-              p: 3,
-              bgcolor: "rgba(255,255,255,0.1)",
-              borderRadius: 2,
-              border: "1px solid rgba(255,255,255,0.2)",
-            }}
-          >
-            <Typography variant="h6" sx={{ fontWeight: 600, color: "white" }}>
-              {i18n._(`Your Interview Score: 68%`)}
-            </Typography>
-            <Typography variant="body2" sx={{ color: "#cbd5e0", mt: 1 }}>
-              {i18n._(`Confidence, Structure, Clarity`)}
-            </Typography>
           </Box>
         </Box>
       </Container>
