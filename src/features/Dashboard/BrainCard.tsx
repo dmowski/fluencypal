@@ -21,7 +21,6 @@ import React from "react";
 import { sleep } from "openai/core.mjs";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { getUrlStart } from "../Lang/getUrlStart";
-import { AudioPlayIcon } from "../Audio/AudioPlayIcon";
 
 interface GradingProgressBarProps {
   value: number; // from 0 to 100
@@ -494,8 +493,8 @@ Address directly to the user.
                         {languagesToLearn.length > 0
                           ? i18n._(`Install:`) + " " + languagesToLearn.join(", ")
                           : isAnalyzing
-                            ? i18n._(`Connecting...`)
-                            : i18n._(`Initiate brain connection`)}
+                          ? i18n._(`Connecting...`)
+                          : i18n._(`Initiate brain connection`)}
                       </Button>
                     </Stack>
                   )}
