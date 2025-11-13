@@ -1,14 +1,6 @@
 "use client";
 import { useLingui } from "@lingui/react";
-import {
-  Box,
-  Button,
-  Chip,
-  Container,
-  Grid,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Chip, Container, Grid, Paper, Typography } from "@mui/material";
 
 export const PricingSection = () => {
   const { i18n } = useLingui();
@@ -91,9 +83,7 @@ export const PricingSection = () => {
                   p: 4,
                   height: "100%",
                   bgcolor: "#1a202c",
-                  border: plan.recommended
-                    ? `2px solid ${plan.color}`
-                    : "1px solid #2d3748",
+                  border: plan.recommended ? `2px solid ${plan.color}` : "1px solid #2d3748",
                   borderRadius: 2,
                   position: "relative",
                   transition: "transform 0.3s",
@@ -127,25 +117,16 @@ export const PricingSection = () => {
                   {plan.label}
                 </Typography>
 
-                <Typography
-                  variant="h4"
-                  sx={{ fontWeight: 700, mb: 1, color: "white" }}
-                >
+                <Typography variant="h4" sx={{ fontWeight: 700, mb: 1, color: "white" }}>
                   {plan.name}
                 </Typography>
 
-                <Typography
-                  variant="h3"
-                  sx={{ fontWeight: 700, mb: 1, color: plan.color }}
-                >
+                <Typography variant="h3" sx={{ fontWeight: 700, mb: 1, color: plan.color }}>
                   {plan.price}
                 </Typography>
 
                 {plan.priceAnchor && (
-                  <Typography
-                    variant="body2"
-                    sx={{ color: "#a0aec0", mb: 2, fontStyle: "italic" }}
-                  >
+                  <Typography variant="body2" sx={{ color: "#a0aec0", mb: 2, fontStyle: "italic" }}>
                     {plan.priceAnchor}
                   </Typography>
                 )}
@@ -156,14 +137,11 @@ export const PricingSection = () => {
 
                 <Box sx={{ mb: 3 }}>
                   {plan.features.map((feature, idx) => (
-                    <Box
-                      key={idx}
-                      sx={{ display: "flex", alignItems: "center", mb: 1.5 }}
-                    >
-                      <Typography sx={{ mr: 1, color: plan.color }}>
-                        ✓
+                    <Box key={idx} sx={{ display: "flex", alignItems: "center", mb: 1.5 }}>
+                      <Typography sx={{ mr: 1, color: plan.color }}>✓</Typography>
+                      <Typography variant="body2" sx={{ color: "#e2e8f0" }}>
+                        {feature}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: "#e2e8f0" }}>{feature}</Typography>
                     </Box>
                   ))}
                 </Box>
@@ -183,7 +161,7 @@ export const PricingSection = () => {
                     },
                   }}
                 >
-                  {i18n._(`Start ${plan.name} — ${plan.price}`)}
+                  {i18n._(`Start`)} {plan.name} — {plan.price}
                 </Button>
               </Paper>
             </Grid>
