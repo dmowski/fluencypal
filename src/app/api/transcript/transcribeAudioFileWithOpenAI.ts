@@ -57,7 +57,7 @@ export const transcribeAudioFileWithOpenAI = async ({
 
   try {
     const transcriptionResult = await client.audio.transcriptions.create({
-      file: file,
+      file,
       model: model,
       language: supportedLang,
       prompt: isKeepGrammarMistakes
@@ -75,6 +75,7 @@ export const transcribeAudioFileWithOpenAI = async ({
     return response;
   } catch (error) {
     console.error("Error during transcription:", error);
+    console.error(JSON.stringify(error, null, 2));
 
     const randomName = `${Date.now()}-${format}.mp3`;
 
