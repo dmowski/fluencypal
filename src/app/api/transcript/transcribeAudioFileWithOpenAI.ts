@@ -58,7 +58,7 @@ export const transcribeAudioFileWithOpenAI = async ({
   try {
     const transcriptionResult = await client.audio.transcriptions.create({
       file,
-      model: model,
+      model,
       language: supportedLang,
       prompt: isKeepGrammarMistakes
         ? "Transcribe the audio. Keep grammar mistakes and typos."
