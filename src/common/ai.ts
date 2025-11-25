@@ -1,6 +1,9 @@
-export type RealTimeModel = "gpt-4o-realtime-preview" | "gpt-4o-mini-realtime-preview";
+export type RealTimeModel =
+  | "gpt-4o-realtime-preview"
+  | "gpt-4o-mini-realtime-preview"
+  | "gpt-realtime";
 
-const MAIN_CONVERSATION_MODEL: RealTimeModel = "gpt-4o-realtime-preview";
+const MAIN_CONVERSATION_MODEL: RealTimeModel = "gpt-realtime";
 const SMALL_CONVERSATION_MODEL: RealTimeModel = "gpt-4o-mini-realtime-preview";
 
 export type TextAiModel = "gpt-4o" | "gpt-4o-mini";
@@ -103,6 +106,14 @@ export const modalPricePerMillionTokens: Record<RealTimeModel, RealtimeUsagePric
     audio_input: 10,
     audio_cached_input: 0.3,
     audio_output: 20,
+  },
+  "gpt-realtime": {
+    text_input: 4,
+    text_cached_input: 0.4,
+    text_output: 16,
+    audio_input: 32,
+    audio_cached_input: 0.4,
+    audio_output: 64,
   },
 };
 // USD
