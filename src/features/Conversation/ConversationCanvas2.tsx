@@ -168,17 +168,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const auth = useAuth();
   const userPhoto = auth.userInfo?.photoURL || "";
   const myUserName = auth.userInfo?.displayName || auth.userInfo?.email || "You";
-  const closeMenus = () => {
-    setAnchorElUser(null);
-  };
-
-  const startCallMode = () => {
-    toggleCallMode(true);
-  };
-
-  const stopCallMode = () => {
-    toggleCallMode(false);
-  };
+  const closeMenus = () => setAnchorElUser(null);
+  const startCallMode = () => toggleCallMode(true);
+  const stopCallMode = () => toggleCallMode(false);
+  const sizes = useWindowSizes();
 
   const isFinishingProcess = isClosing || isClosed;
   const { ref, size } = useResizeElement<HTMLDivElement>();
@@ -587,16 +580,16 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         <Stack
           sx={{
             alignItems: "center",
-            gap: "20px",
+            gap: "0px",
           }}
         >
           <Stack
             sx={{
               width: "100%",
-              maxWidth: "100%",
-              height: "calc(100dvh - 320px)",
+              maxWidth: "1100px",
+              height: `calc(100dvh - 310px - ${sizes.bottomOffset})`,
               overflow: "hidden",
-              padding: "10px",
+              padding: "10px 10px 5px 10px",
               paddingTop: "30px",
               gap: "10px",
               display: "grid",
@@ -616,49 +609,27 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 position: "relative",
                 boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                 overflow: "hidden",
+                aspectRatio: "1 / 1",
               }}
             >
-              <Stack
-                sx={{
+              <video
+                src={"/call/3.mp4"}
+                style={{
                   position: "absolute",
                   top: "0",
                   left: "0",
-                  width: "100%",
+                  width: "auto",
                   height: "100%",
-                  background: "url('/blur/4.jpg')",
-                  backgroundSize: "cover",
-                  opacity: 0.7,
+                  aspectRatio: "1 / 1",
+                  objectFit: "fill",
                 }}
-              ></Stack>
+                autoPlay
+                controls={false}
+                muted
+                loop
+                playsInline
+              />
 
-              <Stack
-                sx={{
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  width: "100%",
-                  height: "100%",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Stack
-                  sx={{
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    padding: "10px 5px 0 5px",
-                    backgroundColor: "rgba(255, 255, 255, 0.5)",
-                  }}
-                >
-                  <img
-                    src={"avatar/girl.png"}
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                    }}
-                  />
-                </Stack>
-              </Stack>
               <Stack
                 sx={{
                   position: "absolute",
@@ -801,6 +772,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               justifyContent: "center",
               gap: "20px",
               width: "100%",
+              paddingTop: "20px",
             }}
           >
             <IconButton
