@@ -34,7 +34,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   const textAi = useTextAi();
   const [testMessage, setTestMessage] = useState<ChatMessage[]>(startTestMessages);
 
-  const showGame = true;
+  const showGame = false;
   const gameStat: GuessGameStat | null = showGame
     ? {
         wordsUserToDescribe: [
@@ -199,7 +199,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
           await sleep(2000);
           return "Nice to see you here";
         }}
-        isCallMode={false}
+        isCallMode={true}
         toggleCallMode={() => {}}
         isNeedToShowBalanceWarning={false}
         setIsMuted={() => {}}
