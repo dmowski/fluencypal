@@ -187,7 +187,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   useEffect(() => {
     if (isCallMode && !webCam.isWebCamEnabled) {
-      webCam.init();
+      setTimeout(() => {
+        webCam.init();
+      }, 500);
     }
   }, [isCallMode]);
 
@@ -607,7 +609,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               sx={{
                 width: "100%",
                 height: "100%",
-                borderRadius: "10px",
+                borderRadius: "20px",
                 backgroundColor: "rgba(0, 0, 0, 0.9)",
                 alignItems: "center",
                 justifyContent: "center",
@@ -660,17 +662,18 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               <Stack
                 sx={{
                   position: "absolute",
-                  top: "0",
+                  bottom: "0",
                   left: "0",
-                  height: "30px",
-                  background: "linear-gradient(45deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3))",
+                  width: "100%",
+                  height: "80px",
+                  background: "linear-gradient(0deg, rgba(0,0,0,0.31), rgba(0,0,0,0))",
                 }}
               ></Stack>
               <Stack
                 sx={{
                   position: "absolute",
-                  bottom: "15px",
-                  left: "15px",
+                  bottom: "20px",
+                  left: "20px",
                   gap: "5px",
                 }}
               >
@@ -684,7 +687,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               sx={{
                 width: "100%",
                 height: "100%",
-                borderRadius: "10px",
+                borderRadius: "20px",
                 backgroundColor: "rgba(0, 0, 0, 0.3)",
                 alignItems: "center",
                 justifyContent: "center",
@@ -700,7 +703,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   height: "100%",
                   objectFit: "cover",
                   transform: "scaleX(-1)",
-                  borderRadius: "10px",
                   display: webCam.isWebCamEnabled ? "block" : "none",
                 }}
                 autoPlay
@@ -761,31 +763,25 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               <Stack
                 sx={{
                   position: "absolute",
-                  top: "0",
+                  bottom: "0",
                   left: "0",
-                  height: "30px",
-                  background: "linear-gradient(45deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3))",
+                  width: "100%",
+                  height: "80px",
+                  background: "linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0,0,0,0))",
                 }}
               ></Stack>
+
               <Stack
                 sx={{
                   position: "absolute",
-                  bottom: "15px",
-                  left: "15px",
-                  gap: "5px",
+                  bottom: "20px",
+                  left: "20px",
+                  gap: "1px",
                 }}
               >
                 <Typography variant="body2" sx={{ color: "#fff", opacity: 0.9 }}>
                   {myUserName || i18n._("You")}
                 </Typography>
-
-                {!webCam.isWebCamEnabled && (
-                  <>
-                    <Typography variant="caption" sx={{ color: "#fff", opacity: 0.9 }}>
-                      {i18n._("Your webcam is off")}
-                    </Typography>
-                  </>
-                )}
               </Stack>
             </Stack>
           </Stack>
