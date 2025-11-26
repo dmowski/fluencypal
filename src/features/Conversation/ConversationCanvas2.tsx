@@ -5,6 +5,7 @@ import { JSX, useEffect, useRef, useState } from "react";
 import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import {
   Alert,
+  Avatar,
   Button,
   Divider,
   IconButton,
@@ -18,6 +19,9 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import CallEndIcon from "@mui/icons-material/CallEnd";
+import MicOffIcon from "@mui/icons-material/MicOff";
+import MicIcon from "@mui/icons-material/Mic";
 import {
   ArrowUp,
   Check,
@@ -53,6 +57,11 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useTranslate } from "../Translation/useTranslate";
 import { useUrlParam } from "../Url/useUrlParam";
 import { useResizeElement } from "../Layout/useResizeElement";
+import { useWindowSizes } from "../Layout/useWindowSizes";
+import { useWebCam } from "../webCam/useWebCam";
+import VideocamIcon from "@mui/icons-material/Videocam";
+import VideocamOffIcon from "@mui/icons-material/VideocamOff";
+import { useAuth } from "../Auth/useAuth";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -156,6 +165,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const sound = useSound();
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const auth = useAuth();
+  const userPhoto = auth.userInfo?.photoURL || "";
+  const myUserName = auth.userInfo?.displayName || auth.userInfo?.email || "You";
   const closeMenus = () => {
     setAnchorElUser(null);
   };
@@ -171,6 +183,13 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const isFinishingProcess = isClosing || isClosed;
   const { ref, size } = useResizeElement<HTMLDivElement>();
   const height = size.height || 0;
+  const webCam = useWebCam();
+
+  useEffect(() => {
+    if (isCallMode && !webCam.isWebCamEnabled) {
+      webCam.init();
+    }
+  }, [isCallMode]);
 
   const bottomSectionHeight = `${height + 40}px`;
 
@@ -324,10 +343,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   const loadingMessage = i18n._(`Loading...`);
 
-  return (
-    <Stack>
+  const modals = (
+    <>
       {translator.translateModal}
-
       {isOpenHelpModelAnchor && (
         <Popover
           anchorEl={isOpenHelpModelAnchor}
@@ -496,6 +514,350 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           </CustomModal>
         </>
       )}
+    </>
+  );
+
+  const messages = (
+    <>
+      <Stack
+        sx={{
+          gap: "40px",
+          paddingTop: "60px",
+          width: "100%",
+        }}
+      >
+        {conversation.map((message) => {
+          const isBot = message.isBot;
+          return (
+            <Stack
+              key={message.id}
+              sx={{
+                padding: "0 20px",
+                boxSizing: "border-box",
+                color: "#e1e1e1",
+              }}
+            >
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.5,
+                }}
+              >
+                {isBot ? i18n._("Teacher:") : i18n._("You:")}
+              </Typography>
+              <Stack
+                sx={{
+                  display: "inline-block",
+                }}
+              >
+                <Markdown
+                  onWordClick={
+                    translator.isTranslateAvailable
+                      ? (word, element) => {
+                          translator.translateWithModal(word, element);
+                        }
+                      : undefined
+                  }
+                  variant="conversation"
+                >
+                  {message.text || ""}
+                </Markdown>
+
+                {translator.isTranslateAvailable && (
+                  <IconButton
+                    onClick={(e) => translator.translateWithModal(message.text, e.currentTarget)}
+                  >
+                    <Languages size={"16px"} color="#eee" />
+                  </IconButton>
+                )}
+              </Stack>
+            </Stack>
+          );
+        })}
+      </Stack>
+    </>
+  );
+
+  if (isCallMode && !gameWords?.wordsUserToDescribe) {
+    return (
+      <>
+        {modals}
+        <Stack
+          sx={{
+            alignItems: "center",
+            gap: "20px",
+          }}
+        >
+          <Stack
+            sx={{
+              width: "100%",
+              maxWidth: "100%",
+              height: "calc(100dvh - 320px)",
+              overflow: "hidden",
+              padding: "10px",
+              paddingTop: "30px",
+              gap: "10px",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              position: "relative",
+              zIndex: 10,
+            }}
+          >
+            <Stack
+              sx={{
+                width: "100%",
+                height: "100%",
+                borderRadius: "10px",
+                backgroundColor: "rgba(0, 0, 0, 0.9)",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+                overflow: "hidden",
+              }}
+            >
+              <Stack
+                sx={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  width: "100%",
+                  height: "100%",
+                  background: "url('/blur/4.jpg')",
+                  backgroundSize: "cover",
+                  opacity: 0.7,
+                }}
+              ></Stack>
+
+              <Stack
+                sx={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  width: "100%",
+                  height: "100%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Stack
+                  sx={{
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    padding: "10px 5px 0 5px",
+                    backgroundColor: "rgba(255, 255, 255, 0.5)",
+                  }}
+                >
+                  <img
+                    src={"avatar/girl.png"}
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                    }}
+                  />
+                </Stack>
+              </Stack>
+              <Stack
+                sx={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  height: "30px",
+                  background: "linear-gradient(45deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3))",
+                }}
+              ></Stack>
+              <Stack
+                sx={{
+                  position: "absolute",
+                  bottom: "15px",
+                  left: "15px",
+                  gap: "5px",
+                }}
+              >
+                <Typography variant="body2" sx={{ color: "#fff", opacity: 0.9 }}>
+                  {i18n._("Teacher")}
+                </Typography>
+              </Stack>
+            </Stack>
+
+            <Stack
+              sx={{
+                width: "100%",
+                height: "100%",
+                borderRadius: "10px",
+                backgroundColor: "rgba(0, 0, 0, 0.3)",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+                overflow: "hidden",
+                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              }}
+            >
+              <video
+                ref={webCam.videoRef}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  transform: "scaleX(-1)",
+                  borderRadius: "10px",
+                  display: webCam.isWebCamEnabled ? "block" : "none",
+                }}
+                autoPlay
+                controls={false}
+                muted
+                playsInline
+              />
+
+              {!webCam.isWebCamEnabled && (
+                <>
+                  <Stack
+                    sx={{
+                      position: "absolute",
+                      top: "0",
+                      left: "0",
+                      width: "100%",
+                      height: "100%",
+                      background: "url('/blur/5.jpg')",
+                      backgroundSize: "cover",
+                      opacity: 0.4,
+                    }}
+                  ></Stack>
+
+                  <Stack
+                    sx={{
+                      position: "absolute",
+                      top: "0",
+                      left: "0",
+                      width: "100%",
+                      height: "100%",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Stack
+                      sx={{
+                        borderRadius: "50%",
+                        overflow: "hidden",
+                        padding: "0",
+                        backgroundColor: "rgba(255, 255, 255, 0.5)",
+                      }}
+                    >
+                      <Avatar
+                        alt={""}
+                        src={userPhoto}
+                        sx={{
+                          width: "110px",
+                          height: "110px",
+                          borderRadius: "50%",
+                          fontSize: "10px",
+                        }}
+                      />
+                    </Stack>
+                  </Stack>
+                </>
+              )}
+
+              <Stack
+                sx={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  height: "30px",
+                  background: "linear-gradient(45deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3))",
+                }}
+              ></Stack>
+              <Stack
+                sx={{
+                  position: "absolute",
+                  bottom: "15px",
+                  left: "15px",
+                  gap: "5px",
+                }}
+              >
+                <Typography variant="body2" sx={{ color: "#fff", opacity: 0.9 }}>
+                  {myUserName || i18n._("You")}
+                </Typography>
+
+                {!webCam.isWebCamEnabled && (
+                  <>
+                    <Typography variant="caption" sx={{ color: "#fff", opacity: 0.9 }}>
+                      {i18n._("Your webcam is off")}
+                    </Typography>
+                  </>
+                )}
+              </Stack>
+            </Stack>
+          </Stack>
+          <Stack
+            sx={{
+              maxWidth: "900px",
+              maxHeight: "200px",
+              overflow: "auto",
+            }}
+          >
+            {messages}
+          </Stack>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "20px",
+              width: "100%",
+            }}
+          >
+            <IconButton
+              sx={{
+                backgroundColor: isMuted ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.4)",
+                ":hover": { backgroundColor: "rgba(255, 255, 255, 0.3)" },
+              }}
+              size="large"
+              onClick={async () => {
+                setIsMuted(!isMuted);
+              }}
+            >
+              {isMuted ? <MicOffIcon /> : <MicIcon />}
+            </IconButton>
+
+            <IconButton
+              sx={{
+                backgroundColor: isMuted ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.4)",
+                ":hover": { backgroundColor: "rgba(255, 255, 255, 0.3)" },
+              }}
+              size="large"
+              onClick={async () => {
+                if (webCam.isWebCamEnabled) {
+                  webCam.resetWebCam();
+                } else {
+                  await webCam.init();
+                }
+              }}
+            >
+              {webCam.isWebCamEnabled ? <VideocamOffIcon /> : <VideocamIcon />}
+            </IconButton>
+
+            <IconButton
+              size="large"
+              onClick={async () => stopCallMode()}
+              sx={{
+                width: "70px",
+                borderRadius: "30px",
+                backgroundColor: "#dc362e",
+                ":hover": { backgroundColor: "rgba(255, 0, 0, 0.7)" },
+              }}
+            >
+              <CallEndIcon />
+            </IconButton>
+          </Stack>
+        </Stack>
+      </>
+    );
+  }
+
+  return (
+    <Stack>
+      {modals}
       {isShowMessageProgress && (
         <Stack
           sx={{
@@ -540,70 +902,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             "@media (max-width: 600px)": {
               border: "none",
             },
-            //backgroundColor: "rgba(0, 0, 0, 1)",
-            //backgroundColor: "rgba(20, 28, 40, 1)",
             backgroundColor: "#1c2128",
-            //backgroundColor: "#212121",
           }}
         >
-          <Stack
-            sx={{
-              gap: "40px",
-              paddingTop: "60px",
-              width: "100%",
-            }}
-          >
-            {conversation.map((message) => {
-              const isBot = message.isBot;
-              return (
-                <Stack
-                  key={message.id}
-                  sx={{
-                    padding: "0 20px",
-                    boxSizing: "border-box",
-                    color: "#e1e1e1",
-                  }}
-                >
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      opacity: 0.5,
-                    }}
-                  >
-                    {isBot ? i18n._("Teacher:") : i18n._("You:")}
-                  </Typography>
-                  <Stack
-                    sx={{
-                      display: "inline-block",
-                    }}
-                  >
-                    <Markdown
-                      onWordClick={
-                        translator.isTranslateAvailable
-                          ? (word, element) => {
-                              translator.translateWithModal(word, element);
-                            }
-                          : undefined
-                      }
-                      variant="conversation"
-                    >
-                      {message.text || ""}
-                    </Markdown>
-
-                    {translator.isTranslateAvailable && (
-                      <IconButton
-                        onClick={(e) =>
-                          translator.translateWithModal(message.text, e.currentTarget)
-                        }
-                      >
-                        <Languages size={"16px"} color="#eee" />
-                      </IconButton>
-                    )}
-                  </Stack>
-                </Stack>
-              );
-            })}
-          </Stack>
+          {messages}
         </Stack>
 
         <Stack
@@ -711,8 +1013,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         background: isAnalyzingResponse
                           ? "rgba(255, 255, 255, 0.06)"
                           : isNeedToShowCorrection
-                            ? "#c29f2b"
-                            : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
+                          ? "#c29f2b"
+                          : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
                       }}
                     >
                       {isNeedToShowCorrection && !isAnalyzingResponse ? (
@@ -803,8 +1105,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                               isTranscribing || isAnalyzingResponse
                                 ? 0
                                 : isNeedToShowCorrection
-                                  ? 0
-                                  : 1,
+                                ? 0
+                                : 1,
                             flexDirection: "row",
                             alignItems: "center",
                             gap: "2px",
@@ -880,15 +1182,15 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                 isTranscribing
                                   ? i18n._("Transcribing...")
                                   : isAnalyzingResponse
-                                    ? i18n._("Analyzing...")
-                                    : confirmedUserInput || ""
+                                  ? i18n._("Analyzing...")
+                                  : confirmedUserInput || ""
                               }
                               newValue={
                                 isTranscribing
                                   ? i18n._("Transcribing...")
                                   : isAnalyzingResponse
-                                    ? i18n._("Analyzing...")
-                                    : correctedMessage || confirmedUserInput || ""
+                                  ? i18n._("Analyzing...")
+                                  : correctedMessage || confirmedUserInput || ""
                               }
                             />
                           </Typography>
