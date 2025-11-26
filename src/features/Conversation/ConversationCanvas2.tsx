@@ -722,7 +722,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       height: "100%",
                       background: "url('/blur/5.jpg')",
                       backgroundSize: "cover",
-                      opacity: 0.4,
+                      opacity: 0.57,
                     }}
                   ></Stack>
 
