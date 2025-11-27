@@ -291,6 +291,14 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         top: document.body.scrollHeight + 200,
         behavior: "smooth",
       });
+
+      const callModeMessagesElement = document.getElementById("messages-call-mode");
+      if (callModeMessagesElement) {
+        callModeMessagesElement.scrollTo({
+          top: callModeMessagesElement.scrollHeight,
+          behavior: "smooth",
+        });
+      }
     };
     const timeout = setTimeout(() => {
       scrollToBottom();
@@ -586,11 +594,11 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           <Stack
             sx={{
               width: "100%",
-              maxWidth: "1100px",
-              height: `calc(100dvh - 310px - ${sizes.bottomOffset})`,
+              maxWidth: "100%",
+              height: `calc(100dvh - 210px - ${sizes.bottomOffset})`,
               overflow: "hidden",
               padding: "10px 10px 5px 10px",
-              paddingTop: "30px",
+              paddingTop: "10px",
               gap: "10px",
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
@@ -609,7 +617,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 position: "relative",
                 boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                 overflow: "hidden",
-                aspectRatio: "1 / 1",
               }}
             >
               <video
@@ -618,10 +625,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                   position: "absolute",
                   top: "0",
                   left: "0",
-                  width: "auto",
+                  width: "100%",
                   height: "100%",
-                  aspectRatio: "1 / 1",
-                  objectFit: "fill",
+                  objectFit: "cover",
                 }}
                 autoPlay
                 controls={false}
@@ -757,9 +763,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             </Stack>
           </Stack>
           <Stack
+            id="messages-call-mode"
             sx={{
               maxWidth: "900px",
-              maxHeight: "200px",
+              maxHeight: "120px",
               overflow: "auto",
             }}
           >
@@ -790,7 +797,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
             <IconButton
               sx={{
-                backgroundColor: isMuted ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.4)",
+                backgroundColor: webCam.isWebCamEnabled
+                  ? "rgba(255, 255, 255, 0.2)"
+                  : "rgba(255, 255, 255, 0.4)",
                 ":hover": { backgroundColor: "rgba(255, 255, 255, 0.3)" },
               }}
               size="large"

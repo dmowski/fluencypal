@@ -101,7 +101,9 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
     const searchParams = new URLSearchParams(window.location.search);
 
-    const url = `${getUrlStart(settingsPageLang)}practice${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
+    const url = `${getUrlStart(settingsPageLang)}practice${
+      searchParams.toString() ? `?${searchParams.toString()}` : ""
+    }`;
     console.warn(
       `REDIRECT: Page language (${actualPageLang}) is different from settings (${settingsPageLang}). Redirecting to ${url}`
     );
@@ -271,10 +273,11 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         isShowMessageProgress={!!aiConversation.goalInfo?.goalElement}
         conversationAnalysisResult={conversationAnalysis}
         generateHelpMessage={generateNextUserMessage}
-        isCallMode={!aiConversation.isMuted}
+        isCallMode={aiConversation.isCallMode}
         toggleCallMode={(isCallMode) => {
           const isMuted = !isCallMode;
           aiConversation.toggleMute(isMuted);
+          aiConversation.setIsCallMode(isCallMode);
         }}
         isMuted={aiConversation.isMuted}
         setIsMuted={(isMuted) => {
