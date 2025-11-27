@@ -2,7 +2,6 @@ import { InitBalanceResponse } from "@/common/requests";
 import { getDB, validateAuthToken } from "../config/firebase";
 import { WELCOME_BONUS } from "@/common/usage";
 import { addPaymentLog } from "../payment/addPaymentLog";
-import { sentSupportTelegramMessage } from "../telegram/sendTelegramMessage";
 import { TRIAL_DAYS } from "@/common/subscription";
 
 const ENABLE_SUBSCRIPTIONS = true;
