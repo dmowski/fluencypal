@@ -772,7 +772,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               maxHeight: "120px",
               overflow: "auto",
               "@media (max-width: 800px)": {
-                maxHeight: "40dvh",
+                maxHeight: `calc(40dvh - ${sizes.bottomOffset})`,
               },
             }}
           >
