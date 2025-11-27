@@ -765,7 +765,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           <Stack
             id="messages-call-mode"
             sx={{
-              maxWidth: "900px",
+              maxWidth: "1000px",
               maxHeight: "120px",
               overflow: "auto",
             }}
