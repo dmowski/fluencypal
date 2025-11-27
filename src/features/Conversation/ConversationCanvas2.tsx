@@ -604,6 +604,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               gridTemplateColumns: "1fr 1fr",
               position: "relative",
               zIndex: 10,
+              "@media (max-width: 800px)": {
+                height: `calc(42dvh - ${sizes.bottomOffset})`,
+              },
             }}
           >
             <Stack
@@ -768,6 +771,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               maxWidth: "1000px",
               maxHeight: "120px",
               overflow: "auto",
+              "@media (max-width: 800px)": {
+                maxHeight: "40dvh",
+              },
             }}
           >
             {messages}
@@ -780,6 +786,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               gap: "20px",
               width: "100%",
               paddingTop: "20px",
+              position: "fixed",
+              backgroundColor: "rgba(10, 18, 30, 0.9)",
+              paddingBottom: `calc(15px + ${sizes.bottomOffset})`,
+              bottom: 0,
             }}
           >
             <IconButton
