@@ -794,7 +794,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           >
             <IconButton
               sx={{
-                backgroundColor: isMuted ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.4)",
+                backgroundColor: !isMuted ? "rgba(100, 100, 100, 0.4)" : "rgb(250 222 220)",
+                color: !isMuted ? "#fff" : "#222",
                 ":hover": { backgroundColor: "rgba(255, 255, 255, 0.3)" },
               }}
               size="large"
@@ -808,8 +809,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             <IconButton
               sx={{
                 backgroundColor: webCam.isWebCamEnabled
-                  ? "rgba(255, 255, 255, 0.2)"
-                  : "rgba(255, 255, 255, 0.4)",
+                  ? "rgba(100, 100, 100, 0.4)"
+                  : "rgb(250 222 220)",
+                color: webCam.isWebCamEnabled ? "#fff" : "#222",
                 ":hover": { backgroundColor: "rgba(255, 255, 255, 0.3)" },
               }}
               size="large"
@@ -821,7 +823,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 }
               }}
             >
-              {webCam.isWebCamEnabled ? <VideocamOffIcon /> : <VideocamIcon />}
+              {webCam.isWebCamEnabled ? <VideocamIcon /> : <VideocamOffIcon />}
             </IconButton>
 
             <IconButton
