@@ -65,6 +65,8 @@ interface AiConversationContextType {
   isUserSpeaking: boolean;
   toggleMute: (isMute: boolean) => void;
   isMuted: boolean;
+  isCallMode: boolean;
+  setIsCallMode: (isCall: boolean) => void;
   addUserMessage: (message: string) => Promise<void>;
   isShowUserInput: boolean;
   setIsShowUserInput: (value: boolean) => void;
@@ -203,21 +205,18 @@ function useProvideAiConversation(): AiConversationContextType {
     defaultMessagesToComplete
   );
 
-  const [isMutedStorage, setIsMuted] = useLocalStorage<boolean>("isMuted", true);
-  const isMutedFromUrl =
+  const [isMutedStorage, setIsMutedStorage] = useLocalStorage<boolean>("isMuted", true);
+
+  const [isCallModeStorage, setIsCallModeStorage] = useLocalStorage<boolean>("isCallMode", true);
+  const isCallModeFromUrl =
     searchParams.get("isCallMode") === "true"
       ? true
       : searchParams.get("isCallMode") === "false"
-        ? false
-        : undefined;
+      ? false
+      : undefined;
 
+  const isCallMode = isCallModeStorage ?? isCallModeFromUrl ?? false;
   const isMuted = isMutedStorage ?? true;
-
-  useEffect(() => {
-    if (isMutedFromUrl === undefined) return;
-
-    setIsMuted(isMutedFromUrl);
-  }, [isMutedFromUrl]);
 
   const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);
 
@@ -276,7 +275,7 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const toggleMute = (isMute: boolean) => {
     communicator?.toggleMute(isMute);
-    setIsMuted(isMute);
+    setIsMutedStorage(isMute);
   };
 
   useEffect(() => {
@@ -478,7 +477,9 @@ Start the conversation with message like this: ${startFirstMessage}
         voice: "shimmer",
         model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Shimmer". It's first onboarding conversation with student.
-Do not teach or explain rules—just talk. You can use user's languages as well (${usersSystemLanguages.join(", ")})
+Do not teach or explain rules—just talk. You can use user's languages as well (${usersSystemLanguages.join(
+          ", "
+        )})
 You should be friendly and engaging.
 
 Don't make user feel like they are being tested and feel stupid. Your goal is to get to know user and understand his goals.
@@ -510,7 +511,9 @@ Start the conversation with this message:
 Hm... Who is here again? How are you doing? How's your goals going? Do you want to set new goals?
 `
     : `
-Start the conversation with this message ${settings.languageCode !== "en" ? `(use ${fullLanguageName} language)` : ""}:
+Start the conversation with this message ${
+        settings.languageCode !== "en" ? `(use ${fullLanguageName} language)` : ""
+      }:
 Hm... Who is Here? Someone decided to learn ${fullLanguageName}. Good... Oh, always forgetting it..
 My name is Shimmer. I am your ${fullLanguageName} teacher. 
 Today we will get to know each other better. Tell me about yourself.
@@ -560,7 +563,11 @@ Don't make user feel like they are being tested and feel stupid.
 If you feel that the user is struggling, you can propose a new topic.
 Engage in a natural conversation without making it feel like a lesson.
 
-${userInfo ? "" : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."}
+${
+  userInfo
+    ? ""
+    : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."
+}
 
 Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
 Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
@@ -624,7 +631,11 @@ ${userLevelDescription}
   If you feel that the user is struggling, you can propose a new topic.
   Engage in a natural conversation without making it feel like a lesson.
   Start the conversation with: Hello. Say it in a friendly and calm way, no other words needed for the first hi.
-  ${userInfo ? "" : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."}
+  ${
+    userInfo
+      ? ""
+      : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."
+  }
   Speak slowly and clearly. Use ${fullLanguageName} language. Try to speak on user's level.
   
   
@@ -699,7 +710,9 @@ ${userInfo ? `Student info: ${userInfo}` : ""}
 
 ${userLevelDescription}
 
-Start the conversation with: "${firstAiMessage[languageCode]}" (in a friendly and calm way, no other words needed for the initial greeting).
+Start the conversation with: "${
+          firstAiMessage[languageCode]
+        }" (in a friendly and calm way, no other words needed for the initial greeting).
 `,
       };
     }
@@ -885,6 +898,8 @@ My last message was: "${message}".
   return {
     currentMode,
     conversationId,
+    isCallMode: isCallMode || false,
+    setIsCallMode: setIsCallModeStorage,
     setIsConfirmed,
     isInitializing,
     isStarted,

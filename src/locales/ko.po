@@ -13,6 +13,16 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/Conversation/ConversationCanvas2.tsx:658
+#. js-lingui-explicit-id
+msgid "Teacher"
+msgstr "선생님"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:760
+#. js-lingui-explicit-id
+msgid "You"
+msgstr "당신"
+
 #: src/features/Auth/AuthWall.tsx:278
 msgid "So you can keep your progress"
 msgstr "진행 상황을 유지할 수 있습니다."
@@ -406,13 +416,13 @@ msgstr "다음은 FluencyPal과의 대화 내용입니다."
 msgid "No conversations yet"
 msgstr "아직 대화 없음"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:573
+#: src/features/Conversation/ConversationCanvas2.tsx:549
 #: src/features/Usage/UsageStatsCards.tsx:259
 #. js-lingui-explicit-id
 msgid "Teacher:"
 msgstr "교사:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:573
+#: src/features/Conversation/ConversationCanvas2.tsx:549
 #: src/features/Usage/UsageStatsCards.tsx:259
 #. js-lingui-explicit-id
 msgid "You:"
@@ -472,138 +482,72 @@ msgstr "총계"
 msgid "Open history"
 msgstr "역사 열기"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1094
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
-#: src/features/Goal/Quiz/RecordUserAudio.tsx:130
-#: src/features/Survey/RecordUserAudioAnswer.tsx:144
-#: src/features/Usage/SubscriptionWaiter.tsx:47
+#: src/features/Usage/PaymentModal.tsx:119
 #. js-lingui-explicit-id
-msgid "Done"
-msgstr "완료"
+msgid "Buy more hours"
+msgstr "더 많은 시간 구매"
 
-#: src/features/Usage/SubscriptionWaiter.tsx:56
+#: src/features/Usage/PaymentModal.tsx:127
 #. js-lingui-explicit-id
-msgid "Your subscription has been successfully changed."
-msgstr "귀하의 구독이 성공적으로 변경되었습니다."
+msgid "Let's add some hours to your balance"
+msgstr "당신의 잔액에 몇 시간을 추가해봅시다"
 
-#: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:265
-#: src/features/Usage/SubscriptionWaiter.tsx:60
-#: src/features/Usage/SubscriptionWaiter.tsx:81
+#: src/features/Usage/PaymentModal.tsx:149
 #. js-lingui-explicit-id
-msgid "Close"
-msgstr "닫기"
+msgid "Amount hours to buy"
+msgstr "구입할 시간의 양"
 
-#: src/features/Usage/SubscriptionWaiter.tsx:68
+#: src/features/Usage/PaymentModal.tsx:194
 #. js-lingui-explicit-id
-msgid "Waiting for payment..."
-msgstr "결제를 기다리고 있습니다..."
+msgid "What one hour means?"
+msgstr "한 시간이란 무엇을 의미하나요?"
 
-#: src/features/Usage/SubscriptionWaiter.tsx:77
+#: src/features/Usage/PaymentModal.tsx:196
 #. js-lingui-explicit-id
-msgid "Please wait while we process your payment."
-msgstr "결제를 처리하는 동안 기다려 주세요."
+msgid ""
+"You only charged for when AI is actively working: speaking or analyzing "
+"your speech."
+msgstr "AI가 적극적으로 작동할 때만 청구됩니다: 말하거나 귀하의 말을 분석할 때."
 
-#: src/features/Usage/PayWall.tsx:64
+#: src/features/Usage/PaymentModal.tsx:207
 #. js-lingui-explicit-id
-msgid "Subscription needed"
-msgstr "구독 필요"
+msgid "How long will my hours last?"
+msgstr "내 시간이 얼마나 지속될까요?"
 
-#: src/features/Usage/PayWall.tsx:76
+#: src/features/Usage/PaymentModal.tsx:209
 #. js-lingui-explicit-id
-msgid "You've made amazing progress. Let’s keep going."
-msgstr "당신은 놀라운 진전을 이루셨습니다. 계속해봅시다."
+msgid ""
+"Once purchased, your hours remain available until you use them. There is no "
+"expiration."
+msgstr "구매하신 후에는 사용하기 전까지 그 시간을 사용할 수 있습니다. 만료기간이 없습니다."
 
-#: src/features/Usage/PayWall.tsx:103
+#: src/features/Usage/PaymentModal.tsx:220
 #. js-lingui-explicit-id
-msgid "Buy a subscription"
-msgstr "구독을 구매하십시오"
+msgid "What's included?"
+msgstr "무엇이 포함되어 있나요?"
 
-#: src/features/Usage/PayWall.tsx:115
+#: src/features/Usage/PaymentModal.tsx:222
 #. js-lingui-explicit-id
-msgid "Play the Game"
-msgstr "게임을 플레이하세요"
+msgid ""
+"Access to all functionalities on app where AI is present: speaking, "
+"analyzing, role-plays, new words and runles creator."
+msgstr "AI가 존재하는 앱의 모든 기능에 대한 접근: 말하기, 분석하기, 역할극, 새로운 단어 및 규칙 생성자."
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:72
-#: src/features/Usage/SubscriptionPaymentModal.tsx:91
-#: src/features/Usage/SubscriptionPaymentModal.tsx:221
-#: src/features/Usage/SubscriptionPaymentModal.tsx:290
+#: src/features/Usage/PaymentModal.tsx:245
 #. js-lingui-explicit-id
-msgid "Error creating payment session"
-msgstr "결제 세션 생성 오류"
+msgid "Price per one AI hour:"
+msgstr "AI 시간 당 가격:"
 
-#: src/features/Usage/SubscriptionPaymentModal.tsx:118
+#: src/features/Usage/PaymentModal.tsx:250
+#: src/features/Usage/SubscriptionPaymentModal.tsx:567
 #. js-lingui-explicit-id
-msgid "Error processing payment"
-msgstr "결제 처리 오류"
+msgid "Total:"
+msgstr "총계:"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:325
-#: src/features/Conversation/ConversationCanvas2.tsx:1359
-#: src/features/Conversation/ConversationPage.tsx:121
-#: src/features/Conversation/ConversationPage.tsx:130
-#: src/features/Conversation/ConversationPage.tsx:150
-#: src/features/Game/GamePage.tsx:23
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:251
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:157
-#: src/features/Goal/Quiz/GoalReview.tsx:168
-#: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:29
-#: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:29
-#: src/features/Header/PaymentHistoryModal.tsx:65
-#: src/features/RolePlay/RolePlayModal.tsx:267
-#: src/features/Telegram/TgAppPage.tsx:165
-#: src/features/Translation/useTranslate.tsx:149
-#: src/features/Usage/PaymentModal.tsx:494
-#: src/features/Usage/SubscriptionPaymentModal.tsx:146
+#: src/features/Usage/PaymentModal.tsx:261
 #. js-lingui-explicit-id
-msgid "Loading..."
-msgstr "로딩 중..."
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:146
-#. js-lingui-explicit-id
-msgid "Pay with crypto"
-msgstr "암호화폐로 결제하기"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:228
-#. js-lingui-explicit-id
-msgid "Error creating payment session. Try again later."
-msgstr "결제 세션 생성 중 오류가 발생했습니다. 나중에 다시 시도하세요."
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:244
-#. js-lingui-explicit-id
-msgid "Payment failed! Please try again."
-msgstr "결제 실패! 다시 시도해 주세요."
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:257
-#: src/features/Usage/SubscriptionPaymentModal.tsx:301
-#. js-lingui-explicit-id
-msgid "Error during payment process"
-msgstr "결제 과정 중 오류"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:387
-#. js-lingui-explicit-id
-msgid "Payment option"
-msgstr "결제 옵션"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:396
-#: src/features/Usage/SubscriptionPaymentModal.tsx:484
-#. js-lingui-explicit-id
-msgid "Subscription for 1 month | Full access"
-msgstr "1개월 구독 | 전체 접근 권한"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:426
-#. js-lingui-explicit-id
-msgid "Pay with Stars"
-msgstr "스타로 결제하기"
-
-#: src/features/Usage/SubscriptionPaymentModal.tsx:475
-#. js-lingui-explicit-id
-msgid "Confirm payment"
-msgstr "결제 확인"
+msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
+msgstr "금액이 너무 큽니다. 지원해 주신 점 감사드리나, $400 이하로 유지합시다"
 
 #: src/features/Usage/PaymentModal.tsx:280
 #: src/features/Usage/SubscriptionPaymentModal.tsx:512
@@ -648,11 +592,159 @@ msgstr ""
 msgid "I want to receive commercial and marketing content"
 msgstr "저는 상업 및 마케팅 콘텐츠를 받고 싶습니다."
 
-#: src/features/Usage/PaymentModal.tsx:250
-#: src/features/Usage/SubscriptionPaymentModal.tsx:567
+#: src/features/Usage/PaymentModal.tsx:342
 #. js-lingui-explicit-id
-msgid "Total:"
-msgstr "총계:"
+msgid "Continue to payment"
+msgstr "결제 계속하기"
+
+#: src/features/Header/NeedHelpModal.tsx:251
+#: src/features/Usage/PaymentModal.tsx:350
+#. js-lingui-explicit-id
+msgid "Cancel"
+msgstr "취소"
+
+#: src/features/Usage/PaymentModal.tsx:359
+#. js-lingui-explicit-id
+msgid ""
+"The Controller of the data entered into the form is Fundacja Rozwoju\n"
+"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
+"processed in order to provide\n"
+"                  the service and for marketing purposes – in the case of "
+"consent. We would like to\n"
+"                  inform you about the possibility of withdrawing your "
+"consent. For full information\n"
+"                  on data processing and your rights, see the"
+msgstr ""
+"입력된 데이터의 컨트롤러는 Fundacja Rozwoju Przedsiębiorczości \"Twój StartUp\"입니다.\n"
+"                  데이터는 서비스 제공 및 마케팅 목적으로 처리됩니다 - 동의할 경우에만 해당됩니다. 이에 대한 동의를 "
+"철회할 수 있다는 점을 알려드리고자 합니다.\n"
+"                  데이터 처리와 귀하의 권리에 대한 전체 정보는 다음을 참조하십시오."
+
+#: src/features/Usage/PaymentModal.tsx:365
+#. js-lingui-explicit-id
+msgid "privacy policy"
+msgstr "개인정보 보호정책"
+
+#: src/features/Usage/PaymentModal.tsx:401
+#. js-lingui-explicit-id
+msgid "Success!"
+msgstr "성공!"
+
+#: src/features/Usage/PaymentModal.tsx:411
+#. js-lingui-explicit-id
+msgid "Your payment was successful, but updates might take a few minutes"
+msgstr "결제는 성공적으로 이루어졌지만, 업데이트에는 몇 분이 걸릴 수 있습니다"
+
+#: src/features/Header/HeaderStatic.tsx:21
+#: src/features/Usage/PaymentModal.tsx:417
+#. js-lingui-explicit-id
+msgid "Balance"
+msgstr "균형"
+
+#: src/features/Usage/PaymentModal.tsx:442
+#. js-lingui-explicit-id
+msgid "Current Balance of AI usage"
+msgstr "AI 사용 현재 잔액"
+
+#: src/features/Usage/PaymentModal.tsx:453
+#: src/features/Usage/SubscriptionPaymentModal.tsx:787
+#. js-lingui-explicit-id
+msgid "Buy More"
+msgstr "더 구매하기"
+
+#: src/features/Usage/PaymentModal.tsx:470
+#. js-lingui-explicit-id
+msgid "Total used:"
+msgstr "총 사용량:"
+
+#: src/features/Usage/PaymentModal.tsx:484
+#. js-lingui-explicit-id
+msgid "Payment history:"
+msgstr "결제 내역:"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:347
+#: src/features/Conversation/ConversationCanvas2.tsx:1638
+#: src/features/Conversation/ConversationPage.tsx:123
+#: src/features/Conversation/ConversationPage.tsx:132
+#: src/features/Conversation/ConversationPage.tsx:152
+#: src/features/Game/GamePage.tsx:23
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:131
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:251
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:157
+#: src/features/Goal/Quiz/GoalReview.tsx:168
+#: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:29
+#: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:29
+#: src/features/Header/PaymentHistoryModal.tsx:65
+#: src/features/RolePlay/RolePlayModal.tsx:267
+#: src/features/Telegram/TgAppPage.tsx:165
+#: src/features/Translation/useTranslate.tsx:149
+#: src/features/Usage/PaymentModal.tsx:494
+#: src/features/Usage/SubscriptionPaymentModal.tsx:146
+#. js-lingui-explicit-id
+msgid "Loading..."
+msgstr "로딩 중..."
+
+#: src/features/Header/PaymentHistoryModal.tsx:76
+#: src/features/Usage/PaymentModal.tsx:505
+#. js-lingui-explicit-id
+msgid "No payments..."
+msgstr "결제 없음..."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:72
+#: src/features/Usage/SubscriptionPaymentModal.tsx:91
+#: src/features/Usage/SubscriptionPaymentModal.tsx:221
+#: src/features/Usage/SubscriptionPaymentModal.tsx:290
+#. js-lingui-explicit-id
+msgid "Error creating payment session"
+msgstr "결제 세션 생성 오류"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:118
+#. js-lingui-explicit-id
+msgid "Error processing payment"
+msgstr "결제 처리 오류"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:146
+#. js-lingui-explicit-id
+msgid "Pay with crypto"
+msgstr "암호화폐로 결제하기"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:228
+#. js-lingui-explicit-id
+msgid "Error creating payment session. Try again later."
+msgstr "결제 세션 생성 중 오류가 발생했습니다. 나중에 다시 시도하세요."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:244
+#. js-lingui-explicit-id
+msgid "Payment failed! Please try again."
+msgstr "결제 실패! 다시 시도해 주세요."
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:257
+#: src/features/Usage/SubscriptionPaymentModal.tsx:301
+#. js-lingui-explicit-id
+msgid "Error during payment process"
+msgstr "결제 과정 중 오류"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:387
+#. js-lingui-explicit-id
+msgid "Payment option"
+msgstr "결제 옵션"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:396
+#: src/features/Usage/SubscriptionPaymentModal.tsx:484
+#. js-lingui-explicit-id
+msgid "Subscription for 1 month | Full access"
+msgstr "1개월 구독 | 전체 접근 권한"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:426
+#. js-lingui-explicit-id
+msgid "Pay with Stars"
+msgstr "스타로 결제하기"
+
+#: src/features/Usage/SubscriptionPaymentModal.tsx:475
+#. js-lingui-explicit-id
+msgid "Confirm payment"
+msgstr "결제 확인"
 
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #: src/features/Dashboard/SelectLanguage.tsx:292
@@ -737,12 +829,6 @@ msgstr "전체 접근을 통한 최대 속도 학습"
 msgid "Get Full Access"
 msgstr "전체 액세스 받기"
 
-#: src/features/Usage/PaymentModal.tsx:453
-#: src/features/Usage/SubscriptionPaymentModal.tsx:787
-#. js-lingui-explicit-id
-msgid "Buy More"
-msgstr "더 구매하기"
-
 #: src/features/Header/NeedHelpModal.tsx:120
 #: src/features/Settings/MyProfile.tsx:92
 #: src/features/Usage/SubscriptionPaymentModal.tsx:802
@@ -750,136 +836,40 @@ msgstr "더 구매하기"
 msgid "Need help?"
 msgstr "도움이 필요하신가요?"
 
-#: src/features/Usage/PaymentModal.tsx:119
+#: src/features/Conversation/ConversationCanvas2.tsx:1373
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:212
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:285
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:238
+#: src/features/Goal/Quiz/RecordUserAudio.tsx:130
+#: src/features/Survey/RecordUserAudioAnswer.tsx:144
+#: src/features/Usage/SubscriptionWaiter.tsx:47
 #. js-lingui-explicit-id
-msgid "Buy more hours"
-msgstr "더 많은 시간 구매"
+msgid "Done"
+msgstr "완료"
 
-#: src/features/Usage/PaymentModal.tsx:127
+#: src/features/Usage/SubscriptionWaiter.tsx:56
 #. js-lingui-explicit-id
-msgid "Let's add some hours to your balance"
-msgstr "당신의 잔액에 몇 시간을 추가해봅시다"
+msgid "Your subscription has been successfully changed."
+msgstr "귀하의 구독이 성공적으로 변경되었습니다."
 
-#: src/features/Usage/PaymentModal.tsx:149
+#: src/features/Goal/GoalPreparingModal.tsx:159
+#: src/features/Header/NeedHelpModal.tsx:265
+#: src/features/Usage/SubscriptionWaiter.tsx:60
+#: src/features/Usage/SubscriptionWaiter.tsx:81
 #. js-lingui-explicit-id
-msgid "Amount hours to buy"
-msgstr "구입할 시간의 양"
+msgid "Close"
+msgstr "닫기"
 
-#: src/features/Usage/PaymentModal.tsx:194
+#: src/features/Usage/SubscriptionWaiter.tsx:68
 #. js-lingui-explicit-id
-msgid "What one hour means?"
-msgstr "한 시간이란 무엇을 의미하나요?"
+msgid "Waiting for payment..."
+msgstr "결제를 기다리고 있습니다..."
 
-#: src/features/Usage/PaymentModal.tsx:196
+#: src/features/Usage/SubscriptionWaiter.tsx:77
 #. js-lingui-explicit-id
-msgid ""
-"You only charged for when AI is actively working: speaking or analyzing "
-"your speech."
-msgstr "AI가 적극적으로 작동할 때만 청구됩니다: 말하거나 귀하의 말을 분석할 때."
-
-#: src/features/Usage/PaymentModal.tsx:207
-#. js-lingui-explicit-id
-msgid "How long will my hours last?"
-msgstr "내 시간이 얼마나 지속될까요?"
-
-#: src/features/Usage/PaymentModal.tsx:209
-#. js-lingui-explicit-id
-msgid ""
-"Once purchased, your hours remain available until you use them. There is no "
-"expiration."
-msgstr "구매하신 후에는 사용하기 전까지 그 시간을 사용할 수 있습니다. 만료기간이 없습니다."
-
-#: src/features/Usage/PaymentModal.tsx:220
-#. js-lingui-explicit-id
-msgid "What's included?"
-msgstr "무엇이 포함되어 있나요?"
-
-#: src/features/Usage/PaymentModal.tsx:222
-#. js-lingui-explicit-id
-msgid ""
-"Access to all functionalities on app where AI is present: speaking, "
-"analyzing, role-plays, new words and runles creator."
-msgstr "AI가 존재하는 앱의 모든 기능에 대한 접근: 말하기, 분석하기, 역할극, 새로운 단어 및 규칙 생성자."
-
-#: src/features/Usage/PaymentModal.tsx:245
-#. js-lingui-explicit-id
-msgid "Price per one AI hour:"
-msgstr "AI 시간 당 가격:"
-
-#: src/features/Usage/PaymentModal.tsx:261
-#. js-lingui-explicit-id
-msgid "Amount is too large. I appreciate your support, but let's keep it under $400"
-msgstr "금액이 너무 큽니다. 지원해 주신 점 감사드리나, $400 이하로 유지합시다"
-
-#: src/features/Usage/PaymentModal.tsx:342
-#. js-lingui-explicit-id
-msgid "Continue to payment"
-msgstr "결제 계속하기"
-
-#: src/features/Header/NeedHelpModal.tsx:251
-#: src/features/Usage/PaymentModal.tsx:350
-#. js-lingui-explicit-id
-msgid "Cancel"
-msgstr "취소"
-
-#: src/features/Usage/PaymentModal.tsx:359
-#. js-lingui-explicit-id
-msgid ""
-"The Controller of the data entered into the form is Fundacja Rozwoju\n"
-"                  Przedsiębiorczości \"Twój StartUp\". The data will be "
-"processed in order to provide\n"
-"                  the service and for marketing purposes – in the case of "
-"consent. We would like to\n"
-"                  inform you about the possibility of withdrawing your "
-"consent. For full information\n"
-"                  on data processing and your rights, see the"
-msgstr ""
-"입력된 데이터의 컨트롤러는 Fundacja Rozwoju Przedsiębiorczości \"Twój StartUp\"입니다.\n"
-"                  데이터는 서비스 제공 및 마케팅 목적으로 처리됩니다 - 동의할 경우에만 해당됩니다. 이에 대한 동의를 "
-"철회할 수 있다는 점을 알려드리고자 합니다.\n"
-"                  데이터 처리와 귀하의 권리에 대한 전체 정보는 다음을 참조하십시오."
-
-#: src/features/Usage/PaymentModal.tsx:365
-#. js-lingui-explicit-id
-msgid "privacy policy"
-msgstr "개인정보 보호정책"
-
-#: src/features/Usage/PaymentModal.tsx:401
-#. js-lingui-explicit-id
-msgid "Success!"
-msgstr "성공!"
-
-#: src/features/Usage/PaymentModal.tsx:411
-#. js-lingui-explicit-id
-msgid "Your payment was successful, but updates might take a few minutes"
-msgstr "결제는 성공적으로 이루어졌지만, 업데이트에는 몇 분이 걸릴 수 있습니다"
-
-#: src/features/Header/HeaderStatic.tsx:21
-#: src/features/Usage/PaymentModal.tsx:417
-#. js-lingui-explicit-id
-msgid "Balance"
-msgstr "균형"
-
-#: src/features/Usage/PaymentModal.tsx:442
-#. js-lingui-explicit-id
-msgid "Current Balance of AI usage"
-msgstr "AI 사용 현재 잔액"
-
-#: src/features/Usage/PaymentModal.tsx:470
-#. js-lingui-explicit-id
-msgid "Total used:"
-msgstr "총 사용량:"
-
-#: src/features/Usage/PaymentModal.tsx:484
-#. js-lingui-explicit-id
-msgid "Payment history:"
-msgstr "결제 내역:"
-
-#: src/features/Header/PaymentHistoryModal.tsx:76
-#: src/features/Usage/PaymentModal.tsx:505
-#. js-lingui-explicit-id
-msgid "No payments..."
-msgstr "결제 없음..."
+msgid "Please wait while we process your payment."
+msgstr "결제를 처리하는 동안 기다려 주세요."
 
 #: src/features/Translation/useTranslate.tsx:149
 #. js-lingui-explicit-id
@@ -890,6 +880,26 @@ msgstr "번역할 텍스트가 없습니다."
 #. js-lingui-explicit-id
 msgid "No translation available"
 msgstr "번역할 수 없습니다"
+
+#: src/features/Usage/PayWall.tsx:64
+#. js-lingui-explicit-id
+msgid "Subscription needed"
+msgstr "구독 필요"
+
+#: src/features/Usage/PayWall.tsx:76
+#. js-lingui-explicit-id
+msgid "You've made amazing progress. Let’s keep going."
+msgstr "당신은 놀라운 진전을 이루셨습니다. 계속해봅시다."
+
+#: src/features/Usage/PayWall.tsx:103
+#. js-lingui-explicit-id
+msgid "Buy a subscription"
+msgstr "구독을 구매하십시오"
+
+#: src/features/Usage/PayWall.tsx:115
+#. js-lingui-explicit-id
+msgid "Play the Game"
+msgstr "게임을 플레이하세요"
 
 #: src/features/Telegram/TgAppPage.tsx:81
 #. js-lingui-explicit-id
@@ -927,27 +937,6 @@ msgstr "로딩 중.."
 msgid "Refresh"
 msgstr "새로고침"
 
-#: src/features/Survey/RecordUserAudioAnswer.tsx:63
-#. js-lingui-explicit-id
-msgid "Your answer"
-msgstr "당신의 답변"
-
-#: src/features/Survey/RecordUserAudioAnswer.tsx:91
-#. js-lingui-explicit-id
-msgid "Processing..."
-msgstr "처리 중..."
-
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:354
-#: src/features/Survey/RecordUserAudioAnswer.tsx:96
-#. js-lingui-explicit-id
-msgid "Error:"
-msgstr "오류:"
-
-#: src/features/Survey/RecordUserAudioAnswer.tsx:144
-#. js-lingui-explicit-id
-msgid "Record more"
-msgstr "더 녹음하기"
-
 #: src/features/Auth/AuthWall.tsx:93
 #: src/features/Game/GameOnboarding.tsx:75
 #: src/features/Game/GameOnboarding.tsx:130
@@ -966,253 +955,6 @@ msgstr "더 녹음하기"
 #. js-lingui-explicit-id
 msgid "Next"
 msgstr "다음"
-
-#: src/features/Settings/MyProfile.tsx:68
-#. js-lingui-explicit-id
-msgid "Language"
-msgstr "언어"
-
-#: src/features/Settings/MyProfile.tsx:69
-#. js-lingui-explicit-id
-msgid "Select your preferred language"
-msgstr "선호하는 언어를 선택하세요"
-
-#: src/features/Settings/MyProfile.tsx:76
-#. js-lingui-explicit-id
-msgid "Manage your subscription settings"
-msgstr "구독 설정 관리"
-
-#: src/features/Header/HeaderPractice.tsx:332
-#: src/features/Header/HeaderPractice.tsx:396
-#: src/features/Settings/MyProfile.tsx:83
-#: src/features/Settings/MyProfile.tsx:242
-#. js-lingui-explicit-id
-msgid "Feedback"
-msgstr "피드백"
-
-#: src/features/Settings/MyProfile.tsx:84
-#. js-lingui-explicit-id
-msgid "Give us your feedback"
-msgstr "피드백을 남겨주세요"
-
-#: src/features/Settings/MyProfile.tsx:91
-#. js-lingui-explicit-id
-msgid "Help"
-msgstr "도움말"
-
-#: src/features/Header/PaymentHistoryModal.tsx:39
-#: src/features/Settings/MyProfile.tsx:99
-#. js-lingui-explicit-id
-msgid "Payment History"
-msgstr "결제 내역"
-
-#: src/features/Header/PaymentHistoryModal.tsx:48
-#: src/features/Settings/MyProfile.tsx:100
-#. js-lingui-explicit-id
-msgid "View your payment history"
-msgstr "결제 내역 보기"
-
-#: src/features/Header/HeaderPractice.tsx:423
-#: src/features/Header/HeaderStatic.tsx:23
-#: src/features/Settings/MyProfile.tsx:110
-#. js-lingui-explicit-id
-msgid "Log Out"
-msgstr "로그아웃"
-
-#: src/features/Settings/MyProfile.tsx:111
-#. js-lingui-explicit-id
-msgid "Log out of your account"
-msgstr "계정에서 로그아웃하십시오"
-
-#: src/features/Header/HeaderPractice.tsx:323
-#: src/features/Header/HeaderPractice.tsx:383
-#: src/features/Settings/MyProfile.tsx:233
-#. js-lingui-explicit-id
-msgid "Refund"
-msgstr "환불"
-
-#: src/features/Header/HeaderPractice.tsx:324
-#: src/features/Settings/MyProfile.tsx:234
-#. js-lingui-explicit-id
-msgid "Add some info why you want a refund and we will do it."
-msgstr "환불을 원하는 이유를 몇 가지 추가해 주시면 처리해 드리겠습니다."
-
-#: src/features/Header/ContactMessageModal.tsx:98
-#: src/features/Header/HeaderPractice.tsx:325
-#: src/features/Header/HeaderPractice.tsx:334
-#: src/features/Settings/MyProfile.tsx:235
-#: src/features/Settings/MyProfile.tsx:244
-#. js-lingui-explicit-id
-msgid "Leave your message"
-msgstr "당신의 메시지를 남겨주세요"
-
-#: src/features/Header/HeaderPractice.tsx:333
-#: src/features/Settings/MyProfile.tsx:243
-#. js-lingui-explicit-id
-msgid "We appreciate your feedback!"
-msgstr "우리는 귀하의 피드백에 감사드립니다!"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:261
-#: src/features/Dashboard/PlanDashboardCards.tsx:461
-#: src/features/Goal/Quiz/GoalReview.tsx:154
-#: src/features/Interview/InterviewLanding/PricingSection.tsx:164
-#: src/features/Landing/PlanLandingBlock.tsx:430
-#: src/features/Landing/PlanLandingBlock.tsx:560
-#: src/features/Landing/PlanLandingBlock.tsx:622
-#: src/features/Landing/Price/PricePage.tsx:223
-#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:330
-#: src/features/RolePlay/RolePlayCardApp.tsx:136
-#: src/features/RolePlay/RolePlayModal.tsx:267
-#. js-lingui-explicit-id
-msgid "Start"
-msgstr "시작"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:100
-#: src/features/Goal/Quiz/GoalReview.tsx:40
-#: src/features/Landing/PlanLandingBlock.tsx:279
-#: src/features/Navigation/NavigationBar.tsx:55
-#: src/features/RolePlay/RolePlayBoard.tsx:49
-#. js-lingui-explicit-id
-msgid "Role Play"
-msgstr "역할 놀이"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show more"
-msgstr "더 보여주기"
-
-#: src/features/RolePlay/RolePlayBoard.tsx:91
-#. js-lingui-explicit-id
-msgid "Show less"
-msgstr "덜 보기"
-
-#: src/features/Plan/useGoalCreation.ts:41
-#: src/features/Plan/useGoalCreation.ts:71
-#: src/features/Plan/useGoalCreation.ts:93
-#: src/features/Plan/useGoalCreation.ts:96
-#: src/features/Plan/useGoalCreation.ts:100
-#: src/features/Plan/useGoalCreation.ts:109
-#: src/features/Plan/useGoalCreation.ts:115
-#: src/features/Plan/useGoalCreation.ts:119
-#. js-lingui-explicit-id
-msgid "Processing the goal..."
-msgstr "목표 처리 중..."
-
-#: src/features/Plan/useGoalCreation.ts:133
-#. js-lingui-explicit-id
-msgid "Error Processing the goal"
-msgstr "목표 처리 중 오류 발생"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
-#. js-lingui-explicit-id
-msgid ""
-"Boost your English vocabulary and fluency by creatively describing and "
-"guessing words in\n"
-"        this interactive AI-powered Alias game."
-msgstr "이 인터랙티브한 AI 기반 Alias 게임에서 단어를 창의적으로 설명하고 추측함으로써 영어 어휘력과 유창성을 향상시키세요."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
-#. js-lingui-explicit-id
-msgid "Benefits of Playing Alias Game"
-msgstr "Alias 게임을 하는 이점"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
-#. js-lingui-explicit-id
-msgid "Enhance your vocabulary by describing words in unique ways."
-msgstr "독특한 방식으로 단어를 설명함으로써 당신의 어휘력을 향상시키세요."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
-#. js-lingui-explicit-id
-msgid "Improve listening skills as you interpret descriptions."
-msgstr "설명을 해석하면서 청취 능력을 향상시키세요."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
-#. js-lingui-explicit-id
-msgid "Practice rapid thinking and fluent speaking under playful pressure."
-msgstr "즐거운 압박감 속에서 빠른 생각과 능숙한 말하기를 연습하세요."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
-#. js-lingui-explicit-id
-msgid "Receive instant, tailored feedback from your AI partner."
-msgstr "AI 파트너로부터 실시간으로 맞춤형 피드백을 받으세요."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
-#. js-lingui-explicit-id
-msgid "How to Play"
-msgstr "놀이 방법"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
-#. js-lingui-explicit-id
-msgid ""
-"You and your AI partner alternate turns describing and guessing words "
-"without directly\n"
-"          naming them. This encourages creative thinking and fluent "
-"expression, adapting to your\n"
-"          language proficiency."
-msgstr ""
-"당신과 당신의 AI 파트너는 직접적으로\n"
-"          이름을 말하지 않고 번갈아 가며 단어를 설명하고 추측합니다. 이는 창의적인 생각과 능숙한 표현을 촉진하며, 당신의\n"
-"          언어 능력에 적응합니다."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
-#. js-lingui-explicit-id
-msgid "Choose Your Language Level"
-msgstr "당신의 언어 레벨을 선택하세요"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
-#. js-lingui-explicit-id
-msgid "Pick a level to start playing!"
-msgstr "게임을 시작하려면 레벨을 선택하세요!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
-#. js-lingui-explicit-id
-msgid "Alias Game Levels"
-msgstr "Alias 게임 레벨들"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
-#. js-lingui-explicit-id
-msgid "Check proposed words"
-msgstr "제안된 단어 확인"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
-#. js-lingui-explicit-id
-msgid "Based on your level, the AI will suggest words to describe."
-msgstr "당신의 레벨에 따라 AI는 묘사할 단어를 제안합니다."
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
-#. js-lingui-explicit-id
-msgid "Alias Game options"
-msgstr "별칭 게임 옵션"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
-#. js-lingui-explicit-id
-msgid "Record your description"
-msgstr "당신의 설명을 녹음하세요"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
-#. js-lingui-explicit-id
-msgid "Describe the word you see on the screen without using the word itself!"
-msgstr "화면에 보이는 단어를 그 단어 자체를 사용하지 않고 설명해보세요!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
-#. js-lingui-explicit-id
-msgid "Alias Game Recording"
-msgstr "별명 게임 녹음"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
-#. js-lingui-explicit-id
-msgid "Have fun!"
-msgstr "즐겨보세요!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
-#. js-lingui-explicit-id
-msgid "Enjoy the game and see how the AI guesses your description!"
-msgstr "게임을 즐기고 AI가 어떻게 당신의 설명을 추측하는지 확인해보세요!"
-
-#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
-#. js-lingui-explicit-id
-msgid "Robot Thinking"
-msgstr "로봇 생각 중"
 
 #: src/features/RolePlay/rolePlayData.tsx:18
 #. js-lingui-explicit-id
@@ -2068,25 +1810,252 @@ msgstr ""
 msgid "All Scenarios"
 msgstr "모든 시나리오"
 
-#: src/features/Plan/PlanCard.tsx:118
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:12
 #. js-lingui-explicit-id
-msgid "Send 6 messages to complete"
-msgstr "6개의 메시지를 완료하십시오"
+msgid ""
+"Boost your English vocabulary and fluency by creatively describing and "
+"guessing words in\n"
+"        this interactive AI-powered Alias game."
+msgstr "이 인터랙티브한 AI 기반 Alias 게임에서 단어를 창의적으로 설명하고 추측함으로써 영어 어휘력과 유창성을 향상시키세요."
 
-#: src/features/Plan/PlanCard.tsx:137
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:23
 #. js-lingui-explicit-id
-msgid "Start lesson"
-msgstr "수업 시작"
+msgid "Benefits of Playing Alias Game"
+msgstr "Alias 게임을 하는 이점"
 
-#: src/features/Navigation/NavigationBar.tsx:45
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:35
 #. js-lingui-explicit-id
-msgid "Home"
-msgstr "집"
+msgid "Enhance your vocabulary by describing words in unique ways."
+msgstr "독특한 방식으로 단어를 설명함으로써 당신의 어휘력을 향상시키세요."
 
-#: src/features/Navigation/NavigationBar.tsx:60
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:48
 #. js-lingui-explicit-id
-msgid "Profile"
-msgstr "프로필"
+msgid "Improve listening skills as you interpret descriptions."
+msgstr "설명을 해석하면서 청취 능력을 향상시키세요."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:61
+#. js-lingui-explicit-id
+msgid "Practice rapid thinking and fluent speaking under playful pressure."
+msgstr "즐거운 압박감 속에서 빠른 생각과 능숙한 말하기를 연습하세요."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:74
+#. js-lingui-explicit-id
+msgid "Receive instant, tailored feedback from your AI partner."
+msgstr "AI 파트너로부터 실시간으로 맞춤형 피드백을 받으세요."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:86
+#. js-lingui-explicit-id
+msgid "How to Play"
+msgstr "놀이 방법"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:89
+#. js-lingui-explicit-id
+msgid ""
+"You and your AI partner alternate turns describing and guessing words "
+"without directly\n"
+"          naming them. This encourages creative thinking and fluent "
+"expression, adapting to your\n"
+"          language proficiency."
+msgstr ""
+"당신과 당신의 AI 파트너는 직접적으로\n"
+"          이름을 말하지 않고 번갈아 가며 단어를 설명하고 추측합니다. 이는 창의적인 생각과 능숙한 표현을 촉진하며, 당신의\n"
+"          언어 능력에 적응합니다."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
+#. js-lingui-explicit-id
+msgid "Choose Your Language Level"
+msgstr "당신의 언어 레벨을 선택하세요"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:105
+#. js-lingui-explicit-id
+msgid "Pick a level to start playing!"
+msgstr "게임을 시작하려면 레벨을 선택하세요!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:115
+#. js-lingui-explicit-id
+msgid "Alias Game Levels"
+msgstr "Alias 게임 레벨들"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:126
+#. js-lingui-explicit-id
+msgid "Check proposed words"
+msgstr "제안된 단어 확인"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:129
+#. js-lingui-explicit-id
+msgid "Based on your level, the AI will suggest words to describe."
+msgstr "당신의 레벨에 따라 AI는 묘사할 단어를 제안합니다."
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:139
+#. js-lingui-explicit-id
+msgid "Alias Game options"
+msgstr "별칭 게임 옵션"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:150
+#. js-lingui-explicit-id
+msgid "Record your description"
+msgstr "당신의 설명을 녹음하세요"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:153
+#. js-lingui-explicit-id
+msgid "Describe the word you see on the screen without using the word itself!"
+msgstr "화면에 보이는 단어를 그 단어 자체를 사용하지 않고 설명해보세요!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:163
+#. js-lingui-explicit-id
+msgid "Alias Game Recording"
+msgstr "별명 게임 녹음"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:174
+#. js-lingui-explicit-id
+msgid "Have fun!"
+msgstr "즐겨보세요!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:177
+#. js-lingui-explicit-id
+msgid "Enjoy the game and see how the AI guesses your description!"
+msgstr "게임을 즐기고 AI가 어떻게 당신의 설명을 추측하는지 확인해보세요!"
+
+#: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:187
+#. js-lingui-explicit-id
+msgid "Robot Thinking"
+msgstr "로봇 생각 중"
+
+#: src/features/Settings/MyProfile.tsx:68
+#. js-lingui-explicit-id
+msgid "Language"
+msgstr "언어"
+
+#: src/features/Settings/MyProfile.tsx:69
+#. js-lingui-explicit-id
+msgid "Select your preferred language"
+msgstr "선호하는 언어를 선택하세요"
+
+#: src/features/Settings/MyProfile.tsx:76
+#. js-lingui-explicit-id
+msgid "Manage your subscription settings"
+msgstr "구독 설정 관리"
+
+#: src/features/Header/HeaderPractice.tsx:332
+#: src/features/Header/HeaderPractice.tsx:396
+#: src/features/Settings/MyProfile.tsx:83
+#: src/features/Settings/MyProfile.tsx:242
+#. js-lingui-explicit-id
+msgid "Feedback"
+msgstr "피드백"
+
+#: src/features/Settings/MyProfile.tsx:84
+#. js-lingui-explicit-id
+msgid "Give us your feedback"
+msgstr "피드백을 남겨주세요"
+
+#: src/features/Settings/MyProfile.tsx:91
+#. js-lingui-explicit-id
+msgid "Help"
+msgstr "도움말"
+
+#: src/features/Header/PaymentHistoryModal.tsx:39
+#: src/features/Settings/MyProfile.tsx:99
+#. js-lingui-explicit-id
+msgid "Payment History"
+msgstr "결제 내역"
+
+#: src/features/Header/PaymentHistoryModal.tsx:48
+#: src/features/Settings/MyProfile.tsx:100
+#. js-lingui-explicit-id
+msgid "View your payment history"
+msgstr "결제 내역 보기"
+
+#: src/features/Header/HeaderPractice.tsx:423
+#: src/features/Header/HeaderStatic.tsx:23
+#: src/features/Settings/MyProfile.tsx:110
+#. js-lingui-explicit-id
+msgid "Log Out"
+msgstr "로그아웃"
+
+#: src/features/Settings/MyProfile.tsx:111
+#. js-lingui-explicit-id
+msgid "Log out of your account"
+msgstr "계정에서 로그아웃하십시오"
+
+#: src/features/Header/HeaderPractice.tsx:323
+#: src/features/Header/HeaderPractice.tsx:383
+#: src/features/Settings/MyProfile.tsx:233
+#. js-lingui-explicit-id
+msgid "Refund"
+msgstr "환불"
+
+#: src/features/Header/HeaderPractice.tsx:324
+#: src/features/Settings/MyProfile.tsx:234
+#. js-lingui-explicit-id
+msgid "Add some info why you want a refund and we will do it."
+msgstr "환불을 원하는 이유를 몇 가지 추가해 주시면 처리해 드리겠습니다."
+
+#: src/features/Header/ContactMessageModal.tsx:98
+#: src/features/Header/HeaderPractice.tsx:325
+#: src/features/Header/HeaderPractice.tsx:334
+#: src/features/Settings/MyProfile.tsx:235
+#: src/features/Settings/MyProfile.tsx:244
+#. js-lingui-explicit-id
+msgid "Leave your message"
+msgstr "당신의 메시지를 남겨주세요"
+
+#: src/features/Header/HeaderPractice.tsx:333
+#: src/features/Settings/MyProfile.tsx:243
+#. js-lingui-explicit-id
+msgid "We appreciate your feedback!"
+msgstr "우리는 귀하의 피드백에 감사드립니다!"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:100
+#: src/features/Goal/Quiz/GoalReview.tsx:40
+#: src/features/Landing/PlanLandingBlock.tsx:279
+#: src/features/Navigation/NavigationBar.tsx:55
+#: src/features/RolePlay/RolePlayBoard.tsx:49
+#. js-lingui-explicit-id
+msgid "Role Play"
+msgstr "역할 놀이"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show more"
+msgstr "더 보여주기"
+
+#: src/features/RolePlay/RolePlayBoard.tsx:91
+#. js-lingui-explicit-id
+msgid "Show less"
+msgstr "덜 보기"
+
+#: src/features/Dashboard/PlanDashboardCards.tsx:261
+#: src/features/Dashboard/PlanDashboardCards.tsx:461
+#: src/features/Goal/Quiz/GoalReview.tsx:154
+#: src/features/Interview/InterviewLanding/PricingSection.tsx:164
+#: src/features/Landing/PlanLandingBlock.tsx:430
+#: src/features/Landing/PlanLandingBlock.tsx:560
+#: src/features/Landing/PlanLandingBlock.tsx:622
+#: src/features/Landing/Price/PricePage.tsx:223
+#: src/features/Landing/RolePlay/ScenarioOnePage.tsx:330
+#: src/features/RolePlay/RolePlayCardApp.tsx:136
+#: src/features/RolePlay/RolePlayModal.tsx:267
+#. js-lingui-explicit-id
+msgid "Start"
+msgstr "시작"
+
+#: src/features/Plan/useGoalCreation.ts:41
+#: src/features/Plan/useGoalCreation.ts:71
+#: src/features/Plan/useGoalCreation.ts:93
+#: src/features/Plan/useGoalCreation.ts:96
+#: src/features/Plan/useGoalCreation.ts:100
+#: src/features/Plan/useGoalCreation.ts:109
+#: src/features/Plan/useGoalCreation.ts:115
+#: src/features/Plan/useGoalCreation.ts:119
+#. js-lingui-explicit-id
+msgid "Processing the goal..."
+msgstr "목표 처리 중..."
+
+#: src/features/Plan/useGoalCreation.ts:133
+#. js-lingui-explicit-id
+msgid "Error Processing the goal"
+msgstr "목표 처리 중 오류 발생"
 
 #: src/features/PayWall/CardValidator.tsx:40
 #. js-lingui-explicit-id
@@ -2143,50 +2112,25 @@ msgstr "결제가 발생하지 않습니다"
 msgid "Confirm Credit Card"
 msgstr "신용 카드 확인"
 
-#: src/features/Dashboard/SelectLanguage.tsx:94
-#: src/features/Game/GameNativeLanguageSelector.tsx:19
-#: src/features/Goal/GoalQuestions.tsx:323
-#: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:35
-#: src/features/Goal/Quiz/useQuiz.tsx:626
-#: src/features/Lang/LanguageSwitcher.tsx:104
+#: src/features/Plan/PlanCard.tsx:118
 #. js-lingui-explicit-id
-msgid "Other languages"
-msgstr "다른 언어들"
+msgid "Send 6 messages to complete"
+msgstr "6개의 메시지를 완료하십시오"
 
-#: src/features/Dashboard/SelectLanguage.tsx:95
-#: src/features/Game/GameNativeLanguageSelector.tsx:20
-#: src/features/Goal/GoalQuestions.tsx:324
-#: src/features/Goal/Quiz/NativeLanguageSelector.tsx:25
-#: src/features/Goal/Quiz/QuizPage2.tsx:36
-#: src/features/Goal/Quiz/useQuiz.tsx:627
-#: src/features/Lang/LanguageSwitcher.tsx:105
+#: src/features/Plan/PlanCard.tsx:137
 #. js-lingui-explicit-id
-msgid "System languages"
-msgstr "시스템 언어"
+msgid "Start lesson"
+msgstr "수업 시작"
 
-#: src/features/Lang/LanguageSwitcher.tsx:187
+#: src/features/Navigation/NavigationBar.tsx:45
 #. js-lingui-explicit-id
-msgid "Languages"
-msgstr "언어"
+msgid "Home"
+msgstr "집"
 
-#: src/features/Goal/GoalQuestions.tsx:422
-#: src/features/Lang/LanguageSwitcher.tsx:230
+#: src/features/Navigation/NavigationBar.tsx:60
 #. js-lingui-explicit-id
-msgid "Language to Learn"
-msgstr "배울 언어"
-
-#: src/features/Dashboard/SelectLanguage.tsx:267
-#: src/features/Lang/LanguageSwitcher.tsx:269
-#. js-lingui-explicit-id
-msgid "Native Language"
-msgstr "모국어"
-
-#: src/features/Goal/Quiz/PageLanguageSelector.tsx:76
-#: src/features/Lang/LanguageSwitcher.tsx:311
-#. js-lingui-explicit-id
-msgid "Page Language"
-msgstr "페이지 언어"
+msgid "Profile"
+msgstr "프로필"
 
 #: src/features/Lang/getLabels.tsx:9
 #. js-lingui-explicit-id
@@ -2298,23 +2242,83 @@ msgstr "스웨덴어 학습 계획"
 msgid "Belarusian Learning Plan"
 msgstr "벨라루스어 학습 계획"
 
-#: src/features/Landing/Footer.tsx:85
+#: src/features/Survey/RecordUserAudioAnswer.tsx:63
 #. js-lingui-explicit-id
-msgid "Role-Play"
-msgstr "역할 놀이"
+msgid "Your answer"
+msgstr "당신의 답변"
 
-#: src/features/Header/HeaderStatic.tsx:24
-#: src/features/Landing/Footer.tsx:91
+#: src/features/Survey/RecordUserAudioAnswer.tsx:91
 #. js-lingui-explicit-id
-msgid "Blog"
-msgstr "블로그"
+msgid "Processing..."
+msgstr "처리 중..."
 
-#: src/features/Header/HeaderStatic.tsx:19
-#: src/features/Landing/Footer.tsx:94
-#: src/features/Landing/Price/PricePage.tsx:94
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:354
+#: src/features/Survey/RecordUserAudioAnswer.tsx:96
 #. js-lingui-explicit-id
-msgid "Price"
-msgstr "가격"
+msgid "Error:"
+msgstr "오류:"
+
+#: src/features/Survey/RecordUserAudioAnswer.tsx:144
+#. js-lingui-explicit-id
+msgid "Record more"
+msgstr "더 녹음하기"
+
+#: src/features/Dashboard/SelectLanguage.tsx:94
+#: src/features/Game/GameNativeLanguageSelector.tsx:19
+#: src/features/Goal/GoalQuestions.tsx:323
+#: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
+#: src/features/Goal/Quiz/QuizPage2.tsx:35
+#: src/features/Goal/Quiz/useQuiz.tsx:626
+#: src/features/Lang/LanguageSwitcher.tsx:104
+#. js-lingui-explicit-id
+msgid "Other languages"
+msgstr "다른 언어들"
+
+#: src/features/Dashboard/SelectLanguage.tsx:95
+#: src/features/Game/GameNativeLanguageSelector.tsx:20
+#: src/features/Goal/GoalQuestions.tsx:324
+#: src/features/Goal/Quiz/NativeLanguageSelector.tsx:25
+#: src/features/Goal/Quiz/QuizPage2.tsx:36
+#: src/features/Goal/Quiz/useQuiz.tsx:627
+#: src/features/Lang/LanguageSwitcher.tsx:105
+#. js-lingui-explicit-id
+msgid "System languages"
+msgstr "시스템 언어"
+
+#: src/features/Lang/LanguageSwitcher.tsx:187
+#. js-lingui-explicit-id
+msgid "Languages"
+msgstr "언어"
+
+#: src/features/Goal/GoalQuestions.tsx:422
+#: src/features/Lang/LanguageSwitcher.tsx:230
+#. js-lingui-explicit-id
+msgid "Language to Learn"
+msgstr "배울 언어"
+
+#: src/features/Dashboard/SelectLanguage.tsx:267
+#: src/features/Lang/LanguageSwitcher.tsx:269
+#. js-lingui-explicit-id
+msgid "Native Language"
+msgstr "모국어"
+
+#: src/features/Goal/Quiz/PageLanguageSelector.tsx:76
+#: src/features/Lang/LanguageSwitcher.tsx:311
+#. js-lingui-explicit-id
+msgid "Page Language"
+msgstr "페이지 언어"
+
+#: src/features/Landing/WelcomeScreen.tsx:173
+#. js-lingui-explicit-id
+msgid "Start Speaking"
+msgstr "말하기 시작"
+
+#: src/features/Landing/WelcomeScreen.tsx:195
+#. js-lingui-explicit-id
+msgid ""
+"Don’t let mistakes stop you. Build fluency and confidence with daily "
+"speaking practice, anytime you need it."
+msgstr "실수를 두려워하지 마세요. 매일 연습을 통해 유창함과 자신감을 키우세요. 언제든 필요할 때 연습하세요."
 
 #: src/features/Landing/PlanLandingBlock.tsx:195
 #. js-lingui-explicit-id
@@ -2545,30 +2549,6 @@ msgstr "결과는 생각보다 더 가까이에 있습니다"
 #. js-lingui-explicit-id
 msgid "Start Learning"
 msgstr "학습 시작"
-
-#: src/features/Blog/BlogsPage.tsx:41
-#: src/features/Landing/Price/PricePage.tsx:403
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
-#. js-lingui-explicit-id
-msgid "Start Your Journey to Fluent Conversations Now"
-msgstr "지금 유창한 대화로의 여정을 시작하세요"
-
-#: src/features/Landing/RolePlay/ScenariosPage.tsx:44
-#. js-lingui-explicit-id
-msgid "Get Started Free"
-msgstr "무료로 시작하기"
-
-#: src/features/Landing/WelcomeScreen.tsx:173
-#. js-lingui-explicit-id
-msgid "Start Speaking"
-msgstr "말하기 시작"
-
-#: src/features/Landing/WelcomeScreen.tsx:195
-#. js-lingui-explicit-id
-msgid ""
-"Don’t let mistakes stop you. Build fluency and confidence with daily "
-"speaking practice, anytime you need it."
-msgstr "실수를 두려워하지 마세요. 매일 연습을 통해 유창함과 자신감을 키우세요. 언제든 필요할 때 연습하세요."
 
 #: src/features/Landing/LandingPage.tsx:30
 #. js-lingui-explicit-id
@@ -2856,6 +2836,24 @@ msgstr "언제 어디서든 배우세요"
 msgid "Start Learning Now"
 msgstr "지금 바로 학습 시작하기"
 
+#: src/features/Landing/Footer.tsx:85
+#. js-lingui-explicit-id
+msgid "Role-Play"
+msgstr "역할 놀이"
+
+#: src/features/Header/HeaderStatic.tsx:24
+#: src/features/Landing/Footer.tsx:91
+#. js-lingui-explicit-id
+msgid "Blog"
+msgstr "블로그"
+
+#: src/features/Header/HeaderStatic.tsx:19
+#: src/features/Landing/Footer.tsx:94
+#: src/features/Landing/Price/PricePage.tsx:94
+#. js-lingui-explicit-id
+msgid "Price"
+msgstr "가격"
+
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:151
 #. js-lingui-explicit-id
 msgid "View all"
@@ -2911,80 +2909,10 @@ msgstr "관련 시나리오"
 msgid "Ready to Become Fluent in English?"
 msgstr "준비가 되셨나요? 영어를 유창하게 구사할 준비가 되셨습니까?"
 
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Practice Real-Life Conversations With Role-Play Scenarios"
-msgstr "실제 대화를 연습하는 역할극 시나리오"
-
-#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Order food, schedule appointments, ace job interviews, and more—all with "
-"guidance from your AI tutor."
-msgstr "음식을 주문하고, 약속을 일정에 맞추고, 취업 인터뷰에서 성공하고, 그 외 다양한 작업을 수행하세요—모두 당신의 AI 튜터의 안내로."
-
 #: src/features/Landing/RolePlay/RolePlayCard.tsx:150
 #. js-lingui-explicit-id
 msgid "Try"
 msgstr "시도하다"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
-#. js-lingui-explicit-id
-msgid "Role Play Scenarios"
-msgstr "역할극 시나리오"
-
-#: src/features/Blog/ListBlog.tsx:72
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
-#. js-lingui-explicit-id
-msgid "Discover"
-msgstr "발견하다"
-
-#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
-#. js-lingui-explicit-id
-msgid "No scenarios found"
-msgstr "시나리오를 찾을 수 없습니다"
-
-#: src/features/Landing/Price/FeatureList.tsx:30
-#: src/features/Landing/Price/PricePage.tsx:184
-#. js-lingui-explicit-id
-msgid "Full AI tutor access"
-msgstr "풀 AI 튜터 접근권"
-
-#: src/features/Landing/Price/FeatureList.tsx:34
-#: src/features/Landing/Price/PricePage.tsx:189
-#. js-lingui-explicit-id
-msgid "Role-play scenarios"
-msgstr "역할극 시나리오"
-
-#: src/features/Landing/Price/FeatureList.tsx:38
-#: src/features/Landing/Price/PricePage.tsx:196
-#. js-lingui-explicit-id
-msgid "Conversation practice"
-msgstr "대화 연습"
-
-#: src/features/Landing/Price/FeatureList.tsx:42
-#: src/features/Landing/Price/PricePage.tsx:201
-#. js-lingui-explicit-id
-msgid "Progress tracking"
-msgstr "진행 상황 추적"
-
-#: src/features/Landing/Price/FeatureList.tsx:46
-#: src/features/Landing/Price/PricePage.tsx:206
-#. js-lingui-explicit-id
-msgid "New Words"
-msgstr "새로운 단어들"
-
-#: src/features/Landing/Price/FeatureList.tsx:50
-#: src/features/Landing/Price/PricePage.tsx:211
-#. js-lingui-explicit-id
-msgid "New Grammar Rules"
-msgstr "새로운 문법 규칙"
-
-#: src/features/Landing/Price/FeatureList.tsx:54
-#: src/features/Landing/Price/PricePage.tsx:216
-#. js-lingui-explicit-id
-msgid "Advanced Personalization"
-msgstr "고급 개인화"
 
 #: src/features/Landing/Price/PricePage.tsx:104
 #. js-lingui-explicit-id
@@ -3001,35 +2929,77 @@ msgstr "유연성을 원하는 학습자들을 위해"
 msgid "Everything in Free, plus:"
 msgstr "무료 버전의 모든 기능에 더하여:"
 
+#: src/features/Landing/Price/FeatureList.tsx:30
+#: src/features/Landing/Price/PricePage.tsx:184
+#. js-lingui-explicit-id
+msgid "Full AI tutor access"
+msgstr "풀 AI 튜터 접근권"
+
 #: src/features/Landing/Price/PricePage.tsx:185
 #. js-lingui-explicit-id
 msgid "Get unlimited access to AI-powered language practice"
 msgstr "무제한 AI 기반 언어 연습 이용하기"
+
+#: src/features/Landing/Price/FeatureList.tsx:34
+#: src/features/Landing/Price/PricePage.tsx:189
+#. js-lingui-explicit-id
+msgid "Role-play scenarios"
+msgstr "역할극 시나리오"
 
 #: src/features/Landing/Price/PricePage.tsx:190
 #. js-lingui-explicit-id
 msgid "Engage in real-life conversations like job interviews or ordering food"
 msgstr "실제 직업 인터뷰나 음식 주문과 같은 대화에 참여하세요"
 
+#: src/features/Landing/Price/FeatureList.tsx:38
+#: src/features/Landing/Price/PricePage.tsx:196
+#. js-lingui-explicit-id
+msgid "Conversation practice"
+msgstr "대화 연습"
+
 #: src/features/Landing/Price/PricePage.tsx:197
 #. js-lingui-explicit-id
 msgid "Improve fluency with interactive chat sessions"
 msgstr "대화형 채팅 세션으로 유창성 향상하기"
+
+#: src/features/Landing/Price/FeatureList.tsx:42
+#: src/features/Landing/Price/PricePage.tsx:201
+#. js-lingui-explicit-id
+msgid "Progress tracking"
+msgstr "진행 상황 추적"
 
 #: src/features/Landing/Price/PricePage.tsx:202
 #. js-lingui-explicit-id
 msgid "See your improvements and track your learning journey"
 msgstr "당신의 개선 사항을 확인하고 학습 여정을 추적하십시오"
 
+#: src/features/Landing/Price/FeatureList.tsx:46
+#: src/features/Landing/Price/PricePage.tsx:206
+#. js-lingui-explicit-id
+msgid "New Words"
+msgstr "새로운 단어들"
+
 #: src/features/Landing/Price/PricePage.tsx:207
 #. js-lingui-explicit-id
 msgid "Get new words and phrases in context"
 msgstr "문맥 속에서 새로운 단어와 구문을 얻으세요"
 
+#: src/features/Landing/Price/FeatureList.tsx:50
+#: src/features/Landing/Price/PricePage.tsx:211
+#. js-lingui-explicit-id
+msgid "New Grammar Rules"
+msgstr "새로운 문법 규칙"
+
 #: src/features/Landing/Price/PricePage.tsx:212
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
 msgstr "연습을 통해, AI로부터 개인화된 문법 규칙을 얻을 수 있습니다"
+
+#: src/features/Landing/Price/FeatureList.tsx:54
+#: src/features/Landing/Price/PricePage.tsx:216
+#. js-lingui-explicit-id
+msgid "Advanced Personalization"
+msgstr "고급 개인화"
 
 #: src/features/Landing/Price/PricePage.tsx:217
 #. js-lingui-explicit-id
@@ -3153,6 +3123,46 @@ msgstr "네! 더 큰 크레딧 패키지를 구매하실 때 할인 혜택을 �
 msgid "Contacts:"
 msgstr "연락처:"
 
+#: src/features/Blog/BlogsPage.tsx:41
+#: src/features/Landing/Price/PricePage.tsx:403
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:43
+#. js-lingui-explicit-id
+msgid "Start Your Journey to Fluent Conversations Now"
+msgstr "지금 유창한 대화로의 여정을 시작하세요"
+
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:20
+#. js-lingui-explicit-id
+msgid "Role Play Scenarios"
+msgstr "역할극 시나리오"
+
+#: src/features/Blog/ListBlog.tsx:72
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:71
+#. js-lingui-explicit-id
+msgid "Discover"
+msgstr "발견하다"
+
+#: src/features/Landing/RolePlay/ListRolePlay.tsx:130
+#. js-lingui-explicit-id
+msgid "No scenarios found"
+msgstr "시나리오를 찾을 수 없습니다"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Practice Real-Life Conversations With Role-Play Scenarios"
+msgstr "실제 대화를 연습하는 역할극 시나리오"
+
+#: src/features/Landing/RolePlay/ListRolePlayIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Order food, schedule appointments, ace job interviews, and more—all with "
+"guidance from your AI tutor."
+msgstr "음식을 주문하고, 약속을 일정에 맞추고, 취업 인터뷰에서 성공하고, 그 외 다양한 작업을 수행하세요—모두 당신의 AI 튜터의 안내로."
+
+#: src/features/Landing/RolePlay/ScenariosPage.tsx:44
+#. js-lingui-explicit-id
+msgid "Get Started Free"
+msgstr "무료로 시작하기"
+
 #: src/features/Interview/InterviewLanding/TestimonialsSection.tsx:10
 #. js-lingui-explicit-id
 msgid "I finally got 3 offers after months of silence."
@@ -3173,25 +3183,6 @@ msgstr "HR 및 행동 질문에 당황하지 않고 대답하는 데 도움이 �
 msgid "Real people. Real job offers."
 msgstr "실제 사람들. 실제 일자리 제안."
 
-#: src/features/Landing/Contact/ContactsPage.tsx:104
-#. js-lingui-explicit-id
-msgid ""
-"My name is Alex, I am the creator of this website. I am a software engineer "
-"and I am passionate about learning languages. I created this website to "
-"help people learn languages in a fun and interactive way. I hope you enjoy "
-"using it!"
-msgstr ""
-"제 이름은 알렉스입니다, 저는 이 웹사이트의 개발자입니다. 저는 소프트웨어 엔지니어이며, 언어 학습에 대한 열정을 가지고 있습니다. "
-"저는 사람들이 재미있고 상호작용적인 방법으로 언어를 배울 수 있도록 이 웹사이트를 만들었습니다. 여러분이 이 사이트를 사용하는 데 "
-"즐거움을 느끼시길 바랍니다!"
-
-#: src/features/Landing/Contact/ContactsPage.tsx:117
-#. js-lingui-explicit-id
-msgid ""
-"Feel free to reach out to me with any questions or feedback. I'm always "
-"happy to help!"
-msgstr "궁금한 점이나 피드백이 있으시면 언제든지 저에게 연락해 주세요. 항상 도움을 드리게 되어 기쁩니다!"
-
 #: src/features/Interview/InterviewLanding/SocialProofSection.tsx:9
 #. js-lingui-explicit-id
 msgid "92% reported improved performance"
@@ -3206,6 +3197,41 @@ msgstr "최고 기업에서 인터뷰하는 지원자가 사용합니다"
 #. js-lingui-explicit-id
 msgid "4.8★ rating"
 msgstr "4.8★ 평점"
+
+#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:9
+#. js-lingui-explicit-id
+msgid "Interview Score (confidence, structure, presence)"
+msgstr "인터뷰 점수 (자신감, 구조, 존재감)"
+
+#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:10
+#. js-lingui-explicit-id
+msgid "Your top weaknesses"
+msgstr "당신의 주요 약점"
+
+#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:11
+#. js-lingui-explicit-id
+msgid "Personalized interview answers"
+msgstr "개인 맞춤형 인터뷰 답변"
+
+#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:12
+#. js-lingui-explicit-id
+msgid "A plan tailored to your role & experience"
+msgstr "귀하의 역할과 경험에 맞춘 계획"
+
+#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:27
+#. js-lingui-explicit-id
+msgid "Take the Interview Readiness Test"
+msgstr "인터뷰 준비 테스트를 받으세요"
+
+#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:31
+#. js-lingui-explicit-id
+msgid "In 2 minutes, you'll get:"
+msgstr "2분 후, 당신은 다음을 얻게 됩니다:"
+
+#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:77
+#. js-lingui-explicit-id
+msgid "Start the test"
+msgstr "테스트 시작"
 
 #: src/features/Interview/InterviewLanding/PricingSection.tsx:10
 #. js-lingui-explicit-id
@@ -3341,76 +3367,6 @@ msgstr "플랜 선택하기"
 msgid "Recommended"
 msgstr "추천됨"
 
-#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:11
-#. js-lingui-explicit-id
-msgid "Real interview simulation"
-msgstr "실제 인터뷰 시뮬레이션"
-
-#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:12
-#. js-lingui-explicit-id
-msgid "Practice in real interview conditions — no tutors needed."
-msgstr "실제 인터뷰 조건에서 연습하세요 — 튜터는 필요하지 않습니다."
-
-#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:18
-#. js-lingui-explicit-id
-msgid "AI feedback that matters"
-msgstr "AI 피드백의 중요성"
-
-#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:19
-#. js-lingui-explicit-id
-msgid "Improve your impact, structure, clarity, and delivery."
-msgstr "당신의 영향력, 구조, 명확성 및 전달력을 향상하세요."
-
-#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:25
-#. js-lingui-explicit-id
-msgid "Personalized answer scripts"
-msgstr "개인화된 답변 스크립트"
-
-#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:26
-#. js-lingui-explicit-id
-msgid "Based on your CV, experience, and target role."
-msgstr "귀하의 이력서, 경험 및 목표 역할을 기반으로."
-
-#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:44
-#. js-lingui-explicit-id
-msgid "Why candidates improve so quickly"
-msgstr "후보자가 빠르게 발전하는 이유"
-
-#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:9
-#. js-lingui-explicit-id
-msgid "Interview Score (confidence, structure, presence)"
-msgstr "인터뷰 점수 (자신감, 구조, 존재감)"
-
-#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:10
-#. js-lingui-explicit-id
-msgid "Your top weaknesses"
-msgstr "당신의 주요 약점"
-
-#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:11
-#. js-lingui-explicit-id
-msgid "Personalized interview answers"
-msgstr "개인 맞춤형 인터뷰 답변"
-
-#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:12
-#. js-lingui-explicit-id
-msgid "A plan tailored to your role & experience"
-msgstr "귀하의 역할과 경험에 맞춘 계획"
-
-#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:27
-#. js-lingui-explicit-id
-msgid "Take the Interview Readiness Test"
-msgstr "인터뷰 준비 테스트를 받으세요"
-
-#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:31
-#. js-lingui-explicit-id
-msgid "In 2 minutes, you'll get:"
-msgstr "2분 후, 당신은 다음을 얻게 됩니다:"
-
-#: src/features/Interview/InterviewLanding/ReadinessTestSection.tsx:77
-#. js-lingui-explicit-id
-msgid "Start the test"
-msgstr "테스트 시작"
-
 #: src/features/Interview/InterviewLanding/FinalCTASection.tsx:26
 #. js-lingui-explicit-id
 msgid "Ready to perform better and get more job offers?"
@@ -3489,6 +3445,25 @@ msgstr "네, 언제든지 구독을 취소할 수 있습니다. 장기적인 약
 #. js-lingui-explicit-id
 msgid "Frequently Asked Questions"
 msgstr "자주 묻는 질문"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:104
+#. js-lingui-explicit-id
+msgid ""
+"My name is Alex, I am the creator of this website. I am a software engineer "
+"and I am passionate about learning languages. I created this website to "
+"help people learn languages in a fun and interactive way. I hope you enjoy "
+"using it!"
+msgstr ""
+"제 이름은 알렉스입니다, 저는 이 웹사이트의 개발자입니다. 저는 소프트웨어 엔지니어이며, 언어 학습에 대한 열정을 가지고 있습니다. "
+"저는 사람들이 재미있고 상호작용적인 방법으로 언어를 배울 수 있도록 이 웹사이트를 만들었습니다. 여러분이 이 사이트를 사용하는 데 "
+"즐거움을 느끼시길 바랍니다!"
+
+#: src/features/Landing/Contact/ContactsPage.tsx:117
+#. js-lingui-explicit-id
+msgid ""
+"Feel free to reach out to me with any questions or feedback. I'm always "
+"happy to help!"
+msgstr "궁금한 점이나 피드백이 있으시면 언제든지 저에게 연락해 주세요. 항상 도움을 드리게 되어 기쁩니다!"
 
 #: src/features/Interview/InterviewLanding/HeroSection.tsx:27
 #. js-lingui-explicit-id
@@ -3580,6 +3555,41 @@ msgstr "계정 삭제 (전체)"
 msgid "Delete account"
 msgstr "계정 삭제"
 
+#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:11
+#. js-lingui-explicit-id
+msgid "Real interview simulation"
+msgstr "실제 인터뷰 시뮬레이션"
+
+#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:12
+#. js-lingui-explicit-id
+msgid "Practice in real interview conditions — no tutors needed."
+msgstr "실제 인터뷰 조건에서 연습하세요 — 튜터는 필요하지 않습니다."
+
+#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:18
+#. js-lingui-explicit-id
+msgid "AI feedback that matters"
+msgstr "AI 피드백의 중요성"
+
+#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:19
+#. js-lingui-explicit-id
+msgid "Improve your impact, structure, clarity, and delivery."
+msgstr "당신의 영향력, 구조, 명확성 및 전달력을 향상하세요."
+
+#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:25
+#. js-lingui-explicit-id
+msgid "Personalized answer scripts"
+msgstr "개인화된 답변 스크립트"
+
+#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:26
+#. js-lingui-explicit-id
+msgid "Based on your CV, experience, and target role."
+msgstr "귀하의 이력서, 경험 및 목표 역할을 기반으로."
+
+#: src/features/Interview/InterviewLanding/HowItWorksSection.tsx:44
+#. js-lingui-explicit-id
+msgid "Why candidates improve so quickly"
+msgstr "후보자가 빠르게 발전하는 이유"
+
 #: src/features/Header/PaymentHistoryModal.tsx:21
 #. js-lingui-explicit-id
 msgid "Trial balance"
@@ -3621,6 +3631,56 @@ msgstr "로그인"
 msgid "Need Help?"
 msgstr "응급 도움이 필요하신가요?"
 
+#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:10
+#. js-lingui-explicit-id
+msgid "Strong, structured answers"
+msgstr "강력하고 체계적인 대답"
+
+#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:11
+#. js-lingui-explicit-id
+msgid "Stop rambling or guessing. You'll know exactly what to say."
+msgstr "횡설수설하거나 추측하지 마세요. 정확히 무엇을 말할지 알게 될 것입니다."
+
+#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:17
+#. js-lingui-explicit-id
+msgid "Confidence & presence"
+msgstr "자신감 & 존재감"
+
+#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:18
+#. js-lingui-explicit-id
+msgid "Perform calmly under pressure and make a strong first impression."
+msgstr "압박 속에서도 침착하게 행동하고 강한 첫 인상을 남기세요."
+
+#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:24
+#. js-lingui-explicit-id
+msgid "More interview invites"
+msgstr "더 많은 인터뷰 초대"
+
+#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:25
+#. js-lingui-explicit-id
+msgid "Better preparation = better interviews = more callbacks."
+msgstr "더 나은 준비 = 더 나은 인터뷰 = 더 많은 콜백."
+
+#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:31
+#. js-lingui-explicit-id
+msgid "Higher salary opportunities"
+msgstr "더 높은 급여 기회"
+
+#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:32
+#. js-lingui-explicit-id
+msgid "A strong interview performance increases negotiating power."
+msgstr "면접에서의 강한 성과는 협상력을 증가시킵니다."
+
+#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:51
+#. js-lingui-explicit-id
+msgid "What you will achieve"
+msgstr "달성할 내용"
+
+#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:100
+#. js-lingui-explicit-id
+msgid "Start your Interview Test →"
+msgstr "인터뷰 테스트 시작하기 →"
+
 #: src/features/Header/HeaderPractice.tsx:202
 #. js-lingui-explicit-id
 msgid "Finishing..."
@@ -3655,7 +3715,7 @@ msgstr "당신의 피드백에 감사드립니다!"
 msgid "Sending..."
 msgstr "보내는 중..."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1063
+#: src/features/Conversation/ConversationCanvas2.tsx:1342
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Send"
@@ -3711,180 +3771,6 @@ msgstr "마침내"
 #. js-lingui-explicit-id
 msgid "Let's rock it!"
 msgstr "가자, 시작해보자!"
-
-#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:10
-#. js-lingui-explicit-id
-msgid "Strong, structured answers"
-msgstr "강력하고 체계적인 대답"
-
-#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:11
-#. js-lingui-explicit-id
-msgid "Stop rambling or guessing. You'll know exactly what to say."
-msgstr "횡설수설하거나 추측하지 마세요. 정확히 무엇을 말할지 알게 될 것입니다."
-
-#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:17
-#. js-lingui-explicit-id
-msgid "Confidence & presence"
-msgstr "자신감 & 존재감"
-
-#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:18
-#. js-lingui-explicit-id
-msgid "Perform calmly under pressure and make a strong first impression."
-msgstr "압박 속에서도 침착하게 행동하고 강한 첫 인상을 남기세요."
-
-#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:24
-#. js-lingui-explicit-id
-msgid "More interview invites"
-msgstr "더 많은 인터뷰 초대"
-
-#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:25
-#. js-lingui-explicit-id
-msgid "Better preparation = better interviews = more callbacks."
-msgstr "더 나은 준비 = 더 나은 인터뷰 = 더 많은 콜백."
-
-#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:31
-#. js-lingui-explicit-id
-msgid "Higher salary opportunities"
-msgstr "더 높은 급여 기회"
-
-#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:32
-#. js-lingui-explicit-id
-msgid "A strong interview performance increases negotiating power."
-msgstr "면접에서의 강한 성과는 협상력을 증가시킵니다."
-
-#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:51
-#. js-lingui-explicit-id
-msgid "What you will achieve"
-msgstr "달성할 내용"
-
-#: src/features/Interview/InterviewLanding/OutcomeSection.tsx:100
-#. js-lingui-explicit-id
-msgid "Start your Interview Test →"
-msgstr "인터뷰 테스트 시작하기 →"
-
-#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:342
-#: src/features/Goal/GoalQuestions.tsx:743
-#: src/features/Goal/Quiz/RecordUserAudio.tsx:133
-#. js-lingui-explicit-id
-msgid "Record"
-msgstr "기록"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:68
-#. js-lingui-explicit-id
-msgid "What language do you speak"
-msgstr "어떤 언어를 사용하시나요?"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:69
-#. js-lingui-explicit-id
-msgid "So I can translate words for you"
-msgstr "그래서 저는 단어를 번역해드릴 수 있습니다"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:70
-#. js-lingui-explicit-id
-msgid "Set My Language"
-msgstr "내 언어 설정"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:78
-#. js-lingui-explicit-id
-msgid "Choose Site Language"
-msgstr "사이트 언어 선택"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:79
-#. js-lingui-explicit-id
-msgid "This is text you see on buttons and menus"
-msgstr "이것은 버튼과 메뉴에서 볼 수 있는 텍스트입니다"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:89
-#. js-lingui-explicit-id
-msgid "We are ready"
-msgstr "우리는 준비되었습니다"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:90
-#. js-lingui-explicit-id
-msgid "Let's talk. Tell me  about yourself"
-msgstr "이야기해 봅시다. 당신에 대해 알려주세요."
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:108
-#. js-lingui-explicit-id
-msgid "Tell me about yourself"
-msgstr "자신에 대해 말해 주세요"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:144
-#. js-lingui-explicit-id
-msgid "Wow, that was awesome!"
-msgstr "와, 대단했어요!"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:145
-#. js-lingui-explicit-id
-msgid "Let's continue, I have a question for you!"
-msgstr "계속해봅시다. 질문이 있어요!"
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:184
-#. js-lingui-explicit-id
-msgid "Before the training plan..."
-msgstr "훈련 계획 전에..."
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:185
-#. js-lingui-explicit-id
-msgid "Let's talk about your goals a bit more"
-msgstr "당신의 목표에 대해 좀 더 이야기해봅시다."
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:224
-#. js-lingui-explicit-id
-msgid "Now, we ready to create your learning plan"
-msgstr "이제 귀하의 학습 계획을 작성할 준비가 되었습니다."
-
-#: src/features/Goal/Quiz/QuizPage2.tsx:225
-#. js-lingui-explicit-id
-msgid "It might take up to a minute"
-msgstr "최대 1분이 걸릴 수 있습니다"
-
-#: src/features/Goal/GoalQuestions.tsx:387
-#: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:38
-#. js-lingui-explicit-id
-msgid "I want to learn..."
-msgstr "나는 배우고 싶어..."
-
-#: src/features/Goal/Quiz/NativeLanguageSelector.tsx:99
-#. js-lingui-explicit-id
-msgid "Native language"
-msgstr "모국어"
-
-#: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
-#. js-lingui-explicit-id
-msgid "No results found"
-msgstr "결과를 찾을 수 없습니다"
-
-#: src/features/Goal/Quiz/GoalReview.tsx:32
-#. js-lingui-explicit-id
-msgid "Error creating plan. Please try again."
-msgstr "플랜 생성 오류. 다시 시도해 주세요."
-
-#: src/features/Goal/Quiz/GoalReview.tsx:87
-#. js-lingui-explicit-id
-msgid "Your plan for learning"
-msgstr "학습 계획"
-
-#: src/features/Goal/Quiz/AboutYourselfList.tsx:12
-#. js-lingui-explicit-id
-msgid "Hobbies or interests"
-msgstr "취미나 관심사"
-
-#: src/features/Goal/Quiz/AboutYourselfList.tsx:16
-#. js-lingui-explicit-id
-msgid "Main goal in learning"
-msgstr "배움의 주요 목표"
-
-#: src/features/Goal/Quiz/AboutYourselfList.tsx:20
-#. js-lingui-explicit-id
-msgid "Do you have any travel plans?"
-msgstr "여행 계획이 있으신가요?"
-
-#: src/features/Goal/Quiz/AboutYourselfList.tsx:24
-#. js-lingui-explicit-id
-msgid "Movies, books, or music"
-msgstr "영화, 책, 또는 음악"
 
 #: src/features/Goal/GoalQuestions.tsx:62
 #. js-lingui-explicit-id
@@ -4081,6 +3967,12 @@ msgstr "하루에 20분"
 msgid "Intensive"
 msgstr "집중적인"
 
+#: src/features/Goal/GoalQuestions.tsx:387
+#: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:38
+#. js-lingui-explicit-id
+msgid "I want to learn..."
+msgstr "나는 배우고 싶어..."
+
 #: src/features/Goal/GoalQuestions.tsx:463
 #. js-lingui-explicit-id
 msgid "My native language"
@@ -4124,10 +4016,10 @@ msgid ""
 "songs."
 msgstr "나는 여행을 위해 영어를 배우고 싶습니다. 그리고 영화와 노래를 이해하고 싶습니다."
 
-#: src/features/Conversation/ConversationCanvas2.tsx:793
-#: src/features/Conversation/ConversationCanvas2.tsx:796
-#: src/features/Conversation/ConversationCanvas2.tsx:881
-#: src/features/Conversation/ConversationCanvas2.tsx:888
+#: src/features/Conversation/ConversationCanvas2.tsx:1072
+#: src/features/Conversation/ConversationCanvas2.tsx:1075
+#: src/features/Conversation/ConversationCanvas2.tsx:1160
+#: src/features/Conversation/ConversationCanvas2.tsx:1167
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:143
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:263
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:169
@@ -4140,6 +4032,14 @@ msgstr "전사 중..."
 #. js-lingui-explicit-id
 msgid "Stop recording"
 msgstr "녹음 중지"
+
+#: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:342
+#: src/features/Goal/GoalQuestions.tsx:743
+#: src/features/Goal/Quiz/RecordUserAudio.tsx:133
+#. js-lingui-explicit-id
+msgid "Record"
+msgstr "기록"
 
 #: src/features/Goal/GoalQuestions.tsx:829
 #. js-lingui-explicit-id
@@ -4217,15 +4117,120 @@ msgstr "링크 복사"
 msgid "Open the plan"
 msgstr "계획을 열다"
 
+#: src/features/Goal/Quiz/GoalReview.tsx:32
+#. js-lingui-explicit-id
+msgid "Error creating plan. Please try again."
+msgstr "플랜 생성 오류. 다시 시도해 주세요."
+
+#: src/features/Goal/Quiz/GoalReview.tsx:87
+#. js-lingui-explicit-id
+msgid "Your plan for learning"
+msgstr "학습 계획"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:68
+#. js-lingui-explicit-id
+msgid "What language do you speak"
+msgstr "어떤 언어를 사용하시나요?"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:69
+#. js-lingui-explicit-id
+msgid "So I can translate words for you"
+msgstr "그래서 저는 단어를 번역해드릴 수 있습니다"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:70
+#. js-lingui-explicit-id
+msgid "Set My Language"
+msgstr "내 언어 설정"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:78
+#. js-lingui-explicit-id
+msgid "Choose Site Language"
+msgstr "사이트 언어 선택"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:79
+#. js-lingui-explicit-id
+msgid "This is text you see on buttons and menus"
+msgstr "이것은 버튼과 메뉴에서 볼 수 있는 텍스트입니다"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:89
+#. js-lingui-explicit-id
+msgid "We are ready"
+msgstr "우리는 준비되었습니다"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:90
+#. js-lingui-explicit-id
+msgid "Let's talk. Tell me  about yourself"
+msgstr "이야기해 봅시다. 당신에 대해 알려주세요."
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:108
+#. js-lingui-explicit-id
+msgid "Tell me about yourself"
+msgstr "자신에 대해 말해 주세요"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:144
+#. js-lingui-explicit-id
+msgid "Wow, that was awesome!"
+msgstr "와, 대단했어요!"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:145
+#. js-lingui-explicit-id
+msgid "Let's continue, I have a question for you!"
+msgstr "계속해봅시다. 질문이 있어요!"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:184
+#. js-lingui-explicit-id
+msgid "Before the training plan..."
+msgstr "훈련 계획 전에..."
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:185
+#. js-lingui-explicit-id
+msgid "Let's talk about your goals a bit more"
+msgstr "당신의 목표에 대해 좀 더 이야기해봅시다."
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:224
+#. js-lingui-explicit-id
+msgid "Now, we ready to create your learning plan"
+msgstr "이제 귀하의 학습 계획을 작성할 준비가 되었습니다."
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:225
+#. js-lingui-explicit-id
+msgid "It might take up to a minute"
+msgstr "최대 1분이 걸릴 수 있습니다"
+
+#: src/features/Goal/Quiz/AboutYourselfList.tsx:12
+#. js-lingui-explicit-id
+msgid "Hobbies or interests"
+msgstr "취미나 관심사"
+
+#: src/features/Goal/Quiz/AboutYourselfList.tsx:16
+#. js-lingui-explicit-id
+msgid "Main goal in learning"
+msgstr "배움의 주요 목표"
+
+#: src/features/Goal/Quiz/AboutYourselfList.tsx:20
+#. js-lingui-explicit-id
+msgid "Do you have any travel plans?"
+msgstr "여행 계획이 있으신가요?"
+
+#: src/features/Goal/Quiz/AboutYourselfList.tsx:24
+#. js-lingui-explicit-id
+msgid "Movies, books, or music"
+msgstr "영화, 책, 또는 음악"
+
+#: src/features/Goal/Quiz/NativeLanguageSelector.tsx:99
+#. js-lingui-explicit-id
+msgid "Native language"
+msgstr "모국어"
+
+#: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
+#. js-lingui-explicit-id
+msgid "No results found"
+msgstr "결과를 찾을 수 없습니다"
+
 #: src/features/Game/PositionChangedModal.tsx:102
 #. js-lingui-explicit-id
 msgid "Nice!"
 msgstr "좋아요!"
-
-#: src/features/Game/GameNativeLanguageSelector.tsx:49
-#. js-lingui-explicit-id
-msgid "Your Native Language:"
-msgstr "당신의 모국어:"
 
 #: src/features/Game/GameOnboarding.tsx:52
 #. js-lingui-explicit-id
@@ -4265,6 +4270,26 @@ msgstr "당신의 아바타:"
 msgid "Play"
 msgstr "재생"
 
+#: src/features/Game/GameMyUsername.tsx:34
+#. js-lingui-explicit-id
+msgid "Username must be at least 3 characters long."
+msgstr "사용자 이름은 최소 3자 이상이어야 합니다."
+
+#: src/features/Game/GameMyUsername.tsx:53
+#. js-lingui-explicit-id
+msgid "Game username:"
+msgstr "게임 사용자 이름:"
+
+#: src/features/Game/GameMyUsername.tsx:76
+#. js-lingui-explicit-id
+msgid "Username is already taken"
+msgstr "사용자 이름이 이미 사용 중입니다"
+
+#: src/features/Game/GameNativeLanguageSelector.tsx:49
+#. js-lingui-explicit-id
+msgid "Your Native Language:"
+msgstr "당신의 모국어:"
+
 #: src/features/Game/GamePage.tsx:91
 #. js-lingui-explicit-id
 msgid "Rating:"
@@ -4286,6 +4311,11 @@ msgstr "글로벌"
 msgid "Today"
 msgstr "오늘"
 
+#: src/features/Game/GameBadge.tsx:70
+#. js-lingui-explicit-id
+msgid "Play and Learn"
+msgstr "플레이와 학습"
+
 #: src/features/Game/GameMyAvatar.tsx:26
 #. js-lingui-explicit-id
 msgid "Avatar"
@@ -4296,30 +4326,10 @@ msgstr "아바타"
 msgid "Select your game avatar"
 msgstr "게임 아바타를 선택하세요"
 
-#: src/features/Game/GameBadge.tsx:70
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
 #. js-lingui-explicit-id
-msgid "Play and Learn"
-msgstr "플레이와 학습"
-
-#: src/features/Game/GameMyUsername.tsx:34
-#. js-lingui-explicit-id
-msgid "Username must be at least 3 characters long."
-msgstr "사용자 이름은 최소 3자 이상이어야 합니다."
-
-#: src/features/Game/GameMyUsername.tsx:53
-#. js-lingui-explicit-id
-msgid "Game username:"
-msgstr "게임 사용자 이름:"
-
-#: src/features/Game/GameMyUsername.tsx:76
-#. js-lingui-explicit-id
-msgid "Username is already taken"
-msgstr "사용자 이름이 이미 사용 중입니다"
-
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
-#. js-lingui-explicit-id
-msgid "Discuss the topic"
-msgstr "토픽 논의"
+msgid "Form a sentence"
+msgstr "문장을 만드세요"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:183
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:219
@@ -4328,16 +4338,17 @@ msgstr "토픽 논의"
 msgid "Submit answer"
 msgstr "답변 제출"
 
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
+#. js-lingui-explicit-id
+msgid "Describe the image"
+msgstr "이미지를 설명하십시오"
+
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
 #. js-lingui-explicit-id
 msgid "Record an answer"
 msgstr "답변을 녹음하십시오"
-
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:281
-#. js-lingui-explicit-id
-msgid "Describe the topic in your own words..."
-msgstr "자신의 말로 주제를 설명해보세요..."
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:276
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:302
@@ -4345,23 +4356,13 @@ msgstr "자신의 말로 주제를 설명해보세요..."
 msgid "Error: "
 msgstr "오류:"
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Translate the word"
-msgstr "단어를 번역하십시오"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:57
-#. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "문장을 만드세요"
-
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:113
 #. js-lingui-explicit-id
 msgid "Read the text"
 msgstr "텍스트를 읽어보세요"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1080
-#: src/features/Conversation/ConversationCanvas2.tsx:1397
+#: src/features/Conversation/ConversationCanvas2.tsx:1359
+#: src/features/Conversation/ConversationCanvas2.tsx:1676
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:298
 #. js-lingui-explicit-id
 msgid "Re-record"
@@ -4372,11 +4373,10 @@ msgstr "다시 녹음하다"
 msgid "Submit"
 msgstr "제출"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:89
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:255
+#: src/features/Game/gameQuestionScreens/WordScreen.tsx:57
 #. js-lingui-explicit-id
-msgid "Describe the image"
-msgstr "이미지를 설명하십시오"
+msgid "Translate the word"
+msgstr "단어를 번역하십시오"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:294
 #. js-lingui-explicit-id
@@ -4388,7 +4388,7 @@ msgstr "오늘의 질문"
 msgid "Analysis"
 msgstr "분석"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:747
+#: src/features/Conversation/ConversationCanvas2.tsx:1026
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:434
 #. js-lingui-explicit-id
 msgid "Great!"
@@ -4439,42 +4439,6 @@ msgstr "답변 보기"
 msgid "Answer Now"
 msgstr "답변하기"
 
-#: src/features/Dashboard/WordsToLearn.tsx:32
-#. js-lingui-explicit-id
-msgid "New words to practice."
-msgstr "새로운 단어 연습하기."
-
-#: src/features/Dashboard/RulesToLearn.tsx:86
-#: src/features/Dashboard/WordsToLearn.tsx:106
-#. js-lingui-explicit-id
-msgid "Start practice"
-msgstr "연습 시작"
-
-#: src/features/Dashboard/WordsToLearn.tsx:128
-#. js-lingui-explicit-id
-msgid "I know all of them"
-msgstr "나는 그들 모두를 알고 있어요."
-
-#: src/features/Dashboard/SelectLanguage.tsx:143
-#. js-lingui-explicit-id
-msgid "Almost there!"
-msgstr "거의 다 왔어요!"
-
-#: src/features/Dashboard/SelectLanguage.tsx:158
-#. js-lingui-explicit-id
-msgid "Select languages"
-msgstr "언어 선택"
-
-#: src/features/Dashboard/SelectLanguage.tsx:204
-#. js-lingui-explicit-id
-msgid "Learn"
-msgstr "배우다"
-
-#: src/features/Dashboard/SelectLanguage.tsx:231
-#. js-lingui-explicit-id
-msgid "Page"
-msgstr "페이지"
-
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
@@ -4508,6 +4472,52 @@ msgstr "새로운 단어"
 msgid "Practice new vocabulary with the AI"
 msgstr "AI와 함께 새로운 어휘 연습하기"
 
+#: src/features/Dashboard/SelectLanguage.tsx:143
+#. js-lingui-explicit-id
+msgid "Almost there!"
+msgstr "거의 다 왔어요!"
+
+#: src/features/Dashboard/SelectLanguage.tsx:158
+#. js-lingui-explicit-id
+msgid "Select languages"
+msgstr "언어 선택"
+
+#: src/features/Dashboard/SelectLanguage.tsx:204
+#. js-lingui-explicit-id
+msgid "Learn"
+msgstr "배우다"
+
+#: src/features/Dashboard/SelectLanguage.tsx:231
+#. js-lingui-explicit-id
+msgid "Page"
+msgstr "페이지"
+
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:97
+#. js-lingui-explicit-id
+msgid "Discuss the topic"
+msgstr "토픽 논의"
+
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:281
+#. js-lingui-explicit-id
+msgid "Describe the topic in your own words..."
+msgstr "자신의 말로 주제를 설명해보세요..."
+
+#: src/features/Dashboard/WordsToLearn.tsx:32
+#. js-lingui-explicit-id
+msgid "New words to practice."
+msgstr "새로운 단어 연습하기."
+
+#: src/features/Dashboard/RulesToLearn.tsx:86
+#: src/features/Dashboard/WordsToLearn.tsx:106
+#. js-lingui-explicit-id
+msgid "Start practice"
+msgstr "연습 시작"
+
+#: src/features/Dashboard/WordsToLearn.tsx:128
+#. js-lingui-explicit-id
+msgid "I know all of them"
+msgstr "나는 그들 모두를 알고 있어요."
+
 #: src/features/Game/DailyQuestion/QuestionComment.tsx:121
 #. js-lingui-explicit-id
 msgid "This is your answer"
@@ -4533,6 +4543,31 @@ msgstr "게시 취소"
 msgid "Publish an answer"
 msgstr "답변 게시하기"
 
+#: src/features/Dashboard/HomeworkCard.tsx:21
+#. js-lingui-explicit-id
+msgid "Homework"
+msgstr "숙제"
+
+#: src/features/Dashboard/HomeworkCard.tsx:57
+#. js-lingui-explicit-id
+msgid "No homework assigned yet."
+msgstr "아직 숙제가 부여되지 않았습니다."
+
+#: src/features/Dashboard/HomeworkCard.tsx:66
+#. js-lingui-explicit-id
+msgid "Start a conversation to get one."
+msgstr "대화를 시작하여 하나를 얻으세요."
+
+#: src/features/Dashboard/HomeworkCard.tsx:128
+#. js-lingui-explicit-id
+msgid "Skip"
+msgstr "죄송합니다."
+
+#: src/features/Dashboard/HomeworkCard.tsx:142
+#. js-lingui-explicit-id
+msgid "Show all"
+msgstr "모두 보여주기"
+
 #: src/features/Dashboard/PlanDashboardCards.tsx:85
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
@@ -4553,7 +4588,7 @@ msgstr "이제 시작점을 결정해 봅시다!"
 msgid "Learning Plan"
 msgstr "학습 계획"
 
-#: src/features/Conversation/ConversationCanvas2.tsx:1383
+#: src/features/Conversation/ConversationCanvas2.tsx:1662
 #: src/features/Dashboard/GoalCard.tsx:12
 #: src/features/Dashboard/PlanDashboardCards.tsx:329
 #: src/features/Dashboard/PlanDashboardCards.tsx:518
@@ -4611,36 +4646,6 @@ msgstr "학습의 목표를 설정하십시오"
 msgid "Start | 5 min"
 msgstr "시작 | 5분"
 
-#: src/features/Dashboard/RulesToLearn.tsx:36
-#. js-lingui-explicit-id
-msgid "New rule to practice."
-msgstr "새로운 연습 규칙."
-
-#: src/features/Dashboard/HomeworkCard.tsx:21
-#. js-lingui-explicit-id
-msgid "Homework"
-msgstr "숙제"
-
-#: src/features/Dashboard/HomeworkCard.tsx:57
-#. js-lingui-explicit-id
-msgid "No homework assigned yet."
-msgstr "아직 숙제가 부여되지 않았습니다."
-
-#: src/features/Dashboard/HomeworkCard.tsx:66
-#. js-lingui-explicit-id
-msgid "Start a conversation to get one."
-msgstr "대화를 시작하여 하나를 얻으세요."
-
-#: src/features/Dashboard/HomeworkCard.tsx:128
-#. js-lingui-explicit-id
-msgid "Skip"
-msgstr "죄송합니다."
-
-#: src/features/Dashboard/HomeworkCard.tsx:142
-#. js-lingui-explicit-id
-msgid "Show all"
-msgstr "모두 보여주기"
-
 #: src/features/Dashboard/ConversationSelectCard.tsx:110
 #. js-lingui-explicit-id
 msgid "Talk to the AI and it will respond to you"
@@ -4688,6 +4693,21 @@ msgstr "규칙을 얻으세요"
 #. js-lingui-explicit-id
 msgid "Expand vocabulary"
 msgstr "어휘 늘리기"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
+#. js-lingui-explicit-id
+msgid "Progress Calendar"
+msgstr "진행 상황 캘린더"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
+#. js-lingui-explicit-id
+msgid "Less"
+msgstr "덜"
+
+#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
+#. js-lingui-explicit-id
+msgid "More"
+msgstr "더 보기"
 
 #: src/features/Dashboard/BrainCard.tsx:137
 #. js-lingui-explicit-id
@@ -4791,20 +4811,10 @@ msgstr "두뇌 준비하기"
 msgid "Upload language skills directly to your brain"
 msgstr "당신의 두뇌에 직접 언어 능력을 업로드하세요"
 
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:58
+#: src/features/Dashboard/RulesToLearn.tsx:36
 #. js-lingui-explicit-id
-msgid "Progress Calendar"
-msgstr "진행 상황 캘린더"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:71
-#. js-lingui-explicit-id
-msgid "Less"
-msgstr "덜"
-
-#: src/features/Dashboard/Progress/ProgressBoard.tsx:92
-#. js-lingui-explicit-id
-msgid "More"
-msgstr "더 보기"
+msgid "New rule to practice."
+msgstr "새로운 연습 규칙."
 
 #: src/features/Conversation/useConversationsAnalysis.ts:89
 #: src/features/Conversation/useConversationsAnalysis.ts:132
@@ -4812,17 +4822,17 @@ msgstr "더 보기"
 msgid "Error analyzing conversation"
 msgstr "대화 분석 오류"
 
-#: src/features/Conversation/ConversationPage.tsx:134
+#: src/features/Conversation/ConversationPage.tsx:136
 #. js-lingui-explicit-id
 msgid "Loading Goal..."
 msgstr "목표 로드 중..."
 
-#: src/features/Conversation/ConversationPage.tsx:158
+#: src/features/Conversation/ConversationPage.tsx:160
 #. js-lingui-explicit-id
 msgid "Crafting new words..."
 msgstr "새로운 단어를 만들고 있습니다..."
 
-#: src/features/Conversation/ConversationPage.tsx:162
+#: src/features/Conversation/ConversationPage.tsx:164
 #. js-lingui-explicit-id
 msgid "Crafting new rule..."
 msgstr "룰 생성 중..."
@@ -4846,208 +4856,6 @@ msgstr "개발 팀에 알림이 전송되었습니다. 죄송합니다..."
 #. js-lingui-explicit-id
 msgid "Reload page"
 msgstr "페이지 새로고침"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:360
-#. js-lingui-explicit-id
-msgid "Idea for your message"
-msgstr "당신의 메시지 아이디어"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:418
-#. js-lingui-explicit-id
-msgid "Lesson Review"
-msgstr "수업 리뷰"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:439
-#. js-lingui-explicit-id
-msgid "Language level:"
-msgstr "언어 수준:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:441
-#: src/features/Conversation/ConversationCanvas2.tsx:448
-#: src/features/Conversation/ConversationCanvas2.tsx:455
-#: src/features/Conversation/ConversationCanvas2.tsx:744
-#: src/features/Conversation/ConversationCanvas2.tsx:883
-#: src/features/Conversation/ConversationCanvas2.tsx:890
-#. js-lingui-explicit-id
-msgid "Analyzing..."
-msgstr "분석 중..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:446
-#. js-lingui-explicit-id
-msgid "What was great:"
-msgstr "무엇이 좋았는지:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:453
-#. js-lingui-explicit-id
-msgid "Areas to improve:"
-msgstr "개선해야 할 부분:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:478
-#. js-lingui-explicit-id
-msgid "Continue conversation"
-msgstr "대화 계속하기"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:491
-#. js-lingui-explicit-id
-msgid "Start new lesson"
-msgstr "새로운 수업 시작"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:678
-#. js-lingui-explicit-id
-msgid "Error during analyzing message"
-msgstr "메시지 분석 중 오류"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:732
-#. js-lingui-explicit-id
-msgid "Almost correct"
-msgstr "거의 맞습니다"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:770
-#. js-lingui-explicit-id
-msgid "Your Message"
-msgstr "당신의 메시지"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:842
-#. js-lingui-explicit-id
-msgid "Corrected"
-msgstr "수정됨"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:937
-#. js-lingui-explicit-id
-msgid "New Words to Vocabulary:"
-msgstr "새로운 단어를 어휘에 추가:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:982
-#. js-lingui-explicit-id
-msgid "Analyzing"
-msgstr "분석 중"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:989
-#. js-lingui-explicit-id
-msgid "Preparing Goal"
-msgstr "목표 설정중"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1009
-#. js-lingui-explicit-id
-msgid "Goal is created"
-msgstr "목표가 생성되었습니다"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1019
-#. js-lingui-explicit-id
-msgid "Lessons added:"
-msgstr "추가된 수업:"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1040
-#. js-lingui-explicit-id
-msgid "Open plan"
-msgstr "오픈 플랜"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1113
-#. js-lingui-explicit-id
-msgid "Stop"
-msgstr "정지"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1145
-#. js-lingui-explicit-id
-msgid "Record Message"
-msgstr "메시지 기록"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1179
-#. js-lingui-explicit-id
-msgid "Finish conversation"
-msgstr "대화를 마치다"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1196
-#. js-lingui-explicit-id
-msgid "Turn Volume Off"
-msgstr "볼륨 끄기"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1196
-#. js-lingui-explicit-id
-msgid "Turn Volume On"
-msgstr "볼륨 켜기"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1217
-#. js-lingui-explicit-id
-msgid "Voice record mode"
-msgstr "음성 녹음 모드"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1240
-#. js-lingui-explicit-id
-msgid "Keyboard mode"
-msgstr "키보드 모드"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1263
-#. js-lingui-explicit-id
-msgid "Phone call mode"
-msgstr "전화 통화 모드"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1285
-#. js-lingui-explicit-id
-msgid "Help with answer"
-msgstr "답변 도움"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1308
-#. js-lingui-explicit-id
-msgid "Your message..."
-msgstr "당신의 메시지..."
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1359
-#. js-lingui-explicit-id
-msgid "Mission complete"
-msgstr "미션 완료"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1371
-#. js-lingui-explicit-id
-msgid "Open results"
-msgstr "결과 열기"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1413
-#. js-lingui-explicit-id
-msgid "Re-write"
-msgstr "재작성"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1473
-#. js-lingui-explicit-id
-msgid "Cancel recording"
-msgstr "녹음 취소"
-
-#: src/features/Conversation/ConversationCanvas2.tsx:1502
-#. js-lingui-explicit-id
-msgid "Subscribe"
-msgstr "구독하기"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:33
-#. js-lingui-explicit-id
-msgid "Ready?"
-msgstr "준비되셨나요?"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:43
-#. js-lingui-explicit-id
-msgid "Next, please allow access to the microphone to communicate with the AI."
-msgstr "다음으로, AI와 소통하기 위해 마이크 접근을 허용해 주세요."
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:69
-#. js-lingui-explicit-id
-msgid "Yes, I am ready"
-msgstr "네, 준비되었습니다"
-
-#: src/features/Conversation/ConfirmConversationModal.tsx:73
-#. js-lingui-explicit-id
-msgid "No"
-msgstr "아니요"
-
-#: src/features/Blog/ListBlogIntro.tsx:66
-#. js-lingui-explicit-id
-msgid "Read and Learn with my blog"
-msgstr "내 블로그에서 읽고 배우세요"
-
-#: src/features/Blog/ListBlogIntro.tsx:77
-#. js-lingui-explicit-id
-msgid ""
-"Get inspired and learn about the latest trends in language learning, "
-"teaching, and technology."
-msgstr "영감을 얻고 언어 학습, 교육 및 기술의 최신 트렌드에 대해 알아보세요."
 
 #: src/features/Blog/blogData.tsx:20
 #. js-lingui-explicit-id
@@ -6386,100 +6194,175 @@ msgstr "전문 개발"
 msgid "All Blogs"
 msgstr "모든 블로그"
 
-#: src/features/Blog/BlogOnePage.tsx:141
+#: src/features/Conversation/ConversationCanvas2.tsx:381
 #. js-lingui-explicit-id
-msgid "View all posts"
-msgstr "모든 게시물 보기"
+msgid "Idea for your message"
+msgstr "당신의 메시지 아이디어"
 
-#: src/features/Blog/BlogOnePage.tsx:255
+#: src/features/Conversation/ConversationCanvas2.tsx:439
 #. js-lingui-explicit-id
-msgid "Role-Play scenarios to practice"
-msgstr "역할극 시나리오로 실습하기"
+msgid "Lesson Review"
+msgstr "수업 리뷰"
 
-#: src/features/Blog/BlogOnePage.tsx:286
+#: src/features/Conversation/ConversationCanvas2.tsx:460
 #. js-lingui-explicit-id
-msgid "You can try AI in action now"
-msgstr "지금 바로 AI를 시도해 볼 수 있습니다"
+msgid "Language level:"
+msgstr "언어 수준:"
 
-#: src/features/Blog/BlogOnePage.tsx:287
+#: src/features/Conversation/ConversationCanvas2.tsx:462
+#: src/features/Conversation/ConversationCanvas2.tsx:469
+#: src/features/Conversation/ConversationCanvas2.tsx:476
+#: src/features/Conversation/ConversationCanvas2.tsx:1023
+#: src/features/Conversation/ConversationCanvas2.tsx:1162
+#: src/features/Conversation/ConversationCanvas2.tsx:1169
 #. js-lingui-explicit-id
-msgid "Try for free"
-msgstr "무료로 시도해보세요"
+msgid "Analyzing..."
+msgstr "분석 중..."
 
-#: src/features/Conversation/AliasGamePanel.tsx:122
+#: src/features/Conversation/ConversationCanvas2.tsx:467
 #. js-lingui-explicit-id
-msgid "Describe these words:"
-msgstr "이 단어들을 설명하십시오:"
+msgid "What was great:"
+msgstr "무엇이 좋았는지:"
 
-#: src/features/Conversation/AliasGamePanel.tsx:171
+#: src/features/Conversation/ConversationCanvas2.tsx:474
 #. js-lingui-explicit-id
-msgid "More options"
-msgstr "더 많은 옵션"
+msgid "Areas to improve:"
+msgstr "개선해야 할 부분:"
 
-#: src/features/Conversation/AliasGamePanel.tsx:180
+#: src/features/Conversation/ConversationCanvas2.tsx:499
 #. js-lingui-explicit-id
-msgid "Guessed words:"
-msgstr "추정된 단어들:"
+msgid "Continue conversation"
+msgstr "대화 계속하기"
 
-#: src/features/Blog/ListBlog.tsx:131
+#: src/features/Conversation/ConversationCanvas2.tsx:512
 #. js-lingui-explicit-id
-msgid "No blogs found"
-msgstr "블로그를 찾을 수 없습니다"
+msgid "Start new lesson"
+msgstr "새로운 수업 시작"
 
-#: src/features/Blog/BlogCard.tsx:168
+#: src/features/Conversation/ConversationCanvas2.tsx:957
 #. js-lingui-explicit-id
-msgid "Read more"
-msgstr "더 읽기"
+msgid "Error during analyzing message"
+msgstr "메시지 분석 중 오류"
 
-#: src/features/Auth/WebViewWall.tsx:38
+#: src/features/Conversation/ConversationCanvas2.tsx:1011
 #. js-lingui-explicit-id
-msgid "Failed to copy text. Please copy it manually."
-msgstr "텍스트 복사에 실패했습니다. 수동으로 복사해 주세요."
+msgid "Almost correct"
+msgstr "거의 맞습니다"
 
-#: src/features/Auth/WebViewWall.tsx:65
+#: src/features/Conversation/ConversationCanvas2.tsx:1049
 #. js-lingui-explicit-id
-msgid "Please tap the menu ⋮ and choose"
-msgstr "메뉴 ⋮를 탭하고 선택해 주세요"
+msgid "Your Message"
+msgstr "당신의 메시지"
 
-#: src/features/Auth/WebViewWall.tsx:67
+#: src/features/Conversation/ConversationCanvas2.tsx:1121
 #. js-lingui-explicit-id
-msgid "'Open in Chrome' to continue."
-msgstr "'계속하려면 Chrome에서 열기'"
+msgid "Corrected"
+msgstr "수정됨"
 
-#: src/features/Auth/WebViewWall.tsx:71
+#: src/features/Conversation/ConversationCanvas2.tsx:1216
 #. js-lingui-explicit-id
-msgid "Please tap the menu ••• and choose"
-msgstr "메뉴 •••를 누르시고 선택해 주세요"
+msgid "New Words to Vocabulary:"
+msgstr "새로운 단어를 어휘에 추가:"
 
-#: src/features/Auth/WebViewWall.tsx:73
+#: src/features/Conversation/ConversationCanvas2.tsx:1261
 #. js-lingui-explicit-id
-msgid "'Open in external Browser' to continue."
-msgstr "'계속하려면 외부 브라우저에서 열기'"
+msgid "Analyzing"
+msgstr "분석 중"
 
-#: src/features/Auth/WebViewWall.tsx:124
+#: src/features/Conversation/ConversationCanvas2.tsx:1268
 #. js-lingui-explicit-id
-msgid "Copy page link"
-msgstr "페이지 링크 복사"
+msgid "Preparing Goal"
+msgstr "목표 설정중"
 
-#: src/features/Auth/WebViewWall.tsx:165
+#: src/features/Conversation/ConversationCanvas2.tsx:1288
 #. js-lingui-explicit-id
-msgid "AI speaking partner"
-msgstr "AI 말하기 파트너"
+msgid "Goal is created"
+msgstr "목표가 생성되었습니다"
 
-#: src/features/Auth/WebViewWall.tsx:168
+#: src/features/Conversation/ConversationCanvas2.tsx:1298
 #. js-lingui-explicit-id
-msgid "Let's choose how to start practicing"
-msgstr "연습을 시작할 방법을 선택해 봅시다."
+msgid "Lessons added:"
+msgstr "추가된 수업:"
 
-#: src/features/Auth/WebViewWall.tsx:187
+#: src/features/Conversation/ConversationCanvas2.tsx:1319
 #. js-lingui-explicit-id
-msgid "Open in Telegram"
-msgstr "텔레그램에서 열기"
+msgid "Open plan"
+msgstr "오픈 플랜"
 
-#: src/features/Auth/WebViewWall.tsx:198
+#: src/features/Conversation/ConversationCanvas2.tsx:1392
 #. js-lingui-explicit-id
-msgid "Open in Browser"
-msgstr "브라우저에서 열기"
+msgid "Stop"
+msgstr "정지"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1424
+#. js-lingui-explicit-id
+msgid "Record Message"
+msgstr "메시지 기록"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1458
+#. js-lingui-explicit-id
+msgid "Finish conversation"
+msgstr "대화를 마치다"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1475
+#. js-lingui-explicit-id
+msgid "Turn Volume Off"
+msgstr "볼륨 끄기"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1475
+#. js-lingui-explicit-id
+msgid "Turn Volume On"
+msgstr "볼륨 켜기"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1496
+#. js-lingui-explicit-id
+msgid "Voice record mode"
+msgstr "음성 녹음 모드"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1519
+#. js-lingui-explicit-id
+msgid "Keyboard mode"
+msgstr "키보드 모드"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1542
+#. js-lingui-explicit-id
+msgid "Phone call mode"
+msgstr "전화 통화 모드"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1564
+#. js-lingui-explicit-id
+msgid "Help with answer"
+msgstr "답변 도움"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1587
+#. js-lingui-explicit-id
+msgid "Your message..."
+msgstr "당신의 메시지..."
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1638
+#. js-lingui-explicit-id
+msgid "Mission complete"
+msgstr "미션 완료"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1650
+#. js-lingui-explicit-id
+msgid "Open results"
+msgstr "결과 열기"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1692
+#. js-lingui-explicit-id
+msgid "Re-write"
+msgstr "재작성"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1752
+#. js-lingui-explicit-id
+msgid "Cancel recording"
+msgstr "녹음 취소"
+
+#: src/features/Conversation/ConversationCanvas2.tsx:1781
+#. js-lingui-explicit-id
+msgid "Subscribe"
+msgstr "구독하기"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:16
 #. js-lingui-explicit-id
@@ -6875,6 +6758,150 @@ msgstr ""
 msgid "Good preparation today means career success tomorrow."
 msgstr "오늘의 좋은 준비는 내일의 경력 성공을 의미합니다."
 
+#: src/features/Blog/ListBlog.tsx:131
+#. js-lingui-explicit-id
+msgid "No blogs found"
+msgstr "블로그를 찾을 수 없습니다"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:33
+#. js-lingui-explicit-id
+msgid "Ready?"
+msgstr "준비되셨나요?"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:43
+#. js-lingui-explicit-id
+msgid "Next, please allow access to the microphone to communicate with the AI."
+msgstr "다음으로, AI와 소통하기 위해 마이크 접근을 허용해 주세요."
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:69
+#. js-lingui-explicit-id
+msgid "Yes, I am ready"
+msgstr "네, 준비되었습니다"
+
+#: src/features/Conversation/ConfirmConversationModal.tsx:73
+#. js-lingui-explicit-id
+msgid "No"
+msgstr "아니요"
+
+#: src/features/Conversation/AliasGamePanel.tsx:122
+#. js-lingui-explicit-id
+msgid "Describe these words:"
+msgstr "이 단어들을 설명하십시오:"
+
+#: src/features/Conversation/AliasGamePanel.tsx:171
+#. js-lingui-explicit-id
+msgid "More options"
+msgstr "더 많은 옵션"
+
+#: src/features/Conversation/AliasGamePanel.tsx:180
+#. js-lingui-explicit-id
+msgid "Guessed words:"
+msgstr "추정된 단어들:"
+
+#: src/features/Blog/ListBlogIntro.tsx:66
+#. js-lingui-explicit-id
+msgid "Read and Learn with my blog"
+msgstr "내 블로그에서 읽고 배우세요"
+
+#: src/features/Blog/ListBlogIntro.tsx:77
+#. js-lingui-explicit-id
+msgid ""
+"Get inspired and learn about the latest trends in language learning, "
+"teaching, and technology."
+msgstr "영감을 얻고 언어 학습, 교육 및 기술의 최신 트렌드에 대해 알아보세요."
+
+#: src/features/Blog/BlogCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Read more"
+msgstr "더 읽기"
+
+#: src/features/Auth/SignInForm.tsx:27
+#. js-lingui-explicit-id
+msgid "Open personal plan"
+msgstr "개인 계획 열기"
+
+#: src/features/Auth/SignInForm.tsx:29
+#: src/features/Auth/SignInForm.tsx:30
+#. js-lingui-explicit-id
+msgid "Sing in"
+msgstr "로그인"
+
+#: src/features/Auth/SignInForm.tsx:35
+#: src/features/Auth/SignInForm.tsx:36
+#. js-lingui-explicit-id
+msgid "So you can save your progress"
+msgstr "따라서 진행 상황을 저장할 수 있습니다"
+
+#: src/features/Blog/BlogOnePage.tsx:141
+#. js-lingui-explicit-id
+msgid "View all posts"
+msgstr "모든 게시물 보기"
+
+#: src/features/Blog/BlogOnePage.tsx:255
+#. js-lingui-explicit-id
+msgid "Role-Play scenarios to practice"
+msgstr "역할극 시나리오로 실습하기"
+
+#: src/features/Blog/BlogOnePage.tsx:286
+#. js-lingui-explicit-id
+msgid "You can try AI in action now"
+msgstr "지금 바로 AI를 시도해 볼 수 있습니다"
+
+#: src/features/Blog/BlogOnePage.tsx:287
+#. js-lingui-explicit-id
+msgid "Try for free"
+msgstr "무료로 시도해보세요"
+
+#: src/features/Auth/WebViewWall.tsx:38
+#. js-lingui-explicit-id
+msgid "Failed to copy text. Please copy it manually."
+msgstr "텍스트 복사에 실패했습니다. 수동으로 복사해 주세요."
+
+#: src/features/Auth/WebViewWall.tsx:65
+#. js-lingui-explicit-id
+msgid "Please tap the menu ⋮ and choose"
+msgstr "메뉴 ⋮를 탭하고 선택해 주세요"
+
+#: src/features/Auth/WebViewWall.tsx:67
+#. js-lingui-explicit-id
+msgid "'Open in Chrome' to continue."
+msgstr "'계속하려면 Chrome에서 열기'"
+
+#: src/features/Auth/WebViewWall.tsx:71
+#. js-lingui-explicit-id
+msgid "Please tap the menu ••• and choose"
+msgstr "메뉴 •••를 누르시고 선택해 주세요"
+
+#: src/features/Auth/WebViewWall.tsx:73
+#. js-lingui-explicit-id
+msgid "'Open in external Browser' to continue."
+msgstr "'계속하려면 외부 브라우저에서 열기'"
+
+#: src/features/Auth/WebViewWall.tsx:124
+#. js-lingui-explicit-id
+msgid "Copy page link"
+msgstr "페이지 링크 복사"
+
+#: src/features/Auth/WebViewWall.tsx:165
+#. js-lingui-explicit-id
+msgid "AI speaking partner"
+msgstr "AI 말하기 파트너"
+
+#: src/features/Auth/WebViewWall.tsx:168
+#. js-lingui-explicit-id
+msgid "Let's choose how to start practicing"
+msgstr "연습을 시작할 방법을 선택해 봅시다."
+
+#: src/features/Auth/WebViewWall.tsx:187
+#. js-lingui-explicit-id
+msgid "Open in Telegram"
+msgstr "텔레그램에서 열기"
+
+#: src/features/Auth/WebViewWall.tsx:198
+#. js-lingui-explicit-id
+msgid "Open in Browser"
+msgstr "브라우저에서 열기"
+
 #: src/features/Auth/AuthWall.tsx:132
 #. js-lingui-explicit-id
 msgid "Daily conversations without fear of judgment"
@@ -6939,23 +6966,6 @@ msgstr "신용 카드가 필요합니다"
 #. js-lingui-explicit-id
 msgid "No ads, no spam"
 msgstr "광고 없음, 스팸 없음"
-
-#: src/features/Auth/SignInForm.tsx:27
-#. js-lingui-explicit-id
-msgid "Open personal plan"
-msgstr "개인 계획 열기"
-
-#: src/features/Auth/SignInForm.tsx:29
-#: src/features/Auth/SignInForm.tsx:30
-#. js-lingui-explicit-id
-msgid "Sing in"
-msgstr "로그인"
-
-#: src/features/Auth/SignInForm.tsx:35
-#: src/features/Auth/SignInForm.tsx:36
-#. js-lingui-explicit-id
-msgid "So you can save your progress"
-msgstr "따라서 진행 상황을 저장할 수 있습니다"
 
 #: src/features/Landing/PlanLandingBlock.tsx:429
 msgid "{countOfLanguages} languages to practice"
