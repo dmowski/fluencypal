@@ -208,14 +208,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isMutedStorage, setIsMutedStorage] = useLocalStorage<boolean>("isMuted", true);
 
   const [isCallModeStorage, setIsCallModeStorage] = useLocalStorage<boolean>("isCallMode", false);
-  const isCallModeFromUrl =
-    searchParams.get("isCallMode") === "true"
-      ? true
-      : searchParams.get("isCallMode") === "false"
-      ? false
-      : undefined;
-
-  const isCallMode = isCallModeStorage ?? isCallModeFromUrl ?? false;
+  const isCallMode = isCallModeStorage ?? false;
   const isMuted = isMutedStorage ?? true;
 
   const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);

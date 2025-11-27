@@ -50,5 +50,4 @@ export interface RolePlayInstruction {
   contentPage: string;
   gameMode?: "alias";
   analyzeResultAiInstruction?: string;
-  isCallModeByDefault?: boolean;
 }
