@@ -97,7 +97,7 @@ const processLang = async (lang, path) => {
     encoding: "utf-8",
   });
   const po = gettextParser.po.parse(sourceContent);
-  //await processTranslations(po, lang);
+  await processTranslations(po, lang);
   const updatedPo = gettextParser.po.compile(po);
   await writeFileAsync(path, updatedPo, { encoding: "utf-8" });
 };
