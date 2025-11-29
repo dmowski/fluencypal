@@ -18,7 +18,7 @@ import { Camera } from "lucide-react";
 import { useTextAi } from "../Ai/useTextAi";
 import { fullEnglishLanguageName, supportedLanguages } from "@/features/Lang/lang";
 import React from "react";
-import { sleep } from "openai/core.mjs";
+import { sleep } from "@/libs/sleep";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { getUrlStart } from "../Lang/getUrlStart";
 
@@ -493,8 +493,8 @@ Address directly to the user.
                         {languagesToLearn.length > 0
                           ? i18n._(`Install:`) + " " + languagesToLearn.join(", ")
                           : isAnalyzing
-                          ? i18n._(`Connecting...`)
-                          : i18n._(`Initiate brain connection`)}
+                            ? i18n._(`Connecting...`)
+                            : i18n._(`Initiate brain connection`)}
                       </Button>
                     </Stack>
                   )}

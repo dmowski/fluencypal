@@ -2,7 +2,7 @@
 import { Divider, Stack } from "@mui/material";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { RolePlayScenariosInfo } from "../RolePlay/rolePlayData";
-import { sleep } from "openai/core.mjs";
+import { sleep } from "@/libs/sleep";
 import { ConversationCanvas2 } from "./ConversationCanvas2";
 import { ChatMessage } from "@/common/conversation";
 import { GuessGameStat } from "./types";
