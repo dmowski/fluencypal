@@ -328,7 +328,6 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, varia
       : variant === "blog"
       ? markdownComponentsBlog
       : markdownComponents;
-
   return (
     <Stack
       sx={{

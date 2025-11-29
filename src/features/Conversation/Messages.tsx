@@ -25,6 +25,8 @@ export const Messages = ({ conversation }: { conversation: ChatMessage[] }) => {
           .filter((message) => !!message.text?.trim())
           .map((message) => {
             const isBot = message.isBot;
+            const text = "\n" + (message.text || "").trim();
+
             return (
               <Stack
                 key={message.id}
@@ -57,7 +59,7 @@ export const Messages = ({ conversation }: { conversation: ChatMessage[] }) => {
                     }
                     variant="conversation"
                   >
-                    {message.text || ""}
+                    {text}
                   </Markdown>
 
                   {translator.isTranslateAvailable && (
