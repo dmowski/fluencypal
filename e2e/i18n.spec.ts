@@ -24,4 +24,17 @@ test.describe("Internationalization", () => {
     // Check that the page contains the expected French text
     await expect(page.getByText("Apprenez n'importe où, n'importe quand")).toBeVisible();
   });
+
+  test("Language switcher should have correct Chinese link on alias-game page", async ({
+    page,
+  }) => {
+    // Navigate to scenarios/alias-game page
+    await page.goto("/scenarios/alias-game");
+
+    // Find the link with aria-label "Switch to Chinese"
+    const chineseLink = page.getByRole("link", { name: "Switch to Chinese" });
+
+    // Check that the link has the correct href
+    await expect(chineseLink).toHaveAttribute("href", "/zh/scenarios/alias-game");
+  });
 });
