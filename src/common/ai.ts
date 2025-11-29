@@ -3,8 +3,9 @@ export type RealTimeModel =
   | "gpt-4o-mini-realtime-preview"
   | "gpt-realtime";
 
-const MAIN_CONVERSATION_MODEL: RealTimeModel = "gpt-realtime";
+const HIGH_QUALITY_CONVERSATION_MODEL: RealTimeModel = "gpt-realtime";
 const SMALL_CONVERSATION_MODEL: RealTimeModel = "gpt-4o-mini-realtime-preview";
+const MAIN_CONVERSATION_MODEL: RealTimeModel = SMALL_CONVERSATION_MODEL;
 
 export type TextAiModel = "gpt-4o" | "gpt-4o-mini";
 
@@ -17,6 +18,7 @@ export type TextToAudioModal = "gpt-4o-mini-tts";
 export const MODELS = {
   REALTIME_CONVERSATION: MAIN_CONVERSATION_MODEL,
   SMALL_CONVERSATION: SMALL_CONVERSATION_MODEL,
+  HIGH_QUALITY_CONVERSATION_MODEL: HIGH_QUALITY_CONVERSATION_MODEL,
   gpt_4o_mini: "gpt-4o-mini",
   gpt_4o: "gpt-4o",
 } as const;
