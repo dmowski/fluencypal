@@ -38,20 +38,9 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Start dev server (background)
-        run: |
-          pnpm dev &
-        working-directory: ./
-
-      - name: Wait for frontend
-        uses: jakejarvis/wait-action@v2
-        with:
-          url: "http://127.0.0.1:3000"
-          timeout: "300"
-
       - name: Run E2E tests
         run: |
-          npx playwright test --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+          pnpm test:e2e
         working-directory: ./
 
       - name: Upload Playwright report
