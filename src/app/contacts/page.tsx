@@ -10,7 +10,7 @@ interface PageProps {
   params: Promise<{ lang: string }>;
 }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
+export function generateMetadata(props: PageProps): Metadata {
   return generateMetadataInfo({
     lang: "en",
     currentPath: "contacts",

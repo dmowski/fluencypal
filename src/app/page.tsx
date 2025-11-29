@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   return [];
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
   return generateMetadataInfo({
     lang: "en",
     currentPath: "",
