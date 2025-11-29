@@ -28,7 +28,6 @@ function useProvideWords(): WordsContextType {
   const auth = useAuth();
   const settings = useSettings();
   const wordsStatsDocRef = db.documents.userWordsStats(auth.uid, settings.languageCode);
-  console.log("wordsStatsDocRef", wordsStatsDocRef, settings.languageCode);
 
   const [wordsStats, loading] = useDocumentData(wordsStatsDocRef);
   const textAi = useTextAi();
