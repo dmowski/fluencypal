@@ -69,7 +69,7 @@ if (!isLocalhost && isWindow) {
               initialLocale={supportedLang}
               initialMessages={allMessages[supportedLang]!}
             >
-              <Suspense>{children}</Suspense>
+              {children}
             </LinguiClientProvider>
           </AppRouterCacheProvider>
         </WindowSizesProvider>
