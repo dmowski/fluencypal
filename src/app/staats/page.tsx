@@ -1,7 +1,4 @@
-import { allMessages } from "@/appRouterI18n";
 import { supportedLanguages } from "@/features/Lang/lang";
-import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
-import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { PracticeProvider } from "../practiceProvider";
@@ -37,19 +34,17 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 export default async function Page(props: { params: Promise<{ lang: string }> }) {
   const lang = (await props.params).lang;
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
-  initLingui(supportedLang);
 
   return (
-    <LinguiClientProvider
-      initialLocale={supportedLang}
-      initialMessages={allMessages[supportedLang]!}
-    >
-      <PracticeProvider>
-        <HeaderPractice lang={supportedLang} />
-        <main>
-          <AdminStats />
-        </main>
-      </PracticeProvider>
-    </LinguiClientProvider>
+    <html lang={supportedLang}>
+      <body>
+        <PracticeProvider>
+          <HeaderPractice lang={supportedLang} />
+          <main>
+            <AdminStats />
+          </main>
+        </PracticeProvider>
+      </body>
+    </html>
   );
 }

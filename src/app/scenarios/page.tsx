@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { ScenariosPage } from "@/features/Landing/RolePlay/ScenariosPage";
 import { supportedLanguages } from "@/features/Lang/lang";
-import { initLingui } from "@/initLingui";
-import { allMessages } from "@/appRouterI18n";
-import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { generateMetadataInfo } from "@/libs/metadata";
 
 interface PageProps {
@@ -38,14 +35,12 @@ export default async function ScenariosFullPage(props: ScenariosPageProps) {
 
   const lang = (await props.params).lang;
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
-  initLingui(supportedLang);
 
   return (
-    <LinguiClientProvider
-      initialLocale={supportedLang}
-      initialMessages={allMessages[supportedLang]!}
-    >
-      <ScenariosPage selectedCategory={category} lang={supportedLang} />
-    </LinguiClientProvider>
+    <html lang={supportedLang}>
+      <body>
+        <ScenariosPage selectedCategory={category} lang={supportedLang} />
+      </body>
+    </html>
   );
 }

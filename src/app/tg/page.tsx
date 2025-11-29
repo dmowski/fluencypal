@@ -36,13 +36,17 @@ export default async function Page(props: PageProps) {
   initLingui(supportedLang);
 
   return (
-    <LinguiClientProvider
-      initialLocale={supportedLang}
-      initialMessages={allMessages[supportedLang]!}
-    >
-      <PracticeProvider>
-        <TgAppPage lang={supportedLang} />
-      </PracticeProvider>
-    </LinguiClientProvider>
+    <html lang={supportedLang}>
+      <body>
+        <LinguiClientProvider
+          initialLocale={supportedLang}
+          initialMessages={allMessages[supportedLang]!}
+        >
+          <PracticeProvider>
+            <TgAppPage lang={supportedLang} />
+          </PracticeProvider>
+        </LinguiClientProvider>
+      </body>
+    </html>
   );
 }
