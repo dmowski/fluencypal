@@ -13,6 +13,8 @@ import { useAuth } from "../Auth/useAuth";
 import { Avatar, IconButton, Stack, Typography } from "@mui/material";
 import { Messages } from "./Messages";
 
+const girlVoices: AiVoice[] = ["ash", "ballad", "coral", "shimmer"];
+
 export const CallModeCanvas = ({
   conversation,
   stopCallMode,
@@ -33,6 +35,8 @@ export const CallModeCanvas = ({
   const auth = useAuth();
   const userPhoto = auth.userInfo?.photoURL || "";
   const myUserName = auth.userInfo?.displayName || auth.userInfo?.email || "You";
+
+  const isShowVideo = false; //voice ? girlVoices.includes(voice) : false;
 
   return (
     <>
@@ -73,22 +77,71 @@ export const CallModeCanvas = ({
               overflow: "hidden",
             }}
           >
-            <video
-              src={"/call/3.mp4"}
-              style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-              autoPlay
-              controls={false}
-              muted
-              loop
-              playsInline
-            />
+            {isShowVideo ? (
+              <video
+                src={"/call/3.mp4"}
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+                autoPlay
+                controls={false}
+                muted
+                loop
+                playsInline
+              />
+            ) : (
+              <>
+                <Stack
+                  sx={{
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    height: "100%",
+                    background: "url('/blur/2.jpg')",
+                    backgroundSize: "cover",
+                    opacity: 0.57,
+                  }}
+                ></Stack>
+
+                <Stack
+                  sx={{
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    height: "100%",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Stack
+                    sx={{
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      padding: "0",
+                      backgroundColor: "rgba(255, 255, 255, 0.5)",
+                    }}
+                  >
+                    <Avatar
+                      alt={""}
+                      src={"/blog/whippet-prediction.png"}
+                      sx={{
+                        width: "110px",
+                        height: "110px",
+                        borderRadius: "50%",
+                        fontSize: "10px",
+                      }}
+                    />
+                  </Stack>
+                </Stack>
+              </>
+            )}
 
             <Stack
               sx={{
