@@ -14,6 +14,7 @@ const config: Config = {
   transform: {
     "^.+\\.tsx?$": "ts-jest",
   },
+  testPathIgnorePatterns: ["/node_modules/", "/e2e/"],
 };
 
 export default config;

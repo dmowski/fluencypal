@@ -21,7 +21,7 @@ const oldStandardTT = Old_Standard_TT({
   display: "swap",
 });
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
   return generateMetadataInfo({
     lang: "en",
     currentPath: "",
