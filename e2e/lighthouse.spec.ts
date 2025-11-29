@@ -12,6 +12,13 @@ test.describe("Lighthouse Audit", () => {
         seo: 95,
       },
       port: 9222,
+      reports: {
+        formats: {
+          html: true,
+        },
+        name: "lighthouse-report",
+        directory: "test-results/lighthouse-reports",
+      },
     });
   });
 });
