@@ -1,3 +1,5 @@
+"use client";
+
 import { Checkbox, Link, Stack, Typography } from "@mui/material";
 import { MarkdownToJSX, default as MarkdownTool } from "markdown-to-jsx";
 import React from "react";
@@ -322,10 +324,10 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, varia
     variant === "small"
       ? markdownComponentsSmall
       : variant === "conversation"
-        ? markdownComponentsConversation
-        : variant === "blog"
-          ? markdownComponentsBlog
-          : markdownComponents;
+      ? markdownComponentsConversation
+      : variant === "blog"
+      ? markdownComponentsBlog
+      : markdownComponents;
 
   return (
     <Stack
