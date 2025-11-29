@@ -10,6 +10,8 @@ import Script from "next/script";
 import "@telegram-apps/telegram-ui/dist/styles.css";
 import { WindowSizesProvider } from "@/features/Layout/useWindowSizes";
 import { Suspense } from "react";
+import { headers } from "next/headers";
+import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const oldStandardTT = Old_Standard_TT({
@@ -26,20 +28,28 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-const defaultLang = "en";
+const defaultLang: SupportedLanguage = "en";
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Initialize with default language for root layout
-  // Language-specific initialization happens in [lang] route segment
-  initLingui(defaultLang);
+  // Extract language from URL path
+  const headersList = await headers();
+  const pathname = headersList.get("x-current-path") || "";
+
+  // Extract lang from pathname like /ru or /ru/something
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const firstSegment = (pathSegments[0] || "") as SupportedLanguage;
+
+  // Initialize Lingui with the detected language
+  const supportedLang = supportedLanguages.find((l) => l === firstSegment) || defaultLang;
+  initLingui(supportedLang);
 
   return (
     <html
-      lang={defaultLang}
+      lang={supportedLang}
       className={`${inter.className} ${oldStandardTT.className}`}
       translate="no"
     >
