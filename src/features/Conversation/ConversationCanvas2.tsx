@@ -595,7 +595,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             sx={{
               width: "100%",
               maxWidth: "100%",
-              height: `calc(100dvh - 210px - ${sizes.bottomOffset})`,
+              height: `calc(100dvh - 310px - ${sizes.bottomOffset})`,
               overflow: "hidden",
               padding: "10px 10px 5px 10px",
               paddingTop: "10px",
@@ -768,15 +768,23 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           <Stack
             id="messages-call-mode"
             sx={{
-              maxWidth: "1000px",
-              maxHeight: "120px",
+              width: "100%",
+              alignItems: "center",
+              maxHeight: "220px",
               overflow: "auto",
               "@media (max-width: 800px)": {
                 maxHeight: `calc(40dvh - ${sizes.bottomOffset})`,
               },
             }}
           >
-            {messages}
+            <Stack
+              sx={{
+                maxWidth: "1000px",
+                height: "max-content",
+              }}
+            >
+              {messages}
+            </Stack>
           </Stack>
           <Stack
             sx={{
