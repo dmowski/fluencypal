@@ -1,12 +1,8 @@
-import { allMessages } from "@/appRouterI18n";
 import { supportedLanguages } from "@/features/Lang/lang";
 import LandingPage from "@/features/Landing/LandingPage";
-import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
-import { initLingui } from "@/initLingui";
 import { Metadata } from "next";
 import linguiConfig from "../../../lingui.config";
 import { generateMetadataInfo } from "@/libs/metadata";
-import NotFound from "../not-found";
 
 const notFoundMetadata: Metadata = {
   title: "Not Found",
@@ -40,19 +36,9 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 }
 
 export default async function Page(props: { params: Promise<{ lang: string }> }) {
-  const lang = (await props.params).lang;
-  const supportedLang = supportedLanguages.find((l) => l === lang);
-  if (!supportedLang) {
-    return <NotFound />;
-  }
-  initLingui(supportedLang);
+  const params = await props.params;
+  const lang = params.lang;
+  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
 
-  return (
-    <LinguiClientProvider
-      initialLocale={supportedLang}
-      initialMessages={allMessages[supportedLang]!}
-    >
-      <LandingPage lang={supportedLang} />
-    </LinguiClientProvider>
-  );
+  return <LandingPage lang={supportedLang} />;
 }

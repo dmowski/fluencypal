@@ -20,11 +20,13 @@ export default function Home() {
   const supportedLang = "en";
   initLingui(supportedLang);
   return (
-    <LinguiClientProvider
-      initialLocale={supportedLang}
-      initialMessages={allMessages[supportedLang]!}
-    >
-      <LandingPage lang={supportedLang} />
-    </LinguiClientProvider>
+    <html lang="en">
+      <LinguiClientProvider
+        initialLocale={supportedLang}
+        initialMessages={allMessages[supportedLang]!}
+      >
+        <LandingPage lang={supportedLang} />
+      </LinguiClientProvider>
+    </html>
   );
 }

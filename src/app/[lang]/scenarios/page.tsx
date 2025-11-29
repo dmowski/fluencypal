@@ -38,14 +38,6 @@ export default async function ScenariosFullPage(props: ScenariosPageProps) {
 
   const lang = (await props.params).lang;
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
-  initLingui(supportedLang);
 
-  return (
-    <LinguiClientProvider
-      initialLocale={supportedLang}
-      initialMessages={allMessages[supportedLang]!}
-    >
-      <ScenariosPage selectedCategory={category} lang={supportedLang} />
-    </LinguiClientProvider>
-  );
+  return <ScenariosPage selectedCategory={category} lang={supportedLang} />;
 }
