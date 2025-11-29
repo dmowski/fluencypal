@@ -11,15 +11,11 @@ export const TestimonialsSection = () => {
       author: "Sarah M.",
     },
     {
-      quote: i18n._(
-        `I was confident and clear — FluencyPal prepared me better than any coach.`
-      ),
+      quote: i18n._(`I was confident and clear — FluencyPal prepared me better than any coach.`),
       author: "James L.",
     },
     {
-      quote: i18n._(
-        `It helped me answer HR and behavioral questions without panic.`
-      ),
+      quote: i18n._(`It helped me answer HR and behavioral questions without panic.`),
       author: "Maria K.",
     },
   ];
@@ -41,7 +37,7 @@ export const TestimonialsSection = () => {
 
         <Grid container spacing={4}>
           {testimonials.map((testimonial, index) => (
-            <Grid item xs={12} md={4} key={index}>
+            <Grid key={index}>
               <Paper
                 elevation={0}
                 sx={{
@@ -62,10 +58,7 @@ export const TestimonialsSection = () => {
                 >
                   "{testimonial.quote}"
                 </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{ fontWeight: 600, color: "#667eea" }}
-                >
+                <Typography variant="body2" sx={{ fontWeight: 600, color: "#667eea" }}>
                   — {testimonial.author}
                 </Typography>
               </Paper>

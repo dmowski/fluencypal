@@ -9,23 +9,17 @@ export const HowItWorksSection = () => {
     {
       number: "1",
       title: i18n._(`Real interview simulation`),
-      description: i18n._(
-        `Practice in real interview conditions — no tutors needed.`
-      ),
+      description: i18n._(`Practice in real interview conditions — no tutors needed.`),
     },
     {
       number: "2",
       title: i18n._(`AI feedback that matters`),
-      description: i18n._(
-        `Improve your impact, structure, clarity, and delivery.`
-      ),
+      description: i18n._(`Improve your impact, structure, clarity, and delivery.`),
     },
     {
       number: "3",
       title: i18n._(`Personalized answer scripts`),
-      description: i18n._(
-        `Based on your CV, experience, and target role.`
-      ),
+      description: i18n._(`Based on your CV, experience, and target role.`),
     },
   ];
 
@@ -46,7 +40,7 @@ export const HowItWorksSection = () => {
 
         <Grid container spacing={5}>
           {steps.map((step, index) => (
-            <Grid item xs={12} md={4} key={index}>
+            <Grid size={{ xs: 12, md: 4 }} key={index}>
               <Box sx={{ textAlign: "center" }}>
                 <Box
                   sx={{
@@ -66,10 +60,7 @@ export const HowItWorksSection = () => {
                 >
                   {step.number}
                 </Box>
-                <Typography
-                  variant="h5"
-                  sx={{ fontWeight: 600, mb: 2, color: "white" }}
-                >
+                <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: "white" }}>
                   {step.title}
                 </Typography>
                 <Typography variant="body1" sx={{ color: "#a0aec0" }}>

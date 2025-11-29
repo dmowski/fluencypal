@@ -74,9 +74,9 @@ export const PricingSection = () => {
           {i18n._(`Choose your plan`)}
         </Typography>
 
-        <Grid container spacing={4} sx={{ mt: 2 }}>
+        <Grid container>
           {plans.map((plan, index) => (
-            <Grid item xs={12} md={4} key={index}>
+            <Grid key={index}>
               <Paper
                 elevation={plan.recommended ? 8 : 2}
                 sx={{

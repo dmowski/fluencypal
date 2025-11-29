@@ -8,30 +8,22 @@ export const OutcomeSection = () => {
   const outcomes = [
     {
       title: i18n._(`Strong, structured answers`),
-      description: i18n._(
-        `Stop rambling or guessing. You'll know exactly what to say.`
-      ),
+      description: i18n._(`Stop rambling or guessing. You'll know exactly what to say.`),
       icon: "💬",
     },
     {
       title: i18n._(`Confidence & presence`),
-      description: i18n._(
-        `Perform calmly under pressure and make a strong first impression.`
-      ),
+      description: i18n._(`Perform calmly under pressure and make a strong first impression.`),
       icon: "💪",
     },
     {
       title: i18n._(`More interview invites`),
-      description: i18n._(
-        `Better preparation = better interviews = more callbacks.`
-      ),
+      description: i18n._(`Better preparation = better interviews = more callbacks.`),
       icon: "📧",
     },
     {
       title: i18n._(`Higher salary opportunities`),
-      description: i18n._(
-        `A strong interview performance increases negotiating power.`
-      ),
+      description: i18n._(`A strong interview performance increases negotiating power.`),
       icon: "💰",
     },
   ];
@@ -53,7 +45,7 @@ export const OutcomeSection = () => {
 
         <Grid container spacing={4}>
           {outcomes.map((outcome, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+            <Grid key={index}>
               <Paper
                 elevation={0}
                 sx={{
@@ -70,13 +62,8 @@ export const OutcomeSection = () => {
                   },
                 }}
               >
-                <Typography sx={{ fontSize: "3rem", mb: 2 }}>
-                  {outcome.icon}
-                </Typography>
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: 600, mb: 1.5, color: "white" }}
-                >
+                <Typography sx={{ fontSize: "3rem", mb: 2 }}>{outcome.icon}</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 600, mb: 1.5, color: "white" }}>
                   {outcome.title}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "#a0aec0" }}>
