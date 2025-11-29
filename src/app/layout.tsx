@@ -4,8 +4,6 @@ import "./globals.css";
 import { ThemeProvider } from "@mui/material/styles";
 import { darkTheme } from "../features/uiKit/theme";
 import { initLingui } from "@/initLingui";
-import linguiConfig from "../../lingui.config";
-import { supportedLanguages } from "@/features/Lang/lang";
 import { generateMetadataInfo } from "@/libs/metadata";
 import { Inter, Old_Standard_TT } from "next/font/google";
 import Script from "next/script";
@@ -21,10 +19,6 @@ const oldStandardTT = Old_Standard_TT({
   display: "swap",
 });
 
-export async function generateStaticParams() {
-  return linguiConfig.locales.map((lang: string) => ({ lang }));
-}
-
 export async function generateMetadata(): Promise<Metadata> {
   return generateMetadataInfo({
     lang: "en",
@@ -36,17 +30,19 @@ const defaultLang = "en";
 
 export default async function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ lang: string }>;
 }>) {
-  const lang: string = (await params)?.lang || defaultLang;
-  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
-  initLingui(supportedLang);
+  // Initialize with default language for root layout
+  // Language-specific initialization happens in [lang] route segment
+  initLingui(defaultLang);
 
   return (
-    <html lang={lang} className={`${inter.className} ${oldStandardTT.className}`} translate="no">
+    <html
+      lang={defaultLang}
+      className={`${inter.className} ${oldStandardTT.className}`}
+      translate="no"
+    >
       <head>
         <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
