@@ -2,7 +2,6 @@
 
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { JSX, useEffect, useRef, useState } from "react";
-import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import {
   Alert,
   Avatar,
@@ -1751,7 +1750,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           </Stack>
         </Stack>
       </Stack>
-      <TalkingWaves inActive={isAiSpeaking} />
     </Stack>
   );
 };
