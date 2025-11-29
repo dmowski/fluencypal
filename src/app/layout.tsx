@@ -53,19 +53,11 @@ export default async function RootLayout({
       className={`${inter.className} ${oldStandardTT.className}`}
       translate="no"
     >
-      <head>
-        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="26x26" href="/favicon-26x26.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="google" content="notranslate" />
-        <link rel="apple-touch-icon" href="/logo192.png" />
-
+      <body className={`${inter.className} ${oldStandardTT.className}`}>
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-K2X9LZJ50W"
-        ></Script>
+        />
         <Script id="gtag-init" strategy="afterInteractive">
           {`
 window.dataLayer = window.dataLayer || [];
@@ -77,7 +69,7 @@ gtag('config', 'AW-16463260124');
 
 `}
         </Script>
-        <Script>
+        <Script id="hotjar-init">
           {`
 const isWindow = typeof window !== "undefined";
 const isLocalhost = isWindow && window.location.hostname === "localhost";
@@ -93,8 +85,7 @@ if (!isLocalhost && isWindow) {
 }
 `}
         </Script>
-      </head>
-      <body>
+
         <ThemeProvider theme={darkTheme}>
           <Suspense>
             <WindowSizesProvider>

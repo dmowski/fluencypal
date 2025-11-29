@@ -10,11 +10,14 @@ import { getBlogs } from "@/features/Blog/blogData";
 import { getLangLearnPlanLabels } from "@/features/Lang/getLabels";
 
 export const generateAlternatesTags = (currentPath: string) => {
-  const hreflangLinks = supportedLanguages.reduce((acc, lang) => {
-    acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (currentPath ? "/" : "")}${currentPath}`;
+  const hreflangLinks = supportedLanguages.reduce(
+    (acc, lang) => {
+      acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (currentPath ? "/" : "")}${currentPath}`;
 
-    return acc;
-  }, {} as Record<SupportedLanguage, string>);
+      return acc;
+    },
+    {} as Record<SupportedLanguage, string>
+  );
 
   return {
     canonical: hreflangLinks["en"],
@@ -310,6 +313,16 @@ export const generateMetadataInfo = ({
     metadataBase: new URL(siteUrl),
     description,
     alternates: alternates,
+    icons: {
+      icon: [
+        { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-26x26.png", sizes: "26x26", type: "image/png" },
+        { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+        { url: "/favicon.svg", type: "image/svg+xml" },
+      ],
+      apple: [{ url: "/logo192.png" }],
+    },
     openGraph: {
       title: title,
       description: description,
@@ -331,7 +344,9 @@ export const generateMetadataInfo = ({
       images: [openGraphImageUrl],
       creator: "@dmowskii",
     },
-
+    other: {
+      google: "notranslate",
+    },
     robots: {
       index: needIndex,
       follow: true,
