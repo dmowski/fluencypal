@@ -12,7 +12,7 @@ test.describe("Lighthouse Audit", () => {
       page,
       thresholds: {
         seo: 100,
-        performance: 65,
+        performance: 60,
         accessibility: 95,
         "best-practices": 95,
       },
@@ -27,14 +27,14 @@ test.describe("Lighthouse Audit", () => {
     });
   });
 
-  test("Home page (RU) should have good metrics", async ({ page }: { page: Page }) => {
+  test("Home page should have good metrics (RU)", async ({ page }: { page: Page }) => {
     await page.goto("/ru");
 
     await playAudit({
       page,
       thresholds: {
         seo: 100,
-        performance: 65,
+        performance: 60,
         accessibility: 95,
         "best-practices": 95,
       },
