@@ -529,54 +529,56 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           width: "100%",
         }}
       >
-        {conversation.map((message) => {
-          const isBot = message.isBot;
-          return (
-            <Stack
-              key={message.id}
-              sx={{
-                padding: "0 20px",
-                boxSizing: "border-box",
-                color: "#e1e1e1",
-              }}
-            >
-              <Typography
-                variant="caption"
-                sx={{
-                  opacity: 0.5,
-                }}
-              >
-                {isBot ? i18n._("Teacher:") : i18n._("You:")}
-              </Typography>
+        {conversation
+          .filter((message) => !!message.text?.trim())
+          .map((message) => {
+            const isBot = message.isBot;
+            return (
               <Stack
+                key={message.id}
                 sx={{
-                  display: "inline-block",
+                  padding: "0 20px",
+                  boxSizing: "border-box",
+                  color: "#e1e1e1",
                 }}
               >
-                <Markdown
-                  onWordClick={
-                    translator.isTranslateAvailable
-                      ? (word, element) => {
-                          translator.translateWithModal(word, element);
-                        }
-                      : undefined
-                  }
-                  variant="conversation"
+                <Typography
+                  variant="caption"
+                  sx={{
+                    opacity: 0.5,
+                  }}
                 >
-                  {message.text || ""}
-                </Markdown>
-
-                {translator.isTranslateAvailable && (
-                  <IconButton
-                    onClick={(e) => translator.translateWithModal(message.text, e.currentTarget)}
+                  {isBot ? i18n._("Teacher:") : i18n._("You:")}
+                </Typography>
+                <Stack
+                  sx={{
+                    display: "inline-block",
+                  }}
+                >
+                  <Markdown
+                    onWordClick={
+                      translator.isTranslateAvailable
+                        ? (word, element) => {
+                            translator.translateWithModal(word, element);
+                          }
+                        : undefined
+                    }
+                    variant="conversation"
                   >
-                    <Languages size={"16px"} color="#eee" />
-                  </IconButton>
-                )}
+                    {message.text || ""}
+                  </Markdown>
+
+                  {translator.isTranslateAvailable && (
+                    <IconButton
+                      onClick={(e) => translator.translateWithModal(message.text, e.currentTarget)}
+                    >
+                      <Languages size={"16px"} color="#eee" />
+                    </IconButton>
+                  )}
+                </Stack>
               </Stack>
-            </Stack>
-          );
-        })}
+            );
+          })}
       </Stack>
     </>
   );
