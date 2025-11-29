@@ -84,6 +84,8 @@ interface AiConversationContextType {
   goalSettingProgress: number;
   isSavingGoal: boolean;
   goalInfo: GoalElementInfo | null;
+
+  voice: AiVoice | null;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -111,6 +113,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isProcessingGoal, setIsProcessingGoal] = useState(false);
   const [temporaryGoal, setTemporaryGoal] = useState<GoalPlan | null>(null);
   const [isSavingGoal, setIsSavingGoal] = useState(false);
+  const [voice, setVoice] = useState<AiVoice | null>(null);
 
   const aiModal = useMemo(
     () => (isDev() ? MODELS.SMALL_CONVERSATION : MODELS.REALTIME_CONVERSATION),
@@ -798,6 +801,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
         voice: aiRtcConfig.voice || input.voice,
         isMuted,
       });
+      setVoice(aiRtcConfig.voice || input.voice || null);
       history.createConversation({
         conversationId,
         languageCode: settings.languageCode,
@@ -890,6 +894,7 @@ My last message was: "${message}".
 
   return {
     currentMode,
+    voice,
     conversationId,
     isCallMode: isCallMode || false,
     setIsCallMode: setIsCallModeStorage,

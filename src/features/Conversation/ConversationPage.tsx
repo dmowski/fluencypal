@@ -289,6 +289,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           console.log("NEW STATE | Volume", isVolumeOn);
           aiConversation.toggleVolume(isVolumeOn);
         }}
+        voice={aiConversation.voice}
       />
     </Stack>
   );
