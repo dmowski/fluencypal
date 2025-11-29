@@ -50,5 +50,6 @@ test.describe("Internationalization", () => {
     const content = await descriptionMeta.getAttribute("content");
     expect(content).toBeTruthy();
     expect(content!.length).toBeGreaterThan(0);
+    expect(content!.startsWith("Practice conversational English with FluencyPal")).toBe(true);
   });
 });
