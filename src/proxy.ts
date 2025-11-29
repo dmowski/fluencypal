@@ -9,7 +9,7 @@ import linguiConfig from "../lingui.config";
 
 const { locales } = linguiConfig;
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const pathnameHasLocale = locales.some(
