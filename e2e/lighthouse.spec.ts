@@ -12,9 +12,9 @@ test.describe("Lighthouse Audit", () => {
       page,
       thresholds: {
         seo: 100,
-        performance: 60,
-        accessibility: 95,
-        "best-practices": 95,
+        performance: 80,
+        accessibility: 100,
+        "best-practices": 100,
       },
       port: 9222,
       reports: {
@@ -34,9 +34,9 @@ test.describe("Lighthouse Audit", () => {
       page,
       thresholds: {
         seo: 100,
-        performance: 60,
-        accessibility: 95,
-        "best-practices": 95,
+        performance: 98,
+        accessibility: 100,
+        "best-practices": 100,
       },
       port: 9222,
       reports: {

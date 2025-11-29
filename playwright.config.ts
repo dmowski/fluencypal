@@ -1,7 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 
-// const BASE_URL = "http://localhost:3000";
-const BASE_URL = "https://fluencypal.com";
+const BASE_URL = "http://localhost:3000";
+// const BASE_URL = "https://fluencypal.com";
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
