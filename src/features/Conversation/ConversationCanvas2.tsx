@@ -4,7 +4,6 @@ import { Markdown } from "../uiKit/Markdown/Markdown";
 import { JSX, useEffect, useRef, useState } from "react";
 import {
   Alert,
-  Avatar,
   Button,
   Divider,
   IconButton,
@@ -53,10 +52,7 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useTranslate } from "../Translation/useTranslate";
 import { useUrlParam } from "../Url/useUrlParam";
 import { useResizeElement } from "../Layout/useResizeElement";
-import { useWindowSizes } from "../Layout/useWindowSizes";
 import { useWebCam } from "../webCam/useWebCam";
-
-import { useAuth } from "../Auth/useAuth";
 import { Messages } from "./Messages";
 import { AiVoice } from "@/common/ai";
 import { CallModeCanvas } from "./CallModeCanvas";
@@ -165,13 +161,9 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const sound = useSound();
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const auth = useAuth();
-  const userPhoto = auth.userInfo?.photoURL || "";
-  const myUserName = auth.userInfo?.displayName || auth.userInfo?.email || "You";
   const closeMenus = () => setAnchorElUser(null);
   const startCallMode = () => toggleCallMode(true);
   const stopCallMode = () => toggleCallMode(false);
-  const sizes = useWindowSizes();
 
   const isFinishingProcess = isClosing || isClosed;
   const { ref, size } = useResizeElement<HTMLDivElement>();
