@@ -9,7 +9,7 @@ test.describe("Lighthouse Audit", () => {
     await playAudit({
       page,
       thresholds: {
-        seo: 95,
+        seo: 100,
       },
       port: 9222,
       reports: {
