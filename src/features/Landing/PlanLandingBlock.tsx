@@ -427,7 +427,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               `Fill out a onboarding quiz to help FluencyPal understand your goals and preferences.`
             )}
             actionButtonPostfixLabel={<Trans>{`${countOfLanguages} languages to practice`}</Trans>}
-            actionButtonLabel={i18n._(`Start`)}
+            actionButtonLabel={i18n._(`Start Test`)}
             actionButtonHref={`${getUrlStart(lang)}quiz`}
           />
         </Stack>
@@ -619,7 +619,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
               `Jump into your tailored learning path and build real skills through engaging practice with AI voice chat.`
             )}
             actionButtonPostfixLabel={i18n._(`3 days free trial`)}
-            actionButtonLabel={i18n._(`Start`)}
+            actionButtonLabel={i18n._(`Start Practicing`)}
             actionButtonHref={`${getUrlStart(lang)}quiz`}
           />
         </Stack>
