@@ -1,0 +1,34 @@
+name: E2E Tests
+
+on:
+  push: {}
+
+jobs:
+  e2e:
+    name: Run Playwright E2E
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Enable and prepare pnpm (via corepack)
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers and dependencies
+        run: npx playwright install --with-deps
+
+      - name: Run E2E tests
+        run: pnpm run test:e2e --reporter=list
+        env:
+          CI: true
