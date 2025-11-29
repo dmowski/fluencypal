@@ -37,4 +37,18 @@ test.describe("Internationalization", () => {
     // Check that the link has the correct href
     await expect(chineseLink).toHaveAttribute("href", "/zh/scenarios/alias-game");
   });
+
+  test("Page should have description meta tag", async ({ page }) => {
+    // Navigate to home page
+    await page.goto("/");
+
+    // Check that the page has a description meta tag
+    const descriptionMeta = page.locator('meta[name="description"]');
+    await expect(descriptionMeta).toHaveCount(1);
+
+    // Verify it has content
+    const content = await descriptionMeta.getAttribute("content");
+    expect(content).toBeTruthy();
+    expect(content!.length).toBeGreaterThan(0);
+  });
 });
