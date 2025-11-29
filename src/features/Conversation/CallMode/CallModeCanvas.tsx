@@ -10,9 +10,10 @@ import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
 import { useWebCam } from "../../webCam/useWebCam";
 import { useAuth } from "../../Auth/useAuth";
-import { Avatar, IconButton, Stack, Typography } from "@mui/material";
+import { IconButton, Stack } from "@mui/material";
 import { Messages } from "../Messages";
 import { WebCamFooter } from "./WebCamFooter";
+import { UserPreviewStatic } from "./UserPreviewStatic";
 
 const girlVoices: AiVoice[] = ["ash", "ballad", "coral", "shimmer"];
 
@@ -96,52 +97,7 @@ export const CallModeCanvas = ({
                 playsInline
               />
             ) : (
-              <>
-                <Stack
-                  sx={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    width: "100%",
-                    height: "100%",
-                    background: "url('/blur/2.jpg')",
-                    backgroundSize: "cover",
-                    opacity: 0.57,
-                  }}
-                ></Stack>
-
-                <Stack
-                  sx={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    width: "100%",
-                    height: "100%",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Stack
-                    sx={{
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      padding: "0",
-                      backgroundColor: "rgba(255, 255, 255, 0.5)",
-                    }}
-                  >
-                    <Avatar
-                      alt={""}
-                      src={"/blog/whippet-prediction.png"}
-                      sx={{
-                        width: "110px",
-                        height: "110px",
-                        borderRadius: "50%",
-                        fontSize: "10px",
-                      }}
-                    />
-                  </Stack>
-                </Stack>
-              </>
+              <UserPreviewStatic bgUrl={"/blur/2.jpg"} avatarUrl={"/blog/whippet-prediction.png"} />
             )}
 
             <WebCamFooter name={i18n._("Teacher")} />
@@ -176,52 +132,7 @@ export const CallModeCanvas = ({
             />
 
             {!webCam.isWebCamEnabled && (
-              <>
-                <Stack
-                  sx={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    width: "100%",
-                    height: "100%",
-                    background: "url('/blur/5.jpg')",
-                    backgroundSize: "cover",
-                    opacity: 0.57,
-                  }}
-                ></Stack>
-
-                <Stack
-                  sx={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    width: "100%",
-                    height: "100%",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Stack
-                    sx={{
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      padding: "0",
-                      backgroundColor: "rgba(255, 255, 255, 0.5)",
-                    }}
-                  >
-                    <Avatar
-                      alt={""}
-                      src={userPhoto}
-                      sx={{
-                        width: "110px",
-                        height: "110px",
-                        borderRadius: "50%",
-                        fontSize: "10px",
-                      }}
-                    />
-                  </Stack>
-                </Stack>
-              </>
+              <UserPreviewStatic bgUrl={"/blur/5.jpg"} avatarUrl={userPhoto} />
             )}
 
             <WebCamFooter name={myUserName || i18n._("You")} />
