@@ -17,10 +17,28 @@ jobs:
           node-version: "20"
           cache: "pnpm"
 
+      - name: Runner diagnostics
+        run: |
+          echo "=== Runner environment ==="
+          echo "PATH=$PATH"
+          node -v
+          npm -v
+          which pnpm || echo "pnpm not found"
+          pnpm --version || echo "pnpm --version failed"
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
+
+      - name: Ensure pnpm is available (fallback)
+        run: |
+          if ! command -v pnpm >/dev/null 2>&1; then
+            echo "pnpm not in PATH — attempting corepack fallback"
+            corepack enable
+            corepack prepare pnpm@latest --activate
+          fi
+          pnpm --version
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
