@@ -19,12 +19,14 @@ export default async function Page(props: {
 
   return (
     <html lang={supportedLang}>
-      <LinguiClientProvider
-        initialLocale={supportedLang}
-        initialMessages={allMessages[supportedLang]!}
-      >
-        {props.children}
-      </LinguiClientProvider>
+      <body>
+        <LinguiClientProvider
+          initialLocale={supportedLang}
+          initialMessages={allMessages[supportedLang]!}
+        >
+          {props.children}
+        </LinguiClientProvider>
+      </body>
     </html>
   );
 }

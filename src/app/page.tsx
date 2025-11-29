@@ -21,12 +21,14 @@ export default function Home() {
   initLingui(supportedLang);
   return (
     <html lang="en">
-      <LinguiClientProvider
-        initialLocale={supportedLang}
-        initialMessages={allMessages[supportedLang]!}
-      >
-        <LandingPage lang={supportedLang} />
-      </LinguiClientProvider>
+      <body>
+        <LinguiClientProvider
+          initialLocale={supportedLang}
+          initialMessages={allMessages[supportedLang]!}
+        >
+          <LandingPage lang={supportedLang} />
+        </LinguiClientProvider>
+      </body>
     </html>
   );
 }
