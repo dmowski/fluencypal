@@ -6,12 +6,13 @@ import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import { AiVoice } from "@/common/ai";
 import { ChatMessage } from "@/common/conversation";
-import { useWindowSizes } from "../Layout/useWindowSizes";
+import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
-import { useWebCam } from "../webCam/useWebCam";
-import { useAuth } from "../Auth/useAuth";
+import { useWebCam } from "../../webCam/useWebCam";
+import { useAuth } from "../../Auth/useAuth";
 import { Avatar, IconButton, Stack, Typography } from "@mui/material";
-import { Messages } from "./Messages";
+import { Messages } from "../Messages";
+import { WebCamFooter } from "./WebCamFooter";
 
 const girlVoices: AiVoice[] = ["ash", "ballad", "coral", "shimmer"];
 
@@ -36,7 +37,7 @@ export const CallModeCanvas = ({
   const userPhoto = auth.userInfo?.photoURL || "";
   const myUserName = auth.userInfo?.displayName || auth.userInfo?.email || "You";
 
-  const isShowVideo = false; //voice ? girlVoices.includes(voice) : false;
+  const isShowVideo = voice ? girlVoices.includes(voice) : false;
 
   return (
     <>
@@ -143,28 +144,7 @@ export const CallModeCanvas = ({
               </>
             )}
 
-            <Stack
-              sx={{
-                position: "absolute",
-                bottom: "0",
-                left: "0",
-                width: "100%",
-                height: "80px",
-                background: "linear-gradient(0deg, rgba(0,0,0,0.31), rgba(0,0,0,0))",
-              }}
-            ></Stack>
-            <Stack
-              sx={{
-                position: "absolute",
-                bottom: "20px",
-                left: "20px",
-                gap: "5px",
-              }}
-            >
-              <Typography variant="body2" sx={{ color: "#fff", opacity: 0.9 }}>
-                {i18n._("Teacher")}
-              </Typography>
-            </Stack>
+            <WebCamFooter name={i18n._("Teacher")} />
           </Stack>
 
           <Stack
@@ -244,29 +224,7 @@ export const CallModeCanvas = ({
               </>
             )}
 
-            <Stack
-              sx={{
-                position: "absolute",
-                bottom: "0",
-                left: "0",
-                width: "100%",
-                height: "80px",
-                background: "linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0,0,0,0))",
-              }}
-            ></Stack>
-
-            <Stack
-              sx={{
-                position: "absolute",
-                bottom: "20px",
-                left: "20px",
-                gap: "1px",
-              }}
-            >
-              <Typography variant="body2" sx={{ color: "#fff", opacity: 0.9 }}>
-                {myUserName || i18n._("You")}
-              </Typography>
-            </Stack>
+            <WebCamFooter name={myUserName || i18n._("You")} />
           </Stack>
         </Stack>
         <Stack

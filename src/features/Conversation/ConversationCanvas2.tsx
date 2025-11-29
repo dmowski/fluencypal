@@ -55,7 +55,7 @@ import { useResizeElement } from "../Layout/useResizeElement";
 import { useWebCam } from "../webCam/useWebCam";
 import { Messages } from "./Messages";
 import { AiVoice } from "@/common/ai";
-import { CallModeCanvas } from "./CallModeCanvas";
+import { CallModeCanvas } from "./CallMode/CallModeCanvas";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
