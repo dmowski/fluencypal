@@ -62,6 +62,7 @@ import { useWebCam } from "../webCam/useWebCam";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import { useAuth } from "../Auth/useAuth";
+import { Messages } from "./Messages";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -520,69 +521,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
     </>
   );
 
-  const messages = (
-    <>
-      <Stack
-        sx={{
-          gap: "40px",
-          paddingTop: "60px",
-          width: "100%",
-        }}
-      >
-        {conversation
-          .filter((message) => !!message.text?.trim())
-          .map((message) => {
-            const isBot = message.isBot;
-            return (
-              <Stack
-                key={message.id}
-                sx={{
-                  padding: "0 20px",
-                  boxSizing: "border-box",
-                  color: "#e1e1e1",
-                }}
-              >
-                <Typography
-                  variant="caption"
-                  sx={{
-                    opacity: 0.5,
-                  }}
-                >
-                  {isBot ? i18n._("Teacher:") : i18n._("You:")}
-                </Typography>
-                <Stack
-                  sx={{
-                    display: "inline-block",
-                  }}
-                >
-                  <Markdown
-                    onWordClick={
-                      translator.isTranslateAvailable
-                        ? (word, element) => {
-                            translator.translateWithModal(word, element);
-                          }
-                        : undefined
-                    }
-                    variant="conversation"
-                  >
-                    {message.text || ""}
-                  </Markdown>
-
-                  {translator.isTranslateAvailable && (
-                    <IconButton
-                      onClick={(e) => translator.translateWithModal(message.text, e.currentTarget)}
-                    >
-                      <Languages size={"16px"} color="#eee" />
-                    </IconButton>
-                  )}
-                </Stack>
-              </Stack>
-            );
-          })}
-      </Stack>
-    </>
-  );
-
   if (isCallMode && !gameWords?.wordsUserToDescribe) {
     return (
       <>
@@ -785,7 +723,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                 height: "max-content",
               }}
             >
-              {messages}
+              <Messages conversation={conversation} />
             </Stack>
           </Stack>
           <Stack
@@ -904,7 +842,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             backgroundColor: "#1c2128",
           }}
         >
-          {messages}
+          <Messages conversation={conversation} />
         </Stack>
 
         <Stack
