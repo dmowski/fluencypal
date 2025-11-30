@@ -67,7 +67,6 @@ const initGTag = () => {
       gtag('js', new Date());
       gtag('config', 'G-K2X9LZJ50W'); 
       gtag('config', 'AW-16463260124');
-      console.log("GTag initialized");
     `;
   document.head.appendChild(script2);
 };
@@ -87,11 +86,9 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
     if ((isDev() && !RUN_ON_DEV_ENV) || !auth.uid || isInitialized.current || !isWindow) {
       return;
     }
-    console.log("Initializing Analytics for user:", auth.uid);
     isInitialized.current = true;
     initHotjar();
     initGTag();
-    console.log("Analytics initialized. DONE.");
   }, [auth.uid]);
 
   const data: AnalyticsContextType = {
