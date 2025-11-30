@@ -1,11 +1,24 @@
-import { useEffect } from "react";
+"use client";
+import { createContext, useContext, useEffect, ReactNode, useState, useRef } from "react";
 import { isDev } from "./isDev";
+import { useAuth } from "../Auth/useAuth";
 
-export const useHotjar = () => {
+interface HotjarContextType {
+  isInitialized: boolean;
+}
+
+const HotjarContext = createContext<HotjarContextType | undefined>(undefined);
+
+export const HotjarProvider = ({ children }: { children: ReactNode }) => {
+  const auth = useAuth();
+  const isInitialized = useRef(false);
   useEffect(() => {
-    if (isDev()) {
+    const isWindow = typeof window !== "undefined";
+    if (isDev() || !auth.uid || isInitialized.current || !isWindow) {
       return;
     }
+    console.log("Initializing Hotjar for user:", auth.uid);
+    isInitialized.current = true;
 
     (function (h: any, o: any, t: any, j: any, a?: any, r?: any) {
       h.hj =
@@ -20,5 +33,20 @@ export const useHotjar = () => {
       r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
       a.appendChild(r);
     })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
-  }, []);
+    isInitialized.current = true;
+  }, [auth.uid]);
+
+  return (
+    <HotjarContext.Provider value={{ isInitialized: isInitialized.current }}>
+      {children}
+    </HotjarContext.Provider>
+  );
+};
+
+export const useHotjar = () => {
+  const context = useContext(HotjarContext);
+  if (context === undefined) {
+    throw new Error("useHotjar must be used within a HotjarProvider");
+  }
+  return context;
 };
