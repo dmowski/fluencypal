@@ -22,7 +22,7 @@ import { PayWallProvider } from "@/features/PayWall/usePayWall";
 import { TelegramProvider } from "./telegramProvider";
 import { TgNavigationProvider } from "@/features/Telegram/useTgNavigation";
 import { AppNavigationProvider } from "@/features/Navigation/useAppNavigation";
-import { HotjarProvider } from "@/features/Analytics/useHotjar";
+import { AnalyticsProvider } from "@/features/Analytics/useAnalytics";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
@@ -32,7 +32,7 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
           <AppNavigationProvider>
             <NotificationsProvider>
               <AuthProvider>
-                <HotjarProvider>
+                <AnalyticsProvider>
                   <SettingsProvider>
                     <WebCamProvider>
                       <GameProvider>
@@ -64,7 +64,7 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                       </GameProvider>
                     </WebCamProvider>
                   </SettingsProvider>
-                </HotjarProvider>
+                </AnalyticsProvider>
               </AuthProvider>
             </NotificationsProvider>
           </AppNavigationProvider>

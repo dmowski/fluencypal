@@ -38,7 +38,6 @@ import { fnv1aHash } from "@/libs/hash";
 import { getWordsCount } from "@/libs/words";
 import { NativeLangCode } from "@/libs/language/type";
 import { guessLanguagesByCountry } from "@/libs/language/languageByCountry";
-import { confirmGtag } from "@/features/Analytics/confirmGtag";
 
 type QuizStep =
   | "before_nativeLanguage"

@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, CircularProgress, Stack, Typography } from "@mui/material";
 import { useSettings } from "../Settings/useSettings";
 import { useLingui } from "@lingui/react";
@@ -13,7 +15,7 @@ import { IconTextList } from "../Survey/IconTextList";
 import { isTMA } from "@telegram-apps/sdk-react";
 import { stripeLocaleMap, SupportedLanguage } from "../Lang/lang";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { confirmGtag } from "../Analytics/confirmGtag";
+import { useAnalytics } from "../Analytics/useAnalytics";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 function SetupForm({ clientSecret }: { clientSecret: string }) {
@@ -23,6 +25,7 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
   const [submitting, setSubmitting] = useState(false);
   const [errMsg, setErrMsg] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const analytics = useAnalytics();
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +49,7 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
       }
       // If no error -> success path; rely on webhook to flip the flag.
       // Optionally start a short polling loop here to refresh settings.
-      confirmGtag();
+      analytics.confirmGtag();
     } finally {
       setSubmitting(false);
     }
