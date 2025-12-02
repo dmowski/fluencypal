@@ -13,28 +13,26 @@ export const InterviewListPage = async (props: ListInterviewPageProps) => {
   const lang = supportedLanguages.find((l) => l === propLang) || "en";
 
   return (
-    <html lang={lang}>
-      <body>
-        <HeaderStatic lang={lang} />
-        <div
-          style={{
+    <>
+      <HeaderStatic lang={lang} />
+      <div
+        style={{
+          width: "100%",
+          margin: 0,
+        }}
+      >
+        <Stack
+          sx={{
+            alignItems: "center",
             width: "100%",
-            margin: 0,
           }}
+          component={"main"}
         >
-          <Stack
-            sx={{
-              alignItems: "center",
-              width: "100%",
-            }}
-            component={"main"}
-          >
-            <ListInterviewIntro lang={lang} />
-            <ListInterview selectedCategoryId={category} lang={lang} />
-          </Stack>
-        </div>
-        <Footer lang={lang} />
-      </body>
-    </html>
+          <ListInterviewIntro lang={lang} />
+          <ListInterview selectedCategoryId={category} lang={lang} />
+        </Stack>
+      </div>
+      <Footer lang={lang} />
+    </>
   );
 };

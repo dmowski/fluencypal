@@ -51,11 +51,9 @@ export async function OneInterviewLandingPage({
   }
 
   return (
-    <html lang={supportedLang}>
-      <body>
-        <p>{interviewData.title}</p>
-        <p>{interviewData.subTitle}</p>
-      </body>
-    </html>
+    <div>
+      <p>{interviewData.title}</p>
+      <p>{interviewData.subTitle}</p>
+    </div>
   );
 }
