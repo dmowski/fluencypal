@@ -10,12 +10,16 @@ interface WelcomeScreenProps {
   practiceLink: string;
   lang: SupportedLanguage;
   openMyPracticeLinkTitle: string;
+  title: string;
+  subTitle: string;
 }
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   getStartedTitle,
   practiceLink,
   lang,
   openMyPracticeLinkTitle,
+  title,
+  subTitle,
 }) => {
   const i18n = getI18nInstance(lang);
   return (
@@ -170,7 +174,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 },
               }}
             >
-              {i18n._(`Start Speaking`)}
+              {title}
             </Typography>
             <Stack
               sx={{
@@ -192,9 +196,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                   },
                 }}
               >
-                {i18n._(
-                  `Don’t let mistakes stop you. Build fluency and confidence with daily speaking practice, anytime you need it.`
-                )}
+                {subTitle}
               </Typography>
             </Stack>
           </Stack>

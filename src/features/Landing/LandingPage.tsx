@@ -108,6 +108,10 @@ export default function LandingPage({ lang }: LandingPageProps) {
             pricingLink={`${getUrlStart(lang)}pricing`}
             practiceLink={`${getUrlStart(lang)}quiz`}
             openMyPracticeLinkTitle={i18n._(`Open`)}
+            title={i18n._(`Start Speaking`)}
+            subTitle={i18n._(
+              `Don’t let mistakes stop you. Build fluency and confidence with daily speaking practice, anytime you need it.`
+            )}
             lang={lang}
           />
           <PlanLandingBlock lang={lang} />

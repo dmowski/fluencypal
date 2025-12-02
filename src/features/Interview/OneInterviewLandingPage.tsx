@@ -55,8 +55,6 @@ async function OneInterviewContent({
   return (
     <>
       <HeaderStatic lang={lang} transparentOnTop />
-      <p>{interviewData.title}</p>
-      <p>{interviewData.subTitle}</p>
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center" }}>
           <WelcomeScreen
@@ -65,6 +63,8 @@ async function OneInterviewContent({
             practiceLink={`${getUrlStart(lang)}quiz`}
             openMyPracticeLinkTitle={i18n._(`Open`)}
             lang={lang}
+            title={interviewData.title}
+            subTitle={interviewData.subTitle}
           />
           <PlanLandingBlock lang={lang} />
         </Stack>
