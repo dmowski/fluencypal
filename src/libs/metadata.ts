@@ -64,7 +64,6 @@ export const generateMetadataInfo = ({
   let keywords: string[] = [];
 
   const i18n = getI18nInstance(supportedLang);
-  const langForUrl = supportedLang === "en" ? "" : supportedLang + "/";
   let needIndex = true;
 
   let openGraphImageUrl = `${siteUrl}openGraph.png`;
@@ -292,30 +291,27 @@ export const generateMetadataInfo = ({
   }
 
   const id = scenarioId || blogId;
-  const pathWithId = currentPath + (id ? "/" + id : "");
-
-  const query = [
-    category ? "category=" + encodeURIComponent(category) : "",
-    rolePlayId ? "rolePlayId=" + encodeURIComponent(rolePlayId) : "",
-  ]
-    .filter(Boolean)
-    .join("&");
-
-  const pathWithQueries = pathWithId + (query ? "?" + query : "");
-  const alternates = generateAlternatesTags(pathWithQueries, supportedLang);
-  const ogUrl = alternates.languages[supportedLang || "en"];
+  const metadataUrls = getMetadataUrls({
+    currentPath,
+    id,
+    queries: {
+      category,
+      rolePlayId,
+    },
+    supportedLang,
+  });
 
   return {
     keywords,
     title,
     metadataBase: new URL(siteUrl),
     description,
-    alternates: alternates,
+    alternates: metadataUrls.alternates,
     icons: getMetadataIcons(),
     openGraph: getOpenGraph({
       title,
       description,
-      ogUrl,
+      ogUrl: metadataUrls.ogUrl,
       openGraphImageUrl,
       alt: `${APP_NAME} – ` + i18n._(`AI English Speaking Practice`),
     }),
@@ -334,6 +330,41 @@ export const generateMetadataInfo = ({
   };
 };
 
+export function getMetadataUrls({
+  currentPath,
+  id,
+  queries,
+  supportedLang,
+}: {
+  // examples of currentPath: contacts, pricing, practice
+  currentPath: string;
+
+  // like blogId, scenarioId
+  id: string | undefined;
+
+  // example: { category: "business" }
+  queries: Record<string, string | undefined>;
+
+  supportedLang: SupportedLanguage;
+}) {
+  const pathWithId = currentPath + (id ? "/" + id : "");
+
+  const queryList = Object.entries(queries).map(([key, value]) =>
+    value ? `${key}=` + encodeURIComponent(value) : ""
+  );
+  const query = queryList.filter(Boolean).join("&");
+
+  const pathWithQueries = pathWithId + (query ? "?" + query : "");
+  const alternates = generateAlternatesTags(pathWithQueries, supportedLang);
+  const ogUrl = alternates.languages[supportedLang || "en"];
+
+  return {
+    ogUrl,
+    alternates,
+    pathWithQueries,
+  };
+}
+
 export function getTwitterCard({
   title,
   description,
@@ -341,13 +372,14 @@ export function getTwitterCard({
 }: {
   title: string;
   description: string;
-  openGraphImageUrl: string;
+  openGraphImageUrl?: string;
 }) {
+  const image = openGraphImageUrl || `${siteUrl}openGraph.png`;
   return {
     card: "summary_large_image",
     title: title,
     description: description,
-    images: [openGraphImageUrl],
+    images: [image],
     creator: "@dmowskii",
   };
 }
@@ -362,16 +394,17 @@ export function getOpenGraph({
   title: string;
   description: string;
   ogUrl: string;
-  openGraphImageUrl: string;
+  openGraphImageUrl?: string;
   alt: string;
 }) {
+  const image = openGraphImageUrl || `${siteUrl}openGraph.png`;
   return {
     title: title,
     description: description,
     url: ogUrl,
     images: [
       {
-        url: openGraphImageUrl,
+        url: image,
         width: 1200,
         height: 630,
         alt: alt,
