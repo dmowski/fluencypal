@@ -8,6 +8,7 @@ import { WindowSizesProvider } from "@/features/Layout/useWindowSizes";
 import { initLingui } from "@/initLingui";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { allMessages } from "@/appRouterI18n";
+import { UserSourceProvider } from "@/features/Analytics/useUserSource";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const oldStandardTT = Old_Standard_TT({
@@ -26,17 +27,19 @@ export default async function RootLayout({
   initLingui(supportedLang);
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <WindowSizesProvider>
-        <AppRouterCacheProvider options={{ key: "css" }}>
-          <LinguiClientProvider
-            initialLocale={supportedLang}
-            initialMessages={allMessages[supportedLang]!}
-          >
-            {children}
-          </LinguiClientProvider>
-        </AppRouterCacheProvider>
-      </WindowSizesProvider>
-    </ThemeProvider>
+    <UserSourceProvider>
+      <ThemeProvider theme={darkTheme}>
+        <WindowSizesProvider>
+          <AppRouterCacheProvider options={{ key: "css" }}>
+            <LinguiClientProvider
+              initialLocale={supportedLang}
+              initialMessages={allMessages[supportedLang]!}
+            >
+              {children}
+            </LinguiClientProvider>
+          </AppRouterCacheProvider>
+        </WindowSizesProvider>
+      </ThemeProvider>
+    </UserSourceProvider>
   );
 }

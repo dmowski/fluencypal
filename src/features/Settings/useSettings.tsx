@@ -12,8 +12,9 @@ import { db } from "../Firebase/firebaseDb";
 import { useCurrency } from "../User/useCurrency";
 import { getCountryByIP } from "../User/getCountry";
 import { countries } from "@/libs/countries";
-import { UserSettings } from "@/common/user";
+import { InitUserSettings, UserSettings } from "@/common/user";
 import { NativeLangCode } from "@/libs/language/type";
+import { useUserSource } from "../Analytics/useUserSource";
 
 interface SettingsContextType {
   userCreatedAt: number | null;
@@ -51,6 +52,7 @@ function useProvideSettings(): SettingsContextType {
 
   const userSettingsDoc = db.documents.userSettings(userId);
   const currency = useCurrency();
+  const userSource = useUserSource();
 
   const [userSettings, loading] = useDocumentData(userSettingsDoc);
 
@@ -74,16 +76,17 @@ function useProvideSettings(): SettingsContextType {
 
     const country = await getCountryByIP();
     const countryName = country
-      ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || "Unknown"
-      : "-";
+      ? countries.find((c) => c.alpha2 === country.toLowerCase())?.name || null
+      : null;
 
-    const settingsData: Partial<UserSettings> = {
+    const settingsData: InitUserSettings = {
       createdAt: Date.now(),
       createdAtIso: new Date().toISOString(),
       currency: currency.currency || null,
-      email: auth.userInfo?.email || "",
+      email: auth.userInfo?.email || null,
       country: country || null,
       countryName: countryName || null,
+      userSource: userSource.userSource,
     };
 
     await setDoc(userSettingsDoc, settingsData, { merge: true });

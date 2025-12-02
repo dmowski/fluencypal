@@ -149,7 +149,7 @@ export async function POST(request: Request) {
         });
       }
 
-      if (stripeConfig.isStripeLive) {
+      if (stripeConfig.isStripeLive && userInfo.email) {
         const emailToSend = userInfo.email;
         const shortId = receiptId || paymentId.slice(paymentId.length - 8);
         const emailUi = getConfirmEmailTemplate({
