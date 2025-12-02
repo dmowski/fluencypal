@@ -9,22 +9,6 @@ import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { getBlogs } from "@/features/Blog/blogData";
 import { getLangLearnPlanLabels } from "@/features/Lang/getLabels";
 
-export const generateAlternatesTags = (currentPath: string, lang: SupportedLanguage) => {
-  const hreflangLinks = supportedLanguages.reduce((acc, lang) => {
-    acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (currentPath ? "/" : "")}${currentPath}`;
-
-    return acc;
-  }, {} as Record<SupportedLanguage, string>);
-
-  return {
-    canonical: hreflangLinks[lang],
-    languages: {
-      ...hreflangLinks,
-      "x-default": hreflangLinks["en"], // Use the English version of the current page
-    },
-  };
-};
-
 type Path =
   | "contacts"
   | "quiz"
@@ -426,3 +410,19 @@ export function getMetadataIcons() {
     apple: [{ url: "/logo192.png" }],
   };
 }
+
+export const generateAlternatesTags = (currentPath: string, lang: SupportedLanguage) => {
+  const hreflangLinks = supportedLanguages.reduce((acc, lang) => {
+    acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (currentPath ? "/" : "")}${currentPath}`;
+
+    return acc;
+  }, {} as Record<SupportedLanguage, string>);
+
+  return {
+    canonical: hreflangLinks[lang],
+    languages: {
+      ...hreflangLinks,
+      "x-default": hreflangLinks["en"], // Use the English version of the current page
+    },
+  };
+};
