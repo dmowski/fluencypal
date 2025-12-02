@@ -25,7 +25,6 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
   const game = useGame();
   const [isQuizFull, setIsQuizFull] = useState(false);
   const user = userStat.userData;
-  const userSource = user.userSource;
   const userId = user.id;
   const lastLoginAgo = user.lastLoginAtDateTime
     ? dayjs(user.lastLoginAtDateTime).fromNow()
