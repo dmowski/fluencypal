@@ -2,16 +2,17 @@ import { Stack } from "@mui/material";
 import { Footer } from "../../Landing/Footer";
 import { ListInterviewIntro } from "./ListInterviewIntro";
 import { ListInterview } from "./ListInterview";
-import { supportedLanguages } from "@/features/Lang/lang";
+import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { HeaderStatic } from "../../Header/HeaderStatic";
 import { ListInterviewPageProps } from "./metadata";
 
-export const InterviewListPage = async (props: ListInterviewPageProps) => {
-  const params = await props.searchParams;
-  const category = params.category;
-  const propLang = (await props.params).lang;
-  const lang = supportedLanguages.find((l) => l === propLang) || "en";
-
+export const InterviewListContent = async ({
+  category,
+  lang,
+}: {
+  category?: string;
+  lang: SupportedLanguage;
+}) => {
   return (
     <>
       <HeaderStatic lang={lang} />
@@ -35,4 +36,23 @@ export const InterviewListPage = async (props: ListInterviewPageProps) => {
       <Footer lang={lang} />
     </>
   );
+};
+
+export const InterviewListPage = async (props: ListInterviewPageProps) => {
+  const params = await props.searchParams;
+  const category = params.category;
+  const propLang = (await props.params).lang;
+  const lang = supportedLanguages.find((l) => l === propLang) || "en";
+
+  const content = <InterviewListContent category={category} lang={lang} />;
+
+  if (lang === "en") {
+    return (
+      <html lang="en">
+        <body>{content}</body>
+      </html>
+    );
+  }
+
+  return content;
 };
