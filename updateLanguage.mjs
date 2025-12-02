@@ -92,12 +92,34 @@ async function processTranslations(poData, lang) {
   await Promise.all(translationPromises);
 }
 
+function sortTranslation(poData) {
+  const translations = poData.translations;
+
+  for (const context in translations) {
+    const keys = Object.keys(translations[context]);
+    const sortedKeys = keys.sort((a, b) => {
+      const msgidA = translations[context][a].msgid.toLowerCase();
+      const msgidB = translations[context][b].msgid.toLowerCase();
+      if (msgidA < msgidB) return -1;
+      if (msgidA > msgidB) return 1;
+      return 0;
+    });
+
+    const sortedTranslations = {};
+    for (const key of sortedKeys) {
+      sortedTranslations[key] = translations[context][key];
+    }
+    poData.translations[context] = sortedTranslations;
+  }
+}
+
 const processLang = async (lang, path) => {
   const sourceContent = await readFileAsync(path, {
     encoding: "utf-8",
   });
   const po = gettextParser.po.parse(sourceContent);
   await processTranslations(po, lang);
+  sortTranslation(po);
   const updatedPo = gettextParser.po.compile(po);
   await writeFileAsync(path, updatedPo, { encoding: "utf-8" });
 };
