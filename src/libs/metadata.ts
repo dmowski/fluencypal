@@ -94,6 +94,7 @@ export const generateMetadataInfo = ({
       `Prepare for your interviews with AI-powered tools that help you practice and improve your answers.`
     );
     keywords = [];
+    needIndex = false;
   }
 
   if (currentPath === "quiz2") {
@@ -310,37 +311,19 @@ export const generateMetadataInfo = ({
     metadataBase: new URL(siteUrl),
     description,
     alternates: alternates,
-    icons: {
-      icon: [
-        { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
-        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-        { url: "/favicon-26x26.png", sizes: "26x26", type: "image/png" },
-        { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
-        { url: "/favicon.svg", type: "image/svg+xml" },
-      ],
-      apple: [{ url: "/logo192.png" }],
-    },
-    openGraph: {
-      title: title,
-      description: description,
-      url: ogUrl,
-      images: [
-        {
-          url: openGraphImageUrl,
-          width: 1200,
-          height: 630,
-          alt: `${APP_NAME} – ` + i18n._(`AI English Speaking Practice`),
-        },
-      ],
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: title,
-      description: description,
-      images: [openGraphImageUrl],
-      creator: "@dmowskii",
-    },
+    icons: getMetadataIcons(),
+    openGraph: getOpenGraph({
+      title,
+      description,
+      ogUrl,
+      openGraphImageUrl,
+      alt: `${APP_NAME} – ` + i18n._(`AI English Speaking Practice`),
+    }),
+    twitter: getTwitterCard({
+      title,
+      description,
+      openGraphImageUrl,
+    }),
     other: {
       google: "notranslate",
     },
@@ -350,3 +333,63 @@ export const generateMetadataInfo = ({
     },
   };
 };
+
+export function getTwitterCard({
+  title,
+  description,
+  openGraphImageUrl,
+}: {
+  title: string;
+  description: string;
+  openGraphImageUrl: string;
+}) {
+  return {
+    card: "summary_large_image",
+    title: title,
+    description: description,
+    images: [openGraphImageUrl],
+    creator: "@dmowskii",
+  };
+}
+
+export function getOpenGraph({
+  title,
+  description,
+  ogUrl,
+  openGraphImageUrl,
+  alt,
+}: {
+  title: string;
+  description: string;
+  ogUrl: string;
+  openGraphImageUrl: string;
+  alt: string;
+}) {
+  return {
+    title: title,
+    description: description,
+    url: ogUrl,
+    images: [
+      {
+        url: openGraphImageUrl,
+        width: 1200,
+        height: 630,
+        alt: alt,
+      },
+    ],
+    type: "website",
+  };
+}
+
+export function getMetadataIcons() {
+  return {
+    icon: [
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-26x26.png", sizes: "26x26", type: "image/png" },
+      { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/logo192.png" }],
+  };
+}

@@ -10,6 +10,7 @@ interface PageProps {
     learn?: string;
   }>;
 }
+
 export async function generateStaticParams() {
   return [];
 }
