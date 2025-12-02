@@ -55,8 +55,6 @@ function useProvideUserSource(): UserSourceContextType {
   };
 
   const initUserSource = () => {
-    console.log("initUserSource");
-
     const sourceFromStorage = getParamsFromStorage();
     if (sourceFromStorage) {
       setUserSource(sourceFromStorage);
@@ -74,7 +72,6 @@ function useProvideUserSource(): UserSourceContextType {
     initUserSource();
   }, [urlString, isWindow]);
 
-  console.log("userSource", userSource);
   return {
     userSource,
     getParamsFromStorage,
