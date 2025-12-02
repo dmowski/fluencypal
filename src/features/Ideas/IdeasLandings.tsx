@@ -1,81 +1,48 @@
 import { getMetadataIcons, getMetadataUrls, getOpenGraph, getTwitterCard } from "@/libs/metadata";
 import type { Metadata } from "next";
-import { supportedLanguages } from "../Lang/lang";
+import { SupportedLanguage, supportedLanguages } from "../Lang/lang";
 import { initLingui } from "@/initLingui";
 import { getI18nInstance } from "@/appRouterI18n";
 import { siteUrl } from "@/common/metadata";
-import { I18n } from "@lingui/core";
+import { getIdeaMetaInfo } from "./getIdeaMetaInfo";
+import { NotFoundPage } from "../NotFound/NotFoundPage";
 
-export type Ideas = "interview-speed" | "interview-frontend" | "interview-backend";
-
-export const ideas: Ideas[] = ["interview-speed", "interview-frontend", "interview-backend"];
+export type Idea = "interview-speed" | "interview-frontend" | "interview-backend";
 
 export interface IdeaPageProps {
-  params: Promise<{ lang: string }>;
+  params: Promise<{
+    idea: Idea;
+    lang: string;
+  }>;
 }
 
-export async function generateStaticParams(idea: Ideas) {
+export const ideas: Idea[] = ["interview-speed", "interview-frontend", "interview-backend"];
+
+export async function generateIdeaStaticParams() {
   return [];
 }
 
-function getIdeaMetaInfo(idea: Ideas, i18n: I18n) {
-  const metaMap: Record<
-    Ideas,
-    {
-      title: string;
-      description: string;
-      keywords: string[];
-    }
-  > = {
-    "interview-speed": {
-      title: i18n._(`Prepare for the Job Interview`),
-      description: i18n._(
-        `Get ready for your next interview with our comprehensive guide covering common questions, tips, and strategies to help you succeed.`
-      ),
-      keywords: [
-        i18n._(`interview preparation`),
-        i18n._(`common interview questions`),
-        i18n._(`interview tips`),
-        i18n._(`job interview strategies`),
-      ],
-    },
-    "interview-frontend": {
-      title: i18n._(`Frontend Interview Preparation`),
-      description: i18n._(
-        `Master frontend interviews with our in-depth guide featuring essential topics, coding challenges, and best practices to land your dream job.`
-      ),
-      keywords: [
-        i18n._(`frontend interview preparation`),
-        i18n._(`frontend interview questions`),
-        i18n._(`JavaScript interview tips`),
-        i18n._(`CSS interview strategies`),
-      ],
-    },
-    "interview-backend": {
-      title: i18n._(`Backend Interview Preparation`),
-      description: i18n._(
-        `Ace your backend interviews with our expert guide covering key concepts, algorithms, and system design principles to help you succeed.`
-      ),
-      keywords: [
-        i18n._(`backend interview preparation`),
-        i18n._(`backend interview questions`),
-        i18n._(`database interview tips`),
-        i18n._(`API design interview strategies`),
-      ],
-    },
-  };
-
-  return metaMap[idea];
-}
-
-export async function generateMetadata(idea: Ideas, props: IdeaPageProps): Promise<Metadata> {
-  const lang = (await props.params).lang;
+export async function generateIdeaMetadata(props: IdeaPageProps): Promise<Metadata> {
+  const params = await props.params;
+  const idea = params.idea;
+  const lang = (params.lang || "en") as SupportedLanguage;
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+
   initLingui(supportedLang);
+
+  if (!ideas.includes(idea)) {
+    return {
+      title: "Idea Not Found",
+      description: "The requested idea does not exist.",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
 
   const i18n = getI18nInstance(supportedLang);
   const needIndex = false;
-
   const pagePath = "i";
 
   const metaInfo = getIdeaMetaInfo(idea, i18n);
@@ -115,6 +82,24 @@ export async function generateMetadata(idea: Ideas, props: IdeaPageProps): Promi
   };
 }
 
-export default async function Page(idea: Ideas, props: IdeaPageProps) {
-  return <></>;
+export async function IdeaLandingPage({
+  langParam,
+  idea,
+}: {
+  langParam: string | undefined;
+  idea: Idea;
+}) {
+  const lang = (langParam || "en") as SupportedLanguage;
+  const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
+
+  if (!ideas.includes(idea)) {
+    return <NotFoundPage lang={supportedLang} />;
+  }
+  return (
+    <html lang={supportedLang}>
+      <body>
+        {lang}-{idea}
+      </body>
+    </html>
+  );
 }
