@@ -2,8 +2,6 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { BlogPost } from "./types";
 import { getI18nInstance } from "@/appRouterI18n";
 import { ResourceCategory } from "@/common/category";
-import { Box, Link, List, ListItem, ListItemText, Stack, Typography } from "@mui/material";
-import { Markdown } from "../uiKit/Markdown/Markdown";
 import { PhrasesArticles } from "./Articles/phrases-for-an-interview";
 
 export interface BlogInfo {
