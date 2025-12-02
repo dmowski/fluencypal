@@ -1,14 +1,6 @@
-import {
-  getMetadataIcons,
-  getMetadataUrls,
-  getOpenGraph,
-  getTwitterCard,
-} from "@/features/SEO/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 import type { Metadata } from "next";
 import { SupportedLanguage, supportedLanguages } from "../Lang/lang";
-import { initLingui } from "@/initLingui";
-import { getI18nInstance } from "@/appRouterI18n";
-import { siteUrl } from "@/common/metadata";
 import { NotFoundPage } from "../NotFound/NotFoundPage";
 import { getAllInterviews } from "./interviewData";
 
@@ -20,7 +12,14 @@ export interface InterviewPageProps {
 }
 
 export async function generateInterviewStaticParams() {
-  return [];
+  const { interviews } = getAllInterviews("en");
+  return supportedLanguages
+    .map((lang: string) => {
+      return interviews.map((item) => {
+        return { id: item.id, lang };
+      });
+    })
+    .flat();
 }
 
 export async function generateInterviewMetadata(props: InterviewPageProps): Promise<Metadata> {
@@ -29,58 +28,11 @@ export async function generateInterviewMetadata(props: InterviewPageProps): Prom
   const lang = (params.lang || "en") as SupportedLanguage;
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
 
-  const allInterviews = getAllInterviews(lang);
-  const allIds = allInterviews.interviews.map((interview) => interview.id);
-  const interviewData = allInterviews.interviews.find((interview) => interview.id === id);
-  initLingui(supportedLang);
-
-  if (!interviewData) {
-    return {
-      title: "Idea Not Found",
-      description: "The requested idea does not exist.",
-      robots: {
-        index: false,
-        follow: false,
-      },
-    };
-  }
-
-  const i18n = getI18nInstance(supportedLang);
-  const needIndex = false;
-  const pagePath = "interview";
-
-  const metadataUrls = getMetadataUrls({
-    pagePath,
-    id,
-    queries: {},
-    supportedLang,
+  return generateMetadataInfo({
+    lang: supportedLang,
+    interviewId: id,
+    currentPath: "interview",
   });
-
-  return {
-    keywords: interviewData.keywords,
-    title: interviewData.title,
-    metadataBase: new URL(siteUrl),
-    description: interviewData.subTitle,
-    alternates: metadataUrls.alternates,
-    icons: getMetadataIcons(),
-    openGraph: getOpenGraph({
-      title: interviewData.title,
-      description: interviewData.subTitle,
-      ogUrl: metadataUrls.ogUrl,
-      alt: i18n._(`Prepare for the Interview`),
-    }),
-    twitter: getTwitterCard({
-      title: interviewData.title,
-      description: interviewData.subTitle,
-    }),
-    other: {
-      google: "notranslate",
-    },
-    robots: {
-      index: needIndex,
-      follow: true,
-    },
-  };
 }
 
 export async function OneInterviewLandingPage({

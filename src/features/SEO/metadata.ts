@@ -8,6 +8,7 @@ import { initLingui } from "@/initLingui";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { getBlogs } from "@/features/Blog/blogData";
 import { getLangLearnPlanLabels } from "@/features/Lang/getLabels";
+import { getAllInterviews } from "../Interview/interviewData";
 
 type Path =
   | "contacts"
@@ -22,12 +23,14 @@ type Path =
   | "scenarios"
   | "blog"
   | "interviewLanding"
+  | "interview"
   | "";
 
 interface generateMetadataInfoProps {
   lang: string;
   currentPath: Path;
   scenarioId?: string;
+  interviewId?: string;
   blogId?: string;
   category?: string;
   rolePlayId?: string;
@@ -42,6 +45,7 @@ export const generateMetadataInfo = ({
   category,
   rolePlayId,
   languageToLearn,
+  interviewId,
 }: generateMetadataInfoProps) => {
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
@@ -257,6 +261,51 @@ export const generateMetadataInfo = ({
     openGraphImageUrl = scenario?.imageSrc ? `${siteUrl}${scenario.imageSrc}` : openGraphImageUrl;
   }
 
+  if (currentPath === "interview" && !interviewId) {
+    let categoryTitle = "";
+
+    if (category) {
+      const items = getAllInterviews(supportedLang);
+      const categoryInfo = items.categoriesList.find((c) => c.categoryId === category);
+      if (!categoryInfo) {
+        needIndex = false;
+      }
+      categoryTitle = categoryInfo
+        ? " - " + categoryInfo.categoryTitle
+        : i18n._(`Unknown category`);
+    }
+
+    title =
+      i18n._(`Prepare for the Interview`) +
+      (categoryTitle ? " - " + categoryTitle : "") +
+      " | " +
+      APP_NAME;
+    description = i18n._(
+      `Prepare for your interviews with AI-powered tools that help you practice and improve your answers.`
+    );
+    keywords = [
+      i18n._(`Prepare for the Interview`),
+      i18n._(`Interview Practice`),
+      i18n._(`AI Interview Coach`),
+      i18n._(`Job Interview Preparation`),
+      i18n._(`Mock Interviews`),
+      i18n._(`Interview Tips`),
+      i18n._(`Career Advancement`),
+    ];
+  }
+  if (currentPath === "interview" && interviewId) {
+    const { interviews } = getAllInterviews(supportedLang);
+    const item = interviews.find((b) => b.id === interviewId);
+    if (!item) {
+      needIndex = false;
+    }
+
+    title = `${item?.title || "Interview not found"} - ` + i18n._(`| FluencyPal`);
+    description = item?.subTitle || "";
+    keywords = item?.keywords || [];
+    openGraphImageUrl = openGraphImageUrl;
+  }
+
   if (currentPath === "") {
     title = i18n._(`FluencyPal – AI English Speaking Practice for Fluency & Confidence`);
     description = i18n._(
@@ -274,7 +323,7 @@ export const generateMetadataInfo = ({
     ];
   }
 
-  const id = scenarioId || blogId;
+  const id = scenarioId || blogId || interviewId;
   const metadataUrls = getMetadataUrls({
     pagePath: currentPath,
     id,
