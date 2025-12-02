@@ -159,6 +159,7 @@ export const generateMetadataInfo = ({
 
   if (currentPath === "scenarios" && !scenarioId) {
     let categoryTitle = "";
+
     if (category) {
       const rolePlayScenarios = getRolePlayScenarios(supportedLang);
       const categoryInfo = rolePlayScenarios.categoriesList.find((c) => c.categoryId === category);
@@ -292,6 +293,8 @@ export const generateMetadataInfo = ({
       i18n._(`Interview Tips`),
       i18n._(`Career Advancement`),
     ];
+
+    needIndex = false;
   }
   if (currentPath === "interview" && interviewId) {
     const { interviews } = getAllInterviews(supportedLang);
@@ -304,6 +307,7 @@ export const generateMetadataInfo = ({
     description = item?.subTitle || "";
     keywords = item?.keywords || [];
     openGraphImageUrl = openGraphImageUrl;
+    needIndex = false;
   }
 
   if (currentPath === "") {
