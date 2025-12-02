@@ -276,7 +276,7 @@ export const generateMetadataInfo = ({
 
   const id = scenarioId || blogId;
   const metadataUrls = getMetadataUrls({
-    currentPath,
+    pagePath: currentPath,
     id,
     queries: {
       category,
@@ -315,13 +315,13 @@ export const generateMetadataInfo = ({
 };
 
 export function getMetadataUrls({
-  currentPath,
+  pagePath,
   id,
   queries,
   supportedLang,
 }: {
-  // examples of currentPath: contacts, pricing, practice
-  currentPath: string;
+  // examples: contacts, pricing, practice
+  pagePath: string;
 
   // like blogId, scenarioId
   id: string | undefined;
@@ -331,7 +331,7 @@ export function getMetadataUrls({
 
   supportedLang: SupportedLanguage;
 }) {
-  const pathWithId = currentPath + (id ? "/" + id : "");
+  const pathWithId = pagePath + (id ? "/" + id : "");
 
   const queryList = Object.entries(queries).map(([key, value]) =>
     value ? `${key}=` + encodeURIComponent(value) : ""
@@ -339,7 +339,10 @@ export function getMetadataUrls({
   const query = queryList.filter(Boolean).join("&");
 
   const pathWithQueries = pathWithId + (query ? "?" + query : "");
-  const alternates = generateAlternatesTags(pathWithQueries, supportedLang);
+  const alternates = generateAlternatesTags({
+    path: pathWithQueries,
+    lang: supportedLang,
+  });
   const ogUrl = alternates.languages[supportedLang || "en"];
 
   return {
@@ -411,9 +414,17 @@ export function getMetadataIcons() {
   };
 }
 
-export const generateAlternatesTags = (currentPath: string, lang: SupportedLanguage) => {
+export const generateAlternatesTags = ({
+  path,
+  lang,
+}: {
+  // Example of currentPath: contacts, blog/123, blog?category=tech
+  //  WITHOUT LANGUAGE PREFIX
+  path: string;
+  lang: SupportedLanguage;
+}) => {
   const hreflangLinks = supportedLanguages.reduce((acc, lang) => {
-    acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (currentPath ? "/" : "")}${currentPath}`;
+    acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (path ? "/" : "")}${path}`;
 
     return acc;
   }, {} as Record<SupportedLanguage, string>);
