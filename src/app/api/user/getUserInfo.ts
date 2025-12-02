@@ -66,9 +66,14 @@ export const getUserAiInfo = async (userId: string) => {
   return data;
 };
 
-export const getAllUsersWithIds = async () => {
+export const getAllUsersWithIds = async ({ limits }: { limits?: number }) => {
   const db = getDB();
-  const usersCollection = await db.collection("users").get();
+
+  const usersCollection =
+    limits === undefined
+      ? await db.collection("users").get()
+      : await db.collection("users").orderBy("lastLoginAtDateTime", "desc").limit(limits).get();
+
   const users: UserSettingsWithId[] = usersCollection.docs.map((doc) => {
     const data = doc.data() as UserSettings;
     return { id: doc.id, ...data };
