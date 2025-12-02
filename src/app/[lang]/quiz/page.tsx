@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { supportedLanguages } from "@/features/Lang/lang";
-import { generateMetadataInfo } from "@/libs/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 import { PracticeProvider } from "@/app/practiceProvider";
 import { QuizPage2 } from "@/features/Goal/Quiz/QuizPage2";
 

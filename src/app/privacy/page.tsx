@@ -1,7 +1,7 @@
 import { supportedLanguages } from "@/features/Lang/lang";
 import { PrivacyPolicy } from "@/features/Legal/PrivacyPolicy";
 import { Metadata } from "next";
-import { generateMetadataInfo } from "@/libs/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 import { Footer } from "@/features/Landing/Footer";
 import { HeaderStatic } from "@/features/Header/HeaderStatic";
 

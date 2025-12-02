@@ -2,7 +2,7 @@ import { supportedLanguages } from "@/features/Lang/lang";
 import { ConversationPage } from "@/features/Conversation/ConversationPage";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { Metadata } from "next";
-import { generateMetadataInfo } from "@/libs/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 import { PracticeProvider } from "../practiceProvider";
 import { TopOffset } from "@/features/Layout/TopOffset";
 

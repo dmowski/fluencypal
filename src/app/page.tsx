@@ -1,5 +1,5 @@
 import LandingPage from "@/features/Landing/LandingPage";
-import { generateMetadataInfo } from "@/libs/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 import { Metadata } from "next";
 
 export async function generateStaticParams() {

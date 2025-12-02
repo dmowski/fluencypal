@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PricePage } from "@/features/Landing/Price/PricePage";
 import { supportedLanguages } from "@/features/Lang/lang";
-import { generateMetadataInfo } from "@/libs/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 
 export async function generateStaticParams() {
   return supportedLanguages.map((lang: string) => ({ lang }));

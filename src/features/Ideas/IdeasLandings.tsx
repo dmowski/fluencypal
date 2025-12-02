@@ -1,4 +1,9 @@
-import { getMetadataIcons, getMetadataUrls, getOpenGraph, getTwitterCard } from "@/libs/metadata";
+import {
+  getMetadataIcons,
+  getMetadataUrls,
+  getOpenGraph,
+  getTwitterCard,
+} from "@/features/SEO/metadata";
 import type { Metadata } from "next";
 import { SupportedLanguage, supportedLanguages } from "../Lang/lang";
 import { initLingui } from "@/initLingui";

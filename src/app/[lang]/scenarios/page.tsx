@@ -4,7 +4,7 @@ import { supportedLanguages } from "@/features/Lang/lang";
 import { initLingui } from "@/initLingui";
 import { allMessages } from "@/appRouterI18n";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
-import { generateMetadataInfo } from "@/libs/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 
 interface PageProps {
   params: Promise<{ lang: string }>;

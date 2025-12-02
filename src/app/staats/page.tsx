@@ -1,6 +1,6 @@
 import { supportedLanguages } from "@/features/Lang/lang";
 import { Metadata } from "next";
-import { generateMetadataInfo } from "@/libs/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 import { PracticeProvider } from "../practiceProvider";
 import { HeaderPractice } from "@/features/Header/HeaderPractice";
 import { AdminStats } from "@/features/Analytics/AdminStats";

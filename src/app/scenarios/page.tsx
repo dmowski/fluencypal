@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ScenariosPage } from "@/features/Landing/RolePlay/ScenariosPage";
 import { supportedLanguages } from "@/features/Lang/lang";
-import { generateMetadataInfo } from "@/libs/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 
 interface PageProps {
   params: Promise<{ lang: string }>;

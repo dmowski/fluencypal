@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { supportedLanguages } from "@/features/Lang/lang";
-import { generateMetadataInfo } from "@/libs/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 import { getBlogs } from "@/features/Blog/blogData";
 import { BlogOnePage } from "@/features/Blog/BlogOnePage";
 

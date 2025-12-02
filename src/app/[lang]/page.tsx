@@ -2,7 +2,7 @@ import { supportedLanguages } from "@/features/Lang/lang";
 import LandingPage from "@/features/Landing/LandingPage";
 import { Metadata } from "next";
 import linguiConfig from "../../../lingui.config";
-import { generateMetadataInfo } from "@/libs/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 
 const notFoundMetadata: Metadata = {
   title: "Not Found",

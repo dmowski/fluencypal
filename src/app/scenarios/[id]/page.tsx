@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { ScenarioOnePage } from "@/features/Landing/RolePlay/ScenarioOnePage";
 import { supportedLanguages } from "@/features/Lang/lang";
-import { generateMetadataInfo } from "@/libs/metadata";
+import { generateMetadataInfo } from "@/features/SEO/metadata";
 
 interface ScenarioProps {
   id: string;

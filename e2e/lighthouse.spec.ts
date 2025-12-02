@@ -5,14 +5,14 @@ import type { Page } from "@playwright/test";
 test.describe("Lighthouse Audit", () => {
   // increase timeout for lighthouse audits
   test.setTimeout(120000);
-  test("Home page should have good metrics", async ({ page }: { page: Page }) => {
+  test("Home page should have good metrics (EN)", async ({ page }: { page: Page }) => {
     await page.goto("/");
 
     await playAudit({
       page,
       thresholds: {
         seo: 100,
-        performance: 80,
+        performance: 84,
         accessibility: 100,
         "best-practices": 100,
       },
