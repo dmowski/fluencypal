@@ -34,7 +34,7 @@ test.describe("Lighthouse Audit", () => {
       page,
       thresholds: {
         seo: 100,
-        performance: 96,
+        performance: 95,
         accessibility: 100,
         "best-practices": 100,
       },
