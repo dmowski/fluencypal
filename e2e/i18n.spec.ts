@@ -40,4 +40,16 @@ test.describe("Internationalization", () => {
     expect(content!.length).toBeGreaterThan(0);
     expect(content!.startsWith("Practice conversational English with FluencyPal")).toBe(true);
   });
+
+  test("Page should have description meta tag (RU)", async ({ page }) => {
+    await page.goto("/ru");
+
+    const descriptionMeta = page.locator('meta[name="description"]');
+    await expect(descriptionMeta).toHaveCount(1);
+
+    const content = await descriptionMeta.getAttribute("content");
+    expect(content).toBeTruthy();
+    expect(content!.length).toBeGreaterThan(0);
+    expect(content!.startsWith("Практикуйте разговорный английский с FluencyPal")).toBe(true);
+  });
 });
