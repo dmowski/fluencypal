@@ -1,0 +1,14 @@
+export interface InterviewCategory {
+  categoryId: string;
+  categoryTitle: string;
+  isAllResources?: boolean;
+}
+
+export interface InterviewData {
+  id: string;
+  title: string;
+  subTitle: string;
+  keywords: string[];
+
+  category: InterviewCategory;
+}
