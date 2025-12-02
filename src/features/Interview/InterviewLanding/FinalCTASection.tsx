@@ -23,9 +23,7 @@ export const FinalCTASection = () => {
               color: "white",
             }}
           >
-            {i18n._(
-              `Ready to perform better and get more job offers?`
-            )}
+            {i18n._(`Ready to perform better and get more job offers?`)}
           </Typography>
 
           <Button
@@ -43,7 +41,7 @@ export const FinalCTASection = () => {
               },
             }}
           >
-            {i18n._(`Start Your Interview Test →`)}
+            {i18n._(`Start Your Interview Test`)}
           </Button>
         </Box>
       </Container>
