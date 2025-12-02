@@ -1,4 +1,3 @@
-import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Button, Link, Stack, Typography } from "@mui/material";
 
 import { Footer } from "../Footer";
@@ -49,8 +48,6 @@ export const ScenarioOnePage = ({ id, lang }: ScenarioOnePageProps) => {
           margin: 0,
         }}
       >
-        <TalkingWaves />
-
         <Stack
           component={"main"}
           sx={{

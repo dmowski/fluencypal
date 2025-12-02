@@ -1,4 +1,3 @@
-import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Stack, Typography } from "@mui/material";
 import { Footer } from "./Footer";
 import { WelcomeScreen } from "./WelcomeScreen";
@@ -103,7 +102,6 @@ export default function LandingPage({ lang }: LandingPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <main style={{ width: "100%", margin: 0 }}>
-        <TalkingWaves />
         <Stack sx={{ alignItems: "center" }}>
           <WelcomeScreen
             getStartedTitle={i18n._(`Get Started`)}

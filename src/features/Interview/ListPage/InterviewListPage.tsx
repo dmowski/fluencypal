@@ -1,4 +1,3 @@
-import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Stack } from "@mui/material";
 import { Footer } from "../../Landing/Footer";
 import { ListInterviewIntro } from "./ListInterviewIntro";
@@ -23,8 +22,6 @@ export const InterviewListPage = async (props: ListInterviewPageProps) => {
             margin: 0,
           }}
         >
-          <TalkingWaves />
-
           <Stack
             sx={{
               alignItems: "center",

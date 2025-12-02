@@ -2,7 +2,6 @@
 
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useEffect, useState } from "react";
-import { TalkingWaves } from "../uiKit/Animations/TalkingWaves";
 import { Textarea } from "../uiKit/Input/Textarea";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { SendHorizontal, Wand, X } from "lucide-react";
@@ -125,7 +124,6 @@ Use ${fullLanguageName || "English"} language.
 
   return (
     <Stack sx={{ gap: "40px" }}>
-      <TalkingWaves inActive={isAiSpeaking} />
       <Stack
         sx={{
           alignItems: "center",

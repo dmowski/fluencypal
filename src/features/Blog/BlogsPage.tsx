@@ -1,4 +1,3 @@
-import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Stack } from "@mui/material";
 import { Footer } from "../Landing/Footer";
 import { CtaBlock } from "../Landing/ctaBlock";
@@ -25,8 +24,6 @@ export const BlogsPage = ({ selectedCategory, lang }: BlogsPageProps) => {
           margin: 0,
         }}
       >
-        <TalkingWaves />
-
         <Stack
           sx={{
             alignItems: "center",

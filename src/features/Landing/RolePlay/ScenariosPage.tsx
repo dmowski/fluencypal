@@ -1,4 +1,3 @@
-import { TalkingWaves } from "@/features/uiKit/Animations/TalkingWaves";
 import { Stack } from "@mui/material";
 
 import { Footer } from "../Footer";
@@ -27,8 +26,6 @@ export const ScenariosPage = ({ selectedCategory, lang }: ScenariosPageProps) =>
           margin: 0,
         }}
       >
-        <TalkingWaves />
-
         <Stack
           sx={{
             alignItems: "center",
