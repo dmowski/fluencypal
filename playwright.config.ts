@@ -31,18 +31,13 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-      testIgnore: /.*lighthouse\.spec\.ts/,
-    },
-    {
-      name: "lighthouse",
       use: {
         ...devices["Desktop Chrome"],
         launchOptions: {
           args: ["--remote-debugging-port=9222"],
         },
       },
-      testMatch: /.*lighthouse\.spec\.ts/,
+      testMatch: /e2e\/.*spec\.ts/,
     },
   ],
 
