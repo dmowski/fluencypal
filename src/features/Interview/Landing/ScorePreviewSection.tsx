@@ -29,11 +29,7 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
   return (
     <Stack
       sx={{
-        padding: "100px 0 300px 0",
         alignItems: "center",
-        "@media (max-width: 600px)": {
-          paddingTop: "100px",
-        },
         width: "100%",
       }}
     >
@@ -52,7 +48,6 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
             gridTemplateColumns: `4fr 3fr`,
             alignItems: "center",
             gap: "100px",
-            paddingTop: "50px",
             width: "100%",
           }}
         >

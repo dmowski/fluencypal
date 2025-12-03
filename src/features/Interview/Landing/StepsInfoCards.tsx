@@ -49,7 +49,6 @@ export const StepInfoCards = (props: InfoCardsProps) => {
   return (
     <Stack
       sx={{
-        padding: "0",
         alignItems: "center",
         "@media (max-width: 600px)": {
           paddingTop: "100px",

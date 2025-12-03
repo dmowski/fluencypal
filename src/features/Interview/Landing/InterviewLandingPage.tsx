@@ -24,7 +24,7 @@ export async function InterviewLandingPage({
     <Stack sx={{ width: "100%", margin: 0, padding: 0 }}>
       <InterviewHeader interviewId={id} lang={lang} />
       <main style={{ width: "100%", margin: 0 }}>
-        <Stack sx={{ alignItems: "center", gap: "100px", paddingBottom: "300px" }}>
+        <Stack sx={{ alignItems: "center", gap: "300px", paddingBottom: "300px" }}>
           <MainTitleSection
             label={interviewData.jobTitle}
             title={interviewData.title}
