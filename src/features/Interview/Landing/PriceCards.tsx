@@ -127,10 +127,17 @@ export const PriceCards = ({ title, subTitle, footerText, prices }: PriceCardsPr
                       left: "50%",
                       flexDirection: "row",
                       borderRadius: "20px",
-                      gap: "10px",
+                      gap: "8px",
                       alignItems: "center",
                     }}
                   >
+                    <Typography
+                      sx={{
+                        fontSize: "17px",
+                      }}
+                    >
+                      {price.badgeIcon}
+                    </Typography>
                     <Typography
                       sx={{
                         fontSize: "15px",

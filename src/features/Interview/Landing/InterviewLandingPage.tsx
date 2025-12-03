@@ -7,9 +7,8 @@ import { MainTitleSection } from "./MainTitleSection";
 import { InfoCards } from "./InfoCards";
 import { ScorePreviewSection } from "./ScorePreviewSection";
 import { StepInfoCards } from "./StepsInfoCards";
-import { ReviewCards, Review } from "./ReviewCards";
-import { PriceCards, Price } from "./PriceCards";
-import { Zap, Star, Briefcase } from "lucide-react";
+import { ReviewCards } from "./ReviewCards";
+import { PriceCards } from "./PriceCards";
 
 export async function InterviewLandingPage({
   lang,
@@ -22,59 +21,6 @@ export async function InterviewLandingPage({
   i18n: I18n;
 }) {
   // Hardcoded test data for pricing plans
-  const pricesData: Price[] = [
-    {
-      icon: Zap,
-      badge: "⚡ In a hurry? Perfect for last-minute interviews",
-      label: "1-Week Sprint",
-      priceUsd: 30,
-      description: "Get fast, intensive preparation. Fix your top weaknesses in just 7 days.",
-      points: [
-        "7 days full access",
-        "Daily AI mock interviews",
-        "Instant feedback on answers",
-        "Personalized scripts for HR & behavioral questions",
-      ],
-      buttonTitle: "Start 1-Week Sprint — $30",
-      buttonHref: "/pricing/1-week",
-    },
-    {
-      icon: Star,
-      badge: "⭐ Best for most job seekers",
-      label: "Monthly Plan",
-      priceUsd: 60,
-      priceLabel: "Only $2/day",
-      description:
-        "Consistent improvement with structured interview coaching and personalized practice.",
-      points: [
-        "Full access to all simulations",
-        "Unlimited answer reviews",
-        "CV-based answer optimization",
-        "Confidence score tracking",
-        "Salary negotiation preparation",
-      ],
-      buttonTitle: "Start Monthly Plan — $60",
-      buttonHref: "/pricing/monthly",
-      isHighlighted: true,
-    },
-    {
-      icon: Briefcase,
-      badge: "🎯 For long job searches & career growth",
-      label: "4-Month Plan",
-      priceUsd: 90,
-      description:
-        "For people preparing for multiple roles, relocating, switching careers, or targeting senior jobs.",
-      points: [
-        "4 months full access",
-        "Long-term interview strategy",
-        "Deep skill development",
-        "Role-specific answer templates",
-        "Priority feedback queue",
-      ],
-      buttonTitle: "Start 4-Month Plan — $90",
-      buttonHref: "/pricing/4-month",
-    },
-  ];
 
   return (
     <Stack sx={{ width: "100%", margin: 0, padding: 0 }}>
@@ -120,7 +66,7 @@ export async function InterviewLandingPage({
             title={"Choose your interview preparation plan"}
             subTitle={"Everything you need to stand out and get the job"}
             footerText={"All plans include instant access • No commitment • Secure payment"}
-            prices={pricesData}
+            prices={interviewData.price}
           />
         </Stack>
       </main>

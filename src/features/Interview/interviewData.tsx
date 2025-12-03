@@ -3,12 +3,15 @@ import { getI18nInstance } from "@/appRouterI18n";
 import { InterviewCategory, InterviewData } from "./types";
 import {
   Brain,
+  Briefcase,
   FileText,
   MessageSquare,
   PhoneCall,
   Sparkles,
+  Star,
   TrendingUp,
   Video,
+  Zap,
 } from "lucide-react";
 
 export interface InterviewAllData {
@@ -149,6 +152,62 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
           rate: 5,
           review:
             "The AI feedback on my CSS and JavaScript answers was spot-on. I improved my responses immediately.",
+        },
+      ],
+      price: [
+        {
+          icon: Zap,
+          badgeIcon: "⚡",
+          badge: "In a hurry? Perfect for last-minute interviews",
+          label: "1-Week Sprint",
+          priceUsd: 30,
+          description: "Get fast, intensive preparation. Fix your top weaknesses in just 7 days.",
+          points: [
+            "7 days full access",
+            "Daily AI mock interviews",
+            "Instant feedback on answers",
+            "Personalized scripts for HR & behavioral questions",
+          ],
+          buttonTitle: "Start 1-Week Sprint — $30",
+          buttonHref: "/pricing/1-week",
+        },
+        {
+          icon: Star,
+          badgeIcon: "⭐",
+          badge: "Best for most job seekers",
+          label: "Monthly Plan",
+          priceUsd: 60,
+          priceLabel: "Only $2/day",
+          description:
+            "Consistent improvement with structured interview coaching and personalized practice.",
+          points: [
+            "Full access to all simulations",
+            "Unlimited answer reviews",
+            "CV-based answer optimization",
+            "Confidence score tracking",
+            "Salary negotiation preparation",
+          ],
+          buttonTitle: "Start Monthly Plan — $60",
+          buttonHref: "/pricing/monthly",
+          isHighlighted: true,
+        },
+        {
+          icon: Briefcase,
+          badgeIcon: "🎯",
+          badge: "For long job searches & career growth",
+          label: "4-Month Plan",
+          priceUsd: 90,
+          description:
+            "For people preparing for multiple roles, relocating, switching careers, or targeting senior jobs.",
+          points: [
+            "4 months full access",
+            "Long-term interview strategy",
+            "Deep skill development",
+            "Role-specific answer templates",
+            "Priority feedback queue",
+          ],
+          buttonTitle: "Start 4-Month Plan — $90",
+          buttonHref: "/pricing/4-month",
         },
       ],
     },

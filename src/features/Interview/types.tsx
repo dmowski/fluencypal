@@ -1,4 +1,5 @@
 import { InfoCard } from "./Landing/InfoCards";
+import { Price } from "./Landing/PriceCards";
 import { Review } from "./Landing/ReviewCards";
 import { ScorePreview } from "./Landing/ScorePreviewSection";
 import { StepInfoCard } from "./Landing/StepsInfoCards";
@@ -23,4 +24,5 @@ export interface InterviewData {
   whatUserGetAfterFirstTest: string[];
   scorePreview: ScorePreview;
   reviewsData: Review[];
+  price: Price[];
 }
