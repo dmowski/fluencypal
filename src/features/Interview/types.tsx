@@ -1,8 +1,8 @@
-import { InfoCard } from "./Landing/InfoCards";
-import { Price } from "./Landing/PriceCards";
-import { Review } from "./Landing/ReviewCards";
-import { ScorePreview } from "./Landing/ScorePreviewSection";
-import { StepInfoCard } from "./Landing/StepsInfoCards";
+import { InfoCard } from "./Landing/components/InfoCards";
+import { Price } from "./Landing/components/PriceCards";
+import { Review } from "./Landing/components/ReviewCards";
+import { ScorePreview } from "./Landing/components/ScorePreviewSection";
+import { StepInfoCard } from "./Landing/components/StepsInfoCards";
 
 export interface InterviewCategory {
   categoryId: string;

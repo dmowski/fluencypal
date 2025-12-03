@@ -2,15 +2,15 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { InterviewData } from "../types";
 import { I18n } from "@lingui/core";
 import { Stack } from "@mui/material";
-import { InterviewHeader } from "./InterviewHeader";
-import { MainTitleSection } from "./MainTitleSection";
-import { InfoCards } from "./InfoCards";
-import { ScorePreviewSection } from "./ScorePreviewSection";
-import { StepInfoCards } from "./StepsInfoCards";
-import { ReviewCards } from "./ReviewCards";
-import { PriceCards } from "./PriceCards";
+import { InterviewHeader } from "./components/InterviewHeader";
+import { MainTitleSection } from "./components/MainTitleSection";
+import { InfoCards } from "./components/InfoCards";
+import { ScorePreviewSection } from "./components/ScorePreviewSection";
+import { StepInfoCards } from "./components/StepsInfoCards";
+import { ReviewCards } from "./components/ReviewCards";
+import { PriceCards } from "./components/PriceCards";
 
-export async function InterviewLandingPage({
+export async function InterviewLanding({
   lang,
   id,
   interviewData,

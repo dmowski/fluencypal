@@ -1,10 +1,10 @@
 import { generateMetadataInfo } from "@/features/SEO/metadata";
 import type { Metadata } from "next";
-import { SupportedLanguage, supportedLanguages } from "../Lang/lang";
-import { NotFoundPage } from "../NotFound/NotFoundPage";
-import { getAllInterviews } from "./interviewData";
+import { SupportedLanguage, supportedLanguages } from "../../Lang/lang";
+import { NotFoundPage } from "../../NotFound/NotFoundPage";
+import { getAllInterviews } from "../data";
 import { getI18nInstance } from "@/appRouterI18n";
-import { InterviewLandingPage } from "./Landing/InterviewLandingPage";
+import { InterviewLanding } from "./InterviewLanding";
 
 export interface InterviewPageProps {
   params: Promise<{
@@ -37,7 +37,7 @@ export async function generateInterviewMetadata(props: InterviewPageProps): Prom
   });
 }
 
-export async function OneInterviewLandingPage({
+export async function InterviewLandingPageNext({
   langParam,
   id,
 }: {
@@ -54,7 +54,7 @@ export async function OneInterviewLandingPage({
   }
 
   const content = (
-    <InterviewLandingPage i18n={i18n} lang={supportedLang} id={id} interviewData={interviewData} />
+    <InterviewLanding i18n={i18n} lang={supportedLang} id={id} interviewData={interviewData} />
   );
 
   if (lang === "en") {

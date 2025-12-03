@@ -8,7 +8,7 @@ import { initLingui } from "@/initLingui";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { getBlogs } from "@/features/Blog/blogData";
 import { getLangLearnPlanLabels } from "@/features/Lang/getLabels";
-import { getAllInterviews } from "../Interview/interviewData";
+import { getAllInterviews } from "../Interview/data";
 
 type Path =
   | "contacts"
