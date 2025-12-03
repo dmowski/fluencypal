@@ -281,8 +281,6 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
     rule: i18n._(`Rule`),
   };
 
-  const countOfLanguages = supportedLanguagesToLearn.length;
-
   return (
     <Stack
       sx={{
@@ -426,7 +424,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
             description={i18n._(
               `Fill out a onboarding quiz to help FluencyPal understand your goals and preferences.`
             )}
-            actionButtonPostfixLabel={<Trans>{`${countOfLanguages} languages to practice`}</Trans>}
+            actionButtonPostfixLabel={i18n._(`16 languages to practice`)}
             actionButtonLabel={i18n._(`Start Test`)}
             actionButtonHref={`${getUrlStart(lang)}quiz`}
           />

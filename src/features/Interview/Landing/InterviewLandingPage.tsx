@@ -3,7 +3,6 @@ import { InterviewData } from "../types";
 import { I18n } from "@lingui/core";
 import { Stack } from "@mui/material";
 import { WelcomeScreen } from "@/features/Landing/WelcomeScreen";
-import { HeaderStatic } from "@/features/Header/HeaderStatic";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { PlanLandingBlock } from "@/features/Landing/PlanLandingBlock";
 import { InterviewHeader } from "./InterviewHeader";
@@ -21,7 +20,7 @@ export async function InterviewLandingPage({
 }) {
   return (
     <>
-      <InterviewHeader logoHref={""} links={[]} buttons={[]} />
+      <InterviewHeader logoHref={""} links={[]} buttons={[]} i18n={i18n} lang={lang} />
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center" }}>
           <WelcomeScreen
