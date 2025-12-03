@@ -1,5 +1,9 @@
 import { Stack, Typography } from "@mui/material";
-import { maxContentWidth, subTitleFontStyle, titleFontStyle } from "../../Landing/landingSettings";
+import {
+  maxContentWidth,
+  subTitleFontStyle,
+  titleFontStyle,
+} from "../../../Landing/landingSettings";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 

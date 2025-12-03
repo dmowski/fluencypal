@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { InterviewData } from "../types";
+import { InterviewData } from "../../types";
 
 interface InterviewCardProps {
   item: InterviewData;

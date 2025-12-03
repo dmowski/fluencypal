@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import { Footer } from "../../Landing/Footer";
-import { ListInterviewIntro } from "./ListInterviewIntro";
-import { ListInterview } from "./ListInterview";
+import { ListInterviewIntro } from "./components/ListInterviewIntro";
+import { ListInterview } from "./components/ListInterview";
 import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { HeaderStatic } from "../../Header/HeaderStatic";
 import { ListInterviewPageProps } from "./metadata";

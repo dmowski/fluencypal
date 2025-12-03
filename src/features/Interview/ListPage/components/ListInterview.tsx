@@ -1,10 +1,10 @@
 import { Link, Stack, Typography } from "@mui/material";
-import { maxContentWidth } from "../../Landing/landingSettings";
+import { maxContentWidth } from "../../../Landing/landingSettings";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { InterviewCard } from "./InterviewCard";
-import { getAllInterviews } from "../data";
+import { getAllInterviews } from "../../data";
 
 interface ListInterviewProps {
   selectedCategoryId?: string;
