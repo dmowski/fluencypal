@@ -50,7 +50,7 @@ export const InfoCards = (props: InfoCardsProps) => {
   return (
     <Stack
       sx={{
-        padding: "300px 0 300px 0",
+        padding: "300px 0 100px 0",
         alignItems: "center",
         "@media (max-width: 600px)": {
           paddingTop: "100px",
