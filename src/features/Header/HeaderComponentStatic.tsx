@@ -1,3 +1,4 @@
+"use client";
 import { BookMarked, Gem, MessageCircleQuestion, Rss } from "lucide-react";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { HeaderUI } from "./HeaderUI";
