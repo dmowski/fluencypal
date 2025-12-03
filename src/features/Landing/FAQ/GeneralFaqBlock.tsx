@@ -6,13 +6,14 @@ import { titleFontStyle } from "../landingSettings";
 interface GeneralFaqBlockProps {
   items: FaqItemInfo[];
   title: string;
+  padding?: string;
 }
-export const GeneralFaqBlock = ({ items, title }: GeneralFaqBlockProps) => {
+export const GeneralFaqBlock = ({ items, title, padding }: GeneralFaqBlockProps) => {
   return (
     <Stack
       sx={{
         width: "100%",
-        padding: "120px 0 100px 0",
+        padding: padding || "120px 0 100px 0",
         alignItems: "center",
         justifyContent: "center",
         gap: "100px",

@@ -300,7 +300,7 @@ msgstr "คำชมเชยที่เป็นมิตรเพื่อผ
 msgid "A polite and professional greeting."
 msgstr "การทักทายที่สุภาพและมืออาชีพ"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:54
+#: src/features/Interview/Landing/InterviewLanding.tsx:64
 #. js-lingui-explicit-id
 msgid "A proven method that delivers measurable results"
 msgstr "วิธีการที่พิสูจน์แล้วว่ามีผลลัพธ์ที่สามารถวัดได้"
@@ -340,6 +340,16 @@ msgstr ""
 "Absolutely! FluencyPal "
 "รองรับหลายภาษาและปรับการสนทนาตามภาษาที่คุณเลือกและระดับความสามารถของคุณ "
 "ภาษาในรายการมีดังนี้:"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:155
+#. js-lingui-explicit-id
+msgid ""
+"Absolutely. There are no long-term commitments. You can cancel your "
+"subscription at any time, and you'll retain access until the end of your "
+"current billing period."
+msgstr ""
+"แน่นอน ไม่มีข้อผูกมัดระยะยาว คุณสามารถยกเลิกการสมัครสมาชิกได้ทุกเมื่อ "
+"และคุณจะยังสามารถเข้าถึงได้จนกว่าจะสิ้นสุดรอบการเรียกเก็บเงินปัจจุบันของคุณ"
 
 #: src/features/Landing/PlanLandingBlock.tsx:232
 #. js-lingui-explicit-id
@@ -523,7 +533,7 @@ msgstr "บล็อกทั้งหมด"
 msgid "All Interviews"
 msgstr "การสัมภาษณ์ทั้งหมด"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:67
+#: src/features/Interview/Landing/InterviewLanding.tsx:82
 #. js-lingui-explicit-id
 msgid "All plans include instant access • No commitment • Secure payment"
 msgstr "แผนทั้งหมดรวมถึงการเข้าถึงทันที • ไม่มีข้อผูกมัด • การชำระเงินที่ปลอดภัย"
@@ -904,6 +914,16 @@ msgstr "ฉันสามารถซื้อเครดิตเป็นจ
 msgid "Can I cancel anytime?"
 msgstr "ฉันสามารถยกเลิกได้เมื่อไหร่ก็ได้หรือไม่?"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:152
+#. js-lingui-explicit-id
+msgid "Can I cancel my subscription at any time?"
+msgstr "ฉันสามารถยกเลิกการสมัครสมาชิกของฉันได้ทุกเมื่อหรือไม่?"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:122
+#. js-lingui-explicit-id
+msgid "Can I practice for specific companies or positions?"
+msgstr "ฉันสามารถฝึกฝนสำหรับบริษัทหรือตำแหน่งเฉพาะได้หรือไม่?"
+
 #: src/features/Landing/LandingPage.tsx:61
 #: src/features/Landing/LandingPage.tsx:192
 #. js-lingui-explicit-id
@@ -1027,7 +1047,7 @@ msgstr "แผนการเรียนภาษาจีน"
 msgid "Choose Site Language"
 msgstr "เลือกภาษาของเว็บไซต์"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:65
+#: src/features/Interview/Landing/InterviewLanding.tsx:80
 #. js-lingui-explicit-id
 msgid "Choose your interview preparation plan"
 msgstr "เลือกแผนการเตรียมตัวสำหรับการสัมภาษณ์ของคุณ"
@@ -1103,6 +1123,7 @@ msgid "Contact me"
 msgstr "ติดต่อฉัน"
 
 #: src/features/Header/HeaderStatic.tsx:18
+#: src/features/Interview/Landing/components/Footer.tsx:85
 #: src/features/Interview/Landing/components/InterviewHeader.tsx:31
 #: src/features/Landing/Contact/ContactsPage.tsx:94
 #: src/features/Landing/Footer.tsx:88
@@ -2089,7 +2110,7 @@ msgstr ""
 msgid "Everything in Free, plus:"
 msgstr "ทุกอย่างในแพ็คเกจฟรี บวกกับ:"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:66
+#: src/features/Interview/Landing/InterviewLanding.tsx:81
 #. js-lingui-explicit-id
 msgid "Everything you need to stand out and get the job"
 msgstr "ทุกสิ่งที่คุณต้องการเพื่อโดดเด่นและได้งาน"
@@ -2167,6 +2188,7 @@ msgid "Failed to send feedback. Please try again later."
 msgstr "การส่งข้อเสนอแนะล้มเหลว โปรดลองใหม่อีกครั้งในภายหลัง"
 
 #: src/features/Interview/Landing/components/InterviewHeader.tsx:42
+#: src/features/Interview/Landing/InterviewLanding.tsx:89
 #: src/features/Landing/LandingPage.tsx:179
 #: src/features/Landing/Price/PricePage.tsx:306
 #. js-lingui-explicit-id
@@ -2777,6 +2799,11 @@ msgstr "การสนทนาเช็คอินโรงแรม"
 msgid "How do daily tasks help me improve?"
 msgstr "การทำงานประจำวันช่วยให้ฉันพัฒนาตนเองได้อย่างไร?"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:92
+#. js-lingui-explicit-id
+msgid "How does the interview preparation platform work?"
+msgstr "แพลตฟอร์มการเตรียมตัวสัมภาษณ์ทำงานอย่างไร?"
+
 #: src/features/Landing/PlanLandingBlock.tsx:349
 #. js-lingui-explicit-id
 msgid "How It Works"
@@ -2791,6 +2818,11 @@ msgstr "วิธีการทำงาน"
 #. js-lingui-explicit-id
 msgid "How it works:"
 msgstr "วิธีการทำงาน:"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:112
+#. js-lingui-explicit-id
+msgid "How long does it take to see improvement?"
+msgstr "ใช้เวลานานแค่ไหนจึงจะเห็นการพัฒนา?"
 
 #: src/features/Usage/PaymentModal.tsx:207
 #. js-lingui-explicit-id
@@ -3449,7 +3481,7 @@ msgstr ""
 "ลงมือเริ่มต้นร่วมแนวคิดเร่งด่วนที่ง่ายๆนี้ไปในวันนี้และเพิ่มประสิทธิภาพในการ"
 "สื่อสารทางธุรกิจของคุณด้วย FluencyPal"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:45
+#: src/features/Interview/Landing/InterviewLanding.tsx:55
 #. js-lingui-explicit-id
 msgid "In less then 5 minutes, you'll get:"
 msgstr "ในเวลาน้อยกว่า 5 นาที คุณจะได้รับ:"
@@ -3871,6 +3903,11 @@ msgstr "คำศัพท์สำหรับการสัมภาษณ์
 msgid "Introduction: Small Talk with the Interviewer"
 msgstr "บทนำ: การคุยเล่นกับผู้สัมภาษณ์"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:142
+#. js-lingui-explicit-id
+msgid "Is there a free trial available?"
+msgstr "มีช่วงทดลองใช้งานฟรีหรือไม่?"
+
 #: src/features/Interview/data.tsx:40
 #. js-lingui-explicit-id
 msgid "IT & Software Development"
@@ -3927,7 +3964,7 @@ msgstr "เคล็ดลับสำหรับสัมภาษณ์งา
 msgid "job interview tips"
 msgstr "เคล็ดลับการสัมภาษณ์งาน"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:60
+#: src/features/Interview/Landing/InterviewLanding.tsx:70
 #. js-lingui-explicit-id
 msgid "Join thousands who transformed their interview performance"
 msgstr "เข้าร่วมกับผู้คนหลายพันที่ได้เปลี่ยนแปลงประสิทธิภาพการสัมภาษณ์ของตนเอง"
@@ -4404,6 +4441,18 @@ msgstr ""
 "สัมภาษณ์ส่วนใหญ่จะรวมถึงคำถามคลาสสิกเกี่ยวกับ \"จุดแข็งและจุดอ่อน\" "
 "การจัดการเรื่องนี้ได้ดีในภาษาอังกฤษเป็นเรื่องที่สำคัญเป็นพิเศษ"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:115
+#. js-lingui-explicit-id
+msgid ""
+"Most users report noticeable improvement within 1-2 weeks of consistent "
+"practice. Our data shows that candidates who complete at least 10 practice "
+"sessions increase their interview success rate by up to 60%."
+msgstr ""
+"ผู้ใช้ส่วนใหญ่รายงานว่ามีการพัฒนาที่เห็นได้ชัดภายใน 1-2 "
+"สัปดาห์ของการฝึกฝนอย่างสม่ำเสมอ "
+"ข้อมูลของเราแสดงให้เห็นว่าผู้ที่เข้าร่วมการฝึกฝนอย่างน้อย 10 "
+"ครั้งเพิ่มอัตราความสำเร็จในการสัมภาษณ์ได้ถึง 60%"
+
 #: src/features/Goal/Quiz/AboutYourselfList.tsx:24
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
@@ -4826,6 +4875,18 @@ msgstr "ภาษาอื่นๆ"
 #. js-lingui-explicit-id
 msgid "Other useful strengths:"
 msgstr "คุณสมบัติที่มีประโยชน์อื่น ๆ:"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:95
+#. js-lingui-explicit-id
+msgid ""
+"Our AI-powered platform simulates real interview scenarios tailored to your "
+"target role. You'll receive personalized questions, instant feedback on "
+"your answers, and detailed performance analytics to track your improvement."
+msgstr ""
+"แพลตฟอร์มที่ขับเคลื่อนด้วย AI "
+"ของเราจำลองสถานการณ์การสัมภาษณ์จริงที่ปรับให้เข้ากับบทบาทเป้าหมายของคุณ "
+"คุณจะได้รับคำถามที่ปรับแต่งเฉพาะบุคคล ข้อเสนอแนะในทันทีเกี่ยวกับคำตอบของคุณ "
+"และการวิเคราะห์ประสิทธิภาพอย่างละเอียดเพื่อติดตามความก้าวหน้าของคุณ"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
 #. js-lingui-explicit-id
@@ -5288,6 +5349,7 @@ msgid "Previous questions"
 msgstr "คำถามก่อนหน้านี้"
 
 #: src/features/Header/HeaderStatic.tsx:19
+#: src/features/Interview/Landing/components/Footer.tsx:88
 #: src/features/Interview/Landing/components/InterviewHeader.tsx:36
 #: src/features/Landing/Footer.tsx:94
 #: src/features/Landing/Price/PricePage.tsx:94
@@ -5309,6 +5371,7 @@ msgstr "นโยบายความเป็นส่วนตัว"
 #: src/features/Auth/AuthWall.tsx:300
 #: src/features/Goal/GoalQuestions.tsx:65
 #: src/features/Header/NeedHelpModal.tsx:194
+#: src/features/Interview/Landing/components/Footer.tsx:149
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
@@ -5466,6 +5529,11 @@ msgstr ""
 msgid "Read the text"
 msgstr "อ่านข้อความ"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:164
+#. js-lingui-explicit-id
+msgid "Ready to ace your next interview?"
+msgstr "พร้อมที่จะประสบความสำเร็จในการสัมภาษณ์ครั้งต่อไปของคุณหรือยัง?"
+
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:467
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
@@ -5486,12 +5554,12 @@ msgstr "พร้อมแล้วหรือยัง?"
 msgid "Real interview simulation"
 msgstr "การจำลองสัมภาษณ์จริง"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:38
+#: src/features/Interview/Landing/InterviewLanding.tsx:47
 #. js-lingui-explicit-id
 msgid "Real outcomes that transform your interview performance"
 msgstr "ผลลัพธ์จริงที่เปลี่ยนแปลงการแสดงของคุณในการสัมภาษณ์"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:59
+#: src/features/Interview/Landing/InterviewLanding.tsx:69
 #. js-lingui-explicit-id
 msgid "Real people. Real job offers."
 msgstr "คนจริง ข้อเสนองานจริง"
@@ -6057,7 +6125,7 @@ msgid "Start a conversation to get one."
 msgstr "เริ่มต้นการสนทนาเพื่อที่จะได้รับหนึ่งอัน۔"
 
 #: src/features/Interview/Landing/components/InterviewHeader.tsx:49
-#: src/features/Interview/Landing/InterviewLanding.tsx:39
+#: src/features/Interview/Landing/InterviewLanding.tsx:48
 #. js-lingui-explicit-id
 msgid "Start Free Trial"
 msgstr "เริ่มทดลองใช้ฟรี"
@@ -6095,6 +6163,11 @@ msgstr "เริ่มฝึกฝน"
 msgid "Start Practicing"
 msgstr "เริ่มฝึกฝน"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:165
+#. js-lingui-explicit-id
+msgid "Start Practicing Now"
+msgstr "เริ่มฝึกฝนเลยตอนนี้"
+
 #: src/features/Landing/LandingPage.tsx:111
 #. js-lingui-explicit-id
 msgid "Start Speaking"
@@ -6110,13 +6183,13 @@ msgstr "เริ่มฝึกพูด"
 msgid "Start Talking"
 msgstr "เริ่มพูด"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:47
+#: src/features/Interview/Landing/InterviewLanding.tsx:57
 #: src/features/Landing/PlanLandingBlock.tsx:428
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "เริ่มทดสอบ"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:34
+#: src/features/Interview/Landing/InterviewLanding.tsx:42
 #. js-lingui-explicit-id
 msgid "Start Your Interview Test"
 msgstr "เริ่มการทดสอบสัมภาษณ์ของคุณ"
@@ -6384,7 +6457,7 @@ msgstr "ภาษาของระบบ"
 msgid "Tailor AI interactions to fit your needs"
 msgstr "ปรับแต่งการโต้ตอบของ AI ให้เหมาะกับความต้องการของคุณ"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:44
+#: src/features/Interview/Landing/InterviewLanding.tsx:54
 #. js-lingui-explicit-id
 msgid "Take the Interview Readiness Test"
 msgstr "ทำแบบทดสอบความพร้อมในการสัมภาษณ์"
@@ -6455,6 +6528,7 @@ msgstr "ข้อกำหนดและเงื่อนไข"
 #: src/features/Auth/AuthWall.tsx:306
 #: src/features/Goal/GoalQuestions.tsx:69
 #: src/features/Header/NeedHelpModal.tsx:181
+#: src/features/Interview/Landing/components/Footer.tsx:139
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Legal/TermsOfUse.tsx:13
@@ -6931,6 +7005,17 @@ msgstr ""
 msgid "We process your voice using AI"
 msgstr "เราประมวลผลเสียงของคุณโดยใช้ AI"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:105
+#. js-lingui-explicit-id
+msgid ""
+"We support various interview formats including behavioral interviews, "
+"technical interviews, case studies, and role-specific scenarios across "
+"multiple industries and job levels."
+msgstr ""
+"เรารองรับรูปแบบการสัมภาษณ์ที่หลากหลาย รวมถึงการสัมภาษณ์เชิงพฤติกรรม "
+"การสัมภาษณ์เชิงเทคนิค การศึกษาเป็นกรณีศึกษา "
+"และสถานการณ์เฉพาะบทบาทงานในหลายๆ อุตสาหกรรมและระดับตำแหน่งงาน"
+
 #: src/features/Auth/AuthWall.tsx:224
 #. js-lingui-explicit-id
 msgid "We use cookies to enhance your experience"
@@ -6987,6 +7072,11 @@ msgstr "FluencyPal คืออะไร?"
 msgid "What is our daily goal?"
 msgstr "คืออะไรคือเป้าหมายของเราในแต่ละวัน?"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:132
+#. js-lingui-explicit-id
+msgid "What kind of feedback will I receive?"
+msgstr "ฉันจะได้รับคำติชมแบบไหน?"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:68
 #. js-lingui-explicit-id
 msgid "What language do you speak"
@@ -7003,6 +7093,11 @@ msgstr "โหมดการเรียนรู้อะไรบ้างท
 msgid "What one hour means?"
 msgstr "หมายความว่าอะไรคือหนึ่งชั่วโมง?"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:102
+#. js-lingui-explicit-id
+msgid "What types of interviews can I practice for?"
+msgstr "ประเภทของการสัมภาษณ์ที่ฉันสามารถฝึกฝนได้คืออะไร?"
+
 #: src/features/Conversation/ConversationCanvas2.tsx:459
 #. js-lingui-explicit-id
 msgid "What was great:"
@@ -7017,7 +7112,7 @@ msgstr "เราต้องการอะไรจากคุณ?"
 msgid "What you get with FluencyPal"
 msgstr "สิ่งที่คุณจะได้รับจาก FluencyPal"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:37
+#: src/features/Interview/Landing/InterviewLanding.tsx:46
 #. js-lingui-explicit-id
 msgid "What you will achieve"
 msgstr "สิ่งที่คุณจะบรรลุ"
@@ -7032,7 +7127,7 @@ msgstr "อะไรบ้างที่รวมอยู่ในนั้น
 msgid "What’s included in my subscription?"
 msgstr "อะไรที่รวมอยู่ในการสมัครสมาชิกของฉัน?"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:53
+#: src/features/Interview/Landing/InterviewLanding.tsx:63
 #. js-lingui-explicit-id
 msgid "Why candidates improve so quickly"
 msgstr "ทำไมนักเรียนถึงพัฒนาได้เร็ว"
@@ -7147,6 +7242,17 @@ msgstr ""
 "ใช่! เรามีส่วนลดเมื่อซื้อแพ็กเกจเครดิตขนาดใหญ่ "
 "ติดต่อฉันก่อนที่คุณจะซื้อและฉันจะให้ส่วนลดกับคุณ"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:125
+#. js-lingui-explicit-id
+msgid ""
+"Yes! You can customize your practice sessions based on specific job titles, "
+"companies, and industries. Our AI adapts questions to match the "
+"interviewing style of your target employers."
+msgstr ""
+"ใช่! คุณสามารถปรับแต่งเซสชันการฝึกของคุณได้ตามตำแหน่งงานเฉพาะ บริษัท "
+"และอุตสาหกรรม เราใช้ AI "
+"ที่ปรับคำถามให้เข้ากับรูปแบบการสัมภาษณ์ของนายจ้างเป้าหมายของคุณ"
+
 #: src/features/Header/NeedHelpModal.tsx:241
 #. js-lingui-explicit-id
 msgid "Yes, Delete account"
@@ -7156,6 +7262,18 @@ msgstr "ใช่, ลบบัญชี"
 #. js-lingui-explicit-id
 msgid "Yes, I am ready"
 msgstr "ใช่ ฉันพร้อมแล้ว"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:145
+#. js-lingui-explicit-id
+msgid ""
+"Yes, you can start with our free trial that includes access to basic "
+"interview scenarios and limited feedback. Upgrade anytime to unlock "
+"unlimited practice sessions and advanced features."
+msgstr ""
+"ใช่ "
+"คุณสามารถเริ่มต้นด้วยการทดลองใช้งานฟรีที่รวมถึงการเข้าถึงสถานการณ์สัมภาษณ์พื"
+"้นฐานและข้อเสนอแนะที่จำกัด "
+"อัปเกรดได้ทุกเมื่อเพื่อปลดล็อกการฝึกฝนแบบไม่จำกัดและฟีเจอร์ขั้นสูง"
 
 #: src/features/Landing/Price/PricePage.tsx:340
 #. js-lingui-explicit-id
@@ -7258,6 +7376,17 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "คุณจะได้รับสิทธิ์การเข้าถึงเต็มรูปแบบ 3 วันฟรี"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:135
+#. js-lingui-explicit-id
+msgid ""
+"You'll get comprehensive feedback including clarity scores, communication "
+"analysis, content quality assessment, suggested improvements, and "
+"comparison with best practices for your industry."
+msgstr ""
+"คุณจะได้รับคำติชมที่ครอบคลุมรวมถึงคะแนนความชัดเจน การวิเคราะห์การสื่อสาร "
+"การประเมินคุณภาพเนื้อหา ข้อเสนอแนะในการปรับปรุง "
+"และการเปรียบเทียบกับแนวทางปฏิบัติที่ดีที่สุดสำหรับอุตสาหกรรมของคุณ"
 
 #: src/features/Usage/PayWall.tsx:76
 #. js-lingui-explicit-id

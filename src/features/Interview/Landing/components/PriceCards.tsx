@@ -46,6 +46,7 @@ const iconConfigs = [
 export const PriceCards = ({ title, subTitle, footerText, prices }: PriceCardsProps) => {
   return (
     <Stack
+      id="pricing"
       sx={{
         padding: "0",
         alignItems: "center",
