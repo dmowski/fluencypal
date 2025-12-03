@@ -1,4 +1,5 @@
 import { InfoCard } from "./Landing/InfoCards";
+import { ScorePreview } from "./Landing/ScorePreviewSection";
 
 export interface InterviewCategory {
   categoryId: string;
@@ -15,4 +16,7 @@ export interface InterviewData {
 
   category: InterviewCategory;
   infoCards: InfoCard[];
+
+  whatUserGetAfterFirstTest: string[];
+  scorePreview: ScorePreview;
 }

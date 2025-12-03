@@ -40,30 +40,11 @@ export async function InterviewLandingPage({
           />
           <ScorePreviewSection
             title={"Take the Interview Readiness Test"}
-            subtitle={"In 2 minutes, you'll get:"}
-            infoList={[
-              "Personalized Interview Readiness Score",
-              "Detailed feedback on your strengths and weaknesses",
-              "Actionable tips to improve your skills",
-            ]}
+            subtitle={"In less then 5 minutes, you'll get:"}
+            infoList={interviewData.whatUserGetAfterFirstTest}
             buttonTitle={"Start Test"}
             buttonHref={"/test"}
-            scorePreview={{
-              label: "Interview Readiness Score",
-              totalScore: 85,
-              description:
-                "Strong knowledge of TypeScript and Angular.js. It might be worth polishing Soft Skills.",
-
-              buttonTitle: "Get My Score",
-              buttonHref: "/test",
-
-              scoreMetrics: [
-                { title: "Angular.js knowledge", score: 85 },
-                { title: "Coding Skills", score: 90 },
-                { title: "Problem Solving", score: 80 },
-                { title: "Communication", score: 25 },
-              ],
-            }}
+            scorePreview={interviewData.scorePreview}
           />
         </Stack>
       </main>

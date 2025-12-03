@@ -60,6 +60,26 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
           ),
         },
       ],
+      whatUserGetAfterFirstTest: [
+        i18n._("Personalized Interview Readiness Score"),
+        i18n._("Technical analysis on system design and architecture answers"),
+        i18n._("Leadership competency assessment with behavioral response feedback"),
+        i18n._("Framework-specific insights (React, Vue, Angular)"),
+        i18n._("Strategic action plan to address gaps in frontend architecture knowledge"),
+      ],
+      scorePreview: {
+        label: "Interview Readiness Score",
+        totalScore: 85,
+        description:
+          "Strong knowledge of TypeScript and Angular.js. It might be worth polishing Soft Skills.",
+
+        scoreMetrics: [
+          { title: "Angular.js knowledge", score: 85 },
+          { title: "Coding Skills", score: 90 },
+          { title: "Problem Solving", score: 80 },
+          { title: "Communication", score: 25 },
+        ],
+      },
     },
 
     /*{

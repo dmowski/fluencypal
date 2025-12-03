@@ -8,8 +8,6 @@ export interface ScoreMetric {
 
 export interface ScorePreview {
   totalScore: number;
-  buttonTitle: string;
-  buttonHref: string;
   label: string;
   description: string;
   scoreMetrics: ScoreMetric[];
@@ -51,8 +49,8 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
         <Stack
           sx={{
             display: "grid",
-            gridTemplateColumns: `4fr 4fr`,
-            //alignItems: "center",
+            gridTemplateColumns: `4fr 3fr`,
+            alignItems: "center",
             gap: "100px",
             paddingTop: "50px",
             width: "100%",
@@ -175,22 +173,6 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
                     </Stack>
                   ))}
                 </Stack>
-
-                <Button
-                  href={props.scorePreview.buttonHref}
-                  variant="contained"
-                  size="large"
-                  color="primary"
-                  sx={{
-                    marginTop: "20px",
-                    borderRadius: "48px",
-                    fontSize: "16px",
-                    padding: "6px 46px",
-                    backgroundColor: "#FFF",
-                  }}
-                >
-                  {props.scorePreview.buttonTitle}
-                </Button>
               </Stack>
             </Stack>
           </Stack>
@@ -198,7 +180,6 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
             sx={{
               gap: "10px",
               alignItems: "flex-start",
-              paddingTop: "20px",
             }}
           >
             <Typography
@@ -218,7 +199,8 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
             <Stack
               sx={{
                 marginTop: "30px",
-                gap: "25px",
+                gap: "20px",
+                maxWidth: "550px",
               }}
             >
               {props.infoList.map((info, index) => (
@@ -226,11 +208,11 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
                   key={index}
                   sx={{
                     flexDirection: "row",
-                    gap: "10px",
+                    gap: "20px",
                     alignItems: "center",
                   }}
                 >
-                  <BadgeCheck color="#60A5FA" size={"20px"} />
+                  <BadgeCheck color="#60A5FA" size={"30px"} />
                   <Typography key={index} variant="body2" sx={{ fontSize: "16px" }}>
                     {info}
                   </Typography>
