@@ -4,6 +4,8 @@ import { I18n } from "@lingui/core";
 import { Stack } from "@mui/material";
 import { InterviewHeader } from "./InterviewHeader";
 import { MainTitleSection } from "./MainTitleSection";
+import { InfoCards } from "./InfoCards";
+import { Info, MessageSquare, PhoneCall, Sparkles, TrendingUp } from "lucide-react";
 
 export async function InterviewLandingPage({
   lang,
@@ -27,6 +29,34 @@ export async function InterviewLandingPage({
             subtitle={interviewData.subTitle}
             buttonHref={"/practice"}
             buttonTitle={"Start Your Interview Test"}
+          />
+          <InfoCards
+            title={"What you will achieve"}
+            subtitle={"Real outcomes that transform your interview performance"}
+            buttonTitle={"Start Your Interview Test"}
+            buttonHref={"/test"}
+            cards={[
+              {
+                icon: MessageSquare,
+                title: "Strong, structured answers",
+                description: "Stop rambling or guessing. You'll know exactly what to say.",
+              },
+              {
+                icon: Sparkles,
+                title: "Confidence & presence",
+                description: "Perform calmly under pressure and make a strong first impression.",
+              },
+              {
+                icon: PhoneCall,
+                title: "More interview invites",
+                description: "Better preparation = better interviews = more callbacks.",
+              },
+              {
+                icon: TrendingUp,
+                title: "Higher salary opportunities",
+                description: "A strong interview performance increases negotiating power.",
+              },
+            ]}
           />
         </Stack>
       </main>
