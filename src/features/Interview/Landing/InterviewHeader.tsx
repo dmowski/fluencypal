@@ -16,6 +16,6 @@ export interface HeaderProps {
 }
 
 /** Interview Landing Header */
-export const Header = ({}: HeaderProps) => {
+export const InterviewHeader = ({}: HeaderProps) => {
   return <></>;
 };
