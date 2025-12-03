@@ -2,6 +2,7 @@
 import { BookMarked, Gem, MessageCircleQuestion, Rss } from "lucide-react";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { HeaderUI } from "./HeaderUI";
+import { getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
 
 export interface HeaderStaticProps {
   lang: SupportedLanguage;
@@ -58,7 +59,7 @@ export function HeaderComponentStatic({
           isSolid: true,
         },
       ]}
-      logoHref={"/"}
+      logoHref={`${getUrlStartWithoutLastSlash(lang)}`}
     />
   );
 }

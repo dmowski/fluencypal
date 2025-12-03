@@ -1,28 +1,30 @@
-import { HeaderComponentStatic } from "@/features/Header/HeaderComponentStatic";
-import { HeaderButton, HeaderLink, HeaderUI } from "@/features/Header/HeaderUI";
+"use client";
+import { HeaderLink, HeaderUI } from "@/features/Header/HeaderUI";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { I18n } from "@lingui/core";
-import { Suspense } from "react";
+import { useLingui } from "@lingui/react";
+import { Pickaxe } from "lucide-react";
 
 export interface HeaderProps {
-  links: HeaderLink[];
-  buttons: HeaderButton[];
-  logoHref: string;
   lang: SupportedLanguage;
-  i18n: I18n;
+  interviewId: string;
 }
 
 /** Interview Landing Header */
-export const InterviewHeader = ({ lang, links, buttons, logoHref }: HeaderProps) => {
+export function InterviewHeader({ lang, interviewId }: HeaderProps) {
+  const page = "interview/" + interviewId;
+  const pageUrl = getUrlStart(lang) + page;
+  const { i18n } = useLingui();
+
+  const links: HeaderLink[] = [
+    {
+      title: i18n._("How it works"),
+      icon: Pickaxe,
+      href: page + "#how-it-works",
+    },
+  ];
+
   return (
-    <Suspense>
-      <HeaderUI
-        transparentOnTop={true}
-        lang={lang}
-        links={links}
-        buttons={buttons}
-        logoHref={logoHref}
-      />
-    </Suspense>
+    <HeaderUI transparentOnTop={true} lang={lang} links={links} buttons={[]} logoHref={pageUrl} />
   );
-};
+}

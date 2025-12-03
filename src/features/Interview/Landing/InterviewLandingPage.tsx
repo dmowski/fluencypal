@@ -20,7 +20,7 @@ export async function InterviewLandingPage({
 }) {
   return (
     <>
-      <InterviewHeader logoHref={""} links={[]} buttons={[]} i18n={i18n} lang={lang} />
+      <InterviewHeader interviewId={id} lang={lang} />
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center" }}>
           <WelcomeScreen

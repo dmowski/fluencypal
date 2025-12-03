@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, MouseEvent, useEffect, ForwardRefExoticComponent, RefAttributes } from "react";
+import { useState, MouseEvent, useEffect } from "react";
 import {
   Button,
   Drawer,
@@ -13,33 +13,13 @@ import {
   ListItemText,
   Stack,
 } from "@mui/material";
-import { LucideProps, X } from "lucide-react";
-
+import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { SupportedLanguage } from "@/features/Lang/lang";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
-import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
+import { getUrlStart } from "../Lang/getUrlStart";
 import MenuIcon from "@mui/icons-material/Menu";
+import { HeaderUIProps } from "./types";
 
-export interface HeaderLink {
-  title: string;
-  href: string;
-  icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
-}
-
-export interface HeaderButton {
-  title: string;
-  href: string;
-  isSolid: boolean;
-}
-
-export interface HeaderUIProps {
-  lang: SupportedLanguage;
-  links: HeaderLink[];
-  buttons: HeaderButton[];
-  transparentOnTop?: boolean;
-  logoHref: string;
-}
 export function HeaderUI({ lang, links, buttons, transparentOnTop, logoHref }: HeaderUIProps) {
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
   const [isHighlightJoin, setIsHighlightJoin] = useState(false);
@@ -77,8 +57,6 @@ export function HeaderUI({ lang, links, buttons, transparentOnTop, logoHref }: H
       window.removeEventListener("scroll", onScrollHandler);
     };
   }, []);
-
-  const homeUrl = `${getUrlStartWithoutLastSlash(lang)}${logoHref}`;
 
   const router = useRouter();
 
@@ -160,8 +138,8 @@ export function HeaderUI({ lang, links, buttons, transparentOnTop, logoHref }: H
           >
             <Stack
               component={"a"}
-              href={homeUrl}
-              onClick={(e) => navigateTo(homeUrl, e)}
+              href={logoHref}
+              onClick={(e) => navigateTo(logoHref, e)}
               className="menu-link"
               sx={{
                 marginRight: "40px",
