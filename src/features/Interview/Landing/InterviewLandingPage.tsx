@@ -35,28 +35,7 @@ export async function InterviewLandingPage({
             subtitle={"Real outcomes that transform your interview performance"}
             buttonTitle={"Start Free Trial"}
             buttonHref={"/test"}
-            cards={[
-              {
-                icon: MessageSquare,
-                title: "Strong, structured answers",
-                description: "Stop rambling or guessing. You'll know exactly what to say.",
-              },
-              {
-                icon: Sparkles,
-                title: "Confidence & presence",
-                description: "Perform calmly under pressure and make a strong first impression.",
-              },
-              {
-                icon: PhoneCall,
-                title: "More interview invites",
-                description: "Better preparation = better interviews = more callbacks.",
-              },
-              {
-                icon: TrendingUp,
-                title: "Higher salary opportunities",
-                description: "A strong interview performance increases negotiating power.",
-              },
-            ]}
+            cards={interviewData.infoCards}
           />
         </Stack>
       </main>

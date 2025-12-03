@@ -141,7 +141,7 @@ export const InfoCards = (props: InfoCardsProps) => {
                     sx={{
                       marginTop: "12px",
                       marginBottom: "8px",
-                      fontSize: "18px",
+                      fontSize: "20px",
                       fontWeight: 400,
                     }}
                   >

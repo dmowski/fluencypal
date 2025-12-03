@@ -1,6 +1,8 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { InterviewCategory, InterviewData } from "./types";
+import { InfoCard } from "./Landing/InfoCards";
+import { MessageSquare, PhoneCall, Sparkles, TrendingUp } from "lucide-react";
 
 export interface InterviewAllData {
   interviews: InterviewData[];
@@ -28,9 +30,39 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
         categoryTitle: i18n._("IT & Software Development"),
         categoryId: "it",
       },
+      infoCards: [
+        {
+          icon: MessageSquare,
+          title: i18n._("Master technical leadership questions"),
+          description: i18n._(
+            "Demonstrate expertise in architecture decisions, code reviews, and mentoring junior developers."
+          ),
+        },
+        {
+          icon: Sparkles,
+          title: i18n._("Showcase system design thinking"),
+          description: i18n._(
+            "Articulate scalable solutions, performance optimization, and frontend architecture patterns."
+          ),
+        },
+        {
+          icon: PhoneCall,
+          title: i18n._("Stand out in behavioral rounds"),
+          description: i18n._(
+            "Share compelling stories about cross-team collaboration, conflict resolution, and project ownership."
+          ),
+        },
+        {
+          icon: TrendingUp,
+          title: i18n._("Negotiate senior-level compensation"),
+          description: i18n._(
+            "Build confidence to discuss equity, benefits, and salary packages that match your experience."
+          ),
+        },
+      ],
     },
 
-    {
+    /*{
       id: "junior-frontend-developer",
       jobTitle: i18n._("Junior Frontend Developer"),
       title: i18n._("Junior Frontend Developer Interview"),
