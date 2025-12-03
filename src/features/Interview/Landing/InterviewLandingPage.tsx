@@ -33,7 +33,7 @@ export async function InterviewLandingPage({
           <InfoCards
             title={"What you will achieve"}
             subtitle={"Real outcomes that transform your interview performance"}
-            buttonTitle={"Start Your Interview Test"}
+            buttonTitle={"Start Free Trial"}
             buttonHref={"/test"}
             cards={[
               {

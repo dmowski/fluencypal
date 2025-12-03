@@ -50,7 +50,7 @@ export const InfoCards = (props: InfoCardsProps) => {
   return (
     <Stack
       sx={{
-        padding: "200px 0",
+        padding: "300px 0 300px 0",
         alignItems: "center",
         "@media (max-width: 600px)": {
           paddingTop: "100px",
@@ -70,20 +70,21 @@ export const InfoCards = (props: InfoCardsProps) => {
         <Stack
           sx={{
             alignItems: "center",
+            gap: "10px",
           }}
         >
           <Typography
             variant="h2"
             align="center"
             sx={{
-              fontWeight: 400,
-              fontSize: "36px",
+              fontWeight: 800,
+              fontSize: "86px",
             }}
           >
             {props.title}
           </Typography>
 
-          <Typography variant="body1" align="center" sx={{ opacity: 0.8 }}>
+          <Typography variant="body1" align="center" sx={{ opacity: 0.8, fontSize: "20px" }}>
             {props.subtitle}
           </Typography>
         </Stack>
@@ -93,7 +94,7 @@ export const InfoCards = (props: InfoCardsProps) => {
             display: "grid",
             gridTemplateColumns: `1fr 1fr 1fr 1fr`,
             gap: "30px",
-            paddingTop: "30px",
+            paddingTop: "50px",
             width: "100%",
           }}
         >
