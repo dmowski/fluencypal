@@ -310,6 +310,11 @@ msgstr "Ein freundliches Kompliment, um das Eis zu brechen."
 msgid "A polite and professional greeting."
 msgstr "Eine höfliche und professionelle Begrüßung."
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:54
+#. js-lingui-explicit-id
+msgid "A proven method that delivers measurable results"
+msgstr "Eine bewährte Methode, die messbare Ergebnisse liefert"
+
 #: src/features/Blog/blogData.tsx:19
 #. js-lingui-explicit-id
 msgid "A silence at the end of the algorithm"
@@ -449,7 +454,7 @@ msgstr "AI Englisch Tutor"
 msgid "ai English tutor"
 msgstr "ai Englisch-Lehrer"
 
-#: src/features/Interview/interviewData.tsx:80
+#: src/features/Interview/data.tsx:83
 #. js-lingui-explicit-id
 msgid "AI feedback that matters"
 msgstr "KI-Feedback, das zählt"
@@ -525,10 +530,17 @@ msgstr "Alias Wortschätzspiel"
 msgid "All Blogs"
 msgstr "Alle Blogs"
 
-#: src/features/Interview/interviewData.tsx:478
+#: src/features/Interview/data.tsx:581
 #. js-lingui-explicit-id
 msgid "All Interviews"
 msgstr "Alle Interviews"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:67
+#. js-lingui-explicit-id
+msgid "All plans include instant access • No commitment • Secure payment"
+msgstr ""
+"Alle Pläne beinhalten sofortigen Zugang • Keine Verpflichtung • Sicheres "
+"Bezahlen"
 
 #: src/features/RolePlay/rolePlayData.tsx:728
 #. js-lingui-explicit-id
@@ -650,7 +662,7 @@ msgstr ""
 msgid "Areas to improve:"
 msgstr "Bereiche zur Verbesserung:"
 
-#: src/features/Interview/interviewData.tsx:51
+#: src/features/Interview/data.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "Articulate scalable solutions, performance optimization, and frontend "
@@ -702,7 +714,7 @@ msgstr "Zurück"
 msgid "Balance"
 msgstr "Balance"
 
-#: src/features/Interview/interviewData.tsx:87
+#: src/features/Interview/data.tsx:90
 #. js-lingui-explicit-id
 msgid "Based on your CV, experience, and target role."
 msgstr "Basierend auf Ihrem Lebenslauf, Ihrer Erfahrung und der angestrebten Rolle."
@@ -733,7 +745,7 @@ msgstr ""
 "Schwächen.\" Nennen Sie stattdessen ein kleines Problem und wie Sie daran "
 "arbeiten, es zu verbessern:"
 
-#: src/features/Interview/ListPage/ListInterviewIntro.tsx:66
+#: src/features/Interview/ListPage/components/ListInterviewIntro.tsx:70
 #. js-lingui-explicit-id
 msgid "Be prepared for your job interview"
 msgstr "Seien Sie auf Ihr Vorstellungsgespräch vorbereitet"
@@ -829,7 +841,7 @@ msgstr "Die Verbindung zum Gehirn ist fehlgeschlagen."
 msgid "Brain connection successful!"
 msgstr "Verbindung zum Gehirn erfolgreich!"
 
-#: src/features/Interview/interviewData.tsx:65
+#: src/features/Interview/data.tsx:68
 #. js-lingui-explicit-id
 msgid ""
 "Build confidence to discuss equity, benefits, and salary packages that "
@@ -1037,6 +1049,11 @@ msgstr "Chinesischer Lernplan"
 msgid "Choose Site Language"
 msgstr "Wählen Sie die Sprache der Website"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:65
+#. js-lingui-explicit-id
+msgid "Choose your interview preparation plan"
+msgstr "Wählen Sie Ihren Vorbereitungsplan für das Interview"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
 #. js-lingui-explicit-id
 msgid "Choose Your Language Level"
@@ -1108,7 +1125,7 @@ msgid "Contact me"
 msgstr "Kontaktieren Sie mich"
 
 #: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Interview/Landing/InterviewHeader.tsx:31
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:31
 #: src/features/Landing/Contact/ContactsPage.tsx:94
 #: src/features/Landing/Footer.tsx:88
 #: src/features/SEO/metadata.ts:61
@@ -1401,7 +1418,7 @@ msgstr "Aktuelles Ziel löschen"
 msgid "Deleting..."
 msgstr "Löschen..."
 
-#: src/features/Interview/interviewData.tsx:44
+#: src/features/Interview/data.tsx:47
 #. js-lingui-explicit-id
 msgid ""
 "Demonstrate expertise in architecture decisions, code reviews, and "
@@ -1481,7 +1498,7 @@ msgid "Discounted AI Usage"
 msgstr "Rabattierte KI-Nutzung"
 
 #: src/features/Blog/ListBlog.tsx:72
-#: src/features/Interview/ListPage/ListInterview.tsx:72
+#: src/features/Interview/ListPage/components/ListInterview.tsx:72
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:71
 #. js-lingui-explicit-id
 msgid "Discover"
@@ -2137,6 +2154,11 @@ msgstr ""
 msgid "Everything in Free, plus:"
 msgstr "Alles in Free, plus:"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:66
+#. js-lingui-explicit-id
+msgid "Everything you need to stand out and get the job"
+msgstr "Alles, was Sie brauchen, um aufzufallen und den Job zu bekommen"
+
 #: src/features/Blog/blogData.tsx:25
 #. js-lingui-explicit-id
 msgid "existential fiction"
@@ -2213,7 +2235,7 @@ msgstr ""
 msgid "Failed to send feedback. Please try again later."
 msgstr "Feedback senden fehlgeschlagen. Bitte versuchen Sie es später erneut."
 
-#: src/features/Interview/Landing/InterviewHeader.tsx:42
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:42
 #: src/features/Landing/LandingPage.tsx:179
 #: src/features/Landing/Price/PricePage.tsx:306
 #. js-lingui-explicit-id
@@ -2362,7 +2384,7 @@ msgstr "Formale Schreibübung"
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "Vier Wege, wie FluencyPal Ihre Sprechfähigkeiten verbessert"
 
-#: src/features/Interview/interviewData.tsx:94
+#: src/features/Interview/data.tsx:97
 #. js-lingui-explicit-id
 msgid "Framework-specific insights (React, Vue, Angular)"
 msgstr "Framework-spezifische Einblicke (React, Vue, Angular)"
@@ -2403,7 +2425,7 @@ msgstr "Von Fehlern und Zögern zu selbstbewussten Gesprächen"
 msgid "From Onboarding to Confidence"
 msgstr "Von der Einarbeitung zur Selbstsicherheit"
 
-#: src/features/Interview/interviewData.tsx:32
+#: src/features/Interview/data.tsx:35
 #. js-lingui-explicit-id
 msgid "frontend developer interview prep"
 msgstr "Frontend-Entwickler Vorstellungsgespräch Vorbereitung"
@@ -2599,7 +2621,7 @@ msgstr ""
 "Lass dich inspirieren und erfahre mehr über die neuesten Trends im "
 "Sprachenlernen, Unterrichten und in der Technologie."
 
-#: src/features/Interview/interviewData.tsx:26
+#: src/features/Interview/data.tsx:29
 #. js-lingui-explicit-id
 msgid "Get more job offers with  answers that stand out"
 msgstr "Holen Sie sich mehr Jobangebote mit Antworten, die herausstechen"
@@ -2844,7 +2866,7 @@ msgstr "Wie helfen mir tägliche Aufgaben, mich zu verbessern?"
 msgid "How It Works"
 msgstr "Wie es funktioniert"
 
-#: src/features/Interview/Landing/InterviewHeader.tsx:26
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:26
 #. js-lingui-explicit-id
 msgid "How it works"
 msgstr "Wie es funktioniert"
@@ -3392,7 +3414,7 @@ msgstr ""
 msgid "Improve your ability to answer quickly and clearly in conversations."
 msgstr "Verbessern Sie Ihre Fähigkeit, schnell und klar in Gesprächen zu antworten."
 
-#: src/features/Interview/interviewData.tsx:81
+#: src/features/Interview/data.tsx:84
 #. js-lingui-explicit-id
 msgid "Improve your impact, structure, clarity, and delivery."
 msgstr "Verbessern Sie Ihre Wirkung, Struktur, Klarheit und Darbietung."
@@ -3549,6 +3571,11 @@ msgstr ""
 "Selbstvertrauens und Ihrer Karrierechancen feststellen. Beginnen Sie noch "
 "heute damit, diese einfachen täglichen Angewohnheiten zu integrieren und "
 "verbessern Sie Ihre Geschäftskommunikation mit FluencyPal.\n"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:45
+#. js-lingui-explicit-id
+msgid "In less then 5 minutes, you'll get:"
+msgstr "In weniger als 5 Minuten erhalten Sie:"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:573
 #. js-lingui-explicit-id
@@ -3976,7 +4003,7 @@ msgstr "Interview-Wortschatz für fortgeschrittene Lernende"
 msgid "Introduction: Small Talk with the Interviewer"
 msgstr "Einführung: Small Talk mit dem Interviewer"
 
-#: src/features/Interview/interviewData.tsx:37
+#: src/features/Interview/data.tsx:40
 #. js-lingui-explicit-id
 msgid "IT & Software Development"
 msgstr "IT & Software-Entwicklung"
@@ -4031,6 +4058,11 @@ msgstr "Tipps für Vorstellungsgespräche"
 #. js-lingui-explicit-id
 msgid "job interview tips"
 msgstr "Tipps für Vorstellungsgespräche"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:60
+#. js-lingui-explicit-id
+msgid "Join thousands who transformed their interview performance"
+msgstr "Schließen Sie sich Tausenden an, die ihre Interviewleistung verbessert haben"
 
 #: src/features/Landing/PlanLandingBlock.tsx:616
 #. js-lingui-explicit-id
@@ -4142,7 +4174,7 @@ msgstr "Sprachen"
 msgid "Languages installed in your brain:"
 msgstr "In Ihrem Gehirn installierte Sprachen:"
 
-#: src/features/Interview/interviewData.tsx:93
+#: src/features/Interview/data.tsx:96
 #. js-lingui-explicit-id
 msgid "Leadership competency assessment with behavioral response feedback"
 msgstr "Bewertung der Führungskompetenz mit Feedback zu Verhaltensreaktionen"
@@ -4399,7 +4431,7 @@ msgstr ""
 msgid "Master high-frequency TOEFL vocabulary."
 msgstr "Beherrschen Sie häufig verwendete TOEFL-Vokabeln."
 
-#: src/features/Interview/interviewData.tsx:43
+#: src/features/Interview/data.tsx:46
 #. js-lingui-explicit-id
 msgid "Master technical leadership questions"
 msgstr "Beherrsche technische Führungsfragen"
@@ -4587,7 +4619,7 @@ msgstr ""
 "Negative Kommentare — Reden Sie niemals schlecht über ehemalige "
 "Arbeitgeber. Bleiben Sie neutral und konstruktiv."
 
-#: src/features/Interview/interviewData.tsx:64
+#: src/features/Interview/data.tsx:67
 #. js-lingui-explicit-id
 msgid "Negotiate senior-level compensation"
 msgstr "Verhandeln Sie Vergütung auf Führungsebene"
@@ -4715,7 +4747,7 @@ msgstr "Keine Kreditkarte erforderlich"
 msgid "No homework assigned yet."
 msgstr "Noch keine Hausaufgaben aufgegeben."
 
-#: src/features/Interview/ListPage/ListInterview.tsx:131
+#: src/features/Interview/ListPage/components/ListInterview.tsx:131
 #. js-lingui-explicit-id
 msgid "No interviews found"
 msgstr "Keine Interviews gefunden"
@@ -5030,12 +5062,12 @@ msgstr "Zahlungsmethode"
 msgid "Personal Plan"
 msgstr "Persönlicher Plan"
 
-#: src/features/Interview/interviewData.tsx:86
+#: src/features/Interview/data.tsx:89
 #. js-lingui-explicit-id
 msgid "Personalized answer scripts"
 msgstr "Personalisierte Antwortskripte"
 
-#: src/features/Interview/interviewData.tsx:91
+#: src/features/Interview/data.tsx:94
 #. js-lingui-explicit-id
 msgid "Personalized Interview Readiness Score"
 msgstr "Personalisierte Interview-Bereitschaftsnote"
@@ -5202,7 +5234,7 @@ msgstr ""
 "Üben Sie, Produktprobleme zu erklären und Rückerstattungen oder Umtausch zu "
 "beantragen"
 
-#: src/features/Interview/interviewData.tsx:75
+#: src/features/Interview/data.tsx:78
 #. js-lingui-explicit-id
 msgid "Practice in real interview conditions — no tutors needed."
 msgstr "Üben Sie unter realen Interviewbedingungen – keine Tutoren erforderlich."
@@ -5345,7 +5377,7 @@ msgstr "Üben Sie, ein technisches Problem am Telefon zu beheben"
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Üben Sie Wortschatz, indem Sie Worte kreativ beschreiben und erraten"
 
-#: src/features/Interview/ListPage/ListInterviewIntro.tsx:77
+#: src/features/Interview/ListPage/components/ListInterviewIntro.tsx:81
 #. js-lingui-explicit-id
 msgid ""
 "Practice with our interactive interview scenarios designed to boost your "
@@ -5355,7 +5387,7 @@ msgstr ""
 "Selbstvertrauen stärken und Ihre Kommunikationsfähigkeiten verbessern "
 "sollen."
 
-#: src/features/Interview/interviewData.tsx:27
+#: src/features/Interview/data.tsx:30
 #. js-lingui-explicit-id
 msgid ""
 "Prepare for system design, leadership, and advanced frontend questions. Get "
@@ -5415,7 +5447,7 @@ msgid "Previous questions"
 msgstr "Vorherige Fragen"
 
 #: src/features/Header/HeaderStatic.tsx:19
-#: src/features/Interview/Landing/InterviewHeader.tsx:36
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:36
 #: src/features/Landing/Footer.tsx:94
 #: src/features/Landing/Price/PricePage.tsx:94
 #. js-lingui-explicit-id
@@ -5561,7 +5593,7 @@ msgstr "Erneut aufnehmen"
 msgid "Re-write"
 msgstr "Um-schreiben"
 
-#: src/features/Interview/interviewData.tsx:33
+#: src/features/Interview/data.tsx:36
 #. js-lingui-explicit-id
 msgid "react interview questions"
 msgstr "React Interview Fragen"
@@ -5572,7 +5604,7 @@ msgid "Read and Learn with my blog"
 msgstr "Lesen und Lernen mit meinem Blog"
 
 #: src/features/Blog/BlogCard.tsx:168
-#: src/features/Interview/ListPage/InterviewCard.tsx:88
+#: src/features/Interview/ListPage/components/InterviewCard.tsx:88
 #. js-lingui-explicit-id
 msgid "Read more"
 msgstr "Mehr erfahren"
@@ -5608,10 +5640,20 @@ msgstr "Bereit zu spielen?"
 msgid "Ready?"
 msgstr "Bereit?"
 
-#: src/features/Interview/interviewData.tsx:74
+#: src/features/Interview/data.tsx:77
 #. js-lingui-explicit-id
 msgid "Real interview simulation"
 msgstr "Simulation eines echten Vorstellungsgesprächs"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:38
+#. js-lingui-explicit-id
+msgid "Real outcomes that transform your interview performance"
+msgstr "Reale Ergebnisse, die Ihre Interview-Leistung transformieren"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:59
+#. js-lingui-explicit-id
+msgid "Real people. Real job offers."
+msgstr "Echte Menschen. Echte Jobangebote."
 
 #: src/features/SEO/metadata.ts:175
 #. js-lingui-explicit-id
@@ -5911,12 +5953,12 @@ msgstr "Sende 6 Nachrichten zum Abschließen"
 msgid "Sending..."
 msgstr "Senden..."
 
-#: src/features/Interview/interviewData.tsx:25
+#: src/features/Interview/data.tsx:28
 #. js-lingui-explicit-id
 msgid "Senior Frontend Developer"
 msgstr "Senior Frontend-Entwickler"
 
-#: src/features/Interview/interviewData.tsx:31
+#: src/features/Interview/data.tsx:34
 #. js-lingui-explicit-id
 msgid "senior frontend interview"
 msgstr "Senior Frontend-Interview"
@@ -5944,7 +5986,7 @@ msgstr "Legen Sie das Ziel Ihres Lernens fest"
 msgid "Set the goal to start"
 msgstr "Setzen Sie das Ziel, um zu starten"
 
-#: src/features/Interview/interviewData.tsx:58
+#: src/features/Interview/data.tsx:61
 #. js-lingui-explicit-id
 msgid ""
 "Share compelling stories about cross-team collaboration, conflict "
@@ -6012,7 +6054,7 @@ msgstr "Mehr anzeigen"
 msgid "Show your long-term goals:"
 msgstr "Zeigen Sie Ihre langfristigen Ziele:"
 
-#: src/features/Interview/interviewData.tsx:50
+#: src/features/Interview/data.tsx:53
 #. js-lingui-explicit-id
 msgid "Showcase system design thinking"
 msgstr "Entwurfsgedanken zum Systementwurf präsentieren"
@@ -6159,7 +6201,7 @@ msgstr "Sprechen mit einem Psychologen"
 msgid "speculative fiction"
 msgstr "spekulative Fiktion"
 
-#: src/features/Interview/interviewData.tsx:57
+#: src/features/Interview/data.tsx:60
 #. js-lingui-explicit-id
 msgid "Stand out in behavioral rounds"
 msgstr "Heben Sie sich in Verhaltensrunden ab"
@@ -6186,7 +6228,8 @@ msgstr "Start"
 msgid "Start a conversation to get one."
 msgstr "Beginnen Sie ein Gespräch, um einen zu bekommen."
 
-#: src/features/Interview/Landing/InterviewHeader.tsx:49
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:49
+#: src/features/Interview/Landing/InterviewLanding.tsx:39
 #. js-lingui-explicit-id
 msgid "Start Free Trial"
 msgstr "Kostenlose Testversion starten"
@@ -6241,10 +6284,16 @@ msgstr "Starten Sie die Sprechübung"
 msgid "Start Talking"
 msgstr "Anfangen zu sprechen"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:47
 #: src/features/Landing/PlanLandingBlock.tsx:428
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "Start Test"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:34
+#. js-lingui-explicit-id
+msgid "Start Your Interview Test"
+msgstr "Starten Sie Ihren Interview-Test"
 
 #: src/features/Blog/BlogsPage.tsx:38
 #: src/features/Landing/Price/PricePage.tsx:403
@@ -6263,14 +6312,14 @@ msgstr "Beginnen Sie Ihren Weg zur Fließendheit"
 msgid "Start | 5 min"
 msgstr "Start | 5 min"
 
-#: src/features/Interview/interviewData.tsx:73
+#: src/features/Interview/data.tsx:76
 #: src/features/Landing/PlanLandingBlock.tsx:422
 #. js-lingui-explicit-id
 msgid "Step 1"
 msgstr "Schritt 1"
 
-#: src/features/Interview/interviewData.tsx:79
-#: src/features/Interview/interviewData.tsx:85
+#: src/features/Interview/data.tsx:82
+#: src/features/Interview/data.tsx:88
 #: src/features/Landing/PlanLandingBlock.tsx:459
 #. js-lingui-explicit-id
 msgid "Step 2"
@@ -6357,7 +6406,7 @@ msgstr "Stopp"
 msgid "Stop recording"
 msgstr "Aufnahme beenden"
 
-#: src/features/Interview/interviewData.tsx:95
+#: src/features/Interview/data.tsx:98
 #. js-lingui-explicit-id
 msgid "Strategic action plan to address gaps in frontend architecture knowledge"
 msgstr ""
@@ -6511,6 +6560,11 @@ msgstr "Systemsprachen"
 msgid "Tailor AI interactions to fit your needs"
 msgstr "Passen Sie AI-Interaktionen an Ihre Bedürfnisse an"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:44
+#. js-lingui-explicit-id
+msgid "Take the Interview Readiness Test"
+msgstr "Machen Sie den Interviewbereitschaftstest"
+
 #: src/features/Landing/LandingPage.tsx:223
 #. js-lingui-explicit-id
 msgid "Talk & Correct:"
@@ -6552,7 +6606,7 @@ msgstr "Lehrer"
 msgid "Teacher:"
 msgstr "Lehrer:"
 
-#: src/features/Interview/interviewData.tsx:92
+#: src/features/Interview/data.tsx:95
 #. js-lingui-explicit-id
 msgid "Technical analysis on system design and architecture answers"
 msgstr "Technische Analyse zu Systemdesign und Architekturantworten"
@@ -6813,7 +6867,7 @@ msgid "Ukrainian Learning Plan"
 msgstr "Ukrainischer Lernplan"
 
 #: src/features/Blog/ListBlog.tsx:20
-#: src/features/Interview/ListPage/ListInterview.tsx:20
+#: src/features/Interview/ListPage/components/ListInterview.tsx:20
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:19
 #: src/features/SEO/metadata.ts:172
 #: src/features/SEO/metadata.ts:205
@@ -7101,7 +7155,7 @@ msgstr "Wir werden frei sprechen"
 msgid "Weaknesses:"
 msgstr "Schwächen:"
 
-#: src/features/Interview/interviewData.tsx:34
+#: src/features/Interview/data.tsx:37
 #. js-lingui-explicit-id
 msgid "web developer interview preparation"
 msgstr "Vorbereitung auf das Vorstellungsgespräch für Webentwickler"
@@ -7157,6 +7211,11 @@ msgstr "Was brauchen wir von Ihnen?"
 msgid "What you get with FluencyPal"
 msgstr "Was Sie mit FluencyPal erhalten"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:37
+#. js-lingui-explicit-id
+msgid "What you will achieve"
+msgstr "Was Sie erreichen werden"
+
 #: src/features/Usage/PaymentModal.tsx:220
 #. js-lingui-explicit-id
 msgid "What's included?"
@@ -7166,6 +7225,11 @@ msgstr "Was ist inbegriffen?"
 #. js-lingui-explicit-id
 msgid "What’s included in my subscription?"
 msgstr "Was ist in meinem Abonnement enthalten?"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:53
+#. js-lingui-explicit-id
+msgid "Why candidates improve so quickly"
+msgstr "Warum sich Kandidaten so schnell verbessern"
 
 #: src/features/Landing/Price/PricePage.tsx:363
 #. js-lingui-explicit-id

@@ -14,16 +14,15 @@ export async function InterviewLanding({
   lang,
   id,
   interviewData,
+  i18n,
 }: {
   lang: SupportedLanguage;
   id: string;
   interviewData: InterviewData;
   i18n: I18n;
 }) {
-  // Hardcoded test data for pricing plans
-
   return (
-    <Stack sx={{ width: "100%", margin: 0, padding: 0 }}>
+    <Stack sx={{ width: "100%" }}>
       <InterviewHeader interviewId={id} lang={lang} />
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center", gap: "300px", paddingBottom: "300px" }}>
@@ -32,40 +31,42 @@ export async function InterviewLanding({
             title={interviewData.title}
             subtitle={interviewData.subTitle}
             buttonHref={"/practice"}
-            buttonTitle={"Start Your Interview Test"}
+            buttonTitle={i18n._("Start Your Interview Test")}
           />
+
           <InfoCards
-            title={"What you will achieve"}
-            subtitle={"Real outcomes that transform your interview performance"}
-            buttonTitle={"Start Free Trial"}
+            title={i18n._("What you will achieve")}
+            subtitle={i18n._("Real outcomes that transform your interview performance")}
+            buttonTitle={i18n._("Start Free Trial")}
             buttonHref={"/test"}
             cards={interviewData.infoCards}
           />
+
           <ScorePreviewSection
-            title={"Take the Interview Readiness Test"}
-            subtitle={"In less then 5 minutes, you'll get:"}
+            title={i18n._("Take the Interview Readiness Test")}
+            subtitle={i18n._("In less then 5 minutes, you'll get:")}
             infoList={interviewData.whatUserGetAfterFirstTest}
-            buttonTitle={"Start Test"}
+            buttonTitle={i18n._("Start Test")}
             buttonHref={"/test"}
             scorePreview={interviewData.scorePreview}
           />
 
           <StepInfoCards
-            title={"Why candidates improve so quickly"}
-            subtitle={"A proven method that delivers measurable results"}
+            title={i18n._("Why candidates improve so quickly")}
+            subtitle={i18n._("A proven method that delivers measurable results")}
             cards={interviewData.stepInfoCards}
           />
 
           <ReviewCards
-            title={"Real people. Real job offers."}
-            subTitle={"Join thousands who transformed their interview performance"}
+            title={i18n._("Real people. Real job offers.")}
+            subTitle={i18n._("Join thousands who transformed their interview performance")}
             reviews={interviewData.reviewsData}
           />
 
           <PriceCards
-            title={"Choose your interview preparation plan"}
-            subTitle={"Everything you need to stand out and get the job"}
-            footerText={"All plans include instant access • No commitment • Secure payment"}
+            title={i18n._("Choose your interview preparation plan")}
+            subTitle={i18n._("Everything you need to stand out and get the job")}
+            footerText={i18n._("All plans include instant access • No commitment • Secure payment")}
             prices={interviewData.price}
           />
         </Stack>

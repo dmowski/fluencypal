@@ -300,6 +300,11 @@ msgstr "Một lời khen thân thiện để xóa tan bầu không khí căng th
 msgid "A polite and professional greeting."
 msgstr "Một lời chào lịch sự và chuyên nghiệp."
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:54
+#. js-lingui-explicit-id
+msgid "A proven method that delivers measurable results"
+msgstr "Một phương pháp đã được chứng minh mang lại kết quả có thể đo lường được"
+
 #: src/features/Blog/blogData.tsx:19
 #. js-lingui-explicit-id
 msgid "A silence at the end of the algorithm"
@@ -436,7 +441,7 @@ msgstr "AI Gia Sư Tiếng Anh"
 msgid "ai English tutor"
 msgstr "giáo viên tiếng Anh AI"
 
-#: src/features/Interview/interviewData.tsx:80
+#: src/features/Interview/data.tsx:83
 #. js-lingui-explicit-id
 msgid "AI feedback that matters"
 msgstr "Phản hồi AI thực sự quan trọng"
@@ -512,10 +517,17 @@ msgstr "Alias Trò Chơi Đoán Từ"
 msgid "All Blogs"
 msgstr "Tất cả Blogs"
 
-#: src/features/Interview/interviewData.tsx:478
+#: src/features/Interview/data.tsx:581
 #. js-lingui-explicit-id
 msgid "All Interviews"
 msgstr "Tất cả cuộc phỏng vấn"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:67
+#. js-lingui-explicit-id
+msgid "All plans include instant access • No commitment • Secure payment"
+msgstr ""
+"Tất cả các gói đều bao gồm truy cập ngay lập tức • Không cam kết • Thanh "
+"toán an toàn"
 
 #: src/features/RolePlay/rolePlayData.tsx:728
 #. js-lingui-explicit-id
@@ -637,7 +649,7 @@ msgstr ""
 msgid "Areas to improve:"
 msgstr "Các khu vực cần cải thiện:"
 
-#: src/features/Interview/interviewData.tsx:51
+#: src/features/Interview/data.tsx:54
 #. js-lingui-explicit-id
 msgid ""
 "Articulate scalable solutions, performance optimization, and frontend "
@@ -689,7 +701,7 @@ msgstr "Quay lại"
 msgid "Balance"
 msgstr "Cân bằng"
 
-#: src/features/Interview/interviewData.tsx:87
+#: src/features/Interview/data.tsx:90
 #. js-lingui-explicit-id
 msgid "Based on your CV, experience, and target role."
 msgstr "Dựa trên CV, kinh nghiệm và vai trò mục tiêu của bạn."
@@ -717,7 +729,7 @@ msgstr ""
 "Hãy trung thực nhưng ngoại giao. Đừng nói \"Tôi không có điểm yếu.\" Thay "
 "vào đó, nêu ra một vấn đề nhỏ và cách bạn đang cố gắng cải thiện nó:"
 
-#: src/features/Interview/ListPage/ListInterviewIntro.tsx:66
+#: src/features/Interview/ListPage/components/ListInterviewIntro.tsx:70
 #. js-lingui-explicit-id
 msgid "Be prepared for your job interview"
 msgstr "Hãy chuẩn bị cho buổi phỏng vấn xin việc của bạn"
@@ -812,7 +824,7 @@ msgstr "Kết nối não bị lỗi."
 msgid "Brain connection successful!"
 msgstr "Kết nối não thành công!"
 
-#: src/features/Interview/interviewData.tsx:65
+#: src/features/Interview/data.tsx:68
 #. js-lingui-explicit-id
 msgid ""
 "Build confidence to discuss equity, benefits, and salary packages that "
@@ -1018,6 +1030,11 @@ msgstr "Kế Hoạch Học Tiếng Trung"
 msgid "Choose Site Language"
 msgstr "Chọn Ngôn ngữ Trang Web"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:65
+#. js-lingui-explicit-id
+msgid "Choose your interview preparation plan"
+msgstr "Chọn gói chuẩn bị phỏng vấn của bạn"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:102
 #. js-lingui-explicit-id
 msgid "Choose Your Language Level"
@@ -1089,7 +1106,7 @@ msgid "Contact me"
 msgstr "Liên hệ với tôi"
 
 #: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Interview/Landing/InterviewHeader.tsx:31
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:31
 #: src/features/Landing/Contact/ContactsPage.tsx:94
 #: src/features/Landing/Footer.tsx:88
 #: src/features/SEO/metadata.ts:61
@@ -1374,7 +1391,7 @@ msgstr "Xóa mục tiêu hiện tại"
 msgid "Deleting..."
 msgstr "Đang xóa..."
 
-#: src/features/Interview/interviewData.tsx:44
+#: src/features/Interview/data.tsx:47
 #. js-lingui-explicit-id
 msgid ""
 "Demonstrate expertise in architecture decisions, code reviews, and "
@@ -1450,7 +1467,7 @@ msgid "Discounted AI Usage"
 msgstr "Giá sử dụng AI đã giảm"
 
 #: src/features/Blog/ListBlog.tsx:72
-#: src/features/Interview/ListPage/ListInterview.tsx:72
+#: src/features/Interview/ListPage/components/ListInterview.tsx:72
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:71
 #. js-lingui-explicit-id
 msgid "Discover"
@@ -2085,6 +2102,11 @@ msgstr ""
 msgid "Everything in Free, plus:"
 msgstr "Tất cả trong phiên bản Miễn phí, cộng thêm:"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:66
+#. js-lingui-explicit-id
+msgid "Everything you need to stand out and get the job"
+msgstr "Mọi thứ bạn cần để nổi bật và đạt được công việc"
+
 #: src/features/Blog/blogData.tsx:25
 #. js-lingui-explicit-id
 msgid "existential fiction"
@@ -2158,7 +2180,7 @@ msgstr ""
 msgid "Failed to send feedback. Please try again later."
 msgstr "Không thể gửi phản hồi. Vui lòng thử lại sau."
 
-#: src/features/Interview/Landing/InterviewHeader.tsx:42
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:42
 #: src/features/Landing/LandingPage.tsx:179
 #: src/features/Landing/Price/PricePage.tsx:306
 #. js-lingui-explicit-id
@@ -2306,7 +2328,7 @@ msgstr "Luyện viết chính thức"
 msgid "Four Ways FluencyPal Boosts Your Speaking Skills"
 msgstr "Bốn Cách FluencyPal Tăng Cường Kỹ Năng Nói Của Bạn"
 
-#: src/features/Interview/interviewData.tsx:94
+#: src/features/Interview/data.tsx:97
 #. js-lingui-explicit-id
 msgid "Framework-specific insights (React, Vue, Angular)"
 msgstr "Thông tin chi tiết theo khung (React, Vue, Angular)"
@@ -2349,7 +2371,7 @@ msgstr ""
 "plaintext\n"
 "Từ Khởi động đến Tự tin\n"
 
-#: src/features/Interview/interviewData.tsx:32
+#: src/features/Interview/data.tsx:35
 #. js-lingui-explicit-id
 msgid "frontend developer interview prep"
 msgstr "chuẩn bị phỏng vấn lập trình viên frontend"
@@ -2542,7 +2564,7 @@ msgstr ""
 "Lấy cảm hứng và tìm hiểu về những xu hướng mới nhất trong việc học ngôn "
 "ngữ, giảng dạy và công nghệ."
 
-#: src/features/Interview/interviewData.tsx:26
+#: src/features/Interview/data.tsx:29
 #. js-lingui-explicit-id
 msgid "Get more job offers with  answers that stand out"
 msgstr "Nhận thêm nhiều lời mời làm việc với những câu trả lời nổi bật"
@@ -2781,7 +2803,7 @@ msgstr "Những nhiệm vụ hàng ngày giúp tôi cải thiện như thế nà
 msgid "How It Works"
 msgstr "Cách Nó Hoạt Động"
 
-#: src/features/Interview/Landing/InterviewHeader.tsx:26
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:26
 #. js-lingui-explicit-id
 msgid "How it works"
 msgstr "Cách thức hoạt động"
@@ -3313,7 +3335,7 @@ msgstr "Cải thiện kỹ năng nghe khi bạn diễn giải các mô tả."
 msgid "Improve your ability to answer quickly and clearly in conversations."
 msgstr "Cải thiện khả năng trả lời nhanh chóng và rõ ràng trong cuộc trò chuyện."
 
-#: src/features/Interview/interviewData.tsx:81
+#: src/features/Interview/data.tsx:84
 #. js-lingui-explicit-id
 msgid "Improve your impact, structure, clarity, and delivery."
 msgstr "Cải thiện tác động, cấu trúc, sự rõ ràng và cách truyền đạt của bạn."
@@ -3463,6 +3485,11 @@ msgstr ""
 "kể trong kỹ năng ngôn ngữ, sự tự tin chuyên nghiệp, và cơ hội nghề nghiệp "
 "của bạn. Bắt đầu tích hợp những thói quen hàng ngày đơn giản này vào hôm "
 "nay và nâng cao giao tiếp kinh doanh của bạn với FluencyPal."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:45
+#. js-lingui-explicit-id
+msgid "In less then 5 minutes, you'll get:"
+msgstr "Chỉ trong vòng chưa đầy 5 phút, bạn sẽ nhận được:"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:573
 #. js-lingui-explicit-id
@@ -3877,7 +3904,7 @@ msgstr "Từ vựng phỏng vấn dành cho người học trình độ trung c�
 msgid "Introduction: Small Talk with the Interviewer"
 msgstr "Giới thiệu: Trò chuyện nhỏ với người phỏng vấn"
 
-#: src/features/Interview/interviewData.tsx:37
+#: src/features/Interview/data.tsx:40
 #. js-lingui-explicit-id
 msgid "IT & Software Development"
 msgstr "Công nghệ thông tin & Phát triển phần mềm"
@@ -3932,6 +3959,11 @@ msgstr "Mẹo Phỏng Vấn Xin Việc"
 #. js-lingui-explicit-id
 msgid "job interview tips"
 msgstr "mẹo phỏng vấn xin việc"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:60
+#. js-lingui-explicit-id
+msgid "Join thousands who transformed their interview performance"
+msgstr "Tham gia cùng hàng ngàn người đã nâng cao kỹ năng phỏng vấn của họ"
 
 #: src/features/Landing/PlanLandingBlock.tsx:616
 #. js-lingui-explicit-id
@@ -4041,7 +4073,7 @@ msgstr "Ngôn ngữ"
 msgid "Languages installed in your brain:"
 msgstr "Ngôn ngữ được cài đặt trong não của bạn:"
 
-#: src/features/Interview/interviewData.tsx:93
+#: src/features/Interview/data.tsx:96
 #. js-lingui-explicit-id
 msgid "Leadership competency assessment with behavioral response feedback"
 msgstr "Đánh giá năng lực lãnh đạo với phản hồi về phản ứng hành vi"
@@ -4294,7 +4326,7 @@ msgstr ""
 msgid "Master high-frequency TOEFL vocabulary."
 msgstr "Nắm vững từ vựng TOEFL xuất hiện thường xuyên."
 
-#: src/features/Interview/interviewData.tsx:43
+#: src/features/Interview/data.tsx:46
 #. js-lingui-explicit-id
 msgid "Master technical leadership questions"
 msgstr "Thông thạo các câu hỏi về lãnh đạo kỹ thuật"
@@ -4480,7 +4512,7 @@ msgstr ""
 "Nhận xét tiêu cực — Đừng bao giờ phê bình nhà tuyển dụng trước đây. Hãy "
 "trung lập và xây dựng tích cực."
 
-#: src/features/Interview/interviewData.tsx:64
+#: src/features/Interview/data.tsx:67
 #. js-lingui-explicit-id
 msgid "Negotiate senior-level compensation"
 msgstr "Đàm phán mức thù lao cho cấp quản lý cao cấp"
@@ -4606,7 +4638,7 @@ msgstr "Không cần thẻ tín dụng"
 msgid "No homework assigned yet."
 msgstr "Không có bài tập về nhà nào được giao."
 
-#: src/features/Interview/ListPage/ListInterview.tsx:131
+#: src/features/Interview/ListPage/components/ListInterview.tsx:131
 #. js-lingui-explicit-id
 msgid "No interviews found"
 msgstr "Không tìm thấy buổi phỏng vấn nào"
@@ -4918,12 +4950,12 @@ msgstr "Tùy chọn thanh toán"
 msgid "Personal Plan"
 msgstr "Gói Cá Nhân"
 
-#: src/features/Interview/interviewData.tsx:86
+#: src/features/Interview/data.tsx:89
 #. js-lingui-explicit-id
 msgid "Personalized answer scripts"
 msgstr "Kịch bản câu trả lời cá nhân hóa"
 
-#: src/features/Interview/interviewData.tsx:91
+#: src/features/Interview/data.tsx:94
 #. js-lingui-explicit-id
 msgid "Personalized Interview Readiness Score"
 msgstr "Điểm Sẵn Sàng Phỏng Vấn Cá Nhân Hóa"
@@ -5085,7 +5117,7 @@ msgstr ""
 "Thực hành giải thích các vấn đề về sản phẩm và yêu cầu hoàn tiền hoặc đổi "
 "hàng"
 
-#: src/features/Interview/interviewData.tsx:75
+#: src/features/Interview/data.tsx:78
 #. js-lingui-explicit-id
 msgid "Practice in real interview conditions — no tutors needed."
 msgstr "Thực hành trong điều kiện phỏng vấn thực tế — không cần gia sư."
@@ -5225,7 +5257,7 @@ msgstr "Thực hành khắc phục sự cố kỹ thuật qua điện thoại"
 msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Luyện tập từ vựng bằng cách mô tả sáng tạo và đoán từ"
 
-#: src/features/Interview/ListPage/ListInterviewIntro.tsx:77
+#: src/features/Interview/ListPage/components/ListInterviewIntro.tsx:81
 #. js-lingui-explicit-id
 msgid ""
 "Practice with our interactive interview scenarios designed to boost your "
@@ -5234,7 +5266,7 @@ msgstr ""
 "Thực hành với các tình huống phỏng vấn tương tác của chúng tôi được thiết "
 "kế để tăng cường sự tự tin và cải thiện kỹ năng giao tiếp của bạn."
 
-#: src/features/Interview/interviewData.tsx:27
+#: src/features/Interview/data.tsx:30
 #. js-lingui-explicit-id
 msgid ""
 "Prepare for system design, leadership, and advanced frontend questions. Get "
@@ -5294,7 +5326,7 @@ msgid "Previous questions"
 msgstr "Câu hỏi trước đây"
 
 #: src/features/Header/HeaderStatic.tsx:19
-#: src/features/Interview/Landing/InterviewHeader.tsx:36
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:36
 #: src/features/Landing/Footer.tsx:94
 #: src/features/Landing/Price/PricePage.tsx:94
 #. js-lingui-explicit-id
@@ -5442,7 +5474,7 @@ msgstr "Ghi lại"
 msgid "Re-write"
 msgstr "Viết lại"
 
-#: src/features/Interview/interviewData.tsx:33
+#: src/features/Interview/data.tsx:36
 #. js-lingui-explicit-id
 msgid "react interview questions"
 msgstr "câu hỏi phỏng vấn react"
@@ -5453,7 +5485,7 @@ msgid "Read and Learn with my blog"
 msgstr "Đọc và Học với blog của tôi"
 
 #: src/features/Blog/BlogCard.tsx:168
-#: src/features/Interview/ListPage/InterviewCard.tsx:88
+#: src/features/Interview/ListPage/components/InterviewCard.tsx:88
 #. js-lingui-explicit-id
 msgid "Read more"
 msgstr "Đọc thêm"
@@ -5489,10 +5521,20 @@ msgstr "Sẵn sàng để chơi?"
 msgid "Ready?"
 msgstr "Sẵn sàng?"
 
-#: src/features/Interview/interviewData.tsx:74
+#: src/features/Interview/data.tsx:77
 #. js-lingui-explicit-id
 msgid "Real interview simulation"
 msgstr "Mô phỏng phỏng vấn thực tế"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:38
+#. js-lingui-explicit-id
+msgid "Real outcomes that transform your interview performance"
+msgstr "Những kết quả thực tế nâng cao hiệu suất phỏng vấn của bạn"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:59
+#. js-lingui-explicit-id
+msgid "Real people. Real job offers."
+msgstr "Người thật. Cơ hội việc làm thật."
 
 #: src/features/SEO/metadata.ts:175
 #. js-lingui-explicit-id
@@ -5789,12 +5831,12 @@ msgstr "Gửi 6 tin nhắn để hoàn thành"
 msgid "Sending..."
 msgstr "Đang gửi..."
 
-#: src/features/Interview/interviewData.tsx:25
+#: src/features/Interview/data.tsx:28
 #. js-lingui-explicit-id
 msgid "Senior Frontend Developer"
 msgstr "Nhà Phát Triển Giao Diện Người Dùng Cao Cấp"
 
-#: src/features/Interview/interviewData.tsx:31
+#: src/features/Interview/data.tsx:34
 #. js-lingui-explicit-id
 msgid "senior frontend interview"
 msgstr "phỏng vấn frontend cấp cao"
@@ -5822,7 +5864,7 @@ msgstr "Đặt mục tiêu cho việc học của bạn"
 msgid "Set the goal to start"
 msgstr "Đặt mục tiêu để bắt đầu"
 
-#: src/features/Interview/interviewData.tsx:58
+#: src/features/Interview/data.tsx:61
 #. js-lingui-explicit-id
 msgid ""
 "Share compelling stories about cross-team collaboration, conflict "
@@ -5888,7 +5930,7 @@ msgstr "Hiển thị thêm"
 msgid "Show your long-term goals:"
 msgstr "Hiển thị mục tiêu dài hạn của bạn:"
 
-#: src/features/Interview/interviewData.tsx:50
+#: src/features/Interview/data.tsx:53
 #. js-lingui-explicit-id
 msgid "Showcase system design thinking"
 msgstr "Trình bày tư duy thiết kế hệ thống"
@@ -6033,7 +6075,7 @@ msgstr "Nói chuyện với một Nhà tâm lý học"
 msgid "speculative fiction"
 msgstr "tiểu thuyết suy đoán"
 
-#: src/features/Interview/interviewData.tsx:57
+#: src/features/Interview/data.tsx:60
 #. js-lingui-explicit-id
 msgid "Stand out in behavioral rounds"
 msgstr "Nổi bật trong các vòng phỏng vấn hành vi"
@@ -6060,7 +6102,8 @@ msgstr "Bắt đầu"
 msgid "Start a conversation to get one."
 msgstr "Bắt đầu một cuộc trò chuyện để có được một cái."
 
-#: src/features/Interview/Landing/InterviewHeader.tsx:49
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:49
+#: src/features/Interview/Landing/InterviewLanding.tsx:39
 #. js-lingui-explicit-id
 msgid "Start Free Trial"
 msgstr "Bắt đầu dùng thử miễn phí"
@@ -6113,10 +6156,16 @@ msgstr "Bắt đầu thực hành nói chuyện"
 msgid "Start Talking"
 msgstr "Bắt đầu nói chuyện"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:47
 #: src/features/Landing/PlanLandingBlock.tsx:428
 #. js-lingui-explicit-id
 msgid "Start Test"
 msgstr "Bắt đầu Kiểm tra"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:34
+#. js-lingui-explicit-id
+msgid "Start Your Interview Test"
+msgstr "Bắt Đầu Bài Kiểm Tra Phỏng Vấn Của Bạn"
 
 #: src/features/Blog/BlogsPage.tsx:38
 #: src/features/Landing/Price/PricePage.tsx:403
@@ -6135,14 +6184,14 @@ msgstr "Bắt đầu con đường của bạn để trở nên thành thạo"
 msgid "Start | 5 min"
 msgstr "Bắt đầu | 5 phút"
 
-#: src/features/Interview/interviewData.tsx:73
+#: src/features/Interview/data.tsx:76
 #: src/features/Landing/PlanLandingBlock.tsx:422
 #. js-lingui-explicit-id
 msgid "Step 1"
 msgstr "Bước 1"
 
-#: src/features/Interview/interviewData.tsx:79
-#: src/features/Interview/interviewData.tsx:85
+#: src/features/Interview/data.tsx:82
+#: src/features/Interview/data.tsx:88
 #: src/features/Landing/PlanLandingBlock.tsx:459
 #. js-lingui-explicit-id
 msgid "Step 2"
@@ -6228,7 +6277,7 @@ msgstr "Dừng"
 msgid "Stop recording"
 msgstr "Dừng ghi âm"
 
-#: src/features/Interview/interviewData.tsx:95
+#: src/features/Interview/data.tsx:98
 #. js-lingui-explicit-id
 msgid "Strategic action plan to address gaps in frontend architecture knowledge"
 msgstr ""
@@ -6380,6 +6429,11 @@ msgstr "Ngôn ngữ hệ thống"
 msgid "Tailor AI interactions to fit your needs"
 msgstr "Tùy chỉnh tương tác AI để phù hợp với nhu cầu của bạn"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:44
+#. js-lingui-explicit-id
+msgid "Take the Interview Readiness Test"
+msgstr "Làm Bài Kiểm Tra Sự Sẵn Sàng Cho Phỏng Vấn"
+
 #: src/features/Landing/LandingPage.tsx:223
 #. js-lingui-explicit-id
 msgid "Talk & Correct:"
@@ -6420,7 +6474,7 @@ msgstr "Giáo viên"
 msgid "Teacher:"
 msgstr "Giáo viên:"
 
-#: src/features/Interview/interviewData.tsx:92
+#: src/features/Interview/data.tsx:95
 #. js-lingui-explicit-id
 msgid "Technical analysis on system design and architecture answers"
 msgstr "Phân tích kỹ thuật về thiết kế hệ thống và câu trả lời kiến trúc"
@@ -6677,7 +6731,7 @@ msgid "Ukrainian Learning Plan"
 msgstr "Kế hoạch học tiếng Ukraina"
 
 #: src/features/Blog/ListBlog.tsx:20
-#: src/features/Interview/ListPage/ListInterview.tsx:20
+#: src/features/Interview/ListPage/components/ListInterview.tsx:20
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:19
 #: src/features/SEO/metadata.ts:172
 #: src/features/SEO/metadata.ts:205
@@ -6963,7 +7017,7 @@ msgstr "Chúng tôi sẽ nói chuyện thoải mái"
 msgid "Weaknesses:"
 msgstr "Nhược điểm:"
 
-#: src/features/Interview/interviewData.tsx:34
+#: src/features/Interview/data.tsx:37
 #. js-lingui-explicit-id
 msgid "web developer interview preparation"
 msgstr "chuẩn bị phỏng vấn nhà phát triển web"
@@ -7019,6 +7073,11 @@ msgstr "Chúng tôi cần gì từ bạn?"
 msgid "What you get with FluencyPal"
 msgstr "Những gì bạn nhận được với FluencyPal"
 
+#: src/features/Interview/Landing/InterviewLanding.tsx:37
+#. js-lingui-explicit-id
+msgid "What you will achieve"
+msgstr "Bạn sẽ đạt được gì?"
+
 #: src/features/Usage/PaymentModal.tsx:220
 #. js-lingui-explicit-id
 msgid "What's included?"
@@ -7028,6 +7087,11 @@ msgstr "Điều gì được bao gồm?"
 #. js-lingui-explicit-id
 msgid "What’s included in my subscription?"
 msgstr "Điều gì được bao gồm trong gói đăng ký của tôi?"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:53
+#. js-lingui-explicit-id
+msgid "Why candidates improve so quickly"
+msgstr "Tại sao ứng viên cải thiện nhanh chóng như vậy"
 
 #: src/features/Landing/Price/PricePage.tsx:363
 #. js-lingui-explicit-id
