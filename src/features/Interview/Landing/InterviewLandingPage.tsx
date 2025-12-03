@@ -7,6 +7,7 @@ import { MainTitleSection } from "./MainTitleSection";
 import { InfoCards } from "./InfoCards";
 import { ScorePreviewSection } from "./ScorePreviewSection";
 import { StepInfoCards } from "./StepsInfoCards";
+import { ReviewCards, Review } from "./ReviewCards";
 
 export async function InterviewLandingPage({
   lang,
@@ -51,6 +52,12 @@ export async function InterviewLandingPage({
             title={"Why candidates improve so quickly"}
             subtitle={"A proven method that delivers measurable results"}
             cards={interviewData.stepInfoCards}
+          />
+
+          <ReviewCards
+            title={"Real people. Real job offers."}
+            subTitle={"Join thousands who transformed their interview performance"}
+            reviews={interviewData.reviewsData}
           />
         </Stack>
       </main>

@@ -107,6 +107,50 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
           { title: "Communication", score: 25 },
         ],
       },
+      reviewsData: [
+        {
+          name: "Sarah M.",
+          jobTitle: "Frontend Developer",
+          rate: 5,
+          review:
+            "I finally got 3 offers after months of silence. The React component challenges were exactly what I needed.",
+        },
+        {
+          name: "James R.",
+          jobTitle: "Senior Frontend Engineer",
+          rate: 5,
+          review:
+            "I was confident and clear — FluentlyPal prepared me better than any coach for technical discussions about state management.",
+        },
+        {
+          name: "Maria L.",
+          jobTitle: "UI/UX Engineer",
+          rate: 5,
+          review:
+            "It helped me answer questions about accessibility and performance optimization without panic.",
+        },
+        {
+          name: "David K.",
+          jobTitle: "React Developer",
+          rate: 4,
+          review:
+            "The personalized feedback showed me exactly what I was doing wrong in my technical explanations. Game changer.",
+        },
+        {
+          name: "Emma T.",
+          jobTitle: "Frontend Tech Lead",
+          rate: 5,
+          review:
+            "Within 2 weeks I went from nervous to confident discussing architecture decisions. Got the job I wanted.",
+        },
+        {
+          name: "Alex P.",
+          jobTitle: "Full Stack Developer",
+          rate: 5,
+          review:
+            "The AI feedback on my CSS and JavaScript answers was spot-on. I improved my responses immediately.",
+        },
+      ],
     },
 
     /*{
