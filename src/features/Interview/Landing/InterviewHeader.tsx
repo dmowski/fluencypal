@@ -1,5 +1,6 @@
 "use client";
-import { HeaderLink, HeaderUI } from "@/features/Header/HeaderUI";
+import { HeaderUI } from "@/features/Header/HeaderUI";
+import { HeaderLink } from "@/features/Header/types";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { useLingui } from "@lingui/react";
