@@ -1,7 +1,6 @@
 import { HeaderStatic } from "@/features/Header/HeaderStatic";
 import { maxLandingWidth } from "@/features/Landing/landingSettings";
 import { Button, Stack, Typography } from "@mui/material";
-import { Suspense } from "react";
 import { SupportedLanguage } from "../Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "../Lang/getUrlStart";
@@ -12,37 +11,35 @@ export function NotFoundPage({ lang }: { lang: SupportedLanguage }) {
   return (
     <html lang={supportedLang}>
       <body>
-        <Suspense>
-          <div>
-            <HeaderStatic lang={supportedLang} />
+        <div>
+          <HeaderStatic lang={supportedLang} />
+          <Stack
+            sx={{
+              alignItems: "center",
+              paddingTop: "120px",
+            }}
+          >
             <Stack
               sx={{
-                alignItems: "center",
-                paddingTop: "120px",
+                maxWidth: maxLandingWidth,
+                width: "100%",
+                alignItems: "flex-start",
               }}
             >
-              <Stack
+              <Typography variant="h1">{i18n._(`Not Found`)}</Typography>
+              <p>{i18n._(`Could not find page`)}</p>
+              <Button
+                variant="contained"
+                href={`${getUrlStart(supportedLang)}/`}
                 sx={{
-                  maxWidth: maxLandingWidth,
-                  width: "100%",
-                  alignItems: "flex-start",
+                  padding: "20px 60px",
                 }}
               >
-                <Typography variant="h1">{i18n._(`Not Found`)}</Typography>
-                <p>{i18n._(`Could not find page`)}</p>
-                <Button
-                  variant="contained"
-                  href={`${getUrlStart(supportedLang)}/`}
-                  sx={{
-                    padding: "20px 60px",
-                  }}
-                >
-                  {i18n._(`Go to the main page`)}
-                </Button>
-              </Stack>
+                {i18n._(`Go to the main page`)}
+              </Button>
             </Stack>
-          </div>
-        </Suspense>
+          </Stack>
+        </div>
       </body>
     </html>
   );

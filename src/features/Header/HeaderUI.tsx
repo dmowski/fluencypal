@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, MouseEvent, useEffect } from "react";
+import { useState, MouseEvent, useEffect, Suspense } from "react";
 import {
   Button,
   Drawer,
@@ -20,7 +20,7 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import MenuIcon from "@mui/icons-material/Menu";
 import { HeaderUIProps } from "./types";
 
-export function HeaderUI({ lang, links, buttons, transparentOnTop, logoHref }: HeaderUIProps) {
+function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }: HeaderUIProps) {
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
   const [isHighlightJoin, setIsHighlightJoin] = useState(false);
   const [isBlurHeader, setIsBlurHeader] = useState(false);
@@ -288,5 +288,13 @@ export function HeaderUI({ lang, links, buttons, transparentOnTop, logoHref }: H
         </Stack>
       </Drawer>
     </>
+  );
+}
+
+export function HeaderUI(props: HeaderUIProps) {
+  return (
+    <Suspense>
+      <HeaderUIComponent {...props} />
+    </Suspense>
   );
 }
