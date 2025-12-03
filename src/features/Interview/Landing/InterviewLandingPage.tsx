@@ -22,11 +22,9 @@ export async function InterviewLandingPage({
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center" }}>
           <MainTitleSection
-            label={"Senior Frontend Developer"}
-            title={"Get more job offers with  answers that stand out"}
-            subtitle={
-              "Prepare for system design, leadership, and advanced frontend questions. Get your personalized interview action plan"
-            }
+            label={interviewData.jobTitle}
+            title={interviewData.title}
+            subtitle={interviewData.subTitle}
             buttonHref={"/practice"}
             buttonTitle={"Start Your Interview Test"}
           />

@@ -7,6 +7,7 @@ export interface InterviewCategory {
 export interface InterviewData {
   id: string;
   title: string;
+  jobTitle: string;
   subTitle: string;
   keywords: string[];
 

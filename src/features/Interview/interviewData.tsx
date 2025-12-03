@@ -13,8 +13,11 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
   const list: InterviewData[] = [
     {
       id: "senior-frontend-developer",
-      title: i18n._("Senior Frontend Developer Interview"),
-      subTitle: i18n._("Prepare for system design, leadership, and advanced frontend questions."),
+      jobTitle: i18n._("Senior Frontend Developer"),
+      title: i18n._("Get more job offers with  answers that stand out"),
+      subTitle: i18n._(
+        "Prepare for system design, leadership, and advanced frontend questions. Get your personalized interview action plan"
+      ),
       keywords: [
         i18n._("senior frontend interview"),
         i18n._("frontend developer interview prep"),
@@ -29,6 +32,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
 
     {
       id: "junior-frontend-developer",
+      jobTitle: i18n._("Junior Frontend Developer"),
       title: i18n._("Junior Frontend Developer Interview"),
       subTitle: i18n._(
         "Get ready for fundamental HTML, CSS, JavaScript, and problem-solving interviews."
@@ -47,6 +51,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
     {
       id: "csharp-backend-developer",
       title: i18n._("C# Backend Developer Interview"),
+      jobTitle: i18n._("C# Backend Developer"),
       subTitle: i18n._(
         "Prepare for .NET, APIs, databases, multithreading, and system design questions."
       ),
@@ -65,6 +70,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
     {
       id: "node-backend-developer",
       title: i18n._("Node.js Backend Developer Interview"),
+      jobTitle: i18n._("Node.js Backend Developer"),
       subTitle: i18n._(
         "Ace Node.js interviews covering async patterns, APIs, microservices, and databases."
       ),
@@ -83,6 +89,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
     {
       id: "java-backend-developer",
       title: i18n._("Java Backend Developer Interview"),
+      jobTitle: i18n._("Java Backend Developer"),
       subTitle: i18n._(
         "Prepare for Java, Spring Boot, concurrency, design patterns, and system design."
       ),
@@ -100,6 +107,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
 
     {
       id: "python-backend-developer",
+      jobTitle: i18n._("Python Backend Developer"),
       title: i18n._("Python Backend Developer Interview"),
       subTitle: i18n._(
         "Get ready for Python, Django/Flask, algorithms, and backend architecture questions."
@@ -119,6 +127,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
     {
       id: "fullstack-developer",
       title: i18n._("Full-Stack Developer Interview"),
+      jobTitle: i18n._("Full-Stack Developer"),
       subTitle: i18n._("Prepare for both frontend and backend interview challenges."),
       keywords: [
         i18n._("fullstack interview"),
@@ -134,6 +143,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
     {
       id: "devops-engineer",
       title: i18n._("DevOps Engineer Interview Preparation"),
+      jobTitle: i18n._("DevOps Engineer"),
       subTitle: i18n._("Master CI/CD, cloud, and infrastructure interview topics."),
       keywords: [
         i18n._("devops interview"),
@@ -149,6 +159,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
     {
       id: "qa-engineer",
       title: i18n._("QA Engineer Interview Preparation"),
+      jobTitle: i18n._("QA Engineer"),
       subTitle: i18n._("Prepare for manual and automation testing interview questions."),
       keywords: [
         i18n._("qa interview"),
@@ -164,6 +175,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
     {
       id: "product-manager",
       title: i18n._("Product Manager Interview"),
+      jobTitle: i18n._("Product Manager"),
       subTitle: i18n._("Practice product sense, strategy, and execution questions."),
       keywords: [
         i18n._("product manager interview"),
@@ -176,7 +188,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
       },
     },
 
-    {
+    /*{
       id: "project-manager",
       title: i18n._("Project Manager Interview"),
       subTitle: i18n._("Prepare for communication, planning, and leadership questions."),
@@ -371,7 +383,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
         categoryTitle: i18n._("Career Change"),
         categoryId: "career-change",
       },
-    },
+    },*/
   ];
 
   const categoriesList: InterviewCategory[] = [];
