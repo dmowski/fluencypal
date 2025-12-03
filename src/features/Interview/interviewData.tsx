@@ -1,8 +1,15 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { InterviewCategory, InterviewData } from "./types";
-import { InfoCard } from "./Landing/InfoCards";
-import { MessageSquare, PhoneCall, Sparkles, TrendingUp } from "lucide-react";
+import {
+  Brain,
+  FileText,
+  MessageSquare,
+  PhoneCall,
+  Sparkles,
+  TrendingUp,
+  Video,
+} from "lucide-react";
 
 export interface InterviewAllData {
   interviews: InterviewData[];
@@ -58,6 +65,26 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
           description: i18n._(
             "Build confidence to discuss equity, benefits, and salary packages that match your experience."
           ),
+        },
+      ],
+      stepInfoCards: [
+        {
+          icon: Video,
+          label: i18n._("Step 1"),
+          title: i18n._("Real interview simulation"),
+          description: i18n._("Practice in real interview conditions — no tutors needed."),
+        },
+        {
+          icon: Brain,
+          label: i18n._("Step 2"),
+          title: i18n._("AI feedback that matters"),
+          description: i18n._("Improve your impact, structure, clarity, and delivery."),
+        },
+        {
+          icon: FileText,
+          label: i18n._("Step 2"),
+          title: i18n._("Personalized answer scripts"),
+          description: i18n._("Based on your CV, experience, and target role."),
         },
       ],
       whatUserGetAfterFirstTest: [

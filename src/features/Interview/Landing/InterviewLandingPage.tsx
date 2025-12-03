@@ -5,8 +5,8 @@ import { Stack } from "@mui/material";
 import { InterviewHeader } from "./InterviewHeader";
 import { MainTitleSection } from "./MainTitleSection";
 import { InfoCards } from "./InfoCards";
-import { Info, MessageSquare, PhoneCall, Sparkles, TrendingUp } from "lucide-react";
 import { ScorePreviewSection } from "./ScorePreviewSection";
+import { StepInfoCards } from "./StepsInfoCards";
 
 export async function InterviewLandingPage({
   lang,
@@ -23,7 +23,7 @@ export async function InterviewLandingPage({
     <Stack sx={{ width: "100%", margin: 0, padding: 0 }}>
       <InterviewHeader interviewId={id} lang={lang} />
       <main style={{ width: "100%", margin: 0 }}>
-        <Stack sx={{ alignItems: "center" }}>
+        <Stack sx={{ alignItems: "center", gap: "100px", paddingBottom: "300px" }}>
           <MainTitleSection
             label={interviewData.jobTitle}
             title={interviewData.title}
@@ -45,6 +45,12 @@ export async function InterviewLandingPage({
             buttonTitle={"Start Test"}
             buttonHref={"/test"}
             scorePreview={interviewData.scorePreview}
+          />
+
+          <StepInfoCards
+            title={"Why candidates improve so quickly"}
+            subtitle={"A proven method that delivers measurable results"}
+            cards={interviewData.stepInfoCards}
           />
         </Stack>
       </main>

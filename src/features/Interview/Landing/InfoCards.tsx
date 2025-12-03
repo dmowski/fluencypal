@@ -11,8 +11,8 @@ export interface InfoCard {
 export interface InfoCardsProps {
   title: string;
   subtitle: string;
-  buttonTitle: string;
-  buttonHref: string;
+  buttonTitle?: string;
+  buttonHref?: string;
   cards: InfoCard[];
 }
 
@@ -50,7 +50,7 @@ export const InfoCards = (props: InfoCardsProps) => {
   return (
     <Stack
       sx={{
-        padding: "300px 0 100px 0",
+        padding: "0",
         alignItems: "center",
         "@media (max-width: 600px)": {
           paddingTop: "100px",
@@ -92,7 +92,7 @@ export const InfoCards = (props: InfoCardsProps) => {
         <Stack
           sx={{
             display: "grid",
-            gridTemplateColumns: `1fr 1fr 1fr 1fr`,
+            gridTemplateColumns: `repeat(${props.cards.length}, 1fr)`,
             gap: "30px",
             paddingTop: "50px",
             width: "100%",
@@ -156,19 +156,21 @@ export const InfoCards = (props: InfoCardsProps) => {
           })}
         </Stack>
 
-        <Button
-          href={props.buttonHref}
-          variant="contained"
-          size="large"
-          color="info"
-          sx={{
-            marginTop: "32px",
-            borderRadius: "48px",
-            fontSize: "16px",
-          }}
-        >
-          {props.buttonTitle}
-        </Button>
+        {props.buttonTitle && props.buttonHref && (
+          <Button
+            href={props.buttonHref}
+            variant="contained"
+            size="large"
+            color="info"
+            sx={{
+              marginTop: "32px",
+              borderRadius: "48px",
+              fontSize: "16px",
+            }}
+          >
+            {props.buttonTitle}
+          </Button>
+        )}
       </Stack>
     </Stack>
   );
