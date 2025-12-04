@@ -30,6 +30,7 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
   const pathWithoutFirstSlash = pathnameWithoutLang.startsWith("/")
     ? pathnameWithoutLang.slice(1)
     : pathnameWithoutLang;
+
   return (
     <Stack
       component={"footer"}
@@ -130,10 +131,10 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
 
         <Stack>
           <Typography className="section-title">{i18n._(`Company`)}</Typography>
-          <Link href={`${getUrlStart(lang)}terms`} variant="body1" className="link">
+          <Link href={`${getUrlStart(lang)}contacts`} variant="body1" className="link">
             {i18n._(`About Us`)}
           </Link>
-          <Link href={`${getUrlStart(lang)}terms`} variant="body1" className="link">
+          <Link href={`${getUrlStart(lang)}contacts`} variant="body1" className="link">
             {i18n._(`Contacts`)}
           </Link>
           <Link href={`${getUrlStart(lang)}terms`} variant="body1" className="link">
