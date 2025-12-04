@@ -81,11 +81,17 @@ export interface ExampleQuestionsSection {
 }
 
 // New: Clarification of tech stack covered
+export interface TechStackGroup {
+  groupTitle: string;
+  items: string[];
+}
+
 export interface TechStackSection {
   type: "techStack";
   title: string;
   subTitle: string;
-  techItems: string[];
+  keyPoints: string[];
+  techGroups: TechStackGroup[];
 }
 
 // New: “Who this is for” section

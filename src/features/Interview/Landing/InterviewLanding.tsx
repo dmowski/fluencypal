@@ -56,7 +56,8 @@ export async function InterviewLanding({
                   key={index}
                   title={section.title}
                   subTitle={section.subTitle}
-                  techItems={section.techItems}
+                  keyPoints={section.keyPoints}
+                  techGroups={section.techGroups}
                 />
               );
             }

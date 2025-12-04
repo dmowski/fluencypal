@@ -325,15 +325,57 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
     type: "techStack",
     title: i18n._("Tech stack covered"),
     subTitle: i18n._("Tailored practice for your framework and seniority level"),
-    techItems: [
-      i18n._("React, Next.js and modern React patterns (hooks, context, Suspense)"),
-      i18n._("TypeScript for robust, large-scale frontend codebases"),
-      i18n._("Vue and Vuex / Pinia state management patterns"),
-      i18n._("Angular and RxJS-driven architectures"),
-      i18n._("Frontend system design and architecture for SPAs and micro-frontends"),
-      i18n._("Performance optimization: rendering, bundling, caching, lazy loading"),
-      i18n._("Testing: Jest, React Testing Library, Cypress and integration testing"),
-      i18n._("Accessibility, UX standards and best practices for production apps"),
+    keyPoints: [
+      i18n._("Interview questions matched to your exact tech stack"),
+      i18n._("System design scenarios used by top product companies"),
+      i18n._("Performance and architecture patterns for senior roles"),
+      i18n._("Real-world scenarios, not just theory"),
+    ],
+    techGroups: [
+      {
+        groupTitle: i18n._("Frameworks & Libraries"),
+        items: [
+          i18n._("React & Next.js"),
+          i18n._("Vue & Pinia"),
+          i18n._("Angular & RxJS"),
+          i18n._("TypeScript"),
+        ],
+      },
+      {
+        groupTitle: i18n._("Architecture & Design"),
+        items: [
+          i18n._("Frontend System Design"),
+          i18n._("Micro-frontends"),
+          i18n._("State Management"),
+          i18n._("Component Libraries"),
+        ],
+      },
+      {
+        groupTitle: i18n._("Performance & Optimization"),
+        items: [
+          i18n._("Rendering Performance"),
+          i18n._("Bundling & Code Splitting"),
+          i18n._("Lazy Loading"),
+          i18n._("Caching Strategies"),
+        ],
+      },
+      {
+        groupTitle: i18n._("Testing & Quality"),
+        items: [
+          i18n._("Jest & React Testing Library"),
+          i18n._("Cypress & E2E Testing"),
+          i18n._("Integration Testing"),
+        ],
+      },
+      {
+        groupTitle: i18n._("UX & Accessibility"),
+        items: [
+          i18n._("WCAG Standards"),
+          i18n._("Semantic HTML"),
+          i18n._("Performance Metrics"),
+          i18n._("Core Web Vitals"),
+        ],
+      },
     ],
   };
 
