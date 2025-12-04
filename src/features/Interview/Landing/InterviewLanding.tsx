@@ -41,7 +41,7 @@ export async function InterviewLanding({
             label={interviewData.jobTitle}
             title={interviewData.title}
             subtitle={interviewData.subTitle}
-            buttonHref={"/practice"}
+            buttonHref={quizLink}
             buttonTitle={i18n._("Start Your Interview Test")}
           />
 
@@ -49,7 +49,7 @@ export async function InterviewLanding({
             title={i18n._("What you will achieve")}
             subtitle={i18n._("Real outcomes that transform your interview performance")}
             buttonTitle={i18n._("Start Free Trial")}
-            buttonHref={"/test"}
+            buttonHref={quizLink}
             cards={interviewData.infoCards}
           />
 
@@ -58,7 +58,7 @@ export async function InterviewLanding({
             subtitle={i18n._("In less then 5 minutes, you'll get:")}
             infoList={interviewData.whatUserGetAfterFirstTest}
             buttonTitle={i18n._("Start Test")}
-            buttonHref={"/test"}
+            buttonHref={quizLink}
             scorePreview={interviewData.scorePreview}
           />
 
@@ -80,6 +80,7 @@ export async function InterviewLanding({
             }}
           >
             <PriceCards
+              quizLink={quizLink}
               title={i18n._("Choose your interview preparation plan")}
               subTitle={i18n._("Everything you need to stand out and get the job")}
               footerText={i18n._(
@@ -166,7 +167,7 @@ export async function InterviewLanding({
             <CtaBlock
               title={i18n._(`Ready to ace your next interview?`)}
               actionButtonTitle={i18n._(`Start Practicing Now`)}
-              actionButtonLink={`#test`}
+              actionButtonLink={quizLink}
             />
             <Footer lang={lang} />
           </Stack>

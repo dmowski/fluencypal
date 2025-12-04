@@ -156,6 +156,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
       ],
       price: [
         {
+          id: "1-week-sprint",
           icon: Zap,
           badgeIcon: "⚡",
           badge: "In a hurry? Perfect for last-minute interviews",
@@ -169,9 +170,9 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
             "Personalized scripts for HR & behavioral questions",
           ],
           buttonTitle: "Start 1-Week Sprint — $30",
-          buttonHref: "/pricing/1-week",
         },
         {
+          id: "monthly-plan",
           icon: Star,
           badgeIcon: "⭐",
           badge: "Best for most job seekers",
@@ -188,10 +189,10 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
             "Salary negotiation preparation",
           ],
           buttonTitle: "Start Monthly Plan — $60",
-          buttonHref: "/pricing/monthly",
           isHighlighted: true,
         },
         {
+          id: "4-month-plan",
           icon: Briefcase,
           badgeIcon: "🎯",
           badge: "For long job searches & career growth",
@@ -207,7 +208,6 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
             "Priority feedback queue",
           ],
           buttonTitle: "Start 4-Month Plan — $90",
-          buttonHref: "/pricing/4-month",
         },
       ],
     },

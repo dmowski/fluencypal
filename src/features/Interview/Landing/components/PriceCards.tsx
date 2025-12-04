@@ -4,6 +4,7 @@ import { Button, Stack, Typography } from "@mui/material";
 import { CircleCheck } from "lucide-react";
 
 export interface Price {
+  id: string;
   icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
   badge?: string;
   badgeIcon?: string;
@@ -13,7 +14,6 @@ export interface Price {
   description: string;
   points: string[];
   buttonTitle: string;
-  buttonHref: string;
   isHighlighted?: boolean;
 }
 
@@ -22,6 +22,7 @@ export interface PriceCardsProps {
   subTitle: string;
   footerText?: string;
   prices: Price[];
+  quizLink: string;
 }
 
 const iconConfigs = [
@@ -43,7 +44,7 @@ const iconConfigs = [
 ];
 
 /** Interview Landing Price Cards */
-export const PriceCards = ({ title, subTitle, footerText, prices }: PriceCardsProps) => {
+export const PriceCards = ({ title, subTitle, footerText, prices, quizLink }: PriceCardsProps) => {
   return (
     <Stack
       id="pricing"
@@ -259,7 +260,7 @@ export const PriceCards = ({ title, subTitle, footerText, prices }: PriceCardsPr
                 </Stack>
 
                 <Button
-                  href={price.buttonHref}
+                  href={quizLink}
                   variant={price.isHighlighted ? "contained" : "outlined"}
                   size="large"
                   sx={{
