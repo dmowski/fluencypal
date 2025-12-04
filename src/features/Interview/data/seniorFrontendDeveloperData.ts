@@ -1,4 +1,4 @@
-import { InterviewData } from "../../types";
+import { InterviewData } from "../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import {
