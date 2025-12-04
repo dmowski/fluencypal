@@ -118,72 +118,26 @@ export const PriceCards = ({
                 sx={{
                   padding: "40px 30px 40px 30px",
                   border: price.isHighlighted
-                    ? "2px solid rgba(59, 130, 246, 0.5)"
+                    ? "1px solid #29b6f6"
                     : "1px solid rgba(255, 255, 255, 0.04)",
                   gap: "24px",
                   width: "100%",
-                  borderRadius: "12px",
+                  borderRadius: "16px",
                   boxShadow: price.isHighlighted
                     ? "0px 8px 24px rgba(59, 130, 246, 0.15)"
                     : "0px 4px 12px rgba(0, 0, 0, 0.01)",
                   backgroundColor: "rgba(255, 255, 255, 0.03)",
-                  position: "relative",
+                  justifyContent: "space-between",
                 }}
               >
-                {price.badge && (
-                  <Stack
-                    sx={{
-                      top: "16px",
-                      left: "50%",
-                      flexDirection: "row",
-                      borderRadius: "20px",
-                      gap: "8px",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontSize: "17px",
-                      }}
-                      component={"span"}
-                    >
-                      {price.badgeIcon}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: "15px",
-                        fontWeight: 500,
-                        color: "#fbbf24",
-                      }}
-                    >
-                      {price.badge}
-                    </Typography>
-                  </Stack>
-                )}
-
                 <Stack sx={{ gap: "16px" }}>
-                  <Stack
-                    sx={{
-                      borderRadius: "12px",
-                      backgroundColor: config.bgColor,
-                      width: "56px",
-                      height: "56px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      border: `1px solid ${config.borderColor}`,
-                    }}
-                  >
-                    <Icon size={28} color={config.iconColor} strokeWidth={2} />
-                  </Stack>
-
                   <Stack sx={{ gap: "8px" }}>
                     <Typography
                       variant="h5"
                       component={"h3"}
                       sx={{
-                        fontSize: "24px",
-                        fontWeight: 600,
+                        fontSize: "18px",
+                        fontWeight: 500,
                       }}
                     >
                       {price.label}
@@ -194,8 +148,8 @@ export const PriceCards = ({
                         variant="h3"
                         component={"span"}
                         sx={{
-                          fontSize: "48px",
-                          fontWeight: 700,
+                          fontSize: "52px",
+                          fontWeight: 500,
                         }}
                       >
                         ${price.priceUsd}
@@ -204,7 +158,7 @@ export const PriceCards = ({
                         <Typography
                           variant="body2"
                           sx={{
-                            fontSize: "16px",
+                            fontSize: "14px",
                             opacity: 0.7,
                           }}
                         >
@@ -216,9 +170,9 @@ export const PriceCards = ({
                     <Typography
                       variant="body2"
                       sx={{
-                        fontSize: "15px",
+                        fontSize: "16px",
                         lineHeight: 1.6,
-                        opacity: 0.8,
+                        opacity: 0.9,
                         minHeight: "48px",
                       }}
                     >
@@ -227,73 +181,77 @@ export const PriceCards = ({
                   </Stack>
                 </Stack>
 
-                <Stack sx={{ gap: "12px" }}>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      fontSize: "14px",
-                      fontWeight: 600,
-                      opacity: 0.9,
-                    }}
-                  >
-                    Includes:
-                  </Typography>
+                <Stack sx={{ gap: "22px" }}>
+                  <Stack sx={{ gap: "12px" }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontSize: "14px",
+                        fontWeight: 600,
+                        opacity: 0.9,
+                        paddingTop: "10px",
+                      }}
+                    >
+                      Includes:
+                    </Typography>
 
-                  <Stack sx={{ gap: "10px" }}>
-                    {price.points.map((point, pointIndex) => (
-                      <Stack
-                        key={pointIndex}
-                        direction="row"
-                        sx={{
-                          gap: "10px",
-                          alignItems: "flex-start",
-                        }}
-                      >
-                        <CircleCheck
-                          size={20}
-                          color="#10b981"
-                          strokeWidth={2}
-                          style={{ flexShrink: 0, marginTop: "2px" }}
-                        />
-                        <Typography
-                          variant="body2"
+                    <Stack sx={{ gap: "10px" }}>
+                      {price.points.map((point, pointIndex) => (
+                        <Stack
+                          key={pointIndex}
+                          direction="row"
                           sx={{
-                            fontSize: "14px",
-                            lineHeight: 1.5,
-                            opacity: 0.9,
+                            gap: "10px",
+                            alignItems: "flex-start",
                           }}
                         >
-                          {point}
-                        </Typography>
-                      </Stack>
-                    ))}
+                          <CircleCheck
+                            size={22}
+                            color={price.isHighlighted ? "#29b6f6" : "#fff"}
+                            strokeWidth={2}
+                            style={{ flexShrink: 0, marginTop: "2px" }}
+                          />
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              fontSize: "14px",
+                              lineHeight: 1.5,
+                              opacity: 0.9,
+                            }}
+                          >
+                            {point}
+                          </Typography>
+                        </Stack>
+                      ))}
+                    </Stack>
                   </Stack>
-                </Stack>
 
-                <Button
-                  href={quizLink}
-                  variant={price.isHighlighted ? "contained" : "outlined"}
-                  size="large"
-                  sx={{
-                    marginTop: "8px",
-                    borderRadius: "8px",
-                    fontSize: "16px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    padding: "12px 24px",
-                    backgroundColor: price.isHighlighted ? "#266ddfff" : "transparent",
-                    borderColor: price.isHighlighted ? "#266ddfff" : "rgba(255, 255, 255, 0.2)",
-                    color: "#fff",
-                    "&:hover": {
-                      backgroundColor: price.isHighlighted
-                        ? "#1150d7ff"
-                        : "rgba(255, 255, 255, 0.05)",
-                      borderColor: price.isHighlighted ? "#2563eb" : "rgba(255, 255, 255, 0.3)",
-                    },
-                  }}
-                >
-                  {price.buttonTitle}
-                </Button>
+                  <Button
+                    href={quizLink}
+                    variant={price.isHighlighted ? "contained" : "outlined"}
+                    color={price.isHighlighted ? "info" : "inherit"}
+                    size="large"
+                    sx={{
+                      marginTop: "8px",
+                      borderRadius: "48px",
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      textTransform: "none",
+                      padding: "12px 24px",
+                      //backgroundColor: price.isHighlighted ? "#266ddfff" : "transparent",
+                      //borderColor: price.isHighlighted ? "#266ddfff" : "rgba(255, 255, 255, 0.2)",
+                      //color: "#fff",
+                      "&:hover": {
+                        //backgroundColor: price.isHighlighted
+                        //</Stack>  ? "#1150d7ff"
+                        //                          : "rgba(255, 255, 255, 0.05)",
+                        //                      borderColor: price.isHighlighted ? "#2563eb" : "rgba(255, 255, 255, 0.3)",
+                      },
+                    }}
+                  >
+                    {price.buttonTitle}
+                  </Button>
+                </Stack>
               </Stack>
             );
           })}
