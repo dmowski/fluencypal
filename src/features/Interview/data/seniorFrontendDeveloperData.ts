@@ -120,6 +120,12 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           "Yes. You can tailor sessions to your target role, tech stack (React, Vue, Angular, etc.), and seniority level. You can also focus on specific areas like system design, performance optimization, or behavioral questions."
         ),
       },
+      {
+        question: i18n._("Do I need to schedule time with a real interviewer?"),
+        answer: i18n._(
+          "No. All sessions are on-demand. You can practice anytime with AI-powered mock interviews, review feedback immediately, and repeat questions as often as you want."
+        ),
+      },
     ],
   };
 
@@ -277,9 +283,9 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
 
   const firstScreenSection: FirstScreenSection = {
     type: "firstScreen",
-    title: i18n._("Get more job offers with answers that stand out"),
+    title: i18n._("Ace your Senior Frontend Developer interview"),
     subTitle: i18n._(
-      "Prepare for system design, leadership, and advanced frontend questions. Get your personalized interview action plan."
+      "Practice real senior-level frontend interview questions — system design, leadership, and advanced React. Get your personalized interview action plan."
     ),
     label: i18n._("Senior Frontend Developer"),
     buttonTitle: i18n._("Start Your Interview Test"),
@@ -288,7 +294,9 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
   const exampleQuestionsSection: ExampleQuestionsSection = {
     type: "exampleQuestions",
     title: i18n._("Questions you will practice"),
-    subTitle: i18n._("Real senior frontend interview questions you are likely to get asked"),
+    subTitle: i18n._(
+      "Real Senior Frontend Developer interview questions you're likely to be asked"
+    ),
     questions: [
       i18n._(
         "How would you design the frontend architecture for a large-scale dashboard with real-time data updates?"
@@ -382,14 +390,16 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
   return {
     id: "senior-frontend-developer",
     jobTitle: i18n._("Senior Frontend Developer"),
-    title: i18n._("Get more job offers with answers that stand out"),
+    title: i18n._("Senior Frontend Developer interview prep that gets you more offers"),
     subTitle: i18n._(
-      "Prepare for system design, leadership, and advanced frontend questions. Get your personalized interview action plan."
+      "Practice real Senior Frontend Developer interview questions and get a personalized action plan to fix your gaps before the next interview."
     ),
     keywords: [
       i18n._("senior frontend interview"),
+      i18n._("senior frontend developer interview"),
       i18n._("frontend developer interview prep"),
       i18n._("react interview questions"),
+      i18n._("frontend system design interview"),
       i18n._("web developer interview preparation"),
     ],
     category: {
