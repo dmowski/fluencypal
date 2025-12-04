@@ -91,44 +91,35 @@ export const ExampleQuestionsSection = (props: ExampleQuestionsProps) => {
                 sx={{
                   flexDirection: "row",
                   flexWrap: "wrap",
-                  gap: "10px",
+                  gap: "25px",
                   borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-                  paddingTop: "10px",
+                  padding: "15px 0 0 4px",
                 }}
               >
                 {question.techItems.map((item, itemIndex) => (
                   <Stack
                     key={itemIndex}
                     sx={{
-                      backgroundColor: "rgba(255, 255, 255, 0.01)",
-                      borderRadius: "23px",
-                      gap: "10px",
-                      padding: "5px 20px 5px 12px",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: "11px",
                     }}
                   >
-                    <Stack
+                    {item.logoUrl && (
+                      <img
+                        src={item.logoUrl}
+                        alt={item.label}
+                        style={{ width: "20px", height: "auto" }}
+                      />
+                    )}
+                    <Typography
+                      variant="body2"
                       sx={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        gap: "15px",
+                        opacity: 0.8,
                       }}
                     >
-                      {item.logoUrl && (
-                        <img
-                          src={item.logoUrl}
-                          alt={item.label}
-                          style={{ width: "20px", height: "auto" }}
-                        />
-                      )}
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          opacity: 0.9,
-                        }}
-                      >
-                        {item.label}
-                      </Typography>
-                    </Stack>
+                      {item.label}
+                    </Typography>
                   </Stack>
                 ))}
               </Stack>
