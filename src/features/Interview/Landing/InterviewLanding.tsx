@@ -78,37 +78,31 @@ export async function InterviewLanding({
             reviews={interviewData.reviewsData}
           />
 
-          <Stack
-            sx={{
-              width: "100%",
-            }}
-          >
-            <PriceCards
-              id="price"
-              quizLink={quizLink}
-              title={i18n._("Choose your interview preparation plan")}
-              subTitle={i18n._("Everything you need to stand out and get the job")}
-              footerText={i18n._(
-                "All plans include instant access • No commitment • Secure payment"
-              )}
-              prices={interviewData.price}
-            />
-            <GeneralFaqBlock
-              id="faq"
-              padding={"0px 0 90px 0"}
-              title={i18n._(`FAQ`)}
-              items={interviewData.faqItems.map((faq) => ({
-                question: faq.question,
-                answer: <Typography>{faq.answer}</Typography>,
-              }))}
-            />
-            <CtaBlock
-              title={i18n._(`Ready to ace your next interview?`)}
-              actionButtonTitle={i18n._(`Start Practicing Now`)}
-              actionButtonLink={quizLink}
-            />
-            <Footer lang={lang} />
-          </Stack>
+          <PriceCards
+            id="price"
+            quizLink={quizLink}
+            title={i18n._("Choose your interview preparation plan")}
+            subTitle={i18n._("Everything you need to stand out and get the job")}
+            footerText={i18n._("All plans include instant access • No commitment • Secure payment")}
+            prices={interviewData.price}
+          />
+
+          <GeneralFaqBlock
+            id="faq"
+            padding={"0px 0 90px 0"}
+            title={i18n._(`FAQ`)}
+            items={interviewData.faqItems.map((faq) => ({
+              question: faq.question,
+              answer: <Typography>{faq.answer}</Typography>,
+            }))}
+          />
+
+          <CtaBlock
+            title={i18n._(`Ready to ace your next interview?`)}
+            actionButtonTitle={i18n._(`Start Practicing Now`)}
+            actionButtonLink={quizLink}
+          />
+          <Footer lang={lang} />
         </Stack>
       </main>
     </Stack>
