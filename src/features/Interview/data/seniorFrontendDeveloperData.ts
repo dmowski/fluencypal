@@ -335,45 +335,104 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       {
         groupTitle: i18n._("Frameworks & Libraries"),
         items: [
-          i18n._("React & Next.js"),
-          i18n._("Vue & Pinia"),
-          i18n._("Angular & RxJS"),
-          i18n._("TypeScript"),
+          {
+            label: i18n._("React & Next.js"),
+            logoUrl: "https://cdn.simpleicons.org/react",
+          },
+          {
+            label: i18n._("Vue & Pinia"),
+            logoUrl: "https://cdn.simpleicons.org/vuedotjs",
+          },
+          {
+            label: i18n._("Angular & RxJS"),
+            logoUrl:
+              "https://upload.wikimedia.org/wikipedia/commons/6/67/Angular_gradient_logo.png",
+          },
+          {
+            label: i18n._("TypeScript"),
+            logoUrl: "https://cdn.simpleicons.org/typescript",
+          },
         ],
       },
       {
         groupTitle: i18n._("Architecture & Design"),
         items: [
-          i18n._("Frontend System Design"),
-          i18n._("Micro-frontends"),
-          i18n._("State Management"),
-          i18n._("Component Libraries"),
+          {
+            label: i18n._("Frontend System Design"),
+            logoUrl: "https://cdn.simpleicons.org/lighthouse",
+          },
+          {
+            label: i18n._("Micro-frontends"),
+            logoUrl: "https://cdn.simpleicons.org/webpack",
+          },
+          {
+            label: i18n._("State Management"),
+            // Redux is a common state-lib
+            logoUrl: "https://cdn.simpleicons.org/redux",
+          },
+          {
+            label: i18n._("Component Libraries"),
+            logoUrl: "https://cdn.simpleicons.org/storybook",
+          },
         ],
       },
       {
         groupTitle: i18n._("Performance & Optimization"),
         items: [
-          i18n._("Rendering Performance"),
-          i18n._("Bundling & Code Splitting"),
-          i18n._("Lazy Loading"),
-          i18n._("Caching Strategies"),
+          {
+            label: i18n._("Rendering Performance"),
+            logoUrl: "https://cdn.simpleicons.org/googlechrome",
+          },
+          {
+            label: i18n._("Bundling & Code Splitting"),
+            logoUrl: "https://cdn.simpleicons.org/rollupdotjs",
+          },
+          {
+            label: i18n._("Lazy Loading"),
+            logoUrl: "https://cdn.simpleicons.org/javascript",
+          },
+          {
+            label: i18n._("Caching Strategies"),
+            logoUrl: "https://cdn.simpleicons.org/cloudflare",
+          },
         ],
       },
       {
         groupTitle: i18n._("Testing & Quality"),
         items: [
-          i18n._("Jest & React Testing Library"),
-          i18n._("Cypress & E2E Testing"),
-          i18n._("Integration Testing"),
+          {
+            label: i18n._("Jest & React Testing Library"),
+            logoUrl: "https://cdn.simpleicons.org/jest",
+          },
+          {
+            label: i18n._("Cypress & E2E Testing"),
+            logoUrl: "https://cdn.simpleicons.org/cypress",
+          },
+          {
+            label: i18n._("Integration Testing"),
+            logoUrl: "https://cdn.simpleicons.org/githubactions",
+          },
         ],
       },
       {
         groupTitle: i18n._("UX & Accessibility"),
         items: [
-          i18n._("WCAG Standards"),
-          i18n._("Semantic HTML"),
-          i18n._("Performance Metrics"),
-          i18n._("Core Web Vitals"),
+          {
+            label: i18n._("WCAG Standards"),
+            logoUrl: "https://upload.wikimedia.org/wikipedia/commons/5/51/W3C.svg",
+          },
+          {
+            label: i18n._("Semantic HTML"),
+            logoUrl: "https://cdn.simpleicons.org/html5",
+          },
+          {
+            label: i18n._("Performance Metrics"),
+            logoUrl: "https://cdn.simpleicons.org/lighthouse",
+          },
+          {
+            label: i18n._("Core Web Vitals"),
+            logoUrl: "https://cdn.simpleicons.org/pagespeedinsights",
+          },
         ],
       },
     ],

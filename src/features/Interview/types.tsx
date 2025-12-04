@@ -80,10 +80,15 @@ export interface ExampleQuestionsSection {
   questions: string[];
 }
 
-// New: Clarification of tech stack covered
+export interface TechItem {
+  label: string;
+  /** Optional logo URL – can be empty for more abstract concepts */
+  logoUrl?: string;
+}
+
 export interface TechStackGroup {
   groupTitle: string;
-  items: string[];
+  items: TechItem[];
 }
 
 export interface TechStackSection {

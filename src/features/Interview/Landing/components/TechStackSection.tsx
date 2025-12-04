@@ -1,9 +1,5 @@
 import { Box, Chip, Stack, Typography } from "@mui/material";
-
-export interface TechStackGroup {
-  groupTitle: string;
-  items: string[];
-}
+import { TechStackGroup } from "../../types";
 
 export interface TechStackSectionProps {
   id: string;
@@ -148,27 +144,36 @@ export const TechStackSection = (props: TechStackSectionProps) => {
                 sx={{
                   flexDirection: "row",
                   flexWrap: "wrap",
-                  gap: "8px",
+                  gap: "15px",
                 }}
               >
                 {group.items.map((item, itemIndex) => (
-                  <Chip
+                  <Stack
                     key={itemIndex}
-                    label={item}
                     sx={{
-                      borderRadius: "8px",
-                      backgroundColor: "rgba(255,255,255,0.08)",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      color: "#fff",
-                      fontSize: "13px",
-                      padding: "2px 4px",
-                      height: "28px",
-                      transition: "all 0.2s ease",
-                      "&:hover": {
-                        backgroundColor: "rgba(255,255,255,0.12)",
-                      },
+                      backgroundColor: "rgba(255, 255, 255, 0.05)",
+                      borderRadius: "23px",
+                      gap: "10px",
+                      padding: "10px 20px 10px 16px",
                     }}
-                  />
+                  >
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: "15px",
+                      }}
+                    >
+                      {item.logoUrl && (
+                        <img
+                          src={item.logoUrl}
+                          alt={item.label}
+                          style={{ width: "20px", height: "auto" }}
+                        />
+                      )}
+                      <Typography variant="body2">{item.label}</Typography>
+                    </Stack>
+                  </Stack>
                 ))}
               </Stack>
             </Stack>
