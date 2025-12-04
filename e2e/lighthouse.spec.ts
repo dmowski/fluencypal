@@ -14,8 +14,8 @@ const SETTINGS = {
 };
 
 test.describe("Lighthouse Audit", () => {
-  // increase timeout for lighthouse audits
   test.setTimeout(120000);
+
   test("Home page (EN)", async ({ page }: { page: Page }) => {
     await page.goto("/");
 
