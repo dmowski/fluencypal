@@ -1,15 +1,14 @@
 "use client";
-import { Link, Stack, Typography } from "@mui/material";
-import {
-  fullEnglishLanguageName,
-  SupportedLanguage,
-  supportedLanguages,
-} from "@/features/Lang/lang";
+import { IconButton, Link, Stack, Typography } from "@mui/material";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useLingui } from "@lingui/react";
 import { Suspense } from "react";
 import { maxLandingWidth } from "@/features/Landing/landingSettings";
-import { getUrlStart, getUrlStartWithoutLastSlash } from "@/features/Lang/getUrlStart";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import { CONTACTS } from "@/features/Landing/Contact/data";
 
 interface FooterProps {
   lang: SupportedLanguage;
@@ -38,7 +37,7 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
-        padding: "50px 0 50px 0",
+        padding: "50px 0 0px 0",
         //backgroundColor: "#070f1a",
         backgroundColor: `#0a121e`,
         //backgroundColor: `rgba(10, 18, 30, 1)`,
@@ -46,13 +45,24 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
         marginTop: "0px",
         position: "relative",
         zIndex: 1,
+        ".link": {
+          fontWeight: 500,
+          fontSize: "12px",
+          color: "rgba(255, 255, 255, 0.7)",
+          textDecoration: "none",
+          marginBottom: "8px",
+        },
+        ".section-title": {
+          fontWeight: 500,
+          marginBottom: "20px",
+          fontSize: "16px",
+        },
       }}
     >
       <Stack
         sx={{
           display: "grid",
-          gridTemplateColumns: "1fr 1.5fr 1fr",
-          alignItems: "center",
+          gridTemplateColumns: "5fr 2fr 1fr",
           padding: "0 10px",
 
           boxSizing: "border-box",
@@ -72,85 +82,87 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
           sx={{
             alignItems: "flex-start",
             justifyContent: "flex-start",
-            gap: "10px",
-            a: {
-              fontWeight: 500,
-              color: "#fff",
-              textUnderlineOffset: "3px",
-              textDecorationColor: "#fff",
-            },
-          }}
-        >
-          <Link href={`${getUrlStart(lang)}contacts`} variant="body1">
-            {i18n._(`Contacts`)}
-          </Link>
-          <Link href={`#pricing`} variant="body1">
-            {i18n._(`Price`)}
-          </Link>
-        </Stack>
-
-        <Stack
-          sx={{
-            gap: "10px",
-            alignItems: "center",
-            "@media (max-width: 900px)": {
-              alignItems: "flex-start",
-            },
+            gap: "5px",
           }}
         >
           <img
             src="/logo.svg"
             alt="Online English Learning"
-            width="200px"
-            height="37px"
+            width="160px"
             style={{
+              aspectRatio: "200/37",
               opacity: 0.92,
+              marginBottom: "10px",
             }}
           />
-        </Stack>
-        <Stack
-          sx={{
-            alignItems: "flex-end",
-            justifyContent: "center",
-            "@media (max-width: 900px)": {
-              alignItems: "flex-start",
-            },
-          }}
-        >
-          <Typography variant="body1">FluencyPal</Typography>
-          <Typography variant="body1">© 2025</Typography>
+          <Typography variant="caption" sx={{ maxWidth: "300px", opacity: 0.7, fontSize: "11px" }}>
+            {i18n._(`AI-powered interview preparation that helps you get more job offers.`)}
+          </Typography>
           <Stack
             sx={{
               flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              gap: "2px 10px",
-              flexWrap: "wrap",
+              gap: "0px",
+              marginLeft: "-8px",
             }}
           >
-            <Link
-              href={`${getUrlStart(lang)}terms`}
-              variant="body1"
-              align="right"
-              sx={{
-                color: "#fff",
-              }}
-            >
-              {i18n._(`Terms of Use`)}
-            </Link>
-            <Link
-              href={`${getUrlStart(lang)}privacy`}
-              variant="body1"
-              align="right"
-              sx={{
-                color: "#fff",
-              }}
-            >
-              {i18n._(`Privacy Policy`)}
-            </Link>
+            <IconButton target="_blank" href={`${CONTACTS.instagram}`} rel="noopener noreferrer">
+              <InstagramIcon sx={{ color: "rgba(255, 255, 255, 0.7)" }} />
+            </IconButton>
+            <IconButton href={`mailto:${CONTACTS.email}`}>
+              <AlternateEmailIcon sx={{ color: "rgba(255, 255, 255, 0.7)" }} />
+            </IconButton>
           </Stack>
         </Stack>
+
+        <Stack>
+          <Typography className="section-title">{i18n._(`Product`)}</Typography>
+
+          <Link href={`#pricing`} className="link" variant="body1">
+            {i18n._(`How it Works`)}
+          </Link>
+          <Link href={`#pricing`} className="link" variant="body1">
+            {i18n._(`Success stories`)}
+          </Link>
+          <Link href={`#pricing`} className="link" variant="body1">
+            {i18n._(`Price`)}
+          </Link>
+        </Stack>
+
+        <Stack>
+          <Typography className="section-title">{i18n._(`Company`)}</Typography>
+          <Link href={`${getUrlStart(lang)}terms`} variant="body1" className="link">
+            {i18n._(`About Us`)}
+          </Link>
+          <Link href={`${getUrlStart(lang)}terms`} variant="body1" className="link">
+            {i18n._(`Contacts`)}
+          </Link>
+          <Link href={`${getUrlStart(lang)}terms`} variant="body1" className="link">
+            {i18n._(`Terms of Use`)}
+          </Link>
+          <Link href={`${getUrlStart(lang)}privacy`} variant="body1" className="link">
+            {i18n._(`Privacy Policy`)}
+          </Link>
+        </Stack>
       </Stack>
+
+      <Stack
+        sx={{
+          width: "calc(100% - 20px)",
+          maxWidth: maxLandingWidth,
+          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+          margin: "30px 0 30px 0",
+        }}
+      />
+
+      <Typography
+        sx={{
+          fontSize: "11px",
+          opacity: 0.7,
+          paddingBottom: "30px",
+        }}
+      >
+        © 2025 FluencyPal. All rights reserved.
+      </Typography>
     </Stack>
   );
 };

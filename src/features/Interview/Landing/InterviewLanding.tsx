@@ -15,7 +15,6 @@ import { ReviewCards } from "./components/ReviewCards";
 import { PriceCards } from "./components/PriceCards";
 import { GeneralFaqBlock } from "@/features/Landing/FAQ/GeneralFaqBlock";
 import { CtaBlock } from "@/features/Landing/ctaBlock";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { Footer } from "./components/Footer";
 
 export async function InterviewLanding({
@@ -163,7 +162,7 @@ export async function InterviewLanding({
             <CtaBlock
               title={i18n._(`Ready to ace your next interview?`)}
               actionButtonTitle={i18n._(`Start Practicing Now`)}
-              actionButtonLink={`${getUrlStart(lang)}quiz`}
+              actionButtonLink={`#test`}
             />
             <Footer lang={lang} />
           </Stack>

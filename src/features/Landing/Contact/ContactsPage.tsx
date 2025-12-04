@@ -1,4 +1,4 @@
-import { Link, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 
 import { maxContentWidth, subTitleFontStyle } from "../landingSettings";
 
@@ -6,7 +6,6 @@ import { Footer } from "../Footer";
 import { ContactList } from "./ContactList";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { HeaderStatic } from "@/features/Header/HeaderStatic";
 
 interface ContactsPageProps {
