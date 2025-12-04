@@ -70,7 +70,7 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
               xs: "1fr",
               md: "1fr 1fr",
             },
-            gap: "24px",
+            gap: "32px",
             marginTop: "24px",
           }}
         >
@@ -78,76 +78,115 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
             <Stack
               key={index}
               sx={{
-                padding: "22px 22px",
+                gap: "20px",
+                padding: "30px 20px 24px 20px",
                 borderRadius: "16px",
                 border: "1px solid rgba(255,255,255,0.06)",
                 background:
                   "linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
-                gap: "14px",
               }}
             >
               <Typography
-                variant="overline"
-                sx={{ fontSize: "11px", letterSpacing: 1.2, opacity: 0.8 }}
+                variant="body2"
+                component={"h3"}
+                sx={{
+                  textAlign: "center",
+                  textTransform: "uppercase",
+                  marginBottom: "10px",
+                }}
               >
                 {item.label}
               </Typography>
 
               <Stack
                 sx={{
-                  gap: "8px",
-                  padding: "10px 12px",
-                  borderRadius: "10px",
-                  backgroundColor: "rgba(0,0,0,0.35)",
-                  border: "1px solid rgba(255,255,255,0.06)",
+                  alignSelf: "flex-start",
+                  maxWidth: "85%",
                 }}
               >
-                <Typography variant="caption" sx={{ opacity: 0.7, fontSize: "12px" }}>
-                  Interview question
-                </Typography>
-                <Typography variant="body2" sx={{ marginTop: "4px", fontSize: "18px" }}>
-                  {item.question}
-                </Typography>
+                <Stack
+                  sx={{
+                    gap: "6px",
+                    padding: "12px 16px",
+                    borderRadius: "12px 12px 12px 2px",
+                    backgroundColor: "rgba(0,0,0,0.4)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                >
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      letterSpacing: 0.5,
+                      fontWeight: 600,
+                    }}
+                  >
+                    Question
+                  </Typography>
+                  <Typography variant="body1" sx={{ lineHeight: 1.5 }}>
+                    {item.question}
+                  </Typography>
+                </Stack>
               </Stack>
 
               <Stack
                 sx={{
-                  gap: "6px",
-                  padding: "10px 12px",
-                  borderRadius: "10px",
-                  backgroundColor: "rgba(255,255,255,0.02)",
-                  border: "1px dashed rgba(255,255,255,0.08)",
+                  alignSelf: "flex-end",
+                  maxWidth: "85%",
                 }}
               >
-                <Typography variant="caption" sx={{ opacity: 0.7, fontSize: "12px" }}>
-                  Candidate’s short answer
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{ marginTop: "4px", fontSize: "18px", opacity: 0.9 }}
+                <Stack
+                  sx={{
+                    gap: "6px",
+                    padding: "12px 16px",
+                    borderRadius: "12px 12px 2px 12px",
+                    backgroundColor: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                  }}
                 >
-                  {item.userAnswerShort}
-                </Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      //opacity: 0.8,
+                      letterSpacing: 0.5,
+                      fontWeight: 600,
+                    }}
+                  >
+                    Candidate's answer
+                  </Typography>
+                  <Typography variant="body1" sx={{ lineHeight: 1.5, opacity: 0.95 }}>
+                    {item.userAnswerShort}
+                  </Typography>
+                </Stack>
               </Stack>
 
               <Stack
                 sx={{
-                  padding: "10px 12px",
-                  borderRadius: "10px",
-                  backgroundColor: "rgba(25,118,210,0.12)",
-                  border: "1px solid rgba(25,118,210,0.4)",
-                  gap: "6px",
+                  alignSelf: "flex-start",
+                  maxWidth: "100%",
                 }}
               >
-                <Typography variant="caption" sx={{ opacity: 0.8, fontSize: "12px" }}>
-                  AI feedback (what to improve)
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{ marginTop: "4px", fontSize: "18px", lineHeight: 1.6 }}
+                <Stack
+                  sx={{
+                    padding: "12px 16px",
+                    borderRadius: "12px 12px 12px 2px",
+                    backgroundColor: "rgba(33,98,166,0.15)",
+                    border: "1px solid rgba(33,98,166,0.35)",
+                    gap: "6px",
+                  }}
                 >
-                  {item.feedback}
-                </Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      letterSpacing: 0.5,
+                      fontWeight: 600,
+                    }}
+                  >
+                    AI feedback
+                  </Typography>
+                  <Typography variant="body1" sx={{ lineHeight: 1.7 }}>
+                    {item.feedback}
+                  </Typography>
+                </Stack>
               </Stack>
             </Stack>
           ))}
