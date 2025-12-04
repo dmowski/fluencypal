@@ -288,7 +288,7 @@ msgstr "مجاملة ودية لكسر الجليد."
 msgid "A polite and professional greeting."
 msgstr "تحية طيبة ومهنية."
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:67
+#: src/features/Interview/Landing/InterviewLanding.tsx:70
 #. js-lingui-explicit-id
 msgid "A proven method that delivers measurable results"
 msgstr "طريقة مثبتة تقدم نتائج قابلة للقياس"
@@ -302,11 +302,6 @@ msgstr "صمت في نهاية الخوارزمية"
 #. js-lingui-explicit-id
 msgid "A standard reply to “How are you?”"
 msgstr "رد قياسي على \"كيف حالك؟\""
-
-#: src/features/Interview/Landing/components/Footer.tsx:135
-#. js-lingui-explicit-id
-msgid "About Us"
-msgstr "حولنا"
 
 #: src/features/Goal/GoalQuestions.tsx:661
 #. js-lingui-explicit-id
@@ -331,16 +326,6 @@ msgid ""
 msgstr ""
 "بالطبع! يدعم FluencyPal لغات مختلفة ويعدل المحادثات بناءً على لغتك ومستوى "
 "كفاءتك المختارة. اللغات المتاحة تشمل:"
-
-#: src/features/Interview/Landing/InterviewLanding.tsx:159
-#. js-lingui-explicit-id
-msgid ""
-"Absolutely. There are no long-term commitments. You can cancel your "
-"subscription at any time, and you'll retain access until the end of your "
-"current billing period."
-msgstr ""
-"بالتأكيد. لا توجد التزامات طويلة الأمد. يمكنك إلغاء اشتراكك في أي وقت، "
-"وستظل لديك إمكانية الوصول حتى نهاية فترة الفوترة الحالية."
 
 #: src/features/Landing/PlanLandingBlock.tsx:232
 #. js-lingui-explicit-id
@@ -526,14 +511,14 @@ msgstr "لعبة تخمين الكلمات المستعارة"
 msgid "All Blogs"
 msgstr "جميع المدونات"
 
-#: src/features/Interview/data.tsx:581
+#: src/features/Interview/data.tsx:601
 #. js-lingui-explicit-id
 msgid "All Interviews"
 msgstr ""
 "\n"
 "جميع المقابلات\n"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:86
+#: src/features/Interview/Landing/InterviewLanding.tsx:91
 #. js-lingui-explicit-id
 msgid "All plans include instant access • No commitment • Secure payment"
 msgstr "تشمل جميع الخطط وصولاً فورياً • بدون التزام • دفع آمن"
@@ -904,15 +889,12 @@ msgstr "هل يمكنني شراء أرصدة بكميات كبيرة؟"
 msgid "Can I cancel anytime?"
 msgstr "هل يمكنني الإلغاء في أي وقت؟"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:156
+#: src/features/Interview/data.tsx:227
 #. js-lingui-explicit-id
-msgid "Can I cancel my subscription at any time?"
-msgstr "هل يمكنني إلغاء اشتراكي في أي وقت؟"
-
-#: src/features/Interview/Landing/InterviewLanding.tsx:126
-#. js-lingui-explicit-id
-msgid "Can I practice for specific companies or positions?"
-msgstr "هل يمكنني التدرب من أجل شركات أو وظائف محددة؟"
+msgid "Can I customize my practice sessions?"
+msgstr ""
+"plaintext\n"
+"هل يمكنني تخصيص جلسات التدريب الخاصة بي؟\n"
 
 #: src/features/Landing/LandingPage.tsx:61
 #: src/features/Landing/LandingPage.tsx:192
@@ -1036,7 +1018,7 @@ msgstr "خطة تعلم الصينية"
 msgid "Choose Site Language"
 msgstr "اختر لغة الموقع"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:84
+#: src/features/Interview/Landing/InterviewLanding.tsx:89
 #. js-lingui-explicit-id
 msgid "Choose your interview preparation plan"
 msgstr "اختر خطة التحضير للمقابلة الخاصة بك"
@@ -1117,8 +1099,7 @@ msgid "Contact me"
 msgstr "اتصل بي"
 
 #: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Interview/Landing/components/Footer.tsx:138
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:30
+#: src/features/Interview/Landing/components/Footer.tsx:136
 #: src/features/Landing/Contact/ContactsPage.tsx:93
 #: src/features/Landing/Footer.tsx:88
 #: src/features/SEO/metadata.ts:61
@@ -2073,7 +2054,7 @@ msgstr ""
 msgid "Everything in Free, plus:"
 msgstr "كل شيء في الإصدار المجاني، بالإضافة إلى:"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:85
+#: src/features/Interview/Landing/InterviewLanding.tsx:90
 #. js-lingui-explicit-id
 msgid "Everything you need to stand out and get the job"
 msgstr "كل ما تحتاجه للتميز والحصول على الوظيفة"
@@ -2149,8 +2130,8 @@ msgstr "فشل في حذف حسابك. يرجى المحاولة مرة أخرى
 msgid "Failed to send feedback. Please try again later."
 msgstr "فشل في إرسال التعليقات. يرجى المحاولة مرة أخرى لاحقا."
 
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:41
-#: src/features/Interview/Landing/InterviewLanding.tsx:93
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:36
+#: src/features/Interview/Landing/InterviewLanding.tsx:99
 #: src/features/Landing/LandingPage.tsx:179
 #: src/features/Landing/Price/PricePage.tsx:306
 #. js-lingui-explicit-id
@@ -2751,19 +2732,19 @@ msgstr "محادثة تسجيل الوصول في الفندق"
 msgid "How do daily tasks help me improve?"
 msgstr "كيف تساعدني المهام اليومية في تحسين نفسي؟"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:96
+#: src/features/Interview/data.tsx:221
 #. js-lingui-explicit-id
-msgid "How does the interview preparation platform work?"
-msgstr "كيف تعمل منصة التحضير للمقابلات؟"
-
-#: src/features/Landing/PlanLandingBlock.tsx:349
-#. js-lingui-explicit-id
-msgid "How It Works"
-msgstr "كيف يعمل"
+msgid "How does the AI feedback work?"
+msgstr "كيف يعمل التقييم من الذكاء الاصطناعي؟"
 
 #: src/features/Interview/Landing/components/InterviewHeader.tsx:25
 #. js-lingui-explicit-id
 msgid "How it works"
+msgstr "كيف يعمل"
+
+#: src/features/Landing/PlanLandingBlock.tsx:349
+#. js-lingui-explicit-id
+msgid "How It Works"
 msgstr "كيف يعمل"
 
 #: src/features/Interview/Landing/components/Footer.tsx:122
@@ -2775,11 +2756,6 @@ msgstr "كيف يعمل"
 #. js-lingui-explicit-id
 msgid "How it works:"
 msgstr "كيف يعمل:"
-
-#: src/features/Interview/Landing/InterviewLanding.tsx:116
-#. js-lingui-explicit-id
-msgid "How long does it take to see improvement?"
-msgstr "كم من الوقت يستغرق لرؤية التحسن؟"
 
 #: src/features/Usage/PaymentModal.tsx:207
 #. js-lingui-explicit-id
@@ -3413,7 +3389,7 @@ msgstr ""
 "والفرص المهنية. ابدأ في دمج هذه العادات اليومية البسيطة اليوم وارفع معايير "
 "التواصل الخاص بك في الأعمال بمساعدة FluencyPal."
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:58
+#: src/features/Interview/Landing/InterviewLanding.tsx:60
 #. js-lingui-explicit-id
 msgid "In less then 5 minutes, you'll get:"
 msgstr "في أقل من 5 دقائق، ستحصل على:"
@@ -3814,11 +3790,6 @@ msgstr "مفردات المقابلة للمتعلمين المتوسطين"
 msgid "Introduction: Small Talk with the Interviewer"
 msgstr "مقدمة: الحديث العرضي مع المُقابِل"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:146
-#. js-lingui-explicit-id
-msgid "Is there a free trial available?"
-msgstr "هل هناك فترة تجريبية مجانية متاحة؟"
-
 #: src/features/Interview/data.tsx:40
 #. js-lingui-explicit-id
 msgid "IT & Software Development"
@@ -3875,7 +3846,7 @@ msgstr "نصائح المقابلة الوظيفية"
 msgid "job interview tips"
 msgstr "نصائح المقابلة الوظيفية"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:73
+#: src/features/Interview/Landing/InterviewLanding.tsx:77
 #. js-lingui-explicit-id
 msgid "Join thousands who transformed their interview performance"
 msgstr "انضم إلى الآلاف الذين حَسَّنُوا أداءهم في المقابلات"
@@ -4346,17 +4317,6 @@ msgstr ""
 "تتضمن معظم المقابلات السؤال الكلاسيكي \"النقاط القوية والضعف\". من الخصوصي "
 "المهم التعامل مع هذا بشكل جيد باللغة الإنجليزية."
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:119
-#. js-lingui-explicit-id
-msgid ""
-"Most users report noticeable improvement within 1-2 weeks of consistent "
-"practice. Our data shows that candidates who complete at least 10 practice "
-"sessions increase their interview success rate by up to 60%."
-msgstr ""
-"معظم المستخدمين يلاحظون تحسنًا واضحًا خلال 1-2 أسبوع من الممارسة المستمرة. "
-"تُظهر بياناتنا أن المتقدمين الذين يكملون على الأقل 10 جلسات تدريبية يزيدون "
-"معدل نجاح مقابلاتهم بنسبة تصل إلى 60%."
-
 #: src/features/Goal/Quiz/AboutYourselfList.tsx:24
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
@@ -4785,16 +4745,16 @@ msgstr "لغات أخرى"
 msgid "Other useful strengths:"
 msgstr "نقاط قوة أخرى مفيدة:"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:99
+#: src/features/Interview/data.tsx:222
 #. js-lingui-explicit-id
 msgid ""
-"Our AI-powered platform simulates real interview scenarios tailored to your "
-"target role. You'll receive personalized questions, instant feedback on "
-"your answers, and detailed performance analytics to track your improvement."
+"Our AI analyzes your answers for clarity, structure, technical accuracy, "
+"and communication skills. You'll receive detailed feedback and suggestions "
+"to improve your responses effectively."
 msgstr ""
-"تُحاكي منصتنا المدعومة بالذكاء الاصطناعي سيناريوهات المقابلات الحقيقية "
-"المصممة حسب الدور المستهدف الخاص بك. ستحصل على أسئلة مخصصة، وتقييم فوري "
-"لإجاباتك، وتحليلات أداء مفصلة لتتبع تقدمك."
+"يقوم الذكاء الاصطناعي لدينا بتحليل إجاباتك من حيث الوضوح، الهيكلية، الدقة "
+"التقنية، ومهارات التواصل. ستتلقى ملاحظات تفصيلية واقتراحات لتحسين ردودك "
+"بشكل فعال."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
 #. js-lingui-explicit-id
@@ -5249,7 +5209,7 @@ msgstr "الأسئلة السابقة"
 
 #: src/features/Header/HeaderStatic.tsx:19
 #: src/features/Interview/Landing/components/Footer.tsx:128
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:35
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:30
 #: src/features/Landing/Footer.tsx:94
 #: src/features/Landing/Price/PricePage.tsx:94
 #. js-lingui-explicit-id
@@ -5270,7 +5230,7 @@ msgstr "سياسة الخصوصية"
 #: src/features/Auth/AuthWall.tsx:300
 #: src/features/Goal/GoalQuestions.tsx:65
 #: src/features/Header/NeedHelpModal.tsx:194
-#: src/features/Interview/Landing/components/Footer.tsx:144
+#: src/features/Interview/Landing/components/Footer.tsx:142
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
@@ -5437,7 +5397,7 @@ msgstr ""
 msgid "Read the text"
 msgstr "اقرأ النص"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:168
+#: src/features/Interview/Landing/InterviewLanding.tsx:103
 #. js-lingui-explicit-id
 msgid "Ready to ace your next interview?"
 msgstr "مستعد للتفوق في مقابلتك القادمة؟"
@@ -5462,12 +5422,12 @@ msgstr "هل أنت مستعد؟"
 msgid "Real interview simulation"
 msgstr "محاكاة مقابلة حقيقية"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:50
+#: src/features/Interview/Landing/InterviewLanding.tsx:51
 #. js-lingui-explicit-id
 msgid "Real outcomes that transform your interview performance"
 msgstr "نتائج حقيقية تحول أدائك في المقابلات"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:72
+#: src/features/Interview/Landing/InterviewLanding.tsx:76
 #. js-lingui-explicit-id
 msgid "Real people. Real job offers."
 msgstr "أشخاص حقيقيون. عروض عمل حقيقية."
@@ -6030,8 +5990,8 @@ msgstr "ابدأ"
 msgid "Start a conversation to get one."
 msgstr "ابدأ محادثة للحصول على واحدة."
 
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:48
-#: src/features/Interview/Landing/InterviewLanding.tsx:51
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:43
+#: src/features/Interview/Landing/InterviewLanding.tsx:52
 #. js-lingui-explicit-id
 msgid "Start Free Trial"
 msgstr "ابدأ النسخة التجريبية المجانية"
@@ -6069,7 +6029,7 @@ msgstr "ابدأ الممارسة"
 msgid "Start Practicing"
 msgstr "ابدأ الممارسة"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:169
+#: src/features/Interview/Landing/InterviewLanding.tsx:104
 #. js-lingui-explicit-id
 msgid "Start Practicing Now"
 msgstr "ابدأ الممارسة الآن"
@@ -6089,7 +6049,7 @@ msgstr "ابدأ ممارسة التحدث"
 msgid "Start Talking"
 msgstr "ابدأ الحديث"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:60
+#: src/features/Interview/Landing/InterviewLanding.tsx:62
 #: src/features/Landing/PlanLandingBlock.tsx:428
 #. js-lingui-explicit-id
 msgid "Start Test"
@@ -6356,7 +6316,7 @@ msgstr "لغات النظام"
 msgid "Tailor AI interactions to fit your needs"
 msgstr "خصص تفاعلات الذكاء الاصطناعي لتناسب احتياجاتك"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:57
+#: src/features/Interview/Landing/InterviewLanding.tsx:59
 #. js-lingui-explicit-id
 msgid "Take the Interview Readiness Test"
 msgstr "خذ اختبار جاهزية المقابلة"
@@ -6426,7 +6386,7 @@ msgstr "الشروط والأحكام"
 #: src/features/Auth/AuthWall.tsx:306
 #: src/features/Goal/GoalQuestions.tsx:69
 #: src/features/Header/NeedHelpModal.tsx:181
-#: src/features/Interview/Landing/components/Footer.tsx:141
+#: src/features/Interview/Landing/components/Footer.tsx:139
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Legal/TermsOfUse.tsx:13
@@ -6898,16 +6858,16 @@ msgstr ""
 msgid "We process your voice using AI"
 msgstr "نحن نقوم بمعالجة صوتك باستخدام الذكاء الاصطناعي"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:109
+#: src/features/Interview/data.tsx:216
 #. js-lingui-explicit-id
 msgid ""
 "We support various interview formats including behavioral interviews, "
-"technical interviews, case studies, and role-specific scenarios across "
+"technical interviews, system design, and role-specific scenarios across "
 "multiple industries and job levels."
 msgstr ""
-"نحن ندعم مختلف صيغ المقابلات بما في ذلك المقابلات السلوكية، المقابلات "
-"الفنية، الدراسات الحياتية، والسيناريوهات الخاصة بالأدوار عبر مختلف الصناعات "
-"والمستويات الوظيفية."
+"نحن ندعم تنسيقات مقابلات متنوعة بما في ذلك المقابلات السلوكية، والمقابلات "
+"التقنية، وتصميم الأنظمة، والسيناريوهات الخاصة بالأدوار عبر صناعات ومستويات "
+"وظيفية متعددة."
 
 #: src/features/Auth/AuthWall.tsx:224
 #. js-lingui-explicit-id
@@ -6964,11 +6924,6 @@ msgstr "ما هو FluencyPal؟"
 msgid "What is our daily goal?"
 msgstr "ما هو هدفنا اليومي؟"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:136
-#. js-lingui-explicit-id
-msgid "What kind of feedback will I receive?"
-msgstr "ما نوع الملاحظات التي سأحصل عليها؟"
-
 #: src/features/Goal/Quiz/QuizPage2.tsx:68
 #. js-lingui-explicit-id
 msgid "What language do you speak"
@@ -6985,10 +6940,10 @@ msgstr "ما أوضاع التعلم المتاحة؟"
 msgid "What one hour means?"
 msgstr "ماذا يعني الساعة الواحدة؟"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:106
+#: src/features/Interview/data.tsx:215
 #. js-lingui-explicit-id
-msgid "What types of interviews can I practice for?"
-msgstr "ما أنواع المقابلات التي يمكنني التدرب عليها؟"
+msgid "What types of frontend interviews can I practice for?"
+msgstr "ما أنواع مقابلات الواجهة الأمامية التي يمكنني التدرب عليها؟"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:459
 #. js-lingui-explicit-id
@@ -7004,7 +6959,7 @@ msgstr "ما الذي نحتاجه منك؟"
 msgid "What you get with FluencyPal"
 msgstr "ما الذي تحصل عليه مع FluencyPal"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:49
+#: src/features/Interview/Landing/InterviewLanding.tsx:50
 #. js-lingui-explicit-id
 msgid "What you will achieve"
 msgstr ""
@@ -7021,7 +6976,7 @@ msgstr "ما الذي يتضمن؟"
 msgid "What’s included in my subscription?"
 msgstr "ما الذي يتضمنه اشتراكي؟"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:66
+#: src/features/Interview/Landing/InterviewLanding.tsx:69
 #. js-lingui-explicit-id
 msgid "Why candidates improve so quickly"
 msgstr "لماذا يتحسن المرشحون بسرعة كبيرة"
@@ -7131,16 +7086,16 @@ msgstr ""
 "نعم! نقدم خصومات عند شراء حزم ائتمان أكبر. فقط اتصل بي قبل أن تشتري وسأعطيك "
 "خصمًا."
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:129
+#: src/features/Interview/data.tsx:228
 #. js-lingui-explicit-id
 msgid ""
-"Yes! You can customize your practice sessions based on specific job titles, "
+"Yes! You can tailor your practice sessions based on specific job titles, "
 "companies, and industries. Our AI adapts questions to match the "
 "interviewing style of your target employers."
 msgstr ""
-"نعم! يمكنك تخصيص جلسات التدريب الخاصة بك بناءً على مسميات وظيفية محددة، "
-"شركات، وصناعات بعينها. يتكيف الذكاء الاصطناعي لدينا مع الأسئلة لتتناسب مع "
-"أسلوب المقابلة لأرباب العمل المستهدفين."
+"نعم! يمكنك تخصيص جلسات التدريب الخاصة بك بناءً على ألقاب الوظائف المحددة، "
+"والشركات، والصناعات. يتكيف الذكاء الاصطناعي لدينا مع الأسئلة لتتناسب مع "
+"أسلوب المقابلة لأصحاب العمل الذين تستهدفهم."
 
 #: src/features/Header/NeedHelpModal.tsx:241
 #. js-lingui-explicit-id
@@ -7151,17 +7106,6 @@ msgstr "نعم، احذف الحساب"
 #. js-lingui-explicit-id
 msgid "Yes, I am ready"
 msgstr "نعم، أنا جاهز"
-
-#: src/features/Interview/Landing/InterviewLanding.tsx:149
-#. js-lingui-explicit-id
-msgid ""
-"Yes, you can start with our free trial that includes access to basic "
-"interview scenarios and limited feedback. Upgrade anytime to unlock "
-"unlimited practice sessions and advanced features."
-msgstr ""
-"نعم، يمكنك البدء بتجربتنا المجانية التي تشمل الوصول إلى سيناريوهات المقابلة "
-"الأساسية وتقديم تغذية راجعة محدودة. قم بالترقية في أي وقت لفتح جلسات ممارسة "
-"غير محدودة وميزات متقدمة."
 
 #: src/features/Landing/Price/PricePage.tsx:340
 #. js-lingui-explicit-id
@@ -7265,16 +7209,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "ستحصل على 3 أيام من الوصول الكامل مجاناً"
-
-#: src/features/Interview/Landing/InterviewLanding.tsx:139
-#. js-lingui-explicit-id
-msgid ""
-"You'll get comprehensive feedback including clarity scores, communication "
-"analysis, content quality assessment, suggested improvements, and "
-"comparison with best practices for your industry."
-msgstr ""
-"ستحصل على تغذية راجعة شاملة تتضمن درجات الوضوح وتحليل التواصل وتقييم جودة "
-"المحتوى والاقتراحات للتحسينات ومقارنة بأفضل الممارسات في مجال عملك."
 
 #: src/features/Usage/PayWall.tsx:76
 #. js-lingui-explicit-id
@@ -7402,6 +7336,121 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Interview/Landing/components/Footer.tsx:135
+#. js-lingui-explicit-id
+#~ msgid "About Us"
+#~ msgstr "حولنا"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:159
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Absolutely. There are no long-term commitments. You can cancel your "
+#~ "subscription at any time, and you'll retain access until the end of your "
+#~ "current billing period."
+#~ msgstr ""
+#~ "بالتأكيد. لا توجد التزامات طويلة الأمد. يمكنك إلغاء اشتراكك في أي وقت، "
+#~ "وستظل لديك إمكانية الوصول حتى نهاية فترة الفوترة الحالية."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:156
+#. js-lingui-explicit-id
+#~ msgid "Can I cancel my subscription at any time?"
+#~ msgstr "هل يمكنني إلغاء اشتراكي في أي وقت؟"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:126
+#. js-lingui-explicit-id
+#~ msgid "Can I practice for specific companies or positions?"
+#~ msgstr "هل يمكنني التدرب من أجل شركات أو وظائف محددة؟"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:96
+#. js-lingui-explicit-id
+#~ msgid "How does the interview preparation platform work?"
+#~ msgstr "كيف تعمل منصة التحضير للمقابلات؟"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:116
+#. js-lingui-explicit-id
+#~ msgid "How long does it take to see improvement?"
+#~ msgstr "كم من الوقت يستغرق لرؤية التحسن؟"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:146
+#. js-lingui-explicit-id
+#~ msgid "Is there a free trial available?"
+#~ msgstr "هل هناك فترة تجريبية مجانية متاحة؟"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:119
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Most users report noticeable improvement within 1-2 weeks of consistent "
+#~ "practice. Our data shows that candidates who complete at least 10 practice "
+#~ "sessions increase their interview success rate by up to 60%."
+#~ msgstr ""
+#~ "معظم المستخدمين يلاحظون تحسنًا واضحًا خلال 1-2 أسبوع من الممارسة المستمرة. "
+#~ "تُظهر بياناتنا أن المتقدمين الذين يكملون على الأقل 10 جلسات تدريبية يزيدون "
+#~ "معدل نجاح مقابلاتهم بنسبة تصل إلى 60%."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:99
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Our AI-powered platform simulates real interview scenarios tailored to your "
+#~ "target role. You'll receive personalized questions, instant feedback on "
+#~ "your answers, and detailed performance analytics to track your improvement."
+#~ msgstr ""
+#~ "تُحاكي منصتنا المدعومة بالذكاء الاصطناعي سيناريوهات المقابلات الحقيقية "
+#~ "المصممة حسب الدور المستهدف الخاص بك. ستحصل على أسئلة مخصصة، وتقييم فوري "
+#~ "لإجاباتك، وتحليلات أداء مفصلة لتتبع تقدمك."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:109
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "We support various interview formats including behavioral interviews, "
+#~ "technical interviews, case studies, and role-specific scenarios across "
+#~ "multiple industries and job levels."
+#~ msgstr ""
+#~ "نحن ندعم مختلف صيغ المقابلات بما في ذلك المقابلات السلوكية، المقابلات "
+#~ "الفنية، الدراسات الحياتية، والسيناريوهات الخاصة بالأدوار عبر مختلف الصناعات "
+#~ "والمستويات الوظيفية."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:136
+#. js-lingui-explicit-id
+#~ msgid "What kind of feedback will I receive?"
+#~ msgstr "ما نوع الملاحظات التي سأحصل عليها؟"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:106
+#. js-lingui-explicit-id
+#~ msgid "What types of interviews can I practice for?"
+#~ msgstr "ما أنواع المقابلات التي يمكنني التدرب عليها؟"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:129
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Yes! You can customize your practice sessions based on specific job titles, "
+#~ "companies, and industries. Our AI adapts questions to match the "
+#~ "interviewing style of your target employers."
+#~ msgstr ""
+#~ "نعم! يمكنك تخصيص جلسات التدريب الخاصة بك بناءً على مسميات وظيفية محددة، "
+#~ "شركات، وصناعات بعينها. يتكيف الذكاء الاصطناعي لدينا مع الأسئلة لتتناسب مع "
+#~ "أسلوب المقابلة لأرباب العمل المستهدفين."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:149
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Yes, you can start with our free trial that includes access to basic "
+#~ "interview scenarios and limited feedback. Upgrade anytime to unlock "
+#~ "unlimited practice sessions and advanced features."
+#~ msgstr ""
+#~ "نعم، يمكنك البدء بتجربتنا المجانية التي تشمل الوصول إلى سيناريوهات المقابلة "
+#~ "الأساسية وتقديم تغذية راجعة محدودة. قم بالترقية في أي وقت لفتح جلسات ممارسة "
+#~ "غير محدودة وميزات متقدمة."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:139
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "You'll get comprehensive feedback including clarity scores, communication "
+#~ "analysis, content quality assessment, suggested improvements, and "
+#~ "comparison with best practices for your industry."
+#~ msgstr ""
+#~ "ستحصل على تغذية راجعة شاملة تتضمن درجات الوضوح وتحليل التواصل وتقييم جودة "
+#~ "المحتوى والاقتراحات للتحسينات ومقارنة بأفضل الممارسات في مجال عملك."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:104
 #. js-lingui-explicit-id

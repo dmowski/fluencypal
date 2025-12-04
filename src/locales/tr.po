@@ -298,7 +298,7 @@ msgstr "Buzu kırmak için dostane bir iltifat."
 msgid "A polite and professional greeting."
 msgstr "Nazik ve profesyonel bir selamlama."
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:67
+#: src/features/Interview/Landing/InterviewLanding.tsx:70
 #. js-lingui-explicit-id
 msgid "A proven method that delivers measurable results"
 msgstr "Ölçülebilir sonuçlar veren kanıtlanmış bir yöntem"
@@ -312,11 +312,6 @@ msgstr "Algoritmanın sonunda bir sessizlik"
 #. js-lingui-explicit-id
 msgid "A standard reply to “How are you?”"
 msgstr "“Nasılsın?”a standart bir yanıt."
-
-#: src/features/Interview/Landing/components/Footer.tsx:135
-#. js-lingui-explicit-id
-msgid "About Us"
-msgstr "Hakkımızda"
 
 #: src/features/Goal/GoalQuestions.tsx:661
 #. js-lingui-explicit-id
@@ -341,17 +336,6 @@ msgid ""
 msgstr ""
 "Kesinlikle! FluencyPal, çeşitli dilleri destekler ve konuşmaları seçtiğiniz "
 "dil ve yeterlilik seviyenize göre ayarlar. Mevcut diller şunlardır:"
-
-#: src/features/Interview/Landing/InterviewLanding.tsx:159
-#. js-lingui-explicit-id
-msgid ""
-"Absolutely. There are no long-term commitments. You can cancel your "
-"subscription at any time, and you'll retain access until the end of your "
-"current billing period."
-msgstr ""
-"Elbette. Uzun süreli taahhütler yoktur. Aboneliğinizi istediğiniz zaman "
-"iptal edebilirsiniz ve mevcut faturalama döneminizin sonuna kadar "
-"erişiminizi korursunuz."
 
 #: src/features/Landing/PlanLandingBlock.tsx:232
 #. js-lingui-explicit-id
@@ -540,12 +524,12 @@ msgstr "Alias Kelime Tahmin Oyunu"
 msgid "All Blogs"
 msgstr "Tüm Bloglar"
 
-#: src/features/Interview/data.tsx:581
+#: src/features/Interview/data.tsx:601
 #. js-lingui-explicit-id
 msgid "All Interviews"
 msgstr "Tüm Görüşmeler"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:86
+#: src/features/Interview/Landing/InterviewLanding.tsx:91
 #. js-lingui-explicit-id
 msgid "All plans include instant access • No commitment • Secure payment"
 msgstr "Tüm planlar anında erişim içerir • Taahhüt yok • Güvenli ödeme"
@@ -923,15 +907,10 @@ msgstr "Toplu olarak kredi satın alabilir miyim?"
 msgid "Can I cancel anytime?"
 msgstr "Herhangi bir zaman iptal edebilir miyim?"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:156
+#: src/features/Interview/data.tsx:227
 #. js-lingui-explicit-id
-msgid "Can I cancel my subscription at any time?"
-msgstr "Aboneliğimi istediğim zaman iptal edebilir miyim?"
-
-#: src/features/Interview/Landing/InterviewLanding.tsx:126
-#. js-lingui-explicit-id
-msgid "Can I practice for specific companies or positions?"
-msgstr "Belirli şirketler veya pozisyonlar için pratik yapabilir miyim?"
+msgid "Can I customize my practice sessions?"
+msgstr "Uygulama oturumlarımı özelleştirebilir miyim?"
 
 #: src/features/Landing/LandingPage.tsx:61
 #: src/features/Landing/LandingPage.tsx:192
@@ -1059,7 +1038,7 @@ msgstr "Çince Öğrenme Planı"
 msgid "Choose Site Language"
 msgstr "Site Dili Seçin"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:84
+#: src/features/Interview/Landing/InterviewLanding.tsx:89
 #. js-lingui-explicit-id
 msgid "Choose your interview preparation plan"
 msgstr "Mülakat hazırlık planınızı seçin"
@@ -1140,8 +1119,7 @@ msgid "Contact me"
 msgstr "Bana ulaşın"
 
 #: src/features/Header/HeaderStatic.tsx:18
-#: src/features/Interview/Landing/components/Footer.tsx:138
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:30
+#: src/features/Interview/Landing/components/Footer.tsx:136
 #: src/features/Landing/Contact/ContactsPage.tsx:93
 #: src/features/Landing/Footer.tsx:88
 #: src/features/SEO/metadata.ts:61
@@ -2135,7 +2113,7 @@ msgstr ""
 msgid "Everything in Free, plus:"
 msgstr "Ücretsiz sürümde olan her şey, artı:"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:85
+#: src/features/Interview/Landing/InterviewLanding.tsx:90
 #. js-lingui-explicit-id
 msgid "Everything you need to stand out and get the job"
 msgstr "Her şey öne çıkmak ve işi almak için ihtiyaç duyduğunuz şeyler"
@@ -2213,8 +2191,8 @@ msgstr ""
 msgid "Failed to send feedback. Please try again later."
 msgstr "Geri bildirim gönderilemedi. Lütfen daha sonra tekrar deneyin."
 
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:41
-#: src/features/Interview/Landing/InterviewLanding.tsx:93
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:36
+#: src/features/Interview/Landing/InterviewLanding.tsx:99
 #: src/features/Landing/LandingPage.tsx:179
 #: src/features/Landing/Price/PricePage.tsx:306
 #. js-lingui-explicit-id
@@ -2832,20 +2810,20 @@ msgstr "Otel Giriş Konuşması"
 msgid "How do daily tasks help me improve?"
 msgstr "Günlük görevler bana nasıl yardımcı olur?"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:96
+#: src/features/Interview/data.tsx:221
 #. js-lingui-explicit-id
-msgid "How does the interview preparation platform work?"
-msgstr "Mülakat hazırlık platformu nasıl çalışıyor?"
-
-#: src/features/Landing/PlanLandingBlock.tsx:349
-#. js-lingui-explicit-id
-msgid "How It Works"
-msgstr "Nasıl Çalışır"
+msgid "How does the AI feedback work?"
+msgstr "AI geri bildirimi nasıl çalışır?"
 
 #: src/features/Interview/Landing/components/InterviewHeader.tsx:25
 #. js-lingui-explicit-id
 msgid "How it works"
 msgstr "Nasıl çalışır"
+
+#: src/features/Landing/PlanLandingBlock.tsx:349
+#. js-lingui-explicit-id
+msgid "How It Works"
+msgstr "Nasıl Çalışır"
 
 #: src/features/Interview/Landing/components/Footer.tsx:122
 #. js-lingui-explicit-id
@@ -2856,11 +2834,6 @@ msgstr "Nasıl Çalışır"
 #. js-lingui-explicit-id
 msgid "How it works:"
 msgstr "Nasıl çalışır:"
-
-#: src/features/Interview/Landing/InterviewLanding.tsx:116
-#. js-lingui-explicit-id
-msgid "How long does it take to see improvement?"
-msgstr "İyileşme görmek ne kadar sürer?"
 
 #: src/features/Usage/PaymentModal.tsx:207
 #. js-lingui-explicit-id
@@ -3525,7 +3498,7 @@ msgstr ""
 "basit günlük alışkanlıkları bugün entegre etmeye başlayın ve iş "
 "iletişiminizi FluencyPal ile yükseltin."
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:58
+#: src/features/Interview/Landing/InterviewLanding.tsx:60
 #. js-lingui-explicit-id
 msgid "In less then 5 minutes, you'll get:"
 msgstr "5 dakikadan kısa bir sürede, şunları alacaksınız:"
@@ -3940,11 +3913,6 @@ msgstr "Orta düzey öğrenenler için mülakat kelime hazinesi"
 msgid "Introduction: Small Talk with the Interviewer"
 msgstr "Giriş: Mülakatçı ile Küçük Sohbet"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:146
-#. js-lingui-explicit-id
-msgid "Is there a free trial available?"
-msgstr "Ücretsiz deneme mevcut mu?"
-
 #: src/features/Interview/data.tsx:40
 #. js-lingui-explicit-id
 msgid "IT & Software Development"
@@ -4001,7 +3969,7 @@ msgstr "İş Görüşmesi İpuçları"
 msgid "job interview tips"
 msgstr "iş görüşmesi ipuçları"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:73
+#: src/features/Interview/Landing/InterviewLanding.tsx:77
 #. js-lingui-explicit-id
 msgid "Join thousands who transformed their interview performance"
 msgstr "Binlerce kişinin mülakat performansını dönüştürdüğü topluluğa katıl"
@@ -4478,17 +4446,6 @@ msgstr ""
 "Çoğu mülakat, klasik \"güçlü yönler ve zayıf yönler\" sorusunu içerir. Bunu "
 "İngilizce'de iyi bir şekilde ele almak özellikle önemlidir."
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:119
-#. js-lingui-explicit-id
-msgid ""
-"Most users report noticeable improvement within 1-2 weeks of consistent "
-"practice. Our data shows that candidates who complete at least 10 practice "
-"sessions increase their interview success rate by up to 60%."
-msgstr ""
-"Çoğu kullanıcı, tutarlı bir uygulama ile 1-2 hafta içinde belirgin bir "
-"gelişme bildirmektedir. Verilerimiz, en az 10 uygulama oturumunu tamamlayan "
-"adayların mülakat başarı oranını %60'a kadar artırdığını göstermektedir."
-
 #: src/features/Goal/Quiz/AboutYourselfList.tsx:24
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
@@ -4914,17 +4871,16 @@ msgstr "Diğer diller"
 msgid "Other useful strengths:"
 msgstr "Diğer kullanışlı güçler:"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:99
+#: src/features/Interview/data.tsx:222
 #. js-lingui-explicit-id
 msgid ""
-"Our AI-powered platform simulates real interview scenarios tailored to your "
-"target role. You'll receive personalized questions, instant feedback on "
-"your answers, and detailed performance analytics to track your improvement."
+"Our AI analyzes your answers for clarity, structure, technical accuracy, "
+"and communication skills. You'll receive detailed feedback and suggestions "
+"to improve your responses effectively."
 msgstr ""
-"Yapay zeka destekli platformumuz, hedeflediğiniz role uygun gerçek mülakat "
-"senaryolarını simüle eder. Kişiselleştirilmiş sorular alacak, yanıtlarınıza "
-"anında geri bildirim ve gelişiminizi takip etmeniz için ayrıntılı "
-"performans analizleri elde edeceksiniz."
+"AI'miz yanıtlarınızı netlik, yapı, teknik doğruluk ve iletişim becerileri "
+"açısından analiz eder. Yanıtlarınızı etkili bir şekilde geliştirmeniz için "
+"ayrıntılı geri bildirimler ve öneriler alacaksınız."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:404
 #. js-lingui-explicit-id
@@ -5393,7 +5349,7 @@ msgstr "Önceki sorular"
 
 #: src/features/Header/HeaderStatic.tsx:19
 #: src/features/Interview/Landing/components/Footer.tsx:128
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:35
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:30
 #: src/features/Landing/Footer.tsx:94
 #: src/features/Landing/Price/PricePage.tsx:94
 #. js-lingui-explicit-id
@@ -5414,7 +5370,7 @@ msgstr "gizlilik politikası"
 #: src/features/Auth/AuthWall.tsx:300
 #: src/features/Goal/GoalQuestions.tsx:65
 #: src/features/Header/NeedHelpModal.tsx:194
-#: src/features/Interview/Landing/components/Footer.tsx:144
+#: src/features/Interview/Landing/components/Footer.tsx:142
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
@@ -5577,7 +5533,7 @@ msgstr ""
 msgid "Read the text"
 msgstr "Metni okuyun"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:168
+#: src/features/Interview/Landing/InterviewLanding.tsx:103
 #. js-lingui-explicit-id
 msgid "Ready to ace your next interview?"
 msgstr "Bir sonraki mülakatınızı kazanmaya hazır mısınız?"
@@ -5602,12 +5558,12 @@ msgstr "Hazır mısın?"
 msgid "Real interview simulation"
 msgstr "Gerçek mülakat simülasyonu"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:50
+#: src/features/Interview/Landing/InterviewLanding.tsx:51
 #. js-lingui-explicit-id
 msgid "Real outcomes that transform your interview performance"
 msgstr "Mülakat performansınızı dönüştüren gerçek sonuçlar"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:72
+#: src/features/Interview/Landing/InterviewLanding.tsx:76
 #. js-lingui-explicit-id
 msgid "Real people. Real job offers."
 msgstr "Gerçek insanlar. Gerçek iş teklifleri."
@@ -6182,8 +6138,8 @@ msgstr "Başla"
 msgid "Start a conversation to get one."
 msgstr "Bir tane almak için bir sohbet başlatın."
 
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:48
-#: src/features/Interview/Landing/InterviewLanding.tsx:51
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:43
+#: src/features/Interview/Landing/InterviewLanding.tsx:52
 #. js-lingui-explicit-id
 msgid "Start Free Trial"
 msgstr "Ücretsiz Denemeye Başla"
@@ -6221,7 +6177,7 @@ msgstr "Başla pratik yapmaya"
 msgid "Start Practicing"
 msgstr "Alıştırmaya Başla"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:169
+#: src/features/Interview/Landing/InterviewLanding.tsx:104
 #. js-lingui-explicit-id
 msgid "Start Practicing Now"
 msgstr "Şimdi Pratik Yapmaya Başla"
@@ -6241,7 +6197,7 @@ msgstr "Konuşma Pratiğine Başla"
 msgid "Start Talking"
 msgstr "Konuşmaya Başla"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:60
+#: src/features/Interview/Landing/InterviewLanding.tsx:62
 #: src/features/Landing/PlanLandingBlock.tsx:428
 #. js-lingui-explicit-id
 msgid "Start Test"
@@ -6517,7 +6473,7 @@ msgstr "Sistem dilleri"
 msgid "Tailor AI interactions to fit your needs"
 msgstr "İhtiyaçlarınıza uygun AI etkileşimlerini özelleştirin"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:57
+#: src/features/Interview/Landing/InterviewLanding.tsx:59
 #. js-lingui-explicit-id
 msgid "Take the Interview Readiness Test"
 msgstr "Mülakat Hazırlık Testini Alın"
@@ -6588,7 +6544,7 @@ msgstr "Şartlar ve Koşullar"
 #: src/features/Auth/AuthWall.tsx:306
 #: src/features/Goal/GoalQuestions.tsx:69
 #: src/features/Header/NeedHelpModal.tsx:181
-#: src/features/Interview/Landing/components/Footer.tsx:141
+#: src/features/Interview/Landing/components/Footer.tsx:139
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
 #: src/features/Legal/TermsOfUse.tsx:13
@@ -7069,16 +7025,16 @@ msgstr ""
 msgid "We process your voice using AI"
 msgstr "Sesinizi AI kullanarak işliyoruz"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:109
+#: src/features/Interview/data.tsx:216
 #. js-lingui-explicit-id
 msgid ""
 "We support various interview formats including behavioral interviews, "
-"technical interviews, case studies, and role-specific scenarios across "
+"technical interviews, system design, and role-specific scenarios across "
 "multiple industries and job levels."
 msgstr ""
-"Davranışsal mülakatlar, teknik mülakatlar, vaka çalışmaları ve çeşitli "
-"endüstriler ve iş seviyeleri boyunca rol özelindeki senaryolar dahil olmak "
-"üzere çeşitli mülakat formatlarını destekliyoruz."
+"Davranışsal mülakatlar, teknik mülakatlar, sistem tasarımı ve çeşitli "
+"endüstrilerde ve iş seviyelerinde rol bazlı senaryolar dahil olmak üzere "
+"çeşitli mülakat formatlarını destekliyoruz."
 
 #: src/features/Auth/AuthWall.tsx:224
 #. js-lingui-explicit-id
@@ -7135,11 +7091,6 @@ msgstr "FluencyPal nedir?"
 msgid "What is our daily goal?"
 msgstr "Günlük hedefimiz nedir?"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:136
-#. js-lingui-explicit-id
-msgid "What kind of feedback will I receive?"
-msgstr "Ne tür geri bildirim alacağım?"
-
 #: src/features/Goal/Quiz/QuizPage2.tsx:68
 #. js-lingui-explicit-id
 msgid "What language do you speak"
@@ -7156,10 +7107,10 @@ msgstr "Hangi öğrenme modları mevcut?"
 msgid "What one hour means?"
 msgstr "Bir saat ne anlama gelir?"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:106
+#: src/features/Interview/data.tsx:215
 #. js-lingui-explicit-id
-msgid "What types of interviews can I practice for?"
-msgstr "Pratik yapabileceğim röportaj türleri nelerdir?"
+msgid "What types of frontend interviews can I practice for?"
+msgstr "Hangi türde front-end mülakatlarını pratik yapabilirim?"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:459
 #. js-lingui-explicit-id
@@ -7175,7 +7126,7 @@ msgstr "Bizden ne istersiniz?"
 msgid "What you get with FluencyPal"
 msgstr "FluencyPal ile elde ettikleriniz"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:49
+#: src/features/Interview/Landing/InterviewLanding.tsx:50
 #. js-lingui-explicit-id
 msgid "What you will achieve"
 msgstr "Ne elde edeceksiniz"
@@ -7190,7 +7141,7 @@ msgstr "Neler dahil?"
 msgid "What’s included in my subscription?"
 msgstr "Aboneliğimde neler dahil?"
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:66
+#: src/features/Interview/Landing/InterviewLanding.tsx:69
 #. js-lingui-explicit-id
 msgid "Why candidates improve so quickly"
 msgstr "Neden adaylar bu kadar hızlı gelişiyor?"
@@ -7304,16 +7255,16 @@ msgstr ""
 "Sadece satın almadan önce benimle iletişime geçin, size bir indirim "
 "vereceğim."
 
-#: src/features/Interview/Landing/InterviewLanding.tsx:129
+#: src/features/Interview/data.tsx:228
 #. js-lingui-explicit-id
 msgid ""
-"Yes! You can customize your practice sessions based on specific job titles, "
+"Yes! You can tailor your practice sessions based on specific job titles, "
 "companies, and industries. Our AI adapts questions to match the "
 "interviewing style of your target employers."
 msgstr ""
-"Evet! Pratik oturumlarınızı belirli iş unvanlarına, şirketlere ve "
-"sektörlere göre özelleştirebilirsiniz. Yapay zekamız, hedeflediğiniz "
-"işverenlerin mülakat tarzına uygun sorular oluşturur."
+"Evet! Pratik seanslarınızı belirli iş unvanlarına, şirketlere ve sektörlere "
+"göre kişiselleştirebilirsiniz. Yapay zekamız, soruları hedeflediğiniz "
+"işverenlerin görüşme tarzına uyacak şekilde uyarlar."
 
 #: src/features/Header/NeedHelpModal.tsx:241
 #. js-lingui-explicit-id
@@ -7324,18 +7275,6 @@ msgstr "Evet, Hesabı Sil"
 #. js-lingui-explicit-id
 msgid "Yes, I am ready"
 msgstr "Evet, hazırım"
-
-#: src/features/Interview/Landing/InterviewLanding.tsx:149
-#. js-lingui-explicit-id
-msgid ""
-"Yes, you can start with our free trial that includes access to basic "
-"interview scenarios and limited feedback. Upgrade anytime to unlock "
-"unlimited practice sessions and advanced features."
-msgstr ""
-"Evet, temel mülakat senaryolarına ve sınırlı geri bildirime erişim içeren "
-"ücretsiz denememizle başlayabilirsiniz. Sınırsız pratik oturumlarını ve "
-"gelişmiş özellikleri açığa çıkarmak için istediğiniz zaman "
-"yükseltebilirsiniz."
 
 #: src/features/Landing/Price/PricePage.tsx:340
 #. js-lingui-explicit-id
@@ -7437,17 +7376,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "Üç gün boyunca tam erişim ücretsiz olacak."
-
-#: src/features/Interview/Landing/InterviewLanding.tsx:139
-#. js-lingui-explicit-id
-msgid ""
-"You'll get comprehensive feedback including clarity scores, communication "
-"analysis, content quality assessment, suggested improvements, and "
-"comparison with best practices for your industry."
-msgstr ""
-"Kapsamlı geri bildirim alacaksınız, bu geri bildirim netlik puanları, "
-"iletişim analizi, içerik kalitesi değerlendirmesi, önerilen iyileştirmeler "
-"ve sektörünüz için en iyi uygulamalarla karşılaştırmaları içerecek."
 
 #: src/features/Usage/PayWall.tsx:76
 #. js-lingui-explicit-id
@@ -7577,6 +7505,125 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Interview/Landing/components/Footer.tsx:135
+#. js-lingui-explicit-id
+#~ msgid "About Us"
+#~ msgstr "Hakkımızda"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:159
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Absolutely. There are no long-term commitments. You can cancel your "
+#~ "subscription at any time, and you'll retain access until the end of your "
+#~ "current billing period."
+#~ msgstr ""
+#~ "Elbette. Uzun süreli taahhütler yoktur. Aboneliğinizi istediğiniz zaman "
+#~ "iptal edebilirsiniz ve mevcut faturalama döneminizin sonuna kadar "
+#~ "erişiminizi korursunuz."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:156
+#. js-lingui-explicit-id
+#~ msgid "Can I cancel my subscription at any time?"
+#~ msgstr "Aboneliğimi istediğim zaman iptal edebilir miyim?"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:126
+#. js-lingui-explicit-id
+#~ msgid "Can I practice for specific companies or positions?"
+#~ msgstr "Belirli şirketler veya pozisyonlar için pratik yapabilir miyim?"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:96
+#. js-lingui-explicit-id
+#~ msgid "How does the interview preparation platform work?"
+#~ msgstr "Mülakat hazırlık platformu nasıl çalışıyor?"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:116
+#. js-lingui-explicit-id
+#~ msgid "How long does it take to see improvement?"
+#~ msgstr "İyileşme görmek ne kadar sürer?"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:146
+#. js-lingui-explicit-id
+#~ msgid "Is there a free trial available?"
+#~ msgstr "Ücretsiz deneme mevcut mu?"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:119
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Most users report noticeable improvement within 1-2 weeks of consistent "
+#~ "practice. Our data shows that candidates who complete at least 10 practice "
+#~ "sessions increase their interview success rate by up to 60%."
+#~ msgstr ""
+#~ "Çoğu kullanıcı, tutarlı bir uygulama ile 1-2 hafta içinde belirgin bir "
+#~ "gelişme bildirmektedir. Verilerimiz, en az 10 uygulama oturumunu tamamlayan "
+#~ "adayların mülakat başarı oranını %60'a kadar artırdığını göstermektedir."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:99
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Our AI-powered platform simulates real interview scenarios tailored to your "
+#~ "target role. You'll receive personalized questions, instant feedback on "
+#~ "your answers, and detailed performance analytics to track your improvement."
+#~ msgstr ""
+#~ "Yapay zeka destekli platformumuz, hedeflediğiniz role uygun gerçek mülakat "
+#~ "senaryolarını simüle eder. Kişiselleştirilmiş sorular alacak, yanıtlarınıza "
+#~ "anında geri bildirim ve gelişiminizi takip etmeniz için ayrıntılı "
+#~ "performans analizleri elde edeceksiniz."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:109
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "We support various interview formats including behavioral interviews, "
+#~ "technical interviews, case studies, and role-specific scenarios across "
+#~ "multiple industries and job levels."
+#~ msgstr ""
+#~ "Davranışsal mülakatlar, teknik mülakatlar, vaka çalışmaları ve çeşitli "
+#~ "endüstriler ve iş seviyeleri boyunca rol özelindeki senaryolar dahil olmak "
+#~ "üzere çeşitli mülakat formatlarını destekliyoruz."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:136
+#. js-lingui-explicit-id
+#~ msgid "What kind of feedback will I receive?"
+#~ msgstr "Ne tür geri bildirim alacağım?"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:106
+#. js-lingui-explicit-id
+#~ msgid "What types of interviews can I practice for?"
+#~ msgstr "Pratik yapabileceğim röportaj türleri nelerdir?"
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:129
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Yes! You can customize your practice sessions based on specific job titles, "
+#~ "companies, and industries. Our AI adapts questions to match the "
+#~ "interviewing style of your target employers."
+#~ msgstr ""
+#~ "Evet! Pratik oturumlarınızı belirli iş unvanlarına, şirketlere ve "
+#~ "sektörlere göre özelleştirebilirsiniz. Yapay zekamız, hedeflediğiniz "
+#~ "işverenlerin mülakat tarzına uygun sorular oluşturur."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:149
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Yes, you can start with our free trial that includes access to basic "
+#~ "interview scenarios and limited feedback. Upgrade anytime to unlock "
+#~ "unlimited practice sessions and advanced features."
+#~ msgstr ""
+#~ "Evet, temel mülakat senaryolarına ve sınırlı geri bildirime erişim içeren "
+#~ "ücretsiz denememizle başlayabilirsiniz. Sınırsız pratik oturumlarını ve "
+#~ "gelişmiş özellikleri açığa çıkarmak için istediğiniz zaman "
+#~ "yükseltebilirsiniz."
+
+#: src/features/Interview/Landing/InterviewLanding.tsx:139
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "You'll get comprehensive feedback including clarity scores, communication "
+#~ "analysis, content quality assessment, suggested improvements, and "
+#~ "comparison with best practices for your industry."
+#~ msgstr ""
+#~ "Kapsamlı geri bildirim alacaksınız, bu geri bildirim netlik puanları, "
+#~ "iletişim analizi, içerik kalitesi değerlendirmesi, önerilen iyileştirmeler "
+#~ "ve sektörünüz için en iyi uygulamalarla karşılaştırmaları içerecek."
 
 #: src/features/Landing/Contact/ContactsPage.tsx:104
 #. js-lingui-explicit-id
