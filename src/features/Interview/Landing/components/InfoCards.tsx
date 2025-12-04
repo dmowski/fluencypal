@@ -10,7 +10,7 @@ export interface InfoCard {
 
 export interface InfoCardsProps {
   title: string;
-  subtitle: string;
+  subTitle: string;
   buttonTitle?: string;
   buttonHref?: string;
   cards: InfoCard[];
@@ -87,7 +87,7 @@ export const InfoCards = (props: InfoCardsProps) => {
           </Typography>
 
           <Typography variant="body1" align="center" sx={{ opacity: 0.8, fontSize: "20px" }}>
-            {props.subtitle}
+            {props.subTitle}
           </Typography>
         </Stack>
 

@@ -3,7 +3,7 @@ import { Button, Stack, Typography } from "@mui/material";
 export interface MainTitleSectionProps {
   label: string;
   title: string;
-  subtitle: string;
+  subTitle: string;
   buttonHref: string;
   buttonTitle: string;
 }
@@ -70,7 +70,7 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
             },
           }}
         >
-          {props.subtitle}
+          {props.subTitle}
         </Typography>
 
         <Button

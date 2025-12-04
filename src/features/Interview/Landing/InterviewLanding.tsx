@@ -36,7 +36,7 @@ export async function InterviewLanding({
                 <MainTitleSection
                   key={index}
                   title={section.title}
-                  subtitle={section.subTitle}
+                  subTitle={section.subTitle}
                   label={section.label}
                   buttonTitle={section.buttonTitle}
                   buttonHref={quizLink}
@@ -49,7 +49,7 @@ export async function InterviewLanding({
                   key={index}
                   id="results"
                   title={section.title}
-                  subtitle={section.subTitle}
+                  subTitle={section.subTitle}
                   buttonTitle={section.buttonTitle}
                   buttonHref={quizLink}
                   cards={section.infoCards}
@@ -62,7 +62,7 @@ export async function InterviewLanding({
                   key={index}
                   id="score-preview"
                   title={section.title}
-                  subtitle={section.subTitle}
+                  subTitle={section.subTitle}
                   infoList={section.infoList}
                   scorePreview={section.scorePreview}
                   buttonTitle={section.buttonTitle}
@@ -115,7 +115,7 @@ export async function InterviewLanding({
                   key={index}
                   id="steps"
                   title={section.title}
-                  subtitle={section.subTitle}
+                  subTitle={section.subTitle}
                   cards={section.stepInfoCards}
                 />
               );

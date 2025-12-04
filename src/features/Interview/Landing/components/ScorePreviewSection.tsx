@@ -16,7 +16,7 @@ export interface ScorePreview {
 export interface ScorePreviewSectionProps {
   id: string;
   title: string;
-  subtitle: string;
+  subTitle: string;
   infoList: string[];
   buttonTitle: string;
   buttonHref: string;
@@ -193,7 +193,7 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
             </Typography>
 
             <Typography variant="body1" sx={{ opacity: 0.8, fontSize: "20px" }}>
-              {props.subtitle}
+              {props.subTitle}
             </Typography>
 
             <Stack

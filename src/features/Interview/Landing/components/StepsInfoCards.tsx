@@ -12,7 +12,7 @@ export interface StepInfoCard {
 export interface InfoCardsProps {
   id: string;
   title: string;
-  subtitle: string;
+  subTitle: string;
   cards: StepInfoCard[];
 }
 
@@ -86,7 +86,7 @@ export const StepInfoCards = (props: InfoCardsProps) => {
           </Typography>
 
           <Typography variant="body1" align="center" sx={{ opacity: 0.8, fontSize: "20px" }}>
-            {props.subtitle}
+            {props.subTitle}
           </Typography>
         </Stack>
 
