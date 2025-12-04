@@ -17,6 +17,7 @@ export const TechStackSection = (props: TechStackSectionProps) => {
       id={props.id}
       sx={{
         padding: "150px 0",
+        backgroundColor: "rgba(20, 0, 0, 0.2)",
         alignItems: "center",
         "@media (max-width: 600px)": {
           paddingTop: "100px",

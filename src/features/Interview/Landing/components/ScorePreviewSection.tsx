@@ -34,6 +34,7 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
         padding: "150px 0",
         alignItems: "center",
         width: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.2)",
       }}
     >
       <Stack

@@ -24,6 +24,7 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
       sx={{
         padding: "150px 0",
         alignItems: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.3)",
         "@media (max-width: 600px)": {
           paddingTop: "100px",
         },
