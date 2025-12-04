@@ -173,6 +173,8 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
                     {[...Array(5)].map((_, i) => (
                       <Typography
                         key={`filled-${i}`}
+                        component={"span"}
+                        aria-hidden="true"
                         sx={{
                           fontSize: "18px",
                           color: i < review.rate ? "#fbbf24" : "rgba(251, 191, 36, 0.3)",

@@ -97,7 +97,10 @@ export async function InterviewLanding({
               id="faq"
               padding={"0px 0 90px 0"}
               title={i18n._(`FAQ`)}
-              items={interviewData.faqItems}
+              items={interviewData.faqItems.map((faq) => ({
+                question: faq.question,
+                answer: <Typography>{faq.answer}</Typography>,
+              }))}
             />
             <CtaBlock
               title={i18n._(`Ready to ace your next interview?`)}

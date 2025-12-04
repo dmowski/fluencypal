@@ -15,21 +15,6 @@ interface FooterProps {
 }
 const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
   const { i18n } = useLingui();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const onlyPathname = pathname || "/";
-  const onlyQuery = searchParams.toString() || "";
-
-  const pathNameAndQuery = onlyPathname + (onlyQuery ? `?${onlyQuery}` : "");
-
-  const pathnameWithoutLang =
-    lang === "en" && !pathNameAndQuery.startsWith("/en")
-      ? pathNameAndQuery || "/"
-      : pathNameAndQuery.replace(`/${lang}`, "") || "/";
-
-  const pathWithoutFirstSlash = pathnameWithoutLang.startsWith("/")
-    ? pathnameWithoutLang.slice(1)
-    : pathnameWithoutLang;
 
   return (
     <Stack

@@ -29,14 +29,14 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
         }}
       >
         <Typography
-          variant="h1"
+          component={"p"}
           align="center"
           sx={{
             fontWeight: 500,
             fontSize: "18px",
             backgroundColor: "rgba(255, 255, 255, 0.1)",
             borderRadius: "28px",
-            padding: "8px 42px",
+            padding: "6px 42px",
             marginBottom: "10px",
           }}
         >

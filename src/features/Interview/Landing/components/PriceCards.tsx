@@ -145,6 +145,7 @@ export const PriceCards = ({
                       sx={{
                         fontSize: "17px",
                       }}
+                      component={"span"}
                     >
                       {price.badgeIcon}
                     </Typography>
@@ -179,6 +180,7 @@ export const PriceCards = ({
                   <Stack sx={{ gap: "8px" }}>
                     <Typography
                       variant="h5"
+                      component={"h3"}
                       sx={{
                         fontSize: "24px",
                         fontWeight: 600,
@@ -190,6 +192,7 @@ export const PriceCards = ({
                     <Stack direction="row" sx={{ alignItems: "baseline", gap: "8px" }}>
                       <Typography
                         variant="h3"
+                        component={"span"}
                         sx={{
                           fontSize: "48px",
                           fontWeight: 700,

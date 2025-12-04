@@ -140,6 +140,7 @@ export const InfoCards = (props: InfoCardsProps) => {
 
                   <Typography
                     variant="body1"
+                    component={"h3"}
                     sx={{
                       marginTop: "12px",
                       marginBottom: "8px",

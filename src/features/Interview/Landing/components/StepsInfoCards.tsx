@@ -149,6 +149,7 @@ export const StepInfoCards = (props: InfoCardsProps) => {
 
                   <Typography
                     variant="body1"
+                    component={"h3"}
                     sx={{
                       marginBottom: "8px",
                       fontSize: "20px",

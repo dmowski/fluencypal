@@ -106,6 +106,7 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
               >
                 <Typography
                   variant="h5"
+                  component={"span"}
                   sx={{
                     fontWeight: 600,
                     color: "#fff",
@@ -116,6 +117,7 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
                 </Typography>
                 <Typography
                   variant="h2"
+                  component={"span"}
                   sx={{
                     fontWeight: 600,
                     fontSize: "48px",
