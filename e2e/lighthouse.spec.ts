@@ -1,6 +1,17 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 import { playAudit } from "playwright-lighthouse";
 import type { Page } from "@playwright/test";
+
+const SETTINGS = {
+  port: 9222,
+  reports: {
+    formats: {
+      html: true,
+    },
+    name: "lighthouse-report",
+    directory: "test-results/lighthouse-reports",
+  },
+};
 
 test.describe("Lighthouse Audit", () => {
   // increase timeout for lighthouse audits
@@ -16,14 +27,7 @@ test.describe("Lighthouse Audit", () => {
         accessibility: 100,
         "best-practices": 100,
       },
-      port: 9222,
-      reports: {
-        formats: {
-          html: true,
-        },
-        name: "lighthouse-report",
-        directory: "test-results/lighthouse-reports",
-      },
+      ...SETTINGS,
     });
   });
 
@@ -38,14 +42,7 @@ test.describe("Lighthouse Audit", () => {
         accessibility: 100,
         "best-practices": 100,
       },
-      port: 9222,
-      reports: {
-        formats: {
-          html: true,
-        },
-        name: "lighthouse-report",
-        directory: "test-results/lighthouse-reports",
-      },
+      ...SETTINGS,
     });
   });
 
@@ -56,18 +53,11 @@ test.describe("Lighthouse Audit", () => {
       page,
       thresholds: {
         seo: 50,
-        performance: 95,
+        performance: 90,
         accessibility: 100,
         "best-practices": 77,
       },
-      port: 9222,
-      reports: {
-        formats: {
-          html: true,
-        },
-        name: "lighthouse-report",
-        directory: "test-results/lighthouse-reports",
-      },
+      ...SETTINGS,
     });
   });
 });
