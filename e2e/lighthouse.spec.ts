@@ -48,4 +48,26 @@ test.describe("Lighthouse Audit", () => {
       },
     });
   });
+
+  test("Interview Landing page should have good metrics (EN)", async ({ page }: { page: Page }) => {
+    await page.goto("/interview/senior-frontend-developer");
+
+    await playAudit({
+      page,
+      thresholds: {
+        seo: 100,
+        performance: 95,
+        accessibility: 100,
+        "best-practices": 100,
+      },
+      port: 9222,
+      reports: {
+        formats: {
+          html: true,
+        },
+        name: "lighthouse-report",
+        directory: "test-results/lighthouse-reports",
+      },
+    });
+  });
 });

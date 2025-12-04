@@ -123,7 +123,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
           jobTitle: "Senior Frontend Engineer",
           rate: 5,
           review:
-            "I was confident and clear — FluentlyPal prepared me better than any coach for technical discussions about state management.",
+            "I was confident and clear — FluencyPal prepared me better than any coach for technical discussions about state management.",
         },
         {
           name: "Maria L.",
