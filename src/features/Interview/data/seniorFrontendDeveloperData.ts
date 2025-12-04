@@ -40,55 +40,59 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
         id: "1-week-sprint",
         icon: Zap,
         badgeIcon: "⚡",
-        badge: "In a hurry? Perfect for last-minute interviews",
-        label: "1-Week Sprint",
+        badge: i18n._("In a hurry? Perfect for last-minute interviews"),
+        label: i18n._("1-Week Sprint"),
         priceUsd: 30,
-        description: "Get fast, intensive preparation. Fix your top weaknesses in just 7 days.",
+        description: i18n._(
+          "Get fast, intensive preparation. Fix your biggest weaknesses in just 7 days."
+        ),
         points: [
-          "7 days full access",
-          "Daily AI mock interviews",
-          "Instant feedback on answers",
-          "Personalized scripts for HR & behavioral questions",
+          i18n._("7 days full access"),
+          i18n._("Daily AI mock interviews"),
+          i18n._("Instant feedback on answers"),
+          i18n._("Personalized scripts for HR and behavioral questions"),
         ],
-        buttonTitle: "Start 1-Week Sprint — $30",
+        buttonTitle: i18n._("Start 1-Week Sprint — $30"),
       },
       {
         id: "monthly-plan",
         icon: Star,
         badgeIcon: "⭐",
-        badge: "Best for most job seekers",
-        label: "Monthly Plan",
+        badge: i18n._("Best for most job seekers"),
+        label: i18n._("Monthly Plan"),
         priceUsd: 60,
-        priceLabel: "Only $2/day",
-        description:
-          "Consistent improvement with structured interview coaching and personalized practice.",
+        priceLabel: i18n._("Only $2/day"),
+        description: i18n._(
+          "Consistent improvement with structured interview coaching and personalized practice."
+        ),
         points: [
-          "Full access to all simulations",
-          "Unlimited answer reviews",
-          "CV-based answer optimization",
-          "Confidence score tracking",
-          "Salary negotiation preparation",
+          i18n._("Full access to all simulations"),
+          i18n._("Unlimited answer reviews"),
+          i18n._("CV-based answer optimization"),
+          i18n._("Confidence score tracking"),
+          i18n._("Salary negotiation preparation"),
         ],
-        buttonTitle: "Start Monthly Plan — $60",
+        buttonTitle: i18n._("Start Monthly Plan — $60"),
         isHighlighted: true,
       },
       {
         id: "4-month-plan",
         icon: Briefcase,
         badgeIcon: "🎯",
-        badge: "For long job searches & career growth",
-        label: "4-Month Plan",
+        badge: i18n._("For long job searches & career growth"),
+        label: i18n._("4-Month Plan"),
         priceUsd: 90,
-        description:
-          "For people preparing for multiple roles, relocating, switching careers, or targeting senior jobs.",
+        description: i18n._(
+          "For people preparing for multiple roles, relocating, switching careers, or targeting senior jobs."
+        ),
         points: [
-          "4 months full access",
-          "Long-term interview strategy",
-          "Deep skill development",
-          "Role-specific answer templates",
-          "Priority feedback queue",
+          i18n._("4 months full access"),
+          i18n._("Long-term interview strategy"),
+          i18n._("Deep skill development"),
+          i18n._("Role-specific answer templates"),
+          i18n._("Priority feedback queue"),
         ],
-        buttonTitle: "Start 4-Month Plan — $90",
+        buttonTitle: i18n._("Start 4-Month Plan — $90"),
       },
     ],
   };
@@ -99,21 +103,21 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
     subTitle: i18n._("Your questions answered"),
     faqItems: [
       {
-        question: i18n._(`What types of frontend interviews can I practice for?`),
+        question: i18n._("What types of frontend interviews can I practice for?"),
         answer: i18n._(
-          `We support various interview formats including behavioral interviews, technical interviews, system design, and role-specific scenarios across multiple industries and job levels.`
+          "You can practice for senior frontend, lead, and staff-level interviews including technical rounds, frontend system design, live coding, and behavioral interviews focused on React, Vue, Angular, TypeScript, and modern web architecture."
         ),
       },
       {
-        question: i18n._(`How does the AI feedback work?`),
+        question: i18n._("How does the AI feedback work?"),
         answer: i18n._(
-          `Our AI analyzes your answers for clarity, structure, technical accuracy, and communication skills. You'll receive detailed feedback and suggestions to improve your responses effectively.`
+          "Our AI evaluates your answers for technical depth (architecture, performance, state management), clarity, structure, and communication. You receive concrete suggestions on what to add, remove, or reframe to sound like a strong senior frontend engineer."
         ),
       },
       {
-        question: i18n._(`Can I customize my practice sessions?`),
+        question: i18n._("Can I customize my practice sessions?"),
         answer: i18n._(
-          `Yes! You can tailor your practice sessions based on specific job titles, companies, and industries. Our AI adapts questions to match the interviewing style of your target employers.`
+          "Yes. You can tailor sessions to your target role, tech stack (React, Vue, Angular, etc.), and seniority level. You can also focus on specific areas like system design, performance optimization, or behavioral questions."
         ),
       },
     ],
@@ -138,7 +142,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       },
       {
         icon: FileText,
-        label: i18n._("Step 2"),
+        label: i18n._("Step 3"),
         title: i18n._("Personalized answer scripts"),
         description: i18n._("Based on your CV, experience, and target role."),
       },
@@ -148,49 +152,55 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
   const reviewSection: ReviewSection = {
     type: "review",
     title: i18n._("Real people. Real job offers."),
-    subTitle: i18n._("Join thousands who transformed their interview performance"),
+    subTitle: i18n._("Join candidates who transformed their interview performance"),
     reviews: [
       {
         name: "Sarah M.",
         jobTitle: "Frontend Developer",
         rate: 5,
-        review:
-          "I finally got 3 offers after months of silence. The React component challenges were exactly what I needed.",
+        review: i18n._(
+          "I finally got 3 offers after months of silence. The React component challenges were exactly what I needed."
+        ),
       },
       {
         name: "James R.",
         jobTitle: "Senior Frontend Engineer",
         rate: 5,
-        review:
-          "I was confident and clear — FluencyPal prepared me better than any coach for technical discussions about state management.",
+        review: i18n._(
+          "I was confident and clear — FluencyPal prepared me better than any coach for technical discussions about state management."
+        ),
       },
       {
         name: "Maria L.",
         jobTitle: "UI/UX Engineer",
         rate: 5,
-        review:
-          "It helped me answer questions about accessibility and performance optimization without panic.",
+        review: i18n._(
+          "It helped me answer questions about accessibility and performance optimization without panic."
+        ),
       },
       {
         name: "David K.",
         jobTitle: "React Developer",
         rate: 4,
-        review:
-          "The personalized feedback showed me exactly what I was doing wrong in my technical explanations. Game changer.",
+        review: i18n._(
+          "The personalized feedback showed me exactly what I was doing wrong in my technical explanations. Game changer."
+        ),
       },
       {
         name: "Emma T.",
         jobTitle: "Frontend Tech Lead",
         rate: 5,
-        review:
-          "Within 2 weeks I went from nervous to confident discussing architecture decisions. Got the job I wanted.",
+        review: i18n._(
+          "Within 2 weeks I went from nervous to confident discussing architecture decisions. Got the job I wanted."
+        ),
       },
       {
         name: "Alex P.",
         jobTitle: "Full Stack Developer",
         rate: 5,
-        review:
-          "The AI feedback on my CSS and JavaScript answers was spot-on. I improved my responses immediately.",
+        review: i18n._(
+          "The AI feedback on my CSS and JavaScript answers was spot-on. I improved my responses immediately."
+        ),
       },
     ],
   };
@@ -199,7 +209,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
     type: "scorePreview",
     title: i18n._("Take the Interview Readiness Test"),
     buttonTitle: i18n._("Start Test"),
-    subTitle: i18n._("In less then 5 minutes, you'll get:"),
+    subTitle: i18n._("In less than 5 minutes, you'll get:"),
     infoList: [
       i18n._("Personalized Interview Readiness Score"),
       i18n._("Technical analysis on system design and architecture answers"),
@@ -208,16 +218,16 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       i18n._("Strategic action plan to address gaps in frontend architecture knowledge"),
     ],
     scorePreview: {
-      label: "Interview Readiness Score",
-      totalScore: 85,
-      description:
-        "Strong knowledge of TypeScript and Angular.js. It might be worth polishing Soft Skills.",
-
+      label: i18n._("Interview Readiness Score"),
+      totalScore: 82,
+      description: i18n._(
+        "Strong knowledge of React and TypeScript. Slight gaps in communication and leadership answers."
+      ),
       scoreMetrics: [
-        { title: "Angular.js knowledge", score: 85 },
-        { title: "Coding Skills", score: 90 },
-        { title: "Problem Solving", score: 80 },
-        { title: "Communication", score: 25 },
+        { title: i18n._("React & TypeScript"), score: 88 },
+        { title: i18n._("Coding Skills"), score: 90 },
+        { title: i18n._("Problem Solving"), score: 80 },
+        { title: i18n._("Communication & Leadership"), score: 70 },
       ],
     },
   };
@@ -267,9 +277,9 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
 
   const firstScreenSection: FirstScreenSection = {
     type: "firstScreen",
-    title: i18n._("Get more job offers with  answers that stand out"),
+    title: i18n._("Get more job offers with answers that stand out"),
     subTitle: i18n._(
-      "Prepare for system design, leadership, and advanced frontend questions. Get your personalized interview action plan"
+      "Prepare for system design, leadership, and advanced frontend questions. Get your personalized interview action plan."
     ),
     label: i18n._("Senior Frontend Developer"),
     buttonTitle: i18n._("Start Your Interview Test"),
@@ -298,7 +308,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       ),
       i18n._("How do you handle error boundaries and fallback UI in modern frontend frameworks?"),
       i18n._(
-        "Describe a time you led a frontend refactor or migration (e.g., from class components to hooks or from legacy stack to modern framework)."
+        "Describe a time you led a frontend refactor or migration (e.g., from class components to hooks or from a legacy stack to a modern framework)."
       ),
     ],
   };
@@ -325,8 +335,8 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
     subTitle: i18n._("Designed specifically for experienced frontend engineers"),
     audienceItems: [
       i18n._("Senior Frontend Developers preparing for promotions or new roles"),
-      i18n._("Frontend engineers interviewing for Senior / Lead / Staff positions"),
-      i18n._("React / Vue / Angular specialists facing architecture and system design rounds"),
+      i18n._("Frontend engineers interviewing for Senior, Lead, or Staff positions"),
+      i18n._("React, Vue, or Angular specialists facing architecture and system design rounds"),
       i18n._(
         "Engineers switching from mid-level to senior roles and needing stronger behavioral stories"
       ),
@@ -351,7 +361,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           "I would use React.memo and lazy loading to reduce unnecessary renders."
         ),
         feedback: i18n._(
-          "Good direction, but your answer is too shallow for a senior role. Mention measuring first (profiling with React DevTools and browser Performance panel), then specific bottlenecks (large bundles, unnecessary network calls, expensive components). Strengthen your answer by adding concrete techniques: code splitting via dynamic imports, memoizing expensive selectors, virtualization for long lists, and leveraging browser caching and a CDN. Close with how you'd monitor improvements over time."
+          "Good direction, but your answer is too shallow for a senior role. Mention measuring first (profiling with React DevTools and the browser Performance panel), then specific bottlenecks (large bundles, unnecessary network calls, expensive components). Strengthen your answer by adding concrete techniques: code splitting via dynamic imports, memoizing expensive selectors, virtualization for long lists, and leveraging browser caching and a CDN. Close with how you'd monitor improvements over time."
         ),
       },
       {
@@ -363,7 +373,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           "I would split the app into reusable components and use a global store for state."
         ),
         feedback: i18n._(
-          "For a senior-level interview, you should go beyond 'components + global store'. Talk about module boundaries (feature-based folders, domain-driven slices), isolated design systems, clear contracts between API and UI, and how you avoid tight coupling. Mention decisions around routing, data-fetching strategy (e.g., React Query or SWR), error handling, and how you'd support gradual refactors or micro-frontend approaches. This shows you think like an architect, not just an implementer."
+          "For a senior-level interview, you should go beyond 'components + global store'. Talk about module boundaries (feature-based folders, domain-driven slices), isolated design systems, clear contracts between API and UI, and how you avoid tight coupling. Mention decisions around routing, data-fetching strategy (for example React Query or SWR), error handling, and how you'd support gradual refactors or micro-frontend approaches. This shows you think like an architect, not just an implementer."
         ),
       },
     ],
@@ -372,11 +382,10 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
   return {
     id: "senior-frontend-developer",
     jobTitle: i18n._("Senior Frontend Developer"),
-    title: i18n._("Get more job offers with  answers that stand out"),
+    title: i18n._("Get more job offers with answers that stand out"),
     subTitle: i18n._(
-      "Prepare for system design, leadership, and advanced frontend questions. Get your personalized interview action plan"
+      "Prepare for system design, leadership, and advanced frontend questions. Get your personalized interview action plan."
     ),
-
     keywords: [
       i18n._("senior frontend interview"),
       i18n._("frontend developer interview prep"),
@@ -387,7 +396,6 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       categoryTitle: i18n._("IT & Software Development"),
       categoryId: "it",
     },
-
     sections: [
       firstScreenSection,
       infoCardsSection,
