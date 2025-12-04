@@ -25,6 +25,7 @@ export const TechStackSection = (props: TechStackSectionProps) => {
           paddingTop: "100px",
         },
         width: "100%",
+        position: "relative",
       }}
     >
       <Stack
@@ -48,6 +49,9 @@ export const TechStackSection = (props: TechStackSectionProps) => {
             "@media (max-width: 900px)": {
               flex: "1",
             },
+            position: "sticky",
+            top: "100px",
+            height: "max-content",
           }}
         >
           <Stack sx={{ gap: "12px" }}>
