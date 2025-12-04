@@ -12,6 +12,10 @@ import { GeneralFaqBlock } from "@/features/Landing/FAQ/GeneralFaqBlock";
 import { CtaBlock } from "@/features/Landing/ctaBlock";
 import { Footer } from "./components/Footer";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
+import { ExampleQuestionsSection } from "./components/ExampleQuestionsSection";
+import { TechStackSection } from "./components/TechStackSection";
+import { WhoIsThisForSection } from "./components/WhoIsThisForSection";
+import { DemoSnippetSection } from "./components/DemoSnippetSection";
 
 export async function InterviewLanding({
   lang,
@@ -31,6 +35,59 @@ export async function InterviewLanding({
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center", gap: "0" }}>
           {interviewData.sections.map((section, index) => {
+            //exampleQuestions
+            if (section.type === "exampleQuestions") {
+              return (
+                <ExampleQuestionsSection
+                  key={index}
+                  title={section.title}
+                  subTitle={section.subTitle}
+                  questions={section.questions}
+                  id={"example-questions"}
+                />
+              );
+            }
+
+            // techStack
+            if (section.type === "techStack") {
+              return (
+                <TechStackSection
+                  id={"tech-stack"}
+                  key={index}
+                  title={section.title}
+                  subTitle={section.subTitle}
+                  techItems={section.techItems}
+                />
+              );
+            }
+
+            // whoIsThisFor
+            if (section.type === "whoIsThisFor") {
+              return (
+                <WhoIsThisForSection
+                  id={"who-is-this-for"}
+                  key={index}
+                  title={section.title}
+                  subTitle={section.subTitle}
+                  audienceItems={section.audienceItems}
+                />
+              );
+            }
+
+            // demoSnippet
+            if (section.type === "demoSnippet") {
+              return (
+                <DemoSnippetSection
+                  id={"demo-snippet"}
+                  key={index}
+                  title={section.title}
+                  subTitle={section.subTitle}
+                  demoItems={section.demoItems}
+                />
+              );
+            }
+
+            //first screen
             if (section.type === "firstScreen") {
               return (
                 <MainTitleSection

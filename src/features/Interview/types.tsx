@@ -72,6 +72,42 @@ export interface FirstScreenSection {
   label: string;
   buttonTitle: string;
 }
+// New: Examples of real interview questions
+export interface ExampleQuestionsSection {
+  type: "exampleQuestions";
+  title: string;
+  subTitle: string;
+  questions: string[];
+}
+
+// New: Clarification of tech stack covered
+export interface TechStackSection {
+  type: "techStack";
+  title: string;
+  subTitle: string;
+  techItems: string[];
+}
+
+// New: “Who this is for” section
+export interface WhoIsThisForSection {
+  type: "whoIsThisFor";
+  title: string;
+  subTitle: string;
+  audienceItems: string[];
+}
+
+// New: Demo snippet (sample feedback)
+export interface DemoSnippetSection {
+  type: "demoSnippet";
+  title: string;
+  subTitle: string;
+  demoItems: {
+    label: string; // e.g. "Example insight"
+    question: string;
+    userAnswerShort: string;
+    feedback: string;
+  }[];
+}
 
 type Section =
   | ReviewSection
@@ -81,7 +117,11 @@ type Section =
   | ScorePreviewSection
   | InfoCardsSection
   | CallToActionSection
-  | FirstScreenSection;
+  | FirstScreenSection
+  | ExampleQuestionsSection
+  | TechStackSection
+  | WhoIsThisForSection
+  | DemoSnippetSection;
 
 export interface InterviewData {
   id: string;

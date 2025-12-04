@@ -1,5 +1,7 @@
 import {
   CallToActionSection,
+  DemoSnippetSection,
+  ExampleQuestionsSection,
   FaqSection,
   FirstScreenSection,
   InfoCardsSection,
@@ -8,6 +10,8 @@ import {
   ReviewSection,
   ScorePreviewSection,
   StepInfoCardSection,
+  TechStackSection,
+  WhoIsThisForSection,
 } from "../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
@@ -271,6 +275,100 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
     buttonTitle: i18n._("Start Your Interview Test"),
   };
 
+  const exampleQuestionsSection: ExampleQuestionsSection = {
+    type: "exampleQuestions",
+    title: i18n._("Questions you will practice"),
+    subTitle: i18n._("Real senior frontend interview questions you are likely to get asked"),
+    questions: [
+      i18n._(
+        "How would you design the frontend architecture for a large-scale dashboard with real-time data updates?"
+      ),
+      i18n._("Explain how React reconciliation works and how it affects performance."),
+      i18n._(
+        "How would you structure state management for a complex application with nested components and async data?"
+      ),
+      i18n._(
+        "Describe how you would diagnose and fix a performance regression caused by excessive re-renders."
+      ),
+      i18n._(
+        "How do you design a reusable component library shared across multiple products or teams?"
+      ),
+      i18n._(
+        "Walk me through how you would improve Core Web Vitals for a slow single-page application."
+      ),
+      i18n._("How do you handle error boundaries and fallback UI in modern frontend frameworks?"),
+      i18n._(
+        "Describe a time you led a frontend refactor or migration (e.g., from class components to hooks or from legacy stack to modern framework)."
+      ),
+    ],
+  };
+
+  const techStackSection: TechStackSection = {
+    type: "techStack",
+    title: i18n._("Tech stack covered"),
+    subTitle: i18n._("Tailored practice for your framework and seniority level"),
+    techItems: [
+      i18n._("React, Next.js and modern React patterns (hooks, context, Suspense)"),
+      i18n._("TypeScript for robust, large-scale frontend codebases"),
+      i18n._("Vue and Vuex / Pinia state management patterns"),
+      i18n._("Angular and RxJS-driven architectures"),
+      i18n._("Frontend system design and architecture for SPAs and micro-frontends"),
+      i18n._("Performance optimization: rendering, bundling, caching, lazy loading"),
+      i18n._("Testing: Jest, React Testing Library, Cypress and integration testing"),
+      i18n._("Accessibility, UX standards and best practices for production apps"),
+    ],
+  };
+
+  const whoIsThisForSection: WhoIsThisForSection = {
+    type: "whoIsThisFor",
+    title: i18n._("Who this is for"),
+    subTitle: i18n._("Designed specifically for experienced frontend engineers"),
+    audienceItems: [
+      i18n._("Senior Frontend Developers preparing for promotions or new roles"),
+      i18n._("Frontend engineers interviewing for Senior / Lead / Staff positions"),
+      i18n._("React / Vue / Angular specialists facing architecture and system design rounds"),
+      i18n._(
+        "Engineers switching from mid-level to senior roles and needing stronger behavioral stories"
+      ),
+      i18n._(
+        "Developers targeting product companies with complex frontends and high performance requirements"
+      ),
+      i18n._(
+        "Candidates who already know the basics but struggle to articulate decisions clearly in interviews"
+      ),
+    ],
+  };
+
+  const demoSnippetSection: DemoSnippetSection = {
+    type: "demoSnippet",
+    title: i18n._("See the type of feedback you'll get"),
+    subTitle: i18n._("Precise, actionable insights instead of generic comments"),
+    demoItems: [
+      {
+        label: i18n._("Example insight – performance"),
+        question: i18n._("How would you improve the performance of a React app that feels slow?"),
+        userAnswerShort: i18n._(
+          "I would use React.memo and lazy loading to reduce unnecessary renders."
+        ),
+        feedback: i18n._(
+          "Good direction, but your answer is too shallow for a senior role. Mention measuring first (profiling with React DevTools and browser Performance panel), then specific bottlenecks (large bundles, unnecessary network calls, expensive components). Strengthen your answer by adding concrete techniques: code splitting via dynamic imports, memoizing expensive selectors, virtualization for long lists, and leveraging browser caching and a CDN. Close with how you'd monitor improvements over time."
+        ),
+      },
+      {
+        label: i18n._("Example insight – architecture"),
+        question: i18n._(
+          "How would you design the frontend architecture for a large multi-page product?"
+        ),
+        userAnswerShort: i18n._(
+          "I would split the app into reusable components and use a global store for state."
+        ),
+        feedback: i18n._(
+          "For a senior-level interview, you should go beyond 'components + global store'. Talk about module boundaries (feature-based folders, domain-driven slices), isolated design systems, clear contracts between API and UI, and how you avoid tight coupling. Mention decisions around routing, data-fetching strategy (e.g., React Query or SWR), error handling, and how you'd support gradual refactors or micro-frontend approaches. This shows you think like an architect, not just an implementer."
+        ),
+      },
+    ],
+  };
+
   return {
     id: "senior-frontend-developer",
     jobTitle: i18n._("Senior Frontend Developer"),
@@ -296,6 +394,10 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       scorePreview,
       stepInfoSection,
       reviewSection,
+      exampleQuestionsSection,
+      techStackSection,
+      whoIsThisForSection,
+      demoSnippetSection,
       priceSection,
       faqSection,
       callToActionSection,
