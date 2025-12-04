@@ -16,9 +16,9 @@ import {
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
-import { getUrlStart } from "../Lang/getUrlStart";
 import MenuIcon from "@mui/icons-material/Menu";
 import { HeaderUIProps } from "./types";
+import { getUrlStart } from "../Lang/getUrlStart";
 
 function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }: HeaderUIProps) {
   const [isOpenMainMenu, setIsOpenMainMenu] = useState(false);
@@ -174,8 +174,8 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
             {links.map((link) => (
               <Link
                 key={link.href}
-                href={`${getUrlStart(lang)}${link.href}`}
-                onClick={(e) => navigateTo(`${getUrlStart(lang)}${link.href}`, e)}
+                href={`${link.href}`}
+                onClick={(e) => navigateTo(`${link.href}`, e)}
                 className="menu-link hideOnMobile"
               >
                 {link.title}
@@ -196,8 +196,8 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
             {buttons.map((button) => (
               <Button
                 key={button.href}
-                href={`${getUrlStart(lang)}${button.href}`}
-                onClick={(e) => navigateTo(`${getUrlStart(lang)}${button.href}`, e)}
+                href={`${button.href}`}
+                onClick={(e) => navigateTo(`${button.href}`, e)}
                 variant={isHighlightJoin ? "contained" : "outlined"}
                 color="info"
                 className="hideOnMobile"
@@ -254,7 +254,7 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
               <ListItem disablePadding key={link.href}>
                 <ListItemButton
                   onClick={() => {
-                    onlyNavigate(`${getUrlStart(lang)}${link.href}`);
+                    onlyNavigate(`${link.href}`);
                     setIsOpenMainMenu(false);
                   }}
                 >
@@ -271,10 +271,10 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
             {buttons.map((button) => (
               <Button
                 key={button.href}
-                href={`${getUrlStart(lang)}${button.href}`}
+                href={`${button.href}`}
                 onClick={(e) => {
                   setIsOpenMainMenu(false);
-                  navigateTo(`${getUrlStart(lang)}${button.href}`, e);
+                  navigateTo(`${button.href}`, e);
                 }}
                 sx={{
                   padding: "10px 20px",

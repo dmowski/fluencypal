@@ -16,6 +16,7 @@ import { PriceCards } from "./components/PriceCards";
 import { GeneralFaqBlock } from "@/features/Landing/FAQ/GeneralFaqBlock";
 import { CtaBlock } from "@/features/Landing/ctaBlock";
 import { Footer } from "./components/Footer";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
 
 export async function InterviewLanding({
   lang,
@@ -28,9 +29,12 @@ export async function InterviewLanding({
   interviewData: InterviewData;
   i18n: I18n;
 }) {
+  const pageUrl = getUrlStart(lang) + `interview/${id}`;
+  const quizLink = `${pageUrl}/quiz`;
+
   return (
     <Stack sx={{ width: "100%" }}>
-      <InterviewHeader interviewId={id} lang={lang} />
+      <InterviewHeader lang={lang} startTrialHref={quizLink} pageUrl={pageUrl} />
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center", gap: "300px" }}>
           <MainTitleSection

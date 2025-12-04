@@ -8,13 +8,12 @@ import { BadgeQuestionMark, Gem, Pickaxe, Send } from "lucide-react";
 
 export interface HeaderProps {
   lang: SupportedLanguage;
-  interviewId: string;
+  startTrialHref: string;
+  pageUrl: string;
 }
 
 /** Interview Landing Header */
-export function InterviewHeader({ lang, interviewId }: HeaderProps) {
-  const page = "interview/" + interviewId;
-  const pageUrl = getUrlStart(lang) + page;
+export function InterviewHeader({ lang, startTrialHref, pageUrl }: HeaderProps) {
   const { i18n } = useLingui();
 
   return (
@@ -25,29 +24,29 @@ export function InterviewHeader({ lang, interviewId }: HeaderProps) {
         {
           title: i18n._("How it works"),
           icon: Pickaxe,
-          href: page + "#how-it-works",
+          href: pageUrl + "#how-it-works",
         },
         {
           title: i18n._("Contacts"),
           icon: Send,
-          href: page + "#contacts",
+          href: getUrlStart(lang) + "contacts",
         },
         {
           title: i18n._("Price"),
           icon: Gem,
-          href: page + "#price",
+          href: pageUrl + "#price",
         },
 
         {
           title: i18n._("FAQ"),
           icon: BadgeQuestionMark,
-          href: page + "#faq",
+          href: pageUrl + "#faq",
         },
       ]}
       buttons={[
         {
           title: i18n._("Start Free Trial"),
-          href: page + "#start-free-trial",
+          href: startTrialHref,
           isSolid: true,
         },
       ]}

@@ -2,7 +2,7 @@
 import { BookMarked, Gem, MessageCircleQuestion, Rss } from "lucide-react";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { HeaderUI } from "./HeaderUI";
-import { getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
+import { getUrlStart, getUrlStartWithoutLastSlash } from "../Lang/getUrlStart";
 
 export interface HeaderStaticProps {
   lang: SupportedLanguage;
@@ -33,29 +33,29 @@ export function HeaderComponentStatic({
       links={[
         {
           title: rolePlayTitle,
-          href: "scenarios",
+          href: getUrlStart(lang) + "scenarios",
           icon: BookMarked,
         },
         {
           title: contactsTitle,
-          href: "contacts",
+          href: getUrlStart(lang) + "contacts",
           icon: MessageCircleQuestion,
         },
         {
           title: blogTitle,
-          href: "blog",
+          href: getUrlStart(lang) + "blog",
           icon: Rss,
         },
         {
           title: priceTitle,
-          href: "pricing",
+          href: getUrlStart(lang) + "pricing",
           icon: Gem,
         },
       ]}
       buttons={[
         {
           title: signInTitle,
-          href: "practice",
+          href: getUrlStart(lang) + "practice",
           isSolid: true,
         },
       ]}
