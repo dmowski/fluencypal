@@ -53,9 +53,7 @@ export async function InterviewLandingPageNext({
     return <NotFoundPage lang={supportedLang} />;
   }
 
-  const content = (
-    <InterviewLanding i18n={i18n} lang={supportedLang} id={id} interviewData={interviewData} />
-  );
+  const content = <InterviewLanding lang={supportedLang} id={id} interviewData={interviewData} />;
 
   if (lang === "en") {
     return (
