@@ -78,6 +78,7 @@ export async function InterviewLanding({
             sx={{
               width: "100%",
             }}
+            id="price"
           >
             <PriceCards
               quizLink={quizLink}
@@ -91,78 +92,7 @@ export async function InterviewLanding({
             <GeneralFaqBlock
               padding={"100px 0 0 0"}
               title={i18n._(`FAQ`)}
-              items={[
-                {
-                  question: i18n._(`How does the interview preparation platform work?`),
-                  answer: (
-                    <Typography>
-                      {i18n._(
-                        `Our AI-powered platform simulates real interview scenarios tailored to your target role. You'll receive personalized questions, instant feedback on your answers, and detailed performance analytics to track your improvement.`
-                      )}
-                    </Typography>
-                  ),
-                },
-                {
-                  question: i18n._(`What types of interviews can I practice for?`),
-                  answer: (
-                    <Typography>
-                      {i18n._(
-                        `We support various interview formats including behavioral interviews, technical interviews, case studies, and role-specific scenarios across multiple industries and job levels.`
-                      )}
-                    </Typography>
-                  ),
-                },
-                {
-                  question: i18n._(`How long does it take to see improvement?`),
-                  answer: (
-                    <Typography>
-                      {i18n._(
-                        `Most users report noticeable improvement within 1-2 weeks of consistent practice. Our data shows that candidates who complete at least 10 practice sessions increase their interview success rate by up to 60%.`
-                      )}
-                    </Typography>
-                  ),
-                },
-                {
-                  question: i18n._(`Can I practice for specific companies or positions?`),
-                  answer: (
-                    <Typography>
-                      {i18n._(
-                        `Yes! You can customize your practice sessions based on specific job titles, companies, and industries. Our AI adapts questions to match the interviewing style of your target employers.`
-                      )}
-                    </Typography>
-                  ),
-                },
-                {
-                  question: i18n._(`What kind of feedback will I receive?`),
-                  answer: (
-                    <Typography>
-                      {i18n._(
-                        `You'll get comprehensive feedback including clarity scores, communication analysis, content quality assessment, suggested improvements, and comparison with best practices for your industry.`
-                      )}
-                    </Typography>
-                  ),
-                },
-                {
-                  question: i18n._(`Is there a free trial available?`),
-                  answer: (
-                    <Typography>
-                      {i18n._(
-                        `Yes, you can start with our free trial that includes access to basic interview scenarios and limited feedback. Upgrade anytime to unlock unlimited practice sessions and advanced features.`
-                      )}
-                    </Typography>
-                  ),
-                },
-                {
-                  question: i18n._(`Can I cancel my subscription at any time?`),
-                  answer: (
-                    <Typography>
-                      {i18n._(
-                        `Absolutely. There are no long-term commitments. You can cancel your subscription at any time, and you'll retain access until the end of your current billing period.`
-                      )}
-                    </Typography>
-                  ),
-                },
-              ]}
+              items={interviewData.faqItems}
             />
             <CtaBlock
               title={i18n._(`Ready to ace your next interview?`)}

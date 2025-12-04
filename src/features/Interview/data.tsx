@@ -210,6 +210,26 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
           buttonTitle: "Start 4-Month Plan — $90",
         },
       ],
+      faqItems: [
+        {
+          question: i18n._(`What types of frontend interviews can I practice for?`),
+          answer: i18n._(
+            `We support various interview formats including behavioral interviews, technical interviews, system design, and role-specific scenarios across multiple industries and job levels.`
+          ),
+        },
+        {
+          question: i18n._(`How does the AI feedback work?`),
+          answer: i18n._(
+            `Our AI analyzes your answers for clarity, structure, technical accuracy, and communication skills. You'll receive detailed feedback and suggestions to improve your responses effectively.`
+          ),
+        },
+        {
+          question: i18n._(`Can I customize my practice sessions?`),
+          answer: i18n._(
+            `Yes! You can tailor your practice sessions based on specific job titles, companies, and industries. Our AI adapts questions to match the interviewing style of your target employers.`
+          ),
+        },
+      ],
     },
 
     /*{

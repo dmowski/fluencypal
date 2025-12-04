@@ -25,4 +25,8 @@ export interface InterviewData {
   scorePreview: ScorePreview;
   reviewsData: Review[];
   price: Price[];
+  faqItems: {
+    question: string;
+    answer: string;
+  }[];
 }

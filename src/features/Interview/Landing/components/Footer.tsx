@@ -124,7 +124,7 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
           <Link href={`#pricing`} className="link" variant="body1">
             {i18n._(`Success stories`)}
           </Link>
-          <Link href={`#pricing`} className="link" variant="body1">
+          <Link href={`#price`} className="link" variant="body1">
             {i18n._(`Price`)}
           </Link>
         </Stack>
