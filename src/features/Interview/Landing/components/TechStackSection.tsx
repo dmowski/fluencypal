@@ -1,5 +1,6 @@
 import { Box, Chip, Stack, Typography } from "@mui/material";
 import { TechStackGroup } from "../../types";
+import { TechChip } from "./TechChip";
 
 export interface TechStackSectionProps {
   id: string;
@@ -149,32 +150,7 @@ export const TechStackSection = (props: TechStackSectionProps) => {
                 }}
               >
                 {group.items.map((item, itemIndex) => (
-                  <Stack
-                    key={itemIndex}
-                    sx={{
-                      backgroundColor: "rgba(255, 255, 255, 0.05)",
-                      borderRadius: "23px",
-                      gap: "10px",
-                      padding: "10px 20px 10px 16px",
-                    }}
-                  >
-                    <Stack
-                      sx={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        gap: "15px",
-                      }}
-                    >
-                      {item.logoUrl && (
-                        <img
-                          src={item.logoUrl}
-                          alt={item.label}
-                          style={{ width: "20px", height: "auto" }}
-                        />
-                      )}
-                      <Typography variant="body2">{item.label}</Typography>
-                    </Stack>
-                  </Stack>
+                  <TechChip key={itemIndex} item={item} />
                 ))}
               </Stack>
             </Stack>

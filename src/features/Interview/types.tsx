@@ -72,18 +72,24 @@ export interface FirstScreenSection {
   label: string;
   buttonTitle: string;
 }
+
+export interface Question {
+  question: string;
+  techItems: TechItem[];
+}
+
 // New: Examples of real interview questions
 export interface ExampleQuestionsSection {
   type: "exampleQuestions";
   title: string;
   subTitle: string;
-  questions: string[];
+  questions: Question[];
 }
 
 export interface TechItem {
   label: string;
   /** Optional logo URL – can be empty for more abstract concepts */
-  logoUrl?: string;
+  logoUrl: string;
 }
 
 export interface TechStackGroup {

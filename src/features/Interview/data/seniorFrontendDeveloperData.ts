@@ -10,6 +10,7 @@ import {
   ReviewSection,
   ScorePreviewSection,
   StepInfoCardSection,
+  TechItem,
   TechStackSection,
   WhoIsThisForSection,
 } from "../types";
@@ -291,6 +292,101 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
     buttonTitle: i18n._("Start Your Interview Test"),
   };
 
+  const reactTech: TechItem = {
+    label: i18n._("React & Next.js"),
+    logoUrl: "https://cdn.simpleicons.org/react",
+  };
+
+  const vueTech: TechItem = {
+    label: i18n._("Vue & Pinia"),
+    logoUrl: "https://cdn.simpleicons.org/vuedotjs",
+  };
+
+  const angularTech: TechItem = {
+    label: i18n._("Angular & RxJS"),
+    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/6/67/Angular_gradient_logo.png",
+  };
+
+  const typescriptTech: TechItem = {
+    label: i18n._("TypeScript"),
+    logoUrl: "https://cdn.simpleicons.org/typescript",
+  };
+
+  const systemDesignTech: TechItem = {
+    label: i18n._("Frontend System Design"),
+    logoUrl: "https://cdn.simpleicons.org/lighthouse",
+  };
+
+  const microfrontendsTech: TechItem = {
+    label: i18n._("Micro-frontends"),
+    logoUrl: "https://cdn.simpleicons.org/webpack",
+  };
+
+  const stateManagementTech: TechItem = {
+    label: i18n._("State Management"),
+    logoUrl: "https://cdn.simpleicons.org/redux",
+  };
+
+  const componentLibrariesTech: TechItem = {
+    label: i18n._("Component Libraries"),
+    logoUrl: "https://cdn.simpleicons.org/storybook",
+  };
+
+  const renderingPerformanceTech: TechItem = {
+    label: i18n._("Rendering Performance"),
+    logoUrl: "https://cdn.simpleicons.org/googlechrome",
+  };
+
+  const bundlingTech: TechItem = {
+    label: i18n._("Bundling & Code Splitting"),
+    logoUrl: "https://cdn.simpleicons.org/rollupdotjs",
+  };
+
+  const lazyLoadingTech: TechItem = {
+    label: i18n._("Lazy Loading"),
+    logoUrl: "https://cdn.simpleicons.org/javascript",
+  };
+
+  const cachingTech: TechItem = {
+    label: i18n._("Caching Strategies"),
+    logoUrl: "https://cdn.simpleicons.org/cloudflare",
+  };
+
+  const jestTech: TechItem = {
+    label: i18n._("Jest & React Testing Library"),
+    logoUrl: "https://cdn.simpleicons.org/jest",
+  };
+
+  const cypressTech: TechItem = {
+    label: i18n._("Cypress & E2E Testing"),
+    logoUrl: "https://cdn.simpleicons.org/cypress",
+  };
+
+  const integrationTestingTech: TechItem = {
+    label: i18n._("Integration Testing"),
+    logoUrl: "https://cdn.simpleicons.org/githubactions",
+  };
+
+  const wcagTech: TechItem = {
+    label: i18n._("WCAG Standards"),
+    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/5/51/W3C.svg",
+  };
+
+  const semanticHtmlTech: TechItem = {
+    label: i18n._("Semantic HTML"),
+    logoUrl: "https://cdn.simpleicons.org/html5",
+  };
+
+  const performanceMetricsTech: TechItem = {
+    label: i18n._("Performance Metrics"),
+    logoUrl: "https://cdn.simpleicons.org/lighthouse",
+  };
+
+  const coreWebVitalsTech: TechItem = {
+    label: i18n._("Core Web Vitals"),
+    logoUrl: "https://cdn.simpleicons.org/pagespeedinsights",
+  };
+
   const exampleQuestionsSection: ExampleQuestionsSection = {
     type: "exampleQuestions",
     title: i18n._("Questions you will practice"),
@@ -298,26 +394,52 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       "Real Senior Frontend Developer interview questions you're likely to be asked"
     ),
     questions: [
-      i18n._(
-        "How would you design the frontend architecture for a large-scale dashboard with real-time data updates?"
-      ),
-      i18n._("Explain how React reconciliation works and how it affects performance."),
-      i18n._(
-        "How would you structure state management for a complex application with nested components and async data?"
-      ),
-      i18n._(
-        "Describe how you would diagnose and fix a performance regression caused by excessive re-renders."
-      ),
-      i18n._(
-        "How do you design a reusable component library shared across multiple products or teams?"
-      ),
-      i18n._(
-        "Walk me through how you would improve Core Web Vitals for a slow single-page application."
-      ),
-      i18n._("How do you handle error boundaries and fallback UI in modern frontend frameworks?"),
-      i18n._(
-        "Describe a time you led a frontend refactor or migration (e.g., from class components to hooks or from a legacy stack to a modern framework)."
-      ),
+      {
+        question: i18n._(
+          "How would you design the frontend architecture for a large-scale dashboard with real-time data updates?"
+        ),
+        techItems: [typescriptTech, systemDesignTech, stateManagementTech],
+      },
+      {
+        question: i18n._("Explain how React reconciliation works and how it affects performance."),
+        techItems: [reactTech, renderingPerformanceTech],
+      },
+      {
+        question: i18n._(
+          "How would you structure state management for a complex application with nested components and async data?"
+        ),
+        techItems: [stateManagementTech, reactTech, vueTech],
+      },
+      {
+        question: i18n._(
+          "Describe how you would diagnose and fix a performance regression caused by excessive re-renders."
+        ),
+        techItems: [renderingPerformanceTech, reactTech, angularTech],
+      },
+      {
+        question: i18n._(
+          "How do you design a reusable component library shared across multiple products or teams?"
+        ),
+        techItems: [componentLibrariesTech, typescriptTech, reactTech],
+      },
+      {
+        question: i18n._(
+          "Walk me through how you would improve Core Web Vitals for a slow single-page application."
+        ),
+        techItems: [coreWebVitalsTech, performanceMetricsTech, renderingPerformanceTech],
+      },
+      {
+        question: i18n._(
+          "How do you handle error boundaries and fallback UI in modern frontend frameworks?"
+        ),
+        techItems: [reactTech, vueTech, angularTech],
+      },
+      {
+        question: i18n._(
+          "Describe a time you led a frontend refactor or migration (e.g., from class components to hooks or from a legacy stack to a modern framework)."
+        ),
+        techItems: [reactTech, vueTech, angularTech],
+      },
     ],
   };
 
@@ -334,106 +456,23 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
     techGroups: [
       {
         groupTitle: i18n._("Frameworks & Libraries"),
-        items: [
-          {
-            label: i18n._("React & Next.js"),
-            logoUrl: "https://cdn.simpleicons.org/react",
-          },
-          {
-            label: i18n._("Vue & Pinia"),
-            logoUrl: "https://cdn.simpleicons.org/vuedotjs",
-          },
-          {
-            label: i18n._("Angular & RxJS"),
-            logoUrl:
-              "https://upload.wikimedia.org/wikipedia/commons/6/67/Angular_gradient_logo.png",
-          },
-          {
-            label: i18n._("TypeScript"),
-            logoUrl: "https://cdn.simpleicons.org/typescript",
-          },
-        ],
+        items: [reactTech, vueTech, angularTech, typescriptTech],
       },
       {
         groupTitle: i18n._("Architecture & Design"),
-        items: [
-          {
-            label: i18n._("Frontend System Design"),
-            logoUrl: "https://cdn.simpleicons.org/lighthouse",
-          },
-          {
-            label: i18n._("Micro-frontends"),
-            logoUrl: "https://cdn.simpleicons.org/webpack",
-          },
-          {
-            label: i18n._("State Management"),
-            // Redux is a common state-lib
-            logoUrl: "https://cdn.simpleicons.org/redux",
-          },
-          {
-            label: i18n._("Component Libraries"),
-            logoUrl: "https://cdn.simpleicons.org/storybook",
-          },
-        ],
+        items: [systemDesignTech, microfrontendsTech, stateManagementTech, componentLibrariesTech],
       },
       {
         groupTitle: i18n._("Performance & Optimization"),
-        items: [
-          {
-            label: i18n._("Rendering Performance"),
-            logoUrl: "https://cdn.simpleicons.org/googlechrome",
-          },
-          {
-            label: i18n._("Bundling & Code Splitting"),
-            logoUrl: "https://cdn.simpleicons.org/rollupdotjs",
-          },
-          {
-            label: i18n._("Lazy Loading"),
-            logoUrl: "https://cdn.simpleicons.org/javascript",
-          },
-          {
-            label: i18n._("Caching Strategies"),
-            logoUrl: "https://cdn.simpleicons.org/cloudflare",
-          },
-        ],
+        items: [renderingPerformanceTech, bundlingTech, lazyLoadingTech, cachingTech],
       },
       {
         groupTitle: i18n._("Testing & Quality"),
-        items: [
-          {
-            label: i18n._("Jest & React Testing Library"),
-            logoUrl: "https://cdn.simpleicons.org/jest",
-          },
-          {
-            label: i18n._("Cypress & E2E Testing"),
-            logoUrl: "https://cdn.simpleicons.org/cypress",
-          },
-          {
-            label: i18n._("Integration Testing"),
-            logoUrl: "https://cdn.simpleicons.org/githubactions",
-          },
-        ],
+        items: [jestTech, cypressTech, integrationTestingTech],
       },
       {
         groupTitle: i18n._("UX & Accessibility"),
-        items: [
-          {
-            label: i18n._("WCAG Standards"),
-            logoUrl: "https://upload.wikimedia.org/wikipedia/commons/5/51/W3C.svg",
-          },
-          {
-            label: i18n._("Semantic HTML"),
-            logoUrl: "https://cdn.simpleicons.org/html5",
-          },
-          {
-            label: i18n._("Performance Metrics"),
-            logoUrl: "https://cdn.simpleicons.org/lighthouse",
-          },
-          {
-            label: i18n._("Core Web Vitals"),
-            logoUrl: "https://cdn.simpleicons.org/pagespeedinsights",
-          },
-        ],
+        items: [wcagTech, semanticHtmlTech, performanceMetricsTech, coreWebVitalsTech],
       },
     ],
   };

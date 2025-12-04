@@ -1,15 +1,16 @@
 import { Button, Stack, Typography } from "@mui/material";
+import { Question } from "../../types";
+import { TechChip } from "./TechChip";
 
 export interface ExampleQuestionsProps {
   id: string;
   title: string;
   subTitle: string;
-  questions: string[];
+  questions: Question[];
   buttonTitle?: string;
   buttonHref?: string;
 }
 
-/** Interview Landing – Example Questions */
 export const ExampleQuestionsSection = (props: ExampleQuestionsProps) => {
   return (
     <Stack
@@ -63,7 +64,7 @@ export const ExampleQuestionsSection = (props: ExampleQuestionsProps) => {
               xs: "1fr",
               sm: "1fr 1fr",
             },
-            gap: "16px",
+            gap: "30px",
             marginTop: "32px",
           }}
         >
@@ -75,20 +76,62 @@ export const ExampleQuestionsSection = (props: ExampleQuestionsProps) => {
                 borderRadius: "12px",
                 border: "1px solid rgba(255,255,255,0.06)",
                 backgroundColor: "rgba(255,255,255,0.03)",
+                gap: "10px",
+                justifyContent: "space-between",
               }}
             >
               <Typography
-                variant="overline"
-                sx={{ opacity: 0.7, fontSize: "11px", letterSpacing: 1 }}
-              >
-                Question {index + 1}
-              </Typography>
-              <Typography
                 variant="body1"
-                sx={{ marginTop: "4px", fontSize: "15px", lineHeight: 1.5 }}
+                sx={{ marginTop: "4px", fontSize: "18px", lineHeight: 1.5 }}
               >
-                {question}
+                {question.question}
               </Typography>
+
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                  borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+                  paddingTop: "10px",
+                }}
+              >
+                {question.techItems.map((item, itemIndex) => (
+                  <Stack
+                    key={itemIndex}
+                    sx={{
+                      backgroundColor: "rgba(255, 255, 255, 0.01)",
+                      borderRadius: "23px",
+                      gap: "10px",
+                      padding: "5px 20px 5px 12px",
+                    }}
+                  >
+                    <Stack
+                      sx={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: "15px",
+                      }}
+                    >
+                      {item.logoUrl && (
+                        <img
+                          src={item.logoUrl}
+                          alt={item.label}
+                          style={{ width: "20px", height: "auto" }}
+                        />
+                      )}
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          opacity: 0.9,
+                        }}
+                      >
+                        {item.label}
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                ))}
+              </Stack>
             </Stack>
           ))}
         </Stack>
