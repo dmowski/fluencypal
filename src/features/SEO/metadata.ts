@@ -299,9 +299,7 @@ export const generateMetadataInfo = ({
   if (currentPath === "interview" && interviewId) {
     const { interviews } = getAllInterviews(supportedLang);
     const item = interviews.find((b) => b.id === interviewId);
-    if (!item) {
-      needIndex = false;
-    }
+    needIndex = false;
 
     title = `${item?.title || "Interview not found"} - ` + i18n._(`| FluencyPal`);
     description = item?.subTitle || "";

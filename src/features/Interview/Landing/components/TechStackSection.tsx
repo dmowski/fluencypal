@@ -129,6 +129,7 @@ export const TechStackSection = (props: TechStackSectionProps) => {
             >
               <Typography
                 variant="subtitle2"
+                component={"h3"}
                 sx={{
                   fontWeight: 600,
                   fontSize: "13px",
