@@ -10,7 +10,6 @@ export interface WhoIsThisForSectionProps {
   buttonHref?: string;
 }
 
-/** Interview Landing – Who This Is For */
 export const WhoIsThisForSection = (props: WhoIsThisForSectionProps) => {
   return (
     <Stack
@@ -65,9 +64,19 @@ export const WhoIsThisForSection = (props: WhoIsThisForSectionProps) => {
           }}
         >
           {props.audienceItems.map((item, index) => (
-            <Stack key={index} direction="row" spacing={1.5} alignItems="center" sx={{}}>
+            <Stack
+              key={index}
+              sx={{
+                flexDirection: "row",
+                gap: "12px",
+                alignItems: "center",
+              }}
+            >
               <CheckCircle2 size={22} color="#4caf50" style={{}} />
-              <Typography variant="body1" sx={{ fontSize: "18px", lineHeight: 1.6, opacity: 0.9 }}>
+              <Typography
+                variant="body1"
+                sx={{ fontSize: "18px", lineHeight: 1.6, opacity: 0.9, paddingTop: "2px" }}
+              >
                 {item}
               </Typography>
             </Stack>
