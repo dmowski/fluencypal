@@ -91,10 +91,15 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
               marginLeft: "-8px",
             }}
           >
-            <IconButton target="_blank" href={`${CONTACTS.instagram}`} rel="noopener noreferrer">
+            <IconButton
+              target="_blank"
+              href={`${CONTACTS.instagram}`}
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
               <InstagramIcon sx={{ color: "rgba(255, 255, 255, 0.7)" }} />
             </IconButton>
-            <IconButton href={`mailto:${CONTACTS.email}`}>
+            <IconButton href={`mailto:${CONTACTS.email}`} aria-label="Email">
               <AlternateEmailIcon sx={{ color: "rgba(255, 255, 255, 0.7)" }} />
             </IconButton>
           </Stack>

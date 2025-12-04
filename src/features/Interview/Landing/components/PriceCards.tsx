@@ -281,12 +281,12 @@ export const PriceCards = ({
                     fontWeight: 600,
                     textTransform: "none",
                     padding: "12px 24px",
-                    backgroundColor: price.isHighlighted ? "#3b82f6" : "transparent",
-                    borderColor: price.isHighlighted ? "#3b82f6" : "rgba(255, 255, 255, 0.2)",
+                    backgroundColor: price.isHighlighted ? "#266ddfff" : "transparent",
+                    borderColor: price.isHighlighted ? "#266ddfff" : "rgba(255, 255, 255, 0.2)",
                     color: "#fff",
                     "&:hover": {
                       backgroundColor: price.isHighlighted
-                        ? "#2563eb"
+                        ? "#1150d7ff"
                         : "rgba(255, 255, 255, 0.05)",
                       borderColor: price.isHighlighted ? "#2563eb" : "rgba(255, 255, 255, 0.3)",
                     },

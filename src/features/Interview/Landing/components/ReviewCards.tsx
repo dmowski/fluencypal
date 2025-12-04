@@ -16,12 +16,12 @@ export interface ReviewCardsProps {
 }
 
 const avatarColors = [
-  "#6366f1", // Purple-blue
-  "#8b5cf6", // Purple
-  "#a855f7", // Purple-pink
-  "#6366f1", // Purple-blue
-  "#8b5cf6", // Purple
-  "#a855f7", // Purple-pink
+  "#4338ca", // Darker indigo (WCAG AA compliant)
+  "#6d28d9", // Darker purple (WCAG AA compliant)
+  "#7e22ce", // Darker violet (WCAG AA compliant)
+  "#4338ca", // Darker indigo
+  "#6d28d9", // Darker purple
+  "#7e22ce", // Darker violet
 ];
 
 /** Interview Landing Review Cards */
@@ -130,6 +130,7 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
                 >
                   <Stack direction="row" sx={{ alignItems: "center", gap: "12px" }}>
                     <Stack
+                      component={"span"}
                       sx={{
                         width: "48px",
                         height: "48px",
