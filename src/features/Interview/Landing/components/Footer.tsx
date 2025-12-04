@@ -118,10 +118,10 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
         <Stack>
           <Typography className="section-title">{i18n._(`Product`)}</Typography>
 
-          <Link href={`#pricing`} className="link" variant="body1">
+          <Link href={`#steps`} className="link" variant="body1">
             {i18n._(`How it Works`)}
           </Link>
-          <Link href={`#pricing`} className="link" variant="body1">
+          <Link href={`#reviews`} className="link" variant="body1">
             {i18n._(`Success stories`)}
           </Link>
           <Link href={`#price`} className="link" variant="body1">
@@ -131,9 +131,7 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
 
         <Stack>
           <Typography className="section-title">{i18n._(`Company`)}</Typography>
-          <Link href={`${getUrlStart(lang)}contacts`} variant="body1" className="link">
-            {i18n._(`About Us`)}
-          </Link>
+
           <Link href={`${getUrlStart(lang)}contacts`} variant="body1" className="link">
             {i18n._(`Contacts`)}
           </Link>

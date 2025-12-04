@@ -24,12 +24,7 @@ export function InterviewHeader({ lang, startTrialHref, pageUrl }: HeaderProps) 
         {
           title: i18n._("How it works"),
           icon: Pickaxe,
-          href: pageUrl + "#how-it-works",
-        },
-        {
-          title: i18n._("Contacts"),
-          icon: Send,
-          href: getUrlStart(lang) + "contacts",
+          href: pageUrl + "#steps",
         },
         {
           title: i18n._("Price"),

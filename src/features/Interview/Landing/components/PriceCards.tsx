@@ -23,6 +23,7 @@ export interface PriceCardsProps {
   footerText?: string;
   prices: Price[];
   quizLink: string;
+  id: string;
 }
 
 const iconConfigs = [
@@ -44,12 +45,19 @@ const iconConfigs = [
 ];
 
 /** Interview Landing Price Cards */
-export const PriceCards = ({ title, subTitle, footerText, prices, quizLink }: PriceCardsProps) => {
+export const PriceCards = ({
+  title,
+  subTitle,
+  footerText,
+  prices,
+  quizLink,
+  id,
+}: PriceCardsProps) => {
   return (
     <Stack
-      id="pricing"
+      id={id}
       sx={{
-        padding: "0",
+        padding: "150px 0",
         alignItems: "center",
         width: "100%",
       }}

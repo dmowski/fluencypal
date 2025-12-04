@@ -14,6 +14,7 @@ export interface InfoCardsProps {
   buttonTitle?: string;
   buttonHref?: string;
   cards: InfoCard[];
+  id: string;
 }
 
 interface IconColor {
@@ -49,8 +50,9 @@ const iconColors: IconColor[] = [
 export const InfoCards = (props: InfoCardsProps) => {
   return (
     <Stack
+      id={props.id}
       sx={{
-        padding: "0",
+        padding: "150px 0",
         alignItems: "center",
         "@media (max-width: 600px)": {
           paddingTop: "100px",

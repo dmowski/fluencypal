@@ -14,6 +14,7 @@ export interface ScorePreview {
 }
 
 export interface ScorePreviewSectionProps {
+  id: string;
   title: string;
   subtitle: string;
   infoList: string[];
@@ -28,7 +29,9 @@ const scoreColors: string[] = ["#EF4444", "#F59E0B", "#10B981", "#3B82F6", "#8B5
 export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
   return (
     <Stack
+      id={props.id}
       sx={{
+        padding: "150px 0",
         alignItems: "center",
         width: "100%",
       }}

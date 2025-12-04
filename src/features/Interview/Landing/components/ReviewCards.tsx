@@ -12,6 +12,7 @@ export interface ReviewCardsProps {
   title: string;
   subTitle: string;
   reviews: Review[];
+  id: string;
 }
 
 const avatarColors = [
@@ -24,11 +25,12 @@ const avatarColors = [
 ];
 
 /** Interview Landing Review Cards */
-export const ReviewCards = ({ title, subTitle, reviews }: ReviewCardsProps) => {
+export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) => {
   return (
     <Stack
+      id={id}
       sx={{
-        padding: "0",
+        padding: "150px 0",
         alignItems: "center",
         width: "100%",
       }}

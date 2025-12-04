@@ -36,7 +36,7 @@ export async function InterviewLanding({
     <Stack sx={{ width: "100%" }}>
       <InterviewHeader lang={lang} startTrialHref={quizLink} pageUrl={pageUrl} />
       <main style={{ width: "100%", margin: 0 }}>
-        <Stack sx={{ alignItems: "center", gap: "300px" }}>
+        <Stack sx={{ alignItems: "center", gap: "0" }}>
           <MainTitleSection
             label={interviewData.jobTitle}
             title={interviewData.title}
@@ -46,6 +46,7 @@ export async function InterviewLanding({
           />
 
           <InfoCards
+            id="results"
             title={i18n._("What you will achieve")}
             subtitle={i18n._("Real outcomes that transform your interview performance")}
             buttonTitle={i18n._("Start Free Trial")}
@@ -54,6 +55,7 @@ export async function InterviewLanding({
           />
 
           <ScorePreviewSection
+            id="test"
             title={i18n._("Take the Interview Readiness Test")}
             subtitle={i18n._("In less then 5 minutes, you'll get:")}
             infoList={interviewData.whatUserGetAfterFirstTest}
@@ -63,12 +65,14 @@ export async function InterviewLanding({
           />
 
           <StepInfoCards
+            id="steps"
             title={i18n._("Why candidates improve so quickly")}
             subtitle={i18n._("A proven method that delivers measurable results")}
             cards={interviewData.stepInfoCards}
           />
 
           <ReviewCards
+            id="reviews"
             title={i18n._("Real people. Real job offers.")}
             subTitle={i18n._("Join thousands who transformed their interview performance")}
             reviews={interviewData.reviewsData}
@@ -78,9 +82,9 @@ export async function InterviewLanding({
             sx={{
               width: "100%",
             }}
-            id="price"
           >
             <PriceCards
+              id="price"
               quizLink={quizLink}
               title={i18n._("Choose your interview preparation plan")}
               subTitle={i18n._("Everything you need to stand out and get the job")}
@@ -90,7 +94,8 @@ export async function InterviewLanding({
               prices={interviewData.price}
             />
             <GeneralFaqBlock
-              padding={"100px 0 0 0"}
+              id="faq"
+              padding={"0px 0 90px 0"}
               title={i18n._(`FAQ`)}
               items={interviewData.faqItems}
             />

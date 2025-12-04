@@ -7,10 +7,12 @@ interface GeneralFaqBlockProps {
   items: FaqItemInfo[];
   title: string;
   padding?: string;
+  id?: string;
 }
-export const GeneralFaqBlock = ({ items, title, padding }: GeneralFaqBlockProps) => {
+export const GeneralFaqBlock = ({ items, title, padding, id }: GeneralFaqBlockProps) => {
   return (
     <Stack
+      id={id}
       sx={{
         width: "100%",
         padding: padding || "120px 0 100px 0",

@@ -10,6 +10,7 @@ export interface StepInfoCard {
 }
 
 export interface InfoCardsProps {
+  id: string;
   title: string;
   subtitle: string;
   cards: StepInfoCard[];
@@ -48,7 +49,9 @@ const iconColors: IconColor[] = [
 export const StepInfoCards = (props: InfoCardsProps) => {
   return (
     <Stack
+      id={props.id}
       sx={{
+        padding: "150px 0",
         alignItems: "center",
         "@media (max-width: 600px)": {
           paddingTop: "100px",
