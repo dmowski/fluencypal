@@ -10,6 +10,26 @@ export interface InterviewCategory {
   isAllResources?: boolean;
 }
 
+export interface InterviewLandingMessages {
+  startYourInterviewTest: string;
+  whatYouWillAchieve: string;
+  realOutcomesThatTransform: string;
+  startFreeTrial: string;
+  takeTheInterviewReadinessTest: string;
+  inLessThen5Minutes: string;
+  startTest: string;
+  whyCandidatesImprove: string;
+  aProvenMethodThatDelivers: string;
+  realPeopleRealJobOffers: string;
+  joinThousandsWhoTransformed: string;
+  chooseYourInterviewPreparationPlan: string;
+  everythingYouNeedToStandOut: string;
+  allPlansIncludeInstantAccess: string;
+  faq: string;
+  readyToAceYourNextInterview: string;
+  startPracticingNow: string;
+}
+
 export interface InterviewData {
   id: string;
   title: string;
@@ -29,4 +49,5 @@ export interface InterviewData {
     question: string;
     answer: string;
   }[];
+  landingMessages: InterviewLandingMessages;
 }
