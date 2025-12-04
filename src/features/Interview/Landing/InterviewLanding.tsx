@@ -157,7 +157,7 @@ export async function InterviewLanding({
                 <GeneralFaqBlock
                   key={index}
                   id="faq"
-                  padding={"0px 0 90px 0"}
+                  padding={"150px 0 90px 0"}
                   title={section.title}
                   items={section.faqItems.map((faq) => ({
                     question: faq.question,

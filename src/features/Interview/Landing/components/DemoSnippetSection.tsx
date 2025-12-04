@@ -93,68 +93,62 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
                 {item.label}
               </Typography>
 
-              <Box
+              <Stack
                 sx={{
+                  gap: "8px",
                   padding: "10px 12px",
                   borderRadius: "10px",
                   backgroundColor: "rgba(0,0,0,0.35)",
                   border: "1px solid rgba(255,255,255,0.06)",
                 }}
               >
-                <Typography
-                  variant="caption"
-                  sx={{ opacity: 0.7, textTransform: "uppercase", fontSize: "11px" }}
-                >
+                <Typography variant="caption" sx={{ opacity: 0.7, fontSize: "12px" }}>
                   Interview question
                 </Typography>
-                <Typography variant="body2" sx={{ marginTop: "4px", fontSize: "14px" }}>
+                <Typography variant="body2" sx={{ marginTop: "4px", fontSize: "18px" }}>
                   {item.question}
                 </Typography>
-              </Box>
+              </Stack>
 
-              <Box
+              <Stack
                 sx={{
+                  gap: "6px",
                   padding: "10px 12px",
                   borderRadius: "10px",
                   backgroundColor: "rgba(255,255,255,0.02)",
                   border: "1px dashed rgba(255,255,255,0.08)",
                 }}
               >
-                <Typography
-                  variant="caption"
-                  sx={{ opacity: 0.7, textTransform: "uppercase", fontSize: "11px" }}
-                >
+                <Typography variant="caption" sx={{ opacity: 0.7, fontSize: "12px" }}>
                   Candidate’s short answer
                 </Typography>
                 <Typography
                   variant="body2"
-                  sx={{ marginTop: "4px", fontSize: "14px", opacity: 0.9 }}
+                  sx={{ marginTop: "4px", fontSize: "18px", opacity: 0.9 }}
                 >
                   {item.userAnswerShort}
                 </Typography>
-              </Box>
+              </Stack>
 
-              <Box
+              <Stack
                 sx={{
                   padding: "10px 12px",
                   borderRadius: "10px",
                   backgroundColor: "rgba(25,118,210,0.12)",
                   border: "1px solid rgba(25,118,210,0.4)",
+                  gap: "6px",
                 }}
               >
-                <Typography
-                  variant="caption"
-                  sx={{ opacity: 0.8, textTransform: "uppercase", fontSize: "11px" }}
-                >
+                <Typography variant="caption" sx={{ opacity: 0.8, fontSize: "12px" }}>
                   AI feedback (what to improve)
                 </Typography>
                 <Typography
                   variant="body2"
-                  sx={{ marginTop: "4px", fontSize: "14px", lineHeight: 1.6 }}
+                  sx={{ marginTop: "4px", fontSize: "18px", lineHeight: 1.6 }}
                 >
                   {item.feedback}
                 </Typography>
-              </Box>
+              </Stack>
             </Stack>
           ))}
         </Stack>

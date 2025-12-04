@@ -30,6 +30,7 @@ export const WhoIsThisForSection = (props: WhoIsThisForSectionProps) => {
           width: "100%",
           gap: "24px",
           padding: "0 10px",
+          alignItems: "center",
         }}
       >
         <Stack
@@ -64,9 +65,9 @@ export const WhoIsThisForSection = (props: WhoIsThisForSectionProps) => {
           }}
         >
           {props.audienceItems.map((item, index) => (
-            <Stack key={index} direction="row" spacing={1.5} alignItems="flex-start">
-              <CheckCircle2 size={18} color="#4caf50" style={{ marginTop: 3, flexShrink: 0 }} />
-              <Typography variant="body1" sx={{ fontSize: "15px", lineHeight: 1.6, opacity: 0.9 }}>
+            <Stack key={index} direction="row" spacing={1.5} alignItems="center" sx={{}}>
+              <CheckCircle2 size={22} color="#4caf50" style={{}} />
+              <Typography variant="body1" sx={{ fontSize: "18px", lineHeight: 1.6, opacity: 0.9 }}>
                 {item}
               </Typography>
             </Stack>
