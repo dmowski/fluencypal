@@ -10,25 +10,78 @@ export interface InterviewCategory {
   isAllResources?: boolean;
 }
 
-export interface InterviewLandingMessages {
-  startYourInterviewTest: string;
-  whatYouWillAchieve: string;
-  realOutcomesThatTransform: string;
-  startFreeTrial: string;
-  takeTheInterviewReadinessTest: string;
-  inLessThen5Minutes: string;
-  startTest: string;
-  whyCandidatesImprove: string;
-  aProvenMethodThatDelivers: string;
-  realPeopleRealJobOffers: string;
-  joinThousandsWhoTransformed: string;
-  chooseYourInterviewPreparationPlan: string;
-  everythingYouNeedToStandOut: string;
-  allPlansIncludeInstantAccess: string;
-  faq: string;
-  readyToAceYourNextInterview: string;
-  startPracticingNow: string;
+export interface ReviewSection {
+  type: "review";
+  title: string;
+  subTitle: string;
+  reviews: Review[];
 }
+
+export interface PriceSection {
+  type: "price";
+  title: string;
+  subTitle: string;
+  prices: Price[];
+}
+
+export interface FaqSection {
+  type: "faq";
+  title: string;
+  subTitle: string;
+  faqItems: {
+    question: string;
+    answer: string;
+  }[];
+}
+
+export interface ScorePreviewSection {
+  type: "scorePreview";
+  title: string;
+  subTitle: string;
+  infoList: string[];
+  scorePreview: ScorePreview;
+  buttonTitle: string;
+}
+
+//steps
+export interface StepInfoCardSection {
+  type: "stepInfoCard";
+  title: string;
+  subTitle: string;
+  stepInfoCards: StepInfoCard[];
+}
+
+export interface InfoCardsSection {
+  type: "infoCards";
+  title: string;
+  subTitle: string;
+  buttonTitle: string;
+  infoCards: InfoCard[];
+}
+
+export interface CallToActionSection {
+  type: "callToAction";
+  title: string;
+  buttonTitle: string;
+}
+
+export interface FirstScreenSection {
+  type: "firstScreen";
+  title: string;
+  subTitle: string;
+  label: string;
+  buttonTitle: string;
+}
+
+type Section =
+  | ReviewSection
+  | PriceSection
+  | FaqSection
+  | StepInfoCardSection
+  | ScorePreviewSection
+  | InfoCardsSection
+  | CallToActionSection
+  | FirstScreenSection;
 
 export interface InterviewData {
   id: string;
@@ -36,18 +89,6 @@ export interface InterviewData {
   jobTitle: string;
   subTitle: string;
   keywords: string[];
-
+  sections: Section[];
   category: InterviewCategory;
-  infoCards: InfoCard[];
-  stepInfoCards: StepInfoCard[];
-
-  whatUserGetAfterFirstTest: string[];
-  scorePreview: ScorePreview;
-  reviewsData: Review[];
-  price: Price[];
-  faqItems: {
-    question: string;
-    answer: string;
-  }[];
-  landingMessages: InterviewLandingMessages;
 }

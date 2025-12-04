@@ -1,4 +1,14 @@
-import { InterviewData } from "../types";
+import {
+  CallToActionSection,
+  FaqSection,
+  FirstScreenSection,
+  InfoCardsSection,
+  InterviewData,
+  PriceSection,
+  ReviewSection,
+  ScorePreviewSection,
+  StepInfoCardSection,
+} from "../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import {
@@ -16,138 +26,12 @@ import {
 
 export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): InterviewData => {
   const i18n = getI18nInstance(lang);
-  return {
-    id: "senior-frontend-developer",
-    jobTitle: i18n._("Senior Frontend Developer"),
-    title: i18n._("Get more job offers with  answers that stand out"),
-    subTitle: i18n._(
-      "Prepare for system design, leadership, and advanced frontend questions. Get your personalized interview action plan"
-    ),
-    keywords: [
-      i18n._("senior frontend interview"),
-      i18n._("frontend developer interview prep"),
-      i18n._("react interview questions"),
-      i18n._("web developer interview preparation"),
-    ],
-    category: {
-      categoryTitle: i18n._("IT & Software Development"),
-      categoryId: "it",
-    },
-    infoCards: [
-      {
-        icon: MessageSquare,
-        title: i18n._("Master technical leadership questions"),
-        description: i18n._(
-          "Demonstrate expertise in architecture decisions, code reviews, and mentoring junior developers."
-        ),
-      },
-      {
-        icon: Sparkles,
-        title: i18n._("Showcase system design thinking"),
-        description: i18n._(
-          "Articulate scalable solutions, performance optimization, and frontend architecture patterns."
-        ),
-      },
-      {
-        icon: PhoneCall,
-        title: i18n._("Stand out in behavioral rounds"),
-        description: i18n._(
-          "Share compelling stories about cross-team collaboration, conflict resolution, and project ownership."
-        ),
-      },
-      {
-        icon: TrendingUp,
-        title: i18n._("Negotiate senior-level compensation"),
-        description: i18n._(
-          "Build confidence to discuss equity, benefits, and salary packages that match your experience."
-        ),
-      },
-    ],
-    stepInfoCards: [
-      {
-        icon: Video,
-        label: i18n._("Step 1"),
-        title: i18n._("Real interview simulation"),
-        description: i18n._("Practice in real interview conditions — no tutors needed."),
-      },
-      {
-        icon: Brain,
-        label: i18n._("Step 2"),
-        title: i18n._("AI feedback that matters"),
-        description: i18n._("Improve your impact, structure, clarity, and delivery."),
-      },
-      {
-        icon: FileText,
-        label: i18n._("Step 2"),
-        title: i18n._("Personalized answer scripts"),
-        description: i18n._("Based on your CV, experience, and target role."),
-      },
-    ],
-    whatUserGetAfterFirstTest: [
-      i18n._("Personalized Interview Readiness Score"),
-      i18n._("Technical analysis on system design and architecture answers"),
-      i18n._("Leadership competency assessment with behavioral response feedback"),
-      i18n._("Framework-specific insights (React, Vue, Angular)"),
-      i18n._("Strategic action plan to address gaps in frontend architecture knowledge"),
-    ],
-    scorePreview: {
-      label: "Interview Readiness Score",
-      totalScore: 85,
-      description:
-        "Strong knowledge of TypeScript and Angular.js. It might be worth polishing Soft Skills.",
 
-      scoreMetrics: [
-        { title: "Angular.js knowledge", score: 85 },
-        { title: "Coding Skills", score: 90 },
-        { title: "Problem Solving", score: 80 },
-        { title: "Communication", score: 25 },
-      ],
-    },
-    reviewsData: [
-      {
-        name: "Sarah M.",
-        jobTitle: "Frontend Developer",
-        rate: 5,
-        review:
-          "I finally got 3 offers after months of silence. The React component challenges were exactly what I needed.",
-      },
-      {
-        name: "James R.",
-        jobTitle: "Senior Frontend Engineer",
-        rate: 5,
-        review:
-          "I was confident and clear — FluencyPal prepared me better than any coach for technical discussions about state management.",
-      },
-      {
-        name: "Maria L.",
-        jobTitle: "UI/UX Engineer",
-        rate: 5,
-        review:
-          "It helped me answer questions about accessibility and performance optimization without panic.",
-      },
-      {
-        name: "David K.",
-        jobTitle: "React Developer",
-        rate: 4,
-        review:
-          "The personalized feedback showed me exactly what I was doing wrong in my technical explanations. Game changer.",
-      },
-      {
-        name: "Emma T.",
-        jobTitle: "Frontend Tech Lead",
-        rate: 5,
-        review:
-          "Within 2 weeks I went from nervous to confident discussing architecture decisions. Got the job I wanted.",
-      },
-      {
-        name: "Alex P.",
-        jobTitle: "Full Stack Developer",
-        rate: 5,
-        review:
-          "The AI feedback on my CSS and JavaScript answers was spot-on. I improved my responses immediately.",
-      },
-    ],
-    price: [
+  const priceSection: PriceSection = {
+    type: "price",
+    title: i18n._("Choose your interview preparation plan"),
+    subTitle: i18n._("Everything you need to stand out and get the job"),
+    prices: [
       {
         id: "1-week-sprint",
         icon: Zap,
@@ -203,6 +87,12 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
         buttonTitle: "Start 4-Month Plan — $90",
       },
     ],
+  };
+
+  const faqSection: FaqSection = {
+    type: "faq",
+    title: i18n._("FAQ"),
+    subTitle: i18n._("Your questions answered"),
     faqItems: [
       {
         question: i18n._(`What types of frontend interviews can I practice for?`),
@@ -223,24 +113,192 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
         ),
       },
     ],
-    landingMessages: {
-      startYourInterviewTest: i18n._("Start Your Interview Test"),
-      whatYouWillAchieve: i18n._("What you will achieve"),
-      realOutcomesThatTransform: i18n._("Real outcomes that transform your interview performance"),
-      startFreeTrial: i18n._("Start Free Trial"),
-      takeTheInterviewReadinessTest: i18n._("Take the Interview Readiness Test"),
-      inLessThen5Minutes: i18n._("In less then 5 minutes, you'll get:"),
-      startTest: i18n._("Start Test"),
-      whyCandidatesImprove: i18n._("Why candidates improve so quickly"),
-      aProvenMethodThatDelivers: i18n._("A proven method that delivers measurable results"),
-      realPeopleRealJobOffers: i18n._("Real people. Real job offers."),
-      joinThousandsWhoTransformed: i18n._("Join thousands who transformed their interview performance"),
-      chooseYourInterviewPreparationPlan: i18n._("Choose your interview preparation plan"),
-      everythingYouNeedToStandOut: i18n._("Everything you need to stand out and get the job"),
-      allPlansIncludeInstantAccess: i18n._("All plans include instant access • No commitment • Secure payment"),
-      faq: i18n._("FAQ"),
-      readyToAceYourNextInterview: i18n._("Ready to ace your next interview?"),
-      startPracticingNow: i18n._("Start Practicing Now"),
+  };
+
+  const stepInfoSection: StepInfoCardSection = {
+    type: "stepInfoCard",
+    title: i18n._("Why candidates improve so quickly"),
+    subTitle: i18n._("A proven method that delivers measurable results"),
+    stepInfoCards: [
+      {
+        icon: Video,
+        label: i18n._("Step 1"),
+        title: i18n._("Real interview simulation"),
+        description: i18n._("Practice in real interview conditions — no tutors needed."),
+      },
+      {
+        icon: Brain,
+        label: i18n._("Step 2"),
+        title: i18n._("AI feedback that matters"),
+        description: i18n._("Improve your impact, structure, clarity, and delivery."),
+      },
+      {
+        icon: FileText,
+        label: i18n._("Step 2"),
+        title: i18n._("Personalized answer scripts"),
+        description: i18n._("Based on your CV, experience, and target role."),
+      },
+    ],
+  };
+
+  const reviewSection: ReviewSection = {
+    type: "review",
+    title: i18n._("Real people. Real job offers."),
+    subTitle: i18n._("Join thousands who transformed their interview performance"),
+    reviews: [
+      {
+        name: "Sarah M.",
+        jobTitle: "Frontend Developer",
+        rate: 5,
+        review:
+          "I finally got 3 offers after months of silence. The React component challenges were exactly what I needed.",
+      },
+      {
+        name: "James R.",
+        jobTitle: "Senior Frontend Engineer",
+        rate: 5,
+        review:
+          "I was confident and clear — FluencyPal prepared me better than any coach for technical discussions about state management.",
+      },
+      {
+        name: "Maria L.",
+        jobTitle: "UI/UX Engineer",
+        rate: 5,
+        review:
+          "It helped me answer questions about accessibility and performance optimization without panic.",
+      },
+      {
+        name: "David K.",
+        jobTitle: "React Developer",
+        rate: 4,
+        review:
+          "The personalized feedback showed me exactly what I was doing wrong in my technical explanations. Game changer.",
+      },
+      {
+        name: "Emma T.",
+        jobTitle: "Frontend Tech Lead",
+        rate: 5,
+        review:
+          "Within 2 weeks I went from nervous to confident discussing architecture decisions. Got the job I wanted.",
+      },
+      {
+        name: "Alex P.",
+        jobTitle: "Full Stack Developer",
+        rate: 5,
+        review:
+          "The AI feedback on my CSS and JavaScript answers was spot-on. I improved my responses immediately.",
+      },
+    ],
+  };
+
+  const scorePreview: ScorePreviewSection = {
+    type: "scorePreview",
+    title: i18n._("Take the Interview Readiness Test"),
+    buttonTitle: i18n._("Start Test"),
+    subTitle: i18n._("In less then 5 minutes, you'll get:"),
+    infoList: [
+      i18n._("Personalized Interview Readiness Score"),
+      i18n._("Technical analysis on system design and architecture answers"),
+      i18n._("Leadership competency assessment with behavioral response feedback"),
+      i18n._("Framework-specific insights (React, Vue, Angular)"),
+      i18n._("Strategic action plan to address gaps in frontend architecture knowledge"),
+    ],
+    scorePreview: {
+      label: "Interview Readiness Score",
+      totalScore: 85,
+      description:
+        "Strong knowledge of TypeScript and Angular.js. It might be worth polishing Soft Skills.",
+
+      scoreMetrics: [
+        { title: "Angular.js knowledge", score: 85 },
+        { title: "Coding Skills", score: 90 },
+        { title: "Problem Solving", score: 80 },
+        { title: "Communication", score: 25 },
+      ],
     },
+  };
+
+  const callToActionSection: CallToActionSection = {
+    type: "callToAction",
+    title: i18n._("Ready to ace your next interview?"),
+    buttonTitle: i18n._("Start Your Interview Test"),
+  };
+
+  const infoCardsSection: InfoCardsSection = {
+    type: "infoCards",
+    title: i18n._("What you will achieve"),
+    subTitle: i18n._("Real outcomes that transform your interview performance"),
+    buttonTitle: i18n._("Start Your Interview Test"),
+    infoCards: [
+      {
+        icon: MessageSquare,
+        title: i18n._("Master technical leadership questions"),
+        description: i18n._(
+          "Demonstrate expertise in architecture decisions, code reviews, and mentoring junior developers."
+        ),
+      },
+      {
+        icon: Sparkles,
+        title: i18n._("Showcase system design thinking"),
+        description: i18n._(
+          "Articulate scalable solutions, performance optimization, and frontend architecture patterns."
+        ),
+      },
+      {
+        icon: PhoneCall,
+        title: i18n._("Stand out in behavioral rounds"),
+        description: i18n._(
+          "Share compelling stories about cross-team collaboration, conflict resolution, and project ownership."
+        ),
+      },
+      {
+        icon: TrendingUp,
+        title: i18n._("Negotiate senior-level compensation"),
+        description: i18n._(
+          "Build confidence to discuss equity, benefits, and salary packages that match your experience."
+        ),
+      },
+    ],
+  };
+
+  const firstScreenSection: FirstScreenSection = {
+    type: "firstScreen",
+    title: i18n._("Get more job offers with  answers that stand out"),
+    subTitle: i18n._(
+      "Prepare for system design, leadership, and advanced frontend questions. Get your personalized interview action plan"
+    ),
+    label: i18n._("Senior Frontend Developer"),
+    buttonTitle: i18n._("Start Your Interview Test"),
+  };
+
+  return {
+    id: "senior-frontend-developer",
+    jobTitle: i18n._("Senior Frontend Developer"),
+    title: i18n._("Get more job offers with  answers that stand out"),
+    subTitle: i18n._(
+      "Prepare for system design, leadership, and advanced frontend questions. Get your personalized interview action plan"
+    ),
+
+    keywords: [
+      i18n._("senior frontend interview"),
+      i18n._("frontend developer interview prep"),
+      i18n._("react interview questions"),
+      i18n._("web developer interview preparation"),
+    ],
+    category: {
+      categoryTitle: i18n._("IT & Software Development"),
+      categoryId: "it",
+    },
+
+    sections: [
+      firstScreenSection,
+      infoCardsSection,
+      scorePreview,
+      stepInfoSection,
+      reviewSection,
+      priceSection,
+      faqSection,
+      callToActionSection,
+    ],
   };
 };

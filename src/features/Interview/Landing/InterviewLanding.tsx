@@ -1,8 +1,4 @@
-import {
-  fullEnglishLanguageName,
-  SupportedLanguage,
-  supportedLanguagesToLearn,
-} from "@/features/Lang/lang";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { InterviewData } from "../types";
 import { Stack, Typography } from "@mui/material";
 import { InterviewHeader } from "./components/InterviewHeader";
@@ -28,78 +24,116 @@ export async function InterviewLanding({
 }) {
   const pageUrl = getUrlStart(lang) + `interview/${id}`;
   const quizLink = `${pageUrl}/quiz`;
-  const { landingMessages } = interviewData;
 
   return (
     <Stack sx={{ width: "100%" }}>
       <InterviewHeader lang={lang} startTrialHref={quizLink} pageUrl={pageUrl} />
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center", gap: "0" }}>
-          <MainTitleSection
-            label={interviewData.jobTitle}
-            title={interviewData.title}
-            subtitle={interviewData.subTitle}
-            buttonHref={quizLink}
-            buttonTitle={landingMessages.startYourInterviewTest}
-          />
+          {interviewData.sections.map((section, index) => {
+            if (section.type === "firstScreen") {
+              return (
+                <MainTitleSection
+                  key={index}
+                  title={section.title}
+                  subtitle={section.subTitle}
+                  label={section.label}
+                  buttonTitle={section.buttonTitle}
+                  buttonHref={quizLink}
+                />
+              );
+            }
+            if (section.type === "infoCards") {
+              return (
+                <InfoCards
+                  key={index}
+                  id="results"
+                  title={section.title}
+                  subtitle={section.subTitle}
+                  buttonTitle={section.buttonTitle}
+                  buttonHref={quizLink}
+                  cards={section.infoCards}
+                />
+              );
+            }
+            if (section.type === "scorePreview") {
+              return (
+                <ScorePreviewSection
+                  key={index}
+                  id="score-preview"
+                  title={section.title}
+                  subtitle={section.subTitle}
+                  infoList={section.infoList}
+                  scorePreview={section.scorePreview}
+                  buttonTitle={section.buttonTitle}
+                  buttonHref={quizLink}
+                />
+              );
+            }
+            if (section.type === "review") {
+              return (
+                <ReviewCards
+                  key={index}
+                  id="reviews"
+                  title={section.title}
+                  subTitle={section.subTitle}
+                  reviews={section.reviews}
+                />
+              );
+            }
 
-          <InfoCards
-            id="results"
-            title={landingMessages.whatYouWillAchieve}
-            subtitle={landingMessages.realOutcomesThatTransform}
-            buttonTitle={landingMessages.startFreeTrial}
-            buttonHref={quizLink}
-            cards={interviewData.infoCards}
-          />
+            if (section.type === "price") {
+              return (
+                <PriceCards
+                  key={index}
+                  id="price"
+                  quizLink={quizLink}
+                  title={section.title}
+                  subTitle={section.subTitle}
+                  prices={section.prices}
+                />
+              );
+            }
 
-          <ScorePreviewSection
-            id="test"
-            title={landingMessages.takeTheInterviewReadinessTest}
-            subtitle={landingMessages.inLessThen5Minutes}
-            infoList={interviewData.whatUserGetAfterFirstTest}
-            buttonTitle={landingMessages.startTest}
-            buttonHref={quizLink}
-            scorePreview={interviewData.scorePreview}
-          />
+            if (section.type === "faq") {
+              return (
+                <GeneralFaqBlock
+                  key={index}
+                  id="faq"
+                  padding={"0px 0 90px 0"}
+                  title={section.title}
+                  items={section.faqItems.map((faq) => ({
+                    question: faq.question,
+                    answer: <Typography>{faq.answer}</Typography>,
+                  }))}
+                />
+              );
+            }
+            if (section.type === "stepInfoCard") {
+              return (
+                <StepInfoCards
+                  key={index}
+                  id="steps"
+                  title={section.title}
+                  subtitle={section.subTitle}
+                  cards={section.stepInfoCards}
+                />
+              );
+            }
 
-          <StepInfoCards
-            id="steps"
-            title={landingMessages.whyCandidatesImprove}
-            subtitle={landingMessages.aProvenMethodThatDelivers}
-            cards={interviewData.stepInfoCards}
-          />
+            if (section.type === "callToAction") {
+              return (
+                <CtaBlock
+                  key={index}
+                  title={section.title}
+                  actionButtonTitle={section.buttonTitle}
+                  actionButtonLink={quizLink}
+                />
+              );
+            }
+            return <div key={index}></div>;
+          })}
 
-          <ReviewCards
-            id="reviews"
-            title={landingMessages.realPeopleRealJobOffers}
-            subTitle={landingMessages.joinThousandsWhoTransformed}
-            reviews={interviewData.reviewsData}
-          />
-
-          <PriceCards
-            id="price"
-            quizLink={quizLink}
-            title={landingMessages.chooseYourInterviewPreparationPlan}
-            subTitle={landingMessages.everythingYouNeedToStandOut}
-            footerText={landingMessages.allPlansIncludeInstantAccess}
-            prices={interviewData.price}
-          />
-
-          <GeneralFaqBlock
-            id="faq"
-            padding={"0px 0 90px 0"}
-            title={landingMessages.faq}
-            items={interviewData.faqItems.map((faq) => ({
-              question: faq.question,
-              answer: <Typography>{faq.answer}</Typography>,
-            }))}
-          />
-
-          <CtaBlock
-            title={landingMessages.readyToAceYourNextInterview}
-            actionButtonTitle={landingMessages.startPracticingNow}
-            actionButtonLink={quizLink}
-          />
           <Footer lang={lang} />
         </Stack>
       </main>
