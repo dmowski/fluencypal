@@ -22,7 +22,7 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
     >
       <Stack
         sx={{
-          maxWidth: "1200px",
+          maxWidth: "1300px",
           gap: "15px",
           padding: "0 10px",
           alignItems: "center",

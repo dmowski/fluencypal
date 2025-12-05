@@ -27,7 +27,7 @@ export const ExampleQuestionsSection = (props: ExampleQuestionsProps) => {
     >
       <Stack
         sx={{
-          maxWidth: "1400px",
+          maxWidth: "1300px",
           width: "100%",
           gap: "24px",
           padding: "0 10px",

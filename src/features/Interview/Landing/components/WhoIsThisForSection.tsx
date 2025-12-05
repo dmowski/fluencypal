@@ -25,18 +25,15 @@ export const WhoIsThisForSection = (props: WhoIsThisForSectionProps) => {
     >
       <Stack
         sx={{
-          maxWidth: "900px",
+          maxWidth: "1300px",
           width: "100%",
           gap: "24px",
           padding: "0 10px",
-          alignItems: "center",
         }}
       >
         <Stack
           sx={{
-            alignItems: "center",
             gap: "10px",
-            textAlign: "center",
           }}
         >
           <Typography

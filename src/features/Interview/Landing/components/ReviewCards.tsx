@@ -37,7 +37,7 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
     >
       <Stack
         sx={{
-          maxWidth: "1400px",
+          maxWidth: "1300px",
           width: "100%",
           gap: "15px",
           padding: "0 10px",

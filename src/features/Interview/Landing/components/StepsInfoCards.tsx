@@ -61,7 +61,7 @@ export const StepInfoCards = (props: InfoCardsProps) => {
     >
       <Stack
         sx={{
-          maxWidth: "1200px",
+          maxWidth: "1300px",
           width: "100%",
           gap: "15px",
           padding: "0 10px",

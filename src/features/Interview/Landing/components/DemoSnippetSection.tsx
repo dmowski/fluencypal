@@ -33,7 +33,7 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
     >
       <Stack
         sx={{
-          maxWidth: "1200px",
+          maxWidth: "1300px",
           width: "100%",
           gap: "32px",
           padding: "0 10px",

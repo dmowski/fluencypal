@@ -50,12 +50,11 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
           display: "grid",
           gridTemplateColumns: "5fr 2fr 1fr",
           padding: "0 10px",
-
-          boxSizing: "border-box",
+          maxWidth: "1259px",
           gap: "25px",
           width: "100%",
           justifyContent: "space-between",
-          maxWidth: maxLandingWidth,
+
           position: "relative",
           zIndex: 9999,
           "@media (max-width: 900px)": {

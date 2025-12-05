@@ -28,7 +28,7 @@ export const TechStackSection = (props: TechStackSectionProps) => {
     >
       <Stack
         sx={{
-          maxWidth: "1200px",
+          maxWidth: "1300px",
           width: "100%",
           gap: "60px",
           padding: "0 20px",
