@@ -54,12 +54,12 @@ export const InfoCards = (props: InfoCardsProps) => {
       id={props.id}
       sx={{
         padding: "150px 0",
+        width: "100%",
 
         alignItems: "center",
         "@media (max-width: 600px)": {
-          paddingTop: "100px",
+          padding: "90px 0 50px 0",
         },
-        width: "100%",
       }}
     >
       <Stack

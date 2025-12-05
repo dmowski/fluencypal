@@ -18,10 +18,11 @@ export const WhoIsThisForSection = (props: WhoIsThisForSectionProps) => {
       sx={{
         padding: "150px 0",
         alignItems: "center",
-        "@media (max-width: 600px)": {
-          paddingTop: "100px",
-        },
         width: "100%",
+
+        "@media (max-width: 600px)": {
+          padding: "90px 0 50px 0",
+        },
       }}
     >
       <Stack

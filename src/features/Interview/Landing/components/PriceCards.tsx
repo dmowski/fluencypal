@@ -61,6 +61,10 @@ export const PriceCards = ({
         padding: "150px 0",
         alignItems: "center",
         width: "100%",
+
+        "@media (max-width: 600px)": {
+          padding: "90px 0 0px 0",
+        },
       }}
     >
       <Stack
@@ -117,6 +121,9 @@ export const PriceCards = ({
                     : "0px 4px 12px rgba(0, 0, 0, 0.01)",
                   backgroundColor: "rgba(255, 255, 255, 0.03)",
                   justifyContent: "space-between",
+                  "@media (max-width: 600px)": {
+                    padding: "30px 20px 30px 20px",
+                  },
                 }}
               >
                 <Stack sx={{ gap: "16px" }}>

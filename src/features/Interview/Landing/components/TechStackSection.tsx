@@ -18,11 +18,12 @@ export const TechStackSection = (props: TechStackSectionProps) => {
         padding: "150px 0",
         backgroundColor: "rgba(20, 0, 0, 0.2)",
         alignItems: "center",
-        "@media (max-width: 600px)": {
-          paddingTop: "100px",
-        },
         width: "100%",
         position: "relative",
+
+        "@media (max-width: 600px)": {
+          padding: "90px 0 50px 0",
+        },
       }}
     >
       <Stack

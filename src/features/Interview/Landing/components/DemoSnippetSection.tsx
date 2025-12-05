@@ -13,7 +13,6 @@ export interface DemoSnippetSectionProps {
   lang: SupportedLanguage;
 }
 
-/** Interview Landing – Demo Snippet (Sample Feedback) */
 export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
   return (
     <Stack
@@ -22,10 +21,11 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
         padding: "150px 0",
         alignItems: "center",
         backgroundColor: "rgba(0, 0, 0, 0.3)",
-        "@media (max-width: 600px)": {
-          paddingTop: "100px",
-        },
         width: "100%",
+
+        "@media (max-width: 600px)": {
+          padding: "90px 0 50px 0",
+        },
       }}
     >
       <Stack
@@ -59,6 +59,9 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
             },
             gap: "32px",
             marginTop: "24px",
+            "@media (max-width: 600px)": {
+              gap: "60px",
+            },
           }}
         >
           {props.demoItems.map((item, index) => (
@@ -73,6 +76,9 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
                   "linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.0))",
                 "@media (max-width: 600px)": {
                   borderRadius: "12px",
+                  padding: "0",
+                  border: "none",
+                  background: "transparent",
                 },
               }}
             >

@@ -34,6 +34,9 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
         padding: "150px 0",
         alignItems: "center",
         width: "100%",
+        "@media (max-width: 600px)": {
+          padding: "90px 0 50px 0",
+        },
       }}
     >
       <Stack

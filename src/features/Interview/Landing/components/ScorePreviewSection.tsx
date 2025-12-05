@@ -34,6 +34,9 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
         alignItems: "center",
         width: "100%",
         backgroundColor: "rgba(0, 0, 0, 0.2)",
+        "@media (max-width: 600px)": {
+          padding: "90px 0 50px 0",
+        },
       }}
     >
       <Stack
