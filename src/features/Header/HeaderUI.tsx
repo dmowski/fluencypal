@@ -230,12 +230,12 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
       <Drawer open={isOpenMainMenu} onClose={() => setIsOpenMainMenu(false)} anchor="right">
         <Stack
           sx={{
-            width: "220px",
+            width: "240px",
             height: "100svh",
             boxSizing: "border-box",
             flexDirection: "column",
             justifyContent: "space-between",
-            padding: "20px",
+            padding: "0px",
           }}
           onClick={() => setIsOpenMainMenu(false)}
         >
@@ -249,7 +249,11 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
             </IconButton>
           </Stack>
 
-          <List sx={{}}>
+          <List
+            sx={{
+              padding: "0 0 0 10px",
+            }}
+          >
             {links.map((link) => (
               <ListItem disablePadding key={link.href}>
                 <ListItemButton
@@ -258,7 +262,7 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
                     setIsOpenMainMenu(false);
                   }}
                 >
-                  <ListItemIcon>
+                  <ListItemIcon sx={{ paddingRight: "0", minWidth: "40px" }}>
                     <link.icon />
                   </ListItemIcon>
                   <ListItemText primary={link.title} />
@@ -267,7 +271,11 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
             ))}
           </List>
 
-          <Stack sx={{}}>
+          <Stack
+            sx={{
+              padding: "10px",
+            }}
+          >
             {buttons.map((button) => (
               <Button
                 key={button.href}
@@ -280,6 +288,7 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
                   padding: "10px 20px",
                 }}
                 variant="contained"
+                color="info"
               >
                 {button.title}
               </Button>
