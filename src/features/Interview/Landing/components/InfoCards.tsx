@@ -112,6 +112,9 @@ export const InfoCards = (props: InfoCardsProps) => {
                   backgroundColor: "rgba(255, 255, 255, 0.03)",
 
                   justifyContent: "space-between",
+                  "@media (max-width: 600px)": {
+                    padding: "30px 20px 30px 20px",
+                  },
                 }}
               >
                 <Stack

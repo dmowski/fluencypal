@@ -115,17 +115,18 @@ export interface WhoIsThisForSection {
   audienceItems: string[];
 }
 
+export interface DemoSnippetItem {
+  question: string;
+  userAnswerShort: string;
+  feedback: string;
+}
+
 // New: Demo snippet (sample feedback)
 export interface DemoSnippetSection {
   type: "demoSnippet";
   title: string;
   subTitle: string;
-  demoItems: {
-    label: string; // e.g. "Example insight"
-    question: string;
-    userAnswerShort: string;
-    feedback: string;
-  }[];
+  demoItems: DemoSnippetItem[];
 }
 
 type Section =

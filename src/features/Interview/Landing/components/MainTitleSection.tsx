@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { H1 } from "./Typography";
+import { H1, H1SubTitle } from "./Typography";
 
 export interface MainTitleSectionProps {
   label: string;
@@ -27,6 +27,9 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
           gap: "15px",
           padding: "0 10px",
           alignItems: "center",
+          "@media (max-width: 600px)": {
+            alignItems: "flex-start",
+          },
         }}
       >
         <Typography
@@ -39,25 +42,18 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
             borderRadius: "28px",
             padding: "6px 42px",
             marginBottom: "10px",
+            "@media (max-width: 600px)": {
+              width: "max-content",
+              textAlign: "left",
+              padding: "6px 12px",
+              borderRadius: "10px",
+            },
           }}
         >
           {props.label}
         </Typography>
         <H1>{props.title}</H1>
-        <Typography
-          variant="body1"
-          align="center"
-          sx={{
-            fontWeight: 400,
-            fontSize: "24px",
-            maxWidth: "800px",
-            "@media (max-width: 600px)": {
-              fontSize: "18px",
-            },
-          }}
-        >
-          {props.subTitle}
-        </Typography>
+        <H1SubTitle>{props.subTitle}</H1SubTitle>
 
         <Button
           href={props.buttonHref}

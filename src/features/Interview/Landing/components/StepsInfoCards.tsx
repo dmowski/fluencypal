@@ -107,6 +107,9 @@ export const StepInfoCards = (props: InfoCardsProps) => {
                   backgroundColor: "rgba(255, 255, 255, 0.03)",
 
                   justifyContent: "space-between",
+                  "@media (max-width: 600px)": {
+                    padding: "20px",
+                  },
                 }}
               >
                 <Stack

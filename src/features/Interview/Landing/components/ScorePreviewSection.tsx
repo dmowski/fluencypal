@@ -78,6 +78,9 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
                 padding: "30px",
                 width: "100%",
                 borderRadius: "16px",
+                "@media (max-width: 600px)": {
+                  padding: "12px",
+                },
                 "&::before": {
                   content: '""',
                   display: "block",
@@ -89,13 +92,17 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
                   animation: "rotate 4s linear infinite",
                   zIndex: 0,
                   filter: "blur(1px)",
+                  "--zoom": "1.9",
+                  "@media (max-width: 600px)": {
+                    "--zoom": "3",
+                  },
                 },
                 "@keyframes rotate": {
                   from: {
-                    transform: "rotate(0deg) scale(1.9)",
+                    transform: "rotate(0deg) scale(var(--zoom))",
                   },
                   to: {
-                    transform: "rotate(360deg) scale(1.9)",
+                    transform: "rotate(360deg) scale(var(--zoom))",
                   },
                 },
               }}
@@ -110,6 +117,9 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
                   backgroundColor: "rgba(34, 34, 34, 1)",
                   boxShadow: "2px 4px 6px rgba(0, 0, 0, 0.2)",
                   gap: "20px",
+                  "@media (max-width: 600px)": {
+                    padding: "25px",
+                  },
                 }}
               >
                 <Typography

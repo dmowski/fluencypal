@@ -1,12 +1,6 @@
 import { Stack, Typography, Button, Box } from "@mui/material";
 import { H2, SubTitle } from "./Typography";
-
-export interface DemoSnippetItem {
-  label: string;
-  question: string;
-  userAnswerShort: string;
-  feedback: string;
-}
+import { DemoSnippetItem } from "../../types";
 
 export interface DemoSnippetSectionProps {
   id: string;
@@ -71,21 +65,12 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
                 borderRadius: "16px",
                 border: "1px solid rgba(255,255,255,0.06)",
                 background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
+                  "linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.0))",
+                "@media (max-width: 600px)": {
+                  borderRadius: "12px",
+                },
               }}
             >
-              <Typography
-                variant="body2"
-                component={"h3"}
-                sx={{
-                  textAlign: "center",
-                  textTransform: "uppercase",
-                  marginBottom: "10px",
-                }}
-              >
-                {item.label}
-              </Typography>
-
               <Stack
                 sx={{
                   alignSelf: "flex-start",
@@ -97,8 +82,8 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
                     gap: "6px",
                     padding: "12px 16px",
                     borderRadius: "12px 12px 12px 2px",
-                    backgroundColor: "rgba(0,0,0,0.4)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    backgroundColor: "rgba(33,98,166,0.15)",
+                    border: "1px solid rgba(33,98,166,0.35)",
                   }}
                 >
                   <Typography
@@ -134,7 +119,7 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
                   <Typography
                     variant="caption"
                     sx={{
-                      //opacity: 0.8,
+                      opacity: 0.8,
                       letterSpacing: 0.5,
                       fontWeight: 600,
                     }}

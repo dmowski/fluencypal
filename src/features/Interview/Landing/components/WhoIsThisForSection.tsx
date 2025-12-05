@@ -45,15 +45,19 @@ export const WhoIsThisForSection = (props: WhoIsThisForSectionProps) => {
           sx={{
             gap: "14px",
             marginTop: "26px",
+            "@media (max-width: 600px)": {
+              gap: "20px",
+            },
           }}
         >
           {props.audienceItems.map((item, index) => (
             <Stack
               key={index}
               sx={{
-                flexDirection: "row",
                 gap: "12px",
                 alignItems: "center",
+                display: "grid",
+                gridTemplateColumns: "max-content 1fr",
               }}
             >
               <CheckCircle2 size={22} color="#4caf50" style={{}} />

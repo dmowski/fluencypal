@@ -503,7 +503,6 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
     subTitle: i18n._("Precise, actionable insights instead of generic comments"),
     demoItems: [
       {
-        label: i18n._("Example insight – performance"),
         question: i18n._("How would you improve the performance of a React app that feels slow?"),
         userAnswerShort: i18n._(
           "I would use React.memo and lazy loading to reduce unnecessary renders."
@@ -513,7 +512,6 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
         ),
       },
       {
-        label: i18n._("Example insight – architecture"),
         question: i18n._(
           "How would you design the frontend architecture for a large multi-page product?"
         ),

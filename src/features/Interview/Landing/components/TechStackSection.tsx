@@ -110,10 +110,9 @@ export const TechStackSection = (props: TechStackSectionProps) => {
                 borderRadius: "16px",
                 padding: "20px 24px",
                 gap: "12px",
-                transition: "all 0.2s ease",
-                "&:hover": {
-                  backgroundColor: "rgba(255,255,255,0.05)",
-                  borderColor: "rgba(255,255,255,0.12)",
+
+                "@media (max-width: 600px)": {
+                  padding: "16px 20px",
                 },
               }}
             >
