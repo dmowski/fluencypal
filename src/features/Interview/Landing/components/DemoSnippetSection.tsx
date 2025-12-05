@@ -1,6 +1,7 @@
 import { Stack, Typography, Button, Box } from "@mui/material";
 import { H2, SubTitle } from "./Typography";
 import { DemoSnippetItem } from "../../types";
+import { SupportedLanguage } from "@/features/Lang/lang";
 
 export interface DemoSnippetSectionProps {
   id: string;
@@ -9,6 +10,7 @@ export interface DemoSnippetSectionProps {
   demoItems: DemoSnippetItem[];
   buttonTitle?: string;
   buttonHref?: string;
+  lang: SupportedLanguage;
 }
 
 /** Interview Landing – Demo Snippet (Sample Feedback) */
@@ -32,6 +34,9 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
           width: "100%",
           gap: "32px",
           padding: "0 10px",
+          "@media (max-width: 600px)": {
+            gap: "10px",
+          },
         }}
       >
         <Stack

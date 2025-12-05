@@ -87,6 +87,7 @@ export const StepInfoCards = (props: InfoCardsProps) => {
             paddingTop: "50px",
             width: "100%",
             "@media (max-width: 900px)": {
+              paddingTop: "20px",
               gridTemplateColumns: `1fr`,
               gap: "30px",
             },

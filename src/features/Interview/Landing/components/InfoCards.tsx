@@ -90,6 +90,7 @@ export const InfoCards = (props: InfoCardsProps) => {
             width: "100%",
             "@media (max-width: 1000px)": {
               gridTemplateColumns: "1fr 1fr",
+              paddingTop: "20px",
             },
 
             "@media (max-width: 700px)": {

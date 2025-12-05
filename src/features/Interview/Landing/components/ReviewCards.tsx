@@ -63,6 +63,7 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
             paddingTop: "50px",
             width: "100%",
             "@media (max-width: 1024px)": {
+              paddingTop: "20px",
               gridTemplateColumns: "repeat(2, 1fr)",
             },
             "@media (max-width: 600px)": {
