@@ -99,6 +99,13 @@ export const InfoCards = (props: InfoCardsProps) => {
             gap: "30px",
             paddingTop: "50px",
             width: "100%",
+            "@media (max-width: 1000px)": {
+              gridTemplateColumns: "1fr 1fr",
+            },
+
+            "@media (max-width: 700px)": {
+              gridTemplateColumns: "1fr",
+            },
           }}
         >
           {props.cards.map((card, index) => {
