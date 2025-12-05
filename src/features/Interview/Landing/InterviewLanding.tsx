@@ -16,6 +16,7 @@ import { ExampleQuestionsSection } from "./components/ExampleQuestionsSection";
 import { TechStackSection } from "./components/TechStackSection";
 import { WhoIsThisForSection } from "./components/WhoIsThisForSection";
 import { DemoSnippetSection } from "./components/DemoSnippetSection";
+import { FaqScript } from "./components/FaqScript";
 
 export async function InterviewLanding({
   lang,
@@ -155,16 +156,25 @@ export async function InterviewLanding({
 
             if (section.type === "faq") {
               return (
-                <GeneralFaqBlock
-                  key={index}
-                  id="faq"
-                  padding={"150px 0 90px 0"}
-                  title={section.title}
-                  items={section.faqItems.map((faq) => ({
-                    question: faq.question,
-                    answer: <Typography>{faq.answer}</Typography>,
-                  }))}
-                />
+                <div key={index}>
+                  <GeneralFaqBlock
+                    key={index}
+                    id="faq"
+                    padding={"150px 0 90px 0"}
+                    title={section.title}
+                    items={section.faqItems.map((faq) => ({
+                      question: faq.question,
+                      answer: <Typography>{faq.answer}</Typography>,
+                    }))}
+                  />
+                  <FaqScript
+                    items={section.faqItems}
+                    url={pageUrl}
+                    lang={lang}
+                    pageTitle={interviewData.title}
+                    description={interviewData.subTitle}
+                  />
+                </div>
               );
             }
             if (section.type === "stepInfoCard") {

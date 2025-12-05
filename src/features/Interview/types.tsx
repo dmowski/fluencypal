@@ -24,14 +24,16 @@ export interface PriceSection {
   prices: Price[];
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface FaqSection {
   type: "faq";
   title: string;
   subTitle: string;
-  faqItems: {
-    question: string;
-    answer: string;
-  }[];
+  faqItems: FaqItem[];
 }
 
 export interface ScorePreviewSection {
