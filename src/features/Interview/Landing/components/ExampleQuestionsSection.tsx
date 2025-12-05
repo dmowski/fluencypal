@@ -1,6 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { Question } from "../../types";
-import { TechChip } from "./TechChip";
 import { H2, SubTitle } from "./Typography";
 
 export interface ExampleQuestionsProps {
