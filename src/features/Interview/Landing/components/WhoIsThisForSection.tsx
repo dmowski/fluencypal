@@ -1,5 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { CheckCircle2 } from "lucide-react";
+import { H2, SubTitle } from "./Typography";
 
 export interface WhoIsThisForSectionProps {
   id: string;
@@ -36,22 +37,8 @@ export const WhoIsThisForSection = (props: WhoIsThisForSectionProps) => {
             gap: "10px",
           }}
         >
-          <Typography
-            variant="h2"
-            sx={{
-              fontWeight: 800,
-              fontSize: "42px",
-              "@media (min-width: 900px)": {
-                fontSize: "56px",
-              },
-            }}
-          >
-            {props.title}
-          </Typography>
-
-          <Typography variant="body1" sx={{ opacity: 0.8, fontSize: "18px", maxWidth: "650px" }}>
-            {props.subTitle}
-          </Typography>
+          <H2 align="left">{props.title}</H2>
+          <SubTitle align="left">{props.subTitle}</SubTitle>
         </Stack>
 
         <Stack

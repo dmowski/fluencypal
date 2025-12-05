@@ -25,7 +25,6 @@ export interface ScorePreviewSectionProps {
 
 const scoreColors: string[] = ["#EF4444", "#F59E0B", "#10B981", "#3B82F6", "#8B5CF6"];
 
-/** Interview Landing Score Preview Section */
 export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
   return (
     <Stack
@@ -53,6 +52,14 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
             alignItems: "center",
             gap: "100px",
             width: "100%",
+            "@media (max-width: 1000px)": {
+              gridTemplateColumns: `3fr 3fr`,
+              gap: "20px",
+            },
+            "@media (max-width: 850px)": {
+              gridTemplateColumns: `1fr`,
+              gap: "40px",
+            },
           }}
         >
           <Stack
@@ -188,6 +195,9 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
               sx={{
                 fontWeight: 700,
                 fontSize: "42px",
+                "@media (max-width: 600px)": {
+                  fontSize: "34px",
+                },
               }}
             >
               {props.title}
@@ -208,7 +218,8 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
                 <Stack
                   key={index}
                   sx={{
-                    flexDirection: "row",
+                    display: "grid",
+                    gridTemplateColumns: "auto 1fr",
                     gap: "20px",
                     alignItems: "center",
                   }}

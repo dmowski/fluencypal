@@ -1,6 +1,5 @@
-import { Box, Chip, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { TechStackGroup } from "../../types";
-import { TechChip } from "./TechChip";
 
 export interface TechStackSectionProps {
   id: string;
@@ -56,22 +55,8 @@ export const TechStackSection = (props: TechStackSectionProps) => {
           }}
         >
           <Stack sx={{ gap: "12px" }}>
-            <Typography
-              variant="h2"
-              sx={{
-                fontWeight: 800,
-                fontSize: "36px",
-                "@media (min-width: 900px)": {
-                  fontSize: "48px",
-                },
-              }}
-            >
-              {props.title}
-            </Typography>
-
-            <Typography variant="body1" sx={{ opacity: 0.7, fontSize: "16px", lineHeight: 1.6 }}>
-              {props.subTitle}
-            </Typography>
+            <H2 align="left">{props.title}</H2>
+            <SubTitle align="left">{props.subTitle}</SubTitle>
           </Stack>
 
           <Stack sx={{ gap: "12px", marginTop: "8px" }}>
@@ -160,6 +145,47 @@ export const TechStackSection = (props: TechStackSectionProps) => {
             </Stack>
           ))}
         </Stack>
+      </Stack>
+    </Stack>
+  );
+};
+
+import { TechItem } from "../../types";
+import { H2, SubTitle } from "./Typography";
+
+export const TechChip = ({
+  item,
+  padding,
+  imageSize,
+}: {
+  item: TechItem;
+  padding?: string;
+  imageSize?: string;
+}) => {
+  return (
+    <Stack
+      sx={{
+        backgroundColor: "rgba(255, 255, 255, 0.05)",
+        borderRadius: "23px",
+        gap: "10px",
+        padding: padding || "10px 20px 10px 16px",
+      }}
+    >
+      <Stack
+        sx={{
+          flexDirection: "row",
+          alignItems: "center",
+          gap: "15px",
+        }}
+      >
+        {item.logoUrl && (
+          <img
+            src={item.logoUrl}
+            alt={item.label}
+            style={{ width: imageSize || "20px", height: "auto" }}
+          />
+        )}
+        <Typography variant="body2">{item.label}</Typography>
       </Stack>
     </Stack>
   );

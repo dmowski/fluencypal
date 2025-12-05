@@ -1,6 +1,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { Question } from "../../types";
 import { TechChip } from "./TechChip";
+import { H2, SubTitle } from "./Typography";
 
 export interface ExampleQuestionsProps {
   id: string;
@@ -40,22 +41,8 @@ export const ExampleQuestionsSection = (props: ExampleQuestionsProps) => {
             textAlign: "center",
           }}
         >
-          <Typography
-            variant="h2"
-            sx={{
-              fontWeight: 800,
-              fontSize: "42px",
-              "@media (min-width: 900px)": {
-                fontSize: "56px",
-              },
-            }}
-          >
-            {props.title}
-          </Typography>
-
-          <Typography variant="body1" sx={{ opacity: 0.8, fontSize: "18px", maxWidth: "700px" }}>
-            {props.subTitle}
-          </Typography>
+          <H2>{props.title}</H2>
+          <SubTitle>{props.subTitle}</SubTitle>
         </Stack>
 
         <Stack

@@ -1,6 +1,7 @@
 import type { ForwardRefExoticComponent, RefAttributes } from "react";
 import type { LucideProps } from "lucide-react";
 import { Stack, Typography } from "@mui/material";
+import { H2, SubTitle } from "./Typography";
 
 export interface StepInfoCard {
   icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
@@ -74,20 +75,8 @@ export const StepInfoCards = (props: InfoCardsProps) => {
             gap: "10px",
           }}
         >
-          <Typography
-            variant="h2"
-            align="center"
-            sx={{
-              fontWeight: 800,
-              fontSize: "86px",
-            }}
-          >
-            {props.title}
-          </Typography>
-
-          <Typography variant="body1" align="center" sx={{ opacity: 0.8, fontSize: "20px" }}>
-            {props.subTitle}
-          </Typography>
+          <H2>{props.title}</H2>
+          <SubTitle>{props.subTitle}</SubTitle>
         </Stack>
 
         <Stack
@@ -97,6 +86,10 @@ export const StepInfoCards = (props: InfoCardsProps) => {
             gap: "40px",
             paddingTop: "50px",
             width: "100%",
+            "@media (max-width: 900px)": {
+              gridTemplateColumns: `1fr`,
+              gap: "30px",
+            },
           }}
         >
           {props.cards.map((card, index) => {

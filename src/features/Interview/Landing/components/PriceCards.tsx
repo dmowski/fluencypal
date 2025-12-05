@@ -2,6 +2,7 @@ import type { ForwardRefExoticComponent, RefAttributes } from "react";
 import type { LucideProps } from "lucide-react";
 import { Button, Stack, Typography } from "@mui/material";
 import { CircleCheck } from "lucide-react";
+import { H2, SubTitle } from "./Typography";
 
 export interface Price {
   id: string;
@@ -78,20 +79,8 @@ export const PriceCards = ({
             marginBottom: "40px",
           }}
         >
-          <Typography
-            variant="h2"
-            align="center"
-            sx={{
-              fontWeight: 800,
-              fontSize: "86px",
-            }}
-          >
-            {title}
-          </Typography>
-
-          <Typography variant="body1" align="center" sx={{ opacity: 0.8, fontSize: "20px" }}>
-            {subTitle}
-          </Typography>
+          <H2>{title}</H2>
+          <SubTitle>{subTitle}</SubTitle>
         </Stack>
 
         <Stack

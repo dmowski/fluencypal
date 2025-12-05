@@ -1,5 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { Quote } from "lucide-react";
+import { H2, SubTitle } from "./Typography";
 
 export interface Review {
   name: string;
@@ -50,20 +51,8 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
             gap: "10px",
           }}
         >
-          <Typography
-            variant="h2"
-            align="center"
-            sx={{
-              fontWeight: 800,
-              fontSize: "86px",
-            }}
-          >
-            {title}
-          </Typography>
-
-          <Typography variant="body1" align="center" sx={{ opacity: 0.8, fontSize: "20px" }}>
-            {subTitle}
-          </Typography>
+          <H2>{title}</H2>
+          <SubTitle>{subTitle}</SubTitle>
         </Stack>
 
         <Stack
@@ -100,6 +89,9 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
                   boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.01)",
                   backgroundColor: "rgba(255, 255, 255, 0.03)",
                   justifyContent: "space-between",
+                  "@media (max-width: 600px)": {
+                    padding: "30px 20px 30px 20px",
+                  },
                 }}
               >
                 <Stack

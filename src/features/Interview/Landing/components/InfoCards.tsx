@@ -1,6 +1,7 @@
 import type { ForwardRefExoticComponent, RefAttributes } from "react";
 import type { LucideProps } from "lucide-react";
 import { Button, Stack, Typography } from "@mui/material";
+import { H2, SubTitle } from "./Typography";
 
 export interface InfoCard {
   icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
@@ -76,20 +77,8 @@ export const InfoCards = (props: InfoCardsProps) => {
             gap: "10px",
           }}
         >
-          <Typography
-            variant="h2"
-            align="center"
-            sx={{
-              fontWeight: 800,
-              fontSize: "86px",
-            }}
-          >
-            {props.title}
-          </Typography>
-
-          <Typography variant="body1" align="center" sx={{ opacity: 0.8, fontSize: "20px" }}>
-            {props.subTitle}
-          </Typography>
+          <H2>{props.title}</H2>
+          <SubTitle>{props.subTitle}</SubTitle>
         </Stack>
 
         <Stack

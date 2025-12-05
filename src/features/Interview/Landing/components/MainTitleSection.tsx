@@ -1,4 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
+import { H1 } from "./Typography";
 
 export interface MainTitleSectionProps {
   label: string;
@@ -42,22 +43,7 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
         >
           {props.label}
         </Typography>
-
-        <Typography
-          variant="h1"
-          align="center"
-          sx={{
-            fontWeight: 800,
-            fontSize: "96px",
-            lineHeight: "110%",
-            "@media (max-width: 600px)": {
-              fontSize: "34px",
-            },
-          }}
-        >
-          {props.title}
-        </Typography>
-
+        <H1>{props.title}</H1>
         <Typography
           variant="body1"
           align="center"
