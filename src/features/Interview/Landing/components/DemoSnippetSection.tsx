@@ -2,6 +2,7 @@ import { Stack, Typography, Button, Box } from "@mui/material";
 import { H2, SubTitle } from "./Typography";
 import { DemoSnippetItem } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
+import { getI18nInstance } from "@/appRouterI18n";
 
 export interface DemoSnippetSectionProps {
   id: string;
@@ -14,6 +15,7 @@ export interface DemoSnippetSectionProps {
 }
 
 export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
+  const i18n = getI18nInstance(props.lang);
   return (
     <Stack
       id={props.id}
@@ -104,7 +106,7 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
                       fontWeight: 600,
                     }}
                   >
-                    Question
+                    {i18n._(`Question`)}
                   </Typography>
                   <Typography variant="body1" sx={{ lineHeight: 1.5 }}>
                     {item.question}
@@ -135,7 +137,7 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
                       fontWeight: 600,
                     }}
                   >
-                    Candidate's answer
+                    {i18n._(`Candidate's answer`)}
                   </Typography>
                   <Typography variant="body1" sx={{ lineHeight: 1.5, opacity: 0.95 }}>
                     {item.userAnswerShort}
@@ -165,7 +167,7 @@ export const DemoSnippetSection = (props: DemoSnippetSectionProps) => {
                       fontWeight: 600,
                     }}
                   >
-                    AI feedback
+                    {i18n._(`AI feedback`)}
                   </Typography>
                   <Typography variant="body1" sx={{ lineHeight: 1.7 }}>
                     {item.feedback}

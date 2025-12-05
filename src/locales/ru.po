@@ -467,6 +467,11 @@ msgstr "AI Учитель Английского"
 msgid "ai English tutor"
 msgstr "ai English tutor"
 
+#: src/features/Interview/Landing/components/DemoSnippetSection.tsx:170
+#. js-lingui-explicit-id
+msgid "AI feedback"
+msgstr "Отзыв AI"
+
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:147
 #. js-lingui-explicit-id
 msgid "AI feedback that matters"
@@ -978,6 +983,11 @@ msgstr "Отмена"
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Отменить запись"
+
+#: src/features/Interview/Landing/components/DemoSnippetSection.tsx:140
+#. js-lingui-explicit-id
+msgid "Candidate's answer"
+msgstr "Ответ кандидата"
 
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:494
 #. js-lingui-explicit-id
@@ -2279,16 +2289,6 @@ msgstr "Все, что в Free, плюс:"
 msgid "Everything you need to stand out and get the job"
 msgstr "Всё, что нужно, чтобы выделиться и получить работу"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:516
-#. js-lingui-explicit-id
-msgid "Example insight – architecture"
-msgstr "Пример идеи – архитектура"
-
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:506
-#. js-lingui-explicit-id
-msgid "Example insight – performance"
-msgstr "Пример анализа – производительность"
-
 #: src/features/Blog/blogData.tsx:25
 #. js-lingui-explicit-id
 msgid "existential fiction"
@@ -2497,7 +2497,7 @@ msgstr ""
 msgid "FluencyPal – Your AI English Speaking Partner"
 msgstr "FluencyPal – Ваш AI партнер для общения на английском"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:523
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:521
 #. js-lingui-explicit-id
 msgid ""
 "For a senior-level interview, you should go beyond 'components + global "
@@ -2603,7 +2603,7 @@ msgstr "От ошибок и колебаний к уверенным бесед
 msgid "From Onboarding to Confidence"
 msgstr "От адаптации до уверенности"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:540
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:538
 #. js-lingui-explicit-id
 msgid "frontend developer interview prep"
 msgstr "подготовка к интервью на должность фронтенд-разработчика"
@@ -2620,7 +2620,7 @@ msgstr ""
 msgid "Frontend System Design"
 msgstr "Frontend System Design"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:542
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:540
 #. js-lingui-explicit-id
 msgid "frontend system design interview"
 msgstr "передний план системы проектирование интервью"
@@ -2887,7 +2887,7 @@ msgstr "Цель: не менее <0>{minWords}</0> слов"
 msgid "Good"
 msgstr "Хорошо"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:511
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:510
 #. js-lingui-explicit-id
 msgid ""
 "Good direction, but your answer is too shallow for a senior role. Mention "
@@ -3145,7 +3145,7 @@ msgstr "Как подготовиться к собеседованию на а�
 msgid "How well do you know"
 msgstr "Как хорошо вы знаете"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:517
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:515
 #. js-lingui-explicit-id
 msgid ""
 "How would you design the frontend architecture for a large multi-page "
@@ -3163,7 +3163,7 @@ msgstr ""
 "Как бы вы спроектировали архитектуру фронтенда для крупномасштабной панели "
 "управления с обновлением данных в реальном времени?"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:507
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:506
 #. js-lingui-explicit-id
 msgid "How would you improve the performance of a React app that feels slow?"
 msgstr ""
@@ -3601,7 +3601,7 @@ msgstr ""
 "Я был уверен и ясен — FluencyPal подготовил меня лучше, чем любой тренер, к "
 "техническим обсуждениям о управлении состоянием."
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:520
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:518
 #. js-lingui-explicit-id
 msgid ""
 "I would split the app into reusable components and use a global store for "
@@ -3610,7 +3610,7 @@ msgstr ""
 "Я бы разделил приложение на повторно используемые компоненты и использовал "
 "глобальное хранилище для состояния."
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:508
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:507
 #. js-lingui-explicit-id
 msgid "I would use React.memo and lazy loading to reduce unnecessary renders."
 msgstr ""
@@ -4298,7 +4298,7 @@ msgstr "Словарь для собеседований для учеников
 msgid "Introduction: Small Talk with the Interviewer"
 msgstr "Введение: Неформальное общение с интервьюером"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:546
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:544
 #. js-lingui-explicit-id
 msgid "IT & Software Development"
 msgstr "ИТ и разработка программного обеспечения"
@@ -5646,7 +5646,7 @@ msgstr "Практикуйте заказ еды и взаимодействие
 msgid "Practice rapid thinking and fluent speaking under playful pressure."
 msgstr "Практикуйте быстрое мышление и беглую речь под легким давлением."
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:534
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:532
 #. js-lingui-explicit-id
 msgid ""
 "Practice real Senior Frontend Developer interview questions and get a "
@@ -5964,6 +5964,11 @@ msgstr "Опубликовать ответ"
 msgid "published"
 msgstr "опубликовано"
 
+#: src/features/Interview/Landing/components/DemoSnippetSection.tsx:109
+#. js-lingui-explicit-id
+msgid "Question"
+msgstr "Вопрос"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:305
 #. js-lingui-explicit-id
 msgid "Questions to Ask the Employer"
@@ -6012,7 +6017,7 @@ msgstr "React и Next.js"
 msgid "React & TypeScript"
 msgstr "React & TypeScript"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:541
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:539
 #. js-lingui-explicit-id
 msgid "react interview questions"
 msgstr "вопросы для собеседования по React"
@@ -6426,17 +6431,17 @@ msgid "Sending..."
 msgstr "Отправка..."
 
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:291
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:532
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:530
 #. js-lingui-explicit-id
 msgid "Senior Frontend Developer"
 msgstr "Старший фронтенд-разработчик"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:539
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:537
 #. js-lingui-explicit-id
 msgid "senior frontend developer interview"
 msgstr "интервью для старшего frontend-разработчика"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:533
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:531
 #. js-lingui-explicit-id
 msgid "Senior Frontend Developer interview prep that gets you more offers"
 msgstr ""
@@ -6448,7 +6453,7 @@ msgstr ""
 msgid "Senior Frontend Developers preparing for promotions or new roles"
 msgstr "Старшие фронтенд-разработчики, готовящиеся к продвижению или новым ролям"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:538
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:536
 #. js-lingui-explicit-id
 msgid "senior frontend interview"
 msgstr "интервью на должность старшего фронтенд-разработчика"
@@ -7732,7 +7737,7 @@ msgstr "Мы будем говорить свободно"
 msgid "Weaknesses:"
 msgstr "Слабые стороны:"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:543
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:541
 #. js-lingui-explicit-id
 msgid "web developer interview preparation"
 msgstr "подготовка к собеседованию для веб-разработчика"
@@ -8211,6 +8216,16 @@ msgstr ""
 "— важно провести этот короткий разговор перед тем, как переходить к "
 "профессиональным темам. Вот несколько полезных английских фраз для начала "
 "интервью:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:516
+#. js-lingui-explicit-id
+#~ msgid "Example insight – architecture"
+#~ msgstr "Пример идеи – архитектура"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:506
+#. js-lingui-explicit-id
+#~ msgid "Example insight – performance"
+#~ msgstr "Пример анализа – производительность"
 
 #: src/features/Interview/Landing/InterviewLanding.tsx:91
 #. js-lingui-explicit-id

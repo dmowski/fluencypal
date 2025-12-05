@@ -48,7 +48,7 @@ export async function InterviewLandingPageNext({
   const allInterviews = getAllInterviews(lang);
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   const interviewData = allInterviews.interviews.find((interview) => interview.id === id);
-  const i18n = getI18nInstance(lang);
+
   if (!interviewData) {
     return <NotFoundPage lang={supportedLang} />;
   }

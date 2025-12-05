@@ -85,6 +85,7 @@ export async function InterviewLanding({
                   title={section.title}
                   subTitle={section.subTitle}
                   demoItems={section.demoItems}
+                  lang={lang}
                 />
               );
             }
