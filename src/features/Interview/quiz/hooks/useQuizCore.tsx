@@ -12,15 +12,14 @@ export function useQuizCore<Step extends string>({
   path: Step[];
   mainPageUrl: string;
 }) {
-  interface QuizCoreUrlState {
-    currentStep: Step;
-  }
-
   const [isFirstLoading, setIsFirstLoading] = useState(true);
+  interface QuizCoreUrlState {
+    currentStepId: Step;
+  }
 
   const defaultState: QuizCoreUrlState = useMemo(
     () => ({
-      currentStep: path[0],
+      currentStepId: path[0],
     }),
     []
   );
@@ -45,15 +44,15 @@ export function useQuizCore<Step extends string>({
 
   const state = stateInput as unknown as QuizCoreUrlState;
 
-  const currentStep = state.currentStep;
-  const currentStepIndex = path.indexOf(currentStep) > -1 ? path.indexOf(currentStep) : 0;
+  const currentStepIndex =
+    path.indexOf(state.currentStepId) > -1 ? path.indexOf(state.currentStepId) : 0;
 
   const router = useRouter();
   const nextStep = async () => {
     const nextStepIndex = Math.min(currentStepIndex + 1, path.length - 1);
     const nextStep = path[nextStepIndex];
     let newStatePatch: Partial<QuizCoreUrlState> = {
-      currentStep: nextStep,
+      currentStepId: nextStep,
     };
     let url = await setState(newStatePatch, {
       redirect: false,
@@ -65,7 +64,7 @@ export function useQuizCore<Step extends string>({
   const prevStep = useCallback(() => {
     const prevStepIndex = Math.max(currentStepIndex - 1, 0);
     const prevStep = path[prevStepIndex];
-    setState({ currentStep: prevStep });
+    setState({ currentStepId: prevStep });
   }, [currentStepIndex, path, setState]);
 
   const navigateToMainPage = () => router.push(`${mainPageUrl}`);
@@ -86,7 +85,7 @@ export function useQuizCore<Step extends string>({
     navigateToMainPage,
     progress,
     isCanGoToMainPage,
-    currentStep,
+    currentStepId: state.currentStepId,
     isFirstStep: currentStepIndex === 0,
     isLastStep: currentStepIndex === path.length - 1,
   };

@@ -31,20 +31,12 @@ export function useProvideInterviewQuizContext({
     initEmptyData: initEmptyData,
   });
 
-  const currentStepData = quiz.steps.find((step) => step.id === core.currentStep) || null;
+  const currentStep = quiz.steps.find((step) => step.id === core.currentStepId) || null;
 
   return {
     survey: data.survey,
-    isCanGoToMainPage: core.isCanGoToMainPage,
-    currentStep: currentStepData,
-    isStepLoading: core.isStateLoading,
-    isFirstStep: core.isFirstStep,
-    isLastStep: core.isLastStep,
-    nextStep: core.nextStep,
-    navigateToMainPage: core.navigateToMainPage,
-    prevStep: core.prevStep,
-    progress: core.progress,
-    isFirstLoading: core.isFirstLoading,
+    currentStep,
     updateSurvey: data.updateSurvey,
+    ...core,
   };
 }

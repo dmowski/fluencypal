@@ -10,7 +10,7 @@ export type QuizStep = string;
 
 export interface InterviewQuizContextType {
   currentStep: InterviewQuizStep | null;
-  isStepLoading: boolean;
+  isStateLoading: boolean;
 
   nextStep: () => void;
   prevStep: () => void;
