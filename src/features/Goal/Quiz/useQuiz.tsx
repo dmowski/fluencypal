@@ -29,7 +29,6 @@ import { getDoc, setDoc } from "firebase/firestore";
 import { QuizSurvey2, QuizSurvey2FollowUpQuestion } from "./types";
 import * as Sentry from "@sentry/nextjs";
 import { useTextAi } from "@/features/Ai/useTextAi";
-import { useFixJson } from "@/features/Ai/useFixJson";
 import { useSettings } from "@/features/Settings/useSettings";
 import { usePlan } from "@/features/Plan/usePlan";
 import { ChatMessage } from "@/common/conversation";
