@@ -7,7 +7,6 @@ import { Stack } from "@mui/material";
 import { QuizProgressBar } from "@/features/Goal/Quiz/components/QuizProgressBar";
 import { useRouter } from "next/navigation";
 import { InfoStep } from "@/features/Survey/InfoStep";
-import { AboutYourselfList } from "@/features/Goal/Quiz/AboutYourselfList";
 import { useLingui } from "@lingui/react";
 import { useInterviewQuiz } from "./hooks/useInterviewQuiz/useInterviewQuiz";
 
@@ -19,9 +18,6 @@ export interface InterviewQuizPageProps {
 }
 
 export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuizPageProps) => {
-  const pageUrl = getUrlStart(lang) + `interview/${id}`;
-  const { i18n } = useLingui();
-  const router = useRouter();
   const quiz = useInterviewQuiz();
 
   return (
