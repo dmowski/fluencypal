@@ -3,8 +3,6 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { InterviewCoreData, InterviewQuiz } from "../types";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { PracticeProvider } from "@/app/practiceProvider";
-import { WebViewWall } from "@/features/Auth/WebViewWall";
 import { Stack } from "@mui/material";
 import { QuizProgressBar } from "@/features/Goal/Quiz/components/QuizProgressBar";
 import { useRouter } from "next/navigation";
@@ -23,6 +21,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
   const pageUrl = getUrlStart(lang) + `interview/${id}`;
   const { i18n } = useLingui();
   const router = useRouter();
+
   return (
     <Stack
       component={"main"}
