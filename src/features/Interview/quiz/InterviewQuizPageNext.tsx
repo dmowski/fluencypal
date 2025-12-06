@@ -4,7 +4,7 @@ import { NotFoundPage } from "@/features/NotFound/NotFoundPage";
 import { InterviewQuizPage } from "./InterviewQuizPage";
 import { WebViewWall } from "@/features/Auth/WebViewWall";
 import { PracticeProvider } from "@/app/practiceProvider";
-import { InterviewQuizProvider } from "./useQuiz";
+import { InterviewQuizProvider } from "./useInterviewQuiz";
 
 export async function InterviewQuizPageNext({
   langParam,
@@ -28,8 +28,8 @@ export async function InterviewQuizPageNext({
         <InterviewQuizProvider
           coreData={interviewData.coreData}
           quiz={interviewData.quiz}
-          pageLang={lang}
-          defaultLangToLearn={lang}
+          lang={lang}
+          interviewId={id}
         >
           <InterviewQuizPage
             interviewCoreData={interviewData.coreData}

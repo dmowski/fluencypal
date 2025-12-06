@@ -143,13 +143,13 @@ type Section =
   | WhoIsThisForSection
   | DemoSnippetSection;
 
-interface QuizListItem {
+export interface QuizListItem {
   label: string;
   icon: string;
 }
 
 /** Basic info to inform the user about the next step and general info */
-interface InfoQuizStep {
+export interface InfoQuizStep {
   type: "info";
   id: string;
 
@@ -162,7 +162,7 @@ interface InfoQuizStep {
 }
 
 /** Final step when user will see that he has completed all steps */
-interface WaitlistDoneQuizStep {
+export interface WaitlistDoneQuizStep {
   type: "waitlist-done";
   id: string;
 
@@ -174,7 +174,7 @@ interface WaitlistDoneQuizStep {
 }
 
 /** On this step user will record audio answer to interview question. */
-interface RecordAudioQuizStep {
+export interface RecordAudioQuizStep {
   type: "record-audio";
   id: string;
 
@@ -193,7 +193,7 @@ interface RecordAudioQuizStep {
  * On this step user will see result of AI analyzer.
  * And will be intrigued to proceed further
  */
-interface AnalyzeInputsQuizStep {
+export interface AnalyzeInputsQuizStep {
   type: "analyze-inputs";
   id: string;
 
@@ -211,7 +211,7 @@ interface AnalyzeInputsQuizStep {
  * On this step user will see paywall with benefits of upgrading.
  * Usually after seeing AI analysis of his answers.
  */
-interface PaywallQuizStep {
+export interface PaywallQuizStep {
   type: "paywall";
   id: string;
 
@@ -235,7 +235,7 @@ interface PaywallQuizStep {
  * InfoQuizStep - What's next: feature list of the app
  * WaitlistDoneQuizStep - final step indicating completion
  */
-type InterviewQuizStep =
+export type InterviewQuizStep =
   | InfoQuizStep
   | RecordAudioQuizStep
   | AnalyzeInputsQuizStep
@@ -260,3 +260,18 @@ export interface InterviewData {
   sections: Section[];
   quiz: InterviewQuiz;
 }
+
+export type InterviewQuizSurvey = {
+  // StepId: data
+  answers: Record<
+    string,
+    {
+      stepId: string;
+
+      question: string;
+      answerTranscription: string;
+    }
+  >;
+  updatedAtIso: string;
+  createdAtIso: string;
+};

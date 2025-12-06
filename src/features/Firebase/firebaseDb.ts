@@ -20,6 +20,7 @@ import { GoalPlan } from "../Plan/types";
 import { GameAvatars, GameLastVisit, GameUserNames, GameUsersPoints } from "../Game/types";
 import { QuizSurvey2 } from "../Goal/Quiz/types";
 import { DailyQuestionAnswer, DailyQuestionLike } from "../Game/DailyQuestion/types";
+import { InterviewQuizSurvey } from "../Interview/types";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -121,6 +122,10 @@ export const db = {
     quizSurvey2: (userId?: string, learningLanguage?: SupportedLanguage) =>
       userId && learningLanguage
         ? dataPointDoc<QuizSurvey2>(`users/${userId}/quiz2/${learningLanguage}`)
+        : null,
+    interviewQuizSurvey: (userId?: string, interviewId?: string) =>
+      userId && interviewId
+        ? dataPointDoc<InterviewQuizSurvey>(`users/${userId}/interview/${interviewId}`)
         : null,
   },
 };
