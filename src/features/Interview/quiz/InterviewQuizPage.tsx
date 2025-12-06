@@ -42,7 +42,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
         prevStep={function (): void {
           throw new Error("Function not implemented.");
         }}
-        progress={0}
+        progress={0.1}
       />
       <Stack
         sx={{
