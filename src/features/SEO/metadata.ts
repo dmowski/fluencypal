@@ -293,19 +293,18 @@ export const generateMetadataInfo = ({
       i18n._(`Interview Tips`),
       i18n._(`Career Advancement`),
     ];
-
-    needIndex = false;
   }
   if (currentPath === "interview" && interviewId) {
     const { interviews } = getAllInterviews(supportedLang);
     const item = interviews.find((b) => b.id === interviewId);
-    needIndex = false;
+    if (!item) {
+      needIndex = false;
+    }
 
     title = `${item?.title || "Interview not found"} - ` + i18n._(`| FluencyPal`);
     description = item?.subTitle || "";
     keywords = item?.keywords || [];
     openGraphImageUrl = openGraphImageUrl;
-    needIndex = false;
   }
 
   if (currentPath === "") {
