@@ -1,3 +1,5 @@
+"use client";
+
 import { useAuth } from "@/features/Auth/useAuth";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { useEffect, useRef } from "react";

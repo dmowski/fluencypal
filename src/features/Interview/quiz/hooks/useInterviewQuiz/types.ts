@@ -1,3 +1,5 @@
+"use client";
+
 import { SupportedLanguage } from "@/features/Lang/lang";
 import {
   InterviewCoreData,

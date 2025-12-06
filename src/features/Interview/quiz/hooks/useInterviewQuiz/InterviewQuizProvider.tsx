@@ -1,3 +1,5 @@
+"use client";
+
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { JSX, ReactNode } from "react";
 import { InterviewCoreData, InterviewQuiz } from "../../../types";

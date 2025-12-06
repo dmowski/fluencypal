@@ -1,3 +1,5 @@
+"use client";
+
 import { useAuth } from "@/features/Auth/useAuth";
 import { InterviewQuizContextType, InterviewQuizProps, QuizStep } from "./types";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
