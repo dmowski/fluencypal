@@ -2,6 +2,8 @@ import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { getAllInterviews } from "../data";
 import { NotFoundPage } from "@/features/NotFound/NotFoundPage";
 import { InterviewQuizPage } from "./InterviewQuizPage";
+import { WebViewWall } from "@/features/Auth/WebViewWall";
+import { PracticeProvider } from "@/app/practiceProvider";
 
 export async function InterviewQuizPageNext({
   langParam,
@@ -20,12 +22,16 @@ export async function InterviewQuizPageNext({
   }
 
   const content = (
-    <InterviewQuizPage
-      interviewCoreData={interviewData.coreData}
-      lang={supportedLang}
-      id={id}
-      interviewQuiz={interviewData.quiz}
-    />
+    <PracticeProvider>
+      <WebViewWall>
+        <InterviewQuizPage
+          interviewCoreData={interviewData.coreData}
+          lang={supportedLang}
+          id={id}
+          interviewQuiz={interviewData.quiz}
+        />
+      </WebViewWall>
+    </PracticeProvider>
   );
 
   if (lang === "en") {
