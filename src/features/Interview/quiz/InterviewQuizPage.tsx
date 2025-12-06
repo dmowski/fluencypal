@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { InfoStep } from "@/features/Survey/InfoStep";
 import { AboutYourselfList } from "@/features/Goal/Quiz/AboutYourselfList";
 import { useLingui } from "@lingui/react";
+import { useInterviewQuiz } from "./useInterviewQuiz";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;
@@ -21,6 +22,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
   const pageUrl = getUrlStart(lang) + `interview/${id}`;
   const { i18n } = useLingui();
   const router = useRouter();
+  const quiz = useInterviewQuiz();
 
   return (
     <Stack
@@ -33,13 +35,11 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
       }}
     >
       <QuizProgressBar
-        navigateToMainPage={() => router.push(pageUrl)}
-        isCanGoToMainPage={true}
-        isFirstStep={true}
-        prevStep={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        progress={0.1}
+        navigateToMainPage={quiz.navigateToMainPage}
+        isCanGoToMainPage={quiz.isCanGoToMainPage}
+        isFirstStep={quiz.isFirstStep}
+        prevStep={quiz.prevStep}
+        progress={quiz.progress}
       />
       <Stack
         sx={{
@@ -49,18 +49,16 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
         }}
       >
         <InfoStep
-          message={i18n._(`We are ready`)}
-          subMessage={i18n._(`Let's talk. Tell me  about yourself`)}
+          message={quiz.currentStep?.title}
+          subMessage={quiz.currentStep?.subTitle || ""}
           imageUrl="/avatar/owl1.png"
-          onClick={() => {}}
+          onClick={() => quiz.nextStep()}
           subComponent={
             <Stack
               sx={{
                 paddingTop: "20px",
               }}
-            >
-              <AboutYourselfList />
-            </Stack>
+            ></Stack>
           }
         />
       </Stack>

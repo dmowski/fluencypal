@@ -48,6 +48,7 @@ interface InterviewQuizContextType {
 
   nextStep: () => void;
   prevStep: () => void;
+  navigateToMainPage: () => void;
   progress: number;
   isFirstStep: boolean;
   isLastStep: boolean;
@@ -196,6 +197,7 @@ function useProvideInterviewQuizContext({
     isFirstStep: currentStepIndex === 0,
     isLastStep: currentStepIndex === path.length - 1,
     nextStep,
+    navigateToMainPage,
     prevStep,
     progress,
     isFirstLoading,
