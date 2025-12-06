@@ -24,7 +24,6 @@ export function useProvideInterviewQuizContext({
   });
 
   const currentStepData = quiz.steps.find((step) => step.id === core.currentStep) || null;
-  const currentStepIndex = path.indexOf(core.currentStep) > -1 ? path.indexOf(core.currentStep) : 0;
 
   const surveyDocRef = db.documents.interviewQuizSurvey(auth.uid, interviewId);
   const [surveyDoc] = useDocumentData(surveyDocRef);
@@ -64,8 +63,8 @@ export function useProvideInterviewQuizContext({
     isCanGoToMainPage: core.isCanGoToMainPage,
     currentStep: currentStepData,
     isStepLoading: core.isStateLoading,
-    isFirstStep: currentStepIndex === 0,
-    isLastStep: currentStepIndex === path.length - 1,
+    isFirstStep: core.isFirstStep,
+    isLastStep: core.isLastStep,
     nextStep: core.nextStep,
     navigateToMainPage: core.navigateToMainPage,
     prevStep: core.prevStep,
