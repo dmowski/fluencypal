@@ -224,15 +224,16 @@ interface PaywallQuizStep {
 
 /**
  * Example of Interview Quiz Steps:
- * 1. InfoQuizStep - inform user about the next step
- * 2. RecordAudioQuizStep - user records audio answer (Introduce yourself)
- * 3. RecordAudioQuizStep - Ask another question and record audio (Technical question)
- * 4. RecordAudioQuizStep - Ask another question and record audio (Behavioral question)
- * 5. AnalyzeInputsQuizStep - show AI analysis of user's answers
- * 6. PaywallQuizStep - show paywall to upgrade for more features
- * 7. AnalyzeInputsQuizStep - show AI analysis of the rest user's answers
- * 9. InfoQuizStep - What's next: feature list of the app
- * 8. WaitlistDoneQuizStep - final step indicating completion
+ * InfoQuizStep - inform user about the next step
+ * RecordAudioQuizStep - user records audio answer (Introduce yourself)
+ * RecordAudioQuizStep - Ask another question and record audio (Technical question)
+ * RecordAudioQuizStep - Ask another question and record audio (Behavioral question)
+ * AnalyzeInputsQuizStep - show AI analysis of user's answers (Markdown)
+ * InfoQuizStep - On the next step, you will see score analysis
+ * PaywallQuizStep - show paywall to verify credit card, choosing a plan and actual payment will be done later if user proceeds
+ * AnalyzeInputsQuizStep - show AI analysis of the rest user's answers
+ * InfoQuizStep - What's next: feature list of the app
+ * WaitlistDoneQuizStep - final step indicating completion
  */
 type InterviewQuizStep =
   | InfoQuizStep
