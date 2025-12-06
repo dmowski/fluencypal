@@ -153,10 +153,10 @@ interface InfoQuizStep {
   type: "info";
   id: string;
 
-  iconUrl: string;
+  iconUrl?: string;
   title: string;
   subTitle: string;
-  listItems: QuizListItem[];
+  listItems?: QuizListItem[];
 
   buttonTitle: string;
 }
@@ -168,7 +168,7 @@ interface WaitlistDoneQuizStep {
 
   title: string;
   subTitle: string;
-  listItems: QuizListItem[];
+  listItems?: QuizListItem[];
 
   buttonTitle: string;
 }
@@ -180,7 +180,7 @@ interface RecordAudioQuizStep {
 
   title: string;
   subTitle: string;
-  listItems: QuizListItem[];
+  listItems?: QuizListItem[];
 
   buttonTitle: string;
 
@@ -217,7 +217,7 @@ interface PaywallQuizStep {
 
   title: string;
   subTitle: string;
-  listItems: QuizListItem[];
+  listItems?: QuizListItem[];
 
   buttonTitle: string;
 }
@@ -254,5 +254,5 @@ export interface InterviewData {
   keywords: string[];
   sections: Section[];
   category: InterviewCategory;
-  quiz?: InterviewQuiz;
+  quiz: InterviewQuiz;
 }

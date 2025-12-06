@@ -558,5 +558,116 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       faqSection,
       callToActionSection,
     ],
+
+    quiz: {
+      steps: [
+        {
+          type: "info",
+          id: "intro-step",
+          title: i18n._("Welcome to your Senior Frontend Developer Interview Prep"),
+          subTitle: i18n._(
+            "In this session, you'll answer questions designed for senior frontend roles. After responses, you'll receive  feedback to help you refine your answers and improve your interview skills."
+          ),
+          buttonTitle: i18n._("Start Interview Prep"),
+          listItems: [],
+        },
+        {
+          type: "record-audio",
+          id: "introduce-yourself-step",
+          title: i18n._("Introduce Yourself"),
+          subTitle: i18n._(
+            "Tell us about your background, experience, and what makes you a great Senior Frontend Developer."
+          ),
+          buttonTitle: i18n._("Record Answer"),
+          listItems: [],
+        },
+        // * RecordAudioQuizStep - Ask another question and record audio (Technical question)
+        {
+          type: "record-audio",
+          id: "technical-question-step",
+          title: i18n._("Technical Question"),
+          subTitle: i18n._(
+            "How would you design the frontend architecture for a large-scale dashboard with real-time data updates?"
+          ),
+          buttonTitle: i18n._("Record Answer"),
+          listItems: [],
+        },
+        // * RecordAudioQuizStep - Ask another question and record audio (Behavioral question)
+        {
+          type: "record-audio",
+          id: "behavioral-question-step",
+          title: i18n._("Behavioral Question"),
+          subTitle: i18n._(
+            "Describe a time you led a frontend refactor or migration. What challenges did you face and how did you overcome them?"
+          ),
+          buttonTitle: i18n._("Record Answer"),
+          listItems: [],
+        },
+        // * AnalyzeInputsQuizStep - show AI analysis of user's answers (Markdown)
+        {
+          type: "analyze-inputs",
+          id: "ai-feedback-step-1",
+          title: i18n._("AI Feedback on Your Answers"),
+          subTitle: i18n._("Here's personalized feedback on your responses to help you improve."),
+          buttonTitle: i18n._("Continue"),
+          aiSystemPrompt: i18n._(
+            "Provide detailed feedback on the user's answers, focusing on technical depth, clarity, and structure. Suggest specific improvements for each answer."
+          ),
+          aiResponseFormat: "markdown",
+        },
+        // * InfoQuizStep - On the next step, you will see score analysis
+        {
+          type: "info",
+          id: "score-intro-step",
+          title: i18n._("Next: Your Interview Readiness Score"),
+          subTitle: i18n._(
+            "On the next step, you'll receive a comprehensive score analysis of your interview performance."
+          ),
+          buttonTitle: i18n._("Continue"),
+        },
+
+        // PaywallQuizStep - show paywall to verify credit card, choosing a plan and actual payment will be done later if user proceeds
+        {
+          type: "paywall",
+          id: "upgrade-step",
+          title: i18n._("Unlock Your Trial and get Full Feedback"),
+          subTitle: i18n._("No payment required after trial. You decide when to pay."),
+          listItems: [],
+          buttonTitle: i18n._("Start Trial"),
+        },
+        // AnalyzeInputsQuizStep - show AI analysis of the rest user's answers
+        {
+          type: "analyze-inputs",
+          id: "ai-feedback-step-2",
+          title: i18n._("Complete AI Feedback on Your Answers"),
+          subTitle: i18n._("Here's the rest of your personalized feedback to help you improve."),
+          buttonTitle: i18n._("Continue"),
+          aiSystemPrompt: i18n._(
+            "Provide detailed feedback on the user's answers, focusing on technical depth, clarity, and structure. Suggest specific improvements for each answer."
+          ),
+          aiResponseFormat: "json-score",
+        },
+        // InfoQuizStep - What's next: feature list of the app
+        {
+          type: "info",
+          id: "whats-next-step",
+          title: i18n._("What's Next?"),
+          subTitle: i18n._(
+            "Continue practicing with more questions, track your progress, and refine your answers to ace your next interview."
+          ),
+          buttonTitle: i18n._("Finish"),
+        },
+        // * WaitlistDoneQuizStep - final step indicating completion
+        {
+          type: "waitlist-done",
+          id: "completion-step",
+          title: i18n._("You're All Set!"),
+          subTitle: i18n._(
+            "Thank you for completing the Senior Frontend Developer interview prep. We will review your answer and get back to you with full access to the platform."
+          ),
+          buttonTitle: i18n._("Return to Dashboard"),
+        },
+      ],
+    },
   };
 };
