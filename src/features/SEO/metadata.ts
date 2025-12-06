@@ -24,6 +24,7 @@ type Path =
   | "blog"
   | "interviewLanding"
   | "interview"
+  | "quizInterview"
   | "";
 
 interface generateMetadataInfoProps {
@@ -73,6 +74,25 @@ export const generateMetadataInfo = ({
       `Create a personalized language learning plan with FluencyPal. Set your fluency goals, focus on specific skills like speaking or listening, and track your progress to master English effectively.`
     );
     keywords = [];
+  }
+
+  if (currentPath === "quizInterview") {
+    // interviewId
+    const interviewList = getAllInterviews("en").interviews;
+    const interview = interviewList.find((i) => i.id === interviewId);
+    title = `${interview?.title || "Interview Quiz"} - ` + i18n._(`| FluencyPal`);
+    description = i18n._(
+      `Test your interview skills with FluencyPal's AI-powered interview quiz. Practice answering common questions, receive instant feedback, and boost your confidence for real interviews.`
+    );
+    keywords = [
+      ...(interview?.keywords || []),
+      i18n._(`Interview Quiz`),
+      i18n._(`AI Interview Practice`),
+      i18n._(`Mock Interview Questions`),
+      i18n._(`Interview Preparation`),
+      i18n._(`Job Interview Skills`),
+      i18n._(`Career Advancement`),
+    ];
   }
 
   if (currentPath === "interviewLanding") {

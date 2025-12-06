@@ -8,39 +8,46 @@ import { getUrlStart } from "../Lang/getUrlStart";
 export function NotFoundPage({ lang }: { lang: SupportedLanguage }) {
   const supportedLang = lang || "en";
   const i18n = getI18nInstance(supportedLang);
-  return (
-    <html lang={supportedLang}>
-      <body>
-        <div>
-          <HeaderStatic lang={supportedLang} />
-          <Stack
+
+  const content = (
+    <div>
+      <HeaderStatic lang={supportedLang} />
+      <Stack
+        sx={{
+          alignItems: "center",
+          paddingTop: "120px",
+        }}
+      >
+        <Stack
+          sx={{
+            maxWidth: maxLandingWidth,
+            width: "100%",
+            alignItems: "flex-start",
+          }}
+        >
+          <Typography variant="h1">{i18n._(`Not Found`)}</Typography>
+          <p>{i18n._(`Could not find page`)}</p>
+          <Button
+            variant="contained"
+            href={`${getUrlStart(supportedLang)}/`}
             sx={{
-              alignItems: "center",
-              paddingTop: "120px",
+              padding: "20px 60px",
             }}
           >
-            <Stack
-              sx={{
-                maxWidth: maxLandingWidth,
-                width: "100%",
-                alignItems: "flex-start",
-              }}
-            >
-              <Typography variant="h1">{i18n._(`Not Found`)}</Typography>
-              <p>{i18n._(`Could not find page`)}</p>
-              <Button
-                variant="contained"
-                href={`${getUrlStart(supportedLang)}/`}
-                sx={{
-                  padding: "20px 60px",
-                }}
-              >
-                {i18n._(`Go to the main page`)}
-              </Button>
-            </Stack>
-          </Stack>
-        </div>
-      </body>
-    </html>
+            {i18n._(`Go to the main page`)}
+          </Button>
+        </Stack>
+      </Stack>
+    </div>
   );
+
+  if (supportedLang === "en") {
+    return (
+      <html lang={supportedLang}>
+        <body>{content}</body>
+      </html>
+    );
+  }
+
+  return content;
 }

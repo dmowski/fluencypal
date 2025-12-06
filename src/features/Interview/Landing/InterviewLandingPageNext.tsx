@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { SupportedLanguage, supportedLanguages } from "../../Lang/lang";
 import { NotFoundPage } from "../../NotFound/NotFoundPage";
 import { getAllInterviews } from "../data";
-import { getI18nInstance } from "@/appRouterI18n";
 import { InterviewLanding } from "./InterviewLanding";
 
 export interface InterviewPageProps {
