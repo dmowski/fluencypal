@@ -15,7 +15,7 @@ export async function generateInterviewQuizStaticParams() {
   return supportedLanguages
     .map((lang: string) => {
       return interviews.map((item) => {
-        return { id: item.id, lang };
+        return { id: item.coreData.id, lang };
       });
     })
     .flat();

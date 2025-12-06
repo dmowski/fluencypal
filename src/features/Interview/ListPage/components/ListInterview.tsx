@@ -21,7 +21,7 @@ export const ListInterview = ({ lang, selectedCategoryId }: ListInterviewProps) 
     : allCategory.categoryTitle;
 
   const listToDisplay = selectedCategoryId
-    ? interviews.filter((item) => item.category.categoryId === selectedCategoryId)
+    ? interviews.filter((item) => item.coreData.category.categoryId === selectedCategoryId)
     : interviews;
 
   return (

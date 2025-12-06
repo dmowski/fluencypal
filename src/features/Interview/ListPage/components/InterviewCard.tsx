@@ -14,7 +14,7 @@ export const InterviewCard: React.FC<InterviewCardProps> = ({ item, lang }) => {
   return (
     <Stack
       component={"a"}
-      href={`${getUrlStart(lang)}interview/${item.id}`}
+      href={`${getUrlStart(lang)}interview/${item.coreData.id}`}
       sx={{
         position: "relative",
         backgroundColor: "rgba(0, 0, 10, 0.01)",
@@ -54,7 +54,7 @@ export const InterviewCard: React.FC<InterviewCardProps> = ({ item, lang }) => {
               color: "#121214",
             }}
           >
-            {item.title}
+            {item.coreData.title}
           </Typography>
           <Typography
             variant="body1"
@@ -64,7 +64,7 @@ export const InterviewCard: React.FC<InterviewCardProps> = ({ item, lang }) => {
               fontSize: "1rem",
             }}
           >
-            {item.subTitle}
+            {item.coreData.subTitle}
           </Typography>
         </Stack>
 

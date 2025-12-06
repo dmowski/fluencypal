@@ -246,13 +246,17 @@ export interface InterviewQuiz {
   steps: InterviewQuizStep[];
 }
 
-export interface InterviewData {
+export interface InterviewCoreData {
   id: string;
   title: string;
   jobTitle: string;
   subTitle: string;
   keywords: string[];
-  sections: Section[];
   category: InterviewCategory;
+}
+
+export interface InterviewData {
+  coreData: InterviewCoreData;
+  sections: Section[];
   quiz: InterviewQuiz;
 }

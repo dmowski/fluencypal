@@ -1,3 +1,4 @@
+"use client";
 import { useLingui } from "@lingui/react";
 import Telegram from "@mui/icons-material/Telegram";
 import { Button, Stack, Typography } from "@mui/material";
@@ -81,10 +82,10 @@ export const WebViewWall = ({ children }: { children: ReactNode }) => {
               isTelegram && isAndroid
                 ? "/instruction/tgAndroid.png"
                 : isTelegram && !isAndroid
-                  ? "/instruction/tgIos.png"
-                  : isAndroid
-                    ? "/instruction/instagramInstructionAndroid.png"
-                    : "/instruction/instagramInstruction.png"
+                ? "/instruction/tgIos.png"
+                : isAndroid
+                ? "/instruction/instagramInstructionAndroid.png"
+                : "/instruction/instagramInstruction.png"
             }
             alt="Instagram instruction"
             style={{

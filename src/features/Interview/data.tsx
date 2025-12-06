@@ -373,7 +373,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
   const categoriesList: InterviewCategory[] = [];
 
   list.forEach((item) => {
-    const category = item.category;
+    const category = item.coreData.category;
     if (!categoriesList.find((cat) => cat.categoryId === category.categoryId)) {
       categoriesList.push(category);
     }

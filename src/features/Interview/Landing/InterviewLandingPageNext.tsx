@@ -17,7 +17,7 @@ export async function generateInterviewStaticParams() {
   return supportedLanguages
     .map((lang: string) => {
       return interviews.map((item) => {
-        return { id: item.id, lang };
+        return { id: item.coreData.id, lang };
       });
     })
     .flat();
@@ -46,7 +46,7 @@ export async function InterviewLandingPageNext({
   const lang = (langParam || "en") as SupportedLanguage;
   const allInterviews = getAllInterviews(lang);
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
-  const interviewData = allInterviews.interviews.find((interview) => interview.id === id);
+  const interviewData = allInterviews.interviews.find((interview) => interview.coreData.id === id);
 
   if (!interviewData) {
     return <NotFoundPage lang={supportedLang} />;

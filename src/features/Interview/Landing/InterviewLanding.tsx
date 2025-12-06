@@ -172,8 +172,8 @@ export async function InterviewLanding({
                     items={section.faqItems}
                     url={pageUrl}
                     lang={lang}
-                    pageTitle={interviewData.title}
-                    description={interviewData.subTitle}
+                    pageTitle={interviewData.coreData.title}
+                    description={interviewData.coreData.subTitle}
                   />
                 </div>
               );

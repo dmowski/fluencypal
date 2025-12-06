@@ -1,3 +1,5 @@
+"use client";
+
 import { useWindowSizes } from "@/features/Layout/useWindowSizes";
 import { UIProgressBar } from "@/features/Survey/UIProgressBar";
 import { useTgNavigation } from "@/features/Telegram/useTgNavigation";
