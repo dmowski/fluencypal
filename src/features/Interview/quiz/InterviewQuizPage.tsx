@@ -33,9 +33,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
       }}
     >
       <QuizProgressBar
-        navigateToMainPage={function (): void {
-          router.push(pageUrl);
-        }}
+        navigateToMainPage={() => router.push(pageUrl)}
         isCanGoToMainPage={true}
         isFirstStep={true}
         prevStep={function (): void {
