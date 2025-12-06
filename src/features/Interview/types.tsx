@@ -143,6 +143,108 @@ type Section =
   | WhoIsThisForSection
   | DemoSnippetSection;
 
+interface QuizListItem {
+  label: string;
+  icon: string;
+}
+
+/** Basic info to inform the user about the next step and general info */
+interface InfoQuizStep {
+  type: "info";
+  id: string;
+
+  iconUrl: string;
+  title: string;
+  subTitle: string;
+  listItems: QuizListItem[];
+
+  buttonTitle: string;
+}
+
+/** Final step when user will see that he has completed all steps */
+interface WaitlistDoneQuizStep {
+  type: "waitlist-done";
+  id: string;
+
+  title: string;
+  subTitle: string;
+  listItems: QuizListItem[];
+
+  buttonTitle: string;
+}
+
+/** On this step user will record audio answer to interview question. */
+interface RecordAudioQuizStep {
+  type: "record-audio";
+  id: string;
+
+  title: string;
+  subTitle: string;
+  listItems: QuizListItem[];
+
+  buttonTitle: string;
+
+  // In case when we want to generate dynamic question titles via AI
+  // Should return a question title/subTitle based on previous answers
+  aiSystemPromptToGenerateTitles?: string;
+}
+
+/**
+ * On this step user will see result of AI analyzer.
+ * And will be intrigued to proceed further
+ */
+interface AnalyzeInputsQuizStep {
+  type: "analyze-inputs";
+  id: string;
+
+  title: string;
+  subTitle: string;
+
+  buttonTitle: string;
+
+  // Should return Markdown or JSON content
+  aiSystemPrompt: string;
+  aiResponseFormat: "markdown" | "json-score";
+}
+
+/**
+ * On this step user will see paywall with benefits of upgrading.
+ * Usually after seeing AI analysis of his answers.
+ */
+interface PaywallQuizStep {
+  type: "paywall";
+  id: string;
+
+  title: string;
+  subTitle: string;
+  listItems: QuizListItem[];
+
+  buttonTitle: string;
+}
+
+/**
+ * Example of Interview Quiz Steps:
+ * 1. InfoQuizStep - inform user about the next step
+ * 2. RecordAudioQuizStep - user records audio answer (Introduce yourself)
+ * 3. RecordAudioQuizStep - Ask another question and record audio (Technical question)
+ * 4. RecordAudioQuizStep - Ask another question and record audio (Behavioral question)
+ * 5. AnalyzeInputsQuizStep - show AI analysis of user's answers
+ * 6. PaywallQuizStep - show paywall to upgrade for more features
+ * 7. AnalyzeInputsQuizStep - show AI analysis of the rest user's answers
+ * 9. InfoQuizStep - What's next: feature list of the app
+ * 8. WaitlistDoneQuizStep - final step indicating completion
+ */
+type InterviewQuizStep =
+  | InfoQuizStep
+  | RecordAudioQuizStep
+  | AnalyzeInputsQuizStep
+  | PaywallQuizStep
+  | WaitlistDoneQuizStep;
+
+export interface InterviewQuiz {
+  steps: InterviewQuizStep[];
+}
+
 export interface InterviewData {
   id: string;
   title: string;
@@ -151,4 +253,5 @@ export interface InterviewData {
   keywords: string[];
   sections: Section[];
   category: InterviewCategory;
+  quiz?: InterviewQuiz;
 }
