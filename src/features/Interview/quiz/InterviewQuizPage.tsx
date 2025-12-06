@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { InfoStep } from "@/features/Survey/InfoStep";
 import { AboutYourselfList } from "@/features/Goal/Quiz/AboutYourselfList";
 import { useLingui } from "@lingui/react";
-import { useInterviewQuiz } from "./useInterviewQuiz";
+import { useInterviewQuiz } from "./hooks/useInterviewQuiz/useInterviewQuiz";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;

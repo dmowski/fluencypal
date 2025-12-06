@@ -4,7 +4,7 @@ import { NotFoundPage } from "@/features/NotFound/NotFoundPage";
 import { InterviewQuizPage } from "./InterviewQuizPage";
 import { WebViewWall } from "@/features/Auth/WebViewWall";
 import { PracticeProvider } from "@/app/practiceProvider";
-import { InterviewQuizProvider } from "./useInterviewQuiz";
+import { InterviewQuizProvider } from "./hooks/useInterviewQuiz/InterviewQuizProvider";
 
 export async function InterviewQuizPageNext({
   langParam,
