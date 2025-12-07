@@ -28,6 +28,8 @@ const QuizQuestions = () => {
     languageToLearn,
     isFollowUpGenerating,
     isGoalQuestionGenerating,
+    isStepLoading,
+    nextStep,
   } = useQuiz();
   const { i18n } = useLingui();
 
@@ -68,6 +70,9 @@ const QuizQuestions = () => {
               message={i18n._(`What language do you speak`)}
               subMessage={i18n._(`So I can translate words for you`)}
               actionButtonTitle={i18n._(`Set My Language`)}
+              onClick={nextStep}
+              disabled={isStepLoading}
+              isStepLoading={isStepLoading}
             />
           )}
 
@@ -78,6 +83,9 @@ const QuizQuestions = () => {
               message={i18n._(`Choose Site Language`)}
               subMessage={i18n._(`This is text you see on buttons and menus`)}
               imageUrl="/illustrations/ui-schema.png"
+              onClick={nextStep}
+              disabled={isStepLoading}
+              isStepLoading={isStepLoading}
             />
           )}
 
@@ -98,6 +106,9 @@ const QuizQuestions = () => {
                     <AboutYourselfList />
                   </Stack>
                 }
+                onClick={nextStep}
+                disabled={isStepLoading}
+                isStepLoading={isStepLoading}
               />
             </AuthWall>
           )}
@@ -151,6 +162,9 @@ const QuizQuestions = () => {
                     }}
                   ></Stack>
                 }
+                onClick={nextStep}
+                disabled={isStepLoading}
+                isStepLoading={isStepLoading}
               />
             </AuthWall>
           )}
@@ -191,6 +205,9 @@ const QuizQuestions = () => {
                     }}
                   ></Stack>
                 }
+                onClick={nextStep}
+                disabled={isStepLoading}
+                isStepLoading={isStepLoading}
               />
             </AuthWall>
           )}
@@ -231,6 +248,9 @@ const QuizQuestions = () => {
                     }}
                   ></Stack>
                 }
+                onClick={nextStep}
+                disabled={isStepLoading}
+                isStepLoading={isStepLoading}
               />
             </AuthWall>
           )}

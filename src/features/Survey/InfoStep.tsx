@@ -4,7 +4,7 @@ import { useWindowSizes } from "../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
 import { ReactNode } from "react";
 import { FooterButton } from "./FooterButton";
-import { NextStepButton } from "../Goal/Quiz/NextStepButton";
+import { ArrowRight } from "lucide-react";
 
 export const InfoStep = ({
   message,
@@ -16,16 +16,20 @@ export const InfoStep = ({
   actionButtonStartIcon,
   actionButtonEndIcon,
   aboveButtonComponent,
+  disabled,
+  isStepLoading,
 }: {
   message?: string;
   subMessage?: string;
   subComponent?: ReactNode;
   imageUrl: string;
   actionButtonTitle?: string;
-  onClick?: () => void;
+  onClick: () => void;
   actionButtonStartIcon?: ReactNode;
   actionButtonEndIcon?: ReactNode;
   aboveButtonComponent?: ReactNode;
+  disabled?: boolean;
+  isStepLoading?: boolean;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -89,17 +93,16 @@ export const InfoStep = ({
         </Stack>
       </Stack>
 
-      {onClick ? (
-        <FooterButton
-          onClick={onClick}
-          title={actionButtonTitle || i18n._("Next")}
-          endIcon={actionButtonEndIcon}
-          startIcon={actionButtonStartIcon}
-          aboveButtonComponent={aboveButtonComponent}
-        />
-      ) : (
-        <NextStepButton actionButtonTitle={actionButtonTitle} />
-      )}
+      <FooterButton
+        disabled={disabled}
+        onClick={() => {
+          !isStepLoading && onClick();
+        }}
+        startIcon={actionButtonStartIcon}
+        title={actionButtonTitle || i18n._("Next")}
+        aboveButtonComponent={aboveButtonComponent}
+        endIcon={actionButtonEndIcon || <ArrowRight />}
+      />
     </Stack>
   );
 };

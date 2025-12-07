@@ -5,7 +5,6 @@ import { InterviewCoreData, InterviewQuiz } from "../types";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { Stack } from "@mui/material";
 import { QuizProgressBar } from "@/features/Goal/Quiz/components/QuizProgressBar";
-import { useRouter } from "next/navigation";
 import { InfoStep } from "@/features/Survey/InfoStep";
 import { useLingui } from "@lingui/react";
 import { useInterviewQuiz } from "./hooks/useInterviewQuiz/useInterviewQuiz";
