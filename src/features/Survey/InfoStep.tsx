@@ -55,7 +55,7 @@ export const InfoStep = ({
             src={imageUrl}
             style={{
               width: "190px",
-              height: "190px",
+              height: "auto",
             }}
           />
         )}

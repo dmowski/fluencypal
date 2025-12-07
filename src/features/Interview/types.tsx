@@ -153,7 +153,7 @@ export interface InfoQuizStep {
   type: "info";
   id: string;
 
-  iconUrl?: string;
+  imageUrl?: string;
   title: string;
   subTitle: string;
   listItems?: QuizListItem[];

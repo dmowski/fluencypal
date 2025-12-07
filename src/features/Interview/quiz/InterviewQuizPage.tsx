@@ -51,7 +51,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
           <InfoStep
             message={quiz.currentStep?.title}
             subMessage={quiz.currentStep?.subTitle || ""}
-            imageUrl="/avatar/owl1.png"
+            imageUrl={quiz.currentStep?.imageUrl || "/avatar/owl1.png"}
             onClick={() => quiz.nextStep()}
             subComponent={
               <Stack

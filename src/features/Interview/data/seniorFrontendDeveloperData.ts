@@ -567,6 +567,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
         {
           type: "info",
           id: "intro-step",
+          imageUrl: "/interview/zero.png",
           title: i18n._("Welcome to your Senior Frontend Developer Interview Prep"),
           subTitle: i18n._(
             "In this session, you'll answer questions designed for senior frontend roles. After responses, you'll receive  feedback to help you refine your answers and improve your interview skills."
