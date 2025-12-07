@@ -37,11 +37,14 @@ export const useIsWebView = () => {
   const [isAndroid, setIsAndroid] = useState(false);
   const [agent, setAgent] = useState("");
   const [isTelegram, setIsTelegram] = useState(false);
+  const [isTelegramApp, setIsTelegramApp] = useState(false);
+  const [isTelegramAppMini, setIsTelegramAppMini] = useState(false);
 
   const [inWebView, setIsWebView] = useState(false);
   const [isTiktok, setIsTikTok] = useState(false);
 
   const initCheck = async () => {
+    const isTelegramAppMini = isTMA();
     const isTelegramApp = await isTMA("complete");
     const isTelegramData = getIsTelegram();
     const ua = navigator.userAgent.toLowerCase();
@@ -58,6 +61,8 @@ export const useIsWebView = () => {
 
     const isTiktokWebView = isTikTokWebView();
     const isTelegramWebView = isTelegramData.isTgAndroid || isTelegramData.isTgIos;
+    setIsTelegramApp(isTelegramApp);
+    setIsTelegramAppMini(isTelegramAppMini);
 
     //if (!isTelegramApp) {
     setIsWebView(isTelegramWebView || isInAppBrowser(ua) || isTiktokWebView);
@@ -80,5 +85,7 @@ export const useIsWebView = () => {
     inWebView,
     isTelegram,
     isTiktok,
+    isTelegramApp,
+    isTelegramAppMini,
   };
 };
