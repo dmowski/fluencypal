@@ -20,7 +20,6 @@ export interface InterviewQuizPageProps {
 
 export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuizPageProps) => {
   const quiz = useInterviewQuiz();
-
   const stepType = quiz.currentStep?.type;
 
   return (
@@ -47,19 +46,12 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
           width: "100%",
         }}
       >
-        {stepType === "info" && (
+        {stepType === "info" && quiz.currentStep && (
           <InfoStep
-            message={quiz.currentStep?.title}
-            subMessage={quiz.currentStep?.subTitle || ""}
-            imageUrl={quiz.currentStep?.imageUrl || "/avatar/owl1.png"}
+            message={quiz.currentStep.title}
+            subMessage={quiz.currentStep.subTitle || ""}
+            imageUrl={quiz.currentStep.imageUrl || "/avatar/owl1.png"}
             onClick={() => quiz.nextStep()}
-            subComponent={
-              <Stack
-                sx={{
-                  paddingTop: "20px",
-                }}
-              ></Stack>
-            }
           />
         )}
 
