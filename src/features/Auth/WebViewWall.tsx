@@ -168,6 +168,7 @@ export const WebViewWall = ({
             paddingTop: "60px",
           }}
         >
+          <p>isTelegram: {isTelegram ? "true" : "false"}</p>
           {mode === "general" && (
             <Typography align="center" variant="h6" component={"h1"}>
               {i18n._("AI speaking partner")}
