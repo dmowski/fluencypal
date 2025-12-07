@@ -104,7 +104,7 @@ export const InterviewAuthWall = ({ children }: { children: ReactNode }) => {
                       opacity: 0.7,
                     }}
                   >
-                    {<Trans>Your AI speaking partner</Trans>}
+                    {<Trans>Your job interview preparation partner</Trans>}
                   </Typography>
                 </Stack>
                 <Stack
@@ -117,7 +117,7 @@ export const InterviewAuthWall = ({ children }: { children: ReactNode }) => {
                   <IconTextList
                     listItems={[
                       {
-                        title: i18n._("Daily conversations without fear of judgment"),
+                        title: i18n._("Daily interview without fear of judgment"),
                         icon: Speech,
                       },
                       {
@@ -131,16 +131,11 @@ export const InterviewAuthWall = ({ children }: { children: ReactNode }) => {
                       },
 
                       {
-                        title: i18n._("Grammar corrections to boost your confidence"),
+                        title: i18n._("Hints to boost your confidence"),
                         icon: GraduationCap,
                       },
                       {
-                        title: i18n._("Learn useful words so you never go blank mid-sentence"),
-                        icon: BookType,
-                      },
-
-                      {
-                        title: i18n._("Practice real-life situations in advance"),
+                        title: i18n._("Practice STAR method answers"),
                         icon: UsersRound,
                       },
                     ]}
@@ -275,7 +270,7 @@ export const InterviewAuthWall = ({ children }: { children: ReactNode }) => {
                   <IconTextList
                     listItems={[
                       {
-                        title: i18n._("Credit card is required"),
+                        title: i18n._("Credit card is required for verification only"),
                         icon: Bird,
                       },
 
