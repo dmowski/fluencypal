@@ -8,6 +8,7 @@ import { QuizProgressBar } from "@/features/Goal/Quiz/components/QuizProgressBar
 import { InfoStep } from "@/features/Survey/InfoStep";
 import { useLingui } from "@lingui/react";
 import { useInterviewQuiz } from "./hooks/useInterviewQuiz/useInterviewQuiz";
+import { AuthWall } from "@/features/Auth/AuthWall";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;
@@ -18,6 +19,8 @@ export interface InterviewQuizPageProps {
 
 export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuizPageProps) => {
   const quiz = useInterviewQuiz();
+
+  const stepType = quiz.currentStep?.type;
 
   return (
     <Stack
@@ -43,19 +46,27 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
           width: "100%",
         }}
       >
-        <InfoStep
-          message={quiz.currentStep?.title}
-          subMessage={quiz.currentStep?.subTitle || ""}
-          imageUrl="/avatar/owl1.png"
-          onClick={() => quiz.nextStep()}
-          subComponent={
-            <Stack
-              sx={{
-                paddingTop: "20px",
-              }}
-            ></Stack>
-          }
-        />
+        {stepType === "info" && (
+          <InfoStep
+            message={quiz.currentStep?.title}
+            subMessage={quiz.currentStep?.subTitle || ""}
+            imageUrl="/avatar/owl1.png"
+            onClick={() => quiz.nextStep()}
+            subComponent={
+              <Stack
+                sx={{
+                  paddingTop: "20px",
+                }}
+              ></Stack>
+            }
+          />
+        )}
+
+        {stepType === "record-audio" && (
+          <AuthWall>
+            <span>Audio</span>
+          </AuthWall>
+        )}
       </Stack>
     </Stack>
   );
