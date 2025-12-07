@@ -59,9 +59,9 @@ export const useIsWebView = () => {
     const isTiktokWebView = isTikTokWebView();
     const isTelegramWebView = isTelegramData.isTgAndroid || isTelegramData.isTgIos;
 
-    if (!isTelegramApp) {
-      setIsWebView(isTelegramWebView || isInAppBrowser(ua) || isTiktokWebView);
-    }
+    //if (!isTelegramApp) {
+    setIsWebView(isTelegramWebView || isInAppBrowser(ua) || isTiktokWebView);
+    //}
 
     setIsTelegram(isTelegramWebView);
     setIsAndroid(isTelegramData.isTgAndroid || ua.includes("android"));
