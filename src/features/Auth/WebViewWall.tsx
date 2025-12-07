@@ -13,7 +13,7 @@ export const WebViewWall = ({
   children: ReactNode;
   mode?: "interview" | "general";
 }) => {
-  const { isAndroid, inWebView, isTelegram, isTelegramApp, isTelegramAppMini } = useIsWebView();
+  const { isAndroid, inWebView, isTelegram } = useIsWebView();
 
   const { i18n } = useLingui();
   const [isShowInstruction, setIsShowInstruction] = useState(false);
@@ -168,9 +168,6 @@ export const WebViewWall = ({
             paddingTop: "60px",
           }}
         >
-          <p>isTelegram: {isTelegram ? "true" : "false"}</p>
-          <p>isTelegramApp: {isTelegramApp ? "true" : "false"}</p>
-          <p>isTelegramAppMini: {isTelegramAppMini ? "true" : "false"}</p>
           {mode === "general" && (
             <Typography align="center" variant="h6" component={"h1"}>
               {i18n._("AI speaking partner")}
