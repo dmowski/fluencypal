@@ -6,7 +6,13 @@ import { ArrowUp, Check, Compass, Copy } from "lucide-react";
 import { ReactNode, useEffect, useState } from "react";
 import { useIsWebView } from "./useIsWebView";
 
-export const WebViewWall = ({ children }: { children: ReactNode }) => {
+export const WebViewWall = ({
+  children,
+  mode = "general",
+}: {
+  children: ReactNode;
+  mode?: "interview" | "general";
+}) => {
   const { isAndroid, inWebView, isTelegram } = useIsWebView();
 
   const { i18n } = useLingui();
@@ -162,9 +168,18 @@ export const WebViewWall = ({ children }: { children: ReactNode }) => {
             paddingTop: "60px",
           }}
         >
-          <Typography align="center" variant="h6" component={"h1"}>
-            {i18n._("AI speaking partner")}
-          </Typography>
+          {mode === "general" && (
+            <Typography align="center" variant="h6" component={"h1"}>
+              {i18n._("AI speaking partner")}
+            </Typography>
+          )}
+
+          {mode === "interview" && (
+            <Typography align="center" variant="h6" component={"h1"}>
+              {i18n._("Interview practice partner")}
+            </Typography>
+          )}
+
           <Typography align="center" variant="caption" sx={{ opacity: 0.7 }}>
             {i18n._("Let's choose how to start practicing")}
           </Typography>
@@ -176,17 +191,20 @@ export const WebViewWall = ({ children }: { children: ReactNode }) => {
             alignItems: "center",
           }}
         >
-          <Button
-            variant="outlined"
-            size="large"
-            startIcon={<Telegram />}
-            sx={{
-              minWidth: "200px",
-            }}
-            href="https://t.me/FluencyPalBot/app"
-          >
-            {i18n._("Open in Telegram")}
-          </Button>
+          {mode === "general" && (
+            <Button
+              variant="outlined"
+              size="large"
+              startIcon={<Telegram />}
+              sx={{
+                minWidth: "200px",
+              }}
+              href="https://t.me/FluencyPalBot/app"
+            >
+              {i18n._("Open in Telegram")}
+            </Button>
+          )}
+
           <Button
             variant="outlined"
             startIcon={<Compass strokeWidth={"0.1rem"} />}

@@ -24,7 +24,7 @@ export async function InterviewQuizPageNext({
 
   const content = (
     <PracticeProvider>
-      <WebViewWall>
+      <WebViewWall mode="interview">
         <InterviewQuizProvider
           coreData={interviewData.coreData}
           quiz={interviewData.quiz}
