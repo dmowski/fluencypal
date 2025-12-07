@@ -9,6 +9,7 @@ import { InfoStep } from "@/features/Survey/InfoStep";
 import { useLingui } from "@lingui/react";
 import { useInterviewQuiz } from "./hooks/useInterviewQuiz/useInterviewQuiz";
 import { AuthWall } from "@/features/Auth/AuthWall";
+import { InterviewAuthWall } from "@/features/Auth/InterviewAuthWall";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;
@@ -63,9 +64,9 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
         )}
 
         {stepType === "record-audio" && (
-          <AuthWall>
+          <InterviewAuthWall>
             <span>Audio</span>
-          </AuthWall>
+          </InterviewAuthWall>
         )}
       </Stack>
     </Stack>
