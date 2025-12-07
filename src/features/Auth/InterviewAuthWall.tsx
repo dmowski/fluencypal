@@ -43,6 +43,9 @@ export const InterviewAuthWall = ({ children }: { children: ReactNode }) => {
           icon: UsersRound,
         },
       ]}
+      featuresImageUrl="https://i.imgur.com/KJmVRrl.jpeg"
+      agreementImageUrl="https://cdn-useast1.kapwing.com/static/templates/epic-handshake-meme-template-regular-5ac4b47b.webp"
+      authImageUrl="https://cdn-icons-png.flaticon.com/512/8345/8345328.png"
       authTitle={<Trans>Let's create an account</Trans>}
       authSubTitle={<Trans>So you can keep your progress</Trans>}
       authList={[

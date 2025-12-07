@@ -18,6 +18,9 @@ interface AuthWallBasicProps {
   authTitle: ReactNode;
   authSubTitle: ReactNode;
   authList: ListItem[];
+  featuresImageUrl?: string;
+  agreementImageUrl?: string;
+  authImageUrl?: string;
 }
 
 export const AuthWallBasic = ({
@@ -28,6 +31,9 @@ export const AuthWallBasic = ({
   authTitle,
   authSubTitle,
   authList,
+  featuresImageUrl,
+  agreementImageUrl,
+  authImageUrl,
 }: AuthWallBasicProps) => {
   const auth = useAuth();
   const { i18n } = useLingui();
@@ -82,7 +88,7 @@ export const AuthWallBasic = ({
       >
         {step === "features" && (
           <InfoStep
-            imageUrl="/avatar/bot2.webp"
+            imageUrl={featuresImageUrl || "/avatar/bot2.webp"}
             actionButtonTitle={i18n._("Next")}
             subComponent={
               <Stack
@@ -131,7 +137,7 @@ export const AuthWallBasic = ({
           <InfoStep
             actionButtonTitle={i18n._("I agree")}
             actionButtonEndIcon={<Check />}
-            imageUrl="/avatar/bot1.png"
+            imageUrl={agreementImageUrl || "/avatar/bot1.png"}
             subComponent={
               <Stack
                 sx={{
@@ -206,7 +212,7 @@ export const AuthWallBasic = ({
 
         {step === "auth" && (
           <InfoStep
-            imageUrl="/avatar/map.webp"
+            imageUrl={authImageUrl || "/avatar/map.webp"}
             actionButtonTitle={i18n._("Sign in with Google")}
             actionButtonStartIcon={<Google />}
             subComponent={
