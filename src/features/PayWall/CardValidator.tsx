@@ -277,8 +277,6 @@ export const CardValidatorQuiz = ({
 
   if (isCreditCardConfirmed || isLoadingSettings) return <></>;
 
-  const createdAtIso = settings.userSettings?.createdAtIso;
-
   return (
     <Stack
       sx={{
