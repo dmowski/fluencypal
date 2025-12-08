@@ -275,7 +275,7 @@ export const CardValidatorQuiz = ({
     if (isCreditCardConfirmed && isVerificationStarted) {
       setTimeout(() => {
         onNextStep();
-      }, 500);
+      }, 100);
     }
   }, [isCreditCardConfirmed]);
 
