@@ -11,6 +11,7 @@ import { AuthWall } from "@/features/Auth/AuthWall";
 import { RecordUserAudio } from "@/features/Goal/Quiz/RecordUserAudio";
 import { MIN_CHARACTERS_FOR_TRANSCRIPT } from "./hooks/useInterviewQuiz/data";
 import { IconTextList } from "@/features/Survey/IconTextList";
+import { CardValidator, CardValidatorQuiz } from "@/features/PayWall/CardValidator";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;
@@ -76,6 +77,12 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
                 );
               }}
             />
+          </AuthWall>
+        )}
+
+        {stepType === "paywall" && quiz.currentStep && survey && (
+          <AuthWall>
+            <CardValidatorQuiz lang={lang} onConfirmed={quiz.nextStep} />
           </AuthWall>
         )}
       </Stack>

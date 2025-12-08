@@ -239,3 +239,119 @@ export const CardValidator = ({ lang }: { lang: SupportedLanguage }) => {
     </CustomModal>
   );
 };
+
+export const CardValidatorQuiz = ({
+  lang,
+  onConfirmed,
+}: {
+  lang: SupportedLanguage;
+  onConfirmed: () => void;
+}) => {
+  const { i18n } = useLingui();
+  const settings = useSettings();
+  const auth = useAuth();
+  const isLoadingSettings = settings.loading;
+  const isCreditCardConfirmed = settings.userSettings?.isCreditCardConfirmed;
+  const [isShowForm, setIsShowForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
+
+  const onStartValidation = async () => {
+    setIsLoading(true);
+    try {
+      const authToken = await auth.getToken();
+      const { clientSecret } = await createSetupIntentRequest({}, authToken);
+      setClientSecret(clientSecret);
+      setIsShowForm(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (isCreditCardConfirmed) {
+      setTimeout(() => {
+        onConfirmed();
+      }, 500);
+    }
+  }, [isCreditCardConfirmed]);
+
+  if (isCreditCardConfirmed || isLoadingSettings) return <></>;
+
+  const createdAtIso = settings.userSettings?.createdAtIso;
+
+  return (
+    <Stack
+      sx={{
+        alignItems: "center",
+        width: "100%",
+      }}
+    >
+      <Stack
+        sx={{
+          maxWidth: "720px",
+          width: "100%",
+          alignItems: "flex-start",
+          gap: "30px",
+          padding: "20px 20px",
+        }}
+      >
+        {isLoading && <CircularProgress />}
+        {isShowForm && clientSecret && <VerifyCard lang={lang} clientSecret={clientSecret} />}
+        {!isShowForm && !isLoading && (
+          <>
+            <Stack
+              sx={{
+                gap: "25px",
+              }}
+            >
+              <Stack>
+                <Typography variant="h3">{i18n._("Credit Card Check")}</Typography>
+                <Typography variant="body2">
+                  {i18n._("Please confirm your credit card to access all features.")}
+                </Typography>
+              </Stack>
+              <Stack>
+                <IconTextList
+                  gap="10px"
+                  listItems={[
+                    {
+                      icon: Sparkles,
+                      title: i18n._("You will get 1 day of full access for free"),
+                    },
+                    {
+                      icon: PiggyBank,
+                      title: i18n._("No automatic payment after the trial"),
+                    },
+                    {
+                      icon: ShieldCheck,
+                      title: i18n._("No charge will be made"),
+                    },
+                  ]}
+                />
+              </Stack>
+            </Stack>
+
+            <Stack
+              sx={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "15px",
+                flexWrap: "wrap",
+              }}
+            >
+              <Button
+                variant="contained"
+                size="large"
+                color="info"
+                startIcon={<CreditCard />}
+                onClick={() => onStartValidation()}
+              >
+                {i18n._("Confirm Credit Card")}
+              </Button>
+            </Stack>
+          </>
+        )}
+      </Stack>
+    </Stack>
+  );
+};
