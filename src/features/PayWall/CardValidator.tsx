@@ -16,6 +16,7 @@ import { isTMA } from "@telegram-apps/sdk-react";
 import { stripeLocaleMap, SupportedLanguage } from "../Lang/lang";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useAnalytics } from "../Analytics/useAnalytics";
+import { InfoStep } from "../Survey/InfoStep";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 function SetupForm({ clientSecret }: { clientSecret: string }) {
@@ -242,10 +243,10 @@ export const CardValidator = ({ lang }: { lang: SupportedLanguage }) => {
 
 export const CardValidatorQuiz = ({
   lang,
-  onConfirmed,
+  onNextStep,
 }: {
   lang: SupportedLanguage;
-  onConfirmed: () => void;
+  onNextStep: () => void;
 }) => {
   const { i18n } = useLingui();
   const settings = useSettings();
@@ -255,9 +256,11 @@ export const CardValidatorQuiz = ({
   const [isShowForm, setIsShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [isVerificationStarted, setIsVerificationStarted] = useState(false);
 
   const onStartValidation = async () => {
     setIsLoading(true);
+    setIsVerificationStarted(true);
     try {
       const authToken = await auth.getToken();
       const { clientSecret } = await createSetupIntentRequest({}, authToken);
@@ -267,15 +270,28 @@ export const CardValidatorQuiz = ({
       setIsLoading(false);
     }
   };
+
   useEffect(() => {
-    if (isCreditCardConfirmed) {
+    if (isCreditCardConfirmed && isVerificationStarted) {
       setTimeout(() => {
-        onConfirmed();
+        onNextStep();
       }, 500);
     }
   }, [isCreditCardConfirmed]);
 
-  if (isCreditCardConfirmed || isLoadingSettings) return <></>;
+  if (isLoadingSettings) return null;
+
+  if (isCreditCardConfirmed)
+    return (
+      <InfoStep
+        message={i18n._("Credit Card Already Confirmed")}
+        subMessage={i18n._(
+          "Your credit card has already been confirmed. You can proceed to the next step."
+        )}
+        imageUrl={"/avatar/owl1.png"}
+        onClick={() => onNextStep()}
+      />
+    );
 
   return (
     <Stack

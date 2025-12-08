@@ -80,9 +80,20 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
           </AuthWall>
         )}
 
+        {stepType === "analyze-inputs" && quiz.currentStep && survey && (
+          <AuthWall>
+            <InfoStep
+              message={quiz.currentStep.title}
+              subMessage={quiz.currentStep.subTitle || ""}
+              imageUrl={"/avatar/owl1.png"}
+              onClick={() => quiz.nextStep()}
+            />
+          </AuthWall>
+        )}
+
         {stepType === "paywall" && quiz.currentStep && survey && (
           <AuthWall>
-            <CardValidatorQuiz lang={lang} onConfirmed={quiz.nextStep} />
+            <CardValidatorQuiz lang={lang} onNextStep={quiz.nextStep} />
           </AuthWall>
         )}
       </Stack>
