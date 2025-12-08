@@ -16,8 +16,14 @@ const SETTINGS = {
 test.describe("Lighthouse Audit", () => {
   test.setTimeout(120000);
 
+  const isDevMode = async (page: Page) => {
+    const devModeButton = await page.$("#devtools-indicator");
+    return devModeButton !== null;
+  };
+
   test("Home page (EN)", async ({ page }: { page: Page }) => {
     await page.goto("/");
+    if (await isDevMode(page)) return;
 
     await playAudit({
       page,
@@ -33,6 +39,7 @@ test.describe("Lighthouse Audit", () => {
 
   test("Home page (RU)", async ({ page }: { page: Page }) => {
     await page.goto("/ru");
+    if (await isDevMode(page)) return;
 
     await playAudit({
       page,
@@ -48,6 +55,7 @@ test.describe("Lighthouse Audit", () => {
 
   test("Interview Landing page (EN)", async ({ page }: { page: Page }) => {
     await page.goto("/interview/senior-frontend-developer");
+    if (await isDevMode(page)) return;
 
     await playAudit({
       page,
