@@ -9,17 +9,22 @@ import { useTranslate } from "@/features/Translation/useTranslate";
 import { QuizSurvey2FollowUpQuestion } from "./types";
 import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 import { RecordUserAudio } from "./RecordUserAudio";
+import { SupportedLanguage } from "@/features/Lang/lang";
 
 export const RecordAboutFollowUp = ({
   question,
   transcript,
   updateTranscript,
   loading,
+  lang,
+  nextStep,
 }: {
   question: QuizSurvey2FollowUpQuestion | null;
   transcript: string;
   updateTranscript: (transcript: string) => Promise<void>;
   loading: boolean;
+  lang: SupportedLanguage;
+  nextStep: () => void;
 }) => {
   const { i18n } = useLingui();
   const translation = useTranslate();
@@ -29,6 +34,8 @@ export const RecordAboutFollowUp = ({
       title={loading ? i18n._("Loading...") : question?.title || i18n._("Loading...")}
       isLoading={!question?.title || loading}
       subTitle={question?.subtitle || ""}
+      lang={lang}
+      nextStep={nextStep}
       subTitleComponent={
         <>
           {question?.title && !loading ? (

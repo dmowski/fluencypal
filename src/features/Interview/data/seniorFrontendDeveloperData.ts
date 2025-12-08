@@ -583,7 +583,14 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
             "Tell us about your background, experience, and what makes you a great Senior Frontend Developer."
           ),
           buttonTitle: i18n._("Record Answer"),
-          listItems: [],
+          listItems: [
+            {
+              title: i18n._("Highlight your frontend experience"),
+              iconName: "check",
+            },
+            { title: i18n._("Mention key projects or achievements"), iconName: "check" },
+            { title: i18n._("Keep it concise and relevant"), iconName: "check" },
+          ],
         },
         // * RecordAudioQuizStep - Ask another question and record audio (Technical question)
         {

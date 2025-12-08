@@ -3,6 +3,7 @@ import { Price } from "./Landing/components/PriceCards";
 import { Review } from "./Landing/components/ReviewCards";
 import { ScorePreview } from "./Landing/components/ScorePreviewSection";
 import { StepInfoCard } from "./Landing/components/StepsInfoCards";
+import { IconName } from "lucide-react/dynamic";
 
 export interface InterviewCategory {
   categoryId: string;
@@ -144,8 +145,8 @@ type Section =
   | DemoSnippetSection;
 
 export interface QuizListItem {
-  label: string;
-  icon: string;
+  title: string;
+  iconName: IconName;
 }
 
 /** Basic info to inform the user about the next step and general info */
@@ -261,17 +262,15 @@ export interface InterviewData {
   quiz: InterviewQuiz;
 }
 
-export type InterviewQuizSurvey = {
-  // StepId: data
-  answers: Record<
-    string,
-    {
-      stepId: string;
+export interface InterviewQuizAnswer {
+  stepId: string;
+  question: string;
+  answerTranscription: string;
+}
 
-      question: string;
-      answerTranscription: string;
-    }
-  >;
+export type InterviewQuizSurvey = {
+  // stepId: data
+  answers: Record<string, InterviewQuizAnswer | undefined>;
   updatedAtIso: string;
   createdAtIso: string;
 };

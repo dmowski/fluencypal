@@ -132,6 +132,8 @@ const QuizQuestions = () => {
                 subTitleComponent={<AboutYourselfList />}
                 transcript={survey?.aboutUserTranscription || ""}
                 minWords={MIN_WORDS_FOR_ANSWER}
+                lang={languageToLearn || "en"}
+                nextStep={nextStep}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;
@@ -175,6 +177,8 @@ const QuizQuestions = () => {
                 question={survey?.aboutUserFollowUpQuestion || null}
                 transcript={survey?.aboutUserFollowUpTranscription || ""}
                 loading={isFollowUpGenerating}
+                lang={languageToLearn || "en"}
+                nextStep={nextStep}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;
@@ -218,6 +222,8 @@ const QuizQuestions = () => {
                 question={survey?.goalFollowUpQuestion || null}
                 transcript={survey?.goalUserTranscription || ""}
                 loading={isGoalQuestionGenerating}
+                lang={languageToLearn || "en"}
+                nextStep={nextStep}
                 updateTranscript={async (combinedTranscript) => {
                   if (!survey) {
                     return;

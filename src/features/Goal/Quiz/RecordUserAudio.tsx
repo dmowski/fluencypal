@@ -3,13 +3,13 @@
 import { Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { ArrowRight, Check, Mic } from "lucide-react";
-import { useQuiz } from "./useQuiz";
 import { ReactNode, useEffect } from "react";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useAuth } from "@/features/Auth/useAuth";
 import { getWordsCount } from "@/libs/words";
 import { FooterButton } from "../../Survey/FooterButton";
 import { RecordUserAudioAnswer } from "../../Survey/RecordUserAudioAnswer";
+import { SupportedLanguage } from "@/features/Lang/lang";
 
 export const RecordUserAudio = ({
   transcript,
@@ -19,6 +19,8 @@ export const RecordUserAudio = ({
   subTitle,
   subTitleComponent,
   isLoading,
+  lang,
+  nextStep,
 }: {
   transcript: string;
   minWords: number;
@@ -27,14 +29,13 @@ export const RecordUserAudio = ({
   subTitle: string | ReactNode;
   subTitleComponent: ReactNode;
   isLoading?: boolean;
+  lang: SupportedLanguage;
+  nextStep: () => void;
 }) => {
   const { i18n } = useLingui();
-  const { languageToLearn, nextStep } = useQuiz();
-
   const auth = useAuth();
-
   const recorder = useAudioRecorder({
-    languageCode: languageToLearn || "en",
+    languageCode: lang,
     getAuthToken: auth.getToken,
     isFree: false,
     isGame: false,

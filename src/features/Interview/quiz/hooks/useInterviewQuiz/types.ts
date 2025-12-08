@@ -25,6 +25,10 @@ export interface InterviewQuizContextType {
   isFirstLoading: boolean;
   survey: InterviewQuizSurvey | null;
   updateSurvey: (surveyDoc: InterviewQuizSurvey, label: string) => Promise<InterviewQuizSurvey>;
+  updateAnswerTranscription: (
+    stepId: string,
+    answerTranscription: string
+  ) => Promise<InterviewQuizSurvey>;
 }
 
 export interface InterviewQuizProps {

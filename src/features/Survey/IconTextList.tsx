@@ -2,14 +2,19 @@
 import { Link, Stack, Typography } from "@mui/material";
 import { LucideProps } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
+import { DynamicIcon, IconName } from "lucide-react/dynamic";
 
 export interface ListItem {
   title: string;
-  icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+  icon?: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+  iconName?: IconName;
   href?: string;
 }
 
 export const IconTextList = ({ listItems, gap }: { listItems: ListItem[]; gap?: string }) => {
+  if (listItems.length === 0) {
+    return null;
+  }
   return (
     <Stack
       sx={{
@@ -17,32 +22,37 @@ export const IconTextList = ({ listItems, gap }: { listItems: ListItem[]; gap?: 
         width: "100%",
       }}
     >
-      {listItems.map((item, index) => (
-        <Stack
-          key={index}
-          sx={{
-            flexDirection: "row",
-            gap: "15px",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <item.icon
-            style={{
-              opacity: 0.7,
+      {listItems.map((item, index) => {
+        const iconStyle = {
+          opacity: 0.7,
+        };
+
+        const iconSize = 18;
+        return (
+          <Stack
+            key={index}
+            sx={{
+              flexDirection: "row",
+              gap: "15px",
+              alignItems: "center",
+              width: "100%",
             }}
-            size={18}
-          />
-          <Typography
-            variant="body2"
-            target={item.href ? "_blank" : undefined}
-            component={item.href ? Link : "div"}
-            href={item.href}
           >
-            {item.title}
-          </Typography>
-        </Stack>
-      ))}
+            {item.iconName && (
+              <DynamicIcon name={item.iconName} size={iconSize} style={iconStyle} />
+            )}
+            {item.icon && <item.icon style={iconStyle} size={iconSize} />}
+            <Typography
+              variant="body2"
+              target={item.href ? "_blank" : undefined}
+              component={item.href ? Link : "div"}
+              href={item.href}
+            >
+              {item.title}
+            </Typography>
+          </Stack>
+        );
+      })}
     </Stack>
   );
 };
