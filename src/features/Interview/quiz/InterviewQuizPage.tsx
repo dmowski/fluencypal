@@ -75,13 +75,13 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
           />
         )}
 
-        {stepType === "record-audio" && quiz.currentStep && survey && (
+        {stepType === "record-audio" && quiz.currentStep && (
           <AuthWall>
             <RecordUserAudio
               title={quiz.currentStep.title}
               subTitle={quiz.currentStep.subTitle}
               subTitleComponent={<IconTextList listItems={quiz.currentStep.listItems || []} />}
-              transcript={survey.answers[quiz.currentStep.id]?.answerTranscription || ""}
+              transcript={survey?.answers[quiz.currentStep.id]?.answerTranscription || ""}
               minWords={MIN_CHARACTERS_FOR_TRANSCRIPT}
               lang={lang}
               nextStep={quiz.nextStep}
@@ -95,7 +95,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
           </AuthWall>
         )}
 
-        {stepType === "analyze-inputs" && quiz.currentStep && survey && (
+        {stepType === "analyze-inputs" && quiz.currentStep && (
           <AuthWall>
             <InfoStep
               message={quiz.currentStep.title}
@@ -146,13 +146,13 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
           </AuthWall>
         )}
 
-        {stepType === "paywall" && quiz.currentStep && survey && (
+        {stepType === "paywall" && quiz.currentStep && (
           <AuthWall>
             <CardValidatorQuiz lang={lang} onNextStep={quiz.nextStep} />
           </AuthWall>
         )}
 
-        {stepType === "waitlist-done" && quiz.currentStep && survey && (
+        {stepType === "waitlist-done" && quiz.currentStep && (
           <InfoStep
             message={quiz.currentStep.title}
             subMessage={quiz.currentStep.subTitle || ""}
@@ -172,6 +172,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
                     color: "#ef5350",
                   }}
                   endIcon={<Trash size={"17px"} />}
+                  onClick={() => deleteAccount.onDeleteAccount()}
                 >
                   {deleteAccount.isDeletingAccount
                     ? i18n._("Removing your data from the waitlist...")

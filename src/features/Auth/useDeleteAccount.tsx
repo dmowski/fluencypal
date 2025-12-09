@@ -71,8 +71,8 @@ export const useDeleteAccount = ({
       await deleteCollectionDocs(`users/${userId}/goals`);
       await deleteCollectionDocs(`users/${userId}/quiz2`);
       await deleteCollectionDocs(`users/${userId}/interview`);
-
       await setDoc(userSettingsDoc, { languageCode: null }, { merge: true });
+
       notifications.show(
         i18n._(`Your account has been successfully deleted. We are sorry to see you go!`),
         {
