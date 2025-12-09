@@ -14,19 +14,8 @@ import {
 } from "../../../types";
 import { useQuizSurveyData } from "../useQuizSurveyData";
 import { useEffect, useState } from "react";
-import { fnv1aHash } from "@/libs/hash";
-
-const getHash = (input: string) => {
-  if (!input) return "";
-  return fnv1aHash(input);
-};
-
-const initEmptyData: InterviewQuizSurvey = {
-  answers: {},
-  results: {},
-  createdAtIso: new Date().toISOString(),
-  updatedAtIso: new Date().toISOString(),
-};
+import { initEmptyData } from "./data";
+import { getHash } from "./hash";
 
 export function useProvideInterviewQuizContext({
   coreData,
