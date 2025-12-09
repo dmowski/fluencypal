@@ -584,6 +584,11 @@ msgstr "분석"
 msgid "Analyzing"
 msgstr "분석 중"
 
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:130
+#. js-lingui-explicit-id
+msgid "Analyzing your inputs..."
+msgstr "입력을 분석 중입니다..."
+
 #: src/features/Conversation/ConversationCanvas2.tsx:454
 #: src/features/Conversation/ConversationCanvas2.tsx:461
 #: src/features/Conversation/ConversationCanvas2.tsx:468
@@ -644,8 +649,8 @@ msgstr "아랍어 학습 계획"
 msgid "Architecture & Design"
 msgstr "건축 및 디자인"
 
-#: src/features/Header/NeedHelpModal.tsx:69
-#: src/features/Header/NeedHelpModal.tsx:212
+#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
 msgstr "정말로 계정을 삭제하시겠습니까?"
@@ -941,7 +946,7 @@ msgstr "연습 세션을 맞춤 설정할 수 있나요?"
 msgid "Can I practice languages other than English?"
 msgstr "다른 언어도 연습할 수 있나요?"
 
-#: src/features/Header/NeedHelpModal.tsx:251
+#: src/features/Header/NeedHelpModal.tsx:169
 #: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
 msgid "Cancel"
@@ -964,7 +969,7 @@ msgid ""
 "clearly in interviews"
 msgstr "기본은 알고 있지만 면접에서 결정을 명확하게 설명하는 데 어려움을 겪는 지원자"
 
-#: src/features/PayWall/CardValidator.tsx:80
+#: src/features/PayWall/CardValidator.tsx:81
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "카드가 확인되었습니다. 불러오는 중..."
@@ -1076,7 +1081,7 @@ msgid "Choose Your Language Level"
 msgstr "당신의 언어 레벨을 선택하세요"
 
 #: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:265
+#: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
 #. js-lingui-explicit-id
@@ -1103,7 +1108,7 @@ msgstr "커뮤니케이션 & 리더십"
 msgid "Company"
 msgstr "회사"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:653
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:668
 #. js-lingui-explicit-id
 msgid "Complete AI Feedback on Your Answers"
 msgstr "귀하의 답변에 대한 완전한 AI 피드백"
@@ -1129,8 +1134,8 @@ msgstr "신뢰 점수 추적"
 msgid "Confident Communication"
 msgstr "자신감 있는 커뮤니케이션"
 
-#: src/features/PayWall/CardValidator.tsx:232
-#: src/features/PayWall/CardValidator.tsx:347
+#: src/features/PayWall/CardValidator.tsx:233
+#: src/features/PayWall/CardValidator.tsx:363
 #. js-lingui-explicit-id
 msgid "Confirm Credit Card"
 msgstr "신용 카드 확인"
@@ -1187,7 +1192,7 @@ msgstr "연락주세요"
 msgid "Contacts"
 msgstr "연락처"
 
-#: src/features/Header/NeedHelpModal.tsx:152
+#: src/features/Header/NeedHelpModal.tsx:68
 #: src/features/Landing/Price/PricePage.tsx:390
 #. js-lingui-explicit-id
 msgid "Contacts:"
@@ -1199,8 +1204,8 @@ msgstr "연락처:"
 #: src/features/Goal/GoalQuestions.tsx:821
 #: src/features/Goal/GoalQuestions.tsx:860
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:623
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:637
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:655
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:652
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:670
 #: src/features/Plan/PlanCard.tsx:284
 #: src/features/Usage/SubscriptionPaymentModal.tsx:595
 #. js-lingui-explicit-id
@@ -1212,7 +1217,7 @@ msgstr "계속"
 msgid "Continue conversation"
 msgstr "대화 계속하기"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:666
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -1380,8 +1385,13 @@ msgstr "당신만의 역할극 시나리오 만들기"
 msgid "Create Your Own Scenario"
 msgstr "자신만의 시나리오 만들기"
 
-#: src/features/PayWall/CardValidator.tsx:191
-#: src/features/PayWall/CardValidator.tsx:306
+#: src/features/PayWall/CardValidator.tsx:287
+#. js-lingui-explicit-id
+msgid "Credit Card Already Confirmed"
+msgstr "신용카드가 이미 확인되었습니다"
+
+#: src/features/PayWall/CardValidator.tsx:192
+#: src/features/PayWall/CardValidator.tsx:322
 #. js-lingui-explicit-id
 msgid "Credit Card Check"
 msgstr "신용카드 확인"
@@ -1475,12 +1485,12 @@ msgstr "덴마크어 학습 계획"
 msgid "Deep skill development"
 msgstr "심층 기술 개발"
 
-#: src/features/Header/NeedHelpModal.tsx:279
+#: src/features/Header/NeedHelpModal.tsx:195
 #. js-lingui-explicit-id
 msgid "Delete account"
 msgstr "계정 삭제"
 
-#: src/features/Header/NeedHelpModal.tsx:278
+#: src/features/Header/NeedHelpModal.tsx:194
 #. js-lingui-explicit-id
 msgid "Delete account (Total)"
 msgstr "계정 삭제 (전체)"
@@ -1490,8 +1500,8 @@ msgstr "계정 삭제 (전체)"
 msgid "Delete current goal"
 msgstr "현재 목표 삭제"
 
-#: src/features/Header/NeedHelpModal.tsx:241
-#: src/features/Header/NeedHelpModal.tsx:276
+#: src/features/Header/NeedHelpModal.tsx:158
+#: src/features/Header/NeedHelpModal.tsx:192
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "삭제 중..."
@@ -1576,6 +1586,11 @@ msgstr "경험이 풍부한 프론트엔드 엔지니어를 위해 특별히 설
 #. js-lingui-explicit-id
 msgid "Desired Job Title"
 msgstr "원하는 직무 제목"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:640
+#. js-lingui-explicit-id
+msgid "Detailed score breakdown"
+msgstr "세부 점수 내역"
 
 #: src/features/Landing/PlanLandingBlock.tsx:271
 #. js-lingui-explicit-id
@@ -2189,6 +2204,11 @@ msgstr "무료 버전의 모든 기능에 더하여:"
 msgid "Everything you need to stand out and get the job"
 msgstr "눈에 띄고 직장을 얻기 위해 필요한 모든 것"
 
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:644
+#. js-lingui-explicit-id
+msgid "Example answers for improvement"
+msgstr "개선 사항 예시 답변"
+
 #: src/features/Blog/blogData.tsx:25
 #. js-lingui-explicit-id
 msgid "existential fiction"
@@ -2252,7 +2272,7 @@ msgstr "텍스트 복사에 실패했습니다. 수동으로 복사해 주세요
 msgid "Failed to copy text. Please try again."
 msgstr "텍스트 복사에 실패했습니다. 다시 시도해 주세요."
 
-#: src/features/Header/NeedHelpModal.tsx:96
+#: src/features/Auth/useDeleteAccount.tsx:89
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2309,7 +2329,7 @@ msgstr "결정 마무리 중 ..."
 msgid "Finally"
 msgstr "마침내"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:669
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "완료"
@@ -2364,7 +2384,7 @@ msgstr ""
 "FluencyPal은 세 가지 모드를 제공합니다: 중단 없는 말하기 연습을 위한 캐주얼 대화, 즉각적인 문법 및 발음 피드백을 위한 "
 "토크 & 교정, 그리고 느린 안내 대화를 위한 초보자 모드입니다."
 
-#: src/features/PayWall/CardValidator.tsx:68
+#: src/features/PayWall/CardValidator.tsx:69
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal will not charge your card. A small temporary authorization hold "
@@ -2893,7 +2913,7 @@ msgstr "다음은 당신이 대화에서 가장 많이 사용한 단어들입니
 msgid "Here's personalized feedback on your responses to help you improve."
 msgstr "여기 당신의 답변을 개선하는 데 도움이 될 맞춤형 피드백이 있습니다."
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:654
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:669
 #. js-lingui-explicit-id
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "개선을 돕기 위한 나머지 맞춤형 피드백을 제공합니다."
@@ -2963,15 +2983,15 @@ msgstr "AI 피드백은 어떻게 작동하나요?"
 msgid "How It Works"
 msgstr "작동 원리"
 
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:25
-#. js-lingui-explicit-id
-msgid "How it works"
-msgstr "작동 방식"
-
 #: src/features/Interview/Landing/components/Footer.tsx:111
 #. js-lingui-explicit-id
 msgid "How it Works"
 msgstr "작동 원리"
+
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:25
+#. js-lingui-explicit-id
+msgid "How it works"
+msgstr "작동 방식"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
 #. js-lingui-explicit-id
@@ -3457,7 +3477,7 @@ msgstr ""
 msgid "If you don’t understand a question, don’t panic — ask politely:"
 msgstr "질문을 이해하지 못해도 긴장하지 마세요 — 공손하게 물어보세요:"
 
-#: src/features/Header/NeedHelpModal.tsx:220
+#: src/features/Header/NeedHelpModal.tsx:136
 #. js-lingui-explicit-id
 msgid ""
 "If you want to remove all information, including your balance, please "
@@ -4307,7 +4327,7 @@ msgstr "학습 계획"
 msgid "Leave your message"
 msgstr "당신의 메시지를 남겨주세요"
 
-#: src/features/Header/NeedHelpModal.tsx:168
+#: src/features/Header/NeedHelpModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Legal:"
 msgstr "법적 사항:"
@@ -4638,7 +4658,7 @@ msgstr ""
 "있습니다. 저는 사람들이 재미있고 인터렉티브한 방식으로 언어를 배우고, 효과적으로 취업 면접을 준비할 수 있도록 이 웹사이트를 "
 "만들었습니다. 즐겁게 사용하시길 바랍니다!"
 
-#: src/features/Header/NeedHelpModal.tsx:128
+#: src/features/Header/NeedHelpModal.tsx:44
 #. js-lingui-explicit-id
 msgid ""
 "My name is Alex. I am the founder of this project. You will find my "
@@ -4671,7 +4691,7 @@ msgstr "모국어"
 msgid "natural and not robotic"
 msgstr "자연스럽고 로봇처럼 느껴지지 않음"
 
-#: src/features/Header/NeedHelpModal.tsx:120
+#: src/features/Header/NeedHelpModal.tsx:36
 #: src/features/Settings/MyProfile.tsx:92
 #: src/features/Usage/SubscriptionPaymentModal.tsx:802
 #. js-lingui-explicit-id
@@ -4787,8 +4807,8 @@ msgstr "아니요"
 msgid "No ads, no spam"
 msgstr "광고 없음, 스팸 없음"
 
-#: src/features/PayWall/CardValidator.tsx:206
-#: src/features/PayWall/CardValidator.tsx:321
+#: src/features/PayWall/CardValidator.tsx:207
+#: src/features/PayWall/CardValidator.tsx:337
 #. js-lingui-explicit-id
 msgid "No automatic payment after the trial"
 msgstr "시험 기간 후 자동 결제 없음"
@@ -4798,8 +4818,8 @@ msgstr "시험 기간 후 자동 결제 없음"
 msgid "No blogs found"
 msgstr "블로그를 찾을 수 없습니다"
 
-#: src/features/PayWall/CardValidator.tsx:210
-#: src/features/PayWall/CardValidator.tsx:325
+#: src/features/PayWall/CardValidator.tsx:211
+#: src/features/PayWall/CardValidator.tsx:341
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "결제가 발생하지 않습니다"
@@ -4830,7 +4850,7 @@ msgstr "아직 숙제가 부여되지 않았습니다."
 msgid "No interviews found"
 msgstr "인터뷰가 없습니다"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:645
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:660
 #. js-lingui-explicit-id
 msgid "No payment required after trial. You decide when to pay."
 msgstr "시험 사용 후 결제가 필요하지 않습니다. 결제 시점은 사용자가 결정합니다."
@@ -4946,9 +4966,9 @@ msgstr "알겠습니다"
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:634
 #. js-lingui-explicit-id
 msgid ""
-"On the next step, you'll receive a comprehensive score analysis of your "
-"interview performance."
-msgstr "다음 단계에서는 인터뷰 성과에 대한 종합적인 점수 분석을 받게 됩니다."
+"On the next step, you'll receive a score analysis of your answers and "
+"example answers to help you improve."
+msgstr "다음 단계에서, 귀하의 답변에 대한 점수 분석과 개선에 도움이 될 수 있는 예시 답변을 받게 됩니다."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
 #. js-lingui-explicit-id
@@ -5244,8 +5264,8 @@ msgstr "게임을 플레이하세요"
 msgid "Play the role"
 msgstr "역할을 수행하세요"
 
-#: src/features/PayWall/CardValidator.tsx:193
-#: src/features/PayWall/CardValidator.tsx:308
+#: src/features/PayWall/CardValidator.tsx:194
+#: src/features/PayWall/CardValidator.tsx:324
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
 msgstr "모든 기능에 액세스하려면 신용카드를 확인해 주세요."
@@ -5579,7 +5599,7 @@ msgstr "개인정보 보호정책"
 #: src/features/Auth/AuthWallBasic.tsx:195
 #: src/features/Auth/InterviewAuthWall.tsx:61
 #: src/features/Goal/GoalQuestions.tsx:65
-#: src/features/Header/NeedHelpModal.tsx:194
+#: src/features/Header/NeedHelpModal.tsx:110
 #: src/features/Interview/Landing/components/Footer.tsx:131
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
@@ -5654,7 +5674,6 @@ msgid "Progress tracking"
 msgstr "진행 상황 추적"
 
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:656
 #. js-lingui-explicit-id
 msgid ""
 "Provide detailed feedback on the user's answers, focusing on technical "
@@ -5663,6 +5682,52 @@ msgid ""
 msgstr ""
 "사용자의 답변에 대해 기술적 깊이, 명확성 및 구조에 중점을 두고 상세한 피드백을 제공합니다. 각 답변에 대한 구체적인 개선 사항을 "
 "제안하십시오."
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+msgid ""
+"Provide score breakdown on the user's answers, focusing on technical depth, "
+"clarity, and structure. Return improved answers. And give hints on how to "
+"answer such questions better. For each answer break down the score into "
+"Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+"Communication (0%-100%). Structure of your answer:\n"
+"## Question 1: [question here]\n"
+"\n"
+"## Answer:\n"
+"[user's answer here]\n"
+"\n"
+"## Score Breakdown:\n"
+"- Technical Depth: X%\n"
+"- Clarity: X%\n"
+"- Structure: X%\n"
+"- Communication: X%\n"
+"\n"
+"## Improved Answer:\n"
+"[improved answer here]\n"
+"\n"
+"## Hints for Improvement:\n"
+"- [hint 1]\n"
+"- [hint 2]\n"
+"- [hint 3]\n"
+msgstr ""
+"## Question 1: [질문 여기]\n"
+"\n"
+"## Answer:\n"
+"[사용자의 답변 여기]\n"
+"\n"
+"## Score Breakdown:\n"
+"- Technical Depth: X%\n"
+"- Clarity: X%\n"
+"- Structure: X%\n"
+"- Communication: X%\n"
+"\n"
+"## Improved Answer:\n"
+"[개선된 답변 여기]\n"
+"\n"
+"## Hints for Improvement:\n"
+"- [힌트 1]\n"
+"- [힌트 2]\n"
+"- [힌트 3]"
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -5962,6 +6027,16 @@ msgstr "관련 시나리오"
 msgid "Reload page"
 msgstr "페이지 새로고침"
 
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#. js-lingui-explicit-id
+msgid "Remove my data from the waitlist"
+msgstr "대기 명단에서 내 데이터를 제거하세요"
+
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#. js-lingui-explicit-id
+msgid "Removing your data from the waitlist..."
+msgstr "대기 목록에서 데이터를 제거하는 중..."
+
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:336
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
@@ -5982,7 +6057,7 @@ msgstr "결과는 생각보다 더 가까이에 있습니다"
 msgid "Return"
 msgstr "반환"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:679
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "대시보드로 돌아가기"
@@ -6507,7 +6582,7 @@ msgstr "말하기 시작하세요"
 msgid "Start Test"
 msgstr "테스트 시작"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:647
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:662
 #. js-lingui-explicit-id
 msgid "Start Trial"
 msgstr "트라이얼 시작"
@@ -6750,6 +6825,11 @@ msgstr "제안"
 msgid "Suggestion is loading..."
 msgstr "제안이 로딩 중입니다..."
 
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:648
+#. js-lingui-explicit-id
+msgid "Suggestions to refine your next responses"
+msgstr "다음 응답을 개선하기 위한 제안"
+
 #: src/features/Goal/GoalQuestions.tsx:305
 #. js-lingui-explicit-id
 msgid "Swedish"
@@ -6871,7 +6951,7 @@ msgstr "이용 약관"
 #: src/features/Auth/AuthWallBasic.tsx:200
 #: src/features/Auth/InterviewAuthWall.tsx:66
 #: src/features/Goal/GoalQuestions.tsx:69
-#: src/features/Header/NeedHelpModal.tsx:181
+#: src/features/Header/NeedHelpModal.tsx:97
 #: src/features/Interview/Landing/components/Footer.tsx:128
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
@@ -6906,7 +6986,7 @@ msgstr "타이"
 msgid "Thai Learning Plan"
 msgstr "타이 학습 계획"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:676
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -6967,7 +7047,7 @@ msgstr "맞춤형 피드백은 제가 기술적 설명에서 무엇을 잘못하
 msgid "Thinking about which languages might be good to install..."
 msgstr "어떤 언어를 설치할지 고민 중..."
 
-#: src/features/Header/NeedHelpModal.tsx:214
+#: src/features/Header/NeedHelpModal.tsx:130
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "이 작업은 되돌릴 수 없습니다."
@@ -7161,7 +7241,7 @@ msgstr "로그인 중 알 수 없는 오류 발생"
 msgid "Unlimited answer reviews"
 msgstr "무제한 답변 검토"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:644
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:659
 #. js-lingui-explicit-id
 msgid "Unlock Your Trial and get Full Feedback"
 msgstr "사용해보기 잠금을 해제하고 전체 피드백 받기"
@@ -7209,12 +7289,12 @@ msgstr "UX 및 접근성"
 msgid "Vacancy description"
 msgstr "채용 공고 설명"
 
-#: src/features/PayWall/CardValidator.tsx:43
+#: src/features/PayWall/CardValidator.tsx:44
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "확인 실패"
 
-#: src/features/PayWall/CardValidator.tsx:82
+#: src/features/PayWall/CardValidator.tsx:83
 #. js-lingui-explicit-id
 msgid "Verify card"
 msgstr "카드 확인"
@@ -7413,7 +7493,7 @@ msgstr "우리는 AI를 사용하여 당신의 음성을 처리합니다"
 msgid "We use cookies to enhance your experience"
 msgstr "사용자 경험을 향상시키기 위해 쿠키를 사용합니다"
 
-#: src/features/Header/NeedHelpModal.tsx:216
+#: src/features/Header/NeedHelpModal.tsx:132
 #. js-lingui-explicit-id
 msgid ""
 "We will delete your data, but information about your balance will be stored "
@@ -7514,7 +7594,7 @@ msgstr "당신이 성취할 것"
 msgid "What's included?"
 msgstr "무엇이 포함되어 있나요?"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:665
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "다음은 무엇인가요?"
@@ -7638,7 +7718,7 @@ msgid ""
 "contact me before you buy and I'll give you a discount."
 msgstr "네! 더 큰 크레딧 패키지를 구매하실 때 할인 혜택을 제공합니다. 구매하기 전에 저에게 연락해 주시면 할인을 해드리겠습니다."
 
-#: src/features/Header/NeedHelpModal.tsx:241
+#: src/features/Header/NeedHelpModal.tsx:159
 #. js-lingui-explicit-id
 msgid "Yes, Delete account"
 msgstr "네, 계정 삭제"
@@ -7713,6 +7793,11 @@ msgstr "<0>리더</0>입니다. {playersCount}명의 플레이어를 이끕니�
 msgid "You are on the right track!"
 msgstr "당신은 올바른 길을 가고 있어요!"
 
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#. js-lingui-explicit-id
+msgid "You are on the waitlist"
+msgstr "당신은 대기자 명단에 있습니다"
+
 #: src/features/Auth/AuthWallBasic.tsx:187
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
@@ -7756,17 +7841,17 @@ msgid ""
 "your speech."
 msgstr "AI가 적극적으로 작동할 때만 청구됩니다: 말하거나 귀하의 말을 분석할 때."
 
-#: src/features/PayWall/CardValidator.tsx:317
+#: src/features/PayWall/CardValidator.tsx:333
 #. js-lingui-explicit-id
 msgid "You will get 1 day of full access for free"
 msgstr "무료로 1일 동안 전체 접근이 가능합니다."
 
-#: src/features/PayWall/CardValidator.tsx:202
+#: src/features/PayWall/CardValidator.tsx:203
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "3일 동안 전체 액세스를 무료로 이용하실 수 있습니다"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:675
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "당신은 모두 준비되었습니다!"
@@ -7782,7 +7867,7 @@ msgstr "당신은 놀라운 진전을 이루셨습니다. 계속해봅시다."
 msgid "You:"
 msgstr "You:"
 
-#: src/features/Header/NeedHelpModal.tsx:84
+#: src/features/Auth/useDeleteAccount.tsx:77
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "당신의 계정이 성공적으로 삭제되었습니다. 안녕히 가십시오, 그동안 함께 해주셔서 감사합니다!"
@@ -7805,6 +7890,13 @@ msgstr "당신의 답변"
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "당신의 아바타:"
+
+#: src/features/PayWall/CardValidator.tsx:288
+#. js-lingui-explicit-id
+msgid ""
+"Your credit card has already been confirmed. You can proceed to the next "
+"step."
+msgstr "귀하의 신용카드는 이미 확인되었습니다. 다음 단계로 진행할 수 있습니다."
 
 #: src/features/RolePlay/rolePlayData.tsx:162
 #. js-lingui-explicit-id
@@ -7905,6 +7997,13 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:634
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "On the next step, you'll receive a comprehensive score analysis of your "
+#~ "interview performance."
+#~ msgstr "다음 단계에서는 인터뷰 성과에 대한 종합적인 점수 분석을 받게 됩니다."
 
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:516
 #. js-lingui-explicit-id

@@ -187,5 +187,6 @@ export function useProvideInterviewQuizContext({
     updateAnswerTranscription,
     isAnalyzingInputs,
     isAnalyzingInputsError,
+    mainPageUrl,
   };
 }

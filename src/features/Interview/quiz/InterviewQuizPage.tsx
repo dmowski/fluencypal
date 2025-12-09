@@ -15,6 +15,7 @@ import { CardValidatorQuiz } from "@/features/PayWall/CardValidator";
 import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { Clock, Trash } from "lucide-react";
+import { useDeleteAccount } from "@/features/Auth/useDeleteAccount";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;
@@ -27,6 +28,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
   const quiz = useInterviewQuiz();
   const stepType = quiz.currentStep?.type;
   const { i18n } = useLingui();
+  const deleteAccount = useDeleteAccount({ startPage: quiz.mainPageUrl });
 
   const survey = quiz.survey;
 
@@ -165,12 +167,15 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
                 <Button
                   variant="text"
                   color="error"
+                  disabled={deleteAccount.isDeletingAccount}
                   sx={{
                     color: "#ef5350",
                   }}
                   endIcon={<Trash size={"17px"} />}
                 >
-                  {i18n._("Remove my data from the waitlist")}
+                  {deleteAccount.isDeletingAccount
+                    ? i18n._("Removing your data from the waitlist...")
+                    : i18n._("Remove my data from the waitlist")}
                 </Button>
                 <IconTextList listItems={quiz.currentStep.listItems || []} />
               </Stack>

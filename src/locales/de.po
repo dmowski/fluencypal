@@ -634,6 +634,11 @@ msgstr "Analyse"
 msgid "Analyzing"
 msgstr "Analysieren"
 
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:130
+#. js-lingui-explicit-id
+msgid "Analyzing your inputs..."
+msgstr "Analysiere deine Eingaben..."
+
 #: src/features/Conversation/ConversationCanvas2.tsx:454
 #: src/features/Conversation/ConversationCanvas2.tsx:461
 #: src/features/Conversation/ConversationCanvas2.tsx:468
@@ -694,8 +699,8 @@ msgstr "Arabischer Lernplan"
 msgid "Architecture & Design"
 msgstr "Architektur & Design"
 
-#: src/features/Header/NeedHelpModal.tsx:69
-#: src/features/Header/NeedHelpModal.tsx:212
+#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
 msgstr "Sind Sie sicher, dass Sie Ihr Konto löschen möchten?"
@@ -1002,7 +1007,7 @@ msgstr "Kann ich meine Übungseinheiten anpassen?"
 msgid "Can I practice languages other than English?"
 msgstr "Kann ich Sprachen neben Englisch üben?"
 
-#: src/features/Header/NeedHelpModal.tsx:251
+#: src/features/Header/NeedHelpModal.tsx:169
 #: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
 msgid "Cancel"
@@ -1027,7 +1032,7 @@ msgstr ""
 "Kandidaten, die bereits die Grundlagen kennen, aber Schwierigkeiten haben, "
 "Entscheidungen in Interviews klar zu artikulieren."
 
-#: src/features/PayWall/CardValidator.tsx:80
+#: src/features/PayWall/CardValidator.tsx:81
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "Karte verifiziert. Wird geladen..."
@@ -1150,7 +1155,7 @@ msgid "Choose Your Language Level"
 msgstr "Wählen Sie Ihr Sprachniveau"
 
 #: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:265
+#: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
 #. js-lingui-explicit-id
@@ -1177,7 +1182,7 @@ msgstr "Kommunikation & Führung"
 msgid "Company"
 msgstr "Unternehmen"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:653
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:668
 #. js-lingui-explicit-id
 msgid "Complete AI Feedback on Your Answers"
 msgstr "Vollständiges KI-Feedback zu Ihren Antworten"
@@ -1203,8 +1208,8 @@ msgstr "Konfidenzwertverfolgung"
 msgid "Confident Communication"
 msgstr "Sichere Kommunikation"
 
-#: src/features/PayWall/CardValidator.tsx:232
-#: src/features/PayWall/CardValidator.tsx:347
+#: src/features/PayWall/CardValidator.tsx:233
+#: src/features/PayWall/CardValidator.tsx:363
 #. js-lingui-explicit-id
 msgid "Confirm Credit Card"
 msgstr "Bestätigen Sie die Kreditkarte"
@@ -1263,7 +1268,7 @@ msgstr "Kontaktieren Sie mich"
 msgid "Contacts"
 msgstr "Kontakte"
 
-#: src/features/Header/NeedHelpModal.tsx:152
+#: src/features/Header/NeedHelpModal.tsx:68
 #: src/features/Landing/Price/PricePage.tsx:390
 #. js-lingui-explicit-id
 msgid "Contacts:"
@@ -1275,8 +1280,8 @@ msgstr "Kontakte:"
 #: src/features/Goal/GoalQuestions.tsx:821
 #: src/features/Goal/GoalQuestions.tsx:860
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:623
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:637
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:655
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:652
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:670
 #: src/features/Plan/PlanCard.tsx:284
 #: src/features/Usage/SubscriptionPaymentModal.tsx:595
 #. js-lingui-explicit-id
@@ -1288,7 +1293,7 @@ msgstr "Fortsetzen"
 msgid "Continue conversation"
 msgstr "Fortsetzen der Unterhaltung"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:666
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -1477,8 +1482,13 @@ msgstr "Erstelle dein eigenes Rollenspiel-Szenario"
 msgid "Create Your Own Scenario"
 msgstr "Erstelle Dein eigenes Szenario"
 
-#: src/features/PayWall/CardValidator.tsx:191
-#: src/features/PayWall/CardValidator.tsx:306
+#: src/features/PayWall/CardValidator.tsx:287
+#. js-lingui-explicit-id
+msgid "Credit Card Already Confirmed"
+msgstr "Kreditkarte bereits bestätigt"
+
+#: src/features/PayWall/CardValidator.tsx:192
+#: src/features/PayWall/CardValidator.tsx:322
 #. js-lingui-explicit-id
 msgid "Credit Card Check"
 msgstr "Kreditkartenprüfung"
@@ -1577,12 +1587,12 @@ msgstr "Dänischer Lernplan"
 msgid "Deep skill development"
 msgstr "Tiefgreifende Kompetenzentwicklung"
 
-#: src/features/Header/NeedHelpModal.tsx:279
+#: src/features/Header/NeedHelpModal.tsx:195
 #. js-lingui-explicit-id
 msgid "Delete account"
 msgstr "Konto löschen"
 
-#: src/features/Header/NeedHelpModal.tsx:278
+#: src/features/Header/NeedHelpModal.tsx:194
 #. js-lingui-explicit-id
 msgid "Delete account (Total)"
 msgstr "Konto löschen (Gesamt)"
@@ -1592,8 +1602,8 @@ msgstr "Konto löschen (Gesamt)"
 msgid "Delete current goal"
 msgstr "Aktuelles Ziel löschen"
 
-#: src/features/Header/NeedHelpModal.tsx:241
-#: src/features/Header/NeedHelpModal.tsx:276
+#: src/features/Header/NeedHelpModal.tsx:158
+#: src/features/Header/NeedHelpModal.tsx:192
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "Löschen..."
@@ -1690,6 +1700,11 @@ msgstr "Speziell für erfahrene Frontend-Ingenieure entwickelt"
 #. js-lingui-explicit-id
 msgid "Desired Job Title"
 msgstr "Gewünschter Jobtitel"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:640
+#. js-lingui-explicit-id
+msgid "Detailed score breakdown"
+msgstr "Detaillierte Punktzahlaufteilung"
 
 #: src/features/Landing/PlanLandingBlock.tsx:271
 #. js-lingui-explicit-id
@@ -2396,6 +2411,11 @@ msgstr "Alles in Free, plus:"
 msgid "Everything you need to stand out and get the job"
 msgstr "Alles, was Sie brauchen, um aufzufallen und den Job zu bekommen"
 
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:644
+#. js-lingui-explicit-id
+msgid "Example answers for improvement"
+msgstr "Beispielantworten zur Verbesserung"
+
 #: src/features/Blog/blogData.tsx:25
 #. js-lingui-explicit-id
 msgid "existential fiction"
@@ -2465,7 +2485,7 @@ msgstr "Fehler beim Kopieren des Textes. Bitte manuell kopieren."
 msgid "Failed to copy text. Please try again."
 msgstr "Fehler beim Kopieren des Textes. Bitte versuchen Sie es erneut."
 
-#: src/features/Header/NeedHelpModal.tsx:96
+#: src/features/Auth/useDeleteAccount.tsx:89
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2528,7 +2548,7 @@ msgstr "Entscheidung finalisieren ..."
 msgid "Finally"
 msgstr "Endlich"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:669
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Fertigstellen"
@@ -2586,7 +2606,7 @@ msgstr ""
 "Sprechpraxis, Sprechen & Korrigieren für sofortiges Feedback zu Grammatik "
 "und Aussprache, und Anfänger-Modus für langsamere, geführte Gespräche."
 
-#: src/features/PayWall/CardValidator.tsx:68
+#: src/features/PayWall/CardValidator.tsx:69
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal will not charge your card. A small temporary authorization hold "
@@ -3170,7 +3190,7 @@ msgstr ""
 "Hier ist personalisiertes Feedback zu Ihren Antworten, um Ihnen bei der "
 "Verbesserung zu helfen."
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:654
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:669
 #. js-lingui-explicit-id
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr ""
@@ -3246,14 +3266,14 @@ msgstr "Wie funktioniert das KI-Feedback?"
 msgid "How It Works"
 msgstr "Wie es funktioniert"
 
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:25
-#. js-lingui-explicit-id
-msgid "How it works"
-msgstr "Wie es funktioniert"
-
 #: src/features/Interview/Landing/components/Footer.tsx:111
 #. js-lingui-explicit-id
 msgid "How it Works"
+msgstr "Wie es funktioniert"
+
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:25
+#. js-lingui-explicit-id
+msgid "How it works"
 msgstr "Wie es funktioniert"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
@@ -3822,7 +3842,7 @@ msgstr ""
 "Wenn Sie eine Frage nicht verstehen, geraten Sie nicht in Panik - fragen "
 "Sie höflich:"
 
-#: src/features/Header/NeedHelpModal.tsx:220
+#: src/features/Header/NeedHelpModal.tsx:136
 #. js-lingui-explicit-id
 msgid ""
 "If you want to remove all information, including your balance, please "
@@ -4786,7 +4806,7 @@ msgstr "Lernplan"
 msgid "Leave your message"
 msgstr "Hinterlassen Sie Ihre Nachricht"
 
-#: src/features/Header/NeedHelpModal.tsx:168
+#: src/features/Header/NeedHelpModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Legal:"
 msgstr "Rechtlich:"
@@ -5128,7 +5148,7 @@ msgstr ""
 "interaktive Weise zu lernen und sich effektiv auf Vorstellungsgespräche "
 "vorzubereiten. Ich hoffe, Sie haben Freude daran, sie zu nutzen!"
 
-#: src/features/Header/NeedHelpModal.tsx:128
+#: src/features/Header/NeedHelpModal.tsx:44
 #. js-lingui-explicit-id
 msgid ""
 "My name is Alex. I am the founder of this project. You will find my "
@@ -5163,7 +5183,7 @@ msgstr "Muttersprache"
 msgid "natural and not robotic"
 msgstr "natürlich und nicht roboterhaft"
 
-#: src/features/Header/NeedHelpModal.tsx:120
+#: src/features/Header/NeedHelpModal.tsx:36
 #: src/features/Settings/MyProfile.tsx:92
 #: src/features/Usage/SubscriptionPaymentModal.tsx:802
 #. js-lingui-explicit-id
@@ -5283,8 +5303,8 @@ msgstr "Nein"
 msgid "No ads, no spam"
 msgstr "Keine Werbung, kein Spam"
 
-#: src/features/PayWall/CardValidator.tsx:206
-#: src/features/PayWall/CardValidator.tsx:321
+#: src/features/PayWall/CardValidator.tsx:207
+#: src/features/PayWall/CardValidator.tsx:337
 #. js-lingui-explicit-id
 msgid "No automatic payment after the trial"
 msgstr "Keine automatische Zahlung nach dem Testzeitraum"
@@ -5294,8 +5314,8 @@ msgstr "Keine automatische Zahlung nach dem Testzeitraum"
 msgid "No blogs found"
 msgstr "Keine Blogs gefunden"
 
-#: src/features/PayWall/CardValidator.tsx:210
-#: src/features/PayWall/CardValidator.tsx:325
+#: src/features/PayWall/CardValidator.tsx:211
+#: src/features/PayWall/CardValidator.tsx:341
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "Keine Gebühr wird erhoben"
@@ -5326,7 +5346,7 @@ msgstr "Noch keine Hausaufgaben aufgegeben."
 msgid "No interviews found"
 msgstr "Keine Interviews gefunden"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:645
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:660
 #. js-lingui-explicit-id
 msgid "No payment required after trial. You decide when to pay."
 msgstr ""
@@ -5444,11 +5464,11 @@ msgstr "Okay"
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:634
 #. js-lingui-explicit-id
 msgid ""
-"On the next step, you'll receive a comprehensive score analysis of your "
-"interview performance."
+"On the next step, you'll receive a score analysis of your answers and "
+"example answers to help you improve."
 msgstr ""
-"Im nächsten Schritt erhalten Sie eine umfassende Punktanalyse Ihrer "
-"Interviewleistung."
+"Im nächsten Schritt erhalten Sie eine Analyse Ihrer Antworten sowie "
+"Beispielantworten, die Ihnen helfen sollen, sich zu verbessern."
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
 #. js-lingui-explicit-id
@@ -5764,8 +5784,8 @@ msgstr "Spielen Sie das Spiel"
 msgid "Play the role"
 msgstr "Die Rolle spielen"
 
-#: src/features/PayWall/CardValidator.tsx:193
-#: src/features/PayWall/CardValidator.tsx:308
+#: src/features/PayWall/CardValidator.tsx:194
+#: src/features/PayWall/CardValidator.tsx:324
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
 msgstr ""
@@ -6137,7 +6157,7 @@ msgstr "Datenschutzrichtlinie"
 #: src/features/Auth/AuthWallBasic.tsx:195
 #: src/features/Auth/InterviewAuthWall.tsx:61
 #: src/features/Goal/GoalQuestions.tsx:65
-#: src/features/Header/NeedHelpModal.tsx:194
+#: src/features/Header/NeedHelpModal.tsx:110
 #: src/features/Interview/Landing/components/Footer.tsx:131
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
@@ -6212,7 +6232,6 @@ msgid "Progress tracking"
 msgstr "Fortschrittsverfolgung"
 
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:656
 #. js-lingui-explicit-id
 msgid ""
 "Provide detailed feedback on the user's answers, focusing on technical "
@@ -6222,6 +6241,58 @@ msgstr ""
 "Geben Sie detailliertes Feedback zu den Antworten des Benutzers, wobei Sie "
 "sich auf technische Tiefe, Klarheit und Struktur konzentrieren. Schlagen "
 "Sie spezifische Verbesserungen für jede Antwort vor."
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+msgid ""
+"Provide score breakdown on the user's answers, focusing on technical depth, "
+"clarity, and structure. Return improved answers. And give hints on how to "
+"answer such questions better. For each answer break down the score into "
+"Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+"Communication (0%-100%). Structure of your answer:\n"
+"## Question 1: [question here]\n"
+"\n"
+"## Answer:\n"
+"[user's answer here]\n"
+"\n"
+"## Score Breakdown:\n"
+"- Technical Depth: X%\n"
+"- Clarity: X%\n"
+"- Structure: X%\n"
+"- Communication: X%\n"
+"\n"
+"## Improved Answer:\n"
+"[improved answer here]\n"
+"\n"
+"## Hints for Improvement:\n"
+"- [hint 1]\n"
+"- [hint 2]\n"
+"- [hint 3]\n"
+msgstr ""
+"Bereitstellung einer Punkteverteilung zu den Antworten des Nutzers, mit "
+"Fokus auf technischer Tiefe, Klarheit und Struktur. Rückgabe verbesserter "
+"Antworten. Und Hinweise geben, wie man solche Fragen besser beantworten "
+"kann. Für jede Antwort die Punktzahl in Technische Tiefe (0%-100%), "
+"Klarheit (0%-100%), Struktur (0%-100%) und Kommunikation (0%-100%) "
+"aufschlüsseln. Struktur Ihrer Antwort:\n"
+"## Frage 1: [Frage hier]\n"
+"\n"
+"## Antwort:\n"
+"[Antwort des Nutzers hier]\n"
+"\n"
+"## Punkteverteilung:\n"
+"- Technische Tiefe: X%\n"
+"- Klarheit: X%\n"
+"- Struktur: X%\n"
+"- Kommunikation: X%\n"
+"\n"
+"## Verbesserte Antwort:\n"
+"[verbesserte Antwort hier]\n"
+"\n"
+"## Verbesserungshinweise:\n"
+"- [Hinweis 1]\n"
+"- [Hinweis 2]\n"
+"- [Hinweis 3]"
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -6537,6 +6608,16 @@ msgstr "Verwandte Szenarien"
 msgid "Reload page"
 msgstr "Seite neu laden"
 
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#. js-lingui-explicit-id
+msgid "Remove my data from the waitlist"
+msgstr "Entfernen Sie meine Daten von der Warteliste"
+
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#. js-lingui-explicit-id
+msgid "Removing your data from the waitlist..."
+msgstr "Entfernen Ihrer Daten von der Warteliste..."
+
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:336
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
@@ -6557,7 +6638,7 @@ msgstr "Ergebnisse sind näher als Sie denken"
 msgid "Return"
 msgstr "Rückkehr"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:679
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "Zurück zum Dashboard"
@@ -7106,7 +7187,7 @@ msgstr "Anfangen zu sprechen"
 msgid "Start Test"
 msgstr "Start Test"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:647
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:662
 #. js-lingui-explicit-id
 msgid "Start Trial"
 msgstr "Testversion starten"
@@ -7376,6 +7457,11 @@ msgstr "Vorschlag"
 msgid "Suggestion is loading..."
 msgstr "Vorschlag wird geladen..."
 
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:648
+#. js-lingui-explicit-id
+msgid "Suggestions to refine your next responses"
+msgstr "Vorschläge zur Verfeinerung Ihrer nächsten Antworten"
+
 #: src/features/Goal/GoalQuestions.tsx:305
 #. js-lingui-explicit-id
 msgid "Swedish"
@@ -7504,7 +7590,7 @@ msgstr "Nutzungsbedingungen"
 #: src/features/Auth/AuthWallBasic.tsx:200
 #: src/features/Auth/InterviewAuthWall.tsx:66
 #: src/features/Goal/GoalQuestions.tsx:69
-#: src/features/Header/NeedHelpModal.tsx:181
+#: src/features/Header/NeedHelpModal.tsx:97
 #: src/features/Interview/Landing/components/Footer.tsx:128
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
@@ -7546,7 +7632,7 @@ msgstr ""
 msgid "Thai Learning Plan"
 msgstr "Thailändischer Lernplan"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:676
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -7620,7 +7706,7 @@ msgstr ""
 msgid "Thinking about which languages might be good to install..."
 msgstr "Nachdenken darüber, welche Sprachen vielleicht gut zu installieren wären..."
 
-#: src/features/Header/NeedHelpModal.tsx:214
+#: src/features/Header/NeedHelpModal.tsx:130
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "Diese Aktion ist unumkehrbar."
@@ -7816,7 +7902,7 @@ msgstr "Unbekannter Fehler bei der Anmeldung"
 msgid "Unlimited answer reviews"
 msgstr "Unbegrenzte Antwortbewertungen"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:644
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:659
 #. js-lingui-explicit-id
 msgid "Unlock Your Trial and get Full Feedback"
 msgstr "Entsperren Sie Ihre Testversion und erhalten Sie vollständiges Feedback"
@@ -7866,12 +7952,12 @@ msgstr "UX & Barrierefreiheit"
 msgid "Vacancy description"
 msgstr "Stellenbeschreibung"
 
-#: src/features/PayWall/CardValidator.tsx:43
+#: src/features/PayWall/CardValidator.tsx:44
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "Verifizierung fehlgeschlagen"
 
-#: src/features/PayWall/CardValidator.tsx:82
+#: src/features/PayWall/CardValidator.tsx:83
 #. js-lingui-explicit-id
 msgid "Verify card"
 msgstr "Karte verifizieren"
@@ -8089,7 +8175,7 @@ msgstr "Wir verarbeiten Ihre Stimme mit KI"
 msgid "We use cookies to enhance your experience"
 msgstr "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern."
 
-#: src/features/Header/NeedHelpModal.tsx:216
+#: src/features/Header/NeedHelpModal.tsx:132
 #. js-lingui-explicit-id
 msgid ""
 "We will delete your data, but information about your balance will be stored "
@@ -8191,7 +8277,7 @@ msgstr "Was Sie erreichen werden"
 msgid "What's included?"
 msgstr "Was ist inbegriffen?"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:665
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "Was kommt als Nächstes?"
@@ -8332,7 +8418,7 @@ msgstr ""
 "Kontaktieren Sie mich einfach, bevor Sie kaufen, und ich gebe Ihnen einen "
 "Rabatt."
 
-#: src/features/Header/NeedHelpModal.tsx:241
+#: src/features/Header/NeedHelpModal.tsx:159
 #. js-lingui-explicit-id
 msgid "Yes, Delete account"
 msgstr "Ja, Konto löschen"
@@ -8418,6 +8504,11 @@ msgstr "Sie sind <0>der Anführer</0> von {playersCount} Spielern."
 msgid "You are on the right track!"
 msgstr "Du bist auf dem richtigen Weg!"
 
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#. js-lingui-explicit-id
+msgid "You are on the waitlist"
+msgstr "Sie sind auf der Warteliste"
+
 #: src/features/Auth/AuthWallBasic.tsx:187
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
@@ -8465,17 +8556,17 @@ msgstr ""
 "Sie werden nur dann berechnet, wenn die KI aktiv arbeitet: spricht oder "
 "Ihre Sprache analysiert."
 
-#: src/features/PayWall/CardValidator.tsx:317
+#: src/features/PayWall/CardValidator.tsx:333
 #. js-lingui-explicit-id
 msgid "You will get 1 day of full access for free"
 msgstr "Sie erhalten 1 Tag vollen Zugriff kostenlos."
 
-#: src/features/PayWall/CardValidator.tsx:202
+#: src/features/PayWall/CardValidator.tsx:203
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "Sie erhalten 3 Tage vollen Zugang kostenlos"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:675
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "Du bist startklar!"
@@ -8491,7 +8582,7 @@ msgstr "Du hast erstaunliche Fortschritte gemacht. Lass uns weitermachen."
 msgid "You:"
 msgstr "Du:"
 
-#: src/features/Header/NeedHelpModal.tsx:84
+#: src/features/Auth/useDeleteAccount.tsx:77
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Ihr Konto wurde erfolgreich gelöscht. Wir bedauern, dass Sie uns verlassen!"
@@ -8514,6 +8605,15 @@ msgstr "Ihre Antwort"
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "Dein Avatar:"
+
+#: src/features/PayWall/CardValidator.tsx:288
+#. js-lingui-explicit-id
+msgid ""
+"Your credit card has already been confirmed. You can proceed to the next "
+"step."
+msgstr ""
+"Ihre Kreditkarte wurde bereits bestätigt. Sie können mit dem nächsten "
+"Schritt fortfahren."
 
 #: src/features/RolePlay/rolePlayData.tsx:162
 #. js-lingui-explicit-id
@@ -8619,6 +8719,15 @@ msgstr ""
 "— es ist wichtig, sich in dieses kurze Gespräch zu vertiefen, bevor man "
 "professionelle Themen anspricht. Hier sind einige nützliche englische "
 "Redewendungen, um das Interview zu beginnen:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:634
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "On the next step, you'll receive a comprehensive score analysis of your "
+#~ "interview performance."
+#~ msgstr ""
+#~ "Im nächsten Schritt erhalten Sie eine umfassende Punktanalyse Ihrer "
+#~ "Interviewleistung."
 
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:516
 #. js-lingui-explicit-id

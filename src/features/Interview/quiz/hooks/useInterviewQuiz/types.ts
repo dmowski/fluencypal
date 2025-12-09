@@ -31,6 +31,7 @@ export interface InterviewQuizContextType {
   ) => Promise<InterviewQuizSurvey>;
   isAnalyzingInputs: Record<string, boolean>;
   isAnalyzingInputsError: Record<string, string>;
+  mainPageUrl: string;
 }
 
 export interface InterviewQuizProps {

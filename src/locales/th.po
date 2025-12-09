@@ -620,6 +620,11 @@ msgstr "การวิเคราะห์"
 msgid "Analyzing"
 msgstr "การวิเคราะห์"
 
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:130
+#. js-lingui-explicit-id
+msgid "Analyzing your inputs..."
+msgstr "กำลังวิเคราะห์ข้อมูลของคุณ..."
+
 #: src/features/Conversation/ConversationCanvas2.tsx:454
 #: src/features/Conversation/ConversationCanvas2.tsx:461
 #: src/features/Conversation/ConversationCanvas2.tsx:468
@@ -682,8 +687,8 @@ msgstr ""
 "\n"
 "สถาปัตยกรรมและการออกแบบ\n"
 
-#: src/features/Header/NeedHelpModal.tsx:69
-#: src/features/Header/NeedHelpModal.tsx:212
+#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
 msgstr "คุณแน่ใจหรือว่าต้องการลบบัญชีของคุณ?"
@@ -987,7 +992,7 @@ msgstr "ฉันสามารถปรับแต่งเซสชันก
 msgid "Can I practice languages other than English?"
 msgstr "ฉันสามารถฝึกภาษาอื่นนอกเหนือจากภาษาอังกฤษได้ไหม?"
 
-#: src/features/Header/NeedHelpModal.tsx:251
+#: src/features/Header/NeedHelpModal.tsx:169
 #: src/features/Usage/PaymentModal.tsx:350
 #. js-lingui-explicit-id
 msgid "Cancel"
@@ -1012,7 +1017,7 @@ msgstr ""
 "ผู้สมัครที่ทราบพื้นฐานอยู่แล้วแต่ยังคงมีปัญหาในการอธิบายการตัดสินใจอย่างชัดเ"
 "จนในระหว่างการสัมภาษณ์"
 
-#: src/features/PayWall/CardValidator.tsx:80
+#: src/features/PayWall/CardValidator.tsx:81
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "บัตรได้รับการยืนยันแล้ว กำลังโหลด..."
@@ -1130,7 +1135,7 @@ msgid "Choose Your Language Level"
 msgstr "เลือกระดับภาษาของคุณ"
 
 #: src/features/Goal/GoalPreparingModal.tsx:159
-#: src/features/Header/NeedHelpModal.tsx:265
+#: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
 #. js-lingui-explicit-id
@@ -1157,7 +1162,7 @@ msgstr "การสื่อสารและภาวะผู้นำ"
 msgid "Company"
 msgstr "บริษัท"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:653
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:668
 #. js-lingui-explicit-id
 msgid "Complete AI Feedback on Your Answers"
 msgstr "คำติชมจาก AI ที่สมบูรณ์เกี่ยวกับคำตอบของคุณ"
@@ -1183,8 +1188,8 @@ msgstr "การติดตามคะแนนความมั่นใจ
 msgid "Confident Communication"
 msgstr "การสื่อสารอย่างมั่นใจ"
 
-#: src/features/PayWall/CardValidator.tsx:232
-#: src/features/PayWall/CardValidator.tsx:347
+#: src/features/PayWall/CardValidator.tsx:233
+#: src/features/PayWall/CardValidator.tsx:363
 #. js-lingui-explicit-id
 msgid "Confirm Credit Card"
 msgstr "ยืนยันบัตรเครดิต"
@@ -1243,7 +1248,7 @@ msgstr "ติดต่อฉัน"
 msgid "Contacts"
 msgstr "ติดต่อเรา"
 
-#: src/features/Header/NeedHelpModal.tsx:152
+#: src/features/Header/NeedHelpModal.tsx:68
 #: src/features/Landing/Price/PricePage.tsx:390
 #. js-lingui-explicit-id
 msgid "Contacts:"
@@ -1255,8 +1260,8 @@ msgstr "ติดต่อ:"
 #: src/features/Goal/GoalQuestions.tsx:821
 #: src/features/Goal/GoalQuestions.tsx:860
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:623
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:637
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:655
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:652
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:670
 #: src/features/Plan/PlanCard.tsx:284
 #: src/features/Usage/SubscriptionPaymentModal.tsx:595
 #. js-lingui-explicit-id
@@ -1268,7 +1273,7 @@ msgstr "ต่อไป"
 msgid "Continue conversation"
 msgstr "ดำเนินการสนทนาต่อ"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:666
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -1454,8 +1459,15 @@ msgstr "สร้างสถานการณ์การเล่นบทบ
 msgid "Create Your Own Scenario"
 msgstr "สร้างสถานการณ์ของคุณเอง"
 
-#: src/features/PayWall/CardValidator.tsx:191
-#: src/features/PayWall/CardValidator.tsx:306
+#: src/features/PayWall/CardValidator.tsx:287
+#. js-lingui-explicit-id
+msgid "Credit Card Already Confirmed"
+msgstr ""
+"\n"
+"ยืนยันบัตรเครดิตแล้ว\n"
+
+#: src/features/PayWall/CardValidator.tsx:192
+#: src/features/PayWall/CardValidator.tsx:322
 #. js-lingui-explicit-id
 msgid "Credit Card Check"
 msgstr "ตรวจสอบบัตรเครดิต"
@@ -1551,12 +1563,12 @@ msgstr "แผนการเรียนรู้ภาษาเดนมาร
 msgid "Deep skill development"
 msgstr "การพัฒนาทักษะอย่างลึกซึ้ง"
 
-#: src/features/Header/NeedHelpModal.tsx:279
+#: src/features/Header/NeedHelpModal.tsx:195
 #. js-lingui-explicit-id
 msgid "Delete account"
 msgstr "ลบบัญชี"
 
-#: src/features/Header/NeedHelpModal.tsx:278
+#: src/features/Header/NeedHelpModal.tsx:194
 #. js-lingui-explicit-id
 msgid "Delete account (Total)"
 msgstr "ลบบัญชี (ทั้งหมด)"
@@ -1566,8 +1578,8 @@ msgstr "ลบบัญชี (ทั้งหมด)"
 msgid "Delete current goal"
 msgstr "ลบเป้าหมายปัจจุบัน"
 
-#: src/features/Header/NeedHelpModal.tsx:241
-#: src/features/Header/NeedHelpModal.tsx:276
+#: src/features/Header/NeedHelpModal.tsx:158
+#: src/features/Header/NeedHelpModal.tsx:192
 #. js-lingui-explicit-id
 msgid "Deleting..."
 msgstr "กำลังลบ..."
@@ -1661,6 +1673,11 @@ msgstr "ออกแบบมาโดยเฉพาะสำหรับวิ
 #. js-lingui-explicit-id
 msgid "Desired Job Title"
 msgstr "ตำแหน่งงานที่ต้องการ"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:640
+#. js-lingui-explicit-id
+msgid "Detailed score breakdown"
+msgstr "รายละเอียดคะแนนอย่างละเอียด"
 
 #: src/features/Landing/PlanLandingBlock.tsx:271
 #. js-lingui-explicit-id
@@ -2331,6 +2348,11 @@ msgstr "ทุกอย่างในแพ็คเกจฟรี บวก�
 msgid "Everything you need to stand out and get the job"
 msgstr "ทุกสิ่งที่คุณต้องการเพื่อโดดเด่นและได้งาน"
 
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:644
+#. js-lingui-explicit-id
+msgid "Example answers for improvement"
+msgstr "ตัวอย่างคำตอบสำหรับการปรับปรุง"
+
 #: src/features/Blog/blogData.tsx:25
 #. js-lingui-explicit-id
 msgid "existential fiction"
@@ -2396,7 +2418,7 @@ msgstr "คัดลอกข้อความไม่สำเร็จ ก�
 msgid "Failed to copy text. Please try again."
 msgstr "การคัดลอกข้อความล้มเหลว โปรดลองอีกครั้ง"
 
-#: src/features/Header/NeedHelpModal.tsx:96
+#: src/features/Auth/useDeleteAccount.tsx:89
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2457,7 +2479,7 @@ msgstr "การตัดสินใจสุดท้าย ..."
 msgid "Finally"
 msgstr "ในที่สุด"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:669
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "เสร็จสิ้น"
@@ -2515,7 +2537,7 @@ msgstr ""
 "แก้ไขสำหรับการตรวจสอบไวยากรณ์และการออกเสียงแบบทันที, "
 "และโหมดผู้เริ่มต้นสำหรับการสนทนาที่ช้าลงและมีการแนะนำ"
 
-#: src/features/PayWall/CardValidator.tsx:68
+#: src/features/PayWall/CardValidator.tsx:69
 #. js-lingui-explicit-id
 msgid ""
 "FluencyPal will not charge your card. A small temporary authorization hold "
@@ -3083,7 +3105,7 @@ msgstr "นี่คือคำที่คุณใช้มากที่ส
 msgid "Here's personalized feedback on your responses to help you improve."
 msgstr "ต่อไปนี้คือความคิดเห็นส่วนบุคคลเกี่ยวกับคำตอบของคุณเพื่อช่วยให้คุณพัฒนาขึ้น"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:654
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:669
 #. js-lingui-explicit-id
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "นี่คือข้อเสนอแนะเฉพาะบุคคลของคุณ เพื่อช่วยให้คุณพัฒนาขึ้น"
@@ -3157,17 +3179,17 @@ msgstr "AI การให้ข้อเสนอะแบบทำงานอ
 msgid "How It Works"
 msgstr "วิธีการทำงาน"
 
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:25
-#. js-lingui-explicit-id
-msgid "How it works"
-msgstr "วิธีการทำงาน"
-
 #: src/features/Interview/Landing/components/Footer.tsx:111
 #. js-lingui-explicit-id
 msgid "How it Works"
 msgstr ""
 "\n"
 "วิธีการทำงาน\n"
+
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:25
+#. js-lingui-explicit-id
+msgid "How it works"
+msgstr "วิธีการทำงาน"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:452
 #. js-lingui-explicit-id
@@ -3701,7 +3723,7 @@ msgstr ""
 msgid "If you don’t understand a question, don’t panic — ask politely:"
 msgstr "ถ้าคุณไม่เข้าใจคำถาม ไม่ต้องตื่นตระหนก — ขอคำแนะนำอย่างสุภาพ:"
 
-#: src/features/Header/NeedHelpModal.tsx:220
+#: src/features/Header/NeedHelpModal.tsx:136
 #. js-lingui-explicit-id
 msgid ""
 "If you want to remove all information, including your balance, please "
@@ -4639,7 +4661,7 @@ msgstr "แผนการเรียนรู้"
 msgid "Leave your message"
 msgstr "ฝากข้อความของคุณ"
 
-#: src/features/Header/NeedHelpModal.tsx:168
+#: src/features/Header/NeedHelpModal.tsx:84
 #. js-lingui-explicit-id
 msgid "Legal:"
 msgstr "กฎหมาย:"
@@ -4979,7 +5001,7 @@ msgstr ""
 "ีการโต้ตอบ พร้อมทั้งเตรียมตัวสำหรับการสัมภาษณ์งานอย่างมีประสิทธิภาพ "
 "ฉันหวังว่าคุณจะสนุกกับการใช้งานเว็บไซต์นี้!"
 
-#: src/features/Header/NeedHelpModal.tsx:128
+#: src/features/Header/NeedHelpModal.tsx:44
 #. js-lingui-explicit-id
 msgid ""
 "My name is Alex. I am the founder of this project. You will find my "
@@ -5014,7 +5036,7 @@ msgstr "ภาษาแม่"
 msgid "natural and not robotic"
 msgstr "ธรรมชาติและไม่เหมือนหุ่นยนต์"
 
-#: src/features/Header/NeedHelpModal.tsx:120
+#: src/features/Header/NeedHelpModal.tsx:36
 #: src/features/Settings/MyProfile.tsx:92
 #: src/features/Usage/SubscriptionPaymentModal.tsx:802
 #. js-lingui-explicit-id
@@ -5132,8 +5154,8 @@ msgstr "ไม่"
 msgid "No ads, no spam"
 msgstr "ไม่มีโฆษณา, ไม่มีสแปม"
 
-#: src/features/PayWall/CardValidator.tsx:206
-#: src/features/PayWall/CardValidator.tsx:321
+#: src/features/PayWall/CardValidator.tsx:207
+#: src/features/PayWall/CardValidator.tsx:337
 #. js-lingui-explicit-id
 msgid "No automatic payment after the trial"
 msgstr "ไม่มีการชำระเงินอัตโนมัติหลังจากช่วงทดลองใช้"
@@ -5143,8 +5165,8 @@ msgstr "ไม่มีการชำระเงินอัตโนมัต
 msgid "No blogs found"
 msgstr "ไม่พบบล็อก"
 
-#: src/features/PayWall/CardValidator.tsx:210
-#: src/features/PayWall/CardValidator.tsx:325
+#: src/features/PayWall/CardValidator.tsx:211
+#: src/features/PayWall/CardValidator.tsx:341
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "ไม่ได้คิดค่าใช้จ่าย"
@@ -5175,7 +5197,7 @@ msgstr "ยังไม่มีการบ้านมอบหมายเล
 msgid "No interviews found"
 msgstr "ไม่พบการสัมภาษณ์"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:645
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:660
 #. js-lingui-explicit-id
 msgid "No payment required after trial. You decide when to pay."
 msgstr "ไม่ต้องชำระเงินหลังจากช่วงทดลองใช้ฟรี คุณเป็นผู้ตัดสินใจว่าจะจ่ายเมื่อใด"
@@ -5293,11 +5315,12 @@ msgstr "ตกลง"
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:634
 #. js-lingui-explicit-id
 msgid ""
-"On the next step, you'll receive a comprehensive score analysis of your "
-"interview performance."
+"On the next step, you'll receive a score analysis of your answers and "
+"example answers to help you improve."
 msgstr ""
 "บนขั้นตอนถัดไป "
-"คุณจะได้รับการวิเคราะห์คะแนนโดยละเอียดเกี่ยวกับประสิทธิภาพการสัมภาษณ์ของคุณ"
+"คุณจะได้รับการวิเคราะห์คะแนนของคำตอบของคุณและตัวอย่างคำตอบเพื่อช่วยให้คุณปรั"
+"บปรุง"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:442
 #. js-lingui-explicit-id
@@ -5607,8 +5630,8 @@ msgstr "เล่นเกม"
 msgid "Play the role"
 msgstr "เล่นบทบาท"
 
-#: src/features/PayWall/CardValidator.tsx:193
-#: src/features/PayWall/CardValidator.tsx:308
+#: src/features/PayWall/CardValidator.tsx:194
+#: src/features/PayWall/CardValidator.tsx:324
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
 msgstr "กรุณายืนยันบัตรเครดิตของคุณเพื่อเข้าถึงคุณสมบัติทั้งหมด"
@@ -5964,7 +5987,7 @@ msgstr "นโยบายความเป็นส่วนตัว"
 #: src/features/Auth/AuthWallBasic.tsx:195
 #: src/features/Auth/InterviewAuthWall.tsx:61
 #: src/features/Goal/GoalQuestions.tsx:65
-#: src/features/Header/NeedHelpModal.tsx:194
+#: src/features/Header/NeedHelpModal.tsx:110
 #: src/features/Interview/Landing/components/Footer.tsx:131
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
@@ -6039,7 +6062,6 @@ msgid "Progress tracking"
 msgstr "การติดตามความคืบหน้า"
 
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:656
 #. js-lingui-explicit-id
 msgid ""
 "Provide detailed feedback on the user's answers, focusing on technical "
@@ -6048,6 +6070,59 @@ msgid ""
 msgstr ""
 "ให้ข้อเสนอแนะที่ละเอียดบนคำตอบของผู้ใช้ โดยเน้นที่ความลึกซึ้งทางเทคนิค "
 "ความชัดเจน และโครงสร้าง แนะนำการปรับปรุงเฉพาะเจาะจงสำหรับคำตอบแต่ละข้อ"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+msgid ""
+"Provide score breakdown on the user's answers, focusing on technical depth, "
+"clarity, and structure. Return improved answers. And give hints on how to "
+"answer such questions better. For each answer break down the score into "
+"Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+"Communication (0%-100%). Structure of your answer:\n"
+"## Question 1: [question here]\n"
+"\n"
+"## Answer:\n"
+"[user's answer here]\n"
+"\n"
+"## Score Breakdown:\n"
+"- Technical Depth: X%\n"
+"- Clarity: X%\n"
+"- Structure: X%\n"
+"- Communication: X%\n"
+"\n"
+"## Improved Answer:\n"
+"[improved answer here]\n"
+"\n"
+"## Hints for Improvement:\n"
+"- [hint 1]\n"
+"- [hint 2]\n"
+"- [hint 3]\n"
+msgstr ""
+"จัดเตรียมการแยกคะแนนสำหรับคำตอบของผู้ใช้ โดยเน้นด้านความลึกซึ้งทางเทคนิค "
+"ความชัดเจน และโครงสร้าง กลับคำตอบที่ได้รับการปรับปรุง "
+"และให้คำแนะนำเกี่ยวกับวิธีการตอบคำถามดังกล่าวให้ดียิ่งขึ้น "
+"สำหรับแต่ละคำตอบให้แยกคะแนนเป็น ความลึกซึ้งทางเทคนิค (0%-100%), ความชัดเจน "
+"(0%-100%), โครงสร้าง (0%-100%), และ การสื่อสาร (0%-100%) "
+"โครงสร้างของคำตอบของคุณ:\n"
+"\n"
+"## คำถาม 1: [คำถามที่นี่]\n"
+"\n"
+"## คำตอบ:\n"
+"[คำตอบของผู้ใช้ที่นี่]\n"
+"\n"
+"## การแยกคะแนน:\n"
+"- ความลึกซึ้งทางเทคนิค: X%\n"
+"- ความชัดเจน: X%\n"
+"- โครงสร้าง: X%\n"
+"- การสื่อสาร: X%\n"
+"\n"
+"## คำตอบที่ปรับปรุง:\n"
+"[คำตอบที่ปรับปรุงที่นี่]\n"
+"\n"
+"## คำแนะนำสำหรับการปรับปรุง:\n"
+"- [คำแนะนำ 1]\n"
+"- [คำแนะนำ 2]\n"
+"- [คำแนะนำ 3]"
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -6358,6 +6433,16 @@ msgstr "สถานการณ์ที่เกี่ยวข้อง"
 msgid "Reload page"
 msgstr "โหลดหน้าเว็บใหม่"
 
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#. js-lingui-explicit-id
+msgid "Remove my data from the waitlist"
+msgstr "ลบข้อมูลของฉันออกจากรายการรอ"
+
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#. js-lingui-explicit-id
+msgid "Removing your data from the waitlist..."
+msgstr "กำลังลบข้อมูลของคุณออกจากรายการรอ..."
+
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:336
 #. js-lingui-explicit-id
 msgid "Rendering Performance"
@@ -6378,7 +6463,7 @@ msgstr "ผลลัพธ์ใกล้กว่าที่คุณคิด
 msgid "Return"
 msgstr "คืน"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:679
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "กลับไปที่แดชบอร์ด"
@@ -6917,7 +7002,7 @@ msgstr "เริ่มพูด"
 msgid "Start Test"
 msgstr "เริ่มทดสอบ"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:647
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:662
 #. js-lingui-explicit-id
 msgid "Start Trial"
 msgstr "เริ่มทดลองใช้"
@@ -7187,6 +7272,11 @@ msgstr "ข้อเสนอแนะ"
 msgid "Suggestion is loading..."
 msgstr "คำแนะนำกำลังโหลด..."
 
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:648
+#. js-lingui-explicit-id
+msgid "Suggestions to refine your next responses"
+msgstr "คำแนะนำในการปรับปรุงการตอบกลับครั้งถัดไปของคุณ"
+
 #: src/features/Goal/GoalQuestions.tsx:305
 #. js-lingui-explicit-id
 msgid "Swedish"
@@ -7313,7 +7403,7 @@ msgstr "ข้อกำหนดและเงื่อนไข"
 #: src/features/Auth/AuthWallBasic.tsx:200
 #: src/features/Auth/InterviewAuthWall.tsx:66
 #: src/features/Goal/GoalQuestions.tsx:69
-#: src/features/Header/NeedHelpModal.tsx:181
+#: src/features/Header/NeedHelpModal.tsx:97
 #: src/features/Interview/Landing/components/Footer.tsx:128
 #: src/features/Landing/Footer.tsx:177
 #: src/features/Legal/LegalContainer.tsx:26
@@ -7349,7 +7439,7 @@ msgstr "ไทย"
 msgid "Thai Learning Plan"
 msgstr "แผนการเรียนรู้ภาษาไทย"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:676
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -7419,7 +7509,7 @@ msgstr ""
 msgid "Thinking about which languages might be good to install..."
 msgstr "กำลังคิดว่าภาษาไหนน่าจะดีที่จะติดตั้ง..."
 
-#: src/features/Header/NeedHelpModal.tsx:214
+#: src/features/Header/NeedHelpModal.tsx:130
 #. js-lingui-explicit-id
 msgid "This action is irreversible."
 msgstr "การดำเนินการนี้ไม่สามารถย้อนกลับได้."
@@ -7615,7 +7705,7 @@ msgstr "ข้อผิดพลาดที่ไม่ทราบสาเห
 msgid "Unlimited answer reviews"
 msgstr "การตรวจสอบคำตอบไม่จำกัด"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:644
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:659
 #. js-lingui-explicit-id
 msgid "Unlock Your Trial and get Full Feedback"
 msgstr "ปลดล็อกการทดลองใช้ฟรีของคุณและรับความคิดเห็นครบถ้วน"
@@ -7663,12 +7753,12 @@ msgstr "UX & Accessibility"
 msgid "Vacancy description"
 msgstr "คำบรรยายตำแหน่งงาน"
 
-#: src/features/PayWall/CardValidator.tsx:43
+#: src/features/PayWall/CardValidator.tsx:44
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "การยืนยันล้มเหลว"
 
-#: src/features/PayWall/CardValidator.tsx:82
+#: src/features/PayWall/CardValidator.tsx:83
 #. js-lingui-explicit-id
 msgid "Verify card"
 msgstr "ตรวจสอบบัตร"
@@ -7880,7 +7970,7 @@ msgstr "เราประมวลผลเสียงของคุณโด
 msgid "We use cookies to enhance your experience"
 msgstr "เราใช้คุกกี้เพื่อเพิ่มประสบการณ์ของคุณ"
 
-#: src/features/Header/NeedHelpModal.tsx:216
+#: src/features/Header/NeedHelpModal.tsx:132
 #. js-lingui-explicit-id
 msgid ""
 "We will delete your data, but information about your balance will be stored "
@@ -7982,7 +8072,7 @@ msgstr "สิ่งที่คุณจะบรรลุ"
 msgid "What's included?"
 msgstr "อะไรบ้างที่รวมอยู่ในนั้น?"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:665
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr ""
@@ -8126,7 +8216,7 @@ msgstr ""
 "ใช่! เรามีส่วนลดเมื่อซื้อแพ็กเกจเครดิตขนาดใหญ่ "
 "ติดต่อฉันก่อนที่คุณจะซื้อและฉันจะให้ส่วนลดกับคุณ"
 
-#: src/features/Header/NeedHelpModal.tsx:241
+#: src/features/Header/NeedHelpModal.tsx:159
 #. js-lingui-explicit-id
 msgid "Yes, Delete account"
 msgstr "ใช่, ลบบัญชี"
@@ -8211,6 +8301,11 @@ msgstr "คุณคือ <0>ผู้นำ</0> ของผู้เล่น
 msgid "You are on the right track!"
 msgstr "คุณกำลังทำอย่างถูกต้อง!"
 
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#. js-lingui-explicit-id
+msgid "You are on the waitlist"
+msgstr "คุณอยู่ในรายการรอ"
+
 #: src/features/Auth/AuthWallBasic.tsx:187
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
@@ -8258,17 +8353,17 @@ msgstr ""
 "คุณจะถูกเรียกเก็บเงินเฉพาะเมื่อ AI ทำงานอย่างใช้งานอย่างแท้จริง: "
 "พูดหรือวิเคราะห์การพูดของคุณ."
 
-#: src/features/PayWall/CardValidator.tsx:317
+#: src/features/PayWall/CardValidator.tsx:333
 #. js-lingui-explicit-id
 msgid "You will get 1 day of full access for free"
 msgstr "คุณจะได้รับการเข้าถึงแบบเต็ม 1 วัน ฟรี"
 
-#: src/features/PayWall/CardValidator.tsx:202
+#: src/features/PayWall/CardValidator.tsx:203
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "คุณจะได้รับสิทธิ์การเข้าถึงเต็มรูปแบบ 3 วันฟรี"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:675
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "คุณพร้อมแล้ว!"
@@ -8284,7 +8379,7 @@ msgstr "คุณพัฒนาความสามารถไปได้ด
 msgid "You:"
 msgstr "คุณ:"
 
-#: src/features/Header/NeedHelpModal.tsx:84
+#: src/features/Auth/useDeleteAccount.tsx:77
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "บัญชีของคุณได้ถูกลบออกเรียบร้อยแล้ว ขออภัยที่ต้องอำลาคุณ!"
@@ -8307,6 +8402,15 @@ msgstr "คำตอบของคุณ"
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "อวตารของคุณ:"
+
+#: src/features/PayWall/CardValidator.tsx:288
+#. js-lingui-explicit-id
+msgid ""
+"Your credit card has already been confirmed. You can proceed to the next "
+"step."
+msgstr ""
+"บัตรเครดิตของคุณได้รับการยืนยันเรียบร้อยแล้ว "
+"คุณสามารถดำเนินการไปยังขั้นตอนถัดไปได้"
 
 #: src/features/RolePlay/rolePlayData.tsx:162
 #. js-lingui-explicit-id
@@ -8411,6 +8515,15 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:634
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "On the next step, you'll receive a comprehensive score analysis of your "
+#~ "interview performance."
+#~ msgstr ""
+#~ "บนขั้นตอนถัดไป "
+#~ "คุณจะได้รับการวิเคราะห์คะแนนโดยละเอียดเกี่ยวกับประสิทธิภาพการสัมภาษณ์ของคุณ"
 
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:516
 #. js-lingui-explicit-id

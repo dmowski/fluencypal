@@ -1,19 +1,13 @@
 import { Button, Link, Stack, Typography } from "@mui/material";
-import { useAuth } from "../Auth/useAuth";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Cookie, ReceiptText, Trash } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
-import { deleteCollectionDocs, firestore } from "../Firebase/init";
-import { doc, DocumentReference, setDoc } from "firebase/firestore";
-import { UserSettings } from "@/common/user";
-import { useNotifications } from "@toolpad/core/useNotifications";
+import { useState } from "react";
 import { ContactList } from "../Landing/Contact/ContactList";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useLingui } from "@lingui/react";
+import { useDeleteAccount } from "../Auth/useDeleteAccount";
 import { isTMA } from "@telegram-apps/sdk-react";
-import { sendDeleteMyAccountRequest } from "@/app/api/deleteAccount/sendDeleteMyAccountRequest";
-import { sleep } from "@/libs/sleep";
 
 interface NeedHelpModalProps {
   onClose: () => void;
@@ -21,90 +15,12 @@ interface NeedHelpModalProps {
 }
 
 export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
-  const auth = useAuth();
-  const [isShowDeleteAccountModal, setIsShowDeleteAccountModal] = useState(false);
+  const isTelegramApp = isTMA();
+  const urlPathToRedirect = isTelegramApp ? getUrlStart(lang) + "tg" : getUrlStart(lang);
+
+  const deleteAccount = useDeleteAccount({ onClose, startPage: urlPathToRedirect });
   const { i18n } = useLingui();
-  const userId = auth.uid;
-  const notifications = useNotifications();
-  const userSettingsDoc = useMemo(() => {
-    return userId ? (doc(firestore, `users/${userId}`) as DocumentReference<UserSettings>) : null;
-  }, [userId]);
-
-  const [isDeletingAccount, setIsDeletingAccount] = useState(false);
-  const [isTotalDelete, setIsTotalDelete] = useState(false);
-
-  useEffect(() => {
-    if (!auth.uid) return;
-
-    const isDevAccount = auth.userInfo?.email?.includes("dmowski") || false;
-    const isTelegramApp = isTMA();
-    setIsTotalDelete(isTelegramApp || isDevAccount);
-  }, [auth.uid]);
-
-  const onDeleteAccount = async () => {
-    if (isTotalDelete) {
-      setIsDeletingAccount(true);
-      try {
-        const pageLang = lang;
-        await sendDeleteMyAccountRequest(await auth.getToken());
-        await auth.logout();
-        localStorage.clear();
-
-        await sleep(100);
-
-        const isTelegramApp = isTMA();
-        const urlPathToRedirect = isTelegramApp
-          ? getUrlStart(pageLang) + "tg"
-          : getUrlStart(pageLang);
-        window.location.href = urlPathToRedirect;
-      } catch (e) {
-        console.log(e);
-        alert("Error happened. Try again");
-        setIsDeletingAccount(false);
-      }
-      return;
-    }
-
-    if (!userId || !userSettingsDoc) return;
-    const confirm = window.confirm(i18n._(`Are you sure you want to delete your account?`));
-    if (!confirm) return;
-
-    setIsDeletingAccount(true);
-
-    try {
-      await deleteCollectionDocs(`users/${userId}/conversations`);
-      await deleteCollectionDocs(`users/${userId}/homeworks`);
-      await deleteCollectionDocs(`users/${userId}/stats`);
-      await deleteCollectionDocs(`users/${userId}/phraseCorrections`);
-      await deleteCollectionDocs(`users/${userId}/goals`);
-      await deleteCollectionDocs(`users/${userId}/quiz2`);
-
-      await setDoc(userSettingsDoc, { languageCode: null }, { merge: true });
-      notifications.show(
-        i18n._(`Your account has been successfully deleted. We are sorry to see you go!`),
-        {
-          severity: "success",
-          autoHideDuration: 10_000,
-        }
-      );
-
-      auth.logout();
-      onClose();
-    } catch (error) {
-      setIsDeletingAccount(false);
-      notifications.show(
-        i18n._(`Failed to delete your account. Please try again later, or contact the developers.`),
-        {
-          severity: "error",
-          autoHideDuration: 10_000,
-        }
-      );
-
-      throw error;
-    }
-
-    setIsDeletingAccount(false);
-  };
+  const [isShowDeleteAccountModal, setIsShowDeleteAccountModal] = useState(false);
 
   return (
     <CustomModal isOpen={true} onClose={() => onClose()}>
@@ -230,19 +146,21 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               }}
             >
               <Button
-                disabled={isDeletingAccount}
+                disabled={deleteAccount.isDeletingAccount}
                 onClick={() => {
-                  onDeleteAccount();
+                  deleteAccount.onDeleteAccount();
                 }}
                 color="error"
                 variant="contained"
                 startIcon={<Trash size={"18px"} />}
               >
-                {isDeletingAccount ? i18n._(`Deleting...`) : i18n._(`Yes, Delete account`)}
+                {deleteAccount.isDeletingAccount
+                  ? i18n._(`Deleting...`)
+                  : i18n._(`Yes, Delete account`)}
               </Button>
 
               <Button
-                disabled={isDeletingAccount}
+                disabled={deleteAccount.isDeletingAccount}
                 onClick={() => {
                   setIsShowDeleteAccountModal(false);
                 }}
@@ -265,18 +183,16 @@ export const NeedHelpModal = ({ onClose, lang }: NeedHelpModalProps) => {
               {i18n._(`Close`)}
             </Button>
             <Button
-              disabled={isDeletingAccount}
-              onClick={() => {
-                setIsShowDeleteAccountModal(true);
-              }}
+              disabled={deleteAccount.isDeletingAccount}
+              onClick={() => setIsShowDeleteAccountModal(true)}
               color="error"
               startIcon={<Trash size={"18px"} />}
             >
-              {isDeletingAccount
+              {deleteAccount.isDeletingAccount
                 ? i18n._(`Deleting...`)
-                : isTotalDelete
-                  ? i18n._(`Delete account (Total)`)
-                  : i18n._(`Delete account`)}
+                : deleteAccount.isTotalDelete
+                ? i18n._(`Delete account (Total)`)
+                : i18n._(`Delete account`)}
             </Button>
           </Stack>
         )}
