@@ -29,7 +29,7 @@ AI-powered interview simulation that analyzes your answers, fixes your weaknesse
 👉 Start Your Interview Test (2 min)
 
 **Secondary CTA:**
-See how it works
+See how it Works
 
 **Visual:**
 Mockup: “Your Interview Score: 68% — Confidence, Structure, Clarity”
@@ -91,7 +91,7 @@ Include a blurred result preview:
 
 ---
 
-# ⭐️ SECTION 5 — How it works (but still results-driven)
+# ⭐️ SECTION 5 — How it Works (but still results-driven)
 
 **Title:**
 Why candidates improve so quickly

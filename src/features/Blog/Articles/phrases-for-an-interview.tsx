@@ -449,7 +449,7 @@ export const PhrasesArticles = ({ lang }: { lang: SupportedLanguage }): JSX.Elem
             pt: "20px",
           }}
         >
-          <strong>{i18n._("How it works:")}</strong>{" "}
+          <strong>{i18n._("How it Works:")}</strong>{" "}
           {i18n._(
             "You answer questions just like in a real interview and get instant feedback. The AI adapts the questions to your profession and experience. This kind of training helps you identify weak spots, work on your pronunciation, and learn how to handle unexpected questions calmly. You’ll notice your speech becoming more fluent and your answers more polished with each attempt."
           )}

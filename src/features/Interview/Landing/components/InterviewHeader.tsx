@@ -22,7 +22,7 @@ export function InterviewHeader({ lang, startTrialHref, pageUrl }: HeaderProps) 
       lang={lang}
       links={[
         {
-          title: i18n._("How it works"),
+          title: i18n._("How it Works"),
           icon: Pickaxe,
           href: pageUrl + "#steps",
         },
