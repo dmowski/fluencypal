@@ -669,7 +669,26 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           subTitle: i18n._("Here's the rest of your personalized feedback to help you improve."),
           buttonTitle: i18n._("Continue"),
           aiSystemPrompt: i18n._(
-            "Provide detailed feedback on the user's answers, focusing on technical depth, clarity, and structure. Suggest specific improvements for each answer. Your response should useful for a senior frontend developer role."
+            `Provide score breakdown on the user's answers, focusing on technical depth, clarity, and structure. Return improved answers. And give hints on how to answer such questions better. For each answer break down the score into Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and Communication (0%-100%). Structure of your answer:
+## Question 1: [question here]
+
+## Answer:
+[user's answer here]
+
+## Score Breakdown:
+- Technical Depth: X%
+- Clarity: X%
+- Structure: X%
+- Communication: X%
+
+## Improved Answer:
+[improved answer here]
+
+## Hints for Improvement:
+- [hint 1]
+- [hint 2]
+- [hint 3]
+`
           ),
           aiResponseFormat: "markdown",
         },
