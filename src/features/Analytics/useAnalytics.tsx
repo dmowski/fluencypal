@@ -4,7 +4,7 @@ import { isDev } from "./isDev";
 import { useAuth } from "../Auth/useAuth";
 import * as Sentry from "@sentry/nextjs";
 
-const RUN_ON_DEV_ENV = true;
+const RUN_ON_DEV_ENV = false;
 
 const initSentry = () => {
   Sentry.init({
