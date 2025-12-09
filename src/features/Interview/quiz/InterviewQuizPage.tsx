@@ -13,6 +13,7 @@ import { MIN_CHARACTERS_FOR_TRANSCRIPT } from "./hooks/useInterviewQuiz/data";
 import { IconTextList } from "@/features/Survey/IconTextList";
 import { CardValidatorQuiz } from "@/features/PayWall/CardValidator";
 import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
+import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;
@@ -93,6 +94,13 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
                     width: "100%",
                   }}
                 >
+                  {quiz.survey?.results[quiz.currentStep.id]?.markdownFeedback ? (
+                    <Stack>
+                      <Markdown>
+                        {quiz.survey?.results[quiz.currentStep.id]?.markdownFeedback || ""}
+                      </Markdown>
+                    </Stack>
+                  ) : null}
                   {quiz.isAnalyzingInputs[quiz.currentStep.id] ? (
                     <Stack
                       sx={{

@@ -654,7 +654,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           subTitle: i18n._("Here's the rest of your personalized feedback to help you improve."),
           buttonTitle: i18n._("Continue"),
           aiSystemPrompt: i18n._(
-            "Provide detailed feedback on the user's answers, focusing on technical depth, clarity, and structure. Suggest specific improvements for each answer."
+            "Provide detailed feedback on the user's answers, focusing on technical depth, clarity, and structure. Suggest specific improvements for each answer. Your response should useful for a senior frontend developer role."
           ),
           aiResponseFormat: "markdown",
         },

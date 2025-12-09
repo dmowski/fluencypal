@@ -8,6 +8,7 @@ import { db } from "@/features/Firebase/firebaseDb";
 import {
   AnalyzeInputsQuizStep,
   InterviewQuizAnswer,
+  InterviewQuizResults,
   InterviewQuizSurvey,
   QuizAnswers,
   QuizResults,
@@ -16,6 +17,8 @@ import { useQuizSurveyData } from "../useQuizSurveyData";
 import { useEffect, useState } from "react";
 import { initEmptyData } from "./data";
 import { getHash } from "./hash";
+import { useTextAi } from "@/features/Ai/useTextAi";
+import { MODELS } from "@/common/ai";
 
 export function useProvideInterviewQuizContext({
   coreData,
@@ -26,6 +29,7 @@ export function useProvideInterviewQuizContext({
   const auth = useAuth();
   const mainPageUrl = getUrlStart(lang) + `interview/${interviewId}`;
   const path: QuizStep[] = quiz.steps.map((step) => step.id);
+  const ai = useTextAi();
 
   const core = useQuizCore({
     path,
@@ -53,14 +57,12 @@ export function useProvideInterviewQuizContext({
     };
 
     const oldAnswers = data.survey.answers || {};
-
     const updatedSurvey: InterviewQuizSurvey = {
       ...data.survey,
       answers: {
         ...oldAnswers,
         [stepId]: answerData,
       },
-      updatedAtIso: new Date().toISOString(),
     };
 
     return await data.updateSurvey(updatedSurvey, `Update answer transcription for step ${stepId}`);
@@ -94,6 +96,12 @@ export function useProvideInterviewQuizContext({
     });
 
     const inEnoughDataToAnalyze = goodAnswersIds.length === previousStepsIdsToAnswer.length;
+    const survey = data.survey;
+    if (!survey) {
+      setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: "Survey data is not loaded." }));
+      setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
+      return;
+    }
     if (!inEnoughDataToAnalyze) {
       const errorMessage = "Not enough data to analyze inputs.";
       setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: errorMessage }));
@@ -119,12 +127,48 @@ export function useProvideInterviewQuizContext({
 
     const isAlreadyAnswered = questionHash === results[step.id]?.inputHash;
     if (isAlreadyAnswered) {
+      console.log("Answered");
       setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
       setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: "" }));
       return;
     }
 
-    console.log({ combinedAnswers, questionHash, isAlreadyAnswered });
+    const stepSystemMessage = step.aiSystemPrompt || "";
+    const systemMessageWrapper = "Return the response in Markdown format.";
+    const systemMessage = `${stepSystemMessage}\n${systemMessageWrapper}`.trim();
+
+    try {
+      const response = await ai.generate({
+        systemMessage,
+        userMessage: combinedAnswers,
+        model: MODELS.gpt_4o,
+      });
+      const markdownFeedback = response.trim();
+
+      if (markdownFeedback.length > 0) {
+        const result: InterviewQuizResults = {
+          stepId,
+          inputHash: questionHash,
+          markdownFeedback,
+        };
+        const oldResults = survey.results || {};
+        const updatedSurvey: InterviewQuizSurvey = {
+          ...survey,
+          results: {
+            ...oldResults,
+            [stepId]: result,
+          },
+        };
+
+        await data.updateSurvey(updatedSurvey, `Update analysis results for step ${stepId}`);
+      }
+    } catch (error) {
+      setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: String(error) }));
+    } finally {
+      setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
+    }
+
+    console.log({ systemMessage, combinedAnswers, questionHash, isAlreadyAnswered });
   };
 
   const quizAnswers = data.survey?.answers || null;
