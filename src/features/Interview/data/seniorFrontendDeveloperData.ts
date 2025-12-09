@@ -632,8 +632,23 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           id: "score-intro-step",
           title: i18n._("Next: Your Interview Readiness Score"),
           subTitle: i18n._(
-            "On the next step, you'll receive a comprehensive score analysis of your interview performance."
+            "On the next step, you'll receive a score analysis of your answers and example answers to help you improve."
           ),
+          imageUrl: "https://media.makeameme.org/created/next-step-5cb571.jpg",
+          listItems: [
+            {
+              title: i18n._("Detailed score breakdown"),
+              iconName: "chart-line",
+            },
+            {
+              title: i18n._("Example answers for improvement"),
+              iconName: "audio-lines",
+            },
+            {
+              title: i18n._("Suggestions to refine your next responses"),
+              iconName: "file-sliders",
+            },
+          ],
           buttonTitle: i18n._("Continue"),
         },
 

@@ -57,7 +57,17 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
           <InfoStep
             message={quiz.currentStep.title}
             subMessage={quiz.currentStep.subTitle || ""}
-            imageUrl={quiz.currentStep.imageUrl || "/avatar/owl1.png"}
+            imageUrl={quiz.currentStep.imageUrl}
+            subComponent={
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  paddingTop: "30px",
+                }}
+              >
+                <IconTextList listItems={quiz.currentStep.listItems || []} />
+              </Stack>
+            }
             onClick={() => quiz.nextStep()}
           />
         )}
