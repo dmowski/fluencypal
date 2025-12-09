@@ -634,7 +634,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           subTitle: i18n._(
             "On the next step, you'll receive a score analysis of your answers and example answers to help you improve."
           ),
-          imageUrl: "https://media.makeameme.org/created/next-step-5cb571.jpg",
+          imageUrl: "https://media.tenor.com/IL7UVyrF94oAAAAM/so-whats-the-next-step-cleo.gif",
           listItems: [
             {
               title: i18n._("Detailed score breakdown"),
