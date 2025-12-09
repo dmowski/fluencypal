@@ -268,9 +268,10 @@ export interface InterviewQuizAnswer {
   answerTranscription: string;
 }
 
+export type QuizAnswers = Record<string, InterviewQuizAnswer | undefined>;
 export type InterviewQuizSurvey = {
   // stepId: data
-  answers: Record<string, InterviewQuizAnswer | undefined>;
+  answers: QuizAnswers;
   updatedAtIso: string;
   createdAtIso: string;
 };
