@@ -127,7 +127,6 @@ export function useProvideInterviewQuizContext({
 
     const isAlreadyAnswered = questionHash === results[step.id]?.inputHash;
     if (isAlreadyAnswered) {
-      console.log("Answered");
       setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
       setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: "" }));
       return;

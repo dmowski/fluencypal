@@ -710,6 +710,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           subTitle: i18n._(
             "Thank you for completing the Senior Frontend Developer interview prep. We will review your answer and get back to you with full access to the platform."
           ),
+          listItems: [],
           buttonTitle: i18n._("Return to Dashboard"),
         },
       ],

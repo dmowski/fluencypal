@@ -169,6 +169,7 @@ export interface WaitlistDoneQuizStep {
 
   title: string;
   subTitle: string;
+  imageUrl?: string;
   listItems?: QuizListItem[];
 
   buttonTitle: string;

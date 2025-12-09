@@ -2,7 +2,7 @@
 
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { InterviewCoreData, InterviewQuiz } from "../types";
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { QuizProgressBar } from "@/features/Goal/Quiz/components/QuizProgressBar";
 import { InfoStep } from "@/features/Survey/InfoStep";
 import { useLingui } from "@lingui/react";
@@ -14,6 +14,7 @@ import { IconTextList } from "@/features/Survey/IconTextList";
 import { CardValidatorQuiz } from "@/features/PayWall/CardValidator";
 import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
+import { Clock, Trash } from "lucide-react";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;
@@ -147,6 +148,38 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
           <AuthWall>
             <CardValidatorQuiz lang={lang} onNextStep={quiz.nextStep} />
           </AuthWall>
+        )}
+
+        {stepType === "waitlist-done" && quiz.currentStep && survey && (
+          <InfoStep
+            message={quiz.currentStep.title}
+            subMessage={quiz.currentStep.subTitle || ""}
+            imageUrl={quiz.currentStep.imageUrl}
+            subComponent={
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  paddingTop: "30px",
+                }}
+              >
+                <Button
+                  variant="text"
+                  color="error"
+                  sx={{
+                    color: "#ef5350",
+                  }}
+                  endIcon={<Trash size={"17px"} />}
+                >
+                  {i18n._("Remove my data from the waitlist")}
+                </Button>
+                <IconTextList listItems={quiz.currentStep.listItems || []} />
+              </Stack>
+            }
+            disabled
+            actionButtonEndIcon={<Clock size={"17px"} />}
+            actionButtonTitle={i18n._("You are on the waitlist")}
+            onClick={() => quiz.nextStep()}
+          />
         )}
       </Stack>
     </Stack>
