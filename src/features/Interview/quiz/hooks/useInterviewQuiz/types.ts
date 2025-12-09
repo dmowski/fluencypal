@@ -29,6 +29,8 @@ export interface InterviewQuizContextType {
     stepId: string,
     answerTranscription: string
   ) => Promise<InterviewQuizSurvey>;
+  isAnalyzingInputs: Record<string, boolean>;
+  isAnalyzingInputsError: Record<string, string>;
 }
 
 export interface InterviewQuizProps {

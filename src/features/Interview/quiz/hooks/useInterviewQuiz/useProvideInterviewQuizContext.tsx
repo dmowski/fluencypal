@@ -10,12 +10,20 @@ import {
   InterviewQuizAnswer,
   InterviewQuizSurvey,
   QuizAnswers,
+  QuizResults,
 } from "../../../types";
 import { useQuizSurveyData } from "../useQuizSurveyData";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { fnv1aHash } from "@/libs/hash";
+
+const getHash = (input: string) => {
+  if (!input) return "";
+  return fnv1aHash(input);
+};
 
 const initEmptyData: InterviewQuizSurvey = {
   answers: {},
+  results: {},
   createdAtIso: new Date().toISOString(),
   updatedAtIso: new Date().toISOString(),
 };
@@ -69,13 +77,22 @@ export function useProvideInterviewQuizContext({
     return await data.updateSurvey(updatedSurvey, `Update answer transcription for step ${stepId}`);
   };
 
+  const [isAnalyzingInputs, setIsAnalyzingInputs] = useState<Record<string, boolean>>({});
+  const [isAnalyzingInputsError, setIsAnalyzingInputsError] = useState<Record<string, string>>({});
+
   const analyzeInputs = async ({
     step,
     answers,
+    results,
   }: {
     step: AnalyzeInputsQuizStep;
     answers: QuizAnswers;
+    results: QuizResults;
   }) => {
+    const stepId = step.id;
+    setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: true }));
+    setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: "" }));
+
     const currentStepIndex = quiz.steps.findIndex((s) => s.id === step.id);
     const previousSteps = quiz.steps.filter((step, index) => {
       return index < currentStepIndex && step.type === "record-audio";
@@ -89,7 +106,9 @@ export function useProvideInterviewQuizContext({
 
     const inEnoughDataToAnalyze = goodAnswersIds.length === previousStepsIdsToAnswer.length;
     if (!inEnoughDataToAnalyze) {
-      console.log("Not enough data to analyze inputs yet");
+      const errorMessage = "Not enough data to analyze inputs.";
+      setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: errorMessage }));
+      setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
       return;
     }
 
@@ -107,22 +126,34 @@ export function useProvideInterviewQuizContext({
       })
       .join("\n\n");
 
-    console.log(combinedAnswers);
+    const questionHash = getHash(combinedAnswers);
+
+    const isAlreadyAnswered = questionHash === results[step.id]?.inputHash;
+    if (isAlreadyAnswered) {
+      setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
+      setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: "" }));
+      return;
+    }
+
+    console.log({ combinedAnswers, questionHash, isAlreadyAnswered });
   };
 
   const quizAnswers = data.survey?.answers || null;
+  const results = data.survey?.results || null;
 
   useEffect(() => {
-    if (currentStep?.type === "analyze-inputs" && quizAnswers) {
-      analyzeInputs({ step: currentStep, answers: quizAnswers });
+    if (currentStep?.type === "analyze-inputs" && quizAnswers && results) {
+      analyzeInputs({ step: currentStep, answers: quizAnswers, results });
     }
-  }, [currentStep, quizAnswers]);
+  }, [currentStep, quizAnswers, results]);
 
   return {
+    ...core,
     survey: data.survey,
     currentStep,
     updateSurvey: data.updateSurvey,
     updateAnswerTranscription,
-    ...core,
+    isAnalyzingInputs,
+    isAnalyzingInputsError,
   };
 }

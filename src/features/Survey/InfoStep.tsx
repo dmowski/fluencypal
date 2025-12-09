@@ -22,7 +22,7 @@ export const InfoStep = ({
   message?: string;
   subMessage?: string;
   subComponent?: ReactNode;
-  imageUrl: string;
+  imageUrl?: string;
   actionButtonTitle?: string;
   onClick: () => void;
   actionButtonStartIcon?: ReactNode;

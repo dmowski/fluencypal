@@ -656,7 +656,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           aiSystemPrompt: i18n._(
             "Provide detailed feedback on the user's answers, focusing on technical depth, clarity, and structure. Suggest specific improvements for each answer."
           ),
-          aiResponseFormat: "json-score",
+          aiResponseFormat: "markdown",
         },
         // InfoQuizStep - What's next: feature list of the app
         {

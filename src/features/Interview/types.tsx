@@ -205,7 +205,7 @@ export interface AnalyzeInputsQuizStep {
 
   // Should return Markdown or JSON content
   aiSystemPrompt: string;
-  aiResponseFormat: "markdown" | "json-score";
+  aiResponseFormat: "markdown";
 }
 
 /**
@@ -268,10 +268,19 @@ export interface InterviewQuizAnswer {
   answerTranscription: string;
 }
 
+export interface InterviewQuizResults {
+  stepId: string;
+  inputHash: string;
+  markdownFeedback: string;
+}
+
 export type QuizAnswers = Record<string, InterviewQuizAnswer | undefined>;
+export type QuizResults = Record<string, InterviewQuizResults | undefined>;
+
 export type InterviewQuizSurvey = {
   // stepId: data
   answers: QuizAnswers;
+  results: QuizResults;
   updatedAtIso: string;
   createdAtIso: string;
 };

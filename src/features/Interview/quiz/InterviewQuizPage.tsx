@@ -2,7 +2,7 @@
 
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { InterviewCoreData, InterviewQuiz } from "../types";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { QuizProgressBar } from "@/features/Goal/Quiz/components/QuizProgressBar";
 import { InfoStep } from "@/features/Survey/InfoStep";
 import { useLingui } from "@lingui/react";
@@ -12,6 +12,7 @@ import { RecordUserAudio } from "@/features/Goal/Quiz/RecordUserAudio";
 import { MIN_CHARACTERS_FOR_TRANSCRIPT } from "./hooks/useInterviewQuiz/data";
 import { IconTextList } from "@/features/Survey/IconTextList";
 import { CardValidatorQuiz } from "@/features/PayWall/CardValidator";
+import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;
@@ -85,7 +86,40 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
             <InfoStep
               message={quiz.currentStep.title}
               subMessage={quiz.currentStep.subTitle || ""}
-              imageUrl={"/avatar/owl1.png"}
+              subComponent={
+                <Stack
+                  sx={{
+                    paddingTop: "30px",
+                    width: "100%",
+                  }}
+                >
+                  {quiz.isAnalyzingInputs[quiz.currentStep.id] ? (
+                    <Stack
+                      sx={{
+                        gap: "10px",
+                      }}
+                    >
+                      <Typography
+                        variant="body2"
+                        align="center"
+                        sx={{
+                          opacity: 0.8,
+                        }}
+                      >
+                        {i18n._("Analyzing your inputs...")}
+                      </Typography>
+                      <LoadingShapes sizes={["20px", "100px", "20px", "100px"]} />
+                    </Stack>
+                  ) : null}
+
+                  {quiz.isAnalyzingInputsError[quiz.currentStep.id] ? (
+                    <Typography color="error">
+                      {quiz.isAnalyzingInputsError[quiz.currentStep.id]}
+                    </Typography>
+                  ) : null}
+                </Stack>
+              }
+              disabled={quiz.isAnalyzingInputs[quiz.currentStep.id]}
               onClick={() => quiz.nextStep()}
             />
           </AuthWall>
