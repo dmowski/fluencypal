@@ -622,7 +622,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           subTitle: i18n._("Here's personalized feedback on your responses to help you improve."),
           buttonTitle: i18n._("Continue"),
           aiSystemPrompt: i18n._(
-            "Provide detailed feedback on the user's answers, focusing on technical depth, clarity, and structure. Suggest specific improvements for each answer."
+            "Provide short feedback on the user's answers, focusing on technical depth, clarity, and structure. Suggest places that could be improved."
           ),
           aiResponseFormat: "markdown",
         },
@@ -670,21 +670,22 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           buttonTitle: i18n._("Continue"),
           aiSystemPrompt: i18n._(
             `Provide score breakdown on the user's answers, focusing on technical depth, clarity, and structure. Return improved answers. And give hints on how to answer such questions better. For each answer break down the score into Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and Communication (0%-100%). Structure of your answer:
-## Question 1: [question here]
+### Question 1: 
+[question here]
 
-## Answer:
+### Answer:
 [user's answer here]
 
-## Score Breakdown:
+### Score Breakdown:
 - Technical Depth: X%
 - Clarity: X%
 - Structure: X%
 - Communication: X%
 
-## Improved Answer:
+### Improved Answer:
 [improved answer here]
 
-## Hints for Improvement:
+### Hints for Improvement:
 - [hint 1]
 - [hint 2]
 - [hint 3]

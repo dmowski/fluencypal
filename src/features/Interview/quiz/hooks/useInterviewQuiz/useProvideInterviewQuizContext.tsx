@@ -81,6 +81,12 @@ export function useProvideInterviewQuizContext({
     results: QuizResults;
   }) => {
     const stepId = step.id;
+
+    const isAnalyzing = isAnalyzingInputs[stepId];
+    if (isAnalyzing) {
+      return;
+    }
+
     setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: true }));
     setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: "" }));
 
@@ -166,8 +172,6 @@ export function useProvideInterviewQuizContext({
     } finally {
       setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
     }
-
-    console.log({ systemMessage, combinedAnswers, questionHash, isAlreadyAnswered });
   };
 
   const quizAnswers = data.survey?.answers || null;

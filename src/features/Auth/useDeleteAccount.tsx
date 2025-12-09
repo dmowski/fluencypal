@@ -33,10 +33,14 @@ export const useDeleteAccount = ({
   useEffect(() => {
     if (!auth.uid) return;
 
-    const isDevAccount = auth.userInfo?.email?.includes("dmowski") || false;
+    const isDevAccount = auth.userInfo?.email?.includes("dmowski2") || false;
     const isTelegramApp = isTMA();
     setIsTotalDelete(isTelegramApp || isDevAccount);
   }, [auth.uid]);
+
+  const redirectToStartPage = () => {
+    window.location.href = startPage;
+  };
 
   const onDeleteAccount = async () => {
     if (isTotalDelete) {
@@ -48,7 +52,7 @@ export const useDeleteAccount = ({
 
         await sleep(100);
 
-        window.location.href = startPage;
+        redirectToStartPage();
       } catch (e) {
         console.log(e);
         alert("Error happened. Try again");
@@ -57,7 +61,10 @@ export const useDeleteAccount = ({
       return;
     }
 
-    if (!userId || !userSettingsDoc) return;
+    if (!userId || !userSettingsDoc) {
+      redirectToStartPage();
+      return;
+    }
     const confirm = window.confirm(i18n._(`Are you sure you want to delete your account?`));
     if (!confirm) return;
 
@@ -83,6 +90,8 @@ export const useDeleteAccount = ({
 
       auth.logout();
       onClose?.();
+      localStorage.clear();
+      redirectToStartPage();
     } catch (error) {
       setIsDeletingAccount(false);
       notifications.show(
