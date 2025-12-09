@@ -686,7 +686,7 @@ msgstr "Arapça Öğrenme Planı"
 msgid "Architecture & Design"
 msgstr "Mimarlık & Tasarım"
 
-#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
@@ -1272,7 +1272,7 @@ msgstr "Devam et"
 msgid "Continue conversation"
 msgstr "Konuşmaya devam et"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:701
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -2424,7 +2424,7 @@ msgstr "Metin kopyalanamadı. Lütfen manuel olarak kopyalayın."
 msgid "Failed to copy text. Please try again."
 msgstr "Metin kopyalama başarısız oldu. Lütfen tekrar deneyin."
 
-#: src/features/Auth/useDeleteAccount.tsx:89
+#: src/features/Auth/useDeleteAccount.tsx:98
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2487,7 +2487,7 @@ msgstr "Kararı sonlandırma ..."
 msgid "Finally"
 msgstr "Sonunda"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:704
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Bitir"
@@ -6078,17 +6078,6 @@ msgstr "İlerleme Takibi"
 msgid "Progress tracking"
 msgstr "İlerleme takibi"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#. js-lingui-explicit-id
-msgid ""
-"Provide detailed feedback on the user's answers, focusing on technical "
-"depth, clarity, and structure. Suggest specific improvements for each "
-"answer."
-msgstr ""
-"Kullanıcının cevapları hakkında kapsamlı geribildirim sağlayın ve teknik "
-"derinlik, açıklık ve yapı konularına odaklanın. Her cevap için belirli "
-"iyileştirme önerilerinde bulunun."
-
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
 #. js-lingui-explicit-id
 msgid ""
@@ -6097,49 +6086,55 @@ msgid ""
 "answer such questions better. For each answer break down the score into "
 "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
 "Communication (0%-100%). Structure of your answer:\n"
-"## Question 1: [question here]\n"
+"### Question 1: \n"
+"[question here]\n"
 "\n"
-"## Answer:\n"
+"### Answer:\n"
 "[user's answer here]\n"
 "\n"
-"## Score Breakdown:\n"
+"### Score Breakdown:\n"
 "- Technical Depth: X%\n"
 "- Clarity: X%\n"
 "- Structure: X%\n"
 "- Communication: X%\n"
 "\n"
-"## Improved Answer:\n"
+"### Improved Answer:\n"
 "[improved answer here]\n"
 "\n"
-"## Hints for Improvement:\n"
+"### Hints for Improvement:\n"
 "- [hint 1]\n"
 "- [hint 2]\n"
 "- [hint 3]\n"
 msgstr ""
-"Kullanıcının cevaplarına ilişkin puan dökümü sağlayın, teknik derinlik, "
-"açıklık ve yapı üzerine odaklanın. İyileştirilmiş cevapları geri döndürün. "
-"Böyle soruların daha iyi nasıl yanıtlanacağına dair ipuçları verin. Her "
-"cevap için puanı Teknik Derinlik (%0-%100), Açıklık (%0-%100), Yapı "
-"(%0-%100) ve İletişim (%0-%100) olarak ayırın. Cevap yapınız:\n"
+"### Soru 1: \n"
+"[question here]\n"
 "\n"
-"## Soru 1: [burada soru]\n"
-"\n"
-"## Cevap:\n"
+"### Cevap:\n"
 "[kullanıcının cevabı burada]\n"
 "\n"
-"## Puan Dökümü:\n"
+"### Skor Dağılımı:\n"
 "- Teknik Derinlik: X%\n"
 "- Açıklık: X%\n"
 "- Yapı: X%\n"
 "- İletişim: X%\n"
 "\n"
-"## İyileştirilmiş Cevap:\n"
-"[iyileştirilmiş cevap burada]\n"
+"### Geliştirilmiş Cevap:\n"
+"[geliştirilmiş cevap burada]\n"
 "\n"
-"## İyileştirme İpuçları:\n"
+"### İyileştirme Önerileri:\n"
 "- [ipucu 1]\n"
 "- [ipucu 2]\n"
 "- [ipucu 3]"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+msgid ""
+"Provide short feedback on the user's answers, focusing on technical depth, "
+"clarity, and structure. Suggest places that could be improved."
+msgstr ""
+"Kullanıcının cevapları hakkında kısa geri bildirim sağlayın, teknik "
+"derinlik, açıklık ve yapı üzerine odaklanın. İyileştirilebilecek yerler "
+"önerin."
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -6452,12 +6447,12 @@ msgstr "İlgili Senaryolar"
 msgid "Reload page"
 msgstr "Sayfayı yeniden yükle"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:179
 #. js-lingui-explicit-id
 msgid "Remove my data from the waitlist"
 msgstr "Veri listemden verilerimi kaldır"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
 #. js-lingui-explicit-id
 msgid "Removing your data from the waitlist..."
 msgstr "Bekleme listesinden verilerinizi kaldırma..."
@@ -6482,7 +6477,7 @@ msgstr "Sonuçlar sandığınızdan daha yakın"
 msgid "Return"
 msgstr "Geri dön"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:715
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "Dashboard'a Dön"
@@ -7459,7 +7454,7 @@ msgstr "Taylandlı"
 msgid "Thai Learning Plan"
 msgstr "Tay Dili Öğrenme Planı"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:711
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -8095,7 +8090,7 @@ msgstr "Ne elde edeceksiniz"
 msgid "What's included?"
 msgstr "Neler dahil?"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "Sırada Ne Var?"
@@ -8317,7 +8312,7 @@ msgstr "<0>Lider</0>siniz ve {playersCount} oyuncunuz var."
 msgid "You are on the right track!"
 msgstr "Doğru yoldasınız!"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:186
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
 msgstr "Bekleme listesinde bulunuyorsunuz."
@@ -8379,7 +8374,7 @@ msgstr "1 gün boyunca sınırsız erişim hakkı elde edeceksiniz"
 msgid "You will get 3 days of full access for free"
 msgstr "Üç gün boyunca tam erişim ücretsiz olacak."
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "Hazırsınız!"
@@ -8395,7 +8390,7 @@ msgstr "Harika bir ilerleme kaydettiniz. Hadi devam edelim."
 msgid "You:"
 msgstr "Sen:"
 
-#: src/features/Auth/useDeleteAccount.tsx:77
+#: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Hesabınız başarıyla silindi. Sizi göndermekten üzgünüz!"
@@ -8529,3 +8524,66 @@ msgid ""
 msgstr ""
 "— Profesyonel konulara geçmeden önce bu kısa sohbete katılmak önemlidir. "
 "İşte röportajı başlatmak için kullanışlı bazı İngilizce ifadeler:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide detailed feedback on the user's answers, focusing on technical "
+#~ "depth, clarity, and structure. Suggest specific improvements for each "
+#~ "answer."
+#~ msgstr ""
+#~ "Kullanıcının cevapları hakkında kapsamlı geribildirim sağlayın ve teknik "
+#~ "derinlik, açıklık ve yapı konularına odaklanın. Her cevap için belirli "
+#~ "iyileştirme önerilerinde bulunun."
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide score breakdown on the user's answers, focusing on technical depth, "
+#~ "clarity, and structure. Return improved answers. And give hints on how to "
+#~ "answer such questions better. For each answer break down the score into "
+#~ "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+#~ "Communication (0%-100%). Structure of your answer:\n"
+#~ "## Question 1: [question here]\n"
+#~ "\n"
+#~ "## Answer:\n"
+#~ "[user's answer here]\n"
+#~ "\n"
+#~ "## Score Breakdown:\n"
+#~ "- Technical Depth: X%\n"
+#~ "- Clarity: X%\n"
+#~ "- Structure: X%\n"
+#~ "- Communication: X%\n"
+#~ "\n"
+#~ "## Improved Answer:\n"
+#~ "[improved answer here]\n"
+#~ "\n"
+#~ "## Hints for Improvement:\n"
+#~ "- [hint 1]\n"
+#~ "- [hint 2]\n"
+#~ "- [hint 3]\n"
+#~ msgstr ""
+#~ "Kullanıcının cevaplarına ilişkin puan dökümü sağlayın, teknik derinlik, "
+#~ "açıklık ve yapı üzerine odaklanın. İyileştirilmiş cevapları geri döndürün. "
+#~ "Böyle soruların daha iyi nasıl yanıtlanacağına dair ipuçları verin. Her "
+#~ "cevap için puanı Teknik Derinlik (%0-%100), Açıklık (%0-%100), Yapı "
+#~ "(%0-%100) ve İletişim (%0-%100) olarak ayırın. Cevap yapınız:\n"
+#~ "\n"
+#~ "## Soru 1: [burada soru]\n"
+#~ "\n"
+#~ "## Cevap:\n"
+#~ "[kullanıcının cevabı burada]\n"
+#~ "\n"
+#~ "## Puan Dökümü:\n"
+#~ "- Teknik Derinlik: X%\n"
+#~ "- Açıklık: X%\n"
+#~ "- Yapı: X%\n"
+#~ "- İletişim: X%\n"
+#~ "\n"
+#~ "## İyileştirilmiş Cevap:\n"
+#~ "[iyileştirilmiş cevap burada]\n"
+#~ "\n"
+#~ "## İyileştirme İpuçları:\n"
+#~ "- [ipucu 1]\n"
+#~ "- [ipucu 2]\n"
+#~ "- [ipucu 3]"

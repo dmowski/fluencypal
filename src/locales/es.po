@@ -687,7 +687,7 @@ msgstr "Plan de Aprendizaje de Árabe"
 msgid "Architecture & Design"
 msgstr "Arquitectura y Diseño"
 
-#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
@@ -1279,7 +1279,7 @@ msgstr "Continuar"
 msgid "Continue conversation"
 msgstr "Continuar conversación"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:701
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -2439,7 +2439,7 @@ msgstr "Error al copiar el texto. Por favor, cópialo manualmente."
 msgid "Failed to copy text. Please try again."
 msgstr "Error al copiar el texto. Por favor, inténtelo de nuevo."
 
-#: src/features/Auth/useDeleteAccount.tsx:89
+#: src/features/Auth/useDeleteAccount.tsx:98
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2504,7 +2504,7 @@ msgstr "Finalizando decisión ..."
 msgid "Finally"
 msgstr "Finalmente"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:704
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Finalizar"
@@ -6119,17 +6119,6 @@ msgstr "Seguimiento de Progreso"
 msgid "Progress tracking"
 msgstr "Seguimiento del progreso"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#. js-lingui-explicit-id
-msgid ""
-"Provide detailed feedback on the user's answers, focusing on technical "
-"depth, clarity, and structure. Suggest specific improvements for each "
-"answer."
-msgstr ""
-"Proporcione comentarios detallados sobre las respuestas del usuario, con un "
-"enfoque en la profundidad técnica, la claridad y la estructura. Sugiera "
-"mejoras específicas para cada respuesta."
-
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
 #. js-lingui-explicit-id
 msgid ""
@@ -6138,49 +6127,61 @@ msgid ""
 "answer such questions better. For each answer break down the score into "
 "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
 "Communication (0%-100%). Structure of your answer:\n"
-"## Question 1: [question here]\n"
+"### Question 1: \n"
+"[question here]\n"
 "\n"
-"## Answer:\n"
+"### Answer:\n"
 "[user's answer here]\n"
 "\n"
-"## Score Breakdown:\n"
+"### Score Breakdown:\n"
 "- Technical Depth: X%\n"
 "- Clarity: X%\n"
 "- Structure: X%\n"
 "- Communication: X%\n"
 "\n"
-"## Improved Answer:\n"
+"### Improved Answer:\n"
 "[improved answer here]\n"
 "\n"
-"## Hints for Improvement:\n"
+"### Hints for Improvement:\n"
 "- [hint 1]\n"
 "- [hint 2]\n"
 "- [hint 3]\n"
 msgstr ""
-"Proporcione un desglose de puntuación en las respuestas del usuario, "
-"centrándose en la profundidad técnica, claridad y estructura. Devuelva "
-"respuestas mejoradas. Y brinde pistas sobre cómo responder mejor a tales "
-"preguntas. Para cada respuesta, desglosar la puntuación en Profundidad "
+"Proporcione un desglose de puntuación sobre las respuestas del usuario, "
+"enfocándose en la profundidad técnica, claridad y estructura. Devuelva "
+"respuestas mejoradas. Y dé pistas sobre cómo responder mejor a tales "
+"preguntas. Para cada respuesta desglosa la puntuación en Profundidad "
 "Técnica (0%-100%), Claridad (0%-100%), Estructura (0%-100%) y Comunicación "
 "(0%-100%). Estructura de su respuesta:\n"
-"## Pregunta 1: [pregunta aquí]\n"
+"### Pregunta 1: \n"
+"[pregunta aquí]\n"
 "\n"
-"## Respuesta:\n"
+"### Respuesta:\n"
 "[respuesta del usuario aquí]\n"
 "\n"
-"## Desglose de Puntuación:\n"
+"### Desglose de Puntuación:\n"
 "- Profundidad Técnica: X%\n"
 "- Claridad: X%\n"
 "- Estructura: X%\n"
 "- Comunicación: X%\n"
 "\n"
-"## Respuesta Mejorada:\n"
+"### Respuesta Mejorada:\n"
 "[respuesta mejorada aquí]\n"
 "\n"
-"## Pistas para Mejorar:\n"
+"### Pistas para Mejorar:\n"
 "- [pista 1]\n"
 "- [pista 2]\n"
-"- [pista 3]\n"
+"- [pista 3]"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+msgid ""
+"Provide short feedback on the user's answers, focusing on technical depth, "
+"clarity, and structure. Suggest places that could be improved."
+msgstr ""
+"Proporcione comentarios breves sobre las respuestas del usuario, "
+"centrándose en la profundidad técnica, la claridad y la estructura. Sugiera "
+"lugares que podrían mejorarse."
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -6495,12 +6496,12 @@ msgstr "Escenarios Relacionados"
 msgid "Reload page"
 msgstr "Recargar página"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:179
 #. js-lingui-explicit-id
 msgid "Remove my data from the waitlist"
 msgstr "Eliminar mis datos de la lista de espera"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
 #. js-lingui-explicit-id
 msgid "Removing your data from the waitlist..."
 msgstr "Eliminando tus datos de la lista de espera..."
@@ -6525,7 +6526,7 @@ msgstr "Los resultados están más cerca de lo que piensas"
 msgid "Return"
 msgstr "Regresar"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:715
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "Regresar al Tablero"
@@ -7508,7 +7509,7 @@ msgstr "Tailandés"
 msgid "Thai Learning Plan"
 msgstr "Plan de Aprendizaje de Tailandés"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:711
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -8150,7 +8151,7 @@ msgstr "Lo que lograrás"
 msgid "What's included?"
 msgstr "¿Qué está incluido?"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "¿Qué sigue?"
@@ -8376,7 +8377,7 @@ msgstr "Eres <0>el Líder</0> de {playersCount} jugadores."
 msgid "You are on the right track!"
 msgstr "¡Vas por buen camino!"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:186
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
 msgstr "Estás en la lista de espera"
@@ -8438,7 +8439,7 @@ msgstr "Obtendrás 1 día de acceso completo gratis"
 msgid "You will get 3 days of full access for free"
 msgstr "Recibirás 3 días de acceso completo gratis"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "¡Todo Listo!"
@@ -8454,7 +8455,7 @@ msgstr "Has hecho un progreso increíble. Sigamos adelante."
 msgid "You:"
 msgstr "Tú:"
 
-#: src/features/Auth/useDeleteAccount.tsx:77
+#: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Su cuenta ha sido eliminada con éxito. ¡Lamentamos verte ir!"
@@ -8591,3 +8592,66 @@ msgstr ""
 "— es importante participar en esta breve conversación antes de abordar "
 "temas profesionales. Aquí tienes algunas frases en inglés útiles para "
 "comenzar la entrevista:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide detailed feedback on the user's answers, focusing on technical "
+#~ "depth, clarity, and structure. Suggest specific improvements for each "
+#~ "answer."
+#~ msgstr ""
+#~ "Proporcione comentarios detallados sobre las respuestas del usuario, con un "
+#~ "enfoque en la profundidad técnica, la claridad y la estructura. Sugiera "
+#~ "mejoras específicas para cada respuesta."
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide score breakdown on the user's answers, focusing on technical depth, "
+#~ "clarity, and structure. Return improved answers. And give hints on how to "
+#~ "answer such questions better. For each answer break down the score into "
+#~ "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+#~ "Communication (0%-100%). Structure of your answer:\n"
+#~ "## Question 1: [question here]\n"
+#~ "\n"
+#~ "## Answer:\n"
+#~ "[user's answer here]\n"
+#~ "\n"
+#~ "## Score Breakdown:\n"
+#~ "- Technical Depth: X%\n"
+#~ "- Clarity: X%\n"
+#~ "- Structure: X%\n"
+#~ "- Communication: X%\n"
+#~ "\n"
+#~ "## Improved Answer:\n"
+#~ "[improved answer here]\n"
+#~ "\n"
+#~ "## Hints for Improvement:\n"
+#~ "- [hint 1]\n"
+#~ "- [hint 2]\n"
+#~ "- [hint 3]\n"
+#~ msgstr ""
+#~ "Proporcione un desglose de puntuación en las respuestas del usuario, "
+#~ "centrándose en la profundidad técnica, claridad y estructura. Devuelva "
+#~ "respuestas mejoradas. Y brinde pistas sobre cómo responder mejor a tales "
+#~ "preguntas. Para cada respuesta, desglosar la puntuación en Profundidad "
+#~ "Técnica (0%-100%), Claridad (0%-100%), Estructura (0%-100%) y Comunicación "
+#~ "(0%-100%). Estructura de su respuesta:\n"
+#~ "## Pregunta 1: [pregunta aquí]\n"
+#~ "\n"
+#~ "## Respuesta:\n"
+#~ "[respuesta del usuario aquí]\n"
+#~ "\n"
+#~ "## Desglose de Puntuación:\n"
+#~ "- Profundidad Técnica: X%\n"
+#~ "- Claridad: X%\n"
+#~ "- Estructura: X%\n"
+#~ "- Comunicación: X%\n"
+#~ "\n"
+#~ "## Respuesta Mejorada:\n"
+#~ "[respuesta mejorada aquí]\n"
+#~ "\n"
+#~ "## Pistas para Mejorar:\n"
+#~ "- [pista 1]\n"
+#~ "- [pista 2]\n"
+#~ "- [pista 3]\n"

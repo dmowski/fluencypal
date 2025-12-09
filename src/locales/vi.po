@@ -686,7 +686,7 @@ msgstr "Kế Hoạch Học Tiếng Ả Rập"
 msgid "Architecture & Design"
 msgstr "Kiến trúc & Thiết kế"
 
-#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
@@ -1276,7 +1276,7 @@ msgstr "Tiếp tục"
 msgid "Continue conversation"
 msgstr "Tiếp tục cuộc trò chuyện"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:701
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -2431,7 +2431,7 @@ msgstr "Không thể sao chép văn bản. Vui lòng sao chép thủ công."
 msgid "Failed to copy text. Please try again."
 msgstr "Không thể sao chép văn bản. Vui lòng thử lại."
 
-#: src/features/Auth/useDeleteAccount.tsx:89
+#: src/features/Auth/useDeleteAccount.tsx:98
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2494,7 +2494,7 @@ msgstr "Đang hoàn thiện quyết định ..."
 msgid "Finally"
 msgstr "Cuối cùng"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:704
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Hoàn tất"
@@ -6095,17 +6095,6 @@ msgstr "Theo dõi tiến độ"
 msgid "Progress tracking"
 msgstr "Theo dõi tiến trình"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#. js-lingui-explicit-id
-msgid ""
-"Provide detailed feedback on the user's answers, focusing on technical "
-"depth, clarity, and structure. Suggest specific improvements for each "
-"answer."
-msgstr ""
-"Cung cấp phản hồi chi tiết về các câu trả lời của người dùng, tập trung vào "
-"độ sâu kỹ thuật, sự rõ ràng, và cấu trúc. Đề xuất các cải tiến cụ thể cho "
-"từng câu trả lời."
-
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
 #. js-lingui-explicit-id
 msgid ""
@@ -6114,50 +6103,54 @@ msgid ""
 "answer such questions better. For each answer break down the score into "
 "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
 "Communication (0%-100%). Structure of your answer:\n"
-"## Question 1: [question here]\n"
+"### Question 1: \n"
+"[question here]\n"
 "\n"
-"## Answer:\n"
+"### Answer:\n"
 "[user's answer here]\n"
 "\n"
-"## Score Breakdown:\n"
+"### Score Breakdown:\n"
 "- Technical Depth: X%\n"
 "- Clarity: X%\n"
 "- Structure: X%\n"
 "- Communication: X%\n"
 "\n"
-"## Improved Answer:\n"
+"### Improved Answer:\n"
 "[improved answer here]\n"
 "\n"
-"## Hints for Improvement:\n"
+"### Hints for Improvement:\n"
 "- [hint 1]\n"
 "- [hint 2]\n"
 "- [hint 3]\n"
 msgstr ""
-"Cung cấp phân tích điểm cho các câu trả lời của người dùng, tập trung vào "
-"chiều sâu kỹ thuật, độ rõ ràng và cấu trúc. Trả lại câu trả lời đã cải "
-"thiện. Và cung cấp gợi ý về cách trả lời những câu hỏi như vậy tốt hơn. Đối "
-"với mỗi câu trả lời, phân tích điểm thành Chiều Sâu Kỹ Thuật (0%-100%), Độ "
-"Rõ Ràng (0%-100%), Cấu Trúc (0%-100%) và Giao Tiếp (0%-100%). Cấu trúc của "
-"câu trả lời của bạn:\n"
+"### Câu hỏi 1:\n"
+"[câu hỏi ở đây]\n"
 "\n"
-"## Question 1: [câu hỏi ở đây]\n"
-"\n"
-"## Answer:\n"
+"### Trả lời:\n"
 "[câu trả lời của người dùng ở đây]\n"
 "\n"
-"## Score Breakdown:\n"
-"- Chiều Sâu Kỹ Thuật: X%\n"
-"- Độ Rõ Ràng: X%\n"
-"- Cấu Trúc: X%\n"
-"- Giao Tiếp: X%\n"
+"### Đánh giá chi tiết:\n"
+"- Chiều sâu kỹ thuật: X%\n"
+"- Rõ ràng: X%\n"
+"- Cấu trúc: X%\n"
+"- Giao tiếp: X%\n"
 "\n"
-"## Improved Answer:\n"
-"[câu trả lời đã cải thiện ở đây]\n"
+"### Trả lời cải thiện:\n"
+"[câu trả lời cải thiện ở đây]\n"
 "\n"
-"## Hints for Improvement:\n"
+"### Gợi ý để cải thiện:\n"
 "- [gợi ý 1]\n"
 "- [gợi ý 2]\n"
 "- [gợi ý 3]"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+msgid ""
+"Provide short feedback on the user's answers, focusing on technical depth, "
+"clarity, and structure. Suggest places that could be improved."
+msgstr ""
+"Cung cấp nhận xét ngắn gọn về câu trả lời của người dùng, tập trung vào độ "
+"sâu kỹ thuật, độ rõ ràng và cấu trúc. Đề xuất những nơi có thể cải thiện."
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -6472,12 +6465,12 @@ msgstr "Cảnh liên quan"
 msgid "Reload page"
 msgstr "Tải lại trang"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:179
 #. js-lingui-explicit-id
 msgid "Remove my data from the waitlist"
 msgstr "Xóa dữ liệu của tôi khỏi danh sách chờ"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
 #. js-lingui-explicit-id
 msgid "Removing your data from the waitlist..."
 msgstr "Đang xóa dữ liệu của bạn khỏi danh sách chờ..."
@@ -6502,7 +6495,7 @@ msgstr "Kết quả gần hơn bạn nghĩ"
 msgid "Return"
 msgstr "Quay lại"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:715
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "Quay trở lại Bảng điều khiển"
@@ -7485,7 +7478,7 @@ msgstr ""
 msgid "Thai Learning Plan"
 msgstr "Kế Hoạch Học Tiếng Thái"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:711
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -8127,7 +8120,7 @@ msgstr "Bạn sẽ đạt được gì?"
 msgid "What's included?"
 msgstr "Điều gì được bao gồm?"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "Điều Gì Tiếp Theo?"
@@ -8350,7 +8343,7 @@ msgstr "Bạn là <0>Người dẫn đầu</0> của {playersCount} người ch�
 msgid "You are on the right track!"
 msgstr "Bạn đang đi đúng hướng!"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:186
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
 msgstr "Bạn đang ở trong danh sách chờ"
@@ -8412,7 +8405,7 @@ msgstr "Bạn sẽ nhận được 1 ngày truy cập đầy đủ miễn phí"
 msgid "You will get 3 days of full access for free"
 msgstr "Bạn sẽ nhận được 3 ngày truy cập đầy đủ miễn phí"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "Bạn đã sẵn sàng!"
@@ -8428,7 +8421,7 @@ msgstr "Bạn đã tiến bộ đáng kể. Hãy tiếp tục nhé."
 msgid "You:"
 msgstr "Bạn:"
 
-#: src/features/Auth/useDeleteAccount.tsx:77
+#: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Tài khoản của bạn đã được xóa thành công. Chúng tôi rất tiếc khi bạn ra đi!"
@@ -8563,3 +8556,67 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide detailed feedback on the user's answers, focusing on technical "
+#~ "depth, clarity, and structure. Suggest specific improvements for each "
+#~ "answer."
+#~ msgstr ""
+#~ "Cung cấp phản hồi chi tiết về các câu trả lời của người dùng, tập trung vào "
+#~ "độ sâu kỹ thuật, sự rõ ràng, và cấu trúc. Đề xuất các cải tiến cụ thể cho "
+#~ "từng câu trả lời."
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide score breakdown on the user's answers, focusing on technical depth, "
+#~ "clarity, and structure. Return improved answers. And give hints on how to "
+#~ "answer such questions better. For each answer break down the score into "
+#~ "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+#~ "Communication (0%-100%). Structure of your answer:\n"
+#~ "## Question 1: [question here]\n"
+#~ "\n"
+#~ "## Answer:\n"
+#~ "[user's answer here]\n"
+#~ "\n"
+#~ "## Score Breakdown:\n"
+#~ "- Technical Depth: X%\n"
+#~ "- Clarity: X%\n"
+#~ "- Structure: X%\n"
+#~ "- Communication: X%\n"
+#~ "\n"
+#~ "## Improved Answer:\n"
+#~ "[improved answer here]\n"
+#~ "\n"
+#~ "## Hints for Improvement:\n"
+#~ "- [hint 1]\n"
+#~ "- [hint 2]\n"
+#~ "- [hint 3]\n"
+#~ msgstr ""
+#~ "Cung cấp phân tích điểm cho các câu trả lời của người dùng, tập trung vào "
+#~ "chiều sâu kỹ thuật, độ rõ ràng và cấu trúc. Trả lại câu trả lời đã cải "
+#~ "thiện. Và cung cấp gợi ý về cách trả lời những câu hỏi như vậy tốt hơn. Đối "
+#~ "với mỗi câu trả lời, phân tích điểm thành Chiều Sâu Kỹ Thuật (0%-100%), Độ "
+#~ "Rõ Ràng (0%-100%), Cấu Trúc (0%-100%) và Giao Tiếp (0%-100%). Cấu trúc của "
+#~ "câu trả lời của bạn:\n"
+#~ "\n"
+#~ "## Question 1: [câu hỏi ở đây]\n"
+#~ "\n"
+#~ "## Answer:\n"
+#~ "[câu trả lời của người dùng ở đây]\n"
+#~ "\n"
+#~ "## Score Breakdown:\n"
+#~ "- Chiều Sâu Kỹ Thuật: X%\n"
+#~ "- Độ Rõ Ràng: X%\n"
+#~ "- Cấu Trúc: X%\n"
+#~ "- Giao Tiếp: X%\n"
+#~ "\n"
+#~ "## Improved Answer:\n"
+#~ "[câu trả lời đã cải thiện ở đây]\n"
+#~ "\n"
+#~ "## Hints for Improvement:\n"
+#~ "- [gợi ý 1]\n"
+#~ "- [gợi ý 2]\n"
+#~ "- [gợi ý 3]"

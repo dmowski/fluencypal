@@ -697,7 +697,7 @@ msgstr "Rancangan Pembelajaran Arab"
 msgid "Architecture & Design"
 msgstr "Seni Bina & Reka Bentuk"
 
-#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
@@ -1288,7 +1288,7 @@ msgstr "Teruskan"
 msgid "Continue conversation"
 msgstr "Teruskan perbualan"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:701
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -2461,7 +2461,7 @@ msgstr "Gagal menyalin teks. Sila salin secara manual."
 msgid "Failed to copy text. Please try again."
 msgstr "Gagal menyalin teks. Sila cuba lagi."
 
-#: src/features/Auth/useDeleteAccount.tsx:89
+#: src/features/Auth/useDeleteAccount.tsx:98
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2524,7 +2524,7 @@ msgstr "Mengambil keputusan akhir ..."
 msgid "Finally"
 msgstr "Akhirnya"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:704
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Selesaikan"
@@ -6184,17 +6184,6 @@ msgstr "Pemantauan Kemajuan"
 msgid "Progress tracking"
 msgstr "Pemantauan kemajuan"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#. js-lingui-explicit-id
-msgid ""
-"Provide detailed feedback on the user's answers, focusing on technical "
-"depth, clarity, and structure. Suggest specific improvements for each "
-"answer."
-msgstr ""
-"Sediakan maklum balas terperinci mengenai jawapan pengguna, memberi tumpuan "
-"kepada kedalaman teknikal, kejelasan, dan struktur. Cadangkan "
-"penambahbaikan khusus untuk setiap jawapan."
-
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
 #. js-lingui-explicit-id
 msgid ""
@@ -6203,49 +6192,61 @@ msgid ""
 "answer such questions better. For each answer break down the score into "
 "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
 "Communication (0%-100%). Structure of your answer:\n"
-"## Question 1: [question here]\n"
+"### Question 1: \n"
+"[question here]\n"
 "\n"
-"## Answer:\n"
+"### Answer:\n"
 "[user's answer here]\n"
 "\n"
-"## Score Breakdown:\n"
+"### Score Breakdown:\n"
 "- Technical Depth: X%\n"
 "- Clarity: X%\n"
 "- Structure: X%\n"
 "- Communication: X%\n"
 "\n"
-"## Improved Answer:\n"
+"### Improved Answer:\n"
 "[improved answer here]\n"
 "\n"
-"## Hints for Improvement:\n"
+"### Hints for Improvement:\n"
 "- [hint 1]\n"
 "- [hint 2]\n"
 "- [hint 3]\n"
 msgstr ""
 "Sediakan pecahan skor pada jawapan pengguna, memberi tumpuan kepada "
-"kedalaman teknikal, kejelasan, dan struktur. Berikan jawapan yang "
+"kedalaman teknikal, kejelasan, dan struktur. Kembalikan jawapan yang "
 "diperbaiki. Dan berikan petunjuk tentang cara menjawab soalan sedemikian "
-"dengan lebih baik. Untuk setiap jawapan pecahkan skor kepada Kedalaman "
+"dengan lebih baik. Untuk setiap jawapan, pecahkan skor kepada Kedalaman "
 "Teknikal (0%-100%), Kejelasan (0%-100%), Struktur (0%-100%), dan Komunikasi "
 "(0%-100%). Struktur jawapan anda:\n"
-"## Soalan 1: [soalan di sini]\n"
+"### Soalan 1: \n"
+"[soalan di sini]\n"
 "\n"
-"## Jawapan:\n"
+"### Jawapan:\n"
 "[jawapan pengguna di sini]\n"
 "\n"
-"## Pecahan Skor:\n"
+"### Pecahan Skor:\n"
 "- Kedalaman Teknikal: X%\n"
 "- Kejelasan: X%\n"
 "- Struktur: X%\n"
 "- Komunikasi: X%\n"
 "\n"
-"## Jawapan yang Diperbaiki:\n"
+"### Jawapan yang Diperbaiki:\n"
 "[jawapan yang diperbaiki di sini]\n"
 "\n"
-"## Petunjuk untuk Penambahbaikan:\n"
+"### Petunjuk untuk Peningkatan:\n"
 "- [petunjuk 1]\n"
 "- [petunjuk 2]\n"
 "- [petunjuk 3]"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+msgid ""
+"Provide short feedback on the user's answers, focusing on technical depth, "
+"clarity, and structure. Suggest places that could be improved."
+msgstr ""
+"Berikan maklum balas ringkas mengenai jawapan pengguna, dengan memberi "
+"tumpuan kepada kedalaman teknikal, kejelasan, dan struktur. Cadangkan "
+"tempat yang boleh diperbaiki."
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -6560,12 +6561,12 @@ msgstr "Situasi Berkaitan"
 msgid "Reload page"
 msgstr "Muat semula halaman"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:179
 #. js-lingui-explicit-id
 msgid "Remove my data from the waitlist"
 msgstr "Keluarkan data saya dari senarai menunggu"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
 #. js-lingui-explicit-id
 msgid "Removing your data from the waitlist..."
 msgstr "Sedang membuang data anda dari senarai menunggu..."
@@ -6590,7 +6591,7 @@ msgstr "Keputusan lebih dekat daripada yang anda fikirkan"
 msgid "Return"
 msgstr "Kembali"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:715
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "Kembali ke Papan Pemuka"
@@ -7570,7 +7571,7 @@ msgstr "Thai"
 msgid "Thai Learning Plan"
 msgstr "Rancangan Pembelajaran Thai"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:711
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -8216,7 +8217,7 @@ msgstr "Perkara yang akan anda capai"
 msgid "What's included?"
 msgstr "Apa yang termasuk?"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "Apa Seterusnya?"
@@ -8443,7 +8444,7 @@ msgstr "Anda adalah <0>Pemimpin</0> bagi {playersCount} pemain."
 msgid "You are on the right track!"
 msgstr "Anda berada di landasan yang betul!"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:186
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
 msgstr "Anda berada dalam senarai menunggu"
@@ -8505,7 +8506,7 @@ msgstr "Anda akan mendapat 1 hari akses penuh secara percuma"
 msgid "You will get 3 days of full access for free"
 msgstr "Anda akan mendapat akses penuh selama 3 hari secara percuma"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "Anda Sudah Selesai!"
@@ -8521,7 +8522,7 @@ msgstr "Anda telah membuat kemajuan yang menakjubkan. Mari teruskan."
 msgid "You:"
 msgstr "Anda:"
 
-#: src/features/Auth/useDeleteAccount.tsx:77
+#: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Akaun anda telah berjaya dihapuskan. Kami sedih untuk melihat anda pergi!"
@@ -8656,3 +8657,66 @@ msgstr ""
 "— sangat penting untuk melibatkan diri dalam perbualan pendek ini sebelum "
 "melompat ke topik profesional. Berikut adalah beberapa frasa Inggeris yang "
 "berguna untuk memulakan temuduga:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide detailed feedback on the user's answers, focusing on technical "
+#~ "depth, clarity, and structure. Suggest specific improvements for each "
+#~ "answer."
+#~ msgstr ""
+#~ "Sediakan maklum balas terperinci mengenai jawapan pengguna, memberi tumpuan "
+#~ "kepada kedalaman teknikal, kejelasan, dan struktur. Cadangkan "
+#~ "penambahbaikan khusus untuk setiap jawapan."
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide score breakdown on the user's answers, focusing on technical depth, "
+#~ "clarity, and structure. Return improved answers. And give hints on how to "
+#~ "answer such questions better. For each answer break down the score into "
+#~ "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+#~ "Communication (0%-100%). Structure of your answer:\n"
+#~ "## Question 1: [question here]\n"
+#~ "\n"
+#~ "## Answer:\n"
+#~ "[user's answer here]\n"
+#~ "\n"
+#~ "## Score Breakdown:\n"
+#~ "- Technical Depth: X%\n"
+#~ "- Clarity: X%\n"
+#~ "- Structure: X%\n"
+#~ "- Communication: X%\n"
+#~ "\n"
+#~ "## Improved Answer:\n"
+#~ "[improved answer here]\n"
+#~ "\n"
+#~ "## Hints for Improvement:\n"
+#~ "- [hint 1]\n"
+#~ "- [hint 2]\n"
+#~ "- [hint 3]\n"
+#~ msgstr ""
+#~ "Sediakan pecahan skor pada jawapan pengguna, memberi tumpuan kepada "
+#~ "kedalaman teknikal, kejelasan, dan struktur. Berikan jawapan yang "
+#~ "diperbaiki. Dan berikan petunjuk tentang cara menjawab soalan sedemikian "
+#~ "dengan lebih baik. Untuk setiap jawapan pecahkan skor kepada Kedalaman "
+#~ "Teknikal (0%-100%), Kejelasan (0%-100%), Struktur (0%-100%), dan Komunikasi "
+#~ "(0%-100%). Struktur jawapan anda:\n"
+#~ "## Soalan 1: [soalan di sini]\n"
+#~ "\n"
+#~ "## Jawapan:\n"
+#~ "[jawapan pengguna di sini]\n"
+#~ "\n"
+#~ "## Pecahan Skor:\n"
+#~ "- Kedalaman Teknikal: X%\n"
+#~ "- Kejelasan: X%\n"
+#~ "- Struktur: X%\n"
+#~ "- Komunikasi: X%\n"
+#~ "\n"
+#~ "## Jawapan yang Diperbaiki:\n"
+#~ "[jawapan yang diperbaiki di sini]\n"
+#~ "\n"
+#~ "## Petunjuk untuk Penambahbaikan:\n"
+#~ "- [petunjuk 1]\n"
+#~ "- [petunjuk 2]\n"
+#~ "- [petunjuk 3]"

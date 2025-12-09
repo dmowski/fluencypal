@@ -650,7 +650,7 @@ msgstr "阿拉伯语学习计划"
 msgid "Architecture & Design"
 msgstr "建筑与设计"
 
-#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
@@ -1206,7 +1206,7 @@ msgstr "继续"
 msgid "Continue conversation"
 msgstr "继续对话"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:701
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -2238,7 +2238,7 @@ msgstr "无法复制文本。请手动复制。"
 msgid "Failed to copy text. Please try again."
 msgstr "复制文本失败。请再试一次。"
 
-#: src/features/Auth/useDeleteAccount.tsx:89
+#: src/features/Auth/useDeleteAccount.tsx:98
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2295,7 +2295,7 @@ msgstr "正在做出决定..."
 msgid "Finally"
 msgstr "最后"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:704
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "完成"
@@ -5561,14 +5561,6 @@ msgstr "进度追踪"
 msgid "Progress tracking"
 msgstr "进度跟踪"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#. js-lingui-explicit-id
-msgid ""
-"Provide detailed feedback on the user's answers, focusing on technical "
-"depth, clarity, and structure. Suggest specific improvements for each "
-"answer."
-msgstr "对用户的答案提供详细反馈，重点关注技术深度、清晰度和结构。为每个答案提出具体的改进建议。"
-
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
 #. js-lingui-explicit-id
 msgid ""
@@ -5577,46 +5569,54 @@ msgid ""
 "answer such questions better. For each answer break down the score into "
 "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
 "Communication (0%-100%). Structure of your answer:\n"
-"## Question 1: [question here]\n"
+"### Question 1: \n"
+"[question here]\n"
 "\n"
-"## Answer:\n"
+"### Answer:\n"
 "[user's answer here]\n"
 "\n"
-"## Score Breakdown:\n"
+"### Score Breakdown:\n"
 "- Technical Depth: X%\n"
 "- Clarity: X%\n"
 "- Structure: X%\n"
 "- Communication: X%\n"
 "\n"
-"## Improved Answer:\n"
+"### Improved Answer:\n"
 "[improved answer here]\n"
 "\n"
-"## Hints for Improvement:\n"
+"### Hints for Improvement:\n"
 "- [hint 1]\n"
 "- [hint 2]\n"
 "- [hint 3]\n"
 msgstr ""
-"提供用户答案的分数细分，重点关注技术深度、清晰度和结构。返回改进后的答案。并给出如何更好地回答此类问题的提示。对于每个答案，将分数细分为技术深度(0%-"
-"100%)、清晰度(0%-100%)、结构(0%-100%)和沟通(0%-100%)。您答案的结构:\n"
+"提供用户答案的评分分解，重点关注技术深度、清晰度和结构。返回改进后的答案，并就如何更好地回答此类问题提供提示。对每个答案的评分进行详细分解：技术深度（0"
+"%-100%）、清晰度（0%-100%）、结构（0%-100%）、沟通能力（0%-100%）。您的答案结构如下：\n"
+"### 问题 1:\n"
+"[在此处输入问题]\n"
 "\n"
-"## 问题 1: [在此处输入问题]\n"
+"### 答案:\n"
+"[在此处输入用户答案]\n"
 "\n"
-"## 答案:\n"
-"[用户的答案在此处]\n"
-"\n"
-"## 分数细分:\n"
+"### 评分分解:\n"
 "- 技术深度: X%\n"
 "- 清晰度: X%\n"
 "- 结构: X%\n"
-"- 沟通: X%\n"
+"- 沟通能力: X%\n"
 "\n"
-"## 改进后的答案:\n"
-"[改进后的答案在此处]\n"
+"### 改进答案:\n"
+"[在此处输入改进答案]\n"
 "\n"
-"## 改进提示:\n"
-"- [提示1]\n"
-"- [提示2]\n"
-"- [提示3]"
+"### 改进提示:\n"
+"- [提示 1]\n"
+"- [提示 2]\n"
+"- [提示 3]"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+msgid ""
+"Provide short feedback on the user's answers, focusing on technical depth, "
+"clarity, and structure. Suggest places that could be improved."
+msgstr "对用户答案提供简短的反馈，重点关注技术深度、清晰度和结构。建议可以改进的地方。"
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -5912,12 +5912,12 @@ msgstr "相关场景"
 msgid "Reload page"
 msgstr "重新加载页面"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:179
 #. js-lingui-explicit-id
 msgid "Remove my data from the waitlist"
 msgstr "将我的数据从候补名单中删除"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
 #. js-lingui-explicit-id
 msgid "Removing your data from the waitlist..."
 msgstr "正在从候补名单中移除您的数据..."
@@ -5942,7 +5942,7 @@ msgstr "结果比你想象的更接近"
 msgid "Return"
 msgstr "返回"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:715
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "返回仪表板"
@@ -6861,7 +6861,7 @@ msgstr "泰语"
 msgid "Thai Learning Plan"
 msgstr "泰语学习计划"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:711
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -7462,7 +7462,7 @@ msgstr "你将会达到的目标"
 msgid "What's included?"
 msgstr "包含什么？"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "下一步是什么？"
@@ -7656,7 +7656,7 @@ msgstr "您是<0>领导者</0>，领导着{playersCount}名玩家。"
 msgid "You are on the right track!"
 msgstr "你正在正确的道路上！"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:186
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
 msgstr "您在候补名单上"
@@ -7714,7 +7714,7 @@ msgstr "您将免费获得1天的完整访问权限"
 msgid "You will get 3 days of full access for free"
 msgstr "您将获得 3 天的完整免费访问权限"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "一切就绪！"
@@ -7730,7 +7730,7 @@ msgstr "你已经取得了惊人的进步。让我们继续前进。"
 msgid "You:"
 msgstr "您："
 
-#: src/features/Auth/useDeleteAccount.tsx:77
+#: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "您的账户已成功删除。我们很遗憾您的离开！"
@@ -7858,3 +7858,60 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide detailed feedback on the user's answers, focusing on technical "
+#~ "depth, clarity, and structure. Suggest specific improvements for each "
+#~ "answer."
+#~ msgstr "对用户的答案提供详细反馈，重点关注技术深度、清晰度和结构。为每个答案提出具体的改进建议。"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide score breakdown on the user's answers, focusing on technical depth, "
+#~ "clarity, and structure. Return improved answers. And give hints on how to "
+#~ "answer such questions better. For each answer break down the score into "
+#~ "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+#~ "Communication (0%-100%). Structure of your answer:\n"
+#~ "## Question 1: [question here]\n"
+#~ "\n"
+#~ "## Answer:\n"
+#~ "[user's answer here]\n"
+#~ "\n"
+#~ "## Score Breakdown:\n"
+#~ "- Technical Depth: X%\n"
+#~ "- Clarity: X%\n"
+#~ "- Structure: X%\n"
+#~ "- Communication: X%\n"
+#~ "\n"
+#~ "## Improved Answer:\n"
+#~ "[improved answer here]\n"
+#~ "\n"
+#~ "## Hints for Improvement:\n"
+#~ "- [hint 1]\n"
+#~ "- [hint 2]\n"
+#~ "- [hint 3]\n"
+#~ msgstr ""
+#~ "提供用户答案的分数细分，重点关注技术深度、清晰度和结构。返回改进后的答案。并给出如何更好地回答此类问题的提示。对于每个答案，将分数细分为技术深度(0%-"
+#~ "100%)、清晰度(0%-100%)、结构(0%-100%)和沟通(0%-100%)。您答案的结构:\n"
+#~ "\n"
+#~ "## 问题 1: [在此处输入问题]\n"
+#~ "\n"
+#~ "## 答案:\n"
+#~ "[用户的答案在此处]\n"
+#~ "\n"
+#~ "## 分数细分:\n"
+#~ "- 技术深度: X%\n"
+#~ "- 清晰度: X%\n"
+#~ "- 结构: X%\n"
+#~ "- 沟通: X%\n"
+#~ "\n"
+#~ "## 改进后的答案:\n"
+#~ "[改进后的答案在此处]\n"
+#~ "\n"
+#~ "## 改进提示:\n"
+#~ "- [提示1]\n"
+#~ "- [提示2]\n"
+#~ "- [提示3]"

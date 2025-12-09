@@ -679,7 +679,7 @@ msgstr "Arabisk inlärningsplan"
 msgid "Architecture & Design"
 msgstr "Arkitektur & Design"
 
-#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
@@ -1270,7 +1270,7 @@ msgstr "Fortsätt"
 msgid "Continue conversation"
 msgstr "Fortsätt konversationen"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:701
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -2415,7 +2415,7 @@ msgstr "Misslyckades med att kopiera texten. Vänligen kopiera den manuellt."
 msgid "Failed to copy text. Please try again."
 msgstr "Kopiering av text misslyckades. Var vänlig försök igen."
 
-#: src/features/Auth/useDeleteAccount.tsx:89
+#: src/features/Auth/useDeleteAccount.tsx:98
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2478,7 +2478,7 @@ msgstr "Slutför beslut ..."
 msgid "Finally"
 msgstr "Äntligen"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:704
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Avsluta"
@@ -6053,16 +6053,6 @@ msgstr "Uppföljning av framsteg"
 msgid "Progress tracking"
 msgstr "Framstegsspårning"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#. js-lingui-explicit-id
-msgid ""
-"Provide detailed feedback on the user's answers, focusing on technical "
-"depth, clarity, and structure. Suggest specific improvements for each "
-"answer."
-msgstr ""
-"Ge detaljerad feedback på användarens svar, med fokus på teknisk djup, "
-"tydlighet och struktur. Föreslå specifika förbättringar för varje svar."
-
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
 #. js-lingui-explicit-id
 msgid ""
@@ -6071,49 +6061,54 @@ msgid ""
 "answer such questions better. For each answer break down the score into "
 "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
 "Communication (0%-100%). Structure of your answer:\n"
-"## Question 1: [question here]\n"
+"### Question 1: \n"
+"[question here]\n"
 "\n"
-"## Answer:\n"
+"### Answer:\n"
 "[user's answer here]\n"
 "\n"
-"## Score Breakdown:\n"
+"### Score Breakdown:\n"
 "- Technical Depth: X%\n"
 "- Clarity: X%\n"
 "- Structure: X%\n"
 "- Communication: X%\n"
 "\n"
-"## Improved Answer:\n"
+"### Improved Answer:\n"
 "[improved answer here]\n"
 "\n"
-"## Hints for Improvement:\n"
+"### Hints for Improvement:\n"
 "- [hint 1]\n"
 "- [hint 2]\n"
 "- [hint 3]\n"
 msgstr ""
-"Tillhandahåll poängfördelning av användarens svar, med fokus på teknisk "
-"djup, tydlighet och struktur. Återge förbättrade svar. Och ge tips om hur "
-"sådana frågor kan besvaras bättre. För varje svar, bryt ner poängen i "
-"Teknisk Djup (0%-100%), Tydlighet (0%-100%), Struktur (0%-100%) och "
-"Kommunikation (0%-100%). Strukturen av ditt svar:\n"
+"### Fråga 1:\n"
+"[fråga här]\n"
 "\n"
-"## Fråga 1: [fråga här]\n"
-"\n"
-"## Svar:\n"
+"### Svar:\n"
 "[användarens svar här]\n"
 "\n"
-"## Poängfördelning:\n"
-"- Teknisk Djup: X%\n"
-"- Tydlighet: X%\n"
+"### Poängfördelning:\n"
+"- Teknisk djup: X%\n"
+"- Klarhet: X%\n"
 "- Struktur: X%\n"
 "- Kommunikation: X%\n"
 "\n"
-"## Förbättrat Svar:\n"
-"[föbättrat svar här]\n"
+"### Förbättrat svar:\n"
+"[förbättrat svar här]\n"
 "\n"
-"## Tips för Förbättring:\n"
+"### Tips för förbättring:\n"
 "- [tips 1]\n"
 "- [tips 2]\n"
 "- [tips 3]"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+msgid ""
+"Provide short feedback on the user's answers, focusing on technical depth, "
+"clarity, and structure. Suggest places that could be improved."
+msgstr ""
+"Ge feedback på användarens svar och fokusera på teknisk djup, tydlighet och "
+"struktur. Föreslå ställen där förbättringar kan göras."
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -6425,12 +6420,12 @@ msgstr "Relaterade scenarier"
 msgid "Reload page"
 msgstr "Ladda om sidan"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:179
 #. js-lingui-explicit-id
 msgid "Remove my data from the waitlist"
 msgstr "Ta bort mina uppgifter från väntelistan"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
 #. js-lingui-explicit-id
 msgid "Removing your data from the waitlist..."
 msgstr "Tar bort dina uppgifter från väntelistan..."
@@ -6455,7 +6450,7 @@ msgstr "Resultaten är närmare än du tror"
 msgid "Return"
 msgstr "Återvänd"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:715
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "Återvänd till instrumentpanelen"
@@ -7433,7 +7428,7 @@ msgstr "Thailändska"
 msgid "Thai Learning Plan"
 msgstr "Thailändsk Inlärningsplan"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:711
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -8068,7 +8063,7 @@ msgstr "Vad du kommer att uppnå"
 msgid "What's included?"
 msgstr "Vad ingår?"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "Vad är nästa steg?"
@@ -8290,7 +8285,7 @@ msgstr "Du är <0>ledaren</0> för {playersCount} spelare."
 msgid "You are on the right track!"
 msgstr "Du är på rätt spår!"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:186
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
 msgstr "Du är på väntelistan"
@@ -8350,7 +8345,7 @@ msgstr "Du får 1 dag med full tillgång gratis"
 msgid "You will get 3 days of full access for free"
 msgstr "Du kommer att få 3 dagar full tillgång gratis"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "Du är klar!"
@@ -8366,7 +8361,7 @@ msgstr "Du har gjort fantastiska framsteg. Låt oss fortsätta."
 msgid "You:"
 msgstr "Du:"
 
-#: src/features/Auth/useDeleteAccount.tsx:77
+#: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Ditt konto har framgångsrikt raderats. Vi är ledsna att se dig gå!"
@@ -8499,3 +8494,65 @@ msgstr ""
 "— det är viktigt att delta i denna korta konversation innan vi hoppar in i "
 "yrkesmässiga ämnen. Här är några användbara engelska fraser för att starta "
 "intervjun:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide detailed feedback on the user's answers, focusing on technical "
+#~ "depth, clarity, and structure. Suggest specific improvements for each "
+#~ "answer."
+#~ msgstr ""
+#~ "Ge detaljerad feedback på användarens svar, med fokus på teknisk djup, "
+#~ "tydlighet och struktur. Föreslå specifika förbättringar för varje svar."
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide score breakdown on the user's answers, focusing on technical depth, "
+#~ "clarity, and structure. Return improved answers. And give hints on how to "
+#~ "answer such questions better. For each answer break down the score into "
+#~ "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+#~ "Communication (0%-100%). Structure of your answer:\n"
+#~ "## Question 1: [question here]\n"
+#~ "\n"
+#~ "## Answer:\n"
+#~ "[user's answer here]\n"
+#~ "\n"
+#~ "## Score Breakdown:\n"
+#~ "- Technical Depth: X%\n"
+#~ "- Clarity: X%\n"
+#~ "- Structure: X%\n"
+#~ "- Communication: X%\n"
+#~ "\n"
+#~ "## Improved Answer:\n"
+#~ "[improved answer here]\n"
+#~ "\n"
+#~ "## Hints for Improvement:\n"
+#~ "- [hint 1]\n"
+#~ "- [hint 2]\n"
+#~ "- [hint 3]\n"
+#~ msgstr ""
+#~ "Tillhandahåll poängfördelning av användarens svar, med fokus på teknisk "
+#~ "djup, tydlighet och struktur. Återge förbättrade svar. Och ge tips om hur "
+#~ "sådana frågor kan besvaras bättre. För varje svar, bryt ner poängen i "
+#~ "Teknisk Djup (0%-100%), Tydlighet (0%-100%), Struktur (0%-100%) och "
+#~ "Kommunikation (0%-100%). Strukturen av ditt svar:\n"
+#~ "\n"
+#~ "## Fråga 1: [fråga här]\n"
+#~ "\n"
+#~ "## Svar:\n"
+#~ "[användarens svar här]\n"
+#~ "\n"
+#~ "## Poängfördelning:\n"
+#~ "- Teknisk Djup: X%\n"
+#~ "- Tydlighet: X%\n"
+#~ "- Struktur: X%\n"
+#~ "- Kommunikation: X%\n"
+#~ "\n"
+#~ "## Förbättrat Svar:\n"
+#~ "[föbättrat svar här]\n"
+#~ "\n"
+#~ "## Tips för Förbättring:\n"
+#~ "- [tips 1]\n"
+#~ "- [tips 2]\n"
+#~ "- [tips 3]"

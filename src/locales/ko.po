@@ -649,7 +649,7 @@ msgstr "아랍어 학습 계획"
 msgid "Architecture & Design"
 msgstr "건축 및 디자인"
 
-#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
@@ -1217,7 +1217,7 @@ msgstr "계속"
 msgid "Continue conversation"
 msgstr "대화 계속하기"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:701
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -2272,7 +2272,7 @@ msgstr "텍스트 복사에 실패했습니다. 수동으로 복사해 주세요
 msgid "Failed to copy text. Please try again."
 msgstr "텍스트 복사에 실패했습니다. 다시 시도해 주세요."
 
-#: src/features/Auth/useDeleteAccount.tsx:89
+#: src/features/Auth/useDeleteAccount.tsx:98
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2329,7 +2329,7 @@ msgstr "결정 마무리 중 ..."
 msgid "Finally"
 msgstr "마침내"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:704
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "완료"
@@ -5669,16 +5669,6 @@ msgstr "진행 상황 추적"
 msgid "Progress tracking"
 msgstr "진행 상황 추적"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#. js-lingui-explicit-id
-msgid ""
-"Provide detailed feedback on the user's answers, focusing on technical "
-"depth, clarity, and structure. Suggest specific improvements for each "
-"answer."
-msgstr ""
-"사용자의 답변에 대해 기술적 깊이, 명확성 및 구조에 중점을 두고 상세한 피드백을 제공합니다. 각 답변에 대한 구체적인 개선 사항을 "
-"제안하십시오."
-
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
 #. js-lingui-explicit-id
 msgid ""
@@ -5687,43 +5677,56 @@ msgid ""
 "answer such questions better. For each answer break down the score into "
 "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
 "Communication (0%-100%). Structure of your answer:\n"
-"## Question 1: [question here]\n"
+"### Question 1: \n"
+"[question here]\n"
 "\n"
-"## Answer:\n"
+"### Answer:\n"
 "[user's answer here]\n"
 "\n"
-"## Score Breakdown:\n"
+"### Score Breakdown:\n"
 "- Technical Depth: X%\n"
 "- Clarity: X%\n"
 "- Structure: X%\n"
 "- Communication: X%\n"
 "\n"
-"## Improved Answer:\n"
+"### Improved Answer:\n"
 "[improved answer here]\n"
 "\n"
-"## Hints for Improvement:\n"
+"### Hints for Improvement:\n"
 "- [hint 1]\n"
 "- [hint 2]\n"
 "- [hint 3]\n"
 msgstr ""
-"## Question 1: [질문 여기]\n"
+"사용자의 답변에 대한 점수 분석을 제공하고, 기술적 깊이, 명확성, 구조에 중점을 두십시오. 개선된 답변을 반환하고, 이러한 질문에 더 "
+"잘 답하는 방법에 대한 힌트를 제공하십시오. 각 답변에 대한 점수를 기술적 깊이 (0%-100%), 명확성 (0%-100%), 구조 "
+"(0%-100%), 의사소통 (0%-100%)로 나누십시오. 답변 구조:\n"
 "\n"
-"## Answer:\n"
-"[사용자의 답변 여기]\n"
+"### 질문 1:\n"
+"[질문 입력]\n"
 "\n"
-"## Score Breakdown:\n"
-"- Technical Depth: X%\n"
-"- Clarity: X%\n"
-"- Structure: X%\n"
-"- Communication: X%\n"
+"### 답변:\n"
+"[사용자의 답변]\n"
 "\n"
-"## Improved Answer:\n"
-"[개선된 답변 여기]\n"
+"### 점수 분석:\n"
+"- 기술적 깊이: X%\n"
+"- 명확성: X%\n"
+"- 구조: X%\n"
+"- 의사소통: X%\n"
 "\n"
-"## Hints for Improvement:\n"
+"### 개선된 답변:\n"
+"[개선된 답변]\n"
+"\n"
+"### 개선을 위한 힌트:\n"
 "- [힌트 1]\n"
 "- [힌트 2]\n"
 "- [힌트 3]"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+msgid ""
+"Provide short feedback on the user's answers, focusing on technical depth, "
+"clarity, and structure. Suggest places that could be improved."
+msgstr "사용자의 답변에 대한 간단한 피드백을 제공하며 기술적 깊이, 명확성 및 구조에 중점을 둡니다. 개선할 수 있는 부분을 제안합니다."
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -6023,12 +6026,12 @@ msgstr "관련 시나리오"
 msgid "Reload page"
 msgstr "페이지 새로고침"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:179
 #. js-lingui-explicit-id
 msgid "Remove my data from the waitlist"
 msgstr "대기 명단에서 내 데이터를 제거하세요"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
 #. js-lingui-explicit-id
 msgid "Removing your data from the waitlist..."
 msgstr "대기 목록에서 데이터를 제거하는 중..."
@@ -6053,7 +6056,7 @@ msgstr "결과는 생각보다 더 가까이에 있습니다"
 msgid "Return"
 msgstr "반환"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:715
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "대시보드로 돌아가기"
@@ -6982,7 +6985,7 @@ msgstr "타이"
 msgid "Thai Learning Plan"
 msgstr "타이 학습 계획"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:711
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -7590,7 +7593,7 @@ msgstr "당신이 성취할 것"
 msgid "What's included?"
 msgstr "무엇이 포함되어 있나요?"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "다음은 무엇인가요?"
@@ -7789,7 +7792,7 @@ msgstr "<0>리더</0>입니다. {playersCount}명의 플레이어를 이끕니�
 msgid "You are on the right track!"
 msgstr "당신은 올바른 길을 가고 있어요!"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:186
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
 msgstr "당신은 대기자 명단에 있습니다"
@@ -7847,7 +7850,7 @@ msgstr "무료로 1일 동안 전체 접근이 가능합니다."
 msgid "You will get 3 days of full access for free"
 msgstr "3일 동안 전체 액세스를 무료로 이용하실 수 있습니다"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "당신은 모두 준비되었습니다!"
@@ -7863,7 +7866,7 @@ msgstr "당신은 놀라운 진전을 이루셨습니다. 계속해봅시다."
 msgid "You:"
 msgstr "You:"
 
-#: src/features/Auth/useDeleteAccount.tsx:77
+#: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "당신의 계정이 성공적으로 삭제되었습니다. 안녕히 가십시오, 그동안 함께 해주셔서 감사합니다!"
@@ -7993,3 +7996,59 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide detailed feedback on the user's answers, focusing on technical "
+#~ "depth, clarity, and structure. Suggest specific improvements for each "
+#~ "answer."
+#~ msgstr ""
+#~ "사용자의 답변에 대해 기술적 깊이, 명확성 및 구조에 중점을 두고 상세한 피드백을 제공합니다. 각 답변에 대한 구체적인 개선 사항을 "
+#~ "제안하십시오."
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide score breakdown on the user's answers, focusing on technical depth, "
+#~ "clarity, and structure. Return improved answers. And give hints on how to "
+#~ "answer such questions better. For each answer break down the score into "
+#~ "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+#~ "Communication (0%-100%). Structure of your answer:\n"
+#~ "## Question 1: [question here]\n"
+#~ "\n"
+#~ "## Answer:\n"
+#~ "[user's answer here]\n"
+#~ "\n"
+#~ "## Score Breakdown:\n"
+#~ "- Technical Depth: X%\n"
+#~ "- Clarity: X%\n"
+#~ "- Structure: X%\n"
+#~ "- Communication: X%\n"
+#~ "\n"
+#~ "## Improved Answer:\n"
+#~ "[improved answer here]\n"
+#~ "\n"
+#~ "## Hints for Improvement:\n"
+#~ "- [hint 1]\n"
+#~ "- [hint 2]\n"
+#~ "- [hint 3]\n"
+#~ msgstr ""
+#~ "## Question 1: [질문 여기]\n"
+#~ "\n"
+#~ "## Answer:\n"
+#~ "[사용자의 답변 여기]\n"
+#~ "\n"
+#~ "## Score Breakdown:\n"
+#~ "- Technical Depth: X%\n"
+#~ "- Clarity: X%\n"
+#~ "- Structure: X%\n"
+#~ "- Communication: X%\n"
+#~ "\n"
+#~ "## Improved Answer:\n"
+#~ "[개선된 답변 여기]\n"
+#~ "\n"
+#~ "## Hints for Improvement:\n"
+#~ "- [힌트 1]\n"
+#~ "- [힌트 2]\n"
+#~ "- [힌트 3]"

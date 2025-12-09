@@ -673,7 +673,7 @@ msgstr "خطة التعلم باللغة العربية"
 msgid "Architecture & Design"
 msgstr "الهندسة المعمارية والتصميم"
 
-#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
@@ -1250,7 +1250,7 @@ msgstr "استمر"
 msgid "Continue conversation"
 msgstr "متابعة المحادثة"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:701
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -2361,7 +2361,7 @@ msgstr "فشل في نسخ النص. يرجى نسخه يدويًا."
 msgid "Failed to copy text. Please try again."
 msgstr "فشل في نسخ النص. يرجى المحاولة مرة أخرى."
 
-#: src/features/Auth/useDeleteAccount.tsx:89
+#: src/features/Auth/useDeleteAccount.tsx:98
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2420,7 +2420,7 @@ msgstr "اتخاذ القرار النهائي ..."
 msgid "Finally"
 msgstr "أخيراً"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:704
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "إنهاء"
@@ -5927,16 +5927,6 @@ msgstr "تتبع التقدم"
 msgid "Progress tracking"
 msgstr "تتبع التقدم"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#. js-lingui-explicit-id
-msgid ""
-"Provide detailed feedback on the user's answers, focusing on technical "
-"depth, clarity, and structure. Suggest specific improvements for each "
-"answer."
-msgstr ""
-"قدم ملاحظات مفصلة حول إجابات المستخدم، مع التركيز على العمق التقني والوضوح "
-"والتركيبة. اقترح تحسينات محددة لكل إجابة."
-
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
 #. js-lingui-explicit-id
 msgid ""
@@ -5945,49 +5935,54 @@ msgid ""
 "answer such questions better. For each answer break down the score into "
 "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
 "Communication (0%-100%). Structure of your answer:\n"
-"## Question 1: [question here]\n"
+"### Question 1: \n"
+"[question here]\n"
 "\n"
-"## Answer:\n"
+"### Answer:\n"
 "[user's answer here]\n"
 "\n"
-"## Score Breakdown:\n"
+"### Score Breakdown:\n"
 "- Technical Depth: X%\n"
 "- Clarity: X%\n"
 "- Structure: X%\n"
 "- Communication: X%\n"
 "\n"
-"## Improved Answer:\n"
+"### Improved Answer:\n"
 "[improved answer here]\n"
 "\n"
-"## Hints for Improvement:\n"
+"### Hints for Improvement:\n"
 "- [hint 1]\n"
 "- [hint 2]\n"
 "- [hint 3]\n"
 msgstr ""
-"توفير تحليل تفصيلي للدرجات على إجابات المستخدمين، مع التركيز على العمق "
-"التقني، الوضوح، والبنية. تقديم إجابات محسّنة. وتقديم نصائح حول كيفية "
-"الإجابة على مثل هذه الأسئلة بشكل أفضل. لكل إجابة تقسيم الدرجات إلى عمق تقني "
-"(0%-100%)، الوضوح (0%-100%)، البنية (0%-100%)، والاتصال (0%-100%). هيكل "
-"الإجابة:\n"
+"### السؤال 1:\n"
+"[السؤال هنا]\n"
 "\n"
-"## السؤال 1: [السؤال هنا]\n"
-"\n"
-"## الإجابة:\n"
+"### الإجابة:\n"
 "[إجابة المستخدم هنا]\n"
 "\n"
-"## تحليل الدرجات:\n"
+"### تحليل الدرجات:\n"
 "- العمق التقني: X%\n"
 "- الوضوح: X%\n"
-"- البنية: X%\n"
-"- الاتصال: X%\n"
+"- الهيكل: X%\n"
+"- التواصل: X%\n"
 "\n"
-"## الإجابة المحسنة:\n"
+"### الإجابة المحسنة:\n"
 "[الإجابة المحسنة هنا]\n"
 "\n"
-"## نصائح للتحسين:\n"
+"### نصائح للتحسين:\n"
 "- [النصيحة 1]\n"
 "- [النصيحة 2]\n"
 "- [النصيحة 3]"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+msgid ""
+"Provide short feedback on the user's answers, focusing on technical depth, "
+"clarity, and structure. Suggest places that could be improved."
+msgstr ""
+"قدم ملاحظات قصيرة حول إجابات المستخدم، مع التركيز على العمق الفني، والوضوح، "
+"والبنية. اقترح أماكن يمكن تحسينها."
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -6298,12 +6293,12 @@ msgstr "سيناريوهات ذات صلة"
 msgid "Reload page"
 msgstr "إعادة تحميل الصفحة"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:179
 #. js-lingui-explicit-id
 msgid "Remove my data from the waitlist"
 msgstr "أزل بياناتي من قائمة الانتظار"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
 #. js-lingui-explicit-id
 msgid "Removing your data from the waitlist..."
 msgstr "إزالة بياناتك من قائمة الانتظار..."
@@ -6328,7 +6323,7 @@ msgstr "النتائج أقرب مما تعتقد"
 msgid "Return"
 msgstr "عودة"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:715
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr ""
@@ -7287,7 +7282,7 @@ msgstr "تايلاندي"
 msgid "Thai Learning Plan"
 msgstr "خطة تعلم اللغة الإنجليزية"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:711
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -7917,7 +7912,7 @@ msgstr ""
 msgid "What's included?"
 msgstr "ما الذي يتضمن؟"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "ما الخطوة التالية؟"
@@ -8134,7 +8129,7 @@ msgstr "أنت <0>القائد</0> لـ {playersCount} من اللاعبين."
 msgid "You are on the right track!"
 msgstr "أنت على الطريق الصحيح!"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:186
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
 msgstr "أنت على قائمة الانتظار"
@@ -8200,7 +8195,7 @@ msgstr ""
 msgid "You will get 3 days of full access for free"
 msgstr "ستحصل على 3 أيام من الوصول الكامل مجاناً"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "أنت مستعد تمامًا!"
@@ -8216,7 +8211,7 @@ msgstr "لقد أحرزت تقدمًا مذهلاً. دعنا نواصل."
 msgid "You:"
 msgstr "أنت:"
 
-#: src/features/Auth/useDeleteAccount.tsx:77
+#: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "تم حذف حسابك بنجاح. يؤسفنا رؤيتك تذهب!"
@@ -8348,3 +8343,65 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide detailed feedback on the user's answers, focusing on technical "
+#~ "depth, clarity, and structure. Suggest specific improvements for each "
+#~ "answer."
+#~ msgstr ""
+#~ "قدم ملاحظات مفصلة حول إجابات المستخدم، مع التركيز على العمق التقني والوضوح "
+#~ "والتركيبة. اقترح تحسينات محددة لكل إجابة."
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide score breakdown on the user's answers, focusing on technical depth, "
+#~ "clarity, and structure. Return improved answers. And give hints on how to "
+#~ "answer such questions better. For each answer break down the score into "
+#~ "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+#~ "Communication (0%-100%). Structure of your answer:\n"
+#~ "## Question 1: [question here]\n"
+#~ "\n"
+#~ "## Answer:\n"
+#~ "[user's answer here]\n"
+#~ "\n"
+#~ "## Score Breakdown:\n"
+#~ "- Technical Depth: X%\n"
+#~ "- Clarity: X%\n"
+#~ "- Structure: X%\n"
+#~ "- Communication: X%\n"
+#~ "\n"
+#~ "## Improved Answer:\n"
+#~ "[improved answer here]\n"
+#~ "\n"
+#~ "## Hints for Improvement:\n"
+#~ "- [hint 1]\n"
+#~ "- [hint 2]\n"
+#~ "- [hint 3]\n"
+#~ msgstr ""
+#~ "توفير تحليل تفصيلي للدرجات على إجابات المستخدمين، مع التركيز على العمق "
+#~ "التقني، الوضوح، والبنية. تقديم إجابات محسّنة. وتقديم نصائح حول كيفية "
+#~ "الإجابة على مثل هذه الأسئلة بشكل أفضل. لكل إجابة تقسيم الدرجات إلى عمق تقني "
+#~ "(0%-100%)، الوضوح (0%-100%)، البنية (0%-100%)، والاتصال (0%-100%). هيكل "
+#~ "الإجابة:\n"
+#~ "\n"
+#~ "## السؤال 1: [السؤال هنا]\n"
+#~ "\n"
+#~ "## الإجابة:\n"
+#~ "[إجابة المستخدم هنا]\n"
+#~ "\n"
+#~ "## تحليل الدرجات:\n"
+#~ "- العمق التقني: X%\n"
+#~ "- الوضوح: X%\n"
+#~ "- البنية: X%\n"
+#~ "- الاتصال: X%\n"
+#~ "\n"
+#~ "## الإجابة المحسنة:\n"
+#~ "[الإجابة المحسنة هنا]\n"
+#~ "\n"
+#~ "## نصائح للتحسين:\n"
+#~ "- [النصيحة 1]\n"
+#~ "- [النصيحة 2]\n"
+#~ "- [النصيحة 3]"

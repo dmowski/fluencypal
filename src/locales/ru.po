@@ -687,7 +687,7 @@ msgstr "План изучения арабского"
 msgid "Architecture & Design"
 msgstr "Архитектура и дизайн"
 
-#: src/features/Auth/useDeleteAccount.tsx:61
+#: src/features/Auth/useDeleteAccount.tsx:68
 #: src/features/Header/NeedHelpModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
@@ -1277,7 +1277,7 @@ msgstr "Продолжить"
 msgid "Continue conversation"
 msgstr "Продолжить разговор"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:701
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -2432,7 +2432,7 @@ msgstr "Не удалось скопировать текст. Пожалуйс�
 msgid "Failed to copy text. Please try again."
 msgstr "Не удалось скопировать текст. Пожалуйста, попробуйте снова."
 
-#: src/features/Auth/useDeleteAccount.tsx:89
+#: src/features/Auth/useDeleteAccount.tsx:98
 #. js-lingui-explicit-id
 msgid ""
 "Failed to delete your account. Please try again later, or contact the "
@@ -2495,7 +2495,7 @@ msgstr "Принятие решения..."
 msgid "Finally"
 msgstr "Наконец"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:703
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:704
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Закончить"
@@ -6114,17 +6114,6 @@ msgstr "Отслеживание Прогресса"
 msgid "Progress tracking"
 msgstr "Отслеживание прогресса"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
-#. js-lingui-explicit-id
-msgid ""
-"Provide detailed feedback on the user's answers, focusing on technical "
-"depth, clarity, and structure. Suggest specific improvements for each "
-"answer."
-msgstr ""
-"Предоставьте подробную обратную связь по ответам пользователя, уделяя "
-"внимание технической глубине, ясности и структуре. Предложите конкретные "
-"улучшения для каждого ответа."
-
 #: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
 #. js-lingui-explicit-id
 msgid ""
@@ -6133,48 +6122,62 @@ msgid ""
 "answer such questions better. For each answer break down the score into "
 "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
 "Communication (0%-100%). Structure of your answer:\n"
-"## Question 1: [question here]\n"
+"### Question 1: \n"
+"[question here]\n"
 "\n"
-"## Answer:\n"
+"### Answer:\n"
 "[user's answer here]\n"
 "\n"
-"## Score Breakdown:\n"
+"### Score Breakdown:\n"
 "- Technical Depth: X%\n"
 "- Clarity: X%\n"
 "- Structure: X%\n"
 "- Communication: X%\n"
 "\n"
-"## Improved Answer:\n"
+"### Improved Answer:\n"
 "[improved answer here]\n"
 "\n"
-"## Hints for Improvement:\n"
+"### Hints for Improvement:\n"
 "- [hint 1]\n"
 "- [hint 2]\n"
 "- [hint 3]\n"
 msgstr ""
-"Provide score breakdown on the user's answers, focusing on technical depth, "
-"clarity, and structure. Return improved answers. And give hints on how to "
-"answer such questions better. For each answer break down the score into "
-"Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
-"Communication (0%-100%). Structure of your answer:\n"
-"## Вопрос 1: [вопрос здесь]\n"
+"Предоставьте анализ оценки ответов пользователя, сосредоточив внимание на "
+"технической глубине, ясности и структуре. Верните улучшенные ответы. И "
+"дайте подсказки о том, как лучше отвечать на такие вопросы. Для каждого "
+"ответа разложите оценку по следующим критериям: Техническая Глубина "
+"(0%-100%), Ясность (0%-100%), Структура (0%-100%), и Коммуникация "
+"(0%-100%). Структура вашего ответа:\n"
 "\n"
-"## Ответ:\n"
+"### Вопрос 1: \n"
+"[вопрос здесь]\n"
+"\n"
+"### Ответ:\n"
 "[ответ пользователя здесь]\n"
 "\n"
-"## Разбор оценки:\n"
-"- Техническая глубина: X%\n"
+"### Анализ Оценки:\n"
+"- Техническая Глубина: X%\n"
 "- Ясность: X%\n"
 "- Структура: X%\n"
 "- Коммуникация: X%\n"
 "\n"
-"## Улучшенный ответ:\n"
+"### Улучшенный Ответ:\n"
 "[улучшенный ответ здесь]\n"
 "\n"
-"## Подсказки для улучшения:\n"
+"### Подсказки для Улучшения:\n"
 "- [подсказка 1]\n"
 "- [подсказка 2]\n"
 "- [подсказка 3]"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+msgid ""
+"Provide short feedback on the user's answers, focusing on technical depth, "
+"clarity, and structure. Suggest places that could be improved."
+msgstr ""
+"Предоставьте краткий отзыв о ответах пользователя, сосредотачивая внимание "
+"на технической глубине, ясности и структуре. Предложите места, которые "
+"можно улучшить."
 
 #: src/features/RolePlay/rolePlayData.tsx:611
 #. js-lingui-explicit-id
@@ -6492,12 +6495,12 @@ msgstr "Связанные сценарии"
 msgid "Reload page"
 msgstr "Перезагрузить страницу"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:179
 #. js-lingui-explicit-id
 msgid "Remove my data from the waitlist"
 msgstr "Удалите мои данные из списка ожидания"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:177
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:178
 #. js-lingui-explicit-id
 msgid "Removing your data from the waitlist..."
 msgstr "Удаление ваших данных из списка ожидания..."
@@ -6522,7 +6525,7 @@ msgstr "Результаты ближе, чем вы думаете"
 msgid "Return"
 msgstr "Вернуть"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:714
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:715
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "Вернуться на панель управления"
@@ -7500,7 +7503,7 @@ msgstr "Тайский"
 msgid "Thai Learning Plan"
 msgstr "План Изучения Тайского"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:711
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. We "
@@ -8139,7 +8142,7 @@ msgstr "Что вы достигнете"
 msgid "What's included?"
 msgstr "Что включено?"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:699
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:700
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "Что дальше?"
@@ -8365,7 +8368,7 @@ msgstr "Вы <0>Лидер</0> {playersCount} игроков."
 msgid "You are on the right track!"
 msgstr "Вы на правильном пути!"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:185
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:186
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
 msgstr "Вы в списке ожидания"
@@ -8428,7 +8431,7 @@ msgstr "Вы получите 1 день полного доступа бесп�
 msgid "You will get 3 days of full access for free"
 msgstr "Вы получите 3 дня полного доступа бесплатно"
 
-#: src/features/Interview/data/seniorFrontendDeveloperData.ts:709
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:710
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "Вы готовы!"
@@ -8444,7 +8447,7 @@ msgstr "Вы достигли великолепных результатов. �
 msgid "You:"
 msgstr "Вы:"
 
-#: src/features/Auth/useDeleteAccount.tsx:77
+#: src/features/Auth/useDeleteAccount.tsx:84
 #. js-lingui-explicit-id
 msgid "Your account has been successfully deleted. We are sorry to see you go!"
 msgstr "Ваш аккаунт успешно удален. Нам жаль, что вы уходите!"
@@ -8579,3 +8582,65 @@ msgstr ""
 "— важно провести этот короткий разговор перед тем, как переходить к "
 "профессиональным темам. Вот несколько полезных английских фраз для начала "
 "интервью:"
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:624
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide detailed feedback on the user's answers, focusing on technical "
+#~ "depth, clarity, and structure. Suggest specific improvements for each "
+#~ "answer."
+#~ msgstr ""
+#~ "Предоставьте подробную обратную связь по ответам пользователя, уделяя "
+#~ "внимание технической глубине, ясности и структуре. Предложите конкретные "
+#~ "улучшения для каждого ответа."
+
+#: src/features/Interview/data/seniorFrontendDeveloperData.ts:671
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Provide score breakdown on the user's answers, focusing on technical depth, "
+#~ "clarity, and structure. Return improved answers. And give hints on how to "
+#~ "answer such questions better. For each answer break down the score into "
+#~ "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+#~ "Communication (0%-100%). Structure of your answer:\n"
+#~ "## Question 1: [question here]\n"
+#~ "\n"
+#~ "## Answer:\n"
+#~ "[user's answer here]\n"
+#~ "\n"
+#~ "## Score Breakdown:\n"
+#~ "- Technical Depth: X%\n"
+#~ "- Clarity: X%\n"
+#~ "- Structure: X%\n"
+#~ "- Communication: X%\n"
+#~ "\n"
+#~ "## Improved Answer:\n"
+#~ "[improved answer here]\n"
+#~ "\n"
+#~ "## Hints for Improvement:\n"
+#~ "- [hint 1]\n"
+#~ "- [hint 2]\n"
+#~ "- [hint 3]\n"
+#~ msgstr ""
+#~ "Provide score breakdown on the user's answers, focusing on technical depth, "
+#~ "clarity, and structure. Return improved answers. And give hints on how to "
+#~ "answer such questions better. For each answer break down the score into "
+#~ "Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and "
+#~ "Communication (0%-100%). Structure of your answer:\n"
+#~ "## Вопрос 1: [вопрос здесь]\n"
+#~ "\n"
+#~ "## Ответ:\n"
+#~ "[ответ пользователя здесь]\n"
+#~ "\n"
+#~ "## Разбор оценки:\n"
+#~ "- Техническая глубина: X%\n"
+#~ "- Ясность: X%\n"
+#~ "- Структура: X%\n"
+#~ "- Коммуникация: X%\n"
+#~ "\n"
+#~ "## Улучшенный ответ:\n"
+#~ "[улучшенный ответ здесь]\n"
+#~ "\n"
+#~ "## Подсказки для улучшения:\n"
+#~ "- [подсказка 1]\n"
+#~ "- [подсказка 2]\n"
+#~ "- [подсказка 3]"
