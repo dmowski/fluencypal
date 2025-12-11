@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, ReactNode, useRef } from "react";
 import { isDev } from "./isDev";
 import { useAuth } from "../Auth/useAuth";
 import * as Sentry from "@sentry/nextjs";
+import { getParamsFromStorage } from "./useUserSource";
 
 const RUN_ON_DEV_ENV = false;
 
@@ -49,6 +50,9 @@ const confirmGtag = async () => {
     console.log("Skipping gtag in dev mode");
     return;
   }
+
+  const storeInfo = getParamsFromStorage();
+
   const gtag = (window as any).gtag;
   if (!gtag) {
     console.error("gtag is not defined");
