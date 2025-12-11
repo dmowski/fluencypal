@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useEffect, ReactNode, useState, useRef } from "react";
+import { createContext, useContext, useEffect, ReactNode, useRef } from "react";
 import { isDev } from "./isDev";
 import { useAuth } from "../Auth/useAuth";
 import * as Sentry from "@sentry/nextjs";
@@ -52,7 +52,7 @@ const confirmGtag = async () => {
   const gtag = (window as any).gtag;
   if (!gtag) {
     console.error("gtag is not defined");
-    Sentry.captureMessage("gtag is not defined");
+    Sentry.captureException("gtag is not defined");
     return;
   }
 

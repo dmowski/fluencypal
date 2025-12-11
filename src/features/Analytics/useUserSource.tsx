@@ -10,67 +10,80 @@ interface UserSourceContextType {
   getParamsFromStorage: () => UserSource | null;
 }
 
+export const getParamsFromStorage = (): UserSource | null => {
+  const stored = localStorage.getItem(SOURCE_STORAGE_KEY);
+  if (!stored) return null;
+  try {
+    return JSON.parse(stored) as UserSource;
+  } catch {
+    return null;
+  }
+};
+
 const UserSourceContext = createContext<UserSourceContextType | null>(null);
 
 function useProvideUserSource(): UserSourceContextType {
   const [userSource, setUserSource] = useState<UserSource | null>(null);
-
   const isWindow = typeof window !== "undefined";
-  const urlString = isWindow ? window.location.href : "";
 
-  const getUtmParamFromUrl = (param: string): string | null => {
+  const getUrlParam = (param: string): string | null => {
     if (!isWindow) return null;
     const urlParams = new URLSearchParams(window.location.search);
-    const value = urlParams.get(param);
-    return value ? decodeURIComponent(value) || null : null;
+    return urlParams.get(param) ?? null;
   };
 
   const getSourceFromUrl = (): UserSource | null => {
     if (!isWindow) return null;
 
-    const url = new URL(urlString);
+    const url = new URL(window.location.href);
     const referrer = document.referrer || "direct";
 
-    const source: UserSource = {
+    return {
       urlPath: url.pathname + url.search,
       referrer,
-      utmSource: getUtmParamFromUrl("utm_source"),
-      utmMedium: getUtmParamFromUrl("utm_medium"),
-      utmCampaign: getUtmParamFromUrl("utm_campaign"),
-      utmTerm: getUtmParamFromUrl("utm_term"),
-      utmContent: getUtmParamFromUrl("utm_content"),
+
+      utmSource: getUrlParam("utm_source"),
+      utmMedium: getUrlParam("utm_medium"),
+      utmCampaign: getUrlParam("utm_campaign"),
+      utmTerm: getUrlParam("utm_term"),
+      utmContent: getUrlParam("utm_content"),
+
+      // New Google Ads params
+      gclid: getUrlParam("gclid"),
+      gbraid: getUrlParam("gbraid"),
+      wbraid: getUrlParam("wbraid"),
     };
-
-    return source;
-  };
-
-  const getParamsFromStorage = (): UserSource | null => {
-    const stored = localStorage.getItem(SOURCE_STORAGE_KEY);
-    if (!stored) return null;
-    try {
-      return JSON.parse(stored) as UserSource;
-    } catch {
-      return null;
-    }
   };
 
   const initUserSource = () => {
-    const sourceFromStorage = getParamsFromStorage();
-    if (sourceFromStorage) {
-      setUserSource(sourceFromStorage);
+    const existing = getParamsFromStorage();
+    if (existing) {
+      setUserSource(existing);
       return;
     }
 
-    const sourceFromUrl = getSourceFromUrl();
-    if (sourceFromUrl) {
-      localStorage.setItem(SOURCE_STORAGE_KEY, JSON.stringify(sourceFromUrl));
-      setUserSource(sourceFromUrl);
+    const fromUrl = getSourceFromUrl();
+
+    // Only store when the URL actually contains tracking params
+    const hasTrackingParams =
+      fromUrl?.gclid ||
+      fromUrl?.gbraid ||
+      fromUrl?.wbraid ||
+      fromUrl?.utmSource ||
+      fromUrl?.utmMedium ||
+      fromUrl?.utmCampaign ||
+      fromUrl?.utmContent ||
+      fromUrl?.utmTerm;
+
+    if (fromUrl && hasTrackingParams) {
+      localStorage.setItem(SOURCE_STORAGE_KEY, JSON.stringify(fromUrl));
+      setUserSource(fromUrl);
     }
   };
 
   useEffect(() => {
     initUserSource();
-  }, [urlString, isWindow]);
+  }, []);
 
   return {
     userSource,
