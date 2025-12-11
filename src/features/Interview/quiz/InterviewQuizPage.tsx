@@ -205,16 +205,34 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
 
         {stepType === "waitlist-done" && quiz.currentStep && (
           <InfoStep
-            message={quiz.currentStep.title}
-            subMessage={quiz.currentStep.subTitle || ""}
             imageUrl={quiz.currentStep.imageUrl}
             subComponent={
               <Stack
                 sx={{
-                  alignItems: "center",
                   paddingTop: "30px",
+                  alignItems: "flex-start",
+                  gap: "10px",
                 }}
               >
+                <Typography
+                  sx={{
+                    opacity: 0.8,
+                  }}
+                  variant="body2"
+                >
+                  {quiz.currentStep.title}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    //fontWeight: 660,
+                    paddingBottom: "20px",
+                    // keep new line breaks
+                    whiteSpace: "pre-line",
+                  }}
+                >
+                  {quiz.currentStep.subTitle}
+                </Typography>
                 <Button
                   variant="text"
                   color="error"

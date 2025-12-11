@@ -747,7 +747,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           id: "completion-step",
           title: i18n._("You're All Set!"),
           subTitle: i18n._(
-            "Thank you for completing the Senior Frontend Developer interview prep. We will review your answers and get back to you with full access to the platform."
+            "Thank you for completing the Senior Frontend Developer interview prep. We will review your answers and get back to you with full access to the platform.\n\nYou will be notified via email once your trial is activated.\n\nFor now, you can return to the first step and practice again. It's free forever!"
           ),
           listItems: [],
           buttonTitle: i18n._("Return to Dashboard"),
