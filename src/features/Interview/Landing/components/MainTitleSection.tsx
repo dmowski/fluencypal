@@ -15,6 +15,8 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
     <Stack
       sx={{
         paddingTop: "200px",
+        paddingBottom: "150px",
+
         alignItems: "center",
         "@media (max-width: 600px)": {
           paddingTop: "100px",

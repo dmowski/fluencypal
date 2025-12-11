@@ -35,7 +35,7 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
         alignItems: "center",
         width: "100%",
         color: "#000",
-        backgroundColor: "rgba(252, 252, 252, 0.8)",
+        backgroundColor: "#F0EFEB",
         "@media (max-width: 600px)": {
           padding: "90px 0 50px 0",
         },

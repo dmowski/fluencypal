@@ -36,61 +36,7 @@ export async function InterviewLanding({
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center", gap: "0" }}>
           {interviewData.sections.map((section, index) => {
-            //exampleQuestions
-            if (section.type === "exampleQuestions") {
-              return (
-                <ExampleQuestionsSection
-                  key={index}
-                  title={section.title}
-                  subTitle={section.subTitle}
-                  questions={section.questions}
-                  id={"example-questions"}
-                />
-              );
-            }
-
-            // techStack
-            if (section.type === "techStack") {
-              return (
-                <TechStackSection
-                  id={"tech-stack"}
-                  key={index}
-                  title={section.title}
-                  subTitle={section.subTitle}
-                  keyPoints={section.keyPoints}
-                  techGroups={section.techGroups}
-                />
-              );
-            }
-
-            // whoIsThisFor
-            if (section.type === "whoIsThisFor") {
-              return (
-                <WhoIsThisForSection
-                  id={"who-is-this-for"}
-                  key={index}
-                  title={section.title}
-                  subTitle={section.subTitle}
-                  audienceItems={section.audienceItems}
-                />
-              );
-            }
-
-            // demoSnippet
-            if (section.type === "demoSnippet") {
-              return (
-                <DemoSnippetSection
-                  id={"demo-snippet"}
-                  key={index}
-                  title={section.title}
-                  subTitle={section.subTitle}
-                  demoItems={section.demoItems}
-                  lang={lang}
-                />
-              );
-            }
-
-            //first screen
+            // 1th
             if (section.type === "firstScreen") {
               return (
                 <MainTitleSection
@@ -103,6 +49,8 @@ export async function InterviewLanding({
                 />
               );
             }
+
+            // 2th
             if (section.type === "infoCards") {
               return (
                 <InfoCards
@@ -116,6 +64,8 @@ export async function InterviewLanding({
                 />
               );
             }
+
+            // 3th
             if (section.type === "scorePreview") {
               return (
                 <ScorePreviewSection
@@ -130,6 +80,21 @@ export async function InterviewLanding({
                 />
               );
             }
+
+            // 4th
+            if (section.type === "stepInfoCard") {
+              return (
+                <StepInfoCards
+                  key={index}
+                  id="steps"
+                  title={section.title}
+                  subTitle={section.subTitle}
+                  cards={section.stepInfoCards}
+                />
+              );
+            }
+
+            // 5th
             if (section.type === "review") {
               return (
                 <ReviewCards
@@ -142,6 +107,61 @@ export async function InterviewLanding({
               );
             }
 
+            // 6th
+            if (section.type === "exampleQuestions") {
+              return (
+                <ExampleQuestionsSection
+                  key={index}
+                  title={section.title}
+                  subTitle={section.subTitle}
+                  questions={section.questions}
+                  id={"example-questions"}
+                />
+              );
+            }
+
+            // 7th
+            if (section.type === "techStack") {
+              return (
+                <TechStackSection
+                  id={"tech-stack"}
+                  key={index}
+                  title={section.title}
+                  subTitle={section.subTitle}
+                  keyPoints={section.keyPoints}
+                  techGroups={section.techGroups}
+                />
+              );
+            }
+
+            // 8th
+            if (section.type === "whoIsThisFor") {
+              return (
+                <WhoIsThisForSection
+                  id={"who-is-this-for"}
+                  key={index}
+                  title={section.title}
+                  subTitle={section.subTitle}
+                  audienceItems={section.audienceItems}
+                />
+              );
+            }
+
+            // 9th
+            if (section.type === "demoSnippet") {
+              return (
+                <DemoSnippetSection
+                  id={"demo-snippet"}
+                  key={index}
+                  title={section.title}
+                  subTitle={section.subTitle}
+                  demoItems={section.demoItems}
+                  lang={lang}
+                />
+              );
+            }
+
+            // 10th
             if (section.type === "price") {
               return (
                 <PriceCards
@@ -155,6 +175,7 @@ export async function InterviewLanding({
               );
             }
 
+            // 11th
             if (section.type === "faq") {
               return (
                 <div key={index}>
@@ -178,18 +199,8 @@ export async function InterviewLanding({
                 </div>
               );
             }
-            if (section.type === "stepInfoCard") {
-              return (
-                <StepInfoCards
-                  key={index}
-                  id="steps"
-                  title={section.title}
-                  subTitle={section.subTitle}
-                  cards={section.stepInfoCards}
-                />
-              );
-            }
 
+            // 12th
             if (section.type === "callToAction") {
               return (
                 <CtaBlock

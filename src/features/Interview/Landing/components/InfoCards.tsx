@@ -55,6 +55,7 @@ export const InfoCards = (props: InfoCardsProps) => {
       sx={{
         padding: "150px 0",
         width: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.2)",
 
         alignItems: "center",
         "@media (max-width: 600px)": {
