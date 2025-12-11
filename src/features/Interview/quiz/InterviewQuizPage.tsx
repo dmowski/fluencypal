@@ -64,6 +64,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
             message={quiz.currentStep.title}
             subMessage={quiz.currentStep.subTitle || ""}
             imageUrl={quiz.currentStep.imageUrl}
+            actionButtonTitle={quiz.currentStep.buttonTitle || i18n._("Next")}
             width={width}
             subComponent={
               <Stack
@@ -130,16 +131,34 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
         {stepType === "analyze-inputs" && quiz.currentStep && (
           <AuthWall>
             <InfoStep
-              message={quiz.currentStep.title}
-              subMessage={quiz.currentStep.subTitle || ""}
               subComponent={
                 <Stack
                   sx={{
                     paddingTop: "30px",
+                    paddingBottom: "40px",
                     width: "100%",
                   }}
                 >
-                  {quiz.survey?.results[quiz.currentStep.id]?.markdownFeedback ? (
+                  <Typography
+                    sx={{
+                      opacity: 0.8,
+                    }}
+                    variant="body2"
+                  >
+                    {quiz.currentStep.title}
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: 660,
+                      paddingBottom: "20px",
+                    }}
+                  >
+                    {quiz.currentStep.subTitle}
+                  </Typography>
+
+                  {quiz.survey?.results[quiz.currentStep.id]?.markdownFeedback &&
+                  !quiz.isAnalyzingInputs[quiz.currentStep.id] ? (
                     <Stack>
                       <Markdown>
                         {quiz.survey?.results[quiz.currentStep.id]?.markdownFeedback || ""}
@@ -154,7 +173,6 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
                     >
                       <Typography
                         variant="body2"
-                        align="center"
                         sx={{
                           opacity: 0.8,
                         }}
@@ -172,6 +190,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
                   ) : null}
                 </Stack>
               }
+              actionButtonTitle={quiz.currentStep.buttonTitle}
               disabled={quiz.isAnalyzingInputs[quiz.currentStep.id]}
               onClick={() => quiz.nextStep()}
             />

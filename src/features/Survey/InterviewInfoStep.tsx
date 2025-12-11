@@ -54,8 +54,8 @@ export const InterviewInfoStep = ({
           <img
             src={imageUrl}
             style={{
-              width: "190px",
-              height: "auto",
+              height: "190px",
+              width: "max-content",
             }}
           />
         )}

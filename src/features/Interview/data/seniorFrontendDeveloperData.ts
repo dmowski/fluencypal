@@ -531,7 +531,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       jobTitle: i18n._("Senior Frontend Developer"),
       title: i18n._("Senior Frontend Developer interview prep that gets you more offers"),
       subTitle: i18n._(
-        "Practice real Senior Frontend Developer interview questions and get a personalized action plan to fix your gaps before the next interview."
+        "Practice real Senior Frontend Developer interview questions and get a personalized action plan to address your gaps before the next interview."
       ),
       keywords: [
         i18n._("senior frontend interview"),
@@ -567,12 +567,12 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
         {
           type: "info",
           id: "intro-step",
-          imageUrl: "/interview/zero.png",
-          title: i18n._("Welcome to your Senior Frontend Developer Interview Prep"),
+          imageUrl: "https://miro.medium.com/v2/resize:fit:1000/0*3MEWjTpT0sZF-LZM.png",
+          title: i18n._("Welcome to Your Senior Frontend Developer Interview Prep"),
           subTitle: i18n._(
-            "In this session, you'll answer questions designed for senior frontend roles. After responses, you'll receive  feedback to help you refine your answers and improve your interview skills."
+            "In this session, you'll answer questions designed for senior frontend roles. After responding, you'll receive feedback to help you refine your answers and improve your interview skills."
           ),
-          buttonTitle: i18n._("Start Interview Prep"),
+          buttonTitle: i18n._("Start Test"),
           listItems: [
             {
               title: i18n._("Real senior-level frontend questions"),
@@ -580,6 +580,25 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
             },
             { title: i18n._("AI-driven feedback on your answers"), iconName: "check" },
             { title: i18n._("Personalized improvement suggestions"), iconName: "check" },
+          ],
+        },
+        {
+          type: "info",
+          id: "don-t-rush",
+          imageUrl:
+            "https://cdn-useast1.kapwing.com/static/templates/roll-safe-think-about-it-meme-template-regular-116fbf89.webp",
+          title: i18n._("Don't Rush Your Answers"),
+          subTitle: i18n._(
+            "No one gets a job just because they answer quickly. Take your time to think through your responses carefully."
+          ),
+          buttonTitle: i18n._("Got it"),
+          listItems: [
+            { title: i18n._("Reflect before answering"), iconName: "brain" },
+            {
+              title: i18n._("You can pause and think"),
+              iconName: "pause",
+            },
+            { title: i18n._("Re-record if needed"), iconName: "repeat" },
           ],
         },
         {
@@ -599,7 +618,6 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
             { title: i18n._("Keep it concise and relevant"), iconName: "check" },
           ],
         },
-        // * RecordAudioQuizStep - Ask another question and record audio (Technical question)
         {
           type: "record-audio",
           id: "technical-question-step",
@@ -608,9 +626,18 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
             "How would you design the frontend architecture for a large-scale dashboard with real-time data updates?"
           ),
           buttonTitle: i18n._("Record Answer"),
-          listItems: [],
+          listItems: [
+            {
+              title: i18n._("Discuss component structure and state management"),
+              iconName: "puzzle",
+            },
+            {
+              title: i18n._("Address performance considerations"),
+              iconName: "gauge",
+            },
+            { title: i18n._("Mention scalability and maintainability"), iconName: "expand" },
+          ],
         },
-        // * RecordAudioQuizStep - Ask another question and record audio (Behavioral question)
         {
           type: "record-audio",
           id: "behavioral-question-step",
@@ -619,9 +646,18 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
             "Describe a time you led a frontend refactor or migration. What challenges did you face and how did you overcome them?"
           ),
           buttonTitle: i18n._("Record Answer"),
-          listItems: [],
+          listItems: [
+            {
+              title: i18n._("Use the STAR method (Situation, Task, Action, Result)"),
+              iconName: "star",
+            },
+            {
+              title: i18n._("Highlight your leadership and problem-solving skills"),
+              iconName: "users",
+            },
+            { title: i18n._("Be specific about your role"), iconName: "user-check" },
+          ],
         },
-        // * AnalyzeInputsQuizStep - show AI analysis of user's answers (Markdown)
         {
           type: "analyze-inputs",
           id: "ai-feedback-step-1",
@@ -629,19 +665,19 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           subTitle: i18n._("Here's personalized feedback on your responses to help you improve."),
           buttonTitle: i18n._("Continue"),
           aiSystemPrompt: i18n._(
-            "Provide short feedback on the user's answers, focusing on technical depth, clarity, and structure. Suggest places that could be improved."
+            "Provide brief feedback on the user's answers, focusing on technical depth, clarity, and structure. Suggest areas that could be improved."
           ),
           aiResponseFormat: "markdown",
         },
-        // * InfoQuizStep - On the next step, you will see score analysis
         {
           type: "info",
           id: "score-intro-step",
-          title: i18n._("Next: Your Interview Readiness Score"),
+          title: i18n._("Your Interview Readiness Score"),
           subTitle: i18n._(
-            "On the next step, you'll receive a score analysis of your answers and example answers to help you improve."
+            "On the next step, you'll receive a score analysis of your answers and example responses to help you improve."
           ),
-          imageUrl: "https://media.tenor.com/IL7UVyrF94oAAAAM/so-whats-the-next-step-cleo.gif",
+          imageUrl:
+            "https://cdn-useast1.kapwing.com/static/templates/x-x-everywhere-meme-template-full-96173e84.webp",
           listItems: [
             {
               title: i18n._("Detailed score breakdown"),
@@ -658,17 +694,14 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           ],
           buttonTitle: i18n._("Continue"),
         },
-
-        // PaywallQuizStep - show paywall to verify credit card, choosing a plan and actual payment will be done later if user proceeds
         {
           type: "paywall",
           id: "upgrade-step",
-          title: i18n._("Unlock Your Trial and get Full Feedback"),
+          title: i18n._("Unlock Your Trial and Get Full Feedback"),
           subTitle: i18n._("No payment required after trial. You decide when to pay."),
           listItems: [],
           buttonTitle: i18n._("Start Trial"),
         },
-        // AnalyzeInputsQuizStep - show AI analysis of the rest user's answers
         {
           type: "analyze-inputs",
           id: "ai-feedback-step-2",
@@ -676,7 +709,7 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           subTitle: i18n._("Here's the rest of your personalized feedback to help you improve."),
           buttonTitle: i18n._("Continue"),
           aiSystemPrompt: i18n._(
-            `Provide score breakdown on the user's answers, focusing on technical depth, clarity, and structure. Return improved answers. And give hints on how to answer such questions better. For each answer break down the score into Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and Communication (0%-100%). Structure of your answer:
+            `Provide a score breakdown of the user's answers, focusing on technical depth, clarity, and structure. Return improved answers and give hints on how to answer such questions better. For each answer, break down the score into Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and Communication (0%-100%). Structure your response as follows:
 ### Question 1: 
 [question here]
 
@@ -700,7 +733,6 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           ),
           aiResponseFormat: "markdown",
         },
-        // InfoQuizStep - What's next: feature list of the app
         {
           type: "info",
           id: "whats-next-step",
@@ -710,13 +742,12 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
           ),
           buttonTitle: i18n._("Finish"),
         },
-        // * WaitlistDoneQuizStep - final step indicating completion
         {
           type: "waitlist-done",
           id: "completion-step",
           title: i18n._("You're All Set!"),
           subTitle: i18n._(
-            "Thank you for completing the Senior Frontend Developer interview prep. We will review your answer and get back to you with full access to the platform."
+            "Thank you for completing the Senior Frontend Developer interview prep. We will review your answers and get back to you with full access to the platform."
           ),
           listItems: [],
           buttonTitle: i18n._("Return to Dashboard"),
