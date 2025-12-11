@@ -34,6 +34,8 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
         padding: "150px 0",
         alignItems: "center",
         width: "100%",
+        color: "#000",
+        backgroundColor: "rgba(252, 252, 252, 0.8)",
         "@media (max-width: 600px)": {
           padding: "90px 0 50px 0",
         },
@@ -91,7 +93,7 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
                   width: "100%",
                   borderRadius: "12px",
                   boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.01)",
-                  backgroundColor: "rgba(255, 255, 255, 0.03)",
+                  backgroundColor: "rgba(255, 255, 255, 0.9)",
                   justifyContent: "space-between",
                   "@media (max-width: 600px)": {
                     padding: "30px 20px 30px 20px",
@@ -111,7 +113,6 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
                       fontSize: "16px",
                       fontStyle: "italic",
                       lineHeight: 1.6,
-                      color: "#fff",
                       opacity: 0.9,
                     }}
                   >
@@ -136,8 +137,8 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
                         alignItems: "center",
                         justifyContent: "center",
                         fontWeight: 600,
-                        fontSize: "16px",
                         color: "#fff",
+                        fontSize: "16px",
                       }}
                     >
                       {initials}
@@ -157,7 +158,6 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
                         variant="body2"
                         sx={{
                           fontSize: "14px",
-                          color: "#fff",
                           opacity: 0.6,
                         }}
                       >
