@@ -53,6 +53,7 @@ export const StepInfoCards = (props: InfoCardsProps) => {
       id={props.id}
       sx={{
         padding: "150px 0",
+        backgroundColor: "rgba(0, 0, 0, 0.2)",
         alignItems: "center",
         width: "100%",
         "@media (max-width: 600px)": {
