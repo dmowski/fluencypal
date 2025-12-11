@@ -16,6 +16,7 @@ import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { Clock, Trash } from "lucide-react";
 import { useDeleteAccount } from "@/features/Auth/useDeleteAccount";
+import { InterviewInfoStep } from "@/features/Survey/InterviewInfoStep";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;
@@ -31,6 +32,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
   const deleteAccount = useDeleteAccount({ startPage: quiz.mainPageUrl });
 
   const survey = quiz.survey;
+  const width = "600px";
 
   return (
     <Stack
@@ -48,19 +50,21 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
         isFirstStep={quiz.isFirstStep}
         prevStep={quiz.prevStep}
         progress={quiz.progress}
+        width={width}
       />
       <Stack
         sx={{
-          maxWidth: "600px",
+          maxWidth: width,
           padding: "0 10px",
           width: "100%",
         }}
       >
         {stepType === "info" && quiz.currentStep && (
-          <InfoStep
+          <InterviewInfoStep
             message={quiz.currentStep.title}
             subMessage={quiz.currentStep.subTitle || ""}
             imageUrl={quiz.currentStep.imageUrl}
+            width={width}
             subComponent={
               <Stack
                 sx={{
@@ -78,9 +82,36 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
         {stepType === "record-audio" && quiz.currentStep && (
           <AuthWall>
             <RecordUserAudio
-              title={quiz.currentStep.title}
-              subTitle={quiz.currentStep.subTitle}
-              subTitleComponent={<IconTextList listItems={quiz.currentStep.listItems || []} />}
+              title={""}
+              subTitle={""}
+              subTitleComponent={
+                <Stack
+                  sx={{
+                    gap: "0px",
+                    paddingBottom: "40px",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      opacity: 0.8,
+                    }}
+                    variant="body2"
+                  >
+                    {quiz.currentStep.title}
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: 660,
+                      paddingBottom: "20px",
+                    }}
+                  >
+                    {quiz.currentStep.subTitle}
+                  </Typography>
+
+                  <IconTextList listItems={quiz.currentStep.listItems || []} />
+                </Stack>
+              }
               transcript={survey?.answers[quiz.currentStep.id]?.answerTranscription || ""}
               minWords={MIN_CHARACTERS_FOR_TRANSCRIPT}
               lang={lang}
@@ -91,6 +122,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
                   combinedTranscript
                 );
               }}
+              width={width}
             />
           </AuthWall>
         )}

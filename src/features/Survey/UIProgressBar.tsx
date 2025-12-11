@@ -10,6 +10,7 @@ interface UIProgressBarProps {
   isFirstStep: boolean;
   progress: number;
   onBackClick: () => void;
+  width: string;
 }
 
 export const UIProgressBar = ({
@@ -18,6 +19,7 @@ export const UIProgressBar = ({
   isFirstStep,
   progress,
   onBackClick,
+  width,
 }: UIProgressBarProps) => {
   return (
     <>
@@ -34,6 +36,7 @@ export const UIProgressBar = ({
           background: "linear-gradient(to top, rgba(10, 18, 30, 0), rgba(10, 18, 30, 1))",
           position: "fixed",
           width: "100dvw",
+
           left: "0",
           top: 0,
           padding: "0 0 50px 0",
@@ -61,7 +64,7 @@ export const UIProgressBar = ({
       >
         <Stack
           sx={{
-            width: "min(600px, calc(100dvw - 20px))",
+            width: `min(${width}, calc(100dvw - 20px))`,
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",

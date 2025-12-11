@@ -11,6 +11,7 @@ export const FooterButton = ({
   endIcon,
   color,
   aboveButtonComponent,
+  width,
 }: {
   disabled?: boolean;
   title: string;
@@ -19,6 +20,7 @@ export const FooterButton = ({
   endIcon?: ReactNode;
   color?: "primary" | "success" | "error";
   aboveButtonComponent?: ReactNode;
+  width?: string;
 }) => {
   const { bottomOffset } = useWindowSizes();
   return (
@@ -67,7 +69,10 @@ export const FooterButton = ({
           disabled={disabled}
           size="large"
           sx={{
-            width: "min(600px, calc(100dvw - 20px))",
+            width: `min(${width || "600px"}, calc(100dvw - 20px))`,
+            paddingTop: "12px",
+            paddingBottom: "12px",
+            borderRadius: "16px",
           }}
           fullWidth
           startIcon={startIcon}

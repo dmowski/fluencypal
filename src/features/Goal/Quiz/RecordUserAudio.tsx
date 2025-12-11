@@ -21,6 +21,7 @@ export const RecordUserAudio = ({
   isLoading,
   lang,
   nextStep,
+  width,
 }: {
   transcript: string;
   minWords: number;
@@ -31,6 +32,7 @@ export const RecordUserAudio = ({
   isLoading?: boolean;
   lang: SupportedLanguage;
   nextStep: () => void;
+  width?: string;
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -75,20 +77,26 @@ export const RecordUserAudio = ({
             gap: "15px",
           }}
         >
-          <Stack>
-            <Typography variant="h6" className={isLoading ? "loading-shimmer" : ""}>
-              {title}
-            </Typography>
-            <Typography
-              variant="caption"
-              className={isLoading ? "loading-shimmer" : ""}
-              sx={{
-                opacity: 0.8,
-              }}
-            >
-              {subTitle}
-            </Typography>
-          </Stack>
+          {(title || subTitle) && (
+            <Stack>
+              {title && (
+                <Typography variant="h6" className={isLoading ? "loading-shimmer" : ""}>
+                  {title}
+                </Typography>
+              )}
+              {subTitle && (
+                <Typography
+                  variant="caption"
+                  className={isLoading ? "loading-shimmer" : ""}
+                  sx={{
+                    opacity: 0.8,
+                  }}
+                >
+                  {subTitle}
+                </Typography>
+              )}
+            </Stack>
+          )}
           <Stack>{subTitleComponent}</Stack>
           <RecordUserAudioAnswer
             transcript={transcript}
@@ -110,6 +118,7 @@ export const RecordUserAudio = ({
         disabled={
           isLoading || (recorder.isRecording && wordsCount >= minWords) || recorder.isTranscribing
         }
+        width={width}
         onClick={async () => {
           if (transcript && wordsCount >= minWords) {
             if (recorder.isRecording) {

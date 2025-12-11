@@ -573,7 +573,14 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
             "In this session, you'll answer questions designed for senior frontend roles. After responses, you'll receive  feedback to help you refine your answers and improve your interview skills."
           ),
           buttonTitle: i18n._("Start Interview Prep"),
-          listItems: [],
+          listItems: [
+            {
+              title: i18n._("Real senior-level frontend questions"),
+              iconName: "check",
+            },
+            { title: i18n._("AI-driven feedback on your answers"), iconName: "check" },
+            { title: i18n._("Personalized improvement suggestions"), iconName: "check" },
+          ],
         },
         {
           type: "record-audio",

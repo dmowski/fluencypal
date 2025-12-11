@@ -13,6 +13,7 @@ export const ProgressBar = () => {
       isFirstStep={isFirstStep}
       prevStep={prevStep}
       progress={progress}
+      width="600px"
     />
   );
 };

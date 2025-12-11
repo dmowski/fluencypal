@@ -11,12 +11,14 @@ export const QuizProgressBar = ({
   isFirstStep,
   prevStep,
   progress,
+  width,
 }: {
   navigateToMainPage: () => void;
   isCanGoToMainPage: boolean;
   isFirstStep: boolean;
   prevStep: () => void;
   progress: number;
+  width: string;
 }) => {
   const { topOffset } = useWindowSizes();
   const tgNavigation = useTgNavigation();
@@ -41,6 +43,7 @@ export const QuizProgressBar = ({
       isFirstStep={isFirstStep}
       progress={progress}
       onBackClick={handleBackClick}
+      width={width}
     />
   );
 };
