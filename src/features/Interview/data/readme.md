@@ -19,7 +19,7 @@ This folder contains modular data builders for role-specific interview landing p
     - `priceSection.ts`
     - `faqSection.ts`
   - Shared helpers:
-    - `quizData.ts` — returns quiz data for the role
+    - `quizData.ts` — returns quiz data for the role (see pattern below)
     - `techData.ts` — returns tech labels and icons by language
 - `data.tsx` — Role data registry and consumer utilities used across Interview features
 
@@ -44,9 +44,9 @@ All generators receive `lang: SupportedLanguage` and call `getI18nInstance(lang)
 
 3. Add role-specific helpers:
 
-   - `quizData.ts` for backend quiz questions
-   - `techData.ts` for backend tech labels
-   - `coreData.ts` for basic role metadata (`id`, `jobTitle`, `title`, `keywords`, `category`)
+- `quizData.ts` for backend quiz questions — follow the same shape as the frontend `quizData.ts` (localized `title`, optional `description`, and `questions` with `id`, `type`, `question`, `options`, and `correctAnswerIndex`). Use `import { InterviewQuiz } from "../../types"` and return `InterviewQuiz`.
+- `techData.ts` for backend tech labels
+- `coreData.ts` for basic role metadata (`id`, `jobTitle`, `title`, `keywords`, `category`)
 
 4. Assemble the page data:
    - Create `backendDeveloperData.ts` that imports the generators and returns:
@@ -105,7 +105,73 @@ When adding a new role, make sure you:
 
 Example commands:
 
-```zsh
+````zsh
 pnpm typecheck
 pnpm test
+
+### QuizData / InterviewQuiz Pattern
+
+Frontend example: `src/features/Interview/data/frontend/quizData.ts`
+
+Backend example: `src/features/Interview/data/backend/quizData.ts`
+
+Both export a function with the signature `getXyzQuizData(lang: SupportedLanguage): InterviewQuiz` and return localized steps:
+
+```ts
+export const getCsharpBackendDeveloperQuizData = (lang: SupportedLanguage): InterviewQuiz => {
+  const i18n = getI18nInstance(lang);
+  return {
+    steps: [
+      {
+        type: "info",
+        id: "intro",
+        title: i18n._("C# Backend Interview Readiness Test"),
+        subTitle: i18n._("Assess readiness across APIs, databases, concurrency, and design."),
+        buttonTitle: i18n._("Start"),
+      },
+      {
+        type: "record-audio",
+        id: "q-intro-yourself",
+        title: i18n._("Introduce yourself"),
+        subTitle: i18n._("Describe your backend experience in .NET."),
+        buttonTitle: i18n._("Record answer"),
+      },
+      {
+        type: "analyze-inputs",
+        id: "ai-analysis-1",
+        title: i18n._("Preliminary analysis"),
+        subTitle: i18n._("See strengths and gaps."),
+        buttonTitle: i18n._("Continue"),
+        aiSystemPrompt: "Analyze backend interview answers in markdown.",
+        aiResponseFormat: "markdown",
+      },
+      {
+        type: "paywall",
+        id: "upgrade",
+        title: i18n._("Unlock full analysis"),
+        subTitle: i18n._("Get detailed feedback and practice."),
+        buttonTitle: i18n._("Continue"),
+      },
+      {
+        type: "waitlist-done",
+        id: "done",
+        title: i18n._("You're set!"),
+        subTitle: i18n._("Next steps are ready."),
+        buttonTitle: i18n._("Finish"),
+      },
+    ],
+  };
+};
+````
+
+## Linting
+
+Use linting to validate code style and basic correctness:
+
+```zsh
+pnpm lint
+```
+
+```
+
 ```
