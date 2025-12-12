@@ -1,7 +1,7 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { InterviewCategory, InterviewData } from "./types";
-import { getSeniorFrontendDeveloperData } from "./data/seniorFrontendDeveloperData";
+import { getSeniorFrontendDeveloperData } from "./data/frontend/seniorFrontendDeveloperData";
 
 export interface InterviewAllData {
   interviews: InterviewData[];

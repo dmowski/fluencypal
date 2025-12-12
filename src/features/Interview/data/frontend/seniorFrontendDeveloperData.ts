@@ -13,7 +13,7 @@ import {
   TechItem,
   TechStackSection,
   WhoIsThisForSection,
-} from "../types";
+} from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import {
