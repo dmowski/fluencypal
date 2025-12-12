@@ -157,11 +157,17 @@ const AnalyticsContext = createContext<AnalyticsContextType | undefined>(undefin
 export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
   const auth = useAuth();
   const isInitialized = useRef(false);
+
+  const isDeveloper = auth.userInfo?.email?.includes("dmowski") || false;
   useEffect(() => {
     const isWindow = typeof window !== "undefined";
     if ((isDev() && !RUN_ON_DEV_ENV) || !auth.uid || isInitialized.current || !isWindow) {
       return;
     }
+    if (isDeveloper) {
+      return;
+    }
+
     isInitialized.current = true;
     initSentry();
     initHotjar();
