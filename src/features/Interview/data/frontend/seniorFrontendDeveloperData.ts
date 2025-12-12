@@ -10,7 +10,6 @@ import {
   ReviewSection,
   ScorePreviewSection,
   StepInfoCardSection,
-  TechItem,
   TechStackSection,
   WhoIsThisForSection,
 } from "../../types";
