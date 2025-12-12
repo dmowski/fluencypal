@@ -45,12 +45,8 @@ export const TechStackSection = (props: TechStackSectionProps) => {
             flex: "0 0 45%",
             gap: "24px",
 
-            position: "sticky",
-            top: "100px",
             height: "max-content",
             "@media (max-width: 900px)": {
-              position: "static",
-              top: "auto",
               flex: "1",
             },
           }}
