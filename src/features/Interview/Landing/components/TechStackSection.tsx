@@ -39,7 +39,6 @@ export const TechStackSection = (props: TechStackSectionProps) => {
           },
         }}
       >
-        {/* Left column: Title, subtitle, key points */}
         <Stack
           sx={{
             flex: "0 0 45%",
