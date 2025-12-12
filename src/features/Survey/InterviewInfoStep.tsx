@@ -51,11 +51,14 @@ export const InterviewInfoStep = ({
         }}
       >
         {imageUrl && (
-          <img
+          <Stack
+            component={"img"}
             src={imageUrl}
-            style={{
-              height: "190px",
-              width: "max-content",
+            sx={{
+              width: "90%",
+              "@media (max-width: 600px)": {
+                width: "100%",
+              },
             }}
           />
         )}

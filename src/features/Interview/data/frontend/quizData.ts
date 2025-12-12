@@ -45,6 +45,18 @@ export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): Int
         ],
       },
       {
+        type: "info",
+        id: "mic-access-step",
+        imageUrl:
+          "https://circl.es/wp-content/uploads/2024/02/Screenshot-2024-02-06-at-12.53.38-1-1024x780.png",
+        title: i18n._("Enable Microphone Access"),
+        subTitle: i18n._(
+          "In the next step, you'll need to record audio. Please verify your microphone is ready and allow access when asked."
+        ),
+        listItems: [],
+        buttonTitle: i18n._("Continue"),
+      },
+      {
         type: "record-audio",
         id: "introduce-yourself-step",
         title: i18n._("Introduce Yourself"),
