@@ -1,5 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { H1, H1SubTitle } from "./Typography";
+import { MoveRight } from "lucide-react";
 
 export interface MainTitleSectionProps {
   label: string;
@@ -64,10 +65,11 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
           color="info"
           sx={{
             marginTop: "32px",
-            padding: "14px 32px",
+            padding: "14px 45px 14px 48px",
             borderRadius: "48px",
             fontSize: "18px",
           }}
+          endIcon={<MoveRight />}
         >
           {props.buttonTitle}
         </Button>
