@@ -1,12 +1,9 @@
-import type { ForwardRefExoticComponent, RefAttributes } from "react";
-import type { LucideProps } from "lucide-react";
 import { Button, Stack, Typography } from "@mui/material";
 import { CircleCheck } from "lucide-react";
 import { H2, SubTitle } from "./Typography";
 
 export interface Price {
   id: string;
-  icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
   badge?: string;
   badgeIcon?: string;
   label: string;
@@ -102,9 +99,6 @@ export const PriceCards = ({
           }}
         >
           {prices.map((price, index) => {
-            const Icon = price.icon;
-            const config = iconConfigs[index % iconConfigs.length];
-
             return (
               <Stack
                 key={index}

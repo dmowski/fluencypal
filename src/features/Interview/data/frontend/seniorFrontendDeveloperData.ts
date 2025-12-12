@@ -15,18 +15,6 @@ import {
 } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
-import {
-  Brain,
-  Briefcase,
-  FileText,
-  MessageSquare,
-  PhoneCall,
-  Sparkles,
-  Star,
-  TrendingUp,
-  Video,
-  Zap,
-} from "lucide-react";
 import { getSeniorFrontendDeveloperQuizData } from "./quizData";
 import { getTechData } from "./techData";
 
@@ -40,7 +28,6 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
     prices: [
       {
         id: "1-week-sprint",
-        icon: Zap,
         badgeIcon: "⚡",
         badge: i18n._("In a hurry? Perfect for last-minute interviews"),
         label: i18n._("1-Week Sprint"),
@@ -58,7 +45,6 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       },
       {
         id: "monthly-plan",
-        icon: Star,
         badgeIcon: "⭐",
         badge: i18n._("Best for most job seekers"),
         label: i18n._("Monthly Plan"),
@@ -79,7 +65,6 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       },
       {
         id: "4-month-plan",
-        icon: Briefcase,
         badgeIcon: "🎯",
         badge: i18n._("For long job searches & career growth"),
         label: i18n._("4-Month Plan"),
@@ -137,19 +122,19 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
     subTitle: i18n._("A proven method that delivers measurable results"),
     stepInfoCards: [
       {
-        icon: Video,
+        iconName: "video",
         label: i18n._("Step 1"),
         title: i18n._("Real interview simulation"),
         description: i18n._("Practice in real interview conditions — no tutors needed."),
       },
       {
-        icon: Brain,
+        iconName: "brain",
         label: i18n._("Step 2"),
         title: i18n._("AI feedback that matters"),
         description: i18n._("Improve your impact, structure, clarity, and delivery."),
       },
       {
-        icon: FileText,
+        iconName: "file-text",
         label: i18n._("Step 3"),
         title: i18n._("Personalized answer scripts"),
         description: i18n._("Based on your CV, experience, and target role."),
@@ -253,28 +238,28 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
     buttonTitle: i18n._("Start Your Interview Test"),
     infoCards: [
       {
-        icon: MessageSquare,
+        iconName: "message-square",
         title: i18n._("Master technical leadership questions"),
         description: i18n._(
           "Demonstrate expertise in architecture decisions, code reviews, and mentoring junior developers."
         ),
       },
       {
-        icon: Sparkles,
+        iconName: "sparkles",
         title: i18n._("Showcase system design thinking"),
         description: i18n._(
           "Articulate scalable solutions, performance optimization, and frontend architecture patterns."
         ),
       },
       {
-        icon: PhoneCall,
+        iconName: "phone-call",
         title: i18n._("Stand out in behavioral rounds"),
         description: i18n._(
           "Share compelling stories about cross-team collaboration, conflict resolution, and project ownership."
         ),
       },
       {
-        icon: TrendingUp,
+        iconName: "trending-up",
         title: i18n._("Negotiate senior-level compensation"),
         description: i18n._(
           "Build confidence to discuss equity, benefits, and salary packages that match your experience."

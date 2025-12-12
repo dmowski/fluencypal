@@ -1,10 +1,9 @@
-import type { ForwardRefExoticComponent, RefAttributes } from "react";
-import type { LucideProps } from "lucide-react";
 import { Button, Stack, Typography } from "@mui/material";
 import { H2, SubTitle } from "./Typography";
+import { DynamicIcon, IconName } from "lucide-react/dynamic";
 
 export interface InfoCard {
-  icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+  iconName: IconName;
   title: string;
   description: string;
 }
@@ -100,7 +99,6 @@ export const InfoCards = (props: InfoCardsProps) => {
           }}
         >
           {props.cards.map((card, index) => {
-            const Icon = card.icon;
             return (
               <Stack
                 key={index}
@@ -137,7 +135,11 @@ export const InfoCards = (props: InfoCardsProps) => {
                       boxShadow: "2px 2px 10px rgba(0, 0, 0, 0.2)",
                     }}
                   >
-                    <Icon size={24} color={iconColors[index].iconColor} />
+                    <DynamicIcon
+                      name={card.iconName}
+                      size={24}
+                      color={iconColors[index].iconColor}
+                    />
                   </Stack>
 
                   <Typography
