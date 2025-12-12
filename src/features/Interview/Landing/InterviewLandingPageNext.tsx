@@ -2,7 +2,7 @@ import { generateMetadataInfo } from "@/features/SEO/metadata";
 import type { Metadata } from "next";
 import { SupportedLanguage, supportedLanguages } from "../../Lang/lang";
 import { NotFoundPage } from "../../NotFound/NotFoundPage";
-import { getAllInterviews } from "../data";
+import { getAllInterviews } from "../data/data";
 import { InterviewLanding } from "./InterviewLanding";
 
 export interface InterviewPageProps {

@@ -1,5 +1,5 @@
 import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
-import { getAllInterviews } from "../data";
+import { getAllInterviews } from "../data/data";
 import type { Metadata } from "next";
 import { generateMetadataInfo } from "@/features/SEO/metadata";
 

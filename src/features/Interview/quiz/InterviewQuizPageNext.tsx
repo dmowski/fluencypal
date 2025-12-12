@@ -1,5 +1,5 @@
 import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
-import { getAllInterviews } from "../data";
+import { getAllInterviews } from "../data/data";
 import { NotFoundPage } from "@/features/NotFound/NotFoundPage";
 import { InterviewQuizPage } from "./InterviewQuizPage";
 import { WebViewWall } from "@/features/Auth/WebViewWall";

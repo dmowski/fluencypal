@@ -9,7 +9,7 @@ This folder contains modular data builders for role-specific interview landing p
   - Section generators (each returns a typed section): `firstScreenSection.ts`, `infoCardsSection.ts`, `scorePreviewSection.ts`, `stepInfoSection.ts`, `reviewSection.ts`, `exampleQuestionsSection.ts`, `techStackSection.ts`, `whoIsThisForSection.ts`, `demoSnippetSection.ts`, `priceSection.ts`, `faqSection.ts`
   - Shared helpers: `quizData.ts` (quiz steps), `techData.ts` (tech labels and logos)
 - `backend/` — Section generators and data for the C# Backend Developer page (mirrors the frontend structure with backend-specific content)
-- `../data.tsx` — Role data registry and consumer utilities used across Interview features
+- `./data.tsx` — Role data registry and consumer utilities used across Interview features
 
 ## Types
 
@@ -34,7 +34,7 @@ All generators receive `lang: SupportedLanguage` and call `getI18nInstance(lang)
    - `techData.ts` — centralize tech items (labels and logos) and localize labels via `i18n._`.
    - `coreData.ts` — basic role metadata (`id`, `jobTitle`, `title`, `keywords`, `category`).
 4. Assemble the page data in `csharpBackendDeveloperData.ts` (or equivalent) by importing section generators and helpers, then returning `InterviewData`.
-5. Register the role in `src/features/Interview/data.tsx` so consumers can request the data by role id.
+5. Register the role in `src/features/Interview/data/data.tsx` so consumers can request the data by role id.
 
 ## Tech data helper (backend example)
 
@@ -47,9 +47,12 @@ import { getI18nInstance } from "@/appRouterI18n";
 
 export const getBackendTechData = (lang: SupportedLanguage) => {
   const i18n = getI18nInstance(lang);
-  const dotnet: TechItem = { label: i18n._(".NET"), logoUrl: "https://cdn.simpleicons.org/dotnet/512BD4" };
+  const dotnet: TechItem = {
+    label: i18n._(".NET"),
+    logoUrl: "https://cdn.simpleicons.org/dotnet/512BD4",
+  };
   // ... other tech items
-  return { dotnet, "aspnet-core": aspnetCore, /* etc. */ } as const;
+  return { dotnet, "aspnet-core": aspnetCore /* etc. */ } as const;
 };
 ```
 
@@ -65,7 +68,7 @@ items: [tech.dotnet, tech["aspnet-core"], tech["ef-core"], tech.csharp];
 techItems: [tech["system-design"], tech.redis];
 ```
 
-## `src/features/Interview/data.tsx`
+## `src/features/Interview/data/data.tsx`
 
 This file acts as the central registry and access point for role data across the Interview feature. Typical responsibilities:
 
@@ -149,7 +152,6 @@ export const getCsharpBackendDeveloperQuizData = (lang: SupportedLanguage): Inte
 - Run linting to validate code style and basic correctness.
 
 ```zsh
-pnpm typecheck
 pnpm test
 pnpm lint
 ```

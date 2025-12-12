@@ -4,7 +4,7 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { InterviewCard } from "./InterviewCard";
-import { getAllInterviews } from "../../data";
+import { getAllInterviews } from "../../data/data";
 
 interface ListInterviewProps {
   selectedCategoryId?: string;
