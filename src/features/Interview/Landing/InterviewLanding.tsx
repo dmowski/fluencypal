@@ -17,6 +17,7 @@ import { TechStackSection } from "./components/TechStackSection";
 import { WhoIsThisForSection } from "./components/WhoIsThisForSection";
 import { DemoSnippetSection } from "./components/DemoSnippetSection";
 import { FaqScript } from "./components/FaqScript";
+import { Hotjar } from "@/features/Analytics/Hotjar";
 
 export async function InterviewLanding({
   lang,
@@ -34,6 +35,7 @@ export async function InterviewLanding({
     <Stack sx={{ width: "100%" }}>
       <InterviewHeader lang={lang} startTrialHref={quizLink} pageUrl={pageUrl} />
       <main style={{ width: "100%", margin: 0 }}>
+        <Hotjar />
         <Stack sx={{ alignItems: "center", gap: "0" }}>
           {interviewData.sections.map((section, index) => {
             // 1th
