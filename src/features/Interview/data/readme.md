@@ -20,8 +20,8 @@ This folder contains modular data builders for role-specific interview landing p
     - `faqSection.ts`
   - Shared helpers:
     - `quizData.ts` — returns quiz data for the role (see pattern below)
-    - `techData.ts` — returns tech labels and icons by language
-- `data.tsx` — Role data registry and consumer utilities used across Interview features
+    - `techData.ts` — returns tech labels and icon URLs
+- `../data.tsx` — Role data registry and consumer utilities used across Interview features
 
 ## Types
 
