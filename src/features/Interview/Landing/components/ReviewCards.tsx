@@ -166,7 +166,7 @@ export const ReviewCards = ({ title, subTitle, reviews, id }: ReviewCardsProps) 
                     </Stack>
                   </Stack>
 
-                  <Stack direction="row" sx={{ gap: "4px", position: "relative" }}>
+                  <Stack direction="row" sx={{ gap: "4px" }}>
                     {[...Array(5)].map((_, i) => (
                       <Typography
                         key={`filled-${i}`}
