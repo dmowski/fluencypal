@@ -6,21 +6,9 @@ This folder contains modular data builders for role-specific interview landing p
 
 - `frontend/` — Section generators and data for the Senior Frontend Developer page
   - `seniorFrontendDeveloperData.ts` — Assembles the final `InterviewData`
-  - Section generators (each returns a typed section):
-    - `firstScreenSection.ts`
-    - `infoCardsSection.ts`
-    - `scorePreviewSection.ts`
-    - `stepInfoSection.ts`
-    - `reviewSection.ts`
-    - `exampleQuestionsSection.ts`
-    - `techStackSection.ts`
-    - `whoIsThisForSection.ts`
-    - `demoSnippetSection.ts`
-    - `priceSection.ts`
-    - `faqSection.ts`
-  - Shared helpers:
-    - `quizData.ts` — returns quiz data for the role (see pattern below)
-    - `techData.ts` — returns tech labels and icon URLs
+  - Section generators (each returns a typed section): `firstScreenSection.ts`, `infoCardsSection.ts`, `scorePreviewSection.ts`, `stepInfoSection.ts`, `reviewSection.ts`, `exampleQuestionsSection.ts`, `techStackSection.ts`, `whoIsThisForSection.ts`, `demoSnippetSection.ts`, `priceSection.ts`, `faqSection.ts`
+  - Shared helpers: `quizData.ts` (quiz steps), `techData.ts` (tech labels and logos)
+- `backend/` — Section generators and data for the C# Backend Developer page (mirrors the frontend structure with backend-specific content)
 - `../data.tsx` — Role data registry and consumer utilities used across Interview features
 
 ## Types
@@ -31,89 +19,79 @@ Types for all sections and `InterviewData` are defined in `src/features/Intervie
 
 All generators receive `lang: SupportedLanguage` and call `getI18nInstance(lang)` to produce localized strings via `i18n._(key)`. Keep strings within generators to make each section self-contained and easy to translate.
 
+### Localization requirements
+
+- Localize every user-facing string where it is declared (titles, subtitles, key points, FAQ entries, prices, tech labels, etc.).
+- Helpers like `techData.ts` must also build their labels with `i18n._` so sections can stay lean and never carry raw strings.
+- Avoid sharing raw strings across files; reuse localized objects (e.g., tech items) instead.
+
 ## Creating a New Landing (e.g., Backend Developers)
 
-1. Create a new role folder:
-
-   - `src/features/Interview/data/backend/`
-
-2. Add section generators (mirror the frontend structure):
-
-   - Create files like `firstScreenSection.ts`, `infoCardsSection.ts`, `priceSection.ts`, etc.
-   - Each file should export `getXSection(lang: SupportedLanguage)` and return the appropriate typed section.
-
+1. Create a new role folder, e.g. `src/features/Interview/data/backend/`.
+2. Add section generators (mirror the frontend structure): create files like `firstScreenSection.ts`, `infoCardsSection.ts`, `priceSection.ts`, etc. Each file should export `getXSection(lang: SupportedLanguage)` and return the appropriate typed section.
 3. Add role-specific helpers:
+   - `quizData.ts` — follow the same shape as the frontend `quizData.ts` with localized step titles/subtitles/buttons and typed `InterviewQuiz` return.
+   - `techData.ts` — centralize tech items (labels and logos) and localize labels via `i18n._`.
+   - `coreData.ts` — basic role metadata (`id`, `jobTitle`, `title`, `keywords`, `category`).
+4. Assemble the page data in `csharpBackendDeveloperData.ts` (or equivalent) by importing section generators and helpers, then returning `InterviewData`.
+5. Register the role in `src/features/Interview/data.tsx` so consumers can request the data by role id.
 
-- `quizData.ts` for backend quiz questions — follow the same shape as the frontend `quizData.ts` (localized `title`, optional `description`, and `questions` with `id`, `type`, `question`, `options`, and `correctAnswerIndex`). Use `import { InterviewQuiz } from "../../types"` and return `InterviewQuiz`.
-- `techData.ts` for backend tech labels
-- `coreData.ts` for basic role metadata (`id`, `jobTitle`, `title`, `keywords`, `category`)
+## Tech data helper (backend example)
 
-4. Assemble the page data:
-   - Create `backendDeveloperData.ts` that imports the generators and returns:
+Keep tech labels and logos centralized and localized once per helper, then reuse across sections:
 
 ```ts
-import { InterviewData } from "../../types";
+import { TechItem } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
-import { getFirstScreenSection } from "./firstScreenSection";
-// ... import other section generators
-import { getBackendDeveloperQuizData } from "./quizData";
-import { getBackendDeveloperCoreData } from "./coreData";
 
-export const getBackendDeveloperData = (lang: SupportedLanguage): InterviewData => {
-  return {
-    coreData: getBackendDeveloperCoreData(lang),
-    sections: [
-      getFirstScreenSection(lang),
-      // ... other sections in desired order
-    ],
-    quiz: getBackendDeveloperQuizData(lang),
-  };
+export const getBackendTechData = (lang: SupportedLanguage) => {
+  const i18n = getI18nInstance(lang);
+  const dotnet: TechItem = { label: i18n._(".NET"), logoUrl: "https://cdn.simpleicons.org/dotnet/512BD4" };
+  // ... other tech items
+  return { dotnet, "aspnet-core": aspnetCore, /* etc. */ } as const;
 };
 ```
 
-5. Register the role in `src/features/Interview/data.tsx`:
-   - Add an export/import for `getBackendDeveloperData`
-   - Expose a factory or mapping so consumers can request role data by role id
+Usage inside sections to keep section code clean and localized:
+
+```ts
+const tech = getBackendTechData(lang);
+
+// tech stack grouping
+items: [tech.dotnet, tech["aspnet-core"], tech["ef-core"], tech.csharp];
+
+// example questions
+techItems: [tech["system-design"], tech.redis];
+```
 
 ## `src/features/Interview/data.tsx`
 
 This file acts as the central registry and access point for role data across the Interview feature. Typical responsibilities:
 
-- Import role builders (e.g., `getSeniorFrontendDeveloperData`, `getBackendDeveloperData`)
-- Export a function like `getInterviewDataByRole(roleId, lang)` that resolves the correct data builder
-- Provide any shared utilities or React hooks that fetch/prepare the data for pages/components
+- Import role builders (e.g., `getSeniorFrontendDeveloperData`, `getCsharpBackendDeveloperData`).
+- Export a function like `getInterviewDataByRole(roleId, lang)` that resolves the correct data builder.
+- Provide any shared utilities or React hooks that fetch/prepare the data for pages/components.
 
 When adding a new role, make sure you:
 
-- Export its data builder from `data.tsx`
-- Include it in any role-id to builder maps
-- Update routes/pages to use the new role id where appropriate
+- Export its data builder from `data.tsx`.
+- Include it in any role-id to builder maps.
+- Update routes/pages to use the new role id where appropriate.
 
 ## Conventions
 
 - Use one generator per section for clarity.
-- Keep strings localized via `i18n._`.
+- Keep strings localized via `i18n._` in the file where they originate (including helpers like `techData.ts`).
 - Return strictly typed data (`PriceSection`, `FaqSection`, etc.).
 - Keep imports minimal; prefer importing only from `../../types`, `@/appRouterI18n`, and role-local helpers.
 - Maintain consistent section ordering across roles where it makes sense.
 
-## Testing & Validation
+## QuizData / InterviewQuiz Pattern
 
-- Run type checks to ensure generators conform to types.
-- Add/adjust unit tests if a role has custom logic.
+Frontend example: `src/features/Interview/data/frontend/quizData.ts`.
 
-Example commands:
-
-````zsh
-pnpm typecheck
-pnpm test
-
-### QuizData / InterviewQuiz Pattern
-
-Frontend example: `src/features/Interview/data/frontend/quizData.ts`
-
-Backend example: `src/features/Interview/data/backend/quizData.ts`
+Backend example: `src/features/Interview/data/backend/quizData.ts`.
 
 Both export a function with the signature `getXyzQuizData(lang: SupportedLanguage): InterviewQuiz` and return localized steps:
 
@@ -162,16 +140,16 @@ export const getCsharpBackendDeveloperQuizData = (lang: SupportedLanguage): Inte
     ],
   };
 };
-````
+```
 
-## Linting
+## Testing & Validation
 
-Use linting to validate code style and basic correctness:
+- Run type checks to ensure generators conform to types.
+- Add/adjust unit tests if a role has custom logic.
+- Run linting to validate code style and basic correctness.
 
 ```zsh
+pnpm typecheck
+pnpm test
 pnpm lint
-```
-
-```
-
 ```
