@@ -155,6 +155,7 @@ export interface InfoQuizStep {
   id: string;
 
   imageUrl?: string;
+  imageAspectRatio?: string;
   title: string;
   subTitle: string;
   listItems?: QuizListItem[];

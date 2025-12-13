@@ -72,6 +72,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
             message={quiz.currentStep.title}
             subMessage={quiz.currentStep.subTitle || ""}
             imageUrl={quiz.currentStep.imageUrl}
+            imageAspectRatio={quiz.currentStep.imageAspectRatio}
             actionButtonTitle={quiz.currentStep.buttonTitle || i18n._("Next")}
             width={width}
             subComponent={

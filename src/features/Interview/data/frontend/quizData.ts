@@ -11,6 +11,7 @@ export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): Int
         type: "info",
         id: "intro-step",
         imageUrl: "https://miro.medium.com/v2/resize:fit:1000/0*3MEWjTpT0sZF-LZM.png",
+        imageAspectRatio: "500/190",
         title: i18n._("Welcome to Your Senior Frontend Developer Interview Prep"),
         subTitle: i18n._(
           "In this session, you'll answer questions designed for senior frontend roles. After responding, you'll receive feedback to help you refine your answers and improve your interview skills."
@@ -30,6 +31,7 @@ export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): Int
         id: "don-t-rush",
         imageUrl:
           "https://cdn-useast1.kapwing.com/static/templates/roll-safe-think-about-it-meme-template-regular-116fbf89.webp",
+        imageAspectRatio: "500/190",
         title: i18n._("Don't Rush Your Answers"),
         subTitle: i18n._(
           "No one gets a job just because they answer quickly. Take your time to think through your responses carefully."
@@ -49,6 +51,8 @@ export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): Int
         id: "mic-access-step",
         imageUrl:
           "https://circl.es/wp-content/uploads/2024/02/Screenshot-2024-02-06-at-12.53.38-1-1024x780.png",
+        imageAspectRatio: "1024/780",
+
         title: i18n._("Enable Microphone Access"),
         subTitle: i18n._(
           "In the next step, you'll need to record audio. Please verify your microphone is ready and allow access when asked."
@@ -148,6 +152,7 @@ description should summarize strengths and areas for improvement.
         ),
         imageUrl:
           "https://cdn-useast1.kapwing.com/static/templates/x-x-everywhere-meme-template-full-96173e84.webp",
+        imageAspectRatio: "16/9",
         listItems: [
           {
             title: i18n._("Example answers for improvement"),

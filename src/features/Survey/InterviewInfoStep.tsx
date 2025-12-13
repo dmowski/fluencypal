@@ -11,6 +11,7 @@ export const InterviewInfoStep = ({
   subMessage,
   subComponent,
   imageUrl,
+  imageAspectRatio,
   actionButtonTitle,
   onClick,
   actionButtonStartIcon,
@@ -23,6 +24,7 @@ export const InterviewInfoStep = ({
   message?: string;
   subMessage?: string;
   subComponent?: ReactNode;
+  imageAspectRatio?: string;
   imageUrl?: string;
   actionButtonTitle?: string;
   onClick: () => void;
@@ -56,6 +58,9 @@ export const InterviewInfoStep = ({
             src={imageUrl}
             sx={{
               width: "90%",
+              aspectRatio: imageAspectRatio || "16/9",
+              borderRadius: "8px",
+              objectFit: "cover",
               "@media (max-width: 600px)": {
                 width: "100%",
               },
