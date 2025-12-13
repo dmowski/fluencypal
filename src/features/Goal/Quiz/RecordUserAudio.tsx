@@ -114,34 +114,12 @@ export const RecordUserAudio = ({
       </Stack>
 
       <FooterButton
-        aboveButtonComponent={isNeedMoreRecording && recorder.visualizerComponent}
-        disabled={
-          isLoading || (recorder.isRecording && wordsCount >= minWords) || recorder.isTranscribing
-        }
+        disabled={isLoading || wordsCount < minWords || recorder.isTranscribing}
         width={width}
         onClick={async () => {
-          if (transcript && wordsCount >= minWords) {
-            if (recorder.isRecording) {
-              await recorder.stopRecording();
-            }
-            nextStep();
-            return;
-          }
-
-          if (recorder.isRecording) {
-            recorder.stopRecording();
-            return;
-          }
-
-          recorder.startRecording();
+          nextStep();
         }}
-        title={
-          recorder.isRecording && wordsCount < minWords
-            ? i18n._("Done")
-            : transcript && wordsCount >= minWords
-            ? i18n._("Next")
-            : i18n._("Record")
-        }
+        title={i18n._("Next")}
         color={
           recorder.isRecording && wordsCount < minWords
             ? "error"
@@ -149,15 +127,7 @@ export const RecordUserAudio = ({
             ? "success"
             : "primary"
         }
-        endIcon={
-          recorder.isRecording && wordsCount < minWords ? (
-            <Check />
-          ) : transcript && wordsCount >= minWords ? (
-            <ArrowRight />
-          ) : (
-            <Mic />
-          )
-        }
+        endIcon={<ArrowRight />}
       />
     </Stack>
   );

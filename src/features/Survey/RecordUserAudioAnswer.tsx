@@ -33,6 +33,7 @@ export const RecordUserAudioAnswer = ({
   const { i18n } = useLingui();
   const wordsCount = getWordsCount(transcript || "");
   const isNeedMoreRecording = !transcript || wordsCount < minWords;
+
   return (
     <Stack
       sx={{
@@ -115,9 +116,8 @@ export const RecordUserAudioAnswer = ({
         </Stack>
       )}
 
-      {transcript && !isTranscribing && (
+      {!isTranscribing && (
         <Stack>
-          {!isNeedMoreRecording && visualizerComponent}
           <Stack
             sx={{
               flexDirection: "row",
@@ -127,27 +127,33 @@ export const RecordUserAudioAnswer = ({
               gap: "10px",
             }}
           >
-            {wordsCount >= minWords && (
-              <Button
-                variant={isNeedMoreRecording ? "contained" : "outlined"}
-                endIcon={isRecording ? <Check /> : <Mic size={"16px"} />}
-                size="small"
-                color={isRecording ? "error" : "primary"}
-                onClick={() => {
-                  if (isRecording) {
-                    stopRecording();
-                  } else {
-                    startRecording();
-                  }
-                }}
-              >
-                {isRecording ? i18n._("Done") : i18n._("Record more")}
-              </Button>
+            <Button
+              variant={isNeedMoreRecording ? "contained" : "outlined"}
+              startIcon={isRecording ? <Check /> : <Mic size={"16px"} />}
+              size="small"
+              color={isRecording ? "error" : "primary"}
+              onClick={() => {
+                if (isRecording) {
+                  stopRecording();
+                } else {
+                  startRecording();
+                }
+              }}
+            >
+              {isRecording
+                ? i18n._("Done")
+                : !transcript
+                ? i18n._("Record")
+                : i18n._("Record more")}
+            </Button>
+            {transcript && (
+              <IconButton size="small" onClick={clearTranscript} disabled={isRecording}>
+                <Trash size={"16px"} />
+              </IconButton>
             )}
-            <IconButton size="small" onClick={clearTranscript}>
-              <Trash size={"16px"} />
-            </IconButton>
           </Stack>
+
+          {visualizerComponent}
         </Stack>
       )}
     </Stack>
