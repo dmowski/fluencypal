@@ -17,6 +17,7 @@ import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { Clock, Trash } from "lucide-react";
 import { useDeleteAccount } from "@/features/Auth/useDeleteAccount";
 import { InterviewInfoStep } from "@/features/Survey/InterviewInfoStep";
+import { ScorePreviewCard } from "../Landing/components/ScorePreviewSection";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;
@@ -33,6 +34,11 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
 
   const survey = quiz.survey;
   const width = "600px";
+
+  const jsonScoreFeedback =
+    survey?.results[quiz.currentStep?.id || ""]?.jsonScoreFeedback || undefined;
+
+  const isAnalyzingInputs = !!quiz.currentStep && !!quiz.isAnalyzingInputs[quiz.currentStep.id];
 
   return (
     <Stack
@@ -158,14 +164,21 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
                   </Typography>
 
                   {quiz.survey?.results[quiz.currentStep.id]?.markdownFeedback &&
-                  !quiz.isAnalyzingInputs[quiz.currentStep.id] ? (
+                  !isAnalyzingInputs ? (
                     <Stack>
                       <Markdown>
                         {quiz.survey?.results[quiz.currentStep.id]?.markdownFeedback || ""}
                       </Markdown>
                     </Stack>
                   ) : null}
-                  {quiz.isAnalyzingInputs[quiz.currentStep.id] ? (
+
+                  {jsonScoreFeedback && !isAnalyzingInputs && (
+                    <Stack>
+                      <ScorePreviewCard scorePreview={jsonScoreFeedback} />
+                    </Stack>
+                  )}
+
+                  {isAnalyzingInputs && (
                     <Stack
                       sx={{
                         gap: "10px",
@@ -181,13 +194,13 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
                       </Typography>
                       <LoadingShapes sizes={["20px", "100px", "20px", "100px"]} />
                     </Stack>
-                  ) : null}
+                  )}
 
-                  {quiz.isAnalyzingInputsError[quiz.currentStep.id] ? (
+                  {quiz.isAnalyzingInputsError[quiz.currentStep.id] && (
                     <Typography color="error">
                       {quiz.isAnalyzingInputsError[quiz.currentStep.id]}
                     </Typography>
-                  ) : null}
+                  )}
                 </Stack>
               }
               actionButtonTitle={quiz.currentStep.buttonTitle}

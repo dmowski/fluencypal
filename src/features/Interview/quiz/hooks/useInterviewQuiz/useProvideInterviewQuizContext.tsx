@@ -20,6 +20,7 @@ import { getHash } from "./hash";
 import { useTextAi } from "@/features/Ai/useTextAi";
 import { MODELS } from "@/common/ai";
 import { useAnalytics } from "@/features/Analytics/useAnalytics";
+import { ScorePreview } from "@/features/Interview/Landing/components/ScorePreviewSection";
 
 export function useProvideInterviewQuizContext({
   coreData,
@@ -146,7 +147,7 @@ export function useProvideInterviewQuizContext({
       })
       .join("\n\n");
 
-    const questionHash = getHash(combinedAnswers);
+    const questionHash = getHash(combinedAnswers + step.aiSystemPrompt);
 
     const isAlreadyAnswered = questionHash === results[step.id]?.inputHash;
     if (isAlreadyAnswered) {
@@ -160,30 +161,42 @@ export function useProvideInterviewQuizContext({
     const systemMessage = `${stepSystemMessage}\n${systemMessageWrapper}`.trim();
 
     try {
-      const response = await ai.generate({
-        systemMessage,
-        userMessage: combinedAnswers,
-        model: MODELS.gpt_4o,
-      });
-      const markdownFeedback = response.trim();
-
-      if (markdownFeedback.length > 0) {
-        const result: InterviewQuizResults = {
-          stepId,
-          inputHash: questionHash,
-          markdownFeedback,
-        };
-        const oldResults = survey.results || {};
-        const updatedSurvey: InterviewQuizSurvey = {
-          ...survey,
-          results: {
-            ...oldResults,
-            [stepId]: result,
-          },
-        };
-
-        await data.updateSurvey(updatedSurvey, `Update analysis results for step ${stepId}`);
+      const outputFormat = step.aiResponseFormat;
+      let markdownFeedback = "";
+      let jsonScoreFeedback: ScorePreview | null = null;
+      if (outputFormat === "markdown") {
+        const response = await ai.generate({
+          systemMessage,
+          userMessage: combinedAnswers,
+          model: MODELS.gpt_4o,
+        });
+        markdownFeedback = response.trim();
+      } else {
+        const response = await ai.generateJson<ScorePreview>({
+          systemMessage,
+          userMessage: combinedAnswers,
+          model: MODELS.gpt_4o,
+          attempts: 3,
+        });
+        jsonScoreFeedback = response || null;
       }
+
+      const result: InterviewQuizResults = {
+        stepId,
+        inputHash: questionHash,
+        markdownFeedback,
+        jsonScoreFeedback,
+      };
+      const oldResults = survey.results || {};
+      const updatedSurvey: InterviewQuizSurvey = {
+        ...survey,
+        results: {
+          ...oldResults,
+          [stepId]: result,
+        },
+      };
+
+      await data.updateSurvey(updatedSurvey, `Update analysis results for step ${stepId}`);
     } catch (error) {
       setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: String(error) }));
     } finally {

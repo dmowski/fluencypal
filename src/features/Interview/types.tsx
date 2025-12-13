@@ -206,7 +206,7 @@ export interface AnalyzeInputsQuizStep {
 
   // Should return Markdown or JSON content
   aiSystemPrompt: string;
-  aiResponseFormat: "markdown";
+  aiResponseFormat: "markdown" | "json-scope";
 }
 
 /**
@@ -273,6 +273,7 @@ export interface InterviewQuizResults {
   stepId: string;
   inputHash: string;
   markdownFeedback: string;
+  jsonScoreFeedback: ScorePreview | null;
 }
 
 export type QuizAnswers = Record<string, InterviewQuizAnswer | undefined>;

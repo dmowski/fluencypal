@@ -117,27 +117,38 @@ export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): Int
         type: "analyze-inputs",
         id: "ai-feedback-step-1",
         title: i18n._("AI Feedback on Your Answers"),
-        subTitle: i18n._("Here's personalized feedback on your responses to help you improve."),
+        subTitle: "",
         buttonTitle: i18n._("Continue"),
-        aiSystemPrompt: i18n._(
-          "Provide brief feedback on the user's answers, focusing on technical depth, clarity, and structure. Suggest areas that could be improved."
-        ),
-        aiResponseFormat: "markdown",
+        aiSystemPrompt: `Provide brief feedback on the user's answers in JSON format, focusing on technical depth, clarity, and structure. 
+Use this JSON structure for your response:
+{
+  label: "Interview Readiness Score",
+  totalScore: 82,
+  description: "Strong knowledge of React and TypeScript. Slight gaps in communication and leadership answers.",
+  scoreMetrics: [
+    { title: "React & TypeScript", score: 88 },
+    { title: "Coding Skills", score: 90 },
+    { title: "Problem Solving", score: 80 },
+    { title: "Communication & Leadership", score: 70 },
+  ],
+}
+
+totalScore should be an overall score out of 100.
+Each score in scoreMetrics should be between 0 and 100.
+description should summarize strengths and areas for improvement.
+`,
+        aiResponseFormat: "json-scope",
       },
       {
         type: "info",
         id: "score-intro-step",
         title: i18n._("Your Interview Readiness Score"),
         subTitle: i18n._(
-          "On the next step, you'll receive a score analysis of your answers and example responses to help you improve."
+          "On the next step, you'll receive a detailed analysis of your answers and example responses to help you improve."
         ),
         imageUrl:
           "https://cdn-useast1.kapwing.com/static/templates/x-x-everywhere-meme-template-full-96173e84.webp",
         listItems: [
-          {
-            title: i18n._("Detailed score breakdown"),
-            iconName: "chart-line",
-          },
           {
             title: i18n._("Example answers for improvement"),
             iconName: "audio-lines",
@@ -160,7 +171,7 @@ export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): Int
       {
         type: "analyze-inputs",
         id: "ai-feedback-step-2",
-        title: i18n._("Complete AI Feedback on Your Answers"),
+        title: i18n._("AI Feedback on Your Answers"),
         subTitle: i18n._("Here's the rest of your personalized feedback to help you improve."),
         buttonTitle: i18n._("Continue"),
         aiSystemPrompt: i18n._(
