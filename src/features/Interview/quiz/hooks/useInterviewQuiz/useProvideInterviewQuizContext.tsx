@@ -19,6 +19,7 @@ import { initEmptyData } from "./data";
 import { getHash } from "./hash";
 import { useTextAi } from "@/features/Ai/useTextAi";
 import { MODELS } from "@/common/ai";
+import { useAnalytics } from "@/features/Analytics/useAnalytics";
 
 export function useProvideInterviewQuizContext({
   coreData,
@@ -30,6 +31,22 @@ export function useProvideInterviewQuizContext({
   const mainPageUrl = getUrlStart(lang) + `interview/${interviewId}`;
   const path: QuizStep[] = quiz.steps.map((step) => step.id);
   const ai = useTextAi();
+  const analytics = useAnalytics();
+  const [isConfirmedGTag, setIsConfirmedGTag] = useState(false);
+
+  useEffect(() => {
+    if (isConfirmedGTag) {
+      return;
+    }
+    const isDev = auth.userInfo?.email?.includes("dmowski") || false;
+    if (isDev) {
+      return;
+    }
+    if (auth.uid) {
+      setIsConfirmedGTag(true);
+      analytics.confirmGtag();
+    }
+  }, [isConfirmedGTag, auth.uid]);
 
   const core = useQuizCore({
     path,
