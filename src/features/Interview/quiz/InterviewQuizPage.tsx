@@ -37,6 +37,8 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
 
   const jsonScoreFeedback =
     survey?.results[quiz.currentStep?.id || ""]?.jsonScoreFeedback || undefined;
+  const markdownFeedback =
+    survey?.results[quiz.currentStep?.id || ""]?.markdownFeedback || undefined;
 
   const isAnalyzingInputs = !!quiz.currentStep && !!quiz.isAnalyzingInputs[quiz.currentStep.id];
 
@@ -163,18 +165,10 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
                     {quiz.currentStep.subTitle}
                   </Typography>
 
-                  {quiz.survey?.results[quiz.currentStep.id]?.markdownFeedback &&
-                  !isAnalyzingInputs ? (
+                  {!isAnalyzingInputs && (
                     <Stack>
-                      <Markdown>
-                        {quiz.survey?.results[quiz.currentStep.id]?.markdownFeedback || ""}
-                      </Markdown>
-                    </Stack>
-                  ) : null}
-
-                  {jsonScoreFeedback && !isAnalyzingInputs && (
-                    <Stack>
-                      <ScorePreviewCard scorePreview={jsonScoreFeedback} />
+                      {markdownFeedback && <Markdown>{markdownFeedback || ""}</Markdown>}
+                      {jsonScoreFeedback && <ScorePreviewCard scorePreview={jsonScoreFeedback} />}
                     </Stack>
                   )}
 
