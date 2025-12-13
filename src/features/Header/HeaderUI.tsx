@@ -39,7 +39,7 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
     setIsFixedHeader(isStaticHeader);
 
     const onScrollHandler = () => {
-      if (window.scrollY > 200) {
+      if (window.scrollY > 0) {
         setIsBlurHeader(true);
       } else {
         setIsBlurHeader(false);
@@ -73,7 +73,6 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
       router.push(url);
     }
   };
-
   return (
     <>
       <Stack
