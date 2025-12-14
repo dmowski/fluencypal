@@ -2,7 +2,7 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { InterviewCategory, InterviewData } from "../types";
 import { getSeniorFrontendDeveloperData } from "./frontend/seniorFrontendDeveloperData";
-import { getCsharpBackendDeveloperData } from "./backend/csharpBackendDeveloperData";
+import { getCsharpBackendDeveloperData } from "./backend/getCsharpBackendDeveloperData";
 
 export interface InterviewAllData {
   interviews: InterviewData[];
