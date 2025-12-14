@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, ReactNode, useRef } from "react";
+import { createContext, useContext, useEffect, ReactNode, useRef, useState } from "react";
 import { isDev } from "./isDev";
 import { useAuth } from "../Auth/useAuth";
 import { initHotjar } from "./initHotjar";
@@ -19,26 +19,27 @@ const AnalyticsContext = createContext<AnalyticsContextType | undefined>(undefin
 
 export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
   const auth = useAuth();
-  const isInitialized = useRef(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
-  const isDeveloper = auth.userInfo?.email?.includes("dmowski") || false;
   useEffect(() => {
     const isWindow = typeof window !== "undefined";
-    if ((isDev() && !RUN_ON_DEV_ENV) || !auth.uid || isInitialized.current || !isWindow) {
+    if ((isDev() && !RUN_ON_DEV_ENV) || !auth.uid || isInitialized || !isWindow) {
       return;
     }
+
+    const isDeveloper = auth.userInfo?.email?.includes("dmowski") || false;
     if (isDeveloper) {
       return;
     }
 
-    isInitialized.current = true;
+    setIsInitialized(true);
+    initGTag();
     initSentry();
     initHotjar();
-    initGTag();
   }, [auth.uid]);
 
   const data: AnalyticsContextType = {
-    isInitialized: isInitialized.current,
+    isInitialized: isInitialized,
     confirmGtag,
   };
 

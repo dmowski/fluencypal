@@ -36,6 +36,11 @@ export function useProvideInterviewQuizContext({
   const [isConfirmedGTag, setIsConfirmedGTag] = useState(false);
 
   useEffect(() => {
+    if (!analytics.isInitialized) {
+      console.log("Analytics not initialized yet");
+      return;
+    }
+
     if (isConfirmedGTag) {
       return;
     }
@@ -44,10 +49,13 @@ export function useProvideInterviewQuizContext({
       return;
     }
     if (auth.uid) {
-      setIsConfirmedGTag(true);
-      analytics.confirmGtag();
+      setTimeout(() => {
+        analytics.confirmGtag();
+        console.log("GTag confirmed for interview quiz");
+        setIsConfirmedGTag(true);
+      }, 1000);
     }
-  }, [isConfirmedGTag, auth.uid]);
+  }, [isConfirmedGTag, auth.uid, analytics.isInitialized]);
 
   const core = useQuizCore({
     path,
