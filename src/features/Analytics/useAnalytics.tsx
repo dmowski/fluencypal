@@ -32,10 +32,10 @@ export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    setIsInitialized(true);
     initGTag();
     initSentry();
     initHotjar();
+    setIsInitialized(true);
   }, [auth.uid]);
 
   const data: AnalyticsContextType = {
