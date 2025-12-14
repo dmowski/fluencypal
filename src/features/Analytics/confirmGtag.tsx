@@ -59,7 +59,9 @@ export const confirmGtag = async () => {
     }
 
     function gtag_report_conversion() {
-      const callback = function () {};
+      const callback = function (...args: any[]) {
+        console.log("GTag conversion event sent successfully", ...args);
+      };
       gtag("event", "conversion", {
         ...conversionParams,
         event_callback: callback,
