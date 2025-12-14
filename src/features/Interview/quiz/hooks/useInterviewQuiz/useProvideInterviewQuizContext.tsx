@@ -37,7 +37,6 @@ export function useProvideInterviewQuizContext({
 
   useEffect(() => {
     if (!analytics.isInitialized) {
-      console.log("Analytics not initialized yet");
       return;
     }
 
@@ -48,6 +47,7 @@ export function useProvideInterviewQuizContext({
     if (isDev) {
       //return;
     }
+
     if (auth.uid) {
       setTimeout(() => {
         analytics.confirmGtag();
