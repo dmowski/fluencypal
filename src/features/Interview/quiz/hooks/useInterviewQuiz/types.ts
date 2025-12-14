@@ -32,6 +32,7 @@ export interface InterviewQuizContextType {
   isAnalyzingInputs: Record<string, boolean>;
   isAnalyzingInputsError: Record<string, string>;
   mainPageUrl: string;
+  isNavigateToMainPage: boolean;
 }
 
 export interface InterviewQuizProps {

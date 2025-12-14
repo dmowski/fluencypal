@@ -17,6 +17,8 @@ export function useQuizCore<Step extends string>({
     currentStepId: Step;
   }
 
+  const [isNavigateToMainPage, setIsNavigateToMainPage] = useState(false);
+
   const defaultState: QuizCoreUrlState = useMemo(
     () => ({
       currentStepId: path[0],
@@ -67,7 +69,13 @@ export function useQuizCore<Step extends string>({
     setState({ currentStepId: prevStep });
   }, [currentStepIndex, path, setState]);
 
-  const navigateToMainPage = () => router.push(`${mainPageUrl}`);
+  const navigateToMainPage = () => {
+    setIsNavigateToMainPage(true);
+    router.push(`${mainPageUrl}`);
+    setTimeout(() => {
+      setIsNavigateToMainPage(false);
+    }, 3000);
+  };
 
   const progress = currentStepIndex / path.length + 0.1;
 
@@ -76,6 +84,7 @@ export function useQuizCore<Step extends string>({
 
   return {
     isFirstLoading,
+    isNavigateToMainPage,
     setState,
     stateInput,
     state,

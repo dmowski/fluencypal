@@ -42,6 +42,10 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
 
   const isAnalyzingInputs = !!quiz.currentStep && !!quiz.isAnalyzingInputs[quiz.currentStep.id];
 
+  if (quiz.isNavigateToMainPage) {
+    return null;
+  }
+
   return (
     <Stack
       component={"main"}
