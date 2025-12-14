@@ -5,7 +5,7 @@ import { initHotjar } from "./initHotjar";
 import { isDev } from "./isDev";
 import { initGTag } from "./initGTag";
 
-export const Hotjar = () => {
+export const InterviewAnalytics = () => {
   const isInitialized = useRef(false);
   useEffect(() => {
     const isWindow = typeof window !== "undefined";
