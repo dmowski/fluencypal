@@ -29,9 +29,6 @@ export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): Int
       {
         type: "info",
         id: "don-t-rush",
-        imageUrl:
-          "https://cdn-useast1.kapwing.com/static/templates/roll-safe-think-about-it-meme-template-regular-116fbf89.webp",
-        imageAspectRatio: "500/190",
         title: i18n._("Don't Rush Your Answers"),
         subTitle: i18n._(
           "No one gets a job just because they answer quickly. Take your time to think through your responses carefully."
