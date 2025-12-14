@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { initHotjar } from "./initHotjar";
 import { isDev } from "./isDev";
+import { initGTag } from "./initGTag";
 
 export const Hotjar = () => {
   const isInitialized = useRef(false);
@@ -14,6 +15,7 @@ export const Hotjar = () => {
 
     console.log("Init hotjar from client");
     initHotjar();
+    initGTag();
   }, []);
   return <></>;
 };
