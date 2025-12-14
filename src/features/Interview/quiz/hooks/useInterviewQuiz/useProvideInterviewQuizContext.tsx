@@ -46,7 +46,7 @@ export function useProvideInterviewQuizContext({
     }
     const isDev = auth.userInfo?.email?.includes("dmowski") || false;
     if (isDev) {
-      return;
+      //return;
     }
     if (auth.uid) {
       setTimeout(() => {
