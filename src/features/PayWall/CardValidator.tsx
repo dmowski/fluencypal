@@ -3,7 +3,15 @@
 import { Button, CircularProgress, Stack, Typography } from "@mui/material";
 import { useSettings } from "../Settings/useSettings";
 import { useLingui } from "@lingui/react";
-import { CreditCard, PiggyBank, ShieldCheck, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  BadgeCheck,
+  CreditCard,
+  PiggyBank,
+  ShieldCheck,
+  Sparkles,
+  Trophy,
+} from "lucide-react";
 import { useUsage } from "../Usage/useUsage";
 import { useEffect, useMemo, useState } from "react";
 import { loadStripe, StripeElementLocale } from "@stripe/stripe-js";
@@ -17,6 +25,7 @@ import { stripeLocaleMap, SupportedLanguage } from "../Lang/lang";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useAnalytics } from "../Analytics/useAnalytics";
 import { InfoStep } from "../Survey/InfoStep";
+import { InterviewQuizButton } from "../Goal/Quiz/InterviewQuizButton";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 function SetupForm({ clientSecret }: { clientSecret: string }) {
@@ -59,7 +68,22 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
   return (
     <form onSubmit={onSubmit}>
       <Stack sx={{ gap: "10px", height: "max-content" }}>
-        <PaymentElement />
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: 660,
+            lineHeight: "1.2",
+          }}
+        >
+          {i18n._("Confirm your card")}
+        </Typography>
+        <PaymentElement
+          options={{
+            terms: {
+              card: "never",
+            },
+          }}
+        />
         <Typography
           sx={{
             color: "#555",
@@ -67,27 +91,28 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
           }}
         >
           {i18n._(
-            "FluencyPal will not charge your card. A small temporary authorization hold may appear on your statement, which will be released by your bank within a few days."
+            "FluencyPal will not charge your card without your explicit consent. A small temporary authorization hold may appear on your statement, which will be released by your bank within a few days."
           )}
         </Typography>
-        <Button
-          variant="contained"
-          type="submit"
-          disabled={!stripe || !elements || submitting || isSuccess}
-        >
-          {submitting ? (
-            <CircularProgress size={18} />
-          ) : isSuccess ? (
-            i18n._("Card verified. Loading...")
-          ) : (
-            i18n._("Verify card")
-          )}
-        </Button>
+
         {errMsg && (
           <Typography variant="caption" color="error">
             {errMsg}
           </Typography>
         )}
+
+        <InterviewQuizButton
+          type="submit"
+          color={"primary"}
+          title={
+            submitting
+              ? i18n._("Verifying...")
+              : isSuccess
+              ? i18n._("Card verified. Loading...")
+              : i18n._("Verify card")
+          }
+          disabled={!stripe || !elements || submitting || isSuccess}
+        />
       </Stack>
     </form>
   );
@@ -97,7 +122,7 @@ function VerifyCard({ clientSecret, lang }: { clientSecret: string; lang: Suppor
   const options = useMemo(() => ({ clientSecret, locale }), [clientSecret]);
   if (!clientSecret) return null;
   return (
-    <Stack sx={{ backgroundColor: "#fff", width: "100%", p: "20px", borderRadius: "10px" }}>
+    <Stack sx={{ width: "100%" }}>
       <Elements
         key={clientSecret} // ensures fresh mount on new secret
         options={options}
@@ -292,6 +317,32 @@ export const CardValidatorQuiz = ({
       />
     );
 
+  if (!isShowForm && !isLoading) {
+    return (
+      <InfoStep
+        title={i18n._("Unlock full interview preparation")}
+        subTitle={i18n._(
+          "Get 2 days of full access to all features. Practice real interviews, get AI feedback, and see your full analysis. We use a card to prevent abuse and give you uninterrupted access to all features."
+        )}
+        actionButtonTitle={i18n._("Continue to free access")}
+        width={"700px"}
+        listItems={[
+          {
+            iconName: "shield-check",
+            title: i18n._("No charge during trial"),
+            iconColor: "rgb(96, 165, 250)",
+          },
+          {
+            iconName: "shield-check",
+            title: i18n._("No automatic payment"),
+            iconColor: "rgb(96, 165, 250)",
+          },
+        ]}
+        onClick={onStartValidation}
+        actionButtonEndIcon={<ArrowRight />}
+      />
+    );
+  }
   return (
     <Stack
       sx={{
@@ -310,60 +361,6 @@ export const CardValidatorQuiz = ({
       >
         {isLoading && <CircularProgress />}
         {isShowForm && clientSecret && <VerifyCard lang={lang} clientSecret={clientSecret} />}
-        {!isShowForm && !isLoading && (
-          <>
-            <Stack
-              sx={{
-                gap: "25px",
-              }}
-            >
-              <Stack>
-                <Typography variant="h3">{i18n._("Credit Card Check")}</Typography>
-                <Typography variant="body2">
-                  {i18n._("Please confirm your credit card to access all features.")}
-                </Typography>
-              </Stack>
-              <Stack>
-                <IconTextList
-                  gap="10px"
-                  listItems={[
-                    {
-                      iconName: "sparkles",
-                      title: i18n._("You will get 1 day of full access for free"),
-                    },
-                    {
-                      iconName: "piggy-bank",
-                      title: i18n._("No automatic payment after the trial"),
-                    },
-                    {
-                      iconName: "shield-check",
-                      title: i18n._("No charge will be made"),
-                    },
-                  ]}
-                />
-              </Stack>
-            </Stack>
-
-            <Stack
-              sx={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "15px",
-                flexWrap: "wrap",
-              }}
-            >
-              <Button
-                variant="contained"
-                size="large"
-                color="info"
-                startIcon={<CreditCard />}
-                onClick={() => onStartValidation()}
-              >
-                {i18n._("Confirm Credit Card")}
-              </Button>
-            </Stack>
-          </>
-        )}
       </Stack>
     </Stack>
   );

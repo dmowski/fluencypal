@@ -2,23 +2,15 @@ import React from "react";
 import { Button, Stack } from "@mui/material";
 import { ArrowRight } from "lucide-react";
 
-interface InterviewQuizButtonProps {
-  onClick: () => void;
+export const InterviewQuizButton: React.FC<{
+  onClick?: () => void;
   color: "primary" | "error" | "success";
   disabled?: boolean;
   title: string;
   endIcon?: React.ReactNode;
   startIcon?: React.ReactNode;
-}
-
-export const InterviewQuizButton: React.FC<InterviewQuizButtonProps> = ({
-  onClick,
-  color,
-  disabled,
-  title,
-  endIcon,
-  startIcon,
-}) => {
+  type?: "button" | "submit" | "reset";
+}> = ({ onClick, color, disabled, title, endIcon, startIcon, type }) => {
   return (
     <Stack
       sx={{
@@ -31,6 +23,7 @@ export const InterviewQuizButton: React.FC<InterviewQuizButtonProps> = ({
         variant="contained"
         color={color}
         disabled={disabled}
+        type={type}
         size="large"
         sx={{
           width: `max-content`,
