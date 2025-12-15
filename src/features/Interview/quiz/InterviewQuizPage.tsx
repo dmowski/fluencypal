@@ -172,7 +172,7 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
                   variant="body1"
                   sx={{
                     //fontWeight: 660,
-                    paddingBottom: "20px",
+                    paddingBottom: "0px",
                     // keep new line breaks
                     whiteSpace: "pre-line",
                   }}
@@ -186,12 +186,12 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
                   sx={{
                     color: "#ef5350",
                   }}
-                  endIcon={<Trash size={"17px"} />}
+                  startIcon={<Trash size={"17px"} />}
                   onClick={() => deleteAccount.onDeleteAccount()}
                 >
                   {deleteAccount.isDeletingAccount
-                    ? i18n._("Removing your data from the waitlist...")
-                    : i18n._("Remove my data from the waitlist")}
+                    ? i18n._("Removing your data...")
+                    : i18n._("Remove my data (delete account)")}
                 </Button>
                 <IconTextList listItems={quiz.currentStep.listItems || []} />
               </Stack>
