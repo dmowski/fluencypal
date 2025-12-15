@@ -10,7 +10,7 @@ export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): Int
       {
         type: "info",
         id: "intro-step",
-        imageUrl: "https://miro.medium.com/v2/resize:fit:1000/0*3MEWjTpT0sZF-LZM.png",
+        //imageUrl: "https://miro.medium.com/v2/resize:fit:1000/0*3MEWjTpT0sZF-LZM.png",
         imageAspectRatio: "500/190",
         title: i18n._("Welcome to Your Senior Frontend Developer Interview Prep"),
         subTitle: i18n._(
@@ -147,8 +147,7 @@ description should summarize strengths and areas for improvement.
         subTitle: i18n._(
           "On the next step, you'll receive a detailed analysis of your answers and example responses to help you improve."
         ),
-        imageUrl:
-          "https://cdn-useast1.kapwing.com/static/templates/x-x-everywhere-meme-template-full-96173e84.webp",
+        //imageUrl: "https://cdn-useast1.kapwing.com/static/templates/x-x-everywhere-meme-template-full-96173e84.webp",
         imageAspectRatio: "16/9",
         listItems: [
           {

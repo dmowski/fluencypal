@@ -1,70 +1,56 @@
 import { ReactNode } from "react";
 import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
-import {
-  BetweenHorizontalStart,
-  Bird,
-  GraduationCap,
-  Lightbulb,
-  PencilRuler,
-  ScrollText,
-  Sparkles,
-  Speech,
-  UsersRound,
-} from "lucide-react";
 import { AuthWallBasic } from "./AuthWallBasic";
 import { getUrlStart } from "../Lang/getUrlStart";
 
-export const InterviewAuthWall = ({ children }: { children: ReactNode }) => {
+export const InterviewAuthWall = ({ children, width }: { children: ReactNode; width?: string }) => {
   const { i18n } = useLingui();
   return (
     <AuthWallBasic
-      featuresTitle={<Trans>What you get with FluencyPal</Trans>}
-      featuresSubTitle={<Trans>Your job interview preparation partner</Trans>}
+      width={width}
+      featuresTitle={i18n._("What you get with FluencyPal")}
+      featuresSubTitle={i18n._("Your job interview preparation partner")}
       featuresList={[
         {
           title: i18n._("Daily interview without fear of judgment"),
-          icon: Speech,
+          iconName: "speech",
         },
         {
           title: i18n._("Corrections when you get stuck"),
-          icon: Sparkles,
+          iconName: "sparkles",
         },
         {
           title: i18n._("Personalized plan tailored to your goals"),
-          icon: Lightbulb,
+          iconName: "lightbulb",
         },
         {
           title: i18n._("Hints to boost your confidence"),
-          icon: GraduationCap,
+          iconName: "graduation-cap",
         },
         {
           title: i18n._("Practice STAR method answers"),
-          icon: UsersRound,
+          iconName: "users-round",
         },
       ]}
-      featuresImageUrl="https://i.imgur.com/KJmVRrl.jpeg"
-      agreementImageUrl="https://cdn-useast1.kapwing.com/static/templates/epic-handshake-meme-template-regular-5ac4b47b.webp"
-      authImageUrl="https://cdn-icons-png.flaticon.com/512/8345/8345328.png"
-      authTitle={<Trans>Let's create an account</Trans>}
-      authSubTitle={<Trans>So you can keep your progress</Trans>}
+      authTitle={i18n._("Let's create an account")}
+      authSubTitle={i18n._("So you can keep your progress")}
       authList={[
         {
           title: i18n._("Credit card is required for verification only"),
-          icon: Bird,
+          iconName: "bird",
         },
         {
           title: i18n._("No ads, no spam"),
-          icon: BetweenHorizontalStart,
+          iconName: "between-horizontal-start",
         },
         {
           title: i18n._("Privacy Policy"),
-          icon: ScrollText,
+          iconName: "scroll-text",
           href: `${getUrlStart("en")}privacy`,
         },
         {
           title: i18n._("Terms of Use"),
-          icon: PencilRuler,
+          iconName: "pencil-ruler",
           href: `${getUrlStart("en")}terms`,
         },
       ]}

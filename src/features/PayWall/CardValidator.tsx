@@ -199,15 +199,15 @@ export const CardValidator = ({ lang }: { lang: SupportedLanguage }) => {
                     gap="10px"
                     listItems={[
                       {
-                        icon: Sparkles,
+                        iconName: "sparkles",
                         title: i18n._("You will get 3 days of full access for free"),
                       },
                       {
-                        icon: PiggyBank,
+                        iconName: "piggy-bank",
                         title: i18n._("No automatic payment after the trial"),
                       },
                       {
-                        icon: ShieldCheck,
+                        iconName: "shield-check",
                         title: i18n._("No charge will be made"),
                       },
                     ]}
@@ -288,7 +288,6 @@ export const CardValidatorQuiz = ({
         subMessage={i18n._(
           "Your credit card has already been confirmed. You can proceed to the next step."
         )}
-        imageUrl={"/avatar/owl1.png"}
         onClick={() => onNextStep()}
       />
     );
@@ -329,15 +328,15 @@ export const CardValidatorQuiz = ({
                   gap="10px"
                   listItems={[
                     {
-                      icon: Sparkles,
+                      iconName: "sparkles",
                       title: i18n._("You will get 1 day of full access for free"),
                     },
                     {
-                      icon: PiggyBank,
+                      iconName: "piggy-bank",
                       title: i18n._("No automatic payment after the trial"),
                     },
                     {
-                      icon: ShieldCheck,
+                      iconName: "shield-check",
                       title: i18n._("No charge will be made"),
                     },
                   ]}

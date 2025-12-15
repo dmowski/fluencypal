@@ -16,8 +16,8 @@ import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { Clock, Trash } from "lucide-react";
 import { useDeleteAccount } from "@/features/Auth/useDeleteAccount";
-import { InterviewInfoStep } from "@/features/Survey/InterviewInfoStep";
 import { ScorePreviewCard } from "../Landing/components/ScorePreviewSection";
+import { InterviewAuthWall } from "@/features/Auth/InterviewAuthWall";
 
 export interface InterviewQuizPageProps {
   interviewCoreData: InterviewCoreData;
@@ -72,29 +72,20 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
         }}
       >
         {stepType === "info" && quiz.currentStep && (
-          <InterviewInfoStep
+          <InfoStep
             message={quiz.currentStep.title}
             subMessage={quiz.currentStep.subTitle || ""}
             imageUrl={quiz.currentStep.imageUrl}
             imageAspectRatio={quiz.currentStep.imageAspectRatio}
             actionButtonTitle={quiz.currentStep.buttonTitle || i18n._("Next")}
             width={width}
-            subComponent={
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  paddingTop: "30px",
-                }}
-              >
-                <IconTextList listItems={quiz.currentStep.listItems || []} />
-              </Stack>
-            }
+            listItems={quiz.currentStep.listItems}
             onClick={() => quiz.nextStep()}
           />
         )}
 
         {stepType === "record-audio" && quiz.currentStep && (
-          <AuthWall>
+          <InterviewAuthWall width={width}>
             <RecordUserAudio
               title={""}
               subTitle={""}
@@ -138,11 +129,11 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
               }}
               width={width}
             />
-          </AuthWall>
+          </InterviewAuthWall>
         )}
 
         {stepType === "analyze-inputs" && quiz.currentStep && (
-          <AuthWall>
+          <InterviewAuthWall width={width}>
             <InfoStep
               subComponent={
                 <Stack
@@ -206,34 +197,27 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
               disabled={quiz.isAnalyzingInputs[quiz.currentStep.id]}
               onClick={() => quiz.nextStep()}
             />
-          </AuthWall>
+          </InterviewAuthWall>
         )}
 
         {stepType === "paywall" && quiz.currentStep && (
-          <AuthWall>
+          <InterviewAuthWall width={width}>
             <CardValidatorQuiz lang={lang} onNextStep={quiz.nextStep} />
-          </AuthWall>
+          </InterviewAuthWall>
         )}
 
         {stepType === "waitlist-done" && quiz.currentStep && (
           <InfoStep
             imageUrl={quiz.currentStep.imageUrl}
+            message={quiz.currentStep.title}
             subComponent={
               <Stack
                 sx={{
-                  paddingTop: "30px",
+                  paddingTop: "10px",
                   alignItems: "flex-start",
                   gap: "10px",
                 }}
               >
-                <Typography
-                  sx={{
-                    opacity: 0.8,
-                  }}
-                  variant="body2"
-                >
-                  {quiz.currentStep.title}
-                </Typography>
                 <Typography
                   variant="body1"
                   sx={{

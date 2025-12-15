@@ -1,18 +1,5 @@
 import { ReactNode } from "react";
 import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
-import {
-  BetweenHorizontalStart,
-  Bird,
-  BookType,
-  GraduationCap,
-  Lightbulb,
-  PencilRuler,
-  ScrollText,
-  Sparkles,
-  Speech,
-  UsersRound,
-} from "lucide-react";
 import { AuthWallBasic } from "./AuthWallBasic";
 import { getUrlStart } from "../Lang/getUrlStart";
 
@@ -22,63 +9,66 @@ export const AuthWall = ({
   singInSubTitle,
   featuresTitle,
   featuresSubTitle,
+  width,
 }: {
   children: ReactNode;
-  signInTitle?: ReactNode;
-  singInSubTitle?: ReactNode;
-  featuresTitle?: ReactNode;
-  featuresSubTitle?: ReactNode;
+  signInTitle?: string;
+  singInSubTitle?: string;
+  featuresTitle?: string;
+  featuresSubTitle?: string;
+  width?: string;
 }) => {
   const { i18n } = useLingui();
   return (
     <AuthWallBasic
-      featuresTitle={featuresTitle || <Trans>What you get with FluencyPal</Trans>}
-      featuresSubTitle={featuresSubTitle || <Trans>Your AI speaking partner</Trans>}
+      width={width}
+      featuresTitle={featuresTitle || i18n._("What you get with FluencyPal")}
+      featuresSubTitle={featuresSubTitle || i18n._("Your AI speaking partner")}
       featuresList={[
         {
           title: i18n._("Daily conversations without fear of judgment"),
-          icon: Speech,
+          iconName: "speech",
         },
         {
           title: i18n._("Corrections when you get stuck"),
-          icon: Sparkles,
+          iconName: "sparkles",
         },
         {
           title: i18n._("Personalized plan tailored to your goals"),
-          icon: Lightbulb,
+          iconName: "lightbulb",
         },
         {
           title: i18n._("Grammar corrections to boost your confidence"),
-          icon: GraduationCap,
+          iconName: "graduation-cap",
         },
         {
           title: i18n._("Learn useful words so you never go blank mid-sentence"),
-          icon: BookType,
+          iconName: "book-type",
         },
         {
           title: i18n._("Practice real-life situations in advance"),
-          icon: UsersRound,
+          iconName: "users-round",
         },
       ]}
-      authTitle={signInTitle || <Trans>Let's create an account</Trans>}
-      authSubTitle={singInSubTitle || <Trans>So you can keep your progress</Trans>}
+      authTitle={signInTitle || i18n._("Let's create an account")}
+      authSubTitle={singInSubTitle || i18n._("So you can keep your progress")}
       authList={[
         {
           title: i18n._("Credit card is required"),
-          icon: Bird,
+          iconName: "bird",
         },
         {
           title: i18n._("No ads, no spam"),
-          icon: BetweenHorizontalStart,
+          iconName: "between-horizontal-start",
         },
         {
           title: i18n._("Privacy Policy"),
-          icon: ScrollText,
+          iconName: "scroll-text",
           href: `${getUrlStart("en")}privacy`,
         },
         {
           title: i18n._("Terms of Use"),
-          icon: PencilRuler,
+          iconName: "pencil-ruler",
           href: `${getUrlStart("en")}terms`,
         },
       ]}

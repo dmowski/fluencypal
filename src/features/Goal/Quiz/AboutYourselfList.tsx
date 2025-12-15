@@ -1,7 +1,6 @@
 "use client";
 
 import { useLingui } from "@lingui/react";
-import { GraduationCap, Guitar, Music, Plane } from "lucide-react";
 import { IconTextList, ListItem } from "../../Survey/IconTextList";
 
 export const AboutYourselfList: React.FC = () => {
@@ -10,19 +9,19 @@ export const AboutYourselfList: React.FC = () => {
   const listItems: ListItem[] = [
     {
       title: i18n._("Hobbies or interests"),
-      icon: Guitar,
+      iconName: "guitar",
     },
     {
       title: i18n._("Main goal in learning"),
-      icon: GraduationCap,
+      iconName: "graduation-cap",
     },
     {
       title: i18n._("Do you have any travel plans?"),
-      icon: Plane,
+      iconName: "plane",
     },
     {
       title: i18n._("Movies, books, or music"),
-      icon: Music,
+      iconName: "music",
     },
   ];
 

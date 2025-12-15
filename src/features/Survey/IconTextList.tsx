@@ -1,12 +1,9 @@
 "use client";
 import { Link, Stack, Typography } from "@mui/material";
-import { LucideProps } from "lucide-react";
-import { ForwardRefExoticComponent, RefAttributes } from "react";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
 
 export interface ListItem {
   title: string;
-  icon?: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
   iconName?: IconName;
   href?: string;
 }
@@ -41,7 +38,6 @@ export const IconTextList = ({ listItems, gap }: { listItems: ListItem[]; gap?: 
             {item.iconName && (
               <DynamicIcon name={item.iconName} size={iconSize} style={iconStyle} />
             )}
-            {item.icon && <item.icon style={iconStyle} size={iconSize} />}
             <Typography
               variant="body2"
               target={item.href ? "_blank" : undefined}
