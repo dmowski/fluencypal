@@ -35,28 +35,6 @@ export function useProvideInterviewQuizContext({
   const analytics = useAnalytics();
   const [isConfirmedGTag, setIsConfirmedGTag] = useState(false);
 
-  useEffect(() => {
-    if (!analytics.isInitialized) {
-      return;
-    }
-
-    if (isConfirmedGTag) {
-      return;
-    }
-    const isDev = auth.userInfo?.email?.includes("dmowski") || false;
-    if (isDev) {
-      //return;
-    }
-
-    if (auth.uid) {
-      setTimeout(() => {
-        analytics.confirmGtag();
-        console.log("GTag confirmed for interview quiz");
-        setIsConfirmedGTag(true);
-      }, 1000);
-    }
-  }, [isConfirmedGTag, auth.uid, analytics.isInitialized]);
-
   const core = useQuizCore({
     path,
     mainPageUrl,
@@ -220,6 +198,30 @@ export function useProvideInterviewQuizContext({
       analyzeInputs({ step: currentStep, answers: quizAnswers, results });
     }
   }, [currentStep, quizAnswers, results]);
+
+  const currentStepType = currentStep?.type || null;
+
+  useEffect(() => {
+    if (!analytics.isInitialized) {
+      return;
+    }
+
+    if (isConfirmedGTag) {
+      return;
+    }
+    const isDev = auth.userInfo?.email?.includes("dmowski") || false;
+    if (isDev) {
+      //return;
+    }
+
+    if (auth.uid && currentStepType === "paywall") {
+      setTimeout(() => {
+        analytics.confirmGtag();
+        console.log("GTag confirmed for interview quiz");
+        setIsConfirmedGTag(true);
+      }, 1000);
+    }
+  }, [isConfirmedGTag, auth.uid, analytics.isInitialized, currentStepType]);
 
   return {
     ...core,
