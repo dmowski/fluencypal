@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { useUsage } from "../Usage/useUsage";
 import { useEffect, useMemo, useState } from "react";
-import { loadStripe, StripeElementLocale } from "@stripe/stripe-js";
+import { loadStripe, StripeElementLocale, StripeElementsOptions } from "@stripe/stripe-js";
 import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { SetupIntentRequest, SetupIntentResponse } from "@/app/api/payment/type";
 import { useAuth } from "../Auth/useAuth";
@@ -28,6 +28,7 @@ import { InfoStep } from "../Survey/InfoStep";
 import { InterviewQuizButton } from "../Goal/Quiz/InterviewQuizButton";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+
 function SetupForm({ clientSecret }: { clientSecret: string }) {
   const stripe = useStripe();
   const { i18n } = useLingui();
@@ -119,7 +120,8 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
 }
 function VerifyCard({ clientSecret, lang }: { clientSecret: string; lang: SupportedLanguage }) {
   const locale: StripeElementLocale = stripeLocaleMap[lang];
-  const options = useMemo(() => ({ clientSecret, locale }), [clientSecret]);
+  const options: StripeElementsOptions = useMemo(() => ({ clientSecret, locale }), [clientSecret]);
+
   if (!clientSecret) return null;
   return (
     <Stack sx={{ width: "100%" }}>
