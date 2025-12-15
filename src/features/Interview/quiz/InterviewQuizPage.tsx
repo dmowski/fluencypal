@@ -16,6 +16,7 @@ import { Clock, Trash } from "lucide-react";
 import { useDeleteAccount } from "@/features/Auth/useDeleteAccount";
 import { ScorePreviewCard } from "../Landing/components/ScorePreviewSection";
 import { InterviewAuthWall } from "@/features/Auth/InterviewAuthWall";
+import { QuizPageLoader } from "./QuizPageLoader";
 
 export interface InterviewQuizPageProps {
   lang: SupportedLanguage;
@@ -38,7 +39,7 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
   const isAnalyzingInputs = !!quiz.currentStep && !!quiz.isAnalyzingInputs[quiz.currentStep.id];
 
   if (quiz.isNavigateToMainPage) {
-    return null;
+    return <QuizPageLoader />;
   }
 
   return (
