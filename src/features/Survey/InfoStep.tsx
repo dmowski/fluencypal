@@ -1,15 +1,14 @@
 "use client";
 import { Stack, Typography } from "@mui/material";
-import { useWindowSizes } from "../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
 import { ReactNode } from "react";
-import { FooterButton } from "./FooterButton";
 import { ArrowRight } from "lucide-react";
-import { IconTextList, ListItem } from "./IconTextList";
+import { ColorIconTextList, ColorIconTextListItem } from "./ColorIconTextList";
+import { InterviewQuizButton } from "../Goal/Quiz/InterviewQuizButton";
 
 export const InfoStep = ({
-  message,
-  subMessage,
+  title,
+  subTitle,
   subComponent,
   imageUrl,
   imageAspectRatio,
@@ -17,14 +16,12 @@ export const InfoStep = ({
   onClick,
   actionButtonStartIcon,
   actionButtonEndIcon,
-  aboveButtonComponent,
   disabled,
   isStepLoading,
-  width,
   listItems,
 }: {
-  message?: string;
-  subMessage?: string;
+  title?: string;
+  subTitle?: string;
   subComponent?: ReactNode;
   imageAspectRatio?: string;
   imageUrl?: string;
@@ -32,18 +29,17 @@ export const InfoStep = ({
   onClick: () => void;
   actionButtonStartIcon?: ReactNode;
   actionButtonEndIcon?: ReactNode;
-  aboveButtonComponent?: ReactNode;
   disabled?: boolean;
   isStepLoading?: boolean;
   width?: string;
-  listItems?: ListItem[];
+  listItems?: ColorIconTextListItem[];
 }) => {
-  const sizes = useWindowSizes();
   const { i18n } = useLingui();
   return (
     <Stack
       sx={{
-        gap: "0px",
+        gap: "30px",
+        paddingBottom: "20px",
       }}
     >
       <Stack
@@ -51,7 +47,6 @@ export const InfoStep = ({
           width: "100%",
           gap: "10px",
           padding: "0 10px",
-          minHeight: `calc(100dvh - ${sizes.topOffset} - ${sizes.bottomOffset} - 190px)`,
         }}
       >
         <Stack
@@ -61,7 +56,7 @@ export const InfoStep = ({
             paddingTop: "40px",
           }}
         >
-          {message && (
+          {title && (
             <Typography
               variant="h4"
               sx={{
@@ -69,35 +64,36 @@ export const InfoStep = ({
                 lineHeight: "1.2",
               }}
             >
-              {message}
+              {title}
             </Typography>
           )}
-          {subMessage && (
+          {subTitle && (
             <Typography
-              variant="body2"
+              variant="body1"
               sx={{
-                opacity: 0.7,
+                opacity: 0.9,
+                paddingTop: "10px",
               }}
             >
-              {subMessage}
+              {subTitle}
             </Typography>
           )}
 
           {subComponent}
 
-          {listItems && (
+          {!!listItems?.length && (
             <Stack
               sx={{
-                paddingTop: "15px",
+                paddingTop: "30px",
               }}
             >
-              <IconTextList listItems={listItems} />
+              <ColorIconTextList listItems={listItems} iconSize="26px" gap="23px" />
             </Stack>
           )}
           {imageUrl && (
             <Stack
               sx={{
-                paddingTop: "15px",
+                paddingTop: "10px",
               }}
             >
               <Stack
@@ -108,6 +104,7 @@ export const InfoStep = ({
                   aspectRatio: imageAspectRatio || "16/9",
                   borderRadius: "8px",
                   objectFit: "cover",
+                  backgroundColor: "rgba(255,255,255,0.05)",
                   "@media (max-width: 600px)": {
                     width: "100%",
                   },
@@ -116,19 +113,18 @@ export const InfoStep = ({
             </Stack>
           )}
         </Stack>
-      </Stack>
 
-      <FooterButton
-        disabled={disabled}
-        onClick={() => {
-          !isStepLoading && onClick();
-        }}
-        startIcon={actionButtonStartIcon}
-        title={actionButtonTitle || i18n._("Next")}
-        aboveButtonComponent={aboveButtonComponent}
-        endIcon={actionButtonEndIcon || <ArrowRight />}
-        width={width}
-      />
+        <InterviewQuizButton
+          onClick={() => {
+            !isStepLoading && onClick();
+          }}
+          color={"primary"}
+          title={actionButtonTitle || i18n._("Next")}
+          disabled={disabled}
+          startIcon={actionButtonStartIcon}
+          endIcon={actionButtonEndIcon || <ArrowRight />}
+        />
+      </Stack>
     </Stack>
   );
 };

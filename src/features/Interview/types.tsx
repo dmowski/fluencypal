@@ -147,6 +147,7 @@ type Section =
 export interface QuizListItem {
   title: string;
   iconName: IconName;
+  iconColor?: string;
 }
 
 /** Basic info to inform the user about the next step and general info */

@@ -31,12 +31,7 @@ export async function InterviewQuizPageNext({
           lang={lang}
           interviewId={id}
         >
-          <InterviewQuizPage
-            interviewCoreData={interviewData.coreData}
-            lang={supportedLang}
-            id={id}
-            interviewQuiz={interviewData.quiz}
-          />
+          <InterviewQuizPage lang={supportedLang} />
         </InterviewQuizProvider>
       </WebViewWall>
     </PracticeProvider>

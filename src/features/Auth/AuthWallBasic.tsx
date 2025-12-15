@@ -86,8 +86,8 @@ export const AuthWallBasic = ({
           <InfoStep
             imageUrl={featuresImageUrl}
             actionButtonTitle={i18n._("Next")}
-            message={featuresTitle}
-            subMessage={featuresSubTitle}
+            title={featuresTitle}
+            subTitle={featuresSubTitle}
             listItems={featuresList}
             onClick={nextStep}
             width={width}
@@ -100,8 +100,8 @@ export const AuthWallBasic = ({
             actionButtonEndIcon={<Check />}
             imageUrl={agreementImageUrl}
             width={width}
-            message={i18n._("We will speak freely")}
-            subMessage={i18n._("So we need your agreement with that")}
+            title={i18n._("We will speak freely")}
+            subTitle={i18n._("So we need your agreement with that")}
             listItems={[
               {
                 title: i18n._("We process your voice using AI"),
@@ -138,8 +138,8 @@ export const AuthWallBasic = ({
           <InfoStep
             imageUrl={authImageUrl}
             width={width}
-            message={authTitle}
-            subMessage={authSubTitle}
+            title={authTitle}
+            subTitle={authSubTitle}
             actionButtonTitle={i18n._("Sign in with Google")}
             actionButtonStartIcon={<Google />}
             listItems={authList}

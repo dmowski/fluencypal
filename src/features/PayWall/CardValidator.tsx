@@ -284,8 +284,8 @@ export const CardValidatorQuiz = ({
   if (isCreditCardConfirmed)
     return (
       <InfoStep
-        message={i18n._("Credit Card Already Confirmed")}
-        subMessage={i18n._(
+        title={i18n._("Credit Card Already Confirmed")}
+        subTitle={i18n._(
           "Your credit card has already been confirmed. You can proceed to the next step."
         )}
         onClick={() => onNextStep()}

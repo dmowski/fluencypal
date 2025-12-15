@@ -70,12 +70,10 @@ export const RecordUserAudioAnswer = ({
             color: wordsCount === 0 ? "inherit" : wordsCount < minWords ? "#FFA500" : "#4CAF50",
           }}
         >
-          {wordsCount > 0 ? (
+          {wordsCount > 0 && (
             <>
               {wordsCount} / <b>{minWords}</b>
             </>
-          ) : (
-            <></>
           )}
         </Typography>
       </Stack>
@@ -107,7 +105,7 @@ export const RecordUserAudioAnswer = ({
             paddingBottom: "10px",
           }}
         >
-          <Goal size={"39px"} color="#999" strokeWidth={"2px"} />
+          <Goal size={"24px"} color="rgba(255, 255, 255, 0.3)" strokeWidth={"2px"} />
           <Typography variant="h6" align="center" sx={{}}>
             <Trans>
               Goal: at least <b>{minWords}</b> words
@@ -122,7 +120,7 @@ export const RecordUserAudioAnswer = ({
             sx={{
               flexDirection: "row",
               alignItems: "center",
-              justifyContent: "space-between",
+              justifyContent: transcript ? "space-between" : "center",
               paddingTop: "12px",
               gap: "10px",
             }}

@@ -20,10 +20,19 @@ export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): Int
         listItems: [
           {
             title: i18n._("Real senior-level frontend questions"),
-            iconName: "check",
+            iconName: "lightbulb",
+            iconColor: "rgb(96, 165, 250)",
           },
-          { title: i18n._("AI-driven feedback on your answers"), iconName: "check" },
-          { title: i18n._("Personalized improvement suggestions"), iconName: "check" },
+          {
+            title: i18n._("AI-driven feedback on your answers"),
+            iconName: "badge-check",
+            iconColor: "rgb(96, 165, 250)",
+          },
+          {
+            title: i18n._("Personalized improvement suggestions"),
+            iconName: "circle-fading-arrow-up",
+            iconColor: "rgb(96, 165, 250)",
+          },
         ],
       },
       {
@@ -50,7 +59,7 @@ export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): Int
           "https://circl.es/wp-content/uploads/2024/02/Screenshot-2024-02-06-at-12.53.38-1-1024x780.png",
         imageAspectRatio: "1024/780",
 
-        title: i18n._("Enable Microphone Access"),
+        title: i18n._("Microphone Access"),
         subTitle: i18n._(
           "In the next step, you'll need to record audio. Please verify your microphone is ready and allow access when asked."
         ),
@@ -68,10 +77,10 @@ export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): Int
         listItems: [
           {
             title: i18n._("Highlight your frontend experience"),
-            iconName: "check",
+            iconName: "history",
           },
-          { title: i18n._("Mention key projects or achievements"), iconName: "check" },
-          { title: i18n._("Keep it concise and relevant"), iconName: "check" },
+          { title: i18n._("Mention key projects or achievements"), iconName: "crown" },
+          { title: i18n._("Keep it concise and relevant"), iconName: "box" },
         ],
       },
       {
@@ -143,20 +152,39 @@ description should summarize strengths and areas for improvement.
       {
         type: "info",
         id: "score-intro-step",
-        title: i18n._("Your Interview Readiness Score"),
+        title: i18n._("Before the free trial"),
         subTitle: i18n._(
-          "On the next step, you'll receive a detailed analysis of your answers and example responses to help you improve."
+          "On the next steps, you'll receive a detailed analysis of your answers and example responses to help you improve."
         ),
         //imageUrl: "https://cdn-useast1.kapwing.com/static/templates/x-x-everywhere-meme-template-full-96173e84.webp",
         imageAspectRatio: "16/9",
         listItems: [
           {
-            title: i18n._("Example answers for improvement"),
-            iconName: "audio-lines",
+            title: i18n._("Real-time interview with AI recruiter | Screening"),
+            iconName: "webcam",
+            //iconColor: "rgb(96, 165, 250)",
           },
           {
-            title: i18n._("Suggestions to refine your next responses"),
-            iconName: "file-sliders",
+            title: i18n._("Tech interview with AI frontend developer | Technical interview"),
+            iconName: "webcam",
+            //iconColor: "rgb(96, 165, 250)",
+          },
+          {
+            title: i18n._("Final Interview with AI SEO | Salary negotiation"),
+            iconName: "webcam",
+            //iconColor: "rgb(96, 165, 250)",
+          },
+          {
+            title: i18n._("Google Calls emulator"),
+            iconName: "video",
+          },
+          {
+            title: i18n._("CV and LinkedIn review"),
+            iconName: "file-user",
+          },
+          {
+            title: i18n._("Example answers for improvement"),
+            iconName: "audio-lines",
           },
         ],
         buttonTitle: i18n._("Continue"),

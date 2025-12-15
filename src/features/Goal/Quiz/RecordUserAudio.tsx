@@ -2,14 +2,14 @@
 
 import { Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
-import { ArrowRight, Check, Mic } from "lucide-react";
 import { ReactNode, useEffect } from "react";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useAuth } from "@/features/Auth/useAuth";
 import { getWordsCount } from "@/libs/words";
-import { FooterButton } from "../../Survey/FooterButton";
 import { RecordUserAudioAnswer } from "../../Survey/RecordUserAudioAnswer";
 import { SupportedLanguage } from "@/features/Lang/lang";
+import { ColorIconTextList, ColorIconTextListItem } from "@/features/Survey/ColorIconTextList";
+import { InterviewQuizButton } from "./InterviewQuizButton";
 
 export const RecordUserAudio = ({
   transcript,
@@ -21,18 +21,18 @@ export const RecordUserAudio = ({
   isLoading,
   lang,
   nextStep,
-  width,
+  listItems,
 }: {
   transcript: string;
   minWords: number;
   updateTranscript: (transcript: string) => Promise<void>;
   title: string;
   subTitle: string | ReactNode;
-  subTitleComponent: ReactNode;
+  subTitleComponent?: ReactNode;
   isLoading?: boolean;
   lang: SupportedLanguage;
   nextStep: () => void;
-  width?: string;
+  listItems?: ColorIconTextListItem[];
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -78,25 +78,47 @@ export const RecordUserAudio = ({
           }}
         >
           {(title || subTitle) && (
-            <Stack>
+            <Stack
+              sx={{
+                width: "100%",
+                gap: "5px",
+                paddingTop: "40px",
+              }}
+            >
               {title && (
-                <Typography variant="h6" className={isLoading ? "loading-shimmer" : ""}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: 660,
+                    lineHeight: "1.2",
+                  }}
+                >
                   {title}
                 </Typography>
               )}
               {subTitle && (
                 <Typography
-                  variant="caption"
-                  className={isLoading ? "loading-shimmer" : ""}
+                  variant="body1"
                   sx={{
-                    opacity: 0.8,
+                    opacity: 0.9,
+                    paddingTop: "10px",
                   }}
                 >
                   {subTitle}
                 </Typography>
               )}
+              {!!listItems?.length && (
+                <Stack
+                  sx={{
+                    paddingTop: "10px",
+                  }}
+                >
+                  <ColorIconTextList listItems={listItems} iconSize="18px" gap="10px" />
+                </Stack>
+              )}
             </Stack>
           )}
+
           <Stack>{subTitleComponent}</Stack>
           <RecordUserAudioAnswer
             transcript={transcript}
@@ -111,24 +133,20 @@ export const RecordUserAudio = ({
             error={recorder.error}
           />
         </Stack>
-      </Stack>
 
-      <FooterButton
-        disabled={isLoading || wordsCount < minWords || recorder.isTranscribing}
-        width={width}
-        onClick={async () => {
-          nextStep();
-        }}
-        title={i18n._("Next")}
-        color={
-          recorder.isRecording && wordsCount < minWords
-            ? "error"
-            : wordsCount > minWords
-            ? "success"
-            : "primary"
-        }
-        endIcon={<ArrowRight />}
-      />
+        <InterviewQuizButton
+          onClick={nextStep}
+          color={
+            recorder.isRecording && wordsCount < minWords
+              ? "error"
+              : wordsCount > minWords
+              ? "success"
+              : "primary"
+          }
+          disabled={isLoading || wordsCount < minWords || recorder.isTranscribing}
+          title={i18n._("Next")}
+        />
+      </Stack>
     </Stack>
   );
 };

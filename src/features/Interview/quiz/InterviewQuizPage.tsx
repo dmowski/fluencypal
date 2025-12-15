@@ -1,13 +1,11 @@
 "use client";
 
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { InterviewCoreData, InterviewQuiz } from "../types";
 import { Button, Stack, Typography } from "@mui/material";
 import { QuizProgressBar } from "@/features/Goal/Quiz/components/QuizProgressBar";
 import { InfoStep } from "@/features/Survey/InfoStep";
 import { useLingui } from "@lingui/react";
 import { useInterviewQuiz } from "./hooks/useInterviewQuiz/useInterviewQuiz";
-import { AuthWall } from "@/features/Auth/AuthWall";
 import { RecordUserAudio } from "@/features/Goal/Quiz/RecordUserAudio";
 import { MIN_CHARACTERS_FOR_TRANSCRIPT } from "./hooks/useInterviewQuiz/data";
 import { IconTextList } from "@/features/Survey/IconTextList";
@@ -20,13 +18,10 @@ import { ScorePreviewCard } from "../Landing/components/ScorePreviewSection";
 import { InterviewAuthWall } from "@/features/Auth/InterviewAuthWall";
 
 export interface InterviewQuizPageProps {
-  interviewCoreData: InterviewCoreData;
-  interviewQuiz: InterviewQuiz;
   lang: SupportedLanguage;
-  id: string;
 }
 
-export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuizPageProps) => {
+export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
   const quiz = useInterviewQuiz();
   const stepType = quiz.currentStep?.type;
   const { i18n } = useLingui();
@@ -73,8 +68,8 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
       >
         {stepType === "info" && quiz.currentStep && (
           <InfoStep
-            message={quiz.currentStep.title}
-            subMessage={quiz.currentStep.subTitle || ""}
+            title={quiz.currentStep.title}
+            subTitle={quiz.currentStep.subTitle || ""}
             imageUrl={quiz.currentStep.imageUrl}
             imageAspectRatio={quiz.currentStep.imageAspectRatio}
             actionButtonTitle={quiz.currentStep.buttonTitle || i18n._("Next")}
@@ -87,36 +82,9 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
         {stepType === "record-audio" && quiz.currentStep && (
           <InterviewAuthWall width={width}>
             <RecordUserAudio
-              title={""}
-              subTitle={""}
-              subTitleComponent={
-                <Stack
-                  sx={{
-                    gap: "0px",
-                    paddingBottom: "40px",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      opacity: 0.8,
-                    }}
-                    variant="body2"
-                  >
-                    {quiz.currentStep.title}
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: 660,
-                      paddingBottom: "20px",
-                    }}
-                  >
-                    {quiz.currentStep.subTitle}
-                  </Typography>
-
-                  <IconTextList listItems={quiz.currentStep.listItems || []} />
-                </Stack>
-              }
+              title={quiz.currentStep.title || ""}
+              subTitle={quiz.currentStep.subTitle}
+              listItems={quiz.currentStep.listItems}
               transcript={survey?.answers[quiz.currentStep.id]?.answerTranscription || ""}
               minWords={MIN_CHARACTERS_FOR_TRANSCRIPT}
               lang={lang}
@@ -127,7 +95,6 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
                   combinedTranscript
                 );
               }}
-              width={width}
             />
           </InterviewAuthWall>
         )}
@@ -135,32 +102,15 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
         {stepType === "analyze-inputs" && quiz.currentStep && (
           <InterviewAuthWall width={width}>
             <InfoStep
+              title={quiz.currentStep.title}
+              subTitle={quiz.currentStep.subTitle}
               subComponent={
                 <Stack
                   sx={{
-                    paddingTop: "30px",
-                    paddingBottom: "40px",
+                    paddingTop: "10px",
                     width: "100%",
                   }}
                 >
-                  <Typography
-                    sx={{
-                      opacity: 0.8,
-                    }}
-                    variant="body2"
-                  >
-                    {quiz.currentStep.title}
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: 660,
-                      paddingBottom: "20px",
-                    }}
-                  >
-                    {quiz.currentStep.subTitle}
-                  </Typography>
-
                   {!isAnalyzingInputs && (
                     <Stack>
                       {markdownFeedback && <Markdown>{markdownFeedback || ""}</Markdown>}
@@ -195,7 +145,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
               }
               actionButtonTitle={quiz.currentStep.buttonTitle}
               disabled={quiz.isAnalyzingInputs[quiz.currentStep.id]}
-              onClick={() => quiz.nextStep()}
+              onClick={quiz.nextStep}
             />
           </InterviewAuthWall>
         )}
@@ -209,7 +159,7 @@ export const InterviewQuizPage = ({ interviewCoreData, lang, id }: InterviewQuiz
         {stepType === "waitlist-done" && quiz.currentStep && (
           <InfoStep
             imageUrl={quiz.currentStep.imageUrl}
-            message={quiz.currentStep.title}
+            title={quiz.currentStep.title}
             subComponent={
               <Stack
                 sx={{
