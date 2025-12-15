@@ -160,17 +160,17 @@ description should summarize strengths and areas for improvement.
         imageAspectRatio: "16/9",
         listItems: [
           {
-            title: i18n._("Real-time interview with AI recruiter | Screening"),
+            title: i18n._("Screening interview with AI recruiter"),
             iconName: "webcam",
             //iconColor: "rgb(96, 165, 250)",
           },
           {
-            title: i18n._("Tech interview with AI frontend developer | Technical interview"),
+            title: i18n._("Tech interview with AI frontend developer"),
             iconName: "webcam",
             //iconColor: "rgb(96, 165, 250)",
           },
           {
-            title: i18n._("Final Interview with AI SEO | Salary negotiation"),
+            title: i18n._("Salary negotiation interview with AI SEO"),
             iconName: "webcam",
             //iconColor: "rgb(96, 165, 250)",
           },
@@ -183,7 +183,7 @@ description should summarize strengths and areas for improvement.
             iconName: "file-user",
           },
           {
-            title: i18n._("Example answers for improvement"),
+            title: i18n._("Corrected answers for remembering"),
             iconName: "audio-lines",
           },
         ],
