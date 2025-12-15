@@ -352,6 +352,15 @@ msgstr "طريقة مثبتة تقدم نتائج قابلة للقياس"
 msgid "A silence at the end of the algorithm"
 msgstr "صمت في نهاية الخوارزمية"
 
+#: src/features/PayWall/CardValidator.tsx:100
+#. js-lingui-explicit-id
+msgid ""
+"A small temporary authorization may appear on your statement and will be "
+"released automatically by your bank."
+msgstr ""
+"قد يظهر ترخيص صغير مؤقت في كشف حسابك وسيتم تحريره تلقائيًا بواسطة البنك "
+"الخاص بك."
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
 #. js-lingui-explicit-id
 msgid "A standard reply to “How are you?”"
@@ -685,6 +694,7 @@ msgid "Analyzing..."
 msgstr "جار التحليل..."
 
 #: src/features/Goal/GoalQuestions.tsx:67
+#: src/features/PayWall/CardValidator.tsx:112
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "و"
@@ -1082,6 +1092,11 @@ msgstr "اشتر المزيد من الساعات"
 msgid "Buying a Train Ticket"
 msgstr "شراء تذكرة قطار"
 
+#: src/features/PayWall/CardValidator.tsx:103
+#. js-lingui-explicit-id
+msgid "By continuing, you agree to our"
+msgstr "بالاستمرار، فإنك توافق على شروطنا"
+
 #: src/features/Landing/Price/PricePage.tsx:212
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
@@ -1186,7 +1201,7 @@ msgstr ""
 "المرشحين الذين يعرفون الأساسيات بالفعل ولكنهم يواجهون صعوبة في التعبير عن "
 "قراراتهم بوضوح في المقابلات"
 
-#: src/features/PayWall/CardValidator.tsx:81
+#: src/features/PayWall/CardValidator.tsx:138
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "تم التحقق من البطاقة. جارٍ التحميل..."
@@ -1395,8 +1410,7 @@ msgstr "تتبع درجة الثقة"
 msgid "Confident Communication"
 msgstr "التواصل بثقة"
 
-#: src/features/PayWall/CardValidator.tsx:233
-#: src/features/PayWall/CardValidator.tsx:362
+#: src/features/PayWall/CardValidator.tsx:305
 #. js-lingui-explicit-id
 msgid "Confirm Credit Card"
 msgstr "تأكيد بطاقة الائتمان"
@@ -1405,6 +1419,13 @@ msgstr "تأكيد بطاقة الائتمان"
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "تأكيد الدفع"
+
+#: src/features/PayWall/CardValidator.tsx:80
+#. js-lingui-explicit-id
+msgid "Confirm your payment method"
+msgstr ""
+"plaintext\n"
+"تأكيد طريقة الدفع الخاصة بك\n"
 
 #: src/features/Dashboard/BrainCard.tsx:140
 #. js-lingui-explicit-id
@@ -1485,6 +1506,7 @@ msgstr "جهات الاتصال:"
 #: src/features/Interview/data/frontend/quizData.ts:131
 #: src/features/Interview/data/frontend/quizData.ts:190
 #: src/features/Interview/data/frontend/quizData.ts:205
+#: src/features/PayWall/CardValidator.tsx:139
 #: src/features/Plan/PlanCard.tsx:284
 #: src/features/Usage/SubscriptionPaymentModal.tsx:595
 #. js-lingui-explicit-id
@@ -1504,6 +1526,11 @@ msgid ""
 msgstr ""
 "واصل التدريب مع المزيد من الأسئلة، تتبع تقدمك، وصقل إجاباتك لتتفوق في "
 "مقابلتك التالية."
+
+#: src/features/PayWall/CardValidator.tsx:374
+#. js-lingui-explicit-id
+msgid "Continue to free access"
+msgstr "استمر في الوصول المجاني"
 
 #: src/features/Usage/PaymentModal.tsx:342
 #. js-lingui-explicit-id
@@ -1687,13 +1714,12 @@ msgstr "أنشئ سيناريو لعب الأدوار الخاص بك"
 msgid "Create Your Own Scenario"
 msgstr "أنشئ سيناريو خاص بك"
 
-#: src/features/PayWall/CardValidator.tsx:287
+#: src/features/PayWall/CardValidator.tsx:359
 #. js-lingui-explicit-id
 msgid "Credit Card Already Confirmed"
 msgstr "بطاقة الائتمان تم تأكيدها بالفعل"
 
-#: src/features/PayWall/CardValidator.tsx:192
-#: src/features/PayWall/CardValidator.tsx:321
+#: src/features/PayWall/CardValidator.tsx:264
 #. js-lingui-explicit-id
 msgid "Credit Card Check"
 msgstr "فحص بطاقة الائتمان"
@@ -2866,15 +2892,10 @@ msgstr ""
 "الكلام، تحدث وصحح للحصول على تعليقات فورية على القواعد والنطق، ووضع "
 "المبتدئين للمحادثات الأبطأ والموجهة."
 
-#: src/features/PayWall/CardValidator.tsx:69
+#: src/features/PayWall/CardValidator.tsx:83
 #. js-lingui-explicit-id
-msgid ""
-"FluencyPal will not charge your card. A small temporary authorization hold "
-"may appear on your statement, which will be released by your bank within a "
-"few days."
-msgstr ""
-"FluencyPal لن يخصم من بطاقتك. قد يظهر حجز تفويض صغير مؤقت في كشف حسابك، "
-"والذي سيُطلقه البنك الخاص بك في غضون بضعة أيام."
+msgid "FluencyPal won’t charge you during the trial."
+msgstr "FluencyPal لن يقوم بفرض أي رسوم عليك خلال الفترة التجريبية."
 
 #: src/features/SEO/metadata.ts:331
 #. js-lingui-explicit-id
@@ -3078,6 +3099,17 @@ msgstr "الألمانية"
 #. js-lingui-explicit-id
 msgid "German Learning Plan"
 msgstr "خطة تعلم الألمانية"
+
+#: src/features/PayWall/CardValidator.tsx:371
+#. js-lingui-explicit-id
+msgid ""
+"Get 2 days of full access to all features. Practice real interviews, get AI "
+"feedback, and see your full analysis. We use a card to prevent abuse and "
+"give you uninterrupted access to all features."
+msgstr ""
+"احصل على يومين من الوصول الكامل إلى جميع الميزات. قم بممارسة المقابلات "
+"الحقيقية، واحصل على ملاحظات من الذكاء الاصطناعي، وشاهد تحليل كامل لك. "
+"نستخدم بطاقة لمنع إساءة الاستخدام وتوفير وصول غير منقطع لجميع الميزات."
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:152
 #: src/features/Dashboard/TasksCard.tsx:52
@@ -5555,8 +5587,12 @@ msgstr ""
 "\n"
 "لا إعلانات، لا بريد مزعج\n"
 
-#: src/features/PayWall/CardValidator.tsx:207
-#: src/features/PayWall/CardValidator.tsx:336
+#: src/features/PayWall/CardValidator.tsx:384
+#. js-lingui-explicit-id
+msgid "No automatic payment"
+msgstr "لا يوجد دفع تلقائي"
+
+#: src/features/PayWall/CardValidator.tsx:279
 #. js-lingui-explicit-id
 msgid "No automatic payment after the trial"
 msgstr "لا يوجد دفع تلقائي بعد التجربة"
@@ -5566,8 +5602,12 @@ msgstr "لا يوجد دفع تلقائي بعد التجربة"
 msgid "No blogs found"
 msgstr "لم يتم العثور على مدونات"
 
-#: src/features/PayWall/CardValidator.tsx:211
-#: src/features/PayWall/CardValidator.tsx:340
+#: src/features/PayWall/CardValidator.tsx:379
+#. js-lingui-explicit-id
+msgid "No charge during trial"
+msgstr "لا توجد رسوم خلال الفترة التجريبية"
+
+#: src/features/PayWall/CardValidator.tsx:283
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr ""
@@ -6068,8 +6108,7 @@ msgstr "لعب اللعبة"
 msgid "Play the role"
 msgstr "قم بدور"
 
-#: src/features/PayWall/CardValidator.tsx:194
-#: src/features/PayWall/CardValidator.tsx:323
+#: src/features/PayWall/CardValidator.tsx:266
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
 msgstr "يرجى تأكيد بطاقة الائتمان الخاصة بك للوصول إلى جميع الميزات."
@@ -6469,6 +6508,7 @@ msgstr "سياسة الخصوصية"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
+#: src/features/PayWall/CardValidator.tsx:119
 #: src/features/SEO/metadata.ts:157
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -8050,6 +8090,11 @@ msgstr ""
 msgid "Terms and Conditions"
 msgstr "الشروط والأحكام"
 
+#: src/features/PayWall/CardValidator.tsx:110
+#. js-lingui-explicit-id
+msgid "Terms of Service"
+msgstr "شروط الخدمة"
+
 #: src/features/Auth/AuthWall.tsx:70
 #: src/features/Auth/AuthWallBasic.tsx:128
 #: src/features/Auth/InterviewAuthWall.tsx:52
@@ -8416,6 +8461,11 @@ msgstr "مراجعات إجابات غير محدودة"
 msgid "Unlock full analysis and tailored preparation"
 msgstr "افتح التحليل الكامل والتحضير المخصص"
 
+#: src/features/PayWall/CardValidator.tsx:370
+#. js-lingui-explicit-id
+msgid "Unlock full interview preparation"
+msgstr "افتح التحضير الكامل للمقابلة"
+
 #: src/features/Interview/data/frontend/quizData.ts:195
 #. js-lingui-explicit-id
 msgid "Unlock Your Trial and Get Full Feedback"
@@ -8476,15 +8526,17 @@ msgstr ""
 msgid "Vacancy description"
 msgstr "وصف فرصة العمل"
 
-#: src/features/PayWall/CardValidator.tsx:44
+#: src/features/PayWall/CardValidator.tsx:54
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "فشل التحقق"
 
-#: src/features/PayWall/CardValidator.tsx:83
+#: src/features/PayWall/CardValidator.tsx:136
 #. js-lingui-explicit-id
-msgid "Verify card"
-msgstr "تحقق من البطاقة"
+msgid "Verifying..."
+msgstr ""
+"plaintext\n"
+"جارٍ التحقق...\n"
 
 #: src/features/Goal/GoalQuestions.tsx:302
 #. js-lingui-explicit-id
@@ -9130,14 +9182,7 @@ msgstr ""
 "سوف تجيب على أسئلة قصيرة حول .NET، واجهات برمجة التطبيقات (APIs)، قواعد "
 "البيانات، التزامن، وتصميم الأنظمة."
 
-#: src/features/PayWall/CardValidator.tsx:332
-#. js-lingui-explicit-id
-msgid "You will get 1 day of full access for free"
-msgstr ""
-"You will get 1 day of full access for free  \n"
-"سوف تحصل على يوم واحد من الوصول الكامل مجانًا"
-
-#: src/features/PayWall/CardValidator.tsx:203
+#: src/features/PayWall/CardValidator.tsx:275
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "ستحصل على 3 أيام من الوصول الكامل مجاناً"
@@ -9188,7 +9233,16 @@ msgstr "إجابتك"
 msgid "Your Avatar:"
 msgstr "صورتك الرمزية:"
 
-#: src/features/PayWall/CardValidator.tsx:288
+#: src/features/PayWall/CardValidator.tsx:85
+#. js-lingui-explicit-id
+msgid ""
+"Your card is used only to activate secure access and will not be billed "
+"unless you decide to continue."
+msgstr ""
+"بطاقتك تُستخدم فقط لتفعيل الوصول الآمن ولن يتم الفوترة إلا إذا قررت "
+"الاستمرار."
+
+#: src/features/PayWall/CardValidator.tsx:360
 #. js-lingui-explicit-id
 msgid ""
 "Your credit card has already been confirmed. You can proceed to the next "
@@ -9297,6 +9351,28 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/PayWall/CardValidator.tsx:69
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "FluencyPal will not charge your card. A small temporary authorization hold "
+#~ "may appear on your statement, which will be released by your bank within a "
+#~ "few days."
+#~ msgstr ""
+#~ "FluencyPal لن يخصم من بطاقتك. قد يظهر حجز تفويض صغير مؤقت في كشف حسابك، "
+#~ "والذي سيُطلقه البنك الخاص بك في غضون بضعة أيام."
+
+#: src/features/PayWall/CardValidator.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "Verify card"
+#~ msgstr "تحقق من البطاقة"
+
+#: src/features/PayWall/CardValidator.tsx:332
+#. js-lingui-explicit-id
+#~ msgid "You will get 1 day of full access for free"
+#~ msgstr ""
+#~ "You will get 1 day of full access for free  \n"
+#~ "سوف تحصل على يوم واحد من الوصول الكامل مجانًا"
 
 #: src/features/Interview/data/frontend/quizData.ts:186
 #. js-lingui-explicit-id

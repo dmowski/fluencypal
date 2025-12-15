@@ -336,6 +336,13 @@ msgstr "측정 가능한 결과를 제공하는 입증된 방법"
 msgid "A silence at the end of the algorithm"
 msgstr "알고리즘의 끝에서의 침묵"
 
+#: src/features/PayWall/CardValidator.tsx:100
+#. js-lingui-explicit-id
+msgid ""
+"A small temporary authorization may appear on your statement and will be "
+"released automatically by your bank."
+msgstr "귀하의 명세서에 작은 일시적 승인 금액이 나타날 수 있으며, 귀하의 은행에 의해 자동으로 해제됩니다."
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
 #. js-lingui-explicit-id
 msgid "A standard reply to “How are you?”"
@@ -661,6 +668,7 @@ msgid "Analyzing..."
 msgstr "분석 중..."
 
 #: src/features/Goal/GoalQuestions.tsx:67
+#: src/features/PayWall/CardValidator.tsx:112
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "그리고"
@@ -1054,6 +1062,11 @@ msgstr "더 많은 시간 구매"
 msgid "Buying a Train Ticket"
 msgstr "기차 티켓 구매하기"
 
+#: src/features/PayWall/CardValidator.tsx:103
+#. js-lingui-explicit-id
+msgid "By continuing, you agree to our"
+msgstr "계속 진행하면, 귀하는 당사의 것에 동의하게 됩니다."
+
 #: src/features/Landing/Price/PricePage.tsx:212
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
@@ -1154,7 +1167,7 @@ msgid ""
 "clearly in interviews"
 msgstr "기본은 알고 있지만 면접에서 결정을 명확하게 설명하는 데 어려움을 겪는 지원자"
 
-#: src/features/PayWall/CardValidator.tsx:81
+#: src/features/PayWall/CardValidator.tsx:138
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "카드가 확인되었습니다. 불러오는 중..."
@@ -1356,8 +1369,7 @@ msgstr "신뢰 점수 추적"
 msgid "Confident Communication"
 msgstr "자신감 있는 커뮤니케이션"
 
-#: src/features/PayWall/CardValidator.tsx:233
-#: src/features/PayWall/CardValidator.tsx:362
+#: src/features/PayWall/CardValidator.tsx:305
 #. js-lingui-explicit-id
 msgid "Confirm Credit Card"
 msgstr "신용 카드 확인"
@@ -1366,6 +1378,11 @@ msgstr "신용 카드 확인"
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "결제 확인"
+
+#: src/features/PayWall/CardValidator.tsx:80
+#. js-lingui-explicit-id
+msgid "Confirm your payment method"
+msgstr "결제 수단을 확인하세요"
 
 #: src/features/Dashboard/BrainCard.tsx:140
 #. js-lingui-explicit-id
@@ -1444,6 +1461,7 @@ msgstr "연락처:"
 #: src/features/Interview/data/frontend/quizData.ts:131
 #: src/features/Interview/data/frontend/quizData.ts:190
 #: src/features/Interview/data/frontend/quizData.ts:205
+#: src/features/PayWall/CardValidator.tsx:139
 #: src/features/Plan/PlanCard.tsx:284
 #: src/features/Usage/SubscriptionPaymentModal.tsx:595
 #. js-lingui-explicit-id
@@ -1461,6 +1479,11 @@ msgid ""
 "Continue practicing with more questions, track your progress, and refine "
 "your answers to ace your next interview."
 msgstr "질문을 통해 계속하여 연습하세요, 진행 상황을 추적하고 다음 인터뷰에서 성공을 거두도록 답변을 다듬으세요."
+
+#: src/features/PayWall/CardValidator.tsx:374
+#. js-lingui-explicit-id
+msgid "Continue to free access"
+msgstr "무료 액세스 계속하기"
 
 #: src/features/Usage/PaymentModal.tsx:342
 #. js-lingui-explicit-id
@@ -1633,13 +1656,12 @@ msgstr "당신만의 역할극 시나리오 만들기"
 msgid "Create Your Own Scenario"
 msgstr "자신만의 시나리오 만들기"
 
-#: src/features/PayWall/CardValidator.tsx:287
+#: src/features/PayWall/CardValidator.tsx:359
 #. js-lingui-explicit-id
 msgid "Credit Card Already Confirmed"
 msgstr "신용카드가 이미 확인되었습니다"
 
-#: src/features/PayWall/CardValidator.tsx:192
-#: src/features/PayWall/CardValidator.tsx:321
+#: src/features/PayWall/CardValidator.tsx:264
 #. js-lingui-explicit-id
 msgid "Credit Card Check"
 msgstr "신용카드 확인"
@@ -2751,15 +2773,10 @@ msgstr ""
 "FluencyPal은 세 가지 모드를 제공합니다: 중단 없는 말하기 연습을 위한 캐주얼 대화, 즉각적인 문법 및 발음 피드백을 위한 "
 "토크 & 교정, 그리고 느린 안내 대화를 위한 초보자 모드입니다."
 
-#: src/features/PayWall/CardValidator.tsx:69
+#: src/features/PayWall/CardValidator.tsx:83
 #. js-lingui-explicit-id
-msgid ""
-"FluencyPal will not charge your card. A small temporary authorization hold "
-"may appear on your statement, which will be released by your bank within a "
-"few days."
-msgstr ""
-"FluencyPal은 귀하의 카드에 요금을 청구하지 않습니다. 귀하의 명세서에 소액의 임시 승인 보류가 나타날 수 있으며, 이는 며칠 "
-"내에 귀하의 은행에 의해 해제될 것입니다."
+msgid "FluencyPal won’t charge you during the trial."
+msgstr "FluencyPal은 체험 기간 동안 요금을 청구하지 않습니다."
 
 #: src/features/SEO/metadata.ts:331
 #. js-lingui-explicit-id
@@ -2952,6 +2969,16 @@ msgstr "독일어"
 #. js-lingui-explicit-id
 msgid "German Learning Plan"
 msgstr "독일어 학습 계획"
+
+#: src/features/PayWall/CardValidator.tsx:371
+#. js-lingui-explicit-id
+msgid ""
+"Get 2 days of full access to all features. Practice real interviews, get AI "
+"feedback, and see your full analysis. We use a card to prevent abuse and "
+"give you uninterrupted access to all features."
+msgstr ""
+"2일 동안 모든 기능에 대한 전체 액세스를 받으세요. 실제 인터뷰를 연습하고, AI 피드백을 받고, 전체 분석 결과를 확인할 수 "
+"있습니다. 악용 방지를 위해 카드를 사용하며, 모든 기능에 중단 없이 액세스할 수 있도록 합니다."
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:152
 #: src/features/Dashboard/TasksCard.tsx:52
@@ -5306,8 +5333,12 @@ msgstr "아니요"
 msgid "No ads, no spam"
 msgstr "광고 없음, 스팸 없음"
 
-#: src/features/PayWall/CardValidator.tsx:207
-#: src/features/PayWall/CardValidator.tsx:336
+#: src/features/PayWall/CardValidator.tsx:384
+#. js-lingui-explicit-id
+msgid "No automatic payment"
+msgstr "자동 결제 없음"
+
+#: src/features/PayWall/CardValidator.tsx:279
 #. js-lingui-explicit-id
 msgid "No automatic payment after the trial"
 msgstr "시험 기간 후 자동 결제 없음"
@@ -5317,8 +5348,12 @@ msgstr "시험 기간 후 자동 결제 없음"
 msgid "No blogs found"
 msgstr "블로그를 찾을 수 없습니다"
 
-#: src/features/PayWall/CardValidator.tsx:211
-#: src/features/PayWall/CardValidator.tsx:340
+#: src/features/PayWall/CardValidator.tsx:379
+#. js-lingui-explicit-id
+msgid "No charge during trial"
+msgstr "평가판 기간 동안 요금 없음"
+
+#: src/features/PayWall/CardValidator.tsx:283
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "결제가 발생하지 않습니다"
@@ -5791,8 +5826,7 @@ msgstr "게임을 플레이하세요"
 msgid "Play the role"
 msgstr "역할을 수행하세요"
 
-#: src/features/PayWall/CardValidator.tsx:194
-#: src/features/PayWall/CardValidator.tsx:323
+#: src/features/PayWall/CardValidator.tsx:266
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
 msgstr "모든 기능에 액세스하려면 신용카드를 확인해 주세요."
@@ -6169,6 +6203,7 @@ msgstr "개인정보 보호정책"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
+#: src/features/PayWall/CardValidator.tsx:119
 #: src/features/SEO/metadata.ts:157
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -7699,6 +7734,11 @@ msgstr "당신의 배경, 경험에 대해 말씀해 주시고, 무엇이 당신
 msgid "Terms and Conditions"
 msgstr "이용 약관"
 
+#: src/features/PayWall/CardValidator.tsx:110
+#. js-lingui-explicit-id
+msgid "Terms of Service"
+msgstr "서비스 약관"
+
 #: src/features/Auth/AuthWall.tsx:70
 #: src/features/Auth/AuthWallBasic.tsx:128
 #: src/features/Auth/InterviewAuthWall.tsx:52
@@ -8045,6 +8085,11 @@ msgstr "무제한 답변 검토"
 msgid "Unlock full analysis and tailored preparation"
 msgstr "맞춤형 준비 및 전체 분석 잠금 해제"
 
+#: src/features/PayWall/CardValidator.tsx:370
+#. js-lingui-explicit-id
+msgid "Unlock full interview preparation"
+msgstr "전체 인터뷰 준비 잠금 해제"
+
 #: src/features/Interview/data/frontend/quizData.ts:195
 #. js-lingui-explicit-id
 msgid "Unlock Your Trial and Get Full Feedback"
@@ -8103,15 +8148,15 @@ msgstr "UX 및 접근성"
 msgid "Vacancy description"
 msgstr "채용 공고 설명"
 
-#: src/features/PayWall/CardValidator.tsx:44
+#: src/features/PayWall/CardValidator.tsx:54
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "확인 실패"
 
-#: src/features/PayWall/CardValidator.tsx:83
+#: src/features/PayWall/CardValidator.tsx:136
 #. js-lingui-explicit-id
-msgid "Verify card"
-msgstr "카드 확인"
+msgid "Verifying..."
+msgstr "확인 중..."
 
 #: src/features/Goal/GoalQuestions.tsx:302
 #. js-lingui-explicit-id
@@ -8714,12 +8759,7 @@ msgid ""
 "and system design."
 msgstr ".NET, API, 데이터베이스, 동시성 및 시스템 설계에 대한 짧은 질문에 답변합니다."
 
-#: src/features/PayWall/CardValidator.tsx:332
-#. js-lingui-explicit-id
-msgid "You will get 1 day of full access for free"
-msgstr "무료로 1일 동안 전체 접근이 가능합니다."
-
-#: src/features/PayWall/CardValidator.tsx:203
+#: src/features/PayWall/CardValidator.tsx:275
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "3일 동안 전체 액세스를 무료로 이용하실 수 있습니다"
@@ -8770,7 +8810,14 @@ msgstr "당신의 답변"
 msgid "Your Avatar:"
 msgstr "당신의 아바타:"
 
-#: src/features/PayWall/CardValidator.tsx:288
+#: src/features/PayWall/CardValidator.tsx:85
+#. js-lingui-explicit-id
+msgid ""
+"Your card is used only to activate secure access and will not be billed "
+"unless you decide to continue."
+msgstr "귀하의 카드는 보안 액세스를 활성화하는 데만 사용되며 계속 사용하기로 결정하지 않는 한 요금이 청구되지 않습니다."
+
+#: src/features/PayWall/CardValidator.tsx:360
 #. js-lingui-explicit-id
 msgid ""
 "Your credit card has already been confirmed. You can proceed to the next "
@@ -8877,6 +8924,26 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/PayWall/CardValidator.tsx:69
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "FluencyPal will not charge your card. A small temporary authorization hold "
+#~ "may appear on your statement, which will be released by your bank within a "
+#~ "few days."
+#~ msgstr ""
+#~ "FluencyPal은 귀하의 카드에 요금을 청구하지 않습니다. 귀하의 명세서에 소액의 임시 승인 보류가 나타날 수 있으며, 이는 며칠 "
+#~ "내에 귀하의 은행에 의해 해제될 것입니다."
+
+#: src/features/PayWall/CardValidator.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "Verify card"
+#~ msgstr "카드 확인"
+
+#: src/features/PayWall/CardValidator.tsx:332
+#. js-lingui-explicit-id
+#~ msgid "You will get 1 day of full access for free"
+#~ msgstr "무료로 1일 동안 전체 접근이 가능합니다."
 
 #: src/features/Interview/data/frontend/quizData.ts:186
 #. js-lingui-explicit-id

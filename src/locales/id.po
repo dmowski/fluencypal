@@ -365,6 +365,15 @@ msgstr "Metode yang terbukti memberikan hasil yang terukur"
 msgid "A silence at the end of the algorithm"
 msgstr "Sebuah keheningan di akhir algoritma"
 
+#: src/features/PayWall/CardValidator.tsx:100
+#. js-lingui-explicit-id
+msgid ""
+"A small temporary authorization may appear on your statement and will be "
+"released automatically by your bank."
+msgstr ""
+"Otorisasi sementara yang kecil mungkin muncul pada laporan Anda dan akan "
+"dilepaskan secara otomatis oleh bank Anda."
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
 #. js-lingui-explicit-id
 msgid "A standard reply to “How are you?”"
@@ -703,6 +712,7 @@ msgid "Analyzing..."
 msgstr "Menganalisis..."
 
 #: src/features/Goal/GoalQuestions.tsx:67
+#: src/features/PayWall/CardValidator.tsx:112
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "dan"
@@ -1110,6 +1120,11 @@ msgstr "Beli lebih banyak jam"
 msgid "Buying a Train Ticket"
 msgstr "Membeli Tiket Kereta"
 
+#: src/features/PayWall/CardValidator.tsx:103
+#. js-lingui-explicit-id
+msgid "By continuing, you agree to our"
+msgstr "Dengan melanjutkan, Anda setuju dengan kami"
+
 #: src/features/Landing/Price/PricePage.tsx:212
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
@@ -1212,7 +1227,7 @@ msgstr ""
 "Kandidat yang sudah mengetahui dasar-dasar tetapi kesulitan untuk "
 "menyampaikan keputusan dengan jelas dalam wawancara"
 
-#: src/features/PayWall/CardValidator.tsx:81
+#: src/features/PayWall/CardValidator.tsx:138
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "Kartu terverifikasi. Memuat..."
@@ -1425,8 +1440,7 @@ msgstr "Pelacakan skor kepercayaan"
 msgid "Confident Communication"
 msgstr "Komunikasi yang Percaya Diri"
 
-#: src/features/PayWall/CardValidator.tsx:233
-#: src/features/PayWall/CardValidator.tsx:362
+#: src/features/PayWall/CardValidator.tsx:305
 #. js-lingui-explicit-id
 msgid "Confirm Credit Card"
 msgstr "Konfirmasi Kartu Kredit"
@@ -1435,6 +1449,11 @@ msgstr "Konfirmasi Kartu Kredit"
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "Konfirmasi pembayaran"
+
+#: src/features/PayWall/CardValidator.tsx:80
+#. js-lingui-explicit-id
+msgid "Confirm your payment method"
+msgstr "Konfirmasi metode pembayaran Anda"
 
 #: src/features/Dashboard/BrainCard.tsx:140
 #. js-lingui-explicit-id
@@ -1518,6 +1537,7 @@ msgstr "Kontak:"
 #: src/features/Interview/data/frontend/quizData.ts:131
 #: src/features/Interview/data/frontend/quizData.ts:190
 #: src/features/Interview/data/frontend/quizData.ts:205
+#: src/features/PayWall/CardValidator.tsx:139
 #: src/features/Plan/PlanCard.tsx:284
 #: src/features/Usage/SubscriptionPaymentModal.tsx:595
 #. js-lingui-explicit-id
@@ -1537,6 +1557,11 @@ msgid ""
 msgstr ""
 "Lanjutkan berlatih dengan lebih banyak pertanyaan, lacak kemajuan Anda, dan "
 "perbaiki jawaban Anda untuk sukses dalam wawancara berikutnya."
+
+#: src/features/PayWall/CardValidator.tsx:374
+#. js-lingui-explicit-id
+msgid "Continue to free access"
+msgstr "Lanjutkan ke akses gratis"
 
 #: src/features/Usage/PaymentModal.tsx:342
 #. js-lingui-explicit-id
@@ -1724,13 +1749,12 @@ msgstr "Buat Skenario Role-Play Anda Sendiri"
 msgid "Create Your Own Scenario"
 msgstr "Buat Skenario Anda Sendiri"
 
-#: src/features/PayWall/CardValidator.tsx:287
+#: src/features/PayWall/CardValidator.tsx:359
 #. js-lingui-explicit-id
 msgid "Credit Card Already Confirmed"
 msgstr "Kartu Kredit Sudah Dikonfirmasi"
 
-#: src/features/PayWall/CardValidator.tsx:192
-#: src/features/PayWall/CardValidator.tsx:321
+#: src/features/PayWall/CardValidator.tsx:264
 #. js-lingui-explicit-id
 msgid "Credit Card Check"
 msgstr "Pemeriksaan Kartu Kredit"
@@ -2957,16 +2981,10 @@ msgstr ""
 "dan pengucapan, serta Mode Pemula untuk percakapan yang lebih lambat dan "
 "terarah."
 
-#: src/features/PayWall/CardValidator.tsx:69
+#: src/features/PayWall/CardValidator.tsx:83
 #. js-lingui-explicit-id
-msgid ""
-"FluencyPal will not charge your card. A small temporary authorization hold "
-"may appear on your statement, which will be released by your bank within a "
-"few days."
-msgstr ""
-"FluencyPal tidak akan membebankan biaya pada kartu Anda. Pemblokiran "
-"otorisasi sementara yang kecil mungkin muncul di pernyataan Anda, yang akan "
-"dikeluarkan oleh bank Anda dalam beberapa hari."
+msgid "FluencyPal won’t charge you during the trial."
+msgstr "FluencyPal tidak akan mengenakan biaya selama masa percobaan."
 
 #: src/features/SEO/metadata.ts:331
 #. js-lingui-explicit-id
@@ -3168,6 +3186,18 @@ msgstr "Jerman"
 #. js-lingui-explicit-id
 msgid "German Learning Plan"
 msgstr "Rencana Belajar Jerman"
+
+#: src/features/PayWall/CardValidator.tsx:371
+#. js-lingui-explicit-id
+msgid ""
+"Get 2 days of full access to all features. Practice real interviews, get AI "
+"feedback, and see your full analysis. We use a card to prevent abuse and "
+"give you uninterrupted access to all features."
+msgstr ""
+"Dapatkan akses penuh selama 2 hari ke semua fitur. Latihan wawancara nyata, "
+"dapatkan umpan balik dari AI, dan lihat analisis lengkap Anda. Kami "
+"menggunakan kartu untuk mencegah penyalahgunaan dan memberikan Anda akses "
+"tanpa gangguan ke semua fitur."
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:152
 #: src/features/Dashboard/TasksCard.tsx:52
@@ -5765,8 +5795,12 @@ msgstr "Tidak"
 msgid "No ads, no spam"
 msgstr "Tidak ada iklan, tidak ada spam"
 
-#: src/features/PayWall/CardValidator.tsx:207
-#: src/features/PayWall/CardValidator.tsx:336
+#: src/features/PayWall/CardValidator.tsx:384
+#. js-lingui-explicit-id
+msgid "No automatic payment"
+msgstr "Tidak ada pembayaran otomatis"
+
+#: src/features/PayWall/CardValidator.tsx:279
 #. js-lingui-explicit-id
 msgid "No automatic payment after the trial"
 msgstr "Tidak ada pembayaran otomatis setelah masa percobaan"
@@ -5776,8 +5810,12 @@ msgstr "Tidak ada pembayaran otomatis setelah masa percobaan"
 msgid "No blogs found"
 msgstr "Tidak ada blog yang ditemukan"
 
-#: src/features/PayWall/CardValidator.tsx:211
-#: src/features/PayWall/CardValidator.tsx:340
+#: src/features/PayWall/CardValidator.tsx:379
+#. js-lingui-explicit-id
+msgid "No charge during trial"
+msgstr "Tidak ada biaya selama percobaan"
+
+#: src/features/PayWall/CardValidator.tsx:283
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "Tidak ada biaya yang akan dikenakan"
@@ -6277,8 +6315,7 @@ msgstr "Mainkan Game"
 msgid "Play the role"
 msgstr "Play the role"
 
-#: src/features/PayWall/CardValidator.tsx:194
-#: src/features/PayWall/CardValidator.tsx:323
+#: src/features/PayWall/CardValidator.tsx:266
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
 msgstr "Silakan konfirmasi kartu kredit Anda untuk mengakses semua fitur."
@@ -6699,6 +6736,7 @@ msgstr "kebijakan privasi"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
+#: src/features/PayWall/CardValidator.tsx:119
 #: src/features/SEO/metadata.ts:157
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -8315,6 +8353,11 @@ msgstr ""
 msgid "Terms and Conditions"
 msgstr "Syarat dan Ketentuan"
 
+#: src/features/PayWall/CardValidator.tsx:110
+#. js-lingui-explicit-id
+msgid "Terms of Service"
+msgstr "Ketentuan Layanan"
+
 #: src/features/Auth/AuthWall.tsx:70
 #: src/features/Auth/AuthWallBasic.tsx:128
 #: src/features/Auth/InterviewAuthWall.tsx:52
@@ -8686,6 +8729,11 @@ msgstr "Ulasan jawaban tanpa batas"
 msgid "Unlock full analysis and tailored preparation"
 msgstr "Buka analisis lengkap dan persiapan yang disesuaikan"
 
+#: src/features/PayWall/CardValidator.tsx:370
+#. js-lingui-explicit-id
+msgid "Unlock full interview preparation"
+msgstr "Buka persiapan wawancara lengkap"
+
 #: src/features/Interview/data/frontend/quizData.ts:195
 #. js-lingui-explicit-id
 msgid "Unlock Your Trial and Get Full Feedback"
@@ -8748,15 +8796,15 @@ msgstr "UX & Aksesibilitas"
 msgid "Vacancy description"
 msgstr "Deskripsi lowongan"
 
-#: src/features/PayWall/CardValidator.tsx:44
+#: src/features/PayWall/CardValidator.tsx:54
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "Verifikasi gagal"
 
-#: src/features/PayWall/CardValidator.tsx:83
+#: src/features/PayWall/CardValidator.tsx:136
 #. js-lingui-explicit-id
-msgid "Verify card"
-msgstr "Verifikasi kartu"
+msgid "Verifying..."
+msgstr "Memverifikasi..."
 
 #: src/features/Goal/GoalQuestions.tsx:302
 #. js-lingui-explicit-id
@@ -9426,12 +9474,7 @@ msgstr ""
 "Anda akan menjawab pertanyaan singkat tentang .NET, API, basis data, "
 "konkuren, dan desain sistem."
 
-#: src/features/PayWall/CardValidator.tsx:332
-#. js-lingui-explicit-id
-msgid "You will get 1 day of full access for free"
-msgstr "Anda akan mendapatkan akses penuh selama 1 hari secara gratis"
-
-#: src/features/PayWall/CardValidator.tsx:203
+#: src/features/PayWall/CardValidator.tsx:275
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "Anda akan mendapatkan akses penuh selama 3 hari secara gratis"
@@ -9482,7 +9525,16 @@ msgstr "Jawaban Anda"
 msgid "Your Avatar:"
 msgstr "Avatar Anda:"
 
-#: src/features/PayWall/CardValidator.tsx:288
+#: src/features/PayWall/CardValidator.tsx:85
+#. js-lingui-explicit-id
+msgid ""
+"Your card is used only to activate secure access and will not be billed "
+"unless you decide to continue."
+msgstr ""
+"Kartu Anda digunakan hanya untuk mengaktifkan akses aman dan tidak akan "
+"ditagih kecuali Anda memutuskan untuk melanjutkan."
+
+#: src/features/PayWall/CardValidator.tsx:360
 #. js-lingui-explicit-id
 msgid ""
 "Your credit card has already been confirmed. You can proceed to the next "
@@ -9600,6 +9652,27 @@ msgstr ""
 "— penting untuk melakukan percakapan singkat ini sebelum melompat ke topik "
 "profesional. Berikut adalah beberapa frasa bahasa Inggris yang berguna "
 "untuk memulai wawancara:"
+
+#: src/features/PayWall/CardValidator.tsx:69
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "FluencyPal will not charge your card. A small temporary authorization hold "
+#~ "may appear on your statement, which will be released by your bank within a "
+#~ "few days."
+#~ msgstr ""
+#~ "FluencyPal tidak akan membebankan biaya pada kartu Anda. Pemblokiran "
+#~ "otorisasi sementara yang kecil mungkin muncul di pernyataan Anda, yang akan "
+#~ "dikeluarkan oleh bank Anda dalam beberapa hari."
+
+#: src/features/PayWall/CardValidator.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "Verify card"
+#~ msgstr "Verifikasi kartu"
+
+#: src/features/PayWall/CardValidator.tsx:332
+#. js-lingui-explicit-id
+#~ msgid "You will get 1 day of full access for free"
+#~ msgstr "Anda akan mendapatkan akses penuh selama 1 hari secara gratis"
 
 #: src/features/Interview/data/frontend/quizData.ts:186
 #. js-lingui-explicit-id

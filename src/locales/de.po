@@ -374,6 +374,15 @@ msgstr "Eine bewährte Methode, die messbare Ergebnisse liefert"
 msgid "A silence at the end of the algorithm"
 msgstr "Ein Schweigen am Ende des Algorithmus"
 
+#: src/features/PayWall/CardValidator.tsx:100
+#. js-lingui-explicit-id
+msgid ""
+"A small temporary authorization may appear on your statement and will be "
+"released automatically by your bank."
+msgstr ""
+"Eine kleine temporäre Autorisierung kann auf Ihrem Kontoauszug erscheinen "
+"und wird automatisch von Ihrer Bank freigegeben."
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
 #. js-lingui-explicit-id
 msgid "A standard reply to “How are you?”"
@@ -711,6 +720,7 @@ msgid "Analyzing..."
 msgstr "Analysieren..."
 
 #: src/features/Goal/GoalQuestions.tsx:67
+#: src/features/PayWall/CardValidator.tsx:112
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "und"
@@ -1117,6 +1127,11 @@ msgstr "Kaufe mehr Stunden"
 msgid "Buying a Train Ticket"
 msgstr "Kauf eines Zugtickets"
 
+#: src/features/PayWall/CardValidator.tsx:103
+#. js-lingui-explicit-id
+msgid "By continuing, you agree to our"
+msgstr "Indem Sie fortfahren, stimmen Sie unseren"
+
 #: src/features/Landing/Price/PricePage.tsx:212
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
@@ -1221,7 +1236,7 @@ msgstr ""
 "Kandidaten, die bereits die Grundlagen kennen, aber Schwierigkeiten haben, "
 "Entscheidungen in Interviews klar zu artikulieren."
 
-#: src/features/PayWall/CardValidator.tsx:81
+#: src/features/PayWall/CardValidator.tsx:138
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "Karte verifiziert. Wird geladen..."
@@ -1438,8 +1453,7 @@ msgstr "Konfidenzwertverfolgung"
 msgid "Confident Communication"
 msgstr "Sichere Kommunikation"
 
-#: src/features/PayWall/CardValidator.tsx:233
-#: src/features/PayWall/CardValidator.tsx:362
+#: src/features/PayWall/CardValidator.tsx:305
 #. js-lingui-explicit-id
 msgid "Confirm Credit Card"
 msgstr "Bestätigen Sie die Kreditkarte"
@@ -1448,6 +1462,11 @@ msgstr "Bestätigen Sie die Kreditkarte"
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "Zahlung bestätigen"
+
+#: src/features/PayWall/CardValidator.tsx:80
+#. js-lingui-explicit-id
+msgid "Confirm your payment method"
+msgstr "Bestätigen Sie Ihre Zahlungsmethode"
 
 #: src/features/Dashboard/BrainCard.tsx:140
 #. js-lingui-explicit-id
@@ -1531,6 +1550,7 @@ msgstr "Kontakte:"
 #: src/features/Interview/data/frontend/quizData.ts:131
 #: src/features/Interview/data/frontend/quizData.ts:190
 #: src/features/Interview/data/frontend/quizData.ts:205
+#: src/features/PayWall/CardValidator.tsx:139
 #: src/features/Plan/PlanCard.tsx:284
 #: src/features/Usage/SubscriptionPaymentModal.tsx:595
 #. js-lingui-explicit-id
@@ -1551,6 +1571,11 @@ msgstr ""
 "Üben Sie weiter mit mehr Fragen, verfolgen Sie Ihren Fortschritt und "
 "verfeinern Sie Ihre Antworten, um bei Ihrem nächsten Vorstellungsgespräch "
 "zu punkten."
+
+#: src/features/PayWall/CardValidator.tsx:374
+#. js-lingui-explicit-id
+msgid "Continue to free access"
+msgstr "Weiter zum kostenlosen Zugang"
 
 #: src/features/Usage/PaymentModal.tsx:342
 #. js-lingui-explicit-id
@@ -1741,13 +1766,12 @@ msgstr "Erstelle dein eigenes Rollenspiel-Szenario"
 msgid "Create Your Own Scenario"
 msgstr "Erstelle Dein eigenes Szenario"
 
-#: src/features/PayWall/CardValidator.tsx:287
+#: src/features/PayWall/CardValidator.tsx:359
 #. js-lingui-explicit-id
 msgid "Credit Card Already Confirmed"
 msgstr "Kreditkarte bereits bestätigt"
 
-#: src/features/PayWall/CardValidator.tsx:192
-#: src/features/PayWall/CardValidator.tsx:321
+#: src/features/PayWall/CardValidator.tsx:264
 #. js-lingui-explicit-id
 msgid "Credit Card Check"
 msgstr "Kreditkartenprüfung"
@@ -3001,16 +3025,10 @@ msgstr ""
 "Sprechpraxis, Sprechen & Korrigieren für sofortiges Feedback zu Grammatik "
 "und Aussprache, und Anfänger-Modus für langsamere, geführte Gespräche."
 
-#: src/features/PayWall/CardValidator.tsx:69
+#: src/features/PayWall/CardValidator.tsx:83
 #. js-lingui-explicit-id
-msgid ""
-"FluencyPal will not charge your card. A small temporary authorization hold "
-"may appear on your statement, which will be released by your bank within a "
-"few days."
-msgstr ""
-"FluencyPal wird Ihre Karte nicht belasten. Ein kleiner temporärer "
-"Autorisierungsbetrag kann auf Ihrem Kontoauszug erscheinen, der jedoch "
-"innerhalb weniger Tage von Ihrer Bank freigegeben wird."
+msgid "FluencyPal won’t charge you during the trial."
+msgstr "FluencyPal berechnet Ihnen während der Testphase nichts."
 
 #: src/features/SEO/metadata.ts:331
 #. js-lingui-explicit-id
@@ -3213,6 +3231,18 @@ msgstr "Deutsch"
 #. js-lingui-explicit-id
 msgid "German Learning Plan"
 msgstr "Deutscher Lernplan"
+
+#: src/features/PayWall/CardValidator.tsx:371
+#. js-lingui-explicit-id
+msgid ""
+"Get 2 days of full access to all features. Practice real interviews, get AI "
+"feedback, and see your full analysis. We use a card to prevent abuse and "
+"give you uninterrupted access to all features."
+msgstr ""
+"Erhalten Sie 2 Tage vollen Zugang zu allen Funktionen. Üben Sie echte "
+"Interviews, erhalten Sie KI-Feedback und sehen Sie Ihre vollständige "
+"Analyse. Wir verwenden eine Karte, um Missbrauch zu verhindern und Ihnen "
+"ununterbrochenen Zugang zu allen Funktionen zu gewähren."
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:152
 #: src/features/Dashboard/TasksCard.tsx:52
@@ -5833,8 +5863,12 @@ msgstr "Nein"
 msgid "No ads, no spam"
 msgstr "Keine Werbung, kein Spam"
 
-#: src/features/PayWall/CardValidator.tsx:207
-#: src/features/PayWall/CardValidator.tsx:336
+#: src/features/PayWall/CardValidator.tsx:384
+#. js-lingui-explicit-id
+msgid "No automatic payment"
+msgstr "Keine automatische Zahlung"
+
+#: src/features/PayWall/CardValidator.tsx:279
 #. js-lingui-explicit-id
 msgid "No automatic payment after the trial"
 msgstr "Keine automatische Zahlung nach dem Testzeitraum"
@@ -5844,8 +5878,12 @@ msgstr "Keine automatische Zahlung nach dem Testzeitraum"
 msgid "No blogs found"
 msgstr "Keine Blogs gefunden"
 
-#: src/features/PayWall/CardValidator.tsx:211
-#: src/features/PayWall/CardValidator.tsx:340
+#: src/features/PayWall/CardValidator.tsx:379
+#. js-lingui-explicit-id
+msgid "No charge during trial"
+msgstr "Keine Gebühren während der Testphase"
+
+#: src/features/PayWall/CardValidator.tsx:283
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "Keine Gebühr wird erhoben"
@@ -6344,8 +6382,7 @@ msgstr "Spielen Sie das Spiel"
 msgid "Play the role"
 msgstr "Die Rolle spielen"
 
-#: src/features/PayWall/CardValidator.tsx:194
-#: src/features/PayWall/CardValidator.tsx:323
+#: src/features/PayWall/CardValidator.tsx:266
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
 msgstr ""
@@ -6767,6 +6804,7 @@ msgstr "Datenschutzrichtlinie"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
+#: src/features/PayWall/CardValidator.tsx:119
 #: src/features/SEO/metadata.ts:157
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -8384,6 +8422,11 @@ msgstr ""
 msgid "Terms and Conditions"
 msgstr "Nutzungsbedingungen"
 
+#: src/features/PayWall/CardValidator.tsx:110
+#. js-lingui-explicit-id
+msgid "Terms of Service"
+msgstr "Nutzungsbedingungen"
+
 #: src/features/Auth/AuthWall.tsx:70
 #: src/features/Auth/AuthWallBasic.tsx:128
 #: src/features/Auth/InterviewAuthWall.tsx:52
@@ -8762,6 +8805,11 @@ msgstr "Unbegrenzte Antwortbewertungen"
 msgid "Unlock full analysis and tailored preparation"
 msgstr "Schalte die vollständige Analyse und maßgeschneiderte Vorbereitung frei"
 
+#: src/features/PayWall/CardValidator.tsx:370
+#. js-lingui-explicit-id
+msgid "Unlock full interview preparation"
+msgstr "Schalten Sie die vollständige Interview-Vorbereitung frei"
+
 #: src/features/Interview/data/frontend/quizData.ts:195
 #. js-lingui-explicit-id
 msgid "Unlock Your Trial and Get Full Feedback"
@@ -8824,15 +8872,15 @@ msgstr "UX & Barrierefreiheit"
 msgid "Vacancy description"
 msgstr "Stellenbeschreibung"
 
-#: src/features/PayWall/CardValidator.tsx:44
+#: src/features/PayWall/CardValidator.tsx:54
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "Verifizierung fehlgeschlagen"
 
-#: src/features/PayWall/CardValidator.tsx:83
+#: src/features/PayWall/CardValidator.tsx:136
 #. js-lingui-explicit-id
-msgid "Verify card"
-msgstr "Karte verifizieren"
+msgid "Verifying..."
+msgstr "Überprüfung..."
 
 #: src/features/Goal/GoalQuestions.tsx:302
 #. js-lingui-explicit-id
@@ -9500,12 +9548,7 @@ msgstr ""
 "Sie werden kurze Fragen zu .NET, APIs, Datenbanken, Nebenläufigkeit und "
 "Systemdesign beantworten."
 
-#: src/features/PayWall/CardValidator.tsx:332
-#. js-lingui-explicit-id
-msgid "You will get 1 day of full access for free"
-msgstr "Sie erhalten 1 Tag vollen Zugriff kostenlos."
-
-#: src/features/PayWall/CardValidator.tsx:203
+#: src/features/PayWall/CardValidator.tsx:275
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "Sie erhalten 3 Tage vollen Zugang kostenlos"
@@ -9556,7 +9599,16 @@ msgstr "Ihre Antwort"
 msgid "Your Avatar:"
 msgstr "Dein Avatar:"
 
-#: src/features/PayWall/CardValidator.tsx:288
+#: src/features/PayWall/CardValidator.tsx:85
+#. js-lingui-explicit-id
+msgid ""
+"Your card is used only to activate secure access and will not be billed "
+"unless you decide to continue."
+msgstr ""
+"Ihre Karte wird nur zur Aktivierung des sicheren Zugangs verwendet und wird "
+"nicht belastet, es sei denn, Sie entscheiden sich für eine Fortsetzung."
+
+#: src/features/PayWall/CardValidator.tsx:360
 #. js-lingui-explicit-id
 msgid ""
 "Your credit card has already been confirmed. You can proceed to the next "
@@ -9670,6 +9722,27 @@ msgstr ""
 "— es ist wichtig, sich in dieses kurze Gespräch zu vertiefen, bevor man "
 "professionelle Themen anspricht. Hier sind einige nützliche englische "
 "Redewendungen, um das Interview zu beginnen:"
+
+#: src/features/PayWall/CardValidator.tsx:69
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "FluencyPal will not charge your card. A small temporary authorization hold "
+#~ "may appear on your statement, which will be released by your bank within a "
+#~ "few days."
+#~ msgstr ""
+#~ "FluencyPal wird Ihre Karte nicht belasten. Ein kleiner temporärer "
+#~ "Autorisierungsbetrag kann auf Ihrem Kontoauszug erscheinen, der jedoch "
+#~ "innerhalb weniger Tage von Ihrer Bank freigegeben wird."
+
+#: src/features/PayWall/CardValidator.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "Verify card"
+#~ msgstr "Karte verifizieren"
+
+#: src/features/PayWall/CardValidator.tsx:332
+#. js-lingui-explicit-id
+#~ msgid "You will get 1 day of full access for free"
+#~ msgstr "Sie erhalten 1 Tag vollen Zugriff kostenlos."
 
 #: src/features/Interview/data/frontend/quizData.ts:186
 #. js-lingui-explicit-id

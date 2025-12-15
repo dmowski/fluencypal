@@ -365,6 +365,15 @@ msgstr "Правераны метад, які дае вымяральныя вы
 msgid "A silence at the end of the algorithm"
 msgstr "Цішыня ў канцы алгарытму"
 
+#: src/features/PayWall/CardValidator.tsx:100
+#. js-lingui-explicit-id
+msgid ""
+"A small temporary authorization may appear on your statement and will be "
+"released automatically by your bank."
+msgstr ""
+"На выпісцы можа з'явіцца невялікая часовая аўтарызацыя, якая аўтаматычна "
+"будзе знята вашым банкам."
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
 #. js-lingui-explicit-id
 msgid "A standard reply to “How are you?”"
@@ -701,6 +710,7 @@ msgid "Analyzing..."
 msgstr "Аналізуецца..."
 
 #: src/features/Goal/GoalQuestions.tsx:67
+#: src/features/PayWall/CardValidator.tsx:112
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "і"
@@ -1107,6 +1117,11 @@ msgstr "Купіць больш гадзін"
 msgid "Buying a Train Ticket"
 msgstr "Купля квітка на поезд"
 
+#: src/features/PayWall/CardValidator.tsx:103
+#. js-lingui-explicit-id
+msgid "By continuing, you agree to our"
+msgstr "Працягваючы, вы згаджаецеся з нашымі"
+
 #: src/features/Landing/Price/PricePage.tsx:212
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
@@ -1209,7 +1224,7 @@ msgstr ""
 "Кандыдаты, якія ўжо ведаюць асновы, але маюць цяжкасці з выразным "
 "высказваннем рашэнняў на сумоўях"
 
-#: src/features/PayWall/CardValidator.tsx:81
+#: src/features/PayWall/CardValidator.tsx:138
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "Карта праверана. Загрузка..."
@@ -1423,8 +1438,7 @@ msgstr "Адсочванне паказчыка ўпэўненасці"
 msgid "Confident Communication"
 msgstr "Упэўненае камунікаванне"
 
-#: src/features/PayWall/CardValidator.tsx:233
-#: src/features/PayWall/CardValidator.tsx:362
+#: src/features/PayWall/CardValidator.tsx:305
 #. js-lingui-explicit-id
 msgid "Confirm Credit Card"
 msgstr "Пацвердзіць крэдытную карту"
@@ -1433,6 +1447,11 @@ msgstr "Пацвердзіць крэдытную карту"
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "Пацвердзіць плацёж"
+
+#: src/features/PayWall/CardValidator.tsx:80
+#. js-lingui-explicit-id
+msgid "Confirm your payment method"
+msgstr "Пацвердзіце ваш метад аплаты"
 
 #: src/features/Dashboard/BrainCard.tsx:140
 #. js-lingui-explicit-id
@@ -1516,6 +1535,7 @@ msgstr "Кантакты:"
 #: src/features/Interview/data/frontend/quizData.ts:131
 #: src/features/Interview/data/frontend/quizData.ts:190
 #: src/features/Interview/data/frontend/quizData.ts:205
+#: src/features/PayWall/CardValidator.tsx:139
 #: src/features/Plan/PlanCard.tsx:284
 #: src/features/Usage/SubscriptionPaymentModal.tsx:595
 #. js-lingui-explicit-id
@@ -1535,6 +1555,11 @@ msgid ""
 msgstr ""
 "Працягвайце практыкавацца з большай колькасцю пытанняў, адсочвайце свой "
 "прагрэс і паляпшайце свае адказы, каб злітаваць наступнае інтэрв'ю."
+
+#: src/features/PayWall/CardValidator.tsx:374
+#. js-lingui-explicit-id
+msgid "Continue to free access"
+msgstr "Працягнуць бясплатны доступ"
 
 #: src/features/Usage/PaymentModal.tsx:342
 #. js-lingui-explicit-id
@@ -1722,13 +1747,12 @@ msgstr "Стварыце свой уласны варыянт ролевай г�
 msgid "Create Your Own Scenario"
 msgstr "Стварыце свой уласны сцэнарый"
 
-#: src/features/PayWall/CardValidator.tsx:287
+#: src/features/PayWall/CardValidator.tsx:359
 #. js-lingui-explicit-id
 msgid "Credit Card Already Confirmed"
 msgstr "Крэдытная картка ўжо пацверджаная"
 
-#: src/features/PayWall/CardValidator.tsx:192
-#: src/features/PayWall/CardValidator.tsx:321
+#: src/features/PayWall/CardValidator.tsx:264
 #. js-lingui-explicit-id
 msgid "Credit Card Check"
 msgstr "Праверка крэдытнай карты"
@@ -2948,16 +2972,10 @@ msgstr ""
 "па граматыцы і вымаўленні, а таксама Рэжым для пачаткоўцаў для павольных, "
 "кіраваных размоў."
 
-#: src/features/PayWall/CardValidator.tsx:69
+#: src/features/PayWall/CardValidator.tsx:83
 #. js-lingui-explicit-id
-msgid ""
-"FluencyPal will not charge your card. A small temporary authorization hold "
-"may appear on your statement, which will be released by your bank within a "
-"few days."
-msgstr ""
-"FluencyPal не будзе спісваць сродкі з вашай карты. У вашай выпісцы можа "
-"з'явіцца невялікі часовы аўтарызацыйны разлік, які будзе вызвалены вашым "
-"банкам на працягу некалькіх дзён."
+msgid "FluencyPal won’t charge you during the trial."
+msgstr "FluencyPal не будзе браць з вас плату падчас пробнага перыяду."
 
 #: src/features/SEO/metadata.ts:331
 #. js-lingui-explicit-id
@@ -3158,6 +3176,18 @@ msgstr "Нямецкая"
 #. js-lingui-explicit-id
 msgid "German Learning Plan"
 msgstr "План вучэння нямецкай мовы"
+
+#: src/features/PayWall/CardValidator.tsx:371
+#. js-lingui-explicit-id
+msgid ""
+"Get 2 days of full access to all features. Practice real interviews, get AI "
+"feedback, and see your full analysis. We use a card to prevent abuse and "
+"give you uninterrupted access to all features."
+msgstr ""
+"Атрымайце 2 дні поўнага доступу да ўсіх функцый. Практыкуйце рэальныя "
+"інтэрв'ю, атрымлівайце водгукі ад AI і глядзіце поўны аналіз. Мы "
+"выкарыстоўваем карту, каб прадухіліць злоўжыванне і даць вам бесперапынны "
+"доступ да ўсіх функцый."
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:152
 #: src/features/Dashboard/TasksCard.tsx:52
@@ -5716,8 +5746,12 @@ msgstr "Не"
 msgid "No ads, no spam"
 msgstr "Ніякай рэкламы, ніякага спаму"
 
-#: src/features/PayWall/CardValidator.tsx:207
-#: src/features/PayWall/CardValidator.tsx:336
+#: src/features/PayWall/CardValidator.tsx:384
+#. js-lingui-explicit-id
+msgid "No automatic payment"
+msgstr "Няма аўтаматычнага аплаты"
+
+#: src/features/PayWall/CardValidator.tsx:279
 #. js-lingui-explicit-id
 msgid "No automatic payment after the trial"
 msgstr "Няма аўтаматычнай аплаты пасля пробнага перыяду"
@@ -5727,8 +5761,12 @@ msgstr "Няма аўтаматычнай аплаты пасля пробнаг
 msgid "No blogs found"
 msgstr "Не знойдзены блогаў"
 
-#: src/features/PayWall/CardValidator.tsx:211
-#: src/features/PayWall/CardValidator.tsx:340
+#: src/features/PayWall/CardValidator.tsx:379
+#. js-lingui-explicit-id
+msgid "No charge during trial"
+msgstr "Няма аплаты падчас пробнага перыяду"
+
+#: src/features/PayWall/CardValidator.tsx:283
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "Аплата не будзе спаганяцца"
@@ -6224,8 +6262,7 @@ msgstr "Гуляць у гульню"
 msgid "Play the role"
 msgstr "Грайце ролю"
 
-#: src/features/PayWall/CardValidator.tsx:194
-#: src/features/PayWall/CardValidator.tsx:323
+#: src/features/PayWall/CardValidator.tsx:266
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
 msgstr ""
@@ -6638,6 +6675,7 @@ msgstr "палітыка прыватнасці"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
+#: src/features/PayWall/CardValidator.tsx:119
 #: src/features/SEO/metadata.ts:157
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -8245,6 +8283,11 @@ msgstr ""
 msgid "Terms and Conditions"
 msgstr "Умовы і ўмовы"
 
+#: src/features/PayWall/CardValidator.tsx:110
+#. js-lingui-explicit-id
+msgid "Terms of Service"
+msgstr "Умовы абслугоўвання"
+
 #: src/features/Auth/AuthWall.tsx:70
 #: src/features/Auth/AuthWallBasic.tsx:128
 #: src/features/Auth/InterviewAuthWall.tsx:52
@@ -8613,6 +8656,11 @@ msgstr "Неабмежаваныя перавіркі адказаў"
 msgid "Unlock full analysis and tailored preparation"
 msgstr "Атрымайце поўны аналіз і індывідуальную падрыхтоўку"
 
+#: src/features/PayWall/CardValidator.tsx:370
+#. js-lingui-explicit-id
+msgid "Unlock full interview preparation"
+msgstr "Разблакіраваць поўную падрыхтоўку да інтэрв'ю"
+
 #: src/features/Interview/data/frontend/quizData.ts:195
 #. js-lingui-explicit-id
 msgid "Unlock Your Trial and Get Full Feedback"
@@ -8675,15 +8723,15 @@ msgstr "UX & Даступнасць"
 msgid "Vacancy description"
 msgstr "Апісанне вакансіі"
 
-#: src/features/PayWall/CardValidator.tsx:44
+#: src/features/PayWall/CardValidator.tsx:54
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "Праверка не ўдалася"
 
-#: src/features/PayWall/CardValidator.tsx:83
+#: src/features/PayWall/CardValidator.tsx:136
 #. js-lingui-explicit-id
-msgid "Verify card"
-msgstr "Праверыць карту"
+msgid "Verifying..."
+msgstr "Праверка..."
 
 #: src/features/Goal/GoalQuestions.tsx:302
 #. js-lingui-explicit-id
@@ -9346,12 +9394,7 @@ msgstr ""
 "Вы будзеце адказваць на кароткія пытанні пра .NET, API, базы даных, "
 "канкурэнцыю і дызайн сістэм."
 
-#: src/features/PayWall/CardValidator.tsx:332
-#. js-lingui-explicit-id
-msgid "You will get 1 day of full access for free"
-msgstr "Вы атрымаеце 1 дзень поўнага доступу бясплатна"
-
-#: src/features/PayWall/CardValidator.tsx:203
+#: src/features/PayWall/CardValidator.tsx:275
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "Вы атрымаеце 3 дні поўнага доступу бясплатна"
@@ -9402,7 +9445,16 @@ msgstr "Ваш адказ"
 msgid "Your Avatar:"
 msgstr "Ваш Аватар:"
 
-#: src/features/PayWall/CardValidator.tsx:288
+#: src/features/PayWall/CardValidator.tsx:85
+#. js-lingui-explicit-id
+msgid ""
+"Your card is used only to activate secure access and will not be billed "
+"unless you decide to continue."
+msgstr ""
+"Ваша карта выкарыстоўваецца толькі для актывацыі бяспечнага доступу і не "
+"будзе знята, калі вы не прымеце рашэнне працягваць."
+
+#: src/features/PayWall/CardValidator.tsx:360
 #. js-lingui-explicit-id
 msgid ""
 "Your credit card has already been confirmed. You can proceed to the next "
@@ -9513,6 +9565,27 @@ msgid ""
 msgstr ""
 "— важна заняцца гэтай кароткай размовай, перш чым прыступіць да прафесійных "
 "тэм. Вось некаторыя карысныя англійскія фразы для пачатку інтэрв'ю:"
+
+#: src/features/PayWall/CardValidator.tsx:69
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "FluencyPal will not charge your card. A small temporary authorization hold "
+#~ "may appear on your statement, which will be released by your bank within a "
+#~ "few days."
+#~ msgstr ""
+#~ "FluencyPal не будзе спісваць сродкі з вашай карты. У вашай выпісцы можа "
+#~ "з'явіцца невялікі часовы аўтарызацыйны разлік, які будзе вызвалены вашым "
+#~ "банкам на працягу некалькіх дзён."
+
+#: src/features/PayWall/CardValidator.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "Verify card"
+#~ msgstr "Праверыць карту"
+
+#: src/features/PayWall/CardValidator.tsx:332
+#. js-lingui-explicit-id
+#~ msgid "You will get 1 day of full access for free"
+#~ msgstr "Вы атрымаеце 1 дзень поўнага доступу бясплатна"
 
 #: src/features/Interview/data/frontend/quizData.ts:186
 #. js-lingui-explicit-id

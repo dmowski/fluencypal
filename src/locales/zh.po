@@ -340,6 +340,13 @@ msgstr "一个能够带来可衡量结果的验证方法"
 msgid "A silence at the end of the algorithm"
 msgstr "算法结束时的寂静"
 
+#: src/features/PayWall/CardValidator.tsx:100
+#. js-lingui-explicit-id
+msgid ""
+"A small temporary authorization may appear on your statement and will be "
+"released automatically by your bank."
+msgstr "您的账单上可能会出现一个小额临时授权，它将由您的银行自动释放。"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:60
 #. js-lingui-explicit-id
 msgid "A standard reply to “How are you?”"
@@ -662,6 +669,7 @@ msgid "Analyzing..."
 msgstr "正在分析..."
 
 #: src/features/Goal/GoalQuestions.tsx:67
+#: src/features/PayWall/CardValidator.tsx:112
 #. js-lingui-explicit-id
 msgid "and"
 msgstr "和"
@@ -1045,6 +1053,11 @@ msgstr "购买更多小时"
 msgid "Buying a Train Ticket"
 msgstr "购买火车票"
 
+#: src/features/PayWall/CardValidator.tsx:103
+#. js-lingui-explicit-id
+msgid "By continuing, you agree to our"
+msgstr "通过继续，您同意我们的"
+
 #: src/features/Landing/Price/PricePage.tsx:212
 #. js-lingui-explicit-id
 msgid "By practicing, you will get personal grammar rules from AI"
@@ -1145,7 +1158,7 @@ msgid ""
 "clearly in interviews"
 msgstr "已经掌握基础知识但在面试中难以清晰表达决策的候选人"
 
-#: src/features/PayWall/CardValidator.tsx:81
+#: src/features/PayWall/CardValidator.tsx:138
 #. js-lingui-explicit-id
 msgid "Card verified. Loading..."
 msgstr "卡已验证。加载中..."
@@ -1345,8 +1358,7 @@ msgstr "信心分数跟踪"
 msgid "Confident Communication"
 msgstr "自信沟通"
 
-#: src/features/PayWall/CardValidator.tsx:233
-#: src/features/PayWall/CardValidator.tsx:362
+#: src/features/PayWall/CardValidator.tsx:305
 #. js-lingui-explicit-id
 msgid "Confirm Credit Card"
 msgstr "确认信用卡"
@@ -1355,6 +1367,11 @@ msgstr "确认信用卡"
 #. js-lingui-explicit-id
 msgid "Confirm payment"
 msgstr "确认付款"
+
+#: src/features/PayWall/CardValidator.tsx:80
+#. js-lingui-explicit-id
+msgid "Confirm your payment method"
+msgstr "确认您的付款方式"
 
 #: src/features/Dashboard/BrainCard.tsx:140
 #. js-lingui-explicit-id
@@ -1432,6 +1449,7 @@ msgstr "联系人："
 #: src/features/Interview/data/frontend/quizData.ts:131
 #: src/features/Interview/data/frontend/quizData.ts:190
 #: src/features/Interview/data/frontend/quizData.ts:205
+#: src/features/PayWall/CardValidator.tsx:139
 #: src/features/Plan/PlanCard.tsx:284
 #: src/features/Usage/SubscriptionPaymentModal.tsx:595
 #. js-lingui-explicit-id
@@ -1449,6 +1467,11 @@ msgid ""
 "Continue practicing with more questions, track your progress, and refine "
 "your answers to ace your next interview."
 msgstr "继续练习更多问题，跟踪你的进展，优化你的回答，在下一次面试中取得优异表现。"
+
+#: src/features/PayWall/CardValidator.tsx:374
+#. js-lingui-explicit-id
+msgid "Continue to free access"
+msgstr "继续免费访问"
 
 #: src/features/Usage/PaymentModal.tsx:342
 #. js-lingui-explicit-id
@@ -1619,13 +1642,12 @@ msgstr "创建您自己的角色扮演场景"
 msgid "Create Your Own Scenario"
 msgstr "创建您自己的场景"
 
-#: src/features/PayWall/CardValidator.tsx:287
+#: src/features/PayWall/CardValidator.tsx:359
 #. js-lingui-explicit-id
 msgid "Credit Card Already Confirmed"
 msgstr "信用卡已确认"
 
-#: src/features/PayWall/CardValidator.tsx:192
-#: src/features/PayWall/CardValidator.tsx:321
+#: src/features/PayWall/CardValidator.tsx:264
 #. js-lingui-explicit-id
 msgid "Credit Card Check"
 msgstr "信用卡检查"
@@ -2710,13 +2732,10 @@ msgid ""
 "feedback, and Beginner Mode for slower, guided conversations."
 msgstr "FluencyPal提供三种模式：休闲对话用于不间断的口语练习，谈话与纠正用于即时的语法和发音反馈，以及初学者模式用于较慢的、有指导的对话。"
 
-#: src/features/PayWall/CardValidator.tsx:69
+#: src/features/PayWall/CardValidator.tsx:83
 #. js-lingui-explicit-id
-msgid ""
-"FluencyPal will not charge your card. A small temporary authorization hold "
-"may appear on your statement, which will be released by your bank within a "
-"few days."
-msgstr "FluencyPal不会向您的卡收费。 您的对账单上可能会出现一个小额的临时授权冻结，该冻结将在几天内由您的银行解除。"
+msgid "FluencyPal won’t charge you during the trial."
+msgstr "FluencyPal在试用期内不会收费。"
 
 #: src/features/SEO/metadata.ts:331
 #. js-lingui-explicit-id
@@ -2908,6 +2927,14 @@ msgstr "德语"
 #. js-lingui-explicit-id
 msgid "German Learning Plan"
 msgstr "德语学习计划"
+
+#: src/features/PayWall/CardValidator.tsx:371
+#. js-lingui-explicit-id
+msgid ""
+"Get 2 days of full access to all features. Practice real interviews, get AI "
+"feedback, and see your full analysis. We use a card to prevent abuse and "
+"give you uninterrupted access to all features."
+msgstr "获取两天的完整功能访问权限。练习真实面试，获得AI反馈，并查看您的全面分析。我们使用卡来防止滥用，并为您提供不间断的所有功能访问。"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:152
 #: src/features/Dashboard/TasksCard.tsx:52
@@ -5207,8 +5234,12 @@ msgstr "不"
 msgid "No ads, no spam"
 msgstr "没有广告，没有垃圾信息"
 
-#: src/features/PayWall/CardValidator.tsx:207
-#: src/features/PayWall/CardValidator.tsx:336
+#: src/features/PayWall/CardValidator.tsx:384
+#. js-lingui-explicit-id
+msgid "No automatic payment"
+msgstr "没有自动付款"
+
+#: src/features/PayWall/CardValidator.tsx:279
 #. js-lingui-explicit-id
 msgid "No automatic payment after the trial"
 msgstr "试用期后无自动付款"
@@ -5218,8 +5249,12 @@ msgstr "试用期后无自动付款"
 msgid "No blogs found"
 msgstr "未找到博客"
 
-#: src/features/PayWall/CardValidator.tsx:211
-#: src/features/PayWall/CardValidator.tsx:340
+#: src/features/PayWall/CardValidator.tsx:379
+#. js-lingui-explicit-id
+msgid "No charge during trial"
+msgstr "试用期间不收费"
+
+#: src/features/PayWall/CardValidator.tsx:283
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "不会收取任何费用"
@@ -5689,8 +5724,7 @@ msgstr "玩游戏"
 msgid "Play the role"
 msgstr "扮演角色"
 
-#: src/features/PayWall/CardValidator.tsx:194
-#: src/features/PayWall/CardValidator.tsx:323
+#: src/features/PayWall/CardValidator.tsx:266
 #. js-lingui-explicit-id
 msgid "Please confirm your credit card to access all features."
 msgstr "请确认您的信用卡以访问所有功能。"
@@ -6058,6 +6092,7 @@ msgstr "隐私政策"
 #: src/features/Landing/Footer.tsx:187
 #: src/features/Legal/LegalContainer.tsx:29
 #: src/features/Legal/PrivacyPolicy.tsx:15
+#: src/features/PayWall/CardValidator.tsx:119
 #: src/features/SEO/metadata.ts:157
 #. js-lingui-explicit-id
 msgid "Privacy Policy"
@@ -7570,6 +7605,11 @@ msgstr "请告诉我们您的背景、经验，以及是什么让您成为一名
 msgid "Terms and Conditions"
 msgstr "条款和条件"
 
+#: src/features/PayWall/CardValidator.tsx:110
+#. js-lingui-explicit-id
+msgid "Terms of Service"
+msgstr "服务条款"
+
 #: src/features/Auth/AuthWall.tsx:70
 #: src/features/Auth/AuthWallBasic.tsx:128
 #: src/features/Auth/InterviewAuthWall.tsx:52
@@ -7908,6 +7948,11 @@ msgstr "无限次答案审查"
 msgid "Unlock full analysis and tailored preparation"
 msgstr "解锁全面分析和量身定制准备"
 
+#: src/features/PayWall/CardValidator.tsx:370
+#. js-lingui-explicit-id
+msgid "Unlock full interview preparation"
+msgstr "解锁完整面试准备"
+
 #: src/features/Interview/data/frontend/quizData.ts:195
 #. js-lingui-explicit-id
 msgid "Unlock Your Trial and Get Full Feedback"
@@ -7966,15 +8011,15 @@ msgstr "UX和可访问性"
 msgid "Vacancy description"
 msgstr "职位描述"
 
-#: src/features/PayWall/CardValidator.tsx:44
+#: src/features/PayWall/CardValidator.tsx:54
 #. js-lingui-explicit-id
 msgid "Verification failed"
 msgstr "验证失败"
 
-#: src/features/PayWall/CardValidator.tsx:83
+#: src/features/PayWall/CardValidator.tsx:136
 #. js-lingui-explicit-id
-msgid "Verify card"
-msgstr "验证卡片"
+msgid "Verifying..."
+msgstr "正在验证..."
 
 #: src/features/Goal/GoalQuestions.tsx:302
 #. js-lingui-explicit-id
@@ -8570,12 +8615,7 @@ msgid ""
 "and system design."
 msgstr "你将回答有关 .NET、API、数据库、并发性和系统设计的简短问题。"
 
-#: src/features/PayWall/CardValidator.tsx:332
-#. js-lingui-explicit-id
-msgid "You will get 1 day of full access for free"
-msgstr "您将免费获得1天的完整访问权限"
-
-#: src/features/PayWall/CardValidator.tsx:203
+#: src/features/PayWall/CardValidator.tsx:275
 #. js-lingui-explicit-id
 msgid "You will get 3 days of full access for free"
 msgstr "您将获得 3 天的完整免费访问权限"
@@ -8626,7 +8666,14 @@ msgstr "你的答案"
 msgid "Your Avatar:"
 msgstr "你的头像："
 
-#: src/features/PayWall/CardValidator.tsx:288
+#: src/features/PayWall/CardValidator.tsx:85
+#. js-lingui-explicit-id
+msgid ""
+"Your card is used only to activate secure access and will not be billed "
+"unless you decide to continue."
+msgstr "您的卡仅用于激活安全访问，除非您决定继续使用，否则不会扣款。"
+
+#: src/features/PayWall/CardValidator.tsx:360
 #. js-lingui-explicit-id
 msgid ""
 "Your credit card has already been confirmed. You can proceed to the next "
@@ -8731,6 +8778,24 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/PayWall/CardValidator.tsx:69
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "FluencyPal will not charge your card. A small temporary authorization hold "
+#~ "may appear on your statement, which will be released by your bank within a "
+#~ "few days."
+#~ msgstr "FluencyPal不会向您的卡收费。 您的对账单上可能会出现一个小额的临时授权冻结，该冻结将在几天内由您的银行解除。"
+
+#: src/features/PayWall/CardValidator.tsx:83
+#. js-lingui-explicit-id
+#~ msgid "Verify card"
+#~ msgstr "验证卡片"
+
+#: src/features/PayWall/CardValidator.tsx:332
+#. js-lingui-explicit-id
+#~ msgid "You will get 1 day of full access for free"
+#~ msgstr "您将免费获得1天的完整访问权限"
 
 #: src/features/Interview/data/frontend/quizData.ts:186
 #. js-lingui-explicit-id

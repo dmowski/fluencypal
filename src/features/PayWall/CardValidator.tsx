@@ -68,36 +68,62 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
 
   return (
     <form onSubmit={onSubmit}>
-      <Stack sx={{ gap: "10px", height: "max-content" }}>
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: 660,
-            lineHeight: "1.2",
-          }}
-        >
-          {i18n._("Confirm your card")}
-        </Typography>
-        <PaymentElement
-          options={{
-            terms: {
-              card: "never",
-            },
-          }}
-        />
-        <Typography
-          sx={{
-            color: "#555",
-            fontWeight: 500,
-          }}
-        >
-          {i18n._(
-            "FluencyPal will not charge your card without your explicit consent. A small temporary authorization hold may appear on your statement, which will be released by your bank within a few days."
-          )}
-        </Typography>
+      <Stack sx={{ gap: "20px", height: "max-content" }}>
+        <Stack>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: 660,
+              lineHeight: "1.2",
+            }}
+          >
+            {i18n._("Confirm your payment method")}
+          </Typography>
+          <Typography sx={{}}>
+            {i18n._("FluencyPal won’t charge you during the trial.")}
+            <br />
+            {i18n._(
+              "Your card is used only to activate secure access and will not be billed unless you decide to continue."
+            )}
+          </Typography>
+        </Stack>
+        <Stack>
+          <PaymentElement
+            options={{
+              terms: {
+                card: "never",
+              },
+            }}
+          />
+
+          <Typography variant="caption" sx={{ paddingTop: "5px", opacity: 0.9 }}>
+            {i18n._(
+              "A small temporary authorization may appear on your statement and will be released automatically by your bank."
+            )}{" "}
+            {i18n._("By continuing, you agree to our")}{" "}
+            <a
+              href="/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "inherit", textDecoration: "underline" }}
+            >
+              {i18n._("Terms of Service")}
+            </a>{" "}
+            {i18n._("and")}{" "}
+            <a
+              href="/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "inherit", textDecoration: "underline" }}
+            >
+              {i18n._("Privacy Policy")}
+            </a>
+            .
+          </Typography>
+        </Stack>
 
         {errMsg && (
-          <Typography variant="caption" color="error">
+          <Typography variant="body2" color="error">
             {errMsg}
           </Typography>
         )}
@@ -110,7 +136,7 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
               ? i18n._("Verifying...")
               : isSuccess
               ? i18n._("Card verified. Loading...")
-              : i18n._("Verify card")
+              : i18n._("Continue")
           }
           disabled={!stripe || !elements || submitting || isSuccess}
         />
@@ -120,7 +146,26 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
 }
 function VerifyCard({ clientSecret, lang }: { clientSecret: string; lang: SupportedLanguage }) {
   const locale: StripeElementLocale = stripeLocaleMap[lang];
-  const options: StripeElementsOptions = useMemo(() => ({ clientSecret, locale }), [clientSecret]);
+  const options: StripeElementsOptions = useMemo(
+    () => ({
+      clientSecret,
+      locale,
+      appearance: {
+        theme: "night",
+        variables: {
+          //colorPrimary: "#fff",
+          //colorBackground: "#171717",
+          //colorText: "#ffffff",
+          //colorDanger: "#cb4b57",
+          //fontFamily: "system-ui, sans-serif",
+          //spacingUnit: "4px",
+          //borderRadius: "8px",
+          //gridRowSpacing: "30px",
+        },
+      },
+    }),
+    [clientSecret]
+  );
 
   if (!clientSecret) return null;
   return (
