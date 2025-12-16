@@ -11,6 +11,7 @@ import {
   InterviewQuizResults,
   InterviewQuizSurvey,
   QuizAnswers,
+  QuizOption,
   QuizResults,
 } from "../../../types";
 import { useQuizSurveyData } from "../useQuizSurveyData";
@@ -57,7 +58,7 @@ export function useProvideInterviewQuizContext({
     const answerData: InterviewQuizAnswer = {
       stepId,
       question: currentStep?.title || "",
-      answerTranscription: fullAnswerTranscription,
+      answer: fullAnswerTranscription,
     };
 
     const oldAnswers = data.survey.answers || {};
@@ -96,7 +97,7 @@ export function useProvideInterviewQuizContext({
 
     const currentStepIndex = quiz.steps.findIndex((s) => s.id === step.id);
     const previousSteps = quiz.steps.filter((step, index) => {
-      return index < currentStepIndex && step.type === "record-audio";
+      return index < currentStepIndex && (step.type === "record-audio" || step.type === "options");
     });
     const previousStepsIdsToAnswer = previousSteps.map((s) => s.id);
 
@@ -121,17 +122,18 @@ export function useProvideInterviewQuizContext({
 
     const combinedAnswers = goodAnswersIds
       .map((id) => {
-        const foundStep = quiz.steps.find((step) => step.id === id);
-        const questionStep = foundStep?.type === "record-audio" ? foundStep : null;
+        const questionStep = quiz.steps.find((step) => step.id === id);
 
         const questionTitle = questionStep ? questionStep.title : "Unknown question";
         const questionSubTitle = questionStep ? questionStep.subTitle : "";
 
         const questionHeader = `Question: ${questionTitle}\n${questionSubTitle}\nAnswer:`;
-        const answer = answers[id]?.answerTranscription || "";
+        const answer = answers[id]?.answer || "";
         return `${questionHeader}\n${answer}`;
       })
       .join("\n\n");
+
+    console.log("combinedAnswers", combinedAnswers);
 
     const questionHash = getHash(combinedAnswers + step.aiSystemPrompt);
 
@@ -223,6 +225,48 @@ export function useProvideInterviewQuizContext({
     }
   }, [isConfirmedGTag, auth.uid, analytics.isInitialized, currentStepType]);
 
+  const getSelectedOptionsForStep = (stepId: string): QuizOption[] => {
+    const answers = data.survey?.answers || {};
+    const answer = answers[stepId];
+    if (!answer) {
+      return [];
+    }
+
+    const parsedAnswer = JSON.parse(answer.answer) as QuizOption[];
+    return parsedAnswer;
+  };
+
+  const updateSelectedOptionsForStep = async (
+    stepId: string,
+    selectedOptions: QuizOption[]
+  ): Promise<InterviewQuizSurvey> => {
+    if (!data.survey) {
+      throw new Error("Survey data is not loaded");
+    }
+
+    const step = quiz.steps.find((s) => s.id === stepId);
+    if (!step) {
+      throw new Error(`Step with id ${stepId} not found`);
+    }
+
+    const answerData: InterviewQuizAnswer = {
+      stepId,
+      question: step.title || "",
+      answer: JSON.stringify(selectedOptions),
+    };
+
+    const oldAnswers = data.survey.answers || {};
+    const updatedSurvey: InterviewQuizSurvey = {
+      ...data.survey,
+      answers: {
+        ...oldAnswers,
+        [stepId]: answerData,
+      },
+    };
+
+    return await data.updateSurvey(updatedSurvey, `Update selected options for step ${stepId}`);
+  };
+
   return {
     ...core,
     survey: data.survey,
@@ -232,5 +276,7 @@ export function useProvideInterviewQuizContext({
     isAnalyzingInputs,
     isAnalyzingInputsError,
     mainPageUrl,
+    getSelectedOptionsForStep,
+    updateSelectedOptionsForStep,
   };
 }

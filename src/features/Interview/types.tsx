@@ -226,6 +226,24 @@ export interface PaywallQuizStep {
   buttonTitle: string;
 }
 
+export interface QuizOption {
+  label: string;
+  iconImageUrl?: string;
+}
+
+export interface OptionsQuizStep {
+  type: "options";
+  id: string;
+
+  title: string;
+  subTitle: string;
+
+  multipleSelection: boolean;
+  options: QuizOption[]; // label-values pairs for options
+
+  buttonTitle: string;
+}
+
 /**
  * Example of Interview Quiz Steps:
  * InfoQuizStep - inform user about the next step
@@ -244,7 +262,8 @@ export type InterviewQuizStep =
   | RecordAudioQuizStep
   | AnalyzeInputsQuizStep
   | PaywallQuizStep
-  | WaitlistDoneQuizStep;
+  | WaitlistDoneQuizStep
+  | OptionsQuizStep;
 
 export interface InterviewQuiz {
   steps: InterviewQuizStep[];
@@ -268,7 +287,7 @@ export interface InterviewData {
 export interface InterviewQuizAnswer {
   stepId: string;
   question: string;
-  answerTranscription: string;
+  answer: string;
 }
 
 export interface InterviewQuizResults {
@@ -285,6 +304,7 @@ export type InterviewQuizSurvey = {
   // stepId: data
   answers: QuizAnswers;
   results: QuizResults;
+
   updatedAtIso: string;
   createdAtIso: string;
 };

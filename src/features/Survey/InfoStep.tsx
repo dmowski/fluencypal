@@ -1,10 +1,11 @@
 "use client";
-import { Stack, Typography } from "@mui/material";
+import { Checkbox, Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { ReactNode } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { ColorIconTextList, ColorIconTextListItem } from "./ColorIconTextList";
 import { InterviewQuizButton } from "../Goal/Quiz/InterviewQuizButton";
+import { QuizOption } from "../Interview/types";
 
 export const InfoStep = ({
   title,
@@ -19,6 +20,10 @@ export const InfoStep = ({
   disabled,
   isStepLoading,
   listItems,
+  options,
+  selectedOptions,
+  onSelectOptionsChange,
+  multipleSelection,
 }: {
   title?: string;
   subTitle?: string;
@@ -33,6 +38,10 @@ export const InfoStep = ({
   isStepLoading?: boolean;
   width?: string;
   listItems?: ColorIconTextListItem[];
+  options?: QuizOption[];
+  selectedOptions?: QuizOption[];
+  onSelectOptionsChange?: (selectedOptions: QuizOption[]) => void;
+  multipleSelection?: boolean;
 }) => {
   const { i18n } = useLingui();
   return (
@@ -90,6 +99,72 @@ export const InfoStep = ({
               <ColorIconTextList listItems={listItems} iconSize="26px" gap="23px" />
             </Stack>
           )}
+
+          {!!options?.length && onSelectOptionsChange && (
+            <>
+              <Stack
+                sx={{
+                  paddingTop: "30px",
+                  gap: "10px",
+                }}
+              >
+                {options.map((option) => {
+                  const isSelected = selectedOptions?.some(
+                    (selected) => selected.label === option.label
+                  );
+                  return (
+                    <Stack
+                      key={option.label}
+                      component={"button"}
+                      onClick={() => {
+                        let newSelectedOptions: QuizOption[] = [];
+                        if (multipleSelection) {
+                          if (isSelected) {
+                            newSelectedOptions =
+                              selectedOptions?.filter(
+                                (selected) => selected.label !== option.label
+                              ) || [];
+                          } else {
+                            newSelectedOptions = [...(selectedOptions || []), option];
+                          }
+                        } else {
+                          newSelectedOptions = isSelected ? [] : [option];
+                        }
+                        onSelectOptionsChange(newSelectedOptions);
+                      }}
+                      sx={{
+                        cursor: "pointer",
+                        color: "inherit",
+                        padding: "5px 8px",
+                        flexDirection: "row",
+                        gap: "5px",
+                        alignItems: "center",
+                        borderRadius: "8px",
+                        border: isSelected
+                          ? "2px solid rgb(96, 165, 250)"
+                          : "2px solid rgba(96, 165, 250, 0.1)",
+                        backgroundColor: isSelected ? "rgba(96, 165, 250, 0.1)" : "transparent",
+                        "&:hover": {
+                          backgroundColor: isSelected
+                            ? "rgba(96, 165, 250, 0.15)"
+                            : "rgba(255, 255, 255, 0.05)",
+                        },
+                      }}
+                    >
+                      <Checkbox
+                        checked={isSelected}
+                        sx={{
+                          pointerEvents: "none",
+                        }}
+                      />
+                      <Typography variant="body1">{option.label}</Typography>
+                    </Stack>
+                  );
+                })}
+              </Stack>
+            </>
+          )}
+
           {imageUrl && (
             <Stack
               sx={{

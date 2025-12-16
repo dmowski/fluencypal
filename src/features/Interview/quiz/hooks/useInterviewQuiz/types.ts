@@ -6,6 +6,7 @@ import {
   InterviewQuiz,
   InterviewQuizStep,
   InterviewQuizSurvey,
+  QuizOption,
 } from "../../../types";
 
 export type QuizStep = string;
@@ -33,6 +34,12 @@ export interface InterviewQuizContextType {
   isAnalyzingInputsError: Record<string, string>;
   mainPageUrl: string;
   isNavigateToMainPage: boolean;
+
+  getSelectedOptionsForStep: (stepId: string) => QuizOption[];
+  updateSelectedOptionsForStep: (
+    stepId: string,
+    selectedOptions: QuizOption[]
+  ) => Promise<InterviewQuizSurvey>;
 }
 
 export interface InterviewQuizProps {

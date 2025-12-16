@@ -203,8 +203,7 @@ description should summarize strengths and areas for improvement.
         title: i18n._("AI Feedback on Your Answers"),
         subTitle: i18n._("Here's the rest of your personalized feedback to help you improve."),
         buttonTitle: i18n._("Continue"),
-        aiSystemPrompt: i18n._(
-          `Provide a score breakdown of the user's answers, focusing on technical depth, clarity, and structure. Return improved answers and give hints on how to answer such questions better. For each answer, break down the score into Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and Communication (0%-100%). Structure your response as follows:
+        aiSystemPrompt: `Provide a score breakdown of the user's answers, focusing on technical depth, clarity, and structure. Return improved answers and give hints on how to answer such questions better. For each answer, break down the score into Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and Communication (0%-100%). Structure your response as follows:
 ### Question 1: 
 [question here]
 
@@ -224,8 +223,7 @@ description should summarize strengths and areas for improvement.
 - [hint 1]
 - [hint 2]
 - [hint 3]
-`
-        ),
+`,
         aiResponseFormat: "markdown",
       },
       {

@@ -80,13 +80,30 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
           />
         )}
 
+        {stepType === "options" && quiz.currentStep && (
+          <InfoStep
+            title={quiz.currentStep.title}
+            subTitle={quiz.currentStep.subTitle || ""}
+            actionButtonTitle={quiz.currentStep.buttonTitle || i18n._("Next")}
+            width={width}
+            disabled={quiz.survey?.answers[quiz.currentStep.id] ? false : true}
+            onClick={() => quiz.nextStep()}
+            options={quiz.currentStep.options}
+            multipleSelection={quiz.currentStep.multipleSelection}
+            selectedOptions={quiz.getSelectedOptionsForStep(quiz.currentStep.id)}
+            onSelectOptionsChange={(selectedOptions) =>
+              quiz.updateSelectedOptionsForStep(quiz.currentStep?.id || "", selectedOptions)
+            }
+          />
+        )}
+
         {stepType === "record-audio" && quiz.currentStep && (
           <InterviewAuthWall width={width}>
             <RecordUserAudio
               title={quiz.currentStep.title || ""}
               subTitle={quiz.currentStep.subTitle}
               listItems={quiz.currentStep.listItems}
-              transcript={survey?.answers[quiz.currentStep.id]?.answerTranscription || ""}
+              transcript={survey?.answers[quiz.currentStep.id]?.answer || ""}
               minWords={MIN_CHARACTERS_FOR_TRANSCRIPT}
               lang={lang}
               nextStep={quiz.nextStep}
