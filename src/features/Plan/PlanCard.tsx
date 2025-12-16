@@ -152,8 +152,8 @@ export const PlanCard = ({
           backgroundColor: isActive
             ? "rgba(13, 220, 196, 0.14)"
             : isDone
-              ? "rgba(13, 220, 196, 0.1)"
-              : "rgba(0, 0, 0, 0.1)",
+            ? "rgba(13, 220, 196, 0.1)"
+            : "rgba(0, 0, 0, 0.1)",
           textDecoration: "none",
           padding: "9px 16px 11px 16px",
           display: "grid",
@@ -227,8 +227,8 @@ export const PlanCard = ({
             boxShadow: isDone
               ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
               : isActive
-                ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
-                : "0px 0px 0 1px rgba(255, 255, 255, 0.1)",
+              ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
+              : "0px 0px 0 1px rgba(255, 255, 255, 0.1)",
             boxSizing: "border-box",
             width: "max-content",
             position: "relative",
@@ -451,9 +451,11 @@ export const PlanCard = ({
             sx={{
               fontWeight: 500,
               fontSize: "1.2rem",
+              lineHeight: "1.4rem",
               position: "relative",
               zIndex: 2,
               opacity: isActive || isDone ? 1 : 0.9,
+              paddingBottom: "3px",
 
               "@media (max-width: 450px)": {
                 fontSize: "0.8rem",

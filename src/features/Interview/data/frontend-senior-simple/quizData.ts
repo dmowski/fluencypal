@@ -99,7 +99,6 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         buttonTitle: i18n._("Next"),
       },
 
-      // 6 Interview timeline (monetization signal)
       {
         type: "options",
         id: "interview-timeline",
@@ -115,7 +114,6 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         buttonTitle: i18n._("See Results"),
       },
 
-      // 7 Result (AI-generated)
       {
         type: "analyze-inputs",
         id: "ai-feedback-step-1",
@@ -179,7 +177,6 @@ End without a CTA or sales message.
         aiResponseFormat: "markdown",
       },
 
-      // 8 Value bridge
       {
         type: "info",
         id: "value-bridge-step",
@@ -192,6 +189,29 @@ End without a CTA or sales message.
           { title: i18n._("Personalized improvement plan"), iconName: "target" },
         ],
         buttonTitle: i18n._("Continue"),
+      },
+
+      {
+        id: "ai-practice-plant",
+        type: "analyze-inputs",
+        title: i18n._("Preparation plan"),
+        subTitle: i18n._(
+          "Here's a personalized training plan we'll use during your preparation. Step by step, you'll improve your answers and prepare for next-level results."
+        ),
+        buttonTitle: i18n._("Continue"),
+        aiSystemPrompt: `
+Your goal is to create a personalized plan for preparing for Senior Frontend Developer interview.
+Always use second-person language ("you", "your").
+
+Below is a conversation between a student (User) and a teacher (AI Interviewer).
+Based on the user's level, generate a personalized practice plan that can be completed using our AI-powered language learning app.
+
+Important: Do not focus on language learning, but rather on interview preparation.
+
+Finish the plan with salary negotiation steps.
+
+`,
+        aiResponseFormat: "practice-plan",
       },
 
       {
