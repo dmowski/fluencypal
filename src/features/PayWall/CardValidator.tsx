@@ -59,7 +59,6 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
       if (result.setupIntent?.status === "succeeded") {
         console.log("Card verification succeeded");
         setIsSuccess(true);
-
         // If no error -> success path; rely on webhook to flip the flag.
         // Optionally start a short polling loop here to refresh settings.
         analytics.confirmGtag();
