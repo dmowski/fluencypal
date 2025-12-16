@@ -371,7 +371,7 @@ export const CardValidatorQuiz = ({
       <InfoStep
         title={i18n._("Unlock full interview preparation")}
         subTitle={i18n._(
-          "Get 2 days of full access to all features. Practice real interviews, get AI feedback, and see your full analysis. We use a card to prevent abuse and give you uninterrupted access to all features."
+          "Get full access to all features. Practice real interviews, get AI feedback, and see your full analysis. We use a card to prevent abuse and give you uninterrupted access to all features."
         )}
         actionButtonTitle={i18n._("Continue to free access")}
         width={"700px"}

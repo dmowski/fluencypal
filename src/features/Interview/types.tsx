@@ -229,6 +229,7 @@ export interface PaywallQuizStep {
 
 export interface QuizOption {
   label: string;
+  subTitle?: string;
   iconImageUrl?: string;
 }
 

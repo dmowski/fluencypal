@@ -157,7 +157,23 @@ export const InfoStep = ({
                           pointerEvents: "none",
                         }}
                       />
-                      <Typography variant="body1">{option.label}</Typography>
+                      <Stack
+                        sx={{
+                          alignItems: "flex-start",
+                        }}
+                      >
+                        <Typography variant="body1">{option.label}</Typography>
+                        {option.subTitle && (
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              opacity: 0.7,
+                            }}
+                          >
+                            {option.subTitle}
+                          </Typography>
+                        )}
+                      </Stack>
                     </Stack>
                   );
                 })}
