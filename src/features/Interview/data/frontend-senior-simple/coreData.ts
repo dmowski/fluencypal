@@ -6,7 +6,7 @@ export const getCoreData = (lang: SupportedLanguage): InterviewCoreData => {
   const i18n = getI18nInstance(lang);
 
   return {
-    id: "senior-frontend-developer",
+    id: "senior-front",
     jobTitle: i18n._("Senior Frontend Developer"),
     title: i18n._("Senior Frontend Developer interview prep that gets you more offers"),
     subTitle: i18n._(

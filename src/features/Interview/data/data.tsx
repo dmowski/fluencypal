@@ -1,7 +1,8 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { InterviewCategory, InterviewData } from "../types";
-import getFrontendLandingData from "./frontend-seniour/landing";
+import getFrontendLandingData from "./frontend-senior/landing";
+import getSimpleFrontendLandingData from "./frontend-senior-simple/landing";
 import getCsharpBackendDeveloperData from "./backend/landing";
 
 export interface InterviewAllData {
@@ -15,6 +16,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
   const list: InterviewData[] = [
     getFrontendLandingData(lang),
     getCsharpBackendDeveloperData(lang),
+    getSimpleFrontendLandingData(lang),
 
     /*{
       id: "junior-frontend-developer",
