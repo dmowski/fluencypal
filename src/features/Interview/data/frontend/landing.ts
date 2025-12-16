@@ -1,6 +1,6 @@
 import { InterviewData } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { getSeniorFrontendDeveloperQuizData } from "./quizData";
+import { getQuizData } from "./quizData";
 import { getPriceSection } from "./priceSection";
 import { getFaqSection } from "./faqSection";
 import { getStepInfoSection } from "./stepInfoSection";
@@ -15,7 +15,7 @@ import { getWhoIsThisForSection } from "./whoIsThisForSection";
 import { getDemoSnippetSection } from "./demoSnippetSection";
 import { getSeniorFrontendDeveloperCoreData } from "./coreData";
 
-export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): InterviewData => {
+export default function getLandingData(lang: SupportedLanguage): InterviewData {
   return {
     coreData: getSeniorFrontendDeveloperCoreData(lang),
     sections: [
@@ -32,6 +32,6 @@ export const getSeniorFrontendDeveloperData = (lang: SupportedLanguage): Intervi
       getFaqSection(lang),
       getCallToActionSection(lang),
     ],
-    quiz: getSeniorFrontendDeveloperQuizData(lang),
+    quiz: getQuizData(lang),
   };
-};
+}

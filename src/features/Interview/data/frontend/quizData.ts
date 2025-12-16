@@ -2,7 +2,7 @@ import { SupportedLanguage } from "@/features/Lang/lang";
 import { InterviewQuiz } from "../../types";
 import { getI18nInstance } from "@/appRouterI18n";
 
-export const getSeniorFrontendDeveloperQuizData = (lang: SupportedLanguage): InterviewQuiz => {
+export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
   const i18n = getI18nInstance(lang);
 
   return {
