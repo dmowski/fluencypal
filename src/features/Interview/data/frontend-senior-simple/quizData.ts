@@ -1,9 +1,12 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { InterviewQuiz } from "../../types";
 import { getI18nInstance } from "@/appRouterI18n";
+import { getTechData } from "./techData";
 
 export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
   const i18n = getI18nInstance(lang);
+
+  const techData = getTechData(lang);
 
   return {
     steps: [
@@ -48,7 +51,6 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         buttonTitle: i18n._("Next"),
       },
 
-      // 3 Primary framework
       {
         type: "options",
         id: "primary-framework",
@@ -56,16 +58,18 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         subTitle: i18n._("Your answers will be evaluated against this stack."),
         multipleSelection: false,
         options: [
-          { label: i18n._("React / Next.js") },
-          { label: i18n._("Vue / Nuxt") },
-          { label: i18n._("Angular") },
-          { label: i18n._("Multiple frameworks") },
-          { label: i18n._("Other / Vanilla JS") },
+          { label: i18n._("React / Next.js"), iconImageUrl: techData["react-nextjs"].logoUrl },
+          { label: i18n._("Vue / Nuxt"), iconImageUrl: techData["vue-pinia"].logoUrl },
+          { label: i18n._("Angular"), iconImageUrl: techData["angular-rxjs"].logoUrl },
+          { label: i18n._("Multiple frameworks"), iconImageUrl: techData.typescript.logoUrl },
+          {
+            label: i18n._("Other / Vanilla JS"),
+            iconImageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+          },
         ],
         buttonTitle: i18n._("Next"),
       },
 
-      // 4 Main interview weakness
       {
         type: "options",
         id: "main-weakness",
@@ -82,7 +86,6 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         buttonTitle: i18n._("Next"),
       },
 
-      // 5 Answer behavior
       {
         type: "options",
         id: "answer-style",

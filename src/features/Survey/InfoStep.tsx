@@ -159,19 +159,41 @@ export const InfoStep = ({
                       />
                       <Stack
                         sx={{
-                          alignItems: "flex-start",
+                          width: "100%",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          paddingRight: "10px",
                         }}
                       >
-                        <Typography variant="body1">{option.label}</Typography>
-                        {option.subTitle && (
-                          <Typography
-                            variant="body2"
+                        <Stack
+                          sx={{
+                            alignItems: "flex-start",
+                          }}
+                        >
+                          <Typography variant="body1">{option.label}</Typography>
+                          {option.subTitle && (
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                opacity: 0.7,
+                              }}
+                            >
+                              {option.subTitle}
+                            </Typography>
+                          )}
+                        </Stack>
+                        {option.iconImageUrl && (
+                          <Stack
+                            component={"img"}
+                            src={option.iconImageUrl}
                             sx={{
-                              opacity: 0.7,
+                              width: "20px",
+                              height: "20px",
+                              objectFit: "cover",
+                              backgroundColor: "rgba(255,0,0,0.05)",
                             }}
-                          >
-                            {option.subTitle}
-                          </Typography>
+                          />
                         )}
                       </Stack>
                     </Stack>

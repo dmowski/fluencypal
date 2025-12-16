@@ -2,7 +2,7 @@ import { getI18nInstance } from "@/appRouterI18n";
 import { TechItem } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 
-export const getTechData = (lang: SupportedLanguage): Record<string, TechItem> => {
+export const getTechData = (lang: SupportedLanguage) => {
   const i18n = getI18nInstance(lang);
 
   const reactTech: TechItem = {
@@ -119,5 +119,5 @@ export const getTechData = (lang: SupportedLanguage): Record<string, TechItem> =
     "semantic-html": semanticHtmlTech,
     "performance-metrics": performanceMetricsTech,
     "core-web-vitals": coreWebVitalsTech,
-  };
+  } as const;
 };
