@@ -3,7 +3,8 @@ import { H2, SubTitle } from "./Typography";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
 
 export interface InfoCard {
-  iconName: IconName;
+  iconName?: IconName;
+  imageUrl?: string;
   title: string;
   description: string;
 }
@@ -103,15 +104,14 @@ export const InfoCards = (props: InfoCardsProps) => {
               <Stack
                 key={index}
                 sx={{
-                  padding: "40px 30px 40px 30px",
+                  //padding: "40px 30px 40px 30px",
                   border: "1px solid rgba(255, 255, 255, 0.04)",
-                  gap: "30px",
+                  gap: "15px",
                   width: "100%",
                   borderRadius: "12px",
                   boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.01)",
                   backgroundColor: "rgba(255, 255, 255, 0.03)",
 
-                  justifyContent: "space-between",
                   "@media (max-width: 600px)": {
                     padding: "30px 20px 30px 20px",
                   },
@@ -122,40 +122,71 @@ export const InfoCards = (props: InfoCardsProps) => {
                     gap: "5px",
                   }}
                 >
-                  <Stack
-                    sx={{
-                      borderRadius: "9px",
-                      backgroundColor: iconColors[index].bgColor,
-                      width: "54px",
-                      height: "54px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      border: `1px solid ${iconColors[index].borderColor ?? "transparent"}`,
-                      boxShadow: "2px 2px 10px rgba(0, 0, 0, 0.2)",
-                    }}
-                  >
-                    <DynamicIcon
-                      name={card.iconName}
-                      size={24}
-                      color={iconColors[index].iconColor}
-                    />
-                  </Stack>
+                  {card.imageUrl && (
+                    <Stack
+                      sx={{
+                        width: "100%",
+                        borderTopLeftRadius: "11px",
+                        borderTopRightRadius: "11px",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <Stack
+                        component="img"
+                        src={card.imageUrl}
+                        sx={{
+                          width: "100%",
+                          objectFit: "cover",
+                          maxHeight: "270px",
+                          transition: "transform 0.3s ease-in-out",
+                          transform: "scale(1.3)",
+                          ":hover": {
+                            transform: "scale(1)",
+                          },
+                        }}
+                      />
+                    </Stack>
+                  )}
+                  {card.iconName && (
+                    <Stack
+                      sx={{
+                        borderRadius: "9px",
+                        backgroundColor: iconColors[index].bgColor,
+                        width: "54px",
+                        height: "54px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        margin: "40px 30px 0px 30px",
+                        border: `1px solid ${iconColors[index].borderColor ?? "transparent"}`,
+                        boxShadow: "2px 2px 10px rgba(0, 0, 0, 0.2)",
+                      }}
+                    >
+                      <DynamicIcon
+                        name={card.iconName}
+                        size={24}
+                        color={iconColors[index].iconColor}
+                      />
+                    </Stack>
+                  )}
 
                   <Typography
                     variant="body1"
                     component={"h3"}
                     sx={{
                       marginTop: "12px",
-                      marginBottom: "8px",
                       fontSize: "20px",
                       fontWeight: 400,
+                      padding: "0 30px",
                     }}
                   >
                     {card.title}
                   </Typography>
                 </Stack>
-                <Typography variant="body2" sx={{ color: "#fff", opacity: 0.7 }}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#fff", opacity: 0.7, padding: "0 30px 40px 30px" }}
+                >
                   {card.description}
                 </Typography>
               </Stack>

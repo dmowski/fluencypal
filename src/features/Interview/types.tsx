@@ -73,6 +73,7 @@ export interface FirstScreenSection {
   type: "firstScreen";
   title: string;
   subTitle: string;
+  bgImageUrl?: string;
   label: string;
   buttonTitle: string;
 }

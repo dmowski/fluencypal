@@ -48,6 +48,7 @@ export async function InterviewLanding({
                   label={section.label}
                   buttonTitle={section.buttonTitle}
                   buttonHref={quizLink}
+                  bgImageUrl={section.bgImageUrl}
                 />
               );
             }

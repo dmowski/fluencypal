@@ -5,6 +5,7 @@ import { MoveRight } from "lucide-react";
 export interface MainTitleSectionProps {
   label: string;
   title: string;
+  bgImageUrl?: string;
   subTitle: string;
   buttonHref: string;
   buttonTitle: string;
@@ -22,8 +23,27 @@ export const MainTitleSection = (props: MainTitleSectionProps) => {
         "@media (max-width: 600px)": {
           paddingTop: "100px",
         },
+        width: "100%",
+        position: "relative",
       }}
     >
+      {props.bgImageUrl && (
+        <Stack
+          component="img"
+          src={props.bgImageUrl}
+          alt="Background"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: -1,
+            opacity: 0.9,
+          }}
+        />
+      )}
       <Stack
         sx={{
           maxWidth: "1300px",
