@@ -81,20 +81,22 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
         )}
 
         {stepType === "options" && quiz.currentStep && (
-          <InfoStep
-            title={quiz.currentStep.title}
-            subTitle={quiz.currentStep.subTitle || ""}
-            actionButtonTitle={quiz.currentStep.buttonTitle || i18n._("Next")}
-            width={width}
-            disabled={quiz.survey?.answers[quiz.currentStep.id] ? false : true}
-            onClick={() => quiz.nextStep()}
-            options={quiz.currentStep.options}
-            multipleSelection={quiz.currentStep.multipleSelection}
-            selectedOptions={quiz.getSelectedOptionsForStep(quiz.currentStep.id)}
-            onSelectOptionsChange={(selectedOptions) =>
-              quiz.updateSelectedOptionsForStep(quiz.currentStep?.id || "", selectedOptions)
-            }
-          />
+          <InterviewAuthWall width={width}>
+            <InfoStep
+              title={quiz.currentStep.title}
+              subTitle={quiz.currentStep.subTitle || ""}
+              actionButtonTitle={quiz.currentStep.buttonTitle || i18n._("Next")}
+              width={width}
+              disabled={quiz.survey?.answers[quiz.currentStep.id] ? false : true}
+              onClick={() => quiz.nextStep()}
+              options={quiz.currentStep.options}
+              multipleSelection={quiz.currentStep.multipleSelection}
+              selectedOptions={quiz.getSelectedOptionsForStep(quiz.currentStep.id)}
+              onSelectOptionsChange={(selectedOptions) =>
+                quiz.updateSelectedOptionsForStep(quiz.currentStep?.id || "", selectedOptions)
+              }
+            />
+          </InterviewAuthWall>
         )}
 
         {stepType === "record-audio" && quiz.currentStep && (
