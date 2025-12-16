@@ -1,3 +1,4 @@
+import { GoalPlan } from "../Plan/types";
 import { InfoCard } from "./Landing/components/InfoCards";
 import { Price } from "./Landing/components/PriceCards";
 import { Review } from "./Landing/components/ReviewCards";
@@ -208,7 +209,7 @@ export interface AnalyzeInputsQuizStep {
 
   // Should return Markdown or JSON content
   aiSystemPrompt: string;
-  aiResponseFormat: "markdown" | "json-scope";
+  aiResponseFormat: "markdown" | "json-scope" | "practice-plan";
 }
 
 /**
@@ -295,6 +296,7 @@ export interface InterviewQuizResults {
   inputHash: string;
   markdownFeedback: string;
   jsonScoreFeedback: ScorePreview | null;
+  practicePlan: GoalPlan | null;
 }
 
 export type QuizAnswers = Record<string, InterviewQuizAnswer | undefined>;

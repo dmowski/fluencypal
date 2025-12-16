@@ -22,6 +22,10 @@ import { useTextAi } from "@/features/Ai/useTextAi";
 import { MODELS } from "@/common/ai";
 import { useAnalytics } from "@/features/Analytics/useAnalytics";
 import { ScorePreview } from "@/features/Interview/Landing/components/ScorePreviewSection";
+import { GoalPlan } from "@/features/Plan/types";
+import { usePlan } from "@/features/Plan/usePlan";
+import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
+import { ChatMessage } from "@/common/conversation";
 
 export function useProvideInterviewQuizContext({
   coreData,
@@ -33,6 +37,8 @@ export function useProvideInterviewQuizContext({
   const mainPageUrl = getUrlStart(lang) + `interview/${interviewId}`;
   const path: QuizStep[] = quiz.steps.map((step) => step.id);
   const ai = useTextAi();
+  const plan = usePlan();
+  const userInfo = useAiUserInfo();
   const analytics = useAnalytics();
   const [isConfirmedGTag, setIsConfirmedGTag] = useState(false);
 
@@ -133,9 +139,8 @@ export function useProvideInterviewQuizContext({
       })
       .join("\n\n");
 
-    const questionHash = getHash(combinedAnswers + step.aiSystemPrompt);
-
-    const isAlreadyAnswered = questionHash === results[step.id]?.inputHash;
+    const inputDataHash = getHash(combinedAnswers + step.aiSystemPrompt);
+    const isAlreadyAnswered = inputDataHash === results[step.id]?.inputHash;
     if (isAlreadyAnswered) {
       setIsAnalyzingInputs((prev) => ({ ...prev, [stepId]: false }));
       setIsAnalyzingInputsError((prev) => ({ ...prev, [stepId]: "" }));
@@ -150,6 +155,7 @@ export function useProvideInterviewQuizContext({
       const outputFormat = step.aiResponseFormat;
       let markdownFeedback = "";
       let jsonScoreFeedback: ScorePreview | null = null;
+      let practicePlan: GoalPlan | null = null;
       if (outputFormat === "markdown") {
         const response = await ai.generate({
           systemMessage,
@@ -157,7 +163,8 @@ export function useProvideInterviewQuizContext({
           model: MODELS.gpt_4o,
         });
         markdownFeedback = response.trim();
-      } else {
+      }
+      if (outputFormat === "json-scope") {
         const response = await ai.generateJson<ScorePreview>({
           systemMessage,
           userMessage: combinedAnswers,
@@ -167,11 +174,40 @@ export function useProvideInterviewQuizContext({
         jsonScoreFeedback = response || null;
       }
 
+      if (outputFormat === "practice-plan") {
+        const conversationMessages: ChatMessage[] = goodAnswersIds
+          .map((id) => {
+            const questionStep = quiz.steps.find((step) => step.id === id);
+
+            const questionTitle = questionStep ? questionStep.title : "Unknown question";
+            const questionSubTitle = questionStep ? questionStep.subTitle : "";
+
+            const question = `${questionTitle}\n${questionSubTitle}:`;
+            const answer = answers[id]?.answer || "";
+
+            return [
+              { id: "", isBot: true, text: `${question}` },
+              { id: "", isBot: false, text: `${answer}` },
+            ];
+          })
+          .flat();
+
+        const userRecords = await userInfo.extractUserRecords(conversationMessages, lang);
+        const goal = await plan.generateGoal({
+          languageCode: lang,
+          conversationMessages: conversationMessages,
+          userInfo: userRecords,
+          aiSystemMessage: stepSystemMessage,
+        });
+        practicePlan = goal;
+      }
+
       const result: InterviewQuizResults = {
         stepId,
-        inputHash: questionHash,
+        inputHash: inputDataHash,
         markdownFeedback,
         jsonScoreFeedback,
+        practicePlan,
       };
       const oldResults = survey.results || {};
       const updatedSurvey: InterviewQuizSurvey = {

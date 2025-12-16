@@ -6,7 +6,6 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../Firebase/firebaseDb";
 import { GoalPlan, PlanElement, PlanElementMode } from "./types";
 import { useSettings } from "../Settings/useSettings";
-import { deleteCollectionDocs } from "../Firebase/init";
 import { ChatMessage } from "@/common/conversation";
 import { useTextAi } from "../Ai/useTextAi";
 import { useFixJson } from "../Ai/useFixJson";
@@ -18,7 +17,9 @@ interface GenerateGoalProps {
   userInfo: string[];
   languageCode: SupportedLanguage;
   goalQuiz?: GoalQuiz;
+  aiSystemMessage?: string;
 }
+
 interface PlanContextType {
   goals: GoalPlan[];
   loading: boolean;
@@ -89,15 +90,19 @@ ${input.conversationMessages.map((message) => {
 
   const generateElements = async (input: GenerateGoalProps): Promise<PlanElement[]> => {
     const fullLangName = fullEnglishLanguageName[input.languageCode];
-    const systemMessage = `
-You are professional ${fullLangName} Teacher. 
 
-Below is a conversation between a student and a teacher. Based on the student's level and goals, generate a personalized language learning plan that can be completed using our AI-powered language learning app.
+    const systemMessageTop =
+      input.aiSystemMessage ||
+      `You are professional ${fullLangName} Teacher. 
+
+Below is a conversation between a student and a teacher. Based on the student's level and goals, generate a personalized language learning plan that can be completed using our AI-powered language learning app.`;
+
+    const systemMessage = `${systemMessageTop}
 
 The app supports the following activity types:
 * words: Practice vocabulary related to a specific topic
 * play: Role-play conversations (e.g. job interview)
-* rule: Learn and practice grammar or language rules
+* rule: Learn and practice grammar or language rules or concepts
 * conversation: General conversation with AI on a specific topic
 
 Your output must be in valid JSON format with no additional text or explanation. Your response will be parsed using JSON.parse().
@@ -169,12 +174,12 @@ ${input.conversationMessages.map((message) => {
       const elementMode: PlanElementMode = type.includes("conversation")
         ? "conversation"
         : type.includes("words")
-          ? "words"
-          : type.includes("play")
-            ? "play"
-            : type.includes("rule")
-              ? "rule"
-              : "conversation";
+        ? "words"
+        : type.includes("play")
+        ? "play"
+        : type.includes("rule")
+        ? "rule"
+        : "conversation";
 
       const randomId = `${index}_${elementMode}_${Math.random().toString(36).substring(2, 15)}`;
       const details = `${element?.details || ""}`;
