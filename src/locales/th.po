@@ -553,7 +553,7 @@ msgstr "ความคิดเห็นจาก AI เกี่ยวกั�
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:209
 #: src/features/Interview/data/frontend-senior/quizData.ts:129
-#: src/features/Interview/data/frontend-senior/quizData.ts:203
+#: src/features/Interview/data/frontend-senior/quizData.ts:225
 #. js-lingui-explicit-id
 msgid "AI Feedback on Your Answers"
 msgstr "ฟีดแบ็ก AI เกี่ยวกับคำตอบของคุณ"
@@ -708,7 +708,7 @@ msgstr "การวิเคราะห์"
 msgid "Analyzing"
 msgstr "การวิเคราะห์"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:151
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:157
 #. js-lingui-explicit-id
 msgid "Analyzing your inputs..."
 msgstr "กำลังวิเคราะห์ข้อมูลของคุณ..."
@@ -1481,6 +1481,11 @@ msgstr "ทำงานที่ยังไม่เสร็จให้เส
 msgid "Component Libraries"
 msgstr "คลังส่วนประกอบ"
 
+#: src/features/Goal/Quiz/PlanPreview.tsx:28
+#. js-lingui-explicit-id
+msgid "Concept"
+msgstr "แนวคิด"
+
 #: src/features/Interview/data/backend/scorePreviewSection.ts:28
 #. js-lingui-explicit-id
 msgid "Concurrency"
@@ -1607,7 +1612,8 @@ msgstr "ติดต่อ:"
 #: src/features/Interview/data/frontend-senior/quizData.ts:67
 #: src/features/Interview/data/frontend-senior/quizData.ts:131
 #: src/features/Interview/data/frontend-senior/quizData.ts:190
-#: src/features/Interview/data/frontend-senior/quizData.ts:205
+#: src/features/Interview/data/frontend-senior/quizData.ts:199
+#: src/features/Interview/data/frontend-senior/quizData.ts:227
 #: src/features/PayWall/CardValidator.tsx:139
 #: src/features/Plan/PlanCard.tsx:284
 #: src/features/Usage/SubscriptionPaymentModal.tsx:595
@@ -1620,7 +1626,7 @@ msgstr "ต่อไป"
 msgid "Continue conversation"
 msgstr "ดำเนินการสนทนาต่อ"
 
-#: src/features/Interview/data/frontend-senior/quizData.ts:233
+#: src/features/Interview/data/frontend-senior/quizData.ts:255
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -1647,6 +1653,7 @@ msgstr "ทดสอบสัญญา"
 #: src/features/Dashboard/ConversationSelectCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:99
 #: src/features/Goal/Quiz/GoalReview.tsx:39
+#: src/features/Goal/Quiz/PlanPreview.tsx:25
 #: src/features/Landing/PlanLandingBlock.tsx:278
 #. js-lingui-explicit-id
 msgid "Conversation"
@@ -3004,7 +3011,7 @@ msgid "Finally"
 msgstr "ในที่สุด"
 
 #: src/features/Interview/data/backend/quizData.ts:80
-#: src/features/Interview/data/frontend-senior/quizData.ts:236
+#: src/features/Interview/data/frontend-senior/quizData.ts:258
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "เสร็จสิ้น"
@@ -3684,7 +3691,17 @@ msgstr "นี่คือการแก้ไขที่คุณมีใน
 msgid "Here are the words you used the most in your conversations."
 msgstr "นี่คือคำที่คุณใช้มากที่สุดในการสนทนาของคุณ"
 
-#: src/features/Interview/data/frontend-senior/quizData.ts:204
+#: src/features/Interview/data/frontend-senior/quizData.ts:196
+#. js-lingui-explicit-id
+msgid ""
+"Here's a personalized training plan we'll use during your preparation. Step "
+"by step, you'll improve your answers and prepare for next-level results."
+msgstr ""
+"นี่คือแผนการฝึกอบรมที่ปรับแต่งเฉพาะสำหรับคุณ "
+"ซึ่งเราจะใช้ระหว่างเตรียมตัวของคุณ ทีละขั้นตอน "
+"คุณจะพัฒนาคำตอบของคุณและเตรียมพร้อมสำหรับผลลัพธ์ที่ระดับถัดไป"
+
+#: src/features/Interview/data/frontend-senior/quizData.ts:226
 #. js-lingui-explicit-id
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "นี่คือข้อเสนอแนะเฉพาะบุคคลของคุณ เพื่อช่วยให้คุณพัฒนาขึ้น"
@@ -5874,8 +5891,8 @@ msgstr "คำศัพท์ใหม่:"
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:65
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:82
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:99
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:76
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:87
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:79
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:91
 #: src/features/Survey/InfoStep.tsx:197
 #: src/features/Survey/InterviewInfoStep.tsx:107
 #. js-lingui-explicit-id
@@ -5968,7 +5985,7 @@ msgstr ""
 "ใช้เวลาของคุณเพื่อพิจารณาคำตอบของคุณอย่างถี่ถ้วน"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:201
-#: src/features/Interview/data/frontend-senior/quizData.ts:196
+#: src/features/Interview/data/frontend-senior/quizData.ts:218
 #. js-lingui-explicit-id
 msgid "No payment required after trial. You decide when to pay."
 msgstr "ไม่ต้องชำระเงินหลังจากช่วงทดลองใช้ฟรี คุณเป็นผู้ตัดสินใจว่าจะจ่ายเมื่อใด"
@@ -6781,6 +6798,11 @@ msgstr "ข้อมูลเชิงลึกที่แม่นยำแล
 msgid "Preliminary analysis of your answers"
 msgstr "การวิเคราะห์เบื้องต้นของคำตอบของคุณ"
 
+#: src/features/Interview/data/frontend-senior/quizData.ts:195
+#. js-lingui-explicit-id
+msgid "Preparation plan"
+msgstr "แผนการเตรียมตัว"
+
 #: src/features/Interview/data/backend/coreData.ts:12
 #. js-lingui-explicit-id
 msgid ""
@@ -7348,12 +7370,12 @@ msgstr "สถานการณ์ที่เกี่ยวข้อง"
 msgid "Reload page"
 msgstr "โหลดหน้าเว็บใหม่"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:212
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:218
 #. js-lingui-explicit-id
 msgid "Remove my data (delete account)"
 msgstr "ลบข้อมูลของฉัน (ลบบัญชี)"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:211
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:217
 #. js-lingui-explicit-id
 msgid "Removing your data..."
 msgstr "ลบข้อมูลของคุณ..."
@@ -7404,7 +7426,7 @@ msgid "Return"
 msgstr "คืน"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:242
-#: src/features/Interview/data/frontend-senior/quizData.ts:246
+#: src/features/Interview/data/frontend-senior/quizData.ts:268
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "กลับไปที่แดชบอร์ด"
@@ -7421,6 +7443,7 @@ msgstr "โรบอทกำลังคิด"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:100
 #: src/features/Goal/Quiz/GoalReview.tsx:40
+#: src/features/Goal/Quiz/PlanPreview.tsx:26
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:55
 #: src/features/RolePlay/RolePlayBoard.tsx:49
@@ -7958,6 +7981,7 @@ msgstr "ดาว"
 #: src/features/Dashboard/PlanDashboardCards.tsx:261
 #: src/features/Dashboard/PlanDashboardCards.tsx:461
 #: src/features/Goal/Quiz/GoalReview.tsx:154
+#: src/features/Goal/Quiz/PlanPreview.tsx:82
 #: src/features/Interview/data/backend/quizData.ts:22
 #: src/features/Landing/PlanLandingBlock.tsx:558
 #: src/features/Landing/Price/PricePage.tsx:223
@@ -8060,7 +8084,7 @@ msgid "Start Test"
 msgstr "เริ่มทดสอบ"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:203
-#: src/features/Interview/data/frontend-senior/quizData.ts:198
+#: src/features/Interview/data/frontend-senior/quizData.ts:220
 #. js-lingui-explicit-id
 msgid "Start Trial"
 msgstr "เริ่มทดลองใช้"
@@ -8574,7 +8598,7 @@ msgstr ""
 "สำหรับตอนนี้ คุณสามารถกลับไปยังขั้นตอนแรกและฝึกฝนอีกครั้งได้ ฟรีตลอดไป!"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:238
-#: src/features/Interview/data/frontend-senior/quizData.ts:242
+#: src/features/Interview/data/frontend-senior/quizData.ts:264
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. You "
@@ -8886,7 +8910,7 @@ msgid "Unlock full interview preparation"
 msgstr "ปลดล็อกการเตรียมสัมภาษณ์อย่างเต็มรูปแบบ"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:200
-#: src/features/Interview/data/frontend-senior/quizData.ts:195
+#: src/features/Interview/data/frontend-senior/quizData.ts:217
 #. js-lingui-explicit-id
 msgid "Unlock Your Trial and Get Full Feedback"
 msgstr "ปลดล็อกการทดลองใช้งานของคุณและรับความคิดเห็นอย่างเต็มที่"
@@ -9307,7 +9331,7 @@ msgstr "สิ่งที่คุณจะบรรลุ"
 msgid "What's included?"
 msgstr "อะไรบ้างที่รวมอยู่ในนั้น?"
 
-#: src/features/Interview/data/frontend-senior/quizData.ts:232
+#: src/features/Interview/data/frontend-senior/quizData.ts:254
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr ""
@@ -9413,6 +9437,7 @@ msgstr "สถิติคำศัพท์"
 #: src/features/Dashboard/ConversationSelectCard.tsx:172
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
 #: src/features/Goal/Quiz/GoalReview.tsx:41
+#: src/features/Goal/Quiz/PlanPreview.tsx:27
 #: src/features/Landing/PlanLandingBlock.tsx:280
 #: src/features/Usage/UsageStatsCards.tsx:440
 #. js-lingui-explicit-id
@@ -9585,7 +9610,7 @@ msgstr "คุณคือ <0>ผู้นำ</0> ของผู้เล่น
 msgid "You are on the right track!"
 msgstr "คุณกำลังทำอย่างถูกต้อง!"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:219
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:225
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
 msgstr "คุณอยู่ในรายการรอ"
@@ -9676,7 +9701,7 @@ msgid "You will get 3 days of full access for free"
 msgstr "คุณจะได้รับสิทธิ์การเข้าถึงเต็มรูปแบบ 3 วันฟรี"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:237
-#: src/features/Interview/data/frontend-senior/quizData.ts:241
+#: src/features/Interview/data/frontend-senior/quizData.ts:263
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "คุณพร้อมแล้ว!"

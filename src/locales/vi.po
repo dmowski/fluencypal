@@ -554,7 +554,7 @@ msgstr "Phản hồi của AI về cấu trúc và độ sâu"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:209
 #: src/features/Interview/data/frontend-senior/quizData.ts:129
-#: src/features/Interview/data/frontend-senior/quizData.ts:203
+#: src/features/Interview/data/frontend-senior/quizData.ts:225
 #. js-lingui-explicit-id
 msgid "AI Feedback on Your Answers"
 msgstr "Phản hồi AI về Câu Trả Lời của Bạn"
@@ -711,7 +711,7 @@ msgstr "Phân tích"
 msgid "Analyzing"
 msgstr "Phân tích"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:151
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:157
 #. js-lingui-explicit-id
 msgid "Analyzing your inputs..."
 msgstr "Đang phân tích các đầu vào của bạn..."
@@ -1477,6 +1477,11 @@ msgstr "Hoàn thành các nhiệm vụ trước đó trước."
 msgid "Component Libraries"
 msgstr "Thư viện Thành phần"
 
+#: src/features/Goal/Quiz/PlanPreview.tsx:28
+#. js-lingui-explicit-id
+msgid "Concept"
+msgstr "Khái niệm"
+
 #: src/features/Interview/data/backend/scorePreviewSection.ts:28
 #. js-lingui-explicit-id
 msgid "Concurrency"
@@ -1602,7 +1607,8 @@ msgstr "Contacts:"
 #: src/features/Interview/data/frontend-senior/quizData.ts:67
 #: src/features/Interview/data/frontend-senior/quizData.ts:131
 #: src/features/Interview/data/frontend-senior/quizData.ts:190
-#: src/features/Interview/data/frontend-senior/quizData.ts:205
+#: src/features/Interview/data/frontend-senior/quizData.ts:199
+#: src/features/Interview/data/frontend-senior/quizData.ts:227
 #: src/features/PayWall/CardValidator.tsx:139
 #: src/features/Plan/PlanCard.tsx:284
 #: src/features/Usage/SubscriptionPaymentModal.tsx:595
@@ -1615,7 +1621,7 @@ msgstr "Tiếp tục"
 msgid "Continue conversation"
 msgstr "Tiếp tục cuộc trò chuyện"
 
-#: src/features/Interview/data/frontend-senior/quizData.ts:233
+#: src/features/Interview/data/frontend-senior/quizData.ts:255
 #. js-lingui-explicit-id
 msgid ""
 "Continue practicing with more questions, track your progress, and refine "
@@ -1642,6 +1648,7 @@ msgstr "Kiểm Tra Hợp Đồng"
 #: src/features/Dashboard/ConversationSelectCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:99
 #: src/features/Goal/Quiz/GoalReview.tsx:39
+#: src/features/Goal/Quiz/PlanPreview.tsx:25
 #: src/features/Landing/PlanLandingBlock.tsx:278
 #. js-lingui-explicit-id
 msgid "Conversation"
@@ -3010,7 +3017,7 @@ msgid "Finally"
 msgstr "Cuối cùng"
 
 #: src/features/Interview/data/backend/quizData.ts:80
-#: src/features/Interview/data/frontend-senior/quizData.ts:236
+#: src/features/Interview/data/frontend-senior/quizData.ts:258
 #. js-lingui-explicit-id
 msgid "Finish"
 msgstr "Hoàn tất"
@@ -3694,7 +3701,17 @@ msgstr "Đây là những sửa chữa bạn đã có trong cuộc trò chuyện
 msgid "Here are the words you used the most in your conversations."
 msgstr "Đây là những từ bạn sử dụng nhiều nhất trong các cuộc trò chuyện của mình."
 
-#: src/features/Interview/data/frontend-senior/quizData.ts:204
+#: src/features/Interview/data/frontend-senior/quizData.ts:196
+#. js-lingui-explicit-id
+msgid ""
+"Here's a personalized training plan we'll use during your preparation. Step "
+"by step, you'll improve your answers and prepare for next-level results."
+msgstr ""
+"Dưới đây là kế hoạch đào tạo cá nhân hóa mà chúng tôi sẽ sử dụng trong quá "
+"trình chuẩn bị của bạn. Từng bước một, bạn sẽ cải thiện câu trả lời của "
+"mình và chuẩn bị cho kết quả cấp độ tiếp theo."
+
+#: src/features/Interview/data/frontend-senior/quizData.ts:226
 #. js-lingui-explicit-id
 msgid "Here's the rest of your personalized feedback to help you improve."
 msgstr "Dưới đây là phần còn lại của phản hồi cá nhân hóa giúp bạn cải thiện."
@@ -5892,8 +5909,8 @@ msgstr "Từ mới:"
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:65
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:82
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:99
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:76
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:87
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:79
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:91
 #: src/features/Survey/InfoStep.tsx:197
 #: src/features/Survey/InterviewInfoStep.tsx:107
 #. js-lingui-explicit-id
@@ -5986,7 +6003,7 @@ msgstr ""
 "nghĩ kỹ lưỡng về các câu trả lời của bạn."
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:201
-#: src/features/Interview/data/frontend-senior/quizData.ts:196
+#: src/features/Interview/data/frontend-senior/quizData.ts:218
 #. js-lingui-explicit-id
 msgid "No payment required after trial. You decide when to pay."
 msgstr "Không cần thanh toán sau khi thử nghiệm. Bạn quyết định khi nào thanh toán."
@@ -6805,6 +6822,11 @@ msgstr ""
 msgid "Preliminary analysis of your answers"
 msgstr "Phân tích sơ bộ các câu trả lời của bạn"
 
+#: src/features/Interview/data/frontend-senior/quizData.ts:195
+#. js-lingui-explicit-id
+msgid "Preparation plan"
+msgstr "Kế hoạch chuẩn bị"
+
 #: src/features/Interview/data/backend/coreData.ts:12
 #. js-lingui-explicit-id
 msgid ""
@@ -7381,12 +7403,12 @@ msgstr "Cảnh liên quan"
 msgid "Reload page"
 msgstr "Tải lại trang"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:212
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:218
 #. js-lingui-explicit-id
 msgid "Remove my data (delete account)"
 msgstr "Xóa dữ liệu của tôi (xóa tài khoản)"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:211
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:217
 #. js-lingui-explicit-id
 msgid "Removing your data..."
 msgstr "Đang xóa dữ liệu của bạn..."
@@ -7442,7 +7464,7 @@ msgid "Return"
 msgstr "Quay lại"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:242
-#: src/features/Interview/data/frontend-senior/quizData.ts:246
+#: src/features/Interview/data/frontend-senior/quizData.ts:268
 #. js-lingui-explicit-id
 msgid "Return to Dashboard"
 msgstr "Quay trở lại Bảng điều khiển"
@@ -7459,6 +7481,7 @@ msgstr "Robot Đang suy nghĩ"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:100
 #: src/features/Goal/Quiz/GoalReview.tsx:40
+#: src/features/Goal/Quiz/PlanPreview.tsx:26
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:55
 #: src/features/RolePlay/RolePlayBoard.tsx:49
@@ -8001,6 +8024,7 @@ msgstr "Ngôi sao"
 #: src/features/Dashboard/PlanDashboardCards.tsx:261
 #: src/features/Dashboard/PlanDashboardCards.tsx:461
 #: src/features/Goal/Quiz/GoalReview.tsx:154
+#: src/features/Goal/Quiz/PlanPreview.tsx:82
 #: src/features/Interview/data/backend/quizData.ts:22
 #: src/features/Landing/PlanLandingBlock.tsx:558
 #: src/features/Landing/Price/PricePage.tsx:223
@@ -8101,7 +8125,7 @@ msgid "Start Test"
 msgstr "Bắt đầu Kiểm tra"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:203
-#: src/features/Interview/data/frontend-senior/quizData.ts:198
+#: src/features/Interview/data/frontend-senior/quizData.ts:220
 #. js-lingui-explicit-id
 msgid "Start Trial"
 msgstr "Bắt đầu dùng thử"
@@ -8620,7 +8644,7 @@ msgstr ""
 "phí!"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:238
-#: src/features/Interview/data/frontend-senior/quizData.ts:242
+#: src/features/Interview/data/frontend-senior/quizData.ts:264
 #. js-lingui-explicit-id
 msgid ""
 "Thank you for completing the Senior Frontend Developer interview prep. You "
@@ -8931,7 +8955,7 @@ msgid "Unlock full interview preparation"
 msgstr "Mở khóa chuẩn bị phỏng vấn đầy đủ"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:200
-#: src/features/Interview/data/frontend-senior/quizData.ts:195
+#: src/features/Interview/data/frontend-senior/quizData.ts:217
 #. js-lingui-explicit-id
 msgid "Unlock Your Trial and Get Full Feedback"
 msgstr "Mở Khóa Dùng Thử của Bạn và Nhận Phản Hồi Toàn Diện"
@@ -9364,7 +9388,7 @@ msgstr "Bạn sẽ đạt được gì?"
 msgid "What's included?"
 msgstr "Điều gì được bao gồm?"
 
-#: src/features/Interview/data/frontend-senior/quizData.ts:232
+#: src/features/Interview/data/frontend-senior/quizData.ts:254
 #. js-lingui-explicit-id
 msgid "What's Next?"
 msgstr "Điều Gì Tiếp Theo?"
@@ -9463,6 +9487,7 @@ msgstr "Thống kê từ vựng"
 #: src/features/Dashboard/ConversationSelectCard.tsx:172
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
 #: src/features/Goal/Quiz/GoalReview.tsx:41
+#: src/features/Goal/Quiz/PlanPreview.tsx:27
 #: src/features/Landing/PlanLandingBlock.tsx:280
 #: src/features/Usage/UsageStatsCards.tsx:440
 #. js-lingui-explicit-id
@@ -9636,7 +9661,7 @@ msgstr "Bạn là <0>Người dẫn đầu</0> của {playersCount} người ch�
 msgid "You are on the right track!"
 msgstr "Bạn đang đi đúng hướng!"
 
-#: src/features/Interview/quiz/InterviewQuizPage.tsx:219
+#: src/features/Interview/quiz/InterviewQuizPage.tsx:225
 #. js-lingui-explicit-id
 msgid "You are on the waitlist"
 msgstr "Bạn đang ở trong danh sách chờ"
@@ -9727,7 +9752,7 @@ msgid "You will get 3 days of full access for free"
 msgstr "Bạn sẽ nhận được 3 ngày truy cập đầy đủ miễn phí"
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:237
-#: src/features/Interview/data/frontend-senior/quizData.ts:241
+#: src/features/Interview/data/frontend-senior/quizData.ts:263
 #. js-lingui-explicit-id
 msgid "You're All Set!"
 msgstr "Bạn đã sẵn sàng!"
