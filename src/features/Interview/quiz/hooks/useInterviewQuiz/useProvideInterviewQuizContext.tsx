@@ -133,8 +133,6 @@ export function useProvideInterviewQuizContext({
       })
       .join("\n\n");
 
-    console.log("combinedAnswers", combinedAnswers);
-
     const questionHash = getHash(combinedAnswers + step.aiSystemPrompt);
 
     const isAlreadyAnswered = questionHash === results[step.id]?.inputHash;
