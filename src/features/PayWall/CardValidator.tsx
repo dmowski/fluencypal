@@ -51,16 +51,19 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
           return_url: `${window.location.origin + window.location.pathname}`,
         },
       });
-      if (result.error) setErrMsg(result.error.message ?? i18n._("Verification failed"));
+      if (result.error) {
+        setErrMsg(result.error.message ?? i18n._("Verification failed"));
+      }
       console.log("result onSubmit Card Verification", result);
 
       if (result.setupIntent?.status === "succeeded") {
         console.log("Card verification succeeded");
         setIsSuccess(true);
+
+        // If no error -> success path; rely on webhook to flip the flag.
+        // Optionally start a short polling loop here to refresh settings.
+        analytics.confirmGtag();
       }
-      // If no error -> success path; rely on webhook to flip the flag.
-      // Optionally start a short polling loop here to refresh settings.
-      analytics.confirmGtag();
     } finally {
       setSubmitting(false);
     }
