@@ -190,6 +190,28 @@ description should summarize strengths and areas for improvement.
         buttonTitle: i18n._("Continue"),
       },
       {
+        id: "ai-practice-plant",
+        type: "analyze-inputs",
+        title: i18n._("Preparation plan"),
+        subTitle: i18n._(
+          "Here's a personalized training plan we'll use during your preparation. Step by step, you'll improve your answers and prepare for next-level results."
+        ),
+        buttonTitle: i18n._("Continue"),
+        aiSystemPrompt: `
+Your goal is to create a personalized plan for preparing for Senior Frontend Developer interview.
+Always use second-person language ("you", "your").
+
+Below is a conversation between a student (User) and a teacher (AI Interviewer).
+Based on the user's level, generate a personalized practice plan that can be completed using our AI-powered language learning app.
+
+Important: Do not focus on language learning, but rather on interview preparation.
+
+Finish the plan with salary negotiation steps.
+
+`,
+        aiResponseFormat: "practice-plan",
+      },
+      {
         type: "paywall",
         id: "upgrade-step",
         title: i18n._("Unlock Your Trial and Get Full Feedback"),

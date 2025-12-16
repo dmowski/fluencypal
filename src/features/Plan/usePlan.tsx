@@ -102,7 +102,7 @@ Below is a conversation between a student and a teacher. Based on the student's 
 The app supports the following activity types:
 * words: Practice vocabulary related to a specific topic
 * play: Role-play conversations (e.g. job interview)
-* rule: Learn and practice grammar or language rules or concepts
+* rule: Learn and practice grammar or concepts
 * conversation: General conversation with AI on a specific topic
 
 Your output must be in valid JSON format with no additional text or explanation. Your response will be parsed using JSON.parse().
