@@ -2,7 +2,7 @@ import { InterviewCoreData } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
-export const getCsharpBackendDeveloperCoreData = (lang: SupportedLanguage): InterviewCoreData => {
+export const getCoreData = (lang: SupportedLanguage): InterviewCoreData => {
   const i18n = getI18nInstance(lang);
 
   return {

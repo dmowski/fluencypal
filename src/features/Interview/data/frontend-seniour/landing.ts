@@ -13,11 +13,11 @@ import { getExampleQuestionsSection } from "./exampleQuestionsSection";
 import { getTechStackSection } from "./techStackSection";
 import { getWhoIsThisForSection } from "./whoIsThisForSection";
 import { getDemoSnippetSection } from "./demoSnippetSection";
-import { getSeniorFrontendDeveloperCoreData } from "./coreData";
+import { getCoreData } from "./coreData";
 
 export default function getLandingData(lang: SupportedLanguage): InterviewData {
   return {
-    coreData: getSeniorFrontendDeveloperCoreData(lang),
+    coreData: getCoreData(lang),
     sections: [
       getFirstScreenSection(lang),
       getInfoCardsSection(lang),

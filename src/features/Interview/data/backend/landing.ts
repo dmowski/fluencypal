@@ -1,6 +1,6 @@
 import { InterviewData } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
-import { getCsharpBackendDeveloperCoreData } from "./coreData";
+import { getCoreData } from "./coreData";
 import { getBackendFirstScreenSection } from "./firstScreenSection";
 import { getBackendPriceSection } from "./priceSection";
 import { getBackendFaqSection } from "./faqSection";
@@ -15,9 +15,9 @@ import { getBackendWhoIsThisForSection } from "./whoIsThisForSection";
 import { getBackendDemoSnippetSection } from "./demoSnippetSection";
 import { getCsharpBackendDeveloperQuizData } from "./quizData";
 
-export const getCsharpBackendDeveloperData = (lang: SupportedLanguage): InterviewData => {
+export default function getLanding(lang: SupportedLanguage): InterviewData {
   return {
-    coreData: getCsharpBackendDeveloperCoreData(lang),
+    coreData: getCoreData(lang),
     sections: [
       getBackendFirstScreenSection(lang),
       getBackendInfoCardsSection(lang),
@@ -34,4 +34,4 @@ export const getCsharpBackendDeveloperData = (lang: SupportedLanguage): Intervie
     ],
     quiz: getCsharpBackendDeveloperQuizData(lang),
   };
-};
+}
