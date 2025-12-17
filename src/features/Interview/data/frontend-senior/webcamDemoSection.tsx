@@ -7,26 +7,26 @@ export const getWebcamDemoSection = (lang: SupportedLanguage): WebcamDemoSection
 
   return {
     type: "webcamDemo",
-    title: i18n._("Prepare answers ahead of time"),
+    title: i18n._("Practice Senior Interview Answers Before It Matters"),
     subTitle: i18n._(
-      "Get instant feedback on clarity, confidence, and content to refine your responses before the big day."
+      "Get instant AI feedback on structure, clarity, and senior-level reasoning — before the real interview."
     ),
     content: i18n._(
-      "Simulate real interview conditions by practicing with our app. Build confidence and improve your communication skills in a low-stakes environment."
+      "Simulate real senior frontend interviews and practice explaining your decisions under pressure — without risking a real offer."
     ),
     infoList: [
       {
-        title: i18n._("Practice speaking clearly and confidently"),
+        title: i18n._("Explain trade-offs like a senior"),
         iconName: "mic",
         iconColor: "#c2c2c2",
       },
       {
-        title: i18n._("Receive AI feedback on your answers"),
+        title: i18n._("Get clear, actionable AI feedback"),
         iconName: "message-circle",
         iconColor: "#c2c2c2",
       },
       {
-        title: i18n._("Improve your communication skills"),
+        title: i18n._("Communicate experience with confidence"),
         iconName: "chart-bar",
         iconColor: "#c2c2c2",
       },
@@ -42,6 +42,6 @@ export const getWebcamDemoSection = (lang: SupportedLanguage): WebcamDemoSection
       afterSectionTitle: i18n._("System Design"),
       afterSectionSubTitle: i18n._("Next"),
     },
-    buttonTitle: i18n._("Join the mock interview"),
+    buttonTitle: i18n._("Start a mock interview"),
   };
 };
