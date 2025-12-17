@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import { H2, SubTitle } from "./Typography";
 import { IconName, DynamicIcon } from "lucide-react/dynamic";
+import { Theme, themeMap } from "./theme";
 
 export interface StepInfoCard {
   iconName: IconName;
@@ -9,11 +10,12 @@ export interface StepInfoCard {
   description: string;
 }
 
-export interface InfoCardsProps {
+export interface StepsCardsProps {
   id: string;
   title: string;
   subTitle: string;
   cards: StepInfoCard[];
+  theme: Theme;
 }
 
 interface IconColor {
@@ -46,13 +48,16 @@ const iconColors: IconColor[] = [
 ];
 
 /** Interview Landing Step Info Cards */
-export const StepInfoCards = (props: InfoCardsProps) => {
+export const StepInfoCards = (props: StepsCardsProps) => {
+  const colors = themeMap[props.theme];
+
   return (
     <Stack
       id={props.id}
       sx={{
         padding: "150px 0",
-        backgroundColor: "rgba(0, 0, 0, 0.2)",
+        backgroundColor: colors.sectionBgColor,
+        color: colors.textColor,
         alignItems: "center",
         width: "100%",
         "@media (max-width: 600px)": {

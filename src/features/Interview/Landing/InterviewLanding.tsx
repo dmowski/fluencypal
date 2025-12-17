@@ -39,7 +39,13 @@ export async function InterviewLanding({
         <InterviewAnalytics />
         <Stack sx={{ alignItems: "center", gap: "0" }}>
           {interviewData.sections.map((section, index) => {
-            const themeOrder: Theme[] = ["dark-blue", "dark-red", "dark-blue", "light"];
+            const themeOrder: Theme[] = [
+              "dark-blue",
+              "dark-red",
+              "dark-blue",
+              "dark-red",
+              "dark-blue",
+            ];
             const theme = themeOrder[index % themeOrder.length];
 
             // 1th
@@ -94,6 +100,7 @@ export async function InterviewLanding({
             if (section.type === "stepInfoCard") {
               return (
                 <StepInfoCards
+                  theme={theme}
                   key={index}
                   id="steps"
                   title={section.title}
