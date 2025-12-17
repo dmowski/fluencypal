@@ -1,6 +1,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { H2, SubTitle } from "./Typography";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
+import { MoveRight } from "lucide-react";
 
 export interface InfoCard {
   iconName?: IconName;
@@ -215,6 +216,7 @@ export const InfoCards = (props: InfoCardsProps) => {
               borderRadius: "48px",
               fontSize: "16px",
             }}
+            endIcon={<MoveRight />}
           >
             {props.buttonTitle}
           </Button>
