@@ -11,9 +11,9 @@ import { getInfoCardsSection } from "./infoCardsSection";
 import { getFirstScreenSection } from "./firstScreenSection";
 import { getExampleQuestionsSection } from "./exampleQuestionsSection";
 import { getTechStackSection } from "./techStackSection";
-import { getWhoIsThisForSection } from "./whoIsThisForSection";
 import { getDemoSnippetSection } from "./demoSnippetSection";
 import { getCoreData } from "./coreData";
+import { getWhoIsThisForSection } from "../frontend-senior/whoIsThisForSection";
 
 export default function getLandingData(lang: SupportedLanguage): InterviewData {
   return {

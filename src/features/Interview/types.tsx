@@ -110,12 +110,18 @@ export interface TechStackSection {
   techGroups: TechStackGroup[];
 }
 
+export interface TextListItem {
+  title: string;
+  iconName?: IconName;
+  iconColor?: string;
+}
+
 // New: “Who this is for” section
 export interface TextListSection {
   type: "textList";
   title: string;
   subTitle: string;
-  textList: string[];
+  textList: TextListItem[];
   buttonTitle?: string;
 }
 

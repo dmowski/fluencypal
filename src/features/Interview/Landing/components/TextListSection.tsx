@@ -1,12 +1,14 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { CheckCircle2 } from "lucide-react";
 import { H2, SubTitle } from "./Typography";
+import { TextListItem } from "../../types";
+import { DynamicIcon } from "lucide-react/dynamic";
 
 export interface TextListProps {
   id: string;
   title: string;
   subTitle: string;
-  textList: string[];
+  textList: TextListItem[];
   buttonTitle?: string;
   buttonHref?: string;
 }
@@ -61,12 +63,16 @@ export const TextListSection = (props: TextListProps) => {
                 gridTemplateColumns: "max-content 1fr",
               }}
             >
-              <CheckCircle2 size={22} color="#4caf50" style={{}} />
+              <DynamicIcon
+                name={item.iconName || "check-circle-2"}
+                size={22}
+                color={item.iconColor || "#4caf50"}
+              />
               <Typography
                 variant="body1"
                 sx={{ fontSize: "18px", lineHeight: 1.6, opacity: 0.9, paddingTop: "2px" }}
               >
-                {item}
+                {item.title}
               </Typography>
             </Stack>
           ))}

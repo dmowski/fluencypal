@@ -9,10 +9,10 @@ import { getScorePreviewSection } from "../frontend-senior-simple/scorePreviewSe
 import { getCallToActionSection } from "../frontend-senior-simple/callToActionSection";
 import { getExampleQuestionsSection } from "../frontend-senior-simple/exampleQuestionsSection";
 import { getTechStackSection } from "../frontend-senior-simple/techStackSection";
-import { getWhoIsThisForSection } from "../frontend-senior-simple/whoIsThisForSection";
 import { getDemoSnippetSection } from "../frontend-senior-simple/demoSnippetSection";
 import { getCoreData } from "../frontend-senior-simple/coreData";
 import { getI18nInstance } from "@/appRouterI18n";
+import { getWhoIsThisForSection } from "../frontend-senior/whoIsThisForSection";
 
 export const getInfoCardsSection = (lang: SupportedLanguage): InfoCardsSection => {
   const i18n = getI18nInstance(lang);
