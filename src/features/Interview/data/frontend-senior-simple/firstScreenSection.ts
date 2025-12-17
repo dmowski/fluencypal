@@ -7,9 +7,9 @@ export const getFirstScreenSection = (lang: SupportedLanguage): FirstScreenSecti
 
   return {
     type: "firstScreen",
-    title: i18n._("Ace your Senior Frontend Developer interview"),
+    title: i18n._("Mock Frontend Interviews with AI to Get Senior-Level Offers"),
     subTitle: i18n._(
-      "Practice real senior-level frontend interview questions — system design, leadership, and advanced React. Get your personalized interview action plan."
+      "Practice real senior frontend interviews, fix critical gaps, and walk into interviews confident and prepared."
     ),
     label: i18n._("Senior Frontend Developer"),
     buttonTitle: i18n._("Start Your Interview Test"),
