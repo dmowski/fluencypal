@@ -11,7 +11,7 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         type: "info",
         id: "intro-step",
         //imageUrl: "https://miro.medium.com/v2/resize:fit:1000/0*3MEWjTpT0sZF-LZM.png",
-        imageAspectRatio: "500/190",
+        // imageAspectRatio: "500/190",
         title: i18n._("Welcome to Your Senior Frontend Developer Interview Prep"),
         subTitle: i18n._(
           "In this session, you'll answer questions designed for senior frontend roles. After responding, you'll receive feedback to help you refine your answers and improve your interview skills."
