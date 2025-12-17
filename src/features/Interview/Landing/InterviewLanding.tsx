@@ -14,7 +14,7 @@ import { Footer } from "./components/Footer";
 import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { ExampleQuestionsSection } from "./components/ExampleQuestionsSection";
 import { TechStackSection } from "./components/TechStackSection";
-import { WhoIsThisForSection } from "./components/WhoIsThisForSection";
+import { TextListSection } from "./components/TextListSection";
 import { DemoSnippetSection } from "./components/DemoSnippetSection";
 import { FaqScript } from "./components/FaqScript";
 import { InterviewAnalytics } from "@/features/Analytics/InterviewAnalytics";
@@ -137,20 +137,20 @@ export async function InterviewLanding({
               );
             }
 
-            // 8th
-            if (section.type === "whoIsThisFor") {
+            if (section.type === "textList") {
               return (
-                <WhoIsThisForSection
-                  id={"who-is-this-for"}
+                <TextListSection
+                  id={"text-list"}
                   key={index}
                   title={section.title}
                   subTitle={section.subTitle}
-                  audienceItems={section.audienceItems}
+                  textList={section.textList}
+                  buttonHref={quizLink}
+                  buttonTitle={section.buttonTitle}
                 />
               );
             }
 
-            // 9th
             if (section.type === "demoSnippet") {
               return (
                 <DemoSnippetSection

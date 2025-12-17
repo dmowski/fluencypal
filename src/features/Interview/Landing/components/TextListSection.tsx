@@ -2,16 +2,16 @@ import { Button, Stack, Typography } from "@mui/material";
 import { CheckCircle2 } from "lucide-react";
 import { H2, SubTitle } from "./Typography";
 
-export interface WhoIsThisForSectionProps {
+export interface TextListProps {
   id: string;
   title: string;
   subTitle: string;
-  audienceItems: string[];
+  textList: string[];
   buttonTitle?: string;
   buttonHref?: string;
 }
 
-export const WhoIsThisForSection = (props: WhoIsThisForSectionProps) => {
+export const TextListSection = (props: TextListProps) => {
   return (
     <Stack
       id={props.id}
@@ -51,7 +51,7 @@ export const WhoIsThisForSection = (props: WhoIsThisForSectionProps) => {
             },
           }}
         >
-          {props.audienceItems.map((item, index) => (
+          {props.textList.map((item, index) => (
             <Stack
               key={index}
               sx={{

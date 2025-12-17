@@ -111,11 +111,12 @@ export interface TechStackSection {
 }
 
 // New: “Who this is for” section
-export interface WhoIsThisForSection {
-  type: "whoIsThisFor";
+export interface TextListSection {
+  type: "textList";
   title: string;
   subTitle: string;
-  audienceItems: string[];
+  textList: string[];
+  buttonTitle?: string;
 }
 
 export interface DemoSnippetItem {
@@ -143,7 +144,7 @@ type Section =
   | FirstScreenSection
   | ExampleQuestionsSection
   | TechStackSection
-  | WhoIsThisForSection
+  | TextListSection
   | DemoSnippetSection;
 
 export interface QuizListItem {

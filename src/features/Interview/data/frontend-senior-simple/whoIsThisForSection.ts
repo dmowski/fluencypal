@@ -1,15 +1,15 @@
-import { WhoIsThisForSection } from "../../types";
+import { TextListSection } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 
-export const getWhoIsThisForSection = (lang: SupportedLanguage): WhoIsThisForSection => {
+export const getWhoIsThisForSection = (lang: SupportedLanguage): TextListSection => {
   const i18n = getI18nInstance(lang);
 
   return {
-    type: "whoIsThisFor",
+    type: "textList",
     title: i18n._("Who this is for"),
     subTitle: i18n._("Designed specifically for experienced frontend engineers"),
-    audienceItems: [
+    textList: [
       i18n._("Senior Frontend Developers preparing for promotions or new roles"),
       i18n._("Frontend engineers interviewing for Senior, Lead, or Staff positions"),
       i18n._("React, Vue, or Angular specialists facing architecture and system design rounds"),
