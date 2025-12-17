@@ -111,9 +111,8 @@ export const InfoCards = (props: InfoCardsProps) => {
                   borderRadius: "12px",
                   boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.01)",
                   backgroundColor: "rgba(255, 255, 255, 0.03)",
-
                   "@media (max-width: 600px)": {
-                    padding: "30px 20px 30px 20px",
+                    gap: "5px",
                   },
                 }}
               >
@@ -178,6 +177,9 @@ export const InfoCards = (props: InfoCardsProps) => {
                       fontSize: "20px",
                       fontWeight: 400,
                       padding: "0 30px",
+                      "@media (max-width: 600px)": {
+                        padding: "0 10px",
+                      },
                     }}
                   >
                     {card.title}
@@ -185,7 +187,14 @@ export const InfoCards = (props: InfoCardsProps) => {
                 </Stack>
                 <Typography
                   variant="body2"
-                  sx={{ color: "#fff", opacity: 0.7, padding: "0 30px 40px 30px" }}
+                  sx={{
+                    color: "#fff",
+                    opacity: 0.7,
+                    padding: "0 30px 40px 30px",
+                    "@media (max-width: 600px)": {
+                      padding: "0 10px 30px 10px",
+                    },
+                  }}
                 >
                   {card.description}
                 </Typography>
