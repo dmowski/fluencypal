@@ -5,6 +5,7 @@ import { TextListItem } from "../../types";
 import { DynamicIcon } from "lucide-react/dynamic";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { red } from "@mui/material/colors";
+import { Theme, themeMap } from "./theme";
 
 export interface TextListProps {
   id: string;
@@ -13,9 +14,12 @@ export interface TextListProps {
   textList: TextListItem[];
   buttonTitle?: string;
   buttonHref?: string;
+  theme: Theme;
 }
 
 export const TextListSection = (props: TextListProps) => {
+  const colors = themeMap[props.theme];
+
   return (
     <Stack
       id={props.id}
@@ -23,6 +27,8 @@ export const TextListSection = (props: TextListProps) => {
         padding: "150px 0",
         alignItems: "center",
         width: "100%",
+        backgroundColor: colors.sectionBgColor,
+        color: colors.textColor,
 
         "@media (max-width: 600px)": {
           padding: "90px 0 50px 0",

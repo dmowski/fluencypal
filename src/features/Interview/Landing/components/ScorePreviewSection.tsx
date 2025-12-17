@@ -1,5 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { BadgeCheck } from "lucide-react";
+import { Theme, themeMap } from "./theme";
 
 export interface ScoreMetric {
   title: string;
@@ -21,6 +22,7 @@ export interface ScorePreviewSectionProps {
   buttonTitle: string;
   buttonHref: string;
   scorePreview: ScorePreview;
+  theme: Theme;
 }
 
 const scoreColors: string[] = ["#EF4444", "#F59E0B", "#10B981", "#3B82F6", "#8B5CF6"];
@@ -31,6 +33,7 @@ export const ScorePreviewCard = ({ scorePreview }: { scorePreview: ScorePreview 
       sx={{
         alignItems: "center",
         justifyContent: "center",
+        color: "#fff",
       }}
     >
       <Stack
@@ -104,6 +107,7 @@ export const ScorePreviewCard = ({ scorePreview }: { scorePreview: ScorePreview 
             sx={{
               fontWeight: 600,
               fontSize: "48px",
+              color: "#fff",
             }}
           >
             {scorePreview.totalScore}%
@@ -163,6 +167,7 @@ export const ScorePreviewCard = ({ scorePreview }: { scorePreview: ScorePreview 
 };
 
 export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
+  const colors = themeMap[props.theme];
   return (
     <Stack
       id={props.id}
@@ -170,6 +175,8 @@ export const ScorePreviewSection = (props: ScorePreviewSectionProps) => {
         padding: "150px 0",
         alignItems: "center",
         width: "100%",
+        backgroundColor: colors.sectionBgColor,
+        color: colors.textColor,
         "@media (max-width: 600px)": {
           padding: "90px 0 50px 0",
         },

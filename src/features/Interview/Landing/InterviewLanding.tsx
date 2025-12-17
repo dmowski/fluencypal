@@ -18,6 +18,7 @@ import { TextListSection } from "./components/TextListSection";
 import { DemoSnippetSection } from "./components/DemoSnippetSection";
 import { FaqScript } from "./components/FaqScript";
 import { InterviewAnalytics } from "@/features/Analytics/InterviewAnalytics";
+import { Theme } from "./components/theme";
 
 export async function InterviewLanding({
   lang,
@@ -38,6 +39,9 @@ export async function InterviewLanding({
         <InterviewAnalytics />
         <Stack sx={{ alignItems: "center", gap: "0" }}>
           {interviewData.sections.map((section, index) => {
+            const themeOrder: Theme[] = ["dark-blue", "dark-red", "dark-blue", "light"];
+            const theme = themeOrder[index % themeOrder.length];
+
             // 1th
             if (section.type === "firstScreen") {
               return (
@@ -58,6 +62,7 @@ export async function InterviewLanding({
               return (
                 <InfoCards
                   key={index}
+                  theme={theme}
                   id="results"
                   title={section.title}
                   subTitle={section.subTitle}
@@ -73,6 +78,7 @@ export async function InterviewLanding({
               return (
                 <ScorePreviewSection
                   key={index}
+                  theme={theme}
                   id="score-preview"
                   title={section.title}
                   subTitle={section.subTitle}
@@ -147,6 +153,7 @@ export async function InterviewLanding({
                   textList={section.textList}
                   buttonHref={quizLink}
                   buttonTitle={section.buttonTitle}
+                  theme={theme}
                 />
               );
             }
