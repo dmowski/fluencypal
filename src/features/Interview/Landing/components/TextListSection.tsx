@@ -3,6 +3,8 @@ import { CheckCircle2 } from "lucide-react";
 import { H2, SubTitle } from "./Typography";
 import { TextListItem } from "../../types";
 import { DynamicIcon } from "lucide-react/dynamic";
+import { Markdown } from "@/features/uiKit/Markdown/Markdown";
+import { red } from "@mui/material/colors";
 
 export interface TextListProps {
   id: string;
@@ -69,10 +71,22 @@ export const TextListSection = (props: TextListProps) => {
                 color={item.iconColor || "#4caf50"}
               />
               <Typography
+                component={"div"}
                 variant="body1"
-                sx={{ fontSize: "18px", lineHeight: 1.6, opacity: 0.9, paddingTop: "2px" }}
+                sx={{
+                  fontSize: "18px",
+                  lineHeight: 1.6,
+
+                  paddingTop: "2px",
+                  fontWeight: 400,
+                  color: "rgba(255, 255, 255, 0.8)",
+                  strong: {
+                    color: "rgba(255, 255, 255, 1)",
+                    fontWeight: 750,
+                  },
+                }}
               >
-                {item.title}
+                <Markdown>{item.title}</Markdown>
               </Typography>
             </Stack>
           ))}

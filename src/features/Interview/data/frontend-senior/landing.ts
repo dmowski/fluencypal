@@ -14,12 +14,14 @@ import { getTechStackSection } from "./techStackSection";
 import { getWhoIsThisForSection } from "./whoIsThisForSection";
 import { getDemoSnippetSection } from "./demoSnippetSection";
 import { getCoreData } from "./coreData";
+import { getPainSection } from "./painSection";
 
 export default function getLandingData(lang: SupportedLanguage): InterviewData {
   return {
     coreData: getCoreData(lang),
     sections: [
       getFirstScreenSection(lang),
+      getPainSection(lang),
       getInfoCardsSection(lang),
       getScorePreviewSection(lang),
       getStepInfoSection(lang),
