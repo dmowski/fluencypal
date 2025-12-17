@@ -32,7 +32,7 @@ export const getWebcamDemoSection = (lang: SupportedLanguage): WebcamDemoSection
       },
     ],
     webCamPreview: {
-      videoUrl: "/interview/interviewWebPreview.webm",
+      videoUrl: "/interview/interviewWebPreview2.webm",
       title: i18n._("Tech Interview"),
       participants: i18n._("4 participants"),
 

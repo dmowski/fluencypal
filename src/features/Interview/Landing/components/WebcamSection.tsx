@@ -84,10 +84,12 @@ export const WebcamSection = (props: WebcamSectionProps) => {
                 muted
                 sx={{
                   width: "864px",
+                  aspectRatio: "16/9",
                   maxWidth: "100%",
                   borderRadius: "12px",
                   objectFit: "cover",
                   boxShadow: "0 0 20px rgba(0, 0, 0, 1)",
+                  backgroundColor: "rgba(255, 255, 255, 0.05)",
                   "@media (max-width: 1300px)": {
                     width: "calc(100vw - 420px)",
                   },
