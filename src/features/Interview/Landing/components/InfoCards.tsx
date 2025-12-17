@@ -65,7 +65,7 @@ export const InfoCards = (props: InfoCardsProps) => {
     >
       <Stack
         sx={{
-          maxWidth: "1300px",
+          maxWidth: "1700px",
           width: "100%",
           gap: "15px",
           padding: "0 10px",
@@ -176,7 +176,7 @@ export const InfoCards = (props: InfoCardsProps) => {
                       marginTop: "12px",
                       fontSize: "20px",
                       fontWeight: 400,
-                      padding: "0 30px",
+                      padding: "15px 30px 0 30px",
                       "@media (max-width: 600px)": {
                         padding: "0 10px",
                       },
