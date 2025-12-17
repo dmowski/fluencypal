@@ -29,7 +29,7 @@ export function NotFoundPage({ lang }: { lang: SupportedLanguage }) {
           <p>{i18n._(`Could not find page`)}</p>
           <Button
             variant="contained"
-            href={`${getUrlStart(supportedLang)}/`}
+            href={`${getUrlStart(supportedLang)}`}
             sx={{
               padding: "20px 60px",
             }}
