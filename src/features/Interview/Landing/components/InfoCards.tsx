@@ -109,6 +109,7 @@ export const InfoCards = (props: InfoCardsProps) => {
                   gap: "15px",
                   width: "100%",
                   borderRadius: "12px",
+                  justifyContent: "space-between",
                   boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.01)",
                   backgroundColor: "rgba(255, 255, 255, 0.03)",
                   "@media (max-width: 600px)": {
