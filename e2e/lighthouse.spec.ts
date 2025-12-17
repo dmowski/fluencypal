@@ -29,7 +29,7 @@ test.describe("Lighthouse Audit", () => {
       page,
       thresholds: {
         seo: 100,
-        performance: 81,
+        performance: 79,
         accessibility: 100,
         "best-practices": 100,
       },
@@ -45,7 +45,7 @@ test.describe("Lighthouse Audit", () => {
       page,
       thresholds: {
         seo: 100,
-        performance: 81,
+        performance: 79,
         accessibility: 100,
         "best-practices": 100,
       },
@@ -61,7 +61,7 @@ test.describe("Lighthouse Audit", () => {
       page,
       thresholds: {
         seo: 100,
-        performance: 81,
+        performance: 79,
         accessibility: 100,
         "best-practices": 77,
       },

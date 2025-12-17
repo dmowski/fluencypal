@@ -118,7 +118,9 @@ export const WebcamSection = (props: WebcamSectionProps) => {
                 left: "20px",
               }}
             >
-              <Typography variant="h6">{props.data.webCamPreview.title}</Typography>
+              <Typography variant="h6" component={"span"}>
+                {props.data.webCamPreview.title}
+              </Typography>
               <Stack
                 sx={{
                   flexDirection: "row",
@@ -152,6 +154,7 @@ export const WebcamSection = (props: WebcamSectionProps) => {
               }}
             >
               <IconButton
+                aria-label="Turn microphone"
                 sx={{
                   backgroundColor: true ? "rgba(100, 100, 100, 0.4)" : "rgb(250 222 220)",
                   color: true ? "#fff" : "#222",
@@ -164,6 +167,7 @@ export const WebcamSection = (props: WebcamSectionProps) => {
 
               <IconButton
                 size="large"
+                aria-label="End call"
                 sx={{
                   width: "70px",
                   borderRadius: "30px",
@@ -175,6 +179,7 @@ export const WebcamSection = (props: WebcamSectionProps) => {
               </IconButton>
 
               <IconButton
+                aria-label="Turn camera"
                 sx={{
                   backgroundColor: true ? "rgba(100, 100, 100, 0.4)" : "rgb(250 222 220)",
                   color: true ? "#fff" : "#222",
