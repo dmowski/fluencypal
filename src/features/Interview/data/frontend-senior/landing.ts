@@ -15,6 +15,7 @@ import { getWhoIsThisForSection } from "./whoIsThisForSection";
 import { getDemoSnippetSection } from "./demoSnippetSection";
 import { getCoreData } from "./coreData";
 import { getPainSection } from "./painSection";
+import { getWebcamDemoSection } from "./webcamDemoSection";
 
 export default function getLandingData(lang: SupportedLanguage): InterviewData {
   return {
@@ -22,6 +23,7 @@ export default function getLandingData(lang: SupportedLanguage): InterviewData {
     sections: [
       getFirstScreenSection(lang),
       getPainSection(lang),
+      getWebcamDemoSection(lang),
       getInfoCardsSection(lang),
       getScorePreviewSection(lang),
       getStepInfoSection(lang),

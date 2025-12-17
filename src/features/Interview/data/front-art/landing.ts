@@ -14,6 +14,7 @@ import { getCoreData } from "../frontend-senior-simple/coreData";
 import { getI18nInstance } from "@/appRouterI18n";
 import { getWhoIsThisForSection } from "../frontend-senior/whoIsThisForSection";
 import { getPainSection } from "../frontend-senior/painSection";
+import { getWebcamDemoSection } from "../frontend-senior/webcamDemoSection";
 
 export const getInfoCardsSection = (lang: SupportedLanguage): InfoCardsSection => {
   const i18n = getI18nInstance(lang);
@@ -77,6 +78,7 @@ export default function getLandingData(lang: SupportedLanguage): InterviewData {
     sections: [
       getFirstScreenSection(lang),
       getPainSection(lang),
+      getWebcamDemoSection(lang),
       getInfoCardsSection(lang),
       getScorePreviewSection(lang),
       getStepInfoSection(lang),

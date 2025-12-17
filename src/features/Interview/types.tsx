@@ -1,4 +1,5 @@
 import { GoalPlan } from "../Plan/types";
+import { ColorIconTextListItem } from "../Survey/ColorIconTextList";
 import { InfoCard } from "./Landing/components/InfoCards";
 import { Price } from "./Landing/components/PriceCards";
 import { Review } from "./Landing/components/ReviewCards";
@@ -131,12 +132,37 @@ export interface DemoSnippetItem {
   feedback: string;
 }
 
-// New: Demo snippet (sample feedback)
 export interface DemoSnippetSection {
   type: "demoSnippet";
   title: string;
   subTitle: string;
   demoItems: DemoSnippetItem[];
+}
+
+export interface WebCamPreview {
+  videoUrl: string;
+  title: string;
+  participants: string;
+
+  beforeSectionTitle: string;
+  beforeSectionSubTitle: string;
+
+  afterSectionTitle: string;
+  afterSectionSubTitle: string;
+}
+
+export interface WebcamDemoSection {
+  type: "webcamDemo";
+
+  title: string;
+  subTitle: string;
+
+  content: string;
+  infoList: ColorIconTextListItem[];
+
+  webCamPreview: WebCamPreview;
+
+  buttonTitle: string;
 }
 
 type Section =
@@ -151,7 +177,8 @@ type Section =
   | ExampleQuestionsSection
   | TechStackSection
   | TextListSection
-  | DemoSnippetSection;
+  | DemoSnippetSection
+  | WebcamDemoSection;
 
 export interface QuizListItem {
   title: string;

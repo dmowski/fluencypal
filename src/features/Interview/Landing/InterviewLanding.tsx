@@ -19,6 +19,7 @@ import { DemoSnippetSection } from "./components/DemoSnippetSection";
 import { FaqScript } from "./components/FaqScript";
 import { InterviewAnalytics } from "@/features/Analytics/InterviewAnalytics";
 import { Theme } from "./components/theme";
+import { WebcamSection } from "./components/WebcamSection";
 
 export async function InterviewLanding({
   lang,
@@ -40,6 +41,8 @@ export async function InterviewLanding({
         <Stack sx={{ alignItems: "center", gap: "0" }}>
           {interviewData.sections.map((section, index) => {
             const themeOrder: Theme[] = [
+              "dark-blue",
+              "dark-red",
               "dark-blue",
               "dark-red",
               "dark-blue",
@@ -75,6 +78,18 @@ export async function InterviewLanding({
                   buttonTitle={section.buttonTitle}
                   buttonHref={quizLink}
                   cards={section.infoCards}
+                />
+              );
+            }
+
+            if (section.type === "webcamDemo") {
+              return (
+                <WebcamSection
+                  key={index}
+                  theme={theme}
+                  id="webcam-section"
+                  data={section}
+                  buttonHref={quizLink}
                 />
               );
             }
