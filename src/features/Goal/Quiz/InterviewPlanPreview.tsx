@@ -35,7 +35,18 @@ export const PlanCardPreview = ({
   planElement: PlanElement;
   index: number;
 }) => {
-  const videUrls = ["/interview/interviewWebPreview2.webm", "/interview/interviewWebPreview.webm"];
+  const videUrls = [
+    "/interview/interviewWebPreview2.webm",
+    "/interview/interviewWebPreview.webm",
+    "/interview/camera/7261921-uhd_3840_2160_25fps.webm",
+    "/interview/camera/7706641-uhd_4096_2160_25fps.webm",
+    "/interview/camera/8814086-hd_1920_1080_25fps.webm",
+
+    "/interview/camera/5977502-uhd_3840_2160_25fps.webm",
+    "/interview/camera/854053-hd_1920_1080_25fps.webm",
+    "/interview/camera/2516161-hd_1920_1080_24fps.webm",
+    "/interview/camera/4435751-uhd_3840_2160_25fps.webm",
+  ];
 
   const previewVideoUrl = videUrls[index % videUrls.length];
 
