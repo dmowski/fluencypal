@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { initHotjar } from "./initHotjar";
 import { isDev } from "./isDev";
 import { initGTag } from "./initGTag";
 
@@ -12,9 +11,6 @@ export const InterviewAnalytics = () => {
     if (isDev() || isInitialized.current || !isWindow) {
       return;
     }
-
-    console.log("Init hotjar from client");
-    // initHotjar();
     initGTag();
   }, []);
   return <></>;
