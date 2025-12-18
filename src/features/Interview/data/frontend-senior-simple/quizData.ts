@@ -72,6 +72,33 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
 
       {
         type: "options",
+        id: "job-search-blocker",
+        title: i18n._("Where do you get stuck in the job search?"),
+        subTitle: i18n._("Choose the stage where things usually break down for you."),
+        multipleSelection: false,
+        options: [
+          {
+            label: i18n._("I don’t get responses to my job applications"),
+            subTitle: i18n._("My CV or profile doesn’t lead to interview invitations"),
+          },
+          {
+            label: i18n._("I don’t get invited to the next step after talking to a recruiter"),
+            subTitle: i18n._("Screening calls don’t turn into technical interviews"),
+          },
+          {
+            label: i18n._("I fail technical interviews"),
+            subTitle: i18n._("System design, coding, or frontend fundamentals hold me back"),
+          },
+          {
+            label: i18n._("I struggle to negotiate salary"),
+            subTitle: i18n._("I can’t reach my target compensation or close the offer"),
+          },
+        ],
+        buttonTitle: i18n._("Continue"),
+      },
+
+      {
+        type: "options",
         id: "main-weakness",
         title: i18n._("What usually hurts you most in interviews?"),
         subTitle: i18n._("Pick the closest match."),
@@ -248,6 +275,7 @@ Finish the plan with salary negotiation steps.
         subTitle: "",
         buttonTitle: i18n._("Continue"),
         aiSystemPrompt: `Provide brief feedback on the user's answers in JSON format, focusing on technical depth, clarity, and structure. 
+
 Use this JSON structure for your response:
 {
   label: "Interview Readiness Score",
@@ -264,6 +292,8 @@ Use this JSON structure for your response:
 totalScore should be an overall score out of 100.
 Each score in scoreMetrics should be between 0 and 100.
 description should summarize strengths and areas for improvement.
+
+Return only the JSON, nothing else. Your response will be passed into javascript JSON.parse() function
 `,
         aiResponseFormat: "json-scope",
       },

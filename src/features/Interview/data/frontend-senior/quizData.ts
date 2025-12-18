@@ -1,9 +1,11 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { InterviewQuiz } from "../../types";
 import { getI18nInstance } from "@/appRouterI18n";
+import { getTechData } from "./techData";
 
 export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
   const i18n = getI18nInstance(lang);
+  const techData = getTechData(lang);
 
   return {
     steps: [
@@ -35,6 +37,98 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
           },
         ],
       },
+
+      {
+        type: "options",
+        id: "your-level-step",
+        title: i18n._("What best describes your current level?"),
+        subTitle: i18n._("This helps us calibrate interview expectations."),
+        multipleSelection: false,
+        options: [
+          { label: i18n._("Mid-level Frontend Developer") },
+          { label: i18n._("Senior Frontend Developer") },
+          { label: i18n._("Frontend Lead / Tech Lead") },
+          { label: i18n._("Full-stack with strong frontend focus") },
+        ],
+        buttonTitle: i18n._("Next"),
+      },
+
+      {
+        type: "options",
+        id: "interview-timeline",
+        title: i18n._("When is your next important interview?"),
+        subTitle: i18n._("We’ll adjust preparation intensity."),
+        multipleSelection: false,
+        options: [
+          { label: i18n._("Within 7 days") },
+          { label: i18n._("1–2 weeks") },
+          { label: i18n._("Within a month") },
+          { label: i18n._("Not scheduled yet") },
+        ],
+        buttonTitle: i18n._("See Results"),
+      },
+
+      {
+        type: "options",
+        id: "job-search-blocker",
+        title: i18n._("Where do you get stuck in the job search?"),
+        subTitle: i18n._("Choose the stage where things usually break down for you."),
+        multipleSelection: false,
+        options: [
+          {
+            label: i18n._("I don’t get responses to my job applications"),
+            subTitle: i18n._("My CV or profile doesn’t lead to interview invitations"),
+          },
+          {
+            label: i18n._("I don’t get invited to the next step after talking to a recruiter"),
+            subTitle: i18n._("Screening calls don’t turn into technical interviews"),
+          },
+          {
+            label: i18n._("I fail technical interviews"),
+            subTitle: i18n._("System design, coding, or frontend fundamentals hold me back"),
+          },
+          {
+            label: i18n._("I struggle to negotiate salary"),
+            subTitle: i18n._("I can’t reach my target compensation or close the offer"),
+          },
+        ],
+        buttonTitle: i18n._("Continue"),
+      },
+
+      {
+        type: "options",
+        id: "primary-framework",
+        title: i18n._("Which frontend stack do you mainly work with?"),
+        subTitle: i18n._("Your answers will be evaluated against this stack."),
+        multipleSelection: false,
+        options: [
+          { label: i18n._("React / Next.js"), iconImageUrl: techData["react-nextjs"].logoUrl },
+          { label: i18n._("Vue / Nuxt"), iconImageUrl: techData["vue-pinia"].logoUrl },
+          { label: i18n._("Angular"), iconImageUrl: techData["angular-rxjs"].logoUrl },
+          { label: i18n._("Multiple frameworks"), iconImageUrl: techData.typescript.logoUrl },
+          {
+            label: i18n._("Other / Vanilla JS"),
+            iconImageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+          },
+        ],
+        buttonTitle: i18n._("Next"),
+      },
+
+      {
+        type: "info",
+        id: "mic-access-step",
+        imageUrl:
+          "https://circl.es/wp-content/uploads/2024/02/Screenshot-2024-02-06-at-12.53.38-1-1024x780.png",
+        imageAspectRatio: "1024/780",
+
+        title: i18n._("Microphone Access"),
+        subTitle: i18n._(
+          "In the next step, you'll need to record audio. Please verify your microphone is ready and allow access when asked."
+        ),
+        listItems: [],
+        buttonTitle: i18n._("Continue"),
+      },
+
       {
         type: "info",
         id: "don-t-rush",
@@ -52,20 +146,7 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
           { title: i18n._("Re-record if needed"), iconName: "repeat" },
         ],
       },
-      {
-        type: "info",
-        id: "mic-access-step",
-        imageUrl:
-          "https://circl.es/wp-content/uploads/2024/02/Screenshot-2024-02-06-at-12.53.38-1-1024x780.png",
-        imageAspectRatio: "1024/780",
 
-        title: i18n._("Microphone Access"),
-        subTitle: i18n._(
-          "In the next step, you'll need to record audio. Please verify your microphone is ready and allow access when asked."
-        ),
-        listItems: [],
-        buttonTitle: i18n._("Continue"),
-      },
       {
         type: "record-audio",
         id: "introduce-yourself-step",
@@ -103,26 +184,7 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
           { title: i18n._("Mention scalability and maintainability"), iconName: "expand" },
         ],
       },
-      {
-        type: "record-audio",
-        id: "behavioral-question-step",
-        title: i18n._("Behavioral Question"),
-        subTitle: i18n._(
-          "Describe a time you led a frontend refactor or migration. What challenges did you face and how did you overcome them?"
-        ),
-        buttonTitle: i18n._("Record Answer"),
-        listItems: [
-          {
-            title: i18n._("Use the STAR method (Situation, Task, Action, Result)"),
-            iconName: "star",
-          },
-          {
-            title: i18n._("Highlight your leadership and problem-solving skills"),
-            iconName: "users",
-          },
-          { title: i18n._("Be specific about your role"), iconName: "user-check" },
-        ],
-      },
+
       {
         type: "analyze-inputs",
         id: "ai-feedback-step-1",
@@ -130,6 +192,7 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         subTitle: "",
         buttonTitle: i18n._("Continue"),
         aiSystemPrompt: `Provide brief feedback on the user's answers in JSON format, focusing on technical depth, clarity, and structure. 
+
 Use this JSON structure for your response:
 {
   label: "Interview Readiness Score",
@@ -146,6 +209,8 @@ Use this JSON structure for your response:
 totalScore should be an overall score out of 100.
 Each score in scoreMetrics should be between 0 and 100.
 description should summarize strengths and areas for improvement.
+
+Return only the JSON, nothing else. Your response will be passed into javascript JSON.parse() function. 
 `,
         aiResponseFormat: "json-scope",
       },
