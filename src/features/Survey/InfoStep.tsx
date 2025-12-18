@@ -139,6 +139,7 @@ export const InfoStep = ({
                         flexDirection: "row",
                         gap: "5px",
                         alignItems: "center",
+                        textAlign: "left",
                         borderRadius: "8px",
                         border: isSelected
                           ? "2px solid rgb(96, 165, 250)"
