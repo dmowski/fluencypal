@@ -11,6 +11,14 @@ export async function POST(request: Request) {
   const tgRequest = (await request.json()) as TelegramRequest;
   const message = `${tgRequest.message}`;
   await sentSupportTelegramMessage({ message, userId });
+
+  /*
+  const firebaseUid = "TGm7JVYaFlYOrwQFC5wMojxn3A83";
+  await sentSupportTelegramMessage({
+    message: `✅ Card verified via SetupIntent for user ${firebaseUid}`,
+    userId: firebaseUid,
+  });
+  */
   const answer: TelegramResponse = {
     error: "",
   };
