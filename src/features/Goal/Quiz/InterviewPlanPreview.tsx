@@ -35,7 +35,7 @@ export const PlanCardPreview = ({
   planElement: PlanElement;
   index: number;
 }) => {
-  const videUrls = ["/interview/interviewWebPreview.mp4", "/interview/interviewWebPreview2.mp4"];
+  const videUrls = ["/interview/interviewWebPreview2.webm", "/interview/interviewWebPreview.webm"];
 
   const previewVideoUrl = videUrls[index % videUrls.length];
 
