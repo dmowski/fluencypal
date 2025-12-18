@@ -1,18 +1,10 @@
 "use client";
-import { Stack, Typography } from "@mui/material";
-import { useWindowSizes } from "../../Layout/useWindowSizes";
+import { Stack } from "@mui/material";
 import { useLingui } from "@lingui/react";
-import { ArrowRight } from "lucide-react";
-import { useQuiz } from "./useQuiz";
-import { useState } from "react";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { sleep } from "@/libs/sleep";
+
 import { PlanCard } from "@/features/Plan/PlanCard";
 import { GoalPlan, PlanElementMode } from "@/features/Plan/types";
 import { cardColors, modeCardProps } from "@/features/Plan/data";
-import { useRouter } from "next/navigation";
-import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
-import { FooterButton } from "../../Survey/FooterButton";
 
 interface PlanPreviewProps {
   plan: GoalPlan;
