@@ -253,7 +253,7 @@ export function useProvideInterviewQuizContext({
     if (auth.uid && currentStepType === "paywall") {
       setTimeout(() => {
         analytics.confirmGtag();
-        //console.log("GTag confirmed for interview quiz");
+        console.log("GTag confirmed for interview quiz");
         setIsConfirmedGTag(true);
       }, 1000);
     }
