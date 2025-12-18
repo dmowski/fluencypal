@@ -17,7 +17,7 @@ import { useDeleteAccount } from "@/features/Auth/useDeleteAccount";
 import { ScorePreviewCard } from "../Landing/components/ScorePreviewSection";
 import { InterviewAuthWall } from "@/features/Auth/InterviewAuthWall";
 import { QuizPageLoader } from "./QuizPageLoader";
-import { PlanPreview } from "@/features/Goal/Quiz/PlanPreview";
+import { InterviewPlanPreview } from "@/features/Goal/Quiz/InterviewPlanPreview";
 
 export interface InterviewQuizPageProps {
   lang: SupportedLanguage;
@@ -138,7 +138,7 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
                     <Stack>
                       {markdownFeedback && <Markdown>{markdownFeedback || ""}</Markdown>}
                       {jsonScoreFeedback && <ScorePreviewCard scorePreview={jsonScoreFeedback} />}
-                      {plan && <PlanPreview plan={plan} />}
+                      {plan && <InterviewPlanPreview plan={plan} />}
                     </Stack>
                   )}
 
