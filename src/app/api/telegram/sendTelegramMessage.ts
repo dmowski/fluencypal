@@ -5,16 +5,23 @@ const TELEGRAM_API_KEY = process.env.TELEGRAM_API_KEY || "";
 const TELEGRAM_SUPPORT_CHAT_ID = process.env.TELEGRAM_SUPPORT_CHAT_ID || "";
 
 const sendTelegramMessage = async (message: string, chatId: string): Promise<void> => {
-  const url = new URL(`https://api.telegram.org/bot${TELEGRAM_API_KEY}/sendMessage`);
-  url.searchParams.set("chat_id", chatId);
-  url.searchParams.set("text", message);
-  url.searchParams.set("parse_mode", "Markdown");
+  const url = `https://api.telegram.org/bot${TELEGRAM_API_KEY}/sendMessage`;
 
   try {
     console.log("urlForSend", url);
-    const result = await fetch(url);
+    const result = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message,
+        parse_mode: "Markdown",
+      }),
+    });
     const resultJson = await result.json();
-    const isDebug = false;
+    const isDebug = true;
     if (isDebug) {
       console.log("Telegram response: ", resultJson);
     }
