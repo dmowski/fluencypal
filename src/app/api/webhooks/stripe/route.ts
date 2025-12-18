@@ -40,6 +40,8 @@ export async function POST(request: Request) {
     return new Response(message, { status: 400 });
   }
 
+  const responseData: Record<string, string> = {};
+
   try {
     console.log("event.type", event.type);
     // --- NEW: SetupIntent handling for card verification ---
@@ -47,6 +49,7 @@ export async function POST(request: Request) {
       const si = event.data.object as Stripe.SetupIntent;
       const customerId = si.customer as string | null;
       console.log("customerId setup_intent.succeeded", customerId);
+      responseData.event = event.type;
 
       let firebaseUid: string | undefined;
       if (customerId) {
@@ -56,6 +59,7 @@ export async function POST(request: Request) {
       }
 
       if (firebaseUid) {
+        responseData.start_intent = "marking user as credit card confirmed";
         await markUserAsCreditCardConfirmed(firebaseUid, true);
         sentSupportTelegramMessage({
           message: `✅ Card verified via SetupIntent for user ${firebaseUid}`,
@@ -171,5 +175,5 @@ export async function POST(request: Request) {
     return new Response(message, { status: 400 });
   }
 
-  return Response.json({ received: true });
+  return Response.json({ received: true, ...responseData });
 }
