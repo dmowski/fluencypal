@@ -14,7 +14,7 @@ export const InterviewAnalytics = () => {
     }
 
     console.log("Init hotjar from client");
-    initHotjar();
+    // initHotjar();
     initGTag();
   }, []);
   return <></>;
