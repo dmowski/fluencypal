@@ -61,10 +61,12 @@ export async function POST(request: Request) {
       if (firebaseUid) {
         responseData.start_intent = "marking user as credit card confirmed";
         await markUserAsCreditCardConfirmed(firebaseUid, true);
+        console.log("Marked user as credit card confirmed:", firebaseUid);
         sentSupportTelegramMessage({
           message: `✅ Card verified via SetupIntent for user ${firebaseUid}`,
           userId: firebaseUid,
         });
+        console.log("Sent Telegram message for user:", firebaseUid);
       } else {
         // No uid on customer; nothing to update, but notify so you can investigate.
         sentSupportTelegramMessage({

@@ -15,6 +15,7 @@ const sendTelegramMessage = async (message: string, chatId: string): Promise<voi
   ].join("");
 
   try {
+    console.log("urlForSend", urlForSend);
     const result = await fetch(urlForSend);
 
     const resultJson = await result.json();
