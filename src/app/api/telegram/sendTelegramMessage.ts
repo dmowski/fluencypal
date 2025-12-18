@@ -3,10 +3,9 @@ import { getUserInfo } from "../user/getUserInfo";
 
 const TELEGRAM_API_KEY = process.env.TELEGRAM_API_KEY || "";
 const TELEGRAM_SUPPORT_CHAT_ID = process.env.TELEGRAM_SUPPORT_CHAT_ID || "";
+const url = "https://api.telegram.org/bot" + TELEGRAM_API_KEY + "/sendMessage";
 
 const sendTelegramMessage = async (message: string, chatId: string): Promise<void> => {
-  const url = `https://api.telegram.org/bot${TELEGRAM_API_KEY}/sendMessage`;
-
   try {
     console.log("urlForSend", url);
     const result = await fetch(url, {
@@ -20,13 +19,17 @@ const sendTelegramMessage = async (message: string, chatId: string): Promise<voi
         parse_mode: "Markdown",
       }),
     });
+    console.log("After fetch");
     const resultJson = await result.json();
+    console.log("After parsing JSON");
+
     const isDebug = true;
     if (isDebug) {
       console.log("Telegram response: ", resultJson);
     }
   } catch (error) {
-    console.error("Error sending message to Telegram: ", error);
+    console.error("Error sending message to Telegram: ");
+    console.log(error);
   }
 };
 

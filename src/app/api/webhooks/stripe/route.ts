@@ -62,7 +62,7 @@ export async function POST(request: Request) {
         responseData.start_intent = "marking user as credit card confirmed";
         await markUserAsCreditCardConfirmed(firebaseUid, true);
         console.log("Marked user as credit card confirmed:", firebaseUid);
-        sentSupportTelegramMessage({
+        await sentSupportTelegramMessage({
           message: `✅ Card verified via SetupIntent for user ${firebaseUid}`,
           userId: firebaseUid,
         });
