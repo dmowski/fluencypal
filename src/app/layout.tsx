@@ -9,6 +9,7 @@ import { initLingui } from "@/initLingui";
 import { LinguiClientProvider } from "@/features/Lang/LinguiClientProvider";
 import { allMessages } from "@/appRouterI18n";
 import { UserSourceProvider } from "@/features/Analytics/useUserSource";
+import { InterviewAnalytics } from "@/features/Analytics/InterviewAnalytics";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const oldStandardTT = Old_Standard_TT({
@@ -35,6 +36,7 @@ export default async function RootLayout({
               initialLocale={supportedLang}
               initialMessages={allMessages[supportedLang]!}
             >
+              <InterviewAnalytics />
               {children}
             </LinguiClientProvider>
           </AppRouterCacheProvider>
