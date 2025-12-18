@@ -1,3 +1,5 @@
+"use client";
+
 import { TelegramRequest, TelegramResponse } from "@/common/requests";
 
 export const sendFeedbackMessageRequest = async (message: TelegramRequest, auth: string) => {

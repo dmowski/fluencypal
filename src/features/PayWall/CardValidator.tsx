@@ -26,12 +26,14 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useAnalytics } from "../Analytics/useAnalytics";
 import { InfoStep } from "../Survey/InfoStep";
 import { InterviewQuizButton } from "../Goal/Quiz/InterviewQuizButton";
+import { sendFeedbackMessageRequest } from "@/app/api/telegram/sendFeedbackMessageRequest";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 function SetupForm({ clientSecret }: { clientSecret: string }) {
   const stripe = useStripe();
   const { i18n } = useLingui();
+  const auth = useAuth();
   const elements = useElements();
   const [submitting, setSubmitting] = useState(false);
   const [errMsg, setErrMsg] = useState<string | null>(null);
@@ -62,6 +64,15 @@ function SetupForm({ clientSecret }: { clientSecret: string }) {
         // If no error -> success path; rely on webhook to flip the flag.
         // Optionally start a short polling loop here to refresh settings.
         analytics.confirmGtag();
+
+        await sendFeedbackMessageRequest(
+          {
+            message:
+              "✅ Card verified via SetupIntent in client for user: " +
+              (auth.userInfo?.email || auth.uid),
+          },
+          await auth.getToken()
+        );
       }
     } finally {
       setSubmitting(false);
