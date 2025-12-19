@@ -1,7 +1,7 @@
 import { ExampleQuestionsSection } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
-import { getTechData } from "./techData";
+import { getTechData } from "../frontend-senior/techData";
 
 export const getExampleQuestionsSection = (lang: SupportedLanguage): ExampleQuestionsSection => {
   const i18n = getI18nInstance(lang);
