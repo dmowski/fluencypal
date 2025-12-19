@@ -39,8 +39,6 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
           height: "100dvh",
           maxHeight: "100dvh",
           boxSizing: "border-box",
-
-          "@media (max-width: 600px)": {},
         }}
       >
         {onClose && (
@@ -84,10 +82,10 @@ export const CustomModal = ({ isOpen, onClose, children }: CustomModalProps): JS
                 alignItems: "center",
                 padding: "40px",
                 boxSizing: "border-box",
+                minHeight: `calc(100dvh - ${sizes.topOffset} - ${sizes.bottomOffset} - 0px)`,
                 "@media (max-width: 600px)": {
                   padding: "20px 10px",
                 },
-                minHeight: `calc(100dvh - ${sizes.topOffset} - ${sizes.bottomOffset} - 0px)`,
               }}
             >
               {children}

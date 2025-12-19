@@ -8,7 +8,6 @@ import { useWindowSizes } from "../Layout/useWindowSizes";
 import { PageType } from "./types";
 import { useAppNavigation } from "./useAppNavigation";
 import { useAuth } from "../Auth/useAuth";
-import { useSettings } from "../Settings/useSettings";
 import { useGame } from "../Game/useGame";
 
 export interface IconProps {

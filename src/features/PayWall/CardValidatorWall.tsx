@@ -16,6 +16,7 @@ import { createSetupIntentRequest } from "./createSetupIntentRequest";
 import { VerifyCard } from "./CardValidator";
 import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { ColorIconTextList } from "../Survey/ColorIconTextList";
+import { NavigationBar } from "../Navigation/NavigationBar";
 
 export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -55,7 +56,7 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
 
   if (isCreditCardConfirmed || isLoadingSettings || isTg) return <></>;
   if (usage.isFullAccess && !isNewUser) return <></>;
-  if (activeConversationMessageCount < 3) return <></>;
+  if (activeConversationMessageCount < 2) return <></>;
 
   return (
     <CustomModal isOpen={true}>
@@ -67,11 +68,25 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
       >
         <Stack
           sx={{
+            marginTop: "-40px",
+            width: "100%",
+            "@media (max-width: 700px)": {
+              marginTop: "0px",
+            },
+          }}
+        >
+          <NavigationBar lang={lang} />
+        </Stack>
+        <Stack
+          sx={{
             maxWidth: "720px",
             width: "100%",
             alignItems: "flex-start",
             gap: "30px",
-            padding: "20px 20px",
+            padding: "0px 20px 20px 20px",
+            "@media (max-width: 700px)": {
+              padding: "20px 10px 140px 10px",
+            },
           }}
         >
           {isLoading && <CircularProgress />}
@@ -83,21 +98,35 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
                   gap: "25px",
                 }}
               >
-                {isShowHowToUseForFree ? (
-                  <Stack>
-                    <Typography variant="h3">{i18n._("How to use for free")}</Typography>
-                    <Typography variant="body2">
-                      {i18n._("Simple steps to get the app for free.")}
-                    </Typography>
-                  </Stack>
-                ) : (
-                  <Stack>
-                    <Typography variant="h3">{i18n._("Credit Card Check")}</Typography>
-                    <Typography variant="body2">
-                      {i18n._("Please confirm your credit card to access all features.")}
-                    </Typography>
-                  </Stack>
-                )}
+                <Stack>
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      fontWeight: 700,
+                      "@media (max-width: 700px)": {
+                        fontSize: "30px",
+                      },
+                    }}
+                  >
+                    {isShowHowToUseForFree
+                      ? i18n._("How to use for free")
+                      : i18n._("Credit Card Check")}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      paddingTop: "10px",
+                      "@media (max-width: 700px)": {
+                        fontSize: "14px",
+                      },
+                    }}
+                  >
+                    {isShowHowToUseForFree
+                      ? i18n._("Simple steps to get the app for free.")
+                      : i18n._("Please confirm your credit card to access all features.")}
+                  </Typography>
+                </Stack>
+
                 <Stack>
                   <ColorIconTextList
                     gap="10px"
