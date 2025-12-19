@@ -27,6 +27,7 @@ export interface InterviewQuizContextType {
   survey: InterviewQuizSurvey | null;
   updateSurvey: (surveyDoc: InterviewQuizSurvey, label: string) => Promise<InterviewQuizSurvey>;
   updateAnswerTranscription: (
+    survey: InterviewQuizSurvey,
     stepId: string,
     answerTranscription: string
   ) => Promise<InterviewQuizSurvey>;
@@ -37,6 +38,7 @@ export interface InterviewQuizContextType {
 
   getSelectedOptionsForStep: (stepId: string) => QuizOption[];
   updateSelectedOptionsForStep: (
+    survey: InterviewQuizSurvey,
     stepId: string,
     selectedOptions: QuizOption[]
   ) => Promise<InterviewQuizSurvey>;

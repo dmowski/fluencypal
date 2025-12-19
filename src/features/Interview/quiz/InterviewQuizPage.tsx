@@ -95,9 +95,14 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
               options={quiz.currentStep.options}
               multipleSelection={quiz.currentStep.multipleSelection}
               selectedOptions={quiz.getSelectedOptionsForStep(quiz.currentStep.id)}
-              onSelectOptionsChange={(selectedOptions) =>
-                quiz.updateSelectedOptionsForStep(quiz.currentStep?.id || "", selectedOptions)
-              }
+              onSelectOptionsChange={(selectedOptions) => {
+                if (!quiz.survey) return;
+                quiz.updateSelectedOptionsForStep(
+                  quiz.survey,
+                  quiz.currentStep?.id || "",
+                  selectedOptions
+                );
+              }}
             />
           </InterviewAuthWall>
         )}
@@ -113,7 +118,10 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
               lang={lang}
               nextStep={quiz.nextStep}
               updateTranscript={async (combinedTranscript) => {
+                if (!quiz.survey) return;
+
                 await quiz.updateAnswerTranscription(
+                  quiz.survey,
                   quiz.currentStep?.id || "",
                   combinedTranscript
                 );

@@ -54,22 +54,19 @@ export function useProvideInterviewQuizContext({
   const currentStep = quiz.steps.find((step) => step.id === core.currentStepId) || null;
 
   const updateAnswerTranscription = async (
+    survey: InterviewQuizSurvey,
     stepId: string,
     fullAnswerTranscription: string
   ): Promise<InterviewQuizSurvey> => {
-    if (!data.survey) {
-      throw new Error("Survey data is not loaded");
-    }
-
     const answerData: InterviewQuizAnswer = {
       stepId,
       question: currentStep?.title || "",
       answer: fullAnswerTranscription,
     };
 
-    const oldAnswers = data.survey.answers || {};
+    const oldAnswers = survey.answers || {};
     const updatedSurvey: InterviewQuizSurvey = {
-      ...data.survey,
+      ...survey,
       answers: {
         ...oldAnswers,
         [stepId]: answerData,
@@ -271,13 +268,10 @@ export function useProvideInterviewQuizContext({
   };
 
   const updateSelectedOptionsForStep = async (
+    survey: InterviewQuizSurvey,
     stepId: string,
     selectedOptions: QuizOption[]
   ): Promise<InterviewQuizSurvey> => {
-    if (!data.survey) {
-      throw new Error("Survey data is not loaded");
-    }
-
     const step = quiz.steps.find((s) => s.id === stepId);
     if (!step) {
       throw new Error(`Step with id ${stepId} not found`);
@@ -289,9 +283,9 @@ export function useProvideInterviewQuizContext({
       answer: JSON.stringify(selectedOptions),
     };
 
-    const oldAnswers = data.survey.answers || {};
+    const oldAnswers = survey.answers || {};
     const updatedSurvey: InterviewQuizSurvey = {
-      ...data.survey,
+      ...survey,
       answers: {
         ...oldAnswers,
         [stepId]: answerData,
