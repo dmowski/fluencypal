@@ -17,7 +17,7 @@ export const getTechData = (lang: SupportedLanguage): Record<string, TechItem> =
 
   const angularTech: TechItem = {
     label: i18n._("Angular & RxJS"),
-    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/6/67/Angular_gradient_logo.png",
+    logoUrl: "/interview/Angular_gradient_logo.png",
   };
 
   const typescriptTech: TechItem = {
@@ -82,7 +82,7 @@ export const getTechData = (lang: SupportedLanguage): Record<string, TechItem> =
 
   const wcagTech: TechItem = {
     label: i18n._("WCAG Standards"),
-    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/5/51/W3C.svg",
+    logoUrl: "/interview/W3C.svg",
   };
 
   const semanticHtmlTech: TechItem = {
