@@ -9,7 +9,7 @@ import { useInterviewQuiz } from "./hooks/useInterviewQuiz/useInterviewQuiz";
 import { RecordUserAudio } from "@/features/Goal/Quiz/RecordUserAudio";
 import { MIN_CHARACTERS_FOR_TRANSCRIPT } from "./hooks/useInterviewQuiz/data";
 import { IconTextList } from "@/features/Survey/IconTextList";
-import { CardValidatorQuiz } from "@/features/PayWall/CardValidator";
+import { CardValidatorQuiz } from "@/features/PayWall/CardValidatorQuiz";
 import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { Clock, Trash } from "lucide-react";
