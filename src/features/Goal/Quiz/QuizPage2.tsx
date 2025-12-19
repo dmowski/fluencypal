@@ -13,7 +13,6 @@ import { LanguageToLearnSelector } from "./LanguageToLearnSelector";
 import { InfoStep } from "../../Survey/InfoStep";
 import { NativeLanguageSelector } from "./NativeLanguageSelector";
 import { PageLanguageSelector } from "./PageLanguageSelector";
-import { AboutYourselfList } from "./AboutYourselfList";
 import { RecordUserAudio } from "./RecordUserAudio";
 import { RecordAboutFollowUp } from "./RecordAboutFollowUp";
 import { GoalReview } from "./GoalReview";
@@ -66,7 +65,7 @@ const QuizQuestions = () => {
 
           {currentStep === "before_nativeLanguage" && (
             <InfoStep
-              imageUrl="/avatar/book.webp"
+              //imageUrl="/avatar/book.webp"
               title={i18n._(`What language do you speak`)}
               subTitle={i18n._(`So I can translate words for you`)}
               actionButtonTitle={i18n._(`Set My Language`)}
@@ -96,16 +95,24 @@ const QuizQuestions = () => {
               <InfoStep
                 title={i18n._(`We are ready`)}
                 subTitle={i18n._(`Let's talk. Tell me  about yourself`)}
-                imageUrl="/avatar/owl1.png"
-                subComponent={
-                  <Stack
-                    sx={{
-                      paddingTop: "20px",
-                    }}
-                  >
-                    <AboutYourselfList />
-                  </Stack>
-                }
+                listItems={[
+                  {
+                    title: i18n._("Hobbies or interests"),
+                    iconName: "guitar",
+                  },
+                  {
+                    title: i18n._("Main goal in learning"),
+                    iconName: "graduation-cap",
+                  },
+                  {
+                    title: i18n._("Do you have any travel plans?"),
+                    iconName: "plane",
+                  },
+                  {
+                    title: i18n._("Movies, books, or music"),
+                    iconName: "music",
+                  },
+                ]}
                 onClick={nextStep}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
@@ -129,7 +136,24 @@ const QuizQuestions = () => {
                     </Trans>
                   )
                 }
-                subTitleComponent={<AboutYourselfList />}
+                listItems={[
+                  {
+                    title: i18n._("Main goal in learning"),
+                    iconName: "graduation-cap",
+                  },
+                  {
+                    title: i18n._("Hobbies or interests"),
+                    iconName: "guitar",
+                  },
+                  {
+                    title: i18n._("Do you have any travel plans?"),
+                    iconName: "plane",
+                  },
+                  {
+                    title: i18n._("Movies, books, or music"),
+                    iconName: "music",
+                  },
+                ]}
                 transcript={survey?.aboutUserTranscription || ""}
                 minWords={MIN_WORDS_FOR_ANSWER}
                 lang={languageToLearn || "en"}
@@ -156,7 +180,6 @@ const QuizQuestions = () => {
               <InfoStep
                 title={i18n._(`Wow, that was awesome!`)}
                 subTitle={i18n._(`Let's continue, I have a question for you!`)}
-                imageUrl="/avatar/owl1.png"
                 subComponent={
                   <Stack
                     sx={{
@@ -201,7 +224,6 @@ const QuizQuestions = () => {
               <InfoStep
                 title={i18n._(`Before the training plan...`)}
                 subTitle={i18n._(`Let's talk about your goals a bit more`)}
-                imageUrl="/avatar/owl1.png"
                 subComponent={
                   <Stack
                     sx={{
@@ -246,7 +268,6 @@ const QuizQuestions = () => {
               <InfoStep
                 title={i18n._(`Now, we ready to create your learning plan`)}
                 subTitle={i18n._(`It might take up to a minute`)}
-                imageUrl="/avatar/owl1.png"
                 subComponent={
                   <Stack
                     sx={{
