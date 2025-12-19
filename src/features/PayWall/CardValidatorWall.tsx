@@ -14,6 +14,7 @@ import { SupportedLanguage } from "../Lang/lang";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { createSetupIntentRequest } from "./createSetupIntentRequest";
 import { VerifyCard } from "./CardValidator";
+import { useAiConversation } from "../Conversation/useAiConversation";
 
 export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
@@ -26,6 +27,8 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [isTg, setIsTg] = useState(false);
+  const conversation = useAiConversation();
+  const activeConversationMessageCount = conversation.conversation.length;
 
   useEffect(() => {
     const isTelegramApp = isTMA();
@@ -43,12 +46,13 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
       setIsLoading(false);
     }
   };
-  if (isCreditCardConfirmed || isLoadingSettings || isTg) return <></>;
   const createdAtIso = settings.userSettings?.createdAtIso;
   const daysFromCreation = createdAtIso ? dayjs().diff(dayjs(createdAtIso), "day") : null;
   const isNewUser = !createdAtIso || (daysFromCreation !== null && daysFromCreation < 5);
-  if (usage.isFullAccess && !isNewUser) return <></>;
 
+  if (isCreditCardConfirmed || isLoadingSettings || isTg) return <></>;
+  if (usage.isFullAccess && !isNewUser) return <></>;
+  if (activeConversationMessageCount < 3) return <></>;
   return (
     <CustomModal isOpen={true}>
       <Stack
