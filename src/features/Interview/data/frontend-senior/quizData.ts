@@ -293,6 +293,8 @@ Based on the user's level, generate a personalized practice plan that can be com
 
 Important: Do not focus on language learning, but rather on interview preparation.
 
+Start your plan with interview answers improvement.
+
 Finish the plan with salary negotiation steps.
 
 `,
