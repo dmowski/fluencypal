@@ -42,7 +42,6 @@ export async function InterviewLanding({
             const themeOrder: Theme[] = ["dark-blue", "dark-red"];
             const theme = themeOrder[index % themeOrder.length];
 
-            // 1th
             if (section.type === "firstScreen") {
               return (
                 <MainTitleSection
@@ -57,7 +56,6 @@ export async function InterviewLanding({
               );
             }
 
-            // 2th
             if (section.type === "infoCards") {
               return (
                 <InfoCards
@@ -85,7 +83,6 @@ export async function InterviewLanding({
               );
             }
 
-            // 3th
             if (section.type === "scorePreview") {
               return (
                 <ScorePreviewSection
@@ -102,7 +99,6 @@ export async function InterviewLanding({
               );
             }
 
-            // 4th
             if (section.type === "stepInfoCard") {
               return (
                 <StepInfoCards
@@ -116,7 +112,6 @@ export async function InterviewLanding({
               );
             }
 
-            // 5th
             if (section.type === "review") {
               return (
                 <ReviewCards
@@ -129,7 +124,6 @@ export async function InterviewLanding({
               );
             }
 
-            // 6th
             if (section.type === "exampleQuestions") {
               return (
                 <ExampleQuestionsSection
@@ -142,7 +136,6 @@ export async function InterviewLanding({
               );
             }
 
-            // 7th
             if (section.type === "techStack") {
               return (
                 <TechStackSection
@@ -184,7 +177,6 @@ export async function InterviewLanding({
               );
             }
 
-            // 10th
             if (section.type === "price") {
               return (
                 <PriceCards
@@ -198,7 +190,6 @@ export async function InterviewLanding({
               );
             }
 
-            // 11th
             if (section.type === "faq") {
               return (
                 <div key={index}>
@@ -223,7 +214,6 @@ export async function InterviewLanding({
               );
             }
 
-            // 12th
             if (section.type === "callToAction") {
               return (
                 <CtaBlock
