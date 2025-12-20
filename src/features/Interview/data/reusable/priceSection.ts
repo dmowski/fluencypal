@@ -1,6 +1,7 @@
 import { PriceSection } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
+import { PRICE_PER_MONTH_USD } from "@/common/subscription";
 
 export const getPriceSection = (lang: SupportedLanguage): PriceSection => {
   const i18n = getI18nInstance(lang);
@@ -10,29 +11,11 @@ export const getPriceSection = (lang: SupportedLanguage): PriceSection => {
     title: i18n._("Choose your interview preparation plan"),
     subTitle: i18n._("Everything you need to stand out and get the job"),
     prices: [
-      /*{
-        id: "1-week-sprint",
-        badgeIcon: "⚡",
-        badge: i18n._("In a hurry? Perfect for last-minute interviews"),
-        label: i18n._("1-Week Sprint"),
-        priceUsd: 30,
-        description: i18n._(
-          "Get fast, intensive preparation. Fix your biggest weaknesses in just 7 days."
-        ),
-        points: [
-          i18n._("7 days full access"),
-          i18n._("Daily AI mock interviews"),
-          i18n._("Instant feedback on answers"),
-          i18n._("Personalized scripts for HR and behavioral questions"),
-        ],
-        buttonTitle: i18n._("Start 1-Week Sprint — $30"),
-      },*/
       {
         id: "monthly-plan",
-        badgeIcon: "⭐",
         badge: i18n._("Best for most job seekers"),
         label: i18n._("Monthly Plan"),
-        priceUsd: 9,
+        priceUsd: PRICE_PER_MONTH_USD,
         priceLabel: i18n._("/ month"),
         description: i18n._(
           "Consistent improvement with structured interview coaching and personalized practice."
@@ -49,7 +32,6 @@ export const getPriceSection = (lang: SupportedLanguage): PriceSection => {
       },
       {
         id: "advanced-plan",
-        badgeIcon: "🎯",
         badge: i18n._("For long job searches & career growth"),
         priceValue: i18n._("Custom pricing"),
         label: i18n._("Advanced Plan"),

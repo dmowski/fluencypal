@@ -5,8 +5,7 @@ import { CurrencyToDisplay, PriceDisplay } from "@/features/Landing/Price/PriceD
 
 export interface Price {
   id: string;
-  badge?: string;
-  badgeIcon?: string;
+  badge: string;
   label: string;
   priceValue?: string;
   priceUsd?: number;
