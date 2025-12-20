@@ -1,13 +1,15 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { CircleCheck } from "lucide-react";
 import { H2, SubTitle } from "./Typography";
+import { CurrencyToDisplay, PriceDisplay } from "@/features/Landing/Price/PriceDisplay";
 
 export interface Price {
   id: string;
   badge?: string;
   badgeIcon?: string;
   label: string;
-  priceUsd: number;
+  priceValue?: string;
+  priceUsd?: number;
   priceLabel?: string;
   description: string;
   points: string[];
@@ -136,27 +138,39 @@ export const PriceCards = ({
                     </Typography>
 
                     <Stack direction="row" sx={{ alignItems: "baseline", gap: "8px" }}>
-                      <Typography
-                        variant="h3"
-                        component={"span"}
+                      <Stack
                         sx={{
-                          fontSize: "52px",
-                          fontWeight: 500,
+                          flexDirection: "row",
+                          alignItems: "center",
+                          gap: "8px",
                         }}
                       >
-                        ${price.priceUsd}
-                      </Typography>
-                      {price.priceLabel && (
                         <Typography
-                          variant="body2"
+                          variant="h2"
+                          component={"span"}
                           sx={{
-                            fontSize: "14px",
-                            opacity: 0.7,
+                            fontWeight: 600,
+                            fontSize: "3rem",
                           }}
                         >
-                          {price.priceLabel}
+                          {price.priceUsd && <PriceDisplay amountInUsd={price.priceUsd} />}
+                          {price.priceValue && price.priceValue}
                         </Typography>
-                      )}
+
+                        {price.priceLabel && (
+                          <Stack sx={{}}>
+                            <Typography
+                              variant="caption"
+                              sx={{
+                                textTransform: "uppercase",
+                              }}
+                            >
+                              <CurrencyToDisplay />
+                            </Typography>
+                            <Typography variant="caption">{price.priceLabel}</Typography>
+                          </Stack>
+                        )}
+                      </Stack>
                     </Stack>
 
                     <Typography

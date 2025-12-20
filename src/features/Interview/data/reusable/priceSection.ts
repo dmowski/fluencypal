@@ -33,7 +33,7 @@ export const getPriceSection = (lang: SupportedLanguage): PriceSection => {
         badge: i18n._("Best for most job seekers"),
         label: i18n._("Monthly Plan"),
         priceUsd: 9,
-        priceLabel: i18n._("Only $0.30/day"),
+        priceLabel: i18n._("/ month"),
         description: i18n._(
           "Consistent improvement with structured interview coaching and personalized practice."
         ),
@@ -51,8 +51,8 @@ export const getPriceSection = (lang: SupportedLanguage): PriceSection => {
         id: "advanced-plan",
         badgeIcon: "🎯",
         badge: i18n._("For long job searches & career growth"),
+        priceValue: i18n._("Custom pricing"),
         label: i18n._("Advanced Plan"),
-        priceUsd: 90,
         description: i18n._(
           "For people seeking long-term career growth and comprehensive interview preparation."
         ),
