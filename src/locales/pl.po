@@ -270,12 +270,6 @@ msgstr "pytania na rozmowę kwalifikacyjną .net"
 msgid ".NET specialists facing API, data, and system design rounds"
 msgstr ".NET specjaliści mierzący się z rundami projektowania API, danych i systemów"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:17
-#: src/features/Interview/data/frontend-senior/priceSection.ts:17
-#. js-lingui-explicit-id
-msgid "1-Week Sprint"
-msgstr "1-tygodniowy Sprint"
-
 #: src/features/PayWall/CardValidatorWall.tsx:138
 #. js-lingui-explicit-id
 msgid "1. Confirm your credit card details"
@@ -328,22 +322,10 @@ msgstr "3 minuty dziennie"
 msgid "3. Don't pay anything"
 msgstr "3. Nie płac niczego"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:60
-#: src/features/Interview/data/frontend-senior/priceSection.ts:60
-#. js-lingui-explicit-id
-msgid "4 months full access"
-msgstr "4 miesiące pełny dostęp"
-
 #: src/features/Interview/data/frontend-senior/webcamDemoSection.tsx:37
 #. js-lingui-explicit-id
 msgid "4 participants"
 msgstr "4 uczestników"
-
-#: src/features/Interview/data/backendCSharp/priceSection.ts:54
-#: src/features/Interview/data/frontend-senior/priceSection.ts:54
-#. js-lingui-explicit-id
-msgid "4-Month Plan"
-msgstr "Plan 4-miesięczny"
 
 #: src/features/PayWall/CardValidatorWall.tsx:150
 #. js-lingui-explicit-id
@@ -370,12 +352,6 @@ msgid ""
 msgstr ""
 "6 Sposoby, Dzięki Którym Zapracowani Profesjonaliści Mogą Poprawić Swoją "
 "Płynność Języka Angielskiego na Rozmowy Kwalifikacyjne"
-
-#: src/features/Interview/data/backendCSharp/priceSection.ts:23
-#: src/features/Interview/data/frontend-senior/priceSection.ts:23
-#. js-lingui-explicit-id
-msgid "7 days full access"
-msgstr "7 dni pełnego dostępu"
 
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:66
 #. js-lingui-explicit-id
@@ -513,10 +489,10 @@ msgstr "zaawansowana konwersacja w języku angielskim"
 msgid "Advanced Personalization"
 msgstr "Zaawansowana Personalizacja"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:62
+#: src/features/Interview/data/reusable/priceSection.ts:54
 #. js-lingui-explicit-id
-msgid "Advanced system design drills"
-msgstr "Zadania dotyczące zaawansowanego projektowania systemów"
+msgid "Advanced Plan"
+msgstr "Plan zaawansowany"
 
 #: src/features/SEO/metadata.ts:144
 #. js-lingui-explicit-id
@@ -1010,12 +986,7 @@ msgstr "Korzyści z Gry w Alias"
 msgid "Benefits of Role Play"
 msgstr "Korzyści z gry fabularnej"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:33
-#. js-lingui-explicit-id
-msgid "Best for most engineers"
-msgstr "Najlepsze dla większości inżynierów"
-
-#: src/features/Interview/data/frontend-senior/priceSection.ts:33
+#: src/features/Interview/data/reusable/priceSection.ts:33
 #. js-lingui-explicit-id
 msgid "Best for most job seekers"
 msgstr "Najlepsze dla większości poszukujących pracy"
@@ -1087,15 +1058,6 @@ msgid ""
 msgstr ""
 "Zbuduj pewność, aby rozmawiać o równości, korzyściach i pakietach "
 "wynagrodzeń, które odpowiadają Twojemu doświadczeniu."
-
-#: src/features/Interview/data/backendCSharp/priceSection.ts:37
-#. js-lingui-explicit-id
-msgid ""
-"Build strong, repeatable answers across APIs, databases, concurrency, and "
-"system design."
-msgstr ""
-"Buduj silne, powtarzalne odpowiedzi w zakresie interfejsów API, baz danych, "
-"współbieżności i projektowania systemów."
 
 #: src/features/Interview/data/frontend-senior/techData.tsx:54
 #. js-lingui-explicit-id
@@ -1373,12 +1335,7 @@ msgstr "Wybierz poziomy izolacji, modeluj agregaty i pisz wydajne zapytania."
 msgid "Choose Site Language"
 msgstr "Wybierz Język Strony"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:10
-#. js-lingui-explicit-id
-msgid "Choose your backend prep plan"
-msgstr "Wybierz swój plan przygotowania zaplecza"
-
-#: src/features/Interview/data/frontend-senior/priceSection.ts:10
+#: src/features/Interview/data/reusable/priceSection.ts:10
 #. js-lingui-explicit-id
 msgid "Choose your interview preparation plan"
 msgstr "Wybierz swój plan przygotowań do rozmowy kwalifikacyjnej"
@@ -1471,7 +1428,7 @@ msgstr "Współbieżność i Odporność"
 msgid "Concurrency and resiliency assessment"
 msgstr "Ocena równoczesności i odporności"
 
-#: src/features/Interview/data/frontend-senior/priceSection.ts:44
+#: src/features/Interview/data/reusable/priceSection.ts:44
 #. js-lingui-explicit-id
 msgid "Confidence score tracking"
 msgstr "Śledzenie wskaźnika pewności siebie"
@@ -1532,7 +1489,7 @@ msgstr ""
 "AsNoTracking dla EF Core. Dla dużej serializacji, optymalizuj DTO i rozważ "
 "kompresję dla dużych ładunków danych."
 
-#: src/features/Interview/data/frontend-senior/priceSection.ts:37
+#: src/features/Interview/data/reusable/priceSection.ts:37
 #. js-lingui-explicit-id
 msgid ""
 "Consistent improvement with structured interview coaching and personalized "
@@ -1551,6 +1508,11 @@ msgstr "Kontakt w sprawie cen"
 #. js-lingui-explicit-id
 msgid "Contact me"
 msgstr "Skontaktuj się ze mną"
+
+#: src/features/Interview/data/reusable/priceSection.ts:65
+#. js-lingui-explicit-id
+msgid "Contact us"
+msgstr "Skontaktuj się z nami"
 
 #: src/features/Header/HeaderStatic.tsx:18
 #: src/features/Interview/Landing/components/Footer.tsx:125
@@ -1836,6 +1798,11 @@ msgstr "Custom"
 msgid "Custom features"
 msgstr "Funkcje dostosowane"
 
+#: src/features/Interview/data/reusable/priceSection.ts:60
+#. js-lingui-explicit-id
+msgid "Custom interview roadmap"
+msgstr "Indywidualny plan nauki do rozmowy kwalifikacyjnej"
+
 #: src/features/RolePlay/rolePlayData.tsx:681
 #. js-lingui-explicit-id
 msgid "Customize a conversation to fit your unique learning needs"
@@ -1846,7 +1813,7 @@ msgstr "Dostosuj rozmowę do swoich unikalnych potrzeb w nauce"
 msgid "CV and LinkedIn review"
 msgstr "Przegląd CV i LinkedIn"
 
-#: src/features/Interview/data/frontend-senior/priceSection.ts:43
+#: src/features/Interview/data/reusable/priceSection.ts:43
 #. js-lingui-explicit-id
 msgid "CV-based answer optimization"
 msgstr "Optymalizacja odpowiedzi na podstawie CV"
@@ -1855,16 +1822,6 @@ msgstr "Optymalizacja odpowiedzi na podstawie CV"
 #. js-lingui-explicit-id
 msgid "Cypress & E2E Testing"
 msgstr "Cypress i testowanie E2E"
-
-#: src/features/Interview/data/frontend-senior/priceSection.ts:24
-#. js-lingui-explicit-id
-msgid "Daily AI mock interviews"
-msgstr "Codzienne symulacje rozmów kwalifikacyjnych z AI"
-
-#: src/features/Interview/data/backendCSharp/priceSection.ts:24
-#. js-lingui-explicit-id
-msgid "Daily backend mock interviews"
-msgstr "Codzienne makiety rozmów kwalifikacyjnych z zakresu backendu"
 
 #: src/features/Landing/LandingPage.tsx:87
 #: src/features/Landing/LandingPage.tsx:240
@@ -1920,11 +1877,6 @@ msgstr "Dane i transakcje"
 #. js-lingui-explicit-id
 msgid "Databases & Transactions"
 msgstr "Bazy danych i transakcje"
-
-#: src/features/Interview/data/frontend-senior/priceSection.ts:62
-#. js-lingui-explicit-id
-msgid "Deep skill development"
-msgstr "Głębokie rozwijanie umiejętności"
 
 #: src/features/Interview/data/backendCSharp/quizData.ts:67
 #. js-lingui-explicit-id
@@ -2304,6 +2256,11 @@ msgid ""
 msgstr ""
 "Każdego dnia, odejmujemy 3 punkty od każdego, aby każdy miał sprawiedliwą "
 "szansę na wygraną."
+
+#: src/features/Interview/data/reusable/priceSection.ts:63
+#. js-lingui-explicit-id
+msgid "Early access to new tools"
+msgstr "Wczesny dostęp do nowych narzędzi"
 
 #: src/features/Goal/GoalQuestions.tsx:310
 #. js-lingui-explicit-id
@@ -2800,14 +2757,7 @@ msgstr ""
 msgid "Everything in Free, plus:"
 msgstr "Wszystko w Free, plus:"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:11
-#. js-lingui-explicit-id
-msgid "Everything you need for APIs, data, resiliency, and system design"
-msgstr ""
-"Wszystko, czego potrzebujesz do API, danych, odporności i projektowania "
-"systemów"
-
-#: src/features/Interview/data/frontend-senior/priceSection.ts:11
+#: src/features/Interview/data/reusable/priceSection.ts:11
 #. js-lingui-explicit-id
 msgid "Everything you need to stand out and get the job"
 msgstr "Wszystko, czego potrzebujesz, aby się wyróżnić i zdobyć pracę"
@@ -3091,24 +3041,19 @@ msgstr "Na przykład:"
 msgid "For learners who want flexibility"
 msgstr "Dla uczących się, którzy cenią sobie elastyczność"
 
-#: src/features/Interview/data/frontend-senior/priceSection.ts:53
+#: src/features/Interview/data/reusable/priceSection.ts:53
 #. js-lingui-explicit-id
 msgid "For long job searches & career growth"
 msgstr "Dla długich poszukiwań pracy i rozwoju kariery"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:53
-#. js-lingui-explicit-id
-msgid "For longer searches & senior roles"
-msgstr "Dla dłuższych wyszukiwań i starszych ról"
-
-#: src/features/Interview/data/frontend-senior/priceSection.ts:56
+#: src/features/Interview/data/reusable/priceSection.ts:56
 #. js-lingui-explicit-id
 msgid ""
-"For people preparing for multiple roles, relocating, switching careers, or "
-"targeting senior jobs."
+"For people seeking long-term career growth and comprehensive interview "
+"preparation."
 msgstr ""
-"Dla osób przygotowujących się do wielu ról, przeprowadzających się, "
-"zmieniających karierę lub celujących w stanowiska kierownicze."
+"Dla osób poszukujących długoterminowego rozwoju zawodowego i kompleksowego "
+"przygotowania do rozmów kwalifikacyjnych."
 
 #: src/features/Survey/InfoStep.tsx:61
 #. js-lingui-explicit-id
@@ -3204,15 +3149,10 @@ msgstr "projektowanie systemu frontendowego - rozmowa kwalifikacyjna"
 msgid "Full Access"
 msgstr "Pełny dostęp"
 
-#: src/features/Interview/data/frontend-senior/priceSection.ts:41
+#: src/features/Interview/data/reusable/priceSection.ts:41
 #. js-lingui-explicit-id
 msgid "Full access to all simulations"
 msgstr "Pełny dostęp do wszystkich symulacji"
-
-#: src/features/Interview/data/backendCSharp/priceSection.ts:41
-#. js-lingui-explicit-id
-msgid "Full access to backend simulations"
-msgstr "Pełny dostęp do symulacji backendu"
 
 #: src/features/Landing/Price/FeatureList.tsx:30
 #: src/features/Landing/Price/PricePage.tsx:184
@@ -3362,13 +3302,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Get detailed feedback, scripts, and practice scenarios."
 msgstr "Otrzymaj szczegółową informację zwrotną, skrypty i scenariusze do ćwiczeń."
-
-#: src/features/Interview/data/frontend-senior/priceSection.ts:19
-#. js-lingui-explicit-id
-msgid "Get fast, intensive preparation. Fix your biggest weaknesses in just 7 days."
-msgstr ""
-"Uzyskaj szybką, intensywną przygotowanie. Napraw swoje największe słabości "
-"w zaledwie 7 dni."
 
 #: src/features/SEO/metadata.ts:145
 #. js-lingui-explicit-id
@@ -4543,11 +4476,6 @@ msgstr ""
 "możliwościach kariery. Zacznij wdrażać te proste codzienne nawyki już dziś "
 "i podnieś komunikację biznesową z FluencyPal."
 
-#: src/features/Interview/data/frontend-senior/priceSection.ts:16
-#. js-lingui-explicit-id
-msgid "In a hurry? Perfect for last-minute interviews"
-msgstr "W pośpiechu? Idealne na rozmowy kwalifikacyjne w ostatniej chwili"
-
 #: src/features/Interview/data/backendCSharp/scorePreviewSection.ts:12
 #: src/features/Interview/data/frontend-senior/scorePreviewSection.ts:12
 #. js-lingui-explicit-id
@@ -4936,16 +4864,6 @@ msgstr "Instaluj:"
 msgid "Installing..."
 msgstr "Instalowanie..."
 
-#: src/features/Interview/data/frontend-senior/priceSection.ts:25
-#. js-lingui-explicit-id
-msgid "Instant feedback on answers"
-msgstr "Natychmiastowa informacja zwrotna na odpowiedzi"
-
-#: src/features/Interview/data/backendCSharp/priceSection.ts:25
-#. js-lingui-explicit-id
-msgid "Instant feedback on API and data answers"
-msgstr "Natychmiastowa informacja zwrotna dotycząca odpowiedzi API i danych"
-
 #: src/features/Landing/LandingPage.tsx:137
 #. js-lingui-explicit-id
 msgid "Instant Grammar Corrections"
@@ -5260,11 +5178,6 @@ msgstr "Języki"
 msgid "Languages installed in your brain:"
 msgstr "Języki zainstalowane w twoim mózgu:"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:16
-#. js-lingui-explicit-id
-msgid "Last-minute backend prep"
-msgstr "Ostatnie przygotowania backendu"
-
 #: src/features/Interview/data/frontend-senior/techData.tsx:59
 #. js-lingui-explicit-id
 msgid "Lazy Loading"
@@ -5484,16 +5397,6 @@ msgstr "Wyloguj się ze swojego konta"
 msgid "Logging/Tracing"
 msgstr "Rejestrowanie/Śledzenie"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:61
-#. js-lingui-explicit-id
-msgid "Long-term backend interview strategy"
-msgstr "Długoterminowa strategia rozmowy kwalifikacyjnej na backend"
-
-#: src/features/Interview/data/frontend-senior/priceSection.ts:61
-#. js-lingui-explicit-id
-msgid "Long-term interview strategy"
-msgstr "Długoterminowa strategia rozmowy kwalifikacyjnej"
-
 #: src/features/Landing/LandingPage.tsx:173
 #. js-lingui-explicit-id
 msgid "Looking for something specific?"
@@ -5666,8 +5569,7 @@ msgstr "współczesna literatura"
 msgid "month"
 msgstr "miesiąc"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:34
-#: src/features/Interview/data/frontend-senior/priceSection.ts:34
+#: src/features/Interview/data/reusable/priceSection.ts:34
 #. js-lingui-explicit-id
 msgid "Monthly Plan"
 msgstr "Plan Miesięczny"
@@ -5790,15 +5692,15 @@ msgstr ""
 msgid "Negotiate senior-level compensation"
 msgstr "Negocjowanie wynagrodzenia na poziomie kierowniczym"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:45
-#. js-lingui-explicit-id
-msgid "Negotiation and stakeholder stories"
-msgstr "Negocjacje i opowieści interesariuszy"
-
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:310
 #. js-lingui-explicit-id
 msgid "Never say “no.” Prepare 2–3 smart questions in advance:"
 msgstr "Nigdy nie mów „nie.” Przygotuj 2–3 mądre pytania z wyprzedzeniem:"
+
+#: src/features/Interview/data/reusable/priceSection.ts:61
+#. js-lingui-explicit-id
+msgid "New features & simulations added regularly"
+msgstr "Nowe funkcje i symulacje dodawane regularnie"
 
 #: src/features/Landing/Price/FeatureList.tsx:50
 #: src/features/Landing/Price/PricePage.tsx:211
@@ -6112,11 +6014,10 @@ msgstr "cennik kursów języka angielskiego online"
 msgid "Online Language Practice"
 msgstr "Online praktyka językowa"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:36
-#: src/features/Interview/data/frontend-senior/priceSection.ts:36
+#: src/features/Interview/data/reusable/priceSection.ts:36
 #. js-lingui-explicit-id
-msgid "Only $2/day"
-msgstr "Tylko 2$/dzień"
+msgid "Only $0.30/day"
+msgstr "Tylko 0,30 USD/dzień"
 
 #: src/features/Conversation/ConversationError.tsx:34
 #. js-lingui-explicit-id
@@ -6344,11 +6245,6 @@ msgstr "Spersonalizowany plan dostosowany do Twoich celów"
 #. js-lingui-explicit-id
 msgid "Personalized scripts"
 msgstr "Spersonalizowane skrypty"
-
-#: src/features/Interview/data/frontend-senior/priceSection.ts:26
-#. js-lingui-explicit-id
-msgid "Personalized scripts for HR and behavioral questions"
-msgstr "Spersonalizowane skrypty dla pytań związanych z HR i zachowaniem"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1234
 #. js-lingui-explicit-id
@@ -6722,15 +6618,6 @@ msgstr ""
 "Przygotuj się na pytania dotyczące .NET, API, baz danych, wielowątkowości i "
 "projektowania systemów."
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:56
-#. js-lingui-explicit-id
-msgid ""
-"Prepare for multiple interviews, deeper system design, and advanced "
-"resiliency scenarios."
-msgstr ""
-"Przygotuj się do kilku rozmów kwalifikacyjnych, głębszego projektowania "
-"systemu oraz zaawansowanych scenariuszy odporności."
-
 #: src/features/SEO/metadata.ts:300
 #: src/features/SEO/metadata.ts:308
 #. js-lingui-explicit-id
@@ -6795,11 +6682,10 @@ msgstr "Cena"
 msgid "Price per one AI hour:"
 msgstr "Cena za jedną godzinę AI:"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:64
-#: src/features/Interview/data/frontend-senior/priceSection.ts:64
+#: src/features/Interview/data/reusable/priceSection.ts:62
 #. js-lingui-explicit-id
-msgid "Priority feedback queue"
-msgstr "Kolejka priorytetowych opinii"
+msgid "Priority support"
+msgstr "Priorytetowe wsparcie"
 
 #: src/features/Usage/PaymentModal.tsx:365
 #. js-lingui-explicit-id
@@ -7369,21 +7255,6 @@ msgstr "Scenariusze do zabawy w rolę do ćwiczenia"
 msgid "Role-Plays"
 msgstr "Role-Playe"
 
-#: src/features/Interview/data/frontend-senior/priceSection.ts:63
-#. js-lingui-explicit-id
-msgid "Role-specific answer templates"
-msgstr "Szablony odpowiedzi specyficzne dla roli"
-
-#: src/features/Interview/data/backendCSharp/priceSection.ts:43
-#. js-lingui-explicit-id
-msgid "Role-specific scripts for .NET roles"
-msgstr "Role-specificzne skrypty dla ról .NET"
-
-#: src/features/Interview/data/backendCSharp/priceSection.ts:63
-#. js-lingui-explicit-id
-msgid "Role-specific templates for .NET"
-msgstr "Szablony specyficzne dla ról dla .NET"
-
 #: src/features/Interview/data/backendCSharp/quizData.ts:39
 #. js-lingui-explicit-id
 msgid "Routing"
@@ -7433,7 +7304,7 @@ msgstr ""
 msgid "Salary negotiation interview with AI SEO"
 msgstr "Negocjacje płacowe z AI SEO"
 
-#: src/features/Interview/data/frontend-senior/priceSection.ts:45
+#: src/features/Interview/data/reusable/priceSection.ts:45
 #. js-lingui-explicit-id
 msgid "Salary negotiation preparation"
 msgstr "Przygotowanie do negocjacji wynagrodzenia"
@@ -7452,11 +7323,6 @@ msgstr ""
 msgid "Scenario Description"
 msgstr "Opis scenariusza"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:44
-#. js-lingui-explicit-id
-msgid "Score tracking and improvement plan"
-msgstr "Śledzenie wyników i plan poprawy"
-
 #: src/features/Interview/data/frontend-senior/webcamDemoSection.tsx:39
 #. js-lingui-explicit-id
 msgid "Screening"
@@ -7466,11 +7332,6 @@ msgstr "Przesiewanie"
 #. js-lingui-explicit-id
 msgid "Screening interview with AI recruiter"
 msgstr "Rozmowa wstępna z rekruterem AI"
-
-#: src/features/Interview/data/backendCSharp/priceSection.ts:26
-#. js-lingui-explicit-id
-msgid "Scripts for behavioral and architecture questions"
-msgstr "Skrypty do pytań behawioralnych i architektonicznych"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:663
 #. js-lingui-explicit-id
@@ -7875,18 +7736,6 @@ msgstr "Gwiazdy"
 msgid "Start"
 msgstr "Start"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:28
-#: src/features/Interview/data/frontend-senior/priceSection.ts:28
-#. js-lingui-explicit-id
-msgid "Start 1-Week Sprint — $30"
-msgstr "Rozpocznij 1-Tygodniowy Sprint — 30 USD"
-
-#: src/features/Interview/data/backendCSharp/priceSection.ts:66
-#: src/features/Interview/data/frontend-senior/priceSection.ts:66
-#. js-lingui-explicit-id
-msgid "Start 4-Month Plan — $90"
-msgstr "Rozpocznij Plan 4-Miesięczny — 90 USD"
-
 #: src/features/Dashboard/HomeworkCard.tsx:66
 #. js-lingui-explicit-id
 msgid "Start a conversation to get one."
@@ -7919,11 +7768,10 @@ msgstr "Rozpocznij naukę teraz"
 msgid "Start lesson"
 msgstr "Rozpocznij lekcję"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:47
-#: src/features/Interview/data/frontend-senior/priceSection.ts:47
+#: src/features/Interview/data/reusable/priceSection.ts:47
 #. js-lingui-explicit-id
-msgid "Start Monthly Plan — $60"
-msgstr "Rozpocznij plan miesięczny — 60 USD"
+msgid "Start Monthly Plan"
+msgstr "Rozpocznij miesięczny plan"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:504
 #. js-lingui-explicit-id
@@ -8597,15 +8445,6 @@ msgstr "To pokazuje wyniki i wyróżnia Cię."
 msgid "Ticket"
 msgstr "Bilet"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:19
-#. js-lingui-explicit-id
-msgid ""
-"Tighten core backend answers fast: API design, EF Core, concurrency, and "
-"resiliency basics."
-msgstr ""
-"Szybkie uściślenie odpowiedzi dotyczących głównego zaplecza: projektowanie "
-"API, EF Core, podstawy współbieżności i odporności."
-
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:521
 #. js-lingui-explicit-id
 msgid "To see others answers, you need to publish yours."
@@ -8755,8 +8594,7 @@ msgstr "Nieznany błąd"
 msgid "Unknown error during sign-in"
 msgstr "Nieznany błąd podczas logowania się"
 
-#: src/features/Interview/data/backendCSharp/priceSection.ts:42
-#: src/features/Interview/data/frontend-senior/priceSection.ts:42
+#: src/features/Interview/data/reusable/priceSection.ts:42
 #. js-lingui-explicit-id
 msgid "Unlimited answer reviews"
 msgstr "Nieograniczone przeglądy odpowiedzi"
@@ -9709,6 +9547,215 @@ msgstr ""
 "— ważne jest, aby zaangażować się w tę krótką rozmowę przed poruszeniem "
 "tematów zawodowych. Oto kilka przydatnych angielskich zwrotów, które pomogą "
 "rozpocząć wywiad:"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:17
+#: src/features/Interview/data/frontend-senior/priceSection.ts:17
+#. js-lingui-explicit-id
+#~ msgid "1-Week Sprint"
+#~ msgstr "1-tygodniowy Sprint"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:60
+#: src/features/Interview/data/frontend-senior/priceSection.ts:60
+#. js-lingui-explicit-id
+#~ msgid "4 months full access"
+#~ msgstr "4 miesiące pełny dostęp"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:54
+#: src/features/Interview/data/frontend-senior/priceSection.ts:54
+#. js-lingui-explicit-id
+#~ msgid "4-Month Plan"
+#~ msgstr "Plan 4-miesięczny"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:23
+#: src/features/Interview/data/frontend-senior/priceSection.ts:23
+#. js-lingui-explicit-id
+#~ msgid "7 days full access"
+#~ msgstr "7 dni pełnego dostępu"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:62
+#. js-lingui-explicit-id
+#~ msgid "Advanced system design drills"
+#~ msgstr "Zadania dotyczące zaawansowanego projektowania systemów"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:33
+#. js-lingui-explicit-id
+#~ msgid "Best for most engineers"
+#~ msgstr "Najlepsze dla większości inżynierów"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:37
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Build strong, repeatable answers across APIs, databases, concurrency, and "
+#~ "system design."
+#~ msgstr ""
+#~ "Buduj silne, powtarzalne odpowiedzi w zakresie interfejsów API, baz danych, "
+#~ "współbieżności i projektowania systemów."
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:10
+#. js-lingui-explicit-id
+#~ msgid "Choose your backend prep plan"
+#~ msgstr "Wybierz swój plan przygotowania zaplecza"
+
+#: src/features/Interview/data/frontend-senior/priceSection.ts:24
+#. js-lingui-explicit-id
+#~ msgid "Daily AI mock interviews"
+#~ msgstr "Codzienne symulacje rozmów kwalifikacyjnych z AI"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:24
+#. js-lingui-explicit-id
+#~ msgid "Daily backend mock interviews"
+#~ msgstr "Codzienne makiety rozmów kwalifikacyjnych z zakresu backendu"
+
+#: src/features/Interview/data/frontend-senior/priceSection.ts:62
+#. js-lingui-explicit-id
+#~ msgid "Deep skill development"
+#~ msgstr "Głębokie rozwijanie umiejętności"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:11
+#. js-lingui-explicit-id
+#~ msgid "Everything you need for APIs, data, resiliency, and system design"
+#~ msgstr ""
+#~ "Wszystko, czego potrzebujesz do API, danych, odporności i projektowania "
+#~ "systemów"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:53
+#. js-lingui-explicit-id
+#~ msgid "For longer searches & senior roles"
+#~ msgstr "Dla dłuższych wyszukiwań i starszych ról"
+
+#: src/features/Interview/data/frontend-senior/priceSection.ts:56
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "For people preparing for multiple roles, relocating, switching careers, or "
+#~ "targeting senior jobs."
+#~ msgstr ""
+#~ "Dla osób przygotowujących się do wielu ról, przeprowadzających się, "
+#~ "zmieniających karierę lub celujących w stanowiska kierownicze."
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:41
+#. js-lingui-explicit-id
+#~ msgid "Full access to backend simulations"
+#~ msgstr "Pełny dostęp do symulacji backendu"
+
+#: src/features/Interview/data/frontend-senior/priceSection.ts:19
+#. js-lingui-explicit-id
+#~ msgid "Get fast, intensive preparation. Fix your biggest weaknesses in just 7 days."
+#~ msgstr ""
+#~ "Uzyskaj szybką, intensywną przygotowanie. Napraw swoje największe słabości "
+#~ "w zaledwie 7 dni."
+
+#: src/features/Interview/data/frontend-senior/priceSection.ts:16
+#. js-lingui-explicit-id
+#~ msgid "In a hurry? Perfect for last-minute interviews"
+#~ msgstr "W pośpiechu? Idealne na rozmowy kwalifikacyjne w ostatniej chwili"
+
+#: src/features/Interview/data/frontend-senior/priceSection.ts:25
+#. js-lingui-explicit-id
+#~ msgid "Instant feedback on answers"
+#~ msgstr "Natychmiastowa informacja zwrotna na odpowiedzi"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:25
+#. js-lingui-explicit-id
+#~ msgid "Instant feedback on API and data answers"
+#~ msgstr "Natychmiastowa informacja zwrotna dotycząca odpowiedzi API i danych"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:16
+#. js-lingui-explicit-id
+#~ msgid "Last-minute backend prep"
+#~ msgstr "Ostatnie przygotowania backendu"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:61
+#. js-lingui-explicit-id
+#~ msgid "Long-term backend interview strategy"
+#~ msgstr "Długoterminowa strategia rozmowy kwalifikacyjnej na backend"
+
+#: src/features/Interview/data/frontend-senior/priceSection.ts:61
+#. js-lingui-explicit-id
+#~ msgid "Long-term interview strategy"
+#~ msgstr "Długoterminowa strategia rozmowy kwalifikacyjnej"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:45
+#. js-lingui-explicit-id
+#~ msgid "Negotiation and stakeholder stories"
+#~ msgstr "Negocjacje i opowieści interesariuszy"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:36
+#: src/features/Interview/data/frontend-senior/priceSection.ts:36
+#. js-lingui-explicit-id
+#~ msgid "Only $2/day"
+#~ msgstr "Tylko 2$/dzień"
+
+#: src/features/Interview/data/frontend-senior/priceSection.ts:26
+#. js-lingui-explicit-id
+#~ msgid "Personalized scripts for HR and behavioral questions"
+#~ msgstr "Spersonalizowane skrypty dla pytań związanych z HR i zachowaniem"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:56
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Prepare for multiple interviews, deeper system design, and advanced "
+#~ "resiliency scenarios."
+#~ msgstr ""
+#~ "Przygotuj się do kilku rozmów kwalifikacyjnych, głębszego projektowania "
+#~ "systemu oraz zaawansowanych scenariuszy odporności."
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:64
+#: src/features/Interview/data/frontend-senior/priceSection.ts:64
+#. js-lingui-explicit-id
+#~ msgid "Priority feedback queue"
+#~ msgstr "Kolejka priorytetowych opinii"
+
+#: src/features/Interview/data/frontend-senior/priceSection.ts:63
+#. js-lingui-explicit-id
+#~ msgid "Role-specific answer templates"
+#~ msgstr "Szablony odpowiedzi specyficzne dla roli"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:43
+#. js-lingui-explicit-id
+#~ msgid "Role-specific scripts for .NET roles"
+#~ msgstr "Role-specificzne skrypty dla ról .NET"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:63
+#. js-lingui-explicit-id
+#~ msgid "Role-specific templates for .NET"
+#~ msgstr "Szablony specyficzne dla ról dla .NET"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:44
+#. js-lingui-explicit-id
+#~ msgid "Score tracking and improvement plan"
+#~ msgstr "Śledzenie wyników i plan poprawy"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:26
+#. js-lingui-explicit-id
+#~ msgid "Scripts for behavioral and architecture questions"
+#~ msgstr "Skrypty do pytań behawioralnych i architektonicznych"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:28
+#: src/features/Interview/data/frontend-senior/priceSection.ts:28
+#. js-lingui-explicit-id
+#~ msgid "Start 1-Week Sprint — $30"
+#~ msgstr "Rozpocznij 1-Tygodniowy Sprint — 30 USD"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:66
+#: src/features/Interview/data/frontend-senior/priceSection.ts:66
+#. js-lingui-explicit-id
+#~ msgid "Start 4-Month Plan — $90"
+#~ msgstr "Rozpocznij Plan 4-Miesięczny — 90 USD"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:47
+#: src/features/Interview/data/frontend-senior/priceSection.ts:47
+#. js-lingui-explicit-id
+#~ msgid "Start Monthly Plan — $60"
+#~ msgstr "Rozpocznij plan miesięczny — 60 USD"
+
+#: src/features/Interview/data/backendCSharp/priceSection.ts:19
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Tighten core backend answers fast: API design, EF Core, concurrency, and "
+#~ "resiliency basics."
+#~ msgstr ""
+#~ "Szybkie uściślenie odpowiedzi dotyczących głównego zaplecza: projektowanie "
+#~ "API, EF Core, podstawy współbieżności i odporności."
 
 #: src/features/Interview/data/frontend-senior-simple/quizData.ts:254
 #: src/features/Interview/data/frontend-senior/quizData.ts:287

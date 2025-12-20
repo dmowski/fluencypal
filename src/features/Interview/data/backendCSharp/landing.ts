@@ -22,7 +22,6 @@ export default function getLanding(lang: SupportedLanguage): InterviewData {
       getBackendInfoCardsSection(lang),
       getBackendScorePreviewSection(lang),
       getBackendStepInfoSection(lang),
-      //getBackendReviewSection(lang),
       getBackendExampleQuestionsSection(lang),
       getBackendTechStackSection(lang),
       getBackendWhoIsThisForSection(lang),

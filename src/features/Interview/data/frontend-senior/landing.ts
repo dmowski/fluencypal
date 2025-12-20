@@ -27,7 +27,6 @@ export default function getLandingData(lang: SupportedLanguage): InterviewData {
       getInfoCardsSection(lang),
       getScorePreviewSection(lang),
       getStepInfoSection(lang),
-      //getReviewSection(lang),
       getExampleQuestionsSection(lang),
       getTechStackSection(lang),
       getWhoIsThisForSection(lang),
