@@ -38,6 +38,7 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         ],
       },
 
+      /*
       {
         type: "options",
         id: "your-level-step",
@@ -113,23 +114,7 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         ],
         buttonTitle: i18n._("Next"),
       },
-
-      {
-        type: "info",
-        id: "mic-access-step",
-        imageUrl:
-          "https://circl.es/wp-content/uploads/2024/02/Screenshot-2024-02-06-at-12.53.38-1-1024x780.png",
-        imageAspectRatio: "1024/780",
-
-        title: i18n._("Microphone Access"),
-        subTitle: i18n._(
-          "In the next step, you'll need to record audio. Please verify your microphone is ready and allow access when asked."
-        ),
-        listItems: [],
-        buttonTitle: i18n._("Continue"),
-      },
-
-      {
+    {
         type: "info",
         id: "don-t-rush",
         title: i18n._("Don't Rush Your Answers"),
@@ -145,6 +130,22 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
           },
           { title: i18n._("Re-record if needed"), iconName: "repeat" },
         ],
+      },
+      */
+
+      {
+        type: "info",
+        id: "mic-access-step",
+        imageUrl:
+          "https://circl.es/wp-content/uploads/2024/02/Screenshot-2024-02-06-at-12.53.38-1-1024x780.png",
+        imageAspectRatio: "1024/780",
+
+        title: i18n._("Microphone Access"),
+        subTitle: i18n._(
+          "In the next step, you'll need to record audio. Please verify your microphone is ready and allow access when asked."
+        ),
+        listItems: [],
+        buttonTitle: i18n._("Continue"),
       },
 
       {
@@ -182,6 +183,27 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
             iconName: "gauge",
           },
           { title: i18n._("Mention scalability and maintainability"), iconName: "expand" },
+        ],
+      },
+
+      {
+        type: "record-audio",
+        id: "behavioral-question-step",
+        title: i18n._("Behavioral Question"),
+        subTitle: i18n._(
+          "Describe a time you led a frontend refactor or migration. What challenges did you face and how did you overcome them?"
+        ),
+        buttonTitle: i18n._("Record Answer"),
+        listItems: [
+          {
+            title: i18n._("Use the STAR method (Situation, Task, Action, Result)"),
+            iconName: "star",
+          },
+          {
+            title: i18n._("Highlight your leadership and problem-solving skills"),
+            iconName: "users",
+          },
+          { title: i18n._("Be specific about your role"), iconName: "user-check" },
         ],
       },
 
@@ -257,7 +279,7 @@ Return only the JSON, nothing else. Your response will be passed into javascript
       {
         id: "ai-practice-plant",
         type: "analyze-inputs",
-        title: i18n._("Preparation plan"),
+        title: i18n._("Preparation plan") + " {FOR_USER_NAME}",
         subTitle: i18n._(
           "Here's a personalized training plan we'll use during your preparation. Step by step, you'll improve your answers and prepare for next-level results."
         ),
@@ -277,6 +299,7 @@ Finish the plan with salary negotiation steps.
         aiResponseFormat: "practice-plan",
       },
 
+      /*
       {
         type: "options",
         id: "payment-plan",
@@ -291,6 +314,7 @@ Finish the plan with salary negotiation steps.
         ],
         buttonTitle: i18n._("See Results"),
       },
+      */
 
       {
         type: "paywall",

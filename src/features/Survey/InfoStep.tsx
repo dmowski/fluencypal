@@ -2,10 +2,21 @@
 import { Checkbox, Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { ReactNode } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ColorIconTextList, ColorIconTextListItem } from "./ColorIconTextList";
 import { InterviewQuizButton } from "../Goal/Quiz/InterviewQuizButton";
 import { QuizOption } from "../Interview/types";
+import { useAuth } from "../Auth/useAuth";
+
+const replacePlaceholders = (text: string, placeholders: Record<string, string>) => {
+  let replacedText = text;
+  const keys = Object.keys(placeholders);
+  keys.forEach((key) => {
+    const value = placeholders[key];
+    replacedText = replacedText.split(key).join(value);
+  });
+  return replacedText;
+};
 
 export const InfoStep = ({
   title,
@@ -44,6 +55,15 @@ export const InfoStep = ({
   multipleSelection?: boolean;
 }) => {
   const { i18n } = useLingui();
+  const auth = useAuth();
+
+  const userName = auth.userInfo?.displayName || "";
+  const titleWithTemplate = title
+    ? replacePlaceholders(title, {
+        "{FOR_USER_NAME}": userName ? i18n._(`for ${userName}`) : "",
+      })
+    : title;
+
   return (
     <Stack
       sx={{
@@ -65,7 +85,7 @@ export const InfoStep = ({
             paddingTop: "40px",
           }}
         >
-          {title && (
+          {titleWithTemplate && (
             <Typography
               variant="h4"
               sx={{
@@ -73,7 +93,7 @@ export const InfoStep = ({
                 lineHeight: "1.2",
               }}
             >
-              {title}
+              {titleWithTemplate}
             </Typography>
           )}
           {subTitle && (

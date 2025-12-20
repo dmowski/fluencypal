@@ -15,7 +15,7 @@ interface SignInResult {
   error: string;
 }
 
-interface UserInfo {
+export interface UserInfo {
   displayName: string | null;
   email: string | null;
   photoURL: string | null;
