@@ -12,6 +12,7 @@ export interface Price {
   description: string;
   points: string[];
   buttonTitle: string;
+  buttonHref?: string;
   isHighlighted?: boolean;
 }
 
@@ -87,9 +88,10 @@ export const PriceCards = ({
         <Stack
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: `repeat(${prices.length}, 1fr)`,
             gap: "30px",
             width: "100%",
+            maxWidth: "1000px",
             "@media (max-width: 1024px)": {
               gridTemplateColumns: "repeat(2, 1fr)",
             },
@@ -217,7 +219,7 @@ export const PriceCards = ({
                   </Stack>
 
                   <Button
-                    href={quizLink}
+                    href={price.buttonHref || quizLink}
                     variant={price.isHighlighted ? "contained" : "outlined"}
                     color={price.isHighlighted ? "info" : "inherit"}
                     size="large"

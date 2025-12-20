@@ -1,10 +1,9 @@
 import { InterviewData } from "../../types";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getQuizData } from "./quizData";
-import { getPriceSection } from "./priceSection";
+import { getPriceSection } from "../reusable/priceSection";
 import { getFaqSection } from "./faqSection";
 import { getStepInfoSection } from "./stepInfoSection";
-import { getReviewSection } from "./reviewSection";
 import { getScorePreviewSection } from "./scorePreviewSection";
 import { getCallToActionSection } from "./callToActionSection";
 import { getInfoCardsSection } from "./infoCardsSection";
@@ -28,7 +27,7 @@ export default function getLandingData(lang: SupportedLanguage): InterviewData {
       getInfoCardsSection(lang),
       getScorePreviewSection(lang),
       getStepInfoSection(lang),
-      getReviewSection(lang),
+      //getReviewSection(lang),
       getExampleQuestionsSection(lang),
       getTechStackSection(lang),
       getWhoIsThisForSection(lang),

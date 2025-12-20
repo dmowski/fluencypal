@@ -10,7 +10,7 @@ export const getPriceSection = (lang: SupportedLanguage): PriceSection => {
     title: i18n._("Choose your interview preparation plan"),
     subTitle: i18n._("Everything you need to stand out and get the job"),
     prices: [
-      {
+      /*{
         id: "1-week-sprint",
         badgeIcon: "⚡",
         badge: i18n._("In a hurry? Perfect for last-minute interviews"),
@@ -26,14 +26,14 @@ export const getPriceSection = (lang: SupportedLanguage): PriceSection => {
           i18n._("Personalized scripts for HR and behavioral questions"),
         ],
         buttonTitle: i18n._("Start 1-Week Sprint — $30"),
-      },
+      },*/
       {
         id: "monthly-plan",
         badgeIcon: "⭐",
         badge: i18n._("Best for most job seekers"),
         label: i18n._("Monthly Plan"),
-        priceUsd: 60,
-        priceLabel: i18n._("Only $2/day"),
+        priceUsd: 9,
+        priceLabel: i18n._("Only $0.30/day"),
         description: i18n._(
           "Consistent improvement with structured interview coaching and personalized practice."
         ),
@@ -44,26 +44,26 @@ export const getPriceSection = (lang: SupportedLanguage): PriceSection => {
           i18n._("Confidence score tracking"),
           i18n._("Salary negotiation preparation"),
         ],
-        buttonTitle: i18n._("Start Monthly Plan — $60"),
+        buttonTitle: i18n._("Start Monthly Plan"),
         isHighlighted: true,
       },
       {
-        id: "4-month-plan",
+        id: "advanced-plan",
         badgeIcon: "🎯",
         badge: i18n._("For long job searches & career growth"),
-        label: i18n._("4-Month Plan"),
+        label: i18n._("Advanced Plan"),
         priceUsd: 90,
         description: i18n._(
-          "For people preparing for multiple roles, relocating, switching careers, or targeting senior jobs."
+          "For people seeking long-term career growth and comprehensive interview preparation."
         ),
         points: [
-          i18n._("4 months full access"),
-          i18n._("Long-term interview strategy"),
-          i18n._("Deep skill development"),
-          i18n._("Role-specific answer templates"),
-          i18n._("Priority feedback queue"),
+          i18n._("Custom interview roadmap"),
+          i18n._("New features & simulations added regularly"),
+          i18n._("Priority support"),
+          i18n._("Early access to new tools"),
         ],
-        buttonTitle: i18n._("Start 4-Month Plan — $90"),
+        buttonTitle: i18n._("Contact us"),
+        buttonHref: "/contacts",
       },
     ],
   };
