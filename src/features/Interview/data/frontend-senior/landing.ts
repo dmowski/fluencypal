@@ -21,7 +21,6 @@ export default function getLandingData(lang: SupportedLanguage): InterviewData {
     coreData: getCoreData(lang),
     sections: [
       getFirstScreenSection(lang),
-
       getWebcamDemoSection(lang),
       getPainSection(lang),
       getInfoCardsSection(lang),
