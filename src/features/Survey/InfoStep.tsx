@@ -56,11 +56,13 @@ export const InfoStep = ({
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
-
   const userName = auth.userInfo?.displayName || "";
+
+  const forUserNameValue = i18n._(`for {USER_NAME}`, { USER_NAME: userName });
+
   const titleWithTemplate = title
     ? replacePlaceholders(title, {
-        "{FOR_USER_NAME}": userName ? i18n._(`for ${userName}`) : "",
+        "{FOR_USER_NAME}": userName ? forUserNameValue : "",
       })
     : title;
 
