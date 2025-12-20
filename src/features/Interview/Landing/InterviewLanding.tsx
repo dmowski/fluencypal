@@ -39,15 +39,7 @@ export async function InterviewLanding({
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center", gap: "0" }}>
           {interviewData.sections.map((section, index) => {
-            const themeOrder: Theme[] = [
-              "dark-blue",
-              "dark-red",
-              "dark-blue",
-              "dark-red",
-              "dark-blue",
-              "dark-red",
-              "dark-blue",
-            ];
+            const themeOrder: Theme[] = ["dark-blue", "dark-red"];
             const theme = themeOrder[index % themeOrder.length];
 
             // 1th
