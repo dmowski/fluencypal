@@ -35,7 +35,7 @@ import {
   Volume2,
   VolumeX,
 } from "lucide-react";
-
+import VideocamIcon from "@mui/icons-material/Videocam";
 import AddCardIcon from "@mui/icons-material/AddCard";
 
 import { AliasGamePanel } from "./AliasGamePanel";
@@ -1228,10 +1228,10 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       }}
                     >
                       <ListItemIcon>
-                        <Phone />
+                        <VideocamIcon />
                       </ListItemIcon>
                       <ListItemText>
-                        <Typography>{i18n._("Phone call mode")}</Typography>
+                        <Typography>{i18n._("Call mode")}</Typography>
                       </ListItemText>
 
                       {isCallMode && (
