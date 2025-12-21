@@ -12,7 +12,7 @@ export interface InitUserSettings {
   userSource: UserSource | null;
 }
 
-export type AppMode = "interview" | "lang-learning";
+export type AppMode = "interview" | "learning";
 
 export interface UserSettings extends InitUserSettings {
   languageCode: SupportedLanguage | null;

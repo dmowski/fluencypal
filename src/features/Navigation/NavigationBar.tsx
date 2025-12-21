@@ -1,7 +1,7 @@
 "use client";
 import { Avatar, Link, Stack, Typography } from "@mui/material";
 import { Home, LucideProps, Swords, User, VenetianMask } from "lucide-react";
-import { ForwardRefExoticComponent, RefAttributes } from "react";
+import { ForwardRefExoticComponent, RefAttributes, use, useMemo } from "react";
 import { SupportedLanguage } from "../Lang/lang";
 import { useLingui } from "@lingui/react";
 import { useWindowSizes } from "../Layout/useWindowSizes";
@@ -9,6 +9,8 @@ import { PageType } from "./types";
 import { useAppNavigation } from "./useAppNavigation";
 import { useAuth } from "../Auth/useAuth";
 import { useGame } from "../Game/useGame";
+import { useSettings } from "../Settings/useSettings";
+import { AppMode } from "@/common/user";
 
 export interface IconProps {
   color?: string;
@@ -34,31 +36,54 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
   const { i18n } = useLingui();
   const game = useGame();
   const auth = useAuth();
+  const settings = useSettings();
+  const appMode = settings.userSettings?.appMode;
   const userPhoto = game.gameAvatars?.[auth.uid] || "";
   const userName = game.userNames?.[auth.uid];
   const { bottomOffset } = useWindowSizes();
-  const navigationItems: NavigationItem[] = [
-    {
-      name: "home",
-      icon: Home,
-      title: i18n._("Home"),
-    },
-    {
-      name: "game",
-      icon: Swords,
-      title: i18n._("Game"),
-    },
-    {
-      name: "role-play",
-      icon: VenetianMask,
-      title: i18n._("Role Play"),
-    },
-    {
-      name: "profile",
-      icon: User,
-      title: i18n._("Profile"),
-    },
-  ];
+
+  const navigationItemsByMode: Record<AppMode, NavigationItem[]> = useMemo(
+    () => ({
+      interview: [
+        {
+          name: "home",
+          icon: Home,
+          title: i18n._("Home"),
+        },
+
+        {
+          name: "profile",
+          icon: User,
+          title: i18n._("Profile"),
+        },
+      ],
+      learning: [
+        {
+          name: "home",
+          icon: Home,
+          title: i18n._("Home"),
+        },
+        {
+          name: "game",
+          icon: Swords,
+          title: i18n._("Game"),
+        },
+        {
+          name: "role-play",
+          icon: VenetianMask,
+          title: i18n._("Role Play"),
+        },
+        {
+          name: "profile",
+          icon: User,
+          title: i18n._("Profile"),
+        },
+      ],
+    }),
+    [appMode]
+  );
+
+  const navigationItems: NavigationItem[] = navigationItemsByMode[appMode || "learning"];
 
   const navigateTo = (
     e: React.MouseEvent<HTMLAnchorElement> | React.TouchEvent<HTMLAnchorElement>,
