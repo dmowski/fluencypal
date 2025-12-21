@@ -10,7 +10,7 @@ import { getBlogs } from "@/features/Blog/blogData";
 import { getLangLearnPlanLabels } from "@/features/Lang/getLabels";
 import { getAllInterviews } from "../Interview/data/data";
 
-type Path =
+type Page =
   | "contacts"
   | "quiz"
   | "quiz2"
@@ -22,19 +22,20 @@ type Path =
   | "terms"
   | "scenarios"
   | "blog"
-  | "interviewLanding"
-  | "interview"
-  | "quizInterview"
+  | "case"
   | "";
+
+type AfterIdPage = "quiz";
 
 interface generateMetadataInfoProps {
   lang: string;
-  currentPath: Path;
+  currentPath: Page;
   scenarioId?: string;
   interviewId?: string;
   blogId?: string;
   category?: string;
   rolePlayId?: string;
+  afterIdPage?: AfterIdPage;
   languageToLearn?: SupportedLanguage;
 }
 
@@ -47,6 +48,7 @@ export const generateMetadataInfo = ({
   rolePlayId,
   languageToLearn,
   interviewId,
+  afterIdPage,
 }: generateMetadataInfoProps) => {
   const supportedLang = supportedLanguages.find((l) => l === lang) || "en";
   initLingui(supportedLang);
@@ -76,7 +78,7 @@ export const generateMetadataInfo = ({
     keywords = [];
   }
 
-  if (currentPath === "quizInterview") {
+  if (currentPath === "case" && interviewId && afterIdPage === "quiz") {
     // interviewId
     const interviewList = getAllInterviews("en").interviews;
     const interview = interviewList.find((i) => i.coreData.id === interviewId);
@@ -93,15 +95,6 @@ export const generateMetadataInfo = ({
       i18n._(`Job Interview Skills`),
       i18n._(`Career Advancement`),
     ];
-  }
-
-  if (currentPath === "interviewLanding") {
-    title = i18n._(`Interview Preparation`) + " | " + APP_NAME;
-    description = i18n._(
-      `Prepare for your interviews with AI-powered tools that help you practice and improve your answers.`
-    );
-    keywords = [];
-    needIndex = false;
   }
 
   if (currentPath === "quiz2") {
@@ -282,7 +275,7 @@ export const generateMetadataInfo = ({
     openGraphImageUrl = scenario?.imageSrc ? `${siteUrl}${scenario.imageSrc}` : openGraphImageUrl;
   }
 
-  if (currentPath === "interview" && !interviewId) {
+  if (currentPath === "case" && !interviewId) {
     let categoryTitle = "";
 
     if (category) {
@@ -314,7 +307,7 @@ export const generateMetadataInfo = ({
       i18n._(`Career Advancement`),
     ];
   }
-  if (currentPath === "interview" && interviewId) {
+  if (currentPath === "case" && interviewId) {
     const { interviews } = getAllInterviews(supportedLang);
     const item = interviews.find((b) => b.coreData.id === interviewId);
     if (!item) {
@@ -345,6 +338,7 @@ export const generateMetadataInfo = ({
   }
 
   const id = scenarioId || blogId || interviewId;
+
   const metadataUrls = getMetadataUrls({
     pagePath: currentPath,
     id,
@@ -353,6 +347,7 @@ export const generateMetadataInfo = ({
       rolePlayId,
     },
     supportedLang,
+    afterIdPage,
   });
 
   return {
@@ -389,6 +384,7 @@ export function getMetadataUrls({
   id,
   queries,
   supportedLang,
+  afterIdPage,
 }: {
   // examples: contacts, pricing, practice
   pagePath: string;
@@ -396,12 +392,14 @@ export function getMetadataUrls({
   // like blogId, scenarioId
   id: string | undefined;
 
+  afterIdPage?: AfterIdPage;
+
   // example: { category: "business" }
   queries: Record<string, string | undefined>;
 
   supportedLang: SupportedLanguage;
 }) {
-  const pathWithId = pagePath + (id ? "/" + id : "");
+  const pathWithId = pagePath + (id ? "/" + id : "") + (afterIdPage ? "/" + afterIdPage : "");
 
   const queryList = Object.entries(queries).map(([key, value]) =>
     value ? `${key}=` + encodeURIComponent(value) : ""

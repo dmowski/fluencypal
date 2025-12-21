@@ -14,7 +14,7 @@ export async function generateListMetadata(props: ListInterviewPageProps): Promi
 
   return generateMetadataInfo({
     lang: (await props.params).lang,
-    currentPath: "interview",
+    currentPath: "case",
     category,
   });
 }

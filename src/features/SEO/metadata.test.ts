@@ -14,6 +14,24 @@ import {
 } from "./metadata";
 import { APP_NAME } from "@/features/Landing/landingSettings";
 
+describe("getMetadataUrls", () => {
+  test("Should correctly generate URLs with afterIdPage", () => {
+    const res = getMetadataUrls({
+      pagePath: "case",
+      id: "123",
+      queries: {},
+      afterIdPage: "quiz",
+      supportedLang: "fr",
+    });
+
+    expect(res.pathWithQueries).toBe("case/123/quiz");
+    expect(res.ogUrl).toBe(res.alternates.languages["fr"]);
+    expect(res.alternates.canonical).toBe("https://www.fluencypal.com/fr/case/123/quiz");
+    expect(res.alternates.languages.fr).toBe("https://www.fluencypal.com/fr/case/123/quiz");
+    expect(res.alternates.languages.en).toBe("https://www.fluencypal.com/case/123/quiz");
+  });
+});
+
 describe("SEO Metadata", () => {
   describe("metadata helpers", () => {
     test("getOpenGraph builds correct object", () => {

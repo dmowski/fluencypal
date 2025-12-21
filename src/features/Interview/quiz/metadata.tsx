@@ -32,6 +32,7 @@ export async function generateInterviewQuizMetadata(
   return generateMetadataInfo({
     lang: supportedLang,
     interviewId: id,
-    currentPath: "quizInterview",
+    currentPath: "case",
+    afterIdPage: "quiz",
   });
 }

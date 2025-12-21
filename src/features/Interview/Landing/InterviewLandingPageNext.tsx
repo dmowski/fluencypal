@@ -32,7 +32,7 @@ export async function generateInterviewMetadata(props: InterviewPageProps): Prom
   return generateMetadataInfo({
     lang: supportedLang,
     interviewId: id,
-    currentPath: "interview",
+    currentPath: "case",
   });
 }
 
