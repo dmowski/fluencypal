@@ -198,7 +198,7 @@ export const CallModeCanvas = ({
             size="large"
             onClick={async () => {
               if (webCam.isWebCamEnabled) {
-                webCam.resetWebCam();
+                webCam.disconnect();
               } else {
                 await webCam.init();
               }

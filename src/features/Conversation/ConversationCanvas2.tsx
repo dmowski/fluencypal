@@ -176,6 +176,12 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         webCam.init();
       }, 500);
     }
+
+    if (!isCallMode && webCam.isWebCamEnabled) {
+      setTimeout(() => {
+        webCam.disconnect();
+      }, 500);
+    }
   }, [isCallMode]);
 
   const bottomSectionHeight = `${height + 40}px`;

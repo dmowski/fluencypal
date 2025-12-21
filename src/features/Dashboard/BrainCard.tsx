@@ -90,7 +90,7 @@ export const BrainCard = () => {
     if (value) {
       router.push(`${getUrlStart(supportedLang)}practice?brain=true`, { scroll: false });
     } else {
-      webCam.resetWebCam();
+      webCam.disconnect();
       setIsAnalyzing(false);
       setIsInstalling(false);
       setInstallProgress(0);
@@ -493,8 +493,8 @@ Address directly to the user.
                         {languagesToLearn.length > 0
                           ? i18n._(`Install:`) + " " + languagesToLearn.join(", ")
                           : isAnalyzing
-                            ? i18n._(`Connecting...`)
-                            : i18n._(`Initiate brain connection`)}
+                          ? i18n._(`Connecting...`)
+                          : i18n._(`Initiate brain connection`)}
                       </Button>
                     </Stack>
                   )}
@@ -657,7 +657,7 @@ Address directly to the user.
           variant="contained"
           onClick={async () => {
             setIsShowPreparingModal(true);
-            webCam.resetWebCam();
+            webCam.disconnect();
           }}
           sx={{
             padding: "15px 100px",
