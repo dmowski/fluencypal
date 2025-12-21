@@ -83,8 +83,8 @@ export const ListInterview = ({ lang, selectedCategoryId }: ListInterviewProps) 
                   variant="body2"
                   href={
                     isAllScenarios
-                      ? `${getUrlStart(lang)}interview`
-                      : `${getUrlStart(lang)}interview?category=${category.categoryId}`
+                      ? `${getUrlStart(lang)}case`
+                      : `${getUrlStart(lang)}case?category=${category.categoryId}`
                   }
                   sx={{
                     color: "#000",
