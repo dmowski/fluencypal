@@ -12,7 +12,7 @@ import { db } from "../Firebase/firebaseDb";
 import { useCurrency } from "../User/useCurrency";
 import { getCountryByIP } from "../User/getCountry";
 import { countries } from "@/libs/countries";
-import { InitUserSettings, UserSettings } from "@/common/user";
+import { AppMode, InitUserSettings, UserSettings } from "@/common/user";
 import { NativeLangCode } from "@/libs/language/type";
 import { useUserSource } from "../Analytics/useUserSource";
 
@@ -29,6 +29,7 @@ interface SettingsContextType {
   setNativeLanguage: (language: NativeLangCode) => Promise<void>;
   userSettings: UserSettings | null;
   onDoneGameOnboarding: () => void;
+  setAppMode: (mode: AppMode) => Promise<void>;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -44,6 +45,7 @@ export const settingsContext = createContext<SettingsContextType>({
   onDoneGameOnboarding: () => {
     throw new Error("onDoneGameOnboarding function is not implemented");
   },
+  setAppMode: async () => {},
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -61,6 +63,11 @@ function useProvideSettings(): SettingsContextType {
     const langCodeValidated = supportedLanguages.find((lang) => lang === languageCode) || "en";
     await setDoc(userSettingsDoc, { languageCode: langCodeValidated }, { merge: true });
     return langCodeValidated;
+  };
+
+  const setAppMode = async (mode: AppMode) => {
+    if (!userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { appMode: mode }, { merge: true });
   };
 
   const initUserSettings = async () => {
@@ -160,6 +167,7 @@ function useProvideSettings(): SettingsContextType {
     setPageLanguage,
     userSettings: userSettings || null,
     onDoneGameOnboarding,
+    setAppMode,
   };
 }
 

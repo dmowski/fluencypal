@@ -12,6 +12,8 @@ export interface InitUserSettings {
   userSource: UserSource | null;
 }
 
+export type AppMode = "interview" | "lang-learning";
+
 export interface UserSettings extends InitUserSettings {
   languageCode: SupportedLanguage | null;
   pageLanguageCode: SupportedLanguage | null;
@@ -24,6 +26,8 @@ export interface UserSettings extends InitUserSettings {
   displayName: string | null;
 
   isCreditCardConfirmed: boolean | null;
+
+  appMode: AppMode | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {
