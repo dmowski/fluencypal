@@ -7,6 +7,8 @@ import { generateSitemap } from "./generateSitemap";
 import fs from "fs";
 import path from "path";
 
+const IS_SAVE_TO_BASELINE = false;
+
 const readBaseline = (filename: string): string => {
   const filePath = path.join(__dirname, "testData", filename);
   return fs.readFileSync(filePath, "utf-8");
@@ -16,8 +18,6 @@ const writeBaseline = (filename: string, data: string): void => {
   const filePath = path.join(__dirname, "testData", filename);
   fs.writeFileSync(filePath, data, "utf-8");
 };
-
-const IS_SAVE_TO_BASELINE = false;
 
 describe("generateSitemap", () => {
   test("Should correctly generate sitemap XML with all required elements", async () => {
