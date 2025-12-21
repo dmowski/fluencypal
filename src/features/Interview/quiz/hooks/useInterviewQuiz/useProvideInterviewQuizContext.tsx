@@ -64,11 +64,10 @@ export function useProvideInterviewQuizContext({
       settings.loading ||
       !auth.uid ||
       !settings.userSettings?.createdAt ||
-      appMode === "interview"
+      (appMode === "interview" && settings.conversationMode === "call")
     ) {
       return;
     }
-
     settings.setAppMode("interview");
     settings.setConversationMode("call");
   }, [settings.loading, appMode, auth.uid]);
