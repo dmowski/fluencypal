@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { LanguageSwitcher } from "../Lang/LanguageSwitcher";
 import MenuIcon from "@mui/icons-material/Menu";
 import { HeaderUIProps } from "./types";
 import { getUrlStart } from "../Lang/getUrlStart";
@@ -190,8 +189,6 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
               height: "100%",
             }}
           >
-            <LanguageSwitcher />
-
             {buttons.map((button) => (
               <Button
                 key={button.href}
@@ -199,7 +196,7 @@ function HeaderUIComponent({ lang, links, buttons, transparentOnTop, logoHref }:
                 onClick={(e) => navigateTo(`${button.href}`, e)}
                 variant={isHighlightJoin ? "contained" : "outlined"}
                 color="info"
-                className="hideOnMobile"
+                className={button.isSolid ? "" : "hideOnMobile"}
                 sx={{
                   minWidth: "max-content",
                 }}

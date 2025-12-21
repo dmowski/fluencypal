@@ -440,7 +440,6 @@ msgstr "Action plan to improve critical backend skills"
 msgid "Active"
 msgstr "Active"
 
-#: src/features/Header/HeaderPractice.tsx:324
 #: src/features/Settings/MyProfile.tsx:234
 #. js-lingui-explicit-id
 msgid "Add some info why you want a refund and we will do it."
@@ -839,7 +838,6 @@ msgstr ""
 
 #: src/features/Dashboard/RulesToLearn.tsx:101
 #: src/features/Dashboard/WordsToLearn.tsx:121
-#: src/features/Header/HeaderPractice.tsx:203
 #. js-lingui-explicit-id
 msgid "Back"
 msgstr "Back"
@@ -2838,8 +2836,6 @@ msgstr "FAQ"
 msgid "Fast Answer Practice"
 msgstr "Fast Answer Practice"
 
-#: src/features/Header/HeaderPractice.tsx:332
-#: src/features/Header/HeaderPractice.tsx:396
 #: src/features/Settings/MyProfile.tsx:83
 #: src/features/Settings/MyProfile.tsx:242
 #. js-lingui-explicit-id
@@ -2884,11 +2880,6 @@ msgstr "Finish"
 #. js-lingui-explicit-id
 msgid "Finish conversation"
 msgstr "Finish conversation"
-
-#: src/features/Header/HeaderPractice.tsx:202
-#. js-lingui-explicit-id
-msgid "Finishing..."
-msgstr "Finishing..."
 
 #: src/features/SEO/metadata.ts:237
 #. js-lingui-explicit-id
@@ -4959,6 +4950,11 @@ msgstr "Job Interview Tips"
 msgid "job interview tips"
 msgstr "job interview tips"
 
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:43
+#. js-lingui-explicit-id
+msgid "Join"
+msgstr "Join"
+
 #: src/features/Interview/data/frontend-senior/reviewSection.ts:11
 #. js-lingui-explicit-id
 msgid "Join candidates who transformed their interview performance"
@@ -5060,12 +5056,12 @@ msgid "Language level:"
 msgstr "Language level:"
 
 #: src/features/Goal/GoalQuestions.tsx:422
-#: src/features/Lang/LanguageSwitcher.tsx:230
+#: src/features/Lang/LanguageSwitcher.tsx:215
 #. js-lingui-explicit-id
 msgid "Language to Learn"
 msgstr "Language to Learn"
 
-#: src/features/Lang/LanguageSwitcher.tsx:187
+#: src/features/Lang/LanguageSwitcher.tsx:172
 #. js-lingui-explicit-id
 msgid "Languages"
 msgstr "Languages"
@@ -5147,8 +5143,6 @@ msgid "Learning Plan"
 msgstr "Learning Plan"
 
 #: src/features/Header/ContactMessageModal.tsx:98
-#: src/features/Header/HeaderPractice.tsx:325
-#: src/features/Header/HeaderPractice.tsx:334
 #: src/features/Settings/MyProfile.tsx:235
 #: src/features/Settings/MyProfile.tsx:244
 #. js-lingui-explicit-id
@@ -5275,7 +5269,6 @@ msgstr "Loading.."
 msgid "Loading..."
 msgstr "Loading..."
 
-#: src/features/Header/HeaderPractice.tsx:423
 #: src/features/Header/HeaderStatic.tsx:23
 #: src/features/Settings/MyProfile.tsx:110
 #. js-lingui-explicit-id
@@ -5539,7 +5532,7 @@ msgid "My Position: <0>{0}</0>"
 msgstr "My Position: <0>{0}</0>"
 
 #: src/features/Dashboard/SelectLanguage.tsx:267
-#: src/features/Lang/LanguageSwitcher.tsx:269
+#: src/features/Lang/LanguageSwitcher.tsx:254
 #. js-lingui-explicit-id
 msgid "Native Language"
 msgstr "Native Language"
@@ -5561,7 +5554,6 @@ msgstr "natural and not robotic"
 msgid "Need help?"
 msgstr "Need help?"
 
-#: src/features/Header/HeaderPractice.tsx:410
 #: src/features/Header/HeaderStatic.tsx:22
 #. js-lingui-explicit-id
 msgid "Need Help?"
@@ -5996,7 +5988,7 @@ msgid "Page"
 msgstr "Page"
 
 #: src/features/Goal/Quiz/PageLanguageSelector.tsx:76
-#: src/features/Lang/LanguageSwitcher.tsx:311
+#: src/features/Lang/LanguageSwitcher.tsx:296
 #. js-lingui-explicit-id
 msgid "Page Language"
 msgstr "Page Language"
@@ -6054,11 +6046,6 @@ msgstr "Payment failed! Please try again."
 #. js-lingui-explicit-id
 msgid "Payment History"
 msgstr "Payment History"
-
-#: src/features/Header/HeaderPractice.tsx:370
-#. js-lingui-explicit-id
-msgid "Payment history"
-msgstr "Payment history"
 
 #: src/features/Usage/PaymentModal.tsx:484
 #. js-lingui-explicit-id
@@ -6971,8 +6958,6 @@ msgstr "Reflex"
 msgid "Refresh"
 msgstr "Refresh"
 
-#: src/features/Header/HeaderPractice.tsx:323
-#: src/features/Header/HeaderPractice.tsx:383
 #: src/features/Settings/MyProfile.tsx:233
 #. js-lingui-explicit-id
 msgid "Refund"
@@ -7583,11 +7568,6 @@ msgstr "Start a conversation to get one."
 msgid "Start a mock interview"
 msgstr "Start a mock interview"
 
-#: src/features/Interview/Landing/components/InterviewHeader.tsx:43
-#. js-lingui-explicit-id
-msgid "Start Free Trial"
-msgstr "Start Free Trial"
-
 #: src/features/Goal/Quiz/GoalReview.tsx:168
 #: src/features/Landing/PlanLandingBlock.tsx:659
 #. js-lingui-explicit-id
@@ -7875,7 +7855,6 @@ msgstr "Submitted"
 msgid "Subscribe"
 msgstr "Subscribe"
 
-#: src/features/Header/HeaderPractice.tsx:358
 #: src/features/Settings/MyProfile.tsx:75
 #: src/features/Usage/SubscriptionPaymentModal.tsx:617
 #. js-lingui-explicit-id
@@ -8687,7 +8666,6 @@ msgstr "Warsaw"
 msgid "WCAG Standards"
 msgstr "WCAG Standards"
 
-#: src/features/Header/HeaderPractice.tsx:333
 #: src/features/Settings/MyProfile.tsx:243
 #. js-lingui-explicit-id
 msgid "We appreciate your feedback!"
@@ -9346,6 +9324,21 @@ msgstr ""
 "— it’s important to engage in this short conversation before jumping into "
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
+
+#: src/features/Header/HeaderPractice.tsx:202
+#. js-lingui-explicit-id
+#~ msgid "Finishing..."
+#~ msgstr "Finishing..."
+
+#: src/features/Header/HeaderPractice.tsx:370
+#. js-lingui-explicit-id
+#~ msgid "Payment history"
+#~ msgstr "Payment history"
+
+#: src/features/Interview/Landing/components/InterviewHeader.tsx:43
+#. js-lingui-explicit-id
+#~ msgid "Start Free Trial"
+#~ msgstr "Start Free Trial"
 
 #: src/features/Interview/data/reusable/priceSection.ts:36
 #. js-lingui-explicit-id

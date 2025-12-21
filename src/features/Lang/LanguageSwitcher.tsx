@@ -3,17 +3,16 @@
 import { useMemo, useState } from "react";
 import { useLingui } from "@lingui/react";
 import { usePathname, useRouter } from "next/navigation";
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import {
   availableOnLabelMap,
-  fullEnglishLanguageName,
   getUserLangCode,
   SupportedLanguage,
   supportedLanguages,
   supportedLanguagesToLearn,
 } from "@/features/Lang/lang";
 import { getUrlStart } from "./getUrlStart";
-import { Globe, GraduationCap, Rabbit } from "lucide-react";
+import { Globe, GraduationCap } from "lucide-react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLocalStorage } from "react-use";
 import { parseLangFromUrl } from "./parseLangFromUrl";
@@ -137,14 +136,25 @@ export function LanguageSwitcher({
               {supportedLangCodeLabel}
             </Button>
           ) : (
-            <IconButton onClick={onOpenModal} title="Select language" aria-label="Select language">
-              <Globe
-                size={"18px"}
-                style={{
-                  opacity: 0.8,
-                }}
-              />
-            </IconButton>
+            <Button
+              onClick={onOpenModal}
+              title="Select language"
+              aria-label="Select language"
+              color="info"
+              startIcon={
+                <Globe
+                  size={"18px"}
+                  style={{
+                    opacity: 0.8,
+                  }}
+                />
+              }
+              sx={{
+                textTransform: "uppercase",
+              }}
+            >
+              {pageLang}
+            </Button>
           )}
         </>
       )}

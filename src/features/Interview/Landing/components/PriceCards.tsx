@@ -150,6 +150,9 @@ export const PriceCards = ({
                           sx={{
                             fontWeight: 600,
                             fontSize: "3rem",
+                            "@media (max-width: 600px)": {
+                              fontSize: "1.8rem",
+                            },
                           }}
                         >
                           {price.priceUsd && <PriceDisplay amountInUsd={price.priceUsd} />}
