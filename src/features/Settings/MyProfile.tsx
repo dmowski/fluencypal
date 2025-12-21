@@ -250,7 +250,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
         isHidden
         isAuth={auth.isAuthorized}
         langToLearn={settings.languageCode || "en"}
-        setLanguageToLearn={settings.setLanguage}
+        setLanguageToLearn={settings.appMode === "learning" ? settings.setLanguage : undefined}
         setPageLanguage={settings.setPageLanguage}
         nativeLang={settings.userSettings?.nativeLanguageCode || "en"}
         setNativeLanguage={settings.setNativeLanguage}
