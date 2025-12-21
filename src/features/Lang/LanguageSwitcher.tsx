@@ -24,7 +24,7 @@ import { useUrlParam } from "../Url/useUrlParam";
 import { NativeLangCode } from "@/libs/language/type";
 
 interface LanguageSwitcherProps {
-  size?: "small" | "large" | "button" | "hidden";
+  isHidden?: boolean;
   isAuth?: boolean;
 
   langToLearn?: SupportedLanguage;
@@ -36,7 +36,7 @@ interface LanguageSwitcherProps {
   setPageLanguage?: (lang: SupportedLanguage) => void;
 }
 export function LanguageSwitcher({
-  size,
+  isHidden,
   isAuth,
   langToLearn,
   setLanguageToLearn,
@@ -112,7 +112,7 @@ export function LanguageSwitcher({
 
   return (
     <Stack sx={{}}>
-      {size !== "hidden" && (
+      {!isHidden && (
         <>
           {supportedLangCodeLabel ? (
             <Button
@@ -137,40 +137,14 @@ export function LanguageSwitcher({
               {supportedLangCodeLabel}
             </Button>
           ) : (
-            <>
-              {size === "button" ? (
-                <>
-                  <Button
-                    sx={{
-                      color: "#fff",
-                    }}
-                    onClick={onOpenModal}
-                    startIcon={<Globe size="20px" />}
-                  >
-                    <Typography
-                      sx={{
-                        textTransform: "none",
-                      }}
-                    >
-                      {fullEnglishLanguageName[langToLearn || "en"]}
-                    </Typography>
-                  </Button>
-                </>
-              ) : (
-                <IconButton
-                  onClick={onOpenModal}
-                  title="Select language"
-                  aria-label="Select language"
-                >
-                  <Globe
-                    size={size == "small" ? "18px" : "22px"}
-                    style={{
-                      opacity: 0.8,
-                    }}
-                  />
-                </IconButton>
-              )}
-            </>
+            <IconButton onClick={onOpenModal} title="Select language" aria-label="Select language">
+              <Globe
+                size={"18px"}
+                style={{
+                  opacity: 0.8,
+                }}
+              />
+            </IconButton>
           )}
         </>
       )}

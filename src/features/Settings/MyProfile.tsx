@@ -247,7 +247,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
       )}
 
       <LanguageSwitcher
-        size="hidden"
+        isHidden
         isAuth={auth.isAuthorized}
         langToLearn={settings.languageCode || "en"}
         setLanguageToLearn={settings.setLanguage}
