@@ -27,6 +27,8 @@ import { usePlan } from "@/features/Plan/usePlan";
 import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
 import { ChatMessage } from "@/common/conversation";
 import { useSettings } from "@/features/Settings/useSettings";
+import { useRouter } from "next/navigation";
+import { sleep } from "@/libs/sleep";
 
 export function useProvideInterviewQuizContext({
   coreData,
@@ -315,8 +317,33 @@ export function useProvideInterviewQuizContext({
     return await data.updateSurvey(updatedSurvey, `Update selected options for step ${stepId}`);
   };
 
+  const router = useRouter();
+
+  const [isRedirectingToApp, setIsRedirectingToApp] = useState(false);
+  const openApp = async () => {
+    const answersKeys = Object.keys(data.survey?.results || {});
+    const planData = answersKeys
+      .map((key) => data.survey?.results?.[key]?.practicePlan)
+      .filter(Boolean)?.[0];
+
+    if (!planData) {
+      alert(
+        "No practice plan available to open the app. Try going back and re-generating the plan."
+      );
+      return;
+    }
+    setIsRedirectingToApp(true);
+    await plan.addGoalPlan(planData);
+    const appUrl = getUrlStart(lang) + "practice";
+    router.push(appUrl);
+
+    await sleep(2000);
+    setIsRedirectingToApp(false);
+  };
+
   return {
     ...core,
+    openApp,
     survey: data.survey,
     currentStep,
     updateSurvey: data.updateSurvey,
@@ -326,5 +353,6 @@ export function useProvideInterviewQuizContext({
     mainPageUrl,
     getSelectedOptionsForStep,
     updateSelectedOptionsForStep,
+    isRedirecting: core.isNavigateToMainPage || isRedirectingToApp,
   };
 }

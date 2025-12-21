@@ -213,6 +213,17 @@ export interface WaitlistDoneQuizStep {
   buttonTitle: string;
 }
 
+export interface DoneQuizStep {
+  type: "done";
+  id: string;
+
+  title: string;
+  subTitle: string;
+  listItems?: QuizListItem[];
+
+  buttonTitle: string;
+}
+
 /** On this step user will record audio answer to interview question. */
 export interface RecordAudioQuizStep {
   type: "record-audio";
@@ -300,7 +311,8 @@ export type InterviewQuizStep =
   | AnalyzeInputsQuizStep
   | PaywallQuizStep
   | WaitlistDoneQuizStep
-  | OptionsQuizStep;
+  | OptionsQuizStep
+  | DoneQuizStep;
 
 export interface InterviewQuiz {
   steps: InterviewQuizStep[];

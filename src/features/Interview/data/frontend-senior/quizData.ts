@@ -265,10 +265,7 @@ Return only the JSON, nothing else. Your response will be passed into javascript
             title: i18n._("Google Calls emulator"),
             iconName: "video",
           },
-          {
-            title: i18n._("CV and LinkedIn review"),
-            iconName: "file-user",
-          },
+
           {
             title: i18n._("Corrected answers for remembering"),
             iconName: "audio-lines",
@@ -364,6 +361,18 @@ Finish the plan with salary negotiation steps.
         ),
         buttonTitle: i18n._("Finish"),
       },
+
+      {
+        type: "done",
+        id: "done",
+        title: i18n._("You're All Set!"),
+        subTitle: i18n._(
+          "Thank you for completing the Senior Frontend Developer interview prep. You can now access your dashboard to start practicing. Good luck!"
+        ),
+        listItems: [],
+        buttonTitle: i18n._("Open Dashboard"),
+      },
+      /*
       {
         type: "waitlist-done",
         id: "completion-step",
@@ -374,6 +383,7 @@ Finish the plan with salary negotiation steps.
         listItems: [],
         buttonTitle: i18n._("Return to Dashboard"),
       },
+      */
     ],
   };
 };

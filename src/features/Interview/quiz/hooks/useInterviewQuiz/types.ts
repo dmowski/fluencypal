@@ -16,6 +16,7 @@ export interface InterviewQuizContextType {
   isStateLoading: boolean;
 
   nextStep: () => void;
+  openApp: () => void;
   prevStep: () => void;
   navigateToMainPage: () => void;
   progress: number;
@@ -42,6 +43,8 @@ export interface InterviewQuizContextType {
     stepId: string,
     selectedOptions: QuizOption[]
   ) => Promise<InterviewQuizSurvey>;
+
+  isRedirecting: boolean;
 }
 
 export interface InterviewQuizProps {

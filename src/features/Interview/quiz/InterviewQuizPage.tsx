@@ -12,7 +12,7 @@ import { IconTextList } from "@/features/Survey/IconTextList";
 import { CardValidatorQuiz } from "@/features/PayWall/CardValidatorQuiz";
 import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
-import { Clock, Trash } from "lucide-react";
+import { BadgeCheck, Check, ChevronRight, Clock, LayoutDashboard, Trash } from "lucide-react";
 import { useDeleteAccount } from "@/features/Auth/useDeleteAccount";
 import { ScorePreviewCard } from "../Landing/components/ScorePreviewSection";
 import { InterviewAuthWall } from "@/features/Auth/InterviewAuthWall";
@@ -41,7 +41,7 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
 
   const isAnalyzingInputs = !!quiz.currentStep && !!quiz.isAnalyzingInputs[quiz.currentStep.id];
 
-  if (quiz.isNavigateToMainPage) {
+  if (quiz.isRedirecting) {
     return <QuizPageLoader />;
   }
 
@@ -186,6 +186,16 @@ export const InterviewQuizPage = ({ lang }: InterviewQuizPageProps) => {
           <InterviewAuthWall width={width}>
             <CardValidatorQuiz lang={lang} onNextStep={quiz.nextStep} />
           </InterviewAuthWall>
+        )}
+
+        {stepType === "done" && quiz.currentStep && (
+          <InfoStep
+            title={quiz.currentStep.title}
+            subTitle={quiz.currentStep.subTitle}
+            actionButtonEndIcon={<LayoutDashboard />}
+            actionButtonTitle={quiz.currentStep.buttonTitle}
+            onClick={() => quiz.openApp()}
+          />
         )}
 
         {stepType === "waitlist-done" && quiz.currentStep && (

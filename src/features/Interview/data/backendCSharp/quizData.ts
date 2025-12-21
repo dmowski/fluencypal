@@ -71,13 +71,14 @@ export const getCsharpBackendDeveloperQuizData = (lang: SupportedLanguage): Inte
         buttonTitle: i18n._("Continue"),
       },
       {
-        type: "waitlist-done",
+        type: "done",
         id: "done",
-        title: i18n._("You're set!"),
+        title: i18n._("You're All Set!"),
         subTitle: i18n._(
-          "Thank you for completing the C# Backend interview prep. We will review your answers and get back to you with full access to the platform.\n\nYou will be notified via email once your trial is activated.\n\nFor now, you can return to the first step and practice again. It's free forever!"
+          "Thank you for completing the Senior Frontend Developer interview prep. You can now access your dashboard to start practicing. Good luck!"
         ),
-        buttonTitle: i18n._("Finish"),
+        listItems: [],
+        buttonTitle: i18n._("Open Dashboard"),
       },
     ],
   };
