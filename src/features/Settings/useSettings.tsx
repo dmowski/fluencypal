@@ -12,7 +12,7 @@ import { db } from "../Firebase/firebaseDb";
 import { useCurrency } from "../User/useCurrency";
 import { getCountryByIP } from "../User/getCountry";
 import { countries } from "@/libs/countries";
-import { AppMode, InitUserSettings, UserSettings } from "@/common/user";
+import { AppMode, ConversationMode, InitUserSettings, UserSettings } from "@/common/user";
 import { NativeLangCode } from "@/libs/language/type";
 import { useUserSource } from "../Analytics/useUserSource";
 
@@ -31,6 +31,9 @@ interface SettingsContextType {
   onDoneGameOnboarding: () => void;
   setAppMode: (mode: AppMode) => Promise<void>;
   appMode: AppMode;
+
+  conversationMode: ConversationMode;
+  setConversationMode: (mode: ConversationMode) => Promise<void>;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -48,6 +51,9 @@ export const settingsContext = createContext<SettingsContextType>({
   },
   setAppMode: async () => {},
   appMode: "learning",
+
+  conversationMode: "record",
+  setConversationMode: async () => {},
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -70,6 +76,11 @@ function useProvideSettings(): SettingsContextType {
   const setAppMode = async (mode: AppMode) => {
     if (!userSettingsDoc) return;
     await setDoc(userSettingsDoc, { appMode: mode }, { merge: true });
+  };
+
+  const setConversationMode = async (mode: ConversationMode) => {
+    if (!userSettingsDoc) return;
+    await setDoc(userSettingsDoc, { conversationMode: mode }, { merge: true });
   };
 
   const initUserSettings = async () => {
@@ -171,6 +182,9 @@ function useProvideSettings(): SettingsContextType {
     onDoneGameOnboarding,
     setAppMode,
     appMode: userSettings?.appMode || "learning",
+
+    conversationMode: userSettings?.conversationMode || "record",
+    setConversationMode,
   };
 }
 

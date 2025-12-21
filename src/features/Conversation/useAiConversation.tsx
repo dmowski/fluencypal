@@ -65,8 +65,6 @@ interface AiConversationContextType {
   isUserSpeaking: boolean;
   toggleMute: (isMute: boolean) => void;
   isMuted: boolean;
-  isCallMode: boolean;
-  setIsCallMode: (isCall: boolean) => void;
   addUserMessage: (message: string) => Promise<void>;
   isShowUserInput: boolean;
   setIsShowUserInput: (value: boolean) => void;
@@ -210,8 +208,8 @@ function useProvideAiConversation(): AiConversationContextType {
 
   const [isMutedStorage, setIsMutedStorage] = useLocalStorage<boolean>("isMuted", true);
 
-  const [isCallModeStorage, setIsCallModeStorage] = useLocalStorage<boolean>("isCallMode", false);
-  const isCallMode = isCallModeStorage ?? false;
+  const conversationMode = settings.conversationMode;
+
   const isMuted = isMutedStorage ?? true;
 
   const [isShowUserInput, setIsShowUserInput] = useLocalStorage<boolean>("isShowUserInput", false);
@@ -896,8 +894,6 @@ My last message was: "${message}".
     currentMode,
     voice,
     conversationId,
-    isCallMode: isCallMode || false,
-    setIsCallMode: setIsCallModeStorage,
     setIsConfirmed,
     isInitializing,
     isStarted,

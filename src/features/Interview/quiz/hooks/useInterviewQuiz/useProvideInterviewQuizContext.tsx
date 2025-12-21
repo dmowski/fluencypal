@@ -68,6 +68,7 @@ export function useProvideInterviewQuizContext({
     }
 
     settings.setAppMode("interview");
+    settings.setConversationMode("call");
   }, [settings.loading, appMode, auth.uid]);
 
   const currentStep = quiz.steps.find((step) => step.id === core.currentStepId) || null;

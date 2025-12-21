@@ -273,11 +273,11 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         isShowMessageProgress={!!aiConversation.goalInfo?.goalElement}
         conversationAnalysisResult={conversationAnalysis}
         generateHelpMessage={generateNextUserMessage}
-        isCallMode={aiConversation.isCallMode}
+        isCallMode={settings.conversationMode == "call"}
         toggleCallMode={(isCallMode) => {
           const isMuted = !isCallMode;
           aiConversation.toggleMute(isMuted);
-          aiConversation.setIsCallMode(isCallMode);
+          settings.setConversationMode(isCallMode ? "call" : "record");
         }}
         isMuted={aiConversation.isMuted}
         setIsMuted={(isMuted) => {

@@ -14,6 +14,8 @@ export interface InitUserSettings {
 
 export type AppMode = "interview" | "learning";
 
+export type ConversationMode = "record" | "call";
+
 export interface UserSettings extends InitUserSettings {
   languageCode: SupportedLanguage | null;
   pageLanguageCode: SupportedLanguage | null;
@@ -28,6 +30,8 @@ export interface UserSettings extends InitUserSettings {
   isCreditCardConfirmed: boolean | null;
 
   appMode: AppMode | null;
+
+  conversationMode: ConversationMode | null;
 }
 
 export interface UserSettingsWithId extends UserSettings {
