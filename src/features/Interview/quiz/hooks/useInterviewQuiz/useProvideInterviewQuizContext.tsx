@@ -26,6 +26,7 @@ import { GoalPlan } from "@/features/Plan/types";
 import { usePlan } from "@/features/Plan/usePlan";
 import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
 import { ChatMessage } from "@/common/conversation";
+import { useSettings } from "@/features/Settings/useSettings";
 
 export function useProvideInterviewQuizContext({
   coreData,
@@ -38,6 +39,9 @@ export function useProvideInterviewQuizContext({
   const path: QuizStep[] = quiz.steps.map((step) => step.id);
   const ai = useTextAi();
   const plan = usePlan();
+
+  const settings = useSettings();
+
   const userInfo = useAiUserInfo();
   const analytics = useAnalytics();
   const [isConfirmedGTag, setIsConfirmedGTag] = useState(false);
@@ -50,6 +54,21 @@ export function useProvideInterviewQuizContext({
     surveyDocRef: db.documents.interviewQuizSurvey(auth.uid, interviewId),
     initEmptyData: initEmptyData,
   });
+
+  const appMode = settings.userSettings?.appMode || null;
+
+  useEffect(() => {
+    if (
+      settings.loading ||
+      !auth.uid ||
+      !settings.userSettings?.createdAt ||
+      appMode === "interview"
+    ) {
+      return;
+    }
+
+    settings.setAppMode("interview");
+  }, [settings.loading, appMode, auth.uid]);
 
   const currentStep = quiz.steps.find((step) => step.id === core.currentStepId) || null;
 
