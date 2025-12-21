@@ -30,7 +30,7 @@ export async function InterviewLanding({
   id: string;
   interviewData: InterviewData;
 }) {
-  const pageUrl = getUrlStart(lang) + `interview/${id}`;
+  const pageUrl = getUrlStart(lang) + `case/${id}`;
   const quizLink = `${pageUrl}/quiz`;
 
   return (

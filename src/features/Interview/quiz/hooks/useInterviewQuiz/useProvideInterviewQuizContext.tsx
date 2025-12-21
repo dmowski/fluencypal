@@ -37,7 +37,7 @@ export function useProvideInterviewQuizContext({
   interviewId,
 }: InterviewQuizProps): InterviewQuizContextType {
   const auth = useAuth();
-  const mainPageUrl = getUrlStart(lang) + `interview/${interviewId}`;
+  const mainPageUrl = getUrlStart(lang) + `case/${interviewId}`;
   const path: QuizStep[] = quiz.steps.map((step) => step.id);
   const ai = useTextAi();
   const plan = usePlan();

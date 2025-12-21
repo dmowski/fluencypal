@@ -14,7 +14,7 @@ export const InterviewCard: React.FC<InterviewCardProps> = ({ item, lang }) => {
   return (
     <Stack
       component={"a"}
-      href={`${getUrlStart(lang)}interview/${item.coreData.id}`}
+      href={`${getUrlStart(lang)}case/${item.coreData.id}`}
       sx={{
         position: "relative",
         backgroundColor: "rgba(0, 0, 10, 0.01)",
