@@ -15,8 +15,8 @@ export const GameMyUsername = () => {
   const isAlreadyTaken = isMyUserName
     ? false
     : game.userNames
-      ? Object.values(game.userNames).some((name) => name === internalUsername)
-      : false;
+    ? Object.values(game.userNames).some((name) => name === internalUsername)
+    : false;
 
   useEffect(() => {
     if (myUsername) {
@@ -50,7 +50,7 @@ export const GameMyUsername = () => {
           opacity: 0.8,
         }}
       >
-        {i18n._("Game username:")}
+        {i18n._("Username:")}
       </Typography>
       <Stack
         sx={{

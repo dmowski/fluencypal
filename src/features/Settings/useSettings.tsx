@@ -30,6 +30,7 @@ interface SettingsContextType {
   userSettings: UserSettings | null;
   onDoneGameOnboarding: () => void;
   setAppMode: (mode: AppMode) => Promise<void>;
+  appMode: AppMode;
 }
 
 export const settingsContext = createContext<SettingsContextType>({
@@ -46,6 +47,7 @@ export const settingsContext = createContext<SettingsContextType>({
     throw new Error("onDoneGameOnboarding function is not implemented");
   },
   setAppMode: async () => {},
+  appMode: "learning",
 });
 
 function useProvideSettings(): SettingsContextType {
@@ -168,6 +170,7 @@ function useProvideSettings(): SettingsContextType {
     userSettings: userSettings || null,
     onDoneGameOnboarding,
     setAppMode,
+    appMode: userSettings?.appMode || "learning",
   };
 }
 
