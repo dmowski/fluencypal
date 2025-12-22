@@ -1,6 +1,7 @@
 import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { getBlogs } from "@/features/Blog/blogData";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
+import { getAllInterviews } from "@/features/Case/data/data";
 
 const updateTime = "2025-08-18T10:01:02+00:00";
 
@@ -52,6 +53,14 @@ export async function generateSitemap(): Promise<string> {
       path: lang,
       priority: "0.7000",
     }));
+
+  const casesData = getAllInterviews("en");
+  const cases = casesData.interviews;
+  const casesCategories = casesData.categoriesList;
+  const casesUrls: UrlDefinition[] = cases.map((item) => ({
+    path: `case/${item.coreData.id}`,
+    priority: "0.7000",
+  }));
 
   const scenariosData = getRolePlayScenarios("en");
   const rolePlayScenarios = scenariosData.rolePlayScenarios;
@@ -137,6 +146,7 @@ export async function generateSitemap(): Promise<string> {
     },
 
     ...localeLinks,
+    ...casesUrls,
     ...scenariosUrls,
     ...scenariosCategoriesUrls,
     ...blogsUrls,
