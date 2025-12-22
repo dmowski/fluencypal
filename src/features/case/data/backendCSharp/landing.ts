@@ -31,6 +31,5 @@ export default function getLanding(lang: SupportedLanguage): InterviewData {
       getBackendCallToActionSection(lang),
     ],
     quiz: getCsharpBackendDeveloperQuizData(lang),
-    isAllowSeoIndexing: false,
   };
 }
