@@ -28,7 +28,7 @@ export function useQuizCore<Step extends string>({
 
   const [stateInput, setStateInput, isStateLoading] = useUrlMapState(
     defaultState as unknown as Record<string, string>,
-    false
+    true
   );
 
   const setState = useCallback(
