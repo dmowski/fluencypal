@@ -62,6 +62,13 @@ export async function generateSitemap(): Promise<string> {
     priority: "0.7000",
   }));
 
+  const casesCategoriesUrls: UrlDefinition[] = casesCategories
+    .filter((item) => item.categoryId !== casesData.allCategory.categoryId)
+    .map((item) => ({
+      path: `case?category=${item.categoryId}`,
+      priority: "0.5000",
+    }));
+
   const scenariosData = getRolePlayScenarios("en");
   const rolePlayScenarios = scenariosData.rolePlayScenarios;
   const rolePlayCategories = scenariosData.categoriesList;
@@ -147,6 +154,7 @@ export async function generateSitemap(): Promise<string> {
 
     ...localeLinks,
     ...casesUrls,
+    ...casesCategoriesUrls,
     ...scenariosUrls,
     ...scenariosCategoriesUrls,
     ...blogsUrls,
