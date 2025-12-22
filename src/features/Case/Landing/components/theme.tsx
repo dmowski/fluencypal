@@ -1,4 +1,4 @@
-export type Theme = "light" | "dark-red" | "dark-blue";
+export type Theme = "light" | "dark-red" | "dark-blue" | "gray";
 
 export interface ColorScheme {
   sectionBgColor: string;
@@ -17,5 +17,9 @@ export const themeMap: Record<Theme, ColorScheme> = {
   "dark-blue": {
     sectionBgColor: "rgba(10, 18, 30, 1)",
     textColor: "#FFFFFF",
+  },
+  gray: {
+    sectionBgColor: "#11131a",
+    textColor: "#fff",
   },
 };

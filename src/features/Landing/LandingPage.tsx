@@ -16,6 +16,7 @@ import { getUrlStart } from "../Lang/getUrlStart";
 import Script from "next/script";
 import { HeaderStatic } from "../Header/HeaderStatic";
 import { PlanLandingBlock } from "./PlanLandingBlock";
+import { WebcamSection } from "../Case/Landing/components/WebcamSection";
 
 interface LandingPageProps {
   lang: SupportedLanguage;
@@ -114,6 +115,52 @@ export default function LandingPage({ lang }: LandingPageProps) {
             )}
             lang={lang}
           />
+
+          <WebcamSection
+            theme={"gray"}
+            id="webcam-section"
+            data={{
+              type: "webcamDemo",
+              title: i18n._("Practice Speaking with AI"),
+              subTitle: i18n._(
+                "Get instant AI feedback on clarity, vocabulary, and flow — while you speak."
+              ),
+              content: i18n._(
+                "Practice real conversations and explain your thoughts out loud in a safe, pressure-free environment — without fear of mistakes."
+              ),
+              infoList: [
+                {
+                  title: i18n._("Speak naturally, without overthinking"),
+                  iconName: "mic",
+                  iconColor: "#c2c2c2",
+                },
+                {
+                  title: i18n._("Get clear, actionable AI feedback"),
+                  iconName: "message-circle",
+                  iconColor: "#c2c2c2",
+                },
+                {
+                  title: i18n._("Build confidence through real practice"),
+                  iconName: "chart-bar",
+                  iconColor: "#c2c2c2",
+                },
+              ],
+              webCamPreview: {
+                videoUrl: "/interview/interviewWebPreview2.webm",
+                title: i18n._("Conversation Practice"),
+                participants: i18n._("AI conversation"),
+
+                beforeSectionTitle: i18n._("Warm-up"),
+                beforeSectionSubTitle: i18n._("Done"),
+
+                afterSectionTitle: i18n._("Free Conversation"),
+                afterSectionSubTitle: i18n._("Next"),
+              },
+              buttonTitle: i18n._("Start speaking practice"),
+            }}
+            buttonHref={`${getUrlStart(lang)}case`}
+          />
+
           <PlanLandingBlock lang={lang} />
 
           <ProposalCards
