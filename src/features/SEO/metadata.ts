@@ -310,9 +310,7 @@ export const generateMetadataInfo = ({
   if (currentPath === "case" && interviewId) {
     const { interviews } = getAllInterviews(supportedLang);
     const item = interviews.find((b) => b.coreData.id === interviewId);
-    if (!item) {
-      needIndex = false;
-    }
+    needIndex = !!item && item.isAllowSeoIndexing;
 
     title = `${item?.coreData.title || "Interview not found"} - ` + i18n._(`| FluencyPal`);
     description = item?.coreData.subTitle || "";
