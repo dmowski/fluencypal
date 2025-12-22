@@ -3,8 +3,8 @@ import {
   generateInterviewQuizMetadata,
   generateInterviewQuizStaticParams,
   InterviewQuizPageProps,
-} from "@/features/Interview/quiz/metadata";
-import { InterviewQuizPageNext } from "@/features/Interview/quiz/InterviewQuizPageNext";
+} from "@/features/Case/quiz/metadata";
+import { InterviewQuizPageNext } from "@/features/Case/quiz/InterviewQuizPageNext";
 
 export async function generateStaticParams() {
   return generateInterviewQuizStaticParams();

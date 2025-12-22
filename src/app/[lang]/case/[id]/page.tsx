@@ -4,7 +4,7 @@ import {
   generateInterviewStaticParams,
   generateInterviewMetadata,
   InterviewLandingPageNext,
-} from "@/features/Interview/Landing/InterviewLandingPageNext";
+} from "@/features/Case/Landing/InterviewLandingPageNext";
 
 export async function generateStaticParams() {
   return generateInterviewStaticParams();
