@@ -35,6 +35,5 @@ export default function getLandingData(lang: SupportedLanguage): InterviewData {
       getCallToActionSection(lang),
     ],
     quiz: getQuizData(lang),
-    isAllowSeoIndexing: true,
   };
 }
