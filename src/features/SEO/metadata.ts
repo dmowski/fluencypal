@@ -8,7 +8,7 @@ import { initLingui } from "@/initLingui";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
 import { getBlogs } from "@/features/Blog/blogData";
 import { getLangLearnPlanLabels } from "@/features/Lang/getLabels";
-import { getAllInterviews } from "../Case2/data/data";
+import { getAllInterviews } from "../Case/data/data";
 
 type Page =
   | "contacts"
@@ -490,11 +490,14 @@ export const generateAlternatesTags = ({
   path: string;
   lang: SupportedLanguage;
 }) => {
-  const hreflangLinks = supportedLanguages.reduce((acc, lang) => {
-    acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (path ? "/" : "")}${path}`;
+  const hreflangLinks = supportedLanguages.reduce(
+    (acc, lang) => {
+      acc[lang] = `${siteUrl}${lang === "en" ? "" : lang + (path ? "/" : "")}${path}`;
 
-    return acc;
-  }, {} as Record<SupportedLanguage, string>);
+      return acc;
+    },
+    {} as Record<SupportedLanguage, string>
+  );
 
   return {
     canonical: hreflangLinks[lang],

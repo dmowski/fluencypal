@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { ColorIconTextList, ColorIconTextListItem } from "./ColorIconTextList";
 import { InterviewQuizButton } from "../Goal/Quiz/InterviewQuizButton";
-import { QuizOption } from "../Case2/types";
+import { QuizOption } from "../Case/types";
 import { useAuth } from "../Auth/useAuth";
 
 const replacePlaceholders = (text: string, placeholders: Record<string, string>) => {

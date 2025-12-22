@@ -20,7 +20,7 @@ import { GoalPlan } from "../Plan/types";
 import { GameAvatars, GameLastVisit, GameUserNames, GameUsersPoints } from "../Game/types";
 import { QuizSurvey2 } from "../Goal/Quiz/types";
 import { DailyQuestionAnswer, DailyQuestionLike } from "../Game/DailyQuestion/types";
-import { InterviewQuizSurvey } from "../Case2/types";
+import { InterviewQuizSurvey } from "../Case/types";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;

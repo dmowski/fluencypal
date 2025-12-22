@@ -1,7 +1,7 @@
 import { SupportedLanguage, supportedLanguages } from "@/features/Lang/lang";
 import { getBlogs } from "@/features/Blog/blogData";
 import { getRolePlayScenarios } from "@/features/RolePlay/rolePlayData";
-import { getAllInterviews } from "@/features/Case2/data/data";
+import { getAllInterviews } from "@/features/Case/data/data";
 
 const updateTime = "2025-12-22T12:01:02+00:00";
 
