@@ -54,7 +54,7 @@ test.describe("Lighthouse Audit", () => {
   });
 
   test("Interview Landing page (EN)", async ({ page }: { page: Page }) => {
-    await page.goto("/interview/senior-frontend-developer");
+    await page.goto("/case/senior-frontend-developer");
     if (await isDevMode(page)) return;
 
     await playAudit({
