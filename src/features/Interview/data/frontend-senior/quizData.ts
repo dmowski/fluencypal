@@ -313,7 +313,6 @@ Finish the plan with salary negotiation steps.
         ],
         buttonTitle: i18n._("See Results"),
       },
-      */
 
       {
         type: "paywall",
@@ -323,6 +322,9 @@ Finish the plan with salary negotiation steps.
         listItems: [],
         buttonTitle: i18n._("Start Trial"),
       },
+
+      */
+
       {
         type: "analyze-inputs",
         id: "ai-feedback-step-2",

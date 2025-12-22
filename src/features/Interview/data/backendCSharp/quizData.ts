@@ -58,7 +58,7 @@ export const getCsharpBackendDeveloperQuizData = (lang: SupportedLanguage): Inte
           "Analyze the user's backend interview answers and provide strengths, weaknesses, and suggested improvements in markdown.",
         aiResponseFormat: "markdown",
       },
-      {
+      /*{
         type: "paywall",
         id: "upgrade",
         title: i18n._("Unlock full analysis and tailored preparation"),
@@ -69,7 +69,7 @@ export const getCsharpBackendDeveloperQuizData = (lang: SupportedLanguage): Inte
           { title: i18n._("Behavioral coaching"), iconName: "message-square" },
         ],
         buttonTitle: i18n._("Continue"),
-      },
+      },*/
       {
         type: "done",
         id: "done",
