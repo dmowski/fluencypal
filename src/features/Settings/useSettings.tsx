@@ -181,12 +181,19 @@ function useProvideSettings(): SettingsContextType {
     userSettings: userSettings || null,
     onDoneGameOnboarding,
     setAppMode,
-    appMode: userSettings?.appMode || "learning",
+    appMode: clearAppMode(userSettings?.appMode || ""),
 
     conversationMode: userSettings?.conversationMode || "record",
     setConversationMode,
   };
 }
+
+const clearAppMode = (mode: string): AppMode => {
+  if (mode === "interview" || mode === "learning") {
+    return mode;
+  }
+  return "learning";
+};
 
 export function SettingsProvider({ children }: { children: ReactNode }): JSX.Element {
   const settings = useProvideSettings();

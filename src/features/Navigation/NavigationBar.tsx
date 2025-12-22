@@ -37,7 +37,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
   const game = useGame();
   const auth = useAuth();
   const settings = useSettings();
-  const appMode = settings.userSettings?.appMode;
+  const appMode = settings.appMode;
   const userPhoto = game.gameAvatars?.[auth.uid] || "";
   const userName = game.userNames?.[auth.uid];
   const { bottomOffset } = useWindowSizes();
