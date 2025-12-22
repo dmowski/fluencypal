@@ -79,9 +79,10 @@ export const generateMetadataInfo = ({
   }
 
   if (currentPath === "case" && interviewId && afterIdPage === "quiz") {
-    // interviewId
     const interviewList = getAllInterviews("en").interviews;
     const interview = interviewList.find((i) => i.coreData.id === interviewId);
+    needIndex = !!interview;
+
     title = `${interview?.coreData.title || "Interview Quiz"} - ` + i18n._(`| FluencyPal`);
     description = i18n._(
       `Test your interview skills with FluencyPal's AI-powered interview quiz. Practice answering common questions, receive instant feedback, and boost your confidence for real interviews.`
@@ -310,7 +311,7 @@ export const generateMetadataInfo = ({
   if (currentPath === "case" && interviewId) {
     const { interviews } = getAllInterviews(supportedLang);
     const item = interviews.find((b) => b.coreData.id === interviewId);
-    needIndex = !!item && item.isAllowSeoIndexing;
+    needIndex = !!item;
 
     title = `${item?.coreData.title || "Interview not found"} - ` + i18n._(`| FluencyPal`);
     description = item?.coreData.subTitle || "";

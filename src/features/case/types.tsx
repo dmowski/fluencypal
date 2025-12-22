@@ -331,7 +331,6 @@ export interface InterviewData {
   coreData: InterviewCoreData;
   sections: Section[];
   quiz: InterviewQuiz;
-  isAllowSeoIndexing: boolean;
 }
 
 export interface InterviewQuizAnswer {
