@@ -65,7 +65,15 @@ export const transcribeAudioFileWithOpenAI = async ({
         : undefined,
     });
 
-    const output = transcriptionResult.text || "";
+    let output = transcriptionResult.text || "";
+
+    if (
+      output
+        .trim()
+        .includes("context: ### Transcribe the audio. Keep grammar mistakes and typos. ###")
+    ) {
+      output = "";
+    }
 
     const response: TranscriptResponse = {
       transcript: output,
