@@ -10,24 +10,24 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
       {
         type: "info",
         id: "intro-step",
-        title: i18n._("Welcome to Your Senior Frontend Developer Interview Prep"),
+        title: i18n._("Welcome to Your Junior Frontend Developer Interview Prep"),
         subTitle: i18n._(
-          "In this session, you'll answer questions designed for senior frontend roles. After responding, you'll receive feedback to help you refine your answers and improve your interview skills."
+          "In this session, you'll answer questions designed for junior frontend roles. After responding, you'll receive feedback to help you improve your answers, confidence, and interview structure."
         ),
         buttonTitle: i18n._("Start Test"),
         listItems: [
           {
-            title: i18n._("Real senior-level frontend questions"),
+            title: i18n._("Real junior-level frontend questions"),
             iconName: "lightbulb",
             iconColor: "rgb(96, 165, 250)",
           },
           {
-            title: i18n._("AI-driven feedback on your answers"),
+            title: i18n._("AI feedback on clarity and fundamentals"),
             iconName: "badge-check",
             iconColor: "rgb(96, 165, 250)",
           },
           {
-            title: i18n._("Personalized improvement suggestions"),
+            title: i18n._("Practical tips you can apply immediately"),
             iconName: "circle-fading-arrow-up",
             iconColor: "rgb(96, 165, 250)",
           },
@@ -43,7 +43,7 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
 
         title: i18n._("Microphone Access"),
         subTitle: i18n._(
-          "In the next step, you'll need to record audio. Please verify your microphone is ready and allow access when asked."
+          "In the next step, you'll record audio. Please check your microphone and allow access when asked."
         ),
         listItems: [],
         buttonTitle: i18n._("Continue"),
@@ -54,36 +54,37 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         id: "introduce-yourself-step",
         title: i18n._("Introduce Yourself"),
         subTitle: i18n._(
-          "Tell us about your background, experience, and what makes you a great Senior Frontend Developer."
+          "Tell us about your background, what you've learned so far, and what you want to improve as a Junior Frontend Developer."
         ),
         buttonTitle: i18n._("Record Answer"),
         listItems: [
           {
-            title: i18n._("Highlight your frontend experience"),
+            title: i18n._("Mention your tech stack (React/JS/HTML/CSS)"),
             iconName: "history",
           },
-          { title: i18n._("Mention key projects or achievements"), iconName: "crown" },
-          { title: i18n._("Keep it concise and relevant"), iconName: "box" },
+          { title: i18n._("Describe 1–2 small projects you've built"), iconName: "folder-code" },
+          { title: i18n._("Share what you're currently learning"), iconName: "sparkles" },
         ],
       },
+
       {
         type: "record-audio",
         id: "technical-question-step",
         title: i18n._("Technical Question"),
         subTitle: i18n._(
-          "How would you design the frontend architecture for a large-scale dashboard with real-time data updates?"
+          "In React, what's the difference between state and props? Give a simple example."
         ),
         buttonTitle: i18n._("Record Answer"),
         listItems: [
           {
-            title: i18n._("Discuss component structure and state management"),
-            iconName: "puzzle",
+            title: i18n._("Explain it in plain words"),
+            iconName: "message-circle",
           },
           {
-            title: i18n._("Address performance considerations"),
-            iconName: "gauge",
+            title: i18n._("Give a small example (counter, input, button)"),
+            iconName: "puzzle",
           },
-          { title: i18n._("Mention scalability and maintainability"), iconName: "expand" },
+          { title: i18n._("Mention re-render behavior briefly"), iconName: "refresh-cw" },
         ],
       },
 
@@ -92,19 +93,19 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         id: "behavioral-question-step",
         title: i18n._("Behavioral Question"),
         subTitle: i18n._(
-          "Describe a time you led a frontend refactor or migration. What challenges did you face and how did you overcome them?"
+          "Tell about a time you were stuck on a bug. How did you find the cause and fix it?"
         ),
         buttonTitle: i18n._("Record Answer"),
         listItems: [
           {
-            title: i18n._("Use the STAR method (Situation, Task, Action, Result)"),
-            iconName: "star",
+            title: i18n._("Explain your steps (reproduce, isolate, fix, verify)"),
+            iconName: "route",
           },
           {
-            title: i18n._("Highlight your leadership and problem-solving skills"),
-            iconName: "users",
+            title: i18n._("Mention tools you used (console, DevTools, logs)"),
+            iconName: "wrench",
           },
-          { title: i18n._("Be specific about your role"), iconName: "user-check" },
+          { title: i18n._("Finish with what you learned"), iconName: "graduation-cap" },
         ],
       },
 
@@ -114,29 +115,30 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
         title: i18n._("AI Feedback on Your Answers"),
         subTitle: "",
         buttonTitle: i18n._("Continue"),
-        aiSystemPrompt: `Provide brief feedback on the user's answers in JSON format, focusing on technical depth, clarity, and structure. 
+        aiSystemPrompt: `Provide brief feedback on the user's answers in JSON format, focusing on fundamentals, clarity, and structure for a Junior Frontend Developer interview.
 
 Use this JSON structure for your response:
 {
   label: "Interview Readiness Score",
-  totalScore: 82,
-  description: "Strong knowledge of React and TypeScript. Slight gaps in communication and leadership answers.",
+  totalScore: 72,
+  description: "Good basics in React and JavaScript. Improve explanation clarity and give more concrete examples.",
   scoreMetrics: [
-    { title: "React & TypeScript", score: 88 },
-    { title: "Coding Skills", score: 90 },
-    { title: "Problem Solving", score: 80 },
-    { title: "Communication & Leadership", score: 70 },
-  ],
+    { title: "React Fundamentals", score: 75 },
+    { title: "JavaScript Basics", score: 70 },
+    { title: "Problem Solving", score: 72 },
+    { title: "Communication", score: 68 }
+  ]
 }
 
 totalScore should be an overall score out of 100.
 Each score in scoreMetrics should be between 0 and 100.
 description should summarize strengths and areas for improvement.
 
-Return only the JSON, nothing else. Your response will be passed into javascript JSON.parse() function. 
+Return only the JSON, nothing else. Your response will be passed into javascript JSON.parse() function.
 `,
         aiResponseFormat: "json-scope",
       },
+
       {
         type: "info",
         id: "score-intro-step",
@@ -144,29 +146,24 @@ Return only the JSON, nothing else. Your response will be passed into javascript
         subTitle: i18n._(
           "On the next steps, you'll receive a detailed analysis of your answers and example responses to help you improve."
         ),
-        //imageUrl: "https://cdn-useast1.kapwing.com/static/templates/x-x-everywhere-meme-template-full-96173e84.webp",
         imageAspectRatio: "16/9",
         listItems: [
           {
             title: i18n._("Screening interview with AI recruiter"),
             iconName: "webcam",
-            //iconColor: "rgb(96, 165, 250)",
           },
           {
             title: i18n._("Tech interview with AI frontend developer"),
             iconName: "webcam",
-            //iconColor: "rgb(96, 165, 250)",
           },
           {
-            title: i18n._("Salary negotiation interview with AI SEO"),
-            iconName: "webcam",
-            //iconColor: "rgb(96, 165, 250)",
+            title: i18n._("Practical coding Q&A and debugging practice"),
+            iconName: "terminal",
           },
           {
             title: i18n._("Google Calls emulator"),
             iconName: "video",
           },
-
           {
             title: i18n._("Corrected answers for remembering"),
             iconName: "audio-lines",
@@ -174,27 +171,29 @@ Return only the JSON, nothing else. Your response will be passed into javascript
         ],
         buttonTitle: i18n._("Continue"),
       },
+
       {
         id: "ai-practice-plant",
         type: "analyze-inputs",
         title: i18n._("Preparation plan") + " {FOR_USER_NAME}",
         subTitle: i18n._(
-          "Here's a personalized training plan we'll use during your preparation. Step by step, you'll improve your answers and prepare for next-level results."
+          "Here's a personalized training plan you'll follow. Step by step, you'll strengthen fundamentals, improve your answers, and feel more confident in junior interviews."
         ),
         buttonTitle: i18n._("Continue"),
         aiSystemPrompt: `
-Your goal is to create a personalized plan for preparing for Senior Frontend Developer interview.
+Your goal is to create a personalized plan for preparing for a Junior Frontend Developer interview.
 Always use second-person language ("you", "your").
 
 Below is a conversation between a student (User) and a teacher (AI Interviewer).
-Based on the user's level, generate a personalized practice plan that can be completed using our AI-powered language learning app.
+Based on the user's level, generate a personalized practice plan that can be completed using our AI-powered app.
 
 Important: Do not focus on language learning, but rather on interview preparation.
 
-Start your plan with interview answers improvement.
+Start your plan with improving interview answers (clarity + structure + examples).
 
-Finish the plan with salary negotiation steps.
+Focus on fundamentals: HTML/CSS basics, JavaScript basics, React basics, debugging workflow, and small project explanations.
 
+Finish the plan with a simple negotiation section (how to talk about junior salary expectations and growth).
 `,
         aiResponseFormat: "practice-plan",
       },
@@ -205,15 +204,23 @@ Finish the plan with salary negotiation steps.
         title: i18n._("AI Feedback on Your Answers"),
         subTitle: i18n._("Here's the rest of your personalized feedback to help you improve."),
         buttonTitle: i18n._("Continue"),
-        aiSystemPrompt: `Provide a score breakdown of the user's answers, focusing on technical depth, clarity, and structure. Return improved answers and give hints on how to answer such questions better. For each answer, break down the score into Technical Depth (0%-100%), Clarity (0%-100%), Structure (0%-100%), and Communication (0%-100%). Structure your response as follows:
-### Question 1: 
+        aiSystemPrompt: `Provide a score breakdown of the user's answers for a Junior Frontend Developer interview, focusing on fundamentals, clarity, and structure. Return improved answers and give hints on how to answer such questions better.
+
+For each answer, break down the score into:
+- Fundamentals (0%-100%)
+- Clarity (0%-100%)
+- Structure (0%-100%)
+- Communication (0%-100%)
+
+Structure your response as follows:
+### Question 1:
 [question here]
 
 ### Answer:
 [user's answer here]
 
 ### Score Breakdown:
-- Technical Depth: X%
+- Fundamentals: X%
 - Clarity: X%
 - Structure: X%
 - Communication: X%
@@ -234,7 +241,7 @@ Finish the plan with salary negotiation steps.
         id: "done",
         title: i18n._("You're All Set!"),
         subTitle: i18n._(
-          "Thank you for completing the Senior Frontend Developer interview prep. You can now access your dashboard to start practicing. Good luck!"
+          "Thank you for completing the Junior Frontend Developer interview prep. You can now open your dashboard and keep practicing. Good luck!"
         ),
         listItems: [],
         buttonTitle: i18n._("Open Dashboard"),
