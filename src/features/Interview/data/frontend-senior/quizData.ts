@@ -354,15 +354,6 @@ Finish the plan with salary negotiation steps.
 `,
         aiResponseFormat: "markdown",
       },
-      {
-        type: "info",
-        id: "whats-next-step",
-        title: i18n._("What's Next?"),
-        subTitle: i18n._(
-          "Continue practicing with more questions, track your progress, and refine your answers to ace your next interview."
-        ),
-        buttonTitle: i18n._("Finish"),
-      },
 
       {
         type: "done",
