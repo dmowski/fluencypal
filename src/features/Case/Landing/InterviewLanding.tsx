@@ -17,7 +17,6 @@ import { TechStackSection } from "./components/TechStackSection";
 import { TextListSection } from "./components/TextListSection";
 import { DemoSnippetSection } from "./components/DemoSnippetSection";
 import { FaqScript } from "./components/FaqScript";
-import { InterviewAnalytics } from "@/features/Analytics/InterviewAnalytics";
 import { Theme } from "./components/theme";
 import { WebcamSection } from "./components/WebcamSection";
 
