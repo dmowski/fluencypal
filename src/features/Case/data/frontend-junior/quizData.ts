@@ -1,19 +1,15 @@
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { InterviewQuiz } from "../../types";
 import { getI18nInstance } from "@/appRouterI18n";
-import { getTechData } from "./techData";
 
 export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
   const i18n = getI18nInstance(lang);
-  const techData = getTechData(lang);
 
   return {
     steps: [
       {
         type: "info",
         id: "intro-step",
-        //imageUrl: "https://miro.medium.com/v2/resize:fit:1000/0*3MEWjTpT0sZF-LZM.png",
-        // imageAspectRatio: "500/190",
         title: i18n._("Welcome to Your Senior Frontend Developer Interview Prep"),
         subTitle: i18n._(
           "In this session, you'll answer questions designed for senior frontend roles. After responding, you'll receive feedback to help you refine your answers and improve your interview skills."
@@ -37,101 +33,6 @@ export const getQuizData = (lang: SupportedLanguage): InterviewQuiz => {
           },
         ],
       },
-
-      /*
-      {
-        type: "options",
-        id: "your-level-step",
-        title: i18n._("What best describes your current level?"),
-        subTitle: i18n._("This helps us calibrate interview expectations."),
-        multipleSelection: false,
-        options: [
-          { label: i18n._("Mid-level Frontend Developer") },
-          { label: i18n._("Senior Frontend Developer") },
-          { label: i18n._("Frontend Lead / Tech Lead") },
-          { label: i18n._("Full-stack with strong frontend focus") },
-        ],
-        buttonTitle: i18n._("Next"),
-      },
-
-      {
-        type: "options",
-        id: "interview-timeline",
-        title: i18n._("When is your next important interview?"),
-        subTitle: i18n._("We’ll adjust preparation intensity."),
-        multipleSelection: false,
-        options: [
-          { label: i18n._("Within 7 days") },
-          { label: i18n._("1–2 weeks") },
-          { label: i18n._("Within a month") },
-          { label: i18n._("Not scheduled yet") },
-        ],
-        buttonTitle: i18n._("See Results"),
-      },
-
-      {
-        type: "options",
-        id: "job-search-blocker",
-        title: i18n._("Where do you get stuck in the job search?"),
-        subTitle: i18n._("Choose the stage where things usually break down for you."),
-        multipleSelection: false,
-        options: [
-          {
-            label: i18n._("I don’t get responses to my job applications"),
-            subTitle: i18n._("My CV or profile doesn’t lead to interview invitations"),
-          },
-          {
-            label: i18n._("I don’t get invited to the next step after talking to a recruiter"),
-            subTitle: i18n._("Screening calls don’t turn into technical interviews"),
-          },
-          {
-            label: i18n._("I fail technical interviews"),
-            subTitle: i18n._("System design, coding, or frontend fundamentals hold me back"),
-          },
-          {
-            label: i18n._("I struggle to negotiate salary"),
-            subTitle: i18n._("I can’t reach my target compensation or close the offer"),
-          },
-        ],
-        buttonTitle: i18n._("Continue"),
-      },
-
-      {
-        type: "options",
-        id: "primary-framework",
-        title: i18n._("Which frontend stack do you mainly work with?"),
-        subTitle: i18n._("Your answers will be evaluated against this stack."),
-        multipleSelection: false,
-        options: [
-          { label: i18n._("React / Next.js"), iconImageUrl: techData["react-nextjs"].logoUrl },
-          { label: i18n._("Vue / Nuxt"), iconImageUrl: techData["vue-pinia"].logoUrl },
-          { label: i18n._("Angular"), iconImageUrl: techData["angular-rxjs"].logoUrl },
-          { label: i18n._("Multiple frameworks"), iconImageUrl: techData.typescript.logoUrl },
-          {
-            label: i18n._("Other / Vanilla JS"),
-            iconImageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
-          },
-        ],
-        buttonTitle: i18n._("Next"),
-      },
-    {
-        type: "info",
-        id: "don-t-rush",
-        title: i18n._("Don't Rush Your Answers"),
-        subTitle: i18n._(
-          "No one gets a job just because they answer quickly. Take your time to think through your responses carefully."
-        ),
-        buttonTitle: i18n._("Got it"),
-        listItems: [
-          { title: i18n._("Reflect before answering"), iconName: "brain" },
-          {
-            title: i18n._("You can pause and think"),
-            iconName: "pause",
-          },
-          { title: i18n._("Re-record if needed"), iconName: "repeat" },
-        ],
-      },
-      */
 
       {
         type: "info",
@@ -298,33 +199,6 @@ Finish the plan with salary negotiation steps.
         aiResponseFormat: "practice-plan",
       },
 
-      /*
-      {
-        type: "options",
-        id: "payment-plan",
-        title: i18n._("Which plan is right for you?"),
-        subTitle: i18n._("No payment after trial. Cancel anytime."),
-        multipleSelection: false,
-        options: [
-          { label: i18n._("Free"), subTitle: i18n._("1 days of full access") },
-          { label: i18n._("1 week, 30$"), subTitle: i18n._("3 days free trial") }, /// xxx
-          { label: i18n._("1 month, 60$"), subTitle: i18n._("3 days free trial") },
-          { label: i18n._("4 month, 90$"), subTitle: i18n._("4 days free trial") },
-        ],
-        buttonTitle: i18n._("See Results"),
-      },
-
-      {
-        type: "paywall",
-        id: "upgrade-step",
-        title: i18n._("Unlock Your Trial and Get Full Feedback"),
-        subTitle: i18n._("No payment required after trial. You decide when to pay."),
-        listItems: [],
-        buttonTitle: i18n._("Start Trial"),
-      },
-
-      */
-
       {
         type: "analyze-inputs",
         id: "ai-feedback-step-2",
@@ -365,18 +239,6 @@ Finish the plan with salary negotiation steps.
         listItems: [],
         buttonTitle: i18n._("Open Dashboard"),
       },
-      /*
-      {
-        type: "waitlist-done",
-        id: "completion-step",
-        title: i18n._("You're All Set!"),
-        subTitle: i18n._(
-          "Thank you for completing the Senior Frontend Developer interview prep. You will be notified via email once your trial is activated. It may take some time."
-        ),
-        listItems: [],
-        buttonTitle: i18n._("Return to Dashboard"),
-      },
-      */
     ],
   };
 };
