@@ -125,6 +125,11 @@ export async function generateSitemap(): Promise<string> {
     },
 
     {
+      path: "case",
+      priority: "0.8000",
+    },
+
+    {
       path: "blog",
       priority: "0.8000",
     },
