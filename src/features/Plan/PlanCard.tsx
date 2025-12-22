@@ -134,7 +134,7 @@ export const PlanCard = ({
                 color="info"
                 size="large"
               >
-                {i18n._(`Start lesson`)}
+                {i18n._(`Start`)}
               </Button>
             </Stack>
           </Stack>

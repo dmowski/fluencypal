@@ -565,7 +565,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           sx={{
             maxWidth: "900px",
             padding: "0",
-            paddingBottom: bottomSectionHeight,
+
             boxSizing: "border-box",
             width: "100%",
             gap: "0px",
@@ -581,6 +581,13 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
           }}
         >
           <Messages conversation={conversation} />
+          <Stack
+            sx={{
+              height: bottomSectionHeight,
+              //backgroundColor: "rgba(255, 33, 40, 0.1)",
+              width: "100%",
+            }}
+          />
         </Stack>
 
         <Stack
