@@ -67,16 +67,21 @@ export const transcribeAudioFileWithOpenAI = async ({
 
     let output = transcriptionResult.text || "";
 
-    if (
-      output
-        .trim()
-        .includes("context: ### Transcribe the audio. Keep grammar mistakes and typos. ###")
-    ) {
-      output = "";
-    }
+    const badContents = [
+      "transcribe the audio",
+      "Transcribe the audio",
+      "keep grammar mistakes and typos",
+      "context: ### Transcribe the audio. Keep grammar mistakes and typos. ###",
+    ];
+
+    badContents.forEach((badContent) => {
+      if (output.toLowerCase().includes(badContent.toLowerCase())) {
+        output = output.toLowerCase().replaceAll(badContent.toLowerCase(), "").trim();
+      }
+    });
 
     const response: TranscriptResponse = {
-      transcript: output,
+      transcript: output || "...",
       error: null,
     };
 
