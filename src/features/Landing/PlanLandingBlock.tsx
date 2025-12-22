@@ -1,12 +1,12 @@
 import { Button, Stack, Typography } from "@mui/material";
-import { buttonStyle, maxLandingWidth, subTitleFontStyle, titleFontStyle } from "./landingSettings";
-import { SupportedLanguage, supportedLanguagesToLearn } from "@/features/Lang/lang";
+import { buttonStyle, maxLandingWidth, subTitleFontStyle } from "./landingSettings";
+import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
 import { cardColors, modeCardProps } from "../Plan/data";
 import { PlanElement, PlanElementMode } from "../Plan/types";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { PlanLandingCard } from "../Plan/PlanLandingCard";
-import { Trans } from "@lingui/react/macro";
+import { H2, SubTitle } from "../Case/Landing/components/Typography";
 
 interface ColorCardProps {
   imgUrl: string;
@@ -288,7 +288,7 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         padding: "60px 0 180px 0",
         alignItems: "center",
         justifyContent: "center",
-        gap: "00px",
+        gap: "0px",
         backgroundColor: `#10131a`,
         //backgroundColor: `red`,
         position: "relative",
@@ -298,19 +298,32 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
     >
       <Stack
         sx={{
-          position: "absolute",
-          top: 0,
+          alignItems: "center",
+          padding: "0 30px 0px 30px",
           width: "100%",
-          height: "300px",
-          //background: `linear-gradient(180deg, #050709 0%, transparent 100%)`,
-          zIndex: 1,
+          gap: "10px",
+          justifyContent: "center",
+          textAlign: "center",
+
+          position: "relative",
+          zIndex: 2,
+          "*": {
+            textAlign: "center",
+          },
+          "@media (max-width: 1660px)": {
+            paddingBottom: "40px",
+          },
         }}
-      />
+      >
+        <H2 align="center">{i18n._(`How It Works`)}</H2>
+        <SubTitle align="center">{i18n._(`From Onboarding to Confidence`)}</SubTitle>
+      </Stack>
+
       <Stack
         sx={{
           alignItems: "center",
-          gap: "70px",
           width: "100%",
+          gap: "70px",
           "@media (max-width: 500px)": {
             gap: "50px",
           },
@@ -320,50 +333,6 @@ export const PlanLandingBlock: React.FC<PlanLandingBlockProps> = ({ lang }) => {
         }}
         className="sections-and-title"
       >
-        <Stack
-          sx={{
-            gap: "0px",
-            maxWidth: maxLandingWidth,
-            boxSizing: "border-box",
-            alignItems: "flex-start",
-            padding: "0 30px",
-            position: "relative",
-            zIndex: 2,
-            width: "100%",
-            "@media (max-width: 1000px)": {
-              alignItems: "center",
-            },
-          }}
-        >
-          <Typography
-            align="center"
-            variant="body1"
-            sx={{
-              maxWidth: "810px",
-              color: "#fff",
-              fontSize: "0.9rem",
-              textTransform: "uppercase",
-              opacity: 0.7,
-            }}
-          >
-            {i18n._(`How It Works`)}
-          </Typography>
-          <Typography
-            align="center"
-            variant="h3"
-            component={"h2"}
-            sx={{
-              fontWeight: 850,
-              "@media (max-width: 600px)": {
-                fontSize: "2rem",
-              },
-              color: "#fff",
-            }}
-          >
-            {i18n._(`From Onboarding to Confidence`)}
-          </Typography>
-        </Stack>
-
         <Stack
           sx={{
             display: "flex",
