@@ -9,7 +9,7 @@ import { getAllInterviews } from "../data";
 import fs from "fs";
 import path from "path";
 import { SupportedLanguage } from "@/features/Lang/lang";
-import type { InterviewData, TechStackSection, TechItem } from "@/features/Case/types";
+import type { InterviewData, TechStackSection, TechItem } from "@/features/Case2/types";
 
 // Helper to check basic URL validity
 const isValidUrl = (url: string): boolean => {

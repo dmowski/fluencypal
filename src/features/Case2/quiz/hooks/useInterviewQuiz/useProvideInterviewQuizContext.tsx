@@ -21,7 +21,7 @@ import { getHash } from "./hash";
 import { useTextAi } from "@/features/Ai/useTextAi";
 import { MODELS } from "@/common/ai";
 import { useAnalytics } from "@/features/Analytics/useAnalytics";
-import { ScorePreview } from "@/features/Case/Landing/components/ScorePreviewSection";
+import { ScorePreview } from "@/features/Case2/Landing/components/ScorePreviewSection";
 import { GoalPlan } from "@/features/Plan/types";
 import { usePlan } from "@/features/Plan/usePlan";
 import { useAiUserInfo } from "@/features/Ai/useAiUserInfo";
