@@ -112,7 +112,7 @@ describe("SEO Metadata", () => {
       const meta = generateMetadataInfo({ lang: "en", currentPath: "" });
       expect(meta.title).toContain(APP_NAME);
       expect(meta.description).toBeDefined();
-      expect(meta.openGraph.images[0].url).toBe(`${siteUrl}openGraph.png`);
+      expect(meta.openGraph.images[0].url).toBe(`${siteUrl}openGraph.webp`);
     });
 
     test("generates metadata for blog with blogId", () => {

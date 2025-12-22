@@ -57,7 +57,7 @@ export const generateMetadataInfo = ({
   const i18n = getI18nInstance(supportedLang);
   let needIndex = true;
 
-  let openGraphImageUrl = `${siteUrl}openGraph.png`;
+  let openGraphImageUrl = `${siteUrl}openGraph.webp`;
   let title = "";
   let description = "";
   if (currentPath === "contacts") {
@@ -362,7 +362,7 @@ export const generateMetadataInfo = ({
       description,
       ogUrl: metadataUrls.ogUrl,
       openGraphImageUrl,
-      alt: `${APP_NAME} – ` + i18n._(`AI English Speaking Practice`),
+      alt: `${APP_NAME} – ` + i18n._(`AI Speaking Practice`),
     }),
     twitter: getTwitterCard({
       title,
@@ -429,7 +429,7 @@ export function getTwitterCard({
   description: string;
   openGraphImageUrl?: string;
 }) {
-  const image = openGraphImageUrl || `${siteUrl}openGraph.png`;
+  const image = openGraphImageUrl || `${siteUrl}openGraph.webp`;
   return {
     card: "summary_large_image",
     title: title,
@@ -452,7 +452,7 @@ export function getOpenGraph({
   openGraphImageUrl?: string;
   alt: string;
 }) {
-  const image = openGraphImageUrl || `${siteUrl}openGraph.png`;
+  const image = openGraphImageUrl || `${siteUrl}openGraph.webp`;
   return {
     title: title,
     description: description,
