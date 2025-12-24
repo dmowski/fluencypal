@@ -17,6 +17,16 @@ import { UserPreviewStatic } from "./UserPreviewStatic";
 
 const girlVoices: AiVoice[] = ["ash", "ballad", "coral", "shimmer"];
 
+interface AvatarVideo {
+  sitVideoUrl: string;
+  talkVideoUrl: string;
+}
+
+const girl1: AvatarVideo = {
+  sitVideoUrl: "/call/girl_1/girl1_sit_1.webm",
+  talkVideoUrl: "/call/girl_1/girl1_talk_2.webm",
+};
+
 export const CallModeCanvas = ({
   conversation,
   stopCallMode,
@@ -84,7 +94,7 @@ export const CallModeCanvas = ({
             {isShowVideo ? (
               <>
                 <video
-                  src={"/call/girl1_sit_1.webm"}
+                  src={girl1.sitVideoUrl}
                   style={{
                     position: "absolute",
                     top: "0",
@@ -101,7 +111,7 @@ export const CallModeCanvas = ({
                   playsInline
                 />
                 <video
-                  src={"/call/girl1_talk_2.webm"}
+                  src={girl1.talkVideoUrl}
                   style={{
                     position: "absolute",
                     top: "0",
