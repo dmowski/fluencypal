@@ -158,7 +158,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
               },
               buttonTitle: i18n._("Start speaking practice"),
             }}
-            buttonHref={`${getUrlStart(lang)}case`}
+            buttonHref={`${getUrlStart(lang)}quiz`}
           />
 
           <PlanLandingBlock lang={lang} />
