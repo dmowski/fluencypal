@@ -8,7 +8,6 @@ export const conversationModeLabel: Record<ConversationMode, string> = {
   rule: "Rule",
   "role-play": "Role Play",
   magic: "Magic",
-  goal: "Goal",
   "goal-role-play": "Goal Role Play",
   "goal-talk": "Goal Talk",
 };

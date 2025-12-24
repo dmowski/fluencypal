@@ -93,7 +93,6 @@ const modesToExtractUserInfo: ConversationMode[] = [
   "talkAndCorrect",
   "beginner",
   "goal-talk",
-  "goal",
 ];
 
 function useProvideAiConversation(): AiConversationContextType {
@@ -233,13 +232,6 @@ function useProvideAiConversation(): AiConversationContextType {
     const usersMessagesCount = conversation.filter((message) => !message.isBot).length;
     if (usersMessagesCount === planMessageCount && goalInfo) {
       plan.increaseStartCount(goalInfo.goalPlan, goalInfo.goalElement);
-    }
-
-    if (currentMode === "goal") {
-      const messageCount = Math.max(conversation.length - 1, 0);
-      const messagesToProcess = 8 - 1;
-      const progress = messageCount / messagesToProcess;
-      setGoalSettingProgress(Math.max(Math.round(Math.min(progress * 100, 100)), 0));
     }
   }, [conversation.length]);
 
@@ -454,67 +446,6 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
 
 Start the conversation with message like this: ${startFirstMessage}
     `,
-      };
-    }
-
-    if (mode === "goal") {
-      const usersSystemLanguageCodes = getUserLangCode();
-      const usersSystemLanguages = usersSystemLanguageCodes.map((code) => {
-        return fullEnglishLanguageName[code];
-      });
-
-      return {
-        ...baseConfig,
-        voice: "shimmer",
-        model: aiModal,
-        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Shimmer". It's first onboarding conversation with student.
-Do not teach or explain rules—just talk. You can use user's languages as well (${usersSystemLanguages.join(
-          ", "
-        )})
-You should be friendly and engaging.
-
-Don't make user feel like they are being tested and feel stupid. Your goal is to get to know user and understand his goals.
-
-Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
-Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
-
-During conversation, cover these topics:
-1. Goals and expectations for learning ${fullLanguageName}.
-2. Interests and hobbies.
-3. Previous experience with ${fullLanguageName} and other languages.
-4. Favorite topics to discuss.
-5. Preferred learning style and methods.
-6. Favorite books, movies, or music in ${fullLanguageName}.
-7. Travel experiences and places they want to visit.
-8. Work or study background and how it relates to ${fullLanguageName}.
-
-Your are part for AI software that helps users to learn ${fullLanguageName} language.
-The app supports the following activity types:
-* words: Practice vocabulary related to a specific topic
-* play: Role-play conversations (e.g. job interview)
-* rule: Learn and practice grammar or language rules
-* conversation: General conversation with AI on a specific topic
-
-${
-  plan.activeGoal?.id
-    ? `
-Start the conversation with this message:
-Hm... Who is here again? How are you doing? How's your goals going? Do you want to set new goals?
-`
-    : `
-Start the conversation with this message ${
-        settings.languageCode !== "en" ? `(use ${fullLanguageName} language)` : ""
-      }:
-Hm... Who is Here? Someone decided to learn ${fullLanguageName}. Good... Oh, always forgetting it..
-My name is Shimmer. I am your ${fullLanguageName} teacher. 
-Today we will get to know each other better. Tell me about yourself.
-To answer this question, press on button "Record message", and tell me about yourself and don't forget to press "Send" button.`
-}
-
-Try to move one topic per time. Focus only on users' goals from learning ${fullLanguageName}. 
-Use ${fullLanguageName} language during conversation.
-Don't try to explain rules or grammar. Your goal is to extract information about user and his goals.
-`,
       };
     }
 
@@ -847,40 +778,6 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 
   const addUserMessage = async (message: string) => {
     const userMessage: ChatMessage = { isBot: false, text: message, id: `${Date.now()}` };
-    if (conversation.length >= 8 && currentMode === "goal") {
-      setIsProcessingGoal(true);
-      setConversation((prev) => [...prev, userMessage]);
-      console.log("❌ Finishing goal conversation....");
-      const userInfoRecords = await aiUserInfo.updateUserInfo(
-        [...conversation, userMessage],
-        languageCode
-      );
-
-      const newInstruction = `Let's wrap up our conversation. Tell student that goal is briefly set. And if they want to continue talking, we can do it. But for now, it's time to grow and expand more interesting modes on FluencyPal.
-
-Tell user something like "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}"
-`;
-      await communicatorRef.current?.updateSessionTrigger(newInstruction, isVolumeOn);
-      await sleep(2000);
-      console.log("❌ Triggering User message...");
-      const userMessageFinish = `Tell me last thing about my goal.
-Start your message with similar to (Use the same language as in conversation): "Hmm, You know what, I think I briefly got what tou want to achieve. {SUMMARY}" (Use the same language as in conversation)
-
-My last message was: "${message}".
-`;
-      communicatorRef.current?.addUserChatMessage(userMessageFinish);
-      await sleep(1000);
-      console.log("❌  Triggering AI response...");
-      await communicatorRef.current?.triggerAiResponse();
-      await sleep(1000);
-      const generatedGoal = await plan.generateGoal({
-        userInfo: userInfoRecords.records,
-        conversationMessages: conversation,
-        languageCode: settings.languageCode || "en",
-      });
-      setTemporaryGoal(generatedGoal);
-      return;
-    }
 
     communicator?.addUserChatMessage(message);
     await sleep(300);

@@ -105,7 +105,6 @@ interface ConversationCanvasProps {
   goalSettingProgress: number;
   isSavingGoal: boolean;
   toggleVolume: (isVolumeOn: boolean) => void;
-  isOnboarding?: boolean;
   isShowMessageProgress: boolean;
   conversationAnalysisResult: string;
   analyzeConversation: () => Promise<void>;

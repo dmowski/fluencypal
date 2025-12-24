@@ -22,7 +22,6 @@ import { useRules } from "../Rules/useRules";
 import { WordsToLearn } from "../Dashboard/WordsToLearn";
 import { RulesToLearn } from "../Dashboard/RulesToLearn";
 import { ConversationError } from "./ConversationError";
-import { GoalPreparingModal } from "../Goal/GoalPreparingModal";
 import { useRouter } from "next/navigation";
 import { usePlan } from "../Plan/usePlan";
 import { ConfirmConversationModal } from "./ConfirmConversationModal";
@@ -71,7 +70,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
 
   const appNavigation = useAppNavigation();
   const { isProcessingGoal } = useGoalCreation();
-  const [isShowGoalModal, setIsShowGoalModal] = useState(false);
 
   const { analyzeConversation, conversationAnalysis, generateNextUserMessage } =
     useConversationsAnalysis();
@@ -172,15 +170,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
     return <RulesToLearn />;
   }
 
-  if (isShowGoalModal) {
-    return (
-      <GoalPreparingModal
-        onClose={() => setIsShowGoalModal(false)}
-        onStart={() => aiConversation.startConversation({ mode: "goal" })}
-      />
-    );
-  }
-
   if (aiConversation.confirmStartConversationModal) {
     return (
       <ConfirmConversationModal
@@ -224,7 +213,6 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
       <ConversationCanvas2
         messagesToComplete={planMessageCount}
         conversation={aiConversation.conversation}
-        isOnboarding={aiConversation.currentMode === "goal"}
         isAiSpeaking={aiConversation.isAiSpeaking}
         gameWords={aiConversation.gameWords}
         isClosed={aiConversation.isClosed}
