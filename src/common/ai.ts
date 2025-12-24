@@ -188,12 +188,12 @@ export const calculateAudioTranscriptionPrice = (
   return priceWithMargin;
 };
 
-const audioToTextPricePerMinute: Record<TextToAudioModal, number> = {
+const textToAudioPricePerMinute: Record<TextToAudioModal, number> = {
   "gpt-4o-mini-tts": 0.015,
 };
 
-export const calculateAudioToTextPrice = (durationSeconds: number, model: TextToAudioModal) => {
-  const pricePerMinute = audioToTextPricePerMinute[model];
+export const calculateTextToAudioPrice = (durationSeconds: number, model: TextToAudioModal) => {
+  const pricePerMinute = textToAudioPricePerMinute[model];
   const durationInMinutes = durationSeconds / 60;
   const basePrice = pricePerMinute * durationInMinutes;
 

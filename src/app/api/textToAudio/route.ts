@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { calculateAudioToTextPrice, convertUsdToHours, TextToAudioModal } from "@/common/ai";
+import { calculateTextToAudioPrice, convertUsdToHours, TextToAudioModal } from "@/common/ai";
 import { getBucket, validateAuthToken } from "../config/firebase";
 import { getUserBalance } from "../payment/getUserBalance";
 import { TextToAudioRequest, TextToAudioResponse } from "./types";
@@ -88,7 +88,7 @@ export async function POST(request: Request) {
     audioUrl: url,
   };
 
-  const priceUsd = calculateAudioToTextPrice(durationInSeconds, model);
+  const priceUsd = calculateTextToAudioPrice(durationInSeconds, model);
 
   const priceHours = convertUsdToHours(priceUsd);
   const usageLog: TextToAudioUsageLog = {
