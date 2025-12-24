@@ -16,6 +16,12 @@ import { PageLanguageSelector } from "./PageLanguageSelector";
 import { RecordUserAudio } from "./RecordUserAudio";
 import { RecordAboutFollowUp } from "./RecordAboutFollowUp";
 import { GoalReview } from "./GoalReview";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { getUrlStart } from "@/features/Lang/getUrlStart";
+import { sleep } from "@/libs/sleep";
+import { QuizPageLoader } from "@/features/Case/quiz/QuizPageLoader";
+import { Check } from "lucide-react";
 
 const QuizQuestions = () => {
   const {
@@ -29,6 +35,8 @@ const QuizQuestions = () => {
     isGoalQuestionGenerating,
     isStepLoading,
     nextStep,
+    confirmPlan,
+    pageLanguage,
   } = useQuiz();
   const { i18n } = useLingui();
 
@@ -40,6 +48,27 @@ const QuizQuestions = () => {
   const learningLanguageName = fullLanguageName[languageToLearn].toLocaleLowerCase();
   const nativeLanguageName =
     languageGroups.find((g) => g.languageCode === nativeLanguage)?.nativeName || "";
+
+  const router = useRouter();
+  const [redirecting, setRedirecting] = useState(false);
+
+  const doneQuiz = async () => {
+    setRedirecting(true);
+    try {
+      await confirmPlan();
+      const url = `${getUrlStart(pageLanguage)}practice`;
+      console.log("url", url);
+      router.push(url);
+    } catch (e) {
+      alert(i18n._("Error creating plan. Please try again."));
+    }
+    await sleep(4000);
+    setRedirecting(false);
+  };
+
+  if (redirecting) {
+    return <QuizPageLoader />;
+  }
 
   return (
     <Stack
@@ -268,13 +297,6 @@ const QuizQuestions = () => {
               <InfoStep
                 title={i18n._(`Now, we ready to create your learning plan`)}
                 subTitle={i18n._(`It might take up to a minute`)}
-                subComponent={
-                  <Stack
-                    sx={{
-                      paddingTop: "20px",
-                    }}
-                  ></Stack>
-                }
                 onClick={nextStep}
                 disabled={isStepLoading}
                 isStepLoading={isStepLoading}
@@ -284,7 +306,22 @@ const QuizQuestions = () => {
 
           {currentStep === "goalReview" && (
             <AuthWall>
-              <GoalReview />
+              <GoalReview onClick={nextStep} />
+            </AuthWall>
+          )}
+
+          {currentStep === "callMode" && (
+            <AuthWall>
+              <InfoStep
+                title={i18n._(`Call mode`)}
+                subTitle={i18n._(`Don't forget to try call mode in the practice section!`)}
+                imageUrl="/quiz/callMode.jpg"
+                onClick={doneQuiz}
+                actionButtonTitle={i18n._("Go to Practice")}
+                actionButtonEndIcon={<Check />}
+                disabled={isStepLoading}
+                isStepLoading={isStepLoading}
+              />
             </AuthWall>
           )}
         </Stack>

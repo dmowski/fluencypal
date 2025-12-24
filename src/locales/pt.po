@@ -948,7 +948,7 @@ msgstr "Seja o primeiro a responder e compartilhar seus pensamentos"
 msgid "Before the free trial"
 msgstr "Antes do teste gratuito"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:225
+#: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
 msgid "Before the training plan..."
 msgstr "Antes do plano de treinamento..."
@@ -1189,6 +1189,7 @@ msgid "Caching Strategies"
 msgstr "Estratégias de Cache"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1246
+#: src/features/Goal/Quiz/QuizPage2.tsx:316
 #. js-lingui-explicit-id
 msgid "Call mode"
 msgstr "Modo de chamada"
@@ -1361,7 +1362,7 @@ msgstr ""
 "Escolha níveis de isolamento, modele agregados e escreva consultas "
 "eficientes."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:82
+#: src/features/Goal/Quiz/QuizPage2.tsx:111
 #. js-lingui-explicit-id
 msgid "Choose Site Language"
 msgstr "Escolha o Idioma do Site"
@@ -1617,7 +1618,7 @@ msgstr "Testes de Contrato"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:109
 #: src/features/Dashboard/PlanDashboardCards.tsx:98
-#: src/features/Goal/Quiz/GoalReview.tsx:39
+#: src/features/Goal/Quiz/GoalReview.tsx:23
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
 #: src/features/Landing/PlanLandingBlock.tsx:278
 #. js-lingui-explicit-id
@@ -2265,8 +2266,8 @@ msgstr "Preciso agendar um horário com um entrevistador real?"
 msgid "Do you cover databases and transactions?"
 msgstr "Você cobre bancos de dados e transações?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:108
-#: src/features/Goal/Quiz/QuizPage2.tsx:149
+#: src/features/Goal/Quiz/QuizPage2.tsx:137
+#: src/features/Goal/Quiz/QuizPage2.tsx:178
 #. js-lingui-explicit-id
 msgid "Do you have any travel plans?"
 msgstr "Você tem algum plano de viagem?"
@@ -2285,6 +2286,11 @@ msgstr "Doutor"
 #. js-lingui-explicit-id
 msgid "Dog Owner"
 msgstr "Proprietário de Cão"
+
+#: src/features/Goal/Quiz/QuizPage2.tsx:317
+#. js-lingui-explicit-id
+msgid "Don't forget to try call mode in the practice section!"
+msgstr "Não se esqueça de experimentar o modo de chamada na seção de prática!"
 
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:40
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
@@ -2585,7 +2591,7 @@ msgstr "Erro ao criar a sessão de pagamento"
 msgid "Error creating payment session. Try again later."
 msgstr "Erro ao criar sessão de pagamento. Tente novamente mais tarde."
 
-#: src/features/Goal/Quiz/GoalReview.tsx:32
+#: src/features/Goal/Quiz/QuizPage2.tsx:63
 #. js-lingui-explicit-id
 msgid "Error creating plan. Please try again."
 msgstr "Erro ao criar plano. Por favor, tente novamente."
@@ -3502,6 +3508,11 @@ msgstr "Dê-nos o seu feedback"
 msgid "Global"
 msgstr "Global"
 
+#: src/features/Goal/Quiz/QuizPage2.tsx:320
+#. js-lingui-explicit-id
+msgid "Go to Practice"
+msgstr "Vá para Prática"
+
 #: src/features/NotFound/NotFoundPage.tsx:37
 #. js-lingui-explicit-id
 msgid "Go to the main page"
@@ -3757,8 +3768,8 @@ msgstr "Destaque suas forças relevantes para o papel:"
 msgid "Hints to boost your confidence"
 msgstr "Dicas para aumentar sua confiança"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:100
-#: src/features/Goal/Quiz/QuizPage2.tsx:145
+#: src/features/Goal/Quiz/QuizPage2.tsx:129
+#: src/features/Goal/Quiz/QuizPage2.tsx:174
 #. js-lingui-explicit-id
 msgid "Hobbies or interests"
 msgstr "Passatempos ou interesses"
@@ -5179,7 +5190,7 @@ msgstr ""
 "Ajudou-me a responder perguntas sobre acessibilidade e otimização de "
 "desempenho sem pânico."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:270
+#: src/features/Goal/Quiz/QuizPage2.tsx:299
 #. js-lingui-explicit-id
 msgid "It might take up to a minute"
 msgstr "Pode levar até um minuto"
@@ -5522,7 +5533,7 @@ msgstr "Vamos adicionar algumas horas ao seu saldo"
 msgid "Let's choose how to start practicing"
 msgstr "Vamos escolher como começar a praticar"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:182
+#: src/features/Goal/Quiz/QuizPage2.tsx:211
 #. js-lingui-explicit-id
 msgid "Let's continue, I have a question for you!"
 msgstr "Vamos continuar, tenho uma pergunta para você!"
@@ -5543,12 +5554,12 @@ msgstr "Vamos decidir a que ritmo vamos estudar!"
 msgid "Let's go"
 msgstr "Vamos lá"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:226
+#: src/features/Goal/Quiz/QuizPage2.tsx:255
 #. js-lingui-explicit-id
 msgid "Let's talk about your goals a bit more"
 msgstr "Vamos falar um pouco mais sobre seus objetivos."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:97
+#: src/features/Goal/Quiz/QuizPage2.tsx:126
 #. js-lingui-explicit-id
 msgid "Let's talk. Tell me  about yourself"
 msgstr "Vamos conversar. Conte-me sobre você."
@@ -5573,7 +5584,7 @@ msgstr "Carregando Objetivo..."
 msgid "Loading."
 msgstr "Carregando."
 
-#: src/features/Goal/Quiz/GoalReview.tsx:98
+#: src/features/Goal/Quiz/GoalReview.tsx:82
 #: src/features/Telegram/TgAppPage.tsx:164
 #. js-lingui-explicit-id
 msgid "Loading.."
@@ -5589,7 +5600,6 @@ msgstr "Carregando.."
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:251
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:156
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:157
-#: src/features/Goal/Quiz/GoalReview.tsx:168
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:34
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:34
 #: src/features/Header/PaymentHistoryModal.tsx:65
@@ -5623,8 +5633,8 @@ msgstr "Logging/Tracing"
 msgid "Looking for something specific?"
 msgstr "Procurando algo específico?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:104
-#: src/features/Goal/Quiz/QuizPage2.tsx:141
+#: src/features/Goal/Quiz/QuizPage2.tsx:133
+#: src/features/Goal/Quiz/QuizPage2.tsx:170
 #. js-lingui-explicit-id
 msgid "Main goal in learning"
 msgstr "Objetivo principal na aprendizagem"
@@ -5883,8 +5893,8 @@ msgstr ""
 "A maioria das entrevistas inclui a clássica pergunta \"pontos fortes e "
 "fracos\". É especialmente importante lidar bem com isso em inglês."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:112
-#: src/features/Goal/Quiz/QuizPage2.tsx:153
+#: src/features/Goal/Quiz/QuizPage2.tsx:141
+#: src/features/Goal/Quiz/QuizPage2.tsx:182
 #. js-lingui-explicit-id
 msgid "Movies, books, or music"
 msgstr "Filmes, livros ou música"
@@ -6033,6 +6043,7 @@ msgstr "Palavras novas:"
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
 #: src/features/Goal/GoalQuestions.tsx:1028
+#: src/features/Goal/Quiz/GoalReview.tsx:152
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:147
 #: src/features/Landing/LandingPage.tsx:157
@@ -6216,7 +6227,7 @@ msgstr ""
 msgid "Now let’s determine your starting point!"
 msgstr "Agora vamos determinar o seu ponto de partida!"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:269
+#: src/features/Goal/Quiz/QuizPage2.tsx:298
 #. js-lingui-explicit-id
 msgid "Now, we ready to create your learning plan"
 msgstr "Agora, estamos prontos para criar o seu plano de aprendizagem"
@@ -6355,8 +6366,8 @@ msgstr "Outras perguntas comuns incluem:"
 #: src/features/Game/GameNativeLanguageSelector.tsx:19
 #: src/features/Goal/GoalQuestions.tsx:323
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:24
-#: src/features/Goal/Quiz/QuizPage2.tsx:36
-#: src/features/Goal/Quiz/useQuiz.tsx:624
+#: src/features/Goal/Quiz/QuizPage2.tsx:44
+#: src/features/Goal/Quiz/useQuiz.tsx:627
 #: src/features/Lang/LanguageSwitcher.tsx:103
 #. js-lingui-explicit-id
 msgid "Other languages"
@@ -7399,11 +7410,11 @@ msgstr ""
 msgid "Record"
 msgstr "Gravar"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:129
+#: src/features/Goal/Quiz/QuizPage2.tsx:158
 msgid "Record 2-3 minutes story using <0>{learningLanguageName}</0>"
 msgstr "Grave uma história de 2-3 minutos usando <0>{learningLanguageName}</0>"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:133
+#: src/features/Goal/Quiz/QuizPage2.tsx:162
 msgid ""
 "Record 2-3 minutes story using <0>{learningLanguageName}</0> or "
 "<1>{nativeLanguageName}</1>"
@@ -7564,7 +7575,7 @@ msgid "Robot Thinking"
 msgstr "Pensamento do Robô"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:99
-#: src/features/Goal/Quiz/GoalReview.tsx:40
+#: src/features/Goal/Quiz/GoalReview.tsx:24
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
 #: src/features/Landing/PlanLandingBlock.tsx:279
 #: src/features/Navigation/NavigationBar.tsx:74
@@ -7615,7 +7626,7 @@ msgid "Routing"
 msgstr "Encaminhamento"
 
 #: src/features/Dashboard/PlanDashboardCards.tsx:101
-#: src/features/Goal/Quiz/GoalReview.tsx:42
+#: src/features/Goal/Quiz/GoalReview.tsx:26
 #: src/features/Landing/PlanLandingBlock.tsx:281
 #. js-lingui-explicit-id
 msgid "Rule"
@@ -7799,7 +7810,7 @@ msgstr "entrevista para desenvolvedor frontend sênior"
 msgid "Serious"
 msgstr "Sério"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:71
+#: src/features/Goal/Quiz/QuizPage2.tsx:100
 #. js-lingui-explicit-id
 msgid "Set My Language"
 msgstr "Definir Meu Idioma"
@@ -8008,7 +8019,7 @@ msgstr ""
 "amigável. Se o entrevistador perguntar, \"Teve algum problema para nos "
 "encontrar?\" você pode dizer:"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:70
+#: src/features/Goal/Quiz/QuizPage2.tsx:99
 #. js-lingui-explicit-id
 msgid "So I can translate words for you"
 msgstr "Então posso traduzir palavras para você"
@@ -8111,7 +8122,7 @@ msgstr "Estrelas"
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Dashboard/PlanDashboardCards.tsx:259
 #: src/features/Dashboard/PlanDashboardCards.tsx:459
-#: src/features/Goal/Quiz/GoalReview.tsx:154
+#: src/features/Goal/Quiz/GoalReview.tsx:138
 #: src/features/Goal/Quiz/PlanPreview.tsx:74
 #: src/features/Landing/PlanLandingBlock.tsx:527
 #: src/features/Landing/Price/PricePage.tsx:223
@@ -8134,7 +8145,6 @@ msgstr "Inicie uma conversa para obtê-lo."
 msgid "Start a mock interview"
 msgstr "Iniciar uma simulação de entrevista"
 
-#: src/features/Goal/Quiz/GoalReview.tsx:168
 #: src/features/Landing/PlanLandingBlock.tsx:628
 #. js-lingui-explicit-id
 msgid "Start Learning"
@@ -8506,8 +8516,8 @@ msgstr "Cenários de design de sistemas usados pelas principais empresas de prod
 #: src/features/Game/GameNativeLanguageSelector.tsx:20
 #: src/features/Goal/GoalQuestions.tsx:324
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:25
-#: src/features/Goal/Quiz/QuizPage2.tsx:37
-#: src/features/Goal/Quiz/useQuiz.tsx:625
+#: src/features/Goal/Quiz/QuizPage2.tsx:45
+#: src/features/Goal/Quiz/useQuiz.tsx:628
 #: src/features/Lang/LanguageSwitcher.tsx:104
 #. js-lingui-explicit-id
 msgid "System languages"
@@ -8640,7 +8650,7 @@ msgstr ""
 "Conte sobre uma vez em que você ficou preso em um bug. Como você descobriu "
 "a causa e a corrigiu?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:126
+#: src/features/Goal/Quiz/QuizPage2.tsx:155
 #. js-lingui-explicit-id
 msgid "Tell me about yourself"
 msgstr "Fale-me sobre você"
@@ -8818,7 +8828,7 @@ msgstr "Esta ação é irreversível."
 msgid "This approach shows self-awareness and growth."
 msgstr "Esta abordagem demonstra autoconhecimento e crescimento."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:83
+#: src/features/Goal/Quiz/QuizPage2.tsx:112
 #. js-lingui-explicit-id
 msgid "This is text you see on buttons and menus"
 msgstr "Este é o texto que você vê em botões e menus"
@@ -9293,7 +9303,7 @@ msgstr "Padrões WCAG"
 msgid "We appreciate your feedback!"
 msgstr "Agradecemos o seu feedback!"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:96
+#: src/features/Goal/Quiz/QuizPage2.tsx:125
 #. js-lingui-explicit-id
 msgid "We are ready"
 msgstr "Estamos prontos"
@@ -9412,7 +9422,7 @@ msgstr "Qual é a diferença entre var, let e const em JavaScript?"
 msgid "What kinds of backend interviews can I practice for?"
 msgstr "Quais tipos de entrevistas de backend posso praticar?"
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:69
+#: src/features/Goal/Quiz/QuizPage2.tsx:98
 #. js-lingui-explicit-id
 msgid "What language do you speak"
 msgstr "Qual língua você fala"
@@ -9525,7 +9535,7 @@ msgstr "Estatísticas de Palavras"
 
 #: src/features/Dashboard/ConversationSelectCard.tsx:172
 #: src/features/Dashboard/PlanDashboardCards.tsx:100
-#: src/features/Goal/Quiz/GoalReview.tsx:41
+#: src/features/Goal/Quiz/GoalReview.tsx:25
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
 #: src/features/Landing/PlanLandingBlock.tsx:280
 #: src/features/Usage/UsageStatsCards.tsx:440
@@ -9572,7 +9582,7 @@ msgstr ""
 "próximos passos. Este cenário ajuda você a se sentir confortável navegando "
 "por problemas de tecnologia e comunicando soluções."
 
-#: src/features/Goal/Quiz/QuizPage2.tsx:181
+#: src/features/Goal/Quiz/QuizPage2.tsx:210
 #. js-lingui-explicit-id
 msgid "Wow, that was awesome!"
 msgstr "Uau, isso foi incrível!"
@@ -9963,7 +9973,7 @@ msgstr ""
 "O seu pagamento foi bem sucedido, mas as atualizações podem levar alguns "
 "minutos"
 
-#: src/features/Goal/Quiz/GoalReview.tsx:87
+#: src/features/Goal/Quiz/GoalReview.tsx:71
 #. js-lingui-explicit-id
 msgid "Your plan for learning"
 msgstr "Seu plano de aprendizado"

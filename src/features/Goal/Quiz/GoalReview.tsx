@@ -14,26 +14,10 @@ import { useRouter } from "next/navigation";
 import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 import { FooterButton } from "../../Survey/FooterButton";
 
-export const GoalReview = ({}) => {
+export const GoalReview = ({ onClick }: { onClick: () => void }) => {
   const { i18n } = useLingui();
   const sizes = useWindowSizes();
   const quiz = useQuiz();
-  const [redirecting, setRedirecting] = useState(false);
-  const router = useRouter();
-
-  const confirmPlan = async () => {
-    setRedirecting(true);
-    try {
-      await quiz.confirmPlan();
-      const url = `${getUrlStart(quiz.pageLanguage)}practice`;
-      console.log("url", url);
-      router.push(url);
-    } catch (e) {
-      alert(i18n._("Error creating plan. Please try again."));
-    }
-    await sleep(4000);
-    setRedirecting(false);
-  };
 
   const modeLabels: Record<PlanElementMode, string> = {
     conversation: i18n._(`Conversation`),
@@ -163,9 +147,9 @@ export const GoalReview = ({}) => {
       </Stack>
 
       <FooterButton
-        disabled={redirecting || isLoading}
-        onClick={confirmPlan}
-        title={redirecting ? i18n._("Loading...") : i18n._("Start Learning")}
+        disabled={isLoading}
+        onClick={onClick}
+        title={i18n._("Next")}
         endIcon={<ArrowRight />}
       />
     </Stack>

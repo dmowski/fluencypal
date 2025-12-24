@@ -52,7 +52,9 @@ type QuizStep =
   | "recordAboutFollowUp2"
   | "reviewAbout"
   | "before_goalReview"
+  | "callMode"
   | "goalReview";
+
 const stepsViews: QuizStep[] = [
   "learnLanguage",
   "before_nativeLanguage",
@@ -72,6 +74,7 @@ const stepsViews: QuizStep[] = [
 
   "before_goalReview",
   "goalReview",
+  "callMode",
 ];
 
 export const MIN_WORDS_FOR_ANSWER = 30;
