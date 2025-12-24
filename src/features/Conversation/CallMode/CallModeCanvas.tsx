@@ -204,7 +204,9 @@ export const CallModeCanvas = ({
             sx={{
               backgroundColor: !isMuted ? "rgba(100, 100, 100, 0.4)" : "rgb(250 222 220)",
               color: !isMuted ? "#fff" : "#222",
-              ":hover": { backgroundColor: "rgba(255, 255, 255, 0.3)" },
+              ":hover": {
+                backgroundColor: !isMuted ? "rgba(100, 100, 100, 0.2)" : "rgba(250, 222, 220, 0.8)",
+              },
             }}
             size="large"
             onClick={async () => {
@@ -220,7 +222,11 @@ export const CallModeCanvas = ({
                 ? "rgba(100, 100, 100, 0.4)"
                 : "rgb(250 222 220)",
               color: webCam.isWebCamEnabled ? "#fff" : "#222",
-              ":hover": { backgroundColor: "rgba(255, 255, 255, 0.3)" },
+              ":hover": {
+                backgroundColor: webCam.isWebCamEnabled
+                  ? "rgba(100, 100, 100, 0.2)"
+                  : "rgba(250, 222, 220, 0.8)",
+              },
             }}
             size="large"
             onClick={async () => {
