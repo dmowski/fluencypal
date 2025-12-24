@@ -195,7 +195,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
           await sleep(2000);
           return "Nice to see you here";
         }}
-        isCallMode={true}
+        isCallMode={false}
         toggleCallMode={() => {}}
         isNeedToShowBalanceWarning={false}
         setIsMuted={() => {}}

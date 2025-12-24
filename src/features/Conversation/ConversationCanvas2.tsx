@@ -1159,7 +1159,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         <LogOut />
                       </ListItemIcon>
                       <ListItemText>
-                        <Typography>{i18n._("Finish conversation")}</Typography>
+                        <Typography>{i18n._("Finish")}</Typography>
                       </ListItemText>
                     </MenuItem>
 
