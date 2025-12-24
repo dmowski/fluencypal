@@ -7,14 +7,11 @@ import { CreditCard, Gem } from "lucide-react";
 import { useUsage } from "../Usage/useUsage";
 import { useEffect, useState } from "react";
 import { useAuth } from "../Auth/useAuth";
-import dayjs from "dayjs";
-import { IconTextList } from "../Survey/IconTextList";
 import { isTMA } from "@telegram-apps/sdk-react";
 import { SupportedLanguage } from "../Lang/lang";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { createSetupIntentRequest } from "./createSetupIntentRequest";
 import { VerifyCard } from "./CardValidator";
-import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { ColorIconTextList } from "../Survey/ColorIconTextList";
 import { NavigationBar } from "../Navigation/NavigationBar";
 
@@ -29,8 +26,6 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [isTg, setIsTg] = useState(false);
-  const conversation = useChatHistory();
-  const activeConversationMessageCount = conversation.conversations.length;
 
   const [isShowHowToUseForFree, setIsShowHowToUseForFree] = useState(false);
 
@@ -50,13 +45,9 @@ export const CardValidatorWall = ({ lang }: { lang: SupportedLanguage }) => {
       setIsLoading(false);
     }
   };
-  const createdAtIso = settings.userSettings?.createdAtIso;
-  const daysFromCreation = createdAtIso ? dayjs().diff(dayjs(createdAtIso), "day") : null;
-  const isNewUser = !createdAtIso || (daysFromCreation !== null && daysFromCreation < 5);
 
   if (isCreditCardConfirmed || isLoadingSettings || isTg) return <></>;
-  if (usage.isFullAccess && !isNewUser) return <></>;
-  if (activeConversationMessageCount < 2) return <></>;
+  if (usage.isFullAccess) return <></>;
 
   return (
     <CustomModal isOpen={true}>

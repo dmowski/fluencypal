@@ -14,7 +14,6 @@ import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { DashboardBlur } from "./DashboardBlur";
 import { RolePlayModal } from "../RolePlay/RolePlayModal";
 import { DailyQuestionBadge } from "../Game/DailyQuestion/DailyQuestionBadge";
-import { CardValidatorWall } from "../PayWall/CardValidatorWall";
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -26,8 +25,6 @@ export function Dashboard({ lang }: DashboardProps) {
     <>
       <NavigationBar lang={lang} />
       <RolePlayModal />
-
-      {appNavigation.currentPage !== "profile" && <CardValidatorWall lang={lang} />}
 
       <Stack
         sx={{
