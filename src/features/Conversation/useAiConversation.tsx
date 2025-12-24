@@ -383,13 +383,18 @@ function useProvideAiConversation(): AiConversationContextType {
 
       setIsInitializing(`Starting Role Play...`);
 
+      const goalOfGame =
+        appMode === "learning"
+          ? `Goal of this game is to help student to achieve this goal in learning ${fullLanguageName} language: ${goalTitle}.`
+          : `Goal of this game is to help user to achieve this goal in preparing for job interview: ${goalTitle}.`;
+
       return {
         ...baseConfig,
         model: aiModal,
         voice: "shimmer",
         initInstruction: `${aiPersona}
 Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
-Goal of this game is to help student to achieve this goal in learning ${fullLanguageName} language: ${goalTitle}.
+${goalOfGame}
 
 Info about Student: ${userInfo || "No info about student"}.
 ${userLevelDescription}
