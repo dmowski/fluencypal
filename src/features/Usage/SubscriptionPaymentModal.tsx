@@ -33,6 +33,7 @@ import { TonIcon } from "../Icon/TonIcon";
 import { sendCreateCryptoOrderRequest } from "@/app/api/crypto/createOrder/sendCreateCryptoOrderRequest";
 import { SubscriptionWaiter } from "./SubscriptionWaiter";
 import { CRYPTO_MONTHLY_PRICE_TON } from "../Telegram/cryptoPrice";
+import { useSettings } from "../Settings/useSettings";
 
 const isTelegramApp = isTMA();
 const allowCryptoFlag = true;
@@ -155,6 +156,8 @@ export const SubscriptionPaymentModal = () => {
   const auth = useAuth();
   const { i18n } = useLingui();
   const currency = useCurrency();
+  const settings = useSettings();
+  const appMode = settings.appMode;
 
   const [allowCrypto, setAllowCrypto] = useState(allowCryptoFlag);
 
@@ -596,7 +599,7 @@ export const SubscriptionPaymentModal = () => {
                 </Button>
               </Stack>
             </Stack>
-            <FeatureList />
+            <FeatureList appMode={appMode} />
           </Stack>
         ) : (
           <>
@@ -789,7 +792,7 @@ export const SubscriptionPaymentModal = () => {
                       </>
                     )}
                   </Stack>
-                  <FeatureList />
+                  <FeatureList appMode={appMode} />
                 </Stack>
               </Stack>
               <Stack
