@@ -82,22 +82,43 @@ export const CallModeCanvas = ({
             }}
           >
             {isShowVideo ? (
-              <video
-                src={"/call/3.mp4"}
-                style={{
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-                autoPlay
-                controls={false}
-                muted
-                loop
-                playsInline
-              />
+              <>
+                <video
+                  src={"/call/girl1_sit_1.webm"}
+                  style={{
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    opacity: 1,
+                  }}
+                  autoPlay
+                  controls={false}
+                  muted
+                  loop
+                  playsInline
+                />
+                <video
+                  src={"/call/girl1_talk_2.webm"}
+                  style={{
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    opacity: isAiSpeaking ? 1 : 0,
+                    transition: "opacity 0.7s ease-in-out",
+                  }}
+                  autoPlay
+                  controls={false}
+                  muted
+                  loop
+                  playsInline
+                />
+              </>
             ) : (
               <UserPreviewStatic
                 bgUrl={"/blur/2.jpg"}

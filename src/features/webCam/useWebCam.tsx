@@ -21,9 +21,15 @@ function useProvideWebCam(): WebCamContextType {
   const [stream, setStream] = useState<MediaStream | null>(null);
 
   const settings = useSettings();
+  const isInit = useRef<boolean>(false);
 
   const init = async () => {
     if (stream) return;
+
+    if (isInit.current) {
+      return;
+    }
+    isInit.current = true;
 
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -109,6 +115,7 @@ function useProvideWebCam(): WebCamContextType {
     if (videoRef.current) {
       videoRef.current.srcObject = null;
     }
+    isInit.current = false;
   };
 
   return {
