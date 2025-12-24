@@ -113,10 +113,7 @@ function useProvideAiConversation(): AiConversationContextType {
   const [isSavingGoal, setIsSavingGoal] = useState(false);
   const [voice, setVoice] = useState<AiVoice | null>(null);
 
-  const aiModal = useMemo(
-    () => (isDev() ? MODELS.SMALL_CONVERSATION : MODELS.REALTIME_CONVERSATION),
-    []
-  );
+  const aiModal = MODELS.REALTIME_CONVERSATION;
 
   const [confirmStartConversationModal, setConfirmStartConversationModal] =
     useState<StartConversationProps | null>(null);
@@ -581,6 +578,7 @@ Start the conversation with exactly this message: ${startFirstMessage} Don't add
     if (mode === "rule") {
       return {
         ...baseConfig,
+        voice: "ash",
         model: aiModal,
         initInstruction: `You are an ${fullLanguageName} teacher.
 Your name is "Bruno".
@@ -599,6 +597,7 @@ ${userLevelDescription}
       return {
         ...baseConfig,
         model: aiModal,
+        voice: "ash",
         initInstruction: `You are an ${fullLanguageName} teacher.
 Your name is "Bruno".
 The user wants to learn new words.

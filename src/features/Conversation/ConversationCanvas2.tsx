@@ -568,7 +568,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             padding: "0",
 
             boxSizing: "border-box",
-            width: "100%",
             gap: "0px",
             alignItems: "center",
             border: "1px solid rgba(255, 255, 255, 0.1)",

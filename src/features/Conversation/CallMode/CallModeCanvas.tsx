@@ -15,7 +15,7 @@ import { Messages } from "../Messages";
 import { WebCamFooter } from "./WebCamFooter";
 import { UserPreviewStatic } from "./UserPreviewStatic";
 
-const girlVoices: AiVoice[] = ["ash", "ballad", "coral", "shimmer"];
+const girlVoices: AiVoice[] = ["alloy", "coral", "sage", "shimmer"];
 
 interface AvatarVideo {
   sitVideoUrl: string;
@@ -56,7 +56,6 @@ export const CallModeCanvas = ({
   const myUserName = auth.userInfo?.displayName || auth.userInfo?.email || "You";
 
   const aiVideo: AvatarVideo | null = voice ? (girlVoices.includes(voice) ? girl1 : boy1) : null;
-
   return (
     <>
       <Stack
@@ -196,6 +195,7 @@ export const CallModeCanvas = ({
             sx={{
               maxWidth: "1000px",
               height: "max-content",
+              width: "100%",
             }}
           >
             <Messages conversation={conversation} />
