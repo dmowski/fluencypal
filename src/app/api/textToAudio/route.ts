@@ -36,7 +36,7 @@ export async function POST(request: Request) {
   const aiRequest = (await request.json()) as TextToAudioRequest;
 
   const fileName = getHash(getHash(JSON.stringify(aiRequest))) + ".mp3";
-  const filePath = `audioToText/${fileName}`;
+  const filePath = `textToAudio/${fileName}`;
 
   const bucket = getBucket();
   const cacheFile = bucket.file(filePath);
