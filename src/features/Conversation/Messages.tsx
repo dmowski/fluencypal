@@ -34,6 +34,7 @@ export const Messages = ({ conversation }: { conversation: ChatMessage[] }) => {
                   padding: "0 20px",
                   boxSizing: "border-box",
                   color: "#e1e1e1",
+                  width: "100%",
                 }}
               >
                 <Typography

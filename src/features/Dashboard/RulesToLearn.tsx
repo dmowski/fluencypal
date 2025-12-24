@@ -38,8 +38,6 @@ export const RulesToLearn: React.FC = () => {
       <Stack
         sx={{
           gap: "40px",
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <Stack

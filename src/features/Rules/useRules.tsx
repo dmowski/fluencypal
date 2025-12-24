@@ -22,9 +22,10 @@ function useProvideRules(): RulesContextType {
   const chatHistory = useChatHistory();
   const textAi = useTextAi();
   const settings = useSettings();
+  const appMode = settings.appMode;
 
   const getUserMessages = async () => {
-    const data = await chatHistory.getLastConversations(2);
+    const data = await chatHistory.getLastConversations(20);
     const userMessages = data
       .map((conversation) => conversation.messages.filter((m) => !m.isBot).map((m) => m.text))
       .flat()
@@ -43,10 +44,14 @@ function useProvideRules(): RulesContextType {
 
       const systemInstruction = [
         `User provides list of his messages that he used during voice conversation.`,
-        `System should generate a most important grammar rule user must to learn.`,
+        appMode === "interview"
+          ? "System should generate a most important rule user must to learn to prepare for job interview."
+          : `System should generate a most important grammar rule user must to learn.`,
         `${goal ? `Follow this topic: ${goal.goalElement.title} - ${goal.goalElement.description} (${goal.goalElement.details})` : ""}`,
         `Rules should be useful and not too difficult. Use  only ${settings.fullLanguageName} language for your response.`,
-        `Return grammar rule in Markdown format. Starting from something like "Based on recent conversation..." but use `,
+        appMode === "interview"
+          ? "Return rule in Markdown format. Starting from something like 'Based on recent conversation...' but use "
+          : `Return grammar rule in Markdown format. Starting from something like "Based on recent conversation..." but use `,
       ].join(" ");
       const newRuleToLearn = await textAi.generate({
         systemMessage: systemInstruction,
