@@ -202,7 +202,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         isVolumeOn={true}
         setIsVolumeOn={() => {}}
         isAiSpeaking={true}
-        voice="sage"
+        voice="ash"
       />
     </Stack>
   );
