@@ -166,14 +166,8 @@ function useProvideAiConversation(): AiConversationContextType {
   };
 
   useEffect(() => {
-    const isActiveConversationNow = isStarted;
-    if (!isActiveConversationNow) {
-      return;
-    }
-
-    if (!isStartedUrl) {
-      closeConversation();
-    }
+    if (!isStarted) return;
+    if (!isStartedUrl) closeConversation();
   }, [isStartedUrl]);
 
   const [conversationId, setConversationId] = useState<string>(`${Date.now()}`);
@@ -203,8 +197,6 @@ function useProvideAiConversation(): AiConversationContextType {
   );
 
   const [isMutedStorage, setIsMutedStorage] = useLocalStorage<boolean>("isMuted", true);
-
-  const conversationMode = settings.conversationMode;
 
   const isMuted = isMutedStorage ?? true;
 
