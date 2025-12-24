@@ -203,7 +203,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         setIsMuted={() => {}}
         isVolumeOn={true}
         setIsVolumeOn={() => {}}
-        voice="alloy"
+        voice="ash"
       />
     </Stack>
   );
