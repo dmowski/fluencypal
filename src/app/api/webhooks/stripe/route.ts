@@ -155,6 +155,8 @@ export async function POST(request: Request) {
         });
       }
 
+      await markUserAsCreditCardConfirmed(userId, true);
+
       if (stripeConfig.isStripeLive && userInfo.email) {
         const emailToSend = userInfo.email;
         const shortId = receiptId || paymentId.slice(paymentId.length - 8);
