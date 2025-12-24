@@ -27,6 +27,11 @@ const girl1: AvatarVideo = {
   talkVideoUrl: "/call/girl_1/girl1_talk_2.webm",
 };
 
+const boy1: AvatarVideo = {
+  sitVideoUrl: "/call/boy_1/sit.webm",
+  talkVideoUrl: "/call/boy_1/talk.webm",
+};
+
 export const CallModeCanvas = ({
   conversation,
   stopCallMode,
@@ -50,7 +55,7 @@ export const CallModeCanvas = ({
   const userPhoto = auth.userInfo?.photoURL || "";
   const myUserName = auth.userInfo?.displayName || auth.userInfo?.email || "You";
 
-  const isShowVideo = voice ? girlVoices.includes(voice) : false;
+  const aiVideo: AvatarVideo | null = voice ? (girlVoices.includes(voice) ? girl1 : boy1) : null;
 
   return (
     <>
@@ -91,10 +96,10 @@ export const CallModeCanvas = ({
               overflow: "hidden",
             }}
           >
-            {isShowVideo ? (
+            {aiVideo ? (
               <>
                 <video
-                  src={girl1.sitVideoUrl}
+                  src={aiVideo.sitVideoUrl}
                   style={{
                     position: "absolute",
                     top: "0",
@@ -111,7 +116,7 @@ export const CallModeCanvas = ({
                   playsInline
                 />
                 <video
-                  src={girl1.talkVideoUrl}
+                  src={aiVideo.talkVideoUrl}
                   style={{
                     position: "absolute",
                     top: "0",

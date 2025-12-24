@@ -165,7 +165,6 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         conversationId="1"
         conversation={testMessage}
         analyzeUserMessage={analyzeMessage}
-        isAiSpeaking={false}
         gameWords={gameStat}
         isClosed={false}
         isClosing={false}
@@ -203,7 +202,8 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         setIsMuted={() => {}}
         isVolumeOn={true}
         setIsVolumeOn={() => {}}
-        voice="ash"
+        isAiSpeaking={true}
+        voice="sage"
       />
     </Stack>
   );
