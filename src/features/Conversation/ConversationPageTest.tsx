@@ -30,8 +30,6 @@ for (let i = 0; i < 7; i++) {
 
 export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTestProps) {
   const aiUserInfo = useAiUserInfo();
-  const settings = useSettings();
-  const textAi = useTextAi();
   const [testMessage, setTestMessage] = useState<ChatMessage[]>(startTestMessages);
 
   const showGame = false;

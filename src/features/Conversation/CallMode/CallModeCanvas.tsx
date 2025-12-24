@@ -23,12 +23,14 @@ export const CallModeCanvas = ({
   isMuted,
   setIsMuted,
   voice,
+  isAiSpeaking,
 }: {
   conversation: ChatMessage[];
   stopCallMode: () => void;
   isMuted: boolean;
   setIsMuted: (value: boolean) => void;
   voice: AiVoice | null;
+  isAiSpeaking: boolean;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -97,7 +99,11 @@ export const CallModeCanvas = ({
                 playsInline
               />
             ) : (
-              <UserPreviewStatic bgUrl={"/blur/2.jpg"} avatarUrl={"/blog/whippet-prediction.png"} />
+              <UserPreviewStatic
+                bgUrl={"/blur/2.jpg"}
+                isSpeaking={isAiSpeaking}
+                avatarUrl={"/blog/whippet-prediction.png"}
+              />
             )}
 
             <WebCamFooter name={i18n._("Teacher")} />
@@ -132,7 +138,7 @@ export const CallModeCanvas = ({
             />
 
             {!webCam.isWebCamEnabled && (
-              <UserPreviewStatic bgUrl={"/blur/5.jpg"} avatarUrl={userPhoto} />
+              <UserPreviewStatic bgUrl={"/blur/5.jpg"} avatarUrl={userPhoto} isSpeaking={false} />
             )}
 
             <WebCamFooter name={myUserName || i18n._("You")} />

@@ -1,6 +1,14 @@
 import { Avatar, Stack } from "@mui/material";
 
-export const UserPreviewStatic = ({ bgUrl, avatarUrl }: { bgUrl: string; avatarUrl: string }) => {
+export const UserPreviewStatic = ({
+  bgUrl,
+  avatarUrl,
+  isSpeaking,
+}: {
+  bgUrl: string;
+  avatarUrl: string;
+  isSpeaking: boolean;
+}) => {
   return (
     <>
       <Stack
@@ -33,6 +41,10 @@ export const UserPreviewStatic = ({ bgUrl, avatarUrl }: { bgUrl: string; avatarU
             overflow: "hidden",
             padding: "0",
             backgroundColor: "rgba(255, 255, 255, 0.5)",
+            boxShadow: isSpeaking
+              ? "0 0 0 2px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.9) "
+              : "0 0 30px rgba(255, 255, 255, 0)",
+            transition: "box-shadow 0.3s ease-in-out",
           }}
         >
           <Avatar

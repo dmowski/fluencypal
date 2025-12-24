@@ -523,6 +523,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
       <CallModeCanvas
         isMuted={isMuted}
         setIsMuted={setIsMuted}
+        isAiSpeaking={isAiSpeaking}
         voice={voice}
         conversation={conversation}
         stopCallMode={stopCallMode}
@@ -695,8 +696,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         background: isAnalyzingResponse
                           ? "rgba(255, 255, 255, 0.06)"
                           : isNeedToShowCorrection
-                          ? "#c29f2b"
-                          : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
+                            ? "#c29f2b"
+                            : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
                       }}
                     >
                       {isNeedToShowCorrection && !isAnalyzingResponse ? (
@@ -787,8 +788,8 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                               isTranscribing || isAnalyzingResponse
                                 ? 0
                                 : isNeedToShowCorrection
-                                ? 0
-                                : 1,
+                                  ? 0
+                                  : 1,
                             flexDirection: "row",
                             alignItems: "center",
                             gap: "2px",
@@ -864,15 +865,15 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                                 isTranscribing
                                   ? i18n._("Transcribing...")
                                   : isAnalyzingResponse
-                                  ? i18n._("Analyzing...")
-                                  : confirmedUserInput || ""
+                                    ? i18n._("Analyzing...")
+                                    : confirmedUserInput || ""
                               }
                               newValue={
                                 isTranscribing
                                   ? i18n._("Transcribing...")
                                   : isAnalyzingResponse
-                                  ? i18n._("Analyzing...")
-                                  : correctedMessage || confirmedUserInput || ""
+                                    ? i18n._("Analyzing...")
+                                    : correctedMessage || confirmedUserInput || ""
                               }
                             />
                           </Typography>
