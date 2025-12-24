@@ -23,12 +23,11 @@ import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
 import { GuessGameStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
-import { firstAiMessage, fullEnglishLanguageName, getUserLangCode } from "@/features/Lang/lang";
+import { firstAiMessage } from "@/features/Lang/lang";
 import { useRouter, useSearchParams } from "next/navigation";
 import { GoalElementInfo, GoalPlan } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
-import { isDev } from "../Analytics/isDev";
 import { useGame } from "../Game/useGame";
 
 const levelDescriptionsForAi: Record<string, string> = {
