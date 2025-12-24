@@ -183,7 +183,14 @@ function useProvideAiConversation(): AiConversationContextType {
   const [goalSettingProgress, setGoalSettingProgress] = useState(0);
 
   const userLevel = plan.activeGoal?.goalQuiz?.level || "A2";
-  const userLevelDescription = levelDescriptionsForAi[userLevel] || levelDescriptionsForAi["A2"];
+  const appMode = settings.appMode;
+  const userLevelDescription =
+    appMode === "learning" ? levelDescriptionsForAi[userLevel] || levelDescriptionsForAi["A2"] : "";
+
+  const aiPersona =
+    appMode === "learning"
+      ? `You2 are an ${fullLanguageName} teacher.`
+      : `You are an job interview coach.`;
 
   const [communicator, setCommunicator] = useState<AiRtcInstance>();
   const communicatorRef = useRef(communicator);
@@ -380,7 +387,7 @@ function useProvideAiConversation(): AiConversationContextType {
         ...baseConfig,
         model: aiModal,
         voice: "shimmer",
-        initInstruction: `You are an ${fullLanguageName} teacher.
+        initInstruction: `${aiPersona}
 Your role is to play a Role Play game on this topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
 Goal of this game is to help student to achieve this goal in learning ${fullLanguageName} language: ${goalTitle}.
 
@@ -423,7 +430,7 @@ Keep the pace lively and fast, but play with the rhythm—slow down for effect w
         ...baseConfig,
         model: aiModal,
         voice: "shimmer",
-        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Shimmer". Your role is to make user talks on a topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
+        initInstruction: `${aiPersona} Your name is "Shimmer". Your role is to make user talks on a topic: ${elementTitle} - ${elementDescription} (${elementDetails}).
 ${openerInfoPrompt}
 Do not teach or explain rules—just talk.
 You should be friendly and engaging.
@@ -468,7 +475,7 @@ Don't focus solely on one topic. Try to cover a variety of topics (Example ${pot
         ...baseConfig,
         model: aiModal,
         voice: "shimmer",
-        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Shimmer". Your role is to make user talks.
+        initInstruction: `${aiPersona} Your name is "Shimmer". Your role is to make user talks.
 ${openerInfoPrompt}
 Do not teach or explain rules—just talk.
 You should be friendly and engaging.
@@ -479,7 +486,7 @@ Engage in a natural conversation without making it feel like a lesson.
 ${
   userInfo
     ? ""
-    : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."
+    : "After the first user response, introduce yourself, your role and ask user to describe their day."
 }
 
 Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
@@ -502,7 +509,7 @@ Start the conversation with exactly this message: ${startFirstMessage} Don't add
         ...baseConfig,
         voice: "ash",
         model: aiModal,
-        initInstruction: `You are an ${fullLanguageName} teacher.
+        initInstruction: `${aiPersona}
 Your name is "Bruno".
 The user wants to learn a new rule.
 Start your lesson be introducing the rule with short explanation.
@@ -520,7 +527,7 @@ ${userLevelDescription}
         ...baseConfig,
         model: aiModal,
         voice: "ash",
-        initInstruction: `You are an ${fullLanguageName} teacher.
+        initInstruction: `${aiPersona}
 Your name is "Bruno".
 The user wants to learn new words.
 Start your lesson be introducing new words with short explanation.
@@ -538,7 +545,7 @@ ${userLevelDescription}
       return {
         ...baseConfig,
         model: aiModal,
-        initInstruction: `You are an ${fullLanguageName} teacher.
+        initInstruction: `${aiPersona}
   Your name is "Bruno". Your role is to make user talks.
   Do not teach or explain rules—just talk.
   You should be friendly and engaging.
@@ -549,7 +556,7 @@ ${userLevelDescription}
   ${
     userInfo
       ? ""
-      : "After the first user response, introduce yourself, your role of english teacher and ask user to describe their day."
+      : "After the first user response, introduce yourself, your role and ask user to describe their day."
   }
   Speak slowly and clearly. Use ${fullLanguageName} language. Try to speak on user's level.
   
@@ -569,7 +576,7 @@ ${userLevelDescription}
         ...baseConfig,
         voice: "shimmer",
         model: aiModal,
-        initInstruction: `You are an ${fullLanguageName} teacher.
+        initInstruction: `${aiPersona}
 Your name is "Shimmer". The user wants both a conversation and corrections.
 
 For every user message, you must reply with following parts in one response:
@@ -585,7 +592,7 @@ Avoid over-explaining grammar rules. Keep it interactive and supportive—never 
 Your voice is deep and seductive, with a flirtatious undertone and realistic pauses that show you're thinking (e.g., “hmm…”, “let me think…”, “ah, interesting…”, “mmm, that’s …”). These pauses should feel natural and reflective, as if you're savoring the moment.
 Keep the pace lively and fast, but play with the rhythm—slow down for effect when teasing or making a point. Add light humor and playful jokes to keep the mood fun and engaging.
   
-Start the conversation with simple phrase: ${firstCorrectionMessage}. You are lead of conversation, because you are teacher.
+Start the conversation with simple phrase: ${firstCorrectionMessage}. You are lead of conversation.
   
 ${userInfo ? `Info about student: ${userInfo}` : ""}
 
@@ -597,7 +604,7 @@ ${userLevelDescription}
       return {
         ...baseConfig,
         model: aiModal,
-        initInstruction: `You are an ${fullLanguageName} teacher. Your name is "Bruno". The user is a beginner who needs simple, clear communication.
+        initInstruction: `${aiPersona} Your name is "Bruno". The user is a beginner who needs simple, clear communication.
   
 For every user message, reply with **three parts** in a single response:
 
