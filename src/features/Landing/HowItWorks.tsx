@@ -78,7 +78,7 @@ export const HowItWorks = (props: HowItWorksProps) => {
         </Stack>
       </Stack>
 
-      <Stack sx={{ gap: "100px", "@media (max-width: 900px)": { gap: "20px" } }}>
+      <Stack sx={{ gap: "100px", "@media (max-width: 900px)": { gap: "20px", padding: "0 15px" } }}>
         {props.cards.map((card, index) => {
           return (
             <Stack
@@ -96,12 +96,14 @@ export const HowItWorks = (props: HowItWorksProps) => {
                 top: `${100 + index * 30}px`,
                 "--radius": "40px",
                 "--horizontal-padding": "40px",
+                "--top-padding": "60px",
                 borderRadius: "var(--radius)",
                 "@media (max-width: 900px)": {
                   minHeight: "auto",
-                  top: `${30 + index * 30}px`,
+                  top: `${72 + index * 30}px`,
                   "--radius": "20px",
-                  "--horizontal-padding": "20px",
+                  "--top-padding": "20px",
+                  "--horizontal-padding": "12px",
                 },
               }}
             >
@@ -119,7 +121,8 @@ export const HowItWorks = (props: HowItWorksProps) => {
                     backgroundColor: card.titleBgColor,
                     alignSelf: "flex-start",
                     padding: "3px 5px",
-                    margin: "40px var(--horizontal-padding) 0 var(--horizontal-padding)",
+                    margin:
+                      "var(--top-padding) var(--horizontal-padding) 0 var(--horizontal-padding)",
                   }}
                 >
                   {card.title}
