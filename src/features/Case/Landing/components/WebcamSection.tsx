@@ -12,6 +12,59 @@ import MicIcon from "@mui/icons-material/Mic";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 
+export const WebCamButtons = () => {
+  return (
+    <Stack
+      sx={{
+        position: "absolute",
+        left: "0px",
+        bottom: "0px",
+        alignItems: "center",
+        width: "100%",
+        padding: "10px 0",
+        flexDirection: "row",
+        justifyContent: "center",
+        gap: "10px",
+      }}
+    >
+      <IconButton
+        aria-label="Turn microphone"
+        sx={{
+          backgroundColor: "rgba(100, 100, 100, 0.4)",
+          color: "#fff",
+        }}
+        size="large"
+      >
+        <MicOffIcon />
+      </IconButton>
+
+      <IconButton
+        size="large"
+        aria-label="End call"
+        sx={{
+          width: "70px",
+          borderRadius: "30px",
+          backgroundColor: "#dc362e",
+          ":hover": { backgroundColor: "rgba(255, 0, 0, 0.7)" },
+        }}
+      >
+        <CallEndIcon />
+      </IconButton>
+
+      <IconButton
+        aria-label="Turn camera"
+        sx={{
+          backgroundColor: "rgba(100, 100, 100, 0.4)",
+          color: "#fff",
+        }}
+        size="large"
+      >
+        <VideocamIcon />
+      </IconButton>
+    </Stack>
+  );
+};
+
 export interface WebcamSectionProps {
   data: WebcamDemoSection;
   theme: Theme;
@@ -101,56 +154,7 @@ export const WebcamSection = (props: WebcamSectionProps) => {
                 }}
                 src={props.data.webCamPreview.videoUrl}
               />
-              <Stack
-                sx={{
-                  position: "absolute",
-                  left: "0px",
-                  bottom: "0px",
-                  alignItems: "center",
-                  width: "100%",
-                  padding: "10px 0",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  gap: "10px",
-                }}
-              >
-                <IconButton
-                  aria-label="Turn microphone"
-                  sx={{
-                    backgroundColor: true ? "rgba(100, 100, 100, 0.4)" : "rgb(250 222 220)",
-                    color: true ? "#fff" : "#222",
-                    ":hover": { backgroundColor: "rgba(255, 255, 255, 0.3)" },
-                  }}
-                  size="large"
-                >
-                  {true ? <MicOffIcon /> : <MicIcon />}
-                </IconButton>
-
-                <IconButton
-                  size="large"
-                  aria-label="End call"
-                  sx={{
-                    width: "70px",
-                    borderRadius: "30px",
-                    backgroundColor: "#dc362e",
-                    ":hover": { backgroundColor: "rgba(255, 0, 0, 0.7)" },
-                  }}
-                >
-                  <CallEndIcon />
-                </IconButton>
-
-                <IconButton
-                  aria-label="Turn camera"
-                  sx={{
-                    backgroundColor: true ? "rgba(100, 100, 100, 0.4)" : "rgb(250 222 220)",
-                    color: true ? "#fff" : "#222",
-                    ":hover": { backgroundColor: "rgba(255, 255, 255, 0.3)" },
-                  }}
-                  size="large"
-                >
-                  {true ? <VideocamIcon /> : <VideocamOffIcon />}
-                </IconButton>
-              </Stack>
+              <WebCamButtons />
             </Stack>
 
             <Stack

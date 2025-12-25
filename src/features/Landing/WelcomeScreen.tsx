@@ -21,7 +21,6 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   title,
   subTitle,
 }) => {
-  const i18n = getI18nInstance(lang);
   return (
     <Stack
       sx={{

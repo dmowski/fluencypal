@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { Footer } from "./Footer";
 import { WelcomeScreen } from "./WelcomeScreen";
 import { GeneralFaqBlock } from "./FAQ/GeneralFaqBlock";
@@ -15,8 +15,9 @@ import { getI18nInstance } from "@/appRouterI18n";
 import { getUrlStart } from "../Lang/getUrlStart";
 import Script from "next/script";
 import { HeaderStatic } from "../Header/HeaderStatic";
-import { PlanLandingBlock } from "./PlanLandingBlock";
-import { WebcamSection } from "../Case/Landing/components/WebcamSection";
+import { WebCamButtons, WebcamSection } from "../Case/Landing/components/WebcamSection";
+import { HowItWorks } from "./HowItWorks";
+import { DynamicIcon } from "lucide-react/dynamic";
 
 interface LandingPageProps {
   lang: SupportedLanguage;
@@ -116,52 +117,143 @@ export default function LandingPage({ lang }: LandingPageProps) {
             lang={lang}
           />
 
-          <WebcamSection
-            theme={"gray"}
-            id="webcam-section"
-            data={{
-              type: "webcamDemo",
-              title: i18n._("Practice Speaking with AI"),
-              subTitle: i18n._(
-                "Get instant AI feedback on clarity, vocabulary, and flow — while you speak."
-              ),
-              content: i18n._(
-                "Practice real conversations and explain your thoughts out loud in a safe, pressure-free environment — without fear of mistakes."
-              ),
-              infoList: [
-                {
-                  title: i18n._("Speak naturally, without overthinking"),
-                  iconName: "mic",
-                  iconColor: "#c2c2c2",
-                },
-                {
-                  title: i18n._("Get clear, actionable AI feedback"),
-                  iconName: "message-circle",
-                  iconColor: "#c2c2c2",
-                },
-                {
-                  title: i18n._("Build confidence through real practice"),
-                  iconName: "chart-bar",
-                  iconColor: "#c2c2c2",
-                },
-              ],
-              webCamPreview: {
-                videoUrl: "/interview/interviewWebPreview2.webm",
-                title: i18n._("Conversation Practice"),
-                participants: i18n._("AI conversation"),
-
-                beforeSectionTitle: i18n._("Warm-up"),
-                beforeSectionSubTitle: i18n._("Done"),
-
-                afterSectionTitle: i18n._("Free Conversation"),
-                afterSectionSubTitle: i18n._("Next"),
-              },
-              buttonTitle: i18n._("Start speaking practice"),
+          <Stack
+            sx={{
+              width: "100%",
             }}
-            buttonHref={`${getUrlStart(lang)}quiz`}
-          />
+          >
+            <WebcamSection
+              theme={"gray"}
+              id="webcam-section"
+              data={{
+                type: "webcamDemo",
+                title: i18n._("Practice Speaking with AI"),
+                subTitle: i18n._(
+                  "Get instant AI feedback on clarity, vocabulary, and flow — while you speak."
+                ),
+                content: i18n._(
+                  "Practice real conversations and explain your thoughts out loud in a safe, pressure-free environment — without fear of mistakes."
+                ),
+                infoList: [
+                  {
+                    title: i18n._("Speak naturally, without overthinking"),
+                    iconName: "mic",
+                    iconColor: "#c2c2c2",
+                  },
+                  {
+                    title: i18n._("Get clear, actionable AI feedback"),
+                    iconName: "message-circle",
+                    iconColor: "#c2c2c2",
+                  },
+                  {
+                    title: i18n._("Build confidence through real practice"),
+                    iconName: "chart-bar",
+                    iconColor: "#c2c2c2",
+                  },
+                ],
+                webCamPreview: {
+                  videoUrl: "/interview/interviewWebPreview2.webm",
+                  title: i18n._("Conversation Practice"),
+                  participants: i18n._("AI conversation"),
 
-          <PlanLandingBlock lang={lang} />
+                  beforeSectionTitle: i18n._("Warm-up"),
+                  beforeSectionSubTitle: i18n._("Done"),
+
+                  afterSectionTitle: i18n._("Free Conversation"),
+                  afterSectionSubTitle: i18n._("Next"),
+                },
+                buttonTitle: i18n._("Start speaking practice"),
+              }}
+              buttonHref={`${getUrlStart(lang)}quiz`}
+            />
+
+            <HowItWorks
+              label={i18n._(`Simple & Effective`)}
+              title={i18n._(`How It Works`)}
+              subTitle={i18n._(
+                "Improving your English speaking skills doesn't have to be complicated. With FluencyPal, anyone can practice confidently and see real progress in minutes, regardless of their current level."
+              )}
+              cards={[
+                {
+                  imageUrl: "/quiz/step1.webp",
+                  bgColor: "#e9e9e9ff",
+
+                  title: i18n._("Smart Start"),
+                  titleColor: "#fff",
+                  titleBgColor: "#111",
+                  subTitle: i18n._(
+                    `Fill out a onboarding quiz to help FluencyPal understand your goals and preferences.`
+                  ),
+                  subTitleColor: "rgb(110, 110, 115)",
+                  footerButton: (
+                    <>
+                      <Stack
+                        sx={{
+                          position: "absolute",
+                          bottom: "110px",
+                          width: "100%",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Button
+                          href={`${getUrlStart(lang)}quiz`}
+                          variant="contained"
+                          size="large"
+                          color="info"
+                          sx={{
+                            padding: "10px 30px",
+                            backgroundColor: "#29A9FF",
+                            color: "#fff",
+                            fontWeight: 600,
+                            borderRadius: "2px",
+                            fontSize: "16px",
+                            boxShadow: "none",
+                            minWidth: "240px",
+                          }}
+                          endIcon={<DynamicIcon name={"arrow-right"} />}
+                        >
+                          {i18n._(`Get My Plan`)}
+                        </Button>
+                      </Stack>
+                    </>
+                  ),
+                },
+
+                {
+                  quizAnimation: "step2",
+                  bgColor: "#02b1ff",
+
+                  title: i18n._("Personal Plan"),
+                  titleColor: "#111",
+                  titleBgColor: "#fff",
+
+                  subTitle: i18n._(
+                    "Based on your onboarding, FluencyPal instantly generates a custom learning plan just for you."
+                  ),
+                  subTitleColor: "#fff",
+                },
+
+                {
+                  videoUrl: "/call/boy_1/talk.webm",
+                  bgColor: "rgb(169, 129, 255)",
+
+                  title: i18n._("Practice"),
+                  titleColor: "#111",
+                  titleBgColor: "#fff",
+
+                  subTitle: i18n._(
+                    "Jump into your tailored learning path and build real skills through engaging practice with AI voice chat."
+                  ),
+                  subTitleColor: "#fff",
+                  footerButton: <WebCamButtons />,
+                },
+              ]}
+              buttonTitle={i18n._(`Start Practicing`)}
+              buttonHref={`${getUrlStart(lang)}quiz`}
+              theme={"dark-red"}
+              id={"how-it-works"}
+            />
+          </Stack>
 
           <ProposalCards
             title={i18n._(`Four Ways FluencyPal Boosts Your Speaking Skills`)}
