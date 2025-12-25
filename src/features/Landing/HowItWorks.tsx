@@ -98,6 +98,8 @@ export const HowItWorks = (props: HowItWorksProps) => {
                 "--horizontal-padding": "40px",
                 borderRadius: "var(--radius)",
                 "@media (max-width: 900px)": {
+                  minHeight: "auto",
+                  top: `${30 + index * 30}px`,
                   "--radius": "20px",
                   "--horizontal-padding": "20px",
                 },

@@ -193,6 +193,11 @@ export default function LandingPage({ lang }: LandingPageProps) {
                           bottom: "110px",
                           width: "100%",
                           alignItems: "center",
+                          "@media (max-width: 600px)": {
+                            bottom: 0,
+                            height: "auto",
+                            aspectRatio: "160 / 46",
+                          },
                         }}
                       >
                         <Button
@@ -209,6 +214,10 @@ export default function LandingPage({ lang }: LandingPageProps) {
                             fontSize: "16px",
                             boxShadow: "none",
                             minWidth: "240px",
+                            "@media (max-width: 600px)": {
+                              boxShadow: "4px 4px 30px rgba(0, 0, 0, 0.3)",
+                              borderRadius: "1px",
+                            },
                           }}
                           endIcon={<DynamicIcon name={"arrow-right"} />}
                         >
