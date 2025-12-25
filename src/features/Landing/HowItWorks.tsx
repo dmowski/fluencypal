@@ -127,7 +127,7 @@ export const HowItWorks = (props: HowItWorksProps) => {
 
                 <Stack
                   sx={{
-                    fontSize: "16px",
+                    fontSize: "18px",
                     fontWeight: 400,
                     lineHeight: "24px",
                     color: card.subTitleColor,

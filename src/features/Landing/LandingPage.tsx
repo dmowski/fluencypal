@@ -184,7 +184,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                   subTitle: i18n._(
                     `Fill out a onboarding quiz to help FluencyPal understand your goals and preferences.`
                   ),
-                  subTitleColor: "rgb(110, 110, 115)",
+                  subTitleColor: "#515154ff",
                   footerButton: (
                     <>
                       <Stack
