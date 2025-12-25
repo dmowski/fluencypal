@@ -167,6 +167,7 @@ export const HowItWorks = (props: HowItWorksProps) => {
                   <Stack
                     component={"img"}
                     src={card.imageUrl}
+                    alt=""
                     sx={{
                       width: "100%",
                       height: "auto",
