@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 import { getFirebaseLink } from "../Firebase/getFirebaseLink";
 import { useGame } from "../Game/useGame";
 import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
-import { BadgeCheck, Check, Copy } from "lucide-react";
+import { BadgeCheck, Check, Copy, Gem } from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
 
 const copyToClipboard = async (text: string) => {
@@ -49,6 +49,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
     ? dayjs(lastConversationDateTime).fromNow()
     : "Never";
 
+  const interviewStats = userStat.interviewStats || [];
   const gameUsername = game.userNames?.[userId || ""] || "";
   const userStats = game.stats.find((s) => s.userId === userId);
   const gameAvatar = game.gameAvatars[userId || ""] || defaultAvatar;
@@ -163,6 +164,21 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           >
             <Typography variant="caption">Card verified</Typography>
             <BadgeCheck size={"16px"} />
+          </Stack>
+        )}
+
+        {interviewStats.length > 0 && (
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "8px",
+              padding: "4px 0",
+              color: "#ff27edff",
+            }}
+          >
+            <Typography variant="body2">Interview app</Typography>
+            <Gem size={"16px"} />
           </Stack>
         )}
       </Stack>

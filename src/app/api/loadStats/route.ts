@@ -4,6 +4,7 @@ import { AdminStatsRequest, AdminStatsResponse, UserStat } from "./types";
 import {
   getAllUsersWithIds,
   getUserConversationsMeta,
+  getUsersInterviewSurvey,
   getUsersQuizSurvey,
 } from "../user/getUserInfo";
 
@@ -25,15 +26,17 @@ export async function POST(request: Request) {
 
   const userStats = await Promise.all(
     allUsers.map(async (user) => {
-      const [conversationMeta, goalQuiz2] = await Promise.all([
+      const [conversationMeta, goalQuiz2, interviewStats] = await Promise.all([
         getUserConversationsMeta(user.id),
         getUsersQuizSurvey(user.id),
+        getUsersInterviewSurvey(user.id),
       ]);
 
       const userStat: UserStat = {
         userData: user,
         conversationMeta,
         goalQuiz2,
+        interviewStats,
       };
       return userStat;
     })

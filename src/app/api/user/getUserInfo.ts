@@ -3,6 +3,7 @@ import { getDB } from "../config/firebase";
 import { AiUserInfo } from "@/common/userInfo";
 import { Conversation, UserConversationsMeta } from "@/common/conversation";
 import { QuizSurvey2 } from "@/features/Goal/Quiz/types";
+import { InterviewQuizSurvey } from "@/features/Case/types";
 
 export interface StripeUserInfo {
   customerId: string;
@@ -86,6 +87,17 @@ export const getUsersQuizSurvey = async (userId: string): Promise<QuizSurvey2[]>
   const quizCollection = await db.collection("users").doc(userId).collection("quiz2").get();
   const data: QuizSurvey2[] = quizCollection.docs.map((doc) => {
     const data = doc.data() as QuizSurvey2;
+    return { ...data };
+  });
+
+  return data;
+};
+
+export const getUsersInterviewSurvey = async (userId: string): Promise<InterviewQuizSurvey[]> => {
+  const db = getDB();
+  const quizCollection = await db.collection("users").doc(userId).collection("interview").get();
+  const data: InterviewQuizSurvey[] = quizCollection.docs.map((doc) => {
+    const data = doc.data() as InterviewQuizSurvey;
     return { ...data };
   });
 
