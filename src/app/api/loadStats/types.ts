@@ -1,11 +1,13 @@
 import { UserConversationsMeta } from "@/common/conversation";
 import { UserSettingsWithId } from "@/common/user";
+import { InterviewQuizSurvey } from "@/features/Case/types";
 import { QuizSurvey2 } from "@/features/Goal/Quiz/types";
 
 export interface UserStat {
   userData: UserSettingsWithId;
   conversationMeta: UserConversationsMeta;
   goalQuiz2: QuizSurvey2[];
+  interviewStats: InterviewQuizSurvey[];
 }
 
 export interface AdminStatsRequest {

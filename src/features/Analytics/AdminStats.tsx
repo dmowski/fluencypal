@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 import { getFirebaseLink } from "../Firebase/getFirebaseLink";
 import { useGame } from "../Game/useGame";
 import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
-import { BadgeCheck, Check, Copy, CreditCard } from "lucide-react";
+import { BadgeCheck, Check, Copy } from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
 
 const copyToClipboard = async (text: string) => {
