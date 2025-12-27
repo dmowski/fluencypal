@@ -7,6 +7,7 @@ import { maxLandingWidth } from "./landingSettings";
 interface PreviewCard {
   imageUrl?: string;
   videoUrl?: string;
+  alt: string;
 }
 
 interface WelcomeScreenProps {
@@ -210,10 +211,10 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                   {card.imageUrl && (
                     <Stack
                       component={"img"}
+                      alt={card.alt}
                       src={card.imageUrl}
                       sx={{
                         height: "580px",
-                        aspectRatio: "411 / 896",
                         borderRadius: "17px",
                         position: "relative",
                         zIndex: 2,

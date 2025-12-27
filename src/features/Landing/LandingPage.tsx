@@ -116,12 +116,15 @@ export default function LandingPage({ lang }: LandingPageProps) {
             cards={[
               {
                 videoUrl: "/landing/preview/grammar.mp4",
+                alt: i18n._("Grammar Correction Preview"),
               },
               {
                 videoUrl: "/landing/preview/camera.mp4",
+                alt: i18n._("Webcam Feedback Preview"),
               },
               {
                 imageUrl: "/landing/preview/roleplay.png",
+                alt: i18n._("Roleplay Preview"),
               },
             ]}
           />
