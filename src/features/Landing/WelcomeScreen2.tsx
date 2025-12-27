@@ -193,16 +193,19 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
           >
             {cards.map((card, index) => {
               const isCenter = index === 1;
+              const borderRadius = "19px";
+              const borderRadiusMobile = "12px";
 
               const contentStyle: SxProps = {
                 height: "580px",
-                borderRadius: "17px",
+                borderRadius: borderRadius,
                 position: "relative",
                 zIndex: 2,
                 boxShadow: isCenter ? "0 3px 70px rgba(0, 0, 0, 1)" : "0 4px 85px rgba(0, 0, 0, 1)",
 
                 "@media (max-width: 700px)": {
                   height: "400px",
+                  borderRadius: borderRadiusMobile,
                 },
               };
 
@@ -245,7 +248,10 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                       top: "calc(0px - var(--padding))",
                       left: "calc(0px - var(--padding))",
                       boxShadow: "0 0 0 0px rgba(0, 0, 0, 1), 0 0 0 1px rgba(255, 255, 255, 1)",
-                      borderRadius: "17px",
+                      borderRadius: borderRadius,
+                      "@media (max-width: 700px)": {
+                        borderRadius: borderRadiusMobile,
+                      },
                     }}
                   />
                 </Stack>
