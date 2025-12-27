@@ -187,9 +187,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         isSavingGoal={false}
         isShowMessageProgress={true}
         conversationAnalysisResult={``}
-        closeConversation={async () => {
-          alert("Close conversation");
-        }}
+        closeConversation={async () => alert("Close conversation")}
         analyzeConversation={async () => {}}
         generateHelpMessage={async () => {
           await sleep(2000);
@@ -201,7 +199,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         isVolumeOn={true}
         setIsVolumeOn={() => {}}
         isAiSpeaking={true}
-        isCallMode={false}
+        isCallMode={true}
         voice="ash"
       />
     </Stack>

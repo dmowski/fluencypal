@@ -38,6 +38,9 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
         position: "relative",
         overflow: "hidden",
         padding: "70px 0 100px 0",
+        "@media (max-width: 1100px)": {
+          paddingBottom: "10px",
+        },
       }}
     >
       <Stack
@@ -102,6 +105,10 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
             justifyContent: "space-between",
             alignItems: "center",
             paddingBottom: "100px",
+            "@media (max-width: 1100px)": {
+              flexDirection: "column",
+              gap: "150px",
+            },
           }}
         >
           <Stack
@@ -110,14 +117,8 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
 
               alignItems: "flex-start",
 
-              ".logoContainer": {
-                padding: "20px",
-                "@media (max-width: 600px)": {
-                  display: "none",
-                },
-              },
-              "@media (max-width: 600px)": {
-                gap: "5px",
+              "@media (max-width: 1100px)": {
+                alignItems: "center",
               },
             }}
           >
@@ -130,6 +131,15 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                 fontSize: "96px",
                 lineHeight: "100px",
                 maxWidth: "800px",
+                "@media (max-width: 1100px)": {
+                  textAlign: "center",
+                  maxWidth: "100%",
+                },
+                "@media (max-width: 800px)": {
+                  fontSize: "64px",
+                  lineHeight: "70px",
+                  padding: "0 20px",
+                },
               }}
             >
               {title}
@@ -142,11 +152,15 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
               <Typography
                 sx={{
                   maxWidth: "500px",
-                  padding: "10px 10px 0 0 ",
+                  padding: "10px 10px 0 0",
                   fontSize: "1.1rem",
                   textShadow: "0 0 5px rgba(0, 0, 0, 0.71)",
                   "@media (max-width: 600px)": {
                     fontSize: "0.9rem",
+                  },
+                  "@media (max-width: 1100px)": {
+                    textAlign: "center",
+                    padding: "0px 10px 0 10px",
                   },
                   b: {
                     fontWeight: 600,
@@ -187,45 +201,40 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                     transform: `scale(${isCenter ? 1.15 : 1})`,
                     marginLeft: index > 0 ? "-100px" : "0",
                     transition: "transform 0.3s ease, z-index 0.3s ease",
+
                     ":hover": {
                       transform: `scale(${isCenter ? 1.2 : 1.05})`,
                     },
                   }}
                 >
                   <Stack
+                    component={"img"}
+                    src={card.imageUrl}
+                    sx={{
+                      height: "580px",
+                      borderRadius: "17px",
+                      position: "relative",
+                      zIndex: 2,
+                      boxShadow: isCenter
+                        ? "0 3px 70px rgba(0, 0, 0, 1)"
+                        : "0 4px 85px rgba(0, 0, 0, 1)",
+
+                      "@media (max-width: 700px)": {
+                        height: "400px",
+                      },
+                    }}
+                  />
+                  <Stack
                     sx={{
                       background: `#000`,
                       position: "absolute",
-                      "--padding": "3px",
-                      width: "calc(100% - var(--padding) * 2)",
-                      height: "calc(100% - var(--padding) * 2)",
-                      top: "var(--padding)",
-                      left: "var(--padding)",
-                      borderRadius: "40px",
-                    }}
-                  />
-                  <Stack
-                    component={"img"}
-                    src="/landing/preview/iphone.webp"
-                    alt=""
-                    sx={{
-                      height: "500px",
-                      position: "relative",
-                      zIndex: 2,
-                    }}
-                  />
-                  <Stack
-                    sx={{
-                      background: `url('${card.imageUrl}') no-repeat center center`,
-                      backgroundSize: "cover",
-                      position: "absolute",
-                      "--padding": "14px",
-                      width: "calc(100% - var(--padding) * 2)",
-                      height: "calc(100% - var(--padding) * 2)",
-                      top: "var(--padding)",
-                      left: "var(--padding)",
-                      borderRadius: "30px",
-                      overflow: "hidden",
+                      "--padding": "0px",
+                      width: "calc(100% + var(--padding) * 2)",
+                      height: "calc(100% + var(--padding) * 2)",
+                      top: "calc(0px - var(--padding))",
+                      left: "calc(0px - var(--padding))",
+                      boxShadow: "0 0 0 0px rgba(0, 0, 0, 1), 0 0 0 1px rgba(255, 255, 255, 1)",
+                      borderRadius: "17px",
                     }}
                   />
                 </Stack>

@@ -268,15 +268,10 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
           settings.setConversationMode(isCallMode ? "call" : "record");
         }}
         isMuted={aiConversation.isMuted}
-        setIsMuted={(isMuted) => {
-          aiConversation.toggleMute(isMuted);
-        }}
+        setIsMuted={(isMuted) => aiConversation.toggleMute(isMuted)}
         isNeedToShowBalanceWarning={!isFullAccess}
         isVolumeOn={aiConversation.isVolumeOn}
-        setIsVolumeOn={(isVolumeOn) => {
-          console.log("NEW STATE | Volume", isVolumeOn);
-          aiConversation.toggleVolume(isVolumeOn);
-        }}
+        setIsVolumeOn={(isVolumeOn) => aiConversation.toggleVolume(isVolumeOn)}
         voice={aiConversation.voice}
       />
     </Stack>

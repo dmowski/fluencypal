@@ -115,13 +115,13 @@ export default function LandingPage({ lang }: LandingPageProps) {
             openMyPracticeLinkTitle={i18n._(`Join a Call With AI`)}
             cards={[
               {
-                imageUrl: "/landing/preview/grammar.webp",
+                imageUrl: "/landing/preview/grammar.png",
               },
               {
-                imageUrl: "/landing/preview/camera.webp",
+                imageUrl: "/landing/preview/camera.png",
               },
               {
-                imageUrl: "/landing/preview/plan.webp",
+                imageUrl: "/landing/preview/roleplay.png",
               },
             ]}
           />
