@@ -207,6 +207,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                   <Stack
                     component={"img"}
                     src="/landing/preview/iphone.webp"
+                    alt=""
                     sx={{
                       height: "500px",
                       position: "relative",
