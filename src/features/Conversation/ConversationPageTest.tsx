@@ -69,7 +69,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
   }) => {
     await sleep(100);
     return {
-      correctedMessage: message + ",", //"Nice to be here!",
+      correctedMessage: "Nice to be here!",
       description: "Need to pay attention to the grammar",
       sourceMessage: message,
       newWords: ["Hello", "Amazing"],
@@ -176,7 +176,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         stopRecording={async () => {}}
         cancelRecording={async () => {}}
         isTranscribing={false}
-        transcriptMessage=""
+        transcriptMessage="Nice to be here!"
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
@@ -195,13 +195,13 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
           await sleep(2000);
           return "Nice to see you here";
         }}
-        isCallMode={false}
         toggleCallMode={() => {}}
         isNeedToShowBalanceWarning={false}
         setIsMuted={() => {}}
         isVolumeOn={true}
         setIsVolumeOn={() => {}}
         isAiSpeaking={true}
+        isCallMode={false}
         voice="ash"
       />
     </Stack>
