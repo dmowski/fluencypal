@@ -175,8 +175,6 @@ export const HowItWorks = (props: HowItWorksProps) => {
                     alt=""
                     sx={{
                       width: "100%",
-                      height: "auto",
-                      objectFit: "cover",
                       position: "relative",
                       top: "3px",
                       marginTop: "30px",
@@ -184,7 +182,17 @@ export const HowItWorks = (props: HowItWorksProps) => {
                   />
                 )}
 
-                {card.quizAnimation && <QuizAnimation />}
+                {card.quizAnimation && (
+                  <Stack
+                    sx={{
+                      borderRadius: "0 0 var(--radius) var(--radius)",
+                      overflow: "hidden",
+                      marginTop: "30px",
+                    }}
+                  >
+                    <QuizAnimation />
+                  </Stack>
+                )}
 
                 {!!card.footerButton && card.footerButton}
               </Stack>
