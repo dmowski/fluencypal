@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack, SxProps, Typography } from "@mui/material";
 import { FirstEnterButton } from "./FirstEnterButton";
 import { PageLabel } from "../Case/Landing/components/Typography";
 import { ArrowRight } from "lucide-react";
@@ -193,6 +193,19 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
           >
             {cards.map((card, index) => {
               const isCenter = index === 1;
+
+              const contentStyle: SxProps = {
+                height: "580px",
+                borderRadius: "17px",
+                position: "relative",
+                zIndex: 2,
+                boxShadow: isCenter ? "0 3px 70px rgba(0, 0, 0, 1)" : "0 4px 85px rgba(0, 0, 0, 1)",
+
+                "@media (max-width: 700px)": {
+                  height: "400px",
+                },
+              };
+
               return (
                 <Stack
                   key={index}
@@ -209,24 +222,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                   }}
                 >
                   {card.imageUrl && (
-                    <Stack
-                      component={"img"}
-                      alt={card.alt}
-                      src={card.imageUrl}
-                      sx={{
-                        height: "580px",
-                        borderRadius: "17px",
-                        position: "relative",
-                        zIndex: 2,
-                        boxShadow: isCenter
-                          ? "0 3px 70px rgba(0, 0, 0, 1)"
-                          : "0 4px 85px rgba(0, 0, 0, 1)",
-
-                        "@media (max-width: 700px)": {
-                          height: "400px",
-                        },
-                      }}
-                    />
+                    <Stack component={"img"} alt={card.alt} src={card.imageUrl} sx={contentStyle} />
                   )}
 
                   {card.videoUrl && (
@@ -238,18 +234,8 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                       controls={false}
                       muted
                       sx={{
-                        height: "580px",
+                        ...contentStyle,
                         aspectRatio: "411 / 896",
-                        borderRadius: "17px",
-                        position: "relative",
-                        zIndex: 2,
-                        boxShadow: isCenter
-                          ? "0 3px 70px rgba(0, 0, 0, 1)"
-                          : "0 4px 85px rgba(0, 0, 0, 1)",
-
-                        "@media (max-width: 700px)": {
-                          height: "400px",
-                        },
                       }}
                       src={card.videoUrl}
                     />
