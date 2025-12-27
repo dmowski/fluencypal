@@ -209,6 +209,7 @@ export const CallModeCanvas = ({
             gap: "20px",
             width: "100%",
             paddingTop: "20px",
+
             position: "fixed",
             backgroundColor: "rgba(10, 18, 30, 0.9)",
             paddingBottom: `calc(15px + ${sizes.bottomOffset})`,
