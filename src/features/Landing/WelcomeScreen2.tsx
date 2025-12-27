@@ -220,7 +220,6 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                   {card.imageUrl && (
                     <Stack component={"img"} alt={card.alt} src={card.imageUrl} sx={contentStyle} />
                   )}
-
                   {card.videoUrl && (
                     <Stack
                       component={"video"}
