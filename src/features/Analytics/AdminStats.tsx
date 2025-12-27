@@ -30,6 +30,8 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
     ? dayjs(user.lastLoginAtDateTime).fromNow()
     : "Never";
 
+  const createdAgo = user.createdAtIso ? dayjs(user.createdAtIso).fromNow() : "Unknown";
+
   const isToday =
     user.lastLoginAtDateTime && dayjs(user.lastLoginAtDateTime).isSame(dayjs(), "day");
 
@@ -108,7 +110,7 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
           {user.email} | {displayName}
         </Link>
         <Typography variant="caption">
-          <b>{lastLoginAgo}</b> - login
+          <b>{lastLoginAgo}</b>/<b>{createdAgo}</b>
         </Typography>
         <Typography variant="caption">
           <b>{lastConversationAgo}</b> - conversations ({conversationCount} | {totalMessages}
