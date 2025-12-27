@@ -1,6 +1,5 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { Footer } from "./Footer";
-import { WelcomeScreen } from "./WelcomeScreen";
 import { GeneralFaqBlock } from "./FAQ/GeneralFaqBlock";
 import { CtaBlock } from "./ctaBlock";
 import { ProposalCards } from "./ProposalCards";
@@ -18,6 +17,7 @@ import { HeaderStatic } from "../Header/HeaderStatic";
 import { WebCamButtons, WebcamSection } from "../Case/Landing/components/WebcamSection";
 import { HowItWorks } from "./HowItWorks";
 import { DynamicIcon } from "lucide-react/dynamic";
+import { WelcomeScreen2 } from "./WelcomeScreen2";
 
 interface LandingPageProps {
   lang: SupportedLanguage;
@@ -105,16 +105,27 @@ export default function LandingPage({ lang }: LandingPageProps) {
       />
       <main style={{ width: "100%", margin: 0 }}>
         <Stack sx={{ alignItems: "center" }}>
-          <WelcomeScreen
-            getStartedTitle={i18n._(`Get Started`)}
-            pricingLink={`${getUrlStart(lang)}pricing`}
-            practiceLink={`${getUrlStart(lang)}quiz`}
-            openMyPracticeLinkTitle={i18n._(`Open`)}
-            title={i18n._(`Start Speaking`)}
-            subTitle={i18n._(
-              `Don’t let mistakes stop you. Build fluency and confidence with daily speaking practice, anytime you need it.`
+          <WelcomeScreen2
+            label={i18n._(`Practice with AI`)}
+            title={i18n._(`Daily speaking practice`)}
+            subTitle1={i18n._(`Don’t let mistakes stop you.`)}
+            subTitle2={i18n._(
+              `Build fluency and confidence with daily speaking practice, anytime you need it.`
             )}
-            lang={lang}
+            buttonTitle={i18n._(`Join a Call With AI`)}
+            buttonHref={`${getUrlStart(lang)}quiz`}
+            openMyPracticeLinkTitle={i18n._(`Join a Call With AI`)}
+            cards={[
+              {
+                imageUrl: "/landing/preview/grammar.webp",
+              },
+              {
+                imageUrl: "/landing/preview/camera.webp",
+              },
+              {
+                imageUrl: "/landing/preview/plan.webp",
+              },
+            ]}
           />
 
           <Stack

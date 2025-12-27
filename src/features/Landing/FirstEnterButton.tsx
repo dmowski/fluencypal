@@ -9,11 +9,15 @@ interface FirstEnterButtonProps {
   getStartedTitle: string;
   practiceLink: string;
   openMyPracticeLinkTitle: string;
+  endIcon?: React.ReactNode;
+  startIcon?: React.ReactNode;
 }
 export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
   getStartedTitle,
   practiceLink,
   openMyPracticeLinkTitle,
+  endIcon,
+  startIcon,
 }) => {
   const [isSignInToLanguage, setIsSignInToLanguage] = useState("");
   const openMyPracticeLink = isSignInToLanguage ? getUrlStart(isSignInToLanguage) + "practice" : "";
@@ -48,6 +52,8 @@ export const FirstEnterButton: React.FC<FirstEnterButtonProps> = ({
         variant="contained"
         size="large"
         href={openMyPracticeLink || practiceLink}
+        endIcon={endIcon}
+        startIcon={startIcon}
       >
         {openMyPracticeLink ? openMyPracticeLinkTitle : getStartedTitle}
       </Button>
