@@ -214,11 +214,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                     zIndex: isCenter ? 1 : 0,
                     transform: `scale(${isCenter ? 1.05 : 0.9})`,
                     marginLeft: index > 0 ? "-100px" : "0",
-                    transition: "transform 0.3s ease, z-index 0.3s ease",
-
-                    ":hover": {
-                      transform: `scale(${isCenter ? 1.2 : 1.05})`,
-                    },
+                    transition: "transform 0.3s ease-in-out",
                   }}
                 >
                   {card.imageUrl && (
