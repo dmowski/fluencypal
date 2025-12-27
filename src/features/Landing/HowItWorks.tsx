@@ -155,6 +155,8 @@ export const HowItWorks = (props: HowItWorksProps) => {
                     autoPlay
                     loop
                     muted
+                    controls={false}
+                    playsInline
                     sx={{
                       width: "100%",
                       height: "auto",
