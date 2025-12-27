@@ -198,7 +198,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                   sx={{
                     position: "relative",
                     zIndex: isCenter ? 1 : 0,
-                    transform: `scale(${isCenter ? 1.15 : 1})`,
+                    transform: `scale(${isCenter ? 1.05 : 0.9})`,
                     marginLeft: index > 0 ? "-100px" : "0",
                     transition: "transform 0.3s ease, z-index 0.3s ease",
 
@@ -207,23 +207,52 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                     },
                   }}
                 >
-                  <Stack
-                    component={"img"}
-                    src={card.imageUrl}
-                    sx={{
-                      height: "580px",
-                      borderRadius: "17px",
-                      position: "relative",
-                      zIndex: 2,
-                      boxShadow: isCenter
-                        ? "0 3px 70px rgba(0, 0, 0, 1)"
-                        : "0 4px 85px rgba(0, 0, 0, 1)",
+                  {card.imageUrl && (
+                    <Stack
+                      component={"img"}
+                      src={card.imageUrl}
+                      sx={{
+                        height: "580px",
+                        aspectRatio: "411 / 896",
+                        borderRadius: "17px",
+                        position: "relative",
+                        zIndex: 2,
+                        boxShadow: isCenter
+                          ? "0 3px 70px rgba(0, 0, 0, 1)"
+                          : "0 4px 85px rgba(0, 0, 0, 1)",
 
-                      "@media (max-width: 700px)": {
-                        height: "400px",
-                      },
-                    }}
-                  />
+                        "@media (max-width: 700px)": {
+                          height: "400px",
+                        },
+                      }}
+                    />
+                  )}
+
+                  {card.videoUrl && (
+                    <Stack
+                      component={"video"}
+                      autoPlay
+                      loop
+                      playsInline
+                      controls={false}
+                      muted
+                      sx={{
+                        height: "580px",
+                        aspectRatio: "411 / 896",
+                        borderRadius: "17px",
+                        position: "relative",
+                        zIndex: 2,
+                        boxShadow: isCenter
+                          ? "0 3px 70px rgba(0, 0, 0, 1)"
+                          : "0 4px 85px rgba(0, 0, 0, 1)",
+
+                        "@media (max-width: 700px)": {
+                          height: "400px",
+                        },
+                      }}
+                      src={card.videoUrl}
+                    />
+                  )}
                   <Stack
                     sx={{
                       background: `#000`,
