@@ -2,6 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import { FirstEnterButton } from "./FirstEnterButton";
 import { PageLabel } from "../Case/Landing/components/Typography";
 import { ArrowRight } from "lucide-react";
+import { maxLandingWidth } from "./landingSettings";
 
 interface PreviewCard {
   imageUrl?: string;
@@ -68,14 +69,13 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
           zIndex: -2,
           background: "url('/landing/preview/space.webp') no-repeat center center",
           backgroundSize: "cover",
-
           opacity: 0.4,
         }}
       />
 
       <Stack
         sx={{
-          maxWidth: "1400px",
+          maxWidth: maxLandingWidth,
           padding: "120px 10px 0px 10px",
           height: "max-content",
           width: "100%",
@@ -142,7 +142,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
               <Typography
                 sx={{
                   maxWidth: "500px",
-                  padding: "0px 10px 0 0 ",
+                  padding: "10px 10px 0 0 ",
                   fontSize: "1.1rem",
                   textShadow: "0 0 5px rgba(0, 0, 0, 0.71)",
                   "@media (max-width: 600px)": {
@@ -184,7 +184,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                   sx={{
                     position: "relative",
                     zIndex: isCenter ? 1 : 0,
-                    transform: `scale(${isCenter ? 1.1 : 1})`,
+                    transform: `scale(${isCenter ? 1.15 : 1})`,
                     marginLeft: index > 0 ? "-100px" : "0",
                     transition: "transform 0.3s ease, z-index 0.3s ease",
                     ":hover": {
