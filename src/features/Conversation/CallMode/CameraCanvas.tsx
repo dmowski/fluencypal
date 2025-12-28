@@ -51,127 +51,123 @@ export const CameraCanvas = ({
   const aiVideo: AvatarVideo | null = voice ? (girlVoices.includes(voice) ? girl1 : boy1) : null;
 
   const footerHeight = `calc(80px + ${sizes.bottomOffset})`;
+
+  const topHeight = `50dvh`;
+  const topHeightMobile = `40dvh`;
+
   return (
     <>
       <Stack
         sx={{
           gap: "0px",
-          position: "fixed",
-          top: 0,
-          left: 0,
           width: "100%",
         }}
       >
         <Stack
           sx={{
             width: "100%",
+            maxWidth: "100%",
+            overflow: "hidden",
+            padding: "10px 10px 0px 10px",
+            boxShadow: "0 14px 20px 5px rgba(10, 18, 30, 1)",
+            backgroundColor: "rgba(10, 18, 30, 0.91)",
+            borderRadius: "0px",
+            gap: "10px",
             display: "grid",
-            height: "100dvh",
-            gridTemplateRows: "1.2fr 1fr",
-            paddingTop: sizes.topOffset,
-
-            "@media (max-width: 1000px)": {
-              gridTemplateRows: "1fr 1.5fr",
+            gridTemplateColumns: "1fr 1fr",
+            position: "fixed",
+            top: 0,
+            height: topHeight,
+            zIndex: 1,
+            "@media (max-width: 800px)": {
+              height: topHeightMobile,
             },
           }}
         >
           <Stack
             sx={{
               width: "100%",
-              maxWidth: "100%",
-              height: `100%`,
-              overflow: "hidden",
-              padding: "10px 10px 0px 10px",
-              boxShadow:
-                "0 14px 20px 5px rgba(10, 18, 30, 1), inset 0 0 0 10px rgba(10, 18, 30, 1)",
-              borderRadius: "0px",
-              gap: "10px",
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              height: "100%",
+              borderRadius: "20px",
+              alignItems: "center",
+              justifyContent: "center",
               position: "relative",
-              zIndex: 1,
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              overflow: "hidden",
             }}
           >
-            <Stack
-              sx={{
-                width: "100%",
-                height: "100%",
-                borderRadius: "20px",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                overflow: "hidden",
-              }}
-            >
-              {aiVideo ? (
-                <AiAvatarVideo aiVideo={aiVideo} isSpeaking={isAiSpeaking} />
-              ) : (
-                <UserPreviewStatic
-                  bgUrl={"/blur/2.jpg"}
-                  isSpeaking={isAiSpeaking}
-                  avatarUrl={"/blog/whippet-prediction.png"}
-                />
-              )}
-
-              <WebCamFooter name={i18n._("Teacher")} />
-            </Stack>
-
-            <Stack
-              sx={{
-                width: "100%",
-                height: "100%",
-                borderRadius: "20px",
-                backgroundColor: "rgba(0, 0, 0, 0.3)",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                overflow: "hidden",
-                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <video
-                ref={webCam.videoRef}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  transform: "scaleX(-1)",
-                  display: webCam.isWebCamEnabled ? "block" : "none",
-                }}
-                autoPlay
-                controls={false}
-                muted
-                playsInline
+            {aiVideo ? (
+              <AiAvatarVideo aiVideo={aiVideo} isSpeaking={isAiSpeaking} />
+            ) : (
+              <UserPreviewStatic
+                bgUrl={"/blur/2.jpg"}
+                isSpeaking={isAiSpeaking}
+                avatarUrl={"/blog/whippet-prediction.png"}
               />
+            )}
 
-              {!webCam.isWebCamEnabled && (
-                <UserPreviewStatic bgUrl={"/blur/5.jpg"} avatarUrl={userPhoto} isSpeaking={false} />
-              )}
-
-              <WebCamFooter name={myUserName || i18n._("You")} />
-            </Stack>
+            <WebCamFooter name={i18n._("Teacher")} />
           </Stack>
+
           <Stack
-            id="messages-call-mode"
             sx={{
               width: "100%",
-              alignItems: "center",
-              overflow: "auto",
               height: "100%",
-              paddingBottom: footerHeight,
+              borderRadius: "20px",
+              backgroundColor: "rgba(0, 0, 0, 0.3)",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
+              overflow: "hidden",
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
             }}
           >
-            <Stack
-              sx={{
-                maxWidth: "1000px",
-                height: "max-content",
+            <video
+              ref={webCam.videoRef}
+              style={{
                 width: "100%",
-                paddingBottom: "30px",
+                height: "100%",
+                objectFit: "cover",
+                transform: "scaleX(-1)",
+                display: webCam.isWebCamEnabled ? "block" : "none",
               }}
-            >
-              <Messages conversation={conversation} messageOrder={messageOrder} />
-            </Stack>
+              autoPlay
+              controls={false}
+              muted
+              playsInline
+            />
+
+            {!webCam.isWebCamEnabled && (
+              <UserPreviewStatic bgUrl={"/blur/5.jpg"} avatarUrl={userPhoto} isSpeaking={false} />
+            )}
+
+            <WebCamFooter name={myUserName || i18n._("You")} />
+          </Stack>
+        </Stack>
+
+        <Stack
+          id="messages-call-mode"
+          sx={{
+            width: "100%",
+            alignItems: "center",
+            overflow: "auto",
+            height: "100%",
+            paddingTop: topHeight,
+            paddingBottom: footerHeight,
+            "@media (max-width: 800px)": {
+              paddingTop: topHeightMobile,
+            },
+          }}
+        >
+          <Stack
+            sx={{
+              maxWidth: "1000px",
+              height: "max-content",
+              width: "100%",
+              paddingBottom: "30px",
+            }}
+          >
+            <Messages conversation={conversation} messageOrder={messageOrder} />
           </Stack>
         </Stack>
 
