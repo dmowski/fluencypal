@@ -4,15 +4,12 @@ import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
 import { ArrowRight } from "lucide-react";
 import { useQuiz } from "./useQuiz";
-import { useState } from "react";
-import { getUrlStart } from "@/features/Lang/getUrlStart";
-import { sleep } from "@/libs/sleep";
 import { PlanCard } from "@/features/Plan/PlanCard";
 import { PlanElementMode } from "@/features/Plan/types";
 import { cardColors, modeCardProps } from "@/features/Plan/data";
-import { useRouter } from "next/navigation";
 import { LoadingShapes } from "@/features/uiKit/Loading/LoadingShapes";
 import { FooterButton } from "../../Survey/FooterButton";
+import { useAuth } from "@/features/Auth/useAuth";
 
 export const GoalReview = ({ onClick }: { onClick: () => void }) => {
   const { i18n } = useLingui();
@@ -25,6 +22,9 @@ export const GoalReview = ({ onClick }: { onClick: () => void }) => {
     words: i18n._(`Words`),
     rule: i18n._(`Rule`),
   };
+
+  const auth = useAuth();
+  const username = auth.userInfo?.displayName;
 
   const isLoading = quiz.isGoalGenerating || quiz.survey?.goalData === null;
 
@@ -68,7 +68,7 @@ export const GoalReview = ({ onClick }: { onClick: () => void }) => {
                 textTransform: "uppercase",
               }}
             >
-              {i18n._(`Your plan for learning`)}
+              {username ? i18n._(`Plan for`) + " " + username : i18n._(`Your plan for learning`)}
             </Typography>
             <Typography
               variant="h5"

@@ -1,5 +1,6 @@
 import {
   Button,
+  Divider,
   IconButton,
   ListItemIcon,
   ListItemText,
@@ -8,7 +9,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { ChevronDown, Flag, LandPlot, Sparkle } from "lucide-react";
+import { ChevronDown, CirclePlus, Divide, Flag, LandPlot, Plus, Sparkle } from "lucide-react";
 import { useAiConversation } from "../Conversation/useAiConversation";
 import { useLingui } from "@lingui/react";
 import { useWords } from "../Words/useWords";
@@ -371,6 +372,21 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                       </MenuItem>
                     );
                   })}
+
+                  <Divider />
+
+                  <MenuItem
+                    onClick={() => {
+                      window.location.href = `${getUrlStart(lang)}quiz?learn=${settings.languageCode || "en"}`;
+                    }}
+                  >
+                    <ListItemIcon>
+                      <Plus />
+                    </ListItemIcon>
+                    <ListItemText>
+                      <Typography> {i18n._(`Add new goal`)}</Typography>
+                    </ListItemText>
+                  </MenuItem>
                 </Menu>
               )}
             </Stack>
