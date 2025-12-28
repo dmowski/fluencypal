@@ -488,7 +488,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               variant="outlined"
               onClick={() => setIsShowMoreModal(true)}
             >
-              {i18n._(`Load more lessons`)}
+              {i18n._(`Show more lessons`)}
             </Button>
           </Stack>
         </Stack>
