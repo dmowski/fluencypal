@@ -55,7 +55,7 @@ import { useResizeElement } from "../Layout/useResizeElement";
 import { useWebCam } from "../webCam/useWebCam";
 import { Messages } from "./Messages";
 import { AiVoice } from "@/common/ai";
-import { CallModeCanvas } from "./CallMode/CallModeCanvas";
+import { CameraCanvas } from "./CallMode/CameraCanvas";
 
 interface ConversationCanvasProps {
   conversation: ChatMessage[];
@@ -522,7 +522,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
 
   if (isCallMode && !gameWords?.wordsUserToDescribe) {
     return (
-      <CallModeCanvas
+      <CameraCanvas
         messageOrder={messageOrder}
         isMuted={isMuted}
         setIsMuted={setIsMuted}

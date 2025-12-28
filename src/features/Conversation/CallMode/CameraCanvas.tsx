@@ -32,7 +32,7 @@ const boy1: AvatarVideo = {
   talkVideoUrl: "/call/boy_1/talk2.webm",
 };
 
-export const CallModeCanvas = ({
+export const CameraCanvas = ({
   conversation,
   stopCallMode,
   isMuted,
