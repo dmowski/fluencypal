@@ -699,18 +699,18 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                         background: isAnalyzingResponse
                           ? "rgba(255, 255, 255, 0.06)"
                           : isNeedToShowCorrection
-                            ? "#c29f2b"
+                            ? "linear-gradient(45deg, #2b3cadff 0%, #4e5ec3ff 100%)"
                             : "linear-gradient(45deg, #63b187 0%, #7bd5a1 100%)",
                       }}
                     >
                       {isNeedToShowCorrection && !isAnalyzingResponse ? (
-                        <ShieldAlert color="#fff" size={"20px"} />
+                        <ShieldAlert color="#fff" size={"21px"} strokeWidth={"2.3px"} />
                       ) : (
                         <>
                           {isAnalyzingResponse ? (
-                            <Loader color="#fff" size={"20px"} />
+                            <Loader color="#fff" size={"21px"} strokeWidth={"4px"} />
                           ) : (
-                            <Check color="#fff" size={"20px"} />
+                            <Check color="#fff" size={"21px"} strokeWidth={"4px"} />
                           )}
                         </>
                       )}
@@ -909,7 +909,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
                       </Stack>
                     )}
 
-                    {!!newWords.length && (
+                    {!!newWords.length && false && (
                       <Tooltip title={newWords.join(", ")} placement="top" arrow>
                         <Stack
                           sx={{

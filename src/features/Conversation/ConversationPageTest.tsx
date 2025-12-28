@@ -177,7 +177,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         stopRecording={async () => {}}
         cancelRecording={async () => {}}
         isTranscribing={false}
-        transcriptMessage="Nice to be here!"
+        transcriptMessage="Nice to be here2!"
         recordingMilliSeconds={0}
         recordVisualizerComponent={recordVisualizerComponent}
         recordingError={""}
@@ -196,13 +196,11 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         }}
         toggleCallMode={() => {}}
         isNeedToShowBalanceWarning={false}
-        setIsMuted={() => {
-          setIsAiSpeaking(!isAiSpeaking);
-        }}
+        setIsMuted={() => setIsAiSpeaking(!isAiSpeaking)}
         isVolumeOn={true}
         setIsVolumeOn={() => {}}
         isAiSpeaking={isAiSpeaking}
-        isCallMode={true}
+        isCallMode={false}
         voice="shimmer"
       />
     </Stack>
