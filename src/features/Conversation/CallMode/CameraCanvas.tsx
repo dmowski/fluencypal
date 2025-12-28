@@ -1,21 +1,16 @@
-import CallEndIcon from "@mui/icons-material/CallEnd";
-import MicOffIcon from "@mui/icons-material/MicOff";
-import MicIcon from "@mui/icons-material/Mic";
-
-import VideocamIcon from "@mui/icons-material/Videocam";
-import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import { AiVoice } from "@/common/ai";
 import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
 import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
 import { useWebCam } from "../../webCam/useWebCam";
 import { useAuth } from "../../Auth/useAuth";
-import { IconButton, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import { Messages } from "../Messages";
 import { WebCamFooter } from "./WebCamFooter";
 import { UserPreviewStatic } from "./UserPreviewStatic";
 import { AvatarVideo } from "./types";
 import { AiAvatarVideo } from "./AiAvatarVideo";
+import { CallButtons } from "./CallButtons";
 
 const girlVoices: AiVoice[] = ["alloy", "coral", "sage", "shimmer"];
 
@@ -185,74 +180,19 @@ export const CameraCanvas = ({
             transform: "translateX(-50%)",
           }}
         >
-          <Stack
-            sx={{
-              backgroundColor: "rgba(10, 18, 30, 1)",
-              borderRadius: "90px",
-              boxShadow: "0 0 0 1px rgba(255, 255, 255, 0.3)",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              width: "max-content",
-              padding: "10px 10px",
+          <CallButtons
+            isMuted={isMuted}
+            setIsMuted={setIsMuted}
+            isWebCamEnabled={webCam.isWebCamEnabled}
+            toggleWebCam={(isToggleOn: boolean) => {
+              if (isToggleOn) {
+                webCam.init();
+              } else {
+                webCam.disconnect();
+              }
             }}
-          >
-            <IconButton
-              sx={{
-                backgroundColor: !isMuted ? "rgba(100, 100, 100, 0.4)" : "rgb(250 222 220)",
-                color: !isMuted ? "#fff" : "#222",
-                ":hover": {
-                  backgroundColor: !isMuted
-                    ? "rgba(100, 100, 100, 0.2)"
-                    : "rgba(250, 222, 220, 0.8)",
-                },
-              }}
-              size="large"
-              onClick={async () => {
-                setIsMuted(!isMuted);
-              }}
-            >
-              {isMuted ? <MicOffIcon /> : <MicIcon />}
-            </IconButton>
-
-            <IconButton
-              sx={{
-                backgroundColor: webCam.isWebCamEnabled
-                  ? "rgba(100, 100, 100, 0.4)"
-                  : "rgb(250 222 220)",
-                color: webCam.isWebCamEnabled ? "#fff" : "#222",
-                ":hover": {
-                  backgroundColor: webCam.isWebCamEnabled
-                    ? "rgba(100, 100, 100, 0.2)"
-                    : "rgba(250, 222, 220, 0.8)",
-                },
-              }}
-              size="large"
-              onClick={async () => {
-                if (webCam.isWebCamEnabled) {
-                  webCam.disconnect();
-                } else {
-                  await webCam.init();
-                }
-              }}
-            >
-              {webCam.isWebCamEnabled ? <VideocamIcon /> : <VideocamOffIcon />}
-            </IconButton>
-
-            <IconButton
-              size="large"
-              onClick={async () => stopCallMode()}
-              sx={{
-                width: "70px",
-                borderRadius: "30px",
-                backgroundColor: "#dc362e",
-                ":hover": { backgroundColor: "rgba(255, 0, 0, 0.7)" },
-              }}
-            >
-              <CallEndIcon />
-            </IconButton>
-          </Stack>
+            exit={stopCallMode}
+          />
         </Stack>
       </Stack>
     </>
