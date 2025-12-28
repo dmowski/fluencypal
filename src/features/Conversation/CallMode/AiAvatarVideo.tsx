@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AvatarVideo } from "./types";
+import { Stack } from "@mui/material";
 
 export const AiAvatarVideo = ({
   aiVideo,
@@ -23,26 +24,45 @@ export const AiAvatarVideo = ({
 
   return (
     <>
+      <p
+        style={{
+          fontSize: "10px",
+        }}
+      >
+        {aiVideo.sitVideoUrl.join(", ")}
+      </p>
       {aiVideo.sitVideoUrl.map((url, index) => {
         const isActive = index === sitIndex;
         return (
-          <video
+          <Stack
+            component={"video"}
             key={url}
             src={url}
-            style={{
-              position: "absolute",
-              top: "0",
-              left: "0",
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              opacity: isActive ? 1 : 0,
-            }}
             autoPlay
-            controls={false}
-            muted
             loop
             playsInline
+            controls={false}
+            muted
+            style={{
+              width: "100px",
+              //height: "100px",
+              aspectRatio: "411 / 896",
+
+              //position: "absolute",
+              //top: "0",
+              //left: "0",
+              //width: "100%",
+              //height: "100%",
+              //zIndex: 1110,
+              objectFit: "cover",
+              //opacity: isActive ? 1 : 0,
+              backgroundColor: "red",
+            }}
+            //autoPlay
+            //controls={false}
+            //muted
+            //loop
+            //playsInline
           />
         );
       })}

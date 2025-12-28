@@ -82,7 +82,8 @@ export const CameraCanvas = ({
               height: `100%`,
               overflow: "hidden",
               padding: "10px 10px 0px 10px",
-              boxShadow: "0 14px 20px 5px rgba(10, 18, 30, 1)",
+              boxShadow:
+                "0 14px 20px 5px rgba(10, 18, 30, 1), inset 0 0 0 10px rgba(10, 18, 30, 1)",
               borderRadius: "0px",
               gap: "10px",
               display: "grid",
