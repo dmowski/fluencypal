@@ -51,6 +51,7 @@ export const AiAvatarVideo = ({
         const isActive = index === talkIndex;
         return (
           <video
+            key={url}
             src={url}
             style={{
               position: "absolute",
@@ -60,7 +61,7 @@ export const AiAvatarVideo = ({
               height: "100%",
               objectFit: "cover",
               opacity: isSpeaking && isActive ? 1 : 0,
-              transition: "opacity 0.7s ease-in-out",
+              transition: "opacity 0.4s ease-in-out",
             }}
             autoPlay
             controls={false}

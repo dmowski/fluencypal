@@ -15,7 +15,7 @@ import { CallButtons } from "./CallButtons";
 const girlVoices: AiVoice[] = ["alloy", "coral", "sage", "shimmer"];
 
 const girl1: AvatarVideo = {
-  sitVideoUrl: ["/call/girl_2/sit.webm"],
+  sitVideoUrl: ["/call/girl_2/sit.webm", "/call/girl_2/sit2.webm"],
   talkVideoUrl: ["/call/girl_2/talk.webm", "/call/girl_2/talk2.webm"],
 };
 
