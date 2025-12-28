@@ -26,6 +26,32 @@ export const PageLabel = (props: TypographyOwnProps) => {
   );
 };
 
+export const PageLabel2 = (props: TypographyOwnProps) => {
+  return (
+    <Typography
+      component={"p"}
+      align="center"
+      sx={{
+        fontWeight: 500,
+        fontSize: "18px",
+        backgroundColor: "rgba(255, 255, 255, 0.1)",
+        borderRadius: "28px",
+        padding: "6px 42px",
+        marginBottom: "10px",
+        "@media (max-width: 600px)": {
+          width: "max-content",
+          textAlign: "left",
+          padding: "6px 12px",
+          //borderRadius: "10px",
+          fontSize: "14px",
+        },
+      }}
+    >
+      {props.children}
+    </Typography>
+  );
+};
+
 export const H1 = ({ children }: { children: string }) => {
   return (
     <Typography

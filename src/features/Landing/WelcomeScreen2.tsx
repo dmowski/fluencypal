@@ -1,6 +1,6 @@
 import { Stack, SxProps, Typography } from "@mui/material";
 import { FirstEnterButton } from "./FirstEnterButton";
-import { PageLabel } from "../Case/Landing/components/Typography";
+import { PageLabel, PageLabel2 } from "../Case/Landing/components/Typography";
 import { ArrowRight } from "lucide-react";
 import { maxLandingWidth } from "./landingSettings";
 
@@ -31,6 +31,8 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
   cards,
   openMyPracticeLinkTitle,
 }) => {
+  //const bgUrl = "https://cdn.midjourney.com/7813fa3b-6e7f-42c6-b04d-ee77a5058aad/0_0.png";
+  const bgUrl = "/landing/preview/space2.webp";
   return (
     <Stack
       sx={{
@@ -71,9 +73,9 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
           overflow: "hidden",
           height: "100%",
           zIndex: -2,
-          background: "url('/landing/preview/space.webp') no-repeat center center",
+          background: `url('${bgUrl}') no-repeat center center`,
           backgroundSize: "cover",
-          opacity: 1,
+          opacity: 0.5,
         }}
       />
 
@@ -123,7 +125,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
               },
             }}
           >
-            <PageLabel>{label}</PageLabel>
+            <PageLabel2>{label}</PageLabel2>
             <Typography
               variant="h1"
               component={"h1"}
