@@ -115,7 +115,7 @@ const updateSession = async ({
         tools: aiTools,
       */
       input_audio_transcription: {
-        model: "whisper-1", // TODO: do we need to keep?
+        model: "gpt-4o-mini-transcribe",
         language: languageCode,
       },
       voice,
@@ -276,6 +276,16 @@ export const initAiRtc = async ({
           languageCode,
           type: "realtime",
         });
+      }
+    }
+
+    // conversation.item.input_audio_transcription.delta
+    if (type === "conversation.item.input_audio_transcription.delta") {
+      const id = event?.item_id as string;
+      const deltaMessage = event?.delta as string;
+      if (id && deltaMessage) {
+        const isBot = false;
+        onAddDelta(id, deltaMessage, isBot);
       }
     }
 
