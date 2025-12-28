@@ -5,7 +5,7 @@ import MicIcon from "@mui/icons-material/Mic";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import { AiVoice } from "@/common/ai";
-import { ChatMessage } from "@/common/conversation";
+import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
 import { useWindowSizes } from "../../Layout/useWindowSizes";
 import { useLingui } from "@lingui/react";
 import { useWebCam } from "../../webCam/useWebCam";
@@ -39,6 +39,7 @@ export const CallModeCanvas = ({
   setIsMuted,
   voice,
   isAiSpeaking,
+  messageOrder,
 }: {
   conversation: ChatMessage[];
   stopCallMode: () => void;
@@ -46,6 +47,7 @@ export const CallModeCanvas = ({
   setIsMuted: (value: boolean) => void;
   voice: AiVoice | null;
   isAiSpeaking: boolean;
+  messageOrder: MessagesOrderMap;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -198,7 +200,7 @@ export const CallModeCanvas = ({
               width: "100%",
             }}
           >
-            <Messages conversation={conversation} />
+            <Messages conversation={conversation} messageOrder={messageOrder} />
           </Stack>
         </Stack>
         <Stack

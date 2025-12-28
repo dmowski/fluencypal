@@ -160,6 +160,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     <Stack>
       <ConversationCanvas2
         messagesToComplete={5}
+        messageOrder={{}}
         isMuted
         conversationId="1"
         conversation={testMessage}

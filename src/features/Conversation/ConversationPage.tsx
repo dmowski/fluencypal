@@ -273,6 +273,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         isVolumeOn={aiConversation.isVolumeOn}
         setIsVolumeOn={(isVolumeOn) => aiConversation.toggleVolume(isVolumeOn)}
         voice={aiConversation.voice}
+        messageOrder={aiConversation.messageOrder}
       />
     </Stack>
   );

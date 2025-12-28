@@ -15,6 +15,7 @@ export interface ChatMessage {
   id: string;
   isBot: boolean;
   text: string;
+  previousId?: string;
 }
 
 export interface UserConversationsMeta {
@@ -23,10 +24,17 @@ export interface UserConversationsMeta {
   totalMessages: number;
 }
 
+// parentId -> childId
+export type MessagesOrderMap = Record<string, string>;
+
 export interface Conversation {
   id: string;
   messagesCount: number;
   messages: ChatMessage[];
+
+  // parent-child relationships
+  messageOrder: MessagesOrderMap;
+
   createdAt: number;
   updatedAt: number;
   updatedAtIso: string;

@@ -39,7 +39,7 @@ import VideocamIcon from "@mui/icons-material/Videocam";
 import AddCardIcon from "@mui/icons-material/AddCard";
 
 import { AliasGamePanel } from "./AliasGamePanel";
-import { ChatMessage } from "@/common/conversation";
+import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
 import { GuessGameStat } from "./types";
 import dayjs from "dayjs";
 import { StringDiff } from "react-string-diff";
@@ -114,6 +114,8 @@ interface ConversationCanvasProps {
   toggleCallMode: (newStateIsCallMode: boolean) => void;
   isNeedToShowBalanceWarning: boolean;
   voice: AiVoice | null;
+
+  messageOrder: MessagesOrderMap;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isCallMode,
@@ -155,6 +157,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isVolumeOn,
   setIsVolumeOn,
   voice,
+  messageOrder,
 }) => {
   const { i18n } = useLingui();
   const sound = useSound();
@@ -520,6 +523,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   if (isCallMode && !gameWords?.wordsUserToDescribe) {
     return (
       <CallModeCanvas
+        messageOrder={messageOrder}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
         isAiSpeaking={isAiSpeaking}
@@ -580,7 +584,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             width: "100%",
           }}
         >
-          <Messages conversation={conversation} />
+          <Messages conversation={conversation} messageOrder={messageOrder} />
           <Stack
             sx={{
               height: bottomSectionHeight,

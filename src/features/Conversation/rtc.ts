@@ -7,7 +7,7 @@ import {
   UsageEvent,
 } from "@/common/ai";
 import { sleep } from "@/libs/sleep";
-import { ChatMessage } from "@/common/conversation";
+import { ChatMessage, MessagesOrderMap } from "@/common/conversation";
 import { UsageLog } from "@/common/usage";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { SendSdpOfferRequest, SendSdpOfferResponse } from "@/common/requests";
@@ -171,6 +171,7 @@ export interface AiRtcConfig {
   onAddDelta: (id: string, delta: string, isBot: boolean) => void;
   setIsAiSpeaking: (speaking: boolean) => void;
   setIsUserSpeaking: (speaking: boolean) => void;
+  onMessageOrder: (orderPart: MessagesOrderMap) => void;
   isMuted: boolean;
   onAddUsage: ({}: UsageLog) => void;
   languageCode: SupportedLanguage;
@@ -213,6 +214,7 @@ export const initAiRtc = async ({
   voice,
   isVolumeOn,
   authToken,
+  onMessageOrder,
 }: AiRtcConfig) => {
   const audioId = "audio_for_llm";
   const existingAudio = document.getElementById(audioId) as HTMLAudioElement | null;
@@ -250,6 +252,14 @@ export const initAiRtc = async ({
     //console.log("Event type:", type, "|", event);
     //console.log(JSON.stringify(event, null, 2));
 
+    const previousItemId = event?.previous_item_id as string | undefined;
+    const itemId = (event?.item_id || event.item?.id) as string | undefined;
+    if (previousItemId && itemId) {
+      onMessageOrder({
+        [previousItemId]: itemId,
+      });
+    }
+
     if (type === "response.done") {
       const usageId = event?.event_id || "";
       const usageEvent: UsageEvent | null = event?.response?.usage;
@@ -270,7 +280,7 @@ export const initAiRtc = async ({
     }
 
     if (type === "response.audio_transcript.delta") {
-      const id = event?.response_id as string;
+      const id = event?.item_id as string;
       const deltaMessage = event?.delta as string;
       if (id && deltaMessage) {
         const isBot = true;
@@ -294,12 +304,13 @@ export const initAiRtc = async ({
       const userMessage = event?.transcript || "";
       if (userMessage) {
         const id = event?.item_id as string;
+        // console.log("TIMESTAMP CHECK event", event);
         onMessage({ isBot: false, text: userMessage, id });
       }
     }
 
     if (type === "response.done") {
-      console.log("event?.response?.output", event?.response?.output);
+      //console.log("event?.response?.output", event?.response?.output);
       const botAnswer = event?.response?.output
         .map((item: any) => {
           return (
@@ -311,9 +322,35 @@ export const initAiRtc = async ({
         })
         .join(" ")
         .trim();
-      if (event?.response?.id || botAnswer) {
-        const id = event?.response?.id || (`${Date.now()}` as string);
+
+      const id = event?.response?.output?.[0]?.id as string | undefined;
+      if (id && botAnswer) {
         onMessage({ isBot: true, text: botAnswer || "", id });
+      }
+    }
+
+    if (type === "conversation.item.created") {
+      if (
+        event.item.role === "user" &&
+        event.item.status === "completed" &&
+        event.item.type === "message"
+      ) {
+        const id = event.item.id as string;
+        const content = event.item.content || [];
+        const userMessage = content
+          .map((item: any) => {
+            if (item.type === "input_text") {
+              return item.text || "";
+            }
+            return "";
+          })
+          .join(" ")
+          .trim();
+
+        if (userMessage && id) {
+          // console.log("TIMESTAMP CHECK event", event);
+          onMessage({ isBot: false, text: userMessage, id });
+        }
       }
     }
 
@@ -371,7 +408,6 @@ export const initAiRtc = async ({
       dynamicInfoElement.style.zIndex = "999999999";
       window.document.body.appendChild(dynamicInfoElement);
     }
-
     dynamicInfoElement.style.backgroundColor = color;
     */
   };

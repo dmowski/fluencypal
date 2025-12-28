@@ -17,7 +17,7 @@ import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { UsageLog } from "@/common/usage";
-import { ChatMessage, ConversationMode } from "@/common/conversation";
+import { ChatMessage, ConversationMode, MessagesOrderMap } from "@/common/conversation";
 import { useTasks } from "../Tasks/useTasks";
 import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
@@ -83,6 +83,8 @@ interface AiConversationContextType {
   goalInfo: GoalElementInfo | null;
 
   voice: AiVoice | null;
+
+  messageOrder: MessagesOrderMap;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -181,6 +183,8 @@ function useProvideAiConversation(): AiConversationContextType {
   const tasks = useTasks();
   const plan = usePlan();
   const [goalSettingProgress, setGoalSettingProgress] = useState(0);
+
+  const [messageOrder, setMessageOrder] = useState<MessagesOrderMap>({});
 
   const userLevel = plan.activeGoal?.goalQuiz?.level || "A2";
   const appMode = settings.appMode;
@@ -346,6 +350,12 @@ function useProvideAiConversation(): AiConversationContextType {
     };
   }, [isAiSpeaking]);
 
+  const updateMessageOrder = (orderPart: MessagesOrderMap) => {
+    setMessageOrder((prev) => {
+      return { ...prev, ...orderPart };
+    });
+  };
+
   const getBaseRtcConfig = async () => {
     const baseConfig: AiRtcConfig = {
       model: aiModal,
@@ -361,6 +371,7 @@ function useProvideAiConversation(): AiConversationContextType {
       onAddUsage: (usageLog: UsageLog) => usage.setUsageLogs((prev) => [...prev, usageLog]),
       languageCode: settings.languageCode || "en",
       authToken: await auth.getToken(),
+      onMessageOrder: updateMessageOrder,
     };
     return baseConfig;
   };
@@ -670,7 +681,7 @@ Start the conversation with: "${
 
   const startConversation = async (input: StartConversationProps) => {
     if (!settings.languageCode) throw new Error("Language is not set | startConversation");
-
+    setMessageOrder({});
     if (isNeedToShowConfirmationModal()) {
       setConfirmStartConversationModal(input);
       return;
@@ -780,13 +791,9 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
   };
 
   const addUserMessage = async (message: string) => {
-    const userMessage: ChatMessage = { isBot: false, text: message, id: `${Date.now()}` };
-
     communicator?.addUserChatMessage(message);
     await sleep(300);
     await communicatorRef.current?.triggerAiResponse();
-
-    setConversation((prev) => [...prev, userMessage]);
   };
 
   return {
@@ -819,6 +826,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     isSavingGoal,
     confirmStartConversationModal,
     goalInfo,
+    messageOrder,
   };
 }
 
