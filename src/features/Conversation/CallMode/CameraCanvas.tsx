@@ -15,13 +15,13 @@ import { CallButtons } from "./CallButtons";
 const girlVoices: AiVoice[] = ["alloy", "coral", "sage", "shimmer"];
 
 const girl1: AvatarVideo = {
-  sitVideoUrl: "/call/girl_2/sit.webm",
-  talkVideoUrl: "/call/girl_2/talk.webm",
+  sitVideoUrl: ["/call/girl_2/sit.webm"],
+  talkVideoUrl: ["/call/girl_2/talk.webm", "/call/girl_2/talk2.webm"],
 };
 
 const boy1: AvatarVideo = {
-  sitVideoUrl: "/call/boy_1/sit.webm",
-  talkVideoUrl: "/call/boy_1/talk2.webm",
+  sitVideoUrl: ["/call/boy_1/sit.webm"],
+  talkVideoUrl: ["/call/boy_1/talk2.webm"],
 };
 
 export const CameraCanvas = ({

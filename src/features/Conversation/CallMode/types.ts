@@ -1,4 +1,4 @@
 export interface AvatarVideo {
-  sitVideoUrl: string;
-  talkVideoUrl: string;
+  sitVideoUrl: string[];
+  talkVideoUrl: string[];
 }
