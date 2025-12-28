@@ -89,6 +89,8 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
                 .map((log) => {
                   const humanDate = dayjs(log.createdAt).format("DD MMM YYYY");
                   const humanTime = dayjs(log.createdAt).format("HH:mm");
+                  const isTrial = log.type === "trial-days";
+
                   return (
                     <Stack
                       key={log.id}
@@ -111,9 +113,11 @@ export const PaymentHistoryModal = ({ onClose }: PaymentHistoryModalProps) => {
                       }}
                     >
                       <Stack>
-                        <Typography variant="h6">
-                          {log.currency.toUpperCase()} {log.amountAdded}
-                        </Typography>
+                        {!isTrial && (
+                          <Typography variant="h6">
+                            {log.currency.toUpperCase()} {log.amountAdded}
+                          </Typography>
+                        )}
 
                         {!!log.amountOfHours && (
                           <Typography variant="body2">
