@@ -82,10 +82,13 @@ export const CameraCanvas = ({
               height: `100%`,
               overflow: "hidden",
               padding: "10px 10px 0px 10px",
+              boxShadow: "0 14px 20px 5px rgba(10, 18, 30, 1)",
+              borderRadius: "0px",
               gap: "10px",
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
               position: "relative",
+              zIndex: 1,
             }}
           >
             <Stack
@@ -163,7 +166,7 @@ export const CameraCanvas = ({
                 maxWidth: "1000px",
                 height: "max-content",
                 width: "100%",
-                paddingBottom: "10px",
+                paddingBottom: "30px",
               }}
             >
               <Messages conversation={conversation} messageOrder={messageOrder} />
