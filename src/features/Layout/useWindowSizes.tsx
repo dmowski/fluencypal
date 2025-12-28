@@ -42,6 +42,8 @@ function useProvideWindowSizes(): WindowSizesContextType {
 
   return {
     topOffset,
+    //topOffset: "120px",
+    //bottomOffset: "20px",
     bottomOffset,
   };
 }
