@@ -156,6 +156,8 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
     languageCode: "en",
   };
 
+  const [isAiSpeaking, setIsAiSpeaking] = useState(false);
+
   return (
     <Stack>
       <ConversationCanvas2
@@ -196,12 +198,14 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         }}
         toggleCallMode={() => {}}
         isNeedToShowBalanceWarning={false}
-        setIsMuted={() => {}}
+        setIsMuted={() => {
+          setIsAiSpeaking(!isAiSpeaking);
+        }}
         isVolumeOn={true}
         setIsVolumeOn={() => {}}
-        isAiSpeaking={true}
+        isAiSpeaking={isAiSpeaking}
         isCallMode={true}
-        voice="ash"
+        voice="shimmer"
       />
     </Stack>
   );

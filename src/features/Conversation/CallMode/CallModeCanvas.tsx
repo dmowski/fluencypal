@@ -23,8 +23,8 @@ interface AvatarVideo {
 }
 
 const girl1: AvatarVideo = {
-  sitVideoUrl: "/call/girl_1/girl1_sit_1.webm",
-  talkVideoUrl: "/call/girl_1/girl1_talk_2.webm",
+  sitVideoUrl: "/call/girl_2/sit.webm",
+  talkVideoUrl: "/call/girl_2/talk.webm",
 };
 
 const boy1: AvatarVideo = {

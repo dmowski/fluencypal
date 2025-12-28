@@ -73,7 +73,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
           zIndex: -2,
           background: "url('/landing/preview/space.webp') no-repeat center center",
           backgroundSize: "cover",
-          opacity: 0.4,
+          opacity: 1,
         }}
       />
 
