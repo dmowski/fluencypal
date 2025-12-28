@@ -577,6 +577,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
               border: "none",
             },
             backgroundColor: "#1c2128",
+            width: "100%",
           }}
         >
           <Messages conversation={conversation} />
