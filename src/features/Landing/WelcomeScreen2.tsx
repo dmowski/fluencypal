@@ -232,6 +232,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                           src={card.imageUrl}
                           sx={{
                             ...contentStyle,
+                            aspectRatio: "411 / 896",
                             boxShadow: "none",
                             width: "100%",
                             position: "absolute",
