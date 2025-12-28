@@ -220,23 +220,42 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                     transition: "transform 0.3s ease-in-out",
                   }}
                 >
-                  {card.imageUrl && (
+                  {card.imageUrl && !card.videoUrl && (
                     <Stack component={"img"} alt={card.alt} src={card.imageUrl} sx={contentStyle} />
                   )}
                   {card.videoUrl && (
-                    <Stack
-                      component={"video"}
-                      autoPlay
-                      loop
-                      playsInline
-                      controls={false}
-                      muted
-                      sx={{
-                        ...contentStyle,
-                        aspectRatio: "411 / 896",
-                      }}
-                      src={card.videoUrl}
-                    />
+                    <>
+                      {card.imageUrl && (
+                        <Stack
+                          component={"img"}
+                          alt={card.alt}
+                          src={card.imageUrl}
+                          sx={{
+                            ...contentStyle,
+                            boxShadow: "none",
+                            width: "100%",
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            zIndex: 1,
+                            //filter: "blur(3px)",
+                          }}
+                        />
+                      )}
+                      <Stack
+                        component={"video"}
+                        autoPlay
+                        loop
+                        playsInline
+                        controls={false}
+                        muted
+                        sx={{
+                          ...contentStyle,
+                          aspectRatio: "411 / 896",
+                        }}
+                        src={card.videoUrl}
+                      />
+                    </>
                   )}
                   <Stack
                     sx={{
