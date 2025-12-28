@@ -21,7 +21,7 @@ const girl1: AvatarVideo = {
 
 const boy1: AvatarVideo = {
   sitVideoUrl: ["/call/boy_1/sit.webm"],
-  talkVideoUrl: ["/call/boy_1/talk2.webm"],
+  talkVideoUrl: ["/call/boy_1/talk.webm", "/call/boy_1/talk2.webm"],
 };
 
 export const CameraCanvas = ({
