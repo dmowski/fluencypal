@@ -11,6 +11,7 @@ import { SummaryRow } from "./SummaryRow";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { StringDiff } from "react-string-diff";
+import { GameContainer } from "./core";
 
 export const TopicToDiscussScreen = ({
   question,
@@ -64,14 +65,7 @@ export const TopicToDiscussScreen = ({
 
   if (question.type !== "topic_to_discuss") return <></>;
   return (
-    <Stack
-      sx={{
-        gap: "25px",
-        width: "100%",
-        maxWidth: "600px",
-        padding: "0px 10px",
-      }}
-    >
+    <GameContainer>
       {translator.translateModal}
       <Stack
         sx={{
@@ -250,7 +244,6 @@ export const TopicToDiscussScreen = ({
           isCorrect === null && (
             <Stack
               sx={{
-                flexDirection: "row",
                 width: "100%",
                 gap: "10px",
               }}
@@ -262,12 +255,31 @@ export const TopicToDiscussScreen = ({
                 fullWidth
                 disabled={isSubmitting || isCorrect !== null}
               />
-              <IconButton
-                disabled={isSubmitting || textAnswer.length < 3}
-                onClick={() => handleAnswerSubmit(textAnswer)}
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  width: "100%",
+                  gap: "10px",
+                }}
               >
-                <Check />
-              </IconButton>
+                <Button
+                  disabled={isSubmitting || textAnswer.length < 3}
+                  onClick={() => handleAnswerSubmit(textAnswer)}
+                  endIcon={isSubmitting ? <Loader /> : <Check />}
+                  variant="contained"
+                >
+                  {i18n._("Submit answer")}
+                </Button>
+                <Button
+                  endIcon={<ChevronLast />}
+                  size="large"
+                  variant="text"
+                  disabled={isCorrect !== null}
+                  onClick={onNext}
+                >
+                  {i18n._("Skip")}
+                </Button>
+              </Stack>
             </Stack>
           )}
 
@@ -374,6 +386,6 @@ export const TopicToDiscussScreen = ({
           </Stack>
         )}
       </Stack>
-    </Stack>
+    </GameContainer>
   );
 };

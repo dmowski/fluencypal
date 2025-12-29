@@ -10,6 +10,7 @@ import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useLingui } from "@lingui/react";
+import { GameContainer } from "./core";
 
 const READ_TEXT_ACCEPTED_PERCENTAGE = 60;
 
@@ -83,14 +84,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
 
   if (question.type !== "read_text") return <></>;
   return (
-    <Stack
-      sx={{
-        gap: "20px",
-        width: "100%",
-        maxWidth: "600px",
-        padding: "0px 10px",
-      }}
-    >
+    <GameContainer>
       {translator.translateModal}
       <Stack
         sx={{
@@ -341,12 +335,9 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
           <Stack
             sx={{
               gap: "5px",
-              alignItems: "flex-start",
-              maxWidth: "600px",
               width: "100%",
             }}
           >
-            <SummaryRow />
             <Button
               variant="contained"
               size="large"
@@ -363,9 +354,10 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
             >
               {i18n._("Next")}
             </Button>
+            <SummaryRow />
           </Stack>
         )}
       </Stack>
-    </Stack>
+    </GameContainer>
   );
 };

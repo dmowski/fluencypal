@@ -4,6 +4,7 @@ import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { Check, ChevronRight, Delete, Loader, ShieldAlert, X } from "lucide-react";
 import { SummaryRow } from "./SummaryRow";
+import { GameContainer } from "./core";
 
 export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -25,13 +26,7 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
 
   if (question.type !== "sentence") return <></>;
   return (
-    <Stack
-      sx={{
-        gap: "25px",
-        maxWidth: "600px",
-        width: "100%",
-      }}
-    >
+    <GameContainer>
       <Stack>
         <Typography
           variant="caption"
@@ -115,7 +110,14 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
           gap: "25px",
         }}
       >
-        {isCorrect === null && (
+        <Stack
+          sx={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            gap: "10px",
+            paddingTop: "10px",
+          }}
+        >
           <Stack
             sx={{
               flexDirection: "row",
@@ -124,45 +126,36 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
               paddingTop: "10px",
             }}
           >
-            <Stack
-              sx={{
-                flexDirection: "row",
-                flexWrap: "wrap",
-                gap: "10px",
-                paddingTop: "10px",
-              }}
-            >
-              {question.options.map((answer, index) => {
-                const isSelected = selectedWords.includes(answer);
+            {question.options.map((answer, index) => {
+              const isSelected = selectedWords.includes(answer);
 
-                return (
-                  <Stack key={index} sx={{}}>
-                    <Button
-                      disabled={isSelected}
-                      variant={"outlined"}
-                      onClick={() => {
-                        if (isCorrect !== null) {
-                          return;
+              return (
+                <Stack key={index} sx={{}}>
+                  <Button
+                    disabled={isSelected}
+                    variant={"outlined"}
+                    onClick={() => {
+                      if (isCorrect !== null) {
+                        return;
+                      }
+                      setSelectedWords((prev) => {
+                        if (prev.includes(answer)) {
+                          return prev.filter((word) => word !== answer);
                         }
-                        setSelectedWords((prev) => {
-                          if (prev.includes(answer)) {
-                            return prev.filter((word) => word !== answer);
-                          }
-                          return [...prev, answer];
-                        });
-                      }}
-                      sx={{
-                        textTransform: "none",
-                      }}
-                    >
-                      {answer}
-                    </Button>
-                  </Stack>
-                );
-              })}
-            </Stack>
+                        return [...prev, answer];
+                      });
+                    }}
+                    sx={{
+                      textTransform: "none",
+                    }}
+                  >
+                    {answer}
+                  </Button>
+                </Stack>
+              );
+            })}
           </Stack>
-        )}
+        </Stack>
 
         {isCorrect === null && (
           <Button
@@ -174,9 +167,7 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
               selectedWords.length === 0 ||
               question.options.length !== selectedWords.length
             }
-            onClick={() => {
-              handleAnswerSubmit(selectedWords.join(" "));
-            }}
+            onClick={() => handleAnswerSubmit(selectedWords.join(" "))}
           >
             {i18n._("Submit answer")}
           </Button>
@@ -191,7 +182,6 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
               width: "100%",
             }}
           >
-            <SummaryRow />
             <Button
               variant="contained"
               size="large"
@@ -208,9 +198,10 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
             >
               {i18n._("Next")}
             </Button>
+            <SummaryRow />
           </Stack>
         )}
       </Stack>
-    </Stack>
+    </GameContainer>
   );
 };

@@ -11,6 +11,7 @@ import { SummaryRow } from "./SummaryRow";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { StringDiff } from "react-string-diff";
+import { GameContainer } from "./core";
 
 export const DescribeImageScreen = ({
   question,
@@ -64,15 +65,7 @@ export const DescribeImageScreen = ({
 
   if (question.type !== "describe_image") return <></>;
   return (
-    <Stack
-      sx={{
-        gap: "25px",
-        width: "100%",
-        height: "100%",
-        maxWidth: "600px",
-        padding: "0px 10px",
-      }}
-    >
+    <GameContainer>
       {translator.translateModal}
       <Stack
         sx={{
@@ -230,9 +223,16 @@ export const DescribeImageScreen = ({
             <Stack
               sx={{
                 alignItems: "flex-start",
-                gap: "5px",
+                gap: "10px",
               }}
             >
+              <TextField
+                value={textAnswer}
+                onChange={(e) => setTextAnswer(e.target.value)}
+                placeholder={i18n._("Describe the image")}
+                fullWidth
+                disabled={isSubmitting || isCorrect !== null}
+              />
               <Stack
                 sx={{
                   flexDirection: "row",
@@ -240,29 +240,24 @@ export const DescribeImageScreen = ({
                   gap: "10px",
                 }}
               >
-                <TextField
-                  value={textAnswer}
-                  onChange={(e) => setTextAnswer(e.target.value)}
-                  placeholder={i18n._("Describe the image")}
-                  fullWidth
-                  disabled={isSubmitting || isCorrect !== null}
-                />
-                <IconButton
+                <Button
                   disabled={isSubmitting || textAnswer.length < 3}
                   onClick={() => handleAnswerSubmit(textAnswer)}
+                  variant="contained"
+                  endIcon={isSubmitting ? <Loader /> : <Check />}
                 >
-                  <Check />
-                </IconButton>
+                  {i18n._("Submit answer")}
+                </Button>
+                <Button
+                  endIcon={<ChevronLast />}
+                  size="large"
+                  variant="text"
+                  disabled={isCorrect !== null || isSubmitting}
+                  onClick={onNext}
+                >
+                  {i18n._("Skip")}
+                </Button>
               </Stack>
-              <Button
-                endIcon={<ChevronLast />}
-                size="large"
-                variant="text"
-                disabled={isCorrect !== null}
-                onClick={onNext}
-              >
-                {i18n._("Skip")}
-              </Button>
             </Stack>
           )}
 
@@ -377,6 +372,6 @@ export const DescribeImageScreen = ({
           </Stack>
         )}
       </Stack>
-    </Stack>
+    </GameContainer>
   );
 };

@@ -138,9 +138,8 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                 <Stack
                   sx={{
                     padding: "0",
-                    boxSizing: "border-box",
+                    width: "100%",
                     alignItems: "center",
-                    width: "100dvw",
                   }}
                 >
                   <GameQuestion

@@ -106,12 +106,11 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
       <Stack
         sx={{
           width: "100%",
-          gap: "10px",
+          gap: "5px",
         }}
       >
         {isCorrect !== null && (
           <>
-            <SummaryRow />
             <Button
               variant="contained"
               size="large"
@@ -128,6 +127,7 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
             >
               {i18n._("Next")}
             </Button>
+            <SummaryRow />
           </>
         )}
       </Stack>
