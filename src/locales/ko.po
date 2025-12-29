@@ -1924,7 +1924,7 @@ msgid ""
 "excessive re-renders."
 msgstr "과도한 재렌더링으로 인해 발생한 성능 저하를 진단하고 수정하는 방법을 설명하세요."
 
-#: src/features/Game/GameOnboarding.tsx:61
+#: src/features/Game/GameOnboarding.tsx:60
 #. js-lingui-explicit-id
 msgid "Describe images, craft sentences, and translate words"
 msgstr "이미지를 설명하고, 문장을 만들고, 단어를 번역하세요"
@@ -1937,7 +1937,7 @@ msgid ""
 msgstr ".NET에서 백그라운드 작업을 처리할 때 동시성을 관리하는 전략을 설명하세요 (큐, 배치, 스로틀링)."
 
 #: src/features/Game/gameQuestionScreens/core.tsx:48
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:224
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:216
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "이미지를 설명하십시오"
@@ -2190,8 +2190,8 @@ msgstr "연습 섹션에서 통화 모드를 꼭 시도해 보세요!"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
 #: src/features/Conversation/ConversationCanvas2.tsx:1082
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:173
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:245
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:165
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:246
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:188
 #: src/features/Landing/LandingPage.tsx:174
 #: src/features/Survey/RecordUserAudioAnswer.tsx:142
@@ -2209,13 +2209,6 @@ msgstr "실수를 두려워하지 마세요."
 #. js-lingui-explicit-id
 msgid "Don’t skip small talk"
 msgstr "소소한 대화를 건너뛰지 마세요"
-
-#: src/features/Game/GameOnboarding.tsx:114
-#. js-lingui-explicit-id
-msgid ""
-"Each day, we remove 3 points from everyone so that everyone has a fair "
-"chance to win."
-msgstr "매일, 모든 사람이 공정하게 이길 수 있도록 우리는 모두로부터 3점을 감점합니다."
 
 #: src/features/Case/data/reusable/priceSection.ts:45
 #. js-lingui-explicit-id
@@ -2500,13 +2493,13 @@ msgstr "결제 처리 오류"
 msgid "Error Processing the goal"
 msgstr "목표 처리 중 오류 발생"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:321
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:322
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
 msgstr "오류:"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:264
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:256
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Error: "
@@ -5080,7 +5073,7 @@ msgstr "행동 반응 피드백을 통한 리더십 역량 평가"
 msgid "Learn"
 msgstr "배우다"
 
-#: src/features/Game/GameOnboarding.tsx:52
+#: src/features/Game/GameOnboarding.tsx:51
 #. js-lingui-explicit-id
 msgid "Learn and Play"
 msgstr "배우고 놀기"
@@ -5206,7 +5199,7 @@ msgstr "당신의 목표에 대해 좀 더 이야기해봅시다."
 msgid "Let's talk. Tell me  about yourself"
 msgstr "이야기해 봅시다. 당신에 대해 알려주세요."
 
-#: src/features/Game/GameOnboarding.tsx:151
+#: src/features/Game/GameOnboarding.tsx:95
 #. js-lingui-explicit-id
 msgid "Let’s make sure you’re ready"
 msgstr "준비가 되었는지 확인해봅시다"
@@ -5642,8 +5635,7 @@ msgstr "새로운 단어:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/GameOnboarding.tsx:75
-#: src/features/Game/GameOnboarding.tsx:130
+#: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:187
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
@@ -6148,7 +6140,6 @@ msgstr "게임을 시작하려면 레벨을 선택하세요!"
 msgid "Plan for"
 msgstr "Plan for"
 
-#: src/features/Game/GameOnboarding.tsx:187
 #: src/features/Game/GamePage.tsx:23
 #. js-lingui-explicit-id
 msgid "Play"
@@ -6751,7 +6742,7 @@ msgstr "평점:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1068
 #: src/features/Conversation/ConversationCanvas2.tsx:1385
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:258
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:259
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "다시 녹음하다"
@@ -6832,6 +6823,11 @@ msgstr "다음 면접에서 성공할 준비 되셨나요?"
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "준비가 되셨나요? 영어를 유창하게 구사할 준비가 되셨습니까?"
+
+#: src/features/Game/GameOnboarding.tsx:131
+#. js-lingui-explicit-id
+msgid "Ready to Play"
+msgstr "플레이할 준비가 되셨나요?"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:299
 #. js-lingui-explicit-id
@@ -6950,8 +6946,8 @@ msgid "Recent graduates or bootcamp alumni entering frontend development"
 msgstr "최근 졸업생 또는 부트캠프 졸업생이 프론트엔드 개발에 진입"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:203
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:307
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:195
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:308
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:218
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:144
@@ -7524,7 +7520,7 @@ msgstr "API 게이트웨이, 인증, 서비스 및 비동기 통신을 포함한
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
 #: src/features/Game/gameQuestionScreens/core.tsx:40
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:242
 #. js-lingui-explicit-id
 msgid "Skip"
 msgstr "죄송합니다."
@@ -7939,14 +7935,14 @@ msgid ""
 "leadership answers."
 msgstr "React 및 TypeScript에 대한 강한 지식. 의사소통 및 리더십 답변에서 약간의 갭이 있음."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:271
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "제출"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:144
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:241
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:136
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:233
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:170
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:159
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:256
 #. js-lingui-explicit-id
@@ -8409,8 +8405,8 @@ msgstr "자신의 유창성 진행 상황 추적하기"
 #: src/features/Conversation/ConversationCanvas2.tsx:784
 #: src/features/Conversation/ConversationCanvas2.tsx:869
 #: src/features/Conversation/ConversationCanvas2.tsx:876
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:103
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:223
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:95
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:224
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:118
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -9246,11 +9242,6 @@ msgstr "재시도, 서킷 브레이커, 타임아웃, 폴백, 로깅, 추적, �
 msgid "You have"
 msgstr "당신은"
 
-#: src/features/Game/GameOnboarding.tsx:105
-#. js-lingui-explicit-id
-msgid "You have a chance"
-msgstr "당신에게는 기회가 있습니다."
-
 #: src/features/Case/data/frontend-senior/painSection.ts:23
 #. js-lingui-explicit-id
 msgid ""
@@ -9332,7 +9323,7 @@ msgstr "당신의 AI 스피킹 파트너"
 msgid "Your answer"
 msgstr "당신의 답변"
 
-#: src/features/Game/GameOnboarding.tsx:162
+#: src/features/Game/GameOnboarding.tsx:106
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "당신의 아바타:"
@@ -9459,6 +9450,18 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Game/GameOnboarding.tsx:114
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Each day, we remove 3 points from everyone so that everyone has a fair "
+#~ "chance to win."
+#~ msgstr "매일, 모든 사람이 공정하게 이길 수 있도록 우리는 모두로부터 3점을 감점합니다."
+
+#: src/features/Game/GameOnboarding.tsx:105
+#. js-lingui-explicit-id
+#~ msgid "You have a chance"
+#~ msgstr "당신에게는 기회가 있습니다."
 
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:42
 #. js-lingui-explicit-id

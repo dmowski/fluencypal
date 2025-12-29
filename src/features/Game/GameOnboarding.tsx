@@ -19,7 +19,6 @@ export const GameOnboarding = () => {
       setStep(step + 1);
     } else {
       settings.onDoneGameOnboarding();
-      game.playGame();
     }
   };
 
@@ -59,61 +58,6 @@ export const GameOnboarding = () => {
             align="center"
           >
             {i18n._(`Describe images, craft sentences, and translate words`)}
-          </Typography>
-        </Stack>
-      </Stack>
-      <Button
-        variant="contained"
-        onClick={onNext}
-        color="info"
-        size="large"
-        sx={{
-          minWidth: "200px",
-        }}
-        endIcon={<ArrowRight />}
-      >
-        {i18n._(`Next`)}
-      </Button>
-    </>,
-
-    <>
-      <span></span>
-
-      <Stack
-        sx={{
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%",
-          gap: "10px",
-        }}
-      >
-        <img
-          src={"/avatar/owl1.webp"}
-          onClick={() => {
-            setStep(0);
-          }}
-          alt="Owl"
-          style={{ width: "150px", height: "150px" }}
-        />
-        <Stack
-          sx={{
-            alignItems: "center",
-            minHeight: "120px",
-          }}
-        >
-          <Typography align="center" variant="h6">
-            {i18n._(`You have a chance`)}
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{
-              opacity: 0.9,
-            }}
-            align="center"
-          >
-            {i18n._(
-              `Each day, we remove 3 points from everyone so that everyone has a fair chance to win.`
-            )}
           </Typography>
         </Stack>
       </Stack>
@@ -184,7 +128,7 @@ export const GameOnboarding = () => {
           marginTop: "15px",
         }}
       >
-        {i18n._(`Play`)}
+        {i18n._(`Ready to Play`)}
       </Button>
     </>,
   ];

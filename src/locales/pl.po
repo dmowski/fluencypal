@@ -2036,7 +2036,7 @@ msgstr ""
 "Opisz, jak zdiagnozować i naprawić regresję wydajności spowodowaną "
 "nadmiernymi ponownymi renderowaniami."
 
-#: src/features/Game/GameOnboarding.tsx:61
+#: src/features/Game/GameOnboarding.tsx:60
 #. js-lingui-explicit-id
 msgid "Describe images, craft sentences, and translate words"
 msgstr "Opisuj obrazy, twórz zdania i tłumacz słowa"
@@ -2051,7 +2051,7 @@ msgstr ""
 "tle (kolejki, wsadowanie, dławienie)."
 
 #: src/features/Game/gameQuestionScreens/core.tsx:48
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:224
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:216
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "Opisz obraz"
@@ -2336,8 +2336,8 @@ msgstr ""
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
 #: src/features/Conversation/ConversationCanvas2.tsx:1082
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:173
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:245
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:165
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:246
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:188
 #: src/features/Landing/LandingPage.tsx:174
 #: src/features/Survey/RecordUserAudioAnswer.tsx:142
@@ -2355,15 +2355,6 @@ msgstr "Nie pozwól, aby błędy cię powstrzymywały."
 #. js-lingui-explicit-id
 msgid "Don’t skip small talk"
 msgstr "Nie pomijaj drobnej rozmowy"
-
-#: src/features/Game/GameOnboarding.tsx:114
-#. js-lingui-explicit-id
-msgid ""
-"Each day, we remove 3 points from everyone so that everyone has a fair "
-"chance to win."
-msgstr ""
-"Każdego dnia, odejmujemy 3 punkty od każdego, aby każdy miał sprawiedliwą "
-"szansę na wygraną."
 
 #: src/features/Case/data/reusable/priceSection.ts:45
 #. js-lingui-explicit-id
@@ -2666,13 +2657,13 @@ msgstr "Błąd przetwarzania płatności"
 msgid "Error Processing the goal"
 msgstr "Błąd przetwarzania celu"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:321
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:322
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
 msgstr "Błąd:"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:264
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:256
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Error: "
@@ -5532,7 +5523,7 @@ msgstr "Ocena kompetencji przywódczych z informacją zwrotną na temat zachowa�
 msgid "Learn"
 msgstr "Ucz się"
 
-#: src/features/Game/GameOnboarding.tsx:52
+#: src/features/Game/GameOnboarding.tsx:51
 #. js-lingui-explicit-id
 msgid "Learn and Play"
 msgstr "Ucz się i Baw się"
@@ -5660,7 +5651,7 @@ msgstr "Porozmawiajmy nieco więcej o twoich celach"
 msgid "Let's talk. Tell me  about yourself"
 msgstr "Porozmawiajmy. Opowiedz mi coś o sobie"
 
-#: src/features/Game/GameOnboarding.tsx:151
+#: src/features/Game/GameOnboarding.tsx:95
 #. js-lingui-explicit-id
 msgid "Let’s make sure you’re ready"
 msgstr "Upewnijmy się, że jesteś gotowy"
@@ -6119,8 +6110,7 @@ msgstr "Nowe słowa:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/GameOnboarding.tsx:75
-#: src/features/Game/GameOnboarding.tsx:130
+#: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:187
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
@@ -6652,7 +6642,6 @@ msgstr "Wybierz poziom, aby zacząć grać!"
 msgid "Plan for"
 msgstr "Plan na"
 
-#: src/features/Game/GameOnboarding.tsx:187
 #: src/features/Game/GamePage.tsx:23
 #. js-lingui-explicit-id
 msgid "Play"
@@ -7303,7 +7292,7 @@ msgstr "Ocena:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1068
 #: src/features/Conversation/ConversationCanvas2.tsx:1385
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:258
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:259
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Nagraj ponownie"
@@ -7388,6 +7377,11 @@ msgstr "Gotowy, aby zaliczyć kolejną rozmowę kwalifikacyjną?"
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "Gotowy, aby opanować język angielski?"
+
+#: src/features/Game/GameOnboarding.tsx:131
+#. js-lingui-explicit-id
+msgid "Ready to Play"
+msgstr "Gotowy do gry"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:299
 #. js-lingui-explicit-id
@@ -7523,8 +7517,8 @@ msgstr ""
 "development"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:203
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:307
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:195
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:308
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:218
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:144
@@ -8132,7 +8126,7 @@ msgstr ""
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
 #: src/features/Game/gameQuestionScreens/core.tsx:40
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:242
 #. js-lingui-explicit-id
 msgid "Skip"
 msgstr "Przeskocz"
@@ -8580,14 +8574,14 @@ msgstr ""
 "Dobra znajomość React i TypeScript. Drobne luki w zakresie komunikacji i "
 "odpowiedzi związanych z przywództwem."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:271
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Zatwierdź"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:144
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:241
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:136
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:233
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:170
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:159
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:256
 #. js-lingui-explicit-id
@@ -9082,8 +9076,8 @@ msgstr "Śledź swój postęp w biegłości"
 #: src/features/Conversation/ConversationCanvas2.tsx:784
 #: src/features/Conversation/ConversationCanvas2.tsx:869
 #: src/features/Conversation/ConversationCanvas2.tsx:876
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:103
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:223
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:95
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:224
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:118
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -10001,11 +9995,6 @@ msgstr ""
 msgid "You have"
 msgstr "Masz"
 
-#: src/features/Game/GameOnboarding.tsx:105
-#. js-lingui-explicit-id
-msgid "You have a chance"
-msgstr "Masz szansę"
-
 #: src/features/Case/data/frontend-senior/painSection.ts:23
 #. js-lingui-explicit-id
 msgid ""
@@ -10095,7 +10084,7 @@ msgstr "Twój AI partner do rozmów"
 msgid "Your answer"
 msgstr "Twoja odpowiedź"
 
-#: src/features/Game/GameOnboarding.tsx:162
+#: src/features/Game/GameOnboarding.tsx:106
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "Twój Avatar:"
@@ -10235,6 +10224,20 @@ msgstr ""
 "— ważne jest, aby zaangażować się w tę krótką rozmowę przed poruszeniem "
 "tematów zawodowych. Oto kilka przydatnych angielskich zwrotów, które pomogą "
 "rozpocząć wywiad:"
+
+#: src/features/Game/GameOnboarding.tsx:114
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Each day, we remove 3 points from everyone so that everyone has a fair "
+#~ "chance to win."
+#~ msgstr ""
+#~ "Każdego dnia, odejmujemy 3 punkty od każdego, aby każdy miał sprawiedliwą "
+#~ "szansę na wygraną."
+
+#: src/features/Game/GameOnboarding.tsx:105
+#. js-lingui-explicit-id
+#~ msgid "You have a chance"
+#~ msgstr "Masz szansę"
 
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:42
 #. js-lingui-explicit-id

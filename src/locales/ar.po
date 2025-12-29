@@ -1992,7 +1992,7 @@ msgstr ""
 "وصف كيف ستقوم بتشخيص وإصلاح تراجع في الأداء ناجم عن عمليات إعادة تصيير "
 "مفرطة."
 
-#: src/features/Game/GameOnboarding.tsx:61
+#: src/features/Game/GameOnboarding.tsx:60
 #. js-lingui-explicit-id
 msgid "Describe images, craft sentences, and translate words"
 msgstr "صف الصور، صياغة الجمل، وترجمة الكلمات"
@@ -2007,7 +2007,7 @@ msgstr ""
 "(طوابير، تجميع، تحديد السرعة)."
 
 #: src/features/Game/gameQuestionScreens/core.tsx:48
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:224
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:216
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "صف الصورة"
@@ -2277,8 +2277,8 @@ msgstr ""
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
 #: src/features/Conversation/ConversationCanvas2.tsx:1082
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:173
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:245
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:165
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:246
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:188
 #: src/features/Landing/LandingPage.tsx:174
 #: src/features/Survey/RecordUserAudioAnswer.tsx:142
@@ -2296,13 +2296,6 @@ msgstr "لا تدع الأخطاء توقفك."
 #. js-lingui-explicit-id
 msgid "Don’t skip small talk"
 msgstr "لا تتجاهل الحديث العابر"
-
-#: src/features/Game/GameOnboarding.tsx:114
-#. js-lingui-explicit-id
-msgid ""
-"Each day, we remove 3 points from everyone so that everyone has a fair "
-"chance to win."
-msgstr "كل يوم، نقوم بخصم 3 نقاط من الجميع حتى يكون للجميع فرصة عادلة للفوز."
 
 #: src/features/Case/data/reusable/priceSection.ts:45
 #. js-lingui-explicit-id
@@ -2596,13 +2589,13 @@ msgstr "خطأ في معالجة الدفع"
 msgid "Error Processing the goal"
 msgstr "خطأ في معالجة الهدف"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:321
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:322
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
 msgstr "خطأ:"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:264
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:256
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Error: "
@@ -5346,7 +5339,7 @@ msgstr "تقييم الكفاءة القيادية مع تغذية راجعة ل
 msgid "Learn"
 msgstr "تعلم"
 
-#: src/features/Game/GameOnboarding.tsx:52
+#: src/features/Game/GameOnboarding.tsx:51
 #. js-lingui-explicit-id
 msgid "Learn and Play"
 msgstr "تعلم والعب"
@@ -5474,7 +5467,7 @@ msgstr "دعونا نتحدث عن أهدافك قليلاً بشكل أعمق"
 msgid "Let's talk. Tell me  about yourself"
 msgstr "دعنا نتحدث. أخبرني عن نفسك"
 
-#: src/features/Game/GameOnboarding.tsx:151
+#: src/features/Game/GameOnboarding.tsx:95
 #. js-lingui-explicit-id
 msgid "Let’s make sure you’re ready"
 msgstr "لنتأكد من أنك جاهز"
@@ -5921,8 +5914,7 @@ msgstr "كلمات جديدة:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
-#: src/features/Game/GameOnboarding.tsx:75
-#: src/features/Game/GameOnboarding.tsx:130
+#: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:187
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
@@ -6456,7 +6448,6 @@ msgstr "اختر مستوى لبدء اللعب!"
 msgid "Plan for"
 msgstr "خطة لـ"
 
-#: src/features/Game/GameOnboarding.tsx:187
 #: src/features/Game/GamePage.tsx:23
 #. js-lingui-explicit-id
 msgid "Play"
@@ -7089,7 +7080,7 @@ msgstr "التقييم:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1068
 #: src/features/Conversation/ConversationCanvas2.tsx:1385
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:258
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:259
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "أعد التسجيل"
@@ -7171,6 +7162,11 @@ msgstr "مستعد للتفوق في مقابلتك القادمة؟"
 #. js-lingui-explicit-id
 msgid "Ready to Become Fluent in English?"
 msgstr "مستعد لتصبح طليقًا في اللغة الإنجليزية؟"
+
+#: src/features/Game/GameOnboarding.tsx:131
+#. js-lingui-explicit-id
+msgid "Ready to Play"
+msgstr "جاهز للعب"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:299
 #. js-lingui-explicit-id
@@ -7297,8 +7293,8 @@ msgstr ""
 "الأمامية"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:203
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:307
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:195
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:308
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:218
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:144
@@ -7901,7 +7897,7 @@ msgstr ""
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
 #: src/features/Game/gameQuestionScreens/core.tsx:40
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:242
 #. js-lingui-explicit-id
 msgid "Skip"
 msgstr "تخطي"
@@ -8329,14 +8325,14 @@ msgstr ""
 "معرفة قوية بـ React و TypeScript. بعض الفجوات في الإجابات المتعلقة بالتواصل "
 "والقيادة."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:271
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "قدم"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:144
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:241
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:136
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:233
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:170
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:159
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:256
 #. js-lingui-explicit-id
@@ -8818,8 +8814,8 @@ msgstr "تتبع تقدم طلاقتك"
 #: src/features/Conversation/ConversationCanvas2.tsx:784
 #: src/features/Conversation/ConversationCanvas2.tsx:869
 #: src/features/Conversation/ConversationCanvas2.tsx:876
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:103
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:223
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:95
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:224
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:118
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -9711,11 +9707,6 @@ msgstr ""
 msgid "You have"
 msgstr "لديك"
 
-#: src/features/Game/GameOnboarding.tsx:105
-#. js-lingui-explicit-id
-msgid "You have a chance"
-msgstr "لديك فرصة"
-
 #: src/features/Case/data/frontend-senior/painSection.ts:23
 #. js-lingui-explicit-id
 msgid ""
@@ -9803,7 +9794,7 @@ msgstr "شريكك للحديث بالذكاء الاصطناعي"
 msgid "Your answer"
 msgstr "إجابتك"
 
-#: src/features/Game/GameOnboarding.tsx:162
+#: src/features/Game/GameOnboarding.tsx:106
 #. js-lingui-explicit-id
 msgid "Your Avatar:"
 msgstr "صورتك الرمزية:"
@@ -9934,6 +9925,18 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Game/GameOnboarding.tsx:114
+#. js-lingui-explicit-id
+#~ msgid ""
+#~ "Each day, we remove 3 points from everyone so that everyone has a fair "
+#~ "chance to win."
+#~ msgstr "كل يوم، نقوم بخصم 3 نقاط من الجميع حتى يكون للجميع فرصة عادلة للفوز."
+
+#: src/features/Game/GameOnboarding.tsx:105
+#. js-lingui-explicit-id
+#~ msgid "You have a chance"
+#~ msgstr "لديك فرصة"
 
 #: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:42
 #. js-lingui-explicit-id
