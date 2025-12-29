@@ -4,6 +4,8 @@ import {
   signInWithPopup,
   signInWithCustomToken as firebaseSignInWithCustomToken,
   sendSignInLinkToEmail,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
 } from "firebase/auth";
 import { Context, JSX, ReactNode, createContext, useContext, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -34,6 +36,8 @@ export interface AuthContext {
 
   signInWithEmail: (email: string) => Promise<SignInResult>;
 }
+
+const LOCALSTORAGE_EMAIL_KEY = "emailForSignIn";
 
 export const authContext: Context<AuthContext> = createContext<AuthContext>({
   loading: true,
@@ -74,6 +78,42 @@ function useProvideAuth(): AuthContext {
     }
   };
 
+  const cleanEmailSignInUrl = (): void => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete("oobCode");
+    url.searchParams.delete("mode");
+    url.searchParams.delete("apiKey");
+    url.searchParams.delete("continueUrl");
+    url.searchParams.delete("lang");
+    window.history.replaceState({}, document.title, url.toString());
+  };
+
+  const confirmEmailLinkSignIn = async (): Promise<void> => {
+    if (!isSignInWithEmailLink(auth, window.location.href)) return;
+    const email = window.localStorage.getItem(LOCALSTORAGE_EMAIL_KEY);
+    if (!email) {
+      cleanEmailSignInUrl();
+      return;
+    }
+
+    try {
+      await signInWithEmailLink(auth, email, window.location.href);
+      window.localStorage.removeItem(LOCALSTORAGE_EMAIL_KEY);
+      cleanEmailSignInUrl();
+    } catch (error) {
+      console.error("Error confirming email link sign-in", error);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    confirmEmailLinkSignIn();
+  }, []);
+
   const signInWithEmail = async (email: string): Promise<SignInResult> => {
     const url = window.location.href;
     const actionCodeSettings = {
@@ -87,7 +127,7 @@ function useProvideAuth(): AuthContext {
 
     try {
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-      window.localStorage.setItem("emailForSignIn", email);
+      window.localStorage.setItem(LOCALSTORAGE_EMAIL_KEY, email);
       return { isDone: true, error: "" };
     } catch (error: any) {
       const errorCode = error.code;
