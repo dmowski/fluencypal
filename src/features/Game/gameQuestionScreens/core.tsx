@@ -4,6 +4,25 @@ import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { Check, ChevronLast, ChevronRight, X } from "lucide-react";
 
+export const GameContainer = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Stack
+      sx={{
+        gap: "25px",
+        width: "100%",
+        height: "100%",
+        maxWidth: "600px",
+        padding: "0px 10px",
+        "@media (max-width: 600px)": {
+          padding: "40px 10px 90px 10px",
+        },
+      }}
+    >
+      {children}
+    </Stack>
+  );
+};
+
 export const SkipButton = ({ disabled }: { disabled: boolean }) => {
   const game = useGame();
   const { i18n } = useLingui();
@@ -17,25 +36,6 @@ export const SkipButton = ({ disabled }: { disabled: boolean }) => {
     >
       {i18n._("Skip")}
     </Button>
-  );
-};
-
-export const GameContainer = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <Stack
-      sx={{
-        gap: "25px",
-        width: "100%",
-        height: "100%",
-        maxWidth: "600px",
-        padding: "0px 10px",
-        "@media (max-width: 600px)": {
-          padding: "30px 10px 90px 10px",
-        },
-      }}
-    >
-      {children}
-    </Stack>
   );
 };
 

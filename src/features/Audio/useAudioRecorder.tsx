@@ -102,6 +102,11 @@ export const useAudioRecorder = ({
   };
 
   const stopRecording = async () => {
+    const seconds = Math.floor(recorderControls.recordingTime / 1000);
+    if (seconds < 1) {
+      cancelRecording();
+      return;
+    }
     setIsTranscribing(true);
     recorderControls.stopRecording();
   };

@@ -21,15 +21,15 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
 
   const auth = useAuth();
   const settings = useSettings();
-  const backupRecorder = useAudioRecorder({
+  const recorder = useAudioRecorder({
     languageCode: settings.languageCode || "en",
     getAuthToken: auth.getToken,
     isFree: false,
     isGame: true,
   });
 
-  const userTranscript = backupRecorder.transcription;
-  const isRecording = backupRecorder.isRecording;
+  const userTranscript = recorder.transcription;
+  const isRecording = recorder.isRecording;
 
   const isPhraseRecorded = (phrase: string) => {
     if (!userTranscript) return false;
@@ -40,13 +40,13 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
     return wordsFromPhrase.every((word) => wordsFromTranscript.includes(word));
   };
 
-  const error = backupRecorder.error;
+  const error = recorder.error;
   const translator = useTranslate();
   const game = useGame();
   const question = game.activeQuestion;
   useEffect(() => {
     setIsCorrect(null);
-    backupRecorder.removeTranscript();
+    recorder.removeTranscript();
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
@@ -70,17 +70,17 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
   const percentage = calculatePercentage();
 
   const submitBackupRecorder = async () => {
-    backupRecorder.stopRecording();
+    recorder.stopRecording();
   };
 
   const startRecording = () => {
-    backupRecorder.removeTranscript();
-    backupRecorder.startRecording();
+    recorder.removeTranscript();
+    recorder.startRecording();
   };
 
   const cancelRecording = () => {
-    backupRecorder.removeTranscript();
-    backupRecorder.cancelRecording();
+    recorder.removeTranscript();
+    recorder.cancelRecording();
   };
 
   if (question?.type !== "read_text") return <></>;
@@ -164,17 +164,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
               backdropFilter: "blur(5px)",
               alignItems: "center",
               justifyContent: "flex-start",
-              img: {
-                position: "absolute",
-                top: "0",
-                left: "0",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                borderRadius: "10px",
-                zIndex: -1,
-              },
-              height: "400px",
+              height: "250px",
             }}
           >
             {userTranscript && (
@@ -202,7 +192,20 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
                 </Typography>
               </Stack>
             )}
-            <img src={question.imageUrl} alt={question.question} />
+            <Stack
+              component={"img"}
+              src={question.imageUrl}
+              alt={question.question}
+              sx={{
+                height: "100%",
+                width: "100%",
+                objectFit: "cover",
+                objectPosition: "center",
+                position: "absolute",
+                top: 0,
+                left: 0,
+              }}
+            />
           </Stack>
         </Stack>
       </Stack>
@@ -214,7 +217,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
           maxWidth: "600px",
         }}
       >
-        {backupRecorder.isTranscribing && (
+        {recorder.isTranscribing && (
           <Typography
             variant="caption"
             sx={{
@@ -248,7 +251,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
                 </Button>
               )}
 
-              {backupRecorder.visualizerComponent}
+              {recorder.visualizerComponent}
 
               {!isRecording && userTranscript && percentage < READ_TEXT_ACCEPTED_PERCENTAGE && (
                 <Button
@@ -289,7 +292,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
 
         {isCorrect == null &&
           !isRecording &&
-          !backupRecorder.isTranscribing &&
+          !recorder.isTranscribing &&
           !userTranscript &&
           !isSubmitting && (
             <Stack
