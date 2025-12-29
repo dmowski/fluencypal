@@ -74,15 +74,7 @@ export const DescribeImageScreen = ({}: GameQuestionScreenProps) => {
         }}
       >
         <TaskTitle />
-        <Stack
-          sx={{
-            gap: "10px",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <img src={question.imageUrl} style={{ width: "100%", objectFit: "cover" }} />
-        </Stack>
+        <img src={question.imageUrl} style={{ width: "100%", objectFit: "cover" }} />
       </Stack>
 
       <Stack

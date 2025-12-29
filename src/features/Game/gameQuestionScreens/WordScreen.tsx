@@ -42,24 +42,16 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
       >
         <TaskTitle />
 
-        <Stack
+        <Typography
+          variant="h4"
           sx={{
-            gap: "10px",
-            alignItems: "center",
-            justifyContent: "flex-start",
+            fontSize: "2.5rem",
+            width: "100%",
           }}
+          className="decor-text"
         >
-          <Typography
-            variant="h4"
-            sx={{
-              fontSize: "2.5rem",
-              width: "100%",
-            }}
-            className="decor-text"
-          >
-            {question.question}
-          </Typography>
-        </Stack>
+          {question.question}
+        </Typography>
       </Stack>
 
       <Stack

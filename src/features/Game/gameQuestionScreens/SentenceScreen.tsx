@@ -30,7 +30,11 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
   if (question?.type !== "sentence") return <></>;
   return (
     <GameContainer>
-      <Stack>
+      <Stack
+        sx={{
+          gap: "10px",
+        }}
+      >
         <TaskTitle />
         <Stack
           sx={{

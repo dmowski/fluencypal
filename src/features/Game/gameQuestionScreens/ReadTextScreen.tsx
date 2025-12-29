@@ -90,6 +90,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
       <Stack
         sx={{
           width: "100%",
+          gap: "10px",
         }}
       >
         <TaskTitle />
