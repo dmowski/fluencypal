@@ -1,13 +1,18 @@
 import { ReactNode, useEffect, useState } from "react";
 import Google from "@mui/icons-material/Google";
-import { Stack } from "@mui/material";
+import { Stack, TextField, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
-import { Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Loader, Mail } from "lucide-react";
 import { scrollTopFast } from "@/libs/scroll";
 import { InfoStep } from "../Survey/InfoStep";
 import { ListItem } from "../Survey/IconTextList";
 import { getUrlStart } from "../Lang/getUrlStart";
 import { useAuth } from "./useAuth";
+
+const isValidEmail = (email: string) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 
 interface AuthWallBasicProps {
   children: ReactNode;
@@ -38,10 +43,23 @@ export const AuthWallBasic = ({
 }: AuthWallBasicProps) => {
   const auth = useAuth();
   const { i18n } = useLingui();
-
   const isShowAuthWall = !auth.uid && !auth.loading;
 
-  const steps = ["features", "agreement", "auth"] as const;
+  const [isValidEmailError, setIsValidEmailError] = useState(false);
+  const [emailSignInError, setEmailSignInError] = useState("");
+  const [isEmailSignInLoading, setIsEmailSignInLoading] = useState(false);
+
+  const [email, setEmail] = useState("");
+
+  const isValidEmailAddress = isValidEmail(email);
+
+  useEffect(() => {
+    if (isValidEmailError && isValidEmailAddress) {
+      setIsValidEmailError(false);
+    }
+  }, [email, isValidEmailAddress, isValidEmailError]);
+
+  const steps = ["features", "agreement", "auth", "email", "email-send"] as const;
   const [step, setStep] = useState<(typeof steps)[number]>(steps[0]);
 
   const nextStep = () => {
@@ -49,10 +67,23 @@ export const AuthWallBasic = ({
     if (currentIndex < steps.length - 1) {
       setStep(steps[currentIndex + 1]);
     }
+  };
 
-    if (step === "auth") {
-      auth.signInWithGoogle();
+  const signInWithEmail = async () => {
+    if (!isValidEmailAddress) {
+      setIsValidEmailError(true);
+      return;
     }
+    setEmailSignInError("");
+    setIsEmailSignInLoading(true);
+    const signInResult = await auth.signInWithEmail(email);
+    setIsEmailSignInLoading(false);
+    if (!signInResult.isDone) {
+      setEmailSignInError(signInResult.error || "Unknown error");
+      return;
+    }
+
+    setStep("email-send");
   };
 
   useEffect(() => {
@@ -82,6 +113,72 @@ export const AuthWallBasic = ({
           width: "100%",
         }}
       >
+        {step === "email-send" && (
+          <InfoStep
+            title={i18n._("Check your email")}
+            subTitle={i18n._(
+              "We sent a sign-in link to your email. Please check your inbox and click the link to sign in."
+            )}
+            subComponent={
+              <Stack
+                sx={{
+                  paddingTop: "20px",
+                }}
+              >
+                <Typography variant="body2"> {i18n._("Invite Link Sent to:")}</Typography>
+                <Typography
+                  variant="h6"
+                  component={"span"}
+                  sx={{
+                    fontWeight: "600",
+                    paddingTop: "5px",
+                  }}
+                >
+                  {email}
+                </Typography>
+              </Stack>
+            }
+            onClick={() => setStep("email")}
+            actionButtonTitle={i18n._("Send email again")}
+            actionButtonEndIcon={<Mail />}
+            width={width}
+          />
+        )}
+
+        {step === "email" && (
+          <InfoStep
+            actionButtonTitle={
+              isEmailSignInLoading ? i18n._("Sending...") : i18n._("Send me sign-in link")
+            }
+            title={i18n._("Sign in with email")}
+            subTitle={i18n._("Enter your email to get a sign-in link")}
+            subComponent={
+              <Stack
+                sx={{
+                  paddingTop: "20px",
+                }}
+              >
+                <TextField
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  fullWidth
+                  label={i18n._("Email")}
+                  type="email"
+                  error={isValidEmailError || emailSignInError !== ""}
+                  helperText={
+                    isValidEmailError
+                      ? i18n._("Please enter a valid email address")
+                      : emailSignInError
+                  }
+                />
+              </Stack>
+            }
+            onClick={signInWithEmail}
+            disabled={isValidEmailError || isEmailSignInLoading}
+            width={width}
+          />
+        )}
+
         {step === "features" && (
           <InfoStep
             imageUrl={featuresImageUrl}
@@ -143,7 +240,11 @@ export const AuthWallBasic = ({
             actionButtonTitle={i18n._("Sign in with Google")}
             actionButtonStartIcon={<Google />}
             listItems={authList}
-            onClick={nextStep}
+            onClick={() => auth.signInWithGoogle()}
+            secondButtonTitle={i18n._("Sign in with email")}
+            onSecondButtonClick={nextStep}
+            secondButtonStartIcon={<Mail />}
+            secondButtonEndIcon={<ArrowRight />}
           />
         )}
       </Stack>

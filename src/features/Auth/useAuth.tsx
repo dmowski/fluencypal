@@ -3,6 +3,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signInWithCustomToken as firebaseSignInWithCustomToken,
+  sendSignInLinkToEmail,
 } from "firebase/auth";
 import { Context, JSX, ReactNode, createContext, useContext, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -30,6 +31,8 @@ export interface AuthContext {
   signInWithGoogle: () => Promise<SignInResult>;
   signInWithCustomToken: (backendToken: string) => Promise<SignInResult>;
   getToken: () => Promise<string>;
+
+  signInWithEmail: (email: string) => Promise<SignInResult>;
 }
 
 export const authContext: Context<AuthContext> = createContext<AuthContext>({
@@ -45,6 +48,9 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
     throw new Error("signInWithCustomToken not implemented");
   },
   getToken: async () => "",
+  signInWithEmail: async () => {
+    throw new Error("signInWithEmail not implemented");
+  },
 });
 
 function useProvideAuth(): AuthContext {
@@ -65,6 +71,40 @@ function useProvideAuth(): AuthContext {
         isDone: false,
         error: `Google sign-in was unsuccessful. Please try again.`,
       };
+    }
+  };
+
+  const signInWithEmail = async (email: string): Promise<SignInResult> => {
+    const url = window.location.href;
+    const actionCodeSettings = {
+      // URL you want to redirect back to. The domain (www.example.com) for this
+      // URL must be in the authorized domains list in the Firebase Console.
+      url: url,
+      // This must be true.
+      handleCodeInApp: true,
+      //linkDomain: "custom-domain.com",
+    };
+
+    try {
+      await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+      window.localStorage.setItem("emailForSignIn", email);
+      return { isDone: true, error: "" };
+    } catch (error: any) {
+      const errorCode = error.code;
+      console.error("Email sign in error", error);
+      if (errorCode === "auth/invalid-email") {
+        return { isDone: false, error: "The email address is not valid." };
+      } else if (
+        errorCode === "auth/missing-android-pkg-name" ||
+        errorCode === "auth/missing-continue-uri" ||
+        errorCode === "auth/missing-ios-bundle-id" ||
+        errorCode === "auth/invalid-continue-uri" ||
+        errorCode === "auth/unauthorized-continue-uri"
+      ) {
+        return { isDone: false, error: "There is an issue with the sign-in link configuration." };
+      } else {
+        return { isDone: false, error: "Failed to send sign-in email. Please try again." };
+      }
     }
   };
 
@@ -150,6 +190,7 @@ function useProvideAuth(): AuthContext {
 
     logout,
     getToken,
+    signInWithEmail,
   };
 }
 

@@ -10,12 +10,33 @@ export const InterviewQuizButton: React.FC<{
   endIcon?: React.ReactNode;
   startIcon?: React.ReactNode;
   type?: "button" | "submit" | "reset";
-}> = ({ onClick, color, disabled, title, endIcon, startIcon, type }) => {
+
+  secondButtonTitle?: string;
+  onSecondButtonClick?: () => void;
+  secondButtonEndIcon?: React.ReactNode;
+  secondButtonStartIcon?: React.ReactNode;
+}> = ({
+  onClick,
+  color,
+  disabled,
+  title,
+  endIcon,
+  startIcon,
+  type,
+  secondButtonTitle,
+  onSecondButtonClick,
+  secondButtonEndIcon,
+  secondButtonStartIcon,
+}) => {
   return (
     <Stack
       sx={{
         paddingTop: "20px",
         paddingBottom: "40px",
+        flexDirection: "row",
+        gap: "16px",
+        justifyContent: "flex-start",
+        flexWrap: "wrap",
       }}
     >
       <Button
@@ -38,6 +59,29 @@ export const InterviewQuizButton: React.FC<{
       >
         {title}
       </Button>
+      {secondButtonTitle && onSecondButtonClick && (
+        <Button
+          onClick={onSecondButtonClick}
+          variant="text"
+          color={color}
+          disabled={disabled}
+          type={type}
+          size="large"
+          sx={{
+            width: `max-content`,
+            paddingTop: "12px",
+            paddingLeft: "24px",
+            paddingRight: "24px",
+            paddingBottom: "12px",
+            borderRadius: "128px",
+          }}
+          fullWidth
+          endIcon={secondButtonEndIcon}
+          startIcon={secondButtonStartIcon}
+        >
+          {secondButtonTitle}
+        </Button>
+      )}
     </Stack>
   );
 };

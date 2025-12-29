@@ -35,6 +35,11 @@ export const InfoStep = ({
   selectedOptions,
   onSelectOptionsChange,
   multipleSelection,
+
+  secondButtonEndIcon,
+  secondButtonTitle,
+  onSecondButtonClick,
+  secondButtonStartIcon,
 }: {
   title?: string;
   subTitle?: string;
@@ -53,6 +58,11 @@ export const InfoStep = ({
   selectedOptions?: QuizOption[];
   onSelectOptionsChange?: (selectedOptions: QuizOption[]) => void;
   multipleSelection?: boolean;
+
+  secondButtonTitle?: string;
+  onSecondButtonClick?: () => void;
+  secondButtonEndIcon?: ReactNode;
+  secondButtonStartIcon?: React.ReactNode;
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -259,6 +269,11 @@ export const InfoStep = ({
           disabled={disabled}
           startIcon={actionButtonStartIcon}
           endIcon={actionButtonEndIcon || <ArrowRight />}
+          type="button"
+          secondButtonEndIcon={secondButtonEndIcon}
+          secondButtonTitle={secondButtonTitle}
+          onSecondButtonClick={onSecondButtonClick}
+          secondButtonStartIcon={secondButtonStartIcon}
         />
       </Stack>
     </Stack>
