@@ -51,11 +51,6 @@ export const MyStatsRows = () => {
     (stat) => stat.userId === myUserId || stat.userId === nextUserId
   );
 
-  const getRealPosition = (userId: string) => {
-    const index = game.stats.findIndex((stat) => stat.userId === userId);
-    return index >= 0 ? index : 0;
-  };
-
   return (
     <Stack
       sx={{
@@ -64,7 +59,7 @@ export const MyStatsRows = () => {
       }}
     >
       {statsToShow.map((stat) => (
-        <GameStatRow key={stat.userId} stat={stat} index={getRealPosition(stat.userId)} />
+        <GameStatRow key={stat.userId} stat={stat} index={game.getRealPosition(stat.userId)} />
       ))}
     </Stack>
   );

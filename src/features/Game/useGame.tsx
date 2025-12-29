@@ -54,6 +54,8 @@ interface GameContextType {
 
   myUserName: string | null;
   myAvatar: string;
+
+  getRealPosition: (userId: string) => number;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -253,6 +255,11 @@ function useProvideGame(): GameContextType {
   const myPoints = myStats !== null ? myStats.points : null;
   const myUserName = userNames?.[userId || ""] || null;
 
+  const getRealPosition = (userId: string) => {
+    const index = stats.findIndex((stat) => stat.userId === userId);
+    return index >= 0 ? index : 0;
+  };
+
   return {
     myUserName,
     isGameWinner: isTop5Position,
@@ -267,6 +274,7 @@ function useProvideGame(): GameContextType {
     setAvatar,
     generateQuestions,
     activeQuestion,
+    getRealPosition,
 
     updateUsername,
     gameLastVisit: gameLastVisit || null,

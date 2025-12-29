@@ -16,10 +16,6 @@ export const PositionChangedModal = () => {
   const [isShowModal, setIsShowModal] = useUrlParam("showPositionChangedModal");
   const [positions, setPositions] = useState<Record<string, number>>({});
   const [myOldPosition, setMyOldPosition] = useState<number | null>(null);
-  const getRealPosition = (userId: string) => {
-    const index = game.stats.findIndex((stat) => stat.userId === userId);
-    return index >= 0 ? index : 0;
-  };
 
   const { i18n } = useLingui();
 
@@ -125,7 +121,7 @@ export const PositionChangedModal = () => {
                     top: `${position * 70 + 12}px`,
                   }}
                 >
-                  <GameStatRow stat={stat} index={getRealPosition(stat.userId)} />
+                  <GameStatRow stat={stat} index={game.getRealPosition(stat.userId)} />
                 </Stack>
               );
             })}
