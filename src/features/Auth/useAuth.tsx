@@ -127,6 +127,7 @@ function useProvideAuth(): AuthContext {
     };
 
     try {
+      console.log("actionCodeSettings", actionCodeSettings);
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
       window.localStorage.setItem(LOCALSTORAGE_EMAIL_KEY, email);
       return { isDone: true, error: "" };
