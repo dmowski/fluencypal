@@ -6,5 +6,4 @@ export interface GameQuestionScreenProps {
     questionId: string,
     answer: string
   ) => Promise<{ isCorrect: boolean; description: string | null }>;
-  onNext: () => void;
 }

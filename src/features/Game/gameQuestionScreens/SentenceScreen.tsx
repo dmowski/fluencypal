@@ -5,7 +5,7 @@ import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { Check, Delete, Loader, ShieldAlert } from "lucide-react";
 import { FinishButton, GameContainer } from "./core";
 
-export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
+export const SentenceScreen = ({ question, onSubmitAnswer }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
@@ -172,9 +172,7 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
           </Button>
         )}
 
-        {isCorrect !== null && (
-          <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} onNext={onNext} />
-        )}
+        {isCorrect !== null && <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} />}
       </Stack>
     </GameContainer>
   );

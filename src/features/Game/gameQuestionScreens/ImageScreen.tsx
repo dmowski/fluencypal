@@ -10,13 +10,10 @@ import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { StringDiff } from "react-string-diff";
-import { FinishButton, GameContainer } from "./core";
+import { FinishButton, GameContainer, SkipButton } from "./core";
+import { useGame } from "../useGame";
 
-export const DescribeImageScreen = ({
-  question,
-  onSubmitAnswer,
-  onNext,
-}: GameQuestionScreenProps) => {
+export const DescribeImageScreen = ({ question, onSubmitAnswer }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -25,6 +22,7 @@ export const DescribeImageScreen = ({
   const [answerCorrectedMessage, setAnswerCorrectedMessage] = useState<string | null>(null);
 
   const auth = useAuth();
+  const game = useGame();
   const settings = useSettings();
   const recorder = useAudioRecorder({
     languageCode: settings.languageCode || "en",
@@ -201,15 +199,7 @@ export const DescribeImageScreen = ({
                 >
                   {i18n._("Record")}
                 </Button>
-                <Button
-                  endIcon={<ChevronLast />}
-                  size="large"
-                  variant="text"
-                  disabled={isCorrect !== null}
-                  onClick={onNext}
-                >
-                  {i18n._("Skip")}
-                </Button>
+                <SkipButton disabled={isCorrect !== null} />
               </Stack>
             )}
           </Stack>
@@ -252,7 +242,7 @@ export const DescribeImageScreen = ({
                   size="large"
                   variant="text"
                   disabled={isCorrect !== null || isSubmitting}
-                  onClick={onNext}
+                  onClick={game.nextQuestion}
                 >
                   {i18n._("Skip")}
                 </Button>
@@ -351,7 +341,7 @@ export const DescribeImageScreen = ({
                 </Markdown>
               )}
             </Stack>
-            <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} onNext={onNext} />
+            <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} />
           </Stack>
         )}
       </Stack>

@@ -3,20 +3,16 @@ import { GameQuestionScreenProps } from "./type";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
-import { Check, ChevronLast, Languages, Loader, Mic, Trash } from "lucide-react";
+import { Check, Languages, Loader, Mic, Trash } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { StringDiff } from "react-string-diff";
-import { FinishButton, GameContainer } from "./core";
+import { FinishButton, GameContainer, SkipButton } from "./core";
 
-export const TopicToDiscussScreen = ({
-  question,
-  onSubmitAnswer,
-  onNext,
-}: GameQuestionScreenProps) => {
+export const TopicToDiscussScreen = ({ question, onSubmitAnswer }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -223,15 +219,7 @@ export const TopicToDiscussScreen = ({
                 >
                   {i18n._("Record")}
                 </Button>
-                <Button
-                  endIcon={<ChevronLast />}
-                  size="large"
-                  variant="text"
-                  disabled={isCorrect !== null}
-                  onClick={onNext}
-                >
-                  {i18n._("Skip")}
-                </Button>
+                <SkipButton disabled={isCorrect !== null} />
               </Stack>
             )}
           </Stack>
@@ -269,15 +257,7 @@ export const TopicToDiscussScreen = ({
                 >
                   {i18n._("Submit answer")}
                 </Button>
-                <Button
-                  endIcon={<ChevronLast />}
-                  size="large"
-                  variant="text"
-                  disabled={isCorrect !== null}
-                  onClick={onNext}
-                >
-                  {i18n._("Skip")}
-                </Button>
+                <SkipButton disabled={isCorrect !== null} />
               </Stack>
             </Stack>
           )}
@@ -365,7 +345,7 @@ export const TopicToDiscussScreen = ({
                 </Markdown>
               )}
             </Stack>
-            <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} onNext={onNext} />
+            <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} />
           </Stack>
         )}
       </Stack>

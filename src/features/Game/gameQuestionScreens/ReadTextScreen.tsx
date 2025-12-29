@@ -9,11 +9,11 @@ import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useLingui } from "@lingui/react";
-import { FinishButton, GameContainer } from "./core";
+import { FinishButton, GameContainer, SkipButton } from "./core";
 
 const READ_TEXT_ACCEPTED_PERCENTAGE = 60;
 
-export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
+export const ReadTextScreen = ({ question, onSubmitAnswer }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { i18n } = useLingui();
@@ -306,15 +306,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
               >
                 {i18n._("Record")}
               </Button>
-              <Button
-                endIcon={<ChevronLast />}
-                size="large"
-                variant="text"
-                disabled={isCorrect !== null}
-                onClick={onNext}
-              >
-                {i18n._("Skip")}
-              </Button>
+              <SkipButton disabled={isCorrect !== null} />
             </Stack>
           )}
 
@@ -330,9 +322,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
           </Typography>
         )}
 
-        {isCorrect !== null && (
-          <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} onNext={onNext} />
-        )}
+        {isCorrect !== null && <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} />}
       </Stack>
     </GameContainer>
   );

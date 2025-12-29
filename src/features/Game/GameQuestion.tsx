@@ -14,7 +14,7 @@ const ScreenMap: Record<GameQuestionType, React.FC<GameQuestionScreenProps>> = {
   read_text: ReadTextScreen,
 };
 
-export const GameQuestion = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
+export const GameQuestion = ({ question, onSubmitAnswer }: GameQuestionScreenProps) => {
   const ScreenComponent = ScreenMap[question.type];
-  return <ScreenComponent question={question} onSubmitAnswer={onSubmitAnswer} onNext={onNext} />;
+  return <ScreenComponent question={question} onSubmitAnswer={onSubmitAnswer} />;
 };

@@ -2,7 +2,23 @@ import { Button, Stack, Typography } from "@mui/material";
 import { useGame } from "../useGame";
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
-import { Check, ChevronRight, X } from "lucide-react";
+import { Check, ChevronLast, ChevronRight, X } from "lucide-react";
+
+export const SkipButton = ({ disabled }: { disabled: boolean }) => {
+  const game = useGame();
+  const { i18n } = useLingui();
+  return (
+    <Button
+      endIcon={<ChevronLast />}
+      size="large"
+      variant="text"
+      disabled={disabled}
+      onClick={game.nextQuestion}
+    >
+      {i18n._("Skip")}
+    </Button>
+  );
+};
 
 export const GameContainer = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -55,13 +71,12 @@ export const SummaryRow = () => {
 export const FinishButton = ({
   isCorrect,
   setIsCorrect,
-  onNext,
 }: {
   isCorrect: boolean;
   setIsCorrect: (value: boolean | null) => void;
-  onNext: () => void;
 }) => {
   const { i18n } = useLingui();
+  const game = useGame();
 
   return (
     <Stack
@@ -78,7 +93,7 @@ export const FinishButton = ({
         endIcon={<ChevronRight />}
         onClick={() => {
           setIsCorrect(null);
-          onNext();
+          game.nextQuestion();
         }}
         sx={{
           width: "100%",

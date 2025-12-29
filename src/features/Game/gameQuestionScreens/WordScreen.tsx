@@ -5,7 +5,7 @@ import { Button, Stack, Typography } from "@mui/material";
 import { Check, Loader } from "lucide-react";
 import { FinishButton } from "./core";
 
-export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
+export const WordScreen = ({ question, onSubmitAnswer }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -109,9 +109,7 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
           gap: "5px",
         }}
       >
-        {isCorrect !== null && (
-          <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} onNext={onNext} />
-        )}
+        {isCorrect !== null && <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} />}
       </Stack>
     </Stack>
   );
