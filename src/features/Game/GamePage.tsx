@@ -5,16 +5,15 @@ import { GameQuestion } from "./GameQuestion";
 import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Swords } from "lucide-react";
-import { GameStats } from "./GameStats";
+import { GameStats, isTodayStat } from "./GameStats";
 import { PositionChangedModal } from "./PositionChangedModal";
 import { exitFullScreen, goFullScreen } from "@/libs/fullScreen";
-import { GameNativeLanguageSelector } from "./GameNativeLanguageSelector";
 import { GameMyAvatar } from "./GameMyAvatar";
 import { GameMyUsername } from "./GameMyUsername";
 import { GameOnboarding } from "./GameOnboarding";
 import { NavigationBar } from "../Navigation/NavigationBar";
 import { SupportedLanguage } from "../Lang/lang";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const game = useGame();
@@ -24,6 +23,15 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const playMessage = i18n._(`Play`);
 
   const [activeTab, setActiveTab] = useState(0);
+
+  const globalGamers = useMemo(() => game.stats.length, [game.stats.length]);
+  const todayGamers = useMemo(
+    () =>
+      game.stats.filter((stat) => {
+        return isTodayStat({ lastVisitStat: game.gameLastVisit, userId: stat.userId });
+      }).length,
+    [game.stats.length]
+  );
 
   return (
     <>
@@ -105,8 +113,8 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                 value={activeTab}
                 onChange={(event, newId) => setActiveTab(newId)}
               >
-                <Tab label={i18n._(`Global`)} value={0} />
-                <Tab label={i18n._(`Today`)} value={1} />
+                <Tab label={i18n._(`Global`) + ": " + globalGamers} value={0} />
+                <Tab label={i18n._(`Today`) + ": " + todayGamers} value={1} />
               </Tabs>
 
               <GameStats activeTab={activeTab === 0 ? "global" : "today"} />

@@ -4,6 +4,19 @@ import { Stack } from "@mui/material";
 import { useGame } from "./useGame";
 import { GameStatRow } from "./GameStatRow";
 import dayjs from "dayjs";
+import { GameLastVisit } from "./types";
+
+export const isTodayStat = ({
+  lastVisitStat,
+  userId,
+}: {
+  lastVisitStat?: GameLastVisit | null;
+  userId: string;
+}) => {
+  if (!lastVisitStat) return false;
+  if (!lastVisitStat[userId]) return false;
+  return dayjs(lastVisitStat[userId]).isSame(dayjs(), "day");
+};
 
 export const GameStats = ({ activeTab }: { activeTab: "global" | "today" }) => {
   const game = useGame();
@@ -16,10 +29,10 @@ export const GameStats = ({ activeTab }: { activeTab: "global" | "today" }) => {
       {game.stats
         .filter((stat) => {
           if (activeTab === "today") {
-            const lastVisit = game?.gameLastVisit?.[stat.userId];
-            if (!lastVisit) return false;
-            const isSameDay = dayjs(lastVisit).isSame(dayjs(), "day");
-            return isSameDay;
+            return isTodayStat({
+              lastVisitStat: game.gameLastVisit,
+              userId: stat.userId,
+            });
           }
           return true;
         })
