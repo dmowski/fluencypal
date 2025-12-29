@@ -88,8 +88,8 @@ export const FinishButton = ({
       <Button
         variant="contained"
         size="large"
-        color={isCorrect ? "success" : "error"}
-        startIcon={isCorrect ? <Check /> : <X />}
+        color={isCorrect ? "info" : "error"}
+        startIcon={isCorrect ? undefined : <X />}
         endIcon={<ChevronRight />}
         onClick={() => {
           setIsCorrect(null);
