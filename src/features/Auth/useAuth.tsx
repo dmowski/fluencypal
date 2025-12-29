@@ -6,6 +6,7 @@ import {
   sendSignInLinkToEmail,
   isSignInWithEmailLink,
   signInWithEmailLink,
+  ActionCodeSettings,
 } from "firebase/auth";
 import { Context, JSX, ReactNode, createContext, useContext, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -116,13 +117,13 @@ function useProvideAuth(): AuthContext {
 
   const signInWithEmail = async (email: string): Promise<SignInResult> => {
     const url = window.location.href;
-    const actionCodeSettings = {
+    const actionCodeSettings: ActionCodeSettings = {
       // URL you want to redirect back to. The domain (www.example.com) for this
       // URL must be in the authorized domains list in the Firebase Console.
       url: url,
       // This must be true.
       handleCodeInApp: true,
-      //linkDomain: "custom-domain.com",
+      //linkDomain: "fluencypal.com",
     };
 
     try {
