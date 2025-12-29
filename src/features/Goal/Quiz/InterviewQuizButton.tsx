@@ -52,6 +52,7 @@ export const InterviewQuizButton: React.FC<{
           paddingTop: "12px",
           paddingBottom: "12px",
           borderRadius: "128px",
+          textAlign: "left",
         }}
         fullWidth
         endIcon={endIcon || <ArrowRight />}
@@ -74,6 +75,7 @@ export const InterviewQuizButton: React.FC<{
             paddingRight: "24px",
             paddingBottom: "12px",
             borderRadius: "128px",
+            textAlign: "left",
           }}
           fullWidth
           endIcon={secondButtonEndIcon}
