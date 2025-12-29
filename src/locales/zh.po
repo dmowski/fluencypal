@@ -219,6 +219,10 @@ msgstr ""
 "**准备测试你的技能吗？**  \n"
 "在 **FluencyPal** 上进行一次真实体验的**免费模拟面试**——这是你尽力在重要的日子里取得成功的最后一步！"
 
+#: src/features/Game/gameQuestionScreens/core.tsx:85
+msgid "+{increasePoints} points"
+msgstr "+{increasePoints} 分"
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -1387,6 +1391,11 @@ msgstr "公司"
 msgid "Complete previous tasks first"
 msgstr "完成之前的任务。"
 
+#: src/features/Game/gameQuestionScreens/core.tsx:50
+#. js-lingui-explicit-id
+msgid "Complete the sentence"
+msgstr "完成句子"
+
 #: src/features/Case/data/frontend-junior/techData.tsx:44
 #: src/features/Case/data/frontend-senior/techData.tsx:44
 #. js-lingui-explicit-id
@@ -1521,7 +1530,7 @@ msgstr "联系人："
 #: src/features/Case/data/frontend-senior/quizData.ts:333
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #: src/features/Dashboard/SelectLanguage.tsx:292
-#: src/features/Game/PositionChangedModal.tsx:134
+#: src/features/Game/PositionChangedModal.tsx:130
 #: src/features/Goal/GoalQuestions.tsx:821
 #: src/features/Goal/GoalQuestions.tsx:860
 #: src/features/PayWall/CardValidator.tsx:135
@@ -1911,13 +1920,13 @@ msgid ""
 "background jobs (queues, batching, throttling)."
 msgstr "描述在 .NET 中处理后台作业（队列、批处理、限制）时处理并发的策略。"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:76
+#: src/features/Game/gameQuestionScreens/core.tsx:48
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:224
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "描述图片"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:246
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:239
 #. js-lingui-explicit-id
 msgid "Describe the topic in your own words..."
 msgstr "用你自己的话描述这个主题..."
@@ -2078,7 +2087,7 @@ msgstr ""
 msgid "Discuss scaling, observability, failure modes, and operational readiness."
 msgstr "讨论扩展性、可观测性、故障模式和操作就绪性。"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:82
+#: src/features/Game/gameQuestionScreens/core.tsx:51
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "讨论主题"
@@ -2162,8 +2171,8 @@ msgstr "别忘了在练习部分尝试通话模式！"
 #: src/features/Conversation/ConversationCanvas2.tsx:1082
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:173
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:253
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:195
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:245
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:188
 #: src/features/Landing/LandingPage.tsx:174
 #: src/features/Survey/RecordUserAudioAnswer.tsx:142
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -2462,14 +2471,14 @@ msgstr "支付处理错误"
 msgid "Error Processing the goal"
 msgstr "处理目标时出错"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:329
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:321
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
 msgstr "错误："
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:264
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:278
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "错误："
@@ -2926,11 +2935,6 @@ msgstr "对于寻求长期职业发展和全面面试准备的人。"
 #. js-lingui-explicit-id
 msgid "for {USER_NAME}"
 msgstr "为 {USER_NAME}"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:42
-#. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "形成一个句子"
 
 #: src/features/Landing/PlanLandingBlock.tsx:269
 #. js-lingui-explicit-id
@@ -5429,7 +5433,7 @@ msgstr "我的名字是Alex。我是这个项目的创始人。您可以在下�
 msgid "My native language"
 msgstr "我的母语"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:99
+#: src/features/Game/gameQuestionScreens/core.tsx:141
 #. js-lingui-explicit-id
 msgid "My position"
 msgstr "我的位置"
@@ -5533,7 +5537,7 @@ msgstr "新词："
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
 #: src/features/Game/GameOnboarding.tsx:75
 #: src/features/Game/GameOnboarding.tsx:130
-#: src/features/Game/gameQuestionScreens/core.tsx:145
+#: src/features/Game/gameQuestionScreens/core.tsx:187
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
@@ -5548,7 +5552,7 @@ msgstr "新词："
 msgid "Next"
 msgstr "下一步"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:105
+#: src/features/Game/gameQuestionScreens/core.tsx:147
 msgid "Next position ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgstr "下一个位置 ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 
@@ -5557,7 +5561,7 @@ msgstr "下一个位置 ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgid "Next, please allow access to the microphone to communicate with the AI."
 msgstr "接下来，请允许访问麦克风以便与 AI 交流。"
 
-#: src/features/Game/PositionChangedModal.tsx:102
+#: src/features/Game/PositionChangedModal.tsx:98
 #. js-lingui-explicit-id
 msgid "Nice!"
 msgstr "太好了!"
@@ -6628,7 +6632,7 @@ msgstr "评分："
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1068
 #: src/features/Conversation/ConversationCanvas2.tsx:1385
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:266
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:258
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "重新录制"
@@ -6687,7 +6691,7 @@ msgid ""
 "fluency goals with FluencyPal."
 msgstr "阅读最新的语言学习文章、英语练习技巧和人工智能辅导员更新。与FluencyPal保持信息灵通、积极和灵感，以实现您的流利目标。"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:102
+#: src/features/Game/gameQuestionScreens/core.tsx:52
 #. js-lingui-explicit-id
 msgid "Read the text"
 msgstr "阅读文本"
@@ -6826,8 +6830,8 @@ msgstr "最近的毕业生或训练营校友进入前端开发"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:203
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:315
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:225
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:307
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:218
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:144
 #. js-lingui-explicit-id
@@ -7394,7 +7398,7 @@ msgid ""
 msgstr "绘制一个简单的微服务架构，包含API网关、认证、服务和异步通信。"
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
-#: src/features/Game/gameQuestionScreens/core.tsx:39
+#: src/features/Game/gameQuestionScreens/core.tsx:40
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
 #. js-lingui-explicit-id
 msgid "Skip"
@@ -7804,16 +7808,16 @@ msgid ""
 "leadership answers."
 msgstr "对 React 和 TypeScript 有扎实的知识。沟通和领导方面的回答略有不足。"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:279
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "提交"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:144
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:241
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:175
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:166
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:263
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:159
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:256
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "提交答案"
@@ -8266,14 +8270,14 @@ msgstr "跟踪您的流利度进度"
 #: src/features/Conversation/ConversationCanvas2.tsx:869
 #: src/features/Conversation/ConversationCanvas2.tsx:876
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:103
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:231
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:125
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:223
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:118
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "转录中..."
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:46
+#: src/features/Game/gameQuestionScreens/core.tsx:49
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "翻译单词"
@@ -9306,6 +9310,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— 进入专业话题之前进行这种短暂的对话是很重要的。以下是一些开始面试的有用英语短语："
+
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Form a sentence"
+#~ msgstr "形成一个句子"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261

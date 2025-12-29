@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
-import { useLingui } from "@lingui/react";
 import { Button, Stack, Typography } from "@mui/material";
 import { Check, Loader } from "lucide-react";
-import { FinishButton } from "./core";
+import { FinishButton, TaskTitle } from "./core";
 import { useGame } from "../useGame";
 
 export const WordScreen = ({}: GameQuestionScreenProps) => {
@@ -26,8 +25,6 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
     setIsCorrect(isCorrect);
   };
 
-  const { i18n } = useLingui();
-
   if (question?.type !== "translate") return <></>;
   return (
     <Stack
@@ -43,7 +40,8 @@ export const WordScreen = ({}: GameQuestionScreenProps) => {
           gap: "10px",
         }}
       >
-        <Typography variant="caption">{i18n._("Translate the word")}</Typography>
+        <TaskTitle />
+
         <Stack
           sx={{
             gap: "10px",

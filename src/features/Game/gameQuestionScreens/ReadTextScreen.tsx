@@ -9,7 +9,7 @@ import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useLingui } from "@lingui/react";
-import { FinishButton, GameContainer, SkipButton } from "./core";
+import { FinishButton, GameContainer, SkipButton, TaskTitle } from "./core";
 import { useGame } from "../useGame";
 
 const READ_TEXT_ACCEPTED_PERCENTAGE = 60;
@@ -92,15 +92,7 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
           width: "100%",
         }}
       >
-        <Typography
-          variant="caption"
-          sx={{
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-        >
-          {i18n._("Read the text")}
-        </Typography>
+        <TaskTitle />
         <Stack
           sx={{
             gap: "10px",

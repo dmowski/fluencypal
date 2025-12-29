@@ -3,6 +3,7 @@ import { getQuestionById, setQuestion } from "./getQuestion";
 import { getGameUsersPoints, increaseUserPoints } from "./statsResources";
 import { generateTextWithAi } from "@/app/api/ai/generateTextWithAi";
 import { AuthUserInfo } from "@/app/api/config/type";
+import { pointsIncreaseMap } from "../points";
 
 export const submitAnswer = async ({
   data,
@@ -127,9 +128,10 @@ true|A group of people is seen singing a song.|Your speech is correct because it
   }
 
   if (isCorrect && question.answeredAt === null) {
+    const pointsToAdd = pointsIncreaseMap[question.type] || 1;
     updatedStats = await increaseUserPoints({
       userId: userInfo.uid,
-      points: 1,
+      points: pointsToAdd,
     });
 
     setQuestion({

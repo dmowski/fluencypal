@@ -3,7 +3,7 @@ import { GameQuestionScreenProps } from "./type";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { Check, Delete, Loader, ShieldAlert } from "lucide-react";
-import { FinishButton, GameContainer } from "./core";
+import { FinishButton, GameContainer, TaskTitle } from "./core";
 import { useGame } from "../useGame";
 
 export const SentenceScreen = ({}: GameQuestionScreenProps) => {
@@ -31,16 +31,7 @@ export const SentenceScreen = ({}: GameQuestionScreenProps) => {
   return (
     <GameContainer>
       <Stack>
-        <Typography
-          variant="caption"
-          sx={{
-            padding: "0px 10px 15px 0px",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-        >
-          {i18n._("Form a sentence")}
-        </Typography>
+        <TaskTitle />
         <Stack
           sx={{
             gap: "10px",

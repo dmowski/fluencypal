@@ -240,6 +240,10 @@ msgstr ""
 "FluencyPal** — langkah terakhir anda untuk lulus dengan jayanya pada hari "
 "besar tersebut!  \n"
 
+#: src/features/Game/gameQuestionScreens/core.tsx:85
+msgid "+{increasePoints} points"
+msgstr "+{increasePoints} mata"
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -1479,6 +1483,11 @@ msgstr "Syarikat"
 msgid "Complete previous tasks first"
 msgstr "Selesaikan tugas sebelumnya terlebih dahulu"
 
+#: src/features/Game/gameQuestionScreens/core.tsx:50
+#. js-lingui-explicit-id
+msgid "Complete the sentence"
+msgstr "Lengkapkan ayat"
+
 #: src/features/Case/data/frontend-junior/techData.tsx:44
 #: src/features/Case/data/frontend-senior/techData.tsx:44
 #. js-lingui-explicit-id
@@ -1622,7 +1631,7 @@ msgstr "Contacts:"
 #: src/features/Case/data/frontend-senior/quizData.ts:333
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #: src/features/Dashboard/SelectLanguage.tsx:292
-#: src/features/Game/PositionChangedModal.tsx:134
+#: src/features/Game/PositionChangedModal.tsx:130
 #: src/features/Goal/GoalQuestions.tsx:821
 #: src/features/Goal/GoalQuestions.tsx:860
 #: src/features/PayWall/CardValidator.tsx:135
@@ -2048,13 +2057,13 @@ msgstr ""
 "Huraikan strategi untuk menangani concurrency dalam .NET semasa memproses "
 "tugasan latar belakang (queue, batch, throttling)."
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:76
+#: src/features/Game/gameQuestionScreens/core.tsx:48
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:224
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "Huraikan imej"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:246
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:239
 #. js-lingui-explicit-id
 msgid "Describe the topic in your own words..."
 msgstr "Huraikan topik dengan kata-kata anda sendiri..."
@@ -2244,7 +2253,7 @@ msgstr ""
 msgid "Discuss scaling, observability, failure modes, and operational readiness."
 msgstr "Bincangkan penskalaan, pemerhatian, mod kegagalan, dan kesediaan operasi."
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:82
+#: src/features/Game/gameQuestionScreens/core.tsx:51
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Bincangkan topik"
@@ -2340,8 +2349,8 @@ msgstr "Jangan lupa untuk mencuba mod panggilan dalam bahagian latihan!"
 #: src/features/Conversation/ConversationCanvas2.tsx:1082
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:173
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:253
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:195
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:245
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:188
 #: src/features/Landing/LandingPage.tsx:174
 #: src/features/Survey/RecordUserAudioAnswer.tsx:142
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -2668,14 +2677,14 @@ msgstr "Ralat memproses bayaran"
 msgid "Error Processing the goal"
 msgstr "Ralat Memproses matlamat"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:329
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:321
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
 msgstr "Ralat:"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:264
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:278
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "Ralat:"
@@ -3209,11 +3218,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "for {USER_NAME}"
 msgstr "untuk {USER_NAME}"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:42
-#. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "Bentuk satu ayat"
 
 #: src/features/Landing/PlanLandingBlock.tsx:269
 #. js-lingui-explicit-id
@@ -6061,7 +6065,7 @@ msgstr ""
 msgid "My native language"
 msgstr "Bahasa ibunda saya"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:99
+#: src/features/Game/gameQuestionScreens/core.tsx:141
 #. js-lingui-explicit-id
 msgid "My position"
 msgstr "Kedudukan saya"
@@ -6167,7 +6171,7 @@ msgstr "Kata-kata baru:"
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
 #: src/features/Game/GameOnboarding.tsx:75
 #: src/features/Game/GameOnboarding.tsx:130
-#: src/features/Game/gameQuestionScreens/core.tsx:145
+#: src/features/Game/gameQuestionScreens/core.tsx:187
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
@@ -6182,7 +6186,7 @@ msgstr "Kata-kata baru:"
 msgid "Next"
 msgstr "Seterusnya"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:105
+#: src/features/Game/gameQuestionScreens/core.tsx:147
 msgid "Next position ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgstr "Posisi seterusnya ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 
@@ -6193,7 +6197,7 @@ msgstr ""
 "Seterusnya, sila benarkan akses kepada mikrofon untuk berkomunikasi dengan "
 "AI."
 
-#: src/features/Game/PositionChangedModal.tsx:102
+#: src/features/Game/PositionChangedModal.tsx:98
 #. js-lingui-explicit-id
 msgid "Nice!"
 msgstr "Bagus!"
@@ -7344,7 +7348,7 @@ msgstr "Penilaian:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1068
 #: src/features/Conversation/ConversationCanvas2.tsx:1385
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:266
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:258
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Rakam semula"
@@ -7408,7 +7412,7 @@ msgstr ""
 "Inggeris, dan kemas kini tutor AI. Kekal maklumat, termotivasi, dan "
 "terinspirasi untuk mencapai matlamat kefasihan anda dengan FluencyPal."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:102
+#: src/features/Game/gameQuestionScreens/core.tsx:52
 #. js-lingui-explicit-id
 msgid "Read the text"
 msgstr "Baca teks"
@@ -7560,8 +7564,8 @@ msgstr "Baru-baru ini graduan atau alumni bootcamp menceburi pembangunan fronten
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:203
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:315
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:225
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:307
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:218
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:144
 #. js-lingui-explicit-id
@@ -8163,7 +8167,7 @@ msgstr ""
 "API, pengesahan, perkhidmatan, dan komunikasi tak segerak."
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
-#: src/features/Game/gameQuestionScreens/core.tsx:39
+#: src/features/Game/gameQuestionScreens/core.tsx:40
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
 #. js-lingui-explicit-id
 msgid "Skip"
@@ -8611,16 +8615,16 @@ msgstr ""
 "Pengetahuan yang kuat dalam React dan TypeScript. Terdapat sedikit jurang "
 "dalam komunikasi dan jawapan kepimpinan."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:279
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Hantar"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:144
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:241
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:175
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:166
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:263
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:159
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:256
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Hantar jawapan"
@@ -9110,14 +9114,14 @@ msgstr "Jejak Kemajuan Kefasihan Anda"
 #: src/features/Conversation/ConversationCanvas2.tsx:869
 #: src/features/Conversation/ConversationCanvas2.tsx:876
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:103
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:231
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:125
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:223
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:118
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Menyalin..."
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:46
+#: src/features/Game/gameQuestionScreens/core.tsx:49
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Terjemahkan perkataan"
@@ -10257,6 +10261,11 @@ msgstr ""
 "— sangat penting untuk melibatkan diri dalam perbualan pendek ini sebelum "
 "melompat ke topik profesional. Berikut adalah beberapa frasa Inggeris yang "
 "berguna untuk memulakan temuduga:"
+
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Form a sentence"
+#~ msgstr "Bentuk satu ayat"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261

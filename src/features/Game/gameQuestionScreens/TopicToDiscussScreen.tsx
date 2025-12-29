@@ -10,7 +10,7 @@ import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { StringDiff } from "react-string-diff";
-import { FinishButton, GameContainer, SkipButton } from "./core";
+import { FinishButton, GameContainer, SkipButton, TaskTitle } from "./core";
 import { useGame } from "../useGame";
 
 export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
@@ -73,14 +73,7 @@ export const TopicToDiscussScreen = ({}: GameQuestionScreenProps) => {
           gap: "10px",
         }}
       >
-        <Typography
-          variant="caption"
-          sx={{
-            width: "100%",
-          }}
-        >
-          {i18n._("Discuss the topic")}
-        </Typography>
+        <TaskTitle />
         <Stack
           sx={{
             gap: "10px",

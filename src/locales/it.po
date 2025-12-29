@@ -238,6 +238,10 @@ msgstr ""
 "Simula l'esperienza reale con un **colloquio simulatore gratuito su "
 "FluencyPal**, il tuo ultimo passo per dominare il grande giorno!"
 
+#: src/features/Game/gameQuestionScreens/core.tsx:85
+msgid "+{increasePoints} points"
+msgstr "+{increasePoints} punti"
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -1474,6 +1478,11 @@ msgstr "Azienda"
 msgid "Complete previous tasks first"
 msgstr "Completa prima le attività precedenti."
 
+#: src/features/Game/gameQuestionScreens/core.tsx:50
+#. js-lingui-explicit-id
+msgid "Complete the sentence"
+msgstr "Completa la frase"
+
 #: src/features/Case/data/frontend-junior/techData.tsx:44
 #: src/features/Case/data/frontend-senior/techData.tsx:44
 #. js-lingui-explicit-id
@@ -1615,7 +1624,7 @@ msgstr "Contatti:"
 #: src/features/Case/data/frontend-senior/quizData.ts:333
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #: src/features/Dashboard/SelectLanguage.tsx:292
-#: src/features/Game/PositionChangedModal.tsx:134
+#: src/features/Game/PositionChangedModal.tsx:130
 #: src/features/Goal/GoalQuestions.tsx:821
 #: src/features/Goal/GoalQuestions.tsx:860
 #: src/features/PayWall/CardValidator.tsx:135
@@ -2040,13 +2049,13 @@ msgstr ""
 "Descrivi strategie per gestire la concorrenza in .NET durante "
 "l'elaborazione di lavori in background (code, batching, throttling)."
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:76
+#: src/features/Game/gameQuestionScreens/core.tsx:48
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:224
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "Descrivi l'immagine"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:246
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:239
 #. js-lingui-explicit-id
 msgid "Describe the topic in your own words..."
 msgstr "Descrivi l'argomento con le tue parole..."
@@ -2233,7 +2242,7 @@ msgstr ""
 "Discutere il dimensionamento, l'osservabilità, le modalità di fallimento e "
 "la prontezza operativa."
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:82
+#: src/features/Game/gameQuestionScreens/core.tsx:51
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Discuti l'argomento"
@@ -2328,8 +2337,8 @@ msgstr "Non dimenticare di provare la modalità chiamata nella sezione pratica!"
 #: src/features/Conversation/ConversationCanvas2.tsx:1082
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:173
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:253
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:195
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:245
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:188
 #: src/features/Landing/LandingPage.tsx:174
 #: src/features/Survey/RecordUserAudioAnswer.tsx:142
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -2653,14 +2662,14 @@ msgstr "Errore nell'elaborazione del pagamento"
 msgid "Error Processing the goal"
 msgstr "Errore nell'elaborazione dell'obiettivo"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:329
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:321
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
 msgstr "Errore:"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:264
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:278
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "Errore:"
@@ -3187,11 +3196,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "for {USER_NAME}"
 msgstr "per {USER_NAME}"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:42
-#. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "Forma una frase"
 
 #: src/features/Landing/PlanLandingBlock.tsx:269
 #. js-lingui-explicit-id
@@ -6002,7 +6006,7 @@ msgstr ""
 msgid "My native language"
 msgstr "La mia lingua madre"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:99
+#: src/features/Game/gameQuestionScreens/core.tsx:141
 #. js-lingui-explicit-id
 msgid "My position"
 msgstr "La mia posizione"
@@ -6108,7 +6112,7 @@ msgstr "Nuove parole:"
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
 #: src/features/Game/GameOnboarding.tsx:75
 #: src/features/Game/GameOnboarding.tsx:130
-#: src/features/Game/gameQuestionScreens/core.tsx:145
+#: src/features/Game/gameQuestionScreens/core.tsx:187
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
@@ -6123,7 +6127,7 @@ msgstr "Nuove parole:"
 msgid "Next"
 msgstr "Avanti"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:105
+#: src/features/Game/gameQuestionScreens/core.tsx:147
 msgid "Next position ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgstr "Prossima posizione ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 
@@ -6132,7 +6136,7 @@ msgstr "Prossima posizione ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgid "Next, please allow access to the microphone to communicate with the AI."
 msgstr "Successivamente, consenti l'accesso al microfono per comunicare con l'IA."
 
-#: src/features/Game/PositionChangedModal.tsx:102
+#: src/features/Game/PositionChangedModal.tsx:98
 #. js-lingui-explicit-id
 msgid "Nice!"
 msgstr "Ottimo!"
@@ -7282,7 +7286,7 @@ msgstr "Valutazione:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1068
 #: src/features/Conversation/ConversationCanvas2.tsx:1385
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:266
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:258
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Ri-registra"
@@ -7347,7 +7351,7 @@ msgstr ""
 "Rimani informato, motivato e ispirato a raggiungere i tuoi obiettivi di "
 "fluidità con FluencyPal."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:102
+#: src/features/Game/gameQuestionScreens/core.tsx:52
 #. js-lingui-explicit-id
 msgid "Read the text"
 msgstr "Leggi il testo"
@@ -7500,8 +7504,8 @@ msgstr ""
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:203
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:315
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:225
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:307
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:218
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:144
 #. js-lingui-explicit-id
@@ -8105,7 +8109,7 @@ msgstr ""
 "autenticazione, servizi e comunicazione asincrona."
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
-#: src/features/Game/gameQuestionScreens/core.tsx:39
+#: src/features/Game/gameQuestionScreens/core.tsx:40
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
 #. js-lingui-explicit-id
 msgid "Skip"
@@ -8554,16 +8558,16 @@ msgstr ""
 "Forte conoscenza di React e TypeScript. Lievi lacune nelle risposte sulla "
 "comunicazione e leadership."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:279
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Invia"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:144
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:241
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:175
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:166
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:263
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:159
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:256
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Invia risposta"
@@ -9056,14 +9060,14 @@ msgstr "Monitora i Tuoi Progressi di Fluenza"
 #: src/features/Conversation/ConversationCanvas2.tsx:869
 #: src/features/Conversation/ConversationCanvas2.tsx:876
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:103
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:231
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:125
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:223
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:118
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "Trascrivendo..."
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:46
+#: src/features/Game/gameQuestionScreens/core.tsx:49
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "Traduci la parola"
@@ -10206,6 +10210,11 @@ msgstr ""
 "— è importante impegnarsi in questa breve conversazione prima di tuffarsi "
 "nei temi professionali. Ecco alcune frasi inglesi utili per iniziare "
 "l'intervista:"
+
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Form a sentence"
+#~ msgstr "Forma una frase"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261

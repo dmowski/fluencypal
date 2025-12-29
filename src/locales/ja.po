@@ -216,6 +216,10 @@ msgstr ""
 "**あなたのスキルを試してみる準備はできましたか？** \n"
 "**FluencyPal**での**無料のモックインタビュー**で実際の経験をシミュレートする—これが大いなる日を成功させるための最後のステップです！"
 
+#: src/features/Game/gameQuestionScreens/core.tsx:85
+msgid "+{increasePoints} points"
+msgstr "+{increasePoints} ポイント"
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -1391,6 +1395,11 @@ msgstr "会社"
 msgid "Complete previous tasks first"
 msgstr "以前のタスクを最初に完了してください。"
 
+#: src/features/Game/gameQuestionScreens/core.tsx:50
+#. js-lingui-explicit-id
+msgid "Complete the sentence"
+msgstr "文章を完成させてください"
+
 #: src/features/Case/data/frontend-junior/techData.tsx:44
 #: src/features/Case/data/frontend-senior/techData.tsx:44
 #. js-lingui-explicit-id
@@ -1528,7 +1537,7 @@ msgstr "連絡先:"
 #: src/features/Case/data/frontend-senior/quizData.ts:333
 #: src/features/Dashboard/HomeworkCard.tsx:115
 #: src/features/Dashboard/SelectLanguage.tsx:292
-#: src/features/Game/PositionChangedModal.tsx:134
+#: src/features/Game/PositionChangedModal.tsx:130
 #: src/features/Goal/GoalQuestions.tsx:821
 #: src/features/Goal/GoalQuestions.tsx:860
 #: src/features/PayWall/CardValidator.tsx:135
@@ -1923,13 +1932,13 @@ msgid ""
 "background jobs (queues, batching, throttling)."
 msgstr ".NETでバックグラウンドジョブを処理する際の同時実行性を管理するための戦略について説明します（キュー、バッチ処理、スロットリング）。"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:76
+#: src/features/Game/gameQuestionScreens/core.tsx:48
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:224
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "画像を説明する"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:246
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:239
 #. js-lingui-explicit-id
 msgid "Describe the topic in your own words..."
 msgstr "あなた自身の言葉で話題を説明してください..."
@@ -2091,7 +2100,7 @@ msgstr ""
 msgid "Discuss scaling, observability, failure modes, and operational readiness."
 msgstr "スケーリング、可観測性、故障モード、運用準備について議論する。"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:82
+#: src/features/Game/gameQuestionScreens/core.tsx:51
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "トピックを議論する"
@@ -2177,8 +2186,8 @@ msgstr "練習セクションで通話モードを試すのを忘れないでく
 #: src/features/Conversation/ConversationCanvas2.tsx:1082
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:173
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:253
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:195
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:245
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:188
 #: src/features/Landing/LandingPage.tsx:174
 #: src/features/Survey/RecordUserAudioAnswer.tsx:142
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -2477,14 +2486,14 @@ msgstr "支払いの処理中にエラーが発生しました"
 msgid "Error Processing the goal"
 msgstr "目標の処理中にエラーが発生しました"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:329
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:321
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
 msgstr "エラー:"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:264
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:278
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "エラー:"
@@ -2957,11 +2966,6 @@ msgstr "長期的なキャリア成長と包括的な面接準備を求める人
 #. js-lingui-explicit-id
 msgid "for {USER_NAME}"
 msgstr "{USER_NAME} 用"
-
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:42
-#. js-lingui-explicit-id
-msgid "Form a sentence"
-msgstr "文を作る"
 
 #: src/features/Landing/PlanLandingBlock.tsx:269
 #. js-lingui-explicit-id
@@ -5529,7 +5533,7 @@ msgstr "私の名前はアレックスです。私はこのプロジェクトの
 msgid "My native language"
 msgstr "私の母国語"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:99
+#: src/features/Game/gameQuestionScreens/core.tsx:141
 #. js-lingui-explicit-id
 msgid "My position"
 msgstr "私の立場"
@@ -5635,7 +5639,7 @@ msgstr "新しい単語:"
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
 #: src/features/Game/GameOnboarding.tsx:75
 #: src/features/Game/GameOnboarding.tsx:130
-#: src/features/Game/gameQuestionScreens/core.tsx:145
+#: src/features/Game/gameQuestionScreens/core.tsx:187
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
@@ -5650,7 +5654,7 @@ msgstr "新しい単語:"
 msgid "Next"
 msgstr "次へ"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:105
+#: src/features/Game/gameQuestionScreens/core.tsx:147
 msgid "Next position ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgstr "次の位置 ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 
@@ -5659,7 +5663,7 @@ msgstr "次の位置 ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgid "Next, please allow access to the microphone to communicate with the AI."
 msgstr "次に、AIと通信するためにマイクへのアクセスを許可してください。"
 
-#: src/features/Game/PositionChangedModal.tsx:102
+#: src/features/Game/PositionChangedModal.tsx:98
 #. js-lingui-explicit-id
 msgid "Nice!"
 msgstr "素晴らしい!"
@@ -6748,7 +6752,7 @@ msgstr "評価:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1068
 #: src/features/Conversation/ConversationCanvas2.tsx:1385
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:266
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:258
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "再録音"
@@ -6809,7 +6813,7 @@ msgstr ""
 "最新の言語学習記事、英語の練習ヒント、およびAIチューターのアップデートを読みましょう。FluencyPalと共に流暢さの目標を達成するために、情報を得"
 "て、モチベーションを保ち、インスピレーションを受けましょう。"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:102
+#: src/features/Game/gameQuestionScreens/core.tsx:52
 #. js-lingui-explicit-id
 msgid "Read the text"
 msgstr "テキストを読む"
@@ -6948,8 +6952,8 @@ msgstr "フロントエンド開発に参入する最近の卒業生やブート
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:203
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:315
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:225
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:307
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:218
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:144
 #. js-lingui-explicit-id
@@ -7524,7 +7528,7 @@ msgid ""
 msgstr "マイクロサービスアーキテクチャの簡単なスケッチを描く。APIゲートウェイ、認証、サービス、および非同期通信を含める。"
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
-#: src/features/Game/gameQuestionScreens/core.tsx:39
+#: src/features/Game/gameQuestionScreens/core.tsx:40
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
 #. js-lingui-explicit-id
 msgid "Skip"
@@ -7943,16 +7947,16 @@ msgid ""
 "leadership answers."
 msgstr "React と TypeScript の強力な知識。コミュニケーションとリーダーシップの回答に若干のギャップ。"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:279
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "送信"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:144
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:241
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:175
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:166
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:263
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:166
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:159
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:256
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "回答を提出する"
@@ -8411,14 +8415,14 @@ msgstr "あなたの流暢さの進捗を追跡する"
 #: src/features/Conversation/ConversationCanvas2.tsx:869
 #: src/features/Conversation/ConversationCanvas2.tsx:876
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:103
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:231
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:125
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:223
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:118
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
 msgid "Transcribing..."
 msgstr "書き起こしています..."
 
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:46
+#: src/features/Game/gameQuestionScreens/core.tsx:49
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "単語を翻訳する"
@@ -9463,6 +9467,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:42
+#. js-lingui-explicit-id
+#~ msgid "Form a sentence"
+#~ msgstr "文を作る"
 
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:235
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
