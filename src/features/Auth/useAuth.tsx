@@ -123,7 +123,7 @@ function useProvideAuth(): AuthContext {
       url: url,
       // This must be true.
       handleCodeInApp: true,
-      //linkDomain: "fluencypal.com",
+      linkDomain: "fluencypal.com",
     };
 
     try {
