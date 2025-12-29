@@ -1358,10 +1358,20 @@ msgstr ""
 msgid "Check proposed words"
 msgstr "Sprawdź proponowane słowa"
 
+#: src/features/Auth/AuthWallBasic.tsx:118
+#. js-lingui-explicit-id
+msgid "Check your email"
+msgstr "Sprawdź swój e-mail"
+
 #: src/features/Landing/LandingPage.tsx:325
 #. js-lingui-explicit-id
 msgid "Check Your Progress"
 msgstr "Sprawdź swój postęp"
+
+#: src/features/Auth/AuthWallBasic.tsx:133
+#. js-lingui-explicit-id
+msgid "Check your spam folder if you don't see the email."
+msgstr "Sprawdź folder spam, jeśli nie widzisz wiadomości e-mail."
 
 #: src/features/RolePlay/rolePlayData.tsx:446
 #. js-lingui-explicit-id
@@ -2382,6 +2392,11 @@ msgstr ""
 "Efektywne strategie na poprawę umiejętności mówienia po angielsku wśród "
 "napiętego harmonogramu."
 
+#: src/features/Auth/AuthWallBasic.tsx:161
+#. js-lingui-explicit-id
+msgid "Email"
+msgstr "Email"
+
 #: src/features/Blog/Articles/phrases-for-an-interview.tsx:341
 #. js-lingui-explicit-id
 msgid "Ending the Interview: Final Phrases"
@@ -2582,6 +2597,11 @@ msgstr "Wzbogać swoje słownictwo, opisując słowa w unikalny sposób."
 #. js-lingui-explicit-id
 msgid "Enjoy the game and see how the AI guesses your description!"
 msgstr "Ciesz się grą i zobacz, jak AI odgaduje twój opis!"
+
+#: src/features/Auth/AuthWallBasic.tsx:150
+#. js-lingui-explicit-id
+msgid "Enter your email to get a sign-in link"
+msgstr "Wprowadź swój adres e-mail, aby otrzymać link do logowania"
 
 #: src/features/Case/data/frontend-junior/whoIsThisForSection.ts:24
 #. js-lingui-explicit-id
@@ -3172,7 +3192,7 @@ msgstr ""
 "Dla osób poszukujących długoterminowego rozwoju zawodowego i kompleksowego "
 "przygotowania do rozmów kwalifikacyjnych."
 
-#: src/features/Survey/InfoStep.tsx:61
+#: src/features/Survey/InfoStep.tsx:71
 #. js-lingui-explicit-id
 msgid "for {USER_NAME}"
 msgstr "dla {USER_NAME}"
@@ -3991,7 +4011,7 @@ msgstr ""
 msgid "I accept the"
 msgstr "Akceptuję"
 
-#: src/features/Auth/AuthWallBasic.tsx:99
+#: src/features/Auth/AuthWallBasic.tsx:192
 #. js-lingui-explicit-id
 msgid "I agree"
 msgstr "Zgadzam się"
@@ -5225,6 +5245,11 @@ msgstr "Przedstaw się jako inżynier backendu"
 msgid "Introduction: Small Talk with the Interviewer"
 msgstr "Wprowadzenie: Luźna rozmowa z osobą przeprowadzającą rozmowę kwalifikacyjną"
 
+#: src/features/Auth/AuthWallBasic.tsx:129
+#. js-lingui-explicit-id
+msgid "Invite Link Sent to:"
+msgstr "Link do zaproszenia wysłany do:"
+
 #: src/features/Case/data/backendCSharp/faqSection.ts:26
 #. js-lingui-explicit-id
 msgid "Is there content on resiliency and observability?"
@@ -6089,7 +6114,7 @@ msgstr "Nowe Słowa do Słownika:"
 msgid "New words:"
 msgstr "Nowe słowa:"
 
-#: src/features/Auth/AuthWallBasic.tsx:88
+#: src/features/Auth/AuthWallBasic.tsx:181
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
@@ -6109,7 +6134,7 @@ msgstr "Nowe słowa:"
 #: src/features/Goal/Quiz/NextStepButton.tsx:24
 #: src/features/Goal/Quiz/RecordUserAudio.tsx:147
 #: src/features/Landing/LandingPage.tsx:177
-#: src/features/Survey/InfoStep.tsx:258
+#: src/features/Survey/InfoStep.tsx:268
 #: src/features/Survey/InterviewInfoStep.tsx:107
 #. js-lingui-explicit-id
 msgid "Next"
@@ -6659,6 +6684,11 @@ msgstr ""
 "Proszę potwierdzić swoją kartę kredytową, aby uzyskać dostęp do wszystkich "
 "funkcji."
 
+#: src/features/Auth/AuthWallBasic.tsx:166
+#. js-lingui-explicit-id
+msgid "Please enter a valid email address"
+msgstr "Proszę wprowadzić prawidłowy adres e-mail"
+
 #: src/features/Conversation/ConversationError.tsx:37
 #. js-lingui-explicit-id
 msgid "Please refresh the page and try one more time"
@@ -7121,7 +7151,7 @@ msgid "privacy policy"
 msgstr "polityka prywatności"
 
 #: src/features/Auth/AuthWall.tsx:65
-#: src/features/Auth/AuthWallBasic.tsx:123
+#: src/features/Auth/AuthWallBasic.tsx:216
 #: src/features/Auth/InterviewAuthWall.tsx:47
 #: src/features/Case/Landing/components/Footer.tsx:131
 #: src/features/Goal/GoalQuestions.tsx:65
@@ -7873,6 +7903,17 @@ msgstr "Wyślij"
 msgid "Send 6 messages to complete"
 msgstr "Wyślij 6 wiadomości do zakończenia"
 
+#: src/features/Auth/AuthWallBasic.tsx:138
+#. js-lingui-explicit-id
+msgid "Send email again"
+msgstr "Wyślij e-mail ponownie"
+
+#: src/features/Auth/AuthWallBasic.tsx:147
+#. js-lingui-explicit-id
+msgid "Send me sign-in link"
+msgstr "Wyślij mi link do logowania"
+
+#: src/features/Auth/AuthWallBasic.tsx:147
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Sending..."
@@ -8036,7 +8077,13 @@ msgstr ""
 msgid "Sign In"
 msgstr "Zaloguj się"
 
-#: src/features/Auth/AuthWallBasic.tsx:143
+#: src/features/Auth/AuthWallBasic.tsx:149
+#: src/features/Auth/AuthWallBasic.tsx:240
+#. js-lingui-explicit-id
+msgid "Sign in with email"
+msgstr "Zaloguj się za pomocą e-maila"
+
+#: src/features/Auth/AuthWallBasic.tsx:236
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Zaloguj się przez Google"
@@ -8140,7 +8187,7 @@ msgstr ""
 msgid "So I can translate words for you"
 msgstr "Więc mogę tłumaczyć słowa dla Ciebie"
 
-#: src/features/Auth/AuthWallBasic.tsx:104
+#: src/features/Auth/AuthWallBasic.tsx:197
 #. js-lingui-explicit-id
 msgid "So we need your agreement with that"
 msgstr "Więc potrzebujemy Twojej zgody na to"
@@ -8808,7 +8855,7 @@ msgid "Terms of Service"
 msgstr "Warunki świadczenia usług"
 
 #: src/features/Auth/AuthWall.tsx:70
-#: src/features/Auth/AuthWallBasic.tsx:128
+#: src/features/Auth/AuthWallBasic.tsx:221
 #: src/features/Auth/InterviewAuthWall.tsx:52
 #: src/features/Case/Landing/components/Footer.tsx:128
 #: src/features/Goal/GoalQuestions.tsx:69
@@ -9444,12 +9491,21 @@ msgstr ""
 "Nie wystawiamy częściowych zwrotów za niewykorzystany czas. Po anulowaniu, "
 "twoja subskrypcja pozostaje aktywna do końca okresu."
 
-#: src/features/Auth/AuthWallBasic.tsx:107
+#: src/features/Auth/AuthWallBasic.tsx:200
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "Przetwarzamy Twój głos za pomocą AI"
 
 #: src/features/Auth/AuthWallBasic.tsx:119
+#. js-lingui-explicit-id
+msgid ""
+"We sent a sign-in link to your email. Please check your inbox and click the "
+"link to sign in."
+msgstr ""
+"Wysłaliśmy link logowania na Twój adres e-mail. Sprawdź swoją skrzynkę "
+"odbiorczą i kliknij link, aby się zalogować."
+
+#: src/features/Auth/AuthWallBasic.tsx:212
 #. js-lingui-explicit-id
 msgid "We use cookies to enhance your experience"
 msgstr "Używamy plików cookie, aby zwiększyć Twoje doznania"
@@ -9470,7 +9526,7 @@ msgstr ""
 msgid "We will help you to learn the language you need"
 msgstr "Pomożemy ci nauczyć się języka, którego potrzebujesz"
 
-#: src/features/Auth/AuthWallBasic.tsx:103
+#: src/features/Auth/AuthWallBasic.tsx:196
 #. js-lingui-explicit-id
 msgid "We will speak freely"
 msgstr "Będziemy mówić swobodnie"
@@ -9873,7 +9929,7 @@ msgstr ""
 "Możesz tworzyć projekty, ale **nie wiesz, co tak naprawdę chcą zobaczyć "
 "rekruterzy**"
 
-#: src/features/Auth/AuthWallBasic.tsx:115
+#: src/features/Auth/AuthWallBasic.tsx:208
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
 msgstr "Możesz usunąć swoje dane osobowe w dowolnym momencie"
@@ -10138,7 +10194,7 @@ msgstr "Twoja subskrypcja została pomyślnie zmieniona."
 msgid "Your subscription is active until"
 msgstr "Twoje subskrypcja jest aktywna do"
 
-#: src/features/Auth/AuthWallBasic.tsx:111
+#: src/features/Auth/AuthWallBasic.tsx:204
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "Twoje transkrypcje są bezpiecznie przechowywane w naszej usłudze"
