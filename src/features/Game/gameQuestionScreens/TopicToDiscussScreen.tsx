@@ -3,7 +3,7 @@ import { GameQuestionScreenProps } from "./type";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
-import { Check, ChevronRight, Languages, Mic, Trash, X } from "lucide-react";
+import { Check, ChevronRight, Languages, Loader, Mic, Trash, X } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
@@ -62,36 +62,27 @@ export const TopicToDiscussScreen = ({
 
   const { i18n } = useLingui();
 
-  if (question.type !== "topic_to_discuss") {
-    return <></>;
-  }
-
+  if (question.type !== "topic_to_discuss") return <></>;
   return (
     <Stack
       sx={{
         gap: "25px",
         width: "100%",
-        alignItems: "center",
-        height: "100%",
+        maxWidth: "600px",
+        padding: "0px 10px",
       }}
     >
       {translator.translateModal}
       <Stack
-        className="content"
         sx={{
-          maxWidth: "600px",
           width: "100%",
-          minHeight: "90vh",
-          alignItems: "center",
-          justifyContent: "center",
+          gap: "10px",
         }}
       >
         <Typography
           variant="caption"
           sx={{
-            padding: "20px 10px 15px 10px",
             width: "100%",
-            boxSizing: "border-box",
           }}
         >
           {i18n._("Discuss the topic")}
@@ -101,10 +92,7 @@ export const TopicToDiscussScreen = ({
             gap: "10px",
             alignItems: "center",
             justifyContent: "center",
-            paddingBottom: "20px",
             width: "100%",
-            padding: "0px 10px 15px 10px",
-            boxSizing: "border-box",
           }}
         >
           <Typography
@@ -128,272 +116,246 @@ export const TopicToDiscussScreen = ({
 
       <Stack
         sx={{
-          position: "fixed",
-          bottom: "0px",
-          left: "0px",
-          right: "0px",
-          display: "flex",
-          padding: "20px 10px 50px 10px",
-          backgroundColor: "rgba(12, 14, 12, .80)",
-          backdropFilter: "blur(9px)",
-          alignItems: "center",
+          width: "100%",
+          gap: "5px",
         }}
       >
-        <Stack
-          sx={{
-            width: "100%",
-            gap: "5px",
-            maxWidth: "600px",
-          }}
-        >
-          {isSubmitting && (
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-                width: "100%",
-              }}
-            >
-              {i18n._(`Loading...`)}
-            </Typography>
-          )}
+        {recorder.isTranscribing && (
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: 0.7,
+              width: "100%",
+            }}
+          >
+            {i18n._(`Transcribing...`)}
+          </Typography>
+        )}
 
-          {recorder.isTranscribing && (
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-                width: "100%",
-              }}
-            >
-              {i18n._(`Transcribing...`)}
-            </Typography>
-          )}
+        {recorder.transcription && !answerCorrectedMessage && (
+          <Markdown
+            onWordClick={
+              translator.isTranslateAvailable
+                ? (word, element) => {
+                    translator.translateWithModal(word, element);
+                  }
+                : undefined
+            }
+            variant="conversation"
+          >
+            {recorder.transcription}
+          </Markdown>
+        )}
 
-          {recorder.transcription && !answerCorrectedMessage && (
-            <Markdown
-              onWordClick={
-                translator.isTranslateAvailable
-                  ? (word, element) => {
-                      translator.translateWithModal(word, element);
-                    }
-                  : undefined
+        {recorder.transcription && isCorrect === null && (
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              width: "100%",
+              gap: "10px",
+              boxSizing: "border-box",
+              justifyContent: "space-between",
+            }}
+          >
+            <Button
+              variant="contained"
+              disabled={
+                isSubmitting ||
+                recorder.isRecording ||
+                !recorder?.transcription ||
+                recorder.transcription.length < 3
               }
-              variant="conversation"
+              onClick={() => handleAnswerSubmit(recorder?.transcription || "")}
+              endIcon={isSubmitting ? <Loader /> : <Check />}
             >
-              {recorder.transcription}
-            </Markdown>
-          )}
+              {i18n._("Submit answer")}
+            </Button>
+            <IconButton
+              onClick={() => {
+                recorder.removeTranscript();
+                recorder.cancelRecording();
+              }}
+            >
+              <Trash size={20} />
+            </IconButton>
+          </Stack>
+        )}
 
-          {recorder.transcription && isCorrect === null && (
+        {!recorder.transcription && !recorder.isTranscribing && isUseMicrophone && (
+          <Stack
+            sx={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
+          >
+            {recorder.isRecording ? (
+              <>
+                <Button
+                  startIcon={<Check />}
+                  variant="contained"
+                  size="large"
+                  onClick={() => recorder.stopRecording()}
+                >
+                  {i18n._(`Done`)}
+                </Button>
+                {recorder.visualizerComponent}
+                <IconButton
+                  onClick={() => {
+                    recorder.cancelRecording();
+                    recorder.removeTranscript();
+                  }}
+                >
+                  <Trash size={20} />
+                </IconButton>
+              </>
+            ) : (
+              <Button
+                startIcon={<Mic />}
+                size="large"
+                variant="contained"
+                disabled={isCorrect !== null}
+                onClick={() => {
+                  recorder.removeTranscript();
+                  recorder.startRecording();
+                }}
+              >
+                {i18n._(`Record an answer`)}
+              </Button>
+            )}
+          </Stack>
+        )}
+
+        {!recorder.transcription &&
+          !recorder.isTranscribing &&
+          !isUseMicrophone &&
+          isCorrect === null && (
             <Stack
               sx={{
                 flexDirection: "row",
-                alignItems: "center",
                 width: "100%",
                 gap: "10px",
-                boxSizing: "border-box",
-                justifyContent: "space-between",
               }}
             >
-              <Button
-                variant="contained"
-                disabled={
-                  isSubmitting ||
-                  recorder.isRecording ||
-                  !recorder?.transcription ||
-                  recorder.transcription.length < 3
-                }
-                onClick={() => handleAnswerSubmit(recorder?.transcription || "")}
-              >
-                {i18n._("Submit answer")}
-              </Button>
+              <TextField
+                value={textAnswer}
+                onChange={(e) => setTextAnswer(e.target.value)}
+                placeholder={i18n._("Describe the topic in your own words...")}
+                fullWidth
+                disabled={isSubmitting || isCorrect !== null}
+              />
               <IconButton
-                onClick={() => {
-                  recorder.removeTranscript();
-                  recorder.cancelRecording();
-                }}
+                disabled={isSubmitting || textAnswer.length < 3}
+                onClick={() => handleAnswerSubmit(textAnswer)}
               >
-                <Trash size={20} />
+                <Check />
               </IconButton>
             </Stack>
           )}
 
-          {!recorder.transcription && !recorder.isTranscribing && isUseMicrophone && (
+        {recorder.error && (
+          <Typography
+            variant="caption"
+            sx={{
+              color: "red",
+              paddingTop: "10px",
+            }}
+          >
+            {i18n._(`Error: `) + recorder.error}
+          </Typography>
+        )}
+
+        {isCorrect !== null && (
+          <Stack
+            sx={{
+              gap: "5px",
+              alignItems: "flex-start",
+              maxWidth: "600px",
+              width: "100%",
+            }}
+          >
             <Stack
               sx={{
-                flexDirection: "row",
-                justifyContent: "space-between",
                 width: "100%",
+                paddingBottom: "30px",
               }}
             >
-              {recorder.isRecording ? (
-                <>
-                  <Button
-                    startIcon={<Check />}
-                    variant="contained"
-                    size="large"
-                    onClick={() => recorder.stopRecording()}
-                  >
-                    {i18n._(`Done`)}
-                  </Button>
-                  {recorder.visualizerComponent}
-                  <IconButton
-                    onClick={() => {
-                      recorder.cancelRecording();
-                      recorder.removeTranscript();
-                    }}
-                  >
-                    <Trash size={20} />
-                  </IconButton>
-                </>
-              ) : (
-                <Button
-                  startIcon={<Mic />}
-                  size="large"
-                  variant="contained"
-                  disabled={isCorrect !== null}
-                  onClick={() => {
-                    recorder.removeTranscript();
-                    recorder.startRecording();
+              {answerCorrectedMessage && (
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    paddingBottom: "15px",
+                    gap: "10px",
                   }}
                 >
-                  {i18n._(`Record an answer`)}
-                </Button>
+                  <StringDiff
+                    styles={{
+                      added: {
+                        color: "#81e381",
+                        fontWeight: 600,
+                      },
+                      removed: {
+                        display: "none",
+                        textDecoration: "line-through",
+                        opacity: 0.4,
+                      },
+                      default: {},
+                    }}
+                    oldValue={recorder.transcription || ""}
+                    newValue={answerCorrectedMessage}
+                  />
+
+                  <IconButton
+                    onClick={(e) => {
+                      translator.translateWithModal(answerCorrectedMessage, e.currentTarget);
+                    }}
+                  >
+                    <Languages size={"16px"} color="#eee" />
+                  </IconButton>
+                  <AudioPlayIcon
+                    text={answerCorrectedMessage}
+                    instructions="Calm and clear"
+                    voice={"coral"}
+                  />
+                </Stack>
+              )}
+
+              {answerDescription && (
+                <Markdown
+                  onWordClick={
+                    translator.isTranslateAvailable
+                      ? (word, element) => {
+                          translator.translateWithModal(word, element);
+                        }
+                      : undefined
+                  }
+                  variant="conversation"
+                >
+                  {answerDescription}
+                </Markdown>
               )}
             </Stack>
-          )}
-
-          {!recorder.transcription &&
-            !recorder.isTranscribing &&
-            !isUseMicrophone &&
-            isCorrect === null && (
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  width: "100%",
-                  gap: "10px",
-                }}
-              >
-                <TextField
-                  value={textAnswer}
-                  onChange={(e) => setTextAnswer(e.target.value)}
-                  placeholder={i18n._("Describe the topic in your own words...")}
-                  fullWidth
-                  disabled={isSubmitting || isCorrect !== null}
-                />
-                <IconButton
-                  disabled={isSubmitting || textAnswer.length < 3}
-                  onClick={() => handleAnswerSubmit(textAnswer)}
-                >
-                  <Check />
-                </IconButton>
-              </Stack>
-            )}
-
-          {recorder.error && (
-            <Typography
-              variant="caption"
-              sx={{
-                color: "red",
-                paddingTop: "10px",
+            <SummaryRow />
+            <Button
+              variant="contained"
+              size="large"
+              color={isCorrect ? "success" : "error"}
+              startIcon={isCorrect ? <Check /> : <X />}
+              endIcon={<ChevronRight />}
+              onClick={() => {
+                setIsCorrect(null);
+                onNext();
               }}
-            >
-              {i18n._(`Error: `) + recorder.error}
-            </Typography>
-          )}
-
-          {isCorrect !== null && (
-            <Stack
               sx={{
-                gap: "5px",
-                alignItems: "flex-start",
-                maxWidth: "600px",
                 width: "100%",
               }}
             >
-              <Stack
-                sx={{
-                  width: "100%",
-                  paddingBottom: "30px",
-                }}
-              >
-                {answerCorrectedMessage && (
-                  <Stack
-                    sx={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                      paddingBottom: "15px",
-                      gap: "10px",
-                    }}
-                  >
-                    <StringDiff
-                      styles={{
-                        added: {
-                          color: "#81e381",
-                          fontWeight: 600,
-                        },
-                        removed: {
-                          display: "none",
-                          textDecoration: "line-through",
-                          opacity: 0.4,
-                        },
-                        default: {},
-                      }}
-                      oldValue={recorder.transcription || ""}
-                      newValue={answerCorrectedMessage}
-                    />
-
-                    <IconButton
-                      onClick={(e) => {
-                        translator.translateWithModal(answerCorrectedMessage, e.currentTarget);
-                      }}
-                    >
-                      <Languages size={"16px"} color="#eee" />
-                    </IconButton>
-                    <AudioPlayIcon
-                      text={answerCorrectedMessage}
-                      instructions="Calm and clear"
-                      voice={"coral"}
-                    />
-                  </Stack>
-                )}
-
-                {answerDescription && (
-                  <Markdown
-                    onWordClick={
-                      translator.isTranslateAvailable
-                        ? (word, element) => {
-                            translator.translateWithModal(word, element);
-                          }
-                        : undefined
-                    }
-                    variant="conversation"
-                  >
-                    {answerDescription}
-                  </Markdown>
-                )}
-              </Stack>
-              <Button
-                variant="contained"
-                size="large"
-                color={isCorrect ? "success" : "error"}
-                startIcon={isCorrect ? <Check /> : <X />}
-                endIcon={<ChevronRight />}
-                onClick={() => {
-                  setIsCorrect(null);
-                  onNext();
-                }}
-                sx={{
-                  width: "100%",
-                }}
-              >
-                {i18n._("Next")}
-              </Button>
-              <SummaryRow />
-            </Stack>
-          )}
-        </Stack>
+              {i18n._("Next")}
+            </Button>
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );

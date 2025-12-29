@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight, Languages, Mic, Trash, X } from "lucide-react";
+import { Check, ChevronRight, Languages, Loader, Mic, Trash, X } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { SummaryRow } from "./SummaryRow";
@@ -47,11 +47,11 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
   }, [question]);
 
   const handleAnswerSubmit = async (answer: string) => {
-    cancelRecording();
-
     setIsSubmitting(true);
     const { isCorrect } = await onSubmitAnswer(question.id, answer);
     setIsSubmitting(false);
+    cancelRecording();
+
     setIsCorrect(isCorrect);
   };
 
@@ -85,27 +85,21 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
   return (
     <Stack
       sx={{
-        gap: "25px",
+        gap: "20px",
         width: "100%",
-        alignItems: "center",
-        height: "100%",
+        maxWidth: "600px",
+        padding: "0px 10px",
       }}
     >
       {translator.translateModal}
       <Stack
-        className="content"
         sx={{
-          maxWidth: "600px",
           width: "100%",
-          minHeight: "90vh",
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <Typography
           variant="caption"
           sx={{
-            padding: "20px 10px 15px 10px",
             width: "100%",
             boxSizing: "border-box",
           }}
@@ -117,9 +111,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
             gap: "10px",
             alignItems: "center",
             justifyContent: "center",
-            paddingBottom: "20px",
             width: "100%",
-            padding: "0px 10px 15px 10px",
             boxSizing: "border-box",
           }}
         >
@@ -222,168 +214,140 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
 
       <Stack
         sx={{
-          position: "fixed",
-          bottom: "0px",
-          left: "0px",
-          right: "0px",
-          display: "flex",
-          padding: "20px 10px 50px 10px",
-          backgroundColor: "rgba(12, 14, 12, .80)",
-          backdropFilter: "blur(9px)",
-          alignItems: "center",
+          width: "100%",
+          gap: "5px",
+          maxWidth: "600px",
         }}
       >
-        <Stack
-          sx={{
-            width: "100%",
-            gap: "5px",
-            maxWidth: "600px",
-          }}
-        >
-          {isSubmitting && (
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-                width: "100%",
-              }}
-            >
-              {i18n._("Loading...")}
-            </Typography>
-          )}
+        {backupRecorder.isTranscribing && (
+          <Typography
+            variant="caption"
+            sx={{
+              opacity: 0.7,
+              width: "100%",
+            }}
+          >
+            {i18n._("Transcribing...")}
+          </Typography>
+        )}
 
-          {backupRecorder.isTranscribing && (
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-                width: "100%",
-              }}
-            >
-              {i18n._("Transcribing...")}
-            </Typography>
-          )}
-
-          {(isRecording || userTranscript) && isCorrect === null && (
+        {(isRecording || userTranscript) && isCorrect === null && (
+          <Stack
+            sx={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
             <Stack
               sx={{
                 flexDirection: "row",
-                justifyContent: "space-between",
                 alignItems: "center",
-                width: "100%",
+                gap: "10px",
               }}
             >
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "10px",
-                }}
-              >
-                {!userTranscript && (
-                  <Button variant="contained" size="large" onClick={() => submitBackupRecorder()}>
-                    {i18n._("Done")}
-                  </Button>
-                )}
+              {!userTranscript && (
+                <Button variant="contained" size="large" onClick={() => submitBackupRecorder()}>
+                  {i18n._("Done")}
+                </Button>
+              )}
 
-                {backupRecorder.visualizerComponent}
+              {backupRecorder.visualizerComponent}
 
-                {!isRecording && userTranscript && percentage < READ_TEXT_ACCEPTED_PERCENTAGE && (
+              {!isRecording && userTranscript && percentage < READ_TEXT_ACCEPTED_PERCENTAGE && (
+                <Button
+                  startIcon={<Mic />}
+                  variant="contained"
+                  size="large"
+                  onClick={() => startRecording()}
+                >
+                  {i18n._("Re-record")}
+                </Button>
+              )}
+
+              {!isRecording && (
+                <>
                   <Button
-                    startIcon={<Mic />}
                     variant="contained"
                     size="large"
-                    onClick={() => startRecording()}
+                    startIcon={isSubmitting ? <Loader /> : <Check />}
+                    disabled={percentage < READ_TEXT_ACCEPTED_PERCENTAGE || isSubmitting}
+                    onClick={() => handleAnswerSubmit(question.question)}
                   >
-                    {i18n._("Re-record")}
+                    {i18n._("Submit")}
                   </Button>
-                )}
-
-                {!isRecording && (
-                  <>
-                    <Button
-                      variant="contained"
-                      size="large"
-                      startIcon={<Check />}
-                      disabled={percentage < READ_TEXT_ACCEPTED_PERCENTAGE}
-                      onClick={() => handleAnswerSubmit(question.question)}
-                    >
-                      {i18n._("Submit")}
-                    </Button>
-                    <Typography variant="body2">{percentage}%</Typography>
-                  </>
-                )}
-              </Stack>
-
-              <IconButton
-                onClick={() => {
-                  cancelRecording();
-                }}
-              >
-                <Trash size={20} />
-              </IconButton>
+                  <Typography variant="body2">{percentage}%</Typography>
+                </>
+              )}
             </Stack>
-          )}
 
-          {isCorrect == null &&
-            !isRecording &&
-            !backupRecorder.isTranscribing &&
-            !userTranscript &&
-            !isSubmitting && (
-              <Button
-                startIcon={<Mic />}
-                size="large"
-                variant="contained"
-                disabled={isCorrect !== null}
-                onClick={() => {
-                  startRecording();
-                }}
-              >
-                {i18n._("Record")}
-              </Button>
-            )}
-
-          {error && (
-            <Typography
-              variant="caption"
-              sx={{
-                color: "red",
-                paddingTop: "10px",
+            <IconButton
+              onClick={() => {
+                cancelRecording();
               }}
             >
-              {i18n._("Error:")}: {error}
-            </Typography>
+              <Trash size={20} />
+            </IconButton>
+          </Stack>
+        )}
+
+        {isCorrect == null &&
+          !isRecording &&
+          !backupRecorder.isTranscribing &&
+          !userTranscript &&
+          !isSubmitting && (
+            <Button
+              startIcon={<Mic />}
+              size="large"
+              variant="contained"
+              disabled={isCorrect !== null}
+              onClick={() => startRecording()}
+            >
+              {i18n._("Record")}
+            </Button>
           )}
 
-          {isCorrect !== null && (
-            <Stack
+        {error && (
+          <Typography
+            variant="caption"
+            sx={{
+              color: "red",
+              paddingTop: "10px",
+            }}
+          >
+            {i18n._("Error:")}: {error}
+          </Typography>
+        )}
+
+        {isCorrect !== null && (
+          <Stack
+            sx={{
+              gap: "5px",
+              alignItems: "flex-start",
+              maxWidth: "600px",
+              width: "100%",
+            }}
+          >
+            <SummaryRow />
+            <Button
+              variant="contained"
+              size="large"
+              color={isCorrect ? "success" : "error"}
+              startIcon={isCorrect ? <Check /> : <X />}
+              endIcon={<ChevronRight />}
+              onClick={() => {
+                setIsCorrect(null);
+                onNext();
+              }}
               sx={{
-                gap: "5px",
-                alignItems: "flex-start",
-                maxWidth: "600px",
                 width: "100%",
               }}
             >
-              <Button
-                variant="contained"
-                size="large"
-                color={isCorrect ? "success" : "error"}
-                startIcon={isCorrect ? <Check /> : <X />}
-                endIcon={<ChevronRight />}
-                onClick={() => {
-                  setIsCorrect(null);
-                  onNext();
-                }}
-                sx={{
-                  width: "100%",
-                }}
-              >
-                {i18n._("Next")}
-              </Button>
-              <SummaryRow />
-            </Stack>
-          )}
-        </Stack>
+              {i18n._("Next")}
+            </Button>
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );

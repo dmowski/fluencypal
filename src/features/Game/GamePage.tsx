@@ -129,7 +129,6 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               >
                 <Stack
                   sx={{
-                    minHeight: "100dvh",
                     padding: "0",
                     boxSizing: "border-box",
                     alignItems: "center",

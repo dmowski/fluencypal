@@ -31,40 +31,22 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
     <Stack
       sx={{
         gap: "25px",
+        maxWidth: "600px",
         width: "100%",
-        alignItems: "center",
-        height: "100%",
+        padding: "0px 10px",
       }}
     >
       <Stack
-        className="content"
         sx={{
-          maxWidth: "600px",
-          width: "100%",
-          minHeight: "90vh",
-          alignItems: "center",
-          justifyContent: "center",
+          gap: "10px",
         }}
       >
-        <Typography
-          variant="caption"
-          sx={{
-            width: "100%",
-            boxSizing: "border-box",
-            padding: "20px 10px 15px 10px",
-          }}
-        >
-          {i18n._("Translate the word")}
-        </Typography>
+        <Typography variant="caption">{i18n._("Translate the word")}</Typography>
         <Stack
           sx={{
             gap: "10px",
             alignItems: "center",
             justifyContent: "flex-start",
-            height: "100%",
-            width: "100%",
-            boxSizing: "border-box",
-            padding: "0px 10px 15px 10px",
           }}
         >
           <Typography
@@ -82,95 +64,72 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
 
       <Stack
         sx={{
-          position: "fixed",
-          bottom: "0px",
-          left: "0px",
-          right: "0px",
-          display: "flex",
-          padding: "20px 10px 50px 10px",
-          backgroundColor: "rgba(12, 14, 12, .80)",
-          backdropFilter: "blur(9px)",
-          alignItems: "center",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          gap: "10px",
         }}
       >
-        <Stack
-          sx={{
-            width: "100%",
-            gap: "5px",
-            maxWidth: "600px",
-          }}
-        >
-          <Stack
-            sx={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              gap: "10px",
-              paddingTop: "10px",
-            }}
-          >
-            {question.options.map((answer, index) => {
-              const isCorrectOption =
-                question.type === "translate" && isCorrect && selectedAnswer === answer;
+        {question.options.map((answer, index) => {
+          const isCorrectOption =
+            question.type === "translate" && isCorrect && selectedAnswer === answer;
 
-              const isInCorrectOption =
-                question.type === "translate" && isCorrect === false && selectedAnswer === answer;
+          const isInCorrectOption =
+            question.type === "translate" && isCorrect === false && selectedAnswer === answer;
 
-              return (
-                <Stack key={index} sx={{}}>
-                  <Button
-                    variant={selectedAnswer === answer ? "contained" : "outlined"}
-                    startIcon={
-                      isCorrectOption ? (
-                        <Check />
-                      ) : isSubmitting && selectedAnswer === answer ? (
-                        <Loader />
-                      ) : null
-                    }
-                    color={isCorrectOption ? "success" : isInCorrectOption ? "error" : "primary"}
-                    onClick={() => {
-                      if (isCorrect !== null) {
-                        return;
-                      }
-                      setSelectedAnswer(answer);
-                      handleAnswerSubmit(answer);
-                    }}
-                  >
-                    {answer}
-                  </Button>
-                </Stack>
-              );
-            })}
-          </Stack>
+          return (
+            <Stack key={index} sx={{}}>
+              <Button
+                variant={selectedAnswer === answer ? "contained" : "outlined"}
+                startIcon={
+                  isCorrectOption ? (
+                    <Check />
+                  ) : isSubmitting && selectedAnswer === answer ? (
+                    <Loader />
+                  ) : null
+                }
+                color={isCorrectOption ? "success" : isInCorrectOption ? "error" : "primary"}
+                onClick={() => {
+                  if (isCorrect !== null) {
+                    return;
+                  }
+                  setSelectedAnswer(answer);
+                  handleAnswerSubmit(answer);
+                }}
+              >
+                {answer}
+              </Button>
+            </Stack>
+          );
+        })}
+      </Stack>
 
-          {isCorrect !== null && (
-            <Stack
+      <Stack
+        sx={{
+          width: "100%",
+          gap: "10px",
+        }}
+      >
+        {isCorrect !== null && (
+          <>
+            <SummaryRow />
+            <Button
+              variant="contained"
+              size="large"
+              color={isCorrect ? "success" : "error"}
+              startIcon={isCorrect ? <Check /> : <X />}
+              endIcon={<ChevronRight />}
+              onClick={() => {
+                setIsCorrect(null);
+                onNext();
+              }}
               sx={{
-                gap: "5px",
-                alignItems: "flex-start",
-                maxWidth: "600px",
                 width: "100%",
               }}
             >
-              <Button
-                variant="contained"
-                size="large"
-                color={isCorrect ? "success" : "error"}
-                startIcon={isCorrect ? <Check /> : <X />}
-                endIcon={<ChevronRight />}
-                onClick={() => {
-                  setIsCorrect(null);
-                  onNext();
-                }}
-                sx={{
-                  width: "100%",
-                }}
-              >
-                {i18n._("Next")}
-              </Button>
-              <SummaryRow />
-            </Stack>
-          )}
-        </Stack>
+              {i18n._("Next")}
+            </Button>
+          </>
+        )}
       </Stack>
     </Stack>
   );

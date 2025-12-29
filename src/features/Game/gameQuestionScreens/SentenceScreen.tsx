@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight, Delete, ShieldAlert, X } from "lucide-react";
+import { Check, ChevronRight, Delete, Loader, ShieldAlert, X } from "lucide-react";
 import { SummaryRow } from "./SummaryRow";
 
 export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
@@ -23,33 +23,20 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
 
   const { i18n } = useLingui();
 
-  if (question.type !== "sentence") {
-    return <></>;
-  }
-
+  if (question.type !== "sentence") return <></>;
   return (
     <Stack
       sx={{
         gap: "25px",
+        maxWidth: "600px",
         width: "100%",
-        alignItems: "center",
-        height: "100%",
       }}
     >
-      <Stack
-        className="content"
-        sx={{
-          maxWidth: "600px",
-          width: "100%",
-          minHeight: "90vh",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <Stack>
         <Typography
           variant="caption"
           sx={{
-            padding: "20px 10px 15px 10px",
+            padding: "0px 10px 15px 0px",
             width: "100%",
             boxSizing: "border-box",
           }}
@@ -59,9 +46,6 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
         <Stack
           sx={{
             gap: "10px",
-            alignItems: "flex-start",
-            justifyContent: "flex-start",
-            height: "100%",
             width: "100%",
             boxSizing: "border-box",
           }}
@@ -127,37 +111,19 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
 
       <Stack
         sx={{
-          position: "fixed",
-          bottom: "0px",
-          left: "0px",
-          right: "0px",
-          display: "flex",
-          padding: "20px 10px 50px 10px",
-          backgroundColor: "rgba(12, 14, 12, .80)",
-          backdropFilter: "blur(9px)",
-          alignItems: "center",
+          width: "100%",
+          gap: "25px",
         }}
       >
-        <Stack
-          sx={{
-            width: "100%",
-            gap: "5px",
-            maxWidth: "600px",
-          }}
-        >
-          {isSubmitting && (
-            <Typography
-              variant="caption"
-              sx={{
-                opacity: 0.7,
-                width: "100%",
-              }}
-            >
-              {i18n._(`Loading...`)}
-            </Typography>
-          )}
-
-          {isCorrect === null && (
+        {isCorrect === null && (
+          <Stack
+            sx={{
+              flexDirection: "row",
+              flexWrap: "wrap",
+              gap: "10px",
+              paddingTop: "10px",
+            }}
+          >
             <Stack
               sx={{
                 flexDirection: "row",
@@ -166,89 +132,84 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
                 paddingTop: "10px",
               }}
             >
-              <Stack
-                sx={{
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                  gap: "10px",
-                  paddingTop: "10px",
-                }}
-              >
-                {question.options.map((answer, index) => {
-                  const isSelected = selectedWords.includes(answer);
+              {question.options.map((answer, index) => {
+                const isSelected = selectedWords.includes(answer);
 
-                  return (
-                    <Stack key={index} sx={{}}>
-                      <Button
-                        disabled={isSelected}
-                        variant={"outlined"}
-                        onClick={() => {
-                          if (isCorrect !== null) {
-                            return;
+                return (
+                  <Stack key={index} sx={{}}>
+                    <Button
+                      disabled={isSelected}
+                      variant={"outlined"}
+                      onClick={() => {
+                        if (isCorrect !== null) {
+                          return;
+                        }
+                        setSelectedWords((prev) => {
+                          if (prev.includes(answer)) {
+                            return prev.filter((word) => word !== answer);
                           }
-                          setSelectedWords((prev) => {
-                            if (prev.includes(answer)) {
-                              return prev.filter((word) => word !== answer);
-                            }
-                            return [...prev, answer];
-                          });
-                        }}
-                        sx={{
-                          textTransform: "none",
-                        }}
-                      >
-                        {answer}
-                      </Button>
-                    </Stack>
-                  );
-                })}
-              </Stack>
+                          return [...prev, answer];
+                        });
+                      }}
+                      sx={{
+                        textTransform: "none",
+                      }}
+                    >
+                      {answer}
+                    </Button>
+                  </Stack>
+                );
+              })}
             </Stack>
-          )}
+          </Stack>
+        )}
 
-          {question.options.length === selectedWords.length && isCorrect === null && (
+        {isCorrect === null && (
+          <Button
+            variant="contained"
+            size="large"
+            endIcon={isSubmitting ? <Loader /> : <Check />}
+            disabled={
+              isSubmitting ||
+              selectedWords.length === 0 ||
+              question.options.length !== selectedWords.length
+            }
+            onClick={() => {
+              handleAnswerSubmit(selectedWords.join(" "));
+            }}
+          >
+            {i18n._("Submit answer")}
+          </Button>
+        )}
+
+        {isCorrect !== null && (
+          <Stack
+            sx={{
+              gap: "5px",
+              alignItems: "flex-start",
+              maxWidth: "600px",
+              width: "100%",
+            }}
+          >
+            <SummaryRow />
             <Button
               variant="contained"
               size="large"
-              endIcon={<Check />}
-              disabled={isSubmitting || selectedWords.length === 0}
+              endIcon={<ChevronRight />}
+              color={isCorrect ? "success" : "error"}
+              startIcon={isCorrect ? <Check /> : <X />}
               onClick={() => {
-                handleAnswerSubmit(selectedWords.join(" "));
+                setIsCorrect(null);
+                onNext();
               }}
-            >
-              {i18n._("Submit answer")}
-            </Button>
-          )}
-
-          {isCorrect !== null && (
-            <Stack
               sx={{
-                gap: "5px",
-                alignItems: "flex-start",
-                maxWidth: "600px",
                 width: "100%",
               }}
             >
-              <Button
-                variant="contained"
-                size="large"
-                endIcon={<ChevronRight />}
-                color={isCorrect ? "success" : "error"}
-                startIcon={isCorrect ? <Check /> : <X />}
-                onClick={() => {
-                  setIsCorrect(null);
-                  onNext();
-                }}
-                sx={{
-                  width: "100%",
-                }}
-              >
-                {i18n._("Next")}
-              </Button>
-              <SummaryRow />
-            </Stack>
-          )}
-        </Stack>
+              {i18n._("Next")}
+            </Button>
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );
