@@ -2177,7 +2177,7 @@ msgstr "練習セクションで通話モードを試すのを忘れないでく
 #: src/features/Conversation/ConversationCanvas2.tsx:1082
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:173
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:247
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:253
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:195
 #: src/features/Landing/LandingPage.tsx:174
 #: src/features/Survey/RecordUserAudioAnswer.tsx:142
@@ -2477,7 +2477,7 @@ msgstr "支払いの処理中にエラーが発生しました"
 msgid "Error Processing the goal"
 msgstr "目標の処理中にエラーが発生しました"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:323
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:329
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
@@ -5529,10 +5529,10 @@ msgstr "私の名前はアレックスです。私はこのプロジェクトの
 msgid "My native language"
 msgstr "私の母国語"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:56
-#. placeholder {0}: game.myPosition
-msgid "My Position: <0>{0}</0>"
-msgstr "私の位置: <0>{0}</0>"
+#: src/features/Game/gameQuestionScreens/core.tsx:99
+#. js-lingui-explicit-id
+msgid "My position"
+msgstr "私の立場"
 
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:253
@@ -5635,7 +5635,7 @@ msgstr "新しい単語:"
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
 #: src/features/Game/GameOnboarding.tsx:75
 #: src/features/Game/GameOnboarding.tsx:130
-#: src/features/Game/gameQuestionScreens/core.tsx:102
+#: src/features/Game/gameQuestionScreens/core.tsx:145
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
@@ -5650,7 +5650,7 @@ msgstr "新しい単語:"
 msgid "Next"
 msgstr "次へ"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:62
+#: src/features/Game/gameQuestionScreens/core.tsx:105
 msgid "Next position ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgstr "次の位置 ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 
@@ -6748,7 +6748,7 @@ msgstr "評価:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1068
 #: src/features/Conversation/ConversationCanvas2.tsx:1385
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:260
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:266
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "再録音"
@@ -6948,7 +6948,7 @@ msgstr "フロントエンド開発に参入する最近の卒業生やブート
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:203
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:309
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:315
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:225
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:144
@@ -7524,7 +7524,7 @@ msgid ""
 msgstr "マイクロサービスアーキテクチャの簡単なスケッチを描く。APIゲートウェイ、認証、サービス、および非同期通信を含める。"
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
-#: src/features/Game/gameQuestionScreens/core.tsx:18
+#: src/features/Game/gameQuestionScreens/core.tsx:39
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
 #. js-lingui-explicit-id
 msgid "Skip"
@@ -7943,7 +7943,7 @@ msgid ""
 "leadership answers."
 msgstr "React と TypeScript の強力な知識。コミュニケーションとリーダーシップの回答に若干のギャップ。"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:273
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:279
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "送信"
@@ -8411,7 +8411,7 @@ msgstr "あなたの流暢さの進捗を追跡する"
 #: src/features/Conversation/ConversationCanvas2.tsx:869
 #: src/features/Conversation/ConversationCanvas2.tsx:876
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:103
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:225
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:231
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:125
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -10746,6 +10746,10 @@ msgstr "— この短い会話に参加することは、専門的な話題に�
 #~ msgstr ""
 #~ "\n"
 #~ "アカウントを作成しましょう\n"
+
+#: src/features/Game/gameQuestionScreens/core.tsx:56
+#~ msgid "My Position: <0>{0}</0>"
+#~ msgstr "私の位置: <0>{0}</0>"
 
 #: src/features/Auth/AuthWallBasic.tsx:166
 #~ msgid "So we need your agreement with that"

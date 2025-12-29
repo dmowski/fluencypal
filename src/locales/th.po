@@ -2316,7 +2316,7 @@ msgstr "อย่าลืมลองโหมดการโทรในส่
 #: src/features/Conversation/ConversationCanvas2.tsx:1082
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:173
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:247
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:253
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:195
 #: src/features/Landing/LandingPage.tsx:174
 #: src/features/Survey/RecordUserAudioAnswer.tsx:142
@@ -2636,7 +2636,7 @@ msgstr "ข้อผิดพลาดในการประมวลผลก
 msgid "Error Processing the goal"
 msgstr "ข้อผิดพลาดในการประมวลผลเป้าหมาย"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:323
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:329
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
@@ -5945,10 +5945,10 @@ msgstr ""
 msgid "My native language"
 msgstr "ภาษาแม่ของฉัน"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:56
-#. placeholder {0}: game.myPosition
-msgid "My Position: <0>{0}</0>"
-msgstr "ตำแหน่งของฉัน: <0>{0}</0>"
+#: src/features/Game/gameQuestionScreens/core.tsx:99
+#. js-lingui-explicit-id
+msgid "My position"
+msgstr "ตำแหน่งของฉัน"
 
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:253
@@ -6051,7 +6051,7 @@ msgstr "คำศัพท์ใหม่:"
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
 #: src/features/Game/GameOnboarding.tsx:75
 #: src/features/Game/GameOnboarding.tsx:130
-#: src/features/Game/gameQuestionScreens/core.tsx:102
+#: src/features/Game/gameQuestionScreens/core.tsx:145
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
@@ -6066,7 +6066,7 @@ msgstr "คำศัพท์ใหม่:"
 msgid "Next"
 msgstr "ถัดไป"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:62
+#: src/features/Game/gameQuestionScreens/core.tsx:105
 msgid "Next position ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgstr "ตำแหน่งถัดไป ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 
@@ -7212,7 +7212,7 @@ msgstr "คะแนน:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1068
 #: src/features/Conversation/ConversationCanvas2.tsx:1385
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:260
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:266
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "บันทึกใหม่"
@@ -7420,7 +7420,7 @@ msgstr "บัณฑิตจบใหม่หรือศิษย์เก่
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:203
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:309
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:315
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:225
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:144
@@ -8020,7 +8020,7 @@ msgstr ""
 "บริการ, และการสื่อสารแบบอะซิงโครนัส"
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
-#: src/features/Game/gameQuestionScreens/core.tsx:18
+#: src/features/Game/gameQuestionScreens/core.tsx:39
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
 #. js-lingui-explicit-id
 msgid "Skip"
@@ -8464,7 +8464,7 @@ msgstr ""
 "มีความรู้ด้าน React และ TypeScript อย่างดี "
 "มีช่องว่างเล็กน้อยในด้านการสื่อสารและการตอบคำถามเกี่ยวกับความเป็นผู้นำ"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:273
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:279
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "ส่ง"
@@ -8961,7 +8961,7 @@ msgstr "ติดตามความก้าวหน้าในการพ
 #: src/features/Conversation/ConversationCanvas2.tsx:869
 #: src/features/Conversation/ConversationCanvas2.tsx:876
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:103
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:225
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:231
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:125
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -11448,6 +11448,10 @@ msgstr ""
 #: src/features/Auth/InterviewAuthWall.tsx:49
 #~ msgid "Let's create an account"
 #~ msgstr "มาสร้างบัญชีกันเถอะ"
+
+#: src/features/Game/gameQuestionScreens/core.tsx:56
+#~ msgid "My Position: <0>{0}</0>"
+#~ msgstr "ตำแหน่งของฉัน: <0>{0}</0>"
 
 #: src/features/Auth/AuthWallBasic.tsx:166
 #~ msgid "So we need your agreement with that"

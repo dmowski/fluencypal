@@ -2347,7 +2347,7 @@ msgstr "N'oubliez pas d'essayer le mode appel dans la section pratique !"
 #: src/features/Conversation/ConversationCanvas2.tsx:1082
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:173
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:247
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:253
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:195
 #: src/features/Landing/LandingPage.tsx:174
 #: src/features/Survey/RecordUserAudioAnswer.tsx:142
@@ -2678,7 +2678,7 @@ msgstr "Erreur lors du traitement du paiement"
 msgid "Error Processing the goal"
 msgstr "Erreur de traitement de l'objectif"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:323
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:329
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
@@ -6104,10 +6104,10 @@ msgstr ""
 msgid "My native language"
 msgstr "Ma langue maternelle"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:56
-#. placeholder {0}: game.myPosition
-msgid "My Position: <0>{0}</0>"
-msgstr "Ma Position : <0>{0}</0>"
+#: src/features/Game/gameQuestionScreens/core.tsx:99
+#. js-lingui-explicit-id
+msgid "My position"
+msgstr "Ma position"
 
 #: src/features/Dashboard/SelectLanguage.tsx:267
 #: src/features/Lang/LanguageSwitcher.tsx:253
@@ -6210,7 +6210,7 @@ msgstr "Nouveaux mots:"
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
 #: src/features/Game/GameOnboarding.tsx:75
 #: src/features/Game/GameOnboarding.tsx:130
-#: src/features/Game/gameQuestionScreens/core.tsx:102
+#: src/features/Game/gameQuestionScreens/core.tsx:145
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
@@ -6225,7 +6225,7 @@ msgstr "Nouveaux mots:"
 msgid "Next"
 msgstr "Suivant"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:62
+#: src/features/Game/gameQuestionScreens/core.tsx:105
 msgid "Next position ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgstr "Position suivante ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 
@@ -7404,7 +7404,7 @@ msgstr "Évaluation:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1068
 #: src/features/Conversation/ConversationCanvas2.tsx:1385
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:260
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:266
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Ré-enregistrer"
@@ -7623,7 +7623,7 @@ msgstr ""
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:203
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:309
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:315
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:225
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:144
@@ -8236,7 +8236,7 @@ msgstr ""
 "authentification, services, et communication asynchrone."
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
-#: src/features/Game/gameQuestionScreens/core.tsx:18
+#: src/features/Game/gameQuestionScreens/core.tsx:39
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:250
 #. js-lingui-explicit-id
 msgid "Skip"
@@ -8688,7 +8688,7 @@ msgstr ""
 "Bonne connaissance de React et TypeScript. Quelques lacunes dans les "
 "réponses de communication et de leadership."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:273
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:279
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Soumettre"
@@ -9195,7 +9195,7 @@ msgstr "Suivez vos progrès en fluidité"
 #: src/features/Conversation/ConversationCanvas2.tsx:869
 #: src/features/Conversation/ConversationCanvas2.tsx:876
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:103
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:225
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:231
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:125
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
@@ -11723,6 +11723,10 @@ msgstr ""
 #: src/features/Auth/InterviewAuthWall.tsx:49
 #~ msgid "Let's create an account"
 #~ msgstr "Créons un compte"
+
+#: src/features/Game/gameQuestionScreens/core.tsx:56
+#~ msgid "My Position: <0>{0}</0>"
+#~ msgstr "Ma Position : <0>{0}</0>"
 
 #: src/features/Auth/AuthWallBasic.tsx:166
 #~ msgid "So we need your agreement with that"
