@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { Check, ChevronLast, Languages, Loader, Mic, Trash } from "lucide-react";
+import { Check, Languages, Loader, Mic, Trash } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { useAuth } from "@/features/Auth/useAuth";
@@ -10,10 +10,11 @@ import { useSettings } from "@/features/Settings/useSettings";
 import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useLingui } from "@lingui/react";
 import { FinishButton, GameContainer, SkipButton } from "./core";
+import { useGame } from "../useGame";
 
 const READ_TEXT_ACCEPTED_PERCENTAGE = 60;
 
-export const ReadTextScreen = ({ question, onSubmitAnswer }: GameQuestionScreenProps) => {
+export const ReadTextScreen = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { i18n } = useLingui();
@@ -41,6 +42,8 @@ export const ReadTextScreen = ({ question, onSubmitAnswer }: GameQuestionScreenP
 
   const error = backupRecorder.error;
   const translator = useTranslate();
+  const game = useGame();
+  const question = game.activeQuestion;
   useEffect(() => {
     setIsCorrect(null);
     backupRecorder.removeTranscript();
@@ -48,7 +51,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer }: GameQuestionScreenP
 
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
-    const { isCorrect } = await onSubmitAnswer(question.id, answer);
+    const { isCorrect } = await onSubmitAnswer(question?.id || "", answer);
     setIsSubmitting(false);
     cancelRecording();
 
@@ -57,7 +60,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer }: GameQuestionScreenP
 
   const calculatePercentage = () => {
     const transcriptWords = getWordsFromText(userTranscript || "");
-    const questionWords = getWordsFromText(question.question);
+    const questionWords = getWordsFromText(question?.question || "");
     const questWordsCount = Object.keys(questionWords).length;
     const correctlySpokenWords = Object.keys(transcriptWords).filter((word) => {
       return Object.keys(questionWords).includes(word);
@@ -81,7 +84,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer }: GameQuestionScreenP
     backupRecorder.cancelRecording();
   };
 
-  if (question.type !== "read_text") return <></>;
+  if (question?.type !== "read_text") return <></>;
   return (
     <GameContainer>
       {translator.translateModal}

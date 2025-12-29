@@ -11,8 +11,9 @@ import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { StringDiff } from "react-string-diff";
 import { FinishButton, GameContainer, SkipButton } from "./core";
+import { useGame } from "../useGame";
 
-export const TopicToDiscussScreen = ({ question, onSubmitAnswer }: GameQuestionScreenProps) => {
+export const TopicToDiscussScreen = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -30,6 +31,10 @@ export const TopicToDiscussScreen = ({ question, onSubmitAnswer }: GameQuestionS
   });
   const [isUseMicrophone, setIsUseMicrophone] = useState<boolean>(false);
   const translator = useTranslate();
+
+  const game = useGame();
+  const question = game.activeQuestion;
+
   useEffect(() => {
     setIsCorrect(null);
     setTextAnswer("");
@@ -41,7 +46,7 @@ export const TopicToDiscussScreen = ({ question, onSubmitAnswer }: GameQuestionS
 
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
-    const { isCorrect, description } = await onSubmitAnswer(question.id, answer);
+    const { isCorrect, description } = await onSubmitAnswer(question?.id || "", answer);
 
     const splitDescription = (description || "").split("|");
     if (splitDescription.length > 1) {
@@ -58,7 +63,7 @@ export const TopicToDiscussScreen = ({ question, onSubmitAnswer }: GameQuestionS
 
   const { i18n } = useLingui();
 
-  if (question.type !== "topic_to_discuss") return <></>;
+  if (question?.type !== "topic_to_discuss") return <></>;
   return (
     <GameContainer>
       {translator.translateModal}

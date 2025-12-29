@@ -13,7 +13,7 @@ import { StringDiff } from "react-string-diff";
 import { FinishButton, GameContainer, SkipButton } from "./core";
 import { useGame } from "../useGame";
 
-export const DescribeImageScreen = ({ question, onSubmitAnswer }: GameQuestionScreenProps) => {
+export const DescribeImageScreen = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -32,6 +32,9 @@ export const DescribeImageScreen = ({ question, onSubmitAnswer }: GameQuestionSc
   });
   const [isUseMicrophone, setIsUseMicrophone] = useState<boolean>(false);
   const translator = useTranslate();
+
+  const question = game.activeQuestion;
+
   useEffect(() => {
     setIsCorrect(null);
     setTextAnswer("");
@@ -43,7 +46,7 @@ export const DescribeImageScreen = ({ question, onSubmitAnswer }: GameQuestionSc
 
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
-    const { isCorrect, description } = await onSubmitAnswer(question.id, answer);
+    const { isCorrect, description } = await onSubmitAnswer(question?.id || "", answer);
 
     const splitDescription = (description || "").split("|");
     if (splitDescription.length > 1) {
@@ -60,7 +63,7 @@ export const DescribeImageScreen = ({ question, onSubmitAnswer }: GameQuestionSc
 
   const { i18n } = useLingui();
 
-  if (question.type !== "describe_image") return <></>;
+  if (question?.type !== "describe_image") return <></>;
   return (
     <GameContainer>
       {translator.translateModal}

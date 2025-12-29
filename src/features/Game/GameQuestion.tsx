@@ -5,6 +5,7 @@ import { SentenceScreen } from "./gameQuestionScreens/SentenceScreen";
 import { TopicToDiscussScreen } from "./gameQuestionScreens/TopicToDiscussScreen";
 import { GameQuestionType } from "./types";
 import { ReadTextScreen } from "./gameQuestionScreens/ReadTextScreen";
+import { useGame } from "./useGame";
 
 const ScreenMap: Record<GameQuestionType, React.FC<GameQuestionScreenProps>> = {
   describe_image: DescribeImageScreen,
@@ -14,7 +15,10 @@ const ScreenMap: Record<GameQuestionType, React.FC<GameQuestionScreenProps>> = {
   read_text: ReadTextScreen,
 };
 
-export const GameQuestion = ({ question, onSubmitAnswer }: GameQuestionScreenProps) => {
-  const ScreenComponent = ScreenMap[question.type];
-  return <ScreenComponent question={question} onSubmitAnswer={onSubmitAnswer} />;
+export const GameQuestion = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
+  const game = useGame();
+
+  if (!game.activeQuestion) return null;
+  const ScreenComponent = ScreenMap[game.activeQuestion.type];
+  return <ScreenComponent onSubmitAnswer={onSubmitAnswer} />;
 };

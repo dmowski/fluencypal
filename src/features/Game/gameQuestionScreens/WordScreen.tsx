@@ -4,11 +4,16 @@ import { useLingui } from "@lingui/react";
 import { Button, Stack, Typography } from "@mui/material";
 import { Check, Loader } from "lucide-react";
 import { FinishButton } from "./core";
+import { useGame } from "../useGame";
 
-export const WordScreen = ({ question, onSubmitAnswer }: GameQuestionScreenProps) => {
+export const WordScreen = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const game = useGame();
+  const question = game.activeQuestion;
+
   useEffect(() => {
     setIsCorrect(null);
     setSelectedAnswer(null);
@@ -16,17 +21,14 @@ export const WordScreen = ({ question, onSubmitAnswer }: GameQuestionScreenProps
 
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
-    const { isCorrect } = await onSubmitAnswer(question.id, answer);
+    const { isCorrect } = await onSubmitAnswer(question?.id || "", answer);
     setIsSubmitting(false);
     setIsCorrect(isCorrect);
   };
 
   const { i18n } = useLingui();
 
-  if (question.type !== "translate") {
-    return <></>;
-  }
-
+  if (question?.type !== "translate") return <></>;
   return (
     <Stack
       sx={{
