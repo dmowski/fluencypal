@@ -78,22 +78,29 @@ function useProvideWebCam(): WebCamContextType {
     const ctx = canvas.getContext("2d");
     if (!ctx) return null;
 
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(video, 0, 0, canvas.width / 2, canvas.height / 2);
     return canvas.toDataURL("image/png");
   };
 
   const getImageDescription = async () => {
     const authKey = await auth.getToken();
+    if (!authKey) {
+      console.error("No auth key available");
+      return "";
+    }
+    const start = performance.now();
     const screenShot = screenshot();
+    const end = performance.now();
+
     if (!screenShot) {
       console.error("No screenshot available");
       return "";
     }
 
-    const languageCode = settings.languageCode;
-    if (!languageCode) {
-      throw new Error("Language is not set | useProvideTextAi.generate");
-    }
+    console.log("Screenshot time:", end - start, "ms");
+    console.log("Screenshot size", (screenShot?.length || 10) / 1000);
+
+    const languageCode = settings.languageCode || "en";
 
     const response = await sendImageAiRequest(
       {

@@ -121,6 +121,14 @@ export const CameraCanvas = ({
               overflow: "hidden",
               boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
             }}
+            onClick={async () => {
+              console.log("CLICK ON WEBCAM TO GET IMAGE DESCRIPTION");
+              const start = performance.now();
+              const imageDescription = await webCam.getImageDescription();
+              const end = performance.now();
+              console.log("Image description time:", end - start, "ms");
+              console.log("Image description:", imageDescription);
+            }}
           >
             <video
               ref={webCam.videoRef}
