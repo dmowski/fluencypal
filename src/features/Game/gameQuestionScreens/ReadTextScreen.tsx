@@ -14,7 +14,7 @@ import { useGame } from "../useGame";
 
 const READ_TEXT_ACCEPTED_PERCENTAGE = 60;
 
-export const ReadTextScreen = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
+export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { i18n } = useLingui();
@@ -51,10 +51,9 @@ export const ReadTextScreen = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
 
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
-    const { isCorrect } = await onSubmitAnswer(question?.id || "", answer);
+    const { isCorrect } = await game.submitAnswer(question?.id || "", answer);
     setIsSubmitting(false);
     cancelRecording();
-
     setIsCorrect(isCorrect);
   };
 

@@ -6,7 +6,7 @@ import { Check, Delete, Loader, ShieldAlert } from "lucide-react";
 import { FinishButton, GameContainer } from "./core";
 import { useGame } from "../useGame";
 
-export const SentenceScreen = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
+export const SentenceScreen = ({}: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
@@ -20,7 +20,7 @@ export const SentenceScreen = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
 
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
-    const { isCorrect } = await onSubmitAnswer(question?.id || "", answer);
+    const { isCorrect } = await game.submitAnswer(question?.id || "", answer);
     setIsSubmitting(false);
     setIsCorrect(isCorrect);
   };

@@ -15,10 +15,10 @@ const ScreenMap: Record<GameQuestionType, React.FC<GameQuestionScreenProps>> = {
   read_text: ReadTextScreen,
 };
 
-export const GameQuestion = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
+export const GameQuestion = ({}: GameQuestionScreenProps) => {
   const game = useGame();
 
   if (!game.activeQuestion) return null;
   const ScreenComponent = ScreenMap[game.activeQuestion.type];
-  return <ScreenComponent onSubmitAnswer={onSubmitAnswer} />;
+  return <ScreenComponent />;
 };

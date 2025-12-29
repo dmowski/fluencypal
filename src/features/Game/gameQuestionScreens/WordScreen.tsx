@@ -6,7 +6,7 @@ import { Check, Loader } from "lucide-react";
 import { FinishButton } from "./core";
 import { useGame } from "../useGame";
 
-export const WordScreen = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
+export const WordScreen = ({}: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -21,7 +21,7 @@ export const WordScreen = ({ onSubmitAnswer }: GameQuestionScreenProps) => {
 
   const handleAnswerSubmit = async (answer: string) => {
     setIsSubmitting(true);
-    const { isCorrect } = await onSubmitAnswer(question?.id || "", answer);
+    const { isCorrect } = await game.submitAnswer(question?.id || "", answer);
     setIsSubmitting(false);
     setIsCorrect(isCorrect);
   };

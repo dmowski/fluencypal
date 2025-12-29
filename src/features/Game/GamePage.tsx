@@ -142,7 +142,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                     alignItems: "center",
                   }}
                 >
-                  <GameQuestion onSubmitAnswer={game.submitAnswer} />
+                  <GameQuestion />
                 </Stack>
               </CustomModal>
             </Stack>
