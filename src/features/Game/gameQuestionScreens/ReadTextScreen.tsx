@@ -164,7 +164,10 @@ export const ReadTextScreen = ({}: GameQuestionScreenProps) => {
               backdropFilter: "blur(5px)",
               alignItems: "center",
               justifyContent: "flex-start",
-              height: "250px",
+              height: "400px",
+              "@media (max-width: 600px)": {
+                height: "210px",
+              },
             }}
           >
             {userTranscript && (
