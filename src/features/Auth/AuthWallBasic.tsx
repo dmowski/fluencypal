@@ -125,16 +125,12 @@ export const AuthWallBasic = ({
                   paddingTop: "20px",
                 }}
               >
-                <Typography variant="body2"> {i18n._("Invite Link Sent to:")}</Typography>
-                <Typography
-                  variant="h6"
-                  component={"span"}
-                  sx={{
-                    fontWeight: "600",
-                    paddingTop: "5px",
-                  }}
-                >
-                  {email}
+                <Typography>
+                  {i18n._("Invite Link Sent to:")} <b>{email}</b>
+                </Typography>
+
+                <Typography sx={{}}>
+                  {i18n._("Check your spam folder if you don't see the email.")}
                 </Typography>
               </Stack>
             }
