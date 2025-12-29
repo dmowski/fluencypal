@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight, Delete, Loader, ShieldAlert, X } from "lucide-react";
-import { SummaryRow } from "./SummaryRow";
-import { GameContainer } from "./core";
+import { Check, Delete, Loader, ShieldAlert } from "lucide-react";
+import { FinishButton, GameContainer } from "./core";
 
 export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -174,32 +173,7 @@ export const SentenceScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
         )}
 
         {isCorrect !== null && (
-          <Stack
-            sx={{
-              gap: "5px",
-              alignItems: "flex-start",
-              maxWidth: "600px",
-              width: "100%",
-            }}
-          >
-            <Button
-              variant="contained"
-              size="large"
-              endIcon={<ChevronRight />}
-              color={isCorrect ? "success" : "error"}
-              startIcon={isCorrect ? <Check /> : <X />}
-              onClick={() => {
-                setIsCorrect(null);
-                onNext();
-              }}
-              sx={{
-                width: "100%",
-              }}
-            >
-              {i18n._("Next")}
-            </Button>
-            <SummaryRow />
-          </Stack>
+          <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} onNext={onNext} />
         )}
       </Stack>
     </GameContainer>

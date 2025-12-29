@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useLingui } from "@lingui/react";
 import { Button, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight, Loader, X } from "lucide-react";
-import { SummaryRow } from "./SummaryRow";
+import { Check, Loader } from "lucide-react";
+import { FinishButton } from "./core";
 
 export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScreenProps) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -110,25 +110,7 @@ export const WordScreen = ({ question, onSubmitAnswer, onNext }: GameQuestionScr
         }}
       >
         {isCorrect !== null && (
-          <>
-            <Button
-              variant="contained"
-              size="large"
-              color={isCorrect ? "success" : "error"}
-              startIcon={isCorrect ? <Check /> : <X />}
-              endIcon={<ChevronRight />}
-              onClick={() => {
-                setIsCorrect(null);
-                onNext();
-              }}
-              sx={{
-                width: "100%",
-              }}
-            >
-              {i18n._("Next")}
-            </Button>
-            <SummaryRow />
-          </>
+          <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} onNext={onNext} />
         )}
       </Stack>
     </Stack>

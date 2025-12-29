@@ -2056,13 +2056,13 @@ msgstr ""
 "traitement des travaux en arrière-plan (files d'attente, regroupement, "
 "limitation)."
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:83
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:246
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:75
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:231
 #. js-lingui-explicit-id
 msgid "Describe the image"
 msgstr "Décrivez l'image"
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:261
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:253
 #. js-lingui-explicit-id
 msgid "Describe the topic in your own words..."
 msgstr "Décrivez le sujet avec vos propres mots..."
@@ -2251,7 +2251,7 @@ msgstr ""
 "Discuter de la mise à l'échelle, de l'observabilité, des modes de "
 "défaillance et de la préparation opérationnelle."
 
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:88
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:81
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "Discutez du sujet"
@@ -2346,9 +2346,9 @@ msgstr "N'oubliez pas d'essayer le mode appel dans la section pratique !"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:40
 #: src/features/Conversation/ConversationCanvas2.tsx:1082
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:512
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:180
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:252
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:201
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:172
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:245
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:194
 #: src/features/Landing/LandingPage.tsx:174
 #: src/features/Survey/RecordUserAudioAnswer.tsx:142
 #: src/features/Usage/SubscriptionWaiter.tsx:47
@@ -2678,14 +2678,14 @@ msgstr "Erreur lors du traitement du paiement"
 msgid "Error Processing the goal"
 msgstr "Erreur de traitement de l'objectif"
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:336
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:329
 #: src/features/Survey/RecordUserAudioAnswer.tsx:95
 #. js-lingui-explicit-id
 msgid "Error:"
 msgstr "Erreur:"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:277
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:282
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:271
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:293
 #. js-lingui-explicit-id
 msgid "Error: "
 msgstr "Erreur:"
@@ -3220,7 +3220,7 @@ msgstr ""
 msgid "for {USER_NAME}"
 msgstr "pour {USER_NAME}"
 
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:44
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:38
 #. js-lingui-explicit-id
 msgid "Form a sentence"
 msgstr "Formez une phrase"
@@ -6104,7 +6104,7 @@ msgstr ""
 msgid "My native language"
 msgstr "Ma langue maternelle"
 
-#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:19
+#: src/features/Game/gameQuestionScreens/core.tsx:40
 #. placeholder {0}: game.myPosition
 msgid "My Position: <0>{0}</0>"
 msgstr "Ma Position : <0>{0}</0>"
@@ -6210,11 +6210,7 @@ msgstr "Nouveaux mots:"
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
 #: src/features/Game/GameOnboarding.tsx:75
 #: src/features/Game/GameOnboarding.tsx:130
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:375
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:364
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:209
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:372
-#: src/features/Game/gameQuestionScreens/WordScreen.tsx:129
+#: src/features/Game/gameQuestionScreens/core.tsx:87
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
@@ -6229,7 +6225,7 @@ msgstr "Nouveaux mots:"
 msgid "Next"
 msgstr "Suivant"
 
-#: src/features/Game/gameQuestionScreens/SummaryRow.tsx:25
+#: src/features/Game/gameQuestionScreens/core.tsx:46
 msgid "Next position ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 msgstr "Position suivante ({nextUserUsername}): <0>{pointsToNextPosition}</0>"
 
@@ -7408,7 +7404,7 @@ msgstr "Évaluation:"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1068
 #: src/features/Conversation/ConversationCanvas2.tsx:1385
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:265
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:258
 #. js-lingui-explicit-id
 msgid "Re-record"
 msgstr "Ré-enregistrer"
@@ -7473,7 +7469,7 @@ msgstr ""
 "informé, motivé et inspiré pour atteindre vos objectifs de fluidité avec "
 "FluencyPal."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:107
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:100
 #. js-lingui-explicit-id
 msgid "Read the text"
 msgstr "Lisez le texte"
@@ -7626,9 +7622,9 @@ msgstr ""
 "développement frontend"
 
 #: src/features/Game/DailyQuestion/DailyQuestionBadge.tsx:517
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:210
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:314
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:231
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:202
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:307
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:224
 #: src/features/Goal/GoalQuestions.tsx:743
 #: src/features/Survey/RecordUserAudioAnswer.tsx:144
 #. js-lingui-explicit-id
@@ -8240,10 +8236,11 @@ msgstr ""
 "authentification, services, et communication asynchrone."
 
 #: src/features/Dashboard/HomeworkCard.tsx:128
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:219
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:264
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:323
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:240
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:211
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:257
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:316
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:233
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:279
 #. js-lingui-explicit-id
 msgid "Skip"
 msgstr "Passer"
@@ -8694,14 +8691,16 @@ msgstr ""
 "Bonne connaissance de React et TypeScript. Quelques lacunes dans les "
 "réponses de communication et de leadership."
 
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:278
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:271
 #. js-lingui-explicit-id
 msgid "Submit"
 msgstr "Soumettre"
 
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:151
-#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:181
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:172
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:143
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:248
+#: src/features/Game/gameQuestionScreens/SentenceScreen.tsx:171
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:165
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:270
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Soumettre la réponse"
@@ -9198,9 +9197,9 @@ msgstr "Suivez vos progrès en fluidité"
 #: src/features/Conversation/ConversationCanvas2.tsx:784
 #: src/features/Conversation/ConversationCanvas2.tsx:869
 #: src/features/Conversation/ConversationCanvas2.tsx:876
-#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:110
-#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:230
-#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:131
+#: src/features/Game/gameQuestionScreens/ImageScreen.tsx:102
+#: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:223
+#: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:124
 #: src/features/Goal/GoalQuestions.tsx:740
 #. js-lingui-explicit-id
 msgid "Transcribing..."

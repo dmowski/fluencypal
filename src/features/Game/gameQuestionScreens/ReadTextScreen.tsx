@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { Check, ChevronLast, ChevronRight, Languages, Loader, Mic, Trash, X } from "lucide-react";
+import { Check, ChevronLast, Languages, Loader, Mic, Trash } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
-import { SummaryRow } from "./SummaryRow";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { getWordsFromText } from "@/libs/getWordsFromText";
 import { useLingui } from "@lingui/react";
-import { GameContainer } from "./core";
+import { FinishButton, GameContainer } from "./core";
 
 const READ_TEXT_ACCEPTED_PERCENTAGE = 60;
 
@@ -332,30 +331,7 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
         )}
 
         {isCorrect !== null && (
-          <Stack
-            sx={{
-              gap: "5px",
-              width: "100%",
-            }}
-          >
-            <Button
-              variant="contained"
-              size="large"
-              color={isCorrect ? "success" : "error"}
-              startIcon={isCorrect ? <Check /> : <X />}
-              endIcon={<ChevronRight />}
-              onClick={() => {
-                setIsCorrect(null);
-                onNext();
-              }}
-              sx={{
-                width: "100%",
-              }}
-            >
-              {i18n._("Next")}
-            </Button>
-            <SummaryRow />
-          </Stack>
+          <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} onNext={onNext} />
         )}
       </Stack>
     </GameContainer>

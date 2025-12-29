@@ -3,15 +3,14 @@ import { GameQuestionScreenProps } from "./type";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
-import { Check, ChevronLast, ChevronRight, Languages, Loader, Mic, Trash, X } from "lucide-react";
+import { Check, ChevronLast, Languages, Loader, Mic, Trash } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
-import { SummaryRow } from "./SummaryRow";
 import { useAuth } from "@/features/Auth/useAuth";
 import { useSettings } from "@/features/Settings/useSettings";
 import { StringDiff } from "react-string-diff";
-import { GameContainer } from "./core";
+import { FinishButton, GameContainer } from "./core";
 
 export const TopicToDiscussScreen = ({
   question,
@@ -366,23 +365,7 @@ export const TopicToDiscussScreen = ({
                 </Markdown>
               )}
             </Stack>
-            <SummaryRow />
-            <Button
-              variant="contained"
-              size="large"
-              color={isCorrect ? "success" : "error"}
-              startIcon={isCorrect ? <Check /> : <X />}
-              endIcon={<ChevronRight />}
-              onClick={() => {
-                setIsCorrect(null);
-                onNext();
-              }}
-              sx={{
-                width: "100%",
-              }}
-            >
-              {i18n._("Next")}
-            </Button>
+            <FinishButton isCorrect={isCorrect} setIsCorrect={setIsCorrect} onNext={onNext} />
           </Stack>
         )}
       </Stack>
