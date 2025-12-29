@@ -3,7 +3,7 @@ import { GameQuestionScreenProps } from "./type";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
-import { Check, ChevronRight, Languages, Loader, Mic, Trash, X } from "lucide-react";
+import { Check, ChevronLast, ChevronRight, Languages, Loader, Mic, Trash, X } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
@@ -190,18 +190,35 @@ export const DescribeImageScreen = ({
                 </IconButton>
               </>
             ) : (
-              <Button
-                startIcon={<Mic />}
-                size="large"
-                variant="contained"
-                disabled={isCorrect !== null}
-                onClick={() => {
-                  recorder.removeTranscript();
-                  recorder.startRecording();
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  gap: "10px",
+                  alignItems: "center",
                 }}
               >
-                {i18n._(`Record an answer`)}
-              </Button>
+                <Button
+                  startIcon={<Mic />}
+                  size="large"
+                  variant="contained"
+                  disabled={isCorrect !== null}
+                  onClick={() => {
+                    recorder.removeTranscript();
+                    recorder.startRecording();
+                  }}
+                >
+                  {i18n._("Record")}
+                </Button>
+                <Button
+                  endIcon={<ChevronLast />}
+                  size="large"
+                  variant="text"
+                  disabled={isCorrect !== null}
+                  onClick={onNext}
+                >
+                  {i18n._("Skip")}
+                </Button>
+              </Stack>
             )}
           </Stack>
         )}
@@ -212,24 +229,40 @@ export const DescribeImageScreen = ({
           isCorrect === null && (
             <Stack
               sx={{
-                flexDirection: "row",
-                width: "100%",
-                gap: "10px",
+                alignItems: "flex-start",
+                gap: "5px",
               }}
             >
-              <TextField
-                value={textAnswer}
-                onChange={(e) => setTextAnswer(e.target.value)}
-                placeholder={i18n._("Describe the image")}
-                fullWidth
-                disabled={isSubmitting || isCorrect !== null}
-              />
-              <IconButton
-                disabled={isSubmitting || textAnswer.length < 3}
-                onClick={() => handleAnswerSubmit(textAnswer)}
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  width: "100%",
+                  gap: "10px",
+                }}
               >
-                <Check />
-              </IconButton>
+                <TextField
+                  value={textAnswer}
+                  onChange={(e) => setTextAnswer(e.target.value)}
+                  placeholder={i18n._("Describe the image")}
+                  fullWidth
+                  disabled={isSubmitting || isCorrect !== null}
+                />
+                <IconButton
+                  disabled={isSubmitting || textAnswer.length < 3}
+                  onClick={() => handleAnswerSubmit(textAnswer)}
+                >
+                  <Check />
+                </IconButton>
+              </Stack>
+              <Button
+                endIcon={<ChevronLast />}
+                size="large"
+                variant="text"
+                disabled={isCorrect !== null}
+                onClick={onNext}
+              >
+                {i18n._("Skip")}
+              </Button>
             </Stack>
           )}
 

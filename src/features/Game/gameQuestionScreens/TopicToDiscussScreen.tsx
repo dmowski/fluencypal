@@ -3,7 +3,7 @@ import { GameQuestionScreenProps } from "./type";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { useLingui } from "@lingui/react";
 import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
-import { Check, ChevronRight, Languages, Loader, Mic, Trash, X } from "lucide-react";
+import { Check, ChevronLast, ChevronRight, Languages, Loader, Mic, Trash, X } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { Markdown } from "@/features/uiKit/Markdown/Markdown";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
@@ -211,18 +211,35 @@ export const TopicToDiscussScreen = ({
                 </IconButton>
               </>
             ) : (
-              <Button
-                startIcon={<Mic />}
-                size="large"
-                variant="contained"
-                disabled={isCorrect !== null}
-                onClick={() => {
-                  recorder.removeTranscript();
-                  recorder.startRecording();
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  gap: "10px",
+                  alignItems: "center",
                 }}
               >
-                {i18n._(`Record an answer`)}
-              </Button>
+                <Button
+                  startIcon={<Mic />}
+                  size="large"
+                  variant="contained"
+                  disabled={isCorrect !== null}
+                  onClick={() => {
+                    recorder.removeTranscript();
+                    recorder.startRecording();
+                  }}
+                >
+                  {i18n._("Record")}
+                </Button>
+                <Button
+                  endIcon={<ChevronLast />}
+                  size="large"
+                  variant="text"
+                  disabled={isCorrect !== null}
+                  onClick={onNext}
+                >
+                  {i18n._("Skip")}
+                </Button>
+              </Stack>
             )}
           </Stack>
         )}

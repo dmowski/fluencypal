@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { GameQuestionScreenProps } from "./type";
 import { useAudioRecorder } from "@/features/Audio/useAudioRecorder";
 import { Button, IconButton, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight, Languages, Loader, Mic, Trash, X } from "lucide-react";
+import { Check, ChevronLast, ChevronRight, Languages, Loader, Mic, Trash, X } from "lucide-react";
 import { useTranslate } from "@/features/Translation/useTranslate";
 import { AudioPlayIcon } from "@/features/Audio/AudioPlayIcon";
 import { SummaryRow } from "./SummaryRow";
@@ -297,15 +297,32 @@ export const ReadTextScreen = ({ question, onSubmitAnswer, onNext }: GameQuestio
           !backupRecorder.isTranscribing &&
           !userTranscript &&
           !isSubmitting && (
-            <Button
-              startIcon={<Mic />}
-              size="large"
-              variant="contained"
-              disabled={isCorrect !== null}
-              onClick={() => startRecording()}
+            <Stack
+              sx={{
+                flexDirection: "row",
+                gap: "10px",
+                alignItems: "center",
+              }}
             >
-              {i18n._("Record")}
-            </Button>
+              <Button
+                startIcon={<Mic />}
+                size="large"
+                variant="contained"
+                disabled={isCorrect !== null}
+                onClick={() => startRecording()}
+              >
+                {i18n._("Record")}
+              </Button>
+              <Button
+                endIcon={<ChevronLast />}
+                size="large"
+                variant="text"
+                disabled={isCorrect !== null}
+                onClick={onNext}
+              >
+                {i18n._("Skip")}
+              </Button>
+            </Stack>
           )}
 
         {error && (
