@@ -1,15 +1,7 @@
 import OpenAI from "openai";
 import { AiImageRequest, AiImageResponse } from "@/common/requests";
-import {
-  calculateTextUsagePrice,
-  convertUsdToHours,
-  TextAiModel,
-  TextUsageEvent,
-} from "@/common/ai";
+import { calculateTextUsagePrice, TextAiModel, TextUsageEvent } from "@/common/ai";
 import { validateAuthToken } from "../config/firebase";
-import { getUserBalance } from "../payment/getUserBalance";
-import { TextUsageLog } from "@/common/usage";
-import { addUsage } from "../payment/addUsage";
 
 export async function POST(request: Request) {
   const openAIKey = process.env.OPENAI_API_KEY;
@@ -18,9 +10,8 @@ export async function POST(request: Request) {
   }
 
   const userInfo = await validateAuthToken(request);
-  const balance = await getUserBalance(userInfo.uid || "");
-  if (!balance.isFullAccess) {
-    console.error("Insufficient balance.");
+  if (!userInfo.uid) {
+    throw new Error("Unauthorized. No UID found.");
   }
 
   const client = new OpenAI({
@@ -38,14 +29,14 @@ export async function POST(request: Request) {
       {
         role: "system",
         content:
-          "You are an assistant that describes image from web cam. Write me emotional and detailed description of the image.",
+          "You are an assistant that describes image from web cam. That description should help with rapport. Be short and concise.",
       },
       {
         role: "user",
         content: [
           {
             type: "text",
-            text: "Describe this image. Pay attention to the details",
+            text: "Describe this image in a concise manner:",
           },
           {
             type: "image_url",
@@ -59,6 +50,7 @@ export async function POST(request: Request) {
   });
 
   const output = chatCompletion.choices[0].message.content || "";
+
   const usage = chatCompletion.usage;
 
   const usageEvent: TextUsageEvent = {
@@ -71,21 +63,6 @@ export async function POST(request: Request) {
   };
 
   const priceUsd = calculateTextUsagePrice(usageEvent, model);
-  const priceHours = convertUsdToHours(priceUsd);
-  const usageLog: TextUsageLog = {
-    usageId: `${Date.now()}`,
-    languageCode: aiRequest.languageCode || "en",
-    createdAt: Date.now(),
-    priceUsd,
-    priceHours,
-    type: "text",
-    model: model,
-    usageEvent: usageEvent,
-  };
-
-  if (!balance.isGameWinner) {
-    await addUsage(userInfo.uid, usageLog);
-  }
-
+  console.log("priceUsd for screenshot", priceUsd);
   return Response.json(answer);
 }
