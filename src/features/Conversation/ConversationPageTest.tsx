@@ -200,7 +200,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         isVolumeOn={true}
         setIsVolumeOn={() => {}}
         isAiSpeaking={isAiSpeaking}
-        isCallMode={false}
+        isCallMode={true}
         voice="shimmer"
       />
     </Stack>
