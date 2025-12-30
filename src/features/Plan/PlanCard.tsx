@@ -145,7 +145,7 @@ export const PlanCard = ({
                   {title}
                 </Typography>
                 {description && (
-                  <Typography sx={{ paddingTop: "20px" }} align="center" variant="caption">
+                  <Typography sx={{ paddingTop: "0px" }} align="center" variant="caption">
                     {description}
                   </Typography>
                 )}
@@ -153,8 +153,8 @@ export const PlanCard = ({
 
               <Stack
                 sx={{
-                  width: "300px",
-                  height: "150px",
+                  width: "350px",
+                  height: "220px",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   backgroundColor: "rgba(0, 0, 0, 0.2)",
                   borderRadius: "9px",

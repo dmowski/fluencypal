@@ -759,8 +759,6 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
         instruction += `In the first greeting message, if appropriate, you can mention the user's appearance.`;
       }
 
-      console.log("1111instruction!!!!", instruction);
-
       const conversation = await initAiRtc({
         ...aiRtcConfig,
         initInstruction: instruction,

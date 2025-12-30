@@ -13,6 +13,7 @@ interface WebCamContextType {
   loading: boolean;
   getImageDescription: () => Promise<string | null>;
   disconnect: () => void;
+  isError: boolean;
 }
 
 const WebCamContext = createContext<WebCamContextType | null>(null);
@@ -24,22 +25,25 @@ function useProvideWebCam(): WebCamContextType {
   const settings = useSettings();
   const [loading, setLoading] = useState<boolean>(false);
   const isInit = useRef<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
 
   const init = async () => {
     if (stream.current || isInit.current) return;
     isInit.current = true;
     setLoading(true);
+    setIsError(false);
 
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
       stream.current = mediaStream;
-      await sleep(3000);
+      //await sleep(9000);
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
         await videoRef.current.play();
       }
     } catch (err) {
-      console.error("Error accessing webcam:", err);
+      console.log("Error accessing webcam:", err);
+      setIsError(true);
     } finally {
       setTimeout(() => {
         setLoading(false);
@@ -63,6 +67,10 @@ function useProvideWebCam(): WebCamContextType {
   };
 
   const getImageDescription = async () => {
+    if (isError || loading) {
+      return null;
+    }
+
     const authKey = await auth.getToken();
     if (!authKey) {
       console.error("No auth key available");
@@ -110,6 +118,7 @@ function useProvideWebCam(): WebCamContextType {
     init,
     loading,
     screenshot,
+    isError,
     isWebCamEnabled: !!stream,
     getImageDescription,
     disconnect,
