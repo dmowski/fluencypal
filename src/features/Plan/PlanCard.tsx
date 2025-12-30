@@ -86,12 +86,12 @@ export const PlanCard = ({
       console.error("Error getting image description:", error);
     }
 
-    setShowModal(false);
     await onClick({
       conversationMode: "call",
       webCamDescription: imageDescription || "",
     });
     setIsLoadingCall(false);
+    setShowModal(false);
   };
 
   const onStartVoiceOnly = async () => {
@@ -99,11 +99,11 @@ export const PlanCard = ({
     setIsLoadingVoice(true);
     goFullScreen();
 
-    setShowModal(false);
     await onClick({
       conversationMode: "record",
     });
     setIsLoadingVoice(false);
+    setShowModal(false);
   };
 
   return (
