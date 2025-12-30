@@ -331,6 +331,17 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 paddingLeft: languageGoals.length > 1 ? "20px" : "10px",
               }}
             >
+              {languageGoals.length > 1 && (
+                <IconButton
+                  size="small"
+                  sx={{
+                    visibility: "hidden",
+                  }}
+                >
+                  <ChevronDown />
+                </IconButton>
+              )}
+
               <Typography variant="h6" align="center">
                 {isGoalSet
                   ? plan.activeGoal?.title || i18n._(`Goal`)
