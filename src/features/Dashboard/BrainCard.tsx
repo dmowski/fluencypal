@@ -594,8 +594,6 @@ Address directly to the user.
                   </Stack>
                 </Stack>
               )}
-
-              {webCam.component}
             </Stack>
           </Stack>
         </Stack>
