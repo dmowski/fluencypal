@@ -119,7 +119,7 @@ function useProvideWebCam(): WebCamContextType {
     loading,
     screenshot,
     isError,
-    isWebCamEnabled: !!stream,
+    isWebCamEnabled: !!stream.current,
     getImageDescription,
     disconnect,
     component: (

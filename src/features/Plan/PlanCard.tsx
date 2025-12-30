@@ -73,7 +73,7 @@ export const PlanCard = ({
     goFullScreen();
     let imageDescription = "";
     try {
-      imageDescription = (await webcam.getImageDescription()) || "";
+      //imageDescription = (await webcam.getImageDescription()) || "";
     } catch (error) {
       console.error("Error getting image description:", error);
     }
@@ -151,7 +151,7 @@ export const PlanCard = ({
                 )}
               </Stack>
 
-              <Stack
+              {/*<Stack
                 sx={{
                   width: "350px",
                   height: "220px",
@@ -166,7 +166,7 @@ export const PlanCard = ({
                 }}
               >
                 <WebCamView />
-              </Stack>
+              </Stack>*/}
 
               <Stack
                 sx={{

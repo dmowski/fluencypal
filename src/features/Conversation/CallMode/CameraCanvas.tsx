@@ -12,6 +12,7 @@ import { AvatarVideo } from "./types";
 import { AiAvatarVideo } from "./AiAvatarVideo";
 import { CallButtons } from "./CallButtons";
 import { WebCamView } from "@/features/webCam/WebCamView";
+import { useState } from "react";
 
 const girlVoices: AiVoice[] = ["alloy", "coral", "sage", "shimmer"];
 
@@ -47,6 +48,8 @@ export const CameraCanvas = ({
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
   const webCam = useWebCam();
+
+  const [isWebCamEnabled, setIsWebCamEnabled] = useState<boolean>(false);
 
   const auth = useAuth();
   const userPhoto = auth.userInfo?.photoURL || "";
@@ -136,9 +139,8 @@ export const CameraCanvas = ({
               }
             }}
           >
-            <WebCamView />
-
-            {!webCam.isWebCamEnabled && (
+            {isWebCamEnabled && <WebCamView />}
+            {!isWebCamEnabled && (
               <UserPreviewStatic bgUrl={"/blur/5.jpg"} avatarUrl={userPhoto} isSpeaking={false} />
             )}
 
@@ -184,12 +186,12 @@ export const CameraCanvas = ({
           <CallButtons
             isMuted={isMuted}
             setIsMuted={setIsMuted}
-            isWebCamEnabled={webCam.isWebCamEnabled}
+            isWebCamEnabled={isWebCamEnabled}
             toggleWebCam={(isToggleOn: boolean) => {
               if (isToggleOn) {
-                webCam.init();
+                setIsWebCamEnabled(true);
               } else {
-                webCam.disconnect();
+                setIsWebCamEnabled(false);
               }
             }}
             exit={stopCallMode}
