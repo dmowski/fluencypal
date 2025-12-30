@@ -12,7 +12,8 @@ import { AvatarVideo } from "./types";
 import { AiAvatarVideo } from "./AiAvatarVideo";
 import { CallButtons } from "./CallButtons";
 import { WebCamView } from "@/features/webCam/WebCamView";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ScanLine } from "lucide-react";
 
 const girlVoices: AiVoice[] = ["alloy", "coral", "sage", "shimmer"];
 
@@ -60,6 +61,37 @@ export const CameraCanvas = ({
 
   const topHeight = `50dvh`;
   const topHeightMobile = `40dvh`;
+
+  const isTimeToScreenshots =
+    isWebCamEnabled &&
+    webCam.isWebCamEnabled &&
+    !webCam.loading &&
+    !webCam.isError &&
+    conversation.length > 0 &&
+    !isAiSpeaking;
+
+  const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
+
+  const analyzeWebcam = async () => {
+    if (isAnalyzing) return;
+    setIsAnalyzing(true);
+    try {
+      const imageDescription = await webCam.getImageDescription();
+      if (imageDescription) {
+        console.log("WEBCAM DESCRIPTION", imageDescription);
+        onWebCamDescription(imageDescription);
+      }
+    } catch (err) {
+      console.log("Error getting webcam description:", err);
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!isTimeToScreenshots) return;
+    analyzeWebcam();
+  }, [isTimeToScreenshots]);
 
   return (
     <>
@@ -139,6 +171,17 @@ export const CameraCanvas = ({
               }
             }}
           >
+            <Stack
+              sx={{
+                position: "absolute",
+                top: "20px",
+                left: "20px",
+                zIndex: 2,
+                opacity: isAnalyzing ? 1 : 0,
+              }}
+            >
+              <ScanLine size={"13px"} color="#fff" />
+            </Stack>
             {isWebCamEnabled && <WebCamView />}
             {!isWebCamEnabled && (
               <UserPreviewStatic bgUrl={"/blur/5.jpg"} avatarUrl={userPhoto} isSpeaking={false} />
