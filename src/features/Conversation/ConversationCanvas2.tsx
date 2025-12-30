@@ -52,7 +52,6 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useTranslate } from "../Translation/useTranslate";
 import { useUrlParam } from "../Url/useUrlParam";
 import { useResizeElement } from "../Layout/useResizeElement";
-import { useWebCam } from "../webCam/useWebCam";
 import { Messages } from "./Messages";
 import { AiVoice } from "@/common/ai";
 import { CameraCanvas } from "./CallMode/CameraCanvas";
@@ -173,21 +172,6 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   const isFinishingProcess = isClosing || isClosed;
   const { ref, size } = useResizeElement<HTMLDivElement>();
   const height = size.height || 0;
-  const webCam = useWebCam();
-
-  useEffect(() => {
-    if (isCallMode && !webCam.isWebCamEnabled) {
-      setTimeout(() => {
-        webCam.init();
-      }, 500);
-    }
-
-    if (!isCallMode && webCam.isWebCamEnabled) {
-      setTimeout(() => {
-        webCam.disconnect();
-      }, 500);
-    }
-  }, [isCallMode]);
 
   const bottomSectionHeight = `${height + 40}px`;
 

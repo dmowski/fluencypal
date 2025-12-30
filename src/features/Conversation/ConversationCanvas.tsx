@@ -77,9 +77,6 @@ export const ConversationCanvas: React.FC<ConversationCanvasProps> = ({
   const [userMessage, setUserMessage] = useState("");
   const [helpMessage, setHelpMessage] = useState("");
 
-  const webCam = useWebCam();
-  const game = useGame();
-
   const submitMessage = () => {
     if (!userMessage) return;
     addUserMessage(userMessage);
