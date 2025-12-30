@@ -354,47 +354,6 @@ Use ${fullLanguageName || "English"} language.
           )}
         </Stack>
       </Stack>
-
-      {webCam.isWebCamEnabled && (
-        <Stack
-          sx={{
-            position: "fixed",
-            top: 0,
-            zIndex: -1,
-            left: 0,
-            width: "100dvw",
-            height: "100dvh",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            display: webCam.isWebCamEnabled ? "flex" : "none",
-          }}
-        >
-          <Stack
-            sx={{
-              width: "100%",
-              height: "100%",
-              position: "absolute",
-              top: 0,
-              left: 0,
-              backgroundColor: "rgba(10, 18, 30, 0.7)",
-              //backdropFilter: "blur(1px)",
-              zIndex: 2,
-            }}
-          ></Stack>
-          <video
-            ref={webCam.videoRef}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              transform: "scaleX(-1)", // Flip the video horizontally
-            }}
-            autoPlay
-            controls={false}
-            muted
-            playsInline
-          />
-        </Stack>
-      )}
     </Stack>
   );
 };

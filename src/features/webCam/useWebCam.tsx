@@ -3,12 +3,14 @@ import { createContext, useContext, useRef, useState, ReactNode, JSX, RefObject 
 import { useAuth } from "../Auth/useAuth";
 import { sendImageAiRequest } from "../Ai/sendImageAiRequest";
 import { useSettings } from "../Settings/useSettings";
+import { sleep } from "@/libs/sleep";
 
 interface WebCamContextType {
   init: () => Promise<void>;
   screenshot: () => string | null;
-  videoRef: RefObject<HTMLVideoElement | null>;
+  component: JSX.Element;
   isWebCamEnabled: boolean;
+  loading: boolean;
   getImageDescription: () => Promise<string | null>;
   disconnect: () => void;
 }
@@ -18,53 +20,31 @@ const WebCamContext = createContext<WebCamContextType | null>(null);
 function useProvideWebCam(): WebCamContextType {
   const videoRef = useRef<HTMLVideoElement>(null);
   const auth = useAuth();
-  const [stream, setStream] = useState<MediaStream | null>(null);
-
+  const stream = useRef<MediaStream | null>(null);
   const settings = useSettings();
+  const [loading, setLoading] = useState<boolean>(false);
   const isInit = useRef<boolean>(false);
 
   const init = async () => {
-    if (stream) return;
-
-    if (isInit.current) {
-      return;
-    }
+    if (stream.current || isInit.current) return;
     isInit.current = true;
+    setLoading(true);
 
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
-      setStream(mediaStream);
+      stream.current = mediaStream;
+      await sleep(3000);
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
         await videoRef.current.play();
       }
     } catch (err) {
       console.error("Error accessing webcam:", err);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 900);
     }
-  };
-
-  const screenshotJpg = (): string | null => {
-    const maxWidth = 640;
-    const quality = 0.6;
-    if (!videoRef.current) return null;
-
-    const video = videoRef.current;
-
-    const scale = maxWidth / video.videoWidth;
-    const width = Math.min(video.videoWidth, maxWidth);
-    const height = video.videoHeight * scale;
-
-    const canvas = document.createElement("canvas");
-    canvas.width = width;
-    canvas.height = height;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return null;
-
-    ctx.drawImage(video, 0, 0, width, height);
-
-    // Convert to JPEG with reduced quality
-    return canvas.toDataURL("image/jpeg", quality); // 0.6 = 60% quality
   };
 
   const screenshot = (): string | null => {
@@ -113,12 +93,13 @@ function useProvideWebCam(): WebCamContextType {
   };
 
   const disconnect = () => {
-    if (stream) {
-      stream.getTracks().forEach((track) => {
+    if (stream.current) {
+      stream.current.getTracks().forEach((track) => {
         track.stop();
       });
-      setStream(null);
+      stream.current = null;
     }
+
     if (videoRef.current) {
       videoRef.current.srcObject = null;
     }
@@ -127,11 +108,27 @@ function useProvideWebCam(): WebCamContextType {
 
   return {
     init,
+    loading,
     screenshot,
-    videoRef,
     isWebCamEnabled: !!stream,
     getImageDescription,
     disconnect,
+    component: (
+      <video
+        ref={videoRef}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          transform: "scaleX(-1)",
+          display: stream ? "block" : "none",
+        }}
+        autoPlay
+        controls={false}
+        muted
+        playsInline
+      />
+    ),
   };
 }
 

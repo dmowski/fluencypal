@@ -11,6 +11,7 @@ import { UserPreviewStatic } from "./UserPreviewStatic";
 import { AvatarVideo } from "./types";
 import { AiAvatarVideo } from "./AiAvatarVideo";
 import { CallButtons } from "./CallButtons";
+import { WebCamView } from "@/features/webCam/WebCamView";
 
 const girlVoices: AiVoice[] = ["alloy", "coral", "sage", "shimmer"];
 
@@ -135,20 +136,7 @@ export const CameraCanvas = ({
               }
             }}
           >
-            <video
-              ref={webCam.videoRef}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                transform: "scaleX(-1)",
-                display: webCam.isWebCamEnabled ? "block" : "none",
-              }}
-              autoPlay
-              controls={false}
-              muted
-              playsInline
-            />
+            <WebCamView />
 
             {!webCam.isWebCamEnabled && (
               <UserPreviewStatic bgUrl={"/blur/5.jpg"} avatarUrl={userPhoto} isSpeaking={false} />

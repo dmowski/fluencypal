@@ -1,12 +1,14 @@
 "use client";
 import { Button, Stack, Typography } from "@mui/material";
-import { Check, ChevronRight } from "lucide-react";
+import { Camera, Check, ChevronRight, Loader, Mic, Webcam } from "lucide-react";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { goFullScreen } from "@/libs/fullScreen";
 import { useUrlParam } from "../Url/useUrlParam";
+import { useWebCam } from "../webCam/useWebCam";
+import { WebCamView } from "../webCam/WebCamView";
 
 interface PlanCardProps {
   id: string;
@@ -51,6 +53,7 @@ export const PlanCard = ({
   const uniqKey = `plan-start-${id}`;
   const [showModal, setShowModal] = useUrlParam(uniqKey);
   const { i18n } = useLingui();
+  const webcam = useWebCam();
 
   const isNextInPlan = !isActive && !isDone;
 
@@ -107,35 +110,75 @@ export const PlanCard = ({
                 )}
               </Stack>
 
+              <Stack
+                sx={{
+                  width: "300px",
+                  height: "150px",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  backgroundColor: "rgba(0, 0, 0, 0.2)",
+                  borderRadius: "9px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  margin: "20px 0",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <WebCamView />
+              </Stack>
+
+              <Stack
+                sx={{
+                  width: "100%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "5px 0px 15px 0px",
+                  gap: "10px",
+                }}
+              >
+                <Button
+                  sx={{
+                    minWidth: "240px",
+                    padding: "10px 20px",
+                  }}
+                  onClick={() => {
+                    if (viewOnly) return;
+                    setShowModal(false);
+                    onClick();
+                    goFullScreen();
+                  }}
+                  size="large"
+                  variant="contained"
+                  color="info"
+                  startIcon={<Webcam />}
+                >
+                  {i18n._(`Start Call`)}
+                </Button>
+
+                <Button
+                  onClick={() => {
+                    if (viewOnly) return;
+                    setShowModal(false);
+                    onClick();
+                    goFullScreen();
+                  }}
+                  variant="text"
+                  color="info"
+                  startIcon={<Mic />}
+                >
+                  {i18n._(`Start Voice Only`)}
+                </Button>
+              </Stack>
+
               <Typography
                 align="center"
                 variant="caption"
                 sx={{
                   opacity: 0.7,
-                  paddingTop: "20px",
                 }}
               >
                 {i18n._(`Send 6 messages to complete`)}
               </Typography>
-
-              <Button
-                sx={{
-                  margin: "5px 0px 15px 0px",
-                  minWidth: "260px",
-                  padding: "10px 20px",
-                }}
-                onClick={() => {
-                  if (viewOnly) return;
-                  setShowModal(false);
-                  onClick();
-                  goFullScreen();
-                }}
-                variant="contained"
-                color="info"
-                size="large"
-              >
-                {i18n._(`Start`)}
-              </Button>
             </Stack>
           </Stack>
         </CustomModal>
@@ -152,8 +195,8 @@ export const PlanCard = ({
           backgroundColor: isActive
             ? "rgba(13, 220, 196, 0.14)"
             : isDone
-            ? "rgba(13, 220, 196, 0.1)"
-            : "rgba(0, 0, 0, 0.1)",
+              ? "rgba(13, 220, 196, 0.1)"
+              : "rgba(0, 0, 0, 0.1)",
           textDecoration: "none",
           padding: "9px 16px 11px 16px",
           display: "grid",
@@ -227,8 +270,8 @@ export const PlanCard = ({
             boxShadow: isDone
               ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
               : isActive
-              ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
-              : "0px 0px 0 1px rgba(255, 255, 255, 0.1)",
+                ? "0px 0px 0 2px rgba(13, 220, 196, 0.9)"
+                : "0px 0px 0 1px rgba(255, 255, 255, 0.1)",
             boxSizing: "border-box",
             width: "max-content",
             position: "relative",
