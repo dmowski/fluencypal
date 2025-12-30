@@ -127,6 +127,9 @@ function useProvideAiConversation(): AiConversationContextType {
   };
 
   const getWebCamDescriptionInstruction = (description: string): string => {
+    if (!description || description.trim().length === 0) {
+      return "";
+    }
     const message = `
 VISUAL_CONTEXT is sensor data from the user's webcam. You can use it during the conversation to better understand user's emotions and reactions.
 VISUAL_CONTEXT (latest): ${description}
@@ -136,8 +139,9 @@ VISUAL_CONTEXT (latest): ${description}
   };
 
   const setWebCamDescription = async (description: string) => {
-    const message = getWebCamDescriptionInstruction(description);
-    communicatorRef.current?.sendWebCamDescription(message);
+    const webCamDescriptionWithInstruction = getWebCamDescriptionInstruction(description);
+    if (!webCamDescriptionWithInstruction) return;
+    communicatorRef.current?.sendWebCamDescription(webCamDescriptionWithInstruction);
   };
 
   const confirmGoal = async (isConfirm: boolean) => {
@@ -754,9 +758,11 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
       }
 
       if (input.webCamDescription) {
-        instruction += getWebCamDescriptionInstruction(input.webCamDescription);
-
-        instruction += `In the first greeting message, if appropriate, you can mention the user's appearance.`;
+        const webCamInstruction = getWebCamDescriptionInstruction(input.webCamDescription);
+        if (webCamInstruction) {
+          instruction += webCamInstruction;
+          instruction += `In the first greeting message, if appropriate, you can mention the user's appearance.`;
+        }
       }
 
       const conversation = await initAiRtc({
