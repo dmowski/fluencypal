@@ -68,7 +68,7 @@ export const CameraCanvas = ({
     webCam.isWebCamEnabled &&
     !webCam.loading &&
     !webCam.isError &&
-    conversation.length > 0;
+    conversation.length > 1;
 
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
   const [screenshotTimer, setScreenshotTimer] = useState<number>(0);
@@ -88,7 +88,7 @@ export const CameraCanvas = ({
       setIsAnalyzing(false);
     }
 
-    await sleep(isAiSpeaking ? 3000 : 1000);
+    await sleep(5000);
     setScreenshotTimer((prev) => prev + 1);
   };
 
@@ -163,17 +163,6 @@ export const CameraCanvas = ({
               overflow: "hidden",
               boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
             }}
-            onClick={async () => {
-              console.log("CLICK ON WEBCAM TO GET IMAGE DESCRIPTION");
-              const start = performance.now();
-              const imageDescription = await webCam.getImageDescription();
-              const end = performance.now();
-              console.log("Image description time:", end - start, "ms");
-              console.log(imageDescription);
-              if (imageDescription) {
-                onWebCamDescription(imageDescription);
-              }
-            }}
           >
             <Stack
               sx={{
@@ -184,7 +173,7 @@ export const CameraCanvas = ({
                 opacity: isAnalyzing ? 1 : 0,
               }}
             >
-              <ScanLine size={"13px"} color="#fff" />
+              <ScanLine size={"13px"} color="#fff" strokeWidth={"3px"} />
             </Stack>
             {isWebCamEnabled && <WebCamView />}
             {!isWebCamEnabled && (
