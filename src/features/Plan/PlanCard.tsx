@@ -2,7 +2,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { Check, ChevronRight, Loader, Mic, Webcam } from "lucide-react";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { goFullScreen } from "@/libs/fullScreen";
@@ -10,6 +10,8 @@ import { useUrlParam } from "../Url/useUrlParam";
 import { useWebCam } from "../webCam/useWebCam";
 import { WebCamView } from "../webCam/WebCamView";
 import { ConversationMode } from "@/common/user";
+import VideocamIcon from "@mui/icons-material/Videocam";
+import MicIcon from "@mui/icons-material/Mic";
 
 interface PlanCardProps {
   id: string;
@@ -64,8 +66,14 @@ export const PlanCard = ({
 
   const [isLoadingCall, setIsLoadingCall] = useState<boolean>(false);
   const [isLoadingVoice, setIsLoadingVoice] = useState<boolean>(false);
-
   const isNextInPlan = !isActive && !isDone;
+
+  const [allowWebCam, setAllowWebCam] = useState<boolean | null>(null);
+  useEffect(() => {
+    if (allowWebCam === false) {
+      setAllowWebCam(null);
+    }
+  }, [showModal]);
 
   const onStartCallMode = async () => {
     if (viewOnly) return;
@@ -73,7 +81,7 @@ export const PlanCard = ({
     goFullScreen();
     let imageDescription = "";
     try {
-      //imageDescription = (await webcam.getImageDescription()) || "";
+      imageDescription = allowWebCam ? (await webcam.getImageDescription()) || "" : "";
     } catch (error) {
       console.error("Error getting image description:", error);
     }
@@ -151,22 +159,40 @@ export const PlanCard = ({
                 )}
               </Stack>
 
-              {/*<Stack
-                sx={{
-                  width: "350px",
-                  height: "220px",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  backgroundColor: "rgba(0, 0, 0, 0.2)",
-                  borderRadius: "9px",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  margin: "20px 0",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                <WebCamView />
-              </Stack>*/}
+              {allowWebCam !== false && (
+                <Stack
+                  sx={{
+                    width: "350px",
+                    height: "220px",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    backgroundColor: "rgba(0, 0, 0, 0.2)",
+                    borderRadius: "9px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    margin: "20px 0",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}
+                >
+                  {allowWebCam === true && <WebCamView />}
+
+                  {allowWebCam === null && (
+                    <Stack
+                      sx={{
+                        gap: "5px",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Button color="info" variant="contained" onClick={() => setAllowWebCam(true)}>
+                        {i18n._(`Allow WebCam`)}
+                      </Button>
+                      <Button variant="text" onClick={() => setAllowWebCam(false)}>
+                        {i18n._(`Skip for now`)}
+                      </Button>
+                    </Stack>
+                  )}
+                </Stack>
+              )}
 
               <Stack
                 sx={{
@@ -186,8 +212,10 @@ export const PlanCard = ({
                   size="large"
                   variant="contained"
                   color="info"
-                  startIcon={isLoadingCall ? <Loader /> : <Webcam />}
-                  disabled={isLoadingCall || isLoadingVoice || webcam.loading}
+                  startIcon={isLoadingCall ? <Loader /> : <VideocamIcon />}
+                  disabled={
+                    isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
+                  }
                 >
                   {i18n._(`Start Call`)}
                 </Button>
@@ -196,8 +224,10 @@ export const PlanCard = ({
                   onClick={onStartVoiceOnly}
                   variant="text"
                   color="info"
-                  startIcon={isLoadingVoice ? <Loader /> : <Mic />}
-                  disabled={isLoadingCall || isLoadingVoice || webcam.loading}
+                  startIcon={isLoadingVoice ? <Loader /> : <MicIcon />}
+                  disabled={
+                    isLoadingCall || isLoadingVoice || webcam.loading || allowWebCam === null
+                  }
                 >
                   {i18n._(`Start Voice Only`)}
                 </Button>

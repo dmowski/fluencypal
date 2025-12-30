@@ -7,7 +7,6 @@ import { ArrowRight, CircleArrowRight, CircleCheckBig, Users } from "lucide-reac
 
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import MicOffIcon from "@mui/icons-material/MicOff";
-import MicIcon from "@mui/icons-material/Mic";
 
 import VideocamIcon from "@mui/icons-material/Videocam";
 
