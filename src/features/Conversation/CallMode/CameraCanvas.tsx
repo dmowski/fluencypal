@@ -67,8 +67,7 @@ export const CameraCanvas = ({
     webCam.isWebCamEnabled &&
     !webCam.loading &&
     !webCam.isError &&
-    conversation.length > 0 &&
-    !isAiSpeaking;
+    conversation.length > 0;
 
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
 
@@ -91,7 +90,7 @@ export const CameraCanvas = ({
   useEffect(() => {
     if (!isTimeToScreenshots) return;
     analyzeWebcam();
-  }, [isTimeToScreenshots]);
+  }, [isTimeToScreenshots, isAiSpeaking]);
 
   return (
     <>
