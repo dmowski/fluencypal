@@ -78,15 +78,11 @@ function useProvideWebCam(): WebCamContextType {
     }
     const start = performance.now();
     const screenShot = screenshot();
-    const end = performance.now();
 
     if (!screenShot) {
       console.error("No screenshot available");
       return "";
     }
-
-    console.log("Screenshot time:", end - start, "ms");
-    console.log("Screenshot size", (screenShot?.length || 10) / 1000);
 
     const languageCode = settings.languageCode || "en";
 
@@ -97,6 +93,9 @@ function useProvideWebCam(): WebCamContextType {
       },
       authKey
     );
+
+    const end = performance.now();
+    console.log("Screenshot time:", end - start, "ms");
     return response.aiImageResponse;
   };
 
