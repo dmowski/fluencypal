@@ -121,7 +121,7 @@ export const GoalReview = ({ onClick }: { onClick: () => void }) => {
                         isDone={false}
                         isActive={false}
                         isContinueLabel={false}
-                        onClick={() => {}}
+                        onClick={async () => {}}
                         viewOnly
                         startColor={cardColor.startColor}
                         progressPercent={Math.min((planElement.startCount || 0) * 10, 100)}
