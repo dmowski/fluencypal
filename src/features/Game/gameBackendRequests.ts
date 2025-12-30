@@ -52,3 +52,9 @@ export const submitAnswerRequest = async (request: SubmitAnswerRequest, authKey:
   const data = (await response.json()) as SubmitAnswerResponse;
   return data;
 };
+
+export const resetGamePointsRequest = async () => {
+  const response = await fetch(`/api/game/resetRate`);
+  const data = (await response.json()) as void;
+  return data;
+};

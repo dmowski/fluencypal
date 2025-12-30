@@ -14,6 +14,7 @@ import { GameAvatars, GameLastVisit, GameQuestionShort, GameUserNames, UsersStat
 import {
   getGameQuestionsRequest,
   getSortedStatsFromData,
+  resetGamePointsRequest,
   submitAnswerRequest,
 } from "@/features/Game/gameBackendRequests";
 
@@ -122,6 +123,7 @@ function useProvideGame(): GameContextType {
     updateLastVisit();
     setDefaultAvatarIfNeeded();
     setDefaultUsernameIfNeeded();
+    resetPointsIfNeeded();
   }, [userId, isLoading]);
 
   const setDefaultUsernameIfNeeded = async () => {
@@ -135,9 +137,14 @@ function useProvideGame(): GameContextType {
     await updateUsername(randomUsername);
   };
 
+  const resetPointsIfNeeded = async () => {
+    if (!userId || isLoading || !gameAvatars) return;
+    if (myAvatar) return; // Avatar already set
+    await resetGamePointsRequest();
+  };
+
   const setDefaultAvatarIfNeeded = async () => {
     if (!userId || isLoading || !gameAvatars) return;
-
     if (myAvatar) return; // Avatar already set
 
     const randomAvatars = shuffleArray(avatars);
