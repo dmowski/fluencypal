@@ -85,6 +85,8 @@ interface AiConversationContextType {
   voice: AiVoice | null;
 
   messageOrder: MessagesOrderMap;
+
+  setWebCamDescription: (description: string) => void;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -121,6 +123,15 @@ function useProvideAiConversation(): AiConversationContextType {
   const toggleVolume = (isOn: boolean) => {
     setIsVolumeOn(isOn);
     communicatorRef.current?.toggleVolume(isOn);
+  };
+
+  const setWebCamDescription = async (description: string) => {
+    const message = `
+VISUAL_CONTEXT is sensor data from the user's webcam. You can use it during the conversation to better understand user's emotions and reactions.
+VISUAL_CONTEXT (latest): ${description}
+`;
+
+    communicatorRef.current?.sendWebCamDescription(message);
   };
 
   const confirmGoal = async (isConfirm: boolean) => {
@@ -827,6 +838,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     confirmStartConversationModal,
     goalInfo,
     messageOrder,
+    setWebCamDescription,
   };
 }
 

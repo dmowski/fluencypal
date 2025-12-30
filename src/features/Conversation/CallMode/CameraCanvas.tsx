@@ -32,6 +32,7 @@ export const CameraCanvas = ({
   voice,
   isAiSpeaking,
   messageOrder,
+  onWebCamDescription,
 }: {
   conversation: ChatMessage[];
   stopCallMode: () => void;
@@ -40,6 +41,7 @@ export const CameraCanvas = ({
   voice: AiVoice | null;
   isAiSpeaking: boolean;
   messageOrder: MessagesOrderMap;
+  onWebCamDescription: (description: string) => void;
 }) => {
   const sizes = useWindowSizes();
   const { i18n } = useLingui();
@@ -127,7 +129,10 @@ export const CameraCanvas = ({
               const imageDescription = await webCam.getImageDescription();
               const end = performance.now();
               console.log("Image description time:", end - start, "ms");
-              console.log("Image description:", imageDescription);
+              console.log(imageDescription);
+              if (imageDescription) {
+                onWebCamDescription(imageDescription);
+              }
             }}
           >
             <video

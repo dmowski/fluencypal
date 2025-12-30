@@ -274,6 +274,7 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         setIsVolumeOn={(isVolumeOn) => aiConversation.toggleVolume(isVolumeOn)}
         voice={aiConversation.voice}
         messageOrder={aiConversation.messageOrder}
+        onWebCamDescription={aiConversation.setWebCamDescription}
       />
     </Stack>
   );

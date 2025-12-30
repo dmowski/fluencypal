@@ -29,14 +29,14 @@ export async function POST(request: Request) {
       {
         role: "system",
         content:
-          "You are an assistant that describes image from web cam. That description should help with rapport. Be short and concise.",
+          "You are an assistant that describes image from web cam. That description will be used to provide context for another AI model that talks with the user. Use around 3-4 sentences. Example of format: A person sitting in a room with a computer...",
       },
       {
         role: "user",
         content: [
           {
             type: "text",
-            text: "Describe this image in a concise manner:",
+            text: "Describe the person or environment.",
           },
           {
             type: "image_url",

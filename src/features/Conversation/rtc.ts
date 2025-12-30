@@ -395,11 +395,6 @@ export const initAiRtc = async ({
       }
     }
   };
-  const aiToolsForLlm: AiToolForLlm[] = aiTools.map((tool) => {
-    const copyTool = { ...tool, handler: undefined };
-    delete copyTool.handler;
-    return copyTool;
-  });
 
   const setDebugInfo = (color: string) => {
     /*
@@ -430,16 +425,17 @@ export const initAiRtc = async ({
     console.error("Data channel error", e);
   };
 
+  const sessionPrompts: UpdateSessionProps = {
+    dataChannel,
+    initInstruction,
+    voice,
+    languageCode,
+    modalities: isVolumeOn ? ["audio", "text"] : ["text"],
+  };
+
   const openHandler = async () => {
     await sleep(600);
-    await updateSession({
-      dataChannel,
-      initInstruction,
-      //aiTools: aiToolsForLlm,
-      voice,
-      languageCode,
-      modalities: isVolumeOn ? ["audio", "text"] : ["text"],
-    });
+    await updateSession(sessionPrompts);
     onOpen();
   };
 
@@ -501,17 +497,6 @@ export const initAiRtc = async ({
     dataChannel.send(JSON.stringify(event));
   };
 
-  const updateSessionTrigger = async (instruction: string, isVolumeOn: boolean) => {
-    await updateSession({
-      dataChannel,
-      initInstruction: instruction,
-      //aiTools: aiToolsForLlm,
-      languageCode,
-      voice,
-      modalities: isVolumeOn ? ["audio", "text"] : ["text"],
-    });
-  };
-
   const triggerAiResponse = async () => {
     const event = {
       type: "response.create",
@@ -543,24 +528,24 @@ export const initAiRtc = async ({
       audioEl.muted = false;
       audioEl.volume = 1;
     }
+  };
 
-    /*
+  const sendWebCamDescription = async (description: string) => {
+    const updatedInstruction = sessionPrompts.initInstruction
+      ? sessionPrompts.initInstruction + "\n" + description
+      : description;
     await updateSession({
-      dataChannel,
-      //aiTools: aiToolsForLlm,
-      languageCode,
-      voice,
-      modalities: isVolumeOn ? ["audio", "text"] : ["text"],
+      ...sessionPrompts,
+      initInstruction: updatedInstruction,
     });
-    */
   };
 
   return {
     closeHandler,
     addUserChatMessage,
-    updateSessionTrigger,
     triggerAiResponse,
     toggleMute,
     toggleVolume,
+    sendWebCamDescription,
   };
 };

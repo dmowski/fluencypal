@@ -116,6 +116,8 @@ interface ConversationCanvasProps {
   voice: AiVoice | null;
 
   messageOrder: MessagesOrderMap;
+
+  onWebCamDescription: (description: string) => void;
 }
 export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   isCallMode,
@@ -158,6 +160,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
   setIsVolumeOn,
   voice,
   messageOrder,
+  onWebCamDescription,
 }) => {
   const { i18n } = useLingui();
   const sound = useSound();
@@ -530,6 +533,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
         voice={voice}
         conversation={conversation}
         stopCallMode={stopCallMode}
+        onWebCamDescription={onWebCamDescription}
       />
     );
   }

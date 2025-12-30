@@ -190,6 +190,7 @@ export function ConversationPageTest({ rolePlayInfo, lang }: ConversationPageTes
         conversationAnalysisResult={``}
         closeConversation={async () => alert("Close conversation")}
         analyzeConversation={async () => {}}
+        onWebCamDescription={() => {}}
         generateHelpMessage={async () => {
           await sleep(2000);
           return "Nice to see you here";
