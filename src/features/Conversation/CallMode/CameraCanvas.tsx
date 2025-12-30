@@ -14,6 +14,7 @@ import { CallButtons } from "./CallButtons";
 import { WebCamView } from "@/features/webCam/WebCamView";
 import { useEffect, useRef, useState } from "react";
 import { ScanLine } from "lucide-react";
+import { sleep } from "@/libs/sleep";
 
 const girlVoices: AiVoice[] = ["alloy", "coral", "sage", "shimmer"];
 
@@ -70,6 +71,7 @@ export const CameraCanvas = ({
     conversation.length > 0;
 
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
+  const [screenshotTimer, setScreenshotTimer] = useState<number>(0);
 
   const analyzeWebcam = async () => {
     if (isAnalyzing) return;
@@ -85,12 +87,15 @@ export const CameraCanvas = ({
     } finally {
       setIsAnalyzing(false);
     }
+
+    await sleep(isAiSpeaking ? 3000 : 1000);
+    setScreenshotTimer((prev) => prev + 1);
   };
 
   useEffect(() => {
     if (!isTimeToScreenshots) return;
     analyzeWebcam();
-  }, [isTimeToScreenshots, isAiSpeaking]);
+  }, [isTimeToScreenshots, isAiSpeaking, screenshotTimer]);
 
   return (
     <>
