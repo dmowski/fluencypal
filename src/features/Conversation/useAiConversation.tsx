@@ -88,6 +88,7 @@ interface AiConversationContextType {
   messageOrder: MessagesOrderMap;
 
   setWebCamDescription: (description: string) => void;
+  closeConversation: () => Promise<void>;
 }
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
@@ -856,6 +857,7 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
     goalInfo,
     messageOrder,
     setWebCamDescription,
+    closeConversation,
   };
 }
 

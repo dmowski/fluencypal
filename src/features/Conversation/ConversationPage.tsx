@@ -250,8 +250,10 @@ export function ConversationPage({ rolePlayInfo, lang }: ConversationPageProps) 
         goalSettingProgress={aiConversation.goalSettingProgress}
         isSavingGoal={aiConversation.isSavingGoal}
         analyzeConversation={analyzeConversation}
-        closeConversation={() => {
+        closeConversation={async () => {
+          await aiConversation.closeConversation();
           const url = `${getUrlStart(lang)}practice`;
+
           router.push(url);
           window.scrollTo({
             top: 0,
