@@ -67,7 +67,7 @@ export const WebCamView = () => {
           }}
         >
           <Loader color="rgba(255, 255, 255, 0.2)" size={"22px"} />
-          <Typography variant="caption">{i18n._("Initializing webcam... ")}</Typography>
+          <Typography variant="caption">{i18n._("Starting webcam... ")}</Typography>
           <Typography variant="caption">
             {i18n._("Make sure to allow webcam access in your browser settings.")}
           </Typography>
