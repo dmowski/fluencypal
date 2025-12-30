@@ -493,8 +493,8 @@ Address directly to the user.
                         {languagesToLearn.length > 0
                           ? i18n._(`Install:`) + " " + languagesToLearn.join(", ")
                           : isAnalyzing
-                          ? i18n._(`Connecting...`)
-                          : i18n._(`Initiate brain connection`)}
+                            ? i18n._(`Connecting...`)
+                            : i18n._(`Initiate brain connection`)}
                       </Button>
                     </Stack>
                   )}
@@ -595,21 +595,7 @@ Address directly to the user.
                 </Stack>
               )}
 
-              <video
-                ref={webCam.videoRef}
-                style={{
-                  width: "100%",
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  height: "100%",
-                  objectFit: "cover",
-                  transform: "scaleX(-1)", // Flip the video horizontally
-                }}
-                autoPlay
-                muted
-                playsInline
-              />
+              {webCam.component}
             </Stack>
           </Stack>
         </Stack>
