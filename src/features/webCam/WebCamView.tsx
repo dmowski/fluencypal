@@ -51,7 +51,6 @@ export const WebCamView = () => {
         height: "100%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#222",
         gap: "10px",
       }}
     >

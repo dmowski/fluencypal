@@ -49,7 +49,7 @@ export const CameraCanvas = ({
   const { i18n } = useLingui();
   const webCam = useWebCam();
 
-  const [isWebCamEnabled, setIsWebCamEnabled] = useState<boolean>(false);
+  const [isWebCamEnabled, setIsWebCamEnabled] = useState<boolean>(true);
 
   const auth = useAuth();
   const userPhoto = auth.userInfo?.photoURL || "";
