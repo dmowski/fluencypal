@@ -71,7 +71,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       rules.getRules(goalInfo);
       return;
     }
-    console.log("Starting goal element:", element);
     aiConversation.startConversation({
       mode: element.mode === "play" ? "goal-role-play" : "goal-talk",
       goal: goalInfo,

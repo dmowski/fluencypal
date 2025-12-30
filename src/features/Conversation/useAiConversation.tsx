@@ -747,7 +747,6 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
 `;
       }
 
-      console.log("instruction:", instruction);
       const conversation = await initAiRtc({
         ...aiRtcConfig,
         initInstruction: instruction,
