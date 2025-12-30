@@ -30,6 +30,7 @@ import { useSettings } from "../Settings/useSettings";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { useWindowSizes } from "../Layout/useWindowSizes";
+import { ConversationMode } from "@/common/user";
 
 export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const aiConversation = useAiConversation();
@@ -52,9 +53,16 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     !aiConversation.isInitializing &&
     !!plan.activeGoal;
 
-  const startGoalElement = async (element: PlanElement) => {
-    if (!plan.activeGoal) {
-      return;
+  const startGoalElement = async (
+    element: PlanElement,
+    options: {
+      conversationMode: ConversationMode;
+      webCamDescription?: string;
+    }
+  ) => {
+    if (!plan.activeGoal) return;
+    if (settings.conversationMode !== options.conversationMode) {
+      await settings.setConversationMode(options.conversationMode);
     }
 
     const goalInfo = {
@@ -74,6 +82,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     aiConversation.startConversation({
       mode: element.mode === "play" ? "goal-role-play" : "goal-talk",
       goal: goalInfo,
+      webCamDescription: options.webCamDescription,
     });
   };
 
@@ -243,7 +252,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                   isDone={false}
                   isActive={true}
                   isContinueLabel={false}
-                  onClick={() => startGoalElement(planElement)}
+                  onClick={(options) => startGoalElement(planElement, options)}
                   startColor={cardColor.startColor}
                   progressPercent={0}
                   endColor={cardColor.endColor}
@@ -458,7 +467,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 isDone={isDone}
                 isActive={isActive}
                 isContinueLabel={isActive && index > 0}
-                onClick={() => startGoalElement(planElement)}
+                onClick={(options) => startGoalElement(planElement, options)}
                 startColor={cardColor.startColor}
                 progressPercent={Math.min((planElement.startCount || 0) * 10, 100)}
                 endColor={cardColor.endColor}

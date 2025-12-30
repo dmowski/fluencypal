@@ -1,14 +1,15 @@
 "use client";
 import { Button, Stack, Typography } from "@mui/material";
-import { Camera, Check, ChevronRight, Loader, Mic, Webcam } from "lucide-react";
+import { Check, ChevronRight, Loader, Mic, Webcam } from "lucide-react";
 
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { goFullScreen } from "@/libs/fullScreen";
 import { useUrlParam } from "../Url/useUrlParam";
 import { useWebCam } from "../webCam/useWebCam";
 import { WebCamView } from "../webCam/WebCamView";
+import { ConversationMode } from "@/common/user";
 
 interface PlanCardProps {
   id: string;
@@ -16,7 +17,13 @@ interface PlanCardProps {
   subTitle: string;
   details: string;
   description: string;
-  onClick: () => void;
+  onClick: ({
+    conversationMode,
+    webCamDescription,
+  }: {
+    conversationMode: ConversationMode;
+    webCamDescription?: string;
+  }) => Promise<void>;
   startColor: string;
   endColor: string;
   bgColor: string;
@@ -55,7 +62,41 @@ export const PlanCard = ({
   const { i18n } = useLingui();
   const webcam = useWebCam();
 
+  const [isLoadingCall, setIsLoadingCall] = useState<boolean>(false);
+  const [isLoadingVoice, setIsLoadingVoice] = useState<boolean>(false);
+
   const isNextInPlan = !isActive && !isDone;
+
+  const onStartCallMode = async () => {
+    if (viewOnly) return;
+    setIsLoadingCall(true);
+    goFullScreen();
+    let imageDescription = "";
+    try {
+      imageDescription = (await webcam.getImageDescription()) || "";
+    } catch (error) {
+      console.error("Error getting image description:", error);
+    }
+
+    setShowModal(false);
+    await onClick({
+      conversationMode: "call",
+      webCamDescription: imageDescription || "",
+    });
+    setIsLoadingCall(false);
+  };
+
+  const onStartVoiceOnly = async () => {
+    if (viewOnly) return;
+    setIsLoadingVoice(true);
+    goFullScreen();
+
+    setShowModal(false);
+    await onClick({
+      conversationMode: "record",
+    });
+    setIsLoadingVoice(false);
+  };
 
   return (
     <>
@@ -141,30 +182,22 @@ export const PlanCard = ({
                     minWidth: "240px",
                     padding: "10px 20px",
                   }}
-                  onClick={() => {
-                    if (viewOnly) return;
-                    setShowModal(false);
-                    onClick();
-                    goFullScreen();
-                  }}
+                  onClick={onStartCallMode}
                   size="large"
                   variant="contained"
                   color="info"
-                  startIcon={<Webcam />}
+                  startIcon={isLoadingCall ? <Loader /> : <Webcam />}
+                  disabled={isLoadingCall || isLoadingVoice || webcam.loading}
                 >
                   {i18n._(`Start Call`)}
                 </Button>
 
                 <Button
-                  onClick={() => {
-                    if (viewOnly) return;
-                    setShowModal(false);
-                    onClick();
-                    goFullScreen();
-                  }}
+                  onClick={onStartVoiceOnly}
                   variant="text"
                   color="info"
-                  startIcon={<Mic />}
+                  startIcon={isLoadingVoice ? <Loader /> : <Mic />}
+                  disabled={isLoadingCall || isLoadingVoice || webcam.loading}
                 >
                   {i18n._(`Start Voice Only`)}
                 </Button>
