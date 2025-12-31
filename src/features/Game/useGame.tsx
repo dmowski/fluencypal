@@ -126,6 +126,14 @@ function useProvideGame(): GameContextType {
     resetPointsIfNeeded();
   }, [userId, isLoading]);
 
+  useEffect(() => {
+    if (!userId) return;
+    const interval = setInterval(() => {
+      updateLastVisit();
+    }, 60_000);
+    return () => clearInterval(interval);
+  }, [userId]);
+
   const setDefaultUsernameIfNeeded = async () => {
     if (!userId || isLoading || !userNames) return;
 
