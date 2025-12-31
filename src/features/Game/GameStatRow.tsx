@@ -5,11 +5,48 @@ import { useGame } from "./useGame";
 import { Typography } from "@mui/material";
 import { defaultAvatar } from "./avatars";
 import dayjs from "dayjs";
-import { UsersStat } from "./types";
+import { GameQuestionType, UsersStat } from "./types";
 import { useAuth } from "../Auth/useAuth";
 import { useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
+import { DynamicIcon, IconName } from "lucide-react/dynamic";
+import { allGameTypes } from "./data";
+
+interface IconColor {
+  iconColor: string;
+  bgColor: string;
+  borderColor?: string;
+}
+
+const iconColors: IconColor[] = [
+  {
+    iconColor: "#fff",
+    bgColor: "#c020dcff",
+    borderColor: "rgba(156, 39, 176, 0.5)",
+  },
+
+  {
+    iconColor: "#fff",
+    bgColor: "rgba(29, 136, 243, 1)",
+    borderColor: "rgba(25, 118, 210, 0.5)",
+  },
+  {
+    iconColor: "#fff",
+    bgColor: "#ff9800",
+    borderColor: "rgba(255, 152, 0, 0.5)",
+  },
+  {
+    iconColor: "#fff",
+    bgColor: "#4caf50",
+    borderColor: "rgba(76, 175, 80, 0.5)",
+  },
+];
+
+const zeroColor: IconColor = {
+  iconColor: "#fff",
+  bgColor: "rgba(100, 100, 100, 0.5)",
+};
 
 export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number }) => {
   const game = useGame();
@@ -26,11 +63,76 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
   const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 10 : false;
 
   const achievements = game.userAchievements ? game.userAchievements[stat.userId] || {} : {};
+  const achievementsKeys: GameQuestionType[] = allGameTypes.sort(
+    (a, b) => (achievements[b] || 0) - (achievements[a] || 0)
+  );
 
   const [isShowModal, setIsShowModal] = useState(false);
   const { i18n } = useLingui();
 
   const position = game.getRealPosition(stat.userId);
+
+  const achievementsLabelMap: Record<GameQuestionType, string> = {
+    translate: i18n._("Translate Guru"),
+    sentence: i18n._("Sentence Builder"),
+    describe_image: i18n._("Image Describer"),
+    topic_to_discuss: i18n._("Topic Talker"),
+    read_text: i18n._("Reader"),
+  };
+
+  const achievementsMaxPoints: Record<GameQuestionType, number> = {
+    translate: 50,
+    sentence: 50,
+    describe_image: 50,
+    topic_to_discuss: 100,
+    read_text: 100,
+  };
+
+  const achievementsIconMap: Record<GameQuestionType, IconName> = {
+    translate: "languages",
+    sentence: "pickaxe",
+    describe_image: "image",
+    topic_to_discuss: "messages-square",
+    read_text: "book-open-text",
+  };
+
+  const avatarComponent = (
+    <Stack
+      sx={{
+        position: "relative",
+      }}
+    >
+      <Stack
+        component="img"
+        src={avatar}
+        sx={{
+          width: "50px",
+          height: "50px",
+          borderRadius: "50%",
+          objectFit: "cover",
+          boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
+          position: "relative",
+          zIndex: 1,
+        }}
+      />
+      {isOnline && (
+        <Stack
+          sx={{
+            display: "block",
+            width: "10px",
+            height: "10px",
+            borderRadius: "50px",
+            backgroundColor: "#11ff22",
+            boxShadow: "0px 0px 0px 2px #111",
+            position: "absolute",
+            bottom: "1px",
+            right: "1px",
+            zIndex: 1,
+          }}
+        />
+      )}
+    </Stack>
+  );
 
   return (
     <>
@@ -41,22 +143,28 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
               alignItems: "center",
               gap: "30px",
               width: "100%",
-              padding: "0 20px",
+              padding: "0 20px 80px 20px",
               maxWidth: "400px",
             }}
           >
             <Stack
               sx={{
-                alignItems: "center",
                 gap: "10px",
+                width: "100%",
+                alignItems: "center",
               }}
             >
               <Stack
-                component={"img"}
+                component="img"
                 src={avatar}
                 sx={{
                   width: "100px",
-                  borderRadius: "200px",
+                  height: "100px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
+                  position: "relative",
+                  zIndex: 1,
                 }}
               />
               <Stack
@@ -66,7 +174,7 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
                   alignItems: "center",
                 }}
               >
-                <Typography variant="body1">{userName}</Typography>
+                <Typography variant="h5">{userName}</Typography>
                 <Typography
                   variant="caption"
                   sx={{
@@ -81,12 +189,12 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
             <Stack
               sx={{
                 flexDirection: "row",
-                //border: "1px solid rgba(255, 255, 255, 0.1)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
                 borderRadius: "10px",
-                padding: "0px 30px",
-                gap: "40px",
                 justifyContent: "space-between",
-                //width: "100%",
+                width: "100%",
+                padding: "20px 30px",
+                backgroundColor: "rgba(255, 255, 255, 0.02)",
               }}
             >
               <Stack
@@ -94,7 +202,7 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
                   alignItems: "center",
                 }}
               >
-                <Typography variant="h2">{position + 1}</Typography>
+                <Typography variant="h4">{position + 1}</Typography>
                 <Typography
                   variant="body2"
                   sx={{
@@ -111,7 +219,7 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
                   alignItems: "center",
                 }}
               >
-                <Typography variant="h2">{stat.points}</Typography>
+                <Typography variant="h4">{stat.points}</Typography>
                 <Typography
                   variant="body2"
                   sx={{
@@ -121,6 +229,97 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
                 >
                   {i18n._("Points")}
                 </Typography>
+              </Stack>
+            </Stack>
+
+            <Stack sx={{ width: "100%", gap: "6px" }}>
+              <Typography
+                variant="caption"
+                sx={{
+                  opacity: 0.7,
+                }}
+              >
+                {i18n._("Achievements")}
+              </Typography>
+
+              <Stack sx={{ width: "100%", gap: "10px" }}>
+                {achievementsKeys.map((achievementsKey) => {
+                  const achievementPoints = achievements[achievementsKey] || 0;
+
+                  const maxPoints = achievementsMaxPoints[achievementsKey] || 50;
+
+                  const achievementPercent = (achievementPoints / maxPoints) * 100;
+
+                  // Max Percent - zero points, Min Percent - max points
+                  const colorPosition = Math.min(
+                    iconColors.length - 1,
+                    Math.floor(((100 - achievementPercent) / 100) * iconColors.length)
+                  );
+
+                  console.log(
+                    "colorPosition",
+                    achievementsKey,
+                    achievementPercent + "%",
+                    colorPosition
+                  );
+
+                  const color = achievementPoints === 0 ? zeroColor : iconColors[colorPosition];
+
+                  return (
+                    <Stack
+                      key={achievementsKey}
+                      sx={{
+                        border: "1px solid rgba(255, 255, 255, 0.1)",
+                        width: "100%",
+                        paddingRight: "10px",
+                        borderRadius: "8px",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <Stack
+                        sx={{
+                          width: "100%",
+                          justifyContent: "space-between",
+                          flexDirection: "row",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Stack
+                          sx={{
+                            flexDirection: "row",
+                            alignItems: "center",
+                            gap: "10px",
+                          }}
+                        >
+                          <Stack
+                            sx={{
+                              backgroundColor: color.bgColor,
+                              padding: "12px",
+                            }}
+                          >
+                            <DynamicIcon
+                              name={achievementsIconMap[achievementsKey]}
+                              size={"25px"}
+                              color={color.iconColor}
+                            />
+                          </Stack>
+                          <Typography variant="body2">
+                            {achievementsLabelMap[achievementsKey]}
+                          </Typography>
+                        </Stack>
+                        <Stack
+                          sx={{
+                            alignItems: "flex-end",
+                          }}
+                        >
+                          <Typography variant="body2">
+                            <b>{achievementPoints}</b> / {maxPoints}
+                          </Typography>
+                        </Stack>
+                      </Stack>
+                    </Stack>
+                  );
+                })}
               </Stack>
             </Stack>
           </Stack>
@@ -148,39 +347,7 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
           cursor: "pointer",
         }}
       >
-        <Stack
-          sx={{
-            img: {
-              width: "50px",
-              height: "50px",
-              borderRadius: "50%",
-              objectFit: "cover",
-              boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
-              position: "relative",
-              zIndex: 1,
-            },
-            position: "relative",
-          }}
-        >
-          <img src={avatar} />
-          {isOnline && (
-            <Stack
-              sx={{
-                display: "block",
-                width: "10px",
-                height: "10px",
-                borderRadius: "50px",
-                backgroundColor: "#11ff22",
-                boxShadow: "0px 0px 0px 2px #111",
-                position: "absolute",
-                bottom: "1px",
-                right: "1px",
-                zIndex: 1,
-              }}
-            />
-          )}
-        </Stack>
-
+        {avatarComponent}
         <Stack
           sx={{
             width: "100%",
