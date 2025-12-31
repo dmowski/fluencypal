@@ -36,6 +36,7 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
         gap: "15px",
         padding: "0px 20px 0 0",
         borderRadius: "57px",
+        height: "54px",
         backgroundColor: isMe ? "rgba(41, 179, 229, 0.17)" : "rgba(255, 255, 255, 0.04)",
       }}
     >
