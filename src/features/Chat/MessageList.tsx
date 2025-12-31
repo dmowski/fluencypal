@@ -44,12 +44,10 @@ export function MessageList({ messages, currentUserId, onEdit, onDelete }: Messa
         maxHeight: 600,
       }}
     >
-      {messages.length === 0 ? (
-        <Box
-          sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}
-        >
-          <Typography color="textSecondary">{i18n._("No messages yet")}</Typography>
-        </Box>
+      {messages.length === 1 ? (
+        <Typography align="center" color="textSecondary">
+          {i18n._("No messages yet")}
+        </Typography>
       ) : (
         <>
           {messages.map((message) => (
