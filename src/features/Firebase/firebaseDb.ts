@@ -17,7 +17,13 @@ import { AiUserInfo } from "@/common/userInfo";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { PhraseCorrection } from "../Corrections/types";
 import { GoalPlan } from "../Plan/types";
-import { GameAvatars, GameLastVisit, GameUserNames, GameUsersPoints } from "../Game/types";
+import {
+  GameAvatars,
+  GameLastVisit,
+  GameUserNames,
+  GameUsersAchievements,
+  GameUsersPoints,
+} from "../Game/types";
 import { QuizSurvey2 } from "../Goal/Quiz/types";
 import { DailyQuestionAnswer, DailyQuestionLike } from "../Game/DailyQuestion/types";
 import { InterviewQuizSurvey } from "../Case/types";
@@ -94,6 +100,7 @@ export const db = {
     gameLastVisit2: dataPointDoc<GameLastVisit>(`game2/gameLastVisit`),
     gameAvatars2: dataPointDoc<GameAvatars>(`game2/gameAvatars`),
     gameUserNames2: dataPointDoc<GameUserNames>(`game2/gameUserNames`),
+    gameUserAchievements2: dataPointDoc<GameUsersAchievements>(`game2/gameUserAchievements`),
 
     usageLog: (userId?: string, usageId?: string) =>
       userId && usageId ? dataPointDoc<UsageLog>(`users/${userId}/usageLogs/${usageId}`) : null,

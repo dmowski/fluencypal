@@ -58,3 +58,8 @@ export interface SubmitAnswerResponse {
   updatedUserPoints: GameUsersPoints;
   description: string | null;
 }
+
+export type GameAchievements = Partial<Record<GameQuestionType, number>>;
+
+// [UserId]: achievement points
+export type GameUsersAchievements = Record<string, GameAchievements>;

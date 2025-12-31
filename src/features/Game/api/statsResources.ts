@@ -1,4 +1,11 @@
-import { GameAvatars, GameLastVisit, GameUserNames, GameUsersPoints } from "@/features/Game/types";
+import {
+  GameAvatars,
+  GameLastVisit,
+  GameQuestionType,
+  GameUserNames,
+  GameUsersAchievements,
+  GameUsersPoints,
+} from "@/features/Game/types";
 import { getDB } from "../../../app/api/config/firebase";
 
 import firebaseAdmin from "firebase-admin";
@@ -10,6 +17,16 @@ export const getGameUsersPoints = async (): Promise<GameUsersPoints> => {
     return {};
   }
   const data = userDoc.data() as GameUsersPoints;
+  return data;
+};
+
+export const getGameUsersAchievements = async (): Promise<GameUsersAchievements> => {
+  const db = getDB();
+  const userDoc = await db.collection("game2").doc("gameUserAchievements").get();
+  if (!userDoc.exists) {
+    return {};
+  }
+  const data = userDoc.data() as GameUsersAchievements;
   return data;
 };
 
@@ -139,18 +156,43 @@ export const isUserIsGameWinner = async (userId: string): Promise<boolean> => {
 interface increaseUserPointsProps {
   userId: string;
   points: number;
+  questionType: GameQuestionType;
 }
-export const increaseUserPoints = async ({ userId, points }: increaseUserPointsProps) => {
+export const increaseUserPoints = async ({
+  userId,
+  points,
+  questionType,
+}: increaseUserPointsProps) => {
   const db = getDB();
 
-  const stat = await getGameUsersPoints();
+  const [stat, achievements] = await Promise.all([
+    getGameUsersPoints(),
+    getGameUsersAchievements(),
+  ]);
   const oldValue = stat[userId] || 1;
   const newValue = oldValue + points;
 
-  await db
-    .collection("game2")
-    .doc("gamePoints")
-    .set({ [userId]: newValue }, { merge: true });
+  const usersAchievements = achievements[userId] || {};
+  const oldAchievementPoints = usersAchievements?.[questionType] || 0;
+  const newAchievementPoints = oldAchievementPoints + points;
+  const newUserAchievements = {
+    ...usersAchievements,
+    [questionType]: newAchievementPoints,
+  };
+
+  console.log("newUserAchievements", newUserAchievements);
+
+  await Promise.all([
+    db
+      .collection("game2")
+      .doc("gameUserAchievements")
+      .set({ [userId]: newUserAchievements }, { merge: true }),
+
+    db
+      .collection("game2")
+      .doc("gamePoints")
+      .set({ [userId]: newValue }, { merge: true }),
+  ]);
 
   stat[userId] = newValue;
   return stat;

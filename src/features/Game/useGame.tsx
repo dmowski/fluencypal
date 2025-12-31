@@ -10,7 +10,14 @@ import {
   useRef,
 } from "react";
 import { useAuth } from "../Auth/useAuth";
-import { GameAvatars, GameLastVisit, GameQuestionShort, GameUserNames, UsersStat } from "./types";
+import {
+  GameAvatars,
+  GameLastVisit,
+  GameQuestionShort,
+  GameUserNames,
+  GameUsersAchievements,
+  UsersStat,
+} from "./types";
 import {
   getGameQuestionsRequest,
   getSortedStatsFromData,
@@ -46,6 +53,7 @@ interface GameContextType {
   pointsToNextPosition: number | null;
   nextPositionStat: UsersStat | null;
   gameAvatars: GameAvatars;
+  userAchievements: GameUsersAchievements;
   setAvatar: (avatarUrl: string) => void;
 
   isGamePlaying: boolean;
@@ -74,8 +82,15 @@ function useProvideGame(): GameContextType {
   const [gameLastVisit, gameLastVisitLoading] = useDocumentData(db.documents.gameLastVisit2);
   const [gameAvatars, gameAvatarsLoading] = useDocumentData(db.documents.gameAvatars2);
   const [userNames, userNamesLoading] = useDocumentData(db.documents.gameUserNames2);
+  const [userAchievements, userAchievementsLoading] = useDocumentData(
+    db.documents.gameUserAchievements2
+  );
   const isLoading =
-    gameRateLoading || gameLastVisitLoading || gameAvatarsLoading || userNamesLoading;
+    gameRateLoading ||
+    gameLastVisitLoading ||
+    gameAvatarsLoading ||
+    userNamesLoading ||
+    userAchievementsLoading;
   const [isGamePlaying, setIsGamePlaying] = useState(false);
 
   const myAvatar = gameAvatars?.[userId || ""] || "";
@@ -296,6 +311,7 @@ function useProvideGame(): GameContextType {
     pointsToNextPosition: pointsToNextPosition || null,
     nextPositionStat: nextPositionStat || null,
     gameAvatars: gameAvatars || {},
+    userAchievements: userAchievements || {},
     isGamePlaying,
     playGame,
     stopGame,
