@@ -106,7 +106,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
         borderBottom: "1px solid rgba(255, 255, 255, 0.07)",
         marginBottom: "40px",
         "@media (max-width: 700px)": {
-          backgroundColor: "rgba(20, 20, 20, 0.7)",
+          backgroundColor: "rgba(0, 0, 0, 0.9)",
           borderBottom: "none",
           marginBottom: "0px",
           position: "fixed",
