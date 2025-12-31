@@ -125,7 +125,7 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 alt: i18n._("Webcam Feedback Preview"),
               },
               {
-                imageUrl: "/landing/preview/roleplay.png",
+                imageUrl: "/landing/preview/roleplay.webp",
                 alt: i18n._("Roleplay Preview"),
               },
             ]}
