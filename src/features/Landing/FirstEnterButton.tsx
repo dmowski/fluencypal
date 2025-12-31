@@ -98,8 +98,7 @@ export const WelcomeScreenButton: React.FC<FirstEnterButtonProps> = ({
           padding: "10px 70px",
           backgroundColor: "#3dbeffff",
           color: "#111",
-          fontSize: "1.2rem",
-          fontWeight: 600,
+          fontSize: "1.25rem",
         }}
         variant="contained"
         size="large"

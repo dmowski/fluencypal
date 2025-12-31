@@ -1,7 +1,7 @@
 import { Stack, SxProps, Typography } from "@mui/material";
 import { WelcomeScreenButton } from "./FirstEnterButton";
 import { PageLabel2 } from "../Case/Landing/components/Typography";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MoveRight } from "lucide-react";
 import { maxLandingWidth } from "./landingSettings";
 
 interface PreviewCard {
@@ -183,7 +183,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                 getStartedTitle={buttonTitle}
                 practiceLink={buttonHref}
                 openMyPracticeLinkTitle={openMyPracticeLinkTitle}
-                endIcon={<ArrowRight />}
+                endIcon={<MoveRight size={"27px"} />}
               />
             </Stack>
           </Stack>
