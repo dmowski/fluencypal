@@ -1,6 +1,6 @@
-import { ConversationMode } from "@/common/conversation";
+import { ConversationType } from "@/common/conversation";
 
-export const conversationModeLabel: Record<ConversationMode, string> = {
+export const conversationModeLabel: Record<ConversationType, string> = {
   beginner: "Beginner",
   talk: "Just talk",
   talkAndCorrect: "Talk & Correct",

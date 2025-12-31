@@ -17,7 +17,7 @@ import { useChatHistory } from "../ConversationHistory/useChatHistory";
 import { useUsage } from "../Usage/useUsage";
 import { useSettings } from "../Settings/useSettings";
 import { UsageLog } from "@/common/usage";
-import { ChatMessage, ConversationMode, MessagesOrderMap } from "@/common/conversation";
+import { ChatMessage, ConversationType, MessagesOrderMap } from "@/common/conversation";
 import { useTasks } from "../Tasks/useTasks";
 import { sleep } from "@/libs/sleep";
 import { useAiUserInfo } from "../Ai/useAiUserInfo";
@@ -39,7 +39,7 @@ const levelDescriptionsForAi: Record<string, string> = {
 };
 
 interface StartConversationProps {
-  mode: ConversationMode;
+  mode: ConversationType;
   wordsToLearn?: string[];
   ruleToLearn?: string;
   voice?: AiVoice;
@@ -68,7 +68,7 @@ interface AiConversationContextType {
   addUserMessage: (message: string) => Promise<void>;
   isShowUserInput: boolean;
   setIsShowUserInput: (value: boolean) => void;
-  currentMode: ConversationMode;
+  currentMode: ConversationType;
   gameWords: GuessGameStat | null;
 
   isVolumeOn: boolean;
@@ -93,7 +93,7 @@ interface AiConversationContextType {
 
 const AiConversationContext = createContext<AiConversationContextType | null>(null);
 
-const modesToExtractUserInfo: ConversationMode[] = [
+const modesToExtractUserInfo: ConversationType[] = [
   "talk",
   "talkAndCorrect",
   "beginner",
@@ -399,7 +399,7 @@ VISUAL_CONTEXT (latest): ${description}
   };
 
   const getAiRtcConfig = async (
-    mode: ConversationMode,
+    mode: ConversationType,
     goal?: GoalElementInfo | null
   ): Promise<AiRtcConfig> => {
     const baseConfig = await getBaseRtcConfig();
@@ -680,7 +680,7 @@ Start the conversation with: "${
     throw new Error(`Unknown mode: ${mode}`);
   };
 
-  const [currentMode, setCurrentMode] = useState<ConversationMode>("talk");
+  const [currentMode, setCurrentMode] = useState<ConversationType>("talk");
 
   const confirmLocalStorageKey = `confirm-start-conversation_2`;
   const isNeedToShowConfirmationModal = () => {

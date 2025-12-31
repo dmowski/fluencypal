@@ -4,7 +4,7 @@ import { getDocs, limit, orderBy, query, setDoc, where } from "firebase/firestor
 import { useAuth } from "../Auth/useAuth";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { db } from "../Firebase/firebaseDb";
-import { ChatMessage, Conversation, ConversationMode } from "@/common/conversation";
+import { ChatMessage, Conversation, ConversationType } from "@/common/conversation";
 import { useSettings } from "../Settings/useSettings";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
@@ -12,7 +12,7 @@ interface ChatHistoryContextType {
   createConversation: (params: {
     conversationId: string;
     languageCode: SupportedLanguage;
-    mode: ConversationMode;
+    mode: ConversationType;
   }) => Promise<void>;
   setMessages: (conversationId: string, messages: ChatMessage[]) => Promise<void>;
   saveConversation: (conversationId: string, messages: ChatMessage[]) => Promise<void>;
@@ -78,7 +78,7 @@ function useProvideChatHistory(): ChatHistoryContextType {
   }: {
     conversationId: string;
     languageCode: SupportedLanguage;
-    mode: ConversationMode;
+    mode: ConversationType;
   }) => {
     const conversationDoc = getConversationDoc(conversationId);
     const conversationInfo: Conversation = {

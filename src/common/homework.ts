@@ -1,9 +1,9 @@
-import { ConversationMode } from "./conversation";
+import { ConversationType } from "./conversation";
 import { SupportedLanguage } from "../features/Lang/lang";
 
 export interface Homework {
   id: string;
-  mode: ConversationMode;
+  mode: ConversationType;
   conversationId: string;
   createdAt: number;
   homework: string;

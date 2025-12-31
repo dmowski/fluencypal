@@ -1,6 +1,6 @@
 import { SupportedLanguage } from "../features/Lang/lang";
 
-export type ConversationMode =
+export type ConversationType =
   | "talk"
   | "talkAndCorrect"
   | "beginner"
@@ -39,5 +39,5 @@ export interface Conversation {
   updatedAt: number;
   updatedAtIso: string;
   languageCode: SupportedLanguage;
-  mode: ConversationMode;
+  mode: ConversationType;
 }
