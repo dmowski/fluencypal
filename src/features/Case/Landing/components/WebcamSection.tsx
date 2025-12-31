@@ -3,7 +3,7 @@ import { WebcamDemoSection } from "../../types";
 import { Theme, themeMap } from "./theme";
 import { H2, SubTitle } from "./Typography";
 import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
-import { ArrowRight, CircleArrowRight, CircleCheckBig, Users } from "lucide-react";
+import { ArrowRight, CircleArrowRight, CircleCheckBig, MoveRight, Users } from "lucide-react";
 
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import MicOffIcon from "@mui/icons-material/MicOff";
@@ -253,11 +253,11 @@ export const WebcamSection = (props: WebcamSectionProps) => {
                     marginTop: "12px",
                     width: "max-content",
                     borderRadius: "48px",
-                    fontSize: "16px",
+                    fontSize: "1rem",
                     padding: "12px 30px",
                   }}
                   startIcon={<VideocamIcon />}
-                  endIcon={<ArrowRight />}
+                  endIcon={<MoveRight />}
                 >
                   {props.data.buttonTitle}
                 </Button>

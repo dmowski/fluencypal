@@ -210,7 +210,7 @@ export const HowItWorks = (props: HowItWorksProps) => {
           marginTop: "32px",
           padding: "14px 45px 14px 48px",
           borderRadius: "48px",
-          fontSize: "18px",
+          fontSize: "1.1rem",
         }}
         endIcon={<MoveRight />}
       >

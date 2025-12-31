@@ -163,6 +163,7 @@ export const RolePlayDemo = ({
             >
               {actionButtonTitle}
             </Button>
+
             <Stack
               sx={{
                 alignItems: "center",
