@@ -14,6 +14,10 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import dayjs from "dayjs";
 import { useLingui } from "@lingui/react";
+import { useChat } from "./useChat";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useAuth } from "../Auth/useAuth";
 
 interface MessageProps {
   message: UserChatMessage;
@@ -36,6 +40,11 @@ export function Message({
   const [editedContent, setEditedContent] = useState(message.content);
   const [isDeleting, setIsDeleting] = useState(false);
   const { i18n } = useLingui();
+
+  const auth = useAuth();
+  const myUserId = auth.uid;
+  const chat = useChat();
+  const isLikedByMe = chat.messagesLikes[message.id]?.some((like) => like.userId === myUserId);
 
   const updatedAgo = dayjs(message.updatedAtIso).fromNow();
 
@@ -141,6 +150,46 @@ export function Message({
                   ({i18n._("edited")})
                 </Typography>
               )}
+
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "10px",
+                }}
+              >
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    gap: "2px",
+                    alignItems: "center",
+                  }}
+                >
+                  <IconButton size="small">
+                    {isLikedByMe ? (
+                      <FavoriteIcon
+                        color="error"
+                        onClick={async () => await chat.toggleLike(message.id, "like")}
+                      />
+                    ) : (
+                      <FavoriteBorderIcon
+                        onClick={async () => await chat.toggleLike(message.id, "like")}
+                        sx={{
+                          opacity: 0.6,
+                        }}
+                      />
+                    )}
+                  </IconButton>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      opacity: chat.messagesLikes[message.id]?.length ? 0.7 : 0.5,
+                    }}
+                  >
+                    {chat.messagesLikes[message.id]?.length || 0}
+                  </Typography>
+                </Stack>
+              </Stack>
             </>
           )}
         </Stack>

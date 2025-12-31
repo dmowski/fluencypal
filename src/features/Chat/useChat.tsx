@@ -4,10 +4,13 @@ import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/firebaseDb";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { UserChatMessage } from "./type";
+import { ChatLike, ChatLikeType, UserChatMessage } from "./type";
 
 interface ChatContextType {
   messages: UserChatMessage[];
+  messagesLikes: Record<string, ChatLike[]>;
+  toggleLike: (messageId: string, type: ChatLikeType) => Promise<void>;
+
   addMessage: (message: string) => Promise<void>;
   deleteMessage: (messageId: string) => Promise<void>;
   editMessage: (messageId: string, newContent: string) => Promise<void>;
@@ -22,11 +25,48 @@ function useProvideChat(): ChatContextType {
   const messagesRef = db.collections.usersChatMessages();
   const [messages, loading] = useCollectionData(messagesRef);
 
+  const likesRef = db.collections.usersChatLikes();
+  const [likes] = useCollectionData(likesRef);
+
+  const messagesLikes = useMemo(() => {
+    const likesMap: Record<string, ChatLike[]> = {};
+    if (likes) {
+      likes.forEach((like) => {
+        if (!likesMap[like.messageId]) {
+          likesMap[like.messageId] = [];
+        }
+        likesMap[like.messageId].push(like);
+      });
+    }
+    return likesMap;
+  }, [likes]);
+
   const sortedMessages = useMemo(() => {
     return messages
       ? [...messages].sort((a, b) => a.createdAtIso.localeCompare(b.createdAtIso))
       : [];
   }, [messages]);
+
+  const toggleLike = async (messageId: string, type: ChatLikeType) => {
+    const likeId = `${userId}-${messageId}`;
+    const likeDoc = doc(likesRef, likeId);
+    const isExistingLike = likes?.find(
+      (like) => like.messageId === messageId && like.userId === userId
+    );
+
+    if (isExistingLike) {
+      await deleteDoc(likeDoc);
+      return;
+    }
+
+    const newLike: ChatLike = {
+      messageId,
+      userId,
+      type,
+      createdAtIso: new Date().toISOString(),
+    };
+    await setDoc(likeDoc, newLike);
+  };
 
   const addMessage = async (messageContent: string) => {
     const newMessage: UserChatMessage = {
@@ -57,7 +97,10 @@ function useProvideChat(): ChatContextType {
 
   return {
     messages: sortedMessages,
+    messagesLikes,
     editMessage,
+
+    toggleLike,
 
     addMessage,
     deleteMessage,
