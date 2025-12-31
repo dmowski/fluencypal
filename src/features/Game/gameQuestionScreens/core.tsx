@@ -112,47 +112,6 @@ export const MyStatsRows = () => {
   );
 };
 
-export const SummaryRow = () => {
-  const game = useGame();
-  const nextUserId = game.nextPositionStat?.userId || "";
-  const nextUserUsername = game.userNames?.[nextUserId] || "";
-  const pointsToNextPosition = game.pointsToNextPosition;
-  const { i18n } = useLingui();
-  return (
-    <Stack
-      sx={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-        width: "100%",
-      }}
-    >
-      <Stack
-        sx={{
-          alignItems: "center",
-        }}
-      >
-        <Typography variant="h4">{game.myPosition}</Typography>
-        <Typography
-          variant="body2"
-          sx={{
-            textTransform: "uppercase",
-          }}
-        >
-          {i18n._("My position")}
-        </Typography>
-      </Stack>
-
-      <Typography variant="body2" align="right">
-        {game.pointsToNextPosition !== null && nextUserUsername && (
-          <Trans>
-            Next position ({nextUserUsername}): <b>{pointsToNextPosition}</b>
-          </Trans>
-        )}
-      </Typography>
-    </Stack>
-  );
-};
-
 export const FinishButton = ({
   isCorrect,
   setIsCorrect,

@@ -95,9 +95,7 @@ export const GameBadge = () => {
               },
             }}
           >
-            <Trans>
-              Answer <b>{game.pointsToNextPosition} questions</b> to get a new position
-            </Trans>
+            Answer <b>{game.pointsToNextPosition} questions</b> to get a new position
           </Typography>
         )}
 
@@ -110,9 +108,7 @@ export const GameBadge = () => {
               },
             }}
           >
-            <Trans>
-              You are <b>the Leader</b> of {playersCount} players.
-            </Trans>
+            You are <b>the Leader</b> of {playersCount} players.
           </Typography>
         )}
       </Stack>
@@ -146,7 +142,7 @@ export const GameBadge = () => {
               opacity: 0.7,
             }}
           >
-            <Trans>Position</Trans>
+            Position
           </Typography>
         </Stack>
       ) : (

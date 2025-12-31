@@ -156,7 +156,7 @@ export function MyProfile({ lang }: { lang: SupportedLanguage }) {
               padding: "0 10px 20px 10px",
             }}
           >
-            <Trans>Manage your profile settings and check your progress</Trans>
+            {i18n._(`Manage your profile settings and check your progress`)}
           </Typography>
         </Stack>
 

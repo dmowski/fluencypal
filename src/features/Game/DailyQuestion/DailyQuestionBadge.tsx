@@ -300,7 +300,7 @@ export const DailyQuestionBadge = () => {
               color: "#faae98",
             }}
           >
-            <Trans>{hoursLeft}h left</Trans>
+            {hoursLeft}h left
           </Typography>
         </Stack>
 
@@ -495,8 +495,8 @@ export const DailyQuestionBadge = () => {
                           recorder.isRecording && wordsCount < minWords
                             ? "error"
                             : wordsCount >= minWords
-                            ? "success"
-                            : "primary"
+                              ? "success"
+                              : "primary"
                         }
                         endIcon={
                           recorder.isRecording && wordsCount < minWords ? (
@@ -511,10 +511,10 @@ export const DailyQuestionBadge = () => {
                         {recorder.isRecording && wordsCount < minWords
                           ? i18n._("Done")
                           : transcript && wordsCount >= minWords
-                          ? i18n._("Publish")
-                          : transcript
-                          ? i18n._("Re-Record")
-                          : i18n._("Record")}
+                            ? i18n._("Publish")
+                            : transcript
+                              ? i18n._("Re-Record")
+                              : i18n._("Record")}
                       </Button>
                     </Stack>
                     <Typography align="center" variant="caption" color="text.secondary">
@@ -633,15 +633,11 @@ export const DailyQuestionBadge = () => {
               opacity: 0.96,
             }}
           >
-            {peopleAnswered === 1 ? (
-              <Trans>One person answered already — see what they said & share yours</Trans>
-            ) : peopleAnswered > 0 ? (
-              <Trans>
-                {peopleAnswered} people answered already — see what they said & share yours
-              </Trans>
-            ) : (
-              <Trans>Be the first to answer and share your thoughts</Trans>
-            )}
+            {peopleAnswered === 1
+              ? "One person answered already — see what they said & share yours"
+              : peopleAnswered > 0
+                ? `${peopleAnswered} people answered already — see what they said & share yours`
+                : "Be the first to answer and share your thoughts"}
           </Typography>
         )}
 
