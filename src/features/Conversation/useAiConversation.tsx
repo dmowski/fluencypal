@@ -29,6 +29,7 @@ import { GoalElementInfo, GoalPlan } from "../Plan/types";
 import { usePlan } from "../Plan/usePlan";
 import * as Sentry from "@sentry/nextjs";
 import { useGame } from "../Game/useGame";
+import { ConversationMode } from "@/common/user";
 
 const levelDescriptionsForAi: Record<string, string> = {
   A1: "User's language level is Beginner. Use extremely simple words and short sentences. Focus on basics.",
@@ -48,6 +49,7 @@ interface StartConversationProps {
   analyzeResultAiInstruction?: string;
   goal?: GoalElementInfo | null;
   webCamDescription?: string;
+  conversationMode: ConversationMode;
 }
 
 interface AiConversationContextType {
@@ -711,6 +713,16 @@ Start the conversation with: "${
       setConfirmStartConversationModal(null);
     }
 
+    if (input.conversationMode && settings.conversationMode !== input.conversationMode) {
+      await settings.setConversationMode(input.conversationMode);
+    }
+
+    let isMutedInternal = isMuted;
+    if (!isMuted && input.conversationMode === "record") {
+      toggleMute(true);
+      isMutedInternal = true;
+    }
+
     setTemporaryGoal(null);
     setGoalSettingProgress(0);
     setIsProcessingGoal(false);
@@ -765,12 +777,11 @@ Words you need to describe: ${input.gameWords.wordsAiToDescribe.join(", ")}
           instruction += `In the first greeting message, if appropriate, you can mention the user's appearance.`;
         }
       }
-
       const conversation = await initAiRtc({
         ...aiRtcConfig,
         initInstruction: instruction,
         voice: aiRtcConfig.voice || input.voice,
-        isMuted,
+        isMuted: isMutedInternal,
       });
       setVoice(aiRtcConfig.voice || input.voice || null);
       history.createConversation({

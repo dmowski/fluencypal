@@ -5,12 +5,14 @@ import { useRules } from "../Rules/useRules";
 import { Markdown } from "../uiKit/Markdown/Markdown";
 import { useLingui } from "@lingui/react";
 import { useTranslate } from "../Translation/useTranslate";
+import { useSettings } from "../Settings/useSettings";
 
 export const RulesToLearn: React.FC = () => {
   const aiConversation = useAiConversation();
   const rules = useRules();
   const translator = useTranslate();
   const { i18n } = useLingui();
+  const settings = useSettings();
 
   return (
     <Stack
@@ -74,6 +76,7 @@ export const RulesToLearn: React.FC = () => {
                 mode: "rule",
                 ruleToLearn: rules.rule,
                 goal: rules.goal,
+                conversationMode: settings.conversationMode,
               });
               rules.removeRule();
             }}

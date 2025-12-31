@@ -61,6 +61,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
     }
   ) => {
     if (!plan.activeGoal) return;
+
     if (settings.conversationMode !== options.conversationMode) {
       await settings.setConversationMode(options.conversationMode);
     }
@@ -83,6 +84,7 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       mode: element.mode === "play" ? "goal-role-play" : "goal-talk",
       goal: goalInfo,
       webCamDescription: options.webCamDescription,
+      conversationMode: options.conversationMode,
     });
   };
 

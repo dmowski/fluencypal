@@ -108,7 +108,12 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
         <ConversationCard
           title={i18n._(`Conversation`)}
           subTitle={i18n._(`Talk to the AI and it will respond to you`)}
-          onClick={() => aiConversation.startConversation({ mode: "talk" })}
+          onClick={() =>
+            aiConversation.startConversation({
+              mode: "talk",
+              conversationMode: settings.conversationMode,
+            })
+          }
           startColor="#34D399"
           endColor="#3B82F6"
           bgColor="#A3E635"
@@ -129,7 +134,12 @@ export const ConversationSelectCard = ({ lang }: { lang: SupportedLanguage }) =>
         <ConversationCard
           title={i18n._(`Beginner`)}
           subTitle={i18n._(`AI will lead you through the conversation`)}
-          onClick={() => aiConversation.startConversation({ mode: "beginner" })}
+          onClick={() =>
+            aiConversation.startConversation({
+              mode: "beginner",
+              conversationMode: settings.conversationMode,
+            })
+          }
           startColor="#FF6B6B"
           endColor="#FFD93D"
           bgColor="#5EEAD4"

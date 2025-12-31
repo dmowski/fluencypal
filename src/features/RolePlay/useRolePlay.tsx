@@ -20,6 +20,7 @@ import { useLocalStorage } from "react-use";
 import { GuessGameStat } from "../Conversation/types";
 import { MODELS } from "@/common/ai";
 import { uniq } from "@/libs/uniq";
+import { ConversationMode } from "@/common/user";
 
 const firstLimit = 6;
 
@@ -191,11 +192,17 @@ function useProvideRolePlay({
     {}
   );
 
-  const onStartRolePlay = (
-    scenario: RolePlayInstruction,
-    rolePlayInputs: RolePlayInputResult[],
-    gameStat?: GuessGameStat
-  ) => {
+  const onStartRolePlay = ({
+    scenario,
+    rolePlayInputs,
+    gameStat,
+    conversationMode,
+  }: {
+    scenario: RolePlayInstruction;
+    rolePlayInputs: RolePlayInputResult[];
+    gameStat?: GuessGameStat;
+    conversationMode: ConversationMode;
+  }) => {
     const instruction = getDefaultInstruction(
       scenario,
       settings.fullLanguageName || "English",
@@ -207,6 +214,7 @@ function useProvideRolePlay({
       voice: scenario.voice,
       gameWords: gameStat,
       analyzeResultAiInstruction: scenario.analyzeResultAiInstruction,
+      conversationMode: conversationMode,
     });
   };
 
@@ -371,9 +379,18 @@ function useProvideRolePlay({
         rolePlayInputs.map((input) => input.labelForAi + ":" + input.userValue).join(", ")
       );
 
-      onStartRolePlay(selectedRolePlayScenario, rolePlayInputs, wordsInfo);
+      onStartRolePlay({
+        scenario: selectedRolePlayScenario,
+        rolePlayInputs,
+        gameStat: wordsInfo,
+        conversationMode: "record",
+      });
     } else {
-      onStartRolePlay(selectedRolePlayScenario, rolePlayInputs);
+      onStartRolePlay({
+        scenario: selectedRolePlayScenario,
+        rolePlayInputs,
+        conversationMode: "record",
+      });
     }
     setIsStarting(false);
   };

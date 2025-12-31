@@ -4,12 +4,14 @@ import { useWords } from "../Words/useWords";
 import { ChevronLeft, GraduationCap, Languages } from "lucide-react";
 import { useLingui } from "@lingui/react";
 import { useTranslate } from "../Translation/useTranslate";
+import { useSettings } from "../Settings/useSettings";
 
 export const WordsToLearn: React.FC = () => {
   const aiConversation = useAiConversation();
   const words = useWords();
   const { i18n } = useLingui();
   const translator = useTranslate();
+  const settings = useSettings();
 
   return (
     <Stack
@@ -96,6 +98,7 @@ export const WordsToLearn: React.FC = () => {
                 mode: "words",
                 wordsToLearn: words.wordsToLearn,
                 goal: words.goal,
+                conversationMode: settings.conversationMode,
               });
               words.removeWordsToLearn();
             }}
