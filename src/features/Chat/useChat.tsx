@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, ReactNode, JSX } from "react";
+import { createContext, useContext, ReactNode, JSX, useMemo } from "react";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useAuth } from "../Auth/useAuth";
 import { db } from "../Firebase/firebaseDb";
@@ -21,6 +21,10 @@ function useProvideChat(): ChatContextType {
   const userId = auth.uid || "anonymous";
   const messagesRef = db.collections.usersChatMessages();
   const [messages, loading] = useCollectionData(messagesRef);
+
+  const sortedMessages = useMemo(() => {
+    return messages ? [...messages].sort((a, b) => a.createdAtUtc - b.createdAtUtc) : [];
+  }, [messages]);
 
   const addMessage = async (messageContent: string) => {
     const newMessage: UserChatMessage = {
@@ -50,7 +54,7 @@ function useProvideChat(): ChatContextType {
   };
 
   return {
-    messages: messages || [],
+    messages: sortedMessages,
     editMessage,
 
     addMessage,
