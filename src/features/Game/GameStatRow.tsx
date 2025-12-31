@@ -22,6 +22,8 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
   const avatar = game.gameAvatars[stat.userId] || defaultAvatar;
   const isOnline = lastVisit ? dayjs().diff(dayjs(lastVisit), "minute") < 10 : false;
 
+  const achievements = game.userAchievements ? game.userAchievements[stat.userId] || {} : {};
+
   return (
     <Stack
       key={index}
