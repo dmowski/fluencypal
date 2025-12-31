@@ -4,11 +4,14 @@ import { avatars } from "./avatars";
 import { Stack, Typography } from "@mui/material";
 import { useLingui } from "@lingui/react";
 import { useUrlParam } from "../Url/useUrlParam";
+import { useAuth } from "../Auth/useAuth";
 
 export const GameMyAvatar = () => {
   const game = useGame();
   const [isShowAvatarSelector, setIsShowAvatarSelector] = useUrlParam("showAvatarSelector");
   const { i18n } = useLingui();
+  const auth = useAuth();
+  const myAuthAvatar = auth.userInfo?.photoURL;
 
   return (
     <>
@@ -44,7 +47,7 @@ export const GameMyAvatar = () => {
                 justifyContent: "center",
               }}
             >
-              {avatars.map((avatar, index) => {
+              {[myAuthAvatar || "", ...avatars].filter(Boolean).map((avatar, index) => {
                 const isSelected = avatar === game.myAvatar;
                 return (
                   <Stack
@@ -93,9 +96,7 @@ export const GameMyAvatar = () => {
           position: "relative",
           cursor: "pointer",
         }}
-        onClick={() => {
-          setIsShowAvatarSelector(!isShowAvatarSelector);
-        }}
+        onClick={() => setIsShowAvatarSelector(!isShowAvatarSelector)}
       >
         <img src={game.myAvatar} />
       </Stack>
