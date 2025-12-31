@@ -154,7 +154,7 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
                   height: "100px",
                   borderRadius: "50%",
                   objectFit: "cover",
-                  boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
                   position: "relative",
                   zIndex: 1,
                 }}
