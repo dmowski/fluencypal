@@ -120,8 +120,8 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 alt: i18n._("Grammar Correction Preview"),
               },
               {
-                videoUrl: "/landing/preview/camera.mp4",
-                imageUrl: "/landing/preview/camera.jpg",
+                videoUrl: "/landing/preview/camera2.webm",
+                imageUrl: "/landing/preview/camera2.webp",
                 alt: i18n._("Webcam Feedback Preview"),
               },
               {
