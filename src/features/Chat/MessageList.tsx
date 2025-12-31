@@ -44,7 +44,7 @@ export function MessageList({ messages, currentUserId, onEdit, onDelete }: Messa
         maxHeight: 600,
       }}
     >
-      {messages.length === 1 ? (
+      {messages.length === 0 ? (
         <Typography align="center" color="textSecondary">
           {i18n._("No messages yet")}
         </Typography>
