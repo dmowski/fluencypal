@@ -9,8 +9,9 @@ import dayjs from "dayjs";
 import { getFirebaseLink } from "../Firebase/getFirebaseLink";
 import { useGame } from "../Game/useGame";
 import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
-import { BadgeCheck, Check, Copy, Gem } from "lucide-react";
+import { BadgeCheck, Check, Copy, Gem, House } from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
+import { NavigationBar } from "../Navigation/NavigationBar";
 
 const copyToClipboard = async (text: string) => {
   try {
@@ -325,11 +326,20 @@ export function AdminStats() {
   }
 
   return (
-    <Stack
-      sx={{
-        paddingTop: "100px",
-      }}
-    >
+    <Stack sx={{}}>
+      <Button
+        href="/practice"
+        sx={{
+          width: "max-content",
+          padding: "10px 50px",
+          margin: "20px 0",
+          borderRadius: "210px",
+        }}
+        variant="contained"
+        startIcon={<House />}
+      >
+        Home
+      </Button>
       {isLoading && <Typography>Loading...</Typography>}
       {data && (
         <>
