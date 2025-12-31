@@ -48,14 +48,14 @@ const zeroColor: IconColor = {
   bgColor: "rgba(100, 100, 100, 0.5)",
 };
 
-export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number }) => {
+export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
   const game = useGame();
   const auth = useAuth();
   const userId = auth.uid || "";
   const userName = game.userNames?.[stat.userId] || "";
 
   const isMe = stat.userId === userId;
-  const top5 = index < 5;
+  const top5 = game.getRealPosition(stat.userId) < 5;
   const lastVisit = game.gameLastVisit ? game.gameLastVisit[stat.userId] : null;
   const lastVisitAgo = lastVisit ? dayjs(lastVisit).fromNow() : null;
 
@@ -319,7 +319,7 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
       )}
 
       <Stack
-        key={index}
+        key={stat.userId}
         component={"button"}
         onClick={() => setIsShowModal(true)}
         sx={{

@@ -36,8 +36,8 @@ export const GameStats = ({ activeTab }: { activeTab: "global" | "today" }) => {
           }
           return true;
         })
-        .map((stat, index) => {
-          return <GameStatRow key={index} stat={stat} index={index} />;
+        .map((stat) => {
+          return <GameStatRow key={stat.userId} stat={stat} />;
         })}
     </Stack>
   );

@@ -15,6 +15,8 @@ import { NavigationBar } from "../Navigation/NavigationBar";
 import { SupportedLanguage } from "../Lang/lang";
 import { useMemo, useState } from "react";
 
+const IS_SHOW_CHAT_TAB = false;
+
 export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const game = useGame();
   const { i18n } = useLingui();
@@ -69,38 +71,49 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
             <GameMyUsername />
           </Stack>
 
-          <Button
-            variant="contained"
-            startIcon={<Swords />}
-            color="info"
-            size="large"
-            onClick={() => {
-              goFullScreen();
-              game.playGame();
-            }}
-            disabled={game.loadingQuestions}
+          <Stack
             sx={{
               width: "100%",
-              padding: "15px 20px",
+              alignItems: "center",
+              gap: "5px",
             }}
           >
-            {game.loadingQuestions ? loadingMessage : playMessage}
-          </Button>
+            <Button
+              variant="contained"
+              startIcon={<Swords />}
+              color="info"
+              size="large"
+              onClick={() => {
+                goFullScreen();
+                game.playGame();
+              }}
+              disabled={game.loadingQuestions}
+              sx={{
+                width: "100%",
+                padding: "15px 20px",
+              }}
+            >
+              {game.loadingQuestions ? loadingMessage : playMessage}
+            </Button>
+            <Typography
+              textAlign={"center"}
+              variant="caption"
+              sx={{
+                opacity: 0.9,
+              }}
+            >
+              {i18n._("Rank in the top 5 to get the app for free")}
+            </Typography>
+          </Stack>
 
           <Stack
             sx={{
-              paddingTop: "60px",
+              paddingTop: "0px",
               gap: "30px",
               width: "100%",
               boxSizing: "border-box",
             }}
           >
-            <Stack>
-              <Typography variant="h5">{i18n._(`Rating:`)}</Typography>
-              <Typography variant="caption">
-                {i18n._("Rank in the top 5 to get the app for free")}
-              </Typography>
-            </Stack>
             <Stack
               sx={{
                 gap: "20px",
@@ -113,11 +126,75 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                 value={activeTab}
                 onChange={(event, newId) => setActiveTab(newId)}
               >
-                <Tab label={i18n._(`Global`) + ": " + globalGamers} value={0} />
-                <Tab label={i18n._(`Today`) + ": " + todayGamers} value={1} />
+                <Tab
+                  label={
+                    <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
+                      <Typography variant="body2">{i18n._(`Global`)}</Typography>
+                      <Typography
+                        component={"span"}
+                        sx={{
+                          color: "#000",
+                          fontWeight: "bold",
+                          borderRadius: "5px",
+                          fontSize: "10px",
+                          padding: "2px 4px",
+                          backgroundColor: "rgba(244, 244, 244, 0.7)",
+                        }}
+                      >
+                        {globalGamers}
+                      </Typography>
+                    </Stack>
+                  }
+                  value={0}
+                />
+                <Tab
+                  label={
+                    <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
+                      <Typography variant="body2">{i18n._(`Today`)}</Typography>
+                      <Typography
+                        component={"span"}
+                        sx={{
+                          color: "#000",
+                          fontWeight: "bold",
+                          borderRadius: "5px",
+                          fontSize: "10px",
+                          padding: "2px 4px",
+                          backgroundColor: "rgba(244, 244, 244, 0.7)",
+                        }}
+                      >
+                        {todayGamers}
+                      </Typography>
+                    </Stack>
+                  }
+                  value={1}
+                />
+
+                {IS_SHOW_CHAT_TAB && (
+                  <Tab
+                    label={
+                      <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
+                        <Typography variant="body2">{i18n._(`Chat`)}</Typography>
+                        <Typography
+                          component={"span"}
+                          sx={{
+                            color: "#fff",
+                            fontWeight: "bold",
+                            borderRadius: "5px",
+                            fontSize: "10px",
+                            padding: "2px 4px",
+                            backgroundColor: "rgba(218, 4, 4, 0.7)",
+                          }}
+                        >
+                          {2}
+                        </Typography>
+                      </Stack>
+                    }
+                    value={2}
+                  />
+                )}
               </Tabs>
 
-              <GameStats activeTab={activeTab === 0 ? "global" : "today"} />
+              {activeTab < 2 && <GameStats activeTab={activeTab === 0 ? "global" : "today"} />}
             </Stack>
           </Stack>
 

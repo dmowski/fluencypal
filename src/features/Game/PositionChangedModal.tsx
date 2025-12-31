@@ -121,7 +121,7 @@ export const PositionChangedModal = () => {
                     top: `${position * 70 + 12}px`,
                   }}
                 >
-                  <GameStatRow stat={stat} index={game.getRealPosition(stat.userId)} />
+                  <GameStatRow stat={stat} />
                 </Stack>
               );
             })}

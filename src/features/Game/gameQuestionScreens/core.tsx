@@ -2,7 +2,7 @@ import { Button, Stack, Typography } from "@mui/material";
 import { useGame } from "../useGame";
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
-import { ChevronLast, ChevronRight, Coins, Crown, X } from "lucide-react";
+import { ChevronLast, ChevronRight, Crown, X } from "lucide-react";
 import { useAuth } from "@/features/Auth/useAuth";
 import { GameStatRow } from "../GameStatRow";
 import { pointsIncreaseMap } from "../points";
@@ -106,7 +106,7 @@ export const MyStatsRows = () => {
       }}
     >
       {statsToShow.map((stat) => (
-        <GameStatRow key={stat.userId} stat={stat} index={game.getRealPosition(stat.userId)} />
+        <GameStatRow key={stat.userId} stat={stat} />
       ))}
     </Stack>
   );
