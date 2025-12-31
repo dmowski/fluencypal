@@ -3,7 +3,7 @@ import { WebcamDemoSection } from "../../types";
 import { Theme, themeMap } from "./theme";
 import { H2, SubTitle } from "./Typography";
 import { ColorIconTextList } from "@/features/Survey/ColorIconTextList";
-import { ArrowRight, CircleArrowRight, CircleCheckBig, MoveRight, Users } from "lucide-react";
+import { CircleArrowRight, CircleCheckBig, MoveRight, Users } from "lucide-react";
 
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import MicOffIcon from "@mui/icons-material/MicOff";
