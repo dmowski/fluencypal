@@ -19,82 +19,168 @@ import { HowItWorks } from "./HowItWorks";
 import { DynamicIcon } from "lucide-react/dynamic";
 import { WelcomeScreen2 } from "./WelcomeScreen2";
 
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 interface LandingPageProps {
   lang: SupportedLanguage;
 }
 export default function LandingPage({ lang }: LandingPageProps) {
   const i18n = getI18nInstance(lang);
 
+  const faqItems: FAQItem[] = [
+    {
+      question: i18n._(`What is FluencyPal?`),
+      answer: i18n._(
+        `FluencyPal is an AI-powered conversation practice app designed for intermediate and advanced learners. It helps you improve speaking fluency, pronunciation, and confidence through realistic conversations and instant feedback.`
+      ),
+    },
+
+    {
+      question: i18n._(`How does FluencyPal understand my learning goals?`),
+      answer: i18n._(
+        `When you start, FluencyPal asks a short series of questions about your goals, current language level, and areas you want to improve. You answer using your voice. Based on your responses, FluencyPal creates a personalized practice plan for you. For example, business English focuses on professional vocabulary and scenarios, travel English focuses on real-life situations, and interview preparation simulates interview questions with feedback.`
+      ),
+    },
+
+    {
+      question: i18n._(`What’s the price?`),
+      answer: i18n._(
+        `After the free trial, FluencyPal offers one monthly plan that gives you full access to all features. There is no automatic recurring payment. Each month, you decide whether you want to continue and pay again manually. This way, you are never charged when you are not using the app.`
+      ),
+    },
+
+    {
+      question: i18n._(`What level of speaking should I have?`),
+      answer: i18n._(
+        `FluencyPal is best suited for learners who can hold basic conversations and want to improve fluency, accuracy, and confidence. It works well for pre-intermediate, intermediate, and advanced speakers and adapts to your level over time.`
+      ),
+    },
+
+    {
+      question: i18n._(`Is there a free trial?`),
+      answer: i18n._(
+        `Yes. FluencyPal offers a free 3-day trial with full access to all features. No credit card is required to start the trial. After the trial, you can continue with a paid plan or earn free access through the game.`
+      ),
+    },
+
+    {
+      question: i18n._(`Can I use FluencyPal for free?`),
+      answer: i18n._(
+        `Yes. FluencyPal offers free full access for users who rank in the top 5 of our speaking game. The game is free to play and includes reading text aloud, describing images, discussing topics, and answering questions. You can improve your speaking skills while playing.`
+      ),
+    },
+
+    {
+      question: i18n._(`Can FluencyPal create a personal practice plan for me?`),
+      answer: i18n._(
+        `Yes. FluencyPal generates a personalized practice plan based on your goals and proficiency level. Your daily sessions focus on relevant vocabulary, grammar, and real-life conversations. You can interact with the AI using voice or text.`
+      ),
+    },
+
+    {
+      question: i18n._(`What is the main focus of FluencyPal?`),
+      answer: i18n._(
+        `FluencyPal is focused on speaking practice. You can use voice mode and optionally enable webcam feedback with an AI avatar to make conversations feel more realistic and engaging, while receiving feedback on your speaking performance.`
+      ),
+    },
+
+    {
+      question: i18n._(`Can I practice languages other than English?`),
+      answer: i18n._(
+        `Yes. FluencyPal supports multiple languages and adapts conversations to your selected language and proficiency level. Available languages include: ${supportedLanguages
+          .map((code) => fullEnglishLanguageName[code])
+          .join(", ")}.`
+      ),
+    },
+
+    {
+      question: i18n._(`What learning modes are available?`),
+      answer: i18n._(
+        `FluencyPal offers several learning modes: Casual Conversation for uninterrupted speaking practice, Talk & Correct for instant grammar and pronunciation feedback, Role-Play Scenarios for real-life situations, as well as grammar practice, vocabulary building, and progress tracking.`
+      ),
+    },
+
+    {
+      question: i18n._(`How do daily tasks help me improve?`),
+      answer: i18n._(
+        `Daily speaking tasks introduce new vocabulary and sentence structures, help you build a learning habit, and reinforce your skills to improve fluency faster.`
+      ),
+    },
+
+    {
+      question: i18n._(`Where can I use FluencyPal?`),
+      answer: i18n._(
+        `FluencyPal is a browser-based app, so you only need an internet browser to use it. You can run FluencyPal on a mobile phone, tablet, or desktop without installing anything.`
+      ),
+    },
+
+    {
+      question: i18n._(`How is my data handled and is my privacy protected?`),
+      answer: i18n._(
+        `FluencyPal stores conversation transcripts in its database to improve your learning experience. You can permanently delete your personal data at any time from the app settings. Voice processing is handled using OpenAI services, and FluencyPal does not store your voice recordings. Webcam data is not stored either — it is processed in real time by the AI and then immediately discarded.`
+      ),
+    },
+
+    {
+      question: i18n._(`Is FluencyPal a replacement for a human teacher?`),
+      answer: i18n._(
+        `FluencyPal is designed to help you practice speaking and build confidence, not to replace a human teacher. It works best as a daily speaking companion that helps you practice more often, get instant feedback, and prepare for real conversations.`
+      ),
+    },
+
+    {
+      question: i18n._(`How can I track my progress?`),
+      answer: i18n._(
+        `FluencyPal tracks your activity and completed tasks over time. As you practice regularly, conversations become more complex and feedback adapts to your level, helping you notice improvements in fluency, confidence, and accuracy.`
+      ),
+    },
+
+    {
+      question: i18n._(`What do I need to use FluencyPal?`),
+      answer: i18n._(
+        `To use FluencyPal, you need a modern internet browser and a microphone. A webcam is optional and only used if you enable webcam feedback. No installation is required.`
+      ),
+    },
+
+    {
+      question: i18n._(`Is my data used to train AI models?`),
+      answer: i18n._(
+        `FluencyPal does not use your personal data or conversations to train AI models.`
+      ),
+    },
+  ];
+  const pageUrl = "https://www.fluencypal.com" + getUrlStart(lang);
+
+  const seoFaqItems = faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question, // must be plain string
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer, // must be plain string
+    },
+  }));
+
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
+    "@type": "FAQPage",
     name: i18n._(`FluencyPal – Your AI English Speaking Partner`),
-    url: "https://fluencypal.com/",
-    description: i18n._(
-      `Boost your fluency with FluencyPal, the friendly AI English tutor that's ready to chat 24/7. Designed for intermediate and advanced learners, FluencyPal adapts to your speaking level, provides instant corrections, and helps you speak confidently.`
-    ),
+    url: pageUrl,
     inLanguage: lang,
+    mainEntity: seoFaqItems,
     publisher: {
       "@type": "Organization",
       name: "FluencyPal",
-      url: "https://fluencypal.com",
+      url: "https://www.fluencypal.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://fluencypal.com/logo.png",
+        url: "https://www.fluencypal.com/logo.png",
       },
     },
-    mainEntity: [
-      {
-        "@type": "FAQPage",
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: i18n._(`What is FluencyPal?`),
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: i18n._(
-                `FluencyPal is an AI-powered English conversation practice app designed for intermediate and advanced learners. It provides realistic conversational practice in multiple languages, with immediate feedback on speaking and pronunciation.`
-              ),
-            },
-          },
-
-          {
-            "@type": "Question",
-            name: i18n._(`Can I practice languages other than English?`),
-            acceptedAnswer: {
-              "@type": "Answer",
-              text:
-                i18n._(
-                  `Absolutely! FluencyPal supports various languages and adjusts conversations based on your chosen language and proficiency level. Available languages include:`
-                ) +
-                " " +
-                `${supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}.`,
-            },
-          },
-          {
-            "@type": "Question",
-            name: i18n._(`What learning modes are available?`),
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: i18n._(
-                `FluencyPal provides three modes: Casual Conversation for uninterrupted speaking practice, Talk & Correct for instant grammar and pronunciation feedback, and Beginner Mode for slower, guided conversations.`
-              ),
-            },
-          },
-          {
-            "@type": "Question",
-            name: i18n._(`How do daily tasks help me improve?`),
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: i18n._(
-                `Daily conversational tasks introduce new vocabulary and language structures, reinforcing your skills and accelerating fluency improvements.`
-              ),
-            },
-          },
-        ],
-      },
-    ],
   };
+
   return (
     <>
       <HeaderStatic lang={lang} transparentOnTop />
@@ -340,71 +426,12 @@ export default function LandingPage({ lang }: LandingPageProps) {
           <GeneralFaqBlock
             title={i18n._(`FAQ`)}
             items={[
-              {
-                question: i18n._(`What is FluencyPal?`),
-                answer: (
-                  <Typography>
-                    {i18n._(
-                      `FluencyPal is an AI-powered English conversation practice app designed for intermediate and advanced learners. It provides realistic conversational practice in multiple languages, with immediate feedback on speaking and pronunciation.`
-                    )}
-                  </Typography>
-                ),
-              },
-              {
-                question: i18n._(`Can I practice languages other than English?`),
-                answer: (
-                  <Stack sx={{ gap: "20px" }}>
-                    <Typography>
-                      {i18n._(
-                        `Absolutely! FluencyPal supports various languages and adjusts conversations based on your chosen language and proficiency level.`
-                      )}
-                    </Typography>
-                    <Stack sx={{ gap: "0px" }}>
-                      <Typography sx={{ fontSize: "1rem", fontWeight: 600, paddingBottom: "5px" }}>
-                        {i18n._(`Available languages:`)}
-                      </Typography>
-                      <Typography variant="body2" component="p">
-                        {supportedLanguagesToLearn
-                          .map((code) => fullEnglishLanguageName[code])
-                          .join(", ")}
-                      </Typography>
-                    </Stack>
-                  </Stack>
-                ),
-              },
-              {
-                question: i18n._(`What learning modes are available?`),
-                answer: (
-                  <Typography component="div">
-                    <ul style={{ margin: 0, paddingLeft: "1.5rem" }}>
-                      <li>
-                        <strong>{i18n._(`Casual Conversation:`)}</strong>{" "}
-                        {i18n._(`Practice speaking fluently without interruptions.`)}
-                      </li>
-                      <li>
-                        <strong>{i18n._(`Talk & Correct:`)}</strong>{" "}
-                        {i18n._(
-                          `Receive detailed feedback on grammar and pronunciation instantly.`
-                        )}
-                      </li>
-                      <li>
-                        <strong>{i18n._(`Beginner Mode:`)}</strong>{" "}
-                        {i18n._(`Slower conversations with guided support.`)}
-                      </li>
-                    </ul>
-                  </Typography>
-                ),
-              },
-              {
-                question: i18n._(`How do daily tasks help me improve?`),
-                answer: (
-                  <Typography>
-                    {i18n._(
-                      `Daily conversational tasks introduce new vocabulary and language structures, reinforcing your skills and accelerating fluency improvements.`
-                    )}
-                  </Typography>
-                ),
-              },
+              ...faqItems.map((item) => {
+                return {
+                  question: item.question,
+                  answer: <Typography>{item.answer}</Typography>,
+                };
+              }),
             ]}
           />
           <CtaBlock

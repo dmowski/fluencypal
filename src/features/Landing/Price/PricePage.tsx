@@ -1,23 +1,12 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 
-import {
-  buttonStyle,
-  maxContentWidth,
-  subTitleFontStyle,
-  titleFontStyle,
-} from "../landingSettings";
+import { maxContentWidth, subTitleFontStyle } from "../landingSettings";
 import { CtaBlock } from "../ctaBlock";
 import { Footer } from "../Footer";
 import { FirstEnterButton } from "../FirstEnterButton";
-import { FaqItem } from "../FAQ/FaqItem";
 import { PriceCard } from "./PriceCard";
-import { ContactList } from "../Contact/ContactList";
-import VerifiedIcon from "@mui/icons-material/Verified";
-import CancelIcon from "@mui/icons-material/Cancel";
+import Script from "next/script";
 import {
-  Gift,
-  HandCoins,
-  Mic,
   BookType,
   ChartNoAxesCombined,
   GraduationCap,
@@ -25,10 +14,8 @@ import {
   Sparkles,
   Speech,
   UsersRound,
-  Gamepad2,
   Blocks,
   Gem,
-  ShieldQuestionMark,
 } from "lucide-react";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
@@ -36,15 +23,108 @@ import { getUrlStart } from "@/features/Lang/getUrlStart";
 import { CurrencyToDisplay, PriceDisplay } from "./PriceDisplay";
 import { HeaderStatic } from "@/features/Header/HeaderStatic";
 import { PRICE_PER_MONTH_USD } from "@/common/subscription";
+import { GeneralFaqBlock } from "../FAQ/GeneralFaqBlock";
 
 interface PricePageProps {
   lang: SupportedLanguage;
 }
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 export const PricePage = ({ lang }: PricePageProps) => {
   const i18n = getI18nInstance(lang);
+
+  const faqItems: FAQItem[] = [
+    {
+      question: i18n._(`Is there a free trial?`),
+      answer: i18n._(
+        `Yes. FluencyPal offers a free 3-day trial with full access to all features. No credit card is required to start the trial.`
+      ),
+    },
+
+    {
+      question: i18n._(`Do I need to enter a credit card to start?`),
+      answer: i18n._(`No. You can start the free trial without entering any payment details.`),
+    },
+
+    {
+      question: i18n._(`Is the payment recurring?`),
+      answer: i18n._(
+        `No. FluencyPal does not use automatic recurring payments. You decide each month whether you want to continue and pay again manually.`
+      ),
+    },
+
+    {
+      question: i18n._(`What do I get with the paid plan?`),
+      answer: i18n._(
+        `The paid plan gives you full access to all FluencyPal features, including unlimited speaking practice, all learning modes, personalized practice plans, and progress tracking.`
+      ),
+    },
+
+    {
+      question: i18n._(`Can I stop using FluencyPal anytime?`),
+      answer: i18n._(
+        `Yes. Since there is no automatic renewal, you can simply stop using the app at any time without being charged again.`
+      ),
+    },
+
+    {
+      question: i18n._(`Can I use FluencyPal for free?`),
+      answer: i18n._(
+        `Yes. You can earn free full access by ranking in the top 5 of the FluencyPal speaking game. The game is free to play.`
+      ),
+    },
+
+    {
+      question: i18n._(`Are there any hidden fees?`),
+      answer: i18n._(
+        `No. The price shown is the full price. There are no hidden fees or surprise charges.`
+      ),
+    },
+  ];
+
+  const seoFaqItems = faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question, // must be plain string
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer, // must be plain string
+    },
+  }));
+
+  const pageUrl = "https://www.fluencypal.com" + getUrlStart(lang) + "pricing";
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    name: i18n._(`FluencyPal – Your AI English Speaking Partner`),
+    url: pageUrl,
+    inLanguage: lang,
+    mainEntity: seoFaqItems,
+    publisher: {
+      "@type": "Organization",
+      name: "FluencyPal",
+      url: "https://www.fluencypal.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.fluencypal.com/logo.png",
+      },
+    },
+  };
+
   return (
     <Stack sx={{}}>
       <HeaderStatic lang={lang} />
+
+      <Script
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       <div
         style={{
           width: "100%",
@@ -275,127 +355,20 @@ export const PricePage = ({ lang }: PricePageProps) => {
               width: "100%",
               alignItems: "center",
               backgroundColor: `#0a121e`,
+              color: "#fff",
             }}
           >
-            <Stack
-              sx={{
-                gap: "40px",
-                maxWidth: maxContentWidth,
-                width: "100%",
-                boxSizing: "border-box",
-                alignItems: "center",
-                padding: "80px 20px 100px 20px",
-              }}
-            >
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  boxSizing: "border-box",
-                  gap: "20px",
-                }}
-              >
-                <Typography
-                  align="center"
-                  variant="h3"
-                  component={"h2"}
-                  sx={{
-                    ...titleFontStyle,
-                    color: "#fff",
-                  }}
-                >
-                  {i18n._("FAQ")}
-                </Typography>
-              </Stack>
-
-              <Stack
-                sx={{
-                  width: "100%",
-                  gap: "0px",
-                  border: "1px solid rgba(0, 0, 0, 0.1)",
-                  padding: "15px",
-                  borderRadius: "4px",
-                  boxSizing: "border-box",
-                  flexDirection: "column",
-                  maxWidth: "800px",
-                }}
-              >
-                <FaqItem
-                  info={{
-                    question: i18n.t(`What’s included in my subscription?`),
-                    answer: (
-                      <Typography>
-                        {i18n.t(
-                          `Real-time AI speaking practice, scenario role-plays, listening drills, grammar and vocabulary exercises, personalized feedback, and progress analytics.`
-                        )}
-                      </Typography>
-                    ),
-                  }}
-                />
-
-                <FaqItem
-                  info={{
-                    question: i18n.t(`Can I cancel anytime?`),
-                    answer: (
-                      <Typography>
-                        {i18n.t(
-                          `Yes. You can cancel from your account settings at any time. You’ll keep access until the end of the current billing period.`
-                        )}
-                      </Typography>
-                    ),
-                  }}
-                />
-
-                <FaqItem
-                  info={{
-                    question: i18n.t(`Do you offer refunds?`),
-                    answer: (
-                      <Typography>
-                        {i18n.t(
-                          `We don’t issue partial refunds for unused time. After canceling, your subscription remains active until the period ends.`
-                        )}
-                      </Typography>
-                    ),
-                  }}
-                />
-
-                <FaqItem
-                  info={{
-                    question: i18n.t(`Will my learning progress be saved if I cancel?`),
-                    answer: (
-                      <Typography>
-                        {i18n.t(
-                          `Yes. Your history, achievements, and personalized settings are tied to your account and remain available when you return.`
-                        )}
-                      </Typography>
-                    ),
-                  }}
-                />
-
-                <FaqItem
-                  info={{
-                    question: i18n._("Can I buy credits in bulk?"),
-                    answer: (
-                      <Stack gap={"20px"}>
-                        <Typography>
-                          {i18n._(
-                            "Yes! We offer discounts when purchasing larger credit packages. Just contact me before you buy and I'll give you a discount."
-                          )}
-                        </Typography>
-                        <Stack
-                          gap={"10px"}
-                          sx={{
-                            width: "100%",
-                          }}
-                        >
-                          <Typography>{i18n._("Contacts:")}</Typography>
-                          <ContactList />
-                        </Stack>
-                      </Stack>
-                    ),
-                  }}
-                />
-              </Stack>
-            </Stack>
+            <GeneralFaqBlock
+              title={i18n._(`FAQ`)}
+              items={[
+                ...faqItems.map((item) => {
+                  return {
+                    question: item.question,
+                    answer: <Typography>{item.answer}</Typography>,
+                  };
+                }),
+              ]}
+            />
           </Stack>
         </Stack>
 
