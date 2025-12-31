@@ -14,11 +14,14 @@ import { GameOnboarding } from "./GameOnboarding";
 import { NavigationBar } from "../Navigation/NavigationBar";
 import { SupportedLanguage } from "../Lang/lang";
 import { useMemo, useState } from "react";
+import { ChartSection } from "../Chat/ChartSection";
+import { useChat } from "../Chat/useChat";
 
-const IS_SHOW_CHAT_TAB = false;
+const IS_SHOW_CHAT_TAB = true;
 
 export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const game = useGame();
+  const chat = useChat();
   const { i18n } = useLingui();
 
   const loadingMessage = i18n._(`Loading...`);
@@ -174,19 +177,21 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                     label={
                       <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
                         <Typography variant="body2">{i18n._(`Chat`)}</Typography>
-                        <Typography
-                          component={"span"}
-                          sx={{
-                            color: "#fff",
-                            fontWeight: "bold",
-                            borderRadius: "5px",
-                            fontSize: "10px",
-                            padding: "2px 4px",
-                            backgroundColor: "rgba(218, 4, 4, 0.7)",
-                          }}
-                        >
-                          {2}
-                        </Typography>
+                        {chat.messages.length > 0 && (
+                          <Typography
+                            component={"span"}
+                            sx={{
+                              color: "#fff",
+                              fontWeight: "bold",
+                              borderRadius: "5px",
+                              fontSize: "10px",
+                              padding: "2px 4px",
+                              backgroundColor: "rgba(218, 4, 4, 0.7)",
+                            }}
+                          >
+                            {chat.messages.length}
+                          </Typography>
+                        )}
                       </Stack>
                     }
                     value={2}
@@ -195,6 +200,8 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
               </Tabs>
 
               {activeTab < 2 && <GameStats activeTab={activeTab === 0 ? "global" : "today"} />}
+
+              {activeTab === 2 && <ChartSection />}
             </Stack>
           </Stack>
 
