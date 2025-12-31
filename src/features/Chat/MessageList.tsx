@@ -40,7 +40,6 @@ export function MessageList({ messages, currentUserId, onEdit, onDelete }: Messa
       sx={{
         flex: 1,
         overflowY: "auto",
-        p: 2,
         minHeight: 300,
         maxHeight: 600,
       }}
