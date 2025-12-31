@@ -52,32 +52,6 @@ export function Message({
     setIsDeleting(false);
   };
 
-  const userNameHeader = (
-    <Stack
-      sx={{
-        flexDirection: "row",
-        alignItems: "center",
-        gap: "10px",
-      }}
-    >
-      {userAvatarUrl && (
-        <Stack
-          component={"img"}
-          src={userAvatarUrl}
-          sx={{
-            width: "20px",
-            height: "20px",
-            borderRadius: "50%",
-            objectFit: "cover",
-          }}
-        />
-      )}
-      <Typography variant="caption" color="textSecondary">
-        {userName} • {updatedAgo}
-      </Typography>
-    </Stack>
-  );
-
   return (
     <Box
       sx={{
@@ -94,7 +68,35 @@ export function Message({
             width: "100%",
           }}
         >
-          {userNameHeader}
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            {userAvatarUrl && (
+              <Stack
+                component={"img"}
+                src={userAvatarUrl}
+                sx={{
+                  width: "20px",
+                  height: "20px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                }}
+              />
+            )}
+            <Typography variant="body2">{userName}</Typography>
+            <Typography
+              variant="caption"
+              sx={{
+                opacity: 0.7,
+              }}
+            >
+              {updatedAgo}
+            </Typography>
+          </Stack>
 
           {isEditing ? (
             <Stack
@@ -117,7 +119,7 @@ export function Message({
           )}
 
           {isEditing ? (
-            <Box sx={{ mt: 1, gap: 1, display: "flex" }}>
+            <Stack sx={{ gap: "10px", flexDirection: "row" }}>
               <Button
                 size="small"
                 onClick={handleSaveEdit}
@@ -129,7 +131,7 @@ export function Message({
               <Button size="small" onClick={() => setIsEditing(false)} disabled={isDeleting}>
                 Cancel
               </Button>
-            </Box>
+            </Stack>
           ) : (
             <>
               {message.updatedAtIso !== message.createdAtIso && (

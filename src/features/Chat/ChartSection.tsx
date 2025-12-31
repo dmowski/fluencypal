@@ -11,7 +11,7 @@ export const ChartSection = () => {
   const userId = auth.uid || "anonymous";
 
   return (
-    <Stack sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+    <Stack sx={{ height: "100%" }}>
       <MessageList
         messages={chat.messages}
         currentUserId={userId}
