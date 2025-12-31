@@ -116,9 +116,16 @@ function useProvideSettings(): SettingsContextType {
     initUserSettings();
   }, [userId, userSettingsDoc]);
 
-  const saveLoginTime = async () => {
+  const saveLastLoginTime = async () => {
     if (!userId || !userSettingsDoc) return;
     const formattedLastLoginIso = new Date().toISOString();
+    await setDoc(userSettingsDoc, { lastLoginAtDateTime: formattedLastLoginIso }, { merge: true });
+  };
+
+  const saveLoginTime = async () => {
+    if (!userId || !userSettingsDoc) return;
+
+    await saveLastLoginTime();
 
     const country = await getCountryByIP();
     const countryName = country
@@ -127,18 +134,21 @@ function useProvideSettings(): SettingsContextType {
 
     const photoUrl = auth.userInfo?.photoURL || "";
     const displayName = auth.userInfo?.displayName || "";
-
-    await setDoc(
-      userSettingsDoc,
-      { lastLoginAtDateTime: formattedLastLoginIso, country, countryName, photoUrl, displayName },
-      { merge: true }
-    );
+    await setDoc(userSettingsDoc, { country, countryName, photoUrl, displayName }, { merge: true });
   };
 
   useEffect(() => {
     setTimeout(() => {
       saveLoginTime();
     }, 1500);
+  }, [userId, userSettingsDoc]);
+
+  useEffect(() => {
+    if (!userId || !userSettingsDoc) return;
+    const interval = setInterval(() => {
+      saveLastLoginTime();
+    }, 60_000);
+    return () => clearInterval(interval);
   }, [userId, userSettingsDoc]);
 
   const userCreatedAt = userSettings?.createdAt || null;
