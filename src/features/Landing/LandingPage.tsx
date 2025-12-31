@@ -89,11 +89,10 @@ export default function LandingPage({ lang }: LandingPageProps) {
 
     {
       question: i18n._(`Can I practice languages other than English?`),
-      answer: i18n._(
-        `Yes. FluencyPal supports multiple languages and adapts conversations to your selected language and proficiency level. Available languages include: ${supportedLanguages
-          .map((code) => fullEnglishLanguageName[code])
-          .join(", ")}.`
-      ),
+      answer:
+        i18n._(
+          `Yes. FluencyPal supports multiple languages and adapts conversations to your selected language and proficiency level. Available languages include:`
+        ) + ` ${supportedLanguages.map((code) => fullEnglishLanguageName[code]).join(", ")}`,
     },
 
     {
