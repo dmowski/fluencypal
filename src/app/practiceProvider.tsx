@@ -23,6 +23,7 @@ import { TelegramProvider } from "./telegramProvider";
 import { TgNavigationProvider } from "@/features/Telegram/useTgNavigation";
 import { AppNavigationProvider } from "@/features/Navigation/useAppNavigation";
 import { AnalyticsProvider } from "@/features/Analytics/useAnalytics";
+import { ChatProvider } from "@/features/Chat/useChat";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
@@ -48,7 +49,9 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                           <HomeworkProvider>
                                             <PlanProvider>
                                               <AiConversationProvider>
-                                                <PayWallProvider>{children}</PayWallProvider>
+                                                <PayWallProvider>
+                                                  <ChatProvider>{children}</ChatProvider>
+                                                </PayWallProvider>
                                               </AiConversationProvider>
                                             </PlanProvider>
                                           </HomeworkProvider>

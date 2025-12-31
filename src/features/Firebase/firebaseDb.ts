@@ -9,7 +9,7 @@ import {
 import { firestore } from "./init";
 import { PaymentLog, TotalUsageInfo, UsageLog } from "@/common/usage";
 import { UserSettings } from "@/common/user";
-import { Conversation } from "@/common/conversation";
+import { ChatMessage, Conversation } from "@/common/conversation";
 import { Homework } from "@/common/homework";
 import { UserTaskStats } from "@/common/userTask";
 import { WordsStats } from "@/common/words";
@@ -27,6 +27,7 @@ import {
 import { QuizSurvey2 } from "../Goal/Quiz/types";
 import { DailyQuestionAnswer, DailyQuestionLike } from "../Game/DailyQuestion/types";
 import { InterviewQuizSurvey } from "../Case/types";
+import { UserChatMessage } from "../Chat/type";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -70,16 +71,21 @@ export const db = {
   collections: {
     homework: (userId?: string) =>
       userId ? dataPointCollection<Homework>(`users/${userId}/homeworks`) : null,
+
+    usersChatMessages: () => dataPointCollection<UserChatMessage>(`chat/global/messages`),
+
     conversation: (userId?: string) =>
       userId ? dataPointCollection<Conversation>(`users/${userId}/conversations`) : null,
 
     paymentLog: (userId?: string) =>
       userId ? dataPointCollection<PaymentLog>(`users/${userId}/payments`) : null,
+
     phraseCorrections: (userId?: string) =>
       userId ? dataPointCollection<PhraseCorrection>(`users/${userId}/phraseCorrections`) : null,
 
     goals: (userId?: string) =>
       userId ? dataPointCollection<GoalPlan>(`users/${userId}/goals`) : null,
+
     dailyQuestionsAnswers: (userId?: string) =>
       userId ? dataPointCollection<DailyQuestionAnswer>(`dailyQuestionsAnswers`) : null,
 
