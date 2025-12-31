@@ -36,7 +36,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
   return (
     <Stack
       sx={{
-        width: "100vw",
+        width: "100%",
         alignItems: "center",
         position: "relative",
         overflow: "hidden",
