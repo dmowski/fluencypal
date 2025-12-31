@@ -4,8 +4,8 @@ import { useGame } from "../Game/useGame";
 import { UserChatMessage } from "./type";
 import { useRef, useEffect } from "react";
 import { Message } from "./Message";
+import { useLingui } from "@lingui/react";
 
-// MessageList Component - Show all messages and auto-scroll to bottom
 interface MessageListProps {
   messages: UserChatMessage[];
   currentUserId: string;
@@ -17,6 +17,7 @@ export function MessageList({ messages, currentUserId, onEdit, onDelete }: Messa
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const game = useGame();
+  const { i18n } = useLingui();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -48,7 +49,7 @@ export function MessageList({ messages, currentUserId, onEdit, onDelete }: Messa
         <Box
           sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}
         >
-          <Typography color="textSecondary">No messages yet</Typography>
+          <Typography color="textSecondary">{i18n._("No messages yet")}</Typography>
         </Box>
       ) : (
         <>

@@ -13,6 +13,7 @@ import { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import dayjs from "dayjs";
+import { useLingui } from "@lingui/react";
 
 interface MessageProps {
   message: UserChatMessage;
@@ -34,6 +35,7 @@ export function Message({
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(message.content);
   const [isDeleting, setIsDeleting] = useState(false);
+  const { i18n } = useLingui();
 
   const updatedAgo = dayjs(message.updatedAtIso).fromNow();
 
@@ -126,17 +128,17 @@ export function Message({
                 disabled={isDeleting || !editedContent.trim()}
                 variant="contained"
               >
-                {isDeleting ? <CircularProgress size={20} /> : "Save"}
+                {isDeleting ? <CircularProgress size={20} /> : i18n._("Save")}
               </Button>
               <Button size="small" onClick={() => setIsEditing(false)} disabled={isDeleting}>
-                Cancel
+                {i18n._("Cancel")}
               </Button>
             </Stack>
           ) : (
             <>
               {message.updatedAtIso !== message.createdAtIso && (
                 <Typography variant="caption" color="textSecondary" sx={{ fontStyle: "italic" }}>
-                  (edited)
+                  ({i18n._("edited")})
                 </Typography>
               )}
             </>
@@ -148,7 +150,7 @@ export function Message({
               size="small"
               onClick={() => setIsEditing(true)}
               disabled={isDeleting}
-              title="Edit message"
+              title={i18n._("Edit message")}
             >
               <EditIcon fontSize="small" />
             </IconButton>
@@ -156,7 +158,7 @@ export function Message({
               size="small"
               onClick={handleDelete}
               disabled={isDeleting}
-              title="Delete message"
+              title={i18n._("Delete message")}
             >
               {isDeleting ? <CircularProgress size={20} /> : <DeleteIcon fontSize="small" />}
             </IconButton>

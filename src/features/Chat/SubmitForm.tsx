@@ -2,8 +2,8 @@
 import { Box, TextField, IconButton, CircularProgress } from "@mui/material";
 import { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
+import { useLingui } from "@lingui/react";
 
-// SubmitForm Component - Form to send new message
 interface SubmitFormProps {
   onSubmit: (message: string) => Promise<void>;
   isLoading: boolean;
@@ -12,6 +12,7 @@ interface SubmitFormProps {
 export function SubmitForm({ onSubmit, isLoading }: SubmitFormProps) {
   const [messageContent, setMessageContent] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const { i18n } = useLingui();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +28,7 @@ export function SubmitForm({ onSubmit, isLoading }: SubmitFormProps) {
     <Box component="form" onSubmit={handleSubmit} sx={{ p: 2, display: "flex", gap: 1 }}>
       <TextField
         fullWidth
-        placeholder="Type a message..."
+        placeholder={i18n._("Type a message...")}
         value={messageContent}
         onChange={(e) => setMessageContent(e.target.value)}
         disabled={isSending || isLoading}
