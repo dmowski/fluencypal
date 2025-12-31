@@ -15,7 +15,7 @@ export const getAllInterviews = (lang: SupportedLanguage): InterviewAllData => {
   const i18n = getI18nInstance(lang);
   const list: InterviewData[] = [
     getFrontendLandingData(lang),
-    getFrontendLandingData(lang),
+    getCsharpBackendDeveloperData(lang),
     getJuniorFrontendLandingData(lang),
 
     /*{
