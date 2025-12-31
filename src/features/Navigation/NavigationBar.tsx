@@ -98,9 +98,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
       component={"nav"}
       sx={{
         width: "100%",
-
         alignItems: "center",
-
         position: "relative",
         zIndex: 999,
 
