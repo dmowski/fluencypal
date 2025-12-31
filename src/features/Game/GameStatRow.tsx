@@ -11,7 +11,7 @@ import { useState } from "react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
-import { allGameTypes } from "./data";
+import { achievementsMaxPoints, allGameTypes } from "./data";
 
 interface IconColor {
   iconColor: string;
@@ -80,14 +80,6 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
     read_text: i18n._("Reader"),
   };
 
-  const achievementsMaxPoints: Record<GameQuestionType, number> = {
-    translate: 50,
-    sentence: 50,
-    describe_image: 50,
-    topic_to_discuss: 100,
-    read_text: 100,
-  };
-
   const achievementsIconMap: Record<GameQuestionType, IconName> = {
     translate: "languages",
     sentence: "pickaxe",
@@ -143,7 +135,7 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
               alignItems: "center",
               gap: "30px",
               width: "100%",
-              padding: "0 20px 80px 20px",
+              padding: "0 10px 80px 10px",
               maxWidth: "400px",
             }}
           >
@@ -373,7 +365,9 @@ export const GameStatRow = ({ stat, index }: { stat: UsersStat; index: number })
             fontWeight: 600,
             width: "max-content",
             color: top5 ? "primary.main" : "text.primary",
-            fontSize: top5 ? "1.5rem" : "0.8rem",
+            fontSize: top5 ? "1.5rem" : "0.9rem",
+
+            fontVariantNumeric: "tabular-nums",
           }}
         >
           {stat.points}
