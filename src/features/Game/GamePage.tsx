@@ -181,12 +181,12 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                           <Typography
                             component={"span"}
                             sx={{
-                              color: "#fff",
+                              color: "#000",
                               fontWeight: "bold",
                               borderRadius: "5px",
                               fontSize: "10px",
                               padding: "2px 4px",
-                              backgroundColor: "rgba(218, 4, 4, 0.7)",
+                              backgroundColor: "rgba(244, 244, 244, 0.7)",
                             }}
                           >
                             {chat.messages.length}
