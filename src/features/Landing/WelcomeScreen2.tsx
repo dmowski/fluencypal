@@ -1,6 +1,6 @@
 import { Stack, SxProps, Typography } from "@mui/material";
-import { FirstEnterButton } from "./FirstEnterButton";
-import { PageLabel, PageLabel2 } from "../Case/Landing/components/Typography";
+import { WelcomeScreenButton } from "./FirstEnterButton";
+import { PageLabel2 } from "../Case/Landing/components/Typography";
 import { ArrowRight } from "lucide-react";
 import { maxLandingWidth } from "./landingSettings";
 
@@ -179,7 +179,7 @@ export const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({
                 paddingTop: "40px",
               }}
             >
-              <FirstEnterButton
+              <WelcomeScreenButton
                 getStartedTitle={buttonTitle}
                 practiceLink={buttonHref}
                 openMyPracticeLinkTitle={openMyPracticeLinkTitle}
