@@ -541,6 +541,7 @@ export const ConversationCanvas2: React.FC<ConversationCanvasProps> = ({
             "@media (max-width: 600px)": {
               top: "0px",
             },
+            display: "none",
           }}
         >
           <GradingProgressBar value={progress} />
