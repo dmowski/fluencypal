@@ -12,6 +12,7 @@ import { fullEnglishLanguageName, SupportedLanguage } from "../Lang/lang";
 import { BadgeCheck, Check, Copy, Gem, House } from "lucide-react";
 import { defaultAvatar } from "../Game/avatars";
 import { NavigationBar } from "../Navigation/NavigationBar";
+import { UserSource } from "@/common/analytics";
 
 const copyToClipboard = async (text: string) => {
   try {
@@ -52,6 +53,11 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
     ? dayjs(lastConversationDateTime).fromNow()
     : "Never";
 
+  const userSource: UserSource | null = userStat.userData.userSource || null;
+  const isFromChatGpt =
+    userSource?.referrer?.toLowerCase().includes("chatgpt") ||
+    userSource?.utmSource?.toLowerCase().includes("chatgpt");
+
   const interviewStats = userStat.interviewStats || [];
   const gameUsername = game.userNames?.[userId || ""] || "";
   const userStats = game.stats.find((s) => s.userId === userId);
@@ -90,7 +96,12 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
         gap: "25px",
       }}
     >
-      <Stack>
+      <Stack
+        sx={{
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
         <img
           src={photoUrl || "/logo192.png"}
           alt={displayName}
@@ -101,6 +112,27 @@ const UserCard = ({ userStat, allTextInfo }: { userStat: UserStat; allTextInfo: 
             border: "1px solid  rgba(255, 255, 255, 0.1)",
           }}
         />
+
+        {isFromChatGpt && (
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "8px",
+              padding: "4px 0",
+              color: "#1da1f2",
+            }}
+          >
+            <Stack
+              component={"img"}
+              sx={{
+                width: "50px",
+                height: "50px",
+              }}
+              src="https://us1.discourse-cdn.com/openai1/original/4X/3/2/1/321a1ba297482d3d4060d114860de1aa5610f8a9.png"
+            />
+          </Stack>
+        )}
       </Stack>
       <Stack
         sx={{
