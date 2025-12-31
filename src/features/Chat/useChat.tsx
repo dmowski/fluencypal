@@ -23,7 +23,9 @@ function useProvideChat(): ChatContextType {
   const [messages, loading] = useCollectionData(messagesRef);
 
   const sortedMessages = useMemo(() => {
-    return messages ? [...messages].sort((a, b) => a.createdAtUtc - b.createdAtUtc) : [];
+    return messages
+      ? [...messages].sort((a, b) => a.createdAtIso.localeCompare(b.createdAtIso))
+      : [];
   }, [messages]);
 
   const addMessage = async (messageContent: string) => {
