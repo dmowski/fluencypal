@@ -149,7 +149,7 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
           paddingBottom: "30px",
         }}
       >
-        © 2025 FluencyPal. All rights reserved.
+        © 2026 FluencyPal. All rights reserved.
       </Typography>
     </Stack>
   );

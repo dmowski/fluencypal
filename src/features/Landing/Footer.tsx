@@ -156,7 +156,7 @@ const FooterComponent: React.FC<FooterProps> = ({ lang }) => {
           }}
         >
           <Typography variant="body1">FluencyPal</Typography>
-          <Typography variant="body1">© 2025</Typography>
+          <Typography variant="body1">© 2026</Typography>
           <Stack
             sx={{
               flexDirection: "row",
