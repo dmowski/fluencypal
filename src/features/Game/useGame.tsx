@@ -189,7 +189,7 @@ function useProvideGame(): GameContextType {
     );
 
     const uniqQuestions = generatedQuestions
-      //.filter((t) => t.type == "translate")
+      // .filter((t) => t.type == "sentence")
       .filter((question) => !questions.some((q) => q.id === question.id));
     const allQuestionsIds = [...questions, ...uniqQuestions];
     setQuestions(allQuestionsIds);

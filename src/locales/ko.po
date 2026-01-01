@@ -215,7 +215,7 @@ msgstr ""
 "**당신의 기술을 테스트해 보십니까?**  \n"
 "**FluencyPal에서 무료 모의 인터뷰**로 실제 경험을 모방하십시오 - 큰 날을 성공으로 이끄는 마지막 단계입니다!"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:85
+#: src/features/Game/gameQuestionScreens/core.tsx:84
 msgid "+{increasePoints} points"
 msgstr "+{increasePoints} 포인트"
 
@@ -1597,7 +1597,7 @@ msgstr "회사"
 msgid "Complete previous tasks first"
 msgstr "이전 작업을 먼저 완료하세요."
 
-#: src/features/Game/gameQuestionScreens/core.tsx:50
+#: src/features/Game/gameQuestionScreens/core.tsx:49
 #. js-lingui-explicit-id
 msgid "Complete the sentence"
 msgstr "문장을 완성하세요"
@@ -1735,7 +1735,6 @@ msgstr "연락처:"
 #: src/features/Case/data/frontend-senior/quizData.ts:283
 #: src/features/Case/data/frontend-senior/quizData.ts:333
 #: src/features/Dashboard/SelectLanguage.tsx:292
-#: src/features/Game/PositionChangedModal.tsx:130
 #: src/features/Goal/GoalQuestions.tsx:821
 #: src/features/Goal/GoalQuestions.tsx:860
 #: src/features/PayWall/CardValidator.tsx:135
@@ -2177,7 +2176,7 @@ msgid ""
 "background jobs (queues, batching, throttling)."
 msgstr ".NET에서 백그라운드 작업을 처리할 때 동시성을 관리하는 전략을 설명하세요 (큐, 배치, 스로틀링)."
 
-#: src/features/Game/gameQuestionScreens/core.tsx:48
+#: src/features/Game/gameQuestionScreens/core.tsx:47
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:216
 #. js-lingui-explicit-id
 msgid "Describe the image"
@@ -2361,7 +2360,7 @@ msgstr ""
 msgid "Discuss scaling, observability, failure modes, and operational readiness."
 msgstr "스케일링, 관측 가능성, 실패 모드 및 운영 준비성에 대해 논의하십시오."
 
-#: src/features/Game/gameQuestionScreens/core.tsx:51
+#: src/features/Game/gameQuestionScreens/core.tsx:50
 #. js-lingui-explicit-id
 msgid "Discuss the topic"
 msgstr "토픽 논의"
@@ -6450,7 +6449,7 @@ msgstr "새로운 단어:"
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
 #: src/features/Game/GameOnboarding.tsx:74
-#: src/features/Game/gameQuestionScreens/core.tsx:146
+#: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
 #: src/features/Goal/GoalQuestions.tsx:599
 #: src/features/Goal/GoalQuestions.tsx:966
@@ -6469,11 +6468,6 @@ msgstr "다음"
 #. js-lingui-explicit-id
 msgid "Next, please allow access to the microphone to communicate with the AI."
 msgstr "다음으로, AI와 소통하기 위해 마이크 접근을 허용해 주세요."
-
-#: src/features/Game/PositionChangedModal.tsx:98
-#. js-lingui-explicit-id
-msgid "Nice!"
-msgstr "좋아요!"
 
 #: src/features/Conversation/ConfirmConversationModal.tsx:73
 #. js-lingui-explicit-id
@@ -7665,7 +7659,7 @@ msgstr ""
 "최신 언어 학습 기사, 영어 연습 팁 및 AI 튜터 업데이트를 읽어보세요. FluencyPal과 함께 유창성 목표를 달성하기 위해 "
 "정보를 유지하고, 동기를 부여받고, 영감을 얻으세요."
 
-#: src/features/Game/gameQuestionScreens/core.tsx:52
+#: src/features/Game/gameQuestionScreens/core.tsx:51
 #. js-lingui-explicit-id
 msgid "Read the text"
 msgstr "텍스트를 읽어보세요"
@@ -8499,7 +8493,7 @@ msgid ""
 "and async communication."
 msgstr "API 게이트웨이, 인증, 서비스 및 비동기 통신을 포함한 간단한 마이크로서비스 아키텍처를 스케치하십시오."
 
-#: src/features/Game/gameQuestionScreens/core.tsx:40
+#: src/features/Game/gameQuestionScreens/core.tsx:39
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:242
 #. js-lingui-explicit-id
 msgid "Skip"
@@ -9494,7 +9488,7 @@ msgstr "전사 중..."
 msgid "Translate Guru"
 msgstr "번역 구루"
 
-#: src/features/Game/gameQuestionScreens/core.tsx:49
+#: src/features/Game/gameQuestionScreens/core.tsx:48
 #. js-lingui-explicit-id
 msgid "Translate the word"
 msgstr "단어를 번역하십시오"
@@ -10723,6 +10717,11 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Game/PositionChangedModal.tsx:98
+#. js-lingui-explicit-id
+#~ msgid "Nice!"
+#~ msgstr "좋아요!"
 
 #: src/features/Game/gameQuestionScreens/core.tsx:141
 #. js-lingui-explicit-id

@@ -1,23 +1,18 @@
 import { useEffect, useState } from "react";
 import { useGame } from "./useGame";
-import { Button, Stack, Typography } from "@mui/material";
-import { CustomModal } from "../uiKit/Modal/CustomModal";
-import { useLingui } from "@lingui/react";
+import { Stack } from "@mui/material";
 import { GameStatRow } from "./GameStatRow";
 import { UsersStat } from "./types";
-import { useUrlParam } from "../Url/useUrlParam";
 import { useAuth } from "../Auth/useAuth";
 
-export const PositionChangedModal = () => {
+export const PositionChanged = () => {
   const game = useGame();
   const auth = useAuth();
   const myUserId = auth.uid || "";
   const [stats, setStats] = useState<UsersStat[]>([]);
-  const [isShowModal, setIsShowModal] = useUrlParam("showPositionChangedModal");
+  const [isShow, setIsShow] = useState(false);
   const [positions, setPositions] = useState<Record<string, number>>({});
   const [myOldPosition, setMyOldPosition] = useState<number | null>(null);
-
-  const { i18n } = useLingui();
 
   useEffect(() => {
     if (game.stats.length < 1) {
@@ -68,69 +63,62 @@ export const PositionChangedModal = () => {
         [whomITookPositionFrom.userId]: 2,
       });
     }, 1000);
-    setIsShowModal(true);
+    setIsShow(true);
   }, [game.stats, myUserId]);
 
   const getPosition = (userId: string) => {
     return positions[userId] || 0;
   };
 
+  if (!isShow) return null;
   return (
-    <CustomModal isOpen={isShowModal} onClose={() => setIsShowModal(false)}>
+    <Stack
+      sx={{
+        height: "100%",
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "flex-end",
+      }}
+    >
       <Stack
         sx={{
-          height: "100%",
-          width: "100dvw",
-          alignItems: "center",
-          justifyContent: "flex-end",
+          padding: "0",
+          gap: "20px",
+          width: "100%",
+          maxWidth: "600px",
+          boxSizing: "border-box",
         }}
       >
         <Stack
           sx={{
-            padding: "20px 20px 0px 20px",
-            gap: "20px",
+            position: "relative",
             width: "100%",
-            maxWidth: "600px",
-            boxSizing: "border-box",
+            height: "300px",
+            ".position-changed-row": {
+              transition: "top 0.5s ease-in-out",
+              width: "100%",
+              height: "50px",
+              position: "absolute",
+              left: "0",
+            },
           }}
         >
-          <Stack>
-            <Typography variant="h6">{i18n._("Nice!")}</Typography>
-          </Stack>
-          <Stack
-            sx={{
-              position: "relative",
-              width: "100%",
-              height: "300px",
-              ".position-changed-row": {
-                transition: "top 0.5s ease-in-out",
-                width: "100%",
-                height: "50px",
-                position: "absolute",
-                left: "0",
-              },
-            }}
-          >
-            {stats.map((stat) => {
-              const position = getPosition(stat.userId);
-              return (
-                <Stack
-                  key={stat.userId}
-                  className="position-changed-row"
-                  style={{
-                    top: `${position * 70 + 12}px`,
-                  }}
-                >
-                  <GameStatRow stat={stat} />
-                </Stack>
-              );
-            })}
-          </Stack>
-          <Button variant="contained" size="large" onClick={() => setIsShowModal(false)}>
-            {i18n._("Continue")}
-          </Button>
+          {stats.map((stat) => {
+            const position = getPosition(stat.userId);
+            return (
+              <Stack
+                key={stat.userId}
+                className="position-changed-row"
+                style={{
+                  top: `${position * 70 + 12}px`,
+                }}
+              >
+                <GameStatRow stat={stat} />
+              </Stack>
+            );
+          })}
         </Stack>
       </Stack>
-    </CustomModal>
+    </Stack>
   );
 };

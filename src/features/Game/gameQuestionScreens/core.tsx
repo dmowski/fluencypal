@@ -3,9 +3,8 @@ import { useGame } from "../useGame";
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { ChevronLast, ChevronRight, Crown, X } from "lucide-react";
-import { useAuth } from "@/features/Auth/useAuth";
-import { GameStatRow } from "../GameStatRow";
 import { pointsIncreaseMap } from "../points";
+import { PositionChanged } from "../PositionChangedModal";
 
 export const GameContainer = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -88,30 +87,6 @@ export const TaskTitle = () => {
   );
 };
 
-export const MyStatsRows = () => {
-  const game = useGame();
-  const auth = useAuth();
-  const myUserId = auth.uid || "";
-  const nextUserId = game.nextPositionStat?.userId || "";
-
-  const statsToShow = game.stats.filter(
-    (stat) => stat.userId === myUserId || stat.userId === nextUserId
-  );
-
-  return (
-    <Stack
-      sx={{
-        gap: "10px",
-        width: "100%",
-      }}
-    >
-      {statsToShow.map((stat) => (
-        <GameStatRow key={stat.userId} stat={stat} />
-      ))}
-    </Stack>
-  );
-};
-
 export const FinishButton = ({
   isCorrect,
   setIsCorrect,
@@ -145,7 +120,7 @@ export const FinishButton = ({
       >
         {i18n._("Next")}
       </Button>
-      <MyStatsRows />
+      <PositionChanged />
     </Stack>
   );
 };
