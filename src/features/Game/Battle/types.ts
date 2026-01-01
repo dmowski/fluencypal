@@ -27,6 +27,8 @@ export interface GameBattle {
 
   winnerUserId: string | null;
   winnerDescription: string;
+
+  updatedAtIso: string;
 }
 
 // client side only

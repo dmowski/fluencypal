@@ -28,6 +28,7 @@ import { QuizSurvey2 } from "../Goal/Quiz/types";
 import { DailyQuestionAnswer, DailyQuestionLike } from "../Game/DailyQuestion/types";
 import { InterviewQuizSurvey } from "../Case/types";
 import { ChatLike, UserChatMessage } from "../Chat/type";
+import { GameBattle } from "../Game/Battle/types";
 
 interface FirestoreDataConverter<T> {
   toFirestore(model: T): any;
@@ -74,6 +75,7 @@ export const db = {
 
     usersChatMessages: () => dataPointCollection<UserChatMessage>(`chat/global/messages`),
     usersChatLikes: () => dataPointCollection<ChatLike>(`chat/global/likes`),
+    battle: () => dataPointCollection<GameBattle>(`battles`),
 
     conversation: (userId?: string) =>
       userId ? dataPointCollection<Conversation>(`users/${userId}/conversations`) : null,

@@ -1,6 +1,6 @@
 "use client";
 
-import { Stack } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import { useGame } from "./useGame";
 import { Typography } from "@mui/material";
 import { defaultAvatar } from "./avatars";
@@ -12,6 +12,9 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
 import { achievementsMaxPoints, allGameTypes } from "./data";
+import { FlameIcon, Swords, X } from "lucide-react";
+import { InfoStep } from "../Survey/InfoStep";
+import { BattleCard } from "./Battle/BattleCard";
 
 interface IconColor {
   iconColor: string;
@@ -47,6 +50,13 @@ const zeroColor: IconColor = {
   iconColor: "#fff",
   bgColor: "rgba(100, 100, 100, 0.5)",
 };
+const achievementsIconMap: Record<GameQuestionType, IconName> = {
+  translate: "languages",
+  sentence: "pickaxe",
+  describe_image: "image",
+  topic_to_discuss: "messages-square",
+  read_text: "book-open-text",
+};
 
 export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
   const game = useGame();
@@ -67,7 +77,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
     (a, b) => (achievements[b] || 0) - (achievements[a] || 0)
   );
 
-  const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowUserInfoModal, setIsShowUserInfoModal] = useState(false);
   const { i18n } = useLingui();
 
   const position = game.getRealPosition(stat.userId);
@@ -80,13 +90,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
     read_text: i18n._("Reader"),
   };
 
-  const achievementsIconMap: Record<GameQuestionType, IconName> = {
-    translate: "languages",
-    sentence: "pickaxe",
-    describe_image: "image",
-    topic_to_discuss: "messages-square",
-    read_text: "book-open-text",
-  };
+  const [isAskForDebates, setIsAskForDebates] = useState(false);
 
   const avatarComponent = (
     <Stack
@@ -126,10 +130,78 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
     </Stack>
   );
 
+  const [isBattleRequested, setIsBattleRequested] = useState(false);
+
   return (
     <>
-      {isShowModal && (
-        <CustomModal isOpen={true} onClose={() => setIsShowModal(false)}>
+      {isAskForDebates && (
+        <CustomModal isOpen={true} onClose={() => setIsAskForDebates(false)}>
+          <Stack
+            sx={{
+              width: "100%",
+              alignItems: "center",
+            }}
+          >
+            <Stack
+              sx={{
+                width: "100%",
+                maxWidth: "600px",
+              }}
+            >
+              <>
+                {isBattleRequested ? (
+                  <InfoStep
+                    title={i18n._("Debate Request Sent!")}
+                    subTitle={i18n._("Waiting for {userName} to respond.", { userName })}
+                    actionButtonTitle={i18n._("Close")}
+                    actionButtonEndIcon={<X />}
+                    width={"600px"}
+                    onClick={() => {
+                      setIsAskForDebates(false);
+                      setIsBattleRequested(false);
+                    }}
+                  />
+                ) : (
+                  <InfoStep
+                    title={i18n._("Debate Request")}
+                    subTitle={i18n._("Discuss and improve your skills together!")}
+                    actionButtonTitle={i18n._("Send Request")}
+                    actionButtonStartIcon={<Swords />}
+                    actionButtonEndIcon={<></>}
+                    width={"600px"}
+                    listItems={[
+                      {
+                        title: i18n._("Your debate request will be sent to {userName}", {
+                          userName,
+                        }),
+                        iconName: "message-circle",
+                      },
+                      {
+                        title: i18n._("{userName} will pick the topic for the debate", {
+                          userName,
+                        }),
+                        iconName: "messages-square",
+                      },
+                      {
+                        title: i18n._("The winner earns 20 game points!"),
+                        iconName: "coins",
+                      },
+                      {
+                        title: i18n._("You will see the response on the main page."),
+                        iconName: "bell",
+                      },
+                    ]}
+                    onClick={() => setIsBattleRequested(true)}
+                  />
+                )}
+              </>
+            </Stack>
+          </Stack>
+        </CustomModal>
+      )}
+
+      {isShowUserInfoModal && !isAskForDebates && (
+        <CustomModal isOpen={true} onClose={() => setIsShowUserInfoModal(false)}>
           <Stack
             sx={{
               alignItems: "center",
@@ -224,6 +296,8 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
               </Stack>
             </Stack>
 
+            <BattleCard userId={stat.userId} />
+
             <Stack sx={{ width: "100%", gap: "6px" }}>
               <Typography
                 variant="caption"
@@ -246,13 +320,6 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
                   const colorPosition = Math.min(
                     iconColors.length - 1,
                     Math.floor(((100 - achievementPercent) / 100) * iconColors.length)
-                  );
-
-                  console.log(
-                    "colorPosition",
-                    achievementsKey,
-                    achievementPercent + "%",
-                    colorPosition
                   );
 
                   const color = achievementPoints === 0 ? zeroColor : iconColors[colorPosition];
@@ -314,6 +381,16 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
                 })}
               </Stack>
             </Stack>
+
+            {!isMe && (
+              <Button
+                variant="contained"
+                startIcon={<Swords />}
+                onClick={() => setIsAskForDebates(true)}
+              >
+                {i18n._("Ask for debate")}
+              </Button>
+            )}
           </Stack>
         </CustomModal>
       )}
@@ -321,7 +398,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
       <Stack
         key={stat.userId}
         component={"button"}
-        onClick={() => setIsShowModal(true)}
+        onClick={() => setIsShowUserInfoModal(true)}
         sx={{
           flexDirection: "row",
           width: "100%",

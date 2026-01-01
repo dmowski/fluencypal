@@ -16,6 +16,7 @@ import { SupportedLanguage } from "../Lang/lang";
 import { useMemo, useState } from "react";
 import { ChartSection } from "../Chat/ChartSection";
 import { useChat } from "../Chat/useChat";
+import { BattleCard } from "./Battle/BattleCard";
 
 const IS_SHOW_CHAT_TAB = true;
 
@@ -50,6 +51,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
         }}
       >
         <GameOnboarding />
+        <BattleCard />
         <Stack
           sx={{
             width: "100%",

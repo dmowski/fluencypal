@@ -24,6 +24,7 @@ import { TgNavigationProvider } from "@/features/Telegram/useTgNavigation";
 import { AppNavigationProvider } from "@/features/Navigation/useAppNavigation";
 import { AnalyticsProvider } from "@/features/Analytics/useAnalytics";
 import { ChatProvider } from "@/features/Chat/useChat";
+import { BattleProvider } from "@/features/Game/Battle/useBattle";
 
 export const PracticeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
@@ -50,7 +51,9 @@ export const PracticeProvider = ({ children }: { children: React.ReactNode }): J
                                             <PlanProvider>
                                               <AiConversationProvider>
                                                 <PayWallProvider>
-                                                  <ChatProvider>{children}</ChatProvider>
+                                                  <ChatProvider>
+                                                    <BattleProvider>{children}</BattleProvider>
+                                                  </ChatProvider>
                                                 </PayWallProvider>
                                               </AiConversationProvider>
                                             </PlanProvider>
