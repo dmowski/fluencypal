@@ -26,6 +26,7 @@ export interface GameBattle {
   submittedUsersIds: string[];
 
   winnerUserId: string | null;
+  winnerDescription: string;
 }
 
 // client side only
