@@ -1,5 +1,6 @@
 import { NativeLangCode } from "@/libs/language/type";
 import { SupportedLanguage } from "../Lang/lang";
+import { GameBattle } from "./Battle/types";
 
 export type GameQuestionType =
   | "translate"
@@ -63,3 +64,11 @@ export type GameAchievements = Partial<Record<GameQuestionType, number>>;
 
 // [UserId]: achievement points
 export type GameUsersAchievements = Record<string, GameAchievements>;
+
+export interface SubmitBattleRequest {
+  battle: GameBattle;
+}
+
+export interface SubmitBattleResponse {
+  isDone: boolean;
+}

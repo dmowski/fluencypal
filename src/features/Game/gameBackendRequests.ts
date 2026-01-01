@@ -1,4 +1,10 @@
-import { GameUsersPoints, GetGameQuestionsResponse, UsersStat } from "@/features/Game/types";
+import {
+  GameUsersPoints,
+  GetGameQuestionsResponse,
+  SubmitBattleRequest,
+  SubmitBattleResponse,
+  UsersStat,
+} from "@/features/Game/types";
 import { GetGameQuestionsRequest, SubmitAnswerRequest, SubmitAnswerResponse } from "./types";
 
 export const getSortedStatsFromData = (userPoints: GameUsersPoints) => {
@@ -50,6 +56,19 @@ export const submitAnswerRequest = async (request: SubmitAnswerRequest, authKey:
     body: JSON.stringify(request),
   });
   const data = (await response.json()) as SubmitAnswerResponse;
+  return data;
+};
+
+export const submitBattleRequest = async (request: SubmitBattleRequest, authKey: string) => {
+  const response = await fetch(`/api/game/submitBattle`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authKey}`,
+    },
+    body: JSON.stringify(request),
+  });
+  const data = (await response.json()) as SubmitBattleResponse;
   return data;
 };
 

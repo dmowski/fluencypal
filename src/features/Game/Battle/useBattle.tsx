@@ -10,6 +10,7 @@ import { useBattleQuestions } from "./useBattleQuestions";
 import { uniq } from "@/libs/uniq";
 import { useTextAi } from "@/features/Ai/useTextAi";
 import { useGame } from "../useGame";
+import { submitBattleRequest } from "../gameBackendRequests";
 
 interface SubmitResult {
   isWinnerExists: boolean;
@@ -198,12 +199,21 @@ Please provide your decision in the following JSON format:
       const winnerUserId = result.winnerUserId || battle.usersIds[0];
       const winnerDescription = result.reason;
 
-      await editBattle(battleId, {
+      const updatedBattle = {
         ...battle,
         submittedUsersIds: updatedSubmittedUsersIds,
         winnerUserId,
         winnerDescription,
-      });
+      };
+      await editBattle(battleId, updatedBattle);
+
+      await submitBattleRequest(
+        {
+          battle: updatedBattle,
+        },
+        await auth.getToken()
+      );
+
       return { isWinnerExists: true };
     }
     return { isWinnerExists: false };
