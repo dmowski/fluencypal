@@ -15,7 +15,7 @@ import { achievementsMaxPoints, allGameTypes } from "./data";
 import { Swords, X } from "lucide-react";
 import { InfoStep } from "../Survey/InfoStep";
 import { useBattle } from "./Battle/useBattle";
-import { BATTLE_WIN_POINTS } from "./Battle/data";
+import { BATTLE_WIN_POINTS, IS_BATTLE_FEATURE_ENABLED } from "./Battle/data";
 
 interface IconColor {
   iconColor: string;
@@ -357,7 +357,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
               </Stack>
             </Stack>
 
-            {!isMe && (
+            {!isMe && IS_BATTLE_FEATURE_ENABLED && (
               <Button
                 variant="contained"
                 disabled={isAlreadyAskedForBattle}

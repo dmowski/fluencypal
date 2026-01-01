@@ -7,6 +7,7 @@ import { GameStatRow } from "../GameStatRow";
 import dayjs from "dayjs";
 import { useAuth } from "@/features/Auth/useAuth";
 import { Badge, BadgeCheck, Mic, Swords, Trash } from "lucide-react";
+import { IS_BATTLE_FEATURE_ENABLED } from "./data";
 
 export const BattleRow = ({ battle }: { battle: GameBattle }) => {
   const { i18n } = useLingui();
@@ -177,14 +178,7 @@ export const BattleRow = ({ battle }: { battle: GameBattle }) => {
               )}
 
               {isAcceptedByAll && (
-                <Button
-                  variant="contained"
-                  color="info"
-                  startIcon={<Mic />}
-                  onClick={() => {
-                    //battles.acceptBattle(battle.battleId);
-                  }}
-                >
+                <Button variant="contained" color="info" startIcon={<Mic />} onClick={() => {}}>
                   {i18n._("Start Debate")}
                 </Button>
               )}
@@ -217,10 +211,8 @@ export const BattleCard = ({ userId }: { userId?: string }) => {
     return true;
   });
 
-  if (battlesToShow.length === 0) {
-    return null;
-  }
-
+  if (battlesToShow.length === 0) return null;
+  if (!IS_BATTLE_FEATURE_ENABLED) return null;
   return (
     <Stack
       sx={{
