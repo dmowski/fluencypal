@@ -6,7 +6,6 @@ import { useLingui } from "@lingui/react";
 import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { Swords } from "lucide-react";
 import { GameStats, isTodayStat } from "./GameStats";
-import { PositionChangedModal } from "./PositionChangedModal";
 import { exitFullScreen, goFullScreen } from "@/libs/fullScreen";
 import { GameMyAvatar } from "./GameMyAvatar";
 import { GameMyUsername } from "./GameMyUsername";
@@ -16,7 +15,7 @@ import { SupportedLanguage } from "../Lang/lang";
 import { useMemo, useState } from "react";
 import { ChartSection } from "../Chat/ChartSection";
 import { useChat } from "../Chat/useChat";
-import { BattleCard } from "./Battle/BattleCard";
+import { BattleSection } from "./Battle/BattleSection";
 
 const IS_SHOW_CHAT_TAB = true;
 
@@ -65,7 +64,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
             zIndex: 1,
           }}
         >
-          <BattleCard />
+          <BattleSection />
           <Stack
             sx={{
               flexDirection: "column",

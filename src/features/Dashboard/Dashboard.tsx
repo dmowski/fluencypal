@@ -14,7 +14,7 @@ import { useAppNavigation } from "../Navigation/useAppNavigation";
 import { DashboardBlur } from "./DashboardBlur";
 import { RolePlayModal } from "../RolePlay/RolePlayModal";
 import { DailyQuestionBadge } from "../Game/DailyQuestion/DailyQuestionBadge";
-import { BattleCard } from "../Game/Battle/BattleCard";
+import { BattleSection } from "../Game/Battle/BattleSection";
 
 interface DashboardProps {
   lang: SupportedLanguage;
@@ -44,7 +44,7 @@ export function Dashboard({ lang }: DashboardProps) {
         >
           {appNavigation.currentPage === "home" && (
             <>
-              <BattleCard />
+              <BattleSection />
               {IS_SHOW_DAILY_QUESTION_BADGE && <DailyQuestionBadge />}
               {!IS_SHOW_DAILY_QUESTION_BADGE && <GameBadge />}
               <PlanDashboardCards lang={lang} />

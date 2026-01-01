@@ -9,7 +9,7 @@ import { useAuth } from "@/features/Auth/useAuth";
 import { Badge, BadgeCheck, Mic, Swords, Trash } from "lucide-react";
 import { IS_BATTLE_FEATURE_ENABLED } from "./data";
 
-export const BattleRow = ({ battle }: { battle: GameBattle }) => {
+export const BattleCard = ({ battle }: { battle: GameBattle }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const battles = useBattle();
@@ -196,33 +196,6 @@ export const BattleRow = ({ battle }: { battle: GameBattle }) => {
           )}
         </Stack>
       </Stack>
-    </Stack>
-  );
-};
-
-export const BattleCard = ({ userId }: { userId?: string }) => {
-  const { i18n } = useLingui();
-  const battles = useBattle();
-
-  const battlesToShow = battles.battles.filter((battle) => {
-    if (userId) {
-      return battle.usersIds.includes(userId);
-    }
-    return true;
-  });
-
-  if (battlesToShow.length === 0) return null;
-  if (!IS_BATTLE_FEATURE_ENABLED) return null;
-  return (
-    <Stack
-      sx={{
-        gap: "20px",
-        width: "100%",
-      }}
-    >
-      {battlesToShow.map((battle) => (
-        <BattleRow key={battle.battleId} battle={battle} />
-      ))}
     </Stack>
   );
 };
