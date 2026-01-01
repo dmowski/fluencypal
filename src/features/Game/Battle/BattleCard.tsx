@@ -1,13 +1,23 @@
 import { useLingui } from "@lingui/react";
-import { Button, IconButton, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useBattle } from "./useBattle";
 import { GameBattle } from "./types";
 import { useGame } from "../useGame";
 import { GameStatRow } from "../GameStatRow";
 import dayjs from "dayjs";
 import { useAuth } from "@/features/Auth/useAuth";
-import { Badge, BadgeCheck, Mic, Swords, Trash } from "lucide-react";
+import { Badge, BadgeCheck, CircleEllipsis, Mic, Swords, Trash } from "lucide-react";
 import { IS_BATTLE_FEATURE_ENABLED } from "./data";
+import { useState } from "react";
 
 export const BattleCard = ({ battle }: { battle: GameBattle }) => {
   const { i18n } = useLingui();
@@ -26,6 +36,8 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
   const isMyBattle = battle.usersIds.includes(auth.uid || "");
   const isAcceptedByMe = battle.approvedUsersIds.includes(auth.uid || "");
   const isAcceptedByAll = battle.approvedUsersIds.length === battle.usersIds.length;
+
+  const [isShowMenu, setIsShowMenu] = useState<null | HTMLElement>(null);
 
   return (
     <Stack
@@ -182,16 +194,36 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
                   {i18n._("Start Debate")}
                 </Button>
               )}
-              <IconButton
-                onClick={() => {
-                  const isConfirm = confirm(i18n._("Are you sure you want to reject this battle?"));
-                  if (isConfirm) battles.deleteBattle(battle.battleId);
-                }}
-                color="error"
-                size="small"
-              >
-                <Trash size={"16px"} />
+              <IconButton onClick={(e) => setIsShowMenu(e.currentTarget)} size="small">
+                <CircleEllipsis size={"16px"} />
               </IconButton>
+              <Menu
+                anchorEl={isShowMenu}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                open={Boolean(isShowMenu)}
+                onClose={() => setIsShowMenu(null)}
+              >
+                <MenuItem
+                  sx={{}}
+                  onClick={() => {
+                    const isConfirm = confirm(
+                      i18n._("Are you sure you want to reject this battle?")
+                    );
+                    if (isConfirm) battles.deleteBattle(battle.battleId);
+                  }}
+                >
+                  <ListItemIcon>
+                    <Trash />
+                  </ListItemIcon>
+                  <ListItemText>
+                    <Typography>{i18n._("Remove debate")}</Typography>
+                  </ListItemText>
+                </MenuItem>
+              </Menu>
             </>
           )}
         </Stack>
