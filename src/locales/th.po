@@ -405,7 +405,7 @@ msgstr "เกี่ยวกับเป้าหมายของคุณ"
 msgid "Academic Word List"
 msgstr "รายชื่อคำศัพท์วิชาการ"
 
-#: src/features/Game/Battle/BattleCard.tsx:166
+#: src/features/Game/Battle/BattleCard.tsx:496
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "ยอมรับ"
@@ -708,6 +708,11 @@ msgstr "การอัปเดตติวเตอร์ AI"
 msgid "AI vs Humans"
 msgstr "AI กับ มนุษย์"
 
+#: src/features/Game/Battle/BattleCard.tsx:295
+#. js-lingui-explicit-id
+msgid "AI will evaluate answers and determine the winner."
+msgstr "AI จะประเมินคำตอบและตัดสินผู้ชนะ"
+
 #: src/features/Dashboard/ConversationSelectCard.tsx:136
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
@@ -921,7 +926,7 @@ msgstr "คุณแน่ใจหรือว่าต้องการลบ
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "คุณแน่ใจไหมว่าต้องการลบเป้าหมายของคุณ? การกระทำนี้ไม่สามารถยกเลิกได้."
 
-#: src/features/Game/Battle/BattleCard.tsx:187
+#: src/features/Game/Battle/BattleCard.tsx:545
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "คุณแน่ใจหรือว่าต้องการปฏิเสธการต่อสู้นี้?"
@@ -1612,6 +1617,7 @@ msgstr ""
 "โครงสร้างที่ชัดเจนสำหรับการออกแบบระบบ "
 "ในที่สุดฉันก็อธิบายข้อแลกเปลี่ยนโดยไม่พูดวกไปวนมา"
 
+#: src/features/Game/Battle/BattleCard.tsx:209
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -2171,10 +2177,20 @@ msgstr "ข้อมูล & ธุรกรรม"
 msgid "Databases & Transactions"
 msgstr "ฐานข้อมูล & ธุรกรรม"
 
-#: src/features/Game/Battle/BattleCard.tsx:87
+#: src/features/Game/Battle/BattleCard.tsx:409
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "อภิปราย"
+
+#: src/features/Game/Battle/BattleCard.tsx:217
+#. js-lingui-explicit-id
+msgid "Debate completed!"
+msgstr "การโต้วาทีเสร็จสิ้น!"
+
+#: src/features/Game/Battle/BattleCard.tsx:115
+#. js-lingui-explicit-id
+msgid "Debate ended!"
+msgstr "การถกเถียงสิ้นสุดลง!"
 
 #: src/features/Game/GameStatRow.tsx:142
 #. js-lingui-explicit-id
@@ -2185,6 +2201,11 @@ msgstr "คำขอการโต้วาที"
 #. js-lingui-explicit-id
 msgid "Debate Request Sent!"
 msgstr "คำขอการโต้วาทีถูกส่งแล้ว!"
+
+#: src/features/Game/Battle/BattleCard.tsx:277
+#. js-lingui-explicit-id
+msgid "Debate started!"
+msgstr "การโต้วาทีเริ่มขึ้นแล้ว!"
 
 #: src/features/Game/Battle/useBattleQuestions.ts:130
 #. js-lingui-explicit-id
@@ -6415,6 +6436,13 @@ msgstr "เรามาตัดสินใจกันว่าเราจะ
 msgid "Let's go"
 msgstr "ไปเลย"
 
+#: src/features/Game/Battle/BattleCard.tsx:278
+#. js-lingui-explicit-id
+msgid "Let's see who has the best arguments."
+msgstr ""
+"\n"
+"มาดูกันว่าใครมีเหตุผลที่ดีที่สุด\n"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:255
 #. js-lingui-explicit-id
 msgid "Let's talk about your goals a bit more"
@@ -6894,6 +6922,7 @@ msgstr "คำศัพท์ใหม่:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
+#: src/features/Game/Battle/BattleCard.tsx:279
 #: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
@@ -6989,6 +7018,11 @@ msgid "No Projections Available"
 msgstr ""
 "\n"
 "ไม่มีการคาดการณ์ที่มีอยู่\n"
+
+#: src/features/Game/Battle/BattleCard.tsx:203
+#. js-lingui-explicit-id
+msgid "No reason provided."
+msgstr "ไม่มีเหตุผลที่ระบุ"
 
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
 #. js-lingui-explicit-id
@@ -7206,6 +7240,7 @@ msgid "Open plan"
 msgstr "เปิดแผน"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
+#: src/features/Game/Battle/BattleCard.tsx:518
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "เปิดผลลัพธ์"
@@ -8413,6 +8448,11 @@ msgstr "โหลดหน้าเว็บใหม่"
 msgid "Remote Work"
 msgstr "งานทางไกล"
 
+#: src/features/Game/Battle/BattleCard.tsx:554
+#. js-lingui-explicit-id
+msgid "Remove debate"
+msgstr "ลบการโต้วาที"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:236
 #. js-lingui-explicit-id
 msgid "Remove my data (delete account)"
@@ -9223,7 +9263,7 @@ msgstr "เริ่มสัมภาษณ์จำลอง"
 msgid "Start Call"
 msgstr "เริ่มการโทร"
 
-#: src/features/Game/Battle/BattleCard.tsx:182
+#: src/features/Game/Battle/BattleCard.tsx:512
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "เริ่มดีเบต"
@@ -9520,6 +9560,11 @@ msgstr "ส่ง"
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:256
 #. js-lingui-explicit-id
 msgid "Submit answer"
+msgstr "ส่งคำตอบ"
+
+#: src/features/Game/Battle/BattleCard.tsx:219
+#. js-lingui-explicit-id
+msgid "Submit Answers"
 msgstr "ส่งคำตอบ"
 
 #: src/features/Goal/GoalQuestions.tsx:1181
@@ -9940,10 +9985,16 @@ msgstr ""
 msgid "The topics for the debate will be randomly selected."
 msgstr "หัวข้อสำหรับการโต้วาทีจะถูกสุ่มเลือก"
 
+#: src/features/Game/Battle/BattleCard.tsx:283
 #: src/features/Game/GameStatRow.tsx:161
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "ผู้ชนะได้รับ {points} คะแนนจากเกม!"
+
+#: src/features/Game/Battle/BattleCard.tsx:116
+#. js-lingui-explicit-id
+msgid "The winner has been declared."
+msgstr "ผู้ชนะได้ถูกประกาศแล้ว"
 
 #: src/features/Dashboard/BrainCard.tsx:148
 #. js-lingui-explicit-id
@@ -10143,6 +10194,11 @@ msgstr "เปิดเสียง"
 msgid "Type a message..."
 msgstr "พิมพ์ข้อความ..."
 
+#: src/features/Game/Battle/BattleCard.tsx:253
+#. js-lingui-explicit-id
+msgid "Type your answer here..."
+msgstr "พิมพ์คำตอบของคุณที่นี่..."
+
 #: src/features/Case/data/frontend-junior/techData.tsx:24
 #: src/features/Case/data/frontend-senior/techData.tsx:24
 #. js-lingui-explicit-id
@@ -10326,7 +10382,7 @@ msgstr "โหมดบันทึกเสียง"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:176
+#: src/features/Game/Battle/BattleCard.tsx:506
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "กำลังรอผู้เล่นคนอื่นยอมรับ..."
@@ -10745,7 +10801,7 @@ msgstr "AI จะสามารถเข้าใจอารมณ์ของ
 msgid "Will traditional jobs still exist in 20 years?"
 msgstr "งานแบบดั้งเดิมจะยังคงอยู่ในอีก 20 ปีข้างหน้าหรือไม่?"
 
-#: src/features/Game/Battle/BattleCard.tsx:169
+#: src/features/Game/Battle/BattleCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "ผู้ชนะจะได้รับ {points} คะแนน"
@@ -11175,6 +11231,16 @@ msgstr ""
 msgid "You have"
 msgstr "คุณมี"
 
+#: src/features/Game/Battle/BattleCard.tsx:218
+#. js-lingui-explicit-id
+msgid "You have completed all the questions."
+msgstr "คุณได้ทำคำถามทั้งหมดเสร็จเรียบร้อยแล้ว"
+
+#: src/features/Game/Battle/BattleCard.tsx:524
+#. js-lingui-explicit-id
+msgid "You have submitted your answers. Waiting for others..."
+msgstr "คุณได้ส่งคำตอบเรียบร้อยแล้ว กำลังรอผู้อื่น..."
+
 #: src/features/Case/data/frontend-senior/painSection.ts:23
 #. js-lingui-explicit-id
 msgid ""
@@ -11265,10 +11331,16 @@ msgstr "ความสำเร็จของคุณ"
 msgid "Your AI speaking partner"
 msgstr "คู่สนทนา AI ของคุณ"
 
+#: src/features/Game/Battle/BattleCard.tsx:252
 #: src/features/Survey/RecordUserAudioAnswer.tsx:64
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "คำตอบของคุณ"
+
+#: src/features/Game/Battle/BattleCard.tsx:289
+#. js-lingui-explicit-id
+msgid "Your answers will be visible to your opponent after you submit them."
+msgstr "คำตอบของคุณจะถูกมองเห็นโดยคู่แข่งของคุณหลังจากที่คุณส่งคำตอบแล้ว"
 
 #: src/features/Game/GameOnboarding.tsx:106
 #. js-lingui-explicit-id

@@ -402,7 +402,7 @@ msgstr "Про вашу мету"
 msgid "Academic Word List"
 msgstr "Академічний Список Слів"
 
-#: src/features/Game/Battle/BattleCard.tsx:166
+#: src/features/Game/Battle/BattleCard.tsx:496
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Прийняти"
@@ -704,6 +704,11 @@ msgstr "Оновлення AI Репетитора"
 msgid "AI vs Humans"
 msgstr "ШІ проти людей"
 
+#: src/features/Game/Battle/BattleCard.tsx:295
+#. js-lingui-explicit-id
+msgid "AI will evaluate answers and determine the winner."
+msgstr "AI оцінить відповіді та визначить переможця."
+
 #: src/features/Dashboard/ConversationSelectCard.tsx:136
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
@@ -919,7 +924,7 @@ msgstr "Ви впевнені, що хочете видалити свій ак�
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Ви впевнені, що хочете видалити свою мету? Цю дію не можна скасувати."
 
-#: src/features/Game/Battle/BattleCard.tsx:187
+#: src/features/Game/Battle/BattleCard.tsx:545
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Ви впевнені, що хочете відхилити цей виклик?"
@@ -1606,6 +1611,7 @@ msgstr ""
 "Чітка структура для проектування систем. Нарешті пояснив компроміси без "
 "багатослів'я."
 
+#: src/features/Game/Battle/BattleCard.tsx:209
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -2161,10 +2167,20 @@ msgstr "Дані та транзакції"
 msgid "Databases & Transactions"
 msgstr "Бази даних і транзакції"
 
-#: src/features/Game/Battle/BattleCard.tsx:87
+#: src/features/Game/Battle/BattleCard.tsx:409
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Дебати"
+
+#: src/features/Game/Battle/BattleCard.tsx:217
+#. js-lingui-explicit-id
+msgid "Debate completed!"
+msgstr "Дебати завершено!"
+
+#: src/features/Game/Battle/BattleCard.tsx:115
+#. js-lingui-explicit-id
+msgid "Debate ended!"
+msgstr "Дебати завершено!"
 
 #: src/features/Game/GameStatRow.tsx:142
 #. js-lingui-explicit-id
@@ -2175,6 +2191,11 @@ msgstr "Запит на дебати"
 #. js-lingui-explicit-id
 msgid "Debate Request Sent!"
 msgstr "Запит на дебати надіслано!"
+
+#: src/features/Game/Battle/BattleCard.tsx:277
+#. js-lingui-explicit-id
+msgid "Debate started!"
+msgstr "Дебати розпочаті!"
 
 #: src/features/Game/Battle/useBattleQuestions.ts:130
 #. js-lingui-explicit-id
@@ -6434,6 +6455,11 @@ msgstr "Давайте вирішимо, з якою швидкістю ми б�
 msgid "Let's go"
 msgstr "Давайте почнемо"
 
+#: src/features/Game/Battle/BattleCard.tsx:278
+#. js-lingui-explicit-id
+msgid "Let's see who has the best arguments."
+msgstr "Давай подивимось, у кого найкращі аргументи."
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:255
 #. js-lingui-explicit-id
 msgid "Let's talk about your goals a bit more"
@@ -6916,6 +6942,7 @@ msgstr "Нові слова:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
+#: src/features/Game/Battle/BattleCard.tsx:279
 #: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
@@ -7011,6 +7038,11 @@ msgid "No Projections Available"
 msgstr ""
 "\n"
 "Немає доступних проекцій\n"
+
+#: src/features/Game/Battle/BattleCard.tsx:203
+#. js-lingui-explicit-id
+msgid "No reason provided."
+msgstr "Жодної причини не вказано."
 
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
 #. js-lingui-explicit-id
@@ -7229,6 +7261,7 @@ msgid "Open plan"
 msgstr "Відкритий план"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
+#: src/features/Game/Battle/BattleCard.tsx:518
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Відкрити результати"
@@ -8453,6 +8486,11 @@ msgstr "Перезавантажте сторінку"
 msgid "Remote Work"
 msgstr "Віддалена робота"
 
+#: src/features/Game/Battle/BattleCard.tsx:554
+#. js-lingui-explicit-id
+msgid "Remove debate"
+msgstr "Видалити дебати"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:236
 #. js-lingui-explicit-id
 msgid "Remove my data (delete account)"
@@ -9283,7 +9321,7 @@ msgstr "Розпочати пробну співбесіду"
 msgid "Start Call"
 msgstr "Запустити дзвінок"
 
-#: src/features/Game/Battle/BattleCard.tsx:182
+#: src/features/Game/Battle/BattleCard.tsx:512
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Розпочати дебати"
@@ -9580,6 +9618,11 @@ msgstr "Надіслати"
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Надіслати відповідь"
+
+#: src/features/Game/Battle/BattleCard.tsx:219
+#. js-lingui-explicit-id
+msgid "Submit Answers"
+msgstr "Надіслати відповіді"
 
 #: src/features/Goal/GoalQuestions.tsx:1181
 #. js-lingui-explicit-id
@@ -10003,10 +10046,16 @@ msgstr ""
 msgid "The topics for the debate will be randomly selected."
 msgstr "Теми для дебатів будуть обрані випадковим чином."
 
+#: src/features/Game/Battle/BattleCard.tsx:283
 #: src/features/Game/GameStatRow.tsx:161
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "Переможець заробляє {points} ігрових балів!"
+
+#: src/features/Game/Battle/BattleCard.tsx:116
+#. js-lingui-explicit-id
+msgid "The winner has been declared."
+msgstr "Переможця оголошено."
 
 #: src/features/Dashboard/BrainCard.tsx:148
 #. js-lingui-explicit-id
@@ -10204,6 +10253,11 @@ msgstr "Увімкнути гучність"
 msgid "Type a message..."
 msgstr "Введіть повідомлення..."
 
+#: src/features/Game/Battle/BattleCard.tsx:253
+#. js-lingui-explicit-id
+msgid "Type your answer here..."
+msgstr "Введіть свою відповідь тут..."
+
 #: src/features/Case/data/frontend-junior/techData.tsx:24
 #: src/features/Case/data/frontend-senior/techData.tsx:24
 #. js-lingui-explicit-id
@@ -10389,7 +10443,7 @@ msgstr "Режим запису голосу"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:176
+#: src/features/Game/Battle/BattleCard.tsx:506
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Очікування підтвердження від інших гравців..."
@@ -10816,7 +10870,7 @@ msgstr "Чи зможе ШІ коли-небудь по-справжньому �
 msgid "Will traditional jobs still exist in 20 years?"
 msgstr "Чи існуватимуть традиційні роботи через 20 років?"
 
-#: src/features/Game/Battle/BattleCard.tsx:169
+#: src/features/Game/Battle/BattleCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Переможець отримує {points} очок"
@@ -11252,6 +11306,16 @@ msgstr ""
 msgid "You have"
 msgstr "У вас є"
 
+#: src/features/Game/Battle/BattleCard.tsx:218
+#. js-lingui-explicit-id
+msgid "You have completed all the questions."
+msgstr "Ви завершили всі питання."
+
+#: src/features/Game/Battle/BattleCard.tsx:524
+#. js-lingui-explicit-id
+msgid "You have submitted your answers. Waiting for others..."
+msgstr "Ви подали свої відповіді. Очікуємо на інших..."
+
 #: src/features/Case/data/frontend-senior/painSection.ts:23
 #. js-lingui-explicit-id
 msgid ""
@@ -11339,10 +11403,18 @@ msgstr "Ваші досягнення"
 msgid "Your AI speaking partner"
 msgstr "Ваш AI-співрозмовник"
 
+#: src/features/Game/Battle/BattleCard.tsx:252
 #: src/features/Survey/RecordUserAudioAnswer.tsx:64
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "Ваша відповідь"
+
+#: src/features/Game/Battle/BattleCard.tsx:289
+#. js-lingui-explicit-id
+msgid "Your answers will be visible to your opponent after you submit them."
+msgstr ""
+"Ваші відповіді будуть видні вашому супротивнику після того, як ви їх "
+"надішлете."
 
 #: src/features/Game/GameOnboarding.tsx:106
 #. js-lingui-explicit-id

@@ -398,7 +398,7 @@ msgstr "Om ditt mål"
 msgid "Academic Word List"
 msgstr "Akademisk ordlista"
 
-#: src/features/Game/Battle/BattleCard.tsx:166
+#: src/features/Game/Battle/BattleCard.tsx:496
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Acceptera"
@@ -702,6 +702,11 @@ msgstr "AI Tutor Uppdateringar"
 msgid "AI vs Humans"
 msgstr "AI vs. Människor"
 
+#: src/features/Game/Battle/BattleCard.tsx:295
+#. js-lingui-explicit-id
+msgid "AI will evaluate answers and determine the winner."
+msgstr "AI kommer att utvärdera svaren och utse vinnaren."
+
 #: src/features/Dashboard/ConversationSelectCard.tsx:136
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
@@ -915,7 +920,7 @@ msgstr ""
 "Är du säker på att du vill radera ditt mål? Denna åtgärd kan inte göras "
 "ogjord."
 
-#: src/features/Game/Battle/BattleCard.tsx:187
+#: src/features/Game/Battle/BattleCard.tsx:545
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Är du säker på att du vill avvisa denna utmaning?"
@@ -1602,6 +1607,7 @@ msgstr ""
 "Klar struktur för systemdesign. Jag förklarade äntligen kompromisser utan "
 "att svamla."
 
+#: src/features/Game/Battle/BattleCard.tsx:209
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -2156,10 +2162,20 @@ msgstr "Data & Transaktioner"
 msgid "Databases & Transactions"
 msgstr "Databaser & Transaktioner"
 
-#: src/features/Game/Battle/BattleCard.tsx:87
+#: src/features/Game/Battle/BattleCard.tsx:409
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Debatt"
+
+#: src/features/Game/Battle/BattleCard.tsx:217
+#. js-lingui-explicit-id
+msgid "Debate completed!"
+msgstr "Debatt avslutad!"
+
+#: src/features/Game/Battle/BattleCard.tsx:115
+#. js-lingui-explicit-id
+msgid "Debate ended!"
+msgstr "Debatten avslutad!"
 
 #: src/features/Game/GameStatRow.tsx:142
 #. js-lingui-explicit-id
@@ -2172,6 +2188,11 @@ msgid "Debate Request Sent!"
 msgstr ""
 "plaintext\n"
 "Debattförfrågan skickad!\n"
+
+#: src/features/Game/Battle/BattleCard.tsx:277
+#. js-lingui-explicit-id
+msgid "Debate started!"
+msgstr "Debatt startad!"
 
 #: src/features/Game/Battle/useBattleQuestions.ts:130
 #. js-lingui-explicit-id
@@ -6393,6 +6414,11 @@ msgstr "Låt oss bestämma i vilken takt vi ska studera!"
 msgid "Let's go"
 msgstr "Låt oss gå"
 
+#: src/features/Game/Battle/BattleCard.tsx:278
+#. js-lingui-explicit-id
+msgid "Let's see who has the best arguments."
+msgstr "Låt oss se vem som har de bästa argumenten."
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:255
 #. js-lingui-explicit-id
 msgid "Let's talk about your goals a bit more"
@@ -6874,6 +6900,7 @@ msgstr "Nya ord:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
+#: src/features/Game/Battle/BattleCard.tsx:279
 #: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
@@ -6969,6 +6996,11 @@ msgstr "Inga betalningar..."
 #. js-lingui-explicit-id
 msgid "No Projections Available"
 msgstr "Inga prognoser tillgängliga"
+
+#: src/features/Game/Battle/BattleCard.tsx:203
+#. js-lingui-explicit-id
+msgid "No reason provided."
+msgstr "Ingen anledning angiven."
 
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
 #. js-lingui-explicit-id
@@ -7184,6 +7216,7 @@ msgid "Open plan"
 msgstr "Öppen planlösning"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
+#: src/features/Game/Battle/BattleCard.tsx:518
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Öppna resultat"
@@ -8392,6 +8425,11 @@ msgstr "Ladda om sidan"
 msgid "Remote Work"
 msgstr "Fjärrarbete"
 
+#: src/features/Game/Battle/BattleCard.tsx:554
+#. js-lingui-explicit-id
+msgid "Remove debate"
+msgstr "Ta bort debatt"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:236
 #. js-lingui-explicit-id
 msgid "Remove my data (delete account)"
@@ -9201,7 +9239,7 @@ msgstr "Starta en praktikintervju"
 msgid "Start Call"
 msgstr "Starta samtal"
 
-#: src/features/Game/Battle/BattleCard.tsx:182
+#: src/features/Game/Battle/BattleCard.tsx:512
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Starta Debatt"
@@ -9500,6 +9538,11 @@ msgstr "Skicka"
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Skicka svar"
+
+#: src/features/Game/Battle/BattleCard.tsx:219
+#. js-lingui-explicit-id
+msgid "Submit Answers"
+msgstr "Skicka Svar"
 
 #: src/features/Goal/GoalQuestions.tsx:1181
 #. js-lingui-explicit-id
@@ -9920,10 +9963,16 @@ msgstr ""
 msgid "The topics for the debate will be randomly selected."
 msgstr "Ämnena för debatten kommer att väljas slumpmässigt."
 
+#: src/features/Game/Battle/BattleCard.tsx:283
 #: src/features/Game/GameStatRow.tsx:161
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "Vinnaren tjänar {points} spelpoäng!"
+
+#: src/features/Game/Battle/BattleCard.tsx:116
+#. js-lingui-explicit-id
+msgid "The winner has been declared."
+msgstr "Vinnaren har utsetts."
 
 #: src/features/Dashboard/BrainCard.tsx:148
 #. js-lingui-explicit-id
@@ -10121,6 +10170,11 @@ msgstr "Sätt på volymen"
 msgid "Type a message..."
 msgstr "Skriv ett meddelande..."
 
+#: src/features/Game/Battle/BattleCard.tsx:253
+#. js-lingui-explicit-id
+msgid "Type your answer here..."
+msgstr "Skriv ditt svar här..."
+
 #: src/features/Case/data/frontend-junior/techData.tsx:24
 #: src/features/Case/data/frontend-senior/techData.tsx:24
 #. js-lingui-explicit-id
@@ -10304,7 +10358,7 @@ msgstr "Röstinspelningsläge"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:176
+#: src/features/Game/Battle/BattleCard.tsx:506
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Väntar på att andra spelare ska acceptera..."
@@ -10723,7 +10777,7 @@ msgstr "Kommer AI någonsin verkligen att förstå mänskliga känslor?"
 msgid "Will traditional jobs still exist in 20 years?"
 msgstr "Kommer traditionella jobb fortfarande existera om 20 år?"
 
-#: src/features/Game/Battle/BattleCard.tsx:169
+#: src/features/Game/Battle/BattleCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Vinnaren får {points} poäng"
@@ -11147,6 +11201,16 @@ msgstr ""
 msgid "You have"
 msgstr "Du har"
 
+#: src/features/Game/Battle/BattleCard.tsx:218
+#. js-lingui-explicit-id
+msgid "You have completed all the questions."
+msgstr "Du har besvarat alla frågorna."
+
+#: src/features/Game/Battle/BattleCard.tsx:524
+#. js-lingui-explicit-id
+msgid "You have submitted your answers. Waiting for others..."
+msgstr "Du har skickat in dina svar. Väntar på andra..."
+
 #: src/features/Case/data/frontend-senior/painSection.ts:23
 #. js-lingui-explicit-id
 msgid ""
@@ -11234,10 +11298,16 @@ msgstr "Dina prestationer"
 msgid "Your AI speaking partner"
 msgstr "Din AI-pratpartner"
 
+#: src/features/Game/Battle/BattleCard.tsx:252
 #: src/features/Survey/RecordUserAudioAnswer.tsx:64
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "Ditt svar"
+
+#: src/features/Game/Battle/BattleCard.tsx:289
+#. js-lingui-explicit-id
+msgid "Your answers will be visible to your opponent after you submit them."
+msgstr "Dina svar kommer att synas för din motståndare efter att du skickat in dem."
 
 #: src/features/Game/GameOnboarding.tsx:106
 #. js-lingui-explicit-id

@@ -413,7 +413,7 @@ msgstr "À propos de votre objectif"
 msgid "Academic Word List"
 msgstr "Liste de mots académiques"
 
-#: src/features/Game/Battle/BattleCard.tsx:166
+#: src/features/Game/Battle/BattleCard.tsx:496
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Accepter"
@@ -717,6 +717,11 @@ msgstr "Mises à jour du tuteur IA"
 msgid "AI vs Humans"
 msgstr "IA contre Humains"
 
+#: src/features/Game/Battle/BattleCard.tsx:295
+#. js-lingui-explicit-id
+msgid "AI will evaluate answers and determine the winner."
+msgstr "L'IA évaluera les réponses et déterminera le gagnant."
+
 #: src/features/Dashboard/ConversationSelectCard.tsx:136
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
@@ -932,7 +937,7 @@ msgstr ""
 "Êtes-vous sûr de vouloir supprimer votre objectif? Cette action ne peut pas "
 "être annulée."
 
-#: src/features/Game/Battle/BattleCard.tsx:187
+#: src/features/Game/Battle/BattleCard.tsx:545
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Êtes-vous sûr de vouloir rejeter cette bataille ?"
@@ -1629,6 +1634,7 @@ msgstr ""
 "Structure claire pour la conception du système. J'ai finalement expliqué "
 "les compromis sans divaguer."
 
+#: src/features/Game/Battle/BattleCard.tsx:209
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -2190,10 +2196,20 @@ msgstr "Données et transactions"
 msgid "Databases & Transactions"
 msgstr "Bases de données & Transactions"
 
-#: src/features/Game/Battle/BattleCard.tsx:87
+#: src/features/Game/Battle/BattleCard.tsx:409
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "Débat"
+
+#: src/features/Game/Battle/BattleCard.tsx:217
+#. js-lingui-explicit-id
+msgid "Debate completed!"
+msgstr "Débat terminé !"
+
+#: src/features/Game/Battle/BattleCard.tsx:115
+#. js-lingui-explicit-id
+msgid "Debate ended!"
+msgstr "Débat terminé !"
 
 #: src/features/Game/GameStatRow.tsx:142
 #. js-lingui-explicit-id
@@ -2206,6 +2222,11 @@ msgid "Debate Request Sent!"
 msgstr ""
 "plaintext\n"
 "Demande de débat envoyée !\n"
+
+#: src/features/Game/Battle/BattleCard.tsx:277
+#. js-lingui-explicit-id
+msgid "Debate started!"
+msgstr "Débat commencé !"
 
 #: src/features/Game/Battle/useBattleQuestions.ts:130
 #. js-lingui-explicit-id
@@ -6590,6 +6611,11 @@ msgstr "Décidons à quel rythme nous allons étudier !"
 msgid "Let's go"
 msgstr "Allons-y"
 
+#: src/features/Game/Battle/BattleCard.tsx:278
+#. js-lingui-explicit-id
+msgid "Let's see who has the best arguments."
+msgstr "Voyons qui a les meilleurs arguments."
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:255
 #. js-lingui-explicit-id
 msgid "Let's talk about your goals a bit more"
@@ -7080,6 +7106,7 @@ msgstr "Nouveaux mots:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
+#: src/features/Game/Battle/BattleCard.tsx:279
 #: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
@@ -7175,6 +7202,11 @@ msgstr "Aucun paiement..."
 #. js-lingui-explicit-id
 msgid "No Projections Available"
 msgstr "Aucune projection disponible"
+
+#: src/features/Game/Battle/BattleCard.tsx:203
+#. js-lingui-explicit-id
+msgid "No reason provided."
+msgstr "Aucune raison fournie."
 
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
 #. js-lingui-explicit-id
@@ -7393,6 +7425,7 @@ msgid "Open plan"
 msgstr "Plan ouvert"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
+#: src/features/Game/Battle/BattleCard.tsx:518
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Résultats ouverts"
@@ -8645,6 +8678,11 @@ msgstr "Recharger la page"
 msgid "Remote Work"
 msgstr "Travail à distance"
 
+#: src/features/Game/Battle/BattleCard.tsx:554
+#. js-lingui-explicit-id
+msgid "Remove debate"
+msgstr "Supprimer le débat"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:236
 #. js-lingui-explicit-id
 msgid "Remove my data (delete account)"
@@ -9498,7 +9536,7 @@ msgstr "Démarrer une simulation d'entretien"
 msgid "Start Call"
 msgstr "Commencer l'appel"
 
-#: src/features/Game/Battle/BattleCard.tsx:182
+#: src/features/Game/Battle/BattleCard.tsx:512
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Commencer le débat"
@@ -9800,6 +9838,11 @@ msgstr "Soumettre"
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "Soumettre la réponse"
+
+#: src/features/Game/Battle/BattleCard.tsx:219
+#. js-lingui-explicit-id
+msgid "Submit Answers"
+msgstr "Soumettre les réponses"
 
 #: src/features/Goal/GoalQuestions.tsx:1181
 #. js-lingui-explicit-id
@@ -10230,10 +10273,16 @@ msgstr ""
 msgid "The topics for the debate will be randomly selected."
 msgstr "Les sujets du débat seront sélectionnés au hasard."
 
+#: src/features/Game/Battle/BattleCard.tsx:283
 #: src/features/Game/GameStatRow.tsx:161
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "Le gagnant gagne {points} points de jeu !"
+
+#: src/features/Game/Battle/BattleCard.tsx:116
+#. js-lingui-explicit-id
+msgid "The winner has been declared."
+msgstr "Le gagnant a été déclaré."
 
 #: src/features/Dashboard/BrainCard.tsx:148
 #. js-lingui-explicit-id
@@ -10432,6 +10481,11 @@ msgstr "Activez le volume"
 msgid "Type a message..."
 msgstr "Tapez un message..."
 
+#: src/features/Game/Battle/BattleCard.tsx:253
+#. js-lingui-explicit-id
+msgid "Type your answer here..."
+msgstr "Tapez votre réponse ici..."
+
 #: src/features/Case/data/frontend-junior/techData.tsx:24
 #: src/features/Case/data/frontend-senior/techData.tsx:24
 #. js-lingui-explicit-id
@@ -10621,7 +10675,7 @@ msgstr "Mode d'enregistrement vocal"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:176
+#: src/features/Game/Battle/BattleCard.tsx:506
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "En attente que d'autres joueurs acceptent..."
@@ -11051,7 +11105,7 @@ msgstr "L'IA comprendra-t-elle un jour vraiment les émotions humaines ?"
 msgid "Will traditional jobs still exist in 20 years?"
 msgstr "Les emplois traditionnels existeront-ils encore dans 20 ans ?"
 
-#: src/features/Game/Battle/BattleCard.tsx:169
+#: src/features/Game/Battle/BattleCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Le gagnant reçoit {points} points"
@@ -11501,6 +11555,16 @@ msgstr ""
 msgid "You have"
 msgstr "Vous avez"
 
+#: src/features/Game/Battle/BattleCard.tsx:218
+#. js-lingui-explicit-id
+msgid "You have completed all the questions."
+msgstr "Vous avez complété toutes les questions."
+
+#: src/features/Game/Battle/BattleCard.tsx:524
+#. js-lingui-explicit-id
+msgid "You have submitted your answers. Waiting for others..."
+msgstr "Vous avez soumis vos réponses. En attente des autres..."
+
 #: src/features/Case/data/frontend-senior/painSection.ts:23
 #. js-lingui-explicit-id
 msgid ""
@@ -11592,10 +11656,18 @@ msgstr "Vos réalisations"
 msgid "Your AI speaking partner"
 msgstr "Votre partenaire de conversation IA"
 
+#: src/features/Game/Battle/BattleCard.tsx:252
 #: src/features/Survey/RecordUserAudioAnswer.tsx:64
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "Votre réponse"
+
+#: src/features/Game/Battle/BattleCard.tsx:289
+#. js-lingui-explicit-id
+msgid "Your answers will be visible to your opponent after you submit them."
+msgstr ""
+"Vos réponses seront visibles par votre adversaire après que vous les ayez "
+"soumises."
 
 #: src/features/Game/GameOnboarding.tsx:106
 #. js-lingui-explicit-id

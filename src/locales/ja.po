@@ -376,7 +376,7 @@ msgstr "あなたの目標について"
 msgid "Academic Word List"
 msgstr "アカデミックワードリスト"
 
-#: src/features/Game/Battle/BattleCard.tsx:166
+#: src/features/Game/Battle/BattleCard.tsx:496
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "受け入れる"
@@ -672,6 +672,11 @@ msgstr "AIチューターの更新"
 msgid "AI vs Humans"
 msgstr "AI対人間"
 
+#: src/features/Game/Battle/BattleCard.tsx:295
+#. js-lingui-explicit-id
+msgid "AI will evaluate answers and determine the winner."
+msgstr "AIが回答を評価し、勝者を決定します。"
+
 #: src/features/Dashboard/ConversationSelectCard.tsx:136
 #. js-lingui-explicit-id
 msgid "AI will lead you through the conversation"
@@ -881,7 +886,7 @@ msgstr "あなたのアカウントを削除してもよろしいですか？"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "あなたの目標を削除してもよろしいですか？ この操作は元に戻すことができません。"
 
-#: src/features/Game/Battle/BattleCard.tsx:187
+#: src/features/Game/Battle/BattleCard.tsx:545
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "このバトルを拒否してもよろしいですか？"
@@ -1539,6 +1544,7 @@ msgid ""
 "rambling."
 msgstr "システムデザインの明確な構造。ついに寄り道せずにトレードオフを説明しました。"
 
+#: src/features/Game/Battle/BattleCard.tsx:209
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -2073,10 +2079,20 @@ msgstr "データ & トランザクションズ"
 msgid "Databases & Transactions"
 msgstr "データベースとトランザクション"
 
-#: src/features/Game/Battle/BattleCard.tsx:87
+#: src/features/Game/Battle/BattleCard.tsx:409
 #. js-lingui-explicit-id
 msgid "Debate"
 msgstr "討論"
+
+#: src/features/Game/Battle/BattleCard.tsx:217
+#. js-lingui-explicit-id
+msgid "Debate completed!"
+msgstr "討論が完了しました！"
+
+#: src/features/Game/Battle/BattleCard.tsx:115
+#. js-lingui-explicit-id
+msgid "Debate ended!"
+msgstr "ディベート終了！"
 
 #: src/features/Game/GameStatRow.tsx:142
 #. js-lingui-explicit-id
@@ -2087,6 +2103,11 @@ msgstr "ディベートのリクエスト"
 #. js-lingui-explicit-id
 msgid "Debate Request Sent!"
 msgstr "ディベートリクエストが送信されました！"
+
+#: src/features/Game/Battle/BattleCard.tsx:277
+#. js-lingui-explicit-id
+msgid "Debate started!"
+msgstr "ディベートが始まりました！"
 
 #: src/features/Game/Battle/useBattleQuestions.ts:130
 #. js-lingui-explicit-id
@@ -5980,6 +6001,11 @@ msgstr "どのペースで勉強するか決めましょう！"
 msgid "Let's go"
 msgstr "行きましょう"
 
+#: src/features/Game/Battle/BattleCard.tsx:278
+#. js-lingui-explicit-id
+msgid "Let's see who has the best arguments."
+msgstr "最高の議論を持っているのは誰か見てみましょう。"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:255
 #. js-lingui-explicit-id
 msgid "Let's talk about your goals a bit more"
@@ -6445,6 +6471,7 @@ msgstr "新しい単語:"
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
 #: src/features/Case/quiz/InterviewQuizPage.tsx:91
+#: src/features/Game/Battle/BattleCard.tsx:279
 #: src/features/Game/GameOnboarding.tsx:74
 #: src/features/Game/gameQuestionScreens/core.tsx:121
 #: src/features/Goal/GoalQuestions.tsx:503
@@ -6538,6 +6565,11 @@ msgstr "支払いなし..."
 #. js-lingui-explicit-id
 msgid "No Projections Available"
 msgstr "プロジェクションは利用できません"
+
+#: src/features/Game/Battle/BattleCard.tsx:203
+#. js-lingui-explicit-id
+msgid "No reason provided."
+msgstr "理由が提供されていません。"
 
 #: src/features/Goal/Quiz/NativeLanguageSelector.tsx:138
 #. js-lingui-explicit-id
@@ -6742,6 +6774,7 @@ msgid "Open plan"
 msgstr "オープンプラン"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
+#: src/features/Game/Battle/BattleCard.tsx:518
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "結果を開く"
@@ -7901,6 +7934,11 @@ msgstr "ページを再読み込み"
 msgid "Remote Work"
 msgstr "リモートワーク"
 
+#: src/features/Game/Battle/BattleCard.tsx:554
+#. js-lingui-explicit-id
+msgid "Remove debate"
+msgstr "ディベートを削除"
+
 #: src/features/Case/quiz/InterviewQuizPage.tsx:236
 #. js-lingui-explicit-id
 msgid "Remove my data (delete account)"
@@ -8687,7 +8725,7 @@ msgstr ""
 "plaintext\n"
 "通話開始\n"
 
-#: src/features/Game/Battle/BattleCard.tsx:182
+#: src/features/Game/Battle/BattleCard.tsx:512
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "ディベートを開始"
@@ -8963,6 +9001,11 @@ msgstr "送信"
 #. js-lingui-explicit-id
 msgid "Submit answer"
 msgstr "回答を提出する"
+
+#: src/features/Game/Battle/BattleCard.tsx:219
+#. js-lingui-explicit-id
+msgid "Submit Answers"
+msgstr "回答を送信"
 
 #: src/features/Goal/GoalQuestions.tsx:1181
 #. js-lingui-explicit-id
@@ -9354,10 +9397,16 @@ msgstr "パーソナライズされたフィードバックは、私の技術的
 msgid "The topics for the debate will be randomly selected."
 msgstr "ディベートのトピックはランダムに選ばれます。"
 
+#: src/features/Game/Battle/BattleCard.tsx:283
 #: src/features/Game/GameStatRow.tsx:161
 #. js-lingui-explicit-id
 msgid "The winner earns {points} game points!"
 msgstr "勝者は{points}ゲームポイントを獲得します！"
+
+#: src/features/Game/Battle/BattleCard.tsx:116
+#. js-lingui-explicit-id
+msgid "The winner has been declared."
+msgstr "勝者が宣言されました。"
 
 #: src/features/Dashboard/BrainCard.tsx:148
 #. js-lingui-explicit-id
@@ -9553,6 +9602,11 @@ msgstr "ボリュームをオンにする"
 msgid "Type a message..."
 msgstr "メッセージを入力してください..."
 
+#: src/features/Game/Battle/BattleCard.tsx:253
+#. js-lingui-explicit-id
+msgid "Type your answer here..."
+msgstr "ここにあなたの答えを入力してください..."
+
 #: src/features/Case/data/frontend-junior/techData.tsx:24
 #: src/features/Case/data/frontend-senior/techData.tsx:24
 #. js-lingui-explicit-id
@@ -9734,7 +9788,7 @@ msgstr "音声録音モード"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:176
+#: src/features/Game/Battle/BattleCard.tsx:506
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "他のプレイヤーが承認するのを待っています..."
@@ -10131,7 +10185,7 @@ msgstr "AIは人間の感情を真に理解することができるのでしょ�
 msgid "Will traditional jobs still exist in 20 years?"
 msgstr "20年後に伝統的な仕事はまだ存在しているでしょうか?"
 
-#: src/features/Game/Battle/BattleCard.tsx:169
+#: src/features/Game/Battle/BattleCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "勝者には{points}ポイントが与えられます"
@@ -10520,6 +10574,16 @@ msgstr ""
 msgid "You have"
 msgstr "あなたは"
 
+#: src/features/Game/Battle/BattleCard.tsx:218
+#. js-lingui-explicit-id
+msgid "You have completed all the questions."
+msgstr "すべての質問を完了しました。"
+
+#: src/features/Game/Battle/BattleCard.tsx:524
+#. js-lingui-explicit-id
+msgid "You have submitted your answers. Waiting for others..."
+msgstr "回答を提出しました。他の人を待っています..."
+
 #: src/features/Case/data/frontend-senior/painSection.ts:23
 #. js-lingui-explicit-id
 msgid ""
@@ -10601,10 +10665,16 @@ msgstr "あなたの成果"
 msgid "Your AI speaking partner"
 msgstr "あなたのAIスピーキングパートナー"
 
+#: src/features/Game/Battle/BattleCard.tsx:252
 #: src/features/Survey/RecordUserAudioAnswer.tsx:64
 #. js-lingui-explicit-id
 msgid "Your answer"
 msgstr "あなたの答え"
+
+#: src/features/Game/Battle/BattleCard.tsx:289
+#. js-lingui-explicit-id
+msgid "Your answers will be visible to your opponent after you submit them."
+msgstr "あなたの回答は、提出後に対戦相手に表示されます。"
 
 #: src/features/Game/GameOnboarding.tsx:106
 #. js-lingui-explicit-id
