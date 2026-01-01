@@ -402,6 +402,11 @@ msgstr "Про вашу мету"
 msgid "Academic Word List"
 msgstr "Академічний Список Слів"
 
+#: src/features/Game/Battle/BattleCard.tsx:165
+#. js-lingui-explicit-id
+msgid "Accept"
+msgstr "Прийняти"
+
 #: src/features/Usage/PaymentModal.tsx:222
 #. js-lingui-explicit-id
 msgid ""
@@ -421,7 +426,7 @@ msgstr "Подолайте співбесіду на позицію C# Backend D
 msgid "Achieve Speaking Fluency Fast"
 msgstr "Досягніть швидкого вільного спілкування"
 
-#: src/features/Game/GameStatRow.tsx:234
+#: src/features/Game/GameStatRow.tsx:283
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr "Досягнення"
@@ -914,6 +919,11 @@ msgstr "Ви впевнені, що хочете видалити свій ак�
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Ви впевнені, що хочете видалити свою мету? Цю дію не можна скасувати."
 
+#: src/features/Game/Battle/BattleCard.tsx:193
+#. js-lingui-explicit-id
+msgid "Are you sure you want to reject this battle?"
+msgstr "Ви впевнені, що хочете відхилити цей виклик?"
+
 #: src/features/Conversation/ConversationCanvas2.tsx:461
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
@@ -932,6 +942,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Artificial Intelligence"
 msgstr "Штучний інтелект"
+
+#: src/features/Game/GameStatRow.tsx:367
+#. js-lingui-explicit-id
+msgid "Ask for debate"
+msgstr "Запросити до дискусії"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:26
 #: src/features/Case/data/backendCSharp/techData.ts:13
@@ -1458,7 +1473,7 @@ msgstr "Стабільність Кар'єри"
 msgid "Career Success"
 msgstr "Успіх у кар'єрі"
 
-#: src/features/Game/GamePage.tsx:179
+#: src/features/Game/GamePage.tsx:182
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "Чат"
@@ -1591,6 +1606,7 @@ msgstr ""
 "Чітка структура для проектування систем. Нарешті пояснив компроміси без "
 "багатослів'я."
 
+#: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -2146,6 +2162,21 @@ msgstr "Дані та транзакції"
 msgid "Databases & Transactions"
 msgstr "Бази даних і транзакції"
 
+#: src/features/Game/Battle/BattleCard.tsx:86
+#. js-lingui-explicit-id
+msgid "Debate"
+msgstr "Дебати"
+
+#: src/features/Game/GameStatRow.tsx:142
+#. js-lingui-explicit-id
+msgid "Debate Request"
+msgstr "Запит на дебати"
+
+#: src/features/Game/GameStatRow.tsx:130
+#. js-lingui-explicit-id
+msgid "Debate Request Sent!"
+msgstr "Запит на дебати надіслано!"
+
 #: src/features/Game/Battle/useBattleQuestions.ts:130
 #. js-lingui-explicit-id
 msgid "Decision Making"
@@ -2373,6 +2404,11 @@ msgid ""
 msgstr ""
 "Відкрийте для себе ефективні щоденні звички, які допоможуть вам легко та "
 "швидко вдосконалити ваші навички бізнес-англійської."
+
+#: src/features/Game/GameStatRow.tsx:143
+#. js-lingui-explicit-id
+msgid "Discuss and improve your skills together!"
+msgstr "Обговорюйте та вдосконалюйте свої навички разом!"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:178
 #. js-lingui-explicit-id
@@ -3988,7 +4024,7 @@ msgstr "Дайте невеликий приклад (лічильник, вве
 msgid "Give us your feedback"
 msgstr "Надішліть нам свої відгуки"
 
-#: src/features/Game/GamePage.tsx:135
+#: src/features/Game/GamePage.tsx:138
 #. js-lingui-explicit-id
 msgid "Global"
 msgstr "Глобальний"
@@ -4966,7 +5002,7 @@ msgstr ""
 "Якщо ви хочете видалити всю інформацію, включаючи ваш баланс, будь ласка, "
 "зв'яжіться з нами."
 
-#: src/features/Game/GameStatRow.tsx:78
+#: src/features/Game/GameStatRow.tsx:90
 #. js-lingui-explicit-id
 msgid "Image Describer"
 msgstr "Описувач зображень"
@@ -6440,7 +6476,7 @@ msgstr "Завантаження..."
 #: src/features/Conversation/ConversationPage.tsx:121
 #: src/features/Conversation/ConversationPage.tsx:130
 #: src/features/Conversation/ConversationPage.tsx:150
-#: src/features/Game/GamePage.tsx:27
+#: src/features/Game/GamePage.tsx:28
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:34
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:34
 #: src/features/Header/PaymentHistoryModal.tsx:65
@@ -7459,7 +7495,7 @@ msgstr "Виберіть рівень, щоб почати грати!"
 msgid "Plan for"
 msgstr "План для"
 
-#: src/features/Game/GamePage.tsx:28
+#: src/features/Game/GamePage.tsx:29
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "Грати"
@@ -7511,7 +7547,7 @@ msgstr "Будь ласка, натисніть на меню ⋮ та обер�
 msgid "Please wait while we process your payment."
 msgstr "Зачекайте, поки ми обробляємо ваш платіж."
 
-#: src/features/Game/GameStatRow.tsx:222
+#: src/features/Game/GameStatRow.tsx:271
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "Бали"
@@ -7536,7 +7572,7 @@ msgstr "Португальська"
 msgid "Portuguese Learning Plan"
 msgstr "План вивчення португальської"
 
-#: src/features/Game/GameStatRow.tsx:205
+#: src/features/Game/GameStatRow.tsx:254
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "Посада"
@@ -8100,7 +8136,7 @@ msgid "Queues"
 msgstr "Черги"
 
 #: src/features/Game/GameBadge.tsx:82
-#: src/features/Game/GamePage.tsx:108
+#: src/features/Game/GamePage.tsx:111
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "Увійдіть до топ 5, щоб отримати додаток безкоштовно"
@@ -8176,7 +8212,7 @@ msgstr ""
 msgid "Read the text"
 msgstr "Прочитайте текст"
 
-#: src/features/Game/GameStatRow.tsx:80
+#: src/features/Game/GameStatRow.tsx:92
 #. js-lingui-explicit-id
 msgid "Reader"
 msgstr "Читач"
@@ -8718,6 +8754,11 @@ msgstr "Надіслати електронний лист ще раз"
 msgid "Send me sign-in link"
 msgstr "Надішліть мені посилання для входу"
 
+#: src/features/Game/GameStatRow.tsx:145
+#. js-lingui-explicit-id
+msgid "Send Request"
+msgstr "Надіслати запит"
+
 #: src/features/Auth/AuthWallBasic.tsx:147
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
@@ -8754,7 +8795,7 @@ msgstr "Досвідчені Frontend-розробники, які готуют�
 msgid "senior frontend interview"
 msgstr "співбесіда на позицію старшого фронтенд-розробника"
 
-#: src/features/Game/GameStatRow.tsx:77
+#: src/features/Game/GameStatRow.tsx:89
 #. js-lingui-explicit-id
 msgid "Sentence Builder"
 msgstr "Конструктор речень"
@@ -9247,6 +9288,11 @@ msgstr "Розпочати пробну співбесіду"
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "Запустити дзвінок"
+
+#: src/features/Game/Battle/BattleCard.tsx:188
+#. js-lingui-explicit-id
+msgid "Start Debate"
+msgstr "Розпочати дебати"
 
 #: src/features/Landing/PlanLandingBlock.tsx:628
 #. js-lingui-explicit-id
@@ -9958,6 +10004,16 @@ msgstr ""
 "Персоналізований зворотній зв'язок показав мені точно, що я робив не так у "
 "своїх технічних поясненнях. Це змінило правила гри."
 
+#: src/features/Game/GameStatRow.tsx:157
+#. js-lingui-explicit-id
+msgid "The topics for the debate will be randomly selected."
+msgstr "Теми для дебатів будуть обрані випадковим чином."
+
+#: src/features/Game/GameStatRow.tsx:161
+#. js-lingui-explicit-id
+msgid "The winner earns {points} game points!"
+msgstr "Переможець заробляє {points} ігрових балів!"
+
 #: src/features/Dashboard/BrainCard.tsx:148
 #. js-lingui-explicit-id
 msgid "Thinking about which languages might be good to install..."
@@ -10035,7 +10091,7 @@ msgstr ""
 "мікрофон. Вебкамера є необов’язковою і використовується лише якщо ви "
 "ввімкнете зворотний зв’язок з вебкамери. Інсталяція не потрібна."
 
-#: src/features/Game/GamePage.tsx:156
+#: src/features/Game/GamePage.tsx:159
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "Сьогодні"
@@ -10055,7 +10111,7 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "Завдання зі спілкування TOEFL"
 
-#: src/features/Game/GameStatRow.tsx:79
+#: src/features/Game/GameStatRow.tsx:91
 #. js-lingui-explicit-id
 msgid "Topic Talker"
 msgstr "Тема Розмовник"
@@ -10093,7 +10149,7 @@ msgstr "Слідкуйте за своїм прогресом у володін�
 msgid "Transcribing..."
 msgstr "Транскрибування..."
 
-#: src/features/Game/GameStatRow.tsx:76
+#: src/features/Game/GameStatRow.tsx:88
 #. js-lingui-explicit-id
 msgid "Translate Guru"
 msgstr "Перекладач Гуру"
@@ -10339,10 +10395,20 @@ msgstr "Режим запису голосу"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
+#: src/features/Game/Battle/BattleCard.tsx:175
+#. js-lingui-explicit-id
+msgid "Waiting for other players to accept..."
+msgstr "Очікування підтвердження від інших гравців..."
+
 #: src/features/Usage/SubscriptionWaiter.tsx:68
 #. js-lingui-explicit-id
 msgid "Waiting for payment..."
 msgstr "Очікування платежу..."
+
+#: src/features/Game/GameStatRow.tsx:131
+#. js-lingui-explicit-id
+msgid "Waiting for {userName} to respond."
+msgstr "Очікування відповіді від {userName}."
 
 #: src/features/Case/data/frontend-senior/exampleQuestionsSection.ts:54
 #. js-lingui-explicit-id
@@ -10755,6 +10821,11 @@ msgstr "Чи зможе ШІ коли-небудь по-справжньому �
 #. js-lingui-explicit-id
 msgid "Will traditional jobs still exist in 20 years?"
 msgstr "Чи існуватимуть традиційні роботи через 20 років?"
+
+#: src/features/Game/Battle/BattleCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Winner gets {points} points"
+msgstr "Переможець отримує {points} очок"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:383
 #. js-lingui-explicit-id
@@ -11217,6 +11288,11 @@ msgstr ""
 msgid "You will get 3 days of full access for free"
 msgstr "Ви отримаєте 3 дні повного доступу безкоштовно"
 
+#: src/features/Game/GameStatRow.tsx:167
+#. js-lingui-explicit-id
+msgid "You will see the response on the main page."
+msgstr "Ви побачите відповідь на головній сторінці."
+
 #: src/features/Case/data/backendCSharp/quizData.ts:76
 #: src/features/Case/data/frontend-junior/quizData.ts:242
 #: src/features/Case/data/frontend-senior/quizData.ts:361
@@ -11296,6 +11372,11 @@ msgid ""
 msgstr ""
 "Вашу кредитну картку вже підтверджено. Ви можете переходити до наступного "
 "кроку."
+
+#: src/features/Game/GameStatRow.tsx:151
+#. js-lingui-explicit-id
+msgid "Your debate request will be sent to {userName}"
+msgstr "Ваш запит на дебати буде надіслано {userName}"
 
 #: src/features/RolePlay/rolePlayData.tsx:162
 #. js-lingui-explicit-id

@@ -51,7 +51,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
         }}
       >
         <GameOnboarding />
-        <BattleCard />
+
         <Stack
           sx={{
             width: "100%",
@@ -65,6 +65,7 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
             zIndex: 1,
           }}
         >
+          <BattleCard />
           <Stack
             sx={{
               flexDirection: "column",
@@ -213,7 +214,6 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                 gap: "20px",
               }}
             >
-              <PositionChangedModal />
               <CustomModal
                 isOpen={true}
                 onClose={() => {

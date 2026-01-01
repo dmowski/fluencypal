@@ -397,6 +397,11 @@ msgstr "حول هدفك"
 msgid "Academic Word List"
 msgstr "قائمة الكلمات الأكاديمية"
 
+#: src/features/Game/Battle/BattleCard.tsx:165
+#. js-lingui-explicit-id
+msgid "Accept"
+msgstr "قبول"
+
 #: src/features/Usage/PaymentModal.tsx:222
 #. js-lingui-explicit-id
 msgid ""
@@ -416,7 +421,7 @@ msgstr "إجتز مقابلة مطور C# Backend بنجاح"
 msgid "Achieve Speaking Fluency Fast"
 msgstr "حقق طلاقة الكلام بسرعة"
 
-#: src/features/Game/GameStatRow.tsx:234
+#: src/features/Game/GameStatRow.tsx:283
 #. js-lingui-explicit-id
 msgid "Achievements"
 msgstr "إنجازات"
@@ -907,6 +912,11 @@ msgstr "هل أنت متأكد أنك تريد حذف حسابك؟"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "هل أنت متأكد أنك تريد حذف هدفك؟ لا يمكن التراجع عن هذا الإجراء."
 
+#: src/features/Game/Battle/BattleCard.tsx:193
+#. js-lingui-explicit-id
+msgid "Are you sure you want to reject this battle?"
+msgstr "هل أنت متأكد أنك تريد رفض هذه المعركة؟"
+
 #: src/features/Conversation/ConversationCanvas2.tsx:461
 #. js-lingui-explicit-id
 msgid "Areas to improve:"
@@ -923,6 +933,11 @@ msgstr "صياغة حلول قابلة للتوسع، تحسين الأداء، 
 #. js-lingui-explicit-id
 msgid "Artificial Intelligence"
 msgstr "الذكاء الاصطناعي"
+
+#: src/features/Game/GameStatRow.tsx:367
+#. js-lingui-explicit-id
+msgid "Ask for debate"
+msgstr "اطلب المناقشة"
 
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:26
 #: src/features/Case/data/backendCSharp/techData.ts:13
@@ -1445,7 +1460,7 @@ msgstr "استقرار الوظيفة"
 msgid "Career Success"
 msgstr "النجاح المهني"
 
-#: src/features/Game/GamePage.tsx:179
+#: src/features/Game/GamePage.tsx:182
 #. js-lingui-explicit-id
 msgid "Chat"
 msgstr "الدردشة"
@@ -1574,6 +1589,7 @@ msgstr ""
 "هيكلية واضحة لتصميم النظام. لقد شرحت في النهاية المزايا والعيوب دون الإسهاب "
 "في الكلام."
 
+#: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
 #: src/features/Usage/SubscriptionWaiter.tsx:81
@@ -2122,6 +2138,21 @@ msgstr "البيانات والمعاملات"
 msgid "Databases & Transactions"
 msgstr "قواعد البيانات والمعاملات"
 
+#: src/features/Game/Battle/BattleCard.tsx:86
+#. js-lingui-explicit-id
+msgid "Debate"
+msgstr "مناظرة"
+
+#: src/features/Game/GameStatRow.tsx:142
+#. js-lingui-explicit-id
+msgid "Debate Request"
+msgstr "طلب مناظرة"
+
+#: src/features/Game/GameStatRow.tsx:130
+#. js-lingui-explicit-id
+msgid "Debate Request Sent!"
+msgstr "تم إرسال طلب المناظرة!"
+
 #: src/features/Game/Battle/useBattleQuestions.ts:130
 #. js-lingui-explicit-id
 msgid "Decision Making"
@@ -2347,6 +2378,11 @@ msgid ""
 msgstr ""
 "اكتشف العادات اليومية الفعالة لتحسين مهاراتك في الإنجليزية التجارية بسهولة "
 "وسرعة."
+
+#: src/features/Game/GameStatRow.tsx:143
+#. js-lingui-explicit-id
+msgid "Discuss and improve your skills together!"
+msgstr "ناقش وحسّن مهاراتك معًا!"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:178
 #. js-lingui-explicit-id
@@ -3893,7 +3929,7 @@ msgstr "قدم مثالاً صغيرًا (عداد، إدخال، زر)"
 msgid "Give us your feedback"
 msgstr "أعطنا ملاحظاتك"
 
-#: src/features/Game/GamePage.tsx:135
+#: src/features/Game/GamePage.tsx:138
 #. js-lingui-explicit-id
 msgid "Global"
 msgstr "عالمي"
@@ -4838,7 +4874,7 @@ msgid ""
 "contact us."
 msgstr "إذا كنت ترغب في إزالة جميع المعلومات، بما في ذلك رصيدك، الرجاء الاتصال بنا."
 
-#: src/features/Game/GameStatRow.tsx:78
+#: src/features/Game/GameStatRow.tsx:90
 #. js-lingui-explicit-id
 msgid "Image Describer"
 msgstr "واصف الصورة"
@@ -6276,7 +6312,7 @@ msgstr "جارٍ التحميل.."
 #: src/features/Conversation/ConversationPage.tsx:121
 #: src/features/Conversation/ConversationPage.tsx:130
 #: src/features/Conversation/ConversationPage.tsx:150
-#: src/features/Game/GamePage.tsx:27
+#: src/features/Game/GamePage.tsx:28
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:34
 #: src/features/Goal/Quiz/RecordAboutFollowUp.tsx:34
 #: src/features/Header/PaymentHistoryModal.tsx:65
@@ -7287,7 +7323,7 @@ msgstr "اختر مستوى لبدء اللعب!"
 msgid "Plan for"
 msgstr "خطة لـ"
 
-#: src/features/Game/GamePage.tsx:28
+#: src/features/Game/GamePage.tsx:29
 #. js-lingui-explicit-id
 msgid "Play"
 msgstr "العب"
@@ -7337,7 +7373,7 @@ msgstr "يرجى النقر على القائمة ⋮ واختيار"
 msgid "Please wait while we process your payment."
 msgstr "يرجى الانتظار بينما نقوم بمعالجة دفعتك."
 
-#: src/features/Game/GameStatRow.tsx:222
+#: src/features/Game/GameStatRow.tsx:271
 #. js-lingui-explicit-id
 msgid "Points"
 msgstr "النقاط"
@@ -7362,7 +7398,7 @@ msgstr "البرتغالية"
 msgid "Portuguese Learning Plan"
 msgstr "خطة تعلم البرتغالية"
 
-#: src/features/Game/GameStatRow.tsx:205
+#: src/features/Game/GameStatRow.tsx:254
 #. js-lingui-explicit-id
 msgid "Position"
 msgstr "الموقع"
@@ -7918,7 +7954,7 @@ msgstr ""
 "طوابير\n"
 
 #: src/features/Game/GameBadge.tsx:82
-#: src/features/Game/GamePage.tsx:108
+#: src/features/Game/GamePage.tsx:111
 #. js-lingui-explicit-id
 msgid "Rank in the top 5 to get the app for free"
 msgstr "تصنف ضمن أفضل 5 للحصول على التطبيق مجاناً"
@@ -7992,7 +8028,7 @@ msgstr ""
 msgid "Read the text"
 msgstr "اقرأ النص"
 
-#: src/features/Game/GameStatRow.tsx:80
+#: src/features/Game/GameStatRow.tsx:92
 #. js-lingui-explicit-id
 msgid "Reader"
 msgstr "القارئ"
@@ -8525,6 +8561,11 @@ msgstr "إعادة إرسال البريد الإلكتروني"
 msgid "Send me sign-in link"
 msgstr "أرسل لي رابط تسجيل الدخول"
 
+#: src/features/Game/GameStatRow.tsx:145
+#. js-lingui-explicit-id
+msgid "Send Request"
+msgstr "إرسال الطلب"
+
 #: src/features/Auth/AuthWallBasic.tsx:147
 #: src/features/Header/ContactMessageModal.tsx:116
 #. js-lingui-explicit-id
@@ -8563,7 +8604,7 @@ msgstr ""
 "plaintext\n"
 "مقابلة تطوير الواجهة الأمامية لكبار الموظفين\n"
 
-#: src/features/Game/GameStatRow.tsx:77
+#: src/features/Game/GameStatRow.tsx:89
 #. js-lingui-explicit-id
 msgid "Sentence Builder"
 msgstr "بناء الجمل"
@@ -9040,6 +9081,11 @@ msgstr "ابدأ مقابلة وهمية"
 #. js-lingui-explicit-id
 msgid "Start Call"
 msgstr "ابدأ المكالمة"
+
+#: src/features/Game/Battle/BattleCard.tsx:188
+#. js-lingui-explicit-id
+msgid "Start Debate"
+msgstr "ابدأ النقاش"
 
 #: src/features/Landing/PlanLandingBlock.tsx:628
 #. js-lingui-explicit-id
@@ -9731,6 +9777,16 @@ msgstr ""
 "أظهر لي التعليق الشخصي بالضبط ما كنت أفعله بشكل خاطئ في شروحاتي التقنية. "
 "تغيير اللعبة."
 
+#: src/features/Game/GameStatRow.tsx:157
+#. js-lingui-explicit-id
+msgid "The topics for the debate will be randomly selected."
+msgstr "سيتم اختيار مواضيع النقاش عشوائيًا."
+
+#: src/features/Game/GameStatRow.tsx:161
+#. js-lingui-explicit-id
+msgid "The winner earns {points} game points!"
+msgstr "الفائز يكسب {points} نقاط في اللعبة!"
+
 #: src/features/Dashboard/BrainCard.tsx:148
 #. js-lingui-explicit-id
 msgid "Thinking about which languages might be good to install..."
@@ -9808,7 +9864,7 @@ msgstr ""
 "اختيارية وتستخدم فقط إذا قمت بتمكين تعليقات كاميرا الويب. لا يتطلب أي "
 "تثبيت.\n"
 
-#: src/features/Game/GamePage.tsx:156
+#: src/features/Game/GamePage.tsx:159
 #. js-lingui-explicit-id
 msgid "Today"
 msgstr "اليوم"
@@ -9828,7 +9884,7 @@ msgstr "TOEFL"
 msgid "TOEFL Speaking Tasks"
 msgstr "مهام الكلام في TOEFL"
 
-#: src/features/Game/GameStatRow.tsx:79
+#: src/features/Game/GameStatRow.tsx:91
 #. js-lingui-explicit-id
 msgid "Topic Talker"
 msgstr "متحدث الموضوع"
@@ -9866,7 +9922,7 @@ msgstr "تتبع تقدم طلاقتك"
 msgid "Transcribing..."
 msgstr "جار التحويل..."
 
-#: src/features/Game/GameStatRow.tsx:76
+#: src/features/Game/GameStatRow.tsx:88
 #. js-lingui-explicit-id
 msgid "Translate Guru"
 msgstr "ترجم جورو"
@@ -10118,10 +10174,24 @@ msgstr "وضع تسجيل الصوت"
 msgid "Vue & Pinia"
 msgstr "Vue و Pinia"
 
+#: src/features/Game/Battle/BattleCard.tsx:175
+#. js-lingui-explicit-id
+msgid "Waiting for other players to accept..."
+msgstr ""
+"\n"
+"انتظار قبول اللاعبين الآخرين...\n"
+
 #: src/features/Usage/SubscriptionWaiter.tsx:68
 #. js-lingui-explicit-id
 msgid "Waiting for payment..."
 msgstr "في انتظار الدفع..."
+
+#: src/features/Game/GameStatRow.tsx:131
+#. js-lingui-explicit-id
+msgid "Waiting for {userName} to respond."
+msgstr ""
+"\n"
+"في انتظار رد {userName}.\n"
 
 #: src/features/Case/data/frontend-senior/exampleQuestionsSection.ts:54
 #. js-lingui-explicit-id
@@ -10518,6 +10588,13 @@ msgstr "هل ستتمكن الذكاء الاصطناعي من فهم المشا
 #. js-lingui-explicit-id
 msgid "Will traditional jobs still exist in 20 years?"
 msgstr "هل ستظل الوظائف التقليدية موجودة بعد 20 سنة؟"
+
+#: src/features/Game/Battle/BattleCard.tsx:168
+#. js-lingui-explicit-id
+msgid "Winner gets {points} points"
+msgstr ""
+"plaintext\n"
+"الفائز يحصل على {points} نقطة\n"
 
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:383
 #. js-lingui-explicit-id
@@ -10966,6 +11043,11 @@ msgstr ""
 msgid "You will get 3 days of full access for free"
 msgstr "ستحصل على 3 أيام من الوصول الكامل مجاناً"
 
+#: src/features/Game/GameStatRow.tsx:167
+#. js-lingui-explicit-id
+msgid "You will see the response on the main page."
+msgstr "سترى الرد على الصفحة الرئيسية."
+
 #: src/features/Case/data/backendCSharp/quizData.ts:76
 #: src/features/Case/data/frontend-junior/quizData.ts:242
 #: src/features/Case/data/frontend-senior/quizData.ts:361
@@ -11043,6 +11125,11 @@ msgid ""
 "Your credit card has already been confirmed. You can proceed to the next "
 "step."
 msgstr "بطاقتك الائتمانية قد تم تأكيدها بالفعل. يمكنك المتابعة إلى الخطوة التالية."
+
+#: src/features/Game/GameStatRow.tsx:151
+#. js-lingui-explicit-id
+msgid "Your debate request will be sent to {userName}"
+msgstr "سيتم إرسال طلب المناظرة الخاص بك إلى {userName}"
 
 #: src/features/RolePlay/rolePlayData.tsx:162
 #. js-lingui-explicit-id

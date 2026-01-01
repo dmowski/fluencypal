@@ -1,21 +1,30 @@
 import { useLingui } from "@lingui/react";
-import { Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 import { useBattle } from "./useBattle";
+import { GameBattle } from "./types";
+import { useGame } from "../useGame";
+import { GameStatRow } from "../GameStatRow";
+import dayjs from "dayjs";
+import { useAuth } from "@/features/Auth/useAuth";
+import { Badge, BadgeCheck, Mic, Swords, Trash } from "lucide-react";
 
-export const BattleCard = ({ userId }: { userId?: string }) => {
+export const BattleRow = ({ battle }: { battle: GameBattle }) => {
   const { i18n } = useLingui();
+  const auth = useAuth();
   const battles = useBattle();
-
-  const battlesToShow = battles.battles.filter((battle) => {
-    if (userId) {
-      return battle.usersIds.includes(userId);
-    }
-    return true;
+  const game = useGame();
+  const users = battle.usersIds.sort((a, b) => {
+    if (a === battle.authorUserId) return -1;
+    if (b === battle.authorUserId) return 1;
+    return 0;
   });
 
-  if (battlesToShow.length === 0) {
-    return null;
-  }
+  const gameStats = game.stats.filter((stat) => users.includes(stat.userId));
+
+  const createdAgo = dayjs(battle.createdAtIso).fromNow();
+  const isMyBattle = battle.usersIds.includes(auth.uid || "");
+  const isAcceptedByMe = battle.approvedUsersIds.includes(auth.uid || "");
+  const isAcceptedByAll = battle.approvedUsersIds.length === battle.usersIds.length;
 
   return (
     <Stack
@@ -28,7 +37,7 @@ export const BattleCard = ({ userId }: { userId?: string }) => {
         width: "100%",
         height: "auto",
 
-        background: "rgba(115, 25, 35, 1)",
+        background: "rgba(22, 25, 35, 1)",
         boxShadow: "0px 0px 0px 1px rgba(255, 255, 255, 0.2)",
         flexDirection: "row",
         transition: "all 0.3s ease",
@@ -43,6 +52,7 @@ export const BattleCard = ({ userId }: { userId?: string }) => {
       <Stack
         sx={{
           width: "100%",
+          gap: "20px",
         }}
       >
         <Stack
@@ -73,33 +83,154 @@ export const BattleCard = ({ userId }: { userId?: string }) => {
                 fontWeight: 500,
               }}
             >
-              {i18n._("Alex asks you to debate")}
+              {i18n._("Debate")}
             </Typography>
           </Stack>
           <Typography
             variant="body2"
             sx={{
-              color: "#faae98",
+              color: "rgba(255, 255, 255, 0.6)",
             }}
           >
-            Debates
+            {createdAgo}
           </Typography>
         </Stack>
 
-        <Typography
+        <Stack
           sx={{
-            paddingTop: "10px",
-            fontSize: "1.7rem",
-            fontWeight: 560,
-            lineHeight: 1.2,
-            "@media (max-width:600px)": {
-              fontSize: "1.5rem",
-            },
+            gap: "10px",
           }}
         >
-          {i18n._("Win 20 game points by debating with Alex on the topic")}
-        </Typography>
+          {gameStats.map((stat) => {
+            const isAccepted = battle.approvedUsersIds.includes(stat.userId);
+            const isAnswerSubmitted = battle.submittedUsersIds.includes(stat.userId);
+            return (
+              <Stack
+                key={stat.userId}
+                sx={{
+                  flexDirection: "row",
+                  gap: "10px",
+                  alignItems: "center",
+                }}
+              >
+                <GameStatRow stat={stat} />
+                {isAcceptedByAll ? (
+                  <>
+                    {isAnswerSubmitted ? (
+                      <Mic color="rgba(96, 165, 250, 1)" />
+                    ) : (
+                      <Mic color="rgba(90, 90, 90, 1)" />
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {isAccepted ? (
+                      <BadgeCheck color="rgba(96, 165, 250, 1)" />
+                    ) : (
+                      <Badge color="rgba(255, 255, 255, 0.7)" />
+                    )}
+                  </>
+                )}
+              </Stack>
+            );
+          })}
+        </Stack>
+
+        <Stack
+          sx={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
+          {isMyBattle && (
+            <>
+              {!isAcceptedByMe && (
+                <Stack
+                  sx={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    color="info"
+                    startIcon={<Swords />}
+                    onClick={() => {
+                      battles.acceptBattle(battle.battleId);
+                    }}
+                  >
+                    {i18n._("Accept")}
+                  </Button>
+                  <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
+                    {i18n._("Winner gets {points} points", { points: battle.betPoints })}
+                  </Typography>
+                </Stack>
+              )}
+
+              {isAcceptedByMe && !isAcceptedByAll && (
+                <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
+                  {i18n._("Waiting for other players to accept...")}
+                </Typography>
+              )}
+
+              {isAcceptedByAll && (
+                <Button
+                  variant="contained"
+                  color="info"
+                  startIcon={<Mic />}
+                  onClick={() => {
+                    //battles.acceptBattle(battle.battleId);
+                  }}
+                >
+                  {i18n._("Start Debate")}
+                </Button>
+              )}
+              <IconButton
+                onClick={() => {
+                  const isConfirm = confirm(i18n._("Are you sure you want to reject this battle?"));
+                  if (isConfirm) battles.deleteBattle(battle.battleId);
+                }}
+                color="error"
+                size="small"
+              >
+                <Trash size={"16px"} />
+              </IconButton>
+            </>
+          )}
+        </Stack>
       </Stack>
+    </Stack>
+  );
+};
+
+export const BattleCard = ({ userId }: { userId?: string }) => {
+  const { i18n } = useLingui();
+  const battles = useBattle();
+
+  const battlesToShow = battles.battles.filter((battle) => {
+    if (userId) {
+      return battle.usersIds.includes(userId);
+    }
+    return true;
+  });
+
+  if (battlesToShow.length === 0) {
+    return null;
+  }
+
+  return (
+    <Stack
+      sx={{
+        gap: "20px",
+        width: "100%",
+      }}
+    >
+      {battlesToShow.map((battle) => (
+        <BattleRow key={battle.battleId} battle={battle} />
+      ))}
     </Stack>
   );
 };

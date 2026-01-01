@@ -5,6 +5,9 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { GameBattle } from "./types";
 import { useAuth } from "@/features/Auth/useAuth";
 import { db } from "@/features/Firebase/firebaseDb";
+import { BATTLE_WIN_POINTS } from "./data";
+import { useBattleQuestions } from "./useBattleQuestions";
+import { uniq } from "@/libs/uniq";
 
 interface BattleContextType {
   battles: GameBattle[];
@@ -12,6 +15,9 @@ interface BattleContextType {
   createBattle: (battle: GameBattle) => Promise<void>;
   updateBattle: (battleId: string, updates: Partial<GameBattle>) => Promise<void>;
   deleteBattle: (battleId: string) => Promise<void>;
+  acceptBattle: (battleId: string) => Promise<void>;
+
+  createBattleWithUser: (userId: string) => Promise<void>;
 
   loading: boolean;
 }
@@ -22,7 +28,14 @@ function useProvideBattle(): BattleContextType {
   const auth = useAuth();
   const userId = auth.uid || "anonymous";
   const battlesRef = db.collections.battle();
+  const { questions } = useBattleQuestions();
   const [battles, loading] = useCollectionData(battlesRef);
+
+  const getRandomQuestionsIds = (count: number): string[] => {
+    const questionsId = Object.keys(questions);
+    const shuffledIds = [...questionsId].sort(() => 0.5 - Math.random());
+    return shuffledIds.slice(0, count);
+  };
 
   const sortedBattles = useMemo(() => {
     return battles ? [...battles].sort((a, b) => a.createdAtIso.localeCompare(b.createdAtIso)) : [];
@@ -51,13 +64,47 @@ function useProvideBattle(): BattleContextType {
     await setDoc(battleDoc, updatedBattle, { merge: true });
   };
 
+  const createBattleWithUser = async (opponentUserId: string) => {
+    const id = Date.now().toString();
+    const newBattle: GameBattle = {
+      usersIds: [userId, opponentUserId],
+      createdAtIso: new Date().toISOString(),
+      updatedAtIso: new Date().toISOString(),
+      battleId: id,
+      authorUserId: userId,
+      approvedUsersIds: [userId],
+      rejectedUsersIds: [],
+      betPoints: BATTLE_WIN_POINTS,
+      questionsIds: [...getRandomQuestionsIds(3)],
+      answers: [],
+      submittedUsersIds: [],
+      winnerUserId: null,
+      winnerDescription: "",
+    };
+    const battleDoc = doc(battlesRef, id);
+    await setDoc(battleDoc, newBattle);
+  };
+
+  const acceptBattle = async (battleId: string) => {
+    const battle = battles?.find((b) => b.battleId === battleId);
+    if (!battle) return;
+
+    const updatedApprovedUsersIds = uniq([...battle.approvedUsersIds, userId]);
+
+    await editBattle(battleId, {
+      approvedUsersIds: updatedApprovedUsersIds,
+    });
+  };
+
   return {
     battles: sortedBattles,
     loading,
+    acceptBattle,
 
     createBattle: addBattle,
     updateBattle: editBattle,
     deleteBattle,
+    createBattleWithUser,
   };
 }
 

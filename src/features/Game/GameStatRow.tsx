@@ -12,9 +12,10 @@ import { CustomModal } from "../uiKit/Modal/CustomModal";
 import { useLingui } from "@lingui/react";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
 import { achievementsMaxPoints, allGameTypes } from "./data";
-import { FlameIcon, Swords, X } from "lucide-react";
+import { Swords, X } from "lucide-react";
 import { InfoStep } from "../Survey/InfoStep";
-import { BattleCard } from "./Battle/BattleCard";
+import { useBattle } from "./Battle/useBattle";
+import { BATTLE_WIN_POINTS } from "./Battle/data";
 
 interface IconColor {
   iconColor: string;
@@ -61,6 +62,7 @@ const achievementsIconMap: Record<GameQuestionType, IconName> = {
 export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
   const game = useGame();
   const auth = useAuth();
+  const battle = useBattle();
   const userId = auth.uid || "";
   const userName = game.userNames?.[stat.userId] || "";
 
@@ -92,45 +94,19 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
 
   const [isAskForDebates, setIsAskForDebates] = useState(false);
 
-  const avatarComponent = (
-    <Stack
-      sx={{
-        position: "relative",
-      }}
-    >
-      <Stack
-        component="img"
-        src={avatar}
-        sx={{
-          width: "50px",
-          height: "50px",
-          borderRadius: "50%",
-          objectFit: "cover",
-          boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
-          position: "relative",
-          zIndex: 1,
-        }}
-      />
-      {isOnline && (
-        <Stack
-          sx={{
-            display: "block",
-            width: "10px",
-            height: "10px",
-            borderRadius: "50px",
-            backgroundColor: "#11ff22",
-            boxShadow: "0px 0px 0px 2px #111",
-            position: "absolute",
-            bottom: "1px",
-            right: "1px",
-            zIndex: 1,
-          }}
-        />
-      )}
-    </Stack>
-  );
-
   const [isBattleRequested, setIsBattleRequested] = useState(false);
+
+  const [isCreatingBattle, setIsCreatingBattle] = useState(false);
+  const sendDebateRequest = async () => {
+    setIsCreatingBattle(true);
+    await battle.createBattleWithUser(stat.userId);
+    setIsBattleRequested(true);
+    setIsCreatingBattle(false);
+  };
+
+  const isAlreadyAskedForBattle = battle.battles.some((b) => {
+    return b.usersIds.includes(userId) && b.usersIds.includes(stat.userId);
+  });
 
   return (
     <>
@@ -165,6 +141,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
                   <InfoStep
                     title={i18n._("Debate Request")}
                     subTitle={i18n._("Discuss and improve your skills together!")}
+                    disabled={isCreatingBattle}
                     actionButtonTitle={i18n._("Send Request")}
                     actionButtonStartIcon={<Swords />}
                     actionButtonEndIcon={<></>}
@@ -177,13 +154,13 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
                         iconName: "message-circle",
                       },
                       {
-                        title: i18n._("{userName} will pick the topic for the debate", {
-                          userName,
-                        }),
+                        title: i18n._("The topics for the debate will be randomly selected."),
                         iconName: "messages-square",
                       },
                       {
-                        title: i18n._("The winner earns 20 game points!"),
+                        title: i18n._("The winner earns {points} game points!", {
+                          points: BATTLE_WIN_POINTS,
+                        }),
                         iconName: "coins",
                       },
                       {
@@ -191,7 +168,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
                         iconName: "bell",
                       },
                     ]}
-                    onClick={() => setIsBattleRequested(true)}
+                    onClick={sendDebateRequest}
                   />
                 )}
               </>
@@ -296,8 +273,6 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
               </Stack>
             </Stack>
 
-            <BattleCard userId={stat.userId} />
-
             <Stack sx={{ width: "100%", gap: "6px" }}>
               <Typography
                 variant="caption"
@@ -385,6 +360,7 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
             {!isMe && (
               <Button
                 variant="contained"
+                disabled={isAlreadyAskedForBattle}
                 startIcon={<Swords />}
                 onClick={() => setIsAskForDebates(true)}
               >
@@ -416,7 +392,41 @@ export const GameStatRow = ({ stat }: { stat: UsersStat }) => {
           cursor: "pointer",
         }}
       >
-        {avatarComponent}
+        <Stack
+          sx={{
+            position: "relative",
+          }}
+        >
+          <Stack
+            component="img"
+            src={avatar}
+            sx={{
+              width: "50px",
+              height: "50px",
+              borderRadius: "50%",
+              objectFit: "cover",
+              boxShadow: "0px 0px 0px 3px rgba(55, 55, 55, 1)",
+              position: "relative",
+              zIndex: 1,
+            }}
+          />
+          {isOnline && (
+            <Stack
+              sx={{
+                display: "block",
+                width: "10px",
+                height: "10px",
+                borderRadius: "50px",
+                backgroundColor: "#11ff22",
+                boxShadow: "0px 0px 0px 2px #111",
+                position: "absolute",
+                bottom: "1px",
+                right: "1px",
+                zIndex: 1,
+              }}
+            />
+          )}
+        </Stack>
         <Stack
           sx={{
             width: "100%",
