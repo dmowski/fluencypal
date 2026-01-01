@@ -15,9 +15,159 @@ import { useGame } from "../useGame";
 import { GameStatRow } from "../GameStatRow";
 import dayjs from "dayjs";
 import { useAuth } from "@/features/Auth/useAuth";
-import { Badge, BadgeCheck, CircleEllipsis, Mic, Swords, Trash } from "lucide-react";
-import { IS_BATTLE_FEATURE_ENABLED } from "./data";
+import { Badge, BadgeCheck, CircleEllipsis, Mic, Swords, Trash, X } from "lucide-react";
 import { useState } from "react";
+import { CustomModal } from "@/features/uiKit/Modal/CustomModal";
+import { InfoStep } from "@/features/Survey/InfoStep";
+import { useBattleQuestions } from "./useBattleQuestions";
+import { RecordUserAudio } from "@/features/Goal/Quiz/RecordUserAudio";
+import { useSettings } from "@/features/Settings/useSettings";
+import { BATTLE_WIN_POINTS } from "./data";
+
+export const BattleActionModal = ({
+  battle,
+  onClose,
+}: {
+  battle: GameBattle;
+  onClose: () => void;
+}) => {
+  const { i18n } = useLingui();
+  const battles = useBattle();
+  const auth = useAuth();
+  const settings = useSettings();
+  const lang = settings.languageCode || "en";
+
+  const game = useGame();
+  const users = battle.usersIds.sort((a, b) => {
+    if (a === battle.authorUserId) return -1;
+    if (b === battle.authorUserId) return 1;
+    return 0;
+  });
+
+  const gameStats = game.stats.filter((stat) => users.includes(stat.userId));
+
+  const [activeQuestionId, setActiveQuestionId] = useState<string | null>(null);
+  const { questions } = useBattleQuestions();
+  const activeQuestion = questions[activeQuestionId || ""];
+
+  const [isShowLastStep, setIsShowLastStep] = useState(false);
+
+  const nextQuestion = () => {
+    if (!activeQuestionId) {
+      setActiveQuestionId(battle.questionsIds[0]);
+      return;
+    }
+
+    const isLastQuestion =
+      battle.questionsIds.indexOf(activeQuestionId) === battle.questionsIds.length - 1;
+
+    if (isLastQuestion) {
+      setIsShowLastStep(true);
+      return;
+    }
+
+    const currentIndex = battle.questionsIds.indexOf(activeQuestionId);
+    const nextIndex = currentIndex + 1;
+    const nextQuestionId = battle.questionsIds[nextIndex];
+    setActiveQuestionId(nextQuestionId);
+  };
+
+  const activeQuestionsAnswer = battle.answers.find(
+    (answer) => answer.questionId === activeQuestionId && answer.userId === auth.uid
+  );
+
+  const activeTranscript = activeQuestionsAnswer?.answer || "";
+
+  return (
+    <CustomModal isOpen={true} onClose={onClose}>
+      <Stack
+        sx={{
+          width: "100%",
+          alignItems: "center",
+        }}
+      >
+        <Stack
+          sx={{
+            width: "100%",
+            maxWidth: "600px",
+          }}
+        >
+          {isShowLastStep && (
+            <InfoStep
+              title={i18n._("Debate completed!")}
+              subTitle={i18n._("You have completed all the questions.")}
+              actionButtonTitle={i18n._("Close")}
+              width={"600px"}
+              onClick={onClose}
+            />
+          )}
+
+          {!isShowLastStep && activeQuestion && activeQuestionId && (
+            <RecordUserAudio
+              title={activeQuestion.topic}
+              subTitle={activeQuestion.description}
+              listItems={[]}
+              transcript={activeTranscript}
+              minWords={30}
+              lang={lang}
+              nextStep={nextQuestion}
+              updateTranscript={async (combinedTranscript) => {
+                console.log("combinedTranscript", combinedTranscript);
+                await battles.updateAnswerTranscription({
+                  battleId: battle.battleId,
+                  questionId: activeQuestionId,
+                  transcription: combinedTranscript,
+                });
+              }}
+            />
+          )}
+
+          {!isShowLastStep && !activeQuestionId && (
+            <InfoStep
+              title={i18n._("Debate started!")}
+              subTitle={i18n._("Let's see who has the best arguments.")}
+              actionButtonTitle={i18n._("Next")}
+              width={"600px"}
+              listItems={[
+                {
+                  title: i18n._("The winner earns {points} game points!", {
+                    points: BATTLE_WIN_POINTS,
+                  }),
+                  iconName: "coins",
+                },
+                {
+                  title: i18n._(
+                    "Your answers will be visible to your opponent after you submit them."
+                  ),
+                  iconName: "eye",
+                },
+                {
+                  title: i18n._("AI will evaluate answers and determine the winner."),
+                  iconName: "crown",
+                },
+              ]}
+              subComponent={
+                <>
+                  <Stack
+                    sx={{
+                      gap: "10px",
+                      padding: "20px 0 5px 0",
+                    }}
+                  >
+                    {gameStats.map((stat) => (
+                      <GameStatRow stat={stat} key={stat.userId} />
+                    ))}
+                  </Stack>
+                </>
+              }
+              onClick={nextQuestion}
+            />
+          )}
+        </Stack>
+      </Stack>
+    </CustomModal>
+  );
+};
 
 export const BattleCard = ({ battle }: { battle: GameBattle }) => {
   const { i18n } = useLingui();
@@ -38,6 +188,11 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
   const isAcceptedByAll = battle.approvedUsersIds.length === battle.usersIds.length;
 
   const [isShowMenu, setIsShowMenu] = useState<null | HTMLElement>(null);
+
+  const [isActiveModal, setIsActiveModal] = useState(false);
+  const startBattle = () => {
+    setIsActiveModal(true);
+  };
 
   return (
     <Stack
@@ -62,6 +217,9 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
         gridTemplateColumns: "1fr",
       }}
     >
+      {isActiveModal && (
+        <BattleActionModal battle={battle} onClose={() => setIsActiveModal(false)} />
+      )}
       <Stack
         sx={{
           width: "100%",
@@ -190,7 +348,7 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
               )}
 
               {isAcceptedByAll && (
-                <Button variant="contained" color="info" startIcon={<Mic />} onClick={() => {}}>
+                <Button variant="contained" color="info" startIcon={<Mic />} onClick={startBattle}>
                   {i18n._("Start Debate")}
                 </Button>
               )}

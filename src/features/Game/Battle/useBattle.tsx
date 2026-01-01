@@ -2,7 +2,7 @@
 import { createContext, useContext, ReactNode, JSX, useMemo } from "react";
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { GameBattle } from "./types";
+import { GameBattle, GameBattleAnswer } from "./types";
 import { useAuth } from "@/features/Auth/useAuth";
 import { db } from "@/features/Firebase/firebaseDb";
 import { BATTLE_WIN_POINTS } from "./data";
@@ -13,11 +13,16 @@ interface BattleContextType {
   battles: GameBattle[];
 
   createBattle: (battle: GameBattle) => Promise<void>;
-  updateBattle: (battleId: string, updates: Partial<GameBattle>) => Promise<void>;
   deleteBattle: (battleId: string) => Promise<void>;
   acceptBattle: (battleId: string) => Promise<void>;
 
   createBattleWithUser: (userId: string) => Promise<void>;
+
+  updateAnswerTranscription: ({}: {
+    battleId: string;
+    questionId: string;
+    transcription: string;
+  }) => Promise<void>;
 
   loading: boolean;
 }
@@ -55,13 +60,13 @@ function useProvideBattle(): BattleContextType {
     await deleteDoc(battleDoc);
   };
 
-  const editBattle = async (battleId: string, updates: Partial<GameBattle>) => {
+  const editBattle = async (battleId: string, updates: GameBattle) => {
     const battleDoc = doc(battlesRef, battleId);
-    const updatedBattle: Partial<GameBattle> = {
+    const updatedBattle: GameBattle = {
       ...updates,
       updatedAtIso: new Date().toISOString(),
     };
-    await setDoc(battleDoc, updatedBattle, { merge: true });
+    await setDoc(battleDoc, updatedBattle);
   };
 
   const createBattleWithUser = async (opponentUserId: string) => {
@@ -92,7 +97,38 @@ function useProvideBattle(): BattleContextType {
     const updatedApprovedUsersIds = uniq([...battle.approvedUsersIds, userId]);
 
     await editBattle(battleId, {
+      ...battle,
       approvedUsersIds: updatedApprovedUsersIds,
+    });
+  };
+
+  const updateAnswerTranscription = async ({
+    battleId,
+    questionId,
+    transcription,
+  }: {
+    battleId: string;
+    questionId: string;
+    transcription: string;
+  }) => {
+    const battle = battles?.find((b) => b.battleId === battleId);
+    if (!battle) return;
+
+    const answer: GameBattleAnswer = {
+      questionId,
+      userId,
+      answer: transcription,
+      updatedAtIso: new Date().toISOString(),
+    };
+    const cleanAnswers = battle.answers.filter((a) => {
+      const isCurrentAnswer = a.questionId === questionId && a.userId === userId;
+      return !isCurrentAnswer;
+    });
+    const updatedAnswers = [...cleanAnswers, answer];
+
+    await editBattle(battleId, {
+      ...battle,
+      answers: updatedAnswers,
     });
   };
 
@@ -102,9 +138,9 @@ function useProvideBattle(): BattleContextType {
     acceptBattle,
 
     createBattle: addBattle,
-    updateBattle: editBattle,
     deleteBattle,
     createBattleWithUser,
+    updateAnswerTranscription,
   };
 }
 
