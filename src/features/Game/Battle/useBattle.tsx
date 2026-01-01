@@ -8,6 +8,12 @@ import { db } from "@/features/Firebase/firebaseDb";
 import { BATTLE_WIN_POINTS } from "./data";
 import { useBattleQuestions } from "./useBattleQuestions";
 import { uniq } from "@/libs/uniq";
+import { useTextAi } from "@/features/Ai/useTextAi";
+import { useGame } from "../useGame";
+
+interface SubmitResult {
+  isWinnerExists: boolean;
+}
 
 interface BattleContextType {
   battles: GameBattle[];
@@ -24,6 +30,8 @@ interface BattleContextType {
     transcription: string;
   }) => Promise<void>;
 
+  submitAnswers: (battleId: string) => Promise<SubmitResult>;
+
   loading: boolean;
 }
 
@@ -35,6 +43,9 @@ function useProvideBattle(): BattleContextType {
   const battlesRef = db.collections.battle();
   const { questions } = useBattleQuestions();
   const [battles, loading] = useCollectionData(battlesRef);
+
+  const ai = useTextAi();
+  const game = useGame();
 
   const getRandomQuestionsIds = (count: number): string[] => {
     const questionsId = Object.keys(questions);
@@ -132,6 +143,72 @@ function useProvideBattle(): BattleContextType {
     });
   };
 
+  const submitAnswers = async (battleId: string): Promise<SubmitResult> => {
+    const battle = battles?.find((b) => b.battleId === battleId);
+    if (!battle) return { isWinnerExists: false };
+
+    const updatedSubmittedUsersIds = uniq([...battle.submittedUsersIds, userId]);
+
+    await editBattle(battleId, {
+      ...battle,
+      submittedUsersIds: updatedSubmittedUsersIds,
+    });
+
+    const isReadyToDecideWinner = battle.usersIds.every((id) =>
+      updatedSubmittedUsersIds.includes(id)
+    );
+
+    const getUserUsername = (userId: string) => {
+      return game.userNames?.[userId] || "-";
+    };
+
+    if (isReadyToDecideWinner) {
+      // use ai to decide winner here
+      const systemMessage = `You are an impartial judge for a debate competition. The participants have answered the same set of questions. Your task is to evaluate their answers and determine the winner based on the quality of their arguments, clarity, and relevance to the topic.
+
+Here are the participants' answers:
+${battle.usersIds
+  .map((id, index) => {
+    const username = getUserUsername(id);
+    const participantHeader = `Participant ${username} (userId: ${id}):\n`;
+    const participantAnswers = battle.answers
+      .filter((a) => a.userId === id)
+      .map((a) => {
+        const question = questions[a.questionId];
+        return `Question: ${question.topic}. ${question.description}\nAnswer: ${a.answer}\n`;
+      })
+      .join("\n");
+
+    return participantHeader + participantAnswers;
+  })
+  .join("\n\n")}
+
+Please provide your decision in the following JSON format:
+{"winnerUserId": 'userId', "reason": "A brief explanation of why the selected participant won."}`;
+
+      console.log("systemMessage", systemMessage);
+
+      const result = await ai.generateJson<{ winnerUserId: string; reason: string }>({
+        systemMessage,
+        userMessage: "Decide the winner based on the provided answers.",
+        attempts: 3,
+        model: "gpt-4o",
+      });
+
+      const winnerUserId = result.winnerUserId || battle.usersIds[0];
+      const winnerDescription = result.reason;
+
+      await editBattle(battleId, {
+        ...battle,
+        submittedUsersIds: updatedSubmittedUsersIds,
+        winnerUserId,
+        winnerDescription,
+      });
+      return { isWinnerExists: true };
+    }
+    return { isWinnerExists: false };
+  };
+
   return {
     battles: sortedBattles,
     loading,
@@ -141,6 +218,8 @@ function useProvideBattle(): BattleContextType {
     deleteBattle,
     createBattleWithUser,
     updateAnswerTranscription,
+
+    submitAnswers,
   };
 }
 
