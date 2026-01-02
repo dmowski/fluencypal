@@ -17,12 +17,11 @@ import { ChartSection } from "../Chat/ChartSection";
 import { useChat } from "../Chat/useChat";
 import { BattleSection } from "./Battle/BattleSection";
 
-const IS_SHOW_CHAT_TAB = true;
-
 export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
   const game = useGame();
   const chat = useChat();
   const { i18n } = useLingui();
+  const isUnreadMessages = chat.unreadMessagesCount > 0;
 
   const loadingMessage = i18n._(`Loading...`);
   const playMessage = i18n._(`Play`);
@@ -174,31 +173,31 @@ export const GamePage = ({ lang }: { lang: SupportedLanguage }) => {
                   value={1}
                 />
 
-                {IS_SHOW_CHAT_TAB && (
-                  <Tab
-                    label={
-                      <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
-                        <Typography variant="body2">{i18n._(`Chat`)}</Typography>
-                        {chat.messages.length > 0 && (
-                          <Typography
-                            component={"span"}
-                            sx={{
-                              color: "#000",
-                              fontWeight: "bold",
-                              borderRadius: "5px",
-                              fontSize: "10px",
-                              padding: "2px 4px",
-                              backgroundColor: "rgba(244, 244, 244, 0.7)",
-                            }}
-                          >
-                            {chat.messages.length}
-                          </Typography>
-                        )}
-                      </Stack>
-                    }
-                    value={2}
-                  />
-                )}
+                <Tab
+                  label={
+                    <Stack sx={{ flexDirection: "row", gap: "10px", alignItems: "center" }}>
+                      <Typography variant="body2">{i18n._(`Chat`)}</Typography>
+                      {chat.messages.length > 0 && (
+                        <Typography
+                          component={"span"}
+                          sx={{
+                            color: isUnreadMessages ? "#fff" : "#000",
+                            fontWeight: "bold",
+                            borderRadius: "5px",
+                            fontSize: "10px",
+                            padding: "2px 4px",
+                            backgroundColor: isUnreadMessages
+                              ? "#ff3d00"
+                              : "rgba(244, 244, 244, 0.7)",
+                          }}
+                        >
+                          {chat.messages.length}
+                        </Typography>
+                      )}
+                    </Stack>
+                  }
+                  value={2}
+                />
               </Tabs>
 
               {activeTab < 2 && <GameStats activeTab={activeTab === 0 ? "global" : "today"} />}

@@ -11,6 +11,7 @@ import { useAuth } from "../Auth/useAuth";
 import { useGame } from "../Game/useGame";
 import { useSettings } from "../Settings/useSettings";
 import { AppMode } from "@/common/user";
+import { useChat } from "../Chat/useChat";
 
 export interface IconProps {
   color?: string;
@@ -20,6 +21,7 @@ export interface IconProps {
 interface NavigationItem {
   name: PageType;
   icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+  badge?: number;
   title: string;
 }
 
@@ -41,6 +43,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
   const userPhoto = game.gameAvatars?.[auth.uid] || "";
   const userName = game.userNames?.[auth.uid];
   const { bottomOffset } = useWindowSizes();
+  const chat = useChat();
 
   const navigationItemsByMode: Record<AppMode, NavigationItem[]> = useMemo(
     () => ({
@@ -67,6 +70,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
           name: "game",
           icon: Swords,
           title: i18n._("Game"),
+          badge: chat.unreadMessagesCount > 0 ? chat.unreadMessagesCount : undefined,
         },
         {
           name: "role-play",
@@ -80,7 +84,7 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
         },
       ],
     }),
-    [appMode]
+    [appMode, chat.unreadMessagesCount]
   );
 
   const navigationItems: NavigationItem[] = navigationItemsByMode[appMode || "learning"];
@@ -211,9 +215,37 @@ export const NavigationBar: React.FC<NavigationProps> = ({ lang }) => {
                     <item.icon color={color} width={"20px"} height={"20px"} />
                   )}
 
-                  <Typography variant="caption" component={"span"} align="center">
-                    {item.title}
-                  </Typography>
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "3px",
+                      width: "100%",
+                    }}
+                  >
+                    <Stack
+                      sx={{
+                        width: "4px",
+                        height: "7px",
+                      }}
+                    />
+                    <Typography variant="caption" component={"span"} align="center">
+                      {item.title}
+                    </Typography>
+
+                    <Stack
+                      sx={{
+                        borderRadius: "18px",
+                        backgroundColor: "#ff3d00",
+                        width: "5px",
+                        height: "5px",
+                        opacity: item.badge !== undefined && item.badge > 0 ? 1 : 0,
+                        position: "relative",
+                        top: "1px",
+                      }}
+                    />
+                  </Stack>
                 </Link>
               </Stack>
             );
