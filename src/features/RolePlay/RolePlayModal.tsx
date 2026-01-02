@@ -18,7 +18,6 @@ import { RolePlayInputType } from "./types";
 import { useRolePlay } from "./useRolePlay";
 import { useLingui } from "@lingui/react";
 import { useUsage } from "../Usage/useUsage";
-import { TrialEndedSection } from "../Usage/TrialEndedSection";
 
 export const RolePlayModal = () => {
   const {

@@ -2,7 +2,7 @@ import { useLingui } from "@lingui/react";
 import { Button, Stack, Typography } from "@mui/material";
 import { ChevronRight, Telescope } from "lucide-react";
 
-export const TrialEndedSection = ({ onLimitedClick }: { onLimitedClick?: () => void }) => {
+export const FeatureBlocker = ({ onLimitedClick }: { onLimitedClick?: () => void }) => {
   const { i18n } = useLingui();
 
   return (

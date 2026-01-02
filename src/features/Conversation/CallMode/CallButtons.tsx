@@ -16,7 +16,7 @@ import WarningIcon from "@mui/icons-material/Warning";
 import { BadgeQuestionMark, CircleQuestionMark } from "lucide-react";
 import { useState } from "react";
 import { CustomModal } from "@/features/uiKit/Modal/CustomModal";
-import { TrialEndedSection } from "@/features/Usage/TrialEndedSection";
+import { FeatureBlocker } from "@/features/Usage/FeatureBlocker";
 
 const CallButton = ({
   label,
@@ -200,7 +200,7 @@ export const CallButtons = ({
                 )}
               </Typography>
             </Stack>
-            <TrialEndedSection onLimitedClick={onLimitedClick} />
+            <FeatureBlocker onLimitedClick={onLimitedClick} />
             <Button
               variant="outlined"
               fullWidth

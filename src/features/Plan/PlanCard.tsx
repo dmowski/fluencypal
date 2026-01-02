@@ -12,7 +12,6 @@ import { WebCamView } from "../webCam/WebCamView";
 import { ConversationMode } from "@/common/user";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import MicIcon from "@mui/icons-material/Mic";
-import { TrialEndedSection } from "../Usage/TrialEndedSection";
 
 interface PlanCardProps {
   id: string;
