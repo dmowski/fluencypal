@@ -219,6 +219,11 @@ msgstr ""
 msgid "+{increasePoints} points"
 msgstr "+{increasePoints} 포인트"
 
+#: src/features/Game/Battle/BattleCard.tsx:139
+#. js-lingui-explicit-id
+msgid "-"
+msgstr "-"
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -375,7 +380,7 @@ msgstr "당신의 목표에 대하여"
 msgid "Academic Word List"
 msgstr "학문적 단어 목록"
 
-#: src/features/Game/Battle/BattleCard.tsx:231
+#: src/features/Game/Battle/BattleCard.tsx:243
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "받기"
@@ -791,7 +796,7 @@ msgstr "정말로 계정을 삭제하시겠습니까?"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "정말로 목표를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
 
-#: src/features/Game/Battle/BattleCard.tsx:292
+#: src/features/Game/Battle/BattleCard.tsx:309
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "이 전투를 거부하시겠습니까?"
@@ -1359,7 +1364,7 @@ msgid ""
 msgstr "명확한 시스템 설계 구조. 마침내 횡설수설하지 않고 트레이드오프를 설명했습니다."
 
 #: src/features/Game/Battle/BattleActionModal.tsx:262
-#: src/features/Game/Battle/BattleCard.tsx:263
+#: src/features/Game/Battle/BattleCard.tsx:275
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1872,15 +1877,15 @@ msgstr "데이터 및 트랜잭션"
 msgid "Databases & Transactions"
 msgstr "데이터베이스 & 거래"
 
-#: src/features/Game/Battle/BattleCard.tsx:120
-#. js-lingui-explicit-id
-msgid "Debate"
-msgstr "토론"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Debate ended!"
 msgstr "토론이 끝났습니다!"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+msgid "Debate Game"
+msgstr "토론 게임"
 
 #: src/features/Game/GameStatRow.tsx:143
 #. js-lingui-explicit-id
@@ -6126,7 +6131,7 @@ msgid "Open plan"
 msgstr "오픈 플랜"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
-#: src/features/Game/Battle/BattleCard.tsx:259
+#: src/features/Game/Battle/BattleCard.tsx:271
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "결과 열기"
@@ -7240,7 +7245,7 @@ msgstr "관련 시나리오"
 msgid "Reload page"
 msgstr "페이지 새로고침"
 
-#: src/features/Game/Battle/BattleCard.tsx:301
+#: src/features/Game/Battle/BattleCard.tsx:318
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "제거"
@@ -7908,7 +7913,7 @@ msgstr "모의 면접 시작"
 msgid "Start Call"
 msgstr "통화 시작"
 
-#: src/features/Game/Battle/BattleCard.tsx:247
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "토론 시작"
@@ -8938,7 +8943,7 @@ msgstr "음성 녹음 모드"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:241
+#: src/features/Game/Battle/BattleCard.tsx:253
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "다른 플레이어가 수락할 때까지 대기 중..."
@@ -9321,7 +9326,7 @@ msgstr "백엔드 후보자가 빠르게 향상되는 이유"
 msgid "Why candidates improve so quickly"
 msgstr "후보자들이 왜 그렇게 빨리 향상되는가"
 
-#: src/features/Game/Battle/BattleCard.tsx:234
+#: src/features/Game/Battle/BattleCard.tsx:246
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "승자는 {points} 점을 받습니다."
@@ -9661,7 +9666,7 @@ msgid ""
 "the results."
 msgstr "모든 질문을 완료했습니다. 이제 답안을 제출하고 결과를 기다리세요."
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "당신의 답변이 제출되었습니다. 다른 사람들을 기다리는 중..."
@@ -9862,6 +9867,11 @@ msgid ""
 "“good” looks like"
 msgstr "당신은 **즉석에서 시스템을 설계하라고 요청받지만**, 아무도 \"좋은\" 것이 무엇인지 말해주지 않습니다."
 
+#: src/features/Game/Battle/BattleCard.tsx:138
+#. js-lingui-explicit-id
+msgid "{userName} challenges you to a debate!"
+msgstr "{userName}님이 토론에 도전합니다!"
+
 #: src/features/SEO/metadata.ts:86
 #: src/features/SEO/metadata.ts:316
 #. js-lingui-explicit-id
@@ -9877,6 +9887,11 @@ msgid ""
 msgstr ""
 "— 이 짧은 대화에 참여하는 것은 전문적인 주제로 바로 뛰어들기 전에 매우 중요합니다. 여기 인터뷰를 시작하기 위한 유용한 영어 "
 "문구들이 있습니다:"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+#~ msgid "Debate"
+#~ msgstr "토론"
 
 #: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id

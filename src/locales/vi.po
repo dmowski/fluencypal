@@ -241,6 +241,11 @@ msgstr ""
 msgid "+{increasePoints} points"
 msgstr "+{increasePoints} điểm"
 
+#: src/features/Game/Battle/BattleCard.tsx:139
+#. js-lingui-explicit-id
+msgid "-"
+msgstr "-"
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -407,7 +412,7 @@ msgstr "Về mục tiêu của bạn"
 msgid "Academic Word List"
 msgstr "Danh sách từ vựng học thuật"
 
-#: src/features/Game/Battle/BattleCard.tsx:231
+#: src/features/Game/Battle/BattleCard.tsx:243
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Chấp nhận"
@@ -835,7 +840,7 @@ msgstr ""
 "Bạn có chắc chắn muốn xóa mục tiêu của mình không? Hành động này không thể "
 "hoàn tác."
 
-#: src/features/Game/Battle/BattleCard.tsx:292
+#: src/features/Game/Battle/BattleCard.tsx:309
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Bạn có chắc chắn muốn từ chối trận đấu này không?"
@@ -1427,7 +1432,7 @@ msgstr ""
 "đánh đổi mà không dài dòng."
 
 #: src/features/Game/Battle/BattleActionModal.tsx:262
-#: src/features/Game/Battle/BattleCard.tsx:263
+#: src/features/Game/Battle/BattleCard.tsx:275
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1962,15 +1967,15 @@ msgstr "Dữ liệu & Giao dịch"
 msgid "Databases & Transactions"
 msgstr "Cơ sở dữ liệu & Giao dịch"
 
-#: src/features/Game/Battle/BattleCard.tsx:120
-#. js-lingui-explicit-id
-msgid "Debate"
-msgstr "Tranh luận"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Debate ended!"
 msgstr "Tranh luận kết thúc!"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+msgid "Debate Game"
+msgstr "Trò chơi tranh luận"
 
 #: src/features/Game/GameStatRow.tsx:143
 #. js-lingui-explicit-id
@@ -6593,7 +6598,7 @@ msgid "Open plan"
 msgstr "Kế hoạch mở"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
-#: src/features/Game/Battle/BattleCard.tsx:259
+#: src/features/Game/Battle/BattleCard.tsx:271
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Mở kết quả"
@@ -7783,7 +7788,7 @@ msgstr "Cảnh liên quan"
 msgid "Reload page"
 msgstr "Tải lại trang"
 
-#: src/features/Game/Battle/BattleCard.tsx:301
+#: src/features/Game/Battle/BattleCard.tsx:318
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "Loại bỏ"
@@ -8493,7 +8498,7 @@ msgstr "Bắt đầu một buổi phỏng vấn giả định"
 msgid "Start Call"
 msgstr "Bắt đầu cuộc gọi"
 
-#: src/features/Game/Battle/BattleCard.tsx:247
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Khởi động Tranh luận"
@@ -9591,7 +9596,7 @@ msgstr "Chế độ ghi âm giọng nói"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:241
+#: src/features/Game/Battle/BattleCard.tsx:253
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Chờ người chơi khác chấp nhận..."
@@ -9999,7 +10004,7 @@ msgstr "Tại sao ứng viên backend cải thiện nhanh chóng"
 msgid "Why candidates improve so quickly"
 msgstr "Tại sao ứng viên cải thiện nhanh chóng như vậy"
 
-#: src/features/Game/Battle/BattleCard.tsx:234
+#: src/features/Game/Battle/BattleCard.tsx:246
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Người thắng cuộc nhận được {points} điểm"
@@ -10386,7 +10391,7 @@ msgstr ""
 "Bạn đã hoàn thành tất cả các câu hỏi. Gửi câu trả lời của bạn ngay bây giờ "
 "và chờ đợi kết quả."
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Bạn đã gửi câu trả lời của mình. Đang đợi người khác..."
@@ -10605,6 +10610,11 @@ msgstr ""
 "Bạn được yêu cầu **thiết kế hệ thống ngay lập tức**, nhưng không ai nói cho "
 "bạn biết “tốt” trông như thế nào"
 
+#: src/features/Game/Battle/BattleCard.tsx:138
+#. js-lingui-explicit-id
+msgid "{userName} challenges you to a debate!"
+msgstr "{userName} thách thức bạn tham gia một cuộc tranh luận!"
+
 #: src/features/SEO/metadata.ts:86
 #: src/features/SEO/metadata.ts:316
 #. js-lingui-explicit-id
@@ -10621,6 +10631,11 @@ msgstr ""
 "— quan trọng là tham gia vào cuộc trò chuyện ngắn này trước khi nhảy vào "
 "các chủ đề chuyên nghiệp. Dưới đây là một số cụm từ tiếng Anh hữu ích để "
 "bắt đầu cuộc phỏng vấn:"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+#~ msgid "Debate"
+#~ msgstr "Tranh luận"
 
 #: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id

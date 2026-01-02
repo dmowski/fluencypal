@@ -220,6 +220,11 @@ msgstr ""
 msgid "+{increasePoints} points"
 msgstr "+{increasePoints} ポイント"
 
+#: src/features/Game/Battle/BattleCard.tsx:139
+#. js-lingui-explicit-id
+msgid "-"
+msgstr "-"
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -376,7 +381,7 @@ msgstr "あなたの目標について"
 msgid "Academic Word List"
 msgstr "アカデミックワードリスト"
 
-#: src/features/Game/Battle/BattleCard.tsx:231
+#: src/features/Game/Battle/BattleCard.tsx:243
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "受け入れる"
@@ -792,7 +797,7 @@ msgstr "あなたのアカウントを削除してもよろしいですか？"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "あなたの目標を削除してもよろしいですか？ この操作は元に戻すことができません。"
 
-#: src/features/Game/Battle/BattleCard.tsx:292
+#: src/features/Game/Battle/BattleCard.tsx:309
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "このバトルを拒否してもよろしいですか？"
@@ -1360,7 +1365,7 @@ msgid ""
 msgstr "システムデザインの明確な構造。ついに寄り道せずにトレードオフを説明しました。"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:262
-#: src/features/Game/Battle/BattleCard.tsx:263
+#: src/features/Game/Battle/BattleCard.tsx:275
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1874,15 +1879,15 @@ msgstr "データ & トランザクションズ"
 msgid "Databases & Transactions"
 msgstr "データベースとトランザクション"
 
-#: src/features/Game/Battle/BattleCard.tsx:120
-#. js-lingui-explicit-id
-msgid "Debate"
-msgstr "討論"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Debate ended!"
 msgstr "ディベート終了！"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+msgid "Debate Game"
+msgstr "ディベートゲーム"
 
 #: src/features/Game/GameStatRow.tsx:143
 #. js-lingui-explicit-id
@@ -6124,7 +6129,7 @@ msgid "Open plan"
 msgstr "オープンプラン"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
-#: src/features/Game/Battle/BattleCard.tsx:259
+#: src/features/Game/Battle/BattleCard.tsx:271
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "結果を開く"
@@ -7245,7 +7250,7 @@ msgstr "関連シナリオ"
 msgid "Reload page"
 msgstr "ページを再読み込み"
 
-#: src/features/Game/Battle/BattleCard.tsx:301
+#: src/features/Game/Battle/BattleCard.tsx:318
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "削除"
@@ -7919,7 +7924,7 @@ msgstr ""
 "plaintext\n"
 "通話開始\n"
 
-#: src/features/Game/Battle/BattleCard.tsx:247
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "ディベートを開始"
@@ -8949,7 +8954,7 @@ msgstr "音声録音モード"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:241
+#: src/features/Game/Battle/BattleCard.tsx:253
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "他のプレイヤーが承認するのを待っています..."
@@ -9331,7 +9336,7 @@ msgstr "なぜバックエンド候補者は速く成長するのか"
 msgid "Why candidates improve so quickly"
 msgstr "なぜ候補者はこんなに早く上達するのか"
 
-#: src/features/Game/Battle/BattleCard.tsx:234
+#: src/features/Game/Battle/BattleCard.tsx:246
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "勝者には{points}ポイントが与えられます"
@@ -9672,7 +9677,7 @@ msgid ""
 "the results."
 msgstr "すべての質問に回答しました。今すぐ回答を提出し、結果をお待ちください。"
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "回答を提出しました。他の人を待っています..."
@@ -9873,6 +9878,11 @@ msgid ""
 "“good” looks like"
 msgstr "その場で**システムを設計する**よう求められますが、「良い」ものが何であるかは誰も教えてくれません"
 
+#: src/features/Game/Battle/BattleCard.tsx:138
+#. js-lingui-explicit-id
+msgid "{userName} challenges you to a debate!"
+msgstr "{userName} があなたにディベートを挑んでいます！"
+
 #: src/features/SEO/metadata.ts:86
 #: src/features/SEO/metadata.ts:316
 #. js-lingui-explicit-id
@@ -9886,6 +9896,11 @@ msgid ""
 "professional topics. Here are some useful English phrases to start off the "
 "interview:"
 msgstr "— この短い会話に参加することは、専門的な話題に飛び込む前に重要です。ここに面接を始めるための便利な英語のフレーズをいくつか紹介します："
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+#~ msgid "Debate"
+#~ msgstr "討論"
 
 #: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id

@@ -235,6 +235,11 @@ msgstr ""
 "\n"
 "+{increasePoints} نقاط\n"
 
+#: src/features/Game/Battle/BattleCard.tsx:139
+#. js-lingui-explicit-id
+msgid "-"
+msgstr "-"
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -397,7 +402,7 @@ msgstr "حول هدفك"
 msgid "Academic Word List"
 msgstr "قائمة الكلمات الأكاديمية"
 
-#: src/features/Game/Battle/BattleCard.tsx:231
+#: src/features/Game/Battle/BattleCard.tsx:243
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "قبول"
@@ -821,7 +826,7 @@ msgstr "هل أنت متأكد أنك تريد حذف حسابك؟"
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "هل أنت متأكد أنك تريد حذف هدفك؟ لا يمكن التراجع عن هذا الإجراء."
 
-#: src/features/Game/Battle/BattleCard.tsx:292
+#: src/features/Game/Battle/BattleCard.tsx:309
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "هل أنت متأكد أنك تريد رفض هذه المعركة؟"
@@ -1408,7 +1413,7 @@ msgstr ""
 "في الكلام."
 
 #: src/features/Game/Battle/BattleActionModal.tsx:262
-#: src/features/Game/Battle/BattleCard.tsx:263
+#: src/features/Game/Battle/BattleCard.tsx:275
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1936,15 +1941,15 @@ msgstr "البيانات والمعاملات"
 msgid "Databases & Transactions"
 msgstr "قواعد البيانات والمعاملات"
 
-#: src/features/Game/Battle/BattleCard.tsx:120
-#. js-lingui-explicit-id
-msgid "Debate"
-msgstr "مناظرة"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Debate ended!"
 msgstr "النقاش انتهى!"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+msgid "Debate Game"
+msgstr "لعبة المناظرة"
 
 #: src/features/Game/GameStatRow.tsx:143
 #. js-lingui-explicit-id
@@ -6442,7 +6447,7 @@ msgid "Open plan"
 msgstr "خطة مفتوحة"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
-#: src/features/Game/Battle/BattleCard.tsx:259
+#: src/features/Game/Battle/BattleCard.tsx:271
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "افتح النتائج"
@@ -7606,7 +7611,7 @@ msgstr "سيناريوهات ذات صلة"
 msgid "Reload page"
 msgstr "إعادة تحميل الصفحة"
 
-#: src/features/Game/Battle/BattleCard.tsx:301
+#: src/features/Game/Battle/BattleCard.tsx:318
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "إزالة"
@@ -8302,7 +8307,7 @@ msgstr "ابدأ مقابلة وهمية"
 msgid "Start Call"
 msgstr "ابدأ المكالمة"
 
-#: src/features/Game/Battle/BattleCard.tsx:247
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "ابدأ النقاش"
@@ -9375,7 +9380,7 @@ msgstr "وضع تسجيل الصوت"
 msgid "Vue & Pinia"
 msgstr "Vue و Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:241
+#: src/features/Game/Battle/BattleCard.tsx:253
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr ""
@@ -9775,7 +9780,7 @@ msgstr "لماذا يتحسن المرشحون في الخلفية بسرعة"
 msgid "Why candidates improve so quickly"
 msgstr "لماذا يتحسن المرشحون بسرعة كبيرة"
 
-#: src/features/Game/Battle/BattleCard.tsx:234
+#: src/features/Game/Battle/BattleCard.tsx:246
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr ""
@@ -10155,7 +10160,7 @@ msgid ""
 "the results."
 msgstr "لقد أكملت جميع الأسئلة. قم بإرسال إجاباتك الآن وانتظر النتائج."
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "لقد قمت بتقديم إجاباتك. في انتظار الآخرين..."
@@ -10366,6 +10371,11 @@ msgid ""
 "“good” looks like"
 msgstr "أنت مطالب بـ **تصميم الأنظمة بشكل فوري**، لكن لا أحد يخبرك كيف يبدو \"الجيد\""
 
+#: src/features/Game/Battle/BattleCard.tsx:138
+#. js-lingui-explicit-id
+msgid "{userName} challenges you to a debate!"
+msgstr "{userName} يتحداك في مناظرة!"
+
 #: src/features/SEO/metadata.ts:86
 #: src/features/SEO/metadata.ts:316
 #. js-lingui-explicit-id
@@ -10381,6 +10391,11 @@ msgid ""
 msgstr ""
 "— من الأهمية القيام بهذه المحادثة القصيرة قبل الدخول في الموضوعات المهنية. "
 "هنا بعض العبارات الإنجليزية المفيدة لبدء المقابلة:"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+#~ msgid "Debate"
+#~ msgstr "مناظرة"
 
 #: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id

@@ -242,6 +242,11 @@ msgstr ""
 msgid "+{increasePoints} points"
 msgstr "+{increasePoints} очков"
 
+#: src/features/Game/Battle/BattleCard.tsx:139
+#. js-lingui-explicit-id
+msgid "-"
+msgstr "-"
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -406,7 +411,7 @@ msgstr "О вашей цели"
 msgid "Academic Word List"
 msgstr "Академический Список Слов"
 
-#: src/features/Game/Battle/BattleCard.tsx:231
+#: src/features/Game/Battle/BattleCard.tsx:243
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Принять"
@@ -834,7 +839,7 @@ msgstr "Вы уверены, что хотите удалить свой акк�
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Вы уверены, что хотите удалить свою цель? Это действие невозможно отменить."
 
-#: src/features/Game/Battle/BattleCard.tsx:292
+#: src/features/Game/Battle/BattleCard.tsx:309
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Вы уверены, что хотите отклонить эту битву?"
@@ -1435,7 +1440,7 @@ msgstr ""
 "компромиссы без лишних разговоров."
 
 #: src/features/Game/Battle/BattleActionModal.tsx:262
-#: src/features/Game/Battle/BattleCard.tsx:263
+#: src/features/Game/Battle/BattleCard.tsx:275
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1973,15 +1978,15 @@ msgstr "Данные и транзакции"
 msgid "Databases & Transactions"
 msgstr "Базы данных и транзакции"
 
-#: src/features/Game/Battle/BattleCard.tsx:120
-#. js-lingui-explicit-id
-msgid "Debate"
-msgstr "Дебаты"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Debate ended!"
 msgstr "Дебаты окончены!"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+msgid "Debate Game"
+msgstr "Игра-дебаты"
 
 #: src/features/Game/GameStatRow.tsx:143
 #. js-lingui-explicit-id
@@ -6617,7 +6622,7 @@ msgid "Open plan"
 msgstr "Открытый план"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
-#: src/features/Game/Battle/BattleCard.tsx:259
+#: src/features/Game/Battle/BattleCard.tsx:271
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Открыть результаты"
@@ -7806,7 +7811,7 @@ msgstr "Связанные сценарии"
 msgid "Reload page"
 msgstr "Перезагрузить страницу"
 
-#: src/features/Game/Battle/BattleCard.tsx:301
+#: src/features/Game/Battle/BattleCard.tsx:318
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "Удалить"
@@ -8508,7 +8513,7 @@ msgstr "Начать пробное интервью"
 msgid "Start Call"
 msgstr "Начать звонок"
 
-#: src/features/Game/Battle/BattleCard.tsx:247
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Начать дебаты"
@@ -9599,7 +9604,7 @@ msgstr "Режим голосовой записи"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:241
+#: src/features/Game/Battle/BattleCard.tsx:253
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Ожидание принятия другими игроками..."
@@ -10011,7 +10016,7 @@ msgstr "Почему кандидаты на backend быстро улучшаю
 msgid "Why candidates improve so quickly"
 msgstr "Почему кандидаты улучшаются так быстро"
 
-#: src/features/Game/Battle/BattleCard.tsx:234
+#: src/features/Game/Battle/BattleCard.tsx:246
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Победитель получает {points} очков"
@@ -10403,7 +10408,7 @@ msgid ""
 "the results."
 msgstr "Вы завершили все вопросы. Отправьте свои ответы сейчас и ждите результатов."
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Вы отправили свои ответы. Ожидание других..."
@@ -10618,6 +10623,11 @@ msgstr ""
 "Вас просят **разрабатывать системы на месте**, но никто не говорит вам, как "
 "выглядит «хорошо»"
 
+#: src/features/Game/Battle/BattleCard.tsx:138
+#. js-lingui-explicit-id
+msgid "{userName} challenges you to a debate!"
+msgstr "{userName} бросает вам вызов на дебаты!"
+
 #: src/features/SEO/metadata.ts:86
 #: src/features/SEO/metadata.ts:316
 #. js-lingui-explicit-id
@@ -10634,6 +10644,11 @@ msgstr ""
 "— важно провести этот короткий разговор перед тем, как переходить к "
 "профессиональным темам. Вот несколько полезных английских фраз для начала "
 "интервью:"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+#~ msgid "Debate"
+#~ msgstr "Дебаты"
 
 #: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id

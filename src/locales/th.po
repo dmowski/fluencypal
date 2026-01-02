@@ -241,6 +241,11 @@ msgstr ""
 msgid "+{increasePoints} points"
 msgstr "+{increasePoints} คะแนน"
 
+#: src/features/Game/Battle/BattleCard.tsx:139
+#. js-lingui-explicit-id
+msgid "-"
+msgstr "-"
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -405,7 +410,7 @@ msgstr "เกี่ยวกับเป้าหมายของคุณ"
 msgid "Academic Word List"
 msgstr "รายชื่อคำศัพท์วิชาการ"
 
-#: src/features/Game/Battle/BattleCard.tsx:231
+#: src/features/Game/Battle/BattleCard.tsx:243
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "ยอมรับ"
@@ -832,7 +837,7 @@ msgstr "คุณแน่ใจหรือว่าต้องการลบ
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "คุณแน่ใจไหมว่าต้องการลบเป้าหมายของคุณ? การกระทำนี้ไม่สามารถยกเลิกได้."
 
-#: src/features/Game/Battle/BattleCard.tsx:292
+#: src/features/Game/Battle/BattleCard.tsx:309
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "คุณแน่ใจหรือว่าต้องการปฏิเสธการต่อสู้นี้?"
@@ -1431,7 +1436,7 @@ msgstr ""
 "ในที่สุดฉันก็อธิบายข้อแลกเปลี่ยนโดยไม่พูดวกไปวนมา"
 
 #: src/features/Game/Battle/BattleActionModal.tsx:262
-#: src/features/Game/Battle/BattleCard.tsx:263
+#: src/features/Game/Battle/BattleCard.tsx:275
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1970,15 +1975,15 @@ msgstr "ข้อมูล & ธุรกรรม"
 msgid "Databases & Transactions"
 msgstr "ฐานข้อมูล & ธุรกรรม"
 
-#: src/features/Game/Battle/BattleCard.tsx:120
-#. js-lingui-explicit-id
-msgid "Debate"
-msgstr "อภิปราย"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Debate ended!"
 msgstr "การถกเถียงสิ้นสุดลง!"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+msgid "Debate Game"
+msgstr "เกมโต้วาที"
 
 #: src/features/Game/GameStatRow.tsx:143
 #. js-lingui-explicit-id
@@ -6576,7 +6581,7 @@ msgid "Open plan"
 msgstr "เปิดแผน"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
-#: src/features/Game/Battle/BattleCard.tsx:259
+#: src/features/Game/Battle/BattleCard.tsx:271
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "เปิดผลลัพธ์"
@@ -7743,7 +7748,7 @@ msgstr "สถานการณ์ที่เกี่ยวข้อง"
 msgid "Reload page"
 msgstr "โหลดหน้าเว็บใหม่"
 
-#: src/features/Game/Battle/BattleCard.tsx:301
+#: src/features/Game/Battle/BattleCard.tsx:318
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "ลบออก"
@@ -8439,7 +8444,7 @@ msgstr "เริ่มสัมภาษณ์จำลอง"
 msgid "Start Call"
 msgstr "เริ่มการโทร"
 
-#: src/features/Game/Battle/BattleCard.tsx:247
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "เริ่มดีเบต"
@@ -9525,7 +9530,7 @@ msgstr "โหมดบันทึกเสียง"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:241
+#: src/features/Game/Battle/BattleCard.tsx:253
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "กำลังรอผู้เล่นคนอื่นยอมรับ..."
@@ -9929,7 +9934,7 @@ msgstr "ทำไมผู้สมัครฝ่ายหลังถึงพ
 msgid "Why candidates improve so quickly"
 msgstr "ทำไมนักเรียนถึงพัฒนาได้เร็ว"
 
-#: src/features/Game/Battle/BattleCard.tsx:234
+#: src/features/Game/Battle/BattleCard.tsx:246
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "ผู้ชนะจะได้รับ {points} คะแนน"
@@ -10313,7 +10318,7 @@ msgid ""
 "the results."
 msgstr "คุณได้ทำคำถามทั้งหมดเสร็จสิ้นแล้ว ส่งคำตอบของคุณตอนนี้และรอผลลัพธ์"
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "คุณได้ส่งคำตอบเรียบร้อยแล้ว กำลังรอผู้อื่น..."
@@ -10531,6 +10536,11 @@ msgstr ""
 "คุณถูกขอให้ **ออกแบบระบบในทันที** แต่ไม่มีใครบอกคุณเลยว่า \"ดี\" "
 "มันควรจะเป็นอย่างไร"
 
+#: src/features/Game/Battle/BattleCard.tsx:138
+#. js-lingui-explicit-id
+msgid "{userName} challenges you to a debate!"
+msgstr "{userName} ท้าให้คุณเข้าร่วมการดีเบต!"
+
 #: src/features/SEO/metadata.ts:86
 #: src/features/SEO/metadata.ts:316
 #. js-lingui-explicit-id
@@ -10546,6 +10556,11 @@ msgid ""
 msgstr ""
 "— มันสำคัญที่จะเริ่มการสนทนาสั้น ๆ นี้ก่อนที่จะข้ามไปสู่หัวข้อทางวิชาชีพ "
 "นี่คือคำพูดภาษาอังกฤษที่มีประโยชน์สำหรับการเริ่มต้นสัมภาษณ์:"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+#~ msgid "Debate"
+#~ msgstr "อภิปราย"
 
 #: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id

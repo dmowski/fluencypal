@@ -240,6 +240,11 @@ msgstr ""
 msgid "+{increasePoints} points"
 msgstr "+{increasePoints} очок"
 
+#: src/features/Game/Battle/BattleCard.tsx:139
+#. js-lingui-explicit-id
+msgid "-"
+msgstr "-"
+
 #: src/features/Case/data/backendCSharp/techData.ts:8
 #. js-lingui-explicit-id
 msgid ".NET"
@@ -402,7 +407,7 @@ msgstr "Про вашу мету"
 msgid "Academic Word List"
 msgstr "Академічний Список Слів"
 
-#: src/features/Game/Battle/BattleCard.tsx:231
+#: src/features/Game/Battle/BattleCard.tsx:243
 #. js-lingui-explicit-id
 msgid "Accept"
 msgstr "Прийняти"
@@ -828,7 +833,7 @@ msgstr "Ви впевнені, що хочете видалити свій ак�
 msgid "Are you sure you want to delete your goal? This action cannot be undone."
 msgstr "Ви впевнені, що хочете видалити свою мету? Цю дію не можна скасувати."
 
-#: src/features/Game/Battle/BattleCard.tsx:292
+#: src/features/Game/Battle/BattleCard.tsx:309
 #. js-lingui-explicit-id
 msgid "Are you sure you want to reject this battle?"
 msgstr "Ви впевнені, що хочете відхилити цей виклик?"
@@ -1425,7 +1430,7 @@ msgstr ""
 "багатослів'я."
 
 #: src/features/Game/Battle/BattleActionModal.tsx:262
-#: src/features/Game/Battle/BattleCard.tsx:263
+#: src/features/Game/Battle/BattleCard.tsx:275
 #: src/features/Game/GameStatRow.tsx:132
 #: src/features/Header/NeedHelpModal.tsx:183
 #: src/features/Usage/SubscriptionWaiter.tsx:60
@@ -1960,15 +1965,15 @@ msgstr "Дані та транзакції"
 msgid "Databases & Transactions"
 msgstr "Бази даних і транзакції"
 
-#: src/features/Game/Battle/BattleCard.tsx:120
-#. js-lingui-explicit-id
-msgid "Debate"
-msgstr "Дебати"
-
 #: src/features/Game/Battle/BattleActionModal.tsx:117
 #. js-lingui-explicit-id
 msgid "Debate ended!"
 msgstr "Дебати завершено!"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+msgid "Debate Game"
+msgstr "Гра Дебатів"
 
 #: src/features/Game/GameStatRow.tsx:143
 #. js-lingui-explicit-id
@@ -6603,7 +6608,7 @@ msgid "Open plan"
 msgstr "Відкритий план"
 
 #: src/features/Conversation/ConversationCanvas2.tsx:1348
-#: src/features/Game/Battle/BattleCard.tsx:259
+#: src/features/Game/Battle/BattleCard.tsx:271
 #. js-lingui-explicit-id
 msgid "Open results"
 msgstr "Відкрити результати"
@@ -7787,7 +7792,7 @@ msgstr "ПОВ’ЯЗАНІ СЦЕНАРІЇ"
 msgid "Reload page"
 msgstr "Перезавантажте сторінку"
 
-#: src/features/Game/Battle/BattleCard.tsx:301
+#: src/features/Game/Battle/BattleCard.tsx:318
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "Вилучити"
@@ -8493,7 +8498,7 @@ msgstr "Розпочати пробну співбесіду"
 msgid "Start Call"
 msgstr "Запустити дзвінок"
 
-#: src/features/Game/Battle/BattleCard.tsx:247
+#: src/features/Game/Battle/BattleCard.tsx:259
 #. js-lingui-explicit-id
 msgid "Start Debate"
 msgstr "Розпочати дебати"
@@ -9582,7 +9587,7 @@ msgstr "Режим запису голосу"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Game/Battle/BattleCard.tsx:241
+#: src/features/Game/Battle/BattleCard.tsx:253
 #. js-lingui-explicit-id
 msgid "Waiting for other players to accept..."
 msgstr "Очікування підтвердження від інших гравців..."
@@ -9992,7 +9997,7 @@ msgstr "Чому кандидати на позиції бекенду швид�
 msgid "Why candidates improve so quickly"
 msgstr "Чому кандидати покращують так швидко"
 
-#: src/features/Game/Battle/BattleCard.tsx:234
+#: src/features/Game/Battle/BattleCard.tsx:246
 #. js-lingui-explicit-id
 msgid "Winner gets {points} points"
 msgstr "Переможець отримує {points} очок"
@@ -10384,7 +10389,7 @@ msgstr ""
 "Ви відповіли на всі запитання. Надішліть свої відповіді зараз і чекайте на "
 "результати."
 
-#: src/features/Game/Battle/BattleCard.tsx:270
+#: src/features/Game/Battle/BattleCard.tsx:282
 #. js-lingui-explicit-id
 msgid "You have submitted your answers. Waiting for others..."
 msgstr "Ви подали свої відповіді. Очікуємо на інших..."
@@ -10599,6 +10604,11 @@ msgstr ""
 "Вам пропонують **розробляти системи на місці**, але ніхто не пояснює, як "
 "виглядає \"добре\""
 
+#: src/features/Game/Battle/BattleCard.tsx:138
+#. js-lingui-explicit-id
+msgid "{userName} challenges you to a debate!"
+msgstr "{userName} кидає вам виклик на дебати!"
+
 #: src/features/SEO/metadata.ts:86
 #: src/features/SEO/metadata.ts:316
 #. js-lingui-explicit-id
@@ -10614,6 +10624,11 @@ msgid ""
 msgstr ""
 "— важливо задіяти цю коротку розмову, перш ніж приступати до професійних "
 "тем. Ось деякі корисні англійські фрази для початку інтерв'ю:"
+
+#: src/features/Game/Battle/BattleCard.tsx:120
+#. js-lingui-explicit-id
+#~ msgid "Debate"
+#~ msgstr "Дебати"
 
 #: src/features/Game/GameStatRow.tsx:158
 #. js-lingui-explicit-id
