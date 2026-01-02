@@ -129,7 +129,6 @@ export const BattleCard = ({ battle }: { battle: GameBattle }) => {
             }}
           >
             <Typography variant="body2">{updatedAgo}</Typography>
-            <Swords size={"14px"} />
           </Stack>
         </Stack>
         {!isAcceptedByMe && (
