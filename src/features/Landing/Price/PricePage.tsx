@@ -16,6 +16,9 @@ import {
   UsersRound,
   Blocks,
   Gem,
+  Swords,
+  Languages,
+  BookText,
 } from "lucide-react";
 import { SupportedLanguage } from "@/features/Lang/lang";
 import { getI18nInstance } from "@/appRouterI18n";
@@ -212,7 +215,7 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 display: "grid",
                 width: "100%",
                 boxSizing: "border-box",
-                gridTemplateColumns: "1fr 1fr",
+                gridTemplateColumns: "1fr 1fr 1fr",
                 "@media (max-width: 1000px)": {
                   display: "flex",
                   flexDirection: "column",
@@ -221,6 +224,77 @@ export const PricePage = ({ lang }: PricePageProps) => {
                 },
               }}
             >
+              <PriceCard
+                title={i18n._("Free")}
+                subTitle={i18n._("For learners getting started")}
+                price={
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                  >
+                    <Typography
+                      variant="h2"
+                      component={"span"}
+                      sx={{
+                        fontWeight: 600,
+                        fontSize: "3rem",
+                      }}
+                    >
+                      0
+                    </Typography>
+
+                    <Stack sx={{}}>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        <CurrencyToDisplay />
+                      </Typography>
+                      <Typography variant="caption">/ {i18n._("month")}</Typography>
+                    </Stack>
+                  </Stack>
+                }
+                priceSubDescription={i18n._("Get started with basic features")}
+                listTitle={i18n._("Everything in Free, plus:")}
+                isLightButton
+                listItems={[
+                  {
+                    title: i18n._("1 day full access trial"),
+                    tooltip: i18n._("Get unlimited access to AI-powered language practice"),
+                    icon: Gem,
+                  },
+                  {
+                    title: i18n._("Game-based practice"),
+                    tooltip: i18n._("Get unlimited access to AI-powered language practice"),
+                    icon: Swords,
+                  },
+                  {
+                    title: i18n._("Debates and discussions"),
+                    tooltip: i18n._(
+                      "Engage in real-life conversations like job interviews or ordering food"
+                    ),
+                    icon: UsersRound,
+                  },
+                  {
+                    title: i18n._("Vocabulary challenges"),
+                    tooltip: i18n._("Improve fluency with interactive chat sessions"),
+                    icon: Languages,
+                  },
+                  {
+                    title: i18n._("Reading practice"),
+                    tooltip: i18n._("Improve fluency with interactive chat sessions"),
+                    icon: BookText,
+                  },
+                ]}
+                buttonTitle={i18n._("Start")}
+                buttonLink={`${getUrlStart(lang)}quiz`}
+              />
+
               <PriceCard
                 title={i18n._("Full Access")}
                 subTitle={i18n._("For learners who want flexibility")}
